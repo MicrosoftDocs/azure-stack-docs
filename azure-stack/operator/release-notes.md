@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -236,7 +236,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.32.106](hotfix-1-2005-32-106.md)
+- [Azure Stack Hub hotfix 1.2005.33.108](hotfix-1-2005-33-108.md)
 ::: moniker-end
 
 ::: moniker range="azs-2002"
