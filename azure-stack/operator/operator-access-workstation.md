@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: mattbriggs
 ms.topic: article
-ms.date: 04/01/2021
+ms.date: 04/09/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 03/26/2021
+ms.lastreviewed: 04/09/2021
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -98,7 +98,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 ## Check HLH version
 
 > [!NOTE]  
-> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step.
+> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step. 
 
 1.  Sign in to the HLH with your credentials.
 
@@ -111,9 +111,6 @@ Another way to copy this script to your environment is to use the Test-FileHash 
     For example:
 
     ![Screenshot of PowerShell cmdlet to check the version of the OAW VM.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
-
-> [!NOTE]  
-> This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image.
 
 ## Create the OAW VM using a script
 
@@ -132,30 +129,51 @@ The following script prepares the virtual machine as the Operator Access Worksta
 ### Example: Deploy on HLH using a Microsoft Image
 
 ```powershell  
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword 
+$oawRootPath = "D:\oawtest"
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+
+if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
+{ Write-Host "Execution failed, unblock the script files first" }
+else { New-OAW.ps1 -LocalAdministratorPassword $securePassword }
 ```
 
 
 ### Example: Deploy on HLH using an OEM Image
 
 ```powershell  
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
+$oawRootPath = "D:\oawtest"
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+
+if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
+{ Write-Host "Execution failed, unblock the script files first" }
+else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json' }
 ```
 
-If the` DeploymentData.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `DeploymentData.json` can be re-created using the [privileged endpoint](../reference/pep-2002/get-azurestackstampinformation.md) in case it is not present on the HLH. 
+If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep-2002/get-azurestackstampinformation.md) in case it is not present on the HLH. 
 
 > [!NOTE]  
-> The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority.
+> The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. If the `DeploymentData.json` is not available, reach out to your hardware partner to retrieve it or continue with the example deploy on Microsoft Hyper-V.
 
 ### Example: Deploy on Microsoft Hyper-V
 
-The machine running Microsoft Hyper-V does requires four (4) cores and two (2) GB of available memory.
+The machine running Microsoft Hyper-V does requires four (4) cores and two (2) GB of available memory. The PowerShell cmdlets will create the OAW VM without applying an IP configuration to the guest network interface. If you use the example to provision the OAW on a HLH you must configure the IP Address originally used by the **Deployment VM** (DVM), which is typically the second to last IP of the BMC Network.
+
+| Examples | IPs |
+| --- | --- |
+| BMC Network | 10.26.5.192/26 |
+| First Host IP | 10.26.5.193 |
+| Last Host IP | 10.26.5.254 |
+| DVM/OAW IP | 10.26.5.253 |
+| Subnet Mask | 255.255.255.192 |
+| Default Gateway | 10.26.5.193 |
 
 ```powershell  
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example  
+$oawRootPath = "D:\oawtest"
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+
+if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
+{ Write-Host "Execution failed, unblock the script files first" }
+else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example }
 ```
 
 > [!NOTE]  
