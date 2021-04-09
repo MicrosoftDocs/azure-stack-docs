@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/09/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -107,6 +107,8 @@ The next step is to install required Windows roles and features on every server 
 - File Server
 - FS-Data-Deduplication module
 - Hyper-V
+- Hyper-V PowerShell
+- RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - Storage Replica (for stretched clusters)
 
