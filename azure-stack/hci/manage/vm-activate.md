@@ -22,7 +22,7 @@ Automatic Virtual Machine Activation allows properly activated host servers to a
 
 There are multiple benefits to this approach:
 - Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
-- License management is simplified. There is no need to track how many times you entered keys in individual VMs, and maintain a count of activated VMs that is within the license limit. With Automatic Virtual Machine Activation, each host server uses just 1 key, regardless of how many VMs you run on top of the server.
+- License management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with just a properly licensed server.
 - Automatic Virtual Machine Activation acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with Product Use Rights and Microsoft Software License Terms.
 
 ## Supported keys and guest OS versions
@@ -123,7 +123,7 @@ One or more of your servers is not updated and does not have the required packag
 ## Use Automatic Virtual Machine Activation in PowerShell
 You can use the following PowerShell commands to set up and manage Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
 
-1.  From each Azure Stack HCI server in your cluster, use the following command to import the Automatic Virtual Machine Activation PowerShell module:
+1.  Right-click **Windows PowerShell**, select **Run as administrator**, and then from each Azure Stack HCI server in your cluster, use the following command to import the Automatic Virtual Machine Activation PowerShell module:
 
     ```powershell
      Import-module "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\ServerAVMAManager\ServerAVMAMAnager.psm1"
