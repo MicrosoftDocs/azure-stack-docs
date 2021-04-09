@@ -94,7 +94,7 @@ From the user portal, you provision a virtual machine using the subscription you
 1. In **Summary**, review your choices, then select **OK** to create the virtual machine.  
 1. Once deployment starts, you return to the dashboard. To see the new virtual machine, select **All resources**. Search for the virtual machine and select its name from the search results. From here, you can access and manage the virtual machine.
    > [!NOTE]
-   > Full deployment and starting of the VM can take several minutes. Once the VM is ready for use, the [status](/azure/virtual-machines/windows/states-lifecycle) will change to "Running".
+   > Full deployment and starting of the VM can take several minutes. Once the VM is ready for use, the [status](/azure/virtual-machines/states-billing) will change to "Running".
 
 ::: moniker-end
 
