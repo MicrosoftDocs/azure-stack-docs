@@ -15,13 +15,8 @@ This article includes workaround steps for resolving known issues that occur whe
 
 After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message:
 
-```output
-\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
-get akshciclusters -o json returned a non zero exit code 1 
-[Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: 
-A connection attempt failed because the connected party did not properly
-respond after a period of time, or established connection failed because
-connected host has failed to respond.]
+```Output
+\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
 ```
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
