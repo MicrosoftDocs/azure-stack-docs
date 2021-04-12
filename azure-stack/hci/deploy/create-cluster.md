@@ -223,7 +223,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 ## Step 5: SDN (optional)
 
-This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
+This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
 
 > [!NOTE]
 > SDN is not supported or available for stretched clusters.
