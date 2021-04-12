@@ -16,7 +16,12 @@ This article includes workaround steps for resolving known issues that occur whe
 After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message:
 
 ```output
-\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
+\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
+get akshciclusters -o json returned a non zero exit code 1 
+[Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: 
+A connection attempt failed because the connected party did not properly
+respond after a period of time, or established connection failed because
+connected host has failed to respond.]
 ```
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
@@ -34,7 +39,7 @@ ipconfig /all
 ```
 In the displayed configuration settings, confirm that the IP address and gateway are correct. You should also attempt to ping the IP gateway and DNS server. 
 
-If these methods don't work, use [New-AksHciNetworkSettings](./new-akshcinetworksetting.md) to change the configuration.
+If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
 
 ### Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
@@ -104,13 +109,13 @@ connected host has failed to respond.At line:1 char:1+ powershell -command
 { Get-DownloadSdkRelease -Name "mocstack-stable"
 ```
 
-This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, msk8s.api.cdp.microsoft.com, but the node can't connect to target server.
+This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
 
 To resolve this issue, you need to determine where the break down occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
 
-1. Ping the destination DNS name ‘ping msk8s.api.cdp.microsoft.com’. 
+1. Ping the destination DNS name: ping `msk8s.api.cdp.microsoft.com`. 
 2. If you get a response back and no time out, then the basic network path is working. 
-3. If the connection times out, then there is a break in the data path. See [check proxy settings](./set-proxy-settings.md) below or a break in the return path see check firewall rules below. 
+3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
