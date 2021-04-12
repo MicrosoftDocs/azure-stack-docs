@@ -42,23 +42,7 @@ Create a tenant that your organization will use to access VaaS services. Use a d
 
 2. Add members of your organization to the tenant. These users will be responsible for using the service to view or schedule tests. Once you finish registration, you'll define users' access levels.
 
-    Authorize the users in your tenant to run actions in VaaS by assigning one of the following roles:
-
-    | Role Name | Description |
-    |---------------------|------------------------------------------|
-    | Owner | Has full access to all resources. |
-    | Reader | Can view all resources but can't create or manage. |
-    | Test Contributor | Can create and manage test resources. |
-
-    To assign roles in the **Azure Stack Hub Validation Service** app:
-
-   1. Sign in to the [Azure portal](https://portal.azure.com).
-   2. Select **All Services** > **Azure Active Directory** under the **Identity** section.
-   3. Select **Enterprise Applications** > **Azure Stack Hub Validation Service** app.
-   4. Select **Users and groups**. The **Azure Stack Hub Validation Service - Users and group** blade lists the users with permission to use the app.
-   5. Select **+ Add user** to add a user from your tenant and assign a role.
-
-      If you want to isolate VaaS resources and actions among different groups within an organization, you can create multiple Azure AD tenant directories.
+3. (Optional) If you want to isolate VaaS resources and actions among different groups within an organization, you can create multiple Azure AD tenant directories.
 
 ### Register your tenant
 
@@ -93,6 +77,24 @@ For agent application consent:
 2. Access the link from the browser.
 
 3. Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
+
+## Assign User Roles
+
+Authorize the users in your tenant to run actions in VaaS by assigning one of the following roles:
+
+| Role Name | Description |
+|---------------------|------------------------------------------|
+| Owner | Has full access to all resources. |
+| Reader | Can view all resources but can't create or manage. |
+| Test Contributor | Can create and manage test resources. |
+
+To assign roles in the **Azure Stack Hub Validation Service** app:
+
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Select **All Services** > **Azure Active Directory** under the **Identity** section.
+3. Select **Enterprise Applications** > **Azure Stack Hub Validation Service** app.
+4. Select **Users and groups**. The **Azure Stack Hub Validation Service - Users and group** blade lists the users with permission to use the app.
+5. Select **+ Add user** to add a user from your tenant and assign a role.
 
 ## Create an Azure Storage account
 
