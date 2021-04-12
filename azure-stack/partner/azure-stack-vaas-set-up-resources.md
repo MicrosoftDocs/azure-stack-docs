@@ -76,13 +76,23 @@ This process authorizes your tenant with the **Azure Stack Hub Validation Servic
 
 ### Consent to the VaaS app
 
-As the Azure AD administrator, give the VaaS Azure AD application the required permissions on behalf of your tenant:
+There are two applications that require admin consents to function properly, one for accessing the VaaS portal and another for starting up the VaaS agents on DVMs. As the Azure AD administrator, give the VaaS Azure AD applications the required permissions on behalf of your tenant.
+
+For portal application consent:
 
 1. Use the global admin credentials for the tenant to sign into the [Azure Stack Hub Validation portal](https://azurestackvalidation.com/).
 
 2. Select **My Account**.
 
-3 Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
+3. Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
+
+For agent application consent:
+
+1. Complete the following application admin consent URL  with your tenant Id: https://login.microsoftonline.com/{your-tenant-id}/adminconsent?client_id=1cb1f8f6-a492-4155-9aaf-59a444e8cd3c
+
+2. Access the link from the browser.
+
+3. Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
 
 ## Create an Azure Storage account
 
