@@ -101,6 +101,8 @@ High availability scenarios can only be configured on the **High Performance Gat
 
 There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
 
+Please note that gateway failovers are expected during an OEM or an Azure Stack Hub Update as the VMs are patched and live migrated. This may result in a temporary disconnect of the tunnels. 
+
 ## Estimated aggregate tunnel throughput by SKU
 
 The following table shows the gateway types and the estimated aggregate throughput for each tunnel/connection by gateway SKU:
