@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/4/2021
+ms.date: 4/12/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/4/2021
+ms.lastreviewed: 4/12/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -162,7 +162,7 @@ Proceed to deploy a cluster:
 
 ## Verify your cluster
 
-Verify your cluster by deploying MySql with Helm to check your cluster.
+Check your cluster by connect to kubectl, getting the info, and then states of your nodes.
 
 1. Get the public IP address of one of your master nodes using the Azure Stack Hub portal.
 
@@ -170,71 +170,35 @@ Verify your cluster by deploying MySql with Helm to check your cluster.
 
 3. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
 
-4. Run the following commands to create a sample deployment of a Redis master (for connected stamps only):
-
-   ```bash
-   kubectl apply -f https://k8s.io/examples/application/guestbook/redis-master-deployment.yaml
-   ```
-
-    1. Query the list of pods:
-
-       ```bash
-       kubectl get pods
-       ```
-
-    2. The response should be similar to the following:
-
-       ```shell
-       NAME                            READY     STATUS    RESTARTS   AGE
-       redis-master-1068406935-3lswp   1/1       Running   0          28s
-       ```
-
-    3. View the deployment logs:
-
-       ```shell
-       kubectl logs -f <pod name>
-       ```
-
-    For a complete deployment of a sample PHP app that includes the Redis master, follow [the instructions here](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/).
-
-5. For a disconnected stamp, the following commands should be sufficient:
-
-    1. First check that the cluster endpoints are running:
-
-       ```bash
-       kubectl cluster-info
-       ```
-
-       The output should look similar to the following:
-
-       ```shell
-       Kubernetes master is running at https://democluster01.location.domain.com
-       CoreDNS is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-       kubernetes-dashboard is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy
-       Metrics-server is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
-       ```
-
-    2. Then, review node states:
-
-       ```bash
-       kubectl get nodes
-       ```
-
-       The output should be similar to the following:
-
-       ```shell
-       k8s-linuxpool-29969128-0   Ready      agent    9d    v1.15.5
-       k8s-linuxpool-29969128-1   Ready      agent    9d    v1.15.5
-       k8s-linuxpool-29969128-2   Ready      agent    9d    v1.15.5
-       k8s-master-29969128-0      Ready      master   9d    v1.15.5
-       k8s-master-29969128-1      Ready      master   9d    v1.15.5
-       k8s-master-29969128-2      Ready      master   9d    v1.15.5
-       ```
-
-6. To clean up the redis POD deployment from the previous step, run the following command:
+4. Check that the cluster endpoints are running:
 
     ```bash
-    kubectl delete deployment -l app=redis
+    kubectl cluster-info
+    ```
+
+    The output should look similar to the following:
+
+    ```shell
+    Kubernetes master is running at https://democluster01.location.domain.com
+    CoreDNS is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Metrics-server is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    ```
+
+5. Then, review node states:
+
+    ```bash
+    kubectl get nodes
+    ```
+
+    The output should be similar to the following:
+
+    ```shell
+    k8s-linuxpool-29969128-0   Ready      agent    9d    v1.15.5
+    k8s-linuxpool-29969128-1   Ready      agent    9d    v1.15.5
+    k8s-linuxpool-29969128-2   Ready      agent    9d    v1.15.5
+    k8s-master-29969128-0      Ready      master   9d    v1.15.5
+    k8s-master-29969128-1      Ready      master   9d    v1.15.5
+    k8s-master-29969128-2      Ready      master   9d    v1.15.5
     ```
 
 ## Rotate your service principle secret
