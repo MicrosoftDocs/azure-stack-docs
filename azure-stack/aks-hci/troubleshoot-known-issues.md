@@ -23,16 +23,18 @@ There are multiple reasons why an installation might fail with the **waiting for
 
 ### Incorrect IP gateway configuration
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
-```
-kubeconfig-clustergroup-management returned a non zero exit code 1
+```PowerShell
+Install-AksHci 
+C:\AksHci\kvactl.exe create –configfile C:\AksHci\yaml\appliance.yaml  --outfile C:\AksHci\kubeconfig-clustergroup-management returned a non zero exit code 1 [ ]
 ```
 
-To check the configuration, run the following: 
+To check whether you have the right configuration for your IP address and gateway, run the following: 
 
-```
+```powershell
 ipconfig /all
 ```
-In the displayed configuration settings, confirm that the IP address and gateway are correct. You should also attempt to ping the IP gateway and DNS server. 
+
+In the displayed configuration settings, confirm the configuration. You could also attempt to ping the IP gateway and DNS server. 
 
 If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
 
@@ -74,7 +76,7 @@ kube-system   kube-proxy-qqnkr                                1/1     Terminatin
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
 
 ## Attempt to increase the number of worker nodes fails
-When using PowerShell to create a cluster with static IP, and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
+When using PowerShell to create a cluster with static IP and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
 
 When [Get-AksHciCluster](./get-akshcicluster.md) was run, it showed that the control plane nodes were created and provisioned and were in a _Ready_ state. However, when `kubectl get nodes` was run, it showed that the control plane nodes had been created but not provisioned and were not in a _Ready_ state.
 
