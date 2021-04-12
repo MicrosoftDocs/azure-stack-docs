@@ -4,7 +4,7 @@ description: Create and configure VPN gateways for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 04/12/2021
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
 
@@ -100,6 +100,8 @@ High availability scenarios can only be configured on the **High Performance Gat
 ### Failover
 
 There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
+
+Gateway failovers are expected during an OEM or an Azure Stack Hub update, as the VMs are patched and live migrated. This can result in a temporary disconnect of the tunnels.
 
 ## Estimated aggregate tunnel throughput by SKU
 
