@@ -162,7 +162,7 @@ Proceed to deploy a cluster:
 
 ## Verify your cluster
 
-Check your cluster by connect to kubectl, getting the info, and then states of your nodes.
+Check your cluster by connect to **kubectl**, getting the info, and then the states of your nodes.
 
 1. Get the public IP address of one of your master nodes using the Azure Stack Hub portal.
 
