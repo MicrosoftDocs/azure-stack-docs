@@ -21,8 +21,17 @@ After running `Install-AksHci`, the installation stopped and displayed a **waiti
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
 
-### Incorrect DNS server
+### Incorrect IP gateway configuration
+If you're using static IP, confirm that the configuration for the IP address and gateway is correct. To check the configuration, run the following: 
 
+```
+ipconfig /all
+```
+Confirm that the IP address and gateway are correct. You should also attempt to ping the IP gateway and DNS server. 
+
+If these methods don't work, use [New-AksHciNetworkSettings](./new-akshcinetworksetting.md) to change the configuration.
+
+### Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
 
 ```powershell
@@ -40,7 +49,6 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
 ## Container storage interface pod stuck in a _ContainerCreating_ state
-
 A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state as shown in the output below:
 
 ```output
@@ -58,7 +66,37 @@ kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerC
 kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m  
 ```
 
-Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.  
+Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
+
+## Attempt to increase the number of worker nodes fails
+When using PowerShell to create a cluster with static IP, and then attempting to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, an error message appears: _Error: timed out waiting for the condition_.
+
+When [Get-AksHciCluster](./get-akshcicluster.md) was run, it showed that the control plane nodes were created and provisioned and were in a _Ready_ state. However, when `kubectl get nodes` was run, it showed that the control plane nodes had been created but not provisioned and in a _Ready_ state.
+
+If you get this error, verify that the IP addresses have been assigned to the created nodes using either Hyper-V Manager or PowerShell:
+
+```powershell
+(Get-VM |Get-VMNetworkAdapter).IPAddresses |fl
+```
+  
+Then, verify the network settings to ensure there are enough IP addresses left in the pool to create more VMs.   
+
+## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment fails at various points
+
+In the output from the deployment failure, this error message is returned: _A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond._ 
+
+The point at which the error occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`:
+```
+A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.At line:1 char:1+ powershell -command { Get-DownloadSdkRelease -Name "mocstack-stable"
+```
+
+This indicates that the physical Azure Stack HCI node is able to resolve the name of the download URL msk8s.api.cdp.microsoft.com, but the node can't connect to target server.
+
+To resolve this issue, you need to determine where the break down occurred in the connection flow. Here are some steps to try from the physical cluster node:
+
+1. Ping the destination DNS name ‘ping msk8s.api.cdp.microsoft.com’. 
+2. If you get a response back and no time out, then the basic network path is working. 
+3. If the connection times out, then there is a break in the data path. See [check proxy settings](./set-proxy-settings.md) below or a break in the return path see check firewall rules below. 
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
