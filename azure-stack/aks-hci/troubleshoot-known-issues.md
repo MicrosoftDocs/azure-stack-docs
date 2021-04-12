@@ -87,10 +87,21 @@ If you get this error, verify that the IP addresses have been assigned to the cr
 Then, verify the network settings to ensure there are enough IP addresses left in the pool to create more VMs.   
 
 ## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
-If you receive a message that the deployment timed out, and the following error message is returned, you can determine that the point at which the error occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`. 
+When deploying AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
+
+For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
 
 ```
-A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond at powershell -command { Get-DownloadSdkRelease -Name "mocstack-stable"
+$vnet = New-AksHciNetworkSettingSet-AksHciConfig -vnet $vnetInstall-AksHciVERBOSE: 
+Initializing environmentVERBOSE: [AksHci] Importing ConfigurationVERBOSE: 
+[AksHci] Importing Configuration Completedpowershell : 
+GetRelease - error returned by API call: 
+Post "https://msk8s.api.cdp.microsoft.com/api/v1.1/contents/default/namespaces/default/names/mocstack-stable/versions/0.9.7.0/files?action=generateDownloadInfo&ForegroundPriority=True": 
+dial tcp 52.184.220.11:443: connectex: 
+A connection attempt failed because the connected party did not properly
+respond after a period of time, or established connection failed because
+connected host has failed to respond.At line:1 char:1+ powershell -command
+{ Get-DownloadSdkRelease -Name "mocstack-stable"
 ```
 
 This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, msk8s.api.cdp.microsoft.com, but the node can't connect to target server.
