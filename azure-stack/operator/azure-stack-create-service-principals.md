@@ -103,7 +103,8 @@ Once you have a certificate, use the PowerShell script below to register your ap
     # Create a PSSession to the Privileged Endpoint VM
     $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the Get-Item cmdlet to retrieve your certificate.
+    # Use the Get-Item cmdlet to retrieve the certificate from the certificate store.
+    # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
@@ -161,7 +162,8 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     # Create a PSSession to the Privileged Endpoint VM
     $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the Get-Item cmdlet to retrieve your certificate.
+    # Use the Get-Item cmdlet to retrieve the certificate from the certificate store.
+    # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
@@ -233,7 +235,8 @@ Update the certificate credential using PowerShell, substituting your own values
 
      # Create a self-signed certificate for testing purposes. 
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
-     # In production, use Get-Item and a managed certificate instead.
+     # In production, use Get-Item to retreive a managed certificate from the certificate store.
+     # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
      # $Cert = Get-Item "<YourCertificateLocation>"
 
      # Use the privileged endpoint to update the certificate thumbprint, used by the service principal associated with <AppIdentifier>
