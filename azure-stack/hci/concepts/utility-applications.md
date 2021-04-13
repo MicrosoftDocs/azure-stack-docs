@@ -4,7 +4,7 @@ description: This topic spotlights utility applications from Microsoft partners 
 author: burcuerdemir
 ms.author: burcue
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 04/13/2021
 ---
 
 # Utility applications for Azure Stack HCI
