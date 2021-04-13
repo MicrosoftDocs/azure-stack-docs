@@ -40,7 +40,7 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
 5. Click **Connect**. If you're an Azure AD admin or if you used an existing application ID, you should see a confirmation that you are now connected to Azure AD. You may see a **Permissions requested** dialog box; click **Accept**. Select **Sign in** to sign into Windows Admin Center with your Azure account. If you're not an Azure AD admin and you created a new application ID upon registration, you'll need to ask your Azure AD admin to grant consent to the new application ID by following the instructions in step 6 below.
 
-6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name that matches the address of the Windows Admin Center system you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you may need to provide it to one or more users in your organization so they can register Windows Admin Center on their PCs. Next, navigate to **API permissions** and select **Grant admin consent**. If you plan to use the same application ID for multiple users, proceed to step 7; otherwise, you're done.
+6. If you are an Azure AD admin, grant permissions in the Azure portal by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name that matches the address of the Windows Admin Center system you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you may need to provide it to one or more users in your organization so they can register Windows Admin Center on their PCs. Next, navigate to **API permissions** and select **Grant admin consent**. If you plan to use the same application ID for multiple users, proceed to step 7; otherwise, you're done.
 
 7. For convenience and ease of management, it's possible to enable multiple users in an organization to register Windows Admin Center on their PCs using the same Azure app ID. To do this, all users must register Windows Admin Center to the same domain and port, usually *https://localhost:6516*. This also requires the Azure AD admin to take an extra step and add redirect URIs in the Azure portal.
 
@@ -49,9 +49,7 @@ To use Azure services with Windows Admin Center, you must first [install Windows
    :::image type="content" source="media/register-wac/add-redirect-uris.png" alt-text="To enable multiple users in an organization to register Windows Admin Center using the same Azure app ID, add redirect URIs" lightbox="media/register-wac/add-redirect-uris.png":::
 
    > [!IMPORTANT]
-   > If the Azure AD admin doesn't add redirect URIs and more than one user tries to register Windows Admin Center to the same app ID, the user will get an error that the reply URL doesn't match.
-
-Make sure to provide your users with the correct Azure tenant ID and the application ID from step 6, and tell them to select **Use existing** application ID when registering Windows Admin Center.
+   > Make sure to provide your users with the correct Azure tenant ID and the application ID from step 6, and tell them to select **Use existing** application ID when registering Windows Admin Center. Note that if an Azure AD admin doesn't add redirect URIs and more than one user tries to register Windows Admin Center to the same app ID, the user(s) will get an error that the reply URL doesn't match.
 
 8. Once Windows Admin Center is registered with Azure, you're ready to [register your Azure Stack HCI cluster with Azure](../deploy/register-with-azure.md).
 
