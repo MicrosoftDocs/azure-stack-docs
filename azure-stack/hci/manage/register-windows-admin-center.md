@@ -4,7 +4,7 @@ description: How to register your Windows Admin Center gateway with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 04/13/2021
 ---
 
 # Register Windows Admin Center with Azure
@@ -38,28 +38,28 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
    :::image type="content" source="media/register-wac/connect-to-aad.png" alt-text="Connect to Azure Active Directory by supplying your existing Azure Active Directory (tenant) ID and application ID, or creating a new application ID" lightbox="media/register-wac/connect-to-aad.png":::
 
-5. Click **Connect**. If you are an Azure AD admin or if you used an existing application ID, you should see a confirmation that you are now connected to Azure AD. If not, you may see a message that you need admin approval. If this is the case, select **Return to the application without granting consent**, and ask your Azure AD admin to grant consent to the new application ID that was created upon registration by following the instructions in step 6 below.
+5. Click **Connect**. If you're an Azure AD admin or if you used an existing application ID, you should see a confirmation that you are now connected to Azure AD. You may see a **Permissions requested** dialog box; click **Accept**. Select **Sign in** to sign into Windows Admin Center with your Azure account. If you're not an Azure AD admin and you created a new application ID upon registration, you'll need to ask your Azure AD admin to grant consent to the new application ID by following the instructions in step 6 below.
 
-6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name of the gateway you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you'll need to provide it to the user. Next, navigate to **API permissions**. Under **Grant consent**, select **Grant admin consent**. Then, give the application ID to the user. If you plan to use the same application ID for multiple users, proceed to step 7; otherwise, skip ahead to step 8.
+6. If you are an Azure AD admin, grant permissions in Azure by navigating to **Azure Active Directory**, then **App registrations**. Select **All applications** and search for **WindowsAdminCenter**. Select the display name that matches the address of the Windows Admin Center system you're registering. Take note of the **Application (client) ID** displayed near the top of the page, as you may need to provide it to one or more users in your organization so they can register Windows Admin Center on their PCs. Next, navigate to **API permissions** and select **Grant admin consent**. If you plan to use the same application ID for multiple users, proceed to step 7; otherwise, you're done.
 
-7. For convenience and ease of management, it's possible to enable multiple users in an organization to register Windows Admin Center using the same Azure app ID. To do this, all users must register their gateways to the same domain and port, such as *https://localhost:6516* for example. This also requires the Azure AD admin to take an extra step and add redirect URIs in the Azure portal.
+7. For convenience and ease of management, it's possible to enable multiple users in an organization to register Windows Admin Center on their PCs using the same Azure app ID. To do this, all users must register Windows Admin Center to the same domain and port, usually *https://localhost:6516*. This also requires the Azure AD admin to take an extra step and add redirect URIs in the Azure portal.
 
-   In Windows Admin Center, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, and then click **View in Azure**, which will display Azure AD details. In the Azure portal, select **Manage > Authentication** from the menu on the left. In the **Redirect URIs** box, you will see an existing URI representing the first gateway that registered to the app ID. Select **Add URI** and add two new redirect URIs, such as *http://localhost:6516* and *https://localhost:6516*.
+   In the Azure portal, select **Authentication** under **Manage** from the toolbar on the left. In the **Redirect URIs** box, you will see an existing URI representing the first Windows Admin Center system that registered to the app ID. Select **Add URI** and add two new redirect URIs: *http://localhost:6516* and *https://localhost:6516*. Select **Save.**
 
    :::image type="content" source="media/register-wac/add-redirect-uris.png" alt-text="To enable multiple users in an organization to register Windows Admin Center using the same Azure app ID, add redirect URIs" lightbox="media/register-wac/add-redirect-uris.png":::
 
    > [!IMPORTANT]
    > If the Azure AD admin doesn't add redirect URIs and more than one user tries to register Windows Admin Center to the same app ID, the user will get an error that the reply URL doesn't match.
 
-7. At this point, the user must re-run the registration wizard, this time selecting **Use existing** application ID and specifying the application ID provided by the Azure AD admin.
+Make sure to provide your users with the correct Azure tenant ID and the application ID from step 6, and tell them to select **Use existing** application ID when registering Windows Admin Center.
 
-8. Select **Sign in** to sign into Windows Admin Center with your Azure account.
+8. Once Windows Admin Center is registered with Azure, you're ready to [register your Azure Stack HCI cluster with Azure](../deploy/register-with-azure.md).
 
 ## Unregister Windows Admin Center
 
-To unregister your Windows Admin Center gateway, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, then **Unregister**, then **Confirm**. 
+To unregister Windows Admin Center, select the **Settings** gear icon in the upper right. Then, from the **Gateway** menu at the left, select **Azure**, then **Unregister**, then **Confirm**. 
 
-This will remove the association between Windows Admin Center and the Azure AD app ID that was provided by your Azure AD admin or created when you registered the gateway. It will not delete the Azure AD app nor affect any Azure services used by servers or clusters managed by Windows Admin Center.
+This will remove the association between Windows Admin Center and the Azure AD app ID that was provided by your Azure AD admin or created when you registered Windows Admin Center. It will not delete the Azure AD app nor affect any Azure services used by servers or clusters managed by Windows Admin Center.
 
 ## Next steps
 
