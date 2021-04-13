@@ -35,7 +35,7 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 
 ## How does Windows Admin Center enable you to use Azure Monitor?
 
-From within Windows Admin Center, you can enable three monitoring solutions:
+From within Windows Admin Center, you can enable the following monitoring solutions:
 
 - [Azure Monitor for Clusters](#onboard-your-cluster-using-windows-admin-center)
 - Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
