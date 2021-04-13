@@ -136,6 +136,9 @@ If you receive an error in either wizard about a wrong configuration, perform cl
 ## Error occurs when attempting to use Windows Admin Center
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
+## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
+The deployment of a large cluster may time out after two hours, however, this is a static time out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
+
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)

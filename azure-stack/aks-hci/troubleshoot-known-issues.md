@@ -103,7 +103,7 @@ dial tcp 52.184.220.11:443: connectex:
 A connection attempt failed because the connected party did not properly
 respond after a period of time, or established connection failed because
 connected host has failed to respond.At line:1 char:1+ powershell -command
-{ Get-DownloadSdkRelease -Name "mocstack-stable"
+{ Get-DownloadSdkRelease -Name "mocstack-stable"}
 ```
 
 This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
