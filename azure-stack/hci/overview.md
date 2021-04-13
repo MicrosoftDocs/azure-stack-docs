@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/02/2021
+ms.date: 04/13/2021
 ms.custom: e2e-hybrid
 ---
 
@@ -141,13 +141,15 @@ Windows Admin Center version 2103 adds a number of features and improvements to 
 
 - **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
 
+- **Deploy Network Controller using Windows Admin Center**: An update to the Cluster Creation extension in Windows Admin Center allows you to set up a Network Controller for Software Defined Networking (SDN) deployments.
+
+- **Use Windows Admin Center in the Azure portal (Preview)**: Manage the Windows Server operating system running in an Azure VM by using Windows Admin Center directly in the Azure portal.
+To learn more, see [Windows Admin Center in the Azure portal](https://cloudblogs.microsoft.com/windowsserver/2021/03/02/announcing-public-preview-of-window-admin-center-in-the-azure-portal/).
+
 - **Event tool redesign (Preview)**: We’ve redesigned the Events tool for servers and PCs for the first time in ages. To check it out, open the Events tool and then toggle **Preview Mode**.
 
 - **Install and manage Azure IoT Edge for Linux on Windows**: Install, manage, and troubleshoot IoT Edge for Linux on Windows from within Windows Admin Center.
 To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](https://techcommunity.microsoft.com/t5/internet-of-things/enabling-linux-based-azure-iot-edge-modules-on-windows-iot/ba-p/2075882?ocid=wac2103).
-
-- **Use Windows Admin Center in the Azure portal (Preview)**: Manage the Windows Server operating system running in an Azure VM by using Windows Admin Center directly in the Azure portal.
-To learn more, see [Windows Admin Center in the Azure portal](https://cloudblogs.microsoft.com/windowsserver/2021/03/02/announcing-public-preview-of-window-admin-center-in-the-azure-portal/).
 
 - **Use a proxy server**: Windows Admin Center can now access Azure and the internet through a proxy server. To set up a proxy server in Windows Admin Center, next to **Notifications** select **Settings** and then under **Gateway** select **Proxy**.
 
