@@ -136,6 +136,9 @@ If you receive an error in either wizard about a wrong configuration, perform cl
 ## Error occurs when attempting to use Windows Admin Center
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
+## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
+The deployment of a large cluster may time out after two hours, however, this is a static time out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
+
 ## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
 Due to insufficient permissions in Active Directory, `Uninstall-AksHci` could not remove cluster resource objects in AD, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove AD objects in the Active Directory container the server and service objects are created in.
 
@@ -146,6 +149,7 @@ While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has 
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
 ## Get-AksHciLogs command may fail
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or will not generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file Compress-Archive has an output file size limit of 2GB. 
+
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
