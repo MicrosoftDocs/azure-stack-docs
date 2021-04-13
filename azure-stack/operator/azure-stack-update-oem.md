@@ -65,8 +65,9 @@ For more information on the privileged endpoint in Azure Stack Hub, see [Using t
 
     ```powershell  
     $cred = Get-Credential
-    $session = New-PSSession -ComputerName <IP Address of ERCS>
-    -ConfigurationName PrivilegedEndpoint -Credential $cred
+    $session = New-PSSession -ComputerName <IP Address of ERCS> `
+    -ConfigurationName PrivilegedEndpoint -Credential $cred `
+    -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     ```
 
 2. Configure the hardware vendor VM using the **Set-OEMExternalVM** cmdlet. The cmdlet validates the IP address and credentials for **-VMType** `ProxyVM`. For **-VMType** `HardwareManager`, the cmdlet won't validate the input. The **-Credential** parameter provided to **Set-OEMExternalVM** is one that will be clearly documented by the hardware vendor documentation.  It is *NOT* the CloudAdmin credential used with the privileged endpoint, or any other existing Azure Stack Hub credential.
