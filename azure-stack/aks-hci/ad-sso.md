@@ -291,5 +291,7 @@ In this how-to guide, you learned how to configure AD Authentication to securely
 
 ## Cleanup and best practices
 
+- Use a unique account for each target cluster.
+- Do not reuse the password for the api-server account across clusters.
 - Delete the local copy of the keytab file as soon as you have created the cluster and have verified that SSO works.
-- If you are using a unique account per cluster, delete the AD user created for the api-server. Refer to [this](https://docs.microsoft.com/en-us/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps) for more information.
+- Delete the AD user created for the api-server. Refer to [this](https://docs.microsoft.com/en-us/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps) for more information.
