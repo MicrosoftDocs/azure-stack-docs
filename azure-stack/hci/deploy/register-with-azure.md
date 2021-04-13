@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/10/2021
+ms.date: 04/13/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -115,7 +115,11 @@ The easiest way to register your Azure Stack HCI cluster is using Windows Admin 
 
    :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
-4. If you have sufficient Azure Active Directory permissions, the cluster registration workflow should now proceed to completion, and you should be able to see your cluster in the Azure portal. If you receive a message that you need admin approval, ask your Azure AD admin to [grant permissions to the app](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), and then re-run the wizard beginning with step 2 above.
+4. If you have sufficient Azure Active Directory permissions, the cluster registration workflow should now proceed to completion, and you should be able to see your cluster in the Azure portal. If you receive a message that you need additional Azure Active Directory permissions, proceed to step 5.
+
+5. If you don't have sufficient Azure Active Directory permissions, you'll need to ask your Azure AD admin to [grant permissions to the app](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions). You should see a link to the specific app ID on the Azure portal as in the screenshot below. Give this link to your Azure AD admin. To check whether consent has been granted, select **View consent in Azure AD**. After consent has been granted, re-run the wizard beginning with step 2 above.
+
+   :::image type="content" source="media/register/registration-permissions.png" alt-text="If you need additional Azure Active Directory permissions to register the cluster, you'll be given a link to provide to your Azure AD admin" lightbox="media/register/registration-permissions.png":::
 
 ## Register a cluster using PowerShell
 
