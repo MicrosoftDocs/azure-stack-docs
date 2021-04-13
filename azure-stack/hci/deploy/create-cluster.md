@@ -250,7 +250,7 @@ This optional step walks you through setting up the Network Controller component
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
 
 > [!NOTE]
-> After Network Controller VM(s) are created, you must configure [dynamic DNS updates](../concepts/network-controller.md#step-3-configure-dynamic-dns-registration-for-network-controller) for the Network Controller cluster name on the DNS server.
+> After Network Controller VM(s) are created, you must configure [dynamic DNS updates](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003) for the Network Controller cluster name on the DNS server.
 
 If Network Controller deployment fails, do the following before you try this again:
 
