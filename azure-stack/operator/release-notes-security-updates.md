@@ -4,10 +4,10 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 04/13/2021
 ms.author: sethm
 ms.reviewer: fiseraci
-ms.lastreviewed: 02/17/2021
+ms.lastreviewed: 04/13/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

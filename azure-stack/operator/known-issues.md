@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/06/2021
+ms.date: 04/13/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -39,7 +39,7 @@ To access known issues for a different version, use the version selector dropdow
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-### Update to 2102 failed at step Configure DNS for SqlServer
+### Update to 2102 fails at step "Configure DNS for SqlServer"
 
 - Applicable: This issue applies to Azure Container Registry preview customers that have installed the Container Registry service, even if they have subsequently uninstalled the service.
 - Remediation: A hotfix for this issue must be applied prior to attempting the update for private preview customers that have installed Azure Container Registry service. The hotfix is not yet available.
@@ -78,10 +78,10 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Admin and Tenant Portal
 
-#### IPv6 button visible on 'Add frontend IP address' on a Load Balancer
+#### IPv6 button visible on "Add frontend IP address" on a Load Balancer
 
-- Applicable: This issue applies to releases 2102 and later.
-- Cause: IP versions IPv4 and IPv6 buttons are visible on the Add frontend IP address on a load balancer. These buttons are disabled and cannot be selected.
+- Applicable: This issue applies to release 2102 and later.
+- Cause: IP versions IPv4 and IPv6 buttons are visible on the **Add frontend IP address** option on a load balancer. These buttons are disabled and cannot be selected.
 - Occurrence: Common
 
 ## Compute

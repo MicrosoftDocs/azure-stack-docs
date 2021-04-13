@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/08/2021
+ms.date: 04/13/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -59,7 +59,14 @@ The Azure Stack Hub 2102 update build number is **1.2102.xx.xx**.
 
 The Azure Stack Hub 2102 update build type is **Full**.
 
-The 2102 update has had the following expected runtimes in our internal testing- 4 nodes: 8-20 hours, 8 nodes: 11-26 hours, 12 nodes: 14-32 hours, 16 nodes: 17-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2102 update and should not be compared to other Azure Stack Hub updates.
+The 2102 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-20 hours
+- 8 nodes: 11-26 hours
+- 12 nodes: 14-32 hours
+- 16 nodes: 17-38 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2102 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -76,19 +83,20 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. Note that this requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
 - Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
-- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions)
-- During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is now introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an additional validation was added in the **UpdateReadiness** check. Patch & update will fail at a very early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions).
+- During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an additional validation was added in the **UpdateReadiness** check. Patch & update will fail at a very early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 - Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
-- Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute **stop-azurestack**, run through the process of **stop-azurestack**, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs will need to be **stop-deallocated** and then re-started.
+- Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute **stop-azurestack**, run through the process of **stop-azurestack**, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs must be **stop-deallocated** and then re-started.
 - The AKS engine on Azure Stack Hub is adding new features. For details, see the release notes under the [AKS Engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
-   1. General availability of Ubuntu 18.04.
-   2. Support for Kubernetes 1.17.17 and 1.18.15.
-   3. Certificate rotation command public preview.
-   4. CSI Driver Azure Disks public preview. 
-   5. CSI Driver NFS public preview. 
-   6. CSI Driver for Azure Blobs private preview. 
-   7. T4 Nvidia GPU support private preview.
-   8. Azure Active Directory integration private preview.
+
+  - General availability of Ubuntu 18.04.
+  - Support for Kubernetes 1.17.17 and 1.18.15.
+  - Certificate rotation command public preview.
+  - CSI Driver Azure Disks public preview.
+  - CSI Driver NFS public preview.
+  - CSI Driver for Azure Blobs private preview.
+  - T4 Nvidia GPU support private preview.
+  - Azure Active Directory integration private preview.
 
 ### Improvements
 
@@ -97,10 +105,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14GB per VM and WAS memory to 10GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
-- Added cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
-- Added a Webhooks feature to the Azure Container Registry on Azure Stack Hub private preview functionality. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli)
-- The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process.
-- Added cmdlets [**Set-AzSLegalNotice**](../reference/pep-2002/set-azslegalnotice.md) and [**Get-AzSLegalNotice**](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
+- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
+- Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -111,16 +117,16 @@ For more information about update build types, see [Manage updates in Azure Stac
 - This build includes a new version of Azure Resource Manager.
 - The Azure Stack Hub user portal now uses the full screen experience for load balancers, Network Security Groups, DNS zones, and disk and VM creation.
 - In the 2102 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
-- Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This ensures that the correct diagnostic info is collected at the right time, without needing any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
-- There is a temporary increase of 10GB memory used by the Azure Stack Hub infrastructure. 
+- Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This ensures that the correct diagnostic info is collected at the right time, without requiring any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
+- There is a temporary increase of 10GB memory used by the Azure Stack Hub infrastructure.
 
 ### Fixes
 
 - Fixed an issue in which internal DNS zones became out of sync during update, and caused the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
 - Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
 - Fixed an issue in which deletion of resource groups or virtual networks failed due to an orphaned resource in the Network Controller layer.
-- Removed ND6s_dev size from the VM size picker, as it is an unsupported VM size.
-- Fixed an issue where Stop-Deallocate VM results in MTU configuration on VM to be removed. This behavior was inconsistent with Azure.
+- Removed the **ND6s_dev** size from the VM size picker, as it is an unsupported VM size.
+- Fixed an issue in which performing **Stop-Deallocate** on a VM results in an MTU configuration on the VM to be removed. This behavior was inconsistent with Azure.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
