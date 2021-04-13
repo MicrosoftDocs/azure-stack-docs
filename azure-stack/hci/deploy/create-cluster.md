@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 04/12/2021
+ms.date: 04/13/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 You have a choice between creating two cluster types:
 
@@ -223,30 +223,34 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 ## Step 5: SDN (optional)
 
-This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, it can be used to configure other components of SDN such as Software Load Balancer and RAS Gateway.
+This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, you can configure other SDN components such as Software Load Balancer (SLB) and RAS Gateway as per your requirements. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of the planning article to understand what other SDN components you might need.
 
 > [!NOTE]
-> SDN is not supported or available for stretched clusters.
+> The Create Cluster wizard does not currently support configuring SLB And RAS gateway. You can use [SDN Express scripts](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) to configure these components. Also, SDN is not supported or available for stretched clusters.
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
 1. Select **Next: SDN**.
-1. Under **Host**, enter a name for the Network Controller.
+1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with Network Controller. You can also use the default populated name.
 1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
-1. Specify the number of VMs to be dedicated for Network Controller. Three to five VMS are recommended for high availability.
-1. Under **Network**, enter the VLAN ID.
+1. Specify the number of VMs to be dedicated for Network Controller. Three VMs are strongly recommended for production deployments.
+1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
 1. For **VM network addressing**, select either **DHCP** or **Static**.
-1. If you selected **DHCP**, enter the name and IP address for the Network Controller VMs.
+1. If you selected **DHCP**, enter the name for the Network Controller VMs. You can also use the default populated names.
 1. If you selected **Static**, do the following:
+     - Specify an IP address.
      - Specify a subnet prefix.
      - Specify the default gateway.
      - Specify one or more DNS servers. Click **Add** to add additional DNS servers.
 1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
 1. Enter the local administrative password for these VMs.
-1. Under **Advanced**, enter the path to the VMs.
-1. Enter values for **MAC address pool start** and **MAC address pool end**.
+1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values.
 1. When finished, click **Next**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
+
+> [!NOTE]
+> After Network Controller VM(s) are created, you must configure [dynamic DNS updates](../concepts/network-controller.md#step-3-configure-dynamic-dns-registration-for-network-controller) for the Network Controller cluster name on the DNS server.
 
 If Network Controller deployment fails, do the following before you try this again:
 
