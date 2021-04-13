@@ -11,9 +11,9 @@ ms.date: 04/13/2021
 
 >Applies to: Azure Stack HCI, version 20H2
 
-Azure Stack HCI integrates hyperconverged infrastructure (HCI) technology into the Azure Stack family for you to run utility applications on-premises in a familiar way and gain easy access to Azure services. Azure Stack is Microsoft’s unique hybrid cloud offering that integrates cloud functionality with an on-premises datacenter. To learn more, see the [Azure Stack HCI solution overview](../overview.md).
+Azure Stack HCI is a hyperconverged infrastructure stack that’s uniquely positioned for hybrid infrastructure, allowing customers to take advantage of cloud and on-premises resources working together and natively monitor, secure and back up to the cloud. To learn more, see the [Azure Stack HCI solution overview](../overview.md).
 
-The independent software vendor (ISV) program for Azure Stack HCI is intended for utilities that run directly on the Azure Stack HCI operating system that host, manage, and service validly licensed virtual machines (VMs) running validly licensed applications. This topic spotlights utility applications from Microsoft partners that support the operating system.
+This topic spotlights utility applications from Microsoft partners that support the operating system.
 
 We recommend using Microsoft Defender Antivirus with the operating system. Other antivirus and malware detection software and services might impact the operating system’s ability to receive updates. This guidance might change in future releases of the operating system.
 
