@@ -12,7 +12,7 @@ ms.reviewer:
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
-If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running Uninstall-AksHci from a PowerShell administrative window.
+If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./uninstall-akshci.md) from a PowerShell administrative window.
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
 When running [Set-AksHciConfig](./set-akshciconfig.md), you might encounter the following error:
@@ -118,7 +118,7 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 > If you use the Azure portal to delete the Azure Arc-enabled Kubernetes resource, it removes any associated configuration resources, but does not remove the agents running on the cluster. Best practice is to delete the Azure Arc-enabled Kubernetes resource using `az connectedk8s delete` instead of Azure portal.
 
 
-## When setting up an AKS host using Windows Admin Center, setup may fail if File Explorer is open
+## When using Windows Admin Center to set up an AKS host, setup may fail if File Explorer is open
 If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 
 
 ## Cannot connect Windows Admin Center to Azure as create new Azure App ID fails
@@ -138,6 +138,18 @@ For CredSSP to function successfully in the Cluster Create wizard, Windows Admin
 
 ## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
 The deployment of a large cluster may time out after two hours, however, this is a static time out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
+
+## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
+Due to insufficient permissions in Active Directory, `Uninstall-AksHci` could not remove cluster resource objects in AD, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove AD objects in the Active Directory container the server and service objects are created in.
+
+## Deployment fails on an Azure Stack HCI configured with static IPs, VLANs, SDN or proxies
+While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has static IPs, VLANs, SDN or proxies, the deployment fails at cluster creation. 
+
+## Load balancer in Azure Kubernetes Service requires DHCP reservation
+The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
+## Get-AksHciLogs command may fail
+With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or will not generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file Compress-Archive has an output file size limit of 2GB. 
+
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)

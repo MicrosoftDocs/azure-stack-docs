@@ -3,10 +3,10 @@ title: Azure Stack Hub Operator Access Workstation
 description: Learn how to download and configure an Azure Stack Hub Operator Access Workstation.
 author: mattbriggs
 ms.topic: article
-ms.date: 03/26/2021
+ms.date: 04/09/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 03/26/2021
+ms.lastreviewed: 04/09/2021
 
 # Intent: As an Azure Stack operator, I want to download and configure an Azure Stack Hub Operator Access Workstation.
 # Keyword: azure stack hub operator access workstation
@@ -77,21 +77,33 @@ if ($expectedHash -eq $actualHash)
 } 
 else 
 { 
-    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again." 
-    Write-Error "Actual hash: $actualHash" 
-} 
+    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again. Actual hash: $actualHash" 
+}
 ```
+
+Another way to copy this script to your environment is to use the Test-FileHash cmdlet that's offered in [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az/HashVerify/Test-FileHash.psm1) to verify the hash of the OAW.zip file:
+
+1. Download the [Test-FileHash.psm1](https://github.com/Azure/AzureStack-Tools/tree/az/HashVerify/Test-FileHash.psm1) file from GitHub, and then run:
+
+   ```powershell
+   Import-Module .\Test-FileHash.psm1 -Force -Verbose
+   ```
+
+2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
+ 
+   ```powershell
+   Verify-Hash -ExpectedHash "AC58B69B13FC7F3FEB2FA9612DC79572D2D4BA49D1F2443A876B9663866481B0" -FilePath "<path to the OAW.zip file>"
+   ```
 
 ## Check HLH version
 
 > [!NOTE]  
-> This step is important to determine if you deploy the OAW on a HLH that
-was deployed using a Microsoft image or an OEM image. If you deploy the OAW on a
-general Microsoft Hyper-V, you can skip this step.
+> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step. 
 
 1.  Sign in to the HLH with your credentials.
 
 2.  Open PowerShell ISE and run the following script:
+
     ```powershell  
     C:\Version\Get-Version.ps1
     ```
@@ -100,14 +112,9 @@ general Microsoft Hyper-V, you can skip this step.
 
     ![Screenshot of PowerShell cmdlet to check the version of the OAW VM.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
-> [!NOTE]  
-> This PowerShell cmdlet is not present on a HLH that was deployed
-using an OEM image.
-
 ## Create the OAW VM using a script
 
-The following script prepares the virtual machine as the Operator Access
-Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
+The following script prepares the virtual machine as the Operator Access Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
 
 1.  Sign in to the HLH with your credentials.
 
@@ -122,30 +129,51 @@ Workstation (OAW), which is used to access Microsoft Azure Stack Hub.
 ### Example: Deploy on HLH using a Microsoft Image
 
 ```powershell  
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword 
+$oawRootPath = "D:\oawtest"
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+
+if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
+{ Write-Host "Execution failed, unblock the script files first" }
+else { New-OAW.ps1 -LocalAdministratorPassword $securePassword }
 ```
 
 
 ### Example: Deploy on HLH using an OEM Image
 
 ```powershell  
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json'
+$oawRootPath = "D:\oawtest"
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+
+if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
+{ Write-Host "Execution failed, unblock the script files first" }
+else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json' }
 ```
 
-If the` DeploymentData.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `DeploymentData.json` can be re-created using the [privileged endpoint](../reference/pep-2002/get-azurestackstampinformation.md) in case it is not present on the HLH. 
+If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep-2002/get-azurestackstampinformation.md) in case it is not present on the HLH. 
 
 > [!NOTE]  
-> The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority.
+> The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. If the `DeploymentData.json` is not available, reach out to your hardware partner to retrieve it or continue with the example deploy on Microsoft Hyper-V.
 
 ### Example: Deploy on Microsoft Hyper-V
 
-The machine running Microsoft Hyper-V does requires four (4) cores and two (2) GB of available memory.
+The machine running Microsoft Hyper-V does requires four (4) cores and two (2) GB of available memory. The PowerShell cmdlets will create the OAW VM without applying an IP configuration to the guest network interface. If you use the example to provision the OAW on a HLH you must configure the IP Address originally used by the **Deployment VM** (DVM), which is typically the second to last IP of the BMC Network.
+
+| Examples | IPs |
+| --- | --- |
+| BMC Network | 10.26.5.192/26 |
+| First Host IP | 10.26.5.193 |
+| Last Host IP | 10.26.5.254 |
+| DVM/OAW IP | 10.26.5.253 |
+| Subnet Mask | 255.255.255.192 |
+| Default Gateway | 10.26.5.193 |
 
 ```powershell  
-$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString 
-New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example  
+$oawRootPath = "D:\oawtest"
+$securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
+
+if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
+{ Write-Host "Execution failed, unblock the script files first" }
+else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example }
 ```
 
 > [!NOTE]  

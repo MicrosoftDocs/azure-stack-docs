@@ -10,7 +10,7 @@ When you're evaluating an Azure Stack Hub solution, consider the hardware config
 For example, you need to make choices regarding the CPU, memory density, storage configuration, and overall solution scale or number of servers. However, determining usable capacity will be different than a traditional virtualization solution because some capacity is already in use. Azure Stack Hub is built to host the infrastructure or management components within the solution itself. Also, some of the solution's capacity is reserved to support resiliency. Resiliency is defined as the updating of the solution's software in a way to minimize disruption of tenant workloads.
 
 > [!IMPORTANT]
-> This capacity planning information and the [Azure Stack Hub Capacity Planner](https://download.microsoft.com/download/4/a/2/4a2bd10c-58a0-4ee7-8c3f-55b526ce7e75/AzureStackHubCapacityPlanner_v2005.01.xlsm) are a starting point for Azure Stack Hub planning and configuration decisions. This information isn't intended to serve as a substitute for your own investigation and analysis. Microsoft makes no representations or warranties, express or implied, with respect to the information provided here.
+> This capacity planning information and the [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) are a starting point for Azure Stack Hub planning and configuration decisions. This information isn't intended to serve as a substitute for your own investigation and analysis. Microsoft makes no representations or warranties, express or implied, with respect to the information provided here.
 
 ## Hyperconvergence and the scale unit
 

@@ -56,6 +56,10 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
+          - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
+            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+          - name: Create a GitOps configuration on a cluster
+            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
     - name: Configure networking
       items:
           - name: Use proxy settings
@@ -88,11 +92,13 @@
             href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
       items:
-          - name: Common issues
+          - name: Troubleshoot common issues
             href: troubleshoot.md
+          - name: Known issues
+            href: known-issues.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
-          - name: Windows Admin Center
+          - name: Troubleshoot Windows Admin Center
             href: troubleshoot-windows-admin-center.md
 - name: Related
   items:
@@ -110,8 +116,6 @@
     href: https://aka.ms/aks-hci-relnotes/
   - name: PowerShell
     href: AksHci.md
-  - name: Known issues
-    href: known-issues.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
