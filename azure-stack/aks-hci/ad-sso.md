@@ -288,3 +288,8 @@ In this how-to guide, you learned how to configure AD Authentication to securely
 
 - [Deploy Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+
+## Cleanup and best practices
+
+- Delete the local copy of the keytab file as soon as you have created the cluster and have verified that SSO works.
+- If you are using a unique account per cluster, delete the AD user created for the api-server. Refer to [this](https://docs.microsoft.com/en-us/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps) for more information.
