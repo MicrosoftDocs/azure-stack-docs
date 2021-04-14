@@ -6,40 +6,33 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/08/2021
+ms.date: 04/14/2021
 ---
 
 # Understand and deploy persistent memory
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10
 
-Persistent memory (or PMem) is a new type of memory technology that that retains its content through power cycles and can be used as top-tier storage. This article provides background on PMem and explains how to deploy it as the top storage tier in Azure Stack HCI and Windows Server.
-
-> [!NOTE]
-> In Windows Server 2022, you will be able to boot directly from a PMem disk. **Tom: Typically we're not allowed to make forward-looking statements, so Jason may nix this on review.**
+Persistent memory (or PMem) is a new type of memory technology that that retains its content through power cycles and can be used as top-tier storage, which is why you may hear people refer to PMem as "storage-class memory" or SCM. This article provides background on persistent memory and explains how to deploy it as the top storage tier in Azure Stack HCI and Windows Server.
 
 ## What is persistent memory?
 
-PMem is a type of non-volatile dual in-line memory module (NVDIMM) that's slower than DRAM, but provides higher throughput than SSD and NVMe. PMem modules come in much larger capacities than DRAM modules. Memory contents remain even when system power goes down in the event of an unexpected power loss, user initiated shutdown, or system crash. This means that you can use PMem as ultra-fast, persistent storage, which is why you may hear people refer to PMem as "storage-class memory" or SCM. **Tom: Should we list some use cases for using PMem as top tier storage, like SQL? Others?**
+PMem is a type of non-volatile media that's slower than DRAM, but provides higher throughput than SSD and NVMe. Persistent memory modules come in much larger capacities and are less expensive per GB than DRAM modules, however they are still more expensive than NVMe. Memory contents remain even when system power goes down in the event of an unexpected power loss, user initiated shutdown, or system crash. This means that you can use PMem modules as ultra-fast, persistent storage.
 
-Azure Stack HCI and Windows Server 2019 support using PMem as either a cache or a capacity drive. For more information about how to set up cache and capacity drives, see [Understanding the storage pool cache](cache.md) and [Plan volumes](plan-volumes.md). **Tom: Note that we need to provide Pmem guidance on these pages as well. For our users, would PMem nearly always be used as a cache?**
+Azure Stack HCI and Windows Server 2019 support using persistent memory as either a cache or a capacity drive. Given the pricing model, persistent memory provides the most value as either a cache or as a small amount of dedicated storage for memory mapping data. For more information about how to set up cache and capacity drives, see [Understanding the storage pool cache](cache.md) and [Plan volumes](plan-volumes.md). **Note that we need to provide Pmem guidance on these pages as well.**
 
 ## Persistent memory concepts
 
 This section describes the basic concepts you'll need to understand in order to deploy PMem in Windows Server and Azure Stack HCI environments to reduce I/O bottlenecks and improve performance.
-
-### Block translation table (BTT)
-
-Unlike traditional solid-state drives, PMem modules do not protect against "torn writes" that can occur in the case of a power failure or system outage, putting data at risk. BTT mitigates this risk by providing atomic sector update semantics for PMem devices, essentially enabling block-like sector writes so that apps can avoid mixing old and new data in a failure scenario. We recommend turning on BTT in all cases. Note that BTT is a property of the Pmem virtual disk itself, so it must be configured correctly very early. **Tom: Should we tell them how to do this?**
 
 ### Access methods
 
 There are two methods for accessing persistent memory. They are:
 
 1. **Block access**, which operates like storage for app compatibility. In this configuration, the data flows through the stack. You can use this configuration in combination with NTFS and ReFS, and it is the recommended configuration for most use cases.
-1. **Direct access (DAX)**, which operates like memory to get the lowest latency. Note that you can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is a high potential for data loss.** DAX must always be used in conjunction with BTT. [Learn more about DAX](pmem-dax.md).
+1. **Direct access (DAX)**, which operates like memory to get the lowest latency. Note that you can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is potential for data loss.** We strongly recommend that DAX be used in conjunction with [Block translation table (BTT)](#block-translation-table) to mitigate that risk. [Learn more about DAX](pmem-dax.md).
 
-Azure Stack HCI only supports block access, with BTT turned on. **Tom: We should outline the differences, if any, for using PMem in Azure Stack HCI, Windows Server, and Windows 10 environments, as well as clustered/non clustered.**
+Azure Stack HCI only supports block access, with BTT turned on. **Tom: We should outline the differences, if any, for using PMem in Azure Stack HCI, Windows Server, and Windows 10 environments.**
 
 ### Regions
 
@@ -49,7 +42,11 @@ A region is a set of one or more PMem modules. Regions are often created as [int
 
 To use PMem as storage, you must define at least one namespace, which is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple namespaces using Windows PowerShell cmdlets to divide up the available raw capacity. Each PMem module contains a Label Storage Area (LSA) that stores the configuration metadata to define a namespace. **Tom: Is a "PmemDisk" in PowerShell actually a namespace? Are they the same thing, or something different? Do we need to go into namespace types, like Intel does? Which would be relevant to our users (Filesystem-DAX, Device Dax, Sector, or Raw)?**
 
-### Supported hardware
+### Block translation table
+
+Unlike traditional solid-state drives, persistent memory modules do not protect against "torn writes" that can occur in the case of a power failure or system outage, putting data at risk. BTT mitigates this risk by providing atomic sector update semantics for persistent memory devices, essentially enabling block-like sector writes so that apps can avoid mixing old and new data in a failure scenario. We strongly recommend turning on BTT in most cases. Note that BTT is a property of the Pmem virtual disk itself, so it must be configured correctly very early. **We should definitely tell them how to do this, which will be a specific powershell command/flag when creating the virtual disk. Unfortunately, none of those PMEM powershell commands are documented.**
+
+## Supported hardware
 
 The following table shows supported persistent memory hardware for Azure Stack HCI and Windows Server.
 
