@@ -64,24 +64,16 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Load Balancer
 
-#### IPv6 button visible in frontend IP configuration
+#### IPv6 button visible on "Add frontend IP address"
 
-- Applicable: This issue applies to the 2102 release.
-- Cause: The IPv6 button is visible but disabled when creating the frontend IP configuration of a public load balancer. IPv6 is not supported on Azure Stack Hub.
+- Applicable: This issue applies to release 2008 and later.
+- Cause: IPv6 button is visible on the **Add frontend IP address** option on a load balancer. These buttons are disabled and cannot be selected.
 - Occurrence: Common
 
 #### Backend port and frontend port need to be the same when floating IP is enabled
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
-- Occurrence: Common
-
-### Admin and Tenant Portal
-
-#### IPv6 button visible on "Add frontend IP address" on a Load Balancer
-
-- Applicable: This issue applies to release 2102 and later.
-- Cause: IP versions IPv4 and IPv6 buttons are visible on the **Add frontend IP address** option on a load balancer. These buttons are disabled and cannot be selected.
 - Occurrence: Common
 
 ## Compute
