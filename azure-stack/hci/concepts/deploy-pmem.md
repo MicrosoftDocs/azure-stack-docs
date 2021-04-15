@@ -40,7 +40,7 @@ A region is a set of one or more PMem modules. Regions are often created as [int
 
 ### Namespaces
 
-To use PMem as storage, you must define at least one namespace, which is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple namespaces using Windows PowerShell cmdlets to divide up the available raw capacity. Each PMem module contains a Label Storage Area (LSA) that stores the configuration metadata to define a namespace. **Tom: Is a "PmemDisk" in PowerShell actually a namespace? Are they the same thing, or something different? Do we need to go into namespace types, like Intel does? Which would be relevant to our users (Filesystem-DAX, Device Dax, Sector, or Raw)?**
+To use PMem as storage, you must define at least one namespace, which is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple namespaces using Windows PowerShell cmdlets to divide up the available raw capacity. Each PMem module contains a Label Storage Area (LSA) that stores the configuration metadata to define a namespace. **Cong/Scott: Is a "PmemDisk" in PowerShell actually a namespace? Are they the same thing, or something different? Do we need to go into namespace types, like Intel does? Which would be relevant to our users (Filesystem-DAX, Device Dax, Sector, or Raw)?**
 
 ### Block translation table
 
@@ -56,7 +56,7 @@ The following table shows supported persistent memory hardware for Azure Stack H
 | **Intel Optane&trade; DC Persistent Memory** in App Direct Mode             | Not Supported            | Supported                |
 | **Intel Optane&trade; DC Persistent Memory** in Memory Mode | Supported            | Supported                |
 
-Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Direct* (persistent) modes. To use persistent memory modules as storage, you must use App Direct mode. **Tom: Does Memory mode imply the use of DAX? Or not necessarily?**
+Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Direct* (persistent) modes. To use persistent memory modules as storage, you must use App Direct mode. Memory mode essentially uses persistent memory as slower RAM, which doesn't usually meet the performance requirements of server workloads. Note that Memory mode is distinct from DAX, which is a persistent storage volume that can be accessed using memory-like semantics.
 
 > [!NOTE]
 > When you restart a system that has multiple Intel&reg; Optane&trade; PMem modules in App Direct mode that are divided into multiple namespaces, you might lose access to some or all of the related logical storage disks. This issue occurs on Windows Server 2019 versions that are older than version 1903.
@@ -69,7 +69,7 @@ Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Dir
 
 ## Configure persistent memory
 
-Now, let's dive into how you configure persistent memory. **Tom: As far as I can tell, we skip creating the regions and setting the mode too App Direct with ipmctl. Does that need to be done first? Should we assume the user is using Intel PMem and link to the [Intel docs](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html), and/or include the steps here? At what point can the user begin using Windows Admin Center for the configuration (i.e., when will the disks show up in WAC? After you create the namespaces?) The Intel docs show screen shots of Device Manager, along with the PowerShell cmdlets.**
+Now, let's dive into how you configure persistent memory. **Cong/Scott: As far as I can tell, we skip creating the regions and setting the mode too App Direct with ipmctl. Does that need to be done first? Should we assume the user is using Intel Optane PMem and link to the [Intel docs](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html), and/or include the steps here? At what point can the user begin using Windows Admin Center for the configuration (i.e., when will the disks show up in WAC? After you create the namespaces?) The Intel docs show screen shots of the Windows Device Manager UI, along with the PowerShell cmdlets.**
 
 ### Understand interleaved sets
 
@@ -200,7 +200,7 @@ Any storage system that provides fault tolerance necessarily makes distributed c
 
 If you watch the video closely, you'll notice that what's even more jaw-dropping is the latency. Even at over 13.7 M IOPS, the file system in Windows is reporting latency that's consistently less than 40 µs! (That's the symbol for microseconds, one-millionth of a second.) This speed is an order of magnitude faster than what typical all-flash vendors proudly advertise today.
 
-Together, Storage Spaces Direct in Windows Server 2019 and Intel&reg; Optane&trade; DC persistent memory deliver breakthrough performance. This industry-leading HCI benchmark of over 13.7M IOPS, accompanied by predictable and extremely low latency, is more than double our previous industry-leading benchmark of 6.7M IOPS. What's more, this time we needed only 12 server nodes&mdash;25 percent fewer than before.
+Together, Storage Spaces Direct in Windows Server 2019 and Intel&reg; Optane&trade; DC persistent memory delivered breakthrough performance. This HCI benchmark of over 13.7M IOPS, accompanied by predictable and extremely low latency, is more than double our previous industry-leading benchmark of 6.7M IOPS. What's more, this time we needed only 12 server nodes&mdash;25 percent fewer than before.
 
 The test hardware was a 12-server cluster that was configured to use three-way mirroring and delimited ReFS volumes, **12** x Intel&reg; S2600WFT, **384 GiB** memory, 2 x 28-core "CascadeLake," **1.5 TB** Intel&reg; Optane&trade; DC persistent memory as cache, **32 TB** NVMe (4 x 8 TB Intel&reg; DC P4510) as capacity, **2** x Mellanox ConnectX-4 25 Gbps.
 

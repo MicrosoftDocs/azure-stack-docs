@@ -6,16 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/14/2021
+ms.date: 04/15/2021
 ---
 
 # Understand DAX
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10 **Tom: Does DAX even work with Azure Stack HCI? Do we need to warn customers not to use DAX with SQL, or can we provide adequate docs for it?**
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10 **Tom: We'll need to find out whether DAX even works with Azure Stack HCI, and find the guidance that SQL has provided to customers on the use of PMEM and DAX.**
 
-**Direct access (DAX)**  treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (i.e. by memory mapping data), this can provide significant performance benefits. However, DAX has a number of compatibility issues, and it won’t provide significant benefits without DAX-aware code. 
-
-**Tom: How will using DAX affect the guidance we provide on BTT? I will refer to Neil Christiansen's email for details on BTT.**
+**Direct access (DAX)**  treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (i.e. by memory mapping data), this can provide significant performance benefits. However, DAX has a number of compatibility issues, and it won’t provide significant benefits without DAX-aware code.
 
 > [!IMPORTANT]
 > **If you don't use DAX correctly, there is potential for data loss.** There are certain specific use cases for which using DAX is appropriate; however, we strongly recommend that DAX be used in conjunction with the block translation table (BTT) to enable block-like sector writes.
