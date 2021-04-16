@@ -223,7 +223,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-#### Documentation links to Azure networking
+#### Documentation links are Azure-specific
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
