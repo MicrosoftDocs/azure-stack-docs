@@ -1,12 +1,12 @@
 ---
 title: Understand Direct Access (DAX) and create DAX volumes with persistent memory devices
-description: This article provides information on DAX and how to configure it with PMem modules using the block translation table (BTT).
+description: This article provides information on DAX and how to configure it with persistent memory modules.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/15/2021
+ms.date: 04/16/2021
 ---
 
 # Understand DAX
@@ -15,7 +15,7 @@ ms.date: 04/15/2021
 
 **Direct access (DAX)**  treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (i.e. by memory mapping data), this can provide significant performance benefits. However, DAX has a number of compatibility issues, and it won’t provide significant benefits without DAX-aware code.
 
-> [!IMPORTANT]
+> [!CAUTION]
 > **If you don't use DAX correctly, there is potential for data loss.** There are certain specific use cases for which using DAX is appropriate; however, we strongly recommend that DAX be used in conjunction with the block translation table (BTT) to enable block-like sector writes.
 
 You can only use DAX with the NTFS file system. DAX is a property of the file system, so it must be specified when [formatting an NTFS volume](/powershell/module/storage/Format-Volume?view=windowsserver2019-ps&viewFallbackFrom=win10-ps).
