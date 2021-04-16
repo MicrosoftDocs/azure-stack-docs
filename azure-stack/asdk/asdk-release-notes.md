@@ -4,7 +4,7 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 04/16/2021
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -72,25 +72,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
    PartNumber = if($_.PartNumber) {$_.PartNumber.Trim()} else {""};
 
    ```  
-::: moniker-end
-
-::: moniker range="azs-2002"
-## Build 1.2002.0.35
-
-### New features
-
-- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
-
-### Fixed and known issues
-
-- The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
-
-- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
-
-- Note that available Azure Stack hotfixes are not applicable to the ASDK.
-
-#### SQL VM provision fails in ASDK
-
-- Applicable: This issue applies to the ASDK 2002.
-- Cause: When creating a new SQL VM in the ASDK 2002, you may receive an error message **Extension with publisher 'Microsoft.SqlServer.Management', type 'SqlIaaSAgent', and type handler version '2.0' could not be found in the extension repository.** There is no **SqlIaaSAgent** 2.0 in Azure Stack Hub.
 ::: moniker-end
