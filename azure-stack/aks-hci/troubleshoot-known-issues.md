@@ -15,14 +15,30 @@ This article includes workaround steps for resolving known issues that occur whe
 
 After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message:
 
-```output
+```Output
 \kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
 ```
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
 
-### Incorrect DNS server
+### Incorrect IP gateway configuration
+If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
+```PowerShell
+Install-AksHci 
+C:\AksHci\kvactl.exe create –configfile C:\AksHci\yaml\appliance.yaml  --outfile C:\AksHci\kubeconfig-clustergroup-management returned a non zero exit code 1 [ ]
+```
 
+To check whether you have the right configuration for your IP address and gateway, run the following: 
+
+```powershell
+ipconfig /all
+```
+
+In the displayed configuration settings, confirm the configuration. You could also attempt to ping the IP gateway and DNS server. 
+
+If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
+
+### Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
 
 ```powershell
@@ -40,7 +56,6 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
 ## Container storage interface pod stuck in a _ContainerCreating_ state
-
 A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state as shown in the output below:
 
 ```output
@@ -58,7 +73,46 @@ kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerC
 kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m  
 ```
 
-Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.  
+Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
+
+## Attempt to increase the number of worker nodes fails
+When using PowerShell to create a cluster with static IP and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
+
+When [Get-AksHciCluster](./get-akshcicluster.md) was run, it showed that the control plane nodes were created and provisioned and were in a _Ready_ state. However, when `kubectl get nodes` was run, it showed that the control plane nodes had been created but not provisioned and were not in a _Ready_ state.
+
+If you get this error, verify that the IP addresses have been assigned to the created nodes using either Hyper-V Manager or PowerShell:
+
+```powershell
+(Get-VM |Get-VMNetworkAdapter).IPAddresses |fl
+```
+  
+Then, verify the network settings to ensure there are enough IP addresses left in the pool to create more VMs.   
+
+## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
+When deploying AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
+
+For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
+
+```
+$vnet = New-AksHciNetworkSettingSet-AksHciConfig -vnet $vnetInstall-AksHciVERBOSE: 
+Initializing environmentVERBOSE: [AksHci] Importing ConfigurationVERBOSE: 
+[AksHci] Importing Configuration Completedpowershell : 
+GetRelease - error returned by API call: 
+Post "https://msk8s.api.cdp.microsoft.com/api/v1.1/contents/default/namespaces/default/names/mocstack-stable/versions/0.9.7.0/files?action=generateDownloadInfo&ForegroundPriority=True": 
+dial tcp 52.184.220.11:443: connectex: 
+A connection attempt failed because the connected party did not properly
+respond after a period of time, or established connection failed because
+connected host has failed to respond.At line:1 char:1+ powershell -command
+{ Get-DownloadSdkRelease -Name "mocstack-stable"}
+```
+
+This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
+
+To resolve this issue, you need to determine where the break down occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
+
+1. Ping the destination DNS name: ping `msk8s.api.cdp.microsoft.com`. 
+2. If you get a response back and no time out, then the basic network path is working. 
+3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
