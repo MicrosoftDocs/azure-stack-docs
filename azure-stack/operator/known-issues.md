@@ -116,31 +116,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Resume the update.
 - Occurrence: Rare
 
-### Update SQL IaaS Extension from version earlier than 1.2.30.0 to version 1.3.20180 or 1.3.20370 will fail
-### Update SQL IaaS Extension from version earlier than 1.2.30.0 to version later than 1.3.20180 will trigger SQL server restart
-
-- Applicable: This issue applies to SQL VMs with SQL IaaS Extension version < 1.2.30.0 installed.
-- Cause: There is no graceful upgrade support for SQL IaaS Extension version earlier than 1.2.30.0. SQL IaaS Extension upgrade will be automatically triggered when:
-
-  - SQL VM is restarted.
-  - A configuration state is changed in the SQL IaaS Extension (e.g. changing the auto patching setting).
-  - Run Set-AzureRmVMExtension command.
-  If the SQL VM owner triggered SQL IaaS Extension upgrade and didn't specify the upgrade version, it will try to upgrade to the latest version in the stack.
-
-- Remediation: If SQL server restart is acceptable, you can download the latest SQL IaaS Extension to the stack, and ask the SQL VM owner to trigger the extension upgrade. If SQL server restart is not possible, the SQL VM owner must first upgrade the extension to version 1.2.30.0, then trigger the extension upgrade to the latest version:
-
-  - Download SQL IaaS Extension with version 1.2.30.0.
-  - Ask the SQL VM owner to run the following command to upgrade the extension to version 1.2.30.0:
-  ```powershell
-  Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName -VMName $VM.Name -Publisher Microsoft.SqlServer.Management -ExtensionType SqlIaaSAgent -Name “<SqlIaaSExtensionName>” -Location $VM.Location -TypeHandlerVersion “1.2” -DisableAutoUpgradeMinorVersion
-  ```
-  - Ask the SQL VM owner to go to the SQL VM extension page to make sure the current version is 1.2.30.0
-  - Download the latest version of SQL IaaS Extension to the stack.
-  - Ask the SQL VM owner to run the following command to upgrade the extension to the latest version:
-  ```powershell
-  Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName -VMName $VM.Name -Publisher Microsoft.SqlServer.Management -ExtensionType SqlIaaSAgent -Name “<SqlIaaSExtensionName>” -Location $VM.Location -TypeHandlerVersion “1.3”
-  ```
-
 ## Portal
 
 ### Administrative subscriptions
