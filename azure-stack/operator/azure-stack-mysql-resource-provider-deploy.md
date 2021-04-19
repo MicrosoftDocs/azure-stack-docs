@@ -29,7 +29,7 @@ There are several prerequisites that need to be in place before you can deploy t
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
    - the [privileged endpoint](azure-stack-privileged-endpoint.md).
    - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
-   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (AD) as your identity provider.
+   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (AAD) as your identity provider.
 
 - If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
