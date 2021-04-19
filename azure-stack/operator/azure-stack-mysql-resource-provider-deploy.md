@@ -225,6 +225,10 @@ When the resource provider installation script finishes, refresh your browser to
 4. On the summary page for Resource group Overview, there should be no failed deployments.
 5. Finally, select **Virtual machines** in the administrator portal to verify that the MySQL resource provider VM was successfully created and is running.
 
+## Important configuration for Azure AD
+
+If your Azure Stack Hub is using Azure AD as an identiy provider, make sure the VM that has installed MySQL RP has outbound internet connectivity. 
+
 ## Next steps
 
 [Add hosting servers](azure-stack-mysql-resource-provider-hosting-servers.md)
