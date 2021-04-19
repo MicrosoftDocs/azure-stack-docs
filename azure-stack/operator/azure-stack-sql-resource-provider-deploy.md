@@ -5,7 +5,7 @@ description: Learn how to deploy the SQL Server resource provider on Azure Stack
 author: bryanla
 
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 04/09/2021
 ms.lastreviewed: 12/07/2020
 ms.author: bryanla
 ms.reviewer: xiao
@@ -31,7 +31,7 @@ There are several prerequisites that need to be in place before you can deploy t
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
    - the [privileged endpoint](azure-stack-privileged-endpoint.md).
    - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
-   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (AAD) as your identity provider.
+   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (Azure AD) as your identity provider.
 
 - If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
@@ -223,7 +223,7 @@ When the resource provider installation script finishes, refresh your browser to
 
 ## Important configuration for Azure AD
 
-If your Azure Stack Hub is using Azure AD as an identiy provider, make sure the VM that has installed SQL RP has outbound internet connectivity. 
+If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed SQL RP has outbound internet connectivity. 
 
 ## Next steps
 
