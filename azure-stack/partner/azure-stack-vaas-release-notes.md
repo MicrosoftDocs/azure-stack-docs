@@ -24,14 +24,12 @@ ROBOTS: NOINDEX
 
 This article has the release notes for Azure Stack Hub validation as a service.
 
-## Version 4.4.3.2
+## Version 4.4.5.1
 
-2020 February 2
+2021 April 20
 
-- Service maintenance updates.
-
-- Bug fixes
-  - Fixed tests Test101LinuxEmptyAttachedDiskManagedDisk, Test101WindowsEmptyAttachedDiskManagedDisk.
+- Security updates to migrate VaaS service authentication applications.
+- Service updates for enhanced service instrumentation and monitoring.
 
 ## Version 4.4.4.2
 
@@ -64,6 +62,15 @@ This article has the release notes for Azure Stack Hub validation as a service.
 
 - Service updates.
   - Moved the service to run in Service Fabric.
+
+## Version 4.4.3.2
+
+2020 February 2
+
+- Service maintenance updates.
+
+- Bug fixes
+  - Fixed tests Test101LinuxEmptyAttachedDiskManagedDisk, Test101WindowsEmptyAttachedDiskManagedDisk.
 
 ## Version 4.4.2.1
 
