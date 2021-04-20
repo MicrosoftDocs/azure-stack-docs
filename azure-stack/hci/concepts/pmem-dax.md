@@ -6,27 +6,26 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/16/2021
+ms.date: 04/20/2021
 ---
 
-# Understand DAX
+# Understand and configure DAX
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10 **Tom: We'll need to find out whether DAX even works with Azure Stack HCI, and find the guidance that SQL has provided to customers on the use of PMEM and DAX.**
+> Applies to: Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10 **Tom: Can we find/publish the guidance that SQL has provided to customers on the use of PMEM and DAX?**
 
-**Direct access (DAX)**  treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (i.e. by memory mapping data), this can provide significant performance benefits. However, DAX has a number of compatibility issues, and it won’t provide significant benefits without DAX-aware code.
+**Direct access (DAX)** treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (i.e. by memory mapping data), this can provide significant performance benefits. However, DAX has a number of compatibility issues, and it won’t provide significant benefits without DAX-aware code.
 
 > [!CAUTION]
 > **If you don't use DAX correctly, there is potential for data loss.** There are certain specific use cases for which using DAX is appropriate; however, we strongly recommend that DAX be used in conjunction with the block translation table (BTT) to enable block-like sector writes.
 
-You can only use DAX with the NTFS file system. DAX is a property of the file system, so it must be specified when [formatting an NTFS volume](/powershell/module/storage/Format-Volume?view=windowsserver2019-ps&viewFallbackFrom=win10-ps).
+> [!NOTE]
+> DAX isn't supported on Azure Stack HCI environments.
 
-The following figure shows an example of a DAX configuration:
+## Create a DAX volume by using Windows PowerShell
 
-![DAX stack](media/pmem/dax.png)
+You can only use DAX with the NTFS file system. Because DAX is a property of the file system, it must be specified when [formatting an NTFS volume](/powershell/module/storage/Format-Volume?view=windowsserver2019-ps&viewFallbackFrom=win10-ps).
 
-## Configure DAX by using Windows PowerShell
-
-Use PowerShell cmdlets to create a DAX volume on a persistent memory disk. By using the **-IsDax** switch, we can format a volume to be DAX-enabled.
+After creating a volume, use the **-IsDax** switch with the `Format-Volume` cmdlet to format the volume to be DAX-enabled.
 
 ```PowerShell
 Format-Volume -IsDax:$true

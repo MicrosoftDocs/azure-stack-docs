@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/14/2021
+ms.date: 04/20/2021
 ---
 
 # Understand and deploy persistent memory
@@ -17,26 +17,27 @@ Persistent memory (or PMem) is a new type of memory technology that that retains
 
 ## What is persistent memory?
 
-PMem is a type of non-volatile media that's slower than DRAM, but provides higher throughput than SSD and NVMe. Persistent memory modules come in much larger capacities and are less expensive per GB than DRAM modules, however they are still more expensive than NVMe. Memory contents remain even when system power goes down in the event of an unexpected power loss, user initiated shutdown, or system crash. This means that you can use PMem modules as ultra-fast, persistent storage.
+Persistent memory is a type of non-volatile media that fits in a standard DIMM (memory) slot. It's slower than DRAM, but provides higher throughput than SSD and NVMe. Compared to DRAM, persistent memory modules come in much larger capacities and are less expensive per GB, however they are still more expensive than NVMe. Memory contents remain even when system power goes down in the event of an unexpected power loss, user initiated shutdown, or system crash. This means that you can use PMem modules as ultra-fast, persistent storage.
 
-Azure Stack HCI and Windows Server 2019 support using persistent memory as either a cache or a capacity drive. Given the pricing model, persistent memory provides the most value as either a cache or as a small amount of dedicated storage for memory mapping data. For more information about how to set up cache and capacity drives, see [Understanding the storage pool cache](cache.md) and [Plan volumes](plan-volumes.md). **Note that we need to provide Pmem guidance on these pages as well.**
+Azure Stack HCI and Windows Server 2019 support using persistent memory as either a cache or a capacity drive. However, given the pricing model, persistent memory provides the most value as either a cache or as a small amount of dedicated storage for memory mapping data. In most cases, persistent memory drives will be automatically used as cache drives, and anything slower will be used as capacity drives. For more information about how to set up cache and capacity drives, see [Understanding the storage pool cache](cache.md) and [Plan volumes](plan-volumes.md). **Note that we need to provide Pmem guidance on these pages as well.**
 
 ## Persistent memory concepts
 
-This section describes the basic concepts you'll need to understand in order to deploy PMem in Windows Server and Azure Stack HCI environments to reduce I/O bottlenecks and improve performance.
+This section describes the basic concepts you'll need to understand in order to deploy persistent memory in Windows Server and Azure Stack HCI environments to reduce I/O bottlenecks and improve performance.
 
 ### Access methods
 
 There are two methods for accessing persistent memory. They are:
 
 1. **Block access**, which operates like storage for app compatibility. In this configuration, the data flows through the stack. You can use this configuration in combination with NTFS and ReFS, and it is the recommended configuration for most use cases.
-1. **Direct access (DAX)**, which operates like memory to get the lowest latency. Note that you can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is potential for data loss.** We strongly recommend that DAX be used in conjunction with [Block translation table (BTT)](#block-translation-table) to mitigate that risk. [Learn more about DAX](pmem-dax.md).
+2. **Direct access (DAX)**, which operates like memory to get the lowest latency. Note that you can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is potential for data loss.** We strongly recommend that DAX be used in conjunction with [Block translation table (BTT)](#block-translation-table) to mitigate the risk of torn writes. [Learn more about DAX](pmem-dax.md).
 
-Azure Stack HCI only supports block access, with BTT turned on. **Tom: We should outline the differences, if any, for using PMem in Azure Stack HCI, Windows Server, and Windows 10 environments.**
+> [!WARNING]
+> DAX isn't supported on Azure Stack HCI environments. Azure Stack HCI only supports block access, with BTT turned on.
 
 ### Regions
 
-A region is a set of one or more PMem modules. Regions are often created as [interleaved sets](#understand-interleaved-sets) in which multiple PMem modules appear as a single logical virtual address space to increase throughput. To increase available bandwidth, adjacent virtual addresses are spread across multiple PMem modules. Regions can usually be created in a server platform's BIOS.
+A region is a set of one or more persistent memory modules. Regions are often created as [interleaved sets](#understand-interleaved-sets) in which multiple persistent memory modules appear as a single logical virtual address space to increase throughput. To increase available bandwidth, adjacent virtual addresses are spread across multiple PMem modules. Regions can usually be created in a server platform's BIOS.
 
 ### Namespaces
 
@@ -44,11 +45,13 @@ To use PMem as storage, you must define at least one namespace, which is a conti
 
 ### Block translation table
 
-Unlike traditional solid-state drives, persistent memory modules do not protect against "torn writes" that can occur in the case of a power failure or system outage, putting data at risk. BTT mitigates this risk by providing atomic sector update semantics for persistent memory devices, essentially enabling block-like sector writes so that apps can avoid mixing old and new data in a failure scenario. We strongly recommend turning on BTT in most cases. Note that BTT is a property of the Pmem virtual disk itself, so it must be configured correctly very early. **We should definitely tell them how to do this, which will be a specific powershell command/flag when creating the virtual disk. Unfortunately, none of those PMEM powershell commands are documented.**
+Unlike traditional solid-state drives, persistent memory modules do not protect against "torn writes" that can occur in the case of a power failure or system outage, putting data at risk. BTT mitigates this risk by providing atomic sector update semantics for persistent memory devices, essentially enabling block-like sector writes so that apps can avoid mixing old and new data in a failure scenario. We strongly recommend turning on BTT in nearly all cases. Note that BTT is a property of the Pmem virtual disk itself, so it must be configured correctly very early. **Cong/Scott: Can you provide the specific powershell command/flag that creates the virtual disk and turns BTT on? PMem PowerShell commands are not documented, which is another issue we need to fix.**
+
+We recommend using BTT in block mode because all data will be using block semantics. We also recommend turning on BTT in DAX mode because metadata operations still use block semantics, even if the application's data operations don't. Even if all application operations are using memory-mapped files with DAX semantics, torn writes could still happen for the metadata operations; therefore, turning on BTT is still valuable.
 
 ## Supported hardware
 
-The following table shows supported persistent memory hardware for Azure Stack HCI and Windows Server.
+The following table shows supported persistent memory hardware for Azure Stack HCI and Windows Server. Persistent memory is fully natively supported in Windows Server 2019, including Storage Spaces Direct.
 
 | Persistent Memory Technology                                      | Windows Server 2016 | Azure Stack HCI v20H2/Windows Server 2019 |
 |-------------------------------------------------------------------|--------------------------|--------------------------|
@@ -69,11 +72,11 @@ Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Dir
 
 ## Configure persistent memory
 
-Now, let's dive into how you configure persistent memory. **Cong/Scott: As far as I can tell, we skip creating the regions and setting the mode too App Direct with ipmctl. Does that need to be done first? Should we assume the user is using Intel Optane PMem and link to the [Intel docs](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html), and/or include the steps here? At what point can the user begin using Windows Admin Center for the configuration (i.e., when will the disks show up in WAC? After you create the namespaces?) The Intel docs show screen shots of the Windows Device Manager UI, along with the PowerShell cmdlets.**
+Now, let's dive into how you configure persistent memory. **Cong/Scott: As far as I can tell, we skip creating the regions and setting the mode to App Direct with ipmctl. Does that need to be done first? Should we assume the user is using Intel Optane PMem and link to the [Intel docs](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html), and/or include the steps here? At what point can the user begin using Windows Admin Center for the configuration (i.e., when will the disks show up in WAC? After you create the namespaces?) The Intel docs show screen shots of the Windows Device Manager UI, along with the PowerShell cmdlets.**
 
 ### Understand interleaved sets
 
-Interleaved sets can usually be created in a server platform's BIOS to make multiple PMem devices appear as a single disk to the host operating system, increasing throughput for that disk.
+Interleaved sets can usually be created in a server platform's BIOS to make multiple persistent memory devices appear as a single disk to the host operating system, increasing throughput for that disk.
 
 > [!NOTE]
 > Windows Server 2016 and Windows 10 Anniversary Edition do not support interleaved sets of PMem modules.
@@ -106,7 +109,7 @@ DeviceId DeviceType           HealthStatus OperationalStatus PhysicalLocation Fi
 
 ### Configure interleaved sets
 
-To configure an interleaved set, run the following cmdlet to review all the persistent memory regions that are not assigned to a logical PMem disk on the system:
+To configure an interleaved set, run the `Get-PmemUnusedRegion` cmdlet to review all the persistent memory regions that are not assigned to a logical PMem disk on the system:
 
 ```PowerShell
 Get-PmemUnusedRegion
@@ -117,7 +120,7 @@ RegionId TotalSizeInBytes DeviceId
        3     270582939648 {1020, 1120}
 ```
 
-To see all the PMem device information in the system, including device type, location, health and operational status, and so on, run the following cmdlet:
+To see all the PMem device information in the system, including device type, location, health and operational status, and so on, run the `Get-PmemPhysicalDevice` cmdlet:
 
 ```PowerShell
 Get-PmemPhysicalDevice
@@ -190,7 +193,7 @@ Initializing the physical persistent memory device. This may take a few moments.
 > [!IMPORTANT]
 > `Initialize-PmemPhysicalDevice` causes data loss in persistent memory. Use it only as a last resort to fix persistent memory-related issues.
 
-## PMem in action at Microsoft Ignite
+## Persistent memory in action at Microsoft Ignite 2018
 
 To see some of the benefits of persistent memory, let's look at [this video](http://www.youtube.com/watch?v=8WMXkMLJORc) from Microsoft Ignite 2018.
 
