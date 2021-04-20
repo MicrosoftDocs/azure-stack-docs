@@ -26,7 +26,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 
 ## Version 4.4.5.1
 
-2021 April 20
+2021 April 21
 
 - Security updates to migrate VaaS service authentication applications.
 - Service updates for enhanced service instrumentation and monitoring.
