@@ -22,7 +22,7 @@ These short videos provide an overview of Windows' support for persistent memory
 
 Also see [Understand and deploy persistent memory](deploy-pmem.md).
 
-Persistent memory devices are supported with native drivers beginning in Windows Server 2016 and Windows 10 (version 1607). While these devices behave similar to other disks (HDDs and SSDs), there are some differences.
+Persistent memory devices are supported with native drivers beginning in Windows Server 2016 and Windows 10 (version 1607). While persistent memory devices behave similar to other disks (HDDs and SSDs), there are some differences.
 
 A common use case is where two persistent memory modules are utilized as a mirrored write-back cache in a storage space. To set up such a configuration, see [Configuring Storage Spaces with a NVDIMM-N write-back cache](/sql/relational-databases/performance/configuring-storage-spaces-with-a-nvdimm-n-write-back-cache).
 
