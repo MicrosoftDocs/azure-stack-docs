@@ -4,7 +4,7 @@ description: This topic provides instructions on how to use Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 04/26/2021
 ---
 
 # Use Datacenter Firewall to configure ACLs with Windows Admin Center
@@ -74,6 +74,9 @@ You can apply an ACL to a network Interface, either while creating a virtual mac
 1. Scroll down to **Access control list**, expand the drop-down list, select an ACL, and select **Save network settings**.
 
     Completing the last step associates the ACL with the network interface and applies it to all incoming and outgoing traffic for the network interface.
+
+## Apply an ACL to a logical network
+TBD
 
 ## Get a list of ACLs
 You can easily view all the ACLs in your cluster in a list.
