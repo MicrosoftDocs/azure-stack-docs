@@ -24,7 +24,7 @@ Also see [Understand and deploy persistent memory](deploy-pmem.md).
 
 Persistent memory devices are supported with native drivers beginning in Windows Server 2016 and Windows 10 (version 1607). While these devices behave similar to other disks (HDDs and SSDs), there are some differences.
 
-A common use case for persistent memory is where two PMem modules are utilized as a mirrored write-back cache in a storage space. To set up such a configuration, see [Configuring Storage Spaces with a NVDIMM-N write-back cache](/sql/relational-databases/performance/configuring-storage-spaces-with-a-nvdimm-n-write-back-cache).
+A common use case is where two persistent memory modules are utilized as a mirrored write-back cache in a storage space. To set up such a configuration, see [Configuring Storage Spaces with a NVDIMM-N write-back cache](/sql/relational-databases/performance/configuring-storage-spaces-with-a-nvdimm-n-write-back-cache).
 
 In Windows Server 2016, the Storage Spaces GUI shows NVDIMM-N bus type as UNKNOWN. It doesn't have any functionality loss or inability in creation of Pool, Storage VD. You can verify the bus type by running the following cmdlet:
 
@@ -36,7 +36,7 @@ The parameter BusType in the output will correctly show bus type as *SCM*.
 
 ## View persistent memory health status
 
-This section describes how to view the health status of your PMem modules. When you use persistent memory, there are a few differences in the monitoring experience:
+This section describes how to view the health status of your persistent memory modules. When you use persistent memory, there are a few differences in the monitoring experience:
 
 - Persistent memory doesn't create Physical Disk performance counters, so you won't see it appear on charts in Windows Admin Center.
 - Persistent memory doesn't create Storport 505 data, so you won't get proactive outlier detection.
@@ -68,9 +68,9 @@ Get-PhysicalDisk | where BusType -eq "SCM" | select SerialNumber, HealthStatus, 
 ```
 
 > [!NOTE]
-> To find the physical location of a PMem device specified in an event, on the **Details** tab of the event in Event Viewer, go to **EventData** > **Location**. Note that Windows Server 2016 lists the incorrect location of persistent memory devices, but this is fixed in Windows Server, version 1709.
+> To find the physical location of a persistent memory device specified in an event, on the **Details** tab of the event in Event Viewer, go to **EventData** > **Location**. Note that Windows Server 2016 lists the incorrect location of persistent memory devices, but this is fixed in Windows Server, version 1709.
 
-**HealthStatus** shows whether the PMem disk is healthy.
+**HealthStatus** shows whether the persistent memory disk is healthy.
 
 The **UnsafeshutdownCount** value tracks the number of shutdowns that may cause data loss on this logical disk. It is the sum of the unsafe shutdown counts of all the underlying persistent memory devices of this disk. For more information about the health status, use the `Get-PmemPhysicalDevice` cmdlet to find information such as **OperationalStatus**.
 
@@ -91,7 +91,7 @@ For help understanding the various health conditions, see the following sections
 
 ## "Warning" Health Status
 
-This condition is when you check the health of a PMem device and see that its Health Status is listed as **Warning**, as shown in this example output:
+This condition is when you check the health of a persistent memory device and see that its Health Status is listed as **Warning**, as shown in this example output:
 
 | SerialNumber | HealthStatus | OperationalStatus | OperationalDetails |
 | --- | --- | --- | --- |
@@ -103,11 +103,11 @@ The following table lists some info about this condition.
 | Heading | Description |
 | --- | --- |
 | Likely condition | Warning threshold breached |
-| Root Cause | PMem devices track various thresholds, such as temperature, NVM lifetime, and/or energy source lifetime. When one of those thresholds is exceeded, the operating system is notified. |
+| Root Cause | Persistent memory devices track various thresholds, such as temperature, NVM lifetime, and/or energy source lifetime. When one of those thresholds is exceeded, the operating system is notified. |
 | General behavior | Device remains fully operational. This is a warning, not an error. |
 | Storage Spaces behavior | Device remains fully operational. This is a warning, not an error. |
 | More info | OperationalStatus field of the PhysicalDisk object. EventLog – Microsoft-Windows-ScmDisk0101/Operational |
-| What to do | Depending on the warning threshold breached, it may be prudent to replace the PMem device. |
+| What to do | Depending on the warning threshold breached, it may be prudent to replace the persistent memory device. |
 
 ## Writes to a persistent memory device fail
 
@@ -125,11 +125,11 @@ The following table lists some info about this condition.
 | Likely condition | Loss of persistence / backup Power |
 |Root Cause|Persistent memory devices rely on a back-up power source for their persistence – usually a battery or super-cap. If this back-up power source is unavailable or the device cannot perform a backup for any reason (Controller/Flash Error), data is at risk and Windows will prevent any further writes to the affected devices. Reads are still possible to evacuate data.|
 |General behavior|The NTFS volume will be dismounted.<br>The PhysicalDisk Health Status field will show "Unhealthy" for all affected NVDIMM-N devices.|
-|Storage Spaces behavior|Storage Space will remain operational as long as only one PMem module is affected. If multiple devices are affected, writes to the Storage Space will fail. <br>The PhysicalDisk Health Status field will show "Unhealthy" for all affected PMem devices.|
+|Storage Spaces behavior|Storage Space will remain operational as long as only one persistent memory module is affected. If multiple devices are affected, writes to the Storage Space will fail. <br>The PhysicalDisk Health Status field will show "Unhealthy" for all affected persistent memory devices.|
 |More info|OperationalStatus field of the PhysicalDisk object.<br>EventLog – Microsoft-Windows-ScmDisk0101/Operational|
-|What to do|We recommended backing-up the affected PMem's data. To gain read access, you can manually bring the disk online (it will surface as a read-only NTFS volume).<br><br>To fully clear this condition, the root cause must be resolved (i.e. service power supply or replace PMem module, depending on issue) and the volume on the PMem module must either be taken offline and brought online again, or the system must be restarted.<br><br>To make the PMem module usable in Storage Spaces again, use the `Reset-PhysicalDisk` cmdlet, which re-integrates the device and starts the repair process.|
+|What to do|We recommended backing-up the affected PMem's data. To gain read access, you can manually bring the disk online (it will surface as a read-only NTFS volume).<br><br>To fully clear this condition, the root cause must be resolved (that is, service power supply or replace persistent memory module, depending on issue) and the volume on the module must either be taken offline and brought online again, or the system must be restarted.<br><br>To make the persistent memory module usable in Storage Spaces again, use the `Reset-PhysicalDisk` cmdlet, which reintegrates the device and starts the repair process.|
 
-## PMem is shown with a capacity of '0' Bytes or as a "Generic Physical Disk"
+## Persistent memory is shown with a capacity of '0' Bytes or as a "Generic Physical Disk"
 
 This condition is when a persistent memory device is shown with a capacity of 0 bytes and cannot be initialized, or is exposed as a "Generic Physical Disk" object with an Operational Status of **Lost Communication**, as shown in this example output:
 
@@ -142,14 +142,14 @@ The following table lists some info about this condition.
 
 |Heading|Description|
 |---|---|
-|Likely condition|BIOS did not expose PMem module to OS|
-|Root Cause|PMem devices are DRAM based. When a corrupt DRAM address is referenced, most CPUs will initiate a machine check and restart the server. Some server platforms then un-map the PMem module, preventing the OS from accessing it and potentially causing another machine check. This may also occur if the BIOS detects that the PMem module has failed and needs to be replaced.|
-|General behavior|PMem module is shown as uninitialized, with a capacity of 0 bytes and cannot be read or written.|
-|Storage Spaces behavior|Storage Space remains operational (provided only one PMem module is affected).<br>PMem PhysicalDisk object is shown with a Health Status of Warning and as a "General Physical Disk"|
+|Likely condition|BIOS did not expose persistent memory module to OS|
+|Root Cause|Persistent memory devices are DRAM based. When a corrupt DRAM address is referenced, most CPUs will initiate a machine check and restart the server. Some server platforms then unmap the persistent memory module, preventing the OS from accessing it and potentially causing another machine check. This may also occur if the BIOS detects that the persistent memory module has failed and needs to be replaced.|
+|General behavior|Persistent memory module is shown as uninitialized, with a capacity of 0 bytes and cannot be read or written.|
+|Storage Spaces behavior|Storage Space remains operational (provided only one persistent memory module is affected).<br>PMem PhysicalDisk object is shown with a Health Status of Warning and as a "General Physical Disk"|
 |More info|OperationalStatus field of the PhysicalDisk object. <br>EventLog – Microsoft-Windows-ScmDisk0101/Operational|
-|What to do|The PMem device must be replaced or sanitized, such that the server platform exposes it to the host OS again. Replacement of the device is recommended, as additional uncorrectable errors could occur. Adding a replacement device to a storage spaces configuration can be achieved with the `Add-PhysicalDisk` cmdlet.|
+|What to do|The persistent memory device must be replaced or sanitized, such that the server platform exposes it to the host OS again. Replacement of the device is recommended, as more uncorrectable errors could occur. Adding a replacement device to a storage spaces configuration can be achieved with the `Add-PhysicalDisk` cmdlet.|
 
-## PMem device is shown as a RAW or empty disk after a reboot
+## Persistent memory device is shown as a RAW or empty disk after a reboot
 
 This condition is when you check the health of a persistent memory device and see a Health Status of **Unhealthy** and Operational Status of **Unrecognized Metadata**, as shown in this example output:
 
@@ -163,11 +163,11 @@ The following table lists some info about this condition.
 |Heading|Description|
 |---|---|
 |Likely condition|Backup/Restore Failure|
-|Root cause|A failure in the backup or restore procedure will likely result in all data on the PMem module to be lost. When the operating system loads, it will appear as a brand new PMem device without a partition or file system and surface as RAW, meaning it doesn't have a file system.|
-|General behavior|PMem will be in read-only mode. Explicit user action is needed to begin using it again.|
-|Storage Spaces behavior|Storage Spaces remains operational if only one PMem module is affected).<br>PMem physical disk object will be shown with the Health Status "Unhealthy" and is not used by Storage Spaces.|
+|Root cause|A failure in the backup or restore procedure will likely result in all data on the persistent memory module to be lost. When the operating system loads, it will appear as a brand new persistent memory device without a partition or file system and surface as RAW, meaning it doesn't have a file system.|
+|General behavior|Persistent memory will be in read-only mode. Explicit user action is needed to begin using it again.|
+|Storage Spaces behavior|Storage Spaces remains operational if only one persistent memory module is affected).<br>PMem physical disk object will be shown with the Health Status "Unhealthy" and is not used by Storage Spaces.|
 |More info|OperationalStatus field of the PhysicalDisk object.<br>EventLog – Microsoft-Windows-ScmDisk0101/Operational|
-|What to do|If the user doesn't want to replace the affected device, they can use the `Reset-PhysicalDisk` cmdlet to clear the read-only condition on the affected PMem module. In Storage Spaces environments this will also attempt to re-integrate the PMem module into Storage Spaces and start the repair process.|
+|What to do|If the user doesn't want to replace the affected device, they can use the `Reset-PhysicalDisk` cmdlet to clear the read-only condition on the affected persistent memory module. In Storage Spaces environments, this will also attempt to reintegrate the persistent memory module into Storage Spaces and start the repair process.|
 
 ## Next steps
 
