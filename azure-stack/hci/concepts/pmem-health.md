@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/08/2021
+ms.date: 04/21/2021
 ---
 
 # Persistent memory health management
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10
 
-This article provides information about error handling and health management specific to persistent memory (PMem) devices, often called storage-class memory (SCM), which is a type of non-volatile dual in-line memory module (NVDIMM) that can be used as top-tier storage.
+This article provides information about error handling and health management specific to persistent memory (PMem) devices, often called storage-class memory (SCM), which is a type of non-volatile media that can be used as top-tier storage.
 
 These short videos provide an overview of Windows' support for persistent memory:
 - [Using Non-volatile Memory (NVDIMM-N) as Block Storage in Windows Server 2016](https://channel9.msdn.com/Events/Build/2016/P466)
@@ -22,9 +22,9 @@ These short videos provide an overview of Windows' support for persistent memory
 
 Also see [Understand and deploy persistent memory](deploy-pmem.md).
 
-PMem devices are supported with native drivers beginning in Windows Server 2016 and Windows 10 (version 1607). While these devices behave similar to other disks (HDDs and SSDs), there are some differences.
+Persistent memory devices are supported with native drivers beginning in Windows Server 2016 and Windows 10 (version 1607). While these devices behave similar to other disks (HDDs and SSDs), there are some differences.
 
-The various cases below may refer to Storage Spaces configurations. A particular configuration of interest is where two PMem modules are utilized as a mirrored write-back cache in a storage space. To set up such a configuration, see [Configuring Storage Spaces with a NVDIMM-N write-back cache](/sql/relational-databases/performance/configuring-storage-spaces-with-a-nvdimm-n-write-back-cache).
+A common use case for persistent memory is where two PMem modules are utilized as a mirrored write-back cache in a storage space. To set up such a configuration, see [Configuring Storage Spaces with a NVDIMM-N write-back cache](/sql/relational-databases/performance/configuring-storage-spaces-with-a-nvdimm-n-write-back-cache).
 
 In Windows Server 2016, the Storage Spaces GUI shows NVDIMM-N bus type as UNKNOWN. It doesn't have any functionality loss or inability in creation of Pool, Storage VD. You can verify the bus type by running the following cmdlet:
 
@@ -36,7 +36,7 @@ The parameter BusType in the output will correctly show bus type as *SCM*.
 
 ## View persistent memory health status
 
-This section describes how to view the health status of your PMem modules. When you use PMem, there are a few differences in the monitoring experience:
+This section describes how to view the health status of your PMem modules. When you use persistent memory, there are a few differences in the monitoring experience:
 
 - Persistent memory doesn't create Physical Disk performance counters, so you won't see it appear on charts in Windows Admin Center.
 - Persistent memory doesn't create Storport 505 data, so you won't get proactive outlier detection.
@@ -68,11 +68,11 @@ Get-PhysicalDisk | where BusType -eq "SCM" | select SerialNumber, HealthStatus, 
 ```
 
 > [!NOTE]
-> To find the physical location of a PMem device specified in an event, on the **Details** tab of the event in Event Viewer, go to **EventData** > **Location**. Note that Windows Server 2016 lists the incorrect location of PMem devices, but this is fixed in Windows Server, version 1709.
+> To find the physical location of a PMem device specified in an event, on the **Details** tab of the event in Event Viewer, go to **EventData** > **Location**. Note that Windows Server 2016 lists the incorrect location of persistent memory devices, but this is fixed in Windows Server, version 1709.
 
 **HealthStatus** shows whether the PMem disk is healthy.
 
-The **UnsafeshutdownCount** value tracks the number of shutdowns that may cause data loss on this logical disk. It is the sum of the unsafe shutdown counts of all the underlying PMem devices of this disk. For more information about the health status, use the `Get-PmemPhysicalDevice` cmdlet to find information such as **OperationalStatus**.
+The **UnsafeshutdownCount** value tracks the number of shutdowns that may cause data loss on this logical disk. It is the sum of the unsafe shutdown counts of all the underlying persistent memory devices of this disk. For more information about the health status, use the `Get-PmemPhysicalDevice` cmdlet to find information such as **OperationalStatus**.
 
 ```PowerShell
 Get-PmemPhysicalDevice
@@ -109,9 +109,9 @@ The following table lists some info about this condition.
 | More info | OperationalStatus field of the PhysicalDisk object. EventLog – Microsoft-Windows-ScmDisk0101/Operational |
 | What to do | Depending on the warning threshold breached, it may be prudent to replace the PMem device. |
 
-## Writes to a PMem device fail
+## Writes to a persistent memory device fail
 
-This condition is when you check the health of a PMem device and see the Health Status listed as **Unhealthy**, and Operational Status mentions an **IO Error**, as shown in this example output:
+This condition is when you check the health of a persistent memory device and see the Health Status listed as **Unhealthy**, and Operational Status mentions an **IO Error**, as shown in this example output:
 
 | SerialNumber | HealthStatus | OperationalStatus | OperationalDetails |
 | --- | --- | --- | --- |
@@ -131,7 +131,7 @@ The following table lists some info about this condition.
 
 ## PMem is shown with a capacity of '0' Bytes or as a "Generic Physical Disk"
 
-This condition is when a PMem device is shown with a capacity of 0 bytes and cannot be initialized, or is exposed as a "Generic Physical Disk" object with an Operational Status of **Lost Communication**, as shown in this example output:
+This condition is when a persistent memory device is shown with a capacity of 0 bytes and cannot be initialized, or is exposed as a "Generic Physical Disk" object with an Operational Status of **Lost Communication**, as shown in this example output:
 
 | SerialNumber | HealthStatus | OperationalStatus | OperationalDetails |
 | --- | --- | --- | --- |
@@ -151,7 +151,7 @@ The following table lists some info about this condition.
 
 ## PMem device is shown as a RAW or empty disk after a reboot
 
-This condition is when you check the health of a PMem device and see a Health Status of **Unhealthy** and Operational Status of **Unrecognized Metadata**, as shown in this example output:
+This condition is when you check the health of a persistent memory device and see a Health Status of **Unhealthy** and Operational Status of **Unrecognized Metadata**, as shown in this example output:
 
 | SerialNumber | HealthStatus | OperationalStatus | OperationalDetails |
 | --- | --- | --- | --- |
