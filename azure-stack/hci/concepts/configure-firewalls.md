@@ -36,12 +36,12 @@ A *service tag* represents a group of IP addresses from a given Azure service. M
 ## Required endpoint daily access (after Azure registration)
 Azure maintains well-known IP addresses for Azure services that are organized using service tags. Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that the operating system needs to access.
 
-| Description                   | Service tag for IP range  | URL                                                                                 |
-| :-----------------------------| :-----------------------  | :---------------------------------------------------------------------------------- |
-| Azure Active Directory        | AzureActiveDirectory      | `https://login.microsoftonline.com`<br> `https://graph.microsoft.com`               |
-| Azure Resource Manager        | AzureResourceManager      | `https://management.azure.com`                        |
-| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend   | `https://azurestackhci.azurefd.net` |
-| Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: `*.his.arc.azure.com`<br> Guest Configuration: `*.guestconfiguration.azure.com`<br> **Note:** Expect more URLs as we enable more functionality. |
+| Description                   | Service tag for IP range  | URL                                                                       | Azure China URL                         |
+| :-----------------------------| :-----------------------  | :------------------------------------------------------------------------ | :-------------------------------------- |
+| Azure Active Directory        | AzureActiveDirectory      | `https://login.microsoftonline.com`<br> `https://graph.microsoft.com`     | `https://login.partner.microsoftonline.cn`<br> `https://graph.chinacloudapi.cn` |
+| Azure Resource Manager        | AzureResourceManager      | `https://management.azure.com`                                            | `https://management.chinacloudapi.cn` |
+| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend<br> AzureCloud.ChinaEast2 (Azure China) | `https://azurestackhci.azurefd.net` | `https://sha-azurestackhci-dp-mc.sha-azurestackhci-ase.p.chinacloudsites.cn` |
+| Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: `*.his.arc.azure.com`<br> Guest Configuration: `*.guestconfiguration.azure.com`<br> **Note:** Expect more URLs as we enable more functionality. | Coming soon. |
 
 ## Update Microsoft Defender Firewall
 This section shows how to configure Microsoft Defender Firewall to allow IP addresses associated with a service tag to connect with the operating system:
