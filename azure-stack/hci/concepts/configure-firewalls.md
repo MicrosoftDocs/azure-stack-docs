@@ -40,7 +40,7 @@ Azure maintains well-known IP addresses for Azure services that are organized us
 | :-----------------------------| :-----------------------  | :------------------------------------------------------------------------ | :-------------------------------------- |
 | Azure Active Directory        | AzureActiveDirectory      | `https://login.microsoftonline.com`<br> `https://graph.microsoft.com`     | `https://login.partner.microsoftonline.cn`<br> `https://graph.chinacloudapi.cn` |
 | Azure Resource Manager        | AzureResourceManager      | `https://management.azure.com`                                            | `https://management.chinacloudapi.cn` |
-| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend<br> AzureCloud.ChinaEast2 (Azure China) | `https://azurestackhci.azurefd.net` | `https://sha-azurestackhci-dp-mc.sha-azurestackhci-ase.p.chinacloudsites.cn` |
+| Azure Stack HCI Cloud Service | AzureFrontDoor.Frontend<br> AzureCloud.ChinaEast2 (Azure China) | `https://azurestackhci.azurefd.net` | `https://dp.stackhci.azure.cn` |
 | Azure Arc                     | AzureArcInfrastructure<br> AzureTrafficManager | Depends on the functionality you want to use:<br> Hybrid Identity Service: `*.his.arc.azure.com`<br> Guest Configuration: `*.guestconfiguration.azure.com`<br> **Note:** Expect more URLs as we enable more functionality. | Coming soon. |
 
 ## Update Microsoft Defender Firewall
