@@ -39,7 +39,7 @@
     - name: Disconnected deployment
       href: ../operator/azure-stack-disconnected-deployment.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Publish endpoints
-      href: operator/azure-stack-integrate-endpoints-tzl
+      href: azure-stack-integrate-endpoints-tzl.md
     - name: Security overview 
       href: ../operator/azure-stack-security-foundations.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Identity
