@@ -1,5 +1,5 @@
 ---
-title: Publish Azure Stack Hub services in your datacenter - MDC
+title: Publish Azure Stack Hub services in in your ruggedized network
 description: Learn how to publish Azure Stack Hub services in your datacenter.
 author: PatAltimore
 ms.topic: article
@@ -13,7 +13,7 @@ ms.lastreviewed: 09/24/2020
 
 ---
 
-# Publish Azure Stack Hub services in your datacenter - Modular Data Center (MDC)
+# Publish Azure Stack Hub services in your ruggedized network
 
 Azure Stack Hub sets up virtual IP addresses (VIPs) for its infrastructure roles. These VIPs are allocated from the public IP address pool. Each VIP is secured with an access control list (ACL) in the software-defined network layer. ACLs are also used across the physical switches (TORs and BMC) to further harden the solution. A DNS entry is created for each endpoint in the external DNS zone that's specified at deployment time. For example, the user portal is assigned the DNS host entry of portal.*&lt;region>.&lt;fqdn>*.
 
