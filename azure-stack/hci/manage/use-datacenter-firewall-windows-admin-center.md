@@ -16,8 +16,8 @@ This topic provides step-by-step instructions on how to use Windows Admin Center
 Before you configure ACLs, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](sdn-express.md).
 
 Additionally, if you want to apply ACLs to an SDN logical network, you need to first create a logical network. Likewise, if you want to apply ACLs to an SDN virtual network, you need to first create a virtual network. To learn more, see:
-- [Manage tenant logical networks](tenant-logical-networks.md)
 - [Manage tenant virtual networks](tenant-virtual-networks.md)
+- [Manage tenant logical networks](tenant-logical-networks.md)
 
 ## Create an ACL
 You can easily create an ACL in Windows Admin Center.
