@@ -4,7 +4,7 @@ description: Learn how to access Azure Stack Hub resources using an app identity
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 04/22/2021
 ms.lastreviewed: 04/06/2021
 ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
@@ -17,7 +17,7 @@ zone_pivot_groups: state-connected-disconnected
 
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. 
 
-The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you create a service principal, grant the "reader" role to that service principal, and limit the configuration management app to read-only access.
+The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, grant the "reader" role to the app's service principal, which limits the configuration management app to read-only access.
 
 ## Overview
 
@@ -37,7 +37,7 @@ You start by creating a new app registration in your directory, which creates an
 - **Azure Active Directory (Azure AD)**: Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal for Azure AD app registration.
 - **Active Directory Federation Services (AD FS)**: AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell for AD FS app registration.
 
-After creating the app's identity you learn how to assign its service principal to a role, limiting its resource access.
+After registering the app, you learn how to assign a role to its service principal, limiting its resource access.
 
 ::: zone pivot="state-disconnected"
 <!-- this is intentionally a noop -->
