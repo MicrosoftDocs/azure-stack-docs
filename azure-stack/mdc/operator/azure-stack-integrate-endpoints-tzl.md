@@ -25,9 +25,9 @@ The following architectural diagram shows the different network layers and ACLs:
 
 To make Azure Stack Hub services (like the portals, Azure Resource Manager, DNS, and so on) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
 
-In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
+In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](../../operator/azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](../../operator/azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
 
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. 
+SSL traffic interception is [not supported](../../operator/azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. 
 
 ## Ports and protocols (inbound)
 
@@ -38,7 +38,7 @@ Internal infrastructure VIPs aren't listed because they're not required for publ
 > [!Note]  
 > IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls don't always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
 
-With the addition of the [Extension Host](azure-stack-extension-host-prepare.md), ports in the range of 12495-30015 aren't required.
+With the addition of the [Extension Host](../../operator/azure-stack-extension-host-prepare.md), ports in the range of 12495-30015 aren't required.
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
 |---------|---------|---------|---------|
@@ -70,7 +70,7 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 
 Azure Stack Hub supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication. For more information on configuring transparent proxy servers, see [Transparent proxy for Azure Stack Hub](azure-stack-transparent-proxy.md).
 
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
+SSL traffic interception is [not supported](../../operator/azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
 
 > [!Note]  
 > Azure Stack Hub doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints. 
@@ -79,8 +79,8 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |---------|---------|---------|---------|---------|
 |**Identity**<br>Allows Azure Stack Hub to connect to Azure Active Directory for User & Service authentication.|**Azure**<br>`login.windows.net`<br>`login.microsoftonline.com`<br>`graph.windows.net`<br>`https://secure.aadcdn.microsoftonline-p.com`<br>`www.office.com`<br>ManagementServiceUri = `https://management.core.windows.net`<br>ARMUri = `https://management.azure.com`<br>`https://*.msftauth.net`<br>`https://*.msauth.net`<br>`https://*.msocdn.com`<br>**Azure Government**<br>`https://login.microsoftonline.us/`<br>`https://graph.windows.net/`<br>**Azure Germany**<br>`https://login.microsoftonline.de/`<br>`https://graph.cloudapi.de/`|HTTP 80,<br>HTTPS 443|Public VIP - /27<br>Public infrastructure Network|Mandatory for a connected deployment.|
 |**Marketplace syndication**<br>Allows you to download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment.|**Azure**<br>`https://management.azure.com`<br>`https://*.blob.core.windows.net`<br>`https://*.azureedge.net`<br>**Azure Government**<br>`https://management.usgovcloudapi.net/`<br>`https://*.blob.core.usgovcloudapi.net/` |HTTPS 443|Public VIP - /27|Not required. Use the [disconnected scenario instructions](azure-stack-download-azure-marketplace-item.md) to upload images to Azure Stack Hub.|
-|**Patch & Update**<br>When connected to update endpoints, Azure Stack Hub software updates and hotfixes are displayed as available for download.|`https://*.azureedge.net`<br>`https://aka.ms/azurestackautomaticupdate`|HTTPS 443|Public VIP - /27|Not required. Use the [disconnected deployment connection instructions](azure-stack-update-prepare-package.md) to manually download and prepare the update.|
-|**Registration**<br>Allows you to register Azure Stack Hub with Azure to download Azure Marketplace items and set up commerce data reporting back to Microsoft. |**Azure**<br>`https://management.azure.com`<br>**Azure Government**` | HTTPS 443|Public VIP - /27|Not required. You can use the disconnected scenario for [offline registration](azure-stack-registration.md).|
+|**Patch & Update**<br>When connected to update endpoints, Azure Stack Hub software updates and hotfixes are displayed as available for download.|`https://*.azureedge.net`<br>`https://aka.ms/azurestackautomaticupdate`|HTTPS 443|Public VIP - /27|Not required. Use the [disconnected deployment connection instructions](../../operator/azure-stack-update-prepare-package.md) to manually download and prepare the update.|
+|**Registration**<br>Allows you to register Azure Stack Hub with Azure to download Azure Marketplace items and set up commerce data reporting back to Microsoft. |**Azure**<br>`https://management.azure.com`<br>**Azure Government**` | HTTPS 443|Public VIP - /27|Not required. You can use the disconnected scenario for [offline registration](../../operator/azure-stack-registration.md).|
 |**Usage**<br>Allows Azure Stack Hub operators to configure their Azure Stack Hub instance to report usage data to Azure.|**Azure**<br>`https://*.trafficmanager.net`<br>**Azure Government**<br>`https://*.usgovtrafficmanager.net` | HTTPS 443|Public VIP - /27|Required for Azure Stack Hub consumption based licensing model.|
 |**Windows Defender**<br>Allows the update resource provider to download antimalware definitions and engine updates multiple times per day.|`*.wdcp.microsoft.com`<br>`*.wdcpalt.microsoft.com`<br>`*.wd.microsoft.com`<br>`*.update.microsoft.com`<br>`*.download.microsoft.com`<br><br>`https://secure.aadcdn.microsoftonline-p.com`<br>|HTTPS 80, 443|Public VIP - /27<br>Public infrastructure Network|Not required. You can use the [disconnected scenario to update antivirus signature files](azure-stack-security-av.md#disconnected-scenario).|
 |**NTP**<br>Allows Azure Stack Hub to connect to time servers.|(IP of NTP server provided for deployment)|UDP 123|Public VIP - /27|Required|
@@ -91,8 +91,8 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |**LDAP SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory on-premises.|Active Directory Forest provided for Graph integration|TCP 636|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
 |**LDAP GC**<br>Allows Azure Stack Hub to communicate with Microsoft Active Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP 3268|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
 |**LDAP GC SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP 3269|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
-|**AD FS**<br>Allows Azure Stack Hub to communicate with on-premise AD FS.|AD FS metadata endpoint provided for AD FS integration|TCP 443|Public VIP - /27|Optional. The AD FS claims provider trust can be created using a [metadata file](azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file).|
-|**Diagnostic log collection**<br>Allows Azure Stack Hub to send logs either proactively or manually by an operator to Microsoft support.|`https://*.blob.core.windows.net`<br>`https://azsdiagprdlocalwestus02.blob.core.windows.net`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com` | HTTPS 443 | Public VIP - /27 |Not required. You can [save logs locally](diagnostic-log-collection.md#save-logs-locally).|
+|**AD FS**<br>Allows Azure Stack Hub to communicate with on-premise AD FS.|AD FS metadata endpoint provided for AD FS integration|TCP 443|Public VIP - /27|Optional. The AD FS claims provider trust can be created using a [metadata file](../../operator/azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file).|
+|**Diagnostic log collection**<br>Allows Azure Stack Hub to send logs either proactively or manually by an operator to Microsoft support.|`https://*.blob.core.windows.net`<br>`https://azsdiagprdlocalwestus02.blob.core.windows.net`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com` | HTTPS 443 | Public VIP - /27 |Not required. You can [save logs locally](../../operator/diagnostic-log-collection.md#save-logs-locally).|
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. Use a device that supports filtering by URL rather than by IP.
 
@@ -100,4 +100,4 @@ Outbound DNS is required at all times; what varies is the source querying the ex
 
 ## Next steps
 
-[Azure Stack Hub PKI requirements](azure-stack-pki-certs.md)
+[Azure Stack Hub PKI requirements](../../operator/azure-stack-pki-certs.md)
