@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 04/13/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 You have a choice between creating two cluster types:
 
@@ -44,7 +44,8 @@ Here are the major steps in the Create Cluster wizard:
 1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
 1. **Networking** - assigns and configures network adapters and creates the virtual switches for each server.
 1. **Clustering** - validates the cluster is set up correctly. For stretched clusters, also sets up up the two sites.
-1. **Storage** - Configures Storage Spaces Direct.
+1. **Storage** - configures Storage Spaces Direct.
+1. **SDN** - sets up a Network Controller for SDN deployment.
 
 After the wizard completes, you set up the cluster witness, register with Azure, and create volumes (which also sets up replication between sites if you're creating a stretched cluster).
 
@@ -139,6 +140,9 @@ For more information on RDMA and Hyper-V host networking for Azure Stack HCI, se
     - **Create one virtual switch for compute only** - choose if you want to use a virtual switch for your VMs only.
     - **Create two virtual switches** - choose if you want a dedicated virtual switch each for VMs and for Storage Spaces Direct.
 
+        > [!NOTE]
+        > If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
+
         :::image type="content" source="media/cluster/create-cluster-virtual-switches.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/cluster/create-cluster-virtual-switches.png":::
 
     The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
@@ -217,8 +221,48 @@ It can take some time for the cluster name to be replicated across your domain, 
 
 If resolving the cluster isn't successful after some time, in most cases you can substitute a server name instead of the cluster name.
 
+## Step 5: SDN (optional)
+
+This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, you can configure other SDN components such as Software Load Balancer (SLB) and RAS Gateway as per your requirements. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of the planning article to understand what other SDN components you might need.
+
+> [!NOTE]
+> The Create Cluster wizard does not currently support configuring SLB And RAS gateway. You can use [SDN Express scripts](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) to configure these components. Also, SDN is not supported or available for stretched clusters.
+
+:::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
+
+1. Select **Next: SDN**.
+1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with Network Controller. You can also use the default populated name.
+1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
+1. Specify the number of VMs to be dedicated for Network Controller. Three VMs are strongly recommended for production deployments.
+1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
+1. For **VM network addressing**, select either **DHCP** or **Static**.
+1. If you selected **DHCP**, enter the name for the Network Controller VMs. You can also use the default populated names.
+1. If you selected **Static**, do the following:
+     - Specify an IP address.
+     - Specify a subnet prefix.
+     - Specify the default gateway.
+     - Specify one or more DNS servers. Click **Add** to add additional DNS servers.
+1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
+1. Enter the local administrative password for these VMs.
+1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+1. Enter values for **MAC address pool start** and **MAC address pool end**. You can also use the default populated values.
+1. When finished, click **Next**.
+1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
+
+> [!NOTE]
+> After Network Controller VM(s) are created, you must configure [dynamic DNS updates](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003) for the Network Controller cluster name on the DNS server.
+
+If Network Controller deployment fails, do the following before you try this again:
+
+- Stop and delete any Network Controller VMs that the wizard created.
+
+- Clean up any VHD mount points that the wizard created.
+
+- Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.
+
 ## Next steps
 
 - Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
 - Set up a witness. See [Set up a cluster witness](../manage/witness.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- You can also deploy Network Controller using SDN Express scripts. See [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md).
