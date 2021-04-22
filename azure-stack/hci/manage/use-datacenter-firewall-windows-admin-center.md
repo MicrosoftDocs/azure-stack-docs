@@ -53,7 +53,7 @@ After you create an ACL, you’re ready to create ACLs rules. If you want to app
 1. Select **Submit**.
 
 ## Apply an ACL to a virtual network
-After you create an ACL and rules for it, you need to apply them to either a virtual network subnet, a logical network subnet, or a network interface.
+After you create an ACL and rules for it, you need to apply the ACL to either a virtual network subnet, a logical network subnet, or a network interface.
 
 :::image type="content" source="./media/access-control-lists/apply-acl-virtual-network.png" alt-text="Screenshot of Windows Admin Center showing the Virtual subnet pane." lightbox="./media/access-control-lists/apply-acl-virtual-network.png":::
 
@@ -62,6 +62,17 @@ After you create an ACL and rules for it, you need to apply them to either a vir
 1. Select an ACL from the drop-down list and then select **Submit**.
 
     Completing the last step associates the ACL with the virtual network subnet and applies it to all computers attached to the virtual network subnet.
+
+## Apply an ACL to a logical network
+You can apply an ACL to a logical network subnet.
+
+:::image type="content" source="./media/access-control-lists/apply-acl-logical-network.png" alt-text="Screenshot of Windows Admin Center showing the Logical networks Overview, and pane to add a logical network." lightbox="./media/access-control-lists/apply-acl-logical-network.png":::
+
+1. Under **Tools**, scroll down to the **Networking** area, and select **Logical networks**.
+1. Select the **Inventory** tab, and then select a logical network. On the subsequent page, select a logical subnet, and then select **Settings**.
+1. Select an ACL from the drop-down list and then select **Add**.
+
+    Completing the last step associates the ACL with the logical network subnet and applies it to all computers attached to the logical network subnet.
 
 ## Apply an ACL to a network interface
 You can apply an ACL to a network Interface, either while creating a virtual machine (VM) or later.
@@ -74,9 +85,6 @@ You can apply an ACL to a network Interface, either while creating a virtual mac
 1. Scroll down to **Access control list**, expand the drop-down list, select an ACL, and select **Save network settings**.
 
     Completing the last step associates the ACL with the network interface and applies it to all incoming and outgoing traffic for the network interface.
-
-## Apply an ACL to a logical network
-TBD
 
 ## Get a list of ACLs
 You can easily view all the ACLs in your cluster in a list.
