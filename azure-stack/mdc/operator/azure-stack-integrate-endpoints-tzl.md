@@ -73,9 +73,9 @@ Azure Stack Hub supports only transparent proxy servers. In a deployment with a 
 SSL traffic interception is [not supported](../../operator/azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
 
 > [!Note]  
-> Azure Stack Hub doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints. 
+> Azure Stack Hub doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
 
-|Purpose|Destination URL|Protocol / Ports|Source Network|Requirement|
+| Purpose | Destination URL| Protocol / Ports | Source Network | Requirement |
 |---------|---------|---------|---------|---------|
 |**Identity**<br>Allows Azure Stack Hub to connect to Azure Active Directory for User & Service authentication.|**Azure**<br>`login.windows.net`<br>`login.microsoftonline.com`<br>`graph.windows.net`<br>`https://secure.aadcdn.microsoftonline-p.com`<br>`www.office.com`<br>ManagementServiceUri = `https://management.core.windows.net`<br>ARMUri = `https://management.azure.com`<br>`https://*.msftauth.net`<br>`https://*.msauth.net`<br>`https://*.msocdn.com`<br>**Azure Government**<br>`https://login.microsoftonline.us/`<br>`https://graph.windows.net/`<br>**Azure Germany**<br>`https://login.microsoftonline.de/`<br>`https://graph.cloudapi.de/`|HTTP 80,<br>HTTPS 443|Public VIP - /27<br>Public infrastructure Network|Mandatory for a connected deployment.|
 |**Marketplace syndication**<br>Allows you to download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment.|**Azure**<br>`https://management.azure.com`<br>`https://*.blob.core.windows.net`<br>`https://*.azureedge.net`<br>**Azure Government**<br>`https://management.usgovcloudapi.net/`<br>`https://*.blob.core.usgovcloudapi.net/` |HTTPS 443|Public VIP - /27|Not required. Use the [disconnected scenario instructions](../../operator/azure-stack-download-azure-marketplace-item.md) to upload images to Azure Stack Hub.|
