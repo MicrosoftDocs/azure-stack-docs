@@ -30,11 +30,11 @@ There are two ways to enable Azure Monitor on your cluster. Both ways require yo
 
 ## Prerequisites
 
-Both methods require the [pre-requisites](https://github.com/Helm/charts/tree/master/incubator/azuremonitor-containers#pre-requisites) listed in the [Azure Monitor – Containers](https://github.com/Helm/charts/tree/master/incubator/azuremonitor-containers).
+Both methods require the [pre-requisites](https://github.com/Helm/charts/tree/master/incubator/azuremonitor-containers#pre-requisites) listed in the [Azure Monitor - Containers](https://github.com/Helm/charts/tree/master/incubator/azuremonitor-containers).
 
 ## Method one
 
-You can also use the [Helm](https://helm.sh/) chart to install the monitoring agents in your cluster. Follow the instructions in the following article, [Azure Monitor – Containers](https://github.com/Helm/charts/tree/master/incubator/azuremonitor-containers).
+You can also use the [Helm](https://helm.sh/) chart to install the monitoring agents in your cluster. Follow the instructions in the following article, [Azure Monitor - Containers](https://github.com/Helm/charts/tree/master/incubator/azuremonitor-containers).
 
 ## Method two
 
