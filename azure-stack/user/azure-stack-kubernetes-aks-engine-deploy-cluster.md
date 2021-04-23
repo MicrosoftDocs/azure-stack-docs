@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 4/23/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/12/2021
+ms.lastreviewed: 4/23/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -107,6 +107,16 @@ This section looks at creating an API model for your cluster.
 - For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).  
 - For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
 
+## Add certificate when using ASDK
+
+If you are deploying a cluster on the Azure Stack Development Kit (ASDK) and using Linux, you will need to add the root certificate to the trusted certificate store of the client VM running the AKS engine.
+
+1. Find the root certificate in the VM at this directory: `/var/lib/waagent/Certificates.pem.`
+2. Copy the certificate file:
+    ```bash  
+    sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azurestacka.crt
+    sudo update-ca-certificates
+    ```
 ## Deploy a Kubernetes cluster
 
 After you have collected all the required values in your API model, you can create your cluster. At this point you should:
