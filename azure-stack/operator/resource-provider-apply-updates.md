@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 03/01/2021
+ms.date: 04/02/2021
 ms.reviewer: jfggdl
-ms.lastreviewed: 03/01/2021
+ms.lastreviewed: 04/02/2021
 zone_pivot_groups: state-connected-disconnected
 ---
 
@@ -32,9 +32,11 @@ Resource providers are updated using the same update feature that is used to app
 
 ## Download package
 
-If an update is available for a given resource provider:
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-common.md)]
 
 ::: zone pivot="state-connected"
+For a connected scenario, you download the update directly from Azure Marketplace:
+
 1. From the **Resource provider** section of the **Updates** page, select the row of the resource provider you want to update. Notice the **Download** link at the top of the page becomes enabled.
    [![Update available page](media/resource-provider-apply-updates/4-download.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
 

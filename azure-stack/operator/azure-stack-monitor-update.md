@@ -36,7 +36,7 @@ You can also determine whether the cmdlets are available programmatically by que
    ```powershell
    $cred = Get-Credential
 
-   $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
+   $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
    ```
    When prompted for credentials, use the &lt;*Azure Stack Hub domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
@@ -83,7 +83,7 @@ Run the following commands to create a PowerShell session on any of the ERCS VMs
 ```powershell
 $cred = Get-Credential
 
-$pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
+$pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 ```
  When prompted for credentials, use the &lt;*Azure Stack Hub domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 

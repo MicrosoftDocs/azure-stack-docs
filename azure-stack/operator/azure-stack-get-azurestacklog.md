@@ -25,7 +25,7 @@ $cred = New-Object -TypeName System.Management.Automation.PSCredential ("<DOMAIN
 
 $shareCred = Get-Credential
 
-$session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedEndpoint -Credential $cred
+$session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 $fromDate = (Get-Date).AddHours(-8)
 $toDate = (Get-Date).AddHours(-2) # Provide the time that includes the period for your issue
@@ -375,7 +375,7 @@ $cred = New-Object -TypeName System.Management.Automation.PSCredential ("<DOMAIN
 
 $shareCred = Get-Credential
 
-$session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedEndpoint -Credential $cred
+$session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 $fromDate = (Get-Date).AddHours(-8)
 $toDate = (Get-Date).AddHours(-2) # Provide the time that includes the period for your issue
