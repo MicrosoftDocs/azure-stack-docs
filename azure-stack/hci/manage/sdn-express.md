@@ -49,13 +49,13 @@ If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can c
 The following shows an example using `Convert-WindowsImage`:
 
  ```powershell
-$wimpath = "d:\sources\install.wim"
-$vhdpath = "c:\temp\WindowsServerDatacenter.vhdx"
-$Edition = 4   # 4 = Full Desktop, 3 = Server Core
+$installkitpath = "c:\temp\AzureStackHCI_17784.1408_EN-US.iso" #iso filename depends on the installation media version
+$vhdxpath = "c:\temp\SDN-VM.vhdx"
+$Edition = 1   # 1 = Azure Stack HCI
 
-import-module ".\convert-windowsimage.ps1"
+import-module convert-windowsimage
 
-Convert-WindowsImage -SourcePath $wimpath -Edition $Edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
+Convert-WindowsImage -SourcePath $installkitpath -Edition $Edition -VHDPath $vhdxpath -SizeBytes 100GB -DiskLayout UEFI
 ```
 
 ## Download the GitHub repository
