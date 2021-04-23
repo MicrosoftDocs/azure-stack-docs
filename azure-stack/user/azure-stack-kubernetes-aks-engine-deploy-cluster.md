@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/12/2021
+ms.date: 4/23/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/12/2021
+ms.lastreviewed: 4/23/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -63,9 +63,7 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > If you're using Azure AD for your identity system, you don't need to add the **identitySystem** field.
 
-6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
-
-7.  In `masterProfile`, set the following fields:
+6.  In `masterProfile`, set the following fields:
 
     | Field | Description |
     | --- | --- |
@@ -74,7 +72,7 @@ This section looks at creating an API model for your cluster.
     | vmSize |  Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04` or `aks-ubuntu-18.04`. |
 
-8.  In `agentPoolProfiles` update:
+7.  In `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
@@ -82,7 +80,7 @@ This section looks at creating an API model for your cluster.
     | vmSize | Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`, `aks-ubuntu-18.04` or `Windows`.<br>Use `Windows` for agents that will run on Windows. For example, see [kubernetes-windows.json](https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json) |
 
-9.  In `linuxProfile` update:
+8.  In `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
@@ -94,7 +92,7 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > The AKS engine for Azure Stack Hub doesn't allow you to provide your own certificates for the creation of the cluster.
 
-10. If you're using Windows, in `windowsProfile` update the values of `adminUsername:` and `adminPassword`:
+9. If you're using Windows, in `windowsProfile` update the values of `adminUsername:` and `adminPassword`:
 
     ```json
     "windowsProfile": {
@@ -109,6 +107,16 @@ This section looks at creating an API model for your cluster.
 - For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).  
 - For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
 
+## Add certificate when using ASDK
+
+If you are deploying a cluster on the Azure Stack Development Kit (ASDK) and using Linux, you will need to add the root certificate to the trusted certificate store of the client VM running the AKS engine.
+
+1. Find the root certificate in the VM at this directory: `/var/lib/waagent/Certificates.pem.`
+2. Copy the certificate file:
+    ```bash  
+    sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azurestacka.crt
+    sudo update-ca-certificates
+    ```
 ## Deploy a Kubernetes cluster
 
 After you have collected all the required values in your API model, you can create your cluster. At this point you should:
