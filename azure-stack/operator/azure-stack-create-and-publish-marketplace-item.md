@@ -315,7 +315,7 @@ Icons and text for Marketplace items as seen in the Azure Stack Hub portal are a
 
 ### Create blade
 
-![Create blade—Azure Stack Hub Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
+![Create blade--Azure Stack Hub Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### Marketplace item details blade
 
