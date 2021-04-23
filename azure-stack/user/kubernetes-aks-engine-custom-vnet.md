@@ -4,10 +4,10 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/1/2021
+ms.date: 04/23/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 9/2/2020
+ms.lastreviewed: 04/23/2021
 
 # Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub
@@ -18,7 +18,9 @@ ms.lastreviewed: 9/2/2020
 
 You can deploy a Kubernetes cluster using the Azure Kubernetes Service (AKS) engine on a custom virtual network. This article looks at finding the information you need in your virtual network. You can find steps for calculating the IP addresses used by your cluster, setting the vales in the API Model, and setting the route table and network security group.
 
-The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](/azure/aks/configure-kubenet).
+The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. The AKS engine on Azure Stack Hub also supports the Azure CNI network plugin.  
+  - For a discussion of the kubenet networking plugin in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](/azure/aks/configure-kubenet).
+  - For a discussion of the Azure CNI networking plugin in Azure, see [Configure Azure CNI networking in Azure Kubernetes Service (AKS)](/azure/aks/configure-azure-cni).
 
 ## Constraints when creating a custom virtual network
 
@@ -51,7 +53,7 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 
 When you create a custom virtual network, you specify the IP address space of your network and an IP address range for every subnet. Consider the following factors when you choose the address spaces and ranges to use in your Kubernetes cluster:
 -  Overlapping address spaces might result in IP address clashes or communication errors. To reduce the risk of overlapping IP addresses, choose a unique address space for your new virtual network.
--  Address spaces in the `10.` and `172.` ranges often are used for private networks, and they might be used by your existing datacenter infrastructure. If your Kubernetes applications use resources in your datacenter, reduce the risk of clashes by choosing an address space for your custom virtual network that's different from you datacenter's address space.
+-  Address spaces in the `10.` and `172.` ranges often are used for private networks, and they might be used by your existing datacenter infrastructure. If your Kubernetes applications use resources in your datacenter, reduce the risk of clashes by choosing an address space for your custom virtual network that's different from your datacenter's address space.
 -  We recommend that you use a dedicated subnet for your Kubernetes cluster.
 
 ## Get the IP address block
@@ -60,7 +62,7 @@ The AKS engine supports deploying into an existing virtual network. When deployi
 
 You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
 
-The AKS engine requires a range of up to 16 unused IP addresses when you use multiple master nodes. The cluster will use one IP address for each master up to five masters. The AKS engine will also require the next 10 IP address after the last master for headroom IP address reservation. Finally, an additional IP address will be used by the load balancer after the masters and headroom reservation for a total of 16.
+The AKS engine requires a range of up to 16 unused IP addresses when you use multiple master nodes. The cluster will use one IP address for each master up to five masters. The AKS engine will also require the next 10 IP address after the last master for headroom IP address reservation. Finally, another IP address will be used by the load balancer after the masters and headroom reservation for a total of 16.
 
 When placing your block of IP addresses, the subnet requires the following allocations of the existing IP addresses:
  - The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet
