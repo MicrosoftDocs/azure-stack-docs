@@ -315,11 +315,11 @@
       - name: Offer a Container registry
         items:
         - name: Add a container registry
-          href: operator/container-registry-template-install-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: /azure-stack/ruggedized/ruggedized-overview?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
         - name: Update the container registry
-          href: operator/container-registry-template-update-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: /azure-stack/ruggedized/ruggedized-overview?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
         - name: Rotate container registry secrets
-          href: operator/container-registry-template-rotate-secrets-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: /azure-stack/ruggedized/ruggedized-overview?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
       - name: Offer Commvault marketplace item
         href: operator/azure-stack-commvault-offer-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Offer services
