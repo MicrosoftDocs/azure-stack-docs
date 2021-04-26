@@ -4,17 +4,17 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/26/2021
+ms.date: 4/26/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 3/26/2021
+ms.lastreviewed: 4/26/2021
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
 
 ---
 
-# Add scale unit nodes in Azure Stack Hub
+# Add scale unit nodes in Azure Stack Hub - Ruggedized
 
 You can increase the overall capacity of an existing scale unit by adding another physical computer. The physical computer is also referred to as a *scale unit node*. Each new node must have the same CPU type, memory, disk number, and size as the nodes already present in the scale unit. Azure Stack Hub doesn't support removing scale unit nodes for scaling down because of architectural limitations. It's only possible to expand capacity by adding nodes.
 
@@ -45,11 +45,126 @@ Let your Azure Stack Hub return to the **Running** state before adding another n
 The following steps are a high-level overview of how to add a node. Don't follow these steps without first referring to your OEM-provided capacity expansion documentation.
 
 1. Place the new physical server in the rack and cable it appropriately. 
-2. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
-3. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation.
+2. Enable physical switch ports and adjust access control lists (ACLs) if applicable:
+   1. Enter configuration mode:
+
+      ```shell
+      configure terminal
+      ```
+
+   2. Remove interfaces 1/5-8 from VLAN 2 (unused ports VLAN):
+
+      ```shell
+      Interface vlan 2
+      no untagged twentyFiveGigE 1/5-1/8
+      exit
+      ```
+
+   3. Remove existing L2 and switchport configuration from interfaces 1/5-8:
+
+      ```shell
+      Interface range twentyFiveGigE 1/5-1/8
+      no spanning-tree rstp edge-port bpduguard
+      no spanning-tree rstp rootguard
+      no switchport
+      ```
+
+   4. Enable interfaces 1/5-8 and give them identical config to interfaces 1/1-4:
+
+      ```shell
+      description CL01 Nodes NIC
+      mtu 9216
+      portmode hybrid
+      switchport
+      spanning-tree rstp edge-port bpduguard 
+      spanning-tree rstp rootguard 
+      dcb-map AZS_SERVICES
+      no shutdown
+      exit
+      ```
+
+   5. Add interfaces 1/5-8 as untagged to VLAN 7 and tagged to VLAN 107:
+
+      ```shell
+      Interface vlan 7
+      untagged twentyFiveGigE 1/5-1/8
+      exit
+      interface vlan 107
+      tagged twentyFiveGigE 1/5-1/8
+      exit
+      ```
+
+3. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation:
+
+   1. Enter configuration mode:
+
+      ```shell
+      configure terminal
+      ```
+
+   2. Enable interfaces 1/5-8 and give them an identical configuration to interfaces 1/1-4:
+
+      ```shell
+      interface range gigabitethernet 1/5-1/8
+      description BMCMgmt Ports
+      no shutdown
+      exit
+      ```
+
+   3. Remove interfaces 1/5-8 from the unused ports VLAN (VLAN2) and add them to the BMC VLAN (VLAN125):
+
+      ```shell
+      interface vlan 2
+      no untagged gigabitethernet 1/5-1/8
+      exit
+      interface vlan 125
+      untagged gigabitethernet 1/5-1/8
+      exit
+      ```
+
+   4. End configuration mode and save changes:
+
+      ```shell
+      end
+      write memory
+      ```
+
 4. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
 5. Run the add node operation in the Azure Stack Hub administrator portal.
-6. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations). 
+6. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations).
+
+### Cabling and IP changes for interfaces on Nodes 5-8
+
+The following are the steps for cabling the new nodes into the existing switches, and describes the IP changes needed for the BMC interfaces on the 4 additional nodes.
+
+- Once the 2nd RCA has been un-crated and stacked adjacent to the 1st RCA, connect all power cables from the nodes in the Pod1 and Pod2 cases.
+
+  - Do not connect power cables from anything in the management case at this time.
+  - If the nodes in the Pod1 and Pod2 cases begin booting up, force-power them off by holding down their power buttons for a few seconds until the power button's light turns off and you see no other lights on the disks on the front of the node.
+
+- You must now re-IP each node's BMC management IP. This must be done on a laptop that you can cable directly into each node's BMC NIC directly, as follows:
+
+  - On the laptop you are going to use for the IP address changes, give the 1 Gbps NIC the following IP configuration:
+
+    - IP address – 10.10.21.90
+    - Subnet mask – 255.255.255.192
+    - Gateway – None
+
+  - Starting with Node 1 of the 2nd RCA and working your way through all 4 nodes, directly attach the laptop to the BMC NIC of each node and connect via web browser to its current BMC web portal. Sign in using the standard RCA credentials (user: changeme, password: <stamp default password assigned to your RCA>), and change the IP for that node per the following table:
+
+   | 2nd RCA Node | Current BMC IP | New BMC IP  |
+   |--------------|----------------|-------------|
+   | Node 1       | 10.10.21.67    | 10.10.21.71 |
+   | Node 2       | 10.10.21.68    | 10.10.21.72 |
+   | Node 3       | 10.10.21.69    | 10.10.21.73 |
+   | Node 4       | 10.10.21.70    | 10.10.21.74 |
+
+- Using the RCA Port Mapping document as a guide, cable the new nodes from the 2nd RCA into the switches contained within the 1st RCA's management case, using the node equivalency as follows:
+
+  - Node 1 of 2nd RCA = Node 5
+  - Node 2 of 2nd RCA = Node 6
+  - Node 3 of 2nd RCA = Node 7
+  - Node 4 of 2nd RCA = Node 8
 
 ## Add the node
 
