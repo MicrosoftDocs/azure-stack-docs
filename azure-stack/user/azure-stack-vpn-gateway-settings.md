@@ -38,6 +38,8 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 When you create a virtual network gateway, you must specify the gateway SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughputs, features, and SLAs.
 
+You can have 10 high performance gateways or 20 basic and standard before your reach the maximum capacity. The maximum can also be reached for a total aggregate throughput of 2 Gbps. 
+
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 | | Tunnel throughput |VPN gateway maximum IPsec tunnels |
