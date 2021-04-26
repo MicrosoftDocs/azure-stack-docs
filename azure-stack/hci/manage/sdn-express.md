@@ -40,7 +40,7 @@ The following requirements must be met for a successful SDN deployment:
 - The physical network must be configured for the subnets and VLANs defined in the configuration file
 - The VHDX file specified in the configuration file must be reachable from the deployment computer where the SDN Express script is run
 
-## Create the VDX file
+## Create the VHDX file
 
 SDN uses a VHDX file containing the Azure Stack HCI operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
 
