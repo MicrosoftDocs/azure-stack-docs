@@ -159,7 +159,7 @@ Repeat the steps for each **InsideSubnet** route for each resource group.
 
  You will require a valid license file from Fortinet to activate each FortiGate NVA. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
-Two license files will need to be acquired – one for each NVA.
+Two license files will need to be acquired - one for each NVA.
 
 ## Create an IPSec VPN between the two NVAs
 
