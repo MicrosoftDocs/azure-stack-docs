@@ -115,7 +115,7 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 ### Table notes
 
-**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement.  
+**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement. The total aggregate is 2 Gbps.  
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing is not supported for the Basic SKU.
 
