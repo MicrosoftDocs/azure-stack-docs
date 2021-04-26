@@ -1,6 +1,6 @@
 ---
-title: Add scale unit nodes in Azure Stack Hub 
-description: Learn how to add scale unit nodes to scale units in Azure Stack Hub.
+title: Add scale unit nodes in Azure Stack Hub Ruggedized
+description: Learn how to add scale unit nodes to scale units in Azure Stack Hub Ruggedized.
 author: mattbriggs
 
 ms.topic: article
@@ -22,7 +22,7 @@ To add a scale unit node, sign in to in Azure Stack Hub. Run the tools from your
 
 The following flow diagram shows the general process to add a scale unit node:
 
-![Add scale unit flow](media/azure-stack-add-scale-node/add-node-flow.svg)
+![Add scale unit flow](media/azure-stack-add-scale-node-rca/add-node-flow.svg)
 <br> *Whether your OEM hardware vendor enacts the physical server rack placement and updates the firmware varies based on your support contract.*
 
 Take into consideration the following limitations when adding a new node:
@@ -174,9 +174,9 @@ You can use the administrator portal or PowerShell to add new nodes. The add nod
 
 1. Sign in to the Azure Stack Hub administrator portal as an Azure Stack Hub operator.
 2. Navigate to **+ Create a resource** > **Capacity** > **Scale Unit Node**.
-   ![Scale unit node](media/azure-stack-add-scale-node/select-node1.png)
+   ![Scale unit node](media/azure-stack-add-scale-node-rca/select-node1.png)
 3. On the **Add node** pane, select the *Region*, and then select the *Scale unit* that you want to add the node to. Also specify the *BMC IP ADDRESS* for the scale unit node you're adding. You can only add one node at a time.
-   ![Add node details](media/azure-stack-add-scale-node/select-node2.png)
+   ![Add node details](media/azure-stack-add-scale-node-rca/select-node2.png)
  
 
 ### [PowerShell Az](#tab/Az)
@@ -270,4 +270,4 @@ The following are common issues seen when adding a node.
 
 
 ## Next steps 
-[Add public IP addresses](azure-stack-add-ips.md) 
+[Add public IP addresses](../../operator/azure-stack-add-ips.md)
