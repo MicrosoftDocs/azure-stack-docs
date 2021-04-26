@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/21/2021
+ms.date: 04/26/2021
 ---
 
 # Understand and deploy persistent memory
@@ -29,7 +29,7 @@ This section describes the basic concepts you'll need to understand in order to 
 
 There are two methods for accessing persistent memory. They are:
 
-1. **Block access**, which operates like storage for app compatibility. In this configuration, the data flows through the stack. You can use this configuration in combination with NTFS and ReFS, and it is the recommended configuration for most use cases.
+1. **Block access**, which operates like storage for app compatibility. In this configuration, data flows through the file system and storage stacks as normal. You can use this configuration in combination with NTFS and ReFS, and it is recommended for most use cases.
 2. **Direct access (DAX)**, which operates like memory to get the lowest latency. You can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is potential for data loss.** We strongly recommend that you use DAX with [Block translation table (BTT)](#block-translation-table) turned on to mitigate the risk of torn writes. [Learn more about DAX](pmem-dax.md).
 
 > [!WARNING]
@@ -79,7 +79,7 @@ Now, let's dive into how you configure persistent memory. **Cong/Scott: As far a
 Interleaved sets can usually be created in a server platform's BIOS to make multiple persistent memory devices appear as a single disk to the host operating system, increasing throughput for that disk.
 
 > [!NOTE]
-> Windows Server 2016 and Windows 10 Anniversary Edition do not support interleaved sets of persistent memory modules.
+> Windows Server 2016 doesn't support interleaved sets of persistent memory modules.
 
 Recall that a persistent memory module resides in a standard DIMM (memory) slot, which puts data closer to the processor. This configuration reduces latency and improves fetch performance. To further increase throughput, two or more persistent memory modules create an n-way interleaved set to stripe read/write operations. The most common configurations are two-way or four-way interleaving.
 
