@@ -41,10 +41,10 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [install-akshcicsismb](install-akshcicsismb.md) | Installs the CSI SMB plug-in to a cluster. |
 | [install-akshcigmsawebhook](install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
 | [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
-| [new-akshciclusternetwork](new-akshci-cluster-network.md) | Create an object for a new virtual network. |
+| [new-akshciclusternetwork](new-akshciclusternetwork.md) | Create an object for a new virtual network. |
 | [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
-| [remove-akshciclusternetwork](remove-akshci-cluster-network.md) | Remove a proxy settings object. |
+| [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [remove-akshciproxysetting](remove-akshci-proxy-setting.md)  |  Remove a proxy settings object. |
