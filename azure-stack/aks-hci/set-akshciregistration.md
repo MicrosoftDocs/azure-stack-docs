@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -armAccessToken
-The token for accessing ARM.
+The token for accessing Azure Resource Manager (ARM).
 
 ```yaml
 Type: System.String
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -environmentName
-The name of the intented public cloud.
+The name of the intended public cloud.
 
 ```yaml
 Type: System.String
