@@ -12,9 +12,6 @@ ms.reviewer:
 
 Certificates are a means to build secure communication between in-cluster components. In AKS on Azure Stack HCI, zero-touch, out-of-the-box provisioning and management of certificates is provided for the Kubernetes built-in components. 
 
-> [!NOTE]
-> This preview release enables secure communication between in-cluster components by replacing self-signed certificates with certificates issued by a Certificate Authority (CA) for new target clusters. 
-
 ## Certificates and CAs
 
 AKS on Azure Stack HCI generates and uses the following certificates and CAs: 
@@ -32,7 +29,7 @@ AKS on Azure Stack HCI generates and uses the following certificates and CAs:
 
 ### Certificate provisioning 
 
-Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/). For all other certificates, YAML-based key and certificate creation is used. 
+Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
 
 - The certificates are stored at /etc/kubernetes/pki
 - The keys are RSA 4096, EcdsaCurve: P384 
@@ -42,24 +39,57 @@ Certificate provisioning for kubelets is done using [TLS bootstrapping](https://
 
 ### Certificate renewal and management
 
-Non-root certificates are automatically renewed. Note that support for certificate revocation is not available in this preview release.
-
-All control plane certificates for Kubernetes are managed except for the following certificates:
+Non-root certificates are automatically renewed. All control plane certificates for Kubernetes are managed except for the following certificates:
 
 - Kubelet server certificate 
 - Kubeconfig client certificate 
 
-We recommend using [Active Directory single sign-in](./ad-sso.md) for user authentication as a security best practice.
+It's recommended that you use [Active Directory single sign-in](./ad-sso.md) for user authentication as a security best practice.
 
-## Enable this capability for your cluster
+## Certificate revocation
+Revocation should be a rare incident and is applied at the time of certificate renewal. 
 
-Use the `-enableCertificateRotation` parameter of the [New-AksHciCluster](./new-akshcicluster.md) command to enable secure communication and automate certificate management as shown below: 
+Once you have the serial number of the certificate you would like to revoke, use Kubernetes Custom Resource for defining and persisting revocation information. Each revocation object can consist of one or more revocation entries.  
 
-```powershell
-New-AksHciCluster -name mynewcluster -enableCertificateRotation 
+Revocation can be performed using:
+- Serial Number 
+- Group 
+- DNS name 
+- IP address  
+
+A _notBefore_ time can be specified to revoke only certificates that are issued before a certain timestamp. If a _notBefore_ time is not specified, all existing and future certificates matching the revocation will be revoked. 
+
+> [!NOTE]
+> Revocation for `kubelet` server certificate is currently not available.
+
+As long as the revocation was performed using a serial number, you can use the `Repair-AksHciClusterCerts` PowerShell command described below to get your cluster into a working state. If revocation was performed using other fields, make sure to specify _notBefore_ time so you can recover your cluster using the `Repair-AksHciClusterCerts` command. 
+
+```Console
+apiVersion: certificates.microsoft.com/v1 
+kind: RenewRevocation 
+metadata: 
+  name: my-renew-revocation 
+  namespace: kube-system 
+spec: 
+  description: My list of renew revocations 
+  revocations: 
+  - description: Revoked certificates by serial number 
+    kind: serialnumber 
+    notBefore: "2020-04-17T17:22:05Z" 
+    serialNumber: 77fdf4b1033b387aaace6ce1c18710c2 
+  - description: Revoked certificates by group 
+    group: system:nodes 
+    kind: Group 
+  - description: Revoked certificates by DNS 
+    dns: kubernetes.default.svc. 
+    kind: DNS 
+  - description: Revoked certificates by DNS Suffix 
+    dns: .cluster.local 
+    kind: DNS 
+  - description: Revoked certificates by IP 
+    ip: 170.63.128.124 
+    kind: IP 
 ```
-
-Once you deploy a new cluster with the `-enableCertificateRotation` parameter, you cannot disable this feature. 
 
 ## Troubleshoot and maintenance
 
@@ -121,6 +151,6 @@ If the cluster becomes unreachable via `kubectl`, you can find the logs in the `
 
 ## Next steps
 
-In this how-to guide, you learned how to enable the encryption of etcd secrets for new workload clusters. Next, you can:
+In this how-to guide, you learned how to provision and manage certificates. Next, you can:
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
