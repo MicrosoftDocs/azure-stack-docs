@@ -38,6 +38,8 @@
       href: ../operator/azure-stack-connected-deployment.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Disconnected deployment
       href: ../operator/azure-stack-disconnected-deployment.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+    - name: Publish endpoints
+      href: operator/azure-stack-integrate-endpoints-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Security overview 
       href: ../operator/azure-stack-security-foundations.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Identity
@@ -289,11 +291,11 @@
       - name: Offer a container registry
         items:
         - name: Add a container registry
-          href: operator/container-registry-template-install-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: /azure-stack/mdc/mdc-overview?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Update the container registry
-          href: operator/container-registry-template-update-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: /azure-stack/mdc/mdc-overview?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Rotate container registry secrets
-          href: operator/container-registry-template-rotate-secrets-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: /azure-stack/mdc/mdc-overview?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
       - name: Offer Commvault marketplace item
         href: operator/azure-stack-commvault-offer-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Offer services

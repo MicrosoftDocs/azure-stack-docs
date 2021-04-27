@@ -89,7 +89,7 @@ To download IoT Hub for a connected deployment, complete the following steps:
 
     [![IoT Hub RP install in progress](../operator/media/iot-hub-rp-install/install8.png)](../operator/media/iot-hub-rp-install/install8.png#lightbox)
 
-10. Installation can take between 90 – 120 minutes. Wait for the installation to complete.
+10. Installation can take between 90 - 120 minutes. Wait for the installation to complete.
 
     [![IoT Hub RP install complete](../operator/media/iot-hub-rp-install/install91.png)](../operator/media/iot-hub-rp-install/install91.png#lightbox)
 
