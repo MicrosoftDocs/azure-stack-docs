@@ -69,7 +69,7 @@ The following example increases the number of Linux nodes to three and Windows n
 Set-AksHciCluster -name mycluster -linuxNodeCount 3 -windowsNodeCount 1
 ```
 
-Run the following command to confirm that scaling was succesful.
+Run the following command to confirm that scaling was successful.
 
 ```powershell
 Get-AksHciCluster -name mycluster
