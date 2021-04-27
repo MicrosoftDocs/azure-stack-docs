@@ -3,7 +3,7 @@ title: Get-AksHciLogs
 author: jessicaguan
 description: The Get-AksHciLogs PowerShell command creates a zipped folder with logs from all your pods.
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 04/13/2021
 ms.author: jeguan
 ---
 
@@ -97,6 +97,22 @@ Accept wildcard characters: False
 
 ### -downloadSdkLogs
 Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI uses.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
+### -billingRecords
+Use this flag to get the billing records.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
