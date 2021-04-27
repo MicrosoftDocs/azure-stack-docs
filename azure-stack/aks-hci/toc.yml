@@ -26,7 +26,7 @@
     - name: 1 - Prepare an application
       href: tutorial-kubernetes-prepare-app.md
     - name: 2 - Create container registry
-      href: tutorial-kubernetes-prepare-acr.md
+      href: tutorial-kubernetes-prepare-azure-container-registry.md
     - name: 3 - Deploy a workload cluster
       href: tutorial-kubernetes-deploy-cluster.md
     - name: 4 - Run an application
