@@ -19,7 +19,7 @@ The CSI storage driver support on AKS on Azure Stack HCI allows you to use:
 
 - AKS on Azure Stack HCI files, which you can use to mount an SMB or NFS share to pods. These are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification.
 
-## Dynamically create AKS on Azure Stack HCI disk persistent volumes by using the built-in storage class
+## Dynamically create disk persistent volumes by using the built-in storage class
 A storage class is used to define how a unit of storage is dynamically created with a persistent volume. For more information on how to use storage classes, see [Kubernetes storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/). 
 
 In AKS on Azure Stack HCI, the `default` storage class is created by default and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size.
