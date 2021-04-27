@@ -17,4 +17,7 @@ _themes.VS.Modern/
 articles/directories.txt
 AzureMigration.ps1
 
+# macOS finder
+.DS_Store
+
 !/.vscode/extensions.json
