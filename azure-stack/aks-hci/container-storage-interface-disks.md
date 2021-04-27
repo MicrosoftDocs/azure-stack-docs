@@ -15,7 +15,7 @@ The CSI is a standard for exposing arbitrary block and file storage systems to c
 
 The CSI storage driver support on AKS on Azure Stack HCI allows you to use:
 
-- AKS on Azure Stack HCI disks, which you can use to create a Kubernetes *DataDisk* resource. These are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. For storage volumes that can be accessed by multiple pods simultaneously, use [AKS on Azure Stack HCI files](./csi-files.md).
+- AKS on Azure Stack HCI disks, which you can use to create a Kubernetes *DataDisk* resource. These are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. For storage volumes that can be accessed by multiple pods simultaneously, use [AKS on Azure Stack HCI files](./container-storage-interface-files.md).
 
 - AKS on Azure Stack HCI files, which you can use to mount an SMB or NFS share to pods. These are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification.
 
