@@ -11,7 +11,7 @@ ms.author: v-susbo
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-You can configure a Windows container to run with a group Managed Service Account (gMSA) for non-domain joined containers to use AD Authentication. A [group Managed Service Account](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without having to know the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
+To use AD Authentication, you can configure a Windows container to run with a group Managed Service Account (gMSA) for non-domain joined containers. A [group Managed Service Account](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without having to know the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
 
 > [!NOTE]
 > To learn how the Kubernetes community supports using gMSA with Windows containers, see [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa).
@@ -22,17 +22,16 @@ gMSA for non-domain joined containers uses a portable user identity instead of a
 
 ![Diagram of group Managed Service Accounts version two](media/gmsa/gmsa-v2.png)
 
-Starting in Windows Server 2019, new support was added for a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. In AKS on Azure Stack HCI, use the gMSA plug-in to communicate to AD and then retrieve the gMSA credentials. For more information, see [ICcgDomainAuthCredentials](https://docs.microsoft.com/windows/win32/secauthn/iccgdomainauthcredentials-getpasswordcredentials).
+gMSA support for non-domain joined containers provides the flexibility of creating containers with gMSA without joining the host node to the domain. Starting in Windows Server 2019, Container Credential Guard (CCG) is supported which enables a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. For more information on CCG, see the [ICcgDomainAuthCredentials interface](https://docs.microsoft.com/windows/win32/secauthn/iccgdomainauthcredentials).
 
 ## Comparison of gMSA non-domain joined and domain joined containers
 
-Recent gMSA improvements for AKS on Azure Stack HCI address the following limitations of the initial gMSA version:
+When gMSA was initially introduced, it required the container host to be domain joined, which created a lot of overhead for users to manually join Windows worker nodes to a domain. This limitation has been addressed with gMSA support for non-domain joined containers, so users can now use gMSA with domain-unjoined hosts. Other improvements to gMSA include the following:
 
-- The requirement to join Windows worker nodes to a domain, which creates a lot of overhead for users.
-- In scaling scenarios, new worker nodes are not domain joined by default, and users are required to join new Windows worker nodes to a domain. 
-- For rolling update scenarios, users must rejoin the node to a domain.
-- Managing the worker node machine accounts to retrieve gMSA service account password is an unmanageable process.
-- The end-to-end process to configure gMSA with Kubernetes is complicated.
+- Eliminating the requirement to manually join Windows worker nodes to a domain, which caused a lot of overhead for users. For scaling scenarios, this will simplify the process.
+- In rolling update scenarios, users no longer must rejoin the node to a domain.
+- An easier process for managing the worker node machine accounts to retrieve gMSA service account passwords.
+- A less complicated end-to-end process to configure gMSA with Kubernetes.
 
 ## Before you begin
 
