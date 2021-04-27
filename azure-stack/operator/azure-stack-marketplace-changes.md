@@ -21,7 +21,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## New marketplace items
 
-- 01/04/2021: Versa Operating System 21.1.1 – version 21.1.1
+- 01/04/2021: Versa Operating System 21.1.1 - version 21.1.1
 - 09/08/2020: Qualys Virtual Scanner Appliance
 - 01/21/2020: Teradici Cloud Access Software
 - 12/26/2019: CloudGuard IaaS High Availability
@@ -195,11 +195,11 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 03/08/2021: AKS Base Ubuntu 16.04-LTS Image Distro, January 2021 - version 2021.01.28
 - 03/08/2021: AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q1 - version 2021.01.28
 - 03/08/2021: AKS Base Windows Image, January 28 2021 - version 17763.1697.210129
-- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – LTM/DNS (BYOL, 1 Boot Location) - version 16.0.101000
-- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – ALL (BYOL, 1 Boot Location) - version 16.0.101000
-- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – LTM/DNS (BYOL, 2 Boot Locations) - version 16.0.101000
-- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations) - version 16.0.101000
-- 12/22/2020: Rogue Wave Software Centos 7.8 – version 7.8.2020062400
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - LTM/DNS (BYOL, 1 Boot Location) - version 16.0.101000
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) - version 16.0.101000
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - LTM/DNS (BYOL, 2 Boot Locations) - version 16.0.101000
+- 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations) - version 16.0.101000
+- 12/22/2020: Rogue Wave Software Centos 7.8 - version 7.8.2020062400
 - 12/07/2020: Bitnami Elasticsearch Cluster - version 1.0.2
 - 12/07/2020: Bitnami Cassandra Cluster - version 1.0.21
 - 12/07/2020: Bitnami etcd Cluster - version 1.0.16
@@ -280,17 +280,17 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 10/29/2020: [smalldisk] Windows Server, version 2004 with Containers-Pay as you go - version 19041.572.2010091946
 - 10/29/2020: [smalldisk] Windows Server, version 2004 with Containers-Bring your own license - version 19041.572.2010091946
 - 09/21/2020: Centos Application Connection Gateway - version 7.2.0
-- 09/09/2020: FortiGate NGFW - Single VM Deployment (BYOL) – version 1.0.2
+- 09/09/2020: FortiGate NGFW - Single VM Deployment (BYOL) - version 1.0.2
 - 09/04/2020: CentOS-based 6.10 - version 6.10.2020042900
 - 09/04/2020: CentOS-based 7.4 - version 7.4.20200220
 - 09/04/2020: CentOS-based 7.5 - version 7.5.201808150
 - 09/04/2020: CentOS-based 7.6 - version 7.6.201909120
 - 09/04/2020: CentOS-based 7.7 - version 7.7.2020062400
 - 09/04/2020: CentOS-based 8.0 - version 8.0.201912060
-- 07/27/2020: Ubuntu Server 20.04 LTS – version 20.04.202007080
-- 07/27/2020: Ubuntu Server 16.04 LTS – version 16.04.202007080
-- 6/19/2020: Bitnami Gitlab CE – version 13.0.2006110322
-- 6/16/2020: SQLIaaSExtension – version 1.3.20370
+- 07/27/2020: Ubuntu Server 20.04 LTS - version 20.04.202007080
+- 07/27/2020: Ubuntu Server 16.04 LTS - version 16.04.202007080
+- 6/19/2020: Bitnami Gitlab CE - version 13.0.2006110322
+- 6/16/2020: SQLIaaSExtension - version 1.3.20370
 - 6/12/2020: Bitnami Grafana - version 6.7.2006040249
 
 ## Next steps

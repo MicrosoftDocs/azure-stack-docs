@@ -234,7 +234,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](known-issues-1908.md)
+- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1908)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -332,7 +332,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](known-issues-1907.md)
+- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1907)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -467,7 +467,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](known-issues-1906.md)
+- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1906)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -697,7 +697,7 @@ For information about security updates in this update of Azure Stack, see [Azure
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](known-issues-1905.md)
+- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1905)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -879,7 +879,7 @@ This update of Azure Stack does not include security updates to the underlying o
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](known-issues-1904.md)
+- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1904)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
