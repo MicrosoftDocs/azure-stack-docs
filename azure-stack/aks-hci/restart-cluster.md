@@ -23,7 +23,7 @@ Restart-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following [Uninstall-AksHci](./uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./set-akshciconfig.md) again when you reinstall. If your clusters are Arc-enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following [Uninstall-AksHci](./uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./set-akshciconfig.md) again when you reinstall. If your clusters are Arc-enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
 
 ```powershell
 Uninstall-AksHci
