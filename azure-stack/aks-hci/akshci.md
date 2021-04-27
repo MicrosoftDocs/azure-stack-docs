@@ -47,13 +47,13 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
-| [remove-akshciproxysetting](remove-akshci-proxy-setting.md)  |  Remove a proxy settings object. |
+| [remove-akshciproxysetting](remove-akshciproxysetting.md)  |  Remove a proxy settings object. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciclusternodecount](set-akshciclusternodecount.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
 | [set-akshciregistration](set-akshciregistration.md) | Register Azure Kubernetes Service on Azure Stack HCI with Azure. |
-| [sync-akshcibilling](sync-akshci-billing.md) | Manually trigger a billing records sync. |
+| [sync-akshcibilling](sync-akshcibilling.md) | Manually trigger a billing records sync. |
 | [uninstall-akshci](uninstall-akshci.md) | Remove Azure Kubernetes Service on Azure Stack HCI. |
 | [uninstall-akshciadauth](uninstall-akshciadauth.md) | Remove Active Directory authentication. |
 | [uninstall-akshcicsinfs](uninstall-akshcicsinfs.md) | Uninstalls CSI NFS Plugin in a cluster. |
