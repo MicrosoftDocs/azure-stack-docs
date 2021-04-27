@@ -31,9 +31,9 @@ The current architecture of AKS on Azure Stack HCI assumes that customers have l
 ## Application disruption scenarios
 A comparative study of the recovery times for applications running in VMs and AKS on Azure Stack HCI clearly shows that there is minimal impact on the application when common disruption events occur. Here are three example disruption scenarios:
 
-1. Applying an update that results in a reboot of the physical machine. 
-2. Applying an update that involves recreating the worker node. 
-3. Unplanned hardware failure of a physical machine. 
+- Applying an update that results in a reboot of the physical machine. 
+- Applying an update that involves recreating the worker node. 
+- Unplanned hardware failure of a physical machine. 
 
 > [!NOTE]
 > These scenarios assume that the application owner still uses Kubernetes affinity and anti-affinity settings to ensure proper scheduling of pods across worker nodes.
