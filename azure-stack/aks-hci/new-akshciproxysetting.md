@@ -23,7 +23,7 @@ New-AksHciProxySetting -name <String>
 ```
 
 ## Description
-Create a proxy settings object to use for all virtual machines in the deployment. This proxy settings object can be used to configure the prox settings across all Azure Stack HCI and Kubernetes cluster nodes.
+Create a proxy settings object to use for all virtual machines in the deployment. This proxy settings object can be used to configure the proxy settings across all Azure Stack HCI and Kubernetes cluster nodes.
 
 > [!Note]
 > Proxy settings are only applied during `Install-AksHci` and `New-AksHciCluster`. If you change the proxy settings object after running `Install-AksHci` or `New-AksHciCluster`, the new settings will only be applied to new Kubernetes workload clusters. The existing Azure Stack HCI and workload cluster nodes will not be updated.
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 
 ### -credential
 
-The PSCredential object containing the username and password to authenticate against the Proxy server.
+The PS Credential object containing the username and password to authenticate against the Proxy server.
 
 ```yaml
 Type: PSCredential
