@@ -107,7 +107,7 @@ Important considerations for your Azure Stack Hub deployment:
 
 This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, refer to:
 
-- [Azure Stack IaaS – part four – Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
+- [Azure Stack IaaS - part four - Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
 - [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
 
 ### Azure Backup Server

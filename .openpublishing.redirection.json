@@ -1,11 +1,6 @@
 {
   "redirections": [
     { 
-      "source_path": "azure-stack/operator/known-issues-v0.md", 
-      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2008", 
-      "redirect_document_id": false
-    }, 
-    { 
       "source_path": "azure-stack/mdc/operator/container-registry-template-install-tzl.md", 
       "redirect_url": "/azure-stack/mdc/mdc-overview", 
       "redirect_document_id": false
@@ -36,6 +31,11 @@
       "redirect_document_id": false
     }, 
     { 
+      "source_path": "azure-stack/operator/known-issues-v0.md", 
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2008", 
+      "redirect_document_id": false
+    },     
+    { 
       "source_path": "azure-stack/operator/known-issues-v1.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2005", 
       "redirect_document_id": false
@@ -50,6 +50,11 @@
       "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1910", 
       "redirect_document_id": false
     }, 
+    { 
+      "source_path": "azure-stack/operator/hotfix-v0.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-31-126", 
+      "redirect_document_id": false
+    },     
     { 
       "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
