@@ -22,10 +22,12 @@ landingContent:
         links:
           - text: Clusters and workloads
             url: kubernetes-concepts.md
-          - text: Kubernetes node networking
-            url: concepts-node-networking.md
-          - text: Kubernetes container networking
+          - text: Networking
             url: concepts-container-networking.md
+          - text: Storage
+            url: concepts-storage.md
+          - text: Application availability
+            url: app-availability.md
             
   - title: Get started
     linkLists:
@@ -35,21 +37,18 @@ landingContent:
             url: system-requirements.md
       - linkListType: quickstart
         links:
-          - text: Set up AKS with Windows Admin Center
+          - text: Deploy an AKS host and workload cluster using PowerShell
+            url: kubernetes-walkthrough-powershell.md 
+      - linkListType: quickstart
+        links: 
+          - text: Deploy AKS on Azure Stack HCI using Windows Admin Center
             url: setup.md
-          - text: Set up AKS with PowerShell
-            url: setup-powershell.md    
-          - text: Create a Kubernetes cluster with Windows Admin Center
+          - text: Create a Kubernetes cluster using Windows Admin Center
             url: create-kubernetes-cluster.md
-          - text: Create a Kubernetes cluster with PowerShell
-            url: create-kubernetes-cluster-powershell.md
-
   - title: Deploy Windows and Linux applications
     linkLists:
       - linkListType: tutorial
         links:
-          - text: Use Linux containers
-            url: deploy-linux-application.md
           - text: Deploy .NET applications
             url: deploy-windows-application.md
       - linkListType: how-to-guide
@@ -60,10 +59,29 @@ landingContent:
             url: ad-sso.md
           - text: Configure proxy settings
             url: set-proxy-settings.md
-          - text: Prepare Windows nodes for gMSA support
+          - text: Configure group Managed Service Account
             url: prepare-windows-nodes-gmsa.md
           - text: Use persistent volumes
             url: persistent-volume.md
+
+  - title: Deploy, manage, and update applications
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: 1. Prepare an application
+            url: tutorial-kubernetes-prepare-app.md
+          - text: 2. Create container registry
+            url: tutorial-kubernetes-prepare-azure-container-registry.md
+          - text: 3. Deploy a workload cluster
+            url: tutorial-kubernetes-deploy-cluster.md
+          - text: 4. Run an application
+            url: tutorial-kubernetes-deploy-application.md
+          - text: 5. Scale an application
+            url: tutorial-kubernetes-scale.md
+          - text: 6. Update an application
+            url: tutorial-kubernetes-app-update.md
+          - text: 7. Upgrade Kubernetes cluster
+            url: tutorial-kubernetes-upgrade-cluster.md
 
   - title: Integrate with Azure
     linkLists:
