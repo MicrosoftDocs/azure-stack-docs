@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -armAccessToken
-The token for accessing Azure Resource Manager (ARM).
+The token for accessing Azure Resource Manager.
 
 ```yaml
 Type: System.String
