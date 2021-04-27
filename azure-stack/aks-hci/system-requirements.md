@@ -29,9 +29,9 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
 
-## Azure Requirements
+## Azure requirements
 
-You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com/en-us/). You can use an existing subscription of any type:
+You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
 - Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
 - Subscription obtained through an Enterprise Agreement (EA)
