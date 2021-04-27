@@ -71,7 +71,7 @@ landingContent:
           - text: 1. Prepare an application
             url: tutorial-kubernetes-prepare-app.md
           - text: 2. Create container registry
-            url: tutorial-kubernetes-prepare-acr.md
+            url: tutorial-kubernetes-prepare-azure-container-registry.md
           - text: 3. Deploy a workload cluster
             url: tutorial-kubernetes-deploy-cluster.md
           - text: 4. Run an application
