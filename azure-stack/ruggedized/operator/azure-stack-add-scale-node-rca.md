@@ -4,10 +4,10 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/26/2021
+ms.date: 4/27/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 4/26/2021
+ms.lastreviewed: 4/27/2021
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
@@ -45,7 +45,7 @@ Let your Azure Stack Hub return to the **Running** state before adding another n
 The following steps are a high-level overview of how to add a node. Don't follow these steps without first referring to your OEM-provided capacity expansion documentation.
 
 1. Place the new physical server in the rack and cable it appropriately. 
-2. Enable physical switch ports and adjust access control lists (ACLs) if applicable:
+2. Enable physical switch ports on both TOR devices using SSH:
    1. Enter configuration mode:
 
       ```shell
@@ -94,7 +94,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
       exit
       ```
 
-3. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation:
+3. Enable physical switch ports on the BMC device using SSH:
 
    1. Enter configuration mode:
 
@@ -122,7 +122,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
       exit
       ```
 
-   4. End configuration mode and save changes:
+   4. Prepare physical nodes and apply latest firmware and BIOS settings:
 
       ```shell
       end
