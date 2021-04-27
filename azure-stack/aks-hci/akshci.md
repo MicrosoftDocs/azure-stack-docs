@@ -19,9 +19,9 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [add-akshcinode](./add-akshcinode.md) | Add a new physical node to a deployment. |
 | [disable-akshciarcconnection](disable-akshciarcconnection.md) | Disables the Arc connection on an AKS on Azure Stack HCI cluster.|
 | [enable-akshciarcconnection](enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI cluster. |
-| [get-akshcibillingstatus](get-akshci-billing-status.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
+| [get-akshcibillingstatus](get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [get-akshcicluster](get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
-| [get-akshciclusternetwork](get-akshci-cluster-network.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
+| [get-akshciclusternetwork](get-akshciclusternetwork.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
 | [get-akshciclusterupgrades](get-akshciclusterupgrades.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
 | [get-akshciconfig](get-akshciconfig.md) | List the current configuration settings for the Azure Kubernetes Service host. |
 | [get-akshcicredential](get-akshcicredential.md) | Access your cluster using kubectl. |
