@@ -86,9 +86,9 @@
           - name: CSI storage drivers
             items: 
                 - name: Use disk CSI drivers
-                  href: csi-disks.md
+                  href: container-storage-interface-disks.md
                 - name: Use file CSI drivers
-                  href: csi-files.md
+                  href: container-storage-interface-files.md
     - name: Security and authentication
       items:
           - name: Use Active Directory single sign-on
