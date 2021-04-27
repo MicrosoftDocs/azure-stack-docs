@@ -28,7 +28,7 @@ Recent gMSA improvements for AKS on Azure Stack HCI address the following limita
 
 To address the limitations listed above, gMSA for non-domain joined containers uses a portable user identity instead of a host identity to retrieve gMSA credentials, and therefore, manually joining Windows worker nodes to a domain is no longer necessary. The user identity is saved as a secret in Kubernetes. The diagram below shows the process of how configure gMSA for non-domain joined containers:
 
-![Diagram of group Managed Service Accounts version two](media/gmsa/gmsa-v2.png)
+![Diagram of group Managed Service Accounts version two.](media/gmsa/gmsa-v-2.png)
 
 Starting in Windows Server 2019, new support was added for a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. In AKS on Azure Stack HCI, use the gMSA plug-in to communicate to AD and then retrieve the gMSA credentials. For more information, see [ICcgDomainAuthCredentials](https://docs.microsoft.com/windows/win32/secauthn/iccgdomainauthcredentials-getpasswordcredentials).
 
