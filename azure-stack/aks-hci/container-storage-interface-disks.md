@@ -78,4 +78,4 @@ Creating a custom storage class is a two-step process:
 
 ## Next steps
 
-[Use the file Container Storage Interface drivers](./csi-files.md)
+[Use the file Container Storage Interface drivers](./container-storage-interface-files.md)
