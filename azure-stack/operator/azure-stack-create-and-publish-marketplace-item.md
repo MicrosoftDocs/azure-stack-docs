@@ -3,10 +3,10 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/09/2021
+ms.date: 04/26/2021
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 11/16/2020
+ms.lastreviewed: 04/26/2021
 
 # Intent: As an Azure Stack operator, I want to create and publish a Marketplace items so my users can use them.
 # Keyword: create marketplace item azure stack
@@ -41,7 +41,7 @@ To create a custom marketplace item, do the following:
 
    :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/sample-packages.png" alt-text="Samples packages":::
 
-3. Once extracted, the .zip file contains the Linux or Windows Azure Resource Manager templates that are available. You can re-use the pre-made Resource Manager templates, and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can re-use the .azpkg file and skip the following steps to customize your own gallery package.
+3. Once extracted, the .zip file contains the Linux or Windows Azure Resource Manager templates that are available. You can reuse the pre-made Resource Manager templates, and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can reuse the .azpkg file and skip the following steps to customize your own gallery package.
 
 4. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
 
@@ -181,6 +181,9 @@ To create a custom marketplace item, do the following:
     https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
 
+   If you run into an error when running **Add-AzsGalleryItem**, you may have two versions of the `gallery.admin` module installed. Remove all versions of the module, and install the latest version. For steps on uninstalling your PowerShell modules, see [Uninstall existing versions of the Azure Stack Hub PowerShell modules](powershell-install-az-module.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+
+
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
 
    After completing your gallery package and uploading it using **Add-AzsGalleryItem**, your custom VM should now appear on the Marketplace as well as in the **Create a resource** view. Note that the custom gallery package is not visible in **Marketplace Management**.
@@ -223,6 +226,8 @@ To create a custom marketplace item, do the following:
     Add-AzsGalleryItem -GalleryItemUri `
     https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
+
+   If you run into an error when running **Add-AzsGalleryItem**, you may have two versions of the `gallery.admin` module installed. Remove all versions of the module, and install the latest version. For steps on uninstalling your PowerShell modules, see [Uninstall existing versions of the Azure Stack Hub PowerShell modules](azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
 
