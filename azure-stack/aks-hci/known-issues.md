@@ -11,6 +11,12 @@ ms.reviewer:
 # Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
+## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run.
+If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
+
+## Uninstall-AksHciAdAuth fails with an error
+If [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
+
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./uninstall-akshci.md) from a PowerShell administrative window.
 
