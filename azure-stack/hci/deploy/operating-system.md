@@ -2,7 +2,7 @@
 title: Deploy the Azure Stack HCI operating system
 description: Learn to deploy the Azure Stack HCI OS, and then use Windows Admin Center to connect to your servers. Learn to create a server cluster, and understand how to get the latest Windows updates and firmware for your servers.
 author: JohnCobb1
-ms.author: v-johcob 
+ms.author: v-johcob
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -89,6 +89,9 @@ The Windows System Image Manager tool is available in the Windows Assessment and
 You can use System Center Virtual Machine Manager to deploy the Azure Stack HCI operating system on bare-metal hardware, as well as to cluster the servers. To learn about VMM, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements).
 
 For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal).
+
+> [!NOTE]
+> VMM 2019 UR3 and later supports [Azure Stack Hyper Converged Infrastructure (HCI, version 20H2)](https://docs.microsoft.com/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2019).
 
 ### Network deployment
 
