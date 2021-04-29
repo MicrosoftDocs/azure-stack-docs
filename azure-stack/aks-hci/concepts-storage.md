@@ -52,7 +52,7 @@ A PersistentVolume is bound to a PersistentVolumeClaim once an available sto
 
 The following example YAML manifest shows a persistent volume claim that uses the _default_ StorageClass and requests a Disk 5Gi in size: 
 
-```yml
+```yaml
 apiVersion: v1 
 kind: PersistentVolumeClaim 
 metadata: 
