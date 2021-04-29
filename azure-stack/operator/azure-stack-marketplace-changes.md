@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/09/2021
+ms.date: 04/29/2021
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 05/28/2020
@@ -167,6 +167,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 04/28/2021: Citrix ADC 13.0 VPX - Bring Your Own License - version 130.67.39
 - 04/01/2021: Canonical Ubuntu Server 18.04 LTS - version 18.04.20210224
 - 03/31/2021: SQL Server 2019 Enterprise on Windows Server 2019 - Pay as you go - version 15.0.20210219
 - 03/31/2021: SQL Server 2019 Enterprise on Windows Server 2019 - Bring your own license - version 15.0.20210219
