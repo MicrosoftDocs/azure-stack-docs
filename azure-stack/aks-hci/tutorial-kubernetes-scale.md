@@ -20,7 +20,7 @@ In later tutorials, the Azure Vote application is updated to a new version.
 
 ## Before you begin
 
-In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI cluster. The application was then deployed to the AKS cluster. If you haven't done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-app.md).
+In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI cluster. The application was then deployed to the AKS cluster. If you haven't done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 
 ## Manually scale pods

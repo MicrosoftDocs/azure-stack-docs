@@ -156,6 +156,9 @@ The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses 
 ## Get-AksHciLogs command may fail
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or will not generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file Compress-Archive has an output file size limit of 2GB. 
 
+## Creating virtual networks with a similar configuration causes overlap issues
+When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
+
 
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)

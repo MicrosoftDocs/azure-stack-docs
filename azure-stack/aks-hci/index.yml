@@ -69,7 +69,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: 1. Prepare an application
-            url: tutorial-kubernetes-prepare-app.md
+            url: tutorial-kubernetes-prepare-application.md
           - text: 2. Create container registry
             url: tutorial-kubernetes-prepare-azure-container-registry.md
           - text: 3. Deploy a workload cluster

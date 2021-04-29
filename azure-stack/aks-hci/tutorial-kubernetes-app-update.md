@@ -24,7 +24,7 @@ In this tutorial, part six of seven, the sample Azure Vote app is updated. You l
 
 In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI cluster. The application was then deployed to the cluster.
 
-An application repository was also cloned that includes the application source code, and a pre-created Docker Compose file used in this tutorial. Verify that you've created a clone of the repo, and have changed directories into the cloned directory. If you haven't completed these steps, and want to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-app.md).
+An application repository was also cloned that includes the application source code, and a pre-created Docker Compose file used in this tutorial. Verify that you've created a clone of the repo, and have changed directories into the cloned directory. If you haven't completed these steps, and want to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 This tutorial requires that you're running the Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][azure-cli-install].
 
@@ -81,7 +81,7 @@ docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azur
 Now use [docker push][docker-push] to upload the image to your registry. Replace `<acrLoginServer>` with your ACR login server name.
 
 > [!NOTE]
-> If you experience issues pushing to your ACR registry, make sure that you are still logged in. Run the [az acr login][az-acr-login] command using the name of your Azure Container Registry that you created in the [Create an Azure Container Registry](tutorial-kubernetes-prepare-acr.md) step. For example, `az acr login --name <azure container registry name>`.
+> If you experience issues pushing to your ACR registry, make sure that you are still logged in. Run the [az acr login][az-acr-login] command using the name of your Azure Container Registry that you created in the [Create an Azure Container Registry](tutorial-kubernetes-prepare-azure-container-registry.md) step. For example, `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

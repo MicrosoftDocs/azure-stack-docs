@@ -22,7 +22,7 @@ In later tutorials, this ACR instance is integrated with a Kubernetes cluster in
 
 ## Before you begin
 
-In the [previous tutorial](tutorial-kubernetes-prepare-app.md), a container image was created for a simple Azure Voting application. If you have not created the Azure Voting app image, return to [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-app.md).
+In the [previous tutorial](tutorial-kubernetes-prepare-application.md), a container image was created for a simple Azure Voting application. If you have not created the Azure Voting app image, return to [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 This tutorial requires that you're running the Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][azure-cli-install].
 
