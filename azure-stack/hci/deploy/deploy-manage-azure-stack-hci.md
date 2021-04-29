@@ -81,7 +81,7 @@ If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these s
 ### Provision a cluster from bare metal machines
 
 > [!NOTE]
-> Typically, S2D node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](hyper-v-bare-metal.md#sample-script).
+> Typically, S2D node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](https://docs.microsoft.com/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019#sample-script).
 > You can also use this script to configure RDMA, QoS and SET while adding a new node to an existing S2D deployment from bare metal computers.
 
 1.	Read the [prerequisites](https://docs.microsoft.com/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019#before-you-start) for bare-metal cluster deployment. Note that:
