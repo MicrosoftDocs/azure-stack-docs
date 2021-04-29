@@ -61,8 +61,8 @@ The following configuration sample is for a Cisco Nexus 9508 Chassis.
 In this scenario, the source infrastructure networks that require access to the internet are as follows:
 
 - Public VIP - First /27
-- Infrastructure network – Last /27
-- BMC Network – Last /27
+- Infrastructure network - Last /27
+- BMC Network - Last /27
 
 The following subnets receive policy-based routing (PBR) treatment in this scenario:
 
