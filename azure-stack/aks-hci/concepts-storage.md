@@ -68,7 +68,7 @@ spec:
 
 When you create a pod definition, the persistent volume claim is specified to request the desired storage. You also then specify the volumeMount for your applications to read and write data. The following example YAML manifest shows how the previous persistent volume claim can be used to mount a volume at `/mnt/aks-hci`: 
 
-```yml
+```yaml
 kind: Pod 
 apiVersion: v1 
 metadata: 
@@ -88,9 +88,9 @@ spec:
 
 For mounting a volume in a Windows container, specify the drive letter and path. 
 
-Here's an exmple:
+Here's an example:
 
-```yml
+```yaml
 volumeMounts: 
         - mountPath: "d:" 
           name: volume 
@@ -102,4 +102,3 @@ volumeMounts:
 
 - [Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md)
 - [Use the AKS on Azure Stack HCI files Container Storage Interface (CSI) drivers](./container-storage-interface-files.md)
-
