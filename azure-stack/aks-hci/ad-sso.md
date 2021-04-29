@@ -33,7 +33,7 @@ This document will guide you through the following steps to set up Active Direct
 
 Before you start the process of configuring Active Directory SSO credentials, you should ensure you have the following items available:
 
- - The latest **Aks-Hci PowerShell** module is installed. If you don't, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module). 
+ - The latest **Aks-Hci PowerShell** module is installed. If you don't, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules). 
  - The AKS host is installed and configured. If you don't, follow [configure your deployment](./kubernetes-walkthrough-powershell.md#step-4-configure-your-deployment).  
  - Make sure the keytab file is available to use. If it's not, see [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
  - The keytab file is generated for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You should also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
