@@ -9,7 +9,10 @@ ms.author: jeguan
 
 # Update the Kubernetes version of AKS clusters on Azure Stack HCI
 
-This article talks about the following update options for AKS workload clusters on Azure Stack HCI: 
+> [!IMPORTANT]
+> The March release of AKS on Azure Stack HCI cannot be updated from a pervious release. If you want to deploy the March release on your Azure Stack HCI cluster, you must start a fresh installation. You can deploy using [PowerShell](kubernetes-walkthrough-powershell.md) or [Windows Admin Center](./setup.md).
+
+This article describes the following update options for AKS workload clusters on Azure Stack HCI: 
 - Update an AKS on Azure Stack HCI workload cluster to a new Kubernetes version.
 - Update the container hosts of AKS workload clusters to a newer version of the operating system.
 - Combined update of the operating system and Kubernetes version of AKS workload clusters.
@@ -54,7 +57,7 @@ This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.10          @{
 As seen from the output above, you can either update your cluster to v1.17.13 or to v1.18.10.
 
 #### Initiate the Kubernetes version update
-Use the `Update-AksHciCluster` to update myCluster from v1.17.11 to v1.18.10  without changing the container operating system of the cluster.
+Use the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command to update myCluster from v1.17.11 to v1.18.10  without changing the container operating system of the cluster.
 ```powershell
 PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.10
 ```
@@ -89,11 +92,20 @@ This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.10          @{
 ```
 
 #### Initiate the workload cluster update
-You can run the `Update-AksHciCluster` command with the new Kubernetes version and the `-operatingSystem` flag to update the workload cluster's Kubernetes version as well as the container hosts' operating systems.
+You can run the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command with the new Kubernetes version and the `-operatingSystem` flag to update the workload cluster's Kubernetes version as well as the container hosts' operating systems.
 
 ```powershell
 PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.10 -operatingSystem
 ```
+
+## Update the Kubernetes version of a workload cluster using Windows Admin Center
+The Kubernetes version of a workload cluster can also be updated through Windows Admin Center. To update the Kubernetes version, follow these steps: 
+
+1. On the Windows Admin Center connections page, connect to your management cluster.
+2. Select the **Azure Kubernetes Service** tool from the tools list. When the tool loads, you will be presented with the Overview page.
+3. Select the workload cluster you wish to update.
+4. Select **Updates** to navigate to the Updates page.
+5. Select **Update now** to upgrade your Kubernetes version. 
 
 ## Next steps
 

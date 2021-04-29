@@ -112,7 +112,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### - Service principal name (SPN)
+### - Service Principal Name (SPN)
 The name of the service principal associated with the API server AD account.
 
 ```yaml
