@@ -26,10 +26,10 @@ Before getting started, make sure you have satisfied all the prerequisites on th
 Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
 
 ```powershell
-   Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-   Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-   Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-   ```
+Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
+Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
+Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+```
 
 **Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
