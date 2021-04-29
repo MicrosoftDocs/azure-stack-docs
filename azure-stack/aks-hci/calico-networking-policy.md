@@ -15,7 +15,7 @@ Use this step-by-step guide to verify and try out basic pod-to-pod connectivity 
 
 ## Prerequisites
 
- To deploy AKS on Azure Stack HCI, follow the steps to [install AKS on Azure Stack HCI](./setup-powershell.md).
+ To deploy AKS on Azure Stack HCI, follow the steps to [install AKS on Azure Stack HCI](./kubernetes-walkthrough-powershell.md).
 
 To use this guide, you will need:
 

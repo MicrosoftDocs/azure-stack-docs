@@ -200,4 +200,4 @@ This article covers some of the networking concepts for deploying AKS nodes on A
 
 - [Container networking concepts](./concepts-container-networking.md)
 - [Cluster and workloads](./kubernetes-concepts.md)
-- [Deploy a Kubernetes workload cluster](./create-kubernetes-cluster-powershell.md)
+- [Deploy a Kubernetes workload cluster](./kubernetes-walkthrough-powershell.md)

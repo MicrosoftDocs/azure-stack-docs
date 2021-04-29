@@ -1,23 +1,23 @@
 ---
-title: Use an app identity to access Azure Stack Hub resources
-description: Learn how to access Azure Stack Hub resources using an app identity, and use  role-based access control for authorization.
+title: Give an app access to Azure Stack Hub resources
+description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 04/22/2021
-ms.lastreviewed: 04/06/2021
+ms.date: 04/28/2021
+ms.lastreviewed: 04/28/2021
 ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
 
-# Intent: As an Azure Stack operator, I want to use an app identity to access Azure Stack Hub resources. 
-# Keyword: azure stack hub app identity
+# Intent: As an Azure Stack operator, I want to give an app to access Azure Stack Hub resources. 
+# Keyword: azure stack hub app access resources
 
 ---
-# Use an app identity to access Azure Stack Hub resources
+# Give an app access to Azure Stack Hub resources
 
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. 
 
-The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, grant the "reader" role to the app's service principal, which limits the configuration management app to read-only access.
+The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, grant the "reader" role to the app's service principal, and limit the configuration management app to read-only access.
 
 ## Overview
 

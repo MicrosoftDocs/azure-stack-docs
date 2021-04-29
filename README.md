@@ -1,6 +1,6 @@
-# Microsoft Azure Stack Documentation
+# Microsoft Azure Stack Hub Documentation
 
-Welcome to the open source [documentation for Azure Stack](https://docs.microsoft.com/azure-stack). Please review this README file to understand how you can assist in contributing to the Microsoft Azure documentation.
+Welcome to the open source [documentation for Azure Stack Hub](https://docs.microsoft.com/azure-stack). Please review this README file to understand how you can assist in contributing to the Microsoft Azure documentation.
 
 ## Contributing
 

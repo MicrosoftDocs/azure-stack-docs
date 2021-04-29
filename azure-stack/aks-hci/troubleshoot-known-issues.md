@@ -55,6 +55,17 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
+## A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center
+Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
+
+## An Arc connection on an AKS cluster cannot be enabled after disabling it.
+To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
+
+```powershell
+Get-AksHciCredential -Name myworkloadcluster
+kubectl --kubeconfig=kubeconfig delete secrets sh.helm.release.v1.azure-arc.v1
+```
+
 ## Container storage interface pod stuck in a _ContainerCreating_ state
 A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state as shown in the output below:
 
