@@ -60,6 +60,7 @@ Sometimes, due to network issues, Windows Admin Center times out an Arc connecti
 
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
+
 ```powershell
 Get-AksHciCredential -Name myworkloadcluster
 kubectl --kubeconfig=kubeconfig delete secrets sh.helm.release.v1.azure-arc.v1
