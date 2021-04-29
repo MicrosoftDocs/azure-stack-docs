@@ -11,6 +11,12 @@ ms.reviewer:
 # Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
+## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run.
+If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
+
+## Uninstall-AksHciAdAuth fails with an error
+If [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
+
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./uninstall-akshci.md) from a PowerShell administrative window.
 
@@ -149,6 +155,9 @@ While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has 
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
 ## Get-AksHciLogs command may fail
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or will not generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file Compress-Archive has an output file size limit of 2GB. 
+
+## Creating virtual networks with a similar configuration causes overlap issues
+When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
 
 
 ## Next steps

@@ -24,10 +24,8 @@ The following steps provide a walkthrough on onboarding Azure Kubernetes Service
 
 Verify you've the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster with at least one Linux worker node that is up and running. 
-
-* You'll need a kubeconfig file to access the cluster and cluster-admin role on the cluster for deployment of Arc-enabled Kubernetes agents.
-* Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
+* An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
+* Have the [Azure Kubernetes Service on Azure Stack HCI PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 * Azure CLI version 2.3+ is required for installing the Azure Arc-enabled Kubernetes CLI extensions. [Install Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). You can also update to the latest version to ensure that you have Azure CLI version 2.3+.
 * An Azure subscription on which you're an owner or contributor. 
 * Run the commands in this document in a PowerShell administrative window.
@@ -52,11 +50,8 @@ Azure Arc agents require the following protocols/ports/outbound URLs to function
 
 ## Step 1: Log in to Azure
 
-Log in to Azure and after logging in, set an Azure subscription on which you're an owner or contributor as your default subscription.
-
 ```console
 az login
-az account set --subscription "00000000-aaaa-bbbb-cccc-000000000000"
 ```
 
 ## Step 2: Register the two providers for Azure Arc enabled Kubernetes:
@@ -76,78 +71,26 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## Step 3: Create a resource group
+## Step 3: Connect to Azure Arc using the Aks-Hci PowerShell module
 
-You need a resource group to hold the connected cluster resource. You can use an existing resource group in East US or West Europe locations. If you do not have an existing resource group in the East US or West Europe location, use the following command to create a new resource group:
-
-```console
-az group create --name AzureArcTest -l EastUS -o table
-```
-
-## Step 4: Create a new service principal
-
-
-You can skip this step if you've already created a service principal with `contributor` role and know the service principal's appID, password, and tenant values.
-
-Create a new service principal with an informative name. This name must be unique for your Azure Active Directory tenant. The default role for a service principal is `Contributor`. This role has full permissions to read and write to an Azure account. You can also reuse this service principal to on-board multiple clusters to Azure Arc. 
-Set the scope of your service principal to *subscriptions/resource-group*. *Make sure you save the service principal's appID, password, and tenant values as you will need these details in subsequent steps.*
-
-```console
-az ad sp create-for-RBAC --name "azure-arc-for-k8s" --scope /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}
-```
-
-**Output:**
-
-```
-{
-  "appId": "00000000-0000-0000-0000-000000000000",
-  "displayName": "azure-arc-for-k8s",
-  "name": "https://azure-arc-for-k8s",
-  "password": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-  "tenant": "ffffffff-gggg-hhhh-iiii-jjjjjjjjjjjj"
-}
-```
-## Step 5: Save service principal details
-Save the created service principal's appId, password and tenant values, and cluster name, Azure subscription ID, resource group name, and location in PowerShell variables. This will ensure you can reuse the details in other tutorials. Ensure that you also save these values in a notepad in case you want to close your PowerShell session.
+Connect your AKS on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes using the [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) PowerShell command. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace.
 
 ```PowerShell
-$clusterName = #<name of your Kubernetes cluster>
-$resourceGroup = #<Azure resource group to store your connected Kubernetes cluster in Azure Arc>
-$location = #<Azure resource group location. This can only be eastus or westeurope for Azure Arc for Kubernetes>
-$subscriptionId = #<Azure subscription Id>
-$appId = #<appID from the service principal created above>
-$password = #<password from the service principal created above>
-$tenant = #<tenant from the service principal created above>
-```
-Ensure that you have assigned the right values to the variables by running:
-
-```PowerShell
-echo $clusterName 
-echo $resourceGroup
-echo $location 
-echo $subscriptionId 
-echo $appId 
-echo $password 
-echo $tenant 
+Enable-AksHciArcConnection -name mynewcluster 
 ```
 
-## Step 6: Connect to Azure Arc using service principal and the Aks-Hci PowerShell module
+The above example takes in the Azure context details, such as the subscription, resource group, and location from the values you set while connecting your AKS host to Azure for billing, using the [Set-AksHciRegistration](./set-akshciregistration.md) PowerShell command. If you want to connect your workload clusters to a different subscription or resource group, include the relevant parameters in the `Enable-AksHciArcConnection` command.
 
-Next, we will connect our Kubernetes cluster to Azure using service principal and the Aks-Hci PowerShell module. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace.
-
-Reference the newly created service principal and run the `Install-AksHciArcOnboarding` command available in the Aks-Hci PowerShell module.
-
-```PowerShell
-Install-AksHciArcOnboarding -name $clusterName -resourcegroup $resourceGroup -location $location -subscriptionid $subscriptionId -clientid $appId -clientsecret $password -tenantid $tenant
+```powershell
+Enable-AksHciArcConnection -name mynewcluster -subscriptionId "myAzureSubscription" -resourceGroup "myResourceGroup"
 ```
+
 ## Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the `Install-AksHciArcOnboarding` PowerShell command.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [install-akshciArconboarding](./install-akshciarconboarding.md) PowerShell command.
 
 > [!NOTE]
-> After onboarding the cluster, it takes around 5 to 10 minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in Azure portal.
-
-To delete your cluster, or to connect your cluster if it is behind an outbound proxy server, visit [Connect an Azure Arc-enabled Kubernetes cluster](/azure/azure-arc/kubernetes/connect-cluster).
+> After onboarding the cluster, it takes around five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in Azure portal.
 
 ## Azure Arc agents for Kubernetes
 
@@ -166,6 +109,14 @@ Azure Arc-enabled Kubernetes consists of a few agents (operators) that run in yo
 * `deployment.apps/resource-sync-agent`: syncs the above mentioned cluster metadata to Azure
 * `deployment.apps/clusteridentityoperator`: Azure Arc-enabled Kubernetes currently supports system assigned identity. clusteridentityoperator maintains the managed service identity (MSI) certificate used by other agents for communication with Azure.
 * `deployment.apps/flux-logs-agent`: collects logs from the flux operators deployed as a part of source control configuration
+
+## Disconnect your AKS on Azure Stack HCI cluster from Azure Arc
+
+If you want to disconnect your cluster from Azure Arc enabled Kubernetes, run the [Disable-AksHciArcConnection](./disable-akshciarcconnection.md) PowerShell command. Make sure you login to Azure before running the command.
+
+```powershell
+Disable-AksHciArcConnection -Name mynewcluster
+```
 
 ## Next steps
 
