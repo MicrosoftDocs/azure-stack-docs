@@ -24,9 +24,9 @@ gMSA for containers with a non-domain joined host uses a portable user identity 
 
 gMSA for containers with a non-domain joined host provides the flexibility of creating containers with gMSA without joining the host node to the domain. Starting in Windows Server 2019, ccg.exe is supported which enables a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. For more information on ccg.exe, see the [ICcgDomainAuthCredentials interface](https://docs.microsoft.com/windows/win32/secauthn/iccgdomainauthcredentials).
 
-## Comparison of gMSA for containers with a non-domain joined host and domain joined containers
+## Comparison of gMSA for containers with a non-domain joined host and a domain joined host
 
-When gMSA was initially introduced, it required the container host to be domain joined, which created a lot of overhead for users to manually join Windows worker nodes to a domain. This limitation has been addressed with gMSA support for non-domain joined containers, so users can now use gMSA with domain-unjoined hosts. Other improvements to gMSA include the following:
+When gMSA was initially introduced, it required the container host to be domain joined, which created a lot of overhead for users to manually join Windows worker nodes to a domain. This limitation has been addressed with gMSA for containers with a non-domain joined host, so users can now use gMSA with domain-unjoined hosts. Other improvements to gMSA include the following:
 
 - Eliminating the requirement to manually join Windows worker nodes to a domain, which caused a lot of overhead for users. For scaling scenarios, this will simplify the process.
 - In rolling update scenarios, users no longer must rejoin the node to a domain.
