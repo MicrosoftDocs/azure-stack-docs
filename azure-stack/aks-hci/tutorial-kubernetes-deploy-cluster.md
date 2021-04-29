@@ -21,7 +21,7 @@ In later tutorials, the Azure Vote application is deployed to the cluster, scale
 
 ## Before you begin
 
-In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, and would like to follow along, start at [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-app.md).
+In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, and would like to follow along, start at [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following command to install it.
 

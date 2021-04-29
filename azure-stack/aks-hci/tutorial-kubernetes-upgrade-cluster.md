@@ -21,7 +21,7 @@ In this tutorial, part seven of seven, a Kubernetes cluster is upgraded. You lea
 
 ## Before you begin
 
-In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS cluster. The application was then deployed to the AKS on Azure Stack HCI cluster. If you have not done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-app.md).
+In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS cluster. The application was then deployed to the AKS on Azure Stack HCI cluster. If you have not done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 ## Get available cluster versions
 

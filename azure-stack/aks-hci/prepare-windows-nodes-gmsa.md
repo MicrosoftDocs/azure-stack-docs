@@ -20,7 +20,7 @@ To use AD Authentication, you can configure a Windows container to run with a gr
 
 gMSA for non-domain joined containers uses a portable user identity instead of a host identity to retrieve gMSA credentials, and therefore, manually joining Windows worker nodes to a domain is no longer necessary. The user identity is saved as a secret in Kubernetes. The diagram below shows the process of how configure gMSA for non-domain joined containers:
 
-![Diagram of group Managed Service Accounts version two](media/gmsa/gmsa-v2.png)
+![Diagram of group Managed Service Accounts version two](media/gmsa/gmsa-v-2.png)
 
 gMSA support for non-domain joined containers provides the flexibility of creating containers with gMSA without joining the host node to the domain. Starting in Windows Server 2019, Container Credential Guard (CCG) is supported which enables a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. For more information on CCG, see the [ICcgDomainAuthCredentials interface](https://docs.microsoft.com/windows/win32/secauthn/iccgdomainauthcredentials).
 
