@@ -29,6 +29,20 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 - If you are using GPO templates on containers in Active Directory, ensure deploying AKS-HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
 
+## Azure requirements
+
+You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
+- Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
+- [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
+- Subscription obtained through an Enterprise Agreement (EA)
+- Subscription obtained through the Cloud Solution Provider (CSP) program
+
+The user registering the cluster must have the appropriate Azure Active Directory permissions Azure to:
+- Register a resource provider
+- Create/Get/Delete Azure resources and resource groups
+
+If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. 
+
 ## Compute requirements
 
 - For test environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 8 (recommended 16) CPU cores and at least 256 GB RAM.
@@ -148,4 +162,4 @@ Here are the requirements for the machine running the Windows Admin Center gatew
 After you have satisfied all of the prerequisites above, you can set up an Azure Kubernetes Service host on Azure Stack HCI using:
 
 - [Windows Admin Center](setup.md)
-- [PowerShell](setup-powershell.md)
+- [PowerShell](kubernetes-walkthrough-powershell.md)

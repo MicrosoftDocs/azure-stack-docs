@@ -19,9 +19,9 @@ This tutorial assumes a basic understanding of Kubernetes concepts. For more inf
 
 Verify you have the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster with at least one Windows worker node that is up and running. 
+* An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node that is up and running. 
 * A kubeconfig file to access the cluster.
-* Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
+* Have the [Azure Kubernetes Service on Azure Stack HCI PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules) installed.
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 

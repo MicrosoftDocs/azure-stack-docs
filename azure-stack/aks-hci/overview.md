@@ -122,7 +122,7 @@ The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datac
 
 To get started with Azure Kubernetes Service on Azure Stack HCI, see the following articles:
 
-- [Review requirements](system-requirements.md)
-- [Set up Azure Kubernetes Service on Azure Stack HCI using PowerShell](setup-powershell.md)
-- [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](create-kubernetes-cluster.md)
+- [Review requirements](./system-requirements.md)
+- [Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell](./kubernetes-walkthrough-powershell.md)
+- [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](./create-kubernetes-cluster.md)
 
