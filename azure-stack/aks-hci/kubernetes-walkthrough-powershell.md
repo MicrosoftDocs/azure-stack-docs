@@ -74,7 +74,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ```
 
-This registration process can take up to 10 minutes,and it only needs to be performed once on a particular subscription. To validate the registration process, run the following PowerShell command:
+This registration process can take up to 10 minutes, and it only needs to be performed once on a particular subscription. To validate the registration process, run the following PowerShell command:
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
