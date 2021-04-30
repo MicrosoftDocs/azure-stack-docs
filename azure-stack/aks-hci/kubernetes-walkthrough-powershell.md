@@ -47,6 +47,40 @@ Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
    ```
 To view the complete list of AksHci PowerShell commands, see [AksHCI PowerShell](./akshci.md).
 
+## Enable Azure integration
+
+In order to integrate AKS on Azure Stack HCI with an Azure subscription, you will need an Azure subscription with **at least one** of the following:
+- A user account with the built-in **Owner** role 
+- A Service Principal with either the built-in **Microsoft.Kubernetes connected cluster role** (Minimum), built-in **Contributer** role or built-in **Owner** role
+
+If you need to create a new Service Principal, see [system requirements](.\system-requirements.md) for instructions.
+
+### Register the resource provider to your subscription
+Ahead of the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI integration. To do that, run the following PowerShell commands:
+
+```powershell
+# Login to Azure
+Connect-AzAccount
+
+# Optional - if you wish to switch to a different subscription
+# First, get all available subscriptions as the currently logged in user
+$subList = Get-AzSubscription
+# Display those in a grid, select the chosen subscription, then press OK.
+if (($subList).count -gt 1) {
+    $subList | Out-GridView -OutputMode Single | Set-AzContext
+}
+
+Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
+This registration process can take up to 10 minutes, so please be patient. It only needs to be performed once on a particular subscription. To validate the registration process, run the following PowerShell command:
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
 ## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
