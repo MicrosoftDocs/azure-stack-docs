@@ -20,7 +20,7 @@ Cluster sets been tested and supported up to 64 total cluster nodes. However, cl
 
 Cluster sets offer the following benefits:
 
-- Significantly increases the supported SDDC cloud scale for running highly available virtual machines (VMs) by combining multiple smaller clusters into a single large fabric, while keeping the software fault boundary to a single cluster. You can easily migrate VMs across this large fabric.
+- Significantly increases the supported SDDC cloud scale for running highly available virtual machines (VMs) by combining multiple smaller clusters into a single large fabric, while keeping the software fault boundary to a single cluster. You can easily migrate VMs across the cluster set.
 
 - Increased resiliency. Having four 4-node clusters in a cluster set gives you better resiliency than a single 16-node cluster in that multiple compute nodes can go down and production remains intact.
 
