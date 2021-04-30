@@ -21,14 +21,23 @@ Make sure you have one of the following:
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
-## Install the AksHci PowerShell module
+## Install the Azure PowerShell and AksHci PowerShell modules
 
-Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module.
+Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
+
+```powershell
+Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
+Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
+Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+```
 
 **Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
    Import-Module AksHci
+   Import-Module Az.Accounts 
+   Import-Module Az.Resources
+   Import-Module AzureAD
    ```
 
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
@@ -38,15 +47,7 @@ Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Serv
    ```
 To view the complete list of AksHci PowerShell commands, see [AksHCI PowerShell](./akshci.md).
 
-## Step 1: Log in to Azure and configure registration settings
-
-Run the following [Set-AksHciRegistration](set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the East US, Southeast Asia, or West Europe Azure regions to proceed.
-
-```powershell
-Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
-```
-
-## Step 2: Prepare your machine(s) for deployment
+## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
 Open PowerShell as an administrator and run the following [Initialize-AksHciNode](initialize-akshcinode.md) command.
@@ -55,7 +56,7 @@ Open PowerShell as an administrator and run the following [Initialize-AksHciNode
 Initialize-AksHciNode
 ```
 
-## Step 3: Create a virtual network
+## Step 2: Create a virtual network
 
 To get the names of your available external switches, run this command:
 
@@ -83,7 +84,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
-## Step 4: Configure your deployment
+## Step 3: Configure your deployment
 
 Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. You must specify the `imageDir` and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
 
@@ -95,6 +96,14 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation
 
 > [!NOTE]
 > The value for `-cloudservicecidr` given in this example command will need to be customized for your environment.
+
+## Step 4: Log in to Azure and configure registration settings
+
+Run the following [Set-AksHciRegistration](set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the East US, Southeast Asia, or West Europe Azure regions to proceed.
+
+```powershell
+Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
+```
 
 ## Step 5: Start a new deployment
 
