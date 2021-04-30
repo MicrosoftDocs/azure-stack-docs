@@ -37,11 +37,65 @@ You must have an Azure resource group in the East US, Southeast Asia, or West Eu
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
-The user registering the cluster must have the appropriate Azure Active Directory permissions Azure to:
-- Register a resource provider
-- Create/Get/Delete Azure resources and resource groups
+The user registering the cluster must have **at least one** of the following:
+   - A user account with the built-in **Owner** role 
+   - A Service Principal with either the built-in **Microsoft.Kubernetes connected cluster role** (Minimum), built-in **Contributer** role or built-in **Owner** role
 
 If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. 
+
+### Optional - Create a new Service Principal
+If you need to create a new Service Principal, the following steps will create a new Service Principal, with the built-in **Microsoft.Kubernetes connected cluster role** and set the scope at the subscription level.
+
+Install and import the following Azure PowerShell modules:
+
+```powershell
+Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
+Import-Module Az.Accounts 
+Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
+Import-Module Az.Resources
+Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+Import-Module AzureAD
+```
+**Close all PowerShell windows** and reopen a new administrative session.
+
+```powershell
+# Login to Azure
+Connect-AzAccount
+
+# Optional - if you wish to switch to a different subscription
+# First, get all available subscriptions as the currently logged in user
+$subList = Get-AzSubscription
+# Display those in a grid, select the chosen subscription, then press OK.
+if (($subList).count -gt 1) {
+    $subList | Out-GridView -OutputMode Single | Set-AzContext
+}
+
+# Retrieve the current subscription ID
+$sub = (Get-AzContext).Subscription.Id
+
+# Create a unique name for the Service Principal
+$date = (Get-Date).ToString("MMddyy-HHmmss")
+$spName = "AksHci-SP-$date"
+
+# Create the Service Principal
+
+$sp = New-AzADServicePrincipal -DisplayName $spName `
+    -Role 'Microsoft.Kubernetes connected cluster role' `
+    -Scope "/subscriptions/$sub"
+
+# Retrieve the password for the Service Principal
+
+$secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
+    [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
+)
+
+Write-Host "Application ID: $($sp.ApplicationId)"
+Write-Host "App Secret: $secret"
+```
+
+From the above output, you have the **Application ID** and the **secret** for use when deploying AKS on Azure Stack HCI, so take a note of those and store them safely.
+
+With that created, in the **Azure portal**, under **Subscriptions**, **Access **Control****, and then **Role Assignments**, you should see your new Service Principal.
 
 ## Compute requirements
 
