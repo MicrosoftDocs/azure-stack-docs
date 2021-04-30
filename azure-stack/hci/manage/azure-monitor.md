@@ -209,16 +209,6 @@ Now, let's walk through an example for creating an alert.
 11. Click **Create alert rule** to complete the alert rule. It starts running immediately.
     :::image type="content" source="media/monitor/alert-rule-01.png" alt-text="Complete creating new alert rule screenshot":::
 
-### Example alert
-
-For reference, this is what an example alert looks like in Azure.
-
-:::image type="content" source="media/monitor/alert.gif" alt-text="Azure alert screenshot":::
-
-Below is an example of the email that you will be sent by Azure Monitor:
-
-:::image type="content" source="media/monitor/warning.png" alt-text="Alert email example screenshot":::
-
 ## Create custom Kusto queries in Log Analytics
 
 You can also [write custom log queries](/azure/azure-monitor/log-query/get-started-queries) in Azure Monitor using the Kusto query language to collect data from one or more virtual machines.
