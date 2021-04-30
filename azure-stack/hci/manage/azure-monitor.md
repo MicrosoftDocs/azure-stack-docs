@@ -11,7 +11,7 @@ ms.date: 04/30/2021
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works.
+[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including servers and virtual machines (VMs), both on-premises and in the cloud.
 
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
