@@ -115,7 +115,7 @@ Storage Quality of Service (QoS) provides a way to centrally monitor and manage 
 
 ## Set up alerts in Azure Monitor
 
-Azure Stack HCI integrates with Azure Monitor to allow users to [set up alerts](azure-monitor.md#setting-up-alerts-using-windows-admin-center) and be notified if CPU, disk capacity, and memory utilization thresholds are exceeded, if VM heartbeats are not returned, or if there is a system critical error or health service fault.
+Azure Stack HCI integrates with [Azure Monitor](azure-monitor.md) to allow users to set up alerts and be notified if CPU, disk capacity, and memory utilization thresholds are exceeded, if VM heartbeats are not returned, or if there is a system critical error or health service fault.
 
 ## Next steps
 
