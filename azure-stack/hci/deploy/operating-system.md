@@ -91,7 +91,7 @@ You can use System Center Virtual Machine Manager to deploy the Azure Stack HCI 
 For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal).
 
 > [!NOTE]
-> VMM 2019 UR3 and later supports [Azure Stack Hyper Converged Infrastructure (HCI, version 20H2)](https://docs.microsoft.com/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2019).
+> VMM 2019 UR3 and later supports [Azure Stack Hyper Converged Infrastructure (HCI, version 20H2)](/system-center/vmm/deploy-manage-azure-stack-hci).
 
 ### Network deployment
 

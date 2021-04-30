@@ -22,15 +22,15 @@ Make sure you're running VMM 2019 UR3 or later.
 
 **What’s supported?**
 
-- Addition, creation, and management of Azure Stack HCI clusters. [See detailed steps](https://docs.microsoft.com/system-center/vmm/provision-vms?view=sc-vmm-2019) to create and manage HCI clusters.
+- Addition, creation, and management of Azure Stack HCI clusters. [See detailed steps](/system-center/vmm/provision-vms) to create and manage HCI clusters.
 
-- Ability to provision & deploy VMs on the Azure Stack HCI clusters and perform VM life cycle operations. VMs can be provisioned using VHD files, templates or from an existing VM. [Learn more](https://docs.microsoft.com/system-center/vmm/provision-vms?view=sc-vmm-2019).
+- Ability to provision & deploy VMs on the Azure Stack HCI clusters and perform VM life cycle operations. VMs can be provisioned using VHD files, templates or from an existing VM. [Learn more](/system-center/vmm/provision-vms).
 
-- [Set up VLAN based network on Azure Stack HCI clusters](https://docs.microsoft.com/system-center/vmm/manage-networks?view=sc-vmm-2019).
+- [Set up VLAN based network on Azure Stack HCI clusters](/system-center/vmm/manage-networks).
 
-- [Deployment and management of SDN network controller on Azure Stack HCI clusters](https://docs.microsoft.com/system-center/vmm/sdn-controller?view=sc-vmm-2019).
+- [Deployment and management of SDN network controller on Azure Stack HCI clusters](/system-center/vmm/sdn-controller).
 
-- Management of storage pool settings, creation of virtual disks, creation of cluster shared volumes (CSVs) and application of [QOS settings](https://docs.microsoft.com/system-center/vmm/qos-storage-clusters?view=sc-vmm-2019#assign-storage-qos-policy-for-clusters).
+- Management of storage pool settings, creation of virtual disks, creation of cluster shared volumes (CSVs) and application of [QOS settings](/system-center/vmm/qos-storage-clusters#assign-storage-qos-policy-for-clusters).
 
 - The PowerShell cmdlets used to manage Windows Server clusters can be used to manage Azure Stack HCI clusters as well.
 
@@ -38,7 +38,7 @@ Make sure you're running VMM 2019 UR3 or later.
 
 - Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM.
 
-- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/overview#use-cases-for-azure-stack-hci), [When to use Azure Stack HCI](https://docs.microsoft.com/azure-stack/hci/concepts/compare-windows-server#when-to-use-azure-stack-hci) and [Roles you can run without virtualizing](https://docs.microsoft.com/azure-stack/hci/overview#roles-you-can-run-without-virtualizing).
+- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](/azure-stack/hci/overview#use-cases-for-azure-stack-hci), [When to use Azure Stack HCI](/azure-stack/hci/concepts/compare-windows-server#when-to-use-azure-stack-hci) and [Roles you can run without virtualizing](/azure-stack/hci/overview#roles-you-can-run-without-virtualizing).
 
 - Live migration of VM is not supported between any version of Windows Server and Azure Stack HCI clusters.
 
@@ -70,7 +70,7 @@ You can provision a cluster by Hyper-V hosts and bare-metal machines:
 
 ### Provision a cluster from Hyper-V hosts
 
-If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these steps](https://docs.microsoft.com/system-center/vmm/hyper-v-existing?view=sc-vmm-2019). If they’re already in the VMM fabric, skip to the next step.
+If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these steps](/system-center/vmm/hyper-v-existing). If they’re already in the VMM fabric, skip to the next step.
 
 > [!NOTE]
 > - When you set up the cluster, select the **Enable Storage Spaces Direct** option on the **General Configuration** page of the **Create Hyper-V Cluster** wizard.
@@ -81,23 +81,23 @@ If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these s
 ### Provision a cluster from bare metal machines
 
 > [!NOTE]
-> Typically, S2D node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](https://docs.microsoft.com/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019#sample-script).
+> Typically, S2D node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](/system-center/vmm/hyper-v-bare-metal#sample-script).
 > You can also use this script to configure RDMA, QoS and SET while adding a new node to an existing S2D deployment from bare metal computers.
 
-1.	Read the [prerequisites](https://docs.microsoft.com/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019#before-you-start) for bare-metal cluster deployment. Note that:
+1.	Read the [prerequisites](/system-center/vmm/hyper-v-bare-metal#before-you-start) for bare-metal cluster deployment. Note that:
 
     - The generalized VHD or VHDX in the VMM library should be running Azure Stack HCI with the latest updates. The **Operating system** and **Virtualization platform** values for the hard disk should be set.
     - For bare-metal deployment, you need to add a pre-boot execution environment (PXE) server to the VMM fabric. The PXE server is provided through Windows Deployment Services. VMM uses its own WinPE image, and you need to make sure that it’s the latest. To do this, click **Fabric** > **Infrastructure** > **Update WinPE image**, and make sure that the job finishes.
 
-2.	Follow the instructions for [provisioning a cluster from bare-metal computers](https://docs.microsoft.com/system-center/vmm/hyper-v-bare-metal?view=sc-vmm-2019).
+2.	Follow the instructions for [provisioning a cluster from bare-metal computers](/system-center/vmm/hyper-v-bare-metal).
 
 ## Step 2: Set up networking for the cluster
 
 After the cluster is provisioned and managed in the VMM fabric, you need to set up networking for cluster nodes.
 
-1.	Start by [creating a logical network](https://docs.microsoft.com/system-center/vmm/network-logical?view=sc-vmm-2019) to mirror your physical management network.
-2.	You need to [set up a logical switch](https://docs.microsoft.com/system-center/vmm/network-switch?view=sc-vmm-2019) with Switch Embedded Teaming (SET) enabled, so that the switch is aware of virtualization. This switch is connected to the management logical network, and has all of the host virtual adapters that are required to provide access to the management network, or configure storage networking. S2D relies on a network to communicate between hosts. RDMA-capable adapters are recommended.
-3.	[Create VM networks](https://docs.microsoft.com/system-center/vmm/network-virtual?view=sc-vmm-2019).
+1.	Start by [creating a logical network](/system-center/vmm/network-logical) to mirror your physical management network.
+2.	You need to [set up a logical switch](/system-center/vmm/network-switch) with Switch Embedded Teaming (SET) enabled, so that the switch is aware of virtualization. This switch is connected to the management logical network, and has all of the host virtual adapters that are required to provide access to the management network, or configure storage networking. S2D relies on a network to communicate between hosts. RDMA-capable adapters are recommended.
+3.	[Create VM networks](/system-center/vmm/network-virtual).
 
 
 ## Step 3: Configure DCB settings on the Azure Stack HCI cluster
@@ -106,10 +106,10 @@ After the cluster is provisioned and managed in the VMM fabric, you need to set 
 >Configuration of DCB settings is an optional step to achieve high performance during S2D cluster creation workflow. Skip to step 4, if you do not wish to configure DCB settings.
 
 ### Recommendations
-- If you have vNICs deployed, for optimal performance, we recommend to map all your vNICs with the corresponding pNICs. Affinities between vNIC and pNIC are set randomly by the operating system, and there could be scenarios where multiple vNICs are mapped to the same pNIC. To avoid such scenarios, we recommend you to manually set affinity between vNIC and pNIC by following the steps listed [here](https://docs.microsoft.com/system-center/vmm/hyper-v-network?view=sc-vmm-2019#set-affinity-between-vnics-and-pnics).
+- If you have vNICs deployed, for optimal performance, we recommend to map all your vNICs with the corresponding pNICs. Affinities between vNIC and pNIC are set randomly by the operating system, and there could be scenarios where multiple vNICs are mapped to the same pNIC. To avoid such scenarios, we recommend you to manually set affinity between vNIC and pNIC by following the steps listed [here](/system-center/vmm/hyper-v-network#set-affinity-between-vnics-and-pnics).
 
 
-- When you create a network adapter port profile, we recommend you to allow **IEEE priority**. [Learn more](https://docs.microsoft.com/system-center/vmm/network-port-profile?view=sc-vmm-2019#create-a-virtual-network-adapter-port-profile).
+- When you create a network adapter port profile, we recommend you to allow **IEEE priority**. [Learn more](/system-center/vmm/network-port-profile#create-a-virtual-network-adapter-port-profile).
 
     You can also set the IEEE Priority by using the following PowerShell commands:
 
@@ -121,7 +121,7 @@ After the cluster is provisioned and managed in the VMM fabric, you need to set 
 
 **Use the following steps to configure DCB settings**:
 
-1. [Create a new Hyper-V cluster](https://docs.microsoft.com/system-center/vmm/hyper-v-standalone?view=sc-vmm-2019), select **Enable Storage Spaces Direct**.
+1. [Create a new Hyper-V cluster](/system-center/vmm/hyper-v-standalone), select **Enable Storage Spaces Direct**.
    *DCB Configuration* option gets added to the Hyper-V cluster creation workflow.
 
     ![Hyper-V cluster](./media/s2d/create-hyperv-cluster-wizard.png)
@@ -159,7 +159,7 @@ After the cluster is provisioned and managed in the VMM fabric, you need to set 
 
 ## Step 4: Register Azure Stack HCI cluster with Azure
 
-After creating an Azure Stack HCI cluster, it must be registered with Azure within 30 days of installation per Azure Online Service terms. Follow the steps [here](https://docs.microsoft.com/azure-stack/hci/deploy/register-with-azure) to register the Azure Stack HCI cluster with Azure.
+After creating an Azure Stack HCI cluster, it must be registered with Azure within 30 days of installation per Azure Online Service terms. Follow the steps [here](/azure-stack/hci/deploy/register-with-azure) to register the Azure Stack HCI cluster with Azure.
 
 The registration status will reflect in VMM after a successful cluster refresh.
 
@@ -195,7 +195,7 @@ If you use PowerShell, the pool and the storage tier is automatically created wi
 
 ## Step 7: Deploy VMs on the cluster
 
-In a hyper-converged topology VMs can be directly deployed on the cluster. Their virtual hard disks are placed on the volumes you created using S2D. You [create and deploy these VMs](https://docs.microsoft.com/system-center/vmm/provision-vms?view=sc-vmm-2019) just as you would create any other VM.
+In a hyper-converged topology VMs can be directly deployed on the cluster. Their virtual hard disks are placed on the volumes you created using S2D. You [create and deploy these VMs](/system-center/vmm/provision-vms) just as you would create any other VM.
 
 > [!Important]
 > If the Azure Stack HCI cluster is not registered with Azure or not connected to Azure for more than 30 days post registration, High availability Virtual machine (HAVM) creation will be blocked on the cluster. Refer to step 4 & 5 for cluster registration.
@@ -203,5 +203,5 @@ In a hyper-converged topology VMs can be directly deployed on the cluster. Their
 
 ## Next steps
 
-- [Provision VMs](https://docs.microsoft.com/system-center/vmm/provision-vms?view=sc-vmm-2019)
-- [Manage the cluster](https://docs.microsoft.com/system-center/vmm/s2d-manage?view=sc-vmm-2019)
+- [Provision VMs](/system-center/vmm/provision-vms)
+- [Manage the cluster](/system-center/vmm/s2d-manage)
