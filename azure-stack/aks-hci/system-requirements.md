@@ -39,12 +39,12 @@ You must have an Azure resource group in the East US, Southeast Asia, or West Eu
 
 The user registering the cluster must have **at least one** of the following:
    - A user account with the built-in **Owner** role 
-   - A Service Principal with either the built-in **Microsoft.Kubernetes connected cluster role** (Minimum), built-in **Contributer** role or built-in **Owner** role
+   - A service principal with either the built-in **Microsoft.Kubernetes connected cluster** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
 
 If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. 
 
-### Optional - Create a new Service Principal
-If you need to create a new Service Principal, the following steps will create a new Service Principal, with the built-in **Microsoft.Kubernetes connected cluster role** and set the scope at the subscription level.
+### Optional: Create a new service principal
+If you need to create a new service principal, run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role and also to set the scope at the subscription level.
 
 Install and import the following Azure PowerShell modules:
 
@@ -93,9 +93,9 @@ Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```
 
-From the above output, you have the **Application ID** and the **secret** for use when deploying AKS on Azure Stack HCI, so take a note of those and store them safely.
+From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of those items and store them safely.
 
-With that created, in the **Azure portal**, under **Subscriptions**, **Access **Control****, and then **Role Assignments**, you should see your new Service Principal.
+Now that the **application ID** and **secret** are created, go to the **Azure portal**, and you should see your new service principal under **Subscriptions**/**Access **Control**/**Role Assignments**.
 
 ## Compute requirements
 
