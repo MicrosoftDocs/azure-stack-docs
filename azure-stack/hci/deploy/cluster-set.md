@@ -30,7 +30,7 @@ Cluster sets offer the following benefits:
 
 - Easily change the compute-to-storage workload ratio in your hyper-converged environment.
 
-- Benefit from [Azure-like Fault Domains and Availability sets](htttps://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) across individual clusters in initial VM placement and subsequent migration.
+- Benefit from [Azure-like Fault Domains and Availability sets](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) across individual clusters in initial VM placement and subsequent migration.
 
 - Can be used even if compute and storage hardware between cluster nodes is not identical.
 - Live migration of VMs between clusters.
