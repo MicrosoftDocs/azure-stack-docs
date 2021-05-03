@@ -2,13 +2,12 @@
 title: Resource provider API versions supported by profiles in Azure Stack Hub 
 description: Learn about the Azure Resource Manager API versions supported by profiles in Azure Stack Hub.
 author: sethmanheim
-
 ms.custom: contperf-fy20q4
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 05/03/2021
 ms.author: sethm
 ms.reviewer: raymondl
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 05/03/2021
 
 # Intent: As an Azure Stack user, I want to know which resource provider API versions are supported by profiles in Azure Stack.
 # Keyword: resource api versions
@@ -31,23 +30,23 @@ For an explanation of API profiles and version release cadence for Azure Stack H
 > [!NOTE]
 > The **latest** API profile contains the latest version of the resource provider API, and is not listed in this article.
 
-## Overview of the 2019-03-01-hybrid profile
+## Overview of the 2020-09-01-hybrid profile
 
 | Resource provider | Api-version |
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-12-01 |
-| Microsoft.Network | 2017-10-01<br>VPN Gateway will be 2017-10-01 |
-| Microsoft.Storage (Data Plane) | 2017-11-09 |
-| Microsoft.Storage (Control Plane) | 2017-10-01 |
-| Microsoft.Web | 2018-02-01 |
-| Microsoft.KeyVault | 2016-10-01 (Not changing) |
-| Microsoft.Resources (Azure Resource Manager itself) | 2016-06-01 |
-| Microsoft.Authorization (policy operations) | 2016-09-01 |
-| Microsoft.Insights | 2018-01-01 |
+| Microsoft.Network | 2018-11-01<br>VPN Gateway will be 2018-11-01 |
+| Microsoft.Storage (Data Plane) | 2019-06-01 |
+| Microsoft.Storage (Control Plane) | 2019-06-01 |
+| Microsoft.Web | 2018-02-01<br>(Not changing) |
+| Microsoft.KeyVault | 2016-10-01<br>(Not changing) |
+| Microsoft.Resources (Azure Resource Manager itself) | 2016-06-01<br>(Not changing) |
+| Microsoft.Authorization (policy operations) | 2016-09-01 (Not changing) |
+| Microsoft.Insights | 2018-01-01<br>(Not changing) |
 
-For a list of the versions for each resource type for the providers in the API profile, see [Details for the 2019-03-01-hybrid profile](#details-for-the-2019-03-01-hybrid-profile).
+For a list of the versions for each resource type for the providers in the API profile, see [Details for the 2020-09-01-hybrid profile](#details-for-the-2020-09-01-hybrid-profile).
 
-## Details for the 2019-03-01-hybrid profile
+## Details for the 2020-09-01-hybrid profile
 
 ### Microsoft.Authorization
 
@@ -81,45 +80,33 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 
 | Resource Type | API Version |
 |---------------------------------------------------------------|-------------|
-| Availability Sets | 2017-12-01 |
-| Locations | 2017-12-01 |
-| Locations/operations | 2017-12-01 |
-| Locations/publishers | 2017-12-01 |
-| Locations/usages | 2017-12-01 |
-| Locations/vmSizes | 2017-12-01 |
-| Operations | 2017-12-01 |
-| Virtual Machines | 2017-12-01 |
-| Virtual Machines/extensions | 2017-12-01 |
-| Virtual Machine Scale Sets | 2017-12-01 |
-| Virtual Machine Scale Sets/extensions | 2017-12-01 |
-| Virtual Machine Scale Sets/network Interfaces | 2017-12-01 |
-| Virtual Machine Scale Sets/Virtual Machines | 2017-12-01|
-| Virtual Machines Scale Sets/virtualMachines/networkInterfaces | 2017-12-01 |
-
-### Microsoft.Gallery
-
-| Resource Type | API Version |
-|------------------|-------------|
-| Curation | 2015-04-01 |
-| Curation Content | 2015-04-01 |
-| Curation Extract | 2015-04-01 |
-| Gallery Items | 2015-04-01 |
-| Operations | 2015-04-01 |
-| Portal | 2015-04-01 |
-| Search | 2015-04-01 |
-| Suggest | 2015-04-01 |
+| Availability Sets | 2020-06-01 |
+| Images | 2020-06-01 |
+| Locations | 2020-06-01 |
+| Locations/operations | 2020-06-01 |
+| Locations/publishers | 2020-06-01 |
+| Locations/usages | 2020-06-01 |
+| Locations/vmSizes | 2020-06-01 |
+| Operations | 2020-06-01 |
+| Virtual Machines | 2020-06-01 |
+| Virtual Machines/extensions | 2020-06-01 |
+| Virtual Machine Scale Sets | 2020-06-01 |
+| Virtual Machine Scale Sets/extensions | 2020-06-01 |
+| Virtual Machine Scale Sets/network Interfaces | 2020-06-01 |
+| Virtual Machine Scale Sets/Virtual Machines | 2020-06-01 |
+| Virtual Machines Scale Sets/virtualMachines/networkInterfaces | 2020-06-01 |
 
 ### Microsoft.Insights
 
 | Resource Types | API Versions |
 |--------------------|--------------------|
 | Operations | 2015-04-01 |
-| Event Types | 2015-04-01 |
-| Event Categories | 2015-04-01 |
+| Event Types | 2018-01-01 |
+| Event Categories | 2018-01-01 |
 | Metric Definitions | 2018-01-01 |
 | Metrics | 2018-01-01 |
-| Diagnostic Settings | 2017-05-01-preview |
-| Diagnostic Settings Categories | 2017-05-01-preview |
+| Diagnostic Settings | 2018-01-01 |
+| Diagnostic Settings Categories | 2018-01-01 |
 
 ### Microsoft.KeyVault
 
@@ -138,21 +125,21 @@ The operations call result is a representation of the available network cloud op
 
 | Resource Types | API Versions |
 |---------------------------|--------------|
-| Connections | 2017-10-01 |
+| Connections | 2018-11-01 |
 | DNS Zones | 2016-04-01 |
-| Load Balancers | 2017-10-01 |
-| Local Network Gateway | 2017-10-01 |
-| Locations | 2017-10-01|
-| Location/operationResults | 2017-10-01 |
-| Locations/operations | 2017-10-01 |
-| Locations/usages |2017-10-01 |
-| Network Interfaces | 2017-10-01 |
-| Network Security Groups | 2017-10-01 |
-| Operations | 2017-10-01 |
-| Public IP Address | 2017-10-01 |
-| Route Tables | 2017-10-01 |
-| Virtual Network Gateway | 2017-10-01 |
-| Virtual Networks | 2017-10-01 |
+| Load Balancers | 2018-11-01 |
+| Local Network Gateway | 2018-11-01 |
+| Locations | 2018-11-01|
+| Location/operationResults | 2018-11-01 |
+| Locations/operations | 2018-11-01 |
+| Locations/usages | 2018-11-01 |
+| Network Interfaces | 2018-11-01 |
+| Network Security Groups | 2018-11-01 |
+| Operations | 2018-11-01 |
+| Public IP Address | 2018-11-01 |
+| Route Tables | 2018-11-01 |
+| Virtual Network Gateway | 2018-11-01 |
+| Virtual Networks | 2018-11-01 |
 
 ### Microsoft.Resources
 
@@ -160,23 +147,23 @@ Azure Resource Manager lets you deploy and manage the infrastructure for your Az
 
 | Resource Types | API Versions |
 |-----------------------------------------|-------------------|
-| Deployments | 2018-05-01 |
-| Deployments/operations | 2018-05-01 |
-| Links | 2018-05-01 |
-| Locations | 2018-05-01 |
-| Operations | 2018-05-01 |
-| Providers | 2018-05-01 |
-| ResourceGroups| 2018-05-01 |
-| Resources | 2018-05-01 |
-| Subscriptions | 2018-05-01 |
+| Deployments | 2019-10-01 |
+| Deployments/operations |2019-10-01 |
+| Links | 2019-10-01 |
+| Locations | 2019-10-01 |
+| Operations | 2019-10-01 |
+| Providers | 2019-10-01 |
+| ResourceGroups| 2019-10-01 |
+| Resources | 2019-10-01 |
+| Subscriptions | /2016-06-01 |
 | Subscriptions/locations | 2016-06-01 |
-| Subscriptions/operationresults | 2018-05-01 |
-| Subscriptions/providers | 2018-05-01 |
-| Subscriptions/ResourceGroups | 2018-05-01 |
-| Subscriptions/resourceGroups/resources | 2018-05-01 |
-| Subscriptions/resources | 2018-05-01 |
-| Subscriptions/tagNames | 2018-05-01 |
-| Subscriptions/tagNames/tagValues | 2018-05-01 |
+| Subscriptions/operationresults | 2019-10-01 |
+| Subscriptions/providers | /2019-10-01 |
+| Subscriptions/ResourceGroups | 2019-10-01 |
+| Subscriptions/resourceGroups/resources | 2019-10-01 |
+| Subscriptions/resources | 2019-10-01 |
+| Subscriptions/tagNames | 2019-10-01 |
+| Subscriptions/tagNames/tagValues | 2019-10-01 |
 | Tenants | 2016-06-01 |
 
 ### Microsoft.Storage
