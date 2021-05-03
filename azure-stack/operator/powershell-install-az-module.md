@@ -27,7 +27,7 @@ If you would like to install PowerShell Resource Modules (AzureRM) module for Az
 
 You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
-API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
+API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2020-09-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
 You can install Azure Stack Hub compatible PowerShell Az modules in Internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
@@ -89,7 +89,7 @@ The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
     Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-    Install-AzProfile -Profile 2019-03-01-hybrid -Force
+    Install-AzProfile -Profile 2020-09-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
     ```
 
