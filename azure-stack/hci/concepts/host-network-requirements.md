@@ -159,6 +159,9 @@ See the following table for an example of the interface descriptions deviating o
 |NIC3|Network Adapter #3|25 Gbps|
 |NIC4|Network Adapter #4|25 Gbps|
 
+> [!NOTE]
+> SET supports only Switch Independent configuration using either Dynamic or Hyper-V Port load-balancing algorithms.  For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10Gbps.
+
 ### RDMA traffic considerations
 
 If you implement Data Center Bridging (DCB), you must ensure that the PFC and ETS configuration is implemented properly across every network port, including network switches. DCB is required for RoCE and optional for iWARP.
