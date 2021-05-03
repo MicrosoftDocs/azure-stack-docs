@@ -172,12 +172,12 @@ The Storage Resource Provider (SRP) lets you manage your storage account and key
 
 | Resource Types | API Versions |
 |-------------------------|--------------|
-| CheckNameAvailability | 2017-10-01 |
-| Locations | 2017-10-01 |
-| Locations/quotas | 2017-10-01 |
-| Operations | 2017-10-01 |
-| StorageAccounts | 2017-10-01 |
-| Usages | 2017-10-01 |
+| CheckNameAvailability |2019-06-01 |
+| Locations | 2019-06-01 |
+| Locations/quotas | 2019-06-01 |
+| Operations | 2019-06-01 |
+| StorageAccounts | 2019-06-01 |
+| Usages | 2019-06-01 |
 
 ## Next steps
 
