@@ -14,10 +14,10 @@ There are two types of monitoring and logging solutions available for AKS on Azu
 
 | Solution  | Azure connectivity  | Support and service  | Cost | Deployment |
 | ------- |  ------------  | ---------  | --------------  | ---------------- |
-| Azure Monitor | Requires connecting the AKS on Azure Stack HCI cluster to Azure using Azure Arc for Kubernetes | Fully supported and serviced by Microsoft | Requires signing up for Azure Monitor service |  Use Azure Arc for [monitoring clusters](/azure/azure-monitor/containers/container-insights-overview) |
+| Azure Monitor | Requires connecting the AKS on Azure Stack HCI cluster to Azure using Azure Arc for Kubernetes | Fully supported and serviced by Microsoft | Requires signing up for Azure Monitor service |  Use Azure Arc for [monitoring clusters](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview) |
 | On-premises monitoring and logging | Does not require Azure connectivity | Supported as open-source software by Microsoft (no support agreement or SLAs), community and/or external vendors  | Vendor dependent | Customer driven, see [monitor clusters using on-premises monitoring](#use-on-premises-monitoring) |
 
-To use Azure Monitor with AKS on Azure Stack HCI clusters, see the [Azure Monitor overview](/azure/azure-monitor/containers/container-insights-overview). 
+To use Azure Monitor with AKS on Azure Stack HCI clusters, see the [Azure Monitor overview](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview). 
 
 ## Use on-premises monitoring
 

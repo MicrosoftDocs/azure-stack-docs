@@ -38,7 +38,7 @@ Microsoft believes in, and practices information minimization. We strive to gath
 We understand that the privacy and security of customer information is important.  Microsoft takes a thoughtful and comprehensive approach to customer privacy and the protection of customer data in Azure Stack Hub. IT administrators have controls to customize features and privacy settings at any time. Our commitment to transparency and trust is clear:
 
 - We're open with customers about the types of data we gather.
-- We put enterprise customers in control — they can customize their own privacy settings.
+- We put enterprise customers in control -- they can customize their own privacy settings.
 - We put customer privacy and security first.
 - We're transparent about how telemetry data gets used.
 - We use telemetry data to improve customer experiences.

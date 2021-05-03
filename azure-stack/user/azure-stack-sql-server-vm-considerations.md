@@ -149,7 +149,7 @@ Some deployments may achieve additional performance benefits using more advanced
     ![SQL Server Backup](./media/sql-server-vm-considerations/image3.png)
 
     > [!NOTE]  
-    > The Shared Access Signature is the SAS token from the Azure Stack Hub portal, without the leading ‘?' in the string. If you use the copy function from the portal, you need to delete the leading ‘?' for the token to work within SQL Server.
+    > The Shared Access Signature is the SAS token from the Azure Stack Hub portal, without the leading '?' in the string. If you use the copy function from the portal, you need to delete the leading '?' for the token to work within SQL Server.
 
     Once you have the Backup Destination set up and configured in SQL Server, you can then back up to the Azure Stack Hub blob storage.
 

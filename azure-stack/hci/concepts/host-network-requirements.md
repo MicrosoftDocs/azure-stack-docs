@@ -24,7 +24,7 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 ## Selecting a network adapter
 
-For Azure Stack HCI, we require choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality issues.
+Azure Stack HCI requires choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality issues. These adapters also meet the networking requirements established for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#networking).
 
 You can identify an adapter that has Standard or Premium AQ by reviewing the [Windows Server Catalog](https://www.windowsservercatalog.com/) entry for the adapter and the applicable operating system version. Below is an example of the notation for Premium AQ:
 
@@ -158,6 +158,9 @@ See the following table for an example of the interface descriptions deviating o
 |NIC2|Network Adapter #2|25 Gbps|
 |NIC3|Network Adapter #3|25 Gbps|
 |NIC4|Network Adapter #4|25 Gbps|
+
+> [!NOTE]
+> SET supports only Switch Independent configuration using either Dynamic or Hyper-V Port load-balancing algorithms.  For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10Gbps.
 
 ### RDMA traffic considerations
 

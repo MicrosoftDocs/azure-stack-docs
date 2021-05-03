@@ -95,7 +95,7 @@ Use NSG rules to restrict traffic between tiers. In the three-tier architecture 
 
 4.  Allow RDP traffic (port 3389) from the jumpbox subnet. This rule lets administrators connect to the database tier from the jumpbox.
 
-Create rules 2 – 4 with higher priority than the first rule, so they override it.
+Create rules 2 - 4 with higher priority than the first rule, so they override it.
 
 ## SQL Server Always On Availability Groups
 

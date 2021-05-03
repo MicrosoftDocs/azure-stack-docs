@@ -27,7 +27,7 @@ Access your cluster using kubectl.
 
 ### Access your cluster using kubectl.
 ```powershell
-PS C:\> Get-AksHciCredential -name myCluster
+Get-AksHciCredential -name myCluster
 ```
 
 ## Parameters
