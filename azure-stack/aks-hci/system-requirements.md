@@ -126,6 +126,10 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
 git://:9418 | 9418 | TCP | Used to support Azure Arc agents
+https://azurestackhci.azurefd.net | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
+
+> [!NOTE]
+> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
 
 ## Storage requirements
 
