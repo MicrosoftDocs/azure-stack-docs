@@ -38,7 +38,7 @@ Get-AksHciCluster
 
 ## Step 2: Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciClusterNodeCount](./set-akshciclusternodecount.md) command.
+If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciCluster](./set-akshcicluster.md) command.
 
 To scale control plane nodes, run the following command.
 
