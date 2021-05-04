@@ -36,7 +36,7 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16"
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 > [!NOTE]
@@ -45,11 +45,11 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 ### Deploy with a DHCP environment
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
+PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
 ```
 
 ```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData"
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet 
 ```
 
 ## Parameters
