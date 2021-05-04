@@ -34,10 +34,10 @@ Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
 **Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
    ```powershell
-   Import-Module AksHci
-   Import-Module Az.Accounts 
+   Import-Module Az.Accounts
    Import-Module Az.Resources
    Import-Module AzureAD
+   Import-Module AksHci
    ```
 
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
