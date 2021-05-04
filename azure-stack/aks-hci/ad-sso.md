@@ -236,7 +236,7 @@ There are two steps involved in this process. First, create a new AD account/use
 
 ### Step 1: Create a new AD account or user for the API server
 
-Use the [New-ADUser](/powershell/module/addsadministration/new-aduser?preserve-view=true&view=win10-ps) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
+Use the [New-ADUser](/powershell/module/activedirectory/new-aduser) PowerShell command to create a new AD account/user with the SPN. Here's an example: 
 
 ```powershell 
 New-ADUser -Name apiserver -ServicePrincipalNames k8s/apiserver -AccountPassword (ConvertTo-SecureString "password" -AsPlainText -Force) -KerberosEncryptionType AES128 -Enabled 1
