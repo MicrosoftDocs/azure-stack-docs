@@ -26,7 +26,7 @@ For example, consider this scenario:
 
 This guide provides the steps required, in the context of this scenario, to enable or disable multi-tenancy in Azure Stack Hub for a guest directory tenant. You and Mary accomplish this process by registering or unregistering the guest directory tenant, which enables or disables Azure Stack Hub sign-ins and service consumption by Adatum users.
 
-If you're a Cloud Solution Provider (CSP), you have additional ways to [configure and manage a multi-tenant Azure Stack Hub](azure-stack-add-manage-billing-as-a-csp.md).
+If you're a Cloud Solution Provider (CSP), you have other ways to [configure and manage a multi-tenant Azure Stack Hub](azure-stack-add-manage-billing-as-a-csp.md).
 
 ::: zone pivot="management-tool-powershell"
 ## Prerequisites
@@ -44,7 +44,7 @@ Before you register or unregister a guest directory, you and Mary must complete 
 
 To register a guest directory for multi-tenancy, you need to configure both the home Azure Stack Hub directory and the guest directory.
 
-### Configure the Azure Stack Hub directory
+### Configure Azure Stack Hub directory
 
 As the service administrator of contoso.onmicrosoft.com, you must first onboard the Adatum's guest directory tenant to Azure Stack Hub. The following script configures Azure Resource Manager to accept sign-ins from users and service principals in the adatum.onmicrosoft.com tenant:
 
@@ -75,7 +75,7 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
  -SubscriptionName $SubscriptionName
 ```
 
-### Configure the guest directory
+### Configure guest directory
 
 Next, Mary (directory admin of Adatum) must register Azure Stack Hub with the adatum.onmicrosoft.com guest directory by running the following script:
 
@@ -195,7 +195,7 @@ Multi-tenancy management using the administrator portal is only available for ve
 
 To register a guest directory for multi-tenancy, you need to configure both the home Azure Stack Hub directory and the guest directory.
 
-### Configure the Azure Stack Hub directory
+### Configure Azure Stack Hub directory
 
 The first step is to make your Azure Stack Hub system aware of the guest directory. In this example, the directory from Mary's company, Adatum, is called **adatum.onmicrosoft.com**.
 
@@ -221,7 +221,7 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
    [![Sign in](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
-### Configure the guest directory
+### Configure guest directory
 
 Mary received the email with the link to register the directory. She opens the link in a browser and confirms the Azure Active Directory and the Azure Resource Manager endpoint of your Azure Stack Hub system.
 
@@ -258,7 +258,7 @@ Mary must also direct any foreign principals (users in the Adatum directory with
 
 If you no longer want to allow sign-ins to Azure Stack Hub services from a guest directory tenant, you can unregister the directory. Again, both the home Azure Stack Hub directory and guest directory need to be configured:
 
-### Configure the guest directory
+### Configure guest directory
 
 Mary no longer uses services on Azure Stack Hub and must remove the objects. She opens the URL again that she received via email to unregister the directory. Before starting this process, Mary removes all the resources from the Azure Stack Hub subscription.
 
@@ -286,7 +286,7 @@ Mary no longer uses services on Azure Stack Hub and must remove the objects. She
    > [!NOTE]
    > It can take up to one hour to show the directory as not registered in the Azure Stack admin portal.
 
-### Configure the Azure Stack Hub directory
+### Configure Azure Stack Hub directory
 
 As an Azure Stack Hub operator, you can remove the guest directory at any point, even if Mary has not previously unregistered the directory.
 
