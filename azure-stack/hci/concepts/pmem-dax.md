@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/21/2021
+ms.date: 05/05/2021
 ---
 
 # Understand and configure DAX
 
-> Applies to: Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10 **Tom: Can we find/publish the guidance that SQL has provided to customers on the use of persistent memory and DAX?**
+> Applies to: Windows Server 2019, Windows Server 2016, Windows Server (Semi-Annual Channel), Windows 10
 
-**Direct access (DAX)** treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (i.e. by memory mapping data), this can provide significant performance benefits. However, DAX has a number of issues, and it won’t provide significant benefits without DAX-aware code.
+**Direct access (DAX)** treats persistent memory devices as byte-addressable memory to get the lowest latency, providing direct access to byte-addressable memory rather than following normal file system block I/O conventions. The app directly modifies the persistent memory, bypassing the software overhead of the I/O stack. When used properly by DAX-aware code (that is, by memory mapping data), this can provide significant performance benefits. However, DAX has a number of issues, and it won’t provide significant benefits without DAX-aware code.
 
 > [!NOTE]
 > DAX isn't supported on Azure Stack HCI environments. In Windows Server 2019 and later, you can only create a DAX volume on a Storage Spaces or Storage Spaces Direct configuration that uses a single persistent memory disk, with no parity and no redundancy. You can't use DAX across more than one persistent memory disk, and you can only use DAX with NTFS.
