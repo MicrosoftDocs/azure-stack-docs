@@ -1,6 +1,16 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/aks-hci/uninstall-akshcimonitoring.md", 
+      "redirect_url": "/azure-stack/aks-hci/akshci", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/aks-hci/set-akshciclusternodecount.md", 
+      "redirect_url": "/azure-stack/aks-hci/set-akshcicluster", 
+      "redirect_document_id": false
+    }, 
+    { 
       "source_path": "azure-stack/mdc/operator/container-registry-template-install-tzl.md", 
       "redirect_url": "/azure-stack/mdc/mdc-overview", 
       "redirect_document_id": false
@@ -30,6 +40,11 @@
       "redirect_url": "/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id": false
     }, 
+    { 
+      "source_path": "azure-stack/operator/known-issues-vn.md", 
+      "redirect_url": "/azure-stack/operator/known-issues", 
+      "redirect_document_id": false
+    },       
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
