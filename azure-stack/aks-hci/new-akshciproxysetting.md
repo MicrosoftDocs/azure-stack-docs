@@ -15,11 +15,11 @@ Create an object defining proxy server settings to pass into `Set-AksHciConfig`.
 ## Syntax
 ```powershell
 New-AksHciProxySetting -name <String>
-                         -http <String>
-                         -https <String>
-                         -noProxy <String>
-                         [-credential <PSCredential>]
-                         [-certFile <String>]
+                       -http <String>
+                       -https <String>
+                       -noProxy <String>
+                      [-credential <PSCredential>]
+                      [-certFile <String>]
 ```
 
 ## Description
