@@ -13,18 +13,18 @@ If the resource needs of your applications change, you can manually scale an AKS
 
 ## Scale the control plane nodes
 
-Use the [Set-AksHciClusterNodeCount](set-akshciclusternodecount.md) command to scale the control plane nodes. The following example scales the control plane nodes in a cluster named *mycluster* to three nodes. 
+Use the [Set-AksHciCluster](set-akshcicluster.md) command to scale the control plane nodes. The following example scales the control plane nodes in a cluster named *mycluster* to three nodes. 
 
 ```powershell
-Set-AksHciClusterNodeCount -name mycluster -controlPlaneNodeCount 3
+Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 ```
 
 ## Scale the worker nodes
 
-Use the [Set-AksHciClusterNodeCount](set-akshciclusternodecount.md) command to scale the worker nodes. The following example scales the Linux nodes and Windows nodes in a cluster named *mycluster* to three and one nodes respectively.
+Use the [Set-AksHciCluster](set-akshcicluster.md) command to scale the worker nodes. The following example scales the Linux nodes and Windows nodes in a cluster named *mycluster* to three and one nodes respectively.
 
 ```powershell
-Set-AksHciClusterNodeCount -name mycluster -linuxNodeCount 3 -windowsNodeCount 1
+Set-AksHciCluster -name mycluster -linuxNodeCount 3 -windowsNodeCount 1
 ``` 
 
 ## Next steps
