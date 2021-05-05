@@ -279,7 +279,7 @@ Mary no longer uses services on Azure Stack Hub and must remove the objects. She
 
 4. When the process has finished, the status is shown as **Not registered**:
 
-   [![Screenshot that shows an unregistered directory.](./media/enable-multitenancy/status-not-registered-2.png)](./media/enable-multitenancy/status-not-registered-2-expanded.png#lightbox)
+   [![Screenshot that shows a directory that has been unregistered.](./media/enable-multitenancy/status-not-registered-2.png)](./media/enable-multitenancy/status-not-registered-2-expanded.png#lightbox)
 
    Mary has successfully unregistered the directory **adatum.onmicrosoft.com**.
 
