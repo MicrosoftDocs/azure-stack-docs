@@ -104,4 +104,4 @@ Task is executed by: **Operator**
 
 ## Next steps
 
-[Add scale unit nodes in Azure Stack Hub - Ruggedized](azure-stack-add-scale-node-rca.md)
+[Add scale unit nodes in Azure Stack Hub - Ruggedized](./operator/azure-stack-add-scale-node-rca.md)
