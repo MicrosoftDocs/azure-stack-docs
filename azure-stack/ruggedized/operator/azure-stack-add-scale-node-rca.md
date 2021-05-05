@@ -122,7 +122,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
       exit
       ```
 
-   4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](server-firmware-updates-rca.md).
+   4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](../server-firmware-updates-rca.md).
 
 4. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
 5. Run the add node operation in the Azure Stack Hub administrator portal.
