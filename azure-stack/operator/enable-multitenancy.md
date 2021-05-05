@@ -9,7 +9,7 @@ ms.reviewer: bryanr
 ms.lastreviewed: 02/19/2021
 zone_pivot_groups: management-tool-portal-powershell
 
-# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple directory tenants can access my Azure Stack Hub directory.
+# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple directory tenants can access my Azure Stack Hub.
 # Keyword: configure multi-tenancy azure stack
 ---
 
