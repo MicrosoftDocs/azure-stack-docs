@@ -39,15 +39,15 @@ There are two methods for accessing persistent memory. They are:
 
 A region is a set of one or more persistent memory modules. Regions are often created as [interleaved sets](#understand-interleaved-sets) in which multiple persistent memory modules appear as a single logical virtual address space to increase throughput. To increase available bandwidth, adjacent virtual addresses are spread across multiple persistent memory modules. Regions can usually be created in a server platform's BIOS.
 
-### Namespaces
+### PmemDisks
 
-To use persistent memory as storage, you must define at least one namespace, which is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple namespaces using Windows PowerShell cmdlets to divide up the available raw capacity. Each persistent memory module contains a Label Storage Area (LSA) that stores the configuration metadata to define a namespace. **Cong/Scott: Is a "PmemDisk" in PowerShell actually a namespace? Are they the same thing, or something different? Do we need to go into namespace types, like Intel does? Which would be relevant to our users (Filesystem-DAX, Device Dax, Sector, or Raw)?**
+To use persistent memory as storage, you must define at least one **PmemDisk**, which is a virtual hard disk (VHD) on the host that enumerates as a PmemDisk inside the VM. It's a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple PmemDisks using Windows PowerShell cmdlets to divide up the available raw capacity. Each persistent memory module contains a Label Storage Area (LSA) that stores the configuration metadata.
 
 ### Block translation table
 
-Unlike traditional solid-state drives, persistent memory modules do not protect against "torn writes" that can occur in the case of a power failure or system outage, putting data at risk. BTT mitigates this risk by providing atomic sector update semantics for persistent memory devices, essentially enabling block-like sector writes so that apps can avoid mixing old and new data in a failure scenario. We strongly recommend turning on BTT in nearly all cases. Because BTT is a property of the persistent memory virtual disk, it must be turned on when the virtual disk is created. **Cong/Scott: Can you provide the specific PowerShell command/flag that creates the virtual disk and turns on BTT? Persistent memory PowerShell commands are not documented, which is another issue we need to fix.**
+Unlike solid-state drives, persistent memory modules do not protect against "torn writes" that can occur in the case of a power failure or system outage, putting data at risk. BTT mitigates this risk by providing atomic sector update semantics for persistent memory devices, essentially enabling block-like sector writes so that apps can avoid mixing old and new data in a failure scenario. We strongly recommend turning on BTT in nearly all cases. Because BTT is a property of the PmemDisk, it must be turned on when the PmemDisk is created.
 
-We recommend using BTT in block mode because all data will be using block semantics. We also recommend turning on BTT in DAX mode because metadata operations still use block semantics, even if the application's data operations don't. Even if all application operations are using memory-mapped files with DAX semantics, torn writes could still happen for the metadata operations; therefore, turning on BTT is still valuable.
+In block access mode, we recommend using BTT because all data will be using block semantics. BTT is also useful in DAX mode because metadata operations still use block semantics, even if the application's data operations don't. Even if all application operations are using memory-mapped files with DAX semantics, torn writes could still happen for the metadata operations; therefore, turning on BTT is still valuable.
 
 ## Supported hardware
 
@@ -59,7 +59,9 @@ The following table shows supported persistent memory hardware for Azure Stack H
 | **Intel Optane&trade; DC Persistent Memory** in App Direct Mode             | Not Supported            | Supported                |
 | **Intel Optane&trade; DC Persistent Memory** in Memory Mode | Supported            | Supported                |
 
-Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Direct* (persistent) modes. To use persistent memory modules as storage, which is the primary use case for server workloads, you must use App Direct mode. Memory mode essentially uses persistent memory as slower RAM, which doesn't usually meet the performance requirements of server workloads. Memory mode is distinct from DAX, which is a persistent storage volume that can be accessed using memory-like semantics.
+Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Direct* (persistent) operating modes. To use persistent memory modules as storage, which is the primary use case for server workloads, you must use App Direct mode. Memory mode essentially uses persistent memory as slower RAM, which doesn't usually meet the performance requirements of server workloads. Memory mode is distinct from DAX, which is a persistent storage volume that can be accessed using memory-like semantics.
+
+Operating mode is often preconfigured by the original device manufacturer.
 
 > [!NOTE]
 > When you restart a system that has multiple Intel&reg; Optane&trade; persistent memory modules in App Direct mode that are divided into multiple namespaces, you might lose access to some or all of the related logical storage disks. This issue occurs on Windows Server 2019 versions that are older than version 1903.
@@ -72,7 +74,29 @@ Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Dir
 
 ## Configure persistent memory
 
-Now, let's dive into how you configure persistent memory. **Cong/Scott: As far as I can tell, we skip creating the regions and setting the mode to App Direct with ipmctl. Does that need to be done first? Should we assume the user is using Intel Optane and link to the [Intel docs](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html), and/or include the steps here? At what point can the user begin using Windows Admin Center for the configuration (that is, when will the disks show up in WAC? After you create the namespaces?) The Intel docs show screenshots of the Windows Device Manager UI, along with the PowerShell cmdlets.**
+Now, let's dive into how you configure persistent memory. If you're using Intel Optane persistent memory, follow the [instructions here](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html). If you're using persistent memory modules from another vendor, consult their documentation.
+
+To create a PmemDisk that supports BTT, use the `New-VHD` cmdlet:
+
+```PowerShell
+New-VHD E:\pmemtest.vhdpmem -Fixed -SizeBytes 1GB -AddressAbstractionType BTT
+```
+
+Note that the VHD extension must be "vhdpmem".
+
+You can also convert a VHD that doesn't have BTT enabled into one that does (and vice-versa) using the `Convert-VHD` cmdlet:
+
+```PowerShell
+Convert-VHD .\pmemtest_nobtt.vhdpmem -AddressAbstractionType BTT -DestinationPath pmemtest_btt.vhdpmem
+```
+
+After converting, the new VHD will have the same namespace GUID as the original one. That can lead to problems, especially if they're both attached to the same VM. To create a new namespace UUID for the converted VHD, use the `Set-VHD` cmdlet:
+
+```PowerShell
+Set-VHD -ResetDiskIdentifier .\pmemtest_btt.vhdpmem
+```
+
+**At what point can the user begin using Windows Admin Center for the configuration (that is, when will the disks show up in WAC? After you create the PmemDisk(s)?) The Intel docs show screenshots of the Windows Device Manager UI, along with the PowerShell cmdlets.**
 
 ### Understand interleaved sets
 
