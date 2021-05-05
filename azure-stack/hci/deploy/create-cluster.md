@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 05/05/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -182,7 +182,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 1. Select **Next: Clustering**.
 1. On **3.1 Validate the cluster**, select **Validate**. Validation may take several minutes.
 
-    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md) for more information.
+    If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md).
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. You can **Download report** as well. Repeat again as necessary until all validation checks pass. When all is OK, click **Next**.
 1. On **3.2 Create cluster**, enter a name for your cluster.
