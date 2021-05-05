@@ -9,18 +9,18 @@ ms.reviewer: bryanr
 ms.lastreviewed: 02/19/2021
 zone_pivot_groups: management-tool-portal-powershell
 
-# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple directory tenants can access my Azure Stack.
+# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple directory tenants can access my Azure Stack Hub directory.
 # Keyword: configure multi-tenancy azure stack
 ---
 
 
 # Configure multi-tenancy in Azure Stack Hub
 
-You can configure Azure Stack Hub to support sign-ins from users that reside in other Azure Active Directory (Azure AD) directories, allowing them to use services in Azure Stack Hub. These directories have a "guest" relationship with your Azure Stack Hub, and are considered guest Azure AD tenants.
+You can configure Azure Stack Hub to support sign-ins from users that reside in other Azure Active Directory (Azure AD) directories, allowing them to use services in Azure Stack Hub. These directories have a "guest" relationship with your Azure Stack Hub directory, and are considered guest Azure AD tenants.
 
 For example, consider this scenario:
 
-- You're the service administrator of contoso.onmicrosoft.com, the home Azure AD tenant that provides identity and access management services to your Azure Stack Hub.
+- You're the service administrator of contoso.onmicrosoft.com, the home Azure AD tenant that provides identity and access management services to Azure Stack Hub.
 - Mary is the directory administrator of adatum.onmicrosoft.com, the guest Azure AD tenant where guest users are located.
 - Mary's company (Adatum) uses IaaS and PaaS services from your company. Adatum wants to allow users from the guest directory (adatum.onmicrosoft.com) to sign in and use Azure Stack Hub resources secured by contoso.onmicrosoft.com.
 
@@ -97,7 +97,7 @@ Register-AzSWithMyDirectoryTenant `
 >
 > Run this script again at any time to check the status of the Azure Stack Hub apps in your directory.
 >
-> If you notice issues with creating VMs in Managed Disks (introduced in the 1808 update), a new **Disk Resource Provider** was added requiring this script to be run again.
+> If you notice issues with creating VMs in Managed Disks (introduced in the 1808 update), a new disk resource provider was added, which requires this script to be run again.
 
 ### Direct users to sign in
 
@@ -167,7 +167,7 @@ $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property t
 
 ## Update Azure AD tenant permissions
 
-This action clears an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the **Azurestack-tools-master/identity** folder:
+This action clears an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the *Azurestack-tools-master/identity* folder:
 
 ```powershell
 Import-Module ..\Identity\AzureStack.Identity.psm1
@@ -187,7 +187,7 @@ The script prompts you for administrative credentials on the Azure AD tenant, an
 ::: moniker range="<azs-2102"
 ## Portal-based management isn't supported for this version
 
-Multi-tenancy management using the administrator portal is only available for versions 2102 and higher. Select a higher version by using the selector in the upper-left part of the page.
+Multi-tenancy management using the administrator portal is only available for versions 2102 and later. Select a later version by using the selector in the upper-left part of the page.
 ::: moniker-end
 ::: moniker range=">=azs-2102"
 ::: zone pivot="management-tool-portal"
@@ -201,25 +201,25 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
 1. Sign in to the Azure Stack Hub administrator portal and go to **All services - Directories**.
 
-   [![Directories list](./media/enable-multitenancy/directories.png)](./media/enable-multitenancy/directories-expanded.png#lightbox)
+   [![Screenshot that shows the list of directories.](./media/enable-multitenancy/directories.png)](./media/enable-multitenancy/directories-expanded.png#lightbox)
 
 2. Select **Add** to start the onboarding process. Enter the guest directory name "adatum.onmicrosoft.com", and then select **Add**.
 
-   [![Add](./media/enable-multitenancy/add-directory.png)](./media/enable-multitenancy/add-directory-expanded.png#lightbox)
+   [![Screenshot that shows how to add a new directory.](./media/enable-multitenancy/add-directory.png)](./media/enable-multitenancy/add-directory-expanded.png#lightbox)
 
 3. The guest directory appears in the list view, with a status of **unregistered**.
 
-   [![Registered](./media/enable-multitenancy/unregistered.png)](./media/enable-multitenancy/unregistered-expanded.png#lightbox)
+   [![Screenshot that shows the new guest directory with an unregistered status.](./media/enable-multitenancy/unregistered.png)](./media/enable-multitenancy/unregistered-expanded.png#lightbox)
 
 4. Only Mary has the credentials to authenticate to the guest directory, so you must send her the link to complete the registration. Select the **adatum.onmicrosoft.com** checkbox, and then select **Register**.
 
-   [![Click Register](./media/enable-multitenancy/register.png)](./media/enable-multitenancy/register-expanded.png#lightbox)
+   [![Screenshot that shows selecting a directory to register.](./media/enable-multitenancy/register.png)](./media/enable-multitenancy/register-expanded.png#lightbox)
 
 5. A new browser tab opens. Select **Copy link** at the bottom of the page, and provide it to Mary.
 
 6. If you have the credentials for the guest directory, you can complete the registration yourself by selecting **Sign in**.
 
-   [![Sign in](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
+   [![Screenshot that shows selecting sign in.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
 #### Configure guest directory
 
@@ -230,22 +230,22 @@ Mary received the email with the link to register the directory. She opens the l
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
 
-   [![Sign in to manage directory](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
+   [![Screenshot that shows signing in to manage a directory.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
 1. Mary reviews the status for the directory and sees it isn't registered.
 
-   [![Manage directory](./media/enable-multitenancy/not-registered.png)](./media/enable-multitenancy/not-registered-expanded.png#lightbox)
+   [![Screenshot that shows an unregistered directory.](./media/enable-multitenancy/not-registered.png)](./media/enable-multitenancy/not-registered-expanded.png#lightbox)
 
 1. Mary selects **Register** to start the process.
 
    > [!NOTE]
    > Required objects for Visual Studio Code might not be able to be created, and must use PowerShell.
 
-   ![Register directory](./media/enable-multitenancy/register-directory.png)
+   ![Screenshot that shows the starting directory registration.](./media/enable-multitenancy/register-directory.png)
 
-1. Once the registration process is finished, Mary can review all the applications that were created in the directory, and check their status.
+1. After the registration process is finished, Mary can review all the applications that were created in the directory, and check their status.
 
-   ![Check app status](./media/enable-multitenancy/manage-directory.png)
+   ![Screenshot that shows a registered directory.](./media/enable-multitenancy/manage-directory.png)
 
 1. Mary has successfully completed the registration process and can now direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
@@ -267,19 +267,19 @@ Mary no longer uses services on Azure Stack Hub and must remove the objects. She
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
 
-   [![Graphical user interface, application description automatically generated](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
+   [![Screenshot that shows selecting Sign In.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in-expanded.png#lightbox)
 
 2. Mary sees the status of the directory.
 
-   ![Directory status](./media/enable-multitenancy/manage-directory.png)
+   ![Screenshot that shows a registered directory.](./media/enable-multitenancy/manage-directory.png)
 
 3. Mary selects **Unregister** to start the action.
 
-   ![Unregister](./media/enable-multitenancy/unregister-directory.png)
+   ![Screenshot that shows selecing Unregister to unregister a directory.](./media/enable-multitenancy/unregister-directory.png)
 
 4. When the process has finished, the status is shown as **Not registered**:
 
-   [![Not registered](./media/enable-multitenancy/status-not-registered-2.png)](./media/enable-multitenancy/status-not-registered-2-expanded.png#lightbox)
+   [![Screenshot that shows an unregistered directory.](./media/enable-multitenancy/status-not-registered-2.png)](./media/enable-multitenancy/status-not-registered-2-expanded.png#lightbox)
 
    Mary has successfully unregistered the directory **adatum.onmicrosoft.com**.
 
@@ -292,15 +292,15 @@ As an Azure Stack Hub operator, you can remove the guest directory at any point,
 
 1. Sign in to the Azure Stack Hub administrator portal and go to **All services - Directories**.
 
-   [![All services directories](./media/enable-multitenancy/directory-list.png)](./media/enable-multitenancy/directory-list-expanded.png#lightbox)
+   [![Screenshot that shows all directories.](./media/enable-multitenancy/directory-list.png)](./media/enable-multitenancy/directory-list-expanded.png#lightbox)
 
 1. Select the **adatum.onmicrosoft.com** directory checkbox, and then select **Remove**.
 
-   [![Remove](./media/enable-multitenancy/directory-list-2.png)](./media/enable-multitenancy/directory-list-2-expanded.png#lightbox)
+   [![Screenshot that shows selecting Remove for a directory.](./media/enable-multitenancy/directory-list-2.png)](./media/enable-multitenancy/directory-list-2-expanded.png#lightbox)
 
 1. Confirm the delete action by typing **yes** and selecting **Remove**.
 
-   [![Select Remove](./media/enable-multitenancy/remove-directory.png)](./media/enable-multitenancy/remove-directory-expanded.png#lightbox)
+   [![Screenshot that shows how to remove a directory.](./media/enable-multitenancy/remove-directory.png)](./media/enable-multitenancy/remove-directory-expanded.png#lightbox)
 
    You have successfully removed the directory.
 
@@ -308,13 +308,13 @@ As an Azure Stack Hub operator, you can remove the guest directory at any point,
 
 Azure Stack Hub updates can introduce support for new tools or services that might require an update of the home or guest directory.
 
-As an Azure Stack Hub operator, you get an alert in the admin portal that informs you about a required directory update. You can also determine whether an update is required for home or guest directories by viewing the directories blade in the admin portal. Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown.
+As an Azure Stack Hub operator, you get an alert in the admin portal that informs you about a required directory update. You can also determine whether an update is required for home or guest directories by viewing the directories pane in the admin portal. Each directory listing shows the type of directory. The type can be a home or guest directory, and its status is shown.
 
 #### Update the Azure Stack Hub directories
 
 When an Azure Stack Hub directory update is required, a status of **Update Required** is shown. For example:
 
-[![Update home directory](./media/enable-multitenancy/update-directory.png)](./media/enable-multitenancy/update-directory.png#lightbox)
+[![Screenshot that shows a directory requiring an update.](./media/enable-multitenancy/update-directory.png)](./media/enable-multitenancy/update-directory.png#lightbox)
 
 To update the directory, select the **Directory name** checkbox, and then select **Update**.
 
@@ -326,7 +326,7 @@ Mary, the owner of the guest directory, opens the URL that she received via emai
 
 1. Mary signs in by using her global admin credentials for **adatum.onmicrosoft.com**. Make sure pop-up blockers are disabled before signing in.
 
-   [![Graphical user interface, application Description automatically generated](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in.png#lightbox)
+   [![Screenshot that shows selecting Sign In.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in.png#lightbox)
 
 1. Mary sees the status of the directory saying an update is required.
 
