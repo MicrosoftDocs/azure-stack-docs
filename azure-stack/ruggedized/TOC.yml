@@ -268,6 +268,8 @@
             href: ./operator/azure-stack-add-scale-node-rca.md
           - name: Add public IP addresses
             href: ../operator/azure-stack-add-ips.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Server firmware updates
+            href: server-firmware-updates-rca.md  
       - name: Replace hardware
         items:
         - name: Node actions

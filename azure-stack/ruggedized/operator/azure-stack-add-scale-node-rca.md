@@ -122,12 +122,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
       exit
       ```
 
-   4. Prepare physical nodes and apply latest firmware and BIOS settings:
-
-      ```shell
-      end
-      write memory
-      ```
+   4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](server-firmware-updates-rca.md).
 
 4. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
 5. Run the add node operation in the Azure Stack Hub administrator portal.
@@ -177,7 +172,6 @@ You can use the administrator portal or PowerShell to add new nodes. The add nod
    ![Scale unit node](media/azure-stack-add-scale-node-rca/select-node1.png)
 3. On the **Add node** pane, select the *Region*, and then select the *Scale unit* that you want to add the node to. Also specify the *BMC IP ADDRESS* for the scale unit node you're adding. You can only add one node at a time.
    ![Add node details](media/azure-stack-add-scale-node-rca/select-node2.png)
- 
 
 ### [PowerShell Az](#tab/Az)
 
@@ -188,9 +182,10 @@ Before using either of the following sample PowerShell scripts, replace the valu
   > [!Note]  
   > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
 
-**Add a node:**
+#### Add a node
+
   ```powershell
-  ## Add a single Node 
+  ## Add a single node 
     Add-AzsScaleUnitNode -BMCIPv4Address "<BMCIP_address_of_new_node>" -computername "<name_of_new_node>" -ScaleUnit "<name_of_scale_unit_cluster>" 
   ```  
 
@@ -203,7 +198,8 @@ Before using either of the following sample PowerShell scripts, replace the valu
   > [!Note]  
   > When naming a node you must keep the name to less than 15 characters in length. You also can't use a name that contains a space or contains any of the following characters: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`, `}`, `_`.
 
-**Add a node:**
+#### Add a single node
+
   ```powershell
   ## Add a single Node 
   $NewNode=New-AzsScaleUnitNodeObject -computername "<name_of_new_node>" -BMCIPv4Address "<BMCIP_address_of_new_node>" 
@@ -213,24 +209,29 @@ Before using either of the following sample PowerShell scripts, replace the valu
 
 ---
 
-## Monitor add node operations 
+## Monitor add node operations
+
 Use the administrator portal or PowerShell to get the status of the add node operation. Add node operations can take several hours to days to complete.
 
-### Use the administrator portal 
+### Use the administrator portal
+
 To monitor the addition of a new node, review the scale unit or scale unit node objects in the administrator portal. To do so, go to **Region management** > **Scale units**. Next, select the scale unit or scale unit node you want to review. 
 
 ### Use PowerShell
+
 The status for scale unit and scale unit nodes can be retrieved using PowerShell as follows:
+
   ```powershell
   #Retrieve Status for the Scale Unit
   Get-AzsScaleUnit|select name,state
  
   #Retrieve Status for each Scale Unit Node
   Get-AzsScaleUnitNode |Select Name, ScaleUnitNodeStatus
-```
+  ```
 
-### Status for the add node operation 
-**For a scale unit:**
+### Status for the add node operation
+
+#### For a scale unit
 
 |Status               |Description  |
 |---------------------|---------|
@@ -240,8 +241,7 @@ The status for scale unit and scale unit nodes can be retrieved using PowerShell
 |Configuring Storage  |The compute capacity has been expanded and the storage configuration is running.|
 |Requires Remediation |An error has been detected that requires one or more scale unit nodes to be repaired.|
 
-
-**For a scale unit node:**
+#### For a scale unit node
 
 |Status                |Description  |
 |----------------------|---------|
@@ -252,22 +252,28 @@ The status for scale unit and scale unit nodes can be retrieved using PowerShell
 |Maintenance           |The node is paused, and no active user workload is running. |
 |Requires Remediation  |An error has been detected that requires the node to be repaired.|
 
-
 ## Troubleshooting
-The following are common issues seen when adding a node. 
 
-**Scenario 1:**  The add scale unit node operation fails but one or more nodes are listed with a status of Stopped.  
+The following are common issues seen when adding a node.
+
+### Scenario 1: The add scale unit node operation fails but one or more nodes are listed with a status of Stopped
+  
 - Remediation: Use the repair operation to repair one or more nodes. Only a single repair operation can run at one time.
 
-**Scenario 2:** One or more scale unit nodes have been added but the storage expansion failed. In this scenario, the scale unit node object reports a status of Running but the Configuring Storage task isn't started.  
+### Scenario 2: One or more scale unit nodes have been added but the storage expansion failed
+
+In this scenario, the scale unit node object reports a status ofRunning but the Configuring Storage task isn't started.  
+
 - Remediation: Use the privileged endpoint to review the storage health by running the following PowerShell cmdlet:
+
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
- 
-**Scenario 3:** You received an alert that indicates the storage scale-out job failed.  
+
+### Scenario 3: You received an alert that indicates the storage scale-out job failed.
+
 - Remediation: In this case, the storage configuration task has failed. This problem requires you to contact support.
 
+## Next steps
 
-## Next steps 
 [Add public IP addresses](../../operator/azure-stack-add-ips.md)
