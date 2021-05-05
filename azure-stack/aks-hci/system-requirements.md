@@ -58,44 +58,50 @@ Import-Module AzureAD
 ```
 **Close all PowerShell windows** and reopen a new administrative session.
 
-```powershell
-# Login to Azure
-Connect-AzAccount
+1. Log in to Azure using the [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
 
-# Optional - if you wish to switch to a different subscription
-# First, get all available subscriptions as the currently logged in user
-$subList = Get-AzSubscription
-# Display those in a grid, select the chosen subscription, then press OK.
-if (($subList).count -gt 1) {
-    $subList | Out-GridView -OutputMode Single | Set-AzContext
-}
+   ```powershell
+   Connect-AzAccount
+   ```
+2. (Optional) If you want to switch to a different subscription, run the following command to retrieve all the available subscriptions as the currently logged in user and display them in a grid view:
 
-# Retrieve the current subscription ID
-$sub = (Get-AzContext).Subscription.Id
+   ```powershell
+   $subList = Get-AzSubscription
+   if (($subList).count -gt 1) {
+   $subList | Out-GridView -OutputMode Single | Set-AzContext
+   }
+    ```  
+3. Retrieve the current subscription ID by running the following command:
+   ```powershell
+   $sub = (Get-AzContext).Subscription.Id
+   ```
+4. (Optional) To create a unique name for the service principal, run the following command:
+   ```powershell
+   $date = (Get-Date).ToString("MMddyy-HHmmss")
+   $spName = "AksHci-SP-$date"
+   ``` 
+5. Create the service principal by running the following command:
 
-# Create a unique name for the Service Principal
-$date = (Get-Date).ToString("MMddyy-HHmmss")
-$spName = "AksHci-SP-$date"
+   ```powershell
+   $sp = New-AzADServicePrincipal -DisplayName $spName `
+       -Role 'Microsoft.Kubernetes connected cluster role' `
+       -Scope "/subscriptions/$sub"
+   ```   
+6. Retrieve the password for the service principal by running the following command:
 
-# Create the Service Principal
-
-$sp = New-AzADServicePrincipal -DisplayName $spName `
-    -Role 'Microsoft.Kubernetes connected cluster role' `
-    -Scope "/subscriptions/$sub"
-
-# Retrieve the password for the Service Principal
-
-$secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
-    [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
-)
-
-Write-Host "Application ID: $($sp.ApplicationId)"
-Write-Host "App Secret: $secret"
-```
+   ```powershell
+   $secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
+        [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
+   )
+   Write-Host "Application ID: $($sp.ApplicationId)"
+   Write-Host "App Secret: $secret"
+   ```   
+   
+   
 
 From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of those items and store them safely.
 
-Now that the **application ID** and **secret** are created, go to the **Azure portal**, and you should see your new service principal under **Subscriptions**/**Access **Control**/**Role Assignments**.
+With that created, in the **Azure portal**, under **Subscriptions**, **Access **Control****, and then **Role Assignments**, you should see your new Service Principal.
 
 ## Compute requirements
 
