@@ -10,11 +10,11 @@ ms.author: dawhite
 
 > Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
 
-After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster using Windows Admin Center. To instead use PowerShell, see [Create a Kubernetes cluster with PowerShell](create-kubernetes-cluster-powershell.md).
+After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster using Windows Admin Center. To instead use PowerShell, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
 
-Before proceeding to the Kubernetes cluster create wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md) if you haven't already. The Kubernetes cluster create wizard can be reached through the [All Connections](#creating-a-kubernetes-cluster-from-the-all-connections-page) page or the [Azure Kubernetes Service host dashboard](#creating-a-kubernetes-cluster-from-the-azure-kubernetes-service-host-dashboard).
+Before proceeding to the Kubernetes cluster create wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md) if you haven't already. The Kubernetes cluster create wizard can be reached through the [All Connections](#create-a-kubernetes-cluster-from-the-all-connections-page) page or the [Azure Kubernetes Service host dashboard](#create-a-kubernetes-cluster-from-the-azure-kubernetes-service-host-dashboard).
 
-## Creating a Kubernetes cluster from the All Connections page 
+## Create a Kubernetes cluster from the All Connections page 
 
 There are two ways to create a Kubernetes cluster in Windows Admin Center. One of these options is to do so from the **All Connections** page. Follow these steps, then proceed to the [Kubernetes cluster create wizard](#the-kubernetes-cluster-create-wizard) section: 
 
@@ -23,14 +23,14 @@ There are two ways to create a Kubernetes cluster in Windows Admin Center. One o
 
     ![Illustrates the Add or create resources blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\create-kubernetes-cluster\add-connection.png)
   
-## Creating a Kubernetes cluster from the Azure Kubernetes Service host dashboard  
+## Create a Kubernetes cluster from the Azure Kubernetes Service host dashboard  
 
 You may also create a Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool when you are connected to the system that is using an Azure Kubernetes Service host. Follow these steps, then proceed to the [Kubernetes cluster create wizard](#the-kubernetes-cluster-create-wizard) section: 
 
 1. Connect to the system where you wish to create your Kubernetes cluster and navigate to the **Azure Kubernetes Service** tool. This system should already have an Azure Kubernetes Service host set up.
 2. Select the **Add cluster** button under the **Kubernetes cluster** heading.
 
-![Illustrates the Azure Kubernetes Service tool dashboard that appears after you set up an Azure Kubernetes Service host.](.\media\setup\dashboard.png)
+   ![Illustrates the Azure Kubernetes Service tool dashboard that appears after you set up an Azure Kubernetes Service host.](.\media\setup\dashboard.png)
   
 ## The Kubernetes cluster create wizard
 You've reached the Kubernetes cluster create wizard through the **All Connections** page or the Azure Kubernetes Service tool. Let's get started:  
@@ -42,11 +42,14 @@ You've reached the Kubernetes cluster create wizard through the **All Connection
  
 3. You may configure additional node pools to run your workloads on the **Node pools** page. During public preview, you may add up to one Windows node pool and one Linux node pool (in addition to the system node pool). If you'd like to enable Azure Arc integration later in this wizard, you will need at least one Linux node pool that is not the primary node pool. When you're finished, select **Next**.
 4. In the **Authentication** step, you may select if you'd like to enable Active Directory authentication. If you do choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
-5. Specify your network configuration on the **Networking** page. If you select "Basics," virtual networks for nodes in the cluster will be created with a default address range. Selecting the "Advanced" configuration is currently no different the "Basic" configuration. The Network Settings (load balancer, network policy, and HTTP application routing) cannot be changed in public preview. When complete, select **Next**.
+5. Specify your network configuration on the **Networking** page. If you select the **Flannel** container network interface (CNI), keep in mind that only Windows or hybrid clusters are supported. Once **Flannel** is set, it cannot be changed, and the cluster will not support any network policy. If the **Calico** CNI is selected, note that it is not needed to support Calico Network Policy and Calico will be the default option for your network policy under **Security**. To add a **New Virtual Network**, select either **Static** or **DHCP** under **Network Type**. Once you select the network, complete the corresponding required fields shown in the static or DHCP images below. After filling out all the required fields, select **Create**. When complete, select **Next: Review + Create**.
 
-    [ ![Illustrates the Networking page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking.png) ](\media\create-kubernetes-cluster\networking.png#lightbox)
+    [ ![Illustrates the Networking, static page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking-static.png) ](\media\create-kubernetes-cluster\networking-static.png#lightbox)
 
-6. On the **Integration** page, connect your cluster with additional services, such as persistent storage. You are required to configure persistent storage on this page. In public preview, the persistent storage location will default to the storage location selected during host setup. The fields on this page are currently not editable. When you're finished, select **Next**.
+    [ ![Illustrates the Networking, DHCP page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking-dhcp.png) ](\media\create-kubernetes-cluster\networking-dhcp.png#lightbox)
+   
+   After completing the required fields, select **Create** in the lower right corner, and then select **Next: Review + Create**.
+
 7. Review your selections on the **Review + create** page. When you're satisfied, select **Create** to begin deployment. Your deployment progress will be shown at the top of this page. 
 8. After your deployment is complete, the **Next steps** page details how to manage your cluster. This page also contains your SSH Key. If you chose to disable the Azure Arc integration in the previous step, some of the information and instructions on this page may not be available or functional.
 

@@ -1,8 +1,13 @@
 {
   "redirections": [
     { 
-      "source_path": "azure-stack/operator/known-issues-v0.md", 
-      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2008", 
+      "source_path": "azure-stack/aks-hci/uninstall-akshcimonitoring.md", 
+      "redirect_url": "/azure-stack/aks-hci/akshci", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/aks-hci/set-akshciclusternodecount.md", 
+      "redirect_url": "/azure-stack/aks-hci/set-akshcicluster", 
       "redirect_document_id": false
     }, 
     { 
@@ -36,6 +41,16 @@
       "redirect_document_id": false
     }, 
     { 
+      "source_path": "azure-stack/operator/known-issues-vn.md", 
+      "redirect_url": "/azure-stack/operator/known-issues", 
+      "redirect_document_id": false
+    },       
+    { 
+      "source_path": "azure-stack/operator/known-issues-v0.md", 
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2008", 
+      "redirect_document_id": false
+    },     
+    { 
       "source_path": "azure-stack/operator/known-issues-v1.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2005", 
       "redirect_document_id": false
@@ -50,6 +65,11 @@
       "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-1910", 
       "redirect_document_id": false
     }, 
+    { 
+      "source_path": "azure-stack/operator/hotfix-v0.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-33-131", 
+      "redirect_document_id": false
+    },     
     { 
       "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 

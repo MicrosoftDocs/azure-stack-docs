@@ -1,13 +1,13 @@
 ---
-title: Set-AksHciClusterNodeCount
+title: Set-AksHciCluster
 author: jessicaguan
-description: The Set-AksHciClusterNodeCount PowerShell command scales the number of control plane nodes or worker nodes in a cluster.
+description: The Set-AksHciCluster PowerShell command scales the number of control plane nodes or worker nodes in a cluster.
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 04/12/2021
 ms.author: jeguan
 ---
 
-# Set-AksHciClusterNodeCount
+# Set-AksHciCluster
 
 ## Synopsis
 Scale the number of control plane nodes or worker nodes in a cluster.
@@ -16,15 +16,15 @@ Scale the number of control plane nodes or worker nodes in a cluster.
 
 ### Scale control plane nodes
 ```powershell
-Set-AksHciClusterNodeCount -name <String>
-                           -controlPlaneNodeCount <int> 
+Set-AksHciCluster -name <String>
+                  -controlPlaneNodeCount <int> 
 ```
 
 ### Scale worker nodes
 ```powershell
-Set-AksHciClusterNodeCount -name <String>
-                           -linuxNodeCount <int>
-                           -windowsNodeCount <int>
+Set-AksHciCluster -name <String>
+                  -linuxNodeCount <int>
+                  -windowsNodeCount <int>
 ```
 
 ## Description
@@ -34,12 +34,12 @@ Scale the number of control plane nodes or worker nodes in a cluster. The contro
 
 ### Scale control plane nodes
 ```powershell
-PS C:\> Set-AksHciClusterNodeCount -name myCluster -controlPlaneNodeCount 3
+PS C:\> Set-AksHciCluster -name myCluster -controlPlaneNodeCount 3
 ```
 
 ### Scale worker nodes
 ```powershell
-PS C:\> Set-AksHciClusterNodeCount -name myCluster -linuxNodeCount 2 -windowsNodeCount 2
+PS C:\> Set-AksHciCluster -name myCluster -linuxNodeCount 2 -windowsNodeCount 2
 ```
 
 ## Parameters
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneNodeCount
-The number of nodes in your control plane. There is no default value.
+The number of nodes in your control plane. Default is 1.
 
 ```yaml
 Type: System.Int32
@@ -69,7 +69,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: none
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -89,21 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -proxyServerCertFile
-The certificate used to authenticate to the proxy server.
- 
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
- 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -windowsNodeCount
 The number of Windows nodes in your Kubernetes cluster. Default is 1.
 
@@ -114,7 +99,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

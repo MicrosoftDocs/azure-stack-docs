@@ -1,10 +1,10 @@
 ---
 title: New-AksHciNetworkSetting
-author: jessicaguan
+author: mkostersitz
 description: The New-AksHciNetworkSetting PowerShell command creates an object for a new virtual network.
 ms.topic: reference
-ms.date: 2/12/2021
-ms.author: jeguan
+ms.date: 4/12/2021
+ms.author: mikek
 ---
 
 # New-AksHciNetworkSetting
@@ -14,7 +14,8 @@ Create an object for a new virtual network.
 
 ## Syntax
 ```powershell
-New-AksHciNetworkSetting -vnetName <String>
+New-AksHciNetworkSetting -name <String>
+                         -vswitchName <String>
                          -gateway <String>
                          -dnsServers <String[]>
                          -ipAddressPrefix <String>
@@ -34,8 +35,8 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 ### Deploy with a static IP environment
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16"
+PS C:\> $vnet = New-AksHciNetworkSetting -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 > [!NOTE]
@@ -44,17 +45,32 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 ### Deploy with a DHCP environment
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
+PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
 ```
 
 ```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData"
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet 
 ```
 
 ## Parameters
 
-### -vnetName
-The the name of your external switch. To get a list of the names of your available switches, run the command `Get-VMSwitch`.
+### -name
+The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -vswitchName
+The name of your external switch. To get a list of the names of your available switches, run the command `Get-VMSwitch`.
 
 ```yaml
 Type: System.String
