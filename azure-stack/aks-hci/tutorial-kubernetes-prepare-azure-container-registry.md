@@ -166,5 +166,5 @@ Advance to the next tutorial to learn how to deploy a Kubernetes cluster in Azur
 [az-acr-list]: /cli/azure/acr#az-acr-list
 [az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository
-[az-group-create]: /cli/azure/group#az-group-create
+[az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli
