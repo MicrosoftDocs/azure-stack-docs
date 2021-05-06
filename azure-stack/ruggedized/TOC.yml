@@ -265,9 +265,11 @@
           - name: Manage physical memory capacity
             href: ../operator/azure-stack-manage-storage-physical-memory-capacity.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Add scale unit nodes
-            href: ../operator/azure-stack-add-scale-node.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ./operator/add-scale-node-ruggedized.md
           - name: Add public IP addresses
             href: ../operator/azure-stack-add-ips.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Server firmware updates
+            href: ./operator/server-firmware-updates-ruggedized.md  
       - name: Replace hardware
         items:
         - name: Node actions
