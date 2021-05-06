@@ -69,7 +69,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
     username@contoso.com   azure-stack-sub  6d5ff183-b37f-4a5b-9a2f-19959cb4224a username@contoso.com
     ```
 
-3. Make a note of the Tenant ID. You will need to when adding the JSON section that
+3. Make a note of the tenant ID. You will need to when adding the JSON section that
     that will configure the Azure Account extension.
 
 ## Set up the Azure Account extension
