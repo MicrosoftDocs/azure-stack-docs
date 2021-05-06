@@ -122,7 +122,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
       exit
       ```
 
-4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](server-firmware-updates-rca.md).
+4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](server-firmware-updates-ruggedized.md).
 5. Run the add node operation in the Azure Stack Hub administrator portal.
 6. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations).
 
