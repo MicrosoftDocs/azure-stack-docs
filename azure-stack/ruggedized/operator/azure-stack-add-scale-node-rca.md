@@ -4,10 +4,10 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/27/2021
+ms.date: 5/06/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 4/27/2021
+ms.lastreviewed: 5/06/2021
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
@@ -122,9 +122,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
       exit
       ```
 
-   4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](server-firmware-updates-rca.md).
-
-4. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
+4. Prepare physical nodes and apply latest firmware and BIOS settings. For more information, see [Server firmware updates](server-firmware-updates-rca.md).
 5. Run the add node operation in the Azure Stack Hub administrator portal.
 6. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations).
 
