@@ -110,9 +110,6 @@ This issue will be fixed in a future release.
 Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
 This issue will be fixed in a future release.
 
-## Azure Kubernetes Service host setup fails in Windows Admin Center if reboots are required
-The Azure Kubernetes Service host setup wizard will fail if the one or more servers you are using need to be rebooted to install roles like PowerShell or Hyper-V. The current workaround is to exit the wizard and try again on the same system after the servers come back online. This issue will be fixed in a future release.
-
 ## Azure registration step in Azure Kubernetes Service host setup asks to try again
 When using Windows Admin Center to set up the Azure Kubernetes Service host, you may be asked to try again after entering the required information on the Azure registration page. You may need to sign in to Azure again on the Windows Admin Center gateway to proceed with this step. If you're having difficulty signing in to Azure through Windows Admin Center, try signing in to your Azure account from another source, like the [Azure portal](https://portal.azure.com/). If you continue to have problems, check the [Windows Admin Center known issues](/windows-server/manage/windows-admin-center/support/known-issues) article before you contact support.
 
@@ -125,10 +122,6 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
  
 > [!NOTE]
 > If you use the Azure portal to delete the Azure Arc-enabled Kubernetes resource, it removes any associated configuration resources, but does not remove the agents running on the cluster. Best practice is to delete the Azure Arc-enabled Kubernetes resource using `az connectedk8s delete` instead of Azure portal.
-
-
-## When using Windows Admin Center to set up an AKS host, setup may fail if File Explorer is open
-If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 
 
 ## Cannot connect Windows Admin Center to Azure as create new Azure App ID fails
 If you're unable to connect Windows Admin Center to Azure because you can't automatically create and use an Azure App ID on the gateway, create an Azure App ID and assign it the right permissions on the portal. Then, select **Use existing in the gateway**. For more information, visit [connecting your gateway to Azure.](/windows-server/manage/windows-admin-center/azure/azure-integration).
