@@ -59,7 +59,7 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
 
    ```json
    {
-     "Name": "Azure Stack HCI registration role”,
+     "Name": "Azure Stack HCI registration role",
      "Id": null,
      "IsCustom": true,
      "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
