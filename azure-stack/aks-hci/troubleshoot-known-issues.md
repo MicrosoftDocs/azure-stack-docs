@@ -125,10 +125,10 @@ connected host has failed to respond.At line:1 char:1+ powershell -command
 
 This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
 
-To resolve this issue, you need to determine where the break down occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
+To resolve this issue, you need to determine where the breakdown occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
 
 1. Ping the destination DNS name: ping `msk8s.api.cdp.microsoft.com`. 
-2. If you get a response back and no time out, then the basic network path is working. 
+2. If you get a response back and no time-out, then the basic network path is working. 
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
 ## Next steps
