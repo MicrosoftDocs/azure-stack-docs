@@ -1,9 +1,9 @@
 ---
 title: Deploy an Azure Stack HCI cluster set
-description: Learn how to Deploy an Azure Stack HCI cluster set
+description: Learn how to deploy an Azure Stack HCI cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 05/06/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -14,7 +14,7 @@ ms.reviewer: JasonGerend
 
 This article provides information on how to use Windows PowerShell to deploy a cluster set. A cluster set is a group of multiple failover clusters that are clustered together. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude.
 
-Cluster sets been tested and supported up to 64 total cluster nodes. However, cluster sets can scale to much larger limits and is not hardcoded for a limit.
+Cluster sets have been tested and supported up to 64 total cluster nodes. However, cluster sets can scale to much larger limits and are not hardcoded for a limit.
 
 ## Benefits
 
@@ -24,15 +24,15 @@ Cluster sets offer the following benefits:
 
 - Increased resiliency. Having four 4-node clusters in a cluster set gives you better resiliency than a single 16-node cluster in that multiple compute nodes can go down and production remains intact.
 
-- Manage failover cluster lifecycle, including onboarding and retiring clusters, without impacting tenant virtual machine (VM) availability.
+- Management of failover cluster lifecycle, including onboarding and retiring clusters, without impacting tenant VM availability.
 
-- Enable VM flexibility across individual clusters and a present a unified storage namespace.
+- VM flexibility across individual clusters and a present a unified storage namespace.
 
 - Easily change the compute-to-storage workload ratio in your hyper-converged environment.
 
 - Benefit from [Azure-like Fault Domains and Availability sets](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) across individual clusters in initial VM placement and subsequent migration.
 
-- Can be used even if compute and storage hardware between cluster nodes is not identical.
+- Can use even if compute and storage hardware between cluster nodes is not identical.
 - Live migration of VMs between clusters.
 - Azure-like availability sets and fault domains across multiple clusters.
 - Moving of SQL Server VMs between clusters.
@@ -41,17 +41,17 @@ Cluster sets offer the following benefits:
 
 There are a few requirements and limitations for using cluster sets:
 
-- All member clusters in a cluster set must be in the same AD forest.
+- All member clusters in a cluster set must be in the same Active Directory (AD)forest.
 
-- Member servers in the set must be running Windows Server 2019 or Azure Stack HCI. If you want to add a Windows Server 2016 cluster to a set for example, you must first migrate the cluster servers to Windows Server 2019 first.
+- Member servers in the set must be running Windows Server 2019 or Azure Stack HCI. If you want to add a Windows Server 2016 cluster to a set for example, you must first migrate the cluster servers to Windows Server 2019.
 
 - Identical processor hardware is required for all member servers in order for live migration between member clusters to occur.
 
 - Cluster set VMs must be manually live-migrated across clusters - they cannot automatically failover.
 
-- Storage Replica (SR) must be used between member clusters to realize storage resiliency to cluster failures. When using SR, bear in mind that namespace storage UNC paths will not change automatically on SR failover to the replica target cluster.
+- Storage Replica must be used between member clusters to realize storage resiliency to cluster failures. When using SR, bear in mind that namespace storage UNC paths will not change automatically on SR failover to the replica target cluster.
 
-- Storage Spaces Direct does not function across member clusters in a cluster set, Rather, Storage Spaces Direct applies to a single cluster, with each cluster having its own storage pool.
+- Storage Spaces Direct does not function across member clusters in a cluster set. Rather, Storage Spaces Direct applies to a single cluster, with each cluster having its own storage pool.
 
 ## Architecture
 
@@ -91,7 +91,7 @@ Using stretched clusters, you can failover VMs across fault domains in a disaste
 
 ### Availability set
 
-An availability set is used to configure the desired redundancy of clustered workloads across fault domains by grouping and deploying workloads in an availability set. For a two-tier application, you should configure at least two VMs in an availability set for each tier, which ensures that when a fault domain in an availability set goes down, your application will have at least one VM in each tier hosted on a different fault domain.
+An availability set is used to configure the desired redundancy of clustered workloads across fault domains by grouping and deploying workloads. For a two-tier application, you should configure at least two VMs in an availability set for each tier, which ensures that when a fault domain in an availability set goes down, your application will have at least one VM in each tier hosted on a different fault domain.
 
 ## Create a cluster set
 
@@ -107,7 +107,7 @@ Use PowerShell within the following example workflow to create a cluster set usi
 1. Install Failover Cluster tools on the management cluster server.
 1. Create two cluster members and with at least two Cluster Shared Volumes (CSVs) in each cluster.
 1. Create a management cluster (physical or guest) that straddles the member clusters. This ensures that the cluster set management plane continues to be available despite possible member cluster failures.
-1. Use the following command to create the cluster set:
+1. To create the cluster set:
 
     ```PowerShell
     New-ClusterSet -Name CSMASTER -NamespaceRoot SOFS-CLUSTERSET -CimSession SET-CLUSTER
@@ -115,14 +115,14 @@ Use PowerShell within the following example workflow to create a cluster set usi
    > [!NOTE]
    > If you are using a static IP address, you must include *-StaticAddress x.x.x.x* on the **New-ClusterSet** command.
 
-1. Use the following command to add cluster members to the cluster set:
+1. To add cluster members to the cluster set:
 
     ```PowerShell
     Add-ClusterSetMember -ClusterName CLUSTER1 -CimSession CSMASTER -InfraSOFSName SOFS-CLUSTER1
     Add-ClusterSetMember -ClusterName CLUSTER2 -CimSession CSMASTER -InfraSOFSName SOFS-CLUSTER2
     ```
 
-1. To enumerate all member clusters in the cluster set, use the following:
+1. To enumerate all member clusters in the cluster set:
 
     ```PowerShell
     Get-ClusterSetMember -CimSession CSMASTER
@@ -146,13 +146,13 @@ Use PowerShell within the following example workflow to create a cluster set usi
     Get-ClusterSet -CimSession CSMASTER | Get-Cluster | Get-ClusterGroup
     ```
 
-1. To verify the cluster set contains one SMB share (`ScopeName` being the Infrastructure File Server name) on the infrastructure SOFS for each cluster member CSV volume, use the following command:
+1. To verify the cluster set contains one SMB share (`ScopeName` being the Infrastructure File Server name) on the infrastructure SOFS for each cluster member CSV volume:
 
     ```PowerShell
     Get-SmbShare -CimSession CSMASTER
     ```
 
-1. Review the cluster set debug log files for the cluster set, the management cluster, and each cluster member by running the following:
+1. Review the cluster set debug log files for the cluster set, the management cluster, and each cluster member:
 
     ```PowerShell
     Get-ClusterSetLog -ClusterSetCimSession CSMASTER -IncludeClusterLog -IncludeManagementClusterLog -DestinationFolderPath <path>
@@ -160,7 +160,7 @@ Use PowerShell within the following example workflow to create a cluster set usi
 
 1. Configure [Kerberos with constrained delegation](https://techcommunity.microsoft.com/t5/virtualization/live-migration-via-constrained-delegation-with-kerberos-in/ba-p/382334) between all cluster set members.
 
-1. Configure the cross-cluster VM live migration authentication type to Kerberos on each node in the cluster set as follows:
+1. Configure the cross-cluster VM live migration authentication type to Kerberos on each node in the cluster set:
 
     ```PowerShell
     foreach($h in $hosts){ Set-VMHost -VirtualMachineMigrationAuthenticationType Kerberos -ComputerName $h }
@@ -238,7 +238,7 @@ Next, add the VM path to the cluster set namespace.
 
 As an example, suppose an existing cluster is added to the cluster set with pre-configured VMs that reside on the local Cluster Shared Volume (CSV). The path for the VHDX would be something similar to `C:\ClusterStorage\Volume1\MYVM\Virtual Hard Disks\MYVM.vhdx1`.
 
-A storage migration is needed, as CSV paths are by design local to a single member cluster and are therefore not be accessible to the VM once they are live migrated across member clusters.
+A storage migration is needed, as CSV paths are by design local to a single member cluster and are therefore not accessible to the VM once they are live migrated across member clusters.
 
 In this example, CLUSTER3 is added to the cluster set using `Add-ClusterSetMember` with the scale-out file server SOFS-CLUSTER3. To move the VM configuration and storage, the command is:
 
@@ -246,30 +246,24 @@ In this example, CLUSTER3 is added to the cluster set using `Add-ClusterSetMembe
 Move-VMStorage -DestinationStoragePath \\SOFS-CLUSTER3\Volume1 -Name MyVM
 ```
 
-Once complete, you will receive a warning:
+Once complete, you may receive a warning:
 
 ```
 WARNING: There were issues updating the virtual machine configuration that may prevent the virtual machine from running. For more information view the report file below.
 WARNING: Report file location: C:\Windows\Cluster\Reports\Update-ClusterVirtualMachineConfiguration '' on date at time.htm.
 ```
 
-This warning can be ignored as the warning is "No changes in the virtual machine role storage configuration were detected". The reason for the warning is that the actual physical location does not change; only the configuration paths do.
+This warning may be ignored as there were no physical changes in the virtual machine role storage configuration. The actual physical location does not change; only the configuration paths do.
 
 For more information on `Move-VMStorage`, see [Move-VMStorage](https://docs.microsoft.com/powershell/module/hyper-v/move-vmstorage).
 
-Live migrating a VM between different clusters in a cluster set is not the same as in the past. In non-cluster set scenarios, the steps would be:
-
-1. Remove the VM role from the cluster.
-1. Live migrate the VM to a member node of a different cluster.
-1. Add the VM into the cluster as a new VM role.
-
-With cluster sets, these steps are not necessary and only one command is needed. First, you should set all networks to be available for the migration with the command:
+Live migrating a VM within a cluster set involves the following:
 
 ```PowerShell
 Set-VMHost -UseAnyNetworkForMigration $true
 ```
 
-For example, to move a cluster set VM from CLUSTER1 to NODE2-CL3 on CLUSTER3, the command would be:
+Then, to move a cluster set VM from CLUSTER1 to NODE2-CL3 on CLUSTER3 for example, the command would be:
 
 ```PowerShell
 Move-ClusterSetVM -CimSession CSMASTER -VMName CSVM1 -Node NODE2-CL3
@@ -363,7 +357,7 @@ Remove-ClusterSetMember -ClusterName CLUSTER1 -CimSession CSMASTER
 
 ## System state backup
 
-System state backup will backup the cluster state and metadata. Using Windows Server Backup, you can do restore just a node's cluster database if needed or do an authoritative restore to roll back the entire cluster database across all nodes. For cluster sets, we recommend doing an authoritative restore first for the member clusters and then for the management cluster. For more information on system state backup, see [Back up system state and bare metal](https://docs.microsoft.com/system-center/dpm/back-up-system-state-and-bare-metal).
+System state backup will backup the cluster state and metadata. Using Windows Server Backup, you can restore just a node's cluster database if needed or do an authoritative restore to roll back the entire cluster database across all nodes. For cluster sets, we recommend doing an authoritative restore first for the member clusters and then for the management cluster. For more information on system state backup, see [Back up system state and bare metal](https://docs.microsoft.com/system-center/dpm/back-up-system-state-and-bare-metal).
 
 ## Next steps
 
