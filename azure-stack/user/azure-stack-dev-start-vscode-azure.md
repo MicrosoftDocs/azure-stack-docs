@@ -48,7 +48,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
     Add-AzEnvironment -Name "<username@contoso.com>" -ArmEndpoint "https://management.region.<fqdn>"
     ```
 
-    ```
+    ```Output
     Name  Resource Manager Url                            ActiveDirectory Authority
     ----  --------------------                            -------------------------
     username@contoso.com https://management.region.<fqdn> https://login.microsoftonline.com/
@@ -63,7 +63,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
     Add-AzAccount -EnvironmentName "mabrigg@microsoft.com" -TenantId $TenantId
     ```
 
-    ```
+    ```Output
     Account               SubscriptionName  TenantId                             Environment
     -------               ----------------  --------                             -----------
     username@contoso.com   azure-stack-sub  6d5ff183-b37f-4a5b-9a2f-19959cb4224a username@contoso.com
