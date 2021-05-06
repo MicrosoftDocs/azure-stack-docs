@@ -11,11 +11,14 @@ ms.reviewer:
 # Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
 This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
 
-## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run.
+## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run
 If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
 
 ## Uninstall-AksHciAdAuth fails with an error
 If [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
+
+## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
+The error "Cannot index into a null array" appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./uninstall-akshci.md) from a PowerShell administrative window.
@@ -107,14 +110,11 @@ This issue will be fixed in a future release.
 Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
 This issue will be fixed in a future release.
 
-## Azure Kubernetes Service host setup fails in Windows Admin Center if reboots are required
-The Azure Kubernetes Service host setup wizard will fail if the one or more servers you are using need to be rebooted to install roles like PowerShell or Hyper-V. The current workaround is to exit the wizard and try again on the same system after the servers come back online. This issue will be fixed in a future release.
-
 ## Azure registration step in Azure Kubernetes Service host setup asks to try again
 When using Windows Admin Center to set up the Azure Kubernetes Service host, you may be asked to try again after entering the required information on the Azure registration page. You may need to sign in to Azure again on the Windows Admin Center gateway to proceed with this step. If you're having difficulty signing in to Azure through Windows Admin Center, try signing in to your Azure account from another source, like the [Azure portal](https://portal.azure.com/). If you continue to have problems, check the [Windows Admin Center known issues](/windows-server/manage/windows-admin-center/support/known-issues) article before you contact support.
 
 ## Windows Admin Center doesn't have an Arc offboarding experience
-Windows Admin Center does not currently have a process to offboard a cluster from Azure Arc. To delete Arc agents on a cluster that has been destroyed, navigate to the resource group the of the cluster in the Azure portal, and manually delete the Arc content. To delete Arc agents on a cluster that is still up and running, you should run the following command:
+Windows Admin Center does not currently have a process to off board a cluster from Azure Arc. To delete Arc agents on a cluster that has been destroyed, navigate to the resource group of the cluster in the Azure portal, and manually delete the Arc content. To delete Arc agents on a cluster that is still up and running, you should run the following command:
 
 ```azurecli
 az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
@@ -123,10 +123,6 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 > [!NOTE]
 > If you use the Azure portal to delete the Azure Arc-enabled Kubernetes resource, it removes any associated configuration resources, but does not remove the agents running on the cluster. Best practice is to delete the Azure Arc-enabled Kubernetes resource using `az connectedk8s delete` instead of Azure portal.
 
-
-## When using Windows Admin Center to set up an AKS host, setup may fail if File Explorer is open
-If File Explorer is open and in the **C:\Program Files\AksHci** directory when you reach the "Review + create" step, your creation may fail with the error "The process could not access the file 'C:\Program Files\AksHci\wssdcloudagent.exe'. This is because it's being used by another process. To avoid this error, close File Explorer or navigate to a different directory before reaching this step. 
-
 ## Cannot connect Windows Admin Center to Azure as create new Azure App ID fails
 If you're unable to connect Windows Admin Center to Azure because you can't automatically create and use an Azure App ID on the gateway, create an Azure App ID and assign it the right permissions on the portal. Then, select **Use existing in the gateway**. For more information, visit [connecting your gateway to Azure.](/windows-server/manage/windows-admin-center/azure/azure-integration).
 
@@ -134,7 +130,7 @@ If you're unable to connect Windows Admin Center to Azure because you can't auto
 If you get an error that says `msft.sme.aks couldn't load`, and the error says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
 
 ## Only the user who set up the AKS host can create clusters
-When deploying Azure Kubernetes Service on Azure Stack HCI through Windows Admin Center, only the user who set up the AKS host can create Kubernetes clusters. To work around this issue, copy the .wssd folder from the profile of the user who set up the AKS host to the profile of the user who will be creating the new Kubernetes clusters.
+When deploying Azure Kubernetes Service on Azure Stack HCI through Windows Admin Center, only the user who set up the AKS host can create Kubernetes clusters. To work around this issue, copy the _wssd_ folder from the profile of the user who set up the AKS host to the profile of the user who will be creating the new Kubernetes clusters.
 
 ## The Setup or Cluster Create wizard displays an error about a wrong configuration
 If you receive an error in either wizard about a wrong configuration, perform cluster cleanup operations. These operations might involve removing the C:\Program Files\AksHci\mocctl.exe file.
@@ -143,7 +139,7 @@ If you receive an error in either wizard about a wrong configuration, perform cl
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
 ## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
-The deployment of a large cluster may time out after two hours, however, this is a static time out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
+The deployment of a large cluster may time out after two hours, however, this is a static time-out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
 
 ## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
 Due to insufficient permissions in Active Directory, `Uninstall-AksHci` could not remove cluster resource objects in AD, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove AD objects in the Active Directory container the server and service objects are created in.
@@ -156,7 +152,7 @@ The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses 
 ## Get-AksHciLogs command may fail
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or will not generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file Compress-Archive has an output file size limit of 2GB. 
 
-## Creating virtual networks with a similar configuration causes overlap issues
+## Creating virtual networks with a similar configuration cause overlap issues
 When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
 
 
