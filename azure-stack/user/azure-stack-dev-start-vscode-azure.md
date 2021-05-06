@@ -24,28 +24,21 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 > You can use the steps in this article for an Active Directory Federated Services (AD FS)
  environment. Use your AD FS credentials and endpoints.
 
-## Pre-requisites for the Azure Account Extension
+## Pre-requisites for the extension
 
-1. Azure Stack Hub environment 1904 build or later
-2. [Visual Studio Code](https://code.visualstudio.com/)
-3. [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account)
+1. Azure Stack Hub environment 1904 build or later.
+2. [Visual Studio Code](https://code.visualstudio.com/).
+3. [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account).
 4. [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
     and credentials with access to Azure Stack Hub.
 5. An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
     instructions see [Install PowerShell Az module for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2Ftoc.json%3Fview%3Dazs-2008&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-2008&view=azs-2008).
 
+## Get your credentials
 
-## Get your credentials and sign in to Azure Stack Hub
+In this section you will use your credentials to get your tenant ID. You will need your Azure Stack Hub resource manager URL and tenant ID.
 
-You will need to get the information you need to connect to your Azure Stack Hub
-instance. You will need your research manager URL and tenant ID. If you do not have
-this information, you can contact your cloud operator. For more information on
-the information you need to authorize a connection to your Azure Stack Hub instance,
-see [Get authentication information for Azure Stack Hub](authenticate-azure-stack-hub.md).
-
-You will need your credentials and your Azure Stack Hub Resource Manager URL. The 
-Microsoft Azure Resource Manager is a management framework that allows you to 
-deploy, manage, and monitor Azure resources.
+The Azure Stack Hub Resource Manager is a management framework that allows you to deploy, manage, and monitor Azure resources.
 - The Resource Manager URL for the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` 
 - The Resource Manager URL for an integrated system is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 
@@ -114,7 +107,7 @@ deploy, manage, and monitor Azure resources.
         "azure.tenant": "<your-tenant-ID",
       ```
 
-9. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in**. The authentication page loads in your browser. Sign in to your endpoint.
+9. Save the user settings (JSON) and use **Ctrl+Shift+P** once again. Select **Azure: Sign in**. The authentication page loads in your browser. Sign in to your endpoint.
 
 10. To test that you have successfully logged into your Azure Stack Hub subscription, use **Ctrl+Shift+ P** and select **Azure: Select Subscription** and see if the subscription you have is available.
 
