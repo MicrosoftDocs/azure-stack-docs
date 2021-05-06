@@ -56,7 +56,7 @@ This tool will install and download the necessary packages, as well as create an
 
 Now that we've verified our system settings, let's get started: 
 1. Select **Set up** to launch the Setup wizard.
-2. Review the prerequisites for the machine you are running Windows Admin Center on, the cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using is not expired. When you're finished, select **Next**.
+2. Review the prerequisites for the machine you are running Windows Admin Center on, the cluster you're connected to, as well as the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using is not expired. You must have the Owner role on the subscription you are planning on using. When you're finished, select **Next**.
 
    > [!WARNING]
    > If you're using a 2-4 node Azure Stack HCI cluster, make sure you have configured at least one external virtual switch before proceeding past this step, or you will not be able to successfully set up your Azure Kubernetes Service host.

@@ -43,6 +43,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [install-akshcigmsawebhook](install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
 | [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [new-akshciclusternetwork](new-akshciclusternetwork.md) | Create an object for a new virtual network. |
+| [new-akshcinetworksetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
 | [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |

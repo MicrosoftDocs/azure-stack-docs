@@ -29,7 +29,7 @@ You won't be able to register with Azure until you've created an Azure Stack HCI
 For the simplest registration experience, have an Azure AD administrator complete the registration using either Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
-   > In order to register an Azure Stack HCI cluster using Windows Admin Center, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and supply your Azure Active Directory (tenant) ID. Make sure that the computer on which you run Windows Admin Center is joined to the same Azure Active Directory domain in which you'll create the cluster, or a trusted domain.
+   > In order to register an Azure Stack HCI cluster using Windows Admin Center, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and supply your Azure Active Directory (tenant) ID. Make sure that the computer on which you run Windows Admin Center is joined to the same Active Directory domain in which you'll create the cluster, or a trusted domain.
 
 ### Internet access
 
@@ -59,7 +59,7 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
 
    ```json
    {
-     "Name": "Azure Stack HCI registration role”,
+     "Name": "Azure Stack HCI registration role",
      "Id": null,
      "IsCustom": true,
      "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
