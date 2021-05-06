@@ -130,34 +130,34 @@ The following steps are a high-level overview of how to add a node. Don't follow
 
 The following are the steps for cabling the new nodes into the existing switches, and describes the IP changes needed for the BMC interfaces on the 4 additional nodes.
 
-- Once the 2nd RCA has been un-crated and stacked adjacent to the 1st RCA, connect all power cables from the nodes in the Pod1 and Pod2 cases.
+1. Once the 2nd RCA has been un-crated and stacked adjacent to the 1st RCA, connect all power cables from the nodes in the Pod1 and Pod2 cases.
 
-  - Do not connect power cables from anything in the management case at this time.
-  - If the nodes in the Pod1 and Pod2 cases begin booting up, force-power them off by holding down their power buttons for a few seconds until the power button's light turns off and you see no other lights on the disks on the front of the node.
+   - Do not connect power cables from anything in the management case at this time.
+   - If the nodes in the Pod1 and Pod2 cases begin booting up, force-power them off by holding down their power buttons for a few seconds until the power button's light turns off and you see no other lights on the disks on the front of the node.
 
-- You must now re-IP each node's BMC management IP. This must be done on a laptop that you can cable directly into each node's BMC NIC directly, as follows:
+2. You must now re-IP each node's BMC management IP. This must be done on a laptop that you can cable directly into each node's BMC NIC directly, as follows:
 
-  - On the laptop you are going to use for the IP address changes, give the 1 Gbps NIC the following IP configuration:
+   - On the laptop you are going to use for the IP address changes, give the 1 Gbps NIC the following IP configuration:
 
-    - IP address – 10.10.21.90
-    - Subnet mask – 255.255.255.192
-    - Gateway – None
+     - IP address – 10.10.21.90
+     - Subnet mask – 255.255.255.192
+     - Gateway – None
 
-  - Starting with Node 1 of the 2nd RCA and working your way through all 4 nodes, directly attach the laptop to the BMC NIC of each node and connect via web browser to its current BMC web portal. Sign in using the standard RCA credentials (user: changeme, password: <stamp default password assigned to your RCA>), and change the IP for that node per the following table:
+   - Starting with Node 1 of the 2nd RCA and working your way through all 4 nodes, directly attach the laptop to the BMC NIC of each node and connect via web browser to its current BMC web portal. Sign in using the standard RCA credentials (user: changeme, password: <stamp default password assigned to your RCA>), and change the IP for that node per the following table:
 
-   | 2nd RCA Node | Current BMC IP | New BMC IP  |
-   |--------------|----------------|-------------|
-   | Node 1       | 10.10.21.67    | 10.10.21.71 |
-   | Node 2       | 10.10.21.68    | 10.10.21.72 |
-   | Node 3       | 10.10.21.69    | 10.10.21.73 |
-   | Node 4       | 10.10.21.70    | 10.10.21.74 |
+     | 2nd RCA Node | Current BMC IP | New BMC IP  |
+     |--------------|----------------|-------------|
+     | Node 1       | 10.10.21.67    | 10.10.21.71 |
+     | Node 2       | 10.10.21.68    | 10.10.21.72 |
+     | Node 3       | 10.10.21.69    | 10.10.21.73 |
+     | Node 4       | 10.10.21.70    | 10.10.21.74 |
 
-- Using the RCA Port Mapping document as a guide, cable the new nodes from the 2nd RCA into the switches contained within the 1st RCA's management case, using the node equivalency as follows:
+3. Using the RCA Port Mapping document as a guide, cable the new nodes from the 2nd RCA into the switches contained within the 1st RCA's management case, using the node equivalency as follows:
 
-  - Node 1 of 2nd RCA = Node 5
-  - Node 2 of 2nd RCA = Node 6
-  - Node 3 of 2nd RCA = Node 7
-  - Node 4 of 2nd RCA = Node 8
+   - Node 1 of 2nd RCA = Node 5
+   - Node 2 of 2nd RCA = Node 6
+   - Node 3 of 2nd RCA = Node 7
+   - Node 4 of 2nd RCA = Node 8
 
 ## Add the node
 
@@ -167,9 +167,9 @@ You can use the administrator portal or PowerShell to add new nodes. The add nod
 
 1. Sign in to the Azure Stack Hub administrator portal as an Azure Stack Hub operator.
 2. Navigate to **+ Create a resource** > **Capacity** > **Scale Unit Node**.
-   ![Scale unit node](media/azure-stack-add-scale-node-rca/select-node1.png)
+   ![Scale unit node](media/azure-stack-add-scale-node-rca/select-node-1.png)
 3. On the **Add node** pane, select the *Region*, and then select the *Scale unit* that you want to add the node to. Also specify the *BMC IP ADDRESS* for the scale unit node you're adding. You can only add one node at a time.
-   ![Add node details](media/azure-stack-add-scale-node-rca/select-node2.png)
+   ![Add node details](media/azure-stack-add-scale-node-rca/select-node-2.png)
 
 ### [PowerShell Az](#tab/Az)
 

@@ -15,6 +15,8 @@ ms.lastreviewed: 05/05/2021
 
 # Server firmware updates
 
+This article describes the process to update the server firmware for an Azure Stack Hub Ruggedized deployment.
+
 Task is executed by: **Operator**
 
 ## Configure credentials and network settings
