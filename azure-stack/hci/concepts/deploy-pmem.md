@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/05/2021
+ms.date: 05/06/2021
 ---
 
 # Understand and deploy persistent memory
@@ -41,7 +41,7 @@ A region is a set of one or more persistent memory modules. Regions are often cr
 
 ### PmemDisks
 
-To use persistent memory as storage, you must define at least one **PmemDisk**, which is a virtual hard disk (VHD) on the host that enumerates as a PmemDisk inside the VM. It's a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple PmemDisks using Windows PowerShell cmdlets to divide up the available raw capacity. Each persistent memory module contains a Label Storage Area (LSA) that stores the configuration metadata.
+To use persistent memory as storage, you must define at least one **PmemDisk**, which is a virtual hard disk (VHD) on the host that enumerates as a PmemDisk inside a virtual machine (VM). A PmemDisk is a contiguously addressed range of non-volatile memory that you can think of like a hard disk partition or LUN. You can create multiple PmemDisks using Windows PowerShell cmdlets to divide up the available raw capacity. Each persistent memory module contains a Label Storage Area (LSA) that stores the configuration metadata.
 
 ### Block translation table
 
@@ -64,17 +64,17 @@ Intel Optane DC Persistent Memory supports both *Memory* (volatile) and *App Dir
 Operating mode is often preconfigured by the original device manufacturer.
 
 > [!NOTE]
-> When you restart a system that has multiple Intel&reg; Optane&trade; persistent memory modules in App Direct mode that are divided into multiple namespaces, you might lose access to some or all of the related logical storage disks. This issue occurs on Windows Server 2019 versions that are older than version 1903.
+> When you restart a system that has multiple Intel&reg; Optane&trade; persistent memory modules in App Direct mode that are divided into multiple PmemDisks, you might lose access to some or all of the related logical storage disks. This issue occurs on Windows Server 2019 versions that are older than version 1903.
 >
-> This loss of access occurs because a persistent memory module is untrained or otherwise fails when the system starts. In such a case, all the storage namespaces on any persistent memory module on the system fail, including namespaces that do not physically map to the failed module.
+> This loss of access occurs because a persistent memory module is untrained or otherwise fails when the system starts. In such a case, all the PmemDisks on any persistent memory module on the system fail, including those that do not physically map to the failed module.
 >
-> To restore access to all the namespaces, [replace the failed module](#replace-persistent-memory).
+> To restore access to all the PmemDisks, [replace the failed module](#replace-persistent-memory).
 >
-> If a module fails on Windows Server 2019 version 1903 or newer versions, you lose access only to namespaces that physically map to the affected module. Other namespaces are not affected.
+> If a module fails on Windows Server 2019 version 1903 or newer versions, you lose access only to PmemDisks that physically map to the affected module; others are not affected.
 
 ## Configure persistent memory
 
-Now, let's dive into how you configure persistent memory. If you're using Intel Optane persistent memory, follow the [instructions here](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html). If you're using persistent memory modules from another vendor, consult their documentation.
+If you're using Intel Optane persistent memory, follow the [instructions here](https://software.intel.com/content/www/us/en/develop/articles/qsg-part3-windows-provisioning-with-optane-pmem.html). If you're using persistent memory modules from another vendor, consult their documentation.
 
 To create a PmemDisk that supports BTT, use the `New-VHD` cmdlet:
 
@@ -82,7 +82,7 @@ To create a PmemDisk that supports BTT, use the `New-VHD` cmdlet:
 New-VHD E:\pmemtest.vhdpmem -Fixed -SizeBytes 1GB -AddressAbstractionType BTT
 ```
 
-Note that the VHD extension must be "vhdpmem".
+The VHD extension must be "vhdpmem".
 
 You can also convert a VHD that doesn't have BTT enabled into one that does (and vice-versa) using the `Convert-VHD` cmdlet:
 
@@ -95,8 +95,6 @@ After converting, the new VHD will have the same namespace GUID as the original 
 ```PowerShell
 Set-VHD -ResetDiskIdentifier .\pmemtest_btt.vhdpmem
 ```
-
-**At what point can the user begin using Windows Admin Center for the configuration (that is, when will the disks show up in WAC? After you create the PmemDisk(s)?) The Intel docs show screenshots of the Windows Device Manager UI, along with the PowerShell cmdlets.**
 
 ### Understand interleaved sets
 
