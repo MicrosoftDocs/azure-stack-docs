@@ -3,10 +3,10 @@ title: Server firmware updates in Azure Stack Hub Ruggedized
 description: Describes how to perform server firmware updates in Azure Stack Hub Ruggedized
 author: sethmanheim
 ms.topic: article
-ms.date: 05/05/2021
+ms.date: 05/06/2021
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 05/05/2021
+ms.lastreviewed: 05/06/2021
 
 # Intent: As an Azure Stack
 # Keyword: 
@@ -57,11 +57,11 @@ Requirements: BMC factory credentials (username/password: changeme/changeme).
 
 Requirements: OEM update package.
 
-Before you continue, make sure you have the OEM update package available that is currently applicable to your system. You can validate this using the administrator portal to compare the version.
+Before you continue, make sure you have the OEM update package available that is currently applicable to your system. You can validate this using the administrator portal to compare the versions.
 
-1. sign in to the hardware lifecycle host.
-2. Extract the OEM update package to C:\OEMPackage.
-3. Launch PowerShell ISE with elevated permission.
+1. Sign in to the hardware lifecycle host.
+2. Extract the OEM update package to **C:\OEMPackage**.
+3. Launch PowerShell ISE with elevated permissions.
 4. Run the following script. Update the `servername` and `HostBmcIpAddress` values to match the BMC server and IP address for your environment before executing the script. The script will also ask for the BMC credentials that you configured when applying the baseline to the physical machine. The name that you provide in the script must be unique, as it will be used to create a temporary local user account on the HLH for accessing the firmware files:
 
    ```powershell
