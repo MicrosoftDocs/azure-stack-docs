@@ -26,12 +26,12 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
 ## Pre-requisites for the extension
 
-1. Azure Stack Hub environment 1904 build or later.
-2. [Visual Studio Code](https://code.visualstudio.com/).
-3. [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account).
-4. [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
+- Azure Stack Hub environment 1904 build or later.
+- [Visual Studio Code](https://code.visualstudio.com/).
+- [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account).
+- [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
     and credentials with access to Azure Stack Hub.
-5. An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
+- An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
     instructions see [Install PowerShell Az module for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2Ftoc.json%3Fview%3Dazs-2008&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-2008&view=azs-2008).
 
 ## Get your credentials
