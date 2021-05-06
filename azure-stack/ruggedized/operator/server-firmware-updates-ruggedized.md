@@ -21,32 +21,30 @@ Task is executed by: **Operator**
 
 ## Configure credentials and network settings
 
-Requirements:
+Requirements: BMC factory credentials (username/password: changeme/changeme).
 
-- BMC factory credentials (changeme/changeme)
-
-1. Logon to the hardware lifecycle host.
+1. Sign in to the hardware lifecycle host.
 1. Launch PowerShell ISE with elevated permission.
-1. Assign IP Address to the physical machine by running the following script:
+1. Assign IP address to the physical machine by running the following script:
 
    ```powershell
    Import-module c:\firmware\OEMFirmwareBootstrap.psd1
    Set-AzsBMCNetwork -FRUNode
    ```
 
-1. Install Identity module. The Bios & iDRAC need to restart for the changes to take effect.
+1. Install Identity module. The BIOS and iDRAC need to restart for the changes to take effect.
 
    ```powershell
    Apply-AzsBMCIdentityModule -FRU
    ```
 
-1. Assign IP Address to the physical machine by running the following script because the identity module update will clear that setting:
+1. Assign IP address to the physical machine by running the following script, because the identity module update will clear that setting:
 
    ```powershell
    Set-AzsBMCNetwork -FRUNode
    ```
 
-1. Update the BMC credentials to match the existing nodes in the scale unit. The previous command output will show the IP address assigned to the BMC.
+1. Update the BMC credentials to match the existing nodes in the scale unit. The previous command output shows the IP address assigned to the BMC.
 
    ```powershell
    $BMCIPAddress = "X.X.X.X"
@@ -57,16 +55,14 @@ Requirements:
 
 ## Update firmware
 
-Requirements:
+Requirements: OEM update package.
 
-- OEM Update package
+Before you continue, make sure you have the OEM update package available that is currently applicable to your system. You can validate this using the administrator portal to compare the version.
 
-Before you continue, make sure you have the OEM Update package available that is currently applied to system. You can validate this using the Administrator portal and compare the version.
-
-1. Logon to the hardware lifecycle host.
-2. Extract the OEM update package to c:\OEMPackage.
+1. sign in to the hardware lifecycle host.
+2. Extract the OEM update package to C:\OEMPackage.
 3. Launch PowerShell ISE with elevated permission.
-4. Run the following Script. Update the `servername` and `HostBmcIpAddress` to match the BMC server and IP address for your environment before executing the script. The script will also ask for the BMC credentials that you configured when applying the baseline to the physical machine. The name that you provide in the script must be unique as it will be used to create temporary local user account on the HLH for accessing the firmware files.
+4. Run the following script. Update the `servername` and `HostBmcIpAddress` values to match the BMC server and IP address for your environment before executing the script. The script will also ask for the BMC credentials that you configured when applying the baseline to the physical machine. The name that you provide in the script must be unique, as it will be used to create a temporary local user account on the HLH for accessing the firmware files:
 
    ```powershell
    $ErrorActionPreference = [System.Management.Automation.ErrorActionPreference]::Stop
@@ -92,7 +88,7 @@ Before you continue, make sure you have the OEM Update package available that is
 
 Wait for the script to be finished before you proceed.
 
-## Apply Bios and BMC settings baseline
+## Apply BIOS and BMC settings baseline
 
 Task is executed by: **Operator**
 
