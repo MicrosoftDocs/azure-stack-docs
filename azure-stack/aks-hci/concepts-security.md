@@ -8,10 +8,10 @@ ms.author: v-susbo
 ---
 
 # Security concepts
-Security in AKS on Azure Stack HCI involves securing the infrastructure and the applications running on the Kubernetes cluster. This topic covers the security hardening measures applied to AKS on Azure Stack HCI, and also the built-in security features.
+Security in AKS on Azure Stack HCI involves securing the infrastructure and the applications running on the Kubernetes cluster. This topic covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security
-AKS on Azure Stack HCI applies various security measures to secure its infrastructure. The following diagram highlights these security measures:
+AKS on Azure Stack HCI applies various security measures to secure its infrastructure. The following diagram highlights these measures:
 
 ![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\security-infrastructure.png)
 
@@ -19,7 +19,7 @@ The table below describes the security hardening aspects of AKS on Azure Stack H
 
 | Security aspect |  Description  |
 | ------  | --------|
-| 1  | Because the management cluster has access to all of the target clusters, it could be a single point of compromise. However, access to the  management cluster is carefully controlled as the management cluster's purpose is limited to provisioning target clusters and collecting aggregated cluster metrics. |
+| 1  | Because the management cluster has access to all of the target clusters, this cluster could be a single point of compromise. However, access to the  management cluster is carefully controlled as the management cluster's purpose is limited to provisioning target clusters and collecting aggregated cluster metrics. |
 | 2 | To reduce deployment cost and complexity, target (workload) clusters share the underlying Windows Server. However, depending on the security needs, admins can chose to deploy a target cluster on a dedicated Windows Server. When target clusters share the underlying Windows Server, each cluster is deployed as a virtual machine which ensures strong isolation guarantees between the target clusters. |
 | 3 |  Customer workloads are deployed as containers and share the same virtual machine. The containers are process-isolated from one another, which is a weaker form of isolation compared to strong isolation guarantees offered by virtual machines.  |
 | 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. [Calico](./calico-networking-policy.md) supports both Windows and Linux containers and is an open-source product that is supported as-is.   |
@@ -49,4 +49,11 @@ The security built-in features that are currently available in AKS on Azure Stac
 | Rotate encryption keys of the Kubernetes secret store (etcd) using the Key Management Server (KMS) plug-in. | Plug-in for integrating and orchestrating key rotation with specified KMS provider. To learn more, see [Encrypt etcd secrets](./encrypt-secrets.md). |
 | Real time threat monitoring for containers and support are workloads on both Windows and Linux containers.  | Integration with Azure Defender for Arc enabled Kubernetes, which is offered as a public preview feature until the GA release of Kubernetes threat detection for Azure Arc enabled Kubernetes. For more information, see [Defend Azure Arc enabled Kubernetes clusters](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc). |
 | AD identity for Windows workloads.  | This is enabled with [gMSA integration for Windows workloads](./prepare-windows-nodes-gmsa.md). |
-| Support for Calico policies to secure traffic between pods  | To use Calico policies, see [Secure traffic between pods using network policies](./calico-network.ing-policy.md). |
+| Support for Calico policies to secure traffic between pods  | To use Calico policies, see [Secure traffic between pods using network policies](./calico-networking-policy.md). |
+
+## Next steps
+In this topic, you learned about the concepts for securing AKS on Azure Stack HCI and about securing applications on Kubernetes clusters.
+
+- [Secure communication with certificates](./secure-communication.md)
+- [Encrypt etcd secrets](./encrypt-secrets.md)
+- [Secure traffic between pods using network policies](./calico-networking-policy.md)
