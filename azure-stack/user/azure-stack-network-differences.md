@@ -2,7 +2,7 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: mattbriggs
-ms.date: 05/06/2021
+ms.date: 05/07/2021
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
@@ -57,7 +57,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |
-| Internal Load Balancer | Front end IP | No limit. | Azure Stack Hub provides an IP pool of 127 IPs for the internal load balancer's front end IPs. A small subset of that IP pool is used for its internal infrastructure. |
+| Internal Load Balancer | Front end IP | No limit. | Azure Stack Hub provides an IP pool of 120 IPs for the internal load balancer's front end IPs. A small subset of that IP pool is used for its internal infrastructure. |
 | Public IP Address | Public IP Address Version | Azure supports both IPv6 and IPv4. | Only IPv4 is supported. |
 | | SKU | Azure supports Basic and Standard. | Only Basic is supported. |
 | Network Interface | Get Effective Route Table | Supported | Not yet supported. |
