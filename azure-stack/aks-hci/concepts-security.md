@@ -7,7 +7,7 @@ ms.date: 05/05/2021
 ms.author: v-susbo
 ---
 
-# Security concepts
+# Security concepts in AKS on Azure Stack HCI
 Security in AKS on Azure Stack HCI involves securing the infrastructure and the applications running on the Kubernetes cluster. This topic covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security
@@ -19,8 +19,8 @@ The table below describes the security hardening aspects of AKS on Azure Stack H
 
 | Security aspect |  Description  |
 | ------  | --------|
-| 1  | Because the management cluster has access to all of the target clusters, this cluster could be a single point of compromise. However, access to the  management cluster is carefully controlled as the management cluster's purpose is limited to provisioning target clusters and collecting aggregated cluster metrics. |
-| 2 | To reduce deployment cost and complexity, target (workload) clusters share the underlying Windows Server. However, depending on the security needs, admins can choose to deploy a target cluster on a dedicated Windows Server. When target clusters share the underlying Windows Server, each cluster is deployed as a virtual machine, which ensures strong isolation guarantees between the target clusters. |
+| 1  | Because the AKS host has access to all of the workload (target) clusters, this cluster could be a single point of compromise. However, access to the AKS host is carefully controlled as the management cluster's purpose is limited to provisioning workload clusters and collecting aggregated cluster metrics. |
+| 2 | To reduce deployment cost and complexity, workload clusters share the underlying Windows Server. However, depending on the security needs, admins can choose to deploy a workload cluster on a dedicated Windows Server. When workload clusters share the underlying Windows Server, each cluster is deployed as a virtual machine, which ensures strong isolation guarantees between the workload clusters. |
 | 3 |  Customer workloads are deployed as containers and share the same virtual machine. The containers are process-isolated from one another, which is a weaker form of isolation compared to strong isolation guarantees offered by virtual machines.  |
 | 4 | Containers communicate with each other over an overlay network. Admins can configure Calico policies to define networking isolation rules between containers. [Calico](./calico-networking-policy.md) supports both Windows and Linux containers and is an open-source product that is supported as-is.   |
  5 | Communication between built-in Kubernetes components of AKS on Azure Stack HCI, including communication between the API server and the container host, is encrypted via certificates. AKS on Azure Stack HCI offers an out-of-the-box certificate provisioning, renewal, and revocation for built-in certificates.    |
@@ -44,8 +44,8 @@ The security built-in features that are currently available in AKS on Azure Stac
 
 |  Security objective  |   Feature  |
 |-----------   |  --------- |
-| Protect access to API server.  | [Active Directory single sign-in](./ad-sso.md) support for PowerShell and WAC clients. This feature is currently enabled only for target clusters.  |
-|  Ensure all communication between built-in Kubernetes components of the control plane is secure. This includes making sure that communication between the API server and target cluster is also secure.| Zero touch built-in certificate solution to provision, renew, and revoke certificates. To learn more, see [Secure communication with certificates](./secure-communication.md). | 
+| Protect access to API server.  | [Active Directory single sign-in](./ad-sso.md) support for PowerShell and Windows Admin Center clients. This feature is currently enabled only for workload clusters.  |
+|  Ensure all communication between built-in Kubernetes components of the control plane is secure. This includes making sure that communication between the API server and workload cluster is also secure.| Zero touch built-in certificate solution to provision, renew, and revoke certificates. To learn more, see [Secure communication with certificates](./secure-communication.md). | 
 | Rotate encryption keys of the Kubernetes secret store (etcd) using the Key Management Server (KMS) plug-in. | Plug-in for integrating and orchestrating key rotation with specified KMS provider. To learn more, see [Encrypt etcd secrets](./encrypt-secrets.md). |
 | Real-time threat monitoring for containers that supports workloads for both Windows and Linux containers.  | Integration with Azure Defender for Arc enabled Kubernetes, which is offered as a public preview feature until the GA release of Kubernetes threat detection for Azure Arc enabled Kubernetes. For more information, see [Defend Azure Arc enabled Kubernetes clusters](https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc). |
 | AD identity for Windows workloads.  | Use [gMSA integration for Windows workloads](./prepare-windows-nodes-gmsa.md) to configure AD identity. |
