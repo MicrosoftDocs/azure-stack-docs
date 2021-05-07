@@ -43,7 +43,7 @@
     href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
-   -name: Security
+  - name: Security
     href: concepts-security.md
   - name: Networking
     items:
