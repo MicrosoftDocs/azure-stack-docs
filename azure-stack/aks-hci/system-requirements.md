@@ -31,17 +31,19 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 ## Azure requirements
 
-You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
+You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
 - Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
-The user registering the cluster must have **at least one** of the following:
-   - A user account with the built-in **Owner** role 
-   - A service principal with either the built-in **Microsoft.Kubernetes connected cluster** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
+If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you are an **Owner**. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure Portal and then clicking on **View my access**.
 
-If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. 
+If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
+- A user account with the built-in **Owner** role 
+- A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
+
+If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to give you a service principal with a built-in role mentioned above. **Only subscription owners can create service principals with the right role assignment.** For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
 
 ### Optional: Create a new service principal
 If you need to create a new service principal, run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role and also to set the scope at the subscription level.
@@ -58,7 +60,7 @@ Import-Module AzureAD
 ```
 **Close all PowerShell windows** and reopen a new administrative session.
 
-1. Log in to Azure using the [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
+1. Log in to Azure using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
 
    ```powershell
    Connect-AzAccount
@@ -189,7 +191,7 @@ git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 https://azurestackhci.azurefd.net | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
 
 > [!NOTE]
-> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
+> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
 
 ## Storage requirements
 
