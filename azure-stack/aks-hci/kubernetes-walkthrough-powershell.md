@@ -47,6 +47,47 @@ Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
    ```
 To view the complete list of AksHci PowerShell commands, see [AksHCI PowerShell](./akshci.md).
 
+## Enable Azure integration
+
+To integrate AKS on Azure Stack HCI with an Azure subscription, you need an Azure subscription with **at least one** of the following:
+- A user account with the built-in **Owner** role 
+- A service principal with either the built-in **Microsoft.Kubernetes connected cluster** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
+
+If you need to create a new service principal, see [system requirements](.\system-requirements.md) for instructions.
+
+### Register the resource provider to your subscription
+Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI integration. To do that, run the following PowerShell commands:
+
+To log in to Azure, run the [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
+```powershell
+Connect-AzAccount
+```
+
+(Optional) If you want to switch to a different subscription, run the following steps:
+1. To get all available subscriptions as the currently logged in user, run the following command:
+   ```powershell
+   $subList = Get-AzSubscription
+   ```
+
+2. To display the subscriptions in a grid, select the chosen subscription and run the following:
+   ```console
+   if (($subList).count -gt 1) {
+       $subList | Out-GridView -OutputMode Single | Set-AzContext
+   }
+   ``` 
+   
+   ```output
+   Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+   Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+   ```
+
+This registration process can take up to 10 minutes, but it only needs to be performed once on a specific subscription. To validate the registration process, run the following PowerShell command:
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
 ## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
