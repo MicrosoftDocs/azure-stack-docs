@@ -65,11 +65,11 @@ To view the complete list of AksHci PowerShell commands, see [AksHCI PowerShell]
 ### Register the resource provider to your subscription
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI integration. To do that, run the following PowerShell commands:
 
-To log in to Azure, run the [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
+To log in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
 ```powershell
 Connect-AzAccount
 ```
-If you want to switch to a different subscription, run the [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-5.9.0) PowerShell command:
+If you want to switch to a different subscription, run the [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-5.9.0&preserve-view=true) PowerShell command:
 ```powershell
 Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 ```

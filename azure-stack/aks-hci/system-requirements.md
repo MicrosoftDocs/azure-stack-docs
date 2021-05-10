@@ -43,7 +43,7 @@ If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the
 - A user account with the built-in **Owner** role 
 - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
 
-If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to give you a service principal with a built-in role mentioned above. **Only subscription owners can create service principals with the right role assignment.** For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
+If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to give you a service principal with a built-in role mentioned above. **Only subscription owners can create service principals with the right role assignment.** For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
 
 ### Optional: Create a new service principal
 If you need to create a new service principal, run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role and also to set the scope at the subscription level.
