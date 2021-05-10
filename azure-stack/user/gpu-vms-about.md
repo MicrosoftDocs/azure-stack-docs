@@ -64,8 +64,8 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 | 
 | Standard_NC8as_T4_v3 |8 |56 | 1 | 16 | 16 | 8 | 
-| Standard_NC16as_T4_v3 |16 |112 | 1 | 16 | 32 | 8 | 
-| Standard_NC64as_T4_v3 |64 |448 | 4 | 64 | 32 | 8 |
+| Standard_NC16as_T4_v3 |16 |110 | 1 | 16 | 32 | 8 | 
+| Standard_NC64as_T4_v3 |64 |440 | 4 | 64 | 32 | 8 |
 
 ## GPU system considerations
 -	GPU must be one of these SKUs: AMD MI-25, Nvidia V100 (and variants), Nvidia T4
