@@ -40,7 +40,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
      ```xml
      <dependency>
-     <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+     <groupId>com.microsoft.azure.profile_2020-09-01_hybrid</groupId>
      <artifactId>azure</artifactId>
      <version>1.0.0-beta-1</version>
      </dependency>
@@ -62,7 +62,7 @@ Follow these steps to install the Java SDK:
 
    ```xml  
    <dependency>
-   <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+   <groupId>com.microsoft.azure.profile_2020-09-01_hybrid</groupId>
    <artifactId>azure</artifactId>
    <version>1.0.0-beta-1</version>
    </dependency>
@@ -300,7 +300,7 @@ Use the following GitHub samples as references for creating solutions with .NET 
 
     ```xml
     <dependency>
-      <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+      <groupId>com.microsoft.azure.profile_2020-09-01_hybrid</groupId>
       <artifactId>azure</artifactId>
       <version>1.0.0-beta-1</version>
     </dependency>
