@@ -210,7 +210,7 @@ end
 Use the following samples on GitHub as references for creating solutions with Ruby and Azure Stack Hub API profiles:
 
 - [Manage Azure resources and resource groups with Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups).
-- [Manage virtual machines using Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM) (Sample that uses 2019-03-01-hybrid profile to target the latest API versions supported by Azure Stack Hub).
+- [Manage virtual machines using Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM) (Sample that uses 2020-09-01-hybrid profile to target the latest API versions supported by Azure Stack Hub).
 - [Deploy an SSH Enabled VM with a Template in Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment).
 
 ### Sample Resource Manager and groups

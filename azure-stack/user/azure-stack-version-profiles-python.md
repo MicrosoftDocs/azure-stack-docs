@@ -27,7 +27,7 @@ The Python SDK supports the following API profiles:
 
 - **latest**  
     This profile targets the most recent API versions for all service providers in the Azure platform.
-- **2019-03-01-hybrid**  
+- **2020-09-01-hybrid**  
     This profile targets the latest API versions for all the resource providers in the Azure Stack Hub platform for versions 1904 or later.
 - **2018-03-01-hybrid**  
     This profile targets the most compatible API versions for all the resource providers in the Azure Stack Hub platform.
@@ -111,7 +111,7 @@ Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
 - [Manage resources and resource groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
 - [Manage storage account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): This sample uses **2019-03-01-hybrid** profile, which targets the latest API versions supported by Azure Stack Hub.
+- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): This sample uses **2020-09-01-hybrid** profile, which targets the latest API versions supported by Azure Stack Hub.
 
 ## Manage virtual machine sample
 
