@@ -25,7 +25,7 @@ In this article, you can use [Visual Studio Code](https://code.visualstudio.com/
 
 ## The Node.js SDK
 
-The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
+The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2020-09-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
 An API profile is a combination of resource providers and API versions. You can use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
@@ -41,9 +41,9 @@ You can find the following packages:
 
 | Resource provider | Package |
 | --- | --- |
-| [App Service](https://www.npmjs.com/package/@azure/arm-appservice-profile-2020-09-01-hybrid) | @azure/arm-appservice-profile-2020-09-01-hybrid |
-| [Azure Resource Manager Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2019-03-01) | @azure/arm-subscriptions-profile-hybrid-2019-03-01  |
-| [Azure Resource Manager Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) | @azure/arm-policy-profile-hybrid-2019-03-01
+| [App Service](https://www.npmjs.com/package/@azure/arm-resources-profile-2020-09-01-hybrid) | @azure/arm-resources-profile-2020-09-01-hybrid |
+| [Azure Resource Manager Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2020-09-01) | @azure/arm-subscriptions-profile-hybrid-2020-09-01  |
+| [Azure Resource Manager Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2020-09-01) | @azure/arm-policy-profile-hybrid-2020-09-01
 | [Azure Resource Manager DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2020-09-01-hybrid) | @azure/arm-dns-profile-2020-09-01-hybrid  |
 | [Authorization](https://www.npmjs.com/package/@azure/arm-authorization-profile-2020-09-01-hybrid) | @azure/arm-authorization-profile-2020-09-01-hybrid  |
 | [Compute](https://www.npmjs.com/package/@azure/arm-compute-profile-2020-09-01-hybrid) | @azure/arm-compute-profile-2020-09-01-hybrid |
