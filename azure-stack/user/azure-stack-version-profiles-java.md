@@ -158,9 +158,9 @@ Sample JSON file:
 
 ## Existing API profiles
 
-- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 1904 or later.
+- **com.microsoft.azure.profile\_2020\_09\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 2102 or later.
 
-- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profile built for Azure Stack Hub. Use this profile for services to be compatible with Azure Stack Hub versions 1808 or later.
+- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 1904 or later.
 
 - **com.microsoft.azure**: Profile consisting of the latest versions of all services. Use the latest versions of all the services.
 

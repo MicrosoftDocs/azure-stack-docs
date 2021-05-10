@@ -28,11 +28,9 @@ The Python SDK supports the following API profiles:
 - **latest**  
     This profile targets the most recent API versions for all service providers in the Azure platform.
 - **2020-09-01-hybrid**  
+    This profile targets the latest API versions for all the resource providers in the Azure Stack Hub platform for versions 2102 or later.
+- **2019-03-01-hybrid**  
     This profile targets the latest API versions for all the resource providers in the Azure Stack Hub platform for versions 1904 or later.
-- **2018-03-01-hybrid**  
-    This profile targets the most compatible API versions for all the resource providers in the Azure Stack Hub platform.
-- **2017-03-09-profile**  
-    This profile targets the most compatible API versions of the resource providers supported by Azure Stack Hub.
 
    For more info on API profiles and Azure Stack Hub, see [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md).
 
