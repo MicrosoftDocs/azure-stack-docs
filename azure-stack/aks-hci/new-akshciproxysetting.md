@@ -30,9 +30,43 @@ Create a proxy settings object to use for all virtual machines in the deployment
 
 ## Examples
 
+### Configure Proxy Settings with credentials and a proxy exception list
+
+Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
+
 ```powershell
+PS C:\> $proxyCredential=Get-Credential
 PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
 ```
+
+### Configure Proxy Settings with a certificate and a proxy exception list
+```powershell
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -certFile c:\Temp\proxycert.cer
+```
+
+### Configure Proxy Settings without credentials and a proxy exception list
+```powershell
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16
+```
+
+### Configure Proxy Settings with credentials and no proxy exception list
+
+Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
+```powershell
+PS C:\> $proxyCredential=Get-Credential
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -credential $proxyCredential
+```
+
+### Configure Proxy Settings with a certificate and no proxy exception list
+```powershell
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -certFile c:\Temp\proxycert.cer
+```
+
+### Configure Proxy Settings without credentials and no proxy exception list
+```powershell
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443
+```
+
 
 ### -name
 
