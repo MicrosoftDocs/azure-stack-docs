@@ -1,5 +1,5 @@
 ---
-title: Monitor Azure Stack HCI with Azure Monitor
+title: Monitor servers with Azure Monitor
 description: Monitor servers and configure alerts with Azure Monitor from Windows Admin Center.
 author: khdownie
 ms.author: v-kedow
@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 07/21/2020
 ---
 
-# Monitor Azure Stack HCI with Azure Monitor
+# Monitor servers with Azure Monitor
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Windows Server 2019, Windows Server 2016
 
-[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
+[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud.
 
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
@@ -162,7 +162,7 @@ Once you've attached your server to Azure Monitor, you can use the intelligent h
 
 These are the alerts and their default conditions that you can opt into:
 
-| Alert Name                | Default Condition                                  |
+| Alert name                | Default condition                                  |
 |---------------------------|----------------------------------------------------|
 | CPU utilization           | Over 85% for 10 minutes                            |
 | Disk capacity utilization | Over 85% for 10 minutes                            |

@@ -18,6 +18,8 @@
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Deploy and manage Azure Stack HCI clusters in VMM
+    href: deploy/deploy-manage-azure-stack-hci.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
 - name: Deploy
@@ -237,7 +239,7 @@
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
-    href: /hybrid    
+    href: /hybrid
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
