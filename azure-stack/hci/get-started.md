@@ -105,17 +105,12 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
     :::image type="content" source="media/get-started/example-counter.png" alt-text="Example Counter Screenshot":::
 5. Save the workspace by choosing **Save > Save As** from the top menu.
 
-## Use Azure Monitor for monitoring and alerts
-
-You can also use [Azure Monitor](manage/azure-monitor.md) to collect events and performance counters for analysis and reporting, take action when a particular condition is detected, and receive notifications via email. Click **Azure Monitor** from the **Tools** menu to connect directly to Azure from Windows Admin Center.
-
 ## Collect diagnostics information
 
 Select **Diagnostics** from the **Tools** menu to collect information for troubleshooting problems with your cluster. If you call Microsoft Support, they may ask for this information.
 
 ## Next steps
 
-For a deeper dive into monitoring your Azure Stack HCI clusters, see also:
+To monitor performance history on your Azure Stack HCI clusters, see also:
 
 - [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)
-- [Monitor Azure Stack HCI with Azure Monitor](manage/azure-monitor.md)
