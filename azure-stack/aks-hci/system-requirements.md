@@ -37,7 +37,7 @@ You must have an Azure resource group in the East US, Southeast Asia, or West Eu
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
-If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you are an **Owner**. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure Portal and then clicking on **View my access**.
+If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you are an **Owner**. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
 If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
 - A user account with the built-in **Owner** role 
@@ -47,7 +47,7 @@ If your Azure subscription is through an EA or CSP, the easiest way to get the r
 
 ### Optional: Create a new service principal
 
-Run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role. Note that only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure Portal and then clicking on **View my access**.
+Run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role. Note that only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
 Install and import the following Azure PowerShell modules:
 
@@ -218,7 +218,7 @@ Here are the requirements for the machine running the Windows Admin Center gatew
 - Windows 10 or Windows Server machine
 - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration)
 - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
-- An Azure subscription on which you are an Owner. You can check your access level by navigating to your subscription and clicking on **Access control (IAM)** on the left hand side of the Azure Portal and then clicking on **View my access**.
+- An Azure subscription on which you are an Owner. You can check your access level by navigating to your subscription and clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
 ## Next steps
 
