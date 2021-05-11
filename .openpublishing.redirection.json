@@ -1,6 +1,11 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/aks-hci/install-akshciarconboarding.md", 
+      "redirect_url": "/azure-stack/aks-hci/enable-akshciarcconnection", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/aks-hci/setup-powershell.md", 
       "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
       "redirect_document_id": false
