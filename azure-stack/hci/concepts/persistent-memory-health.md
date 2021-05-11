@@ -20,7 +20,7 @@ These short videos provide an overview of Windows' support for persistent memory
 - [Using Non-volatile Memory (NVDIMM-N) as Byte-Addressable Storage in Windows Server 2016](https://channel9.msdn.com/Events/Build/2016/P470)
 - [Accelerating SQL Server 2016 performance with Persistent Memory in Windows Server 2016](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-Windows-Server-2016-SCM--FAST)
 
-Also see [Understand and deploy persistent memory](deploy-pmem.md).
+Also see [Understand and deploy persistent memory](deploy-persistent-memory.md).
 
 Persistent memory devices are supported with native drivers beginning in Windows Server 2016 and Windows 10 (version 1607). While persistent memory devices behave similar to other disks (HDDs and SSDs), there are some differences.
 
@@ -129,7 +129,7 @@ The following table lists some information about this condition.
 |More information|OperationalStatus field of the PhysicalDisk object.<br>EventLog – Microsoft-Windows-ScmDisk0101/Operational|
 |What to do|We recommended backing-up the affected PMem's data. To gain read access, you can manually bring the disk online (it will surface as a read-only NTFS volume).<br><br>To fully clear this condition, the root cause must be resolved (that is, service power supply or replace persistent memory module, depending on issue) and the volume on the module must either be taken offline and brought online again, or the system must be restarted.<br><br>To make the persistent memory module usable in Storage Spaces again, use the `Reset-PhysicalDisk` cmdlet, which reintegrates the device and starts the repair process.|
 
-## Persistent memory is shown with a capacity of '0' Bytes or as a "Generic Physical Disk"
+## Device is shown with a capacity of '0' bytes or as a "Generic Physical Disk"
 
 This condition is present when a persistent memory device is shown with a capacity of 0 bytes and cannot be initialized, or is exposed as a "Generic Physical Disk" object with no serial number that displays an  Operational Status of **Lost Communication**, as shown in this example output:
 
@@ -149,7 +149,7 @@ The following table lists some information about this condition.
 |More information|OperationalStatus field of the PhysicalDisk object. <br>EventLog – Microsoft-Windows-ScmDisk0101/Operational|
 |What to do|The persistent memory device must be replaced or sanitized, such that the server platform exposes it to the host OS again. Replacement of the device is recommended, as more uncorrectable errors could occur. Adding a replacement device to a storage spaces configuration can be achieved with the `Add-PhysicalDisk` cmdlet.|
 
-## Persistent memory device is shown as a RAW or empty disk after a reboot
+## Device is shown as a RAW or empty disk after a reboot
 
 This condition is present when you check the health of a persistent memory device and see a Health Status of **Unhealthy** and Operational Status of **Unrecognized Metadata**, as shown in this example output:
 
@@ -174,4 +174,4 @@ The following table lists some information about this condition.
 For related information, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Understand and deploy persistent memory](deploy-pmem.md)
+- [Understand and deploy persistent memory](deploy-persistent-memory.md)

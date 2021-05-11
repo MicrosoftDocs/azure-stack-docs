@@ -89,5 +89,5 @@ Type                 : Basic
 
 For related information, see also:
 
-- [Understand and deploy persistent memory](deploy-pmem.md)
-- [Persistent memory health management](pmem-health.md)
+- [Understand and deploy persistent memory](deploy-persistent-memory.md)
+- [Persistent memory health management](persistent-memory-health.md)

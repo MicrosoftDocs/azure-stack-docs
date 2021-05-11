@@ -29,8 +29,8 @@ This section describes the basic concepts you'll need to understand in order to 
 
 There are two methods for accessing persistent memory. They are:
 
-1. **Block access**, which operates like storage for app compatibility. In this configuration, data flows through the file system and storage stacks as normal. You can use this configuration in combination with NTFS and ReFS, and it is recommended for most use cases.
-2. **Direct access (DAX)**, which operates like memory to get the lowest latency. You can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is potential for data loss.** We strongly recommend that you use DAX with [Block translation table (BTT)](#block-translation-table) turned on to mitigate the risk of torn writes. To learn more, see [Understand and configure DAX](pmem-dax.md).
+- **Block access**, which operates like storage for app compatibility. In this configuration, data flows through the file system and storage stacks as normal. You can use this configuration in combination with NTFS and ReFS, and it is recommended for most use cases.
+- **Direct access (DAX)**, which operates like memory to get the lowest latency. You can only use DAX in combination with NTFS. **If you don't use DAX correctly, there is potential for data loss.** We strongly recommend that you use DAX with [Block translation table (BTT)](#block-translation-table) turned on to mitigate the risk of torn writes. To learn more, see [Understand and configure DAX](persistent-memory-direct-access.md).
 
 > [!WARNING]
 > DAX isn't supported on Azure Stack HCI environments. Azure Stack HCI only supports block access, with BTT turned on.
@@ -242,5 +242,5 @@ The following table shows the full performance numbers.
 For related information, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Persistent memory health management](pmem-health.md)
+- [Persistent memory health management](persistent-memory-health.md)
 - [Understanding the storage pool cache](cache.md)
