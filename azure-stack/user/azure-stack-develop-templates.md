@@ -71,7 +71,7 @@ Azure Resource Manager templates use a `location` attribute to place resources d
   "location": "[resourceGroup().location]",
   "comments": "This storage account is used to store the VM disks",
   "properties": {
-  "accountType": "Standard_GRS"
+  "accountType": "Standard_LRS"
   }
 }
 ]
