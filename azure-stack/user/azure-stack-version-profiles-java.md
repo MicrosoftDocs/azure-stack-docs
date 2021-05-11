@@ -70,7 +70,7 @@ Follow these steps to install the Java SDK:
 
 4. The set of packages that need to be installed depends on the profile version you want to use. The package names for the profile versions are:
 
-   - **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**
+   - **com.microsoft.azure.profile\_2020\_09\_01\_hybrid**
    - **com.microsoft.azure**
      - **latest**
 
