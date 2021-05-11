@@ -111,18 +111,25 @@
             href: deploy-windows-application.md
           - name: Configure group Managed Service Account support
             href: prepare-windows-nodes-gmsa.md
+          - name: Deploy a container image from Azure Container Registry
+            href: deploy-private-acr.md
           - name: Adapt apps for mixed-OS Kubernetes clusters
             href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
       items:
           - name: Troubleshoot common issues
             href: troubleshoot.md
+          - name: Windows Admin Center
+            items:
+                - name: Known issues
+                  href: known-issues-windows-admin-center.md
+                - name: Troubleshoot Windows Admin Center
+                  href: troubleshoot-windows-admin-center.md
           - name: Known issues
             href: known-issues.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
-          - name: Troubleshoot Windows Admin Center
-            href: troubleshoot-windows-admin-center.md
+
 - name: Related
   items:
   - name: Azure Stack HCI

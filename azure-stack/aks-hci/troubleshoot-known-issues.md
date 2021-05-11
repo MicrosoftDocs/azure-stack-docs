@@ -131,6 +131,9 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 2. If you get a response back and no time-out, then the basic network path is working. 
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
+## An **Unable to acquire token** error appears when running Set-AksHciRegistration
+An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
+
 ## Next steps
 - [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
