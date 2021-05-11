@@ -162,7 +162,7 @@ Once you've attached your server to Azure Monitor, you can use the intelligent h
 
 These are the alerts and their default conditions that you can opt into:
 
-| Alert Name                | Default Condition                                  |
+| Alert name                | Default condition                                  |
 |---------------------------|----------------------------------------------------|
 | CPU utilization           | Over 85% for 10 minutes                            |
 | Disk capacity utilization | Over 85% for 10 minutes                            |
