@@ -101,7 +101,7 @@ Make sure the service principal used in the command above has the "Owner", "Cont
 
 ## Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [install-akshciArconboarding](./install-akshciarconboarding.md) PowerShell command.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [enable-akshciarcconnection](./enable-akshciarcconnection.md) PowerShell command.
 
 > [!NOTE]
 > After onboarding the cluster, it takes around five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in Azure portal.
