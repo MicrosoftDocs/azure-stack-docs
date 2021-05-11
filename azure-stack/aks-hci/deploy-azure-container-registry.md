@@ -45,7 +45,7 @@ az ad sp create-for-rbac
   --name <SERVICE_PRINCIPAL_NAME>
 ```
 
-ACR supports three access roles, the **Contributor** role is the most common for application developers, however, in real world scenarios, you might need to create multiple service principals depending on the type of access needed:
+Azure Container Registry supports three access roles, the **Contributor** role is the most common for application developers, however, in real world scenarios, you might need to create multiple service principals depending on the type of access needed:
 
 - **Contributor**: This role offers push and pull access to the repository.
 - **Reader**: This role only allows pull access to the repository.
@@ -69,7 +69,7 @@ For more about working with service principals and Azure Container Registry, see
 
 ## Log in to the container registry
 
-To use the ACR instance, you must first log in. You can use either the Azure CLI or the Docker CLI to log in.
+To use the Azure Container Registry instance, you must first log in. You can use either the Azure CLI or the Docker CLI to log in.
 
 ### Option 1: Log in from the Azure CLI
 
@@ -89,7 +89,7 @@ docker login <REGISTRY_NAME>.azurecr.io -u <appId> -p <password>
 
 In either option, the command should return a *Login Succeeded* message once completed.
 
-## Push an image to ACR
+## Push an image to Azure Container Registry
 
 Once you are successfully logged in, you can start pushing the image to Azure Container Registry. First, let's run the `docker images` command to view the list of images on your local machine:
 
@@ -99,7 +99,7 @@ mcr.microsoft.com/azure-functions/dotnet 3.0                                    
 poemfinder-app                           latest                                   2d9bef425603   6 months ago    208MB
 ```
 
-To get started, you will need to tag the image using the `docker tag` command, then use `docker push` to push it to ACR. 
+To get started, you will need to tag the image using the `docker tag` command, then use `docker push` to push it to Azure Container Registry. 
 
 ```powershell
 docker tag poemfinder-app <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
@@ -111,7 +111,7 @@ Verify that the image has been correctly tagged by running the `docker images` c
 docker push <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
 ```
 
-To confirm that the image was successfully pushed to ACR, you can run the following command:
+To confirm that the image was successfully pushed to Azure Container Registry, you can run the following command:
 
 ```powershell
 az acr repository list --name <REGISTRY_NAME>.azurecr.io --output table
@@ -119,7 +119,7 @@ az acr repository list --name <REGISTRY_NAME>.azurecr.io --output table
 
 ## Deploy an image from ACR to AKS on Azure Stack HCI
 
-To deploy your container image from ACR to your Kubernetes cluster, you need to create *Kubernetes Secrets* to store your registry credentials. Kubernetes uses an *image pull secret* to store information needed to authenticate to your registry. To create the pull secret for an Azure container registry, you provide the service principal ID, the password, and the registry URL.
+To deploy your container image from Azure Container Registry to your Kubernetes cluster, you need to create *Kubernetes Secrets* to store your registry credentials. Kubernetes uses an *image pull secret* to store information needed to authenticate to your registry. To create the pull secret for an Azure container registry, you provide the service principal ID, the password, and the registry URL.
 
 ```
 kubectl create secret docker-registry <secret-name> \
@@ -164,7 +164,7 @@ You can save the above pod configuration in a file such as `pod-example.yaml`, a
 kubectl create -f pod-example.yaml
 ```
 
-To confirm that the pod was successfully created using the container image from ACR, run `kubectl describe pod <POD_NAME>` which should show the container image used to create the pod. 
+To confirm that the pod was successfully created using the container image from Azure Container Registry, run `kubectl describe pod <POD_NAME>` which should show the container image used to create the pod. 
 
 ## Next steps
 
