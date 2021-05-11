@@ -23,7 +23,7 @@ You need an Azure account to register your AKS host for billing. If you don’t 
 If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to give you a service principal with a built-in role mentioned above. **Only subscription owners can create service principals with the right role assignment.** For more information on creating service principals, visit [https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0]
 
 You must have **at least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI. 
-   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access".
+   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access".
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
 
 You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.

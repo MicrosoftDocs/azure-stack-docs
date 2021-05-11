@@ -29,7 +29,7 @@ Enables Arc connection for an AKS on Azure Stack HCI cluster.
 ## Examples
 
 ### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using Azure user login 
-This command connects your workload cluster to Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access". If you have multiple tenants on your Azure account, it is recommended to connect your workload cluster to Arc using a service principal.
+This command connects your workload cluster to Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access". If you have multiple tenants on your Azure account, it is recommended to connect your workload cluster to Arc using a service principal.
 
 ```PowerShell
 Connect-AzAccount
