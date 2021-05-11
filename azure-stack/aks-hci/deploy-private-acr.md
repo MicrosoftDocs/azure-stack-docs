@@ -19,18 +19,18 @@ This tutorial assumes you have a basic understanding of [Kubernetes concepts](ku
 Verify that you have the following installed:
 
 - An AKS on Azure Stack HCI cluster that's up and running.
-- [Install the Azure CLI ](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Install the Azure CLI ](/cli/azure/install-azure-cli)
 - Your local `kubectl` environment is configured to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command to configure your cluster for access using `kubectl`.
 
 ## Create an Azure Container Registry
 
-To create an Azure Container Registry, you first need a resource group. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) command. In the following example, a resource group in the *eastus* region is created:
+To create an Azure Container Registry, you first need a resource group. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the [az group create](/cli/azure/group#az-group-create) command. In the following example, a resource group in the *eastus* region is created:
 
 ```azurecli
 az group create --name <RESOURCE_GROUP_NAME> --location eastus
 ```
 
-Create an Azure Container Registry instance with the [az acr create](https://docs.microsoft.com/cli/azure/acr) command and provide your own registry name. The registry name must be unique within Azure and contain 5-50 alphanumeric characters. In the rest of this tutorial, `<acrName>` is used as a placeholder for the container registry name, and you'll provide your own unique registry name. The *Basic* SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
+Create an Azure Container Registry instance with the [az acr create](/cli/azure/acr) command and provide your own registry name. The registry name must be unique within Azure and contain 5-50 alphanumeric characters. In the rest of this tutorial, `<acrName>` is used as a placeholder for the container registry name, and you'll provide your own unique registry name. The *Basic* SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
 
 ```azurecli
 az acr create --resource-group <RESOURCE_GROUP_NAME> --name <REGISTRY_NAME> --sku Basic
@@ -65,7 +65,7 @@ The above command should produce an output similar to the following:
 
 Once the service principal has been successfully created, copy the `appId` and `password` in a safe location to use later in your deployment.
 
-For more about working with service principals and Azure Container Registry, see [Azure Container Registry authentication with service principals](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal).
+For more about working with service principals and Azure Container Registry, see [Azure Container Registry authentication with service principals](/azure/container-registry/container-registry-auth-service-principal).
 
 ## Log in to the container registry
 
@@ -73,7 +73,7 @@ To use the ACR instance, you must first log in. You can use either the Azure CLI
 
 ### Option 1: Log in from the Azure CLI
 
-Use the [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) command and provide the unique name given to the container registry in the previous step.
+Use the [az acr login](/cli/azure/acr#az-acr-login) command and provide the unique name given to the container registry in the previous step.
 
 ```azurecli
 az acr login --name <REGISTRY_NAME>
