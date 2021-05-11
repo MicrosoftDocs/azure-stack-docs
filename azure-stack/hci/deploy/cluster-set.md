@@ -30,7 +30,7 @@ Cluster sets offer the following benefits:
 
 - Easily change the compute-to-storage workload ratio in your hyper-converged environment.
 
-- Benefit from [Azure-like Fault Domains and Availability sets](../azure/virtual-machines/windows/manage-availability) across individual clusters in initial VM placement and subsequent migration.
+- Benefit from [Azure-like Fault Domains and Availability sets](../azure/virtual-machines/windows/manage-availability.md) across individual clusters in initial VM placement and subsequent migration.
 
 - Can use even if compute and storage hardware between cluster nodes is not identical.
 - Live migration of VMs between clusters.
@@ -255,7 +255,7 @@ WARNING: Report file location: C:\Windows\Cluster\Reports\Update-ClusterVirtualM
 
 This warning may be ignored as there were no physical changes in the virtual machine role storage configuration. The actual physical location does not change; only the configuration paths do.
 
-For more information on `Move-VMStorage`, see [Move-VMStorage](../powershell/module/hyper-v/move-vmstorage).
+For more information on `Move-VMStorage`, see [Move-VMStorage](../powershell/module/hyper-v/move-vmstorage.md).
 
 Live migrating a VM within a cluster set involves the following:
 
@@ -361,5 +361,5 @@ System state backup will backup the cluster state and metadata. Using Windows Se
 
 ## Next steps
 
-- Learn more about [Storage Replica](../windows-server/storage/storage-replica/storage-replica-overview).
+- Learn more about [Storage Replica](../windows-server/storage/storage-replica/storage-replica-overview.md).
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
