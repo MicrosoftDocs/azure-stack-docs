@@ -26,8 +26,9 @@ Verify you've the following requirements ready:
 
 * An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
 * Have the [Azure Kubernetes Service on Azure Stack HCI PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules) installed.
-* Azure CLI version 2.3+ is required for installing the Azure Arc-enabled Kubernetes CLI extensions. [Install Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). You can also update to the latest version to ensure that you have Azure CLI version 2.3+.
-* An Azure subscription on which you're an owner or contributor. 
+- **At least one** of the following access levels on your Azure subscription:
+   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access".
+   - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
 * Run the commands in this document in a PowerShell administrative window.
 
 
@@ -50,25 +51,31 @@ Azure Arc agents require the following protocols/ports/outbound URLs to function
 
 ## Step 1: Log in to Azure
 
-```console
-az login
+To log in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
+
+```powershell
+Connect-AzAccount
+```
+
+If you want to switch to a different subscription, run the [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-5.9.0&preserve-view=true) PowerShell command.
+```powershell
+Set-AzContext -Subscription "myAzureSubscription"
 ```
 
 ## Step 2: Register the two providers for Azure Arc enabled Kubernetes:
 
-You can skip this step if you've already registered the two providers for Azure Arc-enabled Kubernetes service on your subscription. 
-Registration is an asynchronous process and needs to be once per subscription. Registration may take approximately 10 minutes. 
+You can skip this step if you've already registered the two providers for Azure Arc-enabled Kubernetes service on your subscription. Registration is an asynchronous process and needs to be once per subscription. Registration may take approximately 10 minutes. 
 
-```console
-az provider register --namespace Microsoft.Kubernetes
-az provider register --namespace Microsoft.KubernetesConfiguration
+```PowerShell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ```
 
 You can check if you're registered with the following commands:
 
-```console
-az provider show -n Microsoft.Kubernetes -o table
-az provider show -n Microsoft.KubernetesConfiguration -o table
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ```
 
 ## Step 3: Connect to Azure Arc using the Aks-Hci PowerShell module
@@ -79,11 +86,18 @@ Connect your AKS on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes usin
 Enable-AksHciArcConnection -name mynewcluster 
 ```
 
-The above example takes in the Azure context details, such as the subscription, resource group, and location from the values you set while connecting your AKS host to Azure for billing, using the [Set-AksHciRegistration](./set-akshciregistration.md) PowerShell command. If you want to connect your workload clusters to a different subscription or resource group, include the relevant parameters in the `Enable-AksHciArcConnection` command.
+## Connect your AKS cluster to Azure Arc using a service principal
+
+If you do not have access to a subscription on which you're an "Owner", you can connect your AKS cluster to Azure Arc using a service principal.
+
+The first command prompts for service principal credentials and stores them in the `credential` variable. Enter your application ID for the username and service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects your cluster to Azure Arc using the service principal credentials stored in the `credential` variable. 
 
 ```powershell
-Enable-AksHciArcConnection -name mynewcluster -subscriptionId "myAzureSubscription" -resourceGroup "myResourceGroup"
+$Credential = Get-Credential
+Enable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-0000-4bdb12000000" -resourceGroup "myAzureResourceGroup" -credential $Credential -tenantId "xxxx-xxxx-xxxx-xxxx" -location "eastus"
 ```
+
+Make sure the service principal used in the command above has the "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role assigned to them and that it has scope over the subscription ID and resource group used in the command. For more information on service principals, visit [creating service principals with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal)
 
 ## Verify connected cluster
 

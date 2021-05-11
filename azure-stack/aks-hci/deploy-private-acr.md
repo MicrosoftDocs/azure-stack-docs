@@ -65,6 +65,8 @@ The above command should produce an output similar to the following:
 
 Once the service principal has been successfully created, copy the `appId` and `password` in a safe location to use later in your deployment.
 
+For more about working with service principals and Azure Container Registry, see [Azure Container Registry authentication with service principals](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal).
+
 ## Log in to the container registry
 
 To use the ACR instance, you must first log in. You can use either the Azure CLI or the Docker CLI to log in.
@@ -87,7 +89,7 @@ docker login <REGISTRY_NAME>.azurecr.io -u <appId> -p <password>
 
 In either option, the command should return a *Login Succeeded* message once completed.
 
-## Pushing an image to ACR
+## Push an image to ACR
 
 Once you are successfully logged in, you can start pushing the image to Azure Container Registry. First, let's run the `docker images` command to view the list of images on your local machine:
 
@@ -165,4 +167,7 @@ kubectl create -f pod-example.yaml
 To confirm that the pod was successfully created using the container image from ACR, run `kubectl describe pod <POD_NAME>` which should show the container image used to create the pod. 
 
 ## Next steps
-- For more about working with service principals and Azure Container Registry, see [Azure Container Registry authentication with service principals](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)
+
+In this article, you learned how to deploy a container image from Azure Container Registry to AKS on Azure Stack HCI. Next, you can:
+- [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

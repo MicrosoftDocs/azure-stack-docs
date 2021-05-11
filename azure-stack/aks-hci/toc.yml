@@ -67,6 +67,8 @@
             href: update-aks-hci-concepts.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Deploy a container image from ACR to AKS on Azure Stack HCI
+            href: deploy-private-acr.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
@@ -111,8 +113,6 @@
             href: deploy-windows-application.md
           - name: Configure group Managed Service Account support
             href: prepare-windows-nodes-gmsa.md
-          - name: Deploy a container image from Azure Container Registry
-            href: deploy-private-acr.md
           - name: Adapt apps for mixed-OS Kubernetes clusters
             href: adapt-apps-mixed-os-clusters.md
     - name: Troubleshoot
