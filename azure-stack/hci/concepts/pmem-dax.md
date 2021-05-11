@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/05/2021
+ms.date: 05/11/2021
 ---
 
 # Understand and configure DAX
