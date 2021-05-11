@@ -220,6 +220,5 @@ Get-AksHciLogs
 In this quickstart, you learned how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. You also learned how to use PowerShell to scale a Kubernetes cluster and to access clusters with `kubectl`.
 
 ## Next steps
-
-- [Deploy a Linux application on your Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md).
+- [Prepare an application](./tutorial-kubernetes-prepare-application.md)
+- [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md)
