@@ -73,10 +73,12 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
-            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-          - name: Create a GitOps configuration on a cluster
-            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
+          - name: Azure Arc Jumpstart
+            items:
+                - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
+                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+                - name: Create a GitOps configuration on a cluster
+                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
     - name: Configure networking
       items:
           - name: Use proxy settings
