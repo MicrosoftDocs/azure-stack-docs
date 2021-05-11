@@ -14,26 +14,24 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 ## Before you begin
 
+
+- Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
+- An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements#azure-requirements).
+- **At least one** of the following access levels to the Azure subscription you use for AKS on Azure Stack HCI: 
+
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 
 - An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](system-requirements.md#azure-requirements).
 
-
 - **At least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI: 
+
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access".
-
-You must have **at least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI. 
-   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access".
-
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
-
 - An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
-
 - **At least one** of the following:
    - 2-4 node Azure Stack HCI cluster
    - Windows Server 2019 Datacenter failover cluster
-   
-**We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
+   **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 
