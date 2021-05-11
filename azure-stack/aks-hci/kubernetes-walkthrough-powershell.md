@@ -14,9 +14,8 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 ## Before you begin
 
-
 - Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
-- An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements#azure-requirements).
+- An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
 - **At least one** of the following access levels to the Azure subscription you use for AKS on Azure Stack HCI: 
 
 Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
