@@ -74,7 +74,7 @@ Azure Kubernetes Service is available on the following platforms:
 
 - In the Azure cloud via [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes)
 - On-premises via Azure Kubernetes Service on Azure Stack HCI (what this article is all about)
-- On-premises via Azure Kubernetes Service runtime on Windows Server (this article also applies to AKSr on Windows Server)
+- On-premises via Azure Kubernetes Service runtime on Windows Server (this article also applies to Azure Kubernetes Service runtime on Windows Server)
 - On-premises in an Azure Stack Hub environment using the [AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-overview.md).
 
 ## How does Kubernetes work on Azure Stack HCI?

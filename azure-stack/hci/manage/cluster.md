@@ -146,10 +146,12 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
 ## Register the cluster with Azure
 
-To register or unregister your cluster with Azure, select **Azure Stack HCI registration**. For detailed information on how to do this, see [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md).
+To register or unregister your cluster with Azure, select **Azure Stack HCI registration**. 
 
 :::image type="content" source="media/manage-cluster/cluster-registration.png" alt-text="cluster Azure Registration screen" lightbox="media/manage-cluster/cluster-registration.png":::
 
 ## Next steps
 
-To monitor your cluster, see [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md).
+For more detailed information, see also:
+
+- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)

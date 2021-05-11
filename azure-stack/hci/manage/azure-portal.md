@@ -63,4 +63,4 @@ Unlike Windows Admin Center, the Azure portal experience for Azure Stack HCI is 
 For related information, see also:
 
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
-- [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md)
+
