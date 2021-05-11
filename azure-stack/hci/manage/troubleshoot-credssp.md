@@ -126,7 +126,7 @@ To resolve the error, try the following remedy steps as needed:
     ```
 
     ```powershell
-    setspn -S WSMAN/<Server Name> <Server FQDN Name>  
+    setspn -S WSMAN/<Server FQDN Name> <Server Name>  
     ```
 
 1. Try running the Create Cluster wizard again.
