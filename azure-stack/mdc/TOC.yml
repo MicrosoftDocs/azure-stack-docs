@@ -6,6 +6,8 @@
     items:
     - name: What is the Modular Data Center?
       href: mdc-overview.md
+    - name: OEM release notes
+      href: oem-release-notes-mdc.md
   - name: Quickstarts
     items:
     - name: Use the administrator portal
