@@ -51,7 +51,7 @@ To get started with Security Center:
 To take advantage of advanced security management and threat detection capabilities, you must enable Azure Defender. You can use Azure Defender free for 30 days. For more information, see [Security Center pricing](https://azure.microsoft.com/pricing/details/security-center).
 - If you're ready to enable Azure Defender, see [Quickstart: Setting up Azure Security Center](/azure/security-center/security-center-get-started) to walk through the steps.
 
-You can also use Windows Admin Center to set up additional Azure hybrid services, such as Backup, File Sync, Site Recovery, Point-to-Site VPN, Update Management, and Azure Monitor.
+You can also use Windows Admin Center to set up additional Azure hybrid services, such as Backup, File Sync, Site Recovery, Point-to-Site VPN, and Update Management.
 
 ## Next steps
 For more information related to trusted enterprise virtualization, see:

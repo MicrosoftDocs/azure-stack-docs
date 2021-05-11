@@ -59,7 +59,7 @@ The issue was resolved after deleting the configuration and restarting the VM wi
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2104).
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
-If your installation fails using [Install-AksHci](./uninstall-akshci.md), run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
+If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
 
 ## A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through WAC
 Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
