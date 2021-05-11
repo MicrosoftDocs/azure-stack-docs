@@ -1,18 +1,18 @@
 ---
-title: Deploy an Azure Stack HCI cluster set
-description: Learn how to deploy an Azure Stack HCI cluster set
+title: Deploy a cluster set
+description: Learn how to deploy a cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/06/2021
+ms.date: 05/11/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Deploy an Azure Stack HCI cluster set
+# Deploy a cluster set
 
 > Applies to Azure Stack HCI, version v20H2; Windows Server 2019
 
-This article provides information on how to use Windows PowerShell to deploy a cluster set. A cluster set is a group of multiple failover clusters that are clustered together. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude.
+This article provides information on how to use Windows PowerShell to deploy a cluster set for Azure Stack HCI and Windows Server 2019. A cluster set is a group of multiple failover clusters that are clustered together. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude.
 
 Cluster sets have been tested and supported up to 64 total cluster nodes. However, cluster sets can scale to much larger limits and are not hardcoded for a limit.
 
