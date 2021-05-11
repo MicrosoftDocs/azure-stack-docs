@@ -24,6 +24,8 @@ landingContent:
             url: kubernetes-concepts.md
           - text: Networking
             url: concepts-container-networking.md
+          - text: Security
+            url: concepts-security.md
           - text: Storage
             url: concepts-storage.md
           - text: Application availability
