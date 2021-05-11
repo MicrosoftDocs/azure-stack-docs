@@ -14,25 +14,20 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 ## Before you begin
 
-You need an Azure account to register your AKS host for billing. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
-- Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
-- [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
-- Subscription obtained through an Enterprise Agreement (EA)
-- Subscription obtained through the Cloud Solution Provider (CSP) program
+Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 
-If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to give you a service principal with a built-in role mentioned above. **Only subscription owners can create service principals with the right role assignment.** For more information on creating service principals, visit [https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0]
+- An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](system-requirements#azure-requirements).
 
-You must have **at least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI. 
+- **At least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI: 
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access".
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
 
-You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
+- An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 
-Make sure you have one of the following:
- - 2-4 node Azure Stack HCI cluster
- - Windows Server 2019 Datacenter failover cluster
- 
-Before getting started, make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
+- **At least one** of the following:
+   - 2-4 node Azure Stack HCI cluster
+   - Windows Server 2019 Datacenter failover cluster
+   
 **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
@@ -63,16 +58,18 @@ To view the complete list of AksHci PowerShell commands, see [AksHCI PowerShell]
 
 
 ### Register the resource provider to your subscription
-Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI integration. To do that, run the following PowerShell commands:
+Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI registration. To do that, run the following PowerShell commands.
 
 To log in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
 ```powershell
 Connect-AzAccount
 ```
 If you want to switch to a different subscription, run the [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-5.9.0&preserve-view=true) PowerShell command:
+
 ```powershell
 Set-AzContext -Subscription "xxxx-xxxx-xxxx-xxxx"
 ```
+
 Run the following command to register your Azure subscription to Azure Arc enabled Kubernetes resource providers. This registration process can take up to 10 minutes, but it only needs to be performed once on a specific subscription.
    
 ```PowerShell
@@ -89,8 +86,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 
 ## Step 1: Prepare your machine(s) for deployment
 
-Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
-Open PowerShell as an administrator and run the following [Initialize-AksHciNode](initialize-akshcinode.md) command.
+Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](initialize-akshcinode.md) command.
 
 ```powershell
 Initialize-AksHciNode
@@ -98,19 +94,18 @@ Initialize-AksHciNode
 
 ## Step 2: Create a virtual network
 
-To get the names of your available external switches, run this command:
+To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
 
 ```powershell
 Get-VMSwitch
 ```
 
-You must use an external switch.
-
 Sample Output:
+
 ```output
-Name SwitchType NetAdapterInterfaceDescription
----- ---------- ------------------------------
-extSwitch External Mellanox ConnectX-3 Pro Ethernet Adapter
+Name        SwitchType     NetAdapterInterfaceDescription
+----        ----------     ------------------------------
+extSwitch   External       Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the **New-AksHciNetworkSetting** PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
@@ -146,39 +141,15 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ## Step 5: Start a new deployment
 
-After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host.
-
-To begin deployment, run the following command.
+After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin deployment, run the following command.
 
 ```powershell
 Install-AksHci
 ```
 
-### Verify your deployed Azure Kubernetes Service host
-
-To ensure that your Azure Kubernetes Service host was deployed, run the [Get-AksHciCluster](./get-akshcicluster.md) command. You will also be able to get Kubernetes clusters using the same command after deploying them.
-
-```powershell
-Get-AksHciCluster
-```
-
-**Output:**
-```
-
-Name            : clustergroup-management
-Version         : v1.18.14
-Control Planes  : 1
-Linux Workers   : 0
-Windows Workers : 0
-Phase           : provisioned
-Ready           : True
-```
-
 ## Step 6: Create a Kubernetes cluster
 
-After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster.
-
-Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command.
+After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command.
 
 ```powershell
 New-AksHciCluster -name mycluster
@@ -186,13 +157,30 @@ New-AksHciCluster -name mycluster
 
 ### Check your deployed clusters
 
-To get a list of your deployed Azure Kubernetes Service host and Kubernetes clusters, run the following [Get-AksHciCluster](get-akshcicluster.md) PowerShell command.
+To get a list of your deployed Kubernetes clusters, run the following [Get-AksHciCluster](get-akshcicluster.md) PowerShell command.
 
 ```powershell
 Get-AksHciCluster
 ```
+```output
+ProvisioningState     : provisioned
+KubernetesVersion     : v1.19.7
+Name                  : mycluster
+ControlPlaneNodeCount : 1
+WindowsNodeCount      : 1
+LinuxNodeCount        : 1
+```
 
-## Step 7: Scale a Kubernetes cluster
+## Step 7: Connect your cluster to Arc enabled Kubernetes
+
+Connect your cluster to Arc enabled Kubernetes by running the [Enable-AksHciArcConnection](enable-akshciarcconnection.md) command. The below example connects your AKS on Azure Stack HCI cluster to Arc using the subscription and resource group details you passed in the `Set-AksHciRegistration` command.
+
+```powershell
+Connect-AzAccount
+Enable-AksHciArcConnection -name mycluster
+```
+
+## Scale a Kubernetes cluster
 
 If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciCluster](./set-akshcicluster.md) command.
 
@@ -210,7 +198,7 @@ Set-AksHciCluster –name mycluster -linuxNodeCount 3 -windowsNodeCount 1
 
 The control plane nodes and the worker nodes must be scaled independently.
 
-## Step 8: Access your clusters using kubectl
+## Access your clusters using kubectl
 
 To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl. You can also use kubectl to [deploy applications using Helm](./helm-deploy.md).
 
@@ -238,6 +226,5 @@ In this quickstart, you learned how to set up an Azure Kubernetes Service host a
 
 ## Next steps
 
-- [Connect your clusters to Azure Arc for Kubernetes](./connect-to-arc.md).
 - [Deploy a Linux application on your Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md).
