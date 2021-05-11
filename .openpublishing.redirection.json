@@ -1,8 +1,13 @@
 {
   "redirections": [
     { 
-      "source_path": "azure-stack/aks-hci/uninstall-akshcimonitoring.md", 
-      "redirect_url": "/azure-stack/aks-hci/akshci", 
+      "source_path": "azure-stack/aks-hci/setup-powershell.md", 
+      "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/aks-hci/create-kubernetes-cluster-powershell.md", 
+      "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
       "redirect_document_id": false
     }, 
     { 
