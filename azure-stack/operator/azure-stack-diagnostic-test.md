@@ -74,6 +74,7 @@ These low impact tests work on an infrastructure level and provide you with info
 | Azure Stack Hub Cloud Hosting Infrastructure Utilization | AzsHostingInfraUtilization        |
 | Azure Stack Hub Control Plane Summary                    | AzsControlPlane                   |
 | Azure Stack Hub Defender Summary                         | AzsDefenderSummary                |
+| Azure Stack Hub External Certificates Summary            | AzsExternalCertificates           |
 | Azure Stack Hub Hosting Infrastructure Firmware Summary  | AzsHostingInfraFWSummary          |
 | Azure Stack Hub Infrastructure Capacity                  | AzsInfraCapacity                  |
 | Azure Stack Hub Infrastructure Performance               | AzsInfraPerformance               |
@@ -140,7 +141,7 @@ The following cloud scenarios are tested by the validation tool:
 Run the validation tool without the **ServiceAdminCredential** parameter to skip running cloud scenario tests: 
 
 ```powershell
-New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred
+New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 Test-AzureStack
 ```
 
@@ -196,7 +197,7 @@ Test-AzureStack -Group UpdateReadiness
 If your Azure Stack Hub is running a version before 1811, use the following PowerShell commands to run **Test-AzureStack**:
 
 ```powershell
-New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
+New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
 ```
 

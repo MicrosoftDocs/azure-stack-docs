@@ -74,7 +74,7 @@ Azure Kubernetes Service is available on the following platforms:
 
 - In the Azure cloud via [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes)
 - On-premises via Azure Kubernetes Service on Azure Stack HCI (what this article is all about)
-- On-premises via Azure Kubernetes Service runtime on Windows Server (this article also applies to AKSr on Windows Server)
+- On-premises via Azure Kubernetes Service runtime on Windows Server (this article also applies to Azure Kubernetes Service runtime on Windows Server)
 - On-premises in an Azure Stack Hub environment using the [AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-overview.md).
 
 ## How does Kubernetes work on Azure Stack HCI?
@@ -122,7 +122,7 @@ The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datac
 
 To get started with Azure Kubernetes Service on Azure Stack HCI, see the following articles:
 
-- [Review requirements](system-requirements.md)
-- [Set up Azure Kubernetes Service on Azure Stack HCI using PowerShell](setup-powershell.md)
-- [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](create-kubernetes-cluster.md)
+- [Review requirements](./system-requirements.md)
+- [Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell](./kubernetes-walkthrough-powershell.md)
+- [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](./create-kubernetes-cluster.md)
 

@@ -107,7 +107,7 @@ If you forget the password for a Linux VM and the **Reset password** option is n
 1. Sign in to the recovery VM and run the following command:
 
    ```
-   sudo su –
+   sudo su -
    mkdir /tempmount
    fdisk -l
    mount /dev/sdc2 /tempmount /*adjust /dev/sdc2 as necessary*/

@@ -1,30 +1,30 @@
 ---
-title: Use an app identity to access resources
-description: Learn to access Azure Stack Hub resources using an app identity, which can be used with role-based access control for sign-in and access to resources.
+title: Give an app access to Azure Stack Hub resources
+description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 11/16/2020
-ms.lastreviewed: 11/16/2020
+ms.date: 04/28/2021
+ms.lastreviewed: 04/28/2021
 ms.custom: contperf-fy20q4
 zone_pivot_groups: state-connected-disconnected
 
-# Intent: As an Azure Stack operator, I want to use an app identity to access resources. 
-# Keyword: azure stack hub app identity service principal
+# Intent: As an Azure Stack operator, I want to give an app to access Azure Stack Hub resources. 
+# Keyword: azure stack hub app access resources
 
 ---
-# Use an app identity to access Azure Stack Hub resources
+# Give an app access to Azure Stack Hub resources
 
-An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to the app.  
+An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. 
 
-As an example, you may have a configuration management app that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the "reader" role to that service principal, and limit the configuration management app to read-only access.
+The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, grant the "reader" role to the app's service principal, and limit the configuration management app to read-only access.
 
 ## Overview
 
-Like a user, an app must present credentials during authentication. This authentication consists of two elements:
+Like a user, an app must present credentials during authentication, which requires two elements:
 
 - An **Application ID**, sometimes referred to as a Client ID. A GUID that uniquely identifies the app's registration in your Active Directory tenant.
-- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate (which uses its public key).
+- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate thumbprint (which uses its public key).
 
 Running an app under its own identity is preferable to running it under the user's identity for the following reasons:
 
@@ -32,14 +32,12 @@ Running an app under its own identity is preferable to running it under the user
  - **More restrictive permissions** can be assigned to an app. Typically, these permissions are restricted to only what the app needs to do, known as the *principle of least privilege*.
  - **Credentials and permissions don't change as frequently** for an app as user credentials. For example, when the user's responsibilities change, password requirements dictate a change, or when a user leaves the company.
 
-You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. 
+You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. The registration process varies depending on the directory you chose for your Azure Stack Hub instance:
 
-This article begins with the process of creating and managing a service principal, depending on the directory you chose for your Azure Stack Hub instance:
+- **Azure Active Directory (Azure AD)**: Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal for Azure AD app registration.
+- **Active Directory Federation Services (AD FS)**: AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell for AD FS app registration.
 
-- **Azure Active Directory (Azure AD)**. Azure AD is a multi-tenant, cloud-based directory, and identity management service. You can use Azure AD with a connected Azure Stack Hub instance.
-- **Active Directory Federation Services (AD FS)**. AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances.
-
-Then you learn how to assign the service principal to a role, limiting its resource access.
+After registering the app, you learn how to assign a role to its service principal, limiting its resource access.
 
 ::: zone pivot="state-disconnected"
 <!-- this is intentionally a noop -->
@@ -48,11 +46,11 @@ Then you learn how to assign the service principal to a role, limiting its resou
 ::: zone pivot="state-connected"
 ## Manage an Azure AD app identity
 
-If you deployed Azure Stack Hub with Azure AD as your identity management service, you create service principals just like you do for Azure. This section shows you how to perform the steps through the Azure portal. Check that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
+If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage app identities just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
-### Create a service principal that uses a client secret credential
+### <a name="create-app-registration-client-secret-aad"></a>Create an app registration that uses a client secret credential
 
-In this section, you register your app using the Azure portal, which creates the service principal object in your Azure AD tenant. In this example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
+In this section, you register your app in your Azure AD tenant using the Azure portal. In following example you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com) using your Azure account.
 2. Select **Azure Active Directory** > **App registrations** > **New registration**.
@@ -73,11 +71,11 @@ Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-ba
 
 ## Manage an AD FS app identity
 
-If you deployed Azure Stack Hub with AD FS as your identity management service, you must use PowerShell to manage your app's identity. Examples are provided below for managing service principal credentials, demonstrating both an X509 certificate and a client secret.
+If you deployed Azure Stack Hub with AD FS as your identity management service, you must use PowerShell to manage your app's identity. The following examples demonstrate both an X509 certificate and a client secret credential.
 
-The scripts must be run in an elevated ("Run as administrator") PowerShell console, which opens another session to a VM that hosts a privileged endpoint for your Azure Stack Hub instance. Once the privileged endpoint session has been established, additional cmdlets will execute and manage the service principal. For more information about the privileged endpoint, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
+The scripts must be run in an elevated ("Run as administrator") PowerShell console, which opens another session to a VM that hosts a privileged endpoint for your Azure Stack Hub instance. Once the privileged endpoint session has been established, additional cmdlets are used to create and manage the app registration. For more information about the privileged endpoint, see [Using the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
-### Create a service principal that uses a certificate credential
+### Create an app registration that uses a certificate credential
 
 When creating a certificate credential, the following requirements must be met:
 
@@ -86,7 +84,7 @@ When creating a certificate credential, the following requirements must be met:
  - The certificate format must be in PFX file, as both the public and private keys are required. Windows servers use .pfx files that contain the public key file (TLS/SSL certificate file) and the associated private key file.
  - Your Azure Stack Hub infrastructure must have network access to the certificate authority's Certificate Revocation List (CRL) location published in the certificate. This CRL must be an HTTP endpoint.
 
-Once you have a certificate, use the PowerShell script below to register your app and create a service principal. You also use the service principal to sign in to Azure. Substitute your own values for the following placeholders:
+Once you have a certificate, use the PowerShell script below to register your app and sign in using the service principal. Substitute your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
@@ -103,9 +101,10 @@ Once you have a certificate, use the PowerShell script below to register your ap
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the Get-Item cmdlet to retrieve your certificate.
+    # Use the Get-Item cmdlet to retrieve the certificate from the certificate store.
+    # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
@@ -161,9 +160,10 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the Get-Item cmdlet to retrieve your certificate.
+    # Use the Get-Item cmdlet to retrieve the certificate from the certificate store.
+    # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
@@ -213,7 +213,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 
 ### Update a certificate credential
 
-Now that you created a service principal, this section will show you how to:
+Now that you registered the application, this section will show you how to:
 
 1. Create a new self-signed X509 certificate for testing.
 2. Update the service principal's credentials, by updating its **Thumbprint** property to match the new certificate.
@@ -231,11 +231,12 @@ Update the certificate credential using PowerShell, substituting your own values
 
      ```powershell
      # Create a PSSession to the PrivilegedEndpoint VM
-     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
      # Create a self-signed certificate for testing purposes. 
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
-     # In production, use Get-Item and a managed certificate instead.
+     # In production, use Get-Item to retreive a managed certificate from the certificate store.
+     # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
      # $Cert = Get-Item "<YourCertificateLocation>"
 
      # Use the privileged endpoint to update the certificate thumbprint, used by the service principal associated with <AppIdentifier>
@@ -258,7 +259,7 @@ Update the certificate credential using PowerShell, substituting your own values
      RunspaceId            : a580f894-8f9b-40ee-aa10-77d4d142b4e5
      ```
 
-### Create a service principal that uses client secret credentials
+### <a name="create-app-registration-client-secret-adfs"></a>Create an app registration that uses a client secret credential
 
 > [!WARNING]
 > Using a client secret is less secure than using an X509 certificate credential. Not only is the authentication mechanism less secure, but it also typically requires embedding the secret in the client app source code. As such, for production apps, you're strongly encouraged to use a certificate credential.
@@ -279,7 +280,7 @@ Now you create another app registration, but this time specify a client secret c
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
     # Use the privileged endpoint to create the new app registration (and service principal object)
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
@@ -328,7 +329,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     $Creds = Get-Credential
     
     # Create a PSSession to the Privileged Endpoint VM
-    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
     # Use the privileged endpoint to create the new app registration (and service principal object)
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
@@ -371,7 +372,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 
 ---
 
-### Update a client secret
+### Update a client secret credential
 
 Update the client secret credential using PowerShell, using the **ResetClientSecret** parameter, which immediately changes the client secret. Substitute your own values for the following placeholders:
 
@@ -384,7 +385,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
 
      ```powershell
      # Create a PSSession to the PrivilegedEndpoint VM
-     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
      # Use the privileged endpoint to update the client secret, used by the service principal associated with <AppIdentifier>
      $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ResetClientSecret}
@@ -406,7 +407,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
      RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
      ```
 
-### Remove a service principal
+### Remove an app registration
 
 Now you'll see how to remove/delete an app registration from your directory, and its associated service principal object, using PowerShell. 
 
@@ -422,7 +423,7 @@ Substitute your own values for the following placeholders:
 $Creds = Get-Credential
 
 # Create a PSSession to the PrivilegedEndpoint VM
-$Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
+$Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 # OPTIONAL: Use the privileged endpoint to get a list of applications registered in AD FS
 $AppList = Invoke-Command -Session $Session -ScriptBlock {Get-GraphApplication}
