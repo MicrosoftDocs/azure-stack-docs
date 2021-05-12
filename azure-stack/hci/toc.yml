@@ -160,6 +160,12 @@
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum
       href: concepts/quorum.md
+    - name: Understand and deploy persistent memory
+      href: concepts/deploy-persistent-memory.md
+    - name: Persistent memory health management
+      href: concepts/persistent-memory-health.md
+    - name: Understand and configure DAX
+      href: concepts/persistent-memory-direct-access.md
   - name: Networking
     items:
     - name: Physical network requirements
