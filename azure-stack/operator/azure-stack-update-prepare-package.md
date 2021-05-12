@@ -3,7 +3,7 @@ title: Prepare update package in Azure Stack Hub
 description: Learn to prepare an update package in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 05/11/2021
 ms.author: sethm
 ms.lastreviewed: 03/10/2021
 ms.reviewer: sranthar
@@ -39,8 +39,10 @@ The update package for Azure Stack Hub updates and hotfixes is available for con
 
 Review the package contents. An update package typically consists of the following files:
 
-- **A self-extracting \<PackageName>.zip file**. This file contains the payload for the update.
-- **A Metadata.xml file**. This file contains essential information about the update; for example, the publisher, name, prerequisite, size, and support path URL.
+- One or more **.zip** files named **\<PackageName\>.zip**. These files contain the payload for the update.
+- A **metadata.xml** file. This file contains essential information about the update; for example, the publisher, name, prerequisite, size, and support path URL.
+
+SHA256 hashes are computed for the .zip file(s) with update package content and inserted into the metadata.xml associated with the package. The **metadata.xml** file itself is signed with an embedded signature using a certificate trusted by the Azure Stack Hub system.
 
 ### Automatic download and preparation for update packages
 
