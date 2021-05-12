@@ -37,7 +37,6 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [initialize-akshcinode](initialize-akshcinode.md) | Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. |
 | [install-akshci](install-akshci.md) | Install the Azure Kubernetes Service on Azure Stack HCI agents/services and host. |
 | [install-akshciadauth](install-akshciadauth.md) | Install Active Directory authentication. |
-| [install-akshciarconboarding](install-akshciarconboarding.md) | Download and install kubectl, the Kubernetes command-line tool. |
 | [install-akshcicsinfs](install-akshcicsinfs.md) | Installs the CSI NFS plug-in to a cluster. |
 | [install-akshcicsismb](install-akshcicsismb.md) | Installs the CSI SMB plug-in to a cluster. |
 | [install-akshcigmsawebhook](install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
