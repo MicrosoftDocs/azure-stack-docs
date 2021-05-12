@@ -31,20 +31,23 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 ## Azure requirements
 
-You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
+You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region available before registration. If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
 - Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
-The user registering the cluster must have **at least one** of the following:
-   - A user account with the built-in **Owner** role 
-   - A service principal with either the built-in **Microsoft.Kubernetes connected cluster** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
+If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you are an **Owner**. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
-If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. 
+If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
+- A user account with the built-in **Owner** role 
+- A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role
+
+If your Azure subscription is through an EA or CSP, the easiest way to get the required permissions is to ask your Azure subscription admin to give you a service principal with a built-in role mentioned above. Check the below section on how to create a service principal.
 
 ### Optional: Create a new service principal
-If you need to create a new service principal, run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role and also to set the scope at the subscription level.
+
+Run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role. Note that only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
 Install and import the following Azure PowerShell modules:
 
@@ -58,50 +61,45 @@ Import-Module AzureAD
 ```
 **Close all PowerShell windows** and reopen a new administrative session.
 
-1. Log in to Azure using the [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
+Log in to Azure using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
 
-   ```powershell
-   Connect-AzAccount
-   ```
-2. (Optional) If you want to switch to a different subscription, run the following command to retrieve all the available subscriptions as the currently logged in user and display them in a grid view:
+```powershell
+Connect-AzAccount
+```
 
-   ```powershell
-   $subList = Get-AzSubscription
-   if (($subList).count -gt 1) {
-   $subList | Out-GridView -OutputMode Single | Set-AzContext
-   }
-    ```  
-3. Retrieve the current subscription ID by running the following command:
-   ```powershell
-   $sub = (Get-AzContext).Subscription.Id
-   ```
-4. (Optional) To create a unique name for the service principal, run the following command:
-   ```powershell
-   $date = (Get-Date).ToString("MMddyy-HHmmss")
-   $spName = "AksHci-SP-$date"
-   ``` 
-5. Create the service principal by running the following command:
+Set the subscription you want to use to register your AKS host for billing as the default subscription by running the [Set-AzContext](/powershell/module/az.accounts/set-azcontext) command.
+```powershell
+Set-AzContext -Subscription myAzureSubscription
+```
 
-   ```powershell
-   $sp = New-AzADServicePrincipal -DisplayName $spName `
-       -Role 'Microsoft.Kubernetes connected cluster role' `
-       -Scope "/subscriptions/$sub"
-   ```   
-6. Retrieve the password for the service principal by running the following command:
+Verify that your login context is correct by running the [Get-AzContext](/powershell/module/az.accounts/get-azcontext) PowerShell command. Verify that the subscription, tenant and account is what you want to use to register your AKS host for billing.
 
-   ```powershell
-   $secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
-        [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
-   )
-   Write-Host "Application ID: $($sp.ApplicationId)"
-   Write-Host "App Secret: $secret"
-   ```   
-   
-   
+```powershell
+Get-AzContext
+```
 
-From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of those items and store them safely.
+```output
+Name                                     Account                      SubscriptionName             Environment                  TenantId
+----                                     -------                      ----------------             -----------                  --------
+myAzureSubscription (92391anf-...        user@contoso.com             myAzureSubscription          AzureCloud                   xxxxxx-xxxx-xxxx-xxxxxx
+```
 
-With that created, in the **Azure portal**, under **Subscriptions**, **Access **Control****, and then **Role Assignments**, you should see your new Service Principal.
+Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the  "Microsoft.Kubernetes connected cluster" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
+
+```powershell
+$sp = New-AzADServicePrincipal -role "Microsoft.Kubernetes connected cluster"
+```
+
+Retrieve the password for the service principal by running the following command:
+
+```powershell
+$secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret))
+Write-Host "Application ID: $($sp.ApplicationId)"
+Write-Host "App Secret: $secret"
+```   
+
+From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of these items and store them safely.
+With that created, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
 ## Compute requirements
 
@@ -189,7 +187,7 @@ git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 https://azurestackhci.azurefd.net | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
 
 > [!NOTE]
-> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
+> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
 
 ## Storage requirements
 
@@ -220,6 +218,7 @@ Here are the requirements for the machine running the Windows Admin Center gatew
 - Windows 10 or Windows Server machine
 - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration)
 - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
+- An Azure subscription on which you are an Owner. You can check your access level by navigating to your subscription and clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
 ## Next steps
 
