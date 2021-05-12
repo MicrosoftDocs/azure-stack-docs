@@ -10,6 +10,9 @@ author: mkostersitz
 
 # Update concepts for Azure Kubernetes Services on Azure Stack HCI
 
+> [!IMPORTANT]
+> The March release of AKS on Azure Stack HCI cannot be updated from a pervious release. If you want to deploy the March release on your Azure Stack HCI cluster, you must start a fresh installation. You can deploy using [PowerShell](kubernetes-walkthrough-powershell.md) or [Windows Admin Center](./setup.md).
+
 There are several types of updates, which can happen independently from each other and in certain supported combinations.
 
 - Update the AKS on Azure Stack HCI core system to the latest version.
@@ -25,14 +28,14 @@ You can update to the latest version of Azure Kubernetes Service on Azure Stack 
 
 We recommend updating AKS workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your AKS workload clusters. If your workload clusters are on an old Kubernetes version, they will still be supported but you will not be able to scale your cluster. 
 
-## Update the AKS on Azure Stack HCI host
+## Update the AKS on Azure Stack HCI host using PowerShell
 
 > [!Important]
 > Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./update-akshcicluster.md). The command doesn't need any arguments and always updates the management cluster to the latest version.
 
 ### Example flow for updating the AKS on Azure Stack HCI host
 
-#### Get current AKS on Azure Stack HCI version
+#### Get the current AKS on Azure Stack HCI version
 
 ```powershell
 PS C:\> Get-AksHciVersion                    
@@ -42,7 +45,7 @@ PS C:\> Get-AksHciVersion
 0.9.6.4
 ```
 
-#### Get available AKS on Azure Stack HCI updates
+#### Get the available AKS on Azure Stack HCI updates
 
 ```powershell
 Get-AksHciUpdates
@@ -71,6 +74,15 @@ The output shows the updated version of the AKS on Azure Stack HCI host.
 ```output
 0.9.7.2
 ```
+
+## Update the AKS on Azure Stack HCI host using Windows Admin Center
+
+The AKS on Azure Stack HCI host can also be updated through Windows Admin Center. To update the host, do the following: 
+
+1. On the Windows Admin Center connections page, connect to your management cluster.
+2. Select the **Azure Kubernetes Service** tool from the tools list. When the tool loads, you will be presented with the Overview page.
+3. Select **Updates** from the page list on the left side of the tool.
+4. Select **Update now** to upgrade your host. 
 
 ## Next steps
 [Update Kubernetes version and container host OS of your AKS workload clusters](./upgrade.md)

@@ -34,21 +34,14 @@ To learn more, see [What is Azure IoT Edge](/azure/iot-edge/about-iot-edge).
 ## Deploy branch office and edge
 This section describes at a high level how to acquire hardware for branch office and edge deployments on Azure Stack HCI and use Windows Admin Center for management. It also covers deploying Azure IoT Edge to manage containers in the cloud.
 
-### Step 1: Acquire hardware from the Azure Stack HCI Catalog
+### Acquire hardware from the Azure Stack HCI Catalog
 First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
 Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
 Next, use Windows Admin Center to [create an Azure Stack HCI cluster](./create-cluster.md).
 
-### Step 2: Set up Azure Monitor in Windows Admin Center
-In Windows Admin Center, set up Azure Monitor to gain insight into the application, network, and server health of your Azure Stack HCI branch office and edge deployment.
-
-To learn more, see [Monitor Azure Stack HCI with Azure Monitor](../manage/azure-monitor.md).
-
-You can also use Windows Admin Center to set up additional Azure hybrid services, such as Backup, File Sync, Site Recovery, Point-to-Site VPN, Update Management, and Security Center.
-
-### Step 3: Use container-based apps and IoT data processing
+### Use container-based apps and IoT data processing
 Now you’re ready to use modern container-based application development and IoT data processing. Use Windows Admin Center for the steps in this section to deploy a VM running Azure IoT Edge.
 
 To learn more, see [What is Azure IoT Edge](/azure/iot-edge/about-iot-edge).

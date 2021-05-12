@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 05/05/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -107,6 +107,8 @@ The next step is to install required Windows roles and features on every server 
 - File Server
 - FS-Data-Deduplication module
 - Hyper-V
+- Hyper-V PowerShell
+- RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - Storage Replica (for stretched clusters)
 
@@ -302,7 +304,10 @@ Get-ClusterNetwork
 
 ### Step 3.1: Prepare drives
 
-Before you enable Storage Spaces Direct, ensure your drives are empty. Run the following script to remove any old partitions or other data.
+Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions or other data.
+
+> [!NOTE]
+> Exclude any removable drives attached to a server node from the script. If you are running this script locally from a server node for example, you don't want to wipe the removable drive you might be using to deploy the cluster.
 
 ```powershell
 # Fill in these variables with your values

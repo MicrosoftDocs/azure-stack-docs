@@ -18,6 +18,8 @@
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Deploy and manage Azure Stack HCI clusters in VMM
+    href: deploy/deploy-manage-azure-stack-hci.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
 - name: Deploy
@@ -40,6 +42,8 @@
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
+    - name: Deploy a cluster set
+      href: deploy/cluster-set.md
   - name: Deploy workloads
     items:
     - name: Branch office and edge
@@ -116,10 +120,10 @@
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
-    - name: Manage tenant logical networks
-      href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
@@ -156,6 +160,12 @@
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum
       href: concepts/quorum.md
+    - name: Understand and deploy persistent memory
+      href: concepts/deploy-persistent-memory.md
+    - name: Persistent memory health management
+      href: concepts/persistent-memory-health.md
+    - name: Understand and configure DAX
+      href: concepts/persistent-memory-direct-access.md
   - name: Networking
     items:
     - name: Physical network requirements
@@ -235,7 +245,7 @@
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
-    href: /hybrid    
+    href: /hybrid
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center

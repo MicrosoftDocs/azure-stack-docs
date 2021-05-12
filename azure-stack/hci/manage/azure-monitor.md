@@ -1,5 +1,5 @@
 ---
-title: Monitor Azure Stack HCI with Azure Monitor
+title: Monitor servers with Azure Monitor
 description: Monitor servers and configure alerts with Azure Monitor from Windows Admin Center.
 author: khdownie
 ms.author: v-kedow
@@ -7,21 +7,19 @@ ms.topic: how-to
 ms.date: 07/21/2020
 ---
 
-# Monitor Azure Stack HCI with Azure Monitor
+# Monitor servers with Azure Monitor
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Windows Server 2019, Windows Server 2016
 
-[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud. Though Azure Monitor pulls data from Azure VMs and other Azure resources, this article focuses on how Azure Monitor works with on-premises servers and VMs running on Azure Stack HCI, specifically with Windows Admin Center.
+[Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud.
 
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
-Data generated from on-premises Windows Servers is collected in a Log Analytics workspace in Azure Monitor. Within a workspace, you can enable various monitoring solutions—sets of logic that provide insights for a particular scenario. For example, Azure Update Management, Azure Security Center, and Azure Monitor for VMs are all monitoring solutions that can be enabled within a workspace.
+Data generated from on-premises Windows Servers is collected in a Log Analytics workspace in Azure Monitor. Within a workspace, you can enable various monitoring solutions and use sets of logic that provide insights for a particular scenario; for example, performance metrics.
 
 When you enable a monitoring solution in a Log Analytics workspace, all the servers reporting to that workspace will start collecting data relevant to that solution, so that the solution can generate insights for all the servers in the workspace.
 
-To collect diagnostic data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a ServiceMap agent for additional functionality that this solution provides.
-
-Some solutions, like Azure Update Management, also depend on Azure Automation, which enables you to centrally manage resources across Azure and non-Azure environments. For example, Azure Update Management uses Azure Automation to schedule and orchestrate installation of updates across machines in your environment, centrally, from the Azure portal.
+To collect diagnostic data on an on-premises server and push it to the Log Analytics workspace, Azure Monitor requires the installation of the Microsoft Monitoring Agent (MMA). Certain monitoring solutions also require a secondary agent. For example, Azure Monitor for VMs also depends on a dependency agent for additional functionality.
 
 ## What data does Azure Monitor collect?
 
@@ -37,19 +35,12 @@ All data collected by Azure Monitor fits into one of two fundamental types: metr
 
 ## How does Windows Admin Center enable you to use Azure Monitor?
 
-From within Windows Admin Center, you can enable three monitoring solutions:
+From within Windows Admin Center, you can enable the following monitoring solutions:
 
 - [Azure Monitor for Clusters](#onboard-your-cluster-using-windows-admin-center)
-- [Azure Update Management](/windows-server/manage/windows-admin-center/azure/azure-update-management) (in the **Updates** tool)
 - Azure Monitor for VMs (in server Settings), a.k.a Virtual Machine insights
 
-You can get started using Azure Monitor from any of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA on the target server. It will then install the corresponding solution into the workspace.
-
-For instance, if you first go to the **Updates** tool to setup Azure Update Management, Windows Admin Center will:
-
-1. Install the MMA on the machine.
-2. Create the Log Analytics workspace and the Azure Automation account (because an Azure Automation account is necessary in this case).
-3. Install the Update Management solution in the newly created workspace.
+You can get started using Azure Monitor from any of these tools. If you've never used Azure Monitor before, Windows Admin Center will automatically provision a Log Analytics workspace (and Azure Automation account, if needed), and install and configure the MMA and the dependency agent on the target server. It will then install the corresponding solution into the workspace.
 
 If you want to add another monitoring solution from within Windows Admin Center on the same server, Windows Admin Center will simply install that solution into the existing workspace to which that server is connected. Windows Admin Center will additionally install any other necessary agents.
 
@@ -171,7 +162,7 @@ Once you've attached your server to Azure Monitor, you can use the intelligent h
 
 These are the alerts and their default conditions that you can opt into:
 
-| Alert Name                | Default Condition                                  |
+| Alert name                | Default condition                                  |
 |---------------------------|----------------------------------------------------|
 | CPU utilization           | Over 85% for 10 minutes                            |
 | Disk capacity utilization | Over 85% for 10 minutes                            |

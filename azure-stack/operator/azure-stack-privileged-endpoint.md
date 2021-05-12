@@ -146,7 +146,8 @@ To import the PEP session on your local machine, do the following steps:
       $cred = Get-Credential
       
       $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
-        -ConfigurationName PrivilegedEndpoint -Credential $cred
+        -ConfigurationName PrivilegedEndpoint -Credential $cred `
+        -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
       ```
     
       The `ComputerName` parameter can be either the IP address or the DNS name of one of the VMs that hosts the PEP.
@@ -157,7 +158,8 @@ To import the PEP session on your local machine, do the following steps:
       $cred = Get-Credential
     
       $session = New-PSSession -ComputerName azs-ercs01 `
-        -ConfigurationName PrivilegedEndpoint -Credential $cred
+        -ConfigurationName PrivilegedEndpoint -Credential $cred `
+        -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
       ```
 
    When prompted, use the following credentials:

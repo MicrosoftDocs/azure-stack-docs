@@ -81,7 +81,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - Select the resource group to use or create a new one.
    - Select the location (default is local for ASDK).
 
-     ![Deployment basics — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img2.png)
+     ![Deployment basics -- Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img2.png)
 
 5. On the **Environment Configuration** page, provide the following information and then select **OK**:
 
@@ -89,15 +89,15 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - VM size (default is Standard D1 v2 VMs).
    - Data disk size in GB
 
-     ![Environment configuration — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img3.png)
+     ![Environment configuration -- Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img3.png)
 
 6. Review the deployment **Summary**. Optionally, you can download the customized template and parameters and then select **OK**.
 
-   ![Summary — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img4.png)
+   ![Summary -- Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img4.png)
 
 7. Select **Create** on the **Buy** page to start the deployment.
 
-   ![Buy page — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img5.png)
+   ![Buy page -- Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img5.png)
 
     > [!NOTE]
     > The deployment will take about an hour. Ensure that the deployment has finished and the MySQL cluster has been completely configured before continuing.

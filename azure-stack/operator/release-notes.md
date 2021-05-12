@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 04/28/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -101,7 +101,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The AD Graph configuration steps change with this release. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
 - To align to the current best practices defined for Windows Server 2019, Azure Stack Hub is changing to utilize an additional traffic class or priority to further separate server to server communication in support of the Failover Clustering control communication. The result of these changes provides better resiliency for Failover Cluster communication. This traffic class and bandwidth reservation configuration is accomplished by a change on the top-of-rack (ToR) switches of the Azure Stack Hub solution and on the host or servers of Azure Stack Hub.
 
-  Note that these changes are added at the host level of an Azure Stack Hub system. Please contact your OEM to arrange making the required changes at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](azure-stack-network.md).
+  Note that these changes are added at the host level of an Azure Stack Hub system. Please contact your OEM to make the change at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](azure-stack-network.md).
 
 - The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Note that those are not visible in the portal yet, and can only be used via Azure Resource Manager templates.
 
@@ -136,7 +136,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.27.118](hotfix-1-2008-27-118.md)
+- [Azure Stack Hub hotfix 1.2008.33.131](hotfix-1-2008-33-131.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -236,7 +236,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.32.106](hotfix-1-2005-32-106.md)
+- [Azure Stack Hub hotfix 1.2005.35.112](hotfix-1-2005-35-112.md)
 ::: moniker-end
 
 ::: moniker range="azs-2002"

@@ -3,7 +3,7 @@ title: Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to restart, remove, or reinstall Azure Kubernetes Service on Azure Stack
 author: jessicaguan
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 05/04/2021
 ms.author: jeguan
 ---
 
@@ -23,7 +23,7 @@ Restart-AksHci
 
 ## Remove Azure Kubernetes Service on Azure Stack HCI
 
-To remove Azure Kubernetes Service on Azure Stack HCI, run the following [Uninstall-AksHci](./uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./set-akshciconfig.md) again when you reinstall. If your clusters are Arc-enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
+To remove Azure Kubernetes Service on Azure Stack HCI, run the following [Uninstall-AksHci](./uninstall-akshci.md) command. This command will remove the old configuration, and you will have to run [Set-AksHciConfig](./set-akshciconfig.md) again when you reinstall. If your clusters are Arc-enabled, delete any Azure resources before proceeding. To delete any associated Arc resources for your on-premises cluster, follow the guidance for [cleaning up Azure Arc resources](/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
 
 ```powershell
 Uninstall-AksHci
@@ -35,7 +35,7 @@ If you want to retain the old configuration, run the following command:
 Uninstall-AksHci -SkipConfigCleanup
 ```
 
-## Reinstall configuration settings and reinstall AKS on Azure Stack HCI
+## Reinstall configuration settings and reinstall Azure Kubernetes Service on Azure Stack HCI
 
 To reinstall Azure Kubernetes Service on Azure Stack HCI after uninstalling it, follow the instructions below.
 
@@ -50,10 +50,10 @@ If you didn't use the `-SkipConfigCleanup` parameter when uninstalling, then you
 
 ```powershell
 #static IP
-$vnet = New-AksHciNetworkSetting -vnetName "extSwitch" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd
+$vnet = New-AksHciNetworkSetting -vswitchName "extSwitch" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd
 "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1"
 
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16"
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16"
 
 Install-AksHci
 ```

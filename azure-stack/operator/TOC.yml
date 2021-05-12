@@ -14,6 +14,14 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2008.33.131
+        href: hotfix-1-2008-33-131.md      
+      - name: Hotfix 1.2005.35.112
+        href: hotfix-1-2005-35-112.md
+      - name: Hotfix 1.2008.31.126
+        href: hotfix-1-2008-31-126.md      
+      - name: Hotfix 1.2005.33.108
+        href: hotfix-1-2005-33-108.md
       - name: Hotfix 1.2008.27.118
         href: hotfix-1-2008-27-118.md      
       - name: Hotfix 1.2005.32.106
@@ -246,7 +254,7 @@
         href: azure-stack-add-new-user-aad.md
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
-      - name: Use an app identity to access resources
+      - name: Give apps access to resources
         href: Azure-stack-create-service-principals.md
       - name: Enable multi-tenancy
         href: azure-stack-enable-multitenancy.md
