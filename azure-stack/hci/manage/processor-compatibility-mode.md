@@ -1,6 +1,6 @@
 ---
 title: Dynamic processor compatibility mode in Azure Stack HCI
-description: The processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment.
+description: Processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment.
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
@@ -41,7 +41,7 @@ To avoid failures, Hyper-V performs “pre-flight” checks whenever a VM live m
 
 In the past, all new processor instructions sets were hidden, meaning that the guest operating system and application software could not take advantage of new processor instruction set enhancements to help applications and VMs stay performant.
 
-To overcome this limitation, processor compatibility mode has been updated to provide enhanced capabilities on processors capable of second-level address translation (SLAT). This new functionality calculates the common denominator of the CPU features supported by the nodes in the cluster, and updates the existing processor compatibility mode on a VM to use this dynamically calculated feature set instead of the old hard-coded feature set.
+To overcome this limitation, processor compatibility mode has been updated to provide enhanced, dynamic capabilities on processors capable of second-level address translation (SLAT). This new functionality calculates the common denominator of the CPU features supported by the nodes in the cluster and updates the existing processor compatibility mode on a VM to use this dynamically calculated feature set instead of the old hard-coded feature set.
 
 In Azure Stack HCI environments, the new processor compatibility mode ensures that the set of processor features available to VMs across virtualization hosts will match by presenting a common capability set across all servers in the cluster. Each VM receives the maximum number of processor instruction sets that are present across all servers in the cluster. This process occurs automatically and is always enabled and replicated across the cluster, so there's no command to enable or disable the process.
 
@@ -115,5 +115,5 @@ get-vm -name <name of VM> -ComputerName <target cluster or host> | Set-VMProcess
 
 For more information, see also:
 
-- ?
-- ?
+- [Manage VMs with Windows Admin Center](vm.md)
+- [Manage VMs with PowerShell](vm-powershell.md)
