@@ -50,7 +50,7 @@ Azure Resource Management operations can also be accomplished using Azure Resour
 
 ### User documentation
 
-To get started quickly and create an Event Hubs cluster, namespace, and Event Hub on Azure Stack Hub, see [Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal](event-hubs-quickstart-cluster-portal.md).
+To get started quickly and create an Event Hubs on Azure Stack Hub cluster, namespace, and event hub, see [Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal](event-hubs-quickstart-cluster-portal.md).
 
 In addition, the [Azure Event Hubs conceptual articles](/azure/event-hubs/) listed below also apply to using Event Hubs on Azure Stack Hub:
 
