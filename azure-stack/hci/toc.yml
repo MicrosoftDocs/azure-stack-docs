@@ -96,6 +96,8 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Configure firewalls
+      href: manage/configure-firewalls.md
     - name: Set up a cluster witness
       href: manage/witness.md
     - name: Use DISKSPD to test workloads
@@ -194,8 +196,6 @@
     items:
     - name: Billing
       href: concepts/billing.md
-    - name: Configure firewalls
-      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
