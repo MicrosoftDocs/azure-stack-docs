@@ -1,6 +1,26 @@
 {
   "redirections": [
     { 
+      "source_path": "azure-stack/aks-hci/install-akshciarconboarding.md", 
+      "redirect_url": "/azure-stack/aks-hci/enable-akshciarcconnection", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/aks-hci/setup-powershell.md", 
+      "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/aks-hci/create-kubernetes-cluster-powershell.md", 
+      "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
+      "redirect_document_id": false
+    }, 
+    { 
+      "source_path": "azure-stack/aks-hci/set-akshciclusternodecount.md", 
+      "redirect_url": "/azure-stack/aks-hci/set-akshcicluster", 
+      "redirect_document_id": false
+    }, 
+    { 
       "source_path": "azure-stack/mdc/operator/container-registry-template-install-tzl.md", 
       "redirect_url": "/azure-stack/mdc/mdc-overview", 
       "redirect_document_id": false
@@ -30,6 +50,11 @@
       "redirect_url": "/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id": false
     }, 
+    { 
+      "source_path": "azure-stack/operator/known-issues-vn.md", 
+      "redirect_url": "/azure-stack/operator/known-issues", 
+      "redirect_document_id": false
+    },       
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2008", 
@@ -760,7 +785,12 @@
       "source_path": "azure-stack/hci/manage/use-datacenter-firewall.md", 
       "redirect_url": "/azure-stack/hci/manage/use-datacenter-firewall-powershell", 
       "redirect_document_id": false 
-    },    
+    },
+    { 
+      "source_path": "azure-stack/hci/concepts/configure-firewalls.md", 
+      "redirect_url": "/azure-stack/hci/manage/configure-firewalls", 
+      "redirect_document_id": false 
+    },
     { 
       "source_path": "azure-stack/hci/deploy/sdn-express.md", 
       "redirect_url": "/azure-stack/hci/manage/sdn-express", 

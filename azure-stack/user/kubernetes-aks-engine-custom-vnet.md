@@ -4,10 +4,10 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/23/2021
+ms.date: 05/01/2021
 ms.author: mabrigg
-ms.reviewer: waltero
-ms.lastreviewed: 04/23/2021
+ms.reviewer: walterov
+ms.lastreviewed: 05/01/2021
 
 # Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub
@@ -125,7 +125,7 @@ For example:
 "kubernetesConfig": [
   {
     ...
-    "clusterSubnet": "172.16.244.0/16",
+    "clusterSubnet": "10.244.0.0/16",
     ...
   },
 

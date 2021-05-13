@@ -14,7 +14,7 @@ ms.lastreviewed: 4/26/2021
 
 ---
 
-# Add another scale unit nodes in Azure Stack Hub
+# Add scale unit nodes in Azure Stack Hub
 
 You can increase the overall capacity of an existing scale unit by adding another physical computer. The physical computer is also referred to as a *scale unit node*. Each new node must have the same CPU type, memory, disk number, and size as the nodes already present in the scale unit. Azure Stack Hub doesn't support removing scale unit nodes for scaling down because of architectural limitations. It's only possible to expand capacity by adding nodes. The maximum size of a scale unit is 4-16 nodes.
 

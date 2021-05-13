@@ -43,6 +43,8 @@
     href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
+  - name: Security
+    href: concepts-security.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -67,14 +69,18 @@
             href: update-aks-hci-concepts.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Deploy a container image from ACR to AKS on Azure Stack HCI
+            href: deploy-azure-container-registry.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
-            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-          - name: Create a GitOps configuration on a cluster
-            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
+          - name: Azure Arc Jumpstart
+            items:
+                - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
+                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+                - name: Create a GitOps configuration on a cluster
+                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
     - name: Configure networking
       items:
           - name: Use proxy settings
@@ -117,12 +123,17 @@
       items:
           - name: Troubleshoot common issues
             href: troubleshoot.md
+          - name: Windows Admin Center
+            items:
+                - name: Known issues
+                  href: known-issues-windows-admin-center.md
+                - name: Troubleshoot Windows Admin Center
+                  href: troubleshoot-windows-admin-center.md
           - name: Known issues
             href: known-issues.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
-          - name: Troubleshoot Windows Admin Center
-            href: troubleshoot-windows-admin-center.md
+
 - name: Related
   items:
   - name: Azure Stack HCI
