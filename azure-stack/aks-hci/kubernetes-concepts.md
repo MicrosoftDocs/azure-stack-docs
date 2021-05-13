@@ -52,15 +52,15 @@ The target (workload) cluster is a highly available deployment of Kubernetes usi
 
 ### Load balancer
 
-The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the target clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machines (LB VM). In addition to this, another load balancer can be created for high availability of the API server on the target cluster. Any Kubernetes service of type `LoadBalancer` that is created on the target cluster will end up creating a load balancing rule in the LB VM.
+The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machine. In addition to this, another load balancer can be created for high availability of the API server on the workload cluster. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load balancing rule in the VM.
 
 ### Worker nodes
 
 To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service target cluster on Azure Stack HCI has one or more worker nodes, which is a virtual machine (VM) that runs the Kubernetes node components, as well as hosting the pods and services that make up the application workload. There are a number of core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters, such as pods, deployments, and sets, along with how to group resources into namespaces.
 
-- ***pods*** - Kubernetes uses *pods* to run an instance of your application. A pod represents a single instance of your application. Typically, pods have a 1:1 mapping with a container, although there are advanced scenarios where a pod may contain multiple containers. These multi-container pods are scheduled together on the same node and allow containers to share related resources. For more information, see [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) and [Kubernetes pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/).
+- *pods* - Kubernetes uses *pods* to run an instance of your application. A pod represents a single instance of your application. Typically, pods have a 1:1 mapping with a container, although there are advanced scenarios where a pod may contain multiple containers. These multi-container pods are scheduled together on the same node and allow containers to share related resources. For more information, see [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) and [Kubernetes pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/).
 
-- ***Deployments*** - A *deployment* represents one or more identical pods, managed by the Kubernetes Deployment Controller. A deployment defines the number of *replicas* (pods) to create, and the Kubernetes Scheduler ensures that if pods or nodes encounter problems, additional pods are scheduled on healthy nodes. For more information, see [Kubernetes deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+- *Deployments* - A *deployment* represents one or more identical pods, managed by the Kubernetes Deployment Controller. A deployment defines the number of *replicas* (pods) to create, and the Kubernetes Scheduler ensures that if pods or nodes encounter problems, additional pods are scheduled on healthy nodes. For more information, see [Kubernetes deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 If a given Azure Kubernetes Service on Azure Stack HCI target cluster consists of both Linux and Windows worker nodes, workloads need to be scheduled onto an OS that can support provisioning the workload. Kubernetes offers two mechanisms to ensure workloads land on nodes with a target operating system:
 
@@ -73,9 +73,9 @@ For more information, see [node selectors](https://kubernetes.io/docs/concepts/s
 
 The Deployment Controller uses the Kubernetes Scheduler to run a given number of replicas on any available node with available resources. This approach of using deployments may be sufficient for stateless applications, but not for applications that require a persistent naming convention or storage. For applications that require a replica to exist on each node, or selected nodes, within a cluster, the Deployment Controller doesn't look at how replicas are distributed across the nodes.
 
-- ***StatefulSets*** -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. Replicas in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. *Replicas* in a StatefulSet are scheduled and run across any available node in an Azure Kubernetes Service on Azure Stack HCI cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. Replicas in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. *Replicas* in a StatefulSet are scheduled and run across any available node in an Azure Kubernetes Service on Azure Stack HCI cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
-- ***DaemonSets*** - For specific log collection or monitoring needs, you may need to run a given pod on all, or selected, nodes. A *DaemonSet* is again used to deploy one or more identical pods, but the DaemonSet Controller ensures that each node specified runs an instance of the pod. For more information, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+- *DaemonSets* - For specific log collection or monitoring needs, you may need to run a given pod on all, or selected, nodes. A *DaemonSet* is again used to deploy one or more identical pods, but the DaemonSet Controller ensures that each node specified runs an instance of the pod. For more information, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
 #### Namespaces
 
@@ -89,11 +89,11 @@ When you create an Azure Kubernetes Service cluster on Azure Stack HCI, the foll
 
 #### Secrets
 
-Kubernetes secrets allow you to store and manage sensitive information such as passwords, OAuth tokens and SSH keys. By default, Kubernetes stores secrets as unencrypted base64 encoded strings and can be retrieved as plain text by anyone with API access. For more information, see [Kubernetes Secrets.](https://kubernetes.io/docs/concepts/configuration/secret/)
+Kubernetes secrets allow you to store and manage sensitive information, such as passwords, OAuth tokens, and Secure Shell (SSH) keys. By default, Kubernetes stores secrets as unencrypted base64-encoded strings and can be retrieved as plain text by anyone with API access. For more information, see [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 #### Persistent volumes
 
-A persistent volume (PV) is a storage resource in a Kubernetes cluster that has either been provisioned by the administrator or dynamically provisioned using storage classes. To use persistent volumes, pods request access using a *PersistentVolumeClaim (PVC)*. For more information, see [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+A persistent volume is a storage resource in a Kubernetes cluster that has either been provisioned by the administrator or dynamically provisioned using storage classes. To use persistent volumes, pods request access using a *PersistentVolumeClaim*. For more information, see [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
