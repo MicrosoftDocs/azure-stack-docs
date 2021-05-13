@@ -21,7 +21,7 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited to onl
 
 For more information, see the "Azure Stack HCI connectivity" section of the [Azure Stack HCI FAQ](../faq.yml)
 
-This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allow list.
+This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allowlist.
 
    >[!IMPORTANT]
    > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed in the table below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](/azure/azure-arc/servers/agent-overview#networking-configuration).
@@ -78,7 +78,7 @@ This section shows how to configure Microsoft Defender Firewall to allow IP addr
     $IpList = ($json.values | where Name -Eq "AzureResourceManager").properties.addressPrefixes
     ```
 
-1. Import the list of IP addresses to your external corporate firewall, if you're using an allow list with it.
+1. Import the list of IP addresses to your external corporate firewall, if you're using an allowlist with it.
 
 1. Create a firewall rule for each server in the cluster to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
 
