@@ -69,11 +69,17 @@ If a given Azure Kubernetes Service on Azure Stack HCI target cluster consists o
 
 For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
+#### StatefulSets and DaemonSets
+
+The Deployment Controller uses the Kubernetes Scheduler to run a given number of replicas on any available node with available resources. This approach of using deployments may be sufficient for stateless applications, but not for applications that require a persistent naming convention or storage. For applications that require a replica to exist on each node, or selected nodes, within a cluster, the Deployment Controller doesn't look at how replicas are distributed across the nodes.
+
 - ***StatefulSets*** -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. Replicas in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. *Replicas* in a StatefulSet are scheduled and run across any available node in an Azure Kubernetes Service on Azure Stack HCI cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
 - ***DaemonSets*** - For specific log collection or monitoring needs, you may need to run a given pod on all, or selected, nodes. A *DaemonSet* is again used to deploy one or more identical pods, but the DaemonSet Controller ensures that each node specified runs an instance of the pod. For more information, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
-- ***Namespaces*** - Kubernetes resources, such as pods and Deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI target cluster and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
+#### Namespaces
+
+Kubernetes resources, such as pods and Deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI target cluster and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
 
 When you create an Azure Kubernetes Service cluster on Azure Stack HCI, the following namespaces are available:
 
@@ -81,9 +87,13 @@ When you create an Azure Kubernetes Service cluster on Azure Stack HCI, the foll
 - *kube-system* - This namespace is where core resources exist, such as network features like DNS and proxy, or the Kubernetes dashboard. You typically don't deploy your own applications into this namespace.
 - *kube-public* - This namespace is typically not used, but can be used for resources to be visible across the whole cluster, and can be viewed by any user.
 
-- ***Secrets*** - Kubernetes secrets allow you to store and manage sensitive information such as passwords, OAuth tokens and SSH keys. By default, Kubernetes stores secrets as unencrypted base64 encoded strings and can be retrieved as plain text by anyone with API access. For more information, see [Kubernetes Secrets.](https://kubernetes.io/docs/concepts/configuration/secret/)
+#### Secrets
 
-- ***Persistent Volumes*** - A *PersistentVolume (PV)* is a storage resource in a Kubernetes cluster that has either been provisioned by the administrator or dynamically provisioned using Storage Classes. To use persistent volumes, pods request access using a *PersistentVolumeClaim (PVC)*. For more information, see [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+Kubernetes secrets allow you to store and manage sensitive information such as passwords, OAuth tokens and SSH keys. By default, Kubernetes stores secrets as unencrypted base64 encoded strings and can be retrieved as plain text by anyone with API access. For more information, see [Kubernetes Secrets.](https://kubernetes.io/docs/concepts/configuration/secret/)
+
+#### Persistent volumes
+
+A persistent volume (PV) is a storage resource in a Kubernetes cluster that has either been provisioned by the administrator or dynamically provisioned using storage classes. To use persistent volumes, pods request access using a *PersistentVolumeClaim (PVC)*. For more information, see [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
