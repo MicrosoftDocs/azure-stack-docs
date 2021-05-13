@@ -11,19 +11,19 @@
   items:
   - name: Create a Windows VM
     items:
-    - name: Create Windows VM - Portal
+    - name: Portal
       href: azure-stack-quick-windows-portal.md
-    - name: Create Windows VM - PowerShell
+    - name: PowerShell
       href: azure-stack-quick-create-vm-windows-powershell.md
-    - name: Create Windows VM - CLI
+    - name: CLI
       href: azure-stack-quick-create-vm-windows-cli.md
   - name: Create a Linux VM
     items:
-    - name: Create Linux VM - Portal
+    - name: Portal
       href: azure-stack-quick-linux-portal.md
-    - name: Create Linux VM - PowerShell
+    - name: PowerShell
       href: azure-stack-quick-create-vm-linux-powershell.md
-    - name: Create Linux VM - CLI
+    - name: CLI
       href: azure-stack-quick-create-vm-linux-cli.md
   - name: Create an Event Hubs cluster - Portal
     href: event-hubs-quickstart-cluster-portal.md    
