@@ -13,7 +13,7 @@ ms.date: 05/13/2021
 
 This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall.
 
-## Connectivity requirements
+## Azure connectivity requirements
 Azure Stack HCI needs to periodically connect to Azure. Access is limited to only:
 - Well-known Azure IPs
 - Outbound direction
@@ -29,6 +29,24 @@ This topic describes how to optionally use a highly locked-down firewall configu
 As shown below, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
 :::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
+
+## Microsoft Update connectivity requirements
+If there is a corporate firewall between the operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due their security policies. If your company restricts access, you'll need to obtain authorization to allow internet access to the following URLs:
+
+- http://windowsupdate.microsoft.com
+- http://*.windowsupdate.microsoft.com
+- https://*.windowsupdate.microsoft.com
+- http://*.update.microsoft.com
+- https://*.update.microsoft.com
+- http://*.windowsupdate.com
+- http://download.windowsupdate.com
+- https://download.microsoft.com
+- http://*.download.windowsupdate.com
+- http://wustat.windows.com
+- http://ntservicepack.microsoft.com
+- http://go.microsoft.com
+- http://dl.delivery.mp.microsoft.com
+- https://dl.delivery.mp.microsoft.com
 
 ## Working with service tags
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
