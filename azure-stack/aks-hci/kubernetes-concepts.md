@@ -32,7 +32,7 @@ An Azure Kubernetes Service cluster has the following components on Azure Stack 
 
 ## Manage AKS on Azure Stack HCI
 
-You can manage AKS on Azure Stack HCI using either of the management options below:
+You can manage AKS on Azure Stack HCI using the management options below:
 
 - **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
 - A **PowerShell module** that makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring additional workload clusters as well as reconfiguring existing ones.
