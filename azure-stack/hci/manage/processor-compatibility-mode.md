@@ -37,7 +37,7 @@ However, VM mobility features allow a running VM to be migrated to a new virtual
 
 To avoid failures, Hyper-V performs “pre-flight” checks whenever a VM live migration or save/restore operation is initiated. These checks compare the set of processor features that are available to the VM on the source host against the set of features that are available on the target host. If these feature sets don't match, the migration or restore operation is cancelled.
 
-## What's new in processor capability mode
+## What's new in processor compatibility mode
 
 In the past, all new processor instructions sets were hidden, meaning that the guest operating system and application software could not take advantage of new processor instruction set enhancements to help applications and VMs stay performant.
 
