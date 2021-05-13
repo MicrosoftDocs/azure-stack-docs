@@ -33,20 +33,20 @@ As shown below, Azure Stack HCI accesses Azure using more than one firewall pote
 ## Microsoft Update connectivity requirements
 If there is a corporate firewall between the operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due their security policies. If your company restricts access, you'll need to obtain authorization to allow internet access to the following URLs:
 
-- http://windowsupdate.microsoft.com
-- http://*.windowsupdate.microsoft.com
-- https://*.windowsupdate.microsoft.com
-- http://*.update.microsoft.com
-- https://*.update.microsoft.com
-- http://*.windowsupdate.com
-- http://download.windowsupdate.com
-- https://download.microsoft.com
-- http://*.download.windowsupdate.com
-- http://wustat.windows.com
-- http://ntservicepack.microsoft.com
-- http://go.microsoft.com
-- http://dl.delivery.mp.microsoft.com
-- https://dl.delivery.mp.microsoft.com
+- http\://windowsupdate.microsoft.com
+- http\://\*.windowsupdate.microsoft.com
+- https\://\*.windowsupdate.microsoft.com
+- http\://\*.update.microsoft.com
+- https\://\*.update.microsoft.com
+- http\://\*.windowsupdate.com
+- http\://download.windowsupdate.com
+- https\://download.microsoft.com
+- http\://\*.download.windowsupdate.com
+- http\://wustat.windows.com
+- http\://ntservicepack.microsoft.com
+- http\://go.microsoft.com
+- http\://dl.delivery.mp.microsoft.com
+- https\://dl.delivery.mp.microsoft.com
 
 ## Working with service tags
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
