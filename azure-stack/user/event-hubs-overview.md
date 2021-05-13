@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 04/15/2021
-ms.reviewer: jfggdl
-ms.lastreviewed: 04/15/2021
+ms.date: 05/13/2021
+ms.reviewer: bryanla
+ms.lastreviewed: 05/13/2021
 ---
 
 # Overview of Event Hubs on Azure Stack Hub
@@ -48,10 +48,13 @@ Azure Resource Management operations can also be accomplished using Azure Resour
 
 ## Feature documentation
 
-The [Azure Event Hubs documentation](/azure/event-hubs/) applies to both editions of Event Hubs: Event Hubs on Azure Stack Hub, and Azure Event Hubs. This documentation covers topics on using Event Hubs and activities such as:
+### User documentation
+
+To get started quickly and create an Event Hubs on Azure Stack Hub cluster, namespace, and event hub, see [Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal](event-hubs-quickstart-cluster-portal.md).
+
+In addition, the [Azure Event Hubs conceptual articles](/azure/event-hubs/) listed below also apply to using Event Hubs on Azure Stack Hub:
 
 - Details on [Event Hubs concepts](/azure/event-hubs/event-hubs-features)
-- How to [create an Event Hubs cluster and namespace](event-hubs-quickstart-cluster-portal.md)
 - How to create an [event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub)
 - How to stream [using the Kafka protocol](/azure/event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs)
 

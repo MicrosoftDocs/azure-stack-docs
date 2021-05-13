@@ -73,18 +73,20 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Manage cluster with Windows Admin Center
+          - text: Manage the cluster with Windows Admin Center
             url: manage/cluster.md
-          - text: Manage cluster with PowerShell
+          - text: Manage the cluster with PowerShell
             url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
-          - text: Monitor cluster
+          - text: Monitor the cluster
             url: manage/monitor-cluster.md
-          - text: Update cluster
+          - text: Update the cluster
             url: manage/update-cluster.md
+          - text: Configure firewalls
+            url: manage/configure-firewalls.md            
           - text: Change languages
-            url: manage/vm-powershell.md
+            url: manage/languages.md
 
  # Card
   - title: Manage VMs
