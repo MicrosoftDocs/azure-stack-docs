@@ -9,19 +9,23 @@
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create Windows VM - Portal
-    href: azure-stack-quick-windows-portal.md
-  - name: Create Windows VM - PowerShell
-    href: azure-stack-quick-create-vm-windows-powershell.md
-  - name: Create Windows VM - CLI
-    href: azure-stack-quick-create-vm-windows-cli.md
-  - name: Create Linux VM - Portal
-    href: azure-stack-quick-linux-portal.md
-  - name: Create Linux VM - PowerShell
-    href: azure-stack-quick-create-vm-linux-powershell.md
-  - name: Create Linux VM - CLI
-    href: azure-stack-quick-create-vm-linux-cli.md
-  - name: Create Event Hubs cluster - Portal
+  - name: Create a Windows VM
+    items:
+    - name: Portal
+      href: azure-stack-quick-windows-portal.md
+    - name: PowerShell
+      href: azure-stack-quick-create-vm-windows-powershell.md
+    - name: CLI
+      href: azure-stack-quick-create-vm-windows-cli.md
+  - name: Create a Linux VM
+    items:
+    - name: Portal
+      href: azure-stack-quick-linux-portal.md
+    - name: PowerShell
+      href: azure-stack-quick-create-vm-linux-powershell.md
+    - name: CLI
+      href: azure-stack-quick-create-vm-linux-cli.md
+  - name: Create an Event Hubs cluster
     href: event-hubs-quickstart-cluster-portal.md    
 - name: Tutorials
   items:
