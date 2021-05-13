@@ -13,7 +13,7 @@ ms.date: 12/02/2020
 
 Azure Kubernetes Service on Azure Stack HCI is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host with a goal to have a **simple deployment and life cycle management experience**.
 
-This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources, such as pods, deployments, and sets, are also introduced, along with how to group resources into namespaces.
+This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
 ## Cluster components
 
@@ -23,51 +23,52 @@ The deployment operation will create multiple Linux or Windows virtual machines 
 
 The deployed system is ready to receive standard Kubernetes workloads, scale these workloads, or even scale the number of virtual machines as well as the number of clusters up and down as needed.
 
-An Azure Kubernetes Service cluster is divided into two main components on Azure Stack HCI:
+An Azure Kubernetes Service cluster has the following components on Azure Stack HCI:
 
 - *Management cluster* (also known as the AKS host) provides the the core orchestration mechanism and interface for deploying and managing one or more target clusters.
 - *Workload clusters* (also known as target clusters) are where containerized applications are deployed.
 
 ![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\architecture.png)
 
+## Manage AKS on Azure Stack HCI
+
+You can manage AKS on Azure Stack HCI using either of the management options below:
+
+- **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
+- A **PowerShell module** that makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring additional workload clusters as well as reconfiguring existing ones.
+
 ## The management cluster
 
-When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster is automatically created and configured. This management cluster is responsible for provisioning and managing target clusters where workloads run. A management cluster includes the following core Kubernetes components:
+When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster (also known as an AKS host) is automatically created and configured. This management cluster is responsible for provisioning and managing target clusters where workloads run. A management cluster includes the following core Kubernetes components:
 
 - *API Server* - The API server is how the underlying Kubernetes APIs are exposed. This component provides the interaction for management tools, such as Windows Admin Center, PowerShell modules, or `kubectl`.
 - *Load Balancer* - The load balancer is a single dedicated Linux VM with a load balancing rule for the API server of the management cluster.
 
-### Windows Admin Center
-
-Windows Admin Center offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
-
 ## The workload cluster
 
-The target (workload) cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components as well as Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more target cluster(s) managed by one management cluster.
+The target (workload) cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components as well as Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload cluster(s) managed by one management cluster.
 
-### Control plane
+### Workload cluster components
+
+#### Control plane
 
 * *API Server* - The API server allows interaction with the Kubernetes API. This component provides the interaction for management tools, such as Windows Admin Center, PowerShell modules, or `kubectl`.
 * *Etcd* - etcd is a distributed key-value store that stores data required for lifecycle management of the cluster. It stores the control plane state. 
 
-### Load balancer
+#### Load balancer
 
-The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machine. In addition to this, another load balancer can be created for high availability of the API server on the workload cluster. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load balancing rule in the VM.
+The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load balancing rule in the VM.
 
-### Worker nodes
+#### Worker nodes
 
-To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service target cluster on Azure Stack HCI has one or more worker nodes, which is a virtual machine (VM) that runs the Kubernetes node components, as well as hosting the pods and services that make up the application workload. There are a number of core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters, such as pods, deployments, and sets, along with how to group resources into namespaces.
+To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service target cluster on Azure Stack HCI has one or more worker nodes, which is a virtual machine (VM) that runs the Kubernetes node components, as well as hosting the pods and services that make up the application workload. There are a number of core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters such as pods and deployments.
 
-- *pods* - Kubernetes uses *pods* to run an instance of your application. A pod represents a single instance of your application. Typically, pods have a 1:1 mapping with a container, although there are advanced scenarios where a pod may contain multiple containers. These multi-container pods are scheduled together on the same node and allow containers to share related resources. For more information, see [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) and [Kubernetes pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/).
+#### pods
 
-- *Deployments* - A *deployment* represents one or more identical pods, managed by the Kubernetes Deployment Controller. A deployment defines the number of *replicas* (pods) to create, and the Kubernetes Scheduler ensures that if pods or nodes encounter problems, additional pods are scheduled on healthy nodes. For more information, see [Kubernetes deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+Kubernetes uses *pods* to run an instance of your application. A pod represents a single instance of your application. Typically, pods have a 1:1 mapping with a container, although there are advanced scenarios where a pod may contain multiple containers. These multi-container pods are scheduled together on the same node and allow containers to share related resources. For more information, see [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) and [Kubernetes pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/).
 
-If a given Azure Kubernetes Service on Azure Stack HCI target cluster consists of both Linux and Windows worker nodes, workloads need to be scheduled onto an OS that can support provisioning the workload. Kubernetes offers two mechanisms to ensure workloads land on nodes with a target operating system:
-
-- *Node Selector* is a simple field in the pod spec that constraints pods to only be scheduled onto healthy nodes matching the operating system.
-- *Taints and tolerations* work together to ensure that pods are not scheduled onto nodes unintentionally. A node can be "tainted" so as to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod spec.
-
-For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+#### Deployments
+ A *deployment* represents one or more identical pods, managed by the Kubernetes Deployment Controller. A deployment defines the number of *replicas* (pods) to create, and the Kubernetes Scheduler ensures that if pods or nodes encounter problems, additional pods are scheduled on healthy nodes. For more information, see [Kubernetes deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 #### StatefulSets and DaemonSets
 
@@ -94,6 +95,22 @@ Kubernetes secrets allow you to store and manage sensitive information, such as 
 #### Persistent volumes
 
 A persistent volume is a storage resource in a Kubernetes cluster that has either been provisioned by the administrator or dynamically provisioned using storage classes. To use persistent volumes, pods request access using a *PersistentVolumeClaim*. For more information, see [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+
+## Mixed-OS deployments
+
+If a given Azure Kubernetes Service on Azure Stack HCI target cluster consists of both Linux and Windows worker nodes, workloads need to be scheduled onto an OS that can support provisioning the workload. Kubernetes offers two mechanisms to ensure workloads land on nodes with a target operating system:
+
+- *Node Selector* is a simple field in the pod spec that constraints pods to only be scheduled onto healthy nodes matching the operating system.
+- *Taints and tolerations* work together to ensure that pods are not scheduled onto nodes unintentionally. A node can be "tainted" so as to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod spec.
+
+For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+
+## Next steps
+In this topic, you learned about the cluster architecture of AKS on Azure Stack HCI and the workload cluster components. To learn more about AKS on Azure Stack HCI concepts, see the following topics:
+
+- [Security](./concepts-security.md)
+- [Container networking](./concepts-container-networking.md)
+- [Storage](./concepts-storage.md)
 
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
