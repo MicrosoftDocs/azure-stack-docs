@@ -13,7 +13,7 @@ ms.date: 07/21/2020
 
 You can change your preferred language in a management PC, Windows Admin Center, Microsoft Edge, and the Azure Stack HCI operating system on the servers that you manage. Windows Admin Center remains in your language of choice regardless of language changes in these other resources.
 
-This article explains how to change languages in: 
+This article explains how to change languages in:
 - Windows 10
 - Windows Admin Center
 - Microsoft Edge
@@ -73,7 +73,7 @@ To manually obtain and add language packs to the operating system:
     Set-WinUILanguageOverride de-DE
     ```
 
-    To learn more, see [Set-WinUILanguageOverride](/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
+    To learn more, see [Set-WinUILanguageOverride](/powershell/module/international/set-winuilanguageoverride?view=win10-ps&preserve-view=true).
 
 ## Next steps
 For more information, see also:
