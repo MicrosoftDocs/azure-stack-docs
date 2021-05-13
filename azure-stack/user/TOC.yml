@@ -22,7 +22,7 @@
     - name: Create Linux VM - Portal
       href: azure-stack-quick-linux-portal.md
     - name: Create Linux VM - PowerShell
-     href: azure-stack-quick-create-vm-linux-powershell.md
+      href: azure-stack-quick-create-vm-linux-powershell.md
     - name: Create Linux VM - CLI
       href: azure-stack-quick-create-vm-linux-cli.md
   - name: Create an Event Hubs cluster - Portal
