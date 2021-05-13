@@ -73,7 +73,7 @@ To manually obtain and add language packs to the operating system:
     Set-WinUILanguageOverride de-DE
     ```
 
-    To learn more, see [Set-WinUILanguageOverride](/powershell/module/international/set-winuilanguageoverride?view=win10-ps).
+    To learn more, see [Set-WinUILanguageOverride](/powershell/module/international/set-winuilanguageoverride?view=win10-ps&preserve-view=true).
 
 ## Next steps
 For more information, see also:
