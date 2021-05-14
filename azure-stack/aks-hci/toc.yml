@@ -115,6 +115,8 @@
             href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
           - name: Use on-premises monitoring
             href: monitor-logging.md
+          - name: View logs to collect and review data
+            href: view-logs.md
     - name: Use Windows Server containers
       items:
           - name: Deploy .NET applications
