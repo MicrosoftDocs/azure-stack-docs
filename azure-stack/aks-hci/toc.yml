@@ -121,6 +121,10 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Adapt apps for mixed-OS Kubernetes clusters
             href: adapt-apps-mixed-os-clusters.md
+    - name: Develop and run applications
+      items:
+          - name: Install existing applications with Helm
+            href: kubernetes-helm.md
     - name: Troubleshoot
       items:
           - name: Troubleshoot common issues
