@@ -85,8 +85,8 @@ Klist purge
 ## Deployment fails when using Azure Arc with multiple tenant IDs
 If you're using Azure Arc and have multiple tenant IDs, run the following command to specify the tenant you plan to use before starting the deployment. If you don't specify a tenant, your deployment might fail.
 
-```Azure CLI
-az login –tenant <tenant>
+```azurecli
+az login -tenant <tenant>
 ```
 
 ## Issues occurred when registering the Windows Admin Center gateway with Azure
