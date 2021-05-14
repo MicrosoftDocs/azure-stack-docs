@@ -15,13 +15,15 @@ Logs present an important means to collect and review data from multiple sources
 
 The following list details the available PowerShell commands for viewing logs to collect data:
 
-- **Get-AksHciLogs**: This command gathers and presents the full diagnostic logs from all your pods and creates an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The default location of  your zip folder is C:\AksHci\0.9.6.3\akshcilogs.zip, where `0.9.8.10427` is the AKS on Azure Stack HCI release number.
+- **[Get-AksHciLogs](./get-akshcilogs.md)**: This command gathers and presents the full diagnostic logs from all your pods and creates an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The default location of  your zip folder is C:\AksHci\0.9.6.3\akshcilogs.zip, where `0.9.8.10427` is the AKS on Azure Stack HCI release number.
 - **Get-AksHciLogs -AgentLogs**: This flag is added to get the logs from the MOC stack cloud agent and node agent services. The output of the command is located at C:\AksHci\0.9.8.10427\akshcilogs.
 - **Get-AksHciLog -EventLogs**: This command gets event logs that are logged to event viewer.
 - **Get-AksHciLogs -VirtualMachineLogs**: This is used to get the logs from the guest virtual machines created by AKSHCI.
 - **Get-AksHciLogs -KvaLogs**: This flag is added to get the logs from the AKSHCI host. 
 - **Get-AksHciLogs -DownloadSdkLogs**: This command retrieves the download logs that are generated from downloading the binaries and images that AKS on Azure Stack HCI uses.   
-- **Get-AksHciLogs -BillingRecords**: This flag is added to get the billing records. The output is generally a text document located at C:\AksHci\0.9.8.10427\akshcilogs.
+- **Get-AksHciLogs -BillingRecords**: This flag is added to get the billing records. The output is generally a text document located at C:\AksHci\0.9.8.10427\akshcilogs as is similar to the output below:
+
+  [![Image of Get-AksHciLogs -BillingRecords output.](.\media\logs\billing-records.png)]
 
 ## Microsoft On-premises Cloud 
 Microsoft On-premises Cloud is the management stack that enables virtual machines on Azure Stack HCI or on a Windows Server-based Software-defined datacenter (SDDC) to be managed in the cloud. Microsoft On-premises Cloud includes the following components:
@@ -31,10 +33,14 @@ Microsoft On-premises Cloud is the management stack that enables virtual machine
 
 To enable communication with Microsoft On-premises Cloud, you need to provide the IP Address CIDR to be used for the service. The `-cloudserviceCIDR` parameter in the [Set-AksHciConfig](./set-akshciconfig.md) command is used to assign the IP address to the cloud agent service and enable high availability for the service.
 
-`Get-MocConfig` is a useful debugging tool that can provide information such as the cloud 	configuration, node configuration, certification location of the node and the Microsoft On-premises Cloud.
+`Get-MocConfig` is a useful debugging tool that provides information such as the cloud configuration, node configuration, certification location of the node and the Microsoft On-premises Cloud. The output from running `Get-MocConfig` is similar to the following example output:
+
+[![Example of output from running Get-MocConfig.](.\media\logs\get-moc-config.png)]
 
 ## Kubernetes Virtual Appliance 
-Kubernetes Virtual Appliance (KVA) is a virtual machine image file that consists of a pre-configured operating system environment and a single application. The purpose of the KVA is to simplify delivery and operation of an application. Consequently, only necessary operating system components are included. The **Get-kvaConfig** command provides some important details that could help in debugging issues with misconfiguration.
+Kubernetes Virtual Appliance (KVA) is a virtual machine image file that consists of a pre-configured operating system environment and a single application. The purpose of the KVA is to simplify delivery and operation of an application. Consequently, only necessary operating system components are included. The **Get-kvaConfig** command provides some important details that could help in debugging issues with misconfiguration as shown in the following example output:
+
+[![Example of output from running Get-MocConfig.](.\media\logs\get-kva-config.png)]
 
 ## Kubectl commands 
 Kubernetes logs also have useful information about the health of your cluster and applications. Some important ones include the following commands:
@@ -43,5 +49,5 @@ Kubernetes logs also have useful information about the health of your cluster an
 - **Kubectl get service** lists all services in the namespace.
 - **Kubectl get events** gives a sequence of timing for activities associated with different kubernetes objects.
 
-- ## Next steps
+## Next steps
 In this topic, you learned how to view the logs from multiple sources and provide insights into the general condition of your AKS on Azure Stack HCI environment. To monitor and troubleshoot further, you can also view the Kubelet logs.

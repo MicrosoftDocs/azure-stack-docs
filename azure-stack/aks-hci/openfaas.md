@@ -1,7 +1,7 @@
 ---
 title: Use OpenFaaS with Azure Kubernetes Service (AKS) on Azure Stack HCI
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster to build serverless functions with containers.
-author: mmcspirt
+author: mattmcspirit
 ms.topic: article
 ms.date: 05/14/2021
 ms.author: mmcspirt
