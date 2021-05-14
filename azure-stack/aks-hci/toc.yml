@@ -129,6 +129,12 @@
       items:
           - name: Install existing applications with Helm
             href: kubernetes-helm.md
+          - name: Use OpenFaaS
+            href: openfaas.md
+          - name: Use Bridge to Kubernetes with Visual Studio Code
+            href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - name: Use Bridge to Kubernetes with Visual Studio
+            href: https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
     - name: Troubleshoot
       items:
           - name: Troubleshoot common issues
