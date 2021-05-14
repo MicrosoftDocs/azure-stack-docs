@@ -25,9 +25,18 @@ You can manually check the health state of your nodes with `kubectl`, as shown b
 ```powershell
 kubectl get nodes
 ```
+
 The status of the nodes should look similar to the following output.
 
-[![Picture of an example output from manually checking the health state of nodes.](.\media\node-status.png)](.\media\node-status.png) 
+```Output
+NAME              STATUS   ROLES    AGE   VERSION
+moc-l2tlqojhk2d   Ready    master   46h   v1.19.7
+moc-l8h8i6lxk1h   Ready    <none>   46h   v1.19.7
+moc-lqnjufwo2cy   Ready    master   46h   v1.19.7
+moc-ltyl8mqy47z   Ready    <none>   47h   v1.19.7
+moc-lwn5xnrapnj   Ready    master   47h   v1.19.7
+moc-wvt025q406z   Ready    <none>   47h   v1.19.7
+```
 
 ## How automatic repair works
 

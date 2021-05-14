@@ -55,6 +55,8 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
+  - name: Node auto-repair
+    href: node-repair.md
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
