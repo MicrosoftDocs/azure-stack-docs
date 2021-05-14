@@ -33,7 +33,7 @@ Build hybrid solutions that ingest and process edge data locally on your Azure S
 
 ## Features 
 
-The Event Hubs editions (on Azure Stack Hub and on Azure) offer a high degree of feature parity. This parity means SDKs, samples, PowerShell, CLI, and portals offer a similar experience, with few differences. The following table summarizes the high-level differences in feature availability that exists between editions.  
+The Event Hubs editions (on Azure Stack Hub and on Azure) offer a high degree of feature parity. This parity means SDKs, samples, PowerShell, Azure CLI, and portals offer a similar experience, with few differences. The following table summarizes the high-level differences in feature availability that exists between editions.  
 
 | Feature | Event Hubs on Azure Stack Hub | Azure Event Hubs |
 |-|-|-|-|

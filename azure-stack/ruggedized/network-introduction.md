@@ -1,8 +1,8 @@
 ---
 title: Introduction to Azure Stack Hub ruggedized networking.
 description: Learn about networking for the Azure Stack Hub ruggedized device. 
-author: BryanLa
-ms.author: bryanla
+author: PatAltimore
+ms.author: patricka
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 10/14/2020
