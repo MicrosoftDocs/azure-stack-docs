@@ -37,7 +37,7 @@ A resource group is a logical container where you can deploy and manage Azure St
 
 The following example creates a resource group named myResourceGroup in the local location:
 
-```cli
+```azurecli
 az group create --name myResourceGroup --location local
 ```
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location local
 
 Create a virtual machine (VM) by using the [az vm create](/cli/azure/vm#az_vm_create) command. The following example creates a VM named myVM. This example uses Demouser for an admin username and Demouser@123 as the admin password. Change these values to something that is appropriate for your environment.
 
-```cli
+```azurecli
 az vm create \
   --resource-group "myResourceGroup" \
   --name "myVM" \
@@ -63,7 +63,7 @@ Because this VM is going to run the IIS web server, you need to open port 80 to 
 
 Use the [az vm open-port](/cli/azure/vm) command to open port 80:
 
-```cli
+```azurecli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
@@ -93,7 +93,7 @@ You can use a browser of your choice to view the default IIS welcome page. Use t
 
 Clean up the resources that you don't need any longer. Use the [az group delete](/cli/azure/group#az-group-delete) command to remove the resource group, the virtual machine, and all related resources.
 
-```cli
+```azurecli
 az group delete --name myResourceGroup
 ```
 

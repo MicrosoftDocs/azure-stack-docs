@@ -103,7 +103,7 @@ runcmd:
 ### Step 2: Reference cloud-init.txt during the Linux VM deployment
 
 Upload the file to an Azure storage account, Azure Stack Hub storage account, or GitHub repository reachable by your Azure Stack Hub Linux VM.
-Currently, using cloud-init for VM deployment is only supported on REST, PowerShell, and CLI, and does not have an associated portal UI on Azure Stack Hub.
+Currently, using cloud-init for VM deployment is only supported on REST, PowerShell, and Azure CLI, and does not have an associated portal UI on Azure Stack Hub.
 
 You can follow [these instructions](../user/azure-stack-quick-create-vm-linux-powershell.md) to create the Linux VM using PowerShell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
 
