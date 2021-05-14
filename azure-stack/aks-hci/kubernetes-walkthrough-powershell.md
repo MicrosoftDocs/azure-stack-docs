@@ -23,7 +23,8 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 - **At least one** of the following:
    - 2-4 node Azure Stack HCI cluster
    - Windows Server 2019 Datacenter failover cluster
-   **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).    
+   > [!NOTE]
+   > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 
