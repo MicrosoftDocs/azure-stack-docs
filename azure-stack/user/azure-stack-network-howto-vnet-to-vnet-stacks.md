@@ -256,7 +256,7 @@ Once the above has been completed for **both** NVAs:
 
 ## Test and validate connectivity
 
-You should now be able to route in between each VNET via the FortiGate NVAs. To validate the connection, create an Azure Stack Hub VM in each VNET's InsideSubnet. Creating an Azure Stack Hub VM can be done via the portal, CLI, or PowerShell. When creating the VMs:
+You should now be able to route in between each VNET via the FortiGate NVAs. To validate the connection, create an Azure Stack Hub VM in each VNET's InsideSubnet. Creating an Azure Stack Hub VM can be done via the portal, Azure CLI, or PowerShell. When creating the VMs:
 
 -   The Azure Stack Hub VMs are placed on the **InsideSubnet** of each VNET.
 
