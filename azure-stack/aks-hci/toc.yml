@@ -57,6 +57,8 @@
     href: app-availability.md
   - name: Node auto-repair
     href: node-repair.md
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
@@ -156,6 +158,8 @@
     href: https://aka.ms/aks-hci-relnotes/
   - name: PowerShell
     href: AksHci.md
+  - name: Support policies
+    href: support-policies.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
