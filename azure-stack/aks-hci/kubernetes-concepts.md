@@ -25,7 +25,7 @@ The deployed system is ready to receive standard Kubernetes workloads, scale the
 
 An Azure Kubernetes Service cluster has the following components on Azure Stack HCI:
 
-- *Management cluster* (also known as the AKS host) provides the the core orchestration mechanism and interface for deploying and managing one or more target clusters.
+- *Management cluster* (also known as the AKS host) provides the the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - *Workload clusters* (also known as target clusters) are where containerized applications are deployed.
 
 ![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\architecture.png)
@@ -39,16 +39,18 @@ You can manage AKS on Azure Stack HCI using the management options below:
 
 ## The management cluster
 
-When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster (also known as an AKS host) is automatically created and configured. This management cluster is responsible for provisioning and managing target clusters where workloads run. A management cluster includes the following core Kubernetes components:
+When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster is automatically created and configured. This management cluster is responsible for provisioning and managing workload clusters where workloads run. A management cluster includes the following core Kubernetes components:
 
 - *API Server* - The API server is how the underlying Kubernetes APIs are exposed. This component provides the interaction for management tools, such as Windows Admin Center, PowerShell modules, or `kubectl`.
 - *Load Balancer* - The load balancer is a single dedicated Linux VM with a load balancing rule for the API server of the management cluster.
 
 ## The workload cluster
 
-The target (workload) cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components as well as Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload cluster(s) managed by one management cluster.
+The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components as well as Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload cluster(s) managed by one management cluster.
 
 ### Workload cluster components
+
+The workload cluster has many components, which are described in the sections below.
 
 #### Control plane
 
@@ -61,7 +63,7 @@ The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to 
 
 #### Worker nodes
 
-To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service target cluster on Azure Stack HCI has one or more worker nodes, which is a virtual machine (VM) that runs the Kubernetes node components, as well as hosting the pods and services that make up the application workload. There are a number of core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters such as pods and deployments.
+To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which is a virtual machine (VM) that runs the Kubernetes node components, as well as hosting the pods and services that make up the application workload. There are a number of core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters such as pods and deployments.
 
 #### pods
 
@@ -80,7 +82,7 @@ The Deployment Controller uses the Kubernetes Scheduler to run a given number of
 
 #### Namespaces
 
-Kubernetes resources, such as pods and Deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI target cluster and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
+Kubernetes resources, such as pods and Deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI workloadcluster and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
 
 When you create an Azure Kubernetes Service cluster on Azure Stack HCI, the following namespaces are available:
 
@@ -98,7 +100,7 @@ A persistent volume is a storage resource in a Kubernetes cluster that has eithe
 
 ## Mixed-OS deployments
 
-If a given Azure Kubernetes Service on Azure Stack HCI target cluster consists of both Linux and Windows worker nodes, workloads need to be scheduled onto an OS that can support provisioning the workload. Kubernetes offers two mechanisms to ensure workloads land on nodes with a target operating system:
+If a given workload cluster consists of both Linux and Windows worker nodes, workloads need to be scheduled onto an OS that can support provisioning the workload. Kubernetes offers two mechanisms to ensure workloads land on nodes with a target operating system:
 
 - *Node Selector* is a simple field in the pod spec that constraints pods to only be scheduled onto healthy nodes matching the operating system.
 - *Taints and tolerations* work together to ensure that pods are not scheduled onto nodes unintentionally. A node can be "tainted" so as to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod spec.
