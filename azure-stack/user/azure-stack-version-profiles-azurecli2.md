@@ -118,7 +118,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 You should see that your environment is listed and **IsActive** is `true`. For example:
 
-```azurecli  
+```output  
 IsActive    Name               Profile
 ----------  -----------------  -----------------
 False       AzureCloud         2020-09-01-hybrid
@@ -138,7 +138,17 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+```output
+{
+  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "location": "local",
+  "name": "RGCLI1",
+  " properties ": {
+    "provisioningState": "Succeeded"
+  },
+  "tags ": null
+}
+```
 
 ### [AD FS on Windows](#tab/adfs-win)
 
@@ -221,7 +231,17 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+```output
+{
+  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "location": "local",
+  "name": "RGCLI1",
+  " properties ": {
+    "provisioningState": "Succeeded"
+  },
+  "tags ": null
+}
+```
 
 ### [Azure AD on Linux](#tab/ad-lin)
 
@@ -302,7 +322,17 @@ With everything set up, use CLI to create resources within Azure Stack Hub. For 
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+```output
+{
+  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "location": "local",
+  "name": "RGCLI1",
+  " properties ": {
+    "provisioningState": "Succeeded"
+  },
+  "tags ": null
+}
+```
 
 ### [AD FS Linux](#tab/adfs-lin)
 
@@ -386,7 +416,17 @@ With everything set up, use CLI to create resources within Azure Stack Hub. For 
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+```output
+{
+  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
+  "location": "local",
+  "name": "RGCLI1",
+  " properties ": {
+    "provisioningState": "Succeeded"
+  },
+  "tags ": null
+}
+```
 
 ### Known issues
 
