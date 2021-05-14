@@ -223,7 +223,7 @@ For Windows, follow the [Generalize the Windows VM using Sysprep](/azure/virtual
 
 ### Step 2: Create the managed image
 
-You can use the portal, PowerShell, or CLI to create the managed image. Follow the steps in [Create a managed image](/azure/virtual-machines/windows/capture-image-resource).
+You can use the portal, PowerShell, or Azure CLI to create the managed image. Follow the steps in [Create a managed image](/azure/virtual-machines/windows/capture-image-resource).
 
 ### Step 3: Choose the use case
 

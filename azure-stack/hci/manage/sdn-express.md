@@ -3,14 +3,14 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 03/04/2021
+ms.date: 05/14/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
 # Deploy an SDN infrastructure using SDN Express
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016 
 
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure may include a highly available (HA) Network Controller (NC), a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 

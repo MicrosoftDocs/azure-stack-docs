@@ -319,7 +319,7 @@ If you decide to manually run the commands, follow these steps:
 
 There are many scenarios that require the use of a service principal name (SPN) for authentication. The following are some examples:
 
-- CLI usage with AD FS deployment of Azure Stack Hub.
+- Azure CLI usage with AD FS deployment of Azure Stack Hub.
 - System Center Management Pack for Azure Stack Hub when deployed with AD FS.
 - Resource providers in Azure Stack Hub when deployed with AD FS.
 - Various apps.
