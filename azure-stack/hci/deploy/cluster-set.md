@@ -3,7 +3,7 @@ title: Deploy a cluster set
 description: Learn how to deploy a cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 05/14/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -30,7 +30,7 @@ Cluster sets offer the following benefits:
 
 - Easily change the compute-to-storage workload ratio in your hyper-converged environment.
 
-- Benefit from [Azure-like Fault Domains and Availability sets](../azure/virtual-machines/windows/manage-availability.md) across individual clusters in initial VM placement and subsequent migration.
+- Benefit from [Azure-like Fault Domains and Availability sets](/azure/virtual-machines/windows/manage-availability.md) across individual clusters in initial VM placement and subsequent migration.
 
 - Can use even if compute and storage hardware between cluster nodes is not identical.
 - Live migration of VMs between clusters.
@@ -255,7 +255,7 @@ WARNING: Report file location: C:\Windows\Cluster\Reports\Update-ClusterVirtualM
 
 This warning may be ignored as there were no physical changes in the virtual machine role storage configuration. The actual physical location does not change; only the configuration paths do.
 
-For more information on `Move-VMStorage`, see [Move-VMStorage](../powershell/module/hyper-v/move-vmstorage.md).
+For more information on `Move-VMStorage`, see [Move-VMStorage](/powershell/module/hyper-v/move-vmstorage.md).
 
 Live migrating a VM within a cluster set involves the following:
 
@@ -357,9 +357,9 @@ Remove-ClusterSetMember -ClusterName CLUSTER1 -CimSession CSMASTER
 
 ## System state backup
 
-System state backup will backup the cluster state and metadata. Using Windows Server Backup, you can restore just a node's cluster database if needed or do an authoritative restore to roll back the entire cluster database across all nodes. For cluster sets, we recommend doing an authoritative restore first for the member clusters and then for the management cluster. For more information on system state backup, see [Back up system state and bare metal](../system-center/dpm/back-up-system-state-and-bare-metal).
+System state backup will backup the cluster state and metadata. Using Windows Server Backup, you can restore just a node's cluster database if needed or do an authoritative restore to roll back the entire cluster database across all nodes. For cluster sets, we recommend doing an authoritative restore first for the member clusters and then for the management cluster. For more information on system state backup, see [Back up system state and bare metal](/system-center/dpm/back-up-system-state-and-bare-metal).
 
 ## Next steps
 
-- Learn more about [Storage Replica](../windows-server/storage/storage-replica/storage-replica-overview.md).
+- Learn more about [Storage Replica](/windows-server/storage/storage-replica/storage-replica-overview.md).
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
