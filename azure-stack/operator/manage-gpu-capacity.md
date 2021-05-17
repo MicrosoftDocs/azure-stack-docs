@@ -4,7 +4,7 @@ description: Learn how to add GPUs to an existing Azure Stack Hub system.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 05/17/2021
 ms.custom: template-how-to
 ---
 
