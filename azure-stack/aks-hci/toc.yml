@@ -55,6 +55,10 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
+  - name: Node auto-repair
+    href: node-repair.md
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
@@ -111,6 +115,10 @@
             href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
           - name: Use on-premises monitoring
             href: monitor-logging.md
+          - name: View logs to collect and review data
+            href: view-logs.md
+          - name: View the kubelet logs
+            href: get-kubelet-logs.md
     - name: Use Windows Server containers
       items:
           - name: Deploy .NET applications
@@ -119,6 +127,16 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Adapt apps for mixed-OS Kubernetes clusters
             href: adapt-apps-mixed-os-clusters.md
+    - name: Develop and run applications
+      items:
+          - name: Install existing applications with Helm
+            href: kubernetes-helm.md
+          - name: Use OpenFaaS
+            href: openfaas.md
+          - name: Use Bridge to Kubernetes with Visual Studio Code
+            href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - name: Use Bridge to Kubernetes with Visual Studio
+            href: https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
     - name: Troubleshoot
       items:
           - name: Troubleshoot common issues
@@ -150,6 +168,8 @@
     href: https://aka.ms/aks-hci-relnotes/
   - name: PowerShell
     href: AksHci.md
+  - name: Support policies
+    href: support-policies.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
