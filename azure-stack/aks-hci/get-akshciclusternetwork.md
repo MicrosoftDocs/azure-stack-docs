@@ -3,7 +3,7 @@ title: Get-AksHciClusterNetwork
 author: mkostersitz
 description: The Get-AksHciClusterNetwork PowerShell command retrieves virtual network settings.
 ms.topic: reference
-ms.date: 4/12/2021
+ms.date: 5/11/2021
 ms.author: mikek
 ---
 
@@ -15,7 +15,7 @@ Retrieve virtual network settings by name, cluster name, or a list of all vnet s
 ## Syntax
 
 ```powershell
-New-AksHciNetworkSetting -name <String>
+Get-AksHciClusterNetwork -name <String>
                          -clusterName <String>                    
 ```
 
