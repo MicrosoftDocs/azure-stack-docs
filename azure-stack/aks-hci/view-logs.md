@@ -13,16 +13,16 @@ Logs present an important means to collect and review data from multiple sources
 
 ## Use PowerShell commands to view logs
 
-The [Get-AksHciLogs](./get-akshcilogs.md)  PowerShell command gathers and presents the full diagnostic logs from all of your pods and creates an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The default location of  your zip folder is C:\AksHci\0.9.6.3\akshcilogs.zip, where `0.9.8.10427` is the AKS on Azure Stack HCI release number.
+To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs.md) PowerShell command. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. 
 
 The following `Get-AksHciLogs` parameters describe how you can use the command to view logs and collect data:
 
-- **Get-AksHciLogs -AgentLogs**: Add this parameter to get the logs from the Microsoft On-premises Cloud (MOC) stack cloud agent and the node agent services. The output of the command is located at C:\AksHci\0.9.8.10427\akshcilogs.
-- **Get-AksHciLog -EventLogs**: Use this parameter to get event logs that are logged to the event viewer.
-- **Get-AksHciLogs -VirtualMachineLogs**: Use this parameter to get the logs from the guest virtual machines created by AKS on Azure Stack HCI.
-- **Get-AksHciLogs -KvaLogs**: Add this parameter to get the logs from the AKS host. 
-- **Get-AksHciLogs -DownloadSdkLogs**: Use this command to retrieve the download logs that are generated from downloading the binaries and images that AKS on Azure Stack HCI uses.   
-- **Get-AksHciLogs -BillingRecords**: Add this parameter to get the billing records. The output is generally a text document located at C:\AksHci\0.9.8.10427\akshcilogs as is similar to the output below:
+- `Get-AksHciLogs -AgentLogs`: Add this parameter to get the logs from the Microsoft On-premises Cloud (MOC) stack cloud agent and the node agent services. The output of the command is located in the \akshcilogs folder of your AKS on Azure Stack HCI working directory.
+- `Get-AksHciLog -EventLogs`: Use this parameter to get event logs that are logged to the event viewer.
+- `Get-AksHciLogs -VirtualMachineLogs`: Use this parameter to get the logs from the guest virtual machines created by AKS on Azure Stack HCI.
+- `Get-AksHciLogs -KvaLogs`: Add this parameter to get the logs from the AKS host.
+- `Get-AksHciLogs -DownloadSdkLogs`: Use this command to retrieve the download logs that are generated from downloading the binaries and images that AKS on Azure Stack HCI uses.
+- `Get-AksHciLogs -BillingRecords`: Add this parameter to get the billing records. The output is generally a text document located in the \akshcilogs folder of your working directory and is similar to the output below:
 
   [![The image shows an output of running Get-AksHciLogs with the -BillingRecords parameter.](.\media\logs\billing-records.png)]
 
@@ -45,10 +45,10 @@ Kubernetes Virtual Appliance (KVA) is a virtual machine image file that consists
 
 ## Kubectl commands 
 Kubernetes logs also have useful information about the health of your cluster and applications. Some important ones include the following commands:
-- **Kubectl get nodes** lists all nodes and provides information about their status, roles, age after creation, and version.
-- **Kubectl get pods** lists all pods in the namespace and their status.
-- **Kubectl get service** lists all services in the namespace.
-- **Kubectl get events** gives a sequence of timing for activities associated with different kubernetes objects.
+- `Kubectl get nodes` lists all nodes and provides information about their status, roles, age after creation, and version.
+- `Kubectl get pods` lists all pods in the namespace and their status.
+- `Kubectl get service` lists all services in the namespace.
+- `Kubectl get events` gives a sequence of timing for activities associated with different kubernetes objects.
 
 ## Next steps
 In this topic, you learned how to view the logs from multiple sources and provide insights into the general condition of your AKS on Azure Stack HCI environment. To monitor and troubleshoot further, you can also view the Kubelet logs.
