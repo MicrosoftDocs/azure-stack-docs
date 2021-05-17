@@ -26,7 +26,7 @@ Verify that you have the following set up:
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) can also be used to run commands, if you prefer this to PowerShell.
 
 > [!IMPORTANT]
-> Helm is intended to run on Linux nodes. If you have Windows Server nodes in your cluster, you must ensure that Helm pods are only scheduled to run on Linux nodes. You also need to ensure that any Helm charts you install are also scheduled to run on the correct nodes. The commands in this article use [node-selectors](./adapt-apps-mixed-os-clusters.md#node-selector) to make sure pods are scheduled to the correct nodes, but not all Helm charts may expose a node selector. You can also consider using other options on your cluster, such as [taints](./adapt-apps-mixed-os-clusters.md#taints-tolerations).
+> Helm is intended to run on Linux nodes. If you have Windows Server nodes in your cluster, you must ensure that Helm pods are only scheduled to run on Linux nodes. You also need to ensure that any Helm charts you install are also scheduled to run on the correct nodes. The commands in this article use [node-selectors](./adapt-apps-mixed-os-clusters.md#node-selector) to make sure pods are scheduled to the correct nodes, but not all Helm charts may expose a node selector. You can also consider using other options on your cluster, such as [taints](./adapt-apps-mixed-os-clusters.md#taints-and-tolerations).
 
 ## Verify your version of Helm
 

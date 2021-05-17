@@ -32,8 +32,6 @@ Microsoft On-premises Cloud is the management stack that enables virtual machine
 - A single instance of a highly available cloud agent service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI cluster and is configured to fail over to another node.
 - A node agent running on every Azure Stack HCI physical node.
 
-To enable communication with Microsoft On-premises Cloud, you need to provide the IP Address CIDR to be used for the service. The `-cloudserviceCIDR` parameter in the [Set-AksHciConfig](./set-akshciconfig.md) command is used to assign the IP address to the cloud agent service and enable high availability for the service.
-
 `Get-MocConfig` is a useful debugging tool that provides information such as the cloud configuration, node configuration, certification location of the node and the Microsoft On-premises Cloud. The output from running `Get-MocConfig` is similar to the following example output:
 
 [![The image shows an example of output from running Get-Moc-Config.](.\media\logs\get-moc-config.png)]
