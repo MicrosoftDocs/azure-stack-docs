@@ -2,10 +2,10 @@
 title: Configure VPN gateway settings for Azure Stack Hub 
 description: Learn about and configure VPN gateways settings for Azure Stack Hub.
 author: sethmanheim
-
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 05/17/2021
 ms.author: sethm
+ms.reviewer: thoroet
 ms.lastreviewed: 12/27/2019
 
 # Intent: As an Azure Stack user, I want to configure my VPN gateway settings so that my VPN gateway works the way I want it to.
@@ -112,10 +112,10 @@ The following table lists the requirements for VPN gateways.
 
 | |Policy-based Basic VPN Gateway | Route-based Basic VPN Gateway | Route-based Standard VPN Gateway | Route-based High Performance VPN Gateway|
 |--|--|--|--|--|
-| **Site-to-Site connectivity (S2S connectivity)** | Not Supported | Route-based VPN configuration | Route-based VPN configuration | Route-based VPN configuration |
-| **Authentication method**  | Not Supported | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  |
-| **Maximum number of S2S connections**  | Not Supported | 20 | 20| 10|
-|**Active routing support (BGP)** | Not supported | Not supported | Supported | Supported |
+| **Site-to-Site connectivity (S2S connectivity)** | Not supported | Route-based VPN configuration | Route-based VPN configuration | Route-based VPN configuration |
+| **Authentication method**  | Not supported | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  |
+| **Maximum number of S2S connections**  | Not supported | 20 | 20| 10|
+|**Active routing support (BGP)** | Not supported | Not supported | Supported, up to 150 routes | Supported, up to 150 routes |
 
 ### Gateway subnet
 
