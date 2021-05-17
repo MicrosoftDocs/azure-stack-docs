@@ -13,20 +13,21 @@ Logs present an important means to collect and review data from multiple sources
 
 ## Use PowerShell commands to view logs
 
-The following list details the available PowerShell commands for viewing logs to collect data:
+The [Get-AksHciLogs](./get-akshcilogs.md)  PowerShell command gathers and presents the full diagnostic logs from all of your pods and creates an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The default location of  your zip folder is C:\AksHci\0.9.6.3\akshcilogs.zip, where `0.9.8.10427` is the AKS on Azure Stack HCI release number.
 
-- **[Get-AksHciLogs](./get-akshcilogs.md)**: This command gathers and presents the full diagnostic logs from all your pods and creates an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The default location of  your zip folder is C:\AksHci\0.9.6.3\akshcilogs.zip, where `0.9.8.10427` is the AKS on Azure Stack HCI release number.
-- **Get-AksHciLogs -AgentLogs**: This flag is added to get the logs from the MOC stack cloud agent and node agent services. The output of the command is located at C:\AksHci\0.9.8.10427\akshcilogs.
-- **Get-AksHciLog -EventLogs**: This command gets event logs that are logged to event viewer.
-- **Get-AksHciLogs -VirtualMachineLogs**: This is used to get the logs from the guest virtual machines created by AKSHCI.
-- **Get-AksHciLogs -KvaLogs**: This flag is added to get the logs from the AKSHCI host. 
-- **Get-AksHciLogs -DownloadSdkLogs**: This command retrieves the download logs that are generated from downloading the binaries and images that AKS on Azure Stack HCI uses.   
-- **Get-AksHciLogs -BillingRecords**: This flag is added to get the billing records. The output is generally a text document located at C:\AksHci\0.9.8.10427\akshcilogs as is similar to the output below:
+The following `Get-AksHciLogs` parameters describe how you can use the command to view logs and collect data:
+
+- **Get-AksHciLogs -AgentLogs**: Add this parameter to get the logs from the Microsoft On-premises Cloud (MOC) stack cloud agent and the node agent services. The output of the command is located at C:\AksHci\0.9.8.10427\akshcilogs.
+- **Get-AksHciLog -EventLogs**: Use this parameter to get event logs that are logged to the event viewer.
+- **Get-AksHciLogs -VirtualMachineLogs**: Use this parameter to get the logs from the guest virtual machines created by AKS on Azure Stack HCI.
+- **Get-AksHciLogs -KvaLogs**: Add this parameter to get the logs from the AKS host. 
+- **Get-AksHciLogs -DownloadSdkLogs**: Use this command to retrieve the download logs that are generated from downloading the binaries and images that AKS on Azure Stack HCI uses.   
+- **Get-AksHciLogs -BillingRecords**: Add this parameter to get the billing records. The output is generally a text document located at C:\AksHci\0.9.8.10427\akshcilogs as is similar to the output below:
 
   [![Image of Get-AksHciLogs -BillingRecords output.](.\media\logs\billing-records.png)]
 
 ## Microsoft On-premises Cloud 
-Microsoft On-premises Cloud is the management stack that enables virtual machines on Azure Stack HCI or on a Windows Server-based Software-defined datacenter (SDDC) to be managed in the cloud. Microsoft On-premises Cloud includes the following components:
+Microsoft On-premises Cloud is the management stack that enables virtual machines on Azure Stack HCI or on a Windows Server-based Software-defined data center (SDDC) to be managed in the cloud. Microsoft On-premises Cloud includes the following components:
 
 - A single instance of a highly available cloud agent service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI cluster and is configured to fail over to another node.
 - A node agent running on every Azure Stack HCI physical node.
