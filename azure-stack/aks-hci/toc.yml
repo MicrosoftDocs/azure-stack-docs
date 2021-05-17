@@ -117,6 +117,8 @@
             href: monitor-logging.md
           - name: View logs to collect and review data
             href: view-logs.md
+          - name: View the kubelet logs
+            href: get-kubelet-logs.md
     - name: Use Windows Server containers
       items:
           - name: Deploy .NET applications

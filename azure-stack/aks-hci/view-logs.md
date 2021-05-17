@@ -49,4 +49,4 @@ Kubernetes logs also have useful information about the health of your cluster an
 - `Kubectl get events` gives a sequence of timing for activities associated with different kubernetes objects.
 
 ## Next steps
-In this topic, you learned how to view the logs from multiple sources and provide insights into the general condition of your AKS on Azure Stack HCI environment. To monitor and troubleshoot further, you can also view the Kubelet logs.
+In this topic, you learned how to view the logs from multiple sources and provide insights into the general condition of your AKS on Azure Stack HCI environment. To monitor and troubleshoot further, you can also [view the _kubelet_ logs](./get-kubelet-logs.md).
