@@ -46,7 +46,7 @@ To change the partition size, do the following:
 1. Run the following PowerShell command:
 
    ```powershell
-   Set-AzsScaleUnit -NumberOfGPUPartitions X
+   Set-AzsScaleUnit -NumberOfGPUPartition X
    ```
 
    Supported values for `X` are:
