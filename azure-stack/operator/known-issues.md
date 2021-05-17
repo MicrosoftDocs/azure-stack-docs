@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/13/2021
+ms.date: 05/17/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -45,9 +45,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: A hotfix for this issue must be applied prior to attempting the update for private preview customers that have installed Azure Container Registry service. The hotfix is not yet available.
 - Occurrence: Any stamp that has the Azure Container Registry service installed as part of the private preview will experience this update failure, including stamps that have installed and uninstalled the service. Please do not attempt the update until further guidance is provided.
 
-<!-- ## Portal -->
-
-## Networking 
+## Networking
 
 ### Virtual network gateway
 
@@ -70,7 +68,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: IPv6 button is visible on the **Add frontend IP address** option on a load balancer. These buttons are disabled and cannot be selected.
 - Occurrence: Common
 
-#### Backend port and frontend port need to be the same when floating IP is enabled
+#### Backend and frontend ports when floating IP is enabled
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.

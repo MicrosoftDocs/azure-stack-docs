@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/28/2021
+ms.date: 05/17/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -70,15 +70,9 @@ Exact update durations typically depend on the capacity used on your system by t
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
-<!-- ## What's in this update -->
-
-<!-- The current theme (if any) of this release. -->
-
 ### What's new
 
-<!-- What's new, also net new experiences and features. -->
-
-- The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you not manipulate files under the backup root directory.
+- The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you do not manipulate files under the backup root directory.
 - Azure Stack Hub managed disks now support Azure Disk APIs version **2019-11-01**, with a subset of the available features.
 - The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. This requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
@@ -87,7 +81,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an extra validation was added in the **UpdateReadiness** check. Patch & update will fail at an early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 - Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
 - Azure Stack Hub now supports adding GPUs to any existing system. To add a GPU, execute **stop-azurestack**, run through the process of **stop-azurestack**, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs must be **stop-deallocated** and then re-started.
-- The AKS engine on Azure Stack Hub is adding new features. For details, see the release notes under the [AKS Engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
+- The AKS engine on Azure Stack Hub is adding the following new features. For details, see the release notes under the [AKS engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
 
   - General availability of Ubuntu 18.04.
   - Support for Kubernetes 1.17.17 and 1.18.15.
@@ -97,7 +91,7 @@ For more information about update build types, see [Manage updates in Azure Stac
   - CSI Driver for Azure Blobs private preview.
   - T4 Nvidia GPU support private preview.
   - Azure Active Directory integration private preview.
-- Reduced OEM update time using the live update process.
+  - Reduced OEM update time using the live update process.
 
 ### Improvements
 
@@ -108,8 +102,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
 - Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 - Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
 
 ### Changes
 
@@ -128,8 +120,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which deletion of resource groups or virtual networks failed due to an orphaned resource in the Network Controller layer.
 - Removed the **ND6s_dev** size from the VM size picker, as it is an unsupported VM size.
 - Fixed an issue in which performing **Stop-Deallocate** on a VM results in an MTU configuration on the VM to be removed. This behavior was inconsistent with Azure.
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 ## Security updates
 
@@ -174,13 +164,8 @@ The 2008 update package is larger in size compared to previous updates. The incr
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
-<!-- ## What's in this update -->
-
-<!-- The current theme (if any) of this release. -->
-
 ### What's new
 
-<!-- What's new, also net new experiences and features. -->
 - Azure Stack Hub now supports VNET peering, which gives the ability to connect VNETs without a Network Virtual Appliance (NVA). For more information, see the [new VNET peering documentation](../user/virtual-network-peering.md).
 - Azure Stack Hub blob storage now enables users to use an immutable blob. By setting immutable policies on a container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable policies can only be set through the REST API or client SDKs. Append blob writes are also not possible in this release. For more information about immutable blobs, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
 - Azure Stack Hub Storage now supports Azure Storage services APIs version **2019-07-07**. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries). For Azure Storage services management APIs, **2018-02-01** has been add of support, with a subset of total available features.
@@ -199,7 +184,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Improvements
 
-<!-- Changes and product improvements with tangible customer-facing value. -->
 - Implemented internal monitoring for Network Controller and SLB host agents, so the services are auto-remediated if they ever enter into a stopped state.
 - Active Directory Federation Services (AD FS) now retrieves the new token signing certificate after the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
 - Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. These changes increase the reliability for Azure Stack Hub startup and shutdown.
@@ -221,7 +205,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Fixed an issue in which deleting an NSG of a NIC that is not attached to a running VM failed.
 - Fixed an issue in which modifying the **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer put the public IP in a failed state.
 - Fixed the **Get-AzsDisk** cmdlet to return the correct **Attached** status, instead of **OnlineMigration**, for attached managed disks.
@@ -266,13 +249,8 @@ The 2005 update package is larger in size compared to previous updates. The incr
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
-<!-- ## What's in this update -->
-
-<!-- The current theme (if any) of this release. -->
-
 ### What's new
 
-<!-- What's new, also net new experiences and features. -->
 - This build offers support for 3 new GPU VM types: NCv3 (Nvidia V100), NVv4 (AMD MI25), and NCas_v4 (NVIDIA T4) VM sizes. VM deployments will be successful for those who have the right hardware and are onboarded to the Azure Stack Hub GPU preview program. If you are interested, sign up for the GPU preview program at https://aka.ms/azurestackhubgpupreview. For more information, [see](../user/gpu-vms-about.md).
 - This release provides a new feature that enables an autonomous healing capability, which detects faults, assesses impact, and safely mitigates system issues. With this feature, we are working towards increased availability of the system without manual intervention. With release 2005 and later, customers will experience a reduction in the number of alerts. Any failure in this pipeline doesn't require action by Azure Stack Hub operators unless notified.
 - There is a new option in the Azure Stack Hub admin portal for air-gapped/disconnected Azure Stack Hub customers, to save logs locally. You can store the logs in a local SMB share when Azure Stack Hub is disconnected from Azure.
@@ -284,8 +262,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The Azure Stack Hub Marketplace CoreOS Container Linux item [is approaching its end-of-life](https://azure.microsoft.com/updates/flatcar-in-azure/). For more information, see [Migrating from CoreOS Container Linux](https://docs.flatcar-linux.org/os/migrate-from-container-linux/).
 
 ### Improvements
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
 
 - Improvements to Storage infrastructure cluster service logs and events. Logs and events of Storage infrastructure cluster service will be kept for up to 14 days, for better diagnostics and troubleshooting.
 - Improvements that increase reliability of starting and stopping Azure Stack Hub.
@@ -306,8 +282,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The user encryption setting that is required for hardware monitoring was changed from DES to AES to increase security. Please reach out to your hardware partner to learn how to change the setting in the base board management controller (BMC). After the change is made in the BMC, it may require you to run the command **Set-BmcCredential** again using the privileged endpoint. For more information, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md)
 
 ### Fixes
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 - Fixed an issue that could cause a repair scale unit node to fail because it could not find the path to the base OS image.
 - Fixed an issue with scale-in and scale-out for the support infrastructure role that has a cascading effect on repairing scale unit nodes.
