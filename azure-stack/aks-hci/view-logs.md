@@ -24,7 +24,7 @@ The following `Get-AksHciLogs` parameters describe how you can use the command t
 - **Get-AksHciLogs -DownloadSdkLogs**: Use this command to retrieve the download logs that are generated from downloading the binaries and images that AKS on Azure Stack HCI uses.   
 - **Get-AksHciLogs -BillingRecords**: Add this parameter to get the billing records. The output is generally a text document located at C:\AksHci\0.9.8.10427\akshcilogs as is similar to the output below:
 
-  [![Image of Get-AksHciLogs -BillingRecords output.](.\media\logs\billing-records.png)]
+  [![The image shows an output of running Get-AksHciLogs with the -BillingRecords parameter.](.\media\logs\billing-records.png)]
 
 ## Microsoft On-premises Cloud 
 Microsoft On-premises Cloud is the management stack that enables virtual machines on Azure Stack HCI or on a Windows Server-based Software-defined data center (SDDC) to be managed in the cloud. Microsoft On-premises Cloud includes the following components:
@@ -36,12 +36,12 @@ To enable communication with Microsoft On-premises Cloud, you need to provide th
 
 `Get-MocConfig` is a useful debugging tool that provides information such as the cloud configuration, node configuration, certification location of the node and the Microsoft On-premises Cloud. The output from running `Get-MocConfig` is similar to the following example output:
 
-[![Example of output from running Get-MocConfig.](.\media\logs\get-moc-config.png)]
+[![The image shows an example of output from running Get-Moc-Config.](.\media\logs\get-moc-config.png)]
 
 ## Kubernetes Virtual Appliance 
 Kubernetes Virtual Appliance (KVA) is a virtual machine image file that consists of a pre-configured operating system environment and a single application. The purpose of the KVA is to simplify delivery and operation of an application. Consequently, only necessary operating system components are included. The **Get-kvaConfig** command provides some important details that could help in debugging issues with misconfiguration as shown in the following example output:
 
-[![Example of output from running Get-MocConfig.](.\media\logs\get-kva-config.png)]
+[![The image shows an example of output from running Get-Kva-Config.](.\media\logs\get-kva-config.png)]
 
 ## Kubectl commands 
 Kubernetes logs also have useful information about the health of your cluster and applications. Some important ones include the following commands:
