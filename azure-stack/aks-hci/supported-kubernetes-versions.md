@@ -102,7 +102,7 @@ To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI i
 You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI Kubernetes Release Calendar](#AKS on Azure Stack HCI-kubernetes-release-calendar).
 
 For new **minor** versions of Kubernetes:
-  * AKS on Azure Stack HCI publishes a pre-announcement with the planned date of a new version release and respective old version deprecation on the [AKS on Azure Stack HCI Release notes](https://aka.ms/aks-hci-relnotes on Azure Stack HCI/releasenotes) at least 30 days prior to removal.
+  * AKS on Azure Stack HCI publishes a pre-announcement with the planned date of a new version release and respective old version deprecation in the [AKS on Azure Stack HCI Release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
     
   * Users have **30 days** from version removal to upgrade to a supported minor version release to continue receiving support.
 
@@ -134,7 +134,7 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 
 **How does Microsoft notify me of new Kubernetes versions?**
 
-The AKS on Azure Stack HCI team publishes pre-announcements with planned dates of the new Kubernetes versions in our documentation, our [GitHub](https://github.com/Azure/aks-hci/releases on Azure Stack HCI/releases).
+The AKS on Azure Stack HCI team publishes pre-announcements with planned dates of the new Kubernetes versions in our documentation, our [GitHub](https://github.com/Azure/aks-hci/releases).
 
 **How often should I expect to upgrade Kubernetes versions to stay in support?**
 
