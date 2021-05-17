@@ -93,12 +93,12 @@ A public IP address is created for accessing the OpenFaaS gateway. To retrieve t
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-Output.
+Output:
 
 ```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
-gateway            ClusterIP      10.110.205.41   <none>         8080/TCP         7m
-gateway-external   LoadBalancer   10.107.51.110     192.168.0.152   8080:32029/TCP   7m
+gateway            ClusterIP      10.110.205.41  <none>         8080/TCP         7m
+gateway-external   LoadBalancer   10.107.51.110  192.168.0.152  8080:32029/TCP   7m
 ```
 
 To test the OpenFaaS system, browse to the external IP address on port 8080, `http://192.168.0.152:8080` in this example. You will be prompted to log in. To fetch your password, enter `echo $PASSWORD`.
@@ -150,8 +150,6 @@ helm uninstall openfaas
 The following example shows the release named *openfaas* has been uninstalled:
 
 ```console
-$ helm uninstall openfaas
-
 release "openfaas" uninstalled
 ```
 

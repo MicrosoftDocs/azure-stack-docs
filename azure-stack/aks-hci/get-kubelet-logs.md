@@ -18,7 +18,7 @@ This article assumes that you have an existing AKS on Azure Stack HCI cluster. I
 
 ## Create an SSH connection
 
-First, you need to create an SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./troubleshoot.md#windows-worker-nodes) for Windows and Linux worker nodes.
+First, you need to create an SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./troubleshoot.md#troubleshoot-windows-worker-nodes) for Windows and Linux worker nodes.
 
 ## Get kubelet logs
 

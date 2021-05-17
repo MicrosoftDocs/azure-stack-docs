@@ -118,7 +118,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-Use the `kubectl get services` command to get the *EXTERNAL-IP* of your service.
+Use the `kubectl get services` command to get the *EXTERNAL-IP* of your service:
 
 ```console
 kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
@@ -127,8 +127,6 @@ kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-ngi
 For example, the below command shows the *EXTERNAL-IP* for the *my-nginx-ingress-ingress-nginx-controller* service:
 
 ```console
-$ kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
-
 NAME                                        TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)                      AGE   SELECTOR
 my-nginx-ingress-ingress-nginx-controller   LoadBalancer   10.98.53.215 <EXTERNAL-IP>    80:31553/TCP,443:30784/TCP   72s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=my-nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
