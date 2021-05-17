@@ -4,7 +4,7 @@ description:  Checklist to prepare your system for the latest Azure Stack Hub up
 author: PatAltimore
 
 ms.topic: article
-ms.date: 04/13/2021
+ms.date: 05/17/2021
 ms.author: patricka
 ms.reviewer: TBD
 ms.lastreviewed: 01/14/2020
