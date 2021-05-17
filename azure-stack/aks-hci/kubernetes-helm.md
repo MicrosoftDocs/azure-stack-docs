@@ -12,7 +12,7 @@ ms.author: mmcspirt
 
 # Install existing applications with Helm on Azure Kubernetes Service (AKS) on Azure Stack HCI
 
-[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Yum*, Helm is used to manage Kubernetes charts, which are packages of preconfigured Kubernetes resources.
+[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Yum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
 This article shows you how to configure and use Helm in a Kubernetes cluster on AKS on Azure Stack HCI 
 
@@ -38,9 +38,7 @@ helm version
 
 The following example shows Helm version 3.5.4 installed:
 
-```console
-$ helm version
-
+```output
 version.BuildInfo{Version:"v3.5.4", GitCommit:"1b5edb69df3d3a08df77c9902dc17af864ff05d1", GitTreeState:"clean", GoVersion:"go1.15.11"}
 ```
 
@@ -64,9 +62,7 @@ helm search repo ingress-nginx
 
 The following condensed example output shows some of the Helm charts available for use:
 
-```console
-$ helm search repo ingress-nginx
-
+```output
 NAME                            CHART VERSION   APP VERSION     DESCRIPTION                                       
 ingress-nginx/ingress-nginx     3.30.0          0.46.0          Ingress controller for Kubernetes using NGINX a...
 ```
@@ -79,9 +75,7 @@ helm repo update
 
 The following example shows a successful repo update:
 
-```console
-$ helm repo update
-
+```output
 Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "ingress-nginx" chart repository
 Update Complete. ⎈ Happy Helming!⎈
@@ -107,8 +101,7 @@ helm install my-nginx-ingress ingress-nginx/ingress-nginx `
 
 The following condensed example output shows the deployment status of the Kubernetes resources created by the Helm chart:
 
-```console
-$ helm install my-nginx-ingress ingress-nginx/ingress-nginx \
+```output
 >     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
 >     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
@@ -150,9 +143,7 @@ helm list
 
 The following example shows the *my-nginx-ingress* release deployed in the previous step:
 
-```console
-$ helm list
-
+```output
 NAME            	NAMESPACE	REVISION	UPDATED                             	STATUS  	CHART               	APP VERSION
 my-nginx-ingress	default  	1       	2021-05-14 17:43:27.1670709 +0000 UTC	deployed	nginx-ingress-3.30.0	0.46.0 
 ```
@@ -165,11 +156,9 @@ When you deploy a Helm chart, a number of Kubernetes resources are created. Thes
 helm uninstall my-nginx-ingress
 ```
 
-The following example shows the release named *my-nginx-ingress* has been uninstalled:
+The following example output shows the release named *my-nginx-ingress* has been uninstalled:
 
-```console
-$ helm uninstall my-nginx-ingress
-
+```output
 release "my-nginx-ingress" uninstalled
 ```
 
