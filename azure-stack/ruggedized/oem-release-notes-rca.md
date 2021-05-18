@@ -3,10 +3,10 @@ title: Azure Stack Hub Ruggedized OEM Release Notes
 description: OEM Release Notes for Azure Stack Hub Ruggedized. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/11/2021
+ms.date: 05/18/2021
 ms.author: sethm
 ms.reviewer: danlewi
-ms.lastreviewed: 05/11/2021
+ms.lastreviewed: 05/18/2021
 
 ---
 
