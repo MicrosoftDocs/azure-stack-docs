@@ -20,7 +20,7 @@ To access release notes for a different archived version, use the version select
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range=">azs-1910"
+::: moniker range=">azs-2002"
 ## Release notes for supported versions
 
 Release notes for supported versions of Azure Stack Hub can be found under [Overview > Release notes](../release-notes.md)
@@ -29,7 +29,7 @@ Release notes for supported versions of Azure Stack Hub can be found under [Over
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
-::: moniker range="<=azs-1910"
+::: moniker range="<=azs-2002"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 

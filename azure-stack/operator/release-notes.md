@@ -91,7 +91,8 @@ For more information about update build types, see [Manage updates in Azure Stac
   - CSI Driver for Azure Blobs private preview.
   - T4 Nvidia GPU support private preview.
   - Azure Active Directory integration private preview.
-  - Reduced OEM update time using the live update process.
+  
+- Reduced OEM update time using the live update process.
 
 ### Improvements
 
