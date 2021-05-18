@@ -385,6 +385,6 @@ After the installation of 2005, if any 2005 hotfixes are subsequently released, 
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2002"
+::: moniker range="<azs-2005"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
