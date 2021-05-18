@@ -52,13 +52,8 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 
    ```powershell
    Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-<<<<<<< HEAD
    Install-AzProfile -Profile 2020-09-01-hybrid -Force
    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
-=======
-   Install-AzProfile -Profile 2019-03-01-hybrid -Force
-   Install-Module -Name Microsoft.AzureStack.ReadinessChecker
->>>>>>> e7d6a975507664d672058fa558b556d0938cce56
    ```
 
 2. From the PowerShell prompt, run the following command. Replace `contoso.onmicrosoft.com` with your Azure AD tenant name:
