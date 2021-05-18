@@ -3,10 +3,10 @@ title: Azure Modular Data Center OEM Release Notes
 description: OEM Release Notes for Azure Modular Data Center. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/11/2021
+ms.date: 05/18/2021
 ms.author: sethm
 ms.reviewer: danlewi
-ms.lastreviewed: 05/11/2021
+ms.lastreviewed: 05/18/2021
 
 ---
 
@@ -210,45 +210,6 @@ This document describes the contents of Azure Modular Data Center first party up
 |-----------------|------------------|----------------------------------------|
 | 2102  | i03-5_7_0-11112020  | - Several new features via SSH and API, including ability to manage TLS certs.<br/><br/>- Fixes related to incorrect uptime, SNMP values freezing, and phase balance sum.  |
 | 2008  | i03-5_6_1-07092020  | Initial solution version  |
-
-## Software
-
-### Hub Utils - Partner Toolkit
-
-| Release version | PTK version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2102  | 1.2102.1537.82  | N/A  |
-| 2008  | 1.2008.1374.51  | Initial solution version  |
-
-### iDRAC CLI
-
-| Release version | BMC CLI version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2102, 2008  | 9.1.3.3108  | N/A  |
-
-### Micron Storage Executive CLI
-
-| Release version | Drive FW version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2102, 2008  | 5.09.122019.01  | N/A  |
-
-### ThirdPartySW - OpenSSH for Windows
-
-| Release version | sshd version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2102, 2008  | 31bf3856ad364e35  | N/A  |
-
-### ThirdPartySW - Putty
-
-| Release version | ssh/scp version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2102, 2008  | Release 0.73  | N/A  |
-
-### ThirdPartySW - SSH.NET
-
-| Release version | ssh/scp version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2102  | 2020.0.1  | N/A  |
 
 ## Storage
 
