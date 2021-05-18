@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/26/2021
+ms.date: 05/17/2021
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -48,9 +48,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2012 update](./release-notes.md?preserve-view=true&view=azs-2012)
 - [Azure Stack Hub 2008 update](./release-notes.md?preserve-view=true&view=azs-2008)
 - [Azure Stack Hub 2005 update](./release-notes.md?preserve-view=true&view=azs-2005)
-- [Azure Stack Hub 2002 update](./release-notes.md?preserve-view=true&view=azs-2002)
 
 ## Hotfixes
 

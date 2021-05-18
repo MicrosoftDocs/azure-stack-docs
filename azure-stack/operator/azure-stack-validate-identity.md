@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate Azure identity.
 author: BryanLa
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 12/18/2020
 ms.author: bryanla
 ms.reviewer: jerskine
-ms.lastreviewed: 10/19/2020
+ms.lastreviewed: 12/18/2020
 
 # Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate Azure identity.
 # Keyword:  azure stack hub azure identity readiness checker
@@ -53,7 +53,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    ```powershell
    Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
    Install-AzProfile -Profile 2019-03-01-hybrid -Force
-   Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
+   Install-Module -Name Microsoft.AzureStack.ReadinessChecker
    ```
 
 2. From the PowerShell prompt, run the following command. Replace `contoso.onmicrosoft.com` with your Azure AD tenant name:
@@ -71,7 +71,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following example:
 
    ```powershell
-   Invoke-AzsAzureIdentityValidation v1.2005.1269 started.
+   Invoke-AzsAzureIdentityValidation v1.2100.1448.484 started.
    Starting Azure Identity Validation
 
    Checking Installation Requirements: OK
@@ -115,7 +115,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 1. On a computer that meets the prerequisites, open an elevated PowerShell command prompt, and then run the following command to install **AzsReadinessChecker**:  
 
    ```powershell
-   Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
+   Install-Module Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2100.1396.426
    ```
 
 2. From the PowerShell prompt, run the following command to set `$serviceAdminCredential` as the service administrator for your Azure AD tenant.  Replace `serviceadmin\@contoso.onmicrosoft.com` with your account and tenant name:
@@ -136,7 +136,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following example:
 
    ```powershell
-   Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
+   Invoke-AzsAzureIdentityValidation 2100.1396.426 started.
    Starting Azure Identity Validation
 
    Checking Installation Requirements: OK
