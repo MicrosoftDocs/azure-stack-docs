@@ -6,6 +6,8 @@
     href: Close-PrivilegedEndpoint.md
   - name: Get-ActionStatus
     href: Get-ActionStatus.md
+  - name: Get-AzSLegalNotice
+    href: get-azslegalnotice.md    
   - name: Get-AzureStackLog
     href: Get-AzureStackLog.md
   - name: Get-AzureStackStampInformation
@@ -66,6 +68,8 @@
     href: Reset-DatacenterIntegrationConfiguration.md
   - name: Send-AzureStackDiagnosticLog
     href: Send-AzureStackDiagnosticLog.md
+  - name: Set-AzSLegalNotice
+    href: set-azslegalnotice.md        
   - name: Set-CloudAdminUserPassword
     href: Set-CloudAdminUserPassword.md
   - name: Set-GraphApplication
