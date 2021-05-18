@@ -3,7 +3,7 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to configure multi-tenancy for guest Azure Active Directory tenants in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 05/19/2021
 ms.author: bryanla
 ms.reviewer: bryanr
 ms.lastreviewed: 02/19/2021
@@ -247,7 +247,7 @@ Mary received the email with the link to register the directory. She opens the l
 
    ![Screenshot that shows a registered directory.](./media/enable-multitenancy/manage-directory.png)
 
-1. Mary has successfully completed the registration process and can now direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
+1. Mary has successfully completed the registration process and can now direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://portal.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
 > [!IMPORTANT]
 > It can take up to one hour for the Azure Stack operator to see the directory status updated in the admin portal.
