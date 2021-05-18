@@ -53,7 +53,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2102"
 ## 2102 build reference
 
-The Azure Stack Hub 2102 update build number is **1.2102.xx.xx**.
+The Azure Stack Hub 2102 update build number is **1.2102.28.82**.
 
 ### Update type
 
