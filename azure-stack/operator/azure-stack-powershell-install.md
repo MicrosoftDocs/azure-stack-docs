@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub. See how to ins
 author: mattbriggs
 
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 4/15/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 12/16/2020
+ms.lastreviewed: 4/15/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
 # Keyword: install powershell azure stack AzureRM
@@ -18,10 +18,9 @@ ms.lastreviewed: 12/16/2020
 
 Azure PowerShell Azure Resource Manager (AzureRM) provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
-::: moniker range=">=azs-2002"
 > [!IMPORTANT]  
-> You've reached a webpage for an outdated version of Azure PowerShell. All versions of the Azure Resource Manager (AzureRM) PowerShell module are  outdated, but not out of support. The Az PowerShell module is now the recommended PowerShell module for interacting with Azure and Azure Stack Hub. To get started with the Az PowerShell module, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md). To learn how to migrate to the Az PowerShell module. see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md).
-::: moniker-end
+> You've reached a webpage for an outdated version of Azure Stack Hub PowerShell. All versions of the Azure Resource Manager (AzureRM) PowerShell module are  outdated, but not out of support. AzureRM modules will no longer be updated in future Azure Stack Hub builds. Az modules will be used for builds 2002 and later.The Az PowerShell module is now the recommended PowerShell module for interacting with Azure and Azure Stack Hub. To get started with the Az PowerShell module, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md). To learn how to migrate to the Az PowerShell module. see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md).
+
 
 You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
@@ -95,7 +94,7 @@ Run the following PowerShell script to install these modules on your development
 ::: moniker range=">=azs-2002"
 For Azure Stack Hub 2002 or later:
 
-You can use either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 and the latest hotfix.
+You can use either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 or later.
 
 To use Az preview modules, follow the instructions at [Install PowerShell Az module](powershell-install-az-module.md).
 
