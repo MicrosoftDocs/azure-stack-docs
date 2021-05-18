@@ -99,8 +99,8 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 
 | Resource Types | API Versions |
 |--------------------|--------------------|
-| Data box edge devices | 2019-08-01 |
-| Data box edge devices/checkNameAvailability | 2019-08-01 |
+| Data Box Edge devices | 2019-08-01 |
+| Data Box Edge devices/checkNameAvailability | 2019-08-01 |
 | Operations | 2019-08-01 |
 
 ### Microsoft.Devices
