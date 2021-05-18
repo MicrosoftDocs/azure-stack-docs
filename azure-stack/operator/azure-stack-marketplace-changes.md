@@ -3,9 +3,9 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/29/2021
+ms.date: 05/18/2021
 ms.author: sethm
-ms.reviewer: kivenkat
+ms.reviewer: thoroet
 ms.lastreviewed: 05/28/2020
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new or changed in Azure Stack Hub Marketplace so I can stay up to date.
@@ -54,6 +54,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
+- 05/01/2021: CoreOS Linux (Stable) 64-bit
 - 03/01/2021: SLES 15 (BYOS), SUSE Linux Enterprise Server 15
 - 08/21/2020: Windows 10 Enterprise, Version 1903-Bring your own license - version 18362.959.2007101755
 - 08/21/2020: Windows 10 Pro, Version 1903-Bring your own license - version 18362.959.2007101755
