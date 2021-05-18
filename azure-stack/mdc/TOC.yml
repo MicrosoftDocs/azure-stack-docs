@@ -6,6 +6,8 @@
     items:
     - name: What is the Modular Data Center?
       href: mdc-overview.md
+    - name: OEM release notes
+      href: oem-release-notes-mdc.md
   - name: Quickstarts
     items:
     - name: Use the administrator portal
@@ -177,7 +179,7 @@
         - name: Use an app identity to access resources
           href: ../operator/azure-stack-create-service-principals.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Enable multi-tenancy
-          href: ../operator/azure-stack-enable-multitenancy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/enable-multitenancy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: How-to guides
     items:
     - name: Extended storage health checks
