@@ -101,7 +101,7 @@ The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
     Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-    Install-AzProfile -Profile 2019-03-01-hybrid -Force
+    Install-AzProfile -Profile 2020-09-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
     ```
 

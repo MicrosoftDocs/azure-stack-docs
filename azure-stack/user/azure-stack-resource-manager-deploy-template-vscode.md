@@ -66,7 +66,7 @@ The template in this article called `101-vm-windows-create`. The template define
     ```
 5. Select **Open** to open the file at `/101-vm-windows-create/azuredeploy.json` in the repository.
 6. Save the file into your own workspace, or if you have created a branch of the repository you can work in place.
-7. With the file still open, change the `$Schema` field to `https://schema.management.azure.com/schemas/2019-03-01-hybrid/deploymentTemplate.json#`.
+7. With the file still open, change the `$Schema` field to `https://schema.management.azure.com/schemas/2020-09-01-hybrid/deploymentTemplate.json#`.
 8. You can check that the deployment schema works by clearing the value of the apiProfile field.
     ```JSON  
     "apiProfile": ""
