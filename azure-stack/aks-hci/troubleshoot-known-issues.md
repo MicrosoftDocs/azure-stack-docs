@@ -21,7 +21,7 @@ After running `Install-AksHci`, the installation stopped and displayed a **waiti
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
 
-### Incorrect IP gateway configuration
+### Reason 1: Incorrect IP gateway configuration
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
 ```PowerShell
 Install-AksHci 
@@ -38,7 +38,7 @@ In the displayed configuration settings, confirm the configuration. You could al
 
 If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
 
-### Incorrect DNS server
+### Reason 2: Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
 
 ```powershell

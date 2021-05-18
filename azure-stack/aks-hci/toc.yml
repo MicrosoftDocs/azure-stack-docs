@@ -151,6 +151,8 @@
             href: known-issues.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
+          - name: SSH node access
+            href: ssh-connection.md
 
 - name: Related
   items:
