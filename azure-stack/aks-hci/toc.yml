@@ -43,6 +43,8 @@
     href: kubernetes-concepts.md
   - name: System requirements
     href: system-requirements.md
+  - name: Security
+    href: concepts-security.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -53,6 +55,10 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
+  - name: Node auto-repair
+    href: node-repair.md
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
@@ -67,14 +73,18 @@
             href: update-aks-hci-concepts.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Deploy a container image from ACR to AKS on Azure Stack HCI
+            href: deploy-azure-container-registry.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
-            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-          - name: Create a GitOps configuration on a cluster
-            href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
+          - name: Azure Arc Jumpstart
+            items:
+                - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
+                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+                - name: Create a GitOps configuration on a cluster
+                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
     - name: Configure networking
       items:
           - name: Use proxy settings
@@ -105,6 +115,10 @@
             href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
           - name: Use on-premises monitoring
             href: monitor-logging.md
+          - name: View logs to collect and review data
+            href: view-logs.md
+          - name: View the kubelet logs
+            href: get-kubelet-logs.md
     - name: Use Windows Server containers
       items:
           - name: Deploy .NET applications
@@ -113,16 +127,31 @@
             href: prepare-windows-nodes-gmsa.md
           - name: Adapt apps for mixed-OS Kubernetes clusters
             href: adapt-apps-mixed-os-clusters.md
+    - name: Develop and run applications
+      items:
+          - name: Install existing applications with Helm
+            href: kubernetes-helm.md
+          - name: Use OpenFaaS
+            href: openfaas.md
+          - name: Use Bridge to Kubernetes with Visual Studio Code
+            href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - name: Use Bridge to Kubernetes with Visual Studio
+            href: https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
     - name: Troubleshoot
       items:
           - name: Troubleshoot common issues
             href: troubleshoot.md
+          - name: Windows Admin Center
+            items:
+                - name: Known issues
+                  href: known-issues-windows-admin-center.md
+                - name: Troubleshoot Windows Admin Center
+                  href: troubleshoot-windows-admin-center.md
           - name: Known issues
             href: known-issues.md
           - name: Resolve known issues
             href: troubleshoot-known-issues.md
-          - name: Troubleshoot Windows Admin Center
-            href: troubleshoot-windows-admin-center.md
+
 - name: Related
   items:
   - name: Azure Stack HCI
@@ -139,6 +168,8 @@
     href: https://aka.ms/aks-hci-relnotes/
   - name: PowerShell
     href: AksHci.md
+  - name: Support policies
+    href: support-policies.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap

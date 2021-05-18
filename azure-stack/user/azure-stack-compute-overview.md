@@ -101,7 +101,7 @@ There are several ways to create a VM. Your choice depends on your environment. 
 |Azure Stack Hub portal|[Create a Windows VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).<br>[Create a Linux VM using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).|
 |Templates|Azure Stack Hub Quickstart templates are located at:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://aka.ms/aa6z60s)|
 |PowerShell|[Create a Windows VM by using PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-windows-powershell.md)<br>[Create a Linux VM by using PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-linux-powershell.md)|
-|CLI|[Create a Windows VM by using CLI in Azure Stack Hub](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using CLI in Azure Stack Hub](azure-stack-quick-create-vm-linux-cli.md)|
+|Azure CLI|[Create a Windows VM by using Azure CLI in Azure Stack Hub](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using Azure CLI in Azure Stack Hub](azure-stack-quick-create-vm-linux-cli.md)|
 
 ## Manage your VM
 

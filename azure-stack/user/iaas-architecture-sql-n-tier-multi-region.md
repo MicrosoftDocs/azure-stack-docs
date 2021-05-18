@@ -76,14 +76,14 @@ Note that Traffic Manager automatically fails back by default. To prevent this, 
 
 The following [Azure CLI](/cli/azure/) command updates the priority:
 
-```cli  
+```azurecli  
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
     --name <endpoint-name> --type externalEndpoints --priority 3
 ```
 
 Another approach is to temporarily disable the endpoint until you are ready to fail back:
 
-```cli
+```azurecli
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
     --name <endpoint-name> --type externalEndpoints --endpoint-status Disabled
 ```
@@ -110,7 +110,7 @@ To configure the availability group:
 
 -   For each virtual network, add the IP addresses of the domain controllers (from both regions) to the DNS server list. You can use the following CLI command. For more information, see [Change DNS servers](/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
-    ```cli
+    ```azurecli
     az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 
