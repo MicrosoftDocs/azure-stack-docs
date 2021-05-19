@@ -1,405 +1,94 @@
 ---
-title: Manage Azure Stack Hub with Azure CLI 
-description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub.
-author: mattbriggs
+title: Manage API version profiles in Azure Stack Hub 
+description: Learn about API version profiles in Azure Stack Hub.
+author: sethmanheim
 
 ms.topic: article
-ms.date: 12/16/2020
-ms.author: mabrigg
+ms.date: 12/2/2020
+ms.author: sethm
 ms.reviewer: raymondl
-ms.lastreviewed: 12/16/2020
+ms.lastreviewed: 12/2/2020
 
-# Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
-# Keyword: manage azure stack CLI
+# Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 
+# Keyword: azure stack api version profiles
 
 ---
 
-# Install Azure CLI on Azure Stack Hub
 
-You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux machines. This article walks you through the steps of installing and setting up Azure CLI.
+# Manage API version profiles in Azure Stack Hub
 
-## Install Azure CLI
+API profiles specify the Azure resource provider and the API version for Azure REST endpoints. You can create custom clients in different languages using API profiles. Each client uses an API profile to contact the correct resource provider and API version for Azure Stack Hub.
 
-1. Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. 
+You can create an app to work with Azure resource providers without having to know exactly which version of each resource provider API is compatible with Azure Stack Hub. Just align your app to a profile and the SDK reverts to the correct API version.
 
-2. You can install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
+This topic helps you:
 
-3. To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
+- Understand API profiles for Azure Stack Hub.
+- Learn how you can use API profiles to develop your solutions.
+- See where to find code-specific guidance.
 
-    ```shell
-    az --version
-    ```
+## Summary of API profiles
 
-    You should see the version of Azure CLI and other dependent libraries that are installed on your computer.
+- API profiles are used to represent a set of Azure resource providers and their API versions.
+- API profiles were created for you to create templates across multiple Azure clouds. Profiles provide a compatible and stable interface.
+- Profiles are released four times a year.
+- Three profile naming conventions are used:
+  - **latest**  
+        Contains the most recent API versions released in global Azure.
+  - **yyyy-mm-dd-hybrid**  
+    Released bi-annually, this release focuses on consistency and stability across multiple clouds. This profile targets optimal Azure Stack Hub compatibility.
+  - **yyyy-mm-dd-profile** <br>
+    Balances optimal stability and the latest features.
 
-    ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
+## Azure API profiles and Azure Stack Hub compatibility
 
-2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate. For instructions on setting up certificates for installing the CLI on the ASDK, see [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
+The newest Azure API profiles are not compatible with Azure Stack Hub. Use the following naming conventions to identify which profiles to use for your Azure Stack Hub solutions:
 
-## Connect with Azure CLI
+**Latest**  
+This profile has the most up-to-date API versions found in global Azure, which do not work in Azure Stack Hub. **Latest** has the largest number of breaking changes. The profile puts aside stability and compatibility with other clouds. If you're trying to use the most up-to-date API versions, **Latest** is the profile you should use.
 
-### [Azure AD on Windows](#tab/ad-win)
+**Yyyy-mm-dd-hybrid**  
+This profile is released in March and September every year. It has optimal stability and compatibility with various clouds, and is designed to target global Azure and Azure Stack Hub. The Azure API versions listed in this profile will be the same as the ones that are listed in Azure Stack Hub. Use this profile to develop code for hybrid cloud solutions.
 
-This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Windows machine.
+**yyyy-mm-dd-profile**  
+This profile is released for global Azure in June and December. It does not work with Azure Stack Hub, and there will typically be many breaking changes. Although it balances optimal stability and the latest features, the difference between **Latest** and this profile is that **Latest** always consists of the newest API versions, regardless of when the API is released. For example, if a new API version is created for the Compute API tomorrow, that API version is listed in the **Latest**, but not in the **yyyy-mm-dd-profile** profile, because this profile already exists. **yyyy-mm-dd-profile** covers the most up-to-date versions released before June or before December.
 
-#### Connect to Azure Stack Hub
+## Azure Resource Manager API profiles
 
-1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
+Azure Stack Hub does not use the latest version of the API versions found in global Azure. When you create a solution, you must find the API version for each Azure resource provider that is compatible with Azure Stack Hub.
 
-2. Register your Azure Stack Hub environment by running the `az cloud register` command.
+Rather than research every resource provider and the specific version supported by Azure Stack Hub, you can use an API profile. The profile specifies a set of resource providers and API versions. The SDK, or a tool built with the SDK, will revert to the target `api-version` specified in the profile. With API profiles, you can specify a profile version that applies to an entire template. At runtime, the Azure Resource Manager selects the right version of the resource.
 
-3. Register your environment. Use the following parameters when running `az cloud register`:
+API profiles work with tools that use Azure Resource Manager, such as PowerShell, Azure CLI, code provided in the SDK, and Microsoft Visual Studio. Tools and SDKs can use profiles to read which version of the modules and libraries to include when building an app.
 
-      | Value | Example | Description |
-      | --- | --- | --- |
-      | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
-      | Resource Manager endpoint | `https://management.contoso.onmicrosoft.com` | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
-      | Storage endpoint | local.contoso.onmicrosoft.com | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-      | Keyvault suffix | .vault.contoso.onmicrosoft.com | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-      | Endpoint active directory graph resource ID | https://graph.windows.net/ | The Active Directory resource ID. |
-    
-      ```azurecli  
-      az cloud register `
-          -n <environmentname> `
-          --endpoint-resource-manager "https://management.<region>.<fqdn>" `
-          --suffix-storage-endpoint "<fqdn>" `
-          --suffix-keyvault-dns ".vault.<fqdn>" `
-          --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
-      ```
+For example, if you use PowerShell to create a storage account using the **Microsoft.Storage** resource provider, which supports **api-version** 2016-03-30 and a VM using the **Microsoft.Compute** resource provider with **api-version** 2015-12-01, you must look up which PowerShell module supports 2016-03-30 for Storage, and which module supports 2015-02-01 for Compute, and then install them. Instead, you can use a profile. Use the cmdlet `Install-Profile <profilename>`, and PowerShell loads the correct version of the modules.
 
-    You can find a reference for the [register command](/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
+Similarly, when using the Python SDK to build a Python-based app, you can specify the profile. The SDK loads the right modules for the resource providers that you've specified in your script.
 
+As a developer, you can focus on writing your solution. Instead of researching which API versions, resource provider, and cloud work together, you can use a profile and know that your code works across all clouds that support that profile.
 
-4. Set the active environment by using the following commands.
+## API profile code samples
 
-      ```azurecli
-      az cloud set -n <environmentname>
-      ```
+You can find code samples to help you integrate your solution with your preferred language with Azure Stack Hub by using profiles. Currently, you can find guidance and samples for the following languages:
 
-5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
-
-    ```azurecli
-    az cloud update --profile 2019-03-01-hybrid
-   ```
- 
-6. Sign in to your Azure Stack Hub environment by using the `az login` command.
-
-    You can sign in to the Azure Stack Hub environment using your user credentials, or with a [service principal](/azure/active-directory/develop/app-objects-and-service-principals) (SPN) provided to you by your cloud operator. 
-
-   - Sign in as a *user*: 
-
-     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
-
-     ```azurecli
-     az login -u "user@contoso.onmicrosoft.com" -p 'Password123!' --tenant contoso.onmicrosoft.com
-     ```
-
-     > [!NOTE]
-     > If your user account has multi-factor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
-
-   - Sign in as a *service principal*: 
-    
-        Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
-    
-        ```azurecli  
-        az login `
-          --tenant <Azure Active Directory Tenant name. `
-                    For example: myazurestack.onmicrosoft.com> `
-        --service-principal `
-          -u <Application Id of the Service Principal> `
-          -p <Key generated for the Service Principal>
-        ```
-    
-7. Verify that your environment is set correctly and that your environment is the active cloud.
-
-      ```azurecli
-          az cloud list --output table
-      ```
-
-You should see that your environment is listed and **IsActive** is `true`. For example:
-
-```azurecli  
-IsActive    Name               Profile
-----------  -----------------  -----------------
-False       AzureCloud         2019-03-01-hybrid
-False       AzureChinaCloud    latest
-False       AzureUSGovernment  latest
-False       AzureGermanCloud   latest
-True        AzureStackUser     2019-03-01-hybrid
-```
-
-#### Test the connectivity
-
-With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
-
-```azurecli
-az group create -n MyResourceGroup -l local
-```
-
-If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
-
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
-
-### [AD FS on Windows](#tab/adfs-win)
-
-This section walks you through setting up CLI if you're using Active Directory Federated Services (AD FS) as your identity management service, and are using CLI on a Windows machine.
-
-#### Connect to Azure Stack Hub
-
-
-1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
-
-2. Register your Azure Stack Hub environment by running the `az cloud register` command.
-
-3. Register your environment. Use the following parameters when running `az cloud register`:
-
-    | Value | Example | Description |
-    | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | `https://management.local.azurestack.external` | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document, which contains VM image aliases. For more info, see [Set up the virtual machine alias endpoint](../asdk/asdk-cli.md#set-up-the-virtual-machine-alias-endpoint). |
-
-    ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
-    ```
-
-4. Set the active environment by using the following commands.
-
-      ```azurecli
-      az cloud set -n <environmentname>
-      ```
-
-5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
-
-    ```azurecli
-    az cloud update --profile 2019-03-01-hybrid
-   ```
-
-    >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
-
-6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
-
-   - Sign in as a *user*:
-
-     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
-
-     ```azurecli
-     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>   --profile "2019-03-01-hybrid"
-     ```
-
-     > [!NOTE]
-     > If your user account has multi-factor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
-
-   - Sign in as a *service principal*: 
-    
-     Prepare the .pem file to be used for service principal login.
-
-     On the client machine where the principal was created, export the service principal certificate as a pfx with the private key located at `cert:\CurrentUser\My`. The cert name has the same name as the principal.
-
-     Convert the pfx to pem (use the OpenSSL utility).
-
-     Sign in to the CLI:
-  
-     ```azurecli  
-     az login --service-principal \
-      -u <Client ID from the Service Principal details> \
-      -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
-      --tenant <Tenant ID> \
-      --debug 
-     ```
-
-#### Test the connectivity
-
-With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
-
-```azurecli
-az group create -n MyResourceGroup -l local
-```
-
-If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
-
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
-
-### [Azure AD on Linux](#tab/ad-lin)
-
-This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Linux machine.
-
-#### Connect to Azure Stack Hub
-
-Use the following steps to connect to Azure Stack Hub:
-
-
-1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
-
-2. Register your Azure Stack Hub environment by running the `az cloud register` command.
-
-3. Register your environment. Use the following parameters when running `az cloud register`:
-
-    | Value | Example | Description |
-    | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | `https://management.local.azurestack.external` | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document, which contains VM image aliases. For more info, see [Set up the virtual machine alias endpoint](../asdk/asdk-cli.md#set-up-the-virtual-machine-alias-endpoint). |
-
-    ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
-    ```
-
-4. Set the active environment. 
-
-      ```azurecli
-        az cloud set -n <environmentname>
-      ```
-
-5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
-
-    ```azurecli
-      az cloud update --profile 2019-03-01-hybrid
-   ```
-
-    >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
-
-6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
-
-   * Sign in as a *user*:
-
-     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
-
-     ```azurecli
-     az login \
-       -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> \
-       --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
-     ```
-
-     > [!NOTE]
-     > If your user account has multi-factor authentication enabled, you can use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
-   
-   * Sign in as a *service principal*
-    
-     Before you sign in, [create a service principal through the Azure portal](../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
-
-     ```azurecli  
-     az login \
-       --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> \
-       --service-principal \
-       -u <Application Id of the Service Principal> \
-       -p <Key generated for the Service Principal>
-     ```
-
-#### Test the connectivity
-
-With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
-
-```azurecli
-    az group create -n MyResourceGroup -l local
-```
-
-If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
-
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
-
-### [AD FS Linux](#tab/adfs-lin)
-
-This section walks you through setting up CLI if you're using Active Directory Federated Services (AD FS) as your management service, and are using CLI on a Linux machine.
-
-#### Connect to Azure Stack Hub
-
-Use the following steps to connect to Azure Stack Hub:
-
-1. If you are using the ASDK, trust the Azure Stack Hub CA root certificate. For instruction, see [Trust the certificate](../asdk/asdk-cli.md#trust-the-certificate).
-
-2. Register your Azure Stack Hub environment by running the `az cloud register` command.
-
-3. Register your environment. Use the following parameters when running `az cloud register`.
-
-    | Value | Example | Description |
-    | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | `https://management.local.azurestack.external` | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document, which contains VM image aliases. For more info, see [Set up the virtual machine alias endpoint](../asdk/asdk-cli.md#set-up-the-virtual-machine-alias-endpoint). |
-
-    ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
-    ```
-
-4. Set the active environment. 
-
-      ```azurecli
-        az cloud set -n <environmentname>
-      ```
-
-5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
-
-    ```azurecli
-      az cloud update --profile 2019-03-01-hybrid
-   ```
-
-    >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
-
-6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
-
-7. Sign in: 
-
-   *  As a **user** using a web browser with a device code:  
-
-   ```azurecli  
-    az login --use-device-code
-   ```
-
-   > [!NOTE]  
-   >Running the command gives you a URL and a code that you must use to authenticate.
-
-   * As a service principal:
-        
-     Prepare the .pem file to be used for service principal login.
-
-      * On the client machine where the principal was created, export the service principal certificate as a pfx with the private key located at `cert:\CurrentUser\My`. The cert name has the same name as the principal.
-  
-      * Convert the pfx to pem (use the OpenSSL utility).
-
-     Sign in to the CLI:
-
-      ```azurecli  
-      az login --service-principal \
-        -u <Client ID from the Service Principal details> \
-        -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
-        --tenant <Tenant ID> \
-        --debug 
-      ```
-
-#### Test the connectivity
-
-With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
-
-```azurecli
-  az group create -n MyResourceGroup -l local
-```
-
-If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
-
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
-
-### Known issues
-
-There are known issues when using CLI in Azure Stack Hub:
-
- - The CLI interactive mode. For example, the `az interactive` command, isn't yet supported in Azure Stack Hub.
- - To get the list of VM images available in Azure Stack Hub, use the `az vm image list --all` command instead of the `az vm image list` command. Specifying the `--all` option ensures that the response returns only the images that are available in your Azure Stack Hub environment.
- - VM image aliases that are available in Azure may not be applicable to Azure Stack Hub. When using VM images, you must use the entire URN parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) instead of the image alias. This URN must match the image specifications as derived from the `az vm images list` command.
-
----
+- **.NET** <br>
+Use the .NET API profile to get the latest, most stable version of each resource type in a resource provider package. For more information, see [Use API version profiles with .NET in Azure Stack Hub](azure-stack-version-profiles-net.md).
+- **PowerShell**  
+Use the  **Az.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/azure-stack-powershell-install.md).
+Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/powershell-install-az-module.md).
+- **Azure CLI**  
+Update your environment configuration to use the Azure Stack Hub specific API version profile. For information, see [Use API version profiles for Azure CLI](azure-stack-version-profiles-azurecli2.md).
+- **Go**  
+In the Go SDK, a profile is a combination of different resource types with different versions from different services. Profiles are available under the profiles/path with their version in the **YYYY-MM-DD** format. For information, see [Use API version profiles for Go](azure-stack-version-profiles-go.md).
+- **Ruby**  
+The Ruby SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, virtual networks, and storage with the Ruby language. For information, see [Use API version profiles with Ruby](azure-stack-version-profiles-ruby.md).
+- **Python**  
+The Python SDK supports API version profiles to target different cloud platforms such as Azure Stack Hub and global Azure. Use API profiles to create solutions for a hybrid cloud. For information, see [Use API version profiles with Python](azure-stack-version-profiles-python.md).
+- **Node.js**  
+The Node.js SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. For more information, see [Use API version Profiles with Node.js](azure-stack-version-profile-nodejs.md).
 
 ## Next steps
 
-- [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
-- [Enable Azure CLI for Azure Stack Hub users (Operator)](../operator/azure-stack-cli-admin.md)
-- [Manage user permissions](azure-stack-manage-permissions.md)
+- [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
+- [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)
+- [Review details about resource provider API versions supported by the profiles](azure-stack-profiles-azure-resource-manager-versions.md).
