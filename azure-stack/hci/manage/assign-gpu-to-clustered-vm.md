@@ -1,22 +1,22 @@
 ---
-title: Change languages in Azure Stack HCI
-description: This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+title: Assign GPUs to clustered VMs on Azure Stack HCI
+description: This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Stack HCI operating system.
+author: rick-man
+ms.author: rickman
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 05/25/2021
 ---
 
-# Azure Stack HCI change languages
+# Assign GPUs to clustered VMs on Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, version 21H2 Public Preview; **Rick: Does this also apply to WS19? and WS22?**
 
-This topic provides guidance on how to change languages in the Azure Stack HCI operating system.
+This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Stack HCI operating system.
 
-## Drive types
+## H2 placeholder
 TBD
 
-## Built-in cache
+## H2 placeholder
 TBD
 
 <!---Example note format.--->
@@ -26,7 +26,7 @@ TBD
 <!---Example figure format--->
 <!---:::image type="content" source="./media/network-controller/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/network-controller/topology-option-1.png":::--->
 
-### Cache
+### H3 placeholder with table example
 TBD
 
 <!---Example table format.--->
@@ -43,6 +43,4 @@ TBD
 For more information, see also:
 <!---Placeholders for format examples. Replace all before initial topic review.--->
 
-- [Azure Stack HCI overview](../overview.md)
-- [Understand the cache in Azure Stack HCI](cache.md)
-- [Storage Spaces Direct hardware requirements](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements)
+- [Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI](attach-gpu-to-linux-vm.md)
