@@ -5,9 +5,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 2/8/2021
+ms.date: 4/28/2021
 ms.reviewer: kivenkat
-ms.lastreviewed: /8/2021
+ms.lastreviewed: 4/28/2021
 
 # Intent: As a a developer on Azure Stack Hub, I want to use a machine with a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
 # Keyword: Azure Stack Hub Graphics Processing Unit (GPU)
@@ -19,7 +19,7 @@ ms.lastreviewed: /8/2021
 
 This article describes which graphics processing unit (GPU) models are supported on an Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
-You can choose from three GPU models in the public preview period. They are available in NVIDIA V100, NVIDIA T4 and AMD MI25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
+You can choose from three GPU models. They are available in NVIDIA V100, NVIDIA T4 and AMD MI25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 - [NCv3](/azure/virtual-machines/ncv3-series)
 - [NVv4 (AMD MI25)](/azure/virtual-machines/nvv4-series)
 - [NCasT4_v3](/azure/virtual-machines/nct4-v3-series)
@@ -40,7 +40,7 @@ You can choose from three GPU models in the public preview period. They are avai
 NCv3-series VMs are powered by NVIDIA Tesla V100 GPUs. Customers can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others. 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs |
-|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|
 | Standard_NC6s_v3    | 6  | 112 | 736  | 1 | 16 | 12 | 4 |
 | Standard_NC12s_v3   | 12 | 224 | 1474 | 2 | 32 | 24 | 8 |
 | Standard_NC24s_v3   | 24 | 448 | 2948 | 4 | 64 | 32 | 8 |
@@ -52,6 +52,9 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- | --- |   
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 | 
+| Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
+| Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 |
+| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 |
 
 ## NCasT4_v3
 
@@ -64,35 +67,117 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC4as_T4_v3 |4 |28 | 1 | 16 | 8 | 4 | 
 | Standard_NC8as_T4_v3 |8 |56 | 1 | 16 | 16 | 8 | 
-| Standard_NC16as_T4_v3 |16 |112 | 1 | 16 | 32 | 8 | 
-| Standard_NC64as_T4_v3 |64 |448 | 4 | 64 | 32 | 8 |
+| Standard_NC16as_T4_v3 |16 |110 | 1 | 16 | 32 | 8 | 
+| Standard_NC64as_T4_v3 |64 |440 | 4 | 64 | 32 | 8 |
+
+## GPU system considerations
+-	GPU must be one of these SKUs: AMD MI-25, Nvidia V100 (and variants), Nvidia T4
+-	Number of GPUs per server supported (1, 2, 3, 4). Preferred are: 1, 2, and 4
+-	All GPUs must be of the exact same SKU throughout the scale unit
+-	All GPU quantities per server must be the same throughout the scale unit
+-	GPU partition size (for AMD Mi25) needs to be the same throughout all GPU VMs on the scale unit.
+
+## Capacity planning
+The Azure Stack Hub capacity planner has been updated to support GPU configurations. It is accessible on https://aka.ms/azstackcapacityplanner
+
+## Adding GPUs on an existing Azure Stack Hub
+Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute stop-azurestack, run through the procedure of stop-azurestack, add GPUs , and then run **start-azurestack** until completion. If the system already had GPUs then any previously created GPU VMs will need to be **stop-deallocated** and then **restarted**.
+
 
 ## Patch and update, FRU behavior of VMs 
 
 GPU VMs will undergo downtime during operations such as patch and update (PnU) as well as hardware replacement (FRU) of Azure Stack Hub. The following table goes over the state of the VM as observed during these activities as well as the manual action that the user can do to make these VMs available again post these operations. 
 
-| Operation | PnU - Express Update | PnU - Full Update, OEM update | FRU | 
-| --- | --- | --- | --- | 
-| VM state  | Unavailable during and post update without manual start operation | Unavailable during update. Available post update with manual operation | Unavailable during update. Available post update with manual operation| 
-| Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the **Restart** button. Restart the VM after the update from the portal using the **Restart** button | VM cannot be made available during the update. Post update completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the "Start" button | VM cannot be made available during the update.Post update completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the **Start** button.| 
+| Operation | PnU - Full Update, OEM update | FRU | 
+| --- | --- | --- | 
+| VM state  | Unavailable during update. Can be made available with manual operation. VM is automatically online post update. | Unavailable during FRU. Can be made available with manual operation. VM needs to be brought back up after FRU| 
+| Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the **Restart** button. VM will automatically come back up post update | VM is not available during FRU. If there are available GPUs, VM may be stop-deallocated and restarted during FRU. Post FRU completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the **Start** button.| 
 
 ## Guest driver installation
 
-### AMD MI25
+The following powershell commands can be used for driver installation:
+```powershell
+$VmName = <VM Name In Portal>
+$ResourceGroupName = <Resource Group of VM>
+$Location = "redmond"
+$driverName = <Give a name to the driver>
+$driverPublisher = "Microsoft.HpcCompute"
+$driverType = <Specify Driver Type> #GPU Driver Types: "NvidiaGpuDriverWindows"; "NvidiaGpuDriverLinux"; "AmdGpuDriverWindows"
+$driverVersion = <Specify Driver Version> #Nvidia Driver Version:"1.3"; AMD Driver Version:"1.0"
 
-The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation. This extension only works in connected mode.
+Set-AzureRmVMExtension  -Location $Location `
+                            -Publisher $driverPublisher `
+                            -ExtensionType $driverType `
+                            -TypeHandlerVersion $driverVersion `
+                            -VMName $VmName `
+                            -ResourceGroupName $ResourceGroupName `
+                            -Name $driverName `
+                            -Settings $Settings ` # If no settings are set, omit this parameter
+                            -Verbose
+```
+
+Depending on the OS, type and connectivity of your Azure Stack Hub GPU VM, you will need to modify with the settings below.
+
+
+### AMD MI25 - Connected
+
+The above command can be used with the appropriate driver type for AMD. The article [Install AMD GPU drivers on N-series VMs running Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) provides instructions on installing the driver for the AMD Radeon Instinct MI25 inside the NVv4 GPU-P enabled VM along with steps on how to verify driver installation.
+
+### AMD MI25 - Disconnected
+
+Since the extension pulls the driver from a location on the internet, a VM that is completely disconnected from the external network cannot access it. You can download the driver from the link below and upload to a storage account from where driver can be installed on the VM.
+
+Driver URL: https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe
+
+Adding the above driver to a storage account and attach the URL in Settings. These settings will need to be used in the Set-AzureRMVMExtension commandlet.
+$Settings = @{
+"DriverURL" = <URL to Driver in Storage Account>
+}
 
 ### NVIDIA
 
 NVIDIA drivers must be installed inside the virtual machine for  CUDA or GRID workloads using the GPU.
 
-#### Use case: graphics/visualization
+#### Use case: graphics/visualization GRID
 
-This scenario requires the use of GRID drivers. GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses. The GRID drivers also require a GRID license server with appropriate GRID licenses before using the GRID drivers on the VM. This can be used to learn how to setup the license server.
+This scenario requires the use of GRID drivers. GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses. The GRID drivers also require a GRID license server with appropriate GRID licenses before using the GRID drivers on the VM. 
 
-#### Use case: compute/CUDA
+$Settings = @{
+"DriverURL" = "https://download.microsoft.com/download/e/8/2/e8257939-a439-4da8-a927-b64b63743db1/431.79_grid_win10_server2016_server2019_64bit_international.exe"; "DriverCertificateUrl" = "https://go.microsoft.com/fwlink/?linkid=871664"; 
+“DriverType”=”GRID”
+}
 
-NVIDIA CUDA driers and GRID drivers will need to be manually installed on the VM. The Tesla CUDA drivers can be obtained from the NVIDIA [download website](https://www.nvidia.com/Download/index.aspx). CUDA drivers do not need a license server.
+#### Use case: compute/CUDA - Connected
+
+CUDA drivers do not need a license server and do not need modified settings.
+
+#### Use case: compute/CUDA - Disconnected
+Links to NVIDIA CUDA drivers can be obtained using the link:
+https://raw.githubusercontent.com/Azure/azhpc-extensions/master/NvidiaGPU/resources.json
+
+**Windows:**
+$Settings = @{
+"DriverURL" = "";
+"DriverCertificateUrl" = "https://go.microsoft.com/fwlink/?linkid=871664"; 
+“DriverType”=”CUDA” 
+}
+
+**Linux:**
+The PUBKEY_URL is the public key for the Nvidia driver repository not for the Linux VM. It is used to install driver for Ubuntu.
+DKMS_URL is used to get the package to compile the Nvidia kernel module on RedHat/CentOs
+LIS_URL is the url to download Linux Integration Service package for RedHat/CentOs (https://www.microsoft.com/en-us/download/details.aspx?id=55106) by default it is not installed
+LIS_RHEL_ver is the fall back kernel version that should work with the Nvidia driver. It is used on RedHat/CentOs if the Linux VM’s kernel is not compatible with the requested Nvidia driver. 
+DRIVER_URL is the url to download the Nvidia driver’s repository information and it is added to the Linux VM’s list of repos.
+
+$Settings=@{
+"isCustomInstall"=$true;
+"DRIVER_URL"="https://go.microsoft.com/fwlink/?linkid=874273";
+"CUDA_ver"="10.0.130";
+"PUBKEY_URL"="http://download.microsoft.com/download/F/F/A/FFAC979D-AD9C-4684-A6CE-C92BB9372A3B/7fa2af80.pub";
+"DKMS_URL"="https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm";
+"LIS_URL"="https://aka.ms/lis";
+"LIS_RHEL_ver"="3.10.0-1062.9.1.el7"
+}
 
 ## Next steps
 

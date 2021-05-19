@@ -1,8 +1,8 @@
 ---
 title: Azure Stack Hub ruggedized  
 description: Azure Stack Hub ruggedized is a versatile, ruggedized cloud appliance that easily expanded by adding additional scale units to provide Azure IaaS and PaaS capabilities
-author: BryanLa
-ms.author: bryanla
+author: PatAltimore
+ms.author: patricka
 ms.service: azure-stack
 ms.topic: overview
 ms.date: 10/14/2020

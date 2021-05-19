@@ -114,7 +114,7 @@ For this procedure, use a computer in your datacenter network that can communica
    Invoke-Command -Session $pep -ScriptBlock {Register-DirectoryService -CustomADGlobalCatalog contoso.com} 
    
    
-   ```
+    ```
 
    When prompted, specify the credential for the user account that you want to use for the Graph service (such as graphservice). The input for the Register-DirectoryService cmdlet must be the forest name / root domain in the forest rather than any other domain in the forest.
 
@@ -319,7 +319,7 @@ If you decide to manually run the commands, follow these steps:
 
 There are many scenarios that require the use of a service principal name (SPN) for authentication. The following are some examples:
 
-- CLI usage with AD FS deployment of Azure Stack Hub.
+- Azure CLI usage with AD FS deployment of Azure Stack Hub.
 - System Center Management Pack for Azure Stack Hub when deployed with AD FS.
 - Resource providers in Azure Stack Hub when deployed with AD FS.
 - Various apps.
