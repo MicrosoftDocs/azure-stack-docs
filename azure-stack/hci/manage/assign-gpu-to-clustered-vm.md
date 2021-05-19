@@ -1,6 +1,6 @@
 ---
 title: Assign GPUs to clustered VMs on Azure Stack HCI
-description: This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Stack HCI operating system.
+description: This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Azure Stack HCI operating system.
 author: rick-man
 ms.author: rickman
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.date: 05/25/2021
 
 >Applies to: Azure Stack HCI, version 21H2 Public Preview; **Rick: Does this also apply to WS19? and WS22?**
 
-This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Stack HCI operating system.
+This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Azure Stack HCI operating system.
 
 ## H2 placeholder 1
 TBD
