@@ -166,8 +166,6 @@
       href: concepts/deploy-persistent-memory.md
     - name: Persistent memory health management
       href: concepts/persistent-memory-health.md
-    - name: Understand and configure DAX
-      href: concepts/persistent-memory-direct-access.md
   - name: Networking
     items:
     - name: Physical network requirements

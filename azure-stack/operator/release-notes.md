@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/18/2021
+ms.date: 05/19/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -81,7 +81,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 - During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an extra validation was added in the **UpdateReadiness** check. Patch & update will fail at an early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 - Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
 - Azure Stack Hub now supports adding GPUs to any existing system. To add a GPU, execute **stop-azurestack**, run through the process of **stop-azurestack**, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs must be **stop-deallocated** and then re-started.
-- The AKS engine on Azure Stack Hub is adding the following new features. For details, see the release notes under the [AKS engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
+- Reduced OEM update time using the live update process.
+- The AKS engine on Azure Stack Hub added the following new features. For details, see the release notes under the [AKS engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
 
   - General availability of Ubuntu 18.04.
   - Support for Kubernetes 1.17.17 and 1.18.15.
@@ -91,7 +92,6 @@ For more information about update build types, see [Manage updates in Azure Stac
   - CSI Driver for Azure Blobs private preview.
   - T4 Nvidia GPU support private preview.
   - Azure Active Directory integration private preview.
-  - Reduced OEM update time using the live update process.
 
 ### Improvements
 
@@ -102,6 +102,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
 - Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 - Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
+- Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
 
 ### Changes
 
@@ -140,7 +141,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.31.126](hotfix-1-2008-31-126.md)
+- [Azure Stack Hub hotfix 1.2008.37.139](hotfix-1-2008-37-139.md)
 
 ### After successfully applying the 2102 update
 
@@ -233,7 +234,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.33.131](hotfix-1-2008-33-131.md)
+- [Azure Stack Hub hotfix 1.2008.37.139](hotfix-1-2008-37-139.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -316,7 +317,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.66.173](hotfix-1-2002-67-175.md)
+- [Azure Stack Hub hotfix 1.2002.68.177](hotfix-1-2002-68-177.md)
 
 ### After successfully applying the 2005 update
 
@@ -324,7 +325,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.35.112](hotfix-1-2005-35-112.md)
+- [Azure Stack Hub hotfix 1.2005.39.120](hotfix-1-2005-39-120.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
@@ -385,6 +386,6 @@ After the installation of 2005, if any 2005 hotfixes are subsequently released, 
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2002"
+::: moniker range="<azs-2005"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

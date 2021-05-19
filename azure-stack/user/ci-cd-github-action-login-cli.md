@@ -62,7 +62,7 @@ The following code snippets are written for a Windows machine using the PowerShe
     suffix-keyvault-dns | ".vault.orlando.azurestack.corp.microsoft.com"  | The Key Vault service dns suffix. |
     endpoint-active-directory-graph-resource-id | "https://graph.windows.net/"  | The Active Directory resource ID. |
     endpoint-sql-management | https://notsupported  | The sql server management endpoint. Set this to `https://notsupported` |
-    profile | 2019-03-01-hybrid | Profile to use for this cloud. |
+    profile | 2020-09-01-hybrid | Profile to use for this cloud. |
 
 2. Open your command-line tool such as Windows PowerShell or Bash and sign in. Use the following command:
 
@@ -80,7 +80,7 @@ The following code snippets are written for a Windows machine using the PowerShe
         --suffix-keyvault-dns ".vault.<local>.<FQDN>" `
         --endpoint-active-directory-graph-resource-id "https://graph.windows.net/" `
         --endpoint-sql-management https://notsupported  `
-        --profile 2019-03-01-hybrid
+        --profile 2020-09-01-hybrid
     ```
 
 4. Get your subscription ID and resource group that you want to use for the SPN.
@@ -156,7 +156,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
     Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-    Install-AzProfile -Profile 2019-03-01-hybrid -Force
+    Install-AzProfile -Profile 2020-09-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
     ```
     For more information about using the Azure Stack Hub Az modules, see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md).
