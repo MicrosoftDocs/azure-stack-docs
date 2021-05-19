@@ -11,16 +11,19 @@ ms.date: 05/19/2021
 
 # Dynamic processor compatibility mode in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2 **Alvin: Does this also apply to WS19? what about WS22/HCIv2?**
+> Applies to: Azure Stack HCI, version 21H2
 
 The dynamic processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment. Processor compatibility works by determining the supported processor features for each individual node in the cluster and calculating the common denominator across all processors. Virtual machines (VMs) are configured to use the maximum number of features available across all servers in the cluster. This improves performance compared to the previous version of processor compatibility that defaulted to a minimal, fixed set of processor capabilities.
 
-   > [!IMPORTANT]
-   > Only Hyper-V VMs with the latest configuration version (10.0) benefit from the dynamic configuration. VMs with older versions won't benefit from the dynamic configuration and will continue to use fixed processor capabilities from the previous version.
+   > [!NOTE]
+   > This feature is only available in Azure Stack HCI, version 21H2, and it won't be backported to version 20H2. For information about processor compatibility mode in Windows Server, see [Processor Compatibility Mode in Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn859550(v=ws.11)).
 
 ## When to use processor compatibility mode
 
 Processor compatibility mode allow you to move a live VM (live migrating) or move a VM that is saved between nodes with different process capability sets. However, even when processor compatibility is enabled, you can't move VMs between hosts with different processor manufacturers. For example, you can't move running VMs or saved state VMs from a host with Intel processors to a host with AMD processors. If you must move a VM in this manner, shut the VM down first, then restart it on the new host.
+
+   > [!IMPORTANT]
+   > Only Hyper-V VMs with the latest configuration version (10.0) benefit from the dynamic configuration. VMs with older versions won't benefit from the dynamic configuration and will continue to use fixed processor capabilities from the previous version.
 
 We recommend enabling processor compatibility mode for VMs running on Azure Stack HCI. This provides the highest level of capabilities, and when it's time to migrate to new hardware, moving the VMs won't require downtime.
 
@@ -47,7 +50,7 @@ In Azure Stack HCI environments, the new processor compatibility mode ensures th
 
 ## Minimum fixed CPU capabilities
 
-The minimum fixed CPU capabilities are as follows: **Alvin: Is this supposed to be a table with corresponding values? Can/should we describe each one?**
+The minimum fixed CPU capabilities are:
 
 - SSE3
 - LAHF_SAHF
@@ -63,13 +66,13 @@ The minimum fixed CPU capabilities are as follows: **Alvin: Is this supposed to 
 - MDD
 - ALTMOVCR8
 - NPIEP1
-- VIRT_SPEC_CTRL 
+- VIRT_SPEC_CTRL
 
 ## Migrating running VMs between clusters
 
 Assuming that all servers in each cluster are running the same hardware, which is a requirement for Azure Stack HCI, it's possible to live migrate running VMs between clusters. There are three common scenarios.
 
-- **Live migrating a VM from a cluster with new processors to a cluster with the same processors.** The VM capabilities will be transferred to the destination cluster. **Alvin: You say "Processor compatibility mode isn't needed for clusters with the same processor." Can you clarify?**
+- **Live migrating a VM from a cluster with new processors to a cluster with the same processors.** The VM capabilities will be transferred to the destination cluster.
 
 - **Live migrating a VM from a cluster with older processors to a cluster with newer processors.** The VM capabilities will be transferred to the destination cluster. In this scenario, if the VM is restarted, it will receive the latest calculated capability of the destination cluster.
 
