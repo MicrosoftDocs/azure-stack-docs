@@ -188,7 +188,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.68.177](../operator/hotfix-1-2002-68-177.md)
+- [Azure Stack Hub hotfix 1.2002.68.177](../hotfix-1-2002-68-177.md)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
