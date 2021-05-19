@@ -92,7 +92,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **ManagementDNS** - DNS server for the management network
 - **ManagementVLANID** - VLAN ID for the management network
 - **DomainJoinUsername** - administrator user name
-- **LocalAdminDomainUser** - administrator password
+- **LocalAdminDomainUser** - local administrator user name
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **HyperVHosts** - host servers to be managed by Network Controller
 - **NCUsername** - Network Controller account user name
