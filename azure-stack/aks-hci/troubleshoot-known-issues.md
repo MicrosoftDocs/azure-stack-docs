@@ -135,8 +135,9 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
+- [Known issues](./known-issues.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
+- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).

@@ -93,7 +93,7 @@ az login -tenant <tenant>
 If you've just created a new Azure account and haven't signed in to the account on your gateway machine, you might experience problems with registering your Windows Admin Center gateway with Azure. To mitigate this problem, sign in to your Azure account in another browser tab or window, and then register the Windows Admin Center gateway to Azure.
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
+- [Known issues](./known-issues.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).

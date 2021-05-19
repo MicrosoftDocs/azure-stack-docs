@@ -153,9 +153,9 @@
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI
             href: https://docs.microsoft.com/azure-stack/hci/manage/validate-qos
-          - name: Troubleshoot CredSSP
+          - name: CredSSP
             href: https://docs.microsoft.com/azure-stack/hci/manage/troubleshoot-credssp
-          - name: Troubleshoot Azure Arc enabled Kubernetes
+          - name: Azure Arc enabled Kubernetes
             href: https://docs.microsoft.com/azure/azure-arc/kubernetes/troubleshooting
 
 - name: Related

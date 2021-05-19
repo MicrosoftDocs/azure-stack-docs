@@ -9,7 +9,7 @@ ms.author: v-susbo
 
 # Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting
 
-You may need to access Windows or Linux worker nodes in AKS on Azure Stack HCI for maintenance, log collection, or other troubleshooting operations. You can access these nodes using SSH. For security purposes, you'll need to create an SSH connection to access the Windows or Linux worker nodes and then use SSH to sign in using the node's IP address.
+You may need to access Windows or Linux worker nodes in AKS on Azure Stack HCI for maintenance, log collection, or other troubleshooting operations. For security purposes, you'll need to create an SSH connection to access the Windows or Linux worker nodes. To SSH to the nodes, you sign in using the node's IP address.
 
 This topic describes how to create an SSH connection to access both Windows and Linux nodes.
 
@@ -52,3 +52,8 @@ ssh -i $env:SYSTEMDRIVE\AksHci\.ssh\akshci_rsa clouduser@<IP Address of the Node
 ```  
 
 After you SSH in to the node, you can run `net user administrator *` to update your administrator password. 
+
+## Next steps
+- [Known issues](./known-issues.md)
+- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
+- [Resolve known issues](./troubleshoot-known-issues.md)

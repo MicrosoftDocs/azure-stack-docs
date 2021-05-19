@@ -122,6 +122,6 @@ With large clusters, the `Get-AksHciLogs` command may throw an exception, fail t
 When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
+- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
