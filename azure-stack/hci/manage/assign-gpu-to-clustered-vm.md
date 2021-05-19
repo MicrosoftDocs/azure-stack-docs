@@ -13,10 +13,10 @@ ms.date: 05/25/2021
 
 This topic provides guidance on how to assign GPUs to clustered virtual machines (VMs) on the Stack HCI operating system.
 
-## H2 placeholder
+## H2 placeholder 1
 TBD
 
-## H2 placeholder
+## H2 placeholder 2
 TBD
 
 <!---Example note format.--->
