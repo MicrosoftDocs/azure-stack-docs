@@ -6,8 +6,6 @@ ms.topic: tutorial
 ms.date: 12/02/2020
 ms.author: abha
 ms.reviewer: 
-
-# Intent: This is the intent.
 ---
 
 # Tutorial: Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI
