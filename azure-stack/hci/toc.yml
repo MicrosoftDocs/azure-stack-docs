@@ -96,6 +96,8 @@
       href: manage/update-cluster.md
     - name: Monitor the cluster
       href: manage/monitor-cluster.md
+    - name: Configure firewalls
+      href: manage/configure-firewalls.md
     - name: Set up a cluster witness
       href: manage/witness.md
     - name: Use DISKSPD to test workloads
@@ -160,6 +162,12 @@
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum
       href: concepts/quorum.md
+    - name: Understand and deploy persistent memory
+      href: concepts/deploy-persistent-memory.md
+    - name: Persistent memory health management
+      href: concepts/persistent-memory-health.md
+    - name: Understand and configure DAX
+      href: concepts/persistent-memory-direct-access.md
   - name: Networking
     items:
     - name: Physical network requirements
@@ -188,8 +196,6 @@
     items:
     - name: Billing
       href: concepts/billing.md
-    - name: Configure firewalls
-      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
