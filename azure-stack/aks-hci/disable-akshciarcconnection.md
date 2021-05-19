@@ -29,7 +29,7 @@ Disables Arc connection an AKS on Azure Stack HCI cluster.
 ## Examples
 
 ### Disconnect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using Azure user login 
-This command disconnects your workload cluster from Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner" or "Contributor" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access". If you have multiple tenants on your Azure account, it is recommended to disconnect your workload cluster to Arc using a service principal.
+This command disconnects your workload cluster from Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner" or "Contributor" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access". If you have multiple tenants on your Azure account, it is recommended to disconnect your workload cluster to Arc using a service principal.
 
 ```PowerShell
 Connect-AzAccount
@@ -42,7 +42,7 @@ Connect-AzAccount
 Disable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-0000-4bdb12000000" -resourceGroup "myAzureResourceGroup"
 ```
 
-### Disonnect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using a service principal
+### Disconnect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using a service principal
 If you have multiple tenants on your Azure account, or if you do not have access to a subscription on which you're an "Owner" or "Contributor", it is recommended to connect your workload cluster to Arc using a service principal.
 
 The first command prompts for service principal credentials and stores them in the $Credential variable. Enter your application ID for the username and service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects the specified Azure tenant using the service principal credentials stored in the $Credential variable. 
@@ -145,4 +145,3 @@ Default value: Azure resource group's location
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
