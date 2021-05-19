@@ -151,7 +151,7 @@
                   href: troubleshoot-windows-admin-center.md
           - name: SSH node access
             href: ssh-connection.md
-          - name: Troubleshoot Azure Stack HCI
+          - name: Cluster validation reporting in Azure Stack HCI
             href: https://docs.microsoft.com/azure-stack/hci/manage/validate-qos
           - name: Troubleshoot CredSSP
             href: https://docs.microsoft.com/azure-stack/hci/manage/troubleshoot-credssp
