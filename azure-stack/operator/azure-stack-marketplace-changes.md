@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/18/2021
+ms.date: 05/20/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 05/28/2020
