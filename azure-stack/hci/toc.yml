@@ -44,6 +44,8 @@
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
       href: deploy/cluster-set.md
+    - name: Deploy Network ATC
+      href: deploy/network-atc.md
   - name: Deploy workloads
     items:
     - name: Branch office and edge
