@@ -13,7 +13,7 @@ ms.date: 05/25/2021
 
 This topic provides guidance on how to use graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads running in the clustered VMs.
 
-Starting in Azure Stack HCI, version 21H2, you can include GPUs in your Azure Stack HCI cluster to provide GPU acceleration to workloads running in clustered VMs. This topic covers the basic prerequisites of this capability and how to deploy it.
+Starting in Azure Stack HCI, version 21H2, you can include GPUs in your Azure Stack HCI cluster to provide GPU acceleration to workloads running in clustered VMs. The topic covers the basic prerequisites of this capability and how to deploy it.
 
 GPU acceleration is provided via Discrete Device Assignment (DDA), also known as GPU pass-through, which allows you to dedicate one or more physical GPUs to a VM. Clustered VMs can take advantage of GPU acceleration, as well as clustering capabilities such as high availability via failover. Live migration is not currently supported, but VMs can be automatically restarted and placed where GPU resources are available in the event of a failure.
 
