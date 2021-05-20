@@ -51,7 +51,7 @@ Once you've set up Azure Kubernetes Service on-premises and created a Kubernetes
   - Azure Monitor
   - Azure Policy
   - Role-Based Access Control
-- **On-premises using popular tools like Kubectl ** - There are many open source tools that allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications.  All of these tools work with Kubernetes clusters deployed with Azure Kubernetes Service on Azure Stack HCI.
+- **On-premises using popular tools like Kubectl** - There are many open source tools that allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with Azure Kubernetes Service on Azure Stack HCI.
 
 ## Run Linux and Windows containers
 
