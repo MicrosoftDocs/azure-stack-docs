@@ -84,7 +84,7 @@ To change the default provisioning type for a storage pool to **Thin** in Window
 5.	Select **Volumes** from the **Tools** pane at the left.
 6.	Click **+** to create a new volume.
 
-:::image type="content" source="media/thin-provisioning/thin-provisioning-wac.gif" alt-text="You can change the default provisioning type by selecting Storage Spaces and pools under Settings in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-wac.gif":::
+:::image type="content" source="media/thin-provisioning/thin-provisioning-wac.png" alt-text="You can change the default provisioning type by selecting Storage Spaces and pools under Settings in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-wac.png":::
 
 ## Next steps
 
