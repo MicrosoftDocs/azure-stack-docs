@@ -21,23 +21,21 @@ New in Azure Stack HCI, version 21H2, thin provisioning is recommended over the 
 
 Below is a comparison of the two provisioning types with empty volumes.
 
-With traditional fixed provisioning, pre-allocated space is not available in the storage pool.
+With traditional fixed provisioning, pre-allocated space is not available in the storage pool. With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth.
 
-:::image type="content" source="media/thin-provisioning/fixed-provisioning.png" alt-text="With traditional fixed provisioning, pre-allocated space is not available in the storage pool." lightbox="media/thin-provisioning/fixed-provisioning.png":::
+:::image type="content" source="media/thin-provisioning/fixed-provisioning.png" alt-text="With traditional fixed provisioning, pre-allocated space is not available in the storage pool." border="false":::
 
-With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth. 
-
-:::image type="content" source="media/thin-provisioning/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." lightbox="media/thin-provisioning/thin-provisioning.png":::
+:::image type="content" source="media/thin-provisioning/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." border="false":::
 
 When a thin-provisioned volume is created, the footprint will be smaller than the specified size of volume. As data is added or removed from the volume, the volume footprint will increase and decrease accordingly.
 
-:::image type="content" source="media/thin-provisioning/storage-pool.gif" alt-text="As data is added or removed from the volume, the volume footprint will increase and decrease accordingly." lightbox="media/thin-provisioning/storage-pool.gif":::
+:::image type="content" source="media/thin-provisioning/storage-pool.gif" alt-text="As data is added or removed from the volume, the volume footprint will increase and decrease accordingly." border="false":::
 
 Thin provisioning will work with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of clusters. Because TRIM is disabled for stretched clusters, storage will not be returned to the pool after data is deleted.
 
 You can create volumes that exceed the total available storage capacity by overprovisioning. An alert will be sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some of the data.
 
-:::image type="content" source="media/thin-provisioning/thin-provisioning.gif" alt-text="You can create volumes that exceed the total available storage capacity by overprovisioning." lightbox="media/thin-provisioning/thin-provisioning.gif":::
+:::image type="content" source="media/thin-provisioning/thin-provisioning.gif" alt-text="You can create volumes that exceed the total available storage capacity by overprovisioning." border="false":::
 
 ## Use thin provisioning with PowerShell
 
@@ -84,7 +82,7 @@ To change the default provisioning type for a storage pool to **Thin** in Window
 5.	Select **Volumes** from the **Tools** pane at the left.
 6.	Click **+** to create a new volume.
 
-:::image type="content" source="media/thin-provisioning/thin-provisioning-wac.png" alt-text="You can change the default provisioning type by selecting Storage Spaces and pools under Settings in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-wac.png":::
+:::image type="content" source="media/thin-provisioning/thin-provisioning-wac.png" alt-text="You can change the default provisioning type by selecting Storage Spaces and pools under Settings in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-wac.png" border="false":::
 
 ## Next steps
 
