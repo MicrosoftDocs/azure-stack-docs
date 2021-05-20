@@ -24,10 +24,10 @@ A profile is a combination of different resource types with different versions f
 - Stability for your app by locking to specific API versions.
 - Compatibility for your app with Azure Stack Hub and regional Azure datacenters.
 
-In the Go SDK, profiles are available under the profiles path. Profile version numbers are labeled in the **YYYY-MM-DD** format. The latest Azure Stack Hub API profile version is **2020-09-01** for Azure Stack Hub versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2020-09-01** profile, use the following code:
+In the Go SDK, profiles are available under the profiles path. Profile version numbers are labeled in the **YYYY-MM-DD** format. The latest Azure Stack Hub API profile version is **2019-03-01** for Azure Stack Hub versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
 
 ```go
-import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/compute/mgmt/compute"
+import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
 ```
 
 ## Install the Azure SDK for Go
@@ -80,11 +80,11 @@ To run a sample of Go code on Azure Stack Hub, follow these steps:
 
 4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack Hub, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). Your Azure Stack Hub environment is now set up.
 
-5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack Hub profile is **2020-09-01**. For example, to import a network module from the **2020-09-01** profile type, use the following code:
+5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack Hub profile is **2019-03-01**. For example, to import a network module from the **2019-03-01** profile type, use the following code:
 
    ```go
    package main
-    import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/network/mgmt/network"
+    import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/network/mgmt/network"
    ```
 
 6. In your function, create and authenticate a client with a **New** client function call. To create a virtual network client, use the following code:  
@@ -92,7 +92,7 @@ To run a sample of Go code on Azure Stack Hub, follow these steps:
    ```go
    package main
 
-   import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/network/mgmt/network"
+   import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/network/mgmt/network"
 
    func main() {
       vnetClient := network.NewVirtualNetworksClientWithBaseURI("<baseURI>", "(subscriptionID>")
@@ -108,7 +108,7 @@ To run a sample of Go code on Azure Stack Hub, follow these steps:
    ```go
    package main
 
-   import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/network/mgmt/network"
+   import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/network/mgmt/network"
    func main() {
    vnetClient := network.NewVirtualNetworksClientWithBaseURI("<baseURI>", "(subscriptionID>")
    vnetClient .Authorizer = autorest.NewBearerAuthorizer(token)
@@ -185,7 +185,7 @@ This example shows a sample of Go code that creates a virtual network on Azure S
    import (
        "context"
        "fmt"
-       "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/network/mgmt/network"
+       "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/network/mgmt/network"
        "github.com/Azure/go-autorest/autorest"
        "github.com/Azure/go-autorest/autorest/adal"
        "github.com/Azure/go-autorest/autorest/to"
@@ -231,7 +231,7 @@ This example shows a sample of Go code that creates a virtual network on Azure S
    import (
       "context"
       "fmt"
-      "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/network/mgmt/network"
+      "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/network/mgmt/network"
       "github.com/Azure/go-autorest/autorest"
       "github.com/Azure/go-autorest/autorest/adal"
       "github.com/Azure/go-autorest/autorest/to"
@@ -296,7 +296,7 @@ Some of the code samples available for Azure Stack Hub using the Go SDK are:
 
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM)
 - [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane)
-- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (a sample that uses 2020-09-01 profile which targets the latest API versions supported by Azure Stack Hub)
+- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (a sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack Hub)
 
 ## Next steps
 
