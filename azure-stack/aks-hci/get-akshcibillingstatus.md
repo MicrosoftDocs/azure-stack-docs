@@ -19,9 +19,12 @@ Get billing status for the Azure Kubernetes Service on Azure Stack HCI deploymen
 Get-AksHciBillingStatus
 ```
 
+## Description
+Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment.
+
 ## Examples
 
 ### Example
 ```powershell
-Get-AksHciBillingStatus
+PS C:\> Get-AksHciBillingStatus
 ```

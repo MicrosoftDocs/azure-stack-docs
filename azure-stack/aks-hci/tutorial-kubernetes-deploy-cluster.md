@@ -13,7 +13,7 @@ author: jeguan
 Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI cluster is deployed in Azure Kubernetes Service on Azure Stack HCI. You learn how to:
 
 > [!div class="checklist"]
-> * Deploy a Kubernetes cluster on Azure Stack HCI that can authenticate to an Azure container registry
+> * Deploy an AKS cluster on Azure Stack HCI 
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your workload cluster
 
@@ -26,7 +26,7 @@ In previous tutorials, a container image was created and uploaded to an Azure Co
 This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following command to install it.
 
 ```powershell
-Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 0.2.26
+Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 1.0.0
 ```
 
 ## Install the Azure Kubernetes Service Host
@@ -138,7 +138,7 @@ moc-le9q8mro8mg   Ready    <none>   4m42s   v1.18.14
 In this tutorial, a Kubernetes cluster was deployed in AKS, and you configured `kubectl` to connect to it. You learned how to:
 
 > [!div class="checklist"]
-> * Deploy a Kubernetes AKS cluster that can authenticate to an Azure container registry
+> * Deploy an AKS cluster on Azure Stack HCI
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your AKS cluster
 

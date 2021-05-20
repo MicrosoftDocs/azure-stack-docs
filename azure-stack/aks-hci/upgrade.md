@@ -42,9 +42,9 @@ Windows {v1.18.8, v1.18.10}
 > Updating a workload cluster to a newer version of Kubernetes will only work if the target Kubernetes version is supported by the current operating system version.
 
 #### Get available workload cluster updates
-The example below assumes that the workload cluster `myCluster` is currently on Kubernetes version 1.17.11.
+The example below assumes that the workload cluster `mycluster` is currently on Kubernetes version 1.17.11.
 ```powershell
-PS C:\> Get-AksHciClusterUpgrades -name mycluster
+PS C:\> Get-AksHciClusterUpdates -name mycluster
 ```
 
 ```output
@@ -73,7 +73,7 @@ Run the `Update-AksHciCluster` command by specifying the `operatingSystem` flag.
 PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.8 -operatingSystem
 ```
 
-## Update the OS version and the Kubernetes version
+## Update the OS version of a workload cluster
 
 > [!Important]
 > Updating a workload cluster to a newer version of the operating system and Kubernetes version is allowed.
@@ -82,7 +82,7 @@ PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.8 -
 The examples below assume that the workload cluster `myCluster` is currently on Kubernetes version 1.18.8 and has an operating system version that's more than 30 days old.
 
 ```powershell
-PS C:\> Get-AksHciClusterUpgrades -name mycluster
+PS C:\> Get-AksHciClusterUpdates -name mycluster
 ```
 
 ```output
@@ -95,7 +95,7 @@ This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.10          @{
 You can run the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command with the new Kubernetes version and the `-operatingSystem` flag to update the workload cluster's Kubernetes version as well as the container hosts' operating systems.
 
 ```powershell
-PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.10 -operatingSystem
+PS C:\> Update-AksHciCluster -clusterName mycluster -operatingSystem
 ```
 
 ## Update the Kubernetes version of a workload cluster using Windows Admin Center

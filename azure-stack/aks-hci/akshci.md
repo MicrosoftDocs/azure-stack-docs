@@ -23,13 +23,13 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [get-akshcicluster](get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [get-akshciclusternetwork](get-akshciclusternetwork.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
 | [get-akshciclusterupdates](get-akshciclusterupdates.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
-| [get-akshciclusterupgrades](get-akshciclusterupgrades.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
 | [get-akshciconfig](get-akshciconfig.md) | List the current configuration settings for the Azure Kubernetes Service host. |
 | [get-akshcicredential](get-akshcicredential.md) | Access your cluster using kubectl. |
 | [get-akshcieventlog](get-akshcieventlog.md) | Gets all the event logs from the AKS HCI PowerShell module. |
 | [get-akshcikubernetesversion](get-akshcikubernetesversion.md) | List available version for creating managed Kubernetes cluster. |
 | [get-akshcilogs](get-akshcilogs.md) | Create a zipped folder with logs from all your pods. |
 | [get-akshciproxysetting](get-akshciproxysetting.md) | Retrieve a list or an individual proxy settings object. |
+| [get-akshciregistration](get-akshciregistration.md) | Get registration information for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [get-akshcistoragecontainer](get-akshcistoragecontainer.md) | Get the information of the specified storage container. |
 | [get-akshciupdates](get-akshciupdates.md) | List available updates for Azure Kubernetes Service on Azure Stack HCI. |
 | [get-akshciversion](get-akshciversion.md) | Get the current version of Azure Kubernetes Service on Azure Stack HCI. |
