@@ -4,9 +4,9 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 05/20/2021
 ms.author: sethm
-ms.reviewer: kivenkat
+ms.reviewer: thoroet
 ms.lastreviewed: 06/06/2019
 
 # Intent: As an Azure Stack operator, I want to learnm which guest operating systems can be used on Azure Stack.
@@ -62,7 +62,6 @@ Linux distributions listed as available in Azure Stack Hub Marketplace include t
 | CentOS-based 6.9 | 64-bit | Rogue Wave | Yes |
 | CentOS-based 6.10 | 64-bit | Rogue Wave | Yes |
 | ClearLinux | 64-bit | ClearLinux.org | Yes |
-| CoreOS Linux (Stable) |  64-bit | CoreOS | Yes |
 | Debian 8 "Jessie" | 64-bit | credativ |  Yes |
 | Debian 9 "Stretch" | 64-bit | credativ | Yes |
 | Oracle Linux | 64-bit | Oracle | Yes |

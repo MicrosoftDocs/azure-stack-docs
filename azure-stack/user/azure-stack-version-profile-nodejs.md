@@ -25,32 +25,32 @@ In this article, you can use [Visual Studio Code](https://code.visualstudio.com/
 
 ## The Node.js SDK
 
-The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2020-09-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
+The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
 An API profile is a combination of resource providers and API versions. You can use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
   -   To make use of the latest versions of all the services, use the **latest** profile of the packages.
 
-  -   To use the services compatible with Azure Stack Hub, use the **\@azure/arm-resources-profile-hybrid-2020-09-01** or **\@azure/arm-storage-profile-2020-09-01-hybrid**
+  -   To use the services compatible with Azure Stack Hub, use the **\@azure/arm-resources-profile-hybrid-2019-03-01** or **\@azure/arm-storage-profile-2019-03-01-hybrid**
 
 ### Packages in npm
 
-Each resource provider has its own package. You can get the package from the [npm registry](https://www.npmjs.com/package/@azure/arm-storage-profile-2020-09-01-hybrid).
+Each resource provider has its own package. You can get the package from the [npm registry](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid).
 
 You can find the following packages:
 
 | Resource provider | Package |
 | --- | --- |
-| [App Service](https://www.npmjs.com/package/@azure/arm-resources-profile-2020-09-01-hybrid) | @azure/arm-resources-profile-2020-09-01-hybrid |
-| [Azure Resource Manager Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2020-09-01) | @azure/arm-subscriptions-profile-hybrid-2020-09-01  |
-| [Azure Resource Manager Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2020-09-01) | @azure/arm-policy-profile-hybrid-2020-09-01
-| [Azure Resource Manager DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2020-09-01-hybrid) | @azure/arm-dns-profile-2020-09-01-hybrid  |
-| [Authorization](https://www.npmjs.com/package/@azure/arm-authorization-profile-2020-09-01-hybrid) | @azure/arm-authorization-profile-2020-09-01-hybrid  |
-| [Compute](https://www.npmjs.com/package/@azure/arm-compute-profile-2020-09-01-hybrid) | @azure/arm-compute-profile-2020-09-01-hybrid |
-| [Storage](https://www.npmjs.com/package/@azure/arm-storage-profile-2020-09-01-hybrid) | @azure/arm-storage-profile-2020-09-01-hybrid |
-| [Network](https://www.npmjs.com/package/@azure/arm-network-profile-2020-09-01-hybrid) | @azure/arm-network-profile-2020-09-01-hybrid |
-| [Resources](https://www.npmjs.com/package/@azure/arm-resources-profile-hybrid-2020-09-01) | @azure/arm-resources-profile-hybrid-2020-09-01 |
- | [Keyvault](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2020-09-01-hybrid) | @azure/arm-keyvault-profile-2020-09-01-hybrid |
+| [App Service](https://www.npmjs.com/package/@azure/arm-appservice-profile-2019-03-01-hybrid) | @azure/arm-appservice-profile-2019-03-01-hybrid |
+| [Azure Resource Manager Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2019-03-01) | @azure/arm-subscriptions-profile-hybrid-2019-03-01  |
+| [Azure Resource Manager Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) | @azure/arm-policy-profile-hybrid-2019-03-01
+| [Azure Resource Manager DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2019-03-01-hybrid) | @azure/arm-dns-profile-2019-03-01-hybrid  |
+| [Authorization](https://www.npmjs.com/package/@azure/arm-authorization-profile-2019-03-01-hybrid) | @azure/arm-authorization-profile-2019-03-01-hybrid  |
+| [Compute](https://www.npmjs.com/package/@azure/arm-compute-profile-2019-03-01-hybrid) | @azure/arm-compute-profile-2019-03-01-hybrid |
+| [Storage](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid) | @azure/arm-storage-profile-2019-03-01-hybrid |
+| [Network](https://www.npmjs.com/package/@azure/arm-network-profile-2019-03-01-hybrid) | @azure/arm-network-profile-2019-03-01-hybrid |
+| [Resources](https://www.npmjs.com/package/@azure/arm-resources-profile-hybrid-2019-03-01) | @azure/arm-resources-profile-hybrid-2019-03-01 |
+ | [Keyvault](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid) | @azure/arm-keyvault-profile-2019-03-01-hybrid |
 
 To use the latest API-version of a service, use the **Latest** profile of the specific client library. For example, if you would like to use the latest-API version of resources service alone, use the `azure-arm-resource` profile of the **Resource Management Client Library.** package.
 
@@ -67,11 +67,11 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 3. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) for Visual Studio Code.
 
-2.  Install the client packages for the Azure Stack Hub Resource Manger. For more information, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2020-09-01-hybrid).
+2.  Install the client packages for the Azure Stack Hub Resource Manger. For more information, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
 3.  The packages that need to be installed depends on the profile version you would like to use. You can find a list of resource providers in the [Packages in npm](#packages-in-npm) section.
 
-4. Install the resource provider client library using npm. From the command line, run: `npm install <package-name>`. For example, you can run `npm install @azure/arm-authorization-profile-2020-09-01-hybrid` to install the authorization resource provider library.
+4. Install the resource provider client library using npm. From the command line, run: `npm install <package-name>`. For example, you can run `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` to install the authorization resource provider library.
 
 5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack Hub](/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
 
@@ -141,7 +141,7 @@ Sample JSON file:
 
 ### Existing API profiles
 
--  **\@azure/arm-resourceprovider-profile-2020-09-01-hybrid**
+-  **\@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
 
     Latest Profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub as long as you are on 1808 stamp or further.
 
@@ -156,9 +156,9 @@ For more information about Azure Stack Hub and API profiles, see a [Summary of A
 The following lines should be used to instantiate a profile client. This parameter is only required for Azure Stack Hub or other private clouds. Global Azure already has these settings by default with @azure-arm-resource or @azure-arm-storage.
 
 ```Node.js  
-var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2020-09-01').ResourceManagementClient;
+var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019-03-01').ResourceManagementClient;
 
-var StorageManagementClient = require('@azure/arm-storage-profile-2020-09-01-hybrid').StorageManagementClient;
+var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hybrid').StorageManagementClient;
 ````
 
 The following code is needed to authenticate the service principal on Azure Stack Hub. It creates a token by the tenant ID and the authentication base, which is specific to Azure Stack Hub.
@@ -265,13 +265,13 @@ You can use the following samples as a reference for creating solutions with Nod
 8.  Checks that you have set the right client libraries, using a combination of the client libraries stipulated above. In this sample we have used the following below:
 
     ```Node.js
-    var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2020-09-01').ResourceManagementClient;
-    var StorageManagementClient = require('@azure/arm-storage-profile-2020-09-01-hybrid').StorageManagementClient;
+    var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019-03-01').ResourceManagementClient;
+    var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hybrid').StorageManagementClient;
     ```
 
-9.  Using [npm modules search](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2020-09-01-hybrid), locate the **2020-09-01-hybrid** and install the packages associated with this profile for the Compute, Networking, Storage, KeyVault and App Services resource providers.
+9.  Using [npm modules search](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid), locate the **2019-03-01-hybrid** and install the packages associated with this profile for the Compute, Networking, Storage, KeyVault and App Services resource providers.
 
-    This can be done by opening command prompt, redirecting it to the root folder of the repository, and running `npm install @azure/arm-keyvault-profile-2020-09-01-hybrid` for each resource provider used.
+    This can be done by opening command prompt, redirecting it to the root folder of the repository, and running `npm install @azure/arm-keyvault-profile-2019-03-01-hybrid` for each resource provider used.
 
 10.  On the command prompt, run the command `npm install` to install all node.js modules.
 
