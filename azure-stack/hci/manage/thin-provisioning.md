@@ -23,9 +23,9 @@ Below is a comparison of the two provisioning types with empty volumes.
 
 With traditional fixed provisioning, pre-allocated space is not available in the storage pool. With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth.
 
-:::image type="content" source="media/thin-provisioning/fixed-provisioning.png" alt-text="With traditional fixed provisioning, pre-allocated space is not available in the storage pool." border="false":::
-
-:::image type="content" source="media/thin-provisioning/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." border="false":::
+| **Fixed provisioning** | **Thin provisioning** |
+|:----------------------:|:---------------------:|
+|:::image type="content" source="media/thin-provisioning/fixed-provisioning.png" alt-text="With traditional fixed provisioning, pre-allocated space is not available in the storage pool." border="false":::|:::image type="content" source="media/thin-provisioning/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." border="false":::|
 
 When a thin-provisioned volume is created, the footprint will be smaller than the specified size of volume. As data is added or removed from the volume, the volume footprint will increase and decrease accordingly.
 
