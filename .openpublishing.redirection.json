@@ -2,7 +2,7 @@
   "redirections": [
      { 
       "source_path": "azure-stack/aks-hci/get-akshciclusterupgrades.md", 
-      "redirect_url": "/azure-stack/aks-hci/get-akshciclusterupdates.md", 
+      "redirect_url": "/azure-stack/aks-hci/get-akshciclusterupdates", 
       "redirect_document_id": false
     },
      { 
