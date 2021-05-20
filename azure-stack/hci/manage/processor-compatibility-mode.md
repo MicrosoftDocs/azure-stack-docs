@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/19/2021
+ms.date: 05/20/2021
 ---
 
 # Dynamic processor compatibility mode in Azure Stack HCI
@@ -72,7 +72,7 @@ The minimum fixed CPU capabilities are:
 
 Assuming that all servers in each cluster are running the same hardware, which is a requirement for Azure Stack HCI, it's possible to live migrate running VMs between clusters. There are three common scenarios.
 
-- **Live migrating a VM from a cluster with new processors to a cluster with the same processors.** The VM capabilities will be transferred to the destination cluster.
+- **Live migrating a VM from a cluster with new processors to a cluster with the same processors.** The VM capabilities will be transferred to the destination cluster. This scenario doesn't require processor compatibility mode to be enabled; however, leaving it enabled will not cause any problems.
 
 - **Live migrating a VM from a cluster with older processors to a cluster with newer processors.** The VM capabilities will be transferred to the destination cluster. In this scenario, if the VM is restarted, it will receive the latest calculated capability of the destination cluster.
 
