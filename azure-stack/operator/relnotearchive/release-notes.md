@@ -38,7 +38,7 @@ Release notes for supported versions of Azure Stack Hub can be found under [Over
 ::: moniker-end
 
 ::: moniker range="azs-2005"
-## 2005 build reference
+## 2005 archived release notes
 
 The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
 
