@@ -22,6 +22,13 @@ To access known issues for a different archived version, use the version selecto
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 ::: moniker range="azs-2005"
+## 2005 archived known issues
+
+This article lists known issues in Azure Stack Hub releases. The list is updated as new issues are identified.
+
+> [!IMPORTANT]  
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](../azure-stack-servicing-policy.md#keep-your-system-under-support).
+
 ## Update
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
