@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/18/2021
+ms.date: 05/19/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -39,11 +39,11 @@ To access known issues for a different version, use the version selector dropdow
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-### Update to 2102 fails at step "Configure DNS for SqlServer"
+### Update to 2102 fails during pre-update checks for AKS/ACR
 
-- Applicable: This issue applies to Azure Container Registry preview customers that have installed the Container Registry service, even if they have subsequently uninstalled the service.
-- Remediation: A hotfix for this issue must be applied prior to attempting the update for private preview customers that have installed Azure Container Registry service. The hotfix is not yet available.
-- Occurrence: Any stamp that has the Azure Container Registry service installed as part of the private preview will experience this update failure, including stamps that have installed and uninstalled the service. Please do not attempt the update until further guidance is provided.
+- Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers.
+- Remediation: You must uninstall AKS and ACR prior to updating to 2102. Please restart the update after uninstalling these services.
+- Occurrence: Any stamp that has ACR or AKS installed will experience this failure.
 
 ## Networking
 
@@ -405,6 +405,6 @@ To access archived known issues for an older version, use the version selector d
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2002"
+::: moniker range="<azs-2005"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
