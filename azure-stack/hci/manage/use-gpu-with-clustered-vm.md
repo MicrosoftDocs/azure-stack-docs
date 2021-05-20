@@ -1,6 +1,6 @@
 ---
 title: Use GPUs with clustered VMs
-description: This topic provides guidance on how to use GPUs with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads running in the clustered VMs.
+description: This topic provides guidance on how to use GPUs with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 author: rick-man
 ms.author: rickman
 ms.topic: how-to
@@ -11,11 +11,11 @@ ms.date: 05/25/2021
 
 >Applies to: Azure Stack HCI, version 21H2 Public Preview
 
-This topic provides guidance on how to use graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads running in the clustered VMs.
+This topic provides guidance on how to use graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 
 Starting in Azure Stack HCI, version 21H2, you can include GPUs in your Azure Stack HCI cluster to provide GPU acceleration to workloads running in clustered VMs. The topic covers the basic prerequisites of this capability and how to deploy it.
 
-GPU acceleration is provided via Discrete Device Assignment (DDA), also known as GPU pass-through, which allows you to dedicate one or more physical GPUs to a VM. Clustered VMs can take advantage of GPU acceleration, as well as clustering capabilities such as high availability via failover. Live migration is not currently supported, but VMs can be automatically restarted and placed where GPU resources are available in the event of a failure.
+GPU acceleration is provided via Discrete Device Assignment (DDA), also known as GPU pass-through, which allows you to dedicate one or more physical GPUs to a VM. Clustered VMs can take advantage of GPU acceleration, and clustering capabilities such as high availability via failover. Live migration isn't currently supported, but VMs can be automatically restarted and placed where GPU resources are available in the event of a failure.
 
 ## Prerequisites
 To get started, you’ll need an Azure Stack HCI cluster of at least two nodes, running Azure Stack HCI, version 21H2. You’ll also need GPUs that are physically installed in each node of the cluster.
@@ -64,7 +64,7 @@ Prepare the VM for DDA by setting its cache behavior, stop action, and memory-ma
     $vm | Set-ClusterParameter -Name "OfflineAction" -Value 3
    ```
 
-1. Assign the resource pool that you created earlier to the VM. This declares to the cluster that the VM requires an assigned device from the `GpuChildPool` pool when it is either started or moved.
+1. Assign the resource pool that you created earlier to the VM. This declares to the cluster that the VM requires an assigned device from the `GpuChildPool` pool when it's either started or moved.
 
     In PowerShell, run the following cmdlet:
 
