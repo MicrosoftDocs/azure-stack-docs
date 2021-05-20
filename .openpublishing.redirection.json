@@ -1,7 +1,7 @@
 {
   "redirections": [
-    { 
-      "source_path": "/azure-stack/aks-hci/troubleshoot.md", 
+      { 
+      "source_path": "azure-stack/aks-hci/troubleshoot.md", 
       "redirect_url": "/azure-stack/aks-hci/troubleshoot-known-issues", 
       "redirect_document_id": false
     },
