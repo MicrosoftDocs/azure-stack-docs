@@ -31,15 +31,15 @@ Prepare the GPUs in each node by installing security mitigation drivers on each 
 
 1. Create a new empty resource pool on each node that will contain the clustered GPU resources. Make sure to provide the same pool name on each node.
 
-In PowerShell, run the following command:
+    In PowerShell, run the following cmdlet as an administrator:
 
    ```PowerShell
     New-VMResourcePool -ResourcePoolType PciExpress -Name "GpuChildPool"
    ```
 
-1. Add the dismounted GPUs from each node to the resource pool that you created in the previous step:
+1. Add the dismounted GPUs from each node to the resource pool that you created in the previous step,
 
-In PowerShell, run the following commands:
+    In PowerShell, run the following cmdlets:
 
    ```PowerShell
     $gpu = Get-VMHostAssignableDevice
@@ -58,7 +58,7 @@ Prepare the VM for DDA by setting its cache behavior, stop action, and memory-ma
 
 1. Configure the cluster VM resource’s default offline action as `force-shutdown` rather than `save`.
 
-In PowerShell, run the following command:
+    In PowerShell, run the following cmdlet:
 
    ```PowerShell
     $vm | Set-ClusterParameter -Name "OfflineAction" -Value 3
@@ -66,7 +66,7 @@ In PowerShell, run the following command:
 
 1. Assign the resource pool that you created earlier to the VM. This declares to the cluster that the VM requires an assigned device from the `GpuChildPool` pool when it is either started or moved.
 
-In PowerShell, run the following command:
+    In PowerShell, run the following cmdlet:
 
    ```PowerShell
     $vm | Add-VMAssignableDevice -ResourcePoolName "GpuChildPool"
@@ -75,7 +75,7 @@ In PowerShell, run the following command:
 If you start the VM now, the cluster ensures that it is placed on a node with available GPU resources from this cluster-wide pool. The cluster also assigns the GPU to the VM through DDA, which allows the GPU to be accessed from workloads inside the VM.
 
    >[!NOTE]
-   > You will also need to install drivers from your GPU manufacturer inside the VM so that apps in the VM can take advantage of the GPU assigned to it.
+   > You also need to install drivers from your GPU manufacturer inside the VM so that apps in the VM can take advantage of the GPU assigned to it.
 
 ### Fail over a VM with an assigned GPU
 To test the cluster’s ability to keep your GPU workload available, perform a drain operation on the node where the VM is running with an assigned GPU. To drain the node, follow the instructions in [Taking an Azure Stack HCI server offline for maintenance](maintain-servers.md). The cluster will restart the VM on another node in the cluster, as long as another node has sufficient available GPU resources in the pool that you created.
