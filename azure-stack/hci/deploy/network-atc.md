@@ -65,7 +65,7 @@ The following are requirements and best practices for using the Network ATC feat
 
 - Must use two or more physical host systems that are Azure Stack HCI certified.
 
-- Adapters managed by Network ATC must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#switch-embedded-teaming-set)
+- Adapters managed by Network ATC must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming](../concepts/host-network-requirements#switch-embedded-teaming-set)
 
 - Each symmetric physical adapter must use the same name on each cluster node.
 
@@ -84,7 +84,7 @@ The following are requirements and best practices for using the Network ATC feat
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/physical-network-requirements) for more information.
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements) for more information.
 
 You can use the following cmdlet to install the required Windows features:
 
@@ -115,7 +115,7 @@ Typically, only a few of the Network ATC cmdlets are needed. Here is a brief ove
 
 Network ATC modifies how you deploy host networking, not what you deploy. Network ATC can implement multiple scenarios so long as the scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but should give you an idea of the possibilities.
 
-For simplicity we only demonstrate two physical adapters per team, however it is possible to add more. Refer to [Plan Host Networking](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements) for more information.
+For simplicity we only demonstrate two physical adapters per team, however it is possible to add more. Refer to [Plan Host Networking](../concepts/host-network-requirements) for more information.
 
 ### Fully converged intent
 
@@ -269,7 +269,7 @@ In this task, we will create a Network ATC intent that specifies the compute and
     Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
     ```
  
-1. Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage. For more validation examples, please see [Network ATC demo](https://youtu.be/Z8UO6EGnh0k)
+1. Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage. For more validation examples, see [Network ATC demo](https://youtu.be/Z8UO6EGnh0k)
 
     ```powershell
     Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
