@@ -29,6 +29,8 @@ This tutorial uses the AksHci PowerShell module. If you have not installed it ye
 Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 1.0.0
 ```
 
+**If you are using remote PowerShell, you must use CredSSP.** 
+
 ## Install the Azure Kubernetes Service Host
 
 First, you must configure your registration settings.
