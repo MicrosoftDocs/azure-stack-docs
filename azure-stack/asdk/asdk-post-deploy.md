@@ -44,7 +44,7 @@ You can install the latest Azure Stack PowerShell module with or without interne
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
     Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-    Install-AzProfile -Profile 2020-09-01-hybrid -Force
+    Install-AzProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
 
     Get-Module -Name "Az*" -ListAvailable
@@ -62,7 +62,7 @@ If the installation is successful, the Az and AzureStack modules are displayed i
     Install-Module -Name AzureRM.BootStrapper
     
     # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2020-09-01-hybrid -Force
+    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 1.8.2
     
     Get-Module -Name "Az*" -ListAvailable
