@@ -2,7 +2,7 @@
 title: Upgrade the Kubernetes version of AKS workload clusters
 description: Learn how to upgrade the Kubernetes version of AKS workload clusters on Azure Stack HCI
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 05/20/2021
 author: jessicaguan
 ms.author: jeguan
 ---
@@ -32,8 +32,20 @@ PS C:\> Get-AksHciKubernetesVersion
 ```
 
 ```Output
-Linux {v1.16.10, v1.16.15, v1.17.11, v1.17.13...}
-Windows {v1.18.8, v1.18.10}
+OrchestratorType OrchestratorVersion OS      IsPreview
+---------------- ------------------- --      ---------
+Kubernetes       v1.18.14            Linux       False
+Kubernetes       v1.18.17            Linux       False
+Kubernetes       v1.19.7             Linux       False
+Kubernetes       v1.19.9             Linux       False
+Kubernetes       v1.20.2             Linux       False
+Kubernetes       v1.20.5             Linux       False
+Kubernetes       v1.18.14            Windows     False
+Kubernetes       v1.18.17            Windows     False
+Kubernetes       v1.19.7             Windows     False
+Kubernetes       v1.19.9             Windows     False
+Kubernetes       v1.20.2             Windows     False
+Kubernetes       v1.20.5             Windows     False
 ```
 
 ## Update the Kubernetes version of a workload cluster
@@ -50,8 +62,8 @@ PS C:\> Get-AksHciClusterUpdates -name mycluster
 ```output
 details                                                     kubernetesversion operatingsystemversion
 -------                                                     ----------------- ----------------------
-This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.17.13          @{mariner=January 2021; windows=January 2021}
-This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.10          @{mariner=January 2021; windows=January 2021}
+This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.19.9           @{mariner=April 2021; windows=April 2021}
+This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5           @{mariner=April 2021; windows=April 2021}
 ```
 
 As seen from the output above, you can either update your cluster to v1.17.13 or to v1.18.10.
@@ -88,7 +100,7 @@ PS C:\> Get-AksHciClusterUpdates -name mycluster
 ```output
 details                                                     kubernetesversion operatingsystemversion
 -------                                                     ----------------- ----------------------
-This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.10          @{mariner=January 2021; windows=January 2021}
+This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.18.10          @{mariner=April 2021; windows=April 2021}
 ```
 
 #### Initiate the workload cluster update
