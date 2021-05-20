@@ -27,53 +27,58 @@ To get started, you’ll need an Azure Stack HCI cluster of at least two nodes, 
 This section describes the steps necessary to prepare your cluster nodes for GPU usage, assign VMs to clustered GPU resource pools, and test automatic restart.
 
 ### Prepare the cluster
-First, prepare the GPUs in each node by installing security mitigation drivers on each node, disabling the GPUs, and dismounting them from the host according to the instructions in [Deploy graphics devices using Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda). Depending on your hardware vendor, you may also need to configure any GPU licensing requirements.
+Prepare the GPUs in each node by installing security mitigation drivers on each node, disabling the GPUs, and dismounting them from the host according to the instructions in [Deploy graphics devices using Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda). Depending on your hardware vendor, you may also need to configure any GPU licensing requirements.
 
-Next, create a new empty resource pool on each node that will contain the clustered GPU resources. Make sure to provide the same pool name on each node.
+1. Create a new empty resource pool on each node that will contain the clustered GPU resources. Make sure to provide the same pool name on each node.
 
 In PowerShell, run the following command:
 
-    ```PowerShell
+   ```PowerShell
     New-VMResourcePool -ResourcePoolType PciExpress -Name "GpuChildPool"
-    ```
+   ```
 
-Next, add the dismounted GPUs from each node to the resource pool that you created in the previous step:
+1. Add the dismounted GPUs from each node to the resource pool that you created in the previous step:
 
 In PowerShell, run the following commands:
 
-    ```PowerShell
+   ```PowerShell
     $gpu = Get-VMHostAssignableDevice
-    ```
+   ```
 
-    ```PowerShell
+   ```PowerShell
     Add-VMHostAssignableDevice -HostAssignableDevice $gpu -ResourcePoolName "GpuChildPool"
-    ```
+   ```
 
 You now have a cluster-wide resource pool (named `GpuChildPool`) that is populated with assignable GPUs. The cluster will use this pool to determine VM placement for any started or moved VMs that are assigned to the GPU resource pool.
 
 ### Assign a VM to a GPU resource pool
-TBD
+First, either create a new VM in your cluster, or find an existing VM.
 
+Prepare the VM for DDA by setting its cache behavior, stop action, and memory-mapped I/O (MMIO) properties according to the instructions in [Deploy graphics devices using Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda).
 
+1. Configure the cluster VM resource’s default offline action as `force-shutdown` rather than `save`.
 
+In PowerShell, run the following command:
 
+   ```PowerShell
+    $vm | Set-ClusterParameter -Name "OfflineAction" -Value 3
+   ```
 
+1. Assign the resource pool that you created earlier to the VM. This declares to the cluster that the VM requires an assigned device from the `GpuChildPool` pool when it is either started or moved.
 
+In PowerShell, run the following command:
 
+   ```PowerShell
+    $vm | Add-VMAssignableDevice -ResourcePoolName "GpuChildPool"
+   ```
+
+If you start the VM now, the cluster ensures that it is placed on a node with available GPU resources from this cluster-wide pool. The cluster also assigns the GPU to the VM through DDA, which allows the GPU to be accessed from workloads inside the VM.
+
+   >[!NOTE]
+   > You will also need to install drivers from your GPU manufacturer inside the VM so that apps in the VM can take advantage of the GPU assigned to it.
 
 ### Fail over a VM with an assigned GPU
-TBD
-
-
-
-
-
-<!---Example note format.--->
-   >[!NOTE]
-   > TBD.
-
-
-
+To test the cluster’s ability to keep your GPU workload available, perform a drain operation on the node where the VM is running with an assigned GPU. To drain the node, follow the instructions in [Taking an Azure Stack HCI server offline for maintenance](maintain-servers.md). The cluster will restart the VM on another node in the cluster, as long as another node has sufficient available GPU resources in the pool that you created.
 
 ## Next steps
 For more information, see also:
