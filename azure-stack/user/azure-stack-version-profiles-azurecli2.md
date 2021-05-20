@@ -4,10 +4,10 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/14/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 4/14/2020
+ms.lastreviewed: 12/16/2020
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
@@ -79,7 +79,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-    az cloud update --profile 2020-09-01-hybrid
+    az cloud update --profile 2019-03-01-hybrid
    ```
  
 6. Sign in to your Azure Stack Hub environment by using the `az login` command.
@@ -118,14 +118,14 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 You should see that your environment is listed and **IsActive** is `true`. For example:
 
-```output  
+```azurecli  
 IsActive    Name               Profile
 ----------  -----------------  -----------------
-False       AzureCloud         2020-09-01-hybrid
+False       AzureCloud         2019-03-01-hybrid
 False       AzureChinaCloud    latest
 False       AzureUSGovernment  latest
 False       AzureGermanCloud   latest
-True        AzureStackUser     2020-09-01-hybrid
+True        AzureStackUser     2019-03-01-hybrid
 ```
 
 #### Test the connectivity
@@ -138,17 +138,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-```output
-{
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
-  "location": "local",
-  "name": "RGCLI1",
-  " properties ": {
-    "provisioningState": "Succeeded"
-  },
-  "tags ": null
-}
-```
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### [AD FS on Windows](#tab/adfs-win)
 
@@ -184,11 +174,11 @@ This section walks you through setting up CLI if you're using Active Directory F
 5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-    az cloud update --profile 2020-09-01-hybrid
+    az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2020-09-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
 6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -197,7 +187,7 @@ This section walks you through setting up CLI if you're using Active Directory F
      You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
 
      ```azurecli
-     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>   --profile "2020-09-01-hybrid"
+     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>   --profile "2019-03-01-hybrid"
      ```
 
      > [!NOTE]
@@ -231,17 +221,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-```output
-{
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
-  "location": "local",
-  "name": "RGCLI1",
-  " properties ": {
-    "provisioningState": "Succeeded"
-  },
-  "tags ": null
-}
-```
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### [Azure AD on Linux](#tab/ad-lin)
 
@@ -279,11 +259,11 @@ Use the following steps to connect to Azure Stack Hub:
 5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-      az cloud update --profile 2020-09-01-hybrid
+      az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2020-09-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
 6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -322,17 +302,7 @@ With everything set up, use CLI to create resources within Azure Stack Hub. For 
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-```output
-{
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
-  "location": "local",
-  "name": "RGCLI1",
-  " properties ": {
-    "provisioningState": "Succeeded"
-  },
-  "tags ": null
-}
-```
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### [AD FS Linux](#tab/adfs-lin)
 
@@ -369,11 +339,11 @@ Use the following steps to connect to Azure Stack Hub:
 5. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-      az cloud update --profile 2020-09-01-hybrid
+      az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2020-09-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
 6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -416,17 +386,7 @@ With everything set up, use CLI to create resources within Azure Stack Hub. For 
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-```output
-{
-  "id": "/subscriptions/84edee99-XXXX-4f5c-b646-5cdab9759a03/resourceGroups/RGCL11",
-  "location": "local",
-  "name": "RGCLI1",
-  " properties ": {
-    "provisioningState": "Succeeded"
-  },
-  "tags ": null
-}
-```
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### Known issues
 
