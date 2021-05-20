@@ -92,6 +92,22 @@ kube-system   kube-proxy-qqnkr                                1/1     Terminatin
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
 
+## All pods in a Windows node are stuck in a _ContainerCreating_ state
+In a workload cluster with the Calico network plug-in enabled, all of the pods in a Windows node are stuck in the _ContainerCreating_ state except for the `calico-node-windows daemonset` pod.
+
+To resolve this issue, find the name of the _kube-proxy_ pod on that node and then run the following command: 
+
+```powershell
+kubectl delete pod <KUBE-PROXY-NAME> -n kube-system
+```
+
+All the pods should start on the node.
+
+## In a workload cluster with static IP, all pods in a node are stuck in a _ContainerCreating_ state
+In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a _Connection timed out_ error.
+
+To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
+
 ## Attempt to increase the number of worker nodes fails
 When using PowerShell to create a cluster with static IP and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
 
