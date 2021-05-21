@@ -3,9 +3,10 @@ title: Deploy a cluster set
 description: Learn how to deploy a cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 05/20/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
+ms.custom: contperf-fy21q4
 ---
 
 # Deploy a cluster set

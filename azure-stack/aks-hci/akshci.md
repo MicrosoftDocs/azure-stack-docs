@@ -23,7 +23,6 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [get-akshcicluster](get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [get-akshciclusternetwork](get-akshciclusternetwork.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
 | [get-akshciclusterupdates](get-akshciclusterupdates.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
-| [get-akshciclusterupgrades](get-akshciclusterupgrades.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
 | [get-akshciconfig](get-akshciconfig.md) | List the current configuration settings for the Azure Kubernetes Service host. |
 | [get-akshcicredential](get-akshcicredential.md) | Access your cluster using kubectl. |
 | [get-akshcieventlog](get-akshcieventlog.md) | Gets all the event logs from the AKS HCI PowerShell module. |
@@ -45,10 +44,10 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [new-akshcinetworksetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
 | [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
-| [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
+| [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
+| [remove-akshcigmsacredentialspec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
-| [remove-akshciproxysetting](remove-akshciproxysetting.md)  |  Remove a proxy settings object. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
