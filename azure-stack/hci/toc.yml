@@ -66,6 +66,8 @@
       href: manage/vm-affinity.md
     - name: VM load balancing
       href: manage/vm-load-balancing.md
+    - name: Use GPUs with clustered VMs
+      href: manage/use-gpu-with-clustered-vm.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
