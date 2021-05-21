@@ -20,6 +20,7 @@ Get-AksHciLogs [-virtualMachineLogs]
                [-eventLogs]
                [-kvaLogs] 
                [-downloadSdkLogs] 
+               [-billingRecords] 
 ```
 
 ## Description

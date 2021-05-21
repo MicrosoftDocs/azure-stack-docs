@@ -10,7 +10,7 @@ ms.author: mikek
 # New-AksHciClusterNetwork
 
 ## Synopsis
-Create an object for a new virtual network.
+Create an object for a new virtual network to be used by target clusters.
 
 ## Syntax
 ```powershell
@@ -29,7 +29,7 @@ New-AksHciClusterNetwork -name <String>
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when creating a new target cluster.
 
 ## Examples
 

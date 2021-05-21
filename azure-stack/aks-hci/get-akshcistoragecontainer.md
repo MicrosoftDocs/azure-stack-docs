@@ -15,11 +15,11 @@ Get the information of the specified storage container.
 ## Syntax
 
 ```powershell
-Get-AksHciStorageContainer -name <String>
+Get-AksHciStorageContainer [-name <String>]
 ```
 
 ## Description
-Get the information of the specified Storage Container.
+Get the information of the specified Storage Container. If the Storage Container is not specified, the command will return all the Storage Containers.
 
 ## Examples
 
@@ -31,7 +31,7 @@ PS C:\> Get-AksHciStorageContainer -name mystoragecontainer
 ## Parameters
 
 ### -name
-The name of the new Storage Container
+The name of the new Storage Container. 
 
 ```yaml
 Type: System.String
