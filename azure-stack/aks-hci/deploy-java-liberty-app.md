@@ -20,10 +20,6 @@ The Open Liberty Operator simplifies the deployment and management of applicatio
 
 For more details on Open Liberty, see [the Open Liberty project page](https://openliberty.io/). For more details on IBM WebSphere Liberty, see [the WebSphere Liberty product page](https://www.ibm.com/cloud/websphere-liberty).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 This article is divided into two main parts.
 
 **Part 1** focuses on deploying the necessary artifacts in Azure. This includes a resource group and Azure Container Registry (ACR). To perform these tasks, you can either utilize Azure Cloud Shell (easiest) which includes the latest version of Azure CLI, **or** you can utilize a local system with the following tools installed:
@@ -227,7 +223,7 @@ Open a web browser to the external IP address of your service (`192.168.0.152` f
 
 ## Clean up the resources
 
-To avoid Azure charges, you should clean up unnecessary resources.  When the cluster is no longer needed, use the [az group delete](/cli/azure/group#az_group_delete) command to remove the resource group, container registry and related Azure resources.
+To avoid Azure charges, you should clean up unnecessary resources.  When the cluster is no longer needed, use the [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) command to remove the resource group, container registry and related Azure resources.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project

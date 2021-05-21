@@ -30,7 +30,7 @@ landingContent:
             url: concepts-storage.md
           - text: Application availability
             url: app-availability.md
-         - text: Resource limits
+          - text: Resource limits
             url: concepts-resource-limits.md        
             
   - title: Get started
