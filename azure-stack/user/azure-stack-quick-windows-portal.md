@@ -28,7 +28,7 @@ Sign in to the Azure Stack Hub user portal. The address of the Azure Stack Hub p
 
 * For the Azure Stack Development Kit (ASDK), go to: `https://portal.local.azurestack.external`.
 * For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
-* For more information about working with the Azure Stack Hub user portal, see [Use the Azure Stack Hub user portal](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal).
+* For more information about working with the Azure Stack Hub user portal, see [Use the Azure Stack Hub user portal](azure-stack-use-portal.md).
 
 ## Create a VM
 
