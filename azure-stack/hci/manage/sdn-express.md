@@ -51,7 +51,7 @@ The following shows an example using `Convert-WindowsImage`:
  ```powershell
 $wimpath = "d:\sources\install.wim"
 $vhdpath = "c:\temp\WindowsServerDatacenter.vhdx"
-$Edition = 4   # 4 = Full Desktop, 3 = Server Core
+$Edition = 4   # 4 = Full Desktop, 3 = Server Core, 1 = in case of Azure Stack HCI OS image
 
 import-module ".\convert-windowsimage.ps1"
 
