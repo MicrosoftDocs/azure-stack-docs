@@ -215,12 +215,14 @@ Once the *EXTERNAL-IP* address changes from *pending* to an actual public IP add
 
 Open a web browser to the external IP address of your service (`192.168.0.152` for the above example) to see the application home page. You should see the pod name of your application replicas displayed at the top-left of the page. Wait for a few minutes and refresh the page to see a different pod name displayed due to load balancing provided by the AKS on Azure Stack HCI cluster.
 
+![Picture of a Java liberty application successfully deployed on AKS on Azure Stack HCI.](.\media\deploy-java-app/deploy-succeeded.png)
+
 >[!NOTE]
-> Currently the application is not using HTTPS. It is recommended to [ENABLE TLS with your own certificates](/azure/aks/ingress-own-tls).
+> Currently, the application is not using HTTPS. It is recommended to [enable TLS with your own certificates](/azure/aks/ingress-own-tls).
 
 ## Clean up the resources
 
-To avoid Azure charges, you should clean up unnecessary resources.  When the cluster is no longer needed, use the [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) command to remove the resource group, container registry and related Azure resources.
+To avoid Azure charges, you should clean up unnecessary resources. When the cluster is no longer needed, use the [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) command to remove the resource group, container registry, and related Azure resources.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project
