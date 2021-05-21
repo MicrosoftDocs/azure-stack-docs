@@ -1,7 +1,7 @@
 ---
 title: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster.
-author: mmcspirt
+author: v-susbo
 ms.author: mmcspirt
 ms.service: container-service
 ms.topic: conceptual
@@ -216,10 +216,8 @@ Once the *EXTERNAL-IP* address changes from *pending* to an actual public IP add
 
 Open a web browser to the external IP address of your service (`192.168.0.152` for the above example) to see the application home page. You should see the pod name of your application replicas displayed at the top-left of the page. Wait for a few minutes and refresh the page to see a different pod name displayed due to load balancing provided by the AKS on Azure Stack HCI cluster.
 
-:::image type="content" source="./media/howto-deploy-java-liberty-app/deploy-succeeded.png" alt-text="Java liberty application successfully deployed on AKS":::
-
 >[!NOTE]
-> - Currently the application is not using HTTPS. It is recommended to [ENABLE TLS with your own certificates](https://docs.microsoft.com/en-us/azure/aks/ingress-own-tls).
+> Currently the application is not using HTTPS. It is recommended to [ENABLE TLS with your own certificates](/azure/aks/ingress-own-tls).
 
 ## Clean up the resources
 

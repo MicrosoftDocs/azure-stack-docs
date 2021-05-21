@@ -31,7 +31,7 @@ landingContent:
           - text: Application availability
             url: app-availability.md
           - text: Resource limits
-            url: concepts-resource-limits.md        
+            url: concepts-support.md        
             
   - title: Get started
     linkLists:

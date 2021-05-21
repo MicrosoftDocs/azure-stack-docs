@@ -60,7 +60,7 @@
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
   - name: Resource Limits
-    href: concepts-resource-limits.md
+    href: concepts-support.md
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
