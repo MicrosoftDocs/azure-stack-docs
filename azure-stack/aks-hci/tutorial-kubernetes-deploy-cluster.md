@@ -72,7 +72,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 Then, configure your deployment with the following command.
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16" 
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 Now, you are ready to install the Azure Kubernetes Service on Azure Stack HCI host.
