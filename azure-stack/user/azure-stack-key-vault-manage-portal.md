@@ -7,6 +7,8 @@ ms.date: 05/21/2021
 ms.author: sethm
 ms.lastreviewed: 1/10/2020
 
+ms.custom: contperf-fy21q4
+
 
 # Intent: As an Azure Stack user, I want to know how to create a key vault and manage it using the Azure Stack Portal
 # Keyword: manage key vault portal
