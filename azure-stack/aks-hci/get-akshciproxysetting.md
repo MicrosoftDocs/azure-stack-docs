@@ -48,6 +48,8 @@ proxyServerCredential: {PSCredential}
 proxyServerCertFile: 
 ```
 
+## Parameters
+
 ### -name
 
 The alphanumeric name of your proxy setting

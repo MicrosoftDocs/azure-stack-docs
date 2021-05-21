@@ -25,9 +25,15 @@ In previous tutorials, a container image was created and uploaded to an Azure Co
 
 This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following command to install it.
 
+<<<<<<< HEAD
 Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
 
 **If you are using remote PowerShell, you must use CredSSP.** 
+=======
+```powershell
+Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 0.2.28
+```
+>>>>>>> 52dbbe44b48d71841953724110b67f0607e145cb
 
 ## Install the Azure Kubernetes Service Host
 

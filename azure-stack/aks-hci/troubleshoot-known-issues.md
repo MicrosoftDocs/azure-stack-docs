@@ -21,7 +21,7 @@ After running `Install-AksHci`, the installation stopped and displayed a **waiti
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
 
-### Incorrect IP gateway configuration
+### Reason 1: Incorrect IP gateway configuration
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
 ```PowerShell
 Install-AksHci 
@@ -38,7 +38,7 @@ In the displayed configuration settings, confirm the configuration. You could al
 
 If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
 
-### Incorrect DNS server
+### Reason 2: Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
 
 ```powershell
@@ -92,6 +92,22 @@ kube-system   kube-proxy-qqnkr                                1/1     Terminatin
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
 
+## All pods in a Windows node are stuck in a _ContainerCreating_ state
+In a workload cluster with the Calico network plug-in enabled, all of the pods in a Windows node are stuck in the _ContainerCreating_ state except for the `calico-node-windows daemonset` pod.
+
+To resolve this issue, find the name of the _kube-proxy_ pod on that node and then run the following command: 
+
+```powershell
+kubectl delete pod <KUBE-PROXY-NAME> -n kube-system
+```
+
+All the pods should start on the node.
+
+## In a workload cluster with static IP, all pods in a node are stuck in a _ContainerCreating_ state
+In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a _Connection timed out_ error.
+
+To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
+
 ## Attempt to increase the number of worker nodes fails
 When using PowerShell to create a cluster with static IP and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
 
@@ -135,8 +151,9 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
+- [Known issues](./known-issues.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
+- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).

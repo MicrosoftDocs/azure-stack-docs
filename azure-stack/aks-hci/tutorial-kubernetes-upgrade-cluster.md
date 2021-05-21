@@ -25,7 +25,11 @@ In previous tutorials, an application was packaged into a container image. This 
 
 ## Get available cluster versions
 
+<<<<<<< HEAD
 Before you upgrade a cluster, use the [Get-AksHciClusterUpdates](get-akshciclusterupdates.md) command to check which Kubernetes releases are available for upgrade. If you followed [Tutorial 3 - Create Kubernetes Cluster](tutorial-kubernetes-deploy-cluster.md), your cluster is up to date with the latest default version. For this example, the cluster called *mycluster* is running on version *v1.16.14*.
+=======
+Before you upgrade a cluster, use the [Get-AksHciClusterUpgrades](get-akshciclusterupdates.md) command to check which Kubernetes releases are available for upgrade. If you followed [Tutorial 3 - Create Kubernetes Cluster](tutorial-kubernetes-deploy-cluster.md), your cluster is up to date with the latest default version. For this example, the cluster called *mycluster* is running on version *v1.16.14*.
+>>>>>>> 52dbbe44b48d71841953724110b67f0607e145cb
 
 ```powershell
 Get-AksHciClusterUpdates -name mycluster
