@@ -18,6 +18,10 @@ ms.custom: contperf-fy21q4
 
 Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azure Stack Hub portal.
 
+> [!NOTE]
+> If you are looking for instructions to create a Windows VM in global Azure rather than
+Azure Stack Hub, see [Quickstart: Create a Windows virtual machine in the Azure portal](/azure/virtual-machines/windows/quick-create-portal).
+
 ## Sign in to the Azure Stack Hub portal
 
 Sign in to the Azure Stack Hub user portal. The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
