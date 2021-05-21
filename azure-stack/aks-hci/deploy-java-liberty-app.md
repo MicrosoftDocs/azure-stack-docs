@@ -3,13 +3,12 @@ title: Deploy a Java application with Open Liberty or WebSphere Liberty on an Az
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster.
 author: v-susbo
 ms.author: mmcspirt
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/19/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks-hci, kubernetes
 ---
 
-# Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service on Azure Stack HCI cluster
+# Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS on Azure Stack HCI cluster
 
 This article demonstrates how to:  
 * Run your Java, Java EE, Jakarta EE, or MicroProfile application on the Open Liberty or WebSphere Liberty runtime.
@@ -153,7 +152,7 @@ curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/mast
       | kubectl apply -n ${OPERATOR_NAMESPACE} -f -
 ```
 
-## Deploy application on the AKS on Azure Stacl HCI cluster
+## Deploy application on the AKS on Azure Stack HCI cluster
 
 Follow steps below to deploy the Liberty application on the AKS on Azure Stack HCI cluster. You will need to grab your login details from your [earlier session](#connect-to-the-acr-instance-in-azure)
 

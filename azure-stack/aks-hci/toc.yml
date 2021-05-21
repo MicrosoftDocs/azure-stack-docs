@@ -59,7 +59,7 @@
     href: node-repair.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
-  - name: Resource Limits
+  - name: Resource limits
     href: concepts-support.md
 - name: How-to guides
   items: 
