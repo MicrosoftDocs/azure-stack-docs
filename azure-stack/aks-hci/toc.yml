@@ -139,18 +139,24 @@
             href: https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
     - name: Troubleshoot
       items:
-          - name: Troubleshoot common issues
-            href: troubleshoot.md
+          - name: Known issues
+            href: known-issues.md
+          - name: Resolve known issues
+            href: troubleshoot-known-issues.md
           - name: Windows Admin Center
             items:
                 - name: Known issues
                   href: known-issues-windows-admin-center.md
                 - name: Troubleshoot Windows Admin Center
                   href: troubleshoot-windows-admin-center.md
-          - name: Known issues
-            href: known-issues.md
-          - name: Resolve known issues
-            href: troubleshoot-known-issues.md
+          - name: SSH node access
+            href: ssh-connection.md
+          - name: Cluster validation reporting in Azure Stack HCI
+            href: https://docs.microsoft.com/azure-stack/hci/manage/validate-qos
+          - name: CredSSP
+            href: https://docs.microsoft.com/azure-stack/hci/manage/troubleshoot-credssp
+          - name: Azure Arc enabled Kubernetes
+            href: https://docs.microsoft.com/azure/azure-arc/kubernetes/troubleshooting
 
 - name: Related
   items:
