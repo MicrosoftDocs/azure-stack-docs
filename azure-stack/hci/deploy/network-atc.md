@@ -101,15 +101,15 @@ There are several new PowerShell commands included with the Network ATC service.
 
 Typically, only a few of the Network ATC cmdlets are needed. Here is a brief overview of these before you start:
 
-|Command|Description|
+|PowerShell command|Description|
 |--|--|
-|Add-NetIntent|Creates and submits an intent to the Network ATC|
+|Add-NetIntent|Creates and submits an intent to Network ATC|
 |Set-NetIntent|Modifies an existing intent|
 |Get-NetIntent|Gets a list of intent requests from the target|
 |Get-NetIntentStatus|Gets the status of intent requests from the target|
-|New-NetIntent…Overrides|Specifies overrides to the default configuration|
+|New-NetIntentOverrides|Specifies overrides to the default configuration|
 |Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the configuration invoked by Network ATC.
-|Set-NetIntentRetryState|After three failed attempts, Network ATC will stop attempting to implement the intent (`Get-NetIntentStatus` reports 'Failed' state). This command instructs Network ATC to try again (for example, after you've resolved the issue preventing completion of the intent).|
+|Set-NetIntentRetryState|After three attempts, Network ATC will stop attempting to implement the intent (`Get-NetIntentStatus` = 'Failed'). This command instructs Network ATC to try again after you've resolved the issue.|
 
 ## Example network intents
 
