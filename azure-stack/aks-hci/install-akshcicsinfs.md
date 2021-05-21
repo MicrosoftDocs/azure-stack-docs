@@ -15,7 +15,7 @@ Installs the CSI NFS plug-in to a cluster.
 ## Syntax
 
 ```powershell
-Install-AksHciCsiNfs -name <String>                       
+Install-AksHciCsiNfs -clusterName <String>                       
 ```
 
 ## Description
@@ -26,12 +26,12 @@ Installs CSI NFS Plugin to a cluster.
 ### Example
 
 ```PowerShell
-Install-AksHciCsiNfs -name mycluster
+Install-AksHciCsiNfs -clusterName mycluster
 ```
 
 ## Parameters
 
-### -name
+### -clusterName
 The alphanumeric name of your Kubernetes cluster.
 
 ```yaml
