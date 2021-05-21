@@ -14,7 +14,6 @@ ms.custom: contperf-fy21q4
 
 ---
 
-
 # Quickstart: Create a Windows server VM with the Azure Stack Hub portal
 
 Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azure Stack Hub portal.
@@ -46,7 +45,7 @@ Sign in to the Azure Stack Hub user portal. The address of the Azure Stack Hub p
 
     ![Create a VM - Size](./media/azure-stack-quick-windows-portal/image4a.png)
 
-1. On the **Settings** page, change the defaults to match your configuration. Configure the public inbound ports from the related drop-down. Then, select **OK**.
+1. On the **Settings** page, change the defaults to match your configuration. Configure the public inbound ports from the related drop-down. Then,select **OK**.
 
     ![Create a VM - Settings](./media/azure-stack-quick-windows-portal/image5a.png)
 
