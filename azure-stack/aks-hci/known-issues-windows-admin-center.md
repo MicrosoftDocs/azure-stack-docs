@@ -45,7 +45,6 @@ For CredSSP to function successfully in the Cluster Create wizard, Windows Admin
 You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure login pop-up is blocked and causes the service principal error.
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
 

@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/11/2021
+ms.date: 05/20/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -29,9 +29,7 @@ You won't be able to register your cluster with Azure until you've created an Az
 For the simplest registration experience, have an Azure AD administrator complete the registration using either Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI is now available in Azure China. Registering your Azure Stack HCI cluster in Azure China is currently supported only via PowerShell. Support for registering via Windows Admin Center is coming soon. To register in Azure China, please follow the steps to [Register a cluster using PowerShell](#register-a-cluster-using-powershell) and run the `Register-AzStackHCI` cmdlet with these additional parameters:
-   >
-   > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
+   > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
 
 ### Register Windows Admin Center
 
@@ -108,9 +106,7 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted.
 
    > [!WARNING]
-   > Registering Azure Stack HCI in Azure China is currently supported only via PowerShell. Support for registering via Windows Admin Center is coming soon. To register in Azure China, please follow the steps to [Register a cluster using PowerShell](#register-a-cluster-using-powershell) and run the `Register-AzStackHCI` cmdlet with these additional parameters: 
-   >
-   > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
+   > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
 
 1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and sign into Windows Admin Center with your Azure account.
 
