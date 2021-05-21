@@ -3,9 +3,9 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/20/2021
+ms.date: 05/21/2021
 ms.author: sethm
-ms.reviewer: thoroet
+ms.reviewer: avishwan
 ms.lastreviewed: 12/9/2020
 
 # Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
@@ -187,7 +187,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/redis.png" border="false"::: | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Powerful open-source key-value store. | Bitnami |
 | ![Redis High Availability](media/azure-stack-marketplace-azure-items/redis.png) | [Redis High Availability](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis-cluster) | Powerful open-source key-value store. This solution template requires your Azure Stack Hub to be at version 1807 or later, and also requires **Debian 9** and **Custom Script for Linux 2.0 Extension**. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/redmine.png" border="false"::: | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Powerful project management web app. | Bitnami |
-| ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Project management app preconfigured with Agile plugin. | Bitnami |
 | ![ReportServer Community](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer Community](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Open-source business intelligence platform. | Bitnami |
 | ![ReportServer Enterprise](media/azure-stack-marketplace-azure-items/reportserverenterprise.png) | [ReportServer Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserverenterprise) | Enterprise business intelligence platform. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/resourcespace.png" border="false"::: | [ResourceSpace](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.resourcespace) | Digital asset management system for improved collaboration. | Bitnami |
