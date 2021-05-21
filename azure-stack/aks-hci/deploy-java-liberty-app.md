@@ -1,7 +1,7 @@
 ---
 title: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster.
-author: v-susbo
+author: mattmcspirit
 ms.author: mmcspirt
 ms.topic: conceptual
 ms.date: 05/19/2021
@@ -21,7 +21,7 @@ For more details on Open Liberty, see [the Open Liberty project page](https://op
 
 This article is divided into two main parts.
 
-**Part 1** focuses on deploying the necessary artifacts in Azure. This includes a resource group and Azure Container Registry (ACR). To perform these tasks, you can either utilize Azure Cloud Shell (easiest) which includes the latest version of Azure CLI, **or** you can utilize a local system with the following tools installed:
+**Part 1** focuses on deploying the necessary artifacts in Azure. This includes a resource group and Azure Container Registry (ACR). To perform these tasks, you can either utilize [Azure Cloud Shell](/azure/cloud-shell/quickstart) (easiest) which includes the latest version of Azure CLI, **or** you can utilize a local system with the following tools installed:
 
   * Prepare a local machine with Unix-like operating system installed (for example, Ubuntu, macOS, Windows Subsystem for Linux).
   * Install Azure CLI following the guidance above.
@@ -33,13 +33,13 @@ This article is divided into two main parts.
 
 * An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
 * You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
-* Git command-line tools installed on your system. On a Windows system, you can use **Git Bash** as the main console, and within the Git Bash console, call PowerShell and Azure when required.
+* Git command-line tools installed on your system. On a Windows system, you can use [**Git Bash**](https://git-scm.com/downloads) as the main console, and within the Git Bash console, call PowerShell and Azure when required.
 
 ## Create a resource group in Azure
 
 An Azure resource group is a logical group in which Azure resources are deployed and managed.  
 
-Create a resource group called *java-liberty-project* using the [az group create](/cli/azure/group#az_group_create) command  in the *eastus* location. This resource group will be used later for creating the Azure Container Registry instance. 
+Create a resource group called *java-liberty-project* using the [az group create](/cli/azure/group#az_group_create) command in the *eastus* location. This resource group will be used later for creating the Azure Container Registry instance. 
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project
@@ -65,7 +65,7 @@ After a short time, you should see a JSON output that contains:
 
 ### Connect to the ACR instance in Azure
 
-You will need to sign in to the ACR instance before you can push an image to it. Run the following commands to verify the connection. Make a note of your login details as you'll use those later when connecting to AKS on Azure Stack  HCI.
+You will need to sign in to the ACR instance before you can push an image to it. Run the following commands to verify the connection. Make a note of your login details as you'll use those later when connecting to AKS on Azure Stack HCI.
 
 ```azurecli-interactive
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
@@ -90,14 +90,14 @@ To deploy and run your Liberty application on the AKS on Azure Stack HCI cluster
 1. Run `mvn clean package` to package the application.
 1. Run `mvn liberty:dev` to test the application. You should see `The defaultServer server is ready to run a smarter planet.` in the command output if successful. Use `CTRL-C` to stop the application.
 1. Run one of the following commands to build the application image and push it to the ACR instance.
-   * Build with Open Liberty base image if you prefer to use Open Liberty as a lightweight open source Java™ runtime:
+   * Build with the Open Liberty base image if you prefer to use Open Liberty as a lightweight open source Java™ runtime:
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary Open Liberty base images.
      az acr build -t javaee-cafe-simple:1.0.0 -r $REGISTRY_NAME .
      ```
 
-   * Build with WebSphere Liberty base image if you prefer to use a commercial version of Open Liberty:
+   * Build with the WebSphere Liberty base image if you prefer to use a commercial version of Open Liberty:
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary WebSphere Liberty base images.
@@ -106,7 +106,7 @@ To deploy and run your Liberty application on the AKS on Azure Stack HCI cluster
 
 ### Connect to your AKS on Azure Stack HCI cluster
 
-To manage a Kubernetes cluster, you use [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes command-line client. Once installed, on Windows, kubectl can be run from the CMD prompt, PowerShell console, Git Bash etc.
+To manage a Kubernetes cluster, you use [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes command-line client. Once installed, on Windows, kubectl can be run from the CMD prompt, PowerShell console, and Git Bash.
 
 As one of the pre-requisites, you should have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`:
 
@@ -154,17 +154,17 @@ curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/mast
 
 ## Deploy application on the AKS on Azure Stack HCI cluster
 
-Follow steps below to deploy the Liberty application on the AKS on Azure Stack HCI cluster. You will need to grab your login details from your [earlier session](#connect-to-the-acr-instance-in-azure)
+Follow steps below to deploy the Liberty application on the AKS on Azure Stack HCI cluster. You will need to retrieve your login details from your [earlier session](#connect-to-the-acr-instance-in-azure).
 
 1. If you used Azure Cloud Shell earlier, and are now using a separate console to connect to AKS on Azure Stack HCI, you'll need to lock in your credentials again.
 
-  ```console
-  LOGIN_SERVER=YourLoginServerFromEarlier
-  USER_NAME=YourUsernameFromEarlier
-  PASSWORD=YourPwdFromEarlier
-  ```
+   ```console
+   LOGIN_SERVER=YourLoginServerFromEarlier
+   USER_NAME=YourUsernameFromEarlier
+   PASSWORD=YourPwdFromEarlier
+   ```
 
-1. Create a pull secret so that the AKS on Azure Stack HCI cluster is authenticated to pull image from the ACR instance.
+2. Create a pull secret so that the AKS on Azure Stack HCI cluster is authenticated to pull image from the ACR instance.
 
    ```console
    kubectl create secret docker-registry acr-secret \
@@ -173,9 +173,9 @@ Follow steps below to deploy the Liberty application on the AKS on Azure Stack H
       --docker-password=${PASSWORD}
    ```
 
-1. Again, if you used Azure Cloud Shell earlier, and are now using a separate tool or session to connect to AKS on Azure Stack HCI, you will need to clone the sample code for this guide. The sample is on [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
-1. Verify the current working directory is `javaee-app-simple-cluster` of your local clone.
-1. Run the following commands to deploy your Liberty application with 3 replicas to the AKS on Azure Stack HCI cluster. Command output is also shown inline.
+3. Again, if you used Azure Cloud Shell earlier, and are now using a separate tool or session to connect to AKS on Azure Stack HCI, you will need to clone the sample code for this guide. The sample is on [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
+4. Verify the current working directory is `javaee-app-simple-cluster` of your local clone.
+5. Run the following commands to deploy your Liberty application with 3 replicas to the AKS on Azure Stack HCI cluster. Command output is also shown inline.
 
    ```console
    # Create OpenLibertyApplication "javaee-app-simple-cluster"
@@ -196,7 +196,7 @@ Follow steps below to deploy the Liberty application on the AKS on Azure Stack H
    javaee-app-simple-cluster   0/3     3            0           20s
    ```
 
-1. Wait until you see `3/3` under the `READY` column and `3` under the `AVAILABLE` column, use `CTRL-C` to stop the `kubectl` watch process.
+6. Wait until you see `3/3` under the `READY` column and `3` under the `AVAILABLE` column, use `CTRL-C` to stop the `kubectl` watch process.
 
 ### Test the application
 
