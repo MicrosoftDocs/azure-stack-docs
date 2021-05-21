@@ -25,11 +25,7 @@ In previous tutorials, an application was packaged into a container image. This 
 
 ## Get available cluster versions
 
-<<<<<<< HEAD
 Before you upgrade a cluster, use the [Get-AksHciClusterUpdates](get-akshciclusterupdates.md) command to check which Kubernetes releases are available for upgrade. If you followed [Tutorial 3 - Create Kubernetes Cluster](tutorial-kubernetes-deploy-cluster.md), your cluster is up to date with the latest default version. For this example, the cluster called *mycluster* is running on version *v1.16.14*.
-=======
-Before you upgrade a cluster, use the [Get-AksHciClusterUpgrades](get-akshciclusterupdates.md) command to check which Kubernetes releases are available for upgrade. If you followed [Tutorial 3 - Create Kubernetes Cluster](tutorial-kubernetes-deploy-cluster.md), your cluster is up to date with the latest default version. For this example, the cluster called *mycluster* is running on version *v1.16.14*.
->>>>>>> 52dbbe44b48d71841953724110b67f0607e145cb
 
 ```powershell
 Get-AksHciClusterUpdates -name mycluster
@@ -51,10 +47,20 @@ Get-AksHciKubernetesVersion
 ```
 
 ```Output
-OS      Versions
---      --------
-Linux   {v1.16.14, v1.16.15, v1.17.13, v1.17.16...}
-Windows {v1.18.10, v1.18.14}
+OrchestratorType OrchestratorVersion OS      IsPreview
+---------------- ------------------- --      ---------
+Kubernetes       v1.18.14            Linux       False
+Kubernetes       v1.18.17            Linux       False
+Kubernetes       v1.19.7             Linux       False
+Kubernetes       v1.19.9             Linux       False
+Kubernetes       v1.20.2             Linux       False
+Kubernetes       v1.20.5             Linux       False
+Kubernetes       v1.18.14            Windows     False
+Kubernetes       v1.18.17            Windows     False
+Kubernetes       v1.19.7             Windows     False
+Kubernetes       v1.19.9             Windows     False
+Kubernetes       v1.20.2             Windows     False
+Kubernetes       v1.20.5             Windows     False
 ```
 
 In the output above, you can see that there are more upgrade versions available. However, when upgrading clusters, you cannot skip versions. (i.e. v1.16.xx --> v1.17.xx is allowed, but v1.16.xx --> v1.18.xx is not. To upgrade from v1.16.xx to v1.18.xx, the upgrades must go in this order: v1.16.xx --> v1.17.xx --> v1.18.xx)
