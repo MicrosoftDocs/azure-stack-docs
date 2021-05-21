@@ -17,16 +17,16 @@ Register Azure Kubernetes Service on Azure Stack HCI with Azure.
 
 ```powershell
 Set-AksHciRegistration -subscriptionId<String>
-                        -resourceGroupName <String>
-                       [-tenantId <String>]
-                       [-armAccessToken <String>]
-                       [-graphAccessToken <String>]
-                       [-accountId <String>]
-                       [-environmentName <String>]
-                       [-credential <PSCredential>]
-                       [-region <String>]
-                       [-useDeviceAuthentication]
-                       [-skipLogin]
+                       -resourceGroupName <String>
+                      [-tenantId <String>]
+                      [-armAccessToken <String>]
+                      [-graphAccessToken <String>]
+                      [-accountId <String>]
+                      [-environmentName <String>]
+                      [-credential <PSCredential>]
+                      [-region <String>]
+                      [-useDeviceAuthentication]
+                      [-skipLogin]
 ```
 
 ## Description

@@ -8,8 +8,8 @@ ms.author: abha
 ms.reviewer: 
 ---
 
-# Known Issues for Azure Kubernetes Service on Azure Stack HCI Public Preview
-This article describes known issues with the public preview release of Azure Kubernetes Service on Azure Stack HCI.
+# Known issues for Azure Kubernetes Service on Azure Stack HCI
+This article describes known issues with Azure Kubernetes Service on Azure Stack HCI.
 
 ## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run
 If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
@@ -122,6 +122,6 @@ With large clusters, the `Get-AksHciLogs` command may throw an exception, fail t
 When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
+- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)

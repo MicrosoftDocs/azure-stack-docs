@@ -138,7 +138,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### [AD FS on Windows](#tab/adfs-win)
 
@@ -221,7 +221,7 @@ az group create -n MyResourceGroup -l local
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### [Azure AD on Linux](#tab/ad-lin)
 
@@ -302,7 +302,7 @@ With everything set up, use CLI to create resources within Azure Stack Hub. For 
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### [AD FS Linux](#tab/adfs-lin)
 
@@ -386,7 +386,7 @@ With everything set up, use CLI to create resources within Azure Stack Hub. For 
 
 If the resource group is created successfully, the previous command outputs the following properties of the newly created resource:
 
-![Resource group create output](media/azure-stack-connect-cli/image1.png)
+![Resource group create output](media/azure-stack-connect-cli/cli-response.png)
 
 ### Known issues
 

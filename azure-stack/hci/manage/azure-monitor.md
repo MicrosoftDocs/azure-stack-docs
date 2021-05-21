@@ -13,6 +13,9 @@ ms.date: 07/21/2020
 
 [Azure Monitor](/azure/azure-monitor/overview) collects, analyzes, and acts on telemetry from a variety of resources, including Windows servers and virtual machines (VMs), both on-premises and in the cloud.
 
+> [!NOTE]
+> The Azure Monitor integration described in this article applies only to Windows Server 2019 and 2016. To use Azure Monitor with Azure Stack HCI, version 20H2, you must use the Azure portal. You can't use Windows Admin Center to set it up. Once configured, Azure Monitor works similarly on both Azure Stack HCI and Windows Server.
+
 ## How does Azure Monitor work?
 :::image type="content" source="media/monitor/azure-monitor-diagram.png" alt-text="diagram of how Azure Monitor works" border="false":::
 Data generated from on-premises Windows Servers is collected in a Log Analytics workspace in Azure Monitor. Within a workspace, you can enable various monitoring solutions and use sets of logic that provide insights for a particular scenario; for example, performance metrics.
