@@ -17,7 +17,7 @@ Kubernetes provides a distributed platform for containerized applications. In th
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your workload cluster
 
-In later tutorialsS, the Azure Vote application is deployed to the cluster, scaled, and updated.
+In later tutorials, the Azure Vote application is deployed to the cluster, scaled, and updated.
 
 ## Before you begin
 
