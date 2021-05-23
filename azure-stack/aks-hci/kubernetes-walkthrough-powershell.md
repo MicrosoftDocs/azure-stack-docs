@@ -28,7 +28,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 
-Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
+Download the `AKS-HCI-Public-Preview` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
 
 **If you are using remote PowerShell, you must use CredSSP.**
 
