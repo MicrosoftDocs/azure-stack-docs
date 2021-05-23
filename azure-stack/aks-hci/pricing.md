@@ -31,7 +31,7 @@ Use the following list to explore the pricing options:
 ## Impact of hyperthreading
 The AKS on Azure Stack HCI billing unit is a virtual core. If you enable hyperthreading on your physical computer, AKS on Azure Stack HCI will also enable hyperthreading on the worker nodes.  If you enable hyperthreading, it will effectively halve the number of virtual cores needed in each worker node.
 
-![image of Hyper-V Manager showing CPU details](media/concepts/hyperthreading-hyperv-manager.png)
+![image of Hyper-V Manager showing CPU details](media/concepts/hyper-thread-hyperv-manager.png)
 
 ## Pricing comparison summary
 |Workload cluster configuration| AKS on Azure Stack HCI *without* hyperthreading | AKS on Azure Stack HCI *with* hyperthreading  | AKS in Azure  |
