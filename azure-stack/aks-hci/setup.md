@@ -27,17 +27,7 @@ If you haven't already downloaded the preview software, see [evaluate AKS on Azu
 
 ## Setting up Windows Admin Center
 
-Make sure you use the Windows Admin Center installer given to you as part of AKS on Azure Stack HCI's April release. If you have already installed Windows Admin Center, uninstall it and re-install the one given to you in the April release. You can run Windows Admin Center either on a Windows 10 machine or on a server.
-
-## Installing the Azure Kubernetes Service extension
-
-Once you have obtained the Azure Kubernetes Service on Azure Stack HCI public preview files, you must save the `.nupkg` file locally or to an SMB share and add the file path to the "Feeds" list in your Windows Admin Center extension manager. The `.nupkg` file is a NuGet package that contains the Windows Admin Center extension.
-
-To access your existing extension feed, open Windows Admin Center and select on the gear in the top-right corner of the screen. This will take you to the settings menu. The extension feeds can be found under the **Gateway** section in the **Extensions** menu. Navigate to the **Feeds** tab and select **Add**. In this pane, paste the file path to your copy of the Azure Kubernetes Service extension and select **Add**. If your file path was added successfully, you'll receive a success notification. 
-
-Now that we have added the feed, the Azure Kubernetes Service extension will be available in the list of available extensions. Once you have the extension selected, select **Install** at the top of the table to install this extension. Windows Admin Center will reload after installation is complete. 
-
-[ ![View of the available extension list in Windows Admin Center extension manager.](.\media\setup\extension-manager.png) ](.\media\setup\extension-manager.png#lightbox)
+The AKS on Azure Stack HCI extension for Windows Admin Center is natively available as part of the Windows Admin Center MSI. You can [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) either on a Windows 10 machine or on a server. If you have already installed Windows Admin Center, you should uninstall it and re-install the one that's part of the Windows Admin Center MSI. 
 
 ## Setting up an Azure Kubernetes Service host
 
