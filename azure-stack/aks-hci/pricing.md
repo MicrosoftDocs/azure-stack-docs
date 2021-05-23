@@ -34,18 +34,24 @@ The AKS on Azure Stack HCI billing unit is a virtual core. If you enable hyperth
 ![image of Hyper-V Manager showing CPU details](media/concepts/hyper-thread-hyperv-manager.png)
 
 ## Pricing comparison summary
+
+Use the table below to compare pricing options.
+
+> [!NOTE]
+> There are additional details on pricing in the section that follows the table.
+
 |Workload cluster configuration| AKS on Azure Stack HCI *without* hyperthreading | AKS on Azure Stack HCI *with* hyperthreading  | AKS in Azure  |
 |-----------------|---|---|---|
-|**-2 Worker Nodes <br> -1 x (2 vCPU VM w/ Linux) <br> -1 x (8 vCPU VM w/ Windows) <br> -10 vCPUs Total**|~US $400* per month   |~US $200* per month    | ~US $350* per month   |
-|**-4 Worker Nodes <br> -2 x (4 vCPU VM w/ Linux) <br> -2 x (4 vCPU VM w/ Windows) <br> -16 vCPUs Total**|~US $640* per month   |~US $320* per month    | ~US $654* per month   | 
-|**Other information**| - Includes Arc-enabled Kubernetes <br> - Requires additional infrastructure cost: <br>  - Azure Stack HCI 20H2+ <br>  - Windows Server 2019 Hyper-V   |Includes Arc-enabled Kubernetes Requires additional infrastructure cost: <br> - Azure Stack HCI 20H2+ <br> - Windows Server 2019 Hyper-V   |Includes Arc-enabled Kubernetes Includes underlying infrastructure  | 
+|**-2 Worker Nodes <br> -1 x (2 vCPU VM with Linux) <br> -1 x (8 vCPU VM with Windows) <br> -10 vCPUs Total**|~US $400 per month   |~US $200 per month    | ~US $350 per month   |
+|**-4 Worker Nodes <br> -2 x (4 vCPU VM with Linux) <br> -2 x (4 vCPU VM with Windows) <br> -16 vCPUs Total**|~US $640 per month   |~US $320 per month    | ~US $654 per month   | 
+|**Other information**| Includes Azure Arc enabled Kubernetes. <br> Requires an additional infrastructure cost: <br>  - Azure Stack HCI 20H2+ <br>  - Windows Server 2019 Hyper-V   | Includes Azure Arc enabled Kubernetes. <br> Requires additional infrastructure cost: <br> - Azure Stack HCI 20H2+ <br> - Windows Server 2019 Hyper-V   | Includes Arc-enabled Kubernetes and the underlying infrastructure.  | 
 
 
 ### Additional pricing notes
 
-- AKS on Azure Stack HCI pricing is based on $US list pricing with no discounts applied.
+- AKS on Azure Stack HCI pricing is based on the US currency list pricing with no discounts applied.
 - Pricing for Windows container hosts are licensed separately. For hyperthreading, price assumes hyperthreading is available and enabled on physical systems.
 - AKS on Azure Stack HCI pricing is subject to change.
-- Pricing is based on $US list pricing in the East US region with: *pay-as-you-go* pricing, D-series general purpose VM sizes, standard HDD, and no uptime SLA in the included support level.
-- Pricing does not include the additional license cost for running Windows container hosts (which is required unless you have Azure Hybrid Benefit for existing Windows Sever licenses).
+- Pricing is based on US currency list pricing in the East US region with: *pay-as-you-go* pricing, D-series general purpose VM sizes, standard HDD, and no uptime SLA in the included support level.
+- Pricing does not include the additional license cost for running Windows container hosts (which is required unless you have the Azure Hybrid Benefit for existing Windows Sever licenses).
 - Monthly price estimates are based on 730 hours of usage. Price assumes that systems are running for the entire month.
