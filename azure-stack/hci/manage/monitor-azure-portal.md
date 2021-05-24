@@ -1,6 +1,6 @@
 ---
 title: Monitor multiple Azure Stack HCI clusters
-description: How to monitor multiple Azure Stack HCI clusters from Azure portal.
+description: How to enable Logs and Monitoring capabilities to monitor multiple Azure Stack HCI clusters from Azure portal.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
@@ -13,7 +13,9 @@ ms.date: 05/24/2021
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
-You can enable Logs and Monitoring capabilities (both in preview) to monitor multiple Azure Stack HCI clusters from Azure portal. If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
+This topic explains how to enable Logs and Monitoring capabilities to monitor multiple Azure Stack HCI clusters. You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
+
+If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
    > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after May 25, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration) if you haven't already done so manually from Azure portal.
