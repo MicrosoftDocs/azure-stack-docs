@@ -202,6 +202,10 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
+- name: Preview channel
+  items:
+  - name: Storage thin provisioning
+    href: manage/thin-provisioning.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
