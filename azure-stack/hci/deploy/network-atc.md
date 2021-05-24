@@ -394,11 +394,11 @@ This task will help you override the default configuration which has already bee
 
 1. Use the `Set-NetIntent` command to update the intent and specify the overrides objects previously created.
 
-Use the appropriate parameter based on the type of override you're specifying. In the example below, we use the `AdapterPropertyOverrides` parameter for the `$AdapterOverride` object that was created with `New-NetIntentAdapterPropertyOverrides` cmdlet whereas the `QosPolicyOverrides` parameter is used with the `$QosOverride` object created from `New-NetIntenQosPolicyOverrides` cmdlet.
+    Use the appropriate parameter based on the type of override you're specifying. In the example below, we use the `AdapterPropertyOverrides` parameter for the `$AdapterOverride` object that was created with `New-NetIntentAdapterPropertyOverrides` cmdlet whereas the `QosPolicyOverrides` parameter is used with the `$QosOverride` object created from `New-NetIntenQosPolicyOverrides` cmdlet.
 
-```powershell
-Set-NetIntent -ClusterName HCI01 -Name Cluster_ComputeStorage -AdapterPropertyOverrides $AdapterOverride -QosPolicyOverride $QosOverride
-```
+    ```powershell
+    Set-NetIntent -ClusterName HCI01 -Name Cluster_ComputeStorage -AdapterPropertyOverrides $AdapterOverride -QosPolicyOverride $QosOverride
+    ```
 
 1. First, notice that the status for all nodes in the cluster has changed to ProvisioningUpdate and Progress is on 1 of 2. The progress property is similar to a configuration watermark in that you have a new submission to the Network ATC service that must be enacted.
 
