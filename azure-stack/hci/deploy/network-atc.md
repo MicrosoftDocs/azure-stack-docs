@@ -63,6 +63,8 @@ The following are requirements and best practices for using the Network ATC feat
 
 - Supported on Azure Stack HCI, version 21H2 Preview release or later.
 
+- All servers in the cluster must be running Azure Stack HCI, version 21H2 Preview.
+
 - Must use two or more physical host systems that are Azure Stack HCI certified.
 
 - Adapters managed by Network ATC must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#switch-embedded-teaming-set)
@@ -72,8 +74,6 @@ The following are requirements and best practices for using the Network ATC feat
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
 - Remove any prior ATC intent on the adapter.
-
-- Must install Azure Stack HCI, version 21H2, build FE_RELEASE\20324.3.210327-1200 or later on each node.
 
 - Must install the following Windows features on each node:
 
