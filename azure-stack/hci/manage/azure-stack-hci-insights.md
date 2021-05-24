@@ -17,7 +17,7 @@ Azure Stack HCI Insights provides health, performance, and usage insights about 
 
 Azure Stack HCI Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Azure Stack HCI Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
 
-You can view the monitoring data for a single cluster from your Azure Stack HCI resource page, or you can use Azure Monitor to see an aggregated view of multiple clusters.
+You can view the monitoring data for a single cluster from your Azure Stack HCI resource page, or you can use Azure Monitor to see an aggregated view of multiple clusters. Here's a [short video](https://www.youtube.com/watch?v=mcgmAsNricw).
 
 ## Benefits of Azure Stack HCI Insights
 
