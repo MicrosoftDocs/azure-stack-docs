@@ -19,8 +19,7 @@ Azure Stack HCI Insights stores its data in a Log Analytics workspace, which all
 
 You can view the monitoring data for a single cluster from your Azure Stack HCI resource page, or you can use Azure Monitor to see an aggregated view of multiple clusters.
 
-   > [!VIDEO]
-   > [Watch the video](https://www.youtube.com/watch?v=mcgmAsNricw) for a quick introduction to Azure Stack HCI Insights.
+[Watch the video](https://www.youtube.com/embed/mcgmAsNricw) for a quick introduction.
 
 ## Benefits of Azure Stack HCI Insights
 
