@@ -13,7 +13,7 @@ author: jeguan
 Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI cluster is deployed in Azure Kubernetes Service on Azure Stack HCI. You learn how to:
 
 > [!div class="checklist"]
-> * Deploy a Kubernetes cluster on Azure Stack HCI that can authenticate to an Azure container registry
+> * Deploy an AKS cluster on Azure Stack HCI 
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your workload cluster
 
@@ -25,9 +25,9 @@ In previous tutorials, a container image was created and uploaded to an Azure Co
 
 This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following command to install it.
 
-```powershell
-Install-Module -Name AksHci -Repository PSGallery -RequiredVersion 0.2.28
-```
+Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
+
+**If you are using remote PowerShell, you must use CredSSP.** 
 
 ## Install the Azure Kubernetes Service Host
 
@@ -72,7 +72,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 Then, configure your deployment with the following command.
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData -cloudservicecidr "172.16.10.10/16" 
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
 Now, you are ready to install the Azure Kubernetes Service on Azure Stack HCI host.
@@ -138,7 +138,7 @@ moc-le9q8mro8mg   Ready    <none>   4m42s   v1.18.14
 In this tutorial, a Kubernetes cluster was deployed in AKS, and you configured `kubectl` to connect to it. You learned how to:
 
 > [!div class="checklist"]
-> * Deploy a Kubernetes AKS cluster that can authenticate to an Azure container registry
+> * Deploy an AKS cluster on Azure Stack HCI
 > * Install the Kubernetes CLI (kubectl)
 > * Configure kubectl to connect to your AKS cluster
 

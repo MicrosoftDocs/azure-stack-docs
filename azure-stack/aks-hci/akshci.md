@@ -29,6 +29,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [get-akshcikubernetesversion](get-akshcikubernetesversion.md) | List available version for creating managed Kubernetes cluster. |
 | [get-akshcilogs](get-akshcilogs.md) | Create a zipped folder with logs from all your pods. |
 | [get-akshciproxysetting](get-akshciproxysetting.md) | Retrieve a list or an individual proxy settings object. |
+| [get-akshciregistration](get-akshciregistration.md) | Get registration information for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [get-akshcistoragecontainer](get-akshcistoragecontainer.md) | Get the information of the specified storage container. |
 | [get-akshciupdates](get-akshciupdates.md) | List available updates for Azure Kubernetes Service on Azure Stack HCI. |
 | [get-akshciversion](get-akshciversion.md) | Get the current version of Azure Kubernetes Service on Azure Stack HCI. |
@@ -48,6 +49,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
 | [remove-akshcigmsacredentialspec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
+| [repair-akshciclustercerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
