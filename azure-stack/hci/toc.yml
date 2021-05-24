@@ -204,6 +204,8 @@
       href: concepts/data-collection.md
 - name: Preview channel
   items:
+  - name: Network ATC
+    href: deploy/network-atc.md
   - name: Use GPUs with clustered VMs
     href: manage/use-gpu-with-clustered-vm.md
   - name: Dynamic CPU compatibility
