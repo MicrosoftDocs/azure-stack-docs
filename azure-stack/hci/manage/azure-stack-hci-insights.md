@@ -31,7 +31,7 @@ Azure Stack HCI Insights offers three primary benefits:
 
 - It's highly customizable. The user experience is built on top of Azure Monitor workbook templates, allowing users to change the views and queries, modify or set thresholds that align with the users limits, and save these customizations into a workbook. Charts in the workbooks can then be pinned to Azure dashboards.
 
-## Prequisites to use Azure Stack HCI Insights
+## Prerequisites
 
 To use Azure Stack HCI Insights, make sure you've completed the following:
 
@@ -76,10 +76,10 @@ This view provides two things:
 
 This view provides four cluster performance trends:
 
-1.	CPU usage
-2.	Average volume latency
-3.	Volume IOPS
-4.	Volume throughput
+-	CPU usage
+-	Average volume latency
+-	Volume IOPS
+-	Volume throughput
 
 The views are built using the [cluster event ID 3004](#cluster-3004-value-in-rendereddescription) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 

@@ -81,7 +81,7 @@ To enable this capability from Azure portal, follow these steps:
 
 The **Microsoft-windows-sddc-management/operational** Windows event channel will be added to your Log Analytics workspace. By collecting these logs, we'll be able to show the health status of the individual servers, drives, volumes, and VMs.
 
-After you enable monitoring, it can take up to an hour to collect the data. When the process is finished, you'll be able go to the **Monitoring** tab and see a rich visualization of the health of your cluster, as in the screen shot below.
+After you enable monitoring, it can take up to an hour to collect the data. When the process is finished, you'll be able go to the **Monitoring** tab and see a rich visualization of the health of your cluster, as in the screenshot below.
 
 :::image type="content" source="media/monitor-azure-portal/monitoring-visualization.png" alt-text="Enabling monitoring displays a rich visualization of the health of your cluster from Azure portal" lightbox="media/monitor-azure-portal/monitoring-visualization.png":::
 
