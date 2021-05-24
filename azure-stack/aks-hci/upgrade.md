@@ -59,7 +59,7 @@ This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.19.9           @{
 This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5           @{mariner=April 2021; windows=April 2021}
 ```
 
-As seen from the output above, you can either perform a patch update to v1.19.9 or a minor udpate to v1.20.5.
+As seen from the output above, you can either perform a patch update to v1.19.9 or a minor update to v1.20.5.
 
 ## Update the Kubernetes version of a workload cluster using PowerShell
 
