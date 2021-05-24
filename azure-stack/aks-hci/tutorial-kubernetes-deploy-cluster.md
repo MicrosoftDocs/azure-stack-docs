@@ -88,7 +88,7 @@ Install-AksHCi
 
 ## Create a Kubernetes cluster
 
-Create a Kubernetes cluster using the command [New-AksHciCluster](new-akshcicluster). The following example creates a cluster named *mycluster* with the default values. This command will create a workload cluster with 1 Linux node.
+Create a Kubernetes cluster using the command [New-AksHciCluster](new-akshcicluster.md). The following example creates a cluster named *mycluster* with the default values. This command will create a workload cluster with 1 Linux node.
 
 ```powershell
 New-AksHciCluster -name mycluster

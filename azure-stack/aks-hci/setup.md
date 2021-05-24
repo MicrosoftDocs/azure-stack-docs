@@ -88,8 +88,4 @@ Now that we've verified our system settings, let's get started:
  
 ## Next steps
 
-<<<<<<< HEAD
 In this quickstart, you installed Windows Admin Center and configured an Azure Kubernetes Service host on the system you are going to deploy your Kubernetes clusters to. You are now ready to go ahead with [creating a Kubernetes cluster in Windows Admin Center](create-kubernetes-cluster.md).
-=======
-In this quickstart, you installed Windows Admin Center and configured an Azure Kubernetes Service host on the system you are going to deploy your Kubernetes clusters to. You are now ready to go ahead with [creating a Kubernetes cluster in Windows Admin Center](create-kubernetes-cluster.md).
->>>>>>> 3ca8fd99d827ffef19989e86401584ee0b9555a5
