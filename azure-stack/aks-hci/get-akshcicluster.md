@@ -28,6 +28,11 @@ List Kubernetes managed clusters including the Azure Kubernete Service host.
 PS C:\> Get-AksHciCluster
 ```
 
+### List a specific Kubernetes cluster
+```powershell
+PS C:\> Get-AksHciCluster -name mycluster
+```
+
 ## Parameters
 
 ### -name

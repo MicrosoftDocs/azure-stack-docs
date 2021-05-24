@@ -31,7 +31,7 @@ PS C:\> Add-AksHciNode -nodeName newnode
 ## Parameters
 
 ### -nodeName
-The name of your cluster.
+The name of the node in the failover cluster. The node should already be added to the failover cluster.
 
 ```yaml
 Type: System.String
