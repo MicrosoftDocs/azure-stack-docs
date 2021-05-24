@@ -66,8 +66,6 @@
       href: manage/vm-affinity.md
     - name: VM load balancing
       href: manage/vm-load-balancing.md
-    - name: Use GPUs with clustered VMs
-      href: manage/use-gpu-with-clustered-vm.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -206,6 +204,8 @@
       href: concepts/data-collection.md
 - name: Preview channel
   items:
+  - name: Use GPUs with clustered VMs
+    href: manage/use-gpu-with-clustered-vm.md
   - name: Dynamic CPU compatibility
     href: manage/processor-compatibility-mode.md
   - name: Storage thin provisioning
