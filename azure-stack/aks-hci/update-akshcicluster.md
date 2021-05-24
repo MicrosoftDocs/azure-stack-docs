@@ -25,9 +25,14 @@ Update a managed Kubernetes cluster to a newer Kubernetes or OS version.
 
 ## Examples
 
-### Example
+### Update Kubernetes version
 ```powershell
-PS C:\> Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.18.8 -operatingSystem
+PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.18.8 
+```
+
+### Perform an operating system upgrade
+```powershell
+PS C:\> Update-AksHciCluster -name mycluster -operatingSystem
 ```
 
 ## Parameters

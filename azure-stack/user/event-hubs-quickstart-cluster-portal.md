@@ -8,7 +8,7 @@ ms.topic: quickstart
 ms.date: 05/13/2021
 ms.reviewer: bryanla
 ms.lastreviewed: 08/15/2020
-ms.custom: contperf-fy20q4
+ms.custom: contperf-fy21q4
 ---
 
 # Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal

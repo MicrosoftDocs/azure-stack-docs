@@ -28,10 +28,6 @@ New-AksHciCluster -name <String>
                  [-vnet <Virtual Network>]
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
-                 [-enableSecretsEncryption]      
-                 [-enableCsiSmb]   
-                 [-enableCsiNfs] 
-                 [-enableMonitoring]
 ```
 
 ## Description
@@ -228,7 +224,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -enableSecretsEncryption
+<!-- ### -enableSecretsEncryption
 Use this flag to enable encryption in your Kubernetes secrets.
 
 ```yaml
@@ -287,3 +283,4 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+--->

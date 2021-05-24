@@ -65,6 +65,18 @@ Install Active Directory authentication.
 PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
 
+### If a cluster host is domain-joined
+
+```powershell
+PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
+```
+
+### If a cluster host is not domain-joined
+
+```powershell
+PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8
+```
+
 ## Parameters
 
 ### -name
