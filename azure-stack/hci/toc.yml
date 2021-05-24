@@ -204,6 +204,10 @@
       href: concepts/data-collection.md
 - name: Preview channel
   items:
+  - name: Monitor multiple clusters
+    href: manage/monitor-azure-portal.md
+  - name: Azure Stack HCI Insights
+    href: manage/azure-stack-hci-insights.md
   - name: Network ATC
     href: deploy/network-atc.md
   - name: Use GPUs with clustered VMs
