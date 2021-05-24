@@ -59,6 +59,8 @@
     href: node-repair.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md
+  - name: Resource limits
+    href: concepts-support.md
 - name: How-to guides
   items: 
     - name: Evaluate on an Azure VM
@@ -109,10 +111,12 @@
             href: secure-communication.md
           - name: Secure traffic between pods using network policies
             href: calico-networking-policy.md
+          - name: Defend Azure Arc enabled Kubernetes clusters
+            href: https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
-            href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview
+            href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json
           - name: Use on-premises monitoring
             href: monitor-logging.md
           - name: View logs to collect and review data
@@ -137,6 +141,8 @@
             href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - name: Use Bridge to Kubernetes with Visual Studio
             href: https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+          - name: Deploy a Java application with Open Liberty or WebSphere Liberty
+            href: deploy-java-liberty-app.md
     - name: Troubleshoot
       items:
           - name: Known issues
