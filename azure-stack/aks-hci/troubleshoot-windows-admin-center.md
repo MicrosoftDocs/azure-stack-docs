@@ -11,6 +11,11 @@ ms.author: v-susbo
 
 When you use Windows Admin Center (WAC) to create or manage AKS on Azure Stack HCI clusters, you might occasionally come across problems. This article details some common problems and troubleshooting steps that are specific to WAC.
 
+## An error occurs when deploying AKS on Azure Stack HCI through Windows Admin Center
+The error _No match was found for the specified search criteria for the provider 'Nuget'_ appears when deploying through Windows Admin center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
+
+This is an error occurs from PowerShell and states that there are internet connectivity issues. PowerShell is trying to install the pre-requisites package and is unable to install it. You should check to make sure the server or failover cluster has internet connectivity and then start a fresh installation.
+
 ## Create Windows Admin Center logs
 When you report problems with Windows Admin Center, it's a good idea to attach logs to help the development team diagnose your problem. Errors in Windows Admin Center generally come in one of two forms: 
 - Events that appear in the event viewer on the machine running Windows Admin Center 
@@ -93,7 +98,7 @@ az login -tenant <tenant>
 If you've just created a new Azure account and haven't signed in to the account on your gateway machine, you might experience problems with registering your Windows Admin Center gateway with Azure. To mitigate this problem, sign in to your Azure account in another browser tab or window, and then register the Windows Admin Center gateway to Azure.
 
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
+- [Known issues](./known-issues.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
