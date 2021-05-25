@@ -4,7 +4,7 @@ description: This topic explains the benefits of using Automatic Virtual Machine
 author: jelei
 ms.author: jelei
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 05/25/2021
 ---
 
 # Activate Windows Server VMs using Automatic Virtual Machine Activation
@@ -26,19 +26,19 @@ There are multiple benefits to this approach:
 - Automatic Virtual Machine Activation acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with Product Use Rights and Microsoft Software License Terms.
 
 ## Supported keys and guest OS versions
-To use Automatic Virtual Machine Activation with Azure Stack HCI, each server in the cluster requires a valid product key for Windows Server 2019 Datacenter Edition or later.
+To use Automatic Virtual Machine Activation with Azure Stack HCI, check that you have the right keys:
+- **Key editions:** Windows Server 2019 Datacenter or later.
+- **Number of keys:** One key for each host server you are activating. Each server requires a unique key, unless you have a valid volume license key.
+- **Consistency across cluster:** All servers in a cluster need to use the same edition of keys, so that VMs may stay activated regardless of which server they run on.
+
+   >[!NOTE]
+   > For VMs to stay activated regardless of which server they run on, Automatic Virtual Machine Activation must be set up for each server in the cluster.
 
 ### Where you can get keys
-Choose from the following options to get a product key.
-
-Your OEM:
-- Find a Certificates of Authenticity (COA) key label on the outside of OEM hardware. You can use this key once per server in the cluster.
-
-The Volume Licensing Service Center (VLSC):
-- From the VLSC, you can download a Multiple Activation Key (MAK) that you may reuse up to a predetermined number of allowed activations. To learn more, see [MAK keys](https://docs.microsoft.com/licensing/products-keys-faq#what-is-a-multiple-activation-key-mak).
-
-Other retail channels:
-- You can also find a retail key on a retail box label. You can only use this key once per server in the cluster. To learn more, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
+Choose from the following options to get a product key:
+- **OEM provider:** Find a Certificates of Authenticity (COA) key label on the outside of OEM hardware. You can use this key once per server in the cluster.
+- **Volume Licensing Service Center (VLSC):** From the VLSC, you can download a Multiple Activation Key (MAK) that you may reuse up to a predetermined number of allowed activations. To learn more, see [MAK keys](https://docs.microsoft.com/licensing/products-keys-faq#what-is-a-multiple-activation-key-mak).
+- **Retail channels:** You can also find a retail key on a retail box label. You can only use this key once per server in the cluster. To learn more, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
 
 ### Supported guest OS versions
 Automatic Virtual Machine Activation activates all editions (Datacenter, Standard, or Essentials) of the following guest OS versions.
@@ -60,7 +60,7 @@ You can use Windows Admin Center to set up and manage Automatic Virtual Machine 
 The following is required to use Automatic Virtual Machine Activation in Windows Admin Center:
 - An Azure Stack HCI cluster (version 20H2, with the April 13, 2021 security update or later)
 - Windows Admin Center (version 2103 or later)
-- The Cluster Manager extension for Windows Admin Center (version 1.491.1 or later)
+- The Cluster Manager extension for Windows Admin Center (version 1.515.1 or later)
 - A Windows Server Datacenter key (version 2019 or later)
 
 ### Set up Automatic Virtual Machine Activation
@@ -90,7 +90,7 @@ Now that you have set up Automatic Virtual Machine Activation, you can activate 
 You might want to either change or add keys when your needs change. Examples for doing this include adding a server to the cluster, or using new Windows Server VM versions.
 
 To change or add keys to host servers in a cluster:
-1. In the **Automatically activate VMs** pane, select the servers that you want to manage, and then select **Manage activation keys**.
+1. In the **Activate Windows Server VMs** pane, select the servers that you want to manage, and then select **Manage activation keys**.
 
 1. In the **Manage activation keys** pane, enter the new keys for the selected host servers, and then select **Apply**.
 
@@ -122,16 +122,10 @@ Your server is offline and cannot be reached. Bring all servers online and then 
 One or more of your servers is not updated and does not have the required packages to set up Automatic Virtual Machine Activation. Ensure that your cluster is updated, and then refresh the page. To learn more, see [Update Azure Stack HCI clusters](./update-cluster.md).
 
 ## Use Automatic Virtual Machine Activation in PowerShell
-You can use the following PowerShell commands to set up and manage Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
+You can also use PowerShell to set up and manage Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
 
 ### Set up Automatic Virtual Machine Activation
-To use Automatic Virtual Machine Activation in PowerShell:
-
-1. Right-click **Windows PowerShell**, select **Run as administrator**, and then from each Azure Stack HCI server in your cluster, use the following command to import the Automatic Virtual Machine Activation PowerShell module:
-
-    ```powershell
-     Import-module "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\ServerAVMAManager\ServerAVMAMAnager.psm1"
-    ```
+Open PowerShell as an administrator and run the following commands.
 1. Apply Windows Server Datacenter keys to each server:
 
     ```powershell
@@ -142,20 +136,25 @@ To use Automatic Virtual Machine Activation in PowerShell:
     ```powershell
      Get-VMAutomaticActivation
     ```
-1. Repeat steps 1-3 on each of the other servers in your Azure Stack HCI cluster.
+1. Repeat steps 1 and 2 on each of the other servers in your Azure Stack HCI cluster.
 
 ### Activate VMs against a host server
 Now that you have set up Automatic Virtual Machine Activation, you can activate VMs against the host server by following steps [here](/windows-server/get-started-19/vm-activation-19).
 
 ## FAQ
 This FAQ provides answers to some questions about using Automatic Virtual Machine Activation:
+
+- I want to change an existing key. What happens to the previous key if the overwrite is successful/unsuccessful?
+    - Once a product key is associated with a device, that association is permanent. Overwriting keys does not reduce activation count for used keys. If you successfully apply another key, both keys would be considered to have been "used" once. If you unsuccessfully apply a key, your host server activation state remains unchanged and defaults to the last successfully added key.
+- I want to change to another key *of a different version*. Is it possible to switch keys between versions?
+    - You may update to newer versions of keys, or replace existing keys with the same version, but you may not downgrade to a previous version.
 - What happens if I add or remove a new server?
     - You'll need to [add activation keys](#change-or-add-keys-later-optional) for each new server, so that the Windows Server VMs may be activated against the new server.
     - Removing a server does not impact how Automatic Virtual Machine Activation is set up for the remaining servers in the cluster.
 - Does Automatic Virtual Machine Activation work in disconnected scenarios?
-    - Only the host server needs to be connected to the internet for Automatic Virtual Machine Activation to work. VMs running on top of the host server do not require internet connectivity to be activated.
+    - Only the host server needs to be connected to the internet for Automatic Virtual Machine Activation to work. VMs running on top of the host server do not require internet connectivity to be activated. 
 - Can I run Windows Server 2016 VMs on Azure Stack HCI? I have a license for it.
-    - Absolutely! While Automatic Virtual Machine Activation cannot be set up with Windows Server 2016 keys (requires Windows Server 2019 or later), you can run Windows Server 2016 VMs on Azure Stack HCI by using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your VM directly.
+    - Absolutely! While Windows Server 2016 keys cannot be used to set up Automatic Virtual Machine Activation on Azure Stack HCI, they may still be applied using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
     - Windows Server 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#supported-guest-os-versions)), and you can set this up through Automatic Virtual Machine Activation.
 - Previously I purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?
     - Yes! First ensure that you are not using the key on another system, then go ahead and apply the key on the host server running Azure Stack HCI (unless your key is a multi-use volume key).
@@ -164,4 +163,5 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 
 ## Next steps
 For more information, see also:
+- [Automatic virtual machine activation](/windows-server/get-started-19/vm-activation-19)
 - [Windows Server 2019 Activation](/windows-server/get-started-19/activation-19)
