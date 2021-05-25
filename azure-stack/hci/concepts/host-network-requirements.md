@@ -274,6 +274,8 @@ Stretched clusters provide disaster recovery that spans multiple data centers. I
 
 :::image type="content" source="media/plan-networking/stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-networking/stretched-cluster.png":::
 
+### Stretch Cluster Requirements
+
 Stretched clusters have the following requirements and characteristics:
 
 - RDMA is limited to a single site, and is not supported across different sites or subnets.
@@ -282,7 +284,7 @@ Stretched clusters have the following requirements and characteristics:
 
 - Communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
 
-- Has enough bandwidth to run the workloads at the other site. In the event of a failover, the alternate site will need to run all traffic. It is recommended to provision sites at 50% of their available network capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
+- Have enough bandwidth to run the workloads at the other site. In the event of a failover, the alternate site will need to run all traffic. It is recommended to provision sites at 50% of their available network capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
 
 - Replication (north/south) between sites can use the same physical NICs as the local storage (east/west which may use RDMA). If using the same physical adapters, these adapters must be teamed with SET, and must have additional virtual NICs provisioned between sites (RDMA may be enabled on the local virtual NICs; disabled on the routable virtual NICs).
 
@@ -296,10 +298,47 @@ Stretched clusters have the following requirements and characteristics:
     
     - Must meet any additional requirements for Storage Replica.
 
+### Stretch Cluster Example Configuration
+
+The following provides a possible stretch cluster configuration. To ensure that a specific virtual NIC is mapped to a specific physical adapter, use the [Set-VMNetworkAdapterTeammapping](https://docs.microsoft.com/en-us/powershell/module/hyper-v/set-vmnetworkadapterteammapping) cmdlet.
+
+:::image type="content" source="media/plan-networking/StretchS2DExample.png" alt-text=Stretch S2D Example" lightbox="media/plan-networking/StretchS2DExample.png":::
+
+The following shows the details for the example stretch cluster configuration.
+
+> [!NOTE]
+>Your exact configuration including NIC Names, IP Addresses, VLANs, and more may be different than what is shown here. This is used only as a reference configuration that can be adapted to your environment within the constrains defined in requirements section above.
+
+- SiteA – Local Replication, RDMA Enabled, No Default Gateway
+
+    - NodeA1: vSMB01 (pNIC01): VLAN711, 192.168.1.1/24
+    - NodeA2: vSMB01 (pNIC01): VLAN711, 192.168.1.2/24
+    - NodeA1: vSMB02 (pNIC02): VLAN712, 192.168.2.1/24
+    - NodeA2: vSMB02 (pNIC02): VLAN712, 192.168.2.2/24
+
+- SiteB – Local Replication, RDMA Enabled, No Default Gateway
+
+    - NodeB1: vSMB01 (pNIC01): VLAN711, 192.168.1.1/24
+    - NodeB2: vSMB01 (pNIC01): VLAN711, 192.168.1.2/24
+    - NodeB1: vSMB02 (pNIC02): VLAN712, 192.168.2.1/24
+    - NodeB2: vSMB02 (pNIC02): VLAN712, 192.168.2.2/24
+
+- SiteA – Stretch Replication, RDMA Disabled, Routable between sites
+
+    - NodeA1: Stretch1 (pNIC01): 173.0.0.1/8
+    - NodeA2: Stretch1 (pNIC01): 173.0.0.2/8
+    - NodeA1: Stretch2 (pNIC02): 174.0.0.1/8
+    - NodeA2: Stretch2 (pNIC02): 174.0.0.2/8
+
+- SiteB – Stretch Replication, RDMA Disabled, Routable between sites
+    - NodeB1: Stretch1 (pNIC01): 173.0.0.3/8
+    - NodeB2: Stretch1 (pNIC01): 173.0.0.4/8
+    - NodeB1: Stretch2 (pNIC02): 174.0.0.3/8
+    - NodeB2: Stretch2 (pNIC02): 174.0.0.4/8
+
 ## Next steps
 
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
-- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
 - For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md)
 - For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md)
