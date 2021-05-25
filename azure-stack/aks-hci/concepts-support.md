@@ -27,7 +27,7 @@ to prevent workloads from being deployed to it. The cordoned VM is then drained 
 The drained VM will then be removed from the cluster, shut down, and replaced by the new, updated VM. This process will repeat until all VMs are updated. 
 
 ## Supported VM sizes
-Azure Kubernetes Service on Azure Stack HCI supports the following VM sizes for control plane nodes, Linux worker nodes, and Windows worker nodes:
+Azure Kubernetes Service on Azure Stack HCI supports the following VM sizes for control plane nodes, Linux worker nodes, and Windows worker nodes. While we currently do support VM sizes like `Standard_K8S2_v1` and `Standard_K8S_v1` we do not recommend using it as it may result in unexpected failures due to out of memory issues.
 
 | VM Size        | CPU | Memory (GB) |
 | -------------- | ----| ------------|
