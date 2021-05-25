@@ -108,7 +108,7 @@ To upgrade a cluster using PowerShell:
     Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
     ```
 
-   Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case. 
+    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
 
 6.	You'll need a separate Azure Stack HCI server outside the cluster to run the `Invoke-CauRun` cmdlet from. It can even be a VM on which you temporarily installed Azure Stack HCI. **Important: The system on which you run `Invoke-CauRun` must be running Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
 
