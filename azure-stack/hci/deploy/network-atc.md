@@ -1,6 +1,6 @@
 ---
-title: Network ATC for Azure Stack HCI
-description: This topic covers how to configure and validate network ATC functionality for Azure Stack HCI.
+title: Simplify host networking with Network ATC
+description: This topic covers how to simplify host networking using Network ATC for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
 ms.date: 05/25/2021
@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Network ATC for Azure Stack HCI
+# Simplify host networking with Network ATC
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
