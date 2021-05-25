@@ -3,7 +3,7 @@ title: Disable-AksHciArcConnection
 author: jessicaguan
 description: The Disable-AksHciArcConnection PowerShell command disables the Arc connection on an AKS on Azure Stack HCI cluster.
 ms.topic: reference
-ms.date: 04/12/2021
+ms.date: 05/25/2021
 ms.author: jeguan
 ---
 
