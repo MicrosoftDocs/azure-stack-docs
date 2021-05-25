@@ -180,6 +180,8 @@
     href: https://aka.ms/aks-hci-relnotes/
   - name: PowerShell
     href: AksHci.md
+  - name: Pricing
+    href: pricing.md
   - name: Support policies
     href: support-policies.md
   - name: Azure roadmap
