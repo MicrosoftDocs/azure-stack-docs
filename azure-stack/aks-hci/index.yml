@@ -32,7 +32,8 @@ landingContent:
             url: app-availability.md
           - text: Resource limits
             url: concepts-support.md        
-            
+          - text: Pricing
+            url: pricing.md    
   - title: Get started
     linkLists:
       - linkListType: deploy
