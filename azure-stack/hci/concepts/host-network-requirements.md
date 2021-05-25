@@ -290,19 +290,19 @@ Stretched clusters have the following requirements and characteristics:
 
 - Adapters used for communication between sites:
 
-    - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
+  - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
 
-    - Must be on their own subnet and VLAN that can route between sites.
+  - Must be on their own subnet and VLAN that can route between sites.
 
-    - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
+  - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
 
-    - Must meet any additional requirements for Storage Replica.
+  - Must meet any additional requirements for Storage Replica.
 
 ### Stretched cluster example
 
 The following example illustrates a stretched cluster configuration. To ensure that a specific virtual NIC is mapped to a specific physical adapter, use the [Set-VMNetworkAdapterTeammapping](/powershell/module/hyper-v/set-vmnetworkadapterteammapping) cmdlet.
 
-:::image type="content" source="media/plan-networking/stretched-cluster-storage.png" alt-text=Stretch S2D Example" lightbox="media/plan-networking/stretched-cluster-storage.png":::
+:::image type="content" source="media/plan-networking/stretched-cluster-storage.png" alt-text="Stretched cluster storage example" lightbox="media/plan-networking/stretched-cluster-storage.png":::
 
 The following shows the details for the example stretched cluster configuration.
 
