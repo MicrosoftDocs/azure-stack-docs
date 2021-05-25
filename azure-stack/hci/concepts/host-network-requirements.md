@@ -307,7 +307,7 @@ The following example illustrates a stretched cluster configuration. To ensure t
 The following shows the details for the example stretched cluster configuration.
 
 > [!NOTE]
->Your exact configuration including NIC Names, IP Addresses, VLANs, and more may be different than what is shown here. This is used only as a reference configuration that can be adapted to your environment within the constrains defined in requirements section above.
+>Your exact configuration including NIC names, IP addresses, and VLANs, may be different than what is shown. This is used only as a reference configuration that can be adapted to your environment within the constrains defined in the Requirements section above.
 
 #### SiteA – Local replication, RDMA enabled, no default gateway
 
