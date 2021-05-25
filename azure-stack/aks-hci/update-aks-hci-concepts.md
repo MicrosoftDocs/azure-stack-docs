@@ -10,9 +10,6 @@ author: mkostersitz
 
 # Update concepts for Azure Kubernetes Services on Azure Stack HCI
 
-> [!IMPORTANT]
-> The March release of AKS on Azure Stack HCI cannot be updated from a pervious release. If you want to deploy the March release on your Azure Stack HCI cluster, you must start a fresh installation. You can deploy using [PowerShell](kubernetes-walkthrough-powershell.md) or [Windows Admin Center](./setup.md).
-
 There are several types of updates, which can happen independently from each other and in certain supported combinations.
 
 - Update the AKS on Azure Stack HCI core system to the latest version.

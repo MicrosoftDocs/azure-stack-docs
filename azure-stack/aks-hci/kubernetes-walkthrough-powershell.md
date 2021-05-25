@@ -3,7 +3,7 @@ title: Quickstart to set up an Azure Kubernetes Service host and create AKS on A
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 04/13/2021
+ms.date: 05/25/2021
 ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
@@ -27,18 +27,16 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
-
-Download the `AKS-HCI-Public-Preview-April-2021` from the [Azure Kubernetes Service on Azure Stack HCI registration page](https://aka.ms/AKS-HCI-Evaluate). The zip file `AksHci.Powershell.zip` contains the PowerShell module. You will also need to install the following Azure PowerShell modules.
-
 **If you are using remote PowerShell, you must use CredSSP.**
+
+**Close all open PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
 
 ```powershell
 Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
 Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
 Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+Install-Module -Name AksHci -Repository PSGallery
 ```
-
-**Close all PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Once this is done, you can extract the contents of the new zip file. Make sure to extract the zip file in the correct location (`%systemdrive%\program files\windowspowershell\modules`).
 
 ```powershell
 Import-Module Az.Accounts
@@ -52,7 +50,7 @@ Import-Module AksHci
 ```powershell
 Get-Command -Module AksHci
 ```
-To view the complete list of AksHci PowerShell commands, see [AksHCI PowerShell](./akshci.md).
+To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
 
 
 ### Register the resource provider to your subscription
@@ -127,7 +125,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation
 ```
 
 > [!NOTE]
-> The value for `-cloudservicecidr` given in this example command will need to be customized for your environment.
+> The values given in this example command will need to be customized for your environment.
 
 ## Step 4: Log in to Azure and configure registration settings
 
