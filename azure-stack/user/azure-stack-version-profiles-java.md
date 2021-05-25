@@ -19,7 +19,7 @@ ms.lastreviewed: 12/2/2020
 
 The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis).
 
-The Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that loads the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you can select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack Hub.
+The Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that loads the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2020-09-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you can select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack Hub.
 
 Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack Hub.
 
@@ -40,7 +40,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
      ```xml
      <dependency>
-     <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+     <groupId>com.microsoft.azure.profile_2020-09-01_hybrid</groupId>
      <artifactId>azure</artifactId>
      <version>1.0.0-beta-1</version>
      </dependency>
@@ -62,7 +62,7 @@ Follow these steps to install the Java SDK:
 
    ```xml  
    <dependency>
-   <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+   <groupId>com.microsoft.azure.profile_2020-09-01_hybrid</groupId>
    <artifactId>azure</artifactId>
    <version>1.0.0-beta-1</version>
    </dependency>
@@ -70,7 +70,7 @@ Follow these steps to install the Java SDK:
 
 4. The set of packages that need to be installed depends on the profile version you want to use. The package names for the profile versions are:
 
-   - **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**
+   - **com.microsoft.azure.profile\_2020\_09\_01\_hybrid**
    - **com.microsoft.azure**
      - **latest**
 
@@ -158,9 +158,9 @@ Sample JSON file:
 
 ## Existing API profiles
 
-- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 1904 or later.
+- **com.microsoft.azure.profile\_2020\_09\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 2102 or later.
 
-- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profile built for Azure Stack Hub. Use this profile for services to be compatible with Azure Stack Hub versions 1808 or later.
+- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 1904 or later.
 
 - **com.microsoft.azure**: Profile consisting of the latest versions of all services. Use the latest versions of all the services.
 
@@ -257,7 +257,7 @@ Use the following GitHub samples as references for creating solutions with .NET 
 
 - [Manage storage accounts](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (updated with 2019-03-01-hybrid profile)
+- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (updated with 2020-09-01-hybrid profile)
 
 ### Sample unit test project
 
@@ -296,11 +296,11 @@ Use the following GitHub samples as references for creating solutions with .NET 
     final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
     ```
 
-6. In the **Pom.xml** file, add the following dependency to use the **2019-03-01-hybrid** profile for Azure Stack Hub. This dependency installs the modules associated with this profile for the Compute, Networking, Storage, Key Vault, and App Services resource providers:
+6. In the **Pom.xml** file, add the following dependency to use the **2020-09-01-hybrid** profile for Azure Stack Hub. This dependency installs the modules associated with this profile for the Compute, Networking, Storage, Key Vault, and App Services resource providers:
 
     ```xml
     <dependency>
-      <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+      <groupId>com.microsoft.azure.profile_2020-09-01_hybrid</groupId>
       <artifactId>azure</artifactId>
       <version>1.0.0-beta-1</version>
     </dependency>
