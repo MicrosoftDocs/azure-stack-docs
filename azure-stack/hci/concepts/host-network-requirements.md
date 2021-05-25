@@ -277,17 +277,24 @@ Stretched clusters provide disaster recovery that spans multiple data centers. I
 Stretched clusters have the following requirements and characteristics:
 
 - RDMA is limited to a single site, and is not supported across different sites or subnets.
-- Servers in the same site must reside in the same rack and Layer-2 boundary.
-- Communication between sites cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
 
-- If a site uses RDMA for its storage adapters, these adapters must be on a separate subnet and VLAN that cannot route between sites. This prevents Storage Replica from using RDMA across sites.
+- Servers in the same site must reside in the same rack and Layer-2 boundary.
+
+- Communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
+
+- Has enough bandwidth to run the workloads at the other site. In the event of a failover, the alternate site will need to run all traffic. It is recommended to provision sites at 50% of their available network capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
+
+- Replication (north/south) between sites can use the same physical NICs as the local storage (east/west which may use RDMA). If using the same physical adapters, these adapters must be teamed with SET, and must have additional virtual NICs provisioned between sites (RDMA may be enabled on the local virtual NICs; disabled on the routable virtual NICs).
+
 - Adapters used for communication between sites:
 
     - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
+
     - Must be on their own subnet and VLAN that can route between sites.
+
     - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
+    
     - Must meet any additional requirements for Storage Replica.
--	In the event of a failover to another site, you must ensure that enough bandwidth is available to run the workloads at the other site. A safe option is to provision sites at 50% of their available capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
 
 ## Next steps
 
