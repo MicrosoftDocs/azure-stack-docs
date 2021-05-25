@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on in AKS for Azure Stack HCI
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: lahirisl
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 05/21/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
