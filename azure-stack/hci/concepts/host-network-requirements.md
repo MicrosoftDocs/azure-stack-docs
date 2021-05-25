@@ -302,7 +302,7 @@ Stretched clusters have the following requirements and characteristics:
 
 The following example illustrates a stretched cluster configuration. To ensure that a specific virtual NIC is mapped to a specific physical adapter, use the [Set-VMNetworkAdapterTeammapping](/powershell/module/hyper-v/set-vmnetworkadapterteammapping) cmdlet.
 
-:::image type="content" source="media/plan-networking/stretched-cluster-storage.png" alt-text="Stretched cluster storage example" lightbox="media/plan-networking/stretched-cluster-storage.png":::
+:::image type="content" source="media/plan-networking/stretched-cluster-example.png" alt-text="Stretched cluster storage example" lightbox="media/plan-networking/stretched-cluster-example.png":::
 
 The following shows the details for the example stretched cluster configuration.
 
