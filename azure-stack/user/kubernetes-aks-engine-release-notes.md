@@ -15,6 +15,7 @@ ms.lastreviewed: 04/05/2021
 ---
 
 # Release notes for the AKS engine on Azure Stack Hub
+
 ::: moniker range=">=azs-2005"
 *Applies to version v0.60.1 of the AKS engine.*
 
@@ -27,7 +28,7 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 ### Upgrade considerations
 
 -   Are you using the correct marketplace items, AKS Base Ubuntu 16.04-LTS or 18.04 Image Distro or AKS Base Windows Server for your version of the AKS engine? You can find the versions in the section "Download new images and AKS engine".
--   Are you using the correct cluster specification (apimodel.json) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md?view=azs-2008#deploy-a-kubernetes-cluster).
+-   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md?view=azs-2008#deploy-a-kubernetes-cluster).
 -   Are you using a reliable machine to run the AKS engine and from which you are performing upgrade operations?
 -   If you are updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there is a need to redirect users to it. A backup cluster is highly recommended.
 -   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
@@ -125,6 +126,7 @@ New features include:
 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. We recommend deploying one service at the time.
 -   Since the aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+
 ## Reference
 
 This is the complete set of release notes for Azure and Azure Stack Hub combined:
@@ -195,7 +197,6 @@ New versions of these are available with this update:
 
 -   The Kubernetes cluster administrator will need to download the new aks-engine version 0.51.0. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md). You can follow the same process you use to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md).
 
-
 ## AKS engine and Azure Stack version mapping
 
 | Azure Stack Hub version | AKS engine version |
@@ -249,6 +250,7 @@ In the API Model json file, please specify the release and version values under 
 -   Deploying multiple Kubernetes services in parallel inside a single cluster may lead to an error in the basic load balancer configuration. Deploying one service at the time if possible.
 -   Running aks-engine get-versions will produce information applicable to Azure and Azure Stack Hub, however, there is not explicit way to discern what corresponds to Azure Stack Hub. Do not use this command to figure out what versions are available to upgrade. Use the upgrade reference table described above.
 -   Since aks-engine tool is a share source code repository across Azure and Azure Stack Hub. Examining the many release notes and Pull Requests will lead you to believe that the tool supports other versions of Kubernetes and OS platform beyond the listed above, ignore them and use the version table above as the official guide for this update.
+
 ## Reference
 
 This is the complete set of release notes for Azure and Azure Stack Hub combined:
