@@ -50,9 +50,6 @@ Automatic Virtual Machine Activation activates all editions (Datacenter, Standar
 | Windows Server 2016                      | X                                       |
 | Windows Server 2012 R2                   | X                                       |
 
-   >[!NOTE]
-   > For VMs to stay activated regardless of which server they run on, Automatic Virtual Machine Activation must be set up for each server in the cluster. Servers also must be activated with keys from the same operating system version.
-
 ## Use Automatic Virtual Machine Activation in Windows Admin Center
 You can use Windows Admin Center to set up and manage Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
 
