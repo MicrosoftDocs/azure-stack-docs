@@ -204,6 +204,8 @@
       href: concepts/data-collection.md
 - name: Preview channel
   items:
+  - name: Join the preview channel
+    href: manage/preview-channel.md
   - name: Monitor multiple clusters
     href: manage/monitor-azure-portal.md
   - name: Azure Stack HCI Insights
