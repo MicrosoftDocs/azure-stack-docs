@@ -139,8 +139,8 @@ Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
 
 $savedModulesPath = "<Path that is used to save the packages>"
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 0.10.0-preview
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.0.2-preview
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 0.10.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.1.0
 ```
 ::: moniker-end
 
@@ -175,7 +175,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
     Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.1.0 -Scope AllUsers
 
-    Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0-preview -Scope AllUsers
+    Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0 -Scope AllUsers
    ```
 ::: moniker-end
 ::: moniker range="<azs-2102"
@@ -194,7 +194,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.2-preview -AllowPrerelease -Scope AllUsers
 
-   Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0-preview -AllowPrerelease -Scope AllUsers
+   Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0 -AllowPrerelease -Scope AllUsers
    ```
 ::: moniker-end
 
