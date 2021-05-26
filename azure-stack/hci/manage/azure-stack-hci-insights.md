@@ -61,18 +61,18 @@ It also shows a list of unmonitored clusters across subscriptions that are conne
 
 ### Overview
 
-This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-3000-value-in-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
+This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
 
 ### Virtual machines
 
-This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-3003-value-in-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
+This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
 ### Storage
 
 This view provides two things: 
 
-- **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-3002-value-in-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
-- **Drive Health information.** This view is built using the [drive event ID 3001](#drive-3001-value-in-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+- **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+- **Drive Health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
 ### Cluster performance
 
@@ -83,7 +83,7 @@ This view provides four cluster performance trends:
 -	Volume IOPS
 -	Volume throughput
 
-The views are built using the [cluster event ID 3004](#cluster-3004-value-in-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+The views are built using the [cluster event ID 3004](#cluster-event-3004-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
 ## Customize Azure Stack HCI Insights
 
@@ -137,7 +137,7 @@ This channel includes five events. Each event has cluster name and Azure Resourc
 | 3003         | Virtual machine |
 | 3004         | Cluster         |
 
-### Server 3000 Value in RenderedDescription column value
+### Server event 3000 RenderedDescription column value
 
 ```json
 {
@@ -221,7 +221,7 @@ Values for the **m_status** variable are as follows:
 | 9         | Drain failed    |
 | 0xffff    | Unknown         |   
 
-### Drive 3001 Value in RenderedDescription column value
+### Drive event 3001 RenderedDescription column value
 
 ```json
 {
@@ -238,7 +238,7 @@ Values for the **m_status** variable are as follows:
 }
 ```
 
-### Volume 3002 Value in RenderedDescription column value
+### Volume event 3002 RenderedDescription column value
 
 ```json
 {
@@ -314,7 +314,7 @@ Values for the **m_status** variable are as follows:
 | 0xD002    | Down                       |
 | 0xD003    | Needs resync               |
 
-### Virtual machine 3003 Value in RenderedDescription column value
+### Virtual machine event 3003 RenderedDescription column value
 
 ```json
 {
@@ -339,7 +339,7 @@ Values for the **m_status** variable are as follows:
 }
 ```
 
-### Cluster 3004 Value in RenderedDescription column value
+### Cluster event 3004 RenderedDescription column value
 
 ```json
 {
