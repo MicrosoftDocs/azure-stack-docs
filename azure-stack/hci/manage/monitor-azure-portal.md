@@ -1,24 +1,24 @@
 ---
-title: Monitor multiple Azure Stack HCI clusters
-description: How to enable Logs and Monitoring capabilities to monitor multiple Azure Stack HCI clusters from Azure portal.
+title: Monitor Azure Stack HCI clusters from Azure portal
+description: How to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters from Azure portal.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/24/2021
+ms.date: 05/26/2021
 ---
 
 # Monitor Azure Stack HCI clusters from Azure portal
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
-This topic explains how to enable Logs and Monitoring capabilities to monitor multiple Azure Stack HCI clusters. You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
+This topic explains how to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters. You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
-   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after May 25, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration) if you haven't already done so manually from Azure portal.
+   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after May 25, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration).
 
 ## Logs capability (preview)
 
@@ -126,6 +126,5 @@ Every GB of data ingested into your Log Analytics workspace can be retained at n
 
 For related information, see also:
 
-- [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
 - [Azure Stack HCI Insights](azure-stack-hci-insights.md)
-- [Monitor Azure Stack HCI clusters](monitor-cluster.md)
+- [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
