@@ -50,8 +50,8 @@ Before registering Azure Stack Hub with Azure, you must have:
     To get the ID, go to the Azure portal and select **All services > General > Subscriptions**, choose the subscription you want to use from the list. Within the **Essentials** section, find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments.
 ::: zone-end
 
-      > [!Note]
-      > Germany cloud subscriptions aren't currently supported.
+   > [!Note]
+   > Germany cloud subscriptions aren't currently supported.
 
 - The username and password for an account that's an owner for the subscription.
 
