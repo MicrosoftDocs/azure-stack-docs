@@ -22,7 +22,7 @@ The Azure Stack HCI release preview channel is an opt-in program that lets custo
 
 Azure Stack HCI, version 21H2 Preview contains the following new features:
 
-- [Multi-cluster monitoring with Azure portal](monitor-azure-portal.md)
+- [Monitor clusters from Azure portal](monitor-azure-portal.md)
 - [Use GPUs with clustered VMs](use-gpu-with-clustered-vm.md)
 - [Dynamic CPU compatibility mode](processor-compatibility-mode.md)
 - [Storage thin provisioning](thin-provisioning.md)
