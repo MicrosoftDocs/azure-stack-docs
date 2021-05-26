@@ -101,4 +101,4 @@ For more information, see also:
 - [Drive symmetry considerations](drive-symmetry-considerations.md)
 - [Plan volumes](plan-volumes.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
-- [Understand and deploy persistent memory](deploy-persistent.memory.md)
+- [Understand and deploy persistent memory](deploy-persistent-memory.md)
