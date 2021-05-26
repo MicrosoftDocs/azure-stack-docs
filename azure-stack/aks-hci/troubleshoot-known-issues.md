@@ -147,7 +147,7 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 ## An **Unable to acquire token** error appears when running Set-AksHciRegistration
 An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
 
-## When upgrading an AKS on Azure Stack HCI deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
+## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
 
 To resolve this issue restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
 
