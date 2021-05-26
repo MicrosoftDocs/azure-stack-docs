@@ -28,6 +28,9 @@ Storage Spaces Direct currently works with four types of drives:
 
 These can be combined in various ways, which we group into two categories: "all-flash" and "hybrid". Deployments with all HDD are not supported.
 
+   >[!NOTE]
+   > This article covers cache configurations with NVMe, SSD, and HDD. For information on using persistent memory as a cache, see [Understand and deploy persistent memory](deploy-persistent-memory.md).
+
 ### All-flash deployment possibilities
 
 All-flash deployments aim to maximize storage performance and do not include HDD.

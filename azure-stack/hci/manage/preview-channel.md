@@ -22,7 +22,7 @@ The Azure Stack HCI release preview channel is an opt-in program that lets custo
 
 Azure Stack HCI, version 21H2 Preview contains the following new features:
 
-- [Multi-cluster monitoring with Azure portal](monitor-azure-portal.md)
+- [Monitor clusters from Azure portal](monitor-azure-portal.md)
 - [Use GPUs with clustered VMs](use-gpu-with-clustered-vm.md)
 - [Dynamic CPU compatibility mode](processor-compatibility-mode.md)
 - [Storage thin provisioning](thin-provisioning.md)
@@ -108,7 +108,9 @@ To upgrade a cluster using PowerShell:
     Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
     ```
 
-6.	Inspect the output of the above cmdlet. If each server is offered the same Feature Update – which should be the case – then run the following cmdlet on a separate system running Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c).
+    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
+
+6.	You'll need a separate Azure Stack HCI server outside the cluster to run the `Invoke-CauRun` cmdlet from. It can even be a VM on which you temporarily installed Azure Stack HCI. **Important: The system on which you run `Invoke-CauRun` must be running Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
 
     ```PowerShell
     Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
