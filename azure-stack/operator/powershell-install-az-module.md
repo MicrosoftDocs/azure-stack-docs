@@ -173,9 +173,9 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 21.0 -Scope AllUsers
+    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.1.0 -Scope AllUsers
 
-    Install-Module -Name Az -Repository $RepoName -RequiredVersion 1.10.0 -Scope AllUsers
+    Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0-preview -Scope AllUsers
    ```
 ::: moniker-end
 ::: moniker range="<azs-2102"
