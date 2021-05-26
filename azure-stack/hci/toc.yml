@@ -94,7 +94,7 @@
       href: manage/cluster-powershell.md
     - name: Update the cluster
       href: manage/update-cluster.md
-    - name: Monitor the cluster
+    - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
     - name: Configure firewalls
       href: manage/configure-firewalls.md
@@ -206,7 +206,7 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
-  - name: Monitor multiple clusters
+  - name: Monitor clusters from Azure portal
     href: manage/monitor-azure-portal.md
   - name: Azure Stack HCI Insights
     href: manage/azure-stack-hci-insights.md
