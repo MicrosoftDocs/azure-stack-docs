@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/24/2021
+ms.date: 05/26/2021
 ---
 
 # Azure Stack HCI Insights (preview)
@@ -19,7 +19,9 @@ Azure Stack HCI Insights stores its data in a Log Analytics workspace, which all
 
 You can view the monitoring data for a single cluster from your Azure Stack HCI resource page, or you can use Azure Monitor to see an aggregated view of multiple clusters.
 
-[Watch the video](https://www.youtube.com/embed/mcgmAsNricw) for a quick introduction.
+Watch the video for a quick introduction:
+
+> [!VIDEO https://www.youtube.com/embed/mcgmAsNricw]
 
 ## Benefits of Azure Stack HCI Insights
 
@@ -59,18 +61,18 @@ It also shows a list of unmonitored clusters across subscriptions that are conne
 
 ### Overview
 
-This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-3000-value-in-rendereddescription) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
+This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
 
 ### Virtual machines
 
-This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-3003-value-in-rendereddescription) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
+This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
 ### Storage
 
 This view provides two things: 
 
-- **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-3002-value-in-rendereddescription) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
-- **Drive Health information.** This view is built using the [drive event ID 3001](#drive-3001-value-in-rendereddescription) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+- **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+- **Drive Health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
 ### Cluster performance
 
@@ -81,7 +83,7 @@ This view provides four cluster performance trends:
 -	Volume IOPS
 -	Volume throughput
 
-The views are built using the [cluster event ID 3004](#cluster-3004-value-in-rendereddescription) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+The views are built using the [cluster event ID 3004](#cluster-event-3004-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
 ## Customize Azure Stack HCI Insights
 
@@ -98,7 +100,6 @@ For more information, see the following:
 - [Azure Monitor Workbooks](/azure/azure-monitor/visualize/workbooks-overview)
 - [Getting started with Kusto](/azure/data-explorer/kusto/concepts/)
 - [Starter Resource Graph query samples](/azure/governance/resource-graph/samples/starter?tabs=azure-cli)
-- [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
 
 ## Support
 
@@ -136,7 +137,7 @@ This channel includes five events. Each event has cluster name and Azure Resourc
 | 3003         | Virtual machine |
 | 3004         | Cluster         |
 
-### Server 3000 Value in RenderedDescription
+### Server event 3000 RenderedDescription column value
 
 ```json
 {
@@ -220,7 +221,7 @@ Values for the **m_status** variable are as follows:
 | 9         | Drain failed    |
 | 0xffff    | Unknown         |   
 
-### Drive 3001 Value in RenderedDescription
+### Drive event 3001 RenderedDescription column value
 
 ```json
 {
@@ -237,7 +238,7 @@ Values for the **m_status** variable are as follows:
 }
 ```
 
-### Volume 3002 Value in RenderedDescription
+### Volume event 3002 RenderedDescription column value
 
 ```json
 {
@@ -313,7 +314,7 @@ Values for the **m_status** variable are as follows:
 | 0xD002    | Down                       |
 | 0xD003    | Needs resync               |
 
-### Virtual machine 3003 Value in RenderedDescription
+### Virtual machine event 3003 RenderedDescription column value
 
 ```json
 {
@@ -338,7 +339,7 @@ Values for the **m_status** variable are as follows:
 }
 ```
 
-### Cluster 3004 Value in RenderedDescription
+### Cluster event 3004 RenderedDescription column value
 
 ```json
 {
@@ -366,4 +367,5 @@ Values for the **m_status** variable are as follows:
 For related information, see also:
 
 - [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md)
-- [Monitor Azure Stack HCI clusters](monitor-cluster.md)
+- [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
+- [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
