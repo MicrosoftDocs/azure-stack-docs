@@ -75,11 +75,11 @@ This view provides the state of all the VMs in the selected cluster. This view i
 
 This view provides two things: 
 
-- **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+**Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
 :::image type="content" source="media/azure-stack-hci-insights/volume-health.png" alt-text="Volume health, usage, and performance information" lightbox="media/azure-stack-hci-insights/volume-health.png":::
 
-- **Drive health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+**Drive health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
 :::image type="content" source="media/azure-stack-hci-insights/drive-health.png" alt-text="Drive health information" lightbox="media/azure-stack-hci-insights/drive-health.png":::
 
