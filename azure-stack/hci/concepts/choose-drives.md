@@ -26,6 +26,9 @@ Storage Spaces Direct, the underlying storage virtualization technology behind A
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
 
+   >[!NOTE]
+   > This article covers choosing drive configurations with NVMe, SSD, and HDD. For more information on PMem, see [Understand and deploy persistent memory](deploy-persistent-memory.md).
+
 ## Built-in cache
 
 Storage Spaces Direct features a built-in server-side cache. It is a large, persistent, real-time read and write cache. In deployments with multiple types of drives, it is configured automatically to use all drives of the "fastest" type. The remaining drives are used for capacity.
@@ -98,4 +101,4 @@ For more information, see also:
 - [Drive symmetry considerations](drive-symmetry-considerations.md)
 - [Plan volumes](plan-volumes.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
-- [Understand and deploy persistent memory](/windows-server/storage/storage-spaces/deploy-pmem)
+- [Understand and deploy persistent memory](deploy-persistent.memory.md)
