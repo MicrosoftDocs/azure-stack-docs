@@ -17,7 +17,7 @@ ms.lastreviewed: 01/10/2020
 
 # Validate Azure Stack Hub system state
 
-As an Azure Stack Hub operator, being able to determine the health and status of your system on demand is essential. The Azure Stack Hub validation tool (**[Test-AzureStack](/azure-stack/reference/pep-2002/test-azurestack.md)**) is a PowerShell cmdlet that lets you run a series of tests on your system to identify failures if present. You'll typically be asked to run this tool through the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) when you contact Microsoft Customer Services Support (Microsoft Support) with an issue. With the system-wide health and status information at hand, Microsoft Support can collect and analyze detailed logs, focus on the area where the error occurred, and work with you to fix the issue.
+As an Azure Stack Hub operator, being able to determine the health and status of your system on demand is essential. The Azure Stack Hub validation tool (**[Test-AzureStack](/azure-stack/reference/pep-2002/test-azurestack)**) is a PowerShell cmdlet that lets you run a series of tests on your system to identify failures if present. You'll typically be asked to run this tool through the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) when you contact Microsoft Customer Services Support (Microsoft Support) with an issue. With the system-wide health and status information at hand, Microsoft Support can collect and analyze detailed logs, focus on the area where the error occurred, and work with you to fix the issue.
 
 ## Running the validation tool and accessing results
 
