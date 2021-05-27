@@ -26,7 +26,7 @@ The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet 
 
 -  The custom VNET must be in the same subscription as all of the other components of the Kubernetes cluster.
 -  The pool of master nodes and the pool of agent nodes must be in the same virtual network. You can deploy your nodes into different subnets within the same virtual network.
--  The Kubernetes cluster subnet must use an IP range within the space of the custom virtual network IP range, see [Get the IP address block](#get-the-ip-address-block).
+-  The Kubernetes cluster subnet must use an IP range within the space of the custom virtual network IP range, see [Get the IP address block](#get-the-ip-address-blocks).
 -  Consider that the recommended size of the node subnet(s) depends on the type of network plugin being used. As a general guideline, Azure CNI requires a larger number of IP addresses for the subnet supporting the agent node pools than kubenet. See the [kubenet](#kubenet-address-blocks-example) and [Azure CNI](#azure-cni-address-blocks-example) examples below.
 -  The `169.254.0.0/16` address space may not be used for custom VNETs for Kubernetes clusters.
 
@@ -98,7 +98,7 @@ VNET address space: 172.100.0.0/16.
 | Master nodes block | 172.100.0.0/24 | 172.100.0.0 - 172.100.0.255 | 255 - 5 reserved = 251 |
 | Agent nodes block | 172.100.1.0/24 | 172.100.1.0 - 172.100.1.255 | 255 - 5 reserved = 251 |
 | Services block | 172.100.16.0/20 | 172.100.16.0 - 172.100.31.255 | 4096 - 5 reserved = 4091 |
-| Cluster block | 172.100.128.0/17 | 172.100.128.0 - 172.100.255.255 | 32768 - 5 reserved = 32763 |  
+| Cluster block | 172.100.128.0/17 | 172.100.128.0 - 172.100.255.255 | 32768 - 5 reserved = 32763 |
   
 In this example, the `firstConsecutiveStaticIP` property would be `172.100.0.224`.
 
@@ -111,7 +111,7 @@ VNET address space: 172.24.0.0/16.
 | --- | --- | --- | --- |
 | Master nodes block | 172.24.0.0/24 | 172.24.0.0 - 172.24.0.255 | 255 - 5 reserved = 251 |
 | Agent/cluster nodes block | 172.24.128.0/17 | 172.24.128.0 - 172.24.255.255 | 32,768 - 5 reserved = 32763 |
-| Services block | 172.24.16.0/20 | 172.24.16.0 - 172.24.31.255 | 4096 - 5 reserved = 4091 | ..
+| Services block | 172.24.16.0/20 | 172.24.16.0 - 172.24.31.255 | 4096 - 5 reserved = 4091 |
   
 In this example, the `firstConsecutiveStaticIP` property would be `172.24.0.224`.
 
