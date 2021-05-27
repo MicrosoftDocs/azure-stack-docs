@@ -1,12 +1,12 @@
 ---
 title: Join the Azure Stack HCI preview channel
-description: How to join the Azure Stack HCI preview channel and upgrade your cluster by using Windows PowerShell or Windows Admin Center.
+description: How to join the Azure Stack HCI preview channel and install feature updates by using Windows PowerShell or Windows Admin Center.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/25/2021
+ms.date: 05/27/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -30,22 +30,22 @@ Azure Stack HCI, version 21H2 Preview contains the following new features:
 
 ## How to join the preview channel
 
-You can install preview builds on an Azure Stack HCI cluster by using either Windows Admin Center or PowerShell. Make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md). The upgrade process will take between one and two hours.
+You can install preview builds on an Azure Stack HCI cluster by using either Windows Admin Center or PowerShell. Make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md). The process can take up to a few hours to complete.
 
    > [!IMPORTANT]
    > Before upgrading to Azure Stack HCI, version 21H2 Preview, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to Azure Stack HCI, version 20H2 via Windows Update. See [Update Azure Stack HCI clusters](update-cluster.md).
 
 ### Install the version 21H2 Preview build using Windows Admin Center
 
-To upgrade a cluster using Windows Admin Center:
+To install preview builds using Windows Admin Center:
 
 1. Make sure you have the latest version of Windows Admin Center installed on a management PC or server.
 
-2. Connect to the Azure Stack HCI cluster you wish to upgrade, and select **Settings** from the bottom-left corner of the screen. Select **Join the preview channel**, then **Get started**.
+2. Connect to the Azure Stack HCI cluster on which you want to install feature updates, and select **Settings** from the bottom-left corner of the screen. Select **Join the preview channel**, then **Get started**.
 
    :::image type="content" source="media/preview-channel/join-preview-channel.png" alt-text="Select join the preview channel, then Get started" lightbox="media/preview-channel/join-preview-channel.png":::
 
-3. You'll be reminded that preview builds are provided as-is, and are not eligible for production-level support. Select the **I understand** checkbox, then click **Join the preview channel**. This may take a few minutes to complete.
+3. You'll be reminded that preview builds are provided as-is, and are not eligible for production-level support. Select the **I understand** checkbox, then click **Join the preview channel**.
 
 4. You should see a confirmation that you've successfully joined the preview channel and that the cluster is now ready to flight preview builds.
 
@@ -72,7 +72,7 @@ To upgrade a cluster using Windows Admin Center:
 
 ### Install the version 21H2 Preview build using PowerShell
 
-To upgrade a cluster using PowerShell:
+To install preview builds using PowerShell:
 
 1.	Run the following cmdlets on every server in the cluster:
 
@@ -118,9 +118,9 @@ To upgrade a cluster using PowerShell:
 
 7. Check for any further updates and install them. See [Install updates with PowerShell](update-cluster.md#install-updates-with-powershell).
 
-## Post upgrade steps
+## Post installation steps
 
-Once the upgrade process is complete, you may want to update the cluster functional level, update the storage pool version, or optionally upgrade VM configuration levels.
+Once the feature updates are installed, you may want to update the cluster functional level, update the storage pool version, or optionally upgrade VM configuration levels.
 
 ## Next steps
 
