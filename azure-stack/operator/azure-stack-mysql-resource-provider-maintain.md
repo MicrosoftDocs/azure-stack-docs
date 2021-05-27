@@ -13,8 +13,9 @@ ms.lastreviewed: 01/11/2020
 
 ---
 
-
 # MySQL resource provider maintenance operations in Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
 

@@ -15,6 +15,8 @@ ms.lastreviewed: 12/07/2020
 
 # Add MySQL hosting servers in Azure Stack Hub
 
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
+
 You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the MySQL resource provider can connect to the instance.
 
 > [!NOTE]
