@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/24/2021
+ms.date: 05/27/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -177,7 +177,7 @@ If you're registering your Azure Stack HCI cluster with Azure for the first time
    Install-Module -Name Az.StackHCI
    ```
 
-2. Re-run the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID to which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster:
+2. Re-run the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID to which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first.
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
