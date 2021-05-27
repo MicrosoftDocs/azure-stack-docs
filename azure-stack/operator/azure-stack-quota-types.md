@@ -4,7 +4,7 @@ description: View and edit the different quotas and quota types available for se
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 05/26/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2019
@@ -111,6 +111,9 @@ Alternatively, you can follow this procedure to edit a quota:
 You can choose to edit the original configuration of a quota instead of [using an add-on plan](create-add-on-plan.md). When you edit a quota, the new configuration automatically applies globally to all plans that use that quota and all existing subscriptions that use those plans. The editing of a quota is different than when you use an add-on plan to provide a modified quota, which a user chooses to subscribe to.
 
 The new values for the quota apply globally to all plans that use the modified quota and to all existing subscriptions that use those plans.
+
+> [!NOTE]
+> A quota change in a base plan does not impact already-deployed resources. Therefore, a subscription will not be in violation.
 
 ## Next steps
 
