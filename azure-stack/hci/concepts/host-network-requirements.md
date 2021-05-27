@@ -311,24 +311,35 @@ The following shows the details for the example stretched cluster configuration.
 
 #### SiteA – Local replication, RDMA enabled, no default gateway
 
-- NodeA1: vSMB01 (pNIC01): VLAN711, 192.168.1.1/24
-- NodeA2: vSMB01 (pNIC01): VLAN711, 192.168.1.2/24
-- NodeA1: vSMB02 (pNIC02): VLAN712, 192.168.2.1/24
-- NodeA2: vSMB02 (pNIC02): VLAN712, 192.168.2.2/24
+|Node Name|vNIC Name|Physical NIC (mapped)|VLAN|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeA1|vSMB01|pNIC01|711|192.168.1.1/24|
+|NodeA2|vSMB01|pNIC01|711|192.168.1.2/24|
+|NodeA1|vSMB02|pNIC02|712|192.168.2.1/24|
+|NodeA2|vSMB02|pNIC02|712|192.168.2.2/24|
 
-- SiteB – Local Replication, RDMA Enabled, No Default Gateway
+#### SiteB – Local Replication, RDMA Enabled, No Default Gateway
 
-- NodeB1: vSMB01 (pNIC01): VLAN711, 192.168.1.1/24
-- NodeB2: vSMB01 (pNIC01): VLAN711, 192.168.1.2/24
-- NodeB1: vSMB02 (pNIC02): VLAN712, 192.168.2.1/24
-- NodeB2: vSMB02 (pNIC02): VLAN712, 192.168.2.2/24
+|Node Name|vNIC Name|Physical NIC (mapped)|VLAN|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeB1|vSMB01|pNIC01|711|192.168.1.1/24|
+|NodeB2|vSMB01|pNIC01|711|192.168.1.2/24|
+|NodeB1|vSMB02|pNIC02|712|192.168.2.1/24|
+|NodeB2|vSMB02|pNIC02|712|192.168.2.2/24|
 
-#### SiteA – Stretched replication, RDMA disabled, routable between sites
+#### SiteA – Stretched replication, RDMA Disabled, Routable Between Sites
 
 - NodeA1: Stretch1 (pNIC01): 173.0.0.1/8
 - NodeA2: Stretch1 (pNIC01): 173.0.0.2/8
 - NodeA1: Stretch2 (pNIC02): 174.0.0.1/8
 - NodeA2: Stretch2 (pNIC02): 174.0.0.2/8
+
+|Node Name|vNIC Name|Physical NIC (mapped)|VLAN|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeA1|Stretch1|pNIC01|173.0.0.1/8|
+|NodeA2|Stretch1|pNIC01|173.0.0.2/8|
+|NodeA1|Stretch2|pNIC02|174.0.0.1/8|
+|NodeA2|Stretch2|pNIC02|174.0.0.2/8|
 
 #### SiteB – Stretched replication, RDMA disabled, routable between sites
 
@@ -336,6 +347,13 @@ The following shows the details for the example stretched cluster configuration.
 - NodeB2: Stretch1 (pNIC01): 173.0.0.4/8
 - NodeB1: Stretch2 (pNIC02): 174.0.0.3/8
 - NodeB2: Stretch2 (pNIC02): 174.0.0.4/8
+
+|Node Name|vNIC Name|Physical NIC (mapped)|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeB1|Stretch1|pNIC01|173.0.0.3/8|
+|NodeB2|Stretch1|pNIC01|173.0.0.4/8|
+|NodeB1|Stretch2|pNIC02|174.0.0.3/8|
+|NodeB2|Stretch2|pNIC02|174.0.0.4/8|
 
 ## Next steps
 
