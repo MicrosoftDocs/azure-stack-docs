@@ -15,8 +15,9 @@ ms.reviewer: xiao
 
 ---
 
-
 # Deploy the SQL Server resource provider on Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Use the Azure Stack Hub SQL Server resource provider to expose SQL databases as an Azure Stack Hub service. The SQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adapter version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adapter version >= 1.1.93.0).
 

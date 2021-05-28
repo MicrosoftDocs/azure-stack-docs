@@ -15,8 +15,9 @@ ms.lastreviewed: 10/16/2019
 
 ---
 
-
 # Create SQL databases
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 You can create and manage self-service databases in the user portal. An Azure Stack Hub user needs a subscription with an offer that includes the SQL database service.
 

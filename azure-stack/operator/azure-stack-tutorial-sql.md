@@ -15,8 +15,9 @@ ms.lastreviewed: 10/23/2019
 
 ---
 
-
 # Create highly available SQL databases with Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 As an Azure Stack Hub Operator, you can configure server VMs to host SQL Server databases. After a SQL hosting server is created and managed by Azure Stack Hub, users who have subscribed to SQL services can easily create SQL databases.
 
