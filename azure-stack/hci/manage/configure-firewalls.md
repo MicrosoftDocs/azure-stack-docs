@@ -9,7 +9,7 @@ ms.date: 05/13/2021
 
 # Configure firewalls for Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, version 20H2 
 
 This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall.
 
