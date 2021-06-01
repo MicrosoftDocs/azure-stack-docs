@@ -94,7 +94,7 @@ To check a volume’s provisioning type:
 1. Select a volume to visit its **Properties** page.
 1. Check the provisioning type.
 
-:::image type="content" source="media/thin-provisioning/check-volume-provisioning-type.png" alt-text="You can check the volume provisioning type by visiting a volume's Properties page in Windows Admin Center." lightbox="media/thin-provisioning/check-volume-provisioning-type":::
+:::image type="content" source="media/thin-provisioning/check-volume-provisioning-type.png" alt-text="You can check the volume provisioning type by visiting a volume's Properties page in Windows Admin Center." lightbox="media/thin-provisioning/check-volume-provisioning-type.png":::
 
 To display Provisioning type as a column heading:
 
@@ -103,7 +103,7 @@ To display Provisioning type as a column heading:
 1. Click **Add a column** and search for **Provisioning type**
 1. Select **Save**.
 
-:::image type="content" source="media/thin-provisioning/display-provisioning-type.png" alt-text="You can display Provisioning type as a column heading by clicking the Column picker icon in Windows Admin Center and selecting Add a column." lightbox="media/thin-provisioning/display-provisioning-type":::
+:::image type="content" source="media/thin-provisioning/display-provisioning-type.png" alt-text="You can display Provisioning type as a column heading by clicking the Column picker icon in Windows Admin Center and selecting Add a column." lightbox="media/thin-provisioning/display-provisioning-type.png":::
 
 ## Thin provisioning FAQ
 
