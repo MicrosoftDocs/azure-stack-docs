@@ -100,6 +100,24 @@ Previous versions:
 
 Azure Storage services management APIs:
 
+::: moniker range=">=azs-2102"
+
+2102 update or newer versions:
+- [2019-06-01](/rest/api/storagerp/)
+- [2019-04-01](/rest/api/storagerp/)
+- [2018-11-01](/rest/api/storagerp/)
+- [2018-07-01](/rest/api/storagerp/)
+- [2018-02-01](/rest/api/storagerp/)
+- [2017-10-01](/rest/api/storagerp/)
+- [2017-06-01](/rest/api/storagerp/)
+- [2016-12-01](/rest/api/storagerp/)
+- [2016-05-01](/rest/api/storagerp/)
+- [2016-01-01](/rest/api/storagerp/)
+- [2015-06-15](/rest/api/storagerp/)
+- [2015-05-01-preview](/rest/api/storagerp/)
+
+::: moniker-end
+
 ::: moniker range=">=azs-2008"
 
 2008 update or newer versions:
