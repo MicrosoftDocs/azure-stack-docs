@@ -4,10 +4,9 @@ title: Virtual network peering in Azure Stack Hub
 description: Learn how to use Virtual network peering to connect virtual networks in Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/11/2020
+ms.date: 06/01/2021
 ms.topic: conceptual
-
-ms.reviewer: sranthar
+ms.reviewer: thoroet
 ms.lastreviewed: 10/09/2020
 ---
 
@@ -55,6 +54,9 @@ You can also configure the gateway in the peered virtual network as a transit po
 :::image type="content" source="media/virtual-network-peering/virtual-network-gateway.png" alt-text="VPN gateway topology":::
 
 Note that a **Connection** object must be created in the VPN gateway prior to enabling the **UseRemoteGateways** options in the peering.
+
+> [!IMPORTANT]
+> Azure Stack Hub configures system routes based on the peered virtual networks subnets, not the virtual network address prefix. This is different from the Azure implementation. If you want to override the system default routes, such as the scenario described in [Scenario: Route traffic through a Network Virtual Appliance (NVA)](/azure/virtual-wan/scenario-route-through-nva) or [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?tabs=cli), in which you want to route traffic to an NVA or firewall appliance, you must create a route entry for each subnet within the virtual network.
 
 ## Virtual network peering configuration
 
