@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 06/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/27/2020
@@ -110,6 +110,7 @@ To generate the usage data, you should have resources that are running and activ
    ```powershell
    Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
    ```
+
 ### [AzureRM modules](#tab/azurerm1)
 
 1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).
