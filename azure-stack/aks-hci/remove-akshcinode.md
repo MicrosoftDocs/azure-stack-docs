@@ -31,7 +31,7 @@ PS C:\> Remove-AksHciNode -nodeName newnode
 ## Parameters
 
 ### -nodeName
-The name of your cluster.
+The name of the node in the failover cluster to be removed.
 
 ```yaml
 Type: System.String

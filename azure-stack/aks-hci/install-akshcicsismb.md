@@ -15,7 +15,7 @@ Installs the CSI SMB plug-in to a cluster.
 ## Syntax
 
 ```powershell
-Install-AksHciCsiSmb -name <String>                       
+Install-AksHciCsiSmb -clusterName <String>                       
 ```
 
 ## Description
@@ -26,12 +26,12 @@ Installs CSI SMB Plugin to a cluster.
 ### Example
 
 ```PowerShell
-Install-AksHciCsiSmb -name mycluster
+Install-AksHciCsiSmb -clusterName mycluster
 ```
 
 ## Parameters
 
-### -name
+### -clusterName
 The alphanumeric name of your Kubernetes cluster.
 
 ```yaml

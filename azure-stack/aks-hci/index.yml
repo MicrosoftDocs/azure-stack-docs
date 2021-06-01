@@ -30,7 +30,10 @@ landingContent:
             url: concepts-storage.md
           - text: Application availability
             url: app-availability.md
-            
+          - text: Resource limits
+            url: concepts-support.md        
+          - text: Pricing
+            url: pricing.md    
   - title: Get started
     linkLists:
       - linkListType: deploy
@@ -92,5 +95,16 @@ landingContent:
           - text: Connect to Azure Arc for Kubernetes
             url: connect-to-arc.md
           - text: Monitor AKS on Azure Stack HCI clusters
-            url: monitor-logging.md
+            url: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json
+          - text: Enforce threat protection using Azure Defender
+            url: https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc?toc=%2Fazure%2Fazure-arc%2Fkubernetes%2Ftoc.json&tabs=k8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc
+
+  - title: Develop and debug applications with Bridge to Kubernetes
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use Bridge to Kubernetes with Visual Studio Code
+            url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - text: Use Bridge to Kubernetes with Visual Studio
+            url:  https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
 

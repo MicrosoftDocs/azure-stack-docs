@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/11/2021
+ms.date: 05/27/2021
 ---
 
 # Connect Azure Stack HCI to Azure
 
 > Applies to: Azure Stack HCI, version 20H2
 
-Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with [Azure Arc](https://azure.microsoft.com/services/azure-arc/) for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure Arc registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
+Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 
    > [!IMPORTANT]
    > Registering with Azure is required, and your cluster is not fully supported until your registration is active. If you do not register your cluster with Azure upon deployment, or if your cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
@@ -24,14 +24,12 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
 
 ## Prerequisites for cluster registration
 
-You won't be able to register your cluster with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing, but they must support Unified Extensible Firmware Interface (UEFI), meaning you can't use Hyper-V Generation 1 virtual machines.
+You won't be able to register your cluster with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing.
 
-For the simplest registration experience, have an Azure AD administrator complete the registration using either Windows Admin Center or PowerShell.
+For the simplest registration experience, have an Azure AD admin (Owner or User Access Administrator) complete the registration process using either Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI is now available in Azure China. Registering your Azure Stack HCI cluster in Azure China is currently supported only via PowerShell. Support for registering via Windows Admin Center is coming soon. To register in Azure China, please follow the steps to [Register a cluster using PowerShell](#register-a-cluster-using-powershell) and run the `Register-AzStackHCI` cmdlet with these additional parameters:
-   >
-   > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
+   > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
 
 ### Register Windows Admin Center
 
@@ -59,7 +57,7 @@ The user registering the cluster must have Azure subscription permissions to:
 - Register a resource provider
 - Create/Get/Delete Azure resources and resource groups
 
-If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" or "Contributor" Azure role to your subscription. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
+If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" or "User Access Administrator" Azure role to your subscription. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
 
 1. Create a json file called **customHCIRole.json** with following content. Make sure to change <subscriptionID> to your Azure subscription ID. To get your subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
 
@@ -105,12 +103,10 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 ## Register a cluster using Windows Admin Center
 
-The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted.
+The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. In addition, the user must be assigned an Azure Owner or User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
 
    > [!WARNING]
-   > Registering Azure Stack HCI in Azure China is currently supported only via PowerShell. Support for registering via Windows Admin Center is coming soon. To register in Azure China, please follow the steps to [Register a cluster using PowerShell](#register-a-cluster-using-powershell) and run the `Register-AzStackHCI` cmdlet with these additional parameters: 
-   >
-   > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
+   > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
 
 1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and sign into Windows Admin Center with your Azure account.
 
@@ -136,7 +132,10 @@ The easiest way to register your Azure Stack HCI cluster is using Windows Admin 
 
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
-1. Install the required cmdlets on your management PC. If you are registering a cluster deployed from the current General Availability (GA) image of Azure Stack HCI, simply run the following command. If your cluster was deployed from the Public Preview image, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register with Azure.
+   > [!IMPORTANT]
+   > Only Azure users with Owner or User Access Administrator roles can register an Azure Stack HCI cluster with Azure Arc integration.
+
+1. Install the required cmdlets on your management PC. If you're registering a cluster deployed from the current General Availability (GA) or Public Preview image of Azure Stack HCI, simply run the following command. If your cluster was deployed prior to December 10, 2020, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register with Azure.
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
@@ -157,7 +156,10 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
    ```
 
-   This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. You can also add the optional `-Region`, `-ResourceName`, and `-ResourceGroupName` parameters to this command to specify these values.
+   This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. You can also add the optional `-Region`, `-ResourceName`, `-TenantId`, and `-ResourceGroupName` parameters to this command to specify these values.
+
+   > [!NOTE]
+   > Running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
 
    Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
@@ -165,9 +167,27 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
    To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 2 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
+## Enabling Azure Arc integration
+
+If you're registering your Azure Stack HCI cluster with Azure for the first time, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to May 25, 2021, you'll need to take the following steps to enable Azure Arc integration on the servers:
+
+1. Install the latest version of the `Az.StackHCI` module on your management PC:
+
+   ```PowerShell
+   Install-Module -Name Az.StackHCI
+   ```
+
+2. Re-run the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID to which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first.
+
+   ```PowerShell
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
+   ```
+
+   > [!IMPORTANT]
+   > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you'll need to specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
+
 ## Next steps
 
 You are now ready to:
 
 - [Validate the cluster](validate.md)
-

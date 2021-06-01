@@ -10,7 +10,7 @@ ms.author: mikek
 # New-AksHciNetworkSetting
 
 ## Synopsis
-Create an object for a new virtual network.
+Create an object for a new virtual network for the AKS host.
 
 ## Syntax
 ```powershell
@@ -28,7 +28,7 @@ New-AksHciNetworkSetting -name <String>
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when deploying the AKS host.
 
 ## Examples
 
@@ -55,7 +55,7 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 ## Parameters
 
 ### -name
-The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`.
+The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`. The name must be all lowercase letters and numbers.
 
 ```yaml
 Type: System.String

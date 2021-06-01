@@ -7,7 +7,7 @@ ms.date: 03/05/2021
 ms.author: v-susbo
 ---
 
-# Resolve known issues
+# Resolve known issues in AKS on Azure Stack HCI
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
@@ -21,7 +21,7 @@ After running `Install-AksHci`, the installation stopped and displayed a **waiti
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
 
-### Incorrect IP gateway configuration
+### Reason 1: Incorrect IP gateway configuration
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
 ```PowerShell
 Install-AksHci 
@@ -38,7 +38,7 @@ In the displayed configuration settings, confirm the configuration. You could al
 
 If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
 
-### Incorrect DNS server
+### Reason 2: Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
 
 ```powershell
@@ -60,9 +60,6 @@ If you have multiple versions of the PowerShell modules installed (for example, 
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
 If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
-
-## A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through WAC
-Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
 
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
@@ -91,6 +88,22 @@ kube-system   kube-proxy-qqnkr                                1/1     Terminatin
 ```
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
+
+## All pods in a Windows node are stuck in a _ContainerCreating_ state
+In a workload cluster with the Calico network plug-in enabled, all of the pods in a Windows node are stuck in the _ContainerCreating_ state except for the `calico-node-windows daemonset` pod.
+
+To resolve this issue, find the name of the _kube-proxy_ pod on that node and then run the following command: 
+
+```powershell
+kubectl delete pod <KUBE-PROXY-NAME> -n kube-system
+```
+
+All the pods should start on the node.
+
+## In a workload cluster with static IP, all pods in a node are stuck in a _ContainerCreating_ state
+In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a _Connection timed out_ error.
+
+To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
 
 ## Attempt to increase the number of worker nodes fails
 When using PowerShell to create a cluster with static IP and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
@@ -134,9 +147,35 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 ## An **Unable to acquire token** error appears when running Set-AksHciRegistration
 An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
 
+## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
+
+To resolve this issue restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
+
+```Console
+kubectl get nodes -o wide
+```
+
+To get more information on the faulty node, run the following command:
+
+```Console
+kubectl describe node <ip of the node>
+```
+
+Use SSH to log into the NotReady node by running the following command:
+```
+ssh -i <path of the private key file> administrator@<ip of the node>
+```
+
+Then, to restart _kubelet_, run the following command: 
+
+```powershell
+/etc/.../kubelet restart
+```
+
 ## Next steps
-- [Troubleshoot common issues](./troubleshoot.md)
+- [Known issues](./known-issues.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
+- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
