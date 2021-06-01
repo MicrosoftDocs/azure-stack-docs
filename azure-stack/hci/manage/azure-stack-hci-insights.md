@@ -15,6 +15,9 @@ ms.date: 05/26/2021
 
 Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are [enrolled in monitoring](monitor-azure-portal.md). You can [access this feature in preview](https://aka.ms/hci-insights) from Azure portal. This topic explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization.
 
+   > [!IMPORTANT]
+   > This feature will be available to try in public preview after June 15, 2021.
+
 Azure Stack HCI Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Azure Stack HCI Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
 
 You can view the monitoring data for a single cluster from your Azure Stack HCI resource page, or you can use Azure Monitor to see an aggregated view of multiple clusters.
