@@ -22,10 +22,10 @@ Deployment and operation of Azure Stack HCI networking can be a complex and erro
 
 Network ATC can help:
 
-- Reduce host networking deployment time and complexity
-- Reduce host networking configuration errors
-- Deploy the latest Microsoft validated and supported best practices
-- Eliminate configuration drift
+- **Reduce** host networking deployment **time**, **complexity**, and **errors**
+- **Deploy** the latest Microsoft validated and supported **best practices**
+- **Ensure** configuration consistency **across the cluster**
+- **Eliminate** configuration **drift**
 
 ## Definitions
 
