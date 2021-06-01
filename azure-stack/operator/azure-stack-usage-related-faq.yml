@@ -401,9 +401,9 @@ sections:
           **Notes**: Total incoming request response bytes + total outgoing request bytes + total incoming FTP request response bytes + total incoming web deploy request response bytes.  
             
       - question: |
-          How do the Azure Stack Hub usage APIs compare to the [Azure usage API](/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
+          How do the Azure Stack Hub usage APIs compare to the Azure usage API (currently in public preview)?
         answer: |
-          * The tenant usage API is consistent with the Azure API, with one
+          * The tenant [usage API](/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) is consistent with the Azure API, with one
             exception: the *showDetails* flag currently isn't supported in
             Azure Stack Hub.
           * The provider usage API applies only to Azure Stack Hub.
