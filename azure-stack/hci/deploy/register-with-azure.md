@@ -169,7 +169,10 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
 ## Enabling Azure Arc integration
 
-If you're registering your Azure Stack HCI cluster with Azure for the first time, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to May 25, 2021, you'll need to take the following steps to enable Azure Arc integration on the servers:
+If you register your Azure Stack HCI cluster with Azure for the first time after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to that date, you'll need to take the following steps after June 15, 2021 to enable Azure Arc integration on the servers.
+
+> [!IMPORTANT]
+> You won't be able to Arc-enable servers in this manner until after June 15, 2021.
 
 1. Install the latest version of the `Az.StackHCI` module on your management PC:
 

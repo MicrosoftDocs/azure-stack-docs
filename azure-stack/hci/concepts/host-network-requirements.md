@@ -329,11 +329,6 @@ The following shows the details for the example stretched cluster configuration.
 
 #### SiteA – Stretched replication, RDMA Disabled, Routable Between Sites
 
-- NodeA1: Stretch1 (pNIC01): 173.0.0.1/8
-- NodeA2: Stretch1 (pNIC01): 173.0.0.2/8
-- NodeA1: Stretch2 (pNIC02): 174.0.0.1/8
-- NodeA2: Stretch2 (pNIC02): 174.0.0.2/8
-
 |Node Name|vNIC Name|Physical NIC (mapped)|VLAN|IP and Subnet|
 |-----|-----|-----|-----|-----|
 |NodeA1|Stretch1|pNIC01|173.0.0.1/8|
@@ -342,11 +337,6 @@ The following shows the details for the example stretched cluster configuration.
 |NodeA2|Stretch2|pNIC02|174.0.0.2/8|
 
 #### SiteB – Stretched replication, RDMA disabled, routable between sites
-
-- NodeB1: Stretch1 (pNIC01): 173.0.0.3/8
-- NodeB2: Stretch1 (pNIC01): 173.0.0.4/8
-- NodeB1: Stretch2 (pNIC02): 174.0.0.3/8
-- NodeB2: Stretch2 (pNIC02): 174.0.0.4/8
 
 |Node Name|vNIC Name|Physical NIC (mapped)|IP and Subnet|
 |-----|-----|-----|-----|-----|
