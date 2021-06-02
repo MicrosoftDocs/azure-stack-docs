@@ -45,7 +45,7 @@ You can install the latest Azure Stack PowerShell module with or without interne
 
     Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
     Install-AzProfile -Profile 2020-09-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.0.1
+    Install-Module -Name AzureStack -RequiredVersion 2.1.0
 
     Get-Module -Name "Az*" -ListAvailable
     Get-Module -Name "Azs*" -ListAvailable
