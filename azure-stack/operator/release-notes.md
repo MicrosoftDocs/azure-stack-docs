@@ -150,7 +150,7 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2102.
+- [Azure Stack Hub hotfix 1.2102.28.87](hotfix-1-2102-28-87.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
