@@ -124,7 +124,7 @@ In **masterProfile** set the following values:
 | Field | Example | Description |
 | --- | --- | --- |
 | vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/control-plane-sn` | Specify the Azure Resource Manager path ID the subnet. This value maps to the master nodes address block above.  |
-| firstConsecutiveStaticIP | 10.1.0.224 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
+| firstConsecutiveStaticIP | 172.1.0.224 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
 
 In **agentPoolProfiles** set the following values:
 
