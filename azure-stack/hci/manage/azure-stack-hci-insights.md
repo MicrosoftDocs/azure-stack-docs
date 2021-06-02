@@ -1,19 +1,22 @@
 ---
-title: Azure Stack HCI Insights
-description: How to use Azure Stack HCI Insights to monitor cluster health, performance, and usage.
+title: Monitor multiple clusters with Azure Stack HCI Insights
+description: How to use Azure Stack HCI Insights to monitor the health, performance, and usage of multiple Azure Stack HCI clusters.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/26/2021
+ms.date: 06/03/2021
 ---
 
-# Azure Stack HCI Insights (preview)
+# Monitor multiple clusters with Azure Stack HCI Insights (preview)
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
 Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are [enrolled in monitoring](monitor-azure-portal.md). You can [access this feature in preview](https://aka.ms/hci-insights) from Azure portal. This topic explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization.
+
+   > [!IMPORTANT]
+   > This feature will be available to try in public preview after June 15, 2021.
 
 Azure Stack HCI Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Azure Stack HCI Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
 
@@ -55,24 +58,33 @@ The visualization can be filtered across subscriptions. You can filter the resul
 
 ### Get started
 
-The **Get started** view calls out the prerequisites to use Azure Stack HCI Insights and displays the number of registered Azure Stack HCI clusters that have Log Analytics and Monitoring enabled.
+The **Get started** view calls out the prerequisites to use Azure Stack HCI Insights and displays the number of registered Azure Stack HCI clusters that have Log Analytics and Monitoring enabled. It also shows a list of unmonitored clusters across subscriptions that are connected to Azure or have recently connected to Azure.
 
-It also shows a list of unmonitored clusters across subscriptions that are connected to Azure or have recently connected to Azure.
+:::image type="content" source="media/azure-stack-hci-insights/get-started.png" alt-text="The Get started view displays the number of registered Azure Stack HCI clusters that have Log Analytics and Monitoring enabled and shows a list of unmonitored clusters" lightbox="media/azure-stack-hci-insights/get-started.png":::
 
 ### Overview
 
 This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
 
+:::image type="content" source="media/azure-stack-hci-insights/overview.png" alt-text="This view provides an overview of server health and performance, and usage of selected clusters." lightbox="media/azure-stack-hci-insights/overview.png":::
+
 ### Virtual machines
 
 This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
+:::image type="content" source="media/azure-stack-hci-insights/virtual-machines.png" alt-text="This view provides the state of all the VMs in the selected cluster. " lightbox="media/azure-stack-hci-insights/virtual-machines.png":::
+
 ### Storage
 
-This view provides two things: 
+This view provides two things:
 
-- **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
-- **Drive Health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+**Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+
+:::image type="content" source="media/azure-stack-hci-insights/volume-health.png" alt-text="Volume health, usage, and performance information" lightbox="media/azure-stack-hci-insights/volume-health.png":::
+
+**Drive health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+
+:::image type="content" source="media/azure-stack-hci-insights/drive-health.png" alt-text="Drive health information" lightbox="media/azure-stack-hci-insights/drive-health.png":::
 
 ### Cluster performance
 
@@ -84,6 +96,14 @@ This view provides four cluster performance trends:
 -	Volume throughput
 
 The views are built using the [cluster event ID 3004](#cluster-event-3004-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
+
+The screenshot below displays CPU usage and average volume latency trends.
+
+:::image type="content" source="media/azure-stack-hci-insights/cluster-performance-cpu-latency.png" alt-text="CPU usage and average volume latency" lightbox="media/azure-stack-hci-insights/cluster-performance-cpu-latency.png":::
+
+The screenshot below displays volume IOPS and throughput trends.
+
+:::image type="content" source="media/azure-stack-hci-insights/cluster-performance-iops-throughput.png" alt-text="Volume IOPS and throughput" lightbox="media/azure-stack-hci-insights/cluster-performance-iops-throughput.png":::
 
 ## Customize Azure Stack HCI Insights
 
@@ -366,6 +386,6 @@ Values for the **m_status** variable are as follows:
 
 For related information, see also:
 
-- [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md)
+- [Configure Azure portal to monitor Azure Stack HCI clusters](monitor-azure-portal.md)
 - [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
 - [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
