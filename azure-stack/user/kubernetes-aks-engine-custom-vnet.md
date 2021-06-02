@@ -47,7 +47,7 @@ Create a new subnet in your virtual network. You will need to the get the subnet
     
     ![virtual network CIDR block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
     
-6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `172.1.0.0 - 172.1.0.255 (256 addresses)` and `172.1.0.0/24`.
+6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `172.100.0.0 - 172.100.0.255 (256 addresses)` and `172.100.0.0/24`.
 
 ## Considerations for selecting an address space
 
@@ -69,16 +69,16 @@ When placing your block of IP addresses, the subnet requires the following alloc
  - A buffer of 16 IP addresses should be left open.
  - The value of your cluster's first IP should be toward the end of the address space to avoid IP conflicts. If possible, assign to the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
 
-In the following example, you can see how these various considerations fill out the IP range in a subnet. This is for three masters. If you are using a subnet with 256 addresses, for example 172.1.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
+In the following example, you can see how these various considerations fill out the IP range in a subnet. This is for three masters. If you are using a subnet with 256 addresses, for example 172.100.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
 
 | Range for /24 subnet | Number | Note |
 | --- | --- | --- |
-| 172.1.0.0  - 172.1.03 | 4 | Reserved in Azure subnet. |
-| **172.1.0.224**-172.1.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
-| 172.1.0.239 - 172.1.0.255 | 16 | 16 IP address buffer. |
-| 172.1.0.256 | 1 | Reserved in Azure subnet. |
+| 172.100.0.0  - 172.100.03 | 4 | Reserved in Azure subnet. |
+| **172.100.0.224**-172.100.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
+| 172.100.0.239 - 172.100.0.255 | 16 | 16 IP address buffer. |
+| 172.100.0.256 | 1 | Reserved in Azure subnet. |
 
-In this example, then `firstConsecutiveStaticIP` property would be `172.1.0.224`.
+In this example, then `firstConsecutiveStaticIP` property would be `172.100.0.224`.
 
 For larger subnets, for example /16 with more than 60 thousand addresses, you may not find it to be practical to set your static IP assignments to the end of the network space. Set your cluster static IP address range away from the first 24 addresses in your IP space so that the cluster can be resilient when claiming addresses.
 
@@ -91,7 +91,7 @@ In **masterProfile** set the following values:
 | Field | Example | Description |
 | --- | --- | --- |
 | vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the Resource ID the subnet.  |
-| firstConsecutiveStaticIP | 172.1.0.224 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
+| firstConsecutiveStaticIP | 172.100.0.224 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
 
 In **agentPoolProfiles** set the following values:
 
@@ -103,7 +103,7 @@ In **orchestratorProfile**, find **kubernetesConfig** and set the following valu
 
 | Field | Example | Description |
 | --- | --- | --- |
-| clusterSubnet | `10.244.0.0/16` | The IP subnet used for allocating IP addresses for pod network interfaces. The subnet must be in the VNET address space. With Azure CNI enabled, the default value is 10.240.0.0/12. Without Azure CNI, the default value is 10.244.0.0/16.  the cluster subnet (POD network) network should not use the same IP space as that of the VNET. Use /16 instead /24 subnet. If you use /24, this subnet will be assigned to one node only. Other node will not get POD network assigned, as you will have run out of the IP space, so they will be not ready in the cluster. |
+| clusterSubnet | `172.244.0.0/16` | The IP subnet used for allocating IP addresses for pod network interfaces. The subnet must be in the VNET address space. With Azure CNI enabled, the default value is 172.240.0.0/12. Without Azure CNI, the default value is 172.244.0.0/16.  the cluster subnet (POD network) network should not use the same IP space as that of the VNET. Use /16 instead /24 subnet. If you use /24, this subnet will be assigned to one node only. Other node will not get POD network assigned, as you will have run out of the IP space, so they will be not ready in the cluster. |
 
 For example:
 
@@ -111,7 +111,7 @@ For example:
 "masterProfile": {
   ...
   "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default",
-  "firstConsecutiveStaticIP": "172.1.0.224",
+  "firstConsecutiveStaticIP": "172.100.0.224",
   ...
 },
 ...
@@ -125,7 +125,7 @@ For example:
 "kubernetesConfig": [
   {
     ...
-    "clusterSubnet": "10.244.0.0/16",
+    "clusterSubnet": "172.244.0.0/16",
     ...
   },
 
