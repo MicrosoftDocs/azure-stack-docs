@@ -15,6 +15,9 @@ ms.date: 05/26/2021
 
 This topic explains how to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters. You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
 
+   > [!IMPORTANT]
+   > These features will be available to try in public preview after June 15, 2021.
+
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]

@@ -4,7 +4,7 @@ description: Reference for the resource usage API, which retrieves Azure Stack H
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/01/2021
+ms.date: 06/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2019
@@ -24,7 +24,7 @@ The term *provider* applies to the service administrator and to any delegated pr
 
 ### Request
 
-The request gets consumption details for the requested subscriptions and for the requested time frame. There's no request body.
+The request gets consumption details for the requested subscriptions and for the requested time frame. There is no request body.
 
 This usage API is a provider API, so the caller must be assigned an **Owner**, **Contributor**, or **Reader** role in the provider's subscription.
 
