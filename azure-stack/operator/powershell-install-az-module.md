@@ -84,7 +84,6 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
 2. Close your PowerShell session, then open a new PowerShell session so that update can take effect.
 
 ::: moniker range=">=azs-2102"
-
 3. Run the following command from a PowerShell session:
 
     ```powershell  
