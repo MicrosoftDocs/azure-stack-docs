@@ -4,7 +4,7 @@ description: This topic explains the benefits of using Automatic Virtual Machine
 author: jelei
 ms.author: jelei
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 06/08/2021
 ---
 
 # Activate Windows Server VMs using Automatic Virtual Machine Activation
@@ -52,6 +52,10 @@ Automatic Virtual Machine Activation activates all editions (Datacenter, Standar
 
 ## Use Automatic Virtual Machine Activation in Windows Admin Center
 You can use Windows Admin Center to set up and manage Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
+
+Take a few minutes to watch the video on using Automatic Virtual Machine Activation in Windows Admin Center:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWFdsF]
 
 ### Before you start
 The following is required to use Automatic Virtual Machine Activation in Windows Admin Center:
