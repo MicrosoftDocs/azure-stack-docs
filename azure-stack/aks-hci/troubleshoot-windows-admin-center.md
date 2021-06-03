@@ -9,10 +9,10 @@ ms.author: v-susbo
 
 # Windows Admin Center troubleshooting
 
-When you use Windows Admin Center (WAC) to create or manage AKS on Azure Stack HCI clusters, you might occasionally come across problems. This article details some common problems and troubleshooting steps that are specific to WAC.
+When you use Windows Admin Center to create or manage AKS on Azure Stack HCI clusters, you may occasionally come across problems. This article details some common problems and troubleshooting steps that are specific to Windows Admin Center.
 
 ## An error occurs when deploying AKS on Azure Stack HCI through Windows Admin Center
-The error _No match was found for the specified search criteria for the provider 'Nuget'_ appears when deploying through Windows Admin center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
+The error _No match was found for the specified search criteria for the provider 'Nuget'_ appears when deploying through Windows Admin Center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
 
 This is an error occurs from PowerShell and states that there are internet connectivity issues. PowerShell is trying to install the pre-requisites package and is unable to install it. You should check to make sure the server or failover cluster has internet connectivity and then start a fresh installation.
 
@@ -42,9 +42,12 @@ If you have difficulties running this script, you can run the following command 
 GetHelp .\Get-SMEUILogs.ps1 -Examples
 ```
 
+## A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center
+Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
+
 ## Troubleshoot CredSSP issues
 
-When deploying AKS on Azure Stack HCI using WAC, and the deployment hangs for an extended period, you might be having CredSSP or connectivity problems. Try the following steps to troubleshoot your deployment:
+When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deployment hangs for an extended period, you might be having CredSSP or connectivity problems. Try the following steps to troubleshoot your deployment:
  
 1. On the machine running Windows Admin Center, run the following command in a PowerShell window: 
 
@@ -66,9 +69,9 @@ When deploying AKS on Azure Stack HCI using WAC, and the deployment hangs for an
 
 ## A WinRM error is displayed when creating a new workload cluster
 
-When switching from DHCP to static IP, WAC displayed an error that said the WinRM client cannot process the request. This error also occurred outside of WAC. WinRM broke when static IP addresses were used, and the servers were not registering an Service Principal Name (SPN) when moving to static IP addresses. 
+When switching from DHCP to static IP, Windows Admin Center displayed an error that said the WinRM client cannot process the request. This error also occurred outside of Windows Admin Center. WinRM broke when static IP addresses were used, and the servers were not registering an Service Principal Name (SPN) when moving to static IP addresses. 
 
-To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the WAC gateway, run the following command: 
+To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the Windows Admin Center gateway, run the following command: 
 
 ```
 Setspn /Q WSMAN/<FQDN on the Azure Stack HCI Server> 
@@ -81,7 +84,7 @@ Setspn /S WSMAN/<server name> <server name>
 Setspn /S WSMAN/<FQDN of server> <server name> 
 ```
 
-Finally, on the WAC gateway, run the following to ensure that it gets new server information from the domain controller:
+Finally, on the Windows Admin Center gateway, run the following to ensure that it gets new server information from the domain controller:
 
 ```
 Klist purge 

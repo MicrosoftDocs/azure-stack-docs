@@ -1,24 +1,27 @@
 ---
-title: Monitor multiple Azure Stack HCI clusters
-description: How to enable Logs and Monitoring capabilities to monitor multiple Azure Stack HCI clusters from Azure portal.
+title: Configure Azure portal to monitor Azure Stack HCI clusters
+description: How to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters from Azure portal.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/24/2021
+ms.date: 06/03/2021
 ---
 
-# Monitor Azure Stack HCI clusters from Azure portal
+# Configure Azure portal to monitor Azure Stack HCI clusters
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
-This topic explains how to enable Logs and Monitoring capabilities to monitor multiple Azure Stack HCI clusters. You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
+This topic explains how to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md). You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
+
+   > [!IMPORTANT]
+   > These features will be available to try in public preview after June 15, 2021.
 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
-   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after May 25, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration) if you haven't already done so manually from Azure portal.
+   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you register your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration) after June 15, 2021.
 
 ## Logs capability (preview)
 
@@ -124,8 +127,6 @@ Every GB of data ingested into your Log Analytics workspace can be retained at n
 
 ## Next steps
 
-For related information, see also:
-
-- [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
-- [Azure Stack HCI Insights](azure-stack-hci-insights.md)
-- [Monitor Azure Stack HCI clusters](monitor-cluster.md)
+You're now ready to monitor multiple Azure Stack HCI clusters from Azure portal:
+> [!div class="nextstepaction"]
+> [Azure Stack HCI Insights](azure-stack-hci-insights.md)
