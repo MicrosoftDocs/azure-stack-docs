@@ -1,15 +1,15 @@
 ---
-title: Azure Stack HCI Insights
-description: How to use Azure Stack HCI Insights to monitor cluster health, performance, and usage.
+title: Monitor multiple clusters with Azure Stack HCI Insights
+description: How to use Azure Stack HCI Insights to monitor the health, performance, and usage of multiple Azure Stack HCI clusters.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/26/2021
+ms.date: 06/03/2021
 ---
 
-# Azure Stack HCI Insights (preview)
+# Monitor multiple clusters with Azure Stack HCI Insights (preview)
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
@@ -76,7 +76,7 @@ This view provides the state of all the VMs in the selected cluster. This view i
 
 ### Storage
 
-This view provides two things: 
+This view provides two things:
 
 **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
@@ -386,6 +386,6 @@ Values for the **m_status** variable are as follows:
 
 For related information, see also:
 
-- [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md)
+- [Configure Azure portal to monitor Azure Stack HCI clusters](monitor-azure-portal.md)
 - [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
 - [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
