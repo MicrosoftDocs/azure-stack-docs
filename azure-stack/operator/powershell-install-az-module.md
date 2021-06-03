@@ -96,7 +96,7 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
     ```
 ::: moniker-end
 ::: moniker range="<=azs-2008"
-4. Run the following command from a PowerShell session:
+3. Run the following command from a PowerShell session:
 
     ```powershell  
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
