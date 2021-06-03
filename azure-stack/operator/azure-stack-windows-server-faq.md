@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 06/03/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
