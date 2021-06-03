@@ -94,14 +94,14 @@ The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, 
     Install-Module -Name AzureStack -RequiredVersion 2.1.0 
     ```
 ::: moniker-end
-::: moniker range="<azs-2102"
+::: moniker range="azs-2102"
 3. Run the following command from a PowerShell session:
 
     ```powershell  
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
     Install-Module -Name Az.BootStrapper -Force
-    Install-AzProfile -Profile 2020-09-01-hybrid -Force
+    Install-AzProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
     ```
 
@@ -127,8 +127,8 @@ Installation has five steps:
 
 ### Install Azure Stack Hub PowerShell
 
-::: moniker range=">=azs-2002"
-Azure Stack Hub 2002 or later.
+::: moniker range=">=azs-2102"
+Azure Stack Hub 2102 or later.
 
 You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
@@ -141,6 +141,23 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 $savedModulesPath = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 1.10.0
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.1.0
+```
+::: moniker-end
+
+::: moniker range="<=azs-2008"
+Azure Stack Hub 2008 or earlier.
+
+You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
+Import-Module -Name PackageManagement -ErrorAction Stop
+
+$savedModulesPath = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 0.10.0-preview
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.0.2-preview
 ```
 ::: moniker-end
 
@@ -178,7 +195,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
     Install-Module -Name Az -Repository $RepoName -RequiredVersion 1.10.0 -Scope AllUsers
    ```
 ::: moniker-end
-::: moniker range="<azs-2102"
+::: moniker range="<=azs-2008"
    ```powershell
    # requires -Version 5
    # requires -RunAsAdministrator
@@ -194,7 +211,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.2-preview -AllowPrerelease -Scope AllUsers
 
-   Install-Module -Name Az -Repository $RepoName -RequiredVersion 1.10.0 -Scope AllUsers
+   Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0-preview -Scope AllUsers
    ```
 ::: moniker-end
 

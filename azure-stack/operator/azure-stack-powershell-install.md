@@ -19,7 +19,9 @@ ms.lastreviewed: 4/15/2021
 Azure PowerShell Azure Resource Manager (AzureRM) provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
 > [!IMPORTANT]  
-> You've reached a webpage for an outdated version of Azure Stack Hub PowerShell. All versions of the Azure Resource Manager (AzureRM) PowerShell module are  outdated, but not out of support. AzureRM modules will no longer be updated in future Azure Stack Hub builds. Az modules will be used for builds 2002 and later.The Az PowerShell module is now the recommended PowerShell module for interacting with Azure and Azure Stack Hub. To get started with the Az PowerShell module, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md). To learn how to migrate to the Az PowerShell module. see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md).
+> You've reached a webpage for an outdated version of Azure Stack Hub PowerShell. All versions of the Azure Resource Manager (AzureRM) PowerShell module are outdated, but not out of support. AzureRM modules will no longer be updated in future Azure Stack Hub builds. Az modules will be used for builds 2002 and later. The 2020-09-01-hybrid profile is not supported for AzureRM modules.  
+> 
+> The Az PowerShell module is now the recommended PowerShell module for interacting with Azure and Azure Stack Hub. To get started with the Az PowerShell module, see [Install PowerShell Az preview module for Azure Stack Hub](powershell-install-az-module.md). To learn how to migrate to the Az PowerShell module. see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md).
 
 
 You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
@@ -180,7 +182,7 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 $Path = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.3 
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.3
 ```
 ::: moniker-end
 
