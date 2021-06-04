@@ -3,7 +3,7 @@ title: Manage VMs with Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: v-dasis
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 06/04/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -32,10 +32,10 @@ You can easily create a new VM using Windows Admin Center.
 1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
 1. Under **Network**, select a virtual switch from the dropdown list.
 1. Under **Network**, select one of the following for the isolation mode from the dropdown list:
-    - Set to **Default (None)** if the VM is connected to the virtual switch in access mode
+    - Set to **Default (None)** if the VM is connected to the virtual switch in access mode.
     - Set to **VLAN** if the VM is connected to the virtual switch over a VLAN. Specify the VLAN identifier as well.
-    - Set to **Virtual Network (SDN)** if the VM part of an SDN virtual network. Select a virtual network name, subnet and specify IP Address. Optionally, select an access control list that can be applied to the VM.
-    - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+    - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+    - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
 
 1. Under **Storage**, click **Add** and select whether to create a new empty virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
 1. Under **Operating system**, do one of the following:
@@ -125,10 +125,10 @@ There are a variety of settings that you can change for a VM.
 1. To add, remove, or change network adapter settings, select **Networks** and do the following:
     - Select a virtual switch from the dropdown list.
     - Select one of the following for the isolation mode from the dropdown list:
-        - Set to **Default (None)** if the VM is connected to the virtual switch in access mode
+        - Set to **Default (None)** if the VM is connected to the virtual switch in access mode.
         - Set to **VLAN** if the VM is connected to the virtual switch over a VLAN. Specify the VLAN identifier as well.
-        - Set to **Virtual Network (SDN)** if the VM part of an SDN virtual network. Select a virtual network name, subnet and specify IP Address. Optionally, select an access control list that can be applied to the VM.
-        - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+        - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+        - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
 
     - To change additional settings for a network adapter adapter, click **Advanced** to be able to:
         - Select between dynamic or static MAC address type
