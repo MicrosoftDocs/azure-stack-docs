@@ -190,7 +190,7 @@ kind: Role
    name: "microsoft:activedirectory:CONTOSO\SREGroup" 
 ```
 
-Before applying the yaml file, the **group and user names** should always be converted to a SIDs using the command:
+Before applying the yaml file, the **group and user names** should always be converted to SIDs using the command:
 
 ```bash
 kubectl-adsso nametosid <rbac.yml>
