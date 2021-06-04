@@ -36,6 +36,8 @@ The storage speed repair settings are:
 
 To change the storage repair speed for a cluster by using Windows Admin Center:
 
+:::image type="content" source="media/storage-repair-speed/change-storage-repair-speed.png" alt-text="." lightbox="media/storage-repair-speed/change-storage-repair-speed.png":::
+
 1. In **Cluster Manager**, select **Settings** from the lower left.
 1. In the **Settings** pane, select **Storage Spaces and pools**.
 1. Use the **Storage repair speed** dropdown to select the desired speed.
