@@ -9,7 +9,7 @@ ms.date: 06/04/2021
 
 # Configure firewalls for Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2 
+>Applies to: Azure Stack HCI, version 20H2
 
 This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall.
 
@@ -112,7 +112,7 @@ Ensure that the proper network ports are open between all server nodes both with
 
 When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the following ports:
 
-### Windows Admin Center
+### Windows Admin Center ports
 - TCP port 445
 - TCP port 5985 (if using WinRM 2.0 default HTTP connectivity)
 - TCP port 5986 (if using WinRM 2.0 default HTTPS connectivity)
@@ -145,4 +145,4 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 ## Next steps
 For more information, see also:
 - The connectivity section of the [Azure Stack HCI FAQ](../faq.yml)
-- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
+- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
