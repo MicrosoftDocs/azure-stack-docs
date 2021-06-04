@@ -30,7 +30,7 @@ The storage speed repair settings are:
 **Very low** to **Low** settings will allocate more resources to active workloads, allowing the server to complete mission-critical tasks. Take caution when changing the setting to **Very low**, as this may impact the time it takes for storage to regain full resiliency. **High** to **Very high** settings will prioritize storage resync and repairs, allowing a patch and update cycle to complete faster. The default setting is **Medium**, which ensures a balance of workload and repair prioritization. It's recommended to keep the repair speed set to **Medium** in most cases, unless you have a good reason for prioritizing either resiliency or performance.
 
    > [!IMPORTANT]
-   > When storage repair speed is set to **Very high**, active workloads and cluster performance can be impacted.
+   > When storage repair speed is set to **Very high**, active workloads and cluster performance can be impacted. Likewise, when repair speed is set to **Very low**, it will take more time for storage to regain full resiliency.
 
 ## Change storage repair speed using Windows Admin Center
 
