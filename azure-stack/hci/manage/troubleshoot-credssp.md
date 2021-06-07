@@ -3,7 +3,7 @@ title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
 author: v-dasis
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 06/04/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -139,6 +139,27 @@ To resolve the error, try the following remedy steps as needed:
 If any of the previous remedy steps failed or did not complete, this might indicate a record conflict in Active Directory. You can use a different computer name to reset the record as a new record in Active Directory.
 
 To reset the record in Active Directory, reinstall the Azure Stack HCI operating system with a new computer name.
+
+**Remedy 5:**
+
+If the error message you're seeing mentions `NTLM` then try the following:
+1. On the computer running Windows Admin Center (the one with the "client" CredSSP role), run the following command to see what policies are configured:
+
+    ```powershell
+    Get-ChildItem hklm:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation
+    ```
+
+1. If `AllowFreshCredentialsWithNTLMOnly` is missing, run:
+
+    ```powershell
+    New-Item hklm:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation\AllowFreshCredentialsWhenNTLMOnly
+    ```
+
+    Then run:
+
+    ```powershell
+    New-ItemProperty hklm:\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation\AllowFreshCredentialsWhenNTLMOnly -Name 1 -Value "wsman/<Server FQDN Name>" -Force
+    ```
 
 ## Next steps
 
