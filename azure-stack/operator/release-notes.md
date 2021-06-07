@@ -140,6 +140,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you do not manipulate files under the backup root directory.
 - Azure Stack Hub managed disks now support Azure Disk APIs version **2019-07-01**, with a subset of the available features.
+- Azure Stack Hub Storage now supports Azure Storage services management APIs version **2019-06-01**, with a subset of total available features.
 - The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. This requires a GPU to be installed in the system.
 - Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
 - Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
