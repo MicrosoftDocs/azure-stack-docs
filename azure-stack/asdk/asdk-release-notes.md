@@ -21,6 +21,19 @@ This article provides information about changes, fixes, and known issues in the 
 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](/api/search/rss?locale=en-us&search=ASDK+release+notes).
 
+::: moniker range="azs-2107"
+## Build 1.2107.xx.xx
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+- SQL RP and MySQL RP are no longer supported on ASDK.
+
+::: moniker-end
+
 ::: moniker range="azs-2102"
 ## Build 1.2102.28.82
 
