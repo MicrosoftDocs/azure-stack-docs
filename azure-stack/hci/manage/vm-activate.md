@@ -37,7 +37,7 @@ To use Automatic Virtual Machine Activation with Azure Stack HCI, check that you
 ### Where you can get keys
 Choose from the following options to get a product key:
 - **OEM provider:** Find a Certificates of Authenticity (COA) key label on the outside of OEM hardware. You can use this key once per server in the cluster.
-- **Volume Licensing Service Center (VLSC):** From the VLSC, you can download a Multiple Activation Key (MAK) that you may reuse up to a predetermined number of allowed activations. To learn more, see [MAK keys](https://docs.microsoft.com/licensing/products-keys-faq#what-is-a-multiple-activation-key-mak).
+- **Volume Licensing Service Center (VLSC):** From the VLSC, you can download a Multiple Activation Key (MAK) that you may reuse up to a predetermined number of allowed activations. To learn more, see [MAK keys](/licensing/products-keys-faq#what-is-a-multiple-activation-key-mak).
 - **Retail channels:** You can also find a retail key on a retail box label. You can only use this key once per server in the cluster. To learn more, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
 
 ### Supported guest OS versions
@@ -59,10 +59,10 @@ Take a few minutes to watch the video on using Automatic Virtual Machine Activat
 
 ### Before you start
 The following is required to use Automatic Virtual Machine Activation in Windows Admin Center:
-- An Azure Stack HCI cluster (version 20H2, with the April 13, 2021 security update or later)
+- An Azure Stack HCI cluster (version 20H2, with the June 8, 2021 cumulative update or later)
 - Windows Admin Center (version 2103 or later)
-- The Cluster Manager extension for Windows Admin Center (version 1.515.1 or later)
-- A Windows Server Datacenter key (version 2019 or later)
+- The Cluster Manager extension for Windows Admin Center (version 1.523.1 or later)
+- Windows Server Datacenter key(s) (version 2019 or later)
 
 ### Set up Automatic Virtual Machine Activation
 To use Automatic Virtual Machine Activation in Windows Admin Center:

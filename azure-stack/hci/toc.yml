@@ -54,7 +54,7 @@
   items:
   - name: Manage VMs
     items:
-    - name: Activate VMs
+    - name: Activate Windows Server VMs
       href: manage/vm-activate.md
     - name: Manage VMs
       href: manage/vm.md
