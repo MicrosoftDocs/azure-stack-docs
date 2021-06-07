@@ -145,22 +145,34 @@ Now that you have set up Automatic Virtual Machine Activation, you can activate 
 ## FAQ
 This FAQ provides answers to some questions about using Automatic Virtual Machine Activation:
 
-- I want to change an existing key. What happens to the previous key if the overwrite is successful/unsuccessful?
-    - Once a product key is associated with a device, that association is permanent. Overwriting keys does not reduce activation count for used keys. If you successfully apply another key, both keys would be considered to have been "used" once. If you unsuccessfully apply a key, your host server activation state remains unchanged and defaults to the last successfully added key.
-- I want to change to another key *of a different version*. Is it possible to switch keys between versions?
-    - You may update to newer versions of keys, or replace existing keys with the same version, but you may not downgrade to a previous version.
-- What happens if I add or remove a new server?
-    - You'll need to [add activation keys](#change-or-add-keys-later-optional) for each new server, so that the Windows Server VMs may be activated against the new server.
-    - Removing a server does not impact how Automatic Virtual Machine Activation is set up for the remaining servers in the cluster.
-- Does Automatic Virtual Machine Activation work in disconnected scenarios?
-    - Only the host server needs to be connected to the internet for Automatic Virtual Machine Activation to work. VMs running on top of the host server do not require internet connectivity to be activated. 
-- Can I run Windows Server 2016 VMs on Azure Stack HCI? I have a license for it.
-    - Absolutely! While Windows Server 2016 keys cannot be used to set up Automatic Virtual Machine Activation on Azure Stack HCI, they may still be applied using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
-    - Windows Server 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#supported-guest-os-versions)), and you can set this up through Automatic Virtual Machine Activation.
-- Previously I purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?
-    - Yes! First ensure that you are not using the key on another system, then go ahead and apply the key on the host server running Azure Stack HCI (unless your key is a multi-use volume key).
-- I'm excited about Windows Server 2022. If I follow the instructions in this article, will my Windows Server 2022 guests activate on Azure Stack HCI?
-    - Yes, but you’ll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
+**I want to change an existing key. What happens to the previous key if the overwrite is successful/unsuccessful?**
+
+- Once a product key is associated with a device, that association is permanent. Overwriting keys does not reduce activation count for used keys. If you successfully apply another key, both keys would be considered to have been "used" once. If you unsuccessfully apply a key, your host server activation state remains unchanged and defaults to the last successfully added key.
+
+**I want to change to another key *of a different version*. Is it possible to switch keys between versions?**
+
+- You may update to newer versions of keys, or replace existing keys with the same version, but you may not downgrade to a previous version.
+
+**What happens if I add or remove a new server?**
+
+- You'll need to [add activation keys](#change-or-add-keys-later-optional) for each new server, so that the Windows Server VMs may be activated against the new server. Removing a server does not impact how Automatic Virtual Machine Activation is set up for the remaining servers in the cluster.
+
+**Does Automatic Virtual Machine Activation work in disconnected scenarios?**
+
+- Only the host server needs to be connected to the internet for Automatic Virtual Machine Activation to work. VMs running on top of the host server do not require internet connectivity to be activated.
+
+**Can I run Windows Server 2016 VMs on Azure Stack HCI? I have a license for it.**
+
+- Absolutely! While Windows Server 2016 keys cannot be used to set up Automatic Virtual Machine Activation on Azure Stack HCI, they may still be applied using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
+- Windows Server 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#supported-guest-os-versions)), and you can set this up through Automatic Virtual Machine Activation.
+
+**Previously I purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?**
+
+- First ensure that you are not using the key on another system, then go ahead and apply the key on the host server running Azure Stack HCI (unless your key is a multi-use volume key).
+
+**I'm excited about Windows Server 2022. If I follow the instructions in this article, will my Windows Server 2022 guests activate on Azure Stack HCI?**
+
+- Yes, but you’ll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
 
 ## Next steps
 For more information, see also:
