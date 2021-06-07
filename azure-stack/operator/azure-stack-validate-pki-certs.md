@@ -263,8 +263,8 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
 
 ## Next steps
 
-Once your certificates are validated by the AzsReadinessChecker, you're ready to use them for your Azure Stack Hub deployment, or post-deployment secret rotation.
+Once your certificates are validated by AzsReadinessChecker, you're ready to use them for Azure Stack Hub deployment or post-deployment secret rotation.
 
  - For deployment, securely transfer your certificates to your deployment engineer so that they can copy them onto the deployment virtual machine, host as specified in [Azure Stack Hub PKI requirements - Mandatory certificates](azure-stack-pki-certs.md#mandatory-certificates).
- - For secret rotation, you can use the certificates to update old certificates for your Azure Stack Hub environment's public infrastructure endpoints by following the [Azure Stack Hub Secret Rotation documentation](azure-stack-rotate-secrets.md).
- - For PaaS services, you can use the certificates to install SQL, MySQL, and App Services Resource Providers in Azure Stack Hub by following the [Overview of offering services in Azure Stack Hub documentation](service-plan-offer-subscription-overview.md).
+ - For secret rotation, refer to [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md). Note that rotation of value-add resource provider certificatess is covered in the [Rotate external secrets section](azure-stack-rotate-secrets.md#rotate-external-secrets).
+

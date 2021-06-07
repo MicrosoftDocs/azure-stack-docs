@@ -8,7 +8,7 @@ ms.author: bryanla
 ms.reviewer: ppacent
 ms.lastreviewed: 06/07/2021
 
-# Intent: As an Azure Stack Hub operator, I want to learn about the Azure Stack PKI certificate requirements.
+# Intent: As an Azure Stack Hub operator, I want to learn about the Azure Stack Hub PKI certificate requirements.
 # Keyword: azure stack hub pki certificate requirements
 
 ---
@@ -116,8 +116,6 @@ The following table describes the endpoints and certificates required for resour
 
 <sup>2</sup> A &#42;.appservice.*&lt;region>.&lt;fqdn>* wildcard certificate can't be used in place of these three certificates (api.appservice.*&lt;region>.&lt;fqdn>*, ftp.appservice.*&lt;region>.&lt;fqdn>*, and sso.appservice.*&lt;region>.&lt;fqdn>*. Appservice explicitly requires the use of separate certificates for these endpoints.
 
-## Learn more
-Learn how to [generate PKI certificates for Azure Stack Hub deployment](azure-stack-get-pki-certs.md).
-
 ## Next steps
-[Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
+
+Learn how to [generate PKI certificates for Azure Stack Hub deployment](azure-stack-get-pki-certs.md).
