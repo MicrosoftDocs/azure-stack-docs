@@ -114,7 +114,7 @@ After the file is created, you'll copy the AD _kubeconfig_ file to the client ma
 Open PowerShell as an administrator and run the following command:  
 
    ```powershell
-   Get-AksHciCredential -name mynewcluster1 -outputLocation .\AdKubeconfig -adAuth
+   Get-AksHciCredential -name mynewcluster1 -configPath .\AdKubeconfig -adAuth
    ```
 
 ### Step 5: Copy kubeconfig and other files to the client machine
