@@ -36,7 +36,7 @@ The following list describes the general certificate issuance, security, and for
 - When rotating certificates for builds 1903 and later, certificates can be issued by any enterprise or public certificate authority.
 ::: moniker-end
 - The use of self-signed certificates aren't supported.
-- For deployment and rotation, you can either use a single certificate covering all name spaces in the certificate's Subject Name and Subject Alternative Name (SAN) fields OR you can use individual certificates for each of the namespaces below that the Azure Stack Hub services you plan to utilize require. Both approaches require using wild cards for endpoints where they're required, such as **KeyVault** and **KeyVaultInternal**.
+- For deployment and rotation, you can either use a single certificate covering all name spaces in the certificate's Subject Name and Subject Alternative Name (SAN). Alternatively, you can use individual certificates for each of the namespaces below that the Azure Stack Hub services you plan to utilize require. Both approaches require using wild cards for endpoints where they're required, such as **KeyVault** and **KeyVaultInternal**.
 - The certificate signature algorithm shouldn't be SHA1.
 - The certificate format must be PFX, as both the public and private keys are required for Azure Stack Hub installation. The private key must have the local machine key attribute set.
 - The PFX encryption must be 3DES (this encryption is default when exporting from a Windows 10 client or Windows Server 2016 certificate store).
@@ -58,7 +58,7 @@ The following list describes the general certificate issuance, security, and for
 
 ## Mandatory certificates
 
-The table in this section describes the Azure Stack Hub public endpoint PKI certificates that are required for both Azure AD and AD FS Azure Stack Hub deployments. Certificate requirements are grouped by area, as well as the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint.
+The table in this section describes the Azure Stack Hub public endpoint PKI certificates that are required for both Azure AD and AD FS Azure Stack Hub deployments. Certificate requirements are grouped by area, and the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint.
 
 Certificates with the appropriate DNS names for each Azure Stack Hub public infrastructure endpoint are required. Each endpoint's DNS name is expressed in the format: *&lt;prefix>.&lt;region>.&lt;fqdn>*.
 
@@ -95,7 +95,8 @@ If you deploy Azure Stack Hub using the Azure AD deployment mode, you only need 
 > All the certificates listed in this section must have the same password.
 
 ## Optional PaaS certificates
-If you're planning to deploy the additional Azure Stack Hub PaaS services (such as SQL, MySQL, App Service, or Event Hubs) after Azure Stack Hub has been deployed and configured, you must request additional certificates to cover the endpoints of the PaaS services.
+
+If you're planning to deploy Azure Stack Hub PaaS services (such as SQL, MySQL, App Service, or Event Hubs) after Azure Stack Hub has been deployed and configured, you must request additional certificates to cover the endpoints of the PaaS services.
 
 > [!IMPORTANT]
 > The certificates that you use for resource providers must have the same root authority as those used for the global Azure Stack Hub endpoints.
