@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/04/2021
+ms.date: 06/07/2021
 ---
 
 # Adjustable storage repair speed in Azure Stack HCI and Windows Server
