@@ -61,7 +61,7 @@ Take a few minutes to watch the video on using Automatic Virtual Machine Activat
 The following is required to use Automatic Virtual Machine Activation in Windows Admin Center:
 - An Azure Stack HCI cluster (version 20H2, with the June 8, 2021 cumulative update or later)
 - Windows Admin Center (version 2103 or later)
-- The Cluster Manager extension for Windows Admin Center (version 1.523.1 or later)
+- The Cluster Manager extension for Windows Admin Center (version 1.523.0 or later)
 - Windows Server Datacenter key(s) (version 2019 or later)
 
 ### Set up Automatic Virtual Machine Activation
