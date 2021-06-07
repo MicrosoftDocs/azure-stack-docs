@@ -3,13 +3,13 @@ title: Azure Stack Hub public key infrastructure certificate requirements
 description: Learn about the Azure Stack Hub PKI certificate requirements for Azure Stack Hub integrated systems.
 author: BryanLa
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 06/07/2021
 ms.author: bryanla
 ms.reviewer: ppacent
-ms.lastreviewed: 12/16/2019
+ms.lastreviewed: 06/07/2021
 
-# Intent: As an Azure Stack operator, I want to learn about the Azure Stack PKI certificate requirements.
-# Keyword: azure stack pki certificate requirements
+# Intent: As an Azure Stack Hub operator, I want to learn about the Azure Stack PKI certificate requirements.
+# Keyword: azure stack hub pki certificate requirements
 
 ---
 
@@ -57,16 +57,17 @@ The following list describes the general certificate issuance, security, and for
 > The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts *is* supported.
 
 ## Mandatory certificates
+
 The table in this section describes the Azure Stack Hub public endpoint PKI certificates that are required for both Azure AD and AD FS Azure Stack Hub deployments. Certificate requirements are grouped by area, as well as the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint.
 
 Certificates with the appropriate DNS names for each Azure Stack Hub public infrastructure endpoint are required. Each endpoint's DNS name is expressed in the format: *&lt;prefix>.&lt;region>.&lt;fqdn>*.
 
-For your deployment, the [region] and [externalfqdn] values must match the region and external domain names that you chose for your Azure Stack Hub system. As an example, if the region name was *Redmond* and the external domain name was *contoso.com*, the DNS names would have the format *&lt;prefix>.redmond.contoso.com*. The *&lt;prefix>* values are predesignated by Microsoft to describe the endpoint secured by the certificate. In addition, the *&lt;prefix>* values of the external infrastructure endpoints depend on the Azure Stack Hub service that uses the specific endpoint.
+For your deployment, the *\<region\>* and *\<fqdn\>* values must match the region and external domain names that you chose for your Azure Stack Hub system. As an example, if the region is *Redmond* and the external domain name is *contoso.com*, the DNS names will have the format *&lt;prefix>.redmond.contoso.com*. The *&lt;prefix>* values are predesignated by Microsoft to describe the endpoint secured by the certificate. In addition, the *&lt;prefix>* values of the external infrastructure endpoints depend on the Azure Stack Hub service that uses the specific endpoint.
 
 For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wildcard certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture and hence development-only. Remember, both options require you to use wildcard certificates for endpoints like **acs** and Key Vault where they're required.
 
 > [!Note]  
-> During deployment, you must copy certificates to the deployment folder that matches the identity provider you're deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the deployment virtual machine and can be found at: C:\CloudDeployment\Setup\Certificates.
+> During deployment, you must copy certificates to the deployment folder that matches the identity provider you're deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the [deployment virtual machine](deployment-networking.md#the-deployment-vm) and can be found at: C:\CloudDeployment\Setup\Certificates.
 
 | Deployment folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | Subdomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
