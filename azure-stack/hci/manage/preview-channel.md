@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/27/2021
+ms.date: 06/02/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -14,6 +14,9 @@ ms.date: 05/27/2021
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
 The Azure Stack HCI release preview channel is an opt-in program that lets customers install the next version of the operating system before it's officially released. It's intended for customers who want to evaluate new features, system architects who want to build a solution before conducting a broader deployment, or anyone who wants to see what's next for Azure Stack HCI. There are no program requirements or commitments. Preview builds are only available via Windows Update using Windows Admin Center or PowerShell.
+
+   > [!WARNING]
+   > Azure Stack HCI clusters that are managed by System Center shouldn’t join the preview channel yet. System Center 2019 (including Virtual Machine Manager, Operations Manager, and other components) doesn’t yet support this preview. See the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) for the latest updates.
 
    > [!WARNING]
    > Don't use preview builds in production. Preview builds contain experimental pre-release software made available for evaluating and testing only. You might experience crashes, security vulnerabilities, or data loss. Be sure to back up any important virtual machines (VMs) before upgrading your cluster. Once you install a build from the preview channel, the only way to go back is a clean install.
@@ -30,14 +33,11 @@ Azure Stack HCI, version 21H2 Preview contains the following new features:
 
 ## How to join the preview channel
 
-You can install preview builds on an Azure Stack HCI cluster by using either Windows Admin Center or PowerShell. Make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md). The process can take up to a few hours to complete.
+Before joining the preview channel, make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md). 
 
    > [!IMPORTANT]
    > Before upgrading to Azure Stack HCI, version 21H2 Preview, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to Azure Stack HCI, version 20H2 via Windows Update. See [Update Azure Stack HCI clusters](update-cluster.md).
 
-### Install the version 21H2 Preview build using Windows Admin Center
-
-To install preview builds using Windows Admin Center:
 
 1. Make sure you have the latest version of Windows Admin Center installed on a management PC or server.
 
@@ -54,25 +54,31 @@ To install preview builds using Windows Admin Center:
    > [!NOTE]
    > If any of the servers in the cluster say **Not configured** for preview builds, try repeating the process.
 
-5. Select **Updates** from the **Tools** pane at the left. Feature updates will be displayed.
+Now you're ready to install a preview build using either Windows Admin Center or PowerShell. See instructions below.
+
+## Install a preview build using Windows Admin Center
+
+Once you've joined the preview channel, you can install a preview build using Windows Admin Center:
+
+1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. If you've successfully joined the preview channel, feature updates will be displayed.
 
    :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
 
-6. Select **Install**. A readiness check will be displayed.
+2. Select **Install**. A readiness check will be displayed.
 
    :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
 
-7. When the readiness check is complete, you're ready to install the updates. Review the updates listed, and select **Install** to start the update.
+3. When the readiness check is complete, you're ready to install the updates. Review the updates listed, and select **Install** to start the update.
 
    :::image type="content" source="media/preview-channel/install-updates.png" alt-text="Review the updates and install them" lightbox="media/preview-channel/install-updates.png":::
 
-8. You'll be able to see the installation progress as in the screenshot below. Because you're updating the operating system with new features, the updates may take a while to complete. You can continue to use Windows Admin Center for other operations during the update process.
+4. You'll be able to see the installation progress as in the screenshot below. Because you're updating the operating system with new features, the updates may take a while to complete. You can continue to use Windows Admin Center for other operations during the update process.
 
    :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
 
-### Install the version 21H2 Preview build using PowerShell
+## Install a preview build using PowerShell
 
-To install preview builds using PowerShell:
+To install a preview build using PowerShell:
 
 1.	Run the following cmdlets on every server in the cluster:
 
