@@ -206,9 +206,9 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
-  - name: Monitor clusters from Azure portal
+  - name: Configure Azure portal to monitor clusters
     href: manage/monitor-azure-portal.md
-  - name: Azure Stack HCI Insights
+  - name: Monitor multiple clusters with Azure Stack HCI Insights
     href: manage/azure-stack-hci-insights.md
   - name: Host networking with Network ATC
     href: deploy/network-atc.md
@@ -218,6 +218,8 @@
     href: manage/processor-compatibility-mode.md
   - name: Storage thin provisioning
     href: manage/thin-provisioning.md
+  - name: Adjustable storage repair speed
+    href: manage/storage-repair-speed.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

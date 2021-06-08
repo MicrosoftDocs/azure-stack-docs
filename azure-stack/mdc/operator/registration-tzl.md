@@ -3,7 +3,7 @@ title: Register Azure Stack Hub with Azure (MDC)
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting for an MDC. 
 author: sethmanheim
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 06/04/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
@@ -233,13 +233,13 @@ Connected environments can access the internet and Azure. For these environments
    Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
-      -BillingModel Ruggedized `
+      -BillingModel Custom `
       -RegistrationName $RegistrationName `
       -msAssetTag $msAssetTagName `
       -UsageReportingEnabled: $false
    ```
 
-   The MS Asset tag (`msAssetTag`) is mandatory for Ruggedized billing model registration and is printed on the product.
+   The MS Asset tag (`msAssetTag`) is mandatory for custom billing model registration and is printed on the product.
 
    The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
 
