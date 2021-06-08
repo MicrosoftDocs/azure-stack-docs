@@ -267,6 +267,8 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 ### PowerShell known issues
 
+#### Get-AzStorageAccountKey difference
+
 The current compatible Azure PowerShell module version for Azure Stack Hub is 1.2.11 for the user operations. It's different from the latest version of Azure PowerShell. This difference impacts storage services operation in the following way:
 
 The return value format of `Get-AzStorageAccountKey` in version 1.2.11 has two properties: `Key1` and `Key2`, while the current Azure version returns an array containing all the account keys.
@@ -284,6 +286,10 @@ The return value format of `Get-AzStorageAccountKey` in version 1.2.11 has two p
 ```
 
 For more information, see [Get-AzureRMStorageAccountKey](/powershell/module/Az.storage/Get-AzStorageAccountKey).
+
+#### Copy blob between Azure Stack Hub clusters
+
+`Start-AzStorageBlobCopy` can be used to start a copy job to move a blob. When setting the propertie `AbsoluteUri` as the blob uri on another Azure Stack Hub cluster, this cmdlet can be used to copy blob between two Azure Stack Hub clusters. Make sure the source and destination Azure Stack Hub clusters are on the same update version. Azure Stack Hub currently doesn't support using `Start-AzStorageBlobCopy` to copy blob between two Azure Stack Hub clusters which have deployed different update versions.
 
 ## Azure CLI
 

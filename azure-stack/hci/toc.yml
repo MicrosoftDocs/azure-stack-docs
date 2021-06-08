@@ -218,6 +218,8 @@
     href: manage/processor-compatibility-mode.md
   - name: Storage thin provisioning
     href: manage/thin-provisioning.md
+  - name: Adjustable storage repair speed
+    href: manage/storage-repair-speed.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
