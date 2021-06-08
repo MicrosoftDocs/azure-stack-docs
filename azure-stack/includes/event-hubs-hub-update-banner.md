@@ -3,9 +3,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 06/08/2021
 ms.reviewer: bryanla
-ms.lastreviewed: 02/15/2021
+ms.lastreviewed: 06/08/2021
 ---
 <!-- TODO - For each release: add AzS Hub build number, Event Hubs RP version number, & corresponding Event Hubs release notes text/link -->
 > [!IMPORTANT]
@@ -13,6 +13,7 @@ ms.lastreviewed: 02/15/2021
 >
 > | Supported Azure Stack Hub version(s) | Event Hubs RP version |
 > |-----|---|
+> | 2008 and higher | 1.2012.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2012-20.md) |
 > | 2008 and higher | 1.2012.1.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2012-10.md) |
 > | 2005, 2008 | 1.2012.0.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) |
 > 
