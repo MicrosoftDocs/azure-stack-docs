@@ -26,7 +26,7 @@ This release includes the following updates:
 
 This release includes the following fixes:
 
-- Service fabric runtime version display issue in the Event Hubs admin blade, whenever an upgrade finishes.
+- Service fabric runtime version display issue in Event Hubs management, whenever an upgrade finishes.
 - HTTP port of an infrastructure service whose access wasn't removed when reassigned, caused requests to error with "service unavailable".
 - Internal cluster certificate secret rotation issue that rendered clusters unresponsive when rotating the cluster certificates.
 
