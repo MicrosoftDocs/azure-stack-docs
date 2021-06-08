@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/02/2021
+ms.date: 06/08/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -94,10 +94,10 @@ To install a preview build using PowerShell:
     Test-CauSetup -ClusterName Cluster1
     ```
 
-3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet:
+3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster:
 
     ```PowerShell
-    Test-Cluster -ClusterName Cluster1
+    Test-Cluster
     ```
 
 4.	Run the following cmdlet with no parameters on every server in the cluster:
@@ -116,7 +116,7 @@ To install a preview build using PowerShell:
 
     Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
 
-6.	You'll need a separate Azure Stack HCI server outside the cluster to run the `Invoke-CauRun` cmdlet from. It can even be a VM on which you temporarily installed Azure Stack HCI. **Important: The system on which you run `Invoke-CauRun` must be running Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
+6.	You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022 or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
 
     ```PowerShell
     Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force

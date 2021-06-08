@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/20/2021
+ms.date: 06/08/2021
 ---
 
 # Azure Stack HCI release information
@@ -27,6 +27,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.1768   | 2021-06-08            | [KB 5003643](https://support.microsoft.com/topic/june-08-2021-security-update-kb5003643-5a4dcf99-a4fa-4326-b971-6817bf683959) |
+| 17784.1762   | 2021-06-08            | [KB 5004179](https://support.microsoft.com/topic/june-08-2021-servicing-stack-update-kb5004179-54882195-7583-45f3-a9da-520e4f8aa1db) |
 | 17784.1737   | 2021-05-20            | [KB 5003237](https://support.microsoft.com/topic/may-18-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) |
 | 17784.1705   | 2021-05-11            | [KB 5003188](https://support.microsoft.com/topic/may-11-2021-security-update-kb5003188-483561eb-1787-40eb-9e30-c3840b271b27) |
 | 17784.1700   | 2021-05-11            | [KB 5003282](https://support.microsoft.com/topic/may-11-2021-servicing-stack-update-kb5003282-ffff52a9-29c1-483c-b62b-7e3dd09df7b2) |

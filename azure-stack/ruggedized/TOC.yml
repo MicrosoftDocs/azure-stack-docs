@@ -307,7 +307,7 @@
       - name: Offer a virtual machine scale set
         href: ../operator/azure-stack-compute-add-scalesets.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Windows Server in Marketplace FAQ 
-        href: operator/azure-stack-windows-server-faq-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: /azure-stack/mdc/operator/azure-stack-windows-server-faq-tzl?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Offer Linux virtual machines
         href: ../operator/azure-stack-linux.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Add a Red Hat virtual machine
