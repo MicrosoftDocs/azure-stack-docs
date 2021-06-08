@@ -91,4 +91,4 @@ GET
 ## Next steps
 
 - [Provider resource usage API](azure-stack-provider-resource-api.md)
-- [Usage-related FAQ](azure-stack-usage-related-faq.md)
+- [Usage-related FAQ](azure-stack-usage-related-faq.yml)
