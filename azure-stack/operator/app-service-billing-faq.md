@@ -54,7 +54,7 @@ Cloud operators can view the current number of available workers per worker tier
 
 ## See customer usage by using the Azure Stack Hub usage service
 
-Cloud operators can query the [Azure Stack Hub Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers. You can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md). These meters then are used to calculate the usage per customer subscription to calculate charges.
+Cloud operators can query the [Azure Stack Hub Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers. You can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.yml). These meters then are used to calculate the usage per customer subscription to calculate charges.
 
 ## Frequently asked questions
 

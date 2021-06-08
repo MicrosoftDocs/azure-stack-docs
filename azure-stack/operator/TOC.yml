@@ -295,7 +295,7 @@
     - name: Offer a virtual machine scale set
       href: azure-stack-compute-add-scalesets.md
     - name: Azure Stack Hub Marketplace FAQ
-      href: azure-stack-windows-server-faq.md
+      href: azure-stack-windows-server-faq.yml
     - name: Offer Linux virtual machines
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
@@ -394,6 +394,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2012.2.0 release notes [May 2021] 
+          href: event-hubs-rp-release-1-2012-20.md
         - name: 1.2012.1.0 release notes [Feb 2021] 
           href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
@@ -501,7 +503,7 @@
       - name: Tenant usage API
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
-        href: azure-stack-usage-related-faq.md
+        href: azure-stack-usage-related-faq.yml
       - name: Troubleshooting usage issues
         items:
         - name: Usage connectivity errors
