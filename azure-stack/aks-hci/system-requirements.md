@@ -27,7 +27,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
-- If you are using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
+- If you are using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent release.
 
 ## Azure requirements
 
@@ -111,7 +111,7 @@ With that created, in the **Azure portal**, under **Subscriptions**, **Access Co
 
 - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
-- This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
+- You must install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
 
 ## General network requirements
 
