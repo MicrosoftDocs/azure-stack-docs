@@ -61,7 +61,7 @@
       "redirect_document_id": false
     }, 
     { 
-      "source_path": "sazure-stack/ruggedized/operator/container-registry-template-rotate-secrets-tzl.md", 
+      "source_path": "azure-stack/ruggedized/operator/container-registry-template-rotate-secrets-tzl.md", 
       "redirect_url": "/azure-stack/ruggedized/ruggedized-overview", 
       "redirect_document_id": false
     }, 
