@@ -34,11 +34,14 @@ This document will guide you through the following steps to set up Active Direct
 Before you start the process of configuring Active Directory SSO credentials, you should ensure you have the following items available:
 
  - The latest **Aks-Hci PowerShell** module is installed. If you need to install it, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules). 
- - The AKS host is installed and configured. If you need to install the host, follow [configure your deployment](./kubernetes-walkthrough-powershell.md#step-3-configure-your-deployment).  
- - You should make sure the keytab file is available to use, if it is not available, see [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
- - You should generate the keytab file for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You must also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
- - For each AKS on Azure Stack HCI workload cluster, ensure there's one API server AD account available.
- - Ensure that the client machine must be a Windows domain-joined machine.
+ - The AKS host is installed and configured. If you need to install the host, follow the steps to [configure your deployment](./kubernetes-walkthrough-powershell.md#step-3-configure-your-deployment).  
+ - The keytab file is available to use, and if it is not available, follow the steps to [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
+ 
+   > [!NOTE]
+   > You should generate the keytab file for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You must also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
+
+ - One API server AD account is available for each AKS on Azure Stack HCI workload cluster.
+ - The client machine must be a Windows domain-joined machine.
 
 ## Create AD Auth using the keytab file
 
