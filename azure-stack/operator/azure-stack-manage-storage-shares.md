@@ -373,25 +373,25 @@ As a cloud operator for Azure Stack Hub, there isn't an  automated way to check 
 
 To workout available memory for VMs the following formula is used:
 
-**Available Memory for VM placement** = Total Host Memory--Resiliency Reserve--Memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead
+**Available Memory for VM placement** = `Total Host Memory--Resiliency Reserve--Memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead`
 
-**Resiliency reserve ** = H + R * ((N-1) * H) + V * (N-2)
+**Resiliency reserve** =` H + R * ((N-1) * H) + V * (N-2)`
 
 Where:
 
-H = Size of single host memory
+**H** = Size of single host memory
 
-N = Size of scale unit (number of hosts)
+**N** = Size of scale unit (number of hosts)
 
-R = Operating system reserve/memory used by the Host OS, which is .15 in this formula
+**R** = Operating system reserve/memory used by the Host OS, which is .15 in this formula
 
-V = Largest VM (memory wise) in the scale unit
+**V** = Largest VM (memory wise) in the scale unit
 
-Azure Stack Hub Infrastructure Overhead = 242 GB + (4 GB x # of nodes). This accounts for the approximately 31 VMs are used to host Azure Stack Hub's infrastructure.
+**Azure Stack Hub Infrastructure Overhead** = 242 GB + (4 GB x # of nodes). This accounts for the approximately 31 VMs are used to host Azure Stack Hub's infrastructure.
 
-Memory used by the Host OS = 15 percent (0.15) of host memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the host and general operating system overhead.
+**Memory used by the Host OS** = 15 percent (0.15) of host memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the host and general operating system overhead.
 
-The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM deployed. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. We pick the size of the largest VM here to have enough memory reserved so a live migration of this large VM would not fail. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself.
+The value **V**, largest VM in the scale unit, is dynamically based on the largest tenant VM deployed. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. We pick the size of the largest VM here to have enough memory reserved so a live migration of this large VM would not fail. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself.
 
 For example, with a 12 node scale unit:
 
