@@ -16,7 +16,7 @@ ms.lastreviewed: 10/16/2020
 
 # Manage storage capacity for Azure Stack Hub
 
-This article helps Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. You can use the guideance to understand the memory available for your user's VMs. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
+This article helps Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. You can use the guidance to understand the memory available for your user's VMs. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
@@ -345,9 +345,9 @@ The most extreme method for managing space involves moving unmanaged disks. If t
 
 ## Memory available for VMs
 
-Azure Stack is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware, referred to as a scale unit. In Azure Stack, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack servers, referred to as hosts or nodes. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack VMs are then managed by the scale unit's Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack. The scale unit also allows for the movement and scalability of all services across Azure Stack, tenant and infrastructure.
+Azure Stack Hub is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware, referred to as a scale unit. In Azure Stack Hub, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack Hub servers, referred to as hosts or nodes. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack Hub VMs are then managed by the scale unit's Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack Hub. The scale unit also allows for the movement and scalability of all services across Azure Stack Hub, tenant and infrastructure.
 
-You can review a pie chart in the administration portal that shows the free and used memory in Azure Stack like below:
+You can review a pie chart in the administration portal that shows the free and used memory in Azure Stack Hub like below:
 
 ![physical memory on Azure Stack Hub](media/azure-stack-manage-storage-shares/physical-memory-on-azure-stack-hub.png)
 
@@ -356,13 +356,13 @@ The following components consume the memory in the used section of the pie chart
 - **Host OS usage or reserve** 
     This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the spaces direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
 - **Infrastructure services**  
-    These are the infrastructure VMs that make up Azure Stack. As of the 1904 release version of Azure Stack, this entails approximately 31 VMs that take up 242 GB + (4 GB x number of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
+    These are the infrastructure VMs that make up Azure Stack Hub. As of the 1904 release version of Azure Stack Hub, this entails approximately 31 VMs that take up 242 GB + (4 GB x number of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
 - **Resiliency reserve**  
-    Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
+    Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure and during patch and update to allow for successful live migration of VMs.
 - **Tenant VMs**
-    These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal, powershell, and cli will not consume memory from Azure Stack.
-- **Add-on RPs**  
-    VMs deployed for the Add-on RPs like SQL, MySQL, App Service etc.
+    These are the VMs created by Azure Stack Hub users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from Azure Stack Hub user portal, PowerShell, and Azure CLI will not consume memory from Azure Stack Hub.
+- **Add-on Resource Providers**  
+    VMs deployed for the add-on resource providers such as SQL, MySQL, and App Service.
 
 ![Capacity used in a blade on a four node Azure Stack Hub](media/azure-stack-manage-storage-shares/capacity-for-four-node-azure-stack-hub.png)
  
@@ -371,9 +371,9 @@ The following components consume the memory in the used section of the pie chart
 
 As a cloud operator for Azure Stack Hub, there isn't an  automated way to check the allocated memory for each VM. You can have access your user VMs, and calculate the allocated memory manually. However, the allocated memory will not reflect the real use. This value can be lower than the allocated value.
 
-To workout available memory for VM's the following formula is used:
+To workout available memory for VMs the following formula is used:
 
-**Available Memory for VM placement** = Total Host Memory -- Resiliency Reserve -- Memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead
+**Available Memory for VM placement** = Total Host Memory--Resiliency Reserve--Memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead
 
 **Resiliency reserve ** = H + R * ((N-1) * H) + V * (N-2)
 
@@ -393,7 +393,7 @@ Memory used by the Host OS = 15 percent (0.15) of host memory. The operating sys
 
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM deployed. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. We pick the size of the largest VM here to have enough memory reserved so a live migration of this large VM would not fail. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself.
 
-For example with a 12 node scale unit:
+For example, with a 12 node scale unit:
 
 | Stamp details              | Values                          |
 |----------------------------|---------------------------------|
@@ -405,14 +405,13 @@ For example with a 12 node scale unit:
 | Resiliency Reserve =       | H + R * ((N-1) * H) + V * (N-2) |
 | Resiliency Reserve =       | 2137.6                          |
 
-So with the above information, you can calculate that an Azure Stack with 12 nodes of 3,84Gb mem per host (Total 4,608GB) has 2,137GB reserved for resiliency 
-if the largest VM has 112GB memory.
+So with the above information, you can calculate that an Azure Stack with 12 nodes of 384 GB per host (Total 4,608 GB) has 2,137 GB reserved for resiliency if the largest VM has 112-GB memory.
 
-When you consult the **Capacity** blade for the Physical memory as per below, the **Used** value includes the Resiliency Reserve. This example graph is from a 4 node Azure Stack Hub instance.
+When you consult the **Capacity** blade for the Physical memory as per below, the **Used** value includes the Resiliency Reserve. The graph is from a four node Azure Stack Hub instance.
 
-![Capacity usage on a four node Azure Stack Hub](media/azure-stack-hub-capacity-used.png)
+![Capacity usage on a four node Azure Stack Hub](media/azure-stack-manage-storage-shares/azure-stack-hub-capacity-used.png)
 
-Keep these considerations in mind while capacity planning for Azure Stack Hub. In addition, you can use the [Azure Stack Hub Capacity Planner](azure-stack-capacity-planning-overview.md) for your capacity plans.
+Keep these considerations in mind while planning the capacity for Azure Stack Hub. In addition, you can use the [Azure Stack Hub Capacity Planner](azure-stack-capacity-planning-overview.md).
 
 ## Next steps
 
