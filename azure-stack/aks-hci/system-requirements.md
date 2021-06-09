@@ -111,7 +111,7 @@ With that created, in the **Azure portal**, under **Subscriptions**, **Access Co
 
 - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
-- You must install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
+- You must install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections. At this time, you cannot change these settings after installation.
 
 ## General network requirements
 
