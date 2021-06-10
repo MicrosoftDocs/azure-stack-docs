@@ -14,6 +14,14 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.28.87
+        href: hotfix-1-2102-28-87.md
+      - name: Hotfix 1.2008.37.139
+        href: hotfix-1-2008-37-139.md
+      - name: Hotfix 1.2005.41.124
+        href: hotfix-1-2005-41-124.md     
+      - name: Hotfix 1.2002.69.179
+        href: hotfix-1-2002-69-179.md
       - name: Hotfix 1.2008.33.131
         href: hotfix-1-2008-33-131.md      
       - name: Hotfix 1.2005.35.112
