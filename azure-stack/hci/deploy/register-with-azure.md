@@ -73,7 +73,10 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
        "Microsoft.Resources/subscriptions/resourceGroups/delete",
        "Microsoft.AzureStackHCI/register/action",
        "Microsoft.AzureStackHCI/Unregister/Action",
-       "Microsoft.AzureStackHCI/clusters/*"
+       "Microsoft.AzureStackHCI/clusters/*",
+       "Microsoft.Authorization/roleAssignments/write",
+       "Microsoft.HybridCompute/register/action",
+       "Microsoft.GuestConfiguration/register/action"
      ],
      "NotActions": [
      ],
