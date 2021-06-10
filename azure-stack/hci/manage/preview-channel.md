@@ -101,13 +101,11 @@ To install a preview build using PowerShell, follow these steps. Before upgradin
     Test-CauSetup -ClusterName Cluster1
     ```
 
-3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster:
+3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster. If any of the condition checks fail, resolve them before proceeding to step 4.
 
     ```PowerShell
     Test-Cluster
     ```
-
-   If any of the condition checks fail, resolve them before proceeding to step 4.
 
 4.	Run the following cmdlet with no parameters on every server in the cluster:
 
