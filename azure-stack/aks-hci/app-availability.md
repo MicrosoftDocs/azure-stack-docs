@@ -18,7 +18,7 @@ This topic describes some fundamental concepts for users who want to run contain
 
 ## **What is live migration?**
 
-[Live migration](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/live-migration-overview) is a Hyper-V feature that allows you to transparently move running virtual machines from one Hyper-V host to another without perceived downtime. The primary benefit of live migration is flexibility; running virtual machines are not tied to a single host machine. This allows actions like draining a specific host of virtual machines before decommissioning or upgrading the host. When paired with Windows Failover Clustering, live migration allows the creation of highly available and fault tolerant systems.
+[Live migration](/windows-server/virtualization/hyper-v/manage/live-migration-overview) is a Hyper-V feature that allows you to transparently move running virtual machines from one Hyper-V host to another without perceived downtime. The primary benefit of live migration is flexibility; running virtual machines are not tied to a single host machine. This allows actions like draining a specific host of virtual machines before decommissioning or upgrading the host. When paired with Windows Failover Clustering, live migration allows the creation of highly available and fault tolerant systems.
 
 The current architecture of AKS on Azure Stack HCI assumes that customers have live migration enabled in their Azure Stack HCI clustered environment. In which case, all Kubernetes worker node VMs will be created with live migration configured. These nodes can be moved around physical hosts in the event of a disruption to ensure the platform is highly available. 
 
@@ -61,4 +61,4 @@ In this scenario, an involuntary disruption event occurs to a physical machine h
 
 ## Conclusion
 
-AKS on Azure Stack HCI and failover clustering technologies are both designed to ensure that computing environments are highly available and fault tolerant. However, the application owner still has to configure deployments to use Kubernetes features, such as `Deployments`, `Affinity Mapping`, `RelicaSets`, to ensure that the pods are resilient in disruption scenarios. 
+AKS on Azure Stack HCI and failover clustering technologies are both designed to ensure that computing environments are highly available and fault tolerant. However, the application owner still has to configure deployments to use Kubernetes features, such as `Deployments`, `Affinity Mapping`, `RelicaSets`, to ensure that the pods are resilient in disruption scenarios.

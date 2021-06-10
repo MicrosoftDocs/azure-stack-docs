@@ -479,7 +479,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1908)
+- [Known issues](./known-issues.md?view=azs-1908)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -577,7 +577,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1907)
+- [Known issues](./known-issues.md?view=azs-1907)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -712,7 +712,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1906)
+- [Known issues](./known-issues.md?view=azs-1906)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -942,7 +942,7 @@ For information about security updates in this update of Azure Stack, see [Azure
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1905)
+- [Known issues](./known-issues.md?view=azs-1905)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -1035,7 +1035,7 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 - Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information about how to configure the severity level, see [Azure Stack datacenter integration - syslog forwarding](../azure-stack-integrate-security.md).
 
 <!--this applied to Bug 1473487 -->
-- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](/azure-stack/operator/diagnostic-log-collection).
+- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](../diagnostic-log-collection.md).
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
@@ -1052,7 +1052,7 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 - Improvements to idempotency of infrastructure backup action plan.
 
 <!--Bug/Task 3139609 -->
-- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, the [Get-AzureStackLog](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system) cmdlet no longer generates default logs for the OEM role. You must execute the [Invoke-AzureStackOnDemandLog](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal#invoke-azurestackondemandlog) cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
+- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, the [Get-AzureStackLog](../diagnostic-log-collection.md#send-logs-now-with-powershell) cmdlet no longer generates default logs for the OEM role. You must execute the [Invoke-AzureStackOnDemandLog](../diagnostic-log-collection.md#send-logs-now-with-powershell) cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](../diagnostic-log-collection.md#view-log-collection).
 
 - Azure Stack now monitors the federation data URL provided for datacenter integration with ADFS. This improves reliability during secret rotation of the customer ADFS instance or farm.
 
@@ -1124,7 +1124,7 @@ This update of Azure Stack does not include security updates to the underlying o
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1904)
+- [Known issues](./known-issues.md?view=azs-1904)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 

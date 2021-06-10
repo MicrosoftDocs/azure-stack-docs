@@ -25,7 +25,6 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Service | Feature | Azure (global) | Azure Stack Hub |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DNS | Multi-tenant DNS | Supported | Not yet supported |
-|  | DNS AAAA records | Supported | Not supported |
 |  | DNS zones per subscription | 100 (default)<br>Can be increased on request. | 100 |
 |  | DNS record sets per zone | 5000 (default)<br>Can be increased on request. | 5000 |
 |  | Name servers for zone delegation | Azure provides four name servers for each user (tenant) zone that is created. | Azure Stack Hub provides two name servers for each user (tenant) zone that is created. |
