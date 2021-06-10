@@ -15,8 +15,9 @@ ms.lastreviewed: 10/23/2019
 
 ---
 
-
 # Create highly available MySQL databases
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 As an Azure Stack Hub operator, you can configure server virtual machines (VMs) to host MySQL Server databases. After a MySQL cluster is successfully created and managed by Azure Stack Hub, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 

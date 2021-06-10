@@ -15,8 +15,9 @@ ms.lastreviewed: 10/25/2019
 
 ---
 
-
 # Use SQL databases on Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Use the SQL resource provider to offer SQL databases on [Azure Stack Hub](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
 

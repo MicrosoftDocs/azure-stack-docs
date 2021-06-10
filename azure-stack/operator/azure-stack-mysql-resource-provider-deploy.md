@@ -13,8 +13,9 @@ ms.lastreviewed: 12/07/2020
 
 ---
 
-
 # Deploy the MySQL resource provider on Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adapter version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adapter version >= 1.1.93.0).
 

@@ -80,7 +80,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- TBD.
+- SQL RP and MySQL RP are available to only the subscriptions that have been granted access. If you want to start using these RPs, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers can help you with the deployment or upgrade process.
 
 ### Fixes
 
