@@ -168,23 +168,13 @@ Once the feature updates are installed, you'll need to update the cluster functi
    
    You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet, and then starting the VMs again.
 
-4. **Re-enable VM live migration checks (if applicable).**
-   
-   If you're using Software Defined Networking with SET switches and disabled VM live migration checks as instructed to above, use the following cmdlet to re-enable VM Live verification checks:
-   
-   ```PowerShell
-   Get-ClusterResourceType -Cluster {clusterName} -Name "Virtual Machine" |
-   Set-ClusterParameter  SkipMigrationDestinationCheck -Value 0
-   ```
-
-5. **Verify that the upgraded cluster functions as expected.**
+4. **Verify that the upgraded cluster functions as expected.**
    
    Roles should fail-over correctly and if VM live migration is used on the cluster, VMs should successfully live migrate.
 
-6. **Validate the cluster.**
+5. **Validate the cluster.**
    
    Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
-
 
 ## Next steps
 
