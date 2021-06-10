@@ -108,7 +108,7 @@ To install a preview build using PowerShell, follow these steps. Before upgradin
     ```
    
    If any of the condition checks fail, resolve them before proceeding to step 4.
-
+   
 4.	Run the following cmdlet with no parameters on every server in the cluster:
     
     ```PowerShell
