@@ -257,7 +257,7 @@
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
       - name: Give apps access to resources
-        href: Azure-stack-create-service-principals.md
+        href: give-app-access-to-resources.md
       - name: Enable multi-tenancy
         href: enable-multitenancy.md
     - name: Data at rest encryption
