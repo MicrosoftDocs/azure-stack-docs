@@ -166,14 +166,6 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 |DependencyFilesLocalPath|Dependency files local path.|Optional|
 |KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
 
-### Known issues
-
-**Issue:**<br>
-The logs for secrets rotation aren't automatically collected if the secret rotation script fails when it's run.
-
-**Workaround:**<br>
-Use the Get-AzsDBAdapterLogs cmdlet to collect all the resource provider logs, including AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, saved in C:\Logs.
-
 ## Collect diagnostic logs
 
 ::: moniker range=">= azs-2008"
@@ -237,8 +229,15 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 $session | Remove-PSSession
 
 ```
-
 ::: moniker-end
+
+### Known limitations
+
+**Limitation**:<br>
+When the deployment, upgrade, or secret rotation script failed, some logs cannot be collected by the standard log collection mechanism.
+
+**Workaround**:<br>
+Besides using the standard log collection mechanism, go to the Logs folder in the extracted folder where the script locates, to find more logs.
 
 ## Configure Azure Diagnostics extension for MySQL resource provider
 

@@ -3,11 +3,10 @@ title: Integrate AD FS identity with your Azure Stack Hub datacenter
 description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
 author: BryanLa
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 06/10/2021
 ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-ms.custom: conteperfq4
 
 # Intent: As an Azure Stack operator, I want to integrate Azure Stack AD FS identity with my datacenter AD FS.
 # Keyword: azure stack integrate ad fs identity
@@ -17,7 +16,7 @@ ms.custom: conteperfq4
 
 # Integrate AD FS identity with your Azure Stack Hub datacenter
 
-You can deploy Azure Stack Hub using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity provider. You must make the choice before you deploy Azure Stack Hub. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack Hub AD FS with your datacenter AD FS.
+You can deploy Azure Stack Hub using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity provider. The choice must be made before you deploy Azure Stack Hub. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack Hub AD FS with your datacenter AD FS.
 
 > [!IMPORTANT]
 > You can't switch the identity provider without redeploying the entire Azure Stack Hub solution.
@@ -36,7 +35,7 @@ At the existing AD FS, a relying party trust must be configured. This step isn't
 
 The relying party trust configuration also requires you to configure the claim transformation rules that are provided by Microsoft.
 
-For the Graph configuration, a service account must be provided that has read permission in the existing Active Directory. This account is required as input for the automation to enable RBAC scenarios.
+For the Graph configuration, a service account must be provided that has "read" permission in the existing Active Directory. This account is required as input for the automation to enable RBAC scenarios.
 
 For the last step, a new owner is configured for the default provider subscription. This account has full access to all resources when signed in to the Azure Stack Hub administrator portal.
 
@@ -284,6 +283,11 @@ If you decide to manually run the commands, follow these steps:
 
 3. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
 
+   > [!IMPORTANT]
+   > Azure Stack Hub versions 2002 and later enforce TLS 1.2 on the ADFS endpoint. You must also ensure that TLS 1.2 is enforced on the customer owned ADFS host/farm. Otherwise, the following error will occur when running `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm:
+   >
+   > `Add-ADFSRelyingPartyTrust : The underlying connection was closed: An unexpected error occurred on a send.`
+
    **For AD FS 2016/2019**
 
    ```powershell  
@@ -307,13 +311,6 @@ If you decide to manually run the commands, follow these steps:
    ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
-
-   **For AD FS 2002 and greater**
-
-   > [!NOTE]
-   > When executing `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm, you must first ensure that TLS1.2 is enforced on the ADFS host/farm else the attempt will result in the following error message:
-
-`Add-ADFSRelyingPartyTrust : The underlying connection was closed: An unexpected error occurred on a send.`
 
 ## SPN creation
 
