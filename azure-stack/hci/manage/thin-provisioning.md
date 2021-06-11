@@ -52,7 +52,7 @@ New-Volume -FriendlyName <name> -Size <size> -ProvisioningType Thin
 Check the volume provisioning type:
 
 ```PowerShell
-Get-Volume -FriendlyName <name> | ft FriendlyName,ProvisioningType 
+Get-VirtualDisk -FriendlyName <name of virtual disk> | ft FriendlyName,ProvisioningType 
 ```
 
 ### Option 2: Set pool default provisioning type to thin
