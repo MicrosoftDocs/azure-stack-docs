@@ -66,10 +66,15 @@
       "redirect_document_id": false
     }, 
     { 
+      "source_path": "azure-stack/operator/azure-stack-create-service-principals.md", 
+      "redirect_url": "/azure-stack/operator/give-app-access-to-resources", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/operator/known-issues-vn.md", 
       "redirect_url": "/azure-stack/operator/known-issues", 
       "redirect_document_id": false
-    },       
+    },
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
