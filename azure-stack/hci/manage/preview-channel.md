@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/08/2021
+ms.date: 06/10/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -58,17 +58,17 @@ Now you're ready to install a preview build using either Windows Admin Center or
 
 ## Install a preview build using Windows Admin Center
 
-Once you've joined the preview channel, you can install a preview build using Windows Admin Center:
+Once you've joined the preview channel, you can install a preview build using Windows Admin Center. Before upgrading to Azure Stack HCI, version 21H2 Preview, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to Azure Stack HCI, version 20H2 via Windows Update.
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. If you've successfully joined the preview channel, feature updates will be displayed.
 
    :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
 
-2. Select **Install**. A readiness check will be displayed.
+2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before proceeding.
 
    :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
 
-3. When the readiness check is complete, you're ready to install the updates. Review the updates listed, and select **Install** to start the update.
+3. When the readiness check is complete, you're ready to install the updates. Unless you want the ability to roll back the updates, check the optional **Update the cluster functional level to enable new features** checkbox; otherwise, you can update the cluster functional level post-installation using PowerShell. Review the updates listed, and select **Install** to start the update.
 
    :::image type="content" source="media/preview-channel/install-updates.png" alt-text="Review the updates and install them" lightbox="media/preview-channel/install-updates.png":::
 
@@ -76,9 +76,16 @@ Once you've joined the preview channel, you can install a preview build using Wi
 
    :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
 
+   > [!NOTE]
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser.
+
+5. When the feature updates are complete, check if any further updates are available and install them.
+
+You're now ready to perform [post installation steps](#post-installation-steps).
+
 ## Install a preview build using PowerShell
 
-To install a preview build using PowerShell:
+To install a preview build using PowerShell, follow these steps. Before upgrading to Azure Stack HCI, version 21H2 Preview, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to Azure Stack HCI, version 20H2 via Windows Update, or the `Set-PreviewChannel` cmdlet won't work.
 
 1.	Run the following cmdlets on every server in the cluster:
 
@@ -94,14 +101,14 @@ To install a preview build using PowerShell:
     Test-CauSetup -ClusterName Cluster1
     ```
 
-3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster:
+3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster. If any of the condition checks fail, resolve them before proceeding to step 4.
 
     ```PowerShell
     Test-Cluster
     ```
 
 4.	Run the following cmdlet with no parameters on every server in the cluster:
-    
+
     ```PowerShell
     Set-PreviewChannel
     ```
@@ -124,9 +131,48 @@ To install a preview build using PowerShell:
 
 7. Check for any further updates and install them. See [Install updates with PowerShell](update-cluster.md#install-updates-with-powershell).
 
+You're now ready to perform [post installation steps](#post-installation-steps).
+
 ## Post installation steps
 
-Once the feature updates are installed, you may want to update the cluster functional level, update the storage pool version, or optionally upgrade VM configuration levels.
+Once the feature updates are installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
+
+1. **Update the cluster functional level.**
+
+   We recommend updating the cluster functional level as soon as possible. If you installed the feature updates with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox, you can skip this step.
+   
+   Run the following cmdlet on any server in the cluster:
+   
+   ```PowerShell
+   Update-ClusterFunctionalLevel
+   ```
+   
+   You'll see a warning that you cannot undo this operation. Confirm **Y** that you want to continue.
+   
+   > [!WARNING]
+   > After you update the cluster functional level, you can't roll back to the previous operating system version.
+
+2. **Update the storage pool.**
+   
+   After the cluster functional level has been updated, use the following cmdlet to update the storage pool. Run `Get-StoragePool` to find the FriendlyName for the storage pool representing your cluster. In this example, the FriendlyName is **S2D on hci-cluster1**:
+   
+   ```PowerShell
+   Update-StoragePool -FriendlyName "S2D on hci-cluster1"
+   ```
+   
+   You'll be asked to confirm the action. At this point, new cmdlets will be fully operational on any server in the cluster.
+
+3. **Upgrade VM configuration levels (optional).**
+   
+   You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet, and then starting the VMs again.
+
+4. **Verify that the upgraded cluster functions as expected.**
+   
+   Roles should fail-over correctly and if VM live migration is used on the cluster, VMs should successfully live migrate.
+
+5. **Validate the cluster.**
+   
+   Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
 ## Next steps
 
