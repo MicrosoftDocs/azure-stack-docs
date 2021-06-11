@@ -119,14 +119,6 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 |KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
 |     |     |     |
 
-### Known issues
-
-**Issue**:<br>
-Secrets rotation logs. The logs for secrets rotation aren't automatically collected if the secret rotation custom script fails when it's run.
-
-**Workaround**:<br>
-Use the Get-AzsDBAdapterLogs cmdlet to collect all resource provider logs, including AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, saved in C:\Logs.
-
 ## Update the VM operating system
 
 Use one of the following methods to update the VM operating system.
@@ -250,8 +242,15 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 # Close the session.
 $session | Remove-PSSession
 ```
-
 ::: moniker-end
+
+### Known limitations
+
+**Limitation**:<br>
+When the deployment, upgrade, or secret rotation script failed, some logs cannot be collected by the standard log collection mechanism.
+
+**Workaround**:<br>
+Besides using the standard log collection mechanism, go to the Logs folder in the extracted folder where the script locates, to find more logs.
 
 ## Configure Azure Diagnostics extension for SQL resource provider
 Azure Diagnostics extension is installed on the SQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the SQL resource provider operational event logs and IIS logs for troubleshooting and auditing purpose.

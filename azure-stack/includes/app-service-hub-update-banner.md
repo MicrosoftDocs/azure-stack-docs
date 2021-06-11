@@ -3,7 +3,7 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 06/10/2021
 ms.reviewer: bryanla
 ms.lastreviewed: 10/28/2020
 ---
@@ -11,11 +11,8 @@ ms.lastreviewed: 10/28/2020
 > [!IMPORTANT]
 > Update Azure Stack Hub to a supported version (or deploy the latest Azure Stack Development Kit) if necessary, before deploying or updating the App Service resource provider (RP). Be sure to read the RP release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
-> [!NOTE]
-> The Azure App Service on Azure Stack Hub 2020.Q3 Installer and Helper Scripts are temporarily unavailable.  We are working to make the download available as soon as possible.
-
 > | Supported Azure Stack Hub version | App Service RP version |
 > |-----|---|
-> | 2008 | 2020.Q3 Installer ([release notes](../operator/app-service-release-notes-2020-Q3.md)) |
+> | 2008 | 2020.Q3 [Installer](https://aka.ms/appsvcupdateq3installer) ([release notes](../operator/app-service-release-notes-2020-Q3.md)) |
 > | 2005 | 2020.Q2 [Installer](https://aka.ms/appsvcupdateq2installer) ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
 > | 2002 | 2020.Q2 [Installer](https://aka.ms/appsvcupdateq2installer) ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
