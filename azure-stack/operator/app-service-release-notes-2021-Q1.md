@@ -37,7 +37,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 2021 Q1:
 
 - Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
 
-- Back up the App Service and Master Databases:
+- Back up the App Service and SQL Server Master Databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
@@ -81,21 +81,21 @@ Azure App Service on Azure Stack Update 2021 Q1 includes the following improveme
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
-- MMC based management console replaced with WPF application for improved accessibility
+- MMC-based management console replaced with WPF application for improved accessibility
 
-- SSL Cipher Suites synchronized to match those deployed in Azure.
+- TLS Cipher Suites updated to maintain consistency with Azure Service.  From this release onwards, suites will be updated with each update
 
 ## Issues fixed in this release
 
 - Custom Shared SKU tenant usage not showing in tenant usage reports
 
-- Unable to select subscription and location when using Service Principal to deploy/upgrade.
+- Unable to select subscription and location when using Service Principal to deploy/upgrade
 
 - Log scavenger on infrastructure roles
 
 - Added step to wait for management
 
-- When generated storage account names exceed 24 characters installation fails as storage account names cannot exceed 24 characters
+- If generated storage account names exceed 24 characters, installation fails as storage account names may not exceed 24 characters
 
 - Remote git push error: Invalid Version: transformer
 
