@@ -14,6 +14,14 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.28.87
+        href: hotfix-1-2102-28-87.md
+      - name: Hotfix 1.2008.37.139
+        href: hotfix-1-2008-37-139.md
+      - name: Hotfix 1.2005.41.124
+        href: hotfix-1-2005-41-124.md     
+      - name: Hotfix 1.2002.69.179
+        href: hotfix-1-2002-69-179.md
       - name: Hotfix 1.2008.33.131
         href: hotfix-1-2008-33-131.md      
       - name: Hotfix 1.2005.35.112
@@ -107,7 +115,7 @@
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
-      - name: Choose an identity provider 
+      - name: Identity providers and ADFS integration
         href: azure-stack-integrate-identity.md
       - name: Create registration role
         href: azure-stack-registration-role.md
@@ -257,7 +265,7 @@
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
       - name: Give apps access to resources
-        href: Azure-stack-create-service-principals.md
+        href: give-app-access-to-resources.md
       - name: Enable multi-tenancy
         href: enable-multitenancy.md
     - name: Data at rest encryption
