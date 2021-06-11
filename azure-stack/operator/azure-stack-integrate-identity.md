@@ -284,7 +284,7 @@ If you decide to manually run the commands, follow these steps:
 3. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
 
    > [!IMPORTANT]
-   > Azure Stack Hub versions 2002 and later enforce TLS 1.2 on the ADFS endpoint. You must also ensure that TLS 1.2 is enforced on the customer owned ADFS host/farm. Otherwise, the following error will occur when running `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm:
+   > For customers running Azure Stack Hub versions 2002 and later, TLS 1.2 is enforced on the Azure Stack Hub ADFS endpoint. As such, [TLS 1.2 must also be enabled](/mem/configmgr/core/plan-design/security/enable-tls-1-2-client) on the customer ADFS servers. Otherwise, the following error will occur when running `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm:
    >
    > `Add-ADFSRelyingPartyTrust : The underlying connection was closed: An unexpected error occurred on a send.`
 
