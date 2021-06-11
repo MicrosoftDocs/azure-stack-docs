@@ -4,7 +4,7 @@ description: Learn how to update Azure App Service on Azure Stack Hub.
 author: BryanLa
 
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 06/10/2021
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2020
@@ -22,7 +22,7 @@ zone_pivot_groups: state-connected-disconnected
 In this article, you learn how to upgrade the [Azure App Service resource provider](azure-stack-app-service-overview.md) deployed in an internet-connected Azure Stack Hub environment.
 
 > [!IMPORTANT]
-> Prior to running the upgrade, you must complete [deployment of Azure App Service on Azure Stack Hub](azure-stack-app-service-deploy.md). 
+> Prior to running the upgrade, you must complete [deployment of Azure App Service on Azure Stack Hub](azure-stack-app-service-deploy.md).
 
 ## Run the Azure App Service resource provider installer
 
@@ -101,11 +101,7 @@ In this article, you learn how to upgrade the [Azure App Service resource provid
 
 To upgrade the App Service resource provider in an Azure Stack Hub environment, you must complete these tasks:
 
-1. Download the Azure App Service Installer.
-	
-	> [!NOTE]
-	> The Azure App Service Installer is temporarily unavailable. We are working to make the download available as soon as possible.
-	
+1. Download the [Azure App Service Installer](https://aka.ms/appsvcupdateQ3installer).
 2. Create an offline upgrade package.
 3. Run the App Service installer (appservice.exe) and complete the upgrade.
 
@@ -169,7 +165,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-   
+
    1. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
 
       ![Azure App Service Installation Detected][3]

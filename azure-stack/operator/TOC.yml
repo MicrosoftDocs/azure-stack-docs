@@ -115,7 +115,7 @@
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
-      - name: Choose an identity provider 
+      - name: Identity providers and ADFS integration
         href: azure-stack-integrate-identity.md
       - name: Create registration role
         href: azure-stack-registration-role.md
