@@ -1,9 +1,9 @@
 ---
-author: BryanLa
-ms.author: bryanla
+author: apwestgarth
+ms.author: anwestg
 ms.service: azure-stack
 ms.topic: include
-ms.date: 03/01/2021
+ms.date: 06/11/2021
 ms.reviewer: bryanla
 ms.lastreviewed: 10/28/2020
 ---
