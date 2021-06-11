@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 05/20/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -33,6 +33,7 @@ Before you begin, make sure you:
 - Have read the [Azure Stack HCI system requirements](../concepts/system-requirements.md).
 - Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
+- Ensure all servers are in the correct time zone.
 - Have an account that’s a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 - For stretched clusters, set up your two sites beforehand in Active Directory.
@@ -107,21 +108,23 @@ The next step is to install required Windows roles and features on every server 
 - File Server
 - FS-Data-Deduplication module
 - Hyper-V
+- Hyper-V PowerShell
+- RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server:
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
-To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment.
+To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
 
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
@@ -302,7 +305,10 @@ Get-ClusterNetwork
 
 ### Step 3.1: Prepare drives
 
-Before you enable Storage Spaces Direct, ensure your drives are empty. Run the following script to remove any old partitions or other data.
+Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions or other data.
+
+> [!NOTE]
+> Exclude any removable drives attached to a server node from the script. If you are running this script locally from a server node for example, you don't want to wipe the removable drive you might be using to deploy the cluster.
 
 ```powershell
 # Fill in these variables with your values

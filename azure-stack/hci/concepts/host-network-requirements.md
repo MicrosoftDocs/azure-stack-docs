@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/25/2020
+ms.date: 05/25/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -24,7 +24,7 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 ## Selecting a network adapter
 
-For Azure Stack HCI, we require choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality issues.
+Azure Stack HCI requires choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality issues. These adapters also meet the networking requirements established for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#networking).
 
 You can identify an adapter that has Standard or Premium AQ by reviewing the [Windows Server Catalog](https://www.windowsservercatalog.com/) entry for the adapter and the applicable operating system version. Below is an example of the notation for Premium AQ:
 
@@ -85,9 +85,6 @@ Not all network adapters from vendors support RDMA. The following table lists th
 |Marvell (Qlogic/Cavium)|Yes|Yes|
 |Nvidia (Mellanox)|No|Yes|
 
-> [!NOTE]
-> Not all adapters from the vendors support RDMA. Please verify RDMA support with your specific network card vendor.
-
 For more information on deploying RDMA, download the Word doc from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
 #### Internet Wide Area RDMA Protocol (iWARP)
@@ -104,18 +101,18 @@ We recommend that you use iWARP if:
 
 #### RDMA over Converged Ethernet (RoCE)
 
-RoCE uses User Datagram Protocol (UDP), and requires Data Center Bridging PFC and ETS to provide reliability.
+RoCE uses User Datagram Protocol (UDP), and requires Data Center Bridging (DCB) PFC and ETS to provide reliability.
 
 We recommend that you use RoCE if:
 
 - You already have deployments with RoCE in your data center
-- You are knowledgeable with your physical network requirements
+- You are comfortable managing the DCB network requirements
 
 ### Guest RDMA
 
 Guest RDMA enables SMB workloads for VMs to gain the same benefits of using RDMA on hosts.
 
-**Applicable traffic types**: compute
+**Applicable traffic types**: Guest-based storage
 
 **Certifications required**: Premium
 
@@ -161,6 +158,9 @@ See the following table for an example of the interface descriptions deviating o
 |NIC2|Network Adapter #2|25 Gbps|
 |NIC3|Network Adapter #3|25 Gbps|
 |NIC4|Network Adapter #4|25 Gbps|
+
+> [!NOTE]
+> SET supports only Switch Independent configuration using either Dynamic or Hyper-V Port load-balancing algorithms.  For best performance, Hyper-V Port is recommended for use on all NICs that operate at or above 10Gbps.
 
 ### RDMA traffic considerations
 
@@ -268,31 +268,86 @@ Here is the example bandwidth allocation table:
 
 **- 50% is an example bandwidth reservation for this example
 
-## Stretched cluster considerations
+## Stretched clusters
 
 Stretched clusters provide disaster recovery that spans multiple data centers. In its simplest form, a stretched Azure Stack HCI cluster network looks like this:
 
 :::image type="content" source="media/plan-networking/stretched-cluster.png" alt-text="Stretched cluster" lightbox="media/plan-networking/stretched-cluster.png":::
 
+### Stretched cluster requirements
+
 Stretched clusters have the following requirements and characteristics:
 
 - RDMA is limited to a single site, and is not supported across different sites or subnets.
-- Servers in the same site must reside in the same rack and Layer-2 boundary.
-- Communication between sites cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
 
-- If a site uses RDMA for its storage adapters, these adapters must be on a separate subnet and VLAN that cannot route between sites. This prevents Storage Replica from using RDMA across sites.
+- Servers in the same site must reside in the same rack and Layer-2 boundary.
+
+- Communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies are not supported.
+
+- Have enough bandwidth to run the workloads at the other site. In the event of a failover, the alternate site will need to run all traffic. It is recommended to provision sites at 50% of their available network capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
+
+- Replication (north/south) between sites can use the same physical NICs as the local storage (east/west which may use RDMA). If using the same physical adapters, these adapters must be teamed with SET, and must have additional virtual NICs provisioned between sites (RDMA may be enabled on the local virtual NICs; disabled on the routable virtual NICs).
+
 - Adapters used for communication between sites:
 
-    - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
-    - Must be on their own subnet and VLAN that can route between sites.
-    - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
-    - Must meet any additional requirements for Storage Replica.
--	In the event of a failover to another site, you must ensure that enough bandwidth is available to run the workloads at the other site. A safe option is to provision sites at 50% of their available capacity. This is not a hard requirement if you are able to tolerate lower performance during a failover.
+  - Can be physical or virtual (host vNIC). If virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
+
+  - Must be on their own subnet and VLAN that can route between sites.
+
+  - RDMA must be disabled using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces using the `Set-SRNetworkConstraint` cmdlet.
+
+  - Must meet any additional requirements for Storage Replica.
+
+### Stretched cluster example
+
+The following example illustrates a stretched cluster configuration. To ensure that a specific virtual NIC is mapped to a specific physical adapter, use the [Set-VMNetworkAdapterTeammapping](/powershell/module/hyper-v/set-vmnetworkadapterteammapping) cmdlet.
+
+:::image type="content" source="media/plan-networking/stretched-cluster-example.png" alt-text="Stretched cluster storage example" lightbox="media/plan-networking/stretched-cluster-example.png":::
+
+The following shows the details for the example stretched cluster configuration.
+
+> [!NOTE]
+>Your exact configuration including NIC names, IP addresses, and VLANs, may be different than what is shown. This is used only as a reference configuration that can be adapted to your environment within the constrains defined in the Requirements section above.
+
+#### SiteA – Local replication, RDMA enabled, no default gateway
+
+|Node Name|vNIC Name|Physical NIC (mapped)|VLAN|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeA1|vSMB01|pNIC01|711|192.168.1.1/24|
+|NodeA2|vSMB01|pNIC01|711|192.168.1.2/24|
+|NodeA1|vSMB02|pNIC02|712|192.168.2.1/24|
+|NodeA2|vSMB02|pNIC02|712|192.168.2.2/24|
+
+#### SiteB – Local Replication, RDMA Enabled, No Default Gateway
+
+|Node Name|vNIC Name|Physical NIC (mapped)|VLAN|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeB1|vSMB01|pNIC01|711|192.168.1.1/24|
+|NodeB2|vSMB01|pNIC01|711|192.168.1.2/24|
+|NodeB1|vSMB02|pNIC02|712|192.168.2.1/24|
+|NodeB2|vSMB02|pNIC02|712|192.168.2.2/24|
+
+#### SiteA – Stretched replication, RDMA Disabled, Routable Between Sites
+
+|Node Name|vNIC Name|Physical NIC (mapped)|IP and Subnet|
+|-----|-----|-----|-----|
+|NodeA1|Stretch1|pNIC01|173.0.0.1/8|
+|NodeA2|Stretch1|pNIC01|173.0.0.2/8|
+|NodeA1|Stretch2|pNIC02|174.0.0.1/8|
+|NodeA2|Stretch2|pNIC02|174.0.0.2/8|
+
+#### SiteB – Stretched replication, RDMA disabled, routable between sites
+
+|Node Name|vNIC Name|Physical NIC (mapped)|IP and Subnet|
+|-----|-----|-----|-----|-----|
+|NodeB1|Stretch1|pNIC01|173.0.0.3/8|
+|NodeB2|Stretch1|pNIC01|173.0.0.4/8|
+|NodeB1|Stretch2|pNIC02|174.0.0.3/8|
+|NodeB2|Stretch2|pNIC02|174.0.0.4/8|
 
 ## Next steps
 
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
 - Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09)
-- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming)
 - For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md)
 - For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md)

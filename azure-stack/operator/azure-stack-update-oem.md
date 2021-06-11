@@ -39,7 +39,7 @@ This section contains OEM contact information and links to OEM Azure Stack Hub r
 |  | EMEA & US | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
 | HPE | All | [HPE ProLiant for Microsoft Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
-| Wortmann |  | [OEM/firmware package](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
+| Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
 
 ## Apply OEM updates
 
@@ -65,8 +65,9 @@ For more information on the privileged endpoint in Azure Stack Hub, see [Using t
 
     ```powershell  
     $cred = Get-Credential
-    $session = New-PSSession -ComputerName <IP Address of ERCS>
-    -ConfigurationName PrivilegedEndpoint -Credential $cred
+    $session = New-PSSession -ComputerName <IP Address of ERCS> `
+    -ConfigurationName PrivilegedEndpoint -Credential $cred `
+    -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     ```
 
 2. Configure the hardware vendor VM using the **Set-OEMExternalVM** cmdlet. The cmdlet validates the IP address and credentials for **-VMType** `ProxyVM`. For **-VMType** `HardwareManager`, the cmdlet won't validate the input. The **-Credential** parameter provided to **Set-OEMExternalVM** is one that will be clearly documented by the hardware vendor documentation.  It is *NOT* the CloudAdmin credential used with the privileged endpoint, or any other existing Azure Stack Hub credential.

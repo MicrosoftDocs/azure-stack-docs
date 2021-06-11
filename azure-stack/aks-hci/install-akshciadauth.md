@@ -9,10 +9,10 @@ ms.author: jeguan
 
 # Install-AksHciAdAuth
 
-## SYNOPSIS
+## Synopsis
 Install Active Directory authentication.
 
-## SYNTAX
+## Syntax
 
 ```powershell
 Install-AksHciAdAuth -name <String>
@@ -54,17 +54,30 @@ Install-AksHciAdAuth -name <String>
                     
 ```
 
-## DESCRIPTION
+## Description
 Install Active Directory authentication.
 
-## EXAMPLES
+## Examples
 
 ### Example
+
 ```powershell
 PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKeytab <.\previous.keytab> -SPN <service/principal@CONTOSO.COM> -adminUser CONTOSO\Bob
 ```
 
-## PARAMETERS
+### If a cluster host is domain-joined
+
+```powershell
+PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
+```
+
+### If a cluster host is not domain-joined
+
+```powershell
+PS C:\> Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8
+```
+
+## Parameters
 
 ### -name
 The alphanumeric name of your Kubernetes cluster.
@@ -111,7 +124,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SPN
+### - Service Principal Name (SPN)
 The name of the service principal associated with the API server AD account.
 
 ```yaml

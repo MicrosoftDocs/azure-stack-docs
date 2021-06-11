@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 12/2/2020
 ms.author: sethm
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Ruby in Azure Stack so I can benefit from the use of profiles.
@@ -71,7 +71,7 @@ The Azure Resource Manager Ruby SDK is in preview and will likely have breaking 
 
 ## Use the azure_sdk gem
 
-The **azure_sdk** gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack Hub.
+The **azure_sdk** gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack Hub.
 
 You can install the azure_sdk rollup gem with the following command:  
 
@@ -140,7 +140,7 @@ The **Azure_sdk** rollup gem has the following 3 profiles:
 
 - **V2019_03_01_Hybrid**: Profile built for Azure Stack Hub. Use this profile for all the latest versions of services available in Azure Stack Hub version 1904 or later.
 - **V2017_03_09**: Profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub version 1808 or earlier.
-- **Latest**: Profile consists of the latest versions of all services. Use the latest versions of all the services.
+- **Latest**: Profile consists of the latest versions of all services. Use the latest versions of all the services.
 
 For more info on Azure Stack Hub and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md#summary-of-api-profiles).
 

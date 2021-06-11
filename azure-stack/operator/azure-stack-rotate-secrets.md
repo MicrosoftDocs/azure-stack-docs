@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/17/2021
 ms.reviewer: fiseraci
 ms.author: bryanla
 ms.lastreviewed: 01/19/2021
@@ -45,7 +45,7 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 
 ## Prerequisites
 
-1. It's highly recommended that you first update your Azure Stack Hub instance to the [latest version](release-notes.md).
+1. It's highly recommended that you are running a supported version of Azure Stack Hub, and make sure to apply the latest available hotfix for the Azure Stack Hub version your instance is running. For example, if you are running 2008, make sure you have installed the latest hotfix available for 2008.
 
     ::: moniker range="<azs-1811"  
     >[!IMPORTANT]
@@ -179,13 +179,13 @@ Prior to rotation of external secrets:
 
 Complete the following steps to rotate external secrets:
 
-1. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts. If you're using the ASDK, this VM is named AzS-ERCS01. Update the `<placeholder>` values before running:
+1. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts. 
 
     ```powershell
     # Create a PEP Session
     winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
     $PEPCreds = Get-Credential
-    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     # Run Secret Rotation
     $CertPassword = ConvertTo-SecureString "<Cert_Password>" -AsPlainText -Force
@@ -208,7 +208,7 @@ Complete the following steps to rotate external secrets:
         - `-PathAccessCredential`: The PSCredential object for credentials to the share.
         - `-CertificatePassword`: A secure string of the password used for all of the pfx certificate files created.
 
-2. External secret rotation takes approximately one hour. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `DONE`. Remove your certificates from the share created in the Preparation section and store them in their secure backup location.
+2. External secret rotation takes approximately one hour. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `Action plan finished with status: 'Completed'`. Remove your certificates from the share created in the Preparation section and store them in their secure backup location.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and re-run `Start-SecretRotation` with the `-ReRun` parameter.
@@ -218,6 +218,13 @@ Complete the following steps to rotate external secrets:
     >```  
     >
     >Contact support if you experience repeated secret rotation failures.
+
+3. Optionally, to confirm that all external certificates were rotated, run the [**Test-AzureStack** validation tool](azure-stack-diagnostic-test.md) using the following script:
+
+    ```powershell
+    Test-AzureStack -Include AzsExternalCertificates -DetailedResults -debug
+    ```
+
 ::: moniker-end
 
 ## Rotate internal secrets
@@ -235,7 +242,7 @@ Complete the following steps to rotate internal secrets:
     # Create a PEP Session
     winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
     $PEPCreds = Get-Credential
-    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     # Run Secret Rotation
     Invoke-Command -Session $PEPSession -ScriptBlock {
@@ -250,7 +257,7 @@ Complete the following steps to rotate internal secrets:
     ::: moniker-end
 
 
-2. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `DONE`.
+2. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `Action plan finished with status: 'Completed'`.
 
     > [!Note]
     > If secret rotation fails, follow the instructions in the error message and rerun `Start-SecretRotation` with the  `-Internal` and `-ReRun` parameters.  
@@ -289,7 +296,7 @@ The baseboard management controller monitors the physical state of your servers.
     $NewBmcPwd = Read-Host -Prompt "Enter New BMC password" -AsSecureString
     $NewBmcUser = Read-Host -Prompt "Enter New BMC user name"
 
-    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
         # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
@@ -309,7 +316,7 @@ The baseboard management controller monitors the physical state of your servers.
     $NewBmcPwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force
     $NewBmcUser = "<New BMC User name>"
 
-    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+    $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     Invoke-Command -Session $PEPSession -ScriptBlock {
         # Parameter BmcPassword is mandatory, while the BmcUser parameter is optional.
@@ -374,7 +381,7 @@ This command rotates all of the infrastructure secrets exposed to the Azure Stac
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
 $PEPCreds = Get-Credential
-$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
+$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 # Create Credentials for the fileshare
 $CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
@@ -401,8 +408,7 @@ This command rotates the TLS certificates used for Azure Stack Hub's external ne
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
 $PEPCreds = Get-Credential
-$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
-
+$PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 # Create Credentials for the fileshare
 $CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
 $CertShareCreds = Get-Credential

@@ -4,7 +4,7 @@ description: Learn how to delegate tasks like creating offers and signing up use
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 06/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -66,7 +66,7 @@ To use this walkthrough, you need two Azure AD accounts in addition to your Azur
 | User |User |
 
  > [!NOTE]
- > In the case of a CSP-reseller, creating this delegated provider requires that these users are in the tenant directory (the user Azure AD). The Azure Stack Hub operator must [first onboard](azure-stack-enable-multitenancy.md) that tenant Azure AD, and then set up usage and billing by following [these steps](azure-stack-csp-howto-register-tenants.md).
+ > In the case of a CSP-reseller, creating this delegated provider requires that these users are in the tenant directory (the user Azure AD). The Azure Stack Hub operator must [first onboard](enable-multitenancy.md) that tenant Azure AD, and then set up usage and billing by following [these steps](azure-stack-csp-howto-register-tenants.md).
 
 ### Identify the delegated provider
 

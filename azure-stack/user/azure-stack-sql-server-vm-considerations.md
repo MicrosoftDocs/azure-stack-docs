@@ -24,7 +24,7 @@ When creating SQL Server images, [consider provisioning your VMs in the Azure St
 > [!NOTE]  
 > While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack Hub with the following differences: SSD isn't available for the operating system disk and there are minor differences in storage configuration.
 
-In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL). For Windows Server, the default license model is pay-as-you-go (PAYG). For detailed information of Windows Server license model in VM, refer the article [Windows Server in Azure Stack Hub Marketplace FAQ](../operator/azure-stack-windows-server-faq.md#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server).  
+In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL). For Windows Server, the default license model is pay-as-you-go (PAYG). For detailed information of Windows Server license model in VM, refer the article [Windows Server in Azure Stack Hub Marketplace FAQ](/azure-stack/operator/azure-stack-windows-server-faq#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server).  
 
 Getting the *best* performance for SQL Server on Azure Stack Hub VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
@@ -149,7 +149,7 @@ Some deployments may achieve additional performance benefits using more advanced
     ![SQL Server Backup](./media/sql-server-vm-considerations/image3.png)
 
     > [!NOTE]  
-    > The Shared Access Signature is the SAS token from the Azure Stack Hub portal, without the leading ‘?' in the string. If you use the copy function from the portal, you need to delete the leading ‘?' for the token to work within SQL Server.
+    > The Shared Access Signature is the SAS token from the Azure Stack Hub portal, without the leading '?' in the string. If you use the copy function from the portal, you need to delete the leading '?' for the token to work within SQL Server.
 
     Once you have the Backup Destination set up and configured in SQL Server, you can then back up to the Azure Stack Hub blob storage.
 

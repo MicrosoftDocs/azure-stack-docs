@@ -32,7 +32,7 @@ This architecture builds on the one shown in [N-tier application with SQL Server
 
 -   **Azure Traffic Manager**. [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) routes incoming requests to one of the regions. During normal operations, it routes requests to the primary region. If that region becomes unavailable, Traffic Manager fails over to the secondary region. For more information, see the section [Traffic Manager configuration](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration).
 
--   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. [Link the resource groups](/azure/resource-group-link-resources), so that you can run a query to list all the resources for the application.
+-   **Resource groups**. Create separate [resource groups](/azure/azure-resource-manager/resource-group-overview) for the primary region, the secondary region. This gives you the flexibility to manage each region as a single collection of resources. For example, you could redeploy one region, without taking down the other one. Link the resource groups, so that you can run a query to list all the resources for the application.
 
 -   **Virtual networks**. Create a separate virtual network for each region. Make sure the address spaces do not overlap.
 
@@ -76,14 +76,14 @@ Note that Traffic Manager automatically fails back by default. To prevent this, 
 
 The following [Azure CLI](/cli/azure/) command updates the priority:
 
-```cli  
+```azurecli  
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
     --name <endpoint-name> --type externalEndpoints --priority 3
 ```
 
 Another approach is to temporarily disable the endpoint until you are ready to fail back:
 
-```cli
+```azurecli
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
     --name <endpoint-name> --type externalEndpoints --endpoint-status Disabled
 ```
@@ -110,7 +110,7 @@ To configure the availability group:
 
 -   For each virtual network, add the IP addresses of the domain controllers (from both regions) to the DNS server list. You can use the following CLI command. For more information, see [Change DNS servers](/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
-    ```cli
+    ```azurecli
     az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
     ```
 

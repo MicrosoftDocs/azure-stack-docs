@@ -6,6 +6,8 @@
     items:
     - name: What is the Modular Data Center?
       href: mdc-overview.md
+    - name: OEM release notes
+      href: oem-release-notes-mdc.md
   - name: Quickstarts
     items:
     - name: Use the administrator portal
@@ -38,6 +40,8 @@
       href: ../operator/azure-stack-connected-deployment.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Disconnected deployment
       href: ../operator/azure-stack-disconnected-deployment.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+    - name: Publish endpoints
+      href: operator/azure-stack-integrate-endpoints-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Security overview 
       href: ../operator/azure-stack-security-foundations.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Identity
@@ -175,7 +179,7 @@
         - name: Use an app identity to access resources
           href: ../operator/azure-stack-create-service-principals.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Enable multi-tenancy
-          href: ../operator/azure-stack-enable-multitenancy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/enable-multitenancy.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: How-to guides
     items:
     - name: Extended storage health checks
@@ -277,7 +281,7 @@
       - name: Offer a virtual machine scale set
         href: ../operator/azure-stack-compute-add-scalesets.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Windows Server in Marketplace FAQ 
-        href: operator/azure-stack-windows-server-faq-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: /azure-stack/mdc/operator/azure-stack-windows-server-faq-tzl?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Offer Linux virtual machines
         href: ../operator/azure-stack-linux.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Add a Red Hat virtual machine
@@ -289,11 +293,11 @@
       - name: Offer a container registry
         items:
         - name: Add a container registry
-          href: operator/container-registry-template-install-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ./mdc-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Update the container registry
-          href: operator/container-registry-template-update-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ./mdc-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
         - name: Rotate container registry secrets
-          href: operator/container-registry-template-rotate-secrets-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ./mdc-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fmdc%2ftoc.json
       - name: Offer Commvault marketplace item
         href: operator/azure-stack-commvault-offer-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Offer services

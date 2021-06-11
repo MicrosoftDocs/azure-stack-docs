@@ -1,22 +1,22 @@
----
+﻿---
 title: Azure Stack Hub Ruggedized OEM Release Notes
-description: Azure Stack Hub Ruggedized OEM Release Notes
+description: OEM Release Notes for Azure Stack Hub Ruggedized. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/08/2020
+ms.date: 05/18/2021
 ms.author: sethm
 ms.reviewer: danlewi
-ms.lastreviewed: 12/08/2020
+ms.lastreviewed: 05/18/2021
 
 ---
 
-# Azure Stack Hub ruggedized 2008 OEM release notes
+# Azure Stack Hub Ruggedized 2102 OEM release notes
 
-This article contains release and version information for Azure Stack Hub ruggedized.
+This article contains release and version information for Azure Stack Hub Ruggedized.
 
 ## Overview
 
-This document describes the contents of Azure Stack Hub ruggedized first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub. Below are the download links:
+This document describes the contents of Azure Stack Hub Ruggedized first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub Ruggedized. Below are the download links:
 
 * https://aka.ms/azshwpackage
 * https://aka.ms/azshwmanifest
@@ -26,95 +26,181 @@ This document describes the contents of Azure Stack Hub ruggedized first party u
 | Release | Date       | Description of changes         |
 |---------|------------|--------------------------------|
 | 2008    | 10/13/2020 | 2.2.2010.5 OEM package updates |
+| 2102    | 04/07/2021 | 2.2.2102.16 OEM package updates|
 
-## Firmware
+## Azure Stack Hub node
 
-### Bios
-
-| Release version | Firmware version | Changes |
-|-----------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
-| 2008            | 2.8.2            | Fixed an industry-issue seen on BIOS versions 2.6.4 through 2.8.1 where the system may reset during power-on at the time "Configuring Memory" is displayed on the boot screen. The issue is applicable to DDR4 and NVDIMM-N memory configurations.<br><br>Enhancement to address the security vulnerabilities (Common Vulnerabilities and Exposures-CVE) such as CVE-2020-0545, CVE-2020-0548, and CVE-2020-0549. |   |   |
-| 2005            | 2.7.7            |                                                                                                                                                                                                                                                                                                                                                                                                               |   |   |
-|                 |                  |                                                                                                                                                                                                                                                                                                                                                                                                               |   |   |
-
-### IDRAC
-
-| Release version | Firmware version | Changes |
-|-----------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
-| 2008            | 4.22.0.0         | 167411: Fixed an issue that caused force system restart while updating firmware through Redfish API.<br><br>155376: Fixed an issue that caused iDRAC to reboot while collecting SupportAssist logs.<br><br>162778: Fixed a low memory condition on iDRAC due to virtual console service. |   |   |
-| 2005            | 4.10.10.10       |                                                                                                                                                                                                                                                                                  |   |   |
-|                 |                  |                                                                                                                                                                                                                                                                                  |   |   |
-
-### NIC-Azure Stack nodes
-
-| Release version    | Firmware version    | Changes                                                                                                          |
-|--------------------|---------------------|------------------------------------------------------------------------------------------------------------------|
-|     2008           |     14.27.60.08     | Fixed a firmware fatal assert that cause the IRISC to stop responding due to init_hca waiting on the timers flow lock release. |
-|     2005           |     14.26.60.00     |                                                                                                                  |
-
-### NIC-HLH
-
-| Release version    | Firmware version    | Changes                                                                                                                                                                   |
-|--------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     2008           |     19.5.12         | Resolved an issue on Intel(R) Ethernet X710 10Gb adapters in which the device's LED stays on after blinking when device LED is set to blink mode from F2 Device Settings. |
-|     2005           |     19.0.12         |                                                                                                                                                                           |
-
-### HBA-Azure Stack node capacity drives
-
-| Release version    | Firmware version    | Changes    |
-|--------------------|---------------------|------------|
-|     2008           |     16.17.01.00     |            |
-|     2005           |     16.17.00.05     |            |
-
-### HBA-HLH capacity drives
-
-|     Release version |     Firmware version |     Changes                                                                                           |
-|---------------------|----------------------|-------------------------------------------------------------------------------------------------------|
-| 2005, 2008          | 25.5.7.0005          | Fixed an issue where a controller could stop responding at boot due to an incomplete non-volatile memory config. |
-
-### HBA - boot drives
-
-| Release version | Firmware version | Changes                                                                                   |
-|-----------------|------------------|-------------------------------------------------------------------------------------------|
-| 2005, 2008      | 2.5.13.3024      | Fixed PPID Discrepancy for M.2 drives of BOSS controller in iDRAC Hardware inventory page |
-
-### CPLD
-
-| Release version | Firmware version | Changes                                                                                                                                                                                                |
-|-----------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     2008        |     9.0.6        | Addresses possible issue where the IDRAC may stop responding during firmware update.<br> Signal noise filtering added to prevent false errors reported.<br> Host memory map modified to prevent potential front USB port disablement. |
-|     2005        |     1.0.6        |                                                                                                                                                                                                        |
-
-### Drive FW
+### Boot Drive Controller - Azure Stack Hub
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2008            | S402             | Enables future online firmware updates |
-| 2005            | S401             |                                        |
+| 2102, 2008  | 2.5.13.3024  | Initial solution version  |
 
-## Drivers
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 1.2.0.1051  | Initial solution version  |
 
-### NIC
+### Capacity Drive Controller - Azure Stack Hub
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2008            | 2.40.22511.0    |  |
-| 2005            | 2.30.21713.0 |                                        |
+| 2102, 2008  | 16.17.01.00  | Initial solution version  |
 
-### HBA - Capacity drives
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 2.51.25.02  | Initial solution version  |
 
-| Release version | Firmware version | Changes |
-|-----------------|------------------|---------|
-|  2005, 2008   |  2.51.25.02  |         |
+### Chipset - Azure Stack Hub
 
-### HBA - Boot drives
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 10.1.9.2  | Initial solution version  |
 
-| Release version | Firmware version | Changes |
-|-----------------|------------------|---------|
-|  2005, 2008   |  1.2.0.1051 |         |
+### Dell uEFI Diagnostics - Azure Stack Hub
 
-### Intel chipset
+| Release version | Application version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 4301A38  | Initial solution version  |
 
-| Release version | Firmware version | Changes |
-|-----------------|------------------|---------|
-|  2005, 2008   | 10.1.18243.8188 |         |
+### iDRAC - Azure Stack Hub
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 4.40.00.00  | - Fixed issues that caused RAC0182 iDRAC watchdog reboots.<br/><br/>- In compliance with STIG requirement: "network device must authenticate NTP."<br/><br/>- Fixed an issue that was not allowing iDRAC to display the network devices.<br/><br/>- NVIDIA A100 250W PCIe GPU support.<br/><br/>- Removal of Telnet and TLS 1.0 from web server.<br/><br/>- Added support for new job states in Redfish API.<br/><br/>- Next-gen iDRAC virtual console and virtual media (eHTML5).  |
+| 2008  | 4.22.00.00  | Initial solution version  |
+
+### Micron 5300 - Azure Stack Hub
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | D3MS402  | Initial solution version  |
+
+### NIC - Azure Stack Hub
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 14.27.60.08  | Initial solution version  |
+
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 2.40.22511.0  | Initial solution version  |
+
+### PowerEdge R640 BIOS - Azure Stack Hub
+
+| Release version | BIOS version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 2.10.0  | - Increased the 64-bit memory mapped I/O allocation size, used for PCIe resource management, from 64 GB to 256 GB per root port, to support Nvidia A100 GPU and other PCIe cards that request more than 64 GB of 64-bit PCIe memory.<br/><br/>- Updated the "Processor and Memory Reference Code" for the second-generation Intel Xeon processor scalable family to IPU 2020.2.<br/><br/>- Removed the logical processor requirement for Monitor/MWait.  |
+| 2008  | 2.8.2  | Initial solution version  |
+
+### PowerEdge R640 CPLD - Azure Stack Hub
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 9.0.6  | Initial solution version  |
+
+### Storage Backplane - Azure Stack Hub
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 4.35  | Initial solution version  |
+
+### Storage Backplane Expander - Azure Stack Hub
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 2.52  | - Addressed an issue with select third-party utilities in which the LED Identify operation continued to blink after a planned drive replacement operation was completed.<br/><br/>- Addressed a firmware update issue that occurred when no hard drives were present.  |
+| 2008  | 2.46  | Initial solution version  |
+
+## HLH
+
+### Boot Drive Controller - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 2.5.13.3024  | Initial solution version  |
+
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 1.2.0.1051  | Initial solution version  |
+
+### Capacity Drive Controller - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 25.5.8.0001  | - Enhanced background initialization (BGI) and consistency check (CC) progress to reduce performance impact when progress is saved (checkpointed).  |
+| 2008  | 25.5.7.0005  | Initial solution version  |
+
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 2.51.25.02  | Initial solution version  |
+
+### Chipset - HLH
+
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 10.1.9.2  | Initial solution version  |
+
+### Dell uEFI Diagnostics - HLH
+
+| Release version | Application version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 4301A38  | Initial solution version  |
+
+### iDRAC - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 4.40.00.00  | - Fixed issues that caused RAC0182 iDRAC watchdog reboots.<br/><br/>- In compliance with STIG requirement: "network device must authenticate NTP."<br/><br/>- Fixed an issue that was not allowing iDRAC to display the network devices.<br/><br/>- NVIDIA A100 250W PCIe GPU support.<br/><br/>- Removal of Telnet and TLS 1.0 from web server.<br/><br/>- Added support for new job states in Redfish API.<br/><br/>- Next-gen iDRAC virtual console and virtual media (eHTML5).  |
+| 2008  | 4.22.00.00  | Initial solution version  |
+
+### NIC - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 19.5.12  | Initial solution version  |
+
+| Release version | Driver version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 1.11.101.0  | Initial solution version  |
+
+### PowerEdge R640 BIOS - HLH
+
+| Release version | BIOS version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 2.10.0  | - Increased the 64-bit memory mapped I/O allocation size, used for PCIe resource management, from 64 GB to 256 GB per root port, to support Nvidia A100 GPU and other PCIe cards that request more than 64 GB of 64-bit PCIe memory.<br/><br/>- Updated the "Processor and Memory Reference Code" for the second-generation Intel Xeon processor scalable family to IPU 2020.2.<br/><br/>- Removed the logical processor requirement for Monitor/MWait.  |
+| 2008  | 2.8.2  | Initial solution version  |
+
+### PowerEdge R640 CPLD - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 9.0.6  | Initial solution version  |
+
+### Storage Backplane - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102, 2008  | 4.35  | Initial solution version  |
+
+### Storage Backplane Expander - HLH
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 2.52  | - Addressed an issue with select third-party utilities in which the LED Identify operation continued to blink after a planned drive replacement operation was completed.<br/><br/>- Addressed a firmware update issue that occurred when no hard drives were present.  |
+| 2008  | 2.46  | Initial solution version  |
+
+## Switches
+
+### DELL BMC - Dell S3048 Switch
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 9.14.2.9  | - Updated to Dell recommended version.<br/><br/>- Sev 3 issue fix - avoid potential software exception at bootup.<br/><br/>- Sev 2 issue fix - PSU serial not showing in inventory.  |
+| 2008  | 9.14.2.4  | Initial solution version  |
+
+### DELL TOR - Dell S5048F Switch
+
+| Release version | Firmware version | Changes                                |
+|-----------------|------------------|----------------------------------------|
+| 2102  | 9.14.2.9  | - Updated to Dell recommended version.<br/><br/>- Sev 3 issue fix - avoid potential software exception at bootup.<br/><br/>- Sev 2 issue fix - PSU serial not showing in inventory.  |
+| 2008  | 9.14.2.4  | Initial solution version  |

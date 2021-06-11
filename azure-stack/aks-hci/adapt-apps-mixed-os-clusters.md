@@ -3,7 +3,7 @@ title: Adapt applications for use in mixed-OS Kubernetes clusters
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
 author: abha
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 05/21/2021
 ms.author: abha
 ms.reviewer: 
 ---
@@ -68,6 +68,19 @@ tolerations:
   value: Windows
   effect: NoSchedule
 ```
+
+The steps in this section will work well if you are in control of the pod spec that you're deploying. However, in some cases, users have a pre-existing large number of deployments for Linux containers, as well as an ecosystem of common configurations, such as community [Helm charts](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts). You won’t have access to the pod spec unless you want to download the chart and edit it. If you deploy these Helm charts to a mixed cluster environment with both Linux and Windows worker nodes, your application pods will fail with the error "ImagePullBackOff", for example:
+
+```powershell
+C:\>kubectl get pods
+NAMESPACE              NAME                                                    READY   STATUS              RESTARTS   AGE
+default                nginx-deployment-558fc78868-795dp                       0/1     ImagePullBackOff    0          6m24s
+default                nginx-deployment-6b474476c4-gpb77                       0/1     ImagePullBackOff    0          11m
+```
+
+In this instance, you should look at using [taints](https://cloud.google.com/kubernetes-engine/docs/how-to/node-taints) to help with this:
+Windows Server nodes can be tainted with the following key-value pair: node.kubernetes.io/os=windows:NoSchedule
+
 For more information on taints and tolerations, visit [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). 
 
 ## Next steps

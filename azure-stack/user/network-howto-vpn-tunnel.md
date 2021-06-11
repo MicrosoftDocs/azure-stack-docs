@@ -1,15 +1,15 @@
 ---
-title: Set up multiple site-to-site VPN tunnel in Azure Stack Hub 
+title: Set up multiple site-to-site VPN tunnels in Azure Stack Hub 
 description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/2/2020
+ms.date: 05/10/2021
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: raymondl
+ms.lastreviewed: 05/10/2021
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Intent: Notdone: As a developer, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
 
 ---
@@ -115,6 +115,10 @@ You can use same process as the **WebTier** but different parameters as shown he
 
 ![The "Dashboard > New > Deploy Solution Template > Parameters" dialog box has a "Resource group" text box, and a radio button. The "Use existing" button is selected, and the text is "AppTier". Four other highlighted text boxes contain template parameters.](./media/azure-stack-network-howto-vpn-tunnel/image12.png)
 
+### Add a network security group
+
+Add a [network security group](/azure/virtual-network/network-security-groups-overview) and add a rule on the RRAS to allow the traffic between the two vNets in both inbound and outbound. Network security groups filter network traffic to and from Azure resources in an Azure virtual network. A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic from, several types of Azure resources. Without these rules NSG, the RRAS will drop the packets when its IP is not either the source or destination IP.
+
 ### Viewing tunnel deployment
 
 If you view the output from the custom script extension, you can see the tunnel being created and it should show the status. You will see one showing **connecting** waiting for the other side to be ready and the other side will show **connected** once deployed.
@@ -148,7 +152,7 @@ If you view the output from the custom script extension, you can see the tunnel 
     > [!NOTE]
     > Depending on your environment you may need to reboot your system.
 
-    For reference refer to the on-premises machine network configuration.
+    For reference, refer to the on-premises machine network configuration.
 
     ![There is a cmd.exe window showing ipconfig output, and a Network and Sharing Center window.](./media/azure-stack-network-howto-vpn-tunnel/image18.png)
 

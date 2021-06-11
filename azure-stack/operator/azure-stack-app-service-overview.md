@@ -26,7 +26,7 @@ Azure App Service enables you to automate business processes and host cloud APIs
 Here are some key features and capabilities of Azure App Service:
 
 - **Multiple languages and frameworks**: Azure App Service has first-class support for ASP.NET, Node.js, Java, PHP, and Python. You can also run Windows PowerShell and other scripts or executables on App Service VMs.
-- **DevOps optimization**: Set up continuous integration and deployment with GitHub, local Git, or BitBucket. Promote updates through test and staging environments, and manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (CLI).
+- **DevOps optimization**: Set up continuous integration and deployment with GitHub, local Git, or BitBucket. Promote updates through test and staging environments, and manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (Azure CLI).
 - **Visual Studio integration**: Dedicated tools in Visual Studio streamline the work of creating and deploying apps.
 
 ## App types in App Service
@@ -34,7 +34,7 @@ Here are some key features and capabilities of Azure App Service:
 App Service offers several app types, each of which is intended to host a specific workload:
 
 - [Web Apps](/azure/app-service/overview) for hosting websites, web apps and REST APIs.
-- [Azure Functions v1](/azure/azure-functions) for hosting event driven, serverless workloads.
+- [Azure Functions v1](/azure/azure-functions/functions-versions) for hosting event driven, serverless workloads.
 
 The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In Azure App Service, a web app is the compute resource that Azure Stack Hub provides for hosting your app code.
 

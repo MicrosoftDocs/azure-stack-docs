@@ -3,10 +3,10 @@ title: Diagnostic log collection
 description: Learn about diagnostic log collection.
 author: PatAltimore
 ms.topic: article
-ms.date: 02/03/2021
+ms.date: 03/26/2021
 ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 02/03/2021
+ms.lastreviewed: 03/26/2021
 
 #Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 #Keyword: diagnostic log collection azure stack hub
@@ -16,7 +16,7 @@ ms.lastreviewed: 02/03/2021
 
 You can share diagnostic logs created by Azure Stack Hub. These logs are created by the Windows components and on-premises Azure services. Microsoft Support can use the logs to fix or identify issues with your Azure Stack Hub instance.
 
-To get started with Azure Stack Hub diagnostic log collection, you have to register your instance. If you haven't registered Azure Stack Hub, use [the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) to share logs. 
+To get started with Azure Stack Hub diagnostic log collection, you have to register your instance. If you haven't registered Azure Stack Hub, use [the privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) to share logs.
 
 ::: moniker range=">= azs-2005"
 
@@ -61,7 +61,7 @@ Proactive log collection can be disabled and re-enabled anytime. Follow these st
 1. If the banner appears, select **Enable proactive log collection**. Or you can select **Settings** and set **Proactive log collection** to **Enable**, then select **Save**.
 
 > [!NOTE]
-> If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.   
+> If log location settings are configured for a local file share, make sure lifecycle management policies will prevent share storage from reaching its size quota. Azure Stack Hub does not monitor local file share or enforce any retention policies.
 
 ### How the data is handled
 
@@ -86,12 +86,15 @@ There are two ways you can manually send diagnostic logs to Microsoft Support:
 
 If Azure Stack Hub is connected to Azure, we recommend using the administrator portal because it's the simplest way to send the logs directly to Microsoft. If the portal is unavailable, you should send logs using PowerShell.
 
+> [!NOTE]
+> If you send logs using the administrator portal or PowerShell cmdlet, [Test-AzureStack](azure-stack-diagnostic-test.md) runs automatically in the background to collect diagnostic information.
+
 ### Send logs now with the administrator portal
 
 To send logs now using the administrator portal:
 
-1. Open **Help + support > Log Collection > Send logs now**. 
-1. Specify the start time and end time for log collection. 
+1. Open **Help + support > Log Collection > Send logs now**.
+1. Specify the start time and end time for log collection.
 1. Choose the local time zone.
 1. Select **Collect and Upload**.
 
@@ -116,38 +119,38 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
   ```
 
 * Use the **FilterByResourceProvider** parameter to send diagnostic logs for value-add Resource Providers (RPs). The general syntax is:
- 
+
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider <<value-add RP name>>
   ```
 
   ::: moniker range=">= azs-2008"
 
-  To send diagnostic logs for SQL RP: 
+  To send diagnostic logs for SQL RP:
 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider SQLAdapter
   ```
-  To send diagnostic logs for MySQL RP: 
+  To send diagnostic logs for MySQL RP:
 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider MySQLAdapter
   ```
-  
+
   ::: moniker-end
 
-  To send diagnostic logs for IoT Hub: 
+  To send diagnostic logs for IoT Hub:
 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider IotHub
   ```
- 
+
   To send diagnostic logs for Event Hubs:
 
   ```powershell
   Send-AzureStackDiagnosticLog -FilterByResourceProvider eventhub
   ```
- 
+
   To send diagnostic logs for Azure Stack Edge:
 
   ```powershell
@@ -163,17 +166,20 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
 * To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
 
   ```powershell
-  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  $fromDate = (Get-Date).AddHours(-8)
+  Invoke-Command -Session $pepsession -ScriptBlock {Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate}
   ```
 
 * To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
   ```powershell
-  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  $fromDate = (Get-Date).AddHours(-8)
+  $toDate = (Get-Date).AddHours(-2)
+  Invoke-Command -Session $pepsession -ScriptBlock {Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate $using:fromDate -ToDate $using:toDate}
   ```
 
 > [!NOTE]
-> If you're disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs. 
+> If you're disconnected from the internet or want to only save logs locally, use [Get-AzureStackLog](azure-stack-get-azurestacklog.md) method to send logs.
 
 ### How the data is handled
 

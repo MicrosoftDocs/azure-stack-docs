@@ -34,8 +34,8 @@
         href: ../operator/azure-stack-app-service-capacity-planning.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Capacity planner tool
         href: ../operator/azure-stack-capacity-planner.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Customer journey 
-      href: customer-journey.md
+    - name: Integration overview
+      href: integration-overview.md
     - name: Connection models
       href: ../operator/azure-stack-connection-models.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Connected deployment
@@ -82,6 +82,8 @@
           href: network-deployment.md
         - name: Network integration
           href: network-integration.md
+        - name: Publish endpoint
+          href: operator/azure-stack-integrate-endpoints-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Network configuration lifecycle
           href: network-configuration-lifecycle-management.md
 #        - name: Troubleshoot
@@ -193,7 +195,7 @@
         - name: Use an app identity to access resources
           href: ../operator/azure-stack-create-service-principals.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Enable multi-tenancy
-          href: ../operator/azure-stack-enable-multitenancy.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ../operator/enable-multitenancy.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: How-to guides
     items:
     - name: Manage 
@@ -263,9 +265,11 @@
           - name: Manage physical memory capacity
             href: ../operator/azure-stack-manage-storage-physical-memory-capacity.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Add scale unit nodes
-            href: ../operator/azure-stack-add-scale-node.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ./operator/add-scale-node-ruggedized.md
           - name: Add public IP addresses
             href: ../operator/azure-stack-add-ips.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          - name: Server firmware updates
+            href: ./operator/server-firmware-updates-ruggedized.md  
       - name: Replace hardware
         items:
         - name: Node actions
@@ -303,7 +307,7 @@
       - name: Offer a virtual machine scale set
         href: ../operator/azure-stack-compute-add-scalesets.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Windows Server in Marketplace FAQ 
-        href: operator/azure-stack-windows-server-faq-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: /azure-stack/mdc/operator/azure-stack-windows-server-faq-tzl?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Offer Linux virtual machines
         href: ../operator/azure-stack-linux.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Add a Red Hat virtual machine
@@ -315,11 +319,11 @@
       - name: Offer a Container registry
         items:
         - name: Add a container registry
-          href: operator/container-registry-template-install-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ./ruggedized-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
         - name: Update the container registry
-          href: operator/container-registry-template-update-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ./ruggedized-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
         - name: Rotate container registry secrets
-          href: operator/container-registry-template-rotate-secrets-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href: ./ruggedized-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&toc=%2fazure-stack%2fruggedized%2ftoc.json
       - name: Offer Commvault marketplace item
         href: operator/azure-stack-commvault-offer-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Offer services

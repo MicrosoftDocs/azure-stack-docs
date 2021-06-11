@@ -28,7 +28,6 @@ New-AksHciCluster -name <String>
                  [-vnet <Virtual Network>]
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
-                 [-enableSecretsEncryption]          
 ```
 
 ## Description
@@ -37,7 +36,7 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 
 ## Examples
 
-### New AKS-HCI cluster with required params.
+### New AKS-HCI cluster with required parameters
 
 ```powershell
 PS C:\> New-AksHciCluster -name myCluster
@@ -196,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -primaryNetworkPlugin
-The network plugin to be used for your deployment. This parameter takes in either `flannel` or `calico`. Calico is only available for Linux only clusters. If you choose Calico for your cluster, the addition of Windows nodes is not allowed.
+The network plug-in to be used for your deployment. This parameter takes in either `flannel` or `calico`. Calico is available for both Linux and Windows workload clusters.
 
 ```yaml
 Type: System.String
@@ -225,7 +224,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -enableSecretsEncryption
+<!-- ### -enableSecretsEncryption
 Use this flag to enable encryption in your Kubernetes secrets.
 
 ```yaml
@@ -239,3 +238,49 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -enableCsiSmb
+Use this flag to enable an SMB CSI driver during deployment.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableCsiNfs
+Use this flag to enable an NFS CSI driver during deployment.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableMonitoring
+Use this flag to enable Prometheus monitoring.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+--->

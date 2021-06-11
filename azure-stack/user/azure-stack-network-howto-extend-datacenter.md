@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -301,7 +301,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
     ![The "Connect using" dialog box shows the specified information for target portal 10.33.131.16/3260.](./media/azure-stack-network-howto-extend-datacenter/image21.png)
 
-2.  Select the **Volumes and Devices** tab, and then select **Auto Configure** – you should see an MPIO volume presented:
+2.  Select the **Volumes and Devices** tab, and then select **Auto Configure** - you should see an MPIO volume presented:
 
     ![The Volume List window shows volume name, mount point, and device for a single volume.](./media/azure-stack-network-howto-extend-datacenter/image22.png)
 

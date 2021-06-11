@@ -3,10 +3,10 @@ title: Deploy with Visual Studio Code to Azure Stack Hub
 description: Create an Azure Resource Manager template in Visual Studio Code, and use the deployment schema to prepare a template compatible with my version of Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 6/1/2021
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: raymondl
+ms.lastreviewed: 6/1/2021
 
 # Intent: Notdone: As a user, I want to create an Azure Resource Manager template in Visual Studio Code and use the deployment schema to prepare a template that is compatible with my version of Azure Stack Hub.
 # Keyword: create Azure Resource Manager template Visual Studio Code
@@ -66,17 +66,8 @@ The template in this article called `101-vm-windows-create`. The template define
     ```
 5. Select **Open** to open the file at `/101-vm-windows-create/azuredeploy.json` in the repository.
 6. Save the file into your own workspace, or if you have created a branch of the repository you can work in place.
-7. With the file still open, change the `$Schema` field to `https://schema.management.azure.com/schemas/2019-03-01-hybrid/deploymentTemplate.json#`.
-8. You can check that the deployment schema works by clearing the value of the apiProfile field.
-    ```JSON  
-    "apiProfile": ""
-    ```
-9. Place your cursor between the empty quotes, and press CTRL+SPACEBAR. You can choose from the valid API profiles in the deployment schema for Azure Stack Hub. You can perform this operation with each of the resource providers in the template.
-
-    ![Azure Stack Hub Resource Manager Deployment Schema](./media/azure-stack-resource-manager-deploy-template-vscode/azure-stack-resource-manager-vscode-schema.png)
-
-10. When you ready, you can deploy your template using PowerShell. Follow the instructions at [Deploy with PowerShell](azure-stack-deploy-template-powershell.md). Specify the location of the template in the script.
-11. After you have deployed your Windows VM, navigate to the Azure Stack Hub portal, and find the resource group. If you want to clear the result of this exercise from your Azure Stack Hub, delete the resource group.
+7. When you ready, you can deploy your template using PowerShell. Follow the instructions at [Deploy with PowerShell](azure-stack-deploy-template-powershell.md). Specify the location of the template in the script.
+8. After you have deployed your Windows VM, navigate to the Azure Stack Hub portal, and find the resource group. If you want to clear the result of this exercise from your Azure Stack Hub, delete the resource group.
 
 ## Next steps
 

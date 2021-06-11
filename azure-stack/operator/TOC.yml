@@ -14,6 +14,28 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.28.87
+        href: hotfix-1-2102-28-87.md
+      - name: Hotfix 1.2008.37.139
+        href: hotfix-1-2008-37-139.md
+      - name: Hotfix 1.2005.41.124
+        href: hotfix-1-2005-41-124.md     
+      - name: Hotfix 1.2002.69.179
+        href: hotfix-1-2002-69-179.md
+      - name: Hotfix 1.2008.33.131
+        href: hotfix-1-2008-33-131.md      
+      - name: Hotfix 1.2005.35.112
+        href: hotfix-1-2005-35-112.md
+      - name: Hotfix 1.2008.31.126
+        href: hotfix-1-2008-31-126.md      
+      - name: Hotfix 1.2005.33.108
+        href: hotfix-1-2005-33-108.md
+      - name: Hotfix 1.2008.27.118
+        href: hotfix-1-2008-27-118.md      
+      - name: Hotfix 1.2005.32.106
+        href: hotfix-1-2005-32-106.md      
+      - name: Hotfix 1.2002.67.175
+        href: hotfix-1-2002-67-175.md
       - name: Hotfix 1.2008.26.116
         href: hotfix-1-2008-26-116.md      
       - name: Hotfix 1.2005.30.102
@@ -93,7 +115,7 @@
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
-      - name: Choose an identity provider 
+      - name: Identity providers and ADFS integration
         href: azure-stack-integrate-identity.md
       - name: Create registration role
         href: azure-stack-registration-role.md
@@ -208,6 +230,8 @@
           href: azure-stack-manage-storage-infrastructure.md
         - name: Manage physical memory capacity
           href: azure-stack-manage-storage-physical-memory-capacity.md
+        - name: Manage GPU capacity
+          href: manage-gpu-capacity.md  
         - name: Add scale unit nodes
           href: azure-stack-add-scale-node.md
         - name: Add public IP addresses
@@ -240,10 +264,10 @@
         href: azure-stack-add-new-user-aad.md
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
-      - name: Use an app identity to access resources
-        href: Azure-stack-create-service-principals.md
+      - name: Give apps access to resources
+        href: give-app-access-to-resources.md
       - name: Enable multi-tenancy
-        href: azure-stack-enable-multitenancy.md
+        href: enable-multitenancy.md
     - name: Data at rest encryption
       href: azure-stack-security-bitlocker.md
     - name: Rotate secrets
@@ -271,7 +295,7 @@
     - name: Offer a virtual machine scale set
       href: azure-stack-compute-add-scalesets.md
     - name: Azure Stack Hub Marketplace FAQ
-      href: azure-stack-windows-server-faq.md
+      href: azure-stack-windows-server-faq.yml
     - name: Offer Linux virtual machines
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
@@ -370,6 +394,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2012.2.0 release notes [May 2021] 
+          href: event-hubs-rp-release-1-2012-20.md
         - name: 1.2012.1.0 release notes [Feb 2021] 
           href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
@@ -477,7 +503,7 @@
       - name: Tenant usage API
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
-        href: azure-stack-usage-related-faq.md
+        href: azure-stack-usage-related-faq.yml
       - name: Troubleshooting usage issues
         items:
         - name: Usage connectivity errors
@@ -544,52 +570,10 @@
   items:
     - name: Release notes archive
       items:
-      - name: 1910 release notes
-        href: ./relnotearchive/release-notes-1910.md
-      - name: 1910 known issues
-        href: ./relnotearchive/known-issues-1910.md
-      - name: 1908 release notes
-        href: ./relnotearchive/release-notes-1908.md
-      - name: 1908 known issues
-        href: ./relnotearchive/known-issues-1908.md
-      - name: 1907 release notes
-        href: ./relnotearchive/release-notes-1907.md
-      - name: 1907 known issues
-        href: ./relnotearchive/known-issues-1907.md                
-      - name: 1906 release notes
-        href: ./relnotearchive/release-notes-1906.md
-      - name: 1906 known issues
-        href: ./relnotearchive/known-issues-1906.md
-      - name: 1905 release notes
-        href: ./relnotearchive/release-notes-1905.md
-      - name: 1905 known issues
-        href: ./relnotearchive/known-issues-1905.md
-      - name: 1904 release notes
-        href: ./relnotearchive/release-notes-1904.md
-      - name: 1904 known issues
-        href: ./relnotearchive/known-issues-1904.md
-      - name: 1903 release notes
-        href: ./relnotearchive/release-notes-known-issues-1903.md
-      - name: 1902 release notes
-        href: ./relnotearchive/release-notes-known-issues-1902.md        
-      - name: 1901 release notes
-        href: ./relnotearchive/release-notes-known-issues-1901.md
-      - name: 1811 release notes
-        href: ./relnotearchive/release-notes-known-issues-1811.md
-      - name: 1809 release notes
-        href: ./relnotearchive/release-notes-known-issues-1809.md
-      - name: 1808 release notes
-        href: ./relnotearchive/release-notes-known-issues-1808.md
-      - name: 1807 release notes
-        href: ./relnotearchive/release-notes-known-issues-1807.md
-      - name: 1805 release notes
-        href: ./relnotearchive/release-notes-known-issues-1805.md
-      - name: 1804 release notes
-        href: ./relnotearchive/release-notes-known-issues-1804.md
-      - name: 1803 release notes
-        href: ./relnotearchive/release-notes-known-issues-1803.md
-      - name: 1802 release notes
-        href: ./relnotearchive/release-notes-known-issues-1802.md  
+      - name: Release notes
+        href: ./relnotearchive/release-notes.md
+      - name: Known issues
+        href: ./relnotearchive/known-issues.md    
     - name: Training and certification
       href: azure-stack-train-and-cert.md
     - name: Azure Stack Hub road map

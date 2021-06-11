@@ -1,22 +1,23 @@
 ---
 title: Set-AksHciConfig
-author: jessicaguan
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 2/12/2021
+author: jessicaguan
 ms.author: jeguan
 ---
 
 # Set-AksHciConfig
 
 ## Synopsis
-Set or update the configurations settings for the Azure Kubernetes Service host.
+Set or update the configuration settings for the Azure Kubernetes Service host.
 
 ## Syntax
 
 ### Set configuration for host
 ```powershell
 Set-AksHciConfig [-imageDir <String>]
+                 [-workingDir <String>]
                  [-cloudConfigLocation <String>]
                  [-nodeConfigLocation <String>]
                  [-vnet <Virtual Network>]
@@ -24,23 +25,20 @@ Set-AksHciConfig [-imageDir <String>]
                  [-sshPublicKey <String>]
                  [-macPoolStart <String>]
                  [-macPoolEnd <String>]       
-                 [-proxyServerHTTP <String>]
-                 [-proxyServerHTTPS <String>]
-                 [-proxyServerNoProxy <String>]
-                 [-proxyServerCertFile <String>]
-                 [-proxyServerCredential <PSCredential>]
+                 [-proxySettings <ProxySettings>]
                  [-cloudServiceCidr <String>]
-                 [-workingDir <String>]
                  [-version <String>]
                  [-nodeAgentPort <int>]
                  [-nodeAgentAuthorizerPort <int>]
+                 [-cloudAgentPort <int>]
+                 [-cloudAgentAuthorizerPort <int>]
                  [-clusterRoleName <String>]
                  [-cloudLocation <String>]
                  [-skipHostLimitChecks]
+                 [-skipRemotingChecks]
                  [-insecure]
                  [-skipUpdates]
-                 [-forceDnsReplication]
-                 [-enableDiagnosticData]   
+                 [-forceDnsReplication]   
 ```
 
 ## Description
@@ -53,25 +51,26 @@ Set the configuration settings for the Azure Kubernetes Service host. If you're 
 PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config
 ```
 
+### To deploy on a 2-4 node cluster with DHCP networking
+```powershell
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config
+```
+
 ### To deploy with a virtual IP pool
 ```powershell
 PS C:\> New-AksHciNetworkSetting -name newNetwork -subnetCidr 192.168.2.0/32 -defaultGateway 192.168.2.1 -subnetVSwitch External -vipPoolStart 192.168.2.20 -vipPoolEnd 192.168.2.80   
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -networkSettings newNetwork
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -networkSettings newNetwork
 ```
 
 ### To deploy with a proxy server
 ```powershell
-PS C:\> $credential = Get-Credential
-```
-
-```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16,10.231.110.0/24,10.68.237.0/24" -proxyServerCredential $credential
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images  -workingDir c:\ClusterStorage\Volume2\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16,10.231.110.0/24,10.68.237.0/24" -proxyServerCredential $credential
 ```
 
 ## Parameters
 
 ### -imageDir
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\AksHciImageStore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\AksHciImageStore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -85,8 +84,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -workingDir
+This is a working directory for the module to use for storing small files. Defaults to `%systemdrive%\akshci` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `c:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: %systemdrive%\AksHci
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -cloudConfigLocation
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdcloudagent` for single node deployments. The location can be the same as the path of -imageDir above. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
+The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdcloudagent` for single node deployments. The location can be the same as the path of -imageDir above. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
 
 ```yaml
 Type: System.String
@@ -116,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -vnet
-The name of the AksHciNetworkSetting object created with New-AksHciNetworkSetting command.
+The name of the **AksHciNetworkSetting** object created with `New-AksHciNetworkSetting` command.
 ```yaml
 Type: VirtualNetwork
 Parameter Sets: (All)
@@ -130,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneVmSize
-The size of the VM to create for the control plane. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of the VM to create for the control plane. To get a list of available VM sizes, run `Get-AksHciVmSize`.
 
 ```yaml
 Type: System.String
@@ -139,7 +153,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_A4_V2
+Default value: Standard_A2_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -160,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -macPoolStart
-This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 ```yaml
 Type: System.String
@@ -175,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -macPoolEnd
-This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the -macPoolEnd should be the same as the first byte of the address passed as the -macPoolStart. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. This is useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the -macPoolEnd should be the same as the first byte of the address passed as the -macPoolStart. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
 
 ```yaml
 Type: System.String
@@ -189,68 +203,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -proxyServerHTTP
-This provides a proxy server URI that should be used by all components that need to reach HTTP endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -proxyServerHTTPS
-This provides a proxy server URI that should be used by all components that need to reach HTTPS endpoints. The URI format includes the URI schema, server address, and port (that is, https://server.com:8888). Default is none.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -proxyServerNoProxy
-This is a comma-delimited string of addresses that will be exempt from the proxy. Default value is localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16. This excludes the localhost traffic (localhost, 127.0.0.1), internal Kubernetes service traffic (.svc), the Kubernetes Service CIDR (10.96.0.0/12), and the Kubernetes POD CIDR (10.244.0.0/16) from the proxy server. You can use this parameter to add more subnet ranges or name exemptions. **The settings for this parameter are very important because, if it's not correctly configured, you may unexpectedly route internal Kubernetes cluster traffic to your proxy. This can cause various failures in network communication.**
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -proxyServerCertFile
-The certificate used to authenticate to the proxy server.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
- 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -proxyServerCredential
-This provides the username and password to authenticate to your HTTP/HTTPS proxy servers. You can use `Get-Credential` to generate a PSCredential object to pass to this parameter. Default is none.
+### -proxySettings
+The proxy object created using [New-AksHciProxySetting](new-akshciproxysetting.md).
 
 ```yaml
 Type: System.String
@@ -279,21 +233,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -workingDir
-This is a working directory for the module to use for storing small files. Defaults to `%PROGRAMFILES%\AksHci` and should not be changed for most deployments. We do not recommend changing the default.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: %PROGRAMFILES%\AksHci
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -version
 The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. The default is the latest version. We do not recommend changing the default.
 
@@ -310,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -nodeAgentPort
-The TCP/IP port number that node agents should listen on. Defaults to 45000. We do not recommend changing the default.
+The TCP/IP port number that node agents should listen on, which defaults to 45000. We do not recommend changing the default.
 
 ```yaml
 Type: System.Int32
@@ -335,6 +274,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: 45001
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -cloudAgentPort
+The TCP/IP port number that cloud agent should listen on. Defaults to 55000. We do not recommend changing the default.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 55000
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -cloudAgentAuthorizerPort
+The TCP/IP port number that cloud agent should use for its authorization port. Defaults to 65000. We do not recommend changing the default.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 65000
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -373,7 +342,7 @@ Accept wildcard characters: False
 Requests the script to skip any checks it does to confirm memory and disk space is available before allowing the deployment to proceed. We do not recommend using this setting.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -384,8 +353,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -skipRemotingChecks
+Requests the script to skip any checks it does to confirm remoting capabilities to both local and remote nodes. We do not recommend using this setting.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
 ### -insecure
-Deploys Azure Kubernetes Service on Azure Stack HCI components such as cloud agent and node agent(s) in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
+Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
 
 ```yaml
 Type: System.String
@@ -429,6 +412,3 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -enableDiagnosticData`
-
-Use this flag to consent to send required diagnostic data to Microsoft. This is useful if you want to skip the consent prompt that `Set-AksHciConfig` will present otherwise. `Install-AksHci` will fail if you do not accept the consent prompt when `Set-AksHciConfig` presents it.

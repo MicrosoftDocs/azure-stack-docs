@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 03/04/2021
 ---
 
 # Update Azure Stack HCI clusters
@@ -42,7 +42,7 @@ Follow these steps to install updates:
 
    :::image type="content" source="media/update-cluster/operating-system-updates.png" alt-text="Click Next: Install to proceed to installing operating system updates, or click Skip to exclude them" lightbox="media/update-cluster/operating-system-updates.png":::
 
-5. Select **Install** to install the operating system updates on each server in the cluster. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime.
+5. Select **Install** to install the operating system updates. One by one, each server will download and apply the updates. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire updating run can take anywhere from a few minutes to several hours.
 
    :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
 

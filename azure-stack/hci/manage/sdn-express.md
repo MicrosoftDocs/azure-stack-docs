@@ -3,14 +3,14 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 02/17/2021
+ms.date: 05/14/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
 # Deploy an SDN infrastructure using SDN Express
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016 
 
 In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure using SDN Express PowerShell scripts. The infrastructure may include a highly available (HA) Network Controller (NC), a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
@@ -40,7 +40,7 @@ The following requirements must be met for a successful SDN deployment:
 - The physical network must be configured for the subnets and VLANs defined in the configuration file
 - The VHDX file specified in the configuration file must be reachable from the deployment computer where the SDN Express script is run
 
-## Create the VDX file
+## Create the VHDX file
 
 SDN uses a VHDX file containing the Azure Stack HCI operating system (OS) as a source for creating the SDN virtual machines (VMs). The version of the OS in your VHDX must match the version used by the Azure Stack HCI Hyper-V hosts. This VHDX file is used by all SDN infrastructure components.
 
@@ -79,7 +79,7 @@ Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConf
 
 ### General settings and parameters
 
-The settings and parameters are used by SDN in general for all deployments:
+The settings and parameters are used by SDN in general for all deployments. For specific recommendations, see [SDN infrastructure VM role requirements](../concepts/plan-software-defined-networking-infrastructure.md#sdn-infrastructure-vm-role-requirements).
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
 - **VHDFile** - VHD file name used by all SDN infrastructure VMs
@@ -92,7 +92,7 @@ The settings and parameters are used by SDN in general for all deployments:
 - **ManagementDNS** - DNS server for the management network
 - **ManagementVLANID** - VLAN ID for the management network
 - **DomainJoinUsername** - administrator user name
-- **LocalAdminDomainUser** - administrator password
+- **LocalAdminDomainUser** - local administrator user name
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **HyperVHosts** - host servers to be managed by Network Controller
 - **NCUsername** - Network Controller account user name
@@ -114,6 +114,8 @@ Passwords can be optionally included if stored encrypted as text-encoded secure 
 
 ### Network Controller VM section
 
+A minimum of three Network Controller VMs are recommended for SDN.
+
 The `NCs = @()` section is used for the Network Controller VMs. Make sure that the MAC address of each NC VM is outside the `SDNMACPool` range listed in the General settings:
 
 - **ComputerName** - name of NC VM
@@ -122,6 +124,8 @@ The `NCs = @()` section is used for the Network Controller VMs. Make sure that t
 - **MACAddress** - MAC address for the NC VM
 
 ### Software Load Balancer VM section
+
+A minimum of three Software Load Balancer VMs are recommended for SDN.
 
 The `Muxes = @()` section is used for the SLB VMs. Make sure that the MAC address of each SLB VM is outside the `SDNMACPool` range listed in the General settings. Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 
@@ -133,6 +137,8 @@ The `Muxes = @()` section is used for the SLB VMs. Make sure that the MAC addres
 - **PAMACAddress** - Provider network IP address (PA) for the SLB VM
 
 ### Gateway VM section
+
+A minimum of three Gateway VMs (two active and one redundant) are recommended for SDN.
 
 The `Gateways = @()` section is used for the Gateway VMs. Make sure that the MAC address of each Gateway VM is outside the `SDNMACPool` range listed in the General settings. Leave this section empty (`Gateways = @()`) if not deploying the Gateway component:
 
@@ -182,7 +188,7 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
     SDNExpress\scripts\SDNExpress.ps1 -ConfigurationDataFile MultiNodeSampleConfig.psd1 -Verbose
     ```
 
-1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [How to configure DNS dynamic updates](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
+1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [How to configure DNS dynamic updates](/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
 
 ## Next steps
 

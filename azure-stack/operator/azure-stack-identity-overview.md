@@ -85,7 +85,7 @@ Apps can support two types of tenancy:
 
 - **Multi-tenant**: Supports use by users and services from both the directory where the app is registered and additional tenant directories. With multi-tenant apps, users of another tenant directory (another Azure AD tenant) can sign in to your app.
 
-  For more information about multi-tenancy, see [Enable multi-tenancy](azure-stack-enable-multitenancy.md).
+  For more information about multi-tenancy, see [Enable multi-tenancy](enable-multitenancy.md).
 
   For more information about developing a multi-tenant app, see [Multi-tenant apps](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 

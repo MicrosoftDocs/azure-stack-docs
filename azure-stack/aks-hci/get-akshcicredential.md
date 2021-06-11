@@ -16,7 +16,7 @@ Access your cluster using `kubectl`. This will use the specified cluster's _kube
 
 ```powershell
 Get-AksHciCredential -name <String>
-                    [-outputLocation <String>]
+                    [-configPath <String>]
                     [-adAuth]
 ```
 
@@ -27,7 +27,7 @@ Access your cluster using kubectl.
 
 ### Access your cluster using kubectl.
 ```powershell
-PS C:\> Get-AksHciCredential -name myCluster
+Get-AksHciCredential -name myCluster
 ```
 
 ## Parameters
@@ -47,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -outputLocation
+### -configPath
 The location where you want the kubeconfig downloaded. Default is `%USERPROFILE%\.kube`.
 
 ```yaml

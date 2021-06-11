@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to replace a hardware component on an Azure Stack Hub integrated system.
 author: PatAltimore
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 03/31/2021
 ms.author: patricka
 ms.reviewer: thoroet 
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 03/31/2021
 
 # Intent: As an Azure Stack operator, I want to replace a hardware component in Azure Stack.
 # Keyword: replace hardware component azure stack
@@ -31,7 +31,7 @@ This article describes the general process to replace hardware components that a
 |  | EU | [Fujitsu MySupport (account and sign-in required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
 | HPE | All | [HPE ProLiant for Microsoft Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
-| Wortmann |  | [OEM/firmware package](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
+| Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
 
 Non hot-swappable components include the following items:
 
@@ -40,6 +40,7 @@ Non hot-swappable components include the following items:
 - Motherboard/baseboard management controller (BMC)/video card
 - Disk controller/host bus adapter (HBA)/backplane
 - Network adapter (NIC)
+- Graphics processing unit (GPU)
 - Operating system disk*
 - Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 

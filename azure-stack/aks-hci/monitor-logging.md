@@ -14,16 +14,12 @@ There are two types of monitoring and logging solutions available for AKS on Azu
 
 | Solution  | Azure connectivity  | Support and service  | Cost | Deployment |
 | ------- |  ------------  | ---------  | --------------  | ---------------- |
-| Azure Monitor | Requires connecting the AKS on Azure Stack HCI cluster to Azure using Azure Arc for Kubernetes | Fully supported and serviced by Microsoft | Requires signing up for Azure Monitor service |  Use Azure Arc for [monitoring clusters](#monitor-clusters-using-azure-monitor) |
-| On-premises monitoring and logging | Does not require Azure connectivity | Supported as open-source software by Microsoft (no support agreement or SLAs), community and/or external vendors  | Vendor dependent | Customer driven, see [monitor clusters using on-premises monitoring](#monitor-clusters-using-on-premises-monitoring) |
+| Azure Monitor | Requires connecting the AKS on Azure Stack HCI cluster to Azure using Azure Arc for Kubernetes | Fully supported and serviced by Microsoft | Requires signing up for Azure Monitor service |  Use Azure Arc for [monitoring clusters](/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json) |
+| On-premises monitoring and logging | Does not require Azure connectivity | Supported as open-source software by Microsoft (no support agreement or SLAs), community and/or external vendors  | Vendor dependent | Customer driven, see [monitor clusters using on-premises monitoring](#use-on-premises-monitoring) |
 
-## Monitor clusters using Azure Monitor
-To use Azure Monitor with AKS on Azure Stack HCI clusters, follow the steps in the two topics below: 
+To use Azure Monitor with AKS on Azure Stack HCI clusters, see the [Azure Monitor overview](/azure/azure-monitor/containers/container-insights-overview). 
 
-- [Connect your cluster to Azure using Azure Arc for Kubernetes](./connect-to-arc.md)  
-- [Enable Azure Monitor on an Azure Arc enabled Kubernetes cluster](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters) 
-
-## Monitor clusters using on-premises monitoring
+## Use on-premises monitoring
 
 Monitoring the health, performance, and resource usage of the control plane nodes and workloads on your cluster is crucial when running apps in production. To learn how to set up an on-premises monitoring solution, see [installing Prometheus and Grafana](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring). This monitoring solution includes the following two tools: 
 

@@ -43,7 +43,7 @@ The following code snippets are written for a Windows machine using the PowerShe
     suffix-keyvault-dns | ".vault.orlando.azurestack.corp.microsoft.com"  | The Key Vault service dns suffix. |
     endpoint-active-directory-graph-resource-id | "https://graph.windows.net/"  | The Active Directory resource ID. |
     endpoint-sql-management | https://notsupported  | The sql server management endpoint. Set this to `https://notsupported` |
-    profile | 2019-03-01-hybrid | Profile to use for this cloud. |
+    profile | 2020-09-01-hybrid | Profile to use for this cloud. |
 
 2. Open your command-line tool such as Windows PowerShell or Bash and sign in. Use the following command:
 
@@ -61,7 +61,7 @@ The following code snippets are written for a Windows machine using the PowerShe
         --suffix-keyvault-dns ".vault.<local>.<FQDN>" `
         --endpoint-active-directory-graph-resource-id "https://graph.windows.net/" `
         --endpoint-sql-management https://notsupported  `
-        --profile 2019-03-01-hybrid
+        --profile 2020-09-01-hybrid
     ```
 
 4. Get your subscription ID and resource group that you want to use for the SPN.
@@ -235,4 +235,4 @@ When the action runs, verify that it has run successfully.
 - Find more actions in the [GitHub Marketplace](https://github.com/marketplace).
 - Learn about [Common deployments for Azure Stack Hub](azure-stack-dev-start-deploy-app.md)  
 - Learn about [Use Azure Resource Manager templates in Azure Stack Hub](azure-stack-arm-templates.md)  
-- Review the DevOps hybrid cloud pattern, [DevOps pattern](https://docs.microsoft.com/hybrid/app-solutions/pattern-cicd-pipeline)
+- Review the DevOps hybrid cloud pattern, [DevOps pattern](/hybrid/app-solutions/pattern-cicd-pipeline)

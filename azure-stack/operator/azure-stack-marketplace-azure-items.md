@@ -3,9 +3,9 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/04/2021
+ms.date: 05/21/2021
 ms.author: sethm
-ms.reviewer: gara
+ms.reviewer: avishwan
 ms.lastreviewed: 12/9/2020
 
 # Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
@@ -54,7 +54,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | Image | Item name | Description | Publisher |
 | --- | --- | --- | --- |
 | ![Clear Linux OS](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Clear Linux OS](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | A reference Linux distribution optimized for Intel Architecture. | Clear Linux Project |
-| ![CoreOS Linux (Stable)](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS Linux (Stable)](https://coreos.com/os/docs/latest/booting-on-azure.html) | CoreOS is a modern and minimal Linux distribution, providing an easy way to run containers, manage clusters and seamlessly update your servers - all components that enable warehouse-scale compute. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server is the world's most popular Linux for cloud environments. | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux is one of the most popular Linux distributions. | credativ |
 | ![Oracle Linux](media/azure-stack-marketplace-azure-items/oracle.png) | [Oracle Linux](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oracle-linux) | The Oracle Linux operating system is engineered for open cloud infrastructure. It delivers leading performance, scalability, and reliability for enterprise SaaS and PaaS workloads, as well as traditional enterprise apps. | Oracle |
@@ -63,7 +62,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![CentOS-based HPC](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based HPC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos-hpc) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic)  |
 | ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 11 SP4. | SUSE |
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 12 SP4. | SUSE |
-| ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 15. | SUSE |
 
 ## Third-Party BYOL, free, trial images, and solution templates
 
@@ -189,7 +187,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/redis.png" border="false"::: | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Powerful open-source key-value store. | Bitnami |
 | ![Redis High Availability](media/azure-stack-marketplace-azure-items/redis.png) | [Redis High Availability](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis-cluster) | Powerful open-source key-value store. This solution template requires your Azure Stack Hub to be at version 1807 or later, and also requires **Debian 9** and **Custom Script for Linux 2.0 Extension**. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/redmine.png" border="false"::: | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Powerful project management web app. | Bitnami |
-| ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Project management app preconfigured with Agile plugin. | Bitnami |
 | ![ReportServer Community](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer Community](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Open-source business intelligence platform. | Bitnami |
 | ![ReportServer Enterprise](media/azure-stack-marketplace-azure-items/reportserverenterprise.png) | [ReportServer Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserverenterprise) | Enterprise business intelligence platform. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/resourcespace.png" border="false"::: | [ResourceSpace](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.resourcespace) | Digital asset management system for improved collaboration. | Bitnami |
@@ -248,6 +245,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://www.suse.com/releasenotes/x86_64/SUSE-MANAGER-PROXY/3.1/) | Best-in-class open-source infrastructure management. | SUSE |
 | ![Teradici Cloud Access Software](media/azure-stack-marketplace-azure-items/teradici.png) | [Teradici Cloud Access Software](https://azuremarketplace.microsoft.com/marketplace/apps/teradici.teradici_cas_azure_stack) | Powered by PCoIP&reg; technology, Cloud Access Software delivers remote desktops and workstations from Azure Stack to any device, anywhere. Consolidate data storage, enhance collaboration, secure data, streamline desktop management, and more. | Teradici |
 | ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Cloud Key Manager](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Leveraging Microsoft Azure and other cloud provider Bring Your Own Key (BYOK) APIs, the CipherTrust Cloud Key Manager reduces key management complexity and operational costs by giving you multicloud lifecycle control of encryption keys with centralized management and visibility. | Thales eSecurity |
-| ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam&reg; Backup & Replication&trade; helps businesses achieve comprehensive data protection for all workloads — virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
+| ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam&reg; Backup & Replication&trade; helps businesses achieve comprehensive data protection for all workloads -- virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
 | ![Versa Operating System (VOS)](media/azure-stack-marketplace-azure-items/versa.png) | [Versa Operating System (VOS)](https://azuremarketplace.microsoft.com/marketplace/apps/versanetworks.versa-operating-system?tab=Overview) | The Versa Operating System (VOS) is a comprehensive and advanced next-generation virtual appliance that brings the power of SD-WAN, SD-Routing and SD-Security into the Microsoft Azure cloud. | Versa Networks |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown&reg; Software technology provides businesses with continuous access to their company data via their Business Continuity as a Service (BCaaS)&trade; architecture, protecting apps, and transactions, if network interruptions occur that would normally cripple the enterprise. | ZeroDown Software |

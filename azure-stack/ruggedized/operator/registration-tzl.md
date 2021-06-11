@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2020
+ms.date: 06/02/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
@@ -35,9 +35,6 @@ The registration process consists of the following steps:
 4. Activate Azure Stack Hub.
 
 If a system is connected to the Azure cloud, all four steps can be executed with a single script. If the system is disconnected, the administrator must perform the steps individually.
-
-> [!NOTE]
-> For MDC, each of the Azure Stack Hub systems must be registered separately. Therefore, the following instructions must be performed three times.
 
 ## Prerequisites
 

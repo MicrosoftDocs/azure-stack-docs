@@ -1,29 +1,16 @@
 ---
-title: Encrypt etcd secrets on AKS on Azure Stack HCI
-description: Learn how to encrypt etcd secrets on AKS on Azure Stack HCI
+title: Encrypt etcd secrets in AKS on Azure Stack HCI
+description: Learn how to encrypt etcd secrets in AKS on Azure Stack HCI
 author: aabhathipsay
 ms.topic: how-to
 ms.date: 02/02/2021
-ms.author: aaabhathipsay
+ms.author: aathipsa
 ms.reviewer: 
 ---
 
-# Encrypt etcd secrets on AKS on Azure Stack HCI clusters
+# Encrypt etcd secrets in AKS on Azure Stack HCI clusters
 
-A secret in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in _etcd_, which is a highly available key values store used as the Kubernetes backing store for all cluster data. When you enable encryption of etcd secrets, you can [encrypt secret data at rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) and also automate the management and rotation of encryption keys. 
-
-> [!NOTE]
-> In this preview release, encryption of etcd secrets is available only for new workload clusters. 
-
-## Enable encryption of etcd secrets
-
-Use the `-enableSecretsEncryption` parameter of the [New-AksHciCluster](./new-akshcicluster) command to enable encryption of etcd secrets and automate encryption key rotation as shown below: 
-
-```powershell
-New-AksHciCluster -name mynewcluster -enableSecretsEncryption
-```
-
-Once you deploy a new cluster with the `-enableSecretsEncryption` parameter, you cannot disable this feature.
+A secret in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in _etcd_, which is a highly available key values store used as the Kubernetes backing store for all cluster data. AKS on Azure Stack HCI comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
 
 ## Monitor and troubleshoot
 
@@ -42,6 +29,6 @@ To simplify application deployment on Kubernetes clusters, review the [documenta
 
 ## Next steps
 
-In this how-to guide, you learned how to enable the encryption of etcd secrets for new workload clusters. Next, you can:
+In this how-to guide, you learned how to monitor and troubleshoot the encryption of etcd secrets for management and workload clusters. Next, you can:
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
