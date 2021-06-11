@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 03/20/2021
+ms.date: 06/11/2021
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -23,13 +23,15 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2021 Q1 build number is **91.0.2.12**
+The App Service on Azure Stack Hub 2021 Q1 build number is **91.0.2.20**
 
 ## Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 2021 Q1:
+
+- Ensure your Azure Stack Hub is updated to 2102.
 
 - Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
 
@@ -73,9 +75,9 @@ Azure App Service on Azure Stack Update 2021 Q1 includes the following improveme
   - Updated Kudu to 90.21106.4900
 
 - **Updates to underlying operating system of all roles**:
-  - [2021-03 Cumulative Update for Windows Server 2016 for x64-based Systems (KB5000803)](https://support.microsoft.com/help/5000803)
-  - [2021-02 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB5001078)](https://support.microsoft.com/help/5001078)
-  - Defender Definition 1.333.538.0
+  - [2021-06 Cumulative Update for Windows Server 2016 for x64-based Systems (KB5003638)](https://support.microsoft.com/help/5003638)
+  - [2021-04 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB5001402)](https://support.microsoft.com/help/5001402)
+  - Defender Definition 1.341.322.0
 
 - **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
 
