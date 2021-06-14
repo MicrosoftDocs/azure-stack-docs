@@ -4,9 +4,9 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/19/2021
+ms.date: 06/14/2021
 ms.author: sethm
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
