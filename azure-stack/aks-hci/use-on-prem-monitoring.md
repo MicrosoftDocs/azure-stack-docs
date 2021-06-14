@@ -70,7 +70,7 @@ Note that the monitoring solution is installed in a separate namespace called _m
 
 ### Uninstall the monitoring solution using PowerShell
 
-Run the [Uninstall-AksHciMonitoring](./uninstall-akshcimonitoring.md) PowerShell command to uninstall the monitoring solution:
+Run the `Uninstall-AksHciMonitoring` PowerShell command to uninstall the monitoring solution:
 
 ```powershell  
 Uninstall-AksHciMonitoring -Name <target cluster name>
@@ -83,5 +83,5 @@ The uninstall process removes everything including the namespace, StorageClass, 
 You can follow any publicly available guidance for deploying Grafana. You can also view deployment guidance on the [GitHub AKS-HCI-Apps Grafana page](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md) that goes through the Grafana deployment and configuration to connect it to an AKS on Azure Stack HCI Prometheus instance. This GitHub page also describes how to add Grafana dashboards that we have made available for AKS on Azure Stack HCI.
 
 ## Next steps
-- [View logs to collect and review data](./view.logs.md)
+- [View logs to collect and review data](./view-logs.md)
 - [Get kubelet logs from cluster nodes](./get-kubelet-logs.md)
