@@ -45,6 +45,15 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: You must uninstall AKS and ACR prior to updating to 2102. Please restart the update after uninstalling these services.
 - Occurrence: Any stamp that has ACR or AKS installed will experience this failure.
 
+## Portal
+
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscription types **Metering** and **Consumption** have been disabled and should not be used. If you have resources in them, an alert is generated until those resources are removed.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
+
 ## Networking
 
 ### Virtual network gateway
