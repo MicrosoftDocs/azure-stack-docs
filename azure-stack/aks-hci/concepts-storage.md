@@ -86,9 +86,7 @@ spec:
         claimName: aks-hci-vhdx 
 ```
 
-For mounting a volume in a Windows container, specify the drive letter and path. 
-
-Here's an example:
+The following example shows how to mount a volume in a Windows container and specify the drive letter and path. 
 
 ```yaml
 volumeMounts: 
