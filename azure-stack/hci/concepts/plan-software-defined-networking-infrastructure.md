@@ -141,7 +141,7 @@ Machines configured to connect to multiple networks, such as the physical hosts,
 ## Switches and routers
 To help configure your physical switch or router, a set of sample configuration files for a variety of switch models and vendors is available at the [Microsoft SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SwitchConfigExamples). A readme file and tested command-line interface (CLI) commands for specific switches are provided.
 
-For detailed switch and router requirements, see [SDN hardware requirements](system-requirements.md#sdn-hardware-requirements).
+For detailed switch and router requirements, see the SDN hardware requirements section above.
 
 ## Compute
 All Hyper-V hosts must have the appropriate operating system installed, be enabled for Hyper-V, and use an external Hyper-V virtual switch with at least one physical adapter connected to the management logical network. The host must be reachable via a management IP address assigned to the management host vNIC.
