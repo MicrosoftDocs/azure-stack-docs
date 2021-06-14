@@ -12,29 +12,20 @@ ms.author: dawhite
 
 After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster using Windows Admin Center. To instead use PowerShell, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
 
-Before proceeding to the Kubernetes cluster create wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md) if you haven't already. The Kubernetes cluster create wizard can be reached through the [All Connections](#create-a-kubernetes-cluster-from-the-all-connections-page) page or the [Azure Kubernetes Service host dashboard](#create-a-kubernetes-cluster-from-the-azure-kubernetes-service-host-dashboard).
+Before proceeding to the Kubernetes cluster create wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md) if you haven't already. The Kubernetes cluster create wizard can be reached through the [Azure Kubernetes Service host dashboard](#create-a-kubernetes-cluster-from-the-azure-kubernetes-service-host-dashboard).
 
-## Create a Kubernetes cluster from the All Connections page 
+## Create a Kubernetes cluster from the Azure Kubernetes Service host dashboard
 
-There are two ways to create a Kubernetes cluster in Windows Admin Center. One of these options is to do so from the **All Connections** page. Follow these steps, then proceed to the [Kubernetes cluster create wizard](#the-kubernetes-cluster-create-wizard) section: 
-
-1. To begin creating a Kubernetes cluster in Windows Admin Center, press the **Add** button on the gateway screen. 
-2. In the **Add or create resources** panel, under **Kubernetes cluster (preview)**, select **Create new** to launch the Kubernetes cluster wizard. While the “Add” button under Kubernetes clusters is present, it is nonfunctional. At any point during the Kubernetes cluster create process, you may exit the wizard, but note that your progress won't be saved. 
-
-    ![Illustrates the Add or create resources blade in Windows Admin Center, which now includes the new tile for Kubernetes clusters.](.\media\create-kubernetes-cluster\add-connection.png)
-  
-## Create a Kubernetes cluster from the Azure Kubernetes Service host dashboard  
-
-You may also create a Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool when you are connected to the system that has an Azure Kubernetes Service host deployed on it. Follow these steps, then proceed to the [Kubernetes cluster create wizard](#the-kubernetes-cluster-create-wizard) section: 
+You can create a Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool when you are connected to the system that has an Azure Kubernetes Service host deployed on it. Follow the steps below and then proceed to the [Kubernetes cluster create wizard](#the-kubernetes-cluster-create-wizard) section: 
 
 1. Connect to the system where you wish to create your Kubernetes cluster and navigate to the **Azure Kubernetes Service** tool. This system should already have an Azure Kubernetes Service host set up.
 
 2. Select the **Add cluster** button under the **Kubernetes cluster** heading.
 
    ![Illustrates the Azure Kubernetes Service tool dashboard that appears after you set up an Azure Kubernetes Service host.](.\media\setup\dashboard.png)
-  
+   
 ## The Kubernetes cluster create wizard
-You've reached the Kubernetes cluster create wizard through the All Connections page or the Azure Kubernetes Service tool. Let's get started:  
+You've reached the Kubernetes cluster create wizard through the Azure Kubernetes Service tool. Let's get started:  
 
 1. Review the prerequisites for the system that will host the Kubernetes cluster and those for Windows Admin Center. When finished, select **Next**. 
 
