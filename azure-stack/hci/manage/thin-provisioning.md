@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/01/2021
+ms.date: 06/11/2021
 ---
 
 # Storage thin provisioning in Azure Stack HCI
@@ -52,7 +52,7 @@ New-Volume -FriendlyName <name> -Size <size> -ProvisioningType Thin
 Check the volume provisioning type:
 
 ```PowerShell
-Get-Volume -FriendlyName <name> | ft FriendlyName,ProvisioningType 
+Get-VirtualDisk -FriendlyName <name of virtual disk> | ft FriendlyName,ProvisioningType 
 ```
 
 ### Option 2: Set pool default provisioning type to thin

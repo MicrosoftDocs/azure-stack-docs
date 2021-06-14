@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 06/10/2021
 ms.author: sethm
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
 
 # Intent: As an Azure Stack Hub user, I want to know what's new in the latest release so that I can plan my update.

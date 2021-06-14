@@ -4,9 +4,9 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/19/2021
+ms.date: 06/14/2021
 ms.author: sethm
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
@@ -66,6 +66,15 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers.
 - Remediation: You must uninstall AKS and ACR prior to updating to 2102. Please restart the update after uninstalling these services.
 - Occurrence: Any stamp that has ACR or AKS installed will experience this failure.
+
+## Portal
+
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscription types **Metering** and **Consumption** have been disabled and should not be used. If you have resources in them, an alert is generated until those resources are removed.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
 ## Networking
 
