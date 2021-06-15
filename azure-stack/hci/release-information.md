@@ -27,7 +27,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 17784.1797   | 2021-06-15            | [KB 5003704](https://support.microsoft.com/topic/june-15-2021-preview-update-kb5003704-85aa4f17-c529-435c-ac10-5cf4d43dede0) |
 | 17784.1768   | 2021-06-08            | [KB 5003643](https://support.microsoft.com/topic/june-08-2021-security-update-kb5003643-5a4dcf99-a4fa-4326-b971-6817bf683959) |
 | 17784.1762   | 2021-06-08            | [KB 5004179](https://support.microsoft.com/topic/june-08-2021-servicing-stack-update-kb5004179-54882195-7583-45f3-a9da-520e4f8aa1db) |
 | 17784.1737   | 2021-05-20            | [KB 5003237](https://support.microsoft.com/topic/may-18-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) |
