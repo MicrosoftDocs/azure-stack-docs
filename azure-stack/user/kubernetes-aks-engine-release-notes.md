@@ -15,7 +15,7 @@ ms.lastreviewed: 06/15/2021
 ---
 
 # Release notes for the AKS engine on Azure Stack Hub
-# Temp 2102
+
 ::: moniker range=">=azs-2102"
 *Applies to version v0.63.0 of the AKS engine.*
 
@@ -135,8 +135,6 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 -   https://github.com/Azure/aks-engine/releases/tag/v0.60.1
 
 ::: moniker-end
-
-# Temp before 2005 - 2008
 
 ::: moniker range=">=azs-2005 <=azs-2008"
 *Applies to version v0.60.1 of the AKS engine.*
@@ -259,7 +257,6 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 -   https://github.com/Azure/aks-engine/releases/tag/v0.60.1
 
 ::: moniker-end
-# Temp 1910 - 2002
 
 ::: moniker range=">=azs-1910 <=azs-2002"
 *Applies to version v0.55.4 of the AKS engine.*
@@ -388,8 +385,6 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 - https://github.com/Azure/aks-engine/releases/tag/v0.55.4
 
 ::: moniker-end
-
-# Temp Before 1908
 
 ::: moniker range="<=azs-1908"
 *Applies to version 0.48.0 or earlier of the AKS engine.*
