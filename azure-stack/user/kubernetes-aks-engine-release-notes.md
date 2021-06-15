@@ -61,12 +61,9 @@ As explained in the AKS engine for Azure Stack Hub documentation, deploying a Ku
 
 New versions of these are available with this update:
 
--   The Azure Stack Hub operator will need to download the new AKS Base Images into the stamp marketplace:
-    -   AKS Base Ubuntu 16.04-LTS Image Distro, January 2021 (2021.01.28)
-    -   AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q1 (2021.01.28),
-    -   AKS Base Windows Image (17763.1697.210129)
+-   Check the table [AKS engine and Azure Stack version mapping](#aks-engine-and-azure-stack-version-mapping) for the needed AKS base images.
 
-        Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md?view=azs-2008)
+    Follow the instructions in the following article [Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md?view=azs-2008)
 
 -   The Kubernetes cluster administrator (normally a tenant user of Azure Stack Hub) will need to download the new aks-engine version 0.60.1. See instructions in the following article, [Install the AKS engine on Linux in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-linux.md?view=azs-2008) (or equivalent Windows article). You can follow the same process you used to install the cluster for the first time. The update will overwrite the previous binary. For example, if you used the get-akse.sh script, follow the same steps outlined in this section [Install in a connected environment](./azure-stack-kubernetes-aks-engine-deploy-linux.md?view=azs-2008#install-in-a-connected-environment). The same process applies if you're installing in on a Windows system, article [Install the AKS engine on Windows in Azure Stack Hub](./azure-stack-kubernetes-aks-engine-deploy-windows.md?view=azs-2008).
 
