@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 03/19/2021
+ms.date: 06/15/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/16/2020
@@ -95,7 +95,7 @@ Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using 
 ### [Az modules](#tab/az1)
 
   ```powershell
-  Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
+  Install-Module -Name Azs.Syndication.Admin
   ```
 
 ### [AzureRM modules](#tab/azurerm1)
@@ -139,7 +139,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
    ```powershell
-   Install-Module -Name Azs.Syndication.Admin -AllowPrerelease -PassThru
+   Install-Module -Name Azs.Syndication.Admin
    ```
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
