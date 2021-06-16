@@ -15,9 +15,9 @@ zone_pivot_groups: state-connected-disconnected
 ---
 # Give an app access to Azure Stack Hub resources
 
-An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. 
+An application that deploys or configures resources through Azure Resource Manager must be represented by its own identity, known as a security principal. Just as a user is represented by a user principal, an app is represented by a service principal. 
 
-The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, add the app to the "reader" role at the appropriate scope, limiting the configuration management app to read-only access.
+The identity can also be used to delegate only the necessary permissions to the user or app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. The app would first be registered in the directory, then added to the "reader" role at the appropriate scope, limiting the app to read-only access.
 
 ## Overview
 
@@ -64,7 +64,7 @@ In this section, you register your app in your Azure AD tenant using the Azure p
 10. When done, select **Add**.
 11. The value of the secret displays. Copy and save this value in another location, because you can't retrieve it later. You provide the secret with the Application ID in your client app for sign-in.
 
-    ![Saved key in client secrets](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
+    ![Saved key in client secrets](./media/give-app-access-to-resources/create-client-secret.png)
 
 Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity.
 ::: zone-end
@@ -453,7 +453,7 @@ The type of resource you choose also establishes the *access scope* for the app.
    > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in roles.  
 2. Navigate to the resource you wish to allow the app to access. In this example, assign the app's service principal to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource like a virtual machine.
 
-     ![Select subscription for assignment](./media/azure-stack-create-service-principal/select-subscription.png)
+     ![Select subscription for assignment](./media/give-app-access-to-resources/select-subscription.png)
 
 3. Select the **Access Control (IAM)** page, which is universal across all resources that support RBAC.
 4. Select **+ Add**
@@ -462,11 +462,11 @@ The type of resource you choose also establishes the *access scope* for the app.
 7. Once you find the app, select it and it will show under **Selected members**.
 8. Select **Save** to finish assigning the role.
 
-     [![Assign role](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
+     [![Assign role](media/give-app-access-to-resources/assign-role.png)](media/give-app-access-to-resources/assign-role.png#lightbox)
 
 9. When finished, the app will show in the list of principals assigned for the current scope, for the given role.
 
-     [![Assigned role](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
+     [![Assigned role](media/give-app-access-to-resources/assigned-role.png)](media/give-app-access-to-resources/assigned-role.png#lightbox)
 
 Now that you've given your app an identity and authorized it for resource access, you can enable your script or code to sign in and securely access Azure Stack Hub resources.  
 
