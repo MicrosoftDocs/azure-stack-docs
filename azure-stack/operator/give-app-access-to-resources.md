@@ -4,7 +4,7 @@ description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 06/09/2021
+ms.date: 06/16/2021
 ms.lastreviewed: 06/09/2021
 ms.custom: contperf-fy21q4
 zone_pivot_groups: state-connected-disconnected
@@ -17,14 +17,14 @@ zone_pivot_groups: state-connected-disconnected
 
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by its own identity. Just as a user is represented by a security principal called a user principal, an app is represented by a service principal. 
 
-The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, grant the "reader" role to the app's service principal, and limit the configuration management app to read-only access.
+The service principal identity allows you to delegate only the necessary permissions to the app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. In this scenario, you would register the app in your directory, add the app to the "reader" role at the appropriate scope, limiting the configuration management app to read-only access.
 
 ## Overview
 
 Like a user, an app must present credentials during authentication, which requires two elements:
 
 - An **Application ID**, sometimes referred to as a Client ID. A GUID that uniquely identifies the app's registration in your Active Directory tenant.
-- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate thumbprint (which uses its public key).
+- A **secret**. You can either generate a client secret string (similar to a password), or specify an X509 certificate thumbprint (which uses its public key).
 
 Running an app under its own identity is preferable to running it under the user's identity for the following reasons:
 
@@ -37,7 +37,7 @@ You start by creating a new app registration in your directory, which creates an
 - **Azure Active Directory (Azure AD)**: Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal for Azure AD app registration.
 - **Active Directory Federation Services (AD FS)**: AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell for AD FS app registration.
 
-After registering the app, you learn how to assign a role to its service principal, limiting its resource access.
+After registering the app you learn how to assign it to a role, limiting its resource access.
 
 ::: zone pivot="state-disconnected"
 <!-- this is intentionally a noop -->
@@ -50,7 +50,7 @@ If you deployed Azure Stack Hub with Azure AD as your identity management servic
 
 ### <a name="create-app-registration-client-secret-aad"></a>Create an app registration that uses a client secret credential
 
-In this section, you register your app in your Azure AD tenant using the Azure portal. In following example you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
+In this section, you register your app in your Azure AD tenant using the Azure portal. In following example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com) using your Azure account.
 2. Select **Azure Active Directory** > **App registrations** > **New registration**.
@@ -84,7 +84,7 @@ When creating a certificate credential, the following requirements must be met:
  - The certificate format must be in PFX file, as both the public and private keys are required. Windows servers use .pfx files that contain the public key file (TLS/SSL certificate file) and the associated private key file.
  - Your Azure Stack Hub infrastructure must have network access to the certificate authority's Certificate Revocation List (CRL) location published in the certificate. This CRL must be an HTTP endpoint.
 
-Once you have a certificate, use the PowerShell script below to register your app and sign in using the service principal. Substitute your own values for the following placeholders:
+Once you have a certificate, use the PowerShell script below to register your app and sign in using the app's identity. Substitute your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
@@ -109,7 +109,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
     
-    # Use the privileged endpoint to create the new app registration (and service principal object)
+    # Use the privileged endpoint to create the new app registration
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -ClientCertificates $using:cert}
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
     $Session | Remove-PSSession
@@ -137,7 +137,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
     
     ```
 
-2. After the script finishes, it displays the app registration info, including the service principal's credentials. The `ClientID` and `Thumbprint` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
+2. After the script finishes, it displays the app registration info. The `ClientID` and `Thumbprint` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -168,7 +168,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
     
-    # Use the privileged endpoint to create the new app registration (and service principal object)
+    # Use the privileged endpoint to create the new app registration
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -ClientCertificates $using:cert}
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
     $Session | Remove-PSSession
@@ -195,7 +195,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     $SpObject
     ```
 
-2. After the script finishes, it displays the app registration info, including the service principal's credentials. The `ClientID` and `Thumbprint` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
+2. After the script finishes, it displays the app registration info. The `ClientID` and `Thumbprint` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -235,7 +235,7 @@ Update the certificate credential using PowerShell, substituting your own values
 
      # Create a self-signed certificate for testing purposes. 
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
-     # In production, use Get-Item to retreive a managed certificate from the certificate store.
+     # In production, use Get-Item to retrieve a managed certificate from the certificate store.
      # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
      # $Cert = Get-Item "<YourCertificateLocation>"
 
@@ -282,7 +282,7 @@ Now you create another app registration, but this time specify a client secret c
     # Create a PSSession to the Privileged Endpoint VM
     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the privileged endpoint to create the new app registration (and service principal object)
+    # Use the privileged endpoint to create the new app registration
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
     $Session | Remove-PSSession
@@ -307,7 +307,7 @@ Now you create another app registration, but this time specify a client secret c
     $SpObject
     ```
 
-2. After the script finishes, it displays the app registration info, including the service principal's credentials. The `ClientID` and `ClientSecret` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
+2. After the script finishes, it displays the app registration info. The `ClientID` and `ClientSecret` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
@@ -331,7 +331,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     # Create a PSSession to the Privileged Endpoint VM
     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the privileged endpoint to create the new app registration (and service principal object)
+    # Use the privileged endpoint to create the new app registration
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
     $Session | Remove-PSSession
@@ -356,7 +356,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     $SpObject
     ```
 
-2. After the script finishes, it displays the app registration info, including the service principal's credentials. The `ClientID` and `ClientSecret` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
+2. After the script finishes, it displays the app registration info. The `ClientID` and `ClientSecret` are authenticated, and later authorized for access to resources managed by Azure Resource Manager.
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
@@ -409,7 +409,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
 
 ### Remove an app registration
 
-Now you'll see how to remove/delete an app registration from your directory, and its associated service principal object, using PowerShell. 
+Now you'll see how to remove an app registration from your directory using PowerShell. 
 
 Substitute your own values for the following placeholders:
 
