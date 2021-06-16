@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/14/2021
+ms.date: 06/16/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -41,8 +41,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Update to 2102 fails during pre-update checks for AKS/ACR
 
-- Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers.
-- Remediation: You must uninstall AKS and ACR prior to updating to 2102. Please restart the update after uninstalling these services.
+- Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers who plan to upgrade to 2102 or apply any hotfixes.
+- Remediation: Uninstall AKS and ACR prior to updating to 2102, or prior to applying any hotfixes after updating to 2102. Please restart the update after uninstalling these services.
 - Occurrence: Any stamp that has ACR or AKS installed will experience this failure.
 
 ## Portal
