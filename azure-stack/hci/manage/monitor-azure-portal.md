@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 06/16/2021
 ---
 
-# Configure Azure portal to monitor Azure Stack HCI clusters
+# Configure Azure portal to monitor Azure Stack HCI clusters (preview)
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 

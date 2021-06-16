@@ -4,7 +4,7 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/15/2021
+ms.date: 06/16/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/15/2021
@@ -54,10 +54,10 @@ Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
 As explained in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires:
 
--   The aks-engine binary (required)
--   AKS Base Ubuntu 16.04-LTS Image Distro (required)
--   AKS Base Ubuntu 18.04-LTS Image Distro (optional)
--   AKS Base Windows Server Image Distro (optional)
+- The aks-engine binary (required)
+- AKS Base Ubuntu 16.04-LTS Image Distro (deprecated - no longer use, change in API Model to use 18.04 instead)
+- AKS Base Ubuntu 18.04-LTS Image Distro (required for Linux agents)
+- AKS Base Windows Server Image Distro (required for Windows agents)
 
 New versions of these are available with this update:
 
