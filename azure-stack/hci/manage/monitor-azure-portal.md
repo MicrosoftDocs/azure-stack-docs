@@ -6,22 +6,19 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/03/2021
+ms.date: 06/16/2021
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
-This topic explains how to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md). You can [access these features in preview](https://aka.ms/hci-insights) from Azure portal.
-
-   > [!IMPORTANT]
-   > These features will be available to try in public preview after June 15, 2021.
+This article explains how to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
-   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you register your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration) after June 15, 2021.
+   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration).
 
 ## Logs capability (preview)
 
