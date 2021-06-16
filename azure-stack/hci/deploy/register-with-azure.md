@@ -106,7 +106,9 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 ## Register a cluster using Windows Admin Center
 
-The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. In addition, the user must be assigned an Azure Owner or User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
+The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. 
+
+If you're running Azure Stack HCI, version 21H2 Preview, the user must be assigned an Azure Owner or User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
 
    > [!WARNING]
    > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
@@ -136,7 +138,7 @@ The easiest way to register your Azure Stack HCI cluster is using Windows Admin 
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
    > [!IMPORTANT]
-   > Only Azure users with Owner or User Access Administrator roles can register an Azure Stack HCI cluster with Azure Arc integration.
+   > If you're running Azure Stack HCI, version 21H2 Preview, only Azure users with Owner or User Access Administrator roles can register an Azure Stack HCI cluster with Azure Arc integration.
 
 1. Install the required cmdlets on your management PC. If you're registering a cluster deployed from the current General Availability (GA) or Public Preview image of Azure Stack HCI, simply run the following command. If your cluster was deployed prior to December 10, 2020, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register with Azure.
 
@@ -162,7 +164,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. You can also add the optional `-Region`, `-ResourceName`, `-TenantId`, and `-ResourceGroupName` parameters to this command to specify these values.
 
    > [!NOTE]
-   > Running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
+   > If you're running Azure Stack HCI, version 21H2 Preview, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
 
    Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
@@ -170,9 +172,12 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
    To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 2 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
-## Enabling Azure Arc integration
+## Enabling Azure Arc integration (preview)
 
-If you registered your Azure Stack HCI cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to that date, you'll need to take the following steps to enable Azure Arc integration on the servers.
+If you're running Azure Stack HCI, version 21H2 Preview and you registered your cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to that date, you'll need to take the following steps to enable Azure Arc integration on the servers.
+
+   > [!NOTE]
+   > Azure Arc integration is currently only available in Azure Stack HCI, version 21H2 Preview.
 
 1. Install the latest version of the `Az.StackHCI` module on your management PC:
 
