@@ -172,7 +172,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
    To complete the registration process, you need to authenticate (sign in) using your Azure account. Your account needs to have access to the Azure subscription that was specified in step 2 above in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (like your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
-## Enabling Azure Arc integration (preview)
+## Enabling Azure Arc integration
 
 If you're running Azure Stack HCI, version 21H2 Preview and you registered your cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to that date, you'll need to take the following steps to enable Azure Arc integration on the servers.
 
