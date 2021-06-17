@@ -42,7 +42,7 @@ You must have an Azure subscription to use the Azure portal.
 
 7. Select **Create**. You should see a "Successfully created user" notification in the upper right.
 8. Sign out and sign in to the Azure portal again, with the new account using the password you saved. Change the password when prompted.
-9. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal?view=azs-2102#access-the-portal) with the new account to see the user portal.
+9. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal.md#access-the-portal) with the new account to see the user portal.
 
 ## Create a user account using PowerShell
 
@@ -79,7 +79,7 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
     ```
 
 3. Sign in to the [Azure portal](https://portal.azure.com) with the new user account. Change the password when prompted.
-4. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal?view=azs-2102#access-the-portal) with the new account to see the user portal.
+4. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal.md#access-the-portal) with the new account to see the user portal.
 
 ## Next steps
 - Learn how to create and test a subscription by [subscribing to an offer](../user/azure-stack-subscribe-services.md)
