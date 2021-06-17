@@ -46,7 +46,7 @@ This section describes scenarios in which validation is also needed or useful.
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
 > [!NOTE]
-> We recommend to deploy and manage your configuration with Network ATC, which eliminates most of the configuration challenges that the Validate-DCB tool checks for. To learn more about the preview of Network ATC, which provides an intent-based approach to host network deployment, see [Simplify host networking with Network ATC](./preview-channel/network-atc.md).
+> We recommend to deploy and manage your configuration with Network ATC, which eliminates most of the configuration challenges that the Validate-DCB tool checks for. To learn more about the preview of Network ATC, which provides an intent-based approach to host network deployment, see [Simplify host networking with Network ATC](../manage/network-atc.md).
 
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. With iWARP, DCB is optional. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster
