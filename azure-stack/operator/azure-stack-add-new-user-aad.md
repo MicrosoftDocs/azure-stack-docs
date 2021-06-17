@@ -25,13 +25,13 @@ You must have an Azure subscription to use the Azure portal.
 2. Using the **Directory + Subscription** filter icon in the upper right, switch to the Azure AD directory tenant you're using for Azure Stack Hub.
 3. Using the search bar at the top, search for and select the **Azure Active Directory** service. 
 4. In the left pane, select **Users**.
-5. On the **User** page, select **+ New user** in the upper left.
+5. On the **Users** page, select **+ New user**.
 
-    ![Users - All users page with New user highlighted](media/azure-stack-add-new-user-aad/new-user-all-users.png)
+    [![Users - All users page with New user highlighted](media/azure-stack-add-new-user-aad/new-user-all-users.png)](media/azure-stack-add-new-user-aad/new-user-all-users.png#lightbox)
 
 6. On the **New user** page, select **Create user** then fill in the required info:
 
-    ![Add new user, User page with user info](media/azure-stack-add-new-user-aad/new-user-user.png)
+    [![Add new user, User page with user info](media/azure-stack-add-new-user-aad/new-user-user.png)](media/azure-stack-add-new-user-aad/new-user-user.png#lightbox)
 
    - **User name (required)**: The identifier used for sign in. For example, mary@contoso.com.
        The domain part of the user name must use either the initial default domain name, <_yourdomainname_>.onmicrosoft.com, or a custom domain name, such as contoso.com. For more info on how to create a custom domain name, see [How to add a custom domain name to Azure AD](/azure/active-directory/fundamentals/add-custom-domain).
@@ -40,8 +40,8 @@ You must have an Azure subscription to use the Azure portal.
    - **Groups and roles**: Make sure the **User** directory role is selected.
    - **Settings** and **Job info**: Optionally, you can add more info about the user. You can also add user info later. For more details, see [How to add or change user profile information](/azure/active-directory/fundamentals/active-directory-users-profile-azure-portal).
 
-7. Select **Create**. You should see a "Successfully create user" notification in the upper right.
-8. Sign in to the Azure portal with the new account. Change the password when prompted.
+7. Select **Create**. You should see a "Successfully created user" notification in the upper right.
+8. Sign out and sign in to the Azure portal with the new account, using the password you saved. Change the password when prompted.
 9. Sign in to `https://portal.local.azurestack.external` with the new account to see the user portal.
 
 ## Create a user account using PowerShell
