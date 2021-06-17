@@ -58,25 +58,25 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 2. Run the following cmdlets to sign in and create the user account:
 
     - If your directory **doesn't require** multi-factor authentication, use this sequence to authenticate:
-    ```powershell
-    # Wait for the prompt, then sign in using your Azure AD credentials
-    $aadcred = get-credential
-    Connect-AzureAD -credential $aadcred
-    ```
+        ```powershell
+        # Wait for the prompt, then sign in using your Azure AD credentials
+        $aadcred = get-credential
+        Connect-AzureAD -credential $aadcred
+        ```
 
     - If your directory **requires** multi-factor authentication, use this sequence to authenticate:
-    ```powershell
-    # Wait for the prompt, then sign in using your Azure AD credentials and MFA code
-    Connect-AzureAD -Confirm
-    ```
+        ```powershell
+        # Wait for the prompt, then sign in using your Azure AD credentials and MFA code
+        Connect-AzureAD -Confirm
+        ```
 
     - Now that you've authenticated, complete the sequence by adding the new user:
-    ```powershell
-    # Create the new user account (be sure to replace all <placeholder> values first)
-    $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-    $passwordProfile.Password = "<Password>"
-    New-AzureADUser -DisplayName "<UserName>" -PasswordProfile $passwordProfile -UserPrincipalName "<username>@<yourdomainname>" -AccountEnabled $true -MailNickName "<MailNickName>"
-    ```
+        ```powershell
+        # Create the new user account (be sure to replace all <placeholder> values first)
+        $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+        $passwordProfile.Password = "<Password>"
+        New-AzureADUser -DisplayName "<UserName>" -PasswordProfile $passwordProfile -UserPrincipalName "<username>@<yourdomainname>" -AccountEnabled $true -MailNickName "<MailNickName>"
+        ```
 
 3. Sign in to the [Azure portal](https://portal.azure.com) with the new user account. Change the password when prompted.
 4. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal.md#access-the-portal) with the new account to see the user portal.
