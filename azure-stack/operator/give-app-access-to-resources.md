@@ -17,7 +17,7 @@ zone_pivot_groups: state-connected-disconnected
 
 An application that deploys or configures resources through Azure Resource Manager must be represented by its own identity, known as a security principal. Just as a user is represented by a user principal, an app is represented by a service principal. 
 
-The identity can also be used to delegate only the necessary permissions to the user or app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. The app would first be registered in the directory, then added to the "reader" role at the appropriate scope, limiting the app to read-only access.
+The identity can also be used to delegate only the necessary permissions to the user or app. For example, a configuration management app might use Azure Resource Manager to inventory Azure resources. The app would get registered in the directory, then added to the "reader" role at the appropriate scope, limiting the app to read-only access.
 
 ## Overview
 
