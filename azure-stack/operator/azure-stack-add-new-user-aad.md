@@ -21,17 +21,17 @@ Before you can test offers and plans and create resources, you'll need a user ac
 
 You must have an Azure subscription to use the Azure portal.
 
-1. Sign in to [Azure](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 2. Using the **Directory + Subscription** filter icon in the upper right, switch to the Azure AD directory tenant you're using for Azure Stack Hub.
 3. Using the search bar at the top, search for and select the **Azure Active Directory** service. 
 4. In the left pane, select **Users**.
 5. On the **Users** page, select **+ New user**.
 
-    [![Users - All users page with New user highlighted](media/azure-stack-add-new-user-aad/new-user-all-users.png)](media/azure-stack-add-new-user-aad/new-user-all-users.png#lightbox)
+    [![Users - Lists all existing user accounts](media/azure-stack-add-new-user-aad/new-user-all-users.png)](media/azure-stack-add-new-user-aad/new-user-all-users.png#lightbox)
 
 6. On the **New user** page, select **Create user** then fill in the required info:
 
-    [![Add new user, User page with user info](media/azure-stack-add-new-user-aad/new-user-user.png)](media/azure-stack-add-new-user-aad/new-user-user.png#lightbox)
+    [![Users - Add a new user account](media/azure-stack-add-new-user-aad/new-user-user.png)](media/azure-stack-add-new-user-aad/new-user-user.png#lightbox)
 
    - **User name (required)**: The identifier used for sign in. For example, mary@contoso.com.
        The domain part of the user name must use either the initial default domain name, <_yourdomainname_>.onmicrosoft.com, or a custom domain name, such as contoso.com. For more info on how to create a custom domain name, see [How to add a custom domain name to Azure AD](/azure/active-directory/fundamentals/add-custom-domain).
@@ -41,8 +41,8 @@ You must have an Azure subscription to use the Azure portal.
    - **Settings** and **Job info**: Optionally, you can add more info about the user. You can also add user info later. For more details, see [How to add or change user profile information](/azure/active-directory/fundamentals/active-directory-users-profile-azure-portal).
 
 7. Select **Create**. You should see a "Successfully created user" notification in the upper right.
-8. Sign out and sign in to the Azure portal with the new account, using the password you saved. Change the password when prompted.
-9. Sign in to `https://portal.local.azurestack.external` with the new account to see the user portal.
+8. Sign out and sign in to the Azure portal again, with the new account using the password you saved. Change the password when prompted.
+9. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal?view=azs-2102#access-the-portal) with the new account to see the user portal.
 
 ## Create a user account using PowerShell
 
@@ -78,9 +78,9 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
     New-AzureADUser -DisplayName "<UserName>" -PasswordProfile $passwordProfile -UserPrincipalName "<username>@<yourdomainname>" -AccountEnabled $true -MailNickName "<MailNickName>"
     ```
 
-3. Sign in to the Azure portal with the new user account. Change the password when prompted.
-4. Sign in to `https://portal.local.azurestack.external` with the new account to see the user portal.
+3. Sign in to the [Azure portal](https://portal.azure.com) with the new user account. Change the password when prompted.
+4. [Sign in to the Azure Stack Hub user portal](../user/azure-stack-use-portal?view=azs-2102#access-the-portal) with the new account to see the user portal.
 
 ## Next steps
-
-[Add Azure Stack Hub users in AD FS](azure-stack-add-users-adfs.md)
+- Learn how to create and test a subscription by [subscribing to an offer](../user/azure-stack-subscribe-services.md)
+- [Add Azure Stack Hub users in AD FS](azure-stack-add-users-adfs.md)
