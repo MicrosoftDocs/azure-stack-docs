@@ -297,6 +297,8 @@
           href: container-registry-deploy-image-AKS.md
         - name: Supported commands
           href: container-registry-commands.md
+        - name: Get Resource ID
+          href: container-registry-get-resource-id.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
   - name: Deploy apps
