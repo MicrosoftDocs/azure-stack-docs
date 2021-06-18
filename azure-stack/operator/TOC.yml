@@ -306,6 +306,14 @@
       href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: Offer Commvault marketplace item
       href: azure-stack-network-offer-backup-commvault.md
+    - name: Offer Azure Container Registry
+      items:
+      - name: Overview
+      - href: container-registries-overview.md
+      - name: Install Azure Container Registry
+      - href: container-registries-install.md
+      - name: Manage Azure Container Registry
+      - href: container-registries-manage.md
   - name: Offer services
     items:
     - name: Service, plan, offer, subscription overview
