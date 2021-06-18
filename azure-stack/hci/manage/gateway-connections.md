@@ -77,7 +77,7 @@ L3 forwarding enables connectivity between the physical infrastructure in the da
 1. Select a gateway pool for the connection. By default, a gateway pool called “DefaultAll” is created. You can choose this or create a new gateway pool.
 You can also create a gateway pool using `New-NetworkControllerGatewayPool` PowerShell cmdlet.
 1. Select a **Gateway Subnet**. This is a subnet in your virtual network that is used specifically for gateway connections. IP addresses from this subnet will be provisioned on the gateway VMs. If you do not have a gateway subnet configured, please add it to the virtual network and then create the gateway connection. This subnet can be small, for example, with a /30, /29 or /28 prefix.
-1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To know more about gateway capacity and how does L3 connection bandwidth affect it, see [Gateway capacity calculation](https://docs.microsoft.com/windows-server/networking/sdn/gateway-allocation#gateway-capacity-calculation).
+1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To know more about gateway capacity and how does L3 connection bandwidth affect it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation.md#gateway-capacity-calculation).
 1. Add **Routes** for your connection. Each route must have a route metric and a destination subnet prefix. Any packets destined to these subnet prefixes will go over the gateway connection.
 1. Select a network for the **L3 Logical Network**. This represents the physical network that wants to communicate with the virtual network. You must configure this network as an SDN logical network.
 1. Select **L3 Logical Subnet** from the **L3 Logical Network**. Ensure that the subnet has a VLAN configured.
@@ -144,4 +144,4 @@ You can delete a gateway connection if you no longer need it.
 ## Next Steps
 
 - See [Manage tenant virtual networks](tenant-virtual-networks.md).
-- See [Manage tenant logical networks](tenant-logical-networks).
+- See [Manage tenant logical networks](tenant-logical-networks.md).
