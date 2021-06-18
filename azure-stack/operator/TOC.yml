@@ -309,11 +309,11 @@
     - name: Offer Azure Container Registry
       items:
       - name: Overview
-      - href: container-registries-overview.md
+        href: container-registries-overview.md
       - name: Install Azure Container Registry
-      - href: container-registries-install.md
+        href: container-registries-install.md
       - name: Manage Azure Container Registry
-      - href: container-registries-manage.md
+        href: container-registries-manage.md
   - name: Offer services
     items:
     - name: Service, plan, offer, subscription overview
