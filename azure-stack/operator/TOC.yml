@@ -300,10 +300,6 @@
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
       href: azure-stack-redhat-create-upload-vhd.md
-    - name: Offer the AKS engine
-      href: azure-stack-aks-engine.md
-    - name: Offer Kubernetes marketplace item
-      href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: Offer Commvault marketplace item
       href: azure-stack-network-offer-backup-commvault.md
   - name: Offer services
@@ -366,6 +362,14 @@
           href: app-service-release-notes-2020-Q3.md
         - name: 2020 Q2 release notes [May 2020]
           href: app-service-release-notes-2020-Q2.md
+    - name: Azure Container Registry
+      items:
+      - name: Overview
+        href: container-registries-overview.md
+      - name: Install Azure Container Registry
+        href: container-registries-install.md
+      - name: Manage Azure Container Registry
+        href: container-registries-manage.md    
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -426,6 +430,12 @@
           href: https://azure.microsoft.com/updates/?query=IoT%20Hub
       - name: Remove 
         href: iot-hub-rp-remove.md
+    - name: Kubernetes
+      items:
+      - name: Offer the AKS engine
+        href: azure-stack-aks-engine.md
+      - name: Offer Kubernetes marketplace item
+        href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: MySQL on Azure Stack Hub
       items:
       - name: Overview 
