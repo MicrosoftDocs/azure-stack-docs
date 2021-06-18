@@ -294,7 +294,7 @@
         - name: Overview
           href: container-registry-overview.md
         - name: Deploy image to AKS cluster
-          href: container-registry-deploy-image-AKS.md
+          href: container-registry-deploy-image-aks-cluster.md
         - name: Supported commands
           href: container-registry-commands.md
         - name: Get Resource ID
