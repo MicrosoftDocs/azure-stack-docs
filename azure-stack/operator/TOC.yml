@@ -369,7 +369,8 @@
       - name: Install Azure Container Registry
         href: container-registries-install.md
       - name: Manage Azure Container Registry
-        href: container-registries-manage.md    - name: Event Hubs on Azure Stack Hub
+        href: container-registries-manage.md    
+    - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
         href: event-hubs-rp-overview.md
