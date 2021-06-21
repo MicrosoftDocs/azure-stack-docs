@@ -79,20 +79,19 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The alert description has been adjusted to align with progessive backup when the external SMB share is almost full.
 - The number of parallel infrastructure backup repository uploads to the external SMB share is now limited to prevent upload failures.
-- Replace Node-Inaccessible-for-vm-placement alert with alerts to distinguish between host-unresponsive scenarios and hostagent-service-on-node-unresponsive-scenarios
-- Ability for App Service to discover the default NAT IP for outbound connections
+- Replace Node-Inaccessible-for-vm-placement alert with alerts to distinguish between host-unresponsive scenarios and hostagent-service-on-node-unresponsive-scenarios.
+- Ability for App Service to discover the default NAT IP for outbound connections.
 
 ### Changes
 
-- SQL RP and MySQL RP are available to only the subscriptions that have been granted access. If you want to start using these RPs, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers can help you with the deployment or upgrade process.
-
-- The infrastructure backuo resource provider has a new API version that supports restoring progessive backups.
+- SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these RPs, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
+- The infrastructure backup resource provider has a new API version that supports restoring progessive backups.
 
 ### Fixes
 
 - Fixed an issue in which one respository failure when uploading to the external SMB share caused the whole infrastructure backup to fail.
-- Fixed an issues that caused N series VMs with multiple GPUs to fail creation.
-- Fixed an issue when uninstalling a VM extension will null out protected settings for existing VM extensions.
+- Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
+- Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
 
 ## Security updates
 
