@@ -34,7 +34,7 @@ IPsec gateway connections are used to provide secure site-to-site encrypted conn
 1. Select a gateway pool for the connection. By default, a gateway pool called “DefaultAll” is created. You can choose this or create a new gateway pool.
 You can create a new gateway pool using the `New-NetworkControllerGatewayPool` PowerShell cmdlet. This cmdlet can be run directly on the Network Controller VMs or it can be run remotely with credentials.
 1. Select a **Gateway Subnet**. This is a subnet in your virtual network that is used specifically for gateway connections. IP addresses from this subnet will be provisioned on the gateway VMs. If you do not have a gateway subnet configured, add it to the virtual network and then create the gateway connection. This subnet can be small, for example, with a /30, /29 or /28 prefix.
-1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how the IPsec connection bandwidth affects it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation.md#gateway-capacity-calculation).
+1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how the IPsec connection bandwidth affects it, see the section [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation.md).
 1. Provide a **Destination IP** for the connection. This is the public IP address of your remote gateway.
 1. Add **Routes** for your connection. Each route must have a **route metric** and a **destination subnet** prefix. Any packets destined to these subnet prefixes will go over the gateway connection.
 1. Provide an **IPsec shared secret** for the connection. This must match the authentication type (preshared key) and shared secret configured on the remote gateway.
@@ -57,7 +57,7 @@ GRE-based tunnels enable connectivity between tenant virtual networks and extern
 1. Select a gateway pool for the connection. By default, a gateway pool called “DefaultAll” is created. You can choose this or create a new gateway pool.
 You can create a new gateway pool using the `New-NetworkControllerGatewayPool` PowerShell cmdlet. This cmdlet can be run directly on the Network Controller VMs or it can be run remotely with credentials.
 1. Select a **Gateway Subnet**. This is a subnet in your virtual network that is used specifically for gateway connections. IP addresses from this subnet will be provisioned on the gateway VMs. If you do not have a gateway subnet configured, add it to the virtual network and then create the gateway connection. This subnet can be small, for example, with a /30, /29 or /28 prefix.
-1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how does GRE connection bandwidth affect it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation.md#gateway-capacity-calculation).
+1. Provide a value for **Maximum Allowed Inbound bandwidth (KBPS)** and **Maximum Allowed Outbound bandwidth (KBPS)**. Ensure that you provide a value that is commensurate to the total capacity of the gateway. Total capacity is provided by you as part of the gateway deployment. To learn more about gateway capacity and how does GRE connection bandwidth affect it, see [Gateway capacity calculation](/windows-server/networking/sdn/gateway-allocation#gateway-capacity-calculation).
 1. Provide a **Destination IP** for the connection. This is the public IP address of your remote gateway.
 1. Add **Routes** for your connection. Each route must have a route metric and a destination subnet prefix. Any packets destined to these subnet prefixes will go over the gateway connection.
 1. Provide a **GRE key** for the connection. This must match the GRE key configured on the remote gateway.
@@ -141,7 +141,7 @@ You can change connection settings for IPsec, GRE, and L3 connections.
 
 You can delete a gateway connection if you no longer need it.
 
-:::image type="content" source="media/gateway/delete-connection.png" alt-text="SDN gateway" lightbox="media/gateway/delete-connection.png":::
+:::image type="content" source="media/gateway/delete-connection.png" alt-text="Delete SDN gateway connection" lightbox="media/gateway/delete-connection.png":::
 
 1. Under **Tools**, scroll down and select **Gateway connections**.
 1. Click the **Inventory** tab on the right, then select a gateway connection. Click **Delete**.
