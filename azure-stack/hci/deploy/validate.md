@@ -4,7 +4,7 @@ description: Understand cluster validation's importance, and when to run it on a
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: article
-ms.date: 10/16/2020
+ms.date: 06/18/2021
 ---
 
 # Validate an Azure Stack HCI cluster
@@ -45,6 +45,9 @@ This section describes scenarios in which validation is also needed or useful.
 ## Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
+> [!NOTE]
+> We recommend to deploy and manage your configuration with Network ATC, which eliminates most of the configuration challenges that the Validate-DCB tool checks for. To learn more about the preview of Network ATC, which provides an intent-based approach to host network deployment, see [Simplify host networking with Network ATC](network-atc.md).
+
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. With iWARP, DCB is optional. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster
 - Each network port that RDMA traffic passes through on the fabric
@@ -69,7 +72,7 @@ To install and run the Validate-DCB tool:
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
 
     > [!NOTE]
-    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the Get-ExecutionPolicy cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
+    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the Get-ExecutionPolicy cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7&preserve-view=true).
 
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
@@ -129,6 +132,10 @@ To learn more about resolving errors that the Validate-DCB tool identifies, see 
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
 
+You can also install the tool offline. For disconnected systems, use `Save-Module -Name Validate-DCB -Path c:\temp\Validate-DCB` and then move the modules in c:\temp\Validate-DCB to your disconnected system. For more information, see the following video.
+
+> [!VIDEO https://www.youtube.com/embed/T_VzGte3KJc]
+
 ## Validate the cluster
 Use the following steps to validate the servers in an existing cluster in Windows Admin Center.
 
@@ -179,7 +186,7 @@ $Cluster = Get-Cluster -Name 'server-cluster1'
 Test-Cluster -InputObject $Cluster -Verbose
 ```
 
-For more examples and usage information, see the [Test-Cluster](/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
+For more examples and usage information, see the [Test-Cluster](/powershell/module/failoverclusters/test-cluster?view=win10-ps&preserve-view=true) reference documentation.
 
 ## Validate replication for Storage Replica
 If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
