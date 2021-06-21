@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 06/21/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -207,6 +207,9 @@ Get-VMNetworkAdapter -CimSession $ServerList -ManagementOS
 ### Configure IP addresses and VLANs
 
 You can configure either one or two subnets. Two subnets are preferred if you want to prevent overloading of the switch interconnect. For example, SMB storage traffic will stay on a subnet that's dedicated to one physical switch.
+
+> [!NOTE]
+> We recommend using separate subnets in switchless deployments. For more information on switchless connections, see [Using switchless](../concepts/physical-network-requirements.md#using-switchless).
 
 > [!NOTE]
 > While configuring IP addresses, the connection may be interrupted for a few minutes as you might be connected to one of the virtual adapters while obtaining a new IP address.
@@ -473,5 +476,5 @@ Now that you are done, there are still some important tasks you need to complete
 
 ## Next steps
 
-- Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
+- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)

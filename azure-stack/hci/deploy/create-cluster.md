@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 06/21/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -131,6 +131,9 @@ For more information on RDMA and Hyper-V host networking for Azure Stack HCI, se
 
     > [!NOTE]
     > To support VLAN ID configuration for the cluster, all networks adapters on all servers must support the VLANID property.
+
+    > [!NOTE]
+    > We recommend using separate subnets in switchless deployments. For more information on switchless connections, see [Using switchless](../concepts/physical-network-requirements.md#using-switchless).
 
 1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step. It may take several minutes to complete depending on the number of adapters configured.
 
@@ -263,7 +266,7 @@ If Network Controller deployment fails, do the following before you try this aga
 
 ## Next steps
 
-- Register your cluster with Azure. See [Manage Azure registration](../manage/manage-azure-registration.md).
-- Set up a witness. See [Set up a cluster witness](../manage/witness.md).
-- Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure).
+- Set up a witness. [Set up a cluster witness](../manage/witness.md).
+- Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md).
 - You can also deploy Network Controller using SDN Express scripts. See [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md).
