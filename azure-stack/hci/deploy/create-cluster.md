@@ -266,7 +266,7 @@ If Network Controller deployment fails, do the following before you try this aga
 
 ## Next steps
 
-- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure).
+- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
 - Set up a witness. [Set up a cluster witness](../manage/witness.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md).
 - You can also deploy Network Controller using SDN Express scripts. See [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md).

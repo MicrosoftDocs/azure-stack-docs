@@ -476,5 +476,5 @@ Now that you are done, there are still some important tasks you need to complete
 
 ## Next steps
 
-- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure).
+- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
