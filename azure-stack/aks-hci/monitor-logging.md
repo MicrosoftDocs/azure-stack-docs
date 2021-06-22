@@ -95,7 +95,7 @@ The uninstall process removes everything including the namespace, StorageClass, 
 
 You have the option to follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS on Azure Stack HCI Prometheus instance. This GitHub page also describes how to add Grafana dashboards that we have available for AKS on Azure Stack HCI.
 
-## Install monitoring tools
+## Install a simple monitoring option
 
 To quickly set up a simple monitoring solution in your environment, run the [Setup-Monitoring.ps1](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring#easy-steps-to-setup-monitoring-to-use-local-port-forward-to-access-grafana) PowerShell script. The script includes all the configuration steps needed to get a monitoring solution up and running quickly. 
 
