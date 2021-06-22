@@ -125,4 +125,4 @@ You can collect usage information for deleted subscriptions by calling the **Mic
 ## Next steps
 
 - [Tenant resource usage API reference](azure-stack-tenant-resource-usage-api.md)
-- [Usage-related FAQ](azure-stack-usage-related-faq.md)
+- [Usage-related FAQ](azure-stack-usage-related-faq.yml)
