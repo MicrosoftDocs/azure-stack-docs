@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Monitor and logging for AKS on Azure Stack HCI clusters
 
-For AKS on Azure Stack HCI clusters, there are two types of monitoring and logging solutions available: 
+For AKS on Azure Stack HCI clusters, there are two types of monitoring and logging solutions available as described in the following table: 
 
 | Solution  | Azure connectivity  | Support and service  | Cost | Deployment |
 | ------- |  ------------  | ---------  | --------------  | ---------------- |
@@ -52,11 +52,11 @@ The objects and endpoints that the Prometheus solution scrapes include the follo
 
 To view the Grafana dashboards available in AKS on Azure Stack HCI, see [Grafana dashboards available in AKS on Azure Stack HCI](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md#grafana-dashboards-available-in-aks-hci).
 
-### Deploy the monitoring solution using PowerShell
+## Deploy the monitoring solution using PowerShell
 
 This section describes the two options you can use to deploy monitoring on a workload cluster.
 
-#### Option one: Deploy the monitoring solution when creating the workload cluster
+### Option one: Deploy the monitoring solution when creating the workload cluster
 
 To enable monitoring, provide the `-enableMonitoring` parameter when creating the workload cluster using [New-AksHciCluster](./new-akshcicluster.md) as shown in the following example:
 
@@ -69,7 +69,7 @@ Monitoring is installed with the following default configuration:
 - The size of the persistent volume that's provisioned to store metrics (`storageSizeGB`) is 100 GB.
 - The retention time for collected metrics (`retentionTimeHours`) is 240 hours (or 10 days).
 
-#### Option two: Deploy the monitoring solution on an existing workload cluster 
+### Option two: Deploy the monitoring solution on an existing workload cluster 
 
 Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster as shown below:
 
@@ -77,13 +77,13 @@ Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to dep
 Install-AksHciMonitoring -Name <target cluster name > -storageSizeGB -retentionTimeHours
 ```
 
-`-storageSizeGB` is the size of the persistent volume that's provisioned to store metrics, and `-retentionTimeHours` is the amount of time the collected metrics is retained.
+The `-storageSizeGB` parameter sets the size of the persistent volume that's provisioned to store metrics, and the `-retentionTimeHours` parameter sets the amount of time the collected metrics is retained.
 
-Note that the monitoring solution is installed in a separate namespace called _monitoring_ and uses a StorageClass called _monitoring-sc_. Prometheus is exposed on an internal endpoint that is accessible only within the cluster at http://akshci-monitoring-prometheus-svc.monitoring:9090.
+The monitoring solution is installed in a separate namespace called _monitoring_ and uses a StorageClass called _monitoring-sc_. Prometheus is exposed on an internal endpoint that is accessible only within the cluster at http://akshci-monitoring-prometheus-svc.monitoring:9090.
 
-### Uninstall the monitoring solution using PowerShell
+## Uninstall the monitoring solution using PowerShell
 
-Run the `Uninstall-AksHciMonitoring` PowerShell command to uninstall the AKS on Azure Stack HCI monitoring solution:
+Run the `Uninstall-AksHciMonitoring` PowerShell command to uninstall the AKS on Azure Stack HCI monitoring solution as shown below:
 
 ```powershell  
 Uninstall-AksHciMonitoring -Name <target cluster name>
@@ -91,7 +91,7 @@ Uninstall-AksHciMonitoring -Name <target cluster name>
 
 The uninstall process removes everything including the namespace, StorageClass, and the actual data and metrics of the persistent volume.  
 
-### Deploy Grafana and configure it to use Prometheus
+## Deploy Grafana and configure it to use Prometheus
 
 You have the option to follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS on Azure Stack HCI Prometheus instance. This GitHub page also describes how to add Grafana dashboards that we have available for AKS on Azure Stack HCI.
 
@@ -107,7 +107,7 @@ Logging is crucial for troubleshooting and diagnostics. The logging solution in 
 
 - Fluent Bit is the log processor and forwarder that collects data and logs from different sources, and then formats, unifies, and stores them in Elasticsearch. 
 - Elasticsearch is a distributed search and analytics engine capable of centrally storing the logs for fast searches and data analytics.  
-- Kibana provides interactive visualizations in a web dashboard. This tool lets you view and query logs stored in Elasticsearch and then visualize them through graphs and dashboards.
+- Kibana provides interactive visualizations in a web dashboard. This tool lets you view and query logs stored in Elasticsearch, and then you can visualize them through graphs and dashboards.
 
 To set up an on-premises logging solution, see the steps to [set up logging to access Kibana](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Logging#easy-steps-to-setup-logging-to-use-local-port-forward-to-access-kibana). This article includes all the components required to collect, aggregate, and query container logs across the cluster. 
 
