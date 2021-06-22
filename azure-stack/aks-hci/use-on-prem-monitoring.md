@@ -60,14 +60,13 @@ Monitoring is installed with the following default configuration:
 
 ### Option two: Deploy the monitoring solution on an existing workload cluster 
 
-Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster:
+Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster as shown below:
 
 ```powershell
 Install-AksHciMonitoring -Name <target cluster name > -storageSizeGB -retentionTimeHours
 ```
 
-> [!NOTE]
-> `-storageSizeGB` is the size of the persistent volume that's provisioned to store metrics, and `-retentionTimeHours` is the amount of time the collected metrics is retained.
+`-storageSizeGB` is the size of the persistent volume that's provisioned to store metrics, and `-retentionTimeHours` is the amount of time the collected metrics is retained.
 
 Note that the monitoring solution is installed in a separate namespace called _monitoring_ and uses a StorageClass called _monitoring-sc_. Prometheus is exposed on an internal endpoint that is accessible only within the cluster at http://akshci-monitoring-prometheus-svc.monitoring:9090.
 
