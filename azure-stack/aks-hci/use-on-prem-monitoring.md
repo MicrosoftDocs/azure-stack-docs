@@ -55,16 +55,17 @@ New-AksHciCluster -name mynewcluster -enableMonitoring
 
 Monitoring is installed with the following default configuration:
 
-- The size of the persistent volume that's provisioned to store metrics (storageSizeGB) is 100 GB.
-- The retention time for collected metrics (retentionTimeHours) is 240 hours (or 10 days).
+- The size of the persistent volume that's provisioned to store metrics (`storageSizeGB`) is 100 GB.
+- The retention time for collected metrics (`retentionTimeHours`) is 240 hours (or 10 days).
 
 ### Option two: Deploy the monitoring solution on an existing workload cluster 
 
 Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster:
 
 ```powershell
-Install-AksHciMonitoring -Name <target cluster name > -storageSizeGB -retentionTimeHours <retention time for collected metrics>
+Install-AksHciMonitoring -Name <target cluster name > -storageSizeGB -retentionTimeHours
 ```
+
 > [!NOTE]
 > `-storageSizeGB` is the size of the persistent volume that's provisioned to store metrics, and `-retentionTimeHours` is the amount of time the collected metrics is retained.
 
