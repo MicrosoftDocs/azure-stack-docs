@@ -70,7 +70,7 @@ Now that we've verified our system settings, let's get started:
      ![Illustrates that status is granted for the Windows Admin Center gateway.](.\media\setup\access-granted.png)
 
    > [!NOTE] 
-   > Windows Admin Center needs _Application.ReadWrite.All_ permissions to create a service principal in the AKS code. 
+   > Windows Admin Center requires the [Delegated (work or school account) permission type](https://docs.microsoft.com/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http#permissions) to create a service principal in the AKS code. 
 
    If you haven't been been granted permissions, use the following steps to manually add the permission.
    1. Click **Add a permission** in the top left corner.
