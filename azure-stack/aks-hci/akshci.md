@@ -40,6 +40,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [install-akshcicsinfs](install-akshcicsinfs.md) | Installs the CSI NFS plug-in to a cluster. |
 | [install-akshcicsismb](install-akshcicsismb.md) | Installs the CSI SMB plug-in to a cluster. |
 | [install-akshcigmsawebhook](install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
+| [install-akshcimonitoring](install-akshcimonitoring.md) | Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [new-akshciclusternetwork](new-akshciclusternetwork.md) | Create an object for a new virtual network. |
 | [new-akshcinetworksetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
