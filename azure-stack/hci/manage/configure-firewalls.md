@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 06/16/2021
+ms.date: 06/23/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -116,6 +116,9 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 - TCP port 445
 - TCP port 5985 (this is the default port used by WinRM 2.0 for HTTP connections)
 - TCP port 5986 (this is the default port used by WinRM 2.0 for HTTPS connections)
+
+   >[!NOTE]
+   > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
 
 ### Failover Clustering ports
 - ICMPv4 and ICMPv6
