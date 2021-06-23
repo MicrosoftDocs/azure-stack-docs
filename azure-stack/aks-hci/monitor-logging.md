@@ -95,12 +95,6 @@ The uninstall process removes everything including the namespace, StorageClass, 
 
 You have the option to follow any guidance for deploying Grafana that's publicly available. You can also view Microsoft's deployment guidance to [use Grafana](https://github.com/microsoft/AKS-HCI-Apps/blob/main/Monitoring/Grafana.md), which details how to deploy and configure Grafana to connect it to an AKS on Azure Stack HCI Prometheus instance. This GitHub page also describes how to add Grafana dashboards that we have available for AKS on Azure Stack HCI.
 
-## Install a simple monitoring option
-
-To quickly set up a simple monitoring solution in your environment, run the [Setup-Monitoring.ps1](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring#easy-steps-to-setup-monitoring-to-use-local-port-forward-to-access-grafana) PowerShell script. The script includes all the configuration steps needed to get a monitoring solution up and running quickly. 
-
-If you want to include an ingress controller with Grafana, follow the steps for [using an ingress controller to access Grafana](https://github.com/microsoft/AKS-HCI-Apps/tree/main/Monitoring#detailed-steps-to-setup-monitoring-to-use-ingress-controller-to-access-grafana). An ingress controller is software that provides reverse proxy, configurable traffic routing, and Transport Layer Security (TLS) termination for Kubernetes services.
-
 ## On-premises logging
 
 Logging is crucial for troubleshooting and diagnostics. The logging solution in AKS on Azure Stack HCI is based on Elasticsearch, Fluent Bit, and Kibana (EFK). These components are all deployed as containers: 
