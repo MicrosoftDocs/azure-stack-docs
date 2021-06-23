@@ -120,7 +120,7 @@ For more information, see the following:
 
 ## Support
 
-To open a support ticket for Azure Stack HCI Insights, please use the service type **Azure Stack HCI Insight** under **Monitoring & Management**.
+To open a support ticket for Azure Stack HCI Insights, please use the service type **Insights for Azure Stack HCI** under **Monitoring & Management**.
 
 ## Event Log Channel
 
