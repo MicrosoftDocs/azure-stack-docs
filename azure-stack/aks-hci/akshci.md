@@ -42,12 +42,21 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [install-akshcigmsawebhook](install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
 | [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [new-akshciclusternetwork](new-akshciclusternetwork.md) | Create an object for a new virtual network. |
+<<<<<<< HEAD
 | [new-akshcinetworksetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
 | [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
 | [remove-akshcigmsacredentialspec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
+=======
+| [new-akshcinetworksetting](new-akshcinetworksetting.md) | Create a network object to pass into `Set-AksHciConfig` |
+| [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
+| [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
+| [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a cluster network object. |
+| [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
+| [remove-akshcigmsacredentialspec](remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
+>>>>>>> b16c6d219feeb02f5f651d505e28d830bb466a36
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |

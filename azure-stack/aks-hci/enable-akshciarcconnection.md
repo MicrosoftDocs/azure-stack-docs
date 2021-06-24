@@ -26,10 +26,14 @@ Enable-AksHciArcConnection -name <String>
 ## Description
 Enables Arc connection for an AKS on Azure Stack HCI cluster.
 
-## Examples
+## EXAMPLES
 
 ### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using Azure user login 
+<<<<<<< HEAD
 This command connects your workload cluster to Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access". If you have multiple tenants on your Azure account, it is recommended to connect your workload cluster to Arc using a service principal.
+=======
+This command connects your workload cluster to Azure Arc using the subscription ID and resource group passed in the `Set-AksHciRegistration` command while registering the AKS host for billing. Make sure that you have access to the subscription on an "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure Portal and then clicking on "View my access". If you have multiple tenants on your Azure account, it is recommended to connect your workload cluster to Arc using a service principal.
+>>>>>>> b16c6d219feeb02f5f651d505e28d830bb466a36
 
 ```PowerShell
 Connect-AzAccount
@@ -45,7 +49,11 @@ Enable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-
 ### Connect an AKS on Azure Stack HCI cluster to Azure Arc for Kubernetes using a service principal
 If you have multiple tenants on your Azure account, or if you do not have access to a subscription on which you're an "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding", it is recommended to connect your workload cluster to Arc using a service principal.
 
+<<<<<<< HEAD
 The first command prompts for service principal credentials and stores them in the `credential` variable. Enter your application ID for the username and service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects the specified Azure tenant using the service principal credentials stored in the `credential` variable. 
+=======
+The first command prompts for service principal credentials and stores them in the $Credential variable. Enter your application ID for the username and service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects the specified Azure tenant using the service principal credentials stored in the $Credential variable. 
+>>>>>>> b16c6d219feeb02f5f651d505e28d830bb466a36
 
 ```powershell
 $Credential = Get-Credential
@@ -53,7 +61,10 @@ Enable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-
 ```
 
 Make sure the service principal used in the command above has the "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role assigned to them and that it has scope over the subscription ID and resource group used in the command. For more information on service principals, visit [creating service principals with Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0#create-a-service-principal)
+<<<<<<< HEAD
 
+=======
+>>>>>>> b16c6d219feeb02f5f651d505e28d830bb466a36
 
 ## Parameters
 
