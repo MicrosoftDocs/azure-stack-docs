@@ -33,6 +33,15 @@ To make AKS available to your users, you will need to:
 1.  Azure Stack Hub version 2008 is required.
 2.  You must register your Azure Stack Hub instance to be able to download Marketplace items regardless of having a connected or disconnected environment. You can find instructions on registering your Azure Stack Hub with Azure in the article "[Register Azure Stack Hub with Azure](azure-stack-registration.md)."
 
+## Cloud operator responsibilities
+
+The following tasks fall on the **Azure Stack Hub Operator**:
+
+1.  Make sure that the Azure Kubernetes Service base images are available in the stamp, this includes downloading them from Azure.
+2.  Make sure that the Azure Kubernetes Service is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
+3.  Monitor the Azure Kubernetes Service and act on any alert and associated remediation.
+4.  For details on the Operator tasks see \<TODO: Link to Operator doc\>
+
 ## Next steps
 
 [Install and offer the Azure Kubernetes Service on Azure Stack Hub](C:\git\ms\azure-stack-docs-pr\azure-stack\operator\aks-add-on.md)
