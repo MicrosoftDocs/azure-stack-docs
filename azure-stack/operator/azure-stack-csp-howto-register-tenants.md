@@ -4,7 +4,7 @@ description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 06/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 11/17/2020
@@ -68,7 +68,7 @@ Update your registration with the new customer subscription. Azure reports the c
    New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-**New-AzResource PowerShell parameters**
+#### New-AzResource PowerShell parameters
 
 The following section describes the parameters for the **New-AzResource** cmdlet:
 
@@ -97,7 +97,7 @@ The following section describes the parameters for the **New-AzResource** cmdlet
    New-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-**New-AzureRMResource PowerShell parameters**
+#### New-AzureRMResource PowerShell parameters
 
 The following section describes the parameters for the **New-AzureRMResource** cmdlet:
 
@@ -109,7 +109,6 @@ The following section describes the parameters for the **New-AzureRMResource** c
 | registrationName | The name of the registration of your Azure Stack Hub. It's an object stored in Azure.
 
 ---
-
 
 > [!NOTE]  
 > Tenants must be registered with each Azure Stack Hub they use. If you have two Azure Stack Hub deployments, and a tenant uses both of them, you must update the initial registrations of each deployment with the tenant subscription.

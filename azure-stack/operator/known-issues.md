@@ -4,9 +4,9 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/19/2021
+ms.date: 06/16/2021
 ms.author: sethm
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
@@ -41,9 +41,18 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Update to 2102 fails during pre-update checks for AKS/ACR
 
-- Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers.
-- Remediation: You must uninstall AKS and ACR prior to updating to 2102. Please restart the update after uninstalling these services.
+- Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers who plan to upgrade to 2102 or apply any hotfixes.
+- Remediation: Uninstall AKS and ACR prior to updating to 2102, or prior to applying any hotfixes after updating to 2102. Restart the update after uninstalling these services.
 - Occurrence: Any stamp that has ACR or AKS installed will experience this failure.
+
+## Portal
+
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscription types **Metering** and **Consumption** have been disabled and should not be used. If you have resources in them, an alert is generated until those resources are removed.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
 
 ## Networking
 
@@ -71,7 +80,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 #### Backend and frontend ports when floating IP is enabled
 
 - Applicable: This issue applies to all supported releases.
-- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
+- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
 - Occurrence: Common
 
 ## Compute
@@ -165,7 +174,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 #### Backend port and frontend port need to be the same when floating IP is enabled
 
 - Applicable: This issue applies to all releases. 
-- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This is by design.
+- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
 - Occurrence: Common
 
 ## Compute
@@ -289,7 +298,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### VM overview blade does not show correct computer name
 
 - Applicable: This issue applies to all releases.
-- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
+- Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This behavior is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
 - Remediation: View the **Properties** blade under **Settings**.
 
 ### Virtual machine scale set

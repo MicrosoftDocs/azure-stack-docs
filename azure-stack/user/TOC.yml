@@ -122,7 +122,7 @@
       - name: Use role-based access control
         href: azure-stack-manage-permissions.md
       - name: Use an app identity to access resources
-        href: ../operator/azure-stack-create-service-principals.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: ../operator/give-app-access-to-resources.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Use services
       items:
       - name: Compute

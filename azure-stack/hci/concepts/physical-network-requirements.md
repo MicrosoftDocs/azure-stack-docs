@@ -21,7 +21,7 @@ This topic discusses physical (fabric) network considerations and requirements f
 
 Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft does not certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
 
-These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications and Policies, version 1809**, open the ZIP file, open **WHCP-Components-Peripherals-Specification-1809.pdf**, then see the **Device.Network.Switch.SDDC** section.
+These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications, Windows Server 2022**, open the ZIP file, open **Devices and Components WHCP Requirements for Windows Server 2022.pdf**, then see the **Device.Network.Switch.AzureStackHCI** section.
 
 > [!IMPORTANT]
 > While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting issues that occur.

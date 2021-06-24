@@ -7,7 +7,7 @@ ms.date: 03/05/2021
 ms.author: v-susbo
 ---
 
-# Resolve known issues
+# Resolve known issues in AKS on Azure Stack HCI
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
@@ -60,9 +60,6 @@ If you have multiple versions of the PowerShell modules installed (for example, 
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
 If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
-
-## A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through WAC
-Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
 
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
@@ -149,6 +146,31 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 
 ## An **Unable to acquire token** error appears when running Set-AksHciRegistration
 An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
+
+## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
+
+To resolve this issue restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
+
+```Console
+kubectl get nodes -o wide
+```
+
+To get more information on the faulty node, run the following command:
+
+```Console
+kubectl describe node <ip of the node>
+```
+
+Use SSH to log into the NotReady node by running the following command:
+```
+ssh -i <path of the private key file> administrator@<ip of the node>
+```
+
+Then, to restart _kubelet_, run the following command: 
+
+```powershell
+/etc/.../kubelet restart
+```
 
 ## Next steps
 - [Known issues](./known-issues.md)
