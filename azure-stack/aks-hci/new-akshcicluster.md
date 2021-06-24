@@ -28,6 +28,7 @@ New-AksHciCluster -name <String>
                  [-vnet <Virtual Network>]
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
+                 [-enableMonitoring]
 ```
 
 ## Description
@@ -268,6 +269,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+--->
 
 ### -enableMonitoring
 Use this flag to enable Prometheus monitoring.
@@ -283,4 +285,3 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
---->

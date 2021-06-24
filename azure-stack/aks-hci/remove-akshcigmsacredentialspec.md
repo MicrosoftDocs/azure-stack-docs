@@ -16,11 +16,10 @@ Deletes a credentials spec for gMSA deployments on a cluster.
 
 ```powershell
 Remove-AksHciGmsaCredentialSpec -name <String> 
-                                -credSpecName <String>
-                                -clusterRoleName <String>
-                               [-secretNamespace <String>]
-                               [-serviceAccount <String>]
-                               [-activity <String>]                      
+                             -credSpecName <String>
+                             -clusterRoleName <String>
+                             [-secretNamespace <String>]
+                             [-serviceAccount <String>][-activity <String>]                      
 ```
 
 ## Description
