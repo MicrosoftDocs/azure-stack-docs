@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/10/2021
+ms.date: 06/24/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -30,6 +30,8 @@ Azure Stack HCI, version 21H2 Preview contains the following new features:
 - [Dynamic CPU compatibility mode](processor-compatibility-mode.md)
 - [Storage thin provisioning](thin-provisioning.md)
 - [Network ATC](../deploy/network-atc.md)
+- [Adjustable storage repair speed](storage-repair-speed.md)
+- [Support for nested virtualization on AMD processors](../concepts/nested-virtualization.md)
 
 ## How to join the preview channel
 
