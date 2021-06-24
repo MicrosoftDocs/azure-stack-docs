@@ -16,7 +16,7 @@ Troubleshoots and fixes errors related to expired certificated for Kubernetes bu
 
 ```powershell
 Repair-AksHciClusterCerts -name 
-                         [-sshPrivateKeyFile <String>] 
+[-sshPrivateKeyFile <String>] 
 ```
 
 ## Description
