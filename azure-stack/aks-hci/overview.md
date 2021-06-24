@@ -4,7 +4,7 @@ description: Azure Kubernetes Service on Azure Stack HCI is an on-premises imple
 ms.topic: overview
 author: v-susbo
 ms.author: v-susbo
-ms.date: 05/24/2021
+ms.date: 06/24/2021
 #Customer intent: As an IT Pro, I want AKS on Azure Stack HCI so that I can easily deploy Kubernetes on-premises to orchestrate my containerized workloads.
 ---
 # What is Azure Kubernetes Service on Azure Stack HCI?
@@ -41,6 +41,10 @@ Azure Kubernetes Service simplifies the process of setting up Kubernetes on Azur
 - A Windows Admin Center wizard for setting up Azure Kubernetes Service and its dependencies 
 - A Windows Admin Center wizard for creating Kubernetes clusters to run your containerized applications
 - PowerShell cmdlets for setting up Kubernetes and creating Kubernetes clusters, in case you'd rather script the host setup and Kubernetes cluster creation
+
+View the GIF below to familiarize yourself with the deployment process:
+
+![GIF for deploying AKS HCI](media/aks-hci-deployment.gif)
 
 ## View and manage Kubernetes using on-premises tools or Azure Arc
 
