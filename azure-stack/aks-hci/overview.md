@@ -42,7 +42,7 @@ Azure Kubernetes Service simplifies the process of setting up Kubernetes on Azur
 - A Windows Admin Center wizard for creating Kubernetes clusters to run your containerized applications
 - PowerShell cmdlets for setting up Kubernetes and creating Kubernetes clusters, in case you'd rather script the host setup and Kubernetes cluster creation
 
-You can familiarize yourself with the deployment process by viewing the GIF below:
+View the GIF below to familiarize yourself with the deployment process:
 
 ![GIF for deploying AKS HCI](media/aks-hci-deployment.gif)
 
