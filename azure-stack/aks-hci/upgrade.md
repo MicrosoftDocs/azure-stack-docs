@@ -109,10 +109,10 @@ The Kubernetes version of a workload cluster can also be updated through Windows
 
 The following update scenarios are not supported in Windows Admin Center: 
 
-- We currently do not support skipping a patch update. You can only update a workload cluster to the next available patch version even when only a minor update is available.  
+- We currently do not support skipping a patch update. You can only update a workload cluster to the next available patch version even when a minor update is available.  
 - A workload cluster update performs a patch Kubernetes update without updating the OS version. 
 
-These update scenarios will addressed in the upcoming releases. However, these update operations are supported using PowerShell, as indicated earlier in this topic. 
+These update scenarios will addressed in an upcoming release. However, you can use PowerShell to run these update operations, as indicated earlier in this topic. 
 
 ## Next steps
 
