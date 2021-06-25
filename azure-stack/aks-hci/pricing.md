@@ -16,7 +16,7 @@ Use the following list to explore the pricing options:
 - Billing unit: **per vCPU of running worker nodes within workload clusters**:
   - AKS on Azure Stack HCI management cluster usage is *not* charged
   - The workload cluster control plane and load balancer nodes are *not* charged
-  - If you enable hyper-threading on the physical computer, this reduces the measured vCPU count by 50 percent.
+  - If you enable hyper-threading on the physical computer, which reduces the measured vCPU count by 50 percent.
 - Pricing: **US $1.33 per vCPU (of running worker nodes) per day**:
   - All AKS on Azure Stack HCI deployments include a free 60-day evaluation period
 - Includes Linux (CBL-Mariner) Container Hosts:
@@ -25,8 +25,8 @@ Use the following list to explore the pricing options:
   - Windows Server Datacenter: Unlimited Windows and Hyper-V containers
 - Includes Azure Arc-enabled Kubernetes at no extra charge and also the following items:
   - **Inventory, grouping, and tagging** in Azure
-  - **Deploy apps and configurations with GitOps**: This is included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is $2 per vCPU per month)
-  - **Azure Policy for Kubernetes**: This is included at no extra charge (normally, the charge is $3 per vCPU per cluster for each month)
+  - **Deploy apps and configurations with GitOps**: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is $2 per vCPU per month)
+  - **Azure Policy for Kubernetes**: Included at no extra charge (normally, the charge is $3 per vCPU per cluster for each month)
 
 ## Impact of hyper-threading
 The AKS on Azure Stack HCI billing unit is a virtual core. If you enable hyper-threading on your physical computer, AKS on Azure Stack HCI will also enable hyper-threading on the worker nodes.  If you enable hyper-threading, it will effectively halve the number of virtual cores needed in each worker node.
