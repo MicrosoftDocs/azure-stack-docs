@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/23/2021
+ms.date: 6/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 4/23/2021
+ms.lastreviewed: 6/25/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -19,7 +19,21 @@ You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running 
 
 ## Define a cluster specification
 
-You can specify a cluster specification in a document file using the JSON format called the [API model](https://github.com/Azure/aks-engine/blob/master/docs/topics/architecture.md#architecture-diagram). The AKS engine uses a cluster specification in the API model to create your cluster. 
+You can specify a cluster specification in a document file using the JSON format called the API model. The AKS engine uses a cluster specification in the API model to create your cluster.
+
+You can find examples of the API model for your OS and AKS engine version number for recent releases at [AKS engine and corresponding image mapping](kubernetes-aks-engine-release-notes.md#aks-engine-and-corresponding-image-mapping).
+
+1. Find your AKS engine version number, for example, `v.0.63.0`, in the table.
+2. In the API Model samples table, select and open the link for your OS.
+3. Select **Raw**. You can use the URL in the following instructions.
+
+A URL to the API model may look like:
+
+```http  
+https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+```
+
+For each of the following samples replace `<URL for the API Model>` with the URL.
 
 ### Update the API model
 
@@ -29,16 +43,16 @@ This section looks at creating an API model for your cluster.
 
     1. For [**Linux**, download](https://aka.ms/aksengine-json-example-raw) and then from the machine, you installed AKS engine, run:
         ```bash
-        curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-azurestack.json
+        curl -o kubernetes-azurestack.json <URL for the API Model>
         ```
     1. For [**Windows**, download](https://aka.ms/aksengine-json-example-raw-win) and make a local copy for your deployment. Then from the machine, you installed AKS engine, run:
         ```bash
-        curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json
+        curl -o kubernetes-azurestack.json <URL for the API Model>
         ```
     > [!NOTE]  
     > If you are disconnected, you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
 
-2.  To open API model in an editor, you can use nano:
+2.  To open the API model in an editor, you can use nano:
 
     ```bash
     nano ./kubernetes-azurestack.json
