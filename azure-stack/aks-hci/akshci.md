@@ -61,6 +61,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [uninstall-akshcicsinfs](uninstall-akshcicsinfs.md) | Uninstalls CSI NFS Plugin in a cluster. |
 | [uninstall-akshcicsismb](uninstall-akshcicsismb.md) | Uninstalls the CSI SMB plug-in in a cluster. |
 | [uninstall-akshcigmsawebhook](uninstall-akshcigmsawebhook.md) | Uninstalls the gMSA webhook add-on to the cluster. |
+| [uninstall-akshcimonitoring](uninstall-akshcimonitoring.md) | Removes Prometheus for monitoring from the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [update-akshci](update-akshci.md) | Update the Azure Kubernetes Service host to the latest Kubernetes version. |
 | [update-akshcicluster](update-akshcicluster.md) | Update a managed Kubernetes cluster to a newer Kubernetes or OS version. |
 
