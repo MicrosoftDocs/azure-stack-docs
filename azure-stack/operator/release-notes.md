@@ -73,7 +73,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - An Azure Stack Hub operator can now configure GPU quotas for VMs.
-- EVA place holder that allows operators to access virtual machine console without calling Microsoft support.
+- Emergency VM Access is now available in Azure Stack Hub without contacing Microsoft Support.
+- Windows Server 2022 is now supported as a guest operating system.
 
 ### Improvements
 
