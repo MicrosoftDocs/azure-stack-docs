@@ -74,7 +74,7 @@ Monitoring is installed with the following default configuration:
 Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster as shown below:
 
 ```powershell
-Install-AksHciMonitoring -Name <target cluster name > -storageSizeGB -retentionTimeHours
+Install-AksHciMonitoring -Name mycluster -storageSizeGB 100 -retentionTimeHours 240
 ```
 
 The `-storageSizeGB` parameter sets the size of the persistent volume that's provisioned to store metrics, and the `-retentionTimeHours` parameter sets the amount of time the collected metrics is retained.
