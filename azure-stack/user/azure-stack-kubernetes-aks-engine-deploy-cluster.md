@@ -24,7 +24,7 @@ You can specify a cluster specification in a document file using the JSON format
 You can find examples of the API model for your OS and AKS engine version number for recent releases at [AKS engine and corresponding image mapping](kubernetes-aks-engine-release-notes.md#aks-engine-and-corresponding-image-mapping).
 
 1. Find your AKS engine version number, for example, `v.0.63.0`, in the table.
-2. In the API Model samples table, select and open the link for your OS.
+2. In the [API Model samples table](kubernetes-aks-engine-release-notes.md#aks-engine-and-corresponding-image-mapping), select and open the link for your OS.
 3. Select **Raw**. You can use the URL in the following instructions.
 
 A URL to the API model may look like:
