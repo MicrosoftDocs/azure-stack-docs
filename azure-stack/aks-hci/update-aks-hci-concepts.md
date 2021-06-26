@@ -32,6 +32,25 @@ We recommend updating AKS workload clusters immediately after updating the AKS h
 
 ### Example flow for updating the AKS on Azure Stack HCI host
 
+#### Update the PowerShell Modules
+Make sure you always have the latest PowerShell Modules installed on your Azure Stack HCI nodes by executing the following command on all physical Azure Stack HCI nodes. Make sure you close all open PowerShell windows and open a fresh session to run the update command. If you do not close all PowerShell windows, you may end up with modules in-use which can't be updated.
+
+```powershell
+Update-Module -Name AksHci -Force 
+```
+
+Run the following command to make sure you have the latest PowerShell module.
+
+```powershell
+Get-InstalledModule -Name AksHci
+```
+
+```output
+Version    Name     Repository    Description
+-------    ----     ----------    -----------
+1.0.2      AksHci   PSGallery     AKS HCI Module
+```
+
 #### Get the current AKS on Azure Stack HCI version
 
 ```powershell
