@@ -80,7 +80,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - Number of MySQL database replica VMs to create (default is 2).
    - Select the subscription to use.
    - Select the resource group to use or create a new one.
-   - Select the location (default is local for ASDK).
+   - Select the location (default is local for ASDK before version 2107).
 
      ![Deployment basics -- Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img2.png)
 
