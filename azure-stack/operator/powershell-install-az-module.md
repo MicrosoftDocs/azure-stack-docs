@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/04/2021
+ms.date: 06/23/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed:  06/04/2021
+ms.lastreviewed:  06/23/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -90,9 +90,8 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
     Install-Module -Name Az.BootStrapper -Force
-    Get-AzApiProfile -Update
     Install-AzProfile -Profile 2020-09-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.1.0 
+    Install-Module -Name AzureStack -RequiredVersion 2.1.1 
     ```
 ::: moniker-end
 ::: moniker range="<=azs-2008"
@@ -141,7 +140,7 @@ Import-Module -Name PackageManagement -ErrorAction Stop
 
 $savedModulesPath = "<Path that is used to save the packages>"
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 1.10.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.1.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.1.1
 ```
 ::: moniker-end
 
@@ -191,7 +190,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.1.0 -Scope AllUsers
+    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.1.1 -Scope AllUsers
 
     Install-Module -Name Az -Repository $RepoName -RequiredVersion 1.10.0 -Scope AllUsers
    ```
