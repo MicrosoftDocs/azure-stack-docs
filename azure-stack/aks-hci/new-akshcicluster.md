@@ -28,6 +28,7 @@ New-AksHciCluster -name <String>
                  [-vnet <Virtual Network>]
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
+                 [-enableMonitoring]
 ```
 
 ## Description
@@ -211,6 +212,21 @@ Accept wildcard characters: False
 
 ### -enableADAuth
 Use this flag to enable Active Directory in your Kubernetes cluster.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableMonitoring
+Use this flag to enable Prometheus monitoring.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
