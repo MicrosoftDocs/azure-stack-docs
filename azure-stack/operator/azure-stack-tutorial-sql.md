@@ -77,13 +77,13 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 
     At a minimum:
     - Provide complex passwords for the ADMINPASSWORD, SQLSERVERSERVICEACCOUNTPASSWORD, and SQLAUTHPASSWORD parameters.
-    - Enter the DNS Suffix for reverse lookup in all lowercase letters for the DNSSUFFIX parameter (**azurestack.external** for ASDK installations).
+    - Enter the DNS Suffix for reverse lookup in all lowercase letters for the DNSSUFFIX parameter (**azurestack.external** for ASDK installations before version 2107).
     
    [![Edit parameters in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-3.png "Edit custom deployment parameters")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-3.png#lightbox)
 
 5. On the **Custom deployment** blade, choose the subscription to use and create a new resource group or select an existing resource group for the custom deployment.
 
-    Next, select the resource group location (**local** for ASDK installations) and then click **Create**. The custom deployment settings will be validated and then the deployment will start.
+    Next, select the resource group location (**local** for ASDK installations before version 2107) and then click **Create**. The custom deployment settings will be validated and then the deployment will start.
 
     [![Choose subscription in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-4.png "Create custom deployment")](media/azure-stack-tutorial-sqlrp/aoag-template-deployment-4.png#lightbox)
 
