@@ -97,7 +97,7 @@ The AKS on Azure Stack HCI host can also be updated through Windows Admin Center
 
 1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions** and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.35.0. You do not need to do this step if you have enabled auto update for your extensions. However, make sure that you have version 1.35.0 of the AKS extension installed before proceeding to the next step.
 
-   [ ![Illustrates the installed extensions available in Windows Admin Center](.\media\wac-installed-extensions.png) ](.\media\wac-installed-extensions.png#lightbox)
+   :::image type="content" source=".\media\wac-installed-extensions.png" alt-text="Illustrates the installed extensions available in Windows Admin Center"       lightbox=".\media\wac-installed-extensions.png":::
 
 2. Users who have installed AKS on Azure Stack HCI using the GA release will see the following error in Windows Admin Center when they update the Windows Admin Center extension to the June release (1.35.0). 
 
