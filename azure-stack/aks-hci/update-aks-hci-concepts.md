@@ -33,7 +33,7 @@ We recommend updating AKS workload clusters immediately after updating the AKS h
 ### Example flow for updating the AKS on Azure Stack HCI host
 
 #### Update the PowerShell Modules
-Make sure you always have the latest PowerShell Modules installed on your Azure Stack HCI nodes by executing the following command on all physical Azure Stack HCI nodes. Make sure you close all open PowerShell windows and open a fresh session to run the update command. If you do not close all PowerShell windows, you may end up with modules in-use which can't be updated.
+Make sure you always have the latest PowerShell modules installed on your Azure Stack HCI nodes by executing the following command on all physical Azure Stack HCI nodes. You should close all open PowerShell windows and then open a fresh session to run the update command. If you do not close all PowerShell windows, you may end up with modules that are in-use and can't be updated.
 
 ```powershell
 Update-Module -Name AksHci -Force 
@@ -97,12 +97,8 @@ The AKS on Azure Stack HCI host can also be updated through Windows Admin Center
 
 1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions** and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.35.0. You do not need to do this step if you have enabled auto update for your extensions. However, make sure that you have version 1.35.0 of the AKS extension installed before proceeding to the next step.
 
-   :::image type="content" source="media/wac-installed-extensions.png" alt-text="Illustrates the installed extensions available in Windows Admin Center"       lightbox="media/wac-installed-extensions.png":::
-
 2. Users who have installed AKS on Azure Stack HCI using the GA release will see the following error in Windows Admin Center when they update the Windows Admin Center extension to the June release (1.35.0). 
-
-   ![Illustrates the error message for incompatible PowerShell versions](.\media\incompatible-powershell-version.png)
-
+   
    To use the June release, PowerShell version 1.0.2 is required, so users must manually run the following PowerShell command on all the nodes in their Azure Stack HCI cluster to get around this error. 
 
    ```powershell
