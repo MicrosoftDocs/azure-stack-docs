@@ -170,6 +170,8 @@
       href: concepts/deploy-persistent-memory.md
     - name: Persistent memory health management
       href: concepts/persistent-memory-health.md
+    - name: Nested virtualization
+      href: concepts/nested-virtualization.md
   - name: Networking
     items:
     - name: Physical network requirements
