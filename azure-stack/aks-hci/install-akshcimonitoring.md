@@ -16,8 +16,8 @@ Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stac
 
 ```powershell
 Install-AksHciMonitoring -name <String> 
-                         -storage <String>
-                         -retentionTime <String>                        
+                         -storageSizeGB <String> 
+                         -retentionTimeHours <String>                        
 ```
 
 ## Description
@@ -28,7 +28,7 @@ Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stac
 ### Example
 
 ```PowerShell
-Install-AksHciMonitoring -name mycluster
+Install-AksHciMonitoring -Name mycluster -storageSizeGB 100 -retentionTimeHours 240
 ```
 
 ## Parameters
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 
 
 ### -storage
-The amount of storage in Gi.
+The amount of storage in GB.
 
 ```yaml
 Type: System.String
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -retentionTime
-The retention time in days.
+The retention time for collected metrics in hours.
 
 ```yaml
 Type: System.String
