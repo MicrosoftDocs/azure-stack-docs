@@ -31,7 +31,7 @@ Azure Stack HCI, version 21H2 Preview contains the following new features:
 - [Storage thin provisioning](thin-provisioning.md)
 - [Network ATC](../deploy/network-atc.md)
 - [Adjustable storage repair speed](storage-repair-speed.md)
-- [Support for nested virtualization on AMD processors](../concepts/nested-virtualization.md)
+- [Support for nested virtualization on AMD processors](../concepts/nested-virtualization.md#nested-virtualization-processor-support)
 
 ## How to join the preview channel
 
