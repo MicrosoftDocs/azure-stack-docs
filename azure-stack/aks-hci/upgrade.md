@@ -104,8 +104,15 @@ The Kubernetes version of a workload cluster can also be updated through Windows
 1. On the Windows Admin Center connections page, connect to your management cluster.
 2. Select the **Azure Kubernetes Service** tool from the tools list. When the tool loads, you will be presented with the Overview page.
 3. Select the workload cluster you wish to update.
-4. Select **Updates** to navigate to the Updates page.
-5. Select **Update now** to upgrade your Kubernetes version. 
+4. Select **Settings** under Kubernetes clusters to navigate to the Settings page. 
+5. Select **Update now** to update your workload cluster’s Kubernetes version. 
+
+The following update scenarios are not supported in Windows Admin Center: 
+
+- We currently do not support skipping a patch update. You can only update a workload cluster to the next available patch version even when a minor update is available.  
+- A workload cluster update performs a patch Kubernetes update without updating the OS version. 
+
+These update scenarios will addressed in an upcoming release. However, you can use PowerShell to run these update operations, as indicated earlier in this topic. 
 
 ## Next steps
 
