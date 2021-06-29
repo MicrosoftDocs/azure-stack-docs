@@ -87,11 +87,14 @@ Now that we've verified our system settings, let's get started:
    1. Search for **Directory.AccessAsUser.All**, and if necessary, expand the **Directory** dropdown box.
    1. Select the checkbox and then click **Add permissions**.
 
-   You can also remove permissions that aren't required for AKS-HCI\.  To remove permissions before granting admin consent:
+   You can also remove permissions that aren't required for AKS-HCI.  To remove permissions before granting admin consent:
    1. Select the **...** menu to the right of the permission that shouldn't be granted.
    1. Select **remove permission**.
 
-   Once permissions are correct, click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.
+   Once permissions are correct, click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.  Permissions can be revoked at any time as needed.
+
+   When you're done, your API permissions may look something like this:  
+   ![Illustrates that status is granted for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)
 
    When you're finished, select **Next**.
 
@@ -100,9 +103,9 @@ Now that we've verified our system settings, let's get started:
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks.
 
 9. If the deployment succeeds, select **Finish**, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters.
- 
+
    ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
- 
+
 ## Next steps
 
 In this quickstart, you installed Windows Admin Center and configured an Azure Kubernetes Service host on the system you are going to deploy your Kubernetes clusters to. You are now ready to go ahead with [creating a Kubernetes cluster in Windows Admin Center](create-kubernetes-cluster.md).
