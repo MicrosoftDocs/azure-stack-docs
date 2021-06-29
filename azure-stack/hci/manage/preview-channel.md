@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/10/2021
+ms.date: 06/24/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -30,6 +30,8 @@ Azure Stack HCI, version 21H2 Preview contains the following new features:
 - [Dynamic CPU compatibility mode](processor-compatibility-mode.md)
 - [Storage thin provisioning](thin-provisioning.md)
 - [Network ATC](../deploy/network-atc.md)
+- [Adjustable storage repair speed](storage-repair-speed.md)
+- [Support for nested virtualization on AMD processors](../concepts/nested-virtualization.md#nested-virtualization-processor-support)
 
 ## How to join the preview channel
 
@@ -77,7 +79,7 @@ Once you've joined the preview channel, you can install a preview build using Wi
    :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
 
    > [!NOTE]
-   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser.
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](update-cluster.md#check-on-the-status-of-an-updating-run).
 
 5. When the feature updates are complete, check if any further updates are available and install them.
 
