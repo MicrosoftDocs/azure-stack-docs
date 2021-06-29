@@ -87,13 +87,13 @@ Now that we've verified our system settings, let's get started:
    1. Search for **Directory.AccessAsUser.All**, and if necessary, expand the **Directory** dropdown box.
    1. Select the checkbox and then click **Add permissions**.
 
-   You can also remove permissions that aren't required for AKS-HCI.  To remove permissions before granting admin consent:
-   1. Select the **...** menu to the right of the permission that shouldn't be granted.
+   You can also remove permissions that aren't required for AKS on Azure Stack HCI.  To remove permissions before granting admin consent:
+   1. Select the **...** to the right of the permission that shouldn't be granted.
    1. Select **remove permission**.
 
    Once permissions are correct, click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.  Permissions can be revoked at any time as needed.
 
-   When you're done, your API permissions may look something like this:  
+   When you're done, your permissions may look something like this:  
    ![Illustrates that status is granted for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)
 
    When you're finished, select **Next**.
