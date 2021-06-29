@@ -89,7 +89,7 @@ Now that we've verified our system settings, let's get started:
 
    You can also remove permissions that aren't required for AKS on Azure Stack HCI.  To remove permissions before granting admin consent:
    1. Select the **...** to the right of the permission that shouldn't be granted.
-   1. Select **remove permission**.
+   1. Select **Remove permission**.
 
    Once permissions are correct, click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.  Permissions can be revoked at any time as needed.
 
