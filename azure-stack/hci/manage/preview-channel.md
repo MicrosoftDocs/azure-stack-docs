@@ -79,7 +79,7 @@ Once you've joined the preview channel, you can install a preview build using Wi
    :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
 
    > [!NOTE]
-   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser.
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](update-cluster.md#check-on-the-status-of-an-updating-run).
 
 5. When the feature updates are complete, check if any further updates are available and install them.
 
