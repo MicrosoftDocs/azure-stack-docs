@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/13/2021
+ms.date: 06/29/2021
 ms.custom: e2e-hybrid
 ---
 
@@ -16,15 +16,15 @@ ms.custom: e2e-hybrid
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid, on-premises environment. Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and virtual machine (VM) backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools including Windows Admin Center and PowerShell.
 
-Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also now includes the ability to host the Azure Kubernetes Service; for details, see [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
+Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). It's intended for on-premises clusters running virtualized workloads, with hybrid-cloud connections built-in. As such, Azure Stack HCI is delivered as an Azure service and billed on an Azure subscription. Azure Stack HCI also includes the ability to host [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
 
-Take a few minutes to watch the video on the high-level features of Azure Stack HCI:
+Watch the video on the high-level features of Azure Stack HCI:
 
 > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
 From a hardware standpoint, each Azure Stack HCI cluster consists of between 2 and 16 physical, validated servers running a specialized operating system purposely defined for hyperconverged infrastructure. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
 
-At its core, Azure Stack HCI is a solution that combines the following:
+Azure Stack HCI combines the following:
 - Azure services
 - Windows Admin Center
 - Hyper-V-based compute resources
@@ -150,8 +150,6 @@ To learn more, see [Windows Admin Center in the Azure portal](https://cloudblogs
 
 - **Install and manage Azure IoT Edge for Linux on Windows**: Install, manage, and troubleshoot IoT Edge for Linux on Windows from within Windows Admin Center.
 To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](https://techcommunity.microsoft.com/t5/internet-of-things/enabling-linux-based-azure-iot-edge-modules-on-windows-iot/ba-p/2075882?ocid=wac2103).
-
-- **Use a proxy server**: Windows Admin Center can now access Azure and the internet through a proxy server. To set up a proxy server in Windows Admin Center, next to **Notifications** select **Settings** and then under **Gateway** select **Proxy**.
 
 - **Open tools in separate windows**: Connect to a system and then on the **Tools** menu, hover over a tool and select **Open tool in a separate window**.
 
