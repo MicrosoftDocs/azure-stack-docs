@@ -78,7 +78,7 @@ Now that we've verified our system settings, let's get started:
 
      ![Illustrates that status is granted for the Windows Admin Center gateway.](.\media\setup\access-granted.png)
 
-   If you haven't been been granted permissions, you may need the Azure subscription owner to manually grant admin consent.  
+   If you haven't been granted permissions, you may need the Azure subscription owner to manually grant admin consent.  
 
    To add permissions:
    1. Click **Add a permission** in the top left corner.
