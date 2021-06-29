@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/16/2021
+ms.date: 06/29/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -31,11 +31,13 @@ For the simplest registration experience, have an Azure AD admin (Owner or User 
    > [!IMPORTANT]
    > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
 
-### Register Windows Admin Center
+Before you register your cluster, make sure the following prerequisites are satisfied.
+
+### Windows Admin Center must be registered with Azure
 
 If you plan to register an Azure Stack HCI cluster by using Windows Admin Center, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and supply your Azure Active Directory (tenant) ID. Make sure that the computer on which you run Windows Admin Center is joined to the same Active Directory domain in which you'll create the cluster, or a trusted domain.
 
-### Internet access
+### Internet access and firewall ports
 
 Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For information on how to prepare your firewalls and set up a proxy server, see [Configure firewalls for Azure Stack HCI](../manage/configure-firewalls.md).
 
