@@ -41,9 +41,9 @@ This section looks at creating an API model for your cluster.
 
 1.  Start by using an Azure Stack Hub API Model file for Linux or Windows. From the machine, you installed AKS engine, run:
 
-        ```bash
-        curl -o kubernetes-azurestack.json <URL for the API Model>
-        ```
+    ```bash
+    curl -o kubernetes-azurestack.json <URL for the API Model>
+    ```
 
     > [!NOTE]  
     > If you are disconnected, you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
