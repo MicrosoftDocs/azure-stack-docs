@@ -5,10 +5,10 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 05/13/2021
+ms.date: 06/30/2021
 ms.reviewer: bryanla
-ms.lastreviewed: 08/15/2020
-ms.custom: contperf-fy21q4
+ms.lastreviewed: 06/30/2021
+ms.custom: contperf-fy22q1
 ---
 
 # Quickstart: Create an Event Hubs cluster using the Azure Stack Hub portal
