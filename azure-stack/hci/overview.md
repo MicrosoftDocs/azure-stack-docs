@@ -22,7 +22,7 @@ Watch the video on the high-level features of Azure Stack HCI:
 
 > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
-From a hardware standpoint, each Azure Stack HCI cluster consists of between 2 and 16 physical, validated servers running a specialized operating system purposely defined for hyperconverged infrastructure. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
+Each Azure Stack HCI cluster consists of between 2 and 16 physical, validated servers running a specialized operating system purposely defined for hyperconverged infrastructure. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
 
 Azure Stack HCI combines the following:
 - Azure services
@@ -60,8 +60,6 @@ After you register your Azure Stack HCI cluster with Azure, you can use the Azur
 
 - **Monitoring:** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them.
 - **Billing:** Pay for Azure Stack HCI through your Azure subscription.
-
-We're working hard on creating additional capabilities, so stay tuned for more.
 
 You can also subscribe to additional Azure hybrid services:
 
@@ -171,7 +169,7 @@ To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https
 
 ## Roles you can run without virtualizing
 
-Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines.
+Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in VMs, the Azure Stack HCI terms allow you to run only what's necessary for hosting VMs.
 
 This means that you can run the following server roles:
 
