@@ -1,6 +1,6 @@
 ---
 title: Kernel Soft Reboot in Azure Stack HCI
-description: How to reboot faster by using Kernel Soft Reboot (KSR) in Azure Stack HCI.
+description: How to reboot faster by using Kernel Soft Reboot (KSR) when updating or servicing Azure Stack HCI clusters.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
@@ -23,7 +23,7 @@ Kernel Soft Reboot improves reboot performance by streamlining the operating sys
 
 Watch the video comparing the performance of a normal reboot to a Kernal Soft Reboot on an idle server:
 
-> [!VIDEO https://youtu.be/tdfF2iBCIaE]
+> [!VIDEO https://www.youtube.com/watch?v=tdfF2iBCIaE]
 
 ## When to use Kernal Soft Reboot
 
@@ -63,16 +63,16 @@ Add-CauClusterRole <other_options> -AttemptSoftReboot
 Set-CauClusterRole <other_options> -AttemptSoftReboot
 ```
 
-### Skip Kernel Soft Reboot on a subset of cluster nodes
+### Skip Kernel Soft Reboot on certain servers
 
-Ideally, all the servers in an Azure Stack HCI cluster should support Kernel Soft Reboot. However, a server that does not support KSR can opt-out with a registry key setting. 
+Ideally, all the servers in an Azure Stack HCI cluster should support Kernel Soft Reboot. However, a server that does not support KSR can opt-out with a registry key setting.
 
 Setting this registry value on any server in the cluster will cause Cluster-Aware Updating to skip Kernel Soft Reboot and attempt to reboot the server normally.
 
-Key: SOFTWARE\Microsoft\Windows\CurrentVersion\ClusterAwareUpdating 
-Name: CauBypassSoftBootOnNode 
-Type: REG_SZ 
-Value: True 
+> **Key: SOFTWARE\Microsoft\Windows\CurrentVersion\ClusterAwareUpdating**
+> **Name: CauBypassSoftBootOnNode**
+> **Type: REG_SZ**
+> **Value: True**
 
 ## Troubleshooting
 
@@ -85,10 +85,10 @@ $report.ClusterResult.NodeResults | fl Node,NodeRebootResult
 
 The report should return a `NodeResults` list that contains the `NodeRebootResult` for each server in the cluster. The output should look something like this:
 
-Node : VM01
-NodeRebootResult : RebootSummaryResult : Succeeded
-BootType : SoftBoot
-SoftBootStatus : Enabled
+> **Node : VM01**
+> **NodeRebootResult : RebootSummaryResult : Succeeded**
+> **BootType : SoftBoot**
+> **SoftBootStatus : Enabled**
 
 The table below shows how each name-value pair provides more information on the last reboot for each server in the cluster.
 
