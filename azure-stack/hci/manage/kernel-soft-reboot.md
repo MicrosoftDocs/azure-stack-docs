@@ -21,11 +21,9 @@ Traditionally, servicing a cluster (for example, applying software updates) requ
 
 Kernel Soft Reboot improves reboot performance by streamlining the operating system flow, minimizing the amount of data to be resynced and therefore reducing the overall cluster update time. The amount of time saved will be proportional to the memory and size of the server. As the server resources such as available memory and number of drives increase, so will the time savings.
 
-Watch the video comparing the performance of a normal reboot to a Kernal Soft Reboot on an idle server:
+Take a few minutes to [watch the video](https://www.youtube.com/watch?v=tdfF2iBCIaE) comparing the performance of a normal reboot to a Kernel Soft Reboot on an idle server.
 
-> [!VIDEO https://www.youtube.com/watch?v=tdfF2iBCIaE]
-
-## When to use Kernal Soft Reboot
+## When to use Kernel Soft Reboot
 
 As this feature may bypass the lengthy and traditional reboot BIOS/FIRMWARE initialization, you can only use Kernel Soft Reboot for updates that do not require a firmware/BIOS initialization. Currently, you can use Kernel Soft Reboot optionally with the Cluster-Aware Updating WindowsUpdate plugin for Quality Updates and Hotfix plugin for MSI/MSU/EXEs files only.
 
@@ -69,10 +67,12 @@ Ideally, all the servers in an Azure Stack HCI cluster should support Kernel Sof
 
 Setting this registry value on any server in the cluster will cause Cluster-Aware Updating to skip Kernel Soft Reboot and attempt to reboot the server normally.
 
-> **Key: SOFTWARE\Microsoft\Windows\CurrentVersion\ClusterAwareUpdating**
-> **Name: CauBypassSoftBootOnNode**
-> **Type: REG_SZ**
-> **Value: True**
+```
+Key: SOFTWARE\Microsoft\Windows\CurrentVersion\ClusterAwareUpdating
+Name: CauBypassSoftBootOnNode
+Type: REG_SZ
+Value: True
+```
 
 ## Troubleshooting
 
@@ -85,10 +85,12 @@ $report.ClusterResult.NodeResults | fl Node,NodeRebootResult
 
 The report should return a `NodeResults` list that contains the `NodeRebootResult` for each server in the cluster. The output should look something like this:
 
-> **Node : VM01**
-> **NodeRebootResult : RebootSummaryResult : Succeeded**
-> **BootType : SoftBoot**
-> **SoftBootStatus : Enabled**
+```
+Node : VM01
+NodeRebootResult : RebootSummaryResult : Succeeded
+BootType : SoftBoot
+SoftBootStatus : Enabled
+```
 
 The table below shows how each name-value pair provides more information on the last reboot for each server in the cluster.
 
