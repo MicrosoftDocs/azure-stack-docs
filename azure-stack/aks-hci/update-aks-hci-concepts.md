@@ -107,7 +107,7 @@ The AKS on Azure Stack HCI host can also be updated through Windows Admin Center
 
 3. You can now go back to the Windows Admin Center **Connections** page and connect to your Azure Stack HCI cluster.
 4. Select the **Azure Kubernetes Service** tool from the **Tools** list. When the tool loads, you will see with the **Overview** page.
-5. Select **Updates** from the page list on the left side of the tool and then select **Update now** to upgrade your AKS host.
+5. Select **Updates** from the page list on the left side of the tool, and then select **Update now** to upgrade your AKS host.
 
 ## Next steps
 [Update Kubernetes version and container host OS of your AKS workload clusters](./upgrade.md)

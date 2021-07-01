@@ -76,7 +76,7 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 
 ### On your Windows Admin Center system
 
-Your machine running the Windows Admin Center gateway has the following requirements:  
+Your machine running the Windows Admin Center gateway must be:  
 
  - Registered with Azure
  - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
