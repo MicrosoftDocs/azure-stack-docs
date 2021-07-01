@@ -93,7 +93,7 @@ The output shows the updated version of the AKS on Azure Stack HCI host.
 
 ## Update the AKS on Azure Stack HCI host using Windows Admin Center
 
-The AKS on Azure Stack HCI host can also be updated through Windows Admin Center. To update the host, do the following: 
+The AKS on Azure Stack HCI host can also be updated through Windows Admin Center. To update the host, follow the steps below: 
 
 1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions** and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.35.0. You do not need to do this step if you have enabled auto-update for your extensions. However, make sure that you have version 1.35.0 of the AKS extension installed before proceeding to the next step.
 
