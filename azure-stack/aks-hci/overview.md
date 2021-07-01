@@ -72,7 +72,7 @@ Azure Kubernetes Service includes a number of features to help secure your conta
 
 ## What you need to get started
 
-The following sections summarize what you need to run Azure Kubernetes Service on Azure Stack HCI. For complete details, see [Before you install Azure Kubernetes Service on Azure Stack HCI](system-requirements.md).
+The following sections summarize what you need to run Azure Kubernetes Service on Azure Stack HCI. For complete details on what you need before you install Azure Kubernetes Service on Azure Stack HCI, see [system requirements](system-requirements.md).
 
 ### On your Windows Admin Center system
 
