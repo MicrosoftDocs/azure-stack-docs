@@ -101,10 +101,10 @@ Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.19.7 -operatin
 ## Update the Kubernetes version of a workload cluster using Windows Admin Center
 The Kubernetes version of a workload cluster can also be updated through Windows Admin Center. To update the Kubernetes version, follow these steps: 
 
-1. On the Windows Admin Center connections page, connect to your management cluster.
-2. Select the **Azure Kubernetes Service** tool from the tools list. When the tool loads, you will be presented with the Overview page.
+1. On the Windows Admin Center **Connections** page, connect to your management cluster.
+2. Select the **Azure Kubernetes Service** tool from the **Tools** list. When the tool loads, you will see the **Overview** page.
 3. Select the workload cluster you wish to update.
-4. Select **Settings** under Kubernetes clusters to navigate to the Settings page. 
+4. Select **Settings** under Kubernetes clusters to navigate to the **Settings** page. 
 5. Select **Update now** to update your workload cluster’s Kubernetes version. 
 
 The following update scenarios are not supported in Windows Admin Center: 
