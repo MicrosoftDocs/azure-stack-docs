@@ -51,6 +51,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshcigmsacredentialspec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [repair-akshciclustercerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
+| [repair-akshcicerts](repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
