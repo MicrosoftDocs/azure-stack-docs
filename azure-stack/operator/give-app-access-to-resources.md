@@ -4,9 +4,9 @@ description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 06/16/2021
-ms.lastreviewed: 06/09/2021
-ms.custom: contperf-fy21q4
+ms.date: 06/30/2021
+ms.lastreviewed: 06/30/2021
+ms.custom: contperf-fy22q1
 zone_pivot_groups: state-connected-disconnected
 
 # Intent: As an Azure Stack operator, I want to give an app to access Azure Stack Hub resources. 

@@ -4,10 +4,10 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 05/01/2021
+ms.date: 06/29/2021
 ms.author: mabrigg
 ms.reviewer: walterov
-ms.lastreviewed: 05/01/2021
+ms.lastreviewed: 06/29/2021
 
 # Intent: As an Azure Stack Hub user, I would like to deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: virtual network ASK engine Azure Stack Hub
@@ -25,7 +25,7 @@ The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet 
 ## Constraints when creating a custom virtual network
 
 -  The custom VNET must be in the same subscription as all of the other components of the Kubernetes cluster.
--  The pool of master nodes and the pool of agent nodes must be in the same virtual network. You can deploy your nodes into different subnets within the same virtual network.
+-  The master nodes pool and the agent nodes pool must be in the same virtual network. You can deploy your nodes into different subnets within the same virtual network.
 -  The Kubernetes cluster subnet must use an IP range within the space of the custom virtual network IP range, see [Get the IP address block](#get-the-ip-address-blocks).
 -  Consider that the recommended size of the node subnet(s) depends on the type of network plugin being used. As a general guideline, Azure CNI requires a larger number of IP addresses for the subnet supporting the agent node pools than kubenet. See the [kubenet](#kubenet-address-blocks-example) and [Azure CNI](#azure-cni-address-blocks-example) examples below.
 -  The `169.254.0.0/16` address space may not be used for custom VNETs for Kubernetes clusters.
@@ -45,11 +45,11 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 
     ![virtual network Resource ID](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
 
-5. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example default.
+5. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example `control-plane-sn`.
     
     ![virtual network CIDR block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
     
-6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `10.1.0.0 - 10.1.0.255 (256 addresses)` and `10.1.0.0/24`.
+6. In the subnet blade, make a note of the address range (CIDR Block) of each subnet.
 
 ## Considerations for selecting an address space
 
@@ -76,16 +76,16 @@ When placing your block of IP addresses, the subnet requires the following alloc
 - A buffer of 16 IP addresses should be left open.
 - The value of your cluster's first IP should be toward the end of the address space to avoid IP conflicts. If possible, assign to the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
 
-For example, for a cluster with three master nodes. If you are using a subnet with 256 addresses, for example 10.1.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
+For example, for a cluster with three master nodes. If you are using a subnet with 256 addresses, for example 172.100.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
 
 | Range for /24 subnet | Number | Note |
 | --- | --- | --- |
-| 10.1.0.0  - 10.1.03 | 4 | Reserved in Azure subnet. |
-| **10.1.0.224**-10.1.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
-| 10.1.0.239 - 10.1.0.255 | 16 | 16 IP address buffer. |
-| 10.1.0.256 | 1 | Reserved in Azure subnet. |
+| 172.100.0.0  - 172.100.0.3 | 4 | Reserved in Azure subnet. |
+| **172.100.0.224**-172.100.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
+| 172.100.0.239 - 172.100.0.255 | 16 | 16 IP address buffer. |
+| 172.100.0.256 | 1 | Reserved in Azure subnet. |
   
-In this example, then `firstConsecutiveStaticIP` property would be `10.1.0.224`.  
+In this example, then `firstConsecutiveStaticIP` property would be `172.100.0.224`.
 For larger subnets, for example /16 with more than 60 thousand addresses, you may not find it to be practical to set your static IP assignments to the end of the network space. Set your cluster static IP address range away from the first 24 addresses in your IP space so that the cluster can be resilient when claiming addresses.
 
 ## Kubenet address blocks example
