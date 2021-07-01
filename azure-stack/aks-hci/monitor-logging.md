@@ -79,7 +79,7 @@ Install-AksHciMonitoring -Name mycluster -storageSizeGB 100 -retentionTimeHours 
 
 The `-storageSizeGB` parameter sets the size of the persistent volume that's provisioned to store metrics, and the `-retentionTimeHours` parameter sets the amount of time the collected metrics is retained.
 
-The monitoring solution is installed in a separate namespace called _monitoring_ and uses a StorageClass called _monitoring-sc_. Prometheus is exposed on an internal endpoint that is accessible only within the cluster at http://akshci-monitoring-prometheus-svc.monitoring:9090.
+The monitoring solution is installed in a separate namespace called _monitoring_ and uses a StorageClass called _monitoring-sc_. Prometheus is exposed on an internal endpoint that is accessible only within the cluster at `http://akshci-monitoring-prometheus-svc.monitoring:9090`.
 
 ## Uninstall the monitoring solution using PowerShell
 
