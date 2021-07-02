@@ -351,7 +351,7 @@
         - name: Recover App Service
           href:  ../operator/app-service-recover.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: App Service billing FAQ
-          href:  ../operator/app-service-billing-faq.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          href:  ../operator/app-service-billing-faq.yml?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: App Service update 8 release notes
           href: ../operator/azure-stack-app-service-release-notes-update-eight.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Event Hubs 
