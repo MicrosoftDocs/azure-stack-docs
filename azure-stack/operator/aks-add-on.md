@@ -17,7 +17,7 @@ ms.lastreviewed: 07/01/2021
 
 `Summary.`
 
-# Download AKS base Image
+## Download AKS base Image
 
 The AKS Service needs a special VM image referred to the "AKS base Image". The AKS service will not work without the correct image version available in the local ASH marketplace. The image is meant to be used by the AKS service, not to be used by tenants to create individual VMs. The image will not be visible to tenants in the Marketplace. This is a task that needs to be done alongside every Azure Stack Hub Update. Every time there is a new update there will be a new AKS base image associated with the AKS Service. Here are the steps:
 
@@ -27,7 +27,7 @@ The AKS Service needs a special VM image referred to the "AKS base Image". The A
 
 1.  If your instance is disconnected, please follow the instructions in the article "[Download Marketplace items to Azure Stack Hub](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item)" to download the two items mentioned from the marketplace in Azure and upload them to your Azure Stack Hub instance.
 
-# Create Plans and Offers
+## Create Plans and Offers
 
 To allow tenant users to use the AKS Service the operator needs to make it available through a plan and an offer.
 
@@ -39,7 +39,7 @@ To allow tenant users to use the AKS Service the operator needs to make it avail
 
     ![A screenshot of a computer Description automatically generated with medium confidence](media//aks-add-on/a322729043c17463d1403844f0a8a97d.png)
 
-# Monitor the AKS Service and act on Alerts
+## Monitor the AKS Service and act on Alerts
 
 1.  Using the Admin Portal you can access the Azure Kubernetes Service under the "Administration" group.
 2.  Once you open it, you will find the "Alerts" blade, select it to see any alerts:
@@ -50,6 +50,6 @@ To allow tenant users to use the AKS Service the operator needs to make it avail
 
 ![A picture containing text, screenshot, monitor, screen Description automatically generated](media//aks-add-on/69ae7febfa3386f386864f5c6312bdab.png)
 
-# Next steps
+## Next steps
 
 [Learn more about the AKS on Azure Stack Hub](aks-overview.md)
