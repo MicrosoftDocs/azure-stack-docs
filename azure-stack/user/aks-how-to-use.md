@@ -1,6 +1,6 @@
 ---
-title:Using Azure Kubernetes Service on Azure Stack Hub
-description: Learn how to use Azure Kubernetes Service on Azure Stack Hub
+title: Using Azure Kubernetes Service on Azure Stack Hub
+description: Learn how to use Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
 ms.date: 07/01/2021
@@ -116,7 +116,7 @@ Once those prerequisite steps are completed, you can proceed to test the followi
 
 ### Create an Ubuntu Azure Kubernetes Service cluster
 
-Notice that the following steps are derived from the Azure documentation [here](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough).
+Notice that the following steps are derived from the Azure documentation [here](/azure/aks/kubernetes-walkthrough).
 
 1.  Create a Resource Group:
 
@@ -193,9 +193,9 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 > [!NOTE]  
 > For Windows user use [Chocolatey](https://chocolatey.org/install) to install Helm:
 
-    ```
-    choco install kubernetes-helm
-    ```
+```
+choco install kubernetes-helm
+```
 
 1.  Install Prometheus.
 
@@ -224,10 +224,10 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 > [!NOTE]  
 > For Windows (From PowerShell) use:
 
-    ```powershell  
-    \$env:Path = \$env:Path + ";\$env:USERPROFILE\\.azure-kubectl"
-    [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(\$(kubectl get secret --namespace default my-grafana -o jsonpath="{.data.admin-password}")))
-    ```
+```powershell  
+\$env:Path = \$env:Path + ";\$env:USERPROFILE\\.azure-kubectl"
+[System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(\$(kubectl get secret --namespace default my-grafana -o jsonpath="{.data.admin-password}")))
+```
 ### Deploy your applications to the cluster using ACR
 
 At this point, your client machine is connected to the cluster and you can proceed to use kubectl to configure the cluster and deploy your applications. If you are also testing the new Azure Container Registry service, you can follow the instructions below. Otherwise, you can skip to the section title "Upgrade the cluster".
@@ -239,7 +239,7 @@ If you are deploying application images from a local Azure Container Registry, y
 ##### Command to add the SPN as a contributor to the Azure Container Registry. 
 
 > [!NOTE]  
-> This script has been modified from the [Azure Container Registry site](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Replace all \<\> items.
+> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Replace all \<\> items.
 
 ```powershell  
 # Modify for your environment. The ACR_NAME is the name of your Azure Container
@@ -314,7 +314,7 @@ spec:
 
 ### Upgrade the Kubernetes cluster
 
-After the deploying a cluster and connect to it to verify it was deployed as expected, you can proceed to upgrade it. Notice that these instructions are derived from the following Azure [documentation](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-upgrade-cluster)
+After the deploying a cluster and connect to it to verify it was deployed as expected, you can proceed to upgrade it. Notice that these instructions are derived from the following Azure [documentation](/azure/aks/tutorial-kubernetes-upgrade-cluster)
 
 1.  Get the available cluster versions by running:
 
@@ -433,7 +433,7 @@ az aks delete --name MyManagedCluster --resource-group MyResourceGroup
 
 Creating a cluster to be deployed in a user-provided network is a common scenario. Planning the network configuration takes some preparation. Also, notice that with Azure Kubernetes Service resource provider the default network plugin is Azure CNI, not Kubenet as is the case with AKS engine. With Azure CNI every pod gets an IP address from the subnet and can be accessed directly (without the need for a Routing table as is the case with Kubenet). These IP addresses must be unique across your network space and must be planned. The following article walks you through the process of planning for your custom VNET deployment. We encourage you to find various network configurations that work for your needs and test them. For a test do follow the recommendations in the article in step one and the create command provided in step two:
 
-1.  Follow the instructions in [this article](https://docs.microsoft.com/azure/aks/configure-azure-cni) to plan the deployment using Azure CNI. For example, you could use the portal to create a VNet named "myAKSVnet" with IP range 192.168.0.0/16 with subnet "myAKSSubnet" and IP range 192.168.1.0/24 in a Resource Group named "myTest-rg". Then use the next step for the creation of the cluster.
+1.  Follow the instructions in [this article](/azure/aks/configure-azure-cni) to plan the deployment using Azure CNI. For example, you could use the portal to create a VNet named "myAKSVnet" with IP range 192.168.0.0/16 with subnet "myAKSSubnet" and IP range 192.168.1.0/24 in a Resource Group named "myTest-rg". Then use the next step for the creation of the cluster.
 
     ```bash
     az network vnet create \
@@ -512,7 +512,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
 If you are testing on a Connected stamp, you can connect your Azure Kubernetes Service cluster to Azure Arc:
 
 1.  Either follow the create cluster instructions above or use an existing cluster. Make sure it is and Ubuntu base cluster.
-2.  Follow the instructions [here](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster) to connect your cluster to Arc.
+2.  Follow the instructions [here](/azure/azure-arc/kubernetes/connect-cluster) to connect your cluster to Arc.
 
 ## Use the Azure Kubernetes Service Portal to complete the following tasks
 

@@ -25,7 +25,7 @@ The AKS Service needs a special VM image referred to the "AKS base Image". The A
 
     ![Text Description automatically generated](media//aks-add-on/d5bbd5522d0077fca0f296afac86d839.jpg)
 
-1.  If your instance is disconnected, please follow the instructions in the article "[Download Marketplace items to Azure Stack Hub](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item)" to download the two items mentioned from the marketplace in Azure and upload them to your Azure Stack Hub instance.
+1.  If your instance is disconnected, please follow the instructions in the article "[Download Marketplace items to Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item)" to download the two items mentioned from the marketplace in Azure and upload them to your Azure Stack Hub instance.
 
 ## Create Plans and Offers
 
@@ -33,22 +33,22 @@ To allow tenant users to use the AKS Service the operator needs to make it avail
 
 1.  Using the Admin Portal create a Plan with the "Microsoft.Container" service. Note that there are no specific quota for this service, it uses the quotas available for the Compute, Network, and Storage services:
 
-    ![A screen shot of a computer Description automatically generated with medium confidence](media//aks-add-on/8d98666a6a709e06e2232b0fdc60e19d.png)
+    ![This is a screen shot of a screen.](media//aks-add-on/8d98666a6a709e06e2232b0fdc60e19d.png)
 
 2.  Again use the Admin portal to create an offer that contains the plan created in the prior step:
 
-    ![A screenshot of a computer Description automatically generated with medium confidence](media//aks-add-on/a322729043c17463d1403844f0a8a97d.png)
+    ![Another screen shot of a screen.](media//aks-add-on/a322729043c17463d1403844f0a8a97d.png)
 
 ## Monitor the AKS Service and act on Alerts
 
 1.  Using the Admin Portal you can access the Azure Kubernetes Service under the "Administration" group.
 2.  Once you open it, you will find the "Alerts" blade, select it to see any alerts:
 
-    ![A screenshot of a computer Description automatically generated with medium confidence](media//aks-add-on/1b76a0d763d35a14a659e0596782dadb.png)
+    ![Yet more, screen shot.](media//aks-add-on/1b76a0d763d35a14a659e0596782dadb.png)
 
 1.  Alerts will show in the "Alerts" blade, you will be able to take action on them if need to:
 
-![A picture containing text, screenshot, monitor, screen Description automatically generated](media//aks-add-on/69ae7febfa3386f386864f5c6312bdab.png)
+![Even more screen shot. More and more.](media//aks-add-on/69ae7febfa3386f386864f5c6312bdab.png)
 
 ## Next steps
 

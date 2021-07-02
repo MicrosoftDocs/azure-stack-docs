@@ -1,6 +1,6 @@
 ---
-title: Azure Kubernetes Service on Azure Stack Hub overview
-description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub.
+title: Azure Kubernetes Service on Azure Stack Hub support
+description: Learn about support options for Azure Kubernetes Service (ASK) on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
 ms.date: 07/01/2021
@@ -12,7 +12,7 @@ ms.lastreviewed: 07/01/2021
 # Keyword: Kubernetes AKS difference
 ---
 
-# Azure Kubernetes Service on Azure Stack Hub Support
+# Azure Kubernetes Service on Azure Stack Hub support
 
 Azure Kubernetes Service for Azure Stack Hub is in private preview, that is, they are available only to customers that have agreed to use it for non-production workloads. Since AKS on Azure Stack Hub is a subset of AKS on Azure, you will see that some commands are not available. We are interested in hearing your feedback about any missing functionality to adjust our priorities for the upcoming updates.
 

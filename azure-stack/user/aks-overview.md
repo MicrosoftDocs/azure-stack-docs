@@ -26,7 +26,7 @@ As a hosted Kubernetes service, Azure Stack Hub handles critical tasks like heal
 
 You can manage AKS clusters on Azure Stack Hub in the same way you do on the Azure cloud using the same Azure CLI, Azure Stack Hub user portal, Azure Resource Manager templates, and REST API. When you deploy an Azure Kubernetes Service cluster, the Kubernetes master and all nodes are deployed and configured for you.
 
-For more information on Kubernetes concepts, check out the [Kubernetes documentation](https://kubernetes.io/docs/concepts/). For a complete documentation of the AKS Service on global Azure refer to the docs at [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
+For more information on Kubernetes concepts, check out the [Kubernetes documentation](https://kubernetes.io/docs/concepts/). For a complete documentation of the AKS Service on global Azure refer to the docs at [Azure Kubernetes Service](/azure/aks/).
 
 ## User roles and responsibilities
 
@@ -78,7 +78,7 @@ The following table provides an overview of features of AKS in global Azure comp
 |                              | AKS Templates                                       | Yes       | Yes     |
 |                              | AKS PowerShell                                      | Yes       | \<?\>   |
 
-# Differences between Azure and Azure Stack Hub
+## Differences between Azure and Azure Stack Hub
 
 AKS on Azure and on Azure Stack Hub share the same source repository. There are no conceptual differences between the two. However, operating in different environments brings along differences to keep in mind when using AKS on Azure Stack Hub. Most of the differences are on functionality that is not yet available in Azure Stack Hub.
 
@@ -89,30 +89,30 @@ In both scenarios, the stamps are under the control of the customer. Also, custo
 1.  **Support Engineers do not have direct access to the stamp**.  
     Engineers work with the customer to troubleshoot issues in live sessions or by examining logs provided by the customer.
 2.  **Breaking Glass.** 
-    Customers cannot access the Azure Stack Hub infrastructure without the authorization of a CSS support engineer through a process we refer to as "Braking Glass" or "Use the PEP" (Privilege Endpoint). This is only necessary when the information provided by Alerts and Logs is not sufficient to diagnose a problem or is needed to implement the mitigation steps. This step is authorized by Azure Stack Hub CSS engineer and carried out in collaboration with the customer. For more information, see this [article](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint?view=azs-2102).
+    Customers cannot access the Azure Stack Hub infrastructure without the authorization of a CSS support engineer through a process we refer to as "Braking Glass" or "Use the PEP" (Privilege Endpoint). This is only necessary when the information provided by Alerts and Logs is not sufficient to diagnose a problem or is needed to implement the mitigation steps. This step is authorized by Azure Stack Hub CSS engineer and carried out in collaboration with the customer. For more information, see this [article](//azure-stack/operator/azure-stack-privileged-endpoint?view=azs-2102).
 3.  **All troubleshooting occurs through Alerts that the system produces or through examining logs**
-    - For information on Monitoring and Alerting see this [article](https://docs.microsoft.com/azure-stack/operator/azure-stack-monitor-health?view=azs-2102).
-    - For information on how Azure Stack Hub customers get help from Microsoft and collect logs (including AKS logs) see this [article](https://docs.microsoft.com/azure-stack/operator/azure-stack-help-and-support-overview?view=azs-2102). Customers have three options to [collect logs](https://docs.microsoft.com/azure-stack/operator/diagnostic-log-collection?view=azs-2102) depending on their requirements:
-        -   [Send logs proactively (recommended)](https://docs.microsoft.com/azure-stack/operator/diagnostic-log-collection?view=azs-2102#send-logs-proactively)
-        -   [Send logs now](https://docs.microsoft.com/azure-stack/operator/diagnostic-log-collection?view=azs-2102#send-logs-now)
-        -   [Save logs locally](https://docs.microsoft.com/azure-stack/operator/diagnostic-log-collection?view=azs-2102#save-logs-locally)
+    - For information on Monitoring and Alerting see this [article](//azure-stack/operator/azure-stack-monitor-health?view=azs-2102).
+    - For information on how Azure Stack Hub customers get help from Microsoft and collect logs (including AKS logs) see this [article](//azure-stack/operator/azure-stack-help-and-support-overview?view=azs-2102). Customers have three options to [collect logs](//azure-stack/operator/diagnostic-log-collection?view=azs-2102) depending on their requirements:
+        -   [Send logs proactively (recommended)](//azure-stack/operator/diagnostic-log-collection?view=azs-2102#send-logs-proactively)
+        -   [Send logs now](//azure-stack/operator/diagnostic-log-collection?view=azs-2102#send-logs-now)
+        -   [Save logs locally](//azure-stack/operator/diagnostic-log-collection?view=azs-2102#save-logs-locally)
 
 ### Users connecting to Azure Stack Hub using the CLI or PowerShell
 
 When you use the Azure CLI to connect to Azure, the CLI binary will default to using AAD for authentication and the global Azure Azure Resource Manager endpoint for APIs. You can use the same Azure CLI on Azure Stack Hub. But the user needs to explicitly connect to the Azure Stack Hub Azure Resource Manager endpoint and use either AAD or AD FS for authentication. The reason is that Azure Stack Hub is meant to work within enterprises, and they may choose AD FS in disconnected scenarios.
-    1.  For information on how to connect to Azure Stack Hub using either AAD or AD FS identities using PowerShell see this [article](https://docs.microsoft.com/azure-stack/user/azure-stack-powershell-configure-user?view=azs-2102&tabs=az1%2Caz2%2Caz3%2Caz4).
-    2.  Use [this](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2?view=azs-2102&tabs=ad-win) one for connecting using Azure CLI with either AAD or AD FS identities.
+    1.  For information on how to connect to Azure Stack Hub using either AAD or AD FS identities using PowerShell see this [article](//azure-stack/user/azure-stack-powershell-configure-user?view=azs-2102&tabs=az1%2Caz2%2Caz3%2Caz4).
+    2.  Use [this](//azure-stack/user/azure-stack-version-profiles-azurecli2?view=azs-2102&tabs=ad-win) one for connecting using Azure CLI with either AAD or AD FS identities.
 
 ### Supported platform features
 
 Another area of differences resides in the features provided by each platform. Azure Stack Hub provides a subset of the features available in Azure. This limits the features offered in Azure Stack Hub AKS:
 1.  No Standard Load Balancer. Now Azure Stack Hub only supports Basic Load Balancer, this implies that the following features, which depend on SLB are not yet available on Azure Stack Hub AKS RP:
-3.  No parameter api-server-authorized-ip-ranges <https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges>
-4.  No parameter load-balancer-managed-ip-count [https://docs.microsoft.com/azure/aks/load-balancer-standard\#scale-the-number-of-managed-outbound-public-ips](https://docs.microsoft.com/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips)
-5.  No parameter enable-private-cluster <https://docs.microsoft.com/azure/aks/private-clusters>
-6.  No cluster autoscaler: <https://docs.microsoft.com/azure/aks/cluster-autoscaler>
+3.  No parameter api-server-authorized-ip-ranges </azure/aks/api-server-authorized-ip-ranges>
+4.  No parameter load-balancer-managed-ip-count [/azure/aks/load-balancer-standard\#scale-the-number-of-managed-outbound-public-ips](/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips)
+5.  No parameter enable-private-cluster </azure/aks/private-clusters>
+6.  No cluster autoscaler: </azure/aks/cluster-autoscaler>
     1.  No parameter enable-cluster-autoscaler
-7.  [az aks update](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available**.**
+7.  [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available**.**
 8.  No multiple node-pool support. The node pool commands are not available.
 9.  UI support for multi-node-pool operations is not enabled.
 10. Windows containers \<todo\>
