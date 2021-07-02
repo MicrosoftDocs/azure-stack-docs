@@ -38,6 +38,8 @@ To modify the settings, select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt;
 
 ## Secrets rotation
 
+::: moniker range="< azs-2107"
+
 *These instructions only apply to Azure Stack Hub Integrated Systems.*
 
 When using the SQL and MySQL resource providers with Azure Stack Hub integrated systems, the Azure Stack Hub operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
@@ -119,6 +121,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 |KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
 |     |     |     |
 
+::: moniker-end
 ## Update the VM operating system
 
 Use one of the following methods to update the VM operating system.
