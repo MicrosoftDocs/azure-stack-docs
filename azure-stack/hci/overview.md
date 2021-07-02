@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/29/2021
+ms.date: 07/02/2021
 ms.custom: e2e-hybrid
 ---
 
