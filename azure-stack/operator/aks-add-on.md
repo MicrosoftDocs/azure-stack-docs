@@ -25,7 +25,7 @@ The AKS Service needs a special VM image referred to the "AKS base Image". The A
 
     ![Text Description automatically generated](media//aks-add-on/d5bbd5522d0077fca0f296afac86d839.jpg)
 
-1.  If your instance is disconnected, please follow the instructions in the article "[Download Marketplace items to Azure Stack Hub](med/azure-stack/operator/azure-stack-download-azure-marketplace-item)" to download the two items mentioned from the marketplace in Azure and upload them to your Azure Stack Hub instance.
+1.  If your instance is disconnected, please follow the instructions in the article "[Download Marketplace items to Azure Stack Hub](/azure-stack/operator/azure-stack-download-azure-marketplace-item)" to download the two items mentioned from the marketplace in Azure and upload them to your Azure Stack Hub instance.
 
 ## Create Plans and Offers
 
