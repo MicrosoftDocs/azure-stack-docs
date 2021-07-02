@@ -45,11 +45,11 @@ sudo apt install ./azure-cli_xenial_all.deb
 
         This is the output from a Linux machine:
 
-        ![](media/aks-how-to-use/eac6ff4c6c162c00be6188f1b34e6454.png)
+        ![output from a Linux machine](media/aks-how-to-use/eac6ff4c6c162c00be6188f1b34e6454.png)
 
         The following output should be produced in a windows machine:
 
-        ![](media/aks-how-to-use/63ed87bd670f80e79795acaa513b6288.png)
+        ![produced in a windows machine](media/aks-how-to-use/63ed87bd670f80e79795acaa513b6288.png)
 
         It is important that you do not upgrade your CLI, it will be replaced by the production ready version.
 
@@ -89,9 +89,9 @@ sudo apt install ./azure-cli_xenial_all.deb
 
 2.  Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains as in the following images:
 
-    ![](media/aks-how-to-use/32207e4a9825eefec5990392c8fed2ce.png)
+    ![subscription ID and resource providers](media/aks-how-to-use/32207e4a9825eefec5990392c8fed2ce.png)
 
-    ![](media/aks-how-to-use/6db219f10a214764da4abe91c2097533.png)
+    ![ your Azure CLI session](media/aks-how-to-use/6db219f10a214764da4abe91c2097533.png)
 
     Set the subscription in your Azure CLI session as the default with:
 
@@ -104,7 +104,7 @@ sudo apt install ./azure-cli_xenial_all.deb
 
 The output should look like:
 
-![](media/aks-how-to-use/a8fc9e2341cc67644af1eed32f374bf6.png)
+![The output should look like](media/aks-how-to-use/a8fc9e2341cc67644af1eed32f374bf6.png)
 
 1.  Make note of the "Microsoft.ContainerService" resource provider and proceed to register it:
 
@@ -169,7 +169,7 @@ The output from this operation will be in json format and contain a specificatio
     .azure-kubectl/kubectl get nodes
     ```
 
-![](media/aks-how-to-use/9a031505db6591ac87742d89904daeb9.png)
+![verify the connection to your cluster](media/aks-how-to-use/9a031505db6591ac87742d89904daeb9.png)
 
 ### Deploy test applications
 
@@ -522,32 +522,32 @@ In the Azure Kubernetes Service private preview the operations of cluster creati
 
 1.  In the Azure Stack tenant portal find the "All Services" blade and select "Kubernetes services"
 
-![](media/aks-how-to-use/463b908e5098eec57a79441cb9670f89.png)
+![Azure Stack tenant portal](media/aks-how-to-use/463b908e5098eec57a79441cb9670f89.png)
 
 1.  Verify that all clusters that you have created appear in the "Kubernetes service" blade:
 
-![](media/aks-how-to-use/6134f1c8aa98eb9982ddda5baf9842a7.png)
+![all clusters that you have created](media/aks-how-to-use/6134f1c8aa98eb9982ddda5baf9842a7.png)
 
 1.  Verify that you can view the details of any of the clusters:
 
-![](media/aks-how-to-use/02b3ba6fb22ca702f418a44da7425e78.png)
+![ details of any of the clusters](media/aks-how-to-use/02b3ba6fb22ca702f418a44da7425e78.png)
 
 ### Upgrade a cluster
 
-1.  In the cluster's details blade click on the Upgrade blade and select the Kubernetes upgrade version to upgrade to and click save
+1.  In the cluster's details blade click on the Upgrade blade and select the Kubernetes upgrade version to upgrade to and click save.
 
-![](media/aks-how-to-use/fe445aa3703ce83b4756e0b4f8104be0.png)
+![upgrade to and click save](media/aks-how-to-use/fe445aa3703ce83b4756e0b4f8104be0.png)
 
 1.  Verify the cluster was upgraded by checking the cluster details blade
 
-![](media/aks-how-to-use/8ff6ecb80681fd99c46146299a59f381.png)
+![upgraded by checking the cluster](media/aks-how-to-use/8ff6ecb80681fd99c46146299a59f381.png)
 
 ### Scale Cluster
 ### Delete Cluster
 
 1.  In the overview blade for the Azure Kubernetes Service cluster, find and click the Delete button as in the image below.
 
-![](media/aks-how-to-use/271da3fb9280806617518e68df4a0276.png)
+![Alt text for the ages.](media/aks-how-to-use/271da3fb9280806617518e68df4a0276.png)
 
 1.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern "\<…\>_clustername_location", if it is not found it was properly deleted.
 
