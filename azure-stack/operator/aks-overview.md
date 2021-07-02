@@ -44,4 +44,4 @@ The following tasks fall on the **Azure Stack Hub Operator**:
 
 ## Next steps
 
-[Install and offer the Azure Kubernetes Service on Azure Stack Hub](C:\git\ms\azure-stack-docs-pr\azure-stack\operator\aks-add-on.md)
+[Install and offer the Azure Kubernetes Service on Azure Stack Hub](aks-add-on.md)
