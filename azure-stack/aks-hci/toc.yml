@@ -71,8 +71,12 @@
             href: scale-cluster.md
           - name: Update the Kubernetes version
             href: upgrade.md
-          - name: Update AKS on Azure Stack HCI
-            href: update-aks-hci-concepts.md
+          - name: Update AKS on Azure Stack HCI host
+            items:
+                - name: Update the AKS on Azure Stack HCI host using PowerShell
+                  href: update-akshci-host-powershell.md
+                - name: Update the AKS on Azure Stack HCI host using Windows Admin Center
+                  href: update-akshci-host-wac.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
