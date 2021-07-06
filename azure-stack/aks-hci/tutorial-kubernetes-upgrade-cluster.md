@@ -22,7 +22,7 @@ In this tutorial, part seven of seven, a Kubernetes cluster is upgraded. You lea
 > * Validate a successful upgrade
 > * Remove a Kubernetes cluster
 
-## General updating concepts
+## Understand the types of updates
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
 - [Update the AKS on Azure Stack HCI host](update-aks-hci-concepts.md) to the latest version.
@@ -47,6 +47,8 @@ You must upgrade the PowerShell modules and the AKS on Azure Stack HCI host firs
 
 ### Example for updating the Kubernetes version of a workload cluster
 
+Use the steps in the following example to update the Kubernetes version:
+
 1. To get the current version of your workload cluster, run the following command:
 
    ```powershell
@@ -69,8 +71,8 @@ You must upgrade the PowerShell modules and the AKS on Azure Stack HCI host firs
    ```
 
    ```output
-   OrchestratorType OrchestratorVersion OS      IsPreview
-   ---------------- ------------------- --      ---------
+   OrchestratorType OrchestratorVersion OS          IsPreview
+   ---------------- ------------------- --          ---------
    Kubernetes       v1.18.14            Linux       False
    Kubernetes       v1.18.17            Linux       False
    Kubernetes       v1.19.7             Linux       False
@@ -101,9 +103,11 @@ You must upgrade the PowerShell modules and the AKS on Azure Stack HCI host firs
 ## Update the operating system version only
 
 > [!Important]
-> Updating a target cluster to a newer version of the operating system without changing the Kubernetes version will only work if the new operating system version does not require a different Kubernetes version.
+> You can update a workload cluster to a newer version of the operating system without changing the Kubernetes version, but it works only if the new operating system version does not require a different Kubernetes version.
 
 ### Example for updating only the operating system
+
+Use the steps in the following example to update the OS version:
 
 1. To get available workload cluster updates, run the following command:
 
@@ -111,12 +115,11 @@ You must upgrade the PowerShell modules and the AKS on Azure Stack HCI host firs
    PS C:\> Get-AksHciClusterUpgrades -name mycluster
    ```
 
-   
    ```output
-   details                             kubernetesversion                 operatingsystemversion
-   -------                             -----------------                 ----------------------
-   This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.19.9   @{mariner=April 2021; windows=April 2021}
-   This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5   @{mariner=April 2021; windows=April 2021}
+   details                             kubernetesversion                operatingsystemversion
+   -------                             -----------------                ----------------------
+   This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.19.9  @{mariner=April 2021; windows=April 2021}
+   This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5  @{mariner=April 2021; windows=April 2021}
    ```
 
 2. To initiate the operating system version update, run the following command:
@@ -128,11 +131,11 @@ You must upgrade the PowerShell modules and the AKS on Azure Stack HCI host firs
 ## Update the OS version and the Kubernetes version
 
 > [!Important]
-> Updating a workload cluster to a newer version of the operating system and Kubernetes version is allowed.
-
-The example below assumes there's a new Kubernetes version available, and the version number is v1.18.12.
+> Updating a workload cluster to a newer version of the operating system and Kubernetes version is supported.
 
 ### Example for updating a workload cluster
+
+The example below assumes there's a new Kubernetes version available, and the current version number is v1.18.12.
 
 1. To get all available workload cluster updates, run the following command:
 
@@ -141,8 +144,8 @@ The example below assumes there's a new Kubernetes version available, and the ve
    ```
 
    ```output
-   details                          kubernetesversion                     operatingsystemversion
-   -------                          -----------------                     ----------------------
+   details                             kubernetesversion                  operatingsystemversion
+   -------                             -----------------                  ----------------------
    This is a patch kubernetes upgrade. (i.e v1.1.X  to v1.1.Y) v1.19.9    @{mariner=April 2021; windows=April 2021}
    This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5    @{mariner=April 2021; windows=April 2021}
    ```
