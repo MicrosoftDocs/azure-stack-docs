@@ -3,7 +3,7 @@ title: Tutorial - Upgrade a cluster in Azure Kubernetes Service on Azure Stack H
 description: In this tutorial, learn how to upgrade an existing cluster to the latest available Kubernetes version.
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 07/02/2021
 ms.author: jeguan
 author: v-susbo
 ---
@@ -16,12 +16,53 @@ In this tutorial, part seven of seven, a Kubernetes cluster is upgraded. You lea
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions
-> * Upgrade the Kubernetes nodes
+> * Upgrade the Kubernetes version of Kubernetes nodes
+> * Upgrade the OS version of Kubernetes nodes
+> * Upgrade a Kubernetes cluster to the latest version
 > * Validate a successful upgrade
+> * Remove a Kubernetes cluster
+
+## General updating concepts
+There are several types of updates, which can happen independently from each other and in certain supported combinations.
+
+- Update the AKS on Azure Stack HCI host to the latest version see [Tutorial - Updating Azure Kubernetes Services (AKS) on Azure Stack HCI](tutorial-akshci-host-update.md).
+- Update an AKS on Azure Stack HCI workload cluster to a new Kubernetes version.
+- Update the AKS on Azure Stack HCI container hosts to a newer version of the operating system.
+- Combined update of operating system and Kubernetes version.
+
+All updates are done in a rolling update flow to avoid outages in workload availability. When a _new_ Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the _old_ node to the _new_ node, and once this is completed successfully, the _old_ node is decommissioned and removed from the cluster.
+
+The examples in this tutorial assume that the workload cluster, **myCluster**, is currently on Kubernetes version 1.18.8 and uses an operating system version more than 30 days old.
 
 ## Before you begin
 
 In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS cluster. The application was then deployed to the AKS on Azure Stack HCI cluster. If you have not done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+
+## Update the Kubernetes version of a workload cluster
+
+>[!Note]
+>You have to upgrade the PowerShell Modules and AKS on Azure Stack HCI Host first. See the topic above for details.
+
+>[!Important]
+>Updating a workload cluster to a newer version of Kubernetes will only work if the target Kubernetes Version is supported by the current operating system version.
+>To check for supported operating system - Kubernetes version combinations use the `Get-AksHciUpdateVersions` command.
+
+### Example for updating the Kubernetes version of a workload cluster
+
+Get the current version of your target cluster
+
+```powershell
+Get-AksHciCluster
+```
+
+```output
+ProvisioningState     : Deployed
+KubernetesVersion     : v1.19.7
+Name                  : sandpit
+ControlPlaneNodeCount : 1
+WindowsNodeCount      : 0
+LinuxNodeCount        : 0
+```
 
 ## Get available cluster versions
 
