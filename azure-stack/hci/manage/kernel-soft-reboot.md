@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/01/2021
+ms.date: 07/06/2021
 ---
 
 # Kernel Soft Reboot in Azure Stack HCI

@@ -226,6 +226,8 @@
     href: manage/thin-provisioning.md
   - name: Adjustable storage repair speed
     href: manage/storage-repair-speed.md
+  - name: Kernel Soft Reboot
+    href: manage/kernel-soft-reboot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
