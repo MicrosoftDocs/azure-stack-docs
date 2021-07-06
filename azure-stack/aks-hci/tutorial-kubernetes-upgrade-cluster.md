@@ -22,10 +22,10 @@ In this tutorial, part seven of seven, a Kubernetes cluster is upgraded. You lea
 > * Validate a successful upgrade
 > * Remove a Kubernetes cluster
 
-## Understand options for updating
+## What are the options for updating?
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
-- [Update the AKS on Azure Stack HCI host](update-aks-hci-concepts.md) to the latest version.
+- [Update the AKS on Azure Stack HCI host](update-akshci-host-powershell.md) to the latest version.
 - Update an AKS on Azure Stack HCI workload cluster to a new Kubernetes version.
 - Update the AKS on Azure Stack HCI container hosts to a newer version of the operating system.
 - Combined update of operating system and Kubernetes version.
