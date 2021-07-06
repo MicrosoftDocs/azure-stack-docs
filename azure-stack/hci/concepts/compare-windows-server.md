@@ -74,8 +74,11 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Core SDN | Yes | Yes |
 | Stretch clustering for disaster recovery | Yes | - |
 | 4-5x faster Storage Spaces repairs | Yes | - |
+| Affinity rules | Yes | - |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
+
+Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md).
 
 ## Compare management options
 
