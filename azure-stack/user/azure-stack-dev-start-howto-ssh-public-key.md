@@ -21,7 +21,7 @@ To use an open SSH connection from your development machine to the server VM in 
 
 In this article, you create your keys and then use them to connect to your server. You can use an SSH client to get a bash prompt on the Linux server or use a Secure FTP (SFTP) client to move files to and from the server.
 
-## Create an SSH public key on Windows
+## Create SSH key pair on Windows
 
 In this section, you use PuTTY Key Generator to create a public SSH key and private key pair to use when you create a secure connection to Linux machines in your Azure Stack Hub instance. PuTTY is a free terminal emulator that can allow you to connect to a server via SSH and Telnet.
 
