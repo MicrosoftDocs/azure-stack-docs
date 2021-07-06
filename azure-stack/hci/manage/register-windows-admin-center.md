@@ -4,7 +4,7 @@ description: How to register your Windows Admin Center gateway with Azure.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 07/02/2021
 ---
 
 # Register Windows Admin Center with Azure
@@ -18,15 +18,19 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
 ## Complete the registration process
 
-1. Launch Windows Admin Center and select the **Settings** gear icon in the upper right, which will take you to your Account page. Then, from the **Gateway** menu at the left, select **Azure**, and then click **Register**.
+Launch Windows Admin Center and select the **Settings** gear icon in the upper right, which will take you to your Account page. Then, from the **Gateway** menu at the left, select **Azure**, and then click **Register**.
 
    :::image type="content" source="media/register-wac/register-wac.png" alt-text="Select Settings > Gateway > Azure, then click Register" lightbox="media/register-wac/register-wac.png":::
+
+To register Windows Admin Center, follow these steps:
+
+1. Select an Azure cloud from the dropdown menu.
 
 2. You'll be provided with a unique code. Click the **Copy** button to the right of the code. Click **Enter the code**, which will open up another browser window into which you can paste the code displayed on your app or device.
 
    :::image type="content" source="media/register-wac/enter-code.png" alt-text="Copy the unique code, click enter the code, and paste it into the dialog box" lightbox="media/register-wac/enter-code.png":::
 
-3. After pasting in the code, you'll be notified that you're about to be signed in to Windows Admin Center on a remote device or service. Enter your email or phone number. If your device is managed, you will be taken to your organization's sign-in page for authentication. Follow the instructions and enter the appropriate credentials.
+3. After pasting in the code, you'll be notified that you're about to be signed in to Windows Admin Center on a remote device or service. Enter your email or phone number. If your device is managed, you will be taken to your organization's sign-in page for authentication. Follow the instructions and enter the appropriate credentials. You may be asked to confirm that you're trying to sign into Windows Admin Center. Select **continue**.
 
    :::image type="content" source="media/register-wac/sign-in.png" alt-text="Sign in to Windows Admin Center using your email or phone number" lightbox="media/register-wac/sign-in.png":::
 
