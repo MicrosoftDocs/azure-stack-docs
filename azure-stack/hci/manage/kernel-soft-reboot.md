@@ -27,7 +27,7 @@ Take a few minutes to [watch the video](https://www.youtube.com/watch?v=tdfF2iBC
 
 As this feature bypasses the lengthy and traditional reboot BIOS/FIRMWARE initialization, you can only use Kernel Soft Reboot for updates that do not require a firmware/BIOS initialization. Currently, you can use Kernel Soft Reboot optionally with the Cluster-Aware Updating WindowsUpdate plugin for Quality Updates and Hotfix plugin for MSI/MSU/EXEs files only.
 
-## Enable Kernel Soft Reboot with Cluster-Aware Updating using Powershell
+## Enable Kernel Soft Reboot with Cluster-Aware Updating using PowerShell
 
 In Azure Stack HCI, version 21H2 Preview, you can use PowerShell to set up and manage Kernel Soft Reboot for your Azure Stack HCI cluster.
 
@@ -47,7 +47,7 @@ Get-Cluster | Set-ClusterParameter -Name CauEnableSoftReboot -Value 1 -Create
 
 ### Option 2: Use Kernel Soft Reboot with individual CAU runs
 
-To use Kernel Soft Reboot with a specific Cluster-Aware Updating run, use the optional `AttemptSoftReboot` parameter when using CAU Powershell cmdlets, such as in the following examples.
+To use Kernel Soft Reboot with a specific Cluster-Aware Updating run, use the optional `AttemptSoftReboot` parameter when using CAU PowerShell cmdlets, such as in the following examples.
 
 ```PowerShell
 Invoke-CauRun <other_options> -AttemptSoftReboot
