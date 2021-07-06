@@ -22,7 +22,7 @@ In this tutorial, part seven of seven, a Kubernetes cluster is upgraded. You lea
 > * Validate a successful upgrade
 > * Remove a Kubernetes cluster
 
-## Understand the types of updates
+## Understand options for updating
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
 - [Update the AKS on Azure Stack HCI host](update-aks-hci-concepts.md) to the latest version.
@@ -128,7 +128,7 @@ Use the steps in the following example to update the OS version:
    PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.19.7 -operatingSystem
    ```
 
-## Update the OS version and the Kubernetes version
+## Update both the OS and the Kubernetes version
 
 > [!Important]
 > Updating a workload cluster to a newer version of the operating system and Kubernetes version is supported.
@@ -164,11 +164,11 @@ Confirm that the upgrade was successful using the [Get-AksHciCluster](get-akshci
 Get-AksHciCluster -name mycluster
 ```
 
-The following example output shows the cluster runs *KubernetesVersion v1.17.16*:
+The following example output shows the cluster runs *KubernetesVersion v1.20.5*:
 
 ```Output
 Name            : mycluster
-Version         : v1.17.16
+Version         : v1.20.5
 Control Planes  : 1
 Linux Workers   : 1
 Windows Workers : 0
@@ -190,7 +190,9 @@ In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI cluster. 
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions
-> * Upgrade the Kubernetes nodes
+> * Upgrade the Kubernetes version of Kubernetes nodes
+> * Upgrade the OS version of Kubernetes nodes
+> * Upgrade a Kubernetes cluster to the latest version
 > * Validate a successful upgrade
 
 For more information on AKS on Azure Stack HCI, see the [AKS on Azure Stack HCI overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
