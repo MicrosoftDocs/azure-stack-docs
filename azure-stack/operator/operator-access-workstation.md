@@ -68,7 +68,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = '32835616674E2543017834907D098624C4470361330E529282E62BA1F50CC9A6' 
+$expectedHash = 'F4F99249F8C5B1A79F1C797B9029C65383377F565F63AB211B73D051806F9040' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
@@ -92,7 +92,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
  
    ```powershell
-   Test-FileHash -ExpectedHash "32835616674E2543017834907D098624C4470361330E529282E62BA1F50CC9A6" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "F4F99249F8C5B1A79F1C797B9029C65383377F565F63AB211B73D051806F9040" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version
