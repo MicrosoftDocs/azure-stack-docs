@@ -260,6 +260,6 @@ You can use Windows Admin Center to configure Azure Site Recovery and replicate 
 
 You can also create and manage VMs using Windows PowerShell. For more information, see [Manage VMs on Azure Stack HCI using Windows PowerShell](vm-powershell.md).
 
-See [Create and manage Azure virtual networks for Windows virtual machines](/azure/virtual-machines/windows/tutorial-virtual-network.md).
+See [Create and manage Azure virtual networks for Windows virtual machines](/azure/virtual-machines/windows/tutorial-virtual-network).
 
-See [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control.md).
+See [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).
