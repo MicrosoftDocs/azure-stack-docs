@@ -4,8 +4,8 @@ description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 06/30/2021
-ms.lastreviewed: 06/30/2021
+ms.date: 07/07/2021
+ms.lastreviewed: 07/07/2021
 ms.custom: contperf-fy22q1
 zone_pivot_groups: state-connected-disconnected
 
@@ -44,9 +44,9 @@ After registering the app you learn how to assign it to a role, limiting its res
 ::: zone-end
 
 ::: zone pivot="state-connected"
-## Manage an Azure AD app identity
+## Manage an Azure AD app
 
-If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage app identities just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
+If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage identities for apps just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
 ### <a name="create-app-registration-client-secret-aad"></a>Create an app registration that uses a client secret credential
 
@@ -69,7 +69,7 @@ In this section, you register your app in your Azure AD tenant using the Azure p
 Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity.
 ::: zone-end
 
-## Manage an AD FS app identity
+## Manage an AD FS app
 
 If you deployed Azure Stack Hub with AD FS as your identity management service, you must use PowerShell to manage your app's identity. The following examples demonstrate both an X509 certificate and a client secret credential.
 
@@ -216,7 +216,7 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
 Now that you registered the application, this section will show you how to:
 
 1. Create a new self-signed X509 certificate for testing.
-2. Update the service principal's credentials, by updating its **Thumbprint** property to match the new certificate.
+2. Update the application's credentials, by updating its **Thumbprint** property to match the new certificate.
 
 Update the certificate credential using PowerShell, substituting your own values for the following placeholders:
 
@@ -239,7 +239,7 @@ Update the certificate credential using PowerShell, substituting your own values
      # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
      # $Cert = Get-Item "<YourCertificateLocation>"
 
-     # Use the privileged endpoint to update the certificate thumbprint, used by the service principal associated with <AppIdentifier>
+     # Use the privileged endpoint to update the certificate thumbprint, used by <AppIdentifier>
      $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ClientCertificates $using:NewCert}
      $Session | Remove-PSSession
 
@@ -387,7 +387,7 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
      # Create a PSSession to the PrivilegedEndpoint VM
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
-     # Use the privileged endpoint to update the client secret, used by the service principal associated with <AppIdentifier>
+     # Use the privileged endpoint to update the client secret, used by <AppIdentifier>
      $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ResetClientSecret}
      $Session | Remove-PSSession
 
@@ -428,7 +428,7 @@ $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEn
 # OPTIONAL: Use the privileged endpoint to get a list of applications registered in AD FS
 $AppList = Invoke-Command -Session $Session -ScriptBlock {Get-GraphApplication}
 
-# Use the privileged endpoint to remove the application and associated service principal object for <AppIdentifier>
+# Use the privileged endpoint to remove application <AppIdentifier>
 Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier "<AppIdentifier>"}
 ```
 
@@ -451,7 +451,7 @@ The type of resource you choose also establishes the *access scope* for the app.
 
    > [!NOTE]
    > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in roles.  
-2. Navigate to the resource you wish to allow the app to access. In this example, assign the app's service principal to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource like a virtual machine.
+2. Navigate to the resource you wish to allow the app to access. In this example, assign the app to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource like a virtual machine.
 
      ![Select subscription for assignment](./media/give-app-access-to-resources/select-subscription.png)
 

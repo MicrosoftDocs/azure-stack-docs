@@ -388,7 +388,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](./known-issues.md?view=azs-1908)
+- [Known issues](./known-issues.md?view=azs-1908&preserve-view=true)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -486,7 +486,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](./known-issues.md?view=azs-1907)
+- [Known issues](./known-issues.md?view=azs-1907&preserve-view=true)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -621,7 +621,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](./known-issues.md?view=azs-1906)
+- [Known issues](./known-issues.md?view=azs-1906&preserve-view=true)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -851,7 +851,7 @@ For information about security updates in this update of Azure Stack, see [Azure
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](./known-issues.md?view=azs-1905)
+- [Known issues](./known-issues.md?view=azs-1905&preserve-view=true)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -1033,7 +1033,7 @@ This update of Azure Stack does not include security updates to the underlying o
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](./known-issues.md?view=azs-1904)
+- [Known issues](./known-issues.md?view=azs-1904&preserve-view=true)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -1962,11 +1962,11 @@ This update includes the following new features and improvements for Azure Stack
 
 - Added support for device authentication with Active Directory Federated Services (AD FS), when using Azure CLI in particular. For more information, see [Use API version profiles with Azure CLI in Azure Stack](../../user/azure-stack-version-profiles-azurecli2.md)
 
-- Added support for Service Principals using a client secret with Active Directory Federated Services (AD FS). For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-an-azure-ad-app-identity).
+- Added support for Service Principals using a client secret with Active Directory Federated Services (AD FS). For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-an-azure-ad-fs-app).
 
 - This release adds support for the following Azure Storage Service API versions: **2017-07-29**, **2017-11-09**. Support is also added for the following Azure Storage Resource Provider API versions: **2016-05-01**, **2016-12-01**, **2017-06-01**, and **2017-10-01**. For more information, see [Azure Stack storage: Differences and considerations](../../user/azure-stack-acs-differences.md).
 
-- Added new privileged endpoint commands to update and remove service principles for ADFS. For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-an-azure-ad-app-identity).
+- Added new privileged endpoint commands to update and remove service principles for ADFS. For more information, see [Create service principal for AD FS](../azure-stack-create-service-principals.md#manage-an-azure-ad-fs-app).
 
 - Added new Scale Unit Node operations that allow an Azure Stack operator to start, stop, and shut down a scale unit node. For more information, see [Scale unit node actions in Azure Stack](../azure-stack-node-actions.md).
 

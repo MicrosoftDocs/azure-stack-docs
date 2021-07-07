@@ -452,10 +452,6 @@
           href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
           href: azure-stack-mysql-resource-provider-11470.md
-        - name: MySQL resource provider 1.1.33.0 release notes
-          href: azure-stack-mysql-resource-provider-11330.md
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
     - name: SQL on Azure Stack Hub
       items:
       - name: Overview
@@ -480,10 +476,6 @@
           href: azure-stack-sql-resource-provider-11930.md   
         - name: SQL resource provider 1.1.47.0 release notes
           href: azure-stack-sql-resource-provider-11470.md   
-        - name: SQL resource provider 1.1.33.0 release notes
-          href: azure-stack-sql-resource-provider-11330.md   
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:
