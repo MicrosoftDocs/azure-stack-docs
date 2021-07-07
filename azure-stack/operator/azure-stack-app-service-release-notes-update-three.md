@@ -9,6 +9,7 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 3.
 # Keyword: app service update 3 azure stack

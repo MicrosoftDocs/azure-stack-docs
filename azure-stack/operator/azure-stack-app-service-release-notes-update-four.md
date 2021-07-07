@@ -9,6 +9,7 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 4.
 # Keyword: app service update 4 azure stack
