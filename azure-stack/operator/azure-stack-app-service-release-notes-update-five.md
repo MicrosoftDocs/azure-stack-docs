@@ -9,6 +9,8 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
+ms.custom: contperf-fy22q1
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 5.
 # Keyword: app service update 5 azure stack
