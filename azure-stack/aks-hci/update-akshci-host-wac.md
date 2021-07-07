@@ -8,7 +8,7 @@ ms.author: mikek
 author: mkostersitz
 ---
 
-# Update concepts for Azure Kubernetes Services on Azure Stack HCI
+# Update the AKS on Azure Stack HCI host using Windows Admin Center
 
 There are several types of updates, which can happen independently from each other and in certain supported combinations.
 

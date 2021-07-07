@@ -101,7 +101,7 @@ The **Aks-Hci** PowerShell commands do not validate the available memory on the 
 If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
-When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node it will fail to start there as well.
+When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
 This issue happens because the logic to clean up the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
 Workaround: Ensure the VM has started successfully on the new node before moving it back to the original node.
 This issue will be fixed in a future release.
