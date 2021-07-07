@@ -73,9 +73,9 @@
             href: upgrade.md
           - name: Update AKS on Azure Stack HCI host
             items:
-                - name: Update the AKS on Azure Stack HCI host using PowerShell
+                - name: Use PowerShell
                   href: update-akshci-host-powershell.md
-                - name: Update the AKS on Azure Stack HCI host using Windows Admin Center
+                - name: Use Windows Admin Center
                   href: update-akshci-host-wac.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
