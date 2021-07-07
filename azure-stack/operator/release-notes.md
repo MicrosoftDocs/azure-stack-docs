@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/10/2021
+ms.date: 07/06/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -224,7 +224,7 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2102.28.87](hotfix-1-2102-28-87.md)
+- [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
