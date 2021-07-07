@@ -4,8 +4,8 @@ description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 06/30/2021
-ms.lastreviewed: 06/30/2021
+ms.date: 07/07/2021
+ms.lastreviewed: 07/07/2021
 ms.custom: contperf-fy22q1
 zone_pivot_groups: state-connected-disconnected
 
@@ -44,9 +44,9 @@ After registering the app you learn how to assign it to a role, limiting its res
 ::: zone-end
 
 ::: zone pivot="state-connected"
-## Manage an Azure AD app identity
+## Manage an Azure AD app
 
-If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage app identities just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
+If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage identities for apps just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
 ### <a name="create-app-registration-client-secret-aad"></a>Create an app registration that uses a client secret credential
 
@@ -69,7 +69,7 @@ In this section, you register your app in your Azure AD tenant using the Azure p
 Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity.
 ::: zone-end
 
-## Manage an AD FS app identity
+## Manage an AD FS app
 
 If you deployed Azure Stack Hub with AD FS as your identity management service, you must use PowerShell to manage your app's identity. The following examples demonstrate both an X509 certificate and a client secret credential.
 
