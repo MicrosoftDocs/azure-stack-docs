@@ -13,6 +13,8 @@ This article describes how to upgrade an AKS on Azure Stack HCI workload cluster
 
 We recommend updating an AKS workload cluster on Azure Stack HCI at least once every 60 days. New updates are available every 30 days. All updates are done in a rolling update flow to avoid outages in workload availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
 
+## Upgrade the Kubernetes version
+
 To upgrade the Kubernetes version of a workload cluster with Windows Admin Center, follow these steps: 
 
 1. On the Windows Admin Center **Connections** page, connect to your management cluster.
