@@ -25,7 +25,7 @@ Azure Stack HCI is delivered as an Azure service and [billed to an Azure subscri
 
 ## Azure Stack HCI features and architecture
 
-Azure Stack HCI is a world-class, integrated virtualization stack built on proven technologies that have already been deployed at scale, including Hyper-V, Storage Spaces Direct, and Azure-inspired software-defined networking (SDN). It's part of the Azure and Azure Stack family, using the same software-defined compute, storage, and networking software as Azure Stack Hub.
+Azure Stack HCI is a world-class, integrated virtualization stack built on proven technologies that have already been deployed at scale, including Hyper-V, Storage Spaces Direct, and Azure-inspired SDN. It's part of the [Azure Stack family](/azure-stack/), using the same software-defined compute, storage, and networking software as [Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/).
 
 Watch the video on the high-level features of Azure Stack HCI:
 
