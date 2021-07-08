@@ -10,6 +10,8 @@ author: mkostersitz
 
 # Update the AKS on Azure Stack HCI host using Windows Admin Center
 
+This article describes how to update the AKS on Azure Stack HCI core system to the latest version. For information on updating an AKS workload cluster, visit [how to update the Kubernetes version of AKS clusters](./upgrade.md).
+
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
 - Update the AKS on Azure Stack HCI core system to the latest version.
@@ -17,9 +19,7 @@ There are several types of updates, which can happen independently from each oth
 - Update the container hosts of AKS workload clusters to a newer version of the operating system.
 - Combined update of the operating system and Kubernetes version of AKS workload clusters.
 
-All updates are done in a rolling update flow to avoid outages in workload availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when this completes successfully, the _old_ node is decommissioned and removed from the cluster.
-
-This article describes how to update the AKS on Azure Stack HCI core system to the latest version. For information on updating an AKS workload cluster, visit [how to update Kubernetes version of AKS clusters](./upgrade.md).
+All updates are done in a rolling update flow to avoid outages in  AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when this completes successfully, the _old_ node is decommissioned and removed from the cluster.
 
 It's recommended to update AKS workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your AKS workload clusters. If your workload clusters are on an old Kubernetes version, they are still supported, but you will not be able to scale your cluster. 
 

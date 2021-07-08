@@ -15,8 +15,7 @@ This article describes the following update options for AKS workload clusters on
 - Combined update of the operating system and Kubernetes version of AKS workload clusters.
 - Update AKS workload clusters using Windows Admin Center
 
-We recommend updating an AKS workload cluster on Azure Stack HCI at least once every 60 days. New updates are available every 30 days.
-All updates are done in a rolling update flow. When a *new* node with the newer build is brought into the cluster, resources are moved from the *old* node to the *new* node, and the *old* node is decommissioned.
+We recommend updating an AKS workload cluster on Azure Stack HCI at least once every 60 days. New updates are available every 30 days. All updates are done in a rolling update flow to avoid outages in workload availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when this completes successfully, the _old_ node is decommissioned and removed from the cluster.
 
 > [!Important]
 > Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./update-akshcicluster.md). For information on updating the AKS host, visit [how to update AKS host on Azure Stack HCI](./update-akshci-host-powershell.md). 
