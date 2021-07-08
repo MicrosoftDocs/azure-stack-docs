@@ -105,7 +105,7 @@ additionalContent:
             text: Release notes
           - url: ./operator/azure-stack-servicing-policy.md
             text: Azure Stack Hub servicing policy
-          - url: ./operator/azure-stack-create-service-principals.md
+          - url: ./operator/give-app-access-to-resources.md
             text: Use an app identity to access resources            
         # Card
         - title: User
