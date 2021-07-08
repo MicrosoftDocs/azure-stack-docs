@@ -93,6 +93,7 @@ To enable processor compatibility mode using Windows Admin Center:
 1. Under **Inventory**, select the VM on which you want to enable processor compatibility mode, expand the **Power** menu, then select **Shut down**.
 1. Select **Settings**, then **Processors**, and check the box for **Processor compatibility**.
 1. Select **Save processor settings**.
+1. Restart the VM.
 
 ## Enable processor compatibility mode using PowerShell
 

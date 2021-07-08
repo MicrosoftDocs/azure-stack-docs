@@ -109,9 +109,9 @@ A service principal is created in each tenant where the app is used. The service
 Credentials for service principals can be either a key that's generated through the Azure portal or a certificate. The use of a certificate is suited for automation because certificates are considered more secure than keys.
 
 > [!NOTE]
-> When you use AD FS with Azure Stack Hub, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
+> When you use AD FS with Azure Stack Hub, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](./give-app-access-to-resources.md).
 
-To learn about service principals for Azure Stack Hub, see [Create service principals](azure-stack-create-service-principals.md).
+To learn about service principals for Azure Stack Hub, see [Create service principals](./give-app-access-to-resources.md).
 
 ### Services
 

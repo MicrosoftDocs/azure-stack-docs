@@ -34,4 +34,4 @@ You can use the **Active Directory Users and Computers** snap-in to add addition
 
 ## Next steps
 
-[Create an app identity to access Azure Stack Hub resources](azure-stack-create-service-principals.md)
+[Create an app identity to access Azure Stack Hub resources](./give-app-access-to-resources.md)
