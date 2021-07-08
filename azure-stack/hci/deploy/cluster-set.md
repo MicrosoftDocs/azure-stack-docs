@@ -42,16 +42,16 @@ Cluster sets offer the following benefits:
 
 There are a few requirements and limitations for using cluster sets:
 
-- All member clusters in a cluster set must be in the same Active Directory (AD)forest.
+- All member clusters in a cluster set must be in the same Active Directory (AD) forest.
 
-- Member servers in the set must be running the same version of operating system.  Mixing the two versions is not an available option as you cannot live migrate virtual machines between the two separate operating systems. You can have a cluster set that consists of any one (but not multiple) of the below options:
+- Member servers in the set must be running the same version of operating system. Mixing two versions isn't an available option because you can't live-migrate virtual machines between two separate operating systems. You can have a cluster set that consists of any one, but not multiples, of the following options:
 
 		- Windows Server 2019 Failover Clustering and Windows Server 2019 Failover Clustering
 		- Windows Server 2019 Failover Clustering and Windows Server 2019 Storage Spaces Direct
 		- Windows Server 2019 Storage Spaces Direct and Windows Server 2019 Storage Spaces Direct
 		- Azure Stack HCI version 20H2 and Azure Stack HCI version 20H2
 
-- Identical processor hardware is needed for all member servers in order for live migration between member clusters to occur; else, CPU Processor Compatibility must be selected under the settings of the virtual machines.
+- Identical processor hardware is needed for all member servers for live migration between member clusters to occur; otherwise, you must select **CPU Processor Compatibility** in virtual machines settings.
 
 - Cluster set VMs must be manually live-migrated across clusters - they cannot automatically failover.
 
