@@ -24,7 +24,7 @@ The first step in any update flow is to update the AKS on Azure Stack HCI host b
 > [!Important]
 > The update command only works if you have installed the October release or later. It will not work for releases older than the October release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not update any existing AKS workload clusters. New AKS workload clusters created after updating the AKS host may differ from existing AKS workload clusters in their OS version and Kubernetes version.
 
-We recommend updating AKS workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your AKS workload clusters. If your workload clusters are on an old Kubernetes version, they will still be supported but you will not be able to scale your cluster. 
+We recommend updating AKS workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your AKS workload clusters. If your workload clusters are on an old Kubernetes version, they will still be supported, but you will not be able to scale your cluster. 
 
 ## Example flow for updating the AKS on Azure Stack HCI host
 
@@ -36,7 +36,7 @@ Make sure you always have the latest PowerShell modules installed on the AKS on 
 > You should close all open PowerShell windows and then open a fresh session to run the update command. If you do not close all PowerShell windows, you may end up with modules that are in-use and can't be updated.
 
 ```powershell
-Update-Module -Name AksHci
+Update-Module -Name AksHci -Force
 ```
 
 ### Get current AKS on Azure Stack HCI version

@@ -10,7 +10,7 @@ author: mkostersitz
 
 # Update the AKS on Azure Stack HCI host using Windows Admin Center
 
-This article describes how to update the AKS on Azure Stack HCI core system to the latest version. For information on updating an AKS workload cluster, visit [how to update the Kubernetes version of AKS clusters](./upgrade.md).
+This article describes how to update the AKS on Azure Stack HCI core system to the latest version. For information on updating an AKS workload cluster, see [update the Kubernetes version of AKS clusters](./upgrade.md).
 
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
