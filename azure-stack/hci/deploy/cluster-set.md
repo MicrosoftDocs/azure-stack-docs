@@ -46,10 +46,10 @@ There are a few requirements and limitations for using cluster sets:
 
 - Member servers in the set must be running the same version of operating system. Mixing two versions isn't an available option because you can't live-migrate virtual machines between two separate operating systems. You can have a cluster set that consists of any one, but not multiples, of the following options:
 
-		- Windows Server 2019 Failover Clustering and Windows Server 2019 Failover Clustering
-		- Windows Server 2019 Failover Clustering and Windows Server 2019 Storage Spaces Direct
-		- Windows Server 2019 Storage Spaces Direct and Windows Server 2019 Storage Spaces Direct
-		- Azure Stack HCI version 20H2 and Azure Stack HCI version 20H2
+  - Windows Server 2019 Failover Clustering and Windows Server 2019 Failover Clustering
+  - Windows Server 2019 Failover Clustering and Windows Server 2019 Storage Spaces Direct
+  - Windows Server 2019 Storage Spaces Direct and Windows Server 2019 Storage Spaces Direct
+  - Azure Stack HCI version 20H2 and Azure Stack HCI version 20H2
 
 - Identical processor hardware is needed for all member servers for live migration between member clusters to occur; otherwise, you must select **CPU Processor Compatibility** in virtual machines settings.
 
