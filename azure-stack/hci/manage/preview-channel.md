@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/24/2021
+ms.date: 07/06/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -32,6 +32,7 @@ Azure Stack HCI, version 21H2 Preview contains the following new features:
 - [Network ATC](../deploy/network-atc.md)
 - [Adjustable storage repair speed](storage-repair-speed.md)
 - [Support for nested virtualization on AMD processors](../concepts/nested-virtualization.md#nested-virtualization-processor-support)
+- [Kernel Soft Reboot](kernel-soft-reboot.md)
 
 ## How to join the preview channel
 

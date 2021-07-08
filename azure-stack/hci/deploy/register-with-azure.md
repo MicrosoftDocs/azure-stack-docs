@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/29/2021
+ms.date: 07/06/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -26,7 +26,7 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
 
 You won't be able to register your cluster with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing.
 
-For the simplest registration experience, have an Azure AD admin (Owner or User Access Administrator) complete the registration process using either Windows Admin Center or PowerShell.
+For the simplest registration experience, have an Azure AD admin (Owner or User Access Administrator with Contributor role) complete the registration process using either Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
    > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
@@ -59,7 +59,7 @@ The user registering the cluster must have Azure subscription permissions to:
 - Register a resource provider
 - Create/Get/Delete Azure resources and resource groups
 
-If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" or "User Access Administrator" Azure role to your subscription. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
+If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" role to your subscription, or a "User Access Administrator" role along with a "Contributor" role. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
 
 1. Create a json file called **customHCIRole.json** with following content. Make sure to change <subscriptionID> to your Azure subscription ID. To get your subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
 
@@ -110,7 +110,7 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. 
 
-If you're running Azure Stack HCI, version 21H2 Preview, the user must be assigned an Azure Owner or User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
+If you're running Azure Stack HCI, version 21H2 Preview, the user must be assigned an Azure Owner role or a User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
 
    > [!WARNING]
    > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
