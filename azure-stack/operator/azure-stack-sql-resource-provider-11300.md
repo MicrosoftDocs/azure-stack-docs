@@ -9,6 +9,8 @@ ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
+ms.custom: contperf-fy22q1
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to view the releases notes for the Azure Stack SQL resource provider 1.1.30.0 update. 
 # Keyword: sql resource provider release notes 1.1.30.0
