@@ -71,9 +71,9 @@
             href: scale-cluster.md
           - name: Upgrade the Kubernetes version
             items:
-                 -name: Use PowerShell
+                - name: Use PowerShell
                   href: upgrade.md
-                 -name: Use Windows Admin Center
+                - name: Use Windows Admin Center
                   href: upgrade-kubernetes.md
           - name: Update AKS on Azure Stack HCI host
             items:
