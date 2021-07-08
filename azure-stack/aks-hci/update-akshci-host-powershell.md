@@ -12,7 +12,7 @@ author: mkostersitz
 
 Updates to the Azure Kubernetes Services (AKS) on Azure Stack HCI host always update to the latest available version. Updating the host can happen independently from updating the workload clusters, but you must always update the host before updating a workload cluster.
 
-All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when this completes successfully, the _old_ node is decommissioned and removed from the cluster.
+All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
 
 > [!Note]
 > It's recommended to always have the latest available version installed on the AKS on Azure Stack HCI host.

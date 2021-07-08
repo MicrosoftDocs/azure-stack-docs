@@ -11,7 +11,7 @@ ms.author: v-susbo
 
 This article describes how to upgrade an AKS on Azure Stack HCI workload cluster to a new Kubernetes version. We recommend that you [update the AKS hosts](update-akshci-host-wac.md) to a new version of the operating system before updating the Kubernetes version.
 
-We recommend updating an AKS workload cluster on Azure Stack HCI at least once every 60 days. New updates are available every 30 days. All updates are done in a rolling update flow to avoid outages in workload availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when this completes successfully, the _old_ node is decommissioned and removed from the cluster.
+We recommend updating an AKS workload cluster on Azure Stack HCI at least once every 60 days. New updates are available every 30 days. All updates are done in a rolling update flow to avoid outages in workload availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
 
 To upgrade the Kubernetes version of a workload cluster with Windows Admin Center, follow these steps: 
 
@@ -26,7 +26,7 @@ The following update scenarios are not supported in Windows Admin Center:
 - We currently do not support skipping a patch update. You can only update a workload cluster to the next available patch version even when a minor update is available.  
 - A workload cluster update performs a patch Kubernetes update without updating the OS version. 
 
-These update scenarios will addressed in an upcoming release. However, you can [use PowerShell](upgrade.md) to run these update operations. 
+These update scenarios will be addressed in an upcoming release. However, you can [use PowerShell](upgrade.md) to run these update operations. 
 
 ## Next steps
 
