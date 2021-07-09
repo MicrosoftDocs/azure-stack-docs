@@ -3,7 +3,7 @@ title: Deploy a cluster set
 description: Learn how to deploy a cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/09/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ms.custom: contperf-fy21q4
@@ -44,12 +44,12 @@ There are a few requirements and limitations for using cluster sets:
 
 - All member clusters in a cluster set must be in the same Active Directory (AD) forest.
 
-- Member servers in the set must be running the same version of operating system. Mixing two versions isn't an available option because you can't live-migrate virtual machines between two separate operating systems. You can have a cluster set that consists of any one, but not multiples, of the following options:
+- Member servers in the set must run the same operating system version. Virtual machines cannot be live migrated between different operating systems. You can have a cluster set that consists of any one, but not multiples, of the following options:
 
-  - Windows Server 2019 Failover Clustering and Windows Server 2019 Failover Clustering
-  - Windows Server 2019 Failover Clustering and Windows Server 2019 Storage Spaces Direct
-  - Windows Server 2019 Storage Spaces Direct and Windows Server 2019 Storage Spaces Direct
-  - Azure Stack HCI version 20H2 and Azure Stack HCI version 20H2
+    - Windows Server 2019 Failover Cluster and Windows Server 2019 Failover Cluster
+    - Windows Server 2019 Failover Cluster and Windows Server 2019 Storage Spaces Direct
+    - Windows Server 2019 Storage Spaces Direct and Windows Server 2019 Storage Spaces Direct
+     - Azure Stack HCI version 20H2 and Azure Stack HCI version 20H2
 
 - Identical processor hardware is needed for all member servers for live migration between member clusters to occur; otherwise, you must select **CPU Processor Compatibility** in virtual machines settings.
 
