@@ -3,13 +3,21 @@ title: Known issues for Azure Kubernetes Service on Azure Stack HCI
 description: Known issues for Azure Kubernetes Service on Azure Stack HCI 
 author: abha
 ms.topic: troubleshooting
-ms.date: 05/05/2021
+ms.date: 07/05/2021
 ms.author: abha
 ms.reviewer: 
 ---
 
 # Known issues for Azure Kubernetes Service on Azure Stack HCI
 This article describes known issues with Azure Kubernetes Service on Azure Stack HCI.
+
+## Cloud agent may fail to start successfully when using path names with spaces in them
+When using [Set-AksHciConfig](set-akshciconfig.md) to specify `-imageDir`,`-workingDir`,`-cloudConfigLocation` or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
+
+```powershell
+Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
+```
+Workaround: Use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
 
 ## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run
 If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
@@ -93,7 +101,7 @@ The **Aks-Hci** PowerShell commands do not validate the available memory on the 
 If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
-When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node it will fail to start there as well.
+When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
 This issue happens because the logic to clean up the first migration runs asynchronously. As a result, Azure Kubernetes Service's "update VM location" logic finds the VM on the original Hyper-V on node A, and deletes it, instead of unregistering it.
 Workaround: Ensure the VM has started successfully on the new node before moving it back to the original node.
 This issue will be fixed in a future release.
