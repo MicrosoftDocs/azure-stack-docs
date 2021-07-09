@@ -67,7 +67,7 @@ Create an IoT Edge device in Azure with a Linux VM:
 
 1.  [Create an N-series Linux server
     VM](./azure-stack-quick-linux-portal.md)
-    on Azure Stack Hub. As you install components for your server, you'll interact with the server via SSH. For more information, see [Use an SSH public key](./azure-stack-dev-start-howto-ssh-public-key.md).
+    on Azure Stack Hub. As you install components for your server, you'll interact with the server via SSH. For more information, see [Use an SSH key pair with Azure Stack Hub](./azure-stack-dev-start-howto-ssh-public-key.md).
 
 2.  [Create and register an IoT Edge
     Device](/azure/iot-edge/how-to-register-device)

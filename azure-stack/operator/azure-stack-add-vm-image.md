@@ -17,6 +17,9 @@ ms.lastreviewed: 9/8/2020
 
 In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from global Microsoft Azure Marketplace as a base for your custom image, or create your own using Hyper-V.
 
+> [!NOTE]
+   > Blob access is required to allow the read access.
+
 ## Add an image
 
 You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. You will want to create a generalized image before offering the image to your users. For instructions see [Move a VM to Azure Stack Hub Overview](../user/vm-move-overview.md). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
