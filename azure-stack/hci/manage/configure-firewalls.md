@@ -11,15 +11,16 @@ ms.date: 07/12/2021
 
 >Applies to: Azure Stack HCI, version 20H2
 
-This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall.
+This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall.
 
-## Azure connectivity requirements
+## Connectivity requirements and recommendations
+Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) section of this topic.
+
+### Azure connectivity requirements
 Azure Stack HCI needs to periodically connect to Azure. Access is limited to only:
 - Well-known Azure IPs
 - Outbound direction
 - Port 443 (HTTPS)
-
-For more information, see the "Azure Stack HCI connectivity" section of the [Azure Stack HCI FAQ](../faq.yml)
 
 This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allowlist.
 
@@ -30,7 +31,7 @@ As shown below, Azure Stack HCI accesses Azure using more than one firewall pote
 
 :::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
 
-## Microsoft Update connectivity requirements
+### Microsoft Update connectivity requirements
 If there is a corporate firewall between the operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, you'll need to obtain authorization to allow internet access to the following URLs:
 
 - http\://windowsupdate.microsoft.com
@@ -48,10 +49,27 @@ If there is a corporate firewall between the operating system and the internet, 
 - http\://dl.delivery.mp.microsoft.com
 - https\://dl.delivery.mp.microsoft.com
 
-## Working with service tags
+### Connectivity recommendations
+If your outbound firewall is restricted, then we recommend including the URLs and ports described in this section.
+
+| Description                      | URL                               | Port    | Direction |
+| :--------------------------------| :-------------------------------  | :------ | :-------- |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.aadcdn.microsoftonline-p.com`  | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | ` `  | 80,443  | Outbound  |
+
+
+
+For more information about these connectivity recommendations and others, see the following resources:
+- [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
+- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](azure-stack/aks-hci/system-requirements#network-port-and-url-requirements)
+- [Azure Arc networking configuration](azure/azure-arc/servers/agent-overview#networking-configuration)
+- PowerShell gallery URLs to install components such a NuGet and others (search for this URL)
+- [Azure Arc networking configuration](azure/azure-arc/servers/agent-overview#networking-configuration)
+
+### Working with service tags
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
 
-## Required endpoint daily access (after Azure registration)
+### Required endpoint daily access (after Azure registration)
 Azure maintains well-known IP addresses for Azure services that are organized using service tags. Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that the operating system needs to access.
 
 | Description                   | Service tag for IP range  | URL                                                                       | Azure China URL                         |
