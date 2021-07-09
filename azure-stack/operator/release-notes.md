@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/06/2021
+ms.date: 07/09/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -113,7 +113,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2107 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
-- No Azure Stack Hub hotfix available for 2102.
+- [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
 
 ### After successfully applying the 2107 update
 
