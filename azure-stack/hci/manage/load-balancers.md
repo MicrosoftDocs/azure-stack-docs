@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 07/01/2021
+ms.date: 07/09/2021
 ---
 
 # Manage Software Load Balancer for SDN
@@ -27,7 +27,7 @@ You can create three types of SLBs:
 
 - **IP Address SLB** – This is similar to a *Public IP* load balancer type. The difference between Public IP SLB and IP Address SLB is that the Public IP type creates a public IP resource that is then added to the load balancer. This is useful if you want to reserve that IP address for future use without it going back into the pool. The IP Address SLB assigns the IP address directly to the load balancer without creating a public IP resource. If you delete the load balancer, the IP address is returned to the pool.
 
-:::image type="content" source="media/software-load-balancer/create.png" alt-text="Create an SLB" lightbox="media/software-load-balancer/create.png":::
+:::image type="content" source="media/software-load-balancer/new-load-balancer.png" alt-text="Create an SLB" lightbox="media/software-load-balancer/new-load-balancer.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -45,7 +45,7 @@ You can create three types of SLBs:
 
 A public IP address must be created first if you are creating a Public IP Load Balancer type.
 
-:::image type="content" source="media/software-load-balancer/create.png" alt-text="Public IP address" lightbox="media/software-load-balancer/create.png":::
+:::image type="content" source="media/software-load-balancer/public-ip-balancer.png" alt-text="Public IP address" lightbox="media/software-load-balancer/public-ip-balancer.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the public IP address on.
 1. Under **Tools**, scroll down to **Networking**, and select **Public IP addresses**.
@@ -61,7 +61,7 @@ A public IP address must be created first if you are creating a Public IP Load B
 
 After you create a load balancer, you need to define the front IP configuration for the load balancer. Front IP configuration is the front end IP used for your load balancer. By default, when you create a load balancer, a front IP configuration is automatically created with the load balancer IP address.
 
-:::image type="content" source="media/software-load-balancer/create.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/create.png":::
+:::image type="content" source="media/software-load-balancer/front-ip-balancer.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-balancer.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -78,7 +78,7 @@ After you create a load balancer, you need to define the front IP configuration 
 
 A backend pool represents the list of IP addresses that can receive network traffic coming from the front-end IPs. The load balancer handles incoming traffic via the front-end IPs and distributes them to backend IPs based on the load balancing policy.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/backend-pool.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/backend-pool.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -94,7 +94,7 @@ A backend pool represents the list of IP addresses that can receive network traf
 
 An inbound NAT rule configures the load balancer to apply Network Address Translation (NAT) to inbound traffic. This is used for forwarding external traffic to a specific virtual machine (VM). If you want to configure load balancing, you do not need to setup inbound NAT rules.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/inbound-rules.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/inbound-rules.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -114,7 +114,7 @@ An inbound NAT rule configures the load balancer to apply Network Address Transl
 
 An outbound NAT rule configures the load balancer to forward VM network traffic from the SDN virtual or logical network to external destinations using network address translation (NAT). This is useful when you want to configure your internal network resources to have internet access. If you want to configure load balancing, you do not need to setup outbound NAT rules.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/outbound-rules.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/outbound-rules.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -132,7 +132,7 @@ A load balancing rule configures the load balancer to evenly distribute tenant n
 
 You will set **Session Persistence** in the procedure below. Session Persistence specifies the load balancing distribution type to be used by the load Balancer. The load Balancer uses a distribution algorithm which is a 5-tuple (source IP, source port, destination IP, destination port, protocol type) hash to map traffic to available servers. It provides stickiness only within a transport session, which is a feature that routes the requests for a specific session to the same physical machine that serviced the first request for that session. Packets in the same TCP or UDP session will be directed to the same backend instance behind the frontend IP. When the client closes and re-opens the connection or starts a new session from the same source IP, the source port changes and may cause the traffic to go to a different backend IP.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/new-rule.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/new-rule.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -153,11 +153,11 @@ You will set **Session Persistence** in the procedure below. Session Persistence
 1. Select whether you want to enable **Floating IP**. In this case, the frontend IP will be configured on one of the backend pool members, and any traffic to the frontend IP will be sent directly to that backend pool member. This is useful for guest clustering scenarios that work through a floating IP address set on the active instance of the cluster. The health probe will determine which backend IP is active, and the load balancer will set the front end IP on that backend pool member.
 1. Click **Create**.
 
-## Create Health Probes
+## Create health probes
 
 A health probe is used by the load balancer to determine the health state of the backend pool members. If a backend pool member is not healthy, it doesn't receive traffic from the load balancer.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/health-probe.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/health-probe.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -175,7 +175,7 @@ A health probe is used by the load balancer to determine the health state of the
 
 You can view detailed information for a specific load balancer from its dedicated page.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/load-balancer-details.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/load-balancer-details.png":::
 
 1. Under Tools, scroll down and select Load Balancers.
 1. Click the Inventory tab on the right, then select a Load Balancer. On the subsequent page, you can do the following:
@@ -191,7 +191,7 @@ You can view detailed information for a specific load balancer from its dedicate
 
 You can delete a load balancer if you no longer need it.
 
-:::image type="content" source="media/software-load-balancer/front-ip-configuration.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/front-ip-configuration.png":::
+:::image type="content" source="media/software-load-balancer/delete-load-balancer.png" alt-text="Front IP configuration" lightbox="media/software-load-balancer/delete-load-balancer.png":::
 
 1. Under **Tools**, scroll down and select **Load Balancers**.
 1. Click the **Inventory** tab on the right, then select a Load Balancer. Click **Delete**.
