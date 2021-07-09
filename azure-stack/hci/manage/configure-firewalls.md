@@ -50,14 +50,40 @@ If there is a corporate firewall between the operating system and the internet, 
 - https\://dl.delivery.mp.microsoft.com
 
 ### Connectivity recommendations
-If your outbound firewall is restricted, then we recommend including the URLs and ports described in this section.
+If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allow list.
 
 | Description                      | URL                               | Port    | Direction |
 | :--------------------------------| :-------------------------------  | :------ | :-------- |
 | tbd tbd tbd tbd tbd tbd tbd tbd  | `*.aadcdn.microsoftonline-p.com`  | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | ` `  | 80,443  | Outbound  |
-
-
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.aka.ms`                        | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.applicationinsights.io`        | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure.com`                     | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure.net`                     | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azurefd.net`                   | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure-api.net`                 | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azuredatalakestore.net`        | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azureedge.net`                 | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.loganalytics.io`               | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.microsoft.com`                 | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.microsoftonline.com`           | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.microsoftonline-p.com`         | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.msauth.net`                    | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.msftauth.net`                  | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.trafficmanager.net`            | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.visualstudio.com`              | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.windows.net`                   | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.windows-int.net`               | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.windowsupdate.com`             | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `www.office.com`                  | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure-automation.net`          | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.helm.sh`                       | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `storage.googleapis.com`          | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `aka.ms/installazurecliwindows`   | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `ecpacr.azurecr.io`               | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `git://:9418`                     | 9,418   | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.powershellgallery.com`         | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azurewebsites.net`             | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.msecnd.net`                    | 443     | Outbound  |
 
 For more information about these connectivity recommendations and others, see the following resources:
 - [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
