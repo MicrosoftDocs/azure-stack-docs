@@ -132,7 +132,7 @@ A load balancing rule configures the load balancer to evenly distribute tenant n
 
 You will set **Session Persistence** in the procedure below. Session Persistence specifies the load balancing distribution type to be used by the load Balancer. The load Balancer uses a distribution algorithm which is a 5-tuple (source IP, source port, destination IP, destination port, protocol type) hash to map traffic to available servers. It provides stickiness only within a transport session, which is a feature that routes the requests for a specific session to the same physical machine that serviced the first request for that session. Packets in the same TCP or UDP session will be directed to the same backend instance behind the frontend IP. When the client closes and re-opens the connection or starts a new session from the same source IP, the source port changes and may cause the traffic to go to a different backend IP.
 
-:::image type="content" source="media/software-load-balancer/new-rule.png" alt-text="Create SLB rule" lightbox="media/software-load-balancer/new-rule.png":::
+:::image type="content" source="media/software-load-balancer/slb-rule.png" alt-text="Create SLB rule" lightbox="media/software-load-balancer/slb-rule.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
