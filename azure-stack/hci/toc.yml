@@ -34,7 +34,7 @@
     href: deploy/migrate-cluster-new-hardware.md
   - name: Migrate on same hardware
     href: deploy/migrate-cluster-same-hardware.md
-  - name: Register with Azure
+  - name: Register a cluster with Azure
     href: deploy/register-with-azure.md
   - name: Validate the cluster
     href: deploy/validate.md
@@ -128,6 +128,8 @@
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage gateway connections
+      href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
@@ -168,6 +170,8 @@
       href: concepts/deploy-persistent-memory.md
     - name: Persistent memory health management
       href: concepts/persistent-memory-health.md
+    - name: Nested virtualization
+      href: concepts/nested-virtualization.md
   - name: Networking
     items:
     - name: Physical network requirements
@@ -222,6 +226,8 @@
     href: manage/thin-provisioning.md
   - name: Adjustable storage repair speed
     href: manage/storage-repair-speed.md
+  - name: Kernel Soft Reboot
+    href: manage/kernel-soft-reboot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

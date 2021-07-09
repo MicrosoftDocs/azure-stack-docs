@@ -3,7 +3,7 @@ title: Deploy a cluster set
 description: Learn how to deploy a cluster set
 author: v-dasis
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/09/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ms.custom: contperf-fy21q4
@@ -13,7 +13,7 @@ ms.custom: contperf-fy21q4
 
 > Applies to Azure Stack HCI, version v20H2; Windows Server 2019
 
-This article provides information on how to deploy a cluster set for Azure Stack HCI and Windows Server 2019 using PowerShell. A cluster set is a group of multiple failover clusters that are clustered together. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude.
+This article provides information on how to deploy a cluster set for Azure Stack HCI version 20H2 or Windows Server 2019 Failover Clusters using PowerShell. A cluster set is a group of multiple failover clusters that are clustered together. By using a cluster set, you can increase the number of server nodes in a single Software Defined Data Center (SDDC) cloud by orders of magnitude.
 
 Cluster sets have been tested and supported up to 64 total cluster nodes. However, cluster sets can scale to much larger limits and are not hardcoded for a limit.
 
@@ -42,11 +42,16 @@ Cluster sets offer the following benefits:
 
 There are a few requirements and limitations for using cluster sets:
 
-- All member clusters in a cluster set must be in the same Active Directory (AD)forest.
+- All member clusters in a cluster set must be in the same Active Directory (AD) forest.
 
-- Member servers in the set must be running Windows Server 2019 or Azure Stack HCI. If you want to add a Windows Server 2016 cluster to a set for example, you must first migrate the cluster servers to Windows Server 2019.
+- Member servers in the set must run the same operating system version. Virtual machines cannot be live migrated between different operating systems. You can have a cluster set that consists of any one, but not multiples, of the following options:
 
-- Identical processor hardware is required for all member servers in order for live migration between member clusters to occur.
+    - Windows Server 2019 Failover Cluster and Windows Server 2019 Failover Cluster
+    - Windows Server 2019 Failover Cluster and Windows Server 2019 Storage Spaces Direct
+    - Windows Server 2019 Storage Spaces Direct and Windows Server 2019 Storage Spaces Direct
+     - Azure Stack HCI version 20H2 and Azure Stack HCI version 20H2
+
+- Identical processor hardware is needed for all member servers for live migration between member clusters to occur; otherwise, you must select **CPU Processor Compatibility** in virtual machines settings.
 
 - Cluster set VMs must be manually live-migrated across clusters - they cannot automatically failover.
 
@@ -104,7 +109,7 @@ Use PowerShell within the following example workflow to create a cluster set usi
    | CLUSTER1     | SOFS-CLUSTER1                             |
    | CLUSTER2     | SOFS-CLUSTER2                             |
 
-1. Use a management client computer running Windows Server 2019 or Azure Stack HCI.
+1. Use a management client computer running Windows Server 2019 or Azure Stack HCI version 20H2.
 1. Install Failover Cluster tools on the management cluster server.
 1. Create two cluster members and with at least two Cluster Shared Volumes (CSVs) in each cluster.
 1. Create a management cluster (physical or guest) that straddles the member clusters. This ensures that the cluster set management plane continues to be available despite possible member cluster failures.

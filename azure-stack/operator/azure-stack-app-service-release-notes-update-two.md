@@ -9,6 +9,8 @@ ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 05/18/2019
+ms.custom: contperf-fy22q1
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 2.
 # Keyword: app service update 2 azure stack

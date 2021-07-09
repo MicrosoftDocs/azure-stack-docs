@@ -40,6 +40,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [install-akshcicsinfs](install-akshcicsinfs.md) | Installs the CSI NFS plug-in to a cluster. |
 | [install-akshcicsismb](install-akshcicsismb.md) | Installs the CSI SMB plug-in to a cluster. |
 | [install-akshcigmsawebhook](install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
+| [install-akshcimonitoring](install-akshcimonitoring.md) | Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [new-akshciclusternetwork](new-akshciclusternetwork.md) | Create an object for a new virtual network. |
 | [new-akshcinetworksetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
@@ -50,6 +51,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshcigmsacredentialspec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [repair-akshciclustercerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
+| [repair-akshcicerts](repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
@@ -60,6 +62,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [uninstall-akshcicsinfs](uninstall-akshcicsinfs.md) | Uninstalls CSI NFS Plugin in a cluster. |
 | [uninstall-akshcicsismb](uninstall-akshcicsismb.md) | Uninstalls the CSI SMB plug-in in a cluster. |
 | [uninstall-akshcigmsawebhook](uninstall-akshcigmsawebhook.md) | Uninstalls the gMSA webhook add-on to the cluster. |
+| [uninstall-akshcimonitoring](uninstall-akshcimonitoring.md) | Removes Prometheus for monitoring from the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [update-akshci](update-akshci.md) | Update the Azure Kubernetes Service host to the latest Kubernetes version. |
 | [update-akshcicluster](update-akshcicluster.md) | Update a managed Kubernetes cluster to a newer Kubernetes or OS version. |
 

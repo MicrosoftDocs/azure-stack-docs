@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/15/2021
+ms.date: 06/29/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 05/28/2020
@@ -54,6 +54,9 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
+- 06/29/2021: Open Atrium
+- 06/22/2021: SharePoint Server 2013 Trial
+- 06/22/2021: SharePoint Server 2016 Trial
 - 05/26/2021: CoreOS Linux (Stable) 64-bit
 - 05/21/2021: Redmine+Agile
 - 03/01/2021: SLES 15 (BYOS), SUSE Linux Enterprise Server 15
@@ -169,6 +172,29 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Updated marketplace items
 
+- 06/23/2021: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Pay as you go - version 13.2.20210516
+- 06/23/2021: Free License: SQL Server 2016 SP2 Developer on Windows Server 2016 - Bring your own license - version 13.2.20210516
+- 06/23/2021: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Pay as you go - version 13.2.20210516
+- 06/23/2021: Free License: SQL Server 2016 SP2 Express on Windows Server 2016 - Bring your own license - version 13.2.20210516
+- 06/23/2021: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Pay as you go - version 14.0.20210516
+- 06/23/2021: Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 - Bring your own license - version 14.0.20210516
+- 06/23/2021: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Pay as you go - version 14.0.20210516
+- 06/23/2021: Free SQL Server License: SQL Server 2017 Express on Windows Server 2016 - Bring your own license - version 14.0.20210516
+- 06/23/2021: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Pay as you go - version 13.2.20210516
+- 06/23/2021: SQL Server 2016 SP2 Enterprise on Windows Server 2016 - Bring your own license - version 13.2.20210516
+- 06/23/2021: SQL Server 2016 SP2 Standard on Windows Server 2016 - Pay as you go - version 13.2.20210516
+- 06/23/2021: SQL Server 2016 SP2 Standard on Windows Server 2016 - Bring your own license - version 13.2.20210516
+- 06/23/2021: SQL Server 2017 Enterprise Windows Server 2016 - Pay as you go - version 14.0.20210516
+- 06/23/2021: SQL Server 2017 Enterprise Windows Server 2016 - Bring your own license - version 14.0.20210516
+- 06/23/2021: SQL Server 2017 Standard on Windows Server 2016 - Pay as you go - version 14.0.20210516
+- 06/23/2021: SQL Server 2017 Standard on Windows Server 2016 - Bring your own license - version 14.0.20210516
+- 06/23/2021: SQL Server 2019 Enterprise on Windows Server 2019 - Pay as you go - version 15.0.20210516
+- 06/23/2021: SQL Server 2019 Enterprise on Windows Server 2019 - Bring your own license - version 15.0.20210516
+- 06/23/2021: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Pay as you go - version 15.0.20210516
+- 06/23/2021: Free SQL Server License: SQL 2019 Developer on Windows Server 2019 - Bring your own license - version 15.0.20210516
+- 06/23/2021: SQL Server 2019 Standard on Windows Server 2019 - Pay as you go - version 15.0.20210516
+- 06/23/2021: SQL Server 2019 Standard on Windows Server 2019 - Bring your own license - version 15.0.20210516
+- 06/23/2021: SqlIaaSExtension - version 1.3.20680
 - 06/15/2021: AKS Base Windows Image, May 20 2021 - version 17763.1935.210520
 - 06/15/2021: AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q2 - version 2021.05.24
 - 04/28/2021: Citrix ADC 13.0 VPX - Bring Your Own License - version 130.67.39
