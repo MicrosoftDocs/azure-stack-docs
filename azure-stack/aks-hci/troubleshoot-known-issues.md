@@ -13,10 +13,15 @@ This article includes workaround steps for resolving known issues that occur whe
 
 ## _Install-AksHci_ timed out with an error
 
-After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message:
+After running [Install-AksHci](install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
 
 ```Output
-\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
+\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
+get akshciclusters -o json returned a non zero exit code 1 
+[Unable to connect to the server: dial tcp 192.168.0.150:6443: 
+connectex: A connection attempt failed because the connected party 
+did not properly respond after a period of time, or established connection 
+failed because connected host has failed to respond.]
 ```
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
@@ -56,7 +61,7 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
 ## When multiple versions of the PowerShell modules are installed, Windows Admin Center does not pick the latest version
-If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2104).
+If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
 If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
@@ -81,10 +86,10 @@ moc-lwan4ro72he   NotReady   master   5h44m   v1.16.15
 
 \kubectl.exe get pods -A 
 
-NAMESPACE     NAME                                            READY   STATUS              RESTARTS   AGE 
+NAMESPACE     NAME                        READY   STATUS              RESTARTS   AGE 
     5h38m 
-kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m 
-kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m  
+kube-system   csi-msk8scsi-node-9x47m     0/3     ContainerCreating   0          5h44m 
+kube-system   kube-proxy-qqnkr            1/1     Terminating         0          5h44m  
 ```
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
@@ -145,11 +150,11 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
 ## An **Unable to acquire token** error appears when running Set-AksHciRegistration
-An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
+An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./set-akshciregistration.md). 
 
 ## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
 
-To resolve this issue restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
+To release the pods and resolve this issue, you should restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
 
 ```Console
 kubectl get nodes -o wide
@@ -158,12 +163,12 @@ kubectl get nodes -o wide
 To get more information on the faulty node, run the following command:
 
 ```Console
-kubectl describe node <ip of the node>
+kubectl describe node <IP of the node>
 ```
 
 Use SSH to log into the NotReady node by running the following command:
 ```
-ssh -i <path of the private key file> administrator@<ip of the node>
+ssh -i <path of the private key file> administrator@<IP of the node>
 ```
 
 Then, to restart _kubelet_, run the following command: 
