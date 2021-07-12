@@ -15,6 +15,9 @@ ms.lastreviewed: 12/9/2020
 
 # Azure Marketplace items available for Azure Stack Hub
 
+> [!NOTE]
+> The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
+
 ## Virtual Machine extensions
 
 Whenever there are updates to virtual machine (VM) extensions you use, you should download them. Extensions shipped in the product don't update in the normal patch and update process, so check for updates frequently. Other extensions are only available through Marketplace Management.
