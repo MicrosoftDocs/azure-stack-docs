@@ -14,7 +14,7 @@ ms.date: 07/12/2021
 This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall.
 
 ## Connectivity requirements and recommendations
-Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) section of this topic.
+Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) allowlist section of this topic.
 
 ### Azure connectivity requirements
 Azure Stack HCI needs to periodically connect to Azure. Access is limited to only:
@@ -24,10 +24,7 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited to onl
 
 This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allowlist.
 
-   >[!IMPORTANT]
-   > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed in the table below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](/azure/azure-arc/servers/agent-overview#networking-configuration).
-
-As shown below, Azure Stack HCI accesses Azure using more than one firewall potentially.
+As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
 :::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
 
@@ -50,50 +47,52 @@ If there is a corporate firewall between the operating system and the internet, 
 - https\://dl.delivery.mp.microsoft.com
 
 ### Connectivity recommendations
-If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allow list.
+If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allowlist.
 
-| Description                      | URL                               | Port    | Direction |
-| :--------------------------------| :-------------------------------  | :------ | :-------- |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.aadcdn.microsoftonline-p.com`  | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.aka.ms`                        | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.applicationinsights.io`        | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure.com`                     | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure.net`                     | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azurefd.net`                   | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure-api.net`                 | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azuredatalakestore.net`        | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azureedge.net`                 | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.loganalytics.io`               | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.microsoft.com`                 | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.microsoftonline.com`           | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.microsoftonline-p.com`         | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.msauth.net`                    | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.msftauth.net`                  | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.trafficmanager.net`            | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.visualstudio.com`              | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.windows.net`                   | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.windows-int.net`               | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.windowsupdate.com`             | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `www.office.com`                  | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azure-automation.net`          | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.helm.sh`                       | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `storage.googleapis.com`          | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `aka.ms/installazurecliwindows`   | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `ecpacr.azurecr.io`               | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `git://:9418`                     | 9,418   | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.powershellgallery.com`         | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.azurewebsites.net`             | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd  | `*.msecnd.net`                    | 443     | Outbound  |
+| Description                                         | URL                             | Port    | Direction |
+| :---------------------------------------------------| :-------------------------------| :------ | :-------- |
+| Azure portal URL for proxy bypass                   | `*.aadcdn.microsoftonline-p.com`| 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.aka.ms`                      | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.applicationinsights.io`      | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.azure.com`                   | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.azure.net`                   | 80,443  | Outbound  |
+| Azure Stack HCI Cloud Service                       | `*.azurefd.net`                 | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.azure-api.net`               | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.azuredatalakestore.net`      | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.azureedge.net`               | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.loganalytics.io`             | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.microsoft.com`               | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.microsoftonline.com`         | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.microsoftonline-p.com`       | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.msauth.net`                  | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.msftauth.net`                | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.trafficmanager.net`          | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.visualstudio.com`            | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.windows.net`                 | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                   | `*.windows-int.net`             | 80,443  | Outbound  |
+| Windows Update                                      | `*.windowsupdate.com`           | 80,443  | Outbound  |
+| Microsoft Office                                    | `www.office.com`                | 80,443  | Outbound  |
+| Azure Automation service for Azure management tasks | `*.azure-automation.net`        | 80,443  | Outbound  |
+| Agent to download Helm binaries                     | `*.helm.sh`                     | 443     | Outbound  |
+| Cloud Init service to download Kubernetes binaries  | `storage.googleapis.com`        | 443     | Outbound  |
+| Windows Admin Center to download Azure CLI          | `aka.ms/installazurecliwindows` | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd    | `ecpacr.azurecr.io`               | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd    | `git://:9418`                     | 9,418   | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd    | `*.powershellgallery.com`         | 80,443  | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd    | `*.azurewebsites.net`             | 443     | Outbound  |
+| tbd tbd tbd tbd tbd tbd tbd tbd    | `*.msecnd.net`                    | 443     | Outbound  |
 
 For more information about these connectivity recommendations and others, see the following resources:
 - [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
-- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](azure-stack/aks-hci/system-requirements#network-port-and-url-requirements)
-- [Azure Arc networking configuration](azure/azure-arc/servers/agent-overview#networking-configuration)
-- PowerShell gallery URLs to install components such a NuGet and others (search for this URL)
-- [Azure Arc networking configuration](azure/azure-arc/servers/agent-overview#networking-configuration)
+- [Azure Arc networking configuration](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration)
+- [PowerShell Gallery](https://www.powershellgallery.com) URLs to install components such a NuGet and others
+- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](https://docs.microsoft.com/azure-stack/aks-hci/system-requirements#network-port-and-url-requirements)
 
 ### Working with service tags
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
+
+   >[!IMPORTANT]
+   > If outbound connectivity is restricted by your external corporate firewall or proxy server, ensure that the URLs listed in the table below are not blocked. For related information, see the "Networking configuration" section of [Overview of Azure Arc enabled servers agent](/azure/azure-arc/servers/agent-overview#networking-configuration).
 
 ### Required endpoint daily access (after Azure registration)
 Azure maintains well-known IP addresses for Azure services that are organized using service tags. Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that the operating system needs to access.
