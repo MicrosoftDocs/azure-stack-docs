@@ -49,44 +49,44 @@ If there is a corporate firewall between the operating system and the internet, 
 ### Connectivity recommendations
 If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allowlist.
 
-| Description                                         | URL                             | Port    | Direction |
-| :---------------------------------------------------| :-------------------------------| :------ | :-------- |
-| Azure portal URL for proxy bypass                   | `*.aadcdn.microsoftonline-p.com`| 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.aka.ms`                      | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.applicationinsights.io`      | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.azure.com`                   | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.azure.net`                   | 80,443  | Outbound  |
-| Azure Stack HCI Cloud Service                       | `*.azurefd.net`                 | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.azure-api.net`               | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.azuredatalakestore.net`      | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.azureedge.net`               | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.loganalytics.io`             | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.microsoft.com`               | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.microsoftonline.com`         | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.microsoftonline-p.com`       | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.msauth.net`                  | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.msftauth.net`                | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.trafficmanager.net`          | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.visualstudio.com`            | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.windows.net`                 | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                   | `*.windows-int.net`             | 80,443  | Outbound  |
-| Windows Update                                      | `*.windowsupdate.com`           | 80,443  | Outbound  |
-| Microsoft Office                                    | `www.office.com`                | 80,443  | Outbound  |
-| Azure Automation service for Azure management tasks | `*.azure-automation.net`        | 80,443  | Outbound  |
-| Agent to download Helm binaries                     | `*.helm.sh`                     | 443     | Outbound  |
-| Cloud Init service to download Kubernetes binaries  | `storage.googleapis.com`        | 443     | Outbound  |
-| Windows Admin Center to download Azure CLI          | `aka.ms/installazurecliwindows` | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd    | `ecpacr.azurecr.io`               | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd    | `git://:9418`                     | 9,418   | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd    | `*.powershellgallery.com`         | 80,443  | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd    | `*.azurewebsites.net`             | 443     | Outbound  |
+| Description                                              | URL                               | Port    | Direction |
+| :--------------------------------------------------------| :---------------------------------| :------ | :-------- |
+| Azure portal URL for proxy bypass                        | `*.aadcdn.microsoftonline-p.com`  | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.aka.ms`                        | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.applicationinsights.io`        | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azure.com`                     | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azure.net`                     | 80,443  | Outbound  |
+| Azure Stack HCI Cloud Service                            | `*.azurefd.net`                   | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azure-api.net`                 | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azuredatalakestore.net`        | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azureedge.net`                 | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.loganalytics.io`               | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.microsoft.com`                 | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.microsoftonline.com`           | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.microsoftonline-p.com`         | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.msauth.net`                    | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.msftauth.net`                  | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.trafficmanager.net`            | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.visualstudio.com`              | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.windows.net`                   | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.windows-int.net`               | 80,443  | Outbound  |
+| Windows Update                                           | `*.windowsupdate.com`             | 80,443  | Outbound  |
+| Microsoft Office                                         | `www.office.com`                  | 80,443  | Outbound  |
+| Azure Automation service for Azure management tasks      | `*.azure-automation.net`          | 80,443  | Outbound  |
+| Agent to download Helm binaries                          | `*.helm.sh`                       | 443     | Outbound  |
+| Cloud Init service to download Kubernetes binaries       | `storage.googleapis.com`          | 443     | Outbound  |
+| Windows Admin Center to download Azure CLI               | `aka.ms/installazurecliwindows`   | 443     | Outbound  |
+| Kubernetes service to download container images          | `ecpacr.azurecr.io`               | 443     | Outbound  |
+| TCP to support Azure Arc agents                          | `git://:9418`                     | 9,418   | Outbound  |
+| PowerShell Gallery central repository                    | `*.powershellgallery.com`         | 80,443  | Outbound  |
+| Web-hosting platform that supports multiple technologies | `*.azurewebsites.net`             | 443     | Outbound  |
 | tbd tbd tbd tbd tbd tbd tbd tbd    | `*.msecnd.net`                    | 443     | Outbound  |
 
 For more information about these connectivity recommendations and others, see the following resources:
 - [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
-- [Azure Arc networking configuration](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration)
+- [Azure Arc networking configuration](/azure/azure-arc/servers/agent-overview#networking-configuration)
 - [PowerShell Gallery](https://www.powershellgallery.com) URLs to install components such a NuGet and others
-- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](https://docs.microsoft.com/azure-stack/aks-hci/system-requirements#network-port-and-url-requirements)
+- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](/azure-stack/aks-hci/system-requirements#network-port-and-url-requirements)
 
 ### Working with service tags
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
