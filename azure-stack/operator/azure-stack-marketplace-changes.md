@@ -19,6 +19,9 @@ This article lists recent additions, updates, changes, and removals of [Azure St
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
 
+> [!NOTE]
+> The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
+
 ## New marketplace items
 
 - 01/04/2021: Versa Operating System 21.1.1 - version 21.1.1
