@@ -19,6 +19,11 @@ Failed to start the cloud agent generic cluster service in failover cluster. The
 ```
 Workaround: Use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
 
+## Network proxy server blocks HTTP requests
+When applying the platform configuration, the network proxy server blocked HTTP requests originating from the user agent string `Google Chrome 65` because it is considered to be an out-of-date user agent client. 
+
+The user agent will be updated to `Google Chrome 91` in the next release.
+
 ## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run
 If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
 
