@@ -32,7 +32,17 @@ This release includes the following fixes:
 
 ## Known issues 
 
-There are no known issues for this release.
+### Dataplane clusters are in an unhealthy state with all nodes in warning state
+
+- Applicable: Event Hubs on Azure Stack Hub public preview release 1.2012.0.0 
+- Cause: Expired TLS certificate
+- Remediation: Complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md)
+
+### Azure Stack Hub backup fails
+
+- Applicable: Event Hubs on Azure Stack Hub public preview release 1.2012.0.0
+- Cause: Expired TLS certificate
+- Remediation: [Open a support request](azure-stack-help-and-support-overview.md) to receive assistance
 
 ## Next steps
 
