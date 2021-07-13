@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 07/13/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -190,5 +190,4 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 
 ## Next steps
 For more information, see also:
-- The connectivity section of the [Azure Stack HCI FAQ](../faq.yml)
 - The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
