@@ -32,6 +32,12 @@ This release includes the following fixes:
 
 ## Known issues 
 
+### Secret expiration does not trigger an alert
+
+- Applicable: all versions
+- Cause: Administrative alerts are not currently integrated
+- Remediation: Complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md) on a regular basis, ideally every 6 months.
+
 ### Data plane clusters are in an unhealthy state with all nodes in warning state
 
 - Applicable: Event Hubs on Azure Stack Hub public preview release 1.2012.0.0 [March 2020]
