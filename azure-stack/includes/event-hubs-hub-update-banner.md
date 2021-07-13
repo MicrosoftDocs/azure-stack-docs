@@ -20,4 +20,4 @@ ms.lastreviewed: 06/08/2021
 > If you've installed a preview version not listed above, upgrading to one of the versions above is also recommended.
 
 > [!WARNING]
-> Expiration of Event Hubs on Azure Stack Hub secrets [does not trigger an administrative alert](../operator/event-hubs-rp-release-1-2012-20.md#secret-expiration-does-not-trigger-an-alert). It is *critical* that you proactively [rotate the secrets used by Event Hubs on Azure Stack Hub](event-hubs-rp-rotate-secrets.md) on a regular basis, ideally every 6 months. 
+> Expiration of Event Hubs on Azure Stack Hub secrets [will not trigger administrative alerts](../operator/event-hubs-rp-release-1-2012-20.md#secret-expiration-does-not-trigger-an-alert). It is *critical* that you proactively [rotate the secrets used by Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-rotate-secrets.md) on a regular basis, ideally every 6 months. 
