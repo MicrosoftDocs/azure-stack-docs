@@ -38,7 +38,7 @@ Make sure you're running VMM 2019 UR3 or later.
 
 - Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM.
 
-- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](../overview.md#why-azure-stack-hci), [When to use Azure Stack HCI](../concepts/compare-windows-server.md#when-to-use-azure-stack-hci) and [Roles you can run without virtualizing](../overview.md#roles-you-can-run-without-virtualizing).
+- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](../overview.md#why-azure-stack-hci) and [When to use Azure Stack HCI](../concepts/compare-windows-server.md#when-to-use-azure-stack-hci).
 
 - Live migration of VM is not supported between any version of Windows Server and Azure Stack HCI clusters.
 
