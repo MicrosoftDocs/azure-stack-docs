@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/24/2021
+ms.date: 07/13/2021
 ---
 
 # Dynamic processor compatibility mode in Azure Stack HCI
@@ -47,26 +47,6 @@ In the past, all new processor instructions sets were hidden, meaning that the g
 To overcome this limitation, processor compatibility mode has been updated to provide enhanced, dynamic capabilities on processors capable of second-level address translation (SLAT). This new functionality calculates the common denominator of the CPU features supported by the nodes in the cluster and updates the existing processor compatibility mode on a VM to use this dynamically calculated feature set instead of the old hard-coded feature set.
 
 In Azure Stack HCI environments, the new processor compatibility mode ensures that the set of processor features available to VMs across virtualization hosts match by presenting a common capability set across all servers in the cluster. Each VM receives the maximum number of processor instruction sets that are present across all servers in the cluster. This process occurs automatically and is always enabled and replicated across the cluster, so there's no command to enable or disable the process.
-
-## Minimum fixed CPU capabilities
-
-The minimum fixed CPU capabilities are:
-
-- SSE3
-- LAHF_SAHF
-- SSSE3
-- SSE4_1
-- SSE4_2
-- POPCNT
-- CMPXCHG16B
-- MMX_EXT
-- RDTSCP
-- IBRS
-- IBPB
-- MDD
-- ALTMOVCR8
-- NPIEP1
-- VIRT_SPEC_CTRL
 
 ## Migrating running VMs between clusters
 
