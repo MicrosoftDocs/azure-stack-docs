@@ -32,7 +32,7 @@ This release includes the following fixes:
 
 ## Known issues 
 
-### Dataplane clusters are in an unhealthy state with all nodes in warning state
+### Data plane clusters are in an unhealthy state with all nodes in warning state
 
 - Applicable: Event Hubs on Azure Stack Hub public preview release 1.2012.0.0 
 - Cause: Expired TLS certificate
