@@ -55,7 +55,7 @@ Once you've set up Azure Kubernetes Service on-premises and created a Kubernetes
   - Azure Monitor
   - Azure Policy
   - Role-Based Access Control
-- **On-premises using popular tools like Kubectl** - There are many open source tools that allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with Azure Kubernetes Service on Azure Stack HCI.
+- **On-premises using popular tools like Kubectl** - There are many open-source tools that allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with Azure Kubernetes Service on Azure Stack HCI.
 
 ## Run Linux and Windows containers
 
@@ -72,11 +72,11 @@ Azure Kubernetes Service includes a number of features to help secure your conta
 
 ## What you need to get started
 
-The following sections summarize what you need to run Azure Kubernetes Service on Azure Stack HCI. For complete details, see [Before you install Azure Kubernetes Service on Azure Stack HCI](system-requirements.md).
+The following sections summarize what you need to run Azure Kubernetes Service on Azure Stack HCI. For complete details on what you need before you install AKS on Azure Stack HCI, see [system requirements](system-requirements.md).
 
 ### On your Windows Admin Center system
 
-Your machine running the Windows Admin Center gateway has the following requirements:  
+Your machine running the Windows Admin Center gateway must be:  
 
  - Registered with Azure
  - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
@@ -94,7 +94,7 @@ For general Azure Stack HCI system requirements, see [Azure Stack HCI system req
 
 ### The network configuration for Azure Stack HCI
 
-The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster requires a dedicated scope of IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster. For more information on networking requirements, visit [AKS on Azure Stack HCI system requirements](system-requirements.md).
+The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster requires a dedicated scope of IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster. For more information on networking requirements, see [AKS on Azure Stack HCI system requirements](system-requirements.md).
 
 ## Next steps
 

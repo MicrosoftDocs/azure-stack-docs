@@ -1,6 +1,10 @@
 {
   "redirections": [
-      { 
+       { 
+      "source_path": "azure-stack/aks-hci/update-aks-hci-concepts.md", 
+      "redirect_url": "/azure-stack/aks-hci/update-akshci-host-powershell", 
+      "redirect_document_id": false
+    },{ 
       "source_path": "azure-stack/aks-hci/troubleshoot.md", 
       "redirect_url": "/azure-stack/aks-hci/troubleshoot-known-issues", 
       "redirect_document_id": false
@@ -97,7 +101,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-28-87", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-28-89", 
       "redirect_document_id": false
     },     
     { 
