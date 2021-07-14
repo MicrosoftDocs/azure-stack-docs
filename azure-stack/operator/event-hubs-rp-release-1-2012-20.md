@@ -41,7 +41,7 @@ This release includes the following fixes:
 ### Data plane clusters are in an unhealthy state with all nodes in warning state
 
 - Applicable: all versions
-- Cause: Your TLS certificate may be nearing expiration
+- Cause: Internal infrastucture certificates may be nearing expiration
 - Remediation: Update to the latest Event Hubs on Azure Stack Hub release, then complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md).
 
 ### Azure Stack Hub backup fails
