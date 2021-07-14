@@ -42,13 +42,13 @@ This release includes the following fixes:
 
 - Applicable: all versions
 - Cause: Your TLS certificate may be nearing expiration
-- Remediation: Be sure to update the latest version of Event Hubs on Azure Stack Hub, then complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md)
+- Remediation: Update to the latest Event Hubs on Azure Stack Hub release, then complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md).
 
 ### Azure Stack Hub backup fails
 
 - Applicable: all versions
 - Cause: Your TLS certificate may have expired
-- Remediation: [Open a support request](azure-stack-help-and-support-overview.md) to receive assistance
+- Remediation: [Open a support request](azure-stack-help-and-support-overview.md) to receive assistance.
 
 ## Next steps
 
