@@ -34,7 +34,23 @@ when clusters were in "Upgrading" or "Upgrade Failed" state. The issue has been 
 
 ## Known issues 
 
-There are no known issues for this release.
+### Secret expiration does not trigger an alert
+
+- Applicable: all versions
+- Cause: Administrative alerts are not currently integrated
+- Remediation: Complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md) on a regular basis, ideally every 6 months.
+
+### Data plane clusters are in an unhealthy state with all nodes in warning state
+
+- Applicable: all versions
+- Cause: Your TLS certificate may be nearing expiration
+- Remediation: Be sure to update the latest version of Event Hubs on Azure Stack Hub, then complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md)
+
+### Azure Stack Hub backup fails
+
+- Applicable: all versions
+- Cause: Your TLS certificate may have expired
+- Remediation: [Open a support request](azure-stack-help-and-support-overview.md) to receive assistance
 
 ## Next steps
 
