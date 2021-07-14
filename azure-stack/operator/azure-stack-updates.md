@@ -4,9 +4,9 @@ description: Learn how to manage updates in Azure Stack Hub
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 03/26/2021
+ms.date: 07/14/2021
 ms.author: sethm
-ms.lastreviewed: 07/16/2020
+ms.lastreviewed: 07/14/2021
 ms.reviewer: niy
 
 # Intent: As an Azure Stack Hub operator, I want to manage updates so I can keep everything up to date.
@@ -60,7 +60,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 - **Microsoft software updates and hotfixes**
 
-    An update alert for Microsoft software updates and hotfixes will appear in the **Update** blade for Azure Stack Hub instances that are connected to the internet. If the **Update** blade isn't displayed, restart the infrastructure management controller VM.
+    An update alert for Microsoft software updates and hotfixes will appear in the **Update** blade for Azure Stack Hub instances that are connected to the internet.
 
     If your instance isn't connected and you would like to be notified about each hotfix release, subscribe to the [RSS feed](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss).
 
