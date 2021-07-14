@@ -4,13 +4,13 @@ description: Learn about the hardware in the Azure Stack Hub ruggedized.
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 07/14/2021
 ms.author: patricka
-ms.reviewer: 
-ms.lastreviewed: 
+ms.reviewer:
+ms.lastreviewed:
 
-# Intent: 
-# Keyword: 
+# Intent:
+# Keyword:
 
 ---
 
@@ -20,9 +20,9 @@ The following figures show the complete stack with Hardware Lifecycle Host, swit
 
 Figure 1. Front
 
-![Diagram that shows the front of a complete stack.](media/image-58.png)
+![Diagram that shows the front of a complete stack.](media/hardware-diagram-front.png)
 
 Figure 2. Rear
 
-![Diagram that shows the rear of a complete stack.](media/image-59.png)
+![Diagram that shows the rear of a complete stack.](media/hardware-diagram-rear.png)
 
