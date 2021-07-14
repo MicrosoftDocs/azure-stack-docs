@@ -11,13 +11,14 @@ ms.date: 06/18/2021
 
 >Applies to: Azure Stack HCI, version v20H2; Windows Server 2019
 
-This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
+This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. Although the Create cluster wizard in Windows Admin Center performs certain validations to create a working cluster with the selected hardware, cluster validation performs additional checks to make sure the cluster will work in a production environment.
+
+We recommend performing cluster validation for the following primary scenarios:
+
 - After deploying a server cluster, run the Validate-DCB tool to test networking.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
 - After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands.
 - After creating a server cluster, run the Validate-DCB tool before placing it into production.
-
-    To learn more about how to deploy an Azure Stack HCI cluster, see the [Deployment overview](deployment-overview.md).
 
 ## What is cluster validation?
 Cluster validation is intended to catch hardware or configuration problems before a cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool.
