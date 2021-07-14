@@ -16,6 +16,10 @@
       items:
       - name: Hotfix 1.2102.28.89
         href: hotfix-1-2102-28-89.md      
+      - name: Hotfix 1.2008.40.148
+        href: hotfix-1-2008-40-148.md      
+      - name: Hotfix 1.2005.42.126
+        href: hotfix-1-2005-42-126.md
       - name: Hotfix 1.2102.28.87
         href: hotfix-1-2102-28-87.md
       - name: Hotfix 1.2008.37.139
@@ -339,7 +343,7 @@
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
       - name: App Service billing FAQ
-        href: app-service-billing-faq.md
+        href: app-service-billing-faq.yml
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
       - name: Deploy App Service
