@@ -115,11 +115,15 @@ While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has 
 
 ## Load balancer in Azure Kubernetes Service requires DHCP reservation
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
+
 ## Get-AksHciLogs command may fail
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or will not generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file Compress-Archive has an output file size limit of 2GB. 
 
 ## Creating virtual networks with a similar configuration cause overlap issues
 When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
+
+## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
+If you run [Uninstall-AksHci](./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
 ## Next steps
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)

@@ -225,6 +225,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -enableMonitoring
+Use this flag to enable Prometheus monitoring.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 <!-- ### -enableSecretsEncryption
 Use this flag to enable encryption in your Kubernetes secrets.
 

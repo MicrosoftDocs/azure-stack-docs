@@ -47,6 +47,7 @@ Set the configuration settings for the Azure Kubernetes Service host. If you're 
 ## EXAMPLES
 
 ### To deploy on a 2-4 node cluster with DHCP networking
+
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "Default Switch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254"
 
@@ -366,6 +367,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -insecure
 Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.

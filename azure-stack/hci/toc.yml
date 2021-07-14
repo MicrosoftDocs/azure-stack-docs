@@ -58,6 +58,8 @@
   items:
   - name: Manage VMs
     items:
+    - name: Activate Windows Server VMs
+      href: manage/vm-activate.md
     - name: Manage VMs
       href: manage/vm.md
     - name: Manage VMs with PowerShell
@@ -94,7 +96,7 @@
       href: manage/cluster-powershell.md
     - name: Update the cluster
       href: manage/update-cluster.md
-    - name: Monitor the cluster
+    - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
     - name: Configure firewalls
       href: manage/configure-firewalls.md
@@ -126,6 +128,8 @@
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage gateway connections
+      href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
@@ -166,6 +170,8 @@
       href: concepts/deploy-persistent-memory.md
     - name: Persistent memory health management
       href: concepts/persistent-memory-health.md
+    - name: Nested virtualization
+      href: concepts/nested-virtualization.md
   - name: Networking
     items:
     - name: Physical network requirements
@@ -202,6 +208,24 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
+- name: Preview channel
+  items:
+  - name: Join the preview channel
+    href: manage/preview-channel.md
+  - name: Configure Azure portal to monitor clusters
+    href: manage/monitor-azure-portal.md
+  - name: Monitor multiple clusters with Azure Stack HCI Insights
+    href: manage/azure-stack-hci-insights.md
+  - name: Host networking with Network ATC
+    href: deploy/network-atc.md
+  - name: Use GPUs with clustered VMs
+    href: manage/use-gpu-with-clustered-vm.md
+  - name: Dynamic CPU compatibility
+    href: manage/processor-compatibility-mode.md
+  - name: Storage thin provisioning
+    href: manage/thin-provisioning.md
+  - name: Adjustable storage repair speed
+    href: manage/storage-repair-speed.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

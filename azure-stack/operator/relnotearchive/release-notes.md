@@ -4,7 +4,7 @@ description: Archived release notes for Azure Stack Hub integrated systems, incl
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/18/2021
+ms.date: 06/10/2021
 ms.author: sethm
 ms.reviewer: sranthar
 ms.lastreviewed: 09/09/2020
@@ -188,7 +188,7 @@ The 2002 release of Azure Stack Hub must be applied on the 1910 release with the
 After the installation of this update, install any applicable hotfixes.
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.2002.65.171](https://support.microsoft.com/topic/d743db84-df31-496b-b37c-6e5618b4cc8f)
+- [Azure Stack Hub hotfix 1.2002.68.177](../hotfix-1-2002-69-179.md)
 ::: moniker-end
 
 ::: moniker range="azs-1910"
@@ -388,7 +388,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1908)
+- [Known issues](./known-issues.md?view=azs-1908)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -486,7 +486,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1907)
+- [Known issues](./known-issues.md?view=azs-1907)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -621,7 +621,7 @@ To access release notes for a different version, use the version selector dropdo
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1906)
+- [Known issues](./known-issues.md?view=azs-1906)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -851,7 +851,7 @@ For information about security updates in this update of Azure Stack, see [Azure
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1905)
+- [Known issues](./known-issues.md?view=azs-1905)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -944,7 +944,7 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 - Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information about how to configure the severity level, see [Azure Stack datacenter integration - syslog forwarding](../azure-stack-integrate-security.md).
 
 <!--this applied to Bug 1473487 -->
-- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](/azure-stack/operator/diagnostic-log-collection).
+- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](../diagnostic-log-collection.md).
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
@@ -961,7 +961,7 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 - Improvements to idempotency of infrastructure backup action plan.
 
 <!--Bug/Task 3139609 -->
-- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, the [Get-AzureStackLog](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system) cmdlet no longer generates default logs for the OEM role. You must execute the [Invoke-AzureStackOnDemandLog](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal#invoke-azurestackondemandlog) cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection-portal#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
+- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, the [Get-AzureStackLog](../diagnostic-log-collection.md#send-logs-now-with-powershell) cmdlet no longer generates default logs for the OEM role. You must execute the [Invoke-AzureStackOnDemandLog](../diagnostic-log-collection.md#send-logs-now-with-powershell) cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](../diagnostic-log-collection.md#view-log-collection).
 
 - Azure Stack now monitors the federation data URL provided for datacenter integration with ADFS. This improves reliability during secret rotation of the customer ADFS instance or farm.
 
@@ -1033,7 +1033,7 @@ This update of Azure Stack does not include security updates to the underlying o
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](/azure-stack/operator/relnotearchive/known-issues?view=azs-1904)
+- [Known issues](./known-issues.md?view=azs-1904)
 - [Security updates](../release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](../release-notes-checklist.md)
 
@@ -1358,15 +1358,15 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
 - The 1902 build introduces a new user interface on the Azure Stack Administrator portal for creating plans, offers, quotas, and add-on plans. For more information, including screenshots, see [Create plans, offers, and quotas](../azure-stack-create-plan.md).
 
-<!-- 1460884	Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator	Add node -->
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator    Add node -->
 - Improvements to the reliability of capacity expansion during an add node operation when switching the scale unit state from "Expanding storage" to "Running".
 
 <!--
-1426197	3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout	PNU
-1399240	3322580: [PNU] Optimize the DSC resource execution on the Host	PNU
-1398846	Bug 3751038: ECEClient.psm1 should provide cmdlet to resume action plan instance	PNU
-1398818	3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context	PNU
-1381018	[1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists	PNU
+1426197    3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
+1399240    3322580: [PNU] Optimize the DSC resource execution on the Host    PNU
+1398846    Bug 3751038: ECEClient.psm1 should provide cmdlet to resume action plan instance    PNU
+1398818    3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context    PNU
+1381018    [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists    PNU
 -->
 - To improve package integrity and security, as well as easier management for offline ingestion, Microsoft has changed the format of the Update package from .exe and .bin files to a .zip file. The new format adds additional reliability of the unpacking process that at times, can cause the preparation of the update to stall. The same package format also applies to update packages from your OEM.
 - To improve the Azure Stack operator experience when running Test-AzureStack, operators can now simply use, "Test-AzureStack -Group UpdateReadiness" as opposed to passing ten additional parameters after an Include statement.
@@ -1386,21 +1386,21 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
   - Check the state of the Azure Consistent Storage (ACS) service fabric nodes and repair them as needed.
 
 <!-- 
-1426690	[SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log	Diagnostics
-1396607	3796092: Move Blob services log from Storage role to ACSBlob role to reduce the log size of Storage	Diagnostics
-1404529	3835749: Enable Group Policy Diagnostic Logs	Diagnostics
-1436561	Bug 3949187: [Bug Fix] Remove AzsStorageSvcsSummary test from SecretRotationReadiness Test-AzureStack flag	Diagnostics
-1404512	3849946: Get-AzureStackLog should collect all child folders from c:\Windows\Debug	Diagnostics 
+1426690    [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log    Diagnostics
+1396607    3796092: Move Blob services log from Storage role to ACSBlob role to reduce the log size of Storage    Diagnostics
+1404529    3835749: Enable Group Policy Diagnostic Logs    Diagnostics
+1436561    Bug 3949187: [Bug Fix] Remove AzsStorageSvcsSummary test from SecretRotationReadiness Test-AzureStack flag    Diagnostics
+1404512    3849946: Get-AzureStackLog should collect all child folders from c:\Windows\Debug    Diagnostics 
 -->
 - Improvements to Azure Stack diagnostic tools to improve log collection reliability and performance. Additional logging for networking and identity services. 
 
-<!-- 1384958	Adding a Test-AzureStack group for Secret Rotation	Diagnostics -->
+<!-- 1384958    Adding a Test-AzureStack group for Secret Rotation    Diagnostics -->
 - Improvements to the reliability of Test-AzureStack for secret rotation readiness test.
 
-<!-- 1404751	3617292: Graph: Remove dependency on ADWS.	Identity -->
+<!-- 1404751    3617292: Graph: Remove dependency on ADWS.    Identity -->
 - Improvements to increase AD Graph reliability when communicating with customer's Active Directory environment
 
-<!-- 1391444	[ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info	System info -->
+<!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info    System info -->
 - Improvements hardware inventory collection in Get-AzureStackStampInformation.
 
 - To improve reliability of operations running on ERCS infrastructure, the memory for each ERCS instance increases from 8 GB to 12 GB. On an Azure Stack integrated systems installation, this results in a 12 GB increase overall.
@@ -2576,7 +2576,7 @@ The following are post-installation known issues for this build version.
 - During Azure Stack *Secret Rotation*, there is a period in which Public IP Addresses are unreachable for two to five minutes.
 
 <!-- 2664148 - IS ASDK --> 
--	In scenarios where the tenant is accessing their virtual machines by using a S2S VPN tunnel, they might encounter a scenario where connection attempts fail if the on-premises subnet was added to the Local Network Gateway after gateway was already created. 
+-    In scenarios where the tenant is accessing their virtual machines by using a S2S VPN tunnel, they might encounter a scenario where connection attempts fail if the on-premises subnet was added to the Local Network Gateway after gateway was already created. 
 
 
 <!-- ### SQL and MySQL-->
@@ -4335,8 +4335,9 @@ The following are post-installation known issues for build  **20180302.1**
 
 - In the dashboard of the admin portal, the Update tile fails to display information about updates. To resolve this issue, click on the tile to refresh it.
 
--	In the admin portal you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
-    - *ERROR - Template for FaultType ResourceProviderTimeout is missing.*
+-  In the admin portal you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
+    
+    *ERROR - Template for FaultType ResourceProviderTimeout is missing.*
 
     This alert can be safely ignored. 
 
@@ -4411,7 +4412,7 @@ The following are post-installation known issues for build  **20180302.1**
 
 - Internal Load Balancing (ILB) improperly handles MAC addresses for back-end VMs, which causes ILB to break when using Linux instances on the Back-End network.  ILB works fine with Windows instances on the Back-End Network.
 
--	The IP Forwarding feature is visible in the portal, however enabling IP Forwarding has no effect. This feature is not yet supported.
+-    The IP Forwarding feature is visible in the portal, however enabling IP Forwarding has no effect. This feature is not yet supported.
 
 - Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
 

@@ -66,10 +66,15 @@
       "redirect_document_id": false
     }, 
     { 
+      "source_path": "azure-stack/operator/azure-stack-create-service-principals.md", 
+      "redirect_url": "/azure-stack/operator/give-app-access-to-resources", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/operator/known-issues-vn.md", 
       "redirect_url": "/azure-stack/operator/known-issues", 
       "redirect_document_id": false
-    },       
+    },
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
@@ -92,7 +97,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2008-33-131", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-28-87", 
       "redirect_document_id": false
     },     
     { 

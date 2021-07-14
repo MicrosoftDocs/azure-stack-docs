@@ -4,7 +4,7 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: abhilashaagarwala
 ms.author: abha
-ms.date: 02/02/2021
+ms.date: 05/21/2021
 ---
 
 # System requirements for Azure Kubernetes Service on Azure Stack HCI
@@ -27,7 +27,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 
 - We recommend using a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
-- If you are using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent preview release.
+- If you are using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent release.
 
 ## Azure requirements
 
@@ -111,7 +111,7 @@ With that created, in the **Azure portal**, under **Subscriptions**, **Access Co
 
 - Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
-- This preview release requires that you install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections; changing them after installation isn't sufficient at this time.
+- You must install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections. At this time, you cannot change these settings after installation.
 
 ## General network requirements
 
@@ -184,7 +184,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
 git://:9418 | 9418 | TCP | Used to support Azure Arc agents
-https://azurestackhci.azurefd.net | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
+`https://azurestackhci.azurefd.net` | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
 
 > [!NOTE]
 > To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).

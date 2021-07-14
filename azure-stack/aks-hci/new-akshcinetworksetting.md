@@ -55,7 +55,7 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 ## Parameters
 
 ### -name
-The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`.
+The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`. The name must be all lowercase letters and numbers.
 
 ```yaml
 Type: System.String

@@ -4,7 +4,7 @@ description: Learn how to monitor and manage storage capacity and availability i
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 6/8/2021
 ms.author: patricka
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2020
@@ -14,10 +14,9 @@ ms.lastreviewed: 10/16/2020
 
 ---
 
-
 # Manage storage capacity for Azure Stack Hub
 
-This article helps Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
+You can use this article as an Azure Stack Hub cloud operators to learn how to monitor and manage the storage capacity of your Azure Stack Hub deployment. You can use the guidance to understand the memory available for your user's VMs. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
@@ -68,8 +67,6 @@ Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as
 
 **Managed disks** simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you. For more information, see [Managed Disks Overview](/azure/virtual-machines/windows/managed-disks-overview).
 
-It is recommended that you use Managed Disks for VM for easier management and capacity balance. You don't have to prepare a storage account and containers before using Managed Disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
-
 **Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to be compatible with third party tools which only support Azure-Unmanaged Disks.
 
 The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
@@ -79,8 +76,10 @@ The guidance to tenants is to place each disk into a separate container to impro
 
 The options to free up space on an attached container are limited. To learn more, see [Distribute unmanaged disks](#distribute-unmanaged-disks).
 
->[!TIP]  
-> Cloud operators don't directly operate unmanaged disks, which are attached to VMs that tenants might add to a container. However, when you plan to manage space on storage shares, it can be useful to understand how unmanaged disks relate to containers and shares.
+>[!IMPORTANT]  
+> We recommended that you use only Managed disks in VMs for easier management. You don't have to prepare storage accounts and containers before using Managed disks. Managed disks provide equivalent or better functionality and performance compared to Unmanaged disks. There are no advantages to use Unmanaged disks and they are only provided for backward compatibility.
+> Managed disks are optimized for better placement in the storage infrastructure and have significantly reduced management overhead. But due to Managed disks are thin provisioned and the final utilization is unpredictable in creation, there are opportunities of volume being over-utilized caused by unbalanced disk placement. Operators are  responsible for monitoring the storage capacity usage and avoid such issue.
+
 
 ::: moniker range="<azs-2002"
 ## Monitor shares
@@ -343,6 +342,76 @@ You can free up space on an overused volume by manually migrating some managed d
 The most extreme method for managing space involves moving unmanaged disks. If the tenant adds numbers of unmanaged disks to one container, the total used capacity of the container could grow beyond the available capacity of the volume that holds it before the container entering *overflow* mode. To avoid single container exhaust the space of a volume, the tenant could distribute the existing unmanaged disks of one container to different containers. Because distributing an attached container (one that contains a VM disk) is complex, contact Microsoft Support to accomplish this action.
 
 ::: moniker-end
+
+## Memory available for VMs
+
+Azure Stack Hub is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware, referred to as a scale unit. In Azure Stack Hub, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack Hub servers, referred to as hosts or nodes. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack Hub VMs are then managed by the scale unit's Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack Hub. The scale unit also allows for the movement and scalability of all services across Azure Stack Hub, tenant and infrastructure.
+
+You can review a pie chart in the administration portal that shows the free and used memory in Azure Stack Hub like below:
+
+![physical memory on Azure Stack Hub](media/azure-stack-manage-storage-shares/physical-memory-on-azure-stack-hub.png)
+
+The following components consume the memory in the used section of the pie chart:
+
+- **Host OS usage or reserve** 
+    This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the spaces direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
+- **Infrastructure services**  
+    These are the infrastructure VMs that make up Azure Stack Hub. As of the 1904 release version of Azure Stack Hub, this entails approximately 31 VMs that take up 242 GB + (4 GB x number of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
+- **Resiliency reserve**  
+    Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure and during patch and update to allow for successful live migration of VMs.
+- **Tenant VMs**
+    These are the VMs created by Azure Stack Hub users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from Azure Stack Hub user portal, PowerShell, and Azure CLI will not consume memory from Azure Stack Hub.
+- **Add-on Resource Providers**  
+    VMs deployed for the add-on resource providers such as SQL, MySQL, and App Service.
+
+![Capacity used in a blade on a four node Azure Stack Hub](media/azure-stack-manage-storage-shares/capacity-for-four-node-azure-stack-hub.png)
+ 
+
+### Available Memory for VM placement
+
+As a cloud operator for Azure Stack Hub, there isn't an  automated way to check the allocated memory for each VM. You can have access your user VMs, and calculate the allocated memory manually. However, the allocated memory will not reflect the real use. This value can be lower than the allocated value.
+
+To workout available memory for VMs the following formula is used:
+
+**Available Memory for VM placement** = `Total Host Memory--Resiliency Reserve--Memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead`
+
+**Resiliency reserve** =` H + R * ((N-1) * H) + V * (N-2)`
+
+Where:
+
+**H** = Size of single host memory
+
+**N** = Size of scale unit (number of hosts)
+
+**R** = Operating system reserve/memory used by the Host OS, which is .15 in this formula
+
+**V** = Largest VM (memory wise) in the scale unit
+
+**Azure Stack Hub Infrastructure Overhead** = 242 GB + (4 GB x # of nodes). This accounts for the approximately 31 VMs are used to host Azure Stack Hub's infrastructure.
+
+**Memory used by the Host OS** = 15 percent (0.15) of host memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the host and general operating system overhead.
+
+The value **V**, largest VM in the scale unit, is dynamically based on the largest tenant VM deployed. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. We pick the size of the largest VM here to have enough memory reserved so a live migration of this large VM would not fail. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself.
+
+For example, with a 12 node scale unit:
+
+| Stamp details              | Values                          |
+|----------------------------|---------------------------------|
+| sts (N)                    | 12                              |
+| Memory per Host (H)        | 384                             |
+| Total Memory of Scale Unit | 4608                            |
+| OS reserve (R)             | 15%                             |
+| Largest VM (V)             | 112                             |
+| Resiliency Reserve =       | H + R * ((N-1) * H) + V * (N-2) |
+| Resiliency Reserve =       | 2137.6                          |
+
+So with the above information, you can calculate that an Azure Stack with 12 nodes of 384 GB per host (Total 4,608 GB) has 2,137 GB reserved for resiliency if the largest VM has 112-GB memory.
+
+When you consult the **Capacity** blade for the Physical memory as per below, the **Used** value includes the Resiliency Reserve. The graph is from a four node Azure Stack Hub instance.
+
+![Capacity usage on a four node Azure Stack Hub](media/azure-stack-manage-storage-shares/azure-stack-hub-capacity-used.png)
+
+Keep these considerations in mind while planning the capacity for Azure Stack Hub. In addition, you can use the [Azure Stack Hub Capacity Planner](azure-stack-capacity-planning-overview.md).
 
 ## Next steps
 

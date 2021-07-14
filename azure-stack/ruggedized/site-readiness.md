@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 06/02/2021
 ms.author: wamota
 ms.reviewer: wamota
 ms.lastreviewed: 10/14/2020
@@ -44,7 +44,9 @@ The table below lists the environmental requirements for an Azure Stack Hub rugg
 
 ## PDU power drop requirements
 
-The following table lists the power drops required for the Azure Stack Hub ruggedized.
+It's recommended that you use a PDU to connect all the power components. Note that PDUs are not included with the Azure Stack Hub ruggedized system.
+
+The following table lists the power drops required for Azure Stack Hub ruggedized:
 
 *Table 2. Required number of power drops*
 

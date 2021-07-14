@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on in AKS for Azure Stack HCI
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: lahirisl
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 05/21/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -12,16 +12,16 @@ ms.reviewer:
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets, such as private keys and certificates that need to be carefully distributed. This can be a significant security risk.
+Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
 As an alternative to using certificate-based _kubeconfig_, you can use Active Directory (AD) single sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service on Azure Stack HCI lets a user on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
 
-AD integration uses AD _kubeconfig_, which is distinct from the certificate-based _kubeconfig_ files and doesn't contain any secrets. The certificate-based _kubeconfig_ file can however be used for backup purposes such as troubleshooting, if there are issues with connecting using Active Directory credentials.
+AD integration uses AD _kubeconfig_, which is distinct from the certificate-based _kubeconfig_ files and doesn't contain any secrets. However, the certificate-based _kubeconfig_ file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 
 Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
 
 > [!Note] 
-> For this preview release, we provide AD SSO connectivity only for workload clusters. 
+> Currently, AD SSO connectivity is only supported for workload clusters. 
 
 This document will guide you through the following steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
 
@@ -33,11 +33,14 @@ This document will guide you through the following steps to set up Active Direct
 
 Before you start the process of configuring Active Directory SSO credentials, you should ensure you have the following items available:
 
- - The latest **Aks-Hci PowerShell** module is installed. If you don't, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules). 
- - The AKS host is installed and configured. If you don't, follow [configure your deployment](./kubernetes-walkthrough-powershell.md#step-3-configure-your-deployment).  
- - Make sure the keytab file is available to use. If it's not, see [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
- - The keytab file is generated for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You should also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
- - For each AKS on Azure Stack HCI workload cluster, ensure there's one API server AD account available.
+ - The latest **Aks-Hci PowerShell** module is installed. If you need to install it, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules). 
+ - The AKS host is installed and configured. If you need to install the host, follow the steps to [configure your deployment](./kubernetes-walkthrough-powershell.md#step-3-configure-your-deployment).  
+ - The keytab file is available to use, and if it is not available, follow the steps to [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
+ 
+   > [!NOTE]
+   > You should generate the keytab file for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You must also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
+
+ - One API server AD account is available for each AKS on Azure Stack HCI workload cluster.
  - The client machine must be a Windows domain-joined machine.
 
 ## Create AD Auth using the keytab file
@@ -58,7 +61,7 @@ For details on creating the workload cluster, see [create Kubernetes clusters us
 
 ### Step 2: Install AD authentication
 
-Before you can install AD authentication, make sure the workload cluster is installed and the AD authentication is enabled on the cluster. To install AD authentication, use one of the following options.
+Before you can install AD authentication, the workload cluster must be installed and the AD authentication enabled on the cluster. To install AD authentication, use one of the following options.
 
 #### Option 1
 
@@ -82,13 +85,13 @@ Before proceeding to the next steps, you should note the following items:
 
 - Make sure the keytab file is named _current.keytab_.
 - Replace the SPN that corresponds to your environment.
-- **-adminUser** creates a corresponding role binding for the specified AD group with cluster admin privileges. Replace _contoso\bob_ with the AD group or user that corresponds to your environment.
+- The **-adminUser** parameter creates a corresponding role binding for the specified AD group with cluster admin privileges. Replace _contoso\bob_ (as shown in Option 1 above) with the AD group or user that corresponds to your environment.
 
 ### Step 3: Test the AD webhook and keytab file
 
 You need to make sure the AD webhook is running on the API server and the keytab file is stored as a Kubernetes secret. To get the certificate-based _kubeconfig_ file for the workload cluster, follow these steps:
 
-1. Get a certificate-based _kubeconfig_ file. You'll use the _kubeconfig_ file to connect to the cluster as a local host using the following command:
+1. Get a certificate-based _kubeconfig_ file using the following command. You'll use the _kubeconfig_ file to connect to the cluster as a local host.
 
    ```powershell
    Get-AksHciCredential -name mynewcluster1
@@ -190,7 +193,7 @@ kind: Role
    name: "microsoft:activedirectory:CONTOSO\SREGroup" 
 ```
 
-Before applying the yaml file, the **group and user names** should always be converted to a SIDs using the command:
+Before applying the yaml file, the **group and user names** should always be converted to SIDs using the command:
 
 ```bash
 kubectl-adsso nametosid <rbac.yml>

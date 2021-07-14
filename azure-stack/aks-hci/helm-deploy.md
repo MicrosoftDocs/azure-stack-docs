@@ -67,7 +67,7 @@ acr.azurecr.io/mymicroservice 0.1.0   5be713db571b   About a minute ago 107MB
 ....
 ```
 
-Next, you need to push your image up to a container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/). In this example, the container image is pushed to Azure Container Registry (ACR). To learn more, see [pulling images from ACR to a Kubernetes cluster](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes).
+Next, you need to push your image up to a container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/). In this example, the container image is pushed to Azure Container Registry (ACR). To learn more, see [pulling images from ACR to a Kubernetes cluster](/azure/container-registry/container-registry-auth-kubernetes).
 
 ```
 docker push acr.azurecr.io/mymicroservice:0.1.0

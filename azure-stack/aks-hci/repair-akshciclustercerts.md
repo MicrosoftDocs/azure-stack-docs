@@ -3,7 +3,7 @@ title: Repair-AksHciClusterCerts
 description: The Repair-AksHciClusterCerts PowerShell troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components 
 author: jessicaguan
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 25/19/2021
 ms.author: jeguan
 ---
 
@@ -16,7 +16,7 @@ Troubleshoots and fixes errors related to expired certificated for Kubernetes bu
 
 ```powershell
 Repair-AksHciClusterCerts -name 
-[-sshPrivateKeyFile <String>] 
+                         [-sshPrivateKeyFile <String>] 
 ```
 
 ## Description

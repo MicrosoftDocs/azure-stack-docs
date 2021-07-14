@@ -1,9 +1,9 @@
 ---
-title: Uinstall-AksHciMonitoring
+title: Uninstall-AksHciMonitoring
 author: jessicaguan
 description: The Uninstall-AksHciMonitoring PowerShell command removes Prometheus-based monitoring solution.
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 06/22/2021
 ms.author: jeguan
 ---
 
