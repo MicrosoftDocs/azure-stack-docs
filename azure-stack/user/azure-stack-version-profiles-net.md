@@ -200,11 +200,11 @@ Learn more about API profiles:
   [Finding and installing a package]: /nuget/tools/package-manager-ui
   [NuGet Package Manager instructions]: https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
   [Create subscriptions to offers in Azure Stack Hub]: ../operator/azure-stack-subscribe-plan-provision-vm.md
-  [Provide applications access to Azure Stack Hub]: ../operator/azure-stack-create-service-principals.md
+  [Provide applications access to Azure Stack Hub]: ../operator/give-app-access-to-resources.md
   [*tenant ID*]: ../operator/azure-stack-identity-overview.md
   [*subscription ID*]: ../operator/service-plan-offer-subscription-overview.md#subscriptions
   [*the Azure Stack Hub Resource Manager endpoint*]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint
   [Summary of API profiles]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
   [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
-  [Use Azure PowerShell to create a service principal with a certificate]: ../operator/azure-stack-create-service-principals.md
+  [Use Azure PowerShell to create a service principal with a certificate]: ../operator/give-app-access-to-resources.md
   [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017&preserve-view=true
