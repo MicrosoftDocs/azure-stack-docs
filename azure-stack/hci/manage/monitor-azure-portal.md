@@ -143,18 +143,28 @@ If the Logs capability and Monitoring capability are enabled without errors but 
    ```
 
 4.	When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
-
+   
+   :::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
+   
 5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
+   
+   :::image type="content" source="media/monitor-azure-portal/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-azure-portal/select-option-1.png":::
+   
+6. If you encounter the error highlighted in the screenshot below but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue. 
+   
+   :::image type="content" source="media/monitor-azure-portal/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-azure-portal/timezone-issue-1.png":::
+      
+   The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
 
-6. If you encounter the error highlighted in the screenshot below but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue. The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
+   :::image type="content" source="media/monitor-azure-portal/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-azure-portal/timezone-issue-2.png":::
 
 7. To resolve the issue:
 
-   - Remove the Microsoft Monitoring Agent Extension from the **Extensions** settings of Azure Stack HCI resource blade
-   - Ensure  Azure stack HCI host time is the same as Azure time for your time zone.
-   - From the **Extensions** settings of Azure Stack HCI Blade, add the **Log Analytics** extension
+   - Go to your Azure Stack HCI resource page in Azure Portal, select **Settings > Extensions**, and remove the Microsoft Monitoring Agent Extension.
+   - Ensure that Azure Stack HCI host time is the same as Azure time for your time zone.
+   - Add the **Log Analytics** extension.
    
-   Re-run agent diagnostics as above and it should now be successful. You will now see windows agent numbers increment to match you cluster nodes, and monitoring will begin to flow.
+8. Re-run the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment to match you cluster nodes, and monitoring will begin to flow.
 
 ## Next steps
 
