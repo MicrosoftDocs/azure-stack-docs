@@ -43,16 +43,15 @@ when clusters were in "Upgrading" or "Upgrade Failed" state. The issue has been 
 ### Data plane clusters are in an unhealthy state with all nodes in warning state
 
 - Applicable: all versions
-- Cause: Internal infrastucture secrets may be nearing expiration
+- Cause: Internal infrastructure secrets may be nearing expiration
 - Remediation: Update to the latest Event Hubs on Azure Stack Hub release, then complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](event-hubs-rp-rotate-secrets.md).
 
 ### Azure Stack Hub backup fails
 
 - Applicable: all versions
-- Cause: Internal infrastucture secrets may have expired
+- Cause: Internal infrastructure secrets may have expired
 - Remediation: [Open a support request](azure-stack-help-and-support-overview.md) to receive assistance.
 
 ## Next steps
 
 - For more information, start with the [Event Hubs on Azure Stack Hub operator overview](event-hubs-rp-overview.md).
-
