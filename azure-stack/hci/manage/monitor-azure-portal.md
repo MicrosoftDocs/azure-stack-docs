@@ -129,34 +129,34 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 ### How to use the Log Analytics Troubleshooting Tool
 
 1.	Open a PowerShell prompt as Administrator on the Azure Stack HCI host where Log Analytics Agent is installed.
-   
+
 2.	Navigate to the directory where the tool is located.
-   
+
    ```PowerShell
    cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"
    ```
-   
+
 3.	Execute the main script using this command:
-   
+
    ```PowerShell
    .\GetAgentInfo.ps1
    ```
-   
+
 4.	When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
-   
-   :::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
-   
+
+:::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
+
 5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
-   
-   :::image type="content" source="media/monitor-azure-portal/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-azure-portal/select-option-1.png":::
-   
-6. If you encounter the error highlighted in the screenshot below but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue. 
-   
-   :::image type="content" source="media/monitor-azure-portal/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-azure-portal/timezone-issue-1.png":::
-      
+
+:::image type="content" source="media/monitor-azure-portal/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-azure-portal/select-option-1.png":::
+
+6. If you encounter the error highlighted in the screenshot below but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue.
+
+:::image type="content" source="media/monitor-azure-portal/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-azure-portal/timezone-issue-1.png":::
+
    The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
 
-   :::image type="content" source="media/monitor-azure-portal/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-azure-portal/timezone-issue-2.png":::
+:::image type="content" source="media/monitor-azure-portal/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-azure-portal/timezone-issue-2.png":::
 
 7. To resolve the issue:
 
