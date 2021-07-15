@@ -133,7 +133,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 2.	Navigate to the directory where the tool is located.
 
    ```PowerShell
-   cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"
+   cd C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter
    ```
 
 3.	Execute the main script using this command:
