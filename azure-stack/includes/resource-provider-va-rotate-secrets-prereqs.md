@@ -3,13 +3,13 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/10/2020
+ms.date: 07/14/2021
 ms.reviewer: bryanla
-ms.lastreviewed: 10/20/2020
+ms.lastreviewed: 07/14/2021
 ---
 
 > [!NOTE]
-> Secret rotation for value-add resource providers is currently only supported via PowerShell. 
+> Secret rotation for value-add resource providers (RPs) is currently only supported via PowerShell. Also, you must proactively rotate secrets for value-add RPs on a regular basis, as administrative alerts are currently not generated.
 
 Like the Azure Stack Hub infrastructure, value-add resource providers use both internal and external secrets. Secrets can take multiple forms, including passwords and the encryption keys maintained by X509 certificates. As an operator, you're responsible for:
 
