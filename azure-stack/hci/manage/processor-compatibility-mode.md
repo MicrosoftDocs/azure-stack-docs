@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/13/2021
+ms.date: 07/14/2021
 ---
 
 # Dynamic processor compatibility mode in Azure Stack HCI
@@ -83,16 +83,20 @@ To enable processor compatibility mode, run the following cmdlet:
 get-vm -name <name of VM> -ComputerName <target cluster or host> | Set-VMProcessor -CompatibilityForMigrationEnabled $true 
 ```
 
-To enable the VM to use the default minimum features to migrate across clusters, run the following cmdlet:
-
-```PowerShell
-get-vm -name <name of VM> -ComputerName <target cluster or host> | Set-VMProcessor -CompatibilityForMigrationEnabled $true -CompatibilityForMigrationMode MinimumFeatureSet
-```
+We recommend setting the VM's CPU features to the maximum level supported by all servers in the cluster. This maximizes VM performance while preserving the ability to move the running VM to other servers in the cluster. 
 
 To enable the VM to use the cluster node common features, run the following cmdlet:
 
 ```PowerShell
 get-vm -name <name of VM> -ComputerName <target cluster or host> | Set-VMProcessor -CompatibilityForMigrationEnabled $true -CompatibilityForMigrationMode CommonClusterFeatureSet
+```
+
+Alternatively, you can set the VM's CPU features to minimum, ensuring that you can move the running VM to other Hyper-V hosts outside the cluster if they have the same CPU manufacturer.
+
+To enable the VM to use the default minimum features to migrate across clusters, run the following cmdlet:
+
+```PowerShell
+get-vm -name <name of VM> -ComputerName <target cluster or host> | Set-VMProcessor -CompatibilityForMigrationEnabled $true -CompatibilityForMigrationMode MinimumFeatureSet
 ```
 
 ## Next steps
