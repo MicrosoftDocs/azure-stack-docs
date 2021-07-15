@@ -160,9 +160,9 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 7. To resolve the issue:
 
-   - Go to your Azure Stack HCI resource page in Azure Portal, select **Settings > Extensions**, and remove the Microsoft Monitoring Agent Extension.
-   - Ensure that Azure Stack HCI host time is the same as Azure time for your time zone.
-   - Add the **Log Analytics** extension.
+   1. Go to your Azure Stack HCI resource page in Azure Portal, select **Settings > Extensions**, and remove the Microsoft Monitoring Agent Extension.
+   2. Ensure that Azure Stack HCI host time is the same as Azure time for your time zone.
+   3. Add the **Log Analytics** extension.
    
 8. Re-run the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment to match you cluster nodes, and monitoring will begin to flow.
 
