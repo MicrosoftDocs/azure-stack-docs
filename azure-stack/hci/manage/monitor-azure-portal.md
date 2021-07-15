@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/16/2021
+ms.date: 07/16/2021
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
@@ -121,6 +121,40 @@ The table below shows a rough pricing estimate for Azure Stack HCI clusters of d
 | Large deployment (25 four-node clusters)     | ~25 GB                    | $2.76 per GB after first 5 GB |
 
 Every GB of data ingested into your Log Analytics workspace can be retained at no charge for up to 31 days. Data retained beyond the first 31 days will be charged $0.12 per GB per month.
+
+## Troubleshooting
+
+If the Logs capability and Monitoring capability are enabled without errors but the monitoring data doesn't show up even after an hour or so, you can use the [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot).
+
+### How to use the Log Analytics Troubleshooting Tool
+
+1.	Open a PowerShell prompt as Administrator on the Azure Stack HCI host where Log Analytics Agent is installed.
+
+2.	Navigate to the directory where the tool is located.
+   
+   ```PowerShell
+   cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"
+   ```
+   
+3.	Execute the main script using this command:
+   
+   ```PowerShell
+   .\GetAgentInfo.ps1
+   ```
+
+4.	When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
+
+5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
+
+6. If you encounter the error highlighted in the screenshot below but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue. The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
+
+7. To resolve the issue:
+
+   - Remove the Microsoft Monitoring Agent Extension from the **Extensions** settings of Azure Stack HCI resource blade
+   - Ensure  Azure stack HCI host time is the same as Azure time for your time zone.
+   - From the **Extensions** settings of Azure Stack HCI Blade, add the **Log Analytics** extension
+   
+   Re-run agent diagnostics as above and it should now be successful. You will now see windows agent numbers increment to match you cluster nodes, and monitoring will begin to flow.
 
 ## Next steps
 
