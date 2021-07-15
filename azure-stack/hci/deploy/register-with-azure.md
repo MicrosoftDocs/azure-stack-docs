@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/16/2021
+ms.date: 07/08/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -26,16 +26,18 @@ Azure Stack HCI is delivered as an Azure service and needs to register within 30
 
 You won't be able to register your cluster with Azure until you've created an Azure Stack HCI cluster. In order for the cluster to be supported, the cluster nodes must be physical servers. Virtual machines can be used for testing.
 
-For the simplest registration experience, have an Azure AD admin (Owner or User Access Administrator) complete the registration process using either Windows Admin Center or PowerShell.
+For the simplest registration experience, have an Azure AD admin (Owner or User Access Administrator with Contributor role) complete the registration process using either Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
    > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
 
-### Register Windows Admin Center
+Before you register your cluster, make sure every server in the cluster is up and running, and that the following prerequisites are satisfied.
+
+### Windows Admin Center must be registered with Azure
 
 If you plan to register an Azure Stack HCI cluster by using Windows Admin Center, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and supply your Azure Active Directory (tenant) ID. Make sure that the computer on which you run Windows Admin Center is joined to the same Active Directory domain in which you'll create the cluster, or a trusted domain.
 
-### Internet access
+### Internet access and firewall ports
 
 Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For information on how to prepare your firewalls and set up a proxy server, see [Configure firewalls for Azure Stack HCI](../manage/configure-firewalls.md).
 
@@ -57,7 +59,7 @@ The user registering the cluster must have Azure subscription permissions to:
 - Register a resource provider
 - Create/Get/Delete Azure resources and resource groups
 
-If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" or "User Access Administrator" Azure role to your subscription. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
+If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" role to your subscription, or a "User Access Administrator" role along with a "Contributor" role. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
 
 1. Create a json file called **customHCIRole.json** with following content. Make sure to change <subscriptionID> to your Azure subscription ID. To get your subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to Subscriptions, and copy/paste your ID from the list.
 
@@ -108,7 +110,7 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. 
 
-If you're running Azure Stack HCI, version 21H2 Preview, the user must be assigned an Azure Owner or User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
+If you're running Azure Stack HCI, version 21H2 Preview, the user must be assigned an Azure Owner role or a User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
 
    > [!WARNING]
    > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
@@ -193,6 +195,62 @@ If you're running Azure Stack HCI, version 21H2 Preview and you registered your 
 
    > [!IMPORTANT]
    > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you'll need to specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
+
+## Troubleshooting
+
+Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
+
+### Collect PowerShell registration logs
+
+When `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files called **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue which needs the additional debug logs, set debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`.
+
+```PowerShell
+$DebugPreference = 'Continue'
+```
+
+### Collect on-premises hcisvc logs
+
+To enable debug logs for hcisvc, run the following in PowerShell on each server in the cluster:
+
+```PowerShell
+wevtutil.exe sl /q /e:true Microsoft-AzureStack-HCI/Debug
+```
+
+To get the logs:
+
+```PowerShell
+Get-WinEvent -Logname Microsoft-AzureStack-HCI/Debug -Oldest -ErrorAction Ignore
+```
+
+### Common registration issues
+
+During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
+
+If registration fails, you may see the following message:
+
+**Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}**
+
+If there are node names after the 'Couldn't generate self-signed certificate on node(s)' part of the error message, then we weren't able to generate the certificate on those server(s). To troubleshoot:
+
+1. Check that each server listed in the above message is up and running. You can check the status of hcisvc by running `sc.exe query hcisvc` and start it if needed with `start-service hcisvc`.
+
+2. Check that each server listed in the error message has connectivity to the machine on which the `Register-AzStackHCI` cmdlet is run. Verify this by running the following cmdlet from the machine on which `Register-AzStackHCI` is run, using `New-PSSession` to connect to each server in the cluster and make sure it works.
+   
+   ```PowerShell
+   New-PSSession -ComputerName {failing nodes}
+   ```
+   
+If there are node names after the 'Couldn't set and verify registration certificate on node(s)' part of the error message, then we were able to generate the certificate on the server(s), but the server(s) weren't able to successfully call the HCI cloud service API. To troubleshoot:
+
+1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Configure firewalls for Azure Stack HCI](../manage/configure-firewalls.md).
+
+2. Try running the `Test-AzStackHCIConnection` cmdlet and make sure it succeeds. This cmdlet will invoke the health endpoint of HCI cloud services to test connectivity.
+
+3. Look at the hcisvc debug logs on each node listed in the error message. 
+
+   - It's ok to have 'ExecuteWithRetry operation AADTokenFetch failed with retryable error' appear a few times before it either fails with 'ExecuteWithRetry operation AADTokenFetch failed after all retries' or 'ExecuteWithRetry operation AADTokenFetch succeeded in retry'.
+   - If you encounter 'ExecuteWithRetry operation AADTokenFetch failed after all retries' in the logs, we weren't able to fetch the Azure Active Directory token from the service even after all the retries. There will be an associated AAD exception that's logged with this message. 
+   - If you see "AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'", this is an issue with how the time is set on the server. Check the UTC time on all the servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct the times on the servers and then try registration again.
 
 ## Next steps
 

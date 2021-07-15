@@ -47,7 +47,7 @@ Creating a custom storage class is a two-step process:
    ```
 
 2. Create a new custom storage class using the new storage container. 
-   1. To do this, create a file named `sc-aks-hci-disk-custom.yaml`, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new container. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
+   1. To do this, create a file named `sc-aks-hci-disk-custom.yaml`, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
 
        ```yaml
        kind: StorageClass
@@ -57,7 +57,7 @@ Creating a custom storage class is a two-step process:
        provisioner: disk.csi.akshci.com
        parameters:
          blocksize: "33554432"
-         container: testStorageContainer
+         container: customStorageContainer
          dynamic: "true"
          group: <e.g clustergroup-akshci>    # same as default storageclass
          hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as default storageclass
