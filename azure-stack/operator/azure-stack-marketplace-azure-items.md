@@ -15,6 +15,8 @@ ms.lastreviewed: 12/9/2020
 
 # Azure Marketplace items available for Azure Stack Hub
 
+This article describes the Azure Marketplace items that are available for Azure Stack Hub.
+
 > [!NOTE]
 > The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
 
