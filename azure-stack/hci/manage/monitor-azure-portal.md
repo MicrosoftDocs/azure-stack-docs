@@ -129,7 +129,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 ### How to use the Log Analytics Troubleshooting Tool
 
 1.	Open a PowerShell prompt as Administrator on the Azure Stack HCI host where Log Analytics Agent is installed.
-
+   
 2.	Navigate to the directory where the tool is located.
    
    ```PowerShell
@@ -141,7 +141,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
    ```PowerShell
    .\GetAgentInfo.ps1
    ```
-
+   
 4.	When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
    
    :::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
