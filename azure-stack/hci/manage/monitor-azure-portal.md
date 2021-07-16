@@ -160,11 +160,17 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 7. To resolve the issue:
 
-   1. Go to your Azure Stack HCI resource page in Azure Portal, select **Settings > Extensions**, and remove the Microsoft Monitoring Agent Extension.
-   2. Ensure that Azure Stack HCI host time is the same as Azure time for your time zone.
-   3. Add the **Log Analytics** extension.
+   1. Go to your Azure Stack HCI resource page in Azure Portal, select **[cluster name] > Extensions**. Then select the tick box for MicrosoftMonitoringAgent and remove the Microsoft Monitoring Agent Extension.
+   2. Ensure that your Azure Stack HCI host time zone is correct, and that the local time on the host is the same as Azure time for your time zone.
+      1. From the Azure Stack HCI host console, select **option 9: Date & Time** from the **Sconfig** menu, then select **change time zone** and ensure local time is correct.
+      1. Review the Active Directory PDC (Primary Domain Controller) time zone, and make sure the date and time are correct.
+      1. If Active Directory PDC is correct and Azure Stack HCI local time is still incorrect, then the Active Directory domain hierarchy is not being recognized. If this is the case, complete steps 4-6 below.
+      1. From the Azure Stack HCI host,  select **option 15** to exit the **Sconfig menu**. Then run the following command in PowerShell as an administrator: `w32tm.exe /config /syncfromflags:domhier /update` - this should return a confirmation that the command completed successfully, and the time setting should now be correct.
+      1. To diagnose further, run: `w32tm /monitor` on the Azure Stack HCI host console. The active domain controller should be listed as stratum 1 server, and all other domain controllers as stratum 2.
+      1. Lastly, ensure that the Windows time service and time providers are not configured in a Group Policy Object, as this will interfere with the Active Directory domain hierarchy.
+   1. Re-add the **Log Analytics** extension by going to your Azure Stack HCI resource page in Azure Portal, select **[cluster name] > Overview**, then select **Capabilities** and configure Log Analytics and Monitoring.
    
-8. Re-run the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment to match you cluster nodes, and monitoring will begin to flow.
+8. Re-run the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment in your Log Analytics workspace under **Agents Management** to match your cluster nodes, and monitoring events will begin to flow.
 
 ## Next steps
 
