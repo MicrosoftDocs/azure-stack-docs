@@ -111,9 +111,9 @@ The topology of this approach will look like the following diagram:
 You will need to know if your identity manager is Azure AD or ADFS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
 
 | Element | Source |
-|---------| -------|
+| ------- | ------ |
 | Azure Resource Manager URL | [The Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint) |
-| Application name |  |  |
+| Application name |  |
 | Application ID |  The ID assigned to the service principal when the [application was registered](../operator/give-app-access-to-resources.md) |
 | Subscription ID | Created when you [subscribe to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md) |
 | Tenant ID (Directory ID) | The ID assigned to your [Active Directory tenant](../operator/azure-stack-identity-overview.md) |
@@ -126,7 +126,7 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 2. Install Azure Stack Hub PowerShell and Azure Stack Hub Tools on the Commvault VM.
 
     a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
-    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-1908&view=azs-1908).
+    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 
