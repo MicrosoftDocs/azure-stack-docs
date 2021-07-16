@@ -89,19 +89,19 @@ In both scenarios, the stamps are under the control of the customer. Also, custo
 1.  **Support Engineers do not have direct access to the stamp**.  
     Engineers work with the customer to troubleshoot issues in live sessions or by examining logs provided by the customer.
 2.  **Breaking Glass.** 
-    Customers cannot access the Azure Stack Hub infrastructure without the authorization of a CSS support engineer through a process we refer to as "Braking Glass" or "Use the PEP" (Privilege Endpoint). This is only necessary when the information provided by Alerts and Logs is not sufficient to diagnose a problem or is needed to implement the mitigation steps. This step is authorized by Azure Stack Hub CSS engineer and carried out in collaboration with the customer. For more information, see this [article](//azure-stack/operator/azure-stack-privileged-endpoint?view=azs-2102).
+    Customers cannot access the Azure Stack Hub infrastructure without the authorization of a CSS support engineer through a process we refer to as "Braking Glass" or "Use the PEP" (Privilege Endpoint). This is only necessary when the information provided by Alerts and Logs is not sufficient to diagnose a problem or is needed to implement the mitigation steps. This step is authorized by Azure Stack Hub CSS engineer and carried out in collaboration with the customer. For more information, see [Use the privileged endpoint in Azure Stack Hub](../operator/azure-stack-privileged-endpoint.md).
 3.  **All troubleshooting occurs through Alerts that the system produces or through examining logs**
-    - For information on Monitoring and Alerting see this [article](//azure-stack/operator/azure-stack-monitor-health?view=azs-2102).
-    - For information on how Azure Stack Hub customers get help from Microsoft and collect logs (including AKS logs) see this [article](//azure-stack/operator/azure-stack-help-and-support-overview?view=azs-2102). Customers have three options to [collect logs](//azure-stack/operator/diagnostic-log-collection?view=azs-2102) depending on their requirements:
-        -   [Send logs proactively (recommended)](//azure-stack/operator/diagnostic-log-collection?view=azs-2102#send-logs-proactively)
-        -   [Send logs now](//azure-stack/operator/diagnostic-log-collection?view=azs-2102#send-logs-now)
-        -   [Save logs locally](//azure-stack/operator/diagnostic-log-collection?view=azs-2102#save-logs-locally)
+    - For information on monitoring and alerts, see [Monitor health and alerts in Azure Stack Hub](../operator/azure-stack-monitor-health.md).
+    - For information on how you can get help from Microsoft and collect logs (including AKS logs), see [Azure Stack Hub help and support](../azure-stack/operator/azure-stack-help-and-support-overview.md). Customers have three options to [collect logs](../azure-stack/operator/diagnostic-log-collection.md) depending on their requirements:
+        -   [Send logs proactively (recommended)](../azure-stack/operator/diagnostic-log-collection.md#send-logs-proactively)
+        -   [Send logs now](../azure-stack/operator/diagnostic-log-collection.md#send-logs-now)
+        -   [Save logs locally](../azure-stack/operator/diagnostic-log-collection.md#save-logs-locally)
 
 ### Users connecting to Azure Stack Hub using the CLI or PowerShell
 
-When you use the Azure CLI to connect to Azure, the CLI binary will default to using AAD for authentication and the global Azure Azure Resource Manager endpoint for APIs. You can use the same Azure CLI on Azure Stack Hub. But the user needs to explicitly connect to the Azure Stack Hub Azure Resource Manager endpoint and use either AAD or AD FS for authentication. The reason is that Azure Stack Hub is meant to work within enterprises, and they may choose AD FS in disconnected scenarios.
-    1.  For information on how to connect to Azure Stack Hub using either AAD or AD FS identities using PowerShell see this [article](//azure-stack/user/azure-stack-powershell-configure-user?view=azs-2102&tabs=az1%2Caz2%2Caz3%2Caz4).
-    2.  Use [this](//azure-stack/user/azure-stack-version-profiles-azurecli2?view=azs-2102&tabs=ad-win) one for connecting using Azure CLI with either AAD or AD FS identities.
+When you use the Azure CLI to connect to Azure, the CLI binary will default to using Azure Active Directory (Azure AD) for authentication and the global Azure Azure Resource Manager endpoint for APIs. You can use the same Azure CLI on Azure Stack Hub. But the user needs to explicitly connect to the Azure Stack Hub Azure Resource Manager endpoint and use either Azure AD or Active Directory Federated Services (AD FS) for authentication. The reason is that Azure Stack Hub is meant to work within enterprises, and they may choose AD FS in disconnected scenarios.
+    1.  For information on how to connect to Azure Stack Hub using either Azure AD or AD FS identities using PowerShell, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+    2.  Use [this](azure-stack-version-profiles-azurecli2.md) one for connecting using Azure CLI with either Azure AD or AD FS identities.
 
 ### Supported platform features
 
@@ -115,7 +115,7 @@ Another area of differences resides in the features provided by each platform. A
 7.  [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available**.**
 8.  No multiple node-pool support. The node pool commands are not available.
 9.  UI support for multi-node-pool operations is not enabled.
-10. Windows containers \<todo\>
+10. Windows containers
 1.  No Azure Regions or Availability Zones
 2.  No Availability Sets, only virtual machine scale sets
 3.  Review command list for supported and unsupported commands.
@@ -123,9 +123,9 @@ Another area of differences resides in the features provided by each platform. A
 ### Supported services
 
 Absence of some Azure services limits some functionality options on Azure Stack Hub AKS RP:
-1.  No Files Service. This makes it so that there is no support for File Service based volumes in K8s in Azure Stack Hub. \<TODO\>
-2.  No Azure Log Analytics and Azure Container Monitor. Any Kubernetes cluster can be connected to Azure Container Monitor as long as it is connected to the internet, if it is disconnected there is no equivalent service locally in Azure Stack Hub. So there is not integrated support for Azure Container Monitor in Azure Stack Hub AKS RP. \<TODO\>
-3.  No Azure DevOps. Since this service is not available for disconnected Azure Stack Hub stamps, there is no integrated support for it. \<TODO\>
+1.  No Files Service. This makes it so that there is no support for File Service based volumes in K8s in Azure Stack Hub.
+2.  No Azure Log Analytics and Azure Container Monitor. Any Kubernetes cluster can be connected to Azure Container Monitor as long as it is connected to the internet, if it is disconnected there is no equivalent service locally in Azure Stack Hub. So there is not integrated support for Azure Container Monitor in Azure Stack Hub AKS RP.
+3.  No Azure DevOps. Since this service is not available for disconnected Azure Stack Hub stamps, there is no integrated support for it.
 
 ### Supported AKS API and Kubernetes versions
 

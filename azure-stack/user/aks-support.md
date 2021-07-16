@@ -8,19 +8,19 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 07/01/2021
 
-# Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
+# Intent: As an Azure Stack Hub operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
 ---
 
 # Azure Kubernetes Service on Azure Stack Hub support
 
-Azure Kubernetes Service for Azure Stack Hub is in private preview, that is, they are available only to customers that have agreed to use it for non-production workloads. Since AKS on Azure Stack Hub is a subset of AKS on Azure, you will see that some commands are not available. We are interested in hearing your feedback about any missing functionality to adjust our priorities for the upcoming updates.
+Azure Kubernetes Service (AKS) for Azure Stack Hub is is a subset of AKS on Azure, you will see that some commands are not available. Provide feedback about your experiencing using AKS on Azure Stack Hub. This article provides guidance on how to provide feedback and resolve issues with the AKS while the service is in preview.
 
-The goal for the preview is to gather customer feedback and use it to influence future releases of the service. This feedback may come in the form of bugs, functionality suggestions, issues, how to tasks, installation, workflow questions, etc. See below for instructions on how to provide feedback.
+## Things to note
 
-We encourage customers to take advantage of the UserVoice \<TODO:link\> provided to communicate with the AKS service team. In the situation that the issue cannot be resolved via UserVoice, customers could raise a non-production [Support Case](/azure-stack/operator/azure-stack-help-and-support-overview?view=azs-2102#:~:text=You%20can%20select%20Help%20(question,preselect%20Azure%20Stack%20Hub%20service.) (the Customer support team will be involved in the public preview). The product team will monitor the UserVoice posts and reply accordingly. There will also be periodic calls between the product team and customers during the preview to gather feedback and provide answers.
+Take advantage of the **User Voice** provided to communicate with the AKS service team. In the situation where an issue can't be resolved in **User Voice**, you can raise a non-production [Support Case](../azure-stack/operator/azure-stack-help-and-support-overview.md).
 
-Customers should be aware that since this is preview code users may note:
+When providing feedback and notes, take not of:
 
 1.  Missing functionality.
 2.  Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
@@ -29,44 +29,48 @@ Customers should be aware that since this is preview code users may note:
 5.  Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
 6.  Support cases of preview services cannot be created and addressed as production support cases.
 
-## Reporting Bugs
+## Report bugs
 
-1.  Go to \<TODO:UserVoice\> to report the bug.
+1.  Go to **User Voice** to report the bug.
 2.  Provide description, repro steps, and description of expected behavior.
-3.  In some cases, we may ask you to collect Azure Stack Hub logs (a [support case](/azure-stack/operator/azure-stack-help-and-support-overview?view=azs-2102#:~:text=You%20can%20select%20Help%20(question,preselect%20Azure%20Stack%20Hub%20service.) with the Microsoft Support team would be needed).
-4.  In some cases we may ask you to collect Kubernetes logs ([instructions to collect logs](/azure-stack/user/azure-stack-kubernetes-aks-engine-troubleshoot#collect-kubernetes-logs)).
+3.  In some cases, we may ask you to collect Azure Stack Hub logs (a [support case](../azure-stack/operator/azure-stack-help-and-support-overview.md.) with the Microsoft Support team would be needed).
+4.  In some cases we may ask you to collect Kubernetes logs ([instructions to collect logs](azure-stack-kubernetes-aks-engine-troubleshoot.md#collect-kubernetes-logs)).
 
-## Providing feedback
+## Provide feedback
 
 Please use the links below to submit your feedback:
 
 1.  For reporting a security vulnerability, go to [https://msrc.**microsoft**.com/create-**report**](https://msrc.microsoft.com/create-report).
-2.  For improvement suggestions go to \<TODO:UserVoice\>.
-3.  For documentation feedback use the "Feeback" button on the document page.
+2.  For improvement suggestions go to **User Voice**.
+3.  For documentation feedback select **Feeback** on the document page.
 
-## Not included in the Preview
+## Not included in the preview
 
-1.  AKS on ASH is a subset of AKS on Azure, this can be see reflected by the set of supported feature areas here\<TODO: add link to feature table\> and commands listed here \<TODO: add link to commands list\>.
-2.  Management of node pools, only one worker node pool and one master node pool are deployed by default in an Azure Kubernetes Service cluster. Azure Kubernetes Service CLI and APIs that reference node pools directly are not currently supported.
-3.  Hidden master nodes, masters are exposed to customers in their subscriptions.
-4.  Backup and disaster recovery for AKS Service and Kubernetes clusters. There is no functionality in place that will backup and/or recover the AKS Service and/or AKS tenant clusters.
-5.  Monitoring: remediations. There are no automatic remediations actions at the moment for raised alerts.
+If you are familiar with the AKS service in global Azure, you may note the following things aren't included:
+
+1.  AKS on Azure Stack Hub is a subset of AKS on Azure, this can be see reflected by the [set of supported features](aks-overview.md#feature-comparison) and [commands](aks-commands.md).
+2.  You cannot manage node pools. Only one worker node pool and one master node pool are deployed by default in an Azure Kubernetes Service cluster. Azure Kubernetes Service CLI and APIs that reference node pools directly are not supported.
+3.  Hidden master nodes are not supported. Master nodes are exposed to you in your subscription.
+4.  Backup and disaster recovery for AKS Service and Kubernetes clusters functions are not included. There isn't functionality in place to backup and recover the AKS Service and/or AKS tenant clusters.
+5.  There are no automatic remediation actions at the moment for raised alerts raised by your monitors.
 6.  Standard Load Balancer Functionality.
 7.  Attaching Azure Container Registry option when creating clusters.
 8.  Private Azure Kubernetes Service clusters.
 9.  Support for Calico.
-10. Support for AKS on ASDK.
+10. Support for AKS on Azure Stack Development Kit (ASDK).
 11. Support for Azure Arc.
 
-## Service Updates
+## Service updates
 
-As we make progress on the preview bits, we may have an opportunity to push a new update to customers. This will be made available following the standard Azure Stack Patch and Update (PNU) process outlined in the article "[Manage updates in Azure Stack Hub](/azure-stack/operator/azure-stack-update)". Besides the actual Resource Provider bits which are updated via the Azure Stack Hub Patch and Update process, there may be a need to also update the Azure Kubernetes Service base image mentioned above. If such is the case the extra step of [downloading the image](/azure-stack/operator/azure-stack-aks-engine) from the Marketplace will be required. We will announce updates through the [Teams channel](https://teams.microsoft.com/l/team/19%3ac9c4faafab2247c993268db91792e2da%40thread.tacv2/conversations?groupId=cbe0f09a-8855-4e9d-ae54-fc6d54a91677&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47).
+Updates to the AKS service on Azure Stack Hub are made available through the standard Azure Stack Hub Patch and Update (PNU) process outlined in the [Manage updates in Azure Stack Hub](../operator/azure-stack-update.md). In addition to the components that provide the service in the Azure Stack Hub, you will also need to update the  Azure Kubernetes Service base image. This requires [downloading the image](../operator/azure-stack-aks-engine.md) from the marketplace.
 
-Given that these are early bits, there might be a need for following extra steps beyond the one outlined above. For example:
+You can keep on top of the updates by monitoring the [Teams channel](https://teams.microsoft.com/l/team/19%3ac9c4faafab2247c993268db91792e2da%40thread.tacv2/conversations?groupId=cbe0f09a-8855-4e9d-ae54-fc6d54a91677&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47).
 
-1.  Kubernetes might need to be redeployed if certain operations are desired.
-2.  Manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as masters and nodes might be required.
-3.  In an extreme situation, a support case might be required to break glass and operate on the service RP components directly.
+As participants in the public preview, you may also need to need to:
+
+1.  Redeploy Kubernetes to access certain operations.
+2.  Perform manual steps on individual infrastructure-as-a-service (IaaS) components such as masters and nodes.
+3. You may need to contact your cloud operator and Microsoft support so that technicians can directly work with the service components in Azure Stack Hub directly.
 
 ## Next steps
 
