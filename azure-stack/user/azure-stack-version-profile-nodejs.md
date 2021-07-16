@@ -225,7 +225,7 @@ You can use the following samples as a reference for creating solutions with Nod
 
 1. `cd` into your clone of the repository.
 
-2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](/azure/azure-stack/azure-stack-create-service-principals).
+2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md).
 
 3.  Retrieve the following required values:
     - Tenant ID
