@@ -4,7 +4,7 @@ description: How to create volumes on Azure Stack HCI and Windows Server cluster
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 07/16/2021
 ---
 
 # Create volumes on Azure Stack HCI and Windows Server clusters
@@ -109,10 +109,10 @@ New-Volume -FriendlyName "Volume3" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 In deployments with three types of drives, one volume can span the SSD and HDD tiers to reside partially on each. Likewise, in deployments with four or more servers, one volume can mix mirroring and dual parity to reside partially on each.
 
-To help you create such volumes, Azure Stack HCI and Windows Server 2019 provide default tier templates called **MirrorOn*MediaType*** and **NestedMirrorOn*MediaType*** (for performance), and **ParityOn*MediaType*** and **NestedParityOn*MediaType*** (for capacity), where *MediaType* is HDD or SSD. The templates represent storage tiers based on media types and encapsulate definitions for three-way mirroring on the faster capacity drives (if applicable), and dual parity on the slower capacity drives (if applicable).
+To help you create such volumes, Azure Stack HCI provides default tier templates called **MirrorOn*MediaType*** and **NestedMirrorOn*MediaType*** (for performance), and **ParityOn*MediaType*** and **NestedParityOn*MediaType*** (for capacity), where *MediaType* is HDD or SSD. The templates represent storage tiers based on media types and encapsulate definitions for three-way mirroring on the faster capacity drives (if applicable), and dual parity on the slower capacity drives (if applicable).
 
    > [!NOTE]
-   > On Windows Server 2016 clusters running Storage Spaces Direct, the default tier templates were simply called **Performance** and **Capacity**.
+   > On Storage Spaces Direct clusters running on earlier versions of Windows Server 2016, the default tier templates were simply called **Performance** and **Capacity**.
 
 You can see the storage tiers by running the **Get-StorageTier** cmdlet on any server in the cluster.
 
