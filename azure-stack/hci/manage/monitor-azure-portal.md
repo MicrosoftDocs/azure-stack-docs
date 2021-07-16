@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/16/2021
+ms.date: 07/16/2021
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
@@ -121,6 +121,56 @@ The table below shows a rough pricing estimate for Azure Stack HCI clusters of d
 | Large deployment (25 four-node clusters)     | ~25 GB                    | $2.76 per GB after first 5 GB |
 
 Every GB of data ingested into your Log Analytics workspace can be retained at no charge for up to 31 days. Data retained beyond the first 31 days will be charged $0.12 per GB per month.
+
+## Troubleshooting
+
+If the Logs capability and Monitoring capability are enabled without errors but the monitoring data doesn't show up even after an hour or so, you can use the [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot).
+
+### How to use the Log Analytics Troubleshooting Tool
+
+1.	Open a PowerShell prompt as Administrator on the Azure Stack HCI host where Log Analytics Agent is installed.
+
+2.	Navigate to the directory where the tool is located.
+
+   ```PowerShell
+   cd C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter
+   ```
+
+3.	Execute the main script using this command:
+
+   ```PowerShell
+   .\GetAgentInfo.ps1
+   ```
+
+4.	When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
+
+:::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
+
+5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
+
+:::image type="content" source="media/monitor-azure-portal/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-azure-portal/select-option-1.png":::
+
+6. If you encounter the error highlighted in the screenshot below but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue.
+
+:::image type="content" source="media/monitor-azure-portal/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-azure-portal/timezone-issue-1.png":::
+
+   The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
+
+:::image type="content" source="media/monitor-azure-portal/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-azure-portal/timezone-issue-2.png":::
+
+7. To resolve the issue:
+
+   1. Go to your Azure Stack HCI resource page in Azure portal, select **[cluster name] > Extensions**. Then select the tick box for MicrosoftMonitoringAgent and remove the Microsoft Monitoring Agent Extension.
+   1. Ensure that your Azure Stack HCI host time zone is correct, and that the local time on the host is the same as Azure time for your time zone.
+      1. From the Azure Stack HCI host console, select **option 9: Date & Time** from the **Sconfig** menu, then select **change time zone** and ensure local time is correct.
+      1. Review the Active Directory PDC (Primary Domain Controller) time zone, and make sure the date and time are correct.
+      1. If Active Directory PDC is correct and Azure Stack HCI local time is still incorrect, then the Active Directory domain hierarchy is not being recognized. If this is the case, complete steps iv - vi below. Otherwise, proceed to step c.
+      1. From the Azure Stack HCI host,  select **option 15** to exit the **Sconfig menu**. Then run the following command in PowerShell as an administrator: `w32tm.exe /config /syncfromflags:domhier /update` - this should return a confirmation that the command completed successfully, and the time setting should now be correct.
+      1. To diagnose further, run `w32tm /monitor` on the Azure Stack HCI host console. The active domain controller should be listed as stratum 1 server, and all other domain controllers as stratum 2.
+      1. Lastly, ensure that the Windows time service and time providers are not configured in a Group Policy Object, as this will interfere with the Active Directory domain hierarchy.
+   1. Re-add the **Log Analytics** extension by going to your Azure Stack HCI resource page in Azure portal, select **[cluster name] > Overview**, then select **Capabilities** and configure Log Analytics and Monitoring.
+   
+8. Re-run the Log Analytics Troubleshooting Tool and you should no longer see the error. You should now see Windows agent numbers increment in your Log Analytics workspace under **Agents Management** to match your cluster nodes, and monitoring events will begin to flow.
 
 ## Next steps
 
