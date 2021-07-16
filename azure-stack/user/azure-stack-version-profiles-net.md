@@ -80,7 +80,7 @@ To set the environment variables in a Windows command prompt, use the following 
 set Azure_Tenant_ID=Your_Tenant_ID
 ```
 
-### MacOS, Linux, and Unix-based systems
+### macOS, Linux, and Unix-based systems
 
 In Unix-based systems, use the following command:
 
