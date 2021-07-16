@@ -100,7 +100,7 @@ To set up a proxy server for Azure Stack HCI:
    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
    ```
 
-Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default.
+   Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default.
 
 2. Set the proxy server environment variable by running the following PowerShell command as administrator on each server in the cluster:
 
