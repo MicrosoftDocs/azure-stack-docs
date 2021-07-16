@@ -5,7 +5,7 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 01/22/2021
+ms.date: 07/15/2021
 ---
 
 # Manage Azure Stack HCI clusters using Windows Admin Center
@@ -144,14 +144,20 @@ There are several Hyper-V host settings that can be applied to your cluster.
 
     :::image type="content" source="media/manage-cluster/cluster-settings-storage-migration.png" alt-text="cluster Storage Migration screen" lightbox="media/manage-cluster/cluster-settings-storage-migration.png":::
 
+## Add or remove a server from the cluster
+
+To add or remove a server from the cluster, see [Add or remove servers for a cluster](add-cluster.md).
+
 ## Register the cluster with Azure
 
-To register or unregister your cluster with Azure, select **Azure Stack HCI registration**. 
+To register or unregister your cluster with Azure, see [Register a cluster with Azure](../deploy/register-with-azure.md).
 
-:::image type="content" source="media/manage-cluster/cluster-registration.png" alt-text="cluster Azure Registration screen" lightbox="media/manage-cluster/cluster-registration.png":::
+## Remove (destroy) the cluster
+
+You use PowerShell to destroy a cluster and its resources - see [Remove cluster and resources](cluster-powershell#remove-cluster-and-resources.md).
 
 ## Next steps
 
 For more detailed information, see also:
 
-- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
+- [Manage clusters with PowerShell](cluster-powershell.md)

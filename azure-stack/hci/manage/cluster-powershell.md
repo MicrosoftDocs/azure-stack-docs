@@ -153,7 +153,7 @@ This example configures host server Server1 to use Kerberos to authenticate inco
 Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerberos
 ```
 
-## Remove cluster and resources
+## Remove (destroy) a cluster
 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource?view=win10-ps) reference documentation.
 
