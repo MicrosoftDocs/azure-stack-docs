@@ -92,15 +92,30 @@ During the Azure registration process, when you run either `Register-AzStackHCI`
 Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the `Register-AzStackHCI` cmdlet from a server node because of no internet access, we recommend downloading the modules to your management computer, and then manually transferring them to the server node where you want to run the cmdlet.
 
 ## Set up a proxy server
-To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator on each server in the cluster:
+To set up a proxy server for Azure Stack HCI:
 
-```powershell
-Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
-```
+1. Run the following PowerShell command as an administrator on each server in the cluster:
+
+   ```powershell
+   Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
+   ```
 
 Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default.
 
-To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
+2. Set the proxy server environment variable by running the following PowerShell command as administrator on each server in the cluster:
+
+   ```PowerShell
+   [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
+   $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+   ```
+
+3. After the proxy server environment variable is set, restart the agent service on each server for the changes to take effect:
+
+   ```PowerShell
+   Restart-Service -Name himds
+   ```
+
+To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` as administrator without arguments.
 
 Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
 

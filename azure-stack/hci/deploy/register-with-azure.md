@@ -196,7 +196,7 @@ If you're running Azure Stack HCI, version 21H2 Preview and you registered your 
    > [!IMPORTANT]
    > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you'll need to specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
 
-3. If Azure Arc integration fails, then the server may need to communicate through a proxy server. To resolve this, set the proxy server environment variable by running the following PowerShell command as administrator:
+3. If Azure Arc integration fails, then the servers may need to communicate through a proxy server. To resolve this, set the proxy server environment variable by running the following PowerShell command as administrator on each server in the cluster:
 
    ```PowerShell
    [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
