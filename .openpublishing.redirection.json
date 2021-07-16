@@ -71,7 +71,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/azure-stack-create-service-principals.md", 
-      "redirect_url": "/azure-stack/operator/give-app-access-to-resources", 
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal", 
       "redirect_document_id": false
     },
     { 
@@ -707,7 +707,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-create-service-principals.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-create-service-principals",
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal",
       "redirect_document_id": false
     },
     {
