@@ -154,7 +154,7 @@ To register or unregister your cluster with Azure, see [Register a cluster with 
 
 ## Remove (destroy) the cluster
 
-You use PowerShell to destroy a cluster and its resources - see [Remove cluster and resources](cluster-powershell#remove-cluster-and-resources.md).
+You use PowerShell to destroy a cluster and its resources - see [Remove cluster and resources](cluster-powershell.md#remove-cluster-and-resources.md).
 
 ## Next steps
 
