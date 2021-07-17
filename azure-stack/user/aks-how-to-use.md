@@ -14,7 +14,7 @@ ms.lastreviewed: 07/01/2021
 
 # Using Azure Kubernetes Service on Azure Stack Hub
 
-This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This articles describes the main set of scenarios to get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
+This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes the main set of scenarios to get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
 
 In the following sections you will:
 
@@ -65,7 +65,7 @@ This is the output from a Linux machine:
 
 ![output from a Linux machine](media/aks-how-to-use/eac6ff4c6c162c00be6188f1b34e6454.png)
 
-### [Windows](#/tab/windows)
+### [Windows](#tab/windows)
 
 For a Windows machine, download and install an MSI with the the Azure CLI with AKS support from https://azurecliprod.blob.core.windows.net/devops-edge/azurestack-aks/Microsoft%20Azure%20CLI.msi.
 
@@ -105,7 +105,7 @@ Update your environment configuration.
 az cloud update --profile 2019-03-01-hybrid
 ```
 
-Sign into the environment.
+Connect to the environment.
 
 ```azurecli  
 az login -u "user@contoso.onmicrosoft.com" -p 'xxxxxxx' --tenant contoso.onmicrosoft.com
@@ -164,29 +164,29 @@ You can find the find the global Azure instructions at [Deploy an Azure Kubernet
     3.  To assaying "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
 3.  Create an AKS cluster of 3 agent nodes. Provide values to the parameters below, examples are provided. Run:
 
-```azurecli
-az aks create  \
---resource-group myTest-rg  \
---name akscluster00 \
---dns-name-prefix AKScluster00 \
---nodepool-name mynodepool \
---admin-username azureuser \
---service-principal xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  \
---client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
--- node-count 3 \
---generate-ssh-keys \
---load-balancer-sku basic \
---vm-set-type AvailabilitySet \
---location Redmond
-```
+    ```azurecli
+    az aks create  \
+    --resource-group myTest-rg  \
+    --name akscluster00 \
+    --dns-name-prefix AKScluster00 \
+    --nodepool-name mynodepool \
+    --admin-username azureuser \
+    --service-principal xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  \
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    -- node-count 3 \
+    --generate-ssh-keys \
+    --load-balancer-sku basic \
+    --vm-set-type AvailabilitySet \
+    --location Redmond
+    ```
 
-The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: "SSH key files '/home/azureuser/.ssh/id_rsa' and '/home/azureuser/.ssh/id_rsa.pub' have been generated under \~/.ssh to allow SSH access to the VM.", store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
+    The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` have been generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
 
-## Connect to the cluster:
+## Connect to the cluster
 
 1.  To manage a Kubernetes cluster, you use **kubectl**, the Kubernetes command-line client. To install **kubectl** locally, use the az aks install-cli command, you need to specify the -install-location parameter with value "\~/.azure-kubectl/kubectl" (otherwise it will attempt to copy to a directory for which there are no permissions -known bug):
 
-    ```bash  
+    ```azurecli  
     az aks install-cli --install-location \~/.azure-kubectl/kubectl
     ```
 
@@ -195,7 +195,7 @@ The output from this operation will be in json format and contain a specificatio
 
 2.  To configure **kubectl** to connect to your Kubernetes cluster, use the `az aks get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use them.
 
-        ```bash  
+        ```azurecli  
         az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
         ```
 
@@ -271,10 +271,10 @@ At this point, your client machine is connected to the cluster and you can proce
 
 If you are deploying application images from a local ACR, you will need to store a secret in order for the Kubernetes cluster to have access to pull the images from the registry. To do this you will need to provide a Service Principal ID (SPN) and Secret, add the SPN as a contributor to the source registry and create the Kubernetes secret. You will also need to update your YAML file to reference the secret.
 
-### Command to add the Service principle as a contributor to the ACR. 
+### Command to add the service principle as a contributor to the ACR. 
 
 > [!NOTE]  
-> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Replace all \<\> items.
+> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Be sure to add the values for your system.
 
 ```powershell  
 # Modify for your environment. The ACR_NAME is the name of your Azure Container
@@ -293,11 +293,10 @@ az role assignment create --assignee $SERVICE_PRINCIPAL_ID --scope $ACR_REGISTRY
 
 ### Command to create the secret in Kubernetes
 
-Use the following command to add the secret to the Kubernetes cluster. Replace all \<\> items.
-
-.azure-kubectl/kubectl create secret docker-registry \<secret name\> \\
+Use the following command to add the secret to the Kubernetes cluster. Be sure to add the values for your system in the code snippets.
 
 ```bash
+.azure-kubectl/kubectl create secret docker-registry <secret name> \
 .azure-kubectl/kubectl create secret docker-registry <secret name> \
     --docker-server=<ACR container registry URL> \
     --docker-username=<Service Principal ID> \
@@ -425,7 +424,7 @@ After the deploying a cluster and connect to it to verify it was deployed as exp
 
 Another cluster management task is scaling a cluster. You can scale a cluster anytime after it has been created by using the az aks scale command. To scale the cluster from the initial 3 nodes to 4, run:
 
-```bash  
+```azurecli  
     az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 4
 ```
 
@@ -463,7 +462,7 @@ When the cluster has successfully scaled, the output will contain an "agentPoolP
 
 Once the previous operations have been performed, you can proceed to delete the cluster. Run:
 
-```bash
+```azurecli
 az aks delete --name MyManagedCluster --resource-group MyResourceGroup
 ```
 
@@ -473,7 +472,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
 
 1.  Follow the instructions in [this article](/azure/aks/configure-azure-cni) to plan the deployment using Azure CNI. For example, you could use the portal to create a VNet named "myAKSVnet" with IP range 192.168.0.0/16 with subnet "myAKSSubnet" and IP range 192.168.1.0/24 in a Resource Group named "myTest-rg". Then use the next step for the creation of the cluster.
 
-    ```bash
+    ```azurecli
     az network vnet create \
         --resource-group myTest-rg \
         --name myAKSVnet \
@@ -484,7 +483,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
 
 1.  Notice that the cluster command provided in the article works fine when deploying on Azure, to deploy to Azure Stack Hub you need to specify extra parameters as in the following example:
 
-    ```bash  
+    ```azurecli  
     az aks create  \
     --resource-group myTest-rg \
     --name aksvnet00 \
@@ -512,7 +511,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
 1.  Create a resource group
 
     ```azurecli
-        az group create --name myResourceGroup-Win --location \<your stamp location\>
+        az group create --name myResourceGroup-Win --location <your stamp location>
     ```
 
 2.  Create a Windows Azure Kubernete az login
@@ -554,7 +553,7 @@ If you are testing on a Connected stamp, you can connect your AKS cluster to Azu
 1.  Either follow the create cluster instructions above or use an existing cluster. Make sure it is and Ubuntu base cluster.
 2.  Follow the instructions [here](/azure/azure-arc/kubernetes/connect-cluster) to connect your cluster to Arc.
 
-## Use the AKS Portal to complete the following tasks
+## Use the AKS Portal
 
 In the AKS private preview the operations of cluster creation and scale are not yet available, these will come on a subsequent update to the preview.
 
@@ -562,34 +561,33 @@ In the AKS private preview the operations of cluster creation and scale are not 
 
 1.  In the Azure Stack tenant portal find the "All Services" blade and select "Kubernetes services"
 
-![Azure Stack tenant portal](media/aks-how-to-use/463b908e5098eec57a79441cb9670f89.png)
+    ![Azure Stack tenant portal](media/aks-how-to-use/463b908e5098eec57a79441cb9670f89.png)
 
 1.  Verify that all clusters that you have created appear in the "Kubernetes service" blade:
 
-![all clusters that you have created](media/aks-how-to-use/6134f1c8aa98eb9982ddda5baf9842a7.png)
+    ![all clusters that you have created](media/aks-how-to-use/6134f1c8aa98eb9982ddda5baf9842a7.png)
 
 1.  Verify that you can view the details of any of the clusters:
 
-![ details of any of the clusters](media/aks-how-to-use/02b3ba6fb22ca702f418a44da7425e78.png)
+    ![ details of any of the clusters](media/aks-how-to-use/02b3ba6fb22ca702f418a44da7425e78.png)
 
 ### Portal: Upgrade cluster
 
 1.  In the cluster's details blade click on the Upgrade blade and select the Kubernetes upgrade version to upgrade to and click save.
 
-![upgrade to and click save](media/aks-how-to-use/fe445aa3703ce83b4756e0b4f8104be0.png)
+    ![upgrade to and click save](media/aks-how-to-use/fe445aa3703ce83b4756e0b4f8104be0.png)
 
 1.  Verify the cluster was upgraded by checking the cluster details blade
 
-![upgraded by checking the cluster](media/aks-how-to-use/8ff6ecb80681fd99c46146299a59f381.png)
-
+    ![upgraded by checking the cluster](media/aks-how-to-use/8ff6ecb80681fd99c46146299a59f381.png)
 
 ### Portal: Delete cluster
 
 1.  In the overview blade for the AKS cluster, find and click the Delete button as in the image below.
 
-![Alt text for the ages.](media/aks-how-to-use/271da3fb9280806617518e68df4a0276.png)
+    ![Alt text for the ages.](media/aks-how-to-use/271da3fb9280806617518e68df4a0276.png)
 
-1.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern "\<…\>_clustername_location", if it is not found it was properly deleted.
+1.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern "<…>_clustername_location", if it is not found it was properly deleted.
 
 ## Troubleshooting
 
