@@ -100,8 +100,10 @@ In both scenarios, the stamps are under the control of the customer. Also, custo
 ### Users connecting to Azure Stack Hub using the CLI or PowerShell
 
 When you use the Azure CLI to connect to Azure, the CLI binary will default to using Azure Active Directory (Azure AD) for authentication and the global Azure Azure Resource Manager endpoint for APIs. You can use the same Azure CLI on Azure Stack Hub. But the user needs to explicitly connect to the Azure Stack Hub Azure Resource Manager endpoint and use either Azure AD or Active Directory Federated Services (AD FS) for authentication. The reason is that Azure Stack Hub is meant to work within enterprises, and they may choose AD FS in disconnected scenarios.
-    1.  For information on how to connect to Azure Stack Hub using either Azure AD or AD FS identities using PowerShell, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
-    2.  Use [this](azure-stack-version-profiles-azurecli2.md) one for connecting using Azure CLI with either Azure AD or AD FS identities.
+
+1.  For information on how to connect to Azure Stack Hub using either Azure AD or AD FS identities using PowerShell, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+
+2.  Use [this](azure-stack-version-profiles-azurecli2.md) one for connecting using Azure CLI with either Azure AD or AD FS identities.
 
 ### Supported platform features
 

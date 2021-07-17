@@ -15,7 +15,7 @@ ms.lastreviewed: 07/01/2021
 
 # Install and offer the Azure Kubernetes Service on Azure Stack Hub
 
-`Summary.`
+This topic walks you through setting up the Azure Kubernetes Service (AKS) resource provider for the users of your Azure Stack Hub. 
 
 ## Download AKS base Image
 
