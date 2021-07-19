@@ -33,7 +33,7 @@ When providing feedback and notes, take not of:
 
 1.  Go to **User Voice** to report the bug.
 2.  Provide description, repro steps, and description of expected behavior.
-3.  In some cases, we may ask you to collect Azure Stack Hub logs (a [support case](../operator/azure-stack-help-and-support-overview.md.) with the Microsoft Support team would be needed).
+3.  In some cases, we may ask you to collect Azure Stack Hub logs (a [support case](../operator/azure-stack-help-and-support-overview.md) with the Microsoft Support team would be needed).
 4.  In some cases we may ask you to collect Kubernetes logs ([instructions to collect logs](azure-stack-kubernetes-aks-engine-troubleshoot.md#collect-kubernetes-logs)).
 
 ## Provide feedback
