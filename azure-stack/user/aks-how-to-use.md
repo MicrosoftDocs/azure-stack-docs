@@ -112,9 +112,9 @@ az login -u "user@contoso.onmicrosoft.com" -p 'xxxxxxx' --tenant contoso.onmicro
 ```
 
 > [!NOTE]  
-> If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint is not trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md#export-the-azure-stack-hub-ca-root-certificate).
+> If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint is not trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md).
 > 
-> In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md#azure-ad-on-linux)
+> In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md)
 
 Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains.
 
@@ -195,9 +195,9 @@ You can find the find the global Azure instructions at [Deploy an Azure Kubernet
 
 2.  To configure **kubectl** to connect to your Kubernetes cluster, use the `az aks get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use them.
 
-        ```azurecli  
-        az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
-        ```
+    ```azurecli  
+    az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
+    ```
 
 3.  To verify the connection to your cluster, use the **kubectl** get command to return a list of the cluster nodes.
 

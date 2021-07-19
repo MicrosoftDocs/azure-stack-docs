@@ -93,10 +93,10 @@ In both scenarios, Azure Stack Hub is under the control of the customer. Also, c
     Your cloud operator can't access the Azure Stack Hub infrastructure without the authorization of a Microsoft support engineer. Accessing the privileged end point is only necessary when the information provided by alerts and logs is not sufficient to diagnose a problem or is needed to implement the mitigation steps. This step is authorized by Azure Stack Hub support engineer and carried out in collaboration with your cloud operator. For more information, see [Use the privileged endpoint in Azure Stack Hub](../operator/azure-stack-privileged-endpoint.md).
 3.  **All troubleshooting occurs through alerts that the system produces or through examining logs**
     - For information on monitoring and alerts, see [Monitor health and alerts in Azure Stack Hub](../operator/azure-stack-monitor-health.md).
-    - For information on how you can get help from Microsoft and collect logs (including AKS logs), see [Azure Stack Hub help and support](../azure-stack/operator/azure-stack-help-and-support-overview.md). Customers have three options to [collect logs](../azure-stack/operator/diagnostic-log-collection.md) depending on their requirements:
-        -   [Send logs proactively (recommended)](../azure-stack/operator/diagnostic-log-collection.md#send-logs-proactively)
-        -   [Send logs now](../azure-stack/operator/diagnostic-log-collection.md#send-logs-now)
-        -   [Save logs locally](../azure-stack/operator/diagnostic-log-collection.md#save-logs-locally)
+    - For information on how you can get help from Microsoft and collect logs (including AKS logs), see [Azure Stack Hub help and support](../operator/azure-stack-help-and-support-overview.md). Customers have three options to [collect logs](../operator/diagnostic-log-collection.md) depending on their requirements:
+        -   [Send logs proactively (recommended)](../operator/diagnostic-log-collection.md#send-logs-proactively)
+        -   [Send logs now](../operator/diagnostic-log-collection.md#send-logs-now)
+        -   [Save logs locally](../operator/diagnostic-log-collection.md#save-logs-locally)
 
 ### Connect to Azure Stack Hub using the CLI or PowerShell
 
