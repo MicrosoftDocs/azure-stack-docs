@@ -45,6 +45,14 @@ landingContent:
             url: deploy/validate.md 
 
   # Card
+  - title: Preview channel
+    linkLists:
+      - linkListType: whats-new
+        links:
+          - text: Join the Preview channel
+            url: manage/preview-channel.md
+
+  # Card
   - title: Manage storage
     linkLists:
       - linkListType: how-to-guide
@@ -86,18 +94,6 @@ landingContent:
           - text: Change languages
             url: manage/languages.md
 
- # Card
-  - title: Manage VMs
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Manage VMs with Windows Admin Center
-            url: manage/vm.md
-          - text: Manage VMs with PowerShell
-            url: manage/vm-powershell.md
-          - text: Set up VM affinity rules
-            url: manage/vm-affinity.md
-
   # Card
   - title: Azure Stack HCI concepts
     linkLists:
@@ -111,18 +107,24 @@ landingContent:
             url: concepts/updates.md
           - text: Choose drives
             url: concepts/choose-drives.md
-          - text: Drive symmetry considerations
-            url: concepts/drive-symmetry-considerations.md
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
             url: concepts/fault-tolerance.md
           - text: Security considerations
             url: concepts/security.md
-          - text: Storage pool cache
-            url: concepts/cache.md
-          - text: Cluster and storage pool quorum
-            url: concepts/quorum.md
+
+ # Card
+  - title: Manage VMs
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage VMs with Windows Admin Center
+            url: manage/vm.md
+          - text: Manage VMs with PowerShell
+            url: manage/vm-powershell.md
+          - text: Set up VM affinity rules
+            url: manage/vm-affinity.md
 
   # Card 
   - title: Connect to Azure
@@ -159,8 +161,6 @@ landingContent:
             url: concepts/software-load-balancer.md
           - text: RAS Gateway overview
             url: concepts/gateway-overview.md
-          - text: Route Reflector overview
-            url: concepts/route-reflector-overview.md
       - linkListType: how-to-guide
         links:
           - text: Deploy an SDN infrastructure
