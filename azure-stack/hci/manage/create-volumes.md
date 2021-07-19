@@ -4,7 +4,7 @@ description: How to create volumes on Azure Stack HCI and Windows Server cluster
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/16/2021
+ms.date: 07/19/2021
 ---
 
 # Create volumes on Azure Stack HCI and Windows Server clusters
@@ -143,7 +143,9 @@ Repeat as needed to create more than one volume.
 
 Nested resiliency only applies to two-server clusters running Azure Stack HCI or Windows Server 2019; you can't use nested resiliency if your cluster has three or more servers, or if your cluster runs Windows Server 2016. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes: choosing the resiliency type](../concepts/plan-volumes.md#choosing-the-resiliency-type).
 
-#### Create nested storage tiers
+#### Create nested storage tiers (Windows Server 2019 only)
+
+Windows Server 2019 requires you to create new storage tier templates using the `New-StorageTier` cmdlet before creating volumes. You only need to do this once, and then every new volume you create can reference these template. If you're running Windows Server 2022, Azure Stack HCI 21H2, or Azure Stack HCI 20H2, you can skip this step.
 
 To create a NestedMirror tier:
 
