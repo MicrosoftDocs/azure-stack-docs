@@ -94,18 +94,6 @@ landingContent:
           - text: Change languages
             url: manage/languages.md
 
- # Card
-  - title: Manage VMs
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Manage VMs with Windows Admin Center
-            url: manage/vm.md
-          - text: Manage VMs with PowerShell
-            url: manage/vm-powershell.md
-          - text: Set up VM affinity rules
-            url: manage/vm-affinity.md
-
   # Card
   - title: Azure Stack HCI concepts
     linkLists:
@@ -131,6 +119,18 @@ landingContent:
             url: concepts/cache.md
           - text: Cluster and storage pool quorum
             url: concepts/quorum.md
+
+ # Card
+  - title: Manage VMs
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage VMs with Windows Admin Center
+            url: manage/vm.md
+          - text: Manage VMs with PowerShell
+            url: manage/vm-powershell.md
+          - text: Set up VM affinity rules
+            url: manage/vm-affinity.md
 
   # Card 
   - title: Connect to Azure
