@@ -107,18 +107,12 @@ landingContent:
             url: concepts/updates.md
           - text: Choose drives
             url: concepts/choose-drives.md
-          - text: Drive symmetry considerations
-            url: concepts/drive-symmetry-considerations.md
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
             url: concepts/fault-tolerance.md
           - text: Security considerations
             url: concepts/security.md
-          - text: Storage pool cache
-            url: concepts/cache.md
-          - text: Cluster and storage pool quorum
-            url: concepts/quorum.md
 
  # Card
   - title: Manage VMs
