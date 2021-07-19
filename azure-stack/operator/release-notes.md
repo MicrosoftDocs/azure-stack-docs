@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/14/2021
+ms.date: 07/19/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -50,23 +50,23 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2107"
-## 2107 build reference
+::: moniker range="azs-2108"
+## 2108 build reference
 
-The Azure Stack Hub 2107 update build number is **1.2107.xx.xx**.
+The Azure Stack Hub 2108 update build number is **1.2108.xx.xx**.
 
 ### Update type
 
-The Azure Stack Hub 2107 update build type is **Full**.
+The Azure Stack Hub 2108 update build type is **Full**.
 
-The 2107 update has the following expected runtimes based on our internal testing:
+The 2108 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-20 hours
 - 8 nodes: 11-26 hours
 - 12 nodes: 14-32 hours
 - 16 nodes: 17-38 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2107 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2108 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -109,19 +109,19 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2107 update
+### Hotfix prerequisites: before applying the 2108 update
 
-The 2107 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
+The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
 - [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
 
-### After successfully applying the 2107 update
+### After successfully applying the 2108 update
 
-When you update to a new major version (for example, 1.2102.x to 1.2107.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2107, if any hotfixes for 2107 are subsequently released, you should install them:
+After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2107.
+- No Azure Stack Hub hotfix available for 2108.
 ::: moniker-end
 
 ::: moniker range="azs-2102"
