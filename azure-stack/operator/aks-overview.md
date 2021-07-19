@@ -3,7 +3,7 @@ title: Azure Kubernetes Service on Azure Stack Hub overview
 description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 07/20/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 07/01/2021
@@ -14,19 +14,19 @@ ms.lastreviewed: 07/01/2021
 
 # Azure Kubernetes Service on Azure Stack Hub overview
 
-Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters in Azure Stack Hub. AKSreduces the complexity and operational overhead of managing Kubernetes clusters. As a hosted Kubernetes service, Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance of clusters. The Azure Stack team manages the image used for maintaining the clusters. The cluster tenant administrator will only need to apply the updates as needed. The services come at no extra cost. AKSis free: you only pay to use the VMs (master and agent nodes) within your clusters.
+Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters in Azure Stack Hub. AKS reduces the complexity and operational overhead of managing Kubernetes clusters. As a hosted Kubernetes service, Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance of clusters. The Azure Stack team manages the image used for maintaining the clusters. The cluster tenant administrator will only need to apply the updates as needed. The services come at no extra cost. AKSis free: you only pay to use the VMs (master and agent nodes) within your clusters.
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on Azure Stack Hub is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-## What is Azure Kubernetes Service on Azure Stack Hub?
+## What is AKS on Azure Stack Hub?
 
 To make AKS available to your users, you will need to:
 
 1.  Download the AKS base images from Azure.
-2.  Create Plans and Offers for tenants to create subscriptions with the AKS Service.
-3.  Monitor the AKSand act on alerts.
+2.  Create Plans and Offers for tenants to create subscriptions with the AKS.
+3.  Monitor the AKS and act on alerts.
 
 ## Pre-Requisites
 
@@ -37,10 +37,10 @@ To make AKS available to your users, you will need to:
 
 The following tasks fall on the **Azure Stack Hub Operator**:
 
-1.  Make sure that the Azure Kubernetes Service base images are available in the stamp, this includes downloading them from Azure.
-2.  Make sure that the Azure Kubernetes Service is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
-3.  Monitor the Azure Kubernetes Service and act on any alert and associated remediation.
-4.  For details on the Operator tasks see \<TODO: Link to Operator doc\>
+1.  Make sure that the AKS base images are available in the stamp, this includes downloading them from Azure.
+2.  Make sure that the AKS is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
+3.  Monitor the AKS and act on any alert and associated remediation.
+4.  For details on the Operator tasks see [Install and offer the Azure Kubernetes Service on Azure Stack Hub](aks-add-on.md)
 
 ## Next steps
 

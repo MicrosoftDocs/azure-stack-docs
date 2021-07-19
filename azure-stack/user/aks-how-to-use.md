@@ -50,7 +50,7 @@ After you have installed Azure CLI with AKS support, verify that the installatio
 ```
 This is the output from a Linux machine:
 
-![output from a Linux machine](media/aks-how-to-use/eac6ff4c6c162c00be6188f1b34e6454.png)
+![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 ### [Other Linux](#tab/linux)
 
 For other Linux machines, down and install from https://azurecliprod.blob.core.windows.net/devops-edge/azurestack-aks/azure-cli_xenial_all.deb.
@@ -63,7 +63,7 @@ After you have installed Azure CLI with AKS support, verify that the installatio
 
 This is the output from a Linux machine:
 
-![output from a Linux machine](media/aks-how-to-use/eac6ff4c6c162c00be6188f1b34e6454.png)
+![more output a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 
 ### [Windows](#tab/windows)
 
@@ -77,7 +77,7 @@ After you have installed Azure CLI with AKS support, verify that the installatio
 
 The following output should be produced in a windows machine:
 
-![produced in a windows machine](media/aks-how-to-use/63ed87bd670f80e79795acaa513b6288.png)
+![produced in a windows machine](media/aks-how-to-use/produced-in-a-windows-machine.png)
 
 ---
 
@@ -118,9 +118,9 @@ az login -u "user@contoso.onmicrosoft.com" -p 'xxxxxxx' --tenant contoso.onmicro
 
 Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains.
 
-![subscription ID and resource providers](media/aks-how-to-use/32207e4a9825eefec5990392c8fed2ce.png)
+![subscription ID and resource providers](media/aks-how-to-use/subscription-id-and-resource-providers.png)
 
-![your Azure CLI session](media/aks-how-to-use/6db219f10a214764da4abe91c2097533.png)
+![your Azure CLI session](media/aks-how-to-use/your-azure-cli-session.png)
 
 Set the subscription in your Azure CLI session as the default with:
 
@@ -136,7 +136,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 
 The output should look like:
 
-![The output should look like](media/aks-how-to-use/a8fc9e2341cc67644af1eed32f374bf6.png)
+![The output should look like](media/aks-how-to-use/example-of-output.png)
 
 Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
 
@@ -205,7 +205,7 @@ You can find the find the global Azure instructions at [Deploy an Azure Kubernet
     .azure-kubectl/kubectl get nodes
     ```
 
-![verify the connection to your cluster](media/aks-how-to-use/9a031505db6591ac87742d89904daeb9.png)
+![verify the connection to your cluster](media/aks-how-to-use/verify-the-connection-to-your-cluster.png)
 
 ## Deploy test applications
 
@@ -561,31 +561,31 @@ In the AKS private preview the operations of cluster creation and scale are not 
 
 1.  In the Azure Stack tenant portal find the "All Services" blade and select "Kubernetes services"
 
-    ![Azure Stack tenant portal](media/aks-how-to-use/463b908e5098eec57a79441cb9670f89.png)
+    ![Azure Stack tenant portal](media/aks-how-to-use/azure-stack-tenant-portal.png)
 
 1.  Verify that all clusters that you have created appear in the "Kubernetes service" blade:
 
-    ![all clusters that you have created](media/aks-how-to-use/6134f1c8aa98eb9982ddda5baf9842a7.png)
+    ![all clusters that you have created](media/aks-how-to-use/all-clusters-that-you-have-created.png)
 
 1.  Verify that you can view the details of any of the clusters:
 
-    ![ details of any of the clusters](media/aks-how-to-use/02b3ba6fb22ca702f418a44da7425e78.png)
+    ![details of any of the clusters](media/aks-how-to-use/details-of-any-of-the-clusters.png)
 
 ### Portal: Upgrade cluster
 
-1.  In the cluster's details blade click on the Upgrade blade and select the Kubernetes upgrade version to upgrade to and click save.
+1.  In the cluster's details blade select **Upgrade** and select the Kubernetes upgrade version to upgrade to and select save.
 
-    ![upgrade to and click save](media/aks-how-to-use/fe445aa3703ce83b4756e0b4f8104be0.png)
+    ![upgrade to and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
 
 1.  Verify the cluster was upgraded by checking the cluster details blade
 
-    ![upgraded by checking the cluster](media/aks-how-to-use/8ff6ecb80681fd99c46146299a59f381.png)
+    ![upgraded by checking the cluster](media/aks-how-to-use/upgraded-by-checking-the-cluster.png)
 
 ### Portal: Delete cluster
 
-1.  In the overview blade for the AKS cluster, find and click the Delete button as in the image below.
+1.  In the overview blade for the AKS cluster, find and select **Delete** as in the image below.
 
-    ![Alt text for the ages.](media/aks-how-to-use/271da3fb9280806617518e68df4a0276.png)
+    ![overview of the AKS cluster](media/aks-how-to-use/overview-of-the-aks-cluster.png)
 
 1.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern "<…>_clustername_location", if it is not found it was properly deleted.
 
