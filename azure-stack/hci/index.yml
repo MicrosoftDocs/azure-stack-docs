@@ -29,6 +29,10 @@ landingContent:
             url: get-started.md
           - text: Create an Azure Stack HCI cluster
             url: deploy/deployment-quickstart.md
+      - linkListType: whats-new
+        links:
+          - text: Join the Preview channel
+            url: manage/preview-channel.md
 
   # Card 
   - title: Deploy Azure Stack HCI
@@ -42,15 +46,7 @@ landingContent:
           - text: 3. Register with Azure
             url: deploy/register-with-azure.md
           - text: 4. Validate a cluster
-            url: deploy/validate.md 
-
-  # Card
-  - title: Preview channel
-    linkLists:
-      - linkListType: whats-new
-        links:
-          - text: Join the Preview channel
-            url: manage/preview-channel.md
+            url: deploy/validate.md
 
   # Card
   - title: Manage storage
