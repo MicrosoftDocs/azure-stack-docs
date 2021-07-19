@@ -45,6 +45,14 @@ landingContent:
             url: deploy/validate.md 
 
   # Card
+  - title: Preview channel
+    linkLists:
+      - linkListType: whats-new
+        links:
+          - text: Join the Preview channel
+            url: manage/preview-channel.md
+
+  # Card
   - title: Manage storage
     linkLists:
       - linkListType: how-to-guide
