@@ -35,15 +35,13 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Deploy the Azure Stack HCI OS
+          - text: 1. Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
-          - text: Create a cluster
+          - text: 2. Create a cluster
             url: deploy/create-cluster.md
-          - text: Setup a cluster witness
-            url: manage/witness.md
-          - text: Register with Azure
+          - text: 3. Register with Azure
             url: deploy/register-with-azure.md
-          - text: Validate a cluster
+          - text: 4. Validate a cluster
             url: deploy/validate.md 
 
   # Card
