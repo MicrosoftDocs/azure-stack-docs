@@ -150,6 +150,12 @@ Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm
    >[!NOTE]
    > Using the **Proxy** setting in Windows Admin Center redirects all Windows Admin Center outbound traffic (for example, download extensions, connecting to Azure and so on).
 
+### Traffic types
+Azure does not accept traffic modified by a proxy or TLS/SSL intercepted traffic.
+
+   >[!IMPORTANT]
+   > SSL traffic interception is not supported and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60 sec with 3 retry attempts. For more related information, see the [SSL interception](https://docs.microsoft.com/azure-stack/operator/azure-stack-firewall?view=azs-2102#ssl-interception) section of Azure Stack Hub firewall integration.
+
 ## Network port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
