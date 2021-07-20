@@ -80,7 +80,7 @@ If your outbound firewall is restricted, then we recommend adding the following 
 | TCP to support Azure Arc agents                          | `git://:9418`                     | 9,418   | Outbound  |
 | PowerShell Gallery central repository                    | `*.powershellgallery.com`         | 80,443  | Outbound  |
 | Web-hosting platform that supports multiple technologies | `*.azurewebsites.net`             | 443     | Outbound  |
-| Contenet Delivery Network (CDN) downloads                | `*.msecnd.net`                    | 443     | Outbound  |
+| Content Delivery Network (CDN) downloads                 | `*.msecnd.net`                    | 443     | Outbound  |
 
 For more information about these connectivity recommendations and others, see the following resources:
 - [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
