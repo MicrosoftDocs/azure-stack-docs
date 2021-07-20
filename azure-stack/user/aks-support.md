@@ -42,7 +42,7 @@ Use the links below to submit your feedback:
 
 1.  To report a security vulnerability, go to [https://msrc.**microsoft**.com/create-**report**](https://msrc.microsoft.com/create-report).
 2.  To send a suggestion, go to **User Voice**.
-3.  To add documentation feedback, select **Feeback** on the document page.
+3.  To add documentation feedback, select **Feedback** on the document page.
 
 ## Not included in the preview
 
