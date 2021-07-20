@@ -54,6 +54,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ### Identity -->
 
 <!-- ### Marketplace -->
+
+## Event Hubs
+
+[!INCLUDE [event hubs secret rotation related issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
+
 ::: moniker-end
 
 ::: moniker range="azs-2102"
