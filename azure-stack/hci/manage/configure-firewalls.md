@@ -154,7 +154,7 @@ Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm
 Azure does not accept traffic modified by a proxy or TLS/SSL intercepted traffic.
 
    >[!IMPORTANT]
-   > SSL traffic interception is not supported and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60 sec with 3 retry attempts. For more related information, see the [SSL interception](/azure-stack/operator/azure-stack-firewall?view=azs-2102#ssl-interception&preserve-view=true) section of Azure Stack Hub firewall integration.
+   > SSL traffic interception is not supported and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60 sec with 3 retry attempts. For more related information, see [Azure Stack Hub firewall integration](/azure-stack/operator/azure-stack-firewall?view=azs-2102#ssl-interception&preserve-view=true).
 
 ## Network port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
