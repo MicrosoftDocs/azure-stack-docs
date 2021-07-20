@@ -18,7 +18,7 @@ The following commands are supported for the Azure Kubernetes Service (AKS) on A
 
 ## Supported and unsupported commands
 
-|     Command     |     Description     |     Supported     |     Supported Parameters    |
+|     Command     |     Description     |     Supported     |     Supported parameters    |
 |---|---|---|---|
 |     [az aks browse](/cli/azure/aks?view=azure-cli-latest#az_aks_browse)     |     Show   the dashboard for a Kubernetes cluster in a web browser.     |     Yes     |     All    |
 |     [az aks create](/cli/azure/aks?view=azure-cli-latest#az_aks_create)     |     Create a new   managed Kubernetes cluster. Notice that the parameter `--attach-acr` is   not supported.     |     Yes     | [See supported parameters](#az-aks-create) |
@@ -28,7 +28,7 @@ The following commands are supported for the Azure Kubernetes Service (AKS) on A
 |     [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials)     |     Get access   credentials for a managed Kubernetes cluster.     |     Yes     |          |
 |     [az aks get-upgrades](/cli/azure/aks?view=azure-cli-latest#az_aks_get_upgrades)     |     Get   the upgrade versions available for a managed Kubernetes cluster.     |     Yes     |          |
 |     [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions)     |     Get the   versions available for creating a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli)     |     Download   and install kubectl, the Kubernetes command-line tool. Download and   install kubelogin, a client-go credential (exec) plugin implementing   azure authentication.     |     Yes     |          |
+|     [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli)     |     Download   and install kubectl, the Kubernetes command-line tool. Download and   install kubelogin, a client-go credential (exec) plugin implementing   Azure authentication.     |     Yes     |          |
 |     [az aks kollect](/cli/azure/aks?view=azure-cli-latest#az_aks_kollect)          |     Collecting   diagnostic information for the Kubernetes cluster.    |     No    |          |
 |     [az aks kanalyze](/cli/azure/aks?view=azure-cli-latest#az_aks_kanalyze)          |     Display diagnostic results for the Kubernetes cluster after kollect is   done.    |     No    |          |
 |     [az aks list](/cli/azure/aks?view=azure-cli-latest#az_aks_list)     |     List managed   Kubernetes clusters.     |     Yes     |          |

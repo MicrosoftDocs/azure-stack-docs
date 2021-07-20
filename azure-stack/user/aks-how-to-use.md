@@ -81,72 +81,70 @@ The following output should be produced in a windows machine:
 
 ---
 
-Connect to your Azure Stack Hub endpoint. You need to use Azure CLI to establish the specific Azure Stack Hub environment tp which you are connecting. You can find the instructions at [Connect to Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2?view=azs-2005#connect-to-azure-stack-hub)
+1. Connect to your Azure Stack Hub endpoint. You need to use Azure CLI to establish the specific Azure Stack Hub environment tp which you are connecting. You can find the instructions at [Connect to Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2?view=azs-2005#connect-to-azure-stack-hub)
 
-Register your environment so that Azure CLI can connect to the Azure Stack Hub Resource Manager endpoint for your instance. Update the URLs in the following snippet and run the following command:
+2. Register your environment so that Azure CLI can connect to the Azure Stack Hub Resource Manager endpoint for your instance. Update the URLs in the following snippet and run the following command:
 
-```azurecli  
-az cloud register \
-    -n aks-preview-test \
-    --endpoint-resource-manager "https://management.redmond.xbx.nxn.microsoft.com" \
-    --suffix-storage-endpoint "redmond.xbx.nxn.microsoft.com" \
-    --suffix-keyvault-dns ".vault.redmond.xbx.nxn.microsoft.com"
-```
+    ```azurecli  
+    az cloud register \
+        -n aks-preview-test \
+        --endpoint-resource-manager "https://management.redmond.xbx.nxn.microsoft.com" \
+        --suffix-storage-endpoint "redmond.xbx.nxn.microsoft.com" \
+        --suffix-keyvault-dns ".vault.redmond.xbx.nxn.microsoft.com"
+    ```
 
-Set the active environment.
+3. Set the active environment.
 
-```azurecli  
-az cloud set -n aks-preview-testaz
-```
+    ```azurecli  
+    az cloud set -n aks-preview-testaz
+    ```
 
-Update your environment configuration.
+4. Update your environment configuration.
 
-```azurecli  
-az cloud update --profile 2019-03-01-hybrid
-```
+    ```azurecli  
+    az cloud update --profile 2019-03-01-hybrid
+    ```
 
-Connect to the environment.
+5. Connect to the environment.
 
-```azurecli  
-az login -u "user@contoso.onmicrosoft.com" -p 'xxxxxxx' --tenant contoso.onmicrosoft.com
-```
+    ```azurecli  
+    az login -u "user@contoso.onmicrosoft.com" -p 'xxxxxxx' --tenant contoso.onmicrosoft.com
+    ```
 
-> [!NOTE]  
-> If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint is not trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md).
-> 
-> In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md)
+    > [!NOTE]  
+    > If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint is not trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md).
+    > 
+    > In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md)
 
-Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains.
+6. Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains.
 
-![subscription ID and resource providers](media/aks-how-to-use/subscription-id-and-resource-providers.png)
+    ![subscription ID and resource providers](media/aks-how-to-use/subscription-id-and-resource-providers.png)
 
-![your Azure CLI session](media/aks-how-to-use/your-azure-cli-session.png)
+    ![your Azure CLI session](media/aks-how-to-use/your-azure-cli-session.png)
 
-Set the subscription in your Azure CLI session as the default with:
+7. Set the subscription in your Azure CLI session as the default with:
 
-```azurecli  
-az account set --subscription <subscription-id>
-```
+    ```azurecli  
+    az account set --subscription <subscription-id>
+    ```
 
-Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
+8. Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
 
-```azurecli  
-az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
-```
+    ```azurecli  
+    az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+    ```
 
-The output should look like:
+    The output should look like:
 
-![The output should look like](media/aks-how-to-use/example-of-output.png)
+    ![The output should look like](media/aks-how-to-use/example-of-output.png)
 
-Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
+9. Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
 
-```azurecli  
-az provider register --namespace Microsoft.ContainerService
-```
+    ```azurecli  
+    az provider register --namespace Microsoft.ContainerService
+    ```
 
 Once those prerequisite steps are completed, you can proceed to test the following scenarios.
-
-
 
 ## Create an Ubuntu AKS cluster
 
@@ -555,7 +553,7 @@ If you are testing on a Connected stamp, you can connect your AKS cluster to Azu
 
 ## Use the AKS Portal
 
-In the AKS private preview the operations of cluster creation and scale are not yet available, these will come on a subsequent update to the preview.
+You can use the AKS portal to discover available AKS cluster, upgrade your cluster, and remove your cluster.
 
 ### Portal: Discover available AKS clusters
 
