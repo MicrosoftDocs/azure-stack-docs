@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2021
+ms.date: 07/20/2021
 ms.author: wamota
 ms.reviewer: wamota
 ms.lastreviewed: 10/14/2020
@@ -20,7 +20,7 @@ ms.lastreviewed: 10/14/2020
 
 # Azure Stack Hub ruggedized site readiness
 
-This topic covers environmental and PDU power drop requirements for the Azure Stack Hub ruggedized. 
+This topic covers environmental and PDU power drop requirements for the Azure Stack Hub ruggedized.
 
 >[!NOTE]
 >These values are intended solely for facility planning purposes and are approximate and conservative. Actual requirements may vary.
@@ -33,7 +33,7 @@ The table below lists the environmental requirements for an Azure Stack Hub rugg
 - 200 volt AC input voltage
 - 35°C maximum ambient temperature
 
-*Table 1. High/low configuration environmental requirements*
+*Table 1. Configuration environmental requirements*
 
 | Object                         | Azure Stack Hub ruggedized requirements               |
 |--------------------------------|--------------------------------|
@@ -50,9 +50,9 @@ The following table lists the power drops required for Azure Stack Hub ruggedize
 
 *Table 2. Required number of power drops*
 
-| Configuration  | Single phase  | Three-phase Delta |Three-phase Wye |
-|----------------|---------------|-------------------|----------------|
-|High/low        | 2             | 2                 | 2              |
+| Single phase  | Three-phase Delta |Three-phase Wye |
+|---------------|-------------------|----------------|
+| 2             | 2                 | 2              |
 
 The Azure Stack integrated system enables you to use different PDU connector types to best integrate into your datacenter. The table below lists the connector types:
 
