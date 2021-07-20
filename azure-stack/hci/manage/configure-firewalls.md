@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 07/21/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -80,7 +80,7 @@ If your outbound firewall is restricted, then we recommend adding the following 
 | TCP to support Azure Arc agents                          | `git://:9418`                     | 9,418   | Outbound  |
 | PowerShell Gallery central repository                    | `*.powershellgallery.com`         | 80,443  | Outbound  |
 | Web-hosting platform that supports multiple technologies | `*.azurewebsites.net`             | 443     | Outbound  |
-| tbd tbd tbd tbd tbd tbd tbd tbd    | `*.msecnd.net`                    | 443     | Outbound  |
+| Contenet Delivery Network (CDN) downloads                | `*.msecnd.net`                    | 443     | Outbound  |
 
 For more information about these connectivity recommendations and others, see the following resources:
 - [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
