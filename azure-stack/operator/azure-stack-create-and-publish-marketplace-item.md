@@ -3,7 +3,7 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/26/2021
+ms.date: 07/19/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 04/26/2021
@@ -37,7 +37,7 @@ To create a custom marketplace item, do the following:
 
    :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/samples-tool.png" alt-text="Gallery packager":::
 
-2. The tool includes sample packages that are in the .azpk format, and must be extracted first. You can rename the file extensions from ".azpk" to ".zip," or use an archiver tool of your choice:
+2. The tool includes sample packages that are in the .azpkg format, and must be extracted first. You can rename the file extensions from ".azpkg" to ".zip," or use an archiver tool of your choice:
 
    :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/sample-packages.png" alt-text="Samples packages":::
 
