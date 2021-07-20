@@ -54,6 +54,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ### Identity -->
 
 <!-- ### Marketplace -->
+
+## Event Hubs
+
+Secret expiration does not trigger administrative alerts, and failure to do so can result in one or more more known issues as listed below. It is *critical* that you **proactively rotate secrets after completing an install/update to a new release, and regularly, ideally every 6 months.** 
+
+[!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-secret-rotation-related-known-issues.md)]
+
 ::: moniker-end
 
 ::: moniker range="azs-2102"
