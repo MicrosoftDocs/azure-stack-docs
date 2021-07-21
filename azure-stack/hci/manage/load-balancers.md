@@ -166,7 +166,7 @@ A health probe is used by the load balancer to determine the health state of the
 1. Under **Load Balancers**, select the **Inventory** tab, and click on the load balancer for which you want to add the health probe.
 1. In the **Health Probes** section, click **New**.
 1. Under **New Health Probe**, enter a name.
-1. Select a protocol. Accepted values are TCP, and HTTP. If **TCP** is specified, a received acknowledgement (ACK) is required for the probe to be successful. If HTTP is specified, a 200 (OK) response from the specified URI is required for the probe to be successful.
+1. Select a protocol. Accepted values are TCP, and HTTP. If **TCP** is specified, a received acknowledgment (ACK) is required for the probe to be successful. If HTTP is specified, a 200 (OK) response from the specified URI is required for the probe to be successful.
 1. Provide value for **Port**. This is the port for communicating with the probe. Possible values range from 1 to 65535, inclusive.
 1. If the protocol is **HTTP**, provide a **Request Path URI**. This is the URI path in the backend VM that will be queried to get the health status of the VM.
 1. Provide the **Interval** in seconds. This indicates how frequently to probe the endpoint for health status.
@@ -180,7 +180,7 @@ You can view detailed information for a specific load balancer from its dedicate
 :::image type="content" source="media/software-load-balancer/load-balancer-details.png" alt-text="View SLB details" lightbox="media/software-load-balancer/load-balancer-details.png":::
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Load Balancers**.
-1. Select the **Inventory** tab on the right, then select a load lalancer. On the subsequent page, you can do the following:
+1. Select the **Inventory** tab on the right, then select a load balancer. On the subsequent page, you can do the following:
     - View the details of the load balancer
     - View, add, change, or remove a front IP configuration
     - View, add, change, or remove a backend pool
