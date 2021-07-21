@@ -3,10 +3,10 @@ title: Azure Container Registry on Azure Stack Hub overview
 description: Learn the differences between Azure Container Registry on Azure and Azure Container Registry on Azure Stack Hub
 author: mattbriggs
 ms.topic: article
-ms.date: 6/1/2021
+ms.date: 08/20/2021
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 6/1/2021
+ms.lastreviewed: 08/20/2021
 
 # Intent: As an Azure Stack user, I want to XXX so I can XXX.
 # Keyword: XXX
@@ -22,6 +22,8 @@ ACR on Azure Stack Hub allows users to store and retrieve OCI images, assign rol
 > [!IMPORTANT]
 > Azure Container Registry on Azure Stack Hub is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
+While a public preview, the Azure Container Registry on Azure Stack Hub can be used without charge.
 
 ## Why offer ACR on Azure Stack Hub?
 
