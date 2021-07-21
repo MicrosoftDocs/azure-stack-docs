@@ -128,6 +128,8 @@
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage software load balancers
+      href: manage/load-balancers.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
