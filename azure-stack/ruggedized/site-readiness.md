@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Hub ruggedized site readiness for Azure Stack Hub | Microsoft Docs
-description: Learn site readiness specifications for a Azure Stack Hub ruggedized  .
+description: Learn site readiness specifications for an Azure Stack Hub ruggedized.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2021
+ms.date: 07/21/2021
 ms.author: wamota
 ms.reviewer: wamota
 ms.lastreviewed: 10/14/2020
@@ -29,8 +29,8 @@ This topic covers environmental and PDU power drop requirements for the Azure St
 
 The table below lists the environmental requirements for an Azure Stack Hub ruggedized solution with the following configuration:
 
-- 14 TB scale unit
-- 200 volt AC input voltage
+- 14-TB scale unit
+- 200-volt AC input voltage
 - 35°C maximum ambient temperature
 
 *Table 1. Configuration environmental requirements*
@@ -38,9 +38,9 @@ The table below lists the environmental requirements for an Azure Stack Hub rugg
 | Object                         | Azure Stack Hub ruggedized requirements               |
 |--------------------------------|--------------------------------|
 |Operating temperature           | Azure Stack Hub ruggedized operating temperature (with heater requirements): -32°C (-25.6°F) to 43°C (109°F).    |
-|Humidity and moisture           | Storage: 5% to 95% RH with 33°C (91°F) maximum dew point. Atmosphere must be non-condensing at all times. <br> Operating: 5% to 85% RH with 29°C (84.2°F) maximum dew point.
+|Humidity and moisture           | Storage: 5% to 95% RH with 33°C (91°F) maximum dew point. Atmosphere must be non-condensing always. <br> Operating: 5% to 85% RH with 29°C (84.2°F) maximum dew point.
 |Physical connectivity           | Azure Stack Hub ruggedized can be physically connected via the following: <br>4x10G SR SFP+ <br>4x1000BASE-SX <br>4x 1000BASE-T
-|Power input                     | Max 4.981 Kw, Avg 4.391 KW<br> Input Connector C13/C14<br> Input: 100-240V 50/60Hz
+|Power input                     | Max 4.981 Kw, Avg 4.391 KW<br> Input Connector C13/C14<br> Input: 100-240 V 50/60Hz
 
 ## PDU power drop requirements
 
