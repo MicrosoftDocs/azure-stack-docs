@@ -28,6 +28,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [get-akshcieventlog](get-akshcieventlog.md) | Gets all the event logs from the AKS HCI PowerShell module. |
 | [get-akshcikubernetesversion](get-akshcikubernetesversion.md) | List available version for creating managed Kubernetes cluster. |
 | [get-akshcilogs](get-akshcilogs.md) | Create a zipped folder with logs from all your pods. |
+| [get-akshcinodepool](get-akshcinodepool.md) | List the node pools in a Kubernetes cluster. |
 | [get-akshciproxysetting](get-akshciproxysetting.md) | Retrieve a list or an individual proxy settings object. |
 | [get-akshciregistration](get-akshciregistration.md) | Get registration information for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [get-akshcistoragecontainer](get-akshcistoragecontainer.md) | Get the information of the specified storage container. |
@@ -44,6 +45,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [new-akshcicluster](new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [new-akshciclusternetwork](new-akshciclusternetwork.md) | Create an object for a new virtual network. |
 | [new-akshcinetworksetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
+| [new-akshcinodepool](new-akshcinodepool.md) | Create a new node pool to an existing cluster. |
 | [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
@@ -57,10 +59,12 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshcigmsacredentialspec](remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [remove-akshcinode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [repair-akshciclustercerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
+| [remove-akshcinodepool](remove-akshcinodepool.md) | Delete a node pool from a cluster. |
 | [repair-akshcicerts](repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host. |
 | [restart-akshci](restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [set-akshcicluster](set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [set-akshciconfig](set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
+| [set-akshcinodepool](set-akshcinodepool.md) | Scale a node pool within a Kubernetes cluster. |
 | [set-akshciregistration](set-akshciregistration.md) | Register Azure Kubernetes Service on Azure Stack HCI with Azure. |
 | [sync-akshcibilling](sync-akshcibilling.md) | Manually trigger a billing records sync. |
 | [uninstall-akshci](uninstall-akshci.md) | Remove Azure Kubernetes Service on Azure Stack HCI. |

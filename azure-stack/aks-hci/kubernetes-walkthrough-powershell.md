@@ -3,7 +3,7 @@ title: Quickstart to set up an Azure Kubernetes Service host and create AKS on A
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 05/25/2021
+ms.date: 07/21/2021
 ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
@@ -145,10 +145,10 @@ Install-AksHci
 
 ## Step 6: Create a Kubernetes cluster
 
-After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command.
+After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, please visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
 
 ```powershell
-New-AksHciCluster -name mycluster
+New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType Linux
 ```
 
 ### Check your deployed clusters
@@ -160,11 +160,31 @@ Get-AksHciCluster
 ```
 ```output
 ProvisioningState     : provisioned
-KubernetesVersion     : v1.19.7
-Name                  : mycluster
+KubernetesVersion     : v1.20.7
+NodePools             : linuxnodepool
+WindowsNodeCount      : 0
+LinuxNodeCount        : 0
 ControlPlaneNodeCount : 1
-WindowsNodeCount      : 1
-LinuxNodeCount        : 1
+Name                  : mycluster
+```
+
+> [!NOTE]
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
+
+To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](get-akshcinodepool.md) PowerShell command.
+
+```powershell
+Get-AksHciNodePool -clusterName mycluster
+```
+
+```output
+ClusterName  : mycluster
+NodePoolName : linuxnodepool
+Version      : v1.20.7
+OsType       : Linux
+NodeCount    : 1
+VmSize       : Standard_K8S3_v1
+Phase        : Deployed
 ```
 
 ## Step 7: Connect your cluster to Arc enabled Kubernetes
@@ -178,7 +198,7 @@ Enable-AksHciArcConnection -name mycluster
 
 ## Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes, Linux worker nodes, or Windows worker nodes using the [Set-AksHciCluster](./set-akshcicluster.md) command.
+If you need to scale your cluster up or down, you can change the number of control plane nodes using the [Set-AksHciCluster](./set-akshcicluster.md) command, and you can change the number of Linux or Windows worker nodes in your node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 To scale control plane nodes, run the following command.
 
@@ -186,13 +206,12 @@ To scale control plane nodes, run the following command.
 Set-AksHciCluster –name mycluster -controlPlaneNodeCount 3
 ```
 
-To scale the worker nodes, run the following command.
+To scale the worker nodes in your node pool, run the following command.
 
 ```powershell
-Set-AksHciCluster –name mycluster -linuxNodeCount 3 -windowsNodeCount 1
+Set-AksHciNodePool –clusterName mycluster -name linuxnodepool -count 3
 ```
 
-The control plane nodes and the worker nodes must be scaled independently.
 
 ## Access your clusters using kubectl
 

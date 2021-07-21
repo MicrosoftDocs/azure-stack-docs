@@ -14,11 +14,11 @@ Retrieve a list or an individual proxy settings object.
 
 ## Syntax
 ```powershell
-Get-AksHciProxySetting [-name <String>]
+Get-AksHciProxySetting 
 ```
 
 ## Description
-If no name is specified `Get-AksHciProxySetting` will return a list of all proxy settings objects known to the AKS-HCI host.
+ Returns a list of all proxy settings objects known to the AKS-HCI host.
 
 > [!NOTE]
 > Only one settings object can be defined and active at this point.
@@ -48,21 +48,4 @@ proxyServerCredential: {PSCredential}
 proxyServerCertFile: 
 ```
 
-## Parameters
-
-### -name
-
-The alphanumeric name of your proxy setting
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
