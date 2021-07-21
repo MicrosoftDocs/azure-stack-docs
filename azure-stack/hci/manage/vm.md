@@ -3,7 +3,7 @@ title: Manage VMs with Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: v-dasis
 ms.topic: how-to
-ms.date: 06/04/2021
+ms.date: 07/21/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -255,6 +255,10 @@ Instead of using Windows Admin Center, you can also manage your VMs through a Hy
 You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises VMs to Azure. This is an optional value-add service. To get started, see [Protect VMs using Azure Site Recovery](azure-site-recovery.md).
 
 :::image type="content" source="media/manage-vm/vm-more-azure.png" alt-text="Setup Azure Site Recovery screen" lightbox="media/manage-vm/vm-more-azure.png":::
+
+## Remove a VM and resources
+
+To remove VM and it's resources, see [Remove a VM](vm-powershell.md#remove-a-vm).
 
 ## Next steps
 

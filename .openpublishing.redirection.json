@@ -71,7 +71,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/azure-stack-create-service-principals.md", 
-      "redirect_url": "/azure-stack/operator/give-app-access-to-resources", 
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal", 
       "redirect_document_id": false
     },
     { 
@@ -707,7 +707,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-create-service-principals.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-create-service-principals",
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal",
       "redirect_document_id": false
     },
     {
@@ -824,6 +824,11 @@
       "source_path": "azure-stack/hci/concepts/persistent-memory-direct-access.md", 
       "redirect_url": "/windows-server/storage/storage-spaces/persistent-memory-direct-access", 
       "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/deployment-overview.md", 
+      "redirect_url": "/azure-stack/hci/deploy/operating-system", 
+      "redirect_document_id": true
     }
   ]
 }
