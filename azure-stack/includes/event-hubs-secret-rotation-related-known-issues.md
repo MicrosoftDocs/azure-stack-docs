@@ -20,7 +20,7 @@ ms.lastreviewed: 07/22/2021
 - Cause: Internal infrastructure secrets may be nearing expiration.
 - Remediation: Update to the latest Event Hubs on Azure Stack Hub release, then complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](../operator/event-hubs-rp-rotate-secrets.md).
 
-### Data plane clusters health isn't getting updated in admin portal or scale-out of clusters results in access denied
+### Data plane clusters' health isn't getting updated in admin portal or scale-out of clusters results in access denied
 
 - Applicable: This issue applies to all supported releases of Event Hubs on Azure Stack Hub.
 - Cause: Internal components haven't refreshed their cache with new secrets, after secret rotation is completed.
