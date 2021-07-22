@@ -3,7 +3,7 @@ title: Troubleshoot Windows Admin Center issues on Azure Kubernetes Service on A
 description: Learn how to resolve Windows Admin Center issues on Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: v-susbo
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 07/23/2021
 ms.author: v-susbo
 ---
 
