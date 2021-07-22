@@ -47,7 +47,7 @@ Sometimes, due to network issues, Windows Admin Center times out an Arc connecti
 
 ## Troubleshoot CredSSP issues
 
-When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deployment hangs for an extended period, you might be having CredSSP or connectivity problems. Try the following steps to troubleshoot your deployment:
+When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deployment hangs for an extended period, you might be having Credential Security Support Provider (CredSSP) or connectivity problems. Try the following steps to troubleshoot your deployment:
  
 1. On the machine running Windows Admin Center, run the following command in a PowerShell window: 
 
@@ -66,6 +66,8 @@ When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deploy
    ```PowerShell
       Enter-PSSession -computer localhost -credential (Get-Credential)
    ``` 
+
+For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](/azure-stack/hci/manage/troubleshoot-credssp).
 
 ## A WinRM error is displayed when creating a new workload cluster
 
