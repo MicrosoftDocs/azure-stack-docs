@@ -31,7 +31,7 @@ There are no fixes in this release.
 
 [!INCLUDE [secret rotation related known issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
-### Internal limit on namespace level auth rules is 12 even if portal allows more  
+### Limit on namespace-level authorization rule is 12 even if portal allows more  
 
 - Applicable: This issue applies to release 1.2102.0.0 of Event Hubs on Azure Stack Hub.
 - Cause: A known internal limitation.
