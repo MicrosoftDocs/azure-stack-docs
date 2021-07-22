@@ -4,9 +4,9 @@ description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/22/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 
@@ -65,7 +65,7 @@ For example, if you use PowerShell to create a storage account using the **Micro
 
 Similarly, when using the Python SDK to build a Python-based app, you can specify the profile. The SDK loads the right modules for the resource providers that you've specified in your script.
 
-As a developer, you can focus on writing your solution. Instead of researching which API versions, resource provider, and cloud work together, you can use a profile and know that your code works across all clouds that support that profile.
+As a developer, this means you can focus on writing your solution. Instead of researching which API versions, resource provider, and cloud work together, you can use a profile and know that your code works across all clouds that support that profile.
 
 ## API profile code samples
 
