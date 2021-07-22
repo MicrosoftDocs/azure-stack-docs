@@ -11,7 +11,7 @@ ms.lastreviewed: 06/08/2021
 > [!IMPORTANT]
 > Before deploying or updating the Event Hubs resource provider (RP), you may need to update Azure Stack Hub to a supported version (or deploy the latest Azure Stack Development Kit). Be sure to read the RP release notes first, to learn about new functionality, fixes, and any known issues that could affect your deployment.
 >
-> | Supported Azure Stack Hub version(s) | Event Hubs RP version |
+> | Supported Azure Stack Hub version(s) | Event Hubs RP release |
 > |-----|---|
 > | 2102 and higher | 1.2102.0.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-00.md) |
 > | 2008 and higher | 1.2012.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2012-20.md) |

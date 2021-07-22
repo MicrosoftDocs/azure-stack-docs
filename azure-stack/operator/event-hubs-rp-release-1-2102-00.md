@@ -12,7 +12,7 @@ ms.lastreviewed: 07/23/2021
 
 # Event Hubs on Azure Stack Hub 1.2102.0.0 release notes
 
-These release notes describe improvements and fixes in Event Hubs on Azure Stack Hub version 1.2102.0.0, and any known issues. You must be currently running Event Hubs on Azure Stack Hub version 1.2012.1.0 or 1.2012.2.0 to upgrade to this release.
+These release notes describe improvements and fixes in Event Hubs on Azure Stack Hub version 1.2102.0.0, and any known issues. If you're upgrading from a prior version of Event Hubs on Azure Stack Hub, **you must be at version 1.2012.1.0 or higher to upgrade to this release**.
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-hub-update-banner.md)]
 
