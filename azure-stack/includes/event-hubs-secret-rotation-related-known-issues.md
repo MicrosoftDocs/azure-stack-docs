@@ -8,7 +8,7 @@ ms.reviewer: bryanla
 ms.lastreviewed: 07/22/2021
 ---
 
-### Secret expiration does not trigger an alert
+### Secret expiration doesn't trigger an alert
 
 - Applicable: This issue applies to all supported releases of Event Hubs on Azure Stack Hub.
 - Cause: Administrative alerts aren't currently integrated.
