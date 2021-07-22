@@ -253,6 +253,8 @@ For a more thorough discussion and guidance for moving AzurRM script to Az and b
 
 [!Include[Known issue for install - three](../includes/known-issue-az-install-3.md)]
 
+[!Include[Known issue for install - four](../includes/known-issue-az-install-4.md)]
+
 ## Next steps
 
 - [Download Azure Stack Hub tools from GitHub](azure-stack-powershell-download.md)
