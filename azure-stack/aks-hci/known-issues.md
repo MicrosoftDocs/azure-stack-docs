@@ -9,10 +9,10 @@ ms.reviewer:
 ---
 
 # Known issues for Azure Kubernetes Service on Azure Stack HCI
-This article describes known issues with Azure Kubernetes Service on Azure Stack HCI.
+This article describes known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review some [known issues](known-issues-windows-admin-center.md) that are specific to using Windows Admin Center.
 
 ## Cloud agent may fail to start successfully when using path names with spaces in them
-When using [Set-AksHciConfig](set-akshciconfig.md) to specify `-imageDir`,`-workingDir`,`-cloudConfigLocation` or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
+When using [Set-AksHciConfig](set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
 
 ```powershell
 Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
@@ -29,6 +29,12 @@ If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows no
 
 ## Uninstall-AksHciAdAuth fails with an error
 If [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
+
+## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
+Due to insufficient permissions in Active Directory, [Uninstall-AksHci](uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
+
+## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
+If you run [Uninstall-AksHci](./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
 ## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
 The error **Cannot index into a null array** appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
@@ -55,17 +61,17 @@ You'll see this issue if you follow these steps:
 
 1. Create a Kubernetes cluster.
 2. Scale the cluster to more than two nodes.
-3. To delete a node, run the following command: 
+3. Delete a node by running the following command: 
    ```powershell
    kubectl delete node <node-name>
    ```
 
-4. To return a list of the nodes:
+4. Return a list of the nodes by running the following command:
    ```powershell
    kubectl get nodes
    ```
    The removed node isn't listed in the output.
-5. Open a PowerShell with administrative privileges, and run the following command:
+5. Open a PowerShell with administrative privileges and run the following command:
    ```powershell
    get-vm
    ```
@@ -73,7 +79,7 @@ The removed node is still listed.
 
 This failure causes the system not to recognize that the node is missing, and therefore, a new node will not spin up. 
 
-## The workload cluster not found 
+## The workload cluster is not found 
 
 The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
 
@@ -101,9 +107,9 @@ When you check Hyper-V manager, high CPU and memory demands for the management c
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
-## PowerShell deployment doesn't check for available memory before creating a new target cluster
+## PowerShell deployment doesn't check for available memory before creating a new workload cluster
 The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
-If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
+If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
@@ -120,9 +126,6 @@ If you receive an error in either wizard about a wrong configuration, perform cl
 ## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
 The deployment of a large cluster may time out after two hours, however, this is a static time-out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
 
-## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
-Due to insufficient permissions in Active Directory, `Uninstall-AksHci` could not remove cluster resource objects in AD, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove AD objects in the Active Directory container the server and service objects are created in.
-
 ## Deployment fails on an Azure Stack HCI configured with SDN
 While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has a Software Defined Network (SDN), the deployment fails at cluster creation. 
 
@@ -134,9 +137,6 @@ With large clusters, the `Get-AksHciLogs` command may throw an exception, fail t
 
 ## Creating virtual networks with a similar configuration cause overlap issues
 When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in the scenarios where two virtual network configurations are almost the same.
-
-## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
-If you run [Uninstall-AksHci](./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
 ## Next steps
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
