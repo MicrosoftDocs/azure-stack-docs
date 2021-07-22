@@ -12,7 +12,7 @@ ms.reviewer:
 This article describes known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review some [known issues](known-issues-windows-admin-center.md) that are specific to using Windows Admin Center.
 
 ## Cloud agent may fail to start successfully when using path names with spaces in them
-When using [Set-AksHciConfig](set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation` or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
+When using [Set-AksHciConfig](set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
 
 ```powershell
 Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
@@ -61,17 +61,17 @@ You'll see this issue if you follow these steps:
 
 1. Create a Kubernetes cluster.
 2. Scale the cluster to more than two nodes.
-3. To delete a node, run the following command: 
+3. Delete a node by running the following command: 
    ```powershell
    kubectl delete node <node-name>
    ```
 
-4. To return a list of the nodes:
+4. Return a list of the nodes by running the following command:
    ```powershell
    kubectl get nodes
    ```
    The removed node isn't listed in the output.
-5. Open a PowerShell with administrative privileges, and run the following command:
+5. Open a PowerShell with administrative privileges and run the following command:
    ```powershell
    get-vm
    ```
@@ -79,7 +79,7 @@ The removed node is still listed.
 
 This failure causes the system not to recognize that the node is missing, and therefore, a new node will not spin up. 
 
-## The workload cluster not found 
+## The workload cluster is not found 
 
 The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
 
@@ -107,9 +107,9 @@ When you check Hyper-V manager, high CPU and memory demands for the management c
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
-## PowerShell deployment doesn't check for available memory before creating a new target cluster
+## PowerShell deployment doesn't check for available memory before creating a new workload cluster
 The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message.
-If you have a deployment that stops responding, open `Eventviewer` and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
+If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
