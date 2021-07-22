@@ -4,7 +4,7 @@ description: How to create volumes on Azure Stack HCI and Windows Server cluster
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 07/19/2021
+ms.date: 07/22/2021
 ---
 
 # Create volumes on Azure Stack HCI and Windows Server clusters
@@ -147,17 +147,23 @@ Nested resiliency only applies to two-server clusters running Azure Stack HCI or
 
 Windows Server 2019 requires you to create new storage tier templates using the `New-StorageTier` cmdlet before creating volumes. You only need to do this once, and then every new volume you create can reference these template. If you're running Windows Server 2022, Azure Stack HCI 21H2, or Azure Stack HCI 20H2, you can skip this step.
 
+Specify the `-MediaType` of your capacity drives and, optionally, the `-FriendlyName` of your choice. 
+
+For example, if your capacity drives are hard disk drives (HDD), launch PowerShell as Administrator and run the following cmdlets.
+
 To create a NestedMirror tier:
 
 ```PowerShell
-New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedMirror -ResiliencySettingName Mirror -NumberOfDataCopies 4 -MediaType HDD -CimSession 2nodecluster
+New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedMirrorOnHDD -ResiliencySettingName Mirror -NumberOfDataCopies 4 -MediaType HDD -CimSession 2nodecluster
 ```
 
 To create a NestedParity tier:
 
 ```PowerShell
-New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedParity -ResiliencySettingName Parity -NumberOfDataCopies 2 -PhysicalDiskRedundancy 1 -NumberOfGroups 1 -FaultDomainAwareness StorageScaleUnit -ColumnIsolation PhysicalDisk -MediaType HDD -CimSession 2nodecluster
+New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedParityOnHDD -ResiliencySettingName Parity -NumberOfDataCopies 2 -PhysicalDiskRedundancy 1 -NumberOfGroups 1 -FaultDomainAwareness StorageScaleUnit -ColumnIsolation PhysicalDisk -MediaType HDD -CimSession 2nodecluster
 ```
+
+If your capacity drives are solid-state drives (SSD), set the `-MediaType` to `SSD` instead, and optionally change the `-FriendlyName` to `*OnSSD`.
 
 #### Create nested volumes
 
