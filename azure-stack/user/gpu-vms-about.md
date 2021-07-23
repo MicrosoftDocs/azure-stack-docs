@@ -69,15 +69,15 @@ The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https
 
 ## GPU system considerations
 
-- GPU must be one of these SKUs: AMD MI-25, Nvidia V100 (and variants), Nvidia T4
-- Number of GPUs per server supported (1, 2, 3, 4). Preferred are: 1, 2, and 4
-- All GPUs must be of the exact same SKU throughout the scale unit
-- All GPU quantities per server must be the same throughout the scale unit
+- GPU must be one of these SKUs: AMD MI-25, Nvidia V100 (and variants), Nvidia T4.
+- Number of GPUs per server supported (1, 2, 3, 4). Preferred are: 1, 2, and 4.
+- All GPUs must be of the exact same SKU throughout the scale unit.
+- All GPU quantities per server must be the same throughout the scale unit.
 - GPU partition size (for AMD Mi25) needs to be the same throughout all GPU VMs on the scale unit.
 
 ## Capacity planning
 
-The Azure Stack Hub capacity planner has been updated to support GPU configurations. It is accessible on https://aka.ms/azstackcapacityplanner
+The Azure Stack Hub capacity planner has been updated to support GPU configurations. It is accessible on https://aka.ms/azstackcapacityplanner.
 
 ## Adding GPUs on an existing Azure Stack Hub
 
