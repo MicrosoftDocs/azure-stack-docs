@@ -87,7 +87,7 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 
 ## Guest driver installation
 
-The following powershell commands can be used for driver installation:
+The following PowerShell commands can be used for driver installation:
 
 ```powershell
 $VmName = <VM Name In Portal>
