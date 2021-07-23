@@ -9,7 +9,7 @@ ms.author: v-susbo
 
 # Stop and start an AKS on Azure Stack HCI cluster
 
-Your workloads may not need to run continuously, and to save resource costs, you may need to shut down your AKS on Azure Stack HCI cluster. To shut down a cluster, run the commands described in this article from your Hyper-V host to power down the different components. 
+Your workloads may not need to run continuously, and to save resource costs, you might need to shut down your AKS on Azure Stack HCI cluster. To shut down a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to restart a cluster and how to verify that the control plane nodes are running after a restart.
 
 ## Before you begin
 
@@ -17,15 +17,17 @@ This article assumes that you have an existing AKS on Azure Stack HCI cluster in
 
 ## Stop an AKS on Azure Stack HCI cluster
 
-Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running the command stops all services and applications configured in the cluster. 
+To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local amd/or remote computers. 
 
-Open PowerShell as an administrator and run the following command to stop the Cluster service on all nodes of the local cluster:
+Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
+
+To stop the Cluster service on all nodes of the local cluster, open PowerShell as an administrator and run the following command:
 
 ```powershell
 PS:> Stop-Cluster 
 ```
 
-Use the [Stop-Computer](/powershell/module/microsoft.powershell.management/stop-computer?view=powershell-7.1) PowerShell command to shut down the local and remote computers:
+To shut down the local and remote computers, use the [Stop-Computer](/powershell/module/microsoft.powershell.management/stop-computer?view=powershell-7.1) PowerShell command as shown below:
 
 ```powershell
 PS:> Stop-Computer 
@@ -33,7 +35,9 @@ PS:> Stop-Computer
 
 ## Start an AKS on Azure Stack HCI cluster
 
-To restart the operating system on your local and remote computers use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1) PowerShell command:
+To start a stopped AKS on Azure Stack HCI cluster, you first restart the operating system on the local and remote computers, and then restart the cluster. 
+
+To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1) PowerShell command:
 
 ```powershell
 PS:> Restart-Computer 
