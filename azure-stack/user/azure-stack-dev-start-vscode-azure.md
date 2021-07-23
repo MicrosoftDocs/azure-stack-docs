@@ -127,3 +127,5 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 ## Next steps
 
 [Set up a development environment in Azure Stack Hub ](azure-stack-dev-start.md)
+
+[Set up Azure Storage in your Azure Stack Hub from Visual Studio Code](dev-start-vscode-storage.md)
