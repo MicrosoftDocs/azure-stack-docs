@@ -17,7 +17,7 @@ This article assumes that you have an existing AKS on Azure Stack HCI cluster in
 
 ## Stop an AKS on Azure Stack HCI cluster
 
-To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local amd/or remote computers. 
+To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local and/or remote computers. 
 
 Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
 
@@ -35,7 +35,7 @@ PS:> Stop-Computer
 
 ## Start an AKS on Azure Stack HCI cluster
 
-To start a stopped AKS on Azure Stack HCI cluster, you first restart the operating system on the local and remote computers, and then restart the cluster. 
+To start a stopped AKS on Azure Stack HCI cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1) PowerShell command:
 
@@ -43,13 +43,13 @@ To restart the operating system on your local and remote computers, use the foll
 PS:> Restart-Computer 
 ```
 
-Use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps) PowerShell command to restart the cluster. All nodes of your AKS on Azure Stack HCI cluster on which cluster service is yet to start can be started with  
+To restart all the nodes of the AKS on Azure Stack HCI cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps) PowerShell command as shown below:  
 
 ```powershell
 PS:> Start-Cluster 
 ```
 
-A node only functions as part of a cluster when the cluster service is running on that node. 
+A node functions as part of a cluster only when the cluster service is running on that node. 
 
 > [!NOTE]
 > You cannot remotely run **Start-Cluster** without CredSSP authentication on the server machine.
@@ -66,16 +66,24 @@ PS:> Get-ClusterNode -ErrorAction SilentlyContinue | foreach-object {
 
 ## Verify the control plane nodes are running
 
-To verify the control plane nodes are running, enumerate the VMs and make sure the state is _running_. Using PowerShell, run the following command to view the status of your control plane VM from your Hyper-V host: 
+To verify the control plane nodes are running, enumerate the VMs and make sure their state is _running_. Using PowerShell, run the following command to view the status of your control plane VM from your Hyper-V host: 
 
 ```powershell
 PS:> $controlPlanes = Get-VM | ? { $_.Name -like '*-control-plane-*' -and $_.State -eq 'Running' } | % { $_.Name } 
+```
+
+```Output
+
 ```
 
 If the control plane node is not running, restart the VM by running the following PowerShell command: 
 
 ```powershell
 PS:> Restart-VM -name $vmName -force 
+```
+
+```Output
+
 ```
 
 ## Next steps
