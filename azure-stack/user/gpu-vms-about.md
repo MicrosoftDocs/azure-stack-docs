@@ -25,13 +25,6 @@ You can choose from three GPU models. They are available in NVIDIA V100, NVIDIA 
 - [NVv4 (AMD MI25)](/azure/virtual-machines/nvv4-series)
 - [NCasT4_v3](/azure/virtual-machines/nct4-v3-series)
 
-::: moniker range=">=azs-2005"
-> [!IMPORTANT]  
-> Azure Stack Hub GPU support is in public preview for the 2005 and 2008 Azure Stack Hub releases.  
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities.
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-::: moniker-end
-
 ::: moniker range="<=azs-2002"
 > [!WARNING]  
 > GPU VMs are not supported in this release. You will need to upgrade to Azure Stack Hub 2005 or later. In addition, your Azure Stack Hub hardware must have physical GPUs.
