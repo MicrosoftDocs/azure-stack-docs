@@ -19,7 +19,7 @@ This article assumes that you have an existing AKS on Azure Stack HCI cluster in
 
 To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local and/or remote computers. 
 
-Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
+Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
 
 To stop the Cluster service on all nodes of the local cluster, open PowerShell as an administrator and run the following command:
 
@@ -27,7 +27,7 @@ To stop the Cluster service on all nodes of the local cluster, open PowerShell a
 PS:> Stop-Cluster 
 ```
 
-To shut down the local and remote computers, use the [Stop-Computer](/powershell/module/microsoft.powershell.management/stop-computer?view=powershell-7.1) PowerShell command as shown below:
+To shut down the local and remote computers, use the [Stop-Computer](/powershell/module/microsoft.powershell.management/stop-computer?view=powershell-7.1&preserve-view=true) PowerShell command as shown below:
 
 ```powershell
 PS:> Stop-Computer 
@@ -37,13 +37,13 @@ PS:> Stop-Computer
 
 To start a stopped AKS on Azure Stack HCI cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
 
-To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1) PowerShell command:
+To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 
 ```powershell
 PS:> Restart-Computer 
 ```
 
-To restart all the nodes of the AKS on Azure Stack HCI cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps) PowerShell command as shown below:  
+To restart all the nodes of the AKS on Azure Stack HCI cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
 
 ```powershell
 PS:> Start-Cluster 
@@ -54,7 +54,7 @@ A node functions as part of a cluster only when the cluster service is running o
 > [!NOTE]
 > You cannot remotely run **Start-Cluster** without CredSSP authentication on the server machine.
  
-You can verify when your cluster has started by using the [Get-ClusterNode](/powershell/module/failoverclusters/get-clusternode?view=windowsserver2019-ps) PowerShell command as shown in the example below:
+You can verify that your cluster has started by using the [Get-ClusterNode](/powershell/module/failoverclusters/get-clusternode?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown in the example below:
 
 ```powershell
 PS:> Get-ClusterNode -ErrorAction SilentlyContinue | foreach-object { 
@@ -62,6 +62,11 @@ PS:> Get-ClusterNode -ErrorAction SilentlyContinue | foreach-object {
         $state = $_.State 
         Write-Host "$node State = $state" 
       	} 
+```
+An example output is shown below:
+
+```Output
+
 ```
 
 ## Verify the control plane nodes are running
@@ -72,6 +77,7 @@ To verify the control plane nodes are running, enumerate the VMs and make sure t
 PS:> $controlPlanes = Get-VM | ? { $_.Name -like '*-control-plane-*' -and $_.State -eq 'Running' } | % { $_.Name } 
 ```
 
+An example output is shown below:
 ```Output
 
 ```
@@ -80,10 +86,6 @@ If the control plane node is not running, restart the VM by running the followin
 
 ```powershell
 PS:> Restart-VM -name $vmName -force 
-```
-
-```Output
-
 ```
 
 ## Next steps
