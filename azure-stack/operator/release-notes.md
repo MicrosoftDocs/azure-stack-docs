@@ -156,7 +156,7 @@ After the installation of 2102, if any hotfixes for 2102 are subsequently releas
 ::: moniker range="azs-2008"
 ## 2008 build reference
 
-The Azure Stack Hub 2008 update build number is **1.2008.13.88**.
+The latest Azure Stack Hub 2008 update build number is **1.2008.40.148**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
 
 ### Update type
 
@@ -241,7 +241,7 @@ After the installation of 2008, if any 2008 hotfixes are subsequently released, 
 ::: moniker range="azs-2005"
 ## 2005 build reference
 
-The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
+The latest Azure Stack Hub 2005 update build number is **1.2005.42.126**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-2) section.
 
 ### Update type
 
