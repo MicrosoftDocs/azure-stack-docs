@@ -11,6 +11,10 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
+## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at _Update-KvaInternal_
+
+When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
+
 ## _Install-AksHci_ timed out with an error
 
 After running [Install-AksHci](install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
