@@ -29,7 +29,6 @@ New-AksHciCluster -name <String>
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
                  [-enableMonitoring]
-                 [-clusterStorageContainer]
 ```
 
 > [!NOTE]
@@ -49,7 +48,6 @@ New-AksHciCluster -name <String>
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
                  [-enableMonitoring]
-                 [-clusterStorageContainer]
 ```
 
 
@@ -381,34 +379,3 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 --->
-
-### -enableMonitoring
-Use this flag to enable Prometheus monitoring.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
-### -clusterStorageContainer
-The name of the storage container that is associated with the cluster.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: flannel
-Accept pipeline input: False
-Accept wildcard characters: False
-```

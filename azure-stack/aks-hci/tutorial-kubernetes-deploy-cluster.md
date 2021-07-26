@@ -88,10 +88,10 @@ Install-AksHCi
 
 ## Create a Kubernetes cluster
 
-Create a Kubernetes cluster using the command [New-AksHciCluster](new-akshcicluster.md). The following example creates a cluster named *mycluster* with the default values. This command will create a workload cluster with 1 Linux node.
+Create a Kubernetes cluster using the command [New-AksHciCluster](new-akshcicluster.md). The following example creates a cluster named *mycluster* with the one Linux node pool called *linuxnodepool* with a node count of 1.
 
 ```powershell
-New-AksHciCluster -name mycluster
+New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1
 ```
 
 To verify that deployment was successful, run the following command.
@@ -102,14 +102,33 @@ Get-AksHcicluster -name mycluster
 
 **Output:**
 ```
-Name            : mycluster
-Version         : v1.18.14
-Control Planes  : 1
-Linux Workers   : 1
-Windows Workers : 0
-Phase           : provisioned
-Ready           : True
+ProvisioningState     : provisioned
+KubernetesVersion     : v1.20.7
+NodePools             : linuxnodepool
+WindowsNodeCount      : 0
+LinuxNodeCount        : 0
+ControlPlaneNodeCount : 1
+Name                  : mycluster
 
+```
+
+> [!NOTE]
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
+
+To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](get-akshcinodepool.md) PowerShell command.
+
+```powershell
+Get-AksHciNodePool -clusterName mycluster
+```
+
+```output
+ClusterName  : mycluster
+NodePoolName : linuxnodepool
+Version      : v1.20.7
+OsType       : Linux
+NodeCount    : 1
+VmSize       : Standard_K8S3_v1
+Phase        : Deployed
 ```
 
 ## Install the Kubernetes CLI
