@@ -148,4 +148,4 @@ After configuring the operating system as needed with Sconfig on each server, yo
 
 To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
-> [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
+> [Create an Azure Stack HCI cluster](create-cluster.md)
