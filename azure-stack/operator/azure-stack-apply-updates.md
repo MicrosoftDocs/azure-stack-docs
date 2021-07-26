@@ -52,7 +52,7 @@ You can view the current version of Azure Stack Hub in the **Update** pane. To o
 
 5. You can view high-level status as the update process iterates through various subsystems in Azure Stack Hub. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the admin and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
 
-6. Select the **Download summary** from the update run details blade to download full logs.
+6. Select **Download summary** from the update run details blade to download full logs.
 
     If you experience an issue while monitoring the update, you can use the [privileged endpoint](./azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step if the Azure Stack Hub portal becomes unavailable. For instructions, see [Monitor updates in Azure Stack Hub using PowerShell](azure-stack-update-monitor.md).
 
