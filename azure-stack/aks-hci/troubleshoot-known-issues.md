@@ -7,7 +7,7 @@ ms.date: 03/05/2021
 ms.author: v-susbo
 ---
 
-# Resolve known issues in AKS on Azure Stack HCI
+# Workarounds for known issues in AKS on Azure Stack HCI
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
