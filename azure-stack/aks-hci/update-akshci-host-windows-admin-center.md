@@ -29,11 +29,15 @@ To update the AKS on Azure Stack HCI host with Windows Admin Center, follow the 
 
 1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions**, and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.35.0. You do not need to complete this step if you have enabled auto-update for your extensions. However, make sure that you have version 1.35.0 of the AKS extension installed before proceeding to the next step.
 
-   :::image type="content" source="media/installed-extensions.png" alt-text="Displays the installed-extensions available in Windows Admin Center" lightbox="media/installed-extensions.png":::
+   :::image type="content" source="media/installed-extensions.png" alt-text="Displays the installed-extensions available in Windows Admin Center." lightbox="media/installed-extensions.png":::
+
+   [ ![Displays the installed-extensions available in Windows Admin Center.](media/installed-extensions.png) ](media/installed-extensions.png#lightbox)
+
+
 
 2. Users who have installed AKS on Azure Stack HCI using the GA release will see the following _Incompatible AksHci Module Version_ error in Windows Admin Center when they update the Windows Admin Center extension to the June release (1.35.0). 
 
-   :::image type="content" source="media/incompatible-version.png" alt-text="Displays the incompatible version message in Windows Admin Center" lightbox="media/incompatible-version.png":::
+   :::image type="content" source="media/incompatible-version.png" alt-text="Displays the incompatible version message in Windows Admin Center." lightbox="media/incompatible-version.png":::
 
    To use the June release, PowerShell version 1.0.2 is required, so users must manually run the following PowerShell command on all the nodes in their Azure Stack HCI cluster to get around this error. 
 
