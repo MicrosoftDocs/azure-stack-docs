@@ -177,6 +177,13 @@ Then, to restart _kubelet_, run the following command:
 /etc/.../kubelet restart
 ```
 
+## When creating a persistent volume, attempts to mount the volume fails
+
+After deleting a persistent volume and a persistent volume claim in an AKS on Azure Stack HCI environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount failed, and the pod timed out with the error _NewSmbGlobalMapping failed_.
+
+To work around the failure to mount the new volume, you can SSH into the Windows node and run `Remove-SMBGlobalMapping` to provide the share that corresponds to the volume. After running this command, attempts to mount the volume should succeed.
+
+
 ## Next steps
 - [Known issues](./known-issues.md)
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
