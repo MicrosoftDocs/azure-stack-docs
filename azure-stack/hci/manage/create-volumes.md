@@ -163,21 +163,23 @@ To create a NestedParity tier:
 New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedParityOnHDD -ResiliencySettingName Parity -NumberOfDataCopies 2 -PhysicalDiskRedundancy 1 -NumberOfGroups 1 -FaultDomainAwareness StorageScaleUnit -ColumnIsolation PhysicalDisk -MediaType HDD -CimSession 2nodecluster
 ```
 
-If your capacity drives are solid-state drives (SSD), set the `-MediaType` to `SSD` instead, and optionally change the `-FriendlyName` to `*OnSSD`.
+If your capacity drives are solid-state drives (SSD), set the `-MediaType` to `SSD` instead, and change the `-FriendlyName` to `*OnSSD`.
 
 #### Create nested volumes
 
 To create a NestedMirror volume:
 
 ```PowerShell
-New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyMirrorNestedVolume -StorageTierFriendlyNames NestedMirror -StorageTierSizes 500GB -CimSession 2nodecluster
+New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyMirrorNestedVolume -StorageTierFriendlyNames NestedMirrorOnHDD -StorageTierSizes 500GB -CimSession 2nodecluster
 ```
 
 To create a NestedParity volume:
 
 ```PowerShell
-New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyParityNestedVolume -StorageTierFriendlyNames NestedMirror,NestedParity -StorageTierSizes 200GB, 1TB -CimSession 2nodecluster
+New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyParityNestedVolume -StorageTierFriendlyNames NestedMirrorOnHDD,NestedParityOnHDD -StorageTierSizes 200GB, 1TB -CimSession 2nodecluster
 ```
+
+If your capacity drives are solid-state drives (SSD), change `-StorageTierFriendlyNames` to `*OnSSD`.
 
 ### Storage tier summary table
 
