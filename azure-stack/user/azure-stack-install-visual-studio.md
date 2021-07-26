@@ -4,9 +4,9 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 07/22/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 01/04/2020
 
 # Intent: As an Azure Stack user, I want to install Visual Studio on Azure stack so I can write and deploy Azure Resource Manager templates.
@@ -51,7 +51,7 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
 3. Expand **Environment** in the navigation pane and select **Accounts**.
 
-4. Select **Add**, and enter the User Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`.  For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
+4. Select **Add**, and enter the user Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`. For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
 
     ![Add new Azure Cloud discovery endpoint](./media/azure-stack-install-visual-studio/add-cloud.png)
 
