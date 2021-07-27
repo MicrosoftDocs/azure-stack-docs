@@ -829,6 +829,11 @@
       "source_path": "azure-stack/hci/deploy/deployment-overview.md", 
       "redirect_url": "/azure-stack/hci/deploy/operating-system", 
       "redirect_document_id": true
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/azure-monitor.md", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-azure-portal", 
+      "redirect_document_id": true
     }
   ]
 }
