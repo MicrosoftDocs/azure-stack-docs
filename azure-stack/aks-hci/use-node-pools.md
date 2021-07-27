@@ -39,7 +39,7 @@ New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osTy
 The cluster named *mycluster* created in the pervios step has a single node pool. You can add a second node pool to the existing cluster using the [New-AksHciNodePool](new-akshcinodepool.md) command. the following example creates Windows node pool named *windowsnodepool* with 1 node.
 
 ```powershell
-New-AksHciNodePool -clusterName mycluster -name windowsnodepool -nodecount 1 -osType windows
+New-AksHciNodePool -clusterName mycluster -name windowsnodepool -count 1 -osType windows
 ```
 
 ## Get configuration information of a node pool
