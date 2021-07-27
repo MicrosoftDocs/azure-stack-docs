@@ -11,7 +11,7 @@ ms.date: 06/18/2021
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
-The Health Service is a new feature in Windows Server 2016 that improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
+The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
 Many of the parameters which govern the behavior of the Health Service are exposed as settings. You can modify these to tune the aggressiveness of faults or actions, turn certain behaviors on/off, and more.
 
@@ -60,7 +60,7 @@ Some commonly modified settings are listed below, along with their default value
 
 #### Supported Components Document
 
-See the previous section.
+The Health Service provides an enforcement mechanism to restrict the components used by Storage Spaces Direct to those on a Supported Components Document provided by the administrator or solution vendor. For more information, see [Supported Components Document](health-service-overview.md#supported-components-document).
 
 #### Firmware Rollout
 
@@ -95,4 +95,4 @@ See the previous section.
 ## Additional References
 
 - [Health Service in Windows Server 2016](health-service-overview.md)
-- [Storage Spaces Direct in Windows Server 2016](../storage/storage-spaces/storage-spaces-direct-overview.md)
+- [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)

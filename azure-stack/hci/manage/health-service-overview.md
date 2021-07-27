@@ -1,30 +1,30 @@
 ---
-description: "Learn more about: Health Service in Windows Server"
-title: Health Service in Windows Server
+description: "Learn more about how to use the Health Service to monitor clusters"
+title: Monitor clusters with the Health Service
 manager: eldenc
 ms.author: cosdar
 ms.topic: article
 ms.assetid: 5bc71e71-920e-454f-8195-afebd2a23725
 author: cosmosdarwin
-ms.date: 06/18/2021
+ms.date: 07/28/2021
 ---
-# Health Service in Windows Server
+# Monitor clusters with the Health Service
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
-The Health Service is a new feature in Windows Server 2016 that improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
+The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
 ## Prerequisites
 
-The Health Service is enabled by default with Storage Spaces Direct. No additional action is required to set it up or start it. To learn more about Storage Spaces Direct, see [Storage Spaces Direct in Windows Server 2016](../storage/storage-spaces/storage-spaces-direct-overview.md).
+The Health Service is enabled by default with Storage Spaces Direct. No additional action is required to set it up or start it. To learn more about Storage Spaces Direct, see [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
 ## Reports
 
-See [Health Service reports](health-service-reports.md).
+See [Health Service reports](/windows-server/failover-clustering/health-service-reports).
 
 ## Faults
 
-See [Health Service faults](health-service-faults.md).
+See [Health Service faults](/windows-server/failover-clustering/health-service-faults).
 
 ## Actions
 
@@ -34,7 +34,7 @@ See [Health Service actions](health-service-actions.md).
 
 This section describes workflows which are automated by the Health Service in the disk lifecycle.
 
-### Disk Lifecycle
+### Disk lifecycle
 
 The Health Service automates most stages of the physical disk lifecycle. Let's say that the initial state of your deployment is in perfect health - which is to say, all physical disks are working properly.
 
@@ -93,7 +93,7 @@ The document has two independent sections: `Disks` and `Cache`.
 
 If the `Disks` section is provided, only the drives listed (as `Disk`) are allowed to join pools. Any unlisted drives are prevented from joining pools, which effectively precludes their use in production. If this section is left empty, any drive will be allowed to join pools.
 
-If the `Cache` section is provided, only the drives listed (as `CacheDisk`) are used for caching. If this section is left empty, Storage Spaces Direct attempts to [guess based on media type and bus type](../storage/storage-spaces/understand-the-cache.md#cache-drives-are-selected-automatically). Drives listed here should also be listed in `Disks`.
+If the `Cache` section is provided, only the drives listed (as `CacheDisk`) are used for caching. If this section is left empty, Storage Spaces Direct attempts to [guess based on media type and bus type](/windows-server/storage/storage-spaces/understand-the-cache#cache-drives-are-selected-automatically). Drives listed here should also be listed in `Disks`.
 
 >[!IMPORTANT]
 > The Supported Components Document does not apply retroactively to drives already pooled and in use.
@@ -165,8 +165,8 @@ See [Health Service settings](health-service-settings.md).
 
 ## Additional References
 
-- [Health Service reports](health-service-reports.md)
-- [Health Service faults](health-service-faults.md)
+- [Health Service reports](/windows-server/failover-clustering/health-service-reports)
+- [Health Service faults](/windows-server/failover-clustering/health-service-faults)
 - [Health Service actions](health-service-actions.md)
 - [Health Service settings](health-service-settings.md)
-- [Storage Spaces Direct in Windows Server 2016](../storage/storage-spaces/storage-spaces-direct-overview.md)
+- [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
