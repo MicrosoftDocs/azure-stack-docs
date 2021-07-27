@@ -5,7 +5,7 @@ manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 06/18/2021
+ms.date: 07/28/2021
 ---
 # Health Service settings
 
