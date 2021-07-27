@@ -81,8 +81,6 @@ landingContent:
         links:
           - text: Manage the cluster with Windows Admin Center
             url: manage/cluster.md
-          - text: Manage the cluster with PowerShell
-            url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
           - text: Monitor the cluster
@@ -135,12 +133,8 @@ landingContent:
             url: manage/manage-azure-registration.md
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
-          - text: Use Azure Site Recovery
-            url: manage/azure-site-recovery.md
           - text: Use Azure Network Adapter
             url: manage/use-azure-network-adapter.md
-          - text: Use Azure Backup
-            url: manage/use-azure-backup.md
 
  # Card
   - title: Software Defined Networking
@@ -157,10 +151,6 @@ landingContent:
             url: concepts/network-controller.md
           - text: Datacenter Firewall overview
             url: concepts/datacenter-firewall-overview.md
-          - text: Software Load Balancer overview
-            url: concepts/software-load-balancer.md
-          - text: RAS Gateway overview
-            url: concepts/gateway-overview.md
       - linkListType: how-to-guide
         links:
           - text: Deploy an SDN infrastructure
