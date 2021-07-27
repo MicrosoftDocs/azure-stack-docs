@@ -3,7 +3,7 @@ title: Plan datacenter integration for Azure Stack Hub integrated systems
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 07/22/2021
+ms.date: 07/27/2021
 ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
@@ -107,7 +107,8 @@ You must choose a specific time server which is used to synchronize Azure Stack 
 
 You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve a URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack Hub.
 
-The time source requires you to append `,0x1` or `,0x8` the end of the IP address. For example, `10.1.1.123,0x8`. Append `,0x1` if the time synchronization server is Windows OS or `,0x8` for non-Windows.
+> [!IMPORTANT]
+> If your time server isn't a Windows-based NTP server, you need to append `,0x8` the end of the IP address. For example, `10.1.1.123,0x8`.
 
 ## Connect Azure Stack Hub to Azure
 
