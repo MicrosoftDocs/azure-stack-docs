@@ -29,39 +29,39 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
 
-Before you install AKS on Azure Stack HCI, you must prepare your host, including downloading the latest PowerShell packages and modules along with cleanup of any existing artifacts to ensure you're starting from a clean slate. 
+1. **Close all open PowerShell windows**, and then open a fresh PowerShell window and run the following command as an administrator:
 
-**Close all open PowerShell windows**, and then open a fresh PowerShell window and run the following command as an administrator:
+   ```powershell
+   Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+   Install-PackageProvider -Name NuGet -Force 
+   Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
+   ```
 
-```powershell
-Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-Install-PackageProvider -Name NuGet -Force 
-Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
-```
+2. Close the PowerShell window and delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. 
 
-Close the PowerShell window, and delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. Open a new PowerShell window and run the following command to install the Azure PowerShell modules:
+3. Open a new PowerShell window as an administrator and run the following command to install the Azure PowerShell modules:
+ 
+   ```powershell
+   Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
+   Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
+   Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+   Install-Module -Name AksHci -Repository PSGallery
+   ```
 
-```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-Install-Module -Name AksHci -Repository PSGallery
-```
+   ```powershell
+   Import-Module Az.Accounts
+   Import-Module Az.Resources
+   Import-Module AzureAD
+   Import-Module AksHci
+   ```
 
-```powershell
-Import-Module Az.Accounts
-Import-Module Az.Resources
-Import-Module AzureAD
-Import-Module AksHci
-```
-
-**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
+4. To check if you have the latest version of the PowerShell module, close all PowerShell windows and reopen a new administrative session. 
   
-```powershell
-Get-Command -Module AksHci
-```
-To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
+   ```powershell
+   Get-Command -Module AksHci
+   ```
 
+To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
 
 ### Register the resource provider to your subscription
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI registration. To do that, run the following PowerShell commands.
