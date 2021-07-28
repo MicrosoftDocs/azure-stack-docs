@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 03/16/2021
+  ms.date: 07/27/2021
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -35,16 +35,22 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Deploy the Azure Stack HCI OS
+          - text: 1. Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
-          - text: Create a cluster
+          - text: 2. Create a cluster
             url: deploy/create-cluster.md
-          - text: Setup a cluster witness
-            url: manage/witness.md
-          - text: Register with Azure
+          - text: 3. Register with Azure
             url: deploy/register-with-azure.md
-          - text: Validate a cluster
+          - text: 4. Validate a cluster
             url: deploy/validate.md 
+
+  # Card
+  - title: Preview channel
+    linkLists:
+      - linkListType: whats-new
+        links:
+          - text: Join the Preview channel
+            url: manage/preview-channel.md
 
   # Card
   - title: Manage storage
@@ -75,8 +81,6 @@ landingContent:
         links:
           - text: Manage the cluster with Windows Admin Center
             url: manage/cluster.md
-          - text: Manage the cluster with PowerShell
-            url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
           - text: Monitor the cluster
@@ -87,18 +91,6 @@ landingContent:
             url: manage/configure-firewalls.md            
           - text: Change languages
             url: manage/languages.md
-
- # Card
-  - title: Manage VMs
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Manage VMs with Windows Admin Center
-            url: manage/vm.md
-          - text: Manage VMs with PowerShell
-            url: manage/vm-powershell.md
-          - text: Set up VM affinity rules
-            url: manage/vm-affinity.md
 
   # Card
   - title: Azure Stack HCI concepts
@@ -113,18 +105,24 @@ landingContent:
             url: concepts/updates.md
           - text: Choose drives
             url: concepts/choose-drives.md
-          - text: Drive symmetry considerations
-            url: concepts/drive-symmetry-considerations.md
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
             url: concepts/fault-tolerance.md
           - text: Security considerations
             url: concepts/security.md
-          - text: Storage pool cache
-            url: concepts/cache.md
-          - text: Cluster and storage pool quorum
-            url: concepts/quorum.md
+
+ # Card
+  - title: Manage VMs
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage VMs with Windows Admin Center
+            url: manage/vm.md
+          - text: Manage VMs with PowerShell
+            url: manage/vm-powershell.md
+          - text: Set up VM affinity rules
+            url: manage/vm-affinity.md
 
   # Card 
   - title: Connect to Azure
@@ -135,12 +133,8 @@ landingContent:
             url: manage/manage-azure-registration.md
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
-          - text: Use Azure Site Recovery
-            url: manage/azure-site-recovery.md
           - text: Use Azure Network Adapter
             url: manage/use-azure-network-adapter.md
-          - text: Use Azure Backup
-            url: manage/use-azure-backup.md
 
  # Card
   - title: Software Defined Networking
@@ -157,12 +151,6 @@ landingContent:
             url: concepts/network-controller.md
           - text: Datacenter Firewall overview
             url: concepts/datacenter-firewall-overview.md
-          - text: Software Load Balancer overview
-            url: concepts/software-load-balancer.md
-          - text: RAS Gateway overview
-            url: concepts/gateway-overview.md
-          - text: Route Reflector overview
-            url: concepts/route-reflector-overview.md
       - linkListType: how-to-guide
         links:
           - text: Deploy an SDN infrastructure

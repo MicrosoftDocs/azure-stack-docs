@@ -13,7 +13,7 @@ ms.date: 03/12/2021
 
 This topic provides guidance on how to get support for the Azure Stack HCI operating system. Azure Stack HCI follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
 
-To create an Azure Stack HCI support request requires either a Standard or Professional Direct Azure Support Plan. Basic and Developer plans cannot be used.
+To create an Azure Stack HCI support request requires one of the following Azure support plans: Standard, Professional Direct, or Developer. You cannot use the Basic plan.
 
 For more information, see:
 - [Compare support plans](https://azure.microsoft.com/support/plans/)

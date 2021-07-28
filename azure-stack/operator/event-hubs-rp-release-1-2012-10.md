@@ -34,9 +34,8 @@ when clusters were in "Upgrading" or "Upgrade Failed" state. The issue has been 
 
 ## Known issues 
 
-There are no known issues for this release.
+[!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
 ## Next steps
 
 - For more information, start with the [Event Hubs on Azure Stack Hub operator overview](event-hubs-rp-overview.md).
-

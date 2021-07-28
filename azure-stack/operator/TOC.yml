@@ -16,6 +16,10 @@
       items:
       - name: Hotfix 1.2102.28.89
         href: hotfix-1-2102-28-89.md      
+      - name: Hotfix 1.2008.40.148
+        href: hotfix-1-2008-40-148.md      
+      - name: Hotfix 1.2005.42.126
+        href: hotfix-1-2005-42-126.md
       - name: Hotfix 1.2102.28.87
         href: hotfix-1-2102-28-87.md
       - name: Hotfix 1.2008.37.139
@@ -339,7 +343,7 @@
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
       - name: App Service billing FAQ
-        href: app-service-billing-faq.md
+        href: app-service-billing-faq.yml
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
       - name: Deploy App Service
@@ -396,8 +400,10 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.0.0 release notes [Jul 2021] 
+          href: event-hubs-rp-release-1-2102-00.md
         - name: 1.2012.2.0 release notes [May 2021] 
-          href: event-hubs-rp-release-1-2012-20.md
+          href: event-hubs-rp-release-1-2012-20.md          
         - name: 1.2012.1.0 release notes [Feb 2021] 
           href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
@@ -452,10 +458,6 @@
           href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
           href: azure-stack-mysql-resource-provider-11470.md
-        - name: MySQL resource provider 1.1.33.0 release notes
-          href: azure-stack-mysql-resource-provider-11330.md
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
     - name: SQL on Azure Stack Hub
       items:
       - name: Overview
@@ -480,10 +482,6 @@
           href: azure-stack-sql-resource-provider-11930.md   
         - name: SQL resource provider 1.1.47.0 release notes
           href: azure-stack-sql-resource-provider-11470.md   
-        - name: SQL resource provider 1.1.33.0 release notes
-          href: azure-stack-sql-resource-provider-11330.md   
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:

@@ -4,9 +4,9 @@ description: Learn how to use API version profiles with Ruby in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/26/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Ruby in Azure Stack so I can benefit from the use of profiles.
@@ -23,9 +23,9 @@ The Ruby SDK for the Azure Stack Hub Resource Manager provides tools to help you
 
 An API profile is a combination of resource providers and service versions. You can use an API profile to combine different resource types.
 
-- To use the latest versions of all the services, use the **Latest** profile of the Azure SDK rollup gem.
+- To use the latest versions of all the services, use the **latest** profile of the Azure SDK rollup gem.
 - To use the services compatible with the Azure Stack Hub, use the **V2019_03_01_Hybrid** or **V2018_03_01** profile of the Azure SDK rollup gem.
-- To use the latest **api-version** of a service, use the **Latest** profile of the specific gem. For example, to use the latest **api-version** of compute service alone, use the **Latest** profile of the **Compute** gem.
+- To use the latest **api-version** of a service, use the **latest** profile of the specific gem. For example, to use the latest **api-version** of compute service alone, use the **latest** profile of the **Compute** gem.
 - To use a specific **api-version** for a service, use the specific API versions defined inside the gem.
 
 > [!NOTE]
@@ -44,8 +44,8 @@ An API profile is a combination of resource providers and service versions. You 
        ```
 
 - If not available, create a subscription and save the subscription ID to be used later. Instructions to create a subscription are in the [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md) article.
-- Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack Hub are in the [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) article.
-- Make sure your service principal has the contributor/owner role assigned on your subscription. Instructions on how to assign a role to a service principal are in the [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) article.
+- Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack Hub are in the [Use an app identity to access resources](../operator/give-app-access-to-resources.md) article.
+- Make sure your service principal has the contributor/owner role assigned on your subscription. Instructions on how to assign a role to a service principal are in the [Use an app identity to access resources](../operator/give-app-access-to-resources.md) article.
 
 ## Install the RubyGem packages
 
@@ -71,7 +71,7 @@ The Azure Resource Manager Ruby SDK is in preview and will likely have breaking 
 
 ## Use the azure_sdk gem
 
-The **azure_sdk** gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack Hub.
+The **azure_sdk** gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack Hub.
 
 You can install the azure_sdk rollup gem with the following command:  
 
@@ -140,7 +140,7 @@ The **Azure_sdk** rollup gem has the following 3 profiles:
 
 - **V2019_03_01_Hybrid**: Profile built for Azure Stack Hub. Use this profile for all the latest versions of services available in Azure Stack Hub version 1904 or later.
 - **V2017_03_09**: Profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub version 1808 or earlier.
-- **Latest**: Profile consists of the latest versions of all services. Use the latest versions of all the services.
+- **latest**: Profile consists of the latest versions of all services. Use the latest versions of all the services.
 
 For more info on Azure Stack Hub and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md#summary-of-api-profiles).
 
@@ -235,7 +235,7 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 
 3. Create an Azure service principal using PowerShell and retrieve the values needed.
 
-   For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/azure-stack-create-service-principals.md).
+   For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md).
 
    Values needed are:
 
@@ -309,4 +309,4 @@ To run the sample, ensure that you've installed Ruby. If you're using Visual Stu
 ## Next steps
 
 - [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md)
-- [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)  
+- [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)

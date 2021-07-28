@@ -6,7 +6,7 @@ ms.author: v-johcob
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/7/2020
+ms.date: 07/19/2021
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -18,27 +18,23 @@ The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](htt
 > [!NOTE]
 > If you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) through your preferred Microsoft hardware partner, the Azure Stack HCI operating system should be pre-installed. In that case, you can skip this step and move on to [Create an Azure Stack HCI cluster](create-cluster.md).
 
-## Prerequisites
-
-Before you deploy the Azure Stack HCI operating system, you'll need to:
-
-- Determine whether your hardware meets the requirements for Azure Stack HCI clusters
-- Gather the required information for a successful deployment
-- Install Windows Admin Center on a management PC or server
-
-For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../../aks-hci/overview.md#what-you-need-to-get-started).
-
-### Determine hardware requirements
+## Determine hardware and network requirements
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability, so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
-At minimum, you will need two servers, a reliable high-bandwidth, low-latency network connection between servers, and SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each.
+At minimum, you will need two servers, a reliable high-bandwidth, low-latency network connection between servers, and SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each. However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the Azure Stack HCI [system requirements](../concepts/system-requirements.md).
 
-However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the Azure Stack HCI [system requirements](../concepts/system-requirements.md).
+Before you deploy the Azure Stack HCI operating system:
 
-### Gather information
+- Plan your [physical network requirements](../concepts/physical-network-requirements.md) and [host network requirements](../concepts/host-network-requirements.md).
+- If your deployment will stretch across multiple sites, determine how many servers you will need at each site, and whether the cluster configuration will be active/passive or active/active. For more information, see [Stretched clusters overview](../concepts/stretched-clusters.md).
+- Carefully [choose drives](../concepts/choose-drives.md) and [plan volumes](../concepts/plan-volumes.md) to meet your storage performance and capacity requirements.
 
-To prepare for deployment, gather the following details about your environment:
+For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../../aks-hci/overview.md#what-you-need-to-get-started).
+
+## Gather information
+
+To prepare for deployment, you'll need to take note of the server names, domain names, RDMA protocols and versions, and VLAN ID for your deployment. Gather the following details about your environment:
 
 - **Server names:** Get familiar with your organization's naming policies for computers, files, paths, and other resources. You'll need to provision several servers, each with unique names.
 - **Domain name:** Get familiar with your organization's policies for domain naming and domain joining. You'll be joining the servers to your domain, and you'll need to specify the domain name.
@@ -47,7 +43,7 @@ To prepare for deployment, gather the following details about your environment:
 - **VLAN ID:** Note the VLAN ID to be used for the network adapters on the servers, if any. You should be able to obtain this from your network administrator.
 - **Site names:** For stretched clusters, two sites are used for disaster recovery. You can set up sites using [Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview), or the Create cluster wizard can automatically set them up for you. Consult your domain administrator about setting up sites.
 
-### Install Windows Admin Center
+## Install Windows Admin Center
 
 Windows Admin Center is a locally deployed, browser-based app for managing Azure Stack HCI. The simplest way to [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) is on a local management PC (desktop mode), although you can also install it on a server (service mode).
 
@@ -152,4 +148,4 @@ After configuring the operating system as needed with Sconfig on each server, yo
 
 To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
-> [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
+> [Create an Azure Stack HCI cluster](create-cluster.md)
