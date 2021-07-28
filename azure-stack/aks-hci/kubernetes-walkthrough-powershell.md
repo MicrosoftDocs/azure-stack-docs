@@ -29,7 +29,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
 
-1. **Close all open PowerShell windows**, reopen a fresh window as an administrator, and run the following command:
+1. **Close all open PowerShell windows**, open a new PowerShell window as an administrator, and run the following command:
 
    ```powershell
    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
