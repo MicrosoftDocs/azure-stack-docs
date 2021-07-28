@@ -826,18 +826,18 @@
       "redirect_document_id": false 
     },
     { 
-      "source_path": "azure-stack/hci/manage/health-service-overview.md", 
-      "redirect_url": "/windows-server/failover-clustering/health-service-overview", 
+      "source_path": "/windows-server/failover-clustering/health-service-overview.md", 
+      "redirect_url": "azure-stack/hci/manage/health-service-overview", 
       "redirect_document_id": false 
     },
     { 
-      "source_path": "azure-stack/hci/manage/health-service-actions.md", 
-      "redirect_url": "/windows-server/failover-clustering/health-service-actions", 
+      "source_path": "/windows-server/failover-clustering/health-service-actions.md", 
+      "redirect_url": "azure-stack/hci/manage/health-service-actions", 
       "redirect_document_id": false 
     },
     { 
-      "source_path": "azure-stack/hci/manage/health-service-settings.md", 
-      "redirect_url": "/windows-server/failover-clustering/health-service-settings", 
+      "source_path": "/windows-server/failover-clustering/health-service-settings.md", 
+      "redirect_url": "azure-stack/hci/manage/health-service-settings", 
       "redirect_document_id": false 
     },
     { 
