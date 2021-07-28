@@ -1,13 +1,13 @@
 ---
 description: "Learn more about: Health Service settings"
-title: Health Service settings
+title: Modify Health Service settings
 manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
 ms.date: 07/28/2021
 ---
-# Health Service settings
+# Modify Health Service settings
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 

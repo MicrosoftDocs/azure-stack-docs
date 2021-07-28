@@ -1,13 +1,13 @@
 ---
 description: "Learn more about: Health Service actions"
-title: Health Service actions
+title: Track Health Service actions
 manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
 ms.date: 07/28/2021
 ---
-# Health Service actions
+# Track Health Service actions
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
 
