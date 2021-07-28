@@ -1,7 +1,7 @@
 ---
 title: Get-AksHciNodePool
 author: jessicaguan
-description: The Get-AksHciNodePool PowerShell command lists the node pools in a Kubernetes cluster
+description: The Get-AksHciNodePool PowerShell command lists the node pools in a Kubernetes cluster.
 ms.topic: reference
 ms.date: 7/20/2021
 ms.author: jeguan
@@ -10,7 +10,7 @@ ms.author: jeguan
 # Get-AksHciNodePool
 
 ## Synopsis
-List the node pools in a Kubernetes cluster
+Lists the node pools in a Kubernetes cluster.
 
 ## Syntax
 
@@ -20,7 +20,7 @@ Get-AksHciNodePool -clusterName <String>
 ```
 
 ## Description
-List the node pools in a Kubernetes cluster
+Lists the node pools in a Kubernetes cluster.
 
 ## Examples
 
