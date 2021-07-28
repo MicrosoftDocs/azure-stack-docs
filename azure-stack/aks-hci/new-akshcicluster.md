@@ -3,7 +3,7 @@ title: New-AksHciCluster
 author: jessicaguan
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 7/28/2021
 ms.author: jeguan
 ---
 
@@ -32,7 +32,7 @@ New-AksHciCluster -name <String>
 ```
 
 > [!NOTE]
-> The the parameter set above is going to be deprecated in a future release. This will still be supported and will be the default behavior when running `New-AksHciCluster` with the only required parameter `-name`. AKS on Azure Stack HCI is introducting node pools to its cluster deployment experience and is now supporting the following parameter set.  The old parameter set will still be supported and remain the default behavior when running `New-AksHciCluster` with the only required parameter `-name` while you are onboarding to the new node pool experience and until the old parameters are fully deprecated. Please see [here](use-node-pools.md) for more information on the new node pool experience.
+> The the parameter set above is going to be deprecated in a future release. This will still be supported and will be the default behavior when running `New-AksHciCluster` with the only required parameter `-name`. AKS on Azure Stack HCI is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. Please see [here](use-node-pools.md) for more information on the new node pool experience.
 
 ```powershell
 New-AksHciCluster -name <String>
@@ -64,17 +64,65 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 
 ## Examples
 
-### New AKS-HCI cluster with required parameters
+### New AKS-HCI cluster with required parameter
 
 ```powershell
 PS C:\> New-AksHciCluster -name mycluster
 ```
 
-### New AKS-HCI cluster with node pool
+The above example deploys a cluster with 1 control plane node, a Linux node pool called *mycluster-linux* with node count of 1, and an empty Windoes node pool called *mycluster-windows*. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+
+**Output**
+```output
+ProvisioningState     : provisioned
+KubernetesVersion     : v1.20.7
+NodePools             : {mycluster-linux, mycluster-windows}
+WindowsNodeCount      : 0
+LinuxNodeCount        : 1
+ControlPlaneNodeCount : 1
+Name                  : mycluster
+```
+
+### New AKS-HCI cluster with the new parameter set
 
 ```powershell
 PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType linux
 ```
+
+**Output**
+```output
+ProvisioningState     : provisioned
+KubernetesVersion     : v1.20.7
+NodePools             : nodepool1
+WindowsNodeCount      : 0
+LinuxNodeCount        : 0
+ControlPlaneNodeCount : 1
+Name                  : mycluster
+```
+
+The above example deploys a cluster with 1 control plane and 1 Linux node pool with a node count of 1.
+
+> [!NOTE]
+> If you are using the new parameter set like in the example above, the `WindowsNodeCount` and `LinuxNodeCount` field in the output will not be accurate and always show as `0`. To get an accurage count of your Windows or Linux nodes, please use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
+
+### New AKS-HCI cluster with new parameter set's default values
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1
+```
+
+**Output**
+```output
+ProvisioningState     : provisioned
+KubernetesVersion     : v1.20.7
+NodePools             : nodepool1
+WindowsNodeCount      : 0
+LinuxNodeCount        : 0
+ControlPlaneNodeCount : 1
+Name                  : mycluster
+```
+
+The above command deploys an cluster with its default values. It deploys a cluster that is the same cluster that the second example command deploys.
 
 ## Parameters
 
@@ -230,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -nodeCount
-The number of nodes in your node pool. **This is a new parameter as part of the new node pool experience.**
+The number of nodes in your node pool. If the parameter `-nodePoolName` is used, the default value is 1. **This is a new parameter as part of the new node pool experience.**
 
 ```yaml
 Type: System.Int32
@@ -239,13 +287,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -nodeVmSize
-The size of the nodes or VMs in your node pool. **This is a new parameter as part of the new node pool experience.**
+The size of the nodes or VMs in your node pool. If the parameter `-nodePoolName` is used, the default value is Standard_K8S3_v1. **This is a new parameter as part of the new node pool experience.**
 
 ```yaml
 Type: System.String
@@ -254,13 +302,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Standard_K8S3_v1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -osType
-TThe OS type of the nodes in your node pool. The value must be either *Linux* or *Windows*. **This is a new parameter as part of the new node pool experience.**
+TThe OS type of the nodes in your node pool. The value must be either *Linux* or *Windows*. If the parameter `-nodePoolName` is used the default value is *Linux*. **This is a new parameter as part of the new node pool experience.**
 
 ```yaml
 Type: System.String

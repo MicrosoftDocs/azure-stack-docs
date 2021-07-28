@@ -55,13 +55,15 @@ Use the steps in the following example to update the Kubernetes version:
    Get-AksHciCluster
    ```
 
-   ```output
-   ProvisioningState     : Deployed
-   KubernetesVersion     : v1.19.7
-   Name                  : sandpit
-   ControlPlaneNodeCount : 1
+   **Output**
+   ```
+   ProvisioningState     : provisioned
+   KubernetesVersion     : v1.20.7
+   NodePools             : linuxnodepool
    WindowsNodeCount      : 0
    LinuxNodeCount        : 0
+   ControlPlaneNodeCount : 1
+   Name                  : mycluster   
     ```
 
 2. To get the available Kubernetes versions, run the following command:
@@ -70,21 +72,20 @@ Use the steps in the following example to update the Kubernetes version:
    PS C:\> Get-AksHciKubernetesVersion
    ```
 
-   ```output
-   OrchestratorType OrchestratorVersion OS          IsPreview
-   ---------------- ------------------- --          ---------
-   Kubernetes       v1.18.14            Linux       False
-   Kubernetes       v1.18.17            Linux       False
-   Kubernetes       v1.19.7             Linux       False
+   **Output**
+   ```
+   OrchestratorType OrchestratorVersion OS      IsPreview
+   ---------------- ------------------- --      ---------
    Kubernetes       v1.19.9             Linux       False
-   Kubernetes       v1.20.2             Linux       False
+   Kubernetes       v1.19.11            Linux       False
    Kubernetes       v1.20.5             Linux       False
-   Kubernetes       v1.18.14            Windows     False
-   Kubernetes       v1.18.17            Windows     False
-   Kubernetes       v1.19.7             Windows     False
+   Kubernetes       v1.20.7             Linux       False
+   Kubernetes       v1.21.1             Linux       False
    Kubernetes       v1.19.9             Windows     False
-   Kubernetes       v1.20.2             Windows     False
+   Kubernetes       v1.19.11            Windows     False
    Kubernetes       v1.20.5             Windows     False
+   Kubernetes       v1.20.7             Windows     False
+   Kubernetes       v1.21.1             Windows     False
    ```
 
    The output shows the Kubernetes versions and operating systems that the version is available on. You can see that there are more upgrade versions available. However, when upgrading clusters, you cannot skip versions. For example, v1.18.xx --> v1.19.xx is allowed, but v1.18.xx --> v1.20.xx is not.
@@ -94,7 +95,7 @@ Use the steps in the following example to update the Kubernetes version:
    To update the Kubernetes version, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.20.5
+   PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
    ```
 
    > [!Note]
@@ -112,7 +113,7 @@ Use the steps in the following example to update the OS version:
 1. To get available workload cluster updates, run the following command:
 
    ```powershell
-   PS C:\> Get-AksHciClusterUpgrades -name mycluster
+   PS C:\> Get-AksHciClusterUpdates -name mycluster
    ```
 
    ```output
@@ -125,7 +126,7 @@ Use the steps in the following example to update the OS version:
 2. To initiate the operating system version update, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.19.7 -operatingSystem
+   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.21.1 -operatingSystem
    ```
 
 ## Update both the OS and the Kubernetes version
@@ -135,7 +136,7 @@ Use the steps in the following example to update the OS version:
 
 ### Example for updating a workload cluster
 
-The example below assumes there's a new Kubernetes version available, and the current version number is v1.18.12.
+The example below assumes there's a new Kubernetes version available, and the current version number is v1.20.7.
 
 1. To get all available workload cluster updates, run the following command:
 
@@ -153,7 +154,7 @@ The example below assumes there's a new Kubernetes version available, and the cu
 2. To initiate the workload cluster update, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.20.5
+   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.21.1
    ```
 
 ## Validate an upgrade
@@ -164,16 +165,17 @@ Confirm that the upgrade was successful using the [Get-AksHciCluster](get-akshci
 Get-AksHciCluster -name mycluster
 ```
 
-The following example output shows the cluster runs *KubernetesVersion v1.20.5*:
+The following example output shows the cluster runs *KubernetesVersion v1.21.1*:
 
-```Output
-Name            : mycluster
-Version         : v1.20.5
-Control Planes  : 1
-Linux Workers   : 1
-Windows Workers : 0
-Phase           : provisioned
-Ready           : True
+**Output**
+```
+ProvisioningState     : provisioned
+KubernetesVersion     : v1.21.1
+NodePools             : linuxnodepool
+WindowsNodeCount      : 0
+LinuxNodeCount        : 0
+ControlPlaneNodeCount : 1
+Name                  : mycluster
 ```
 
 ## Delete the cluster

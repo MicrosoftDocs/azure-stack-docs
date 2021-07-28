@@ -19,12 +19,12 @@ Use the [Set-AksHciCluster](set-akshcicluster.md) command to scale the control p
 Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 ```
 
-## Scale the worker nodes
+## Scale the worker nodes in the node pool
 
-Use the [Set-AksHciCluster](set-akshcicluster.md) command to scale the worker nodes. The following example scales the Linux nodes and Windows nodes in a cluster named *mycluster* to three and one nodes respectively.
+Use the [Set-AksHciNodePool](set-akshcinodepool.md) command to scale the node pool. The following example scales a node pool called *linuxnodepool* in a cluster named *mycluster* to a node count of 3. 
 
 ```powershell
-Set-AksHciCluster -name mycluster -linuxNodeCount 3 -windowsNodeCount 1
+Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -nodeCount 3
 ``` 
 
 ## Next steps

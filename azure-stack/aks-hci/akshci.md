@@ -51,9 +51,6 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a proxy settings object. |
 | [remove-akshcigmsacredentialspec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
-| [new-akshcinetworksetting](new-akshcinetworksetting.md) | Create a network object to pass into `Set-AksHciConfig` |
-| [new-akshciproxysetting](new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
-| [new-akshcistoragecontainer](new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [remove-akshciclusternetwork](remove-akshciclusternetwork.md) | Remove a cluster network object. |
 | [remove-akshcicluster](remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [remove-akshcigmsacredentialspec](remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |

@@ -152,9 +152,9 @@ kubectl get nodes
 
 **Output:**
 ```
-NAME              STATUS   ROLES    AGE     VERSION
-moc-l9oyb6kgedw   Ready    master   6m10s   v1.18.14
-moc-le9q8mro8mg   Ready    <none>   4m42s   v1.18.14
+NAME              STATUS   ROLES                  AGE     VERSION
+moc-lbs6got5dqo   Ready    <none>                 6d20h   v1.20.7
+moc-lel7tzxdt30   Ready    control-plane,master   6d20h   v1.20.7
 ```
 
 ## Next steps

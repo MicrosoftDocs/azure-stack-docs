@@ -17,7 +17,7 @@ This article shows you how to create and manage multiple node pools in an AKS on
 
 ## Before you bein
 
-You need to have the AksHci PowerShell version x.xx.xx or later installed. If you already have the PowerShell module installed, run the following command to find the version.
+You need to have the AksHci PowerShell version 1.1.0 or later installed. If you already have the PowerShell module installed, run the following command to find the version.
 
 ```powershell
 Get-Command -Module AksHci
@@ -87,7 +87,7 @@ Phase        : Deployed
 ```
 
 ```powershell
-Get-AksHciNodePool -clustername myclsuter -name windowsnodepool
+Get-AksHciNodePool -clusterName mycluster -name windowsnodepool
 ```
 
 Example Output

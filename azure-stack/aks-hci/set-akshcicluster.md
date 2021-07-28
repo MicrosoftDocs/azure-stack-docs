@@ -3,7 +3,7 @@ title: Set-AksHciCluster
 author: jessicaguan
 description: The Set-AksHciCluster PowerShell command scales the number of control plane nodes or worker nodes in a cluster.
 ms.topic: reference
-ms.date: 04/12/2021
+ms.date: 07/28/2021
 ms.author: jeguan
 ---
 
@@ -26,6 +26,9 @@ Set-AksHciCluster -name <String>
                   -linuxNodeCount <int>
                   -windowsNodeCount <int>
 ```
+
+> [!NOTE]
+> The parameter set above for the worker nodes will be deprecated in a future release. AKS on Azure Stack HCI is introducing node pools in workload clusters. To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 ## Description
 Scale the number of control plane nodes or worker nodes in a cluster. The control plane nodes and the worker nodes must be scaled independently.
