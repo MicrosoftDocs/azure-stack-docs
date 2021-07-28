@@ -29,7 +29,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
 
-1. **Close all open PowerShell windows**, and then open a fresh PowerShell window and run the following command as an administrator:
+1. **Close all open PowerShell windows**, and then reopen a fresh window as an administrator and run the following command:
 
    ```powershell
    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
@@ -39,7 +39,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 2. Close the PowerShell window and delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules`. 
 
-3. Open a new PowerShell window as an administrator and run the following command to install the Azure PowerShell modules:
+3. Open a new PowerShell window as an administrator and run the following commands to install the Azure PowerShell modules:
  
    ```powershell
    Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
@@ -55,7 +55,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    Import-Module AksHci
    ```
 
-4. To check if you have the latest version of the PowerShell module, close all PowerShell windows and reopen a new administrative session. 
+4. To check if you have the latest version of the PowerShell module, close all PowerShell windows, reopen a new administrative session, and run the following command: 
   
    ```powershell
    Get-Command -Module AksHci
