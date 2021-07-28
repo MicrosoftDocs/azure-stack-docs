@@ -42,11 +42,11 @@ The Health Service automates most stages of the physical disk lifecycle. Let's s
 
 Physical disks are automatically retired when they can no longer be used, and a corresponding Fault is raised. There are several cases:
 
--   Media Failure: the physical disk is definitively failed or broken, and must be replaced.
+- Media Failure: the physical disk is definitively failed or broken, and must be replaced.
 
--   Lost Communication: the physical disk has lost connectivity for over 15 consecutive minutes.
+- Lost Communication: the physical disk has lost connectivity for over 15 consecutive minutes.
 
--   Unresponsive: the physical disk has exhibited latency of over 5.0 seconds three or more times within an hour.
+- Unresponsive: the physical disk has exhibited latency of over 5.0 seconds three or more times within an hour.
 
 >[!NOTE]
 > If connectivity is lost to many physical disks at once, or to an entire node or storage enclosure, the Health Service will *not* retire these disks since they are unlikely to be the root problem.
