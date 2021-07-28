@@ -98,6 +98,12 @@
       href: manage/update-cluster.md
     - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
+    - name: Monitor clusters with Health Service
+      href: manage/health-service-overview.md
+    - name: Track Health Service actions
+      href: manage/health-service-actions.md
+    - name: Modify Health Service settings
+      href: manage/health-service-settings.md
     - name: Configure firewalls
       href: manage/configure-firewalls.md
     - name: Set up a cluster witness
