@@ -3,11 +3,12 @@ title: Deploy Node.js app to VM in Azure Stack Hub
 description: Deploy an Node.js app to Azure Stack Hub.
 author: mattbriggs
 
-ms.topic: overview
-ms.date: 12/2/2020
+ms.topic: how-to
+ms.date: 7/27/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 7/27/2021
+ms.custom: contperf-fy22q1
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -19,6 +20,8 @@ ms.lastreviewed: 12/2/2020
 # Deploy a Node.js web app to a VM in Azure Stack Hub
 
 You can create a virtual machine (VM) to host a Node.js web app in Azure Stack Hub. In this article, you set up a server, configure the server to host your Node.js web app, and then deploy the app to Azure Stack Hub.
+
+If you are looking for general information about global Azure, see [Azure for JavaScript & Node.js developers](/azure/developer/javascript/). This article is for using Azure Stack Hub, an on-premises version of Azure.
 
 ## Create a VM
 
@@ -38,28 +41,26 @@ You can create a virtual machine (VM) to host a Node.js web app in Azure Stack H
 
 1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
-1. At the bash prompt on your VM, enter the following command:
+2. At the bash prompt on your VM, enter the following command:
 
     ```bash  
-      sudo apt install nodejs-legacy
+      sudo apt-get update
+      sudo apt-get install nodejs
+      sudo apt-get install npm
     ```
 
-2. [Install NPM](https://www.npmjs.com/), a package manager for Node.js packages, or modules. Still connected to your VM in your SSH session, enter the following command:
+    This also installs [NPM](https://www.npmjs.com/), a package manager for Node.js packages, or modules. 
+
+3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        node --version
     ```
 
-3. [Install Git](https://git-scm.com), a widely distributed version-control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
+4. [Install Git](https://git-scm.com), a widely distributed version-control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        sudo apt-get -y install git
-    ```
-
-3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
-
-    ```bash  
-       node -v
     ```
 
 ## Deploy and run the app
@@ -89,4 +90,4 @@ You can create a virtual machine (VM) to host a Node.js web app in Azure Stack H
 
 - Learn more about how to [develop for Azure Stack Hub](azure-stack-dev-start.md).
 - Learn about [common deployments for Azure Stack Hub as IaaS](azure-stack-dev-start-deploy-app.md).
-- To learn the Node programming language and find additional resources for Node, see [Nodejs.org](https://nodejs.org).
+- To learn more about using Node.js with Azure, see [Azure for JavaScript & Node.js developers](/azure/developer/javascript/)
