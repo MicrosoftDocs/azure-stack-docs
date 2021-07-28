@@ -4,6 +4,8 @@ description: Learn how to create and manage multiple node pools for a cluster in
 services: 
 ms.topic: article
 ms.date: 07/14/2021
+ms.author: jeguan
+author: jessicaguan
 ---
 
 # Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI
