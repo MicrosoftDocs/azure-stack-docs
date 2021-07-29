@@ -32,7 +32,7 @@ This release includes the following fixes:
 
 ## Known issues 
 
-[!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-secret-rotation-related-known-issues.md)]
+[!INCLUDE [secret rotation related known issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
 ## Next steps
 

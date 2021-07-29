@@ -98,6 +98,12 @@
       href: manage/update-cluster.md
     - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
+    - name: Monitor clusters with Health Service
+      href: manage/health-service-overview.md
+    - name: Track Health Service actions
+      href: manage/health-service-actions.md
+    - name: Modify Health Service settings
+      href: manage/health-service-settings.md
     - name: Configure firewalls
       href: manage/configure-firewalls.md
     - name: Set up a cluster witness
@@ -140,8 +146,6 @@
       href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
-    - name: Monitor with Azure Monitor
-      href: manage/azure-monitor.md
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
     - name: Use Azure Backup
