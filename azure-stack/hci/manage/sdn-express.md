@@ -191,9 +191,9 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 
 1. After the NC VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [How to configure DNS dynamic updates](/troubleshoot/windows-server/networking/configure-dns-dynamic-updates-windows-server-2003).
 
-## Configuration file samples
+## Configuration sample files
 
-The following config file samples for deploying SDN are available on the [Microsoft SDN GitHub](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) repository:
+The following configuration sample files for deploying SDN are available on the [Microsoft SDN GitHub](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) repository:
 
 - **Traditional VLAN networks.psd1** - Deploy Network Controller for managing network policies like microsegmentation and Quality of Service on traditional VLAN Networks.
 
