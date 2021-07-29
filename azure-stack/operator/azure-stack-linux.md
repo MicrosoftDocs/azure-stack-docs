@@ -3,7 +3,7 @@ title: Add Linux images to the Azure Stack Hub Marketplace
 description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 07/27/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/18/2020
@@ -25,7 +25,7 @@ There are frequent updates to these images, so check back often to keep up-to-da
 
 ## Prepare your own image
 
-Wherever possible, download the images available through marketplace management. These images have been prepared and tested for Azure Stack Hub.
+Wherever possible, download the images available through marketplace management. These images have been prepared and tested with Azure Stack Hub.
 
 ### Azure Linux Agent
 
@@ -115,6 +115,7 @@ $VirtualMachine =Set-AzVMOperatingSystem -VM $VirtualMachine `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
 ```
+
 ### [AzureRM modules](#tab/azurerm)
 
 ```powershell
@@ -123,6 +124,7 @@ $VirtualMachine =Set-AzureRMVMOperatingSystem -VM $VirtualMachine `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
 ```
+
 ---
 
 ## Add your image to Marketplace
