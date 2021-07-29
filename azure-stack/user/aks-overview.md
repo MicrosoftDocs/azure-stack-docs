@@ -165,7 +165,7 @@ Service Principals are a requirement for creating and managing an AKS cluster. S
 
 ## Troubleshooting
 
-Troubleshooting AKS clusters in most respects is no different than troubleshooting most Kubernetes clusters. There is information in the web, for example [here](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/). However, for AKS clusters on ASH we have some facilities in the area of log collection, please see this [article](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack) on the topic.
+Troubleshooting AKS clusters in most respects is no different than troubleshooting most Kubernetes clusters. There is information in the web, for example [here](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/). However, for AKS clusters on ASH we have some facilities for log collection, please see this [article](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack) on the topic.
 
 Another resource that is available to AKS users on ASH is the “Diagnostic settings” feature available in the Tenant Portal’s AKS cluster blade.
 
