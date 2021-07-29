@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 07/07/2021
+ms.date: 07/28/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -193,15 +193,15 @@ The SDN Express script deploys your specified SDN infrastructure. When the scrip
 
 ## Configuration file samples
 
-The following config file samples for deploying SDN are available on the [Microsoft SDN GitHub](https://github.com/microsoft/SDN) repository:
+The following config file samples for deploying SDN are available on the [Microsoft SDN GitHub](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) repository:
 
-- **Traditional VLAN Networks.psd1** - Deploy Network Controller for managing network policies like microsegmentation and Quality of Service on traditional VLAN Networks
+- **Traditional VLAN networks.psd1** - Deploy Network Controller for managing network policies like microsegmentation and Quality of Service on traditional VLAN Networks.
 
-- **Virtualized networks.psd1** - Deploy Network Controller for managing virtual networks and network policies on virtual networks
+- **Virtualized networks.psd1** - Deploy Network Controller for managing virtual networks and network policies on virtual networks.
 
-- **Software Load Balancer.psd1** - Deploy Network Controller and Software Load Balancer for load balancing on virtual networks
+- **Software Load Balancer.psd1** - Deploy Network Controller and Software Load Balancer for load balancing on virtual networks.
 
-- **Gateways.psd1** - Deploy Network Controller, Software Load Balancer and Gateway for connectivity to external networks  
+- **SDN Gateways.psd1** - Deploy Network Controller, Software Load Balancer and Gateway for connectivity to external networks.
 
 ## Next steps
 
