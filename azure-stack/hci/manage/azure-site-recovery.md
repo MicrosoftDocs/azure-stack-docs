@@ -10,7 +10,7 @@ ms.localizationpriority: low
 
 # Protect Azure Stack HCI VMs using Azure Site Recovery
 
->Applies To: Windows Server 2019
+>Applies To: Windows Server 2019, Azure Stack HCI version 20H2
 
 Windows Admin Center streamlines the process of replicating virtual machines (VMs) on your servers or clusters, giving you the power to take advantage of Azure from your own datacenter. To automate setup, you connect Windows Admin Center to Azure.
 
