@@ -1,18 +1,18 @@
 ---
-title: Using Azure Kubernetes Service on Azure Stack Hub
-description: Learn how to use Azure Kubernetes Service on Azure Stack Hub.
+title: Using Azure Kubernetes Service on Azure Stack Hub with the CLI
+description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
 author: mattbriggs
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 08/15/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 07/23/2021
+ms.lastreviewed: 08/15/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
 ---
 
-# Using Azure Kubernetes Service on Azure Stack Hub
+# Using Azure Kubernetes Service on Azure Stack Hub with the CLI
 
 This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes the main set of scenarios to get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
 
@@ -534,65 +534,7 @@ Consistency check between Azure and Azure Stack Hub
 1.  Select a combination of commands from the ones tested above, from the "Command Reference" section below, or from your own day-to-day scripts.
 2.  Apply them to Azure, and later to Azure Stack Hub. Please note any discrepancies not expected and provide [feedback](https://aka.ms/aks-ash-feedback).
 
-## Use the AKS Portal
 
-You can use the AKS portal to discover, create, scale, upgrade, and delete AKS clusters.
-
-### Portal: Discover available AKS clusters
-
-1.  In the Azure Stack tenant portal find the "All Services" blade and select "Kubernetes services"
-
-    ![Azure Stack tenant portal](media/aks-how-to-use/azure-stack-tenant-portal.png)
-
-1.  Verify that all clusters that you have created appear in the "Kubernetes service" blade:
-
-    ![all clusters that you have created](media/aks-how-to-use/all-clusters-that-you-have-created.png)
-
-1.  Verify that you can view the details of any of the clusters:
-
-    ![details of any of the clusters](media/aks-how-to-use/details-of-any-of-the-clusters.png)
-
-### Portal: Create cluster
-
-1.  In the Kubernetes services blade select **Add**.
-
-    ![select add](madia/aks-how-to-use/select-add-cluster.png)
-
-2.  Follow the blades that guide you in the process of creating an AKS cluster.
-
-### Portal: Upgrade cluster
-
-1.  To upgrade the cluster's control plane, in the cluster's details blade select **Configuration**, then select the Kubernetes upgrade version to upgrade to and select save.
-
-    ![upgrade to and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
-
-    ![select version and select save](media/aks-how-to-use/upgrade-to-select-version.png)
-
-2. To upgrade the agent nodepool, in the cluster's details blade select **Node pools**, then either click on the nodepool version link or on the **Upgrade** link at the top.
-
-    ![select version link](media/aks-how-to-use/upgrade-agent-click-version.png)
-
-3.  Select the nodepool Kubernetes version
-
-    ![upgraded by checking the cluster](media/aks-how-to-use/upgraded-by-checking-the-cluster.png)
-
-### Portal: Scale cluster
-
-1. In the cluster's details blade select **Node pools**, then select the nodepool and click on **Scale**
-
-    ![scale cluster](media/aks-how-to-use/select-scale.png)
-
-2. In the scale panel on the right select the new node count
-
-    ![select new node count](media/aks-how-to-use/select-node-count.png)
-
-### Portal: Delete cluster
-
-1.  In the overview blade for the AKS cluster, find and select **Delete** as in the image below.
-
-    ![overview of the AKS cluster](media/aks-how-to-use/delete-cluster.png)
-
-2.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern "<…>_clustername_location", if it is not found it was properly deleted.
 
 
 ## Next steps

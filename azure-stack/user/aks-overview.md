@@ -3,10 +3,10 @@ title: Azure Kubernetes Service on Azure Stack Hub overview for users
 description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub overview for users.
 author: mattbriggs
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 08/15/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 07/01/2021
+ms.lastreviewed: 08/15/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -31,7 +31,7 @@ For more information on Kubernetes concepts, check out the [Kubernetes documenta
 
 ## User roles and responsibilities
 
-[Azure Stack Hub](https://azure.microsoft.com/en-us/products/azure-stack/hub/) (ASH) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: an [Operator](https://docs.microsoft.com/en-us/azure-stack/operator/) and a [Tenant](https://docs.microsoft.com/en-us/azure-stack/user/). In the specific context of AKS here are their tasks:
+[Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/) (ASH) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: an [Operator](https://docs.microsoft.com/azure-stack/operator/) and a [Tenant](https://docs.microsoft.com/azure-stack/user/). In the specific context of AKS here are their tasks:
 
 The following tasks fall on the **Azure Stack Hub Operator**:
 
@@ -42,7 +42,7 @@ The following tasks fall on the **Azure Stack Hub Operator**:
 
 The following tasks correspond to the **Tenant AKS Cluster Administrator**:
 
-1. Monitor the Kubernetes cluster agents’ health and act on any event and associated remediation. Note that even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
+1. Monitor the Kubernetes cluster agents' health and act on any event and associated remediation. Note that even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
 2. Use the Azure Kubernetes Service facilities to manage the lifecycle of the cluster, that is creation, upgrade, and scale operations.
 3. Maintenance operations: deploy applications, backup and restore, troubleshooting, collection of logs, and monitoring apps.
 4. For Details on the Tenant tasks see <TODO: Link to Quick Guide>
@@ -160,48 +160,10 @@ Given the differences between the two platforms outlined above, the user should 
 ### Service Principals can be provided by AAD or AD FS
 
 Service Principals are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create Service Principals is documented here:
-1. [AAD service principal](https://docs.microsoft.com/en-us/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
-2. [AD FS service principal](https://docs.microsoft.com/en-us/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
+1. [AAD service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
+2. [AD FS service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
-## Troubleshooting
 
-Troubleshooting AKS clusters in most respects is no different than troubleshooting most Kubernetes clusters. There is information in the web, for example [here](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/). However, for AKS clusters on ASH we have some facilities for log collection, please see this [article](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack) on the topic.
-
-Another resource that is available to AKS users on ASH is the “Diagnostic settings” feature available in the Tenant Portal’s AKS cluster blade.
-
-![Diagnostic Settings to collect Kubernetes logs](media/aks-troubleshoot/diagnostic-settings.png)
-
-From this blade users can collect information on:
-
-* kube-apiserver
-* kube-audit
-* kube-audit-admin
-* kube-controller-manager
-* kube-scheduler
-* AllMetrics
-
-## Known Issues
-
-<TODO: add Jiewen item>
-Some images will show up in marketplace, but they aren't usable directly
-[12:54 PM] Jiewen Zheng
-I hit a bug in AKS. Here is the repro step:
-1.	create a new subscription called sub1
-2.	create an AKS cluster called cluster1 under sub1
-3.	on the tenant portal, delete sub1
-4.	wait until sub1 disapears
-5.	query the list of clusters via admin ARM, you will see it still returns cluster1
-6.	navgiate to AKS clusters blade in admin portal you will see rainy cloud, because the clusters blade does not expect an ophan cluster
-
-[12:54 PM] Jiewen Zheng
-we could change the admin blade to handle the ophan cluster, but that cluster will be stuck there and there is no way to delete it
-
-[12:55 PM] Jiewen Zheng
-do you have a bug template? I think this need to be formally filed as a bug
-<TODO: Add Hongbin etcd design issue https://etcd.io/docs/v3.4/faq/#what-is-failure-tolerance  >
-<TODO: Check how is the HCI team deploying etcd as a service? As an app? Distrusted?
-<TODO>: Check with HCI team how they are handling NTP in Windows.
-<TODO> az aks update-credentials aad parameters
 ## Next steps
 
 [Learn how to use AKS on Azure Stack Hub](aks-how-to-use.md)
