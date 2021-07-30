@@ -32,7 +32,7 @@ New-AksHciCluster -name <String>
 ```
 
 > [!NOTE]
-> The the parameter set above is going to be deprecated in a future release. This will still be supported and will be the default behavior when running `New-AksHciCluster` with the only required parameter `-name`. AKS on Azure Stack HCI is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. Please see [here](use-node-pools.md) for more information on the new node pool experience.
+> The parameter set above is going to be deprecated in a future release. This set will still be supported and will be the default behavior when running `New-AksHciCluster` with the `-name` parameter, which is the only required parameter. AKS on Azure Stack HCI is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. For more information on the new node pool experience, see [Create and manage multiple node pools for a cluster](use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name <String>
@@ -70,7 +70,7 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 PS C:\> New-AksHciCluster -name mycluster
 ```
 
-The above example deploys a cluster with 1 control plane node, a Linux node pool called *mycluster-linux* with node count of 1, and an empty Windoes node pool called *mycluster-windows*. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+The example above deploys a cluster with one control plane node, a Linux node pool called *mycluster-linux* with a node count of one, and an empty Windoes node pool called *mycluster-windows*. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 **Output**
 ```output
@@ -100,10 +100,10 @@ ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
 
-The above example deploys a cluster with 1 control plane and 1 Linux node pool with a node count of 1.
+The example above deploys a cluster with one control plane and one Linux node pool with a node count of one.
 
 > [!NOTE]
-> If you are using the new parameter set like in the example above, the `WindowsNodeCount` and `LinuxNodeCount` field in the output will not be accurate and always show as `0`. To get an accurage count of your Windows or Linux nodes, please use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
+> If you are using the new parameter set as shown in the example above, the `WindowsNodeCount` and `LinuxNodeCount` fields in the output will not be accurate and always show as `0`. To get an accurage count of your Windows or Linux nodes, use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
 
 ### New AKS-HCI cluster with new parameter set's default values
 
@@ -122,7 +122,7 @@ ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
 
-The above command deploys an cluster with its default values. It deploys a cluster that is the same cluster that the second example command deploys.
+The command above deploys a cluster with its default values. The deployed cluster is the same cluster as the second example command deploys.
 
 ## Parameters
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneNodeCount
-The number of nodes in your control plane. Default is 1.
+The number of nodes in your control plane. Default is one.
 
 ```yaml
 Type: System.Int32
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -linuxNodeCount 
-The number of Linux nodes in your Kubernetes cluster. Default is 1. **This parameter will be deprecated in a future release**
+The number of Linux nodes in your Kubernetes cluster. Default is one. **This parameter will be deprecated in a future release.**
 
 ```yaml
 Type: System.Int32
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 ```
 
 ### -windowsNodeCount
-The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8 or higher. **This parameter will be deprecated in a future release**
+The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8 or higher. **This parameter will be deprecated in a future release.**
 
 ```yaml
 Type: System.Int32
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 
 
 ### -linuxNodeVmSize
-The size of your Linux Node VM. Default is Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`. **This parameter will be deprecated in a future release**
+The size of your Linux Node VM. Default is Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`. **This parameter will be deprecated in a future release.**
 
 ```yaml
 Type: System.String
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 ```
 
 ### -windowsNodeVmSize
-The size of your Windows Node VM. Default is Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`. **This parameter will be deprecated in a future release**
+The size of your Windows Node VM. Default is Standard_K8S3_v1. To get a list of available VM sizes, run `Get-AksHciVmSize`. **This parameter will be deprecated in a future release.**
 
 ```yaml
 Type: System.String
@@ -338,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### -primaryNetworkPlugin
-The network plug-in to be used for your deployment. This parameter takes in either `flannel` or `calico`. Calico is available for both Linux and Windows workload clusters.
+The network plug-in to be used for your deployment. This parameter uses either `flannel` or `calico`. Calico is available for both Linux and Windows workload clusters.
 
 ```yaml
 Type: System.String
