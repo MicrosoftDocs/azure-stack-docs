@@ -4,9 +4,9 @@ description: Learn about different features and considerations when working with
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/15/2021
+ms.date: 07/30/2021
 ms.author: mabrigg
-ms.reviewer: kivenkat
+ms.reviewer: thoroet
 ms.lastreviewed: 07/15/2021
 
 # Intent: As an Azure Stack user, I want to know what I need to do to move them to Azure Stack or work with them in Azure Stack.
@@ -39,7 +39,8 @@ Azure Stack Hub virtual machines (VMs) provide on-demand, scalable computing res
 | Cloud Witness | Select the endpoints from the storage account properties available in Azure Stack Hub. | [Cloud Witness](/windows-server/failover-clustering/deploy-cloud-witness) is a type of Failover Cluster quorum witness that uses Microsoft Azure to provide a vote on cluster quorum.<br>The endpoints in global Azure compared to Azure Stack Hub may look like:<br>For global Azure:<br>`https://mywitness.blob.core.windows.net/`<br>For Azure Stack Hub:<br>`https://mywitness.blob.<region>.<FQDN>/`|
 | Virtual machine diagnostics | Linux VM diagnostics are supported. | Linux VM diagnostics aren't supported in Azure Stack Hub. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. |
 | Nested virtualization VM sizes | Supported | Supported from release 2102 and later. |
-| Reserved VM instances | Supported | Not supported |
+| Reserved VM instances | Supported | Not supported. |
+| VM deallocation | Supported | Supports VM deallocation. The guest operating system recognizes all network adapters as the same device, and maintains settings. |
 
 ## VM sizes
 
