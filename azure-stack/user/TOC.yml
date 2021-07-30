@@ -281,10 +281,14 @@
             href: aks-overview.md
           - name: AKS commands
             href: aks-commands.md
-          - name: Guide to AKS
-            href: aks-how-to-use.md
+          - name: Use AKS with CLI
+            href: aks-how-to-use-cli.md
+          - name: Use AKS with portal
+            href: aks-how-to-use-portal.md
           - name: Support
             href: aks-support.md
+          - name: Troubleshoot
+            href: aks-troubleshoot.md
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
