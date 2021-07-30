@@ -4,9 +4,9 @@ description: How to connect virtual networks in Azure Stack Hub to virtual netwo
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 07/27/2021
 ms.author: sethm
-ms.reviewer: TBD
+ms.reviewer: unknown
 ms.lastreviewed: 11/20/2020
 
 # Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
