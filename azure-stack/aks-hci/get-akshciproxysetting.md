@@ -10,7 +10,7 @@ ms.author: mikek
 # Get-AksHciProxySetting
 
 ## Synopsis
-Retrieve a list or an individual proxy settings object.
+Retrieves a list or an individual proxy settings object.
 
 ## Syntax
 ```powershell
@@ -18,7 +18,7 @@ Get-AksHciProxySetting
 ```
 
 ## Description
- Returns a list of all proxy settings objects known to the AKS-HCI host.
+ Returns a list of all proxy settings objects known to the AKS on Azure Stack HCI host.
 
 > [!NOTE]
 > Only one settings object can be defined and active at this point.
