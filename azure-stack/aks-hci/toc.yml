@@ -85,6 +85,8 @@
             href: restart-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
+          - name: Use node pools
+            href: use-node-pools.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
