@@ -4,9 +4,9 @@ description: Learn how to use API version profiles with .NET SDK in Azure Stack 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/22/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with .NET SDK in Azure Stack so I can benefit from the use of profiles
@@ -31,7 +31,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
-- To use the latest API version of a service, use the **Latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
+- To use the latest API version of a service, use the **latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined inside the package.
 
@@ -59,7 +59,7 @@ You can combine all of the options in the same application.
 
 ## Prerequisites
 
-To use the .NET Azure SDK with Azure Stack Hub, you must supply the following values, and then set the values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
+To use the .NET Azure SDK with Azure Stack Hub, you must supply the following values, and then set the values with environment variables. To set the environment variables, see the instructions following the table for your specific operating system.
 
 | Value                     | Environment variables   | Description                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -122,13 +122,13 @@ Sample JSON file:
 
 - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Use this profile for services to be compatible with Azure Stack Hub for versions 1808 or later.
 
-- **Latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
+- **latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles][].
 
 ## Azure .NET SDK API profile usage
 
-Use the following code to instantiate a resource management client. Similar code can be used to instantiate other resource provider clients (such as Compute, Network, and Storage).
+Use the following code to instantiate a resource manager client. You can use similar code to instantiate other resource provider clients (such as Compute, Network, and Storage).
 
 ```csharp
 var client = new ResourceManagementClient(armEndpoint, credentials)
