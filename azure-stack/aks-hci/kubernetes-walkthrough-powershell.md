@@ -145,7 +145,7 @@ Install-AksHci
 
 ## Step 6: Create a Kubernetes cluster
 
-After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, please visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
+After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command. This example command creates a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of one. To read more information about node pools, visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType Linux
@@ -169,7 +169,7 @@ Name                  : mycluster
 ```
 
 > [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, use the command `Get-AksHciNodePool` with the specified cluster name. 
 
 To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](get-akshcinodepool.md) PowerShell command.
 
