@@ -166,4 +166,4 @@ Service Principals are a requirement for creating and managing an AKS cluster. S
 
 ## Next steps
 
-[Learn how to use AKS on Azure Stack Hub](aks-how-to-use.md)
+[Learn how to use AKS on Azure Stack Hub](aks-how-to-use-cli.md)
