@@ -112,4 +112,4 @@ tar xvf diagnosis.tar.gz
 
 ## Next steps
 
-[Learn how to use AKS on Azure Stack Hub](aks-how-to-use.md)
+[Learn how to use AKS on Azure Stack Hub](aks-how-to-use-cli.md)
