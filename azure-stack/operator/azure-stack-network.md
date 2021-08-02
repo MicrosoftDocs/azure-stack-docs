@@ -87,7 +87,7 @@ This /24 network is dedicated to internal Azure Stack components so that they ca
 
 ### Public VIP network
 
-The Public VIP Network is assigned to the network controller in Azure Stack. It's not a logical network on the switch. The SLB uses the pool of addresses and assigns /32 networks for tenant workloads. On the switch routing table, these /32 IPs are advertised as an available route via BGP. This network contains the external-accessible or public IP addresses. The Azure Stack infrastructure reserves the first 31 addresses from this public VIP network while the remainder is used by tenant VMs. The network size on this subnet can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts). We recommend that you plan for a /24 network.
+The public VIP network is assigned to the network controller in Azure Stack. It's not a logical network on the switch. The SLB uses the pool of addresses and assigns /32 networks for tenant workloads. On the switch routing table, these /32 IPs are advertised as an available route via BGP. This network contains the external-accessible or public IP addresses. The Azure Stack infrastructure reserves the first 31 addresses from this public VIP network while the remainder is used by tenant VMs. The network size on this subnet can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts). We recommend that you plan for a /24 network.
 
 #### Connecting to on-premises networks
 
@@ -100,10 +100,14 @@ There are several different options for connecting from resources inside the vir
 
 When a S2S VPN tunnel is used to connect resources to or from on-premises networks, you may encounter a scenario in which a resource also has a public IP address assigned, and it is no longer reachable via that public IP address. If the source attempts to access the public IP fall within the same subnet range that is defined in the local network gateway route table, Azure Stack Hub attempts to route the traffic outbound back to the source through the S2S tunnel, based on the routing rules that are configured.
 
+:::image type="content" source="media/azure-stack-network/pvip-1.png" alt-text="Route traffic" lightbox="media/azure-stack-network/pvip-1-expanded.png":::
+
 There are two solutions to this issue:
 
 - Route the traffic directed to the public VIP network to the internet.
 - Add a NAT device to NAT any subnet IPs defined in the local network gateway directed to the public IP VIP network.
+
+:::image type="content" source="media/azure-stack-network/pvip-2.png" alt-text="Route traffic solution" lightbox="media/azure-stack-network/pvip-2-expanded.png":::
 
 ### Switch infrastructure network
 
