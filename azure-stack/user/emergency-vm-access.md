@@ -103,13 +103,17 @@ As a user, you provide consent to the operator to create console access for a sp
 1. As a user, open PowerShell, sign in to your subscription, and run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
 
    ```powershell
-   $vmResourceId = <tenant VM Resource Id>
-   $enableVMAccessResponse = Invoke-AzureRmResourceAction `
-    -ResourceId $vmResourceId `
-    -Action "enableVmAccess" `
-    -ApiVersion "2020-06-01" `
-    -ErrorAction Stop `
-    -Force
+   $SubscriptionID= "your Azure subscription ID" 
+   $ResourceGroup = "TestRG" 
+   $VMName = "TestVM" 
+   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
+
+   $enableVMAccessResponse = Invoke-AzureRmResourceAction ` 
+       -ResourceId $vmResourceId ` 
+       -Action "enableVmAccess" ` 
+       -ApiVersion "2020-06-01" ` 
+       -ErrorAction Stop ` 
+       -Force 
    ```
 
 2. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
