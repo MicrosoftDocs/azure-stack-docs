@@ -96,9 +96,9 @@ Azure Stack Hub uses virtual networks for customer resources such as virtual mac
 There are several different options for connecting from resources inside the virtual network to on-premises/corporate resources:
 
 - Use public IP addresses from the public VIP network.
-- Use S2S VPN tunnels.
+- Use Virtual Network Gateway or Network Virtual Appliance (NVA).
 
-When a S2S VPN tunnel is used to connect resources to or from on-premises networks, you may encounter a scenario in which a resource also has a public IP address assigned, and it is no longer reachable via that public IP address. If the source attempts to access the public IP fall within the same subnet range that is defined in the local network gateway route table, Azure Stack Hub attempts to route the traffic outbound back to the source through the S2S tunnel, based on the routing rules that are configured:
+When a S2S VPN tunnel is used to connect resources to or from on-premises networks, you may encounter a scenario in which a resource also has a public IP address assigned, and it is no longer reachable via that public IP address. If the source attempts to access the public IP fall within the same subnet range that is defined in the Local Network Gateway Routes (Virtual Network Gateway) or user-defined route for NVA solutions, Azure Stack Hub attempts to route the traffic outbound back to the source through the S2S tunnel, based on the routing rules that are configured:
 
 :::image type="content" source="media/azure-stack-network/pvip-1.png" alt-text="Route traffic" lightbox="media/azure-stack-network/pvip-1-expanded.png":::
 
