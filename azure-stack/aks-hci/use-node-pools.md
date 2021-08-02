@@ -17,7 +17,7 @@ In AKS on Azure Stack HCI, nodes of the same configuration are now grouped toget
 
 This article shows you how to create and manage multiple node pools in an AKS on Azure Stack HCI cluster.
 
-## Before you bein
+## Before you begin
 
 You need to have the AksHci PowerShell version 1.1.0 or later installed. If you already have the PowerShell module installed, run the following command to find the version.
 
@@ -38,7 +38,7 @@ New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osTy
 
 ## Add a node pool
 
-The cluster named *mycluster* created in the pervios step has a single node pool. You can add a second node pool to the existing cluster using the [New-AksHciNodePool](new-akshcinodepool.md) command. the following example creates Windows node pool named *windowsnodepool* with 1 node.
+The cluster named *mycluster* created in the previous step has a single node pool. You can add a second node pool to the existing cluster using the [New-AksHciNodePool](new-akshcinodepool.md) command. the following example creates Windows node pool named *windowsnodepool* with 1 node.
 
 ```powershell
 New-AksHciNodePool -clusterName mycluster -name windowsnodepool -count 1 -osType windows
