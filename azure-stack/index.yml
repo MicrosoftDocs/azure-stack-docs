@@ -47,7 +47,7 @@ productDirectory:
   - title: Azure Kubernetes Service on Azure Stack HCI
     imageSrc: media/index/kubernetes-services.svg
     links:
-      - url: ./azure-stack/aks-hci/overview.md
+      - url: ./aks-hci/overview.md
         text: AKS on HCI overview        
 
 # conceptualContent section (optional)
