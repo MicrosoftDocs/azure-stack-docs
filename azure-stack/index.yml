@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: BryanLa
   ms.author: bryanla
-  ms.date: 11/04/2019
+  ms.date: 08/02/2021
   ms.custom: e2e-hybrid
 
 # highlightedContent section (optional)
@@ -44,6 +44,11 @@ productDirectory:
     links:
       - url: ./hci/overview.md
         text: Azure Stack HCI overview
+  - title: Azure Kubernetes Service on Azure Stack HCI
+    imageSrc: media/index/kubernetes-services.svg
+    links:
+      - url: ./azure-stack/aks-hci/overview.md
+        text: AKS on HCI overview        
 
 # conceptualContent section (optional)
 conceptualContent:
