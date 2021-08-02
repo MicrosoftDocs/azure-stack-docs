@@ -308,7 +308,7 @@ Accept wildcard characters: False
 ```
 
 ### -osType
-TThe OS type of the nodes in your node pool. The value must be either *Linux* or *Windows*. If the parameter `-nodePoolName` is used the default value is *Linux*. **This is a new parameter as part of the new node pool experience.**
+The OS type of the nodes in your node pool. The value must be either *Linux* or *Windows*. If the parameter `-nodePoolName` is used the default value is *Linux*. **This is a new parameter as part of the new node pool experience.**
 
 ```yaml
 Type: System.String
