@@ -144,4 +144,4 @@ As a user, you provide consent to the operator to create console access for a sp
    ```
 
    > [!NOTE]
-   > The user consent expires automatically after X hours, and will revoke all access by the operator.
+   > The user consent expires automatically after 8 hours, and will revoke all access by the operator.
