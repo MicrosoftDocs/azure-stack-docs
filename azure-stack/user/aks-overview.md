@@ -31,21 +31,21 @@ For more information on Kubernetes concepts, check out the [Kubernetes documenta
 
 ## User roles and responsibilities
 
-[Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/) (ASH) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: an [Operator](https://docs.microsoft.com/azure-stack/operator/) and a [Tenant](https://docs.microsoft.com/azure-stack/user/). In the specific context of AKS here are their tasks:
+[Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: the [cloud operator](/azure-stack/operator/) and a [user](/azure-stack/user/). 
 
 The following tasks fall on the **Azure Stack Hub Operator**:
 
-1. Make sure that the Azure Kubernetes Service base images are available in the stamp, this includes downloading them from Azure.
+1. Make sure that the Azure Kubernetes Service base images are available in the Azure Stack Hub instance, this includes downloading them from Azure.
 2. Make sure that the Azure Kubernetes Service is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
 3. Monitor the Azure Kubernetes Service and act on any alert and associated remediation.
-4. For details on the Operator tasks see <TODO: Link to Operator doc>
+4. For details on the Operator tasks see [Azure Kubernetes Service on Azure Stack Hub overview](../operator/aks-overview.md)
 
-The following tasks correspond to the **Tenant AKS Cluster Administrator**:
+The following tasks correspond to the user, that is, the **Tenant AKS Cluster Administrator**:
 
 1. Monitor the Kubernetes cluster agents' health and act on any event and associated remediation. Note that even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
 2. Use the Azure Kubernetes Service facilities to manage the lifecycle of the cluster, that is creation, upgrade, and scale operations.
 3. Maintenance operations: deploy applications, backup and restore, troubleshooting, collection of logs, and monitoring apps.
-4. For Details on the Tenant tasks see <TODO: Link to Quick Guide>
+4. For Details on the tenant tasks see [ Using Azure Kubernetes Service on Azure Stack Hub with the CLI](aks-how-to-use-cli.md)
 
 ## Feature comparison
 
@@ -102,12 +102,12 @@ AKS on Azure and on Azure Stack Hubs share the same source repository. There are
 
 In both scenarios, Azure Stack Hub is under the control of the customer. Also, customers may deploy Azure Stack Hub in fully disconnected, an *air-gapped*, environment. You may want to consider the following factors:
 
-1. For Operators:
-   * They need to ensure the AKS Service and corresponding images are available to Tenants.
-   * They need to partner with tenants and Microsoft Support when solving support incidents (ex: collecting stamp logs). See the Operator article for more details.
-2. For Tenants:
-   * They need to collaborate with the stamp Operator to request AKS base Images or AKS Service not available in the stamp.
-   * They also need to collaborate with the Operator and Microsoft Support during Support Cases. One task would be the collection of AKS cluster related logs using the information provided [here](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack).
+1. For cloud operators:
+   * They need to ensure the AKS Service and corresponding images are available to tenants.
+   * They need to partner with tenants and Microsoft Support when solving support incidents, for example, collecting logs). See the Operator article for more details.
+2. For users:
+   * They need to collaborate with the Azure Stack Hub operator to request AKS base Images or AKS Service not available in the Azure Stack Hub instance.
+   * They also need to collaborate with the Operator and Microsoft Support during Support Cases. One task would be the collection of AKS cluster related logs using the information provided [Troubleshooting AKS cluster issues on Azure Stack Hub](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack).
 
 ### Connect to Azure Stack Hub using the CLI or PowerShell
 
@@ -124,10 +124,10 @@ Azure Stack Hub supports a subset of the features available in global Azure. Tak
 1. No Standard Load Balancer. Azure Stack Hub only supports basic load balancer, this implies that the following features, which depend on Standard Load Balancer are not yet available with AKS on Azure Stack Hub:
     1. No parameter api-server-authorized-ip-ranges </azure/aks/api-server-authorized-ip-ranges>
     2. No parameter load-balancer-managed-ip-count [/azure/aks/load-balancer-standard\#scale-the-number-of-managed-outbound-public-ips](/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips)
-    3. No parameter enable-private-cluster </azure/aks/private-clusters>
-    4. No cluster autoscaler: </azure/aks/cluster-autoscaler>
+    3. No parameter enable-private-cluster `</azure/aks/private-clusters>`
+    4. No cluster autoscaler:` </azure/aks/cluster-autoscaler>`
         1. No parameter enable-cluster-autoscaler
-    5. [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available**.**
+    5. [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available.
     6. No multiple node-pool support. The node pool commands are not available.
     7. UI support for multi-node-pool operations is not enabled.
     8. Windows containers
@@ -153,15 +153,15 @@ Given the differences between the two platforms outlined above, the user should 
 
 | Common parameters                 |Notes |
 | ---                 | --- |
-| `--service-principal  --client-secret`  | Azure Stack Hub does not support Managed Identities yet; Service Principal credentials are always needed. |
-| `--load-balancer-sku basic`             | Azure Stack Hub does not support Standard Load Balancer yet (SLB). |
+| `--service-principal  --client-secret`  | Azure Stack Hub does not support managed identities yet; Service Principal credentials are always needed. |
+| `--load-balancer-sku basic`             | Azure Stack Hub does not support standard load balancer (SLB) yet. |
 | `--location`                            | The location value is specific to the customer's chosen one. |
 
-### Service Principals can be provided by AAD or AD FS
+### Service Principals can be provided by Azure AD or AD FS
 
-Service Principals are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create Service Principals is documented here:
-1. [AAD service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
-2. [AD FS service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
+Service principals are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How Azure Stack Hub tenants create service principals is documented here:
+1. [Azure AD service principal](/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
+2. [AD FS service principal](/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
 
 ## Next steps
