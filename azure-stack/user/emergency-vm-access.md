@@ -104,8 +104,8 @@ As a user, you provide consent to the operator to create console access for a sp
 
    ```powershell
    $SubscriptionID= "your Azure subscription ID" 
-   $ResourceGroup = "TestRG" 
-   $VMName = "TestVM" 
+   $ResourceGroup = "your resource group name" 
+   $VMName = "your VM name" 
    $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
 
    $enableVMAccessResponse = Invoke-AzureRmResourceAction ` 
