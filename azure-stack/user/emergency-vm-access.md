@@ -24,7 +24,7 @@ It is important to note that the operator can only authenticate to the operating
 
 The first step for the Azure Stack Hub operator is to enable Remote Desktop access to the Emergency Recovery Console VMs (ERCS), which host the privileged endpoints.
 
-The following command needs to run in the privileged endpoint (PEP). Please follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md?view=azs-2102):
+The following command needs to run in the privileged endpoint (PEP). Please follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md):
 
 ```powershell
 Enable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
@@ -40,7 +40,7 @@ Disable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
 
 In this scenario, the operator can decide which subscription should be able to use the emergency VM access feature.
 
-To run this script, you must have Azure Stack Hub PowerShell installed. Please follow the guidance on how to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md?view=azs-2102).
+To run this script, you must have Azure Stack Hub PowerShell installed. Please follow the guidance on how to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
 
 ### [AzureRM modules](#tab/azurerm1)
 
