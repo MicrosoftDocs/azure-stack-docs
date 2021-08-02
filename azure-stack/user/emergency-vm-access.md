@@ -12,7 +12,7 @@ ms.lastreviewed: 08/02/2021
 
 # Emergency VM access (EVA)
 
-The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the re-deploy operation does not help to recover access via the network.
+The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network.
 
 This feature must be enabled per subscription to work, and the operator needs to enable Remote Desktop access in order for the **cloudadmin** user to access the emergency recovery console VMs (ERCS).
 
@@ -24,7 +24,7 @@ It is important to note that the operator can only authenticate to the operating
 
 The first step for the Azure Stack Hub operator is to enable Remote Desktop access to the Emergency Recovery Console VMs (ERCS), which host the privileged endpoints.
 
-The following command needs to run in the privileged endpoint (PEP). Please follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md):
+The following command needs to run in the privileged endpoint (PEP). Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md):
 
 ```powershell
 Enable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
@@ -40,7 +40,7 @@ Disable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
 
 In this scenario, the operator can decide which subscription should be able to use the emergency VM access feature.
 
-To run this script, you must have Azure Stack Hub PowerShell installed. Please follow the guidance on how to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
+To run this script, you must have Azure Stack Hub PowerShell installed. Follow the guidance on how to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
 
 ### [AzureRM modules](#tab/azurerm1)
 
@@ -100,7 +100,7 @@ Invoke-AzResourceAction `
 
 As a user, you provide consent to the operator to create console access for a specific VM.
 
-1. As a user, open PowerShell, sign in to your subscription, and run the following script. Note that you need to replace the subscription ID, resource group, and VM name to construct the **VMResourceID**:
+1. As a user, open PowerShell, sign in to your subscription, and run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
 
    ```powershell
    $vmResourceId = <tenant VM Resource Id>
