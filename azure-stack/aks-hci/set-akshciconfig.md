@@ -44,7 +44,7 @@ Set-AksHciConfig [-imageDir <String>]
 ## Description
 Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the imageDir and cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
 
-## EXAMPLES
+## Examples
 
 ### To deploy on a 2-4 node cluster with DHCP networking
 
