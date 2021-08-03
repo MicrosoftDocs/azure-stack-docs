@@ -26,12 +26,12 @@ Make note of the following:
 4.  Support for public preview is done through a best effort from the Microsoft Support and product group teams.
 5.  Support cases of services in preview mode can't be created and addressed as production support cases.
 
- - Missing functionality.
- - Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
- - Potential security vulnerabilities.
- - Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
- - Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
- - Support cases of preview services cannot be created and addressed as production support cases.
+    - Missing functionality.
+    - Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
+    - Potential security vulnerabilities.
+    - Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
+    - Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
+    - Support cases of preview services cannot be created and addressed as production support cases.
 
 1.  Go to the [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback) to report the bug.
 2.  Provide description, repro steps, and description of expected behavior.
