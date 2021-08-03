@@ -29,29 +29,37 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
 
-**Close all open PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
+1. **Close all open PowerShell windows**, open a new PowerShell window as an administrator, and run the following command:
 
-```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-Install-Module -Name AksHci -Repository PSGallery
-```
+   ```powershell
+   Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+   Install-PackageProvider -Name NuGet -Force 
+   Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
+   ```
 
-```powershell
-Import-Module Az.Accounts
-Import-Module Az.Resources
-Import-Module AzureAD
-Import-Module AksHci
-```
+2. Close all existing PowerShell windows and open a fresh PowerShell window as an administrator and run the following commands to install the Azure PowerShell modules:
+ 
+   ```powershell
+   Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
+   Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
+   Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+   Install-Module -Name AksHci -Repository PSGallery
+   ```
 
-**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
+   ```powershell
+   Import-Module Az.Accounts
+   Import-Module Az.Resources
+   Import-Module AzureAD
+   Import-Module AksHci
+   ```
+
+3. To check if you have the latest version of the PowerShell module, close all PowerShell windows, reopen a new administrative session, and run the following command: 
   
-```powershell
-Get-Command -Module AksHci
-```
-To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
+   ```powershell
+   Get-Command -Module AksHci
+   ```
 
+To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
 
 ### Register the resource provider to your subscription
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI registration. To do that, run the following PowerShell commands.

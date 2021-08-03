@@ -105,7 +105,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
    - Sign in as a *service principal*: 
     
-     Before you sign in, [create a service principal through the Azure portal](../../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
+     Before you sign in, [create a service principal through the Azure portal](../../operator/give-app-access-to-resources.md) or CLI and assign it a role. Now, sign in by using the following command:
 
      ```azurecli  
      az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>

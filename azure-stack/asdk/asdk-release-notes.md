@@ -4,7 +4,7 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/18/2021
+ms.date: 07/19/2021
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -21,8 +21,8 @@ This article provides information about changes, fixes, and known issues in the 
 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](/api/search/rss?locale=en-us&search=ASDK+release+notes).
 
-::: moniker range="azs-2107"
-## Build 1.2107.xx.xx
+::: moniker range="azs-2108"
+## Build 1.2108.xx.xx
 
 ### New features
 

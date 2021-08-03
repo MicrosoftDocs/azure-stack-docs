@@ -4,9 +4,9 @@ description: Learn how to use API version profiles with GO in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/26/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Go in Azure Stack so I can benefit from the use of profiles.
@@ -78,7 +78,7 @@ To run a sample of Go code on Azure Stack Hub, follow these steps:
 
 3. If not available, create a subscription and save the subscription ID to be used later. For info on creating a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack Hub, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). Your Azure Stack Hub environment is now set up.
+4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack Hub, see [Use an app identity to access resources](../operator/give-app-access-to-resources.md). Your Azure Stack Hub environment is now set up.
 
 5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack Hub profile is **2019-03-01**. For example, to import a network module from the **2019-03-01** profile type, use the following code:
 
@@ -124,7 +124,7 @@ To get the **Authorizer** property from Azure Active Directory using the Go SDK,
 
 The Authorizer must be set as the authorizer for the resource client. There are different ways to get authorizer tokens on Azure Stack Hub by using client credentials:
 
-1. If a service principal with owner role on the subscription is available, skip this step. Otherwise, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) for instructions on creating a service principal that uses a client secret, and for help on how to assign it an "owner" role scoped to your subscription. Be sure to capture the service principal application ID and secret.
+1. If a service principal with owner role on the subscription is available, skip this step. Otherwise, see [Use an app identity to access resources](../operator/give-app-access-to-resources.md) for instructions on creating a service principal that uses a client secret, and for help on how to assign it an "owner" role scoped to your subscription. Be sure to capture the service principal application ID and secret.
 
 2. Import the **adal** package from **Go-AutoRest** in your code.
 

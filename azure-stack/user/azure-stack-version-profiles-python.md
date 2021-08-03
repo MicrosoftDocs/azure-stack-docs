@@ -4,9 +4,9 @@ description: Learn how to use API version profiles with Python in Azure Stack Hu
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/26/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Python in Azure Stack so I can benefit from the use of profiles.
@@ -41,8 +41,8 @@ The Python SDK supports the following API profiles:
 1. [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 2. For instructions on how to install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python&preserve-view=true).
 3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
-4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
-5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
+4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
+5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
 
 ## Prerequisites
 
@@ -165,7 +165,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
     pip install -r requirements.txt
     ```
 
-6. Create a [service principal](../operator/azure-stack-create-service-principals.md) to work with Azure Stack Hub. Make sure your service principal has the [contributor/owner role](../operator/azure-stack-create-service-principals.md#assign-a-role) on your subscription.
+6. Create a [service principal](../operator/give-app-access-to-resources.md) to work with Azure Stack Hub. Make sure your service principal has the [contributor/owner role](../operator/give-app-access-to-resources.md#assign-a-role) on your subscription.
 
 7. Set the following variables and export these environment variables into your current shell:
 

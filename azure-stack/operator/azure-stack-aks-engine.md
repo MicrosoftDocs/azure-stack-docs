@@ -34,11 +34,11 @@ The Kubernetes cluster will need service principal (SPN) and role-based permissi
 
 ### Create an SPN in Azure AD
 
-If you use Azure Active Directory (Azure AD) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](azure-stack-create-service-principals.md#create-app-registration-client-secret-aad).
+If you use Azure Active Directory (Azure AD) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-aad).
 
 ### Create an SPN in AD FS
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](azure-stack-create-service-principals.md#create-app-registration-client-secret-adfs).
+If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
 
 ## Add an AKS Base Image
 

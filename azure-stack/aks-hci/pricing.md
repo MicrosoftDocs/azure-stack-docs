@@ -3,13 +3,13 @@ title: Concepts - Pricing options for AKS on Azure Stack HCI
 description: Learn about the pricing options for AKS on Azure Stack HCI.
 author: mamezgeb
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 06/28/2021
 ms.author: mamezgeb
 ms.reviewer: 
 ---
 
 # Pricing for AKS on Azure Stack HCI
-Azure Kubernetes Service (AKS) on Azure Stack HCI is a subscription-based on-premises Kubernetes offering that can be run on Azure Stack HCI 20H2 or Windows Server 2019 Hyper-V clusters. The cost of AKS on Azure Stack HCI is based on usage, and the billing data is sent to Azure.
+Azure Kubernetes Service (AKS) on Azure Stack HCI is a subscription-based on-premises Kubernetes offering that can be run on Azure Stack HCI version 20H2 or Windows Server 2019 Hyper-V clusters. The cost of AKS on Azure Stack HCI is based on usage, and the billing data is sent to Azure.
 
 Use the following list to explore the pricing options:
 
