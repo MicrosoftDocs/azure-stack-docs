@@ -132,6 +132,11 @@ additionalContent:
             text: Download and extract the ASDK 
           - url: ./asdk/asdk-prepare-host.md
             text: Prepare the ASDK host computer   
+        # Test Card
+        - title: Test
+          links:
+          - url: ./asdk/asdk-deploy-considerations.md
+            text: Test            
     - title: Azure Stack Edge
       items:
         # Card
