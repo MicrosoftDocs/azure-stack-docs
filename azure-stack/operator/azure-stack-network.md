@@ -3,7 +3,7 @@ title: Network integration planning for Azure Stack Hub
 description: Learn how to plan for datacenter network integration with Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 08/02/2021
+ms.date: 08/03/2021
 ms.author: patricka
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
@@ -98,14 +98,14 @@ There are several different options for connecting from resources inside the vir
 - Use public IP addresses from the public VIP network.
 - Use Virtual Network Gateway or Network Virtual Appliance (NVA).
 
-When a S2S VPN tunnel is used to connect resources to or from on-premises networks, you may encounter a scenario in which a resource also has a public IP address assigned, and it is no longer reachable via that public IP address. If the source attempts to access the public IP fall within the same subnet range that is defined in the Local Network Gateway Routes (Virtual Network Gateway) or user-defined route for NVA solutions, Azure Stack Hub attempts to route the traffic outbound back to the source through the S2S tunnel, based on the routing rules that are configured:
+When a S2S VPN tunnel is used to connect resources to or from on-premises networks, you may encounter a scenario in which a resource also has a public IP address assigned, and it is no longer reachable via that public IP address. If the source attempts to access the public IP fall within the same subnet range that is defined in the Local Network Gateway Routes (Virtual Network Gateway) or user-defined route for NVA solutions, Azure Stack Hub attempts to route the traffic outbound back to the source through the S2S tunnel, based on the routing rules that are configured. The return traffic uses the private IP address of the VM, rather than be source NATed as the public IP address:
 
 :::image type="content" source="media/azure-stack-network/pvip-1.png" alt-text="Route traffic" lightbox="media/azure-stack-network/pvip-1-expanded.png":::
 
 There are two solutions to this issue:
 
 - Route the traffic directed to the public VIP network to the internet.
-- Add a NAT device to NAT any subnet IPs defined in the local network gateway directed to the public IP VIP network.
+- Add a NAT device to NAT any subnet IPs defined in the local network gateway directed to the public VIP network.
 
 :::image type="content" source="media/azure-stack-network/pvip-2.png" alt-text="Route traffic solution" lightbox="media/azure-stack-network/pvip-2-expanded.png":::
 
