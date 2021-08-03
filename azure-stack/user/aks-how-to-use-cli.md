@@ -67,7 +67,7 @@ This is the output from a Linux machine:
 
 ### [Windows](#tab/windows)
 
-For a Windows machine, download and install an MSI with the the Azure CLI with AKS support from https://aka.ms/ash-aks-cli-windows.
+For a Windows machine, download and install an MSI with the Azure CLI with AKS support from https://aka.ms/ash-aks-cli-windows.
 
 After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
@@ -149,7 +149,7 @@ Once those prerequisite steps are completed, you can proceed to test the followi
 
 ## Create an Ubuntu AKS cluster
 
-You can find the find the global Azure instructions at [Deploy an Azure Kubernetes Service cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough). The instructions here reflect the limitations of using AKS on Azure Stack Hub.
+You can find the global Azure instructions at [Deploy an Azure Kubernetes Service cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough). The instructions here reflect the limitations of using AKS on Azure Stack Hub.
 
 1.  Create a resource group:
 
@@ -158,8 +158,8 @@ You can find the find the global Azure instructions at [Deploy an Azure Kubernet
     ```
 
 2.  Make sure you have a Service Principal identity ready with contributor permission on your subscription to create clusters in it.
-    1.  To create an SPN using ADD follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
-    2.  To create an SPN using ADFS follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
+    1.  To create an SPN using ADD, follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
+    2.  To create an SPN using ADFS, follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
 3.  Create an AKS cluster of 3 agent nodes. Provide values to the parameters below, examples are provided. Run:
 
@@ -183,7 +183,7 @@ You can find the find the global Azure instructions at [Deploy an Azure Kubernet
 
 ## Connect to the cluster
 
-1.  To manage a Kubernetes cluster, you use **kubectl**, the Kubernetes command-line client. To install **kubectl** locally, use the az aks install-cli command (you may need to use 'sudo' at te beginning to have permission to intall it):
+1.  To manage a Kubernetes cluster, you use **kubectl**, the Kubernetes command-line client. To install **kubectl** locally, use the az aks install-cli command (you may need to use 'sudo' at te beginning to have permission to install it):
 
     ```azurecli  
     az aks install-cli
@@ -221,7 +221,7 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
     >choco install kubernetes-helm
     >```
 
-1.  Ensure we have the latest stabled helm repository:
+1.  Ensure you have the latest stabled helm repository:
 
     ```bash  
     helm repo add stable https://charts.helm.sh/stable
@@ -456,7 +456,7 @@ az aks delete --name myakscluster --resource-group myResourceGroup
 
 ## Create AKS cluster with custom VNET
 
-Creating a cluster to be deployed in a user-provided network is a common scenario. Planning the network configuration takes some preparation. Also, notice that with AKS the default network plugin is Azure CNI, not Kubenet as is the case with AKS engine. With Azure CNI every pod gets an IP address from the subnet and can be accessed directly (without the need for a Routing table as is the case with Kubenet). These IP addresses must be unique across your network space and must be planned. The following article walks you through the process of planning for your custom VNET deployment. We encourage you to find various network configurations that work for your needs and test them. For an initial test the following two steps will show you the basic process:
+Creating a cluster to be deployed in a user-provided network is a common scenario. Planning the network configuration takes some preparation. Also, notice that with AKS the default network plugin is Azure CNI, not Kubenet as is the case with AKS engine. With Azure CNI every pod gets an IP address from the subnet and can be accessed directly (without the need for a Routing table as is the case with Kubenet). These IP addresses must be unique across your network space and must be planned. The following article walks you through the process of planning for your custom VNET deployment. You can find various network configurations that work for your needs and test them. For an initial test the following two steps will show you the basic process:
 
 1.  Follow the instructions in [this article](/azure/aks/configure-azure-cni) to plan the deployment using Azure CNI. For example, you could use the portal to create a VNet named "myAKSVnet" with IP range 10.0.0.0/8 with subnet "myAKSSubnet" and IP range 10.240.0.0/16 in a Resource Group named "myTest-rg". Then use the next step for the creation of the cluster.
 
@@ -469,7 +469,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
         --subnet-prefix 10.240.0.0/16    
     ```
 
-2.  Note the cluster command provided in the Azure article works fine when deploying on Azure, to deploy to Azure Stack Hub you need to specify extra parameters as in the following example. The vnet subnet id should look like '/subscriptions/dfdfdff-5dfdf-dfdf-dfdf-dfdfdfdfdfd/resourceGroups/myTest-rg/providers/Microsoft.Network/virtualNetworks/myAKSVnet/subnets/myAKSSubnet':
+2.  Note the cluster command provided in the Azure article works fine when deploying on Azure, to deploy to Azure Stack Hub you need to specify extra parameters as in the following example. The vnet subnet ID should look like '/subscriptions/dfdfdff-5dfdf-dfdf-dfdf-dfdfdfdfdfd/resourceGroups/myTest-rg/providers/Microsoft.Network/virtualNetworks/myAKSVnet/subnets/myAKSSubnet':
 
     ```azurecli  
     az aks create  \ 
@@ -532,7 +532,7 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
 Consistency check between Azure and Azure Stack Hub
 
 1.  Select a combination of commands from the ones tested above, from the "Command Reference" section below, or from your own day-to-day scripts.
-2.  Apply them to Azure, and later to Azure Stack Hub. Please note any discrepancies not expected and provide [feedback](https://aka.ms/aks-ash-feedback).
+2.  Apply them to Azure, and later to Azure Stack Hub. Note any discrepancies not expected and provide [feedback](https://aka.ms/aks-ash-feedback).
 
 
 

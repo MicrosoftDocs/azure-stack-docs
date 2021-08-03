@@ -22,12 +22,12 @@ Take advantage of the **User Voice** provided to communicate with the AKS servic
 
 When providing feedback and notes, take not of:
 
-1.  Missing functionality.
-2.  Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
-3.  Potential security vulnerabilities.
-4.  Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
-5.  Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
-6.  Support cases of preview services cannot be created and addressed as production support cases.
+ - Missing functionality.
+ - Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
+ - Potential security vulnerabilities.
+ - Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
+ - Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
+ - Support cases of preview services cannot be created and addressed as production support cases.
 
 ## Report bugs
 
