@@ -29,7 +29,7 @@ The following commands and parameters are supported for the Azure Kubernetes Ser
 | [az aks delete](/cli/azure/aks?view=azure-cli-latest#az_aks_delete) | Delete a managed Kubernetes cluster. |  |
 | [az aks scale](/cli/azure/aks?view=azure-cli-latest#az_aks_scale) | Scale the node pool in a managed Kubernetes cluster. | name *<br>resource-group *<br>node-count * |
 | [az aks upgrade](/cli/azure/aks?view=azure-cli-latest#az_aks_upgrade) | Upgrade a managed Kubernetes cluster to a newer version.  | name *<br>resource-group *<br>kubernetes-version *<br>control-plane-only |
-| [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli) | Download and install kubectl, the Kubernetes command-line tool. Download and install kubelogin, a client-go credential (exec) plugin implementing azure authentication. |  |
+| [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli) | Download and install kubectl, the Kubernetes command-line tool. Download and install kubelogin, a client-go credential (exec) plugin implementing Azure authentication. |  |
 | [az aks nodepool list](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_list) | List node pools in the managed Kubernetes cluster. | name *<br>resource-group * |
 | [az aks nodepool show](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_show) | Show the details for a node pool in the managed Kubernetes cluster.  | name *<br>resource-group * |
 | [az aks nodepool get-upgrades](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_get_upgrades) | Get the available upgrade versions for an agent pool of the managed Kubernetes cluster.  | name *<br>resource-group *<br>nodepool-name * |
