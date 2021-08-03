@@ -84,7 +84,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 4. Download and install the Azure Storage extension for Visual Studio Code. Once complete, you will see an Azure icon in the Activity bar.
 5.  Connect to Azure Stack Hub using the Azure Account extension. Select **Azure: Sign In to Azure Cloud** to connect to your Azure Stack Hub account.  
     For instructions on how to use the Azure Account extension to connect, follow the instructions at [Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code](azure-stack-dev-start-vscode-azure.md).
-6. Add the the URL for your Azure Stack Hub Resource Manager, and then add the Tenant ID.
+6. Add the URL for your Azure Stack Hub Resource Manager, and then add the Tenant ID.
     ![Use the Azure Storage Extension on Azure Stack Hub](media/dev-start-vscode-storage/use-the-azure-storage-account-extension.png)
 7. Select the Azure icon in the Activity bar in Visual Studio code. Expand the 
 storage group.
