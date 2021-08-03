@@ -30,6 +30,9 @@ To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concep
 
 The default storage class suits the most common scenarios, but not all. For some cases, you might want to have your own storage class that stores PVs at a particular location mapped to a particular performance tier.
 
+> [!NOTE]
+> If you have Linux workloads (pods) that specify [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) `fsGroup`, you must create and use a custom StorageClass that includes the parameter `fsType: ext4`
+
 The default storage class stores PVs at the `-imageDir` location specified during AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that’s backed by high-performing SSDs/NVMe or an cost-optimized volume backed by HDDs, for example.
 
 Creating a custom storage class is a two-step process:
@@ -49,26 +52,26 @@ Creating a custom storage class is a two-step process:
 2. Create a new custom storage class using the new storage container. 
    1. To do this, create a file named `sc-aks-hci-disk-custom.yaml`, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
 
-       ```yaml
+```yaml
        kind: StorageClass
        apiVersion: storage.k8s.io/v1
        metadata:
         name: aks-hci-disk-custom
        provisioner: disk.csi.akshci.com
        parameters:
-         blocksize: "33554432"
-         container: customStorageContainer
-         dynamic: "true"
-         group: <e.g clustergroup-akshci>    # same as default storageclass
-         hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as default storageclass
-         logicalsectorsize: "4096"
-         physicalsectorsize: "4096"
-         port: "55000"
+       	blocksize: "33554432"
+        container: customStorageContainer
+        dynamic: "true"
+        group: <e.g clustergroup-akshci>    # same as default storageclass
+        hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as default storageclass
+        logicalsectorsize: "4096"
+        physicalsectorsize: "4096"
+        port: "55000"
+	fsType: ext4	# refer to the Note above to determine when to include this parameter
        allowVolumeExpansion: true
        reclaimPolicy: Delete
        volumeBindingMode: Immediate
-       ```  
-
+```
    2. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your `sc-aks-hci-disk-custom.yaml` file: 
   
       ```console
