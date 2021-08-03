@@ -73,7 +73,7 @@ The following information provides additional security guidance:
 
 ## Provide capacity by connecting to a standalone hosting SQL server
 
-You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014 or SQL Server 2016. Make sure you have the credentials for an account with sysadmin privileges. 
+You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014, SQL Server 2016 or SQL Server 2019. Make sure you have the credentials for an account with sysadmin privileges. 
 
 To add a standalone hosting server that's already set up, follow these steps:
 

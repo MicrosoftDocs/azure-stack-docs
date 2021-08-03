@@ -3,7 +3,7 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/21/2021
+ms.date: 08/03/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/9/2020
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/9/2020
 This article describes the Azure Marketplace items that are available for Azure Stack Hub.
 
 > [!NOTE]
-> The catalog will be different based on the cloud your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
+> The catalog will be different based on the cloud environment your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
 
 ## Virtual Machine extensions
 
