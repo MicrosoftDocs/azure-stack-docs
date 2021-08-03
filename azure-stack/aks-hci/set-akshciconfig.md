@@ -367,6 +367,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -insecure
 Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.

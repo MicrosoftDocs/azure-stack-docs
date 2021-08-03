@@ -2,7 +2,7 @@
 title: Concepts - Container networking in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about container networking in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 07/30/2021
 ms.custom: fasttrack-edit
 ms.author: mikek
 author: mkostersitz
@@ -78,6 +78,8 @@ Both networking implementations use an overlay network configuration model, whic
 
 To learn more about overlay networking, see [Introducing: Kubernetes Overlay Networking for Windows](https://techcommunity.microsoft.com/t5/networking-blog/introducing-kubernetes-overlay-networking-for-windows/ba-p/363082).
 
+For more information about the Calico Network plug-in and policies, check out [getting started with Calico network policy](https://docs.projectcalico.org/security/calico-network-policy).
+
 ### Comparing networking models
 
 #### Flannel
@@ -109,15 +111,13 @@ Calico supports multiple data planes including: a Linux eBPF data plane, a Linux
 |Command line|none|calicoctl|
 
 > [!Important]
-> Currently, the default selection is to use Flannel in an overlay networking mode. To enable Calico, Azure CNI, and network policy, use the **-primaryNetworkPlugin** parameter of the [`New-AksHciCluster`](./new-akshcicluster.md) PowerShell command and specify `calico` as the value. **This cannot be changed after the cluster has been deployed and will apply to both Windows and Linux cluster nodes.**
+> Currently, the default selection is to use Calico in an overlay networking mode. To enable Flannel, use the **-primaryNetworkPlugin** parameter of the [`New-AksHciCluster`](./new-akshcicluster.md) PowerShell command and specify `flannel` as the value. **This cannot be changed after the cluster has been deployed and will apply to both Windows and Linux cluster nodes.**
 
 Here's an example:
 
 ```powershell
-New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'calico'
+New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'flannel'
 ```
-
-For more information about the Calico Network plug-in and policies, check out [getting started with Calico network policy](https://docs.projectcalico.org/security/calico-network-policy).
 
 ## Next steps
 This article covers networking concepts for containers in AKS nodes on Azure Stack HCI. For more information on AKS on Azure Stack HCI concepts, see the following articles:
