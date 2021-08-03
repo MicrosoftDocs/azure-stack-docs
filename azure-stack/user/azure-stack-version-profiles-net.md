@@ -23,7 +23,7 @@ The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you
 
 An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
-- To make use of the latest versions of all the services, use the **Latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
+- To make use of the latest versions of all the services, use the **latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use the services compatible with Azure Stack Hub, use one of the following packages:
   - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
@@ -31,7 +31,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
-- To use the latest API version of a service, use the **Latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **Latest** profile of the **Compute** package. The **Latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
+- To use the latest API version of a service, use the **latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined inside the package.
 
@@ -122,7 +122,7 @@ Sample JSON file:
 
 - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Use this profile for services to be compatible with Azure Stack Hub for versions 1808 or later.
 
-- **Latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
+- **latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles][].
 
