@@ -4,10 +4,10 @@ description: Learn Known issues using the AKS engine on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 2/1/2021
+ms.date: 8/3/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/11/2020
+ms.lastreviewed: 8/3/2021
 
 # Intent: Not done: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Not done: keyword noun phrase
@@ -55,10 +55,6 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
     |**kubernetes-dashboard** |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
 * Kubernetes 1.17 is not supported in this release. Although there are GitHub pull requests (PR)s referencing 1.17, it is not supported.
-
-## aks-engine get-versions command limitations
-
-The output of the **aks-engine** `get-versions` command only relates to global Azure rather than Azure Stack Hub. For more information about the various upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
 
 ## Next steps
 

@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/29/2021
+ms.date: 08/03/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 05/28/2020
@@ -18,6 +18,9 @@ ms.lastreviewed: 05/28/2020
 This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md). The information in this section is updated frequently, so check back often for changes.
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
+
+> [!NOTE]
+> The catalog will be different based on the cloud environment your Azure Stack Hub system is connected to. The cloud environment is determined by the Azure subscription you use for registering your Azure Stack Hub.
 
 ## New marketplace items
 
