@@ -34,7 +34,7 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 
 1.  In the Kubernetes services blade select **Add**.
 
-    ![You can select select add in the portal to add a cluster.](madia/aks-how-to-use/select-add-cluster.png)
+    ![You can select select add in the portal to add a cluster.](media/aks-how-to-use/select-add-cluster.png)
 
 2.  Follow the blades that guide you in the process of creating an AKS cluster.
 

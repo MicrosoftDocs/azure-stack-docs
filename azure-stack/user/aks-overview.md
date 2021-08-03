@@ -31,21 +31,21 @@ For more information on Kubernetes concepts, check out the [Kubernetes documenta
 
 ## User roles and responsibilities
 
-[Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/) (ASH) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: an [Operator](https://docs.microsoft.com/azure-stack/operator/) and a [Tenant](https://docs.microsoft.com/azure-stack/user/). In the specific context of AKS here are their tasks:
+[Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/) is an on-premises system that customers can use inside their datacenters to run their cloud-native workloads. These systems support two user types: the [cloud operator](/azure-stack/operator/) and a [user](/azure-stack/user/). 
 
 The following tasks fall on the **Azure Stack Hub Operator**:
 
-1. Make sure that the Azure Kubernetes Service base images are available in the stamp, this includes downloading them from Azure.
+1. Make sure that the Azure Kubernetes Service base images are available in the Azure Stack Hub instance, this includes downloading them from Azure.
 2. Make sure that the Azure Kubernetes Service is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
 3. Monitor the Azure Kubernetes Service and act on any alert and associated remediation.
-4. For details on the Operator tasks see <TODO: Link to Operator doc>
+4. For details on the Operator tasks see [Azure Kubernetes Service on Azure Stack Hub overview](../operator/aks-overview.md)
 
-The following tasks correspond to the **Tenant AKS Cluster Administrator**:
+The following tasks correspond to the user, that is, the **Tenant AKS Cluster Administrator**:
 
 1. Monitor the Kubernetes cluster agents' health and act on any event and associated remediation. Note that even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
 2. Use the Azure Kubernetes Service facilities to manage the lifecycle of the cluster, that is creation, upgrade, and scale operations.
 3. Maintenance operations: deploy applications, backup and restore, troubleshooting, collection of logs, and monitoring apps.
-4. For Details on the Tenant tasks see <TODO: Link to Quick Guide>
+4. For Details on the tenant tasks see [ Using Azure Kubernetes Service on Azure Stack Hub with the CLI](aks-how-to-use-cli.md)
 
 ## Feature comparison
 
@@ -153,11 +153,11 @@ Given the differences between the two platforms outlined above, the user should 
 
 | Common parameters                 |Notes |
 | ---                 | --- |
-| `--service-principal  --client-secret`  | Azure Stack Hub does not support Managed Identities yet; Service Principal credentials are always needed. |
-| `--load-balancer-sku basic`             | Azure Stack Hub does not support Standard Load Balancer yet (SLB). |
+| `--service-principal  --client-secret`  | Azure Stack Hub does not support managed identities yet; Service Principal credentials are always needed. |
+| `--load-balancer-sku basic`             | Azure Stack Hub does not support standard load balancer (SLB) yet. |
 | `--location`                            | The location value is specific to the customer's chosen one. |
 
-### Service Principals can be provided by AAD or AD FS
+### Service Principals can be provided by Azure AD or AD FS
 
 Service Principals are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create Service Principals is documented here:
  - [AAD service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
@@ -166,4 +166,4 @@ Service Principals are a requirement for creating and managing an AKS cluster. S
 
 ## Next steps
 
-[Learn how to use AKS on Azure Stack Hub](aks-how-to-use.md)
+[Learn how to use AKS on Azure Stack Hub](aks-how-to-use-cli.md)
