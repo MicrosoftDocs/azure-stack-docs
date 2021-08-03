@@ -360,7 +360,7 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
 2. To get the registration token, run the following PowerShell cmdlets:
 
-   ```Powershell
+   ```powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
@@ -420,7 +420,7 @@ Next, you need to retrieve an activation key from the registration resource crea
 
 To get the activation key, run the following PowerShell cmdlets:
 
-  ```Powershell
+  ```powershell
   $RegistrationResourceName = "<unique-registration-name>"
   $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath
@@ -433,14 +433,14 @@ To get the activation key, run the following PowerShell cmdlets:
 
 Return to the Azure Stack Hub environment with the file or text from the activation key created from Get-AzsActivationKey. Next create an activation resource in Azure Stack Hub using that activation key. To create an activation resource, run the following PowerShell cmdlets:
 
-  ```Powershell
+  ```powershell
   $ActivationKey = "<activation key>"
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 
 Optionally, you can use the Get-Content cmdlet to point to a file that contains your registration token:
 
-  ```Powershell
+  ```powershell
   $ActivationKey = Get-Content -Path '<Path>\<Activation Key File>'
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
