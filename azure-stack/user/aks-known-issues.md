@@ -20,7 +20,7 @@ This article looks at common questions and a list of known issues about the publ
 
 ### Can I use AKS to deploy applications on production environments?
 
-AKS on Hub is on public preview, no production support is offered for this feature. If you are testing your application and run into an issue create a support ticket.
+AKS on Hub is on public preview, no production support is offered for this feature. If you are testing your application and run into an issue create a support ticket. You can provide feedback about your experience using AKS on Azure Stack Hub using the [Azure Stack Hub Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
 
 ### Why can't I run some of the AKS commands I use in Azure?
 
