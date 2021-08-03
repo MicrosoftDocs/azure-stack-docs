@@ -72,7 +72,7 @@ The following table provides an overview of features of AKS in global Azure comp
 |                              | Automatic Pod Scaling                               | Yes       | Yes     |
 |                              | GPU Enable Pods                                     | Yes       | No      |
 |                              | Storage Volume Support                              | Yes       | Yes     |
-|                              | Multi-nodepool Management                           | Yes       | No      |
+|                              | Multi node pool Management                           | Yes       | No      |
 |                              | Azure Container Instance Integration & Virtual Node | Yes       | No      |
 |                              | Uptime SLA                                          | Yes       | No      |
 |                              | Hidden Master Nodes                                 | Yes       | No      |
@@ -89,7 +89,7 @@ The following table provides an overview of features of AKS in global Azure comp
 |                              | CNCF-certified                                      | Yes       | Yes     |
 | Cluster Lifecycle Management |                                                     |           |         |
 |                              | AKS Ux                                              | Yes       | Yes     |
-|                              | AKS CLI (Winbdows and Linux)                        | Yes       | Yes     |
+|                              | AKS CLI (Windows and Linux)                        | Yes       | Yes     |
 |                              | AKS API                                             | Yes       | Yes     |
 |                              | AKS Templates                                       | Yes       | Yes     |
 |                              | AKS PowerShell                                      | Yes       | No      |
@@ -102,12 +102,12 @@ AKS on Azure and on Azure Stack Hubs share the same source repository. There are
 
 In both scenarios, Azure Stack Hub is under the control of the customer. Also, customers may deploy Azure Stack Hub in fully disconnected, an *air-gapped*, environment. You may want to consider the following factors:
 
-1. For cloud operators:
-   * They need to ensure the AKS Service and corresponding images are available to tenants.
-   * They need to partner with tenants and Microsoft Support when solving support incidents, for example, collecting logs). See the Operator article for more details.
-2. For users:
-   * They need to collaborate with the Azure Stack Hub operator to request AKS base Images or AKS Service not available in the Azure Stack Hub instance.
-   * They also need to collaborate with the Operator and Microsoft Support during Support Cases. One task would be the collection of AKS cluster related logs using the information provided [Troubleshooting AKS cluster issues on Azure Stack Hub](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack).
+ - For Operators:
+   * They need to ensure the AKS Service and corresponding images are available to Tenants.
+   * They need to partner with tenants and Microsoft Support when solving support incidents (ex: collecting stamp logs). See the Operator article for more details.
+ - For Tenants:
+   * They need to collaborate with the stamp Operator to request AKS base Images or AKS Service not available in the stamp.
+   * They also need to collaborate with the Operator and Microsoft Support during Support Cases. One task would be the collection of AKS cluster related logs using the information provided [here](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack).
 
 ### Connect to Azure Stack Hub using the CLI or PowerShell
 
@@ -121,27 +121,27 @@ When you use the Azure CLI to connect to Azure, the CLI binary will default to u
 
 Azure Stack Hub supports a subset of the features available in global Azure. Take note of the following differences:
 
-1. No Standard Load Balancer. Azure Stack Hub only supports basic load balancer, this implies that the following features, which depend on Standard Load Balancer are not yet available with AKS on Azure Stack Hub:
-    1. No parameter api-server-authorized-ip-ranges </azure/aks/api-server-authorized-ip-ranges>
-    2. No parameter load-balancer-managed-ip-count [/azure/aks/load-balancer-standard\#scale-the-number-of-managed-outbound-public-ips](/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips)
-    3. No parameter enable-private-cluster `</azure/aks/private-clusters>`
-    4. No cluster autoscaler:` </azure/aks/cluster-autoscaler>`
-        1. No parameter enable-cluster-autoscaler
-    5. [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available.
-    6. No multiple node-pool support. The node pool commands are not available.
-    7. UI support for multi-node-pool operations is not enabled.
-    8. Windows containers
-2. No Azure Regions or Availability Zones
-3. No Availability Sets, only virtual machine scale sets
-4. Review command list for supported and unsupported commands.
+ - No Standard Load Balancer. Azure Stack Hub only supports basic load balancer, this implies that the following features, which depend on Standard Load Balancer are not yet available with AKS on Azure Stack Hub:
+    * No parameter api-server-authorized-ip-ranges </azure/aks/api-server-authorized-ip-ranges>
+    * No parameter load-balancer-managed-ip-count [/azure/aks/load-balancer-standard\#scale-the-number-of-managed-outbound-public-ips](/azure/aks/load-balancer-standard#scale-the-number-of-managed-outbound-public-ips)
+    * No parameter enable-private-cluster </azure/aks/private-clusters>
+    * No cluster autoscaler: </azure/aks/cluster-autoscaler>
+    * No parameter enable-cluster-autoscaler
+    * [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available**.**
+    * No multiple node-pool support. The node pool commands are not available.
+    * UI support for multi-node-pool operations is not enabled.
+    * Windows containers
+ - No Azure Regions or Availability Zones
+ - No Availability Sets, only virtual machine scale sets
+ - Review command list for supported and unsupported commands.
 
 ### Supported services
 
 Absence of some Azure services limits some functionality options on AKS on Azure Stack Hub:
 
-1. No Files Service. This makes it so that there is no support for File Service based volumes in K8s in Azure Stack Hub.
-2. No Azure Log Analytics and Azure Container Monitor. Any Kubernetes cluster can be connected to Azure Container Monitor as long as it is connected to the internet, if it is disconnected there is no equivalent service locally in Azure Stack Hub. So there is not integrated support for Azure Container Monitor in AKS on Azure Stack Hub.
-3. No Azure DevOps. Since this service is not available for a disconnected Azure Stack Hub, there is no integrated support for it.
+ - No Files Service. This makes it so that there is no support for File Service based volumes in K8s in Azure Stack Hub.
+ - No Azure Log Analytics and Azure Container Monitor. Any Kubernetes cluster can be connected to Azure Container Monitor as long as it is connected to the internet, if it is disconnected there is no equivalent service locally in Azure Stack Hub. So there is not integrated support for Azure Container Monitor in AKS on Azure Stack Hub.
+ - No Azure DevOps. Since this service is not available for a disconnected Azure Stack Hub, there is no integrated support for it.
 
 ### Supported AKS API and Kubernetes versions
 
@@ -159,9 +159,9 @@ Given the differences between the two platforms outlined above, the user should 
 
 ### Service Principals can be provided by Azure AD or AD FS
 
-Service principals are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How Azure Stack Hub tenants create service principals is documented here:
-1. [Azure AD service principal](/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
-2. [AD FS service principal](/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
+Service Principals are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create Service Principals is documented here:
+ - [AAD service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
+ - [AD FS service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
 
 ## Next steps

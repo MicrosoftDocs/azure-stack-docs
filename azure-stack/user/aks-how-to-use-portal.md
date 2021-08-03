@@ -20,21 +20,21 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 
 1.  In the Azure Stack tenant portal find the "All Services" blade and select "Kubernetes services"
 
-    ![Azure Stack tenant portal](media/aks-how-to-use/azure-stack-tenant-portal.png)
+    ![This is the Azure Stack tenant portal.](media/aks-how-to-use/azure-stack-tenant-portal.png)
 
 1.  Verify that all clusters that you have created appear in the "Kubernetes service" blade:
 
-    ![all clusters that you have created](media/aks-how-to-use/all-clusters-that-you-have-created.png)
+    ![Verify the clusters that you have created in the portal.](media/aks-how-to-use/all-clusters-that-you-have-created.png)
 
 1.  Verify that you can view the details of any of the clusters:
 
-    ![details of any of the clusters](media/aks-how-to-use/details-of-any-of-the-clusters.png)
+    ![The portal contains the details of the AKS clusters.](media/aks-how-to-use/details-of-any-of-the-clusters.png)
 
 ## Create cluster
 
 1.  In the Kubernetes services blade select **Add**.
 
-    ![select add](media/aks-how-to-use/select-add-cluster.png)
+    ![You can select select add in the portal to add a cluster.](media/aks-how-to-use/select-add-cluster.png)
 
 2.  Follow the blades that guide you in the process of creating an AKS cluster.
 
@@ -42,35 +42,35 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 
 1.  To upgrade the cluster's control plane, in the cluster's details blade select **Configuration**, then select the Kubernetes upgrade version to upgrade to and select save.
 
-    ![upgrade to and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
+    !Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
 
-    ![select version and select save](media/aks-how-to-use/upgrade-to-select-version.png)
+    ![Select version and select save in the portal.](media/aks-how-to-use/upgrade-to-select-version.png)
 
-2. To upgrade the agent nodepool, in the cluster's details blade select **Node pools**, then either click on the nodepool version link or on the **Upgrade** link at the top.
+2. To upgrade the agent node pool, in the cluster's details blade select **Node pools**, then either select the node pool version link or on the **Upgrade** link at the top.
 
-    ![select version link](media/aks-how-to-use/upgrade-agent-click-version.png)
+    ![Select version link in the portal.](media/aks-how-to-use/upgrade-agent-click-version.png)
 
-3.  Select the nodepool Kubernetes version
+3.  Select the node pool Kubernetes version
 
-    ![upgraded by checking the cluster](media/aks-how-to-use/upgraded-by-checking-the-cluster.png)
+    ![Upgraded by checking the cluster.](media/aks-how-to-use/upgraded-by-checking-the-cluster.png)
 
 ## Scale cluster
 
-1. In the cluster's details blade select **Node pools**, then select the nodepool and click on **Scale**
+1. In the cluster's details blade select **Node pools**, then select the node pool and select **Scale**
 
-    ![scale cluster](media/aks-how-to-use/select-scale.png)
+    ![Select scale cluster.](media/aks-how-to-use/select-scale.png)
 
 2. In the scale panel on the right select the new node count
 
-    ![select new node count](media/aks-how-to-use/select-node-count.png)
+    ![Select new node count.](media/aks-how-to-use/select-node-count.png)
 
 ## Delete cluster
 
 1.  In the overview blade for the AKS cluster, find and select **Delete** as in the image below.
 
-    ![overview of the AKS cluster](media/aks-how-to-use/delete-cluster.png)
+    ![You can review the details of your cluster in the portal.](media/aks-how-to-use/delete-cluster.png)
 
-2.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern "<…>_clustername_location", if it is not found it was properly deleted.
+2.  Verify the cluster is deleted. Also, check that the associated resource group is deleted, in the Resource groups blade, look for a resource group with this pattern `<…>_clustername_location`, if it is not found it was properly deleted.
 
 
 ## Next steps

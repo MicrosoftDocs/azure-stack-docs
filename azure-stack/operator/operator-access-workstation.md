@@ -68,7 +68,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = 'F4F99249F8C5B1A79F1C797B9029C65383377F565F63AB211B73D051806F9040' 
+$expectedHash = '17AB53BD1F5A925EF57EF030C20CD17E13FE8D2604B1D4E6AED72DEE0F789B6F' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
@@ -92,7 +92,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
  
    ```powershell
-   Test-FileHash -ExpectedHash "F4F99249F8C5B1A79F1C797B9029C65383377F565F63AB211B73D051806F9040" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "17AB53BD1F5A925EF57EF030C20CD17E13FE8D2604B1D4E6AED72DEE0F789B6F" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version
@@ -227,6 +227,7 @@ New-OAW
 -SubnetMask <String> ` 
 -DefaultGateway <String> ` 
 -DNS <String[]> ` 
+-TimeServer<String> `
 [-AzureStackCertificatePath <String>] ` 
 [-AzSStampInfoFilePath <String>] ` 
 [-CertificatePassword <Security.SecureString>] ` 
@@ -256,6 +257,7 @@ The following table lists the definition for each parameter.
 | SubnetMask                 | Required              | The IPv4 subnet mask to configure TCP/IP on the virtual machine.                                                                                                                                                                                                                                                                                    |
 | DefaultGateway             | Required              | IPv4 address of the default gateway to configure TCP/IP on the virtual machine.                                                                                                                                                                                                                                                                     |
 | DNS                        | Required              | DNS server(s) to configure TCP/IP on the virtual machine.                                                                                                                                                                                                                                                                                           |
+| TimeServer                 | Required              | IP address of the time server that Azure Stack Hub syncs from, which will be the time source that OAW syncs from too. Check the AzureStackStampInformation.json or ask your admin for the IP of the time server that Hub syncs from. In case of urgency and you could not get the IP of the time server that Hub syncs from, you could input the default time server, 'time.windows.com,0x8' for this parameter. Note that it is highly recommended to make sure the time in OAW and Hub is in sync to avoid potential clock skew issues when working in an OAW to interact with Hub.                                                                                                                                                                                                                                 |
 | ImageFilePath              | Optional              | Path of OAW.vhdx provided by Microsoft. Default value is **OAW.vhdx** under the same parent folder of this script.                                                                                                                                                                                                                                  |
 | VirtualMachineName         | Optional              | The name to be assigned to the virtual machine. If the Naming Prefix can be found in the DeploymentData.json file, it will be used as the default name. Otherwise, **AzSOAW**will be used as the default name. You can specify another name to overwrite the default value.                                                                         |
 | VirtualMachineMemory       | Optional              | Memory to be assigned to the virtual machine. Default value is **2 GB**.                                                                                                                                                                                                                                                                             |
