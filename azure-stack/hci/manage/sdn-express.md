@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 07/29/2021
+ms.date: 08/03/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -49,14 +49,18 @@ If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can c
 The following shows an example using `Convert-WindowsImage`:
 
  ```powershell
-$wimpath = "d:\sources\install.wim"
-$vhdpath = "c:\temp\WindowsServerDatacenter.vhdx"
-$Edition = 4   # 4 = Full Desktop, 3 = Server Core
+Install-Module -Name Convert-WindowsImage
+Import-Module Convert-WindowsImage
 
-import-module ".\convert-windowsimage.ps1"
+$wimpath = "E:\sources\install.wim"
+$vhdpath = "D:\temp\AzureStackHCI.vhdx"
+$edition=1
+Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
 
-Convert-WindowsImage -SourcePath $wimpath -Edition $Edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
 ```
+
+> [!NOTE]
+> You will probably need to run these commands as Administrator and to modify the execution policy for scripts using the `Set-ExecutionPolicy` command so that this script can be run.
 
 ## Download the GitHub repository
 
