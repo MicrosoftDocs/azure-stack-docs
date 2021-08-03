@@ -20,31 +20,31 @@ We encourage customers to take advantage of the feedback page above to communica
 
 Make note of the following:
 
-1.  Missing functionality. See the overview documents for a feature area comparison with Azure AKS.
-2.  Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry or even the Azure Stack Hub platform.
-3.  Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
-4.  Support for public preview is done through a best effort from the Microsoft Support and product group teams.
-5.  Support cases of services in preview mode can't be created and addressed as production support cases.
+ - Missing functionality. See the overview documents for a feature area comparison with Azure AKS.
+ - Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry or even the Azure Stack Hub platform.
+ - Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
+ - Support for public preview is done through a best effort from the Microsoft Support and product group teams.
+ - Support cases of services in preview mode can't be created and addressed as production support cases.
 
-    - Missing functionality.
-    - Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
-    - Potential security vulnerabilities.
-    - Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
-    - Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
-    - Support cases of preview services cannot be created and addressed as production support cases.
+    * Missing functionality.
+    * Potential bugs that could affect your Kubernetes clusters, Container registries, the overall functionality of the Azure Kubernetes Service or Azure Container Registry Resource Providers or even the Azure Stack Hub platform.
+    * Potential security vulnerabilities.
+    * Global Azure Kubernetes Service or Azure Container Registry guidance that works on Azure but does not on Azure Stack Hub.
+    * Support for public preview bits is done through a best effort from the Product Group and Customer Support teams.
+    * Support cases of preview services cannot be created and addressed as production support cases.
 
-1.  Go to the [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback) to report the bug.
-2.  Provide description, repro steps, and description of expected behavior.
-3.  In some cases, we may ask you to collect Azure Stack Hub logs (a [support case](/azure-stack/operator/azure-stack-help-and-support-overview) with the Microsoft Support team would be needed).
-4.  In some cases, we may ask you to collect Kubernetes logs. For more information and setting up logs, see [Troubleshoot the Azure Kubernetes Service on Azure Stack Hub](https://microsoft-my.sharepoint.com/personal/mabrigg_microsoft_com/Documents/Review_in/2021_07/1845670%20AKS/aks-troubleshoot.md).
+ - Go to the [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback) to report the bug.
+ - Provide description, repro steps, and description of expected behavior.
+ - In some cases, we may ask you to collect Azure Stack Hub logs (a [support case](/azure-stack/operator/azure-stack-help-and-support-overview) with the Microsoft Support team would be needed).
+ - In some cases, we may ask you to collect Kubernetes logs. For more information and setting up logs, see [Troubleshoot the Azure Kubernetes Service on Azure Stack Hub](https://microsoft-my.sharepoint.com/personal/mabrigg_microsoft_com/Documents/Review_in/2021_07/1845670%20AKS/aks-troubleshoot.md).
 
 ## Providing feedback
 
 Use the links below to submit your feedback:
 
-1.  For reporting a security vulnerability, go to [MSRC Researcher Portal - Report an Issue](https://msrc.microsoft.com/create-report).
-2.  For improvement suggestions go to [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
-3.  For documentation feedback, go to [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
+ - For reporting a security vulnerability, go to [MSRC Researcher Portal - Report an Issue](https://msrc.microsoft.com/create-report).
+ - For improvement suggestions go to [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
+ - For documentation feedback, go to [Azure Kubernetes Service Feedback Form](https://aka.ms/aks-ash-feedback).
 
 ## Service Updates
 
@@ -52,9 +52,9 @@ Updates to the public preview will be made available following the standard Azur
 
 As participants in the public preview, you may also need to:
 
-1.  Kubernetes cluster might need to be redeployed to make more operations available.
-2.  Manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as masters and nodes might be required.
-3.  In an extreme situation, the Microsoft Support team may need to directly work on the service components.
+ - Kubernetes cluster might need to be redeployed to make more operations available.
+ - Manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as masters and nodes might be required.
+ - In an extreme situation, the Microsoft Support team may need to directly work on the service components.
 ## Next steps
 
 [Learn about AKS on Azure Stack Hub](aks-overview.md)
