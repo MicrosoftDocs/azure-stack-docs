@@ -21,6 +21,8 @@ Kubernetes is the core component of the Azure Kubernetes Service on Azure Stack 
 
 The deployment operation will create multiple Linux or Windows virtual machines and join these together to create Kubernetes cluster(s).
 
+**Note**: To improve on the reliability of the system, if you are running multiple Cluster Shared Volumes (CSV) in your Azure Stack HCI cluster, by default virtual machine data will automatically be spread out across all available CSVs in the cluster. This ensures that applications survive in the event of CSV outages. This applies to only new installations (not upgrades).
+
 The deployed system is ready to receive standard Kubernetes workloads, scale these workloads, or even scale the number of virtual machines as well as the number of clusters up and down as needed.
 
 An Azure Kubernetes Service cluster has the following components on Azure Stack HCI:
