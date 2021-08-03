@@ -97,7 +97,7 @@ conceptualContent:
 # additionalContent section (optional)
 # Card with links style
 additionalContent:
-  # Supports up to 3 sections
+  # Supports up to 4 sections
   sections:
     - title: Azure Stack Hub
       items:
@@ -179,3 +179,28 @@ additionalContent:
             text: Software Defined Networking
           - url: /windows-server/failover-clustering/failover-clustering-overview
             text: Failover Clustering
+    - title: Azure Kubernetes Service on Azure Stack HCI
+      items:
+        # Card
+        - title: Deploy
+          links:
+          - url: /azure-stack/aks-hci/kubernetes-walkthrough-powershell
+            text: Deploy using PowerShell
+          - url: /azure-stack/aks-hci/setup
+            text: Deploy using Windows Admin Center  
+          - url: /azure-stack/aks-hci/tutorial-kubernetes-prepare-application
+            text: Deploy a multi-container application            
+        # Card
+        - title: Manage
+          links:
+          - url: /azure-stack/aks-hci/kubernetes-concepts
+            text: Management concepts  
+          - url: /azure-stack/aks-hci/scale-cluster
+            text: Management how-to guides  
+        # Card
+        - title: Resources
+          links:
+          - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
+            text: Register for evaluation download                   
+          - url: https://github.com/Azure/aks-hci/releases
+            text: Releases
