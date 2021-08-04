@@ -188,4 +188,4 @@ public void BeginStreamingMetrics(CimSession Session, CimInstance HealthService,
 Needless to say, these metrics can be visualized, stored in a database, or used in whatever way you see fit.
 
 ## Additional references
-- [Performance history for Storage Spaces Direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/performance-history)
+- [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)

@@ -17,12 +17,11 @@ ms.date: 08/04/2021
 The Health Service constantly monitors your Storage Spaces Direct cluster to detect problems and generate "faults". One new cmdlet displays any current faults, allowing you to easily verify the health of your deployment without looking at every entity or feature in turn. Faults are designed to be precise, easy to understand, and actionable.
 
 Each fault contains five important fields:
-
--   Severity
--   Description of the problem
--   Recommended next step(s) to address the problem
--   Identifying information for the faulting entity
--   Its physical location (if applicable)
+- Severity
+- Description of the problem
+- Recommended next step(s) to address the problem
+- Identifying information for the faulting entity
+- Its physical location (if applicable)
 
 For example, here is a typical fault:
 
@@ -35,7 +34,7 @@ Location: Seattle DC, Rack B07, Node 4, Slot 11
 ```
 
  >[!NOTE]
- > The physical location is derived from your fault domain configuration. For more information about fault domains, see [Fault Domains in Windows Server 2016](fault-domains.md). If you do not provide this information, the location field will be less helpful - for example, it may only show the slot number.
+ > The physical location is derived from your fault domain configuration. For more information about fault domains, see [Fault domain awareness](/windows-server/failover-clustering/fault-domains). If you do not provide this information, the location field will be less helpful - for example, it may only show the slot number.
 
 ## Root cause analysis
 
