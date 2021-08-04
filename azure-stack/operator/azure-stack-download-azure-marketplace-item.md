@@ -158,6 +158,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
   ```powershell
   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.154-preview -AllowPrerelease
   ```
+::: moniker-end
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
 
