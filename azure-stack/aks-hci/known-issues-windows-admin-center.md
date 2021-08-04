@@ -24,7 +24,7 @@ AKS-host cluster deployment fails at system checks with WinRM service error. Try
 
 ## Incorrect upgrade notification
 
-Incorrect upgrade notification: Successfully installed AksHci PowerShell module version null`. You may see the incorrect notification message. The upgrade operation is successful even if the notification is misleading.
+Incorrect upgrade notification: `Successfully installed AksHci PowerShell module version null`. You may see the incorrect notification message. The upgrade operation is successful even if the notification is misleading.
 
 ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
 
