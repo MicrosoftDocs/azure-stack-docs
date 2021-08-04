@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 06/15/2021
+ms.date: 08/04/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/16/2020
@@ -147,7 +147,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
    Get-AzSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzSubscription
    ```
 
-4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool if your using the latest version of Azure Stack Hub:
+4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool if you're using the latest version of Azure Stack Hub:
 
 ::: moniker range=">=azs-2102"
    ```powershell  
