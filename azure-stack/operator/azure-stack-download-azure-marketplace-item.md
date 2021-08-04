@@ -149,16 +149,16 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool if your using the latest version of Azure Stack Hub:
 
-   ::: moniker range=">=azs-2102"
+::: moniker range=">=azs-2102"
    ```powershell
    Install-Module -Name Azs.Syndication.Admin
    ```
-   ::: moniker-end
-   ::: moniker range="<=azs-2008"
+::: moniker-end
+::: moniker range="<=azs-2008"
    ```powershell
    Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.154-preview -AllowPrerelease
    ```
-   ::: moniker-end
+::: moniker-end
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
 
