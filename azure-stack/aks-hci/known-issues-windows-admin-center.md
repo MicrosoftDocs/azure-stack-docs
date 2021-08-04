@@ -20,13 +20,11 @@ Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management clus
 
 AKS-host cluster deployment fails at system checks with WinRM service error. Try applying remedies suggested in the following article [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
 
+![Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
+
 ## Incorrect upgrade notification
 
-Incorrect upgrade notification: S`uccessfully installed AksHci PowerShell module version null`.
-
-![Incorrect upgrade notification: Successfully installed AksHci PowerShell module version null.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
-
-You may see the incorrect notification message. The upgrade operation is successful even if the notification is misleading.
+Incorrect upgrade notification: Successfully installed AksHci PowerShell module version null`. You may see the incorrect notification message. The upgrade operation is successful even if the notification is misleading.
 
 ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
 
