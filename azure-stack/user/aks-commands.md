@@ -3,10 +3,10 @@ title: Commands for the Azure Kubernetes Service on Azure Stack Hub
 description: Learn about commands for Azure Kubernetes Service (ASK) on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 08/15/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 07/01/2021
+ms.lastreviewed: 08/15/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -14,111 +14,27 @@ ms.lastreviewed: 07/01/2021
 
 # Commands for the Azure Kubernetes Service on Azure Stack Hub
 
-The following commands are supported for the Azure Kubernetes Service (AKS) on Azure Stack Hub.
+The following commands and parameters are supported for the Azure Kubernetes Service (AKS) on Azure Stack Hub.
 
-## Supported and unsupported commands
+## Supported commands
 
-|     Command     |     Description     |     Supported     |     Supported parameters    |
-|---|---|---|---|
-|     [az aks browse](/cli/azure/aks?view=azure-cli-latest#az_aks_browse)     |     Show   the dashboard for a Kubernetes cluster in a web browser.     |     Yes     |     All    |
-|     [az aks create](/cli/azure/aks?view=azure-cli-latest#az_aks_create)     |     Create a new   managed Kubernetes cluster. Notice that the parameter `--attach-acr` is   not supported.     |     Yes     | [See supported parameters](#az-aks-create) |
-|     [az aks delete]()     |     Delete   a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks disable-addons](/cli/azure/aks?view=azure-cli-latest#az_aks_disable_addons)     |     Disable   Kubernetes addons.     |     No     |          |
-|     [az aks enable-addons](/cli/azure/aks?view=azure-cli-latest#az_aks_enable_addons)     |     Enable   Kubernetes addons.     |     No     |          |
-|     [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials)     |     Get access   credentials for a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks get-upgrades](/cli/azure/aks?view=azure-cli-latest#az_aks_get_upgrades)     |     Get   the upgrade versions available for a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions)     |     Get the   versions available for creating a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli)     |     Download   and install kubectl, the Kubernetes command-line tool. Download and   install kubelogin, a client-go credential (exec) plugin implementing   Azure authentication.     |     Yes     |          |
-|     [az aks kollect](/cli/azure/aks?view=azure-cli-latest#az_aks_kollect)          |     Collecting   diagnostic information for the Kubernetes cluster.    |     No    |          |
-|     [az aks kanalyze](/cli/azure/aks?view=azure-cli-latest#az_aks_kanalyze)          |     Display diagnostic results for the Kubernetes cluster after kollect is   done.    |     No    |          |
-|     [az aks list](/cli/azure/aks?view=azure-cli-latest#az_aks_list)     |     List managed   Kubernetes clusters.     |     Yes     |          |
-|     [az aks nodepool](/cli/azure/aks/nodepool?view=azure-cli-latest)     |     Commands   to manage node pools in Kubernetes  cluster.     |     Yes,   partially.     |          |
-|     [az aks nodepool add](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_add)     |     Add a node   pool to the managed Kubernetes cluster.     |     No     |          |
-|     [az aks nodepool delete](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_delete)     |     Delete   the agent pool in the managed Kubernetes cluster.     |     No     |          |
-|     [az aks nodepool get-upgrades](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_get_upgrades)     |     Get the   available upgrade versions for an agent pool of the managed Kubernetes   cluster.     |     Yes     |          |
-|     [az aks nodepool list](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_list)     |     List   node pools in the managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks nodepool scale](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_scale)     |     Scale the   node pool in a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks nodepool show](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_show)     |     Show   the details for a node pool in the managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks nodepool update](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_update)     |     Update a node   pool to enable/disable cluster-autoscaler or change min-count or   max-count.     |     No     |          |
-|     [az aks nodepool upgrade](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_upgrade)     |     Upgrade   the node pool in a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks remove-dev-spaces](/cli/azure/aks?view=azure-cli-latest#az_aks_remove_dev_spaces)     |     Remove Azure   Dev Spaces from a managed Kubernetes cluster.     |     No     |          |
-|     [az aks rotate-certs](/cli/azure/aks?view=azure-cli-latest#az_aks_rotate_certs)     |     Rotate   certificates and keys on a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks scale](/cli/azure/aks?view=azure-cli-latest#az_aks_scale)     |     Scale the   node pool in a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks show](/cli/azure/aks?view=azure-cli-latest#az_aks_show)     |     Show   the details for a managed Kubernetes cluster.     |     Yes     |          |
-|     [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update)     |     Update a   managed Kubernetes cluster with standard SKU load balancer.      |     No     |          |
-|     [az aks update-credentials](/cli/azure/aks?view=azure-cli-latest#az_aks_update_credentials)     |     Update   credentials for a managed Kubernetes cluster, like service principal.     |     Yes     |          |
-|     [az aks upgrade](/cli/azure/aks?view=azure-cli-latest#az_aks_upgrade)     |     Upgrade a   managed Kubernetes cluster to a newer version.     |     Yes     |          |
-|     [az aks use-dev-spaces]()     |     Use   Azure Dev Spaces with a managed Kubernetes cluster.     |     No     |          |
-|     [az aks wait](/cli/azure/aks?view=azure-cli-latest#az_aks_wait)     |     Wait for a   managed Kubernetes cluster to reach a desired state.     |     Yes     |          |
-|     [az aks app](/cli/azure/aks/app?view=azure-cli-latest#az_aks_app_up)    |     Deploy   to AKS via GitHub actions.    |     No    |          |
-
-### az aks create
-
-Supported parameters include:
-
-```azurecli  
---name
-              --resource-group
-              [--aad-tenant-id]        
-              [--admin-username]
-              [--api-server-authorized-ip-ranges]
-              [--client-secret]
-              [--disable-rbac]
-              [--dns-name-prefix]
-              [--dns-service-ip]
-              [--docker-bridge-address]
-              [--enable-aad]
-              [--enable-addons]
-              [--enable-ahub]
-              [--enable-azure-rbac]
-              
-              [--enable-private-cluster]
-              [--enable-rbac]
-              [--fqdn-subdomain]
-              [--generate-ssh-keys]
-              [--kubernetes-version]
-              [--load-balancer-managed-outbound-ip-count]
-              [--load-balancer-outbound-ip-prefixes]
-              [--load-balancer-outbound-ips]
-              [--load-balancer-outbound-ports]
-              [--load-balancer-sku]
-              [--location]
-              [--max-count]
-              [--max-pods]
-              [--min-count]
-              [--network-plugin {azure, kubenet}]
-              [--network-policy]
-              
-              [--no-wait]
-              [--node-count]
-              [--node-osdisk-diskencryptionset-id]
-              [--node-osdisk-size]
-              [--node-osdisk-type]
-              [--node-public-ip-prefix-id]
-              [--node-vm-size]
-              [--nodepool-labels]
-              [--nodepool-name]
-              [--nodepool-tags]
-              [--outbound-type {loadBalancer, userDefinedRouting}]
-              [--pod-cidr]
-              [--ppg]
-              [--private-dns-zone]
-              [--service-cidr]
-              [--service-principal]
-              [--skip-subnet-role-assignment]
-              [--ssh-key-value]
-              [--subscription]
-              [--tags]
-              [--uptime-sla]
-              [--vm-set-type]
-              [--vnet-subnet-id]
-              [--windows-admin-password]
-              [--windows-admin-username]
-              [--workspace-resource-id]
-              [--yes]
-              [--zones {1, 2, 3}]
-
-```
+| Command | Description | Parameter/Required(*) |
+|---|---|---|
+| [az aks create](/cli/azure/aks?view=azure-cli-latest#az_aks_create) | Create a new managed Kubernetes cluster. | resource-group *<br>service-principal *<br>client-secret *<br>load-balancer-sku *<br>vm-set-type<br>dns-name-prefix<br>admin-username<br>kubernetes-version<br>generate-ssh-keys<br>location<br>network-plugin<br>network-policy<br>node-count<br>nodepool-name<br>vnet-subnet-id<br>max-pods<br>node-vm-size<br>windows-admin-passsword<br>windows-admin-username |
+| [az aks get-upgrades](/cli/azure/aks?view=azure-cli-latest#az_aks_get_upgrades) | Get the upgrade versions available for a managed Kubernetes cluster. | name *<br>resource-group * |
+| [az aks list](/cli/azure/aks?view=azure-cli-latest#az_aks_list) | List managed Kubernetes clusters. | location * |
+| [az aks get-versions](/cli/azure/aks?view=azure-cli-latest#az_aks_get_versions) | Get the versions available for creating a managed Kubernetes cluster.  |  |
+| [az aks show](/cli/azure/aks?view=azure-cli-latest#az_aks_show) | Show the details for a managed Kubernetes cluster. | name *<br>resource-group * |
+| [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials) | Get access credentials for a managed Kubernetes cluster.  | name *<br>resource-group *<br>admin |
+| [az aks delete](/cli/azure/aks?view=azure-cli-latest#az_aks_delete) | Delete a managed Kubernetes cluster. |  |
+| [az aks scale](/cli/azure/aks?view=azure-cli-latest#az_aks_scale) | Scale the node pool in a managed Kubernetes cluster. | name *<br>resource-group *<br>node-count * |
+| [az aks upgrade](/cli/azure/aks?view=azure-cli-latest#az_aks_upgrade) | Upgrade a managed Kubernetes cluster to a newer version.  | name *<br>resource-group *<br>kubernetes-version *<br>control-plane-only |
+| [az aks install-cli](/cli/azure/aks?view=azure-cli-latest#az_aks_install_cli) | Download and install kubectl, the Kubernetes command-line tool. Download and install kubelogin, a client-go credential (exec) plugin implementing Azure authentication. |  |
+| [az aks nodepool list](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_list) | List node pools in the managed Kubernetes cluster. | name *<br>resource-group * |
+| [az aks nodepool show](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_show) | Show the details for a node pool in the managed Kubernetes cluster.  | name *<br>resource-group * |
+| [az aks nodepool get-upgrades](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_get_upgrades) | Get the available upgrade versions for an agent pool of the managed Kubernetes cluster.  | name *<br>resource-group *<br>nodepool-name * |
+| [az aks nodepool upgrade](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_upgrade) | Upgrade the node pool in a managed Kubernetes cluster. | cluster-name *<br>resource-group *<br>name *<br>kubernetes-version * |
+| [az aks nodepool scale](/cli/azure/aks/nodepool?view=azure-cli-latest#az_aks_nodepool_scale) | Scale the node pool in a managed Kubernetes cluster.  | name *<br>resource-group *<br>nodepool-name<br>node-count |
 
 ## Next steps
 
