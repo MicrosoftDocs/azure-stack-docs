@@ -67,28 +67,28 @@ As seen from the output above, you can either perform a patch update to v1.19.9 
 Use the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command to perform a Kubernetes minor update and also update the operating system version of your container host OS. We recommend updating the OS version every time you update the Kubernetes version of your cluster. The following example shows a minor Kubernetes update with an OS version update:
 
 ```powershell
-Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.20.5 -operatingSystem
+Update-AksHciCluster -name myCluster -kubernetesVersion v1.20.5 -operatingSystem
 ```
 
 ### Perform a minor Kubernetes update without updating the OS version
 Use the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command to perform a Kubernetes minor update without updating the operating system version of your container host OS. Updating a workload cluster to a newer version of Kubernetes without updating the OS version works only if the target Kubernetes version is supported by the current operating system version. The following example shows a minor Kubernetes update:
 
 ```powershell
-Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.20.5
+Update-AksHciCluster -name myCluster -kubernetesVersion v1.20.5
 ```
 
 ### Perform a patch Kubernetes update and update the OS version
 Use the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command to perform a Kubernetes patch update and also update the operating system version of your container host OS. We recommend updating the OS version every time you update the Kubernetes version of your cluster. The following example shows a patch Kubernetes update with an OS version update:
 
 ```powershell
-Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.19.9 -operatingSystem
+Update-AksHciCluster -name myCluster -kubernetesVersion v1.19.9 -operatingSystem
 ```
 
 ### Perform a patch Kubernetes update without updating the OS version
 Use the [Update-AksHciCluster](update-akshcicluster.md) PowerShell command to perform a Kubernetes patch update without updating the operating system version of your container host OS. Updating a workload cluster to a newer version of Kubernetes without updating the OS version only works if the target Kubernetes version is supported by the current operating system version. The following example shows a patch Kubernetes update without updating the OS:
 
 ```powershell
-Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.19.9
+Update-AksHciCluster -name myCluster -kubernetesVersion v1.19.9
 ```
 
 ## Update the container operating system version without updating the Kubernetes version
@@ -96,7 +96,7 @@ Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.19.9
 Updating a workload cluster to a newer version of the operating system without changing the Kubernetes version only works if the new operating system version does not require a different Kubernetes version. Run the [Update-AksHciCluster](update-akshcicluster.md) command and specify the `operatingSystem` parameter to update the container hosts of AKS workload clusters to a newer version of the operating system. When running `Update-AksHciCluster`, make sure the `kubernetesVersion` parameter specifies the current Kubernetes version of your cluster to update only the container hosts' OS of your cluster. The example below assumes that the workload cluster `myCluster` is currently on Kubernetes version 1.19.7 and has an operating system version that's more than 30 days old.
 
 ```powershell
-Update-AksHciCluster -clusterName myCluster -kubernetesVersion v1.19.7 -operatingSystem
+Update-AksHciCluster -name myCluster -kubernetesVersion v1.19.7 -operatingSystem
 ```
 
 ## Next steps
