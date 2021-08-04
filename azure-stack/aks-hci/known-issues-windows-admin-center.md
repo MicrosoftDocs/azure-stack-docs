@@ -12,11 +12,11 @@ ms.reviewer:
 
 ## Restarting Azure Stack HCI nodes causes timing issue
 
-Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management cluster and workload clusters may cause the workload clusters to disappear from the Windows Admin Center (WAC) dashboard. The workaround would be to restart WAC. Sometimes the target clusters takes longer to show up in the dashboard.
+Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management cluster and workload clusters may cause the workload clusters to disappear from the Windows Admin Center (WAC) dashboard. The workaround would be to restart WAC. Sometimes the target clusters take longer to show up in the dashboard.
 
 ![Deployment: Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png)
 
-## AKS-host cluster deployment fails at system checks with WinRM service error. 
+## AKS-host cluster deployment fails at system checks with WinRM service error
 
 Try applying remedies suggested in the following article [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
 
