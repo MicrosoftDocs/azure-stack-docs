@@ -59,33 +59,34 @@ azure-vote-front-3309479140-hrbf2   1/1       Running   0          15m
 azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 ```
 
-## Manually scale Azure Kubernetes Service on Azure Stack HCI nodes
+## Scale the worker nodes in the node pool
 
-If you created your Kubernetes cluster using the commands in the previous tutorial, it has one Linux node. You can adjust the number of nodes manually if you plan more or fewer container workloads on your cluster.
+If you created your Kubernetes cluster using the commands in the previous tutorial, your deployment has a cluster called *mycluster* with one Linux node pool called *linuxnodepool* with a node count of 1. 
 
-The following example increases the number of Linux nodes to three and Windows nodes to one in the Kubernetes cluster named *mycluster*. The command takes a couple of minutes to complete. You must scale control plane nodes and worker nodes separately. 
+Use the [Set-AksHciNodePool](set-akshcinodepool.md) command to scale the node pool. The following example scales the node pool from 1 to 3 Linux nodes.
 
 ```powershell
-Set-AksHciCluster -name mycluster -linuxNodeCount 3 -windowsNodeCount 1
-```
+Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -count 3
+``` 
+
+If you want to scale the control plane nodes, use the [Set-AksHciCluster](set-akshcicluster.md) command.
 
 Run the following command to confirm that scaling was successful.
 
 ```powershell
-Get-AksHciCluster -name mycluster
+Get-AksHciNodePool -clusterName mycluster
 ```
 
 **Output**
 ```
-Name            : mycluster
-Version         : v1.18.14
-Control Planes  : 1
-Linux Workers   : 3
-Windows Workers : 1
-Phase           : provisioned
-Ready           : True
+ClusterName  : mycluster
+NodePoolName : linuxnodepool
+Version      : v1.20.7
+OsType       : Linux
+NodeCount    : 3
+VmSize       : Standard_K8S3_v1
+Phase        : Deployed
 ```
-
 
 ## Next steps
 
