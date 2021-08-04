@@ -16,9 +16,13 @@ Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management clus
 
 ![Deployment: Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png)
 
-## AKS-host cluster deployment fails at system checks with WinRM service error
+## Deployment: Connecting to remote server localhost failed
 
-Try applying remedies suggested in the following article [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+AKS-host cluster deployment fails at system checks with WinRM service error. Try applying remedies suggested in the following article [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+
+## Incorrect upgrade notification
+
+Incorrect upgrade notification: S`uccessfully installed AksHci PowerShell module version null`.
 
 ![Incorrect upgrade notification: Successfully installed AksHci PowerShell module version null.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
 
@@ -26,13 +30,18 @@ You may see the incorrect notification message. The upgrade operation is success
 
 ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
 
+## WAC update dashboard doesn't refresh after successful updates
+
 After a success upgrade, the WAC update dashboard still shows the previous version.
 
 ![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
 
+## Networking field names inconsistent in WAC portal
+
 There are inconsistencies in network field names showing up in the host cluster deployment flow and the target cluster deployment flow.
 
 ## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
+
 The error "Cannot index into a null array" appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
