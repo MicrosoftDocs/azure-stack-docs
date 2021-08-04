@@ -133,6 +133,8 @@
           href: azure-stack-compute-overview.md
         - name: VM considerations
           href: azure-stack-vm-considerations.md
+        - name: Emergency VM access
+          href: emergency-vm-access.md
         - name: VM sizes
           href: azure-stack-vm-sizes.md
         - name: Supported GPU VMs
