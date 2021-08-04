@@ -12,7 +12,7 @@ ms.reviewer:
 
 ## Restarting Azure Stack HCI nodes causes timing issue
 
-Restarting of Azure Stack HCI cluster nodes hosting the AKS-HCI management cluster and workload clusters might cause the workload clusters to disappear from Windows Admin Center (WAC) dashboard. The workaround would be to restart WAC or sometimes it just takes longer for the target clusters to show up in the dashboard
+Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management cluster and workload clusters may cause the workload clusters to disappear from the Windows Admin Center (WAC) dashboard. The workaround would be to restart WAC. Sometimes the target clusters takes longer to show up in the dashboard.
 
 ![Deployment: Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png)
 
@@ -22,7 +22,7 @@ Try applying remedies suggested in the following article [Manual troubleshooting
 
 ![Incorrect upgrade notification: Successfully installed AksHci PowerShell module version null.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
 
-You may would see the incorrect notification message. The upgrade operation is successful even if the notification is misleading. The message may look like:
+You may see the incorrect notification message. The upgrade operation is successful even if the notification is misleading.
 
 ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
 
@@ -30,7 +30,7 @@ After a success upgrade, the WAC update dashboard still shows the previous versi
 
 ![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
 
-There is inconsistency in network field names showing up in host cluster deployment flow and target cluster deployment flow.
+There are inconsistencies in network field names showing up in the host cluster deployment flow and the target cluster deployment flow.
 
 ## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
 The error "Cannot index into a null array" appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
