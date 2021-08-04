@@ -1,16 +1,14 @@
 ---
 description: "Learn more about: Health Service faults"
-title: Health Service faults
-<<<<<<<<<<<<<< PLEASE CHANGE THESE IF NEEDED
+title: View Health Service faults
 manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 10/05/2017
-<<<<<<<<<<<<<
+ms.date: 08/04/2021
 ---
 
-# Health Service faults
+# View Health Service faults
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
@@ -781,6 +779,5 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 >[!NOTE]
 > The health of storage enclosure components such as fans, power supplies, and sensors is derived from SCSI Enclosure Services (SES). If your vendor does not provide this information, the Health Service cannot display it.
 
-## Additional References
-
+## Additional references
 - [Health Service](health-service-overview.md)

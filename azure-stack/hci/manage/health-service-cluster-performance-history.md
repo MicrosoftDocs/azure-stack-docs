@@ -1,19 +1,18 @@
 ---
-description: "Learn more about: Cluster Performance History"
-title: Cluster Performance History
-<<<<<<<<<<<<<< PLEASE CHANGE THESE IF NEEDED
+description: "Learn more about: Cluster performance history"
+title: Cluster performance history
 manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 10/05/2017
-<<<<<<<<<<<<<
+ms.date: 08/04/2021
 ---
-# Cluster Performance History
+
+# Get cluster performance history
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-## What is Cluster Performance History
+## What is cluster performance history
 
 The Health Service reduces the work required to get live performance and capacity information from your Storage Spaces Direct cluster. One new cmdlet provides a curated list of essential metrics, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. All values are real-time and point-in-time only.
 
@@ -188,5 +187,5 @@ public void BeginStreamingMetrics(CimSession Session, CimInstance HealthService,
 
 Needless to say, these metrics can be visualized, stored in a database, or used in whatever way you see fit.
 
-## Additional References
-<<<<<<< (Add link to this doc: https://github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/storage/storage-spaces/performance-history.md)
+## Additional references
+- [Performance history for Storage Spaces Direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/performance-history)
