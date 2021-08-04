@@ -3,12 +3,34 @@ title: Known issues in Windows Admin Center for Azure Kubernetes Service on Azur
 description: Known issues in Windows Admin Center for Azure Kubernetes Service on Azure Stack HCI 
 author: abha
 ms.topic: troubleshooting
-ms.date: 05/05/2021
+ms.date: 08/04/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
 
 # Known issues in Windows Admin Center
+
+## Restarting Azure Stack HCI nodes causes timing issue
+
+Restarting of Azure Stack HCI cluster nodes hosting the AKS-HCI management cluster and workload clusters might cause the workload clusters to disappear from Windows Admin Center (WAC) dashboard. The workaround would be to restart WAC or sometimes it just takes longer for the target clusters to show up in the dashboard
+
+![Deployment: Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png)
+
+## AKS-host cluster deployment fails at system checks with WinRM service error. 
+
+Try applying remedies suggested in here [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+
+![Incorrect upgrade notification: Successfully installed AksHci PowerShell module version null.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
+
+Sometimes user would see incorrect notification message as shown below. The upgrade operation is successful however the notification is misleading.
+
+![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
+
+After success upgrade, the WAC update dashboard still shows the previous version.
+
+![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
+
+There is inconsistency in network field names showing up in host cluster deployment flow and target cluster deployment flow.
 
 ## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
 The error "Cannot index into a null array" appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
@@ -42,7 +64,7 @@ When deploying Azure Kubernetes Service on Azure Stack HCI through Windows Admin
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
 ## On Windows Admin Center, the message **error occurred while creating service principal** appears while installing an AKS host on Azure Stack HCI
-You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure login pop-up is blocked and causes the service principal error.
+You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign in pop-up is blocked and causes the service principal error.
 
 ## Next steps
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
