@@ -12,27 +12,27 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version 20H2
 
-This topic discusses Azure Stack HCI host networking considerations and requirements. For information on data center architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
+This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
 
 ## Network traffic types
 
 Azure Stack HCI network traffic can be classified by its intended purpose:
 
-- **Compute traffic** - traffic originating from or destined for a virtual machine (VM)
-- **Storage traffic** - traffic for Storage Spaces Direct (S2D) using Server Message Block (SMB)
-- **Management traffic** - traffic important to an administrator for cluster management, such as Active Directory, Remote Desktop, Windows Admin Center, and Windows PowerShell.
+- **Compute traffic:** Traffic originating from or destined for a virtual machine (VM).
+- **Storage traffic:** Traffic for Storage Spaces Direct (S2D), using Server Message Block (SMB).
+- **Management traffic:** Traffic important to an administrator for cluster management, such as Active Directory, Remote Desktop, Windows Admin Center, and Windows PowerShell.
 
-## Selecting a network adapter
+## Select a network adapter
 
-Azure Stack HCI requires choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality issues. These adapters also meet the networking requirements established for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#networking).
+Azure Stack HCI requires choosing a network adapter that has achieved the Windows Server Software-Defined Data Center (SDDC) certification with the Standard or Premium Additional Qualification (AQ). These adapters support the most advanced platform features and have undergone the most testing by our hardware partners. Typically, this level of scrutiny leads to a reduction in hardware and driver-related quality problems. These adapters also meet the networking requirements established for [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements#networking).
 
-You can identify an adapter that has Standard or Premium AQ by reviewing the [Windows Server Catalog](https://www.windowsservercatalog.com/) entry for the adapter and the applicable operating system version. Below is an example of the notation for Premium AQ:
+You can identify an adapter that has Standard or Premium AQ by reviewing the [Windows Server Catalog](https://www.windowsservercatalog.com/) entry for the adapter and the applicable operating system version. Here's an example of the notation for Premium AQ:
 
-:::image type="content" source="media/plan-networking/windows-certified.png" alt-text="Windows Certified" lightbox="media/plan-networking/windows-certified.png":::
+:::image type="content" source="media/plan-networking/windows-certified.png" alt-text="Screenshot of Windows Certified options, with a Premium AQ option highlighted." lightbox="media/plan-networking/windows-certified.png":::
 
 ## Overview of key network adapter capabilities
 
-Important network adapter capabilities leveraged by Azure Stack HCI include:
+Important network adapter capabilities used by Azure Stack HCI include:
 
 - Dynamic Virtual Machine Multi-Queue (Dynamic VMMQ or d.VMMQ)
 - Remote Direct Memory Access (RDMA)
@@ -43,17 +43,17 @@ Important network adapter capabilities leveraged by Azure Stack HCI include:
 
 All network adapters with the Premium AQ support Dynamic VMMQ. Dynamic VMMQ requires the use of Switch Embedded Teaming.
 
-**Applicable traffic types**: compute
+**Applicable traffic types:** compute
 
-**Certifications required**: Premium
+**Certifications required:** Premium
 
-Dynamic VMMQ is an intelligent receive-side technology that builds upon its predecessors of Virtual Machine Queue (VMQ), Virtual Receive Side Scaling (vRSS), and VMMQ to provide three primary improvements:
+Dynamic VMMQ is an intelligent, receive-side technology. It builds upon its predecessors of Virtual Machine Queue (VMQ), Virtual Receive Side Scaling (vRSS), and VMMQ, to provide three primary improvements:
 
-- Optimizes host efficiency by use of CPU cores
-- Automatic tuning of network traffic processing to CPU cores, thus enabling VMs to meet and maintain expected throughput
-- Enables “bursty” workloads to receive the expected amount of traffic
+- Optimizes host efficiency by using CPU cores.
+- Automatic tuning of network traffic processing to CPU cores, thus enabling VMs to meet and maintain expected throughput.
+- Enables “bursty” workloads to receive the expected amount of traffic.
 
-For more information on Dynamic VMMQ, see the blog post [Synthetic Accelerations](https://techcommunity.microsoft.com/t5/networking-blog/synthetic-accelerations-in-a-nutshell-windows-server-2019/ba-p/653976).
+For more information on Dynamic VMMQ, see the blog post [Synthetic accelerations](https://techcommunity.microsoft.com/t5/networking-blog/synthetic-accelerations-in-a-nutshell-windows-server-2019/ba-p/653976).
 
 ### RDMA
 
