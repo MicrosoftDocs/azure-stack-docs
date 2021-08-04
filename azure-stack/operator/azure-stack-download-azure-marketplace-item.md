@@ -14,7 +14,6 @@ zone_pivot_groups: state-connected-disconnected
 
 ---
 
-
 # Download Marketplace items to Azure Stack Hub
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack Hub. Additional items are frequently added to this list, so continue to check back for new content.
@@ -94,16 +93,28 @@ Download the **Azs.Syndication.Admin** module from the PowerShell Gallery using 
 
 ### [Az modules](#tab/az1)
 
+::: moniker range=">=azs-2102"
   ```powershell
   Install-Module -Name Azs.Syndication.Admin
   ```
-
+::: moniker-end
+::: moniker range="<=azs-2008"
+  ```powershell
+  Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.154-preview -AllowPrerelease
+  ```
+::: moniker-end
 ### [AzureRM modules](#tab/azurerm1)
 
+::: moniker range=">=azs-2102"
   ```powershell
   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
   ```
-
+::: moniker-end
+::: moniker range="<=azs-2008"
+  ```powershell
+  Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.154-preview -AllowPrerelease
+  ```
+::: moniker-end
 ---
 
 Once you have registered your Azure Stack, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
@@ -136,11 +147,18 @@ Once you have registered your Azure Stack, you can disregard the following messa
    Get-AzSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzSubscription
    ```
 
-4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
+4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool if your using the latest version of Azure Stack Hub:
 
-   ```powershell
+::: moniker range=">=azs-2102"
+   ```powershell  
    Install-Module -Name Azs.Syndication.Admin
    ```
+::: moniker-end
+::: moniker range="<=azs-2008"
+   ```powershell  
+   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.154-preview -AllowPrerelease
+   ```
+::: moniker-end
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
 
@@ -206,9 +224,16 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 4. If you haven't done it in the pre-requisites step already, download the latest version of the Marketplace syndication tool:
 
-   ```powershell
+::: moniker range=">=azs-2102"
+   ```powershell  
    Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.140
    ```
+::: moniker-end
+::: moniker range="<=azs-2008"
+   ```powershell  
+   Install-Module -Name Azs.Syndication.Admin -RequiredVersion 0.1.154-preview -AllowPrerelease
+   ```
+::: moniker-end
 
 5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command:
 
