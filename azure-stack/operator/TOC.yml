@@ -373,12 +373,7 @@
         - name: 2020 Q2 release notes [May 2020]
           href: app-service-release-notes-2020-Q2.md
     - name: Azure Kubernetes Service
-      items:
-      - name: Overview
-        href: aks-overview.md
-      - name: Install
-        href: aks-add-on.md
-      href: 
+      href: aks-add-on.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview

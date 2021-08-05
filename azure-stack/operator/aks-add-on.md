@@ -15,7 +15,11 @@ ms.lastreviewed: 07/01/2021
 
 # Install and offer the Azure Kubernetes Service on Azure Stack Hub
 
-You can install the Azure Kubernetes Service (AKS) resource provider for the users of your Azure Stack Hub. 
+Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters in Azure Stack Hub. AKS reduces the complexity and operational overhead of managing Kubernetes clusters. As a hosted Kubernetes service, Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance of clusters. The Azure Stack team manages the image used for maintaining the clusters. The cluster tenant administrator will only need to apply the updates as needed. The services come at no extra cost. AKSis free: you only pay to use the VMs (master and agent nodes) within your clusters. You can install the Azure Kubernetes Service (AKS) resource provider for the users of your Azure Stack Hub. 
+
+> [!IMPORTANT]
+> Azure Kubernetes Service on Azure Stack Hub is currently in PREVIEW.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Download AKS base Image
 
@@ -52,4 +56,4 @@ To allow tenant users to use the AKS Service the operator needs to make it avail
 
 ## Next steps
 
-[Learn more about the AKS on Azure Stack Hub](aks-overview.md)
+[Learn more about the AKS on Azure Stack Hub](../user/aks-overview.md)
