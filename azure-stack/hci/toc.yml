@@ -146,8 +146,6 @@
       href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
     - name: Use Azure Backup
       href: manage/use-azure-backup.md
     - name: Use Azure Network Adapter
