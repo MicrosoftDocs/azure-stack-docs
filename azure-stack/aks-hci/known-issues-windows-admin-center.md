@@ -19,7 +19,7 @@ Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management clus
 
 ## Deployment: Connecting to remote server localhost failed
 
-AKS-host cluster deployment fails at system checks with WinRM service error. Try applying remedies suggested in the following article [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+AKS-host cluster deployment fails at system checks with WinRM service error. Try applying remedies suggested in the following article [Manual troubleshooting](../hci/manage/troubleshoot-credssp.md#manual-troubleshooting). 
 
 ![Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
 
@@ -77,4 +77,3 @@ You will get this error if you have disabled pop-ups. Google Chrome blocks pop-u
 ## Next steps
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
-
