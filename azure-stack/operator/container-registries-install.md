@@ -20,7 +20,7 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
 ## Prerequisites
 
 * **Azure Stack Hub version**  
-    You can only enable the Microsoft Azure Container in an Azure Stack Hub integrated system running the 2107 update, and later releases. You must install the Azure Stack Hub update before you complete the steps in this article. The Azure Container Registry (ACR) service is not supported on the Azure Stack Developer Kit (ASDK) deployments.
+    You can only enable the Microsoft Azure Container in an Azure Stack Hub integrated system running the 2108 update, and later releases. You must install the Azure Stack Hub update before you complete the steps in this article. The Azure Container Registry (ACR) service is not supported on the Azure Stack Developer Kit (ASDK) deployments.
 * **Certificate requirements**  
     The configuration of the ACR on your Azure Stack Hub system adds a new data path that requires a certificate. The certificate must meet the same requirements as the other certificates required to install and operate Azure Stack Hub. You can find more information in the article, "[Azure Stack Hub public key infrastructure (PKI) certificate requirements](/azure-stack-pki-certs.md)."
 
@@ -85,11 +85,31 @@ You can use the Azure Stack Hub administrative portal to import the certificate 
 ### [PowerShell](#tab/ps)
 
 You can use the following PowerShell cmdlets to import the certificate and install the service.
+1. Install ContainerRegistry Admin cmdlet:
 
 ```powershell  
-Install-ContainterService
+Install-Package Azs.ContainerRegistry.Admin
 ```
+2. Connect to Az Account:
 
+```powershell  
+$ArmEndpoint = "<AdminResourceManagerEndpoint>"
+Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name "AzureStackAdmin"
+Connect-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $tenantID -Credential $credential
+```
+3. Define parameters for Container Registry Setup:
+
+```powershell  
+$password = ConvertTo-SecureString "<certificate password>" -AsPlainText -Force
+$pfx_cert_path = "<certificate pfx path>"
+Start Container Registry Service Setup:
+Start-AzsContainerRegistrySetup -Password $password -SslCertInputFile $pfx_cert_path | ConvertTo-Json
+```
+4. Check Container Registry Setup Progress:
+
+```powershell  
+(Get-AzsContainerRegistrySetupStatus).ToJsonString()
+``` 
 ---
 
 Once the installation is complete, you can review or update your capacity in quota in the Azure Stack Hub administrative portal.
