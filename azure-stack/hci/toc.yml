@@ -146,10 +146,8 @@
       href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
     - name: Use Azure Backup
-      href: manage/use-azure-backup.md
+      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Network Adapter
       href: manage/use-azure-network-adapter.md
 - name: Concepts
