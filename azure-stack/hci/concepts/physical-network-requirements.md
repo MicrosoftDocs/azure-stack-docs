@@ -125,7 +125,7 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 |Interface pair|Subnet|VLAN|
 |---|---|---|
-|Mgmt host vNIC|Customer-specific|Customer-specific|
+|Mgmt host vNIC|customer-specific|customer-specific|
 |SMB01|192.168.71.x/24|711|
 |SMB02|192.168.72.x/24|712|
 |SMB03|192.168.73.x/24|713|
