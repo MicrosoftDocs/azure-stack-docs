@@ -48,7 +48,7 @@ Use the links below to submit your feedback.
 
 ## Service updates
 
-Public review updates will be made available following the standard Azure Stack Patch and Update (PNU) process outlined in the article [Manage updates in Azure Stack Hub](../operator/azure-stack-update.md). Besides the service, which updates through the Azure Stack Hub Patch and Update process, you may also need to update the AKS base image. If such is the case the extra step of [downloading the image](../operator/azure-stack-download-azure-marketplace-item.md) from the Azure Stack Hub Marketplace will be required.
+Public review updates will be made available following the standard Azure Stack Patch and Update (PNU) process outlined in the article [Manage updates in Azure Stack Hub](../operator/azure-stack-updates.md). Besides the service, which updates through the Azure Stack Hub Patch and Update process, you may also need to update the AKS base image. If such is the case the extra step of [downloading the image](../operator/azure-stack-download-azure-marketplace-item.md) from the Azure Stack Hub Marketplace will be required.
 
 As participants in the public preview, you may also need to:
 
