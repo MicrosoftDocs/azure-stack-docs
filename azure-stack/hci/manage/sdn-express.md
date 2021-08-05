@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 08/03/2021
+ms.date: 08/04/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -38,7 +38,8 @@ The following requirements must be met for a successful SDN deployment:
 - All host servers must be joined to Active Directory
 - A virtual switch must be created
 - The physical network must be configured for the subnets and VLANs defined in the configuration file
-- The VHDX file specified in the configuration file must be reachable from the deployment computer where the SDN Express script is run
+- The SDN Express script needs to be run from a Windows Server 2016 or later computer
+- The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run
 
 ## Create the VHDX file
 

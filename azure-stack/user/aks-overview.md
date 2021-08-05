@@ -38,7 +38,7 @@ The following tasks fall on the **Azure Stack Hub Operator**:
 1. Make sure that the Azure Kubernetes Service base images are available in the Azure Stack Hub instance, this includes downloading them from Azure.
 2. Make sure that the Azure Kubernetes Service is available for customers plans and user subscriptions, as is the case with any other service in Azure Stack Hub.
 3. Monitor the Azure Kubernetes Service and act on any alert and associated remediation.
-4. For details on the Operator tasks see [Azure Kubernetes Service on Azure Stack Hub overview](../operator/aks-overview.md)
+4. For details on the Operator tasks see [Install and offer the Azure Kubernetes Service on Azure Stack Hub](../operator/aks-add-on.md)
 
 The following tasks correspond to the user, that is, the **Tenant AKS Cluster Administrator**:
 

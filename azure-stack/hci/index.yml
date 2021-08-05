@@ -129,12 +129,12 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Manage Azure registration
+          - text: Register cluster with Azure
+            url: deploy/register-with-azure.md
+          - text: Manage cluster registration with Azure
             url: manage/manage-azure-registration.md
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
-          - text: Use Azure Network Adapter
-            url: manage/use-azure-network-adapter.md
 
  # Card
   - title: Software Defined Networking

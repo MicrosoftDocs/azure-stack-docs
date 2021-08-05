@@ -83,17 +83,7 @@ After you [register your Azure Stack HCI cluster](deploy/register-with-azure.md)
 - **Monitoring:** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them.
 - **Billing:** Pay for Azure Stack HCI through your Azure subscription.
 
-You can also subscribe to additional Azure hybrid services:
-
-- **Azure Site Recovery** for high availability and disaster recovery as a service (DRaaS).
-- **Azure Monitor**, a centralized hub to track what's happening across your apps, network, and infrastructure – with advanced analytics powered by AI.
-- **Cloud Witness**, to use Azure as the lightweight tie-breaker for cluster quorum.
-- **Azure Backup** for offsite data protection and to protect against ransomware.
-- **Azure Update Management** for update assessment and update deployments for Windows VMs running in Azure and on-premises.
-- **Azure Network Adapter** to connect resources on-premises with your VMs in Azure via a point-to-site VPN.
-- **Azure File Sync** to sync your file server with the cloud.
-
-For more information, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/index).
+You can also subscribe to additional Azure hybrid services.
 
 ## What you need for Azure Stack HCI
 
