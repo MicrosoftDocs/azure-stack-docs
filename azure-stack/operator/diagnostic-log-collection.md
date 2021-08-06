@@ -55,9 +55,9 @@ Enabling proactive log collections is highly recommended. It allows the product 
 
 ::: moniker-end
 
-::: moniker range=">= azs-2107"
+::: moniker range=">= azs-2108"
 
-Beginning with Azure Stack Hub version 2107 if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case.
+Beginning with Azure Stack Hub version 2108 if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case.
 
 ::: moniker-end
 
