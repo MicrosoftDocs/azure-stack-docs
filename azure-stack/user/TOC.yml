@@ -287,6 +287,8 @@
             href: aks-how-to-use-cli.md
           - name: Use AKS with portal
             href: aks-how-to-use-portal.md
+          - name: Deploy test apps
+            href: aks-how-to-push-an-app-cli.md
           - name: Known issues
             href: aks-known-issues.md
           - name: Support
