@@ -94,7 +94,7 @@ iWARP uses the Transmission Control Protocol (TCP), and can be optionally enhanc
 Use iWARP if:
 
 - You have little or no network experience, or are uncomfortable managing network switches.
-- You don't control your ToR switches.
+- You don't control your top-of-rack (ToR) switches.
 - You won't be managing the solution after deployment.
 - You already have deployments that use iWARP.
 - You're unsure which option to choose.
@@ -208,7 +208,7 @@ SMB provides many benefits as the storage protocol for Azure Stack HCI, includin
 
 Consider the following example of a four node cluster. Each server has two storage ports (left and right side). Because each adapter is on the same subnet and VLAN, SMB Multichannel will spread connections across all available links. Therefore, the left-side port on the first server (192.168.1.1) will make a connection to the left-side port on the second server (192.168.1.2). The right-side port on the first server (192.168.1.12) will connect to the right-side port on the second server. Similar connections are established for the third and fourth servers.
 
-However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the top of rack (ToR) switches (marked with Xs). See the following diagram:
+However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 
 :::image type="content" source="media/plan-networking/four-node-cluster-1.png" alt-text="Diagram that shows a four-node cluster on the same subnet." lightbox="media/plan-networking/four-node-cluster-1.png":::
 
