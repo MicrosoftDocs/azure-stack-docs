@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 06/09/2021
+ms.date: 08/06/2021
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 06/09/2021
@@ -22,7 +22,7 @@ Use remote support to allow a Microsoft support professional to solve your suppo
 
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses protocol HTTPS over port 443. The traffic is encrypted with TLS 1.2. Operations performed are *restricted* based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA). For more information about cmdlets that Microsoft support can execute during a remote support session, see the [list of Microsoft Support operations](#list-of-microsoft-support-operations) section in this article.
 
-![Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions](./media/remote-support/remote-support.svg)
+![Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions.](./media/remote-support/remote-support.svg)
 
 ## Why use remote support?
 
@@ -39,8 +39,11 @@ Remote support gives you the ability to:
 Before remote support is enabled, you must provide consent to how Microsoft Support collects, stores, and uses your log data. The following text includes the data handling terms:
 
 > By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described in the Microsoft support case.
+>
 > During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostic logs collection by Microsoft Support Engineer to address a support case You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft.  These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.
+>
 > The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our standard privacy practices.
+>
 > Any data previously collected with your consent will not be affected by the revocation of your permission.
 
 ## Remote support examples
