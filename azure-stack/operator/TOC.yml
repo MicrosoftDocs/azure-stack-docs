@@ -542,6 +542,8 @@
         href: azure-stack-find-cloud-id.md  
       - name: Diagnostic log collection
         href: diagnostic-log-collection.md
+      - name: Remote support
+        href: remote-support.md
       - name: Get-AzureStackLog (PEP)
         href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
