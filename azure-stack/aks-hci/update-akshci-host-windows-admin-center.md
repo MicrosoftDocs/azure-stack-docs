@@ -39,11 +39,11 @@ To update the AKS on Azure Stack HCI host with Windows Admin Center, follow the 
 
    Now you can click **Update now** to update the PowerShell module.
 
-   :::image type="content" source="media/wac-upgrade/incompatible-version.png" alt-text="Displays the incompatible version message in Windows Admin Center." lightbox="media/wac-upgrade/incompatible-version.png":::
+   [ ![Displays the incompatible version message in Windows Admin Center.](.\media\wac-upgrade\incompatible-version.png) ](\media\wac-upgrade\incompatible-version.png#lightbox)
 
 3. On the **Host settings** page, select **Update AksHci PowerShell module to version x.x.x** under **Updates available**, and then click **Update now**.
    
-   :::image type="content" source="media/wac-upgrade/available-module-version.png" alt-text="Displays the available AksHci PowerShell updates." lightbox="media/wac-upgrade/available-module-version.png":::
+   [ ![Displays the available AksHci PowerShell updates.](.\media\wac-upgrade\available-module-version.png) ](\media\wac-upgrade\available-module-version.png#lightbox)
    
 4. You can now go back to the Windows Admin Center **Connections** page and connect to your Azure Stack HCI cluster.
 5. Select the **Azure Kubernetes Service** tool from the **Tools** list. When the tool loads, you will see with the **Overview** page.
