@@ -51,7 +51,7 @@ Azure Stack Hub proactively collects logs for:
 
 When an event triggers these alerts, Azure Stack Hub proactively sends the logs to Microsoft. In addition, Azure Stack Hub sends logs to Microsoft triggered by other failure events. These events are not visible to you.
 
-Enabling proactive log collections is highly recommended. It allows the product team to diagnose problems due to failure events and improve the quality of the product.
+Enabling proactive log collection is highly recommended. It allows the product team to diagnose problems due to failure events and improve the quality of the product.
 
 ::: moniker-end
 
