@@ -14,12 +14,9 @@ ms.lastreviewed: 08/15/2021
 
 # Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
 
-This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes how to deploy some test apps to your cluster so that you can get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
+This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes how to deploy some test apps to your cluster so that you can get familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
 
-In the following sections you will:
-
-1.  Complete the prerequisites to use AKS on Azure Stack Hub.
-2.  Complete the lifecycle operations of an AKS cluster using Azure CLI and the Azure Stack Hub user portal.
+Before you get started, make sure that can create an AKS cluster on your Azure Stack Hub instance. For instruction on getting set-up and creating your first cluster, see [Using Azure Kubernetes Service on Azure Stack Hub with the CLI](aks-how-to-use-cli.md).
 
 ## Deploy test apps
 

@@ -147,8 +147,6 @@ The following output should be produced in a windows machine:
 
 Once those prerequisite steps are completed, you can proceed to test the following scenarios.
 
-
-
 ## Create an AKS cluster
 
 You can find the global Azure instructions at [Deploy an Azure Kubernetes Service cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough). The instructions here reflect the limitations of using AKS on Azure Stack Hub. You can use the Azure CLI to create an AKS cluster for Linux or Windows containers.
