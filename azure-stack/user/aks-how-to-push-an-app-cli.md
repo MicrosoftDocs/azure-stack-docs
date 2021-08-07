@@ -1,6 +1,6 @@
 ---
-title: Using Azure Kubernetes Service on Azure Stack Hub with the CLI
-description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
+title: Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
+description: Learn how to deploy test applications to Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
 ms.date: 08/15/2021
@@ -79,7 +79,7 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 
 ## Deploy apps to AKS using ACR
 
-At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below. Otherwise, you can skip to the section title [Upgrade the cluster](#upgrade-cluster).
+At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below. Otherwise, you can skip to the section title [Upgrade the cluster](aks-how-to-use-cli.md#upgrade-cluster).
 
 ## Docker Registry Secret for accessing local ACR
 

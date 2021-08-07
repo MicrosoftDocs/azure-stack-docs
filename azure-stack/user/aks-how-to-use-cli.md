@@ -153,7 +153,7 @@ Once those prerequisite steps are completed, you can proceed to test the followi
 
 You can find the global Azure instructions at [Deploy an Azure Kubernetes Service cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough). The instructions here reflect the limitations of using AKS on Azure Stack Hub. You can use the Azure CLI to create an AKS cluster for Linux or Windows containers.
 
-### [Linux containers](#tab/linux_con)
+### [Linux containers](#tab/linuxcon)
 
 1.  Create a resource group:
 
@@ -186,7 +186,7 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` have been generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
 
 4. Now you can proceed to repeat the tests for [Upgrade](#upgrade-cluster), [Scale](#scale-cluster), [deploy an app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
-### [Windows containers](#tab/win_con)
+### [Windows containers](#tab/wincon)
 
 1.  Create a resource group
 
