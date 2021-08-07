@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Learn the physical network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 08/05/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -73,7 +73,7 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required:
 
 |Version required|Organization|TLV Subtype|
-|-----|-----|-----|-----|
+|-----|-----|-----|
 |20H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
 |20H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 
@@ -120,6 +120,15 @@ Work with your network vendor or network support team to ensure your network swi
 ## Using switchless
 
 Azure Stack HCI supports switchless (direct) connections for East-West traffic for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
+
+:::image type="content" source="media/plan-networking/switchless-connectivity.png" alt-text="switchless connectivity" lightbox="media/plan-networking/switchless-connectivity.png":::
+
+|Interface pair|Subnet|VLAN|
+|---|---|---|
+|Mgmt host vNIC|customer-specific|customer-specific|
+|SMB01|192.168.71.x/24|711|
+|SMB02|192.168.72.x/24|712|
+|SMB03|192.168.73.x/24|713|
 
 > [!NOTE]
 >The benefits of switchless deployments diminish with clusters larger than three-nodes due to the number of network adapters required.
