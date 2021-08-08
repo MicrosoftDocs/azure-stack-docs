@@ -64,7 +64,7 @@ The following table provides an overview of features of AKS in global Azure comp
 |                              | Cluster Metrics                                     | Yes       | Yes     |
 |                              | Advisor Recommendations                             | Yes       | No      |
 |                              | Diagnostic settings                                 | Yes       | Yes     |
-|                              | K8s Control Plane Logs                              | Yes       | Yes     |
+|                              | Kubernetes Control Plane Logs                              | Yes       | Yes     |
 |                              | Workbooks                                           | Yes       | No      |
 | Clusters & Nodes             |                                                     |           |         |
 |                              | Automatic Node Scaling (Autoscaler)                 | Yes       | No      |
@@ -79,7 +79,7 @@ The following table provides an overview of features of AKS in global Azure comp
 | Virtual Networks and Ingress |                                                     |           |         |
 |                              | Default VNET                                        | Yes       | Yes     |
 |                              | Custom VNET                                         | Yes       | Yes     |
-|                              | HTTP Ingress                                        | Yes       | \<?\>   |
+|                              | HTTP Ingress                                        | Yes       | No      |
 | Development Tooling          |                                                     |           |         |
 |                              | Helm                                                | Yes       | Yes     |
 |                              | Dev Studio                                          | Yes       | No      |
@@ -130,7 +130,6 @@ Azure Stack Hub supports a subset of the features available in global Azure. Tak
     * [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available.
     * No multiple node-pool support. The node pool commands are not available.
     * UI support for multi-node-pool operations is not enabled.
-    * Windows containers
  - No Azure Regions or Availability Zones
  - No Availability Sets, only virtual machine scale sets
  - Review command list for supported and unsupported commands.
@@ -139,7 +138,7 @@ Azure Stack Hub supports a subset of the features available in global Azure. Tak
 
 Absence of some Azure services limits some functionality options on AKS on Azure Stack Hub:
 
- - No Files Service. This makes it so that there is no support for File Service based volumes in K8s in Azure Stack Hub.
+ - No Files Service. This makes it so that there is no support for File Service based volumes in Kubernetes in Azure Stack Hub.
  - No Azure Log Analytics and Azure Container Monitor. Any Kubernetes cluster can be connected to Azure Container Monitor as long as it is connected to the internet, if it is disconnected there is no equivalent service locally in Azure Stack Hub. So there is not integrated support for Azure Container Monitor in AKS on Azure Stack Hub.
  - No Azure DevOps. Since this service is not available for a disconnected Azure Stack Hub, there is no integrated support for it.
 
@@ -153,15 +152,15 @@ Given the differences between the two platforms outlined above, the user should 
 
 | Common parameters                 |Notes |
 | ---                 | --- |
-| `--service-principal  --client-secret`  | Azure Stack Hub does not support managed identities yet; Service Principal credentials are always needed. |
+| `--service-principal  --client-secret`  | Azure Stack Hub does not support managed identities yet; service principal credentials are always needed. |
 | `--load-balancer-sku basic`             | Azure Stack Hub does not support standard load balancer (SLB) yet. |
 | `--location`                            | The location value is specific to the customer's chosen one. |
 
-### Service Principals can be provided by Azure AD or AD FS
+### Service principals can be provided by Azure AD or AD FS
 
-Service Principals are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create Service Principals is documented here:
- - [AAD service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-connected#overview)
- - [AD FS service principal](https://docs.microsoft.com/azure-stack/operator/give-app-access-to-resources?view=azs-2102&tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
+Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create SPNs is documented here:
+ - [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-connected#overview)
+ - [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
 
 ## Next steps

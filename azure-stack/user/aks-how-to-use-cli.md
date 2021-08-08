@@ -147,9 +147,11 @@ The following output should be produced in a windows machine:
 
 Once those prerequisite steps are completed, you can proceed to test the following scenarios.
 
-## Create an Ubuntu AKS cluster
+## Create an AKS cluster
 
-You can find the global Azure instructions at [Deploy an Azure Kubernetes Service cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough). The instructions here reflect the limitations of using AKS on Azure Stack Hub.
+You can find the global Azure instructions at [Deploy an Azure Kubernetes Service cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough). The instructions here reflect the limitations of using AKS on Azure Stack Hub. You can use the Azure CLI to create an AKS cluster for Linux or Windows containers.
+
+### [Linux containers](#tab/linuxcon)
 
 1.  Create a resource group:
 
@@ -157,7 +159,7 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     az group create --name myResourceGroup --location <Azure Stack Hub location>
     ```
 
-2.  Make sure you have a Service Principal identity ready with contributor permission on your subscription to create clusters in it.
+2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
     1.  To create an SPN using ADD, follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
     2.  To create an SPN using ADFS, follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
@@ -181,6 +183,42 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
 
     The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` have been generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
 
+4. Now you can proceed to repeat the tests for [Upgrade](#upgrade-cluster), [Scale](#scale-cluster), [deploy an app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
+### [Windows containers](#tab/wincon)
+
+1.  Create a resource group
+
+    ```azurecli
+        az group create --name myResourceGroup-Win --location <your stamp location>
+    ```
+
+2.  Create a Windows Azure Kubernete az login
+3.  Service cluster.
+
+    ```azurecli
+    PASSWORD_WIN="************"
+    az aks create  \
+    --resource-group myResourceGroup-Win  \
+    --name akswin \
+    --dns-name-prefix akswin \
+    --nodepool-name mypool \
+    --admin-username azureuser \
+    --service-principal xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  \
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --node-count 3 \
+    --generate-ssh-keys \
+    --load-balancer-sku basic \
+    --vm-set-type VirtualMachineScaleSets \
+    --network-plugin azure \
+    --windows-admin-username azureuser \
+    --windows-admin-password $PASSWORD_WIN \
+    --location redmond
+    ```
+
+4. Now you can proceed to repeat the tests for [Upgrade](#upgrade-cluster), [Scale](#scale-cluster), [deploy a Windows app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
+
+---
+
 ## Connect to the cluster
 
 1.  To manage a Kubernetes cluster, you use **kubectl**, the Kubernetes command-line client. To install **kubectl** locally, use the az aks install-cli command (you may need to use 'sudo' at te beginning to have permission to install it):
@@ -203,144 +241,6 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
 
 ![verify the connection to your cluster](media/aks-how-to-use/verify-the-connection-to-your-cluster.png)
 
-## Deploy test applications
-
-If your stamp is connected, you can follow these instructions to deploy Prometheus and Grafana to the cluster.
-
-1.  Download and install Helm 3:
-
-    ```bash  
-    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-    chmod 700 get_helm.sh
-    ./get_helm.sh
-    ```
-
-    > [!NOTE]  
-    > For Windows user use [Chocolatey](https://chocolatey.org/install) to install Helm:
-    >```powershell  
-    >choco install kubernetes-helm
-    >```
-
-1.  Ensure you have the latest stabled helm repository:
-
-    ```bash  
-    helm repo add stable https://charts.helm.sh/stable
-    helm repo update
-    ```
-
-1.  Install Prometheus.
-
-    ```bash  
-    helm install my-prometheus stable/prometheus --set server.service.type=LoadBalancer --set rbac.create=false
-    ```
-
-1.  Give cluster administrative access to Prometheus account. Lower permissions are better for security reasons.
-
-    ```bash  
-    kubectl create clusterrolebinding my-prometheus-server --clusterrole=cluster-admin --serviceaccount=default:my-prometheus-server
-    ```
-
-1.  Install Grafana.
-
-    ```bash  
-    helm install my-grafana stable/grafana --set service.type=LoadBalancer --set rbac.create=false
-    ```
-
-1.  Get secret for Grafana portal.
-
-    ```bash  
-    kubectl get secret --namespace default my-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-    ```
-
-> [!NOTE]  
-> On Windows use the following PowerShell cmdlets to get the secret:
-> ```powershell  
-> \$env:Path = \$env:Path + ";\$env:USERPROFILE\\.azure-kubectl"
-> [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String(\$(kubectl get secret --namespace default my-grafana -o jsonpath="{.data.admin-password}")))
-> ```
-
-### Deploy your applications to the cluster using Azure Container Registry
-
-At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below. Otherwise, you can skip to the section title [Upgrade the cluster](#upgrade-cluster).
-
-#### Docker Registry Secret for accessing local ACR
-
-If you are deploying application images from a local ACR, you will need to store a secret in order for the Kubernetes cluster to have access to pull the images from the registry. To do this you will need to provide a Service Principal ID (SPN) and Secret, add the SPN as a contributor to the source registry and create the Kubernetes secret. You will also need to update your YAML file to reference the secret.
-
-#### Command to add the service principle as a contributor to the ACR. 
-
-> [!NOTE]  
-> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Be sure to add the values for your system.
-
-```powershell  
-# Modify for your environment. The ACR_NAME is the name of your Azure Container
-# Registry, and the SERVICE_PRINCIPAL_ID is the service principal's 'appId' or
-# one of its 'servicePrincipalNames' values.
-ACR_NAME=mycontainerregistry
-SERVICE_PRINCIPAL_ID=<service-principal-ID>
-
-# Populate value required for subsequent command args
-ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
-
-# Assign the desired role to the service principal. 
-az role assignment create --assignee $SERVICE_PRINCIPAL_ID --scope $ACR_REGISTRY_ID --role contributor
-
-```
-
-#### Command to create the secret in Kubernetes
-
-Use the following command to add the secret to the Kubernetes cluster. Be sure to add the values for your system in the code snippets.
-
-```bash
-kubectl create secret docker-registry <secret name> \
-kubectl create secret docker-registry <secret name> \
-    --docker-server=<ACR container registry URL> \
-    --docker-username=<Service Principal ID> \
-    --docker-password=<Service Principal Secret> 
-
-```
-
-#### Example of referencing the secret in your app YAML
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment 
-spec:
-selector:
-  matchLabels:
-   app: nginx
-replicas: 2
-template:
-  metadata:
-   labels:
-    app: nginx
-  spec:
-   containers:
-   - name: nginx
-     image: democr2.azsacr.redmond.ext-n31r1208.masd.stbtest.microsoft.com/library/nginx:1.17.3
-     imagePullPolicy: Always
-     ports: 
-      - containerPort: 80
-   imagePullSecrets:
-     - name: democr2
- 
- 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-spec:
-  selector:
-    app: nginx
-  ports:
-  - protocol: "TCP"
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
-```
 
 ## Upgrade cluster
 
@@ -493,39 +393,6 @@ Creating a cluster to be deployed in a user-provided network is a common scenari
     ```
 
 2.  Follow the instructions on the section "Connect to the cluster" to connect to the Kubernetes cluster and deploy your applications.
-
-## Create Windows AKS cluster
-
-1.  Create a resource group
-
-    ```azurecli
-        az group create --name myResourceGroup-Win --location <your stamp location>
-    ```
-
-2.  Create a Windows Azure Kubernete az login
-3.  Service cluster.
-
-    ```azurecli
-    PASSWORD_WIN="************"
-    az aks create  \
-    --resource-group myResourceGroup-Win  \
-    --name akswin \
-    --dns-name-prefix akswin \
-    --nodepool-name mypool \
-    --admin-username azureuser \
-    --service-principal xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  \
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --node-count 3 \
-    --generate-ssh-keys \
-    --load-balancer-sku basic \
-    --vm-set-type VirtualMachineScaleSets \
-    --network-plugin azure \
-    --windows-admin-username azureuser \
-    --windows-admin-password $PASSWORD_WIN \
-    --location redmond
-    ```
-
-4. Now you can proceed to repeat the tests above for Upgrade, Scale, deploy a Windows app, and Delete.
 
 ## Consistency check
 

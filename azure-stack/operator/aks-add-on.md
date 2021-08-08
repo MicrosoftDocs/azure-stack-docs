@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters 
 > Azure Kubernetes Service on Azure Stack Hub is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
-## Download AKS base Image
+## Download AKS base image
 
 The AKS Service needs a special VM image referred to the "AKS base Image". The AKS service will not work without the correct image version available in the local ASH marketplace. The image is meant to be used by the AKS service, not to be used by tenants to create individual VMs. The image will not be visible to tenants in the Marketplace. This is a task that needs to be done alongside every Azure Stack Hub Update. Every time there is a new update there will be a new AKS base image associated with the AKS Service. Here are the steps:
 
@@ -31,7 +31,7 @@ The AKS Service needs a special VM image referred to the "AKS base Image". The A
 
 1.  If your instance is disconnected, follow the instructions in the article "[Download Marketplace items to Azure Stack Hub](/azure-stack/operator/azure-stack-download-azure-marketplace-item)" to download the two items mentioned from the marketplace in Azure and upload them to your Azure Stack Hub instance.
 
-## Create Plans and Offers
+## Create plans and offers
 
 To allow tenant users to use the AKS Service the operator needs to make it available through a plan and an offer.
 
@@ -43,14 +43,14 @@ To allow tenant users to use the AKS Service the operator needs to make it avail
 
     ![Create an offer](media/aks-add-on/aks-create-an-offer.png)
 
-## Monitor the AKS Service and act on Alerts
+## Monitor and act on alerts
 
 1.  Using the Admin Portal you can access the **Azure Kubernetes Service** under the **Administration** group.
-2.  Once you open it, you will find the "Alerts" blade, select it to see any alerts:
+2.  Select the "**Alerts**" blade. Review the alerts:
 
     ![AKS - Admin](media/aks-add-on/aks-admin.png)
 
-1.  Alerts will show in the "Alerts" blade, you will be able to take action on them if need to:
+1.  Alerts will show in the **Alerts** blade, you will be able to take action on them if need to:
 
 ![AKS - Alerts](media/aks-add-on/aks-alerts.png)
 
