@@ -48,6 +48,9 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 
 ### PowerShell examples for rotating secrets
 
+> [!IMPORTANT]
+> Successful secret rotation requires [existing versions of the Azure Stack Hub PowerShell modules to be removed](azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules), prior to running the script below.
+
 **Change all the secrets at the same time.**
 
 ```powershell
