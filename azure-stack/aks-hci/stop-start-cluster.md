@@ -19,14 +19,20 @@ This article assumes that you have an existing AKS on Azure Stack HCI cluster in
 
 To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local and/or remote computers. 
 
+### Stop the cluster service
 Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
 
-To stop the Cluster service on all nodes of the local cluster, open PowerShell as an administrator and run the following command:
+To stop the Cluster service on all nodes of the local cluster, open PowerShell as an administrator and run the following command on one of the machines in the cluster:
 
 ```powershell
 PS:> Stop-Cluster 
 ```
+After running this command, you'll be asked to confirm that you want to stop the cluster.
 
+> [!NOTE]
+> If you run `Stop-Cluster` twice on the same machine, or on more than one machine in the cluster, you'll receive an error that says _No cluster service running_.
+
+### Stop the local or remote computers
 To shut down the local and remote computers, use the [Stop-Computer](/powershell/module/microsoft.powershell.management/stop-computer?view=powershell-7.1&preserve-view=true) PowerShell command as shown below:
 
 ```powershell
@@ -63,23 +69,30 @@ PS:> Get-ClusterNode -ErrorAction SilentlyContinue | foreach-object {
         Write-Host "$node State = $state" 
       	} 
 ```
-An example output is shown below:
+The output would be similar to the following example:
 
 ```Output
-
+TK5-3WP15R1625 State = Up
+TK5-3WP15R1627 State = Up
+TK5-3WP15R1629 State = Up
+TK5-3WP15R1631 State = Up
 ```
 
 ## Verify the control plane nodes are running
 
-To verify the control plane nodes are running, enumerate the VMs and make sure their state is _running_. Using PowerShell, run the following command to view the status of your control plane VM from your Hyper-V host: 
+To verify the control plane nodes are running, enumerate the VMs and make sure their state is _running_. To view the status of your control plane VM from your Hyper-V host, run the following PowerShell command on a physical machine that contains the management cluster control plane VM:
 
 ```powershell
 PS:> $controlPlanes = Get-VM | ? { $_.Name -like '*-control-plane-*' -and $_.State -eq 'Running' } | % { $_.Name } 
 ```
 
+In this example, as shown in Failover Cluster Manager, the management cluster control plane VM was running on `TK5-3WP15R1627`, therefore, the command was run on the machine. If a user runs this command on another machine, it will give a null output.
+
 An example output is shown below:
 ```Output
+c8bf39ad-67bd-4a7d-ac77-638be6eecf46-control-plane-0-d38498de
 
+my-cluster-control-plane-q9mbp-ae97a3e5
 ```
 
 If the control plane node is not running, restart the VM by running the following PowerShell command: 
