@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/26/2021
+ms.date: 08/09/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -73,24 +73,25 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - An Azure Stack Hub operator can now configure GPU quotas for VMs.
-- Emergency VM Access is now available in Azure Stack Hub without contacing Microsoft Support.
+- [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
 - Windows Server 2022 is now supported as a guest operating system.
+- Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 
 ### Improvements
 
-- The alert description has been adjusted to align with progessive backup when the external SMB share is almost full.
-- The number of parallel infrastructure backup repository uploads to the external SMB share is now limited to prevent upload failures.
-- Replace Node-Inaccessible-for-vm-placement alert with alerts to distinguish between host-unresponsive scenarios and hostagent-service-on-node-unresponsive-scenarios.
+- The alert description has been adjusted to align with progressive backup when the external SMB share is almost full.
+- To prevent upload failures, the number of parallel infrastructure backup repository uploads to the external SMB share is now limited.
+- Replaced **Node-Inaccessible-for-vm-placement** alert with alerts to distinguish between **host-unresponsive** scenarios and **hostagent-service-on-node-unresponsive** scenarios.
 - Ability for App Service to discover the default NAT IP for outbound connections.
 
 ### Changes
 
 - SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these RPs, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
-- The infrastructure backup resource provider has a new API version that supports restoring progessive backups.
+- The infrastructure backup resource provider has a new API version that supports restoring progressive backups.
 
 ### Fixes
 
-- Fixed an issue in which one respository failure when uploading to the external SMB share caused the whole infrastructure backup to fail.
+- Fixed an issue in which one repository failure when uploading to the external SMB share caused the whole infrastructure backup to fail.
 - Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
 - Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
 
