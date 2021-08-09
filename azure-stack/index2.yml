@@ -72,7 +72,7 @@ productDirectory:
     imageSrc: media/index/kubernetes-services.svg
     links:
       - url: ./aks-hci/overview.md
-        text: AKS on HCI overview  
+        text: AKS on Azure Stack HCI overview  
       - url: ./aks-hci/system-requirements.md
         text: System requirements                 
       - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
