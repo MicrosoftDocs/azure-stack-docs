@@ -49,7 +49,7 @@ All network adapters with the Premium AQ support Dynamic VMMQ. Dynamic VMMQ requ
 
 Dynamic VMMQ is an intelligent, receive-side technology. It builds upon its predecessors of Virtual Machine Queue (VMQ), Virtual Receive Side Scaling (vRSS), and VMMQ, to provide three primary improvements:
 
-- Optimizes host efficiency by using less CPU cores.
+- Optimizes host efficiency by using fewer CPU cores.
 - Automatic tuning of network traffic processing to CPU cores, thus enabling VMs to meet and maintain expected throughput.
 - Enables “bursty” workloads to receive the expected amount of traffic.
 
@@ -267,9 +267,9 @@ Here is the example bandwidth allocation table:
 |100 Gbps|200 Gbps|100 Gbps|70%|70 Gbps|29%|29 Gbps|1%|1 Gbps|
 |200 Gbps|400 Gbps|200 Gbps|70%|140 Gbps|29%|58 Gbps|1%|2 Gbps|
 
-*- Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
+* Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
 
-**- 50 percent is an example bandwidth reservation.
+** 50 percent is an example bandwidth reservation.
 
 ## Stretched clusters
 
