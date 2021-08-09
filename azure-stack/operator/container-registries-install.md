@@ -76,7 +76,7 @@ You can use these steps to install the ACR service in Azure Stack Hub.
 ### [Portal](#tab/portal)
 
 You can use the Azure Stack Hub administrative portal to import the certificate and install the service.
-\media\container-registries-install\
+
 1.  Sign into the Azure Stack Hub administrative portal.
 2. Navigate to **All Services** > **Container Registries**.
     ![Get the Azure Stack Hub container registry.](media/container-registries-install/azure-stack-hub-get-container-registries.png)
