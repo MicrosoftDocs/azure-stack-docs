@@ -267,9 +267,9 @@ Here is the example bandwidth allocation table:
 |100 Gbps|200 Gbps|100 Gbps|70%|70 Gbps|29%|29 Gbps|1%|1 Gbps|
 |200 Gbps|400 Gbps|200 Gbps|70%|140 Gbps|29%|58 Gbps|1%|2 Gbps|
 
-* Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
+\* Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
 
-** 50 percent is an example bandwidth reservation.
+\** 50 percent is an example bandwidth reservation.
 
 ## Stretched clusters
 
