@@ -49,7 +49,7 @@ All network adapters with the Premium AQ support Dynamic VMMQ. Dynamic VMMQ requ
 
 Dynamic VMMQ is an intelligent, receive-side technology. It builds upon its predecessors of Virtual Machine Queue (VMQ), Virtual Receive Side Scaling (vRSS), and VMMQ, to provide three primary improvements:
 
-- Optimizes host efficiency by using CPU cores.
+- Optimizes host efficiency by using less CPU cores.
 - Automatic tuning of network traffic processing to CPU cores, thus enabling VMs to meet and maintain expected throughput.
 - Enables “bursty” workloads to receive the expected amount of traffic.
 
@@ -134,6 +134,9 @@ SET is a software-based teaming technology that has been included in the Windows
 
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
 
+> [!IMPORTANT]
+> Load Balancing/Failover (LBFO) is another teaming technology commonly used with Windows Server, but is not supported with Azure Stack HCI. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+
 SET is important for Azure Stack HCI because it's the only teaming technology that enables:
 
 - Teaming of RDMA adapters (if needed).
@@ -183,7 +186,7 @@ This traffic class ensures that there's enough bandwidth reserved for cluster he
 
 #### RDMA traffic class
 
-This traffic class ensures that there's enough bandwidth reserved for lossless RDA communications by using SMB Direct:
+This traffic class ensures that there's enough bandwidth reserved for lossless RDMA communications by using SMB Direct:
 
 - Required: Yes
 - PFC-enabled: Yes
@@ -244,7 +247,7 @@ The following assumptions are made for this example:
             Set-VMHost -VirtualMachineMigrationPerformanceOption Compression
             ```
 
- - If you're using RDMA with Live Migration, ensure that Live Migration traffic can't consume the entire bandwidth allocated to the RDMA traffic class by using an SMB bandwidth limit. Be careful, because this cmdlet takes entry in bytes per second (Bps), whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps, for example:
+ - If you're using RDMA for Live Migration traffic, ensure that Live Migration traffic can't consume the entire bandwidth allocated to the RDMA traffic class by using an SMB bandwidth limit. Be careful, because this cmdlet takes entry in bytes per second (Bps), whereas network adapters are listed in bits per second (bps). Use the following cmdlet to set a bandwidth limit of 6 Gbps, for example:
 
     ```Powershell
     Set-SMBBandwidthLimit -Category LiveMigration -BytesPerSecond 750MB
@@ -290,7 +293,7 @@ Stretched clusters have the following requirements and characteristics:
 
 - Adapters used for communication between sites:
 
-  - Can be physical or virtual (host vNIC). If adaptors are virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
+  - Can be physical or virtual (host vNIC). If adapters are virtual, you must provision one vNIC in its own subnet and VLAN per physical NIC.
 
   - Must be on their own subnet and VLAN that can route between sites.
 
