@@ -23,7 +23,8 @@ You can manage your container registry in the Azure Stack Hub administrative por
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Type `Container Registry` in the search.
-3. Select **Configuration**.
+3. Select **Configure**.
+    ![Manage your container registry capacity.](media/container-registries-manage/azure-stack-hub-container-registries-configure.png)
 4. You can increase or decrease the capacity from the default of 500 GB.
 
 ## View storage use
@@ -34,7 +35,8 @@ allocated capacity for the ACR in your Azure Stack Hub.
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Type `Container Registry` in the search.
-3. Select **Configuration**.
+    ![View the current storage usage by container registries.](media/container-registries-manage/azure-stack-hub-container-registries-overview.png)
+3. Select **Overview**.
 ## Quota settings
 
 Besides restricting overall storage capacity used by container registries, you can
