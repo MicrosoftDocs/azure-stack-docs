@@ -53,26 +53,26 @@ Creating a custom storage class is a two-step process:
    
    1. To do this, create a file named `sc-aks-hci-disk-custom.yaml`, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
 
-   ```yaml
-       kind: StorageClass
-       apiVersion: storage.k8s.io/v1
-       metadata:
-        name: aks-hci-disk-custom
-       provisioner: disk.csi.akshci.com
-       parameters:
-        blocksize: "33554432"
-        container: customStorageContainer
-        dynamic: "true"
-        group: <e.g clustergroup-akshci> # same as the default storageclass
-        hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as the default storageclass
-        logicalsectorsize: "4096"
-        physicalsectorsize: "4096"
-        port: "55000"
-	    fsType: ext4 # refer to the note above to determine when to include this parameter
-       allowVolumeExpansion: true
-       reclaimPolicy: Delete
-       volumeBindingMode: Immediate
-   ```
+      ```yaml
+          kind: StorageClass
+          apiVersion: storage.k8s.io/v1
+          metadata:
+           name: aks-hci-disk-custom
+          provisioner: disk.csi.akshci.com
+          parameters:
+           blocksize: "33554432"
+           container: customStorageContainer
+           dynamic: "true"
+           group: <e.g clustergroup-akshci> # same as the default storageclass
+           hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as the default storageclass
+           logicalsectorsize: "4096"
+           physicalsectorsize: "4096"
+           port: "55000"
+	       fsType: ext4 # refer to the note above to determine when to include this parameter
+          allowVolumeExpansion: true
+          reclaimPolicy: Delete
+          volumeBindingMode: Immediate
+      ```
 
    2. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your `sc-aks-hci-disk-custom.yaml` file: 
   
