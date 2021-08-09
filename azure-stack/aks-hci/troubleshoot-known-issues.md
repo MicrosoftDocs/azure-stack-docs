@@ -7,16 +7,25 @@ ms.date: 03/05/2021
 ms.author: v-susbo
 ---
 
-# Resolve known issues in AKS on Azure Stack HCI
+# Workarounds for known issues in AKS on Azure Stack HCI
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
+## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at _Update-KvaInternal_
+
+When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
+
 ## _Install-AksHci_ timed out with an error
 
-After running `Install-AksHci`, the installation stopped and displayed a **waiting for API server** error message:
+After running [Install-AksHci](install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
 
 ```Output
-\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management get akshciclusters -o json returned a non zero exit code 1 [Unable to connect to the server: dial tcp 192.168.0.150:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]
+\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
+get akshciclusters -o json returned a non zero exit code 1 
+[Unable to connect to the server: dial tcp 192.168.0.150:6443: 
+connectex: A connection attempt failed because the connected party 
+did not properly respond after a period of time, or established connection 
+failed because connected host has failed to respond.]
 ```
 
 There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
@@ -56,7 +65,7 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
 ## When multiple versions of the PowerShell modules are installed, Windows Admin Center does not pick the latest version
-If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases/tag/AKS-HCI-2104).
+If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
 If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
@@ -81,10 +90,10 @@ moc-lwan4ro72he   NotReady   master   5h44m   v1.16.15
 
 \kubectl.exe get pods -A 
 
-NAMESPACE     NAME                                            READY   STATUS              RESTARTS   AGE 
+NAMESPACE     NAME                        READY   STATUS              RESTARTS   AGE 
     5h38m 
-kube-system   csi-msk8scsi-node-9x47m                         0/3     ContainerCreating   0          5h44m 
-kube-system   kube-proxy-qqnkr                                1/1     Terminating         0          5h44m  
+kube-system   csi-msk8scsi-node-9x47m     0/3     ContainerCreating   0          5h44m 
+kube-system   kube-proxy-qqnkr            1/1     Terminating         0          5h44m  
 ```
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
@@ -145,11 +154,11 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
 ## An **Unable to acquire token** error appears when running Set-AksHciRegistration
-An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running `Set-AksHciRegistration`. For more information, visit [Set-AksHciRegistration](./set-akshciregistration.md).
+An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./set-akshciregistration.md). 
 
 ## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
 
-To resolve this issue restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
+To release the pods and resolve this issue, you should restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
 
 ```Console
 kubectl get nodes -o wide
@@ -158,12 +167,12 @@ kubectl get nodes -o wide
 To get more information on the faulty node, run the following command:
 
 ```Console
-kubectl describe node <ip of the node>
+kubectl describe node <IP of the node>
 ```
 
 Use SSH to log into the NotReady node by running the following command:
 ```
-ssh -i <path of the private key file> administrator@<ip of the node>
+ssh -i <path of the private key file> administrator@<IP of the node>
 ```
 
 Then, to restart _kubelet_, run the following command: 
@@ -171,6 +180,13 @@ Then, to restart _kubelet_, run the following command:
 ```powershell
 /etc/.../kubelet restart
 ```
+
+## When creating a persistent volume, an attempt to mount the volume fails
+
+After deleting a persistent volume or a persistent volume claim in an AKS on Azure Stack HCI environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, _NewSmbGlobalMapping failed_.
+
+To work around the failure to mount the new volume, you can SSH into the Windows node and run `Remove-SMBGlobalMapping` and provide the share that corresponds to the volume. After running this command, attempts to mount the volume should succeed.
+
 
 ## Next steps
 - [Known issues](./known-issues.md)

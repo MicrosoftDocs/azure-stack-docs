@@ -81,7 +81,7 @@ The output will show the updated version of the AKS on Azure Stack HCI host.
 
 ## Next steps
 
-- [Update Kubernetes version and container host OS of your AKS workload clusters](upgrade.md)
+- [Update Kubernetes version of your AKS workload clusters](upgrade.md)
 
 
 

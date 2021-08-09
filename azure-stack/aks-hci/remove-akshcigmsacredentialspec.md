@@ -19,7 +19,8 @@ Remove-AksHciGmsaCredentialSpec -name <String>
                              -credSpecName <String>
                              -clusterRoleName <String>
                              [-secretNamespace <String>]
-                             [-serviceAccount <String>][-activity <String>]                      
+                             [-serviceAccount <String>]
+                             [-activity <String>]                      
 ```
 
 ## Description

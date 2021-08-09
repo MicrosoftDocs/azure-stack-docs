@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/11/2021
+ms.date: 07/27/2021
 ---
 
 # Storage thin provisioning in Azure Stack HCI
@@ -47,6 +47,14 @@ Create a new thin-provisioned volume:
 
 ```PowerShell
 New-Volume -FriendlyName <name> -Size <size> -ProvisioningType Thin
+```
+
+Create a new thin-provisioned mirror accelerated parity volume:
+
+```PowerShell
+Get-StorageTier <mirror tier> | Set-StorageTier -ProvisioningType Thin
+Get-StorageTier <parity tier> | Set-StorageTier -ProvisioningType Thin 
+New-Volume -FriendlyName <name> -StorageTierFriendlyNames <mirror tier,parity tier> -StorageTierSizes 200GB,800GB
 ```
 
 Check the volume provisioning type:
