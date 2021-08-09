@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 08/10/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -135,6 +135,11 @@ During the Azure registration process, when you run either `Register-AzStackHCI`
 Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the `Register-AzStackHCI` cmdlet from a server node because of no internet access, we recommend downloading the modules to your management computer, and then manually transferring them to the server node where you want to run the cmdlet.
 
 ## Set up a proxy server
+This section shows how to set up a proxy server for your organization.
+
+   >[!NOTE]
+   > Windows Admin Center proxy settings and Azure Stack HCI proxy settings are separate. Changing Azure Stack HCI cluster proxy settings doesn't affect Windows Admin Center outbound traffic, such as connecting to Azure, downloading extensions, and so on.
+
 To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator on each server in the cluster:
 
 ```powershell
@@ -143,18 +148,9 @@ Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
 
 Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default.
 
-To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
+To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments. For information about the WinInetProxy module and how to install it, see [PowerShell Gallery | WinInetProxy 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0).
 
 Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
-
-   >[!NOTE]
-   > Using the **Proxy** setting in Windows Admin Center redirects all Windows Admin Center outbound traffic (for example, download extensions, connecting to Azure and so on).
-
-### Traffic types
-Azure does not accept traffic modified by a proxy or TLS/SSL intercepted traffic.
-
-   >[!IMPORTANT]
-   > SSL traffic interception is not supported and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60 sec with 3 retry attempts. For more related information, see [Azure Stack Hub firewall integration](/azure-stack/operator/azure-stack-firewall?view=azs-2102#ssl-interception&preserve-view=true).
 
 ## Network port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
