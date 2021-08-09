@@ -32,11 +32,60 @@ Your options for managing capacity include:
 
 When an object store volume is 100% utilized, the storage service no longer functions for that volume. To get assistance in restoring operations for the volume, contact Microsoft support.
 
-## Understand volumes and shares, containers, and disks
+## Understand disks, containers, and volumes
 
-### Volumes and shares
+Tenant user creates disks, blobs, tables and queues in Azure Stack Hub storage services. These tenant data are put on volumes on top of the available storage.
 
-The *storage service* partitions the available storage into separate, equal volumes that are allocated to hold tenant data. For more information about volumes in Azure Stack Hub, see [Manage storage infrastructure for Azure Stack Hub](azure-stack-manage-storage-infrastructure.md).
+### Disks
+
+VM store and manipulate data on virtual disks. Each VM starts with an OS disk, created from a marketplace image or private image. The VM can attach zero or more data disks. There are two types of disks offered in Azure Stack:
+
+**Managed disks** simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you. For more information, see [Managed Disks Overview](/azure/virtual-machines/windows/managed-disks-overview).
+
+**Unmanaged disks** are VHD files that are stored as page blobs in storage containers in Azure Stack storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to be compatible with third party tools which only support Azure-Unmanaged Disks.
+
+The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
+
+- Each container that holds a disk, or page blob, from a VM is considered an attached container to the VM that owns the disk.
+- A container that doesn't hold any disks from a VM is considered a free container.
+
+The options to free up space on an attached container are limited. To learn more, see [Distribute unmanaged disks](#distribute-unmanaged-disks).
+
+>[!IMPORTANT]
+> We recommended that you use only Managed disks in VMs for easier management. You don't have to prepare storage accounts and containers before using Managed disks. Managed disks provide equivalent or better functionality and performance compared to Unmanaged disks. There are no advantages to use Unmanaged disks and they are only provided for backward compatibility.
+> 
+> Managed disks are optimized for better placement in the storage infrastructure and have significantly reduced management overhead. But due to Managed disks are thin provisioned and the final utilization is unpredictable in creation, there are opportunities of volume being over-utilized caused by unbalanced disk placement. Operators are responsible for monitoring the storage capacity usage and avoid such issue.
+> 
+> For users that use ARM templates to provision new virtual machines, use the following document to understand how to modify your templates to use managed disks: [Use VM managed disks templates](../user/virtual-machines-use-managed-disks-template.md).
+
+VM disks are stored as sparse files on storage infrastructure. Disks have provisioned size that the user requests at the time the disk is created. However only the non-zero pages written to the disk occupy space on the underlying storage infrastructure.
+
+![Example: Sparse disk on storage volume](media/azure-stack-manage-storage-shares/sparse-disk-on-volume.png)
+
+Disks are often created by copying from Platform Image, managed images, snapshots or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system leverages block cloning in ReFS. This is a low-cost metadata operation rather than a full byte-by-byte copy the file. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
+
+![Example: Share extent on storage volume](media/azure-stack-manage-storage-shares/extent-on-volume.png)
+
+The capacity usage grows only when the disks are written, and identical data reduces. 
+When an image or a disk is deleted, the space may not be freed immediately because there could be disks or snapshots created from it still keep the identical data and occupy space. Only if all the related entities are removed, the space are actually back to available.
+
+![Example: Extent after disk deletion](media/azure-stack-manage-storage-shares/delete-disk.png)
+
+### Blobs and containers
+
+Tenant users store massive amounts of unstructured data with Azure Blob. Azure Stack Hub supports three types of Blobs: Block Blobs, Append Blobs and Page Blobs. For more information about the different types of blobs, see [Understanding Block Blobs, Append Blobs, and Page Blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+
+Tenant users create containers that are then used to store blob data. Although users decide in which container to place blobs, the storage service uses an algorithm to determine on which volume to put the container. The algorithm typically chooses the volume with the most available space.
+
+After a blob is placed in a container, the blob can grow to use more space. As you add new blobs and existing blobs grow, the available space in the volume that holds the container shrinks.
+
+Containers aren't limited to a single volume. When the combined blob data in a container grows to use 80% or more of the available space, the container enters *overflow* mode. When in overflow mode, any new blobs that are created in that container are allocated to a different volume that has sufficient space. Over time, a container in overflow mode can have blobs that are distributed across multiple volumes.
+
+When 90% (and then 95%) of the available space in a volume is used, the system raises [alerts](#storage-space-alerts) in the Azure Stack Hub administrator portal. Cloud operators should review available storage capacity and plan to rebalance the content. The storage service stops working when a disk is 100% used and no additional alerts are raised.
+
+### Volumes
+
+The *storage service* partitions the available storage into separate volumes that are allocated to hold system and tenant data. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of Storage Spaces Direct. For more information about volumes in Azure Stack Hub, see [Manage storage infrastructure for Azure Stack Hub](azure-stack-manage-storage-infrastructure.md).
 
 Object store volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. The number of object store volumes is equal to the number of nodes in the Azure Stack Hub deployment:
 
@@ -50,35 +99,6 @@ Because the storage objects (blobs, and so on) are individually contained within
 When an object store volume is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate storage objects from one volume to another.
 
 For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](../user/azure-stack-storage-overview.md).
-
-### Containers
-
-Tenant users create containers that are then used to store blob data. Although users decide in which container to place blobs, the storage service uses an algorithm to determine on which volume to put the container. The algorithm typically chooses the volume with the most available space.
-
-After a blob is placed in a container, the blob can grow to use more space. As you add new blobs and existing blobs grow, the available space in the volume that holds the container shrinks.
-
-Containers aren't limited to a single volume. When the combined blob data in a container grows to use 80% or more of the available space, the container enters *overflow* mode. When in overflow mode, any new blobs that are created in that container are allocated to a different volume that has sufficient space. Over time, a container in overflow mode can have blobs that are distributed across multiple volumes.
-
-When 80% (and then 90%) of the available space in a volume is used, the system raises [alerts](#storage-space-alerts) in the Azure Stack Hub administrator portal. Cloud operators should review available storage capacity and plan to rebalance the content. The storage service stops working when a disk is 100% used and no additional alerts are raised.
-
-### Disks
-
-Azure Stack Hub supports the use of managed disks and unmanaged disks in VMs, as both an operating system (OS) and a data disk.
-
-**Managed disks** simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you. For more information, see [Managed Disks Overview](/azure/virtual-machines/windows/managed-disks-overview).
-
-**Unmanaged disks** are VHD files that are stored as page blobs in Azure storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to be compatible with third party tools which only support Azure-Unmanaged Disks.
-
-The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
-
-- Each container that holds a disk, or page blob, from a VM is considered an attached container to the VM that owns the disk.
-- A container that doesn't hold any disks from a VM is considered a free container.
-
-The options to free up space on an attached container are limited. To learn more, see [Distribute unmanaged disks](#distribute-unmanaged-disks).
-
->[!IMPORTANT]
-> We recommended that you use only Managed disks in VMs for easier management. You don't have to prepare storage accounts and containers before using Managed disks. Managed disks provide equivalent or better functionality and performance compared to Unmanaged disks. There are no advantages to use Unmanaged disks and they are only provided for backward compatibility.
-> Managed disks are optimized for better placement in the storage infrastructure and have significantly reduced management overhead. But due to Managed disks are thin provisioned and the final utilization is unpredictable in creation, there are opportunities of volume being over-utilized caused by unbalanced disk placement. Operators are  responsible for monitoring the storage capacity usage and avoid such issue.
 
 ## Monitor storage
 
