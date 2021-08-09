@@ -26,7 +26,6 @@ It's important to [monitor](#monitor-storage) the available storage to ensure th
 
 Your options for managing capacity include:
 
-
 - Reclaiming capacity.
 - Migrating storage objects.
 
@@ -130,7 +129,15 @@ As a cloud operator, you can use the administrator portal to view the storage ca
 ::: moniker-end
 ::: moniker range=">=azs-2002"
 
-Use PowerShell or the administrator portal to monitor volumes so you can understand when free space is limited. When you use the portal, you receive alerts about volumes that are low on space.
+Use Azure PowerShell or the administrator portal to monitor provisioned and used capacity and plan for migration to ensure continuous normal operation of the system. 
+
+There are three tools for monitoring volume capacity:
+
+- Portal and PowerShell of for current volume capacity.
+- Storage space alerts.
+- Volume capacity metrics.
+
+In this section we will introduce how to use these tools to monitor the capacity of the system.
 
 ### Use PowerShell
 
@@ -162,17 +169,35 @@ When you use the administrator portal, you receive alerts about volumes that are
 > [!IMPORTANT]
 > As a cloud operator, you should prevent shares from reaching full usage. When a share is 100% utilized, the storage service no longer functions for that share. To recover free space and restore operations on a share that's 100% utilized, you must contact Microsoft support.
 
-* **Warning**: When a file share is over 80% utilized, you receive a *Warning* alert in the administrator portal:
+* **Warning**: When a file share is over 90% utilized, you receive a *Warning* alert in the administrator portal:
 
   ![Example: Warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning.png)
 
-* **Critical**: When a file share is over 90% utilized, you receive a *Critical* alert in the administrator portal:
+* **Critical**: When a file share is over 95% utilized, you receive a *Critical* alert in the administrator portal:
 
   ![Example: Critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical.png)
 
 * **View details**: In the administrator portal, you can open an alert's details to view your mitigation options:
 
   ![Example: View alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details.png)
+
+::: moniker range=">=azs-2002"
+
+### Volume Capacity Metrics
+Volume capacity metrics give you more detailed information about provisioned capacity and used capacity for different types of objects. The metrics data are preserved for 30 days. Background monitoring service refreshes the volume capacity metrics data hourly.
+
+It is necessary to understand the resource usage of a volume by proactively checking the capacity metric report. The cloud operator can analyze the resource type distribution when a volume is approaching full to decide the corresponding action to free space. He can also prevent the volume being overused when the disk provisioned size indicates the volume has been over-provisioned too much.
+
+Azure Monitor provides following metrics to show volume capacity utilization:
+
+- **Volume Total Capacity** shows the total storage capacity of the volume.
+- **Volume Remaining Capacity** shows the remaining storage capacity of the volume. 
+- **Volume VM Disk Used Capacity** shows the total spaces occupied by VM disk related objects (including page blobs, managed disks/snapshot, managed images and platform image repository). The underlying VHD file of VM disks can share extent (refer to Disk) with images, snapshots or other disks, this number could be smaller than sum the used capacity of all individual VM disk related object.
+- **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues and blob metadata. 
+- **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
+
+
+::: moniker-end
 
 ## Manage available space
 
