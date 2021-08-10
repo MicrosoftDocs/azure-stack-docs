@@ -86,8 +86,7 @@ To verify the control plane nodes are running, enumerate the VMs and make sure t
 PS:> $controlPlanes = Get-VM | ? { $_.Name -like '*-control-plane-*' -and $_.State -eq 'Running' } | % { $_.Name } 
 ```
 
-> [!NOTE]
-> If you run this command on a machine other than the one with the control plane VM, you'll receive a null output.
+If you run this command on a machine other than the one with the control plane VM, you'll receive a null output.
 
 The example output is shown below:
 
