@@ -67,7 +67,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Must use two or more physical host systems that are Azure Stack HCI certified.
 
-- Adapters managed by Network ATC must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#switch-embedded-teaming-set)
+- Adapters managed by Network ATC must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
 - Each symmetric physical adapter must use the same name on each cluster node.
 

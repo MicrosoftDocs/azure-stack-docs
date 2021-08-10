@@ -13,7 +13,9 @@ ms.date: 07/08/2021
 
 > Applies to: Azure Stack HCI, version 20H2
 
-Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms. This topic explains how to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
+Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms.
+
+This topic explains how to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 
    > [!IMPORTANT]
    > Registering with Azure is required, and your cluster is not fully supported until your registration is active. If you do not register your cluster with Azure upon deployment, or if your cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
@@ -196,6 +198,17 @@ If you're running Azure Stack HCI, version 21H2 Preview and you registered your 
    > [!IMPORTANT]
    > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you'll need to specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
 
+3. If Azure Arc integration fails, then the servers may need to communicate through a proxy server. To resolve this, set the proxy server environment variable by running the following PowerShell command as administrator on each server in the cluster:
+
+   ```PowerShell
+   [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
+   $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+   # For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+   Restart-Service -Name himds
+   ```
+
+   Then, re-register the Azure Stack HCI cluster.
+
 ## Troubleshooting
 
 Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
@@ -254,6 +267,6 @@ If there are node names after the 'Couldn't set and verify registration certific
 
 ## Next steps
 
-You are now ready to:
-
-- [Validate the cluster](validate.md)
+To perform the next management task related to this article, see:
+> [!div class="nextstepaction"]
+> [Validate an Azure Stack HCI cluster](validate.md)

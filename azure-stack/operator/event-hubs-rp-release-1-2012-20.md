@@ -32,9 +32,8 @@ This release includes the following fixes:
 
 ## Known issues 
 
-There are no known issues for this release.
+[!INCLUDE [secret rotation related known issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
 ## Next steps
 
 - For more information, start with the [Event Hubs on Azure Stack Hub operator overview](event-hubs-rp-overview.md).
-

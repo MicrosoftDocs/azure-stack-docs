@@ -65,8 +65,10 @@
             href: azure-stack-policy-module.md
         - name: Use Azure CLI with Azure Stack Hub
           href: azure-stack-version-profiles-azurecli2.md
-        - name: Use Visual Studio Code
+        - name: Use Visual Studio Code - Azure Account
           href: azure-stack-dev-start-vscode-azure.md
+        - name: Use Visual Studio Code - Azure Storage
+          href: dev-start-vscode-storage.md
         - name: Use Visual Studio
           href: azure-stack-install-visual-studio.md
         - name: Use a Secure Shell

@@ -4,7 +4,7 @@ description: Troubleshooting Azure Stack Hub usage issues and errors.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/19/2021
+ms.date: 07/21/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019

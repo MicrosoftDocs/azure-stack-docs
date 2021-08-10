@@ -71,7 +71,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/azure-stack-create-service-principals.md", 
-      "redirect_url": "/azure-stack/operator/give-app-access-to-resources", 
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal", 
       "redirect_document_id": false
     },
     { 
@@ -707,7 +707,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-create-service-principals.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-create-service-principals",
+      "redirect_url": "/azure/active-directory/develop/howto-create-service-principal-portal",
       "redirect_document_id": false
     },
     {
@@ -824,6 +824,41 @@
       "source_path": "azure-stack/hci/concepts/persistent-memory-direct-access.md", 
       "redirect_url": "/windows-server/storage/storage-spaces/persistent-memory-direct-access", 
       "redirect_document_id": false 
+    },
+    { 
+      "source_path": "windows-server/failover-clustering/health-service-overview.md", 
+      "redirect_url": "/azure-stack/hci/manage/health-service-overview", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "windows-server/failover-clustering/health-service-actions.md", 
+      "redirect_url": "/azure-stack/hci/manage/health-service-actions", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "windows-server/failover-clustering/health-service-settings.md", 
+      "redirect_url": "/azure-stack/hci/manage/health-service-settings", 
+      "redirect_document_id": false 
+    },
+    { 
+      "source_path": "azure-stack/hci/deploy/deployment-overview.md", 
+      "redirect_url": "/azure-stack/hci/deploy/operating-system", 
+      "redirect_document_id": true
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/azure-monitor.md", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-azure-portal", 
+      "redirect_document_id": true
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/azure-site-recovery.md", 
+      "redirect_url": "/windows-server/manage/windows-admin-center/azure/azure-site-recovery", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/use-azure-backup.md", 
+      "redirect_url": "/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines", 
+      "redirect_document_id": false
     }
   ]
 }

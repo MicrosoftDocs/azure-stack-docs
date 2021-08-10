@@ -28,7 +28,7 @@ This article addresses the current Azure Stack Hub limitation, which lets tenant
     > [!NOTE]  
     > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitations in the ASDK. For more information, see [ASDK requirements and considerations](../asdk/asdk-deploy-considerations.md).
 
--  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
+-  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the Fortinet FortiGate Next-Generation Firewall Single VM Solution.
 
 -  At least two available FortiGate license files to activate the FortiGate NVA. Information on how to get these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/19071/registering-and-downloading-your-license).
 
