@@ -145,8 +145,8 @@ As a cloud operator, you can monitor the storage capacity of a volume using the 
 
 ![Example: Return free space for volumes](media/azure-stack-manage-storage-shares/listvolumespowershell.png)
 
-- **Total capacity**: The total space in GB that's available on the share. This space is used for data and metadata that's maintained by the storage services.
-- **Remaining capacity**: The amount of space in GB that's free to store the tenant data and associated metadata.
+- **Total capacity:** The total space in GB that's available on the share. This space is used for data and metadata that's maintained by the storage services.
+- **Remaining capacity:** The amount of space in GB that's free to store the tenant data and associated metadata.
 
 ### Use the administrator portal
 
@@ -171,19 +171,19 @@ When you use the administrator portal, you receive alerts about volumes that are
 
 * **Warning**: When a file share is over 90% utilized, you receive a *Warning* alert in the administrator portal:
 
-  ![Example: Warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning.png)
+  ![Example: Warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning-new.png)
 
 * **Critical**: When a file share is over 95% utilized, you receive a *Critical* alert in the administrator portal:
 
-  ![Example: Critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical.png)
+  ![Example: Critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical-new.png)
 
 * **View details**: In the administrator portal, you can open an alert's details to view your mitigation options:
 
-  ![Example: View alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details.png)
+  ![Example: View alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details-new.png)
 
-::: moniker range=">=azs-2002"
+::: moniker range=">=azs-2005"
 
-### Volume Capacity Metrics
+### Volume capacity metrics
 Volume capacity metrics give you more detailed information about provisioned capacity and used capacity for different types of objects. The metrics data are preserved for 30 days. Background monitoring service refreshes the volume capacity metrics data hourly.
 
 It is necessary to understand the resource usage of a volume by proactively checking the capacity metric report. The cloud operator can analyze the resource type distribution when a volume is approaching full to decide the corresponding action to free space. He can also prevent the volume being overused when the disk provisioned size indicates the volume has been over-provisioned too much.
@@ -196,6 +196,49 @@ Azure Monitor provides following metrics to show volume capacity utilization:
 - **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues and blob metadata. 
 - **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
 
+![Example: Volume capacity metrics](media/azure-stack-manage-storage-shares/volume-capacity-metrics.png)
+
+To view volume capacity metrics in Azure Monitor:
+
+1. Confirm that you have Azure PowerShell installed and configured. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md). To sign in to Azure Stack Hub, see [Configure the operator environment and sign in to Azure Stack Hub](azure-stack-powershell-configure-admin.md).
+2. Download Azure Stack Hub tools from [GitHub repository](https://github.com/Azure/AzureStack-Tools). For detailed steps, see [Download Azure Stack Hub tools from GitHub](azure-stack-powershell-download.md).
+3. Generate the Capacity Dashboard json by running the DashboardGenerator under CapacityManagement.
+   ```powershell
+   .\CapacityManagement\DashboardGenerator\Create-AzSStorageDashboard.ps1 -capacityOnly $true -volumeType object
+   ```
+   There would be a json file named starts with “DashboardVolumeObjStore” under the folder of DashboardGenerator.
+4. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
+5. In Dashboard page, click **Upload**, and select the json file generated in Step 3.
+ 
+![Example: Upload dashboard json](media/azure-stack-manage-storage-shares/upload-json.png)
+
+6. Once the json is uploaded, you would be directed to the new capacity dashboard. Each volume has a corresponding chart in the dashboard. The number of charts equals to the count of volumes:
+
+![Example: Volume capacity dashboard](media/azure-stack-manage-storage-shares/volume-capacity-dashboard.png)
+
+7. By clicking one of the volume, you can check five capacity metrics of the specific volume in the detailed chart:
+
+![Example: Detailed capacity metrics](media/azure-stack-manage-storage-shares/detailed-capacity-metrics.png)
+
+### Volume usage patterns
+
+By checking the volume capacity metrics, the cloud operator understands how much a volume’s capacity is utilized, and which resource type is taking most of the space usage. The space usage pattern could be grouped to following types, which operator should take different action for each of the types:
+
+![Example: Volume usage pattern](media/azure-stack-manage-storage-shares/volume-usage-pattern.png)
+
+**Under-provisioned, spare capacity:** there’s enough available capacity on the volume, and the total provisioned capacity of all disks located on this volume is smaller than the total available capacity. The volume is available for more storage objects, including both disks and other objects (block/append blobs, tables and queues). You don’t need to take any action to operate the volume.
+
+**Over-provisioned, spare capacity:** the remaining capacity of the volume is high, but the VM disk provisioned capacity is already above volume total capacity. This volume still has room for more storage objects now. However it has potential to be filled with the data in the VM disks located on this volume. You should closely monitor the usage trend of this volume. If it changes to **over-provisioned, low capacity pattern**, you may need to take action to free the space.
+
+**Over-provisioned, low capacity:** the remaining capacity of the volume is low, and both of the VM disk provisioned capacity and VM disk used capacity is high.
+
+The low remaining capacity indicates the volume is reaching full usage. Operators need to take immediate action to free space to prevent the volume being 100% utilized which would block the storage service. The high VM disk used capacity shows the majority of the volume usage is VM disks. You should refer instruction of [Migrate disk](#migrate-a-managed-disk-between-volumes) to move disks from the full volume to other available volumes to free space.
+
+**Under-provisioned, low capacity, high block blobs:** the remaining capacity of the volume is low, and both of the VM disk provisioned capacity and VM disk used capacity is low, but the other used capacity is high.
+
+The volume has the risk of being fully utilized that operator should take immediate action to free space. The high other used capacity indicates most of the volume capacity is taken by block/append blobs or table/queue. When the volume’s available capacity is less than 20%, container overflow would be enabled, and new blob object won’t be placed on this almost full volume. But the existing blobs may still grow. To prevent the continuous growing blobs overuse the capacity, you can contact Microsoft Support to query the containers occupying space on the specific volume, and decide whether cleanup of those containers needs to be done by tenants to free up some space.
+
+**Over-provisioned, low capacity, high block blobs:** the remaining capacity of the volume is low, and both the disk used/provisioned capacity and other used capacity is high. This volume has high space utilization by both disks and other storage objects. You should free space of it to avoid volume being totally full. It is recommended to firstly following instruction of [Migrate disk](#migrate-a-managed-disk-between-volumes) to move disks from the full volume to other available volumes. In other case, you can contact Microsoft Support to query the containers occupying space on the specific volume, and decide whether cleanup of those containers needs to be done by tenants to free up some space.
 
 ::: moniker-end
 
