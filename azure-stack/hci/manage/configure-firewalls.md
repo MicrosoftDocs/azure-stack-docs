@@ -140,6 +140,10 @@ This section shows how to set up a proxy server for your organization.
    >[!NOTE]
    > Windows Admin Center proxy settings and Azure Stack HCI proxy settings are separate. Changing Azure Stack HCI cluster proxy settings doesn't affect Windows Admin Center outbound traffic, such as connecting to Azure, downloading extensions, and so on.
 
+Install the WinInetProxy module to run the commands in this section. For information about the module and how to install it, see [PowerShell Gallery | WinInetProxy 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0).
+
+Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
+
 To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator on each server in the cluster:
 
 ```powershell
@@ -148,9 +152,7 @@ Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer webproxy1.com:9090
 
 Use the `ProxySettingsPerUser 0` flag to make the proxy configuration server-wide instead of per user, which is the default.
 
-To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments. For information about the WinInetProxy module and how to install it, see [PowerShell Gallery | WinInetProxy 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0).
-
-Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
+To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
 ## Network port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
