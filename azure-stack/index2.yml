@@ -79,8 +79,8 @@ productDirectory:
         text: Register for evaluation download 
       - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
         text: Product overview and purchasing info
-  - title: Hybrid and multicloud
-    imageSrc: media/index/hybrid-cloud.svg
+  - title: Hybrid and multicloud resources
+    imageSrc: media/index/hybrid-icon-32.svg
     links:
       - url: /hybrid
         text: Hybrid hub
