@@ -69,6 +69,8 @@
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
+          - name: Stop and start an AKS on Azure Stack HCI cluster
+            href: stop-start-cluster.md
           - name: Upgrade the Kubernetes version
             items:
                 - name: Use PowerShell
