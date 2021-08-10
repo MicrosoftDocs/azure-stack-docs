@@ -86,9 +86,8 @@ To verify the control plane nodes are running, enumerate the VMs and make sure t
 PS:> $controlPlanes = Get-VM | ? { $_.Name -like '*-control-plane-*' -and $_.State -eq 'Running' } | % { $_.Name } 
 ```
 
-In this example, the management cluster control plane VM is running on `TK5-3WP15R1627` (as shown in Failover Cluster Manager), and therefore, the command was run on that specific machine. If you run this command on another machine, you'll receive a null output.
-
-[ ![Displays the Failover Cluster Manager.](.\media\failover-cluster.png) ](\media\failover-cluster.png#lightbox)
+> [!NOTE]
+> If you run this command on a machine other than the one with the control plane VM, you'll receive a null output.
 
 The example output is shown below:
 
