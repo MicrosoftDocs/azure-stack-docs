@@ -55,7 +55,7 @@ To restart all the nodes of the AKS on Azure Stack HCI cluster, use the [Start-C
 PS:> Start-Cluster 
 ```
 
-A node can only function as part of a cluster when the cluster service is running on that node. 
+A node can only function as part of a cluster when the cluster service is running. 
 
 > [!NOTE]
 > You cannot remotely run **Start-Cluster** without CredSSP authentication on the server machine.
@@ -88,8 +88,11 @@ PS:> $controlPlanes = Get-VM | ? { $_.Name -like '*-control-plane-*' -and $_.Sta
 
 In this example, the management cluster control plane VM is running on `TK5-3WP15R1627` (as shown in Failover Cluster Manager), and therefore, the command was run on that specific machine. If you run this command on another machine, you'll receive a null output.
 
-An example output is shown below:
-```
+[ ![Displays the Failover Cluster Manager.](.\media\failover-cluster.png) ](\media\failover-cluster.png#lightbox)
+
+The example output is shown below:
+
+```Output
 c8bf39ad-67bd-4a7d-ac77-638be6eecf46-control-plane-0-d38498de
 my-cluster-control-plane-q9mbp-ae97a3e5
 ```
