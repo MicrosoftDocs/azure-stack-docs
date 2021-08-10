@@ -5,7 +5,7 @@ manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 08/04/2021
+ms.date: 08/11/2021
 ---
 
 # Get cluster performance history
@@ -14,16 +14,18 @@ ms.date: 08/04/2021
 
 ## What is cluster performance history
 
-The Health Service reduces the work required to get live performance and capacity information from your Storage Spaces Direct cluster. One new cmdlet provides a curated list of essential metrics, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. All values are real-time and point-in-time only.
+The Health Service reduces the work required to get live performance and capacity information from your Storage Spaces Direct cluster. One cmdlet provides a curated list of essential metrics, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. All values are real-time and point-in-time only.
 
 ## Usage in PowerShell
 
-Use this cmdlet to get metrics for the entire Storage Spaces Direct cluster:
+Use the following cmdlet to get metrics for the entire Storage Spaces Direct cluster:
 
 ```PowerShell
 Get-ClusterPerformanceHistory
 ```
-[!TIP] Use the Get-ClusterPerf alias to save some keystrokes
+
+>[!TIP]
+ > Use the Get-ClusterPerf alias to save some keystrokes.
 
 You can also get metrics for one specific volume or server:
 
@@ -34,10 +36,11 @@ Get-StorageNode -Name <Name> | Get-ClusterPerformanceHistory
 ```
 
 ## Usage in .NET and C#
+This sections shows how to connect to the Health Service, use discover objects, and implement an Observer to begin streaming metrics.
 
 ### Connect
 
-In order to query the Health Service, you will need to establish a **CimSession** with the cluster. To do so, you will need some things that are only available in full .NET, meaning you cannot readily do this directly from a web or mobile app. These code samples will use C\#, the most straightforward choice for this data access layer.
+In order to query the Health Service, you need to establish a **CimSession** with the cluster. To do so, you need some things that are only available in full .NET, meaning you cannot readily do this directly from a web or mobile app. The code samples in this section use C\#, the most straightforward choice for this data access layer.
 
 ```
 using System.Security;
@@ -62,13 +65,13 @@ public CimSession Connect(string Domain = "...", string Computer = "...", string
 
 The provided Username should be a local Administrator of the target Computer.
 
-It is recommended that you construct the Password **SecureString** directly from user input in real-time, so their password is never stored in memory in cleartext. This helps mitigate a variety of security concerns. But in practice, constructing it as above is common for prototyping purposes.
+We recommend constructing the Password **SecureString** directly from user input in real-time, so that the password is never stored in memory in cleartext. This helps mitigate a variety of security concerns. But in practice, constructing it as above is common for prototyping purposes.
 
 ### Discover objects
 
 With the **CimSession** established, you can query Windows Management Instrumentation (WMI) on the cluster.
 
-Before you can get faults or metrics, you will need to get instances of several relevant objects. First, the **MSFT\_StorageSubSystem** which represents Storage Spaces Direct on the cluster. Using that, you can get every **MSFT\_StorageNode** in the cluster, and every **MSFT\_Volume**, the data volumes. Finally, you will need the **MSCluster\_ClusterHealthService**, the Health Service itself, too.
+Before you can get faults or metrics, you need to get instances of several relevant objects. First, get the **MSFT\_StorageSubSystem** that represents Storage Spaces Direct on the cluster. Using that, you can get every **MSFT\_StorageNode** in the cluster, and every **MSFT\_Volume** of the data volumes. Finally, you need to get the **MSCluster\_ClusterHealthService**, the Health Service itself.
 
 ```
 CimInstance Cluster;
@@ -109,13 +112,13 @@ foreach (CimInstance Node in Nodes)
 }
 ```
 
-Invoke **GetMetric** to begin streaming samples of an expert-curated list of essential metrics based on provided metric names from **MetricName** parameter, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. Samples will arrive based on the provided timeframe from **StreamName** parameter.
+Invoke **GetMetric** to begin streaming samples of an expert-curated list of essential metrics based on provided metric names from **MetricName** parameter, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. Samples arrive based on the provided timeframe from the **StreamName** parameter.
 
-The complete list of metrics available at each scope is documented here: <<<<<<<<<<<<<<<<(PLEASE ADD LINK TO THIS DOC: https://github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/storage/storage-spaces/performance-history.md).
+For the complete list of available metrics, see [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history).
 
 ### IObserver.OnNext()
 
-This sample code uses the [Observer Design Pattern](/dotnet/standard/events/observer-design-pattern) to implement an Observer whose **OnNext()** method will be invoked when each new sample of metrics arrives. Its **OnCompleted()** method will be called if/when streaming ends. For example, you might use it to reinitiate streaming, so it continues indefinitely.
+This sample code uses the [Observer Design Pattern](/dotnet/standard/events/observer-design-pattern) to implement an Observer whose **OnNext()** method is invoked when each new sample of metrics arrives. Its **OnCompleted()** method is called if/when streaming ends. For example, you might use it to reinitiate streaming, so that it continues indefinitely.
 
 ```
 class MetricsObserver<T> : IObserver<T>
