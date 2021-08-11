@@ -98,6 +98,10 @@
       href: manage/update-cluster.md
     - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
+    - name: Get cluster performance history
+      href: manage/health-service-cluster-performance-history.md
+    - name: View Health Service faults
+      href: manage/health-service-faults.md
     - name: Configure firewalls
       href: manage/configure-firewalls.md
     - name: Set up a cluster witness
