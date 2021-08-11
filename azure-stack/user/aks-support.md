@@ -56,6 +56,12 @@ As participants in the public preview, you may also need to:
  - Manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as masters and nodes might be required.
  - In an extreme situation, a support case might be required to break glass and operate on the service components directly.
 
+### Azure AKS Version
+ AKS on Hub is the actual Azure AKS service code, therefore the AKS API is supported on Azure Stack Hub, it is maintained through Azure Stack Hub updates. However, you should expect that the version of the API on Azure will always be newer than the version available in Azure Stack Hub. This is due to the fact that Azure can update their service with a higher frequency than Azure Stack Hub. For the public preview the supported API is version "2020-11-01".
+
+### Kubernetes Version
+As is the case for the AKS API, Kubernetes versions are maintained through Azure Stack Hub updates. The specific versions of ASH updates provide support for specific versions of Kubernetes, this is done through upgrading the stamp and also downloading the new version of the AKS base images (Linux and Windows). Kubernetes versions on ASH will often be lower than the Kubernetes versions avilable on Azure. For the private preview the highest Kubernetes version supported is 1.20.7.
+
 ## Next steps
 
 [Learn about AKS on Azure Stack Hub](aks-overview.md)

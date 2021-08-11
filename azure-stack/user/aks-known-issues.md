@@ -12,7 +12,7 @@ ms.lastreviewed: 08/15/2021
 # Keyword: Kubernetes AKS difference
 ---
 
-# Known issues for the Azure Kubernetes Service on Azure Stack Hub
+# Common questions and known issues for the Azure Kubernetes Service on Azure Stack Hub
 
 This article looks at common questions and a list of known issues about the public preview of Azure Kubernetes Service (AKS) on Azure Stack Hub.
 
