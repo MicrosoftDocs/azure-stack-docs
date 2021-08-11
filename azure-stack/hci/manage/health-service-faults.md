@@ -371,6 +371,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Severity: Warning
 * Reason: *"The drive needed multiple tries to read or write. If this keeps happening, it could mean that the drive is malfunctioning, damaged, or beginning to fail. "*
 * RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.MarginalFailure.EventBased.IoRetry.Enabled to true
 
@@ -378,6 +379,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Severity: Warning
 * Reason: *"The drive failed to read or write. If this keeps happening, it could mean that the drive is malfunctioning, damaged, or beginning to fail."*
 * RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.MarginalFailure.EventBased.IoFailure.Enabled to true
 
@@ -396,17 +398,19 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Reason: *" The drive reached 100% of its rated write endurance and is now read-only, meaning it cannot perform any more writes. Solid-state drives wear out after a certain number of writes, which varies depending on the endurance rating of the drive. For details, check the drive specifications or ask the manufacturer about endurance rating and end-of-life behavior."*
 * RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
-#### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.SlowestIO 
+#### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.SlowestIO
 * Severity: Warning
 * Reason: *"The drive has high peak latency."*
 * RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled to true
 
-#### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.AverageIO 
+#### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.AverageIO
 * Severity: Warning
 * Reason: *"The drive has high average latency."*
 * RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled to true
 
@@ -465,7 +469,6 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Reason: *"Failed to complete SED encryption key rotation on the server before timeout"*
 * RecommendedAction: *"Ensure the server is reachable and that all physical disks are healthy."*
 
-
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.DriveArriveFailure
 * Severity: Warning
 * Reason: *"Physical Disk is failing queries. "*
@@ -495,7 +498,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Reason: *"Storage Pool is unable to write to a quorum of metadata devices.  Workload may be interrupted and IO failures may be observed."*
 * RecommendedAction: *"If a maintenance operation is ongoing, please suspend it and restore access to all storage until the storage stabilizes."*
 
-#### FaultType: Microsoft.Health.FaultType.StoragePool. PoolCapacityThresholdExceeded
+#### FaultType: Microsoft.Health.FaultType.StoragePool.PoolCapacityThresholdExceeded
 * Severity: Warning
 * Reason: *"The storage pool is running out of capacity."*
 * RecommendedAction: *"Add additional capacity to the storage pool or free up capacity."*
@@ -514,10 +517,10 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 
 #### FaultType: Microsoft.Health.FaultType.Volume.FileSystem.Corruption.Uncorrectable
 * Severity: Warning
-* Reason: *" The file system detected a checksum error and was not able to correct it."*
+* Reason: *"The file system detected a checksum error and was not able to correct it."*
 * RecommendedAction: *"Initiate Data Integrity scan from task scheduler, storage might be going bad. If there is an update or maintenance operation going on, stop it immediately. You may need to restore from the backup."*
 
-#### FaultType: Microsoft.Health.FaultType.Volume.FileSystem.Corruption.Uncorrectable. DataRemoved
+#### FaultType: Microsoft.Health.FaultType.Volume.FileSystem.Corruption.Uncorrectable.DataRemoved
 * Severity: Warning
 * Reason: *" The file system detected a corruption on a file or folder. The file or folder has been removed from the file system namespace."*
 * RecommendedAction: *"Initiate Data Integrity scan from task scheduler, storage might be going bad. If there is an update or maintenance operation going on, stop it immediately. You may need to restore from the backup."*
@@ -731,40 +734,36 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Reason: *"The virtual machine operational status isn't OK."*
 * RecommendedAction: *"Troubleshoot the virtual machine."*
 
-
 #### FaultType: Microsoft.Health.FaultType.Vm.GuestUnhealthy
 * Severity: Warning
 * Reason: *"The guest operating system in the virtual machine is reporting an unhealthy state."*
 * RecommendedAction: *" Troubleshoot the virtual machine."*
 
-
 #### FaultType: Microsoft.Health.FaultType.Vm.ConfigIsOffline
 * Severity: Warning
-* Reason: *" The virtual machine configuration resource is offline, meaning the virtual machine cannot be administered."*
+* Reason: *"The virtual machine configuration resource is offline, meaning the virtual machine cannot be administered."*
 * RecommendedAction: *" Bring the virtual machine configuration online."*
-
 
 #### FaultType: Microsoft.Health.FaultType.Vm.NotRespondingToControlCodes
 * Severity: Warning
-* Reason: *" The virtual machine isn't responding to cluster control codes."*
+* Reason: *"The virtual machine isn't responding to cluster control codes."*
 * RecommendedAction: *" Check the state of the virtual machine cluster resource."*
-
 
 #### FaultType: Microsoft.Health.FaultType.Vm.IsNearMemoryLimit
 * Severity: Warning
-* Reason: *" The virtual machine needs more of its configured maximum memory."*
+* Reason: *"The virtual machine needs more of its configured maximum memory."*
 * RecommendedAction: *" Check for processes or apps consuming too much memory or consider increasing its maximum memory."*
 
 #### FaultType: Microsoft.Health.FaultType.Vhd.IsNearlyFull
 * Severity: Warning
-* Reason: *" The virtual hard disk has reached its capacity. No more data can be written to it, which may negatively impact the virtual machine(s)."*
+* Reason: *"The virtual hard disk has reached its capacity. No more data can be written to it, which may negatively impact the virtual machine(s)."*
 * RecommendedAction: *" Resize the virtual hard disk or delete unwanted files."*
 
-<sup>1</sup>  Indicates the volume has reached 80% full (minor severity) or 90% full (major severity).
-<sup>2</sup> Indicates some .vhd(s) on the volume have not met their Minimum IOPS for over 10% (minor), 30% (major), or 50% (critical) of rolling 24-hour window.
+<sup>1</sup> Indicates the volume has reached 80% full (minor severity) or 90% full (major severity).
+<sup>2</sup> Indicates some .vhd(s) on the volume have not met their Minimum IOPS for over 10% (minor), 30% (major), or 50% (critical) of a rolling 24-hour window.
 
 >[!NOTE]
-> The health of storage enclosure components such as fans, power supplies, and sensors is derived from SCSI Enclosure Services (SES). If your vendor does not provide this information, the Health Service cannot display it.
+> The health of storage enclosure components, such as fans, power supplies, and sensors is derived from SCSI Enclosure Services (SES). If your vendor does not provide this information, the Health Service cannot display it.
 
 ## Additional references
 - [Health Service](health-service-overview.md)
