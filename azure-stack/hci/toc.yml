@@ -118,10 +118,14 @@
       href: manage/languages.md
     - name: Change privacy settings
       href: manage/change-privacy-settings.md
-    - name: Troubleshoot cluster validation reporting
-      href: manage/validate-qos.md
-    - name: Troubleshoot CredSSP
-      href: manage/troubleshoot-credssp.md
+    - name: Troubleshooting
+      items:
+      - name: Troubleshoot cluster validation reporting
+        href: manage/validate-qos.md
+      - name: Troubleshoot CredSSP
+        href: manage/troubleshoot-credssp.md
+      - name: Collect diagnostic data
+        href: manage/collect-diagnostic-data.md
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
