@@ -4,7 +4,7 @@ description: Understanding Storage Spaces Direct diagnostic data collection tool
 ms.author: adagashe
 ms.topic: article
 author: adagashe
-ms.date: 08/10/2021
+ms.date: 08/11/2021
 ---
 # Collect diagnostic data for clusters
 
@@ -132,15 +132,15 @@ Get-SddcDiagnosticInfo -ClusterName S2D-Cluster -WriteToPath d:\SDDCDiagTemp
 
 As you can see, the script will also do validation of current cluster state:
 
-![data collection powershell screenshot](media/data-collection/CollectData.png)
+![data collection powershell screenshot](media/data-collection/collect-data.png)
 
 All data is being written to SDDCDiagTemp folder:
 
-![data in file explorer screenshot](media/data-collection/CollectDataFolder.png)
+![data in file explorer screenshot](media/data-collection/collect-data-folder.png)
 
 After the script finishes, it will create a ZIP in your user directory:
 
-![data zip in powershell screenshot](media/data-collection/CollectDataResult.png)
+![data zip in powershell screenshot](media/data-collection/collect-data-result.png)
 
 Let's generate a report into a text file:
 
