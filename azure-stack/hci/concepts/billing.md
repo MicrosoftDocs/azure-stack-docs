@@ -15,7 +15,7 @@ ms.date: 08/11/2021
 
 Azure Stack HCI is an Azure service that goes on your Azure subscription bill just like any other Azure service. It's priced on a per core basis on your on-premises servers. For current pricing, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/). Currencies and discounts are handled centrally by the Azure Commerce billing platform, and the customer gets one unified, itemized bill at the end of the month.
 
-No traditional on-premises software license is required for Azure Stack HCI, although guest virtual machines (VMs) may require individual operating system licensing - see [Activate Windows Server VMs](/azure-stack/hci/manage/vm-activate).
+No traditional on-premises software license is required for Azure Stack HCI, although guest virtual machines (VMs) may require individual operating system licensing - see [Activate Windows Server VMs](../manage/vm-activate.md).
 
 ## What does Azure Stack HCI charge for?
 
