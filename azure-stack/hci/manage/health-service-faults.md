@@ -12,14 +12,12 @@ ms.date: 08/11/2021
 
 > Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
 
-## What are faults
-
-The Health Service constantly monitors your Storage Spaces Direct cluster to detect problems and generate "faults". One new cmdlet displays any current faults, allowing you to easily verify the health of your deployment without looking at every entity or feature in turn. Faults are designed to be precise, easy to understand, and actionable.
+The Health Service constantly monitors your Storage Spaces Direct cluster to detect problems and generate "faults." One cmdlet displays any current faults, allowing you to easily verify the health of your deployment without looking at every entity or feature in turn. Faults are designed to be precise, easy to understand, and actionable.
 
 Each fault contains five important fields:
 - Severity
 - Description of the problem
-- Recommended next step(s) to address the problem
+- Recommended next steps to address the problem
 - Identifying information for the faulting entity
 - Its physical location (if applicable)
 
@@ -34,30 +32,28 @@ Location: Seattle DC, Rack B07, Node 4, Slot 11
 ```
 
  >[!NOTE]
- > The physical location is derived from your fault domain configuration. For more information about fault domains, see [Fault domain awareness](/windows-server/failover-clustering/fault-domains). If you do not provide this information, the location field will be less helpful - for example, it may only show the slot number.
+ > The physical location is derived from your fault domain configuration. For more information about fault domains, see [Fault domain awareness](/windows-server/failover-clustering/fault-domains). If you do not provide this information, the location field is less helpful. For example, it may only show the slot number.
 
 ## Root cause analysis
-
-The Health Service can assess the potential causality among faulting entities to identify and combine faults which are consequences of the same underlying problem. By recognizing chains of effect, this makes for less chatty reporting. For example, if a server is down, it is expected than any drives within the server will also be without connectivity. Therefore, only one fault will be raised for the root cause - in this case, the server.
+The Health Service can assess the potential causality among faulting entities to identify and combine faults that are consequences of the same underlying problem. By recognizing chains of effect, this makes for less chatty reporting. For example, if a server is down, it is expected than any drives within the server are also without connectivity. Therefore, only one fault will be raised for the root cause - in this case, the server.
 
 ## Usage in PowerShell
-
-To see any current faults in PowerShell, run this cmdlet:
+To see any current faults in PowerShell, run the following cmdlet:
 
 ```PowerShell
 Get-HealthFault
 ```
 
-This returns any faults which affect the overall Storage Spaces Direct cluster. Most often, these faults relate to hardware or configuration. If there are no faults, this cmdlet will return nothing.
+This returns any faults that affect the overall Storage Spaces Direct cluster. Most often, these faults relate to hardware or configuration. If there are no faults, the cmdlet returns nothing.
 
 >[!NOTE]
-> In a non-production environment, and at your own risk, you can experiment with this feature by triggering faults yourself - for example, by removing one physical disk or shutting down one node. Once the fault has appeared, re-insert the physical disk or restart the node and the fault will disappear again.
+> In a non-production environment, and at your own risk, you can experiment with this feature by triggering faults yourself. For example, by removing one physical disk or shutting down one node. After the fault appears, re-insert the physical disk or restart the node to make the fault disappear.
 
 ## Usage in .NET and C#
+This sections shows how to connect to the Health Service, use discover objects, and run fault queries.
 
 ### Connect
-
-In order to query the Health Service, you will need to establish a **CimSession** with the cluster. To do so, you will need some things that are only available in full .NET, meaning you cannot readily do this directly from a web or mobile app. These code samples will use C\#, the most straightforward choice for this data access layer.
+In order to query the Health Service, you establish a **CimSession** with the cluster. To do so, you will need some things that are only available in full Microsoft .NET, meaning you cannot readily do this directly from a web or mobile app. The code samples in this section use C\#, the most straightforward choice for this data access layer.
 
 ```
 using System.Security;
@@ -82,13 +78,12 @@ public CimSession Connect(string Domain = "...", string Computer = "...", string
 
 The provided Username should be a local Administrator of the target Computer.
 
-It is recommended that you construct the Password **SecureString** directly from user input in real-time, so their password is never stored in memory in cleartext. This helps mitigate a variety of security concerns. But in practice, constructing it as above is common for prototyping purposes.
+We recommend constructing the Password **SecureString** directly from user input in real-time, so that the password is never stored in memory in cleartext. This helps mitigate a variety of security concerns. But in practice, constructing it as above is common for prototyping purposes.
 
 ### Discover objects
-
 With the **CimSession** established, you can query Windows Management Instrumentation (WMI) on the cluster.
 
-Before you can get Faults or Metrics, you will need to get instances of several relevant objects. First, the **MSFT\_StorageSubSystem** which represents Storage Spaces Direct on the cluster. Using that, you can get every **MSFT\_StorageNode** in the cluster, and every **MSFT\_Volume**, the data volumes. Finally, you will need the **MSFT\_StorageHealth**, the Health Service itself, too.
+Before you can get Faults or Metrics, you need to get instances of several relevant objects. First, get the **MSFT\_StorageSubSystem** that represents Storage Spaces Direct on the cluster. Using that, you can get every **MSFT\_StorageNode** in the cluster, and every **MSFT\_Volume** of the data volumes. Finally, you need to get the **MSCluster\_ClusterHealthService**, the Health Service itself.
 
 ```
 CimInstance Cluster;
@@ -131,10 +126,9 @@ foreach (CimInstance Node in Nodes)
 ```
 
 ### Query faults
+Invoke **Diagnose** to get any current faults scoped to the target **CimInstance**, which can be either the cluster or any volume.
 
-Invoke **Diagnose** to get any current faults scoped to the target **CimInstance**, which be the cluster or any volume.
-
-The complete list of faults available at each scope in Windows Server 2016 is documented below.
+The complete list of faults available at each scope in Windows Server 2019 is documented later in the [Coverage](#coverage) section.
 
 ```
 public void GetFaults(CimSession Session, CimInstance Target)
@@ -156,8 +150,7 @@ public void GetFaults(CimSession Session, CimInstance Target)
 ```
 
 ### Optional: MyFault class
-
-It may make sense for you to construct and persist your own representation of faults. For example, this **MyFault** class stores several key properties of faults, including the **FaultId**, which can be used later to associate update or remove notifications, or to deduplicate in the event that the same fault is detected multiple times, for whatever reason.
+It may make sense to construct and persist your own representation of faults. For example, the **MyFault** class stores several key properties of faults, including the **FaultId**, which can be used later to either associate updates, remove notifications, or deduplicate in the event that the same fault is detected multiple times.
 
 ```
 public class MyFault {
@@ -189,11 +182,10 @@ foreach (CimInstance DiagnoseResult in DiagnoseResults)
 }
 ```
 
-The complete list of properties in each fault (**DiagnoseResult**) is documented below.
+The complete list of properties in each fault (**DiagnoseResult**) is documented later in the [Fault properties](#fault-properties) section.
 
 ### Fault events
-
-When Faults are created, removed, or updated, the Health Service generates WMI events. These are essential to keeping your application state in sync without frequent polling, and can help with things like determining when to send email alerts, for example. To subscribe to these events, this sample code uses the Observer Design Pattern again.
+When faults are created, removed, or updated, the Health Service generates WMI events. These are essential to keeping your application state in sync without frequent polling, and can help with things like determining when to send email alerts, for example. To subscribe to these events, the following sample code uses the Observer Design Pattern.
 
 First, subscribe to **MSFT\_StorageFaultEvent** events.
 
@@ -208,11 +200,11 @@ public void ListenForFaultEvents()
 }
 ```
 
-Next, implement an Observer whose **OnNext()** method will be invoked whenever a new event is generated.
+Next, implement an Observer whose **OnNext()** method is invoked whenever a new event is generated.
 
-Each event contains **ChangeType** indicating whether a fault is being created, removed, or updated, and the relevant **FaultId**.
+Each event contains **ChangeType** that indicates whether a fault is created, removed, or updated, and the relevant **FaultId**.
 
-In addition, they contain all the properties of the fault itself.
+In addition, each event contains all the properties of the fault itself.
 
 ```
 class FaultsObserver : IObserver
@@ -258,15 +250,13 @@ class FaultsObserver : IObserver
 }
 ```
 
-### Understand fault lifecycle
+### Understanding the fault lifecycle
+Faults are not intended to be marked as either "seen" or resolved by the user. They are created when the Health Service observes a problem, and they are removed automatically only after the Health Service can no longer observe the problem. In general, this reflects that the problem has been fixed.
 
-Faults are not intended to be marked "seen" or resolved by the user. They are created when the Health Service observes a problem, and they are removed automatically and only when the Health Service can no longer observe the problem. In general, this reflects that the problem has been fixed.
+However, in some cases, faults may be rediscovered by the Health Service, such as after a failover, intermittent connectivity, and so on. For this reason, it may make sense to persist your own representation of faults, so that you can easily deduplicate. This is especially important if you send email alerts or the equivalent.
 
-However, in some cases, faults may be rediscovered by the Health Service (e.g. after failover, or due to intermittent connectivity, etc.). For this reason, it may makes sense to persist your own representation of faults, so you can easily deduplicate. This is especially important if you send email alerts or equivalent.
-
-### Properties of faults
-
-This table presents several key properties of the fault object. For the full schema, inspect the **MSFT\_StorageDiagnoseResult** class in *storagewmi.mof*.
+### Fault properties
+The following table presents several key properties of the fault object. For the full schema, inspect the **MSFT\_StorageDiagnoseResult** class in *storagewmi.mof*.
 
 | **Property**              | **Example**                                                     |
 |---------------------------|-----------------------------------------------------------------|
@@ -279,7 +269,7 @@ This table presents several key properties of the fault object. For the full sch
 | RecommendedActions        | {"Expand the volume.", "Migrate workloads to other volumes."}   |
 
 **FaultId**
-Unique within the scope of one cluster.
+Unique ID within the scope of one cluster.
 
 **PerceivedSeverity**
 PerceivedSeverity = { 4, 5, 6 } = { "Informational", "Warning", and "Error" }, or equivalent colors such as blue, yellow, and red.
@@ -291,13 +281,12 @@ Part information for hardware, typically blank for software objects.
 Location information for hardware, typically blank for software objects.
 
 **RecommendedActions**
-List of recommended actions, which are independent and in no particular order. Today, this list is often of length 1.
+List of recommended actions that are independent and in no particular order. Today, this list is often of length 1.
 
-## Properties of fault events
+## Fault event properties
+The following table presents several key properties of the fault event. For the full schema, inspect the **MSFT\_StorageFaultEvent** class in *storagewmi.mof*.
 
-This table presents several key properties of the fault event. For the full schema, inspect the **MSFT\_StorageFaultEvent** class in *storagewmi.mof*.
-
-Note the **ChangeType**, which indicates whether a fault is being created, removed, or updated, and the **FaultId**. An event also contains all the properties of the affected fault.
+Note the **ChangeType** that indicates whether a fault is being created, removed, or updated, and the **FaultId**. An event also contains all the properties of the affected fault.
 
 | **Property**              | **Example**                                                     |
 |---------------------------|-----------------------------------------------------------------|
@@ -314,7 +303,6 @@ Note the **ChangeType**, which indicates whether a fault is being created, remov
 ChangeType = { 0, 1, 2 } = { "Create", "Remove", "Update" }.
 
 ## Coverage
-
 In Windows Server 2019 and Azure Stack HCI, the Health Service provides the following fault coverage:
 
 ### **PhysicalDisk (31)**
