@@ -349,28 +349,28 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.SblFailedMedia
 * Severity: Warning
-* Reason: *" The drive failed. "*
-* RecommendedAction: *"Replace the drive. "*
+* Reason: *"The drive failed."*
+* RecommendedAction: *"Replace the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.SblUnresponsive
 * Severity: Warning
-* Reason: *" The physical disk is exhibiting recurring unresponsiveness. "*
-* RecommendedAction: *" Replace the physical disk. "*
+* Reason: *"The physical disk is exhibiting recurring unresponsiveness."*
+* RecommendedAction: *"Replace the physical disk."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureBadBlock
 * Severity: Warning
-* Reason: *" The drive reported bad blocks during writes. An occasional bad block is normal, but too many could mean that the drive is malfunctioning, damaged, or beginning to fail. "*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive. "*
+* Reason: *"The drive reported bad blocks during writes. An occasional bad block is normal, but too many could mean that the drive is malfunctioning, damaged, or beginning to fail."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureBadBlockRead
 * Severity: Warning
-* Reason: *"The drive reported bad blocks during reads. An occasional bad block is normal, but too many could mean that the drive is malfunctioning, damaged, or beginning to fail. "*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+* Reason: *"The drive reported bad blocks during reads. An occasional bad block is normal, but too many could mean that the drive is malfunctioning, damaged, or beginning to fail."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureIoRetry 
 * Severity: Warning
-* Reason: *"The drive needed multiple tries to read or write. If this keeps happening, it could mean that the drive is malfunctioning, damaged, or beginning to fail. "*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+* Reason: *"The drive needed multiple tries to read or write. If this keeps happening, it could mean that the drive is malfunctioning, damaged, or beginning to fail."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.MarginalFailure.EventBased.IoRetry.Enabled to true
@@ -378,7 +378,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureIoFailure 
 * Severity: Warning
 * Reason: *"The drive failed to read or write. If this keeps happening, it could mean that the drive is malfunctioning, damaged, or beginning to fail."*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.MarginalFailure.EventBased.IoFailure.Enabled to true
@@ -386,22 +386,22 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureSmart 
 * Severity: Warning
 * Reason: *"The drive reported the following potential problems to Windows using SMART (Self-Monitoring, Analysis and Reporting Technology)"*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureHighWear
 * Severity: Warning
 * Reason: *"The drive has reached high percentage of its rated write endurance. The drive may become read-only, meaning it cannot perform any more writes, when it reaches 100% of its rated endurance. Check the data sheet or ask the manufacturer for more details about endurance rating and end-of-life behavior."*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.FailureReadOnly
 * Severity: Warning
-* Reason: *" The drive reached 100% of its rated write endurance and is now read-only, meaning it cannot perform any more writes. Solid-state drives wear out after a certain number of writes, which varies depending on the endurance rating of the drive. For details, check the drive specifications or ask the manufacturer about endurance rating and end-of-life behavior."*
-* RecommendedAction: *" If this keeps happening or you observe decreased performance, consider replacing the drive."*
+* Reason: *"The drive reached 100% of its rated write endurance and is now read-only, meaning it cannot perform any more writes. Solid-state drives wear out after a certain number of writes, which varies depending on the endurance rating of the drive. For details, check the drive specifications or ask the manufacturer about endurance rating and end-of-life behavior."*
+* RecommendedAction: *"If this keeps happening or you observe decreased performance, consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.SlowestIO
 * Severity: Warning
 * Reason: *"The drive has high peak latency."*
-* RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+* RecommendedAction: *"Monitor the drive's performance and consider replacing the drive."*
 
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled to true
@@ -409,7 +409,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.AverageIO
 * Severity: Warning
 * Reason: *"The drive has high average latency."*
-* RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+* RecommendedAction: *"Monitor the drive's performance and consider replacing the drive."*
 
 >[!NOTE]
 > This Fault is disabled by default. To enable it, set the health setting System.Storage.PhysicalDisk.HighLatency.Threshold.Tail.Enabled to true
@@ -417,22 +417,22 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.Outlier.AverageIO
 * Severity: Warning
 * Reason: *"The drive has high average latency."*
-* RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+* RecommendedAction: *"Monitor the drive's performance and consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighLatency.Outlier.SlowestIO
 * Severity: Warning
 * Reason: *"The drive has high peak latency."*
-* RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+* RecommendedAction: *"Monitor the drive's performance and consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighErrorCount.AverageIO
 * Severity: Warning
 * Reason: *"The drive has high number of errors."*
-* RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+* RecommendedAction: *"Monitor the drive's performance and consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.HighErrorCount.Outlier.AverageIO
 * Severity: Warning
 * Reason: *"The drive has high number of errors."*
-* RecommendedAction: *" Monitor the drive's performance and consider replacing the drive."*
+* RecommendedAction: *"Monitor the drive's performance and consider replacing the drive."*
 
 #### FaultType: Microsoft.Health.FaultType.PhysicalDisk.CacheReadOnly
 * Severity: Warning
@@ -522,7 +522,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 
 #### FaultType: Microsoft.Health.FaultType.Volume.FileSystem.Corruption.Uncorrectable.DataRemoved
 * Severity: Warning
-* Reason: *" The file system detected a corruption on a file or folder. The file or folder has been removed from the file system namespace."*
+* Reason: *"The file system detected a corruption on a file or folder. The file or folder has been removed from the file system namespace."*
 * RecommendedAction: *"Initiate Data Integrity scan from task scheduler, storage might be going bad. If there is an update or maintenance operation going on, stop it immediately. You may need to restore from the backup."*
 
 #### FaultType: Microsoft.Health.FaultType.Volume.FileSystem.Corruption.Uncorrectable.DataRemovalFailure
@@ -742,22 +742,22 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 #### FaultType: Microsoft.Health.FaultType.Vm.ConfigIsOffline
 * Severity: Warning
 * Reason: *"The virtual machine configuration resource is offline, meaning the virtual machine cannot be administered."*
-* RecommendedAction: *" Bring the virtual machine configuration online."*
+* RecommendedAction: *"Bring the virtual machine configuration online."*
 
 #### FaultType: Microsoft.Health.FaultType.Vm.NotRespondingToControlCodes
 * Severity: Warning
 * Reason: *"The virtual machine isn't responding to cluster control codes."*
-* RecommendedAction: *" Check the state of the virtual machine cluster resource."*
+* RecommendedAction: *"Check the state of the virtual machine cluster resource."*
 
 #### FaultType: Microsoft.Health.FaultType.Vm.IsNearMemoryLimit
 * Severity: Warning
 * Reason: *"The virtual machine needs more of its configured maximum memory."*
-* RecommendedAction: *" Check for processes or apps consuming too much memory or consider increasing its maximum memory."*
+* RecommendedAction: *"Check for processes or apps consuming too much memory or consider increasing its maximum memory."*
 
 #### FaultType: Microsoft.Health.FaultType.Vhd.IsNearlyFull
 * Severity: Warning
 * Reason: *"The virtual hard disk has reached its capacity. No more data can be written to it, which may negatively impact the virtual machine(s)."*
-* RecommendedAction: *" Resize the virtual hard disk or delete unwanted files."*
+* RecommendedAction: *"Resize the virtual hard disk or delete unwanted files."*
 
 <sup>1</sup> Indicates the volume has reached 80% full (minor severity) or 90% full (major severity).
 <sup>2</sup> Indicates some .vhd(s) on the volume have not met their Minimum IOPS for over 10% (minor), 30% (major), or 50% (critical) of a rolling 24-hour window.
