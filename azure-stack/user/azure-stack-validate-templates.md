@@ -4,9 +4,9 @@ description: Check templates for deployment to Azure Stack Hub with a template v
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/26/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to use the template validation tool so I can see if my templates are ready to deploy.
@@ -16,7 +16,7 @@ ms.lastreviewed: 12/2/2020
 
 # Use the template validation tool in Azure Stack Hub
 
-Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available in the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
+Use the template validation tool to check whether your [Azure Resource Manager templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack Hub. The template validation tool is available in the Azure Stack Hub tools GitHub repo. Download the Azure Stack Hub tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
 
 ## Overview
 
@@ -31,7 +31,6 @@ Before you use the template validator, run the **Az.CloudCapabilities** PowerShe
 
 > [!NOTE]
 > If you update your integrated system, or add any new services or virtual extensions, you should run this module again.
-
 
 ### [Az modules](#tab/az1)
 
@@ -136,6 +135,7 @@ test-AzTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -IncludeComputeCapabilities `
 -Report TemplateReport.html
 ```
+
 ### [AzureRM modules](#tab/azurerm3)
 
 ```powershell
@@ -145,6 +145,7 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 -IncludeComputeCapabilities `
 -Report TemplateReport.html
 ```
+
 ---
 
 ## Next steps

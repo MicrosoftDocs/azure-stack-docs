@@ -4,7 +4,7 @@ description: Learn the basic cluster and workload components of Kubernetes and h
 author: daschott
 ms.author: daschott
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 08/03/2021
 ---
 
 # Clusters and workloads for Azure Kubernetes Service on Azure Stack HCI
@@ -20,6 +20,9 @@ This article introduces the core Kubernetes infrastructure components, such as t
 Kubernetes is the core component of the Azure Kubernetes Service on Azure Stack HCI. Azure Kubernetes Service on Azure Stack HCI uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
 
 The deployment operation will create multiple Linux or Windows virtual machines and join these together to create Kubernetes cluster(s).
+
+> [!NOTE]
+> To help improve the reliability of the system, if you are running multiple Cluster Shared Volumes (CSV) in your Azure Stack HCI cluster, by default virtual machine data is automatically spread out across all available CSVs in the cluster. This ensures that applications survive in the event of CSV outages. This applies to only new installations (not upgrades).
 
 The deployed system is ready to receive standard Kubernetes workloads, scale these workloads, or even scale the number of virtual machines as well as the number of clusters up and down as needed.
 

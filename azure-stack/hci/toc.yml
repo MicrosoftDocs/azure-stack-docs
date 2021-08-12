@@ -97,11 +97,17 @@
     - name: Update the cluster
       href: manage/update-cluster.md
     - name: Monitor clusters from Windows Admin Center
-      href: manage/monitor-cluster.md
+      href: manage/monitor-cluster.md      
+    - name: Monitor clusters with Health Service
+      href: manage/health-service-overview.md      
     - name: Get cluster performance history
       href: manage/health-service-cluster-performance-history.md
     - name: View Health Service faults
       href: manage/health-service-faults.md
+    - name: Track Health Service actions
+      href: manage/health-service-actions.md
+    - name: Modify Health Service settings
+      href: manage/health-service-settings.md
     - name: Configure firewalls
       href: manage/configure-firewalls.md
     - name: Set up a cluster witness
@@ -116,10 +122,14 @@
       href: manage/languages.md
     - name: Change privacy settings
       href: manage/change-privacy-settings.md
-    - name: Troubleshoot cluster validation reporting
-      href: manage/validate-qos.md
-    - name: Troubleshoot CredSSP
-      href: manage/troubleshoot-credssp.md
+    - name: Troubleshooting
+      items:
+      - name: Troubleshoot cluster validation reporting
+        href: manage/validate-qos.md
+      - name: Troubleshoot CredSSP
+        href: manage/troubleshoot-credssp.md
+      - name: Collect diagnostic data
+        href: manage/collect-diagnostic-data.md
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
@@ -132,6 +142,8 @@
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
+    - name: Manage software load balancers
+      href: manage/load-balancers.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
@@ -142,12 +154,8 @@
       href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
-    - name: Monitor with Azure Monitor
-      href: manage/azure-monitor.md
-    - name: Use Azure Site Recovery
-      href: manage/azure-site-recovery.md
     - name: Use Azure Backup
-      href: manage/use-azure-backup.md
+      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Network Adapter
       href: manage/use-azure-network-adapter.md
 - name: Concepts

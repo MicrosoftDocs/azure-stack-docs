@@ -4,9 +4,9 @@ title: Troubleshoot network virtual appliance problems on Azure Stack Hub
 description: Troubleshoot VM or VPN connectivity problems when using a network virtual appliance (NVA) in Microsoft Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/22/2020
+ms.date: 07/27/2021
 ms.topic: article
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 11/22/2020
 
 ---
@@ -184,4 +184,4 @@ If you need assistance, [contact the NVA vendor](https://mskb.pkisolutions.com/k
 
 ### Create a support ticket
 
-If the preceding steps don't resolve your problem, create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/diagnostic-log-collection.md) to provide logs.
+If the preceding steps do not resolve your problem, create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/diagnostic-log-collection.md) to provide logs.

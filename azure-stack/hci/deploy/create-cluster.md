@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Azure Stack HCI, version v20H2
 
-In this article you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+Now that you've deployed the Azure Stack HCI operating system, you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 You have a choice between creating two cluster types:
 
@@ -184,7 +184,7 @@ For more information on RDMA and Hyper-V host networking for Azure Stack HCI, se
 Step 3 of the wizard makes sure everything thus far has been set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
 
 1. Select **Next: Clustering**.
-1. On **3.1 Validate the cluster**, select **Validate**. Validation may take several minutes.
+1. On **3.1 Validate the cluster**, select **Validate**. Validation may take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production.
 
     If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md).
 
@@ -229,8 +229,10 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 This optional step walks you through setting up the Network Controller component of [Software Defined Networking (SDN)](../concepts/software-defined-networking.md). Once the Network Controller is set up, you can configure other SDN components such as Software Load Balancer (SLB) and RAS Gateway as per your requirements. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of the planning article to understand what other SDN components you might need.
 
+You can also deploy Network Controller using SDN Express scripts. See [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md).
+
 > [!NOTE]
-> The Create Cluster wizard does not currently support configuring SLB And RAS gateway. You can use [SDN Express scripts](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) to configure these components. Also, SDN is not supported or available for stretched clusters.
+> The Create Cluster wizard does not currently support configuring SLB And RAS gateway. You can use [SDN Express scripts](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) to configure these components. Also, SDN is not supported or available for stretched clusters. 
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
@@ -264,9 +266,12 @@ If Network Controller deployment fails, do the following before you try this aga
 
 - Ensure you have at least have 50-100GB of free space on your Hyper-V hosts.
 
+## Set up a cluster witness
+
+Setting up a witness resource is highly recommended for all clusters. Follow the instructions in [Set up a cluster witness](../manage/witness.md).
+
 ## Next steps
 
-- Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
-- Set up a witness. [Set up a cluster witness](../manage/witness.md).
-- Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md).
-- You can also deploy Network Controller using SDN Express scripts. See [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md).
+To perform the next management task related to this article, see:
+> [!div class="nextstepaction"]
+> [Connect Azure Stack HCI to Azure](register-with-azure.md)

@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/14/2021
+ms.date: 07/26/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -53,7 +53,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2102"
 ## 2102 build reference
 
-The Azure Stack Hub 2102 update build number is **1.2102.28.82**.
+The latest Azure Stack Hub 2102 update build number is **1.2102.28.89**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
 
 ### Update type
 
@@ -156,7 +156,7 @@ After the installation of 2102, if any hotfixes for 2102 are subsequently releas
 ::: moniker range="azs-2008"
 ## 2008 build reference
 
-The Azure Stack Hub 2008 update build number is **1.2008.13.88**.
+The latest Azure Stack Hub 2008 update build number is **1.2008.40.148**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
 
 ### Update type
 
@@ -241,7 +241,7 @@ After the installation of 2008, if any 2008 hotfixes are subsequently released, 
 ::: moniker range="azs-2005"
 ## 2005 build reference
 
-The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
+The latest Azure Stack Hub 2005 update build number is **1.2005.42.126**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-2) section.
 
 ### Update type
 
