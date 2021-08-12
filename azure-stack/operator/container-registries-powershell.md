@@ -34,7 +34,7 @@ The following table lists common actions that you can perform with the PowerShel
 |     Remove-AzsContainerRegistryQuota           |     Delete an existing Container Registry quota.                                                                      |
 |     Get-AzsContainerService                    |     Returns list of AKS clusters deployed in the system. Each cluster in the list contains the following attributes: `CreationDate`, `ID`, `Location`, `Name`, `OrchestratorVersion`, `PropertiesId`, `PropertiesName`, `ProvisioningState`, `SubscriptionId`, `Type`. |
 
-You can find the reference documentation for the Az module for Azure Stack Hub at [Azure Stack Hub Module](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview).
+You can find the reference documentation for the Az module for Azure Stack Hub at [Azure Stack Hub Module](/powershell/azure/azure-stack/overview).
 v
 ## Next steps
 
