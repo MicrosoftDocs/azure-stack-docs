@@ -95,32 +95,33 @@ You can use the following PowerShell cmdlets to import the certificate and insta
 
 1. Install ContainerRegistry Admin cmdlet:
 
-```powershell  
-Install-Package Azs.ContainerRegistry.Admin
-```
+    ```powershell  
+    Install-Package Azs.ContainerRegistry.Admin
+    ```
 2. Connect to Az Account:
 
-```powershell  
-$ArmEndpoint = "<AdminResourceManagerEndpoint>"
-Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name "AzureStackAdmin"
-Connect-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $tenantID -Credential $credential
-```
+    ```powershell  
+    $ArmEndpoint = "<AdminResourceManagerEndpoint>"
+    Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name "AzureStackAdmin"
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $tenantID -Credential $credential
+    ```
 3. Define parameters for Container Registry Setup:
 
-```powershell  
-$password = ConvertTo-SecureString "<certificate password>" -AsPlainText -Force
-$pfx_cert_path = "<certificate pfx path>"
-Start Container Registry Service Setup:
-Start-AzsContainerRegistrySetup -Password $password -SslCertInputFile $pfx_cert_path | ConvertTo-Json
-```
+    ```powershell  
+    $password = ConvertTo-SecureString "<certificate password>" -AsPlainText -Force
+    $pfx_cert_path = "<certificate pfx path>"
+    Start Container Registry Service Setup:
+    Start-AzsContainerRegistrySetup -Password $password -SslCertInputFile $pfx_cert_path | ConvertTo-Json
+    ```
+
 4. Check Container Registry Setup Progress:
 
-```powershell  
-(Get-AzsContainerRegistrySetupStatus).ToJsonString()
-```
+    ```powershell  
+    (Get-AzsContainerRegistrySetupStatus).ToJsonString()
+    ```
 
 For more information about the PowerShell cmdlets to use with the Container Registries, see [PowerShell cmdlets for Azure Container Registry on Azure Stack Hub](container-registries-powershell.md).
-
+    
 ---
 
 Once the installation is complete, you can review or update your capacity in quota in the Azure Stack Hub administrative portal.
