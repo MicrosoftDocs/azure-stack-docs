@@ -94,6 +94,8 @@ To resolve this issue, run the following steps:
    sudo docker ps -a
    ```
 
+After performing these steps, the container image pull should be unblocked.
+
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
 
