@@ -5,7 +5,7 @@ manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 08/12/2021
+ms.date: 08/13/2021
 ---
 
 # View Health Service faults
