@@ -120,6 +120,7 @@ Start-AzsContainerRegistrySetup -Password $password -SslCertInputFile $pfx_cert_
 ```
 
 For more information about the PowerShell cmdlets to use with the Container Registries, see [PowerShell cmdlets for Azure Container Registry on Azure Stack Hub](container-registries-powershell.md).
+
 ---
 
 Once the installation is complete, you can review or update your capacity in quota in the Azure Stack Hub administrative portal.
