@@ -5,7 +5,7 @@ manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 08/11/2021
+ms.date: 08/12/2021
 ---
 
 # View Health Service faults
@@ -35,7 +35,7 @@ Location: Seattle DC, Rack B07, Node 4, Slot 11
  > The physical location is derived from your fault domain configuration. For more information about fault domains, see [Fault domain awareness](/windows-server/failover-clustering/fault-domains). If you do not provide this information, the location field is less helpful. For example, it may only show the slot number.
 
 ## Root cause analysis
-The Health Service can assess the potential causality among faulting entities to identify and combine faults that are consequences of the same underlying problem. By recognizing chains of effect, this makes for less chatty reporting. For example, if a server is down, it is expected than any drives within the server are also without connectivity. Therefore, only one fault will be raised for the root cause - in this case, the server.
+The Health Service can assess the potential causality among faulting entities to identify and combine faults that are consequences of the same underlying problem. By recognizing chains of effect, this makes for less chatty reporting. For example, if a server is down, it is expected that any drives within the server are also without connectivity. Therefore, only one fault will be raised for the root cause - in this case, the server.
 
 ## Usage in PowerShell
 To see any current faults in PowerShell, run the following cmdlet:
@@ -47,10 +47,10 @@ Get-HealthFault
 This returns any faults that affect the overall Storage Spaces Direct cluster. Most often, these faults relate to hardware or configuration. If there are no faults, the cmdlet returns nothing.
 
 >[!NOTE]
-> In a non-production environment, and at your own risk, you can experiment with this feature by triggering faults yourself. For example, by removing one physical disk or shutting down one node. After the fault appears, re-insert the physical disk or restart the node to make the fault disappear.
+> In a non-production environment, and at your own risk, you can experiment with this feature by triggering faults yourself. For example, you can do this by removing one physical disk or shutting down one node. After the fault appears, re-insert the physical disk or restart the node to make the fault disappear.
 
 ## Usage in .NET and C#
-This sections shows how to connect to the Health Service, use discover objects, and run fault queries.
+This section shows how to connect to the Health Service, use discover objects, and run fault queries.
 
 ### Connect
 In order to query the Health Service, you establish a **CimSession** with the cluster. To do so, you will need some things that are only available in full Microsoft .NET, meaning you cannot readily do this directly from a web or mobile app. The code samples in this section use C\#, the most straightforward choice for this data access layer.
@@ -76,7 +76,7 @@ public CimSession Connect(string Domain = "...", string Computer = "...", string
 }
 ```
 
-The provided Username should be a local Administrator of the target Computer.
+The provided username should be a local administrator of the target computer.
 
 We recommend constructing the Password **SecureString** directly from user input in real-time, so that the password is never stored in memory in cleartext. This helps mitigate a variety of security concerns. But in practice, constructing it as above is common for prototyping purposes.
 
@@ -268,20 +268,15 @@ The following table presents several key properties of the fault object. For the
 | FaultingObjectLocation    | Rack A06, RU 25, Slot 11                                        |
 | RecommendedActions        | {"Expand the volume.", "Migrate workloads to other volumes."}   |
 
-**FaultId**
-Unique ID within the scope of one cluster.
+**FaultId**: Unique ID within the scope of one cluster.
 
-**PerceivedSeverity**
-PerceivedSeverity = { 4, 5, 6 } = { "Informational", "Warning", and "Error" }, or equivalent colors such as blue, yellow, and red.
+**PerceivedSeverity**: PerceivedSeverity = { 4, 5, 6 } = { "Informational", "Warning", and "Error" }, or equivalent colors such as blue, yellow, and red.
 
-**FaultingObjectDescription**
-Part information for hardware, typically blank for software objects.
+**FaultingObjectDescription**: Part information for hardware, typically blank for software objects.
 
-**FaultingObjectLocation**
-Location information for hardware, typically blank for software objects.
+**FaultingObjectLocation**: Location information for hardware, typically blank for software objects.
 
-**RecommendedActions**
-List of recommended actions that are independent and in no particular order. Today, this list is often of length 1.
+**RecommendedActions**: List of recommended actions that are independent and in no particular order. Today, this list is often of length 1.
 
 ## Fault event properties
 The following table presents several key properties of the fault event. For the full schema, inspect the **MSFT\_StorageFaultEvent** class in *storagewmi.mof*.
@@ -574,7 +569,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 
 #### FaultType: Microsoft.Health.FaultType.Node.HighRootPartitionMemoryUsage
 * Severity: Warning
-* Reason: *"Windows Server is consuming lot physical memory, which exceeds your configured threshold."*
+* Reason: *"Windows Server is consuming a lot of physical memory, which exceeds your configured threshold."*
 * RecommendedAction: *"Check for processes or apps consuming too much memory, move virtual machines to other servers, or add memory to the servers."*
 
 #### FaultType: Microsoft.Health.FaultType.Node.TooHighCpuReservation

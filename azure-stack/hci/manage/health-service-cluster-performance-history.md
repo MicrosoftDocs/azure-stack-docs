@@ -5,7 +5,7 @@ manager: eldenc
 ms.author: cosdar
 ms.topic: article
 author: cosmosdarwin
-ms.date: 08/11/2021
+ms.date: 08/12/2021
 ---
 
 # Get cluster performance history
@@ -59,7 +59,7 @@ public CimSession Connect(string Domain = "...", string Computer = "...", string
 }
 ```
 
-The provided Username should be a local Administrator of the target Computer.
+The provided username should be a local administrator of the target computer.
 
 We recommend constructing the Password **SecureString** directly from user input in real-time, so that the password is never stored in memory in cleartext. This helps mitigate a variety of security concerns. But in practice, constructing it as above is common for prototyping purposes.
 
@@ -181,7 +181,7 @@ public void BeginStreamingMetrics(CimSession Session, CimInstance HealthService,
 }
 ```
 
-Needless to say, these metrics can be visualized, stored in a database, or used in whatever way you see fit.
+These metrics can be visualized, stored in a database, or used in whatever way you see fit.
 
 ## Additional references
 - [Performance history for Storage Spaces Direct](/windows-server/storage/storage-spaces/performance-history)
