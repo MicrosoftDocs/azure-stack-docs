@@ -11,9 +11,10 @@ ms.reviewer:
 # Known issues in Windows Admin Center
 
 This article describes known issues with Windows Admin Center (WAC) on Azure Stack HCI. You can also review [known issues](known-issues.md) that are specific to using Azure Kubernetes Service (AKS) on the Azure Stack HCI.
+
 ## Restarting Azure Stack HCI nodes causes timing issue
 
-Restarting the Azure Stack HCI cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the WAC dashboard. The workaround would be to restart WAC. Sometimes the workload clusters take longer to show up in the dashboard.
+Restarting the Azure Stack HCI cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the WAC dashboard. To work around this issue, pause and drain the nodes before you plan to restart them. Sometimes, the workload clusters may just take longer to appear in the dashboard.
 
 [ ![Deployment: Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png) ](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png#lightbox)
 

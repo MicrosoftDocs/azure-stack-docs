@@ -3,7 +3,7 @@ title: Resolve known issues on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to resolve known issues in an Azure Kubernetes Service (AKS) on Azure Stack HCI deployment.
 author: EkeleAsonye
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 08/12/2021
 ms.author: v-susbo
 ---
 
@@ -69,6 +69,30 @@ If you have multiple versions of the PowerShell modules installed (for example, 
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
 If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
+
+## During deployment, the error _Waiting for pod ‘Cloud Operator’ to be ready_ appears
+
+When attempting to deploy an AKS on Azure Stack HCI cluster on an Azure VM, the installation was stuck at _Waiting for pod 'Cloud Operator' to be ready..._, and then failed and timed out after two hours. Attempts to troubleshoot by checking the gateway and DNS server showed they were working appropriately. Checks to see if there was an IP or MAC address conflict showed none were found. When viewing the logs, it showed that the VIP pool had not reached the logs. There was a restriction on pulling the container image using `sudo docker pull ecpacr.azurecr.io/kube-vip:0.3.4` that returned a Transport Layer Security (TLS) timeout instead of _unauthorized_. 
+
+To resolve this issue, run the following steps:
+
+1. Start to deploy your cluster.
+2. When deployed, connect to management cluster VM through SSH as shown below:
+
+   ```
+   ssh -i (Get-MocConfig)['sshPrivateKey'] clouduser@<IP Address>
+   ```
+
+3. Change the maximum transmission unit (MTU) setting. Don't hesitate to make the change because if you make the change too late, then the deployment fails. Modifying the MTU setting helps unblock the container image pull.
+
+   ```
+   sudo ifconfig eth0 mtu 1300
+   ```
+
+4. To view the status of your containers, run the following command:
+   ```
+   sudo docker ps -a
+   ```
 
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
