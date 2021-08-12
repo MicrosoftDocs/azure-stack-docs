@@ -10,7 +10,7 @@ ms.date: 08/12/2021
 
 # Get cluster performance history
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2022, Windows Server 2019
 
 The Health Service reduces the work required to get live performance and capacity information from your Storage Spaces Direct cluster. One cmdlet provides a curated list of essential metrics, which are collected efficiently and aggregated dynamically across nodes, with built-in logic to detect cluster membership. All values are real-time and point-in-time only.
 

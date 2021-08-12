@@ -10,7 +10,7 @@ ms.date: 08/12/2021
 
 # View Health Service faults
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2022, Windows Server 2019
 
 The Health Service constantly monitors your Storage Spaces Direct cluster to detect problems and generate "faults." One cmdlet displays any current faults, allowing you to easily verify the health of your deployment without looking at every entity or feature in turn. Faults are designed to be precise, easy to understand, and actionable.
 
@@ -690,7 +690,7 @@ In Windows Server 2019 and Azure Stack HCI, the Health Service provides the foll
 * Reason: *"Currently unable to make progress while performing firmware roll out."*
 * RecommendedAction: *"Verify all storage spaces are healthy, and that no fault domain is currently in maintenance mode."*
 
-#### FaultType: Microsoft.Health.FaultType.FaultDomain.FirmwareVerifyVersionFaile
+#### FaultType: Microsoft.Health.FaultType.FaultDomain.FirmwareVerifyVersionFailed
 * Severity: Warning
 * Reason: *"Firmware roll out was canceled due to unreadable or unexpected firmware version information after applying a firmware update."*
 * RecommendedAction: *"Restart firmware roll out once the firmware issue has been resolved."*
