@@ -15,7 +15,7 @@ ms.lastreviewed: 08/20/2021
 
 # PowerShell cmdlets for Azure Container Registry on Azure Stack Hub
 
-To use the Azure Container Registry cmdlets for use with the registry and with the Azure Kubernetes Service (AKS) on Azure Stack Hub, you will need to install the most recent Az AzureStack module for Azure Stack Hub. You can find the instructions in [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
+To use the Azure Container Registry cmdlets for use with the registry and with the Azure Kubernetes Service (AKS) on Azure Stack Hub, you will need to install the most recent Az AzureStack for Azure Stack Hub. You can find the instructions in [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Azs.ContainerRegistry.Admin
 
@@ -35,7 +35,7 @@ The following table lists common actions that you can perform with the PowerShel
 |     Get-AzsContainerService                    |     Returns list of AKS clusters deployed in the system. Each cluster in the list contains the following attributes: `CreationDate`, `ID`, `Location`, `Name`, `OrchestratorVersion`, `PropertiesId`, `PropertiesName`, `ProvisioningState`, `SubscriptionId`, `Type`. |
 
 You can find the reference documentation for the Az module for Azure Stack Hub at [Azure Stack Hub Module](/powershell/azure/azure-stack/overview).
-v
+
 ## Next steps
 
 [Azure Container Registries on Azure Stack Hub overview](container-registries-overview.md)
