@@ -60,6 +60,8 @@ productDirectory:
     links:
       - url: ./hci/overview.md
         text: Azure Stack HCI overview
+      - url: https://hcicatalog.azurewebsites.net
+        text: Azure Stack HCI catalog
       - url: ./hci/concepts/compare-windows-server.md
         text: Compare Azure Stack HCI to Windows Server 2019
       - url: ./hci/concepts/compare-azure-stack-hub.md
