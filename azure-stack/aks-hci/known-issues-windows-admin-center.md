@@ -78,4 +78,3 @@ You will get this error if you have disabled pop-ups. Google Chrome blocks pop-u
 ## Next steps
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
-
