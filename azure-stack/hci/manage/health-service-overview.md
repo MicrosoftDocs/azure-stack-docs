@@ -6,11 +6,11 @@ ms.author: cosdar
 ms.topic: article
 ms.assetid: 5bc71e71-920e-454f-8195-afebd2a23725
 author: cosmosdarwin
-ms.date: 07/28/2021
+ms.date: 08/13/2021
 ---
 # Monitor clusters with the Health Service
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, version 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
