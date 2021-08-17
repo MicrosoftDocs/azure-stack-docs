@@ -50,7 +50,7 @@ There are several prerequisites that need to be in place before you can deploy t
   |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.1](https://aka.ms/azshsqlrp11931)|Microsoft AzureStack Add-on RP Windows Server|
   |     |     |     |
 
-- Make sure that the required Windows Server VM is downloaded to Azure Stack Hub Marketplace. Manually download the image according to the version maapping table above if needed. 
+- Make sure that the required Windows Server VM is downloaded to Azure Stack Hub Marketplace. Manually download the image according to the version mapping table above if needed. 
 
 - Ensure datacenter integration prerequisites are met:
 
@@ -61,11 +61,12 @@ There are several prerequisites that need to be in place before you can deploy t
     |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
     |     |     |
 
-- Prepare the certificate. (_For integrated systems installations only_.) You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). 
+- Prepare the certificate. (_For integrated systems installations only_.) 
+   - You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). The Subject Alternative Name (SAN) must adhere to the following naming pattern: CN=*.dbadapter.<region>.<fqdn>, with password protected.
+   [![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)](media/azure-stack-sql-rp-deploy/0-cert-requirement#lightbox)
    - When deploying SQL Server resource provider V1, place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
    - When deploying SQL Server resource provider V2, prepare the certificate for the following installation steps.
-   The Subject Alternative Name (SAN) must adhere to the following naming pattern: CN=*.dbadapter.<region>.<fqdn>, with password protected.
-      [![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)](media/azure-stack-sql-rp-deploy/0-cert-requirement#lightbox)
+   
 
 ### Disconnected Scenario
 
@@ -206,7 +207,11 @@ You can specify the following parameters from the command line. If you don't, or
 
 ## Deploy the SQL resource provider using a custom script
 
-If you're deploying the SQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you're deploying the SQL resource provider version 1.1.47.0 or later, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
+::: moniker range="<=azs-2005"
+If you're deploying the SQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. 
+::: moniker-end
+
+If you're deploying the SQL resource provider version 1.1.47.0 or later, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureStack module
@@ -281,7 +286,7 @@ When the resource provider installation script finishes, refresh your browser to
 
 If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed SQL Server resource provider has outbound internet connectivity. 
 
-::: moniker range=">=azs-2107"
+::: moniker range=">=azs-2108"
 If there is a need to get the IP of the VM that has installed SQL Server resource provider (i.e. add the IP to your firewall allow list), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the SQL Server resource provider subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.
 ::: moniker-end
 
