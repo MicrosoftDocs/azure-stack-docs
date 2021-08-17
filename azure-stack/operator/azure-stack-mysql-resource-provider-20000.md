@@ -36,7 +36,7 @@ It is required that you apply the minimum supported Azure Stack Hub update to yo
 
 This version of the Azure Stack Hub MySQL resource provider includes the following improvements and fixes:
 
-- **Installation and future version upgrade will be down from Azure Stack Hub marketplace.** 
+- **Installation and future version upgrade will be from the Azure Stack Hub marketplace.** 
 - **A specific version of Add-on RP Windows Server will be required.** The correct version of **Microsoft AzureStack Add-On RP Windows Server** will be automatically downloaded if you install the resource provider in connected environment. In disconnected environment, make sure the right version of **Microsoft AzureStack Add-On RP Windows Server** image is downloaded before deploying or upgrading to this version of the MySQL resource provider.
 - **Receive alerts when certifications are about to expire.** Check [this document](azure-stack-sql-resource-provider-maintain.md#secrets-rotation) for details.
 - **Other bug fixes.**
