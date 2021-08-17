@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 08/10/2021
+ms.date: 08/11/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -135,14 +135,12 @@ During the Azure registration process, when you run either `Register-AzStackHCI`
 Although the PowerShell Gallery is hosted on Azure, currently there isn't a service tag for it. If you can't run the `Register-AzStackHCI` cmdlet from a server node because of no internet access, we recommend downloading the modules to your management computer, and then manually transferring them to the server node where you want to run the cmdlet.
 
 ## Set up a proxy server
-This section shows how to set up a proxy server for your organization.
+This section shows how to set up a proxy server for your cluster.
 
    >[!NOTE]
    > Windows Admin Center proxy settings and Azure Stack HCI proxy settings are separate. Changing Azure Stack HCI cluster proxy settings doesn't affect Windows Admin Center outbound traffic, such as connecting to Azure, downloading extensions, and so on.
 
 Install the WinInetProxy module to run the commands in this section. For information about the module and how to install it, see [PowerShell Gallery | WinInetProxy 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0).
-
-Download the WinInetProxy.psm1 script at: [PowerShell Gallery | WinInetProxy.psm1 0.1.0](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
 
 To set up a proxy server for Azure Stack HCI, run the following PowerShell command as an administrator on each server in the cluster:
 
