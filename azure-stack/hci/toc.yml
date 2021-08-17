@@ -90,34 +90,42 @@
       href: manage/manage-smb-multichannel.md
   - name: Manage clusters
     items:
-    - name: Manage the cluster
-      href: manage/cluster.md
-    - name: Manage clusters with PowerShell
-      href: manage/cluster-powershell.md
-    - name: Update the cluster
-      href: manage/update-cluster.md
-    - name: Monitor clusters from Windows Admin Center
-      href: manage/monitor-cluster.md
-    - name: Monitor clusters with Health Service
-      href: manage/health-service-overview.md
-    - name: Track Health Service actions
-      href: manage/health-service-actions.md
-    - name: Modify Health Service settings
-      href: manage/health-service-settings.md
-    - name: Configure firewalls
-      href: manage/configure-firewalls.md
-    - name: Set up a cluster witness
-      href: manage/witness.md
-    - name: Use DISKSPD to test workloads
-      href: manage/diskspd-overview.md
-    - name: Add or remove servers
-      href: manage/add-cluster.md
-    - name: Take a server offline for maintenance
-      href: manage/maintain-servers.md
-    - name: Change languages
-      href: manage/languages.md
-    - name: Change privacy settings
-      href: manage/change-privacy-settings.md
+    - name: Management
+      items:
+      - name: Manage the cluster
+        href: manage/cluster.md
+      - name: Manage clusters with PowerShell
+        href: manage/cluster-powershell.md
+      - name: Update the cluster
+        href: manage/update-cluster.md
+      - name: Set up a cluster witness
+        href: manage/witness.md
+    - name: Montoring
+      items:
+      - name: Monitor clusters from Windows Admin Center
+        href: manage/monitor-cluster.md
+      - name: Monitor clusters with Health Service
+        href: manage/health-service-overview.md
+      - name: Track Health Service actions
+        href: manage/health-service-actions.md
+      - name: Modify Health Service settings
+        href: manage/health-service-settings.md
+    - name: Networking
+      items:
+      - name: Configure firewalls
+        href: manage/configure-firewalls.md
+      - name: Use DISKSPD to test workloads
+        href: manage/diskspd-overview.md
+    - name: Cluster servers
+      items:
+      - name: Add or remove servers
+        href: manage/add-cluster.md
+      - name: Take a server offline for maintenance
+        href: manage/maintain-servers.md
+      - name: Change languages
+        href: manage/languages.md
+      - name: Change privacy settings
+        href: manage/change-privacy-settings.md
     - name: Troubleshooting
       items:
       - name: Troubleshoot cluster validation reporting
