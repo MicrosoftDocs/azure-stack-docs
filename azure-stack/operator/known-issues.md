@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/19/2021
+ms.date: 08/13/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -42,6 +42,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ## Networking
 
 ## Compute
+
+### Cannot create a Virtual Machine Scale Set with a data disk attached
+
+- Applicable: This issue applies to release 2108.
+- Cause: Missing properties for the object type data disk.
+- Remediation: Add data disks after deployment.
+- Occurrence: Common
 
 <!-- ## Storage -->
 
