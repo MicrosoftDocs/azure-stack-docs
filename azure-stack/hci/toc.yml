@@ -110,10 +110,6 @@
         href: manage/health-service-actions.md
       - name: Modify Health Service settings
         href: manage/health-service-settings.md
-    - name: Networking
-      items:
-      - name: Configure firewalls
-        href: manage/configure-firewalls.md
       - name: Use DISKSPD to test workloads
         href: manage/diskspd-overview.md
     - name: Cluster servers
@@ -126,14 +122,6 @@
         href: manage/languages.md
       - name: Change privacy settings
         href: manage/change-privacy-settings.md
-    - name: Troubleshooting
-      items:
-      - name: Troubleshoot cluster validation reporting
-        href: manage/validate-qos.md
-      - name: Troubleshoot CredSSP
-        href: manage/troubleshoot-credssp.md
-      - name: Collect diagnostic data
-        href: manage/collect-diagnostic-data.md
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
@@ -162,6 +150,14 @@
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Network Adapter
       href: manage/use-azure-network-adapter.md
+- name: Troubleshooting
+  items:
+  - name: Troubleshoot cluster validation reporting
+    href: manage/validate-qos.md
+  - name: Troubleshoot CredSSP
+    href: manage/troubleshoot-credssp.md
+  - name: Collect diagnostic data
+    href: manage/collect-diagnostic-data.md
 - name: Concepts
   items:
   - name: Storage and clusters
@@ -194,6 +190,8 @@
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
+    - name: Configure firewalls
+      href: manage/configure-firewalls.md
   - name: Software Defined Networking (SDN)
     items:
     - name: SDN overview
