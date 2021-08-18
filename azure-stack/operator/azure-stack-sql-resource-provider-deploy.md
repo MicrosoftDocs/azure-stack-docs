@@ -30,17 +30,17 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 > [!IMPORTANT]
 > Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
-## Prerequisites
+## Common Prerequisites
 
-There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub SQL resource provider:
+[!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
+
+## SQL Server resource provider prerequisites
 
 - You'll need a computer and account that can access:
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
    - the [privileged endpoint](azure-stack-privileged-endpoint.md) (needed only when you're deploying SQL Server resource provider V1 or upgrading from SQL Server resource provider V1 to SQL Server resource provider V2).
    - the Azure Resource Manager admin endpoint, `https://adminmanagement.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name.
    - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (Azure AD) as your identity provider.
-  
-- If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
 - Download the supported version of SQL resource provider binary according to the version mapping table below. For V2 SQL resource provider, [download the marketplace item to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 
@@ -66,7 +66,6 @@ There are several prerequisites that need to be in place before you can deploy t
    [![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)](media/azure-stack-sql-rp-deploy/0-cert-requirement#lightbox)
    - When deploying SQL Server resource provider V1, place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
    - When deploying SQL Server resource provider V2, prepare the certificate for the following installation steps.
-   
 
 ### Disconnected Scenario
 
