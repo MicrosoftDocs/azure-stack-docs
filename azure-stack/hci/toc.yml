@@ -88,7 +88,7 @@
       href: manage/use-csv-cache.md
     - name: Manage SMB Multichannel
       href: manage/manage-smb-multichannel.md
-  - name: Manage clusters
+  - name: Manage clusters 
     items:
     - name: Management
       items:
