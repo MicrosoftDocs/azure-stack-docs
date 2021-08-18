@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/10/2021
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 06/09/2021
@@ -18,9 +18,11 @@ ms.lastreviewed: 06/09/2021
 > [!IMPORTANT]
 > Remote support is in public preview and only applies to version 2108.
 
-Use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and duration of access.
+Use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and duration of access. 
 
-Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses protocol HTTPS over port 443. The traffic is encrypted with TLS 1.2. Operations performed are *restricted* based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA). For more information about cmdlets that Microsoft support can execute during a remote support session, see the [list of Microsoft Support operations](#list-of-microsoft-support-operations) section in this article.
+Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses protocol HTTPS over port 443. The traffic is encrypted with TLS 1.2. Operations performed are *restricted* based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
+
+For more information about cmdlets that Microsoft support can execute during a remote support session, see the [list of Microsoft Support operations](#list-of-microsoft-support-operations) section in this article.
 
 ![Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions.](./media/remote-support/remote-support.svg)
 
@@ -34,7 +36,9 @@ Remote support gives you the ability to:
 - Grant just-in-time authenticated access on an incident-by-incident basis.
 - Revoke consent at any time. Access is automatically disabled once the consent duration expires.
 
-## Consent
+## Requirements
+
+Remote support requires you to allow access to certain outbound ports and destination URLs. For more information on required endpoints, see [Ports and URLs (outbound)](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
 Before remote support is enabled, you must provide consent to how Microsoft Support collects, stores, and uses your log data. The following text includes the data handling terms:
 
