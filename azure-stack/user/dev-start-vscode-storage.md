@@ -17,7 +17,7 @@ ms.lastreviewed: 7/23/2021
 
 In this article, you can learn how to deploy a storage account to Azure Stack Hub using the Azure Storage extension in Visual Studio Code. You can use Azure directly from Visual Studio Code through extensions. You'll need to update your Visual Studio Code settings.
 
-Visual Studio code is a light-weight editor for building and debugging cloud applications. Utilizing the Azure Account extension to sign in, you can see their current storage accounts, blobs, and deploy a new one to their Azure Stack Hub subscription. Using this extension, you can:
+Visual Studio Code is a light-weight editor for building and debugging cloud applications. Utilizing the Azure Account extension to sign in, you can see their current storage accounts, blobs, and deploy a new one to their Azure Stack Hub subscription. Using this extension, you can:
 
  - Explore, create, delete Blob containers, queues, tables, and storage accounts
  - Create, edit, and delete block Blobs and files
@@ -86,7 +86,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
     For instructions on how to use the Azure Account extension to connect, follow the instructions at [Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code](azure-stack-dev-start-vscode-azure.md).
 6. Add the URL for your Azure Stack Hub Resource Manager, and then add the Tenant ID.
     ![Use the Azure Storage Extension on Azure Stack Hub](media/dev-start-vscode-storage/use-the-azure-storage-account-extension.png)
-7. Select the Azure icon in the Activity bar in Visual Studio code. Expand the 
+7. Select the Azure icon in the Activity bar in Visual Studio Code. Expand the 
 storage group.
 7. Right-click on the subscription where you would like to create the account, and then select **Create Storage account**.
 8. Enter a unique name for the storage account.
