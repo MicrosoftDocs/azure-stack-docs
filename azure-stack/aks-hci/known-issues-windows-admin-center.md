@@ -11,33 +11,34 @@ ms.reviewer:
 # Known issues in Windows Admin Center
 
 This article describes known issues with Windows Admin Center (WAC) on Azure Stack HCI. You can also review [known issues](known-issues.md) that are specific to using Azure Kubernetes Service (AKS) on the Azure Stack HCI.
+
 ## Restarting Azure Stack HCI nodes causes timing issue
 
-Restarting the Azure Stack HCI cluster nodes hosting the AKS-HCI management cluster and workload clusters may cause the workload clusters to disappear from the WAC dashboard. The workaround would be to restart WAC. Sometimes the target clusters take longer to show up in the dashboard.
+Restarting the Azure Stack HCI cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the WAC dashboard. To work around this issue, pause and drain the nodes before you plan to restart them. Sometimes, the workload clusters may just take longer to appear in the dashboard.
 
 [ ![Deployment: Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png) ](media/known-issues-windows-admin-center/wac-restart-to-resolve-timing-issues.png#lightbox)
 
 ## Deployment: Connecting to remote server localhost failed
 
-AKS-host cluster deployment fails at system checks with WinRM service error. Try applying remedies suggested in the following article [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+The AKS host cluster deployment fails at system checks with a WinRM service error. Try applying the remedies suggested in the [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
 
 ![Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
 
 ## Incorrect upgrade notification
 
-Incorrect upgrade notification: `Successfully installed AksHci PowerShell module version null`. You may see the incorrect notification message. The upgrade operation is successful even if the notification is misleading.
+If you receive an incorrect upgrade notification message `Successfully installed AksHci PowerShell module version null`, the upgrade operation is successful even if the notification is misleading.
 
 ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
 
 ## WAC update dashboard doesn't refresh after successful updates
 
-After a success upgrade, the WAC update dashboard still shows the previous version.
+After a success upgrade, the WAC update dashboard still shows the previous version. Refresh the browser to fix this issue.
 
 ![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
 
-## Networking field names inconsistent in WAC portal
+## Networking field names are inconsistent in the Windows Admin Center portal
 
-There are inconsistencies in network field names showing up in the host cluster deployment flow and the target cluster deployment flow.
+There are inconsistencies in network field names showing up in the host cluster deployment flow, and the workload cluster deployment flow.
 
 ## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
 
@@ -77,4 +78,3 @@ You will get this error if you have disabled pop-ups. Google Chrome blocks pop-u
 ## Next steps
 - [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
 - [Resolve known issues](./troubleshoot-known-issues.md)
-

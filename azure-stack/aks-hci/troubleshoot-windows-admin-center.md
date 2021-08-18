@@ -67,7 +67,7 @@ When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deploy
       Enter-PSSession -computer localhost -credential (Get-Credential)
    ``` 
 
-For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](/azure-stack/hci/manage/troubleshoot-credssp).
+For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](../hci/manage/troubleshoot-credssp.md).
 
 ## A WinRM error is displayed when creating a new workload cluster
 
