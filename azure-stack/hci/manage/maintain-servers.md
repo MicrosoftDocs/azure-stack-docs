@@ -18,7 +18,7 @@ Taking a server offline for maintenance requires taking portions of storage offl
 You can use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
 
    > [!IMPORTANT]
-   > This topic assumes that you need to power down a physical server down to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](update-cluster.md), which explains how to use Cluster-Aware Updating (CAU) to automatically perform all the steps in this topic while also updating servers and restarting them if necessary.
+   > This article assumes that you need to power down a physical server to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster without taking servers offline, see [Update Azure Stack HCI clusters](update-cluster.md).
 
 ## Take a server offline using Windows Admin Center
 
