@@ -16,11 +16,11 @@ Set or update the configuration settings for the Azure Kubernetes Service host.
 
 ### Set configuration for host
 ```powershell
-Set-AksHciConfig [-imageDir <String>]
-                 [-workingDir <String>]
-                 [-cloudConfigLocation <String>]
+Set-AksHciConfig  -imageDir <String>
+                  -workingDir <String>
+                  -cloudConfigLocation <String>
+                  -vnet <Virtual Network>
                  [-nodeConfigLocation <String>]
-                 [-vnet <Virtual Network>]
                  [-controlPlaneVmSize <VmSize>]
                  [-sshPublicKey <String>]
                  [-macPoolStart <String>]
@@ -42,43 +42,44 @@ Set-AksHciConfig [-imageDir <String>]
 ```
 
 ## Description
-Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the imageDir and cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
+Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the imageDir, workingDir, and cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
 
 ## Examples
 
 ### To deploy on a 2-4 node cluster with DHCP networking
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "Default Switch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254"
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
 
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+c:\clusterstorage\volume1\Config
 ```
 
 ### To deploy with a virtual IP pool
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "Default Switch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" 
 
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -networkSettings $vnet
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 ### To deploy with a proxy server
 ```powershell
 PS C:\> $proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
 
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images  -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySetting
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySetting -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 ## Parameters
 
 ### -imageDir
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. Defaults to `%systemdrive%\AksHciImageStore` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is mandatory.The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: %systemdrive%\AksHciImageStore
 Accept pipeline input: False
@@ -86,14 +87,14 @@ Accept wildcard characters: False
 ```
 
 ### -workingDir
-This is a working directory for the module to use for storing small files. Defaults to `%systemdrive%\akshci` for single node deployments. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `c:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
+This is a working directory for the module to use for storing small files. This parameter is mandatory. The path must point to a shared storage path such as `c:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: %systemdrive%\AksHci
 Accept pipeline input: False
@@ -101,16 +102,30 @@ Accept wildcard characters: False
 ```
 
 ### -cloudConfigLocation
-The location where the cloud agent will store its configuration. Defaults to `%systemdrive%\wssdcloudagent` for single node deployments. The location can be the same as the path of -imageDir above. For multi-node deployments, this parameter must be specified. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
+The location where the cloud agent will store its configuration. The location can be the same as the path of -imageDir above. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: %systemdrive%\wssdcloudagent
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -vnet
+The name of the **AksHciNetworkSetting** object created with `New-AksHciNetworkSetting` command.
+```yaml
+Type: VirtualNetwork
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -126,20 +141,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: %systemdrive%\programdata\wssdagent
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -vnet
-The name of the **AksHciNetworkSetting** object created with `New-AksHciNetworkSetting` command.
-```yaml
-Type: VirtualNetwork
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
