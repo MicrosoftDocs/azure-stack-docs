@@ -62,10 +62,10 @@ productDirectory:
         text: Azure Stack HCI overview
       - url: https://hcicatalog.azurewebsites.net
         text: Azure Stack HCI catalog
-      - url: ./hci/concepts/compare-windows-server.md
-        text: Compare Azure Stack HCI to Windows Server 2019
-      - url: ./hci/concepts/compare-azure-stack-hub.md
-        text: Compare Azure Stack HCI to Azure Stack Hub
+      - url: ./hci/deploy/deployment-quickstart.md
+        text: Create an Azure Stack HCI cluster
+      - url: ./hci/get-started.md
+        text: Use Azure Stack HCI with Windows Admin Center
       - url: ./hci/faq.yml
         text: Azure Stack HCI FAQ
       - url: https://azure.microsoft.com/products/azure-stack/hci/
