@@ -14,7 +14,7 @@ ms.date: 08/19/2021
 This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall, and information on how to set up a proxy server.
 
 ## Connectivity requirements and recommendations
-Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) allow list section of this topic.
+Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) allowlist section of this topic.
 
 ### Azure connectivity requirements
 Azure Stack HCI needs to periodically connect to Azure. Access is limited to only:
@@ -22,7 +22,7 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited to onl
 - Outbound direction
 - Port 443 (HTTPS)
 
-This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allow list.
+This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allowlist.
 
 As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
@@ -85,7 +85,7 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 - ICMPv4 and ICMPv6 (if using the `Test-SRTopology` PowerShell cmdlet)
 
 ### Connectivity recommendations
-If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allow list.
+If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allowlist.
 
 | Description                                              | URL                               | Port    | Direction |
 | :--------------------------------------------------------| :---------------------------------| :------ | :-------- |
@@ -159,7 +159,7 @@ This section shows how to configure Microsoft Defender Firewall to allow IP addr
     $IpList = ($json.values | where Name -Eq "AzureResourceManager").properties.addressPrefixes
     ```
 
-1. Import the list of IP addresses to your external corporate firewall, if you're using an allow list with it.
+1. Import the list of IP addresses to your external corporate firewall, if you're using an allowlist with it.
 
 1. Create a firewall rule for each server in the cluster to allow outbound 443 (HTTPS) traffic to the list of IP address ranges:
 
