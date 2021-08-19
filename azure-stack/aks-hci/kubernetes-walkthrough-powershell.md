@@ -116,7 +116,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 
 ## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. You must specify the `imageDir` and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
