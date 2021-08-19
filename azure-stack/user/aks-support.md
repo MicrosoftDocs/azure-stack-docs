@@ -16,7 +16,7 @@ ms.lastreviewed: 08/15/2021
 
 Azure Kubernetes Service (AKS) for Azure Stack Hub is in public preview. AKS is available for non-production workloads. The goal for the preview is to allow you to test applications on AKS and gather customer feedback. Provide [feedback](https://aka.ms/aks-ash-feedback).
 
-Take advantage of the feedback page above to communicate questions, issues, and suggestions to the AKS on Azure Stack Hub team. When the feedback page can't resolve the issue, you can raise a non-production [support case](../operator/azure-stack-help-and-support-overview.md). The product team monitors the [feedback](https://aka.ms/aks-ash-feedback) posts and reply on a best effort basis.
+Take advantage of the feedback page above to communicate questions, issues, and suggestions to the AKS on Azure Stack Hub team. The product team monitors the [feedback](https://aka.ms/aks-ash-feedback) posts and reply on a best effort basis. When the feedback page can't resolve the issue or if your application test is blocked by an issue, you can raise a non-production [support case](../operator/azure-stack-help-and-support-overview.md). When creating a support case with Microsoft Support team note that the scope of what Support Engineers can do is defined by what is documented in the AKS on Azure Stack Hub [documentation](aks-overview.md).
 
 During the public preview of AKS on Azure Stack Hub, note:
 
