@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Learn the physical network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/05/2021
+ms.date: 08/19/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -121,7 +121,7 @@ Work with your network vendor or network support team to ensure your network swi
 
 Azure Stack HCI supports switchless (direct) connections for East-West traffic for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
 
-:::image type="content" source="media/plan-networking/switchless-connectivity.png" alt-text="switchless connectivity" lightbox="media/plan-networking/switchless-connectivity.png":::
+:::image type="content" source="media/plan-networking/switchless-connectivity.png" alt-text="Diagram showing full-mesh switchless connectivity" lightbox="media/plan-networking/switchless-connectivity.png":::
 
 |Interface pair|Subnet|VLAN|
 |---|---|---|
