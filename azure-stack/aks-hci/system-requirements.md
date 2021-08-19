@@ -46,20 +46,20 @@ To check that you have sufficient permissions, follow the information below:
 - If your role is **User**, you must make sure that non-administrators can register applications.
 - To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Azure Active Directory service to check if you have permission to register an application.
 
-If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator to either assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
+If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
 If you do not have enough permissions to register an application and your admin cannot give you these permissions, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
 ### Azure subscription role and access level
 To check your access level, navigate to your subscription, click **Access control (IAM)** on the left-hand side of the Azure portal, and then click **View my access**.
 
-- If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you are an **Owner**. 
+- If you're using Windows Admin Center to deploy an AKS Host or an AKS workload cluster, you must have an Azure subscription on which you are an **Owner**.
 - If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
- - A user account with the built-in **Owner** role 
- - A service principal with **one of the following** access levels:
-    - the built-in **Kubernetes Cluster - Azure Arc Onboarding** role
-    - the built-in **Contributer** role
-    - the built-in **Owner** role
+   - A user account with the built-in **Owner** role.
+   - A service principal with **one of the following** access levels:
+      - The built-in **Kubernetes Cluster - Azure Arc Onboarding** role
+      - The built-in **Contributer** role
+      - The built-in **Owner** role
 
 If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
 
