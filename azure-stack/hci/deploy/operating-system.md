@@ -95,7 +95,7 @@ Another option is to install the Azure Stack HCI operating system over the netwo
 
 ### Manual deployment
 
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/get-started/sconfig-on-ws2016).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
 
 To manually install the Azure Stack HCI operating system:
 1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
