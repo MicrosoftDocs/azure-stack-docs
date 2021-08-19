@@ -3,7 +3,7 @@ title: Set up a cluster witness
 description: Learn how to set up a cluster witness 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 03/17/2021
+ms.date: 07/14/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -15,6 +15,8 @@ ms.reviewer: JasonGerend
 Setting up a witness resource is highly recommended for all clusters, and should be set up right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
 
 You can either use an SMB file share as a witness or an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. This article covers creating a cloud witness.
+
+Cloud witness uses the HTTPS default port 443 to establish outbound communication with the Azure blob service. Ensure that the HTTPS port is accessible.
 
 ## Before you begin
 

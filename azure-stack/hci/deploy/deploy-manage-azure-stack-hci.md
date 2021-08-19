@@ -38,7 +38,7 @@ Make sure you're running VMM 2019 UR3 or later.
 
 - Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM.
 
-- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](/azure-stack/hci/overview#use-cases-for-azure-stack-hci), [When to use Azure Stack HCI](/azure-stack/hci/concepts/compare-windows-server#when-to-use-azure-stack-hci) and [Roles you can run without virtualizing](/azure-stack/hci/overview#roles-you-can-run-without-virtualizing).
+- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](../overview.md#why-azure-stack-hci) and [When to use Azure Stack HCI](../concepts/compare-windows-server.md#when-to-use-azure-stack-hci).
 
 - Live migration of VM is not supported between any version of Windows Server and Azure Stack HCI clusters.
 
@@ -159,7 +159,7 @@ After the cluster is provisioned and managed in the VMM fabric, you need to set 
 
 ## Step 4: Register Azure Stack HCI cluster with Azure
 
-After creating an Azure Stack HCI cluster, it must be registered with Azure within 30 days of installation per Azure Online Service terms. Follow the steps [here](/azure-stack/hci/deploy/register-with-azure) to register the Azure Stack HCI cluster with Azure.
+After creating an Azure Stack HCI cluster, it must be registered with Azure within 30 days of installation per Azure Online Service terms. Follow the steps [here](./register-with-azure.md) to register the Azure Stack HCI cluster with Azure.
 
 The registration status will reflect in VMM after a successful cluster refresh.
 

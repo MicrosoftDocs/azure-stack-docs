@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/20/2021
+ms.date: 08/09/2021
 ---
 
 # Azure Stack HCI release information
@@ -27,6 +27,14 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.1884   | 2021-08-10            | [KB 5005042](https://support.microsoft.com/topic/august-10-2021-security-update-kb5005042-daf295df-5e7a-4ce8-b595-602a180e6f26) |
+| 17784.1881   | 2021-08-10            | [KB 5005410](https://support.microsoft.com/topic/august-10-2021-servicing-stack-update-kb5005410-44eefac5-b8d3-41ec-b2dc-e80fb237edd9) |
+| 17784.1861   | 2021-07-20            | [KB 5004311](https://support.microsoft.com/topic/july-20-2021-preview-update-kb5004311-ec39e0d2-8bcb-4130-81d6-db90725a4fa5) |
+| 17784.1861   | 2021-07-20            | [KB 5004425](https://support.microsoft.com/topic/july-20-2021-servicing-stack-update-kb5004425-d6e2e991-eaf0-48d1-a564-1c9324a20b3d) |
+| 17784.1827   | 2021-07-13            | [KB 5004235](https://support.microsoft.com/topic/july-13-2021-security-update-kb5004235-91921472-fda2-4608-9211-5d22d04b4b1f) |
+| 17784.1797   | 2021-06-15            | [KB 5003704](https://support.microsoft.com/topic/june-15-2021-preview-update-kb5003704-85aa4f17-c529-435c-ac10-5cf4d43dede0) |
+| 17784.1768   | 2021-06-08            | [KB 5003643](https://support.microsoft.com/topic/june-08-2021-security-update-kb5003643-5a4dcf99-a4fa-4326-b971-6817bf683959) |
+| 17784.1762   | 2021-06-08            | [KB 5004179](https://support.microsoft.com/topic/june-08-2021-servicing-stack-update-kb5004179-54882195-7583-45f3-a9da-520e4f8aa1db) |
 | 17784.1737   | 2021-05-20            | [KB 5003237](https://support.microsoft.com/topic/may-18-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) |
 | 17784.1705   | 2021-05-11            | [KB 5003188](https://support.microsoft.com/topic/may-11-2021-security-update-kb5003188-483561eb-1787-40eb-9e30-c3840b271b27) |
 | 17784.1700   | 2021-05-11            | [KB 5003282](https://support.microsoft.com/topic/may-11-2021-servicing-stack-update-kb5003282-ffff52a9-29c1-483c-b62b-7e3dd09df7b2) |

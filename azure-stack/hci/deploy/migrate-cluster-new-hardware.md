@@ -52,7 +52,7 @@ There are several requirements and things to consider before you begin migration
 
 - Check if Azure Stack HCI supports your version of the VMs to import and update your VMs as needed. See the [VM version support and update](#vm-version-support-and-update) section on how to do this.
 
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases. To backup to Azure, see [Use Azure Backup](../manage/use-azure-backup.md).
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases. To backup to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 - Make a checkpoint of your source cluster VMs and domain controller in case you have to roll back to a prior state. This is not applicable for physical servers.
 

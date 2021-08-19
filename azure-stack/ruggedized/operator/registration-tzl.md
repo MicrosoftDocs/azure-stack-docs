@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/21/2020
+ms.date: 07/21/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
@@ -36,9 +36,6 @@ The registration process consists of the following steps:
 
 If a system is connected to the Azure cloud, all four steps can be executed with a single script. If the system is disconnected, the administrator must perform the steps individually.
 
-> [!NOTE]
-> For MDC, each of the Azure Stack Hub systems must be registered separately. Therefore, the following instructions must be performed three times.
-
 ## Prerequisites
 
 You need the following prerequisites before you register:
@@ -58,7 +55,7 @@ Before registering Azure Stack Hub with Azure, you must have:
     > [!NOTE]  
     > Azure subscriptions are associated to Azure cloud environments (Azure commercial, Azure government etc.) This determines which cloud you will connect to access Marketplace content.
 
-- The username and password for an account that's an owner for the subscription. 
+- The username and password for an account that's an owner for the subscription.
 - The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](../../operator/azure-stack-registration-role.md).
 - Register the Azure Stack Hub resource provider (see the following sections for details).
 
@@ -76,7 +73,7 @@ To successfully register Azure Stack Hub, the PowerShell language mode must be s
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Ensure that the output returns **FullLanguageMode**. If any other language mode is returned, registration needs to be run on another machine, or the language mode needs to be set to **FullLanguageMode** before continuing.
+Ensure that the output returns **FullLanguageMode**. If any other language mode is returned, registration needs to be run on another machine, or the language mode must be set to **FullLanguageMode** before continuing.
 
 ### Install PowerShell for Azure Stack Hub
 
@@ -88,7 +85,7 @@ If the latest version isn't already installed, see [Install PowerShell for Azure
 
 The [Azure Stack Hub tools module](https://www.powershellgallery.com/packages/azs.tools.admin/0.1.0) contains PowerShell modules that support Azure Stack Hub functionality, including registration functionality. During the registration process, you must import and use the **RegisterWithAzure.psm1** submodule to register your Azure Stack Hub instance with Azure.
 
-To install the most recent Azure Stack Hubs tool:
+To install the most recent Azure Stack Hubs tools:
 
 1. Open an elevated PowerShell prompt.
 2. Run the following cmdlet:
@@ -109,9 +106,9 @@ Your Azure Stack Hub deployment may be *connected* or *disconnected*.
 
 When you register Azure Stack Hub with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack Hub subscription with an Azure registration is to use your Azure Stack Hub **Cloud ID**.
 
-To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the Privileged Endpoint, run the following commands, and then record the **CloudID** value:
+To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the privileged endpoint, run the following commands, and then record the **CloudID** value:
 
-```PowerShell
+```powershell
 Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
 Get-AzureStackStampInformation
 ```
@@ -179,11 +176,11 @@ Connected environments can access the internet and Azure. For these environments
       -UsageReportingEnabled: $false
    ```
 
-   The MS Asset tag (`msAssetTag`) is a mandatory for Ruggedized billing model registration and is printed on the product.
+   The MS asset tag (`msAssetTag`) is mandatory for Ruggedized billing model registration, and is printed on the product.
 
-   The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
+   The process takes between 10 and 15 minutes. When the command completes, you see the message **Your environment is now registered and activated using the provided parameters**.
 
-## Registration and activation for systems not connected to the Azure cloud 
+## Registration and activation for systems not connected to the Azure cloud
 
 If you're registering Azure Stack Hub in a disconnected environment (with no internet connectivity), perform the following steps:
 
@@ -307,7 +304,7 @@ You can use the **Region management** tile to verify that the Azure Stack Hub re
 
 4. You can use the Azure portal to view Azure Stack Hub registration resources, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com/) using an account associated with the subscription you used to register Azure Stack Hub. Select **All resources**, enable the **Show hidden types** checkbox, and then select the registration name.
 
-5. If the registration did not succeed, you must re-register by [Change the subscription you use](../../operator/azure-stack-registration.md#change-the-subscription-you-use) to resolve the issue.
+5. If the registration did not succeed, you must re-register. See [Change the subscription you use](../../operator/azure-stack-registration.md#change-the-subscription-you-use) to resolve the issue.
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of Marketplace items in the **Marketplace management** blade, your registration was successful. However, in disconnected environments, you can't see Marketplace items in Marketplace management.
 

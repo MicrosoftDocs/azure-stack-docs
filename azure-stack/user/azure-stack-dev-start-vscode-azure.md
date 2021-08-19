@@ -32,7 +32,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 - [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
     and credentials with access to Azure Stack Hub.
 - An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
-    instructions see [Install PowerShell Az module for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/powershell-install-az-module?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2Ftoc.json%3Fview%3Dazs-2008&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-2008&view=azs-2008).
+    instructions see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&view=azs-2008).
 
 ## Get your credentials
 
@@ -86,7 +86,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 
 6. Restart VS Code to load the extension.
 
-7. Press **Ctrl+Shift+P,** and select **Preferences: Open User Settings (JSON)**.
+7. Press **Ctrl+Shift+P**, and select **Preferences: Open User Settings (JSON)**.
 
 8. In the code editor, update the following JSON snippet with the values for your environment, and then paste snippet into the settings block.
 
@@ -127,3 +127,5 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 ## Next steps
 
 [Set up a development environment in Azure Stack Hub ](azure-stack-dev-start.md)
+
+[Set up Azure Storage in your Azure Stack Hub from Visual Studio Code](dev-start-vscode-storage.md)

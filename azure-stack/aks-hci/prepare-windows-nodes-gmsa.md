@@ -11,7 +11,7 @@ ms.author: v-susbo
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-To use AD Authentication, you can configure a Windows container to run with a group Managed Service Account (gMSA) for containers with a non-domain joined host. A [group Managed Service Account](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without having to know the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
+To use AD Authentication, you can configure a Windows container to run with a group Managed Service Account (gMSA) for containers with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without having to know the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
 
 > [!NOTE]
 > To learn how the Kubernetes community supports using gMSA with Windows containers, see [configuring gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa).
@@ -22,7 +22,7 @@ gMSA for containers with a non-domain joined host uses a portable user identity 
 
 ![Diagram of group Managed Service Accounts version two](media/gmsa/gmsa-v-2.png)
 
-gMSA for containers with a non-domain joined host provides the flexibility of creating containers with gMSA without joining the host node to the domain. Starting in Windows Server 2019, ccg.exe is supported which enables a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. For more information on ccg.exe, see the [ICcgDomainAuthCredentials interface](https://docs.microsoft.com/windows/win32/secauthn/iccgdomainauthcredentials).
+gMSA for containers with a non-domain joined host provides the flexibility of creating containers with gMSA without joining the host node to the domain. Starting in Windows Server 2019, ccg.exe is supported which enables a plug-in mechanism to retrieve gMSA credentials from Active Directory. You can use that identity to start the container. For more information on ccg.exe, see the [ICcgDomainAuthCredentials interface](/windows/win32/api/ccgplugins/nn-ccgplugins-iccgdomainauthcredentials).
 
 ## Comparison of gMSA for containers with a non-domain joined host and a domain joined host
 
@@ -37,17 +37,17 @@ When gMSA was initially introduced, it required the container host to be domain 
 
 To run a Windows container with a group managed service account, you need the following:
 
-- An Active Directory domain with at least one domain controller running Windows Server 2012 or later. There are no forest or domain functional level requirements to use gMSAs, but the gMSA passwords can only be distributed by domain controllers running Windows Server 2012 or later. For more information, see [Active Directory requirements for gMSAs](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req).
+- An Active Directory domain with at least one domain controller running Windows Server 2012 or later. There are no forest or domain functional level requirements to use gMSAs, but the gMSA passwords can only be distributed by domain controllers running Windows Server 2012 or later. For more information, see [Active Directory requirements for gMSAs](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req).
 - Permission to create a gMSA account. To create a gMSA account, you'll need to be a Domain Administrator or use an account that has been given the permission to create msDS-GroupManagedServiceAccount objects.
-- Access to the internet to download the [CredentialSpec](https://aka.ms/credspec) PowerShell module. If you're working in a disconnected environment, you can [save the module](https://docs.microsoft.com/powershell/module/powershellget/save-module?view=powershell-5.1&preserve-view=true) on a computer with internet access and copy it to your development machine or container host.
+- Access to the internet to download the [CredentialSpec](https://aka.ms/credspec) PowerShell module. If you're working in a disconnected environment, you can [save the module](/powershell/module/powershellget/save-module?preserve-view=true&view=powershell-5.1) on a computer with internet access and copy it to your development machine or container host.
 
 ## Prepare the gMSA in the domain controller
 
 Follow the steps below to prepare the gMSA in the domain controller:
  
-1. In the domain controller, [prepare Active Directory](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#one-time-preparation-of-active-directory) and [create the gMSA account](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-group-managed-service-account).
+1. In the domain controller, [prepare Active Directory](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#one-time-preparation-of-active-directory) and [create the gMSA account](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-group-managed-service-account).
 2. Create a domain user account. This user account/password will be saved as a Kubernetes secret and used to retrieve gMSA password.
-3. To create a GMSA account and grant permission to read the password for the gMSA account created in Step 2, run the following [New-ADServiceAccount](https://docs.microsoft.com/powershell/module/activedirectory/new-adserviceaccount?view=windowsserver2019-ps&preserve-view=true) PowerShell command:
+3. To create a GMSA account and grant permission to read the password for the gMSA account created in Step 2, run the following [New-ADServiceAccount](/powershell/module/activedirectory/new-adserviceaccount?preserve-view=true&view=windowsserver2019-ps) PowerShell command:
 
    ```powershell
     New-ADServiceAccount -Name "<gmsa account name>" -DnsHostName "<gmsa account name>.<domain name>.com" -ServicePrincipalNames "host/<gmsa account name>", "host/<gmsa account name>.<domain name>.com" -PrincipalsAllowedToRetrieveManagedPassword <username you created earlier> 
@@ -60,7 +60,7 @@ Follow the steps below to prepare the gMSA in the domain controller:
    
 ## Prepare the gMSA credential spec JSON file 
 
-To prepare the gMSA credential spec JSON file, follow the steps for [creating a credential spec](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec).
+To prepare the gMSA credential spec JSON file, follow the steps for [creating a credential spec](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec).
 
 ## Configure gMSA for Windows pods and containers in the cluster
 

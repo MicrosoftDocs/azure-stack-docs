@@ -4,9 +4,9 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/19/2021
+ms.date: 08/16/2021
 ms.author: sethm
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
 
 # Intent: As an Azure Stack Hub user, I want to know what's new in the latest release so that I can plan my update.
@@ -53,7 +53,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2102"
 ## 2102 build reference
 
-The Azure Stack Hub 2102 update build number is **1.2102.28.82**.
+The latest Azure Stack Hub 2102 update build number is **1.2102.30.97**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
 
 ### Update type
 
@@ -142,7 +142,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.31.126](hotfix-1-2008-31-126.md)
+- [Azure Stack Hub hotfix 1.2008.40.149](hotfix-1-2008-40-150.md)
 
 ### After successfully applying the 2102 update
 
@@ -150,13 +150,13 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2102.
+- [Azure Stack Hub hotfix 1.2102.30.101](hotfix-1-2102-30-101.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
 ## 2008 build reference
 
-The Azure Stack Hub 2008 update build number is **1.2008.13.88**.
+The latest Azure Stack Hub 2008 update build number is **1.2008.40.149**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
 
 ### Update type
 
@@ -235,13 +235,13 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.33.131](hotfix-1-2008-33-131.md)
+- [Azure Stack Hub hotfix 1.2008.40.149](hotfix-1-2008-40-150.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
 ## 2005 build reference
 
-The Azure Stack Hub 2005 update build number is **1.2005.6.53**.
+The latest Azure Stack Hub 2005 update build number is **1.2005.45.131**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-2) section.
 
 ### Update type
 
@@ -318,7 +318,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2005 release of Azure Stack Hub must be applied on the 2002 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2002.66.173](hotfix-1-2002-67-175.md)
+- [Azure Stack Hub hotfix 1.2002.69.179](hotfix-1-2002-69-179.md)
 
 ### After successfully applying the 2005 update
 
@@ -326,7 +326,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.35.112](hotfix-1-2005-35-112.md)
+- [Azure Stack Hub hotfix 1.2005.45.131](hotfix-1-2005-46-133.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

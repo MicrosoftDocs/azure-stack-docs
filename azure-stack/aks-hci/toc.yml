@@ -69,14 +69,26 @@
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
-          - name: Update the Kubernetes version
-            href: upgrade.md
-          - name: Update AKS on Azure Stack HCI
-            href: update-aks-hci-concepts.md
+          - name: Stop an AKS on Azure Stack HCI cluster
+            href: stop-start-cluster.md
+          - name: Upgrade the Kubernetes version
+            items:
+                - name: Use PowerShell
+                  href: upgrade.md
+                - name: Use Windows Admin Center
+                  href: upgrade-kubernetes.md
+          - name: Update the AKS on Azure Stack HCI host
+            items:
+                - name: Use PowerShell
+                  href: update-akshci-host-powershell.md
+                - name: Use Windows Admin Center
+                  href: update-akshci-host-windows-admin-center.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
+          - name: Use node pools
+            href: use-node-pools.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
@@ -112,11 +124,11 @@
           - name: Secure traffic between pods using network policies
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
-            href: https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc
+            href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
-            href: https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json
+            href: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - name: Use on-premises monitoring
             href: monitor-logging.md
           - name: View logs to collect and review data
@@ -140,7 +152,7 @@
           - name: Use Bridge to Kubernetes with Visual Studio Code
             href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - name: Use Bridge to Kubernetes with Visual Studio
-            href: https://docs.microsoft.com/visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+            href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
     - name: Troubleshoot
@@ -158,11 +170,11 @@
           - name: SSH node access
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI
-            href: https://docs.microsoft.com/azure-stack/hci/manage/validate-qos
+            href: ../hci/manage/validate-qos.md
           - name: CredSSP
-            href: https://docs.microsoft.com/azure-stack/hci/manage/troubleshoot-credssp
+            href: ../hci/manage/troubleshoot-credssp.md
           - name: Azure Arc enabled Kubernetes
-            href: https://docs.microsoft.com/azure/azure-arc/kubernetes/troubleshooting
+            href: /azure/azure-arc/kubernetes/troubleshooting
 
 - name: Related
   items:

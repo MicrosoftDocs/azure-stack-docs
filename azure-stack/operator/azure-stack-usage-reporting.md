@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 06/02/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -102,5 +102,5 @@ There's always a delay between the usage data reported by the Azure Stack Hub us
 
 - [Provider usage API](azure-stack-provider-resource-api.md)  
 - [Tenant usage API](azure-stack-tenant-resource-usage-api.md)
-- [Usage FAQ](azure-stack-usage-related-faq.md)
+- [Usage FAQ](azure-stack-usage-related-faq.yml)
 - [Manage usage and billing as a Cloud Solution Provider](azure-stack-add-manage-billing-as-a-csp.md)

@@ -75,9 +75,9 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack Hub](/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
 
-6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
+6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
 
-7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
+7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
 
 ### Node.js prerequisites 
 
@@ -225,7 +225,7 @@ You can use the following samples as a reference for creating solutions with Nod
 
 1. `cd` into your clone of the repository.
 
-2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](/azure/azure-stack/azure-stack-create-service-principals).
+2.  Create an Azure service principal and assign a role to access the subscription. For instructions, see [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md).
 
 3.  Retrieve the following required values:
     - Tenant ID

@@ -14,6 +14,26 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.30.101
+        href: hotfix-1-2102-30-101.md
+      - name: Hotfix 1.2008.40.150
+        href: hotfix-1-2008-40-150.md      
+      - name: Hotfix 1.2005.46.133
+        href: hotfix-1-2005-46-133.md      
+      - name: Hotfix 1.2102.28.89
+        href: hotfix-1-2102-28-89.md              
+      - name: Hotfix 1.2008.40.148
+        href: hotfix-1-2008-40-148.md      
+      - name: Hotfix 1.2005.42.126
+        href: hotfix-1-2005-42-126.md
+      - name: Hotfix 1.2102.28.87
+        href: hotfix-1-2102-28-87.md
+      - name: Hotfix 1.2008.37.139
+        href: hotfix-1-2008-37-139.md
+      - name: Hotfix 1.2005.41.124
+        href: hotfix-1-2005-41-124.md     
+      - name: Hotfix 1.2002.69.179
+        href: hotfix-1-2002-69-179.md
       - name: Hotfix 1.2008.33.131
         href: hotfix-1-2008-33-131.md      
       - name: Hotfix 1.2005.35.112
@@ -107,7 +127,7 @@
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
-      - name: Choose an identity provider 
+      - name: Identity providers and ADFS integration
         href: azure-stack-integrate-identity.md
       - name: Create registration role
         href: azure-stack-registration-role.md
@@ -257,7 +277,7 @@
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
       - name: Give apps access to resources
-        href: Azure-stack-create-service-principals.md
+        href: give-app-access-to-resources.md
       - name: Enable multi-tenancy
         href: enable-multitenancy.md
     - name: Data at rest encryption
@@ -287,7 +307,7 @@
     - name: Offer a virtual machine scale set
       href: azure-stack-compute-add-scalesets.md
     - name: Azure Stack Hub Marketplace FAQ
-      href: azure-stack-windows-server-faq.md
+      href: azure-stack-windows-server-faq.yml
     - name: Offer Linux virtual machines
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
@@ -329,7 +349,7 @@
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
       - name: App Service billing FAQ
-        href: app-service-billing-faq.md
+        href: app-service-billing-faq.yml
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
       - name: Deploy App Service
@@ -352,12 +372,12 @@
           href: app-service-remove.md
       - name: Release notes
         items:
+        - name: 2021 Q1 release notes [June 2021]
+          href: app-service-release-notes-2021-Q1.md
         - name: 2020 Q3 release notes [September 2020]
           href: app-service-release-notes-2020-Q3.md
-        - name: 2020 Q2 release notes [May2020]
+        - name: 2020 Q2 release notes [May 2020]
           href: app-service-release-notes-2020-Q2.md
-        - name: Update 8 release notes [Jan2020]
-          href: azure-stack-app-service-release-notes-update-eight.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -386,6 +406,10 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.0.0 release notes [Jul 2021] 
+          href: event-hubs-rp-release-1-2102-00.md
+        - name: 1.2012.2.0 release notes [May 2021] 
+          href: event-hubs-rp-release-1-2012-20.md          
         - name: 1.2012.1.0 release notes [Feb 2021] 
           href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
@@ -440,10 +464,6 @@
           href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
           href: azure-stack-mysql-resource-provider-11470.md
-        - name: MySQL resource provider 1.1.33.0 release notes
-          href: azure-stack-mysql-resource-provider-11330.md
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
     - name: SQL on Azure Stack Hub
       items:
       - name: Overview
@@ -468,10 +488,6 @@
           href: azure-stack-sql-resource-provider-11930.md   
         - name: SQL resource provider 1.1.47.0 release notes
           href: azure-stack-sql-resource-provider-11470.md   
-        - name: SQL resource provider 1.1.33.0 release notes
-          href: azure-stack-sql-resource-provider-11330.md   
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:
@@ -493,7 +509,7 @@
       - name: Tenant usage API
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
-        href: azure-stack-usage-related-faq.md
+        href: azure-stack-usage-related-faq.yml
       - name: Troubleshooting usage issues
         items:
         - name: Usage connectivity errors

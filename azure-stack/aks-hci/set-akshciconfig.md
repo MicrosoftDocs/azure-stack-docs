@@ -47,24 +47,25 @@ Set the configuration settings for the Azure Kubernetes Service host. If you're 
 ## Examples
 
 ### To deploy on a 2-4 node cluster with DHCP networking
-```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config
-```
 
-### To deploy on a 2-4 node cluster with DHCP networking
 ```powershell
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "Default Switch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254"
+
 PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config
 ```
 
 ### To deploy with a virtual IP pool
 ```powershell
-PS C:\> New-AksHciNetworkSetting -name newNetwork -subnetCidr 192.168.2.0/32 -defaultGateway 192.168.2.1 -subnetVSwitch External -vipPoolStart 192.168.2.20 -vipPoolEnd 192.168.2.80   
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -networkSettings newNetwork
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "Default Switch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
+
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -networkSettings $vnet
 ```
 
 ### To deploy with a proxy server
 ```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images  -workingDir c:\ClusterStorage\Volume2\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -proxyServerHttp "http://proxy.contoso.com:8888" -proxyServerHttps "http://proxy.contoso.com:8888" -proxyServerNoProxy "localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16,10.231.110.0/24,10.68.237.0/24" -proxyServerCredential $credential
+PS C:\> $proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
+
+PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images  -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySetting
 ```
 
 ## Parameters
@@ -366,6 +367,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -insecure
 Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.

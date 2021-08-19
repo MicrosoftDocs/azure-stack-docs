@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Learn the physical network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 08/05/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -21,7 +21,7 @@ This topic discusses physical (fabric) network considerations and requirements f
 
 Microsoft tests Azure Stack HCI to the standards and protocols identified in the **Network switch requirements** section below. While Microsoft does not certify network switches, we do work with vendors to identify devices that support Azure Stack HCI requirements.
 
-These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications and Policies, version 1809**, open the ZIP file, open **WHCP-Components-Peripherals-Specification-1809.pdf**, then see the **Device.Network.Switch.SDDC** section.
+These requirements are also published in [Windows Hardware Compatibility Program Specifications and Policies](/windows-hardware/design/compatibility/whcp-specifications-policies).  Select **Download Specifications, Windows Server 2022**, open the ZIP file, open **Devices and Components WHCP Requirements for Windows Server 2022.pdf**, then see the **Device.Network.Switch.AzureStackHCI** section.
 
 > [!IMPORTANT]
 > While other network switches using technologies and protocols not listed here may work, Microsoft cannot guarantee they will work with Azure Stack HCI and may be unable to assist in troubleshooting issues that occur.
@@ -73,7 +73,7 @@ Configuration of the LLDP Type-Length-Values (TLVs) must be dynamically enabled.
 LLDP allows organizations to define and encode their own custom TLVs. These are called Organizationally Specific TLVs. All Organizationally Specific TLVs start with an LLDP TLV Type value of 127. The following table shows which Organizationally Specific Custom TLV (TLV Type 127) subtypes are required:
 
 |Version required|Organization|TLV Subtype|
-|-----|-----|-----|-----|
+|-----|-----|-----|
 |20H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
 |20H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
 
@@ -120,6 +120,15 @@ Work with your network vendor or network support team to ensure your network swi
 ## Using switchless
 
 Azure Stack HCI supports switchless (direct) connections for East-West traffic for all cluster sizes so long as each node in the cluster has a redundant connection to every node in the cluster. This is called a "full-mesh" connection.
+
+:::image type="content" source="media/plan-networking/switchless-connectivity.png" alt-text="switchless connectivity" lightbox="media/plan-networking/switchless-connectivity.png":::
+
+|Interface pair|Subnet|VLAN|
+|---|---|---|
+|Mgmt host vNIC|customer-specific|customer-specific|
+|SMB01|192.168.71.x/24|711|
+|SMB02|192.168.72.x/24|712|
+|SMB03|192.168.73.x/24|713|
 
 > [!NOTE]
 >The benefits of switchless deployments diminish with clusters larger than three-nodes due to the number of network adapters required.

@@ -12,7 +12,7 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 06/15/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
@@ -22,7 +22,7 @@ ms.lastreviewed: 3/19/2018
 
 Use this article as a guide to develop a plan for protecting virtual machines (VMs) that your users deploy on Azure Stack Hub.
 
-To protect against data loss and unplanned downtime, implement a data protection and disaster recovery plan for VM-based applications on Azure Stack Hub. The protection plan implemented will depend on business requirements and design of the application. This plan should follow the framework established by your organization\'s comprehensive business continuity and disaster recovery (BC/DR) strategy. For a high level overview of the BC/DR considerations for Azure Stack Hub, see [Azure Stack: Considerations for business continuity and disaster recovery](https://azure.microsoft.com/resources/azure-stack-considerations-for-business-continuity-and-disaster-recovery/).
+To protect against data loss and unplanned downtime, implement a data protection and disaster recovery plan for VM-based applications on Azure Stack Hub. The protection plan implemented will depend on business requirements and design of the application. This plan should follow the framework established by your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. For a high level overview of the BC/DR considerations for Azure Stack Hub, see [Azure Stack: Considerations for business continuity and disaster recovery](https://azure.microsoft.com/resources/azure-stack-considerations-for-business-continuity-and-disaster-recovery/).
 
 ## Application recovery objectives
 
@@ -36,7 +36,7 @@ Determine the amount of downtime and data loss your organization can tolerate fo
 
 Conduct an assessment to define the RTO and RPO for each application.
 
-Another important metric to consider is **Mean Time to Recover** (MTTR), which is the average time that it takes to restore the application after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system will cause an unacceptable business disruption because it won\'t be possible to restore the system within the defined RTO.
+Another important metric to consider is **Mean Time to Recover** (MTTR), which is the average time that it takes to restore the application after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system will cause an unacceptable business disruption because it won't be possible to restore the system within the defined RTO.
 
 ## Protection options for IaaS VMs
 
@@ -80,9 +80,9 @@ Important considerations for your Azure Stack deployment: -->
 
 This article provided general guidelines for protecting user VMs deployed on Azure Stack. For information about using Azure services to protect user VMs, refer to:
 
-- [Considerations for business continuity and disaster recovery](https://azure.microsoft.com/resources/azure-stack-considerations-for-business-continuity-and-disaster-recovery/)
+- [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
 
 ### Partner products
 
-- [Azure Stack Datacenter Integration Partner Ecosystem datasheet](https://azure.microsoft.com/resources/azure-stack-datacenter-integration-partners/)
+- [Azure Stack Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)
 - To learn more about the partner products that offer VM protection on Azure Stack, see [Protecting apps and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/).
