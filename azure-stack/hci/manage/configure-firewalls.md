@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 08/19/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
