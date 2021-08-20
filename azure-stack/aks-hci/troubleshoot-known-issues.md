@@ -106,7 +106,7 @@ This issue could have the following root causes:
 The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
 
 **Reason two**:
-The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The SQL bug will be addressed in a subsequent release. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
+The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
 
 1. Run the following command to edit the pod settings:
 
