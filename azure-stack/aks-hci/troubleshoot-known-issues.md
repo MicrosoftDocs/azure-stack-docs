@@ -98,7 +98,7 @@ After performing these steps, the container image pull should be unblocked.
 
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment ‘AksHci Billing Operator’ to be ready_
 
-When running the [Update-AksHci](update-akshci) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment ‘AksHci Billing Operator’ to be ready_.
+When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment ‘AksHci Billing Operator’ to be ready_.
 
 This issue could have the following root causes:
 
