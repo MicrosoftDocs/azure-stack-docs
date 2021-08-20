@@ -4,10 +4,10 @@ description: Deploy an Node.js app to Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 7/27/2021
+ms.date: 8/20/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 7/27/2021
+ms.lastreviewed: 8/20/2021
 ms.custom: contperf-fy22q1
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -19,7 +19,7 @@ ms.custom: contperf-fy22q1
 
 # Deploy a Node.js web app to a VM in Azure Stack Hub
 
-You can create a virtual machine (VM) to host a Node.js web app in Azure Stack Hub. In this article, you set up a server, configure the server to host your Node.js web app, and then deploy the app to Azure Stack Hub.
+You can create a virtual machine (VM) to host a Node.js web app in Azure Stack Hub. In this article, set up a server, configure the server to host your Node.js web app, and then deploy the app to Azure Stack Hub.
 
 If you are looking for general information about global Azure, see [Azure for JavaScript & Node.js developers](/azure/developer/javascript/). This article is for using Azure Stack Hub, an on-premises version of Azure.
 
@@ -35,7 +35,7 @@ If you are looking for general information about global Azure, see [Azure for Ja
     | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information. |
     | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface on your machine.   |
-    | 1337 | Custom | The port that's used by Node.js. For a production server, you route your traffic through 80 and 443. |
+    | 3000 | Custom | The port that's used by the Node.js Express framework. For a production server, you route your traffic through 80 and 443. |
 
 ## Install Node
 
@@ -57,34 +57,30 @@ If you are looking for general information about global Azure, see [Azure for Ja
        node --version
     ```
 
-4. [Install Git](https://git-scm.com), a widely distributed version-control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
+## Scaffold a new application with the Express Generator
 
-    ```bash  
-       sudo apt-get -y install git
-    ```
+[Express](https://www.expressjs.com/) is a popular framework for building and running Node.js applications. You can scaffold (create) a new Express application using the [Express Generator tool](https://expressjs.com/en/starter/generator.html). The Express Generator is shipped as an **npm** module and can be run directly (without installation) by using the npm command-line tool `npx`.
 
-## Deploy and run the app
+```bash  
+ npx express-generator myExpressApp --view pug --git
+```
 
-1. Set up your Git repository on the VM. While you're still connected to your VM in your SSH session, enter the following commands:
+The ` --view pug --git` parameters tell the generator to use the pug template engine (formerly known as `jade`) and to create a `.gitignore` file.
 
-    ```bash  
-       git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
-    
-       cd nodejs-docs-hello-world
-        npm start
-    ```
+To install all of the application's dependencies, go to the new folder and run npm install.
 
-2. Start the app. While you're still connected to your VM in your SSH session, enter the following command:
+```bash  
+cd myExpressApp
+npm install
+```
 
-    ```bash  
-       sudo node app.js
-    ```
+Run the application. From the terminal, start the application using the `npm start` command to start the server.
 
-3. Go to your new server. You should see your running web application.
+Go to your new server in a Web browser. You should see your running web application. You can find the URL for your Linux VM in the Azure Stack Hub user portal labeled **DNS name**.
 
-    ```HTTP  
-       http://yourhostname.cloudapp.net:1337
-    ```
+```HTTP  
+http://yourhostname.contoso.com:3000
+```
 
 ## Next steps
 
