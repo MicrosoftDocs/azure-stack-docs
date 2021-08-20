@@ -96,6 +96,42 @@ To resolve this issue, run the following steps:
 
 After performing these steps, the container image pull should be unblocked.
 
+## Using Remote Desktop to connect to the management cluster produces a connection error
+
+When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running the [Get-AksHciCluster](get-akshcicluster.md) command, an error appears and says the connection failed because the host failed to respond.
+
+The reason for the connection failure is because some PowerShell commands that use `kubeconfig-mgmt` fail with an error similar to the following one:
+
+```
+Unable to connect to the server: d ial tcp 172.168.10.0:6443, where 172.168.10.0 is the IP of the control plane.
+```
+
+The _kube-vip_ pod can go down for two reasons:
+
+1. The memory pressure in the system can slow down `etcd`, which ends up affecting _kube-vip_.
+2. The _kube-apiserver_ is not available.
+
+To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
+
+## When running `kubect get pods`, pods were stuck in a _Terminating_ state
+
+When deploying AKS on Azure Stack HCI, pods in the same node stuck in _Terminating_ state when running `kubect get pods`. The machine was rejecting SSH connections because the node was probably experiencing a lot of memory demand.
+
+This issue is because the Windows nodes were over-provisioned, and there was no reserve for core components. To avoid this situation, add the resource limits and resource request for CPU and memory to the pod specification to ensure the nodes aren't over-provisioned. Windows nodes don't support eviction that's based on resource limits, so you should estimate how much the containers will use and then set the CPU and memory amounts.
+
+## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
+
+When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
+
+Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. The problem is that the VHD is in the shared storage, which the evicted node does not have access to.
+
+To resolve this issue, remove a physical node from the cluster and then follows the steps below:
+
+1. Run `Remove-AksHciNode` to de-register the node from CloudAgent.
+2. Perform routine maintenance, such as re-imaging the machine.
+3. Add the node back to cluster.
+4. Run `Add-AksHciNode` to register the node with CloudAgent.
+
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
 
