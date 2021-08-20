@@ -102,11 +102,11 @@ When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update
 
 This issue could have the following root causes:
 
-**Reason one**:
-The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
+* **Reason one**:
+   The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
 
-**Reason two**:
-The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
+* **Reason two**:
+   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
 
 1. Run the following command to edit the pod settings:
 
@@ -141,8 +141,8 @@ Unable to connect to the server: d ial tcp 172.168.10.0:6443, where 172.168.10.0
 
 The _kube-vip_ pod can go down for two reasons:
 
-1. The memory pressure in the system can slow down `etcd`, which ends up affecting _kube-vip_.
-2. The _kube-apiserver_ is not available.
+* The memory pressure in the system can slow down `etcd`, which ends up affecting _kube-vip_.
+* The _kube-apiserver_ is not available.
 
 To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
 
