@@ -144,7 +144,7 @@ You can verify using the following PowerShell cmdlet:
 Get-PhysicalDisk | Select Model, Manufacturer, FirmwareVersion
 ```
 
-## Settings
+## Health Service settings
 Modify Health Service settings to tune the aggressiveness of faults or actions, turn certain behaviors on or off, and more.
 See [Modify Health Service settings](health-service-settings.md).
 
