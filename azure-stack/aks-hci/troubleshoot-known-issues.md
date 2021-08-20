@@ -96,6 +96,39 @@ To resolve this issue, run the following steps:
 
 After performing these steps, the container image pull should be unblocked.
 
+## When running Update-AksHci, the update process was stuck at _Waiting for deployment ‘AksHci Billing Operator’ to be ready_
+
+When running the [Update-AksHci](update-akshci) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment ‘AksHci Billing Operator’ to be ready_.
+
+This bug could have the following root causes:
+
+**Reason one**:
+The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
+
+**Reason two**:
+The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing an upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
+
+1. Run the following command:
+
+   ```
+   kubectl edit pvc mssql-data-claim --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
+   ```
+
+2. When Notepad or another editor opens with a YAML file, edit the line for storage from 100Mi to 5Gi:
+
+   ```
+   spec:
+     resources:
+       requests:
+         **storage: 5Gi**
+   ```
+
+3. Check the status of the billing deployment using the following command:
+
+   ```powershell
+   kubectl get deployments/billing-manager-deployment --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
+   ```
+
 ## Using Remote Desktop to connect to the management cluster produces a connection error
 
 When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running the [Get-AksHciCluster](get-akshcicluster.md) command, an error appears and says the connection failed because the host failed to respond.
