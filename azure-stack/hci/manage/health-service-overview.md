@@ -6,7 +6,7 @@ ms.author: cosdar
 ms.topic: article
 ms.assetid: 5bc71e71-920e-454f-8195-afebd2a23725
 author: cosmosdarwin
-ms.date: 07/28/2021
+ms.date: 08/13/2021
 ---
 # Monitor clusters with the Health Service
 
