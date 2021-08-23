@@ -96,38 +96,41 @@ To resolve this issue, run the following steps:
 
 After performing these steps, the container image pull should be unblocked.
 
-## When running Update-AksHci, the update process was stuck at _Waiting for deployment ‘AksHci Billing Operator’ to be ready_
+## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
-When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment ‘AksHci Billing Operator’ to be ready_.
+When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
 
 This issue could have the following root causes:
 
 * **Reason one**:
-   The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
+   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
 
 * **Reason two**:
+   The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
+
+* **Reason three**:
    The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
 
-1. Run the following command to edit the pod settings:
+   1. Run the following command to edit the pod settings:
 
-   ```
-   kubectl edit pvc mssql-data-claim --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
-   ```
+      ```
+      kubectl edit pvc mssql-data-claim --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
+      ```
 
-2. When Notepad or another editor opens with a YAML file, edit the line for storage from 100Mi to 5Gi:
+   2. When Notepad or another editor opens with a YAML file, edit the line for storage from 100Mi to 5Gi:
 
-   ```
-   spec:
-     resources:
-       requests:
-         **storage: 5Gi**
-   ```
+      ```
+      spec:
+        resources:
+          requests:
+            **storage: 5Gi**
+       ```
 
-3. Check the status of the billing deployment using the following command:
+   3. Check the status of the billing deployment using the following command:
 
-   ```
-   kubectl get deployments/billing-manager-deployment --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
-   ```
+      ```
+      kubectl get deployments/billing-manager-deployment --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
+      ```
 
 ## Using Remote Desktop to connect to the management cluster produces a connection error
 
@@ -154,7 +157,7 @@ This issue occurs because the Windows nodes are over-provisioned, and there's no
 
 ## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
 
-When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
+When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
 
 Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. This issue occurs because the VHD is in shared storage, and the evicted node does not have access to it.
 
