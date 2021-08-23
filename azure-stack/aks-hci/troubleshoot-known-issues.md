@@ -3,7 +3,7 @@ title: Resolve known issues on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to resolve known issues in an Azure Kubernetes Service (AKS) on Azure Stack HCI deployment.
 author: EkeleAsonye
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 08/20/2021
 ms.author: v-susbo
 ---
 
@@ -95,6 +95,78 @@ To resolve this issue, run the following steps:
    ```
 
 After performing these steps, the container image pull should be unblocked.
+
+## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
+
+When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
+
+This issue could have the following root causes:
+
+* **Reason one**:
+   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
+
+* **Reason two**:
+   The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
+
+* **Reason three**:
+   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
+
+   1. Run the following command to edit the pod settings:
+
+      ```
+      kubectl edit pvc mssql-data-claim --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
+      ```
+
+   2. When Notepad or another editor opens with a YAML file, edit the line for storage from 100Mi to 5Gi:
+
+      ```
+      spec:
+        resources:
+          requests:
+            **storage: 5Gi**
+       ```
+
+   3. Check the status of the billing deployment using the following command:
+
+      ```
+      kubectl get deployments/billing-manager-deployment --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
+      ```
+
+## Using Remote Desktop to connect to the management cluster produces a connection error
+
+When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running the [Get-AksHciCluster](get-akshcicluster.md) command, an error appears and says the connection failed because the host failed to respond.
+
+The reason for the connection failure is because some PowerShell commands that use `kubeconfig-mgmt` fail with an error similar to the following one:
+
+```
+Unable to connect to the server: d ial tcp 172.168.10.0:6443, where 172.168.10.0 is the IP of the control plane.
+```
+
+The _kube-vip_ pod can go down for two reasons:
+
+* The memory pressure in the system can slow down `etcd`, which ends up affecting _kube-vip_.
+* The _kube-apiserver_ is not available.
+
+To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
+
+## When running **kubect get pods**, pods were stuck in a _Terminating_ state
+
+When deploying AKS on Azure Stack HCI, and then running `kubect get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node was likely experiencing a lot of memory demand.
+
+This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. To avoid this situation, add the resource limits and resource request for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then set the CPU and memory amounts.
+
+## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
+
+When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
+
+Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. This issue occurs because the VHD is in shared storage, and the evicted node does not have access to it.
+
+To resolve this issue, remove a physical node from the cluster and then follow the steps below:
+
+1. Run `Remove-AksHciNode` to de-register the node from CloudAgent.
+2. Perform routine maintenance, such as re-imaging the machine.
+3. Add the node back to the cluster.
+4. Run `Add-AksHciNode` to register the node with CloudAgent.
 
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
 To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
