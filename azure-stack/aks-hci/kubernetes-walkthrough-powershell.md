@@ -29,37 +29,29 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
 
-1. **Close all open PowerShell windows**, open a new PowerShell window as an administrator, and run the following command:
+**Close all open PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
 
-   ```powershell
-   Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-   Install-PackageProvider -Name NuGet -Force 
-   Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
-   ```
+```powershell
+Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
+Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
+Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
+Install-Module -Name AksHci -Repository PSGallery
+```
 
-2. Close all existing PowerShell windows and open a fresh PowerShell window as an administrator and run the following commands to install the Azure PowerShell modules:
- 
-   ```powershell
-   Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-   Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-   Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-   Install-Module -Name AksHci -Repository PSGallery
-   ```
+```powershell
+Import-Module Az.Accounts
+Import-Module Az.Resources
+Import-Module AzureAD
+Import-Module AksHci
+```
 
-   ```powershell
-   Import-Module Az.Accounts
-   Import-Module Az.Resources
-   Import-Module AzureAD
-   Import-Module AksHci
-   ```
-
-3. To check if you have the latest version of the PowerShell module, close all PowerShell windows, reopen a new administrative session, and run the following command: 
+**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
   
-   ```powershell
-   Get-Command -Module AksHci
-   ```
-
+```powershell
+Get-Command -Module AksHci
+```
 To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
+
 
 ### Register the resource provider to your subscription
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI registration. To do that, run the following PowerShell commands.
@@ -124,12 +116,12 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 
 ## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. You must specify the `imageDir` and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 > [!NOTE]
@@ -153,7 +145,7 @@ Install-AksHci
 
 ## Step 6: Create a Kubernetes cluster
 
-After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command. This example command creates a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of one. To read more information about node pools, visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
+After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, please visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType Linux
@@ -166,7 +158,9 @@ To get a list of your deployed Kubernetes clusters, run the following [Get-AksHc
 ```powershell
 Get-AksHciCluster
 ```
-```output
+
+**Output**
+```
 ProvisioningState     : provisioned
 KubernetesVersion     : v1.20.7
 NodePools             : linuxnodepool
@@ -177,7 +171,7 @@ Name                  : mycluster
 ```
 
 > [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, use the command `Get-AksHciNodePool` with the specified cluster name. 
+> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
 
 To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](get-akshcinodepool.md) PowerShell command.
 
