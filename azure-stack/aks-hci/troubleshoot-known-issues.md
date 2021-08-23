@@ -103,7 +103,7 @@ When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update
 This issue could have the following root causes:
 
 * **Reason one**:
-   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run `Sync-AksHciBilling`. You should see the billing operation continue within the next 20-30 minutes. 
+   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
 
 * **Reason two**:
    The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
@@ -157,7 +157,7 @@ This issue occurs because the Windows nodes are over-provisioned, and there's no
 
 ## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
 
-When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
+When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
 
 Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. This issue occurs because the VHD is in shared storage, and the evicted node does not have access to it.
 
