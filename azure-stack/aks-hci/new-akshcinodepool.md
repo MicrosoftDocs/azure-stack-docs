@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -name
-The name of your node pool.
+The name of your node pool. The node pool name must not be the same as another existing node pool.
 
 ```yaml
 Type: System.String
