@@ -109,7 +109,7 @@ Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
 - [Manage resources and resource groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
 - [Manage storage account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): This sample uses **2020-09-01-hybrid** profile, which targets the latest API versions supported by Azure Stack Hub.
+- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)
 
 ## Manage virtual machine sample
 
@@ -277,9 +277,9 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
 
 Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
-- [Manage resources and resource groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
-- [Manage storage account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): This sample uses **2019-03-01-hybrid** profile, which targets the latest API versions supported by Azure Stack Hub.
+- [Manage resources and resource groups](https://github.com/Azure-Samples/Hybrid-ResourceManager-Python-Manage-Resources/releases/tag/2019_03_01_hybrid)
+- [Manage storage account](https://github.com/Azure-Samples/Hybrid-Storage-Python-Manage-Storage-Account/releases/tag/2019_03_01_hybrid)
+- [Manage virtual machines](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM/releases/tag/2019_03_01_hybrid): This sample uses **2019-03-01-hybrid** profile.
 
 ## Manage virtual machine sample
 
@@ -300,7 +300,7 @@ Use the following Python code sample to perform common management tasks for virt
 - List VMs
 - Delete a VM
 
-To review the code that performs these operations, see the **run_example()** function in the Python script **example.py** in the GitHub repo [Hybrid-Compute-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM).
+To review the code that performs these operations, see the **run_example()** function in the Python script **example.py** in the GitHub repo [Hybrid-Compute-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM/releases/tag/2019_03_01_hybrid).
 
 Each operation is clearly labeled with a comment and a print function. The examples are not necessarily in the order shown in this list.
 
@@ -323,7 +323,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
 4. Clone the repository:
 
     ```bash
-    git clone https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
+    git clone --branch 2019_03_01_hybrid https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM.git
     ```
 
 5. Install the dependencies using **pip**:
