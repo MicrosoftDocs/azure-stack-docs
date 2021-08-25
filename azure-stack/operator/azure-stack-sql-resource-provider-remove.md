@@ -15,8 +15,9 @@ ms.lastreviewed: 11/20/2019
 
 ---
 
-
 # Remove the SQL resource provider
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Before you remove the SQL resource provider, you must remove all the provider dependencies. You'll also need a copy of the deployment package that was used to install the resource provider.
 

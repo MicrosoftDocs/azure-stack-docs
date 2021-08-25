@@ -13,8 +13,9 @@ ms.lastreviewed: 12/07/2020
 
 ---
 
-
 # Deploy the MySQL resource provider on Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adapter version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adapter version >= 1.1.93.0).
 
@@ -28,7 +29,7 @@ There are several prerequisites that need to be in place before you can deploy t
 - You'll need a computer and account that can access:
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
    - the [privileged endpoint](azure-stack-privileged-endpoint.md).
-   - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
+   - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK before version 2107).
    - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (Azure AD) as your identity provider.
 
 - If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
@@ -41,6 +42,7 @@ There are several prerequisites that need to be in place before you can deploy t
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
+  |2108|MySQL RP version 2.0.x.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2102, 2008, 2005|[MySQL RP version 1.1.93.1](https://aka.ms/azshmysqlrp11931)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|Windows Server 2016 Datacenter - Server Core|
@@ -228,6 +230,10 @@ When the resource provider installation script finishes, refresh your browser to
 ## Important configuration for Azure AD
 
 If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed MySQL RP has outbound internet connectivity. 
+
+::: moniker range=">=azs-2107"
+If there is a need to get the IP of the VM that has installed MySQL RP (i.e. add the IP to your firewall allow list), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the MySQL RP subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.
+::: moniker-end
 
 ## Next steps
 

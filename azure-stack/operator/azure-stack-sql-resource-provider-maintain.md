@@ -14,8 +14,9 @@ ms.lastreviewed: 01/11/2020
 
 ---
 
-
 # SQL resource provider maintenance operations
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 The SQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principal of Least Privilege, use [PowerShell Just Enough Administration (JEA)](/powershell/scripting/learn/remoting/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this action.
 
@@ -36,6 +37,8 @@ To modify the settings, select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt;
 ![Update the SQL admin password](./media/azure-stack-sql-rp-deploy/sql-rp-update-password.png)
 
 ## Secrets rotation
+
+::: moniker range="< azs-2107"
 
 *These instructions only apply to Azure Stack Hub Integrated Systems.*
 
@@ -121,6 +124,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 |KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
 |     |     |     |
 
+::: moniker-end
 ## Update the VM operating system
 
 Use one of the following methods to update the VM operating system.

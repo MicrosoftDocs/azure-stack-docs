@@ -16,6 +16,8 @@ ms.lastreviewed: 12/07/2020
 
 # Add hosting servers for the SQL resource provider
 
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
+
 You can create SQL Server database hosting servers on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the SQL resource provider can connect to the instance.
 
 > [!NOTE]

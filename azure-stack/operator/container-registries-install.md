@@ -15,7 +15,7 @@ ms.lastreviewed: 08/20/2021
 
 # Install Azure Container Registry on Azure Stack Hub
 
-You can install the Azure Container Registry (ACR) on Azure Stack Hub and make it available to your users so that they can host containers in your environment. To install the ACR, you will need to generate and validate a certificate and install the ACR. You can install through the Azure Stack Hub administrative portal or the by using PowerShell.
+You can install the Azure Container Registry (ACR) on Azure Stack Hub and make it available to your users so that they can host containers in your environment. To install the ACR, you will need to generate and validate a certificate and install the ACR. You can install through the Azure Stack Hub administrative portal.
 
 ## Prerequisites
 
@@ -73,7 +73,7 @@ Validate the ACR certificate adheres to Azure Stack Hub requirements.
 
 You can use these steps to install the ACR service in Azure Stack Hub.
 
-### [Portal](#tab/portal)
+### Portal
 
 You can use the Azure Stack Hub administration portal to import the certificate and install the service.
 
@@ -89,40 +89,7 @@ You can use the Azure Stack Hub administration portal to import the certificate 
 
 5. Once the install completes in the Azure Stack Hub administration portal, close and reopen the **Container Registries** blade.
 
-### [PowerShell](#tab/ps)
 
-You can use the following PowerShell cmdlets to import the certificate and install the service. You will need to install the most recent Az AzureStack module for Azure Stack Hub. You can find the instructions in [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
-
-1. Install ContainerRegistry Admin cmdlet:
-
-    ```powershell  
-    Install-Package Azs.ContainerRegistry.Admin
-    ```
-2. Connect to Az Account:
-
-    ```powershell  
-    $ArmEndpoint = "<AdminResourceManagerEndpoint>"
-    Add-AzEnvironment -ARMEndpoint $ArmEndpoint -Name "AzureStackAdmin"
-    Connect-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $tenantID -Credential $credential
-    ```
-3. Define parameters for Container Registry Setup:
-
-    ```powershell  
-    $password = ConvertTo-SecureString "<certificate password>" -AsPlainText -Force
-    $pfx_cert_path = "<certificate pfx path>"
-    Start Container Registry Service Setup:
-    Start-AzsContainerRegistrySetup -Password $password -SslCertInputFile $pfx_cert_path | ConvertTo-Json
-    ```
-
-4. Check Container Registry Setup Progress:
-
-    ```powershell  
-    (Get-AzsContainerRegistrySetupStatus).ToJsonString()
-    ```
-
-For more information about the PowerShell cmdlets to use with the Container Registries, see [PowerShell cmdlets for Azure Container Registry on Azure Stack Hub](container-registries-powershell.md).
-    
----
 
 Once the installation is complete, you can review or update your capacity in quota in the Azure Stack Hub administrative portal.
 

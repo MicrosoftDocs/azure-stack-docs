@@ -15,8 +15,9 @@ ms.lastreviewed: 11/11/2019
 
 ---
 
-
 # Update the SQL resource provider
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 > [!IMPORTANT]
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.

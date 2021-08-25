@@ -13,8 +13,9 @@ ms.lastreviewed: 11/20/2
 
 ---
 
-
 # Remove the MySQL resource provider in Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Before you remove the MySQL resource provider, you must remove all the provider dependencies. You'll also need a copy of the deployment package that was used to install the resource provider.
 
