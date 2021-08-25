@@ -191,9 +191,10 @@ Complete the following steps to rotate external secrets:
     $CertPassword = ConvertTo-SecureString "<Cert_Password>" -AsPlainText -Force
     $CertShareCreds = Get-Credential
     $CertSharePath = "<Network_Path_Of_CertShare>"
-    Invoke-Command -Session $PEPSession -ScriptBlock {
-        Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
-    }
+    Invoke-Command -Session $PEPsession -ScriptBlock {
+        param($certSharePath, $certPassword, $certShareCreds )
+        Start-SecretRotation -PfxFilesPath $certSharePath -PathAccessCredential $certShareCreds -CertificatePassword $certPassword
+    } -ArgumentList ($certSharePath, $certPassword, $certShareCreds)
     Remove-PSSession -Session $PEPSession
     ```
 
@@ -388,9 +389,10 @@ $CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
 $CertShareCreds = Get-Credential
 $CertSharePath = "<NetworkPathOfCertShare>"
 # Run Secret Rotation
-Invoke-Command -Session $PEPSession -ScriptBlock {  
-    Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCreds -CertificatePassword $using:CertPassword
-}
+Invoke-Command -Session $PEPsession -ScriptBlock {
+    param($certSharePath, $certPassword, $certShareCreds )
+    Start-SecretRotation -PfxFilesPath $certSharePath -PathAccessCredential $certShareCreds -CertificatePassword $certPassword
+} -ArgumentList ($certSharePath, $certPassword, $certShareCreds)
 Remove-PSSession -Session $PEPSession
 ```
 
