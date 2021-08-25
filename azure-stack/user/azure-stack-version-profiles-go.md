@@ -297,6 +297,8 @@ Some of the code samples available for Azure Stack Hub using the Go SDK are:
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Golang-Samples/releases/tag/2020-09-01-hybrid)
 - [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane/releases/tag/2020-09-01-hybrid)
 - [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks/releases/tag/2020-09-01-hybrid)
+
+::: moniker-end
 ::: moniker range="<=azs-2008"
 ## Go and version profiles
 
@@ -578,7 +580,6 @@ Some of the code samples available for Azure Stack Hub using the Go SDK are:
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/2018-03-01-hybrid)
 - [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane/tree/2018-03-01-hybrid)
 - [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks/tree/2019-03-01-hybrid)
-
 ::: moniker-end
 ## Next steps
 
