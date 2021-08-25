@@ -25,7 +25,7 @@ You can manage your container registry in the Azure Stack Hub administrative por
 2. Type `Container Registry` in the search.
 3. Select **Configure**.
     ![Manage your container registry capacity.](media/container-registries-manage/azure-stack-hub-container-registries-configure.png)
-4. You can increase or decrease the capacity from the default of 500 GB. Add your number, and then select **Configure**.
+4. You can increase or decrease the capacity from the default of 2000 GB. Add your number, and then select **Configure**.
 
 ## View storage use
 
