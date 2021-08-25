@@ -3,10 +3,10 @@ title: Using Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/15/2021
+ms.date: 08/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/15/2021
+ms.lastreviewed: 08/25/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -160,10 +160,10 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     ```
 
 2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
-    1.  To create an SPN using ADD, follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
-    2.  To create an SPN using ADFS, follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
+    1.  To create an service principle (SPN) using Azure Active Directory (Azure AD), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
+    2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
-3.  Create an AKS cluster of 3 agent nodes. Provide values to the parameters below, examples are provided. Run:
+3.  Create an AKS cluster of three agent nodes. Provide values to the parameters below, examples are provided. Run:
 
     ```azurecli
     az aks create \
@@ -310,7 +310,7 @@ After the deploying a cluster and connect to it to verify it was deployed as exp
 
 ## Scale cluster
 
-Another cluster management task is scaling a cluster. You can scale a cluster anytime after it has been created by using the az aks scale command. To scale the cluster from the initial 3 nodes to 4, run:
+Another cluster management task is scaling a cluster. You can scale a cluster anytime after it has been created by using the az aks scale command. To scale the cluster from the initial three nodes to 4, run:
 
 ```azurecli  
     az aks scale --resource-group myResourceGroup --name myakscluster --node-count 4

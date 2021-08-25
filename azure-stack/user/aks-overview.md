@@ -3,10 +3,10 @@ title: Azure Kubernetes Service on Azure Stack Hub overview for users
 description: Learn about Azure Kubernetes Service (ASK) on Azure Stack Hub overview for users.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/15/2021
+ms.date: 08/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/15/2021
+ms.lastreviewed: 08/25/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -42,7 +42,7 @@ The following tasks fall on the **Azure Stack Hub Operator**:
 
 The following tasks correspond to the user, that is, the **Tenant AKS Cluster Administrator**:
 
-1. Monitor the Kubernetes cluster agents' health and act on any event and associated remediation. Note that even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
+1. Monitor the Kubernetes cluster agents' health and act on any event and associated remediation. Even though the masters are created within the tenant subscription, the service will monitor their state and will perform remediation steps as needed. However, there may be support scenarios in which the Tenant Cluster Administrator may be needed to bring back the cluster to a healthy state. 
 2. Use the Azure Kubernetes Service facilities to manage the lifecycle of the cluster, that is creation, upgrade, and scale operations.
 3. Maintenance operations: deploy applications, backup and restore, troubleshooting, collection of logs, and monitoring apps.
 4. For Details on the tenant tasks see [ Using Azure Kubernetes Service on Azure Stack Hub with the CLI](aks-how-to-use-cli.md)
@@ -107,7 +107,7 @@ In both scenarios, Azure Stack Hub is under the control of the customer. Also, c
    * They need to partner with tenants and Microsoft Support when solving support incidents (ex: collecting stamp logs). See the Operator article for more details.
  - For Tenants:
    * They need to collaborate with the stamp Operator to request AKS base Images or AKS Service not available in the stamp.
-   * They also need to collaborate with the Operator and Microsoft Support during Support Cases. One task would be the collection of AKS cluster related logs using the information provided [here](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack).
+   * They also need to collaborate with the Operator and Microsoft Support during Support Cases. One task would be the collection of AKS cluster-related logs using the information provided [here](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis#troubleshooting-aks-cluster-issues-on-azure-stack).
 
 ### Connect to Azure Stack Hub using the CLI or PowerShell
 
@@ -158,7 +158,7 @@ Given the differences between the two platforms outlined above, the user should 
 
 ### Service principals can be provided by Azure AD or AD FS
 
-Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since ASH can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to ADD, therefore AD FS is used. How ASH tenants create SPNs is documented here:
+Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to Azure Active Directory (Azure AD), therefore Active Directory Federated Services (AD FS) is used. How Azure Stack Hub tenants create SPNs is documented here:
  - [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-connected#overview)
  - [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 

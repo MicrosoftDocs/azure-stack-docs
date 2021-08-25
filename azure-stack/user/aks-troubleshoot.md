@@ -2,8 +2,8 @@
 title: Troubleshoot the Azure Kubernetes Service on Azure Stack Hub 
 description: Learn how to collect logs and troubleshoot your AKS cluster on Azure Stack Hub.
 author: mattbriggs
-ms.topic: article
-ms.date: 08/15/2021
+ms.topic: how-to
+ms.date: 08/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 08/15/2021
@@ -16,13 +16,11 @@ ms.lastreviewed: 08/15/2021
 
 ## Overview of troubleshooting
 
-Troubleshooting AKS clusters in most respects is no different than troubleshooting most Kubernetes clusters. There is information in the web, for example [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
-
-Another resource that is available to AKS users on ASH is **Diagnostic settings** available in the Azure Stack Hub user [portal **AKS cluster** blade](aks-how-to-use-portal.md).
+Troubleshooting Azure Kubernetes Service (AKS) clusters in most respects are no different than troubleshooting most Kubernetes clusters. You can find information on the Kubernetes site, [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/). Another resource you may find useful in Azure Stack Hub is **Diagnostic settings** available in the Azure Stack Hub user [portal **AKS cluster** blade](aks-how-to-use-portal.md).
 
 ![Diagnostic Settings to collect Kubernetes logs](media/aks-troubleshoot/diagnostic-settings.png)
 
-From this blade you can collect information on:
+From this blade, you can collect information on:
 
 * kube-apiserver
 * kube-audit
@@ -33,17 +31,17 @@ From this blade you can collect information on:
 
 ## Collect logs from cluster nodes
 
-In order to troubleshoot some AKS cluster issues, you may need to collect logs directly from the cluster nodes. Typically, without this script, you would need to connect to each node in the cluster, locate, and download the logs manually.
+In order to troubleshoot some AKS cluster issues, you may need to collect logs directly from the cluster nodes. You can use the script in the GitHub repository **[msazurestackworkloads/azurestack-gallery](https://github.com/msazurestackworkloads/azurestack-gallery)** to collect logs from cluster nodes. Without these scripts, you would need to connect to each node in the cluster, locate, and download the logs manually.
 
-The scripts in this directory aim to simplify the collection of relevant logs from your Kubernetes cluster. The script will automatically create a snapshot of the cluster, and connect to each node to collect logs. In addition, the script can, optionally, upload the collected logs to a storage account.
+The scripts aim to simplify the collection of relevant logs from your Kubernetes cluster. The script will automatically create a snapshot of the cluster, and connect to each node to collect logs. In addition, the script can, optionally, upload the collected logs to a storage account.
 
 This tool is designed for the Microsoft support team to collect comprehensive cluster logs.
 
-### Requirements
+### Script requirements
 
 - Make sure the Network Security Group (NSG) for master nodes has exposed SSH port 22.
 - A machine that has access to your Kubernetes cluster, or the same machine you used to deploy your cluster. For Windows machine, install [Git Bash](https://gitforwindows.org/) in order to run bash scripts.
-- `Azure CLI` installed on the machine where the script will be run. Make sure that you can log in to your Azure Stack environment using `Azure CLI` from the machine. You can find instructions at [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2) on how to learn to install and configure Azure CLI to manage your Azure Stack cloud.
+- Azure CLI installed on the machine where the script will be run. Make sure that you can log in to your Azure Stack environment using `Azure CLI` from the machine. You can find instructions at [Install Azure CLI on Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2) on how to learn to install and configure Azure CLI to manage your Azure Stack cloud.
 - Switch to the subscription where the Kubernetes cluster is deployed, by using `az account set --subscription <Subscription ID>`.
 - Download the latest [release](https://github.com/msazurestackworkloads/azurestack-gallery/releases) of the script into your machine and extract the scripts.
 

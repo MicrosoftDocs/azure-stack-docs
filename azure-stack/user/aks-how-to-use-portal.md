@@ -3,10 +3,10 @@ title: Using Azure Kubernetes Service on Azure Stack Hub in the portal
 description: Learn how to use Azure Kubernetes Service (ASK) on Azure Stack Hub in the portal.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/15/2021
+ms.date: 08/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/15/2021
+ms.lastreviewed: 08/25/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -18,7 +18,7 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 
 ## Discover available AKS clusters
 
-1.  In the Azure Stack tenant portal find the "All Services" blade and select "Kubernetes services"
+1.  In the Azure Stack tenant portal, find the "All Services" blade and select "Kubernetes services"
 
     ![This is the Azure Stack tenant portal.](media/aks-how-to-use/azure-stack-tenant-portal.png)
 
@@ -32,7 +32,7 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 
 ## Create cluster
 
-1.  In the Kubernetes services blade select **Add**.
+1.  In the Kubernetes services blade, select **Add**.
 
     ![You can select select add in the portal to add a cluster.](media/aks-how-to-use/select-add-cluster.png)
 
