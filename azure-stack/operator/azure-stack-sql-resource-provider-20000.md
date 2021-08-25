@@ -29,7 +29,7 @@ It is required that you apply the minimum supported Azure Stack Hub update to yo
 > |     |     |
 
 > [!IMPORTANT]
-> If there is an existing version of SQL resource provider running in your system, make sure to update it to version 1.1.93.1, before upgrading to this lattest version. 
+> If there is an existing version of SQL resource provider running in your system, make sure to update it to version 1.1.93.x, before upgrading to this lattest version. 
 
 ## New features and fixes
 
