@@ -3,10 +3,10 @@ title: Known issues for the Azure Kubernetes Service on Azure Stack Hub
 description: Learn about working with Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/15/2021
+ms.date: 08/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/15/2021
+ms.lastreviewed: 08/25/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -28,7 +28,7 @@ Not all Azure AKS features, APIs, and Azure CLI commands are supported by AKS on
 
 ### Can I use Azure AD or AD FS integrated with my AKS clusters?
 
-There is no support for Azure Active Director (Azure AD) and Active Directory Federated Services (AD FS) Kubernetes Auth and RBAC integration in the public preview 
+There is no support for Azure Active Director (Azure AD) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration in the public preview 
 
 ### Can I use AKS cluster Autoscaler in AKS on Azure Stack Hub?
 
@@ -50,13 +50,13 @@ No. The service principal (SPN) is not automatically created as in Azure (no MSI
 
  - The AKS service is limited to 50 nodes per subscription in the public preview.
 
- - For the public preview no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added.
+ - For the public preview, no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added.
 
  - For the public preview, there is no rotation of the AKS cluster SPN credential assigned at creation time.
 
  - In the Azure Stack Hub Administrative portal, the cloud operator will see that multiple AKS Base images are available from Azure Marketplace, not all of them will work with the particular version of Azure Stack Hub AKS, refer to the Azure Stack Hub release notes for the specific version of the image that works with AKS.
 
- - A user subscription with AKS clusters associated to it could be deleted by the user leaving behind the AKS clusters in an orphaned state. This will cause the Azure Stack Hub Administrative portal to display a sad cloud in the AKS blade. The only way to fix it is by contacting Microsoft Support.
+ - A user subscription with AKS clusters associated to it could be deleted by the user leaving behind the AKS clusters in an orphaned state. As a result, the Azure Stack Hub Administrative portal to display a sad cloud in the AKS blade. The only way to fix it is by contacting Microsoft Support.
 
   - If a you try to create a cluster through the Azure Stack Hub user portal using a subscription without the AKS enabled by the cloud operator, then the portal will let display the following error: `containers namespace not found error`.
 

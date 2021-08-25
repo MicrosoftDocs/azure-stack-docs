@@ -3,10 +3,10 @@ title: Azure Kubernetes Service on Azure Stack Hub support
 description: Learn about support options for Azure Kubernetes Service (ASK) on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/15/2021
+ms.date: 08/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/15/2021
+ms.lastreviewed: 08/25/2021
 
 # Intent: As an Azure Stack Hub operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -56,11 +56,13 @@ As participants in the public preview, you may also need to:
  - Manual steps that act on individual infrastructure-as-a-service (IaaS) elements such as masters and nodes might be required.
  - In an extreme situation, a support case might be required to break glass and operate on the service components directly.
 
-### Azure AKS Version
- AKS on Hub is the actual Azure AKS service code, therefore the AKS API is supported on Azure Stack Hub, it is maintained through Azure Stack Hub updates. However, you should expect that the version of the API on Azure will always be newer than the version available in Azure Stack Hub. This is due to the fact that Azure can update their service with a higher frequency than Azure Stack Hub. For the public preview the supported API is version "2020-11-01".
+### Azure AKS version
 
-### Kubernetes Version
-As is the case for the AKS API, Kubernetes versions are maintained through Azure Stack Hub updates. The specific versions of ASH updates provide support for specific versions of Kubernetes, this is done through upgrading the stamp and also downloading the new version of the AKS base images (Linux and Windows). Kubernetes versions on ASH will often be lower than the Kubernetes versions avilable on Azure. For the private preview the highest Kubernetes version supported is 1.20.7.
+ AKS on Azure Stack Hub is the actual AKS service code, therefore the AKS API is supported on Azure Stack Hub, it is maintained through Azure Stack Hub updates. However, you should expect that the version of the API on Azure will always be newer than the version available in Azure Stack Hub. This is because Azure can update their service with a higher frequency than Azure Stack Hub. For the public preview, the supported API is version "2020-11-01".
+
+### Kubernetes version
+
+As is the case for the AKS API, Kubernetes versions are maintained through Azure Stack Hub updates. The specific versions of Azure Stack Hub updates provide support for specific versions of Kubernetes, this is done through upgrading the stamp and also downloading the new version of the AKS base images (Linux and Windows). Kubernetes versions on Azure Stack Hub will often be lower than the Kubernetes versions available on Azure. For the private preview, the highest Kubernetes version supported is 1.20.7.
 
 ## Next steps
 
