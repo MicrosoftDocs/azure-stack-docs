@@ -454,6 +454,8 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
+        - name: MySQL resource provider 2.0.00.0 release notes
+          href: azure-stack-mysql-resource-provider-20000.md
         - name: MySQL resource provider 1.1.93.0 release notes
           href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
