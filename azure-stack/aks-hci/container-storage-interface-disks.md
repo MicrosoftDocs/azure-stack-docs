@@ -31,11 +31,11 @@ To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concep
 The default storage class is suitable for most common scenarios. However, in some cases, you may want to create your own storage class that stores PVs at a particular location mapped to a specific performance tier.
 
 > [!NOTE]
-> If you have Linux workloads (pods) that specify a [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) `fsGroup` parameter, you must create and use a custom storage class using one of the methods below:
->  - For version 1.20 and above, create a custom storage class that includes [fsGroupPolicy](https://kubernetes-csi.github.io/docs/support-fsgroup.html).
->  - For version 1.19, you should include the parameter `fsType: ext4`.
+> If you have Linux workloads (pods) that specify a [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) `fsGroup` parameter, you must create and use a custom storage class using one of the following methods:
+>  - For version 1.20 and above, create a custom storage class that includes [fsGroupPolicy:File](https://kubernetes-csi.github.io/docs/support-fsgroup.html).
+>  - For version 1.19, include the parameter `fsType: ext4`.
 
-The default storage class stores PVs at the `-imageDir` location specified during AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that’s backed by high-performing SSDs/NVMe or an cost-optimized volume backed by HDDs, for example.
+The default storage class stores PVs at the `-imageDir` location specified during the AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that’s backed by high-performing SSDs/NVMe or an cost-optimized volume backed by HDDs.
 
 Creating a custom storage class is a two-step process:
 
