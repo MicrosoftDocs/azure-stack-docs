@@ -108,7 +108,7 @@ If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server
 Putting the server's disks in maintenance mode gives Storage Spaces Direct an opportunity to gracefully flush and commit data to ensure that the server shutdown does not affect application state. As soon as a disk goes into maintenance mode, it will no longer allow writes.
 
    > [!NOTE]
-   > If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, you can skip this step because the disks will automatically be put into maintenance mode when the server is paused and drained.
+   > If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, you can skip this step because the disks are automatically put into maintenance mode when the server is paused and drained.
 
 If the server is running Azure Stack HCI 20H2 or Windows Server 2019, run the following cmdlet as administrator:
 
@@ -133,7 +133,12 @@ You can now safely shut the server down or restart it by using the `Stop-Compute
 
 ### Take the disks out of maintenance mode
 
-If the server is running Azure Stack HCI 20H2 or Windows Server 2019, run the following cmdlet as administrator to disable storage maintenance mode on the disks:
+Before resuming the server, you must first disable storage maintenance mode on the disks.
+
+   > [!NOTE]
+   > If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, you can skip this step because the disks will automatically be taken out of maintenance mode when the server is resumed.
+
+If the server is running Azure Stack HCI 20H2 or Windows Server 2019, run the following cmdlet as administrator to disable storage maintenance mode:
 
 ```PowerShell
 Get-StorageScaleUnit -FriendlyName "Server1" | Disable-StorageMaintenanceMode
@@ -144,8 +149,6 @@ If the server is running Windows Server 2016, use the following syntax instead:
 ```PowerShell
 Get-StorageFaultDomain -Type StorageScaleUnit | Where-Object {$_.FriendlyName -eq "Server1"} | Disable-StorageMaintenanceMode
 ```
-
-If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, you can skip this step because the disks will automatically be taken out of maintenance mode when the server is resumed.
 
 ### Resume the server
 
