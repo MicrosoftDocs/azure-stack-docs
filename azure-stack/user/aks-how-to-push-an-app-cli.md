@@ -78,11 +78,11 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 
 At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below. Otherwise, you can skip to the section title [Upgrade the cluster](aks-how-to-use-cli.md#upgrade-cluster).
 
-## Docker registry secret for accessing local acr
+### Docker registry secret for accessing local ACR
 
 If you are deploying application images from a local ACR, you will need to store a secret in order for the Kubernetes cluster to have access to pull the images from the registry. To do this you will need to provide a service principal ID (SPN) and Secret, add the SPN as a contributor to the source registry and create the Kubernetes secret. You will also need to update your YAML file to reference the secret.
 
-## Add the SPN to the ACR
+### Add the SPN to the ACR
 
 Add the SPN as a contributor to the ACR. 
 
@@ -104,7 +104,7 @@ az role assignment create --assignee $SERVICE_PRINCIPAL_ID --scope $ACR_REGISTRY
 
 ```
 
-## Create the secret in Kubernetes
+### Create the secret in Kubernetes
 
 Use the following command to add the secret to the Kubernetes cluster. Be sure to add the values for your system in the code snippets.
 
