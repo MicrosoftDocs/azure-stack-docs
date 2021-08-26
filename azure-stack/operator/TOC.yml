@@ -382,6 +382,8 @@
         href: container-registries-install.md
       - name: Manage Azure Container Registry
         href: container-registries-manage.md
+    - name: Azure Kubernetes Service
+      href: aks-add-on.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
