@@ -47,7 +47,7 @@ If there is a corporate firewall between the operating system and the internet, 
 - https\://dl.delivery.mp.microsoft.com
 
 ### Network port requirements
-Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall and router rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
 When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the following ports:
 
@@ -80,7 +80,6 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 
 #### Storage Replica ports (stretched cluster)
 - TCP port 445
-- TCP 5445 (if using iWarp RDMA)
 - TCP port 5985
 - ICMPv4 and ICMPv6 (if using the `Test-SRTopology` PowerShell cmdlet)
 
