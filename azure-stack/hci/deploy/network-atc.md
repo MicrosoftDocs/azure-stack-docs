@@ -53,7 +53,7 @@ Any combination of the intent types can be specified for any specific single int
 
 - *Cluster mode*: Intents are applied to all cluster nodes. This is the recommended deployment mode and is required when a server is a member of a failover cluster.
 
-**Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults. To review the Network ATC defaults, please review [Default Values](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/network-atc#default-values).
+**Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults. To review the Network ATC defaults, please review [Default Values](https://docs.microsoft.com/azure-stack/hci/deploy/network-atc#default-values).
 
 Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed.
 
