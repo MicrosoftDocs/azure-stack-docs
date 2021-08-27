@@ -535,8 +535,7 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 
 |Policy|Use|Default Priority|Default Bandwidth Reservation|
 |--|--|--|--|
-|Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps
-1% if the adapter(s) are > 10 Gbps|
+|Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps; 1% if the adapter(s) are > 10 Gbps|
 |SMB_Direct|RDMA Storage Traffic|3|50%|
 |Default|All other traffic types|0|Remainder|
 
