@@ -30,7 +30,7 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 > [!IMPORTANT]
 > Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
-## Common Prerequisites
+## Prerequisites
 
 [!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
 
@@ -62,8 +62,8 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
     |     |     |
 
 - Prepare the certificate. (_For integrated systems installations only_.) 
-   - You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). The Subject Alternative Name (SAN) must adhere to the following naming pattern: CN=*.dbadapter.<region>.<fqdn>, with password protected.
-   [![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)](media/azure-stack-sql-rp-deploy/0-cert-requirement#lightbox)
+   - You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). The Subject Alternative Name (SAN) must adhere to the following naming pattern: CN=*.dbadapter.\<region\>.\<fqdn\>, with password protected.
+   ![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)
    - When deploying SQL Server resource provider V1, place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
    - When deploying SQL Server resource provider V2, prepare the certificate for the following installation steps.
 
@@ -125,7 +125,7 @@ If you are upgrading from a V1 version, refer to the doc [Update the SQL Server 
 1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
 
 2. Once SQL resource provider and other required software have been downloaded, **Marketplace Management** shows the "SQL Server resource provider" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". 
-   ![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/1-before-install-marketplace.png)
+   ![Marketplace management before install the RP](media/azure-stack-sql-rp-deploy/1-before-install-marketplace.png)
  
 3. Select the row you wish to install. The SQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
    ![Marketplace management begin install](media/azure-stack-sql-rp-deploy/2-blue-banner-for-start-install.png)
