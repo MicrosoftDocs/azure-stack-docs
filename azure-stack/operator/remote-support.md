@@ -71,7 +71,7 @@ Use **ExpireInDay** parameter to set the duration of the session. In the example
 
 You can set **ExpireInDay** a minimum duration of 15 minutes and a maximum of 14 days.
 
-To set **ExpireInDay** for for increments less than one day, use decimals. For example, if want to enable remote support for 12 hours use `-ExpireInDay 0.5`.
+To set **ExpireInDay** for increments less than one day, use decimals. For example, if you want to enable remote support for 12 hours use `-ExpireInDay 0.5`.
 
 If duration is not defined the remote session will expire in eight hours by default.
 
@@ -123,7 +123,7 @@ The following sections list the allowed cmdlets that Microsoft support can execu
 
 | Name | Description |
 |------|-------------|
-|`Clear-AzsSupportParentWorkingDirectory` | Clears stale Azs.Support working directory contents across all infrastructure nodes. |
+|`Clear-AzsSupportParentWorkingDirectory` | Clears stale *Azs.Support* working directory contents across all infrastructure nodes. |
 |`Clear-AzsSupportWorkingDirectory` | Clears the contents of the current working directory. |
 |`Copy-AzsSupportFiles` | Copies files from the remote computer to the local working directory file path location (Get-AzsSupportWorkingDirectory). |
 |`Debug-AzsSupportStorageSubsystem` | Runs Debug-StorageSubSystem against Storage Sub System *Clustered Windows Storage on \**. |
