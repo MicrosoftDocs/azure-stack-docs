@@ -18,11 +18,11 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 
 ## Discover available AKS clusters
 
-1.  In the Azure Stack tenant portal, find the "All Services" blade and select "Kubernetes services"
+1.  In the Azure Stack tenant portal, find the **All Services** blade and select **Kubernetes services**.
 
     ![This is the Azure Stack tenant portal.](media/aks-how-to-use/azure-stack-tenant-portal.png)
 
-1.  Verify that all clusters that you have created appear in the "Kubernetes service" blade:
+1.  Verify that all clusters that you have created appear in the **Kubernetes service** blade:
 
     ![Verify the clusters that you have created in the portal.](media/aks-how-to-use/all-clusters-that-you-have-created.png)
 
@@ -35,6 +35,19 @@ You can use the Azure Stack Hub user portal in the Azure Kubernetes Service (AKS
 1.  In the Kubernetes services blade, select **Add**.
 
     ![You can select select add in the portal to add a cluster.](media/aks-how-to-use/select-add-cluster.png)
+
+1.  Follow the blades that guide you in the process of creating an AKS cluster. The first blade will collect the basic cluster properties:
+
+    ![Create an AKS cluster.](media/aks-how-to-use/create-an-aks-cluster.png.png)
+
+1.  In the **Node pools** blade you can see that only a single node pool is allowed in Azure Stack Hub:
+
+    ![Open the **Node pools** blade.](media/aks-how-to-use/open-the-node-pool-settings.png)
+
+1.  In the **Authentication** blade provide the service principal (SPN). The SPN won't be automatically generated as in Azure. Select the **Configure service principal** link and add the service principal. You can find [the instructions](../operator/give-app-access-to-resources.md) to create one.
+
+    ![Add the service principle.](media/aks-how-to-use/add-service-principal-to-aks.png)
+
 
 2.  Follow the blades that guide you in the process of creating an AKS cluster.
 
