@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 06/09/2021
@@ -185,7 +185,6 @@ The following sections list the allowed cmdlets that Microsoft support can execu
 |`Invoke-AzsSupportHandle` | Invokes `Handle.exe` on the specified *ComputerName*. Defaults to listing all open handles. |
 |`Invoke-AzsSupportWmiTracing` | Enables `netsh` ETL tracing for a series of WMI providers on a specified computer name. Also supports a series of procdumps of winmgt and WmiPrvSE if specified. |
 |`Save-AzsSupportObjectToFile` | Save an object to a file in a consistent format creating a file that contains the current time as a timestamp in the file name. |
-|`Send-AzsSupportDiagnosticLogs` | Enables engineers to quickly transfer files off stamp. |
 |`Send-AzureStackDiagnosticLog` | Sends Azure Stack diagnostic logs to Microsoft. |
 |`Start-AzsSupportClusterPerfAnalysis` | Analyzes key performance data such as cluster performance history and exports performance data. |
 |`Start-AzsSupportRingManager` | Provides a simplified management experience for working with Service Fabric clusters. |
