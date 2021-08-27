@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, version 21H2 Preview
 
-This article guides you through the key functions of using Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI nodes. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
+This article guides you through the key functions of using Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
 
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
@@ -31,7 +31,7 @@ Network ATC can help:
 
 Here is some new terminology:
 
-**Intent**: An intent is a definition of how you intend to use the physical adapters in your system. An intent has a handle (friendly name), identifies one or more physical adapters, and includes one or more intent types.
+**Intent**: An intent is a definition of how you intend to use the physical adapters in your system. An intent has a friendly name, identifies one or more physical adapters, and includes one or more intent types.
 
 An individual physical adapter can only be included in one intent. By default, an adapter does not have an intent (there is no special status or property given to adapters that don’t have an intent). You can have multiple intents; the number of intents you have will be limited by the number of adapters in your system.
 
@@ -43,39 +43,37 @@ An individual physical adapter can only be included in one intent. By default, a
 
 Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
 
-- Management: Can be defined in a maximum of one intent
+- Management: Can be assigned in a maximum of one intent
 - Compute: Unlimited
-- Storage: Can be defined in a maximum of one intent
+- Storage: Can be assigned in a maximum of one intent
 
-**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have a network intent that is standalone and another that is clustered on the same host system. Clustered mode is the focus on this preview.
+**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have a network intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
 
-- *Standalone mode*: Intents are expressed and managed independently for each host. This mode allows you to test an intent before implementing it across a cluster. Once a host is clustered, any standalone intents are ignored. Standalone intents can only be copied to a cluster from a node that is not a member of that cluster or from one cluster to another cluster.
+- *Standalone mode*: Intents are expressed and managed independently for each host. This mode allows you to test an intent before implementing it across a cluster. Once a host is clustered, any standalone intents are ignored. Standalone intents can be copied to a cluster from a node that is not a member of that cluster, or from one cluster to another cluster.
 
 - *Cluster mode*: Intents are applied to all cluster nodes. This is the recommended deployment mode and is required when a server is a member of a failover cluster.
 
-**Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to deviate from these defaults. For example, you may choose to modify the VLANs used for storage adapters.
+**Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults. To review the Network ATC defaults, please review [Default Values](https://docs.microsoft.com/en-us/azure-stack/hci/deploy/network-atc#default-values).
 
-You can only modify some properties when you initially create an intent. You can't modify the feature itself after you've deployed it. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed. Existing behavior is no modified.
+Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed.
 
 ## Requirements and best practices
 
 The following are requirements and best practices for using Network ATC in Azure Stack HCI:
 
-- Supported on Azure Stack HCI, version 21H2 Preview release or later.
+- Supported on Azure Stack HCI, version 21H2 or later.
 
-- All servers in the cluster must be running Azure Stack HCI, version 21H2 Preview.
+- All servers in the cluster must be running Azure Stack HCI, version 21H2.
 
 - Must use two or more physical host systems that are Azure Stack HCI certified.
 
-- Adapters managed by Network ATC must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
-- Each symmetric physical adapter must use the same name on each cluster node.
+- Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
-- Remove any prior intent on the adapter.
-
-- Must install the following Windows features on each node:
+- Cluster nodes must install the following Azure Stack HCI features on each node:
 
   - Network ATC
   - Data Center Bridging (DCB)
@@ -93,11 +91,11 @@ Install-WindowsFeature -Name NetworkATC, 'Data-Center-Bridging', 'Failover-Clust
 ```
 
 > [!NOTE]
-> Network ATC does not require a system reboot if the other Windows features have already been installed.
+> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
 
-## Using Windows PowerShell
+## Common Network ATC commands
 
-There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Be sure and always run PowerShell as an administrator.
+There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
 Typically, only a few of these cmdlets are needed. Here is a brief overview of the cmdlets before you start:
 
@@ -105,11 +103,11 @@ Typically, only a few of these cmdlets are needed. Here is a brief overview of t
 |--|--|
 |Add-NetIntent|Creates and submits an intent|
 |Set-NetIntent|Modifies an existing intent|
-|Get-NetIntent|Gets a list of intent requests from the target|
-|Get-NetIntentStatus|Gets the status of intent requests from the target|
+|Get-NetIntent|Gets a list of intents|
+|Get-NetIntentStatus|Gets the status of intents|
 |New-NetIntentOverrides|Specifies overrides to the default configuration|
-|Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.
-|Set-NetIntentRetryState|Stop trying to implement the intent after three attempts (`Get-NetIntentStatus` = 'Failed'). This command instructs to try again after you've resolved the issue.|
+|Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
+|Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
 
 ## Example network intents
 
