@@ -69,7 +69,7 @@ Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInDays 1
 
 Use **ExpireInDay** parameter to set the duration of the session. In the example, consent expires in one day. After one day, remote access cannot be established.
 
-You can set **ExpireInDay** a minimum duration of 15 minutes and a maximum of 14 days
+You can set **ExpireInDay** a minimum duration of 15 minutes and a maximum of 14 days.
 
 To set **ExpireInDay** for for increments less than one day, use decimals. For example, if want to enable remote support for 12 hours use `-ExpireInDay 0.5`.
 
