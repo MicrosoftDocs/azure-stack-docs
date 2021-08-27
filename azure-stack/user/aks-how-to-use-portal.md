@@ -38,7 +38,7 @@ You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AK
 
 1.  Follow the steps to create an AKS cluster. The first step collects the basic cluster properties:
 
-    ![Create an AKS cluster.](media/aks-how-to-use/create-an-aks-cluster.png.png)
+    ![Create an AKS cluster.](media/aks-how-to-use/create-an-aks-cluster.png)
 
 1.  In **Node pools** you can see that only a single node pool is allowed in Azure Stack Hub:
 
