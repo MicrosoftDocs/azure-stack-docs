@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 06/21/2021
+ms.date: 08/27/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -131,6 +131,7 @@ Invoke-Command ($ServerList) {
     Install-WindowsFeature -Name $Using:Featurelist -IncludeAllSubFeature -IncludeManagementTools
 }
 ```
+
 Next, restart all the servers:
 
 ```powershell
@@ -138,155 +139,19 @@ $ServerList = "Server1", "Server2", "Server3", "Server4"
 Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 ```
 
-## Step 2: Configure networking
+## Step 2: Configure host networking
 
-This step configures various networking elements, such as virtual switches and network adapters, in your environment. RDMA (both iWARP and RoCE) network adapters are supported.
+We no longer recommend that you configure host networking manually.
 
-For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+If you are an [Azure Stack HCI preview channel](../manage/preview-channel.md) customer, see [Host networking with Network ATC](network-atc.md) to deploy host networking. 
 
-### Disable unused network adapters
-
-You must disable any disconnected networks and adapters not used for management, storage or for workload traffic such as VMs. This includes network adapters used for headless management such as baseboard management controllers (BMCs).
-
-Here is how to identify unused networks:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-NetAdapter -CimSession $ServerList | Where-Object Status -eq Disconnected
-```
-And here is how to disable them:
-
-```powershell
-Get-NetAdapter -CimSession $ServerList | Where-Object Status -eq Disconnected | Disable-NetAdapter -Confirm:$False
-```
-
-### Create virtual switches
-
-A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might also be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
-
-All network adapters must be identical for teaming NICs together.
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-```
-
-And to create the virtual switch:
-
-```powershell
-Invoke-Command -ComputerName $ServerList -ScriptBlock {New-VMSwitch -Name $using:vSwitchName -EnableEmbeddedTeaming $TRUE -EnableIov $true -NetAdapterName (Get-NetAdapter | Where-Object Status -eq Up ).InterfaceAlias}
-```
-
-Now, validate that the switch has been successfully created:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-VMSwitch -CimSession $ServerList | Select-Object Name, IOVEnabled, IOVS*
-Get-VMSwitchTeam -CimSession $ServerList
-```
-
-### Assign virtual network adapters
-
-Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the following example. You must configure at least one network adapter for cluster management.
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-Rename-VMNetworkAdapter -ManagementOS -Name $vSwitchName -NewName Management -ComputerName $ServerList
-Add-VMNetworkAdapter -ManagementOS -Name SMB01 -SwitchName $vSwitchName -CimSession $ServerList
-Add-VMNetworkAdapter -ManagementOS -Name SMB02 -SwitchName $vSwitchName -Cimsession $ServerList
-```
-
-And verify they have been successfully added and assigned:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-VMNetworkAdapter -CimSession $ServerList -ManagementOS
-```
-
-### Configure IP addresses and VLANs
-
-You can configure either one or two subnets. Two subnets are preferred if you want to prevent overloading of the switch interconnect. For example, SMB storage traffic will stay on a subnet that's dedicated to one physical switch.
-
-> [!NOTE]
-> We recommend using separate subnets in switchless deployments. For more information on switchless connections, see [Using switchless](../concepts/physical-network-requirements.md#using-switchless).
-
-> [!NOTE]
-> While configuring IP addresses, the connection may be interrupted for a few minutes as you might be connected to one of the virtual adapters while obtaining a new IP address.
-
-#### Obtain network interface information
-
-Before you can set IP addresses for the network interface cards, there is some information you need first, such as Interface Index (`ifIndex`), `Interface Alias`, and `Address Family`. Write these down for each server node as you will need them later.
-
-Run the following:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-NetIPInterface -CimSession $ServerList
-```
-
-#### Configure one subnet
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$StorNet="172.16.1."
-$StorVLAN=1
-$IP=1 #starting IP Address
-
-#Configure IP Addresses
-foreach ($Server in $ServerList){
-    New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
-    $IP++
-    New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
-    $IP++
-}
-
-#Configure VLANs
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN -Access -ManagementOS -CimSession $ServerList
-#Restart each host vNIC adapter so that the Vlan is active.
-Restart-NetAdapter "vEthernet (SMB01)" -CimSession $ServerList
-Restart-NetAdapter "vEthernet (SMB02)" -CimSession $ServerList
-```
-
-#### Configure two subnets
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$StorNet1="172.16.1."
-$StorNet2="172.16.2."
-$StorVLAN1=1
-$StorVLAN2=2
-$IP=1 #starting IP Address
-
-#Configure IP Addresses
-foreach ($Server in $ServerList){
-    New-NetIPAddress -IPAddress ($StorNet1+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
-    New-NetIPAddress -IPAddress ($StorNet2+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
-    $IP++
-}
-
-#Configure VLANs
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN1 -Access -ManagementOS -CimSession $ServerList
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN2 -Access -ManagementOS -CimSession $ServerList
-#Restart each host vNIC adapter so that the Vlan is active.
-Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
-Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
-```
-
-#### Verify VLAN IDs and subnets
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-#verify ip config
-Get-NetIPAddress -CimSession $ServerList -InterfaceAlias vEthernet* -AddressFamily IPv4 | Sort-Object -Property PSComputername | ft pscomputername,interfacealias,ipaddress -AutoSize -GroupBy PSComputerName
-
-#Verify that the VlanID is set
-Get-VMNetworkAdapterVlan -ManagementOS -CimSession $ServerList | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
-```
+Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
 ## Step 3: Prep for cluster setup
 
-Next, verify that your servers are ready for clustering. As a sanity check first, consider running the following commands to make sure that the servers don't already belong to a cluster:
+Next, verify that your servers are ready for clustering.
+
+As a sanity check first, consider running the following commands to make sure that your servers don't already belong to a cluster:
 
 Use `Get-ClusterNode` to show all nodes:
 
