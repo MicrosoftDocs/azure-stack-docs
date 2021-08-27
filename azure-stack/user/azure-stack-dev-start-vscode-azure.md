@@ -4,10 +4,10 @@ description: As a developer, connect to Azure Stack Hub using Azure Account Exte
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 5/6/2021
+ms.date: 8/27/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 5/6/2021
+ms.lastreviewed: 8/27/2021
 
 # Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.
 # Keyword: VS code Azure account extension
@@ -24,7 +24,14 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 > You can use the steps in this article for an Active Directory Federated Services (AD FS)
  environment. Use your AD FS credentials and endpoints.
 
-## Pre-requisites for the extension
+## Visual Studio Code and Azure Stack Hub
+
+In addition to the Azure Account extension for Visual Studio, a number of other Azure extensions are supported for use with Azure Stack Hub and Visual Studio Code. These include:
+ - [Visual Studio Code Azure Storage extension](dev-start-vscode-storage.md)
+ - [Visual Studio Code Azure Resources extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups)
+ - [Visual Studio Code Azure Virtual Machines extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurevirtualmachines)
+
+## Pre-requisites for Azure Account Extension
 
 - Azure Stack Hub environment 1904 build or later.
 - [Visual Studio Code](https://code.visualstudio.com/).
