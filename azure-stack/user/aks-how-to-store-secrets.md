@@ -1,6 +1,6 @@
 ---
-title: Use KeyVault to store secrets with Azure Kubernetes Service on Azure Stack Hub
-description: Learn how to use KeyVault to store secrets with Azure Kubernetes Service on Azure Stack Hub
+title: Use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
+description: Learn how to use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 author: mattbriggs
 ms.topic: article
 ms.date: 08/27/2021
@@ -12,7 +12,7 @@ ms.lastreviewed: 08/27/2021
 # Keyword: Kubernetes AKS difference
 ---
 
-# Use KeyVault to store secrets with Azure Kubernetes Service on Azure Stack Hub
+# Use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 
 ## Secrets Store CSI driver
 
@@ -34,9 +34,10 @@ Azure Key Vault provider for [Secrets Store CSI driver](https://github.com/kuber
 
 ### Getting started
 
-Setup the correct [role assignments and access policies](https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/) and install Azure Keyvault Provider for Secrets Store CSI Driver through [Helm](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/#deployment-using-helm) or [YAML deployment files](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/#using-deployment-yamls). Get familiar with [how to use the Azure Keyvault Provider](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/usage/) and supported [configurations](https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/).
-
-Try our [walkthrough](https://azure.github.io/secrets-store-csi-driver-provider-azure/demos/standard-walkthrough/) to get a better understanding of the application workflow.
+1. Setup the correct [role assignments and access policies](https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/).
+2. Install Azure Key Vault Provider for Secrets Store CSI Driver through [Helm](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/#deployment-using-helm) or [YAML deployment files](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/#using-deployment-yamls). 
+3. Learn [how to use the Azure Key Vault Provider](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/usage/) and supported [configurations](https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/).
+4. Get up to speed with the application workflow with the [walkthrough](https://azure.github.io/secrets-store-csi-driver-provider-azure/demos/standard-walkthrough/).
 
 ### Support
 
