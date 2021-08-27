@@ -43,9 +43,9 @@ An individual physical adapter can only be included in one intent. By default, a
 
 Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
 
-- Management: Can be assigned in a maximum of one intent
+- Management: Can be defined in a maximum of one intent
 - Compute: Unlimited
-- Storage: Can be assigned in a maximum of one intent
+- Storage: Can be defined in a maximum of one intent
 
 **Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have a network intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
 
