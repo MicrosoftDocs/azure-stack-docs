@@ -13,7 +13,7 @@ This article includes workaround steps for resolving known issues that occur whe
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
-The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess amount of Kubernetes configuration secrets on the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were not cleaned up, and therefore, the upgrade process fails.
+The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
 
 If you experience this issue, run the following steps:
 
@@ -52,13 +52,13 @@ If you experience this issue, run the following steps:
    "Deleted: $output"
    }
    ```
-2. Next, run the following command using the _fix_secret_leak.ps1_ file you created:
+2. Next, run the following command using the _fix_secret_leak.ps1_ file you saved:
    
    ```powershell
       .\fix_secret_leak.ps1 -ClusterName (Get-AksHciConfig).Kva.KvaName -ManagementKubeConfigPath (Get-AksHciConfig).Kva.Kubeconfig
    ```
 
-3. Use the following PowerShell command to repeat the upgrade process:
+3. Finally, use the following PowerShell command to repeat the upgrade process:
 
    ```powershell
       Update-AksHci
