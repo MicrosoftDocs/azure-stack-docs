@@ -11,9 +11,9 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
-## When upgrading AKS on Azure Stack HCI using PowerShell, an excess number of Kubernetes configuration secrets is created on a cluster
+## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
-The June 1.0.1.10628 build of AKS on Azure Stack HCI causes an excess amount of Kubernetes configuration secrets to be created on a cluster. Some improvements were added to the upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were not cleaned up, and therefore, the upgrade process fails.
+The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess amount of Kubernetes configuration secrets on the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were not cleaned up, and therefore, the upgrade process fails.
 
 If you experience this issue, run the following steps:
 
