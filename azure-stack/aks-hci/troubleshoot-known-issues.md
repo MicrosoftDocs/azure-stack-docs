@@ -11,6 +11,59 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
+## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
+
+The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
+
+If you experience this issue, run the following steps:
+
+1. Save the script below as a file named _fix_leaked_secrets.ps1_:
+
+   ```
+   upgparam (
+   [Parameter(Mandatory=$true)]
+   [string] $ClusterName,
+   [Parameter(Mandatory=$true)]
+   [string] $ManagementKubeConfigPath
+   )
+
+   $ControlPlaneHostName = kubectl get nodes --kubeconfig $ManagementKubeConfigPath -o=jsonpath='{.items[0].metadata.name}'
+   "Hostname is: $ControlPlaneHostName"
+
+   $leakedSecretPath1 = "$ClusterName-template-secret-akshci-cc"
+   $leakedSecretPath2 = "$ClusterName-moc-kms-plugin"
+   $leakedSecretPath3 = "$ClusterName-kube-vip"
+   $leakedSecretPath4 = "$ClusterName-template-secret-akshc"
+   $leakedSecretPath5 = "$ClusterName-linux-template-secret-akshci-cc"
+   $leakedSecretPath6 = "$ClusterName-windows-template-secret-akshci-cc"
+
+   $leakedSecretNameList = New-Object -TypeName 'System.Collections.ArrayList';
+   $leakedSecretNameList.Add($leakedSecretPath1) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath2) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath3) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath4) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath5) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath6) | Out-Null
+
+   foreach ($leakedSecretName in $leakedSecretNameList)
+   {
+   "Deleting secrets with the prefix $leakedSecretName"
+   $output = kubectl --kubeconfig $ManagementKubeConfigPath exec etcd-$ControlPlaneHostName -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --key /etc/kubernetes/pki/etcd/server.key --cert /etc/kubernetes/pki/etcd/server.crt del /registry/secrets/default/$leakedSecretName --prefix=true"
+   "Deleted: $output"
+   }
+   ```
+2. Next, run the following command using the _fix_secret_leak.ps1_ file you saved:
+   
+   ```powershell
+      .\fix_secret_leak.ps1 -ClusterName (Get-AksHciConfig).Kva.KvaName -ManagementKubeConfigPath (Get-AksHciConfig).Kva.Kubeconfig
+   ```
+
+3. Finally, use the following PowerShell command to repeat the upgrade process:
+
+   ```powershell
+      Update-AksHci
+   ```
+
 ## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at _Update-KvaInternal_
 
 When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.

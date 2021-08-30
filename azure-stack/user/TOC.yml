@@ -273,6 +273,8 @@
             href: kubernetes-aks-engine-container-storage-interface.md
           - name: Rotate certs
             href: kubernetes-aks-engine-rotate-certs.md
+          - name: Store secrets
+            href: aks-how-to-store-secrets.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
