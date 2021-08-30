@@ -190,8 +190,8 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
-  - name: PowerShell
-    href: AksHci.md
+  - name: AksHci PowerShell
+    href: ./reference/ps/index.md
   - name: Pricing
     href: pricing.md
   - name: Support policies

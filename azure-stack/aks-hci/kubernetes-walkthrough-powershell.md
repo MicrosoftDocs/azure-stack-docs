@@ -50,7 +50,7 @@ Import-Module AksHci
 ```powershell
 Get-Command -Module AksHci
 ```
-To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
+To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./reference/ps/index.md).
 
 
 ### Register the resource provider to your subscription

@@ -1,0 +1,110 @@
+- name: AksHci PowerShell Reference
+  href: index.md
+  expanded: true
+  items:
+  - name: add-akshcigmsacredentialspec
+    href: add-akshcigmsacredentialspec.md
+  - name: add-akshcinode
+    href: add-akshcinode.md
+  - name: disable-akshciarcconnection
+    href: disable-akshciarcconnection.md
+  - name: enable-akshciarcconnection
+    href: enable-akshciarcconnection.md
+  - name: get-akshcibillingstatus
+    href: get-akshcibillingstatus.md
+  - name: get-akshcicluster
+    href: get-akshcicluster.md
+  - name: get-akshciclusternetwork
+    href: get-akshciclusternetwork.md
+  - name: get-akshciclusterupdates
+    href: get-akshciclusterupdates.md
+  - name: get-akshciconfig
+    href: get-akshciconfig.md
+  - name: get-akshcicredential
+    href: get-akshcicredential.md
+  - name: get-akshcieventlog
+    href: get-akshcieventlog.md
+  - name: get-akshcikubernetesversion
+    href: get-akshcikubernetesversion.md
+  - name: get-akshcilogs
+    href: get-akshcilogs.md
+  - name: get-akshcinodepool
+    href: get-akshcinodepool.md
+  - name: get-akshciproxysetting
+    href: get-akshciproxysetting.md
+  - name: get-akshciregistration
+    href: get-akshciregistration.md
+  - name: get-akshcistoragecontainer
+    href: get-akshcistoragecontainer.md
+  - name: get-akshciupdates
+    href: get-akshciupdates.md
+  - name: get-akshciversion
+    href: get-akshciversion.md
+  - name: get-akshcivmsize
+    href: get-akshcivmsize.md
+  - name: initialize-akshcinode
+    href: initialize-akshcinode.md
+  - name: install-akshci
+    href: install-akshci.md
+  - name: install-akshciadauth
+    href: install-akshciadauth.md
+  - name: install-akshcicsinfs
+    href: install-akshcicsinfs.md
+  - name: install-akshcicsismb
+    href: install-akshcicsismb.md
+  - name: install-akshcigmsawebhook
+    href: install-akshcigmsawebhook.md
+  - name: install-akshcimonitoring
+    href: install-akshcimonitoring.md
+  - name: new-akshcicluster
+    href: new-akshcicluster.md
+  - name: new-akshciclusternetwork
+    href: new-akshciclusternetwork.md
+  - name: new-akshcinetworksetting
+    href: new-akshcinetworksetting.md
+  - name: new-akshcinodepool
+    href: new-akshcinodepool.md
+  - name: new-akshciproxysetting
+    href: new-akshciproxysetting.md
+  - name: new-akshcistoragecontainer
+    href: new-akshcistoragecontainer.md
+  - name: remove-akshcicluster
+    href: remove-akshcicluster.md
+  - name: remove-akshciclusternetwork
+    href: remove-akshciclusternetwork.md
+  - name: remove-akshcigmsacredentialspec
+    href: remove-akshcigmsacredentialspec.md
+  - name: remove-akshcinode
+    href: remove-akshcinode.md
+  - name: remove-akshcinodepool
+    href: remove-akshcinodepool.md
+  - name: repair-akshcicerts
+    href: repair-akshcicerts.md
+  - name: repair-akshciclustercerts
+    href: repair-akshciclustercerts.md
+  - name: restart-akshci
+    href: restart-akshci.md
+  - name: set-akshcicluster
+    href: set-akshcicluster.md
+  - name: set-akshciconfig
+    href: set-akshciconfig.md
+  - name: set-akshcinodepool
+    href: set-akshcinodepool.md
+  - name: set-akshciregistration
+    href: set-akshciregistration.md
+  - name: uninstall-akshci
+    href: uninstall-akshci.md
+  - name: uninstall-akshciadauth
+    href: uninstall-akshciadauth.md
+  - name: uninstall-akshcicsinfs
+    href: uninstall-akshcicsinfs.md
+  - name: uninstall-akshcicsismb
+    href: uninstall-akshcicsismb.md
+  - name: uninstall-akshcigmsawebhook
+    href: uninstall-akshcigmsawebhook.md
+  - name: uninstall-akshcimonitoring
+    href: uninstall-akshcimonitoring.md
+  - name: update-akshci
+    href: update-akshci.md
+  - name: update-akshcicluster
+    href: update-akshcicluster.md

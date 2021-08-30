@@ -864,6 +864,281 @@
       "source_path": "azure-stack/hci/manage/use-azure-network-adapter.md", 
       "redirect_url": "/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter", 
       "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+      "redirect_document_id": true
+  },
+  {
+      "source_path": "azure-stack/aks-hci/akshci.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/",
+      "redirect_document_id": true
+  }
   ]
 }
