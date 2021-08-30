@@ -30,7 +30,7 @@ If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows no
 ## Uninstall-AksHciAdAuth fails with an error
 If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
 
-## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
+## Uninstall-AksHCI is not cleaning up cluster resources (`ownergroup ca-<GUID>`)
 Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
 
 ## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed

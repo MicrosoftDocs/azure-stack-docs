@@ -1,5 +1,5 @@
 ---
-title: Sync-AksHciBilling
+title: Sync-AksHciBilling for AKS on Azure Stack HCI
 author: mamezgeb
 description: The Sync-AksHciBilling PowerShell command manually triggers a billing records sync 
 ms.topic: reference
@@ -25,3 +25,6 @@ Sync-AksHciBilling
 ```powershell
 Sync-AksHciBilling
 ```
+## Next steps
+
+[AksHci PowerShell Reference](index.md)
