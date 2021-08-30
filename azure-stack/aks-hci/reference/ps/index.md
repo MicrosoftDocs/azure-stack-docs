@@ -75,5 +75,5 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 
 ## Next steps
 
-For more information, about the Privileged Endpoint on Azure Stack Hub see [Using the privileged endpoint in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint).
+For more information, about the [AKS on the Azure Stack HCI](/azure-stack/aks-hci).
 

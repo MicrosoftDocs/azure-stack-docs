@@ -92,6 +92,8 @@
     href: set-akshcinodepool.md
   - name: set-akshciregistration
     href: set-akshciregistration.md
+  - name: sync-akshcibilling
+    href: sync-akshcibilling.md
   - name: uninstall-akshci
     href: uninstall-akshci.md
   - name: uninstall-akshciadauth
