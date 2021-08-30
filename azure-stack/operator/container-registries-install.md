@@ -19,7 +19,7 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
 
 
 >[!IMPORTANT] 
->Once installed, Azure Container Registry on Azure Stack Hub is considered a foundational RP and cannot be uninstalled.  Operators can still restrict user access to the ACR service through offers, plans, and quotas.
+>Once installed, Azure Container Registry on Azure Stack Hub is considered a foundational RP and cannot be uninstalled. Operators can still restrict user access to the ACR service through offers, plans, and quotas.
 
 ## Prerequisites
 
