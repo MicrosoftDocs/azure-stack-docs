@@ -52,13 +52,13 @@ If you experience this issue, run the following steps:
    "Deleted: $output"
    }
    ```
-2. Run the following command:
+2. Next, run the following command using the _fix_secret_leak.ps1_ file you created:
    
    ```powershell
       .\fix_secret_leak.ps1 -ClusterName (Get-AksHciConfig).Kva.KvaName -ManagementKubeConfigPath (Get-AksHciConfig).Kva.Kubeconfig
    ```
 
-3. Attempt to run the upgrade process again by running the following PowerShell command:
+3. Use the following PowerShell command to repeat the upgrade process:
 
    ```powershell
       Update-AksHci
