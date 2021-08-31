@@ -31,7 +31,7 @@ On Azure Stack Hub the only destinations for these logs and metrics are either a
 
 When using an ACR on Azure Stack Hub, you might occasionally encounter problems. For example, you might not be able to pull a container image because of an issue with Docker in your local environment. Or, a network issue might prevent you from connecting to the registry.
 
-As a first diagnostic step, run the az acr check-health command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+As a first diagnostic step, run the az acr check-health command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 For more information about running this command, visit this page: [Check registry health](/azure/container-registry/container-registry-check-health)
 
