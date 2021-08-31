@@ -23,7 +23,7 @@ Azure CLI to manage ACR on Hub requires Azure CLI version 2.28.0 or higher. Inst
 
 ## Register an Azure Stack Hub with ACR using CLI
 
-Once you've installed the Azure CLI you'll need to register the Azure Stack Hub as a cloud and provide the required endpoints including the new `suffix-acr-login-server-endpoint` below. Update the script to include details specific to your Azure Stack Hub and run the script. For more details on using CLI with Azure Stack Hub visit this link [Manage Azure Stack Hub with Azure CLI - Azure Stack Hub](azure-stack-version-profiles-azurecli2.md)
+Once you've installed the Azure CLI, you'll need to register the Azure Stack Hub as a cloud and provide the required endpoints including the new `suffix-acr-login-server-endpoint` below. Update the script to include details specific to your Azure Stack Hub and run the script. For more details on using CLI with Azure Stack Hub visit this link [Manage Azure Stack Hub with Azure CLI - Azure Stack Hub](azure-stack-version-profiles-azurecli2.md)
 
 ```azurecli
 az cloud register `
