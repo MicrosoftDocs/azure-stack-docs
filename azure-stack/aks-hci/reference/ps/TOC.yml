@@ -2,111 +2,111 @@
   href: index.md
   expanded: true
   items:
-  - name: add-akshcigmsacredentialspec
+  - name: Add-AksHciGmsaCredentialSpec
     href: add-akshcigmsacredentialspec.md
-  - name: add-akshcinode
+  - name: Add-AksHciNode
     href: add-akshcinode.md
-  - name: disable-akshciarcconnection
+  - name: Disable-AksHciArcConnection
     href: disable-akshciarcconnection.md
-  - name: enable-akshciarcconnection
+  - name: Enable-AksHciArcConnection
     href: enable-akshciarcconnection.md
-  - name: get-akshcibillingstatus
+  - name: Get-AksHciBillingStatus
     href: get-akshcibillingstatus.md
-  - name: get-akshcicluster
+  - name: Get-AksHciCluster
     href: get-akshcicluster.md
-  - name: get-akshciclusternetwork
+  - name: Get-AksHciClusterNetwork
     href: get-akshciclusternetwork.md
-  - name: get-akshciclusterupdates
+  - name: Get-AksHciClusterUpdates
     href: get-akshciclusterupdates.md
-  - name: get-akshciconfig
+  - name: Get-AksHciConfig
     href: get-akshciconfig.md
-  - name: get-akshcicredential
+  - name: Get-AksHciCredential
     href: get-akshcicredential.md
-  - name: get-akshcieventlog
+  - name: Get-AksHciEventLog
     href: get-akshcieventlog.md
-  - name: get-akshcikubernetesversion
+  - name: Get-AksHciKubernetesVersion
     href: get-akshcikubernetesversion.md
-  - name: get-akshcilogs
+  - name: Get-AksHciLogs
     href: get-akshcilogs.md
-  - name: get-akshcinodepool
+  - name: Get-AksHciNodePool
     href: get-akshcinodepool.md
-  - name: get-akshciproxysetting
+  - name: Get-AksHciProxySetting
     href: get-akshciproxysetting.md
-  - name: get-akshciregistration
+  - name: Get-AksHciRegistration
     href: get-akshciregistration.md
-  - name: get-akshcistoragecontainer
+  - name: Get-AksHciContainerStorage
     href: get-akshcistoragecontainer.md
-  - name: get-akshciupdates
+  - name: Get-AksHciUpdates
     href: get-akshciupdates.md
-  - name: get-akshciversion
+  - name: Get-AksHciVersion
     href: get-akshciversion.md
-  - name: get-akshcivmsize
+  - name: Get-AksHciVmSize
     href: get-akshcivmsize.md
-  - name: initialize-akshcinode
+  - name: Initialize-AksHciNode
     href: initialize-akshcinode.md
-  - name: install-akshci
+  - name: Install-AksHci
     href: install-akshci.md
-  - name: install-akshciadauth
+  - name: Install-AksHciAdAuth
     href: install-akshciadauth.md
-  - name: install-akshcicsinfs
+  - name: Install-AksHciCsiNfs
     href: install-akshcicsinfs.md
-  - name: install-akshcicsismb
+  - name: Install-AksHciCsiSmb
     href: install-akshcicsismb.md
-  - name: install-akshcigmsawebhook
+  - name: Install-AksHciGmsaWebhook
     href: install-akshcigmsawebhook.md
-  - name: install-akshcimonitoring
+  - name: Install-AksHciMonitoring
     href: install-akshcimonitoring.md
-  - name: new-akshcicluster
+  - name: New-AksHciCluster
     href: new-akshcicluster.md
-  - name: new-akshciclusternetwork
+  - name: New-AksHciClusterNetwork
     href: new-akshciclusternetwork.md
-  - name: new-akshcinetworksetting
+  - name: New-AksHciNetworkSetting
     href: new-akshcinetworksetting.md
-  - name: new-akshcinodepool
+  - name: New-AksHciNodePool
     href: new-akshcinodepool.md
-  - name: new-akshciproxysetting
+  - name: New-AksHciProxySetting
     href: new-akshciproxysetting.md
-  - name: new-akshcistoragecontainer
+  - name: New-AksHciStorageContainer
     href: new-akshcistoragecontainer.md
-  - name: remove-akshcicluster
+  - name: Remove-AksHciCluster
     href: remove-akshcicluster.md
-  - name: remove-akshciclusternetwork
+  - name: Remove-AksHciClusterNetwork
     href: remove-akshciclusternetwork.md
-  - name: remove-akshcigmsacredentialspec
+  - name: Remove-AksHciGmsaCredentialSpec
     href: remove-akshcigmsacredentialspec.md
-  - name: remove-akshcinode
+  - name: Remove-AksHciNode
     href: remove-akshcinode.md
-  - name: remove-akshcinodepool
+  - name: Remove-AksHciNodePool
     href: remove-akshcinodepool.md
-  - name: repair-akshcicerts
+  - name: Repair-AksHciCerts
     href: repair-akshcicerts.md
-  - name: repair-akshciclustercerts
+  - name: Repair-AksHciClusterCerts
     href: repair-akshciclustercerts.md
-  - name: restart-akshci
+  - name: Restart-AksHci
     href: restart-akshci.md
-  - name: set-akshcicluster
+  - name: Set-AksHciCluster
     href: set-akshcicluster.md
-  - name: set-akshciconfig
+  - name: Set-AksHciConfig
     href: set-akshciconfig.md
-  - name: set-akshcinodepool
+  - name: Set-AksHciNodePool
     href: set-akshcinodepool.md
-  - name: set-akshciregistration
+  - name: Set-AksHciRegistration
     href: set-akshciregistration.md
-  - name: sync-akshcibilling
+  - name: Sync-AksHciBilling
     href: sync-akshcibilling.md
-  - name: uninstall-akshci
+  - name: Uninstall-AksHci
     href: uninstall-akshci.md
-  - name: uninstall-akshciadauth
+  - name: Uninstall-AksHciAdAuth
     href: uninstall-akshciadauth.md
-  - name: uninstall-akshcicsinfs
+  - name: Uninstall-AksHciCsiNfs
     href: uninstall-akshcicsinfs.md
-  - name: uninstall-akshcicsismb
+  - name: Uninstall-AksHciCsiSmb
     href: uninstall-akshcicsismb.md
-  - name: uninstall-akshcigmsawebhook
+  - name: Uninstall-AksHciGmsaWebhook
     href: uninstall-akshcigmsawebhook.md
-  - name: uninstall-akshcimonitoring
+  - name: Uninstall-AksHciMonitoring
     href: uninstall-akshcimonitoring.md
-  - name: update-akshci
+  - name: Update-AksHci
     href: update-akshci.md
-  - name: update-akshcicluster
+  - name: Update-AksHciCluster
     href: update-akshcicluster.md
