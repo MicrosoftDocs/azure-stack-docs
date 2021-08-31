@@ -17,7 +17,7 @@ ms.lastreviewed: 08/30/2021
 
 You can use Azure CLI to work with your Azure Container Registries (ACR) on Azure Stack Hub. This article will help you get set up and oriented to working with Azure CLI on Azure Stack Hub.
 
-## Pre-requisites
+## Prerequisites
 
 Azure CLI to manage ACR on Hub requires Azure CLI version 2.28.0 or higher. Install or update your current CLI installation to the latest release. You can find Azure CLI documentation, [How to install the Azure CLI ](/cli/azure/install-azure-cli).
 
