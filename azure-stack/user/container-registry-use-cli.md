@@ -19,7 +19,7 @@ You can use Azure CLI to work with your Azure Container Registries (ACR) on Azur
 
 ## Pre-requisites
 
-Azure CLI to manage ACR on Hub requires Azure CLI version 2.28.0 or higher. Install or update your current CLI installation to the latest release. You can find Azure CLI documentation, [How to install the Azure CLI ](/cli/azure/install-azure-cli)
+Azure CLI to manage ACR on Hub requires Azure CLI version 2.28.0 or higher. Install or update your current CLI installation to the latest release. You can find Azure CLI documentation, [How to install the Azure CLI ](/cli/azure/install-azure-cli).
 
 ## Register an Azure Stack Hub with ACR using CLI
 
@@ -52,7 +52,7 @@ Before using CLI to manage ACR resources review the list of [supported commands]
 
 ## ACR CLI quickstart
 
-Get started creating a registry using the ACR CLI [Quickstart - Create registry - Azure CLI - Azure Container Registry ](/azure/container-registry/container-registry-get-started-azure-cli).
+Get started creating a registry using [Quickstart: Create a private container registry using the Azure CLI](/azure/container-registry/container-registry-get-started-azure-cli).
 
 When using ACR documentation for global Azure, such as the quickstart, keep in mind the key differences between ACR on Azure Stack Hub and ACR in global Azure. For a list of differences, see [Azure Container Registries on Azure Stack Hub overview](container-registry-overview.md#acr-on-azure-and-acr-on-azure-stack-hub)
 
