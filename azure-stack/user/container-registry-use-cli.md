@@ -27,7 +27,7 @@ Once you've installed the Azure CLI, you'll need to register the Azure Stack Hub
 
 ```azurecli
 az cloud register `
-    -n AzureStackOrlando
+    -n <CloudName>
     --endpoint-resource-manager "https://management.<region>.<fqdn>" `
     --suffix-storage-endpoint "<region>.<fqdn>" `
     --suffix-keyvault-dns ".vault.<region>.<fqdn>" `
@@ -44,6 +44,18 @@ If you previously installed the CLI and registered a cloud, you'll need to updat
 ```azurecli  
 az cloud update -n <CloudName> `
 --suffix-acr-login-server-endpoint ".azsacr.<region>.<fqdn>"
+```
+## Set the active Cloud environment and API profile
+
+Set the active Cloud environment by using the following command:
+
+```azurecli
+az cloud set -n <CloudName>
+```
+Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
+
+```azurecli
+az cloud update --profile 2020-09-01-hybrid
 ```
 
 ## Review supported commands
