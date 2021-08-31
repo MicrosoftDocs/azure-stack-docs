@@ -321,6 +321,8 @@
           href: container-registry-deploy-image-aks-cluster.md
         - name: Supported commands
           href: container-registry-commands.md
+        - name: Use Azure CLI
+          href: container-registry-use-cli.md
         - name: Get Resource ID
           href: container-registry-get-resource-id.md
       - name: Deploy Cognitive Services
