@@ -323,6 +323,8 @@
           href: container-registry-commands.md
         - name: Get Resource ID
           href: container-registry-get-resource-id.md
+        - name: Troubleshoot
+          href: container-registry-troubleshooting.md
         - name: FAQ
           href: container-registry-faq.yml
       - name: Deploy Cognitive Services
