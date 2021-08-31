@@ -31,7 +31,7 @@ For steps on deploying a sample app to your AKS cluster, you can refer to the fo
 
 Two key points to remember from the online guidance are:
 
-1. You'll need an SPN and will need to grant contributor access to the subscription, resource group, or container registry resource.
+1. You'll need an SPN and will need to grant AcrPull access to the subscription, resource group, or container registry resource.
 2. You'll need to create a secret in Kubernetes using that same SPN.
 
     ```powershell  
