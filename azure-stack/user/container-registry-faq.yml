@@ -18,9 +18,9 @@ summary: |
   This article addresses frequently asked questions and known issues about Azure Container Registry.
 
   For registry troubleshooting guidance, see:
-  * [Troubleshoot registry login](container-registry-troubleshoot-login.md)
-  * [Troubleshoot network issues with registry](container-registry-troubleshoot-access.md)
-  * [Troubleshoot registry performance](container-registry-troubleshoot-performance.md)
+  * [Troubleshoot registry login]((/azure/aks/container-registry-troubleshoot-login)
+  * [Troubleshoot network issues with registry]((/azure/aks/container-registry-troubleshoot-access)
+  * [Troubleshoot registry performance]((/azure/aks/container-registry-troubleshoot-performance)
   
 
 sections:
@@ -426,7 +426,7 @@ sections:
           Why does my pull or push request fail with disallowed operation?
         answer: |
           Here are some scenarios where operations may be disallowed:
-          * The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository](./container-registry-image-lock.md) command to view current attributes.
+          * The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository]((/azure/aks/container-registry-image-lock command to view current attributes.
           * Some operations are disallowed if the image is in quarantine. Learn more about [quarantine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
           * Your registry may have reached its [storage limit](/azure/aks/container-registry-skus/#service-tier-features-and-limits).
           
