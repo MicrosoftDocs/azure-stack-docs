@@ -28,7 +28,7 @@ You can create a registry using the Azure Stack Hub user portal to perform by fo
 
 ## View a registry
 
-One a container registry has been created you can view details about the registry and repositories, as well as view and manage access, webhooks, metrics, and diagnostic settings. The portal doesn't display features and options not available for ACR on Azure Stack Hub. 
+One a container registry has been created you can view details about the registry and repositories, as well as view and manage access, webhooks, metrics, and diagnostic settings. The portal doesn't display features and options not available for ACR on Azure Stack Hub.
 
 ![View and manage container registry.](media/container-registry-how-to-use-portal/view-manage-container-registry.png)
 
