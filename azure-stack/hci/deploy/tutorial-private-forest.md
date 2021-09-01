@@ -70,7 +70,7 @@ Notice that most of the script is commented out; you will only need a few lines.
 
 1. Add the following to the first uncommented line of LabConfig.ps1 to tell the script where to find the ISOs, enable the guest service interface, and enable DNS forwarding on the host: **ServerISOFolder="C:\lab\isos" ; EnableGuestServiceInterface=$true ; UseHostDnsAsForwarder=$true**
 
-2. Change the admin password, if desired.
+2. Change the admin name and password, if desired.
 
 3. If you plan to create multiple labs on the same server, change **Prefix = 'MSLab-'** to use a new Prefix name, such as **Lab1-**. We’ll stick with the default **MSLab-** prefix for this tutorial.
 
@@ -100,7 +100,7 @@ $LabConfig.AdditionalNetworksConfig += @{ NetName = 'Converged'; NetAddress='10.
 $LabConfig.VMs += @{ VMName = 'AdminCenter' ; ParentVHD = 'Win2019Core_G2.vhdx'; MGMTNICs=2}
 ```
 
-Be sure to save your changes to LabConfig.
+Be sure to save your changes to **LabConfig.ps1**.
 
 ## Run the Prereq script
 
@@ -197,13 +197,17 @@ The script will take some time to run, especially if you’ve created lots of VM
 
 Depending on how you intend to use the cluster, you may want to add a couple more network adapters to each Azure Stack HCI VM for more versatile testing. To do this, connect to your host server using Windows Admin Center and go to **Virtual machines > MSLab-(node) > Settings > Networks**. Make sure to select **Advanced > Enable MAC Address Spoofing**. If this isn't enabled, you may encounter failed connectivity tests when trying to create a cluster.
 
+## Register Windows Admin Center with Azure
+
+Connect to your lab Windows Admin Center using either the external URL or using Edge on the domain controller, and [Register Windows Admin Center with Azure](../manage/register-windows-admin-center.md).
+
 ## Clean up resources
 
-If you selected Y to cleanup unnecessary files and folders, then cleanup is already done. If you prefer to do it manually, navigate to C:\Labs and delete any unneeded files.
+If you selected **Y** to cleanup unnecessary files and folders, then cleanup is already done. If you prefer to do it manually, navigate to C:\Labs and delete any unneeded files.
 
 ## Next steps
 
-You're now ready to connect to your lab Windows Admin Center using either the external URL or by launching Edge on the domain controller, and proceed to the Cluster Creation Wizard.
+You're now ready to proceed to the Cluster Creation Wizard.
 
 > [!div class="nextstepaction"]
 > [Create an Azure Stack HCI cluster](create-cluster.md)
