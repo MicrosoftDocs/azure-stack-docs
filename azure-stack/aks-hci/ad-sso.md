@@ -72,7 +72,7 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 ```  
 
 > [!NOTE]
-> For `SPN k8s/apiserver@CONTOSO.com`, use the format, SPN k8s/apiserver@<realm name>. The <realm name> is usually uppercase. However, if you are having issues, create the SPN with lowercase letters since Kerberos is case sensitive.
+> For SPN k8s/apiserver@CONTOSO.com, use the format, _SPN k8s/apiserver@<realm name>_. The _<realm name>_ is usually uppercase. However, if you are having issues, create the SPN with lowercase letters since Kerberos is case sensitive.
 
 #### Option 2
 
