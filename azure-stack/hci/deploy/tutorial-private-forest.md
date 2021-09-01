@@ -1,6 +1,6 @@
 ---
 title: Tutorial on creating a private forest environment and virtual machines for an Azure Stack HCI cluster
-description: Tutorial: Learn to create a private forest environment for Azure Stack HCI evaluation and testing using MSLab scripts
+description: Tutorial on how to create a private forest environment for Azure Stack HCI evaluation and testing using MSLab scripts
 author: khdownie
 ms.author: v-kedow
 ms.topic: tutorial
@@ -13,7 +13,7 @@ ms.date: 09/01/2021
 
 > Applies to: Azure Stack HCI, version 20H2
 
-In this tutorial, you use MSLab PowerShell scripts to automate the process of creating a private forest for running Azure Stack HCI on virtual machines (VMs) using [nested virtualization](../concepts/nested-virtualization).
+In this tutorial, you use MSLab PowerShell scripts to automate the process of creating a private forest for running Azure Stack HCI on virtual machines (VMs) using [nested virtualization](../concepts/nested-virtualization.md).
 
    > [!IMPORTANT]
    > Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in VMs, nested virtualization is not supported in production environments. Use nested virtualization for testing and evaluation purposes only.
@@ -43,7 +43,7 @@ Connect to the physical server on which you'll create the VM-based lab. If youâ€
 
 ## Download Azure Stack HCI
 
-Launch a web browser on the server and visit the [Azure Stack HCI product page](https://azure.microsoft.com/en-us/products/azure-stack/hci/). Select "Register for a free trial," complete the short registration form, check the box that you agree with licensing and privacy terms, and click submit. Select **Download Azure Stack HCI**, which will trigger an ISO download.
+Launch a web browser on the server and visit the [Azure Stack HCI product page](https://azure.microsoft.com/products/azure-stack/hci/). Select "Register for a free trial," complete the short registration form, check the box that you agree with licensing and privacy terms, and click submit. Select **Download Azure Stack HCI**, which will trigger an ISO download.
 
 ## Download Windows Server
 
