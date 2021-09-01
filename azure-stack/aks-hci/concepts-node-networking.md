@@ -154,7 +154,7 @@ Based on the table above, she will have to reserve:
 
 - 3 IP addresses for the AKS host (one IP for control plane node and two IPs for running update operations)
 - 3 IP addresses for the control plane nodes in cluster A (one IP per control plane node)
-- 5 IP addresses for the worker nodes in cluster A (one IP per control plane node)
+- 5 IP addresses for the worker nodes in cluster A (one IP per worker node)
 - 6 IP addresses additionally for cluster A (five IPs for running update operations and 1 IP for load balancer)
 - 1 IP addresses for the control plane nodes in cluster B (one IP per control plane node)
 - 3 IP addresses for the worker nodes in cluster B (one IP per control plane node)
