@@ -154,10 +154,10 @@ Based on the table above, she will have to reserve:
 
 - 3 IP addresses for the AKS host (one IP for control plane node and two IPs for running update operations)
 - 3 IP addresses for the control plane nodes in cluster A (one IP per control plane node)
-- 5 IP addresses for the worker nodes in cluster A (one IP per control plane node)
+- 5 IP addresses for the worker nodes in cluster A (one IP per worker node)
 - 6 IP addresses additionally for cluster A (five IPs for running update operations and 1 IP for load balancer)
 - 1 IP addresses for the control plane nodes in cluster B (one IP per control plane node)
-- 3 IP addresses for the worker nodes in cluster B (one IP per control plane node)
+- 3 IP addresses for the worker nodes in cluster B (one IP per worker node)
 - 6 IP addresses additionally for cluster B (five IPs for running update operations and 1 IP for load balancer)
 - 2 IP addresses for the Kubernetes cluster API servers (one IP per Kubernetes cluster)
 - 3 IP addresses for the Kubernetes service (one IP address per instance of the front-end UI, since they all use the same port. The backend database can use any one of the three IP addresses as long as it will use a different port)
