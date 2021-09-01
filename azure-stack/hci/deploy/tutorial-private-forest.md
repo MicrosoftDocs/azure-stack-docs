@@ -137,7 +137,7 @@ In Hyper-V Manager, start the Windows Admin Center VM (MSLab-AdminCenter), which
 
 ## Install Microsoft Edge on the domain controller
 
-You'll need a web browser to download and install Windows Admin Center. It's likely that Internet Explorer will be blocked for security reasons, so use Microsoft Edge instead. If Edge isn't already installed on the domain controller VM, you'll need to install it.
+You'll need a web browser on the domain controller VM in order to use Windows Admin Center in your private forest. It's likely that Internet Explorer will be blocked for security reasons, so use Microsoft Edge instead. If Edge isn't already installed on the domain controller VM, you'll need to install it.
 
 To install Microsoft Edge, connect to the domain controller VM from Hyper-V Manager and launch a PowerShell session as administrator. Then run the following code to install and start Microsoft Edge.
 
