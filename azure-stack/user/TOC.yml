@@ -317,6 +317,8 @@
         items:
         - name: Overview
           href: container-registry-overview.md
+        - name: Add and manage container registry
+          href: container-registry-how-to-use-portal.md
         - name: Deploy image to AKS cluster
           href: container-registry-deploy-image-aks-cluster.md
         - name: Supported commands
