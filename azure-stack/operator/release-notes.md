@@ -326,7 +326,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.45.131](hotfix-1-2005-46-133.md)
+- [Azure Stack Hub hotfix 1.2005.46.133](hotfix-1-2005-46-133.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
