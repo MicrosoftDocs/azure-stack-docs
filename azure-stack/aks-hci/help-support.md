@@ -12,9 +12,9 @@ author: mkostersitz
 
 If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, this topic describes the steps you need to run to open a support request. 
 
-1. Log into the [Azure Portal](https://portal.azure.com).
+1. Log into the [Azure portal](https://portal.azure.com).
 2. Browse to the subscription you are using for Azure Kubernetes Services on Azure Stack HCI.
-3. Under Azure services section, click the **Help + support** icon:
+3. Under Azure services section, select the **Help + support** icon:
 
     ![Azure portal Help and Support top menu](media/support/help-support-icon.png)
 
@@ -22,7 +22,7 @@ If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, thi
 
     ![Azure portal Help and Support sidebar](media/support/new-support-request-sidebar.png)
 
-4. Click the **New Support Request** option.
+4. Select the **New Support Request** option.
  
 5. Add a short description of your issue in the **Summary** field and under **Issue** type, select **Technical**:
 
@@ -32,14 +32,18 @@ If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, thi
 
     ![Select AKS on Azure Stack HCI product](media/support/basic-select-service.png)
  
-7. Select the appropriate **Problem** type from the dropdown menu for your issue (such as Kubernetes), and then click the **Next: Solutions** button at the bottom left of the screen:
+7. Select the appropriate **Problem** type from the dropdown menu for your issue (such as Kubernetes), and then select the **Next: Solutions** button at the bottom left of the screen:
 
     ![Enter Problem Type](media/support/basics-problem-type.png)
 
-8. Review the provided **Recommended Article(s)** to determine if they address your issue. If not, click the **Next: Details** button at the bottom left of the screen: 
+8. Review the provided **Recommended Article(s)** to determine if they address your issue. If not, select the **Next: Details** button at the bottom left of the screen. 
 
     ![Illustrates the recommended articles for the support request](media/support/solutions-page.png)
 
-9. If the solutions are not applicable, complete the remainder of the information on the **Details** page, and then click **Review + create** to review and create the request for support.
+9. If the solutions are not applicable, complete the remainder of the information on the **Details** page, and then select **Review + create** to review and create the request for support.
 
     ![Create a new Support Request](media/support/service-request-details.png)
+
+## Next steps
+
+- [Support policies](./support-policies.md)
