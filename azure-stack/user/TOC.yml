@@ -317,6 +317,8 @@
         items:
         - name: Overview
           href: container-registry-overview.md
+        - name: Add and manage container registry
+          href: container-registry-how-to-use-portal.md
         - name: Deploy image to AKS cluster
           href: container-registry-deploy-image-aks-cluster.md
         - name: Supported commands
@@ -325,6 +327,10 @@
           href: container-registry-use-cli.md
         - name: Get Resource ID
           href: container-registry-get-resource-id.md
+        - name: Troubleshoot
+          href: container-registry-troubleshoot.md
+        - name: FAQ
+          href: container-registry-faq.yml
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
   - name: Deploy apps

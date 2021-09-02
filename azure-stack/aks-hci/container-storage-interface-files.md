@@ -26,7 +26,7 @@ If multiple nodes need concurrent access to the same storage volume, you can use
 
 ### Use SMB drivers
 
-1. Deploy the driver using the following [Install-AksHciCsiSmb](./install-akshcicsismb.md) PowerShell command: 
+1. Deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
 
    ```powershell
    Install-AksHciCsiSmb -clusterName mycluster
@@ -63,7 +63,7 @@ If multiple nodes need concurrent access to the same storage volume, you can use
 
 ### Use NFS drivers
 
-1. Deploy the driver using the following [Install-AksHciCsiNfs](install-akshcicsinfs.md) PowerShell command:
+1. Deploy the driver using the following [Install-AksHciCsiNfs](./reference/ps/install-akshcicsinfs.md) PowerShell command:
 
    ```powershell
    Install-AksHciCsiNfs -clusterName mycluster

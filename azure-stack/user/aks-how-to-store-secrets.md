@@ -41,4 +41,3 @@ Azure Key Vault Provider for Secrets Store CSI Driver is an open source project 
 ## Next steps
 
 [Overview of the AKS engine](azure-stack-kubernetes-aks-engine-overview.md)
-
