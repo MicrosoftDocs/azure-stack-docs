@@ -39,13 +39,13 @@ The default storage class stores PVs at the `-imageDir` location specified durin
 
 Creating a custom storage class is a two-step process:
 
-1. Create a new storage container using the following [New-AksHciStorageContainer](new-akshcistoragecontainer.md) PowerShell command:
+1. Create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
 
 	```powershell
    New-AksHciStorageContainer -Name <e.g. customStorageContainer> -Path <shared storage path>
    ```
    
-   Check whether the new storage container is created by running the following [Get-AksHciStorageContainer](get-akshcistoragecontainer.md) PowerShell command:
+   Check whether the new storage container is created by running the following [Get-AksHciStorageContainer](./reference/ps/get-akshcistoragecontainer.md) PowerShell command:
 
    ```powershell
 	Get-AksHciStorageContainer -Name "customStorageContainer"

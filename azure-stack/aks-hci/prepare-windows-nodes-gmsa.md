@@ -68,7 +68,7 @@ The Kubernetes community already supports domain joined Windows worker nodes for
 
 Before completing the steps below, make sure the **AksHci** PowerShell module is installed and `kubectl` can connect to your cluster.
 
-1. To install the webhook, run the following [Install-AksHciGmsaWebhook](./install-akshcigmsawebhook.md) PowerShell command:
+1. To install the webhook, run the following [Install-AksHciGmsaWebhook](./reference/ps/install-akshcigmsawebhook.md) PowerShell command:
    
    ```powershell
    Install-AksHciGMSAWebhook -Name <cluster name>
@@ -103,7 +103,7 @@ Before completing the steps below, make sure the **AksHci** PowerShell module is
    > [!NOTE]
    > If you create a secret under a namespace other than the default, remember to set the namespace of the deployment to the same namespace. 
 
-3. Use the [Add-AksHciGMSACredentialSpec](./add-akshcigmsacredentialspec.md) PowerShell cmdlet below to create the gMSA CRD, enable role-based access control (RBAC), and then assign the role to the service accounts to use a specific gMSA credential spec file. These steps are described in more detail in this Kubernetes article on [configuring gMSA for Windows pods and containers](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). 
+3. Use the [Add-AksHciGMSACredentialSpec](./reference/ps/add-akshcigmsacredentialspec.md) PowerShell cmdlet below to create the gMSA CRD, enable role-based access control (RBAC), and then assign the role to the service accounts to use a specific gMSA credential spec file. These steps are described in more detail in this Kubernetes article on [configuring gMSA for Windows pods and containers](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). 
 
    Use the JSON credential spec as input for the following PowerShell command (parameters with asterisks * are mandatory): 
 
@@ -202,14 +202,14 @@ After you deploy the container, verify that it's working using the following ste
 If you need to clean up gMSA settings, use the following uninstall steps.
 
 ### Uninstall the credential spec
-To uninstall, run the following [Remove-AksHcigmsaCredentialSpec](./remove-akshcigmsacredentialspec.md) PowerShell command:
+To uninstall, run the following [Remove-AksHcigmsaCredentialSpec](./reference/ps/remove-akshcigmsacredentialspec.md) PowerShell command:
 
 ```powershell
 Remove-AksHciGMSACredentialSpec -Name <cluster name> -credSpecName <cred spec object name> -clusterRoleName <clusterrole object name> -serviceAccount <serviceaccount object name> -secretNamespace <namespace of the secret object>
 ```
 
 ### Uninstall webhook
-To uninstall the webhook, run the following [Uninstall-AksHciGMSAWebhook](./uninstall-akshcigmsawebhook.md) PowerShell command:
+To uninstall the webhook, run the following [Uninstall-AksHciGMSAWebhook](./reference/ps/uninstall-akshcigmsawebhook.md) PowerShell command:
 
 ```powershell
 Uninstall-AksHciGMSAWebhook -Name <cluster name>
