@@ -44,7 +44,7 @@ You can use the following steps to generate ACR certificate using The Azure Stac
 2. Run the following cmdlets:
 
     ```powershell  
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2100.1448.484
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     New-Item -ItemType Directory "$ENV:USERPROFILE\Documents\AzsCertRequests"
                 $certificateRequestParams = @{
                     'regionName' = 'azurestack'
