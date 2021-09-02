@@ -70,7 +70,7 @@ When attempting to upgrade AKS on Azure Stack HCI from the GA release to version
 
 ## Install-AksHci timed out with an error
 
-After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
+After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following _waiting for API server_ error message:
 
 ```Output
 \kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
@@ -81,7 +81,7 @@ did not properly respond after a period of time, or established connection
 failed because connected host has failed to respond.]
 ```
 
-There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
+There are multiple reasons why an installation might fail with the _waiting for API server_ error. See the following sections for possible causes and solutions for this error.
 
 ### Reason 1: Incorrect IP gateway configuration
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
@@ -119,7 +119,7 @@ The issue was resolved after deleting the configuration and restarting the VM wi
 
 ## Install-AksHci fails due to an Azure Arc onboarding failure
 
-After running [Install-AksHci](./reference/ps/install-akshci.md), the following error occurred: **Error: Failed to wait for addon arc-onboarding**.
+After running [Install-AksHci](./reference/ps/install-akshci.md), this error occurred: _Error: Failed to wait for addon arc-onboarding_.
 
 To resolve this issue, use the following steps:
 
@@ -131,7 +131,7 @@ To resolve this issue, use the following steps:
 
 ## Install-AksHci sometimes fails because the nodes did not reach an Active state
 
-After running `Uninstall-AksHci`, `Install-AksHci` sometimes fails with a "Nodes have not reached Active state" error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
+After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) sometimes fails with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
 
 This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps) works.
 
@@ -328,8 +328,8 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 2. If you get a response back and no time-out, then the basic network path is working. 
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
-## An **Unable to acquire token** error appears when running Set-AksHciRegistration
-An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
+## An _Unable to acquire token_ error appears when running Set-AksHciRegistration
+An *Unable to acquire token* error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
 
 ## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
 
