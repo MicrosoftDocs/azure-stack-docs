@@ -10,7 +10,9 @@ author: mkostersitz
 
 # Get support for Azure Kubernetes Services on Azure Stack HCI
 
-If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, this topic describes the steps you need to run to open a support request. 
+If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, this article describes the steps you need to run to open a support request.
+
+## Go to Help + support in the Azure portal
 
 1. Log into the [Azure portal](https://portal.azure.com).
 2. Browse to the subscription you are using for Azure Kubernetes Services on Azure Stack HCI.
@@ -18,7 +20,7 @@ If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, thi
 
     ![Azure portal Help and Support top menu](media/support/help-support-icon.png)
 
-   Or, you can find Support and Troubleshooting in the left-hand pane:
+   Or, you can go to **Support + troubleshooting** from a resource menu in the left-hand pane:
 
     ![Azure portal Help and Support sidebar](media/support/new-support-request-sidebar.png)
 
@@ -32,7 +34,7 @@ If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, thi
 
     ![Select AKS on Azure Stack HCI product](media/support/basic-select-service.png)
  
-7. Select the appropriate **Problem** type from the dropdown menu for your issue (such as Kubernetes), and then select the **Next: Solutions** button at the bottom left of the screen:
+7. Select the appropriate **Problem** type from the dropdown menu for your issue (for example, Kubernetes), and then select the **Next: Solutions** button at the bottom left of the screen:
 
     ![Enter Problem Type](media/support/basics-problem-type.png)
 
