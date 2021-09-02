@@ -68,7 +68,7 @@ If you experience this issue, run the following steps:
 
 When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
 
-## _Install-AksHci_ timed out with an error
+## Install-AksHci timed out with an error
 
 After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
 
@@ -117,7 +117,27 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
-## When multiple versions of the PowerShell modules are installed, Windows Admin Center does not pick the latest version
+## Install-AksHci fails due to an Azure Arc onboarding failure
+
+After running [Install-AksHci](./reference/ps/install-akshci.md), the following error occurred: **Error: Failed to wait for addon arc-onboarding**.
+
+To resolve this issue, use the following steps:
+
+1. Run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md).
+2. Open the Azure portal and navigate to the resource group you used when running `Install-AksHci`.
+3. Check for any connected cluster resources that appear in a _Disconnected_ state with a name shown as a randomly generated GUID. 
+4. Delete these resources.
+5. Attempt to run `Install-AksHci` again.
+
+## Install-AksHci sometimes fails because the nodes did not reach an Active state
+
+After running `Uninstall-AksHci`, `Install-AksHci` sometimes fails with a "Nodes have not reached Active state" error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and open a new session before running `Install-AksHci`. This issue can also appear when deploying using Windows Admin Center. 
+
+This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-<guid>. 
+
+While the deployment is hung, manually check on each node to see if Resolve-DnsName < > works
+
+## When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
