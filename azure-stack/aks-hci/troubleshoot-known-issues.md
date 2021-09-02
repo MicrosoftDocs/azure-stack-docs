@@ -139,7 +139,7 @@ This error message is an infrastructure issue that happens if the node agent is 
 
 When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired.
 
-To resolve this issue, run `Uninstall-AksHci` and attempt to run the build again. 
+To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build. 
 
 ## When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
