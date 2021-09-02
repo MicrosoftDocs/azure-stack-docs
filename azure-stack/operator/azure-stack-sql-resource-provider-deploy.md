@@ -67,7 +67,7 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
    - When deploying SQL Server resource provider V1, place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
    - When deploying SQL Server resource provider V2, prepare the certificate for the following installation steps.
 
-### Disconnected Scenario
+### Disconnected scenario
 
 When deploying SQL Server resource provider V2 in a disconnected scenario, follow the [download marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) instruction to download the SQL Server resource provider item and Add-on RP Windows Server item to your Azure Stack Hub environment. 
 
