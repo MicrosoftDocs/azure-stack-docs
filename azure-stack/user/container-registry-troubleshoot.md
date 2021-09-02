@@ -17,7 +17,7 @@ ms.lastreviewed: 08/20/2021
 
 You can find common solutions to issues found when using Azure Container Registry (ACR) on Azure Stack Hub
 
-## Enable Diagnostic Collection Settings
+## Enable diagnostic collection settings
 
 Platform metrics and the activity log are collected and stored automatically but can be routed to other locations by using a diagnostic setting.
 
