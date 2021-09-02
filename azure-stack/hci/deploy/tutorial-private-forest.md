@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/01/2021
+ms.date: 09/02/2021
 ---
 
 # Tutorial: Create a private forest environment for Azure Stack HCI
@@ -43,7 +43,7 @@ Connect to the physical server on which you'll create the VM-based lab. If youâ€
 
 ## Download Azure Stack HCI
 
-Launch a web browser on the server and visit the [Azure Stack HCI product page](https://azure.microsoft.com/products/azure-stack/hci/). Select "Register for a free trial," complete the short registration form, check the box that you agree with licensing and privacy terms, and click submit. Select **Download Azure Stack HCI**, which will trigger an ISO download.
+Launch a web browser on the server and visit the [Azure Stack HCI product page](https://azure.microsoft.com/products/azure-stack/hci/). Select "Register for a free trial," complete the short registration form, check the box indicating that you agree with licensing and privacy terms, and click submit. Select **Download Azure Stack HCI**, which will trigger an ISO download.
 
 ## Download Windows Server
 
@@ -51,7 +51,7 @@ Youâ€™ll also need a copy of Windows Server 2022, 2019, or 2016 for the domain c
 
 ## Create a folder for the lab files
 
-Create a **Lab** folder at the root of your C drive (or wherever you prefer), and use File Explorer to copy the OS files you downloaded to C:\Lab\Isos\
+Create a **Lab** folder at the root of your C drive (or wherever you prefer), and use File Explorer to copy the OS files you downloaded to the **C:\Lab\Isos** folder.
 
 ## Download MSLab scripts
 
