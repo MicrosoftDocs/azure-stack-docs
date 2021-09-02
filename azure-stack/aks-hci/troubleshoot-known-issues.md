@@ -119,25 +119,25 @@ The issue was resolved after deleting the configuration and restarting the VM wi
 
 ## Install-AksHci fails due to an Azure Arc onboarding failure
 
-After running [Install-AksHci](./reference/ps/install-akshci.md), this error occurred: _Error: Failed to wait for addon arc-onboarding_.
+After running [Install-AksHci](./reference/ps/install-akshci.md), a _Failed to wait for addon arc-onboarding_ error occurred.
 
 To resolve this issue, use the following steps:
 
-1. Run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md).
+1. Open PowerShell and run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md).
 2. Open the Azure portal and navigate to the resource group you used when running `Install-AksHci`.
-3. Check for any connected cluster resources that appear in a _Disconnected_ state with a name shown as a randomly generated GUID. 
-4. Delete these resources.
-5. Attempt to run `Install-AksHci` again.
+3. Check for any connected cluster resources that appear in a _Disconnected_ state and include a name shown as a randomly generated GUID. 
+4. Delete these cluster resources.
+5. Close the PowerShell session and open new session before running `Install-AksHci` again.
 
-## Install-AksHci sometimes fails because the nodes did not reach an Active state
+## Install-AksHci fails because the nodes did not reach an Active state
 
-After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) sometimes fails with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
+After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) may fail with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
 
 This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps) works.
 
-## When running Get-AksHciCluster, a release version not found error occurs
+## When running Get-AksHciCluster, a _release version not found_ error occurs
 
-When running Get-AksHciCluster to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running Get-AksHciVersion, it showed the same version was installed. This error indicates that the build is expired.
+When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired.
 
 To resolve this issue, run `Uninstall-AksHci` and attempt to run the build again. 
 
