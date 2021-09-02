@@ -23,9 +23,9 @@ Users of ACR on Azure Stack Hub have troubleshooting guidance available for self
 1.  Open the Azure Stack Hub administration portal, and then open **Container Registries**.
 2.  Select **Registries** under **User Resources**.
 3.  Search for the name of the registry in the list view  
-    [ ![Search for the name of the registry.](./media/container-registries-troubleshoot/search-for-container-registry.png) ](./media/container-registries-troubleshoot#lightbox)
+    [ ![Search for the name of the registry.](./media/container-registries-troubleshoot/search-for-container-registry.png) ](./media/container-registries-troubleshoot/search-for-container-registry.png#lightbox)
 4.  Select the registry to view the detail  
-    [ ![Select the registry to view the detail.](./media/container-registries-troubleshoot/details-for-container-registry.png) ](./media/details-for-container-registry.png#lightbox)
+    [ ![Select the registry to view the detail.](./media/container-registries-troubleshoot/details-for-container-registry.png) ](./media/container-registries-troubleshoot/details-for-container-registry.png#lightbox)
 5.  Copy the **Resource ID** field.
 
 ## Collect logs for support
