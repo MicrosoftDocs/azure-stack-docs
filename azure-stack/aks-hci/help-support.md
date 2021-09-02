@@ -40,6 +40,6 @@ If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, thi
 
     ![Illustrates the recommended articles for the support request](media/support/solutions-page.png)
 
-9. If the solutions are not applicable, complete the remainder of the information on the **Details** page, review it, and then create the request for support.
+9. If the solutions are not applicable, complete the remainder of the information on the **Details** page, and then click **Review + create** to review and create the request for support.
 
     ![Create a new Support Request](media/support/service-request-details.png)
