@@ -80,7 +80,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 
 ## Step 3: Connect to Azure Arc using the Aks-Hci PowerShell module
 
-Connect your AKS on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes using the [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) PowerShell command. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace.
+Connect your AKS on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes using the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace.
 
 ```PowerShell
 Enable-AksHciArcConnection -name mynewcluster 
@@ -101,7 +101,7 @@ Make sure the service principal used in the command above has the "Owner", "Cont
 
 ## Verify connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [enable-akshciarcconnection](./enable-akshciarcconnection.md) PowerShell command.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [enable-akshciarcconnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command.
 
 > [!NOTE]
 > After onboarding the cluster, it takes around five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in Azure portal.
@@ -126,7 +126,7 @@ Azure Arc-enabled Kubernetes consists of a few agents (operators) that run in yo
 
 ## Disconnect your AKS on Azure Stack HCI cluster from Azure Arc
 
-If you want to disconnect your cluster from Azure Arc enabled Kubernetes, run the [Disable-AksHciArcConnection](./disable-akshciarcconnection.md) PowerShell command. Make sure you login to Azure before running the command.
+If you want to disconnect your cluster from Azure Arc enabled Kubernetes, run the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) PowerShell command. Make sure you login to Azure before running the command.
 
 ```powershell
 Disable-AksHciArcConnection -Name mynewcluster

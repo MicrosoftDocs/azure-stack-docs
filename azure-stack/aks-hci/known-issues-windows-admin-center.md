@@ -45,7 +45,7 @@ There are inconsistencies in network field names showing up in the host cluster 
 The error "Cannot index into a null array" appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
-If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./uninstall-akshci.md) from a PowerShell administrative window.
+If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.
 
 ## IPv6 must be disabled in the hosting environment
 If both IPv4 and IPv6 addresses are bound to the physical NIC, the `cloudagent` service for clustering uses the IPv6 address for communication. Other components in the deployment framework only use IPv4. This issue will result in Windows Admin Center unable to connect to the cluster and will report a failure when trying to remotely connect to the machine. The workaround is to disable IPv6 the physical network adapters.

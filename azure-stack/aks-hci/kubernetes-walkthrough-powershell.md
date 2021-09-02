@@ -50,7 +50,7 @@ Import-Module AksHci
 ```powershell
 Get-Command -Module AksHci
 ```
-To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./akshci.md).
+To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./reference/ps/index.md).
 
 
 ### Register the resource provider to your subscription
@@ -82,7 +82,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 
 ## Step 1: Prepare your machine(s) for deployment
 
-Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](initialize-akshcinode.md) command.
+Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
 
 ```powershell
 Initialize-AksHciNode
@@ -104,7 +104,7 @@ Name        SwitchType     NetAdapterInterfaceDescription
 extSwitch   External       Mellanox ConnectX-3 Pro Ethernet Adapter
 ```
 
-To create a virtual network for the nodes in your deployment to use, create an environment variable with the **New-AksHciNetworkSetting** PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](.\new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
+To create a virtual network for the nodes in your deployment to use, create an environment variable with the **New-AksHciNetworkSetting** PowerShell command. This will be used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, visit [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
 
 ```powershell
 #static IP
@@ -116,7 +116,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 
 ## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
@@ -129,7 +129,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 
 ## Step 4: Log in to Azure and configure registration settings
 
-Run the following [Set-AksHciRegistration](set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the East US, Southeast Asia, or West Europe Azure regions to proceed.
+Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the East US, Southeast Asia, or West Europe Azure regions to proceed.
 
 ```powershell
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
@@ -145,7 +145,7 @@ Install-AksHci
 
 ## Step 6: Create a Kubernetes cluster
 
-After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, please visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
+After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, please visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType Linux
@@ -153,7 +153,7 @@ New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osTy
 
 ### Check your deployed clusters
 
-To get a list of your deployed Kubernetes clusters, run the following [Get-AksHciCluster](get-akshcicluster.md) PowerShell command.
+To get a list of your deployed Kubernetes clusters, run the following [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) PowerShell command.
 
 ```powershell
 Get-AksHciCluster
@@ -173,7 +173,7 @@ Name                  : mycluster
 > [!NOTE]
 > If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
 
-To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](get-akshcinodepool.md) PowerShell command.
+To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md) PowerShell command.
 
 ```powershell
 Get-AksHciNodePool -clusterName mycluster
@@ -191,7 +191,7 @@ Phase        : Deployed
 
 ## Step 7: Connect your cluster to Arc enabled Kubernetes
 
-Connect your cluster to Arc enabled Kubernetes by running the [Enable-AksHciArcConnection](enable-akshciarcconnection.md) command. The below example connects your AKS on Azure Stack HCI cluster to Arc using the subscription and resource group details you passed in the `Set-AksHciRegistration` command.
+Connect your cluster to Arc enabled Kubernetes by running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command. The below example connects your AKS on Azure Stack HCI cluster to Arc using the subscription and resource group details you passed in the `Set-AksHciRegistration` command.
 
 ```powershell
 Connect-AzAccount
@@ -200,7 +200,7 @@ Enable-AksHciArcConnection -name mycluster
 
 ## Scale a Kubernetes cluster
 
-If you need to scale your cluster up or down, you can change the number of control plane nodes using the [Set-AksHciCluster](./set-akshcicluster.md) command, and you can change the number of Linux or Windows worker nodes in your node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+If you need to scale your cluster up or down, you can change the number of control plane nodes using the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command, and you can change the number of Linux or Windows worker nodes in your node pool using the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command.
 
 To scale control plane nodes, run the following command.
 
@@ -217,7 +217,7 @@ Set-AksHciNodePool –clusterName mycluster -name linuxnodepool -count 3
 
 ## Access your clusters using kubectl
 
-To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl. You can also use kubectl to [deploy applications using Helm](./helm-deploy.md).
+To access your Kubernetes clusters using kubectl, run the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command. This will use the specified cluster's kubeconfig file as the default kubeconfig file for kubectl. You can also use kubectl to [deploy applications using Helm](./helm-deploy.md).
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -233,7 +233,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Get logs
 
-To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs.md) command. This command will create an output zipped folder called `akshcilogs.zip` in your working directory. The full path to the `akshcilogs.zip` folder will be the output after running the command below.
+To get logs from your all your pods, run the [Get-AksHciLogs](./reference/ps/get-akshcilogs.md) command. This command will create an output zipped folder called `akshcilogs.zip` in your working directory. The full path to the `akshcilogs.zip` folder will be the output after running the command below.
 
 ```powershell
 Get-AksHciLogs

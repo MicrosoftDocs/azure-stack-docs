@@ -12,7 +12,7 @@ ms.reviewer:
 This article describes known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review some [known issues](known-issues-windows-admin-center.md) that are specific to using Windows Admin Center.
 
 ## Cloud agent may fail to start successfully when using path names with spaces in them
-When using [Set-AksHciConfig](set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
+When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
 
 ```powershell
 Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
@@ -25,22 +25,22 @@ When applying the platform configuration, the network proxy server blocked HTTP 
 The user agent will be updated to **Google Chrome 91** in the next release.
 
 ## The Windows or Linux node count cannot be seen when Get-AksHciCluster is run
-If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](get-akshcicluster.md), you will get an empty string or null value as your output.
+If you provision an AKS cluster on Azure Stack HCI with zero Linux or Windows nodes, when you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), you will get an empty string or null value as your output.
 
 ## Uninstall-AksHciAdAuth fails with an error
-If [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
+If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays the following error: [Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]. You should ignore this error for now as this issue will be fixed.
 
-## Uninstall-AksHCI is not cleaning up cluster resources (ownergroup ca-<GUID>)
-Due to insufficient permissions in Active Directory, [Uninstall-AksHci](uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
+## Uninstall-AksHCI is not cleaning up cluster resources (`ownergroup ca-<GUID>`)
+Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
 
 ## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
-If you run [Uninstall-AksHci](./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
+If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
 ## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
 The error **Cannot index into a null array** appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
-When running [Set-AksHciConfig](./set-akshciconfig.md), you might encounter the following error:
+When running [Set-AksHciConfig](./reference/ps/./set-akshciconfig.md), you might encounter the following error:
 
 ```powershell
 WinRM service is already running on this machine.
