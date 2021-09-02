@@ -17,6 +17,10 @@ ms.lastreviewed: 08/20/2021
 
 You can install the Azure Container Registry (ACR) on Azure Stack Hub and make it available to your users so that they can host containers in your environment. To install the ACR, you will need to generate and validate a certificate and install the ACR. You can install through the Azure Stack Hub administrative portal.
 
+
+>[!IMPORTANT] 
+>Once installed, Azure Container Registry on Azure Stack Hub is considered a foundational RP and cannot be uninstalled. Operators can still restrict user access to the ACR service through offers, plans, and quotas.
+
 ## Prerequisites
 
 * **Azure Stack Hub version**  
@@ -40,7 +44,7 @@ You can use the following steps to generate ACR certificate using The Azure Stac
 2. Run the following cmdlets:
 
     ```powershell  
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2100.1448.484
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     New-Item -ItemType Directory "$ENV:USERPROFILE\Documents\AzsCertRequests"
                 $certificateRequestParams = @{
                     'regionName' = 'azurestack'

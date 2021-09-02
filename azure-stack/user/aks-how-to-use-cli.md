@@ -53,7 +53,7 @@ This is the output from a Linux machine:
 ![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 ### [Other Linux](#tab/linux)
 
-For other Linux machines, down and install from https://aka.ms/ash-aks-cli-linux.
+For other Linux machines, download and install from https://aka.ms/ash-aks-cli-linux.
 
 After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
