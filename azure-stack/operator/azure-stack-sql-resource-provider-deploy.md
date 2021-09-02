@@ -69,7 +69,7 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 
 ### Disconnected Scenario
 
-When deploying SQL Server resource provider V2 in a disconnected scenario, follow the [download marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) distruction to download the SQL Server resource provider item and Add-on RP Windows Server item to your Azure Stack Hub environment. 
+When deploying SQL Server resource provider V2 in a disconnected scenario, follow the [download marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) instruction to download the SQL Server resource provider item and Add-on RP Windows Server item to your Azure Stack Hub environment. 
 
 When deploying SQL Server resource provider V1 in a disconnected scenario, complete the following steps to download the required PowerShell modules and register the repository manually.
 
