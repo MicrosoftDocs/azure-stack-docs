@@ -131,11 +131,15 @@ To resolve this issue, use the following steps:
 
 ## Install-AksHci sometimes fails because the nodes did not reach an Active state
 
-After running `Uninstall-AksHci`, `Install-AksHci` sometimes fails with a "Nodes have not reached Active state" error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and open a new session before running `Install-AksHci`. This issue can also appear when deploying using Windows Admin Center. 
+After running `Uninstall-AksHci`, `Install-AksHci` sometimes fails with a "Nodes have not reached Active state" error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
 
-This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-<guid>. 
+This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps) works.
 
-While the deployment is hung, manually check on each node to see if Resolve-DnsName < > works
+## When running Get-AksHciCluster, a release version not found error occurs
+
+When running Get-AksHciCluster to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running Get-AksHciVersion, it showed the same version was installed. This error indicates that the build is expired.
+
+To resolve this issue, run `Uninstall-AksHci` and attempt to run the build again. 
 
 ## When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
