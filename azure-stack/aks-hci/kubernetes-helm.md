@@ -21,7 +21,7 @@ This article shows you how to configure and use Helm in a Kubernetes cluster on 
 Verify that you have the following set up:
 
 * An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands, if you prefer this to PowerShell.
 
