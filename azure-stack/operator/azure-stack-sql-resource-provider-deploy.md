@@ -286,7 +286,7 @@ When the resource provider installation script finishes, refresh your browser to
 If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed SQL Server resource provider has outbound internet connectivity. 
 
 ::: moniker range=">=azs-2108"
-If there is a need to get the IP of the VM that has installed SQL Server resource provider (i.e. add the IP to your firewall allow list), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the SQL Server resource provider subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.
+If there is a need to get the IP of the VM that has installed SQL Server resource provider (i.e. add the IP to your firewall allowlist), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the SQL Server resource provider subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.
 ::: moniker-end
 
 ## Next steps
