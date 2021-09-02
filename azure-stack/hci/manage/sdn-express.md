@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 08/04/2021
+ms.date: 09/01/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -129,7 +129,7 @@ The `NCs = @()` section is used for the Network Controller VMs. Make sure that t
 
 A minimum of two Software Load Balancer VMs are recommended for SDN.
 
-The `Muxes = @()` section is used for the SLB VMs. Make sure that the `MACAddress` and `PAMACAddress` parameters of each SLB VM are outside the `SDNMACPool` range listed in the General settings. Ensure that you get the `PAIPAddress` parameter from the end of the PA Pool specified in the configuration file.
+The `Muxes = @()` section is used for the SLB VMs. Make sure that the `MACAddress` and `PAMACAddress` parameters of each SLB VM are outside the `SDNMACPool` range listed in the General settings. Ensure that you get the `PAIPAddress` parameter from outside the PA Pool specified in the configuration file, but part of the PASubnet specified in the configuration file.
 
 Leave this section empty (`Muxes = @()`) if not deploying the SLB component:
 

@@ -83,7 +83,7 @@ Microsoft On-premises Cloud (MOC) is the management stack that enables virtual m
 - A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI cluster and is configured to fail over to another node.
 - A `node agent` running on every Azure Stack HCI physical node. 
 
-To enable communication with MOC, you need to provide the IP Address CIDR to be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
+To enable communication with MOC, you need to provide the IP Address CIDR to be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
 
 The choice of an IP address for the MOC service depends on the underlying networking model used by your Azure Stack HCI cluster deployment.
 

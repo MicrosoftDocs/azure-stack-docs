@@ -11,13 +11,66 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
+## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
+
+The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
+
+If you experience this issue, run the following steps:
+
+1. Save the script below as a file named _fix_leaked_secrets.ps1_:
+
+   ```
+   upgparam (
+   [Parameter(Mandatory=$true)]
+   [string] $ClusterName,
+   [Parameter(Mandatory=$true)]
+   [string] $ManagementKubeConfigPath
+   )
+
+   $ControlPlaneHostName = kubectl get nodes --kubeconfig $ManagementKubeConfigPath -o=jsonpath='{.items[0].metadata.name}'
+   "Hostname is: $ControlPlaneHostName"
+
+   $leakedSecretPath1 = "$ClusterName-template-secret-akshci-cc"
+   $leakedSecretPath2 = "$ClusterName-moc-kms-plugin"
+   $leakedSecretPath3 = "$ClusterName-kube-vip"
+   $leakedSecretPath4 = "$ClusterName-template-secret-akshc"
+   $leakedSecretPath5 = "$ClusterName-linux-template-secret-akshci-cc"
+   $leakedSecretPath6 = "$ClusterName-windows-template-secret-akshci-cc"
+
+   $leakedSecretNameList = New-Object -TypeName 'System.Collections.ArrayList';
+   $leakedSecretNameList.Add($leakedSecretPath1) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath2) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath3) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath4) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath5) | Out-Null
+   $leakedSecretNameList.Add($leakedSecretPath6) | Out-Null
+
+   foreach ($leakedSecretName in $leakedSecretNameList)
+   {
+   "Deleting secrets with the prefix $leakedSecretName"
+   $output = kubectl --kubeconfig $ManagementKubeConfigPath exec etcd-$ControlPlaneHostName -n kube-system -- sh -c "ETCDCTL_API=3 etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --key /etc/kubernetes/pki/etcd/server.key --cert /etc/kubernetes/pki/etcd/server.crt del /registry/secrets/default/$leakedSecretName --prefix=true"
+   "Deleted: $output"
+   }
+   ```
+2. Next, run the following command using the _fix_secret_leak.ps1_ file you saved:
+   
+   ```powershell
+      .\fix_secret_leak.ps1 -ClusterName (Get-AksHciConfig).Kva.KvaName -ManagementKubeConfigPath (Get-AksHciConfig).Kva.Kubeconfig
+   ```
+
+3. Finally, use the following PowerShell command to repeat the upgrade process:
+
+   ```powershell
+      Update-AksHci
+   ```
+
 ## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at _Update-KvaInternal_
 
-When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
+When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
 
 ## _Install-AksHci_ timed out with an error
 
-After running [Install-AksHci](install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
+After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
 
 ```Output
 \kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
@@ -45,7 +98,7 @@ ipconfig /all
 
 In the displayed configuration settings, confirm the configuration. You could also attempt to ping the IP gateway and DNS server. 
 
-If these methods don't work, use [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) to change the configuration.
+If these methods don't work, use [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) to change the configuration.
 
 ### Reason 2: Incorrect DNS server
 If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
@@ -68,7 +121,7 @@ The issue was resolved after deleting the configuration and restarting the VM wi
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
-If your installation fails using [Install-AksHci](./uninstall-akshci.md), you should run [Uninstall-AksHci](./uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
+If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshci.md), you should run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
 
 ## During deployment, the error _Waiting for pod ‘Cloud Operator’ to be ready_ appears
 
@@ -98,7 +151,7 @@ After performing these steps, the container image pull should be unblocked.
 
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
-When running the [Update-AksHci](update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
+When running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
 
 This issue could have the following root causes:
 
@@ -134,7 +187,7 @@ This issue could have the following root causes:
 
 ## Using Remote Desktop to connect to the management cluster produces a connection error
 
-When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running the [Get-AksHciCluster](get-akshcicluster.md) command, an error appears and says the connection failed because the host failed to respond.
+When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running the [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) command, an error appears and says the connection failed because the host failed to respond.
 
 The reason for the connection failure is because some PowerShell commands that use `kubeconfig-mgmt` fail with an error similar to the following one:
 
@@ -157,7 +210,7 @@ This issue occurs because the Windows nodes are over-provisioned, and there's no
 
 ## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
 
-When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
+When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](./reference/ps/remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
 
 Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. This issue occurs because the VHD is in shared storage, and the evicted node does not have access to it.
 
@@ -169,7 +222,7 @@ To resolve this issue, remove a physical node from the cluster and then follow t
 4. Run `Add-AksHciNode` to register the node with CloudAgent.
 
 ## An Arc connection on an AKS cluster cannot be enabled after disabling it.
-To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
+To enable an Arc connection, after disabling it, run the following [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
 
 ```powershell
 Get-AksHciCredential -Name myworkloadcluster
@@ -215,7 +268,7 @@ To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to tu
 ## Attempt to increase the number of worker nodes fails
 When using PowerShell to create a cluster with static IP and then attempt to increase the number of worker nodes in the workload cluster, the installation got stuck at _control plane count at 2, still waiting for desired state: 3_. After a period of time, another error message appears: _Error: timed out waiting for the condition_.
 
-When [Get-AksHciCluster](./get-akshcicluster.md) was run, it showed that the control plane nodes were created and provisioned and were in a _Ready_ state. However, when `kubectl get nodes` was run, it showed that the control plane nodes had been created but not provisioned and were not in a _Ready_ state.
+When [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) was run, it showed that the control plane nodes were created and provisioned and were in a _Ready_ state. However, when `kubectl get nodes` was run, it showed that the control plane nodes had been created but not provisioned and were not in a _Ready_ state.
 
 If you get this error, verify that the IP addresses have been assigned to the created nodes using either Hyper-V Manager or PowerShell:
 
@@ -252,7 +305,7 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
 ## An **Unable to acquire token** error appears when running Set-AksHciRegistration
-An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./set-akshciregistration.md). 
+An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
 
 ## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
 
