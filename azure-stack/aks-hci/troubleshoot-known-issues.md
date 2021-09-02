@@ -68,9 +68,9 @@ If you experience this issue, run the following steps:
 
 When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
 
-## _Install-AksHci_ timed out with an error
+## Install-AksHci timed out with an error
 
-After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following **waiting for API server** error message:
+After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following _waiting for API server_ error message:
 
 ```Output
 \kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
@@ -81,7 +81,7 @@ did not properly respond after a period of time, or established connection
 failed because connected host has failed to respond.]
 ```
 
-There are multiple reasons why an installation might fail with the **waiting for API server** error. See the following sections for possible causes and solutions for this error.
+There are multiple reasons why an installation might fail with the _waiting for API server_ error. See the following sections for possible causes and solutions for this error.
 
 ### Reason 1: Incorrect IP gateway configuration
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
@@ -117,7 +117,31 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
-## When multiple versions of the PowerShell modules are installed, Windows Admin Center does not pick the latest version
+## Install-AksHci fails due to an Azure Arc onboarding failure
+
+After running [Install-AksHci](./reference/ps/install-akshci.md), a _Failed to wait for addon arc-onboarding_ error occurred.
+
+To resolve this issue, use the following steps:
+
+1. Open PowerShell and run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md).
+2. Open the Azure portal and navigate to the resource group you used when running `Install-AksHci`.
+3. Check for any connected cluster resources that appear in a _Disconnected_ state and include a name shown as a randomly generated GUID. 
+4. Delete these cluster resources.
+5. Close the PowerShell session and open new session before running `Install-AksHci` again.
+
+## Install-AksHci fails because the nodes did not reach an Active state
+
+After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) may fail with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
+
+This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps) works.
+
+## When running Get-AksHciCluster, a _release version not found_ error occurs
+
+When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired.
+
+To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build. 
+
+## When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
@@ -162,7 +186,7 @@ This issue could have the following root causes:
    The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
 
 * **Reason three**:
-   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to hang. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
+   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
 
    1. Run the following command to edit the pod settings:
 
@@ -304,8 +328,8 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 2. If you get a response back and no time-out, then the basic network path is working. 
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
-## An **Unable to acquire token** error appears when running Set-AksHciRegistration
-An **Unable to acquire token** error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
+## An _Unable to acquire token_ error appears when running Set-AksHciRegistration
+An *Unable to acquire token* error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
 
 ## When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
 
