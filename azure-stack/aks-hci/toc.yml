@@ -198,6 +198,8 @@
     href: pricing.md
   - name: Support policies
     href: support-policies.md
+  - name: Get support
+    href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
