@@ -30,7 +30,7 @@ Once completed, you'll be able to create an Azure Stack HCI cluster using the VM
 
 To complete this tutorial, you need:
 
-- Admin privileges on a Hyper-V host server runnning Windows Server 2022, Windows Server 2019, or Windows Server 2016
+- Admin privileges on a Hyper-V host server running Windows Server 2022, Windows Server 2019, or Windows Server 2016
 - At least 8 GB RAM
 - CPU with nested virtualization support
 - Solid state drives (SSD)
@@ -189,7 +189,7 @@ Take note of the IP addresses of the network adapters on the AdminCenter VM. App
 
 ### Install operating system updates on the Azure Stack HCI VMs
 
-Start the Azure Stack HCI VMs using Hyper-V Manager on the virtulization host. Connect to each VM, and download and install security updates using Sconfig on each of them. You may need to restart the VMs multiple times. (You can skip this step if you’d rather install the OS updates later as part of the cluster creation wizard).
+Start the Azure Stack HCI VMs using Hyper-V Manager on the virtualization host. Connect to each VM, and download and install security updates using Sconfig on each of them. You may need to restart the VMs multiple times. (You can skip this step if you’d rather install the OS updates later as part of the cluster creation wizard).
 
 ### Enable the Hyper-V role on the Azure Stack HCI VMs
 
