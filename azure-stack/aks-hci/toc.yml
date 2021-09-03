@@ -155,6 +155,8 @@
             href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
+          - name: Deploy Linux applications
+            href: deploy-linux-application.md
     - name: Troubleshoot
       items:
           - name: Known issues
@@ -190,12 +192,14 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
-  - name: PowerShell
-    href: AksHci.md
+  - name: AksHci PowerShell
+    href: ./reference/ps/index.md
   - name: Pricing
     href: pricing.md
   - name: Support policies
     href: support-policies.md
+  - name: Get support
+    href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
