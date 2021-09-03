@@ -18,9 +18,9 @@ summary: |
   This article addresses frequently asked questions and known issues about Azure Container Registry.
 
   For registry troubleshooting guidance, see:
-  * [Troubleshoot registry login](/azure/aks/container-registry-troubleshoot-login)
-  * [Troubleshoot network issues with registry](/azure/aks/container-registry-troubleshoot-access)
-  * [Troubleshoot registry performance](/azure/aks/container-registry-troubleshoot-performance)
+  * [Troubleshoot registry login](/azure/container-registry/container-registry-troubleshoot-login)
+  * [Troubleshoot network issues with registry](/azure/container-registry/container-registry-troubleshoot-access)
+  * [Troubleshoot registry performance](/azure/container-registry/container-registry-troubleshoot-performance)
   
 
 sections:
@@ -39,13 +39,13 @@ sections:
       - question: |
           How do I configure Kubernetes with Azure Container Registry?
         answer: |
-          See the documentation for [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) and steps for [Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration).
+          See the documentation for [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) and steps for [Azure Kubernetes Service](/azure/container-registry/cluster-container-registry-integration).
           
       - question: |
           How do I get admin credentials for a container registry?
         answer: |
           > [!IMPORTANT]
-          > The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](/azure/aks/container-registry-authentication).
+          > The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](/azure/container-registry/container-registry-authentication).
           
           Before getting admin credentials, make sure the registry's admin user is enabled.
           
@@ -65,7 +65,7 @@ sections:
           How do I get admin credentials in a Resource Manager template?
         answer: |
           > [!IMPORTANT]
-          > The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](/azure/aks/container-registry-authentication).
+          > The admin user account is designed for a single user to access the registry, mainly for testing purposes. We do not recommend sharing the admin account credentials with multiple users. Individual identity is recommended for users and service principals for headless scenarios. See [Authentication overview](/azure/container-registry/container-registry-authentication).
           
           Before getting admin credentials, make sure the registry's admin user is enabled.
           
@@ -113,7 +113,7 @@ sections:
           > [!NOTE] 
           > You can add `-y` in the delete command to skip confirmation.
           
-          For more information, see [Delete container images in Azure Container Registry](/azure/aks/container-registry-delete).
+          For more information, see [Delete container images in Azure Container Registry](/azure/container-registry/container-registry-delete).
           
       - question: |
           Why does the registry quota usage not reduce after deleting images?
@@ -188,7 +188,7 @@ sections:
       - question:  |
           How do I grant access to pull or push images without permission to manage the registry resource?
         answer: |
-          ACR supports [custom roles](/azure/aks/container-registry-roles) that provide different levels of permissions. Specifically, `AcrPull` and `AcrPush` roles allow users to pull and/or push images without the permission to manage the registry resource in Azure.
+          ACR supports [custom roles](/azure/container-registry/container-registry-roles) that provide different levels of permissions. Specifically, `AcrPull` and `AcrPush` roles allow users to pull and/or push images without the permission to manage the registry resource in Azure.
           
           * Azure Stack Hub portal: Your registry -> Access Control (IAM) -> Add (Select `AcrPull` or `AcrPush` for the Role).
           * Azure CLI: Find the resource ID of the registry by running the following command:
@@ -264,7 +264,7 @@ sections:
       - question:  |
           Check health with `az acr check-health`
         answer: |
-          To troubleshoot common environment and registry issues, see [Check the health of an Azure container registry](/azure/aks/container-registry-check-health).
+          To troubleshoot common environment and registry issues, see [Check the health of an Azure container registry](/azure/container-registry/container-registry-check-health).
           
       - question: |
            Docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
@@ -426,9 +426,9 @@ sections:
           Why does my pull or push request fail with disallowed operation?
         answer: |
           Here are some scenarios where operations may be disallowed:
-          * The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository]((/azure/aks/container-registry-image-lock command to view current attributes.
+          * The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository]((/azure/container-registry/container-registry-image-lock command to view current attributes.
           * Some operations are disallowed if the image is in quarantine. Learn more about [quarantine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
-          * Your registry may have reached its [storage limit](/azure/aks/container-registry-skus/#service-tier-features-and-limits).
+          * Your registry may have reached its [storage limit](/azure/container-registry/container-registry-skus/#service-tier-features-and-limits).
           
       - question:  |
           Repository format is invalid or unsupported
@@ -464,5 +464,5 @@ sections:
 additionalContent: |
 
   ## Next steps
-    * [Learn more](/azure/aks/container-registry-intro) about Azure Container Registry.
+    * [Learn more](/azure/container-registry/container-registry-intro) about Azure Container Registry.
 
