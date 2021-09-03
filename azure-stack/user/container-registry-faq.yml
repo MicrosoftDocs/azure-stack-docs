@@ -426,7 +426,7 @@ sections:
           Why does my pull or push request fail with disallowed operation?
         answer: |
           Here are some scenarios where operations may be disallowed:
-          * The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository]((/azure/container-registry/container-registry-image-lock command to view current attributes.
+          * The image or repository maybe locked so that it can't be deleted or updated. You can use the [az acr show repository](/azure/container-registry/container-registry-image-lock) command to view current attributes.
           * Some operations are disallowed if the image is in quarantine. Learn more about [quarantine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
           * Your registry may have reached its [storage limit](/azure/container-registry/container-registry-skus/#service-tier-features-and-limits).
           
