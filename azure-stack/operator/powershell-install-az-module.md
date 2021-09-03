@@ -51,7 +51,13 @@ To use Azure PowerShell in PowerShell 5.1 on Windows:
    [Windows PowerShell 5.1](/powershell/scripting/windows-powershell/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
 2. Install [.NET Framework 4.7.2 or later](/dotnet/framework/install).
-3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force`. 
+3. Make sure you have the latest version of PowerShellGet. Run the following cmdlets:
+
+```powershell  
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
+```
 
 ## 2. Prerequisites for Linux and Mac
 PowerShell Core 6.x or later version is needed. Follow the [link](/powershell/scripting/install/installing-powershell-core-on-windows) for instructions
@@ -78,6 +84,8 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
 1. Run the following command from a PowerShell session to update PowerShellGet to a minimum of version 2.2.3
 
     ```powershell  
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    
     Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
     ```
 
