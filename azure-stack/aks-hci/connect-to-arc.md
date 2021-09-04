@@ -117,5 +117,5 @@ Disable-AksHciArcConnection -Name mynewcluster
 ## Next steps
 
 * [Use GitOps to deploy configurations](/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster)
-* [Enable Azure Monitor to collect metrics and logs](azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json)
-* [Enable Azure Policy addon to enforce admission control](azure/governance/policy/concepts/policy-for-kubernetes?toc=/azure/azure-arc/kubernetes/toc.json)
+* [Enable Azure Monitor to collect metrics and logs](/azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json)
+* [Enable Azure Policy addon to enforce admission control](/azure/governance/policy/concepts/policy-for-kubernetes?toc=/azure/azure-arc/kubernetes/toc.json)
