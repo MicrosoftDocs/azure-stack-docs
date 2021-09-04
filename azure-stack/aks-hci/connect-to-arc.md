@@ -36,7 +36,6 @@ Verify you've the following requirements ready:
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that you have met the [network requirements of Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
 
-
 ## Step 1: Log in to Azure
 
 To log in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
