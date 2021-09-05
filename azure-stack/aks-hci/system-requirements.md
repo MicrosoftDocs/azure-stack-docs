@@ -46,7 +46,7 @@ To check that you have sufficient permissions, follow the information below:
 - If your role is **User**, you must make sure that non-administrators can register applications.
 - To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Azure Active Directory service to check if you have permission to register an application.
 
-If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
+If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
 If you do not have enough permissions to register an application and your admin cannot give you these permissions, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
@@ -57,9 +57,9 @@ To check your access level, navigate to your subscription, click **Access contro
 - If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
    - A user account with the built-in **Owner** role.
    - A service principal with **one of the following** access levels:
-      - The built-in **Kubernetes Cluster - Azure Arc Onboarding** role
-      - The built-in **Contributer** role
-      - The built-in **Owner** role
+      - The built-in [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles#kubernetes-cluster---azure-arc-onboarding) role
+      - The built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role
+      - The built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role
 
 If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
 
@@ -200,15 +200,13 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 <https://storage.googleapis.com/>  | 443 | Cloud Init | Downloading Kubernetes binaries
 <https://azurecliprod.blob.core.windows.net/> | 443 | Cloud Init | Downloading binaries and containers
 <https://aka.ms/installazurecliwindows> | 443 | WAC | Downloading Azure CLI
-<https://443> | 443 | TCP | Used to support Azure Arc agents  
 *.blob.core.windows.net | 443 | TCP | Required for downloads
 *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
 ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
-git://:9418 | 9418 | TCP | Used to support Azure Arc agents
 `https://azurestackhci.azurefd.net` | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
 
 > [!NOTE]
-> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
+> If you are using Azure Arc with your Kubernetes clusters, the network requirements for the same can be found [here](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
 
 ## Storage requirements
 
