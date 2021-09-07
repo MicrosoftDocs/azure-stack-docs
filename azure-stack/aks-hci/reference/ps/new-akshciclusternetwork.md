@@ -71,7 +71,7 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 
 ## Examples
 
-You will need to customize the values given in the examples below for your environment.
+Use the examples below to configure virtual networks with either static IP or DHCP. You'll need to customize the values given in the examples for your environment. After configuring the virtual network with static IP or DHCP, run [New-AksHciCluster](new-akshcicluster.md) to deploy a cluster.
 
 ### Deploy with a static IP environment without a VLAN
 
@@ -96,8 +96,6 @@ PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "Exter
 ```powershell
 PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
 ```
-
-After configuring the virtual network with static IP or DHCP, run [New-AksHciCluster](new-akshcicluster.md) to deploy a cluster.
 
 ## Parameters
 
