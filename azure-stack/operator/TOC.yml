@@ -559,7 +559,7 @@
   - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
-    href: ../reference/pep-2002/    
+    href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI
