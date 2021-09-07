@@ -56,7 +56,7 @@ PS C:\> Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\ImageStore -cloud
 ## Parameters
 
 ### -name
-The descriptive name of your virtual networks. To get a list of the names of your available virtual networks, run the command [Get-AksHciNetworkSetting](./reference/ps/get-akshcinetworksetting.md).
+The descriptive name of your virtual networks. To get a list of the names of your available virtual networks, run the command [Get-AksHciClusterNetwork](get-akshciclusternetwork.md).
 
 ```yaml
 Type: System.String
