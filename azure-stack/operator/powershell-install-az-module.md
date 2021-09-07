@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/30/2021
+ms.date: 09/03/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed:  07/30/202
+ms.lastreviewed:  09/03/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -51,7 +51,13 @@ To use Azure PowerShell in PowerShell 5.1 on Windows:
    [Windows PowerShell 5.1](/powershell/scripting/windows-powershell/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
 2. Install [.NET Framework 4.7.2 or later](/dotnet/framework/install).
-3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force`. 
+3. Make sure you have the latest version of PowerShellGet. Run the following cmdlets:
+
+```powershell  
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
+```
 
 ## 2. Prerequisites for Linux and Mac
 PowerShell Core 6.x or later version is needed. Follow the [link](/powershell/scripting/install/installing-powershell-core-on-windows) for instructions
@@ -78,6 +84,8 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
 1. Run the following command from a PowerShell session to update PowerShellGet to a minimum of version 2.2.3
 
     ```powershell  
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
     Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
     ```
 
@@ -178,17 +186,17 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 4. Register this location as the default repository and install the `AzureRM` and `AzureStack` modules from this repository:
 ::: moniker range=">=azs-2102"
    ```powershell
-   # requires -Version 5
-   # requires -RunAsAdministrator
-   # requires -Module PowerShellGet
-   # requires -Module PackageManagement
+    # requires -Version 5
+    # requires -RunAsAdministrator
+    # requires -Module PowerShellGet
+    # requires -Module PackageManagement
 
-   $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
-   $RepoName = "MyNuGetSource"
+    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
+    $RepoName = "MyNuGetSource"
 
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
     Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.1.1 -Scope AllUsers
 
