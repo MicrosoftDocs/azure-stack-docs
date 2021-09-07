@@ -44,7 +44,7 @@ New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
                          -gateway <String>
                          -dnsServers <String[]>
-                         -ipAddressPrefix <String>
+                         -ipAddressPrefix <String> (Not required)
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
                          -k8sNodeIpPoolStart <IP address> (Not required)
@@ -58,7 +58,7 @@ New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
                          -gateway <String>
                          -dnsServers <String[]>
-                         -ipAddressPrefix <String>
+                         -ipAddressPrefix <String> (Not required)
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
                          -k8sNodeIpPoolStart <IP address> (Not required)
@@ -236,7 +236,7 @@ The vLAN ID for the network specified. If omitted, the network will not be tagge
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Required: False
+Required: False (This parameter is required if you configure a virtual network with a VLAN)
 Position: Named
 Default value: None
 Accept pipeline input: False
