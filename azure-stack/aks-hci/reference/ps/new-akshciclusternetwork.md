@@ -228,13 +228,13 @@ Accept wildcard characters: False
 ```
 
 ### -vlanID
-The vLAN ID for the network specified. If omitted, the network will not be tagged.
+Specifies the VLAN ID for the network. If omitted, the network will not be tagged.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Required: False (This parameter is required if you configure a virtual network with a VLAN)
+Required: False (This parameter is required if you configure a virtual network with a VLAN.)
 Position: Named
 Default value: None
 Accept pipeline input: False
