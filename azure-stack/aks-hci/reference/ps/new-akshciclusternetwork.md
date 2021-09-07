@@ -10,7 +10,7 @@ ms.author: mikek
 # New-AksHciClusterNetwork
 
 ## Synopsis
-Create an object for a new virtual network to be used by target clusters.
+Create an object for a new virtual network(s) to be used by your workload clusters.
 
 ## Syntax
 ```powershell
@@ -29,14 +29,14 @@ New-AksHciClusterNetwork -name <String>
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when creating a new target cluster.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when creating a new workload cluster. You can create as many virtual networks as needed.
 
 ## Examples
 
 ### Deploy with a static IP environment
 
 ```powershell
-PS C:\> $vnet = New-AksHciClusterNetwork -name myVnet1 -vswitchName "External" -macPoolName myMacpool1 -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
+PS C:\> $vnet = New-AksHciClusterNetwork -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
 PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 ```
 
@@ -50,13 +50,13 @@ PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "Exter
 ```
 
 ```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData
+PS C:\> Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet 
 ```
 
 ## Parameters
 
 ### -name
-The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`.
+The descriptive name of your virtual networks. To get a list of the names of your available virtual networks, run the command [Get-AksHciNetworkSetting](./reference/ps/get-akshcinetworksetting.md).
 
 ```yaml
 Type: System.String
