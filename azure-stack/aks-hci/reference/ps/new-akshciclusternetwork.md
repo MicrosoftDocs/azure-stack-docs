@@ -10,9 +10,31 @@ ms.author: mikek
 # New-AksHciClusterNetwork
 
 ## Synopsis
-Create an object for a new virtual network(s) to be used by your workload clusters.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for workload clusters.
 
 ## Syntax
+
+For virtual network DHCP configurations without a VLAN:
+
+```powershell
+New-AksHciClusterNetwork -name <String>
+                         -vswitchName <String>
+                         -vipPoolStart <IP address>
+                         -vipPoolEnd <IP address>
+```
+
+For virtual network DHCP configurations with a VLAN:
+
+```powershell
+New-AksHciClusterNetwork -name <String>
+                         -vswitchName <String>
+                         -vipPoolStart <IP address>
+                         -vipPoolEnd <IP address>
+                        [-vlanID <int>]
+```
+
+For virtual network static IP configurations without a VLAN:
+
 ```powershell
 New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
@@ -22,36 +44,62 @@ New-AksHciClusterNetwork -name <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
                          -k8sNodeIpPoolStart <IP address>
-                         -k8sNodeIpPoolEnd <IP address>
-                        [-vlanID <int>]
-                    
+                         -k8sNodeIpPoolEnd <IP address>                                  
+```
+
+For virtual network static IP configurations with a VLAN:
+
+```powershell
+New-AksHciClusterNetwork -name <String>
+                         -vswitchName <String>
+                         -gateway <String>
+                         -dnsServers <String[]>
+                         -ipAddressPrefix <String>
+                         -vipPoolStart <IP address>
+                         -vipPoolEnd <IP address>
+                         -k8sNodeIpPoolStart <IP address>
+                         -k8sNodeIpPoolEnd <IP address>  
+                        [-vlanID <int>]                                
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when creating a new workload cluster. You can create as many virtual networks as needed.
-
-The required parameters for `New-AksHciClusterNetwork` are: -name, -vswitchName, -ipAddressPrefix, -vipPoolStart, and -vipPoolEnd. The parameters, -gateway and -dnsServers, are required only when creating a network with a static IP. 
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in workload clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when creating a new workload cluster. You can create as many virtual networks as needed.
 
 ## Examples
 
-### Deploy with a static IP environment
+You will need to customize the values given in the examples below for your environment.
+
+### Deploy with a static IP environment without a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciClusterNetwork -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
 PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 ```
 
-> [!NOTE]
-> The values given in this example command will need to be customized for your environment.
+### Deploy with a static IP environment and a VLAN
 
-### Deploy with a DHCP environment
+```powershell
+$vnet = New-AksHciClusterNetwork -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanID 7
+PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
+```
+
+### Deploy with a DHCP environment without a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
+PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 ```
 
 ```powershell
 PS C:\> Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet 
+```
+
+### Deploy with a DHCP environment and a VLAN
+
+```powershell
+PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
+PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
+
 ```
 
 ## Parameters
@@ -122,7 +170,7 @@ Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: external
 Accept pipeline input: False
@@ -164,7 +212,7 @@ The start IP address of a VM pool. The address must be in range of the subnet. T
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
 Required: False
@@ -179,7 +227,7 @@ The end IP address of a VM pool. The address must be in range of the subnet. Thi
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
 Required: False
