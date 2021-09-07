@@ -89,14 +89,15 @@ PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -g
 
 ```powershell
 PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
-PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 ```
+
 ### Deploy with a DHCP environment and a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
-PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 ```
+
+After configuring the virtual network with static IP or DHCP, run [New-AksHciCluster](new-akshcicluster.md) to deploy a cluster.
 
 ## Parameters
 
