@@ -165,12 +165,16 @@ $Settings = @{
 
 **Linux:**
 
-The PUBKEY_URL is the public key for the Nvidia driver repository not for the Linux VM. It is used to install driver for Ubuntu.
+You will need to reference some URLs for your settings.
 
-DKMS_URL is used to get the package to compile the Nvidia kernel module on RedHat/CentOs
-LIS_URL is the URL to download the Linux Integration Service package for RedHat/CentOs, [Linux Integration Services v4.3 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) at URL `https://www.microsoft.com/download/details.aspx?id=55106` by default it is not installed LIS_RHEL_ver is the fallback kernel version that should work with the Nvidia driver. It is used on RedHat/CentOs if the Linux VM's kernel is not compatible with the requested Nvidia driver.
+| URL | Notes |
+| --- | --- |
+| PUBKEY_URL | The PUBKEY_URL is the public key for the Nvidia driver repository not for the Linux VM. It is used to install driver for Ubuntu. |
+| DKMS_URL | DKMS_URL is used to get the package to compile the Nvidia kernel module on RedHat/CentOs. |
+| DRIVER_URL  | DRIVER_URL is the URL to download the Nvidia driver's repository information and it is added to the Linux VM's list of repos. |
+| LIS_URL  | LIS_URL is the URL to download the Linux Integration Service package for RedHat/CentOs, [Linux Integration Services v4.3 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) at URL `https://www.microsoft.com/download/details.aspx?id=55106` by default it is not installed LIS_RHEL_ver is the fallback kernel version that should work with the Nvidia driver. It is used on RedHat/CentOs if the Linux VM's kernel is not compatible with the requested Nvidia driver. |
 
-DRIVER_URL is the url to download the Nvidia driver's repository information and it is added to the Linux VM's list of repos.
+Add the URLs to your settings.
 
 ```powershell 
 $Settings=@{
