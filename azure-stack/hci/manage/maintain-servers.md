@@ -70,7 +70,7 @@ To check if resyncing has completed, connect to the server using Windows Admin C
 
 ## Take a server offline using PowerShell
 
-Use the following procedures to properly pause, drain, and resume a server in an Azure Stack HCI cluster using PowerShell.
+Use the following procedures to properly pause, drain, and resume a server in a failover cluster using PowerShell.
 
 ### Verify it's safe to take the server offline
 
