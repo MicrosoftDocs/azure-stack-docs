@@ -156,18 +156,18 @@ If you are upgrading from a V1 version, refer to the doc [Update the MySQL Serve
   - Review the GPL license of MySQL Connector [here](https://downloads.mysql.com/archives/c-net/) and download version 8.0.21 to a local folder.
 
   - Create a storage account with your default operator subscription, and create a container with the access level "Blob" or "Container".
-    ![Create Storage Account and Container](media/azure-stack-mysql-rp-deploy/8-1-create-storage-account.png)
-    ![Create Storage Account and Container](media/azure-stack-mysql-rp-deploy/8-2-create-storage-container.png)
+    ![Create a storage account](media/azure-stack-mysql-rp-deploy/8-1-create-storage-account.png)
+    ![Create a storage container](media/azure-stack-mysql-rp-deploy/8-2-create-storage-container.png)
 
   - Upload the mysql-connector-net-8.0.21.msi file from your local folder to the newly created storage container.
-    ![Create Storage Account and Container](media/azure-stack-mysql-rp-deploy/8-3-upload-connector.png)
+    ![Uploade MySQL Connector to the container](media/azure-stack-mysql-rp-deploy/8-3-upload-connector.png)
 
   - Copy the blob URI.
 
-    ![Create Storage Account and Container](media/azure-stack-mysql-rp-deploy/8-4-copy-uri.png)
+    ![Copy the MySQL Connector uri](media/azure-stack-mysql-rp-deploy/8-4-copy-uri.png)
 
-  - Go back to the MySQL RP configuration page. Paste the blob URI (e.g. https://<storageAcountName>.blob.<region>.<FQDN>/<containerName>/mysql-connector-net-8.0.21.msi) to the textbox and click OK.
-    ![Marketplace management start RP install](media/azure-stack-mysql-rp-deploy/7-5-provide-connector-uri.png)
+  - Go back to the MySQL RP configuration page. Paste the blob URI (e.g. https://\<storageAccountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi) to the textbox and click OK.
+    ![Provide MySQL Connector URI](media/azure-stack-mysql-rp-deploy/7-5-provide-connector-uri.png)
 
 3. Next you'll see the following page, which indicates that MySQL resource provider is being installed.
    ![Marketplace management RP installing](media/azure-stack-mysql-rp-deploy/7-installing.png)
