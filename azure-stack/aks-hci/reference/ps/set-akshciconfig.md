@@ -2,7 +2,7 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 2/12/2021
+ms.date: 09/02/2021
 author: jessicaguan
 ms.author: jeguan
 ---
@@ -42,7 +42,7 @@ Set-AksHciConfig  -imageDir <String>
 ```
 
 ## Description
-Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the imageDir, workingDir, and cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
+Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the workingDir and cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
 
 ## Examples
 
@@ -78,7 +78,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: %systemdrive%\AksHciImageStore
 Accept pipeline input: False
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -cloudConfigLocation
-The location where the cloud agent will store its configuration. The location can be the same as the path of -imageDir above. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
+The location where the cloud agent will store its configuration. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
 
 ```yaml
 Type: System.String
