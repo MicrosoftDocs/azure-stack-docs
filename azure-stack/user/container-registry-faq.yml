@@ -92,7 +92,7 @@ sections:
           How do I access Docker Registry HTTP API V2?
         answer: |
           ACR supports Docker Registry HTTP API V2. The APIs can be accessed at
-          `https://<your registry login server>/v2/`. Example: `https://mycontainerregistry.azurecr.io/v2/`
+          `https://<your registry login server>/v2/`. Example: `https://mycontainerregistry.azsacr.<regionname>.<fqdn>/v2/`
 
           
       - question: |
@@ -134,8 +134,8 @@ sections:
           Build and push the image to your registry using the docker CLI.
           
           ```bash
-          docker build -t myregistry.azurecr.io/1gb:latest .
-          docker push myregistry.azurecr.io/1gb:latest
+          docker build -t myregistry.azsacr.<regionname>.<fqdn>/1gb:latest .
+          docker push myregistry.azsacr.<regionname>.<fqdn>/1gb:latest
           ```
           
           You should be able to see that the storage usage has increased in the Azure Stack Hub portal, or you can query usage using the CLI.
@@ -226,7 +226,7 @@ sections:
           * To pull an image:
           
             ```bash
-            docker pull myregistry.azurecr.io/hello-world
+            docker pull myregistry.azsacr.<regionname>.<fqdn>/hello-world
             ```
           
           With the use of only the `AcrPull` or `AcrPush` role, the assignee doesn't have the permission to manage the registry resource in Azure. For example, `az acr list` or `az acr show -n myRegistry` won't show the registry.
@@ -244,7 +244,7 @@ sections:
           
              ```json
              {
-               "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+               "allow-nondistributable-artifacts": ["myregistry.azsacr.<regionname>.<fqdn>"]
              }
              ```
              > [!NOTE]
@@ -305,7 +305,7 @@ sections:
           With `--signature-verification=false` missing, `docker pull` fails with an error similar to:
           
           ```output
-          Trying to pull repository myregistry.azurecr.io/myimage ...
+          Trying to pull repository myregistry.azsacr.<regionname>.<fqdn>/myimage ...
           unauthorized: authentication required
           ```
           
@@ -325,7 +325,7 @@ sections:
       - question: |
            az acr login succeeds but docker fails with error: unauthorized: authentication required
         answer: |
-          Make sure you use an all lowercase server URL, for example, `docker push myregistry.azurecr.io/myimage:latest`, even if the registry resource name is uppercase or mixed case, like `myRegistry`.
+          Make sure you use an all lowercase server URL, for example, `docker push myregistry.azsacr.<regionname>.<fqdn>/myimage:latest`, even if the registry resource name is uppercase or mixed case, like `myRegistry`.
           
       - question:  |
           Enable and get the debug logs of the Docker daemon    
@@ -370,8 +370,8 @@ sections:
           * Permission delay on ACR token server. This could take up to 10 minutes. To mitigate, you can `docker logout` and then authenticate again with the same user after 1 minute:
           
             ```bash
-            docker logout myregistry.azurecr.io
-            docker login myregistry.azurecr.io
+            docker logout myregistry.azsacr.<regionname>.<fqdn>
+            docker login myregistry.azsacr.<regionname>.<fqdn>
             ```
           
          
