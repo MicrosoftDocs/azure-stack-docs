@@ -30,6 +30,8 @@ New-AksHciClusterNetwork -name <String>
 ## Description
 Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when creating a new workload cluster. You can create as many virtual networks as needed.
 
+The required parameters for `New-AksHciClusterNetwork` are: -name, -vswitchName, -ipAddressPrefix, -vipPoolStart, and -vipPoolEnd. The parameters, -gateway and -dnsServers, are required only when creating a network with a static IP. 
+
 ## Examples
 
 ### Deploy with a static IP environment
@@ -128,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -vipPoolStart
-The start IP address of the VIP pool. The address must be within the range either served by the DHCP server or within the range provided in the Subnet CIDR. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. If you're using DHCP, make sure your virtual IP addresses are a part of the DHCP IP reserve. If you're using static IP, make sure your virtual IPs are from the same subnet.
+The start IP address of the VIP pool. The address must be within the range either served by the DHCP server or within the range provided in the subnet CIDR. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. If you're using DHCP, make sure your virtual IP addresses are a part of the DHCP IP reserve. If you're using static IP, make sure your virtual IPs are from the same subnet.
 
 ```yaml
 Type: System.String
