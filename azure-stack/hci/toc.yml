@@ -22,6 +22,10 @@
     href: deploy/deploy-manage-azure-stack-hci.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
+- name: Tutorial
+  items:
+  - name: Create a private forest environment
+    href: deploy/tutorial-private-forest.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
