@@ -1,19 +1,19 @@
 ---
-title: Taking an Azure Stack HCI server offline for maintenance
-description: This topic provides guidance on how to properly pause, drain, and resume servers running the Azure Stack HCI operating system by using Windows Admin Center and PowerShell.
+title: Failover cluster maintenance procedures for Azure Stack HCI and Windows Server
+description: This topic provides guidance on how to properly pause, drain, and resume clustered servers running Azure Stack HCI or Windows Server operating systems by using Windows Admin Center and PowerShell.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/02/2021
+ms.date: 09/07/2021
 ---
 
 # Failover cluster maintenance procedures
 
 > Applies to: Azure Stack HCI, version 21H2 Preview; Azure Stack HCI, version 20H2; Windows Server 2022; Windows Server 2019; Windows Server 2016
 
-Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving clustered roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
+Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in a failover cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving clustered roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
 
 You can use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
 
@@ -93,6 +93,8 @@ ClusterPerformanceHistory Mirror                1                     OK        
 
 Verify that the **HealthStatus** property for every volume is **Healthy** and the **OperationalStatus** shows OK.
 
+To do this using Failover Cluster Manager, go to **Storage** > **Disks**.
+
 ### Pause and drain the server
 
 Run the following cmdlet as an administrator to pause and drain the server:
@@ -100,6 +102,8 @@ Run the following cmdlet as an administrator to pause and drain the server:
 ```PowerShell
 Suspend-ClusterNode -Drain
 ```
+
+To do this in Failover Cluster Manager, go to **Nodes**, right-click the node, and then select **Pause** > **Drain Roles**.
 
 If the server is running Azure Stack HCI, version 21H2 Preview, Azure Stack HCI 20H2, or Windows Server 2022, pausing and draining the server will also put the server's disks into maintenance mode. If the server is running Windows Server 2019 or Windows Server 2016, you'll have to do this manually (see next step).
 
@@ -124,9 +128,9 @@ Get-StorageFaultDomain -Type StorageScaleUnit | Where-Object {$_.FriendlyName -e
 
 ### Shut down the server
 
-Once the server has completed draining, it will show as **Paused** in PowerShell.
+Once the server has completed draining, it will show as **Paused** in PowerShell and Failover Cluster Manager.
 
-You can now safely shut the server down or restart it by using the `Stop-Computer` or `Restart-Computer` PowerShell cmdlets.
+You can now safely shut the server down or restart it by using the `Stop-Computer` or `Restart-Computer` PowerShell cmdlets, or by using Failover Cluster Manager.
 
    > [!NOTE]
    > When running a `Get-VirtualDisk` command on servers that are shutting down or starting/stopping the cluster service, the server's Operational Status may be reported as incomplete or degraded, and the Health Status column may list a warning. This is normal and should not cause concern. All your volumes remain online and accessible.
@@ -158,7 +162,9 @@ Resume the server into the cluster. To return the clustered roles and VMs that w
 Resume-ClusterNode –Failback Immediate
 ```
 
-Once the server has resumed, it will show as **Up** in PowerShell.
+To do this in Failover Cluster Manager, go to **Nodes**, right-click the node, and then select **Resume** > **Fail Roles Back**.
+
+Once the server has resumed, it will show as **Up** in PowerShell and Failover Cluster Manager.
 
 ### Wait for storage to resync
 
