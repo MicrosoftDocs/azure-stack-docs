@@ -32,7 +32,7 @@ New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
-                        [-vlanID <int>]
+                         -vlanID <int>
 ```
 
 ### Static IP virtual network configurations
@@ -44,11 +44,11 @@ New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
                          -gateway <String>
                          -dnsServers <String[]>
-                         -ipAddressPrefix <String> (Not required)
+                         -ipAddressPrefix <String> 
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
-                         -k8sNodeIpPoolStart <IP address> (Not required)
-                         -k8sNodeIpPoolEnd <IP address> (Not required)                                  
+                         -k8sNodeIpPoolStart <IP address>
+                         -k8sNodeIpPoolEnd <IP address>                                 
 ```
 
 For static IP configurations with a VLAN:
@@ -58,12 +58,12 @@ New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
                          -gateway <String>
                          -dnsServers <String[]>
-                         -ipAddressPrefix <String> (Not required)
+                         -ipAddressPrefix <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
-                         -k8sNodeIpPoolStart <IP address> (Not required)
-                         -k8sNodeIpPoolEnd <IP address> (Not required)
-                        [-vlanID <int>]                                
+                         -k8sNodeIpPoolStart <IP address>
+                         -k8sNodeIpPoolEnd <IP address>
+                         -vlanID <int>                              
 ```
 
 ## Description
@@ -76,15 +76,13 @@ You will need to customize the values given in the examples below for your envir
 ### Deploy with a static IP environment without a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciClusterNetwork -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
-PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
+PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address>
 ```
 
 ### Deploy with a static IP environment and a VLAN
 
 ```powershell
-$vnet = New-AksHciClusterNetwork -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanID 7
-PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
+PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address> -vlanID <int>
 ```
 
 ### Deploy with a DHCP environment without a VLAN
@@ -165,7 +163,7 @@ The address prefix to use for static IP assignment.
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-Required: False
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: external
 Accept pipeline input: False
@@ -208,7 +206,7 @@ The start IP address of a VM pool. The address must be in range of the subnet. T
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-Required: False
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -222,7 +220,7 @@ The end IP address of a VM pool. The address must be in range of the subnet. Thi
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-Required: False
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
