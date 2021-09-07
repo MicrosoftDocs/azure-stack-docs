@@ -3,7 +3,7 @@ title: New-AksHciClusterNetwork for AKS on Azure Stack HCI
 author: mkostersitz
 description: The New-AksHciClusterNetwork PowerShell command creates an object for a new virtual network used by a workload cluster.
 ms.topic: reference
-ms.date: 4/12/2021
+ms.date: 09/07/2021
 ms.author: mikek
 ---
 
@@ -16,7 +16,6 @@ Create an object for a new virtual network(s) to be used by your workload cluste
 ```powershell
 New-AksHciClusterNetwork -name <String>
                          -vswitchName <String>
-                         -macpoolName <String>
                          -gateway <String>
                          -dnsServers <String[]>
                          -ipAddressPrefix <String>
@@ -189,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -vlanID
-The vLAN ID for the network specified. If omitted the network will not be tagged.
+The vLAN ID for the network specified. If omitted, the network will not be tagged.
 
 ```yaml
 Type: System.Int32
