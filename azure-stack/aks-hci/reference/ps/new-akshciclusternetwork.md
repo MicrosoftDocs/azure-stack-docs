@@ -14,7 +14,9 @@ Create a virtual network to set the DHCP or static IP address for the control pl
 
 ## Syntax
 
-For virtual network DHCP configurations without a VLAN:
+### DHCP virtual network configurations
+
+For DHCP configurations without a VLAN:
 
 ```powershell
 New-AksHciClusterNetwork -name <String>
@@ -23,7 +25,7 @@ New-AksHciClusterNetwork -name <String>
                          -vipPoolEnd <IP address>
 ```
 
-For virtual network DHCP configurations with a VLAN:
+For DHCP configurations with a VLAN:
 
 ```powershell
 New-AksHciClusterNetwork -name <String>
@@ -33,7 +35,9 @@ New-AksHciClusterNetwork -name <String>
                         [-vlanID <int>]
 ```
 
-For virtual network static IP configurations without a VLAN:
+### Static IP virtual network configurations
+
+For static IP configurations without a VLAN:
 
 ```powershell
 New-AksHciClusterNetwork -name <String>
@@ -43,11 +47,11 @@ New-AksHciClusterNetwork -name <String>
                          -ipAddressPrefix <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
-                         -k8sNodeIpPoolStart <IP address>
-                         -k8sNodeIpPoolEnd <IP address>                                  
+                         -k8sNodeIpPoolStart <IP address> (Not required)
+                         -k8sNodeIpPoolEnd <IP address> (Not required)                                  
 ```
 
-For virtual network static IP configurations with a VLAN:
+For static IP configurations with a VLAN:
 
 ```powershell
 New-AksHciClusterNetwork -name <String>
@@ -57,8 +61,8 @@ New-AksHciClusterNetwork -name <String>
                          -ipAddressPrefix <String>
                          -vipPoolStart <IP address>
                          -vipPoolEnd <IP address>
-                         -k8sNodeIpPoolStart <IP address>
-                         -k8sNodeIpPoolEnd <IP address>  
+                         -k8sNodeIpPoolStart <IP address> (Not required)
+                         -k8sNodeIpPoolEnd <IP address> (Not required)
                         [-vlanID <int>]                                
 ```
 
@@ -89,17 +93,11 @@ PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
 PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
 ```
-
-```powershell
-PS C:\> Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet 
-```
-
 ### Deploy with a DHCP environment and a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciClusterNetwork -name MyClusterNetwork -vnetName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
 PS C:\> New-AksHciCluster -name myCluster -vnet $vnet
-
 ```
 
 ## Parameters
