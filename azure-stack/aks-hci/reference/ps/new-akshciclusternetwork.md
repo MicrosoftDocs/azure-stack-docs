@@ -139,7 +139,6 @@ The IP address of the default gateway of the subnet.
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-
 Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
@@ -154,7 +153,6 @@ Required when creating a network with a static IP. This parameter creates an arr
 Type: System.String[]
 Parameter Sets: (StaticIP)
 Aliases:
-
 Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
@@ -169,7 +167,6 @@ The address prefix to use for static IP assignment.
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-
 Required: False
 Position: Named
 Default value: external
@@ -199,7 +196,6 @@ The end IP address of the VIP pool. The address must be within the range either 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -214,7 +210,6 @@ The start IP address of a VM pool. The address must be in range of the subnet. T
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -229,7 +224,6 @@ The end IP address of a VM pool. The address must be in range of the subnet. Thi
 Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -244,7 +238,6 @@ The vLAN ID for the network specified. If omitted, the network will not be tagge
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
 Required: False
 Position: Named
 Default value: None
