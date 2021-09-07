@@ -214,15 +214,15 @@ The following storage implementations are supported by Azure Kubernetes Service 
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
-| Azure Stack HCI Cluster          | CSV          | 1 TB              |
-| Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |
-| Single Node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
+| Azure Stack HCI Cluster          | Cluster Shared Volumes          | 1 TB              |
+| Windows Server 2019 Datacenter failover cluster          | Cluster Shared Volumes          | 1 TB              |
+| Single-node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
 
 For an Azure Stack HCI cluster, you have two supported storage configurations for running virtual machine workloads. Hybrid storage that balances performance and capacity using all-flash storage and hard disk drives (HDDs), and all-flash storage that maximizes performance using solid-state drives (SSDs) or NVMe. Systems that only have HDD-based storage are not supported by Azure Stack HCI, and thus are not recommended for running AKS on Azure Stack HCI. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](/azure-stack/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
 
 For a Windows Server 2019 Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
 
-For single node Windows Server 2019 deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
+For single-node Windows Server 2019 deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
 
 ## Review maximum supported hardware specifications
 
