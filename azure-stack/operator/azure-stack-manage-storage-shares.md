@@ -41,7 +41,7 @@ VM store and manipulate data on virtual disks. Each VM starts with an OS disk, c
 
 **Managed disks** simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you. For more information, see [Managed Disks Overview](/azure/virtual-machines/windows/managed-disks-overview).
 
-**Unmanaged disks** are VHD files that are stored as page blobs in storage containers in Azure Stack storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use Unmanaged Disks only for VMs that need to be compatible with third party tools which only support Azure-Unmanaged Disks.
+**Unmanaged disks** are VHD files that are stored as page blobs in storage containers in Azure Stack storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use unmanaged disks only for VMs that need to be compatible with third party tools which only support Azure unmanaged disks.
 
 The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
 
@@ -51,7 +51,7 @@ The guidance to tenants is to place each disk into a separate container to impro
 The options to free up space on an attached container are limited. To learn more, see [Distribute unmanaged disks](#distribute-unmanaged-disks).
 
 >[!IMPORTANT]
-> We recommended that you use only Managed disks in VMs for easier management. You don't have to prepare storage accounts and containers before using Managed disks. Managed disks provide equivalent or better functionality and performance compared to Unmanaged disks. There are no advantages to use Unmanaged disks and they are only provided for backward compatibility.
+> We recommended that you use only Managed disks in VMs for easier management. You don't have to prepare storage accounts and containers before using Managed disks. Managed disks provide equivalent or better functionality and performance compared to unmanaged disks. There are no advantages to use unmanaged disks and they are only provided for backward compatibility.
 > 
 > Managed disks are optimized for better placement in the storage infrastructure and have significantly reduced management overhead. But due to Managed disks are thin provisioned and the final utilization is unpredictable in creation, there are opportunities of volume being over-utilized caused by unbalanced disk placement. Operators are responsible for monitoring the storage capacity usage and avoid such issue.
 > 
