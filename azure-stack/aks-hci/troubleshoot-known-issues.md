@@ -11,6 +11,17 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
+## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
+
+On an AKS on Azure Stack HCI installation with a WAC extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had Powershell module 1.1.3 installed. An attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using Windows Admin Center version 1.82.0 extension.
+
+To resolve this issue, do one of the following:
+
+1. Use Powershell to manually update the workload cluster to version 1.1.0 or later.
+2. Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
+
+This issue won't occur if the management cluster is deployed using Windows Admin Center as it already has the latest Powershell modules installed.
+
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
 The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
