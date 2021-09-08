@@ -2,7 +2,7 @@
 title: Concepts - Updating Azure Kubernetes Services on Azure Stack HCI host using Windows Admin Center
 description: Learn about using Windows Admin Center to update the Azure Kubernetes Service on Azure Stack HCI host.
 ms.topic: conceptual
-ms.date: 07/02/2021
+ms.date: 09/08/2021
 ms.custom: fasttrack-edit
 ms.author: mikek
 author: mkostersitz
