@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/16/2021
+ms.date: 09/08/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -101,7 +101,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14 GB per VM and WAS memory to 10 GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
-- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
+- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 - Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
 - Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
 
@@ -142,7 +142,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.40.150](hotfix-1-2008-40-150.md)
+- [Azure Stack Hub hotfix 1.2008.40.151](hotfix-1-2008-40-151.md)
 
 ### After successfully applying the 2102 update
 
@@ -150,7 +150,7 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2102.30.101](hotfix-1-2102-30-101.md)
+- [Azure Stack Hub hotfix 1.2102.30.102](hotfix-1-2102-30-102.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
@@ -235,7 +235,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.150](hotfix-1-2008-40-150.md)
+- [Azure Stack Hub hotfix 1.2008.40.151](hotfix-1-2008-40-151.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
@@ -326,7 +326,7 @@ Starting with the 2005 release, when you update to a new major version (for exam
 
 After the installation of 2005, if any 2005 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2005.46.133](hotfix-1-2005-46-133.md)
+- [Azure Stack Hub hotfix 1.2005.47.135](hotfix-1-2005-47-135.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
