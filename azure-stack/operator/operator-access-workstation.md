@@ -149,7 +149,7 @@ if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAct
 else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json' }
 ```
 
-If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep-2002/get-azurestackstampinformation.md) in case it is not present on the HLH. 
+If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep/get-azurestackstampinformation.md) in case it is not present on the HLH. 
 
 > [!NOTE]  
 > The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. If the `DeploymentData.json` is not available, reach out to your hardware partner to retrieve it or continue with the example deploy on Microsoft Hyper-V.
