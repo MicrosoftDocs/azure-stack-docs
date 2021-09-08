@@ -2,7 +2,7 @@
 title: Concepts - Upgrade the Azure Kubernetes Services (AKS) on Azure Stack HCI host using PowerShell
 description: Learn about using PowerShell to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI host.
 ms.topic: conceptual
-ms.date: 07/02/2021
+ms.date: 09/08/2021
 ms.custom: 
 ms.author: mikek
 author: mkostersitz
@@ -58,7 +58,7 @@ Get-AksHciUpdates
 The output shows the available versions this AKS on Azure Stack HCI host can be updated to.
 
 ```output
-1.0.0.10625
+1.0.2.10723
 ```
 
 ### Initiate the AKS on Azure Stack HCI update
@@ -76,7 +76,7 @@ PS C:\> Get-AksHciVersion
 The output will show the updated version of the AKS on Azure Stack HCI host.
 
 ```output
-1.0.0.10625
+1.0.2.10723
 ```
 
 ## Next steps
