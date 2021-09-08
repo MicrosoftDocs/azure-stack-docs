@@ -33,7 +33,7 @@ When an object store volume is 100% utilized, the storage service no longer func
 
 ## Understand disks, containers, and volumes
 
-Tenant user creates disks, blobs, tables and queues in Azure Stack Hub storage services. These tenant data are put on volumes on top of the available storage.
+Tenant user creates disks, blobs, tables, and queues in Azure Stack Hub storage services. These tenant data are put on volumes on top of the available storage.
 
 ### Disks
 
