@@ -2,7 +2,7 @@
 title: Concepts - Updating Azure Kubernetes Services on Azure Stack HCI host using Windows Admin Center
 description: Learn about using Windows Admin Center to update the Azure Kubernetes Service on Azure Stack HCI host.
 ms.topic: conceptual
-ms.date: 07/02/2021
+ms.date: 09/08/2021
 ms.custom: fasttrack-edit
 ms.author: mikek
 author: mkostersitz
@@ -27,21 +27,9 @@ It's recommended to update AKS workload clusters immediately after updating the 
 
 To update the AKS on Azure Stack HCI host with Windows Admin Center, follow the steps below: 
 
-1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions**, and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.35.0. You do not need to complete this step if you have enabled auto-update for your extensions. However, make sure that you have version 1.35.0 of the AKS extension installed before proceeding to the next step.
+1. Update your Azure Kubernetes Service extension by navigating to **Settings** > **Extensions** > **Installed Extensions**, and then click **Update**. The latest available Azure Kubernetes Service extension version is 1.82.0. You do not need to complete this step if you have enabled auto-update for your extensions. However, make sure that you have version 1.82.0 of the AKS extension installed before proceeding to the next step.
 
-2. If you have installed AKS on Azure Stack HCI using the GA release, you will see an _Incompatible AksHci Module Version_ error in Windows Admin Center when you update the Windows Admin Center extension to the June release (1.35.0). 
-
-   To use the June release, PowerShell version 1.0.2 is required, so you must manually run the following PowerShell command on all the nodes in their Azure Stack HCI cluster to get around this error. 
-
-   ```powershell
-   Update-Module -Name AksHci -Repository PSGallery -RequiredVersion 1.0.2 -AcceptLicense –Force 
-   ```
-
-   Now you can click **Update now** to update the PowerShell module.
-
-   [ ![Displays the incompatible version message in Windows Admin Center.](.\media\wac-upgrade\incompatible-version.png) ](\media\wac-upgrade\incompatible-version.png#lightbox)
-
-3. On the **Host settings** page, select **Update AksHci PowerShell module to version x.x.x** under **Updates available**, and then click **Update now**.
+2. On the **Host settings** page, select **Update AksHci PowerShell module to version x.x.x** under **Updates available**, and then click **Update now**.
    
    [ ![Displays the available AksHci PowerShell updates.](.\media\wac-upgrade\available-module-version.png) ](\media\wac-upgrade\available-module-version.png#lightbox)
    
