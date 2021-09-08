@@ -186,14 +186,14 @@ When you use the administrator portal, you receive alerts about volumes that are
 ### Volume capacity metrics
 Volume capacity metrics give you more detailed information about provisioned capacity and used capacity for different types of objects. The metrics data are preserved for 30 days. Background monitoring service refreshes the volume capacity metrics data hourly.
 
-It is necessary to understand the resource usage of a volume by proactively checking the capacity metric report. The cloud operator can analyze the resource type distribution when a volume is approaching full to decide the corresponding action to free space. He can also prevent the volume being overused when the disk provisioned size indicates the volume has been over-provisioned too much.
+It is necessary to understand the resource usage of a volume by proactively checking the capacity metric report. The cloud operator can analyze the resource type distribution when a volume is approaching full to decide the corresponding action to free space. The operator can also prevent the volume being overused when the disk provisioned size indicates the volume has been over-provisioned too much.
 
 Azure Monitor provides following metrics to show volume capacity utilization:
 
 - **Volume Total Capacity** shows the total storage capacity of the volume.
 - **Volume Remaining Capacity** shows the remaining storage capacity of the volume. 
-- **Volume VM Disk Used Capacity** shows the total spaces occupied by VM disk related objects (including page blobs, managed disks/snapshot, managed images and platform images). The underlying VHD file of VM disks can share extent (refer to Disk) with images, snapshots or other disks, this number could be smaller than sum the used capacity of all individual VM disk related object.
-- **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues and blob metadata. 
+- **Volume VM Disk Used Capacity** shows the total spaces occupied by VM disk related objects (including page blobs, managed disks/snapshot, managed images, and platform images). The underlying VHD file of VM disks can share the same extent (refer to [Disks](#disks)) with images, snapshots or other disks. This number could be smaller than sum of the used capacity of all individual VM disk related object.
+- **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues, and blob metadata. 
 - **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
 
 ![Example: Volume capacity metrics](media/azure-stack-manage-storage-shares/volume-capacity-metrics.png)
@@ -206,7 +206,7 @@ To view volume capacity metrics in Azure Monitor:
    ```powershell
    .\CapacityManagement\DashboardGenerator\Create-AzSStorageDashboard.ps1 -capacityOnly $true -volumeType object
    ```
-   There would be a json file named starts with “DashboardVolumeObjStore” under the folder of DashboardGenerator.
+   There would be a json file named starts with **DashboardVolumeObjStore** under the folder of DashboardGenerator.
 4. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
 5. In Dashboard page, click **Upload**, and select the json file generated in Step 3.
  
