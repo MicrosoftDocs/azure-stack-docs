@@ -13,14 +13,14 @@ This article includes workaround steps for resolving known issues that occur whe
 
 ## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
 
-On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had Powershell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
+On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
 
 To resolve this issue, do one of the following:
 
-1. Use Powershell to manually update the workload cluster to version 1.1.0 or later.
-2. Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
+- Use PowerShell to manually update the workload cluster to version 1.1.0 or later.
+- Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
 
-This issue does not occur if the management cluster is deployed using Windows Admin Center as it already has the latest Powershell modules installed.
+This issue does not occur if the management cluster is deployed using Windows Admin Center as it already has the latest PowerShell modules installed.
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
