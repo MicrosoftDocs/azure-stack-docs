@@ -64,13 +64,16 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 
 ## Examples
 
-### New AKS-HCI cluster with required parameter
+### New AKS on Azure Stack HCI cluster with required parameter
 
 ```powershell
 PS C:\> New-AksHciCluster -name mycluster
 ```
 
 The example above deploys a cluster with one control plane node, a Linux node pool called *mycluster-linux* with a node count of one, and an empty Windows node pool called *mycluster-windows*. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+
+> [!NOTE]
+> Do not include hyphens in cluster names, or the cluster creation may fail.
 
 **Output**
 ```output
@@ -127,7 +130,7 @@ The command above deploys a cluster with its default values. The deployed cluste
 ## Parameters
 
 ### -name
-The name of your Kubernetes cluster.
+The name of your Kubernetes cluster. Do not include hyphens in cluster names, or the cluster creation may fail.
 
 ```yaml
 Type: System.String
