@@ -16,11 +16,11 @@ ms.lastreviewed: 10/16/2020
 
 # Manage storage capacity for Azure Stack Hub
 
-You can use this article as an Azure Stack Hub cloud operators to learn how to monitor and manage the storage capacity of your Azure Stack Hub deployment. You can use the guidance to understand the memory available for your user's VMs. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
+You can use this article as an Azure Stack Hub cloud operator to learn how to monitor and manage the storage capacity of your Azure Stack Hub deployment. You can use the guidance to understand the memory available for your user's VMs. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as storage services. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
-Azure Stack Hub only supports the expansion of storage capacity by adding additional scale unit nodes. For more information, see [add additional scale unit nodes in Azure Stack Hub](azure-stack-add-scale-node.md). Adding physical disks to the nodes won't expand the storage capacity.
+Azure Stack Hub only supports the expansion of storage capacity by adding extra scale unit nodes. For more information, see [add scale unit nodes in Azure Stack Hub](azure-stack-add-scale-node.md). Adding physical disks to the nodes won't expand the storage capacity.
 
 It's important to [monitor](#monitor-storage) the available storage to ensure that efficient operations are maintained. When the remaining free capacity of a volume becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
 
@@ -41,7 +41,7 @@ VM store and manipulate data on virtual disks. Each VM starts with an OS disk, c
 
 **Managed disks** simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack Hub creates and manages the disk for you. For more information, see [Managed Disks Overview](/azure/virtual-machines/windows/managed-disks-overview).
 
-**Unmanaged disks** are VHD files that are stored as page blobs in storage containers in Azure Stack storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use unmanaged disks only for VMs that need to be compatible with third party tools which only support Azure unmanaged disks.
+**Unmanaged disks** are VHD files that are stored as page blobs in storage containers in Azure Stack storage accounts. The page blobs created by tenants are referred to as VM disks and are stored in containers in the storage accounts. We recommend you use unmanaged disks only for VMs that need to be compatible with third-party tools, which only support Azure unmanaged disks.
 
 The guidance to tenants is to place each disk into a separate container to improve performance of the VM.
 
@@ -61,7 +61,7 @@ VM disks are stored as sparse files on storage infrastructure. Disks have provis
 
 ![Example: Sparse disk on storage volume](media/azure-stack-manage-storage-shares/sparse-disk-on-volume.png)
 
-Disks are often created by copying from platform images, managed images, snapshots or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system leverages block cloning in ReFS. This is a low-cost metadata operation rather than a full byte-by-byte copy the file. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
+Disks are often created by copying from platform images, managed images, snapshots, or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system uses block cloning in ReFS. Blob cloning is a low-cost metadata operation rather than a full byte-by-byte copy between files. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
 
 ![Example: Share extent on storage volume](media/azure-stack-manage-storage-shares/extent-on-volume.png)
 
@@ -137,7 +137,7 @@ There are three tools for monitoring volume capacity:
 - Storage space alerts.
 - Volume capacity metrics.
 
-In this section we will introduce how to use these tools to monitor the capacity of the system.
+In this section, we will introduce how to use these tools to monitor the capacity of the system.
 
 ### Use PowerShell
 
@@ -194,7 +194,7 @@ Azure Monitor provides following metrics to show volume capacity utilization:
 - **Volume Remaining Capacity** shows the remaining storage capacity of the volume. 
 - **Volume VM Disk Used Capacity** shows the total spaces occupied by VM disk related objects (including page blobs, managed disks/snapshot, managed images, and platform images). The underlying VHD file of VM disks can share the same extent (refer to [Disks](#disks)) with images, snapshots or other disks. This number could be smaller than sum of the used capacity of all individual VM disk related object.
 - **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues, and blob metadata. 
-- **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
+- **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This size is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
 
 ![Example: Volume capacity metrics](media/azure-stack-manage-storage-shares/volume-capacity-metrics.png)
 
@@ -216,7 +216,7 @@ To view volume capacity metrics in Azure Monitor:
 
 ![Example: Volume capacity dashboard](media/azure-stack-manage-storage-shares/volume-capacity-dashboard.png)
 
-7. By clicking one of the volume, you can check five capacity metrics of the specific volume in the detailed chart:
+7. By clicking one of the volumes, you can check five capacity metrics of the specific volume in the detailed chart:
 
 ![Example: Detailed capacity metrics](media/azure-stack-manage-storage-shares/detailed-capacity-metrics.png)
 
@@ -264,9 +264,9 @@ You can free up space on an overused share by manually migrating some blob conta
 
 Migration consolidates all of a container's blobs on the new share.
 
-- If a container has entered overflow mode and has placed blobs on additional volumes, the new share must have sufficient capacity to hold all of the blobs for the container you migrate. This includes the blobs that are located on additional shares.
+- If a container has entered overflow mode and has placed blobs on other volumes, the new share must have sufficient capacity to hold all of the blobs belong to the container you migrate, including the blobs that are overflowed.
 
-- The PowerShell cmdlet `Get-AzsStorageContainer` identifies only the space in use on the initial volume for a container. The cmdlet doesn't identify space that's used by blobs that are put on additional volumes. Therefore, the full size of a container might not be evident. It's possible that consolidation of a container on a new share can send that new share into an overflow condition, where it places data onto additional shares. As a result, you might need to rebalance the shares.
+- The PowerShell cmdlet `Get-AzsStorageContainer` identifies only the space in use on the initial volume for a container. The cmdlet doesn't identify space that's used by blobs that are overflowed to additional volumes. Therefore, the full size of a container might not be evident. It's possible that consolidation of a container on a new share can send that new share into an overflow condition, where it places data onto additional shares. As a result, you might need to rebalance the shares.
 
 - If you lack permissions to certain resource groups and can't use PowerShell to query the additional volumes for overflow data, work with the owner of those resource groups and containers to understand the total amount of data to migrate before you migrate it.
 
@@ -305,7 +305,7 @@ Migration consolidates all of a container's blobs on the new share.
 
    ![Example: $destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
-4. Start the migration for a container. Migration is asynchronous. If you start the migration of additional containers before the first migration is complete, use the job ID to track the status of each.
+4. Start the migration for a container. Migration is asynchronous. If you start the migration of another container before the first migration is complete, use the job ID to track the status of each.
 
    ```powershell
    $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
@@ -351,7 +351,7 @@ The most extreme method for managing space involves moving VM disks. Because mov
 
 *This option applies only to Azure Stack Hub integrated systems.*
 
-Because of tenant usage patterns, some tenant volumes use more space than others. The result can be a volume that runs low on space before other volume that are relatively unused.
+Because of tenant usage patterns, some tenant volumes use more space than others. The result can be a volume that runs low on space before other volumes that are relatively unused.
 
 You can free up space on an overused volume by manually migrating some managed disks to a different volume. You can migrate several managed disks to a single volume that has capacity to hold them all. Use migration to move *offline* managed disks. Offline managed disks are disks that aren't attached to a VM.
 
@@ -390,7 +390,7 @@ You can free up space on an overused volume by manually migrating some managed d
    $MigrationTarget = "\\SU1FileServer."+$VolumeName+"\SU1_"+$DestinationVolume.VolumeLabel
    ```
 
-4. Start migration for managed disks. Migration is asynchronous. If you start migration of additional disks before the first migration completes, use the job name to track the status of each.
+4. Start migration for managed disks. Migration is asynchronous. If you start migration of other disks before the first migration completes, use the job name to track the status of each.
 
    ```powershell
    $jobName = "MigratingDisk"
@@ -455,7 +455,7 @@ The following components consume the memory in the used section of the pie chart
 
 ### Available Memory for VM placement
 
-As a cloud operator for Azure Stack Hub, there isn't an  automated way to check the allocated memory for each VM. You can have access your user VMs, and calculate the allocated memory manually. However, the allocated memory will not reflect the real use. This value can be lower than the allocated value.
+As a cloud operator for Azure Stack Hub, there isn't an  automated way to check the allocated memory for each VM. You can have access to your user VMs, and calculate the allocated memory manually. However, the allocated memory will not reflect the real use. This value can be lower than the allocated value.
 
 To workout available memory for VMs the following formula is used:
 
