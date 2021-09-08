@@ -20,7 +20,7 @@ To resolve this issue, do one of the following:
 1. Use Powershell to manually update the workload cluster to version 1.1.0 or later.
 2. Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
 
-This issue won't occur if the management cluster is deployed using Windows Admin Center as it already has the latest Powershell modules installed.
+This issue does not occur if the management cluster is deployed using Windows Admin Center as it already has the latest Powershell modules installed.
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
@@ -144,7 +144,7 @@ To resolve this issue, use the following steps:
 
 After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) may fail with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
 
-This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps) works.
+This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps&preserve-view=true) works.
 
 ## When running Get-AksHciCluster, a _release version not found_ error occurs
 
