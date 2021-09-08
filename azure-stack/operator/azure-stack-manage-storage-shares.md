@@ -61,12 +61,12 @@ VM disks are stored as sparse files on storage infrastructure. Disks have provis
 
 ![Example: Sparse disk on storage volume](media/azure-stack-manage-storage-shares/sparse-disk-on-volume.png)
 
-Disks are often created by copying from Platform Image, managed images, snapshots or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system leverages block cloning in ReFS. This is a low-cost metadata operation rather than a full byte-by-byte copy the file. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
+Disks are often created by copying from platform images, managed images, snapshots or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system leverages block cloning in ReFS. This is a low-cost metadata operation rather than a full byte-by-byte copy the file. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
 
 ![Example: Share extent on storage volume](media/azure-stack-manage-storage-shares/extent-on-volume.png)
 
 The capacity usage grows only when the disks are written, and identical data reduces. 
-When an image or a disk is deleted, the space may not be freed immediately because there could be disks or snapshots created from it still keep the identical data and occupy space. Only if all the related entities are removed, the space are actually back to available.
+When an image or a disk is deleted, the space may not be freed immediately because there could be disks or snapshots created from it still keep the identical data and occupy space. Only if all the related entities are removed, the space becomes available.
 
 ![Example: Extent after disk deletion](media/azure-stack-manage-storage-shares/delete-disk.png)
 
@@ -192,7 +192,7 @@ Azure Monitor provides following metrics to show volume capacity utilization:
 
 - **Volume Total Capacity** shows the total storage capacity of the volume.
 - **Volume Remaining Capacity** shows the remaining storage capacity of the volume. 
-- **Volume VM Disk Used Capacity** shows the total spaces occupied by VM disk related objects (including page blobs, managed disks/snapshot, managed images and platform image repository). The underlying VHD file of VM disks can share extent (refer to Disk) with images, snapshots or other disks, this number could be smaller than sum the used capacity of all individual VM disk related object.
+- **Volume VM Disk Used Capacity** shows the total spaces occupied by VM disk related objects (including page blobs, managed disks/snapshot, managed images and platform images). The underlying VHD file of VM disks can share extent (refer to Disk) with images, snapshots or other disks, this number could be smaller than sum the used capacity of all individual VM disk related object.
 - **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues and blob metadata. 
 - **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
 
