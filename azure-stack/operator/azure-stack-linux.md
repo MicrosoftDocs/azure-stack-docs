@@ -52,7 +52,7 @@ Python - 3.6.9
 Goal State Agent - 2.2.48.1
 ```
 
-For more information about the agent, see [FAQ for WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ).
+For more information about the agent, see the [FAQ for WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ).
 #### Prepare your own Linux image
 
 You can prepare your own Linux image using the following instructions:
