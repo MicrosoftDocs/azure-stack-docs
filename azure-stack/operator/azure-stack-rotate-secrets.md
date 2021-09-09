@@ -98,15 +98,15 @@ Prior to rotation of external secrets:
 
      |Rotate from CA|Rotate to CA|Azure Stack Hub version support|
      |-----|-----|-----|-----|
-     |Self-Signed|Enterprise| 1903 & later|
-     |Self-Signed|Self-Signed|Not Supported|
-     |Self-Signed|Public<sup>*</sup>|1803 & later|
-     |Enterprise|Enterprise|1803 & later; 1803-1903 if SAME enterprise CA as used at deployment|
-     |Enterprise|Self-Signed|Not Supported|
-     |Enterprise|Public<sup>*</sup>|1803 & later|
-     |Public<sup>*</sup>|Enterprise|1903 & later|
-     |Public<sup>*</sup>|Self-Signed|Not Supported|
-     |Public<sup>*</sup>|Public<sup>*</sup>|1803 & later|
+     |Self-Signed|Enterprise| Supported |
+     |Self-Signed|Self-Signed| Not Supported |
+     |Self-Signed|Public<sup>*</sup>| Supported |
+     |Enterprise|Enterprise| Supported|
+     |Enterprise|Self-Signed| Not Supported |
+     |Enterprise|Public<sup>*</sup>| Supported |
+     |Public<sup>*</sup>|Enterprise| Supported |
+     |Public<sup>*</sup>|Self-Signed| Not Supported |
+     |Public<sup>*</sup>|Public<sup>*</sup>| Supported |
 
      <sup>*</sup>Part of the [Windows Trusted Root Program](/security/trusted-root/participants-list).
 
