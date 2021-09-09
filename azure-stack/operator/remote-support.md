@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/09/2021
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 06/09/2021
@@ -61,19 +61,17 @@ In Azure Stack Hub, remote support can be managed using [privileged endpoint](az
 
 ### Enable remote support for diagnostics
 
-In this example, you enable remote support access for diagnostic related operations only. The consent expires in one day after which remote access cannot be established.
+In this example, you enable remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
 ```powershell
-Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInDays 1
+Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 ```
 
-Use **ExpireInDay** parameter to set the duration of the session. In the example, consent expires in one day. After one day, remote access cannot be established.
+Use **ExpireInMinutes** parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access cannot be established.
 
-You can set **ExpireInDay** a minimum duration of 15 minutes and a maximum of 14 days.
+You can set **ExpireInDay** a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
-To set **ExpireInDay** for increments less than one day, use decimals. For example, if you want to enable remote support for 12 hours use `-ExpireInDay 0.5`.
-
-If duration is not defined the remote session will expire in eight hours by default.
+If duration is not defined the remote session will expire in 480 (8 hours) by default.
 
 ### Enable remote support for diagnostics and repair
 
