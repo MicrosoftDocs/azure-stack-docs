@@ -32,21 +32,11 @@ The Universal Naming Convention (UNC) string for the path must use a fully quali
 
 ### Encryption
 
-#### Version 1901 and newer
-
 The encryption certificate is used to encrypt backup data that gets exported to external storage. The certificate can be a self-signed certificate since the certificate is only used to transport keys. Refer to New-SelfSignedCertificate for more info on how to create a certificate.
   
 The key must be stored in a secure location (for example, global Azure Key Vault certificate). The CER format of the certificate is used to encrypt data. The PFX format must be used during cloud recovery deployment of Azure Stack Hub to decrypt backup data.
 
 ![Stored the certificate in a secure location.](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
-
-#### 1811 and older
-
-The encryption key is used to encrypt backup data that gets exported to external storage. The key is generated as part of [enabling backup for Azure Stack Hub with PowerShell](azure-stack-backup-enable-backup-powershell.md).
-
-The key must be stored in a secure location (for example, global Azure Key Vault secret). This key must be used during redeployment of Azure Stack Hub.
-
-![Stored the key a secure location.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## Operational best practices
 
