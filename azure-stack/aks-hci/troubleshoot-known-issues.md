@@ -3,13 +3,24 @@ title: Resolve known issues on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to resolve known issues in an Azure Kubernetes Service (AKS) on Azure Stack HCI deployment.
 author: EkeleAsonye
 ms.topic: how-to
-ms.date: 08/20/2021
+ms.date: 09/08/2021
 ms.author: v-susbo
 ---
 
 # Workarounds for known issues in AKS on Azure Stack HCI
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
+
+## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
+
+On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
+
+To resolve this issue, do one of the following:
+
+- Use PowerShell to manually update the workload cluster to version 1.1.0 or later.
+- Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
+
+This issue does not occur if the management cluster is deployed using Windows Admin Center as it already has the latest PowerShell modules installed.
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 
@@ -133,7 +144,7 @@ To resolve this issue, use the following steps:
 
 After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) may fail with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
 
-This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps) works.
+This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps&preserve-view=true) works.
 
 ## When running Get-AksHciCluster, a _release version not found_ error occurs
 

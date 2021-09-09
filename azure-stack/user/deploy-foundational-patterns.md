@@ -4,10 +4,10 @@ description: Learn how to Deploy foundational patterns with Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/2/2020
+ms.date: 9/8/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 9/8/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -32,11 +32,11 @@ Each article addresses common consideration such as:
 
 |  Virtual network peering  |  VPN  |  Load balancer  |
 | --- | --- | --- |
-| ![Virtual network peering with VMs](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[Virtual network peering with VMs](azure-stack-network-howto-vnet-peering.md) | ![Set up VPN to on-prem](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Setup VPN to on-prem](azure-stack-network-howto-vnet-to-onprem.md) | ![F5 load balancer](media/deploy-foundational-patterns/icon-networking-62-load-balancers.svg)<br>[F5 load balancer](network-howto-f5.md) |
+| ![Virtual network peering with VMs](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg) | ![Set up VPN to on-prem](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Setup VPN to on-prem](azure-stack-network-howto-vnet-to-onprem.md) | ![F5 load balancer](media/deploy-foundational-patterns/icon-networking-62-load-balancers.svg)<br>[F5 load balancer](network-howto-f5.md) |
 | ![Virtual network peering with FortiGate](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[Virtual network peering with FortiGate](azure-stack-network-howto-vnet-to-vnet.md) | ![Virtual Private Network](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Virtual network to virtual network connection](azure-stack-network-howto-vnet-to-vnet-stacks.md) |  |
-|  | ![Create a VPN tunnel (GRE)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Create a VPN tunnel (GRE)](network-howto-vpn-tunnel-gre.md) | |
+|  | ![Create a VPN tunnel (GRE)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg) | |
 |  | ![Set up a multiple site-to-site VPN](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Set up a multiple site-to-site VPN](network-howto-vpn-tunnel.md) | |
-|  | ![Create a VPN tunnel (IPSEC)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Create a VPN tunnel (IPSEC)](network-howto-vpn-tunnel-ipsec.md)| |
+|  | ![Create a VPN tunnel (IPSEC)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)| |
 
 
 ## Storage
