@@ -74,5 +74,4 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 
 ## Next steps
 
-For more information, about the [AKS on the Azure Stack HCI](/azure-stack/aks-hci).
-
+For more information, about the [AKS on the Azure Stack HCI](../../index.yml).
