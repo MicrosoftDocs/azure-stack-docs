@@ -13,7 +13,7 @@ ms.author: mamezgeb
 Updates AKS on Azure Stack HCI to a preview channel.
 
 ## Description
-Updates AKS on Azure Stack HCI to a preview channel. After running `Enable-AksHciPreview`, you need to run [Get-AksHciUpdates](get-akshciupdates.md) to list the available updates, and then run [Update-AksHci](update-akshci.md) to update to the preview channel. 
+This cmdlet updates AKS on Azure Stack HCI to a preview channel. After running `Enable-AksHciPreview`, you need to run [Get-AksHciUpdates](get-akshciupdates.md) to list the available updates, and then run [Update-AksHci](update-akshci.md) to update to the preview channel. 
 
 > [!NOTE]
 > The preview channel is intended to be used only for development and testing purposes.
