@@ -24,7 +24,7 @@ You also can submit an Azure support request. Please see [Azure Stack Hub suppor
 
 ## Initial troubleshooting steps
 
-The Azure Stack Hub [default parameters for IPsec/IKEV2 have changed](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters), starting with build 1910.
+The Azure Stack Hub [default parameters for IPsec/IKEV2 have changed](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters):
 
 > [!IMPORTANT]
 > When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
