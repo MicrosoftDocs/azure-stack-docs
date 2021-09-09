@@ -283,7 +283,7 @@ For more information, see [Get-AzureRMStorageAccountKey](/powershell/module/Az.s
 
 #### Copy blob between Azure Stack Hub clusters
 
-`Start-AzStorageBlobCopy` can be used to start a copy job to move a blob. When setting the propertie `AbsoluteUri` as the blob uri on another Azure Stack Hub cluster, this cmdlet can be used to copy blob between two Azure Stack Hub clusters. Make sure the source and destination Azure Stack Hub clusters are on the same update version. Azure Stack Hub currently doesn't support using `Start-AzStorageBlobCopy` to copy blob between two Azure Stack Hub clusters which have deployed different update versions.
+`Start-AzStorageBlobCopy` can be used to start a copy job to move a blob. When setting the property `AbsoluteUri` as the blob uri on another Azure Stack Hub cluster, this cmdlet can be used to copy blob between two Azure Stack Hub clusters. Make sure the source and destination Azure Stack Hub clusters are on the same update version. Azure Stack Hub currently doesn't support using `Start-AzStorageBlobCopy` to copy blob between two Azure Stack Hub clusters which have deployed different update versions.
 
 ## Azure CLI
 
