@@ -63,7 +63,7 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
 
 - Prepare the certificate. (_For integrated systems installations only_.) 
    - You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). The Subject Alternative Name (SAN) must adhere to the following naming pattern: CN=*.dbadapter.\<region\>.\<fqdn\>, with password protected.
-   ![Marketplace management downloaded packages](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)
+      ![Screenshot of marketplace management downloaded packages.](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)
    - When deploying SQL Server resource provider V1, place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
    - When deploying SQL Server resource provider V2, prepare the certificate for the following installation steps.
 
@@ -75,26 +75,26 @@ When deploying SQL Server resource provider V1 in a disconnected scenario, compl
 
 1. Sign in to a computer with internet connectivity and use the following scripts to download the PowerShell modules.
 
-```powershell
-Import-Module -Name PowerShellGet -ErrorAction Stop
-Import-Module -Name PackageManagement -ErrorAction Stop
+   ```powershell
+   Import-Module -Name PowerShellGet -ErrorAction Stop
+   Import-Module -Name PackageManagement -ErrorAction Stop
 
-# path to save the packages, c:\temp\azs1.6.0 as an example here
-$Path = "c:\temp\azs1.6.0"
-```
+   # path to save the packages, c:\temp\azs1.6.0 as an example here
+   $Path = "c:\temp\azs1.6.0"
+   ```
 
 2. Depending on the version of resource provider that you are deploying, run one of the scripts.
 
-```powershell
-# for resource provider version >= 1.1.93.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
-```
-```powershell
-# for resource provider version <= 1.1.47.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
-```
+   ```powershell
+   # for resource provider version >= 1.1.93.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
+   ```
+   ```powershell
+   # for resource provider version <= 1.1.47.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+   ```
 
 3. Then you copy the downloaded packages to a USB device.
 
@@ -102,19 +102,19 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 5. Register this location as a local repository.
 
-```powershell
-# requires -Version 5
-# requires -RunAsAdministrator
-# requires -Module PowerShellGet
-# requires -Module PackageManagement
+   ```powershell
+   # requires -Version 5
+   # requires -RunAsAdministrator
+   # requires -Module PowerShellGet
+   # requires -Module PackageManagement
 
-$SourceLocation = "C:\temp\azs1.6.0"
-$RepoName = "azs1.6.0"
+   $SourceLocation = "C:\temp\azs1.6.0"
+   $RepoName = "azs1.6.0"
 
-Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-New-Item -Path $env:ProgramFiles -name "SqlMySqlPsh" -ItemType "Directory"
-```
+   New-Item -Path $env:ProgramFiles -name "SqlMySqlPsh" -ItemType "Directory"
+   ```
 
 ## Deploy the SQL resource provider V2
 
@@ -125,42 +125,42 @@ If you are upgrading from a V1 version, refer to the doc [Update the SQL Server 
 1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
 
 2. Once SQL resource provider and other required software have been downloaded, **Marketplace Management** shows the "SQL Server resource provider" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". 
-   ![Marketplace management before install the RP](media/azure-stack-sql-rp-deploy/1-before-install-marketplace.png)
+   ![Screenshot of marketplace management before installing the RP.](media/azure-stack-sql-rp-deploy/1-before-install-marketplace.png)
  
 3. Select the row you wish to install. The SQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
-   ![Marketplace management begin install](media/azure-stack-sql-rp-deploy/2-blue-banner-for-start-install.png)
+   ![Screenshot of marketplace management begin install.](media/azure-stack-sql-rp-deploy/2-blue-banner-for-start-install.png)
 
 ### Install prerequisites
 
 1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
-   ![Marketplace management install prerequisites](media/azure-stack-sql-rp-deploy/3-install-prerequisites.png)
+   ![Screenshot of marketplace management install prerequisites.](media/azure-stack-sql-rp-deploy/3-install-prerequisites.png)
  
 2. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
-   ![Marketplace management install prerequisites succeeded](media/azure-stack-sql-rp-deploy/4-prerequisites-installed.png)
+   ![Screenshot of marketplace management install prerequisites succeeded.](media/azure-stack-sql-rp-deploy/4-prerequisites-installed.png)
 
 ### Prepare secrets 
 
 1. Under the **2. Prepare secrets** step, select **Add certificate**, and the **Add a certificate** panel will appear.
-   ![Marketplace management prepare secrets](media/azure-stack-sql-rp-deploy/5-prepare-secrets.png)
+   ![Screenshot of marketplace management prepare secrets.](media/azure-stack-sql-rp-deploy/5-prepare-secrets.png)
 
 2. Select the browse button on **Add a certificate**, just to the right of the certificate filename field. Select the .pfx certificate file you procured when completing the prerequisites. 
 
 4. Enter the password you provided to create a secure string for SQL Server resource provider SSL Certificate. Then select **Add**.
-   ![Marketplace management add certificate](media/azure-stack-sql-rp-deploy/6-add-certificate.png)
+   ![Screenshot of marketplace management add certificate.](media/azure-stack-sql-rp-deploy/6-add-certificate.png)
 
 ### Install resource provider
 
 1. When the installation of the certificate succeeds, you should see a green checkmark next to **Prepare secrets** before proceeding to the next step. Now select the **Install** button next to **3 Install resource provider**.
-   ![Marketplace management start RP install](media/azure-stack-sql-rp-deploy/7-start-to-install-rp.png)
+   ![Screenshot of marketplace management start RP install.](media/azure-stack-sql-rp-deploy/7-start-to-install-rp.png)
  
 2. Next you'll see the following page, which indicates that SQL resource provider is being installed.
-   ![Marketplace management RP installing](media/azure-stack-sql-rp-deploy/7-installing.png)
+   ![Screenshot of marketplace management RP installing.](media/azure-stack-sql-rp-deploy/7-installing.png)
  
 3. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
-   ![Marketplace management RP install in progress](media/azure-stack-sql-rp-deploy/8-installation-in-progress.png)
+   ![Screenshot of marketplace management RP install in progress.](media/azure-stack-sql-rp-deploy/8-installation-in-progress.png)
 
 4. Verify that the installation of SQL Server resource provider has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of SQL Server resource provider should show "Installed".
-   ![Marketplace management RP installed](media/azure-stack-sql-rp-deploy/9-installed.png)
+   ![Screenshot of marketplace management RP installed.](media/azure-stack-sql-rp-deploy/9-installed.png)
 
 ## Deploy the SQL resource provider V1
 
