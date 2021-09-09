@@ -20,7 +20,7 @@ Restarting the Azure Stack HCI cluster nodes hosting the management cluster and 
 
 ## Deployment: Connecting to remote server localhost failed
 
-The AKS host cluster deployment fails at system checks with a WinRM service error. Try applying the remedies suggested in the [Manual troubleshooting](/azure-stack/hci/manage/troubleshoot-credssp#manual-troubleshooting). 
+The AKS host cluster deployment fails at system checks with a WinRM service error. Try applying the remedies suggested in the [Manual troubleshooting](../hci/manage/troubleshoot-credssp.md#manual-troubleshooting). 
 
 ![Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
 
