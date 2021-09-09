@@ -4,10 +4,10 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/20/2021
+ms.date: 09/09/2021
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 06/06/2019
+ms.lastreviewed: 09/09/2021
 
 # Intent: As an Azure Stack operator, I want to learnm which guest operating systems can be used on Azure Stack.
 # Keyword: azure stack guest operating systems
@@ -43,10 +43,10 @@ Datacenter editions are available in Azure Stack Hub Marketplace for downloading
 
 Linux distributions listed as available in Azure Stack Hub Marketplace include the necessary Windows Azure Linux Agent (WALA). If you bring your own image to Azure Stack, follow the guidelines in [Add Linux images to Azure Stack](azure-stack-linux.md).
 
-> [!NOTE]
-> Custom images should be built with the latest public WALA version (on the 1903 Azure Stack Hub build and above, or with the 1901/1902 hotfix), or with version 2.2.20. Versions before 2.2.20 and between 2.2.21 and 2.2.34 (inclusive) may not function properly on Azure Stack Hub. On Azure Stack Hub 1910 and above, all Azure WALA agent versions work with Azure Stack Hub.
+> [!NOTE]  
+> Custom images should be built with the latest public WALA version. For the minimum supported Azure Linux agent see [Minimum supported Azure Linux Agent](azure-stack-linux.md#minimum-supported-azure-linux-agent). 
 >
-> [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub 1910 and above.
+> [cloud-init](https://cloud-init.io/) is supported.
 
 | Distribution | Description | Publisher | Azure Stack Hub Marketplace |
 | --- | --- | --- | --- |

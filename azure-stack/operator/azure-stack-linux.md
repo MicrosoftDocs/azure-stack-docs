@@ -13,7 +13,7 @@ ms.lastreviewed: 9/9/2021
 
 ---
 
-# Add Linux images to the Azure Stack Hub Marketplace
+# Add Linux images to the Azure Stack Hub Marketplace #minimum-supported-azure-linux-agent
 
 You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image to the Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through marketplace management. These images have been prepared and tested for compatibility with Azure Stack Hub.
 
