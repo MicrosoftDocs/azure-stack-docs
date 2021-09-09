@@ -91,7 +91,7 @@ You can send diagnostic logs to Microsoft in two ways:
 
 ## Diagnostic log collection
 
-Beginning with the 1907 release, there are two new ways to collect logs in **Help and support**:
+There are two new ways to collect logs in **Help and support**:
 
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts.
 - **Collect logs now**: You can choose a 1-4 hour sliding window from the last seven days.
