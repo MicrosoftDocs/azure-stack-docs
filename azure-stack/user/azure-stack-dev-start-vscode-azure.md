@@ -33,7 +33,7 @@ In addition to the Azure Account extension for Visual Studio, a number of other 
 
 ## Pre-requisites for Azure Account Extension
 
-- Azure Stack Hub environment 1904 build or later.
+- An Azure Stack Hub environment.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account).
 - [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
