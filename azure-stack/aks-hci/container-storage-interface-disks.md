@@ -31,9 +31,7 @@ To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concep
 The default storage class is suitable for most common scenarios. However, in some cases, you may want to create your own storage class that stores PVs at a particular location mapped to a specific performance tier.
 
 > [!NOTE]
-> If you have Linux workloads (pods) that specify a [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) `fsGroup` parameter, you must create and use a custom storage class using one of the following methods:
->  - For Kubernetes version 1.20 and above, create a custom storage class with [fsGroupPolicy:File](https://kubernetes-csi.github.io/docs/support-fsgroup.html).
->  - For Kubernetes version 1.19, include the parameter `fsType: ext4`.
+> If you have Linux workloads (pods), you must create a custom storage class with the parameter `fsType: ext4`. This applies to Kubernetes versions 1.19 and 1.20 or later. 
 
 The default storage class stores PVs at the `-imageDir` location specified during the AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that’s backed by high-performing SSDs/NVMe or an cost-optimized volume backed by HDDs.
 
