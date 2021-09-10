@@ -23,6 +23,10 @@ landingContent:
         links:
           - text: What is Azure Stack HCI?
             url: overview.md
+      - linkListType: what-new
+        links:
+          - text: What's new in Azure Stack HCI?
+            url: whats-new.md
       - linkListType: get-started
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
