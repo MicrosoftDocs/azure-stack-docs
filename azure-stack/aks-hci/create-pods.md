@@ -77,4 +77,4 @@ spec:
 
 ## Next steps
 
-[Create a deployment](create-deployment.md)
+[Create a deployment](create-deployments.md)
