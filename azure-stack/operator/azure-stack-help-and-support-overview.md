@@ -100,7 +100,7 @@ There are two new ways to collect logs in **Help and support**:
 
 Integrated systems can share the diagnostic logs with Microsoft Support. Because Azure Stack Development Kit (ASDK) is an evaluation environment, it's not supported by Microsoft Support. For more information, see [Azure Stack Hub diagnostic log collection overview](./diagnostic-log-collection.md).
 
-## Help and support for earlier releases Azure Stack Hub (pre-1905)
+## Help and support for earlier releases Azure Stack Hub
 
 Previous Azure Stack Hub releases also have a link to **Help + support** that redirects to the [Azure Stack Hub Operator Documentation](./index.yml).
 
