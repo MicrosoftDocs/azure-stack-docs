@@ -66,7 +66,7 @@ If you created your Kubernetes cluster using the commands in the previous tutori
 Use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command to scale the node pool. The following example scales the node pool from 1 to 3 Linux nodes.
 
 ```powershell
-Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -count 3
+Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 ``` 
 
 If you want to scale the control plane nodes, use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command.
