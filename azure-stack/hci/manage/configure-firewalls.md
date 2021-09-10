@@ -123,7 +123,7 @@ For more information about these connectivity recommendations and others, see th
 - [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls)
 - [Azure Arc networking configuration](/azure/azure-arc/servers/agent-overview#networking-configuration)
 - [PowerShell Gallery](https://www.powershellgallery.com) URLs to install components such a NuGet and others
-- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](/azure-stack/aks-hci/system-requirements#network-port-and-url-requirements)
+- For access to the Azure Kubernetes Service, Google APIs, Helm, and more, see [Azure Kubernetes Service on Azure Stack HCI network port and URL requirements](../../aks-hci/system-requirements.md#network-port-and-url-requirements)
 
 ### Working with service tags
 A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
