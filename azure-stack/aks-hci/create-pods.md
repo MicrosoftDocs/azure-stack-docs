@@ -9,7 +9,7 @@ ms.author: v-susbo
 
 # Create and delete pods
 
-A pod has one or more containers deployed together on a single host and is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) are removed.
+Kubernetes uses pods to run an instance of your application, and a pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host and is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
 
 ## Create a pod
 
@@ -55,9 +55,9 @@ kubectl delete pod
 
 ## Example pod configuration
 
-The following example describes the features of a pod, and shows how it's the smallest unit of Kubernetes that can be defined, deployed, and managed.
+The following YAML example describes the features of a pod, and shows how it's the smallest unit of Kubernetes that can be defined, deployed, and managed.
 
-```
+```yml
 apiVersion: v1 
 kind: Pod 
 metadata: 
@@ -73,5 +73,8 @@ spec:
          - containerPort: 80 
       nodeSelector: 
           beta.kubernetes.io/os: linux
-
 ```
+
+## Next steps
+
+[Create a deployment](create-deployment.md)
