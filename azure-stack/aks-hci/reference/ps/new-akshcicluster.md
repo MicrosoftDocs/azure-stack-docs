@@ -32,7 +32,7 @@ New-AksHciCluster -name <String>
 ```
 
 > [!NOTE]
-> The parameter set above is going to be deprecated in a future release. This set will still be supported and will be the default behavior when running `New-AksHciCluster` with the `-name` parameter, which is the only required parameter. AKS on Azure Stack HCI is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. For more information on the new node pool experience, see [Create and manage multiple node pools for a cluster](/azure-stack/aks-hci/use-node-pools.md).
+> The parameter set above is going to be deprecated in a future release. This set will still be supported and will be the default behavior when running `New-AksHciCluster` with the `-name` parameter, which is the only required parameter. AKS on Azure Stack HCI is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. For more information on the new node pool experience, see [Create and manage multiple node pools for a cluster](../../use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name <String>
@@ -64,11 +64,14 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 
 ## Examples
 
-### New AKS-HCI cluster with required parameter
+### New AKS on Azure Stack HCI cluster with required parameter
 
 ```powershell
 PS C:\> New-AksHciCluster -name mycluster
 ```
+
+> [!NOTE]
+> Do not include hyphens in cluster names, or the cluster creation may fail.
 
 The example above deploys a cluster with one control plane node, a Linux node pool called *mycluster-linux* with a node count of one, and an empty Windows node pool called *mycluster-windows*. You can still scale the worker nodes with the [Set-AksHciCluster](set-akshcicluster.md) command or you can scale by node pool using the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
@@ -127,7 +130,7 @@ The command above deploys a cluster with its default values. The deployed cluste
 ## Parameters
 
 ### -name
-The name of your Kubernetes cluster.
+The name of your Kubernetes cluster. Do not include hyphens in cluster names, or the cluster creation may fail.
 
 ```yaml
 Type: System.String
