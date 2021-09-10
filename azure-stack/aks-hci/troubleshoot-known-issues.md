@@ -191,7 +191,7 @@ When running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmd
 This issue could have the following root causes:
 
 * **Reason one**:
-   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
+   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
 
 * **Reason two**:
    The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 

@@ -8,8 +8,12 @@
     href: add-akshcinode.md
   - name: Disable-AksHciArcConnection
     href: disable-akshciarcconnection.md
+  - name: Disable-AksHciPreview
+    href: disable-akshcipreview.md
   - name: Enable-AksHciArcConnection
     href: enable-akshciarcconnection.md
+  - name: Enable-AksHciPreview
+    href: enable-akshcipreview.md
   - name: Get-AksHciBillingStatus
     href: get-akshcibillingstatus.md
   - name: Get-AksHciCluster

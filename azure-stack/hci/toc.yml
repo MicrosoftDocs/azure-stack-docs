@@ -157,7 +157,7 @@
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Network Adapter
-      href: manage/use-azure-network-adapter.md
+      href: /windows-server/manage/windows-admin-center/azure/use-azure-network-adapter
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster validation reporting
