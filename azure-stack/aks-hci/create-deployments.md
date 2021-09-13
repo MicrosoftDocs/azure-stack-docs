@@ -13,7 +13,7 @@ A _deployment_ refers to a Kubernetes object that manages the performance and sp
 
 Deployments automate the process to launch pod instances and ensure they run as defined across all nodes within the cluster. Administrators and IT professionals use deployments to communicate what they want from an application, and subsequently, Kubernetes takes all the necessary steps to create the desired state of the application.
 
-While deployments define how your applications will run, they do not guarantee where your applications will live within your cluster. For example, if your application requires an instance of a pod on every node you will want to use a DaemonSet. For stateful applications, a StatefulSet will provide unique network identifiers, persistent storage, and ordered deployment/scaling. 
+While deployments define how your applications run, they do not guarantee where your applications are located within your cluster. For example, if your application requires an instance of a pod on every node, you'll want to use a DaemonSet. For stateful applications, a StatefulSet provides unique network identifiers, persistent storage, and ordered deployment/scaling. 
 
 The Kubernetes deployment object lets you:
 
@@ -54,22 +54,25 @@ containers:
 To view the deployment, the replica set, and the pods, run the following command:
 
 ```powershell
-kubectl get deployment,replicaset,pod
+kubectl get deployment, replicaset, pod
 ```
 
 ## Update a deployment
 
-The main advantage of deployments is to automatically update your Kubernetes program. Without deployments, you would have to manually end all old pods, start new pod versions, and run a check to see if there are any problems during pod creation. You can run `kubectl describe deployment` to see in which order the pods are brought up and removed.
+The main advantage of deployments is to automatically update your Kubernetes program. Without deployments, you would have to manually end all old pods, start new pod versions, and run a check to see if there are any problems when creating pods. You can run `kubectl describe deployment` to see the order in which the pods were brought up and removed.
 
-Deployments automate the update process as you simply update the pod template or the desired state. The deployment alters the program state in the background with actions such as creating new pods or allocating more resources, until the chosen update is in place.
+Deployments automate the update process as you simply update the pod template or the desired state. The deployment alters the program state in the background with actions, such as creating new pods or allocating more resources, until the chosen update is in place.
 
-If there are problems in the deployment, Kubernetes will automatically roll back to the previous version. You can also explicitly roll back to a specific version using the `kubectl rollout undo` command, or use the `kubectl rollout pause` to temporarily halt a deployment.
+If there are problems in the deployment, Kubernetes automatically rolls back to the previous version. You can also explicitly roll back to a specific version using the `kubectl rollout undo` command, or you can use the `kubectl rollout pause` to temporarily halt a deployment.
 
 ## Strategies for updating deployments
 
-Kubernetes provides deployment strategies that allow you to update in a variety of ways to suit the needs of your environment. The three most common update strategies are:
+Kubernetes provides several deployment strategies so you can update in a variety of ways to suit the needs of your environment. The three most common update strategies are:
 
-- Rolling update strategy: This is a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime. It minimizes downtime at the cost of update speed.
-- Recreation strategy: This is an all-or-nothing process that allows you to update all aspects of the system at once with a brief downtime period. It updates quickly but causes downtime.
-- Canary Strategy: This is a partial update process that allows you to test your new program version on real users without a commitment to a full rollout. It quickly updates for a select few users with a full rollout later.
+- **Rolling update**: This is a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime. It minimizes downtime at the cost of update speed.
+- **Recreation**: This is an all-or-nothing process that allows you to update all aspects of the system at once with a brief downtime period. It updates quickly but causes downtime.
+- **Canary**: This is a partial update process that allows you to test your new program version on real users without a commitment to a full rollout. It quickly updates for a select few users with a full rollout later.
 
+## Next steps
+
+[Create a DaemonSet](create-daemonsets.md)

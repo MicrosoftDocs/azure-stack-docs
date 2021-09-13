@@ -125,6 +125,8 @@
             href: create-pods.md
           - name: Create deployments
             href: create-deployments.md
+          - name: Create a DaemonSet
+            href: create-daemonsets.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
