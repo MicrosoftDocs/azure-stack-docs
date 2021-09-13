@@ -61,10 +61,10 @@ The Azure Stack Hub 2108 update build type is **Full**.
 
 The 2108 update has the following expected runtimes based on our internal testing:
 
-- 4 nodes: 8-20 hours
-- 8 nodes: 11-26 hours
-- 12 nodes: 14-32 hours
-- 16 nodes: 17-38 hours
+- 4 nodes: 6-18 hours
+- 8 nodes: 10-24 hours
+- 12 nodes: 11-30 hours
+- 16 nodes: 12-36 hours
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2108 update and should not be compared to other Azure Stack Hub updates.
 
