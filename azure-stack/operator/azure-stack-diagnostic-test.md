@@ -195,14 +195,6 @@ The following example runs **Test-AzureStack** to test system readiness before i
 ```powershell
 Test-AzureStack -Group UpdateReadiness
 ```
-
-If your Azure Stack Hub is running a version before 1811, use the following PowerShell commands to run **Test-AzureStack**:
-
-```powershell
-New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
-Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-```
-
 ### Run validation tool to test infrastructure backup settings
 
 *Before* configuring infrastructure backup, you can test the backup share path and credential using the **AzsBackupShareAccessibility** test:
