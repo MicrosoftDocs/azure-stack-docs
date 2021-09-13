@@ -38,7 +38,7 @@ If you get an error message during template validation that the parameter 'osPro
 - [Compute](../user/azure-stack-profiles-azure-resource-manager-versions.md#microsoftcompute)
 - [Network](../user/azure-stack-profiles-azure-resource-manager-versions.md#microsoftnetwork)
 
-To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](../user/azure-stack-storage-transfer.md#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](../operator/azure-stack-linux.md#azure-linux-agent).
+To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](../user/azure-stack-storage-transfer.md#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack Hub, see [Azure LinuX Agent](../operator/azure-stack-linux.md#minimum-supported-azure-linux-agent).
 
 ### Deployment fails due to lack of external access
 When deployment fails at stages where external access is required, an exception like the following example will be returned:

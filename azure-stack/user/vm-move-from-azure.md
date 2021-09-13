@@ -67,7 +67,7 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
    logout
    ```
 
-   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](../operator/azure-stack-linux.md#azure-linux-agent). Make sure that the image on which you have run sysprep has an Azure Linux agent version that is compatible with Azure Stack Hub.
+   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](../operator/azure-stack-linux.md#minimum-supported-azure-linux-agent). Make sure that the image on which you have run sysprep has an Azure Linux agent version that is compatible with Azure Stack Hub.
 
 2. Stop deallocate the VM.
 
