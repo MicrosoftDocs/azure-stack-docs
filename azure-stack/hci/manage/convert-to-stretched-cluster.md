@@ -27,7 +27,7 @@ Refer to your OEM-provided documentation when adding new server hardware for use
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
 1. Run OEM validation tests to ensure hardware homogeneity with the existing clustered servers.
-1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](../deploy/operating-system).
+1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](/deploy/operating-system).
 1. Join the servers to the same cluster domain.
 
 Whenever you add or remove a server, perform cluster validation afterwards to ensure the cluster is functioning normally.
@@ -42,11 +42,11 @@ To prevent this from occurring so separate storage pools are created, sites must
 
 With Azure Stack HCI, sites are automatically created when a (non-stretched) cluster is created.  Since the cluster is created in a single site, server nodes are added to this site and a drive pool is created.
 
-Normally, when creating additional sites, the [New-ClusterFaultDomain](../powershell/module/failoverclusters/new-clusterfaultdomain) cmdlet is used. However, you cannot add server nodes to a site when the servers are not a part of the cluster.  
+Normally, when creating additional sites, the [New-ClusterFaultDomain](/powershell/module/failoverclusters/new-clusterfaultdomain) cmdlet is used. However, you cannot add server nodes to a site when the servers are not a part of the cluster.  
 
-Much like when you [Add or remove servers](add-cluster.md) to an Azure Stack HCI cluster using Windows Admin Center, the [Get-ClusterFaultDomainXML](../powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](../powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets are used to create an XML file that specifies the sites and nodes in them. When additional server nodes are added to the cluster, they are added to the new site and the second site’s drive pool is created.
+Much like when you [Add or remove servers](add-cluster.md) to an Azure Stack HCI cluster using Windows Admin Center, the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets are used to create an XML file that specifies the sites and nodes in them. When additional server nodes are added to the cluster, they are added to the new site and the second site’s drive pool is created.
 
-You can add additional servers simultaneously using the [Add-ClusterNode](../powershell/module/failoverclusters/add-clusternode) cmdlet, which adds each new server's drives at the same time also.
+You can add additional servers simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, which adds each new server's drives at the same time also.
 
 Typically, you manage clusters from a remote client computer, rather than on a server in the cluster. This remote computer is called the management computer.
 
@@ -124,11 +124,11 @@ Once the sites have been created, you next add the new servers to the cluster. T
 
 ## Create disks and replication
 
-Creating the virtual disks on the secondary site and setting up Storage Replica is a manual process. To see all the virtual disks currently in the cluster, use the [Get-VirtualDisk](../powershell/module/storage/get-virtualdisk) cmdlet.  
+Creating the virtual disks on the secondary site and setting up Storage Replica is a manual process. To see all the virtual disks currently in the cluster, use the [Get-VirtualDisk](/powershell/module/storage/get-virtualdisk) cmdlet.  
 
 With Storage Replica, all disks must be of the same size and attributes. When creating the disks on the secondary site, the same method of virtual disk creation and disk resiliency should be used as was done for the primary site nodes. Storage Replica also requires a log drive for each site to perform replication.  
 
 ## Next steps
 
 - [Create volumes on Azure Stack HCI and Windows Server clusters](create-volumes.md)
-- [Stretch Cluster Replication Using Shared Storage](../windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage)
+- [Stretch Cluster Replication Using Shared Storage](/windows-server/storage/storage-replica/stretch-cluster-replication-using-shared-storage)
