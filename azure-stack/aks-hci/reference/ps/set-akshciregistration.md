@@ -49,18 +49,18 @@ Set-AksHciRegistration -subscriptionId myazuresubscription -resourceGroupName my
 
 If you do not have access to a subscription on which you're an "Owner", you can connect your AKS cluster to Azure Arc using a service principal.
 
-Log in to Azure using the [Connect-AzAccount](https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount) PowerShell command:
+Log in to Azure using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command:
 
 ```powershell
 Connect-AzAccount
 ```
 
-Set the subscription you want to use to register your AKS host for billing as the default subscription by running the [Set-AzContext](https://docs.microsoft.com/en-us/powershell/module/az.accounts/set-azcontext?view=azps-6.4.0) command.
+Set the subscription you want to use to register your AKS host for billing as the default subscription by running the [Set-AzContext](/powershell/module/az.accounts/set-azcontext) command.
 ```powershell
 Set-AzContext -Subscription myAzureSubscription
 ```
 
-Verify that your login context is correct by running the [Get-AzContext](https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontext?view=azps-6.4.0) PowerShell command. Verify that the subscription, tenant and account is what you want to use to register your AKS host for billing.
+Verify that your login context is correct by running the [Get-AzContext](/powershell/module/az.accounts/get-azcontext) PowerShell command. Verify that the subscription, tenant and account is what you want to use to register your AKS host for billing.
 
 ```powershell
 Get-AzContext
@@ -78,7 +78,7 @@ Retreive your tenant ID.
 $tenant = (Get-AzContext).Tenant.Id
 ```
 
-Create a service principal by running the [New-AzADServicePrincipal](https://docs.microsoft.com/en-us/powershell/module/az.resources/new-azadserviceprincipal?view=azps-6.4.0) PowerShell command. This command creates a service principal with the  "Microsoft.Kubernetes connected cluster" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
+Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the  "Microsoft.Kubernetes connected cluster" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal).
 
 ```powershell
 $sp = New-AzADServicePrincipal -Role "Microsoft.Kubernetes connected cluster role" -Scope "/subscriptions/myazuresubscription"
@@ -94,7 +94,7 @@ Write-Host "App Secret: $secret"
 From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of these items and store them safely.
 With that created, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new service principal.
 
-Store your service principal credentials (app ID, secret) with [Get-Credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.1), then set registration.
+Store your service principal credentials (app ID, secret) with [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), then set registration.
 ```powershell
 $credential = Get-Credential
 Set-AksHciRegistration -SubscriptionId myazuresubscription -ResourceGroupName myresourcegroup -TenantId $tenant -Credential $credential
