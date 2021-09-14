@@ -469,9 +469,6 @@ You can use the **Region management** tile to verify that the Azure Stack Hub re
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of marketplace items in the Marketplace management blade, your registration was successful. However, in disconnected environments, you can't see marketplace items in Marketplace management.
 
-> [!NOTE]
-> After registration is complete, the active warning for not registering will no longer appear. In Azure Stack Hub releases before 1904, in disconnected scenarios, you see a message in Marketplace management asking you to register and activate your Azure Stack Hub, even if you have registered successfully. This message doesn't appear in release 1904 and later.
-
 ## Renew or change registration
 
 ::: zone pivot="state-connected"
