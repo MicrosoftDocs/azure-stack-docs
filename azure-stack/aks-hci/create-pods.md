@@ -35,7 +35,7 @@ To see the status of your pod, run the following command:
 kubectl get pods
 ```
 
-To view the entire configuration of the pod, run the following:
+To view the entire configuration of the pod, run the following command:
 
 ```powershell
 kubectl describe pod nginx

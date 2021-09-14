@@ -11,7 +11,7 @@ ms.author: v-susbo
 
 A _deployment_ refers to a Kubernetes object that manages the performance and specifies the desired behavior of a pod. It specifies the application’s life cycle, including the pods assigned to the application. It provides a way to communicate your desired state for your application, and the controller works on changing the present state into your desired state.
 
-Deployments automate the process to launch pod instances and ensure they run as defined across all nodes within the cluster. Administrators and IT professionals use deployments to communicate what they want from an application, and subsequently, Kubernetes takes all the necessary steps to create the desired state of the application.
+Deployments automate the process to launch pod instances and ensure they run as defined across all nodes within the cluster. Administrators and IT professionals use deployments to communicate what they want from an application, and then, Kubernetes takes all the necessary steps to create the desired state of the application.
 
 While deployments define how your applications run, they do not guarantee where your applications are located within your cluster. For example, if your application requires an instance of a pod on every node, you'll want to use a DaemonSet. For stateful applications, a StatefulSet provides unique network identifiers, persistent storage, and ordered deployment/scaling. 
 
@@ -23,11 +23,13 @@ The Kubernetes deployment object lets you:
 - Roll back all running instances of an application to another version
 - Pause or continue a deployment
 
+For additional information, see [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+
 ## Create a deployment
 
 You create a deployment using the `kubectl apply` or `kubectl create` commands. Since the required number of pods is maintained and monitored, they're running and available after the deployment is created. If a pod fails, Kubernetes immediately rolls out a replica of the pod to take its place in the cluster.
 
-The following describes the features of a deployment manifest file in YAML format.
+The following example describes the features of a deployment manifest file in YAML format.
 
 ```yml
 apiVersion: apps/v1  
@@ -67,11 +69,11 @@ If there are problems in the deployment, Kubernetes automatically rolls back to 
 
 ## Strategies for updating deployments
 
-Kubernetes provides several deployment strategies so you can update in a variety of ways to suit the needs of your environment. The three most common update strategies are:
+Kubernetes provides several deployment strategies so you can update in various ways to suit the needs of your environment. The three most common update strategies are:
 
-- **Rolling update**: This is a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime. It minimizes downtime at the cost of update speed.
-- **Recreation**: This is an all-or-nothing process that allows you to update all aspects of the system at once with a brief downtime period. It updates quickly but causes downtime.
-- **Canary**: This is a partial update process that allows you to test your new program version on real users without a commitment to a full rollout. It quickly updates for a select few users with a full rollout later.
+- **Rolling update**: This update is a gradual process that allows you to update your Kubernetes system with only a minor effect on performance and no downtime. It minimizes downtime at the cost of update speed.
+- **Recreation**: This strategy is an all-or-nothing process that allows you to update all aspects of the system at once with a brief downtime period. It updates quickly but causes downtime.
+- **Canary**: This strategy is a partial update process that allows you to test your new program version on real users without a commitment to a full rollout. It quickly updates for a select few users with a full rollout later.
 
 ## Next steps
 

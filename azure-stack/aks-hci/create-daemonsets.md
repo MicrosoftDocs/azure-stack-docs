@@ -9,17 +9,19 @@ ms.author: v-susbo
 
 # Create a DaemonSet
 
-DaemonSet is a Kubernetes object that ensures a copy of a pod defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, DaemonSet automatically allocates the pod on that node. Similarly, when a node is deleted, then the pod running on the node is also deleted and is not rescheduled on another node as when using ReplicaSet. This allows a user to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
+_DaemonSet_ is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node. Similarly, when a node is deleted, then the pod running on the node is also deleted and is not rescheduled on another node (for example, as happens when using a _ReplicaSet_). This allows a user to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
 
 DaemonSets can improve the overall cluster performance. For example, you can use them to deploy pods to perform maintenance tasks and support services to every node: 
 
-- Run a log collection daemon, such as like Fluentd and Logstash, on each node.
-- Run a node monitoring daemon, such as Prometheus, on each node.
-- Run a cluster storage daemon, such as glusterd or ceph, on each node.
+- Run a log collection daemon, such as like Fluentd and Logstash.
+- Run a node monitoring daemon, such as Prometheus.
+- Run a cluster storage daemon, such as glusterd or ceph.
 
 Although DaemonSets create a pod on every node by default, you can limit the number of acceptable nodes by predefining the node selector field in the YAML file. Only nodes that match the node selector will get a pod created on it by the DaemonSet controller. 
 
 Usually, one DaemonSet deploys one daemon type across all nodes, but it's possible to have multiple DaemonSets control one daemon type by using different labels. A Kubernetes label specifies deployment rules based on the characteristics of individual nodes.
+
+For more information on how to use DaemonSets, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
 ## Create a DaemonSet
 
