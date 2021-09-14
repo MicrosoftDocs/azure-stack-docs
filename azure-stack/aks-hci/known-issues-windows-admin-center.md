@@ -12,6 +12,10 @@ ms.reviewer:
 
 This article describes known issues with Windows Admin Center (WAC) on Azure Stack HCI. You can also review [known issues](known-issues.md) that are specific to using Azure Kubernetes Service (AKS) on the Azure Stack HCI.
 
+## When updating the Kubernetes version, the update page continues to show that the update is still in process when the update is actually complete
+
+If you have workload clusters with Kubernetes version 1.19.9 installed, and then try to update them to Kubernetes 1.19.11 through Windows Admin Center, the Kubernetes update page continues to show that the update is still in process. However, if you run `Get-AksHciCluster`, it shows that the update has completed, and if you open WAC in a new tab, the cluster is updated to 1.19.11 in the Kubernetes clusters list. You can ignore this issue as the update process did complete.
+
 ## Restarting Azure Stack HCI nodes causes timing issue
 
 Restarting the Azure Stack HCI cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the WAC dashboard. To work around this issue, pause and drain the nodes before you plan to restart them. Sometimes, the workload clusters may just take longer to appear in the dashboard.
