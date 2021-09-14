@@ -47,7 +47,7 @@ Set-AksHciRegistration -subscriptionId myazuresubscription -resourceGroupName my
 
 ### Register AKS on Azure Stack HCI using a service principal
 
-If you do not have access to a subscription on which you're an "Owner", you can connect your AKS cluster to Azure Arc using a service principal.
+If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal.
 
 Log in to Azure using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command:
 
