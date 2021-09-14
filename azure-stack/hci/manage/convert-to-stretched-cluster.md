@@ -32,13 +32,13 @@ Refer to your OEM-provided documentation when adding new server hardware for use
 
 Whenever you add or remove a server, perform cluster validation afterwards to ensure the cluster is functioning normally.
 
-## Before adding server nodes
+## Before you add server nodes
 
 Stretched clusters require the same number of server nodes and the same number of drives in each site. When adding servers to an Azure Stack HCI cluster, their drives are automatically added to a single storage pool. In a stretched cluster however, each site must have its own storage pool.
 
 To prevent this from occurring so separate storage pools are created, sites must be created first before new server nodes can be added. Once the sites are created, the server nodes can be added to the cluster and its own pool created, one for each site.
 
-## Creating sites
+## Create sites
 
 With Azure Stack HCI, sites are automatically created when a (non-stretched) cluster is created.  Since the cluster is created in a single site, server nodes are added to this site and a drive pool is created.
 
