@@ -11,6 +11,28 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
+## Install-Akshci fails on a multi-node installation
+
+When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
+
+To ensure all nodes can resolve the CloudAgent's DNS, run the following command from each node:
+
+```powershell
+Resolve-DnsName <FQDN of cloudagent>
+```
+
+If the step above succeeds on all the nodes, make sure that all nodes can reach the CloudAgent port to verify that a proxy is not trying to block this connection and the port is open by running the following from each node:
+
+```powershell
+Test-NetConnection  <FQDN of cloudagent> -Port <Cloudagent port - default 65000>
+```
+
+## Linux and Windows VMs were not configured as highly available VMs
+
+When scaling out a workload cluster, the corresponding Linux and Windows VMs were added as worker nodes, but they were not configured as high available VMs.When running the [Get-ClusterGroup](/powershell/module/failoverclusters/get-clustergroup?view=windowsserver2019-ps) command, the newly created Linux VM was not configured as a Cluster Group.
+
+This is a known issue. After a reboot, the ability to have VMs configured as highly available is sometimes lost. The current workaround is to restart `wssdagent` on each of the Azure Stack HCI nodes. After restarting `wssdagent` on each node, for new VMs, you should be able to create node pools, perform a scale up operation, and create new Kubernetes clusters. However, you will still have to manually add existing VMs to the failover cluster. 
+
 ## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
 
 On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
