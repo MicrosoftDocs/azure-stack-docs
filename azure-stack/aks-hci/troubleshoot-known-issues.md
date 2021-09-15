@@ -13,7 +13,7 @@ This article includes workaround steps for resolving known issues that occur whe
 
 ## Install-Akshci fails on a multi-node installation
 
-When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
+When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error message _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
 
 To ensure all nodes can resolve the CloudAgent's DNS, run the following command on each node:
 
@@ -21,7 +21,7 @@ To ensure all nodes can resolve the CloudAgent's DNS, run the following command 
 Resolve-DnsName <FQDN of cloudagent>
 ```
 
-When the step above succeeds on all the nodes, make sure the nodes can reach the CloudAgent port to verify that a proxy is not trying to block this connection and the port is open. To do this, run the following command on each node:
+When the step above succeeds on the nodes, make sure the nodes can reach the CloudAgent port to verify that a proxy is not trying to block this connection and the port is open. To do this, run the following command on each node:
 
 ```powershell
 Test-NetConnection  <FQDN of cloudagent> -Port <Cloudagent port - default 65000>
@@ -38,9 +38,9 @@ When you scale down a cluster, the high availability cluster resources are in a 
 
 ## Attempt to create new workload clusters failed
 
-An AKS on Azure Stack HCI cluster deployed in a VM in Azure was previously working fine, but after the AKS host was turned off the host for several days, the `Kubectl` command did not work. After running `Kubectl get nodes` or `Kubectl get services` commands, this error message appeared: _Error from server (InternalError): an error on the server ("") has prevented the request from succeeding_.
+An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working fine, but after the AKS host was turned off the host for several days, the `Kubectl` command did not work. After running `Kubectl get nodes` or `Kubectl get services` commands, this error message appeared: _Error from server (InternalError): an error on the server ("") has prevented the request from succeeding_.
 
-This issue occurred because the AKS host was turned off for longer than four days which caused the certificates to expire. Certifcates are frequently rotated in a four-day rotation. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
+This issue occurred because the AKS host was turned off for longer than four days which caused the certificates to expire. Certificates are frequently rotated in a four-day rotation. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
 
 ## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
 
