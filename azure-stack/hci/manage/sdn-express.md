@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 09/10/2021
+ms.date: 09/14/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
@@ -61,7 +61,7 @@ Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -S
 ```
 
 > [!NOTE]
-> This script should be run from a Windows management computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
+> This script should be run from a Windows client computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the `Set-ExecutionPolicy` command.
 
 ## Download the GitHub repository
 
