@@ -231,22 +231,27 @@ Like the Azure Stack Hub infrastructure, value-add resource providers use both i
 - Providing updated external secrets, such as a new TLS certificate used to secure resource provider endpoints.
 - Managing resource provider secret rotation on a regular basis.
 
-Alerts will be triggered when external secrets or internal secrets are about to expire. 
+When secrets are nearing expiration, the following alerts are generated in the administrator portal. Completing secret rotation will resolve these alerts:
+- Pending internal certificate expiration
+- Pending external certificate expiration
 
 ### Prerequisites
 
 In preparation for the rotation process:
 
-1. Review [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../operator/azure-stack-pki-certs.md#certificate-requirements) for important prerequisite information before acquiring/renewing your X509 certificate, including details on the required PFX format. Also review the requirements specified in the [Optional PaaS certificates section](../operator/azure-stack-pki-certs.md#optional-paas-certificates), for your specific value-add resource provider.
+1. If you haven't already, [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md) before continuing. Version 2.0.2-preview or later is required for Azure Stack Hub secret rotation. For more information, see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](../operator/migrate-azurerm-az.md).
 
-2. If you haven't already, [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md) before continuing. Version 2.0.2-preview or later is required for Azure Stack Hub secret rotation. For more information, see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](../operator/migrate-azurerm-az.md).
-
-3. Install Azs.Deployment.Admin 1.0.0 modules: [PowerShell Gallery | Azs.Deployment.Admin 1.0.0](https://www.powershellgallery.com/packages/Azs.Deployment.Admin/1.0.0)
+2. Install Azs.Deployment.Admin 1.0.0 modules: [PowerShell Gallery | Azs.Deployment.Admin 1.0.0](https://www.powershellgallery.com/packages/Azs.Deployment.Admin/1.0.0)
 ```powershell
 Install-Module -Name Azs.Deployment.Admin
 ```
 
-### Prepare a new TLS certificate
+3. If external certificate is nearing expiration, review [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../operator/azure-stack-pki-certs.md#certificate-requirements) for important prerequisite information before acquiring/renewing your X509 certificate, including details on the required PFX format. Also review the requirements specified in the [Optional PaaS certificates section](../operator/azure-stack-pki-certs.md#optional-paas-certificates), for your specific value-add resource provider.
+
+### Prepare a new TLS certificate for external certificate rotation
+
+> [!NOTE]
+> If only internal certificate is nearing expiration, you can skip this section.
 
 Next, create or renew your TLS certificate for securing the value-add resource provider endpoints:
 
@@ -256,39 +261,52 @@ Next, create or renew your TLS certificate for securing the value-add resource p
 
 3. Finally, complete the steps in [Validate Azure Stack Hub PKI certificates](../operator/azure-stack-validate-pki-certs.md). You use the Readiness Checker tool once more, to perform validation tests on your new certificate.
 
-### Determine deployment properties
+### Rotate the internal certificate
 
-Resource providers are deployed into your Azure Stack Hub environment as a versioned product package. Packages are assigned a unique package ID, in the format `'<product-id>.<installed-version>'`. Where `<product-id>` is a unique string representing the resource provider, and `<installed-version>` represents a specific version. The secrets associated with each package are stored in the Azure Stack Hub Key Vault service. 
-
-Open an elevated PowerShell console and complete the following steps to determine the properties required to rotate the resource provider's secrets:
+Open an elevated PowerShell console and complete the following steps to rotate the resource provider's external secrets:
 
 1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to use the PowerShell Az cmdlets (instead of AzureRM), and replace all placeholder values, such as endpoint URLs and directory tenant name.
 
-2. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
-   - `"name"` - contains the resource provider product ID in the second segment of the value. 
-   - `"properties"."deployment"."version"` - contains the currently deployed version number. 
+2. Determine the product-id of ther resource provider. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
+   - `"name"` - contains the resource provider product ID in the second segment of the value.
+   
+   For example, the SQL RP deployment may have a product ID of `"microsoft.sqlrp"`.
 
-   For example, the SQL and MySQL RP deployment may have a product ID of `"microsoft.sqlrp"`, and version `"2.0.0.2"`.
+3. Run the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal certificate:
 
-3. (This step is needed if both external and internal secrets need update) Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the SQL RP package ID is `microsoft.sqlrp.2.0.0.2`. 
+   ```powershell
+   Invoke-AzsProductRotateSecretsAction -ProductId $productId
+   ```
 
-4. (This step is needed if both external and internal secrets need update) Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property, just above `"properties"`. 
+### Rotate the external certificate
 
-For example, the secrets collection returned for the SQL RP contains a `"Certificate"` secret named `SSLCert`. 
-
-### Rotate the secrets
-
-Finally, use the resource provider's latest deployment properties to complete the secret rotation process.
-
-1. (This step is needed if both external and internal secrets need update) Use the `Set-AzsProductSecret` cmdlet to import your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script:
-
+You need to first make note of the values for the following parameters.
    | Placeholder | Description | Example value |
    | ----------- | ----------- | --------------|
    | `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.sqlrp` |
    | `<installed-version>` | The version of the latest resource provider deployment. | `2.0.0.2` |
+   | `<package-id>` | The package ID is built by concatenating the product-id and installed-version. | `microsoft.sqlrp.2.0.0.2` |
    | `<cert-secret-name>` | The name under which the certificate secret is stored. | `SSLCert` |
    | `<cert-pfx-file-path>` | The path to your certificate PFX file. | `C:\dir\dbadapter-cert-file.pfx` |
    | `<pfx-password>` | The password assigned to your certificate .PFX file. | `strong@CertSecret6` |
+
+Open an elevated PowerShell console and complete the following steps:
+
+1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to use the PowerShell Az cmdlets (instead of AzureRM), and replace all placeholder values, such as endpoint URLs and directory tenant name.
+
+2. Get the product-id parameter value. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
+   - `"name"` - contains the resource provider product ID in the second segment of the value. 
+   - `"properties"."deployment"."version"` - contains the currently deployed version number. 
+
+For example, the SQL RP deployment may have a product ID of `"microsoft.sqlrp"`, and version `"2.0.0.2"`.
+
+3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the SQL RP package ID is `microsoft.sqlrp.2.0.0.2`. 
+
+4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property, just above `"properties"`. 
+
+For example, the secrets collection returned for the SQL RP contains a `"Certificate"` secret named `SSLCert`. 
+
+5. Use the `Set-AzsProductSecret` cmdlet to import your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script. 
 
    ```powershell
    $productId = '<product-id>'
@@ -299,18 +317,20 @@ Finally, use the resource provider's latest deployment properties to complete th
    Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword $pfxPassword -Force
    ```
 
-2. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal and external secrets:
+6. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the secrets:
 
    ```powershell
    Invoke-AzsProductRotateSecretsAction -ProductId $productId
    ```
-   
-   You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
 
-   ![secret-rotation-progress](media/azure-stack-sql-resource-provider-maintain/sql-mysql-secrete-rotate.png)
+### Monitor the secret rotation progress
 
-   > [!NOTE]
-   > The secret rotation time might cost more than 10 minutes. After it is done, Status of the resource provider will change to “Installed”.
+You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
+
+![secret-rotation-progress](media/azure-stack-sql-resource-provider-maintain/sql-mysql-secrete-rotate.png)
+
+> [!NOTE]
+> The secret rotation time might cost more than 10 minutes. After it is done, Status of the resource provider will change to “Installed”.
 
 ::: moniker-end
 
@@ -379,7 +399,7 @@ $session | Remove-PSSession
 ```
 ::: moniker-end
 
-### Known limitations
+### Known limitations of SQL Server resource provider Version 1
 
 **Limitation**:<br>
 When the deployment, upgrade, or secret rotation script failed, some logs cannot be collected by the standard log collection mechanism.

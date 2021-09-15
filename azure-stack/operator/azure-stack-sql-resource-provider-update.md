@@ -36,12 +36,12 @@ A new SQL resource provider might be released when Azure Stack Hub is updated to
 
 If you have already deployed SQL RP V2, and want to check for updates, check [How to apply updates to resource provider](resource-provider-apply-updates.md).
 
-If you want to update from SQL RP V1 to SQL RP V2, make sure you have first updated to SQL RP V1.1.93.1, then apply the major version upgrade process to upgrade from SQl RP V1 to SQL RP V2.
+If you want to update from SQL RP V1 to SQL RP V2, make sure you have first updated to SQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from SQl RP V1 to SQL RP V2.
 
-## Update from SQL RP V1.1.93.1 to SQL RP V2.0.00.0
+## Update from SQL RP V1.1.93.x to SQL RP V2.0.00.0
 
 ### Prerequisites
-1. Make sure you have updated SQL RP V1 to the latest 1.1.93.1. Under Default Provider Subscription, find the RP resource group (naming format: system.<region>.sqladapter). Confirm the version tag and SQL RP VM name in resource group.
+1. Make sure you have updated SQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.<region>.sqladapter). Confirm the version tag and SQL RP VM name in resource group.
 
 2. [open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
  
@@ -99,10 +99,8 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -AzCredential $AdminCreds `
   -CloudAdminCredential $CloudAdminCreds `
   -Privilegedendpoint $privilegedEndpoint `
-  -BackupEncryptionKeyName $BackupEncryptionKeyName `
   -PfxPassword $PfxPass `
-  -PfxCert $PfxFilePath `
-  -BuildVersion $BuildVersion
+  -PfxCert $PfxFilePath
 ```
 
 ### Validate the upgrade is successful
@@ -111,11 +109,11 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 2.	Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
 
 
-## Update from SQL RP V1 earlier version to SQL RP V1.1.93.1
+## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
 
-SQL resource provider V1 update is cumulative. You can directly update to the 1.1.93.1 version. 
+SQL resource provider V1 update is cumulative. You can directly update to the 1.1.93.x version. 
 
-To update the resource provider to 1.1.93.1, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
+To update the resource provider to 1.1.93.x, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
 
 The update process is similar to the process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md). The update script uses the same arguments as the DeploySqlProvider.ps1 script, and you'll need to provide certificate information.
 
