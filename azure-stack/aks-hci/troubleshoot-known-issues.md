@@ -38,13 +38,13 @@ When you scale down a cluster, the high availability cluster resources are in a 
 
 ## Attempt to create new workload clusters failed
 
-An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working fine, but after the AKS host was turned off the host for several days, the `Kubectl` command did not work. After running `Kubectl get nodes` or `Kubectl get services` commands, this error message appeared: _Error from server (InternalError): an error on the server ("") has prevented the request from succeeding_.
+An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working fine, but after the AKS host was turned off the host for several days, the `Kubectl` command did not work. After running either the `Kubectl get nodes` or `Kubectl get services` commands, this error message appeared: _Error from server (InternalError): an error on the server ("") has prevented the request from succeeding_.
 
-This issue occurred because the AKS host was turned off for longer than four days which caused the certificates to expire. Certificates are frequently rotated in a four-day rotation. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
+This issue occurred because the AKS host was turned off for longer than four days, which caused the certificates to expire. Certificates are frequently rotated in a four-day cycle. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
 
 ## After running SetAksHciRegistration in an AKS on Azure Stack HCI installation, an error occurred
 
-The error _Unable to check registered Resource Providers_ occurred after running SetAksHciRegistration in an AKS on Azure Stack HCI installation. This error indicates that the Kubernetes Resource Providers are not registered for the current logged-in tenant.
+The error _Unable to check registered Resource Providers_ occurred after running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) in an AKS on Azure Stack HCI installation. This error indicates that the Kubernetes Resource Providers are not registered for the current logged-in tenant.
 
 To resolve this issue, run either the Azure CLI or PowerShell steps below:
 
