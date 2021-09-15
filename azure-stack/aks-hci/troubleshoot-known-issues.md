@@ -42,6 +42,34 @@ An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working
 
 This issue occurred because the AKS host was turned off for longer than four days which caused the certificates to expire. Certificates are frequently rotated in a four-day rotation. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
 
+## After running SetAksHciRegistration in an AKS on Azure Stack HCI installation, an error occurred
+
+The error _Unable to check registered Resource Providers_ occurred after running SetAksHciRegistration in an AKS on Azure Stack HCI installation. This error indicates that the Kubernetes Resource Providers are not registered for the current logged-in tenant.
+
+To resolve this issue, run either the Azure CLI or PowerShell steps below:
+
+```azurecli
+az provider register --namespace Microsoft.Kubernetes
+az provider register --namespace Microsoft.KubernetesConfiguration
+```
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
+The registration takes approximately 10 minutes to complete. To monitor the registration process, use the following commands.
+
+```azurecli
+az provider show -n Microsoft.Kubernetes -o table
+az provider show -n Microsoft.KubernetesConfiguration -o table
+```
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
 ## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
 
 On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
