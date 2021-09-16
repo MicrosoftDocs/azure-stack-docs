@@ -14,8 +14,20 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.30.102
+        href: hotfix-1-2102-30-102.md
+      - name: Hotfix 1.2008.40.151
+        href: hotfix-1-2008-40-151.md
+      - name: Hotfix 1.2005.47.135
+        href: hotfix-1-2005-47-135.md      
+      - name: Hotfix 1.2102.30.101
+        href: hotfix-1-2102-30-101.md
+      - name: Hotfix 1.2008.40.150
+        href: hotfix-1-2008-40-150.md      
+      - name: Hotfix 1.2005.46.133
+        href: hotfix-1-2005-46-133.md      
       - name: Hotfix 1.2102.28.89
-        href: hotfix-1-2102-28-89.md      
+        href: hotfix-1-2102-28-89.md              
       - name: Hotfix 1.2008.40.148
         href: hotfix-1-2008-40-148.md      
       - name: Hotfix 1.2005.42.126
@@ -553,7 +565,7 @@
   - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
-    href: ../reference/pep-2002/    
+    href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI

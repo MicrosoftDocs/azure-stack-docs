@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 07/27/2021
+  ms.date: 09/10/2021
 
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
@@ -23,6 +23,8 @@ landingContent:
         links:
           - text: What is Azure Stack HCI?
             url: overview.md
+          - text: What's new in Azure Stack HCI, version 20H2?
+            url: whats-new.md
       - linkListType: get-started
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
@@ -42,7 +44,11 @@ landingContent:
           - text: 3. Register with Azure
             url: deploy/register-with-azure.md
           - text: 4. Validate a cluster
-            url: deploy/validate.md 
+            url: deploy/validate.md
+      - linkListType: tutorial
+        links:
+          - text: Create a private forest lab environment with VMs
+            url: deploy/tutorial-private-forest.md
 
   # Card
   - title: Preview channel
