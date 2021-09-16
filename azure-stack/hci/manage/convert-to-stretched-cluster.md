@@ -5,12 +5,12 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 09/14/2021
+ms.date: 09/16/2021
 ---
 
 # Convert to a stretched Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, version 20H2; Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, version 21H2 Preview; Azure Stack HCI, version 20H2
 
 This article explains and gives the steps required to create a stretched cluster by adding new server nodes to an existing single-site cluster. You use Windows PowerShell commands to accomplish this.
 
@@ -20,7 +20,9 @@ Single-site clusters use Windows Admin Center to [Add or remove servers](add-clu
 
 The first step is to acquire new Azure Stack HCI server hardware from your original OEM vendor, with the same characteristics as the existing server node hardware. Each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
-Refer to your OEM-provided documentation when adding new server hardware for use in a cluster. Follow these steps to prep the new server nodes:
+Refer to your OEM-provided documentation when adding new server hardware for use in a cluster. For more information about Azure Stack HCI Integrated System solution hardware, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+
+Follow these steps to prep the new server nodes:
 
 1. Place the new physical servers in the rack and cable them appropriately.
 1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
@@ -36,17 +38,17 @@ Whenever you add or remove a server, perform cluster validation afterwards to en
 
 Stretched clusters require the same number of server nodes and the same number of drives in each site. When adding servers to an Azure Stack HCI cluster, their drives are automatically added to a single storage pool. In a stretched cluster however, each site must have its own storage pool.
 
-To prevent this from occurring so separate storage pools are created, sites must be created first before new server nodes can be added. Once the sites are created, the server nodes can be added to the cluster and its own pool created, one for each site.
+To ensure that separate storage pools are created, sites must be created first before new server nodes can be added. Once the sites are created, the server nodes can be added to the cluster and its own pool created, one for each site.
 
-## Create sites
+## Create an additional site
 
-With Azure Stack HCI, sites are automatically created when a (non-stretched) cluster is created.  Since the cluster is created in a single site, server nodes are added to this site and a drive pool is created.
+Azure Stack HCI automatically creates a site when you create a (non-stretched) cluster. Because the cluster is created in a single site, server nodes are added to this site and a single drive pool is created.
 
 Normally, when creating additional sites, the [New-ClusterFaultDomain](/powershell/module/failoverclusters/new-clusterfaultdomain) cmdlet is used. However, you cannot add server nodes to a site when the servers are not a part of the cluster.  
 
 Much like when you [Add or remove servers](add-cluster.md) to an Azure Stack HCI cluster using Windows Admin Center, the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets are used to create an XML file that specifies the sites and nodes in them. When additional server nodes are added to the cluster, they are added to the new site and the second site’s drive pool is created.
 
-You can add additional servers simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, which adds each new server's drives at the same time also.
+You can add additional servers simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, which adds each new server's drives at the same time.
 
 Typically, you manage clusters from a remote client computer, rather than on a server in the cluster. This remote computer is called the management computer.
 
@@ -55,7 +57,7 @@ Typically, you manage clusters from a remote client computer, rather than on a s
 
 Ok, let's begin:
 
-1. List the sites and server nodes currently in the cluster and create a `Sites.xml` file:
+1. List the site and server nodes currently in the cluster and create a `Sites.xml` file:
 
     ~~~PowerShell
     Get-ClusterFaultDomainXML | out-file sites.xml
@@ -126,7 +128,7 @@ Once the sites have been created, you next add the new servers to the cluster. T
 
 Creating the virtual disks on the secondary site and setting up Storage Replica is a manual process. To see all the virtual disks currently in the cluster, use the [Get-VirtualDisk](/powershell/module/storage/get-virtualdisk) cmdlet.  
 
-With Storage Replica, all disks must be of the same size and attributes. When creating the disks on the secondary site, the same method of virtual disk creation and disk resiliency should be used as was done for the primary site nodes. Storage Replica also requires a log drive for each site to perform replication.  
+With Storage Replica, all disks must be of the same size and attributes. When creating the disks on the secondary site, the same method of virtual disk creation and disk resiliency that you used for the primary site nodes. Storage Replica also requires a log drive for each site to perform replication.  
 
 ## Next steps
 
