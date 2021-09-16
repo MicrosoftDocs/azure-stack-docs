@@ -22,7 +22,7 @@ To use this guide, you will need:
 - An AKS on Azure Stack HCI workload cluster.
 - At least one Windows worker node deployed in the cluster.
 - At least one Linux worker node deployed in the cluster.
-- The Calico network plug-in enabled when creating the workload cluster. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./new-akshcicluster.md) for instructions.
+- The Calico network plug-in enabled when creating the workload cluster. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./reference/ps/new-akshcicluster.md) for instructions.
  
 ## Create pods on Linux nodes
 
@@ -80,7 +80,7 @@ spec:
 
 ### Apply the policy-demo-linux.yaml file to the Kubernetes cluster
 
-Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
+Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./reference/ps/get-akshcicredential.md) command. 
 
 Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration as shown below:
 
@@ -141,7 +141,7 @@ spec:
 
 ### Apply the policy-demo-windows.yaml file to the Kubernetes cluster
 
-Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
+Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./reference/ps/get-akshcicredential.md) command. 
 
 Next, use `kubectl` to apply the `policy-demo-windows.yaml` configuration:
 
@@ -154,7 +154,7 @@ kubectl apply -f policy-demo-windows.yaml
 > [!Note]
 > Depending on your network download speed, it may take time to launch the Windows pods.
 
-Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
+Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./reference/ps/get-akshcicredential.md) command. 
 
 Next, use `kubectl` to list the pods in the `calico-demo` namespace:
 
@@ -186,7 +186,7 @@ pwsh      1/1     Running   0          5m19s
 
 Now that the client and server pods are running on both Linux and Windows nodes, verify that client pods on Linux nodes can reach server pods on Windows nodes.
 
-1. Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command.
+1. Open a PowerShell window and load the credentials for your target cluster using the [`Get-AksHciCredential`](./reference/ps/get-akshcicredential.md) command.
 
 2. Use `kubectl` to determine the porter pod IP address:
 
@@ -304,7 +304,7 @@ spec:
 ### Apply the network-policy.yaml file
 
 1. Open a PowerShell window.
-2. Load the credentials for your target cluster using the [`Get-AksHciCredential`](./get-akshcicredential.md) command. 
+2. Load the credentials for your target cluster using the [`Get-AksHciCredential`](./reference/ps/get-akshcicredential.md) command. 
 3. Use `kubectl` to apply the network-policy.yaml file.
 
    ```powershell

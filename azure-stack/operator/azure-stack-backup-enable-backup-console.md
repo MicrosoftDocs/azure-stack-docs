@@ -4,7 +4,7 @@ description: Learn how to enable the Infrastructure Backup Service from the admi
 author: PatAltimore
 
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/23/2021
 ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
@@ -50,24 +50,22 @@ Admins and users are responsible for backing up and restoring IaaS and PaaS reso
     > [!Note]  
     > If you want to archive backups older than the retention period, make sure to back up the files before the scheduler deletes the backups. If you reduce the backup retention period (e.g. from 7 days to 5 days), the scheduler will delete all backups older than the new retention period. Make sure you're OK with the backups getting deleted before you update this value.
 
-9. In Encryption Settings, provide a certificate in the Certificate .cer file box. Backup files are encrypted using this public key in the certificate. Provide a certificate that only contains the public key portion when you configure backup settings. Once you set this certificate for the first time or rotate the certificate in the future, you can only view the thumbprint of the certificate. You can't download or view the uploaded certificate file. To create the certificate file, run the following PowerShell command to create a self-signed certificate with the public and private keys and export a certificate with only the public key portion. You can save the certificate anywhere that can be accessed from admin portal.
+9. In **Encryption Settings**, provide a certificate in the **Certificate .cer** file box. The certificate key length must be 2048 bytes. Backup files are encrypted using this public key in the certificate. Provide a certificate that only contains the public key portion when you configure backup settings. Once you set this certificate for the first time or rotate the certificate in the future, you can only view the thumbprint of the certificate. You can't download or view the uploaded certificate file. To create the certificate file, run the following PowerShell command to create a self-signed certificate with the public and private keys and export a certificate with only the public key portion. You can save the certificate anywhere that can be accessed from admin portal.
 
-	```powershell
+    ```powershell
 
-	    $cert = New-SelfSignedCertificate `
-		    -DnsName "www.contoso.com" `
-		    -CertStoreLocation "cert:\LocalMachine\My"
+        $cert = New-SelfSignedCertificate `
+            -DnsName "www.contoso.com" `
+            -CertStoreLocation "cert:\LocalMachine\My"
 
-		New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
-		Export-Certificate `
-		    -Cert $cert `
-		    -FilePath c:\certs\AzSIBCCert.cer 
+        New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
+        Export-Certificate `
+            -Cert $cert `
+            -FilePath c:\certs\AzSIBCCert.cer 
     ```
 
    > [!Note]
-   > **1901 and above**: Azure Stack Hub accepts a certificate to encrypt infrastructure backup data. Make sure to store the certificate with the public and private key in a secure location. For security reasons, it's not recommended that you use the certificate with the public and private keys to configure backup settings. For more info on how to manage the lifecycle of this certificate, see [Infrastructure Backup Service best practices](azure-stack-backup-best-practices.md).
-   > 
-   > **1811 or earlier**: Azure Stack Hub accepts a symmetric key to encrypt infrastructure backup data. Use the [New-AzsEncryptionKey64 cmdlet to create a key](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64). After you upgrade from 1811 to 1901, backup settings will retain the encryption key. We recommend you update backup settings to use a certificate. Encryption key support is now deprecated. You have at least 3 releases to update settings to use a certificate.
+   > Azure Stack Hub accepts a certificate to encrypt infrastructure backup data. Make sure to store the certificate with the public and private key in a secure location. For security reasons, it's not recommended that you use the certificate with the public and private keys to configure backup settings. For more info on how to manage the lifecycle of this certificate, see [Infrastructure Backup Service best practices](azure-stack-backup-best-practices.md).
 
 10. Select **OK** to save your backup controller settings.
 

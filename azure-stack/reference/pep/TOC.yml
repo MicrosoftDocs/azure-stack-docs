@@ -1,0 +1,96 @@
+- name: Azure Stack Hub privileged endpoint reference
+  href: index.md
+  expanded: true
+  items:
+  - name: Close-PrivilegedEndpoint
+    href: close-privilegedendpoint.md
+  - name: Get-ActionStatus
+    href: get-actionstatus.md
+  - name: Get-AzSLegalNotice
+    href: get-azslegalnotice.md
+  - name: Get-AzureStackLog
+    href: get-azurestacklog.md
+  - name: Get-AzureStackStampInformation
+    href: get-azurestackstampinformation.md
+  - name: Get-AzureStackSupportConfiguration
+    href: get-azurestacksupportconfiguration.md
+  - name: Get-CloudAdminPasswordRecoveryToken
+    href: get-cloudadminpasswordrecoverytoken.md
+  - name: Get-CloudAdminUserList
+    href: get-cloudadminuserlist.md
+  - name: Get-ClusterLog
+    href: get-clusterlog.md
+  - name: Get-GraphApplication
+    href: get-graphapplication.md
+  - name: Get-StorageJob
+    href: get-storagejob.md
+  - name: Get-SupportSessionInfo
+    href: get-supportsessioninfo.md
+  - name: Get-SupportSessionToken
+    href: get-supportsessiontoken.md
+  - name: Get-SyslogClient
+    href: get-syslogclient.md
+  - name: Get-SyslogServer
+    href: get-syslogserver.md
+  - name: Get-ThirdPartyNotices
+    href: get-thirdpartynotices.md
+  - name: Get-TLSPolicy
+    href: get-tlspolicy.md
+  - name: Get-VirtualDisk
+    href: get-virtualdisk.md
+  - name: Invoke-AzureStackOnDemandLog
+    href: invoke-azurestackondemandlog.md
+  - name: New-AzureBridgeServicePrincipal
+    href: new-azurebridgeserviceprincipal.md
+  - name: New-AzureStackActivation
+    href: new-azurestackactivation.md
+  - name: New-CloudAdminUser
+    href: new-cloudadminuser.md
+  - name: New-GraphApplication
+    href: new-graphapplication.md
+  - name: New-RegistrationToken
+    href: new-registrationtoken.md
+  - name: Register-CustomAdfs
+    href: register-customadfs.md
+  - name: Register-CustomDnsServer
+    href: register-customdnsserver.md
+  - name: Register-DirectoryService
+    href: register-directoryservice.md
+  - name: Remove-AzureStackActivation
+    href: remove-azurestackactivation.md
+  - name: Remove-CloudAdminUser
+    href: remove-cloudadminuser.md
+  - name: Remove-GraphApplication
+    href: remove-graphapplication.md
+  - name: Repair-VirtualDisk
+    href: repair-virtualdisk.md
+  - name: Reset-DatacenterIntegrationConfiguration
+    href: reset-datacenterintegrationconfiguration.md
+  - name: Send-AzureStackDiagnosticLog
+    href: send-azurestackdiagnosticlog.md
+  - name: Set-AzSLegalNotice
+    href: set-azslegalnotice.md
+  - name: Set-CloudAdminUserPassword
+    href: set-cloudadminuserpassword.md
+  - name: Set-GraphApplication
+    href: set-graphapplication.md
+  - name: Set-ServiceAdminOwner
+    href: set-serviceadminowner.md
+  - name: Set-SyslogClient
+    href: set-syslogclient.md
+  - name: Set-SyslogServer
+    href: set-syslogserver.md
+  - name: Set-Telemetry
+    href: set-telemetry.md
+  - name: Set-TLSPolicy
+    href: set-tlspolicy.md
+  - name: Start-AzureStack
+    href: start-azurestack.md
+  - name: Start-SecretRotation
+    href: start-secretrotation.md
+  - name: Stop-AzureStack
+    href: stop-azurestack.md
+  - name: Test-AzureStack
+    href: test-azurestack.md
+  - name: Unlock-SupportSession
+    href: unlock-supportsession.md

@@ -271,6 +271,8 @@
             href: kubernetes-aks-engine-container-storage-interface.md
           - name: Rotate certs
             href: kubernetes-aks-engine-rotate-certs.md
+          - name: Store secrets
+            href: aks-how-to-store-secrets.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
@@ -331,16 +333,6 @@
           href: azure-stack-network-howto-vnet-to-onprem.md
         - name: VNet to VNet connectivity between Azure Stack Hub instances
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
-      - name: Use RRAS
-        items:
-        - name: VNet to VNet connectivity with RRAS
-          href: azure-stack-network-howto-vnet-peering.md
-        - name: Set up multiple site-to-site VPN tunnels
-          href: network-howto-vpn-tunnel.md
-        - name: Create a VPN tunnel (GRE)
-          href: network-howto-vpn-tunnel-gre.md
-        - name: Create a VPN tunnel (IPSEC)
-          href: network-howto-vpn-tunnel-ipsec.md
     - name: F5 load balancer
       href: network-howto-f5.md
     - name: Connect to external storage

@@ -58,7 +58,7 @@ This section describes the two options you can use to deploy monitoring on a wor
 
 ### Option one: Deploy the monitoring solution when creating the workload cluster
 
-To enable monitoring, provide the `-enableMonitoring` parameter when creating the workload cluster using [New-AksHciCluster](./new-akshcicluster.md) as shown in the following example:
+To enable monitoring, provide the `-enableMonitoring` parameter when creating the workload cluster using [New-AksHciCluster](./reference/ps/new-akshcicluster.md) as shown in the following example:
 
 ```powershell
 New-AksHciCluster -name mynewcluster -enableMonitoring
@@ -71,7 +71,7 @@ Monitoring is installed with the following default configuration:
 
 ### Option two: Deploy the monitoring solution on an existing workload cluster 
 
-Run the [Install-AksHciMonitoring](./install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster as shown below:
+Run the [Install-AksHciMonitoring](./reference/ps/install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster as shown below:
 
 ```powershell
 Install-AksHciMonitoring -Name mycluster -storageSizeGB 100 -retentionTimeHours 240

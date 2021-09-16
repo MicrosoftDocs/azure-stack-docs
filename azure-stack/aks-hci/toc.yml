@@ -93,12 +93,6 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Azure Arc Jumpstart
-            items:
-                - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
-                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-                - name: Create a GitOps configuration on a cluster
-                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
     - name: Configure networking
       items:
           - name: Use proxy settings
@@ -125,6 +119,14 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Manage workloads
+      items:
+          - name: Create and delete pods
+            href: create-pods.md
+          - name: Create deployments
+            href: create-deployments.md
+          - name: Create a DaemonSet
+            href: create-daemonsets.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
@@ -155,6 +157,8 @@
             href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
+          - name: Deploy Linux applications
+            href: deploy-linux-application.md
     - name: Troubleshoot
       items:
           - name: Known issues
@@ -190,12 +194,16 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
-  - name: PowerShell
-    href: AksHci.md
+  - name: AksHci PowerShell
+    href: ./reference/ps/index.md
+  - name: Azure Arc Jumpstart
+    href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
     href: pricing.md
   - name: Support policies
     href: support-policies.md
+  - name: Get support
+    href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap

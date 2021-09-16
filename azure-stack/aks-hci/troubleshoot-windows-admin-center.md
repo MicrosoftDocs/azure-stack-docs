@@ -43,7 +43,7 @@ GetHelp .\Get-SMEUILogs.ps1 -Examples
 ```
 
 ## A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center
-Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
+Sometimes, due to network issues, Windows Admin Center times out an Arc connection. Use the PowerShell command [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
 
 ## Troubleshoot CredSSP issues
 
@@ -67,7 +67,7 @@ When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deploy
       Enter-PSSession -computer localhost -credential (Get-Credential)
    ``` 
 
-For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](/azure-stack/hci/manage/troubleshoot-credssp).
+For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](../hci/manage/troubleshoot-credssp.md).
 
 ## A WinRM error is displayed when creating a new workload cluster
 

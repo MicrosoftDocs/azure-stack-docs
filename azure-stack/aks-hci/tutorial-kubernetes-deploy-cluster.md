@@ -88,7 +88,7 @@ Install-AksHCi
 
 ## Create a Kubernetes cluster
 
-Create a Kubernetes cluster using the command [New-AksHciCluster](new-akshcicluster.md). The following example creates a cluster named *mycluster* with the one Linux node pool called *linuxnodepool* with a node count of 1.
+Create a Kubernetes cluster using the command [New-AksHciCluster](./reference/ps/new-akshcicluster.md). The following example creates a cluster named *mycluster* with the one Linux node pool called *linuxnodepool* with a node count of 1.
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1
@@ -115,7 +115,7 @@ Name                  : mycluster
 > [!NOTE]
 > If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
 
-To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](get-akshcinodepool.md) PowerShell command.
+To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md) PowerShell command.
 
 ```powershell
 Get-AksHciNodePool -clusterName mycluster
@@ -138,7 +138,7 @@ To connect to the Kubernetes cluster from your local computer, you use [kubectl]
 
 ## Connect to cluster using kubectl
 
-To configure `kubectl` to connect to your Kubernetes cluster, use the [Get-AksHciCredential](get-akshcicredential.md) command. The following example gets credentials for the cluster named *mycluster*.
+To configure `kubectl` to connect to your Kubernetes cluster, use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command. The following example gets credentials for the cluster named *mycluster*.
 
 ```powershell
 Get-AksHciCredential -name mycluster
