@@ -46,12 +46,16 @@ If there is a corporate firewall between the operating system and the internet, 
 - http\://dl.delivery.mp.microsoft.com
 - https\://dl.delivery.mp.microsoft.com
 
-### Network port requirements
+### Network firewall rules and port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
-When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the following ports:
+When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the following ports in the following sections:
 
-#### Windows Admin Center ports
+#### Windows Admin Center
+Ensure that the following firewall rules are configured in your on-premises firewall for Windows Admin Center.
+
+
+
 - TCP port 445
 - TCP port 5985 (this is the default port used by WinRM 2.0 for HTTP connections)
 - TCP port 5986 (this is the default port used by WinRM 2.0 for HTTPS connections)
@@ -59,7 +63,16 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
    >[!NOTE]
    > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
 
-#### Failover Clustering ports
+#### Failover Clustering
+Ensure that the following firewall rules are configured in your on-premises firewall for Failover Clustering.
+
+<!---Example table format. Update with it in each of the following sections.--->
+| Rule | Action | Source | Destination | Service | Ports |
+| :--------------------------------------- | :-------------------------------------- |
+| left-aligned column                      | right-aligned column                    |
+| $100                                     | $100                                    |
+| $10                                      | $10                                     |
+
 - ICMPv4 and ICMPv6
 - TCP port 445
 - RPC Dynamic Ports
@@ -68,7 +81,11 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 - TCP port 3343
 - UDP port 3343
 
-#### Hyper-V ports
+#### Hyper-V
+Ensure that the following firewall rules are configured in your on-premises firewall for Hyper-V.
+
+
+
 - TCP port 135
 - TCP port 80 (HTTP connectivity)
 - TCP port 443 (HTTPS connectivity)
@@ -78,7 +95,11 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 - RPC Endpoint Mapper
 - TCP port 445
 
-#### Storage Replica ports (stretched cluster)
+#### Storage Replica (stretched cluster)
+Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
+
+
+
 - TCP port 445
 - TCP port 5985
 - ICMPv4 and ICMPv6 (if using the `Test-SRTopology` PowerShell cmdlet)
