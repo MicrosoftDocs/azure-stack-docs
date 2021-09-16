@@ -4,9 +4,9 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/19/2021
+ms.date: 09/19/2021
 ms.author: sethm
-ms.reviewer: fiseraci
+ms.reviewer: thoroet
 ms.lastreviewed: 04/13/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -296,8 +296,6 @@ For more information about these vulnerabilities, click on the links below.
 - [CVE-2020-1592](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1592)
 - [CVE-2020-1590](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1590)
 - [CVE-2020-1507](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1507)
-
-
 
 ::: moniker-end
 

@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/08/2021
+ms.date: 09/16/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -72,7 +72,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- An Azure Stack Hub operator can now configure GPU quotas for VMs.
+- Azure Stack Hub operators can now configure GPU quotas for VMs.
 - [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
 - Windows Server 2022 is now supported as a guest operating system.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
@@ -82,7 +82,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The alert description has been adjusted to align with progressive backup when the external SMB share is almost full.
 - To prevent upload failures, the number of parallel infrastructure backup repository uploads to the external SMB share is now limited.
 - Replaced **Node-Inaccessible-for-vm-placement** alert with alerts to distinguish between **host-unresponsive** scenarios and **hostagent-service-on-node-unresponsive** scenarios.
-- Ability for App Service to discover the default NAT IP for outbound connections.
+- App Service now has the ability to discover the default NAT IP for outbound connections.
 
 ### Changes
 
@@ -114,7 +114,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
+- [Azure Stack Hub hotfix 1.2102.30.103](hotfix-1-2102-30-103.md)
 
 ### After successfully applying the 2108 update
 
