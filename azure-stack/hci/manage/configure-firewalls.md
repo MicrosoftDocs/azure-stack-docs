@@ -54,9 +54,9 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 #### Windows Admin Center
 Ensure that the following firewall rules are configured in your on-premises firewall for Windows Admin Center.
 
-| Rule                                             | Action | Source               | Destination             | Service | Ports |
-| :----------------------------------------------- | :----- | :------------------- | :---------------------- | :------ | :---- |
-| Provide access to Azure and Microsoft Update     | Allow  | Windows Admin Center | Azure Stack HCI         | TCP     | 445   |
+| Rule                                          | Action | Source                     | Destination                     | Service | Ports |
+| :-------------------------------------------- | :----- | :------------------------- | :------------------------------ | :------ | :---- |
+| Provide access to Azure and Microsoft Update  | Allow  | Windows Admin Center       | Azure Stack HCI                 | TCP     | 445   |
 | Use Windows Remote Management (WinRM) 2.0 for HTTP connections to run commands on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5985  |
 | Use WinRM 2.0 for HTTPS connections to run commands on remote Windows servers                            | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5986  |
 
