@@ -4,14 +4,14 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 09/17/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
 
 >Applies to: Azure Stack HCI, version 20H2
 
-This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations, and explains how service tags group IP addresses in Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall, and information on how to set up a proxy server.
+This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations, and explains how service tags group IP addresses in Microsoft Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall, and information on how to set up a proxy server.
 
 ## Connectivity requirements and recommendations
 Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) allowlist section of this topic.
@@ -54,11 +54,10 @@ When using the Cluster Creation wizard in Windows Admin Center to create the clu
 #### Windows Admin Center
 Ensure that the following firewall rules are configured in your on-premises firewall for Windows Admin Center.
 
-
-
-- TCP port 445
-- TCP port 5985 (this is the default port used by WinRM 2.0 for HTTP connections)
-- TCP port 5986 (this is the default port used by WinRM 2.0 for HTTPS connections)
+| Rule                                             | Action | Source               | Destination             | Service | Ports |
+| Provide access to Azure and Microsoft Update     | Allow  | Windows Admin Center | Azure Stack HCI         | TCP     | 445   |
+| Use Windows Remote Management (WinRM) 2.0 for HTTP connections to run commands on remote Windows servers | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5985  |
+| Use WinRM 2.0 for HTTPS connections to run commands on remote Windows servers                            | Allow | Windows Admin Center | Azure Stack HCI | TCP | 5986  |
 
    >[!NOTE]
    > While installing Windows Admin Center, if you select the **Use WinRM over HTTPS only** setting, then port 5986 is required.
