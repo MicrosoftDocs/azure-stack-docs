@@ -70,10 +70,17 @@ This section explains how to configure a VM to use processor compatibility mode 
 To enable processor compatibility mode using Windows Admin Center:
 
 1. Connect to your cluster, and then in the **Tools** pane, select **Virtual machines**.
-1. Under **Inventory**, select the VM on which you want to enable processor compatibility mode, expand the **Power** menu, then select **Shut down**.
-1. Select **Settings**, then **Processors**, and check the box for **Processor compatibility**.
-1. Select **Save processor settings**.
-1. Restart the VM.
+2. Under **Inventory**, select the VM on which you want to enable processor compatibility mode, expand the **Power** menu, then select **Shut down**.
+3. Select **Settings**, then **Processors**, and check the box for **Processor compatibility**.
+
+:::image type="content" source="media/processor-compatibility-mode/processor-compatibility.png" alt-text="Check the box to enable processor compatibility" lightbox="media/processor-compatibility-mode/processor-compatibility.png":::
+
+4. If you want to set the VM's CPU features to the maximum level supported by all servers in an Azure Stack HCI 21H2 cluster, select **Compatible across the cluster (Recommended)**. This maximizes VM performance while preserving the ability to move the running VM to other servers in the cluster. We recommend enabling this for all VMs running on Azure Stack HCI 21H2 clusters; if disabled, the VM must be restarted to move to a host with a different level of supported CPU instructions, common with different generations of CPUs. Alternatively, if you want to set the VM's CPU features to minimum to ensure that you can move the running VM to other Hyper-V hosts outside the cluster as long as they have the same CPU manufacturer, select **Compatible across other hosts with the same CPU manufacturer**.
+
+   > [!NOTE]
+   > **Compatible across the cluster** is exclusive to Azure Stack HCI 21H2 and is not supported for any other operating systems.
+
+5. Restart the VM.
 
 ## Enable processor compatibility mode using PowerShell
 
