@@ -92,9 +92,9 @@ The following table details the features and registry limits of the Azure Stack 
 
 <sup>3.</sup> *ReadOps*, *WriteOps*, and *Bandwidth* will vary based on Azure Stack Hub configuration and user workloads.
 
-<sup>4A</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
+<sup>4.</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
 
-<sup>5A</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
+<sup>5.</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
 
 ## Supported Commands
 A subset of CLI and PowerShell commands are supported for Azure Container Registry on Azure Stack Hub. The full list is availabe here: 
