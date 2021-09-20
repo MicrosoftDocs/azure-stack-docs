@@ -68,7 +68,7 @@ Validate the ACR certificate adheres to Azure Stack Hub requirements.
 2. Run the following PowerShell cmdlets from an elevated prompt:
 
     ```powershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2100.1448.484
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     $Path = "\$ENV:USERPROFILE\Documents\AzureStack"
     $pfxPassword = Read-Host -AsSecureString -Prompt "PFX Password"
     ConvertTo-AzsPFX -Path \$Path -pfxPassword \$pfxPassword -ExportPath \$Path
