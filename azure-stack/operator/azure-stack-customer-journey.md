@@ -103,17 +103,11 @@ The following table lists changes to your Azure Stack Hub deployment that requir
 
 |     Option                                                   |     Re-deployment    |
 |--------------------------------------------------------------|----------------------|
-|                                                              |                      |
 |     Change identity system from Azure AD to AD FS                  |     Yes              |
-|                                                              |                      |
 |     Change the Azure AD directory that was used for deployment    |     Yes              |
-|                                                              |                      |
 |     Change the network IP ranges                             |     Yes              |
-|                                                              |                      |
 |     Change the AD FS integrated Active Directory              |     No               |
-|                                                              |                      |
 |     Change the billing model                                 |     No               |
-|                                                              |                      |
 |     Change the Azure subscription used for registration      |     No               |
 
 ## Hardware delivery 
