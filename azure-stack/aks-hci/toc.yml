@@ -161,7 +161,7 @@
             href: deploy-linux-application.md
     - name: Troubleshoot
       items:
-          - name: Installation known issues and errors
+          - name: Installation issues and errors
             href: troubleshoot-installation.md
           - name: Known issues
             href: known-issues.md

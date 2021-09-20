@@ -8,11 +8,15 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Troubleshoot known issues and errors during an AKS on Azure Stack HCI installation
+# Known issues and errors during an AKS on Azure Stack HCI installation
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI.
 
-## Install-Akshci failed on a multi-node installation with the error _Nodes have not reached active state_
+## When creating a new workload cluster, the error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs
+
+This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system.
+
+## Install-AksHci failed on a multi-node installation with the error _Nodes have not reached active state_
 
 When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error message _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
 
@@ -89,7 +93,7 @@ To resolve this issue, use the following steps:
 4. Delete these cluster resources.
 5. Close the PowerShell session and open new session before running `Install-AksHci` again.
 
-## After a failed installation, the Install-AksHci PowerShell command cannot be run
+## After a failed installation, running Install-AksHci does not work
 If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshci.md), you should run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
 
 ## During deployment, the error _Waiting for pod ‘Cloud Operator’ to be ready_ appears
@@ -116,3 +120,9 @@ To resolve this issue, run the following steps:
    ```
 
 After performing these steps, the container image pull should be unblocked.
+
+## Install-AksHci failed with the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_
+
+When configuring an AKS on Azure Stack HCI environment, running Install-AksHci resulted in the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_.
+
+To get more information on the error, run `$error[0].Exception.InnerException`. 
