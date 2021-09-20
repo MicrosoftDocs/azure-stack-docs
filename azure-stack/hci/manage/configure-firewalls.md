@@ -84,13 +84,13 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule                               | Action | Source                      | Destination            | Service | Ports  |
 | :--------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :----- |
-| Allow cluster communication               | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 445    |
-| Allow RPC Endpoint Mapper and Windows<br> Management Instrumentation (WMI) | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 135    |
-| Allow HTTP connectivity                    | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 80     |
-| Allow HTTPS connectivity                   | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 443    |
-| Allow Live Migration                       | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 6600   |
-| Allow VM Management Service communication  | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 2179   |
-| Allow RPC dynamic port allocation          | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | Minimum of 100 ports<br> above port 5000 |
+| Allow cluster communication        | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 445    |
+| Allow RPC Endpoint Mapper and WMI  | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 135    |
+| Allow HTTP connectivity            | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 80     |
+| Allow HTTPS connectivity           | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 443    |
+| Allow Live Migration               | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 6600   |
+| Allow VM Management Service        | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 2179   |
+| Allow RPC dynamic port allocation  | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | Minimum of 100 ports<br> above port 5000 |
 
 #### Storage Replica (stretched cluster)
 Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
