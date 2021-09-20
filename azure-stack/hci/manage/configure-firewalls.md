@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 09/17/2021
+ms.date: 09/20/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -66,16 +66,29 @@ Ensure that the following firewall rules are configured in your on-premises fire
 #### Failover Clustering
 Ensure that the following firewall rules are configured in your on-premises firewall for Failover Clustering.
 
-<!---Example table format. Update with it in each of the following sections.--->
+| Rule                               | Action | Source                      | Destination            | Service | Ports  |
+| :--------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :----- |
+| Allow Failover Cluster validation   | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 445    |
+| Allow RPC dynamic port allocation   | Allow  | Windows Admin Center       | Cluster servers        | TCP     | Minimum of 100 ports above port 5000 |
+| Allow Remote Procedure Call (RPC)   | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 135   |
+| Allow Cluster Administrator         | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 137   |
+| Allow Cluster Service               | Allow  | Windows Admin Center       | Cluster servers        | UDP     | 3343  |
+| Allow Cluster Service (Required during a node join operation.) | Allow  | Windows Admin Center     | Cluster servers  | TCP     | 3343 |
+| Allow ICMPv4 and ICMPv6 for Failover Cluster validation | Allow  | Windows Admin Center            | Cluster servers  | n/a     | n/a  |
+
+   >[!NOTE]
+   > Open up a range of ports above port 5000 to allow RPC dynamic port allocation. Ports below 5000 may already be in use by other applications and could cause conflicts with DCOM applications. Previous experience shows that a minimum of 100 ports should be opened, because several system services rely on these RPC ports to communicate with each other. For more information. see [How to configure RPC dynamic port allocation to work with firewalls](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-rpc-dynamic-port-allocation-with-firewalls).
 
 
-- ICMPv4 and ICMPv6
 - TCP port 445
 - RPC Dynamic Ports
 - TCP port 135
 - TCP port 137
 - TCP port 3343
 - UDP port 3343
+- ICMPv4 and ICMPv6
+
+
 
 #### Hyper-V
 Ensure that the following firewall rules are configured in your on-premises firewall for Hyper-V.
