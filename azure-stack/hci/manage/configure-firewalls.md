@@ -66,14 +66,14 @@ Ensure that the following firewall rules are configured in your on-premises fire
 #### Failover Clustering
 Ensure that the following firewall rules are configured in your on-premises firewall for Failover Clustering.
 
-| Rule                               | Action | Source                      | Destination            | Service | Ports  |
-| :--------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :----- |
+| Rule                                | Action | Source                     | Destination            | Service | Ports  |
+| :---------------------------------  | :----- | :------------------------- | :--------------------- | :------ | :----- |
 | Allow Failover Cluster validation   | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 445    |
 | Allow RPC dynamic port allocation   | Allow  | Windows Admin Center       | Cluster servers        | TCP     | Minimum of 100 ports<br> above port 5000 |
 | Allow Remote Procedure Call (RPC)   | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 135    |
 | Allow Cluster Administrator         | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 137    |
 | Allow Cluster Service               | Allow  | Windows Admin Center       | Cluster servers        | UDP     | 3343   |
-| Allow Cluster Service (Required during<br> a node join operation.) | Allow  | Windows Admin Center | Cluster servers  | TCP     | 3343 |
+| Allow Cluster Service (Required during<br> a server join operation.) | Allow  | Windows Admin Center | Cluster servers  | TCP     | 3343 |
 | Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow  | Windows Admin Center            | Cluster servers  | n/a     | n/a  |
 
    >[!NOTE]
@@ -82,19 +82,24 @@ Ensure that the following firewall rules are configured in your on-premises fire
 #### Hyper-V
 Ensure that the following firewall rules are configured in your on-premises firewall for Hyper-V.
 
-
-
-- TCP port 135
-- TCP port 80 (HTTP connectivity)
-- TCP port 443 (HTTPS connectivity)
-- TCP port 6600
-- TCP port 2179
-- RPC Dynamic Ports
-- RPC Endpoint Mapper
-- TCP port 445
+| Rule                               | Action | Source                      | Destination            | Service | Ports  |
+| :--------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :----- |
+| Allow cluster communications               | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 445    |
+| Allow RPC Endpoint Mapper and<br> Windows Management Instrumentation (WMI) | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 135    |
+| Allow HTTP connectivity                    | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 80     |
+| Allow HTTPS connectivity                   | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 443    |
+| Allow Live Migration                       | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 6600   |
+| Allow VM Management Service communication  | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 2179   |
+| Allow RPC dynamic port allocation          | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | Minimum of 100 ports<br> above port 5000 |
 
 #### Storage Replica (stretched cluster)
 Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
+
+| Rule                                | Action | Source                     | Destination            | Service | Ports  |
+| :---------------------------------  | :----- | :------------------------- | :--------------------- | :------ | :----- |
+| Allow ???                           | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 445    |
+| Allow ???                           | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 5985   |
+| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Windows Admin Center  | Cluster servers  | n/a     | n/a  |
 
 
 
