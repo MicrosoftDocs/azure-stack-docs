@@ -12,7 +12,7 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI.
 
-## Install-Akshci fails on a multi-node installation
+## Install-Akshci failed on a multi-node installation with the error _Nodes have not reached active state_
 
 When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error message _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
 
@@ -28,7 +28,7 @@ When the step above succeeds on the nodes, make sure the nodes can reach the Clo
 Test-NetConnection  <FQDN of cloudagent> -Port <Cloudagent port - default 65000>
 ```
 
-## Install-AksHci timed out with an error
+## Install-AksHci timed out with a _Waiting for API server_ error
 
 After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following _waiting for API server_ error message:
 
@@ -77,7 +77,7 @@ If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack 
 
 The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
 
-## Install-AksHci fails due to an Azure Arc onboarding failure
+## Install-AksHci failed with a _Failed to wait for addon arc-onboarding_ error
 
 After running [Install-AksHci](./reference/ps/install-akshci.md), a _Failed to wait for addon arc-onboarding_ error occurred.
 
@@ -88,11 +88,6 @@ To resolve this issue, use the following steps:
 3. Check for any connected cluster resources that appear in a _Disconnected_ state and include a name shown as a randomly generated GUID. 
 4. Delete these cluster resources.
 5. Close the PowerShell session and open new session before running `Install-AksHci` again.
-
-## Install-AksHci fails because the nodes did not reach an Active state
-After running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md), [Install-AksHci](./reference/ps/install-akshci.md) may fail with a _Nodes have not reached Active state_ error message if it's run in the same PowerShell session that was used when running `Uninstall-AksHci`. You should close the PowerShell session after running `Uninstall-AksHci` and then open a new session before running `Install-AksHci`. This issue can also appear when deploying AKS on Azure Stack HCI using Windows Admin Center. 
-
-This error message is an infrastructure issue that happens if the node agent is unable to connect to CloudAgent. There should be connectivity between the nodes, and each node should be able to resolve the CloudAgent ca-\<guid>\. While the deployment is stuck, manually check each node to see if [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname?view=windowsserver2019-ps&preserve-view=true) works.
 
 ## After a failed installation, the Install-AksHci PowerShell command cannot be run
 If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshci.md), you should run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
