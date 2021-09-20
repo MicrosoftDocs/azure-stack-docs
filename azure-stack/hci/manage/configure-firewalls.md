@@ -84,8 +84,8 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule                               | Action | Source                      | Destination            | Service | Ports  |
 | :--------------------------------- | :----- | :-------------------------- | :--------------------- | :------ | :----- |
-| Allow cluster communications               | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 445    |
-| Allow RPC Endpoint Mapper and<br> Windows Management Instrumentation (WMI) | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 135    |
+| Allow cluster communication               | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 445    |
+| Allow RPC Endpoint Mapper and Windows<br> Management Instrumentation (WMI) | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 135    |
 | Allow HTTP connectivity                    | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 80     |
 | Allow HTTPS connectivity                   | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 443    |
 | Allow Live Migration                       | Allow  | Windows Admin Center        | Hyper-V server         | TCP     | 6600   |
