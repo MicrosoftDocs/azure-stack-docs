@@ -29,7 +29,7 @@ sections:
       - question: |
           Can I create an Azure Container Registry on Azure Stack Hub using a Resource Manager template?
         answer: |
-          Yes. Here is [a template](https://azure.microsoft.com/resources/templates/container-registry/) that you can use to create a registry.
+          Yes. Here is [a template](https://azure.microsoft.com/resources/templates/container-registry/) that you can use to create a registry. Note this template is for Azure public. To use this template against Azure Stack Hub please modify the API version to 2019-05-01, otherwise it will fail to deploy.
           
       - question: |
           Is there security vulnerability scanning for images in ACR on Azure Stack Hub?
