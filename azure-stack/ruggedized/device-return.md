@@ -30,8 +30,8 @@ Once you have reached the end of a subscription with the device, you must [submi
 
 1. The Azure Customer Service and Support team provides steps to reset the device prior to return.
 2. The ASE Customer Operations team coordinates a pickup date for returning the device. The packaging of the device is serviced through our logistics partner. The billing of the device is paused, as of the scheduled date of the pickup.
-3. After the device has been received by the product operations team and returned to the Microsoft warehouse, the device is appropriately handled based on the customer's choice of return type. This includes re-imaging, diagnostics, refurbishment, and disposition.
-4. The ASE Customer Operations team provides a final status update to the customer regarding return and sanitization. The operations team provides a "Certificate of Destruction," should that be needed.
+3. After the device has been received by the product operations team and returned to the Microsoft warehouse, the device is appropriately handled based on the customer's choice of return type. This process includes reimaging, diagnostics, refurbishment, and disposition.
+4. The ASE Customer Operations team provides a final status update to the customer regarding return and sanitization. The operations team provides a "Certificate of Destruction," if needed.
 5. If the returned device inspection is successful, the ASE Customer Operations team applies any remaining charges to the subscription (return without drives fee, data destruction fee, etc.) and then stops the billing for the device, communicating back to the customer the completion of the return. The customer can then delete the resource group associated with the device.
 
 ## Next steps
