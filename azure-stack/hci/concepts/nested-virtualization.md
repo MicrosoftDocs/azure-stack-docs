@@ -6,12 +6,12 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/28/2021
+ms.date: 10/19/2021
 ---
 
 # Nested virtualization in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2 Preview; Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, version 21H2 or earlier
 
 Nested virtualization is a feature that lets you run Hyper-V inside a Hyper-V virtual machine (VM). This allows you to maximize your hardware investments and gain flexibility in evaluation and testing scenarios.
 
@@ -28,17 +28,18 @@ To configure nested virtualization, see [Run Hyper-V in a Virtual Machine with N
 
 ## Nested virtualization processor support
 
-Azure Stack HCI, version 21H2 Preview adds support for nested virtualization on AMD processors. Now you can run nested virtualization on first generation EPYC processors or newer generations (Naples, Rome, Milan).
+Azure Stack HCI, version 21H2 adds support for nested virtualization on AMD processors. Now you can run nested virtualization on first generation EPYC processors or newer generations (Naples, Rome, Milan).
  
 Prerequisites:
 
+- Azure Stack HCI, version 21H2
 - VM configuration version 10.0 or greater
 - An AMD EPYC processor with SVM enabled
-- [Join the preview channel](../manage/preview-channel.md)
 
 ## Next steps
 
 For more information, see also:
 
+- [Tutorial: Create a private forest environment for Azure Stack HCI](../deploy/tutorial-private-forest.md)
 - [Evaluate Azure Stack HCI 20H2 using Nested Virtualization](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/nested/README.md)
 - [Create nested Azure Stack HCI 20H2 cluster with Windows Admin Center](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/nested/steps/4_AzSHCICluster.md)
