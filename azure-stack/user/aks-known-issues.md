@@ -42,7 +42,7 @@ Yes, the preview for AKS and Azure Container Registry (ACR) must be uninstalled 
 
 No, you will not need to uninstall AKS or ACR again. These two services are integrated into the infrastructure of Azure Stack Hub, they will be updated, maintained, and monitored and all other infrastructure services.
 
-## Is the service principal is not automatically created?
+## Is the service principal automatically created?
 
 No. The service principal (SPN) is not automatically created as in Azure (no MSI).
 
