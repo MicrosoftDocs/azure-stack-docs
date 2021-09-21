@@ -13,6 +13,47 @@ ms.author: mikek
 Create an object for a new virtual network for the AKS host.
 
 ## Syntax
+
+### DHCP virtual network configurations
+
+For DHCP configurations without a VLAN:
+
+```powershell
+New-AksHciNetworkSetting -name <String>
+                         -vswitchName <String>
+                         -vipPoolStart <IP address>
+                         -vipPoolEnd <IP address>
+```
+
+For DHCP configurations with a VLAN:
+
+```powershell
+New-AksHciNetworkSetting -name <String>
+                         -vswitchName <String>
+                         -vipPoolStart <IP address>
+                         -vipPoolEnd <IP address>
+                         -vlanID <int>
+```
+
+### Static IP virtual network configurations
+
+For static IP configurations without a VLAN:
+
+```powershell
+New-AksHciNetworkSetting -name <String>
+                         -vswitchName <String>
+                         -gateway <String>
+                         -dnsServers <String[]>
+                         -ipAddressPrefix <String>
+                         -vipPoolStart <IP address>
+                         -vipPoolEnd <IP address>
+                         -k8sNodeIpPoolStart <IP address>
+                         -k8sNodeIpPoolEnd <IP address>            
+
+```
+
+For static IP configurations with a VLAN:
+
 ```powershell
 New-AksHciNetworkSetting -name <String>
                          -vswitchName <String>
@@ -23,19 +64,19 @@ New-AksHciNetworkSetting -name <String>
                          -vipPoolEnd <IP address>
                          -k8sNodeIpPoolStart <IP address>
                          -k8sNodeIpPoolEnd <IP address>
-                        [-vlanID <int>]
-                    
+                         -vlanID <int>              
+
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all Kubernetes clusters. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when deploying the AKS host.
+Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all AKS hosts. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when deploying the AKS host.
 
 ## Examples
 
-### Deploy with a static IP environment
+### Deploy with a static IP environment and a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
+PS C:\> $vnet = New-AksHciNetworkSetting -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanID 7
 PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
@@ -45,7 +86,7 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfig
 ### Deploy with a DHCP environment
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
+PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
 ```
 
 ```powershell
@@ -55,7 +96,7 @@ PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir 
 ## Parameters
 
 ### -name
-The descriptive name of your vnet. To get a list of the names of your available vNets, run the command `Get-AksHciNetworkSetting`. The name must be all lowercase letters and numbers.
+The descriptive name of your vnet. The name must be all lowercase letters and numbers.
 
 ```yaml
 Type: System.String
@@ -122,7 +163,7 @@ Type: System.String
 Parameter Sets: (StaticIP)
 Aliases:
 
-Required: True
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: external
 Accept pipeline input: False
@@ -160,14 +201,14 @@ Accept wildcard characters: False
 ```
 
 ### -k8sNodeIpPoolStart
-The start IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
+The start IP address of a VM pool. The address must be in range of the subnet. This is required for static IP deployments.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
-Required: False
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,14 +216,14 @@ Accept wildcard characters: False
 ```
 
 ### -k8sNodeIpPoolEnd
-The end IP address of a VM pool. The address must be in range of the subnet. This is required for Static IP deployments.
+The end IP address of a VM pool. The address must be in range of the subnet. This is required for static IP deployments.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: (StaticIP)
 Aliases:
 
-Required: False
+Required: False (This is required when creating a network with a static IP.)
 Position: Named
 Default value: None
 Accept pipeline input: False

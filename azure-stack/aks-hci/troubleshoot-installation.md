@@ -119,7 +119,7 @@ After performing these steps, the container image pull should be unblocked.
 
 ## Install-AksHci failed with the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_
 
-When configuring an AKS on Azure Stack HCI environment, running Install-AksHci resulted in the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_.
+When configuring an AKS on Azure Stack HCI environment, running [Install-AksHci](./reference/ps/install-akshci.md) resulted in the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_.
 
 To get more information on the error, run `$error[0].Exception.InnerException`. 
 
