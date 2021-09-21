@@ -198,6 +198,9 @@ Connect-AzAccount
 Enable-AksHciArcConnection -name mycluster
 ```
 
+> [!NOTE]
+> If you encounter issues or error messages during the installation process, see [Troubleshoot known issues and errors](troubleshoot-installation.md) for more information.
+
 ## Scale a Kubernetes cluster
 
 If you need to scale your cluster up or down, you can change the number of control plane nodes using the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command, and you can change the number of Linux or Windows worker nodes in your node pool using the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command.
