@@ -18,10 +18,10 @@ You can use the Azure Stack Hub portal to create and manage Azure Container Regi
 
 ## Create a registry
 
-You can create a registry using the Azure Stack Hub user portal to perform by following these steps.
+You can create a registry using the Azure Stack Hub user portal by following these steps.
 
-1.  Open the Azure Stack Hub user portal, and then Navigate to **All services**. Find **Container registries** in the **Containers** section.
-2.  Select **+Add** in the Container registries.  
+1.  Open the Azure Stack Hub user portal, and then navigate to **All services**. Find **Container registries** in the **Containers** section.
+2.  Select **+Add** in Container registries.  
     ![Add a container registry.](media/container-registry-how-to-use-portal/add-a-container-registry.png)
 3.  Complete the required details and select **Review** and **Create**. Review the details and select **Create**. Both the location and SKU will get filled in and can't be modified.  
     ![Review container registry details.](media/container-registry-how-to-use-portal/review-container-registry-details.png)
@@ -34,4 +34,4 @@ One a container registry has been created you can view details about the registr
 
 ## Next steps
 
-Learn more about the [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)
+Learn more about the [Azure Container Registry on Azure Stack Hub](container-registry-overview.md).
