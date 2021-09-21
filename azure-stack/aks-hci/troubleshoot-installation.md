@@ -117,6 +117,34 @@ To resolve this issue, run the following steps:
 
 After performing these steps, the container image pull should be unblocked.
 
+## When running the Set-AksHciRegistration command, the error _Unable to check registered Resource Providers_ appears
+
+After running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) in an AKS on Azure Stack HCI installation, an _Unable to check registered Resource Providers_ error is displayed. This error indicates the Kubernetes Resource Providers are not registered for the tenant that is currently logged in.
+
+To resolve this issue, run either the Azure CLI or the PowerShell steps below:
+
+```azurecli
+az provider register --namespace Microsoft.Kubernetes
+az provider register --namespace Microsoft.KubernetesConfiguration
+```
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
+The registration takes approximately 10 minutes to complete. To monitor the registration process, use the following commands.
+
+```azurecli
+az provider show -n Microsoft.Kubernetes -o table
+az provider show -n Microsoft.KubernetesConfiguration -o table
+```
+
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
+Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+```
+
 ## Install-AksHci failed with the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_
 
 When configuring an AKS on Azure Stack HCI environment, running [Install-AksHci](./reference/ps/install-akshci.md) resulted in the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_.

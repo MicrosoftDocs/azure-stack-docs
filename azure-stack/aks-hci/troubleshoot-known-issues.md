@@ -26,7 +26,7 @@ When attempting to bring up an AKS on Azure Stack HCI deployment after a few day
 
 The `Repair-AksHciCerts` cmdlet fails if the API server is down. If AKS on Azure Stack HCI has not been upgraded for 60 or more days, when you try to restart the KMS plug-in, it won't start. This failure also causes the API server to fail.
 
-To fix this issue, you need to manually fix the token and then restart the KMS plug-in to get the API server back up. To do this, run the following steps:
+To fix this issue, you need to manually rotate the token and then restart the KMS plug-in and container to get the API server back up. To do this, run the following steps:
 
 1. Rotate the token by running the following command:
 
@@ -34,13 +34,13 @@ To fix this issue, you need to manually fix the token and then restart the KMS p
    $ mocctl.exe security identity rotate --name "KMSPlugin-<cluster-name>-moc-kms-plugin" --encode=false --cloudFqdn (Get-AksHciConfig).Moc.cloudfqdn > cloudlogin.yaml
    ```
 
-2. Copy the token to the VM using the following command. The `ip` in the command below refers to the  IP address of the control plane of the AKS host.
+2. Copy the token to the VM using the following command. The `ip` setting in the command below refers to the IP address of the AKS host's control plane.
 
    ```
    $ scp -i (Get-AksHciConfig).Moc.sshPrivateKey .\cloudlogin.yaml clouduser@<ip>:~/cloudlogin.yaml $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> sudo mv cloudlogin.yaml /opt/wssd/k8s/cloudlogin.yaml
    ```
 
-3. Restart the KMS plug-in and also restart the container since it's a static pod. 
+3. Restart the KMS plug-in and the container. 
 
    To get the container ID, run the following command:
 
@@ -70,34 +70,6 @@ To fix this issue, you need to manually fix the token and then restart the KMS p
 An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working fine, but after the AKS host was turned off for several days, the `Kubectl` command did not work. After running either the `Kubectl get nodes` or `Kubectl get services` command, this error message appeared: _Error from server (InternalError): an error on the server ("") has prevented the request from succeeding_.
 
 This issue occurred because the AKS host was turned off for longer than four days, which caused the certificates to expire. Certificates are frequently rotated in a four-day cycle. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
-
-## After running SetAksHciRegistration in an AKS on Azure Stack HCI installation, an error occurred
-
-The error _Unable to check registered Resource Providers_ occurred after running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) in an AKS on Azure Stack HCI installation. This error indicates that the Kubernetes Resource Providers are not registered for the current logged-in tenant.
-
-To resolve this issue, run either the Azure CLI or PowerShell steps below:
-
-```azurecli
-az provider register --namespace Microsoft.Kubernetes
-az provider register --namespace Microsoft.KubernetesConfiguration
-```
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
-Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
-```
-
-The registration takes approximately 10 minutes to complete. To monitor the registration process, use the following commands.
-
-```azurecli
-az provider show -n Microsoft.Kubernetes -o table
-az provider show -n Microsoft.KubernetesConfiguration -o table
-```
-
-```powershell
-Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
-Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
-```
 
 ## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
 
