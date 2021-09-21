@@ -4,7 +4,7 @@ description: This topic provides guidance on how to configure firewalls for the 
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 09/21/2021
 ---
 
 # Configure firewalls for Azure Stack HCI
@@ -49,7 +49,7 @@ If there is a corporate firewall between the operating system and the internet, 
 ### Network firewall rules and port requirements
 Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
-When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the following ports in the following sections:
+When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports in the following sections:
 
 #### Windows Admin Center
 Ensure that the following firewall rules are configured in your on-premises firewall for Windows Admin Center.
@@ -97,9 +97,9 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule                                | Action | Source                     | Destination            | Service | Ports  |
 | :---------------------------------  | :----- | :------------------------- | :--------------------- | :------ | :----- |
-| Allow ???                           | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 445    |
-| Allow ???                           | Allow  | Windows Admin Center       | Cluster servers        | TCP     | 5985   |
-| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Windows Admin Center  | Cluster servers  | n/a     | n/a  |
+| Allow Server Message Block (SMB) protocol | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 445    |
+| Allow Web Services-Management (WS-MAN)    | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 5985   |
+| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Windows Admin Center  | Stretched cluster servers  | n/a     | n/a  |
 
 
 
