@@ -28,7 +28,7 @@ New virtual machine (VM) images, extension and solution templates will be used a
 
 You can find more information about recent additions, updates, changes, and removals changes at [Azure Stack Hub Marketplace changes](azure-stack-marketplace-changes.md)
 
-Updating extension within already deployed VMs require additional steps.
+Updating an extension within already deployed VMs require additional steps.
 
 ## Retrieve the new version
 
@@ -38,7 +38,7 @@ The process to download a new version of a Marketplace item is the same as the i
 
     [ ![Check the version in the Azure Stack Hub marketplace.](media/marketplace-update-items/check-marketplace-in-azure-stack-hub.png) ](media/marketplace-update-items/check-marketplace-in-azure-stack-hub.png#lightbox)
 
-2.  Follow the [instructions](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item) for connected or disconnected systems to download the new Marketplace item. Only download Marketplace items that have a new version.
+2.  Follow the instructions in [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) for connected or disconnected systems to download the new Marketplace item. Only download Marketplace items that have a new version.
 
 ## Update already deployed extensions
 
@@ -97,7 +97,7 @@ Set-AzVMExtension -ResourceGroupName "SampleRG" -VMName "SampleVM" -Name "Extens
 > [!NOTE]  
 > It can take several minutes for the extension to be updated. You can safely run the first command to check the version if it got updated.
 
-## List of recently updated extension
+## List of recently updated extensions
 
 | Name                                 | Publisher                            | TypeHandlerVersion | ExtensionType    |
 |--------------------------------------|--------------------------------------|--------------------|------------------|
@@ -108,8 +108,7 @@ Set-AzVMExtension -ResourceGroupName "SampleRG" -VMName "SampleVM" -Name "Extens
 > If you have installed any version of the following two extensions:
 > - Azure Update and Configuration Management
 > - Azure Update and Configuration Management for Linux
-
-Ensure you replace them with the **Azure Monitor, Update and Configuration Management for Linux** extension minimum version 1.14.01.
+> Ensure you replace them with the **Azure Monitor, Update and Configuration Management for Linux** extension minimum version 1.14.01.
 
 ## Next steps
 
