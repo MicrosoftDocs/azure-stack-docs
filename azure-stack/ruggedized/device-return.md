@@ -26,7 +26,7 @@ The following table describes the various options for return:
 
 ## Return process
 
-Once you have reached the end of a subscription with the device, you must [submit a support ticket](../operator/azure-stack-help-and-support-overview.md?toc=%2Fazure-stack%2Fruggedized%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2102) to initiate the return process. Once the ticket has been received, the following actions occur:
+Once you have reached the end of a subscription with the device, you must [submit a support ticket](../operator/azure-stack-help-and-support-overview.md?toc=%2Fazure-stack%2Fruggedized%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) to initiate the return process. Once the ticket has been received, the following actions occur:
 
 - The Azure Customer Service and Support team provides steps to reset the device prior to return.
 - The ASE Customer Operations team coordinates a pickup date for returning the device. The packaging of the device is serviced through our logistics partner. The billing of the device is paused, as of the scheduled date of the pickup.
