@@ -12,10 +12,6 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI.
 
-## When creating a new workload cluster, the error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs
-
-This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system.
-
 ## Install-AksHci failed on a multi-node installation with the error _Nodes have not reached active state_
 
 When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error message _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
@@ -126,3 +122,14 @@ After performing these steps, the container image pull should be unblocked.
 When configuring an AKS on Azure Stack HCI environment, running Install-AksHci resulted in the error _Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10_.
 
 To get more information on the error, run `$error[0].Exception.InnerException`. 
+
+## When creating a new workload cluster, the error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs
+
+This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system.
+
+## Next steps
+
+- [Known issues](./known-issues.md)
+- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
+- [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
+- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
