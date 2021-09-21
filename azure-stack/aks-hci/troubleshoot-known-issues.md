@@ -40,7 +40,7 @@ When you scale down a cluster, the high availability cluster resources are in a 
 
 ## The API server is not responsive after several days
 
-When attempting to bring up an AKS on Azure Stack HCI deployment after several days, `Kubectl` did not execute any of its commands. When logs were viewed, the Key Management Service (KMS) plug-in log displayed the error message _rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates_.
+When attempting to bring up an AKS on Azure Stack HCI deployment after a few days, `Kubectl` did not execute any of its commands. The Key Management Service (KMS) plug-in log displayed the error message _rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates_.
 
 The `Repair-AksHciCerts` cmdlet fails if the API server is down. If AKS on Azure Stack HCI is not upgraded for 60 days, and then you try to restart KMS, the KMS plug-in won't start. This failure also causes the API server to fail.
 
@@ -52,13 +52,13 @@ To fix this issue, you need to manually fix the token and restart the KMS plug-i
    $ mocctl.exe security identity rotate --name "KMSPlugin-<cluster-name>-moc-kms-plugin" --encode=false --cloudFqdn (Get-AksHciConfig).Moc.cloudfqdn > cloudlogin.yaml
    ```
 
-2. Copy the token to the VM. The <ip> in the command below refers to the management cluster control plane IP address.
+2. Copy the token to the VM using the following command. The `ip` in the command below refers to the  IP address of the management cluster control plane.
 
    ```
    $ scp -i (Get-AksHciConfig).Moc.sshPrivateKey .\cloudlogin.yaml clouduser@<ip>:~/cloudlogin.yaml $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> sudo mv cloudlogin.yaml /opt/wssd/k8s/cloudlogin.yaml
    ```
 
-3. Restart the KMS plug-in and the container (since it's a static pod). 
+3. Restart the KMS plug-in and the container since it's a static pod. 
 
    To get the container ID, run the following command:
 
