@@ -15,7 +15,7 @@ There are several ways that you can return an Azure Stack Hub Ruggedized (ASH-R)
 
 ## Return options
 
-The following table describes the various options for return:
+The following table describes the different options for return:
 
 | Type of Return            | Description                                                                                                                                                                      |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -36,4 +36,4 @@ Once you have reached the end of a subscription with the device, you must [submi
 
 ## Next steps
 
-[Learn more about Azure Stack Ruggedized](ruggedized-overview.md).
+- [Learn more about Azure Stack Ruggedized](ruggedized-overview.md)
