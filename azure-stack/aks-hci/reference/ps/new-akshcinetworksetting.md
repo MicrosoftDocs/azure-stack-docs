@@ -73,6 +73,9 @@ Create a virtual network to set the DHCP or static IP address for the load balan
 
 ## Examples
 
+> [!NOTE]
+> The values given in the examples below need to be customized for your environment.
+
 ### Deploy with a static IP environment without a VLAN
 
 ```powershell
@@ -87,9 +90,6 @@ PS C:\> $vnet = New-AksHciNetworkSetting -name myVnet1 -vswitchName "External" -
 PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
-> [!NOTE]
-> The values given in the examples above need to be customized for your environment.
-
 ### Deploy with a static IP environment without a VLAN
 
 ```powershell
@@ -103,6 +103,7 @@ PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloud
 PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
 PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
+
 ## Parameters
 
 ### -name

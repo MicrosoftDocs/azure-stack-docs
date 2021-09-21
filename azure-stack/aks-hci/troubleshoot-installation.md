@@ -155,7 +155,7 @@ To get more information on the error, run `$error[0].Exception.InnerException`.
 
 This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system. 
 
-To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell#update-the-aks-on-azure-stack-hci-host).
+To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md#update-the-aks-on-azure-stack-hci-host).
 
 ## Next steps
 
