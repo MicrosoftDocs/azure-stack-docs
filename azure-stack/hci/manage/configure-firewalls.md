@@ -97,9 +97,9 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule                                          | Action | Source                     | Destination                      | Service | Ports  |
 | :-------------------------------------------  | :----- | :------------------------- | :------------------------------- | :------ | :----- |
-| Allow Server Message Block<br> (SMB) protocol | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 445    |
-| Allow Web Services-Management<br> (WS-MAN)    | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 5985   |
-| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Windows Admin Center  | Stretched cluster servers  | n/a     | n/a  |
+| Allow Server Message Block<br> (SMB) protocol | Allow  | Stretched cluster servers  | Stretched cluster servers        | TCP     | 445    |
+| Allow Web Services-Management<br> (WS-MAN)    | Allow  | Stretched cluster servers  | Stretched cluster servers        | TCP     | 5985   |
+| Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Stretched cluster servers  | Stretched cluster servers  | n/a     | n/a  |
 
 ### Connectivity recommendations
 If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allowlist.
