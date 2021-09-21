@@ -11,25 +11,7 @@ ms.author: v-susbo
 
 This article includes workaround steps for resolving known issues that occur when using Azure Kubernetes Service on Azure Stack HCI.
 
-<!-- Moved to new TS install topic -->
-## Install-Akshci fails on a multi-node installation
-
-When running [Install-AksHci](./reference/ps/install-akshci.md) on a single-node setup, the installation worked, but when setting up the failover cluster, the installation fails with the error message _Nodes have not reached active state_. However, pinging the cloud agent showed the CloudAgent was reachable.
-
-To ensure all nodes can resolve the CloudAgent's DNS, run the following command on each node:
-
-```powershell
-Resolve-DnsName <FQDN of cloudagent>
-```
-
-When the step above succeeds on the nodes, make sure the nodes can reach the CloudAgent port to verify that a proxy is not trying to block this connection and the port is open. To do this, run the following command on each node:
-
-```powershell
-Test-NetConnection  <FQDN of cloudagent> -Port <Cloudagent port - default 65000>
-```
-<!-- Moved to new TS install topic -->
-
-## Linux and Windows VMs were not configured as highly available VMs
+## Linux and Windows VMs were not configured as highly available VMs when scaling a workload cluster
 
 When scaling out a workload cluster, the corresponding Linux and Windows VMs were added as worker nodes, but they were not configured as highly available VMs. When running the [Get-ClusterGroup](/powershell/module/failoverclusters/get-clustergroup?view=windowsserver2019-ps) command, the newly created Linux VM was not configured as a Cluster Group.
 
@@ -42,9 +24,9 @@ When you scale down a cluster, the high availability cluster resources are in a 
 
 When attempting to bring up an AKS on Azure Stack HCI deployment after a few days, `Kubectl` did not execute any of its commands. The Key Management Service (KMS) plug-in log displayed the error message _rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates_.
 
-The `Repair-AksHciCerts` cmdlet fails if the API server is down. If AKS on Azure Stack HCI is not upgraded for 60 days, and then you try to restart KMS, the KMS plug-in won't start. This failure also causes the API server to fail.
+The `Repair-AksHciCerts` cmdlet fails if the API server is down. If AKS on Azure Stack HCI has not been upgraded for 60 or more days, when you try to restart the KMS plug-in, it won't start. This failure also causes the API server to fail.
 
-To fix this issue, you need to manually fix the token and restart the KMS plug-in to get the API server back up. To do this, run the following steps:
+To fix this issue, you need to manually fix the token and then restart the KMS plug-in to get the API server back up. To do this, run the following steps:
 
 1. Rotate the token by running the following command:
 
@@ -52,13 +34,13 @@ To fix this issue, you need to manually fix the token and restart the KMS plug-i
    $ mocctl.exe security identity rotate --name "KMSPlugin-<cluster-name>-moc-kms-plugin" --encode=false --cloudFqdn (Get-AksHciConfig).Moc.cloudfqdn > cloudlogin.yaml
    ```
 
-2. Copy the token to the VM using the following command. The `ip` in the command below refers to the  IP address of the management cluster control plane.
+2. Copy the token to the VM using the following command. The `ip` in the command below refers to the  IP address of the control plane of the AKS host.
 
    ```
    $ scp -i (Get-AksHciConfig).Moc.sshPrivateKey .\cloudlogin.yaml clouduser@<ip>:~/cloudlogin.yaml $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> sudo mv cloudlogin.yaml /opt/wssd/k8s/cloudlogin.yaml
    ```
 
-3. Restart the KMS plug-in and the container since it's a static pod. 
+3. Restart the KMS plug-in and also restart the container since it's a static pod. 
 
    To get the container ID, run the following command:
 
@@ -66,7 +48,7 @@ To fix this issue, you need to manually fix the token and restart the KMS plug-i
    $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo docker container ls | grep 'kms'"
    ```
 
-   The output should show the fields below:
+   The output should with the following fields:
 
    ```Output
    CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -185,70 +167,6 @@ If you experience this issue, run the following steps:
 
 When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
 
-<!-- Moved to new TS install topic -->
-## Install-AksHci timed out with an error
-
-After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following _waiting for API server_ error message:
-
-```Output
-\kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
-get akshciclusters -o json returned a non zero exit code 1 
-[Unable to connect to the server: dial tcp 192.168.0.150:6443: 
-connectex: A connection attempt failed because the connected party 
-did not properly respond after a period of time, or established connection 
-failed because connected host has failed to respond.]
-```
-
-There are multiple reasons why an installation might fail with the _waiting for API server_ error. See the following sections for possible causes and solutions for this error.
-
-### Reason 1: Incorrect IP gateway configuration
-If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
-```PowerShell
-Install-AksHci 
-C:\AksHci\kvactl.exe create –configfile C:\AksHci\yaml\appliance.yaml  --outfile C:\AksHci\kubeconfig-clustergroup-management returned a non zero exit code 1 [ ]
-```
-
-To check whether you have the right configuration for your IP address and gateway, run the following: 
-
-```powershell
-ipconfig /all
-```
-
-In the displayed configuration settings, confirm the configuration. You could also attempt to ping the IP gateway and DNS server. 
-
-If these methods don't work, use [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) to change the configuration.
-
-### Reason 2: Incorrect DNS server
-If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
-
-```powershell
-Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
-```
-
-Confirm that the DNS server address is the same as the address used when running `New-AksHciNetworkSetting` by running the following command:
-
-```powershell
-Get-MocConfig
-```
-
-If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack HCI with the correct DNS server. For more information, see [Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI ](./restart-cluster.md).
-
-The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
-<!-- Moved to new TS install topic -->
-<!-- Moved to new TS install topic -->
-## Install-AksHci fails due to an Azure Arc onboarding failure
-
-After running [Install-AksHci](./reference/ps/install-akshci.md), a _Failed to wait for addon arc-onboarding_ error occurred.
-
-To resolve this issue, use the following steps:
-
-1. Open PowerShell and run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md).
-2. Open the Azure portal and navigate to the resource group you used when running `Install-AksHci`.
-3. Check for any connected cluster resources that appear in a _Disconnected_ state and include a name shown as a randomly generated GUID. 
-4. Delete these cluster resources.
-5. Close the PowerShell session and open new session before running `Install-AksHci` again.
-<!-- Moved to new TS install topic -->
-
 ## When running Get-AksHciCluster, a _release version not found_ error occurs
 
 When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired.
@@ -257,39 +175,6 @@ To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure S
 
 ## When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
 If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
-
-<!-- Moved to new TS install topic -->
-## After a failed installation, the Install-AksHci PowerShell command cannot be run
-If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshci.md), you should run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
-<!-- Moved to new TS install topic -->
-
-<!-- Moved to new TS install topic -->
-## During deployment, the error _Waiting for pod ‘Cloud Operator’ to be ready_ appears
-
-When attempting to deploy an AKS on Azure Stack HCI cluster on an Azure VM, the installation was stuck at _Waiting for pod 'Cloud Operator' to be ready..._, and then failed and timed out after two hours. Attempts to troubleshoot by checking the gateway and DNS server showed they were working appropriately. Checks to see if there was an IP or MAC address conflict showed none were found. When viewing the logs, it showed that the VIP pool had not reached the logs. There was a restriction on pulling the container image using `sudo docker pull ecpacr.azurecr.io/kube-vip:0.3.4` that returned a Transport Layer Security (TLS) timeout instead of _unauthorized_. 
-
-To resolve this issue, run the following steps:
-
-1. Start to deploy your cluster.
-2. When deployed, connect to management cluster VM through SSH as shown below:
-
-   ```
-   ssh -i (Get-MocConfig)['sshPrivateKey'] clouduser@<IP Address>
-   ```
-
-3. Change the maximum transmission unit (MTU) setting. Don't hesitate to make the change because if you make the change too late, then the deployment fails. Modifying the MTU setting helps unblock the container image pull.
-
-   ```
-   sudo ifconfig eth0 mtu 1300
-   ```
-
-4. To view the status of your containers, run the following command:
-   ```
-   sudo docker ps -a
-   ```
-
-After performing these steps, the container image pull should be unblocked.
-<!-- Moved to new TS install topic -->
 
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
