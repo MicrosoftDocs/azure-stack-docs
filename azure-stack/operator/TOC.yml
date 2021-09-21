@@ -304,6 +304,8 @@
       href: azure-stack-marketplace-azure-items.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
+    - name: Update Marketplace Item
+      href: marketplace-update-items.md
     - name: Add a custom virtual machine image
       href: azure-stack-add-vm-image.md
     - name: Create and publish a marketplace item
