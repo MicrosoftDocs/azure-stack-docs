@@ -91,7 +91,8 @@ Running the below PowerShell will update the extension to the latest version.
 Set-AzVMExtension -ResourceGroupName "SampleRG" -VMName "SampleVM" -Name "ExtensionName" -Publisher "PublisherName" -typeHandlerVersion "NewExtensionVersion" -ExtensionType SampleType -Location local 
 ```
 
-Note: It can take several minutes for the extension to be updated. You can safely run the first command to check the version if it got updated.
+> [!NOTE]  
+> It can take several minutes for the extension to be updated. You can safely run the first command to check the version if it got updated.
 
 ## List of recently updated extension
 
@@ -100,7 +101,7 @@ Note: It can take several minutes for the extension to be updated. You can safel
 | Microsoft.EnterpriseCloud.Monitoring | Microsoft.EnterpriseCloud.Monitoring | 1.14               | OmsAgentForLinux |
 | microsoft.linuxdiagnostic-3.1.135    | Microsoft.Azure.Diagnostics          | 4.0                | LinuxDiagnostic  |
 
-> [NOTE]  
+> [!NOTE]  
 > If you have installed any version of the following two extensions:
 
 -   Azure Update and Configuration Management
@@ -110,6 +111,6 @@ Ensure you replace them with the **Azure Monitor, Update and Configuration Manag
 
 ## Next steps
 
-For more information about the Azure Stack Hub Marketplace, see [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)
+For more information about the Azure Stack Hub Marketplace, see [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
 
 
