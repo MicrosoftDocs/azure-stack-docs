@@ -95,17 +95,11 @@ Ensure that the following firewall rules are configured in your on-premises fire
 #### Storage Replica (stretched cluster)
 Ensure that the following firewall rules are configured in your on-premises firewall for Storage Replica (stretched cluster).
 
-| Rule                                | Action | Source                     | Destination            | Service | Ports  |
-| :---------------------------------  | :----- | :------------------------- | :--------------------- | :------ | :----- |
-| Allow Server Message Block (SMB) protocol | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 445    |
-| Allow Web Services-Management (WS-MAN)    | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 5985   |
+| Rule                                          | Action | Source                     | Destination                      | Service | Ports  |
+| :-------------------------------------------  | :----- | :------------------------- | :------------------------------- | :------ | :----- |
+| Allow Server Message Block (SMB) protocol     | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 445    |
+| Allow Web Services-Management<br> (WS-MAN)    | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 5985   |
 | Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Windows Admin Center  | Stretched cluster servers  | n/a     | n/a  |
-
-
-
-- TCP port 445
-- TCP port 5985
-- ICMPv4 and ICMPv6 (if using the `Test-SRTopology` PowerShell cmdlet)
 
 ### Connectivity recommendations
 If your outbound firewall is restricted, then we recommend adding the following URLs and ports in this section to your allowlist.
