@@ -97,7 +97,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule                                          | Action | Source                     | Destination                      | Service | Ports  |
 | :-------------------------------------------  | :----- | :------------------------- | :------------------------------- | :------ | :----- |
-| Allow Server Message Block (SMB) protocol     | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 445    |
+| Allow Server Message Block<br> (SMB) protocol | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 445    |
 | Allow Web Services-Management<br> (WS-MAN)    | Allow  | Windows Admin Center       | Stretched cluster servers        | TCP     | 5985   |
 | Allow ICMPv4 and ICMPv6<br> (if using the `Test-SRTopology`<br> PowerShell cmdlet) | Allow  | Windows Admin Center  | Stretched cluster servers  | n/a     | n/a  |
 
