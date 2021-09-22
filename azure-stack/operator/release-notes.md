@@ -76,8 +76,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
 - Windows Server 2022 is now supported as a guest operating system.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
-- Azure Kubernetes Service Public Preview is now available in Azure Stack Hub starting with this version. Operators will now be able to include it as part of tenants plans. Tenant users will be able to create and manage AKS clusters using the Azure AKS User Interface, Command Line Interface, API, and ARM templates. To learn more review the [Operator](https://aka.ms/aks-ash-operator) and [User](https://aka.ms/aks-ash-docs) documentation.
-- Azure Container Registries public preview is now available in Azure Stack Hub, starting with this version. Operators can now optionally enable the service and include it as part of tenants' plans. Tenant users can create and manage ACR registries using the Azure ACR user interface, command line interface, PowerShell, API, and Azure Resource Manager templates. To learn more, see the [Operator](https://aka.ms/ash-acr-operator-docs) and [User](https://aka.ms/ash-acr-docs) documentation.
+- Two new services, [Azure Kubernetes Service](../user/aks-overview.md) and [Azure Container Registry](../user/container-registry-overview.md), are available in public preview with this release.
 
 ### Improvements
 
