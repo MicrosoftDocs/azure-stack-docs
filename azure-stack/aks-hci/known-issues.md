@@ -35,9 +35,8 @@ An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working
 
 This issue occurred because the AKS host was turned off for longer than four days, which caused the certificates to expire. Certificates are frequently rotated in a four-day cycle. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
 
-## While running Get-AksHCIClusterNetwork shows all virtual network configurations, the command does not show the current allocation of IP addresses
-
-To find out what IP addresses are currently in use in a virtual network, use the steps below:
+## Get-AksHCIClusterNetwork does not show the current allocation of IP addresses
+Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. To find out what IP addresses are currently in use in a virtual network, use the steps below:
 
 1. To get the group, run the following command:
 
@@ -127,7 +126,7 @@ Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./refere
 ## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
 If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
-## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
+## The error _Cannot index into a null array_ appears when creating an Arc enabled workload cluster
 The error _Cannot index into a null array_ appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
@@ -220,7 +219,7 @@ While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has 
 ## Load balancer in Azure Kubernetes Service requires DHCP reservation
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
 
-## Get-AksHciLogs command may fail
+## Get-AksHciLogs command may fail with an exception
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or won't generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file, Compress-Archive, has an output file size limit of 2GB. 
 
 ## Creating virtual networks with a similar configuration cause overlap issues
