@@ -19,6 +19,8 @@ New-AksHciNodePool -clusterName <String>
                   [-count <int>]
                   [-osType <String>]
                   [-vmSize <VmSize>]
+                  [-taints <Taint>]
+                  [-maxPodCount <int>]
 ```
 
 ## Description
@@ -102,6 +104,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: Standard_K8S3_v1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -taints
+The node taints for the node pool. You can't change the node taints after the node pool is created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -maxPodCount
+The maximum number of pods deployable to a node.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 110
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -16,17 +16,32 @@ Troubleshoots and fixes errors related to expired certificates for Kubernetes bu
 
 ```powershell
 Repair-AksHciClusterCerts -name 
+                          -fixCloudCredentials
                          [-sshPrivateKeyFile <String>] 
                          [-force]
+```
+
+```powershell
+Repair-AksHciClusterCerts -name 
+                          -fixKubeletCredentials
+                         [-sshPrivateKeyFile <String>] 
 ```
 
 ## Description
 Troubleshoots and fixes errors related to expired certificates for Kubernetes built-in components. 
 
-## Example
+## Examples
+
+### To fix cloudagent related certs, if the target cluster loses communication with the cloud agent
 
 ```powershell
-PS C:\> Repair-AksHciClusterCerts -name mycluster
+PS C:\> Repair-AksHciClusterCerts -name mycluster -fixCloudCredentials
+```
+
+### To fix the cluster certs, if there are communication issues between target clusters
+
+```powershell
+PS C:\> Repair-AksHciClusterCerts -name mycluster -fixKubeletCredentials
 ```
 
 ## Parameters
@@ -46,6 +61,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -fixCloudCredentials
+Use this flag if the workload cluster loses communication with the cloudagent.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -fixKubeletCredentials
+Use this flag if the workload clusters lose comminucation between other workload clusters.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
 ### -sshPrivateKeyFile
 The SSH key used to remotely access the host VMs for the cluster.
 
@@ -62,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -force
-Use this flag to force repair without checks.
+Use this flag to force repair without checks. This flag is only valid for `fixCloudCredentials`
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
