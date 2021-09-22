@@ -77,6 +77,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Windows Server 2022 is now supported as a guest operating system.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 - Azure Kubernetes Service Public Preview is now available in Azure Stack Hub starting with this version. Operators will now be able to include it as part of tenants plans. Tenant users will be able to create and manage AKS clusters using the Azure AKS User Interface, Command Line Interface, API, and ARM templates. To learn more review the [Operator](https://aka.ms/aks-ash-operator) and [User](https://aka.ms/aks-ash-docs) documentation.
+- Azure Container Registries public preview is now available in Azure Stack Hub, starting with this version. Operators can now optionally enable the service and include it as part of tenants' plans. Tenant users can create and manage ACR registries using the Azure ACR user interface, command line interface, PowerShell, API, and Azure Resource Manager templates. To learn more, see the [Operator](https://aka.ms/ash-acr-operator-docs) and [User](https://aka.ms/ash-acr-docs) documentation.
 
 ### Improvements
 
@@ -178,7 +179,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Reduced the XRP memory to 14 GB per VM and WAS memory to 10 GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
 - Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
-- Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
 - Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
 
 ### Changes
