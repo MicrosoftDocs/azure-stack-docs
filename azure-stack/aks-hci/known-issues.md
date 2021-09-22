@@ -1,6 +1,6 @@
 ---
-title: Common known issues for Azure Kubernetes Service on Azure Stack HCI 
-description: Common known issues for Azure Kubernetes Service on Azure Stack HCI 
+title: Common issues when using Azure Kubernetes Service on Azure Stack HCI 
+description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: EkeleAsonye
 ms.topic: troubleshooting
 ms.date: 09/22/2021
@@ -8,8 +8,8 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Known issues for Azure Kubernetes Service on Azure Stack HCI
-This article describes known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review some [known issues for Windows Admin Center](known-issues-windows-admin-center.md) and [installation known issues and errors](troubleshoot-installation.md).
+# Common issues when using Azure Kubernetes Service on Azure Stack HCI
+This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
 ## When running Get-AksHciCluster, a _release version not found_ error occurs
 When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired. To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build. 
@@ -188,7 +188,7 @@ This issue happens because the logic to clean up the first migration runs asynch
 To work around this issue, ensure the VM has started successfully on the new node before moving it back to the original node.
 
 ## When downloading the AKS on Azure Stack HCI package, the download fails
-If you get an error that says `msft.sme.aks couldn't load`, and the error says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
+If you get an error that says _msft.sme.aks couldn't load_, and the error also says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
 
 ## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
 The deployment of a large cluster may time out after two hours, however, this is a static time-out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 

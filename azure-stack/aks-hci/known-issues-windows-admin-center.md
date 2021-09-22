@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Known issues in Windows Admin Center
 
-This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [common known issues](known-issues.md) and [installation issues and errors](troubleshoot-installation.md).
+This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [common known issues](known-issues.md) and [installation issues and errors](known-issues-installation.md).
 
 ## During deployment the error _No match was found for the specified search criteria for the provider 'Nuget'_ appears
 The error _No match was found for the specified search criteria for the provider 'Nuget'_ appears when deploying through Windows Admin Center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
