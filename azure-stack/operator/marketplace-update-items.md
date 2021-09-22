@@ -56,7 +56,7 @@ $VMs=Get-AzVM
 
 Foreach($VM in $VMs)
 {
-    Get-AzVMExtension -ResourceGroup $VM.ResourceGroupName - VMName $VM.name | ft VMName, Name, TypeHandlerVersion, Publisher, ExtensionType, Location
+    Get-AzVMExtension -ResourceGroup $VM.ResourceGroupName -VMName $VM.name | ft VMName, Name, TypeHandlerVersion, Publisher, ExtensionType, Location
 }
 ```
 
