@@ -1,10 +1,10 @@
 ---
-title: Azure Stack Hub release notes 
+title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -61,10 +61,10 @@ The Azure Stack Hub 2108 update build type is **Full**.
 
 The 2108 update has the following expected runtimes based on our internal testing:
 
-- 4 nodes: 8-20 hours
-- 8 nodes: 11-26 hours
-- 12 nodes: 14-32 hours
-- 16 nodes: 17-38 hours
+- 4 nodes: 6-18 hours
+- 8 nodes: 10-24 hours
+- 12 nodes: 11-30 hours
+- 16 nodes: 12-36 hours
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2108 update and should not be compared to other Azure Stack Hub updates.
 
@@ -72,7 +72,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- An Azure Stack Hub operator can now configure GPU quotas for VMs.
+- Azure Stack Hub operators can now configure GPU quotas for VMs.
 - [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
 - Windows Server 2022 is now supported as a guest operating system.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
@@ -83,7 +83,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The alert description has been adjusted to align with progressive backup when the external SMB share is almost full.
 - To prevent upload failures, the number of parallel infrastructure backup repository uploads to the external SMB share is now limited.
 - Replaced **Node-Inaccessible-for-vm-placement** alert with alerts to distinguish between **host-unresponsive** scenarios and **hostagent-service-on-node-unresponsive** scenarios.
-- Ability for App Service to discover the default NAT IP for outbound connections.
+- App Service now has the ability to discover the default NAT IP for outbound connections.
 
 ### Changes
 
@@ -115,7 +115,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
+- [Azure Stack Hub hotfix 1.2102.30.103](hotfix-1-2102-30-103.md)
 
 ### After successfully applying the 2108 update
 
@@ -129,7 +129,7 @@ After the installation of 2108, if any hotfixes for 2108 are subsequently releas
 ::: moniker range="azs-2102"
 ## 2102 build reference
 
-The latest Azure Stack Hub 2102 update build number is **1.2102.28.89**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
+The latest Azure Stack Hub 2102 update build number is **1.2102.30.97**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
 
 ### Update type
 
@@ -177,8 +177,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14 GB per VM and WAS memory to 10 GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
-- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
-- Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
+- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 - Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
 
 ### Changes
@@ -218,7 +217,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.40.148](hotfix-1-2008-40-148.md)
+- [Azure Stack Hub hotfix 1.2008.40.153](hotfix-1-2008-40-153.md)
 
 ### After successfully applying the 2102 update
 
@@ -226,13 +225,13 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
+- [Azure Stack Hub hotfix 1.2102.30.103](hotfix-1-2102-30-103.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
 ## 2008 build reference
 
-The latest Azure Stack Hub 2008 update build number is **1.2008.40.148**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
+The latest Azure Stack Hub 2008 update build number is **1.2008.40.149**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
 
 ### Update type
 
@@ -311,7 +310,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.148](hotfix-1-2008-40-148.md)
+- [Azure Stack Hub hotfix 1.2008.40.153](hotfix-1-2008-40-153.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

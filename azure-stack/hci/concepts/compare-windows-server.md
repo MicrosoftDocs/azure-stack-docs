@@ -61,7 +61,7 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) | Runs on any hardware with the "Certified for Windows Server 2019" logo |
-| Lifecycle policy | Always up to date with the latest features | Choose between [Windows Server servicing channels](/windows-server/get-started-19/servicing-channels-19): Long-Term Servicing Channel (LTSC) and Semi-Annual Channel (SAC) |
+| Lifecycle policy | Always up to date with the latest features | Choose between [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) and Semi-Annual Channel (SAC) |
 
 ## Compare technical features
 
@@ -101,7 +101,7 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
 | Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2019](https://www.microsoft.com/windows-server/pricing) |
-| Evaluation/trial period | 30-day free trial once registered | 180-day evaluation copy |
+| Evaluation/trial period | 60-day free trial once registered | 180-day evaluation copy |
 | Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
 ## Next steps

@@ -14,8 +14,26 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.30.103
+        href: hotfix-1-2102-30-103.md
+      - name: Hotfix 1.2008.40.153
+        href: hotfix-1-2008-40-153.md
+      - name: Hotfix 1.2005.48.137
+        href: hotfix-1-2005-48-137.md      
+      - name: Hotfix 1.2102.30.102
+        href: hotfix-1-2102-30-102.md
+      - name: Hotfix 1.2008.40.151
+        href: hotfix-1-2008-40-151.md
+      - name: Hotfix 1.2005.47.135
+        href: hotfix-1-2005-47-135.md      
+      - name: Hotfix 1.2102.30.101
+        href: hotfix-1-2102-30-101.md
+      - name: Hotfix 1.2008.40.150
+        href: hotfix-1-2008-40-150.md      
+      - name: Hotfix 1.2005.46.133
+        href: hotfix-1-2005-46-133.md      
       - name: Hotfix 1.2102.28.89
-        href: hotfix-1-2102-28-89.md      
+        href: hotfix-1-2102-28-89.md              
       - name: Hotfix 1.2008.40.148
         href: hotfix-1-2008-40-148.md      
       - name: Hotfix 1.2005.42.126
@@ -292,6 +310,8 @@
       href: azure-stack-marketplace-azure-items.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
+    - name: Update Marketplace items
+      href: marketplace-update-items.md
     - name: Add a custom virtual machine image
       href: azure-stack-add-vm-image.md
     - name: Create and publish a marketplace item
@@ -306,10 +326,6 @@
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
       href: azure-stack-redhat-create-upload-vhd.md
-    - name: Offer the AKS engine
-      href: azure-stack-aks-engine.md
-    - name: Offer Kubernetes marketplace item
-      href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: Offer Commvault marketplace item
       href: azure-stack-network-offer-backup-commvault.md
   - name: Offer services
@@ -372,6 +388,18 @@
           href: app-service-release-notes-2020-Q3.md
         - name: 2020 Q2 release notes [May 2020]
           href: app-service-release-notes-2020-Q2.md
+    - name: Azure Container Registry
+      items:
+      - name: Overview
+        href: container-registries-overview.md
+      - name: Install Azure Container Registry
+        href: container-registries-install.md
+      - name: Manage Azure Container Registry
+        href: container-registries-manage.md
+      - name: Troubleshoot
+        href: container-registries-troubleshoot.md
+    - name: Azure Kubernetes Service
+      href: aks-add-on.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -434,6 +462,12 @@
           href: https://azure.microsoft.com/updates/?query=IoT%20Hub
       - name: Remove 
         href: iot-hub-rp-remove.md
+    - name: Kubernetes
+      items:
+      - name: Offer the AKS engine
+        href: azure-stack-aks-engine.md
+      - name: Offer Kubernetes marketplace item
+        href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: MySQL on Azure Stack Hub
       items:
       - name: Overview 
@@ -454,6 +488,8 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
+        - name: MySQL resource provider 2.0.00.0 release notes
+          href: azure-stack-mysql-resource-provider-20000.md
         - name: MySQL resource provider 1.1.93.0 release notes
           href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
@@ -478,6 +514,8 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
+        - name: SQL resource provider 2.0.00.0 release notes
+          href: azure-stack-sql-resource-provider-20000.md 
         - name: SQL resource provider 1.1.93.0 release notes
           href: azure-stack-sql-resource-provider-11930.md   
         - name: SQL resource provider 1.1.47.0 release notes
@@ -555,7 +593,7 @@
   - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
-    href: ../reference/pep-2002/    
+    href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI

@@ -121,7 +121,7 @@ This section answers frequently asked questions about thin provisioning on Azure
 
 No. At this time, converting from a fixed volume to a thin volume is not supported.
 
-### Is it possible to go back to fixed provisioned volumes after switching to thin?
+### Is it possible to go back to creating fixed provisioned volumes as a default after switching the setting to thin?
 
 Yes. Navigate to **Settings > Storage Spaces and pools**, and change the **Default provisioning type** back to **Fixed**.  
 

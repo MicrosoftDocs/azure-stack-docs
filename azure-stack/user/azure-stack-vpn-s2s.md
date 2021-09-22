@@ -3,9 +3,9 @@ title: Configure IPsec/IKE site-to-site VPN connections in Azure Stack Hub
 description: Learn more about and configure IPsec/IKE policy for site-to-site VPN or VNet-to-VNet connections in Azure Stack Hub.
 author: sethmanheim
 
-ms.custom: contperf-fy20q4
-ms.topic: article
-ms.date: 11/22/2020
+ms.custom: contperf-fy22q1
+ms.topic: how-to
+ms.date: 08/24/2021
 ms.author: sethm
 ms.lastreviewed: 11/22/2020
 
@@ -17,10 +17,7 @@ ms.lastreviewed: 11/22/2020
 
 # Configure IPsec/IKE policy for site-to-site VPN connections
 
-This article walks through the steps to configure an IPsec/IKE policy for site-to-site (S2S) VPN connections in Azure Stack Hub.
-
->[!NOTE]
-> You must be running Azure Stack Hub build **1809** or later to use this feature.  If you're currently running a build prior to 1809, update your Azure Stack Hub system to the latest build before proceeding with the steps in this article.
+This article describes the steps to configure an IPsec/IKE policy for site-to-site (S2S) VPN connections in Azure Stack Hub.
 
 ## IPsec and IKE policy parameters for VPN gateways
 
@@ -82,7 +79,7 @@ The following table lists the supported cryptographic algorithms and key strengt
 | QM SA Lifetime                                       | (Optional: default values are used if not specified)<br />                         Seconds (integer; min. 300/default 27000 seconds)<br />                         KBytes (integer; min. 1024/default 102400000 KBytes) |
 | Traffic Selector                                     | Policy-based Traffic Selectors are not supported in Azure Stack Hub.         |
 
-\* These parameters are only available in builds 2002 and above. 
+\* These parameters are only available in builds 2002 and later.
 
 - Your on-premises VPN device configuration must match or contain the following algorithms and parameters that you specify on the Azure IPsec/IKE policy:
 

@@ -3,10 +3,10 @@ title: Emergency VM access in Azure Stack Hub
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/02/2021
+ms.date: 08/13/2021
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 08/02/2021
+ms.lastreviewed: 08/13/2021
 
 ---
 
@@ -27,7 +27,7 @@ The first step for the Azure Stack Hub operator is to enable Remote Desktop acce
 The following command needs to run in the privileged endpoint (PEP). Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md):
 
 ```powershell
-Enable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
+Grant-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
 ```
 
 To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS), run the following command in the privileged endpoint (PEP):
