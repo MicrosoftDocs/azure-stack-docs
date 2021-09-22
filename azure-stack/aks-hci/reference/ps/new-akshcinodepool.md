@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -maxPodCount
-The maximum number of pods deployable to a node.
+The maximum number of pods deployable to a node. This number must at least be 50.
 
 ```yaml
 Type: System.Int32
