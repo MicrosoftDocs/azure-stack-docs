@@ -10,6 +10,8 @@ ms.reviewer:
 
 # Known issues when upgrading AKS on Azure Stack HCI
 
+This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release.
+
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
 When running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
