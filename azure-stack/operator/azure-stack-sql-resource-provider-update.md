@@ -41,7 +41,7 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 ## Update from SQL RP V1.1.93.x to SQL RP V2.0.00.0
 
 ### Prerequisites
-1. Make sure you have updated SQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.<region>.sqladapter). Confirm the version tag and SQL RP VM name in resource group.
+1. Make sure you have updated SQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.`<region`>.sqladapter). Confirm the version tag and SQL RP VM name in resource group.
 
 2. [open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
  
