@@ -157,9 +157,55 @@ This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2
 
 To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md#update-the-aks-on-azure-stack-hci-host).
 
+## Deployment fails when using Azure Arc with multiple tenant IDs
+If you're using Azure Arc and have multiple tenant IDs, run the following command to specify the tenant you plan to use before starting the deployment. If you don't specify a tenant, your deployment might fail.
+
+```azurecli
+az login -tenant <tenant>
+```
+
+## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
+
+On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
+
+To resolve this issue, do one of the following:
+
+- Use PowerShell to manually update the workload cluster to version 1.1.0 or later.
+- Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
+
+This issue does not occur if the management cluster is deployed using Windows Admin Center as it already has the latest PowerShell modules installed.
+
+## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
+When deploying AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
+
+For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
+
+```
+$vnet = New-AksHciNetworkSettingSet-AksHciConfig -vnet $vnetInstall-AksHciVERBOSE: 
+Initializing environmentVERBOSE: [AksHci] Importing ConfigurationVERBOSE: 
+[AksHci] Importing Configuration Completedpowershell : 
+GetRelease - error returned by API call: 
+Post "https://msk8s.api.cdp.microsoft.com/api/v1.1/contents/default/namespaces/default/names/mocstack-stable/versions/0.9.7.0/files?action=generateDownloadInfo&ForegroundPriority=True": 
+dial tcp 52.184.220.11:443: connectex: 
+A connection attempt failed because the connected party did not properly
+respond after a period of time, or established connection failed because
+connected host has failed to respond.At line:1 char:1+ powershell -command
+{ Get-DownloadSdkRelease -Name "mocstack-stable"}
+```
+
+This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
+
+To resolve this issue, you need to determine where the breakdown occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
+
+1. Ping the destination DNS name: ping `msk8s.api.cdp.microsoft.com`. 
+2. If you get a response back and no time-out, then the basic network path is working. 
+3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
+
+
 ## Next steps
 
 - [Known issues](./known-issues.md)
-- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
+- [Windows Admin Center known issues](known-issues-windows-admin-center.md)
 - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
-- [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
+
+If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
