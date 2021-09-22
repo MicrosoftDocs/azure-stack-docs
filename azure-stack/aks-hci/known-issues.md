@@ -35,6 +35,27 @@ An AKS on Azure Stack HCI cluster deployed in an Azure VM was previously working
 
 This issue occurred because the AKS host was turned off for longer than four days, which caused the certificates to expire. Certificates are frequently rotated in a four-day cycle. Run [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) to fix the certificate expiration issue.
 
+## While running Get-AksHCIClusterNetwork shows all virtual network configurations, the command does not show the current allocation of IP addresses
+
+To find out what IP addresses are currently in use in a virtual network, use the steps below:
+
+1. To get the group, run the following command:
+
+   ```powershell
+   Get-MocGroup -location MocLocation
+   ```
+2. To get the list of IP addresses that are currently in use, and the list of available or used virtual IP addresses, run the following command:
+
+   ```powershell
+   Get-MocNetworkInterface -Group <groupName> | ConvertTo-Json -depth 10
+   ```
+
+3. Use the following command to view the list of virtual IP addresses that are currently in use: 
+
+   ```powershell
+   Get-MocLoadBalancer -Group <groupName> | ConvertTo-Json -depth 10
+   ```
+
 ## The API server is not responsive after several days
 When attempting to bring up an AKS on Azure Stack HCI deployment after a few days, `Kubectl` did not execute any of its commands. The Key Management Service (KMS) plug-in log displayed the error message _rpc error:code = Unauthenticated desc = Valid Token Required_. After running [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to try to fix the issue, a different error appeared: _failed to repair cluster certificates_.
 
