@@ -24,7 +24,19 @@ Some scenarios in which nested virtualization can be useful are:
 - Testing software releases on VMs
 - Reducing deployment times for training environments
 
-To configure nested virtualization, see [Run Hyper-V in a Virtual Machine with Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).
+## Enable nested virtualization on a VM
+
+To enable nested virtualization on a VM using Windows Admin Center:
+
+1. Connect to your cluster, and then in the **Tools** pane, select **Virtual machines**.
+2. Under **Inventory**, select the VM on which you want to enable nested virtualization.
+3. Select **Settings**, then **Processors**, and check the box for **Enable nested virtualization**.
+
+   :::image type="content" source="media/nested-virtualization/enable-nested-virtualization.png" alt-text="Check the box to enable nested virtualization on a VM" lightbox="media/nested-virtualization/enable-nested-virtualization.png":::
+
+4. Select **Save processor settings**.
+
+To configure nested virtualization on a VM using PowerShell, see [Run Hyper-V in a Virtual Machine with Nested Virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).
 
 ## Nested virtualization processor support
 
