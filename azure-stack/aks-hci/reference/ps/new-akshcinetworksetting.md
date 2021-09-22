@@ -69,28 +69,39 @@ New-AksHciNetworkSetting -name <String>
 ```
 
 ## Description
-Create a virtual network to set the DHCP or static IP address for the control plane, load balancer, agent endpoints, and a static IP range for nodes in all AKS hosts. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when deploying the AKS host.
+Create a virtual network to set the DHCP or static IP address for the load balancer and the Kubernetes node VM in the AKS host. This cmdlet will return a VirtualNetwork object, which can be used later in the configuration steps when deploying the AKS host.
 
 ## Examples
+
+> [!NOTE]
+> The values given in the examples below need to be customized for your environment.
+
+### Deploy with a static IP environment without a VLAN
+
+```powershell
+PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address>
+PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+```
 
 ### Deploy with a static IP environment and a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name myVnet1 -vswitchName "External" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanID 7
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
-> [!NOTE]
-> The values given in this example command will need to be customized for your environment.
+### Deploy with a static IP environment without a VLAN
 
-### Deploy with a DHCP environment
+```powershell
+PS C:\> $vnet = New-AksHciClusterNetwork -name <String> -vswitchName <String> -gateway <String> -dnsServers <String[]> -ipAddressPrefix <String> -vipPoolStart <IP address> -vipPoolEnd <IP address> -k8sNodeIpPoolStart <IP address> -k8sNodeIpPoolEnd <IP address>
+PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+```
+
+### Deploy with a DHCP environment and a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
-```
-
-```powershell
-PS C:\> Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -enableDiagnosticData
+PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 ## Parameters
