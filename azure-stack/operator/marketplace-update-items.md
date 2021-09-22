@@ -52,39 +52,30 @@ As a **user** you can use the following steps to query VMs and list the used ext
 Run the PowerShell cmdlets to list all the VMs and the installed extensions. Before running the cmdlets make sure you have installed [PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 
 ```powershell  
-$VMs = Get - AzVM
+$VMs=Get-AzVM
 
 Foreach($VM in $VMs)
-
 {
-
-    Get - AzVMExtension - ResourceGroup $VM.ResourceGroupName - VMName $VM.name | ft VMName, Name, TypeHandlerVersion, Publisher, ExtensionType, Location
-
+    Get-AzVMExtension -ResourceGroup $VM.ResourceGroupName -VMName $VM.name | ft VMName, Name, TypeHandlerVersion, Publisher, ExtensionType, Location
 }
 ```
 
 If you want to list VMs that are running a specific extension you can use the following script.
 
 ```powershell  
-$extensionname = "SampleExtensionName"
-
-$VMs = Get - AzVM
+$extensionname="SampleExtenionName"
+$VMs=Get-AzVM
 
 Foreach($VM in $VMs) {
-
-    $VMExtensions = Get - AzVMExtension - ResourceGroup $VM.ResourceGroupName - VMName $VM.name
-
-    $extensions = $VMExtensions.name
+    $VMExtensions=Get-AzVMExtension -ResourceGroup $VM.ResourceGroupName -VMName $VM.name
+    $extensions=$VMExtensions.name
 
     Foreach($Extension in $Extensions) {
-        if ($Extension - eq $extensionname)
-
+        if ($Extension -eq $extensionname)
         {
-            write - host $VM.Name
+            write-host $VM.Name
         }
-
     }
-
 }
 ```
 
@@ -106,8 +97,10 @@ Set-AzVMExtension -ResourceGroupName "SampleRG" -VMName "SampleVM" -Name "Extens
 
 > [!NOTE]  
 > If you have installed any version of the following two extensions:
+>
 > - Azure Update and Configuration Management
 > - Azure Update and Configuration Management for Linux
+>
 > Ensure you replace them with the **Azure Monitor, Update and Configuration Management for Linux** extension minimum version 1.14.01.
 
 ## Next steps
