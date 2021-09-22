@@ -182,7 +182,7 @@ sections:
       - question:  |
           Does Azure Container Registry on Azure Stack Hub support Content Trust?
         answer: |
-          No, the current release of Azure container registry on azure Stack Hub only supports the "Standard" SKU and does not support Content Trust.
+          No, the current release of Azure container registry on Azure Stack Hub only supports the "Standard" SKU and does not support Content Trust.
           
           
       - question:  |
