@@ -29,7 +29,7 @@ Restarting the Azure Stack HCI cluster nodes hosting the management cluster and 
 If you've just created a new Azure account and haven't signed in to the account on your gateway machine, you might experience problems with registering your Windows Admin Center gateway with Azure. To mitigate this problem, sign in to your Azure account in another browser tab or window, and then register the Windows Admin Center gateway to Azure.
 
 ## Deployment: Connecting to remote server localhost failed
-The AKS host cluster deployment fails at system checks with a WinRM service error. Try applying the remedies suggested in the [Manual troubleshooting](../hci/manage/troubleshoot-credssp.md#manual-troubleshooting). 
+The AKS host cluster deployment fails at system checks with a WinRM service error. Try applying the solutions suggested in the [Manual troubleshooting](../hci/manage/troubleshoot-credssp.md#manual-troubleshooting). 
 
 ![Connecting to remote server localhost failed.](media/known-issues-windows-admin-center/wac-known-issue-description-auto-generated.png)
 
@@ -37,9 +37,8 @@ The AKS host cluster deployment fails at system checks with a WinRM service erro
 
 There are inconsistencies in network field names showing up in the host cluster deployment flow, and the workload cluster deployment flow.
 
-## Error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster
-
-The error "Cannot index into a null array" appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
+## The error _Cannot index into a null array_ appears when creating an Arc enabled workload cluster
+The error _Cannot index into a null array_ appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.

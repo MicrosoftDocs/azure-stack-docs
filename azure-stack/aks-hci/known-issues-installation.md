@@ -117,7 +117,7 @@ To resolve this issue, run the following steps:
 
 After performing these steps, the container image pull should be unblocked.
 
-## When running the Set-AksHciRegistration command, the error _Unable to check registered Resource Providers_ appears
+## When running Set-AksHciRegistration, the error _Unable to check registered Resource Providers_ appears
 
 After running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) in an AKS on Azure Stack HCI installation, an _Unable to check registered Resource Providers_ error is displayed. This error indicates the Kubernetes Resource Providers are not registered for the tenant that is currently logged in.
 
