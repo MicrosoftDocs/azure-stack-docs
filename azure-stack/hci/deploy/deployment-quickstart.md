@@ -21,6 +21,7 @@ Before creating a cluster, do the following:
 
 * Purchase two servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
 * Create a user account that’s a member of the local Administrators group on each server.
+* Create an Active Directory domain controller on-premises, if you don't already have one.  The cluster will be unable to join Azure Active Directory Domain Services.
 * [Get an Azure subscription](https://azure.microsoft.com/), if you don't already have one.
 * [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). Note that your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain.
 * Take note of the server names, domain names, IP addresses, and VLAN ID for your deployment.

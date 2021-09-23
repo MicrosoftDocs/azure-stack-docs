@@ -15,7 +15,7 @@ ms.lastreviewed: 08/20/2021
 
 # Deploy an image to an Azure Kubernetes Service Cluster on Azure Stack Hub
 
-You can use your Azure Stack Hub Azure Container Registry (ACR) to store images. You can use these images when you deploy to Azure Kubernetes Service (AKS) cluster in the same environment.
+You can use your Azure Stack Hub Azure Container Registry (ACR) to store images. You can use these images when you deploy to an Azure Kubernetes Service (AKS) cluster in the same environment.
 
 ## Deploy an app to your cluster
 
