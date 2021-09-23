@@ -56,7 +56,7 @@ Assuming that all servers in each cluster are running the same hardware, which i
 
 - **Live migrating a VM from a cluster with older processors to a cluster with newer processors.** The VM capabilities will be transferred to the destination cluster. In this scenario, if the VM is restarted, it will receive the latest calculated capability of the destination cluster.
 
-- **Live migrating a VM from a cluster with newer processors to a cluster with older processors.** You'll need to set the VM processor to use the `MinimumFeatureSet` for the `CompatibilityForMigrationMode` parameter in PowerShell, or check the **Default Minimum Features** checkbox in Windows Admin Center under **Virtual machines > Settings > Processors**. This will assign the VM to the minimum processor capabilities offered on the server. Once the cluster capability is cleared, if the VM is restarted, it will receive the latest calculated capability of the destination cluster.
+- **Live migrating a VM from a cluster with newer processors to a cluster with older processors.** You'll need to set the VM processor to use the `MinimumFeatureSet` for the `CompatibilityForMigrationMode` parameter in PowerShell, or select **Compatible across other hosts with the same CPU manufacturer** in Windows Admin Center under **Virtual machines > Settings > Processors**. This will assign the VM to the minimum processor capabilities offered on the server. Once the compatibility is moved to **Compatible across the cluster (Recommended)** and the VM is restarted, it will receive the latest calculated capability of the destination cluster.
 
 ## Configure a VM to use processor compatibility mode
 
