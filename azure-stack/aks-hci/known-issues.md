@@ -103,7 +103,7 @@ To fix this issue, you need to manually rotate the token and then restart the KM
 
 The permission denied error, _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
 
-To resolve this issue, [define a custom storage class](container-storage-interface-disks#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk) that you can use to provision PVCs. 
+To resolve this issue, [define a custom storage class](container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk) that you can use to provision PVCs. 
 
 ## When creating a persistent volume, an attempt to mount the volume fails
 After deleting a persistent volume or a persistent volume claim in an AKS on Azure Stack HCI environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, _NewSmbGlobalMapping failed_.
