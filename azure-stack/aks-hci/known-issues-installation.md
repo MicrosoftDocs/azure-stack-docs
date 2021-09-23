@@ -201,6 +201,9 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 2. If you get a response back and no time-out, then the basic network path is working. 
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
+## After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing
+
+After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing. To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](known-issues#the-api-server-is-not-responsive-after-several-days).
 
 ## Next steps
 
