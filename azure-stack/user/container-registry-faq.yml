@@ -5,10 +5,10 @@ metadata:
   description: List of Azure Stack Hub FAQs for  Azure Container Registry.
   author: mattbriggs
   ms.topic: article
-  ms.date: 09/03/2021
+  ms.date: 09/22/2021
   ms.author: mabrigg
   ms.reviewer: chasat
-  ms.lastreviewed: 09/03/2021
+  ms.lastreviewed: 09/22/2021
   
   # Intent: As an Azure Stack Hub operator, I want to view Azure Stack Hub FAQs for Azure Container Registry.
   # Keyword: azure stack hub ACR FAQ
@@ -29,7 +29,7 @@ sections:
       - question: |
           Can I create an Azure Container Registry on Azure Stack Hub using a Resource Manager template?
         answer: |
-          Yes. Here is [a template](https://azure.microsoft.com/resources/templates/container-registry/) that you can use to create a registry.
+          Yes. Here is [a template](https://azure.microsoft.com/resources/templates/container-registry/) that you can use to create a registry. This template is for Azure public. To use this template against Azure Stack Hub, modify the API version to **2019-05-01**, otherwise it will fail to deploy.
           
       - question: |
           Is there security vulnerability scanning for images in ACR on Azure Stack Hub?
@@ -182,7 +182,7 @@ sections:
       - question:  |
           Does Azure Container Registry on Azure Stack Hub support Content Trust?
         answer: |
-          No, the current release of Azure container registry on azure Stack Hub only supports the "Standard" SKU and does not support Content Trust.
+          No, the current release of Azure container registry on Azure Stack Hub only supports the "Standard" SKU and does not support Content Trust.
           
           
       - question:  |

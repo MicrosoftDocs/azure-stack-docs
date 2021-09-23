@@ -34,7 +34,7 @@ ACR logs are collected when collecting logs from the Azure Stack Hub administrat
 
 ### Collecting logs for ACR install issues
 
-To collect ACR logs for ACR issues including installation issues run **Get-AzureStackLog **with the following format:
+To collect ACR logs for ACR issues including installation issues run **Get-AzureStackLog** with the following format:
 
 ```powershell  
 Get-AzureStackLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices,ECE,CLM

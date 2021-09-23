@@ -6,19 +6,19 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/07/2021
+ms.custom: contperf-fy22q1
+ms.date: 09/13/2021
 ---
 
 # Failover cluster maintenance procedures
 
 > Applies to: Azure Stack HCI, version 21H2 Preview; Azure Stack HCI, version 20H2; Windows Server 2022; Windows Server 2019; Windows Server 2016
 
+This article assumes that you need to power down a physical server to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster without taking servers offline, see [Update Azure Stack HCI clusters](update-cluster.md).
+
 Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in a failover cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving clustered roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
 
 You can use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
-
-   > [!IMPORTANT]
-   > This article assumes that you need to power down a physical server to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster without taking servers offline, see [Update Azure Stack HCI clusters](update-cluster.md).
 
 ## Take a server offline using Windows Admin Center
 
