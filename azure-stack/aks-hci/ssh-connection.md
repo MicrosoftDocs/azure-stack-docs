@@ -55,5 +55,4 @@ After you SSH in to the node, you can run `net user administrator *` to update y
 
 ## Next steps
 - [Known issues](./known-issues.md)
-- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
-- [Resolve known issues](./troubleshoot-known-issues.md)
+- [Windows Admin Center known issues](./known-issues-windows-admin-center.md)
