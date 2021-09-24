@@ -72,7 +72,7 @@ Sometimes, due to network issues, Windows Admin Center times out an Arc connecti
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
 ## On Windows Admin Center, the message **error occurred while creating service principal** appears while installing an AKS host on Azure Stack HCI
-You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign in pop-up is blocked and causes the service principal error.
+You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign-in pop-up is blocked and causes the service principal error.
 
 ## The Setup or Cluster Create wizard displays an error about a wrong configuration
 If you receive an error in either wizard about a wrong configuration, perform cluster cleanup operations. These operations might involve removing the C:\Program Files\AksHci\mocctl.exe file.
@@ -82,7 +82,7 @@ If you have multiple versions of the PowerShell modules installed (for example, 
 
 ## A WinRM error is displayed when creating a new workload cluster
 
-When switching from DHCP to static IP, Windows Admin Center displayed an error that said the WinRM client cannot process the request. This error also occurred outside of Windows Admin Center. WinRM broke when static IP addresses were used, and the servers were not registering an Service Principal Name (SPN) when moving to static IP addresses. 
+When switching from DHCP to static IP, Windows Admin Center displayed an error that said the WinRM client cannot process the request. This error also occurred outside of Windows Admin Center. WinRM broke when static IP addresses were used, and the servers were not registering a Service Principal Name (SPN) when moving to static IP addresses. 
 
 To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the Windows Admin Center gateway, run the following command: 
 

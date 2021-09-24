@@ -22,10 +22,10 @@ This issue could have the following root causes:
    During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
 
 * **Reason two**:
-   The management cluster VM may be out of memory which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32GB in Hyper-V and reboot it. 
+   The management cluster VM may be out of memory, which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32 GB in Hyper-V and reboot it. 
 
 * **Reason three**:
-   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To workaround this issue, manually resize the billing pod `pvc` using the following steps. 
+   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To work around this issue, manually resize the billing pod `pvc` using the following steps. 
 
    1. Run the following command to edit the pod settings:
 
@@ -50,7 +50,7 @@ This issue could have the following root causes:
 
 ## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at _Update-KvaInternal_
 
-When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. You should ensure that the AKS on Azure Stack HCI billing status shows as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
+When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
