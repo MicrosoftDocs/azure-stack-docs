@@ -1,10 +1,21 @@
 {
   "redirections": [
        { 
-      "source_path": "azure-stack/aks-hci/update-aks-hci-concepts.md", 
-      "redirect_url": "/azure-stack/aks-hci/update-akshci-host-powershell", 
+      "source_path": "azure-stack/aks-hci/troubleshoot-windows-admin-center.md", 
+      "redirect_url": "/azure-stack/aks-hci/known-issues-windows-admin-center", 
       "redirect_document_id": false
-    },{ 
+    },
+       { 
+      "source_path": "azure-stack/aks-hci/troubleshoot-known-issues.md", 
+      "redirect_url": "/azure-stack/aks-hci/known-issues", 
+      "redirect_document_id": false
+    },
+       { 
+      "source_path": "azure-stack/aks-hci/troubleshoot-installation.md", 
+      "redirect_url": "/azure-stack/aks-hci/known-issues-installation", 
+      "redirect_document_id": false
+    },
+       { 
       "source_path": "azure-stack/aks-hci/troubleshoot.md", 
       "redirect_url": "/azure-stack/aks-hci/troubleshoot-known-issues", 
       "redirect_document_id": false
