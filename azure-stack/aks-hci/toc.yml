@@ -161,18 +161,14 @@
             href: deploy-linux-application.md
     - name: Troubleshoot
       items:
-          - name: Installation issues and errors
-            href: troubleshoot-installation.md
-          - name: Known issues
+          - name: Common known issues
             href: known-issues.md
-          - name: Resolve known issues
-            href: troubleshoot-known-issues.md
-          - name: Windows Admin Center
-            items:
-                - name: Known issues
-                  href: known-issues-windows-admin-center.md
-                - name: Troubleshoot Windows Admin Center
-                  href: troubleshoot-windows-admin-center.md
+          - name: Installation issues and errors
+            href: known-issues-installation.md
+          - name: Upgrade issues 
+            href: known-issues-upgrade.md  
+          - name: Windows Admin Center issues and errors
+            href: known-issues-windows-admin-center.md
           - name: SSH node access
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI
