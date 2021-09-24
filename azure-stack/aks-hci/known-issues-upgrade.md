@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Known issues when upgrading AKS on Azure Stack HCI
 
-This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release.
+This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
