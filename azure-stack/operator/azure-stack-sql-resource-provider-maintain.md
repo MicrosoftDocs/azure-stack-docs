@@ -267,7 +267,7 @@ Open an elevated PowerShell console and complete the following steps to rotate t
 
 1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to use the PowerShell Az cmdlets (instead of AzureRM), and replace all placeholder values, such as endpoint URLs and directory tenant name.
 
-2. Determine the product-id of ther resource provider. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
+2. Determine the product-id of the resource provider. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
    - `"name"` - contains the resource provider product ID in the second segment of the value.
    
    For example, the SQL RP deployment may have a product ID of `"microsoft.sqlrp"`.
@@ -327,7 +327,7 @@ For example, the secrets collection returned for the SQL RP contains a `"Certifi
 
 You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
 
-![secret-rotation-progress](media/azure-stack-sql-resource-provider-maintain/sql-mysql-secrete-rotate.png)
+![Screen of secret rotation in progress.](media/azure-stack-sql-resource-provider-maintain/sql-mysql-secrete-rotate.png)
 
 > [!NOTE]
 > The secret rotation time might cost more than 10 minutes. After it is done, Status of the resource provider will change to “Installed”.
