@@ -24,15 +24,57 @@ The following table describes the different options for returning a device:
 | Data destruction          | Customer chooses to return the ASH-R, but ensure that Microsoft destroys data-bearing media in compliance with data destruction rules. There will be a fee for data destruction. |
 | Secure device destruction | Customer chooses to return entire device and have the device destroyed securely. There will be a fee for secure device destruction.                                            |
 
-## Return process
+## Initiate device return
 
 Once you have reached the end of a subscription with the device, you must [submit a support ticket](../operator/azure-stack-help-and-support-overview.md?toc=%2Fazure-stack%2Fruggedized%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) to initiate the return process. Once the ticket has been received, the following actions occur:
 
-1. The Azure Customer Service and Support team provides steps to reset the device prior to return.
-2. The ASE Customer Operations team coordinates a pickup date for returning the device. The packaging of the device is serviced through our logistics partner. The billing of the device is paused, as of the scheduled date of the pickup.
-3. After the device has been received by the product operations team and returned to the Microsoft warehouse, the device is appropriately handled based on the customer's choice of return type. This process includes reimaging, diagnostics, refurbishment, and disposition.
-4. The ASE Customer Operations team provides a final status update to the customer regarding return and sanitization. The operations team provides a "Certificate of Destruction," if needed.
-5. If the returned device inspection is successful, the ASE Customer Operations team applies any remaining charges to the subscription (return without drives fee, data destruction fee, etc.) and then stops the billing for the device, communicating back to the customer the completion of the return. The customer can then delete the resource group associated with the device.
+| Step  | Who?                                             | Action                                                                                                                                                                                                                                                                    |
+|---------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1       | Customer                                         | Initiates return by opening a support ticket.                                                                                                                                                                                                                             |
+| 2       | Azure Customer Service and Support team (CSS)    | CSS provides the steps to reset the device prior to return.                                                                                                                                                                                                               |
+| 3       | ASE Customer Operations team (ASE CO)            | ASE CO coordinates a pickup date with the customer for returning their device. The packaging of the device is serviced through our logistics partner (TMC). The billing of the device is paused as of the scheduled date of the pickup.                     |
+| 4       | Customer                                         | Customer powers down, removes cables, packs device to include all components, and prepares for scheduled pickup.                                                                                                                                                         |
+| 5       | Product Operations Team                          | After the device has been received by the Product Operations team and returned to the Microsoft warehouse, the device is appropriately handled based on the customer's choice of return type. This process includes re-imaging, diagnostics, refurbishment, and disposition.               |
+| 6       | ASE Customer Operations team (ASE CO)            | ASE CO team provides a final status update to the customer regarding return and sanitization. The operations team provides a "Certificate of Destruction," if needed.     |
+| 7       | ASE Customer Operations team (ASE CO)            | If the returned device inspection is successful, the ASE Customer Operations team applies any remaining charges to the subscription (return without drives fee, data destruction fee, etc.) and will stops the billing for the device.                             |
+| 8       | ASE Customer Operations team (ASE CO)            | ASE CO communicates final completion of the return back to the customer.                                                                                                                                                                                                   |
+| 9       | Customer                                         | The customer can delete the resource group associated with the order.                                                                                                                                                                                       |
+
+## Pack the device
+
+Follow these steps to pack the device:
+
+1. Power down the [scale unit nodes](customer-replaceable-unit/power-off-scu.md) and the [Hardware Lifecycle Host](customer-replaceable-unit/power-off-hlh.md).
+1. Unplug the power cables and remove all the network cables from the device.
+1. Carefully prepare the shipment package as follows:
+   1. Use the shipping box you requested from Azure or the original shipping box with its foam packaging.
+   1. Place the bottom foam piece in the box.
+   1. Lay the device on top of the foam. Ensure that it sits snugly in the foam.
+   1. Place the top foam piece in the package.
+   1. Place the power cords in the accessory tray and place the rails on the top foam piece.
+   1. Seal the box and affix the shipping label that you received from Azure to the package.
+
+> [!IMPORTANT]
+> If proper guidelines to prepare the return shipment are not followed, the device could be damaged and a damaged device fee may apply. See the [FAQ on lost or damaged devices](https://azure.microsoft.com/pricing/details/azure-stack/edge/).
+
+## Schedule a pickup 
+
+After coordinating with the ASE CO, schedule a pickup with your regional carrier. If returning the device in the US, your carrier could be UPS or FedEx. To schedule a pickup with UPS:
+
+1. Call the local UPS (country/region-specific toll free number) carrier.
+1. In your call, quote the reverse shipment tracking number as shown on your printed label.
+1. If the tracking number isn't quoted, UPS requires you to pay an extra fee during pickup.
+
+## Delete the resource
+
+After the device is received at the Azure datacenter, the device is inspected for damage or any signs of tampering.
+
+- If the device arrives intact and is in good condition, the billing meter stops for that resource. The Azure Stack Edge operations team will contact you to confirm that the device was returned. You can then delete the resource associated with the order in the Azure portal.
+- If the device arrives significantly damaged, charges may apply. For details, see the [FAQ on lost or damaged devices](https://azure.microsoft.com/pricing/details/azure-stack/edge/).
+
+After you return a device to Microsoft, and the Azure Stack Edge operations team has called to confirm that the device was returned, you can delete the Azure Resource Manager ID associated with the order in the Azure portal. The operations team does not call until the returned device passes the physical inspection at the Azure datacenter.
+
+If you've activated the device against another subscription or location, Microsoft will move your order to the new subscription or location within one business day. After the order is moved, you can delete the resource.
 
 ## Next steps
 
