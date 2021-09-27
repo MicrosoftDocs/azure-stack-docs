@@ -100,6 +100,8 @@ $session | Remove-PSSession
 
 ## Configure Azure Diagnostics extension for MySQL resource provider
 
+*These instructions only apply to SQL RP V1 running on Azure Stack Hub Integrated Systems.*
+
 The Azure Diagnostics extension is installed on the MySQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the MySQL resource provider operational event logs and IIS logs for troubleshooting and auditing purposes.
 
 1. Sign in to the Azure Stack Hub administrator portal.
