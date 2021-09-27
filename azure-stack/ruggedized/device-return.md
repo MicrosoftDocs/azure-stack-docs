@@ -11,7 +11,7 @@ ms.custom: template-how-to
 
 # Return a device
 
-There are several ways that you can return an Azure Stack Hub Ruggedized (ASH-R) device after you reach the end of your subscription. As a user of Azure Stack Hub Ruggedized, you are billed by Microsoft based on how long you have had the device. When the device is returned to Microsoft, billing stops as soon as the appliance is received at the Microsoft warehouse. Note that all the following return options include an evaluation that is performed after the Microsoft warehouse receives the device, and there will be additional fees for damaged equipment.
+There are several ways that you can return an Azure Stack Hub Ruggedized (ASH-R) device after you reach the end of your subscription. As a user of Azure Stack Hub Ruggedized, you are billed by Microsoft based on how long you have had the device. When the device is returned to Microsoft, billing stops as soon as the appliance is received at the Microsoft warehouse. All the following return options include an evaluation that is performed after the Microsoft warehouse receives the device, and there will be additional fees for damaged equipment.
 
 ## Return options
 
