@@ -4,7 +4,7 @@ description: Learn how to return an Azure Stack Hub Ruggedized (ASH-R) device
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to 
-ms.date: 09/21/2021
+ms.date: 09/27/2021
 ms.custom: template-how-to
 ---
 
@@ -33,10 +33,10 @@ Once you have reached the end of a subscription with the device, you must [submi
 | 1       | Customer                                         | Initiates return by opening a support ticket.                                                                                                                                                                                                                             |
 | 2       | Azure Customer Service and Support team (CSS)    | CSS provides the steps to reset the device prior to return.                                                                                                                                                                                                               |
 | 3       | ASE Customer Operations team (ASE CO)            | ASE CO coordinates a pickup date with the customer for returning their device. The packaging of the device is serviced through our logistics partner (TMC). The billing of the device is paused as of the scheduled date of the pickup.                     |
-| 4       | Customer                                         | Customer powers down, removes cables, packs device to include all components, and prepares for scheduled pickup.                                                                                                                                                         |
+| 4       | Customer                                         | Customer powers down, removes cables, [packs device](#pack-the-device) to include all components, and prepares for [scheduled pickup](#schedule-a-pickup).                                                                                                                                                         |
 | 5       | Product Operations Team                          | After the device has been received by the Product Operations team and returned to the Microsoft warehouse, the device is appropriately handled based on the customer's choice of return type. This process includes re-imaging, diagnostics, refurbishment, and disposition.               |
 | 6       | ASE Customer Operations team (ASE CO)            | ASE CO team provides a final status update to the customer regarding return and sanitization. The operations team provides a "Certificate of Destruction," if needed.     |
-| 7       | ASE Customer Operations team (ASE CO)            | If the returned device inspection is successful, the ASE Customer Operations team applies any remaining charges to the subscription (return without drives fee, data destruction fee, etc.) and will stops the billing for the device.                             |
+| 7       | ASE Customer Operations team (ASE CO)            | If the inspection of the returned device is successful, the ASE CO team applies any remaining charges to the subscription (return without drives fee, data destruction fee, etc.) and stops the billing for the device.                             |
 | 8       | ASE Customer Operations team (ASE CO)            | ASE CO communicates final completion of the return back to the customer.                                                                                                                                                                                                   |
 | 9       | Customer                                         | The customer can delete the resource group associated with the order.                                                                                                                                                                                       |
 
@@ -57,11 +57,11 @@ Follow these steps to pack the device:
 > [!IMPORTANT]
 > If proper guidelines to prepare the return shipment are not followed, the device could be damaged and a damaged device fee may apply. See the [FAQ on lost or damaged devices](https://azure.microsoft.com/pricing/details/azure-stack/edge/).
 
-## Schedule a pickup 
+## Schedule a pickup
 
 After coordinating with the ASE CO, schedule a pickup with your regional carrier. If returning the device in the US, your carrier could be UPS or FedEx. To schedule a pickup with UPS:
 
-1. Call the local UPS (country/region-specific toll free number) carrier.
+1. Call the local UPS carrier (country/region-specific toll free number).
 1. In your call, quote the reverse shipment tracking number as shown on your printed label.
 1. If the tracking number isn't quoted, UPS requires you to pay an extra fee during pickup.
 
