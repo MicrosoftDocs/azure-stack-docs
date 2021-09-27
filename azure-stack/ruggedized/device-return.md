@@ -26,7 +26,9 @@ The following table describes the different options for returning a device:
 
 ## Initiate device return
 
-Once you have reached the end of a subscription with the device, you must [submit a support ticket](../operator/azure-stack-help-and-support-overview.md?toc=%2Fazure-stack%2Fruggedized%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) to initiate the return process. Once the ticket has been received, the following actions occur:
+Once the customer has reached the end of a subscription with the device, an owner of the subscription must [submit a support ticket](../operator/azure-stack-help-and-support-overview.md?toc=%2Fazure-stack%2Fruggedized%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) to initiate the return process. Once the ticket has been received, the following actions occur:
+
+:::image type="content" source="media/device-return/return-flow.png" alt-text="Device return steps":::
 
 | Step  | Who?                                             | Action                                                                                                                                                                                                                                                                    |
 |---------|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
