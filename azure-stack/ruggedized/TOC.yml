@@ -274,6 +274,8 @@
         items:
         - name: Node actions
           href: operator/azure-stack-node-actions-tzl.md
+        - name: Return a device
+          href: device-return.md
     - name: Security & compliance
       items:
       - name: Configure security 
