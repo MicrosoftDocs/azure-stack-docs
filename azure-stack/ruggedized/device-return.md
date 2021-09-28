@@ -4,7 +4,7 @@ description: Learn how to return an Azure Stack Hub Ruggedized (ASH-R) device
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to 
-ms.date: 09/27/2021
+ms.date: 09/28/2021
 ms.custom: template-how-to
 ---
 
