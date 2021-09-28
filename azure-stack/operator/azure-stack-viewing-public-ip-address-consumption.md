@@ -84,7 +84,7 @@ list or another.
 | Static public IP address assigned to a tenant NIC or load balancer. |Yes |Yes |
 | Static public IP address assigned to a fabric infrastructure service endpoint. |Yes |No |
 | Public IP address implicitly created for IaaS VM instances and used for outbound NAT on the virtual network. These are created behind the scenes whenever a tenant creates a VM instance so that VMs can send information out to the Internet. |Yes |No |
-| Dynamic public IP address assigned to the Virtual Network to ensure outbound connectivity. This NAT IP address ensures the outbound connectivity and is only created once the first Virtual Machine is deployed to the Virtual Network. Public IP Pool must have available addresses for each Virtual Network. Otherwise, any VM deployment on the Virtual Network will fail. | Yes | No |
+| Dynamic public IP address assigned to the Virtual Network to ensure outbound connectivity. This NAT IP address ensures the outbound connectivity and is only created once the first virtual machine is deployed to the virtual network. Public IP pool must have available addresses for each virtual network. Otherwise, any VM deployment on the virtual network fails. | Yes | No |
 ## Next steps
 
 [Manage Storage Accounts in Azure Stack Hub](azure-stack-manage-storage-accounts.md)
