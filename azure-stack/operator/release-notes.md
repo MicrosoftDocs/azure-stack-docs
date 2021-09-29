@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/21/2021
+ms.date: 09/29/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -142,7 +142,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.40.153](hotfix-1-2008-40-153.md)
+- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-40-154.md)
 
 ### After successfully applying the 2102 update
 
@@ -235,7 +235,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.153](hotfix-1-2008-40-153.md)
+- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-40-154.md)
 ::: moniker-end
 
 ::: moniker range="azs-2005"
