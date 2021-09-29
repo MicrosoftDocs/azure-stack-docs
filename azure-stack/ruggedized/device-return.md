@@ -51,7 +51,7 @@ Follow these steps to pack the device:
 1. Carefully prepare the shipment package as follows:
    1. Use the shipping box you requested from Azure or the original shipping box with its foam packaging.
    1. Place the bottom foam piece in the box.
-   1. Lay the device on top of the foam. Ensure that it sits snugly in the foam.
+   1. Lay the device on top of the foam. Ensure that it sits snugly in the foam. Repeat this 3x for each of the 3 boxes you should have.
    1. Place the top foam piece in the package.
    1. Place the power cords in the accessory tray and place the rails on the top foam piece.
    1. Seal the box and affix the shipping label that you received from Azure to the package.
@@ -71,10 +71,10 @@ After coordinating with the ASE CO, schedule a pickup with your regional carrier
 
 After the device is received at the Azure datacenter, the device is inspected for damage or any signs of tampering.
 
-- If the device arrives intact and is in good condition, the billing meter stops for that resource. The Azure Stack Edge operations team will contact you to confirm that the device was returned. You can then delete the resource associated with the order in the Azure portal.
+- If the device arrives intact and is in good condition, the billing meter stops for that resource. The ASE Customer Operations team will contact you to confirm that the device was returned. You can then delete the resource associated with the order in the Azure portal.
 - If the device arrives significantly damaged, charges may apply. For details, see the [FAQ on lost or damaged devices](https://azure.microsoft.com/pricing/details/azure-stack/edge/).
 
-After you return a device to Microsoft, and the Azure Stack Edge operations team has called to confirm that the device was returned, you can delete the Azure Resource Manager ID associated with the order in the Azure portal. The operations team does not call until the returned device passes the physical inspection at the Azure datacenter.
+After you return a device to Microsoft, and the ASE Customer Operations team has called to confirm that the device was returned, you can delete the Azure Resource Manager ID associated with the order in the Azure portal. The operations team does not call until the returned device passes the physical inspection at the Azure datacenter.
 
 If you've activated the device against another subscription or location, Microsoft will move your order to the new subscription or location within one business day. After the order is moved, you can delete the resource.
 
