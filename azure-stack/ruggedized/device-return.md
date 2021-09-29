@@ -4,7 +4,7 @@ description: Learn how to return an Azure Stack Hub Ruggedized (ASH-R) device
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to 
-ms.date: 09/28/2021
+ms.date: 09/29/2021
 ms.custom: template-how-to
 ---
 
@@ -51,7 +51,7 @@ Follow these steps to pack the device:
 1. Carefully prepare the shipment package as follows:
    1. Use the shipping box you requested from Azure or the original shipping box with its foam packaging.
    1. Place the bottom foam piece in the box.
-   1. Lay the device on top of the foam. Ensure that it sits snugly in the foam. Repeat this 3x for each of the 3 boxes you should have.
+   1. Lay the device on top of the foam. Ensure that it sits snugly in the foam. Repeat this 3 times for each of the 3 boxes you have.
    1. Place the top foam piece in the package.
    1. Place the power cords in the accessory tray and place the rails on the top foam piece.
    1. Seal the box and affix the shipping label that you received from Azure to the package.
