@@ -45,6 +45,9 @@ After you have installed Azure CLI with AKS support, verify that the installatio
 This is the output from a Linux machine:
 
 ![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
+
+Azure CLI should be 2.28.0 or above.
+
 ### [Other Linux](#tab/linux)
 
 For other Linux machines, download and install from [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux).
@@ -59,6 +62,7 @@ This is the output from a Linux machine:
 
 ![more output a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 
+Azure CLI should be 2.28.0 or above.
 ### [Windows](#tab/windows)
 
 For a Windows machine, download and install an MSI with the Azure CLI with AKS support from [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
@@ -69,9 +73,11 @@ After you have installed Azure CLI with AKS support, verify that the installatio
     az --version
 ```
 
-The following output should be produced in a windows machine:
+The following output should be produced in a Windows machine:
 
-![produced in a windows machine](media/aks-how-to-use/produced-in-a-windows-machine.png)
+![produced in a windows machine](media/aks-how-to-use/output-from-a-windows-machine.png)
+
+Azure CLI should be 2.28.0 or above.
 
 ---
 ### Connect to Azure Stack Hub
