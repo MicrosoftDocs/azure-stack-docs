@@ -71,10 +71,10 @@ After coordinating with the ASE CO, schedule a pickup with your regional carrier
 
 After the device is received at the Azure datacenter, the device is inspected for damage or any signs of tampering.
 
-- If the device arrives intact and is in good condition, the billing meter stops for that resource. The Azure Stack Edge operations team will contact you to confirm that the device was returned. You can then delete the resource associated with the order in the Azure portal.
+- If the device arrives intact and is in good condition, the billing meter stops for that resource. The ASE Customer Operations team will contact you to confirm that the device was returned. You can then delete the resource associated with the order in the Azure portal.
 - If the device arrives significantly damaged, charges may apply. For details, see the [FAQ on lost or damaged devices](https://azure.microsoft.com/pricing/details/azure-stack/edge/).
 
-After you return a device to Microsoft, and the Azure Stack Edge operations team has called to confirm that the device was returned, you can delete the Azure Resource Manager ID associated with the order in the Azure portal. The operations team does not call until the returned device passes the physical inspection at the Azure datacenter.
+After you return a device to Microsoft, and the ASE Customer Operations team has called to confirm that the device was returned, you can delete the Azure Resource Manager ID associated with the order in the Azure portal. The operations team does not call until the returned device passes the physical inspection at the Azure datacenter.
 
 If you've activated the device against another subscription or location, Microsoft will move your order to the new subscription or location within one business day. After the order is moved, you can delete the resource.
 
