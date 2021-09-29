@@ -51,6 +51,9 @@ After you have installed Azure CLI with AKS support, verify that the installatio
 This is the output from a Linux machine:
 
 ![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
+
+Azure CLI should be 2.28.0 or above.
+
 ### [Other Linux](#tab/linux)
 
 For other Linux machines, download and install from https://aka.ms/ash-aks-cli-linux.
