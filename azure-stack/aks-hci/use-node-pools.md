@@ -19,11 +19,13 @@ This article shows you how to create and manage multiple node pools in an AKS on
 
 ## Before you begin
 
-You need to have the AksHci PowerShell version 1.1.0 or later installed. If you already have the PowerShell module installed, run the following command to find the version.
+We recommend having the latest version 1.1.6 installed. If you already have the PowerShell module installed, run the following command to find the version.
 
 ```powershell
 Get-Command -Module AksHci
 ```
+
+If you need to update, follow the instructions [here](update-akshci-host-powershell.md).
 
 ## Create an AKS on Azure Stack HCI cluster
 

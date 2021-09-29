@@ -20,6 +20,9 @@ Remove-AksHciCluster -name
                     [-force]   
 ```
 
+> [!NOTE]
+> Make sure that your cluster is deleted by looking at the existing VMs. If they are not deleted, then you can manually delete the VMs. Then, run the command `Restart-Service wssdagent`. This should be done on each node in the failover cluster.
+
 ## Description
 Delete a managed Kubernetes cluster.
 

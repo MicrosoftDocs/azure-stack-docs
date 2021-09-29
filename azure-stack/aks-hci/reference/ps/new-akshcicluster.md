@@ -89,28 +89,6 @@ ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
 
-### New AKS-HCI cluster with the new parameter set
-
-```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType linux
-```
-
-**Output**
-```output
-ProvisioningState     : provisioned
-KubernetesVersion     : v1.20.7
-NodePools             : nodepool1
-WindowsNodeCount      : 0
-LinuxNodeCount        : 0
-ControlPlaneNodeCount : 1
-Name                  : mycluster
-```
-
-The example above deploys a cluster with one control plane and one Linux node pool with a node count of one.
-
-> [!NOTE]
-> If you are using the new parameter set as shown in the example above, the `WindowsNodeCount` and `LinuxNodeCount` fields in the output will not be accurate and always show as `0`. To get an accurage count of your Windows or Linux nodes, use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
-
 ### New AKS-HCI cluster with new parameter set's default values
 
 ```powershell
@@ -128,7 +106,64 @@ ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
 
+> [!NOTE]
+> If you are using the new parameter set as shown in the example above, the `WindowsNodeCount` and `LinuxNodeCount` fields in the output will not be accurate and always show as `0`. To get an accurage count of your Windows or Linux nodes, use the [Get-AksHciNodePool](get-akshcinodepool.md) command.
+
 The command above deploys a cluster with its default values. The deployed cluster is the same cluster as the second example command deploys.
+
+### New AKS-HCI cluster with a Linux node pool
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType linux
+```
+
+### New AKS-HCI cluster with a Windows node pool
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType windows
+```
+
+### New AKS-HCI cluster with a Linux node pool and taints
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -taints sku=gpu:NoSchedule
+```
+
+### New AKS-HCI cluster with a Linux node pool and max pod count
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -nodeMaxPodCount 100
+```
+
+### New AKS-HCI cluster with custom VM sizes
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -controlPlaneVmSize Standard_D4s_v3 -loadBalancerVmSize Standard_A4_v2 -nodePoolName nodepool1 -nodeCount 3 -nodeVmSize Standard_D8s_v3
+```
+
+### New AKS-HCI cluster with highly available control plane nodes
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -controlPlaneNodeCount 3 -nodePoolName nodepool1 -nodeCount 3
+```
+
+### New AKS-HCI cluster with monitoring enabled
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableMonitoring
+```
+
+### New AKS-HCI cluster with AD auth enabled
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAdAuth
+```
+
+### New AKS-HCI cluster with a specific Kubernetes version
+
+```powershell
+PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
+```
 
 ## Parameters
 
@@ -148,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -kubernetesVersion
-The version of Kubernetes that you want to deploy. The default is the latest version. To get a list of available versions, run `Get-AksHciKubernetesVersion`.
+The version of Kubernetes that you want to deploy. The default is the latest version. To get a list of available versions, run [Get-AksHciKubernetesVersion](get-akshcikubernetesversion.md).
 
 ```yaml
 Type: System.String
@@ -157,7 +192,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: v1.18.8 or later
+Default value:  v1.20.7
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,7 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### -controlPlaneVmSize
-The size of your control plane VM. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of your control plane VM. Default is Standard_A4_V2. To get a list of available VM sizes, run [Get-AksHciVmSize](get-akshcivmsize.md).
 
 ```yaml
 Type: System.String
@@ -193,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -loadBalancerVmSize
-The size of your load balancer VM. Default is Standard_A4_V2. To get a list of available VM sizes, run `Get-AksHciVmSize`.
+The size of your load balancer VM. Default is Standard_A4_V2. To get a list of available VM sizes, run [Get-AksHciVmSize](get-akshcivmsize.md).
 
 ```yaml
 Type: System.String
@@ -223,7 +258,7 @@ Accept wildcard characters: False
 ```
 
 ### -windowsNodeCount
-The number of Windows nodes in your Kubernetes cluster. Default is 0. You can only deploy Windows nodes if you are running Kubernetes v1.18.8 or higher. **This parameter will be deprecated in a future release.**
+The number of Windows nodes in your Kubernetes cluster. Default is 0. **This parameter will be deprecated in a future release.**
 
 ```yaml
 Type: System.Int32
@@ -353,13 +388,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: Linux
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -vnet
-The name of the AksHciNetworkSetting object created with New-AksHciNetworkSetting command.
+The name of the AksHciNetworkSetting object created with [New-AksHciClusterNetwork](new-akshciclusternetwork.md) command.
 
 ```yaml
 Type: System.String

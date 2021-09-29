@@ -234,6 +234,9 @@ If you need to delete a Kubernetes cluster, run the following command.
 Remove-AksHciCluster -name mycluster
 ```
 
+> [!NOTE]
+> Make sure that your cluster is deleted by looking at the existing VMs in the Hyper-V Manager. If they are not deleted, then you can manually delete the VMs. Then, run the command `Restart-Service wssdagent`. This should be done on each node in the failover cluster.
+
 ## Get logs
 
 To get logs from your all your pods, run the [Get-AksHciLogs](./reference/ps/get-akshcilogs.md) command. This command will create an output zipped folder called `akshcilogs.zip` in your working directory. The full path to the `akshcilogs.zip` folder will be the output after running the command below.
