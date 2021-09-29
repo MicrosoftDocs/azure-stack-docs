@@ -35,13 +35,7 @@ You will need to install the Azure CLI with AKS support for your machine. Prepar
 Don't upgrade Azure CLI after installing the Azure CLI with AKS support. If you do upgrade, it will be replaced by the production ready version that lacks AKS support.
 ### [Ubuntu](#tab/ubuntu)
 
-For an Ubuntu machine, run the following commands to install the build of the Azure CLI with AKS support.
-
-```bash  
-curl -o azure-cli_xenial_all.deb https://aka.ms/ash-aks-cli-linux
-
-sudo apt install ./azure-cli_xenial_all.deb
-```
+For an Ubuntu machine, follow the instructions at [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux?pivots=apt).
 
 After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
@@ -53,7 +47,7 @@ This is the output from a Linux machine:
 ![output from a Linux machine](media/aks-how-to-use/output-from-a-linux-machine.png)
 ### [Other Linux](#tab/linux)
 
-For other Linux machines, download and install from https://aka.ms/ash-aks-cli-linux.
+For other Linux machines, download and install from [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux).
 
 After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
@@ -67,7 +61,7 @@ This is the output from a Linux machine:
 
 ### [Windows](#tab/windows)
 
-For a Windows machine, download and install an MSI with the Azure CLI with AKS support from https://aka.ms/ash-aks-cli-windows.
+For a Windows machine, download and install an MSI with the Azure CLI with AKS support from [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
 After you have installed Azure CLI with AKS support, verify that the installation is correct by running the following Azure CLI command:
 
