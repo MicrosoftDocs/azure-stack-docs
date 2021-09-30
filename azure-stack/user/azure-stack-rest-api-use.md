@@ -8,6 +8,7 @@ ms.date: 09/30/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
+ms.custom: contperf-fy22q1
 
 # Intent: As an Azure Stack user, I want to make API requests to Azure Stack so I can automate operations.
 # Keyword: api requests azure stack
