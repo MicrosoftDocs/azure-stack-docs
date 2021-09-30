@@ -14,8 +14,6 @@ ms.lastreviewed: 9/29/2021
 
 ---
 
-
-
 # Deploy a Python web app to a VM in Azure Stack Hub
 
 You can create a VM to host your Python web app in Azure Stack Hub. In this article, you set up a server, configure the server to host your Python web app, and then deploy the app to Azure Stack Hub.
