@@ -32,11 +32,12 @@ To enable telemetry data flow, the following ports and endpoints must be allowed
 
 - Port 443 (HTTPS) must be open.
 - The following endpoints must be allowed:
-    |Endpoint |Function |
+
+    |Endpoint |Description |
     |---------|---------|
-    |`https://settings-win.data.microsoft.com` | Cloud configuration endpoint for UTC/DiagTrack/Feedback hub |
+    |`https://settings-win.data.microsoft.com` | Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
     |`https://login.live.com` | Provides a more reliable device identity |
-    |`*.events.data.microsoft.com` | UTC/DiagTrack/WER/Aria endpoints |
+    |`*.events.data.microsoft.com` | Endpoint for UTC, DiagTrack, Windows Error Reporting, and Aria |
 
 ## Privacy considerations
 
