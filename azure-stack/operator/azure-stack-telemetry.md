@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.date: 09/30/2021
 ms.author: patricka
 ms.reviewer: comartin
-ms.lastreviewed: 10/15/2019
+ms.lastreviewed: 09/30/2021
 
 # Intent: As an Azure Stack operator, I want to configure telemetry settings using Powershell.
 # Keyword: configure telemetry azure stack
