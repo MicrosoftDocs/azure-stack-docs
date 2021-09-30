@@ -34,9 +34,9 @@ For more information on nodeSelectors, visit [node selectors](https://kubernetes
 
 *Taints* and *tolerations* work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
-Windows OS nodes in AKS on Azure Stack HCI can be tainted upon creation in the [New-AksHciNodePool](new-akshcinodepool.md) command or the [New-AksHciCluster](new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. In this example, we will be using Windows.
+Windows OS nodes in AKS on Azure Stack HCI can be tainted when created in the [New-AksHciNodePool](new-akshcinodepool.md) command or the [New-AksHciCluster](new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
 
-Run the following command to create a Windows node pool with a taint if you are also creating a new cluster. If you have an existing cluster that you would like to add a node pool with a taint to, go to the next command.
+Run the following command to create a Windows node pool with a taint if you are also creating a new cluster. If you have an existing cluster that you want to add a node pool with a taint to, go to the next example that uses the `New-AksHciNodePool` command.
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName taintnp -nodeCount 1 -osType windows -taints sku=Windows:NoSchedule
@@ -67,7 +67,7 @@ Phase        : Deployed
 Taints       : {sku=Windows:NoSchedule}
 ```
 
-You specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the kubectl taint line above, and thus a pod with the toleration would be able to schedule onto the tainted nodes.
+You specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the `kubectl` taint line above, and therefore, a pod with the toleration would be able to schedule onto the tainted nodes.
 
 ```yaml
 tolerations:
