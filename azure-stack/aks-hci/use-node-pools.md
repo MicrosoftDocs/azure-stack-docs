@@ -138,7 +138,7 @@ Remove-AksHciNodePool -clusterName mycluster -name windowsnodepool
 
 ## Specify a taint for a node pool
 
-When creating a node pool, you can add taints to that node pool. When you add a taint, all nodes within that node pool also get that taint. For more information about taints and tolerations, please go [here](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+When creating a node pool, you can add taints to that node pool. When you add a taint, all nodes within that node pool also get that taint. For more information about taints and tolerations, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
 ### Setting node pool taints
 
@@ -170,9 +170,9 @@ Phase        : Deployed
 Taints       : {sku=gpu:NoSchedule}
 ```
 
-In the previous step, you applied the sku=gpu:NoSchedule taint when you created your node pool. The following basic example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on a node in that node pool.
+In the previous step, you applied the *sku=gpu:NoSchedule* taint when you created your node pool. The following basic example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on a node in that node pool.
 
-Create a file named `nginx-toleration.yaml` and copy in the following example.
+Create a file named `nginx-toleration.yaml` and copy the information in the following example.
 
 ```yaml
 apiVersion: v1
@@ -203,7 +203,7 @@ Then, schedule the pod using the follow commmand.
 kubectl apply -f nginx-toleration.yaml
 ```
 
-Check to see that the pod was deployed.
+To verify that the pod was deployed, run the following command:
 
 ```powershell
 kubectl describe pod mypod
