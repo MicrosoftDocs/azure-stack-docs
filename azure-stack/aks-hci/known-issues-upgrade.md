@@ -12,6 +12,22 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
+## During an upgrade, custom node taints, roles, and labels are lost
+
+All custom taints, roles, and labels that are currently on nodes are lost during an upgrade. This issue will be resolved in a later release.
+
+## After a successful upgrade, older versions of PowerShell are not removed
+
+To work around this issue, you need to [run a script to uninstall older PowerShell versions](https://github.com/Azure/aks-hci/issues/130).
+
+## Running an upgrade results in the error: _Error occurred while fetching platform upgrade information..._
+
+When running an upgrade in Windows Admin Center, the following error occurred:
+
+_Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories._
+
+This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
 When running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
