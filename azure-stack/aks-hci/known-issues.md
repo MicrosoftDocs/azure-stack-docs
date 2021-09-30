@@ -11,6 +11,18 @@ ms.reviewer:
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
+## Running Remove-AksHciCluster results in the error: _A workload cluster with the name 'my-workload-cluster' was not found_
+
+If you encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), you should check to make sure you have used the correct information for removing the cluster.
+
+## Running Remove-AksHciCluster results in the error: _Error: unable to delete group clustergroup-spdb:.._
+
+When running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), the following error occurs because there could be a deadlock:
+
+ _Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded_
+
+The cluster removal process will hang until `kvactl.exe` times out. However, if you're using the AKS on Azure Stack HCI August release or later, this timeout does not occur. 
+
 ## When running Get-AksHciCluster, a _release version not found_ error occurs
 When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired. To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build. 
 
