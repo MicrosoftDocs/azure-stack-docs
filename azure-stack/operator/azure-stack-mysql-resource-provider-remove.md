@@ -39,15 +39,15 @@ Removing the SQL resource provider will not delete:
 
 3. Open a new elevated PowerShell console window and change to the directory where you extracted the MySQL resource provider installation files.
 
-> [!IMPORTANT]
-> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the script.
+   > [!IMPORTANT]
+   > We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the script.
 
 4. Run the DeployMySqlProvider.ps1 script using the following parameters:
-    - **Uninstall**: Removes the resource provider and all associated resources.
-    - **PrivilegedEndpoint**: The IP address or DNS name of the privileged endpoint.
-    - **AzureEnvironment**: The Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments.
-    - **CloudAdminCredential**: The credential for the cloud administrator, necessary to access the privileged endpoint.
-    - **AzCredential**: The credential for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).
+   - **Uninstall**: Removes the resource provider and all associated resources.
+   - **PrivilegedEndpoint**: The IP address or DNS name of the privileged endpoint.
+   - **AzureEnvironment**: The Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments.
+   - **CloudAdminCredential**: The credential for the cloud administrator, necessary to access the privileged endpoint.
+   - **AzCredential**: The credential for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).
 
 ## To remove the SQL resource provider V2
 
@@ -56,18 +56,22 @@ Removing the SQL resource provider will not delete:
 2. Select Marketplace Management on the left, then select Resource providers.
 
 3. Select MySQL resource provider from the list of resource providers. You may want to filter the list by Entering “SQL Server resource provider” or “MySQL Server resource provider” in the search text box provided.
-![Select RP in the Marketplace.](./media/azure-stack-mysql-resource-provider-maintain/1-rp-in-marketplace.png)
+
+   ![Select RP in the Marketplace.](./media/azure-stack-mysql-resource-provider-maintain/1-rp-in-marketplace.png)
 
 4. Select Uninstall from the options provided across the top the page.
-![Select Uninstall in the Marketplace.](./media/azure-stack-mysql-resource-provider-maintain/2-select-uninstall.png)
+
+   ![Select Uninstall in the Marketplace.](./media/azure-stack-mysql-resource-provider-maintain/2-select-uninstall.png)
 
 5. Enter the name of the resource provider, then select Uninstall. This action confirms your desire to uninstall:
--	The MySQL Server resource provider.
--	All admin/user created SKU/Quota/HostingServer/Database/Login metadata.
-![Screenshot of uninstall confirmation.](./media/azure-stack-mysql-resource-provider-maintain/3-confirm-uninstall.png)
+   - The MySQL Server resource provider.
+   - All admin/user created SKU/Quota/HostingServer/Database/Login metadata.
+   
+   ![Screenshot of uninstall confirmation.](./media/azure-stack-mysql-resource-provider-maintain/3-confirm-uninstall.png)
 
 6. (Optional) If you want to delete the installation package, after uninstalling the MySQL resource provider, select Delete from the MySQL resource provider page.
-![Screenshot of deleting package.](./media/azure-stack-mysql-resource-provider-maintain/4-delete-install-package.png)
+
+   ![Screenshot of deleting package.](./media/azure-stack-mysql-resource-provider-maintain/4-delete-install-package.png)
 
 ## Next steps
 
