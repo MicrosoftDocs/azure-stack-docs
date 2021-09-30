@@ -3,10 +3,10 @@ title: Publish Azure Stack Hub services in your datacenter
 description: Learn how to publish Azure Stack Hub services in your datacenter.
 author: PatAltimore
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 09/30/2021
 ms.author: patricka
 ms.reviewer: wamota
-ms.lastreviewed: 09/24/2020
+ms.lastreviewed: 09/30/2021
 
 # Intent: As an Azure Stack operator, I want to publish Azure Stack services to my datacenter so they can be available to external networks.
 # Keyword: publish azure stack services
@@ -93,6 +93,7 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |**LDAP GC SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP 3269|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
 |**AD FS**<br>Allows Azure Stack Hub to communicate with on-premise AD FS.|AD FS metadata endpoint provided for AD FS integration|TCP 443|Public VIP - /27|Optional. The AD FS claims provider trust can be created using a [metadata file](azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file).|
 |**Diagnostic log collection**<br>Allows Azure Stack Hub to send logs either proactively or manually by an operator to Microsoft support.|`https://*.blob.core.windows.net`<br>`https://azsdiagprdlocalwestus02.blob.core.windows.net`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com` | HTTPS 443 | Public VIP - /27 |Not required. You can [save logs locally](diagnostic-log-collection.md#save-logs-locally).|
+|**Telemetry**<br>Allows Azure Stack Hub to send telemetry data to Microsoft.|`https://settings-win.data.microsoft.com`<br>`https://login.live.com`<br>`*.events.data.microsoft.com` | HTTPS 443 | Public VIP - /27 | Required when Azure Stack Hub telemetry is enabled. |
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. Use a device that supports filtering by URL rather than by IP.
 

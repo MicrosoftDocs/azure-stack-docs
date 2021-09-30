@@ -50,7 +50,7 @@ Get-AzCloudCapability -Location <your location> -Verbose
 ### [AzureRM modules](#tab/azurerm1)
 
 1. Make sure you have connectivity to Azure Stack Hub. These steps can be done from the Azure Stack Development Kit (ASDK) host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.
-2. Import the **Az.CloudCapabilities** PowerShell module:
+2. Import the **AzureRM.CloudCapabilities** PowerShell module:
 
     ```powershell
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
@@ -87,7 +87,7 @@ Test-AzTemplate -TemplatePath <path to template.json or template folder> `
 
 ### [AzureRM modules](#tab/azurerm2)
 
-1. Import the **Az.TemplateValidator.psm1** PowerShell module:
+1. Import the **AzureRM.TemplateValidator.psm1** PowerShell module:
 
     ```powershell
     cd "c:\AzureStack-Tools-az\TemplateValidator"
