@@ -32,9 +32,16 @@ To enable telemetry data flow, the following outbound ports and endpoints must b
 
 | Endpoint | Protocol / Ports | Description |
 |---------|---------|---------|
-| `https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
+|`https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
 |`https://login.live.com` | HTTPS 443 | Provides a more reliable device identity |
 |`*.events.data.microsoft.com` | HTTPS 443 | Endpoint for UTC, DiagTrack, Windows Error Reporting, and Aria |
+::: moniker range=">= azs-2108"
+|`https://*.blob.core.windows.net/` | HTTPS 443 | Azure Storage account |
+|`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` | HTTPS 443 | Required for successful telemetry data upload to Microsoft. |
+
+Beginning with Azure Stack Hub version 2108, telemetry data will upload to Azure Storage account managed and controlled by Microsoft.
+
+::: moniker-end
 
 ## Privacy considerations
 
