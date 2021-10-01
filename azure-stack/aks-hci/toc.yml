@@ -175,7 +175,7 @@
             href: ../hci/manage/validate-qos.md
           - name: CredSSP
             href: ../hci/manage/troubleshoot-credssp.md
-          - name: Known issues and errors when enabling or disabling Azure Arc on workload clusters
+          - name: Azure Arc enabled Kubernetes
             href: known-issues-arc.md
 
 - name: Related

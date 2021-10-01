@@ -20,7 +20,7 @@ This error usually means that you have already connected your AKS on Azure Stack
 
 ## Error: _Connection to Azure failed. Please run 'Set-AksHciRegistration' and try again_
 
-This error means that your login credentials to Azure have expired. Use [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) to log in to Azure before running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command again. When rerunning `Set-AksHciRegistration`, make sure you use the same subscription and resource group details you used when you first registered the AKS host to Azure for billing. Note that if you rerun the command with a different subscription or resource group, they will not be registered. Once the subscription and resource group are set in `Set-AksHciRegistration`, they cannot be changed without uninstalling AKS on Azure Stack HCI.
+This error means that your login credentials to Azure have expired. Use [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) to log in to Azure before running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command again. When rerunning `Set-AksHciRegistration`, make sure you use the same subscription and resource group details you used when you first registered the AKS host to Azure for billing. If you rerun the command with a different subscription or resource group, they will not be registered. Once the subscription and resource group are set in `Set-AksHciRegistration`, they cannot be changed without uninstalling AKS on Azure Stack HCI.
 
 
 ## Error: _System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set..._
