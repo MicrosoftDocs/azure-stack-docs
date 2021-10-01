@@ -321,7 +321,7 @@ Because of the cumulative nature of Windows updates, this update contains the se
 
 - [CVE-2021-26414](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26414)
 
--[[CVE-2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)
+-[CVE-2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)
 
 - [CVE-2021-28465](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28465)
 
@@ -663,7 +663,7 @@ Because of the cumulative nature of Windows updates, this update contains the se
 
 - [CVE-2020-17079](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17079)
 
-- [CVE-2020-17078](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17078
+- [CVE-2020-17078](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17078)
 
 - [ADV200011](https://msrc.microsoft.com/update-guide/vulnerability/ADV200011)
 
@@ -677,6 +677,7 @@ Because of the cumulative nature of Windows updates, this update contains the se
 
 ::: moniker range="azs-2102"
 ## 2102 update
+
 Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update. These updates are contained in the [February 2021](https://support.microsoft.com/en-us/office/february-9-2021%e2%80%94kb4601345-os-build-17763-1757-c38b7b85-0d84-d979-1a29-e4ba97b82042) monthly update.
 This list of CVEs reflects the security payloads since the last update.
 
