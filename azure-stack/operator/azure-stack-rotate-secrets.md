@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to rotate your secrets in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 10/01/2021
 ms.reviewer: fiseraci
 ms.author: bryanla
 ms.lastreviewed: 01/19/2021
@@ -188,7 +188,7 @@ Complete the following steps to rotate external secrets:
     $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     # Run Secret Rotation
-    $CertPassword = ConvertTo-SecureString "<Cert_Password>" -AsPlainText -Force
+    $CertPassword = ConvertTo-SecureString '<Cert_Password>' -AsPlainText -Force
     $CertShareCreds = Get-Credential
     $CertSharePath = "<Network_Path_Of_CertShare>"
     Invoke-Command -Session $PEPsession -ScriptBlock {
@@ -312,9 +312,9 @@ The baseboard management controller monitors the physical state of your servers.
     # Static Version
     $PEPIp = "<Privileged Endpoint IP or Name>" # You can also use the machine name instead of IP here.
     $PEPUser = "<Privileged Endpoint user for example Domain\CloudAdmin>"
-    $PEPPwd = ConvertTo-SecureString "<Privileged Endpoint Password>" -AsPlainText -Force
+    $PEPPwd = ConvertTo-SecureString '<Privileged Endpoint Password>' -AsPlainText -Force
     $PEPCreds = New-Object System.Management.Automation.PSCredential ($PEPUser, $PEPPwd)
-    $NewBmcPwd = ConvertTo-SecureString "<New BMC Password>" -AsPlainText -Force
+    $NewBmcPwd = ConvertTo-SecureString '<New BMC Password>' -AsPlainText -Force
     $NewBmcUser = "<New BMC User name>"
 
     $PEPSession = New-PSSession -ComputerName $PEPIp -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
@@ -385,7 +385,7 @@ $PEPCreds = Get-Credential
 $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
 # Create Credentials for the fileshare
-$CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
+$CertPassword = ConvertTo-SecureString '<CertPasswordHere>' -AsPlainText -Force
 $CertShareCreds = Get-Credential
 $CertSharePath = "<NetworkPathOfCertShare>"
 # Run Secret Rotation
@@ -412,7 +412,7 @@ winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
 $PEPCreds = Get-Credential
 $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 # Create Credentials for the fileshare
-$CertPassword = ConvertTo-SecureString "<CertPasswordHere>" -AsPlainText -Force
+$CertPassword = ConvertTo-SecureString '<CertPasswordHere>' -AsPlainText -Force
 $CertShareCreds = Get-Credential
 $CertSharePath = "<NetworkPathOfCertShare>"
 # Run Secret Rotation
