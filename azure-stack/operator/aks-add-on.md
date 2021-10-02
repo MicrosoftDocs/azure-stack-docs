@@ -15,11 +15,39 @@ ms.lastreviewed: 08/25/2021
 
 # Install and offer the Azure Kubernetes Service on Azure Stack Hub
 
-Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters in Azure Stack Hub. AKS reduces the complexity and operational overhead of managing Kubernetes clusters. As a hosted Kubernetes service, Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance of clusters. The Azure Stack team manages the image used for maintaining the clusters. The cluster tenant administrator will only need to apply the updates as needed. The services come at no extra cost. AKSis free: you only pay to use the VMs (master and agent nodes) within your clusters. You can install the Azure Kubernetes Service (AKS) resource provider for the users of your Azure Stack Hub. 
+Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters in Azure Stack Hub. AKS reduces the complexity and operational overhead of managing Kubernetes clusters. As a hosted Kubernetes service, Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance of clusters. The Azure Stack team manages the image used for maintaining the clusters. The cluster tenant administrator will only need to apply the updates as needed. The services come at no extra cost. AKSis free: you only pay to use the virtual machines (VM)s (master and agent nodes) within your clusters. You can install the Azure Kubernetes Service (AKS) resource provider for the users of your Azure Stack Hub. 
 
 > [!IMPORTANT]
 > Azure Kubernetes Service on Azure Stack Hub is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
+## Download required VM extensions
+
+Make sure that the following VM extensions are available in your Azure Stack Hub. 
+
+### Get the extensions from the portal
+
+You can find them in the Azure Stack Hub Marketplace. You can download them from Azure if you need to add them to a disconnected environment. You can follow these instructions in [Download Marketplace items to Azure Stack Hub (Disconnected)](azure-stack-download-azure-marketplace-item.md?&tabs=az1%2Caz2&pivots=state-disconnected)):
+
+-   Run Command for Linux (latest version)
+
+    ![Get the run command for Linux](media/aks-add-on/get-run-command-for-linux.png)
+
+-   Custom Script for Linux (latest version)
+
+    ![Get custom script for Linux](media/aks-add-on/get-custom-script-for-linux.png)
+
+### Get the extensions with PowerShell
+
+PowerShell provides a cmdlet, `Get-AzsVMExtension`, to view which VM extensions available in your system. Run the following script to view the available extensions. Specify the correct URL for your Azure Stack Hub Resource Manager endpoint.
+
+```powershell  
+Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.\<location\>.\<yourdomainname\>/"
+Login-AzureRMAccount -EnvironmentName "AzureStackAdmin"
+Get-AzsVMExtension
+```
+
+For information about installing and using the AzureStack PowerShell module, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Download AKS base image
 
