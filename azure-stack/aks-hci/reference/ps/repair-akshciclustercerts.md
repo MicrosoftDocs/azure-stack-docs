@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -fixKubeletCredentials
-Use this flag if the workload clusters lose comminucation between other workload clusters.
+Use this flag if the workload clusters lose communication between other workload clusters.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
