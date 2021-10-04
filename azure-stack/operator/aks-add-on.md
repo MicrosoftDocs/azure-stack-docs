@@ -39,7 +39,7 @@ You can find them in the Azure Stack Hub Marketplace. You can download them from
 
 ### View the extensions with PowerShell
 
-PowerShell provides a cmdlet, `Get-AzsVMExtension`, to view which VM extensions available in your system. Run the following script to view the available extensions. Specify the correct URL for your Azure Stack Hub Resource Manager endpoint.
+PowerShell provides a cmdlet, `Get-AzsVMExtension`, to view the VM extensions available in your system. Run the following script to view the available extensions. Specify the correct URL for your Azure Stack Hub Resource Manager endpoint.
 
 ```powershell  
 Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.\<location\>.\<yourdomainname\>/"
