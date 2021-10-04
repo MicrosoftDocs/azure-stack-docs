@@ -151,7 +151,7 @@ New-AksHciNodePool -clusterName mycluster -name taintnp -count 1 -osType linux -
 > [!NOTE]
 > A taint can only be set for node pools during node pool creation.
 
-Run the following commmand to make sure that the node pool was succesfully deployed with the specifed taint.
+Run the following command to make sure that the node pool was successfully deployed with the specified taint.
 
 ```powershell
 Get-AksHciNodePool -clusterName mycluster -name taintnp
@@ -197,7 +197,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Then, schedule the pod using the follow commmand.
+Then, schedule the pod using the follow command.
 
 ```powershell
 kubectl apply -f nginx-toleration.yaml
