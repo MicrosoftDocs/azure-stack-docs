@@ -25,7 +25,7 @@ This error means that your login credentials to Azure have expired. Use [Set-Aks
 
 ## Error: _System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set..._
 
-The following error usually occurs when you use Windows Admin Center to create a workload cluster and connect it to Arc enabled Kubernetes:
+The following error may occur when you use Windows Admin Center to create a workload cluster and connect it to Arc enabled Kubernetes:
 
 _System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set. User "azure-arc-onboarding" set. Context "azure-arc-onboarding" created. Switched to context "azure-arc-onboarding". Azure login az login: error: argument --password/-p: expected one argument usage: az login [-h] [--verbose] [--debug] [--only-show-errors] [--output {json,jsonc,yaml,yamlc,table,tsv,none}] [--query JMESPATH] [--username USERNAME] [--password PASSWORD] [--service-principal] [--tenant TENANT] [--allow-no-subscriptions] [-i] [--use-device-code] [--use-cert-sn-issuer] : Job Failed Condition]_
 
@@ -38,7 +38,7 @@ To resolve this issue, review the options below:
 
 This error usually points to one of the following issues:
 
-- Because you're creating clusters in an Azure VM in a virtualized environment, or if you are deploying AKS on Azure Stack HCI on multiple levels of virtualization. 
+- The clusters were created in an Azure VM in a virtualized environment, or if you're deploying AKS on Azure Stack HCI on multiple levels of virtualization. 
 - Due to a slow internet.
 
 If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) and try connecting again. If the above scenario doesn't apply to you,  [open a support issue](/azure-stack/aks-hci/help-support) on AKS on Azure Stack HCI.
@@ -46,7 +46,7 @@ If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](
 
 ## Error: _Azure subscription is not properly configured_
 
-You may encounter this issue if you have not configured your Azure subscription with the Arc enabled Kubernetes' resource providers. We currently check for `Microsoft.Kubernetes` and `Microsoft.KubernetesConfiguration`. For more information on enabling these resource providers, see [enabling resource providers for Arc enabled Kubernetes](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#1-register-providers-for-azure-arc-enabled-kubernetes).
+You may encounter this issue if you have not configured your Azure subscription with the Arc enabled Kubernetes' resource providers. We currently check that `Microsoft.Kubernetes` and `Microsoft.KubernetesConfiguration` are configured. For more information on enabling these resource providers, see [enabling resource providers for Arc enabled Kubernetes](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#1-register-providers-for-azure-arc-enabled-kubernetes).
 
 
 ## Error: _A workload cluster with the name 'my-aks-cluster' was not found_
@@ -55,15 +55,15 @@ This error means that you have not created the workload cluster, or you have inc
 
 ## Error: _'My-Cluster' is not a valid cluster name. Names must be lower-case and match the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'_
 
-This error indicates that the workload cluster does not follow Kubernetes naming convention. As the error suggests, make sure the cluster name is lower-case and matches the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'.
+This error indicates that the workload cluster does not follow the Kubernetes naming convention. As the error suggests, make sure the cluster name is lower-case and matches the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'.
 
 ## Error: _Cluster addons arc uninstall Error: namespaces "azure-arc" not found_
 
-This error usually means that you have already uninstalled Arc agents from your workload cluster, or you have manually deleted the `azure-arc` namespace using the `kubectl` command. Go to the Azure portal to confirm that you do not have any leaked resources. For example, verify that you do not see a `connectedCluster` resource in the subscription and resource group.
+This error usually means that you have already uninstalled Arc agents from your workload cluster, or you have manually deleted the `azure-arc` namespace using the `kubectl` command. Go to the [Azure portal](https://portal.azure.com) to confirm that you do not have any leaked resources. For example, verify that you do not see a `connectedCluster` resource in the subscription and resource group.
 
 ## Error: _Secrets "sh.helm.release.v1.azure-arc.v1" not found_
 
-This error usually indicates that your Kubernetes API server could not be reached. Try running the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) command again, and then go to the Azure portal to confirm that your `connectedCluster` resource has actually been deleted. You can also run `kubectl get ns -a` and confirm that the namespace, `azure-arc`, does not exist on your cluster.
+This error indicates that your Kubernetes API server could not be reached. Try running the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) command again, and then go to the [Azure portal](https://portal.azure.com) to confirm that your `connectedCluster` resource has actually been deleted. You can also run `kubectl get ns -a` to confirm that the namespace, `azure-arc`, does not exist on your cluster.
 
 ## Error: _autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound"..._
 
@@ -73,7 +73,7 @@ _autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound" M
 
 You may encounter this error if: 
 
-- You supplied an incorrect resource group or subscription while running the `Disable-AksHciArcConnection`. 
+- You supplied an incorrect resource group or subscription while running the `Disable-AksHciArcConnection` cmdlet. 
 - You manually deleted the resource on the Azure portal.
 - ARM cannot find your Azure resource.
 
@@ -81,8 +81,8 @@ To resolve this error, as indicated in the error message, see [resolve resource 
 
 ## Enable-AksHciArcConnection fails if Connect-AzAccount is used to log in to Azure
 
-When you use [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-6.4.0&preserve-view=true) to log in, you might end up setting a different subscription as your default context than the one that you gave as an input to [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). When you then run [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md), the command expects the subscription used in `Set-AksHciRegistration`, but gets the default subscription set using the `Connect-AzAccount`, and therefore, might cause an error. To prevent this error, follow one of the following options:
+When you use [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-6.4.0&preserve-view=true) to log in to Azure, you might end up setting a different subscription as your default context than the one that you gave as an input to [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). When you then run [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md), the command expects the subscription used in `Set-AksHciRegistration`. However, `Enable-AksHciArcConnection` gets the default subscription set using the `Connect-AzAccount`, and therefore, might cause an error. To prevent this error, follow one of the options below:
 
 - Option 1: Run `Set-AksHciRegistration` to log in to Azure with the same parameters (subscription and resource group) you used when you first ran the command to connect your AKS host to Azure for billing. You can then use `Enable-AksHciArcConnection -Name <ClusterName>` with default values, and your cluster will be connected to Arc under the AKS host billing subscription and resource group. 
 
-- Option 2: Run `Enable-AksHciArcRegistration` with all parameters - s`ubscription`, `resource group`, `location`, `tenant`, and `secret` to connect your cluster to Azure Arc under a different subscription and resource group than the AKS host. You should also run `Enable-AksHciArcRegistration` if you do not have enough permissions to connect your cluster to Azure Arc using your Azure Account (for example, if you are not the subscription owner).
+- Option 2: Run `Enable-AksHciArcRegistration` with all parameters, `subscription`, `resource group`, `location`, `tenant`, and `secret`, to connect your cluster to Azure Arc under a different subscription and resource group than the AKS host. You should also run `Enable-AksHciArcRegistration` if you do not have enough permissions to connect your cluster to Azure Arc using your Azure Account (for example, if you are not the subscription owner).
