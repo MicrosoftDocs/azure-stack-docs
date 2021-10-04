@@ -3,10 +3,10 @@ title: Update Marketplace items in Azure Stack Hub
 description: Learn how to update Marketplace items in Azure Stack Hub. 
 author: sethmanheim
 ms.topic: article
-ms.date: 9/21/2021
+ms.date: 10/1/2021
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 9/21/2021
+ms.lastreviewed: 10/1/2021
 
 # Intent: As an Azure Stack Hub operator, I want to update an item in Azure Stack Hub Marketplace.
 # Keyword: update marketplace items azure stack hub
@@ -101,7 +101,7 @@ Set-AzVMExtension -ResourceGroupName "SampleRG" -VMName "SampleVM" -Name "Extens
 > - Azure Update and Configuration Management
 > - Azure Update and Configuration Management for Linux
 >
-> Ensure you replace them with the **Azure Monitor, Update and Configuration Management for Linux** extension minimum version 1.14.01.
+> Ensure you replace them with the **Azure Monitor, Update and Configuration Management for Linux** extension minimum version 1.14.02.
 
 ## Next steps
 
