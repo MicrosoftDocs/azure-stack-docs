@@ -86,3 +86,8 @@ When you use [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccoun
 - Option 1: Run `Set-AksHciRegistration` to log in to Azure with the same parameters (subscription and resource group) you used when you first ran the command to connect your AKS host to Azure for billing. You can then use `Enable-AksHciArcConnection -Name <ClusterName>` with default values, and your cluster will be connected to Arc under the AKS host billing subscription and resource group. 
 
 - Option 2: Run `Enable-AksHciArcRegistration` with all parameters, `subscription`, `resource group`, `location`, `tenant`, and `secret`, to connect your cluster to Azure Arc under a different subscription and resource group than the AKS host. You should also run `Enable-AksHciArcRegistration` if you do not have enough permissions to connect your cluster to Azure Arc using your Azure Account (for example, if you are not the subscription owner).
+
+## Next steps
+
+- [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting)
+- [Known issues](./known-issues.md)
