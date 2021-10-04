@@ -169,14 +169,15 @@
             href: known-issues-upgrade.md  
           - name: Windows Admin Center issues and errors
             href: known-issues-windows-admin-center.md
+          - name: Azure Arc enabled Kubernetes
+            href: known-issues-arc.md
           - name: SSH node access
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI
             href: ../hci/manage/validate-qos.md
           - name: CredSSP
             href: ../hci/manage/troubleshoot-credssp.md
-          - name: Azure Arc enabled Kubernetes
-            href: known-issues-arc.md
+
 
 - name: Related
   items:
