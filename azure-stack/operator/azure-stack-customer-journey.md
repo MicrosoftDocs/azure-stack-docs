@@ -3,7 +3,7 @@ title: Azure Stack Hub datacenter integration walkthrough
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub in your datacenter, from planning to post-deployment.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 09/20/2021
 ms.author: patricka
 ms.reviewer: asganesh
 ms.lastreviewed: 11/07/2019
@@ -96,6 +96,19 @@ You'll choose the following items:
 - **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *before* an onsite engineer arrives at your datacenter for deployment.
 
 After all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack Hub into your datacenter.
+
+### Changes that require re-deployment
+
+The following table lists changes to your Azure Stack Hub deployment that require re-deploying the entire system:
+
+|     Option                                                   |     Re-deployment    |
+|--------------------------------------------------------------|----------------------|
+|     Change identity system from Azure AD to AD FS                  |     Yes              |
+|     Change the Azure AD directory that was used for deployment    |     Yes              |
+|     Change the network IP ranges                             |     Yes              |
+|     Change the AD FS integrated Active Directory              |     No               |
+|     Change the billing model                                 |     No               |
+|     Change the Azure subscription used for registration      |     No               |
 
 ## Hardware delivery 
 

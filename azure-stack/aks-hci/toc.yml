@@ -119,6 +119,14 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Manage workloads
+      items:
+          - name: Create and delete pods
+            href: create-pods.md
+          - name: Create deployments
+            href: create-deployments.md
+          - name: Create a DaemonSet
+            href: create-daemonsets.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
@@ -153,16 +161,14 @@
             href: deploy-linux-application.md
     - name: Troubleshoot
       items:
-          - name: Known issues
+          - name: Common known issues
             href: known-issues.md
-          - name: Resolve known issues
-            href: troubleshoot-known-issues.md
-          - name: Windows Admin Center
-            items:
-                - name: Known issues
-                  href: known-issues-windows-admin-center.md
-                - name: Troubleshoot Windows Admin Center
-                  href: troubleshoot-windows-admin-center.md
+          - name: Installation issues and errors
+            href: known-issues-installation.md
+          - name: Upgrade issues 
+            href: known-issues-upgrade.md  
+          - name: Windows Admin Center issues and errors
+            href: known-issues-windows-admin-center.md
           - name: SSH node access
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI

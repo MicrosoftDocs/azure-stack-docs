@@ -5,10 +5,10 @@ description: Learn about Azure Stack Hub telemetry and how to configure telemetr
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 09/30/2021
 ms.author: patricka
 ms.reviewer: comartin
-ms.lastreviewed: 10/15/2019
+ms.lastreviewed: 09/30/2021
 
 # Intent: As an Azure Stack operator, I want to configure telemetry settings using Powershell.
 # Keyword: configure telemetry azure stack
@@ -26,8 +26,15 @@ For an Azure Stack Hub operator, telemetry can provide valuable insights into en
 
 Azure Stack Hub telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component. This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
 
-> [!IMPORTANT]
-> To enable telemetry data flow, port 443 (HTTPS) must be open in your network. The Connected User Experience and Telemetry component connects to the Microsoft Data Management service at `https://v10.events.data.microsoft.com`. The Connected User Experience and Telemetry component also connects to `https://settings-win.data.microsoft.com` to download configuration information. Other diagnostic data services connect `https://watson.telemetry.microsoft.com` for error reporting.
+## Network requirements
+
+To enable telemetry data flow, the following outbound ports and endpoints must be open and allowed in your network:
+
+| Endpoint | Protocol / Ports | Description |
+|---------|---------|---------|
+| `https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
+|`https://login.live.com` | HTTPS 443 | Provides a more reliable device identity |
+|`*.events.data.microsoft.com` | HTTPS 443 | Endpoint for UTC, DiagTrack, Windows Error Reporting, and Aria |
 
 ## Privacy considerations
 

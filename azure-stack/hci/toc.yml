@@ -128,6 +128,8 @@
       items:
       - name: Add or remove servers
         href: manage/add-cluster.md
+      - name: Convert to stretched cluster
+        href: manage/convert-to-stretched-cluster.md
       - name: Take a server offline for maintenance
         href: manage/maintain-servers.md
       - name: Change languages
