@@ -61,7 +61,7 @@ Prepare the VM for DDA by setting its cache behavior, stop action, and memory-ma
     In PowerShell, run the following cmdlet:
 
    ```PowerShell
-    Get-clusterresource -name vmname | Set-ClusterParameter -Name "OfflineAction" -Value 3
+    Get-ClusterResource -name vmname | Set-ClusterParameter -Name "OfflineAction" -Value 3
    ```
 
 1. Assign the resource pool that you created earlier to the VM. This declares to the cluster that the VM requires an assigned device from the `GpuChildPool` pool when it's either started or moved.
