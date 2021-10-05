@@ -1,5 +1,5 @@
 ---
-title: Resolve known issues and errors when enabling and disabling Azure Arc on Azure Kubernetes Service on Azure Stack HCI workload clusters
+title: Resolve errors when enabling and disabling Azure Arc on AKS on Azure Stack HCI workload clusters
 description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS on Azure Stack HCI workload clusters
 author: abha
 ms.topic: troubleshooting
