@@ -14,27 +14,27 @@ This article describes errors you may encounter (and their workarounds) while co
 
 You can also [open a support issue](/azure-stack/aks-hci/help-support) if none of the workarounds listed below apply to you.
 
-## Error: _addons.msft.microsoft "demo-arc-onboarding" already exists_
+## Error: `addons.msft.microsoft "demo-arc-onboarding" already exists`
 
 This error usually means that you have already connected your AKS on Azure Stack HCI cluster to Arc enabled Kubernetes. To confirm it's connected, go to the [Azure portal](https://portal.azure.com) and check under the subscription and resource group you provided when running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) (if you've used default values) or [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) (if you haven't used default values). You can also confirm if your AKS on Azure Stack HCI cluster is connected to Azure by running the [az connectedk8s show ](/cli/azure/connectedk8s?view=azure-cli-latest#az_connectedk8s_show&preserve-view=true) Azure CLI command. If you do not see your workload cluster, run `Disable-AksHciArcConnection` and try again.
 
-## Error: _Connection to Azure failed. Please run 'Set-AksHciRegistration' and try again_
+## Error: `Connection to Azure failed. Please run 'Set-AksHciRegistration' and try again`
 
 This error means that your login credentials to Azure have expired. Use [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) to log in to Azure before running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command again. When rerunning `Set-AksHciRegistration`, make sure you use the same subscription and resource group details you used when you first registered the AKS host to Azure for billing. If you rerun the command with a different subscription or resource group, they will not be registered. Once the subscription and resource group are set in `Set-AksHciRegistration`, they cannot be changed without uninstalling AKS on Azure Stack HCI.
 
 
-## Error: _System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set..._
+## Error: `System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set...`
 
 The following error may occur when you use Windows Admin Center to create a workload cluster and connect it to Arc enabled Kubernetes:
 
-_System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set. User "azure-arc-onboarding" set. Context "azure-arc-onboarding" created. Switched to context "azure-arc-onboarding". Azure login az login: error: argument --password/-p: expected one argument usage: az login [-h] [--verbose] [--debug] [--only-show-errors] [--output {json,jsonc,yaml,yamlc,table,tsv,none}] [--query JMESPATH] [--username USERNAME] [--password PASSWORD] [--service-principal] [--tenant TENANT] [--allow-no-subscriptions] [-i] [--use-device-code] [--use-cert-sn-issuer] : Job Failed Condition]_
+`System.Management.Automation.RemoteException Starting onboarding process Cluster "azure-arc-onboarding" set. User "azure-arc-onboarding" set. Context "azure-arc-onboarding" created. Switched to context "azure-arc-onboarding". Azure login az login: error: argument --password/-p: expected one argument usage: az login [-h] [--verbose] [--debug] [--only-show-errors] [--output {json,jsonc,yaml,yamlc,table,tsv,none}] [--query JMESPATH] [--username USERNAME] [--password PASSWORD] [--service-principal] [--tenant TENANT] [--allow-no-subscriptions] [-i] [--use-device-code] [--use-cert-sn-issuer] : Job Failed Condition]`
 
 To resolve this issue, review the options below:
 
 - Option 1: Delete the workload cluster and try again using Windows Admin Center. 
 - Option 2: In PowerShell, check if the cluster has been successfully created by running the [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) command, and then use [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) to connect your cluster to Arc.
 
-## Error: _Timed out waiting for the condition_
+## Error: `Timed out waiting for the condition`
 
 This error usually points to one of the following issues:
 
@@ -44,32 +44,32 @@ This error usually points to one of the following issues:
 If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) and try connecting again. If the above scenario doesn't apply to you,  [open a support issue](/azure-stack/aks-hci/help-support) on AKS on Azure Stack HCI.
 
 
-## Error: _Azure subscription is not properly configured_
+## Error: `Azure subscription is not properly configured`
 
 You may encounter this issue if you have not configured your Azure subscription with the Arc enabled Kubernetes' resource providers. We currently check that `Microsoft.Kubernetes` and `Microsoft.KubernetesConfiguration` are configured. For more information on enabling these resource providers, see [enabling resource providers for Arc enabled Kubernetes](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#1-register-providers-for-azure-arc-enabled-kubernetes).
 
 
-## Error: _A workload cluster with the name 'my-aks-cluster' was not found_
+## Error: `A workload cluster with the name 'my-aks-cluster' was not found`
 
 This error means that you have not created the workload cluster, or you have incorrectly spelled the name of the workload cluster. Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to confirm you have the correct name or that the cluster you want to connect to Arc exists.
 
-## Error: _'My-Cluster' is not a valid cluster name. Names must be lower-case and match the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'_
+## Error: `'My-Cluster' is not a valid cluster name. Names must be lower-case and match the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'`
 
 This error indicates that the workload cluster does not follow the Kubernetes naming convention. As the error suggests, make sure the cluster name is lower-case and matches the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$'.
 
-## Error: _Cluster addons arc uninstall Error: namespaces "azure-arc" not found_
+## Error: `Cluster addons arc uninstall Error: namespaces "azure-arc" not found`
 
 This error usually means that you have already uninstalled Arc agents from your workload cluster, or you have manually deleted the `azure-arc` namespace using the `kubectl` command. Go to the [Azure portal](https://portal.azure.com) to confirm that you do not have any leaked resources. For example, verify that you do not see a `connectedCluster` resource in the subscription and resource group.
 
-## Error: _Secrets "sh.helm.release.v1.azure-arc.v1" not found_
+## Error: `Secrets "sh.helm.release.v1.azure-arc.v1" not found`
 
 This error indicates that your Kubernetes API server could not be reached. Try running the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) command again, and then go to the [Azure portal](https://portal.azure.com) to confirm that your `connectedCluster` resource has actually been deleted. You can also run `kubectl get ns -a` to confirm that the namespace, `azure-arc`, does not exist on your cluster.
 
-## Error: _autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound"..._
+## Error: `autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound"...`
 
 The error below means that Azure could not find the `connectedCluster` ARM resource associated with your cluster:
 
-_autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound" Message="The Resource 'Microsoft.Kubernetes/connectedClusters/my-workload-cluster' under resource group 'AKS-HCI2' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"]_
+`autorest/azure: Service returned an error. Status=404 Code="ResourceNotFound" Message="The Resource 'Microsoft.Kubernetes/connectedClusters/my-workload-cluster' under resource group 'AKS-HCI2' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"]`
 
 You may encounter this error if: 
 
