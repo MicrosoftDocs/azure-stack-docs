@@ -19,11 +19,13 @@ This article shows you how to create and manage multiple node pools in an AKS on
 
 ## Before you begin
 
-You need to have the AksHci PowerShell version 1.1.0 or later installed. If you already have the PowerShell module installed, run the following command to find the version.
+We recommend having the latest version 1.1.6 installed. If you already have the PowerShell module installed, run the following command to find the version.
 
 ```powershell
 Get-Command -Module AksHci
 ```
+
+If you need to update, follow the instructions [here](update-akshci-host-powershell.md).
 
 ## Create an AKS on Azure Stack HCI cluster
 
@@ -134,5 +136,89 @@ If you need to delete a node pool, use the [Remove-AksHciNodePool](./reference/p
 Remove-AksHciNodePool -clusterName mycluster -name windowsnodepool
 ```
 
+## Specify a taint for a node pool
 
+When creating a node pool, you can add taints to that node pool. When you add a taint, all nodes within that node pool also get that taint. For more information about taints and tolerations, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
+### Setting node pool taints
+
+To create a node pool with a taint, use [New-AksHciNodePool](new-akshcinodepool.md). Specify the name *taintnp* and use the `-taints` parameter to specify `sku=gpu:noSchedule` for the taint.
+
+```powershell
+New-AksHciNodePool -clusterName mycluster -name taintnp -count 1 -osType linux -taints sku=gpu:NoSchedule
+```
+
+> [!NOTE]
+> A taint can only be set for node pools during node pool creation.
+
+Run the following command to make sure that the node pool was successfully deployed with the specified taint.
+
+```powershell
+Get-AksHciNodePool -clusterName mycluster -name taintnp
+```
+
+**Output**
+```
+Status       : {Phase, Details}
+ClusterName  : mycluster
+NodePoolName : taintnp
+Version      : v1.20.7-kvapkg.1
+OsType       : Linux
+NodeCount    : 1
+VmSize       : Standard_K8S3_v1
+Phase        : Deployed
+Taints       : {sku=gpu:NoSchedule}
+```
+
+In the previous step, you applied the *sku=gpu:NoSchedule* taint when you created your node pool. The following basic example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on a node in that node pool.
+
+Create a file named `nginx-toleration.yaml` and copy the information in the following example.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - image: mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 1
+        memory: 2G
+  tolerations:
+  - key: "sku"
+    operator: "Equal"
+    value: "gpu"
+    effect: "NoSchedule"
+```
+
+Then, schedule the pod using the follow command.
+
+```powershell
+kubectl apply -f nginx-toleration.yaml
+```
+
+To verify that the pod was deployed, run the following command:
+
+```powershell
+kubectl describe pod mypod
+```
+
+```Output
+[...]
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+                 sku=gpu:NoSchedule
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  32s   default-scheduler  Successfully assigned default/mypod to moc-lk4iodl7h2y
+  Normal  Pulling    30s   kubelet            Pulling image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine"
+  Normal  Pulled     26s   kubelet            Successfully pulled image "mcr.microsoft.com/oss/nginx/nginx:1.15.9-alpine" in 4.529046457s
+  Normal  Created    26s   kubelet            Created container mypod
+  ```
