@@ -83,7 +83,7 @@ If you start the VM now, the cluster ensures that it is placed on a server with 
 You can also remove an assigned GPU from a VM. To do so, in PowerShell, run the following cmdlet:
 
    ```PowerShell
-    Get-VMAssignableDevice -VMName $vm | Where-Object { $_.ResourcePoolName -eq “GpuChildPool” } | Remove-VMAssignableDevice
+    Get-VMAssignableDevice -VMName $vm | Where-Object { $_.ResourcePoolName -eq "GpuChildPool" } | Remove-VMAssignableDevice
    ```
 
 ### Fail over a VM with an assigned GPU
