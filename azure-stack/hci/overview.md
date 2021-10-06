@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/10/2021
+ms.date: 10/06/2021
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
@@ -16,7 +16,7 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 
-Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either [purchase validated servers](https://hcicatalog.azurewebsites.net) from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated bare metal servers from an OEM and install the operating system yourself.
+Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either [purchase integrated systems](https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Integrated+System) from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy [validated nodes](https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Validated+Node) and install the operating system yourself.
 
    > [!NOTE]
    > Azure Stack HCI is intended as a virtualization host, so most apps and server roles must run inside of virtual machines (VMs). Exceptions include Hyper-V, Network Controller, and other components required for Software Defined Networking (SDN) or for the management and health of hosted VMs.
@@ -45,7 +45,7 @@ Azure Stack HCI combines the following:
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
 
-Azure Stack HCI, version 20H2 provides new functionality not present in Windows Server 2019, such as the ability to use Windows Admin Center to create a hyperconverged cluster that uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites and use automatic failover. See [What's new in Azure Stack HCI](whats-new.md) for details.
+Using Azure Stack HCI and Windows Admin Center, you can create a hyperconverged cluster that's easy to manage and uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites and use automatic failover. See [What's new in Azure Stack HCI](whats-new.md) for details on the latest functionality enhancements.
 
 ## Why Azure Stack HCI?
 
@@ -73,6 +73,7 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Scale-out storage                                 | Storage Spaces Direct is a core technology of Azure Stack HCI that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication.|
 | Disaster recovery for virtualized workloads       | An Azure Stack HCI stretched cluster provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks.|
 | Data center consolidation and modernization       | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.|
+| Run Azure services on-premises                    | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview).|
 
 ### Azure integration benefits
 
