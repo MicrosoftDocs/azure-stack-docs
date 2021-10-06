@@ -35,9 +35,6 @@ A set of infrastructure VIPs is required for publishing Azure Stack Hub endpoint
 
 Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack Hub. User VIPs are dynamic and defined by the users themselves, with no control by the Azure Stack Hub operator.
 
-> [!Note]
-> IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls don't always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
-
 With the addition of the [Extension Host](azure-stack-extension-host-prepare.md), ports in the range of 12495-30015 aren't required.
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
@@ -63,8 +60,8 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 |  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
 |  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (Azure Resource Manager)|
 |  |ftp.appservice.*&lt;region>.&lt;fqdn>*|TCP, UDP|21, 1021, 10001-10100 (FTP)<br>990 (FTPS)|
-|VPN Gateways|     |     |[See the VPN gateway FAQ](/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-traverse-proxies-and-firewalls-using-point-to-site-capability).|
-|     |     |     |     |
+|VPN Gateways|     |  IP Protocol 50 & UDP| Encapsulation Security Payload (ESP) IPSec & UDP 500 and 4500
+
 
 ## Ports and URLs (outbound)
 
