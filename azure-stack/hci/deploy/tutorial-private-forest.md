@@ -185,7 +185,7 @@ Your browser may warn you that it's an unsafe or insecure connection, but it's O
 
 If your lab is on a private network, you might want to add an externally accessible NIC to the AdminCenter VM so that you can connect to it and manage your lab from outside the private forest. To do this, use Windows Admin Center to connect to your virtualization host (**not** the domain controller) and go to **Virtual machines > MSLab-AdminCenter > Settings > Networks**. Make sure that you have a virtual switch connected to the appropriate network. Look for Switch Type = External (such as MSLab-LabSwitch-External). Then add/bind a VM NIC to this external virtual switch. Be sure to select the “Allow management OS to share these network adapters” checkbox.
 
-Take note of the IP addresses of the network adapters on the AdminCenter VM. Append :443 to the IP address of the externally accessible NIC, and you should be able to log on to Windows Admin Center and create and manage your cluster from an external web browser, such as: **https://10.217.XX.XXX:443**
+Take note of the IP addresses of the network adapters on the AdminCenter VM. Append :443 to the IP address of the externally accessible NIC, and you should be able to log on to Windows Admin Center and create and manage your cluster from an external web browser, such as: **`https://10.217.XX.XXX:443`**
 
 ### Install operating system updates on the Azure Stack HCI VMs
 
