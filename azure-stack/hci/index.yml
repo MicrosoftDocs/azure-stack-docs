@@ -1,17 +1,16 @@
 ### YamlMime:Landing
 
 title: Azure Stack HCI documentation
-summary: Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+summary: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
 
 metadata:
   title: Azure Stack HCI documentation
-  description: Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized workloads on-premises.
+  description: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
 #  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page
   author: khdownie
   ms.author: v-kedow
-  ms.date: 09/10/2021
-
+  ms.date: 10/19/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -23,7 +22,9 @@ landingContent:
         links:
           - text: What is Azure Stack HCI?
             url: overview.md
-          - text: What's new in Azure Stack HCI, version 20H2?
+      - linkListType: whats-new
+        links:
+          - text: What's new in Azure Stack HCI?
             url: whats-new.md
       - linkListType: get-started
         links:
@@ -49,14 +50,6 @@ landingContent:
         links:
           - text: Create a private forest lab environment with VMs
             url: deploy/tutorial-private-forest.md
-
-  # Card
-  - title: Preview channel
-    linkLists:
-      - linkListType: whats-new
-        links:
-          - text: Join the Preview channel
-            url: manage/preview-channel.md
 
   # Card
   - title: Manage storage
