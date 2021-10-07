@@ -56,6 +56,22 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
+          - text: Replace drives
+            url: manage/replace-drives.md
+          - text: Use the CSV cache
+            url: manage/use-csv-cache.md
+          - text: Manage SMB Multichannel
+            url: manage/manage-smb-multichannel.md
+          - text: Storage thin provisioning
+            url: manage/thin-provisioning.md
+          - text: Adjustable storage repair speed
+            url: manage/storage-repair-speed.md
+
+  # Card
+  - title: Manage volumes
+    linkLists:
+      - linkListType: how-to-guide
+        links:
           - text: Create volumes
             url: manage/create-volumes.md
           - text: Create stretched volumes
@@ -66,12 +82,6 @@ landingContent:
             url: manage/extend-volumes.md
           - text: Delete volumes
             url: manage/delete-volumes.md
-          - text: Replace drives
-            url: manage/replace-drives.md
-          - text: Use the CSV cache
-            url: manage/use-csv-cache.md
-          - text: Manage SMB Multichannel
-            url: manage/manage-smb-multichannel.md
 
  # Card
   - title: Manage the cluster
