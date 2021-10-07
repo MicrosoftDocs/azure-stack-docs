@@ -12,6 +12,10 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
+## After upgrading to PowerShell module 1.1.9, this error aopears: `Applying platform configurations failed. Error:No adapter is connected to the switch:'swtch1’ on node: ‘node1’` 
+
+The fix for this error is published in new PowerShell module version 1.1.11. You should update to this Powershell version on all nodes to resolve this issue.
+
 ## During an upgrade, custom node taints, roles, and labels are lost
 
 All custom taints, roles, and labels that are currently on nodes are lost during an upgrade. This issue will be resolved in a later release.
