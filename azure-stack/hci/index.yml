@@ -92,6 +92,8 @@ landingContent:
             url: manage/cluster.md
           - text: Add or remove servers
             url: manage/add-cluster.md
+          - text: Take a server offline for maintenance
+            url: manage/maintain-servers.md
           - text: Monitor the cluster
             url: manage/monitor-cluster.md
           - text: Update the cluster
@@ -132,6 +134,10 @@ landingContent:
             url: manage/vm-powershell.md
           - text: Set up VM affinity rules
             url: manage/vm-affinity.md
+          - text: VM load balancing
+            url: manage/vm-load-balancing.md
+          - text: Use GPUs with clustered VMs
+            url: manage/use-gpu-with-clustered-vm.md
 
   # Card 
   - title: Connect to Azure
