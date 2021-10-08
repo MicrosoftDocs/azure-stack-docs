@@ -12,7 +12,7 @@ ms.reviewer:
 
 This article describes errors you may encounter (and their workarounds) while connecting or disconnecting your AKS on Azure Stack HCI workload clusters to Azure Arc using the PowerShell cmdlets [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) and [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md). For issues that are not covered in this article, see [troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
 
-You can also [open a support issue](/azure-stack/aks-hci/help-support) if none of the workarounds listed below apply to you.
+You can also [open a support issue](./help-support.md) if none of the workarounds listed below apply to you.
 
 ## Error: `addons.msft.microsoft "demo-arc-onboarding" already exists`
 
@@ -41,7 +41,7 @@ This error usually points to one of the following issues:
 - The clusters were created in an Azure VM in a virtualized environment, or if you're deploying AKS on Azure Stack HCI on multiple levels of virtualization. 
 - Due to a slow internet.
 
-If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) and try connecting again. If the above scenario doesn't apply to you,  [open a support issue](/azure-stack/aks-hci/help-support) on AKS on Azure Stack HCI.
+If one of the above scenarios applies to you, run [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) and try connecting again. If the above scenario doesn't apply to you,  [open a support issue](./help-support.md) on AKS on Azure Stack HCI.
 
 
 ## Error: `Azure subscription is not properly configured`

@@ -142,7 +142,7 @@ When creating a node pool, you can add taints to that node pool. When you add a 
 
 ### Setting node pool taints
 
-To create a node pool with a taint, use [New-AksHciNodePool](new-akshcinodepool.md). Specify the name *taintnp* and use the `-taints` parameter to specify `sku=gpu:noSchedule` for the taint.
+To create a node pool with a taint, use [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md). Specify the name *taintnp* and use the `-taints` parameter to specify `sku=gpu:noSchedule` for the taint.
 
 ```powershell
 New-AksHciNodePool -clusterName mycluster -name taintnp -count 1 -osType linux -taints sku=gpu:NoSchedule
