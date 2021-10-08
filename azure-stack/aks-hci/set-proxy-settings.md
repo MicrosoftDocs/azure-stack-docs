@@ -51,7 +51,7 @@ Set-AksHciConfig -proxySetting $proxySetting -...
 ```
 
 > [!NOTE]
-> Proxy certificates must be provided as a PFX file format or string, and contain the root authority chain for the certificate to be used for authentication or for SSL tunnel setup.
+> Proxy certificates must be provided as a personal information exchange (PFX) file format or string, and contain the root authority chain to use the certificate for authentication or for SSL tunnel setup.
 
 ## Exclude specific hosts or domains from using the proxy server
 
