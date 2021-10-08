@@ -68,7 +68,7 @@ In the same PowerShell session, edit the following PowerShell script by adding t
     	-FilePath c:\certs\AzSIBCCert.cer 
 
 	# Set the backup settings with the name, password, share, and CER certificate file.
- 	Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
+ 	Set-AzsBackupConfiguration -Path $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
    
 ##  Confirm backup settings

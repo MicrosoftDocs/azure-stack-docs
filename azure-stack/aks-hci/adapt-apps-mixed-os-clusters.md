@@ -34,7 +34,7 @@ For more information on nodeSelectors, visit [node selectors](https://kubernetes
 
 *Taints* and *tolerations* work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
-Windows OS nodes in AKS on Azure Stack HCI can be tainted when created in the [New-AksHciNodePool](new-akshcinodepool.md) command or the [New-AksHciCluster](new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
+Windows OS nodes in AKS on Azure Stack HCI can be tainted when created in the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
 
 Run the following command to create a Windows node pool with a taint if you are also creating a new cluster. If you have an existing cluster that you want to add a node pool with a taint to, go to the next example that uses the `New-AksHciNodePool` command.
 
