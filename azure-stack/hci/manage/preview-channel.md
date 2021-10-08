@@ -58,7 +58,7 @@ Once you've joined the preview channel, your cluster will always be offered the 
    :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
 
    > [!NOTE]
-   > If you're installing build 22471, Windows Admin Center displays the correct update title, but incorrectly shows a banner advertising "version 21H2." This is a known issue that will be fixed soon.
+   > If you're installing build 22471, Windows Admin Center displays the correct update title, but incorrectly shows a banner advertising "version 21H2." This is a known issue.
 
 2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before proceeding.
 
