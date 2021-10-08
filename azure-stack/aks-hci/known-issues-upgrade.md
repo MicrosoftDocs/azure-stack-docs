@@ -12,9 +12,9 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
-## After upgrading to PowerShell module 1.1.9, this error appears: _Applying platform configurations failed. Error:No adapter is connected to the switch:'swtch1’ on node: ‘node1’_ 
+## After upgrading to PowerShell module 1.1.9, this error appears: _Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1’ on node: ‘node1’_ 
 
-This error was resolved in PowerShell module version 1.1.11. You should update to your Powershell module to version 1.1.11 on all nodes to resolve this issue.
+This error was resolved in PowerShell module version 1.1.11. Update the Powershell module to version 1.1.11 on all nodes to resolve this issue.
 
 ## During an upgrade, custom node taints, roles, and labels are lost
 
@@ -30,7 +30,7 @@ When running an upgrade in Windows Admin Center, the following error occurred:
 
 _Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories._
 
-This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
 
 ## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
 
@@ -39,7 +39,7 @@ When running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmd
 This issue could have the following root causes:
 
 * **Reason one**:
-   During the update of the _AksHci Billing Operator_, it's possible that the _Operator_ incorrectly marked itself as out of policy. To resolve this, open up a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
+   During the update of the _AksHci Billing Operator_, it's that the _Operator_ incorrectly marked itself as out of policy. To resolve this issue, open up a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
 
 * **Reason two**:
    The management cluster VM may be out of memory, which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32 GB in Hyper-V and reboot it. 
