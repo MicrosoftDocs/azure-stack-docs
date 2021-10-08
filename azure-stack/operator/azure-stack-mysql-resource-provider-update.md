@@ -44,9 +44,9 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 
 2. [Open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
 
-3.	Download Microsoft AzureStack Add-On RP Windows Server 1.2009.0 to marketplace. 
+3. Download Microsoft AzureStack Add-On RP Windows Server 1.2009.0 to marketplace. 
 
-4.	Ensure datacenter integration prerequisites are met.
+4. Ensure datacenter integration prerequisites are met.
 
    |Prerequisite|Reference|
    |-----|-----|
@@ -55,7 +55,7 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
    |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
    |     |     |
 
-5.	(for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md).
+5. (for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md).
 
 6. Prepare the MySQL Connector Uri. For details, refer to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md). 
 e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi
