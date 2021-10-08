@@ -50,7 +50,7 @@ No. The service principal (SPN) is not automatically created as in Azure (no MSI
 
  - The AKS service is limited to 50 nodes per subscription in the public preview.
 
- - For the public preview, no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added.
+ - For the public preview, no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added. This means that only Windows containers can be deployed to these clusters, no Linux containers can be deployed. For example, a Linux based Ingress Controller will not work in Windows clusters.
 
  - For the public preview, there is no rotation of the AKS cluster SPN credential assigned at creation time.
 
@@ -58,7 +58,7 @@ No. The service principal (SPN) is not automatically created as in Azure (no MSI
 
  - A user subscription with AKS clusters associated to it could be deleted by the user leaving behind the AKS clusters in an orphaned state. As a result, the Azure Stack Hub Administrative portal to display a sad cloud in the AKS blade. The only way to fix it is by contacting Microsoft Support.
 
-  - If a you try to create a cluster through the Azure Stack Hub user portal using a subscription without the AKS enabled by the cloud operator, then the portal will let display the following error: `containers namespace not found error`.
+  - If you try to create a cluster through the Azure Stack Hub user portal using a subscription without the AKS enabled by the cloud operator, then the portal will let display the following error: `containers namespace not found error`.
 
  - If you name a cluster in the portal using upper case letters, then the portal will accept the request, and return the following error: `invalid DNS name error`.
 
