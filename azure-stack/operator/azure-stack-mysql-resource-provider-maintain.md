@@ -279,6 +279,7 @@ Open an elevated PowerShell console and complete the following steps to rotate t
 ### Rotate the external certificate
 
 You need to first make note of the values for the following parameters.
+
    | Placeholder | Description | Example value |
    | ----------- | ----------- | --------------|
    | `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.mysqlrp` |
@@ -296,13 +297,13 @@ Open an elevated PowerShell console and complete the following steps:
    - `"name"` - contains the resource provider product ID in the second segment of the value. 
    - `"properties"."deployment"."version"` - contains the currently deployed version number. 
 
-For example, the MySQL RP deployment may have a product ID of `"microsoft.mysqlrp"`, and version `"2.0.0.2"`.
+   For example, the MySQL RP deployment may have a product ID of `"microsoft.mysqlrp"`, and version `"2.0.0.2"`.
 
 3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the SQL RP package ID is `microsoft.mysqlrp.2.0.0.2`. 
 
 4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property, just above `"properties"`. 
 
-For example, the secrets collection returned for the SQL RP contains a `"Certificate"` secret named `SSLCert`. 
+   For example, the secrets collection returned for the SQL RP contains a `"Certificate"` secret named `SSLCert`. 
 
 5. Use the `Set-AzsProductSecret` cmdlet to import your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script. 
 

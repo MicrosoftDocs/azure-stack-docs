@@ -48,12 +48,12 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 
 4.	Ensure datacenter integration prerequisites are met.
 
-  |Prerequisite|Reference|
-  |-----|-----|
-  |Conditional DNS forwarding is set correctly.|[Azure Stack Hub datacenter integration - DNS](azure-stack-integrate-dns.md)|
-  |Inbound ports for resource providers are open.|[Azure Stack Hub datacenter integration - Ports and protocols inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-  |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
-  |     |     |
+   |Prerequisite|Reference|
+   |-----|-----|
+   |Conditional DNS forwarding is set correctly.|[Azure Stack Hub datacenter integration - DNS](azure-stack-integrate-dns.md)|
+   |Inbound ports for resource providers are open.|[Azure Stack Hub datacenter integration - Ports and protocols inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+   |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
+   |     |     |
 
 5.	(for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md).
 
