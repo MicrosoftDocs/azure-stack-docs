@@ -2,7 +2,7 @@
 title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 09/28/2021
 ms.custom: fasttrack-edit
 ms.author: mikek
 author: mkostersitz
@@ -13,9 +13,17 @@ If your network requires the use of a proxy server to connect to the internet, t
 
 Once you have configured your deployment using the options listed below, you can [install an AKS host on Azure Stack HCI](./kubernetes-walkthrough-powershell.md) and [create AKS clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
 
-## Configure an AKS host for a proxy server with basic authentication 
+## (Optional) Install PowerShell Modules using a Proxy Server
 
-If your proxy server requires authentication, open PowerShell as an administrator and run the following command to get credentials and set the configuration details: 
+If your environment uses a proxy server to access the internet, it may be necessary to add proxy parameters to the `Install-Module` command before installing AKS on Azure Stack HCI.
+
+See the [Install-Module Documentation](/powershell/module/powershellget/install-module) for details.
+
+Follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
+
+## Configure an AKS host for a proxy server with basic authentication
+
+If your proxy server requires authentication, open PowerShell as an administrator and run the following command to get credentials and set the configuration details:
 
 ```powershell
 $proxyCred = Get-Credential
@@ -47,7 +55,7 @@ Set-AksHciConfig -proxySetting $proxySetting -...
 ```
 
 > [!NOTE]
-> Proxy certificates are not yet provisioned/trusted on Windows Kubernetes worker nodes. Support for Windows workers will be enabled in a future release.
+> Proxy certificates must be provided as a PFX file format or string, and contain the root authority chain for the certificate to be used for authentication or for SSL tunnel setup.
 
 ## Exclude specific hosts or domains from using the proxy server
 
