@@ -99,7 +99,7 @@ To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI i
 
 ## Release and deprecation process
 
-You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI Kubernetes Release Calendar](#AKS on Azure Stack HCI-kubernetes-release-calendar).
+You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI Kubernetes Release Calendar](#AKS-on-Azure-Stack-HCI-Kubernetes-release-calendar).
 
 For new **minor** versions of Kubernetes:
 
@@ -129,7 +129,7 @@ To find out what versions are currently available for your subscription and regi
 Get-AksHciKubernetesVersion
 ```
 
-## AKS on Azure Stack HCI Kubernetes Release Calendar
+## AKS on Azure Stack HCI Kubernetes release calendar
 
 For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
@@ -162,7 +162,7 @@ If you're on the *n-3* version or older, it means you're outside of support and 
 
 Downgrades are not supported.
 
-**What does 'Outside of Support' mean**
+**What does 'Outside of Support' mean?**
 
 'Outside of Support' means that:
 * The version you're running is outside of the supported versions list.

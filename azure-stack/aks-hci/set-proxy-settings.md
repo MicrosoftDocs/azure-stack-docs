@@ -15,11 +15,7 @@ Once you have configured your deployment using the options listed below, you can
 
 ## (Optional) Install PowerShell Modules using a Proxy Server
 
-If your environment uses a proxy server to access the internet, it may be necessary to add proxy parameters to the `Install-Module` command before installing AKS on Azure Stack HCI.
-
-See the [Install-Module Documentation](/powershell/module/powershellget/install-module) for details.
-
-Follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
+If your environment uses a proxy server to access the Internet, it may be necessary to add proxy parameters to the **Install-Module** command before installing AKS on Azure Stack HCI. See the [Install-Module Documentation](/powershell/module/powershellget/install-module) for details, and follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
 
 ## Configure an AKS host for a proxy server with basic authentication
 
