@@ -29,7 +29,7 @@ The current architecture of AKS on Azure Stack HCI assumes that customers have l
 ![Diagram showing an example legacy application running as a singleton](./media/singleton.png)
 
 ## Application disruption scenarios
-A comparative study of the recovery times for applications running in VMs and AKS on Azure Stack HCI clearly shows that there is minimal impact on the application when common disruption events occur. Here are three example disruption scenarios:
+A comparative study of the recovery times for applications running in VMs on AKS on Azure Stack HCI clearly shows that there is minimal impact on the application when common disruption events occur. Three example disruption scenarios include:
 
 - Applying an update that results in a reboot of the physical machine. 
 - Applying an update that involves recreating the worker node. 
@@ -38,7 +38,7 @@ A comparative study of the recovery times for applications running in VMs and AK
 > [!NOTE]
 > These scenarios assume that the application owner still uses Kubernetes affinity and anti-affinity settings to ensure proper scheduling of pods across worker nodes.
 
-| **Disruption event**  | **Application availability for VMs in AKS on Azure Stack HCI** |       **Application availability for AKS on Azure Stack HCI**            |
+| **Disruption event**  | **Running applications in VMs on Azure Stack HCI** |       **Running applications in VMs on AKS on Azure Stack HCI**            |
 | ------------------------------------------------------------ | ---------------------------- | ----------------- |
 | Applying an update that results in a reboot of the physical machine | No  impact                   | No  impact        |
 | Applying an update that involves recreating the worker node (or rebooting the VM) | No impact                    | Varies            |

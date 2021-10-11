@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: What's new in Azure Stack HCI?
+    href: whats-new.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
@@ -124,6 +126,8 @@
       items:
       - name: Add or remove servers
         href: manage/add-cluster.md
+      - name: Convert to stretched cluster
+        href: manage/convert-to-stretched-cluster.md
       - name: Take a server offline for maintenance
         href: manage/maintain-servers.md
       - name: Change languages

@@ -3,7 +3,7 @@ title: Quickstart to set up an Azure Kubernetes Service host and create AKS on A
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: jessicaguan
 ms.topic: quickstart
-ms.date: 07/21/2021
+ms.date: 09/02/2021
 ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
@@ -17,7 +17,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 - Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
 - An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
 - **At least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI: 
-   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access".
+   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left-hand side of the Azure portal and then clicking on "View my access".
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
 - An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - **At least one** of the following:
@@ -108,7 +108,7 @@ To create a virtual network for the nodes in your deployment to use, create an e
 
 ```powershell
 #static IP
-$vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolName myMacPool -k8sNodeIpPoolStart "172.16.10.0" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanId 9
+$vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolName myMacPool -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanId 9
 ```
 
 > [!NOTE]
@@ -198,6 +198,9 @@ Connect-AzAccount
 Enable-AksHciArcConnection -name mycluster
 ```
 
+> [!NOTE]
+> If you encounter issues or error messages during the installation process, see [installation known issues and errors](known-issues-installation.md) for more information.
+
 ## Scale a Kubernetes cluster
 
 If you need to scale your cluster up or down, you can change the number of control plane nodes using the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command, and you can change the number of Linux or Windows worker nodes in your node pool using the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command.
@@ -230,6 +233,9 @@ If you need to delete a Kubernetes cluster, run the following command.
 ```powershell
 Remove-AksHciCluster -name mycluster
 ```
+
+> [!NOTE]
+> Make sure that your cluster is deleted by looking at the existing VMs in the Hyper-V Manager. If they are not deleted, then you can manually delete the VMs. Then, run the command `Restart-Service wssdagent`. This should be done on each node in the failover cluster.
 
 ## Get logs
 

@@ -48,13 +48,7 @@ AzCopy is a command-line utility designed to copy data to and from Microsoft Azu
 
 ### Download and install AzCopy
 
-::: moniker range=">=azs-1811"
-* For the 1811 update or newer versions, [download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
-::: moniker-end
-
-::: moniker range="<azs-1811"
-* For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
-::: moniker-end
+[Download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
 
 ### AzCopy 10.1 configuration and limits
 
@@ -289,7 +283,7 @@ For more information, see [Get-AzureRMStorageAccountKey](/powershell/module/Az.s
 
 #### Copy blob between Azure Stack Hub clusters
 
-`Start-AzStorageBlobCopy` can be used to start a copy job to move a blob. When setting the propertie `AbsoluteUri` as the blob uri on another Azure Stack Hub cluster, this cmdlet can be used to copy blob between two Azure Stack Hub clusters. Make sure the source and destination Azure Stack Hub clusters are on the same update version. Azure Stack Hub currently doesn't support using `Start-AzStorageBlobCopy` to copy blob between two Azure Stack Hub clusters which have deployed different update versions.
+`Start-AzStorageBlobCopy` can be used to start a copy job to move a blob. When setting the property `AbsoluteUri` as the blob uri on another Azure Stack Hub cluster, this cmdlet can be used to copy blob between two Azure Stack Hub clusters. Make sure the source and destination Azure Stack Hub clusters are on the same update version. Azure Stack Hub currently doesn't support using `Start-AzStorageBlobCopy` to copy blob between two Azure Stack Hub clusters which have deployed different update versions.
 
 ## Azure CLI
 
