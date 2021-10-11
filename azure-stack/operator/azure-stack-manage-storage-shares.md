@@ -354,7 +354,7 @@ The following components consume the memory in the used section of the pie chart
 - **Host OS usage or reserve**
     This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the spaces direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
 - **Infrastructure services**
-    These are the infrastructure VMs that make up Azure Stack Hub. As of the 1904 release version of Azure Stack Hub, this entails approximately 31 VMs that take up 242 GB + (4 GB x number of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
+    These are the infrastructure VMs that make up Azure Stack Hub. This entails approximately 31 VMs that take up 242 GB + (4 GB x number of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
 - **Resiliency reserve**
     Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure and during patch and update to allow for successful live migration of VMs.
 - **Tenant VMs**

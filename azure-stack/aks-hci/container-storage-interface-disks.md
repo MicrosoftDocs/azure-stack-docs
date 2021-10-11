@@ -30,8 +30,28 @@ To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concep
 
 The default storage class is suitable for most common scenarios. However, in some cases, you may want to create your own storage class that stores PVs at a particular location mapped to a specific performance tier.
 
-> [!NOTE]
-> If you have Linux workloads (pods), you must create a custom storage class with the parameter `fsType: ext4`. This applies to Kubernetes versions 1.19 and 1.20 or later. 
+If you have Linux workloads (pods), you must create a custom storage class with the parameter `fsType: ext4`. This applies to Kubernetes versions 1.19 and 1.20 or later. The example below shows a custom storage class definition with `fsType` parameter defined:
+
+```YAML
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: aks-hci-disk-custom
+parameters:
+  blocksize: "33554432"
+  container: SqlStorageContainer
+  dynamic: "true"
+  group: clustergroup-summertime
+  hostname: TESTPATCHING-91.sys-sqlsvr.local
+  logicalsectorsize: "4096"
+  physicalsectorsize: "4096"
+  port: "55000"
+  fsType: ext4
+provisioner: disk.csi.akshci.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true  
+```
 
 The default storage class stores PVs at the `-imageDir` location specified during the AKS host deployment. If you create a custom storage class, you can specify the location where you want to store PVs. If the underlying infrastructure is Azure Stack HCI, this new location could be a volume that’s backed by high-performing SSDs/NVMe or an cost-optimized volume backed by HDDs.
 

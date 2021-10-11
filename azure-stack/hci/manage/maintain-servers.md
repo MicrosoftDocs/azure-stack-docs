@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: contperf-fy22q1
-ms.date: 09/13/2021
+ms.date: 09/29/2021
 ---
 
 # Failover cluster maintenance procedures
@@ -40,14 +40,14 @@ Before either shutting down or restarting a server, you should pause the server 
 
    *Pause server(s) for maintenance: Are you sure you want to pause server(s)? This moves workloads, such as virtual machines, to other servers in the cluster.​*
 
-3. Select **yes** to pause the server and initiate the drain process. The server status will show as **In maintenance, Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until it's resumed. When the draining process is finished, the server status will show as **In maintenance, Drain completed**.
-
-   > [!NOTE]
-   > When you pause and drain the server properly, the operating system performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
+3. Select **yes** to pause the server and initiate the drain process. The server status will show as **In maintenance, Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until it's resumed. When the draining process is finished, the server status will show as **In maintenance, Drain completed**. The operating system performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
 
 ### Shut down the server
 
 Once the server has completed draining, you can safely shut it down for maintenance or reboot it.
+
+   > [!WARNING]
+   > If the server is running Azure Stack HCI, version 20H2, Windows Server 2019, or Windows Server 2016, you must [put the disks in maintenance mode](#put-disks-in-maintenance-mode) before shutting down the server and [take the disks out of maintenance mode](#take-disks-out-of-maintenance-mode) before resuming the server into the cluster.
 
 ### Resume the server
 
@@ -105,16 +105,16 @@ Suspend-ClusterNode -Drain
 
 To do this in Failover Cluster Manager, go to **Nodes**, right-click the node, and then select **Pause** > **Drain Roles**.
 
-If the server is running Azure Stack HCI, version 21H2 Preview, Azure Stack HCI 20H2, or Windows Server 2022, pausing and draining the server will also put the server's disks into maintenance mode. If the server is running Windows Server 2019 or Windows Server 2016, you'll have to do this manually (see next step).
+If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, pausing and draining the server will also put the server's disks into maintenance mode. If the server is running Azure Stack HCI, version 20H2, Windows Server 2019, or Windows Server 2016, you'll have to do this manually (see next step).
 
-### Put the disks in maintenance mode
+### Put disks in maintenance mode
 
-In Windows Server 2019 and 2016, putting the server's disks in maintenance mode gives Storage Spaces Direct an opportunity to gracefully flush and commit data to ensure that the server shutdown does not affect application state. As soon as a disk goes into maintenance mode, it will no longer allow writes. To minimize storage resynch times, we recommend putting the disks into maintenance mode right before the reboot and bringing them out of maintenance mode as soon as the system is back up.
+In Azure Stack HCI, version 20H2, Windows Server 2019, and Windows Server 2016, putting the server's disks in maintenance mode gives Storage Spaces Direct an opportunity to gracefully flush and commit data to ensure that the server shutdown does not affect application state. As soon as a disk goes into maintenance mode, it will no longer allow writes. To minimize storage resynch times, we recommend putting the disks into maintenance mode right before the reboot and bringing them out of maintenance mode as soon as the system is back up.
 
    > [!NOTE]
-   > If the server is running Azure Stack HCI, version 21H2 Preview, Azure Stack HCI 20H2, or Windows Server 2022, you can skip this step because the disks are automatically put into maintenance mode when the server is paused and drained. These operating systems have a granular repair feature that makes resyncs faster and less impactful on system and network resources, making it feasible to have server and storage maintenance done together.
+   > If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, you can skip this step because the disks are automatically put into maintenance mode when the server is paused and drained. These operating systems have a granular repair feature that makes resyncs faster and less impactful on system and network resources, making it feasible to have server and storage maintenance done together.
 
-If the server is running Windows Server 2019, run the following cmdlet as administrator:
+If the server is running Windows Server 2019 or Azure Stack HCI, version 20H2, run the following cmdlet as administrator:
 
 ```PowerShell
 Get-StorageScaleUnit -FriendlyName "Server1" | Enable-StorageMaintenanceMode
@@ -135,14 +135,14 @@ You can now safely shut the server down or restart it by using the `Stop-Compute
    > [!NOTE]
    > When running a `Get-VirtualDisk` command on servers that are shutting down or starting/stopping the cluster service, the server's Operational Status may be reported as incomplete or degraded, and the Health Status column may list a warning. This is normal and should not cause concern. All your volumes remain online and accessible.
 
-### Take the disks out of maintenance mode
+### Take disks out of maintenance mode
 
-If the server is running Windows Server 2019 or Windows Server 2016, you must disable storage maintenance mode on the disks before resuming the server into the cluster. To minimize storage resynch times, we recommend bringing them out of maintenance mode as soon as the system is back up.
+If the server is running Azure Stack HCI, version 20H2, Windows Server 2019, or Windows Server 2016, you must disable storage maintenance mode on the disks before resuming the server into the cluster. To minimize storage resynch times, we recommend bringing them out of maintenance mode as soon as the system is back up.
 
    > [!NOTE]
-   > If the server is running Azure Stack HCI, version 21H2 Preview, Azure Stack HCI 20H2, or Windows Server 2022, you can skip this step because the disks will automatically be taken out of maintenance mode when the server is resumed.
+   > If the server is running Azure Stack HCI, version 21H2 Preview or Windows Server 2022, you can skip this step because the disks will automatically be taken out of maintenance mode when the server is resumed.
 
-If the server is running Windows Server 2019, run the following cmdlet as administrator to disable storage maintenance mode:
+If the server is running Windows Server 2019 or Azure Stack HCI, version 20H2, run the following cmdlet as administrator to disable storage maintenance mode:
 
 ```PowerShell
 Get-StorageScaleUnit -FriendlyName "Server1" | Disable-StorageMaintenanceMode

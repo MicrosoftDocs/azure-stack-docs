@@ -29,7 +29,7 @@ Follow these steps to prep the new server nodes:
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
 1. Run OEM validation tests to ensure hardware homogeneity with the existing clustered servers.
-1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](/deploy/operating-system).
+1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](/azure-stack/hci/deploy/operating-system).
 1. Join the servers to the same cluster domain.
 
 Whenever you add or remove a server, perform cluster validation afterwards to ensure the cluster is functioning normally.

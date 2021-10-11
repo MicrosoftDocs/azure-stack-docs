@@ -113,7 +113,7 @@ First, create the network resources for Azure. The following instructions show h
 
 ## Create a custom IPSec policy
 
-Since the Azure Stack Hub default parameters for IPSec policies have changed for [builds 1910 and later](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), a custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
+A custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
 
 ### [Az modules](#tab/az1)
 
