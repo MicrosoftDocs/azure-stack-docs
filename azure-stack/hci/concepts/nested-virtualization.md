@@ -11,7 +11,7 @@ ms.date: 10/19/2021
 
 # Nested virtualization in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2 or earlier
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Nested virtualization is a feature that lets you run Hyper-V inside a Hyper-V virtual machine (VM). This allows you to maximize your hardware investments and gain flexibility in evaluation and testing scenarios.
 
