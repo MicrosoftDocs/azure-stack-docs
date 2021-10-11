@@ -7,7 +7,7 @@ documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/02/2021
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -27,11 +27,11 @@ Azure Stack Hub multi-node systems that use the consumption-based billing model 
 > [!IMPORTANT]
 > All workloads [must be deployed under tenant subscriptions](#are-users-charged-for-the-infrastructure-vms) to comply with the licensing terms of Azure Stack Hub.
 
-Usage data reporting is required for Azure Stack Hub multi-node users who license under the pay-as-you-use model. It's optional for customers who license under the capacity model (see the [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page). For Azure Stack Development Kit (ASDK) users, Azure Stack Hub operators can report usage data and test the feature. However, users won't be charged for any usage they incur.
+Usage data reporting is required for Azure Stack Hub multi-node users who license under the pay-as-you-use model. It is optional for customers who license under the capacity model (see [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)). For Azure Stack Development Kit (ASDK) users, Azure Stack Hub operators can report usage data and test the feature. However, users won't be charged for any usage they incur.
 
 ![billing flow for usage data in Azure Stack Hub](media/azure-stack-usage-reporting/billing-flow.svg)
 
-Usage data is sent from Azure Stack Hub to Azure through the Azure Bridge. In Azure, the commerce system processes the usage data and generates the bill. After the bill is generated, the Azure subscription owner can view and download it from the [Azure Account Center](https://account.windowsazure.com/subscriptions). To learn about how Azure Stack Hub is licensed, see the [Azure Stack Hub packaging and pricing](https://go.microsoft.com/fwlink/?LinkId=842847) document.
+Usage data is sent from Azure Stack Hub to Azure through the Azure Bridge. In Azure, the commerce system processes the usage data and generates the bill. After the bill is generated, the Azure subscription owner can view and download it from the [Azure Account Center](https://account.windowsazure.com/subscriptions). To learn about how Azure Stack Hub is licensed, see [Azure Stack Hub packaging and pricing](https://go.microsoft.com/fwlink/?LinkId=842847).
 
 ## Set up usage data reporting
 
@@ -66,7 +66,7 @@ If you registered your Azure Stack Hub using any other subscription type (for ex
 
 ![View billing and usage flow in Azure Account Center](media/azure-stack-usage-reporting/pricing-details.png)
 
-For the ASDK, Azure Stack Hub resources aren't charged, so the price shown is $0.00.
+For the ASDK, Azure Stack Hub resources are not charged, so the price shown is $0.00.
 
 ## Which Azure Stack Hub deployments are charged?
 
@@ -92,11 +92,11 @@ For Azure Stack Hub multi-node, Enterprise Agreement (EA) and CSP subscriptions 
 
 ## Does usage data reporting work in sovereign clouds?
 
-In the ASDK, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China 21Vianet clouds) can't be registered with Azure, so they don't support usage data reporting.
+In the ASDK, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China 21Vianet clouds) cannot be registered with Azure, so they don't support usage data reporting.
 
 ## Why doesn't the usage reported in Azure Stack Hub match the report generated from Azure Account Center?
 
-There's always a delay between the usage data reported by the Azure Stack Hub usage APIs and the usage data reported in the Azure Account Center. This delay is the time required to upload usage data from Azure Stack Hub to Azure commerce. Because of this delay, usage that occurs shortly before midnight might appear in Azure the following day. If you use the [Azure Stack Hub usage APIs](azure-stack-provider-resource-api.md) and compare the results to the usage reported in the Azure billing portal, you can see a difference.
+There is always a delay between the usage data reported by the Azure Stack Hub usage APIs and the usage data reported in the Azure Account Center. This delay is the time required to upload usage data from Azure Stack Hub to Azure commerce. Because of this delay, usage that occurs shortly before midnight might appear in Azure the following day. If you use the [Azure Stack Hub usage APIs](azure-stack-provider-resource-api.md) and compare the results to the usage reported in the Azure billing portal, you can see a difference.
 
 ## Next steps
 

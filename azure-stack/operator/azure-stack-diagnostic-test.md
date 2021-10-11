@@ -170,7 +170,7 @@ The cloud admin user name must be typed in the UPN format: serviceadmin@contoso.
 To improve the operator experience, a **Group** parameter has been enabled to run multiple test categories at the same time. Currently, there are three groups defined: **Default**, **UpdateReadiness**, and **SecretRotationReadiness**.
 
 - **Default**: Considered to be a standard run of **Test-AzureStack**. This group is run by default if no other groups are selected.
-- **UpdateReadiness**: A check to see if the Azure Stack Hub instance can be updated. When the **UpdateReadiness** group is run, warnings are displayed as errors in the console output, and they should be considered as blockers for the update. As of Azure Stack Hub Version 1910 the following categories are part of the **UpdateReadiness** group:
+- **UpdateReadiness**: A check to see if the Azure Stack Hub instance can be updated. When the **UpdateReadiness** group is run, warnings are displayed as errors in the console output, and they should be considered as blockers for the update. The following categories are part of the **UpdateReadiness** group:
 
   - **AzsInfraFileValidation**
   - **AzsActionPlanStatus**
