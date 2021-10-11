@@ -4,7 +4,7 @@ description: Reference for the resource usage API, which retrieves Azure Stack H
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/01/2021
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2019
