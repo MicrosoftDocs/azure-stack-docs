@@ -11,7 +11,7 @@ ms.date: 10/19/2021
 
 # What's new in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2; Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 ## What's new in Azure Stack HCI, version 21H2
 
