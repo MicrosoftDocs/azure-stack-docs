@@ -55,10 +55,10 @@ If multiple nodes need concurrent access to the same storage volume, you can use
       reclaimPolicy: Retain  # only Retain is supported
       volumeBindingMode: Immediate
       mountOptions:
-        dir_mode=0777
-        file_mode=0777
-        uid=1001
-        gid=1001
+        - dir_mode=0777
+        - file_mode=0777
+        - uid=1001
+        - gid=1001
       ```  
 
 ### Use NFS drivers
@@ -83,8 +83,8 @@ If multiple nodes need concurrent access to the same storage volume, you can use
       reclaimPolicy: Retain
       volumeBindingMode: Immediate
       mountOptions:
-        hard
-        nfsvers=4.1
+        - hard
+        - nfsvers=4.1
       ```
 
 ### To uninstall SMB or NFS drivers
