@@ -11,7 +11,7 @@ ms.date: 08/11/2021
 
 # Azure Stack HCI billing and payment
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Azure Stack HCI is an Azure service that goes on your Azure subscription bill just like any other Azure service. It's priced on a per core basis on your on-premises servers. For current pricing, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/). Currencies and discounts are handled centrally by the Azure Commerce billing platform, and the customer gets one unified, itemized bill at the end of the month.
 

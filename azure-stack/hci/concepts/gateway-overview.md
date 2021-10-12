@@ -10,7 +10,7 @@ ms.date: 02/02/2021
 ---
 # What is RAS Gateway for Software Defined Networking?
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019, Windows Server 2016
 
 Remote Access Service (RAS) Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
