@@ -59,16 +59,16 @@ The options to free up space on an attached container are limited. To learn more
 
 VM disks are stored as sparse files on storage infrastructure. Disks have provisioned size that the user requests at the time the disk is created. However only the non-zero pages written to the disk occupy space on the underlying storage infrastructure.
 
-![Example: Sparse disk on storage volume](media/azure-stack-manage-storage-shares/sparse-disk-on-volume.png)
+![Example: Sparse disk on storage volume.](media/azure-stack-manage-storage-shares/sparse-disk-on-volume.png)
 
 Disks are often created by copying from platform images, managed images, snapshots, or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system uses block cloning in ReFS. Blob cloning is a low-cost metadata operation rather than a full byte-by-byte copy between files. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
 
-![Example: Share extent on storage volume](media/azure-stack-manage-storage-shares/extent-on-volume.png)
+![Example: Share extent on storage volume.](media/azure-stack-manage-storage-shares/extent-on-volume.png)
 
 The capacity usage grows only when the disks are written, and identical data reduces. 
 When an image or a disk is deleted, the space may not be freed immediately because there could be disks or snapshots created from it still keep the identical data and occupy space. Only if all the related entities are removed, the space becomes available.
 
-![Example: Extent after disk deletion](media/azure-stack-manage-storage-shares/delete-disk.png)
+![Example: Extent after disk deletion.](media/azure-stack-manage-storage-shares/delete-disk.png)
 
 ### Blobs and containers
 
@@ -109,7 +109,7 @@ Use Azure PowerShell or the administrator portal to monitor shares so that you c
 
 As a cloud operator, you can monitor the storage capacity of a share by using the PowerShell `Get-AzsStorageShare` cmdlet. The cmdlet returns the total, allocated, and free space, in bytes, on each of the shares.
 
-![Example: Return free space for shares](media/azure-stack-manage-storage-shares/free-space.png)
+![Example: Return free space for shares.](media/azure-stack-manage-storage-shares/free-space.png)
 
 - **Total capacity**: The total space, in bytes, that's available on the share. This space is used for data and metadata that's maintained by the storage services.
 - **Used capacity**: The amount of data, in bytes, that's used by all the extents from the files that store the tenant data and associated metadata.
@@ -121,7 +121,7 @@ As a cloud operator, you can use the administrator portal to view the storage ca
 1. Sign in to the administrator portal `https://adminportal.local.azurestack.external`.
 2. Select **All services** > **Storage** > **File shares** to open the file share list, where you can view the usage information.
 
-    ![Example: Storage file shares in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![Example: Screenshot of storage file shares in Azure Stack Hub administrator portal.](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
    - **Total**: The total space, in bytes, that's available on the share. This space is used for data and metadata that's maintained by the storage services.
    - **Used**: The amount of data, in bytes, that's used by all the extents from the files that store the tenant data and associated metadata.
@@ -143,7 +143,7 @@ In this section, we will introduce how to use these tools to monitor the capacit
 
 As a cloud operator, you can monitor the storage capacity of a volume using the PowerShell `Get-AzsVolume` cmdlet. The cmdlet returns the total and free space in gigabyte (GB) on each of the volumes.
 
-![Example: Return free space for volumes](media/azure-stack-manage-storage-shares/listvolumespowershell.png)
+![Example: Return free space for volumes.](media/azure-stack-manage-storage-shares/listvolumespowershell.png)
 
 - **Total capacity:** The total space in GB that's available on the share. This space is used for data and metadata that's maintained by the storage services.
 - **Remaining capacity:** The amount of space in GB that's free to store the tenant data and associated metadata.
@@ -155,7 +155,7 @@ As a cloud operator, you can use the administrator portal to view the storage ca
 1. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
 2. Select **All services** > **Storage** > **Volumes** to open the volume list where you can view the usage information.
 
-    ![Example: Storage volumes in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/listvolumes.png)
+    ![Example: Screenshot of storage volumes in Azure Stack Hub administrator portal.](media/azure-stack-manage-storage-shares/listvolumes.png)
 
    - **Total**: The total space available on the volume. This space is used for data and metadata that's maintained by the storage services.
    - **Used**: The amount of data that's used by the all the extents from the files that store the tenant data and associated metadata.
@@ -196,7 +196,7 @@ Azure Monitor provides following metrics to show volume capacity utilization:
 - **Volume Other Used Capacity** is the total used size of objects other than disks – including block blobs, append blobs, tables, queues, and blob metadata. 
 - **Volume VM Disk Provisioned Capacity** is total provisioned size of page blobs and managed disks/snapshots. This size is the maximum value of total disk capacity of all managed disks and page blobs on the specific volume can grow to.
 
-![Example: Volume capacity metrics](media/azure-stack-manage-storage-shares/volume-capacity-metrics.png)
+![Example: Volume capacity metrics.](media/azure-stack-manage-storage-shares/volume-capacity-metrics.png)
 
 To view volume capacity metrics in Azure Monitor:
 
@@ -210,21 +210,21 @@ To view volume capacity metrics in Azure Monitor:
 4. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
 5. In Dashboard page, click **Upload**, and select the json file generated in Step 3.
    
-   ![Example: Upload dashboard json](media/azure-stack-manage-storage-shares/upload-json.png)
+   ![Example: Upload dashboard json.](media/azure-stack-manage-storage-shares/upload-json.png)
 
 6. Once the json is uploaded, you would be directed to the new capacity dashboard. Each volume has a corresponding chart in the dashboard. The number of charts equals to the count of volumes:
 
-   ![Example: Volume capacity dashboard](media/azure-stack-manage-storage-shares/volume-capacity-dashboard.png)
+   ![Example: Volume capacity dashboard.](media/azure-stack-manage-storage-shares/volume-capacity-dashboard.png)
 
 7. By clicking one of the volumes, you can check five capacity metrics of the specific volume in the detailed chart:
 
-   ![Example: Detailed capacity metrics](media/azure-stack-manage-storage-shares/detailed-capacity-metrics.png)
+   ![Example: Detailed capacity metrics.](media/azure-stack-manage-storage-shares/detailed-capacity-metrics.png)
 
 ### Volume usage patterns
 
 By checking the volume capacity metrics, the cloud operator understands how much a volume’s capacity is utilized, and which resource type is taking most of the space usage. The space usage pattern could be grouped to following types, which operator should take different action for each of the types:
 
-![Example: Volume usage pattern](media/azure-stack-manage-storage-shares/volume-usage-pattern.png)
+![Example: Volume usage pattern.](media/azure-stack-manage-storage-shares/volume-usage-pattern.png)
 
 **Under-provisioned, spare capacity:** there’s enough available capacity on the volume, and the total provisioned capacity of all disks located on this volume is smaller than the total available capacity. The volume is available for more storage objects, including both disks and other objects (block/append blobs, tables and queues). You don’t need to take any action to operate the volume.
 
