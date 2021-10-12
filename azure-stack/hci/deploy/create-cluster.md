@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-> Applies to Azure Stack HCI, version v20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Now that you've deployed the Azure Stack HCI operating system, you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 

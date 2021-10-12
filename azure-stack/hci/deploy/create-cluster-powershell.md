@@ -9,7 +9,7 @@ ms.reviewer: JasonGerend
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI, version v20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
@@ -141,9 +141,7 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 ## Step 2: Configure host networking
 
-We no longer recommend that you configure host networking manually.
-
-If you are an [Azure Stack HCI preview channel](../manage/preview-channel.md) customer, see [Host networking with Network ATC](network-atc.md) to deploy host networking. 
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, see [Host networking with Network ATC](network-atc.md) to deploy host networking. 
 
 Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
