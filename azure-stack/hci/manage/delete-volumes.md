@@ -9,7 +9,7 @@ ms.date: 03/09/2021
 
 # Delete volumes on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 This article explains how to delete volumes by using either Windows Admin Center or PowerShell.
 

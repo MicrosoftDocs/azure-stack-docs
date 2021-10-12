@@ -9,7 +9,7 @@ ms.date: 07/01/2020
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.

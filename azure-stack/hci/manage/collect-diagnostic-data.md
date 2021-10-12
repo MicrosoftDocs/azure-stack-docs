@@ -8,7 +8,7 @@ ms.date: 08/11/2021
 ---
 # Collect diagnostic data for clusters
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 There are various diagnostic tools in Storage Spaces Direct that you can use to collect the data needed to troubleshoot Azure Stack HCI and Windows Server clusters. In this article, we will focus on installing and using SDDC diagnostic tools to gather relevant information to help you diagnose your cluster.
 
