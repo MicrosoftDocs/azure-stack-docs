@@ -1,13 +1,13 @@
 ---
-title: Configure firewalls for Azure Stack HCI
+title: Firewall requirements for Azure Stack HCI
 description: This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system.
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
-ms.date: 09/21/2021
+ms.date: 10/12/2021
 ---
 
-# Configure firewalls for Azure Stack HCI
+# Firewall requirements for Azure Stack HCI
 
 >Applies to: Azure Stack HCI, version 20H2
 
