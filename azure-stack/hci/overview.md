@@ -6,17 +6,17 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/06/2021
+ms.date: 10/19/2021
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
 # Azure Stack HCI solution overview
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 
-Azure Stack HCI, version 20H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either [purchase integrated systems](https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Integrated+System) from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy [validated nodes](https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Validated+Node) and install the operating system yourself.
+Azure Stack HCI, version 21H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either [purchase integrated systems](https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Integrated+System) from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy [validated nodes](https://hcicatalog.azurewebsites.net/#/?IntegratedSystem=Validated+Node) and install the operating system yourself.
 
    > [!NOTE]
    > Azure Stack HCI is intended as a virtualization host, so most apps and server roles must run inside of virtual machines (VMs). Exceptions include Hyper-V, Network Controller, and other components required for Software Defined Networking (SDN) or for the management and health of hosted VMs.
