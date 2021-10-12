@@ -150,7 +150,7 @@ To create a custom marketplace item, do the following:
 14. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGallery.exe** tool and the sample gallery package you downloaded previously. Run the following command:
 
     ```shell
-    .\AzureGalleryHubGallery.exe package -m c:\<path>\<gallery package name>\manifest.json -o c:\Temp
+    .\AzureStackHubGallery.exe package -m c:\<path>\<gallery package name>\manifest.json -o c:\Temp
     ```
 
     > [!NOTE]
