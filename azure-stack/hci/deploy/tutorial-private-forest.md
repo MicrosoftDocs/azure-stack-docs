@@ -11,7 +11,7 @@ ms.date: 09/03/2021
 
 # Tutorial: Create a private forest environment for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 In this tutorial, you use MSLab PowerShell scripts to automate the process of creating a private forest to run Azure Stack HCI on virtual machines (VMs) using [nested virtualization](../concepts/nested-virtualization.md).
 
