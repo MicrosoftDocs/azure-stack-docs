@@ -1,6 +1,6 @@
 ---
 title: Firewall requirements for Azure Stack HCI
-description: This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system.
+description: This topic provides guidance on firewall requirements for the Azure Stack HCI operating system.
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: how-to
@@ -26,7 +26,7 @@ This topic describes how to optionally use a highly locked-down firewall configu
 
 As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
-:::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/configure-firewalls/firewalls-diagram.png":::
+:::image type="content" source="./media/configure-firewalls/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
 ### Microsoft Update connectivity requirements
 If there is a corporate firewall between the operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, you'll need to obtain authorization to allow internet access to the following URLs:
