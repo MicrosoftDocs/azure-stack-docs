@@ -9,7 +9,7 @@ ms.date: 07/24/2020
 
 # Create stretched cluster volumes and set up replication
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This article describes how to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
 

@@ -11,13 +11,13 @@ ms.date: 07/27/2021
 
 # Storage thin provisioning in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2 Preview
+> Applies to: Azure Stack HCI, version 21H2
 
-A brand-new way to provision storage volumes is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool’s resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
+Thin provisioning is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool’s resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
-## Capacity management: thin vs. fixed provisioned volumes 
+## Capacity management: thin vs. fixed provisioned volumes
 
-New in Azure Stack HCI, version 21H2, thin provisioning is recommended over the traditional fixed provisioning if you don't know exactly how much storage a volume will need and want more flexibility. If you want to limit the size of a volume or limit how much storage a volume can take from the pool, then use fixed provisioning instead.
+Thin provisioning is recommended over the traditional fixed provisioning if you don't know exactly how much storage a volume will need and want more flexibility. If you want to limit the size of a volume or limit how much storage a volume can take from the pool, then use fixed provisioning instead.
 
 Below is a comparison of the two provisioning types with empty volumes.
 
@@ -115,7 +115,7 @@ To display Provisioning type as a column heading:
 
 ## Thin provisioning FAQ
 
-This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 21H2 Preview.
+This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 21H2.
 
 ### Can existing fixed volumes be converted to thin?
 
