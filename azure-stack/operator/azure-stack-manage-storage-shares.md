@@ -171,15 +171,15 @@ When you use the administrator portal, you receive alerts about volumes that are
 
 * **Warning**: When a file share is over 90% utilized, you receive a *Warning* alert in the administrator portal:
 
-  ![Example: Warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning-new.png)
+  [![Example: Screenshot of warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning-new.png)](media/azure-stack-manage-storage-shares/alert-warning-new.png#lightbox)
 
 * **Critical**: When a file share is over 95% utilized, you receive a *Critical* alert in the administrator portal:
 
-  ![Example: Critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical-new.png)
+  [![Example: Screenshot of critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical-new.png)](media/azure-stack-manage-storage-shares/alert-critical-new.png#lightbox)
 
 * **View details**: In the administrator portal, you can open an alert's details to view your mitigation options:
 
-  ![Example: View alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details-new.png)
+  [![Example: Screenshot of viewing alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details-new.png)](media/azure-stack-manage-storage-shares/alert-details-new.png#lightbox)
 
 ::: moniker range=">=azs-2005"
 
@@ -209,16 +209,16 @@ To view volume capacity metrics in Azure Monitor:
    There would be a json file named starts with **DashboardVolumeObjStore** under the folder of DashboardGenerator.
 4. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
 5. In Dashboard page, click **Upload**, and select the json file generated in Step 3.
- 
-![Example: Upload dashboard json](media/azure-stack-manage-storage-shares/upload-json.png)
+   
+   ![Example: Upload dashboard json](media/azure-stack-manage-storage-shares/upload-json.png)
 
 6. Once the json is uploaded, you would be directed to the new capacity dashboard. Each volume has a corresponding chart in the dashboard. The number of charts equals to the count of volumes:
 
-![Example: Volume capacity dashboard](media/azure-stack-manage-storage-shares/volume-capacity-dashboard.png)
+   ![Example: Volume capacity dashboard](media/azure-stack-manage-storage-shares/volume-capacity-dashboard.png)
 
 7. By clicking one of the volumes, you can check five capacity metrics of the specific volume in the detailed chart:
 
-![Example: Detailed capacity metrics](media/azure-stack-manage-storage-shares/detailed-capacity-metrics.png)
+   ![Example: Detailed capacity metrics](media/azure-stack-manage-storage-shares/detailed-capacity-metrics.png)
 
 ### Volume usage patterns
 
