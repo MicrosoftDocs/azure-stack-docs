@@ -11,7 +11,7 @@ ms.date: 10/06/2021
 
 # Compare Azure Stack HCI to Azure Stack Hub
 
-> Applies to: Azure Stack HCI, version 20H2; Azure Stack Hub
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Azure Stack Hub
 
 As your organization digitally transforms, you may find you can move faster by using public cloud services to build on modern architectures and refresh legacy apps. However, for reasons that include technological and regulatory obstacles, many workloads must remain on-premises. Use this table to help determine which Microsoft hybrid cloud strategy provides what you need where you need it, delivering cloud innovation for workloads wherever they are.
 
