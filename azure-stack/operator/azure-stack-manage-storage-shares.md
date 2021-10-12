@@ -63,7 +63,7 @@ VM disks are stored as sparse files on storage infrastructure. Disks have provis
 
 Disks are often created by copying from platform images, managed images, snapshots, or other disks. And snapshots are taken from disks. To increase utilization of storage capacity and reduce copy operation time the system uses block cloning in ReFS. Blob cloning is a low-cost metadata operation rather than a full byte-by-byte copy between files. The source file and target file can share the same extents, identical data isn't physically stored multiple times, improving storage capacity. 
 
-![Example: Share extent on storage volume](media/azure-stack-manage-storage-shares/extent-on-volume.png)
+![Example: Share extent on storage volume](media/azure-stack-manage-storage-shares/sparse-disk-on-volume.png)
 
 The capacity usage grows only when the disks are written, and identical data reduces. 
 When an image or a disk is deleted, the space may not be freed immediately because there could be disks or snapshots created from it still keep the identical data and occupy space. Only if all the related entities are removed, the space becomes available.
