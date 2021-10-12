@@ -11,7 +11,7 @@ ms.date: 03/12/2021
 
 # Azure Stack HCI data collection
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected for General Availability (GA) in December 2020.
 

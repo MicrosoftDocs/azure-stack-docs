@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Updates and upgrades
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Azure Stack HCI solutions are designed to have a predictable update and upgrade experience.
 

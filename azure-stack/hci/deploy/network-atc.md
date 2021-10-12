@@ -3,14 +3,14 @@ title: Simplify host networking with Network ATC
 description: This topic covers how to simplify host networking for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/19/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
 # Simplify host networking with Network ATC
 
-> Applies to: Azure Stack HCI, version 21H2 Preview
+> Applies to: Azure Stack HCI, version 21H2
 
 This article guides you through the key functions of using Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
 
