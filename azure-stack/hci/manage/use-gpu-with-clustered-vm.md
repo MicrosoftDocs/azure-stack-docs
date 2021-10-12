@@ -9,7 +9,7 @@ ms.date: 10/19/2021
 
 # Use GPUs with clustered VMs
 
->Applies to: Azure Stack HCI, version 21H2 Preview
+>Applies to: Azure Stack HCI, version 21H2
 
 This topic provides guidance on how to use graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 
