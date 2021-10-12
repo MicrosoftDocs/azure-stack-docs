@@ -74,6 +74,8 @@
       href: manage/vm-affinity.md
     - name: VM load balancing
       href: manage/vm-load-balancing.md
+    - name: Use GPUs with clustered VMs
+      href: manage/use-gpu-with-clustered-vm.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -244,8 +246,6 @@
     href: manage/azure-stack-hci-insights.md
   - name: Host networking with Network ATC
     href: deploy/network-atc.md
-  - name: Use GPUs with clustered VMs
-    href: manage/use-gpu-with-clustered-vm.md
   - name: Dynamic CPU compatibility
     href: manage/processor-compatibility-mode.md
   - name: Storage thin provisioning
