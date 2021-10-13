@@ -93,7 +93,7 @@ To get started, you'll need:
 - A cluster of two or more servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net), purchased from your preferred Microsoft hardware partner.
 - An [Azure subscription](https://azure.microsoft.com/).
 - Operating system licenses for your workload VMs – for example, Windows Server. See [Activate Windows Server VMs](manage/vm-activate.md). 
-- An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](manage/configure-firewalls.md) for more information.
+- An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](concepts/firewall-requirements.md) for more information.
 - For clusters stretched across sites, you'll need at least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred), with an average latency of 5 ms round trip if you want to do synchronous replication where writes occur simultaneously in both sites.
 - If you plan to use SDN, you'll need a virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md)).
 
