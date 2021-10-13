@@ -112,6 +112,8 @@
         href: manage/cluster.md
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
+      - name: Manage Network ATC
+        href: manage/manage-network-atc.md
       - name: Update the cluster
         href: manage/update-cluster.md
       - name: Manage quick restarts
