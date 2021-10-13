@@ -114,7 +114,7 @@
         href: manage/cluster-powershell.md
       - name: Update the cluster
         href: manage/update-cluster.md
-      - name: Kernel Soft Reboot
+      - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
       - name: Set up a cluster witness
         href: manage/witness.md
