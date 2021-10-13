@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/08/2021
+ms.date: 10/19/2021
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -125,7 +125,7 @@ To install a preview build using PowerShell, follow these steps. If your cluster
     Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
     ```
 
-7. Check for any further updates and install them. See [Install updates with PowerShell](update-cluster.md#install-updates-with-powershell).
+7. Check for any further updates and install them. See [Install operating system updates using PowerShell](update-cluster.md#install-operating-system-updates-using-powershell).
 
 You're now ready to perform [post installation steps](#post-installation-steps).
 
