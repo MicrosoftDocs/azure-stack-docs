@@ -11,6 +11,24 @@ ms.reviewer:
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
+## Kubelet garbage-collects the pause image, which ContainerD is unable to pull
+
+When _kubelet_ is under disk pressure, it garbage-collects the pause images and then containerd cannot pull the image. Currently, AKS on Azure Stack HCI only uses ACR with authentication disabled as a workaround for an Azure Container Registry bug. Therefore, the same credentials shipped to customers could be used to pull the pause images on affected nodes. For example, [username: 1516df5a-f1cc-4a6a-856c-03d127b02d05, password: 92684690-48b5-4dce-856d-ef4cccb54f22].
+
+To resolve this issue, run the following steps:
+
+1. Connect to the affected node using SSH.
+2. Run `sudo su`.
+3. Open and edit the `/etc/containerd/config.toml` file and add the following:
+
+  [plugin."io.containerd.grpc.v1.cri".registry.configs."ecpacr.azurecr.io".auth]
+  username = "USERNAME_FROM_ME"
+  password = "PASSWORD_FROM_ME"
+
+4. Save the `config.toml` file and run `Systemctl restart containerd`.
+5. Finally, you should be able to run `crictl pull ecpacr.azurecr.io/pause:3.2` to pull the image.
+
+
 ## Running Remove-AksHciCluster results in the error: _A workload cluster with the name 'my-workload-cluster' was not found_
 
 If you encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), you should check to make sure you have used the correct information for removing the cluster.

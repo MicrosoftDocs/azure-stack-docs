@@ -206,7 +206,7 @@ ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
 `https://azurestackhci.azurefd.net` | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
 
 > [!NOTE]
-> If you are using Azure Arc with your Kubernetes clusters, the network requirements for the same can be found [here](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
+> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. 
 
 ## Storage requirements
 
