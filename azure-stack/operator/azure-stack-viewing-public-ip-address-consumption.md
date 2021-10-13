@@ -77,17 +77,7 @@ In different cases, public IP addresses are
 assigned that determine whether the address appears in one
 list or another.
 
-| **Public IP address assignment case** | **Appears in usage summary** | **Appears in tenant public IP addresses list** |
-| --- | --- | --- |
-| Dynamic public IP address not yet assigned to an NIC or load balancer (temporary). |No |Yes |
-| Dynamic public IP address assigned to an NIC or load balancer. |Yes |Yes |
-| Static public IP address assigned to a tenant NIC or load balancer. |Yes |Yes |
-| Static public IP address assigned to a fabric infrastructure service endpoint. |Yes |No |
-| Public IP address implicitly created for IaaS VM instances and used for outbound NAT on the virtual network. These are created behind the scenes whenever a tenant creates a VM instance so that VMs can send information out to the Internet. |Yes |No |
-| Dynamic public IP address assigned to the virtual network to ensure outbound connectivity. This NAT IP address ensures the outbound connectivity. It is created once the first virtual machine is deployed to the virtual network. Public IP pool must have available addresses for each virtual network. Otherwise, any VM deployment on the virtual network fails. | Yes | No |
-
-
-| **Public IP address assignment case** | **Appears in usage summary** | **Appears in tenant public IP addresses list** |
+| Public IP address assignment case | Appears in usage summary | Appears in tenant public IP addresses list |
 | --- | --- | --- |
 | Unassigned dynamic public IP address (temporary). |No |Yes |
 | Dynamic public IP address assigned to a NIC or load balancer. |Yes |Yes |
