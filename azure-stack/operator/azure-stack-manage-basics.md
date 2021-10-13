@@ -124,7 +124,7 @@ Before a user can use services, they must [subscribe to an offer](azure-stack-su
 ## Where to get support
 
 > [!Note]  
-> To find support information for earlier releases of Azure Stack Hub (pre-1905), see [Help and Support for earlier releases Azure Stack Hub (pre-1905)](azure-stack-servicing-policy.md).
+> To find support information for earlier releases of Azure Stack Hub, see [Help and Support for earlier releases Azure Stack Hub](azure-stack-servicing-policy.md).
 
 ### Integrated systems
 
