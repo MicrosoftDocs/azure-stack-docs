@@ -100,7 +100,7 @@ To test whether a failover cluster is properly set up to apply software updates 
 Test-CauSetup -ClusterName Cluster1
 ```
 
-If you need to install features, tools, or roles, see the next sections. Otherwise, skip ahead to [Check for updates with PowerShell](#check-for-updates-with-powershell).
+If you need to install features, tools, or roles, see the next sections. Otherwise, skip ahead to [Check for updates with PowerShell](#check-for-updates-using-powershell).
 
 ### Install Failover Clustering and Failover Clustering Tools using PowerShell
 
