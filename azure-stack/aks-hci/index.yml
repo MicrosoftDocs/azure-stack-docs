@@ -50,6 +50,15 @@ landingContent:
             url: setup.md
           - text: Create a Kubernetes cluster using Windows Admin Center
             url: create-kubernetes-cluster.md
+
+  - title: Upgrade 
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use PowerShell
+            url: update-akshci-host-powershell.md
+          - text: Use Windows Admin Center
+            url: update-akshci-host-windows-admin-center.md
   - title: Deploy Windows and Linux applications
     linkLists:
       - linkListType: tutorial
