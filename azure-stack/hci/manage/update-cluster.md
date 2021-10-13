@@ -174,7 +174,7 @@ Add-CauClusterRole -ClusterName Cluster1 -MaxFailedNodes 0 -RequireAllNodesOnlin
 
 You'll need to allow the servers to restart remotely during the update process. If you're using Windows Admin Center to perform the updates, Windows Firewall rules will automatically be updated on each server to allow remote restarts. If you're updating with PowerShell, either enable the Remote Shutdown firewall rule group in Windows Firewall, or pass the -EnableFirewallRules parameter to the cmdlet such as in the example above.
 
-## Check for updates with PowerShell
+## Check for updates using PowerShell
 
 You can use the `Invoke-CAUScan` cmdlet to scan servers for applicable updates and get a list of the initial set of updates that are applied to each server in a specified cluster:
 
@@ -184,7 +184,7 @@ Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugi
 
 Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it does not include updates that might become applicable after the initial updates are installed.
 
-## Install operating system updates with PowerShell
+## Install operating system updates using PowerShell
 
 To scan servers for operating system updates and perform a full updating run on the specified cluster, use the `Invoke-CAURun` cmdlet:
 
