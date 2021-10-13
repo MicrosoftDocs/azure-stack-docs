@@ -79,7 +79,7 @@ landingContent:
           - text: Use persistent volumes
             url: persistent-volume.md
 
-    - title: Deploy, manage, and update applications
+  - title: Deploy, manage, and update applications
     linkLists:
       - linkListType: tutorial
         links:
