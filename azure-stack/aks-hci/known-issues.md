@@ -11,11 +11,11 @@ ms.reviewer:
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
-## ContainerD is unable to pull the pause image as Kubelet mistakenly collects the image 
+## ContainerD is unable to pull the pause image as _kubelet_ mistakenly collects the image 
 
-When _kubelet_ is under disk pressure, it collects unused container images which may include pause images. When this happens, ContainerD cannot pull the image. 
+When _kubelet_ is under disk pressure, it collects unused container images which may include pause images, and when this happens, ContainerD cannot pull the image. 
 
-Currently, AKS on Azure Stack HCI only uses Azure Container Registry (ACR) with authentication disabled as a workaround for an ACR bug. Therefore, the same credentials shipped to customers could be used to pull the pause images on affected nodes. For example, [username: 1516df5a-f1cc-4a6a-856c-03d127b02d05, password: 92684690-48b5-4dce-856d-ef4cccb54f22].
+Currently, AKS on Azure Stack HCI uses Azure Container Registry (ACR) only with authentication disabled as a workaround for an ACR bug. Therefore, the same credentials shipped to customers could be used to pull the pause images on affected nodes. For example, [username: 1516df5a-f1cc-4a6a-856c-03d127b02d05, password: 92684690-48b5-4dce-856d-ef4cccb54f22].
 
 To resolve this issue, run the following steps:
 
