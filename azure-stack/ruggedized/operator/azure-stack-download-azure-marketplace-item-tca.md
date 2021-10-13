@@ -1,6 +1,6 @@
 ---
-title: Download marketplace items from Azure and publish to Azure Stack | Microsoft Docs
-description: Learn how to download marketplace items from Azure and publish to Azure Stack.
+title: Download marketplace items from Azure and publish to Azure Stack Hub Ruggedized | Microsoft Docs
+description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub Ruggedized.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 10/13/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/02/2020
 ---
 
-# Download Marketplace items to Azure Stack Hub (Ruggedized)
+# Download Marketplace items to Azure Stack Hub Ruggedized
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 
