@@ -370,7 +370,7 @@ This task will help you override the default configuration which has already bee
     ```
 
     > [!IMPORTANT]
-    > Ensure you modify the cmdlet above to include the adapter names in the intent specified
+    > Ensure you modify the cmdlet above to include the adapter names in the intent specified.
 
 ## Validate automatic remediation
 
