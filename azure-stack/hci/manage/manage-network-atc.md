@@ -14,7 +14,7 @@ ms.reviewer: JasonGerend
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
 
-## Remove a network intent
+## Remove an intent
 
 If you want to test various configurations on the same adapters, you may need to remove an intent. If you previously deployed and configured Network ATC on your system, you may need to reset the node so that the configuration can be deployed. To do this, copy and paste the following commands to remove all existing intents and their corresponding vSwitch:
 
@@ -33,7 +33,7 @@ If you want to test various configurations on the same adapters, you may need to
 
 ## Add a server node
 
-You can add nodes to a cluster. Each node in the cluster receives the same network intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md).
+You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md).
 
 In this task, you will add additional nodes to the cluster and observe how a consistent networking configuration is enforced across all nodes in the cluster.
 
