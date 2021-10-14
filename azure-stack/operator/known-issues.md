@@ -36,6 +36,10 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker range="azs-2108"
 ## Update
+### Update to 2108 will not proceed if there are AKS clusters created and the Private Preview of AKS service is installed
+- Applicable: This issue applies to Azure Kubernetes Service (AKS) private preview customers who plan to upgrade to 2108
+- Remediation: The Operator will need to delete all AKS clusters and uninstall the Private preview of the AKS service.
+- Occurrence: Any stamp that has the AKS Private Preview installed will experience this message.
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
