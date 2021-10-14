@@ -202,8 +202,8 @@
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
-    - name: Configure firewalls
-      href: manage/configure-firewalls.md
+    - name: Firewall requirements
+      href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
     items:
     - name: SDN overview

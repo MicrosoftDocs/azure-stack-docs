@@ -1175,6 +1175,11 @@
       "source_path": "azure-stack/user/network-howto-vpn-tunnel-ipsec.md",
       "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/configure-firewalls.md",
+      "redirect_url": "/azure-stack/hci/concepts/firewall-requirements",
+      "redirect_document_id": false
     }
   ]
 }

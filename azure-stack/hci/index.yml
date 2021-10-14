@@ -92,9 +92,7 @@ landingContent:
           - text: Monitor the cluster
             url: manage/monitor-cluster.md
           - text: Update the cluster
-            url: manage/update-cluster.md
-          - text: Configure firewalls
-            url: manage/configure-firewalls.md            
+            url: manage/update-cluster.md            
           - text: Change languages
             url: manage/languages.md
 
@@ -107,6 +105,8 @@ landingContent:
             url: concepts/stretched-clusters.md
           - text: Billing
             url: concepts/billing.md
+          - text: Firewall requirements
+            url: concepts/firewall-requirements.md
           - text: Updates and upgrades
             url: concepts/updates.md
           - text: Choose drives
