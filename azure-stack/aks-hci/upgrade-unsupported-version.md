@@ -14,6 +14,8 @@ When you upgrade from an unsupported version of AKS on Azure Stack HCI, the main
 
 ## Before you begin
 
+Before you start the upgrade process, you should ensure you have the latest PowerShell modules installed and also check for upgrade prerequisites.
+
 ### Update the PowerShell modules
 
 Make sure you always have the latest PowerShell modules installed on the Azure Stack HCI or Windows Server nodes by executing the following command on all physical Azure Stack HCI nodes. 
@@ -52,7 +54,11 @@ In the example below, the workload cluster is still running an unsupported Kuber
                                                         ],
                         "CanUpgradeTo":  false,
                         "Version":  "1.0.4.10928",
-                        "Recommendation":  "Workload Cluster Kubernetes Version v1.18.17 is not in the list of supported Kubernetes versions (v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.1 v1.21.2 v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.1 v1.21.2) for 1.0.4.10928. Please upgrade your target clusters to one of the kubernetes versions supported by 1.0.4.10928 to unblock"
+                        "Recommendation":  "Workload Cluster Kubernetes Version v1.18.17 is not in the
+                         list of supported Kubernetes versions (v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.
+                         1 v1.21.2 v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.1 v1.21.2) for 1.0.4.10928. 
+                         Please upgrade your target clusters to one of the kubernetes versions 
+                         supported by 1.0.4.10928 to unblock"
                     },
     "1.0.3.10901":  {
                         "SupportedKubernetesVersions":  [
