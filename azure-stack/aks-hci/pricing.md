@@ -44,7 +44,7 @@ Use the table below to compare pricing options.
 |-----------------|---|---|---|
 |**-2 Worker Nodes <br> -1 x (2 vCPU VM with Linux) <br> -1 x (8 vCPU VM with Windows) <br> -10 vCPUs Total**|~US $200 per month   |~US $400 per month    | ~US $350 per month   |
 |**-4 Worker Nodes <br> -2 x (4 vCPU VM with Linux) <br> -2 x (4 vCPU VM with Windows) <br> -16 vCPUs Total**|~US $320 per month   |~US $640 per month    | ~US $561 per month   | 
-|**Other information**| Includes Azure Arc enabled Kubernetes. <br> Does not include the cost of hardware, hypervisor, or Windows Server licenses | Includes Azure Arc enabled Kubernetes. <br> Does not include the cost of hardware, hypervisor, or Windows Server licenses   | Includes Arc-enabled Kubernetes and the underlying infrastructure. <br> Does not include the cost of running Windows Server on Azure.  | 
+|**Other information**| Includes Azure Arc enabled Kubernetes. <br> Does not include the cost of hardware, hypervisor, or Windows Server licenses. | Includes Azure Arc enabled Kubernetes. <br> Does not include the cost of hardware, hypervisor, or Windows Server licenses.   | Includes Arc-enabled Kubernetes and the underlying infrastructure. <br> Does not include the cost of running Windows Server on Azure.  | 
 
 
 ### Additional pricing notes
