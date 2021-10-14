@@ -132,7 +132,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
     ![ASDK Network card settings verification](media/asdk-validate-backup/5.PNG) 
 
-7. Provide the required info described earlier in [prerequisites section](#prereqs) on the Backup Settings page and the username and password to be used to access the share. Click **Next**: 
+7. Provide the required info described in the [prerequisites section](#cloud-recovery-prerequisites) on the **Backup Settings** page and the username and password to be used to access the share. Click **Next**: 
 
    ![ASDK Backup settings page](media/asdk-validate-backup/6.PNG) 
 
