@@ -47,7 +47,7 @@ Any combination of the intent types can be specified for any specific single int
 - Compute: Unlimited
 - Storage: Can be defined in a maximum of one intent
 
-**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have a network intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
+**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have an intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
 
 - *Standalone mode*: Intents are expressed and managed independently for each host. This mode allows you to test an intent before implementing it across a cluster. Once a host is clustered, any standalone intents are ignored. Standalone intents can be copied to a cluster from a node that is not a member of that cluster, or from one cluster to another cluster.
 
@@ -109,7 +109,7 @@ Typically, only a few of these cmdlets are needed. Here is a brief overview of t
 |Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
 |Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
 
-## Example network intents
+## Example intents
 
 Network ATC modifies how you deploy host networking, not what you deploy. Multiple scenarios may be implemented so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
 
@@ -119,7 +119,7 @@ For simplicity we only demonstrate two physical adapters per SET team, however i
 
 For this intent, compute, storage, and management networks are deployed and managed across all cluster nodes.
 
-:::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged network intent"  lightbox="media/network-atc/network-atc-2-full-converge.png":::
+:::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent"  lightbox="media/network-atc/network-atc-2-full-converge.png":::
 
 ```powershell
 Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
@@ -129,7 +129,7 @@ Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName H
 
 Two intents are managed across cluster nodes. Management uses pNIC01, and pNIC02; Compute and storage are on different adapters.
 
-:::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged network intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
+:::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
 
 ```powershell
 Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
@@ -140,7 +140,7 @@ Add-NetIntent -Name Compute_Storage -Compute -Storage -ClusterName HCI01 -Adapte
 
 For this intent, compute, storage, and management networks are all managed on different adapters across all cluster nodes.
 
-:::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated network intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
+:::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
 
 ```powershell
 Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
@@ -152,7 +152,7 @@ Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNI
 
 For this intent, only storage is managed. Management and compute adapters are not be managed by Network ATC.
 
-:::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only network intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
+:::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
 
 ```powershell
 Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
@@ -162,7 +162,7 @@ Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNI
 
 For this intent, compute and management networks are managed, but not storage.
 
-:::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute network intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
+:::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
 
 ```powershell
 Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -AdapterName pNIC01, pNIC02
@@ -172,16 +172,16 @@ Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -
 
 For this intent, multiple compute switches are managed.
 
-:::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches network intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
+:::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
 
 ```powershell
 Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
 Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
 
-## Deploy network intents
+## Deploy intents
 
-The following activities represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of network intents:
+The following activities represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
 
 - Compute – adapters will be used to connect virtual machines traffic to the physical network
 - Storage – adapters will be used for SMB traffic including Storage Spaces Direct
@@ -189,7 +189,7 @@ The following activities represent common host networking deployment tasks using
 
 This article covers the following deployment tasks:
 
-- Configure a network intent
+- Configure an intent
 
 - Configure an intent override
 
@@ -197,9 +197,11 @@ This article covers the following deployment tasks:
 
 This article assumes you have already created a cluster. See [Create a cluster using PowerShell](create-cluster-powershell.md).
 
-## Configure a network intent
+## Configure an intent
 
 In this task, we maintain a consistent configuration across all cluster nodes. This is beneficial for several reasons including improved reliability of the cluster. The cluster is considered the configuration boundary. That is, all nodes in the cluster share the same configuration (symmetric intent).
+
+To remove an existing intent, see [Manage Network ATC](../manage/manage-network-atc.md).
 
 > [!IMPORTANT]
 > If a server node is clustered, you must use a clustered intent. Standalone intents are ignored.
@@ -456,6 +458,6 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 
 ## Next steps
 
-- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md)
+- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md).
 
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
