@@ -2,9 +2,8 @@
 title: ASDK Release Notes 
 description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
 author: sethmanheim
-
 ms.topic: article
-ms.date: 07/19/2021
+ms.date: 10/14/2021
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -30,7 +29,8 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 ### Fixed and known issues
 
-- SQL RP and MySQL RP are no longer supported on ASDK.
+- Backup and restore validation using the ASDK requires an increase to the VHD size. For more information, see [Validate an Azure Stack backup](asdk-validate-backup.md).
+- SQL RP and MySQL RP are no longer supported in the ASDK.
 
 ::: moniker-end
 
