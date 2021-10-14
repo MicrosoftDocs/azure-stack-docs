@@ -4,7 +4,7 @@ description: This topic covers how to plan to deploy Network Controller via Wind
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 10/14/2021
 ---
 
 # Plan to deploy Network Controller
@@ -17,6 +17,7 @@ Planning to deploy Network Controller via Windows Admin Center requires a set of
    > We recommend deploying Network Controller on its own dedicated VMs.
 
 ## Network Controller requirements
+
 The following is required to deploy Network Controller:
 - A virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs.
 - A domain name and credentials to join Network Controller VMs to a domain.
@@ -45,15 +46,42 @@ The following is required to deploy Network Controller:
    >[!NOTE]
    > Windows Admin Center currently does not support Network Controller authentication, either for communication with REST clients or communication between Network Controller VMs. You can use Kerberos-based authentication if you use PowerShell to deploy and manage it.
 
-## Configuration requirements
+## Dynamic DNS updates
+
 You can deploy Network Controller cluster nodes on either the same subnet or different subnets. If you plan to deploy Network Controller cluster nodes on different subnets, you must provide the Network Controller REST DNS name during the deployment process.
 
-To learn more, see [Configure dynamic DNS registration for Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller#step-3-configure-dynamic-dns-registration-for-network-controller).
+### Enable dynamic DNS updates for a zone
+
+To enable dynamic DNS updates for a zone, perform the following steps:
+
+1. On the DNS server, open the **DNS Manager** console.
+1. In the left pane, select **Forward Lookup Zones**.
+1. Right-click the zone that hosts the Network Controller name record, then click **Properties**.
+1. On the **General** tab, next to **Dynamic updates**, select **Secure only**.
+
+### Restrict dynamic updates to Network Controller nodes
+
+To restrict dynamic updates of the Network Controller name record to only Network Controller nodes, perform the following steps:
+
+1. On the DNS server, open the **DNS Manager** console.
+1. In the left pane, select **Forward Lookup Zones**.
+1. Right-click the zone that hosts the Network Controller name record, then click **Properties**.
+1. On the **Security** tab, select **Advanced**.
+1. Select **Add**.
+1. Choose **Select a principal**.
+1. In the **Select User, Computer, Service Account, or Group** dialog box, select **Object Types**. Check **Computers** and click **OK**.
+1. In the **Select User, Computer, Service Account, or Group** dialog box, enter the computer name of one of the Network Controller nodes and click **OK**.
+1. In **Type**, select **Allow**.
+1. In **Permissions**, check **Full Control**.
+1. Click **OK**.
+1. Repeat Steps 5 to 11 for all computers in the Network Controller cluster.
 
 ## Next steps
+
 Now you’re ready to deploy Network Controller on VMs.
 
 ## See also
+
 - [Create an Azure Stack HCI cluster](../deploy/create-cluster.md)
 - [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md)
 - [Network Controller overview](network-controller-overview.md)
