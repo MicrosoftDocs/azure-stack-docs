@@ -1,6 +1,6 @@
 ---
-title: Concepts - Upgrade the Azure Kubernetes Services (AKS) on Azure Stack HCI host using PowerShell
-description: Learn about using PowerShell to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI host (management cluster).
+title: Concepts - Upgrade the Azure Kubernetes Services (AKS) on Azure Stack HCI host using PowerShell from an unsupported version
+description: Learn about using PowerShell to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI host (management cluster) from an unsupported version.
 ms.topic: conceptual
 ms.date: 10/13/2021
 ms.custom: 
