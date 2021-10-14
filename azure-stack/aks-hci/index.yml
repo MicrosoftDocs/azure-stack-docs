@@ -50,40 +50,6 @@ landingContent:
             url: setup.md
           - text: Create a Kubernetes cluster using Windows Admin Center
             url: create-kubernetes-cluster.md
-  - title: Upgrade 
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Use PowerShell
-            url: update-akshci-host-powershell.md
-          - text: Use Windows Admin Center
-            url: update-akshci-host-windows-admin-center.md  
-  - title: Deploy, manage, and update applications
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: 1. Prepare an application
-            url: tutorial-kubernetes-prepare-application.md
-          - text: 2. Create container registry
-            url: tutorial-kubernetes-prepare-azure-container-registry.md
-          - text: 3. Deploy a workload cluster
-            url: tutorial-kubernetes-deploy-cluster.md
-          - text: 4. Run an application
-            url: tutorial-kubernetes-deploy-application.md
-          - text: 5. Scale an application
-            url: tutorial-kubernetes-scale.md
-          - text: 6. Update an application
-            url: tutorial-kubernetes-app-update.md
-          - text: 7. Upgrade Kubernetes cluster
-            url: tutorial-kubernetes-upgrade-cluster.md
-  - title: Develop and debug applications with Bridge to Kubernetes
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Use Bridge to Kubernetes with Visual Studio Code
-            url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
-          - text: Use Bridge to Kubernetes with Visual Studio
-            url:  /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
   - title: Deploy Windows and Linux applications
     linkLists:
       - linkListType: tutorial
@@ -102,6 +68,35 @@ landingContent:
             url: prepare-windows-nodes-gmsa.md
           - text: Use persistent volumes
             url: persistent-volume.md
+
+  - title: Upgrade 
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use PowerShell
+            url: update-akshci-host-powershell.md
+          - text: Use Windows Admin Center
+            url: update-akshci-host-windows-admin-center.md
+
+  - title: Deploy, manage, and update applications
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: 1. Prepare an application
+            url: tutorial-kubernetes-prepare-application.md
+          - text: 2. Create container registry
+            url: tutorial-kubernetes-prepare-azure-container-registry.md
+          - text: 3. Deploy a workload cluster
+            url: tutorial-kubernetes-deploy-cluster.md
+          - text: 4. Run an application
+            url: tutorial-kubernetes-deploy-application.md
+          - text: 5. Scale an application
+            url: tutorial-kubernetes-scale.md
+          - text: 6. Update an application
+            url: tutorial-kubernetes-app-update.md
+          - text: 7. Upgrade Kubernetes cluster
+            url: tutorial-kubernetes-upgrade-cluster.md
+
   - title: Integrate with Azure
     linkLists:
       - linkListType: how-to-guide
@@ -111,4 +106,13 @@ landingContent:
           - text: Monitor AKS on Azure Stack HCI clusters
             url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - text: Enforce threat protection using Azure Defender
-            url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json          
+            url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+
+  - title: Develop and debug applications with Bridge to Kubernetes
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use Bridge to Kubernetes with Visual Studio Code
+            url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - text: Use Bridge to Kubernetes with Visual Studio
+            url:  /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
