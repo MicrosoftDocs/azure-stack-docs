@@ -88,6 +88,12 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
+## Container Registries
+- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub
+- Cause: An issue is preventing metrics from displaying when viewing a Container Registry in the Azure portal. The metrics are also not available in Shoebox.
+- Remediation: No remediation available, will be resolved in an upcoming hotfix.
+- Occurrence: Common
+
 ## Networking
 
 ### Virtual network gateway
