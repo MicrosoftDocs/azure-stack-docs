@@ -3,7 +3,7 @@ title: Concepts - Pricing options for AKS on Azure Stack HCI
 description: Learn about the pricing options for AKS on Azure Stack HCI.
 author: mamezgeb
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 10/14/2021
 ms.author: mamezgeb
 ms.reviewer: 
 ---
@@ -44,14 +44,14 @@ Use the table below to compare pricing options.
 |-----------------|---|---|---|
 |**-2 Worker Nodes <br> -1 x (2 vCPU VM with Linux) <br> -1 x (8 vCPU VM with Windows) <br> -10 vCPUs Total**|~US $200 per month   |~US $400 per month    | ~US $350 per month   |
 |**-4 Worker Nodes <br> -2 x (4 vCPU VM with Linux) <br> -2 x (4 vCPU VM with Windows) <br> -16 vCPUs Total**|~US $320 per month   |~US $640 per month    | ~US $561 per month   | 
-|**Other information**| Includes Azure Arc enabled Kubernetes. <br> Does not include cost of hardware, hypervisor, or the cost of Windows Server licenses | Includes Azure Arc enabled Kubernetes. <br> Does not include cost of hardware, hypervisor, or the cost of Windows Server licenses   | Includes Arc-enabled Kubernetes and the underlying infrastructure. <br> Does not include the cost of running Windows Server on Azure.  | 
+|**Other information**| Includes Azure Arc enabled Kubernetes. <br> Does not include the cost of hardware, hypervisor, or Windows Server licenses | Includes Azure Arc enabled Kubernetes. <br> Does not include the cost of hardware, hypervisor, or Windows Server licenses   | Includes Arc-enabled Kubernetes and the underlying infrastructure. <br> Does not include the cost of running Windows Server on Azure.  | 
 
 
 ### Additional pricing notes
 
 - AKS is consistently priced across on-premises deployment scenarios using either Windows Server or Azure Stack HCI as the host system. 
 -	AKS on Azure Stack HCI pricing is based on the US currency list pricing with no discounts applied.
--	Running Windows Server containers on AKS on Azure Stack HCI requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added into the cost of running a Windows virtual machine on Azure. For those with Windows Server Software Assurance, Azure Hybrid benefits may apply, reducing or eliminating the Windows Server license fees.
+-	Running Windows Server containers on AKS on Azure Stack HCI requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added into the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, Azure Hybrid benefits may apply, reducing or eliminating the Windows Server license fees.
 -	For hyper-threading, price assumes hyper-threading is available and enabled on physical systems.
 -	Azure Pricing for running workloads on AKS is based on US currency list pricing in the East US region with: pay-as-you-go pricing, D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4), standard HDD, and no uptime SLA in the included support level.
 -	Monthly price estimates are based on 730 hours of usage. Price assumes that systems are running for the entire month.
