@@ -83,6 +83,8 @@
                   href: update-akshci-host-powershell.md
                 - name: Use Windows Admin Center
                   href: update-akshci-host-windows-admin-center.md
+          - name: Upgrade the AKS on Azure Stack HCI host from an unsupported version
+            href: upgrade-unsupported-version.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI

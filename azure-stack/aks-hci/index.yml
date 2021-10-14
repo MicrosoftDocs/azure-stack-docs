@@ -77,6 +77,8 @@ landingContent:
             url: update-akshci-host-powershell.md
           - text: Use Windows Admin Center
             url: update-akshci-host-windows-admin-center.md
+          - text: Use PowerShell to upgrade from an unsupported version
+            url: upgrade-unsupported-version.md
 
   - title: Deploy, manage, and update applications
     linkLists:
