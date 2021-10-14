@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/13/2021
+ms.date: 10/14/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -39,7 +39,7 @@ To access known issues for a different version, use the version selector dropdow
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-## Networking
+<!-- ## Networking -->
 
 ## Compute
 
@@ -56,7 +56,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ## App Service -->
 
-## Usage
+<!-- ## Usage -->
 
 <!-- ### Identity -->
 
