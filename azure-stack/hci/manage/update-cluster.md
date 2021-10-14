@@ -348,5 +348,6 @@ If there is a critical security update that you need to apply quickly, or you ne
 For related information, see also:
 
 - [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating)
+- [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md)
 - [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
 - [Validate an Azure Stack HCI cluster](../deploy/validate.md)
