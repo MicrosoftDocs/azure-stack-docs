@@ -77,7 +77,7 @@ sections:
 
       - question: Which guest operating systems are supported on Azure Stack HCI?
         answer: |
-          Azure Stack HCI supports several guest operating systems. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](./windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
+          Azure Stack HCI supports several guest operating systems. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
       - question: Can I upgrade from Windows Server 2019 to Azure Stack HCI?
         answer: |
