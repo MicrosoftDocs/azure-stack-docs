@@ -170,8 +170,8 @@ BitLocker is a feature that must be added to all nodes of the Cluster.
     tools** option and select **Add Features**. Once optional features selection
     is complete, select **Next** to continue.
 
-> [!NOTE]
-> The **Enhanced Storage** feature is a required feature for enabling BitLocker. This feature enables support for Encrypted Hard Drives on capable systems.
+   > [!NOTE]
+   > The **Enhanced Storage** feature is a required feature for enabling BitLocker. This feature enables support for Encrypted Hard Drives on capable systems.
 
 1. Select **Install** on the **Confirmation** pane of the **Add Roles and
     Features Wizard** to begin BitLocker feature installation. The BitLocker
