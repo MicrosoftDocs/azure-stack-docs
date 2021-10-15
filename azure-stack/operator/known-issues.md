@@ -50,6 +50,14 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Add data disks after deployment.
 - Occurrence: Common
 
+## Portal
+
+### Container Registries
+- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub
+- Cause: An issue is preventing metrics from displaying when viewing a Container Registry in the Azure portal. The metrics are also not available in Shoebox.
+- Remediation: No remediation available, will be resolved in an upcoming hotfix.
+- Occurrence: Common
+
 <!-- ## Storage -->
 
 <!-- ## SQL and MySQL-->
@@ -86,12 +94,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The two administrative subscription types **Metering** and **Consumption** have been disabled and should not be used. If you have resources in them, an alert is generated until those resources are removed.
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
-- Occurrence: Common
-
-## Container Registries
-- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub
-- Cause: An issue is preventing metrics from displaying when viewing a Container Registry in the Azure portal. The metrics are also not available in Shoebox.
-- Remediation: No remediation available, will be resolved in an upcoming hotfix.
 - Occurrence: Common
 
 ## Networking
