@@ -36,7 +36,7 @@ integrity verification offered by BitLocker with a TPM.
 In addition to the TPM, BitLocker gives you the option to lock the normal startup
 process until the user supplies a personal identification number (PIN) or
 inserts a removable device. This device could be a USB flash drive, that contains a startup
-key. These additional security measures provide multi-factor authentication and
+key. These additional security measures provide multifactor authentication and
 assurance that the computer won't start or resume from hibernation until the
 correct PIN or startup key is presented.
 
@@ -118,13 +118,13 @@ access to the CNO account.
 
 The downside is three-fold:
 
-1. This method obviously does not work when a Failover Cluster is created
+- This method obviously does not work when a Failover Cluster is created
     without any access to an Active Directory controller in the datacenter.
 
-2. Volume unlock, as part of failover, may take too long (and possibly time
+- Volume unlock, as part of failover, may take too long (and possibly time
     out) if the Active Directory controller is unresponsive or slow.
 
-3. The online process of the drive will fail if an Active Directory controller
+- The online process of the drive will fail if an Active Directory controller
     is not available.
 
 New functionality has been added that Failover Clustering will generate and
@@ -243,9 +243,9 @@ Provisioning encrypted volumes will require PowerShell commands run with
 administrative privileges. There are two options to encrypt the drives and have
 Failover Clustering be able to create and use its own BitLocker keys.
 
-1. Internal recovery key
+- Internal recovery key
 
-2. External recovery key file
+- External recovery key file
 
 ### Encrypt using a recovery key
 
