@@ -53,9 +53,10 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ## Portal
 
 ### Container Registries
-- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub
-- Cause: An issue is preventing metrics from displaying when viewing a Container Registry in the Azure portal. The metrics are also not available in Shoebox.
-- Remediation: No remediation available, will be resolved in an upcoming hotfix.
+
+- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub.
+- Cause: An issue is preventing metrics from displaying when viewing a container registry in the Azure portal. The metrics are also not available in Shoebox.
+- Remediation: No remediation available, will be addressed in an upcoming hotfix.
 - Occurrence: Common
 
 <!-- ## Storage -->
