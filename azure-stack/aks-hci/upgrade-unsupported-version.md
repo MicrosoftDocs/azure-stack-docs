@@ -10,7 +10,7 @@ author: baziwane
 
 # Upgrade AKS on Azure Stack HCI from an unsupported version using PowerShell
 
-When you upgrade from an unsupported version of AKS on Azure Stack HCI, the main goal of the upgrade process is to ensure your management cluster (or AKS host) is upgraded to the latest version without any interruption. You perform the upgrade process using a step-by-step method where you automatically download and install each interim version you skipped until your management cluster is finally running the latest version. 
+When you upgrade from an unsupported version of AKS on Azure Stack HCI, the main goal of the upgrade process is to ensure your management cluster (or AKS host) is upgraded to the latest version without any interruption. The upgrade process is done in a step-by-step manner, automatically downloading and installing each interim version that you skipped until your management cluster is finally running the latest version.
 
 ## Before you begin
 
@@ -18,7 +18,7 @@ Before you start the upgrade process, you should ensure you have the latest Powe
 
 ### Update the PowerShell modules
 
-Make sure you always have the latest PowerShell modules installed on the Azure Stack HCI or Windows Server nodes by executing the following command on all physical Azure Stack HCI nodes. 
+To make sure you have the latest PowerShell modules installed on the Azure Stack HCI or Windows Server nodes, run the following command on all physical Azure Stack HCI nodes: 
 
 ```powershell
 Update-Module -Name AksHci -Force -AcceptLicense
@@ -26,7 +26,7 @@ Update-Module -Name AksHci -Force -AcceptLicense
 
 ### Check for upgrade prerequisites
 
-Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to check for prerequisites that are required for the upgrade process to succeed. The recommendations section in the output lists the actions that you must perform before you start upgrading your unsupported cluster. 
+Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to check for prerequisites that are required for the upgrade process to succeed. The recommendation section in the output lists the actions that you must perform before you start upgrading your unsupported cluster. 
 
 ```powershell
 PS C:\> Get-AksHciCluster | ConvertTo-Json      
