@@ -16,6 +16,9 @@ In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastru
 
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
+> [!IMPORTANT]
+> You can't use Microsoft System Center Virtual Machine Manager 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022.
+
 ## Before you begin
 
 Before you begin an SDN deployment, plan out and configure your physical and host network infrastructure. Reference the following articles:
