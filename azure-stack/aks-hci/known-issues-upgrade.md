@@ -18,7 +18,9 @@ This error was resolved in PowerShell module version 1.1.11. Update the Powershe
 
 ## During an upgrade, custom node taints, roles, and labels are lost
 
-All custom taints, roles, and labels that are currently on nodes are lost during an upgrade. This issue will be resolved in a later release.
+When upgrading, you may lose all custom taints, roles, and labels that you added to your worker nodes. Since AKS on Azure Stack HCI is a managed service, adding custom taints, labels, and roles when performed outside the provided PowerShell cmdlets or Windows Admin Center is not supported.
+
+To work around this issue, you should correctly create taints to add to your worker nodes by running the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) cmdlet and [create a node pool with taints](./reference/ps/new-akshcinodepool#create-a-node-pool-with-taints). 
 
 ## After a successful upgrade, older versions of PowerShell are not removed
 
