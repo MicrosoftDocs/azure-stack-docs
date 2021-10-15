@@ -32,7 +32,7 @@ Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to check for prereq
 PS C:\> Get-AksHciCluster | ConvertTo-Json      
 ```
 
-In the example below, the workload cluster is still running an unsupported Kubernetes version 1.18.17. Before upgrading the cluster, the workload cluster must first be upgraded to a supported Kubernetes version (for example, v1.19.x) for the step upgrade to succeed. This step is necessary because Kubernetes does not support skipping minor versions during upgrades. All upgrades must be performed sequentially by major version number. For example, upgrades from 1.19.x to 1.20.x and 1.20.x to 1.21.x are allowed, however, upgrading from 1.19.x to 1.21.x is not allowed. The upgrade process has to automatically perform each step upgrade behind the scenes.
+In the example below, the workload cluster is running an unsupported Kubernetes version 1.18.17. Before upgrading the cluster, the workload cluster must first be upgraded to a supported Kubernetes version (such as v1.19.x) for the step upgrade process to succeed. Kubernetes does not support skipping minor versions during upgrades, and therefore, all upgrades must be performed sequentially by major version number. For example, upgrades from 1.19.x to 1.20.x and 1.20.x to 1.21.x are allowed, however, upgrading from 1.19.x to 1.21.x is not allowed. The upgrade process has to automatically perform each step upgrade behind the scenes.
 
 ```json
 {
@@ -120,9 +120,9 @@ In the example below, the workload cluster is still running an unsupported Kuber
 
 Follow the steps below to upgrade the management cluster:
 
-1. [Upgrade the Kubernetes version of the workload cluster](upgrade.md).
+1. First, you need to [upgrade the Kubernetes version of the workload cluster](upgrade.md).
 
-2. To initiate the cluster upgrade, run the following command:
+2. To initiate the management cluster upgrade, run the following command:
 
    ```powershell
    PS C:\> Update-AksHci -Verbose
@@ -134,7 +134,7 @@ Follow the steps below to upgrade the management cluster:
    PS C:\> Get-AksHciVersion
    ```
 
-   The output will show the updated version of the management cluster.
+   The output shows the updated version of the management cluster.
 
    ```output
    1.0.4.10928
