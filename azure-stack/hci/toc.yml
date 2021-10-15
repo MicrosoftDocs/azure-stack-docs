@@ -152,6 +152,8 @@
         href: manage/languages.md
       - name: Change privacy settings
         href: manage/change-privacy-settings.md
+      - name: Use BitLocker with Cluster Shared Volumes
+        href: manage/bitlocker-on-csv.md
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
