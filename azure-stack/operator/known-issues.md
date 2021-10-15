@@ -83,7 +83,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
 - Occurrence: Common
 
-## Compute
+<!-- ## Compute -->
+
+## Health and alerts
 
 ### No alerts in Syslog pipeline
 
@@ -207,6 +209,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Resume the update.
 - Occurrence: Rare
 
+### Create failures during patch and update on 4-node Azure Stack Hub environments
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+
+
 ## Portal
 
 ### Administrative subscriptions
@@ -300,14 +309,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all releases.
 - Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This behavior is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
 - Remediation: View the **Properties** blade under **Settings**.
-
-### Virtual machine scale set
-
-#### Create failures during patch and update on 4-node Azure Stack Hub environments
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
 ## Storage
 
