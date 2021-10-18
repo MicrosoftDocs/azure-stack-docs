@@ -10,7 +10,7 @@ author: baziwane
 
 # Upgrade AKS on Azure Stack HCI from an older version using PowerShell
 
-When you upgrade from an older version of AKS on Azure Stack HCI, the main goal of the upgrade process is to ensure your management cluster (or AKS host) is upgraded to the latest version without any interruption. The upgrade process is done in a step-by-step manner, automatically downloading and installing each interim version that you skipped until your management cluster is finally running the latest version.
+When you upgrade from an older version of AKS on Azure Stack HCI, the main goal of the upgrade process is to ensure your management cluster (or AKS host) is upgraded to the latest version with minimal interruption. The upgrade process is done in a step-by-step manner, automatically downloading and installing each interim version that you skipped until your management cluster is finally running the latest version.
 
 ## Before you begin
 
