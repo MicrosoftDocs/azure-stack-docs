@@ -12,7 +12,9 @@
     href: concepts/compare-azure-stack-hub.md
   - name: Release information
     href: release-information.md
-  - name: Release notes
+  - name: 21H2 release notes
+    href: https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173
+  - name: 20H2 release notes
     href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.yml
