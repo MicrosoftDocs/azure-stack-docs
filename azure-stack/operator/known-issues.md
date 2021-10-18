@@ -132,7 +132,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
 - Occurrence: Common
 
-## Compute
+<!-- ## Compute -->
+
+## Health and alerts
 
 ### No alerts in Syslog pipeline
 
@@ -228,7 +230,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Compute
 
-### Stop-Deallocate VM results in MTU configuration removal
+### Stop or start VM
+
+#### Stop-Deallocate VM results in MTU configuration removal
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
