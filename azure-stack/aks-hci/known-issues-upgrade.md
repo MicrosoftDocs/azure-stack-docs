@@ -12,13 +12,21 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
+## AKS on Azure Stack HCI goes out-of-policy if a workload cluster hasn't been created in 60 days
+
+If you created a management cluster but haven't deployed a workload cluster in the first 60 days, you'll be blocked from creating one after that because it's out-of-policy. In this situation, when you run [Update-AksHci](./reference/ps/update-akshci.md), the update process is blocked with the error _Waiting for deployment 'AksHci Billing Operator' to be ready_. If you run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md), it returns successful output, however, if you run [Get-AksHciBillingStatus](./reference/ps/get-akshcibillingstatus.md), the connection status is _OutofPolicy_.
+
+If you haven't deployed a workload cluster in 60 days, the billing goes out of policy. The only way to fix this issue is to redeploy with a clean installation.
+
 ## After upgrading to PowerShell module 1.1.9, this error appears: _Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1’ on node: ‘node1’_ 
 
 This error was resolved in PowerShell module version 1.1.11. Update the Powershell module to version 1.1.11 on all nodes to resolve this issue.
 
 ## During an upgrade, custom node taints, roles, and labels are lost
 
-All custom taints, roles, and labels that are currently on nodes are lost during an upgrade. This issue will be resolved in a later release.
+When upgrading, you may lose all custom taints, roles, and labels that you added to your worker nodes. Since AKS on Azure Stack HCI is a managed service, adding custom taints, labels, and roles when performed outside the provided PowerShell cmdlets or Windows Admin Center is not supported.
+
+To work around this issue, run the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) cmdlet to correctly [create a node pool with taints](./reference/ps/new-akshcinodepool.md#create-a-node-pool-with-taints) for your worker nodes.
 
 ## After a successful upgrade, older versions of PowerShell are not removed
 
