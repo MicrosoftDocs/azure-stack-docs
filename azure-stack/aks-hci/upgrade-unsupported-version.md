@@ -37,81 +37,77 @@ In the example below, the workload cluster is running an unsupported Kubernetes 
 ```json
 {
     "1.0.4.10928":  {
-                     "Comments":  "This is the LATEST Version",
-                     "SupportedKubernetesVersions":  [
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Windows; IsPreview=False}"
-                                                     ],
-                    "CanUpgradeTo":  false,
-                    "Version":  "1.0.4.10928",
-                    "Recommendation":  "Workload Cluster Kubernetes Version v1.18.17 is not in the
-                     list of supported Kubernetes versions (v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.
-                     1 v1.21.2 v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.1 v1.21.2) for 1.0.4.10928. 
-                     Please upgrade your target clusters to one of the kubernetes versions 
-                     supported by 1.0.4.10928 to unblock"
+                        "Comments":  "This is the LATEST Version",
+                        "SupportedKubernetesVersions":  [
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Windows; IsPreview=False}"
+                                                        ],
+                        "CanUpgradeTo":  false,
+                        "Version":  "1.0.4.10928",
+                        "Recommendation":  "Workload Cluster Kubernetes Version v1.18.17 is not in the list of supported Kubernetes versions (v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.1 v1.21.2 v1.19.9 v1.19.11 v1.20.5 v1.20.7 v1.21.1 v1.21.2) for 1.0.4.10928. Please upgrade your target clusters to one of the kubernetes versions supported by 1.0.4.10928 to unblock"
                     },
     "1.0.3.10901":  {
-                    "SupportedKubernetesVersions":  [
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Windows; IsPreview=False}"
-                                                    ],
-                    "CanUpgradeTo":  false,
-                    "Version":  "1.0.3.10901"
+                        "SupportedKubernetesVersions":  [
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.2; OS=Windows; IsPreview=False}"
+                                                        ],
+                        "CanUpgradeTo":  false,
+                        "Version":  "1.0.3.10901"
                     },
     "1.0.2.10723":  {
-                    "SupportedKubernetesVersions":  [
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Windows; IsPreview=False}"
-                                                    ],
-                    "CanUpgradeTo":  false,
-                    "Version":  "1.0.2.10723"
+                        "SupportedKubernetesVersions":  [
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.11; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.7; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.21.1; OS=Windows; IsPreview=False}"
+                                                        ],
+                        "CanUpgradeTo":  false,
+                        "Version":  "1.0.2.10723"
                     },
     "1.0.1.10628":  {
-                    "Comments":  "This is your CURRENT Version",
-                    "SupportedKubernetesVersions":  [
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.14; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.17; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.7; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.2; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.14; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.17; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.7; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.2; OS=Windows; IsPreview=False}",
-                                                        "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}"
-                                                    ],
-                    "CanUpgradeTo":  false,
-                    "Version":  "1.0.1.10628"
+                        "Comments":  "This is your CURRENT Version",
+                        "SupportedKubernetesVersions":  [
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.14; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.17; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.7; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.2; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Linux; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.14; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.18.17; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.7; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.19.9; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.2; OS=Windows; IsPreview=False}",
+                                                            "@{OrchestratorType=Kubernetes; OrchestratorVersion=v1.20.5; OS=Windows; IsPreview=False}"
+                                                        ],
+                        "CanUpgradeTo":  false,
+                        "Version":  "1.0.1.10628"
                     }
 }
 ```
