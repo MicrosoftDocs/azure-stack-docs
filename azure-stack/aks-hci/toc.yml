@@ -77,7 +77,7 @@
                   href: upgrade.md
                 - name: Use Windows Admin Center
                   href: upgrade-kubernetes.md
-          - name: Update the AKS on Azure Stack HCI host
+          - name: Upgrade the AKS on Azure Stack HCI host
             items:
                 - name: Use PowerShell
                   href: update-akshci-host-powershell.md
