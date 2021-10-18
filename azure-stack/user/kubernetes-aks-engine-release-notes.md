@@ -4,10 +4,10 @@ description: Learn the steps you need to take with the update to AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/21/2021
+ms.date: 10/19/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/15/2021
+ms.lastreviewed: 10/19/2021
 
 # Intent: As an Azure Stack Hub user, I would like to update a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver my service in an environment that extends my data center or in a hybrid cloud solution with my cluster in Azure Stack Hub and Azure.
 # Keywords: update ASK engine Azure Stack Hub
@@ -84,13 +84,14 @@ Starting with AKS Engine v0.63.0, the Ubuntu 16.04 distro is not longer a suppor
 
 ## AKS engine and Azure Stack version mapping
 
-| Azure Stack Hub version                    | AKS engine version         |
+| Azure Stack Hub version                        | AKS engine version             |
 |------------------------------------------------|--------------------------------|
 | 1910                                           | 0.43.0, 0.43.1                 |
 | 2002                                           | 0.48.0, 0.51.0                 |
 | 2005                                           | 0.48.0, 0.51.0, 0.55.0, 0.55.4 |
 | 2008                                           | 0.55.4, 0.60.1                 |
-| 2102                                           | 0.60.1, 0.63.0                 |
+| 2102                                           | 0.60.1, 0.63.0, 0.67.0         |
+| 2108                                           | 0.63.0, 0.67.0                 |
 
 ## Kubernetes version upgrade path in AKS engine v0.63.0
 
@@ -101,8 +102,9 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.12                                               | 1.16.14, 1.16.15      |
 | 1.16.14                                               | 1.16.15, 1.17.17      |
 | 1.17.11, 1.17.17                                      | 1.18.18               |
-| 1.18.15, 1.18.18                                      | 1.19.10               |
+| 1.18.15, 1.18.18                                      | 1.19.15, 1.20.11      |
 | 1.19.10                                               | 1.20.6                |
+| 1.20.6                                                | 1.20.11               |
 
 In the API Model json file, please specify the release and version values under the orchestratorProfile section, for example, if you are planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
 
@@ -139,11 +141,12 @@ New features include:
 
 This is the complete set of release notes for Azure and Azure Stack Hub combined:
 
--   https://github.com/Azure/aks-engine/releases/tag/v0.56.0
--   https://github.com/Azure/aks-engine/releases/tag/v0.56.1
--   https://github.com/Azure/aks-engine/releases/tag/v0.60.0
--   https://github.com/Azure/aks-engine/releases/tag/v0.60.1
--   https://github.com/Azure/aks-engine/releases/tag/v0.63.0
+-   https://github.com/Azure/aks-engine/releases/tag/v0.64.0
+-   https://github.com/Azure/aks-engine/releases/tag/v0.65.0
+-   https://github.com/Azure/aks-engine/releases/tag/v0.65.1
+-   https://github.com/Azure/aks-engine/releases/tag/v0.66.0
+-   https://github.com/Azure/aks-engine/releases/tag/v0.66.1
+-   https://github.com/Azure/aks-engine/releases/tag/v0.67.0
 
 ::: moniker-end
 
