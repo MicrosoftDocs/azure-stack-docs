@@ -1,6 +1,6 @@
 ---
-title: Concepts - Upgrade the Azure Kubernetes Services (AKS) on Azure Stack HCI host using PowerShell from an unsupported version
-description: Learn about using PowerShell to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI host (management cluster) from an unsupported version.
+title: Concepts - Upgrade the Azure Kubernetes Services (AKS) on Azure Stack HCI host using PowerShell from an older version
+description: Learn about using PowerShell to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI host (management cluster) from an older version.
 ms.topic: conceptual
 ms.date: 10/13/2021
 ms.custom: 
@@ -8,9 +8,9 @@ ms.author: rbaziwane
 author: baziwane
 ---
 
-# Upgrade AKS on Azure Stack HCI from an unsupported version using PowerShell
+# Upgrade AKS on Azure Stack HCI from an older version using PowerShell
 
-When you upgrade from an unsupported version of AKS on Azure Stack HCI, the main goal of the upgrade process is to ensure your management cluster (or AKS host) is upgraded to the latest version without any interruption. The upgrade process is done in a step-by-step manner, automatically downloading and installing each interim version that you skipped until your management cluster is finally running the latest version.
+When you upgrade from an older version of AKS on Azure Stack HCI, the main goal of the upgrade process is to ensure your management cluster (or AKS host) is upgraded to the latest version without any interruption. The upgrade process is done in a step-by-step manner, automatically downloading and installing each interim version that you skipped until your management cluster is finally running the latest version.
 
 ## Before you begin
 
@@ -26,7 +26,7 @@ Update-Module -Name AksHci -Force -AcceptLicense
 
 ### Check for upgrade prerequisites
 
-Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to check for prerequisites that are required for the upgrade process to succeed. The recommendation section in the output lists the actions that you must perform before you start upgrading your unsupported cluster. 
+Run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to check for prerequisites that are required for the upgrade process to succeed. The recommendation section in the output lists the actions that you must perform before you start upgrading the older cluster. 
 
 ```powershell
 PS C:\> Get-AksHciCluster | ConvertTo-Json      
