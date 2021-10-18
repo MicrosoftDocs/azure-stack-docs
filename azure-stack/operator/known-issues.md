@@ -181,7 +181,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Compute
 
-### Stop-Deallocate VM results in MTU configuration removal
+### Stop or start VM
+
+#### Stop-Deallocate VM results in MTU configuration removal
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
@@ -273,42 +275,50 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Compute
 
-### Stop-Deallocate VM results in MTU configuration
+### Create or delete VM
 
-- Applicable: This issue applies to all supported releases.
-- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
-- Occurrence: Common
-
-### Issues deploying virtual machine scale set with Standard_DS2_v2 size using the portal
+#### Issues deploying virtual machine scale set with Standard_DS2_v2 size using the portal
 
 - Applicable: This issue applies to the 2005 release.
 - Cause: A portal bug causes scale set creation with Standard_DS2_v2 size to fail.
 - Remediation: Use PowerShell or CLI to deploy this virtual machine scale set VM size.
 
-### Issues using VM extensions in Ubuntu Server 20.04
-
-- Applicable: This issue applies to **Ubuntu Server 20.04 LTS**.
-- Cause: Some Linux distributions have transitioned to Python 3.8 and removed the legacy `/usr/bin/python` entrypoint for Python altogether. Linux distribution users who have transitioned to Python 3.x must ensure the legacy `/usr/bin/python` entry point exists before attempting to deploy those extensions to their VMs. Otherwise, the extension deployment might fail.
-- Remediation: Follow the resolution steps in [Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems](/azure/virtual-machines/extensions/issues-using-vm-extensions-python-3) but skip step 2, because Azure Stack Hub does not have the **Run command** functionality.
-
-### NVv4 VM size on portal
+#### NVv4 deployment fails
 
 - Applicable: This issue applies to 2002 and later.
 - Cause: When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD MI25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
 - Remediation: By design in preparation for the Azure Stack Hub GPU preview.
 
-### Consumed compute quota
+#### Subscription is at capacity for Total Regional vCPUs
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Occurrence: Rare
 
-### VM overview blade does not show correct computer name
+### Stop or start VM
+
+#### Stop-Deallocate VM results in MTU configuration removal
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
+- Occurrence: Common
+
+### Configuration and setup
+
+#### VM overview blade does not show correct computer name
 
 - Applicable: This issue applies to all releases.
 - Cause: When viewing details of a VM in the overview blade, the computer name shows as **(not available)**. This behavior is by design for VMs created from specialized disks/disk snapshots, and appears for Marketplace images as well.
 - Remediation: View the **Properties** blade under **Settings**.
+
+### Extensions
+
+#### VM extensions fail on Ubuntu Server 20.04
+
+- Applicable: This issue applies to **Ubuntu Server 20.04 LTS**.
+- Cause: Some Linux distributions have transitioned to Python 3.8 and removed the legacy `/usr/bin/python` entrypoint for Python altogether. Linux distribution users who have transitioned to Python 3.x must ensure the legacy `/usr/bin/python` entry point exists before attempting to deploy those extensions to their VMs. Otherwise, the extension deployment might fail.
+- Remediation: Follow the resolution steps in [Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems](/azure/virtual-machines/extensions/issues-using-vm-extensions-python-3) but skip step 2, because Azure Stack Hub does not have the **Run command** functionality.
 
 ## Storage
 
