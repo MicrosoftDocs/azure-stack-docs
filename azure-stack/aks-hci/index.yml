@@ -69,6 +69,15 @@ landingContent:
           - text: Use persistent volumes
             url: persistent-volume.md
 
+  - title: Upgrade 
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use PowerShell
+            url: update-akshci-host-powershell.md
+          - text: Use Windows Admin Center
+            url: update-akshci-host-windows-admin-center.md
+
   - title: Deploy, manage, and update applications
     linkLists:
       - linkListType: tutorial
