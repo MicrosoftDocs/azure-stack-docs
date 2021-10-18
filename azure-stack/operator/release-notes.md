@@ -97,6 +97,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which one repository failure when uploading to the external SMB share caused the whole infrastructure backup to fail.
 - Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
 - Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
+- Fixed an issue that caused internal load balancers to use external IPs.
 
 ## Security updates
 
