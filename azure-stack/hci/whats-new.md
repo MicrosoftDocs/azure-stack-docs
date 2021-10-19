@@ -6,16 +6,30 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2021
+ms.date: 10/19/2021
 ---
 
 # What's new in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-## What's new in Azure Stack HCI
+## What's new in Azure Stack HCI, version 21H2
 
-Windows Admin Center version 2103 adds a number of features and improvements to Azure Stack HCI, version 20H2, including the following:
+Clusters running Azure Stack HCI, version 21H2 have the following new features:
+
+- **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
+- **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
+- **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
+- **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
+- **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
+- **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
+- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
+
+To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+## What's new in Azure Stack HCI, version 20H2
+
+Windows Admin Center version 2103 added a number of features and improvements to Azure Stack HCI, version 20H2, including the following:
 
 - **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
 

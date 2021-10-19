@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Manage VMs on Azure Stack HCI using Windows PowerShell
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI.
 
