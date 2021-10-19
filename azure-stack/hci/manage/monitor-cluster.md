@@ -11,7 +11,7 @@ ms.date: 05/26/2021
 
 # Monitor Azure Stack HCI clusters from Windows Admin Center
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 You can monitor Azure Stack HCI clusters and its underlying components by using Windows Admin Center or PowerShell.
 
