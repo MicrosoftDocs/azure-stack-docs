@@ -1,19 +1,19 @@
 ---
 title: Azure Stack HCI release information
-description: Release information for Azure Stack HCI, version 20H2.
+description: Release information for Azure Stack HCI
 author: khdownie
 ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/12/2021
+ms.date: 10/19/2021
 ---
 
 # Azure Stack HCI release information
 
-> Applies to: Azure Stack HCI, version 20H2
+> Azure Stack HCI, versions 21H2 and 20H2
 
-Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. This page provides a list of the Azure Stack HCI releases and corresponding OS builds. We recommend keeping your system up to date to enable access to new features, experiences, and integrated security.
+Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. This page provides a list of the Azure Stack HCI releases and corresponding OS builds.
 
 ## Release information tables
 
@@ -21,7 +21,12 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **Version** | **Availability date** | **OS build**      | **Latest revision date** |
 |:------------|:----------------------|:------------------|:-------------------------|
+| 21H2        | 2021-10-19            | 20348.11          | 2021-10-19               |
 | 20H2        | 2020-12-10            | 17784.1408        | 2020-12-10               |
+
+### Azure Stack HCI, version 21H2 (OS build 20348)
+
+See [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173).
 
 ### Azure Stack HCI, version 20H2 (OS build 17784)
 
@@ -59,5 +64,5 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 For more information, see also:
 
-- [Release notes for Azure Stack HCI](https://support.microsoft.com/help/4595086/)
+- [Release notes for Azure Stack HCI, version 20H2](https://support.microsoft.com/help/4595086/)
 - [Release notes for Azure Stack HCI, version 20H2 preview releases](preview-release-notes.md)

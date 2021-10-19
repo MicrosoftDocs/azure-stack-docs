@@ -11,7 +11,7 @@ ms.date: 12/10/2020
 
 # Get started with Azure Stack HCI and Windows Admin Center
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 This topic provides instructions for connecting to an Azure Stack HCI cluster, and for monitoring cluster and storage performance. If you haven't set up a cluster yet, [download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and see [Quickstart: Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md) for instructions.
 

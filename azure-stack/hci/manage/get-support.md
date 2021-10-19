@@ -9,7 +9,7 @@ ms.date: 03/12/2021
 
 # Get support for Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic provides guidance on how to get support for the Azure Stack HCI operating system. Azure Stack HCI follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
 

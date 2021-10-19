@@ -3,14 +3,14 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 06/21/2021
+ms.date: 10/19/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-> Applies to Azure Stack HCI, version v20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Now that you've deployed the Azure Stack HCI operating system, you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
@@ -87,6 +87,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
     - FS-Data-Deduplication module
     - Hyper-V
     - RSAT-AD-PowerShell module
+    - NetworkATC
     - Storage Replica (installed for stretched clusters)
 
 1. On **1.5 Install updates**, click **Install updates** as needed to install any operating system updates. When complete, click **Next**.
@@ -99,6 +100,8 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 Step 2 of the wizard walks you through configuring virtual switches, network adapters, and other networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
 
 For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+
+For information on using Network ATC to simply host networking, see [Simplify host networking using Network ATC](network-atc.md).
 
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
