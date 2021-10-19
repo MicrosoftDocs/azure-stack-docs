@@ -20,7 +20,7 @@ This topic focuses on operating system and feature updates. If you need to take 
 
 ## Install operating system and hardware updates using Windows Admin Center
 
-Windows Admin Center makes it easy to update a cluster and apply operating system and feature updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
+Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
    > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, skip ahead to [Update a cluster using PowerShell](#update-a-cluster-using-powershell).
@@ -51,10 +51,13 @@ Follow these steps to install updates:
 
    :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
 
-   > [!IMPORTANT]
-   > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
+   > [!NOTE]
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
 
 6. When operating system updates are complete, the update status will change to "succeeded." Click **Next: hardware updates** to proceed to the hardware updates screen.
+
+   > [!IMPORTANT]
+   > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
 
 7. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
 
