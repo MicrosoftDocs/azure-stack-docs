@@ -1,6 +1,6 @@
 # Visual Studio and VS Code files
 .settings.json
-.vscode/*
+*/.vscode/*
 .vs/*
 log/
 obj/
