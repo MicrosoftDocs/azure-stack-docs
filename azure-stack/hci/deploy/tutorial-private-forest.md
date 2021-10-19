@@ -171,7 +171,7 @@ start microsoft-edge:
 
 ### Install Windows Admin Center in gateway mode
 
-Using Microsoft Edge, download [this script](https://github.com/microsoft/MSLab/tree/master/Scenarios/AzSHCI%20and%20Cluster%20Creation%20Extension#install-windows-admin-center-in-gw-mode) on the domain controller VM.
+Using Microsoft Edge on the domain controller VM, download [this script](https://github.com/microsoft/MSLab/tree/master/Scenarios/AzSHCI%20and%20Cluster%20Creation%20Extension#install-windows-admin-center-in-gw-mode) to the domain controller VM and save it with a .ps1 file extension.
 
 Right-click on the file, choose **Edit with PowerShell**, and change the value of **$GatewayServerName** in the first line to match the name of your AdminCenter VM without the prefix (for example, AdminCenter). Save the script and run it by right-clicking on the file and selecting **Run with PowerShell**.
 
