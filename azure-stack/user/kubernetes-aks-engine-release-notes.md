@@ -131,7 +131,7 @@ In the API Model json file, please specify the release and version values under 
 If you are interested in participating in a private preview, you can [request preview access](https://forms.office.com/r/yqxXyiDcGG).
 
 New features include:
-- Support for Kubernetes 1.18.18, 1.19.10, 1.20.6
+- Support for Kubernetes 1.19.15 and 1.20.11
 
 ## Known issues
 
