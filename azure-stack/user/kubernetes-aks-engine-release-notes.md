@@ -102,8 +102,8 @@ You can find the current version and upgrade version in the following table for 
 | 1.15.12                                               | 1.16.14, 1.16.15      |
 | 1.16.14                                               | 1.16.15, 1.17.17      |
 | 1.17.11, 1.17.17                                      | 1.18.18               |
-| 1.18.15, 1.18.18                                      | 1.19.15, 1.20.11      |
-| 1.19.10                                               | 1.20.6                |
+| 1.18.15, 1.18.18                                      | 1.19.10               |
+| 1.19.10                                               | 1.19.15, 1.20.11      |
 | 1.20.6                                                | 1.20.11               |
 
 In the API Model json file, please specify the release and version values under the orchestratorProfile section, for example, if you are planning to deploy Kubernetes 1.17.17, the following two values must be set, (see example [kubernetes-azurestack.json](https://aka.ms/aksengine-json-example-raw)):
