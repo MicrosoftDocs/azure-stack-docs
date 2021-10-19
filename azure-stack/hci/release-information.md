@@ -32,6 +32,8 @@ See [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.2038   | 2021-10-19            | [KB 5006741](https://support.microsoft.com/topic/october-19-2021-preview-update-kb5006741-cb2e6fc3-e92d-4168-b1ce-186443c2510a) |
+| 17784.2036   | 2021-10-19            | [KB 5006751](https://support.microsoft.com/topic/october-19-2021-servicing-stack-update-kb5006751-349c013e-959d-42bc-90c5-cac95ebfbec5) |
 | 17784.2005   | 2021-10-12            | [KB 5006679](https://support.microsoft.com/topic/october-12-2021-security-update-kb5006679-4d659940-f2f6-4737-b6ee-066f30ec3158) |
 | 17784.1979   | 2021-09-21            | [KB 5005620](https://support.microsoft.com/topic/september-21-2021-preview-update-kb5005620-142e239e-4f10-43f1-a37c-dab3cfec02ca) |
 | 17784.1950   | 2021-09-14            | [KB 5005567](https://support.microsoft.com/topic/september-14-2021-security-update-kb5005567-a7292cdd-28ee-444c-8f97-a6111e141c23) |
