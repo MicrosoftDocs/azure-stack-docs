@@ -3,13 +3,13 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/27/2021
+ms.date: 10/19/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI, version v20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
@@ -111,12 +111,13 @@ The next step is to install required Windows roles and features on every server 
 - Hyper-V PowerShell
 - RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
+- NetworkATC
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server:
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -124,7 +125,7 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
@@ -141,9 +142,7 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 ## Step 2: Configure host networking
 
-We no longer recommend that you configure host networking manually.
-
-If you are an [Azure Stack HCI preview channel](../manage/preview-channel.md) customer, see [Host networking with Network ATC](network-atc.md) to deploy host networking. 
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, see [Host networking with Network ATC](network-atc.md) to deploy host networking.
 
 Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 

@@ -1,17 +1,17 @@
 ---
-title: Kernel Soft Reboot in Azure Stack HCI
-description: How to reboot faster by using Kernel Soft Reboot (KSR) when updating or servicing Azure Stack HCI clusters.
+title: Enable quick restarts with Kernel Soft Reboot in Azure Stack HCI
+description: How to enable and manage quick restarts by using Kernel Soft Reboot (KSR) when updating or servicing Azure Stack HCI clusters.
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/06/2021
+ms.date: 10/19/2021
 ---
 
-# Kernel Soft Reboot in Azure Stack HCI
+# Enable quick restarts with Kernel Soft Reboot
 
-> Applies to: Azure Stack HCI, version 21H2 Preview
+> Applies to: Azure Stack HCI, version 21H2
 
 New in Azure Stack HCI, version 21H2, Kernel Soft Reboot (KSR) is a premium feature available on all Azure Stack HCI integrated systems. You can use it when updating the cluster to reboot the servers faster than a normal reboot. This topic explains when to use a KSR over a normal reboot and provides instructions on using this feature on Azure Stack HCI.
 
@@ -29,7 +29,7 @@ As this feature bypasses the lengthy and traditional reboot BIOS/FIRMWARE initia
 
 ## Enable Kernel Soft Reboot with Cluster-Aware Updating using PowerShell
 
-In Azure Stack HCI, version 21H2 Preview, you can use PowerShell to set up and manage Kernel Soft Reboot for your Azure Stack HCI cluster.
+In Azure Stack HCI, version 21H2, you can use PowerShell to set up and manage Kernel Soft Reboot for your Azure Stack HCI cluster.
 
 >[!NOTE]
 >The default reboot option for CAU updates is a normal reboot unless Kernel Soft Reboot is explicitly enabled using one of the following two options.
@@ -105,11 +105,11 @@ For additional troubleshooting, see [Save-CauDebugTrace](/powershell/module/clus
 
 ## FAQ
 
-This section answers frequently asked questions about Kernel Soft Reboot on Azure Stack HCI, version 21H2 Preview.
+This section answers frequently asked questions about Kernel Soft Reboot on Azure Stack HCI, version 21H2.
 
 **Can I use Kernel Soft Reboot with Windows Server?**
 
-- No. Kernel Soft Reboot is only available in Azure Stack HCI, version 21H2 Preview and may only work on those validated as Integrated Systems.
+- No. Kernel Soft Reboot is only available in Azure Stack HCI, version 21H2 and may only work on those validated as Integrated Systems.
 
 **How can I tell if my hardware supports Kernel Soft Reboot?**
 

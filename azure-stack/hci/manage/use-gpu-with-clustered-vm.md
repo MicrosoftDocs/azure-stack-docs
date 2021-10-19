@@ -4,12 +4,12 @@ description: This topic provides guidance on how to use GPUs with clustered virt
 author: rick-man
 ms.author: rickman
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 10/19/2021
 ---
 
 # Use GPUs with clustered VMs
 
->Applies to: Azure Stack HCI, version 21H2 Preview
+>Applies to: Azure Stack HCI, version 21H2
 
 This topic provides guidance on how to use graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 
@@ -61,7 +61,7 @@ Prepare the VM for DDA by setting its cache behavior, stop action, and memory-ma
     In PowerShell, run the following cmdlet:
 
    ```PowerShell
-    $vm | Set-ClusterParameter -Name "OfflineAction" -Value 3
+    Get-ClusterResource -name vmname | Set-ClusterParameter -Name "OfflineAction" -Value 3
    ```
 
 1. Assign the resource pool that you created earlier to the VM. This declares to the cluster that the VM requires an assigned device from the `GpuChildPool` pool when it's either started or moved.
@@ -72,13 +72,22 @@ Prepare the VM for DDA by setting its cache behavior, stop action, and memory-ma
     $vm | Add-VMAssignableDevice -ResourcePoolName "GpuChildPool"
    ```
 
+   >[!NOTE]
+   > If you want to add more than one GPU to the VM, first verify that the resource pool has more than one assignable GPU available, and then run the previous command again.
+
 If you start the VM now, the cluster ensures that it is placed on a server with available GPU resources from this cluster-wide pool. The cluster also assigns the GPU to the VM through DDA, which allows the GPU to be accessed from workloads inside the VM.
 
    >[!NOTE]
    > You also need to install drivers from your GPU manufacturer inside the VM so that apps in the VM can take advantage of the GPU assigned to them.
 
+You can also remove an assigned GPU from a VM. To do so, in PowerShell, run the following cmdlet:
+
+   ```PowerShell
+    Get-VMAssignableDevice -VMName $vm | Where-Object { $_.ResourcePoolName -eq "GpuChildPool" } | Remove-VMAssignableDevice
+   ```
+
 ### Fail over a VM with an assigned GPU
-To test the cluster’s ability to keep your GPU workload available, perform a drain operation on the server where the VM is running with an assigned GPU. To drain the server, follow the instructions in [Taking an Azure Stack HCI server offline for maintenance](maintain-servers.md). The cluster will restart the VM on another server in the cluster, as long as another server has sufficient available GPU resources in the pool that you created.
+To test the cluster’s ability to keep your GPU workload available, perform a drain operation on the server where the VM is running with an assigned GPU. To drain the server, follow the instructions in [Failover cluster maintenance procedures](maintain-servers.md). The cluster will restart the VM on another server in the cluster, as long as another server has sufficient available GPU resources in the pool that you created.
 
 ## Next steps
 For more information, see also:

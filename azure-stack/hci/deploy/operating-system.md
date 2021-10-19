@@ -6,12 +6,12 @@ ms.author: v-johcob
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/19/2021
+ms.date: 10/19/2021
 ---
 
 # Deploy the Azure Stack HCI operating system
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
@@ -82,12 +82,10 @@ The Windows System Image Manager tool is available in the Windows Assessment and
 
 ### System Center Virtual Machine Manager (VMM) deployment
 
-You can use System Center Virtual Machine Manager to deploy the Azure Stack HCI operating system on bare-metal hardware, as well as to cluster the servers. To learn about VMM, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements).
+You can use [System Center 2022 Preview](https://aka.ms/SC2022preview) to deploy the Azure Stack HCI, version 21H2 operating system on bare-metal hardware, as well as to cluster and manage the servers. For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal).
 
-For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal).
-
-> [!NOTE]
-> VMM 2019 UR3 and later supports [Azure Stack Hyper Converged Infrastructure (HCI, version 20H2)](/system-center/vmm/deploy-manage-azure-stack-hci).
+> [!IMPORTANT]
+> You can't use Microsoft System Center Virtual Machine Manager 2019 to deploy or manage clusters running Azure Stack HCI, version 21H2. If you're using VMM 2019 to manage your Azure Stack HCI, version 20H2 cluster, don't attempt to upgrade the cluster to version 21H2 without first installing [System Center 2022 Preview](https://aka.ms/SC2022preview).
 
 ### Network deployment
 
