@@ -10,7 +10,7 @@ ms.date: 09/16/2021
 
 # Convert to a stretched Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, version 21H2 Preview; Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This article explains and gives the steps required to create a stretched cluster by adding new server nodes to an existing single-site cluster. You use Windows PowerShell commands to accomplish this.
 

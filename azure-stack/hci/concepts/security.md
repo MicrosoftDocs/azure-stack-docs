@@ -9,7 +9,7 @@ ms.date: 03/15/2021
 
 # Azure Stack HCI security considerations
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 - Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization.
@@ -119,7 +119,7 @@ The following sections recommend advanced security tools and technologies to fur
      
         To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
      
-     - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
+     - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages virtual network devices, such as the software load balancer, data center firewall, gateways, and virtual switches in your infrastructure. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
         To learn more, see [Software Defined Networking (SDN)](/windows-server/networking/sdn/).
 
