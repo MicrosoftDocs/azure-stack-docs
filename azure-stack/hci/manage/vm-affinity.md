@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Create server and site affinity rules for VMs
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Using either Windows Admin Center or Windows PowerShell, you can easily create affinity and anti-affinity rules for your virtual machines (VMs) in a cluster.
 

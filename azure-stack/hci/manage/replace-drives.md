@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Replace failed drives on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 Azure Stack HCI works with direct-attached SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each. If a drive fails, you will need access to the physical server hardware to replace it.
 

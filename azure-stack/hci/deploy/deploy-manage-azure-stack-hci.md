@@ -6,15 +6,17 @@ ms.author: v-anesh
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/29/2021
+ms.date: 10/19/2021
 ---
 
 # Deploy and manage Azure Stack HCI clusters in VMM
 
+> Applies to: Azure Stack HCI, version 20H2
+
 This article provides information about how to set up a Azure Stack HCI, version 20H2 cluster in System Center - Virtual Machine Manager (VMM) 2019 UR3 and later. You can deploy an Azure Stack HCI cluster by provisioning from bare-metal servers.
 
-[Learn more](https://aka.ms/AzureStackHCI) about the new Azure Stack HCI OS.
-
+   > [!IMPORTANT]
+   > If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI, version 20H2 cluster, don't attempt to upgrade the cluster to Azure Stack HCI, version 21H2 without first installing [System Center 2022 Preview](https://aka.ms/SC2022preview).
 
 ## Before you start
 
@@ -46,23 +48,22 @@ Make sure you're running VMM 2019 UR3 or later.
 
 
 > [!NOTE]
-> You must enable S2D when creating a Azure Stack HCI cluster.
-> To enable S2D, in the cluster creation wizard, go to **General Configuration**, under **Specify the cluster name and host group**, select **Enable Storage Spaces Direct**, as shown below:
+> You must enable Storage Spaces Direct when creating a Azure Stack HCI cluster.
+> To enable Storage Spaces Direct, in the cluster creation wizard, go to **General Configuration**, under **Specify the cluster name and host group**, select **Enable Storage Spaces Direct**, as shown below:
 
 ![S2D enabled](./media/s2d/s2d-enable.png)
 
-After you enable a cluster with S2D, VMM does the following:
+After you enable a cluster with Storage Spaces Direct, VMM does the following:
 - The Failover Clustering feature is enabled.
-- Storage replica and data deduplication is enabled.
+- Storage replica and data deduplication are enabled.
 - The cluster is optionally validated and created.
-- S2D is enabled, and a storage array is created with the same name as you provided in the wizard.
+- Storage Spaces Direct is enabled, and a storage array is created with the same name as you provided in the wizard.
 
 If you use PowerShell to create a hyper-converged cluster, the pool and the storage tier is automatically created with the **Enable-ClusterS2D autoconfig=true** option.
 
 After these prerequisites are in place, you provision a cluster, and set up storage resources on it. You can then deploy VMs on the cluster.
 
 Follow these steps:
-
 
 ## Step 1: Provision the cluster
 
@@ -76,13 +77,13 @@ If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these s
 > - When you set up the cluster, select the **Enable Storage Spaces Direct** option on the **General Configuration** page of the **Create Hyper-V Cluster** wizard.
 > - In **Resource Type**, select **Existing servers running a Windows Server operating system**, and select the Hyper-V hosts to add to the cluster.
 > - All the selected hosts should have Azure Stack HCI OS installed.
-> - Since S2D is enabled, the cluster must be validated.
+> - Since Storage Spaces Direct is enabled, the cluster must be validated.
 
 ### Provision a cluster from bare metal machines
 
 > [!NOTE]
-> Typically, S2D node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](/system-center/vmm/hyper-v-bare-metal#sample-script).
-> You can also use this script to configure RDMA, QoS and SET while adding a new node to an existing S2D deployment from bare metal computers.
+> Typically, a Storage Spaces Direct node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](/system-center/vmm/hyper-v-bare-metal#sample-script).
+> You can also use this script to configure RDMA, QoS and SET while adding a new node to an existing Storage Spaces Direct deployment from bare metal computers.
 
 1.	Read the [prerequisites](/system-center/vmm/hyper-v-bare-metal#before-you-start) for bare-metal cluster deployment. Note that:
 
@@ -96,14 +97,14 @@ If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these s
 After the cluster is provisioned and managed in the VMM fabric, you need to set up networking for cluster nodes.
 
 1.	Start by [creating a logical network](/system-center/vmm/network-logical) to mirror your physical management network.
-2.	You need to [set up a logical switch](/system-center/vmm/network-switch) with Switch Embedded Teaming (SET) enabled, so that the switch is aware of virtualization. This switch is connected to the management logical network, and has all of the host virtual adapters that are required to provide access to the management network, or configure storage networking. S2D relies on a network to communicate between hosts. RDMA-capable adapters are recommended.
+2.	You need to [set up a logical switch](/system-center/vmm/network-switch) with Switch Embedded Teaming (SET) enabled, so that the switch is aware of virtualization. This switch is connected to the management logical network, and has all of the host virtual adapters that are required to provide access to the management network, or configure storage networking. Storage Spaces Direct relies on a network to communicate between hosts. RDMA-capable adapters are recommended.
 3.	[Create VM networks](/system-center/vmm/network-virtual).
 
 
 ## Step 3: Configure DCB settings on the Azure Stack HCI cluster
 
 >[!NOTE]
->Configuration of DCB settings is an optional step to achieve high performance during S2D cluster creation workflow. Skip to step 4, if you do not wish to configure DCB settings.
+>Configuration of DCB settings is an optional step to achieve high performance during Storage Spaces Direct cluster creation workflow. Skip to step 4, if you do not wish to configure DCB settings.
 
 ### Recommendations
 - If you have vNICs deployed, for optimal performance, we recommend to map all your vNICs with the corresponding pNICs. Affinities between vNIC and pNIC are set randomly by the operating system, and there could be scenarios where multiple vNICs are mapped to the same pNIC. To avoid such scenarios, we recommend you to manually set affinity between vNIC and pNIC by following the steps listed [here](/system-center/vmm/hyper-v-network#set-affinity-between-vnics-and-pnics).
@@ -151,11 +152,11 @@ After the cluster is provisioned and managed in the VMM fabric, you need to set 
 
 5. Review the summary and select **Finish**.
 
-    An Azure Stack HCI cluster will be created and the DCB parameters are configured on all the S2D nodes.
+    An Azure Stack HCI cluster will be created and the DCB parameters are configured on all the Storage Spaces Direct nodes.
 
     > [!NOTE]
-    > - DCB settings can be configured on the existing Hyper-V S2D clusters by visiting the **Cluster Properties** page, and navigating to **DCB configuration** page.
-    > - Any out-of-band changes to DCB settings on any of the nodes will cause the S2D cluster to be non-compliant in VMM. A Remediate option will be provided in the **DCB configuration** page of cluster properties, which you can use to enforce the DCB settings configured in VMM on the cluster nodes.
+    > - DCB settings can be configured on the existing Hyper-V Storage Spaces Direct clusters by visiting the **Cluster Properties** page, and navigating to **DCB configuration** page.
+    > - Any out-of-band changes to DCB settings on any of the nodes will cause the Storage Spaces Direct cluster to be non-compliant in VMM. A Remediate option will be provided in the **DCB configuration** page of cluster properties, which you can use to enforce the DCB settings configured in VMM on the cluster nodes.
 
 ## Step 4: Register Azure Stack HCI cluster with Azure
 
@@ -195,7 +196,7 @@ If you use PowerShell, the pool and the storage tier is automatically created wi
 
 ## Step 7: Deploy VMs on the cluster
 
-In a hyper-converged topology VMs can be directly deployed on the cluster. Their virtual hard disks are placed on the volumes you created using S2D. You [create and deploy these VMs](/system-center/vmm/provision-vms) just as you would create any other VM.
+In a hyper-converged topology VMs can be directly deployed on the cluster. Their virtual hard disks are placed on the volumes you created using Storage Spaces Direct. You [create and deploy these VMs](/system-center/vmm/provision-vms) just as you would create any other VM.
 
 > [!Important]
 > If the Azure Stack HCI cluster is not registered with Azure or not connected to Azure for more than 30 days post registration, High availability Virtual machine (HAVM) creation will be blocked on the cluster. Refer to step 4 & 5 for cluster registration.

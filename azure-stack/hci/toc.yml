@@ -12,7 +12,9 @@
     href: concepts/compare-azure-stack-hub.md
   - name: Release information
     href: release-information.md
-  - name: Release notes
+  - name: 21H2 release notes
+    href: https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173
+  - name: 20H2 release notes
     href: https://support.microsoft.com/help/4595086
   - name: FAQ
     href: faq.yml
@@ -50,6 +52,8 @@
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
       href: deploy/cluster-set.md
+    - name: Host networking with Network ATC
+      href: deploy/network-atc.md
   - name: Deploy workloads
     items:
     - name: Branch office and edge
@@ -74,6 +78,10 @@
       href: manage/vm-affinity.md
     - name: VM load balancing
       href: manage/vm-load-balancing.md
+    - name: Dynamic CPU compatibility
+      href: manage/processor-compatibility-mode.md
+    - name: Use GPUs with clustered VMs
+      href: manage/use-gpu-with-clustered-vm.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -94,6 +102,10 @@
       href: manage/use-csv-cache.md
     - name: Manage SMB Multichannel
       href: manage/manage-smb-multichannel.md
+    - name: Storage thin provisioning
+      href: manage/thin-provisioning.md
+    - name: Adjustable storage repair speed
+      href: manage/storage-repair-speed.md
   - name: Manage clusters 
     items:
     - name: Management
@@ -102,12 +114,20 @@
         href: manage/cluster.md
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
+      - name: Manage Network ATC
+        href: manage/manage-network-atc.md
       - name: Update the cluster
         href: manage/update-cluster.md
+      - name: Manage quick restarts
+        href: manage/kernel-soft-reboot.md
       - name: Set up a cluster witness
         href: manage/witness.md
     - name: Monitoring
       items:
+      - name: Configure Azure portal to monitor clusters (preview)
+        href: manage/monitor-azure-portal.md
+      - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+        href: manage/azure-stack-hci-insights.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Monitor clusters with Health Service
@@ -134,6 +154,8 @@
         href: manage/languages.md
       - name: Change privacy settings
         href: manage/change-privacy-settings.md
+      - name: Use BitLocker with Cluster Shared Volumes
+        href: manage/bitlocker-on-csv.md
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
@@ -196,7 +218,7 @@
       href: concepts/persistent-memory-health.md
     - name: Nested virtualization
       href: concepts/nested-virtualization.md
-  - name: Networking
+  - name: Host networking
     items:
     - name: Physical network requirements
       href: concepts/physical-network-requirements.md
@@ -238,22 +260,6 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
-  - name: Configure Azure portal to monitor clusters
-    href: manage/monitor-azure-portal.md
-  - name: Monitor multiple clusters with Azure Stack HCI Insights
-    href: manage/azure-stack-hci-insights.md
-  - name: Host networking with Network ATC
-    href: deploy/network-atc.md
-  - name: Use GPUs with clustered VMs
-    href: manage/use-gpu-with-clustered-vm.md
-  - name: Dynamic CPU compatibility
-    href: manage/processor-compatibility-mode.md
-  - name: Storage thin provisioning
-    href: manage/thin-provisioning.md
-  - name: Adjustable storage repair speed
-    href: manage/storage-repair-speed.md
-  - name: Kernel Soft Reboot
-    href: manage/kernel-soft-reboot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
