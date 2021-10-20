@@ -28,7 +28,7 @@ Set-AksHciCluster -name <String>
 ```
 
 > [!NOTE]
-> The parameter set above for the worker nodes will be deprecated in a future release. AKS on Azure Stack HCI is introducing node pools in workload clusters. To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+> The parameter set above for the worker nodes will be deprecated in a future release. AKS on Azure Stack HCI is introducing node pools in workload clusters. This command should only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](new-akshcicluster.md). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 ## Description
 Scale the number of control plane nodes or worker nodes in a cluster. The control plane nodes and the worker nodes must be scaled independently.
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -linuxNodeCount
-The number of Linux nodes in your Kubernetes cluster. Default is 1.
+The number of Linux nodes in your Kubernetes cluster. Default is 1.  This command should only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](new-akshcicluster.md). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 ```yaml
 Type: System.Int32
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -windowsNodeCount
-The number of Windows nodes in your Kubernetes cluster. Default is 1.
+The number of Windows nodes in your Kubernetes cluster. Default is 1.  This command should only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](new-akshcicluster.md). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 ```yaml
 Type: System.Int32
