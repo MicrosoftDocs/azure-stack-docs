@@ -47,7 +47,7 @@ Follow these steps to install updates:
 
    :::image type="content" source="media/update-cluster/operating-system-updates.png" alt-text="Click Next: Install to proceed to installing operating system updates, or click Skip to exclude them" lightbox="media/update-cluster/operating-system-updates.png":::
 
-5. Select **Install** to install the operating system updates. One by one, each server will download and apply the updates. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire updating run can take anywhere from a few minutes to several hours.
+5. Select **Install** to install the operating system updates. One by one, each server will download and apply the updates. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire updating run can take anywhere from a few minutes to several hours. You may be asked to supply your login credentials to Windows Admin Center multiple times.
 
    :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
 
@@ -81,7 +81,7 @@ Microsoft recommends installing new feature updates as soon as possible, using t
 
    :::image type="content" source="media/preview-channel/install-updates.png" alt-text="Review the updates and install them" lightbox="media/preview-channel/install-updates.png":::
 
-4. You'll be able to see the installation progress as in the screenshot below. Because you're updating the operating system with new features, the updates may take a while to complete. You can continue to use Windows Admin Center for other operations during the update process.
+4. You'll be able to see the installation progress as in the screenshot below. Because you're updating the operating system with new features, the updates may take a while to complete. You may be asked to supply your login credentials to Windows Admin Center multiple times.
 
    :::image type="content" source="media/preview-channel/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/preview-channel/updates-in-progress.png":::
 
