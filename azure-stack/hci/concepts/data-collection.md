@@ -6,14 +6,14 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/12/2021
+ms.date: 10/20/2021
 ---
 
 # Azure Stack HCI data collection
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected for General Availability (GA) in December 2020.
+This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
 Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
@@ -59,7 +59,8 @@ Azure Stack HCI collects:
 - Information to measure/correlate reliability of the clustering components
 - Information to track the success of the Cluster Aware Updating (CAU) feature
 - Information to measure/correlate the reliability of the Disaster Recovery feature
-- Information to describe the SMB Bandwidth limits applied to Azure Stack HCI servers
+- Information to describe the SMB bandwidth limits applied to Azure Stack HCI servers
+- Information about SMB and NFS share configuration
 
 ## View this data
 
