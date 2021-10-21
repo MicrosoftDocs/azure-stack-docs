@@ -28,10 +28,10 @@ This article describes the general process to replace hardware components that a
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[Release Notes for Cisco Integrated System for Microsoft Azure Stack Hub](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and sign-in required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and sign-in required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| Fujitsu | JAPAN | [Fujitsu managed service support desk (account and sign-in required)](https://eservice.fujitsu.com/supportdesk-web/) |
+| Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and sign in required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and sign in required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPAN | [Fujitsu managed service support desk (account and sign in required)](https://eservice.fujitsu.com/supportdesk-web/) |
 |  | EMEA | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
-|  | EU | [Fujitsu MySupport (account and sign-in required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+|  | EU | [Fujitsu MySupport (account and sign in required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
 | HPE | All | [HPE ProLiant for Microsoft Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
 | Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
