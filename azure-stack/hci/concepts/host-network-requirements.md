@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Host network requirements for Azure Stack HCI
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
 
@@ -89,7 +89,7 @@ For more information on deploying RDMA, download the document from the [SDN GitH
 
 #### iWARP
 
-iWARP uses the Transmission Control Protocol (TCP), and can be optionally enhanced with Data Center Bridging (DCB) Priority-based Flow Control (PFC) and Enhanced Transmission Service (ETS).
+iWARP uses Transmission Control Protocol (TCP), and can be optionally enhanced with Priority-based Flow Control (PFC) and Enhanced Transmission Service (ETS).
 
 Use iWARP if:
 
@@ -101,7 +101,7 @@ Use iWARP if:
 
 #### RoCE
 
-RoCE uses User Datagram Protocol (UDP), and requires DCB PFC and ETS to provide reliability.
+RoCE uses User Datagram Protocol (UDP), and requires PFC and ETS to provide reliability.
 
 Use RoCE if:
 

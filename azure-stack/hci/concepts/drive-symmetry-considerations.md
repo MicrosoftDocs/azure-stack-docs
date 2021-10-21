@@ -11,7 +11,7 @@ ms.date: 10/29/2020
 
 # Drive symmetry considerations for Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
 
 Azure Stack HCI and Windows Server clusters work best when every server has exactly the same drives.
 

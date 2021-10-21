@@ -6,17 +6,17 @@ ms.author: v-kedow
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/08/2021
+ms.date: 10/19/2021
 ---
 
 # Join the Azure Stack HCI preview channel
 
-> Applies to: Azure Stack HCI, version 22H2 Preview; Azure Stack HCI, version 21H2 Preview
+> Applies to: Azure Stack HCI, version 22H2 Preview
 
 The Azure Stack HCI release preview channel is an opt-in program that lets customers install the next version of the operating system before it's officially released. It's intended for customers who want to evaluate new features, system architects who want to build a solution before conducting a broader deployment, or anyone who wants to see what's next for Azure Stack HCI. There are no program requirements or commitments. Preview builds are available via Windows Update using Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
-   > Microsoft strongly encourages all preview channel participants to update their preview channel clusters to build 22471 (22H2) to avoid being billed when Azure Stack HCI, version 21H2 reaches general availability (GA) in mid-October. If you avoid build 22471 and instead continue applying quality updates to version 21H2, your cluster will become billable when version 21H2 reaches GA. If you stay on 21H2 and don't apply further updates past September 2021, you won't be billed.
+   > Microsoft strongly encourages all Azure Stack HCI, version 21H2 preview channel participants to update their preview channel clusters to build 22471 (22H2) to avoid being billed now that version 21H2 has reached general availability (GA). If you don't install build 22471 and instead continue applying quality updates to version 21H2, your cluster will become billable. If you stay on 21H2 and don't apply further updates past September 2021, you won't be billed.
 
    > [!WARNING]
    > Azure Stack HCI clusters that are managed by System Center shouldn’t join the preview channel yet. System Center 2019 (including Virtual Machine Manager, Operations Manager, and other components) doesn’t yet support this preview. See the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) for the latest updates.
@@ -29,7 +29,7 @@ The Azure Stack HCI release preview channel is an opt-in program that lets custo
 Before joining the preview channel, make sure that all servers in the cluster are online, and that the cluster is [registered with Azure](../deploy/register-with-azure.md). 
 
    > [!IMPORTANT]
-   > If your cluster is running Azure Stack HCI, version 20H2, be sure to apply the latest updates before joining the preview channel. See [Update Azure Stack HCI clusters](update-cluster.md).
+   > If your cluster is still running Azure Stack HCI, version 20H2, be sure to apply the latest Feature updates before joining the preview channel. See [Update Azure Stack HCI clusters](update-cluster.md).
 
 
 1. Make sure you have the latest version of Windows Admin Center installed on a management PC or server.
@@ -125,7 +125,7 @@ To install a preview build using PowerShell, follow these steps. If your cluster
     Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
     ```
 
-7. Check for any further updates and install them. See [Install updates with PowerShell](update-cluster.md#install-updates-with-powershell).
+7. Check for any further updates and install them. See [Install operating system updates using PowerShell](update-cluster.md#install-operating-system-updates-using-powershell).
 
 You're now ready to perform [post installation steps](#post-installation-steps).
 
