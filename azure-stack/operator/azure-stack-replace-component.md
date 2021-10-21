@@ -4,10 +4,10 @@ titleSuffix: Azure Stack Hub
 description: Learn how to replace a hardware component on an Azure Stack Hub integrated system.
 author: PatAltimore
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 10/21/2021
 ms.author: patricka
 ms.reviewer: thoroet 
-ms.lastreviewed: 03/31/2021
+ms.lastreviewed: 10/21/2021
 
 # Intent: As an Azure Stack operator, I want to replace a hardware component in Azure Stack.
 # Keyword: replace hardware component azure stack
@@ -21,6 +21,9 @@ This article describes the general process to replace hardware components that a
 
 > [!CAUTION]  
 > Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack Hub automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).
+
+> [!WARNING]
+> Azure Stack Hub requires that the configuration of all servers in the solution have the same configuration, including for example CPU (model, cores), memory quantity, NIC and link speeds, and storage devices. Azure Stack Hub does not support a change in CPU models during hardware replacement or when adding a scale unit node.
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
