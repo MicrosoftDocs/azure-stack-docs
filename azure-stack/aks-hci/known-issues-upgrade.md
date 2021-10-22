@@ -14,9 +14,9 @@ This article describes known issues and errors you may encounter when upgrading 
 
 ## When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
-When upgrading Kubernetes clusters with an Open Policy Agent (OPA), such as OPA GateKeeper, the process may hang and be unable to complete. This issue may occur because the policy agent is configured to prevent pulling container images from private registries.
+When upgrading Kubernetes clusters with an Open Policy Agent (OPA), such as OPA GateKeeper, the process may hang and unable to complete. This issue can occur because the policy agent is configured to prevent pulling container images from private registries.
 
-To resolve this issue, if you upgrade clusters deployed with an OPA, make sure that your policies allow for pulling images from Azure Container Registry. For an AKS on Azure Stack HCI upgrade, you should add the following endpoint in your policy's whitelist: _ecpacr.azurecr.io_.
+To resolve this issue, if you upgrade clusters deployed with an OPA, make sure that your policies allow for pulling images from Azure Container Registry. For an AKS on Azure Stack HCI upgrade, you should add the following endpoint in your policy's list: _ecpacr.azurecr.io_.
 
 ## AKS on Azure Stack HCI goes out-of-policy if a workload cluster hasn't been created in 60 days
 
