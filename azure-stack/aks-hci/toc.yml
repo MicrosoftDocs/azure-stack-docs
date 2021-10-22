@@ -175,7 +175,7 @@
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI
             href: ../hci/manage/validate-qos.md
-          - name: CredSSP
+          - name: CredSSP in Azure Stack HCI
             href: ../hci/manage/troubleshoot-credssp.md
 
 
