@@ -145,7 +145,7 @@ To fix this issue, you need to manually rotate the token and then restart the KM
    $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo docker container kill <Container ID>"
    ```
 
-## The error _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ when configuring persistent volume claims
+## Configuring persistent volume claims results in the error: _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ 
 
 The permission denied error, _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
 
@@ -178,7 +178,7 @@ Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./refere
 ## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
 If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
-## The error _Cannot index into a null array_ appears when creating an Arc enabled workload cluster
+## Creating an Arc enabled workload cluster results in the error _Cannot index into a null array_
 The error _Cannot index into a null array_ appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
@@ -239,18 +239,11 @@ At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
 > [!NOTE]
 > Your cluster name will be different.
 
-## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
-To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
-time source and that Hyper-V is configured to synchronize time to any virtual machines.
-
 ## Hyper-V manager shows high CPU and/or memory demands for the management cluster
 When you check Hyper-V manager, high CPU and memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
 
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
-
-## PowerShell deployment doesn't check for available memory before creating a new workload cluster
-The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message. If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
@@ -259,19 +252,19 @@ This issue happens because the logic to clean up the first migration runs asynch
 
 To work around this issue, ensure the VM has started successfully on the new node before moving it back to the original node.
 
-## When downloading the AKS on Azure Stack HCI package, the download fails
-If you get an error that says _msft.sme.aks couldn't load_, and the error also says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
+## The AKS on Azure Stack HCI download package fails with the error: _msft.sme.aks couldn't load_
+If you get a _msft.sme.aks couldn't load_ error, and the error message also indicates that loading chunks failed, you should use the latest version of Microsoft Edge or Google Chrome and try again.
 
 ## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
 The deployment of a large cluster may time out after two hours, however, this is a static time-out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
 
 ## Deployment fails on an Azure Stack HCI configured with SDN
-While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has a Software Defined Network (SDN), the deployment fails at cluster creation. 
+While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
 
 ## Load balancer in Azure Kubernetes Service requires DHCP reservation
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
 
-## Get-AksHciLogs command may fail with an exception
+## When using large clusters, the Get-AksHciLogs command may fail with an exception
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or won't generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file, Compress-Archive, has an output file size limit of 2GB. 
 
 ## Creating virtual networks with a similar configuration cause overlap issues
