@@ -310,10 +310,10 @@ The _kube-vip_ pod can go down for two reasons:
 
 To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
 
-## When running **kubect get pods**, pods were stuck in a _Terminating_ state
-When deploying AKS on Azure Stack HCI, and then running `kubect get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node was likely experiencing a lot of memory demand.
+## When running **kubectl get pods**, pods were stuck in a _Terminating_ state
+When deploying AKS on Azure Stack HCI, and then running `kubectl get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node was likely experiencing a lot of memory demand. This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. 
 
-This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then set the CPU and memory amounts.
+To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then ensure the nodes have sufficient CPU and memory amounts. You can find more information in [system requirements](system-requirements.md).
 
 ## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
 When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](./reference/ps/remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
@@ -326,14 +326,6 @@ To resolve this issue, remove a physical node from the cluster and then follow t
 2. Perform routine maintenance, such as re-imaging the machine.
 3. Add the node back to the cluster.
 4. Run `Add-AksHciNode` to register the node with CloudAgent.
-
-## An Arc connection on an AKS cluster cannot be enabled after disabling it.
-To enable an Arc connection after disabling it, run the following [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
-
-```powershell
-Get-AksHciCredential -name myworkloadcluster
-kubectl --kubeconfig=kubeconfig delete secrets sh.helm.release.v1.azure-arc.v1
-```
 
 ## Container storage interface pod stuck in a _ContainerCreating_ state
 A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state as shown in the output below:
@@ -354,17 +346,6 @@ kube-system   kube-proxy-qqnkr            1/1     Terminating         0         
 ```
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
-
-## All pods in a Windows node are stuck in a _ContainerCreating_ state
-In a workload cluster with the Calico network plug-in enabled, all of the pods in a Windows node are stuck in the _ContainerCreating_ state except for the `calico-node-windows daemonset` pod.
-
-To resolve this issue, find the name of the _kube-proxy_ pod on that node and then run the following command: 
-
-```powershell
-kubectl delete pod <KUBE-PROXY-NAME> -n kube-system
-```
-
-All the pods should start on the node.
 
 ## Next steps
 - [Windows Admin Center known issues](known-issues-windows-admin-center.md)
