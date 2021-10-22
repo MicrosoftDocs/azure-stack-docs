@@ -9,7 +9,7 @@ ms.date: 03/15/2021
 
 # Azure Stack HCI security considerations
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 - Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization.

@@ -9,7 +9,7 @@ ms.date: 06/08/2021
 
 # Activate Windows Server VMs using Automatic Virtual Machine Activation
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019 Datacenter Edition and later
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 
 Automatic Virtual Machine Activation (AVMA) is an *optional* feature in Azure Stack HCI that you can use to activate Windows Server VMs running on Azure Stack HCI hosts. This topic explains the benefits of using Automatic Virtual Machine Activation over other activation methods and provides instructions on setting up this feature on Azure Stack HCI.
 
