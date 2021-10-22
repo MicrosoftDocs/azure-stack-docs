@@ -20,7 +20,7 @@ Single-site clusters use Windows Admin Center to [Add or remove servers](add-clu
 
 The first step is to acquire new Azure Stack HCI server hardware from your original OEM vendor, with the same characteristics as the existing server node hardware. Each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
-Refer to your OEM-provided documentation when adding new server hardware for use in a cluster. For more information about Azure Stack HCI Integrated System solution hardware, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+Refer to your OEM-provided documentation when adding new server hardware for use in a cluster. For more information about Azure Stack HCI Integrated System solution hardware, see the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog).
 
 Follow these steps to prep the new server nodes:
 
