@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 10/22/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -13,6 +13,8 @@ ms.reviewer: JasonGerend
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
+
+For information on how to simplify host networking using Network ATC, see [Simplify host networking with Network ATC](../deploy/network-atc.md).
 
 ## Network traffic types
 
@@ -351,6 +353,7 @@ The following shows the details for the example stretched cluster configuration.
 ## Next steps
 
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
+- Learn how to simplify host networking using Network ATC. See [Simplify host networking with Network ATC](../deploy/network-atc.md).
 - Brush up on [failover clustering networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
 - For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
