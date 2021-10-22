@@ -142,6 +142,8 @@ After you've configured your deployment, you must start it. This will install th
 ```powershell
 Install-AksHci
 ```
+> [!WARNING]
+> During installation of your Azure Kuberenetes Service host, a resource of type *Kubernetes - Azure Arc* will be created in the resource group set at registration. Do not delete this resource. It represents your Azure Kuberenetes Service host and can be identified by checking its distribution field for a value of "aks_management". Deleting this resource will result in an out-of-policy deployment.
 
 ## Step 6: Create a Kubernetes cluster
 
