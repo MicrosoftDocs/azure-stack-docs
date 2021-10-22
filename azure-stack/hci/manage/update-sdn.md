@@ -71,7 +71,7 @@ Install updates on each gateway VM one at a time. During the update, the VM may 
 
 1. After a gateway is updated, ensure that the HealthState of the gateway is set to `Healthy` and the State is `Redundant` or `Active` before moving on to the next gateway. If there are no redundant gateways, ensure that the State is `Active` before moving to the next gateway.
 
-    To check the `HealthState` status of a gateway VM, run the following Powershell command on the Network Controller VM:  
+    To check the `HealthState` status of a gateway VM, run the following PowerShell command on the Network Controller VM:  
 
     ~~~powershell
     (Get-NetworkControllerGateway -ConnectionUri <REST uri of the Network Controller deployment> -ResourceId <Resource ID of gateway>).Properties.HealthState
