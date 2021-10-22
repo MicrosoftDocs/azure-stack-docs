@@ -26,7 +26,7 @@ If you haven't deployed a workload cluster in 60 days, the billing goes out of p
 
 ## After upgrading to PowerShell module 1.1.9, this error appears: _Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1’ on node: ‘node1’_ 
 
-This error was resolved in PowerShell module version 1.1.11. Update the Powershell module to version 1.1.11 on all nodes to resolve this issue.
+This error was resolved in PowerShell module version 1.1.11. Update the PowerShell module to version 1.1.11 on all nodes to resolve this issue.
 
 ## During an upgrade, custom node taints, roles, and labels are lost
 
