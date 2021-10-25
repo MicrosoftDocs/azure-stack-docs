@@ -24,7 +24,7 @@ To get started, you’ll need an Azure Stack HCI cluster of at least two servers
    > The Azure Stack HCI Catalog does not yet indicate GPU compatibility or certification information. Follow your manufacturer's instructions for GPU installation.
 
 ## Usage instructions
-This section describes the steps necessary to use either Windows Admin Center or Windows PowerShell to prepare your cluster servers for GPU usage and assign VMs to clustered GPU resource pools. You can also use PowerShell to test automatic restart.
+This section describes the steps necessary to use either Windows Admin Center or Windows PowerShell to prepare your cluster servers for GPU usage. You can assign one or more VMs to a clustered GPU resource pool, and remove a VM from a clustered GPU resource pool. You can also use PowerShell to test automatic restart.
 
 ### Use Windows Admin Center
 Use Windows Admin Center to prepare the cluster, assign a VM to a GPU resource pool, and unassign a VM to a GPU resource pool.
