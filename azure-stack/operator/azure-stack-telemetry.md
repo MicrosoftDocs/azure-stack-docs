@@ -26,11 +26,13 @@ For an Azure Stack Hub operator, telemetry can provide valuable insights into en
 
 ::: moniker range="< azs-1908"
 Azure Stack Hub telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component.
+This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
 ::: moniker-end
+
 ::: moniker range=">= azs-1908"
 Azure Stack Hub telemetry is based on the Windows Server 2019 Connected User Experience and Telemetry component.
-::: moniker-end
 This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker-end
 
 ## Network requirements
 
