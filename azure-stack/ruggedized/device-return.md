@@ -21,8 +21,7 @@ The following table describes the different options for returning a device:
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Standard return           | Customer chooses to return device with the assumption that data on drives will be destroyed and hardware can be refurbished.                                                         |
 | Return without drives     | Customer chooses to keep the data drives and return other hardware. There will be a fee for the drives.                                                                          |
-| Data destruction          | Customer chooses to return the ASH-R, but ensure that Microsoft destroys data-bearing media in compliance with [data destruction rules](/compliance/assurance/assurance-data-bearing-device-destruction). There will be a fee for data destruction. |
-| Secure device destruction | Customer chooses to return entire device and have the device destroyed securely. There will be a fee for secure device destruction.                                            |
+| Keep entire system          | Customer chooses to keep their ASH-R. There will be a Loss fee for keeping the device. |
 
 ## Initiate device return
 
