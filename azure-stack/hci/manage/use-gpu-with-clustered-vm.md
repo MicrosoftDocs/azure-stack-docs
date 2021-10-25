@@ -32,22 +32,29 @@ Use Windows Admin Center to prepare the cluster, assign a VM to a GPU resource p
 To prepare the cluster and assign a VM to a GPU resource pool:
 1. On the **Tools** menu, under **Extensions**, select **GPUs** to open the tool.
 
-   :::image type="content" source="media/use-gpu-with-vm/pgu-extension.png" alt-text="Screenshot of the GPU tool in Windows Admin Center" lightbox="media/use-gpu-with-vm/pgu-extension.png":::
+   :::image type="content" source="media/use-gpu-with-vm/gpu-extension.png" alt-text="Screenshot of the GPU tool in Windows Admin Center" lightbox="media/use-gpu-with-vm/gpu-extension.png":::
 
 1. On tool's main page, select the **GPU pools** tab, and then select **Create GPU pool**.
 
-   :::image type="content" source="media/use-gpu-with-vm/create-pgu-pool.png" alt-text="Screenshot of the Create GPU pools page in Windows Admin Center" lightbox="media/use-gpu-with-vm/create-pgu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-vm/create-gpu-pool.png" alt-text="Screenshot of the Create GPU pools page in Windows Admin Center" lightbox="media/use-gpu-with-vm/create-gpu-pool.png":::
 
 1. On the **New GPU pool** page, specify the following and then select **Save**:
    1. **Server** name
    1. **GPU pool** name
    1. **GPUs** that you want to add to the pool
 
-   :::image type="content" source="media/use-gpu-with-vm/new-pgu-pool.png" alt-text="Screenshot of the New GPU pool page in Windows Admin Center to specify servers, pool name, and GPUs" lightbox="media/use-gpu-with-vm/new-pgu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-vm/new-gpu-pool.png" alt-text="Screenshot of the New GPU pool page in Windows Admin Center to specify servers, pool name, and GPUs" lightbox="media/use-gpu-with-vm/new-gpu-pool.png":::
 
+   After the process completes, you'll receive a success prompt that shows the name of the new GPU pool and the host server.
 
+1. On the **Assign VM to GPU pool** page, specify the following and then select **Assign**:
+   1. **Server** name
+   1. **GPU pool** name
+   1. **Virtual machine** that you want to assign the GPU to from the GPU pool.
 
+   You can also define advanced setting values for memory-mapped IO (MMIO) spaces to determine resource requirements for a single GPU.
 
+   :::image type="content" source="media/use-gpu-with-vm/assign-vm-to-gpu-pool.png" alt-text="Screenshot of the Assign VM to GPU pool page in Windows Admin Center where you assign a VM to a GPU from the GPU pool" lightbox="media/use-gpu-with-vm/assign-vm-to-gpu-pool.png":::
 
 To unassign a VM to a GPU resource pool:
 1. TBD
