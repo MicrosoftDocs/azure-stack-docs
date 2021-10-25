@@ -30,16 +30,27 @@ This section describes the steps necessary to use either Windows Admin Center or
 Use Windows Admin Center to prepare the cluster, assign a VM to a GPU resource pool, and unassign a VM to a GPU resource pool.
 
 To prepare the cluster and assign a VM to a GPU resource pool:
-1. On the **Tools** menmu, under **Extensions**, select **GPUs** to open the feature.
+1. On the **Tools** menu, under **Extensions**, select **GPUs** to open the tool.
 
-:::image type="content" source="media/use-gpu-with-vm/pgu-extension.png" alt-text="New VM screen" lightbox="media/use-gpu-with-vm/pgu-extension.png":::
+   :::image type="content" source="media/use-gpu-with-vm/pgu-extension.png" alt-text="Screenshot of the GPU tool in Windows Admin Center" lightbox="media/use-gpu-with-vm/pgu-extension.png":::
 
-1. TBD
+1. On tool's main page, select the **GPU pools** tab, and them select **Create GPU pool**.
+
+   :::image type="content" source="media/use-gpu-with-vm/create-pgu-pool.png" alt-text="Screenshot of the Create GPU pool page in Windows Admin Center" lightbox="media/use-gpu-with-vm/create-pgu-pool.png":::
+
+1. On the **New GPU pool** page, specify the following and then select **Save**:
+   1. **Server** name
+   1. **GPU pool** name
+   1. **GPUs** that you want to add to the pool
+
+   :::image type="content" source="media/use-gpu-with-vm/new-pgu-pool.png" alt-text="Screenshot of the New GPU pool page in Windows Admin Center to specify servers, pool name, and GPUs" lightbox="media/use-gpu-with-vm/new-pgu-pool.png":::
+
+
 
 
 
 To unassign a VM to a GPU resource pool:
-1. 
+1. TBD
 
 slides 8 and 9
 
