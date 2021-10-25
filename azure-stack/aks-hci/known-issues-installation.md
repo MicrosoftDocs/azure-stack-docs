@@ -201,6 +201,10 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 2. If you get a response back and no time-out, then the basic network path is working. 
 3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
 
+## PowerShell deployment doesn't check for available memory before creating a new workload cluster
+
+The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This issue can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message. If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
+
 ## After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing
 
 After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing. To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](known-issues.md#the-api-server-is-not-responsive-after-several-days).
