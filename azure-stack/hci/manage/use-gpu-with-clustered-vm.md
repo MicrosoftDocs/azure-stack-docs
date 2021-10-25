@@ -24,9 +24,34 @@ To get started, you’ll need an Azure Stack HCI cluster of at least two servers
    > The Azure Stack HCI Catalog does not yet indicate GPU compatibility or certification information. Follow your manufacturer's instructions for GPU installation.
 
 ## Usage instructions
-This section describes the steps necessary to prepare your cluster servers for GPU usage, assign VMs to clustered GPU resource pools, and test automatic restart.
+This section describes the steps necessary to use either Windows Admin Center or Windows PowerShell to prepare your cluster servers for GPU usage and assign VMs to clustered GPU resource pools. You can also use PowerShell to test automatic restart.
 
-### Prepare the cluster
+### Use Windows Admin Center
+Use Windows Admin Center to prepare the cluster, assign a VM to a GPU resource pool, and unassign a VM to a GPU resource pool.
+
+To prepare the cluster and assign a VM to a GPU resource pool:
+1. On the **Tools** menmu, under **Extensions**, select **GPUs** to open the feature.
+
+:::image type="content" source="media/use-gpu-with-vm/pgu-extension.png" alt-text="New VM screen" lightbox="media/use-gpu-with-vm/pgu-extension.png":::
+
+1. TBD
+
+
+
+To unassign a VM to a GPU resource pool:
+1. 
+
+slides 8 and 9
+
+
+
+
+
+
+### Use PowerShell
+Use PowerShell to prepare the cluster, assign a VM to a GPU resource pool, and to test automatic restart.
+
+#### Prepare the cluster
 Prepare the GPUs in each server by installing security mitigation drivers on each server, disabling the GPUs, and dismounting them from the host according to the instructions in [Deploy graphics devices using Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda). Depending on your hardware vendor, you may also need to configure any GPU licensing requirements.
 
 1. Create a new empty resource pool on each server that will contain the clustered GPU resources. Make sure to provide the same pool name on each server.
@@ -51,7 +76,7 @@ Prepare the GPUs in each server by installing security mitigation drivers on eac
 
 You now have a cluster-wide resource pool (named `GpuChildPool`) that is populated with assignable GPUs. The cluster will use this pool to determine VM placement for any started or moved VMs that are assigned to the GPU resource pool.
 
-### Assign a VM to a GPU resource pool
+#### Assign a VM to a GPU resource pool
 First, either create a new VM in your cluster, or find an existing VM.
 
 Prepare the VM for DDA by setting its cache behavior, stop action, and memory-mapped I/O (MMIO) properties according to the instructions in [Deploy graphics devices using Discrete Device Assignment](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda).
@@ -86,7 +111,7 @@ You can also remove an assigned GPU from a VM. To do so, in PowerShell, run the 
     Get-VMAssignableDevice -VMName $vm | Where-Object { $_.ResourcePoolName -eq "GpuChildPool" } | Remove-VMAssignableDevice
    ```
 
-### Fail over a VM with an assigned GPU
+#### Fail over a VM with an assigned GPU
 To test the cluster’s ability to keep your GPU workload available, perform a drain operation on the server where the VM is running with an assigned GPU. To drain the server, follow the instructions in [Failover cluster maintenance procedures](maintain-servers.md). The cluster will restart the VM on another server in the cluster, as long as another server has sufficient available GPU resources in the pool that you created.
 
 ## Next steps
