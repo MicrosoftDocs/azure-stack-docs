@@ -22,8 +22,7 @@ This article describes the general process to replace hardware components that a
 > [!CAUTION]  
 > Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack Hub automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).
 
-> [!WARNING]
-> Azure Stack Hub requires that the configuration of all servers in the solution have the same configuration, including for example CPU (model, cores), memory quantity, NIC and link speeds, and storage devices. Azure Stack Hub does not support a change in CPU models during hardware replacement or when adding a scale unit node.
+[!INCLUDE [Add node warning](../includes/operator-add-node-warning.md)]
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -38,7 +37,7 @@ This article describes the general process to replace hardware components that a
 
 Non hot-swappable components include the following items:
 
-- CPU*
+- CPU (must be of the same type (model, cores)*
 - Memory*
 - Motherboard/baseboard management controller (BMC)/video card
 - Disk controller/host bus adapter (HBA)/backplane

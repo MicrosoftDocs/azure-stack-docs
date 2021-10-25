@@ -29,7 +29,7 @@ Take into consideration the following limitations when adding a new node:
 - The operation to add a new node can take several hours or days to complete. There isn't an impact to running workloads on the system while another scale unit node is added.
 - The operation to add another scale unit Node includes two distinct phases: *compute* and *storage*.
 - During the compute expansion phase, your Azure Stack Hub will show a state of **Expanding**. After the compute expansion completes, and the storage expansion is running, the stamp will show a state of **Configuring Storage**.
-Let your Azure Stack Hub return to the **Running** state before adding another node. This means when adding multiple nodes you will need to add a node and wait for the state to return to **Running** before adding another node. 
+Let your Azure Stack Hub return to the **Running** state before adding another node. This means when adding multiple nodes you will need to add a node and wait for the state to return to **Running** before adding the next node.
 
 > [!WARNING]  
 > Don't attempt any of the following operations while an add scale unit node operation is already in progress:
