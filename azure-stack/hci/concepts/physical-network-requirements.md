@@ -144,10 +144,11 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 ### Disadvantages of switchless connections
 
-- As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
 - More planning is required for IP and subnet addressing schemes.
-- Provides only local storage access. VM traffic, management traffic, and other traffic requiring North-South access cannot use these adapters.
-- Generally does not scale well beyond three-node clusters.
+- Provides only local storage access. Management traffic, VM traffic, and other traffic requiring North-South access cannot use these adapters.
+- As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
+- Does not scale well beyond three-node clusters. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
+- Cluster expansion is complex requiring hardware and software configuration changes.
 
 ## Next steps
 
