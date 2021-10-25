@@ -289,6 +289,9 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 
 Once the feature updates are installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
 
+   > [!IMPORTANT]
+   > Azure Stack HCI clusters running Storage Replica will require each server to be restarted a second time after the 21H2 Feature update is complete, before performing the post installation steps. This is a known issue.
+
 1. **Update the cluster functional level.**
 
    We recommend updating the cluster functional level as soon as possible. If you installed the feature updates with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox, you can skip this step.
