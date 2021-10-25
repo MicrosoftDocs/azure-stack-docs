@@ -135,6 +135,8 @@
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
+      - name: Validate datacenter network integration
+        href: azure-stack-validate-network.md          
     - name: Deployment worksheet
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
