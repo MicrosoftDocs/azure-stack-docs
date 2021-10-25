@@ -11,7 +11,7 @@ ms.date: 09/30/2020
 
 # Manage SMB Multichannel
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows 10
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows 10
 
 SMB Multichannel is part of the Server Message Block (SMB) 3.0 protocol, which increases network performance and the availability of file servers.
 

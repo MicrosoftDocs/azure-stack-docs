@@ -22,7 +22,7 @@ The platform’s flexibility is especially important for mission critical databa
 This section describes at a high level how to acquire hardware for SQL Server on Azure Stack HCI, and use Windows Admin Center to manage the operating system on your servers. Information on setting up SQL Server, monitoring and performance tuning, and using High Availability (HA) and Azure hybrid services is included.
 
 ### Step 1: Acquire hardware from the Azure Stack HCI Catalog
-First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
+First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
 Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
