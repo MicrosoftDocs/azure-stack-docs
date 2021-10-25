@@ -20,6 +20,8 @@ You can increase the overall capacity of an existing scale unit by adding anothe
 
 To add a scale unit node, sign in to in Azure Stack Hub. Run the tools from your hardware equipment manufacturer (OEM). The OEM tool runs on the hardware lifecycle host (HLH) to make sure the new physical computer matches the same firmware level as existing nodes.
 
+[!INCLUDE [Add node warning](../includes/operator-add-node-warning.md)]
+
 The following flow diagram shows the general process to add a scale unit node:
 
 ![Add scale unit flow](media/azure-stack-add-scale-node/add-node-flow.svg)
