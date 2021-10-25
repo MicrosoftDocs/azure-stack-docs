@@ -9,7 +9,7 @@ ms.date: 11/17/2020
 
 # Use DISKSPD to test workload storage performance
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 This topic provides guidance on how to use DISKSPD to test workload storage performance. You have an Azure Stack HCI cluster set up, all ready to go. Great, but how do you know if you're getting the promised performance metrics, whether it be latency, throughput, or IOPS? This is when you may want to turn to DISKSPD. After reading this topic, you'll know how to run DISKSPD, understand a subset of parameters, interpret output, and gain a general understanding of the variables that affect workload storage performance.
 

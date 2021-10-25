@@ -9,7 +9,7 @@ ms.date: 07/21/2020
 
 # Change languages in Azure Stack HCI
 
->Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 You can change your preferred language in a management PC, Windows Admin Center, Microsoft Edge, and the Azure Stack HCI operating system on the servers that you manage. Windows Admin Center remains in your language of choice regardless of language changes in these other resources.
 

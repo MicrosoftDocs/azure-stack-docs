@@ -11,7 +11,7 @@ ms.date: 09/13/2021
 ---
 # What is Software Load Balancer \(SLB\) for SDN?
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN)](software-defined-networking.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
 
