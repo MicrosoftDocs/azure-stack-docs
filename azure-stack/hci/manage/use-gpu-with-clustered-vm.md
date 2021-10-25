@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use GPUs with clustered virt
 author: rick-man
 ms.author: rickman
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 11/02/2021
 ---
 
 # Use GPUs with clustered VMs
