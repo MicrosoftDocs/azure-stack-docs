@@ -34,9 +34,9 @@ To prepare the cluster and assign a VM to a GPU resource pool:
 
    :::image type="content" source="media/use-gpu-with-vm/pgu-extension.png" alt-text="Screenshot of the GPU tool in Windows Admin Center" lightbox="media/use-gpu-with-vm/pgu-extension.png":::
 
-1. On tool's main page, select the **GPU pools** tab, and them select **Create GPU pool**.
+1. On tool's main page, select the **GPU pools** tab, and then select **Create GPU pool**.
 
-   :::image type="content" source="media/use-gpu-with-vm/create-pgu-pool.png" alt-text="Screenshot of the Create GPU pool page in Windows Admin Center" lightbox="media/use-gpu-with-vm/create-pgu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-vm/create-pgu-pool.png" alt-text="Screenshot of the Create GPU pools page in Windows Admin Center" lightbox="media/use-gpu-with-vm/create-pgu-pool.png":::
 
 1. On the **New GPU pool** page, specify the following and then select **Save**:
    1. **Server** name
