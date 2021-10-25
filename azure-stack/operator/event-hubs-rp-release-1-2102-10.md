@@ -30,6 +30,18 @@ There are no fixes in this release.
 
 [!INCLUDE [secret rotation related known issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
+### Limit on namespace-level authorization rule is 12 even if portal allows more  
+
+- Applicable: This issue applies to release 1.2102.0.0 of Event Hubs on Azure Stack Hub.
+- Cause: A known internal limitation.
+- Remediation: None at this time. A fix is being worked on to increase the limit.
+
+### Namespace creation using PowerShell and CLI modules fails with error
+
+- Applicable: This issue applies to all supported releases of Event Hubs on Azure Stack Hub.
+- Cause: A known design gap in the SDK modules.
+- Remediation: Other methods for namespace creation can be used, including an Azure Resource Manager (ARM) template or REST API.
+
 ## Next steps
 
 - For more information, start with the [Event Hubs on Azure Stack Hub operator overview](event-hubs-rp-overview.md).
