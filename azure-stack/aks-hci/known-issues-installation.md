@@ -92,6 +92,9 @@ To resolve this issue, use the following steps:
 ## After a failed installation, running Install-AksHci does not work
 If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshci.md), you should run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
 
+## When running Get-AksHciCluster, a _release version not found_ error occurs
+When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired. To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build.
+
 ## During deployment, the error _Waiting for pod ‘Cloud Operator’ to be ready_ appears
 When attempting to deploy an AKS on Azure Stack HCI cluster on an Azure VM, the installation was stuck at _Waiting for pod 'Cloud Operator' to be ready..._, and then failed and timed out after two hours. Attempts to troubleshoot by checking the gateway and DNS server showed they were working appropriately. Checks to see if there was an IP or MAC address conflict showed none were found. When viewing the logs, it showed that the VIP pool had not reached the logs. There was a restriction on pulling the container image using `sudo docker pull ecpacr.azurecr.io/kube-vip:0.3.4` that returned a Transport Layer Security (TLS) timeout instead of _unauthorized_. 
 
@@ -163,6 +166,9 @@ If you're using Azure Arc and have multiple tenant IDs, run the following comman
 ```azurecli
 az login -tenant <tenant>
 ```
+
+## Deployment fails on an Azure Stack HCI configured with SDN
+While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
 
 ## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
 
