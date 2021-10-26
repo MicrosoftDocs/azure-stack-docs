@@ -145,7 +145,7 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 ## Step 2: Configure host networking
 
-Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../concepts/network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
 The following represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
 
@@ -161,7 +161,7 @@ This section covers the following deployment tasks:
 
 - Validate automatic remediation
 
-If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#Requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
+If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
 
 ### Configure an intent
 
