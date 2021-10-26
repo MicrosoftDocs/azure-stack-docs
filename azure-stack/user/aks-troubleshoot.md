@@ -3,10 +3,10 @@ title: Troubleshoot the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to collect logs and troubleshoot your AKS cluster on Azure Stack Hub.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 10/26/201
+ms.date: 10/26/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/26/201
+ms.lastreviewed: 10/26/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference

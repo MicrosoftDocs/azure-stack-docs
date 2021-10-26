@@ -3,10 +3,10 @@ title: Troubleshoot for Azure Container Registry on Azure Stack Hub
 description: Find answers to common issues with Azure Container Registry on Azure Stack Hub
 author: mattbriggs
 ms.topic: reference
-ms.date: 10/26/201
+ms.date: 10/26/2021
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 10/26/201
+ms.lastreviewed: 10/26/2021
 
 # Intent: As an Azure Stack user, I want to XXX so I can XXX.
 # Keyword: XXX
