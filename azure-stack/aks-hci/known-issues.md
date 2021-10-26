@@ -57,9 +57,6 @@ When running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), the
 
 To resolve this issue, restart CloudAgent. 
 
-## When running Get-AksHciCluster, a _release version not found_ error occurs
-When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired. To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build. 
-
 ## In a workload cluster with static IP, all pods in a node are stuck in a _ContainerCreating_ state
 In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a _Connection timed out_ error.
 
@@ -145,7 +142,7 @@ To fix this issue, you need to manually rotate the token and then restart the KM
    $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo docker container kill <Container ID>"
    ```
 
-## The error _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ when configuring persistent volume claims
+## Configuring persistent volume claims results in the error: _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ 
 
 The permission denied error, _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
 
@@ -178,7 +175,7 @@ Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./refere
 ## Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
 If you run [Uninstall-AksHci](./reference/ps/./uninstall-akshci.md) when AKS on Azure Stack HCI is not installed, you'll receive the error message: _Cannot bind argument to parameter 'Path' because it is null_. You can safely ignore the error message as there is no functional impact.
 
-## The error _Cannot index into a null array_ appears when creating an Arc enabled workload cluster
+## Creating an Arc enabled workload cluster results in the error _Cannot index into a null array_
 The error _Cannot index into a null array_ appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
@@ -239,18 +236,11 @@ At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
 > [!NOTE]
 > Your cluster name will be different.
 
-## Time synchronization must be configured across all physical cluster nodes and in Hyper-V
-To ensure gMSA and AD authentication works, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or other
-time source and that Hyper-V is configured to synchronize time to any virtual machines.
-
 ## Hyper-V manager shows high CPU and/or memory demands for the management cluster
 When you check Hyper-V manager, high CPU and memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
 
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have "Full Control" permission to create AD objects in the Active Directory container the server and service objects are created in. 
-
-## PowerShell deployment doesn't check for available memory before creating a new workload cluster
-The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message. If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 When using the cluster administration tool to move a VM from one node (Node A) to another node (Node B) in the Azure Stack HCI cluster, the VM may fail to start on the new node. After moving the VM back to the original node, it will fail to start there as well.
@@ -259,19 +249,16 @@ This issue happens because the logic to clean up the first migration runs asynch
 
 To work around this issue, ensure the VM has started successfully on the new node before moving it back to the original node.
 
-## When downloading the AKS on Azure Stack HCI package, the download fails
-If you get an error that says _msft.sme.aks couldn't load_, and the error also says that loading chunks failed, use the latest version of Microsoft Edge or Google Chrome and try again.
+## The AKS on Azure Stack HCI download package fails with the error: _msft.sme.aks couldn't load_
+If you get a _msft.sme.aks couldn't load_ error, and the error message also indicates that loading chunks failed, you should use the latest version of Microsoft Edge or Google Chrome and try again.
 
 ## New-AksHciCluster times out when creating an AKS cluster with 200 nodes 
 The deployment of a large cluster may time out after two hours, however, this is a static time-out. You can ignore this time out occurrence as the operation is running in the background. Use the `kubectl get nodes` command to access your cluster and monitor the progress. 
 
-## Deployment fails on an Azure Stack HCI configured with SDN
-While deploying Azure Kubernetes Service on an Azure Stack HCI cluster that has a Software Defined Network (SDN), the deployment fails at cluster creation. 
-
 ## Load balancer in Azure Kubernetes Service requires DHCP reservation
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool. 
 
-## Get-AksHciLogs command may fail with an exception
+## When using large clusters, the Get-AksHciLogs command may fail with an exception
 With large clusters, the `Get-AksHciLogs` command may throw an exception, fail to enumerate nodes, or won't generate the c:\wssd\wssdlogs.zip output file. This is because the PowerShell command to zip a file, Compress-Archive, has an output file size limit of 2GB. 
 
 ## Creating virtual networks with a similar configuration cause overlap issues
@@ -310,10 +297,10 @@ The _kube-vip_ pod can go down for two reasons:
 
 To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
 
-## When running **kubect get pods**, pods were stuck in a _Terminating_ state
-When deploying AKS on Azure Stack HCI, and then running `kubect get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node was likely experiencing a lot of memory demand.
+## When running **kubectl get pods**, pods were stuck in a _Terminating_ state
+When deploying AKS on Azure Stack HCI, and then running `kubectl get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node was likely experiencing a lot of memory demand. This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. 
 
-This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then set the CPU and memory amounts.
+To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then ensure the nodes have sufficient CPU and memory amounts. You can find more information in [system requirements](system-requirements.md).
 
 ## Running the Remove-ClusterNode command evicts the node from the failover cluster, but the node still exists
 When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](./reference/ps/remove-akshcinode.md) is not run afterwards, the node will still exist in CloudAgent.
@@ -326,14 +313,6 @@ To resolve this issue, remove a physical node from the cluster and then follow t
 2. Perform routine maintenance, such as re-imaging the machine.
 3. Add the node back to the cluster.
 4. Run `Add-AksHciNode` to register the node with CloudAgent.
-
-## An Arc connection on an AKS cluster cannot be enabled after disabling it.
-To enable an Arc connection after disabling it, run the following [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command as an administrator, where `-Name` is the name of your workload cluster.
-
-```powershell
-Get-AksHciCredential -name myworkloadcluster
-kubectl --kubeconfig=kubeconfig delete secrets sh.helm.release.v1.azure-arc.v1
-```
 
 ## Container storage interface pod stuck in a _ContainerCreating_ state
 A new Kubernetes workload cluster was created with Kubernetes version 1.16.10, and then updated to 1.16.15. After the update, the `csi-msk8scsi-node-9x47m` pod was stuck in the _ContainerCreating_ state, and the `kube-proxy-qqnkr` pod was stuck in the _Terminating_ state as shown in the output below:
@@ -354,17 +333,6 @@ kube-system   kube-proxy-qqnkr            1/1     Terminating         0         
 ```
 
 Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
-
-## All pods in a Windows node are stuck in a _ContainerCreating_ state
-In a workload cluster with the Calico network plug-in enabled, all of the pods in a Windows node are stuck in the _ContainerCreating_ state except for the `calico-node-windows daemonset` pod.
-
-To resolve this issue, find the name of the _kube-proxy_ pod on that node and then run the following command: 
-
-```powershell
-kubectl delete pod <KUBE-PROXY-NAME> -n kube-system
-```
-
-All the pods should start on the node.
 
 ## Next steps
 - [Windows Admin Center known issues](known-issues-windows-admin-center.md)
