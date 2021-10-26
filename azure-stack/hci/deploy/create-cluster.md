@@ -230,8 +230,8 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. On **Step 3.2 Deploy Networking**, click **Apply intents**. This may take a few minutes to complete.
 
-        > [!NOTE]
-        > This step only appears if you selected **Define intents with Network ATC** for step **1.8 Choose host networking**.
+    > [!NOTE]
+    > This step only appears if you selected **Define intents with Network ATC** for step **1.8 Choose host networking**.
 
 1. On **3.3 Validate the cluster**, select **Validate**. Validation may take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production.
 
