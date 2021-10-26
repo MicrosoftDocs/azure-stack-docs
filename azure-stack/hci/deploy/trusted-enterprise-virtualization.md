@@ -26,7 +26,7 @@ The hypervisor, the most privileged level of system software, sets and enforces 
 This section describes at a high level how to acquire hardware to deploy a highly secure infrastructure that uses trusted enterprise virtualization on Azure Stack HCI and Windows Admin Center for management.
 
 ### Step 1: Acquire hardware for trusted enterprise virtualization on Azure Stack HCI
-First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
+First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
 Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 
