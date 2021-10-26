@@ -1,18 +1,18 @@
 ---
-title: Using Azure Kubernetes Service on Azure Stack Hub in the portal
+title: Use Azure Kubernetes Service on Azure Stack Hub in the portal
 description: Learn how to use Azure Kubernetes Service (ASK) on Azure Stack Hub in the portal.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/25/2021
+ms.date: 10/26/201
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/25/2021
+ms.lastreviewed: 10/26/201
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
 ---
 
-# Using Azure Kubernetes Service on Azure Stack Hub in the portal
+# Use Azure Kubernetes Service on Azure Stack Hub in the portal
 
 You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AKS), to discover, create, scale, upgrade, and delete AKS clusters.
 

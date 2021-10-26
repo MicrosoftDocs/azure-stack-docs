@@ -1,18 +1,18 @@
 ---
-title: Using Azure Kubernetes Service on Azure Stack Hub with the CLI
+title: Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/25/2021
+ms.date: 10/26/201
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/25/2021
+ms.lastreviewed: 10/26/201
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
 ---
 
-# Using Azure Kubernetes Service on Azure Stack Hub with the CLI
+# Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 
 This is a guide to get you started using the Azure Kubernetes Service (AKS) service on Azure Stack Hub. This article describes the main set of scenarios to get you familiarized with AKS on Azure Stack Hub. The functionality available in Azure Stack Hub is a [subset](aks-overview.md) of what is available in global Azure.
 

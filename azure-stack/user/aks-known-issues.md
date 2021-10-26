@@ -3,10 +3,10 @@ title: Known issues for the Azure Kubernetes Service on Azure Stack Hub
 description: Learn about working with Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/25/2021
+ms.date: 10/26/201
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/25/2021
+ms.lastreviewed: 10/26/201
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -24,11 +24,11 @@ AKS on Hub is on public preview, no production support is offered for this featu
 
 ### Why can't I run some of the AKS commands I use in Azure?
 
-Not all Azure AKS features, APIs, and Azure CLI commands are supported by AKS on Azure Stack Hub, see [the overview article](aks-overview.md). and the table of [supported commands](aks-commands.md). You can use the Azure documentation, but you should be mindful of the limitations on Azure Stack Hub
+Not all Azure AKS features, APIs, and Azure CLI commands are supported by AKS on Azure Stack Hub, see [the overview article](aks-overview.md). and the table of [supported commands](aks-commands.md). You can use the Azure documentation, but you should be mindful of the limitations on Azure Stack Hub.
 
 ### Can I use Azure AD or AD FS integrated with my AKS clusters?
 
-There is no support for Azure Active Director (Azure AD) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration in the public preview 
+There is no support for Azure Active Director (Azure AD) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration in the public preview. 
 
 ### Can I use AKS cluster Autoscaler in AKS on Azure Stack Hub?
 
@@ -36,7 +36,7 @@ There is no support for cluster Autoscaler in the public preview.
 
 ### Do I need to uninstall the preview of AKS and ACR before installing the Azure Stack Hub 2108 Update?
 
-Yes, the preview for AKS and Azure Container Registry (ACR) must be uninstalled before installing Azure Stack Hub 2108
+Yes, the preview for AKS and Azure Container Registry (ACR) must be uninstalled before installing Azure Stack Hub 2108.
 
 ### After installing Azure Stack Hub Update 2108, would I need to uninstall AKS or ACR again for any Azure Stack Hub Update?
 

@@ -3,10 +3,10 @@ title: Get the resource ID for Azure Container Registry (ACR) and Azure Kubernet
 description: Learn how to get the resource ID for Azure Container Registry (ACR) and Azure Kubernetes Service (AKS) for Azure Stack Hub
 author: mattbriggs
 ms.topic: how-to
-ms.date: 08/20/2021
+ms.date: 10/26/201
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 08/20/2021
+ms.lastreviewed: 10/26/201
 
 # Intent: As an Azure Stack user, I want to get the resource ID for ACR and AKS from the portal in Azure public so I can provide this to support.
 # Keyword: resource ID for ACR and AKS
