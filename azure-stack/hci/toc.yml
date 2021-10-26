@@ -118,6 +118,8 @@
         href: manage/manage-network-atc.md
       - name: Update the cluster
         href: manage/update-cluster.md
+      - name: Update SDN infrastructure
+        href: manage/update-sdn.md 
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
       - name: Set up a cluster witness
