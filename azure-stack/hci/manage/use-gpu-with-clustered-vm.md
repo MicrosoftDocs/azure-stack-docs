@@ -60,15 +60,13 @@ To prepare the cluster and assign a VM to a GPU resource pool:
 
    :::image type="content" source="media/use-gpu-with-vm/gpu-assigned-to-vm-confirmed.png" alt-text="Screenshot of success prompt showing GPU assigned to a VM and the VM displaying under Assigned VMs" lightbox="media/use-gpu-with-vm/gpu-assigned-to-vm-confirmed.png":::
 
-To unassign a VM to a GPU resource pool:
-1. TBD
+To unassign a VM from a GPU resource pool:
+1. On the **GPU pools** tab, select the GPU that you want to unassign, and then select **Unassign VM**.
+1. On the **Unassign VM from GPU pool** page, in the **Virtual machines** list box, specify the name of the VM, and then select **Unassign**.
 
-slides 8 and 9
+   :::image type="content" source="media/use-gpu-with-vm/unassign-vm-from-gpu-pool.png" alt-text="Screenshot of Unassign VM from GPU pool page showing VM to be unassigned" lightbox="media/use-gpu-with-vm/unassign-vm-from-gpu-pool.png":::
 
-
-
-
-
+   After the process completes, you'll receive a success prompt that the VM has been unassigned from the GPU pool, and under **Assignment status** the GPU shows **Available (Not assigned)**.
 
 ### Use PowerShell
 Use PowerShell to prepare the cluster, assign a VM to a GPU resource pool, and to test automatic restart.
