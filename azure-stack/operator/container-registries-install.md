@@ -24,7 +24,7 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
 ## Prerequisites
 
 * **Azure Stack Hub version**  
-    You can only enable the Microsoft Azure Container in an Azure Stack Hub integrated system running the 2108 update, and later releases. Install the Azure Stack Hub update before you complete the steps in this article. The Azure Container Registry (ACR) service is not supported on the Azure Stack Developer Kit (ASDK) deployments.
+    You can only enable the Microsoft Azure Container in an Azure Stack Hub integrated system running the 2108 update and later releases. Install the Azure Stack Hub update before you complete the steps in this article. The Azure Container Registry (ACR) service is not supported on the Azure Stack Developer Kit (ASDK) deployments.
 * **Certificate requirements**  
     The configuration of the ACR on your Azure Stack Hub system adds a new data path that requires a certificate. The certificate must meet the same requirements as the other certificates required to install and operate Azure Stack Hub. You can find more information in the article, "[Azure Stack Hub public key infrastructure (PKI) certificate requirements](/azure-stack-pki-certs.md)."
 
@@ -37,7 +37,7 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
     `*.azsacr.azurestack.contoso.com`
 ## Generate your certificate
 
-You can use the following steps to generate ACR certificate using The Azure Stack Hub Readiness Checker tool. You must specific the version of the **Microsoft.AzureStack.ReadinessChecker** module for the steps to work.
+You can use the following steps to generate an ACR certificate using The Azure Stack Hub Readiness Checker tool. You must specific the version of the **Microsoft.AzureStack.ReadinessChecker** module for the steps to work.
 
 1. Open PowerShell with an elevated prompt.
 
