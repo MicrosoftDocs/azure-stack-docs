@@ -56,6 +56,10 @@ To prepare the cluster and assign a VM to a GPU resource pool:
 
    :::image type="content" source="media/use-gpu-with-vm/assign-vm-to-gpu-pool.png" alt-text="Screenshot of the Assign VM to GPU pool page in Windows Admin Center where you assign a VM to a GPU from the GPU pool" lightbox="media/use-gpu-with-vm/assign-vm-to-gpu-pool.png":::
 
+   After the process completes, you'll receive a confirmation prompt that shows you successfully assigned the GPU to the VM, which displays under **Assigned VMs**.
+
+   :::image type="content" source="media/use-gpu-with-vm/gpu-assigned-to-vm-confirmed.png" alt-text="Screenshot of success prompt showing GPU assigned to a VM and the VM displaying under Assigned VMs" lightbox="media/use-gpu-with-vm/gpu-assigned-to-vm-confirmed.png":::
+
 To unassign a VM to a GPU resource pool:
 1. TBD
 
