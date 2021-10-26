@@ -5,10 +5,10 @@ metadata:
   description: List of Azure Stack Hub FAQs for  Azure Container Registry.
   author: mattbriggs
   ms.topic: article
-  ms.date: 09/22/2021
+  ms.date: 10/26/2021
   ms.author: mabrigg
   ms.reviewer: chasat
-  ms.lastreviewed: 09/22/2021
+  ms.lastreviewed: 10/26/2021
   
   # Intent: As an Azure Stack Hub operator, I want to view Azure Stack Hub FAQs for Azure Container Registry.
   # Keyword: azure stack hub ACR FAQ

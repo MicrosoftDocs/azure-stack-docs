@@ -3,10 +3,10 @@ title: Troubleshoot Azure Container Registry on Azure Stack Hub for cloud operat
 description: As an operator, learn to troubleshoot Azure Container Registry on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/20/2021
+ms.date: 10/26/2021
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 08/20/2021
+ms.lastreviewed: 10/26/2021
 
 # Intent: As an Azure Stack user, I want to XXX so I can XXX.
 # Keyword: XXX
@@ -18,7 +18,7 @@ As an Azure Stack Hub cloud operator you may need to troubleshoot or raise suppo
 
 ## Find the Resource ID for a registry
 
-Users of ACR on Azure Stack Hub have troubleshooting guidance available for self-help. If they are unable to resolve an issue with their registry, they may need the operators help in creating a support request. When creating a support request for a user registry issue the Resource ID will be required during case creation. Users have guidance to find this, but Operators can also find this using the following steps.
+Users of ACR on Azure Stack Hub have troubleshooting guidance available for self-help. If they are unable to resolve an issue with their registry, they may need the operator's help in creating a support request. When creating a support request for a user registry issue the Resource ID will be required during case creation. Users have guidance to find this, but Operators can also find this using the following steps.
 
 1.  Open the Azure Stack Hub administration portal, and then open **Container Registries**.
 2.  Select **Registries** under **User Resources**.

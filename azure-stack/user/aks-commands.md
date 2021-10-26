@@ -3,10 +3,10 @@ title: Commands for the Azure Kubernetes Service on Azure Stack Hub
 description: Learn about commands for Azure Kubernetes Service (ASK) on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 08/15/2021
+ms.date: 10/26/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/15/2021
+ms.lastreviewed: 10/26/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
