@@ -1,22 +1,20 @@
 ---
-title: Simplify host networking with Network ATC
-description: This topic covers how to simplify host networking for Azure Stack HCI.
+title: Network ATC overview and requirements
+description: This topic introduces Network ATC for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 10/26/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Simplify host networking with Network ATC
+# Network ATC overview and requirements
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article guides you through the key functions of using Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
+This article provides an overview of Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
 
-If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
-
-## Overview
+## Introduction
 
 Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
 
@@ -67,7 +65,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Must use two or more physical host systems that are Azure Stack HCI certified.
 
-- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](host-network-requirements.md#set)
 
 - Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
 
@@ -82,16 +80,11 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
-
-You can use the following cmdlet to install the required Windows features:
-
-> [!NOTE]
-> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](physical-network-requirements.md) for more information.
 
 ## Common Network ATC commands
 
-There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
+There are several new PowerShell commands included with Network ATC. Run the `Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
 Typically, only a few of these cmdlets are needed. Here is a brief overview of the cmdlets before you start:
 
@@ -175,26 +168,6 @@ Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pN
 Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
 
-## Deploy intents
-
-The following activities represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
-
-- Compute – adapters will be used to connect virtual machines traffic to the physical network
-- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
-
-This article covers the following deployment tasks:
-
-- Configure an intent
-
-- Configure an intent override
-
-- Validate automatic remediation
-
-This article assumes you have already created a cluster. See [Create a cluster using PowerShell](create-cluster-powershell.md).
-
-
-
 ## Default Network ATC values
 
 This section lists some of the key default values used by Network ATC.
@@ -236,6 +209,6 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 
 ## Next steps
 
-- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md).
+- Configure Network ATC using PowerShell. See [Step 2: Configure host networking](../deploy/create-cluster-powershell.md#step-2-configure-host-networking).
 
-- Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
+- Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).

@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 10/26/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -133,6 +133,9 @@ Invoke-Command ($ServerList) {
 }
 ```
 
+> [!NOTE]
+> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+
 Next, restart all the servers:
 
 ```powershell
@@ -142,9 +145,241 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 ## Step 2: Configure host networking
 
-Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, see [Host networking with Network ATC](network-atc.md) to deploy host networking.
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
+The following represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
+
+- Compute – adapters will be used to connect virtual machines traffic to the physical network
+- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
+- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
+
+This section covers the following deployment tasks:
+
+- Configure an intent
+
+- Configure an intent override
+
+- Validate automatic remediation
+
+If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#Requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
+
+### Configure an intent
+
+In this task, a consistent configuration is maintained across all cluster nodes. This is beneficial for several reasons including improved reliability of the cluster. The cluster is considered the configuration boundary. That is, all nodes in the cluster share the same configuration (symmetric intent).
+
+> [!IMPORTANT]
+> If a server node is clustered, you must use a clustered intent. Standalone intents are ignored.
+
+> [!NOTE]
+> You can add all nodes at one time using the `New-Cluster` cmdlet, then add the intent to all nodes. Alternatively, you can incrementally add nodes to the cluster. The new nodes are managed automatically.
+
+In this example, an intent is created that specifies the compute and storage intent types with no overrides.
+
+1. On one of the cluster nodes, run `Get-NetAdapter` to review the physical adapters. Ensure that each node in the cluster has the same named physical adapters.
+
+    ```powershell
+    Get-NetAdapter -Name pNIC01, pNIC02 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+    ```
+
+1. Run the following command to add the storage and compute intent types to pNIC01 and pNIC02. Note that we specify the `-ClusterName` parameter.
+
+    ```powershell
+    Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
+    ```
+
+    The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
+
+    - the adapters specified
+    - adapters report status 'Up'
+    - adapters ready to be teamed to create the specified vSwitch
+
+1. Run the `Get-NetIntent` cmdlet to see the cluster intent. If you have more than one intent, you can specify the `Name` parameter to see details of only a specific intent.
+
+    ```powershell
+    Get-NetIntent -ClusterName HCI01
+    ```
+
+1. To see the provisioning status of the intent, run the `Get-NetIntentStatus` command:
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+
+    Note the status parameter that shows Provisioning, Validating, Success, Failure.
+
+1. Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+ 
+1. Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage. For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
+
+    ```powershell
+    Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
+    ```
+
+> [!NOTE]
+> At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
+
+### Configure an override
+
+You can modify the default configuration and verify Network ATC makes the necessary changes.
+
+> [!IMPORTANT]
+> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
+
+#### Update an intent with a single override
+
+This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
+
+> [!IMPORTANT]
+> The `Set-NetIntent` cmdlet is used to update an already deployed intent. Use the `Add-NetIntent` cmdlet to add an override at initial deployment time
+
+1. Get a list of possible override cmdlets. We use wildcards to see the options available:
+
+    ```powershell
+    Get-Command -Noun NetIntent*Over* -Module NetworkATC
+    ```
+
+1. Create an override object for the DCB Quality of Service (QoS) configuration:
+
+    ```powershell
+    $QosOverride = New-NetIntentQosPolicyOverrides
+    $QosOverride
+    ```
+
+1. Modify the bandwidth percentage for SMB Direct:
+
+    ```powershell
+    $QosOverride.BandwidthPercentage_SMB = 25
+    $QosOverride
+    ```
+
+    > [!NOTE]
+    >It is expected that no values appear for any property you don’t override.
+
+1. Submit the intent request specifying the override:
+
+    ```powershell
+    Set-NetIntent -Name Cluster_ComputeStorage -QosPolicyOverrides $QosOverride
+    ```
+
+1. Wait for the provisioning status to complete:
+
+    ```powershell
+    Get-NetIntentStatus -Name Cluster_ComputeStorage | Format-Table IntentName, Host, ProvisioningStatus, ConfigurationStatus
+    ```
+
+1. Check that the override has been properly set on all cluster nodes. In the example, the SMB_Direct traffic class was overridden with a bandwidth percentage of 25%:
+
+    ```powershell
+    Get-NetQosTrafficClass -Cimsession (Get-ClusterNode).Name | Select PSComputerName, Name, Priority, Bandwidth
+    ```
+
+#### Update an intent with multiple overrides
+
+This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct and the maximum transmission unit (MTU) of the adapters.
+
+1. Create an override object. In this example, we create two objects - one for QoS properties and one for a physical adapter property.
+
+    ```powershell
+    $QosOverride = New-IntentQosPolicyOverrides
+    $AdapterOverride = New-NetIntentAdapterPropertyOverrides
+    $QosOverride
+    $AdapterOverride
+    ```
+
+1. Modify the SMB bandwidth percentage:
+
+    ```powershell
+    $QosOverride.BandwidthPercentage_SMB = 60
+    $QosOverride
+    ```
+
+1. Modify the MTU size (JumboPacket) value:
+
+    ```powershell
+    $AdapterOverride.JumboPacket = 9014
+    ```
+
+1. Use the `Set-NetIntent` command to update the intent and specify the overrides objects previously created.
+
+    Use the appropriate parameter based on the type of override you're specifying. In the example below, we use the `AdapterPropertyOverrides` parameter for the `$AdapterOverride` object that was created with `New-NetIntentAdapterPropertyOverrides` cmdlet whereas the `QosPolicyOverrides` parameter is used with the `$QosOverride` object created from `New-NetIntenQosPolicyOverrides` cmdlet.
+
+    ```powershell
+    Set-NetIntent -ClusterName HCI01 -Name Cluster_ComputeStorage -AdapterPropertyOverrides $AdapterOverride -QosPolicyOverride $QosOverride
+    ```
+
+1. First, notice that the status for all nodes in the cluster has changed to ProvisioningUpdate and Progress is on 1 of 2. The progress property is similar to a configuration watermark in that you have a new submission that must be enacted.
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01
+    ```
+
+1. Wait for the provisioning status to complete:
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01
+    ```
+
+1. Check that traffic class was overridden with a bandwidth percentage of 60%.
+
+    ```powershell
+    Get-NetQosTrafficClass -Cimsession (Get-ClusterNode).Name | Select PSComputerName, Name, Priority, Bandwidth 
+    ```
+
+1. Check that the adapters MTU (JumboPacket) value was modified and that the host virtual NICs created for storage also have been modified.
+
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
+
+    > [!IMPORTANT]
+    > Ensure you modify the cmdlet above to include the adapter names in the intent specified.
+
+### Validate automatic remediation
+
+Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this task, we modify one the configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
+
+>[!NOTE]
+> ATC will automatically remediate all of the configuration it manages.
+
+1. Check the adapter's existing MTU (JumboPacket) value:
+
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
+
+1. Modify one of the physical adapter's MTU without specifying an override. This emulates an accidental change or "configuration drift" which must be remediated.
+
+    ```powershell
+    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryKeyword *JumboPacket -RegistryValue 4088
+    ```
+
+1. Verify that the adapter's existing MTU (JumboPacket) value has been modified:
+
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
+
+1. Retry the configuration. This step is only performed to expedite the remediation. Network ATC will automatically remediate this configuration.
+
+    ```powershell
+    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+
+1. Verify that the consistency check has completed:
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+
+1. Verify that the adapter's MTU (JumboPacket) value has returned to the expected value:
+
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
 
 ## Step 3: Prep for cluster setup
 
@@ -342,3 +577,4 @@ Now that you are done, there are still some important tasks you need to complete
 
 - Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- Manage host networking. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).

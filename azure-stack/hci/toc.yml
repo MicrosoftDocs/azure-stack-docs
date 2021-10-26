@@ -52,8 +52,6 @@
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
       href: deploy/cluster-set.md
-    - name: Host networking with Network ATC
-      href: deploy/network-atc.md
   - name: Deploy workloads
     items:
     - name: Branch office and edge
@@ -226,6 +224,8 @@
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md
     - name: Firewall requirements
       href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
