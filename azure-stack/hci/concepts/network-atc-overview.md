@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article provides an overview of Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
+This article provides an overview of, and requirements for, Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
 
 ## Introduction
 
