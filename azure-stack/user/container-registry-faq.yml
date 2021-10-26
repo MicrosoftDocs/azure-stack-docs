@@ -252,7 +252,7 @@ sections:
           
           2. Save and exit the file.
           
-          3. Restart Docker.S
+          3. Restart Docker.
           
           When you push images to the registries in the list, their non-distributable layers are pushed to the registry.
           
