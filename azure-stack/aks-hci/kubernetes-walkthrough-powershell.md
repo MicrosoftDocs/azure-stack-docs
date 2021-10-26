@@ -142,6 +142,8 @@ After you've configured your deployment, you must start it. This will install th
 ```powershell
 Install-AksHci
 ```
+> [!WARNING]
+> During installation of your Azure Kuberenetes Service host, a *Kubernetes - Azure Arc* resource type is created in the resource group that's set during registration. Do not delete this resource as it represents your Azure Kuberenetes Service host. You can identify the resource by checking its distribution field for a value of `aks_management`. Deleting this resource will result in an out-of-policy deployment.
 
 ## Step 6: Create a Kubernetes cluster
 
@@ -169,9 +171,6 @@ LinuxNodeCount        : 0
 ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
-
-> [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
 
 To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md) PowerShell command.
 

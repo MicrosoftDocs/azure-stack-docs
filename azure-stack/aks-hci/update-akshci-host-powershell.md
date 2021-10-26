@@ -24,7 +24,7 @@ The first step in any update flow is to update the AKS on Azure Stack HCI host b
 > [!Important]
 > The update command only works if you have installed the GA release or later. It will not work for releases older than the GA release. This update command updates the Azure Kubernetes Service host and the on-premise Microsoft operated cloud platform. This command does not update any existing AKS workload clusters. New AKS workload clusters created after updating the AKS host may differ from existing AKS workload clusters in their OS version and Kubernetes version.
 
-We recommend updating AKS workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your AKS workload clusters. If your workload clusters are on an old Kubernetes version, they will still be supported, but you will not be able to scale your cluster. 
+We recommend updating AKS workload clusters immediately after updating the AKS host to get the newest OS versions and recent fixes. If a workload cluster is on an unsupported Kubernetes version in the next version of AKS on Azure Stack HCI, upgrade will fail.
 
 ## Example flow for updating the AKS on Azure Stack HCI host
 
