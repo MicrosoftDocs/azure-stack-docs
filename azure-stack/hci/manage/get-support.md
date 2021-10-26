@@ -29,7 +29,7 @@ For information about other Azure Stack HCI support resources available through 
 ## Partner support resources for Azure Stack HCI
 Azure Stack HCI Integrated System solution hardware from your preferred hardware partner arrives with the operating system preinstalled. You can expect hardware service, support, and security updates from your hardware partner for at least five years. For more information, see [Updates and upgrades](../concepts/updates.md). 
 
-To learn more about Integrated System partners and their solutions and support offerings, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+To learn more about Integrated System partners and their solutions and support offerings, see the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog).
 
 ## Next steps
 For related information, see also:

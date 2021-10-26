@@ -113,7 +113,7 @@ This section answers frequently asked questions about Kernel Soft Reboot on Azur
 
 **How can I tell if my hardware supports Kernel Soft Reboot?**
 
-- All hardware marked as Integrated Systems in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) can perform Kernel Soft Reboot.
+- All hardware marked as Integrated Systems in the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) can perform Kernel Soft Reboot.
 
 **Will Kernel Soft Reboot work with Validated Nodes?**
 

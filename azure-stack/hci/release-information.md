@@ -21,7 +21,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **Version** | **Availability date** | **OS build**      | **Latest revision date** |
 |:------------|:----------------------|:------------------|:-------------------------|
-| 21H2        | 2021-10-19            | 20348.11          | 2021-10-19               |
+| 21H2        | 2021-10-19            | 20348.288         | 2021-10-19               |
 | 20H2        | 2020-12-10            | 17784.1408        | 2020-12-10               |
 
 ### Azure Stack HCI, version 21H2 (OS build 20348)
