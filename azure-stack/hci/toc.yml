@@ -54,6 +54,14 @@
       href: deploy/cluster-set.md
     - name: Host networking with Network ATC
       href: deploy/network-atc.md
+  - name: Deploy SDN
+    items:
+    - name: Deploy at cluster creation
+      href: deploy/create-cluster.md#step-5-sdn-optional
+    - name: Deploy post cluster creation
+      href: deploy/sdn-wizard.md
+    - name: Deploy using SDN Express
+      href: manage/sdn-express.md  
   - name: Deploy workloads
     items:
     - name: Branch office and edge
