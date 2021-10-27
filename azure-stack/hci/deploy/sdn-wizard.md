@@ -23,6 +23,7 @@ You can also deploy an SDN infrastructure using System Center Virtual Machine Ma
 > [!IMPORTANT]
 > You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022.
 
+> [!IMPORTANT]
 > You can't use Microsoft System Center VMM 2019 and WAC to manage SDN at the same time.
 
 ## Before you begin
