@@ -90,16 +90,16 @@ Initialize-AksHciNode
 
 ## Step 1a: (Optional) Prepare your Active Directory and DNS server for deployment
 
-If you cannot enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you will need to pre-create the respective records in Active Directory and DNS.
+If you cannot enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you need to pre-create the respective records in Active Directory and DNS.
 
-You'll need to create a generic cluster service in Active Directory with the name `ca-cloudagent` or a name of your choice (do not exceed 32 characters in length). You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](https://docs.microsoft.com/en-us/windows-server/failover-clustering/prestage-cluster-adds).
+Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
 
-The AKS on Azure Stack HCI deployment will try and locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+The AKS on Azure Stack HCI deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
 
 > [!Note] 
 > Once AKS on Azure Stack HCI is deployed, this information cannot be changed.
 
-Follow Step 3a after Step 2 below to specify the pre-created object name in `Set-AksHciConfig`.
+Follow Step 3a after Step 2 below to specify the prestaged object name in `Set-AksHciConfig`.
 
 ## Step 2: Create a virtual network
 

@@ -87,7 +87,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 
 ### To deploy with a preconfigured cloud agent cluster service and a DNS record
 
-Before running this example, you need to pre-create a generic cluster service in Active Directory with the name `ca-cloudagent` or a name of your choice (do not exceed 32 characters in length). You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. 
+Before running this example, you need to prestage a generic cluster service in Active Directory with the name `ca-cloudagent` or a name of your choice (do not exceed 32 characters in length). You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. 
 
 The AKS on Azure Stack HCI deployment will try and locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
 
