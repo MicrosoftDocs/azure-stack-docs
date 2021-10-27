@@ -88,7 +88,7 @@ SDN Network Controller deployment functionality is an extension in Windows Admin
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
 
 > [!NOTE]
-> If the deployment fails, delete all created Network Controller VMs and their VHDs from all server nodes, then run the deployment wizard again.
+> If deployment fails, delete all Network Controller VMs and their VHDs from all server nodes, then run the deployment wizard again.
 
 ## Next steps
 
