@@ -15,12 +15,15 @@ Your workloads may not need to run continuously, and to save resource costs, you
 
 This article assumes that you have an existing AKS on Azure Stack HCI cluster installed and configured on your machine. If you need to install a cluster, see the AKS on Azure Stack HCI quickstart to [set up an AKS host and deploy a workload cluster](kubernetes-walkthrough-powershell.md). 
 
-## Stop an AKS on Azure Stack HCI cluster
+## Stop an Azure Stack HCI cluster
 
 To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local and/or remote computers. 
 
 ### Stop the cluster service
-Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command to shut down an AKS on Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
+Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command to shut down an Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
+
+> [!IMPORTANT]
+> When you run `Stop-Cluster`, all other nodes and VM-based applications in the cluster will also be impacted.
 
 To stop the cluster service on all nodes of the local cluster, open PowerShell as an administrator and run the following command on one of the machines in the cluster:
 
