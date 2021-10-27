@@ -59,11 +59,11 @@ Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -S
 > [!NOTE]
 > This script should be run from a Windows client computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the Set-ExecutionPolicy command.
 
-## Run the SDN deployment wizard
+## Configure SDN deployment
 
-The SDN deployment wizard is an extension in Windows Admin Center. Complete the following steps to deploy Network Controller on your existing Azure Stack HCI cluster.
+SDN Network Controller deployment functionality is an extension in Windows Admin Center. Complete the following steps to deploy Network Controller on your existing Azure Stack HCI cluster.
 
-1. In Windows Admin Center, seelct **Settings**, then select **Extensions**.
+1. In Windows Admin Center, under **Tools** select **Settings**, then select **Extensions**.
 1. On the **Installed Exensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
 1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**.
 
@@ -88,11 +88,11 @@ The SDN deployment wizard is an extension in Windows Admin Center. Complete the 
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete. Then click **Finish**.
 
 > [!NOTE]
-> If the deployment fails, delete all created NC VMs and their VHDs from all server nodes, then run the deployment wizard again.
+> If the deployment fails, delete all created Network Controller VMs and their VHDs from all server nodes, then run the deployment wizard again.
 
 ## Next steps
 
-- Manage SDN logical networks. See [Manage tenant logical networks](../manage/tenant-logical-networks).
-- Manage SDN virtual networks. See [Manage tenant virtual networks](../manage/tenant-virtual-networks).
-- Manage microsegmentation with datacenter firewall. See [Use Datacenter Firewall to configure ACLs](../manage/use-datacenter-firewall-windows-admin-center).
+- Manage SDN logical networks. See [Manage tenant logical networks](../manage/tenant-logical-networks.md).
+- Manage SDN virtual networks. See [Manage tenant virtual networks](../manage/tenant-virtual-networks.md).
+- Manage microsegmentation with datacenter firewall. See [Use Datacenter Firewall to configure ACLs](../manage/use-datacenter-firewall-windows-admin-center.md).
 - Manage your VMs. See [Manage VMs](../manage/vm.md).

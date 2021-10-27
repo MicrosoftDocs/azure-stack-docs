@@ -56,12 +56,12 @@
       href: deploy/network-atc.md
   - name: Deploy SDN
     items:
-    - name: Deploy at cluster creation
-      href: deploy/create-cluster.md#step-5-sdn-optional
-    - name: Deploy post cluster creation
+    - name: Deploy using Windows Admin Center
       href: deploy/sdn-wizard.md
     - name: Deploy using SDN Express
-      href: manage/sdn-express.md  
+      href: manage/sdn-express.md
+    - name: Deploy at cluster creation
+      href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
     - name: Branch office and edge
