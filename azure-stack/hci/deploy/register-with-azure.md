@@ -33,7 +33,7 @@ For the simplest registration experience, have an Azure AD admin (Owner or User 
    > [!IMPORTANT]
    > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
    > 
-   > Azure Stack HCI is now available in Preview in Azure Government. Registration requires [Windows Admin Center version 2110](/evalcenter/evaluate-windows-admin-center) or later.
+   > Azure Stack HCI is now available in Preview in Azure Government. Registration requires [Windows Admin Center version 2110](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center) or later.
 
 Before you register your cluster, make sure every server in the cluster is up and running, and that the following prerequisites are satisfied.
 
@@ -119,7 +119,7 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
    > [!WARNING]
    > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
    > 
-   > Azure Stack HCI is now available in Preview in Azure Government. Registration requires [Windows Admin Center version 2110](/evalcenter/evaluate-windows-admin-center) or later.
+   > Azure Stack HCI is now available in Preview in Azure Government. Registration requires [Windows Admin Center version 2110](https://www.microsoft.com/evalcenter/evaluate-windows-admin-center) or later.
 
 1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and sign into Windows Admin Center with your Azure account.
 
