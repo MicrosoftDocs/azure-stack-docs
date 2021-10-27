@@ -42,9 +42,9 @@ To shut down the local and remote computers, use the [Stop-Computer](/powershell
 PS:> Stop-Computer 
 ```
 
-## Start an AKS on Azure Stack HCI cluster
+## Start an Azure Stack HCI cluster
 
-To start a stopped AKS on Azure Stack HCI cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
+To start a stopped Azure Stack HCI cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 
@@ -52,7 +52,7 @@ To restart the operating system on your local and remote computers, use the foll
 PS:> Restart-Computer 
 ```
 
-To restart all the nodes of the AKS on Azure Stack HCI cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
+To restart all the nodes of the Azure Stack HCI cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
 
 ```powershell
 PS:> Start-Cluster 
