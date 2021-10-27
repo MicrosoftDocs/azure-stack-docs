@@ -16,7 +16,7 @@ ms.lastreviewed: 10/27/2021
 
 # Use the template validation tool in Azure Stack Hub
 
-Check your [Azure Resource Manager templates](azure-stack-arm-templates.md) with the template validation tool. The tool checks if your template is ready to deploy to Azure Stack Hub. You can get the validation tool from the Azure Stack Hub tools GitHub repo. Get them from [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md).
+Check your [Azure Resource Manager templates](azure-stack-arm-templates.md) with the template validation tool. The tool checks if your template is ready to deploy to Azure Stack Hub. You can get the validation tool from the [Azure Stack Hub tools GitHub repo](../operator/azure-stack-powershell-download.md).
 
 > [!NOTE]  
 > The tool validates the Azure Resource Manager template for supported resource types and API versions in Azure Stack. However, the tool doesn't validate the properties supported for each resource type.
