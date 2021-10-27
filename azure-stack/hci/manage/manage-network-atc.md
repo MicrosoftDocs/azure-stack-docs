@@ -3,7 +3,7 @@ title: Manage host networking with Network ATC
 description: This topic covers how to manage host networking for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 10/29/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---

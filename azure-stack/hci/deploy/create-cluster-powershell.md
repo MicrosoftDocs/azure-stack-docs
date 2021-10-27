@@ -153,7 +153,7 @@ The following represent common host networking intents using Network ATC. You ca
 - Storage – adapters will be used for SMB traffic including Storage Spaces Direct
 - Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
 
-If you need to configure overrides, see [](../manage/manage-network-atc.md#configure-an-override).
+If you need to configure overrides, see [Configure an override](../manage/manage-network-atc.md#configure-an-override).
 
 If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
 
