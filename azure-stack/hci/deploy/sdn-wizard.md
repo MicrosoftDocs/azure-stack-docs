@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/29/2021
+ms.date: 10/27/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -12,13 +12,18 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-You can deploy SDN Network Controller using Windows Admin Center either during or after cluster creation. This article discusses how to deploy SDN Network Controller after cluster deployment.
+You can deploy Software Defined Networking (SDN) Network Controller using Windows Admin Center either during or after cluster creation. This article discusses how to deploy SDN Network Controller after cluster deployment.
 
 To deploy SDN Network Controller during cluster creation, see [Step 5: SDN (optional)](create-cluster.md#step-5-sdn-optional) of the Create cluster wizard.
 
 For a full SDN deployment including Software Load Balancers and Gateways, use the [SDN Express](../manage/sdn-express.md) script. You can also use SDN Express to deploy Software Load Balancers or Gateways after deploying the Network Controller through WAC.
 
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
+
+> [!IMPORTANT]
+> You can't use Microsoft System Center VMM 2019 to manage clusters running Azure Stack HCI, version 21H2 or Windows Server 2022.
+
+You can't use Microsoft System Center VMM 2019 and WAC to manage SDN at the same time.
 
 ## Before you begin
 
@@ -61,11 +66,11 @@ Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -S
 
 ## Configure SDN deployment
 
-SDN Network Controller deployment functionality is an extension in Windows Admin Center. Complete the following steps to deploy Network Controller on your existing Azure Stack HCI cluster.
+SDN Network Controller deployment is a functionality of the SDN Infrastructure extension in Windows Admin Center. Complete the following steps to deploy Network Controller on your existing Azure Stack HCI cluster.
 
 1. In Windows Admin Center, under **Tools** select **Settings**, then select **Extensions**.
 1. On the **Installed Exensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
-1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**.
+1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started**.
 
     :::image type="content" source="media/sdn/sdn-wizard.png" alt-text="SDN deployment wizard in Windows Admin Center" lightbox="media/sdn/sdn-wizard.png":::
 
