@@ -4,7 +4,7 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: mattbriggs
 
 ms.topic: article
-ms.date: 06/29/2021
+ms.date: 109/27/2021
 ms.author: mabrigg
 ms.reviewer: walterov
 ms.lastreviewed: 06/29/2021
@@ -82,10 +82,11 @@ For example, for a cluster with three master nodes. If you are using a subnet wi
 | --- | --- | --- |
 | 172.100.0.0  - 172.100.0.3 | 4 | Reserved in Azure subnet. |
 | **172.100.0.224**-172.100.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
-| 172.100.0.239 - 172.100.0.255 | 16 | 16 IP address buffer. |
-| 172.100.0.256 | 1 | Reserved in Azure subnet. |
+| 172.100.0.238 - 172.100.0.254 | 16 | 16 IP address buffer. |
+| 172.100.0.255 | 1 | Reserved in Azure subnet. |
   
 In this example, then `firstConsecutiveStaticIP` property would be `172.100.0.224`.
+
 For larger subnets, for example /16 with more than 60 thousand addresses, you may not find it to be practical to set your static IP assignments to the end of the network space. Set your cluster static IP address range away from the first 24 addresses in your IP space so that the cluster can be resilient when claiming addresses.
 
 ## Kubenet address blocks example
