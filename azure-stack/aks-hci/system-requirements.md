@@ -149,6 +149,8 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
 - DNS name resolution is required for all nodes to be able to communicate with each other.
+ 
+- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS is not an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-DNS-record). 
 
 ## IP address assignment  
 

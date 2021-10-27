@@ -88,6 +88,19 @@ Run checks on every physical node to see if all the requirements are satisfied t
 Initialize-AksHciNode
 ```
 
+## Step 1a: (Optional) Prepare your Active Directory and DNS server for deployment
+
+If you cannot enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you will need to pre-create the respective records in Active Directory and DNS.
+
+You'll need to create a generic cluster service in Active Directory with the name `ca-cloudagent` or a name of your choice (do not exceed 32 characters in length). You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](https://docs.microsoft.com/en-us/windows-server/failover-clustering/prestage-cluster-adds).
+
+The AKS on Azure Stack HCI deployment will try and locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+
+> [!Note] 
+> Once AKS on Azure Stack HCI is deployed, this information cannot be changed.
+
+Follow Step 3a after Step 2 below to specify the pre-created object name in `Set-AksHciConfig`.
+
 ## Step 2: Create a virtual network
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
@@ -116,12 +129,30 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 
 ## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
+> [!NOTE]
+> If you pre-created the cluster service in AD and DNS, go to Step 3a.
+
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
 ```powershell
 Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+```
+
+> [!NOTE]
+> The values given in this example command will need to be customized for your environment.
+
+## Step 3a: (Optional) Configure your deployment if you have prestaged cluster service objects and DNS records
+
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, `clusterrolename`, `cloudservicecidr` and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
+
+Configure your deployment with the following command.
+
+```powershell
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7
+
+Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" -clusterRoleName "ca-cloudagent"
 ```
 
 > [!NOTE]

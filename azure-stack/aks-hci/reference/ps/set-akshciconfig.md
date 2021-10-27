@@ -85,6 +85,21 @@ PS C:\> $proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://co
 Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySettings -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
+### To deploy with a preconfigured cloud agent cluster service and a DNS record
+
+Before running this example, you need to pre-create a generic cluster service in Active Directory with the name `ca-cloudagent` or a name of your choice (do not exceed 32 characters in length). You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. 
+
+The AKS on Azure Stack HCI deployment will try and locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+
+> [!Note] 
+> Once AKS on Azure Stack HCI is deployed, this information cannot be changed.
+
+```powershell
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7
+
+Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" -clusterRoleName "ca-cloudagent"
+```
+
 ## Parameters
 
 ### -imageDir
