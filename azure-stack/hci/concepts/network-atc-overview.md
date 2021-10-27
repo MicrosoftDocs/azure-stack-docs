@@ -3,7 +3,7 @@ title: Network ATC overview and requirements
 description: This topic introduces Network ATC for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
