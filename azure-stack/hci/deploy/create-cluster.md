@@ -102,25 +102,25 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
 
-You can choose to use Network ATC to simplify set up of hosting networking for your cluster, or you can have the wizard walk you through manually configuring each networking element.
+You can choose to use Network ATC to simplify set up of hosting networking for your cluster, or you can have the wizard walk you through [manually configuring](#manually-configure-host-networking) each networking element.
 
 ### Use Network ATC to configure host networking (recommended)
 
 1. Select **Next: Networking**.
 
-1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management. Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
+1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster.
 
 1. To see all adapters available, select **See all adapters**. Then select the checkbox for any adapters listed that you want to cluster. When finished, click **Next**.
 
 1. On **2.2 Define network intents**, under **Intent 1**, do the following:
     - For **Intent name**, enter a friendly name for the intent
-    - For **Traffic types**, select a traffic type from the pulldown. Add storage and compute traffic to at least one intent.
+    - For **Traffic types**, select a traffic type from the pulldown. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
     - For **Network adapters**, select an adapter from the pulldown.
     - Click **Select another adapter for this traffic** if needed.
 
-1. For each traffic type, in the traffic properties pane, specify the **traffic priority** from the pulldown and specify the traffic bandwidth reservation (%) from the pulldown.
+1. For each traffic type, in the traffic properties pane, specify the **traffic priority** from the pulldown and specify the traffic bandwidth reservation (%) from the pulldown. We recommend you stick with the default values.
 
-1. For each adapter, in the adapter properties pane, specify the following:
+1. To optionally modify network settings for an intent, select **Customize network settings** in the adapter properties pane, and select the following as applicable:
     - Jumbo frame size in bytes
     - whether to enable RDMA
     - RDMA protocol type
@@ -129,7 +129,7 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
 
 1. To add another intent, select **Add an intent**, and repeat step 4.
 
-1. On **2.3: Provide network details**, for each network adapter listed, enter the following:
+1. On **2.3: Provide network details**, for each storage traffic adapter listed, enter the following:
     - Subnet mask/CIDR
     - VLAN ID
     - IP address
@@ -221,28 +221,25 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. Select **Next: Clustering**.
 
-1. On **3.1 Create the cluster**, do the following:
-    - Specify a name for the cluster
-    - Specify static or dynamic IP addresses
+1. On **3.1 Create the cluster**, specify a name for the cluster.
 
+1. Under **IP address**, do one of the following:
+    - Specify one or more static addresses. The IP address must be entered in the following format: IP address/current subnet length. For example: 10.0.0.200/24.
+    - Assign address dynamically with DHCP
 
 1. When finished, select **Create cluster**.
 
+ > [!NOTE]
+    > The next step appears only if you selected **Define intents with Network ATC** for step **1.8 Choose host networking**.
+
 1. On **Step 3.2 Deploy Networking**, click **Apply intents**. This may take a few minutes to complete.
 
-    > [!NOTE]
-    > This step only appears if you selected **Define intents with Network ATC** for step **1.8 Choose host networking**.
-
-1. On **3.3 Validate the cluster**, select **Validate**. Validation may take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production.
+1. On **3.3 Validate cluster**, select **Validate**. Validation may take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production.
 
     If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md).
 
 1. Review all validation statuses, download the report to get detailed information on any failures, make changes, then click **Validate again** as needed. You can **Download report** as well. Repeat again as necessary until all validation checks pass. When all is OK, click **Next**.
-1. On **3.2 Create cluster**, enter a name for your cluster.
 
-    :::image type="content" source="media/cluster/create-cluster.png" alt-text="Create cluster wizard - Create cluster" lightbox="media/cluster/create-cluster.png":::
-
-1. Under **IP address**, select either static or dynamic IP addresses to use. The IP address must be entered in the following format: *IP address/current subnet length*. For example: 10.0.0.200/24.
 1. Select **Advanced**. You have a couple of options here:
 
     - **Register the cluster with DNS and Active Directory**
