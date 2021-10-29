@@ -102,9 +102,13 @@ Now that we've verified our system settings, let's get started:
 
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks.
 
+> [!WARNING]
+> During installation of your Azure Kuberenetes Service host, a *Kubernetes - Azure Arc* resource type is created in the resource group that's set during registration. Do not delete this resource as it represents your Azure Kuberenetes Service host. You can identify the resource by checking its distribution field for a value of `aks_management`. Deleting this resource will result in an out-of-policy deployment.
+
 9. If the deployment succeeds, select **Finish**, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters.
 
    ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
+   
 
 ## Next steps
 
