@@ -6,7 +6,7 @@ ms.author: v-kedow
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2021
+ms.date: 10/26/2021
 ---
 
 # Azure Stack HCI release information
@@ -26,7 +26,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 ### Azure Stack HCI, version 21H2 (OS build 20348)
 
-See [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173).
+| **OS build** | **Availability date** | **KB article**                                           |
+|:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.320    | 2021-10-26            | [KB 5006745](https://support.microsoft.com/topic/572c595a-aff6-4976-a961-07aafb257973) |
 
 ### Azure Stack HCI, version 20H2 (OS build 17784)
 
@@ -66,5 +68,6 @@ See [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.
 
 For more information, see also:
 
+- [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)
 - [Release notes for Azure Stack HCI, version 20H2](https://support.microsoft.com/help/4595086/)
 - [Release notes for Azure Stack HCI, version 20H2 preview releases](preview-release-notes.md)
