@@ -37,7 +37,7 @@ You've reached the Kubernetes cluster create wizard through the Azure Kubernetes
 
     [ ![Illustrates the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-added.png) ](.\media\create-kubernetes-cluster\node-pool-added.png#lightbox)
 
-    [ ![Illustrates the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-added.png) ](.\media\create-kubernetes-cluster\node-pool-taints.png#lightbox)
+    [ ![Illustrates the taints configuration on the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-taints.png) ](.\media\create-kubernetes-cluster\node-pool-taints.png#lightbox)
 
 4. In the **Authentication** step, you may select if you'd like to enable Active Directory authentication. If you do choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
 
