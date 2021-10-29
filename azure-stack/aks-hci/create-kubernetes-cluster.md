@@ -33,9 +33,11 @@ You've reached the Kubernetes cluster create wizard through the Azure Kubernetes
 
     [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png) ](.\media\create-kubernetes-cluster\basics.png#lightbox)
  
-3. Configure node pools to run your workloads on the **Node pools** page. This is a mandatory step as part of the wizard. You may add any number of Windows node pools and Linux node pools. If you enabled Azure Arc integration earlier in this wizard, you will need to configure a Linux node pool with at least one Linux worker node. However, if you disabled Azure Arc integration earlier, then any node pool addition allows you to proceed to next step. When you're finished, select **Next**.
+3. Configure node pools to run your workloads on the **Node pools** page. This is a mandatory step as part of the wizard. You may add any number of Windows node pools and Linux node pools. If you enabled Azure Arc integration earlier in this wizard, you will need to configure a Linux node pool with at least one Linux worker node. However, if you disabled Azure Arc integration earlier, then any node pool addition allows you to proceed to next step. When you're finished, select **Next**. You can also set maximum pod counts and node taints as when configuring node pools. Both of these settings are optional. For more details on the available taint settings, see [New-AksHciCluster](./reference/ps/new-akshcicluster.md#new-aks-hci-cluster-with-a-linux-node-pool-and-taints)
 
     [ ![Illustrates the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-added.png) ](.\media\create-kubernetes-cluster\node-pool-added.png#lightbox)
+
+    [ ![Illustrates the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-added.png) ](.\media\create-kubernetes-cluster\node-pool-taints.png#lightbox)
 
 4. In the **Authentication** step, you may select if you'd like to enable Active Directory authentication. If you do choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
 
