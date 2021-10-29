@@ -102,7 +102,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
 
-You can choose to use Network ATC to simplify setting up networking for your cluster, or you can have the wizard walk you through manually configuring each networking element.
+You can choose to use Network ATC to simplify set up of hosting networking for your cluster, or you can have the wizard walk you through manually configuring each networking element.
 
 ### Use Network ATC to configure host networking (recommended)
 
