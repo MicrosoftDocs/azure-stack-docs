@@ -62,17 +62,18 @@ Now that we've verified our system settings, let's get started:
       * **Kubernetes node IP pool end**, the pool end range for IP addresses used by Kubernetes clusters
    * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section.
 
-   The following image shows a DHCP host configuration:
+   The following image represents a DHCP host configuration:
 
-     [ ![Illustrates a DHCP host configuration.](.\media\setup\host-configuration-dhcp.png) ](\media\setup\host-configuration-dhcp.png#lightbox)
+    ![Illustrates a DHCP host configuration.](.\media\setup\host-configuration-dhcp.png)
 
-   The following image shows a static IP host configuration:
+   The following image represents a static IP host configuration:
 
-     [ ![Illustrates a static IP host configuration.](.\media\setup\host-configuration-static.png) ](\media\setup\host-configuration-static.png#lightbox)
+    ![Illustrates a static IP host configuration.](.\media\setup\host-configuration-static.png)
 
    (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependant on the proxy settings that are provisioned on the Azure Stack HCI host machine. You can define the proxy setting with credentials or with a certificate. Make sure to provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
  
-      [ ![Illustrates the proxy settings for the host configuration.](.\media\setup\host-configuration-proxy.png) ](\media\setup\host-configuration-proxy.png#lightbox)
+    ![Illustrates the proxy settings for the AKS host configuration.](.\media\setup\host-configuration-proxy.png)
+   
 
    Select **Next** after you're finished.
 
