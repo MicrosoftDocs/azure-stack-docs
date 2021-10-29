@@ -229,7 +229,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. When finished, select **Create cluster**.
 
- > [!NOTE]
+    > [!NOTE]
     > The next step appears only if you selected **Define intents with Network ATC** for step **1.8 Choose host networking**.
 
 1. On **Step 3.2 Deploy Networking**, click **Apply intents**. This may take a few minutes to complete.
