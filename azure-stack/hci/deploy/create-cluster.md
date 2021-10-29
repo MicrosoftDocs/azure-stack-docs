@@ -95,8 +95,8 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps.
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
-    - **Define intents with Network ATC** - we recommend this option. For more information on using Network ATC to simply host networking, see [Network ATC](network-atc.md).
-    - **Manually configure host networking** - use for finer-grained control.  For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+    - **Define intents with Network ATC** - we recommend this option. For more information on using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
+    - **Manually configure host networking** - use to configure host networking manually. For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 
 ## Step 2: Networking
 
@@ -118,9 +118,9 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
     - For **Network adapters**, select an adapter from the pulldown.
     - Click **Select another adapter for this traffic** if needed.
 
-1. For each traffic type, in the traffic properties pane, specify the **traffic priority** from the pulldown and specify the traffic bandwidth reservation (%) from the pulldown. We recommend you stick with the default values.
-
 1. To optionally modify network settings for an intent, select **Customize network settings** in the adapter properties pane, and select the following as applicable:
+    - Traffic priority
+    - traffic bandwidth reservation (%)
     - Jumbo frame size in bytes
     - whether to enable RDMA
     - RDMA protocol type
