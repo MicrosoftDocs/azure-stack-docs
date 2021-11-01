@@ -70,7 +70,7 @@ Now that we've verified our system settings, let's get started:
 
     ![Illustrates a static IP host configuration.](.\media\setup\host-configuration-static.png)
 
-   (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependant on the proxy settings that are provisioned on the Azure Stack HCI host machine. You can define the proxy setting either with credentials or with a certificate. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
+   (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependant on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
  
     ![Illustrates the proxy settings for the AKS host configuration.](.\media\setup\host-configuration-proxy.png)
    
