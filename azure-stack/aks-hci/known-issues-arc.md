@@ -16,11 +16,11 @@ You can also [open a support issue](./help-support.md) if none of the workaround
 
 ## Error: `Error while updating agents for enabling features`
 
-When enabling a `custom location` and a `cluster connect` after connecting a cluster to Azure Arc, the following error appears: 
+When enabling a *custom location* and a *cluster connect* after connecting a cluster to Azure Arc, the following error appears: 
 
 `Error while updating agents for enabling features. Please run "kubectl get pods -n azure-arc" to check the pods in case of timeout error. Error: Error: UPGRADE FAILED: timed out waiting for the condition`
 
-This is a known issue with the September release, which is fixed in the October release. New AKS on Azure Stack HCI clusters created using the October release and connected to Arc using [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) do not experience this issue. Update your AKS on Azure Stack HCI deployment to the October release and then reconnect your existing clusters to Arc for a workaround to this issue.
+This is a known issue with the September release and is fixed in the October release. New AKS on Azure Stack HCI clusters created using the October release and connected to Arc using [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) do not experience this issue. Update your AKS on Azure Stack HCI deployment to the October release and then reconnect your existing clusters to Arc for a workaround to this issue.
 
 ## Error: `addons.msft.microsoft "demo-arc-onboarding" already exists`
 
