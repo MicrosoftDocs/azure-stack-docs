@@ -35,9 +35,7 @@ You've reached the Kubernetes cluster create wizard through the Azure Kubernetes
  
 3. Configure node pools to run your workloads on the **Node pools** page. This is a mandatory step as part of the wizard. You may add any number of Windows node pools and Linux node pools. If you enabled Azure Arc integration earlier in this wizard, you need to configure a Linux node pool with at least one Linux worker node. However, if you disabled Azure Arc integration earlier, then any node pool addition allows you to proceed to next step. You can also set maximum pod counts and node taints when configuring node pools. Both of these settings are optional. For more details on the available taint settings, see [New-AksHciCluster](./reference/ps/new-akshcicluster.md#new-aks-hci-cluster-with-a-linux-node-pool-and-taints).
 
-    ![Illustrates the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-added.png)
-
-   ![Illustrates the taints configuration on the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-taints.png)
+    ![Screenshot that illustrates the Node pools page of the Kubernetes cluster wizard where you can configure maximum pod counts and taints.](.\media\create-kubernetes-cluster\node-pool-added.png)
 
    When you're finished, select **Next**. 
 
