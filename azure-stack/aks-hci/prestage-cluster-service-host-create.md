@@ -49,7 +49,7 @@ $vnet = New-AksHciNetworkSetting -name mgmt-vnet -vSwitchName "extSwitch" -k8sNo
 
 ## Step 4: Configure your deployment if you have prestaged cluster service objects and DNS records
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `workingDir`, `clusterrolename`, `cloudservicecidr` and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `workingDir`, `cloudservicecidr`, `cloudConfigLocation`, and `clusterRoleName` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
@@ -82,6 +82,6 @@ Install-AksHci
 In this how-to guide, you learned how to set up an Azure Kubernetes Service host using PowerShell if you have prestaged cluster service objects and DNS records. 
 
 ## Next steps
-- [Create an AKS workload cluster](./reference/ps/new-akshcicluster)
+- [Create an AKS workload cluster](./reference/ps/new-akshcicluster.md)
 - [Prepare an application](./tutorial-kubernetes-prepare-application.md)
 - [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md)
