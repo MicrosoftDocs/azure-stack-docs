@@ -4,10 +4,10 @@ description: Learn Known issues using the AKS engine on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 8/3/2021
+ms.date: 11/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 8/3/2021
+ms.lastreviewed: 11/1/2021
 
 # Intent: Not done: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Not done: keyword noun phrase
@@ -17,6 +17,13 @@ ms.lastreviewed: 8/3/2021
 # Known issues with the AKS engine on Azure Stack Hub
 
 This topic covers known issues for the AKS engine on Azure Stack Hub.
+
+## Limit of 50 nodes per subscription
+
+- **Applicable to**: Azure Stack Hub, AKS engine (all)
+- **Description**: When creating clusters, you need to ensure that there are not more than 50 Kubernetes nodes (control plan and agent nodes) deployed per subscriptions. The total Kubernetes nodes deployed across all clusters within a single subscription shouldn't exceed 50 nodes.
+- **Remediation**: Use less then 51 nodes in your subscription.
+- **Occurrence**: When attempting to add more than 50 nodes per subscription.
 
 ## Unable to resize cluster VMs with the Compute service
 
