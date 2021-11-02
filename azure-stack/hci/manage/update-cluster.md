@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: khdownie
 ms.author: v-kedow
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 11/02/2021
 ---
 
 # Update Azure Stack HCI clusters
@@ -47,6 +47,9 @@ Follow these steps to install updates:
 
    :::image type="content" source="media/update-cluster/operating-system-updates.png" alt-text="Click Next: Install to proceed to installing operating system updates, or click Skip to exclude them" lightbox="media/update-cluster/operating-system-updates.png":::
 
+   > [!NOTE]
+   > If you're installing updates on a cluster that has [Kernel Soft Reboot](kernel-soft-reboot.md) enabled, you'll see a **Disable Kernel Soft Reboot for this run** checkbox. Checking the box disables Kernel Soft Reboot only for that particular updating run. This makes it possible to disable Kernel Soft Reboot when an updating run requires a full reboot, such as BIOS updates.
+
 5. Select **Install** to install the operating system updates. One by one, each server will download and apply the updates. You will see the update status change to "installing updates." If any of the updates requires a restart, servers will be restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire updating run can take anywhere from a few minutes to several hours. You may be asked to supply your login credentials to Windows Admin Center multiple times.
 
    :::image type="content" source="media/update-cluster/install-os-updates.png" alt-text="Click Install to install operating system updates on each server in the cluster" lightbox="media/update-cluster/install-os-updates.png":::
@@ -68,6 +71,9 @@ Follow these steps to install updates:
 ## Install feature updates using Windows Admin Center
 
 Microsoft recommends installing new feature updates as soon as possible, using the following steps.
+
+> [!IMPORTANT]
+> There are known issues in Windows Admin Center when upgrading a cluster from Azure Stack HCI, version 20H2 to version 21H2. See [Known issues](#known-issues) at the end of this article.
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. Any new feature updates will be displayed.
 
@@ -348,6 +354,48 @@ If there is a critical security update that you need to apply quickly, or you ne
 
 9. Bring the virtual disks back online.
 10. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
+
+## Known issues
+
+The following are known issues in Windows Admin Center when upgrading a cluster from Azure Stack HCI, version 20H2 to version 21H2.
+
+### Couldn't install updates
+
+This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Simply wait a few minutes and refresh your browser, and you should see the true update status. You can also use `Get-CauRun` to check the status of the updating run with PowerShell, and then refresh your browser when the run is complete.
+
+:::image type="content" source="media/update-cluster/known-issues.png" alt-text="This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Refresh your browser." lightbox="media/update-cluster/known-issues.png"::::::
+
+### Couldn't check for updates
+
+This error message is seen when Windows Admin Center loses connectivity to the managed servers, so it's likely that the updates are actually being installed. Simply wait a few minutes and refresh your browser, and you should see the true update status. You can also use `Get-CauRun` to check the status of the updating run with PowerShell, and then refresh your browser when the run is complete.
+
+This message is also seen when the clustered servers have mixed versions of patches installed. This causes the `Invoke_CAUScan` command with `RollingUpgrade` plugin to return multiple feature updates. To mitigate this issue, apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) to all servers in the cluster before attempting to update the cluster.
+
+### Multiple prompts for login credentials
+
+In older versions of Windows Admin Center, you may be prompted to authenticate multiple times during an updating run. Either authenticate each time when prompted, or go back to **Connections** and re-connect to the cluster.
+
+### Cluster readiness check doesn't complete
+
+At times, the readiness check remains in **Checking** status for the cluster validation tests and never finishes. This is predominantly seen in non-English Azure Stack HCI clusters due to localization issues. 
+
+When `Test-Cluster` finishes on the machines (usually after a couple of minutes), Windows Admin Center may not recognize that the checks have completed. Because `Test-Cluster` does succeed behind the scenes in this scenario, you can download the `Test-Cluster` report file directly from the servers to validate cluster health before continuing with the updating run. Alternatively, run `Test-Cluster` using PowerShell on any of the servers in the cluster.
+
+### CredSSP credentials error
+
+In older versions of Windows Admin Center, you may encounter the error message "You can't use Cluster Aware Updating without enabling CredSSP and providing explicit credentials" when you have already done so. This issue is fixed in Windows Admin Center version 2110.
+
+### CredSSP session endpoint permissions issue
+
+During an updating run, you may see a notification to enable CredSSP, along with an error message: "Couldn't enable CredSSP delegation. Connecting to the remote server failed."
+
+This CredSSP error is seen when Windows Admin Center is running on a local PC, and when the Windows Admin Center user is not the same user who installed Windows Admin Center on the machine.
+
+To mitigate this problem, Microsoft has introduced a Windows Admin Center CredSSP administrators group. Add your user account to the Windows Admin Center CredSSP Administrators group on your local PC, and then sign back in, and the error should go away.
+
+### Naming mismatch on operating system versions
+
+Although the update header says Azure Stack HCI 22H2, if a cluster hasn't joined the preview channel, it will only receive the publicly offered 21H2 GA update. This is a hard-coding mismatch.
 
 ## Next steps
 
