@@ -6,7 +6,7 @@ author: khdownie
 ms.author: v-kedow
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2021
+ms.date: 11/02/2021
 ---
 
 # What's new in Azure Stack HCI
@@ -14,6 +14,26 @@ ms.date: 10/19/2021
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 ## What's new in Azure Stack HCI, version 21H2
+
+Windows Admin Center version 2110 added a number of features and improvements to Azure Stack HCI, including the following:
+
+- **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
+
+- **Windows Admin Center platform upgraded to Angular 11**: Upgrading the front-end of our platform from Angular 7 to Angular 11 enhances security and performance across the product. We also updated our SDK so that extension developers can use it too.
+
+- **Virtual Machine tool improvements**: We’ve improved the tool’s performance and you can now create VHDs when adding a new disk to your VM.
+
+- **New Security tool**: This new tool centralizes some key security settings for servers and clusters, including the ability to easily view the Secured-core status of systems.
+
+- **New features when creating volumes on clusters**: The Volumes tool in Cluster Manager now can create volumes with thin provisioning, nested resiliency, and optional stretched cluster features. 
+
+- **Feature updates for Azure Stack HCI**: The Updates tool has an improved history page and can upgrade clusters to Azure Stack HCI, version 21H2.
+
+- **Automatic VM activation**: You can now set up Azure Stack HCI clusters to automatically activate Windows Server VMs (this was previously available via an extension update). To do so, connect to the cluster and then go to Settings > Activate Windows Server VMs.
+
+- **Set up SDN at any time**: You can now set up SDN after creating the cluster in addition to during cluster creation.
+
+- **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
 
 Clusters running Azure Stack HCI, version 21H2 have the following new features:
 
