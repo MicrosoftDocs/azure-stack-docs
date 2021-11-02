@@ -3,7 +3,7 @@ title: Plan datacenter integration for Azure Stack Hub integrated systems
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 07/27/2021
+ms.date: 11/02/2021
 ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
@@ -49,7 +49,7 @@ You'll need to consider which identity provider you want to use for Azure Stack 
 
 Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, or whether they can join an Active Directory domain, and so on. These things are separate.
 
-You can learn more about choosing an identity provider in the [Azure Stack Hub integrated systems connection models article](./azure-stack-connection-models.md).
+You can deploy multiple Azure Stack Hub systems with the same Azure Active Directory tenant or Active Directory.
 
 ### AD FS and Graph integration
 
