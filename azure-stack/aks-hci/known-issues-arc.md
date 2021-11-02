@@ -16,7 +16,7 @@ You can also [open a support issue](./help-support.md) if none of the workaround
 
 ## Error: `Error while updating agents for enabling features`
 
-When enabling a *custom location* and a *cluster connect* after connecting a cluster to Azure Arc, the following error appears: 
+If you enable the *custom location* and *cluster connect* features on your Azure Arc connected AKS on Azure Stack HCI cluster, you may see the following error: 
 
 `Error while updating agents for enabling features. Please run "kubectl get pods -n azure-arc" to check the pods in case of timeout error. Error: Error: UPGRADE FAILED: timed out waiting for the condition`
 
