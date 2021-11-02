@@ -72,7 +72,7 @@ Now that we've verified our system settings, let's get started:
 
    (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependant on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
 
-   [ ![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png) ](.\media\setup\proxy-settings-host-configuration#lightbox)
+   [ ![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png) ](.\media\setup\proxy-settings-host-configuration.png#lightbox)
  
    Select **Next** after you're finished.
 
