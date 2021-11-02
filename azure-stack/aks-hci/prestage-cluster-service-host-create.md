@@ -1,5 +1,5 @@
 ---
-title: How to set up AKS host if you have prestaged cluster service objects and DNS records
+title: Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell
 description: Learn how to set up an AKS host if you have prestaged cluster service objects and DNS records.
 author: abha
 ms.topic: how-to
@@ -45,20 +45,20 @@ $vnet = New-AksHciNetworkSetting -name mgmt-vnet -vSwitchName "extSwitch" -k8sNo
 ```
 
 > [!NOTE]
-> The values given in this example command will need to be customized for your environment.
+> You need to customize the values given in this example command for your environment.
 
-## Step 4: Configure your deployment if you have prestaged cluster service objects and DNS records
+## Step 4: Configure your deployment with the prestaged cluster service objects and DNS records
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `workingDir`, `cloudservicecidr`, `cloudConfigLocation`, and `clusterRoleName` parameters. If you want to reset your configuration details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `workingDir`, `cloudServiceCidr`, `cloudConfigLocation`, and `clusterRoleName` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
-Configure your deployment with the following command.
+Configure your deployment with the following command:
 
 ```powershell
 Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" -clusterRoleName "ca-cloudagent"
 ```
 
 > [!NOTE]
-> The values given in this example command will need to be customized for your environment.
+> You need to customize the values given in this example command for your environment.
 
 ## Step 5: Log in to Azure and configure registration settings
 
@@ -70,7 +70,7 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ## Step 5: Start a new deployment
 
-After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin deployment, run the following command.
+After you've configured your deployment, you must start it. Starting the deployment installs the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin the deployment, run the following command:
 
 ```powershell
 Install-AksHci

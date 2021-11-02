@@ -13,7 +13,7 @@ ms.author: jeguan
 In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
 > [!NOTE]
-> If you have prestaged cluster service objects and DNS records, for specific instructions, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
+> If you have prestaged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
 
 ## Before you begin
 
