@@ -90,6 +90,8 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
+    - name: Azure Arc-enabled VMs (preview)
+      href: manage/azure-arc-enabled-virtual-machines.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
