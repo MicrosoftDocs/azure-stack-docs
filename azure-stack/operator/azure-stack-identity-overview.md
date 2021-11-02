@@ -4,7 +4,7 @@ description: Learn about the identity providers you can use with Azure Stack Hub
 author: BryanLa
 
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 11/02/2021
 ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
@@ -190,6 +190,15 @@ Details about using Azure PowerShell to authenticate with Azure Stack Hub can be
 ### Authenticate with Azure CLI
 
 For information about using Azure PowerShell to authenticate with Azure Stack Hub, see [Install and configure Azure CLI for use with Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
+
+## Azure Policy
+
+[Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at-scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to per-resource, per-policy granularity. It also helps to bring your resources to compliance through bulk remediation for existing resources and automatic remediation for new resources.
+
+Common use cases for Azure Policy include implementing governance for resource consistency, regulatory compliance, security, cost, and management. Policy definitions for these common use cases are already built in to your Azure environment to help you get started.
+
+> [!NOTE]
+> Azure Policy is currently not supported on Azure Stack Hub.
 
 ## Next steps
 

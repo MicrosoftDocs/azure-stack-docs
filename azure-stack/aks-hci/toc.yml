@@ -17,6 +17,10 @@
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
+    - name: Deploy an AKS host with prestaged cluster service objects
+      items: 
+        - name: Use PowerShell
+          href: prestage-cluster-service-host-create.md
     - name: Develop applications
       items:
         - name: Deploy applications with Helm
