@@ -14,6 +14,8 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.30.106
+        href: hotfix-1-2102-30-106.md      
       - name: Hotfix 1.2102.30.104
         href: hotfix-1-2102-30-104.md
       - name: Hotfix 1.2008.40.154
@@ -135,6 +137,8 @@
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
+      - name: Validate datacenter network integration
+        href: azure-stack-validate-network.md
     - name: Deployment worksheet
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
@@ -420,8 +424,10 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.1.0 release notes [Oct 2021] 
+          href: event-hubs-rp-release-1-2102-10.md
         - name: 1.2102.0.0 release notes [Jul 2021] 
-          href: event-hubs-rp-release-1-2102-00.md
+          href: event-hubs-rp-release-1-2102-00.md          
         - name: 1.2012.2.0 release notes [May 2021] 
           href: event-hubs-rp-release-1-2012-20.md          
         - name: 1.2012.1.0 release notes [Feb 2021] 

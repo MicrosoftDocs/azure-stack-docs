@@ -69,7 +69,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-### Load Balancer
+### Load balancer
 
 #### IPv6 button visible on "Add frontend IP address"
 

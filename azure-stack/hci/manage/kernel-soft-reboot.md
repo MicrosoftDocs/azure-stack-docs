@@ -74,6 +74,10 @@ Type: REG_SZ
 Value: True
 ```
 
+## Disable Kernel Soft Reboot for an update run
+
+If you're installing operating system or hardware updates with Windows Admin Center on a cluster that has Kernel Soft Reboot enabled, you'll see a **Disable Kernel Soft Reboot for this run** checkbox. Checking the box disables Kernel Soft Reboot only for that particular updating run. This makes it possible to leave Kernel Soft Reboot enabled on a cluster, but disable it when an updating run requires a full reboot, such as BIOS updates.
+
 ## Troubleshooting
 
 To determine the type of reboot that was last performed, use `Get-CauReport` with `last` and `detailed` parameters to get the report for the last Cluster-Aware Updating run.

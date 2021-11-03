@@ -54,6 +54,14 @@
       href: deploy/cluster-set.md
     - name: Host networking with Network ATC
       href: deploy/network-atc.md
+  - name: Deploy SDN
+    items:
+    - name: Deploy using Windows Admin Center
+      href: deploy/sdn-wizard.md
+    - name: Deploy using SDN Express
+      href: manage/sdn-express.md
+    - name: Deploy at cluster creation
+      href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
     - name: Branch office and edge
@@ -82,6 +90,8 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
+    - name: Azure Arc-enabled VMs (preview)
+      href: manage/azure-arc-enabled-virtual-machines.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
