@@ -3,8 +3,8 @@ metadata:
   title: Azure Stack HCI FAQ
   description: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
   ms.topic: conceptual
-  author: JohnCobb1
-  ms.author: v-johcob
+  author: cosmosdarwin
+  ms.author: cosdar
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
   ms.date: 10/15/2021

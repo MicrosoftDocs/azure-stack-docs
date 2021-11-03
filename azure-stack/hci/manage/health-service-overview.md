@@ -2,10 +2,10 @@
 description: "Learn more about how to use the Health Service to monitor clusters"
 title: Monitor clusters with the Health Service
 manager: eldenc
-ms.author: cosdar
+ms.author: arduppal
 ms.topic: article
 ms.assetid: 5bc71e71-920e-454f-8195-afebd2a23725
-author: cosmosdarwin
+author: arduppal
 ms.date: 08/20/2021
 ---
 # Monitor clusters with the Health Service

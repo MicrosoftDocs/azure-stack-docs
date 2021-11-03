@@ -2,9 +2,9 @@
 description: "Learn more about: Cluster performance history"
 title: Cluster performance history
 manager: eldenc
-ms.author: cosdar
+ms.author: arduppal
 ms.topic: article
-author: cosmosdarwin
+author: arduppal
 ms.date: 08/13/2021
 ---
 
