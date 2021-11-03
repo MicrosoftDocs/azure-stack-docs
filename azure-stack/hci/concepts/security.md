@@ -4,7 +4,7 @@ description: This topic provides guidance on security considerations for the Azu
 author: JohnCobb1
 ms.author: v-johcob
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 11/03/2021
 ---
 
 # Azure Stack HCI security considerations
