@@ -2,9 +2,9 @@
 description: "Learn more about: Health Service actions"
 title: Track Health Service actions
 manager: eldenc
-ms.author: cosdar
+ms.author: arduppal
 ms.topic: article
-author: cosmosdarwin
+author: arduppal
 ms.date: 08/20/2021
 ---
 # Track Health Service actions
