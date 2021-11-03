@@ -2,7 +2,7 @@
 title: Deploy trusted enterprise virtualization on Azure Stack HCI
 description: This topic provides guidance on how to plan, configure, and deploy a highly secure infrastructure that uses trusted enterprise virtualization on the Azure Stack HCI operating system.
 author: hsuzuki
-ms.author: Hsuzuki1999
+ms.author: hsuzuki1999
 ms.topic: how-to
 ms.date: 01/07/2021
 ---
