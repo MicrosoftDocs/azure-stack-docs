@@ -30,7 +30,7 @@ The first step for the Azure Stack Hub operator is to enable Remote Desktop acce
 Run the following commands in the privileged endpoint (PEP). Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md). The operator can be a member of the **cloudadmin** users group, or **cloudadmin** itself:
 
 ```powershell
-Grant-RdpAccessToErcsVMs
+Grant-RdpAccessToErcsVM
 ```
 
 To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS), run the following command in the privileged endpoint (PEP):
