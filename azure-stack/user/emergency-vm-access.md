@@ -147,7 +147,7 @@ As a user, you provide consent to the operator to create console access for a sp
 9. When finished, the operator can run the following command to remove the user consent:
 
    ```powershell
-   Delete-TenantVMSession - ResourceID
+   Delete-TenantVMSession -ResourceID
    ```
 
    > [!NOTE]
