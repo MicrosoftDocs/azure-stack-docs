@@ -16,7 +16,7 @@ This article discusses how to manage Network ATC after it has been deployed. Net
 
 ### Configure an override
 
-You can modify the default configuration and verify Network ATC makes the necessary changes.
+You can modify the default configuration and verify that Network ATC makes the necessary changes.
 
 > [!IMPORTANT]
 > Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
