@@ -34,6 +34,10 @@ This section discusses how to protect services and virtual machines (VMs) runnin
 
     To learn more about Azure Stack HCI certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
 
+- The **Security tool** is available natively in Windows Admin Center for both single server and Azure Stack HCI clusters to make security management and control easier. The tool centralizes some key security settings for servers and clusters, including the ability to view the Secured-core status of systems.
+
+    To learn more, see [Secured-core server](/windows-server/get-started/whats-new-in-windows-server-2022#secured-core-server).
+
 - **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
 
     To learn more, see [Manage Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard-manage) and download the [Device Guard and Credential Guard hardware readiness tool](https://www.microsoft.com/download/details.aspx?id=53337).
