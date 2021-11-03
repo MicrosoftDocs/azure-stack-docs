@@ -31,13 +31,12 @@ Run the following commands in the privileged endpoint (PEP). Follow the guidance
 
 ```powershell
 Grant-RdpAccessToErcsVMs
-Revoke-RdpAccessToErcsVM
 ```
 
 To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS), run the following command in the privileged endpoint (PEP):
 
 ```powershell
-Disable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
+Revoke-RdpAccessToErcsVM
 ```
 
 ## Operator enables a user subscription for EVA
