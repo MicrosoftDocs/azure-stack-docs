@@ -185,9 +185,7 @@ These steps enable you to use the API profile NuGet packages to deploy your appl
 
 You can use the following samples as a reference for creating solutions with .NET and the Azure Stack Hub API profiles:
 
-- [Manage Resource Groups](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
-- [Manage Storage Accounts](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
-- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm): This sample uses the **2019-03-01-hybrid** profile supported by Azure Stack Hub.
+[Azure-Samples/Hybrid-CSharp-Samples: Getting Started with Resources - Manage Resource Groups in Azure Stack Hybrid cloud by using Certificates for Authentication - in C# asynchronously (github.com)](https://github.com/Azure-Samples/Hybrid-CSharp-Samples)
 
 ## Next steps
 
