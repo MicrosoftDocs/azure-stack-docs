@@ -107,9 +107,7 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
 
 Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
-- [Manage resources and resource groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
-- [Manage storage account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)
+[Azure-Samples/Hybrid-Python-Samples: An example illustrating how to use Python to manage storage account in Hybrid Clouds. Eg. Azure Stack (github.com)](https://github.com/Azure-Samples/Hybrid-Python-Samples)
 
 ## Manage virtual machine sample
 
