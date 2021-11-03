@@ -11,7 +11,7 @@ ms.lastreviewed: 11/2/2020
 
 ### Azure Kubernetes Service (AKS) or Azure Container Registry (ACR) resource providers fail in test-azurestack
 
-- Applicable: This issue applies to 2102 and earlier
+- Applicable: This issue applies to release 2102 and earlier.
 - Cause: When you run the `test-azurestack` update readiness command the test triggers the following two warnings:
      ```powershell  
     WARNING: Name resolution of containerservice.aks.azs failed
