@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with GO in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/25/2021
+ms.date: 11/4/2021
 ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 08/18/2021
+ms.reviewer: weshi1
+ms.lastreviewed: 11/4/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Go in Azure Stack so I can benefit from the use of profiles.
 # Keyword: azure stack API profiles Go
@@ -294,7 +294,7 @@ This example shows a sample of Go code that creates a virtual network on Azure S
 
 Some of the code samples available for Azure Stack Hub using the Go SDK are:
 
-[Azure-Samples/Hybrid-Golang-Samples: Getting Started with Compute - Create Virtual Machines using Golang on Azure Stack hybrid cloud (github.com)](https://github.com/Azure-Samples/Hybrid-Golang-Samples/releases/tag/2020-09-01-hybrid)
+[Azure-Samples/Hybrid-Golang-Samples: Getting Started with Compute - Create Virtual Machines using Golang on Azure Stack hybrid cloud (github.com)](https://github.com/Azure-Samples/Hybrid-Golang-Samples)
 
 ::: moniker-end
 ::: moniker range="<=azs-2008"
