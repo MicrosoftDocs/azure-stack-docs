@@ -45,7 +45,7 @@ Completing setup for the replication component alone is sufficient to protect yo
 6. Enter the required information:
 
    - **Subscription:** The Azure subscription you want to use for replication of VMs on this host.
-   - **Location:** The Azure region where the ASR resources should be created.
+   - **Location:** The Azure region where the Azure Site Recovery resources should be created.
    - **Storage Account:** The storage account where replicated VM workloads on this host will be saved.
    - **Vault:** Choose a name for the Azure Site Recovery vault for protected VMs on this host.
 
@@ -55,7 +55,7 @@ Completing setup for the replication component alone is sufficient to protect yo
 This could take up to 10 minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right).
 
 >[!NOTE]
-> This step automatically installs the ASR agent onto the target server or nodes (if configuring on a cluster), creates a **Resource Group** with the **Storage Account** and **Vault** specified, in the **Location** specified. This will also register the target host with the ASR service and configure a default replication policy.
+> This step automatically installs the Azure Site Recovery agent onto the target server or nodes (if configuring on a cluster), creates a **Resource Group** with the **Storage Account** and **Vault** specified, in the **Location** specified. This will also register the target host with the Azure Site Recovery service and configure a default replication policy.
 
 ## Step 2: Select virtual machines to protect
 
@@ -68,7 +68,7 @@ This could take up to 10 minutes. You can watch the progress by going to **Notif
 
 5. Enter the name of the **Storage Account** to use for this VM's replication, and select **Protect VM**. This step enables replication for the selected Virtual Machine.
 
-6. ASR will start replication. Replication is completed and the VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This can take several minutes.
+6. Azure Site Recovery will start replication. Replication is completed and the VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This can take several minutes.
 
 ## Step 3: Configure and run a test failover in the Azure portal
 
@@ -92,4 +92,4 @@ To see all servers that are registered to the vault, go to **Recovery Services V
 
 ## Known issue ##
 
-When registering ASR with a cluster, if a node fails to install ASR or register to the ASR service, your VMs may not be protected. Verify that all nodes in the cluster are registered in the Azure portal by going to the **Recovery Services vault** > **Jobs** > **Site Recovery Jobs**.
+When registering Azure Site Recovery with a cluster, if a node fails to install Azure Site Recovery or register to the Azure Site Recovery service, your VMs may not be protected. Verify that all nodes in the cluster are registered in the Azure portal by going to the **Recovery Services vault** > **Jobs** > **Site Recovery Jobs**.
