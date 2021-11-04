@@ -377,13 +377,13 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 The following are frequently asked questions about Azure Arc-enabled Azure Stack HCI.
 
 - **Can I create virtual machines on a tagged vLAN?**
-- vLAN tagged VMs is currently not supported.
+  vLAN tagged VMs is currently not supported.
 
 - **Can Azure Kubernetes Service on Azure Stack HCI and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?**
-- Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from Azure portal can be deployed on the same Arc-enabled Azure Stack HCI cluster. This requires deploying the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling AKS-HCI will also remove Arc Resource Bridge.
+  Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from Azure portal can be deployed on the same Arc-enabled Azure Stack HCI cluster. This requires deploying the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling AKS-HCI will also remove Arc Resource Bridge.
 
 - **Can I use SDN for Azure Stack HCI VMs created from Azure portal?**
-- SDN is currently not supported for VMs created from Azure Portal.
+  SDN is currently not supported for VMs created from Azure Portal.
  
 ## Next steps
 
@@ -391,4 +391,3 @@ Now you're ready to create VMs in Azure portal.
 
 > [!div class="nextstepaction"]
 > [Go to Azure portal](https://portal.azure.com/)
-
