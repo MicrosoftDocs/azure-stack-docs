@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/16/2021
+ms.date: 11/02/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -69,7 +69,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-### Load Balancer
+### Load balancer
 
 #### IPv6 button visible on "Add frontend IP address"
 
@@ -86,6 +86,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ## Compute -->
 
 ## Health and alerts
+
+[!INCLUDE [resource providers fail in test-azurestack](../includes/known-issue-alerts-aks-acs.md)]
 
 ### No alerts in Syslog pipeline
 

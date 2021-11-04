@@ -3,7 +3,7 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 10/29/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
@@ -133,6 +133,9 @@ Invoke-Command ($ServerList) {
 }
 ```
 
+> [!NOTE]
+> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+
 Next, restart all the servers:
 
 ```powershell
@@ -142,9 +145,78 @@ Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 
 ## Step 2: Configure host networking
 
-Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, see [Host networking with Network ATC](network-atc.md) to deploy host networking.
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../concepts/network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
+The following represent common host networking intents using Network ATC. You can specify any combination of the following types of intents:
+
+- Compute – adapters will be used to connect virtual machines traffic to the physical network
+- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
+- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
+
+If you need to configure overrides, see [Configure an override](../manage/manage-network-atc.md#configure-an-override).
+
+If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
+
+### Configure an intent
+
+In this task, a consistent configuration is maintained across all cluster nodes. This is beneficial for several reasons including improved reliability of the cluster. The cluster is considered the configuration boundary. That is, all nodes in the cluster share the same configuration (symmetric intent).
+
+> [!IMPORTANT]
+> If a server node is clustered, you must use a clustered intent. Standalone intents are ignored.
+
+> [!NOTE]
+> You can add all nodes at one time using the `New-Cluster` cmdlet, then add the intent to all nodes. Alternatively, you can incrementally add nodes to the cluster. The new nodes are managed automatically.
+
+In this example, an intent is created that specifies the compute and storage intent types with no overrides.
+
+1. On one of the cluster nodes, run `Get-NetAdapter` to review the physical adapters. Ensure that each node in the cluster has the same named physical adapters.
+
+    ```powershell
+    Get-NetAdapter -Name pNIC01, pNIC02 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+    ```
+
+1. Run the following command to add the storage and compute intent types to pNIC01 and pNIC02. Note that we specify the `-ClusterName` parameter.
+
+    ```powershell
+    Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
+    ```
+
+    The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
+
+    - the adapters specified
+    - adapters report status 'Up'
+    - adapters ready to be teamed to create the specified vSwitch
+
+1. Run the `Get-NetIntent` cmdlet to see the cluster intent. If you have more than one intent, you can specify the `Name` parameter to see details of only a specific intent.
+
+    ```powershell
+    Get-NetIntent -ClusterName HCI01
+    ```
+
+1. To see the provisioning status of the intent, run the `Get-NetIntentStatus` command:
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+
+    Note the status parameter that shows Provisioning, Validating, Success, Failure.
+
+1. Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+ 
+1. Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage. For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
+
+    ```powershell
+    Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
+    ```
+
+> [!NOTE]
+> At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
+
+
 
 ## Step 3: Prep for cluster setup
 
@@ -342,3 +414,4 @@ Now that you are done, there are still some important tasks you need to complete
 
 - Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- Manage host networking. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).
