@@ -3,9 +3,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: include
-ms.date: 7/22/2021
-ms.reviewer: raymondl
-ms.lastreviewed: 7/22/2021
+ms.date: 11/4/2021
+ms.reviewer: balsu
+ms.lastreviewed: 11/4/2021
 ---
 
 ### Error thrown with New-AzADServicePrincipal and New-AzADApplication
@@ -13,9 +13,9 @@ ms.lastreviewed: 7/22/2021
 - Applicable: Azure Stack environments using Azure Active Directory (Azure AD).
 - Cause: Azure Active Directory Graph introduced a breaking change to restrict the `IdentifierUri` for Active Directory applications to be the subdomains of a verified domain in the directory. Before the change, this restriction was only enforced for the multi-tenant apps. Now this restriction applies to single tenant apps as well. The change will result in the following error: `Values of identifierUris property must use a verified domain of the organization or its subdomain' is displayed when running`. 
 - Remediation: You can work around this restriction in two ways.
-    1. You'll need to use a service principle name that is a subdomain of the directory tenant. For example, if the directory is `contoso.onmicrosoft.com`, the service principal name has to be of the form of `*.contoso.onmicrosoft.com`. Use the following cmdlet:
+    1. You'll need to use a service principle name that is a subdomain of the directory tenant. For example, if the directory is `contoso.onmicrosoft.com`, the service principal name has to be of the form of `<foo>.contoso.onmicrosoft.com`. Use the following cmdlet:
         ```powershell  
-        New-AzADServicePrincipal -Role Owner -DisplayName *.contoso.onmicrosoft.com
+        New-AzADServicePrincipal -Role Owner -DisplayName <foo>.contoso.onmicrosoft.com
         ```
         For more information about identity and using service principals with Azure Stack Hub, see [Overview of identity providers for Azure Stack Hub](/azure-stack/operator/azure-stack-identity-overview).
     
