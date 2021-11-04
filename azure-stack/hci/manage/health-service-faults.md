@@ -2,9 +2,9 @@
 description: "Learn more about: Health Service faults"
 title: View Health Service faults
 manager: eldenc
-ms.author: cosdar
+ms.author: arduppal
 ms.topic: article
-author: cosmosdarwin
+author: arduppal
 ms.date: 08/13/2021
 ---
 
