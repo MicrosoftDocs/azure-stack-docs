@@ -2,7 +2,7 @@
 title: Enable volume encryption, deduplication, and compression - Azure Stack HCI
 description: This topic covers how to use volume encryption, deduplication, and compression in Azure Stack HCI using Windows Admin Center.
 author: JohnMarlin-MSFT
-ms.author: john.marlin
+ms.author: johnmar
 ms.topic: how-to
 ms.date: 11/04/2020
 ---
@@ -17,14 +17,17 @@ This topic covers how to enable encryption with BitLocker on volumes in Azure St
 To turn on BitLocker in Windows Admin Center:
 
 1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
+
+    >[!NOTE]
+    > To use BitLocker with Cluster Shared Volumes (CSV) requires additional switches that must be run. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+
 1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
 
     :::image type="content" source="media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
 
 1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
 
->[!NOTE]
-   > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
+   If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
 ## Turn on deduplication and compression
 Deduplication and compression are managed per volume. Deduplication and compression use a post-processing model, which means that you won't see savings until it runs. When it does, it will work over all files, even files that were there from before.
