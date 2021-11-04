@@ -7,7 +7,7 @@ ms.date: 09/08/2021
 ms.author: v-susbo
 ---
 
-# Create a DaemonSet
+# Create DaemonSets
 
 _DaemonSet_ is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node. Similarly, when a node is deleted, then the pod running on the node is also deleted and is not rescheduled on another node (for example, as happens when using a _ReplicaSet_). This allows a user to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
 
@@ -60,3 +60,9 @@ You can update a DaemonSet using the `kubectl edit ds<NAME>` command. However, i
 ## Delete a DaemonSet
 
 To remove a DaemonSet, use the `kubectl delete` command (for example, `kubectl delete –f example-daemon.yaml -n monitoring`). You should be cautious when specifying the name of the DaemonSet file as deleting a DaemonSet will clean up all the pods it has deployed.
+
+## Next steps
+
+- [Create pods](create-pods.md)
+- [Create a deployment](create-deployments.md)
+- [Create a ReplicaSet](create-replicasets.md)
