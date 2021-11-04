@@ -1,10 +1,10 @@
 ---
 title: Enable volume encryption, deduplication, and compression - Azure Stack HCI
 description: This topic covers how to use volume encryption, deduplication, and compression in Azure Stack HCI using Windows Admin Center.
-author: JohnCobb1
-ms.author: v-johcob
+author: JohnMarlin-MSFT
+ms.author: john.marlin
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/04/2020
 ---
 
 # Enable volume encryption, deduplication, and compression in Azure Stack HCI
