@@ -11,7 +11,7 @@ ms.localizationpriority: low
 
 >Applies to: Azure Stack HCI, version 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-[Learn more about Azure integration with Windows Admin Center.](/windows-server/manage/windows-admin-center/azure/index.md)
+[Learn more about Azure integration with Windows Admin Center.](/windows-server/manage/windows-admin-center/azure/index)
 
 Windows Admin Center streamlines the process of replicating your virtual machines on your Hyper-V servers or clusters, making it easier to leverage the power of Azure from your own datacenter. To automate setup, you can connect the Windows Admin Center gateway to Azure.
 
@@ -29,7 +29,7 @@ Completing setup for the replication component alone is sufficient to protect yo
 ## Prerequisites and planning
 
 - The target servers hosting the VMs you want to protect must have Internet access to replicate to Azure.
-- [Connect your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration.md).
+- [Connect your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration).
 - [Review the capacity planning tool to evaluate the requirements for successful replication and failover](/azure/site-recovery/hyper-v-site-walkthrough-capacity).
 
 ## Step 1: Set up VM protection on your target host
