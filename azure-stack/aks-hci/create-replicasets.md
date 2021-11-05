@@ -9,7 +9,7 @@ ms.author: v-susbo
 
 # Create ReplicaSets
 
-A ReplicaSet is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods are running at any given time, which guarantees a specified number of identical pods are available.
+A ReplicaSet is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods is running at any given time, which guarantees a specified number of identical pods are available.
 
 When a pod fails, a ReplicaSet brings up a new instance of the pod and scales up when the running instances reach a specified number. Conversely, it scales down or deletes pods when an instance with the same label is created.
 
