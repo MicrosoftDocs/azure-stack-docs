@@ -1,8 +1,8 @@
 ---
 title: Firewall requirements for Azure Stack HCI
 description: This topic provides guidance on firewall requirements for the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author: cosmosdarwin
+ms.author: cosdar
 ms.topic: how-to
 ms.date: 10/13/2021
 ---
