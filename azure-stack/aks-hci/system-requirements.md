@@ -208,7 +208,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | msft.sts.microsoft.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
 | graph.windows.net | 443 | Used when running `Install-AksHci`. |
 | ecpacr.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
-| *.blob.core.windows.net <br> US endpoint: wus2replica.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.blob.core.windows.net <br> US endpoint: wus2replica&ast;.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
 | mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
