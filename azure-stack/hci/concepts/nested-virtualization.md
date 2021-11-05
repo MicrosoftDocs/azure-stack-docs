@@ -1,8 +1,8 @@
 ---
 title: Nested virtualization in Azure Stack HCI
 description: Run Azure Stack HCI on virtual machines for evaluation and testing.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
