@@ -44,19 +44,13 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 You can also add several nodes to the cluster at once.
 
-## Configure an override
-
-You can modify the default configuration and verify that Network ATC makes the necessary changes.
-
-> [!IMPORTANT]
-> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
-
-### Update an intent with a single override
+## Update an intent override
 
 This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
 
 > [!IMPORTANT]
-> The `Set-NetIntent` cmdlet is used to update an already deployed intent. Use the `Add-NetIntent` cmdlet to add an override at initial deployment time
+> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
+
 
 1. Get a list of possible override cmdlets. We use wildcards to see the options available:
 
