@@ -34,8 +34,11 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 
     ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate. For instructions on setting up certificates for installing the CLI on the ASDK, see [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
+2. Make a note of the CLI's Python location. 
 
+## Add certificate
+
+Export and then import Azure Stack Hub certificate for disconnected integrated systems and for the ASDK. For connected integrated systems, the certificate is publicly signed and this step isn't necessary. You can find instructions at [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
 ## Connect with Azure CLI
 
 ### [Azure AD on Windows](#tab/ad-win)
