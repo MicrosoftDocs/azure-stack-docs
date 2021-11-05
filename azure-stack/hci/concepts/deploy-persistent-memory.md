@@ -1,8 +1,8 @@
 ---
 title: Understand and deploy persistent memory 
 description: This article provides details on what persistent memory is and how to deploy it as storage in Azure Stack HCI and Windows Server.
-author: tomlavoy
-ms.author: tlavoy
+author: Anhansen
+ms.author: Anhansen
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
