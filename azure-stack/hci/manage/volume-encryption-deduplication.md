@@ -19,7 +19,7 @@ To turn on BitLocker in Windows Admin Center:
 1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
 
     >[!NOTE]
-    > To use BitLocker with Cluster Shared Volumes (CSV) requires additional switches that must be run. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+    > To use a new feature that provides an additional locally held BitLocker key and not rely on Active Directory, you must use Windows PowerShell. The new feature is only available in Windows Server 2022 and Azure Stack HCI, version 21H2. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
 
 1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
 
