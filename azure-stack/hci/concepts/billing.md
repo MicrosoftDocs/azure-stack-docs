@@ -1,8 +1,8 @@
 ---
 title: Azure Stack HCI billing and payment
 description: How billing and payment works in Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
