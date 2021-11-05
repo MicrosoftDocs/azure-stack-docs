@@ -101,9 +101,18 @@ Typically, only a few of these cmdlets are needed. Here is a brief overview of t
 |Set-NetIntent|Modifies an existing intent|
 |Get-NetIntent|Gets a list of intents|
 |Get-NetIntentStatus|Gets the status of intents|
-|New-NetIntentOverrides|Specifies overrides to the default configuration|
+|Set-NetIntentAdapter|Sets the adapters managed by an existing intent|
 |Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
 |Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
+
+You can also modify the default configuration Network ATC creates using overrides. To see a list of possible override commandlets, use the following command:
+
+```powershell
+Get-Command -Noun NetIntent*Over* -Module NetworkATC
+```
+
+> [!IMPORTANT]
+> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
 
 ## Example intents
 
