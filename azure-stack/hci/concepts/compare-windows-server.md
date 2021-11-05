@@ -2,8 +2,8 @@
 title: Compare Azure Stack HCI to Windows Server
 description: This topic helps you determine whether Azure Stack HCI or Windows Server is right for your organization.
 ms.topic: conceptual
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 01/21/2021

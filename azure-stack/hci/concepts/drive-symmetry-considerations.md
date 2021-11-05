@@ -1,8 +1,8 @@
 ---
 title: Drive symmetry considerations for Azure Stack HCI and Windows Server clusters
 description: This article explains drive symmetry constraints in Storage Spaces Direct and provides examples of supported and unsupported configurations.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
