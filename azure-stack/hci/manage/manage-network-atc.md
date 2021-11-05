@@ -184,6 +184,8 @@ Network ATC ensures that the deployed configuration stays the same across all cl
     Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
     ```
 
+For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
+
 ### Add non-APIPA addresses to storage adapters
 
 This can be accomplished using DHCP on the storage VLANs or by using the `NetIPAddress` cmdlets.
