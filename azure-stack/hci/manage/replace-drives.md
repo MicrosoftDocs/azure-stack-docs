@@ -1,8 +1,8 @@
 ---
 title: Replace failed drives on Azure Stack HCI
 description: How to replace failed drives on Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.date: 07/21/2020
 ---
