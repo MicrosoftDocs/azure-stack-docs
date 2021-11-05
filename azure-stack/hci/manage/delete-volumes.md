@@ -1,8 +1,8 @@
 ---
 title: Delete volumes on Azure Stack HCI and Windows Server clusters
 description: How to delete volumes on Azure Stack HCI and Windows Server clusters by using Windows Admin Center or PowerShell.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.date: 03/09/2021
 ---
