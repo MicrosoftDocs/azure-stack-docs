@@ -184,25 +184,6 @@ Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pN
 Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
 
-## Deploy intents
-
-The following activities represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
-
-- Compute – adapters will be used to connect virtual machines traffic to the physical network
-- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
-
-This article covers the following deployment tasks:
-
-- Configure an intent
-
-- Configure an intent override
-
-- Validate automatic remediation
-
-This article assumes you have already created a cluster. See [Create a cluster using PowerShell](create-cluster-powershell.md).
-
-
 
 ## Default Network ATC values
 
