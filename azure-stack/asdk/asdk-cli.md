@@ -86,7 +86,7 @@ To use Azure CLI with the ASDK, you must trust the CA root certificate on your r
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. 
 
-2. To find the location, open a CMD prompt or an elevated PowerShell prompt and type: `az version`. The version and python location appears in the prompt.
+2. To find the location, open a CMD prompt or an elevated PowerShell prompt and type: `az --version`. The version and python location appears in the prompt.
 
     ```powershell
     azure-cli                         2.30.0
@@ -107,7 +107,7 @@ To use Azure CLI with the ASDK, you must trust the CA root certificate on your r
     and let us know if you're interested in trying out our newest features: https://aka.ms/CLIUXstudy
     ```
 
-3. Change to the directory where Azure CLI has installed the Python. For example, using the location in step 2, `cd "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\"
+3. Change to the directory where Azure CLI has installed the Python. For example, using the location in step 2, `cd "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
 4. Type the following command:
 
     ```powershell  
