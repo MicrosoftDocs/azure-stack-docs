@@ -143,7 +143,93 @@ $ServerList = "Server1", "Server2", "Server3", "Server4"
 Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 ```
 
-## Step 2: Configure host networking
+
+## Step 2: Prep for cluster setup
+
+Next, verify that your servers are ready for clustering.
+
+As a sanity check first, consider running the following commands to make sure that your servers don't already belong to a cluster:
+
+Use `Get-ClusterNode` to show all nodes:
+
+```powershell
+Get-ClusterNode
+```
+
+Use `Get-ClusterResource` to show all cluster nodes:
+
+```powershell
+Get-ClusterResource
+```
+
+Use `Get-ClusterNetwork` to show all cluster networks:
+
+```powershell
+Get-ClusterNetwork
+```
+
+### Step 2.1: Prepare drives
+
+Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions and other data.
+
+> [!NOTE]
+> Exclude any removable drives attached to a server node from the script. If you are running this script locally from a server node for example, you don't want to wipe the removable drive you might be using to deploy the cluster.
+
+```powershell
+# Fill in these variables with your values
+$ServerList = "Server1", "Server2", "Server3", "Server4"
+
+Invoke-Command ($ServerList) {
+    Update-StorageProviderCache
+    Get-StoragePool | ? IsPrimordial -eq $false | Set-StoragePool -IsReadOnly:$false -ErrorAction SilentlyContinue
+    Get-StoragePool | ? IsPrimordial -eq $false | Get-VirtualDisk | Remove-VirtualDisk -Confirm:$false -ErrorAction SilentlyContinue
+    Get-StoragePool | ? IsPrimordial -eq $false | Remove-StoragePool -Confirm:$false -ErrorAction SilentlyContinue
+    Get-PhysicalDisk | Reset-PhysicalDisk -ErrorAction SilentlyContinue
+    Get-Disk | ? Number -ne $null | ? IsBoot -ne $true | ? IsSystem -ne $true | ? PartitionStyle -ne RAW | % {
+        $_ | Set-Disk -isoffline:$false
+        $_ | Set-Disk -isreadonly:$false
+        $_ | Clear-Disk -RemoveData -RemoveOEM -Confirm:$false
+        $_ | Set-Disk -isreadonly:$true
+        $_ | Set-Disk -isoffline:$true
+    }
+    Get-Disk | Where Number -Ne $Null | Where IsBoot -Ne $True | Where IsSystem -Ne $True | Where PartitionStyle -Eq RAW | Group -NoElement -Property FriendlyName
+} | Sort -Property PsComputerName, Count
+```
+
+### Step 2.2: Test cluster configuration
+
+In this step, you'll ensure that the server nodes are configured correctly to create a cluster. The `Test-Cluster` cmdlet is used to run tests to verify your configuration is suitable to function as a hyperconverged cluster. The example below uses the `-Include` parameter, with the specific categories of tests specified. This ensures that the correct tests are included in the validation.
+
+```powershell
+Test-Cluster –Node $ServerList –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+```
+
+## Step 3: Create the cluster
+
+You are now ready to create a cluster with the server nodes that you have validated in the preceding steps.
+
+When creating the cluster, you'll get a warning that states - `"There were issues while creating the clustered role that may prevent it from starting. For more information, view the report file below."` You can safely ignore this warning. It's due to no disks being available for the cluster witness that you will create later. 
+
+> [!NOTE]
+> If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `–StaticAddress <X.X.X.X>;`.
+
+```powershell
+$ClusterName="cluster1" New-Cluster -Name $ClusterName –Node $ServerList –nostorage
+```
+
+Congrats, your cluster has now been created.
+
+After the cluster is created, it can some take time for the cluster name to be replicated via DNS across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
+
+A good check to ensure all cluster resources are online:
+
+```powershell
+Get-Cluster -Name $ClusterName | Get-ClusterResource
+```
+
+If resolving the cluster isn't successful after some time, in most cases you can connect by using the name of one of the clustered servers instead of the cluster name.
+
+## Step 4: Configure host networking
 
 Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../concepts/network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
@@ -215,93 +301,6 @@ In this example, an intent is created that specifies the compute and storage int
 
 > [!NOTE]
 > At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
-
-
-
-## Step 3: Prep for cluster setup
-
-Next, verify that your servers are ready for clustering.
-
-As a sanity check first, consider running the following commands to make sure that your servers don't already belong to a cluster:
-
-Use `Get-ClusterNode` to show all nodes:
-
-```powershell
-Get-ClusterNode
-```
-
-Use `Get-ClusterResource` to show all cluster nodes:
-
-```powershell
-Get-ClusterResource
-```
-
-Use `Get-ClusterNetwork` to show all cluster networks:
-
-```powershell
-Get-ClusterNetwork
-```
-
-### Step 3.1: Prepare drives
-
-Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions and other data.
-
-> [!NOTE]
-> Exclude any removable drives attached to a server node from the script. If you are running this script locally from a server node for example, you don't want to wipe the removable drive you might be using to deploy the cluster.
-
-```powershell
-# Fill in these variables with your values
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-
-Invoke-Command ($ServerList) {
-    Update-StorageProviderCache
-    Get-StoragePool | ? IsPrimordial -eq $false | Set-StoragePool -IsReadOnly:$false -ErrorAction SilentlyContinue
-    Get-StoragePool | ? IsPrimordial -eq $false | Get-VirtualDisk | Remove-VirtualDisk -Confirm:$false -ErrorAction SilentlyContinue
-    Get-StoragePool | ? IsPrimordial -eq $false | Remove-StoragePool -Confirm:$false -ErrorAction SilentlyContinue
-    Get-PhysicalDisk | Reset-PhysicalDisk -ErrorAction SilentlyContinue
-    Get-Disk | ? Number -ne $null | ? IsBoot -ne $true | ? IsSystem -ne $true | ? PartitionStyle -ne RAW | % {
-        $_ | Set-Disk -isoffline:$false
-        $_ | Set-Disk -isreadonly:$false
-        $_ | Clear-Disk -RemoveData -RemoveOEM -Confirm:$false
-        $_ | Set-Disk -isreadonly:$true
-        $_ | Set-Disk -isoffline:$true
-    }
-    Get-Disk | Where Number -Ne $Null | Where IsBoot -Ne $True | Where IsSystem -Ne $True | Where PartitionStyle -Eq RAW | Group -NoElement -Property FriendlyName
-} | Sort -Property PsComputerName, Count
-```
-
-### Step 3.2: Test cluster configuration
-
-In this step, you'll ensure that the server nodes are configured correctly to create a cluster. The `Test-Cluster` cmdlet is used to run tests to verify your configuration is suitable to function as a hyperconverged cluster. The example below uses the `-Include` parameter, with the specific categories of tests specified. This ensures that the correct tests are included in the validation.
-
-```powershell
-Test-Cluster –Node $ServerList –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
-```
-
-## Step 4: Create the cluster
-
-You are now ready to create a cluster with the server nodes that you have validated in the preceding steps.
-
-When creating the cluster, you'll get a warning that states - `"There were issues while creating the clustered role that may prevent it from starting. For more information, view the report file below."` You can safely ignore this warning. It's due to no disks being available for the cluster witness that you will create later. 
-
-> [!NOTE]
-> If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `–StaticAddress <X.X.X.X>;`.
-
-```powershell
-$ClusterName="cluster1" New-Cluster -Name $ClusterName –Node $ServerList –nostorage
-```
-
-Congrats, your cluster has now been created.
-
-After the cluster is created, it can some take time for the cluster name to be replicated via DNS across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
-
-A good check to ensure all cluster resources are online:
-
-```powershell
-Get-Cluster -Name $ClusterName | Get-ClusterResource
-```
-
-If resolving the cluster isn't successful after some time, in most cases you can connect by using the name of one of the clustered servers instead of the cluster name.
 
 ## Step 5: Set up sites (stretched cluster)
 
