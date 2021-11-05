@@ -1,8 +1,8 @@
 ---
 title: Azure Stack HCI release notes archive
 description: Archived release notes for Azure Stack HCI, version 20H2 Public Preview releases.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
