@@ -231,17 +231,13 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 ## Step 4: Configure host networking
 
-<!-- TODO: Fix links after updating concepts and deploy pages -->
-
-Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../concepts/network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](./network-atc.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
 Network ATC provides an “intent-based” approach to host network deployment. The system can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
 
 - Compute – adapters will be used to connect virtual machines traffic to the physical network
 - Storage – adapters will be used for SMB traffic including Storage Spaces Direct
 - Management – adapters will be used for management access to nodes
-
-For a detailed description of Network ATC and its usage, see [Network ATC overview and requirements](../concepts/network-atc-overview.md#requirements-and-best-practices).
 
 ### Step 4.1: Review physical adapters
 
