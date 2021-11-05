@@ -90,6 +90,8 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
+    - name: Azure Arc-enabled VMs (preview)
+      href: manage/azure-arc-enabled-virtual-machines.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -192,6 +194,8 @@
       href: manage/azure-portal.md
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
+    - name: Use Azure Site Recovery
+      href: manage/azure-site-recovery.md
     - name: Use Azure Network Adapter
       href: /windows-server/manage/windows-admin-center/azure/use-azure-network-adapter
 - name: Troubleshooting
@@ -234,6 +238,8 @@
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md
     - name: Firewall requirements
       href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)

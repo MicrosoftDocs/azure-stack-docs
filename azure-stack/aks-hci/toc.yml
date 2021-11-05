@@ -65,6 +65,10 @@
   items: 
     - name: Evaluate on an Azure VM
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
+    - name: Install Azure Kubernetes Service host
+      items:
+          - name: Prestaged cluster service objects and DNS records
+            href: prestage-cluster-service-host-create.md
     - name: Cluster operations
       items:    
           - name: Scale an AKS cluster

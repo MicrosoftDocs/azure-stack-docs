@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot CredSSP
 description: Learn how to troubleshoot CredSSP
-author: v-dasis
+author: jasongerend
 ms.topic: how-to
 ms.date: 06/04/2021
-ms.author: v-dasis
+ms.author: jgerend
 ms.reviewer: JasonGerend
 ---
 

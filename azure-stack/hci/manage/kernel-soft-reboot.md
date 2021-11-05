@@ -1,8 +1,8 @@
 ---
 title: Enable quick restarts with Kernel Soft Reboot in Azure Stack HCI
 description: How to enable and manage quick restarts by using Kernel Soft Reboot (KSR) when updating or servicing Azure Stack HCI clusters.
-author: khdownie
-ms.author: v-kedow
+author: chcurlet-msft
+ms.author: chcurlet
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -73,6 +73,10 @@ Name: CauBypassSoftBootOnNode
 Type: REG_SZ
 Value: True
 ```
+
+## Disable Kernel Soft Reboot for an update run
+
+If you're installing operating system or hardware updates with Windows Admin Center on a cluster that has Kernel Soft Reboot enabled, you'll see a **Disable Kernel Soft Reboot for this run** checkbox. Checking the box disables Kernel Soft Reboot only for that particular updating run. This makes it possible to leave Kernel Soft Reboot enabled on a cluster, but disable it when an updating run requires a full reboot, such as BIOS updates.
 
 ## Troubleshooting
 

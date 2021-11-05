@@ -33,15 +33,21 @@ You've reached the Kubernetes cluster create wizard through the Azure Kubernetes
 
     [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png) ](.\media\create-kubernetes-cluster\basics.png#lightbox)
  
-3. Configure node pools to run your workloads on the **Node pools** page. This is a mandatory step as part of the wizard. You may add any number of Windows node pools and Linux node pools. If you enabled Azure Arc integration earlier in this wizard, you will need to configure a Linux node pool with at least one Linux worker node. However, if you disabled Azure Arc integration earlier, then any node pool addition allows you to proceed to next step. When you're finished, select **Next**.
+3. Configure node pools to run your workloads on the **Node pools** page. This is a mandatory step as part of the wizard. You may add any number of Windows node pools and Linux node pools. If you enabled Azure Arc integration earlier in this wizard, you need to configure a Linux node pool with at least one Linux worker node. However, if you disabled Azure Arc integration earlier, then any node pool addition allows you to proceed to next step. You can also set maximum pod counts and node taints when configuring node pools. Both of these settings are optional. For more details on the available taint settings, see [New-AksHciCluster](./reference/ps/new-akshcicluster.md#new-aks-hci-cluster-with-a-linux-node-pool-and-taints).
 
-    [ ![Illustrates the Node pools page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\node-pool-added.png) ](.\media\create-kubernetes-cluster\node-pool-added.png#lightbox)
+    ![Screenshot that illustrates the Node pools page of the Kubernetes cluster wizard where you can configure maximum pod counts and taints.](.\media\create-kubernetes-cluster\node-pool-added.png)
+
+   When you're finished, select **Next**. 
 
 4. In the **Authentication** step, you may select if you'd like to enable Active Directory authentication. If you do choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
 
 5. Specify your network configuration on the **Networking** page. You can either select an existing virtual network or create a new one by clicking on **Add network interface**. If you select the **Flannel** container network interface (CNI), keep in mind that only Windows or hybrid clusters are supported. Once **Flannel** is set, it cannot be changed, and the cluster will not support any network policy. If the **Calico** CNI is selected, note that it is not needed to support Calico Network Policy and Calico will be the default option for your network policy under **Security**. When complete, select **Next: Review + Create**.
 
+    The following image illustrates the static IP configuration settings:
+
     [ ![Illustrates the Networking, static page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking-static.png) ](\media\create-kubernetes-cluster\networking-static.png#lightbox)
+
+   The following image illustrates the DHCP configuration settings:
 
     [ ![Illustrates the Networking, DHCP page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking-dhcp.png) ](\media\create-kubernetes-cluster\networking-dhcp.png#lightbox)
  

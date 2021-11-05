@@ -1,8 +1,8 @@
 ---
 title: Nested virtualization in Azure Stack HCI
 description: Run Azure Stack HCI on virtual machines for evaluation and testing.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -53,5 +53,5 @@ Prerequisites:
 For more information, see also:
 
 - [Tutorial: Create a private forest environment for Azure Stack HCI](../deploy/tutorial-private-forest.md)
-- [Evaluate Azure Stack HCI 20H2 using Nested Virtualization](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/nested/README.md)
-- [Create nested Azure Stack HCI 20H2 cluster with Windows Admin Center](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/nested/steps/4_AzSHCICluster.md)
+- [Evaluate Azure Stack HCI 20H2 using Nested Virtualization](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/README.md)
+- [Create nested Azure Stack HCI 20H2 cluster with Windows Admin Center](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/steps/4_AzSHCICluster.md)
