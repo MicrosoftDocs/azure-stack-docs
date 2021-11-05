@@ -1,8 +1,8 @@
 ---
 title: Tutorial on creating a private forest environment and virtual machines for an Azure Stack HCI cluster
 description: Tutorial on how to create a private forest environment for Azure Stack HCI evaluation and testing using MSLab scripts
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
