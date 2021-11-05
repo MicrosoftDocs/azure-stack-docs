@@ -4,10 +4,10 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/14/2020
+ms.date: 11/5/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 4/14/2020
+ms.lastreviewed: 11/5/2021
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
