@@ -1,8 +1,8 @@
 ---
 title: Storage thin provisioning in Azure Stack HCI
 description: How to use storage thin provisioning on Azure Stack HCI clusters by using Windows PowerShell or Windows Admin Center.
-author: khdownie
-ms.author: v-kedow
+author: TinaWu-Msft
+ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
