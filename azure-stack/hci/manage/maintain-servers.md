@@ -1,8 +1,8 @@
 ---
 title: Failover cluster maintenance procedures for Azure Stack HCI and Windows Server
 description: This topic provides guidance on how to properly pause, drain, and resume clustered servers running Azure Stack HCI or Windows Server operating systems by using Windows Admin Center and PowerShell.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
