@@ -44,6 +44,31 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 You can also add several nodes to the cluster at once.
 
+## Update an intent network adapter
+
+This task will help you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents. 
+
+In this example we installed two new adapters, pNIC03 and pNIC04, and we want them to be used in our intent named 'Cluster_Compute'.
+
+1. On one of the cluster nodes, run `Get-NetAdapter` to check that both adapters are present and report status of 'Up' on each cluster node. 
+
+    ``` powershell
+    Get-NetAdapter -Name pNIC03, pNIC04 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+    ```
+
+1. Run the following command to update the intent to include the old and new network adapters. 
+
+    ``` powershell
+     Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName HCI01
+    ```
+
+1. Check that the net adapters were successfully added to the intent.
+
+    ``` powershell
+    Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
+    ```
+
+
 ## Update an intent override
 
 This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
@@ -95,7 +120,9 @@ This task will help you override the default configuration which has already bee
 
 ## Remove an intent
 
-If you want to test various configurations on the same adapters, you may need to remove an intent. If you previously deployed and configured Network ATC on your system, you may need to reset the node so that the configuration can be deployed. To do this, copy and paste the following commands to remove all existing intents and their corresponding vSwitch:
+If you want to test various configurations on the same adapters, you may need to remove an intent. 
+
+If you previously deployed and configured Network ATC on your system, you may need to reset the node so that the configuration can be deployed. To do this, copy and paste the following commands to remove all existing intents and their corresponding vSwitch:
 
 ```powershell
     $intents = Get-NetIntent
