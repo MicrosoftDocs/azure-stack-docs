@@ -231,73 +231,70 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 ## Step 4: Configure host networking
 
+<!-- TODO: Fix links after updating concepts and deploy pages -->
+
 Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../concepts/network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-The following represent common host networking intents using Network ATC. You can specify any combination of the following types of intents:
+Network ATC provides an “intent-based” approach to host network deployment. The system can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
 
 - Compute – adapters will be used to connect virtual machines traffic to the physical network
 - Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
+- Management – adapters will be used for management access to nodes
 
-If you need to configure overrides, see [Configure an override](../manage/manage-network-atc.md#configure-an-override).
+For a detailed description of Network ATC and its usage, see [Network ATC overview and requirements](../concepts/network-atc-overview.md#requirements-and-best-practices).
 
-If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
+### Step 4.1: Review physical adapters
 
-### Configure an intent
+On one of the cluster nodes, run `Get-NetAdapter` to review the physical adapters. Ensure that each node in the cluster has the same named physical adapters and that they report status as 'Up'.
 
-In this task, a consistent configuration is maintained across all cluster nodes. This is beneficial for several reasons including improved reliability of the cluster. The cluster is considered the configuration boundary. That is, all nodes in the cluster share the same configuration (symmetric intent).
+```powershell
+Get-NetAdapter -Name pNIC01, pNIC02 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+```
 
-> [!IMPORTANT]
-> If a server node is clustered, you must use a clustered intent. Standalone intents are ignored.
+If a physical adapter name varies across nodes in your cluster, you can rename it using `Rename-NetAdapter`. 
 
-> [!NOTE]
-> You can add all nodes at one time using the `New-Cluster` cmdlet, then add the intent to all nodes. Alternatively, you can incrementally add nodes to the cluster. The new nodes are managed automatically.
+```powershell
+Rename-NetAdapter -Name oldName -NewName newName
+```
 
-In this example, an intent is created that specifies the compute and storage intent types with no overrides.
+### Step 4.2: Configure an intent
 
-1. On one of the cluster nodes, run `Get-NetAdapter` to review the physical adapters. Ensure that each node in the cluster has the same named physical adapters.
+In this example, an intent is created that specifies the compute and storage intent. See [Simplify host networking with Network ATC](./network-atc.md) for more intent examples. 
 
-    ```powershell
-    Get-NetAdapter -Name pNIC01, pNIC02 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
-    ```
+Run the following command to add the storage and compute intent types to pNIC01 and pNIC02. Note that we specify the `-ClusterName` parameter.
 
-1. Run the following command to add the storage and compute intent types to pNIC01 and pNIC02. Note that we specify the `-ClusterName` parameter.
+```powershell
+Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName $ClusterName -AdapterName pNIC01, pNIC02
+```
 
-    ```powershell
-    Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-    ```
+The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
+- the adapters specified
+- adapters report status 'Up'
+- adapters ready to be teamed to create the specified vSwitch
 
-    The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
+### Step 4.3: Validate intent deployment
 
-    - the adapters specified
-    - adapters report status 'Up'
-    - adapters ready to be teamed to create the specified vSwitch
+Run the `Get-NetIntent` cmdlet to see the cluster intent. If you have more than one intent, you can specify the `Name` parameter to see details of only a specific intent.
 
-1. Run the `Get-NetIntent` cmdlet to see the cluster intent. If you have more than one intent, you can specify the `Name` parameter to see details of only a specific intent.
+```powershell
+Get-NetIntent -ClusterName $ClusterName
+```
 
-    ```powershell
-    Get-NetIntent -ClusterName HCI01
-    ```
+To see the provisioning status of the intent, run the `Get-NetIntentStatus` command:
 
-1. To see the provisioning status of the intent, run the `Get-NetIntentStatus` command:
+```powershell
+Get-NetIntentStatus -ClusterName $ClusterName -Name Cluster_ComputeStorage
+```
 
-    ```powershell
-    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
-    ```
+Note the status parameter that shows Provisioning, Validating, Success, Failure.
 
-    Note the status parameter that shows Provisioning, Validating, Success, Failure.
-
-1. Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
-
-    ```powershell
-    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
-    ```
+Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
  
-1. Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage. For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
+Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage.
 
-    ```powershell
-    Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
-    ```
+```powershell
+Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
+```
 
 > [!NOTE]
 > At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
