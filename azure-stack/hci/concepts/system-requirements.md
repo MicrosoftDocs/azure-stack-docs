@@ -1,8 +1,8 @@
 ---
 title: System requirements for Azure Stack HCI
 description: How to choose servers, storage, and networking components for Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
