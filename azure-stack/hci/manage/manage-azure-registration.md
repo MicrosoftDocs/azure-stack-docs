@@ -1,8 +1,8 @@
 ---
 title: Manage Azure Stack HCI cluster registration with Azure
 description: How to manage your Azure registration for Azure Stack HCI clusters, understand registration status, and unregister a cluster when you're ready to decommission it.
-author: khdownie
-ms.author: v-kedow
+author: arduppal
+ms.author: arduppal
 ms.topic: how-to
 ms.date: 02/10/2021
 ---
