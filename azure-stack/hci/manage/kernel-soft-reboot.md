@@ -1,8 +1,8 @@
 ---
 title: Enable quick restarts with Kernel Soft Reboot in Azure Stack HCI
 description: How to enable and manage quick restarts by using Kernel Soft Reboot (KSR) when updating or servicing Azure Stack HCI clusters.
-author: khdownie
-ms.author: v-kedow
+author: chcurlet-msft
+ms.author: chcurlet
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

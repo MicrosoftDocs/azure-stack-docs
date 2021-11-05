@@ -1,8 +1,8 @@
 ---
 title: Update Azure Stack HCI clusters
 description: How to apply operating system and firmware updates to Azure Stack HCI using Windows Admin Center and PowerShell.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.date: 11/02/2021
 ---
