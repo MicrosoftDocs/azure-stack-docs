@@ -4,7 +4,7 @@ description: This topic covers how to use volume encryption, deduplication, and 
 author: JohnMarlin-MSFT
 ms.author: johnmar
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 11/05/2021
 ---
 
 # Enable volume encryption, deduplication, and compression in Azure Stack HCI
