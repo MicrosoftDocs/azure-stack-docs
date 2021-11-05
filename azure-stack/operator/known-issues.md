@@ -4,11 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-<<<<<<< HEAD
 ms.date: 11/2/2021
-=======
-ms.date: 11/02/2021
->>>>>>> 8ad94e1cb8e653b50a3aa1f1fb51a6f2de3b42c8
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
