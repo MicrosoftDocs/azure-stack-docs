@@ -1,8 +1,8 @@
 ---
 title: Overview of RAS Gateway in Azure Stack HCI and Windows Server
 description: Use this topic to learn about RAS Gateway for Software Defined Networking in Azure Stack HCI and Windows Server.
-author: khdownie
-ms.author: v-kedow
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

@@ -77,4 +77,7 @@ spec:
 
 ## Next steps
 
-[Create a deployment](create-deployments.md)
+- [Create a deployment](create-deployments.md)
+- [Create a ReplicaSet](create-replicasets.md)
+- [Create a DaemonSet](create-daemonsets.md)
+

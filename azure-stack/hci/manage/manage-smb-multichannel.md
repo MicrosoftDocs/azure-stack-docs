@@ -1,8 +1,8 @@
 ---
 title: Manage SMB Multichannel
 description: Use this topic to use SMB Multichannel for increased throughput and network fault tolerance.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
