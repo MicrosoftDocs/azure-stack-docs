@@ -70,7 +70,7 @@ You can also directly increase or decrease the number using the following comman
 kubectl scale –replicas=2 rs <ReplicaSet_NAME>
 ```
 
-If you've edited your manifest file, you can replace your existing configuration with the updated one:
+When you edit a manifest file, you can replace your existing configuration with the updated one:
 
 ```powershell
 kubectl replace –f nginx_replicaset.yaml
