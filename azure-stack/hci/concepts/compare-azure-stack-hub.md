@@ -2,8 +2,8 @@
 title: Compare Azure Stack HCI to Azure Stack Hub
 description: This topic helps you determine whether Azure Stack HCI or Azure Stack Hub is right for your organization.
 ms.topic: conceptual
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 10/06/2021

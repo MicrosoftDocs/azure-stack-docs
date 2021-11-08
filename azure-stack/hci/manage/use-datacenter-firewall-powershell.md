@@ -1,8 +1,8 @@
 ---
 title: Use Datacenter Firewall to configure ACLs with PowerShell
 description: Use this topic to get started with Datacenter Firewall for Software Defined Networking in Azure Stack HCI, Windows Server 2019, and Windows Server 2016.
-author: khdownie
-ms.author: v-kedow
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

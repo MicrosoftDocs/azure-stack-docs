@@ -1,8 +1,8 @@
 ---
 title: Dynamic processor compatibility mode in Azure Stack HCI
 description: Processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment.
-author: khdownie
-ms.author: v-kedow
+author: alvinmorales1
+ms.author: alvinm
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
