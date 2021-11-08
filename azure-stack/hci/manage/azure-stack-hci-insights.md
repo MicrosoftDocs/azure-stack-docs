@@ -1,8 +1,8 @@
 ---
 title: Monitor multiple clusters with Azure Stack HCI Insights
 description: How to use Azure Stack HCI Insights to monitor the health, performance, and usage of multiple Azure Stack HCI clusters.
-author: khdownie
-ms.author: v-kedow
+author: arduppal
+ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

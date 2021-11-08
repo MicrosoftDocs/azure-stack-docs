@@ -1,8 +1,8 @@
 ---
 title: Persistent memory health management in Azure Stack HCI and Windows Server
 description: This article provides information about error handling and health management specific to persistent memory (PMem) devices in Azure Stack HCI and Windows Server.
-author: khdownie
-ms.author: v-kedow
+author: Anhansen
+ms.author: Anhansen
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

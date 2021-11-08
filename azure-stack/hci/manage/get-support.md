@@ -1,8 +1,8 @@
 ---
 title: Get support for Azure Stack HCI
 description: This topic provides guidance on how to get support for the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.date: 03/12/2021
 ---

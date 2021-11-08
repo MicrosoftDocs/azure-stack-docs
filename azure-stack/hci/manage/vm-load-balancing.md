@@ -1,8 +1,8 @@
 ---
 title: Virtual machine load balancing
 description: Use this topic to learn how to configure the VM load balancing feature in Azure Stack HCI and Windows Server.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

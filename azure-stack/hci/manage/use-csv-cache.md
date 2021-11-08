@@ -1,8 +1,8 @@
 ---
 title: Use the CSV in-memory read cache with Azure Stack HCI and Windows Server clusters
 description: This topic describes how to use system memory to boost performance.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
