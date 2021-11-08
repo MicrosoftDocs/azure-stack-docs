@@ -1,8 +1,8 @@
 ---
 title: Attach a GPU to a Linux VM in Azure Stack HCI
 description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.date: 07/01/2020
 ---

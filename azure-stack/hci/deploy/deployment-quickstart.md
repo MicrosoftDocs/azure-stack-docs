@@ -1,8 +1,8 @@
 ---
 title: Quickstart to create an Azure Stack HCI cluster and register it with Azure
 description: Learn how to deploy Azure Stack HCI, create a cluster using Windows Admin Center, and register it with Azure.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
