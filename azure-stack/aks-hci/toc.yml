@@ -131,6 +131,8 @@
             href: create-deployments.md
           - name: Create a DaemonSet
             href: create-daemonsets.md
+          - name: Create a ReplicaSet
+            href: create-replicasets.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers

@@ -1,8 +1,8 @@
 ---
 title: Overview of Datacenter Firewall in Azure Stack HCI and Windows Server
 description: Use this topic to learn about Datacenter Firewall in Azure Stack HCI and Windows Server.
-author: khdownie
-ms.author: v-kedow
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

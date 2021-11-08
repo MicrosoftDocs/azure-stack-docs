@@ -1,8 +1,8 @@
 ---
 title: Register Windows Admin Center with Azure
 description: How to register your Windows Admin Center gateway with Azure.
-author: khdownie
-ms.author: v-kedow
+author: prasidharora
+ms.author: praror
 ms.topic: how-to
 ms.date: 07/02/2021
 ---
