@@ -1,241 +1,204 @@
 ---
-title: Simplify host networking with Network ATC
-description: This topic covers how to simplify host networking for Azure Stack HCI.
+title: Manage host networking with Network ATC
+description: This topic covers how to manage host networking for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
-ms.date: 10/19/2021
+ms.date: 10/29/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Simplify host networking with Network ATC
+# Manage host networking using Network ATC
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article guides you through the key functions of using Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
+This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
 
-If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
+## Add a server node
 
-## Overview
+You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md).
 
-Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
+In this task, you will add additional nodes to the cluster and observe how a consistent networking configuration is enforced across all nodes in the cluster.
 
-Network ATC can help:
+1. Use the `Add-ClusterNode` cmdlet to add the additional (unconfigured) nodes to the cluster. You only need management access to the cluster at this time. Each node in the cluster should have all pNICs named the same.
 
-- Reduce host networking deployment time, complexity, and errors
-- Deploy the latest Microsoft validated and supported best practices
-- Ensure configuration consistency across the cluster
-- Eliminate configuration drift
+    ```powershell
+    Add-ClusterNode -Cluster HCI01
+    Get-ClusterNode
+    ```
 
-## Definitions
+1. Check the status across all cluster nodes using the `-ClusterName` parameter.
 
-Here is some new terminology:
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01
+    ```
 
-**Intent**: An intent is a definition of how you intend to use the physical adapters in your system. An intent has a friendly name, identifies one or more physical adapters, and includes one or more intent types.
+    > [!NOTE]
+    > If pNICs do not exist on one of the additional nodes, `Get-NetIntentStatus` will report the error 'PhysicalAdapterNotFound', which easily identifies the provisioning issue.
 
-An individual physical adapter can only be included in one intent. By default, an adapter does not have an intent (there is no special status or property given to adapters that don’t have an intent). You can have multiple intents; the number of intents you have will be limited by the number of adapters in your system.
+1. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. Note that this may take a similar amount of time to provision as the original node.
 
-**Intent type**: Every intent requires one or more intent types. The currently supported intent types are:
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01
+    ```
 
-- Management - adapters are used for management access to nodes
-- Compute - adapters are used to connect virtual machine (VM) traffic to the physical network
-- Storage - adapters are used for SMB traffic including Storage Spaces Direct
+You can also add several nodes to the cluster at once.
 
-Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
+## Update an intent network adapter
 
-- Management: Can be defined in a maximum of one intent
-- Compute: Unlimited
-- Storage: Can be defined in a maximum of one intent
+This task will help you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents. 
 
-**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have an intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
+In this example we installed two new adapters, pNIC03 and pNIC04, and we want them to be used in our intent named 'Cluster_Compute'.
 
-- *Standalone mode*: Intents are expressed and managed independently for each host. This mode allows you to test an intent before implementing it across a cluster. Once a host is clustered, any standalone intents are ignored. Standalone intents can be copied to a cluster from a node that is not a member of that cluster, or from one cluster to another cluster.
+1. On one of the cluster nodes, run `Get-NetAdapter` to check that both adapters are present and report status of 'Up' on each cluster node. 
 
-- *Cluster mode*: Intents are applied to all cluster nodes. This is the recommended deployment mode and is required when a server is a member of a failover cluster.
+    ``` powershell
+    Get-NetAdapter -Name pNIC03, pNIC04 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+    ```
 
-**Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults.
+1. Run the following command to update the intent to include the old and new network adapters. 
 
-Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed.
+    ``` powershell
+     Update-NetIntentAdapter -Name Cluster_Compute -AdapterName pNIC01,pNIC02,pNIC03,pNIC04 -ClusterName HCI01
+    ```
 
-## Requirements and best practices
+1. Check that the net adapters were successfully added to the intent.
 
-The following are requirements and best practices for using Network ATC in Azure Stack HCI:
+    ``` powershell
+    Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
+    ```
 
-- Supported on Azure Stack HCI, version 21H2 or later.
 
-- All servers in the cluster must be running Azure Stack HCI, version 21H2.
+## Update an intent override
 
-- Must use two or more physical host systems that are Azure Stack HCI certified.
+This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
 
-- Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
+> [!IMPORTANT]
+> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
 
-- Each physical adapter specified in an intent, must use the same name on all nodes in the cluster.
 
-- Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
+1. Get a list of possible override cmdlets. We use wildcards to see the options available:
 
-- Cluster nodes must install the following Azure Stack HCI features on each node:
+    ```powershell
+    Get-Command -Noun NetIntent*Over* -Module NetworkATC
+    ```
 
-  - Network ATC
-  - Data Center Bridging (DCB)
-  - Failover Clustering
-  - Hyper-V
+1. Create an override object for the DCB Quality of Service (QoS) configuration:
 
-- Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
+    ```powershell
+    $QosOverride = New-NetIntentQosPolicyOverrides
+    $QosOverride
+    ```
 
-- Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
+1. Modify the bandwidth percentage for SMB Direct:
 
-You can use the following cmdlet to install the required Windows features:
+    ```powershell
+    $QosOverride.BandwidthPercentage_SMB = 25
+    $QosOverride
+    ```
 
-> [!NOTE]
-> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+    > [!NOTE]
+    >It is expected that no values appear for any property you don’t override.
 
-## Common Network ATC commands
+1. Submit the intent request specifying the override:
 
-There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
+    ```powershell
+    Set-NetIntent -Name Cluster_ComputeStorage -QosPolicyOverrides $QosOverride
+    ```
 
-Typically, only a few of these cmdlets are needed. Here is a brief overview of the cmdlets before you start:
+1. Wait for the provisioning status to complete:
 
-|PowerShell command|Description|
-|--|--|
-|Add-NetIntent|Creates and submits an intent|
-|Set-NetIntent|Modifies an existing intent|
-|Get-NetIntent|Gets a list of intents|
-|Get-NetIntentStatus|Gets the status of intents|
-|New-NetIntentOverrides|Specifies overrides to the default configuration|
-|Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
-|Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
+    ```powershell
+    Get-NetIntentStatus -Name Cluster_ComputeStorage | Format-Table IntentName, Host, ProvisioningStatus, ConfigurationStatus
+    ```
 
-## Example intents
+1. Check that the override has been properly set on all cluster nodes. In the example, the SMB_Direct traffic class was overridden with a bandwidth percentage of 25%:
 
-Network ATC modifies how you deploy host networking, not what you deploy. Multiple scenarios may be implemented so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These are not the only combinations available but they should give you an idea of the possibilities.
+    ```powershell
+    Get-NetQosTrafficClass -Cimsession (Get-ClusterNode).Name | Select PSComputerName, Name, Priority, Bandwidth
+    ```
 
-For simplicity we only demonstrate two physical adapters per SET team, however it is possible to add more. Refer to [Plan Host Networking](../concepts/host-network-requirements.md) for more information.
+## Remove an intent
 
-### Fully converged intent
+If you want to test various configurations on the same adapters, you may need to remove an intent. 
 
-For this intent, compute, storage, and management networks are deployed and managed across all cluster nodes.
-
-:::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent"  lightbox="media/network-atc/network-atc-2-full-converge.png":::
-
-```powershell
-Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-```
-
-### Converged compute and storage intent; separate management intent
-
-Two intents are managed across cluster nodes. Management uses pNIC01, and pNIC02; Compute and storage are on different adapters.
-
-:::image type="content" source="media/network-atc/network-atc-3-separate-management-compute-storage.png" alt-text="Storage and compute converged intent"  lightbox="media/network-atc/network-atc-3-separate-management-compute-storage.png":::
+If you previously deployed and configured Network ATC on your system, you may need to reset the node so that the configuration can be deployed. To do this, copy and paste the following commands to remove all existing intents and their corresponding vSwitch:
 
 ```powershell
-Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-Add-NetIntent -Name Compute_Storage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC03, pNIC04
+    $intents = Get-NetIntent
+    foreach ($intent in $intents)
+    {
+        Remove-NetIntent -Name $intent.IntentName
+        Remove-VMSwitch -Name "*$($intent.IntentName)*" -ErrorAction SilentlyContinue -Force
+    }
+    
+    Get-NetQosTrafficClass | Remove-NetQosTrafficClass
+    Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
+    Get-NetQosFlowControl | Disable-NetQosFlowControl
 ```
 
-### Fully disaggregated intent
+## Post-deployment tasks
 
-For this intent, compute, storage, and management networks are all managed on different adapters across all cluster nodes.
+There are several tasks to complete following a Network ATC deployment, including the following:
 
-:::image type="content" source="media/network-atc/network-atc-4-fully-disaggregated.png" alt-text="Fully disaggregated intent"  lightbox="media/network-atc/network-atc-4-fully-disaggregated.png":::
+### Validate automatic remediation
 
-```powershell
-Add-NetIntent -Name Mgmt -Management -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-Add-NetIntent -Name Compute -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
-Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
-```
+Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this task, we modify one the configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
 
-### Storage-only intent
+>[!NOTE]
+> ATC will automatically remediate all of the configuration it manages.
 
-For this intent, only storage is managed. Management and compute adapters are not be managed by Network ATC.
+1. Check the adapter's existing MTU (JumboPacket) value:
 
-:::image type="content" source="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png" alt-text="Storage only intent"  lightbox="media/network-atc/network-atc-5-fully-disaggregated-storage-only.png":::
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
 
-```powershell
-Add-NetIntent -Name Storage -Storage -ClusterName HCI01 -AdapterName pNIC05, pNIC06
-```
+1. Modify one of the physical adapter's MTU without specifying an override. This emulates an accidental change or "configuration drift" which must be remediated.
 
-### Compute and management intent
+    ```powershell
+    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryKeyword *JumboPacket -RegistryValue 4088
+    ```
 
-For this intent, compute and management networks are managed, but not storage.
+1. Verify that the adapter's existing MTU (JumboPacket) value has been modified:
 
-:::image type="content" source="media/network-atc/network-atc-6-disaggregated-management-compute.png" alt-text="Management and compute intent"  lightbox="media/network-atc/network-atc-6-disaggregated-management-compute.png":::
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
 
-```powershell
-Add-NetIntent -Name Management_Compute -Management -Compute -ClusterName HCI01 -AdapterName pNIC01, pNIC02
-```
+1. Retry the configuration. This step is only performed to expedite the remediation. Network ATC will automatically remediate this configuration.
 
-### Multiple compute (switch) intent
+    ```powershell
+    Set-NetIntentRetryState -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
 
-For this intent, multiple compute switches are managed.
+1. Verify that the consistency check has completed:
 
-:::image type="content" source="media/network-atc/network-atc-7-multiple-compute.png" alt-text="Multiple switches intent"  lightbox="media/network-atc/network-atc-7-multiple-compute.png":::
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
 
-```powershell
-Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pNIC04
-Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
-```
+1. Verify that the adapter's MTU (JumboPacket) value has returned to the expected value:
 
-## Deploy intents
+    ```powershell
+    Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
+    ```
 
-The following activities represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
+For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
 
-- Compute – adapters will be used to connect virtual machines traffic to the physical network
-- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
+### Add non-APIPA addresses to storage adapters
 
-This article covers the following deployment tasks:
+This can be accomplished using DHCP on the storage VLANs or by using the `NetIPAddress` cmdlets.
 
-- Configure an intent
+### Set SMB bandwidth limits
 
-- Configure an intent override
+If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
 
-- Validate automatic remediation
+### Stretched cluster configuration
 
-This article assumes you have already created a cluster. See [Create a cluster using PowerShell](create-cluster-powershell.md).
-
-
-
-## Default Network ATC values
-
-This section lists some of the key default values used by Network ATC.
-
-### Default VLANs
-
-The following default VLANs are used. These VLANs must be available on the physical network for proper operation.
-
-|Adapter Intent|Default Value|
-|--|--|
-|Management|Configured VLAN for management adapters isn't modified|
-|Storage Adapter 1|711|
-|Storage Adapter 2|712|
-|Storage Adapter 3|713|
-|Storage Adapter 4|714|
-|Storage Adapter 5|715|
-|Storage Adapter 6|716|
-|Storage Adapter 7|717|
-|Storage Adapter 8|718|
-|Future Use|719|
-
-Consider the following command:
-
-```powershell
-Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02, pNIC03, pNIC04
-```
-
-The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
-
-### Default Data Center Bridging (DCB) configuration
-
-Network ATC establishes the following priorities and bandwidth reservations. This configuration should also be configured on the physical network.
-
-|Policy|Use|Default Priority|Default Bandwidth Reservation|
-|--|--|--|--|
-|Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps; 1% if the adapter(s) are > 10 Gbps|
-|SMB_Direct|RDMA Storage Traffic|3|50%|
-|Default|All other traffic types|0|Remainder|
+Stretched clusters require additional configuration that must be manually performed following the successful deployment of an intent. For stretched clusters, all nodes in the cluster must use the same intent.
 
 ## Next steps
 
-- Manage your Network ATC deployment. See [Manage Network ATC](../manage/manage-network-atc.md).
-
+- Learn more about Network ATC[../deploy/networ-atc.md]. 
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
