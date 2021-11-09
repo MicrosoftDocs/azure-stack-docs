@@ -53,6 +53,6 @@ Network ATC allows you to modify all configuration that the OS allows. However, 
 
 ## Next steps
 
-- Configure Network ATC using PowerShell. See [Step 2: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
+- Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
 
 - Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).
