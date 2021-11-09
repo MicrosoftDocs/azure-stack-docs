@@ -29,6 +29,9 @@ For more information about your options, which depend on your Azure Stack Hub en
 - Azure Stack Hub deployment kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
 - Azure Stack Hub integrated systems: [Deployment planning decisions for Azure Stack Hub integrated systems](azure-stack-connection-models.md).
 
+> [!IMPORTANT]
+> Azure AD Graph is being deprecated, and will be retired on June 30, 2022. For more information, [see this section](#azure-ad-graph).
+
 ## Common concepts for identity providers
 
 The next sections discuss common concepts about identity providers and their use in Azure Stack Hub.
