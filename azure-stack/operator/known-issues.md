@@ -81,6 +81,10 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 [!INCLUDE [event hubs secret rotation related issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
+## Azure Kubernetes Service (AKS)
+
+[!INCLUDE [Applications deployed to AKS clusters fail to access persistent volumes](../includes/known-issue-aks-1.md)]
+
 ::: moniker-end
 
 ::: moniker range="azs-2102"
