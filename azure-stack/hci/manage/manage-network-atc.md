@@ -182,7 +182,7 @@ You can also add several nodes to the cluster at once.
 There are several tasks to complete following a Network ATC deployment, including the following:
 
 ### Validate automatic remediation
-
+<!-- TODO: Drop down bellow to its own section and talk about how this is an optional way to see validation -->
 Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this task, we modify one the configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
 
 >[!NOTE]
@@ -235,6 +235,8 @@ If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure 
 ### Stretched cluster configuration
 
 Stretched clusters require additional configuration that must be manually performed following the successful deployment of an intent. For stretched clusters, all nodes in the cluster must use the same intent.
+
+<!-- TODO: Link to host networking requirements strech clustering section -->
 
 ## Next steps
 
