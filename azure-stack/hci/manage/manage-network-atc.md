@@ -73,6 +73,7 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
 
 This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
 
+<!-- TODO: Change wording of this callout -->
 > [!IMPORTANT]
 > Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
 
@@ -141,9 +142,21 @@ If you previously deployed and configured Network ATC on your system, you may ne
 
 There are several tasks to complete following a Network ATC deployment, including the following:
 
-### Validate automatic remediation
+### Add non-APIPA addresses to storage adapters
+
+This can be accomplished using DHCP on the storage VLANs or by using the `NetIPAddress` cmdlets.
+
+### Set SMB bandwidth limits
+
+If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
+
+### Stretched cluster configuration
+
+Stretched clusters require additional configuration that must be manually performed following the successful deployment of an intent. For stretched clusters, all nodes in the cluster must use the same intent.
+
+## Validate automatic remediation
 <!-- TODO: Drop down bellow to its own section and talk about how this is an optional way to see validation -->
-Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this task, we modify one the configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
+Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this optional section, we will modify our configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
 
 >[!NOTE]
 > ATC will automatically remediate all of the configuration it manages.
@@ -186,19 +199,7 @@ Network ATC ensures that the deployed configuration stays the same across all cl
 
 For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
 
-### Add non-APIPA addresses to storage adapters
-
-This can be accomplished using DHCP on the storage VLANs or by using the `NetIPAddress` cmdlets.
-
-### Set SMB bandwidth limits
-
-If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
-
-### Stretched cluster configuration
-
-Stretched clusters require additional configuration that must be manually performed following the successful deployment of an intent. For stretched clusters, all nodes in the cluster must use the same intent.
-
 ## Next steps
 
-- Learn more about Network ATC[../deploy/networ-atc.md]. 
+- Learn more about [Network ATC](../concepts/network-atc-overview.md). 
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).
