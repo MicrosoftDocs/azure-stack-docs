@@ -61,16 +61,11 @@ Typically, only a few of these cmdlets are needed. Here is a brief overview of t
 
 You can also modify the default configuration Network ATC creates using overrides. To see a list of possible override commandlets, use the following command:
 
-<!-- TODO: add link to manage page override section -->
-
 ```powershell
 Get-Command -Noun NetIntent*Over* -Module NetworkATC
 ```
 
-<!-- TODO: change the wording of this callout because we support overrides -->
-
-> [!IMPORTANT]
-> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
+For more information on overrides, see [Update an intent override](../manage/manage-network-atc.md#configure-an-override).
 
 ## Example intents
 
@@ -172,7 +167,8 @@ Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterN
 
 The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
-<!-- TODO: Callout that yo ucan go to overrides to change defaults -->
+> [!NOTE]
+> Network ATC allows you override default settings like VLANs. For examples, see [Update an intent override](../manage/manage-network-atc.md#configure-an-override).
 
 ### Default Data Center Bridging (DCB) configuration
 
