@@ -33,12 +33,8 @@ The following are requirements and best practices for using Network ATC in Azure
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
 
-- Cluster nodes must install the following Azure Stack HCI features on each node:
 <!-- Pull this list out and link to the step on deploy -->
-  - Network ATC
-  - Data Center Bridging (DCB)
-  - Failover Clustering
-  - Hyper-V
+- Install features from [Step 1.3: Install roles and features](../deploy/create-cluster-powershell.md#step-13-install-roles-and-features).
 
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
