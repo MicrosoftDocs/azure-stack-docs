@@ -103,7 +103,7 @@ Add-LocalGroupMember -Group "Administrators" -Member "king@contoso.local"
 The next step is to install required Windows roles and features on every server for the cluster. Here are the roles to install:
 
 - BitLocker
-- Data Center Bridging (for RoCEv2 network adapters)
+- Data Center Bridging
 - Failover Clustering
 - File Server
 - FS-Data-Deduplication module
