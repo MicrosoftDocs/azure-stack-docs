@@ -73,9 +73,8 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
 
 This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
 
-<!-- TODO: Change wording of this callout -->
 > [!IMPORTANT]
-> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
+> Network ATC implements the Microsoft-tested, **Best Practice** configuration. We recommend that you only modify the default configuration if you have experience deploying networking.
 
 
 1. Get a list of possible override cmdlets. We use wildcards to see the options available:
