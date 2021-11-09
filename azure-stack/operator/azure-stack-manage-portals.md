@@ -86,6 +86,10 @@ If you click the help icon (question mark) in the upper-right corner of the admi
 
 If you select **Help and support** (the question mark) in the upper right corner of the administrator portal, and then select **Azure roadmap**, a new browser tab opens and takes you to the Azure roadmap. By typing **Azure Stack Hub** in the **Products** search box, you can see all Azure Stack Hub roadmap updates.
 
+### Recommended browsers
+
+Similar to Azure, we recommend that you use the most up-to-date browser that's compatible with your operating system. For a list of Azure recommended browsers, see [Recommended browsers](/azure/azure-portal/azure-portal-supported-browsers-devices#recommended-browsers).
+
 ## Next steps
 
 [Register Azure Stack Hub with Azure](azure-stack-registration.md) and populate [Azure Stack Hub Marketplace](azure-stack-marketplace.md) with items to offer your users.

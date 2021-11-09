@@ -159,7 +159,7 @@ Before a user can use services, they must [subscribe to an offer](../../operator
 
 ## Where to get support
 
-To find support information for earlier releases of Azure Stack Hub (pre-1905), see [Azure Stack Hub servicing policy](../../operator/azure-stack-servicing-policy.md).
+To find support information for earlier releases of Azure Stack Hub, see [Azure Stack Hub servicing policy](../../operator/azure-stack-servicing-policy.md).
 
 For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 

@@ -71,6 +71,9 @@ For a domain-joined Azure Stack HCI cluster, open PowerShell as an administrator
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
 ```  
 
+> [!NOTE]
+> For `SPN k8s/apiserver@CONTOSO.com`, use the format SPN k8s/apiserver@\<realm name>\. Usually, \<realm name> is uppercase, however, if you are having issues, create the SPN with lowercase letters. Kerberos is case sensitive. 
+
 #### Option 2
 
 If the cluster host is not domain-joined, use the admin user name or group name in SID format as shown in the example below:

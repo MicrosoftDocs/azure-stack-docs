@@ -140,7 +140,7 @@ kubectl exec statefulset-nfs-0 -- tail /mnt/nfs/outfile
 ### Delete example statefulset application
 
 ```bash  
-kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/nfs-provisioner/nfs-server.yaml
+kubectl delete -f https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/deploy/example/statefulset.yaml
 ```
 
 ### Delete storage class

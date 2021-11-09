@@ -1,15 +1,15 @@
 ---
 title: Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI
 description: This topic provides guidance on how to plan, configure, and deploy virtual desktop infrastructure (VDI) on the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author: hsuzuki
+ms.author: hsuzuki1999
 ms.topic: how-to
 ms.date: 01/15/2021
 ---
 
 # Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic provides guidance on how to plan, configure, and deploy virtual desktop infrastructure (VDI) on the Azure Stack HCI operating system. Leverage your Azure Stack HCI investment to deliver centralized, highly available, simplified, and secure management for the users in your organization. Use this guidance to enable scenarios like bring-your-own-device (BYOD) for your users, while providing them with a consistent and reliable experience for business-critical applications without sacrificing security.
 
@@ -26,7 +26,7 @@ In addition, Azure Stack HCI VDI provides the following unique cloud-based capab
 This section describes at a high level how to acquire hardware to deploy VDI on Azure Stack HCI and use Windows Admin Center for management. It also covers deploying RDS to support VDI.
 
 ### Step 1: Acquire hardware for VDI on Azure Stack HCI
-First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload. Be sure to consult your hardware partner to make sure the hardware can support the number of virtual desktops that you want to host on your cluster.
+First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload. Be sure to consult your hardware partner to make sure the hardware can support the number of virtual desktops that you want to host on your cluster.
 
 Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 

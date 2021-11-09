@@ -1,17 +1,16 @@
 ### YamlMime:Landing
 
 title: Azure Stack HCI documentation
-summary: Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+summary: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
 
 metadata:
   title: Azure Stack HCI documentation
-  description: Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized workloads on-premises.
+  description: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
 #  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page
-  author: khdownie
-  ms.author: v-kedow
-  ms.date: 07/27/2021
-
+  author: jasongerend
+  ms.author: jgerend
+  ms.date: 10/19/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -23,6 +22,10 @@ landingContent:
         links:
           - text: What is Azure Stack HCI?
             url: overview.md
+      - linkListType: whats-new
+        links:
+          - text: What's new in Azure Stack HCI?
+            url: whats-new.md
       - linkListType: get-started
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
@@ -42,18 +45,30 @@ landingContent:
           - text: 3. Register with Azure
             url: deploy/register-with-azure.md
           - text: 4. Validate a cluster
-            url: deploy/validate.md 
-
-  # Card
-  - title: Preview channel
-    linkLists:
-      - linkListType: whats-new
+            url: deploy/validate.md
+      - linkListType: tutorial
         links:
-          - text: Join the Preview channel
-            url: manage/preview-channel.md
+          - text: Create a private forest lab environment with VMs
+            url: deploy/tutorial-private-forest.md
 
   # Card
   - title: Manage storage
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Replace drives
+            url: manage/replace-drives.md
+          - text: Use the CSV cache
+            url: manage/use-csv-cache.md
+          - text: Manage SMB Multichannel
+            url: manage/manage-smb-multichannel.md
+          - text: Storage thin provisioning
+            url: manage/thin-provisioning.md
+          - text: Adjustable storage repair speed
+            url: manage/storage-repair-speed.md
+
+  # Card
+  - title: Manage volumes
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -67,12 +82,6 @@ landingContent:
             url: manage/extend-volumes.md
           - text: Delete volumes
             url: manage/delete-volumes.md
-          - text: Replace drives
-            url: manage/replace-drives.md
-          - text: Use the CSV cache
-            url: manage/use-csv-cache.md
-          - text: Manage SMB Multichannel
-            url: manage/manage-smb-multichannel.md
 
  # Card
   - title: Manage the cluster
@@ -83,12 +92,12 @@ landingContent:
             url: manage/cluster.md
           - text: Add or remove servers
             url: manage/add-cluster.md
+          - text: Take a server offline for maintenance
+            url: manage/maintain-servers.md
           - text: Monitor the cluster
             url: manage/monitor-cluster.md
           - text: Update the cluster
-            url: manage/update-cluster.md
-          - text: Configure firewalls
-            url: manage/configure-firewalls.md            
+            url: manage/update-cluster.md            
           - text: Change languages
             url: manage/languages.md
 
@@ -101,6 +110,8 @@ landingContent:
             url: concepts/stretched-clusters.md
           - text: Billing
             url: concepts/billing.md
+          - text: Firewall requirements
+            url: concepts/firewall-requirements.md
           - text: Updates and upgrades
             url: concepts/updates.md
           - text: Choose drives
@@ -123,6 +134,10 @@ landingContent:
             url: manage/vm-powershell.md
           - text: Set up VM affinity rules
             url: manage/vm-affinity.md
+          - text: VM load balancing
+            url: manage/vm-load-balancing.md
+          - text: Use GPUs with clustered VMs
+            url: manage/use-gpu-with-clustered-vm.md
 
   # Card 
   - title: Connect to Azure

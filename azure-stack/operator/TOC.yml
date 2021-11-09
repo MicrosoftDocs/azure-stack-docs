@@ -14,6 +14,22 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2102.30.109
+        href: hotfix-1-2102-30-109.md      
+      - name: Hotfix 1.2102.30.106
+        href: hotfix-1-2102-30-106.md      
+      - name: Hotfix 1.2102.30.104
+        href: hotfix-1-2102-30-104.md
+      - name: Hotfix 1.2008.40.154
+        href: hotfix-1-2008-40-154.md
+      - name: Hotfix 1.2005.48.137
+        href: hotfix-1-2005-48-137.md      
+      - name: Hotfix 1.2102.30.102
+        href: hotfix-1-2102-30-102.md
+      - name: Hotfix 1.2008.40.151
+        href: hotfix-1-2008-40-151.md
+      - name: Hotfix 1.2005.47.135
+        href: hotfix-1-2005-47-135.md      
       - name: Hotfix 1.2102.30.101
         href: hotfix-1-2102-30-101.md
       - name: Hotfix 1.2008.40.150
@@ -123,6 +139,8 @@
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
+      - name: Validate datacenter network integration
+        href: azure-stack-validate-network.md
     - name: Deployment worksheet
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
@@ -298,6 +316,8 @@
       href: azure-stack-marketplace-azure-items.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
+    - name: Update Marketplace items
+      href: marketplace-update-items.md
     - name: Add a custom virtual machine image
       href: azure-stack-add-vm-image.md
     - name: Create and publish a marketplace item
@@ -382,6 +402,10 @@
         href: container-registries-install.md
       - name: Manage Azure Container Registry
         href: container-registries-manage.md
+      - name: Troubleshoot
+        href: container-registries-troubleshoot.md
+    - name: Azure Kubernetes Service
+      href: aks-add-on.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -410,8 +434,10 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.1.0 release notes [Oct 2021] 
+          href: event-hubs-rp-release-1-2102-10.md
         - name: 1.2102.0.0 release notes [Jul 2021] 
-          href: event-hubs-rp-release-1-2102-00.md
+          href: event-hubs-rp-release-1-2102-00.md          
         - name: 1.2012.2.0 release notes [May 2021] 
           href: event-hubs-rp-release-1-2012-20.md          
         - name: 1.2012.1.0 release notes [Feb 2021] 
@@ -575,7 +601,7 @@
   - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
-    href: ../reference/pep-2002/    
+    href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI

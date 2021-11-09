@@ -63,13 +63,16 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 If you created your Kubernetes cluster using the commands in the previous tutorial, your deployment has a cluster called *mycluster* with one Linux node pool called *linuxnodepool* with a node count of 1. 
 
-Use the [Set-AksHciNodePool](set-akshcinodepool.md) command to scale the node pool. The following example scales the node pool from 1 to 3 Linux nodes.
+Use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command to scale the node pool. The following example scales the node pool from 1 to 3 Linux nodes.
 
 ```powershell
-Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -count 3
+Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 ``` 
 
-If you want to scale the control plane nodes, use the [Set-AksHciCluster](set-akshcicluster.md) command.
+If you want to scale the control plane nodes, use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command.
+
+> [!NOTE]
+> In previous versions of AKS on Azure Stack HCI, the [Set-AksHciCluster](set-akshcicluster.md) command was also used to scale worker nodes. AKS on Azure Stack HCI is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](new-akshcicluster.md). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
 
 Run the following command to confirm that scaling was successful.
 

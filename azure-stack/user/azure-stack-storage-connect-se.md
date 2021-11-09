@@ -38,6 +38,9 @@ You need direct access to Azure Stack Hub or a VPN connection for Storage Explor
 
 For integrated systems that are disconnected and for the ASDK, the recommendation is to use an internal enterprise Certificate Authority to export the root certificate in a Base-64 format and then import it into Azure Storage Explorer.  
 
+> [!NOTE]  
+> Azure Storage Explorer relies on the Node.js networking stack to determine which default certificate signers to trust. [Learn more](/azure/storage/common/storage-explorer-network#ssl-certificates).
+
 ### Export and then import the Azure Stack Hub certificate
 
 Export and then import Azure Stack Hub certificate for disconnected integrated systems and for the ASDK. For connected integrated systems, the certificate is publicly signed and this step isn't necessary.

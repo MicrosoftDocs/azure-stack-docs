@@ -3,13 +3,13 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 06/21/2021
+ms.date: 10/29/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI, version v20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
@@ -111,12 +111,13 @@ The next step is to install required Windows roles and features on every server 
 - Hyper-V PowerShell
 - RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
+- NetworkATC
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server:
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -124,13 +125,17 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
     Install-WindowsFeature -Name $Using:Featurelist -IncludeAllSubFeature -IncludeManagementTools
 }
 ```
+
+> [!NOTE]
+> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+
 Next, restart all the servers:
 
 ```powershell
@@ -138,155 +143,86 @@ $ServerList = "Server1", "Server2", "Server3", "Server4"
 Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 ```
 
-## Step 2: Configure networking
+## Step 2: Configure host networking
 
-This step configures various networking elements, such as virtual switches and network adapters, in your environment. RDMA (both iWARP and RoCE) network adapters are supported.
+Microsoft no longer recommends that you configure host networking manually. If you're running Azure Stack HCI, version 21H2, use [Network ATC](../concepts/network-atc-overview.md) to deploy host networking. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-For more information on RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+The following represent common host networking intents using Network ATC. You can specify any combination of the following types of intents:
 
-### Disable unused network adapters
+- Compute – adapters will be used to connect virtual machines traffic to the physical network
+- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
+- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
 
-You must disable any disconnected networks and adapters not used for management, storage or for workload traffic such as VMs. This includes network adapters used for headless management such as baseboard management controllers (BMCs).
+If you need to configure overrides, see [Configure an override](../manage/manage-network-atc.md#configure-an-override).
 
-Here is how to identify unused networks:
+If you have feedback or encounter any issues, review the Network ATC [Requirements and best practices](../concepts/network-atc-overview.md#requirements-and-best-practices), check the Network ATC event log, and work with your Microsoft support team.
 
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-NetAdapter -CimSession $ServerList | Where-Object Status -eq Disconnected
-```
-And here is how to disable them:
+### Configure an intent
 
-```powershell
-Get-NetAdapter -CimSession $ServerList | Where-Object Status -eq Disconnected | Disable-NetAdapter -Confirm:$False
-```
+In this task, a consistent configuration is maintained across all cluster nodes. This is beneficial for several reasons including improved reliability of the cluster. The cluster is considered the configuration boundary. That is, all nodes in the cluster share the same configuration (symmetric intent).
 
-### Create virtual switches
-
-A virtual switch is needed for each server node in your cluster. In the following example, a virtual switch with SR-IOV capability is created using network adapters that are connected (Status is UP). SR-IOV enabled might also be useful as it's required for RDMA enabled vmNICs (vNICs for VMs).
-
-All network adapters must be identical for teaming NICs together.
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-```
-
-And to create the virtual switch:
-
-```powershell
-Invoke-Command -ComputerName $ServerList -ScriptBlock {New-VMSwitch -Name $using:vSwitchName -EnableEmbeddedTeaming $TRUE -EnableIov $true -NetAdapterName (Get-NetAdapter | Where-Object Status -eq Up ).InterfaceAlias}
-```
-
-Now, validate that the switch has been successfully created:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-VMSwitch -CimSession $ServerList | Select-Object Name, IOVEnabled, IOVS*
-Get-VMSwitchTeam -CimSession $ServerList
-```
-
-### Assign virtual network adapters
-
-Next, you will assign virtual network adapters (vNICs) for management and the rest of your traffic, as in the following example. You must configure at least one network adapter for cluster management.
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$vSwitchName="vSwitch"
-Rename-VMNetworkAdapter -ManagementOS -Name $vSwitchName -NewName Management -ComputerName $ServerList
-Add-VMNetworkAdapter -ManagementOS -Name SMB01 -SwitchName $vSwitchName -CimSession $ServerList
-Add-VMNetworkAdapter -ManagementOS -Name SMB02 -SwitchName $vSwitchName -Cimsession $ServerList
-```
-
-And verify they have been successfully added and assigned:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-VMNetworkAdapter -CimSession $ServerList -ManagementOS
-```
-
-### Configure IP addresses and VLANs
-
-You can configure either one or two subnets. Two subnets are preferred if you want to prevent overloading of the switch interconnect. For example, SMB storage traffic will stay on a subnet that's dedicated to one physical switch.
+> [!IMPORTANT]
+> If a server node is clustered, you must use a clustered intent. Standalone intents are ignored.
 
 > [!NOTE]
-> We recommend using separate subnets in switchless deployments. For more information on switchless connections, see [Using switchless](../concepts/physical-network-requirements.md#using-switchless).
+> You can add all nodes at one time using the `New-Cluster` cmdlet, then add the intent to all nodes. Alternatively, you can incrementally add nodes to the cluster. The new nodes are managed automatically.
+
+In this example, an intent is created that specifies the compute and storage intent types with no overrides.
+
+1. On one of the cluster nodes, run `Get-NetAdapter` to review the physical adapters. Ensure that each node in the cluster has the same named physical adapters.
+
+    ```powershell
+    Get-NetAdapter -Name pNIC01, pNIC02 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+    ```
+
+1. Run the following command to add the storage and compute intent types to pNIC01 and pNIC02. Note that we specify the `-ClusterName` parameter.
+
+    ```powershell
+    Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
+    ```
+
+    The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
+
+    - the adapters specified
+    - adapters report status 'Up'
+    - adapters ready to be teamed to create the specified vSwitch
+
+1. Run the `Get-NetIntent` cmdlet to see the cluster intent. If you have more than one intent, you can specify the `Name` parameter to see details of only a specific intent.
+
+    ```powershell
+    Get-NetIntent -ClusterName HCI01
+    ```
+
+1. To see the provisioning status of the intent, run the `Get-NetIntentStatus` command:
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+
+    Note the status parameter that shows Provisioning, Validating, Success, Failure.
+
+1. Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
+
+    ```powershell
+    Get-NetIntentStatus -ClusterName HCI01 -Name Cluster_ComputeStorage
+    ```
+ 
+1. Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage. For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6EGnh0k).
+
+    ```powershell
+    Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
+    ```
 
 > [!NOTE]
-> While configuring IP addresses, the connection may be interrupted for a few minutes as you might be connected to one of the virtual adapters while obtaining a new IP address.
+> At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
 
-#### Obtain network interface information
 
-Before you can set IP addresses for the network interface cards, there is some information you need first, such as Interface Index (`ifIndex`), `Interface Alias`, and `Address Family`. Write these down for each server node as you will need them later.
-
-Run the following:
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-Get-NetIPInterface -CimSession $ServerList
-```
-
-#### Configure one subnet
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$StorNet="172.16.1."
-$StorVLAN=1
-$IP=1 #starting IP Address
-
-#Configure IP Addresses
-foreach ($Server in $ServerList){
-    New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
-    $IP++
-    New-NetIPAddress -IPAddress ($StorNet+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
-    $IP++
-}
-
-#Configure VLANs
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN -Access -ManagementOS -CimSession $ServerList
-#Restart each host vNIC adapter so that the Vlan is active.
-Restart-NetAdapter "vEthernet (SMB01)" -CimSession $ServerList
-Restart-NetAdapter "vEthernet (SMB02)" -CimSession $ServerList
-```
-
-#### Configure two subnets
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-$StorNet1="172.16.1."
-$StorNet2="172.16.2."
-$StorVLAN1=1
-$StorVLAN2=2
-$IP=1 #starting IP Address
-
-#Configure IP Addresses
-foreach ($Server in $ServerList){
-    New-NetIPAddress -IPAddress ($StorNet1+$IP.ToString()) -InterfaceAlias "vEthernet (SMB01)" -CimSession $Server -PrefixLength 24
-    New-NetIPAddress -IPAddress ($StorNet2+$IP.ToString()) -InterfaceAlias "vEthernet (SMB02)" -CimSession $Server -PrefixLength 24
-    $IP++
-}
-
-#Configure VLANs
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB01 -VlanId $StorVLAN1 -Access -ManagementOS -CimSession $ServerList
-Set-VMNetworkAdapterVlan -VMNetworkAdapterName SMB02 -VlanId $StorVLAN2 -Access -ManagementOS -CimSession $ServerList
-#Restart each host vNIC adapter so that the Vlan is active.
-Restart-NetAdapter "vEthernet (SMB01)" -CimSession $Servers
-Restart-NetAdapter "vEthernet (SMB02)" -CimSession $Servers
-```
-
-#### Verify VLAN IDs and subnets
-
-```powershell
-$ServerList = "Server1", "Server2", "Server3", "Server4"
-#verify ip config
-Get-NetIPAddress -CimSession $ServerList -InterfaceAlias vEthernet* -AddressFamily IPv4 | Sort-Object -Property PSComputername | ft pscomputername,interfacealias,ipaddress -AutoSize -GroupBy PSComputerName
-
-#Verify that the VlanID is set
-Get-VMNetworkAdapterVlan -ManagementOS -CimSession $ServerList | Sort-Object -Property Computername | Format-Table ComputerName,AccessVlanID,ParentAdapter -AutoSize -GroupBy ComputerName
-```
 
 ## Step 3: Prep for cluster setup
 
-Next, verify that your servers are ready for clustering. As a sanity check first, consider running the following commands to make sure that the servers don't already belong to a cluster:
+Next, verify that your servers are ready for clustering.
+
+As a sanity check first, consider running the following commands to make sure that your servers don't already belong to a cluster:
 
 Use `Get-ClusterNode` to show all nodes:
 
@@ -308,7 +244,7 @@ Get-ClusterNetwork
 
 ### Step 3.1: Prepare drives
 
-Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions or other data.
+Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions and other data.
 
 > [!NOTE]
 > Exclude any removable drives attached to a server node from the script. If you are running this script locally from a server node for example, you don't want to wipe the removable drive you might be using to deploy the cluster.
@@ -478,3 +414,4 @@ Now that you are done, there are still some important tasks you need to complete
 
 - Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- Manage host networking. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).

@@ -2,20 +2,27 @@
 title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 09/28/2021
 ms.custom: fasttrack-edit
 ms.author: mikek
 author: mkostersitz
 ---
 # Use proxy server settings on AKS on Azure Stack HCI
 
-If your network requires the use of a proxy server to connect to the internet, this topic walks you through the steps required to set up proxy support on AKS on Azure Stack HCI using the **AksHci** PowerShell module. You can set up proxy configurations for an AKS host installation using the [`Set-AksHciConfig`](./set-akshciconfig.md) command. There are different sets of steps depending on whether the proxy server requires authentication.
+> [!NOTE]
+> This topic covers how to configure proxy settings for AKS on Azure Stack HCI. If you want to use Arc enabled Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) when you configure proxy settings for AKS on Azure Stack HCI. 
+
+If your network requires the use of a proxy server to connect to the internet, this topic walks you through the steps required to set up proxy support on AKS on Azure Stack HCI using the **AksHci** PowerShell module. You can set up proxy configurations for an AKS host installation using the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command. There are different sets of steps depending on whether the proxy server requires authentication.
 
 Once you have configured your deployment using the options listed below, you can [install an AKS host on Azure Stack HCI](./kubernetes-walkthrough-powershell.md) and [create AKS clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
 
-## Configure an AKS host for a proxy server with basic authentication 
+## (Optional) Install PowerShell Modules using a Proxy Server
 
-If your proxy server requires authentication, open PowerShell as an administrator and run the following command to get credentials and set the configuration details: 
+If your environment uses a proxy server to access the Internet, it may be necessary to add proxy parameters to the **Install-Module** command before installing AKS on Azure Stack HCI. See the [Install-Module Documentation](/powershell/module/powershellget/install-module) for details, and follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
+
+## Configure an AKS host for a proxy server with basic authentication
+
+If your proxy server requires authentication, open PowerShell as an administrator and run the following command to get credentials and set the configuration details:
 
 ```powershell
 $proxyCred = Get-Credential
@@ -47,11 +54,11 @@ Set-AksHciConfig -proxySetting $proxySetting -...
 ```
 
 > [!NOTE]
-> Proxy certificates are not yet provisioned/trusted on Windows Kubernetes worker nodes. Support for Windows workers will be enabled in a future release.
+> Proxy certificates must be provided as a personal information exchange (PFX) file format or string, and contain the root authority chain to use the certificate for authentication or for SSL tunnel setup.
 
 ## Exclude specific hosts or domains from using the proxy server
 
-In most networks, you'll need to exclude certain networks, hosts, or domains from being accessed through the proxy server. You can exclude these things by exempting address strings using the `-noProxy` parameter in [`New-AksHciProxySetting`](./new-akshciproxysetting.md).
+In most networks, you'll need to exclude certain networks, hosts, or domains from being accessed through the proxy server. You can exclude these things by exempting address strings using the `-noProxy` parameter in [`New-AksHciProxySetting`](./reference/ps/new-akshciproxysetting.md).
 
 The default value for `proxyServerNoProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`
 

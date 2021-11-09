@@ -20,7 +20,7 @@ Verify that you have the following installed:
 
 - An AKS on Azure Stack HCI cluster that's up and running.
 - [Install the Azure CLI ](/cli/azure/install-azure-cli)
-- Your local `kubectl` environment is configured to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./get-akshcicredential.md) PowerShell command to configure your cluster for access using `kubectl`.
+- Your local `kubectl` environment is configured to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to configure your cluster for access using `kubectl`.
 
 ## Create an Azure Container Registry
 

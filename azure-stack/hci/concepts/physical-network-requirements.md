@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Physical network requirements for Azure Stack HCI
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
@@ -28,10 +28,11 @@ These requirements are also published in [Windows Hardware Compatibility Program
 
 When purchasing network switches, contact your switch vendor and ensure that the devices meet all Azure Stack HCI requirements. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
 
-|Vendor|10 GbE|25 GbE|100 GbE|
-|-----|-----|-----|-----|
-|Dell|[S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|
-|Lenovo|[G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
+|Vendor|10 GbE|25 GbE|100 GbE|400 GbE
+|-----|-----|-----|-----|-----|
+|Dell|[S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)|[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf)||
+|Lenovo|[G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) ||
+|Juniper Networks|[QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)|[QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)|[QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)|[QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)|
 
 > [!IMPORTANT]
 > Microsoft updates this list as we are informed of changes by network switch vendors.
@@ -57,10 +58,13 @@ Ethernet switches must comply with the IEEE 802.1Qbb specification that defines 
 
 ### Standard: IEEE 802.1Qaz
 
-Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios. A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed.
+Ethernet switches must comply with the IEEE 802.1Qaz specification that defines Enhanced Transmission Select (ETS). ETS is required where DCB is used. Since DCB can be used in both RoCE and iWARP RDMA scenarios, 802.1Qaz is required in all scenarios.
+
+A minimum of three CoS priorities are required without downgrading the switch capabilities or port speed. Additionally, if your device allows ingress QoS rates to be defined, we recommend that you do not configure ingress rates or configure them to the exact same value as the egress (ETS) rates.
 
 > [!NOTE]
-> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft does not test Azure Stack HCI with Differentiated Services Code Point (DSCP). 
+> Hyper-converged infrastructure has a high reliance on East-West Layer-2 communication within the same rack and therefore requires ETS. Microsoft does not test Azure Stack HCI with Differentiated Services Code Point (DSCP).
+
 
 ### Standard: IEEE 802.1AB
 
@@ -140,10 +144,11 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 ### Disadvantages of switchless connections
 
-- As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
 - More planning is required for IP and subnet addressing schemes.
-- Provides only local storage access. VM traffic, management traffic, and other traffic requiring North-South access cannot use these adapters.
-- Generally does not scale well beyond three-node clusters.
+- Provides only local storage access. Management traffic, VM traffic, and other traffic requiring North-South access cannot use these adapters.
+- As the number of nodes in the cluster grows, the cost of network adapters could exceed the cost of using network switches.
+- Does not scale well beyond three-node clusters. More nodes incur additional cabling and configuration that can surpass the complexity of using a switch.
+- Cluster expansion is complex requiring hardware and software configuration changes.
 
 ## Next steps
 

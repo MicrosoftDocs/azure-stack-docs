@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub users are billed for resource usage, and 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/01/2021
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019

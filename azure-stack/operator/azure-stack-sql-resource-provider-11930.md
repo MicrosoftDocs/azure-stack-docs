@@ -22,7 +22,7 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 
 > |Supported Azure Stack Hub version|SQL resource provider version|
 > |-----|-----|
-> |Version 2102, 2008, 2005|[SQL RP version 1.1.93.1](https://aka.ms/azshsqlrp11931)|  
+> |Version 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|  
 > |     |     |
 
 > [!IMPORTANT]
@@ -37,12 +37,12 @@ This version of the Azure Stack Hub SQL resource provider includes the following
 - **Make KeyVaultPfxPassword an optional argument when performing secrets rotation.** Check [this document](azure-stack-sql-resource-provider-maintain.md#secrets-rotation) for details.
 - **Other bug fixes.**
 
-It's recommended that you apply SQL resource provider 1.1.93.1 after Azure Stack Hub is upgraded to the 2005 release.
+It's recommended that you apply SQL resource provider 1.1.93.5 after Azure Stack Hub is upgraded to the 2005 release.
 
 ## Known issue
-Deployment of 1.1.93.0 version may fail if the wrong AzureRmContext is used. It is recommended to upgrade to 1.1.93.1 version directly. If you have already successfully upgraded to 1.1.93.0, you can safely skip the 1.1.93.1 version.
+Deployment of 1.1.93.0 version may fail if the wrong AzureRmContext is used. It is recommended to upgrade to 1.1.93.5 version directly. 
 
-When redeploying the SQL resource provider while the same version had deployed already (for example, when SQL resource provider 1.1.93.1 is already deployed, and the same version is deployed again), the VM that is hosting the SQL resource provider will be stopped. To fix this issue, go to the admin portal, locate and restart the VM named sqlvm\<version\> in the resource group named system.\<region\>.sqladapter.
+When redeploying the SQL resource provider while the same version had deployed already (for example, when SQL resource provider 1.1.93.5 is already deployed, and the same version is deployed again), the VM that is hosting the SQL resource provider will be stopped. To fix this issue, go to the admin portal, locate and restart the VM named sqlvm\<version\> in the resource group named system.\<region\>.sqladapter.
 
 ## Next steps
 

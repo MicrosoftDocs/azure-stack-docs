@@ -3,7 +3,7 @@ title: Azure Stack Hub compute capacity
 description: Learn about compute capacity planning for Azure Stack Hub deployments.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 10/05/2021
 ms.author: patricka
 ms.reviewer: kivenkat
 ms.lastreviewed: 03/02/2021
@@ -19,7 +19,8 @@ ms.lastreviewed: 03/02/2021
 The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
->The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
+>The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance. The administrator portal shows a warning alert when the total system memory consumption has reached 85%. This alert can be remediated by [adding additional capacity](azure-stack-add-scale-node.md), or by removing virtual machines that are no longer required.
+
 
 ## VM placement
 

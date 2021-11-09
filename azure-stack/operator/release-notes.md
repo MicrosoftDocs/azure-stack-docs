@@ -1,10 +1,10 @@
 ---
-title: Azure Stack Hub release notes 
+title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/16/2021
+ms.date: 11/08/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -61,10 +61,10 @@ The Azure Stack Hub 2108 update build type is **Full**.
 
 The 2108 update has the following expected runtimes based on our internal testing:
 
-- 4 nodes: 8-20 hours
-- 8 nodes: 11-26 hours
-- 12 nodes: 14-32 hours
-- 16 nodes: 17-38 hours
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2108 update and should not be compared to other Azure Stack Hub updates.
 
@@ -72,21 +72,24 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- An Azure Stack Hub operator can now configure GPU quotas for VMs.
+- Azure Stack Hub operators can now configure GPU quotas for VMs.
 - [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
 - Windows Server 2022 is now supported as a guest operating system.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
+- Two new services, [Azure Kubernetes Service](../user/aks-overview.md) and [Azure Container Registry](../user/container-registry-overview.md), are available in public preview with this release.
+- With this release, telemetry data is uploaded to an Azure Storage account that's managed and controlled by Microsoft. Azure Stack Hub telemetry service connects to `https://*.blob.core.windows.net/` and `https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` for a successful telemetry data upload to Microsoft. Port 443 (HTTPS) must be opened. For more information, see [Azure Stack Hub telemetry](azure-stack-telemetry.md).
+- This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely, so that support engineers can perform limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](remote-support.md).
 
 ### Improvements
 
-- The alert description has been adjusted to align with progressive backup when the external SMB share is almost full.
+- When the external SMB share is almost full, the alert description has been adjusted to align with progressive backup.
 - To prevent upload failures, the number of parallel infrastructure backup repository uploads to the external SMB share is now limited.
 - Replaced **Node-Inaccessible-for-vm-placement** alert with alerts to distinguish between **host-unresponsive** scenarios and **hostagent-service-on-node-unresponsive** scenarios.
-- Ability for App Service to discover the default NAT IP for outbound connections.
+- App Service now has the ability to discover the default NAT IP for outbound connections.
 
 ### Changes
 
-- SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these RPs, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
+- SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these resource providers, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
 - The infrastructure backup resource provider has a new API version that supports restoring progressive backups.
 
 ### Fixes
@@ -94,6 +97,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue in which one repository failure when uploading to the external SMB share caused the whole infrastructure backup to fail.
 - Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
 - Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
+- Fixed an issue that caused internal load balancers to use external IPs.
 
 ## Security updates
 
@@ -114,7 +118,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2102.28.89](hotfix-1-2102-28-89.md)
+- [Azure Stack Hub hotfix 1.2102.30.104](hotfix-1-2102-30-104.md)
 
 ### After successfully applying the 2108 update
 
@@ -176,8 +180,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
 - Reduced the XRP memory to 14 GB per VM and WAS memory to 10 GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
 - The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
-- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
-- Added a Webhooks feature to the Azure Container Registry functionality on Azure Stack Hub private preview. See [Create Webhooks - CLI](/azure/container-registry/container-registry-webhook#create-webhook---azure-cli).
+- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
 - Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
 
 ### Changes
@@ -206,18 +209,18 @@ For information about security updates in this update of Azure Stack Hub, see [A
 
 Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-> [!NOTE]
-> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
-
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
 ### Hotfix prerequisites: before applying the 2102 update
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.40.150](hotfix-1-2008-40-150.md)
+- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-40-154.md)
 
 ### After successfully applying the 2102 update
 
@@ -225,7 +228,7 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2102.30.101](hotfix-1-2102-30-101.md)
+- [Azure Stack Hub hotfix 1.2102.30.109](hotfix-1-2102-30-109.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
@@ -310,7 +313,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.150](hotfix-1-2008-40-150.md)
+- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-40-154.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

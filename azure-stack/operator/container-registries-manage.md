@@ -3,10 +3,10 @@ title: Manage capacity and quotas
 description: Learn how to Manage capacity and quotas with Azure Container Registry on Azure Stack Hub.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 08/20/2021
+ms.date: 10/26/2021
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 08/20/2021
+ms.lastreviewed: 10/26/2021
 
 # Intent: As an Azure Stack user, I want to XXX so I can XXX.
 # Keyword: XXX
@@ -25,7 +25,7 @@ You can manage your container registry in the Azure Stack Hub administrative por
 2. Type `Container Registry` in the search.
 3. Select **Configure**.
     ![Manage your container registry capacity.](media/container-registries-manage/azure-stack-hub-container-registries-configure.png)
-4. You can increase or decrease the capacity from the default of 500 GB. Add your number, and then select **Configure**.
+4. You can increase or decrease the capacity from the default of 2000 GB. Add your number, and then select **Configure**.
 
 ## View storage use
 

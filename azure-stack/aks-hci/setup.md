@@ -53,18 +53,28 @@ Now that we've verified our system settings, let's get started:
 4. Ensure system connectivity through CredSSP in the **Connectivity** step. CredSSP lets Windows Admin Center delegate the user's credentials from the gateway to a target server for remote authentication. CredSSP needs to be enabled to set up Azure Kubernetes Service. After you've enabled CredSSP, select **Next**.  
 
 5. Configure the machine that will host Azure Kubernetes Service in the **Host configuration** step. We recommend you select **automatically download updates** in this section. This step of the wizard asks you to configure the following details:
-    * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
-    * **VM networking**, which will apply to all Linux and Windows VMs (nodes) that are created to run containers and orchestrate container management. This includes the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. Cloudagent IP can be used to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For additional details, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few additional fields that must be specified:
+   * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
+   * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management. You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. You can use Cloudagent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For additional details, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few additional fields that must be specified:
       * **Subnet prefix**, an IP address range that does not conflict with other addresses
       * **Gateway**, the gateway through which packets will be routed outside the machine
       * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses. 
       * **Kubernetes node IP pool start**, the pool start range for IP addresses used by Kubernetes clusters
       * **Kubernetes node IP pool end**, the pool end range for IP addresses used by Kubernetes clusters
-    * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section.
+   * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM Networking section, the address pool start and end must be within the subnet range specified in that section.
 
-    ![Illustrates the Host configuration step of the Azure Kubernetes Service host wizard.](.\media\setup\host-configuration.png)
+   The following image represents an example DHCP host configuration:
 
-    Select **Next** after you're finished.
+   [ ![Screenshot that illustrates a DHCP configuration on the Host Configuration page.](.\media\setup\host-configuration-dhcp.png) ](.\media\setup\host-configuration-dhcp.png#lightbox)
+
+   The following image represents an example static IP host configuration:
+
+   [ ![Screenshot that illustrates a static IP configuration on the Host Configuration page.](.\media\setup\host-configuration-static.png) ](.\media\setup\host-configuration-static.png#lightbox)
+
+   (Optional) Configure proxy settings as required for the Azure Kubernetes Service host. These settings are dependant on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
+
+   [ ![Illustrates the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png) ](.\media\setup\proxy-settings-host-configuration.png#lightbox)
+ 
+   Select **Next** after you're finished.
 
 6. On the **Azure Registration** page of the wizard, provide details about the subscription, resource group, and region you wish to use for this service. Your resource group will need to be in the East US, Southeast Asia, or West Europe region.  
 
@@ -94,7 +104,7 @@ Now that we've verified our system settings, let's get started:
    Once permissions are correct, click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.  Permissions can be revoked at any time as needed.
 
    When you're done, your permissions may look something like this:  
-   ![Illustrates that status is granted for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)
+   ![Illustrates the current status for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)
 
    When you're finished, select **Next**.
 
@@ -102,9 +112,13 @@ Now that we've verified our system settings, let's get started:
 
 8. On the **Setup progress** page, you can watch the progress of your host setup. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks.
 
+> [!WARNING]
+> During installation of your Azure Kuberenetes Service host, a *Kubernetes - Azure Arc* resource type is created in the resource group that's set during registration. Do not delete this resource as it represents your Azure Kuberenetes Service host. You can identify the resource by checking its distribution field for a value of `aks_management`. Deleting this resource will result in an out-of-policy deployment.
+
 9. If the deployment succeeds, select **Finish**, and you will be presented with a management dashboard where you can create and manage your Kubernetes clusters.
 
    ![Illustrates the Azure Kubernetes Services on Azure Stack HCI management dashboard.](.\media\setup\dashboard.png)
+   
 
 ## Next steps
 

@@ -91,7 +91,7 @@ You will need set your current culture setting to `en-US` when running the privi
 
 1. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
 
-   You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
+   You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep/index.md)
 
    Many of these cmdlets are intended only for integrated system environments (such as the cmdlets related to datacenter integration). In the ASDK, the following cmdlets have been validated:
 
@@ -257,4 +257,4 @@ The response token is then encrypted with the self-signed certificate contained 
 ## Next steps
 
 - [Azure Stack Hub diagnostic tools](./diagnostic-log-collection.md)
-- [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
+- [Azure Stack Hub privileged endpoint reference](../reference/pep/index.md)

@@ -52,7 +52,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 |  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
-| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 10 front-end IP configurations for releases 1807-1906 and 200 front-end IP configurations for releases 1907 and above per load balancer.  |
+| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |
@@ -67,6 +67,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Internal DNS Name Label | Supported | Not yet supported. |
 |  | Private IP Address Version | Both IPv6 and IPv4 are supported. | Only IPv4 is supported. |
 |  | Static MAC Address | Not supported | Not supported. Each Azure Stack Hub system uses the same MAC address pool. |
+| | Network interface for virtual machines | Supported. New network interface configuration only applied after rebooting the virtual machine. | Supported. New network interface configuration is applied while the virtual machine is running. This might impact overall virtual machine connectivity and drop existing connections for a few seconds. It is recommended to add the network interface while the virtual machine is stopped or during a planned maintenance.
 | Network Watcher | Network Watcher tenant network monitoring capabilities | Supported | Not yet supported. |
 | CDN | Content Delivery Network profiles | Supported | Not yet supported. |
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |

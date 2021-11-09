@@ -32,7 +32,7 @@ This article is divided into two main parts.
 **Part 2** focuses on deploying the application from your Azure Container Registry down into the AKS on Azure Stack HCI environment. For this, **you cannot use Azure Cloud Shell**. For the AKS on Azure Stack HCI environment, the following items are required:
 
 * An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * Git command-line tools installed on your system. On a Windows system, you can use [**Git Bash**](https://git-scm.com/downloads) as the main console, and within the Git Bash console, call PowerShell and Azure when required.
 
 ## Create a resource group in Azure
@@ -108,7 +108,7 @@ To deploy and run your Liberty application on the AKS on Azure Stack HCI cluster
 
 To manage a Kubernetes cluster, you use [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes command-line client. Once installed, on Windows, kubectl can be run from the CMD prompt, PowerShell console, and Git Bash.
 
-As one of the pre-requisites, you should have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`:
+As one of the pre-requisites, you should have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`:
 
 ```powershell
 Get-AksHciCredential -name AksHciClusterName

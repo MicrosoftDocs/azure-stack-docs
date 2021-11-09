@@ -111,7 +111,7 @@ Make sure to setup firewall rules to allow connectivity between ERCS VMs to the 
 
 ### Encryption Requirements
 
-Starting in 1901, the Infrastructure Backup Service will use a certificate with a public key (.CER) to encrypt backup data and a certificate with the private key (.PFX) to decrypt backup data during cloud recovery. The certificate key length must be 2048 bytes.
+The Infrastructure Backup Service will use a certificate with a public key (.CER) to encrypt backup data and a certificate with the private key (.PFX) to decrypt backup data during cloud recovery. The certificate key length must be 2048 bytes.
 
 - The certificate is used for transport of keys and isn't used to establish secure authenticated communication. For this reason, the certificate can be a self-signed certificate. Azure Stack Hub doesn't need to verify root or trust for this certificate so external internet access isn't required.
 
@@ -124,13 +124,7 @@ The certificate with the public key (.CER) isn't managed by internal secret rota
 
 - All existing backups remain encrypted using the previous public key. New backups use the new public key.
 
-The certificate used during cloud recovery with the private key (.PFX) is not persisted by Azure Stack Hub for security reasons. This file will need to be provided explicitly during cloud recovery.  
-
-**Backwards compatibility mode**
-Starting in 1901, encryption key support is deprecated and will be removed in a future release. If you updated from 1811 with backup already enabled using an encryption key, Azure Stack Hub will continue to use the encryption key. Backwards compatibility mode will be supported for at least three releases. After that time, a certificate will be required.
-
-- Updating from encryption key to certificate is a one-way operation.  
-- All existing backups will remain encrypted using the encryption key. New backups will use the certificate. 
+The certificate used during cloud recovery with the private key (.PFX) is not persisted by Azure Stack Hub for security reasons. This file will need to be provided explicitly during cloud recovery.
 
 ## Infrastructure Backup Limits
 

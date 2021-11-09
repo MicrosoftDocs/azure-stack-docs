@@ -3,10 +3,10 @@ title: Diagnostic log collection
 description: Learn about diagnostic log collection.
 author: PatAltimore
 ms.topic: article
-ms.date: 08/06/2021
+ms.date: 09/20/2021
 ms.author: patricka
 ms.reviewer: shisab
-ms.lastreviewed: 03/26/2021
+ms.lastreviewed: 09/20/2021
 
 #Intent: As an Azure Stack Hub operator, I want to learn about diagnostic log collection so I can share them with Microsoft Support when I need help addressing an issue.
 #Keyword: diagnostic log collection azure stack hub
@@ -37,9 +37,30 @@ Proactive log collection automatically collects and sends diagnostic logs from A
 
 ::: moniker range=">= azs-2008"
 
-Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm that captures logs even during error conditions that aren't visible to an operator. This makes sure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on patch and update operations.
+Beginning with Azure Stack Hub version 2008, proactive log collection uses an improved algorithm that captures logs even during error conditions that aren't visible to an operator. This makes sure that the right diagnostic info is collected at the right time without needing any operator interaction. Microsoft support can begin troubleshooting and resolve problems sooner in some cases. Initial algorithm improvements focus on **patch and update operations**.
+
+When an event triggers these alerts, Azure Stack Hub proactively sends the logs to Microsoft. **In addition, Azure Stack Hub sends logs to Microsoft triggered by other failure events. These events are not visible to the operator**.
+
+Enabling proactive log collection is highly recommended. It allows the product team to diagnose problems due to failure events and improve the quality of the product.
+
+::: moniker-end
+
+::: moniker range=">= azs-2102"
 
 Azure Stack Hub proactively collects logs for:
+
+::: moniker-end
+
+::: moniker range="= azs-2102"
+
+| Alert   | Fault ID type |
+|---------|---------------|
+| Update needs attention | Urp.UpdateWarning |
+| Update failed | Urp.UpdateFailure |
+
+::: moniker-end
+
+::: moniker range=">= azs-2108"
 
 | Alert   | Fault ID type |
 |---------|---------------|
@@ -47,15 +68,6 @@ Azure Stack Hub proactively collects logs for:
 | Node inaccessible for virtual machine placement | AzureStack.ComputeController.HostUnresponsive |
 | Blob service data is corrupted | StorageService.Blob.service.data.is.corrupted-Critical |
 | Account and Container Service data corruption | StorageService.Account.and.Container.Service.data.corruption-Critical |
-| Infrastructure role instance unavailable | FRP.Heartbeat.InfraVM |
-
-When an event triggers these alerts, Azure Stack Hub proactively sends the logs to Microsoft. In addition, Azure Stack Hub sends logs to Microsoft triggered by other failure events. These events are not visible to you.
-
-Enabling proactive log collection is highly recommended. It allows the product team to diagnose problems due to failure events and improve the quality of the product.
-
-::: moniker-end
-
-::: moniker range=">= azs-2108"
 
 Beginning with Azure Stack Hub version 2108 if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case.
 

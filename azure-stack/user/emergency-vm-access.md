@@ -3,14 +3,17 @@ title: Emergency VM access in Azure Stack Hub
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/13/2021
+ms.date: 11/03/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 08/13/2021
 
 ---
 
-# Emergency VM access (EVA)
+# Emergency VM access (EVA) - Public preview
+
+> [!IMPORTANT]
+> Emergency VM access for Azure Stack Hub is in public preview and only applies to version 2018.
 
 The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network.
 
@@ -24,16 +27,16 @@ It is important to note that the operator can only authenticate to the operating
 
 The first step for the Azure Stack Hub operator is to enable Remote Desktop access to the Emergency Recovery Console VMs (ERCS), which host the privileged endpoints.
 
-The following command needs to run in the privileged endpoint (PEP). Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md):
+Run the following commands in the privileged endpoint (PEP). Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md). The operator can be a member of the **cloudadmin** users group, or **cloudadmin** itself:
 
 ```powershell
-Grant-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
+Grant-RdpAccessToErcsVM
 ```
 
 To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS), run the following command in the privileged endpoint (PEP):
 
 ```powershell
-Disable-RdpAccessToErcsVMs -Username "domain\\cloudadmin"
+Revoke-RdpAccessToErcsVM
 ```
 
 ## Operator enables a user subscription for EVA
@@ -144,7 +147,7 @@ As a user, you provide consent to the operator to create console access for a sp
 9. When finished, the operator can run the following command to remove the user consent:
 
    ```powershell
-   Delete-TenantVMSession - ResourceID
+   Delete-TenantVMSession -ResourceID
    ```
 
    > [!NOTE]

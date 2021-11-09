@@ -1,8 +1,8 @@
 ---
 title: Overview of Datacenter Firewall in Azure Stack HCI and Windows Server
 description: Use this topic to learn about Datacenter Firewall in Azure Stack HCI and Windows Server.
-author: khdownie
-ms.author: v-kedow
+author: AnirbanPaul
+ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -11,7 +11,7 @@ ms.date: 03/05/2021
 
 # What is Datacenter Firewall?
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019; Windows Server 2016
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Datacenter Firewall is a network layer, 5-tuple (protocol, source and destination port numbers, source and destination IP addresses), stateful, multitenant Software Defined Networking (SDN) firewall. The Datacenter Firewall protects east-west and north-south traffic flows across the network layer of virtual networks and traditional VLAN networks.
 

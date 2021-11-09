@@ -46,7 +46,7 @@ To check that you have sufficient permissions, follow the information below:
 - If your role is **User**, you must make sure that non-administrators can register applications.
 - To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Azure Active Directory service to check if you have permission to register an application.
 
-If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
+If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
 If you do not have enough permissions to register an application and your admin cannot give you these permissions, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
@@ -57,9 +57,9 @@ To check your access level, navigate to your subscription, click **Access contro
 - If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
    - A user account with the built-in **Owner** role.
    - A service principal with **one of the following** access levels:
-      - The built-in **Kubernetes Cluster - Azure Arc Onboarding** role
-      - The built-in **Contributer** role
-      - The built-in **Owner** role
+      - The built-in [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles#kubernetes-cluster---azure-arc-onboarding) role
+      - The built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role
+      - The built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role
 
 If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
 
@@ -149,6 +149,8 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
 - DNS name resolution is required for all nodes to be able to communicate with each other.
+ 
+- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS is not an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-dns-record). 
 
 ## IP address assignment  
 
@@ -194,21 +196,26 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 
-| URL        | Port | Service | Notes |
-| ---------- | ---- | --- | ---- |
-<https://helm.sh/blog/get-helm-sh/>  | 443 | Download Agent, WAC | Used to download the Helm binaries
-<https://storage.googleapis.com/>  | 443 | Cloud Init | Downloading Kubernetes binaries
-<https://azurecliprod.blob.core.windows.net/> | 443 | Cloud Init | Downloading binaries and containers
-<https://aka.ms/installazurecliwindows> | 443 | WAC | Downloading Azure CLI
-<https://443> | 443 | TCP | Used to support Azure Arc agents  
-*.blob.core.windows.net | 443 | TCP | Required for downloads
-*.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
-ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
-git://:9418 | 9418 | TCP | Used to support Azure Arc agents
-`https://azurestackhci.azurefd.net` | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
+| URL        | Port | Notes |
+| ---------- | ---- | ---- |
+| msk8s.api.cdp.microsoft.com | 443 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
+| msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
+| msk8s.f.tlu.dl.delivery.mp.microsoft.com | 80 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
+| login.microsoftonline.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| login.windows.net  | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| management.azure.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| www.microsoft.com  | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| msft.sts.microsoft.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| graph.windows.net | 443 | Used when running `Install-AksHci`. |
+| ecpacr.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.blob.core.windows.net <br> US endpoint: wus2replica&ast;.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
+| mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
 
 > [!NOTE]
-> To view all ports, URLs, and endpoints for Azure Arc enabled Kubernetes, see [network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster#meet-network-requirements).
+> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
 
 ## Storage requirements
 
@@ -216,9 +223,15 @@ The following storage implementations are supported by Azure Kubernetes Service 
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
-| Azure Stack HCI Cluster          | CSV          | 1 TB              |
-| Windows Server 2019 Datacenter failover cluster          | CSV          | 1 TB              |
-| Single Node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
+| Azure Stack HCI Cluster          | Cluster Shared Volumes          | 1 TB              |
+| Windows Server 2019 Datacenter failover cluster          | Cluster Shared Volumes          | 1 TB              |
+| Single-node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
+
+For an Azure Stack HCI cluster, you have two supported storage configurations for running virtual machine workloads. Hybrid storage that balances performance and capacity using all-flash storage and hard disk drives (HDDs), and all-flash storage that maximizes performance using solid-state drives (SSDs) or NVMe. Systems that only have HDD-based storage are not supported by Azure Stack HCI, and thus are not recommended for running AKS on Azure Stack HCI. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](../hci/concepts/choose-drives.md). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
+
+For a Windows Server 2019 Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
+
+For single-node Windows Server 2019 deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
 
 ## Review maximum supported hardware specifications
 

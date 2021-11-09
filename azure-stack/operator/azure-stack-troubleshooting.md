@@ -129,7 +129,7 @@ You may also take a snapshot of the original disk and create a new disk from it 
 
 - [Reset password](/azure/virtual-machines/troubleshooting/reset-password)
 - [Create a disk from a snapshot](/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux#create-a-disk-from-the-snapshot)
-- [Changing and resetting the Root password](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sec-terminal_menu_editing_during_boot#sec-Changing_and_Resetting_the_Root_Password)
+- [Changing and resetting the Root password](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-working_with_the_grub_2_boot_loader#sec-Changing_and_Resetting_the_Root_Password)
 
 
 ### License activation fails for Windows Server 2012 R2 during provisioning

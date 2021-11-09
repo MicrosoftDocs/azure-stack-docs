@@ -5,7 +5,7 @@ description: Learn how to start and stop Azure Stack Hub.
 author: PatAltimore
 
 ms.topic: how-to
-ms.date: 03/04/2020
+ms.date: 09/08/2021
 ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019
@@ -18,7 +18,10 @@ ms.lastreviewed: 10/15/2019
 
 # Start and stop Azure Stack Hub
 
-Follow the procedures in this article to properly shut down and restart Azure Stack Hub services. *Stop* will physically shut down and power off the entire Azure Stack Hub environment. *Start* powers on all infrastructure roles and returns tenant resources to the power state they were in before shutdown.
+Follow the procedures in this article to properly shut down and restart Azure Stack Hub services. *Stop* physically shuts down and powers off the entire Azure Stack Hub environment. *Start* powers on all infrastructure roles and returns tenant resources to the power state they were in before shutdown.
+
+> [!NOTE]
+> The maximum supported time an Azure Stack Hub system can be turned off is 180 days. If it's turned off for a longer period of time, a re-deployment is required. Please contact your hardware solution partner.
 
 ## Stop Azure Stack Hub
 
@@ -36,8 +39,14 @@ Stop or shut down Azure Stack Hub with the following steps:
 
 4. Wait for all physical Azure Stack Hub nodes to power off.
 
-> [!Note]
-> You can verify the power status of a physical node by following the instructions from the original equipment manufacturer (OEM) who supplied your Azure Stack Hub hardware.
+   > [!NOTE]
+   > You can verify the power status of a physical node by following the instructions from the original equipment manufacturer (OEM) who supplied your Azure Stack Hub hardware.
+
+5. (Optional) If the stop operation times out, you can monitor its progress using the following PowerShell cmdlet:
+
+   ```powershell
+   Get-ActionStatus Stop-AzureStack
+   ```
 
 ## Start Azure Stack Hub
 

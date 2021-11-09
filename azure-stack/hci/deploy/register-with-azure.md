@@ -1,17 +1,17 @@
 ---
 title: Connect Azure Stack HCI to Azure
 description: How to register Azure Stack HCI clusters with Azure.
-author: khdownie
-ms.author: v-kedow
+author: arduppal
+ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/08/2021
+ms.date: 11/02/2021
 ---
 
 # Connect Azure Stack HCI to Azure
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms.
 
@@ -32,6 +32,8 @@ For the simplest registration experience, have an Azure AD admin (Owner or User 
 
    > [!IMPORTANT]
    > Azure Stack HCI is now available in Azure China. To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later. You can also [Register a cluster using PowerShell](#register-a-cluster-using-powershell).
+   > 
+   > Azure Stack HCI is now available in Preview in Azure Government. Registration requires [Windows Admin Center version 2110](https://aka.ms/wac2110) or later.
 
 Before you register your cluster, make sure every server in the cluster is up and running, and that the following prerequisites are satisfied.
 
@@ -41,7 +43,7 @@ If you plan to register an Azure Stack HCI cluster by using Windows Admin Center
 
 ### Internet access and firewall ports
 
-Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For information on how to prepare your firewalls and set up a proxy server, see [Configure firewalls for Azure Stack HCI](../manage/configure-firewalls.md).
+Azure Stack HCI needs to periodically connect to the Azure public cloud. If outbound connectivity is restricted by your external corporate firewall or proxy server, they must be configured to allow outbound access to port 443 (HTTPS) on a limited number of well-known Azure IPs. For information on how to prepare your firewalls and set up a proxy server, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
    > [!NOTE]
    > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the above cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you will run the `Register-AzStackHCI` command. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system&preserve-view=true).
@@ -112,10 +114,12 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. 
 
-If you're running Azure Stack HCI, version 21H2 Preview, the user must be assigned an Azure Owner role or a User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
+If you're running Azure Stack HCI, version 21H2, the user must be assigned an Azure Owner role or a User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
 
    > [!WARNING]
    > To register your Azure Stack HCI cluster in Azure China, please ensure you are using [Windows Admin Center version 2103.2](https://aka.ms/wac2103.2) or later.
+   > 
+   > Azure Stack HCI is now available in Preview in Azure Government. Registration requires [Windows Admin Center version 2110](https://aka.ms/wac2110) or later.
 
 1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and sign into Windows Admin Center with your Azure account.
 
@@ -142,9 +146,9 @@ If you're running Azure Stack HCI, version 21H2 Preview, the user must be assign
 Use the following procedure to register an Azure Stack HCI cluster with Azure using a management PC.
 
    > [!IMPORTANT]
-   > If you're running Azure Stack HCI, version 21H2 Preview, only Azure users with Owner or User Access Administrator roles can register an Azure Stack HCI cluster with Azure Arc integration.
+   > Only Azure users with Owner or User Access Administrator roles can register an Azure Stack HCI cluster with Azure Arc integration.
 
-1. Install the required cmdlets on your management PC. If you're registering a cluster deployed from the current General Availability (GA) or Public Preview image of Azure Stack HCI, simply run the following command. If your cluster was deployed prior to December 10, 2020, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register with Azure.
+1. Install the required cmdlets on your management PC. If you're running Azure Stack HCI, version 20H2 and your cluster was deployed prior to December 10, 2020, make sure you have applied the November 23, 2020 Preview Update (KB4586852) to each server in the cluster before attempting to register with Azure.
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
@@ -160,6 +164,10 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    > If you're registering Azure Stack HCI in Azure China, run the `Register-AzStackHCI` cmdlet with these additional parameters: 
    > 
    > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
+   > 
+   > If you’re registering in Azure Government, use these parameters:
+   > 
+   > -EnvironmentName AzureUSGovernment -Region "USGovVirginia"
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
@@ -168,7 +176,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. You can also add the optional `-Region`, `-ResourceName`, `-TenantId`, and `-ResourceGroupName` parameters to this command to specify these values.
 
    > [!NOTE]
-   > If you're running Azure Stack HCI, version 21H2 Preview, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
+   > If you're running Azure Stack HCI, version 21H2, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
 
    Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
 
@@ -178,10 +186,10 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
 ## Enabling Azure Arc integration
 
-If you're running Azure Stack HCI, version 21H2 Preview and you registered your cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. There's no need to take further action. However, if you registered your cluster prior to that date, you'll need to take the following steps to enable Azure Arc integration on the servers.
+If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. Otherwise, you'll need to take the following steps to enable Azure Arc integration on the servers.
 
    > [!NOTE]
-   > Azure Arc integration is currently only available in Azure Stack HCI, version 21H2 Preview.
+   > Azure Arc integration is only available in Azure Stack HCI, version 21H2 and preview builds. It is not available on Azure Stack HCI, version 20H2.
 
 1. Install the latest version of the `Az.StackHCI` module on your management PC:
 
@@ -255,7 +263,7 @@ If there are node names after the 'Couldn't generate self-signed certificate on 
    
 If there are node names after the 'Couldn't set and verify registration certificate on node(s)' part of the error message, then we were able to generate the certificate on the server(s), but the server(s) weren't able to successfully call the HCI cloud service API. To troubleshoot:
 
-1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Configure firewalls for Azure Stack HCI](../manage/configure-firewalls.md).
+1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
 2. Try running the `Test-AzStackHCIConnection` cmdlet and make sure it succeeds. This cmdlet will invoke the health endpoint of HCI cloud services to test connectivity.
 

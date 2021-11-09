@@ -1,15 +1,15 @@
 ---
 title: Validate an Azure Stack HCI cluster
 description: Understand cluster validation's importance, and when to run it on an existing Azure Stack HCI cluster. Explore scenarios for troubleshooting an updated server cluster.
-author: JohnCobb1
-ms.author: v-johcob
+author: jasongerend
+ms.author: jgerend
 ms.topic: article
-ms.date: 06/18/2021
+ms.date: 11/05/2021
 ---
 
 # Validate an Azure Stack HCI cluster
 
->Applies to: Azure Stack HCI, version v20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 Although the Create cluster wizard in Windows Admin Center performs certain validations to create a working cluster with the selected hardware, cluster validation performs additional checks to make sure the cluster will work in a production environment. This how-to article focuses on why cluster validation is important, and when to run it on an Azure Stack HCI cluster.
 
@@ -47,7 +47,7 @@ This section describes scenarios in which validation is also needed or useful.
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
 > [!NOTE]
-> We recommend to deploy and manage your configuration with Network ATC, which eliminates most of the configuration challenges that the Validate-DCB tool checks for. To learn more about the preview of Network ATC, which provides an intent-based approach to host network deployment, see [Simplify host networking with Network ATC](network-atc.md).
+> Microsoft recommends deploying and managing your configuration with Network ATC, which eliminates most of the configuration challenges that the Validate-DCB tool checks for. To learn more about Network ATC, which provides an intent-based approach to host network deployment, see [Simplify host networking with Network ATC](network-atc.md).
 
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. With iWARP, DCB is optional. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster

@@ -1,12 +1,13 @@
 ---
 title: Use Resource Manager templates for managed disks in Azure Stack Hub
-description: Learn about the differences between managed and unmanaged disks when using Azure Resource Manager templates.
+description: Learn about the differences and how to use managed and unmanaged disks with Azure Resource Manager templates.
 author: sethmanheim
 ms.author: sethm
-ms.date: 8/25/2020
-ms.topic: conceptual
+ms.date: 10/14/2021
+ms.topic: how-to
 ms.reviewer: wellsluo
 ms.lastreviewed: 8/25/2020
+ms.custom: contperf-fy22q2
 ---
 
 
@@ -31,7 +32,7 @@ To begin, let's take a look at how unmanaged disks are deployed. When creating u
 }
 ```
 
-Within the virtual machine object, add a dependency on the storage account to ensure that it's created before the virtual machine. Within the `storageProfile` section, specify the full URI of the VHD location, which references the storage account and is needed for the OS disk and any data disks. The following example creates one OS disk from image and one empty data disk with a 1023GB size:
+Within the virtual machine object, add a dependency on the storage account to ensure that it's created before the virtual machine. Within the `storageProfile` section, specify the full URI of the VHD location, which references the storage account and is needed for the OS disk and any data disks. The following example creates one OS disk from an image, and one empty data disk with a 1023 GB size:
 
 ```json
 {
@@ -218,12 +219,6 @@ To create managed availability sets with VMs using managed disks, add the `sku` 
 ```
 
 ## Next steps
-
-<!--
-* For full templates that use managed disks visit the following Azure Quickstart Repo links.
-    * [Windows VM with managed disk](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-    * [Linux VM with managed disk](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
--->
 
 - See [Azure Stack Hub managed disks](azure-stack-managed-disk-considerations.md) to learn more about managed disks.
 - Review the template reference documentation for virtual machine resources at the [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/2017-12-01/virtualmachines).

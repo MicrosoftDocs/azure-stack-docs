@@ -68,7 +68,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = '17AB53BD1F5A925EF57EF030C20CD17E13FE8D2604B1D4E6AED72DEE0F789B6F' 
+$expectedHash = '2D6CF34965A79D3D11A7B9A00C3C74E565DAA905A7EDF1341F72D6D0FD6D8F93' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
@@ -92,7 +92,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
  
    ```powershell
-   Test-FileHash -ExpectedHash "17AB53BD1F5A925EF57EF030C20CD17E13FE8D2604B1D4E6AED72DEE0F789B6F" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "2D6CF34965A79D3D11A7B9A00C3C74E565DAA905A7EDF1341F72D6D0FD6D8F93" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version
@@ -149,7 +149,7 @@ if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAct
 else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json' }
 ```
 
-If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep-2002/get-azurestackstampinformation.md) in case it is not present on the HLH. 
+If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep/get-azurestackstampinformation.md) in case it is not present on the HLH. 
 
 > [!NOTE]  
 > The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. If the `DeploymentData.json` is not available, reach out to your hardware partner to retrieve it or continue with the example deploy on Microsoft Hyper-V.

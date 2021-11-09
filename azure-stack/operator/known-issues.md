@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/13/2021
+ms.date: 11/02/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -37,9 +37,15 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker range="azs-2108"
 ## Update
 
+### Update to 2108 will not proceed if there are AKS clusters created and the private preview of AKS service is installed
+
+- Applicable: This issue applies to Azure Kubernetes Service (AKS) private preview customers who plan to upgrade to 2108.
+- Remediation: The operator must delete all AKS clusters and uninstall the private preview of the AKS service.
+- Occurrence: Any stamp that has the AKS private preview installed will experience this message.
+
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-## Networking
+<!-- ## Networking -->
 
 ## Compute
 
@@ -50,13 +56,22 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Add data disks after deployment.
 - Occurrence: Common
 
+## Portal
+
+### Container Registries
+
+- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub.
+- Cause: An issue is preventing metrics from displaying when viewing a container registry in the Azure portal. The metrics are also not available in Shoebox.
+- Remediation: No remediation available, will be addressed in an upcoming hotfix.
+- Occurrence: Common
+
 <!-- ## Storage -->
 
 <!-- ## SQL and MySQL-->
 
 <!-- ## App Service -->
 
-## Usage
+<!-- ## Usage -->
 
 <!-- ### Identity -->
 
@@ -103,7 +118,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-### Load Balancer
+### Load balancer
 
 #### IPv6 button visible on "Add frontend IP address"
 
@@ -117,7 +132,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
 - Occurrence: Common
 
-## Compute
+<!-- ## Compute -->
+
+## Health and alerts
+
+[!INCLUDE [resource providers fail in test-azurestack](../includes/known-issue-alerts-aks-acs.md)]
 
 ### No alerts in Syslog pipeline
 
@@ -213,7 +232,9 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Compute
 
-### Stop-Deallocate VM results in MTU configuration removal
+### Stop or start VM
+
+#### Stop-Deallocate VM results in MTU configuration removal
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.

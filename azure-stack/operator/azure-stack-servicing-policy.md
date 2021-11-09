@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/12/2021
+ms.date: 10/14/2021
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -48,9 +48,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2108 update](./release-notes.md?preserve-view=true&view=azs-2108)
 - [Azure Stack Hub 2102 update](./release-notes.md?preserve-view=true&view=azs-2102)
 - [Azure Stack Hub 2008 update](./release-notes.md?preserve-view=true&view=azs-2008)
-- [Azure Stack Hub 2005 update](./release-notes.md?preserve-view=true&view=azs-2005)
 
 ## Hotfixes
 
@@ -72,7 +72,7 @@ You must also have an active support agreement with the hardware partner that ma
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version to receive support.
 
-For example, if the most recently available update version is 1904, and the previous two update packages were versions 1903 and 1902, both 1902 and 1903 remain in support. However, 1901 is out of support. The policy holds true when there's no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
+For example, if the most recently available update version is 2102, and the previous two update packages were versions 2005 and 2008, both 2005 and 2008 remain in support. However, 2002 is out of support. The policy holds true when there's no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get to the latest version.
 

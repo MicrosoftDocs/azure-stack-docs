@@ -1,0 +1,238 @@
+{
+    "redirections": [{
+            "source_path": "azure-stack/reference/pep-2002/close-privilegedendpoint.md",
+            "redirect_url": "/azure-stack/reference/pep/close-privilegedendpoint",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-actionstatus.md",
+            "redirect_url": "/azure-stack/reference/pep/get-actionstatus",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-azslegalnotice.md",
+            "redirect_url": "/azure-stack/reference/pep/get-azslegalnotice",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-azurestacklog.md",
+            "redirect_url": "/azure-stack/reference/pep/get-azurestacklog",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-azurestackstampinformation.md",
+            "redirect_url": "/azure-stack/reference/pep/get-azurestackstampinformation",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-azurestacksupportconfiguration.md",
+            "redirect_url": "/azure-stack/reference/pep/get-azurestacksupportconfiguration",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-cloudadminpasswordrecoverytoken.md",
+            "redirect_url": "/azure-stack/reference/pep/get-cloudadminpasswordrecoverytoken",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-cloudadminuserlist.md",
+            "redirect_url": "/azure-stack/reference/pep/get-cloudadminuserlist",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-clusterlog.md",
+            "redirect_url": "/azure-stack/reference/pep/get-clusterlog",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-graphapplication.md",
+            "redirect_url": "/azure-stack/reference/pep/get-graphapplication",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-storagejob.md",
+            "redirect_url": "/azure-stack/reference/pep/get-storagejob",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-supportsessioninfo.md",
+            "redirect_url": "/azure-stack/reference/pep/get-supportsessioninfo",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-supportsessiontoken.md",
+            "redirect_url": "/azure-stack/reference/pep/get-supportsessiontoken",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-syslogclient.md",
+            "redirect_url": "/azure-stack/reference/pep/get-syslogclient",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-syslogserver.md",
+            "redirect_url": "/azure-stack/reference/pep/get-syslogserver",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-thirdpartynotices.md",
+            "redirect_url": "/azure-stack/reference/pep/get-thirdpartynotices",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-tlspolicy.md",
+            "redirect_url": "/azure-stack/reference/pep/get-tlspolicy",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/get-virtualdisk.md",
+            "redirect_url": "/azure-stack/reference/pep/get-virtualdisk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/index.md",
+            "redirect_url": "/azure-stack/reference/pep/index",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/invoke-azurestackondemandlog.md",
+            "redirect_url": "/azure-stack/reference/pep/invoke-azurestackondemandlog",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/new-azurebridgeserviceprincipal.md",
+            "redirect_url": "/azure-stack/reference/pep/new-azurebridgeserviceprincipal",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/new-azurestackactivation.md",
+            "redirect_url": "/azure-stack/reference/pep/new-azurestackactivation",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/new-cloudadminuser.md",
+            "redirect_url": "/azure-stack/reference/pep/new-cloudadminuser",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/new-graphapplication.md",
+            "redirect_url": "/azure-stack/reference/pep/new-graphapplication",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/new-registrationtoken.md",
+            "redirect_url": "/azure-stack/reference/pep/new-registrationtoken",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/register-customadfs.md",
+            "redirect_url": "/azure-stack/reference/pep/register-customadfs",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/register-customdnsserver.md",
+            "redirect_url": "/azure-stack/reference/pep/register-customdnsserver",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/register-directoryservice.md",
+            "redirect_url": "/azure-stack/reference/pep/register-directoryservice",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/remove-azurestackactivation.md",
+            "redirect_url": "/azure-stack/reference/pep/remove-azurestackactivation",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/remove-cloudadminuser.md",
+            "redirect_url": "/azure-stack/reference/pep/remove-cloudadminuser",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/remove-graphapplication.md",
+            "redirect_url": "/azure-stack/reference/pep/remove-graphapplication",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/repair-virtualdisk.md",
+            "redirect_url": "/azure-stack/reference/pep/repair-virtualdisk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/reset-datacenterintegrationconfiguration.md",
+            "redirect_url": "/azure-stack/reference/pep/reset-datacenterintegrationconfiguration",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/send-azurestackdiagnosticlog.md",
+            "redirect_url": "/azure-stack/reference/pep/send-azurestackdiagnosticlog",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-azslegalnotice.md",
+            "redirect_url": "/azure-stack/reference/pep/set-azslegalnotice",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-cloudadminuserpassword.md",
+            "redirect_url": "/azure-stack/reference/pep/set-cloudadminuserpassword",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-graphapplication.md",
+            "redirect_url": "/azure-stack/reference/pep/set-graphapplication",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-serviceadminowner.md",
+            "redirect_url": "/azure-stack/reference/pep/set-serviceadminowner",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-syslogclient.md",
+            "redirect_url": "/azure-stack/reference/pep/set-syslogclient",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-syslogserver.md",
+            "redirect_url": "/azure-stack/reference/pep/set-syslogserver",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-telemetry.md",
+            "redirect_url": "/azure-stack/reference/pep/set-telemetry",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/set-tlspolicy.md",
+            "redirect_url": "/azure-stack/reference/pep/set-tlspolicy",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/start-azurestack.md",
+            "redirect_url": "/azure-stack/reference/pep/start-azurestack",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/start-secretrotation.md",
+            "redirect_url": "/azure-stack/reference/pep/start-secretrotation",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/stop-azurestack.md",
+            "redirect_url": "/azure-stack/reference/pep/stop-azurestack",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/test-azurestack.md",
+            "redirect_url": "/azure-stack/reference/pep/test-azurestack",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "azure-stack/reference/pep-2002/unlock-supportsession.md",
+            "redirect_url": "/azure-stack/reference/pep/unlock-supportsession",
+            "redirect_document_id": true
+        }
+    ]
+}

@@ -3,10 +3,10 @@ title: Azure Container Registries on Azure Stack Hub overview
 description: Learn about the differences between Azure and Azure Stack Hub with Azure Container Registries.
 author: mattbriggs
 ms.topic: article
-ms.date: 06/18/2021
+ms.date: 10/26/2021
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 06/18/2021
+ms.lastreviewed: 10/26/2021
 
 # Intent: As an Azure Stack user, I want to XXX so I can XXX.
 # Keyword: XXX
@@ -15,7 +15,7 @@ ms.lastreviewed: 06/18/2021
 
 # Azure Container Registries on Azure Stack Hub overview
 
-You can use the Azure Container Registry (ACR) on Azure Stack Hub provides to 
+You can use the Azure Container Registry (ACR) on Azure Stack Hub to 
 store and manage container images and artifacts. With the Public Preview release, you can 
 create and manage container registries by using the Azure Stack Hub user portal 
 or by using commands in PowerShell, Azure CLI, and the Docker CLI.
@@ -33,14 +33,14 @@ yet released into general availability.
 
 Azure Stack Hub support for ACR compared to ACR on Azure:
 
-| Feature                      | ACR in Azure | ACR in ASH Public Preview |
+| Feature                      | ACR in Azure | ACR in Azure Stack Hub Public Preview |
 |------------------------------|--------------|---------------------------|
 | Portal                       | Yes          | Yes                       |
 | Multi-tenant Hosted service  | Yes          | Yes                       |
 | Docker registry              | Yes          | Yes                       |
 | Helm support                 | Yes          | Yes                       |
 | OCI support                  | Yes          | Yes                       |
-| Identity & Access Management | Azure AD     | Azure AD/AD FS                  |
+| Identity & Access Management | Azure AD     | Azure AD/AD FS            |
 | RBAC                         | Registry     | Registry                  |
 | Remote Repository (Mirror)   | No           | No                        |
 | OSS Vulnerability Scanning   | Yes          | No                        |
@@ -56,7 +56,7 @@ Azure Stack Hub key differences for ACR compared to ACR on Azure:
 
 | Aspect | Container Registry on Azure | Container Registry and Azure Stack Hub |
 | --- | --- | --- |
-| Service Tiers (Skus) | [Registry service tiers and features - Azure Container Registry \| Microsoft Docs](https://azure/container-registry/container-registry-skus) | By default a single service tier (Sku) is available to create on Azure Stack Hub with a maximum of 100 GB of storage and 10 webhooks. Azure Stack Hub operators may customize that storage limit lower based on needs. |
+| Service Tiers (SKUs) | [Registry service tiers and features - Azure Container Registry \| Microsoft Docs](https://azure/container-registry/container-registry-skus) | By default a single service tier (SKU) is available to create on Azure Stack Hub with a maximum of 100 GB of storage and 10 webhooks. Azure Stack Hub operators may customize that storage limit lower based on needs. |
 | Login Server | `<registry-name>.azurecr.io`<br>(All lower case)<br> | `<registry-name>.azsacr.<regionname>.<fqdn>` <br> (All lower case) <br> Example: `myregistry.azsacr.azurestack.contoso.com`|
 
 ## Service tier features and limits
@@ -92,12 +92,12 @@ The following table details the features and registry limits of the Azure Stack 
 
 <sup>3.</sup> *ReadOps*, *WriteOps*, and *Bandwidth* will vary based on Azure Stack Hub configuration and user workloads.
 
-<sup>4A</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
+<sup>4.</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
 
-<sup>5A</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
+<sup>5.</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
 
 ## Supported Commands
-A subset of CLI and PowerShell commands are supported for Azure Container Registry on Azure Stack Hub. The full list is availabe here: 
+A subset of CLI and PowerShell commands are supported for Azure Container Registry on Azure Stack Hub. The full list is available here: 
 [Supported Commands](container-registry-commands.md).
 
 ## Pricing
