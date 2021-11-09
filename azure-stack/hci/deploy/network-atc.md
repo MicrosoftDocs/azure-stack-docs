@@ -80,6 +80,10 @@ The following are requirements and best practices for using Network ATC in Azure
   - Failover Clustering
   - Hyper-V
 
+```powershell
+Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+```
+
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
