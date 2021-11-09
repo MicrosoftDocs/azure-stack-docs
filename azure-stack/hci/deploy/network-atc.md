@@ -1,6 +1,6 @@
 ---
-title: Simplify host networking with Network ATC
-description: This topic covers how to simplify host networking for Azure Stack HCI.
+title: Deploy host networking with Network ATC
+description: This topic covers how to deploy host networking for Azure Stack HCI.
 author: v-dasis
 ms.topic: how-to
 ms.date: 10/19/2021
@@ -8,7 +8,7 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
-# Simplify host networking with Network ATC
+# Deploy host networking with Network ATC
 
 > Applies to: Azure Stack HCI, version 21H2
 
@@ -16,8 +16,11 @@ This article guides you through the key functions of using Network ATC, which si
 
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
 
-## Overview
+<!-- TODO on adding "this assumes you are clustered" -->
 
+## Overview
+<!-- TODO: move this and definitions to concepts page and link to it -->
+<!-- If you're looking for an introduction to network atc, including overview and definitions, go here -->
 Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
 
 Network ATC can help:
@@ -73,8 +76,9 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
-- Cluster nodes must install the following Azure Stack HCI features on each node:
 
+- Cluster nodes must install the following Azure Stack HCI features on each node:
+<!-- Pull this list out and link to the step on deploy -->
   - Network ATC
   - Data Center Bridging (DCB)
   - Failover Clustering
@@ -101,15 +105,19 @@ Typically, only a few of these cmdlets are needed. Here is a brief overview of t
 |Set-NetIntent|Modifies an existing intent|
 |Get-NetIntent|Gets a list of intents|
 |Get-NetIntentStatus|Gets the status of intents|
-|Set-NetIntentAdapter|Sets the adapters managed by an existing intent|
+|Update-NetIntentAdapter|Updates the adapters managed by an existing intent|
 |Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
 |Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
 
 You can also modify the default configuration Network ATC creates using overrides. To see a list of possible override commandlets, use the following command:
 
+<!-- TODO: add link to manage page override section -->
+
 ```powershell
 Get-Command -Noun NetIntent*Over* -Module NetworkATC
 ```
+
+<!-- TODO: change the wording of this callout because we support overrides -->
 
 > [!IMPORTANT]
 > Network ATC implements the Microsoft-tested, **Best Practice** configuration. We highly recommend that you only modify the default configuration with guidance from Microsoft Azure Stack HCI support teams.
@@ -213,6 +221,8 @@ Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterN
 ```
 
 The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
+
+<!-- TODO: Callout that yo ucan go to overrides to change defaults -->
 
 ### Default Data Center Bridging (DCB) configuration
 
