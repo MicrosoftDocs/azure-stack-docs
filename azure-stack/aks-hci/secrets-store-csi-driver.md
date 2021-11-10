@@ -21,7 +21,7 @@ With the Secrets Store CSI Driver, you can also integrate a key vault with one o
 - You need to have an existing deployment of AKS on Azure Stack HCI with an existing workload cluster. If you do not, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
 - If you are running Linux clusters, they need to be on version 1.16.0 or later.
 - If you are running Windows clusters, they need to be on version 1.18.0 or later.
-- You need have [Helm](https://helm.sh/) installed. 
+- You need to have [Helm](https://helm.sh/) installed. 
 - You need `kubectl` installed.
 - You need to have the latest version of the [Azure CLI installed](/cli/azure/install-azure-cli).
 - You need to have an Azure account and subscription.
@@ -95,7 +95,7 @@ az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyA
 
 ## Create an identity on Azure
 
-Use a Service Principal to access the Azure Key Vault instance that was created in the previous step. You should take note of the outputs when running the following commands as both the Client Secret and Client ID will be used in the next steps.
+Use a Service Principal to access the Azure Key Vault instance that was created in the previous step. You should record the outputs when running the following commands as both the Client Secret and Client ID will be used in the next steps.
 
 The following command provides the Client Secret:
 
@@ -119,7 +119,7 @@ az keyvault set-policy -n <keyvault-name> --secret-permissions get --spn <client
 
 ## Create the Kubernetes Secret with credentials
 
-To create the Kubernetes secret with the Service Principal credentials, run the following command. Replace the following values with the apprpriate Client ID and Client Secret from the previous step.
+To create the Kubernetes secret with the Service Principal credentials, run the following command. Replace the following values with the appropriate Client ID and Client Secret from the previous step.
 
 ```powershell
 kubectl create secret generic secrets-store-creds --from-literal clientid=<client-id> --from-literal clientsecret=<client-secret>
