@@ -29,22 +29,14 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > [!NOTE]
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
-## Install the Azure PowerShell and AksHci PowerShell modules
+## Install the AksHci PowerShell module
 **If you are using remote PowerShell, you must use CredSSP.**
 
-**Close all open PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
-
 ```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
 Install-Module -Name AksHci -Repository PSGallery
 ```
 
 ```powershell
-Import-Module Az.Accounts
-Import-Module Az.Resources
-Import-Module AzureAD
 Import-Module AksHci
 ```
 
