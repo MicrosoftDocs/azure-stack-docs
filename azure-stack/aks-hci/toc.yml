@@ -101,6 +101,8 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Configure a custom load balancer
+            href: configure-load-balancer.md
     - name: Manage storage
       items:
           - name: Use persistent volume
