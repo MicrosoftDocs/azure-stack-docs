@@ -16,7 +16,7 @@ This article describes known issues and errors you may encounter when running an
 
 `Install-AksHci` failed with this error because the IP pool ranges provided in the AKS on Azure Stack HCI configuration was off by one in the CIDR, and can cause CloudAgent to crash. For example, if you have subnet 10.0.0.0/21 with an address range 10.0.0.0 - 10.0.7.255, and then you use start address of 10.0.0.1 or an end address of 10.0.7.254, then this would cause CloudAgent to crash. 
 
-To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/net-akshcinetworksetting.md) and use any other valid IP address range for your VIP pool and Kubernetes node pool. Makre sure that the values you use are not off by one at the start or end the address range. 
+To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) and use any other valid IP address range for your VIP pool and Kubernetes node pool. Makre sure that the values you use are not off by one at the start or end the address range. 
 
 ## Install-AksHci failed on a multi-node installation with the error _Nodes have not reached active state_
 
