@@ -64,6 +64,8 @@ No. The service principal (SPN) is not automatically created as in Azure (no MSI
 
  - You cannot create clusters that use Windows containers in the portal.
 
+[!INCLUDE [Applications deployed to AKS clusters fail to access persistent volumes](../includes/known-issue-aks-1.md)]
+
 
 
 ## Next steps
