@@ -97,6 +97,8 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
+          - name: Az CLI commands
+            href: /cli/azure/connectedk8s?view=azure-cli-latest
     - name: Configure networking
       items:
           - name: Use proxy settings
@@ -115,6 +117,8 @@
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
+          - name: Secrets Store CSI Driver configuration
+            href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
           - name: Secure communication with certificates
