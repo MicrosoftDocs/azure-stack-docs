@@ -37,7 +37,7 @@ When purchasing network switches, contact your switch vendor and ensure that the
 > [!IMPORTANT]
 > We update this list as we're informed of changes by network switch vendors.
 
-If your switch isn't included, contact your switch vendor to ensure your switch model and switch operating system version support the requirements in the next section.
+If your switch isn't included, contact your switch vendor to ensure that your switch model and the version of the switch's operating system supports the requirements in the next section.
 
 ## Network switch requirements
 
@@ -129,7 +129,7 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 |Interface pair|Subnet|VLAN|
 |---|---|---|
-|Mgmt host vNIC|customer-specific|customer-specific|
+|Mgmt host vNIC|Customer-specific|Customer-specific|
 |SMB01|192.168.71.x/24|711|
 |SMB02|192.168.72.x/24|712|
 |SMB03|192.168.73.x/24|713|
