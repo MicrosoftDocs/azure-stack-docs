@@ -36,10 +36,6 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 Install-Module -Name AksHci -Repository PSGallery
 ```
 
-```powershell
-Import-Module AksHci
-```
-
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
   
 ```powershell
@@ -133,6 +129,9 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 ## Step 5: Start a new deployment
 
 After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin deployment, run the following command.
+
+> [!TIP]
+> To see additional status detail during installation, set `$VerbosePreference = "Continue"` before proceeding.
 
 ```powershell
 Install-AksHci
