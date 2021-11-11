@@ -69,24 +69,24 @@
       items:
           - name: Prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
+    - name: Upgrade the AKS on Azure Stack HCI host
+      items:
+          - name: Use PowerShell
+            href: update-akshci-host-powershell.md
+          - name: Use Windows Admin Center
+            href: update-akshci-host-windows-admin-center.md
+    - name: Upgrade the Kubernetes version
+      items:
+          - name: Use PowerShell
+            href: upgrade.md
+          - name: Use Windows Admin Center
+            href: upgrade-kubernetes.md
     - name: Cluster operations
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
           - name: Stop an AKS on Azure Stack HCI cluster
             href: stop-start-cluster.md
-          - name: Upgrade the Kubernetes version
-            items:
-                - name: Use PowerShell
-                  href: upgrade.md
-                - name: Use Windows Admin Center
-                  href: upgrade-kubernetes.md
-          - name: Upgrade the AKS on Azure Stack HCI host
-            items:
-                - name: Use PowerShell
-                  href: update-akshci-host-powershell.md
-                - name: Use Windows Admin Center
-                  href: update-akshci-host-windows-admin-center.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
