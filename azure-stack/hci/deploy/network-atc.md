@@ -65,7 +65,7 @@ You can also modify the default configuration Network ATC creates using override
 Get-Command -Noun NetIntent*Over* -Module NetworkATC
 ```
 
-For more information on overrides, see [Update an intent override](../manage/manage-network-atc.md#configure-an-override).
+For more information on overrides, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
 
 ## Example intents
 
@@ -168,7 +168,7 @@ Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterN
 The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
 > [!NOTE]
-> Network ATC allows you override default settings like VLANs. For examples, see [Update an intent override](../manage/manage-network-atc.md#configure-an-override).
+> Network ATC allows you override default settings like VLANs. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
 
 ### Default Data Center Bridging (DCB) configuration
 
