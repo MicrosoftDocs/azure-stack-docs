@@ -3,27 +3,27 @@ title: Setting up certificates for Azure CLI on the Azure Stack Development Kit 
 description: Learn about setting up certificates for Azure CLI on the Azure Stack Development Kit Azure Stack Development Kit.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 12/2/2020
+ms.date: 11/5/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 11/5/2021
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
 
 ---
 
-# Setting up certificates for Azure CLI on Azure Stack Development Kit
+# Setting up certificates for Azure CLI on Azure Stack Hub or Azure Stack Development Kit
 
-Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
+Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms. You can also follow these steps if you are using an integrated system Azure Stack Hub in a disconnected environment or if your certificates are not issued by a CA in the trusted roots program.
 
 This article addresses getting your certificates and trusting them on your remote management machine. To install the Azure CLI and connect to your environment, see [Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
 
 ## Prepare for Azure CLI
 
-For the ASDK, you need the CA root certificate for Azure Stack Hub to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
+You need the CA root certificate for Azure Stack Hub to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
 
- - **The Azure Stack Hub CA root certificate** is required if you're using the CLI from a workstation outside the ASDK.  
+ - **The Azure Stack Hub CA root certificate** is required if you're using the CLI from a workstation outside the the Azure Stack Hub environment. 
 
  - **The virtual machine aliases endpoint** provides an alias, like "UbuntuLTS" or "Win2012Datacenter." This alias references an image publisher, offer, SKU, and version as a single parameter when deploying VMs.  
 
@@ -31,16 +31,14 @@ The following sections describe how to get these values.
 
 ## Export the Azure Stack Hub CA root certificate
 
-To use the Azure CLI with the ASDK, export the CA root certificate.
-
-To export the ASDK root certificate in PEM format:
+Export the CA root certificate. To export the ASDK root certificate in PEM format:
 
 1. Get the name of your Azure Stack Hub Root Cert:
-    1. Sign in to the Azure Stack Hub User or Administrator portal.
-    2. Select on **Secure** near the address bar.
-    3. On the pop-up window, Select **Valid**.
-    4. On the Certificate Window, select **Certification Path** tab.
-    5. Note down the name of your Azure Stack Hub Root Cert.
+    1. Sign in to the Azure Stack Hub User or Azure Stack Hub Administrator portal.
+    2. Select the lock in the browser address bar.
+    3. In the pop-up window, select **Connection is secure**.
+    4. In the Certificate window, select the **Certification Path** tab.
+    5. Note down the name of your Azure Stack Hub Root Cert, for example, `*.<locale>.<FQDN>`
 
     ![Azure Stack Hub Root Certificate](../user/media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
@@ -49,7 +47,7 @@ To export the ASDK root certificate in PEM format:
 3. Sign in to the VM, open an elevated PowerShell prompt, and then run the following script:
 
     ```powershell  
-      $label = "<the name of your Azure Stack Hub root cert from Step 1>"
+      $label = "*.<locale>.<FQDN> from step 1"
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
       if (-not $root)
@@ -82,22 +80,54 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 ## Trust the certificate
 
-To use Azure CLI with the aSDK, you must trust the CA root certificate on your remote machine.
+To use Azure CLI with the ASDK, you must trust the CA root certificate on your remote machine.
 
 ### [Windows](#tab/win)
 
-1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
+1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. 
 
-    ```powershell  
-      python -c "import certifi; print(certifi.where())"
+2. To find the location, open a CMD prompt or an elevated PowerShell prompt and type: `az --version`. The version and python location appears in the prompt.
+
+    ```powershell
+    azure-cli                         2.30.0
+
+    core                              2.30.0
+    telemetry                          1.0.6
+
+    Python location 'C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\python.exe'
+    Extensions directory 'C:\Users\username\.azure\cliextensions'
+
+    Python (Windows) 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 13:22:56) [MSC v.1928 32 bit (Intel)]
+
+    Legal docs and information: aka.ms/AzureCliLegal
+
+    Your CLI is up-to-date.
+
+    Please let us know how we are doing: https://aka.ms/azureclihats
+    and let us know if you're interested in trying out our newest features: https://aka.ms/CLIUXstudy
     ```
 
-    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your particular path depends on your OS and the version of Python that you've installed.
+3. Change to the directory where Azure CLI has installed the Python. For example, using the location in step 2, `cd "C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
+4. Type the following command:
+
+    ```powershell  
+    .\python -c "import certifi; print(certifi.where())"
+    ```
+
+    This will return the path of the certificate location on your machine. Your particular path depends on your OS and the version of Python that you've installed. For example:
+
+    ```powershell
+    C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
+    ```
+
+    Make a note of the certificate location. You will use the path in the next step.
 
 2. Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
     ```powershell
-    $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
+    $pemFile = "<Fully qualified path to the PEM certificate exported from `
+    your Azure Stack Hub and saved. For example: C:\Users\user1\Downloads\root.pem."
+    $pythonCertStore = <result from step 4>
 
     $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $root.Import($pemFile)
@@ -120,12 +150,12 @@ To use Azure CLI with the aSDK, you must trust the CA root certificate on your r
     $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
 
     Write-Host "Adding the certificate content to Python Cert store"
-    Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
+    Add-Content $pythonCertStore $rootCertEntry
 
     Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
-For instructions on Installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
+For instructions on installing and connecting with Azure CLI see [Install Azure CLI on Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
 
 ### [Linux](#tab/lin)
 
