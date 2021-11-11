@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this tutorial, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster and learn how to see how to test and scale your application. You will also learn how to join a Windows nodes to an Active Directory domain.
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
