@@ -235,7 +235,8 @@ Update the certificate credential using PowerShell, substituting your own values
      # Create a PSSession to the PrivilegedEndpoint VM
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
-     # Create a self-signed certificate for testing purposes. 
+     # Create a self-signed certificate for testing purposes, using the New-SelfSignedCertificate cmdlet 
+     # See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
      # In production, use Get-Item to retrieve a managed certificate from the certificate store.
      # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
