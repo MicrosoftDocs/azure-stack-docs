@@ -8,7 +8,7 @@ ms.author: jeguan
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
