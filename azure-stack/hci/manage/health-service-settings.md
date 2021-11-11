@@ -2,9 +2,9 @@
 description: "Learn more about: Health Service settings"
 title: Modify Health Service settings
 manager: eldenc
-ms.author: cosdar
+ms.author: arduppal
 ms.topic: article
-author: cosmosdarwin
+author: arduppal
 ms.date: 08/13/2021
 ---
 # Modify Health Service settings

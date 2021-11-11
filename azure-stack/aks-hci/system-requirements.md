@@ -208,13 +208,11 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | msft.sts.microsoft.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
 | graph.windows.net | 443 | Used when running `Install-AksHci`. |
 | ecpacr.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
-| *.blob.core.windows.net US endpoint: wus2replica*.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.blob.core.windows.net <br> US endpoint: wus2replica&ast;.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
 | mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
-| *.azureedge.net | 443 | Required to update AKS on Azure Stack HCI. |
-| *.powershellgallery.com | 443 | Required to download AKS on Azure Stack HCI PowerShell modules. |
 
 > [!NOTE]
 > Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).

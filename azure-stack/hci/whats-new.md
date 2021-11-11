@@ -2,8 +2,8 @@
 title: What's new in Azure Stack HCI
 description: Find out what's new in Azure Stack HCI
 ms.topic: overview
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 11/02/2021

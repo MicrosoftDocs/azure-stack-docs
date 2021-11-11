@@ -117,7 +117,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-106", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
       "redirect_document_id": false
     },     
     { 
@@ -865,11 +865,6 @@
       "source_path": "azure-stack/hci/manage/azure-monitor.md", 
       "redirect_url": "/azure-stack/hci/manage/monitor-azure-portal", 
       "redirect_document_id": true
-    },
-    { 
-      "source_path": "azure-stack/hci/manage/azure-site-recovery.md", 
-      "redirect_url": "/windows-server/manage/windows-admin-center/azure/azure-site-recovery", 
-      "redirect_document_id": false
     },
     { 
       "source_path": "azure-stack/hci/manage/use-azure-backup.md", 

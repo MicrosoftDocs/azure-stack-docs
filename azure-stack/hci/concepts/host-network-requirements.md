@@ -261,8 +261,8 @@ The following assumptions are made for this example:
 Here is the example bandwidth allocation table:
 
 |NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|10 Gbps|20 Gbps|10 Gbps|70%|7 Gbps|*|*|2%|200 Mbps|
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|10 Gbps|20 Gbps|10 Gbps|70%|7 Gbps|*|*|2%|200 Mbps||
 |25 Gbps|50 Gbps|25 Gbps|70%|17.5 Gbps|29%|7.25 Gbps|1%|250 Mbps|
 |40 Gbps|80 Gbps|40 Gbps|70%|28 Gbps|29%|11.6 Gbps|1%|400 Mbps|
 |50 Gbps|100 Gbps|50 Gbps|70%|35 Gbps|29%|14.5 Gbps|1%|500 Mbps|
@@ -335,7 +335,7 @@ The following shows the details for the example stretched cluster configuration.
 #### SiteA – Stretched replication, RDMA disabled, routable between sites
 
 |Node name|vNIC name|Physical NIC (mapped)|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|-----|
 |NodeA1|Stretch1|pNIC01|173.0.0.1/8|Cross-Site Routable|
 |NodeA2|Stretch1|pNIC01|173.0.0.2/8|Cross-Site Routable|
 |NodeA1|Stretch2|pNIC02|174.0.0.1/8|Cross-Site Routable|
@@ -344,7 +344,7 @@ The following shows the details for the example stretched cluster configuration.
 #### SiteB – Stretched replication, RDMA disabled, routable between sites
 
 |Node name|vNIC name|Physical NIC (mapped)|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|-----|
 |NodeB1|Stretch1|pNIC01|175.0.0.1/8|Cross-Site Routable|
 |NodeB2|Stretch1|pNIC01|175.0.0.2/8|Cross-Site Routable|
 |NodeB1|Stretch2|pNIC02|176.0.0.1/8|Cross-Site Routable|

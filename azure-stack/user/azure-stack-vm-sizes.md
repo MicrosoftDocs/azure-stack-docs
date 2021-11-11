@@ -187,16 +187,16 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_D16_v3** | 16 | 64  | 400  | 32 /32x500 | 8 |
 | **Standard_D32_v3** | 32 | 128 | 800  | 32 /32x500 | 8 |
 
-### <a name="mo-dsn_v2"></a>DSn_v2-series
+### <a name="mo-dsn_v2"></a>DS-n_v2-series
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs |
 |---|---|---|---|---|---|
-| **Standard_D11-1_v2**  | 1  | 14   | 28   | 8 / 8x2300 | 2 |
-| **Standard_D12-1_v2**  | 1  | 28  | 56  | 16 / 16x2300 | 2 |
-| **Standard_D12-2_v2**  | 2  | 28  | 56  | 16 / 16x2300 | 2 |
-| **Standard_D13-2_v2**  | 2  | 56  | 112  | 32 / 32x2300 | 4|
-| **Standard_D13-4_v2** | 4 | 56 | 112  | 32 / 32x2300 | 8  |
-| **Standard_D14-4_v2** | 4 | 112 | 224  | 64 /64x2300 | 8 |
-| **Standard_D14-8_v2** | 8 | 112 | 224  | 64 /64x2300 | 8|
+| **Standard_DS11-1_v2**  | 1  | 14   | 28   | 8 / 8x2300 | 2 |
+| **Standard_DS12-1_v2**  | 1  | 28  | 56  | 16 / 16x2300 | 2 |
+| **Standard_DS12-2_v2**  | 2  | 28  | 56  | 16 / 16x2300 | 2 |
+| **Standard_DS13-2_v2**  | 2  | 56  | 112  | 32 / 32x2300 | 4|
+| **Standard_DS13-4_v2** | 4 | 56 | 112  | 32 / 32x2300 | 8  |
+| **Standard_DS14-4_v2** | 4 | 112 | 224  | 64 /64x2300 | 8 |
+| **Standard_DS14-8_v2** | 8 | 112 | 224  | 64 /64x2300 | 8|
 
 ### <a name="mo-dv3"></a>Ev3-series
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs  |
