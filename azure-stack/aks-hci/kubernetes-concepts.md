@@ -9,7 +9,7 @@ ms.date: 08/03/2021
 
 # Clusters and workloads for Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 Azure Kubernetes Service on Azure Stack HCI is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host with a goal to have a **simple deployment and life cycle management experience**.
 
