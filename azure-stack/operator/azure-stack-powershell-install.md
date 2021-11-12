@@ -294,6 +294,8 @@ In scenarios that require a proxy server to access the internet, you first confi
   
   You can find instructions at [Uninstall existing versions of the Azure Stack Hub PowerShell modules](#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
+[!Include[Known issue for install - five](../includes/known-issue-az-install-5-azurerm.md)]
+
 ## Next steps
 
 - [Download Azure Stack Hub tools from GitHub](azure-stack-powershell-download.md)
