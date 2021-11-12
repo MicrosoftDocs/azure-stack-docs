@@ -4,10 +4,10 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: mattbriggs
 
 ms.topic: article
-ms.date: 4/14/2020
+ms.date: 11/5/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 4/14/2020
+ms.lastreviewed: 11/5/2021
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
@@ -34,8 +34,11 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 
     ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate. For instructions on setting up certificates for installing the CLI on the ASDK, see [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
+2. Make a note of the CLI's Python location. 
 
+## Add certificate
+
+Export and then import Azure Stack Hub certificate for disconnected integrated systems and for the ASDK. For connected integrated systems, the certificate is publicly signed and this step isn't necessary. You can find instructions at [Setting up certificates for Azure CLI on Azure Stack Development Kit](../asdk/asdk-cli.md).
 ## Connect with Azure CLI
 
 ### [Azure AD on Windows](#tab/ad-win)
@@ -88,14 +91,14 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
    - Sign in as a *user*: 
 
-     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
+     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multifactor authentication enabled:
 
      ```azurecli
      az login -u "user@contoso.onmicrosoft.com" -p 'Password123!' --tenant contoso.onmicrosoft.com
      ```
 
      > [!NOTE]
-     > If your user account has multi-factor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
+     > If your user account has multifactor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
 
    - Sign in as a *service principal*: 
     
@@ -194,14 +197,14 @@ This section walks you through setting up CLI if you're using Active Directory F
 
    - Sign in as a *user*:
 
-     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
+     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multifactor authentication enabled:
 
      ```azurecli
      az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>   --profile "2020-09-01-hybrid"
      ```
 
      > [!NOTE]
-     > If your user account has multi-factor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
+     > If your user account has multifactor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
 
    - Sign in as a *service principal*: 
     
@@ -289,7 +292,7 @@ Use the following steps to connect to Azure Stack Hub:
 
    * Sign in as a *user*:
 
-     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
+     You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multifactor authentication enabled:
 
      ```azurecli
      az login \
@@ -298,7 +301,7 @@ Use the following steps to connect to Azure Stack Hub:
      ```
 
      > [!NOTE]
-     > If your user account has multi-factor authentication enabled, you can use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
+     > If your user account has multifactor authentication enabled, you can use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
    
    * Sign in as a *service principal*
     
