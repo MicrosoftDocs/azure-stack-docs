@@ -55,7 +55,7 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 
 When you create a custom virtual network, you specify the IP address space of your network and an IP address range for every subnet. Consider the following factors when you choose the address spaces and ranges to use in your Kubernetes cluster:
 -  Overlapping address spaces might result in IP address clashes or communication errors. To reduce the risk of overlapping IP addresses, choose a unique address space for your new virtual network.
--  Address spaces in the `10/8`, `172.16/12` and `192.168/16` ranges often are used for private networks, and they might be used by your existing datacenter infrastructure. If your Kubernetes applications use resources in your datacenter, reduce the risk of clashes by choosing an address space for your custom virtual network that's different from your datacenter's address space.
+-  Address spaces in the `10/8`, `172.16/12`, and `192.168/16` ranges often are used for private networks, and they might be used by your existing datacenter infrastructure. If your Kubernetes applications use resources in your datacenter, reduce the risk of clashes by choosing an address space for your custom virtual network that's different from your datacenter's address space.
 -  We recommend that you use a dedicated subnet for your Kubernetes cluster.
 -  If using multiple existing virtual networks consider using different address spaces on each network if you intend to use virtual network peering. Overlapping address spaces may impair your ability to enable peering.
 
