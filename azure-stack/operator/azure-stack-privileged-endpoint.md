@@ -4,7 +4,7 @@ description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub a
 author: mattbriggs
 
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/28/2020
@@ -44,7 +44,7 @@ You may also find the IP address in the Azure Stack Hub administrator portal. Op
 You will need set your current culture setting to `en-US` when running the privileged endpoint, otherwise cmdlets such as Test-AzureStack or Get-AzureStackLog will not work as expected.
 
 > [!NOTE]
-> For security reasons, we require that you connect to the PEP only from a hardened VM running on top of the hardware lifecycle host, or from a dedicated and secure computer, such as a [Privileged Access Workstation](/windows-server/identity/securing-privileged-access/privileged-access-workstations). The original configuration of the hardware lifecycle host must not be modified from its original configuration  (including installing new software) or used to connect to the PEP.
+> For security reasons, we require that you connect to the PEP only from a hardened VM running on top of the hardware lifecycle host, or from a dedicated and secure computer, such as a [Privileged Access Workstation](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model). The original configuration of the hardware lifecycle host must not be modified from its original configuration  (including installing new software) or used to connect to the PEP.
 
 1. Establish the trust.
 
@@ -91,7 +91,7 @@ You will need set your current culture setting to `en-US` when running the privi
 
 1. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
 
-   You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
+   You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep/index.md)
 
    Many of these cmdlets are intended only for integrated system environments (such as the cmdlets related to datacenter integration). In the ASDK, the following cmdlets have been validated:
 
@@ -146,7 +146,8 @@ To import the PEP session on your local machine, do the following steps:
       $cred = Get-Credential
       
       $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
-        -ConfigurationName PrivilegedEndpoint -Credential $cred
+        -ConfigurationName PrivilegedEndpoint -Credential $cred `
+        -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
       ```
     
       The `ComputerName` parameter can be either the IP address or the DNS name of one of the VMs that hosts the PEP.
@@ -157,7 +158,8 @@ To import the PEP session on your local machine, do the following steps:
       $cred = Get-Credential
     
       $session = New-PSSession -ComputerName azs-ercs01 `
-        -ConfigurationName PrivilegedEndpoint -Credential $cred
+        -ConfigurationName PrivilegedEndpoint -Credential $cred `
+        -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
       ```
 
    When prompted, use the following credentials:
@@ -254,5 +256,5 @@ The response token is then encrypted with the self-signed certificate contained 
 
 ## Next steps
 
-- [Azure Stack Hub diagnostic tools](./azure-stack-diagnostic-log-collection-overview.md?view=azs-2002)
-- [Azure Stack Hub privileged endpoint reference](../reference/pep-2002/index.md)
+- [Azure Stack Hub diagnostic tools](./diagnostic-log-collection.md)
+- [Azure Stack Hub privileged endpoint reference](../reference/pep/index.md)

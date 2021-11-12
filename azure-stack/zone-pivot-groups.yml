@@ -4,10 +4,18 @@ groups:
   title: Network state
   prompt: Choose a deployment connection model
   pivots:
-  - id: state-disconnected
-    title: Disconnected
   - id: state-connected
     title: Connected
+  - id: state-disconnected
+    title: Disconnected
+- id: management-tool-portal-powershell
+  title: Management tool
+  prompt: Choose a management tool
+  pivots:
+  - id: management-tool-portal
+    title: Portal
+  - id: management-tool-powershell
+    title: PowerShell    
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.

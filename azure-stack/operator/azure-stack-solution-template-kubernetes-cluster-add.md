@@ -5,7 +5,7 @@ description: Learn how to add Kubernetes to Azure Stack Hub Marketplace.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 07/24/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 03/24/2020v
@@ -55,7 +55,7 @@ Create a plan, an offer, and a subscription for the Kubernetes marketplace item.
 
 ## Create a service principal and credentials in AD FS
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
+If you use Active Directory Federated Services (AD FS) for your identity management service, you need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
 
 ## Add an Ubuntu server image
 

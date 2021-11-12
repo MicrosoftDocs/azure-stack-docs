@@ -1,11 +1,11 @@
 ---
 title: Infrastructure Backup Service reference 
 description: Reference material for the Infrastructure Backup Service in Azure Stack Hub.
-author: justinha
+author: PatAltimore
 
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: justinha
+ms.date: 08/23/2021
+ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2019
 
@@ -28,9 +28,9 @@ Exporting the backup data to an external share is required to avoid storing back
 
 Infrastructure Backup Service includes the following components:
 
- - **Infrastructure Backup Controller**  
+- **Infrastructure Backup Controller**  
  The Infrastructure Backup Controller is instantiated with and resides in every Azure Stack Hub Cloud.
- - **Backup Resource Provider**  
+- **Backup Resource Provider**  
  The Backup Resource Provider (Backup RP) is composed of the user interface and APIs exposing basic backup functionality for Azure Stack Hub infrastructure.
 
 #### Infrastructure Backup Controller
@@ -41,12 +41,11 @@ The Infrastructure Backup Controller is a Service Fabric service that gets insta
 
 The Backup Resource Provider presents a user interface in the Azure Stack Hub portal for basic configuration and listing of backup resources. Operators can do the following actions in the user interface:
 
- - Enable backup for the first time by providing external storage location, credentials, and encryption key.
- - View completed created backup resources and status resources under creation.
- - Modify the storage location where Backup Controller places backup data.
- - Modify the credentials that Backup Controller uses to access external storage location.
- - Modify the encryption key that Backup Controller uses to encrypt backups.
-
+- Enable backup for the first time by providing external storage location, credentials, and encryption key.
+- View completed created backup resources and status resources under creation.
+- Modify the storage location where Backup Controller places backup data.
+- Modify the credentials that Backup Controller uses to access external storage location.
+- Modify the encryption key that Backup Controller uses to encrypt backups.
 
 ## Backup Controller requirements
 
@@ -54,8 +53,8 @@ This section describes the important requirements for Infrastructure Backup Serv
 
 The requirements include:
 
-  - **Software requirements** - describes supported storage locations and sizing guidance. 
-  - **Network requirements** - describes network requirements for different storage locations.  
+- **Software requirements** - describes supported storage locations and sizing guidance. 
+- **Network requirements** - describes network requirements for different storage locations.  
 
 ### Software requirements
 
@@ -98,6 +97,7 @@ We recommend you back up at last two times a day and keep at most seven days of 
 | To use FQDN of file server, the name must be resolvable from the PEP.             |                                                                                                                                                                                         |
 
 #### Firewall rules
+
 Make sure to setup firewall rules to allow connectivity between ERCS VMs to the external storage location. 
 
 | Source | Target | Protocol/Port |
@@ -106,31 +106,25 @@ Make sure to setup firewall rules to allow connectivity between ERCS VMs to the 
 | ERCS VM 2        | Storage location      | 445/SMB                        |
 | ERCS VM 3        | Storage location      | 445/SMB                        |
 
-> [!Note]  
+> [!NOTE]  
 > No inbound ports need to be opened.
 
 ### Encryption Requirements
 
-Starting in 1901, the Infrastructure Backup Service will use a certificate with a public key (.CER) to encrypt backup data and a certificate with the private key (.PFX) to decrypt backup data during cloud recovery.
+The Infrastructure Backup Service will use a certificate with a public key (.CER) to encrypt backup data and a certificate with the private key (.PFX) to decrypt backup data during cloud recovery. The certificate key length must be 2048 bytes.
 
- - The certificate is used for transport of keys and isn't used to establish secure authenticated communication. For this reason, the certificate can be a self-signed certificate. Azure Stack Hub doesn't need to verify root or trust for this certificate so external internet access isn't required.
+- The certificate is used for transport of keys and isn't used to establish secure authenticated communication. For this reason, the certificate can be a self-signed certificate. Azure Stack Hub doesn't need to verify root or trust for this certificate so external internet access isn't required.
 
 The self-signed certificate comes in two parts, one with the public key and one with the private key:
 
- - Encrypt backup data: Certificate with the public key (exported to .CER file) is used to encrypt backup data.
- - Decrypt backup data: Certificate with the private key (exported to .PFX file) is used to decrypt backup data.
+- Encrypt backup data: Certificate with the public key (exported to .CER file) is used to encrypt backup data.
+- Decrypt backup data: Certificate with the private key (exported to .PFX file) is used to decrypt backup data.
 
 The certificate with the public key (.CER) isn't managed by internal secret rotation. To rotate the certificate, you need to create a new self-signed certificate and update backup settings with the new file (.CER). 
- 
- - All existing backups remain encrypted using the previous public key. New backups use the new public key.
- 
-The certificate used during cloud recovery with the private key (.PFX) is not persisted by Azure Stack Hub for security reasons. This file will need to be provided explicitly during cloud recovery.  
 
-**Backwards compatibility mode**
-Starting in 1901, encryption key support is deprecated and will be removed in a future release. If you updated from 1811 with backup already enabled using an encryption key, Azure Stack Hub will continue to use the encryption key. Backwards compatibility mode will be supported for at least three releases. After that time, a certificate will be required.
+- All existing backups remain encrypted using the previous public key. New backups use the new public key.
 
- * Updating from encryption key to certificate is a one-way operation.  
- * All existing backups will remain encrypted using the encryption key. New backups will use the certificate. 
+The certificate used during cloud recovery with the private key (.PFX) is not persisted by Azure Stack Hub for security reasons. This file will need to be provided explicitly during cloud recovery.
 
 ## Infrastructure Backup Limits
 
@@ -151,4 +145,4 @@ Consider these limits as you plan, deploy, and operate your Microsoft Azure Stac
 
 ## Next steps
 
- - To learn more about the Infrastructure Backup Service, see [Backup and data recovery for Azure Stack Hub with the Infrastructure Backup Service](azure-stack-backup-infrastructure-backup.md).
+- To learn more about the Infrastructure Backup Service, see [Backup and data recovery for Azure Stack Hub with the Infrastructure Backup Service](azure-stack-backup-infrastructure-backup.md).

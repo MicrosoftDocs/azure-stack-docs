@@ -5,7 +5,7 @@ description: Reference for resource usage APIs, which retrieve Azure Stack Hub u
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 07/21/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/14/2019
@@ -91,4 +91,4 @@ GET
 ## Next steps
 
 - [Provider resource usage API](azure-stack-provider-resource-api.md)
-- [Usage-related FAQ](azure-stack-usage-related-faq.md)
+- [Usage-related FAQ](azure-stack-usage-related-faq.yml)

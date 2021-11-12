@@ -5,7 +5,7 @@ author: yiyiguo
 ms.author: yiygu
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 1/6/2020 
+ms.date: 3/3/2020 
 zone_pivot_groups: state-connected-disconnected
 ---
 
@@ -16,6 +16,8 @@ zone_pivot_groups: state-connected-disconnected
 This article shows you how to download and install the IoT Hub resource provider, making it available to offer to customers for subscription. The installation process of IoT Hub takes about 2 hours.
 
 ## Download IoT Hub
+
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-common.md)]
 
 <!-- ### Connected Scenario -->
 ::: zone pivot="state-connected"
@@ -47,52 +49,47 @@ To download IoT Hub for a connected deployment, complete the following steps:
 
 <!-- ### Disconnected or partially connected scenario -->
 ::: zone pivot="state-disconnected"
-To download IoT Hub for a disconnected or partially connected deployment, first you download the packages to your local machine. After the download completes, you then import them into your Azure Stack Hub instance.
-
-1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected). Here you download and run the Marketplace Syndication tool, which allows you to download the IoT Hub packages.
-2. After the syndication tool's "Azure Marketplace Items" window opens, find and select "IoT Hub" to download the required packages to your local machine.
-3. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace.
+[!INCLUDE [prereqs](../includes/resource-provider-va-package-download-disconnected.md)]
 ::: zone-end
 
 ## Install IoT Hub
 
-From the **Marketplace management** page, follow these steps to install the IoT Hub package:
-
-1. Click on the **IoT Hub** row, then **Start Installation**.
+1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
+2. Click on the **IoT Hub** row, then **Start Installation**.
 
     [![IoT Hub RP waiting for install](../operator/media/iot-hub-rp-install/install1.png)](../operator/media/iot-hub-rp-install/install1.png#lightbox)
 
-2. Click on **Install Prerequisites**.
+3. Click on **Install Prerequisites**.
 
     [![IoT Hub RP install prerequisites](../operator/media/iot-hub-rp-install/install2.png)](../operator/media/iot-hub-rp-install/install2.png#lightbox)
 
-3. The status of the installation can be tracked in the notification pane. This step will take about 10 minutes.
+4. The status of the installation can be tracked in the notification pane. This step will take about 10 minutes.
 
     [![IoT Hub RP install prerequisites installing](../operator/media/iot-hub-rp-install/install3.png)](../operator/media/iot-hub-rp-install/install3.png#lightbox)
 
-4. Wait for the installation of the prerequisites to complete. This step usually takes somewhere between 5-10 minutes depending on the environment.
+5. Wait for the installation of the prerequisites to complete. This step usually takes somewhere between 5-10 minutes depending on the environment.
 
     [![IoT Hub RP prepare secrets](../operator/media/iot-hub-rp-install/install4.png)](../operator/media/iot-hub-rp-install/install4.png#lightbox)
 
-5. Click on **Add Certificates** under **Prepare Secrets**. Provide the pfx certificate created in prerequisites.
+6. Click on **Add Certificates** under **Prepare Secrets**. Provide the pfx certificate created in prerequisites.
 
     [![IoT Hub RP prepare secrets - upload certificate](../operator/media/iot-hub-rp-install/install5.png)](../operator/media/iot-hub-rp-install/install5.png#lightbox)
 
-6. Browse and provide the pfx that was created and the password (the input to the script)
+7. Browse and provide the pfx that was created and the password (the input to the script)
 
     [![IoT Hub RP prepare secrets - pick certificate](../operator/media/iot-hub-rp-install/install6.png)](../operator/media/iot-hub-rp-install/install6.png#lightbox)
 
     [![IoT Hub RP prepare secrets - provide password](../operator/media/iot-hub-rp-install/install61.png)](../operator/media/iot-hub-rp-install/install61.png#lightbox)
 
-7. Click on **Install** under **Install Resource Provider**.
+8. Click on **Install** under **Install Resource Provider**.
 
     [![IoT Hub RP prepare secrets - complete](../operator/media/iot-hub-rp-install/install7.png)](../operator/media/iot-hub-rp-install/install7.png#lightbox)
 
-8. Once the installation starts, deployment status can be found in the Marketplace or in the notification pane.
+9. Once the installation starts, deployment status can be found in the Marketplace or in the notification pane.
 
     [![IoT Hub RP install in progress](../operator/media/iot-hub-rp-install/install8.png)](../operator/media/iot-hub-rp-install/install8.png#lightbox)
 
-9. Installation can take between 90 – 120 minutes. Wait for the installation to complete.
+10. Installation can take between 90 - 120 minutes. Wait for the installation to complete.
 
     [![IoT Hub RP install complete](../operator/media/iot-hub-rp-install/install91.png)](../operator/media/iot-hub-rp-install/install91.png#lightbox)
 
@@ -100,7 +97,7 @@ From the **Marketplace management** page, follow these steps to install the IoT 
 
 The IoT Hub resource provider is installed successfully! To get started, complete the following steps:
 
-1. If necessary, follow the instruction to [create a plan, offers, and subscription](azure-stack-plan-offer-quota-overview.md).
+1. If this is the first time you're offering a service, start with the [Offer services to users](tutorial-offer-services.md) tutorial. Then continue with the next tutorial, [Test a service offering](tutorial-test-offer.md).
 
 2. If a subscription already exists, update the associated offer/plan to include **Microsoft.Devices** service. Go to **Plan** -> **Choose the plan to update** -> **Add Service and quota**.
 
@@ -110,10 +107,6 @@ The IoT Hub resource provider is installed successfully! To get started, complet
 
 4. You are all set! IoT Hubs can now be created.
 
-## Using IoT Hub
-
-To learn how to use IoT Hub, refer to the [Azure IoT Hub documentation](/azure/iot-hub).
-
 ## Next steps
 
-To learn more about managing IoT Hub on Azure Stack Hub, see [How to manage IoT Hub on Azure Stack Hub](iot-hub-rp-manage.md).
+To learn more about managing IoT Hub on Azure Stack Hub, see [How to manage IoT Hub on Azure Stack Hub](iot-hub-rp-manage.md). To learn how to use IoT Hub, refer to the [Azure IoT Hub documentation](/azure/iot-hub).

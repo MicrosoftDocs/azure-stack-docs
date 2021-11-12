@@ -2,11 +2,11 @@
 title: Manage storage infrastructure for Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to manage storage infrastructure for Azure Stack Hub. See how to monitor volumes and drives. View troubleshooting tips on adding drives to pools.
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: article
 ms.date: 10/19/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.lastreviewed: 5/4/2020
 ms.reviewer: jiaha
 
@@ -105,7 +105,7 @@ A drive in the Warning state can read and write data successfully but has an iss
 | Transient error | There was a temporary error with the drive. This error usually means the drive was unresponsive, but it could also mean that the Storage Spaces Direct protective partition was inappropriately removed from the drive. <br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
 | Abnormal latency | The drive is sometimes unresponsive and is showing signs of failure.<br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
 | Removing from pool | Azure Stack Hub is in the process of removing the drive from its storage pool.<br> <br>**Action:** Wait for Azure Stack Hub to finish removing the drive, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
-| Starting maintenance mode | Azure Stack Hub is in the process of putting the drive in maintenance mode. This state is temporary—the drive should soon be in the In maintenance mode state.<br> <br>**Action:** Wait for Azure Stack Hub to finish the process and check the status afterward. |
+| Starting maintenance mode | Azure Stack Hub is in the process of putting the drive in maintenance mode. This state is temporary--the drive should soon be in the In maintenance mode state.<br> <br>**Action:** Wait for Azure Stack Hub to finish the process and check the status afterward. |
 | In maintenance mode | The drive is in maintenance mode, halting reads and writes from the drive. This state usually means Azure Stack Hub administration tasks such as PNU or FRU are operating the drive. But the admin could also place the drive in maintenance mode.<br> <br>**Action:** Wait for Hub Azure Stack Hub to finish the administration task, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
 | Stopping maintenance mode | Azure Stack Hub is in the process of bringing the drive back online. This state is temporary - the drive should soon be in another state, ideally Healthy.<br> <br>**Action:** Wait for Azure Stack Hub to finish the process and check the status afterward. |
 
@@ -122,7 +122,7 @@ A drive in the Unhealthy state can't currently be written to or accessed.
 | Failed media | The drive failed and won't be used by Storage Spaces anymore.<br> <br>**Action:** Replace the drive as soon as possible to ensure full resiliency. |
 | Device hardware failure | There was a hardware failure on this drive. <br> <br>**Action:** Replace the drive as soon as possible to ensure full resiliency. |
 | Updating firmware | Azure Stack Hub is updating the firmware on the drive. This state is temporary and usually lasts less than a minute and during which time other drives in the pool handle all reads and writes.<br> <br>**Action:** Wait for Azure Stack Hub to finish the updating and check the status afterward. |
-| Starting | The drive is getting ready for operation. This state should be temporary—once complete, the drive should transition to a different operational state.<br> <br>**Action:** Wait for Azure Stack Hub to finish the operation and check the status afterward. |
+| Starting | The drive is getting ready for operation. This state should be temporary--once complete, the drive should transition to a different operational state.<br> <br>**Action:** Wait for Azure Stack Hub to finish the operation and check the status afterward. |
 
 ## Reasons a drive can't be pooled
 

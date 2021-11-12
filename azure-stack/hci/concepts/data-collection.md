@@ -1,21 +1,23 @@
 ---
 title: Azure Stack HCI data collection
 description: This topic describes the design and policies relevant to diagnostic data collected by Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/10/2020
+ms.date: 10/20/2021
 ---
 
 # Azure Stack HCI data collection
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected for General Availability (GA) in December 2020.
+This topic describes required data collected to keep Azure Stack HCI secure, up to date, and working as expected.
 
-The data described below is required for Microsoft to provide Azure Stack HCI. This data is collected once a day, and data collection events can be viewed in the event logs. Azure Stack HCI collects the minimum data required to keep your clusters up to date, secure, and operating properly.
+Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on additional services like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
+
+We do collect diagnostic data. The data described below is required for Microsoft to provide Azure Stack HCI. This data is collected once a day, and data collection events can be viewed in the event logs. Azure Stack HCI collects the minimum data required to keep your clusters up to date, secure, and operating properly.
 
    > [!IMPORTANT]
    > The data described below that Azure Stack HCI collects is independent from Windows diagnostic data, which can be configured for various levels of collection. In Azure Stack HCI, the default setting for Windows diagnostic data collection is Security (off), meaning that no Windows diagnostic data is sent unless the administrator changes the diagnostic data settings. For more information, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization). Microsoft is an independent controller of any Windows diagnostic data collected in connection with Azure Stack HCI. Microsoft will handle the Windows diagnostic data in accordance with the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
@@ -25,13 +27,15 @@ The data described below is required for Microsoft to provide Azure Stack HCI. T
 This Azure Stack HCI data: 
 
 - is not sent to Microsoft until the product is registered with Azure. When Azure Stack HCI is unregistered, this data collection stops.
-- is logged to the Microsoft-AzureStack-HCI/Analytic event channel. 
+- is logged to the Microsoft-AzureStack-HCI/Analytic event channel.
 - is in JSON format, so that system administrators can examine and analyze the data being sent.
 - is stored within the United States in a secure Microsoft-operated datacenter.
 
+To learn about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+
 ## Data retention
 
-Once Azure Stack HCI collects this data, it is retained for 90 days. Aggregated, de-identified data may be kept longer.
+After Azure Stack HCI collects this data, it is retained for 90 days. Aggregated, de-identified data may be kept longer.
 
 ## What data is collected?
 
@@ -55,7 +59,8 @@ Azure Stack HCI collects:
 - Information to measure/correlate reliability of the clustering components
 - Information to track the success of the Cluster Aware Updating (CAU) feature
 - Information to measure/correlate the reliability of the Disaster Recovery feature
-- Information to describe the SMB Bandwidth limits applied to Azure Stack HCI servers
+- Information to describe the SMB bandwidth limits applied to Azure Stack HCI servers
+- Information about SMB and NFS share configuration
 
 ## View this data
 

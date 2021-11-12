@@ -1,26 +1,31 @@
 ---
 title: Quickstart to create an Azure Stack HCI cluster and register it with Azure
 description: Learn how to deploy Azure Stack HCI, create a cluster using Windows Admin Center, and register it with Azure.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2020
+ms.date: 10/06/2021
 ---
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-In this quickstart, you'll learn how to deploy a two-server, single-site Azure Stack HCI cluster and register it with Azure. For multisite deployments, see [Stretched clusters overview](../concepts/stretched-clusters.md).
+In this quickstart, you'll learn how to deploy a two-server, single-site Azure Stack HCI cluster and register it with Azure. For multisite deployments, see the [Stretched clusters overview](../concepts/stretched-clusters.md).
 
 ## Before you start
 
 Before creating a cluster, do the following:
 
-* Purchase two servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
+* Purchase two servers from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
 * Create a user account that’s a member of the local Administrators group on each server.
+* Create an Active Directory domain controller on-premises, if you don't already have one.
+
+   >[!IMPORTANT]
+   > On-premises Active Directory is required. Using Azure Active Directory alone will not enable you to join the cluster to Azure Active Directory Domain Services.
+
 * [Get an Azure subscription](https://azure.microsoft.com/), if you don't already have one.
 * [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). Note that your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain.
 * Take note of the server names, domain names, IP addresses, and VLAN ID for your deployment.
@@ -29,11 +34,11 @@ Before creating a cluster, do the following:
 
 Follow these steps to create a simple two-node, single-site cluster. For more details or to create a stretched cluster, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
-1. In Windows Admin Center, under **All connections**, click **Add**.
+1. In Windows Admin Center, under **All connections**, select **Add**.
 1. In the **Add resources** panel, under **Windows Server cluster**, select **Create new**.
 1. Under **Choose cluster type**, select **Azure Stack HCI**.
 1. Under **Select server locations**, select **All servers in one site**.
-1. Click **Create**. You will now see the Create Cluster wizard. If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable it. 
+1. Select **Create**. You will now see the Create Cluster wizard. If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable it. 
 
 The Create Cluster wizard has five sections, each with several steps.
 
@@ -53,7 +58,7 @@ If you enabled the CredSSP protocol in the wizard, you'll want to disable it on 
 
 ## Set up a cluster witness
 
-Setting up a witness resource is required so that if one of the servers in the cluster goes offline, it does not cause the other node to become unavailable as well. For this quickstart, we'll use an SMB file share located on another server as a witness. You may prefer to use an Azure cloud witness, provided all server nodes in the cluster have a reliable internet connection. For more information about witness options, see [Set up a cluster witness](witness.md).
+Setting up a witness resource is required so that if one of the servers in the cluster goes offline, it does not cause the other node to become unavailable as well. For this quickstart, we'll use an SMB file share located on another server as a witness. You may prefer to use an Azure cloud witness, provided all server nodes in the cluster have a reliable internet connection. For more information about witness options, see [Set up a cluster witness](../manage/witness.md).
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
@@ -61,7 +66,7 @@ Setting up a witness resource is required so that if one of the servers in the c
 1. In the right pane, select **Witness**.
 1. For **Witness type**, select **File share witness**.
 1. Specify a file share path such as **\\servername.domain.com\Witness$** and supply credentials if needed.
-1. Click **Save**.
+1. Select **Save**.
 
 ## Register with Azure
 

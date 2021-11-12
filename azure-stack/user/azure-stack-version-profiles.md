@@ -4,9 +4,9 @@ description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 07/22/2021
 ms.author: sethm
-ms.reviewer: sijuman
+ms.reviewer: unknown
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 
@@ -44,14 +44,14 @@ This topic helps you:
 
 The newest Azure API profiles are not compatible with Azure Stack Hub. Use the following naming conventions to identify which profiles to use for your Azure Stack Hub solutions:
 
-**Latest**  
-This profile has the most up-to-date API versions found in global Azure, which do not work in Azure Stack Hub. **Latest** has the largest number of breaking changes. The profile puts aside stability and compatibility with other clouds. If you're trying to use the most up-to-date API versions, **Latest** is the profile you should use.
+**latest**  
+This profile has the most up-to-date API versions found in global Azure, which do not work in Azure Stack Hub. **latest** has the largest number of breaking changes. The profile puts aside stability and compatibility with other clouds. If you're trying to use the most up-to-date API versions, **latest** is the profile you should use.
 
 **Yyyy-mm-dd-hybrid**  
 This profile is released in March and September every year. It has optimal stability and compatibility with various clouds, and is designed to target global Azure and Azure Stack Hub. The Azure API versions listed in this profile will be the same as the ones that are listed in Azure Stack Hub. Use this profile to develop code for hybrid cloud solutions.
 
 **yyyy-mm-dd-profile**  
-This profile is released for global Azure in June and December. It does not work with Azure Stack Hub, and there will typically be many breaking changes. Although it balances optimal stability and the latest features, the difference between **Latest** and this profile is that **Latest** always consists of the newest API versions, regardless of when the API is released. For example, if a new API version is created for the Compute API tomorrow, that API version is listed in the **Latest**, but not in the **yyyy-mm-dd-profile** profile, because this profile already exists. **yyyy-mm-dd-profile** covers the most up-to-date versions released before June or before December.
+This profile is released for global Azure in June and December. It does not work with Azure Stack Hub, and there will typically be many breaking changes. Although it balances optimal stability and the latest features, the difference between **latest** and this profile is that **latest** always consists of the newest API versions, regardless of when the API is released. For example, if a new API version is created for the Compute API tomorrow, that API version is listed in the **latest**, but not in the **yyyy-mm-dd-profile** profile, because this profile already exists. **yyyy-mm-dd-profile** covers the most up-to-date versions released before June or before December.
 
 ## Azure Resource Manager API profiles
 
@@ -65,7 +65,7 @@ For example, if you use PowerShell to create a storage account using the **Micro
 
 Similarly, when using the Python SDK to build a Python-based app, you can specify the profile. The SDK loads the right modules for the resource providers that you've specified in your script.
 
-As a developer, you can focus on writing your solution. Instead of researching which API versions, resource provider, and cloud work together, you can use a profile and know that your code works across all clouds that support that profile.
+As a developer, this means you can focus on writing your solution. Instead of researching which API versions, resource provider, and cloud work together, you can use a profile and know that your code works across all clouds that support that profile.
 
 ## API profile code samples
 
@@ -74,8 +74,8 @@ You can find code samples to help you integrate your solution with your preferre
 - **.NET** <br>
 Use the .NET API profile to get the latest, most stable version of each resource type in a resource provider package. For more information, see [Use API version profiles with .NET in Azure Stack Hub](azure-stack-version-profiles-net.md).
 - **PowerShell**  
-Use the  **Az.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](azure-stack-version-profiles-powershell.md).
-Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/powershell-install-az-module.md?view=azs-2002).
+Use the  **Az.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/azure-stack-powershell-install.md).
+Use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](../operator/powershell-install-az-module.md).
 - **Azure CLI**  
 Update your environment configuration to use the Azure Stack Hub specific API version profile. For information, see [Use API version profiles for Azure CLI](azure-stack-version-profiles-azurecli2.md).
 - **Go**  

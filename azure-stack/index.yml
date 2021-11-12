@@ -10,7 +10,8 @@ metadata:
   ms.topic: hub-page
   author: BryanLa
   ms.author: bryanla
-  ms.date: 11/04/2019
+  ms.date: 08/12/2021
+  ms.custom: e2e-hybrid
 
 # highlightedContent section (optional)
 # Maximum of 8 items
@@ -32,144 +33,58 @@ productDirectory:
     imageSrc: media/index/azure-stack-hub.svg
     links:
       - url: ./operator/azure-stack-overview.md
-        text: What is Azure Stack Hub?
+        text: Azure Stack Hub overview
+      - url: ./operator/index.yml
+        text: Operator documentation
+      - url: ./user/index.yml
+        text: User documentation
+      - url: ./asdk/index.yml
+        text: ASDK documentation
+      - url: https://azure.microsoft.com/products/azure-stack/hub/
+        text: Product overview and purchasing info
   - title: Azure Stack Edge
     imageSrc: media/index/azure-stack-edge.svg
     links:
+      - url: /azure/databox-online/azure-stack-edge-gpu-overview
+        text: What is Azure Stack Edge Pro GPU?
+      - url: /azure/databox-online/azure-stack-edge-pro-r-overview
+        text: What is Azure Stack Edge Pro R?
+      - url: /azure/databox-online/azure-stack-edge-mini-r-overview
+        text: What is Azure Stack Edge Mini R?                    
       - url: /azure/databox-online/data-box-edge-overview
-        text: What is Azure Stack Edge?
+        text: What is Azure Stack Edge Pro FPGA?
+      - url: https://azure.microsoft.com/products/azure-stack/edge/
+        text: Product overview and purchasing info       
   - title: Azure Stack HCI
     imageSrc: media/index/azure-stack-hci.svg
     links:
       - url: ./hci/overview.md
         text: Azure Stack HCI overview
-
-# conceptualContent section (optional)
-conceptualContent:
-# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
-  title: Hybrid patterns and solution examples
-  summary: Use patterns and solution examples to guide you through development of hybrid solutions that span Azure and Azure Stack.
-  items:
-    # Card
-    - title: Learn about hybrid
-      links:
-        - url: /hybrid/app-solutions/overview-patterns-solution-examples
-          itemType: overview
-          text: What are patterns and solution examples?
-        - url: /hybrid/app-solutions/overview-app-design-considerations
-          itemType: concept
-          text: Hybrid app design considerations
-    - title: Explore hybrid patterns
-      links:
-        - url: /hybrid/app-solutions/pattern-cross-cloud-scale
-          itemType: architecture
-          text: Cross-cloud scaling
-        - url: /hybrid/app-solutions/pattern-cicd-pipeline
-          itemType: architecture
-          text: DevOps hybrid CI/CD
-        - url: /hybrid/app-solutions/pattern-retail-footfall-detection
-          itemType: architecture
-          text: Footfall detection (retail)
-        - url: /hybrid/app-solutions/pattern-geo-distributed
-          itemType: architecture
-          text: Geo-distributed app
-    - title: Deploy hybrid solution examples
-      links:
-        - url: /hybrid/app-solutions/solution-deployment-guide-cross-cloud-scaling
-          itemType: tutorial
-          text: Cross-cloud scaling
-        - url: https://aka.ms/hybriddevopsdeploy 
-          itemType: tutorial
-          text: DevOps hybrid CI/CD
-        - url: /hybrid/app-solutions/solution-deployment-guide-retail-footfall-detection
-          itemType: tutorial
-          text: Footfall detection (retail)
-        - url: /hybrid/app-solutions/solution-deployment-guide-geo-distributed
-          itemType: tutorial
-          text: Geo-distributed app
-
-# additionalContent section (optional)
-# Card with links style
-additionalContent:
-  # Supports up to 3 sections
-  sections:
-    - title: Azure Stack Hub
-      items:
-        # Card
-        - title: Operator
-          links:
-          - url: ./operator/azure-stack-manage-portals.md
-            text: Use the administrator portal          
-          - url: ./operator/release-notes.md
-            text: Release notes
-          - url: ./operator/azure-stack-servicing-policy.md
-            text: Azure Stack Hub servicing policy
-          - url: ./operator/azure-stack-create-service-principals.md
-            text: Use an app identity to access resources            
-        # Card
-        - title: User
-          links:
-          - url: ./user/azure-stack-quick-windows-portal.md
-            text: Deploy a VM
-          - url: ./user/azure-stack-vm-sizes.md
-            text: Supported VM sizes
-          - url: ./user/azure-stack-considerations.md
-            text: Key considerations for building apps
-          - url: ./user/azure-stack-key-vault-manage-portal.md
-            text: Create and manage a Key Vault         
-        # Card
-        - title: Azure Stack Development Kit (ASDK)
-          links:
-          - url: ./asdk/asdk-deploy-considerations.md
-            text: ASDK requirements and considerations
-          - url: ./asdk/asdk-download.md
-            text: Download and extract the ASDK 
-          - url: ./asdk/asdk-prepare-host.md
-            text: Prepare the ASDK host computer   
-    - title: Azure Stack Edge
-      items:
-        # Card
-        - title: Deploy
-          links:
-          - url: /azure/databox-online/data-box-edge-system-requirements
-            text: Review system requirements       
-          - url: /azure/databox-online/data-box-edge-limits
-            text: Understand limits
-          - url: /azure/databox-online/data-box-edge-deploy-prep
-            text: Prepare to deploy 
-          - url: /azure/databox-online/data-box-edge-deploy-install
-            text: Install    
-        # Card
-        - title: Develop
-          links:
-          - url: /azure/databox-online/data-box-edge-create-iot-edge-module
-            text: Develop an IoT Edge module (C#)  
-          - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules
-            text: IoT Edge module samples (C#)  
-    - title: Azure Stack HCI
-      items:
-        # Card
-        - title: Solutions
-          links:
-          - url: https://azure.microsoft.com/overview/azure-stack/hci/
-            text: Azure Stack HCI solutions overview
-          - url: https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog
-            text: Azure Stack HCI catalog  
-        # Card
-        - title: Manage
-          links:
-          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-            text: Windows Admin Center
-          - url: /windows-server/manage/windows-admin-center/azure
-            text: Azure Hybrid Services
-        # Card
-        - title: Foundational technologies
-          links:
-          - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
-            text: Hyper-V
-          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
-            text: Storage Spaces Direct
-          - url: /windows-server/networking/sdn
-            text: Software Defined Networking
-          - url: /windows-server/failover-clustering/failover-clustering-overview
-            text: Failover Clustering
+      - url: https://hcicatalog.azurewebsites.net
+        text: Azure Stack HCI catalog
+      - url: ./hci/deploy/deployment-quickstart.md
+        text: Create an Azure Stack HCI cluster
+      - url: ./hci/get-started.md
+        text: Use Azure Stack HCI with Windows Admin Center
+      - url: ./hci/faq.yml
+        text: Azure Stack HCI FAQ
+      - url: https://azure.microsoft.com/products/azure-stack/hci/
+        text: Product overview and purchasing info        
+  - title: Azure Kubernetes Service on Azure Stack HCI
+    imageSrc: media/index/kubernetes-services.svg
+    links:
+      - url: ./aks-hci/overview.md
+        text: AKS on Azure Stack HCI overview  
+      - url: ./aks-hci/system-requirements.md
+        text: System requirements                 
+      - url: https://azure.microsoft.com/en-us/products/azure-stack/hci/aks-download/
+        text: Register for evaluation download 
+      - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
+        text: Product overview and purchasing info
+  - title: Hybrid and multicloud resources
+    imageSrc: media/index/hybrid-icon-32.svg
+    links:
+      - url: /hybrid
+        text: Hybrid hub
+      - url: /hybrid/app-solutions/
+        text: Hybrid and multicloud patterns and solutions documentation 

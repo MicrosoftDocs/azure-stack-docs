@@ -4,9 +4,9 @@ description: Learn about Azure Stack Hub VMs.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 07/21/2021
 ms.author: sethm
-ms.reviewer: kivenkat
+ms.reviewer: unknown
 ms.lastreviewed: 01/05/2020
 
 # Intent: As an Azure Stack user, I want an introduction to virtual machines so I can see an overview of the virtual machine creation process.
@@ -98,10 +98,10 @@ There are several ways to create a VM. Your choice depends on your environment. 
 
 |Method|Article|
 |---------|---------|
-|Azure Stack Hub portal|[Create a Windows VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md).<br>[Create a Linux VM using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md).|
-|Templates|Azure Stack Hub Quickstart templates are located at:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://aka.ms/aa6z60s)|
+|Azure Stack Hub portal|[Create a Windows VM with the Azure Stack Hub portal](azure-stack-quick-windows-portal.md)<br>[Create a Linux VM using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md)|
+|Templates|[Azure Stack Hub quickstart templates](https://aka.ms/aa6z60s)|
 |PowerShell|[Create a Windows VM by using PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-windows-powershell.md)<br>[Create a Linux VM by using PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-linux-powershell.md)|
-|CLI|[Create a Windows VM by using CLI in Azure Stack Hub](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using CLI in Azure Stack Hub](azure-stack-quick-create-vm-linux-cli.md)|
+|Azure CLI|[Create a Windows VM by using Azure CLI in Azure Stack Hub](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using Azure CLI in Azure Stack Hub](azure-stack-quick-create-vm-linux-cli.md)|
 
 ## Manage your VM
 

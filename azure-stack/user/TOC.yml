@@ -9,19 +9,23 @@
 - name: Quickstarts
   expanded: true
   items:
-  - name: Create Windows VM - Portal
-    href: azure-stack-quick-windows-portal.md
-  - name: Create Windows VM - PowerShell
-    href: azure-stack-quick-create-vm-windows-powershell.md
-  - name: Create Windows VM - CLI
-    href: azure-stack-quick-create-vm-windows-cli.md
-  - name: Create Linux VM - Portal
-    href: azure-stack-quick-linux-portal.md
-  - name: Create Linux VM - PowerShell
-    href: azure-stack-quick-create-vm-linux-powershell.md
-  - name: Create Linux VM - CLI
-    href: azure-stack-quick-create-vm-linux-cli.md
-  - name: Create Event Hubs cluster - Portal
+  - name: Create a Windows VM
+    items:
+    - name: Portal
+      href: azure-stack-quick-windows-portal.md
+    - name: PowerShell
+      href: azure-stack-quick-create-vm-windows-powershell.md
+    - name: CLI
+      href: azure-stack-quick-create-vm-windows-cli.md
+  - name: Create a Linux VM
+    items:
+    - name: Portal
+      href: azure-stack-quick-linux-portal.md
+    - name: PowerShell
+      href: azure-stack-quick-create-vm-linux-powershell.md
+    - name: CLI
+      href: azure-stack-quick-create-vm-linux-cli.md
+  - name: Create an Event Hubs cluster
     href: event-hubs-quickstart-cluster-portal.md    
 - name: Tutorials
   items:
@@ -61,8 +65,10 @@
             href: azure-stack-policy-module.md
         - name: Use Azure CLI with Azure Stack Hub
           href: azure-stack-version-profiles-azurecli2.md
-        - name: Use Visual Studio Code
+        - name: Use Visual Studio Code - Azure Account
           href: azure-stack-dev-start-vscode-azure.md
+        - name: Use Visual Studio Code - Azure Storage
+          href: dev-start-vscode-storage.md
         - name: Use Visual Studio
           href: azure-stack-install-visual-studio.md
         - name: Use a Secure Shell
@@ -118,7 +124,7 @@
       - name: Use role-based access control
         href: azure-stack-manage-permissions.md
       - name: Use an app identity to access resources
-        href: ../operator/azure-stack-create-service-principals.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: ../operator/give-app-access-to-resources.md?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Use services
       items:
       - name: Compute
@@ -220,6 +226,8 @@
         items:
         - name: Overview
           href: iot-hub-overview.md
+        - name: Connect an IoT Edge device
+          href: iot-hub-connect-iot-edge-device.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
@@ -259,6 +267,12 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Enable service account token volume projection
             href: kubernetes-aks-engine-service-account.md
+          - name: Add container storage
+            href: kubernetes-aks-engine-container-storage-interface.md
+          - name: Rotate certs
+            href: kubernetes-aks-engine-rotate-certs.md
+          - name: Store secrets
+            href: aks-how-to-store-secrets.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
           - name: Use Azure Monitor for containers
@@ -299,11 +313,16 @@
         href: azure-stack-dev-start-howto-vm-python.md
       - name: Deploy a NodeJS web app 
         href: azure-stack-dev-start-howto-vm-nodejs.md
+    - name: Create GitHub action - Login
+      href: ci-cd-github-action-login-cli.md
+    - name: Create GitHub action - Web app deploy
+      href: ci-cd-github-action-webapp.md
     - name: Deploy a GPU IoT module
       href: gpu-deploy-sample-module.md
   - name: Deploy foundational patterns
-    href: deploy-foundational-patterns.md
     items:
+    - name: Deploy foundational patterns
+      href: deploy-foundational-patterns.md
     - name: Networking patterns
       items: 
       - name: Use third-party NVAs (Fortinet Fortigate NVA)
@@ -314,16 +333,6 @@
           href: azure-stack-network-howto-vnet-to-onprem.md
         - name: VNet to VNet connectivity between Azure Stack Hub instances
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
-      - name: Use RRAS
-        items:
-        - name: VNet to VNet connectivity with RRAS
-          href: azure-stack-network-howto-vnet-peering.md
-        - name: Set up multiple site-to-site VPN tunnels
-          href: network-howto-vpn-tunnel.md
-        - name: Create a VPN tunnel (GRE)
-          href: network-howto-vpn-tunnel-gre.md
-        - name: Create a VPN tunnel (IPSEC)
-          href: network-howto-vpn-tunnel-ipsec.md
     - name: F5 load balancer
       href: network-howto-f5.md
     - name: Connect to external storage

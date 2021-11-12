@@ -1,11 +1,11 @@
 ---
 title: Manage physical memory capacity in Azure Stack Hub 
 description: Learn how to monitor and manage physical memory and capacity in Azure Stack Hub.
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
 

@@ -2,13 +2,13 @@
 title: Data at Rest Encryption
 titleSuffix: Azure Stack Hub
 description: Learn how Azure Stack Hub protects your data with encryption at rest.
-author: IngridAtMicrosoft
+author: BryanLa
 
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: bryanla
 ms.reviewer: fiseraci
-ms.lastreviewed: 08/06/2020
+ms.lastreviewed: 04/21/2021
 
 # Intent: As an Azure Stack operator, I want to learn to protect my data with encryption at rest.
 # Keyword: rest encryption azure stack
@@ -18,7 +18,7 @@ ms.lastreviewed: 08/06/2020
 
 # Data at rest encryption in Azure Stack Hub
 
-Azure Stack Hub protects user and infrastructure data at the storage subsystem level using encryption at rest. By default, Azure Stack Hub's storage subsystem is encrypted using BitLocker with 128-bit AES encryption. BitLocker keys are persisted in an internal secret store. At deployment time, it is also possible to configure BitLocker to use 256-bit AES encryption.
+Azure Stack Hub protects user and infrastructure data at the storage subsystem level using encryption at rest. By default, Azure Stack Hub's storage subsystem is encrypted using BitLocker. Systems deployed before release 2002 use BitLocker with 128-bit AES encryption; systems deployed starting with 2002, or newer, use BitLocker with AES-256 bit encryption. BitLocker keys are persisted in an internal secret store. 
 
 Data at rest encryption is a common requirement for many of the major compliance standards (for example, PCI-DSS, FedRAMP, HIPAA). Azure Stack Hub enables you to meet those requirements with no extra work or configurations required. For more information on how Azure Stack Hub helps you meet compliance standards, see the [Microsoft Service Trust Portal](https://aka.ms/AzureStackCompliance).
 

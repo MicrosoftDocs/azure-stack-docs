@@ -1,19 +1,19 @@
 ---
-title: Monitor Azure Stack HCI clusters
-description: How to monitor Azure Stack HCI clusters, servers, virtual machines, drives, and volumes using Windows Admin Center and PowerShell.
-author: khdownie
-ms.author: v-kedow
+title: Monitor Azure Stack HCI clusters from Windows Admin Center
+description: How to monitor Azure Stack HCI clusters, servers, virtual machines, drives, and volumes using Windows Admin Center.
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/12/2020
+ms.date: 05/26/2021
 ---
 
-# Monitor Azure Stack HCI clusters
+# Monitor Azure Stack HCI clusters from Windows Admin Center
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
-There are three ways to monitor Azure Stack HCI clusters and its underlying components: Windows Admin Center, [Azure Monitor](azure-monitor.md), and PowerShell.
+You can monitor Azure Stack HCI clusters and its underlying components by using Windows Admin Center or PowerShell.
 
 ## Monitor using Windows Admin Center dashboard
 
@@ -113,13 +113,12 @@ To understand the health and operational states of storage pools, virtual disks,
 
 Storage Quality of Service (QoS) provides a way to centrally monitor and manage storage I/O for VMs to mitigate noisy neighbor issues and provide consistent performance. See [Storage Quality of Service](/windows-server/storage/storage-qos/storage-qos-overview).
 
-## Set up alerts in Azure Monitor
+## Monitor from Azure portal
 
-Azure Stack HCI integrates with Azure Monitor to allow users to [set up alerts](azure-monitor.md#setting-up-alerts-using-windows-admin-center) and be notified if CPU, disk capacity, and memory utilization thresholds are exceeded, if VM heartbeats are not returned, or if there is a system critical error or health service fault.
+You can [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md) and use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
 ## Next steps
 
 For related information, see also:
 
 - [Get started with Azure Stack HCI and Windows Admin Center](../get-started.md)
-- [Monitor Azure Stack HCI with Azure Monitor](azure-monitor.md)

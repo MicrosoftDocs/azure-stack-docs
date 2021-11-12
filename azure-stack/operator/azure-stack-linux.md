@@ -3,10 +3,10 @@ title: Add Linux images to the Azure Stack Hub Marketplace
 description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 9/9/2021
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 11/18/2020
+ms.lastreviewed: 9/9/2021
 
 # Intent: As an Azure Stack operator, I want to add Linux images to Azure Stack so my users can deploy Linux VMs.
 # Keyword: azure stack add linux image marketplace
@@ -21,26 +21,39 @@ You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux
 
 To download Linux images from Azure Marketplace, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md). Select the Linux images that you want to offer users on your Azure Stack Hub.
 
-There are frequent updates to these images, so check back often to keep up-to-date.
+There are frequent updates to these images, so check back often to keep up to date.
 
 ## Prepare your own image
 
-Wherever possible, download the images available through marketplace management. These images have been prepared and tested for Azure Stack Hub.
+Wherever possible, download the images available through marketplace management. These images have been prepared and tested with Azure Stack Hub.
 
-### Azure Linux Agent
+### Minimum supported Azure Linux Agent
 
-The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack Hub. Versions between 2.2.21 and 2.2.34 (inclusive) are not supported on Azure Stack Hub. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack Hub to the 1903 release (or later). Note that [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases later than 1910.
+To get support for the Azure Linux Agent and extensions in Azure Stack Hub, the [Linux Agent](https://github.com/Azure/WALinuxAgent) version on the Linux virtual machine (VM) must be later than or equal to version 2.2.10 and Azure Stack Hub must run a build that is within two releases of the current release. For information about Azure Stack Hub updates, see [Azure Stack Hub release notes](./release-notes.md).
 
-| Azure Stack Hub build | Azure Linux Agent build |
-| ------------- | ------------- |
-| 1.1901.0.99 or earlier | 2.2.20 |
-| 1.1902.0.69  | 2.2.20  |
-|  1.1901.3.105   | 2.2.35 or newer |
-| 1.1902.2.73  | 2.2.35 or newer |
-| 1.1903.0.35  | 2.2.35 or newer |
-| Builds after 1903 | 2.2.35 or newer |
-| Not supported | 2.2.21-2.2.34 |
-| Builds after 1910 | All Azure WALA agent versions|
+As of July 2020, the minimum supported version is 2.2.41 for the Linux Agent. If the Linux Agent version is earlier than version 2.2.10, you must update the VM by using the distribution package manager and by enabling auto-update.
+ - If the distribution vendor doesn't have the minimum Linux Agent version in the package repositories, the system is still in support. If the Linux Agent version is later than version 2.1.7, you must enable the Agent auto-update feature. It will retrieve the latest version of code for extension handling.
+ - If the Linux Agent version is earlier than version 2.2.10, or if the Linux system is out-of-support, we may require you to update the agent before getting support.
+ - If the Linux Agent version is customized by a publisher, Microsoft may direct you to the publisher for support agent or extension-specific support because of the customization. To upgrade the Linux Agent, see [How to update the Azure Linux Agent on a VM](/azure/virtual-machines/extensions/update-linux-agent).
+
+###  Check your Linux Agent Version
+
+To check your Linux Agent Version, run:
+
+```bash
+waagent --version
+```
+
+For example, if you are running this command on Ubuntu 18.04, you'll see the output:
+
+```bash  
+WALinuxAgent - 2.2.45
+Python - 3.6.9
+Goal State Agent - 2.2.48.1
+```
+
+For more information about the agent, see the [FAQ for WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ).
+#### Prepare your own Linux image
 
 You can prepare your own Linux image using the following instructions:
 
@@ -52,7 +65,7 @@ You can prepare your own Linux image using the following instructions:
 
 ## Cloud-init
 
-[Cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases later than 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions.
+You can use [Cloud-init](https://cloud-init.io/)  to customize your Linux VM, you can use the following PowerShell instructions.
 
 ### Step 1: Create a cloud-init.txt file with your cloud-config
 
@@ -103,9 +116,10 @@ runcmd:
 ### Step 2: Reference cloud-init.txt during the Linux VM deployment
 
 Upload the file to an Azure storage account, Azure Stack Hub storage account, or GitHub repository reachable by your Azure Stack Hub Linux VM.
-Currently, using cloud-init for VM deployment is only supported on REST, PowerShell, and CLI, and does not have an associated portal UI on Azure Stack Hub.
 
-You can follow [these instructions](../user/azure-stack-quick-create-vm-linux-powershell.md) to create the Linux VM using PowerShell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
+Currently, using cloud-init for VM deployment is only supported on REST, PowerShell, and Azure CLI, and does not have an associated portal UI on Azure Stack Hub.
+
+You can follow the [Quickstart: Create a Linux server VM by using PowerShell in Azure Stack Hub](../user/azure-stack-quick-create-vm-linux-powershell.md) to create the Linux VM using PowerShell. Make sure to reference the `cloud-init.txt` as a part of the `-CustomData` flag:
 
 ### [Az modules](#tab/az)
 
@@ -115,6 +129,7 @@ $VirtualMachine =Set-AzVMOperatingSystem -VM $VirtualMachine `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
 ```
+
 ### [AzureRM modules](#tab/azurerm)
 
 ```powershell
@@ -123,6 +138,7 @@ $VirtualMachine =Set-AzureRMVMOperatingSystem -VM $VirtualMachine `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
 ```
+
 ---
 
 ## Add your image to Marketplace

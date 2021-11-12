@@ -1,6 +1,6 @@
 ---
-title: Download marketplace items from Azure and publish to Azure Stack | Microsoft Docs
-description: Learn how to download marketplace items from Azure and publish to Azure Stack.
+title: Download marketplace items from Azure and publish to Azure Stack Hub Ruggedized | Microsoft Docs
+description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub Ruggedized.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2020
+ms.date: 10/13/2021
 ms.author: sethm
-ms.reviewer: avishwan
+ms.reviewer: thoroet
 ms.lastreviewed: 01/02/2020
 ---
 
-# Download Marketplace items to Azure Stack Hub 
+# Download Marketplace items to Azure Stack Hub Ruggedized
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 
@@ -56,7 +56,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
+   ![Screenshot that shows the 'Add from Azure' page with 'Multiple' version entries highlighted.](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
@@ -70,7 +70,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 In a disconnected environment, you cannot download marketplace items from Azure. You must use the offline syndication tool to download the marketplace items to a local drive, and then upload those items to your Azure Stack Hub from there.
 
-You can [download the offline syndication tools here](https://aka.ms/azsSyndicationtool).
+You can [download the offline syndication tools here](../../operator/azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 
 ### Download Marketplace items from Azure
 

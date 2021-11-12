@@ -1,10 +1,10 @@
 ---
 title: Configure security controls in Azure Stack Hub
 description: Learn how to configure security controls in Azure Stack Hub.
-author: IngridAtMicrosoft
+author: BryanLa
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: inhenkel
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
 
@@ -23,12 +23,12 @@ Azure Stack Hub architecture is built on two security principle pillars: assume 
 
 The Transport Layer Security (TLS) protocol is a widely adopted cryptographic protocol to establish encrypted communication over the network. TLS has evolved over time and multiple versions have been released. Azure Stack Hub infrastructure exclusively uses TLS 1.2 for all its communications. For external interfaces, Azure Stack Hub currently defaults to use TLS 1.2. However, for backwards compatibility, it also supports negotiating down to TLS 1.1. and 1.0. When a TLS client requests to communicate over TLS 1.1 or TLS 1.0, Azure Stack Hub honors the request by negotiating to a lower TLS version. If the client requests TLS 1.2, Azure Stack Hub will establish a TLS connection using TLS 1.2.
 
-Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizations and compliance standards, beginning with the 1906 update, you can now configure the TLS policy in Azure Stack Hub. You can enforce a TLS 1.2 only policy where any attempt of establishing a TLS session with a version lower than 1.2 isn't permitted and is rejected.
+Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizations and compliance standards you can now configure the TLS policy in Azure Stack Hub. You can enforce a TLS 1.2 only policy where any attempt of establishing a TLS session with a version lower than 1.2 isn't permitted and is rejected.
 
 > [!IMPORTANT]
 > Microsoft recommends using TLS 1.2 only policy for Azure Stack Hub production environments.
 
-## Get TLS policy
+### Get TLS policy
 
 Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to view the TLS policy for all Azure Stack Hub endpoints:
 
@@ -42,7 +42,7 @@ Example output:
 TLS_1.2
 ```
 
-## Set TLS policy
+### Set TLS policy
 
 Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to set the TLS policy for all Azure Stack Hub endpoints:
 
@@ -65,7 +65,7 @@ Use one of the following values to configure the permitted TLS versions for all 
 
 Updating the TLS policy takes a few minutes to complete.
 
-### Enforce TLS 1.2 configuration example
+#### Enforce TLS 1.2 configuration example
 
 This example sets your TLS policy to enforce TLS 1.2 only.
 
@@ -92,7 +92,7 @@ VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
 VERBOSE: TLS 1.2 is enforced
 ```
 
-### Allow all versions of TLS (1.2, 1.1, and 1.0) configuration example
+#### Allow all versions of TLS (1.2, 1.1, and 1.0) configuration example
 
 This example sets your TLS policy to allow all versions of TLS (1.2, 1.1, and 1.0).
 
@@ -118,6 +118,12 @@ VERBOSE:     TLS protocol TLS 1.1 enabled value: 1
 VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
 VERBOSE: TLS 1.2 is not enforced
 ```
+
+## Legal notice for PEP sessions
+
+There are scenarios where it's useful to display a legal notice, upon login to a [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) session. The [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) cmdlets are used to manage the caption and body of such legal notice text.
+
+To set the legal notice caption and text, see the [Set-AzSLegalNotice cmdlet](../reference/pep/set-azslegalnotice.md). If the legal notice caption and text have previously been set, you can review them by using the [Get-AzSLegalNotice cmdlet](../reference/pep/get-azslegalnotice.md).
 
 ## Next steps
 

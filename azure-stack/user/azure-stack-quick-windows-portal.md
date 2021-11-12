@@ -2,33 +2,35 @@
 title: Create a Windows VM with Azure Stack Hub portal 
 description: Learn how to create a Windows Server 2016 virtual machine (VM) with the Azure Stack Hub portal.
 author: mattbriggs
-
 ms.topic: quickstart
-ms.date: 10/06/2020
+ms.date: 10/4/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 10/06/2020
+ms.lastreviewed: 10/4/2021
+ms.custom: contperf-fy22q2
 
 # Intent: As an Azure Stack user, I want to quickly create a VM using the Azure Stack portal so I can begin using the VM.
 # Keyword: azure stack vm windows
 
 ---
 
-
 # Quickstart: Create a Windows server VM with the Azure Stack Hub portal
 
 Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azure Stack Hub portal.
 
 > [!NOTE]  
-> The screenshots in this article are updated to match the user interface that is introduced with Azure Stack Hub version 1808. 1808 adds support for using *managed disks* in addition to unmanaged disks. If you use an earlier version, some images, like disk selection, will be different than what is displayed in this article.  
-
+> If you are looking for instructions to create a Windows VM in global Azure rather than
+Azure Stack Hub, see [Quickstart: Create a Windows virtual machine in the Azure portal](/azure/virtual-machines/windows/quick-create-portal).
 
 ## Sign in to the Azure Stack Hub portal
 
-Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
+Sign in to the Azure Stack Hub user portal. The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
 
 * For the Azure Stack Development Kit (ASDK), go to: `https://portal.local.azurestack.external`.
 * For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
+* For more information about working with the Azure Stack Hub user portal, see [Use the Azure Stack Hub user portal](azure-stack-use-portal.md).
+
+If you have already created a VM in Azure Stack Hub, you can find best practices, the availability of sizes, and OS disks and images at [Introduction to Azure Stack Hub VMs](azure-stack-compute-overview.md).
 
 ## Create a VM
 
@@ -49,7 +51,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
     ![Create a VM - Size](./media/azure-stack-quick-windows-portal/image4a.png)
 
-1. On the **Settings** page, make any desired changes to the defaults. You must configure the desired public inbound ports from the related drop-down. When you are finished, select **OK**.
+1. On the **Settings** page, change the defaults to match your configuration. Configure the public inbound ports from the related drop-down. Then,select **OK**.
 
     ![Create a VM - Settings](./media/azure-stack-quick-windows-portal/image5a.png)
 

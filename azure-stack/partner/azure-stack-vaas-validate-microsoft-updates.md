@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to validate software updates from Microsoft with Azure Stack Hub validation as a service.
 author: mattbriggs
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 12/16/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/29/2019

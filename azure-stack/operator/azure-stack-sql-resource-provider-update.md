@@ -25,7 +25,7 @@ A new SQL resource provider might be released when Azure Stack Hub is updated to
 
 |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2008, 2005|[SQL RP version 1.1.93.0](https://aka.ms/azshsqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
+  |2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
@@ -48,6 +48,9 @@ After the *UpdateSQLProvider.ps1* script creates a new VM, the script migrates t
 * database information
 * hosting server information
 * required DNS record
+
+> [!IMPORTANT]
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
 
 ## Update script parameters
 
@@ -105,19 +108,19 @@ $tempDir = 'C:\TEMP\SQLRP'
 
 # The service admin account (this can be Azure AD or AD FS).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
-$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
 # Set the credentials for the new resource provider VM.
-$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
 # Add the cloudadmin credential required for privileged endpoint access.
-$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
 # Change the following as appropriate.
-$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$PfxPass = ConvertTo-SecureString 'P@ssw0rd1' -AsPlainText -Force
 
 # For version 1.1.47.0 or later, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.

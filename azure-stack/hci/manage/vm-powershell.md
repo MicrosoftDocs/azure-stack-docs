@@ -3,14 +3,14 @@ title: Manage VMs using Windows PowerShell - Azure Stack HCI
 description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 07/21/2020 
+ms.date: 07/19/2021 
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
 # Manage VMs on Azure Stack HCI using Windows PowerShell
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI.
 
@@ -159,7 +159,7 @@ The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed informat
 The following example creates a dynamic virtual hard disk in VHDX format that is 10 GB in size. The file name extension determines the format and the default type of dynamic is used because no type is specified.
 
 ```powershell
-New-VHD -ComputerName Server1 -Name VM1 -Path c:\Base.vhdx -SizeBytes 10GB
+Get-ClusterGroup
 ```
 
 ## Add a network adapter to a VM
@@ -207,6 +207,21 @@ The following example configures a VM named VM1 with two virtual processors, a r
 ```powershell
 Set-VMProcessor -ComputerName Server1 -Name VM1 -Count 2 -Reserve 10 -Maximum 75 -RelativeWeight 200
 ```
+
+## Remove a VM
+
+To remove or delete a VM and it's resources, first find them using the following cmdlet:
+
+```powershell
+Get-ClusterGroup
+```
+
+Then, run the following cmdlet for each VM you wish to remove from the cluster:
+
+```powershell
+Remove-ClusterGroup -RemoveResources -Name VM1
+```
+
 
 ## Next steps  
 

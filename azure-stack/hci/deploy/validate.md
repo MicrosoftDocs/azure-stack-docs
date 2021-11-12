@@ -1,23 +1,24 @@
 ---
 title: Validate an Azure Stack HCI cluster
 description: Understand cluster validation's importance, and when to run it on an existing Azure Stack HCI cluster. Explore scenarios for troubleshooting an updated server cluster.
-author: JohnCobb1
-ms.author: v-johcob
+author: jasongerend
+ms.author: jgerend
 ms.topic: article
-ms.date: 10/16/2020
+ms.date: 11/05/2021
 ---
 
 # Validate an Azure Stack HCI cluster
 
->Applies to: Azure Stack HCI, version v20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
-This how-to article focuses on why cluster validation is important, and when to run it on an existing Azure Stack HCI cluster. We recommend performing cluster validation for the following primary scenarios:
+Although the Create cluster wizard in Windows Admin Center performs certain validations to create a working cluster with the selected hardware, cluster validation performs additional checks to make sure the cluster will work in a production environment. This how-to article focuses on why cluster validation is important, and when to run it on an Azure Stack HCI cluster.
+
+We recommend performing cluster validation for the following primary scenarios:
+
 - After deploying a server cluster, run the Validate-DCB tool to test networking.
 - After updating a server cluster, depending on your scenario, run both validation options to troubleshoot cluster issues.
 - After setting up replication with Storage Replica, validate that the replication is proceeding normally by checking some specific events and running a couple commands.
 - After creating a server cluster, run the Validate-DCB tool before placing it into production.
-
-    To learn more about how to deploy an Azure Stack HCI cluster, see the [Deployment overview](deployment-overview.md).
 
 ## What is cluster validation?
 Cluster validation is intended to catch hardware or configuration problems before a cluster goes into production. Cluster validation helps to ensure that the Azure Stack HCI solution that you're about to deploy is truly dependable. You can also use cluster validation on configured failover clusters as a diagnostic tool.
@@ -45,6 +46,9 @@ This section describes scenarios in which validation is also needed or useful.
 ## Validate networking
 The Microsoft Validate-DCB tool is designed to validate the Data Center Bridging (DCB) configuration on the cluster. To do this, the tool takes an expected configuration as input, and then tests each server in the cluster. This section covers how to install and run the Validate-DCB tool, review results, and resolve networking errors that the tool identifies.
 
+> [!NOTE]
+> Microsoft recommends deploying and managing your configuration with Network ATC, which eliminates most of the configuration challenges that the Validate-DCB tool checks for. To learn more about Network ATC, which provides an intent-based approach to host network deployment, see [Simplify host networking with Network ATC](network-atc.md).
+
 On the network, remote direct memory access (RDMA) over Converged Ethernet (RoCE) requires DCB technologies to make the network fabric lossless. With iWARP, DCB is optional. However, configuring DCB can be complex, with exact configuration required across:
 - Each server in the cluster
 - Each network port that RDMA traffic passes through on the fabric
@@ -69,7 +73,7 @@ To install and run the Validate-DCB tool:
 1. After PowerShell connects to the Microsoft network to download the tool, type `Validate-DCB` and press **Enter** to start the tool wizard.
 
     > [!NOTE]
-    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the Get-ExecutionPolicy cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7).
+    > If you cannot run the Validate-DCB tool script, you might need to adjust your PowerShell execution policies. Use the Get-ExecutionPolicy cmdlet to view your current script execution policy settings. For information on setting execution policies in PowerShell, see [About Execution Policies](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7&preserve-view=true).
 
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
@@ -129,6 +133,10 @@ To learn more about resolving errors that the Validate-DCB tool identifies, see 
 
 > [!VIDEO https://www.youtube.com/embed/cC1uACvhPBs]
 
+You can also install the tool offline. For disconnected systems, use `Save-Module -Name Validate-DCB -Path c:\temp\Validate-DCB` and then move the modules in c:\temp\Validate-DCB to your disconnected system. For more information, see the following video.
+
+> [!VIDEO https://www.youtube.com/embed/T_VzGte3KJc]
+
 ## Validate the cluster
 Use the following steps to validate the servers in an existing cluster in Windows Admin Center.
 
@@ -179,7 +187,7 @@ $Cluster = Get-Cluster -Name 'server-cluster1'
 Test-Cluster -InputObject $Cluster -Verbose
 ```
 
-For more examples and usage information, see the [Test-Cluster](/powershell/module/failoverclusters/test-cluster?view=win10-ps) reference documentation.
+For more examples and usage information, see the [Test-Cluster](/powershell/module/failoverclusters/test-cluster?view=win10-ps&preserve-view=true) reference documentation.
 
 ## Validate replication for Storage Replica
 If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
@@ -244,4 +252,4 @@ Once successful data replication is confirmed between sites, you can create your
 
 ## See also
 - Performance testing against synthetic workloads in a newly created storage space using DiskSpd.exe. To learn more, see [Test Storage Spaces Performance Using Synthetic Workloads in Windows Server](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn894707(v=ws.11)).
-- Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations of Windows Server 2019. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](/services-hub/health/getting-started-windows-server).
+- Windows Server Assessment is a Premier Service available for customers who want Microsoft to review their installations. For more information, contact Microsoft Premier Support. To learn more, see [Getting Started with the Windows Server On-Demand Assessment (Server, Security, Hyper-V, Failover Cluster, IIS)](/services-hub/health/getting-started-windows-server).

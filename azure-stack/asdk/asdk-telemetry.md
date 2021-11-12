@@ -1,11 +1,11 @@
 ---
 title: Azure Stack telemetry 
 description: Learn how to configure Azure Stack telemetry settings using PowerShell.
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019
 
@@ -114,7 +114,7 @@ PARAMETER Detail:
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
-$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 Invoke-Command -Session $psSession {Set-Telemetry -Enable}
 if($psSession)
 {
@@ -127,7 +127,7 @@ if($psSession)
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
-$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 Invoke-Command -Session $psSession {Set-Telemetry -Disable}
 if($psSession)
 {

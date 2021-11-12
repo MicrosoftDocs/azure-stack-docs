@@ -1,11 +1,11 @@
 ---
 title: Enable backup for Azure Stack Hub with PowerShell 
 description: Learn how to enable the Infrastructure Backup Service with PowerShell so that Azure Stack Hub can be restored if there's a failure. 
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 04/25/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
 
@@ -42,10 +42,8 @@ In the same PowerShell session, edit the following PowerShell script by adding t
 | `$frequencyInHours` | The frequency in hours determines how often backups are created. The default value is 12. Scheduler supports a maximum of 12 and a minimum of 4.|
 | `$retentionPeriodInDays` | The retention period in days determines how many days of backups are preserved on the external location. The default value is 7. Scheduler supports a maximum of 14 and a minimum of 2. Backups older than the retention period get automatically deleted from the external location.|
 | `$encryptioncertpath` | Applies to 1901 and later. Parameter is available in Azure Stack Hub Module version 1.7 and later. The encryption certificate path specifies the file path to the .CER file with public key used for data encryption. |
-| `$encryptionkey` | Applies to build 1811 or earlier. Parameter is available in Azure Stack Hub Module version 1.6 or earlier. The encryption key is used for data encryption. Use the [New-AzsEncryptionKeyBase64](/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) cmdlet to generate a new key. |
-|     |     |
 
-### Enable backup on 1901 and later using certificate
+### Enable backup using certificate
 ```powershell
 	# Example username:
  	$username = "domain\backupadmin"
@@ -70,27 +68,8 @@ In the same PowerShell session, edit the following PowerShell script by adding t
     	-FilePath c:\certs\AzSIBCCert.cer 
 
 	# Set the backup settings with the name, password, share, and CER certificate file.
- 	Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
+ 	Set-AzsBackupConfiguration -Path $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
 ```
-### Enable backup on 1811 or earlier using certificate
-```powershell
-	# Example username:
- 	$username = "domain\backupadmin"
- 
- 	# Example share path:
- 	$sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
-
- 	$password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
-
- 	# Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
-
-	$key = New-AzsEncryptionKeyBase64
-	$Securekey = ConvertTo-SecureString -String ($key) -AsPlainText -Force
-
-	# Set the backup settings with the name, password, share, and CER certificate file.
- 	Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $Securekey
-```
-
    
 ##  Confirm backup settings
 

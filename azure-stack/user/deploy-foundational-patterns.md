@@ -4,10 +4,10 @@ description: Learn how to Deploy foundational patterns with Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/2/2020
+ms.date: 9/8/2021
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: raymondl
+ms.lastreviewed: 9/8/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -22,7 +22,7 @@ Each of these patterns contains guidance, Azure Resource Manager templates, and 
 
 ## Networking
 
-Use the networking patterns to find instructions on creating virtual network peering with Azure Stack Hub. Virtual network peering allows you to connect two virtual networks so that they appear as a single network. Site-to-site connectivity across virtual networks is accomplished through the Remote and Routing Service (RRAS). RRAS allows for Windows virtual machines (VM) to work as routers. With these scripts, you can deploy two virtual networks across resource groups in one Azure Stack Hub resource group, across subscriptions, and across two Azure Stack Hub instances. You can deploy the scripts on Azure Stack Hub and on global Azure. 
+Use the networking patterns to find instructions to connect Azure Stack Hub virtual networks with either, on-prem, Azure or other virtual networks withing the Azure Stack Hub instance. Site-to-site connectivity and load balancing solutions can be accomplished with native VPN capabilities or with 3rd party solutions.
 
 Each article addresses common consideration such as: 
 - Scale
@@ -32,12 +32,9 @@ Each article addresses common consideration such as:
 
 |  Virtual network peering  |  VPN  |  Load balancer  |
 | --- | --- | --- |
-| ![Virtual network peering with VMs](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[Virtual network peering with VMs](azure-stack-network-howto-vnet-peering.md) | ![Set up VPN to on-prem](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Setup VPN to on-prem](azure-stack-network-howto-vnet-to-onprem.md) | ![F5 load balancer](media/deploy-foundational-patterns/icon-networking-62-load-balancers.svg)<br>[F5 load balancer](network-howto-f5.md) |
-| ![Virtual network peering with FortiGate](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[Virtual network peering with FortiGate](azure-stack-network-howto-vnet-to-vnet.md) | ![Virtual Private Network](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Virtual network to virtual network connection](azure-stack-network-howto-vnet-to-vnet-stacks.md) |  |
-|  | ![Create a VPN tunnel (GRE)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Create a VPN tunnel (GRE)](network-howto-vpn-tunnel-gre.md) | |
-|  | ![Set up a multiple site-to-site VPN](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Set up a multiple site-to-site VPN](network-howto-vpn-tunnel.md) | |
-|  | ![Create a VPN tunnel (IPSEC)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Create a VPN tunnel (IPSEC)](network-howto-vpn-tunnel-ipsec.md)| |
-
+| ![Virtual network peering with VMs](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br> [Hub & Spoke Network pattern using native Azure Stack Hub virtual network peering](virtual-network-peering.md) | ![Set up VPN to on-prem](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[VPN to on-prem or Azure using Azure Stack Hub native gateways](azure-stack-vpn-gateway-about-vpn-gateways.md) | ![F5 load balancer](media/deploy-foundational-patterns/icon-networking-62-load-balancers.svg)<br>[F5 load balancer](network-howto-f5.md) |
+|  | ![Virtual Private Network](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Multi-Site Azure Stack Hub instances virtual network to virtual network connection](azure-stack-network-howto-vnet-to-vnet-stacks.md) |  |
+|  | ![Create a VPN tunnel (GRE)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg) <br>[VPN to on-prem using FortiGate NVA](azure-stack-network-howto-vnet-to-onprem.md) |  |
 
 ## Storage
 

@@ -3,10 +3,10 @@ title: Create and publish a Marketplace item in Azure Stack Hub
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 07/19/2021
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 11/16/2020
+ms.lastreviewed: 04/26/2021
 
 # Intent: As an Azure Stack operator, I want to create and publish a Marketplace items so my users can use them.
 # Keyword: create marketplace item azure stack
@@ -26,26 +26,30 @@ The examples in this article show how to create a single VM Marketplace offer, o
 
 Before creating the VM marketplace item, do the following:
 
-1. Upload the custom VM image to the Azure Stack Hub portal, following the instructions in [Add a VM image to Azure Stack Hub](azure-stack-add-vm-image.md). 
+1. Upload the custom VM image to the Azure Stack Hub portal, following the instructions in [Add a VM image to Azure Stack Hub](azure-stack-add-vm-image.md).
 2. Follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Hub Marketplace.
 
 ## Create a Marketplace item
 
 To create a custom marketplace item, do the following:
 
-1. Download the [Azure Gallery Packager tool](https://aka.ms/azsmarketplaceitem) and the sample Azure Stack Hub gallery package. This download includes custom VM templates. Extract the .zip file, and under the folder **Custom VMs**, you can use either the Linux or the Windows templates that are available. You can decide to re-use the pre-made templates and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can simply re-use the .azpkg file available and skip the following steps to customize your own gallery package.
+1. Download the [Azure Gallery Packager tool](https://aka.ms/azsmarketplaceitem):
 
-2. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/samples-tool.png" alt-text="Gallery packager":::
 
-3. The Gallery package should contain the following structure:
+2. The tool includes sample packages that are in the .azpkg format, and must be extracted first. You can rename the file extensions from ".azpkg" to ".zip," or use an archiver tool of your choice:
+
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/sample-packages.png" alt-text="Samples packages":::
+
+3. Once extracted, the .zip file contains the Linux or Windows Azure Resource Manager templates that are available. You can reuse the pre-made Resource Manager templates, and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can reuse the .azpkg file and skip the following steps to customize your own gallery package.
+
+4. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
+
+5. The Gallery package should contain the following structure:
 
    ![Screenshot of the Gallery package structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png)
 
-   The deployment templates file structure appears as follows:
-
-   ![Screenshot of the deployment templates structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png)
-
-4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-platform-image).
+6. Replace the following highlighted values (those with numbers) in the **Manifest.json** template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-platform-image).
 
    > [!NOTE]  
    > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
@@ -111,7 +115,7 @@ To create a custom marketplace item, do the following:
     - (6) - The publisher legal name.
     - (7) - The path and name for each icon.
 
-5. For all fields referring to **ms-resource**, you must change the appropriate values inside the **strings/resources.json** file:
+7. For all fields referring to **ms-resource**, you must change the appropriate values inside the **strings/resources.json** file:
 
     ```json
     {
@@ -124,23 +128,29 @@ To create a custom marketplace item, do the following:
     }
     ```
 
-6. To ensure that the resource can be deployed successfully, test the template with the [Azure Stack Hub APIs](../user/azure-stack-profiles-azure-resource-manager-versions.md).
+8. The  deployment templates file structure appears as follows:
 
-7. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack Hub](azure-stack-add-vm-image.md).
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/deployment-templates.png" alt-text="Deployment templates":::
 
-8. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
+   Replace the values for the image in the **createuidefinition.json** file with the value you provided when uploading your custom image.
 
-9. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the **small**, **medium**, **large**, and **wide** naming convention for icons. See the [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description of these sizes.
+9. To ensure that the resource can be deployed successfully, test the template with the [Azure Stack Hub APIs](../user/azure-stack-profiles-azure-resource-manager-versions.md).
+
+10. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack Hub](azure-stack-add-vm-image.md).
+
+11. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
+
+12. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the **small**, **medium**, **large**, and **wide** naming convention for icons. See the [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description of these sizes.
 
     > [!NOTE]
     > All four icon sizes (small, medium, large, wide) are required for building the Marketplace item correctly.
 
-10. For any further edits to Manifest.json, see [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
+13. For any further edits to **Manifest.json**, see [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
 
-11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGallery.exe** tool and the sample gallery package you downloaded previously. Run the following command:
+14. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGallery.exe** tool and the sample gallery package you downloaded previously. Run the following command:
 
     ```shell
-    .\AzureGallery.exe package -m c:\<path>\<gallery package name>\manifest.json -o c:\Temp
+    .\AzureStackHubGallery.exe package -m c:\<path>\<gallery package name>\manifest.json -o c:\Temp
     ```
 
     > [!NOTE]
@@ -161,7 +171,7 @@ To create a custom marketplace item, do the following:
     ```powershell
     $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
     Add-AzEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
-    Add-AzAccount -EnvironmentName "AzureStackAdmin"
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin"
     ```
 
 4. Run the following script to import the resource into your gallery:
@@ -170,6 +180,9 @@ To create a custom marketplace item, do the following:
     Add-AzsGalleryItem -GalleryItemUri `
     https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
+
+   If you run into an error when running **Add-AzsGalleryItem**, you may have two versions of the `gallery.admin` module installed. Remove all versions of the module, and install the latest version. For steps on uninstalling your PowerShell modules, see [Uninstall existing versions of the Azure Stack Hub PowerShell modules](powershell-install-az-module.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+
 
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
 
@@ -184,7 +197,7 @@ To create a custom marketplace item, do the following:
    - `https://galleryartifacts.adminhosting.[Region].[externalFQDN]/artifact/20161101/[TemplateName]/DeploymentTemplates/Template.json`
    - `https://galleryartifacts.hosting.[Region].[externalFQDN]/artifact/20161101/[TemplateName]/DeploymentTemplates/Template.json`
 
-6. You can remove a Marketplace item by using the **Remove-AzGalleryItem** cmdlet. For example:
+7. You can remove a Marketplace item by using the **Remove-AzGalleryItem** cmdlet. For example:
 
    ```powershell
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
@@ -214,6 +227,8 @@ To create a custom marketplace item, do the following:
     https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg -Verbose
     ```
 
+   If you run into an error when running **Add-AzsGalleryItem**, you may have two versions of the `gallery.admin` module installed. Remove all versions of the module, and install the latest version. For steps on uninstalling your PowerShell modules, see [Uninstall existing versions of the Azure Stack Hub PowerShell modules](azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
+
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
 
    After completing your gallery package and uploading it using **Add-AzsGalleryItem**, your custom VM should now appear on the Marketplace as well as in the **Create a resource** view. Note that the custom gallery package is not visible in **Marketplace Management**.
@@ -227,7 +242,7 @@ To create a custom marketplace item, do the following:
    - `https://galleryartifacts.adminhosting.[Region].[externalFQDN]/artifact/20161101/[TemplateName]/DeploymentTemplates/Template.json`
    - `https://galleryartifacts.hosting.[Region].[externalFQDN]/artifact/20161101/[TemplateName]/DeploymentTemplates/Template.json`
 
-6. You can remove a Marketplace item by using the **Remove-AzGalleryItem** cmdlet. For example:
+7. You can remove a Marketplace item by using the **Remove-AzGalleryItem** cmdlet. For example:
 
    ```powershell
    Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
@@ -305,7 +320,7 @@ Icons and text for Marketplace items as seen in the Azure Stack Hub portal are a
 
 ### Create blade
 
-![Create blade—Azure Stack Hub Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
+![Create blade--Azure Stack Hub Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### Marketplace item details blade
 

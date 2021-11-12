@@ -201,7 +201,8 @@
         }
       },
       "manager":"femila",
-      "ms.service": "azure-stack"
+      "ms.service": "azure-stack",
+      "recommendations": true
     },
     "fileMetadata": {
       "titleSuffix": {

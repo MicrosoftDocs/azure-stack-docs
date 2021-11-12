@@ -4,10 +4,10 @@ description: How to delete a VM (virtual machine) with dependencies on Azure Sta
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 5/20/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 12/16/2020
+ms.lastreviewed: 5/20/2021
 
 # Intent: As an Azure Stack user, I want to delete a VM with dependencies in Azure Stack Hub.
 # Keyword: virtual machine delete
@@ -16,15 +16,17 @@ ms.lastreviewed: 12/16/2020
 
 # How to delete a VM (virtual machine) with dependencies on Azure Stack Hub
 
-In this article you can find the steps to remove a VM and its dependencies in Azure Stack Hub.
+In this article, you can find the steps to remove a VM and its dependencies from Azure Stack Hub.
 
-If you remove a VM from Azure Stack Hub, the component dependencies, that is data disks, virtual network interfaces, and diagnostic containers, will remain in the resource group. These items won't be automatically deleted along with your OS disc.
+If you remove a VM from Azure Stack Hub, the component dependencies--that is data disks, virtual network interfaces, and diagnostic containers--will remain in the resource group. These items won't be automatically deleted along with your OS disc. You can follow the steps in this article to successfully remove your OS disc and component dependencies.
 
 ## Delete a VM overview
 
-When you create a new VM you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all its dependencies you can delete the resource group. The Azure Resource Manager will handle the dependencies to successfully delete them. There are times when you cannot delete the resource group to remove the VM. For example, the VM may contain resources that are not dependencies of the VM that you would like to keep.
+When you create a new VM, you typically create a new resource group and put all the dependencies in that resource group. When you want to delete the VM and all of its dependencies, you can delete the resource group. The Azure Resource Manager will successfully delete the dependencies. There are times when you cannot delete the resource group to remove the VM. For example, the VM may contain resources that are not dependencies of the VM that you would like to keep.
 
 ## Delete a VM with dependencies
+
+You can use the portal or PowerShell to remove your VM and its dependencies.
 
 ### [With the portal](#tab/portal)
 
@@ -35,11 +37,11 @@ In the case where you cannot delete the resource group, either the dependencies 
 2. Select **Virtual machines**. Find your virtual machine, and then select your machine to open the Virtual machine blade.  
 ![Delete VM with dependencies](./media/delete-vm/azure-stack-hub-delete-vm-portal.png)  
 
-3. Make a note of the resource group that contains the VM and VM dependencies.
+3. Make a note of (write down) the resource group that contains the VM and VM dependencies.
 
-4. Select **Networking** and make note of the networking interface.
+4. Select **Networking** and make a note of the networking interface.
 
-5. Select **Disks** and make note of the OS disk and data disks.
+5. Select **Disks** and make a note of the OS disk and data disks.
 
 6. Return to the **Virtual machine** blade, and select **Delete**.
 
@@ -47,16 +49,16 @@ In the case where you cannot delete the resource group, either the dependencies 
 
 7. Select **Resource groups** and then select the resource group.
 
-8. Delete the dependencies by manually selecting them and then select **Delete**.
+8. Delete the dependencies by manually selecting the items you have noted. For each item, select **Delete**.
     1. Type `yes` to confirm the delete and select **Delete**.
-    2. Wait for the resource to be completely deleted.
+    2. Wait for the resource to delete completely.
     3. You can then delete the next dependency.
 
 ### [Az modules](#tab/ps-az)
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 
-Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+Connect to your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ```powershell
 $machineName = 'VM_TO_DELETE'
@@ -90,7 +92,7 @@ $storeParams = @{
 Get-AzStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzureStorageContainer -Force
 ```
 
-Remove the the virtual network interface.
+Remove the virtual network interface.
 
 ```powershell
 $machine | Remove-AzNetworkInterface -Force
@@ -130,7 +132,7 @@ $machine | Remove-AzVM -Force
 
 In the case where you cannot delete the resource group, either the dependencies are not in the same resource group, or there are other resources, follow these steps.
 
-Connect to the your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+Connect to your Azure Stack Hub environment, and then update the following variables with your VM name and resource group. For instructions on connecting to your PowerShell session to Azure Stack Hub, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ```powershell
 $machineName = 'VM_TO_DELETE'
@@ -164,7 +166,7 @@ $storeParams = @{
 Get-AzureRmStorageAccount @storeParams | Get-AzureStorageContainer | where { $_.Name-eq $diagContainer } | Remove-AzureStorageContainer -Force
 ```
 
-Remove the the virtual network interface.
+Remove the virtual network interface.
 
 ```powershell
 $machine | Remove-AzureRmNetworkInterface -Force

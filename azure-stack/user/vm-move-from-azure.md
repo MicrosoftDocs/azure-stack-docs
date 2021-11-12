@@ -3,7 +3,7 @@ title: Move a VM from Azure to Azure Stack Hub
 description: Learn how to move a VM from Azure to Azure Stack Hub to Azure Stack Hub.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 9/8/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020
@@ -67,7 +67,7 @@ Follow the instructions in [Download a Windows VHD from Azure](/azure/virtual-ma
    logout
    ```
 
-   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](../operator/azure-stack-linux.md#azure-linux-agent). Make sure that the image on which you have run sysprep has an Azure Linux agent version that is compatible with Azure Stack Hub.
+   The Azure Linux Agent versions that work with Azure Stack Hub [are documented here](../operator/azure-stack-linux.md#minimum-supported-azure-linux-agent). Make sure that the image on which you have run sysprep has an Azure Linux agent version that is compatible with Azure Stack Hub.
 
 2. Stop deallocate the VM.
 

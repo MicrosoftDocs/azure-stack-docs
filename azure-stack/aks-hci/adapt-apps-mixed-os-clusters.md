@@ -3,7 +3,7 @@ title: Adapt applications for use in mixed-OS Kubernetes clusters
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
 author: abha
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 05/21/2021
 ms.author: abha
 ms.reviewer: 
 ---
@@ -34,32 +34,40 @@ For more information on nodeSelectors, visit [node selectors](https://kubernetes
 
 *Taints* and *tolerations* work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" to not accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
-Windows OS nodes in Azure Kubernetes Service on Azure Stack HCI can be tainted with the following key-value pair. Users shouldn't use a different one.
+Windows OS nodes in AKS on Azure Stack HCI can be tainted when created in the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
 
-```yaml
-node.kubernetes.io/os=Windows:NoSchedule
-```
-Run `kubectl get` and identify the Windows worker nodes you want to taint.
+Run the following command to create a Windows node pool with a taint if you are also creating a new cluster. If you have an existing cluster that you want to add a node pool with a taint to, go to the next example that uses the `New-AksHciNodePool` command.
 
-```
-kubectl get nodes --all-namespaces -o=custom-columns=NAME:.metadata.name,OS:.status.nodeInfo.operatingSystem
-```
-Output:
-```output
-NAME                                     OS
-my-aks-hci-cluster-control-plane-krx7j   linux
-my-aks-hci-cluster-md-md-1-5h4bl         windows
-my-aks-hci-cluster-md-md-1-5xlwz         windows
+```powershell
+New-AksHciCluster -name mycluster -nodePoolName taintnp -nodeCount 1 -osType windows -taints sku=Windows:NoSchedule
 ```
 
-Taint Windows server worker nodes using `kubectl taint node`.
+To add a tainted node pool to an existing cluster, run the following command.
 
-```
-kubectl taint node my-aks-hci-cluster-md-md-1-5h4bl node.kubernetes.io/os=Windows:NoSchedule
-kubectl taint node my-aks-hci-cluster-md-md-1-5xlwz node.kubernetes.io/os=Windows:NoSchedule
+```powershell
+New-AksHciNodePool -clusterName <cluster-name> -nodePoolNAme taintnp -count 1 -osType windows -taints sku=Windows:NoSchedule
 ```
 
-You specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the kubectl taint line above, and thus a pod with the toleration would be able to schedule onto my-aks-hci-cluster-md-md-1-5h4bl or my-aks-hci-cluster-md-md-1-5xlwz:
+Run the following command to check that the node pool was successfully deployed with the taint.
+
+```powershell
+Get-AksHciNodePool -clusterName <cluster-name> -name taintnp
+```
+
+**Example Output**
+```Output
+Status       : {Phase, Details}
+ClusterName  : mycluster
+NodePoolName : taintnp
+Version      : v1.20.7-kvapkg.1
+OsType       : Windows
+NodeCount    : 0
+VmSize       : Standard_K8S3_v1
+Phase        : Deployed
+Taints       : {sku=Windows:NoSchedule}
+```
+
+You specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the `kubectl` taint line above, and therefore, a pod with the toleration would be able to schedule onto the tainted nodes.
 
 ```yaml
 tolerations:
@@ -68,6 +76,20 @@ tolerations:
   value: Windows
   effect: NoSchedule
 ```
+
+
+The steps in this section will work well if you are in control of the pod spec that you're deploying. However, in some cases, users have a pre-existing large number of deployments for Linux containers, as well as an ecosystem of common configurations, such as community [Helm charts](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts). You won’t have access to the pod spec unless you want to download the chart and edit it. If you deploy these Helm charts to a mixed cluster environment with both Linux and Windows worker nodes, your application pods will fail with the error "ImagePullBackOff", for example:
+
+```powershell
+C:\>kubectl get pods
+NAMESPACE              NAME                                                    READY   STATUS              RESTARTS   AGE
+default                nginx-deployment-558fc78868-795dp                       0/1     ImagePullBackOff    0          6m24s
+default                nginx-deployment-6b474476c4-gpb77                       0/1     ImagePullBackOff    0          11m
+```
+
+In this instance, you should look at using [taints](https://cloud.google.com/kubernetes-engine/docs/how-to/node-taints) to help with this:
+Windows Server nodes can be tainted with the following key-value pair: node.kubernetes.io/os=windows:NoSchedule
+
 For more information on taints and tolerations, visit [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). 
 
 ## Next steps

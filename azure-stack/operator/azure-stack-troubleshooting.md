@@ -5,8 +5,8 @@ description: Learn how to troubleshoot Azure Stack Hub, including issues with VM
 author: PatAltimore
 
 ms.topic: article
-ms.date: 12/10/2020
-ms.author: v-myoung
+ms.date: 02/12/2021
+ms.author: patricka
 ms.reviewer: prchint
 ms.lastreviewed: 12/10/2020
 
@@ -30,7 +30,7 @@ These sections include links to docs that cover common questions sent to Microso
 
 ### Updates and diagnostics
 
-* [How to use diagnostics tools in Azure Stack Hub](./azure-stack-diagnostic-log-collection-overview.md)
+* [How to use diagnostics tools in Azure Stack Hub](./diagnostic-log-collection.md)
 * [How to validate Azure Stack Hub system state](azure-stack-diagnostic-test.md)
 * [Update package release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
 * [Verify and troubleshoot node status](azure-stack-node-actions.md)
@@ -107,7 +107,7 @@ If you forget the password for a Linux VM and the **Reset password** option is n
 1. Sign in to the recovery VM and run the following command:
 
    ```
-   sudo su –
+   sudo su -
    mkdir /tempmount
    fdisk -l
    mount /dev/sdc2 /tempmount /*adjust /dev/sdc2 as necessary*/
@@ -129,7 +129,7 @@ You may also take a snapshot of the original disk and create a new disk from it 
 
 - [Reset password](/azure/virtual-machines/troubleshooting/reset-password)
 - [Create a disk from a snapshot](/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-portal-linux#create-a-disk-from-the-snapshot)
-- [Changing and resetting the Root password](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/sec-terminal_menu_editing_during_boot#sec-Changing_and_Resetting_the_Root_Password)
+- [Changing and resetting the Root password](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-working_with_the_grub_2_boot_loader#sec-Changing_and_Resetting_the_Root_Password)
 
 
 ### License activation fails for Windows Server 2012 R2 during provisioning
@@ -199,11 +199,11 @@ If the Create-AADIdentityApp.ps1 script that's required for App Service fails, b
 
 The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
 
-0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./azure-stack-diagnostic-log-collection-overview.md#send-logs-proactively).
+0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and [enable proactive log collection](./diagnostic-log-collection.md#send-logs-proactively).
 
 1. Follow the remediation steps in the failure alert created when your update failed.
 
-2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md?view=azs-2002). Be sure you have [logs collected](./azure-stack-diagnostic-log-collection-overview.md#send-logs-now) for the time span when the issue occurred.
+2. If you have been unable to resolve your issue, create an [Azure Stack Hub support ticket](./azure-stack-help-and-support-overview.md). Be sure you have [logs collected](./diagnostic-log-collection.md#send-logs-now) for the time span when the issue occurred. If an update fails, either with a critical alert or a warning, it's important that you review the failure and contact Microsoft Customer Support Services as directed in the alert so that your scale unit does not stay in a failed state for a long time. Leaving a scale unit in a failed update state for an extended period of time can cause additional issues that are more difficult to resolve later.
 
 ## Common Azure Stack Hub patch and update issues
 
@@ -218,6 +218,14 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
 
 **Occurrence**: Common
+
+### Update failed: Check and Enforce external key protectors on CSVs
+
+**Applicable**: This issue applies to all supported releases.
+
+**Cause**: The baseboard management controller (BMC) password is not set correctly.
+
+**Remediation**: [Update the BMC credential](./azure-stack-rotate-secrets.md#update-the-bmc-credential) and resume the update.
 
 ### Warnings and errors reported while update is in progress
 
@@ -237,5 +245,5 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 **Cause**: When attempting the 2002 update, the update might fail and provide this message: `The private network parameter is missing from cloud parameters. Please use set-azsprivatenetwork cmdlet to set private networkTrace`.
 
 **Remediation**: 
-[Set up a private internal network](./azure-stack-network.md?view=azs-2002#private-network).
+[Set up a private internal network](./azure-stack-network.md?view=azs-2002&preserve-view=true#private-network).
 ::: moniker-end

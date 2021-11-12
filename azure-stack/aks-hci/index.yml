@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
 title: Azure Kubernetes Service on Azure Stack HCI documentation
-summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI and on Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 metadata:
   title: Azure Kubernetes Service on Azure Stack HCI documentation
-  description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is now in preview on Azure Stack HCI, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+  description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
   ms.topic: landing-page
   author: jasongerend
   ms.author: jgerend
@@ -20,9 +20,20 @@ landingContent:
             url: overview.md
       - linkListType: concept
         links:
-          - text: Kubernetes core concepts for AKS
+          - text: Clusters and workloads
             url: kubernetes-concepts.md
-            
+          - text: Networking
+            url: concepts-container-networking.md
+          - text: Security
+            url: concepts-security.md
+          - text: Storage
+            url: concepts-storage.md
+          - text: Application availability
+            url: app-availability.md
+          - text: Resource limits
+            url: concepts-support.md        
+          - text: Pricing
+            url: pricing.md    
   - title: Get started
     linkLists:
       - linkListType: deploy
@@ -31,31 +42,60 @@ landingContent:
             url: system-requirements.md
       - linkListType: quickstart
         links:
-          - text: Set up AKS with Windows Admin Center
+          - text: Deploy an AKS host and workload cluster using PowerShell
+            url: kubernetes-walkthrough-powershell.md 
+      - linkListType: quickstart
+        links: 
+          - text: Deploy AKS on Azure Stack HCI using Windows Admin Center
             url: setup.md
-          - text: Set up AKS with PowerShell
-            url: setup-powershell.md    
-          - text: Create a Kubernetes cluster with Windows Admin Center
+          - text: Create a Kubernetes cluster using Windows Admin Center
             url: create-kubernetes-cluster.md
-          - text: Create a Kubernetes cluster with PowerShell
-            url: create-kubernetes-cluster-powershell.md
-
   - title: Deploy Windows and Linux applications
     linkLists:
       - linkListType: tutorial
         links:
-          - text: Use Linux containers
-            url: deploy-linux-application.md
+          - text: Deploy .NET applications
+            url: deploy-windows-application.md
       - linkListType: how-to-guide
         links:
           - text: Adapt apps for mixed-OS Kubernetes clusters
             url: adapt-apps-mixed-os-clusters.md
-          - text: Deploy Windows applications
-            url: deploy-windows-application.md
-          - text: Prepare Windows nodes for gMSA support
+          - text: Use Active Directory single sign-in credentials
+            url: ad-sso.md
+          - text: Configure proxy settings
+            url: set-proxy-settings.md
+          - text: Configure group Managed Service Account
             url: prepare-windows-nodes-gmsa.md
           - text: Use persistent volumes
             url: persistent-volume.md
+
+  - title: Upgrade 
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use PowerShell
+            url: update-akshci-host-powershell.md
+          - text: Use Windows Admin Center
+            url: update-akshci-host-windows-admin-center.md
+
+  - title: Deploy, manage, and update applications
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: 1. Prepare an application
+            url: tutorial-kubernetes-prepare-application.md
+          - text: 2. Create container registry
+            url: tutorial-kubernetes-prepare-azure-container-registry.md
+          - text: 3. Deploy a workload cluster
+            url: tutorial-kubernetes-deploy-cluster.md
+          - text: 4. Run an application
+            url: tutorial-kubernetes-deploy-application.md
+          - text: 5. Scale an application
+            url: tutorial-kubernetes-scale.md
+          - text: 6. Update an application
+            url: tutorial-kubernetes-app-update.md
+          - text: 7. Upgrade Kubernetes cluster
+            url: tutorial-kubernetes-upgrade-cluster.md
 
   - title: Integrate with Azure
     linkLists:
@@ -63,4 +103,16 @@ landingContent:
         links:
           - text: Connect to Azure Arc for Kubernetes
             url: connect-to-arc.md
+          - text: Monitor AKS on Azure Stack HCI clusters
+            url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+          - text: Enforce threat protection using Azure Defender
+            url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
 
+  - title: Develop and debug applications with Bridge to Kubernetes
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use Bridge to Kubernetes with Visual Studio Code
+            url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
+          - text: Use Bridge to Kubernetes with Visual Studio
+            url:  /visualstudio/containers/bridge-to-kubernetes?view=vs-2019

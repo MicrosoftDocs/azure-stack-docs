@@ -4,30 +4,36 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 4/26/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 11/05/2020
+ms.lastreviewed: 4/26/2021
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
 
 ---
 
-# Add additional scale unit nodes in Azure Stack Hub
+# Add scale unit nodes in Azure Stack Hub
 
-You can increase the overall capacity of an existing scale unit by adding an additional physical computer. The physical computer is also referred to as a scale unit node. Each new scale unit node you add must be homogeneous in CPU type, memory, and disk number and size to the nodes that are already present in the scale unit. Azure Stack Hub doesn't support removing scale unit nodes for the purpose of scaling down due to architectural limitations. It is only possible to expand capacity by the addition of nodes.
+You can increase the overall capacity of an existing scale unit by adding another physical computer. The physical computer is also referred to as a *scale unit node*. Each new node must have the same CPU type, memory, disk number, and size as the nodes already present in the scale unit. Azure Stack Hub doesn't support removing scale unit nodes for scaling down because of architectural limitations. It's only possible to expand capacity by adding nodes. The maximum size of a scale unit is 4-16 nodes.
 
-To add a scale unit node, sign into  in Azure Stack Hub and run tooling from your hardware equipment manufacturer (OEM). The OEM tooling runs on the hardware lifecycle host (HLH) to make sure the new physical computer matches the same firmware level as existing nodes.
+To add a scale unit node, sign in to in Azure Stack Hub. Run the tools from your hardware equipment manufacturer (OEM). The OEM tool runs on the hardware lifecycle host (HLH) to make sure the new physical computer matches the same firmware level as existing nodes.
+
+[!INCLUDE [Add node warning](../includes/operator-add-node-warning.md)]
 
 The following flow diagram shows the general process to add a scale unit node:
 
 ![Add scale unit flow](media/azure-stack-add-scale-node/add-node-flow.svg)
 <br> *Whether your OEM hardware vendor enacts the physical server rack placement and updates the firmware varies based on your support contract.*
 
-The operation to add a new node can take several hours or days to complete. There is no impact to any running workloads on the system while an additional scale unit node is added.
+Take into consideration the following limitations when adding a new node:
+- The operation to add a new node can take several hours or days to complete. There isn't an impact to running workloads on the system while another scale unit node is added.
+- The operation to add another scale unit Node includes two distinct phases: *compute* and *storage*.
+- During the compute expansion phase, your Azure Stack Hub will show a state of **Expanding**. After the compute expansion completes, and the storage expansion is running, the stamp will show a state of **Configuring Storage**.
+Let your Azure Stack Hub return to the **Running** state before adding another node. This means when adding multiple nodes you will need to add a node and wait for the state to return to **Running** before adding the next node.
 
-> [!NOTE]  
+> [!WARNING]  
 > Don't attempt any of the following operations while an add scale unit node operation is already in progress:
 >
 >  - Update Azure Stack Hub

@@ -4,10 +4,10 @@ description: Learn Known issues using the AKS engine on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/11/2020
+ms.date: 11/1/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/11/2020
+ms.lastreviewed: 11/1/2021
 
 # Intent: Not done: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Not done: keyword noun phrase
@@ -18,11 +18,18 @@ ms.lastreviewed: 09/11/2020
 
 This topic covers known issues for the AKS engine on Azure Stack Hub.
 
+## Limit of 50 nodes per subscription
+
+- **Applicable to**: Azure Stack Hub, AKS engine (all)
+- **Description**: When creating clusters, you need to ensure that there are not more than 50 Kubernetes nodes (control plane and agent nodes) deployed per subscriptions. The total Kubernetes nodes deployed across all clusters within a single subscription shouldn't exceed 50 nodes.
+- **Remediation**: Use less then 51 nodes in your subscription.
+- **Occurrence**: When attempting to add more than 50 nodes per subscription.
+
 ## Unable to resize cluster VMs with the Compute service
 
 - **Applicable to**: Azure Stack Hub, AKS engine (all)
-- **Description**: Resizing cluster VMs through the Compute service doesn't work with AKS engine. The AKS engine maintains the state of the cluster in the API model json file. To ensure that the desired VM size is reflected in any create, update, or scale operation done with AKS engine you must update the API model before executing any of those operations. For example, if you change a VM size  on an already deployed cluster to a different size using the Compute service, the state will be lost when `aks-engine update` is executed.
-- **Remediation**: To make this work locate the API model for the cluster, change the size there, and then run `aks-engine update`.
+- **Description**: Resizing cluster VMs through the Compute service doesn't work with AKS engine. The AKS engine maintains the state of the cluster in the API model json file. To ensure that the desired VM size is reflected in any create, upgrade, or scale operation done with AKS engine you must update the API model before executing any of those operations. For example, if you change a VM size  on an already deployed cluster to a different size using the Compute service, the state will be lost when `aks-engine upgrade` is executed.
+- **Remediation**: To make this work locate the API model for the cluster, change the size there, and then run `aks-engine upgrade`.
 - **Occurrence**: When attempting to resize using the Compute service.
 
 ## Disk detach operation fails in AKS engine 0.55.0
@@ -55,10 +62,6 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
     |**kubernetes-dashboard** |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
 * Kubernetes 1.17 is not supported in this release. Although there are GitHub pull requests (PR)s referencing 1.17, it is not supported.
-
-## aks-engine get-versions command limitations
-
-The output of the **aks-engine** `get-versions` command only relates to global Azure rather than Azure Stack Hub. For more information about the various upgrade paths, see [Steps to upgrade to a newer Kubernetes version](azure-stack-kubernetes-aks-engine-upgrade.md#steps-to-upgrade-to-a-newer-kubernetes-version).
 
 ## Next steps
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Stack Hub MySQL resource provider 1.1.30.0 release notes 
 description: View the release notes to see what's new in the Azure Stack Hub MySQL resource provider 1.1.30.0 update.
 author: bryanla
@@ -8,6 +8,8 @@ ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 12/10/2019
+ms.custom: contperf-fy22q1
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to view the release notes for MySQL RP 1.1.30.0 so I can see what's new.
 # Keyword: azure stack mysql release notes 1.1.30.0

@@ -32,6 +32,9 @@ This section lists the prerequisites for both integrated system and Azure Stack 
 ### Installer and helper scripts
 
 1. Download the [App Service on Azure Stack Hub deployment helper scripts](https://aka.ms/appsvconmashelpers).
+   > [!NOTE]
+   > The deployment helper scripts require the AzureRM PowerShell module. See [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md) for installation details.
+
 2. Download the [App Service on Azure Stack Hub installer](https://aka.ms/appsvconmasinstaller).
 3. Extract the files from the helper scripts .zip file. The following files and folders are extracted:
 
@@ -56,6 +59,11 @@ To run the resource provider in production, you must provide the following certi
 - API certificate
 - Publishing certificate
 - Identity certificate
+
+In addition to specific requirements listed in the following sections, you'll also use a tool later to test for general requirements. See [Validate Azure Stack Hub PKI certificates](azure-stack-validate-pki-certs.md) for the complete list of validations, including:
+- **File format** of .PFX
+- **Key usage** set to server and client authentication
+- and several others
 
 #### Default domain certificate
 
@@ -111,6 +119,9 @@ Azure App Service requires the use of a file server. For production deployments,
 #### Quickstart template for Highly Available file server and SQL Server
 
 A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available that will deploy a file server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack Hub.
+
+>[!IMPORTANT]
+> This template is offered as a reference or example of how you can deploy the prerequisites. Because the Azure Stack Hub Operator manages these servers, especially in production environments, you should configure the template as needed or required by your organization.
 
 > [!NOTE]
 > The integrated system instance must be able to download resources from GitHub in order to complete the deployment.
@@ -376,7 +387,7 @@ Depending on which identity provider the Azure Stack Hub is using, Azure Active 
 Follow these steps to create the service principal in your Azure AD tenant:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
-1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
+1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md#installer-and-helper-scripts).
 1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 1. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
 1. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
@@ -408,7 +419,7 @@ Follow these steps to create the service principal in your Azure AD tenant:
 #### Create an ADFS app
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
-1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
+1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md#installer-and-helper-scripts).
 1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 1. Run the **Create-ADFSIdentityApp.ps1** script.
 1. In the **Credential** window, enter your AD FS cloud admin account and password. Select **OK**.

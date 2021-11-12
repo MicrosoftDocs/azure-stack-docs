@@ -4,7 +4,7 @@ description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/11/2020
+ms.date: 07/22/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2020
@@ -21,19 +21,15 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 ## Install Visual Studio
 
-1. Download and run the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).  
+1. [Install Visual Studio Community 2019](https://visualstudio.microsoft.com/), or one of the trial versions.  
 
-2. Open the **Microsoft Web Platform Installer**.
+2. Uninstall the **Microsoft Azure PowerShell** that's installed as part of the Azure SDK.
 
-3. Search for **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6**. Click **Add**, and then **Install**.
+    ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/uninstall-powershell.png)
 
-4. Uninstall the **Microsoft Azure PowerShell** that's installed as part of the Azure SDK.
+3. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
 
-    ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png)
-
-5. [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
-
-6. Restart the computer after the installation completes.
+4. Restart the computer after the installation completes.
 
 ## Connect to Azure Stack Hub with Azure AD
 
@@ -43,7 +39,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 3. Select **Manage Accounts**, then in the new pane, sign in with your Azure Active Directory (Azure AD) credentials.  
 
-    ![Screenshot thas shows Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image2.png)
+    ![Screenshot thas shows Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/sign-in-visual-studio.png)
 
 Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  
 
@@ -55,21 +51,17 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
 3. Expand **Environment** in the navigation pane and select **Accounts**.
 
-4. Select **Add**, and enter the User Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`.  For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
+4. Select **Add**, and enter the user Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`. For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
 
-    ![Add new Azure Cloud discovery endpoint](./media/azure-stack-install-visual-studio/image5.png)
+    ![Add new Azure Cloud discovery endpoint](./media/azure-stack-install-visual-studio/add-cloud.png)
 
-5. Select **Add**.  
-
-    Visual Studio calls Azure Resource Manger and discovers the endpoints, including the authentication endpoint, for Azure Directory Federated Services (AD FS).
-
-    ![Screenshot that shows the endpoints for Azure Directory Federated Services.](./media/azure-stack-install-visual-studio/image6.png)
+5. Select **Add**. Visual Studio calls Azure Resource Manger and discovers the endpoints, including the authentication endpoint, for Azure Directory Federated Services (AD FS). Azure Stack Hub now appears in the list of registered clouds.
 
 6. Select **Cloud Explorer** from the **View** menu.
 
-7. Select **Add Account** and sign in with your AD FS credentials.  
+7. Select **Manage Accounts** and sign in with your AD FS credentials.  
 
-    ![Sign in to Visual Studio in Cloud Explorer](./media/azure-stack-install-visual-studio/image7.png)
+    ![Sign in to Visual Studio in Cloud Explorer](./media/azure-stack-install-visual-studio/sign-in-visual-studio.png)
 
     Cloud Explorer queries the available subscriptions. You can select an available subscription to manage.
 

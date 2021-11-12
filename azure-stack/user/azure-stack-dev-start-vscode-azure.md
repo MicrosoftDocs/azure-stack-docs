@@ -3,54 +3,87 @@ title: Connect to Azure Stack Hub using Azure Account Extension in Visual Studio
 description: As a developer, connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code
 author: mattbriggs
 
-ms.topic: conceptual
-ms.date: 12/2/2020
+ms.topic: how-to
+ms.date: 8/27/2021
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: raymondl
+ms.lastreviewed: 8/27/2021
 
 # Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.
 # Keyword: VS code Azure account extension
 
 ---
 
-
 # Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code
 
-In this article, we will walk you through how to connect to Azure Stack Hub using the Azure Account extension. You will need to update your Visual Studio Code (VS Code) settings.
+In this article, we will walk you through how to connect to Azure Stack Hub using the Azure Account extension. You can use Azure directly from Visual Studio Code through extensions.  You will need to update your Visual Studio Code (VS Code) settings.
 
-VS Code is a light-weight editor for building and debug web and cloud applications. ASP.NET Core, Python, NodeJS, Go, and other developers use VS Code. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for additional Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack Hub subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. You can sign in to Azure Stack Hub, select your subscription, and open a new command line in a cloud shell. 
+VS Code is a light-weight editor for building and debug web and cloud applications. ASP.NET Core, Python, NodeJS, Go, and other developers use VS Code. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for other Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack Hub subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. You can sign in to Azure Stack Hub, select your subscription, and open a new command line in a Cloud Shell. 
 
 > [!NOTE]  
-> You can use the steps in this article for an Active Directory Federated Services (AD FS) environment. Use your AD FS credentials and endpoints.
+> You can use the steps in this article for an Active Directory Federated Services (AD FS)
+ environment. Use your AD FS credentials and endpoints.
 
-## Pre-requisites for the Azure Account Extension
+## Visual Studio Code and Azure Stack Hub
 
-1. Azure Stack Hub environment 1904 build or later
-2. [Visual Studio Code](https://code.visualstudio.com/)
-3. [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account)
-4. [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
+In addition to the Azure Account extension for Visual Studio, a number of other Azure extensions are supported for use with Azure Stack Hub and Visual Studio Code. These include:
+ - [Visual Studio Code Azure Storage extension](dev-start-vscode-storage.md)
+ - [Visual Studio Code Azure Resources extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups)
+ - [Visual Studio Code Azure Virtual Machines extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurevirtualmachines)
 
-## Steps to connect to Azure Stack Hub
+## Pre-requisites for Azure Account Extension
 
-1. Run the **Identity** script from Azure Stack Hub Tools in GitHub.
+- An Azure Stack Hub environment.
+- [Visual Studio Code](https://code.visualstudio.com/).
+- [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account).
+- [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
+    and credentials with access to Azure Stack Hub.
+- An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
+    instructions see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&view=azs-2008).
 
-    - Before you run the script, you will need to have PowerShell installed and configured for your environment. For instructions see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md).
+## Get your credentials
 
-    - For the **Identity** script instructions and script, see [AzureStack-Tools/Identity](https://aka.ms/aa6z611).
+In this section you will use your credentials to get your tenant ID. You will need your Azure Stack Hub resource manager URL and tenant ID.
 
-    - In the same session, run:
+The Azure Stack Hub Resource Manager is a management framework that allows you to deploy, manage, and monitor Azure resources.
+- The Resource Manager URL for the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` 
+- The Resource Manager URL for an integrated system is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 
-    ```powershell  
-    Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
-    -DirectoryTenantName $homeDirectoryTenantName -Verbose
-    Register-AzsWithMyDirectoryTenant -TenantResourceManagerEndpoint $tenantARMEndpoint `
-    -DirectoryTenantName $guestDirectoryTenantName
+1. Open PowerShell with an elevated prompt. And run the following cmdlets:
+
+    ```powershell
+    Add-AzEnvironment -Name "<username@contoso.com>" -ArmEndpoint "https://management.region.<fqdn>"
     ```
 
-2. Open VS Code.
+    ```Output
+    Name  Resource Manager Url                            ActiveDirectory Authority
+    ----  --------------------                            -------------------------
+    username@contoso.com https://management.region.<fqdn> https://login.microsoftonline.com/
+    ```
 
-3. Select **Extensions** on the left-side corner.
+2. Run the following cmdlets in the same session:
+
+    ```powershell
+    $AuthEndpoint = (Get-AzEnvironment -Name "mabrigg@microsoft.com").ActiveDirectoryAuthority.TrimEnd('/')
+    $AADTenantName = "masselfhost.onmicrosoft.com"
+    $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
+    Add-AzAccount -EnvironmentName "mabrigg@microsoft.com" -TenantId $TenantId
+    ```
+
+    ```Output
+    Account               SubscriptionName  TenantId                             Environment
+    -------               ----------------  --------                             -----------
+    username@contoso.com   azure-stack-sub  6d5ff183-b37f-4a5b-9a2f-19959cb4224a username@contoso.com
+    ```
+
+3. Make a note of the tenant ID. You will need to when adding the JSON section that
+    that will configure the Azure Account extension.
+
+## Set up the Azure Account extension
+
+1. Open VS Code.
+
+2. Select **Extensions** on the left-side corner.
 
 4. In the search box, enter `Azure Account`.
 
@@ -60,49 +93,30 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
 6. Restart VS Code to load the extension.
 
-7. Retrieve the metadata to connect to the Azure Resource Manager in your Azure Stack Hub. 
-    
-    The Microsoft Azure Resource Manager is a management framework that allows you to deploy, manage, and monitor Azure resources.
-    - The Resource Manager URL for the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` 
-    - The Resource Manager URL for an integrated system is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
-    - Add the following text to your URL to access the metadata: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+7. Press **Ctrl+Shift+P**, and select **Preferences: Open User Settings (JSON)**.
 
-    For example, the URL to retrieve the metadata for your Azure Resource Manager endpoint may look something like: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
-
-    Make a note of the return JSON. You will need the values for the `loginEndpoint` and `audiences` property.
-
-8. Press **Ctrl+Shift+P,** and select **Preferences: Open User Settings (JSON)**.
-
-9. In the code editor, update the following JSON snippet with the values for your environment, and then paste snippet into the settings block.
+8. In the code editor, update the following JSON snippet with the values for your environment, and then paste snippet into the settings block.
 
     - Values:
 
         | Parameter | Description |
         | --- | --- |
-        | `tenant-ID` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
-        | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
-        | `activeDirectoryResourceId` | This is the URL from the audiences property.
-        | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
+        | azure.cloud | The name of your environment. |
+        | `azure.tenant` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
+        | `azure.customCloud.resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
         | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
 
     - JSON snippet:
 
       ```JSON  
-      "azure.tenant": "tenant-ID",
-      "azure.ppe": {
-          "activeDirectoryEndpointUrl": "Login endpoint",
-          "activeDirectoryResourceId": "This is the URL from the audiences property.",
-          "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
-          "validateAuthority" : false, 
-      },
-      "azure.cloud": "AzurePPE"
+        "azure.cloud": "AzureCustomCloud",
+        "azure.customCloud.resourceManagerEndpointUrl": "https://management.region.<fqdn>",
+        "azure.tenant": "<your-tenant-ID",
       ```
 
-10. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in to Azure Cloud**. The new option, **AzurePPE**, appears in the list of targets.
+9. Save the user settings (JSON) and use **Ctrl+Shift+P** once again. Select **Azure: Sign in**. The authentication page loads in your browser. Sign in to your endpoint.
 
-11. Select **AzurePPE**. The authentication page loads in your browser. Sign in to your endpoint.
-
-12. To test that you have successfully logged into your Azure Stack Hub subscription, use **Ctrl+Shift+ P** and select **Azure: Select Subscription** and see if the subscription you have is available.
+10. To test that you have successfully logged into your Azure Stack Hub subscription, use **Ctrl+Shift+ P** and select **Azure: Select Subscription** and see if the subscription you have is available.
 
 ## Commands
 
@@ -120,3 +134,5 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 ## Next steps
 
 [Set up a development environment in Azure Stack Hub ](azure-stack-dev-start.md)
+
+[Set up Azure Storage in your Azure Stack Hub from Visual Studio Code](dev-start-vscode-storage.md)

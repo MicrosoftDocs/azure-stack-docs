@@ -4,7 +4,7 @@ description: Learn about the usage reporting infrastructure used to track usage 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
@@ -44,5 +44,5 @@ The following terms and concepts are used for usage and billing in Azure Stack H
 
 ## Next steps
 
-- To learn more about the CSP program, see [Cloud Solutions](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
+- To learn more about the CSP program, see the [Microsoft Cloud Solution Provider program](https://partner.microsoft.com/solutions/microsoft-cloud-solutions) information.
 - To learn more about how to retrieve resource usage information from Azure Stack Hub, see [Usage and billing in Azure Stack Hub](azure-stack-billing-and-chargeback.md).

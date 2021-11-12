@@ -1,28 +1,28 @@
 ---
-title: Taking an Azure Stack HCI server offline for maintenance
-description: This topic provides guidance on how to properly pause, drain, and resume servers running the Azure Stack HCI operating system using Windows Admin Center and PowerShell.
-author: khdownie
-ms.author: v-kedow
+title: Failover cluster maintenance procedures for Azure Stack HCI and Windows Server
+description: This topic provides guidance on how to properly pause, drain, and resume clustered servers running Azure Stack HCI or Windows Server operating systems by using Windows Admin Center and PowerShell.
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/23/2020
+ms.custom: contperf-fy22q1
+ms.date: 10/19/2021
 ---
 
-# Taking an Azure Stack HCI server offline for maintenance
+# Failover cluster maintenance procedures
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-With Azure Stack HCI, taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in the cluster. This requires pausing the server that you want to take offline, moving roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
+This article assumes that you need to power down a physical server to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster without taking servers offline, see [Update Azure Stack HCI clusters](update-cluster.md).
 
-You can either use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
+Taking a server offline for maintenance requires taking portions of storage offline that are shared across all servers in a failover cluster. This requires pausing the server that you want to take offline, putting the server's disks in maintenance mode, moving clustered roles and virtual machines (VMs) to other servers in the cluster, and verifying that all data is available on the other servers in the cluster. This process ensures that the data remains safe and accessible throughout the maintenance period.
 
-   > [!IMPORTANT]
-   > This topic assumes that you need to power down a physical server down to perform maintenance, or restart it for some other reason. To install updates on an Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](update-cluster.md), which explains how to use Cluster-Aware Updating (CAU) to automatically perform all the steps in this topic while also updating servers and restarting them if necessary.
+You can use either Windows Admin Center or PowerShell to take a server offline for maintenance. This topic covers both methods.
 
 ## Take a server offline using Windows Admin Center
 
-The simplest way to prepare to take a server in an Azure Stack HCI cluster offline is by using Windows Admin Center.
+The simplest way to prepare to take a server offline is by using Windows Admin Center.
 
 ### Verify it's safe to take the server offline
 
@@ -32,36 +32,32 @@ The simplest way to prepare to take a server in an Azure Stack HCI cluster offli
 
 ### Pause and drain the server
 
-Before either shutting down or restarting a server, you should pause the server and drain (move off) any clustered roles such as VMs running on it to ensure that the server shutdown does not affect application state. Always pause and drain clustered servers before taking them offline for maintenance.
+Before either shutting down or restarting a server, you should pause the server and drain (move off) any clustered roles such as VMs running on it. Always pause and drain clustered servers before taking them offline for maintenance.
 
-1. Using Windows Admin Center, connect to the cluster and then select **Compute > Nodes** from the **Tools** menu in Cluster Manager.
+1. Using Windows Admin Center, connect to the cluster and then select **Compute > Servers** from the **Tools** menu in Cluster Manager.
 
-2. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
+2. Select **Inventory**. Click on the name of the server you wish to pause and drain, and select **Pause**. You should see the following prompt:
 
-   *If you pause this node, all clustered roles move to other nodes and no roles can be added to this node until it's resumed. Are you sure you want to pause cluster node?*
+   *Pause server(s) for maintenance: Are you sure you want to pause server(s)? This moves workloads, such as virtual machines, to other servers in the cluster.​*
 
-3. Select **yes** to pause the server and initiate the drain process. The cluster node status will show as **Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes.
-
-   > [!NOTE]
-   > When you pause and drain the server properly, Azure Stack HCI performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
+3. Select **yes** to pause the server and initiate the drain process. The server status will show as **In maintenance, Draining**, and roles such as Hyper-V and VMs will immediately begin live migrating to other server(s) in the cluster. This can take a few minutes. No roles can be added to the server until it's resumed. When the draining process is finished, the server status will show as **In maintenance, Drain completed**. The operating system performs an automatic safety check to ensure it is safe to proceed. If there are unhealthy volumes, it will stop and alert you that it's not safe to proceed.
 
 ### Shut down the server
 
-Once the server has completed draining, it status will show as **Paused** in Windows Admin Center. You can now safely shut the server down for maintenance or reboot it.
+Once the server has completed draining, you can safely shut it down for maintenance or reboot it.
+
+   > [!WARNING]
+   > If the server is running Azure Stack HCI, version 20H2, Windows Server 2019, or Windows Server 2016, you must [put the disks in maintenance mode](#put-disks-in-maintenance-mode) before shutting down the server and [take the disks out of maintenance mode](#take-disks-out-of-maintenance-mode) before resuming the server into the cluster.
 
 ### Resume the server
 
 When you are ready for the server to begin hosting clustered roles and VMs again, simply turn the server on, wait for it to boot up, and resume the server using the following steps.
 
-1. In Cluster Manager, select **Compute > Nodes** from the **Tools** menu at the left.
+1. In Cluster Manager, select **Compute > Servers** from the **Tools** menu at the left.
 
-2. Select the name of the server you wish to resume, and then click **Resume**. You should see the following prompt:
+2. Select **Inventory**. Click on the name of the server you wish to resume, and then click **Resume**.
 
-   *Are you sure you want to resume cluster node?*
-
-3. In most situations, you should select the checkbox that says *Transfer clustered roles back to this node*. Select **yes** to resume the server.
-
-If you checked the box in step 3 above, clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
+Clustered roles and VMs will immediately begin live migrating back to the server. This can take a few minutes.
 
 ### Wait for storage to resync
 
@@ -74,7 +70,7 @@ To check if resyncing has completed, connect to the server using Windows Admin C
 
 ## Take a server offline using PowerShell
 
-Use the following procedures to properly pause, drain, and resume a server in an Azure Stack HCI cluster using PowerShell.
+Use the following procedures to properly pause, drain, and resume a server in a failover cluster using PowerShell.
 
 ### Verify it's safe to take the server offline
 
@@ -97,6 +93,8 @@ ClusterPerformanceHistory Mirror                1                     OK        
 
 Verify that the **HealthStatus** property for every volume is **Healthy** and the **OperationalStatus** shows OK.
 
+To do this using Failover Cluster Manager, go to **Storage** > **Disks**.
+
 ### Pause and drain the server
 
 Run the following cmdlet as an administrator to pause and drain the server:
@@ -105,24 +103,68 @@ Run the following cmdlet as an administrator to pause and drain the server:
 Suspend-ClusterNode -Drain
 ```
 
+To do this in Failover Cluster Manager, go to **Nodes**, right-click the node, and then select **Pause** > **Drain Roles**.
+
+If the server is running Azure Stack HCI, version 21H2 or Windows Server 2022, pausing and draining the server will also put the server's disks into maintenance mode. If the server is running Azure Stack HCI, version 20H2, Windows Server 2019, or Windows Server 2016, you'll have to do this manually (see next step).
+
+### Put disks in maintenance mode
+
+In Azure Stack HCI, version 20H2, Windows Server 2019, and Windows Server 2016, putting the server's disks in maintenance mode gives Storage Spaces Direct an opportunity to gracefully flush and commit data to ensure that the server shutdown does not affect application state. As soon as a disk goes into maintenance mode, it will no longer allow writes. To minimize storage resynch times, we recommend putting the disks into maintenance mode right before the reboot and bringing them out of maintenance mode as soon as the system is back up.
+
+   > [!NOTE]
+   > If the server is running Azure Stack HCI, version 21H2 or Windows Server 2022, you can skip this step because the disks are automatically put into maintenance mode when the server is paused and drained. These operating systems have a granular repair feature that makes resyncs faster and less impactful on system and network resources, making it feasible to have server and storage maintenance done together.
+
+If the server is running Windows Server 2019 or Azure Stack HCI, version 20H2, run the following cmdlet as administrator:
+
+```PowerShell
+Get-StorageScaleUnit -FriendlyName "Server1" | Enable-StorageMaintenanceMode
+```
+
+If the server is running Windows Server 2016, use the following syntax instead:
+
+```PowerShell
+Get-StorageFaultDomain -Type StorageScaleUnit | Where-Object {$_.FriendlyName -eq "Server1"} | Enable-StorageMaintenanceMode
+```
+
 ### Shut down the server
 
-Once the server has completed draining, it will show as **Paused** in PowerShell.
+Once the server has completed draining, it will show as **Paused** in PowerShell and Failover Cluster Manager.
 
-You can now safely shut the server down or restart it by using the `Stop-Computer` or `Restart-Computer` PowerShell cmdlets.
+You can now safely shut the server down or restart it by using the `Stop-Computer` or `Restart-Computer` PowerShell cmdlets, or by using Failover Cluster Manager.
 
    > [!NOTE]
    > When running a `Get-VirtualDisk` command on servers that are shutting down or starting/stopping the cluster service, the server's Operational Status may be reported as incomplete or degraded, and the Health Status column may list a warning. This is normal and should not cause concern. All your volumes remain online and accessible.
 
+### Take disks out of maintenance mode
+
+If the server is running Azure Stack HCI, version 20H2, Windows Server 2019, or Windows Server 2016, you must disable storage maintenance mode on the disks before resuming the server into the cluster. To minimize storage resynch times, we recommend bringing them out of maintenance mode as soon as the system is back up.
+
+   > [!NOTE]
+   > If the server is running Azure Stack HCI, version 21H2 or Windows Server 2022, you can skip this step because the disks will automatically be taken out of maintenance mode when the server is resumed.
+
+If the server is running Windows Server 2019 or Azure Stack HCI, version 20H2, run the following cmdlet as administrator to disable storage maintenance mode:
+
+```PowerShell
+Get-StorageScaleUnit -FriendlyName "Server1" | Disable-StorageMaintenanceMode
+```
+
+If the server is running Windows Server 2016, use the following syntax instead:
+
+```PowerShell
+Get-StorageFaultDomain -Type StorageScaleUnit | Where-Object {$_.FriendlyName -eq "Server1"} | Disable-StorageMaintenanceMode
+```
+
 ### Resume the server
 
-Run the following cmdlet as an administrator to resume the server into the cluster. To return the clustered roles and VMs that were previously running on the server, use the optional **-Failback** flag:
+Resume the server into the cluster. To return the clustered roles and VMs that were previously running on the server, use the optional **-Failback** flag:
 
 ```PowerShell
 Resume-ClusterNode –Failback Immediate
 ```
 
-Once the server has resumed, it will show as **Up** in PowerShell.
+To do this in Failover Cluster Manager, go to **Nodes**, right-click the node, and then select **Resume** > **Fail Roles Back**.
+
+Once the server has resumed, it will show as **Up** in PowerShell and Failover Cluster Manager.
 
 ### Wait for storage to resync
 

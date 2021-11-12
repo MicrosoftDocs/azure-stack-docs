@@ -1,23 +1,23 @@
 ---
-title: Drive symmetry considerations for Azure Stack HCI
-description: This topic explains drive symmetry constraints and provides examples of supported and unsupported configurations.
-author: khdownie
-ms.author: v-kedow
+title: Drive symmetry considerations for Azure Stack HCI and Windows Server clusters
+description: This article explains drive symmetry constraints in Storage Spaces Direct and provides examples of supported and unsupported configurations.
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 10/29/2020
 ---
 
-# Drive symmetry considerations for Azure Stack HCI
+# Drive symmetry considerations for Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
-Azure Stack HCI works best when every server has exactly the same drives.
+Azure Stack HCI and Windows Server clusters work best when every server has exactly the same drives.
 
-In reality, we recognize this is not always practical, because Azure Stack HCI is designed to run for years and to scale as the needs of your organization grow. Today, you may buy spacious 3 TB hard drives; next year, it may become impossible to find drives that small. Therefore, some amount of mixing-and-matching is expected and supported. Keep in mind, however, that more symmetry is always better.
+In reality, we recognize this is not always practical. Today, you may buy spacious 3 TB hard drives; next year, it may become impossible to find drives that small. Therefore, some amount of mixing-and-matching is expected and supported. Keep in mind, however, that more symmetry is always better.
 
-This topic explains the constraints and provides examples of supported and unsupported configurations.
+This article explains the constraints and provides examples of supported and unsupported configurations in Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI.
 
 ## Constraints
 
@@ -40,7 +40,7 @@ For example, if one server has six SSD, they should *all* have six SSD.
 
 ### Model
 
-We recommend using drives of the same model and firmware version whenever possible. If you can't, carefully select drives that are as similar as possible. We discourage mixing-and-matching drives of the same type with sharply different performance or endurance characteristics (unless one is cache and the other is capacity) because Azure Stack HCI distributes IO evenly and doesn't discriminate based on model.
+We recommend using drives of the same model and firmware version whenever possible. If you can't, carefully select drives that are as similar as possible. We discourage mixing-and-matching drives of the same type with sharply different performance or endurance characteristics (unless one is cache and the other is capacity) because Storage Spaces Direct distributes IO evenly and doesn't discriminate based on model.
 
    > [!NOTE]
    > It is okay to mix-and-match similar SATA and SAS drives.
@@ -54,7 +54,7 @@ We recommend using drives of the same sizes whenever possible. Using capacity dr
 
 ## Understand: capacity imbalance
 
-Azure Stack HCI is robust to capacity imbalance across drives and across servers. Even if the imbalance is severe, everything will continue to work. However, depending on several factors, capacity that isn't available in every server may not be usable.
+Storage Spaces Direct is robust enough to handle capacity imbalance across drives and across servers. Even if the imbalance is severe, everything will continue to work. However, depending on several factors, capacity that isn't available in every server may not be usable.
 
 To see why this happens, consider the simplified illustration below. Each colored box represents one copy of mirrored data. For example, the boxes marked A, A', and A'' are three copies of the same data. To honor server fault tolerance, these copies *must* be stored in different servers.
 
@@ -74,14 +74,14 @@ The number of servers, the resiliency, the severity of the capacity imbalance, a
 
 ## Understand: cache imbalance
 
-Azure Stack HCI is robust to cache imbalance across drives and across servers. Even if the imbalance is severe, everything will continue to work. Moreover, Azure Stack HCI always uses all available cache to the fullest.
+Storage Spaces Direct can also withstand a cache imbalance across drives and across servers. Even if the imbalance is severe, everything will continue to work. Moreover, it always uses all available cache to the fullest.
 
-However, using cache drives of different sizes may not improve cache performance uniformly or predictably: only IO to [drive bindings](cache.md#server-side-architecture) with larger cache drives may see improved performance. Azure Stack HCI distributes IO evenly across bindings and doesn't discriminate based on cache-to-capacity ratio.
+Using cache drives of different sizes may not improve cache performance uniformly or predictably: only IO to [drive bindings](cache.md#server-side-architecture) with larger cache drives may see improved performance. Storage Spaces Direct distributes IO evenly across bindings and doesn't discriminate based on cache-to-capacity ratio.
 
 ![Cache imbalance](media/drive-symmetry-considerations/Cache-Asymmetry.png)
 
    > [!TIP]
-   > See [Understanding the cache](cache.md) to learn more about cache bindings.
+   > See [Understanding the storage pool cache](cache.md) to learn more about cache bindings.
 
 ## Example configurations
 

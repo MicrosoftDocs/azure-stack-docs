@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with Java in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 11/4/2021
 ms.author: sethm
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: weshi1
+ms.lastreviewed: 11/4/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Java in Azure stack so I can benefit from the use of profiles.
 # Keyword: azure stack api profiles java
@@ -76,9 +76,9 @@ Follow these steps to install the Java SDK:
 
 5. If not available, create a subscription and save the subscription ID for later use. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md). The client ID is also known as the application ID when creating a service principal.
+6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md). The client ID is also known as the application ID when creating a service principal.
 
-7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
+7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
 
 ## Prerequisites
 
@@ -267,7 +267,7 @@ Use the following GitHub samples as references for creating solutions with .NET 
    git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
    ```
 
-2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/azure-stack-create-service-principals.md).
+2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md).
 
 3. Retrieve the following required environment variables:
 

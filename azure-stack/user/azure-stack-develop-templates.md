@@ -4,7 +4,7 @@ description: Learn how to develop Azure Resource Manager templates for app porta
 author: mattbriggs
 
 ms.topic: article
-ms.date: 5/27/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
@@ -71,7 +71,7 @@ Azure Resource Manager templates use a `location` attribute to place resources d
   "location": "[resourceGroup().location]",
   "comments": "This storage account is used to store the VM disks",
   "properties": {
-  "accountType": "Standard_GRS"
+  "accountType": "Standard_LRS"
   }
 }
 ]

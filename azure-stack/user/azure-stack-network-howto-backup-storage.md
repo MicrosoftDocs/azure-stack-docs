@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -33,7 +33,7 @@ Data can be replicated between storage accounts on separate Azure Stack Hub scal
 
 AzCopy is an excellent tool that can be utilized to copy data from local filesystems, Azure Cloud Storage, Azure Stack Hub Storage, and s3. Currently, AzCopy cannot copy data between two Azure Stack Hub Storage Accounts. Copying objects from a source Azure Stack Hub Storage account to a target Azure Stack Hub Storage account requires an intermediary local filesystem.
 
-For more information, see the AzCopy in the [Use data transfer tools in Azure Stack Hub Storage](./azure-stack-storage-transfer.md?view=azs-1908#azcopy) article.
+For more information, see the AzCopy in the [Use data transfer tools in Azure Stack Hub Storage](./azure-stack-storage-transfer.md#azcopy) article.
 
 ### Azure Stack Hub (source)
 
@@ -87,7 +87,7 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
     azcopy sync "https:/<storagaccount>/<container>?<SAS Key>" "C:\\myFolder" --recursive=true --delete-destination=true
     ```
 
-5.  Enter the **storage account**,** SAS key**, and **local directory path.  You'll will use this to copy data incrementally to the **target** storage account
+5.  Enter the **storage account**,**SAS key**, and **local directory path**.  You'll will use this to copy data incrementally to the **target** storage account
     
     ```
     azcopy sync "C:\\myFolder" "https:// <storagaccount>/<container>?<SAS Key>" --recursive=true --delete-destination=true

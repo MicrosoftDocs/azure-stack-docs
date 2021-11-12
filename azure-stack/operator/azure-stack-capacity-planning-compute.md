@@ -1,12 +1,12 @@
 ---
 title: Azure Stack Hub compute capacity
 description: Learn about compute capacity planning for Azure Stack Hub deployments.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
-ms.date: 03/04/2020
-ms.author: justinha
-ms.reviewer: prchint
-ms.lastreviewed: 06/13/2019
+ms.date: 10/05/2021
+ms.author: patricka
+ms.reviewer: kivenkat
+ms.lastreviewed: 03/02/2021
 
 # Intent: As an Azure Stack Hub operator, I want to learn about compute capacity planning for Azure Stack Hub deployments
 # Keyword: azure stack hub compute capacity
@@ -19,7 +19,8 @@ ms.lastreviewed: 06/13/2019
 The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
->The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
+>The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance. The administrator portal shows a warning alert when the total system memory consumption has reached 85%. This alert can be remediated by [adding additional capacity](azure-stack-add-scale-node.md), or by removing virtual machines that are no longer required.
+
 
 ## VM placement
 
@@ -37,13 +38,16 @@ Since placement algorithms don't look at the existing virtual to physical core o
 
 ## Consideration for total number of VMs
 
-There's a new consideration for accurately planning Azure Stack Hub capacity. With the 1901 update (and every update going forward), there's now a limit on the total number of VMs that can be created. This limit is intended to be temporary to avoid solution instability. The source of the stability issue at higher numbers of VMs is being addressed but a specific timeline for remediation hasn't been determined. There's now a per-server limit of 60 VMs with a total solution limit of 700. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
+There's a new consideration for accurately planning Azure Stack Hub capacity. With the 1901 update (and every update going forward), there's now a limit on the total number of VMs that can be created. The source of the stability issue at higher numbers of VMs is being addressed but a specific timeline for remediation hasn't been determined. There's now a per-server limit of 60 VMs with a total solution limit of 700. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
 
 ## Consideration for batch deployment of VMs
 
-In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments.
+In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub onwards, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments. Start, Stop-deallocate, and update operations should be done at a batch size of 30, leaving 5 mins in between each batch.
+
+## Consideration for GPU VMs
+Azure Stack hub reserves memory for the infrastructure and tenant VMs to failover. Unlike other VMs, GPU VMs run in a non-HA (high availability) mode and therefore do not failover. As a result, reserved memory for a GPU VM-only stamp is what is required by the infrastructure to failover, as opposed to accounting for HA tenant VM memory too.  
 
 ## Azure Stack Hub memory
 
@@ -58,7 +62,7 @@ You can review a pie chart in the administrator portal that shows the free and u
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart:  
 
 - **Host OS usage or reserve:** The memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
-- **Infrastructure services:** The infrastructure VMs that make up Azure Stack Hub. As of the 1904 release version of Azure Stack Hub, this entails ~31 VMs that take up 242 GB + (4 GB x # of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
+- **Infrastructure services:** The infrastructure VMs that make up Azure Stack Hub. As of the 2102 release version of Azure Stack Hub, this includes approximately 31 VMs that take up 268 GB + (4 GB x no. of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
 - **Resiliency reserve:** Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
 - **Tenant VMs:** The tenant VMs created by Azure Stack Hub users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli won't consume memory from Azure Stack Hub.
 - **Value-add resource providers (RPs):** VMs deployed for the value-add RPs like SQL, MySQL, App Service, and so on.
@@ -69,19 +73,20 @@ This calculation results in the total available memory that can be used for tena
 
 Available memory for VM placement = total host memory - resiliency reserve - memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead <sup>1</sup>
 
-Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
+Resiliency reserve = N * R + (N-2)* V + min(H-R, sum(memoryofHAVMs))
 
 > Where:
 > -    H = Size of single server memory
 > - N = Size of Scale Unit (number of servers)
 > -    R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
-> -    V = Largest VM in the scale unit
+> -    V = Largest HA VM in the scale unit
+> - memoryofHAVMs = sum of the memory of all the HA VMs in the scale unit. This includes 142 GB of HA infrastructure + memory of HA tenant VMs
 
-<sup>1</sup> Azure Stack Hub Infrastructure overhead = 242 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack Hub's infrastructure and, in total, consume about 242 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing, and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they're developed.
+<sup>1</sup> Azure Stack Hub Infrastructure overhead = 268 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack Hub's infrastructure and, in total, consume about 268 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing, and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they're developed.
 
 <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
-The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself.
+The value V, largest HA VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest HA VM value is a minimum of 12 GB (accounting for the infrastructure VM) or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest HA VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve and also to the increase in the memory of the VM itself. Remember that GPU VMs run in non-HA mode.
 
 ## Considerations for deallocation
 

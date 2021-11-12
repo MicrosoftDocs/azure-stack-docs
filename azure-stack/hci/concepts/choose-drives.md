@@ -1,23 +1,23 @@
 ---
-title: Choose drives for Azure Stack HCI
-description: How to choose drives for Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+title: Choose drives for Azure Stack HCI and Windows Server clusters
+description: How to choose drives for Azure Stack HCI and Windows Server clusters to meet performance and capacity requirements.
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 09/01/2020
 ---
 
-# Choose drives for Azure Stack HCI
+# Choose drives for Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
-This topic provides guidance on how to choose drives to meet your performance and capacity requirements for Azure Stack HCI.
+This article provides guidance on how to choose drives to meet your performance and capacity requirements.
 
 ## Drive types
 
-Azure Stack HCI currently works with four types of drives:
+Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI, currently works with four types of drives:
 
 | Type of drive | Description |
 |----------------------|--------------------------|
@@ -26,11 +26,14 @@ Azure Stack HCI currently works with four types of drives:
 |![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
 |![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
 
+   >[!NOTE]
+   > This article covers choosing drive configurations with NVMe, SSD, and HDD. For more information on PMem, see [Understand and deploy persistent memory](deploy-persistent-memory.md).
+
 ## Built-in cache
 
-Azure Stack HCI features a built-in server-side cache. It is a large, persistent, real-time read and write cache. In deployments with multiple types of drives, it is configured automatically to use all drives of the "fastest" type. The remaining drives are used for capacity.
+Storage Spaces Direct features a built-in server-side cache. It is a large, persistent, real-time read and write cache. In deployments with multiple types of drives, it is configured automatically to use all drives of the "fastest" type. The remaining drives are used for capacity.
 
-For more information, check out [Understanding the cache in Azure Stack HCI](cache.md).
+For more information, check out [Understanding the storage pool cache](cache.md).
 
 ## Option 1 – Maximizing performance
 
@@ -38,7 +41,7 @@ To achieve predictable and uniform submillisecond latency across random reads an
 
 There are multiple ways to do so:
 
-![Diagram shows deployment options, including all N V M e for capacity, N V M e for cache with S S D for capacity, and all S S D for capacity.](media/choose-drives/All-Flash-Deployment-Possibilities.png)
+![Diagram shows deployment options, including all NVMe for capacity, NVMe for cache with SSD for capacity, and all SSD for capacity.](media/choose-drives/All-Flash-Deployment-Possibilities.png)
 
 1. **All NVMe.** Using all NVMe provides unmatched performance, including the most predictable low latency. If all your drives are the same model, there is no cache. You can also mix higher-endurance and lower-endurance NVMe models, and configure the former to cache writes for the latter ([requires set-up](/windows-server/storage/storage-spaces/understand-the-cache#manual-configuration)).
 
@@ -53,7 +56,7 @@ There are multiple ways to do so:
 
 For environments with a variety of applications and workloads, some with stringent performance requirements and others requiring considerable storage capacity, you should go "hybrid" with either NVMe or SSDs caching for larger HDDs.
 
-![Diagram shows deployment possibilities, including N V M e for cache with H D D for capacity, S S D for cache with H D D for capacity, and N V M E for cache with mixed S S D and H D D for capacity.](media/choose-drives/Hybrid-Deployment-Possibilities.png)
+![Diagram shows deployment possibilities, including NVMe for cache with HDD for capacity, SSD for cache with HDD for capacity, and NVMe for cache with mixed SSD and HDD for capacity.](media/choose-drives/Hybrid-Deployment-Possibilities.png)
 
 1. **NVMe + HDD**. The NVMe drives will accelerate reads and writes by caching both. Caching reads allows the HDDs to focus on writes. Caching writes absorbs bursts and allows writes to coalesce and be de-staged only as needed, in an artificially serialized manner that maximizes HDD IOPS and IO throughput. This provides NVMe-like write characteristics, and for frequently or recently read data, NVMe-like read characteristics too.
 
@@ -93,9 +96,9 @@ We recommend limiting the total storage capacity per server to approximately 400
 
 For more information, see also:
 
-- [Understand the cache](cache.md)
+- [Understand the storage pool cache](cache.md)
 - [System requirements](system-requirements.md)
 - [Drive symmetry considerations](drive-symmetry-considerations.md)
 - [Plan volumes](plan-volumes.md)
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
-- [Understand and deploy persistent memory](/windows-server/storage/storage-spaces/deploy-pmem)
+- [Understand and deploy persistent memory](deploy-persistent-memory.md)

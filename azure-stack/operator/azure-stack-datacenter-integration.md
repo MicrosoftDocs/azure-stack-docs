@@ -1,10 +1,10 @@
 ---
-title: Plan datacenter integration for Azure Stack Hub integrated systems 
+title: Plan datacenter integration for Azure Stack Hub integrated systems
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.author: inhenkel
+ms.date: 11/02/2021
+ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
 
@@ -13,12 +13,12 @@ ms.lastreviewed: 09/12/2019
 
 ---
 
- 
+
 # Datacenter integration planning considerations for Azure Stack Hub integrated systems
 
-If you're interested in an Azure Stack Hub integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack Hub integrated systems. An understanding of these considerations helps when working with your OEM hardware vendor while they deploy Azure Stack Hub to your datacenter.  
+If you're interested in an Azure Stack Hub integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack Hub integrated systems. An understanding of these considerations helps when working with your OEM hardware vendor while they deploy Azure Stack Hub to your datacenter.
 
-> [!NOTE]  
+> [!NOTE]
 > Azure Stack Hub integrated systems can only be purchased from authorized hardware vendors.
 
 To deploy Azure Stack Hub, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. You'll need people from multiple teams in your organization to ensure that you have all required information ready before deployment. It can help to talk to your hardware vendor while collecting this information because they might have helpful advice.
@@ -49,7 +49,7 @@ You'll need to consider which identity provider you want to use for Azure Stack 
 
 Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, or whether they can join an Active Directory domain, and so on. These things are separate.
 
-You can learn more about choosing an identity provider in the [Azure Stack Hub integrated systems connection models article](./azure-stack-connection-models.md).
+You can deploy multiple Azure Stack Hub systems with the same Azure Active Directory tenant or Active Directory.
 
 ### AD FS and Graph integration
 
@@ -64,8 +64,8 @@ The following diagram shows integrated AD FS and Graph traffic flow.<br/><br/>
 
 You must decide which licensing model you want to use. The available options depend on if you deploy Azure Stack Hub connected to the internet:
 
-- For a [connected deployment](azure-stack-connected-deployment.md), you can choose either pay-as-you-use or capacity-based licensing. Pay-as-you-use requires a connection to Azure to report usage, which is then billed through Azure commerce. 
-- Only capacity-based licensing is supported if you [deploy disconnected](azure-stack-disconnected-deployment.md) from the internet. 
+- For a [connected deployment](azure-stack-connected-deployment.md), you can choose either pay-as-you-use or capacity-based licensing. Pay-as-you-use requires a connection to Azure to report usage, which is then billed through Azure commerce.
+- Only capacity-based licensing is supported if you [deploy disconnected](azure-stack-disconnected-deployment.md) from the internet.
 
 For more information about the licensing models, see [Microsoft Azure Stack Hub packaging and pricing](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
 
@@ -78,14 +78,14 @@ You'll need to think about how you want to plan your Azure Stack Hub namespace, 
 - `https://adminportal.east.cloud.fabrikam.com`
 
 > [!IMPORTANT]
-> The region name you choose for your Azure Stack Hub deployment must be unique and will appear in the portal addresses. 
+> The region name you choose for your Azure Stack Hub deployment must be unique and will appear in the portal addresses.
 
 The following table summarizes these domain naming decisions.
 
 | Name | Description |
 | -------- | ------------- |
-|Region name | The name of your first Azure Stack Hub region. This name is used as part of the FQDN for the public virtual IP addresses (VIPs) that Azure Stack Hub manages. Typically, the region name would be a physical location identifier such as a datacenter location.<br><br>The region name must consist of only letters and numbers between 0-9. No special characters (like `-`, `#`, and so on) are allowed.| 
-| External domain name | The name of the Domain Name System (DNS) zone for endpoints with external-facing VIPs. Used in the FQDN for these public VIPs. | 
+|Region name | The name of your first Azure Stack Hub region. This name is used as part of the FQDN for the public virtual IP addresses (VIPs) that Azure Stack Hub manages. Typically, the region name would be a physical location identifier such as a datacenter location.<br><br>The region name must consist of only letters and numbers between 0-9. No special characters (like `-`, `#`, and so on) are allowed.|
+| External domain name | The name of the Domain Name System (DNS) zone for endpoints with external-facing VIPs. Used in the FQDN for these public VIPs. |
 | Private (internal) domain name | The name of the domain (and internal DNS zone) created on Azure Stack Hub for infrastructure management.
 | | |
 
@@ -96,7 +96,7 @@ For deployment, you'll need to provide Secure Sockets Layer (SSL) certificates f
 - You can use a single wildcard certificate or you can use a set of dedicated certificates, and then use wildcards only for endpoints like storage and Key Vault.
 - Certificates can be issued by a public trusted certificate authority (CA) or a customer-managed CA.
 
-For more information about what PKI certificates are required to deploy Azure Stack Hub, and how to obtain them, see, [Azure Stack Hub Public Key Infrastructure certificate requirements](azure-stack-pki-certs.md).  
+For more information about what PKI certificates are required to deploy Azure Stack Hub, and how to obtain them, see, [Azure Stack Hub Public Key Infrastructure certificate requirements](azure-stack-pki-certs.md).
 
 > [!IMPORTANT]
 > The provided PKI certificate information should be used as general guidance. Before you acquire any PKI certificates for Azure Stack Hub, work with your OEM hardware partner. They'll provide more detailed certificate guidance and requirements.
@@ -106,6 +106,9 @@ For more information about what PKI certificates are required to deploy Azure St
 You must choose a specific time server which is used to synchronize Azure Stack Hub. Time synchronization is critical to Azure Stack Hub and its infrastructure roles because it's used to generate Kerberos tickets. Kerberos tickets are used to authenticate internal services with each other.
 
 You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve a URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack Hub.
+
+> [!IMPORTANT]
+> If your time server isn't a Windows-based NTP server, you need to append `,0x8` the end of the IP address. For example, `10.1.1.123,0x8`.
 
 ## Connect Azure Stack Hub to Azure
 
@@ -158,10 +161,10 @@ The following table summarizes the list of currently available options.
 
 | Area | External Monitoring Solution |
 | -- | -- |
-| Azure Stack Hub software | [Azure Stack Hub Management Pack for Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios plug-in](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST-based API calls | 
-| Physical servers (BMCs via IPMI) | OEM hardware - Operations Manager vendor management pack<br>OEM hardware vendor-provided solution<br>Hardware vendor Nagios plug-ins.<br>OEM partner-supported monitoring solution (included) | 
+| Azure Stack Hub software | [Azure Stack Hub Management Pack for Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios plug-in](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST-based API calls |
+| Physical servers (BMCs via IPMI) | OEM hardware - Operations Manager vendor management pack<br>OEM hardware vendor-provided solution<br>Hardware vendor Nagios plug-ins.<br>OEM partner-supported monitoring solution (included) |
 | Network devices (SNMP) | Operations Manager network device discovery<br>OEM hardware vendor-provided solution<br>Nagios switch plug-in |
-| Tenant subscription health monitoring | [System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| Tenant subscription health monitoring | [System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) |
 |  |  |
 
 Note the following requirements:
@@ -180,12 +183,12 @@ You can [back up Azure Stack Hub](azure-stack-backup-back-up-azure-stack.md) inf
 - You'll need an external SMB file share on an existing Windows-based file server or a third-party device.
 - Use this same share for the backup of network switches and the hardware lifecycle host. Your OEM hardware vendor will help provide guidance for backup and restore of these components because these are external to Azure Stack Hub. You're responsible for running the backup workflows based on the OEM vendor's recommendation.
 
-If catastrophic data loss occurs, you can use the infrastructure backup to reseed deployment data such as: 
+If catastrophic data loss occurs, you can use the infrastructure backup to reseed deployment data such as:
 
 - Deployment inputs and identifiers
 - Service accounts
 - CA root certificate
-- fFederated resources (in disconnected deployments)
+- Federated resources (in disconnected deployments)
 - Plans, offers, subscriptions, and quotas
 - RBAC policy and role assignments
 - Key Vault secrets
@@ -201,7 +204,7 @@ To replicate data to a secondary location and orchestrate application failover i
 ## Learn more
 
 - For information about use cases, purchasing, partners, and OEM hardware vendors, see the [Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) product page.
-- For information about the roadmap and geo-availability for Azure Stack Hub integrated systems, see the white paper: [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- For information about the roadmap and geo-availability for Azure Stack Hub integrated systems, see the white paper: [Azure Stack Hub: An extension of Azure](https://azure.microsoft.com/resources/videos/azure-friday-azure-stack-an-extension-of-azure/).
 
 ## Next steps
 [Azure Stack Hub deployment connection models](azure-stack-connection-models.md)

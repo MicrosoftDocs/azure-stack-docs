@@ -1,11 +1,11 @@
 ---
 title: ASDK requirements and considerations 
 description: Learn about the hardware, software, and environment requirements for Azure Stack Development Kit (ASDK).
-author: myoungerman
+author: PatAltimore
 
 ms.topic: article
 ms.date: 09/23/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 09/23/2020
 
@@ -67,7 +67,7 @@ To use a two-way mirror configuration for storage resiliency:
 
 - You need HDD capacity in the system of greater than two terabytes.
 - If you don't have SSDs in your ASDK, you need at least eight HDDs for a two-way mirror configuration.
-- If you have SSDs in your ASDK, along with HDDs, you need at least five HDDs. However, six HHDs are recommended. For six HDDs, it's also recommended to have at least three corresponding SSDs in the system so that you have one cache disk (SSD) to serve two capacity drives (HDD).
+- If you have SSDs in your ASDK, along with HDDs, you need at least five HDDs. However, six HDDs are recommended. For six HDDs, it's also recommended to have at least three corresponding SSDs in the system so that you have one cache disk (SSD) to serve two capacity drives (HDD).
 
 Example two-way mirror configuration:
 

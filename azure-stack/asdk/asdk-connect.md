@@ -1,11 +1,11 @@
 ---
 title: Connect to the ASDK 
 description: Learn how to connect to the Azure Stack Development Kit (ASDK).
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 11/14/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: knithinc
 ms.lastreviewed: 11/14/2020
 

@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -28,16 +28,16 @@ This article describes how to create a VPN connection to your Azure Stack Hub. A
 
 -  Access to a VPN device in the on-premises network that hosts the Azure Stack Hub integrated system. The device needs to create an IPSec tunnel, which meets the parameters described in the [Deployment parameters](#deployment-parameters).
 
--  A network virtual appliance (NVA) solution available in your Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
+-  A network virtual appliance (NVA) solution available in your Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the Fortinet FortiGate Next-Generation Firewall Single VM Solution.
 
     > [!NOTE]  
     > If you do not have the **Fortinet FortiGate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Hub Marketplace, contact your cloud operator.
 
--  To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+-  To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-private-cloud/6.2.0/nutanix-administration-guide/324840/registering-and-downloading-your-license).
 
-    This procedure uses the [Single FortiGate-VM deployment](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
+    This procedure uses the [Single FortiGate-VM deployment](https://docs.fortinet.com/document/fortigate-public-cloud/6.0.0/single-fortigate-vm-deployment/619591/overview). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
 
-    For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure).
+    For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/document/fortigate-public-cloud/6.2.0/azure-administration-guide/983245/ha-for-fortigate-vm-on-azure).
 
 ## Deployment parameters
 
@@ -131,7 +131,7 @@ The following table summarizes the parameters that are used in these deployments
 
 Activate the FortiGate NVA and set up an IPSec VPN connection on each NVA.
 
-To activate each FortiGate NVA will require a valid license file from Fortinet. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+To activate each FortiGate NVA will require a valid license file from Fortinet. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs.fortinet.com/document/fortigate-private-cloud/6.2.0/nutanix-administration-guide/324840/registering-and-downloading-your-license).
 
 Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
@@ -212,7 +212,7 @@ The on-premises VPN device must be configured to create the IPSec VPN tunnel. Th
 
 | Parameter | Value |
 | --- | --- |
-| Remote Gateway IP | Public IP address assigned to forti1 – see [Activate the FortiGate NVA](#activate-the-fortigate-nva). |
+| Remote Gateway IP | Public IP address assigned to forti1 - see [Activate the FortiGate NVA](#activate-the-fortigate-nva). |
 | Remote IP Network | 172.16.0.0/16 (if using the IP range in these instructions for the VNET). |
 | Auth. Method = Preshared key (PSK) | From Step 16.
 | IKE Version | 1 |

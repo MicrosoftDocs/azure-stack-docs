@@ -71,9 +71,9 @@ IoT Hub on Azure Stack Hub allows you to create hybrid IoT solutions. IoT Hub is
 |Update Module| ✔ |
 |Query Devices| ✔ |
 |Export Devices| ✔ |
-|Back up and Restore – ADM| ✔ |
+|Back up and Restore - ADM| ✔ |
 |Replace Twin| ✔ |
-|Back up and Restore – DSS| ✔ |
+|Back up and Restore - DSS| ✔ |
 |D2C Notify DesiredProperties| ✔ |
 |D2C Patch ReportedProperties| ✔ |
 |Get Module Twin| ✔ |

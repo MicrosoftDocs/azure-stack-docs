@@ -4,52 +4,94 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: What's new in Azure Stack HCI?
+    href: whats-new.md
+  - name: Compare to Windows Server
+    href: concepts/compare-windows-server.md
+  - name: Compare to Azure Stack Hub
+    href: concepts/compare-azure-stack-hub.md
   - name: Release information
     href: release-information.md
-  - name: Release notes
+  - name: 21H2 release notes
+    href: https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173
+  - name: 20H2 release notes
     href: https://support.microsoft.com/help/4595086
   - name: FAQ
-    href: faq.md
+    href: faq.yml
 - name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
     href: get-started.md
+  - name: Deploy and manage Azure Stack HCI clusters in VMM
+    href: deploy/deploy-manage-azure-stack-hci.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
+- name: Tutorial
+  items:
+  - name: Create a private forest environment
+    href: deploy/tutorial-private-forest.md
 - name: Deploy
   items:
-  - name: Deployment overview
-    href: deploy/deployment-overview.md
-  - name: Deploy the Azure Stack HCI OS
+  - name: 1. Deploy the Azure Stack HCI OS
     href: deploy/operating-system.md
-  - name: Create a cluster
+  - name: 2. Create a cluster
     href: deploy/create-cluster.md
-  - name: Set up a cluster witness
-    href: deploy/witness.md
-  - name: Deploy an SDN infrastructure
-    href: deploy/sdn-express.md
-  - name: Migrate to new hardware
-    href: deploy/migrate-cluster-new-hardware.md
-  - name: Migrate on same hardware
-    href: deploy/migrate-cluster-same-hardware.md
-  - name: Register with Azure
+  - name: 3. Register a cluster with Azure
     href: deploy/register-with-azure.md
-  - name: Validate the cluster
+  - name: 4. Validate the cluster
     href: deploy/validate.md
+  - name: Migrate a cluster
+    items:
+    - name: Migrate to new hardware
+      href: deploy/migrate-cluster-new-hardware.md
+    - name: Migrate on same hardware
+      href: deploy/migrate-cluster-same-hardware.md
   - name: Deploy with PowerShell
     items:
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
+    - name: Deploy a cluster set
+      href: deploy/cluster-set.md
+    - name: Host networking with Network ATC
+      href: deploy/network-atc.md
+  - name: Deploy SDN
+    items:
+    - name: Deploy using Windows Admin Center
+      href: deploy/sdn-wizard.md
+    - name: Deploy using SDN Express
+      href: manage/sdn-express.md
+    - name: Deploy at cluster creation
+      href: deploy/create-cluster.md#step-5-sdn-optional  
+  - name: Deploy workloads
+    items:
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
+    - name: Virtual desktop infrastructure
+      href: deploy/virtual-desktop-infrastructure.md
+    - name: SQL Server
+      href: deploy/sql-server.md
+    - name: Trusted enterprise virtualization
+      href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
     items:
+    - name: Activate Windows Server VMs
+      href: manage/vm-activate.md
     - name: Manage VMs
       href: manage/vm.md
     - name: Manage VMs with PowerShell
       href: manage/vm-powershell.md
     - name: Create VM affinity rules
-      href: manage/vm-affinity.md  
+      href: manage/vm-affinity.md
+    - name: VM load balancing
+      href: manage/vm-load-balancing.md
+    - name: Dynamic CPU compatibility
+      href: manage/processor-compatibility-mode.md
+    - name: Use GPUs with clustered VMs
+      href: manage/use-gpu-with-clustered-vm.md
+    - name: Azure Arc-enabled VMs (preview)
+      href: manage/azure-arc-enabled-virtual-machines.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -60,7 +102,7 @@
       href: manage/create-stretched-volumes.md
     - name: Protect volumes
       href: manage/volume-encryption-deduplication.md
-    - name: Extend volumes
+    - name: Expand volumes
       href: manage/extend-volumes.md
     - name: Delete volumes
       href: manage/delete-volumes.md
@@ -70,56 +112,106 @@
       href: manage/use-csv-cache.md
     - name: Manage SMB Multichannel
       href: manage/manage-smb-multichannel.md
-  - name: Manage the cluster
+    - name: Storage thin provisioning
+      href: manage/thin-provisioning.md
+    - name: Adjustable storage repair speed
+      href: manage/storage-repair-speed.md
+  - name: Manage clusters 
     items:
-    - name: Manage the cluster
-      href: manage/cluster.md
-    - name: Manage clusters with PowerShell
-      href: manage/cluster-powershell.md
-    - name: Update the cluster
-      href: manage/update-cluster.md
-    - name: Monitor the cluster
-      href: manage/monitor-cluster.md
+    - name: Management
+      items:
+      - name: Manage the cluster
+        href: manage/cluster.md
+      - name: Manage clusters with PowerShell
+        href: manage/cluster-powershell.md
+      - name: Manage Network ATC
+        href: manage/manage-network-atc.md
+      - name: Update the cluster
+        href: manage/update-cluster.md
+      - name: Update SDN infrastructure
+        href: manage/update-sdn.md 
+      - name: Manage quick restarts
+        href: manage/kernel-soft-reboot.md
+      - name: Set up a cluster witness
+        href: manage/witness.md
+    - name: Monitoring
+      items:
+      - name: Configure Azure portal to monitor clusters (preview)
+        href: manage/monitor-azure-portal.md
+      - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+        href: manage/azure-stack-hci-insights.md
+      - name: Monitor clusters from Windows Admin Center
+        href: manage/monitor-cluster.md
+      - name: Monitor clusters with Health Service
+        href: manage/health-service-overview.md        
+      - name: Get cluster performance history
+        href: manage/health-service-cluster-performance-history.md
+      - name: View Health Service faults
+        href: manage/health-service-faults.md
+      - name: Track Health Service actions
+        href: manage/health-service-actions.md
+      - name: Modify Health Service settings
+        href: manage/health-service-settings.md
+      - name: Use DISKSPD to test workloads
+        href: manage/diskspd-overview.md
+    - name: Cluster servers
+      items:
+      - name: Add or remove servers
+        href: manage/add-cluster.md
+      - name: Convert to stretched cluster
+        href: manage/convert-to-stretched-cluster.md
+      - name: Take a server offline for maintenance
+        href: manage/maintain-servers.md
+      - name: Change languages
+        href: manage/languages.md
+      - name: Change privacy settings
+        href: manage/change-privacy-settings.md
+      - name: Use BitLocker with Cluster Shared Volumes
+        href: manage/bitlocker-on-csv.md
+  - name: Manage SDN
+    items:
+    - name: Deploy an SDN infrastructure
+      href: manage/sdn-express.md
     - name: Use Datacenter Firewall
-      href: manage/use-datacenter-firewall.md
-    - name: Use DISKSPD to test workloads
-      href: manage/diskspd-overview.md
-    - name: Add or remove servers
-      href: manage/add-cluster.md
-    - name: Take a server offline for maintenance
-      href: manage/maintain-servers.md
-    - name: Manage Azure registration
-      href: manage/manage-azure-registration.md
-    - name: Change languages
-      href: manage/languages.md
-    - name: Change privacy settings
-      href: manage/change-privacy-settings.md
-    - name: Troubleshoot cluster validation reporting
-      href: manage/validate-qos.md
-    - name: Troubleshoot CredSSP
-      href: manage/troubleshoot-credssp.md
+      href: manage/use-datacenter-firewall-windows-admin-center.md
+    - name: Use Datacenter Firewall with PowerShell
+      href: manage/use-datacenter-firewall-powershell.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage software load balancers
+      href: manage/load-balancers.md
+    - name: Manage gateway connections
+      href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
+    - name: Manage cluster registration with Azure
+      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
-    - name: Monitor with Azure Monitor
-      href: manage/azure-monitor.md
+    - name: Use Azure Backup
+      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
-    - name: Use Azure Backup
-      href: manage/use-azure-backup.md
     - name: Use Azure Network Adapter
-      href: manage/use-azure-network-adapter.md
+      href: /windows-server/manage/windows-admin-center/azure/use-azure-network-adapter
+- name: Troubleshooting
+  items:
+  - name: Troubleshoot cluster validation reporting
+    href: manage/validate-qos.md
+  - name: Troubleshoot CredSSP
+    href: manage/troubleshoot-credssp.md
+  - name: Collect diagnostic data
+    href: manage/collect-diagnostic-data.md
 - name: Concepts
   items:
   - name: Storage and clusters
     items:
     - name: System requirements
       href: concepts/system-requirements.md
-    - name: Compare to Windows Server
-      href: concepts/compare-windows-server.md
     - name: Choose drives
       href: concepts/choose-drives.md
     - name: Drive symmetry considerations
@@ -134,13 +226,25 @@
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum
       href: concepts/quorum.md
-  - name: Networking
+    - name: Understand and deploy persistent memory
+      href: concepts/deploy-persistent-memory.md
+    - name: Persistent memory health management
+      href: concepts/persistent-memory-health.md
+    - name: Nested virtualization
+      href: concepts/nested-virtualization.md
+  - name: Host networking
     items:
     - name: Physical network requirements
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
-    - name: Software Defined Networking (SDN)
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md
+    - name: Firewall requirements
+      href: concepts/firewall-requirements.md
+  - name: Software Defined Networking (SDN)
+    items:
+    - name: SDN overview
       href: concepts/software-defined-networking.md
     - name: Plan a SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure.md
@@ -160,8 +264,6 @@
     items:
     - name: Billing
       href: concepts/billing.md
-    - name: Configure firewalls
-      href: concepts/configure-firewalls.md
     - name: Updates and upgrades
       href: concepts/updates.md
     - name: Security considerations
@@ -170,12 +272,16 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
+- name: Preview channel
+  items:
+  - name: Join the preview channel
+    href: manage/preview-channel.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
-    href: https://docs.microsoft.com/cli/azure/ext/stack-hci/stack-hci
+    href: /cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
-    href: https://docs.microsoft.com/powershell/module/az.stackhci
+    href: /powershell/module/az.stackhci
   - name: Go package for ARM Azure Stack HCI service API
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
   - name: Azure Stack HCI Java service classes and interfaces
@@ -184,6 +290,8 @@
     href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
   - name: Azure Stack HCI JavaScript package
     href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+  - name: Azure Stack HCI REST API reference
+    href: /rest/api/stackhci
   - name: .NET Namespaces for Azure Stack HCI
     href: /dotnet/api/overview/azure/stackhci/management
   - name: Hyper-V PowerShell commands
@@ -209,7 +317,7 @@
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
-    href: /hybrid    
+    href: /hybrid
   - name: Windows Server
     href: /windows-server/
   - name: Windows Admin Center
@@ -222,9 +330,13 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Azure Stack HCI Eval Guide
+  - name: Evaluation Guide
     href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
-  - name: Azure Stack HCI pricing
+  - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Azure Stack HCI support
+  - name: Support
     href: manage/get-support.md
+  - name: Training
+    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Archived release notes
+    href: preview-release-notes.md

@@ -1,11 +1,11 @@
 ---
 title: Azure Stack network deployment for MDC
 description: Learn about Azure Stack network deployment for the MDC device. 
-author: justinha
+author: PatAltimore
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 01/17/2020
 ---
@@ -29,25 +29,25 @@ inside the Azure Stack solution:
 
 The table below correlates the ACL references with the Azure Stack networks.
 
-| BMC Mgmt Internal                            | Traffic is limited to internal only.                                                                                                                                      |
-|----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| BMC Mgmt External                            | ACL permit access to beyond the border device.                                                                                                                            |   |   |   |   |   |
-| Extended Storage Mgmt                        | Dedicated management interfaces for the extended storage system                                                                                                           |   |   |   |   |   |
-| Switch Mgmt                                  | Dedicated Switch management interfaces.                                                                                                                                   |   |   |   |   |   |
-| "Azure Stack Infrastructure"                 | Azure Stack Infrastructure services and VM's, restricted network                                                                                                          |   |   |   |   |   |
-| Azure Stack Infrastructure Public (PEP/ERCS) | Azure Stack Protected Endpoint, Emergency Recovery Console Server. Customer can open ACL to permit traffic to their datacenter management network.                        |   |   |   |   |   |
-| Tor1,Tor2 RouterIP                           | Loopback interface of the switch used for BGP peering between the SLB and Switch/Router. The customer will have the discretion to firewall off these IPs at the border. |   |   |   |   |   |
-| Storage                                      | Private IPs not routed outside of the Region                                                                                                                             |   |   |   |   |   |
-| Internal VIPs                                | Private IPs not routed outside of the Region                                                                                                                             |   |   |   |   |   |
-| Public VIPs                                  | Tenant network address space managed by the network controller.                                                                                                           |   |   |   |   |   |
-| Public Admin VIPs                            | Small subset of addresses in the Tenant pool that are required to talk to Internal-VIPs and Azure Stack Infrastructure                                                    |   |   |   |   |   |
-| Permitted Networks                           | Customer defined network.                                                                                                                                                 |   |   |   |   |   |
-| 0.0.0.0                                      | From the perspective of Azure Stack 0.0.0.0 is the border device.                                                                                                         |   |   |   |   |   |
-| **Permit**                                   | Permit traffic is enabled but SSH access is blocked by default.                                                                                                           |   |   |   |   |   |
-| **No Route**                                     | Routes are not propagated outside of the Azure Stack environment.                                                                                                         |   |   |   |   |   |
-| **MUX ACL**                                      | Azure Stack MUX ACLs are utilized.                                                                                                                                       |   |   |   |   |   |
-| **N/A**                                          | Not a part of a VLAN ACL.                                                                                                                                                 |   |   |   |   |   |
-|                                              |                                                                                                                                                                           |   |   |   |   |   |
+| Network                                      | Description |
+|----------------------------------------------|--------------|
+| BMC Mgmt Internal                            | Traffic is limited to internal only.|
+| BMC Mgmt External                            | ACL permit access to beyond the border device. |
+| Extended Storage Mgmt                        | Dedicated management interfaces for the extended storage system|
+| Switch Mgmt                                  | Dedicated Switch management interfaces.|
+| "Azure Stack Infrastructure"                 | Azure Stack Infrastructure services and VM's, restricted network|
+| Azure Stack Infrastructure Public (PEP/ERCS) | Azure Stack Protected Endpoint, Emergency Recovery Console Server. Customer can open ACL to permit traffic to their datacenter management network.|
+| Tor1,Tor2 RouterIP                           | Loopback interface of the switch used for BGP peering between the SLB and Switch/Router. The customer will have the discretion to firewall off these IPs at the border.|
+| Storage                                      | Private IPs not routed outside of the Region|
+| Internal VIPs                                | Private IPs not routed outside of the Region|
+| Public VIPs                                  | Tenant network address space managed by the network controller.|
+| Public Admin VIPs                            | Small subset of addresses in the Tenant pool that are required to talk to Internal-VIPs and Azure Stack Infrastructure|
+| Permitted Networks                           | Customer defined network.|
+| 0.0.0.0                                      | From the perspective of Azure Stack 0.0.0.0 is the border device.|
+| **Permit**                                   | Permit traffic is enabled but SSH access is blocked by default.|
+| **No Route**                                 | Routes are not propagated outside of the Azure Stack environment.|
+| **MUX ACL**                                  | Azure Stack MUX ACLs are utilized.|
+| **N/A**                                      | Not a part of a VLAN ACL.|
 
 ### IP address assignments
 

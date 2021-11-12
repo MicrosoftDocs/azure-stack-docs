@@ -71,7 +71,7 @@ The following information provides additional security guidance:
 
 ## Provide capacity by connecting to a standalone hosting SQL server
 
-You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014 or SQL Server 2016. Make sure you have the credentials for an account with sysadmin privileges. 
+You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014, SQL Server 2016 or SQL Server 2019. Make sure you have the credentials for an account with sysadmin privileges. 
 
 To add a standalone hosting server that's already set up, follow these steps:
 
@@ -180,7 +180,7 @@ Use a SKU name that describes the capabilities of the servers in the SKU, such a
 
 As a best practice, all the hosting servers in a SKU should have the same resource and performance characteristics.
 
-SKUs can't be assigned to specific users or groups.
+SKUs cannot be hidden from certain tenants, nor can it be dedicated to certain tenants.
 
 SKUs can take up to an hour to be visible in the portal. Users can't create a database until the SKU is fully created.
 

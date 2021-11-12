@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -110,14 +110,14 @@ The topology of this approach will look like the following diagram:
 
 You will need to know if your identity manager is Azure AD or ADFS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
 
-| Element | Description | Source |
-|--------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Resource Manager URL | The Azure Stack Hub Resource Manager endpoint. | https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1908#the-azure-stack-hub-resource-manager-endpoint |
-| Application name |  |  |
-| Application ID | The service principal app ID saved when the service principal was created in the previous section of this article. | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
-| Subscription ID | You use the subscription ID to access offers in Azure Stack Hub. | https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview?view=azs-1908#subscriptions |
-| Tenant ID (Directory ID) | Your Azure Stack Hub tenant ID. | https://docs.microsoft.com/azure-stack/operator/azure-stack-identity-overview?view=azs-1908 |
-| Application password | The service principal app secret saved when the service principal was created. | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
+| Element | Source |
+| ------- | ------ |
+| Azure Resource Manager URL | [The Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint) |
+| Application name |  |
+| Application ID |  The ID assigned to the service principal when the [application was registered](../operator/give-app-access-to-resources.md) |
+| Subscription ID | Created when you [subscribe to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md) |
+| Tenant ID (Directory ID) | The ID assigned to your [Active Directory tenant](../operator/azure-stack-identity-overview.md) |
+| Application password | The secret assigned to the service principal when the [application was registered](../operator/give-app-access-to-resources.md) |
 
 ## Configure backup using the Commvault Console
 
@@ -126,7 +126,7 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 2. Install Azure Stack Hub PowerShell and Azure Stack Hub Tools on the Commvault VM.
 
     a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
-    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-1908&view=azs-1908).
+    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 

@@ -1,6 +1,7 @@
 # Visual Studio and VS Code files
 .settings.json
 .vscode/*
+*/.vscode/*
 .vs/*
 log/
 obj/
@@ -18,3 +19,6 @@ articles/directories.txt
 AzureMigration.ps1
 
 !/.vscode/extensions.json
+
+# macOS finder files
+.DS_Store

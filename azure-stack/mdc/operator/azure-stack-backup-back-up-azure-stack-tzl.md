@@ -1,6 +1,6 @@
 ---
-title: Back up Azure Stack | Microsoft Docs
-description: Learn how to do an on-demand backup on Azure Stack.
+title: Back up Azure Stack - MDC | Microsoft Docs
+description: Learn how to do an on-demand backup on Azure Stack for a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,14 +12,14 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 06/08/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/26/2020
 
 ---
 
-# Back up Azure Stack
+# Back up Azure Stack - Modular Data Center (MDC)
 
 *Applies to: Modular Data Center, Azure Stack Hub ruggedized*
 

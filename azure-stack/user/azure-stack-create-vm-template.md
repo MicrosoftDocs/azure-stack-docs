@@ -4,7 +4,7 @@ description: Learn how to use the Azure Stack Development Kit (ASDK) to create a
 author: sethmanheim
 
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 02/09/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2019
@@ -60,35 +60,25 @@ This template installs the following components:
 
 1. Select **+ Create a resource**, then **Custom**, then **Template deployment**.
 
-    ![Create a template](media/azure-stack-create-vm-template/1.PNG)
+   [![Create a template](media/azure-stack-create-vm-template/vm-template-1.png)](media/azure-stack-create-vm-template/vm-template-1-expanded.png#lightbox)
 
-2. Select **Edit template**.
+2. Type the name of the template to load; in this example it's **101-vm-linux-minikube**. Then select **Edit template**.
 
-    ![Edit a template](media/azure-stack-create-vm-template/2.PNG)
+    [![Edit a template](media/azure-stack-create-vm-template/vm-template-2.png)](media/azure-stack-create-vm-template/vm-template-2-expanded.png#lightbox)
 
-3. Select **Quickstart template**.
+3. Select **Quickstart template**. Then select **101-vm-linux-minikube** from the available templates using the **Select a template** dropdown list, and then click **OK**.
 
-    ![Quickstart template](media/azure-stack-create-vm-template/3.PNG)
+    [![Quickstart template](media/azure-stack-create-vm-template/vm-template-3.png)](media/azure-stack-create-vm-template/vm-template-3-expanded.png#lightbox)
 
-4. Select **101-vm-linux-minikube** from the available templates using the **Select a template** dropdown list, and then click **OK**.
+4. If you want to make modifications to the template JSON, you can do so. If not, or when complete, select **Save** to close the **Edit template** dialog.
 
-    ![Select a template](media/azure-stack-create-vm-template/4.PNG)
+5. Select **Parameters**, fill in or modify the available fields as necessary, and then click **OK**.
 
-5. If you want to make modifications to the template JSON, you can do so. If not, or when complete, select **Save** to close the **Edit template** dialog.
+6. Choose the subscription to use and then create or choose an existing resource group name. Then, select **Create** to start the template deployment.
 
-    ![Save template](media/azure-stack-create-vm-template/5.PNG)
+    [![Choose subscription](media/azure-stack-create-vm-template/vm-template-4.png)](media/azure-stack-create-vm-template/vm-template-4-expanded.png#lightbox)
 
-6. Select **Parameters**, fill in or modify the available fields as necessary, and then click **OK**.
-
-    ![Parameters](media/azure-stack-create-vm-template/6.PNG)
-
-7. Choose the subscription to use and then create or choose an existing resource group name. Then, select **Create** to start the template deployment.
-
-    ![Choose subscription](media/azure-stack-create-vm-template/7.PNG)
-
-8. The resource group deployment takes several minutes to create the custom template-based VM. You can monitor the installation status through notifications and from the resource group properties.
-
-    ![Deploy](media/azure-stack-create-vm-template/8.PNG)
+7. The resource group deployment takes several minutes to create the custom template-based VM. You can monitor the installation status through notifications and from the resource group properties.
 
     >[!NOTE]
     > The VM will be running when the deployment completes.
@@ -99,7 +89,7 @@ Now that the Linux VM has been successfully created, you can sign in to start Mi
 
 1. After the deployment completes, select **Connect** to view the public IP address that will be used to connect to the Linux VM.
 
-    ![Connect](media/azure-stack-create-vm-template/9.PNG)
+    [![Connect](media/azure-stack-create-vm-template/vm-template-5.png)](media/azure-stack-create-vm-template/vm-template-5-expanded.png#lightbox)
 
 2. From an elevated command prompt, run **mstsc.exe** to open Remote Desktop Connection and connect to the Linux VM public IP address discovered in the previous step. When prompted to sign in to xRDP, use the credentials you specified when creating the VM.
 

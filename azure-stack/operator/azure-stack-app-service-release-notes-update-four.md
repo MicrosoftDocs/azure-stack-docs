@@ -9,6 +9,8 @@ ms.date: 05/05/2020
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
+ms.custom: contperf-fy22q1
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 4.
 # Keyword: app service update 4 azure stack
@@ -243,7 +245,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1809 Release Notes](./release-notes.md?view=azs-2002)
+Refer to the documentation in the [Azure Stack Hub 1809 Release Notes](./release-notes.md?view=azs-1809&preserve-view=true)
 
 ## Next steps
 

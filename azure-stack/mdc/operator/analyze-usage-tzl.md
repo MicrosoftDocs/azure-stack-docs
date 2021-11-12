@@ -1,6 +1,6 @@
 ---
-title: Analyze Azure Stack usage and resource usage API | Microsoft Docs
-description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information.
+title: Analyze Azure Stack usage and resource usage API - MDC
+description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information. For a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 06/01/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/27/2020
 
 ---
 
-# Analyze Azure Stack usage with local usage meters
+# Analyze Azure Stack usage with local usage meters - Modular Data Center (MDC)
 
 Information about which subscriptions use which resources is stored in a local usage database. Administrators can retrieve this data to analyze which users are consuming resources.
 
@@ -110,6 +110,7 @@ To generate the usage data, you should have resources that are running and activ
    ```powershell
    Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
    ```
+
 ### [AzureRM modules](#tab/azurerm1)
 
 1. [Install PowerShell for Azure Stack](../../operator/powershell-install-az-module.md).

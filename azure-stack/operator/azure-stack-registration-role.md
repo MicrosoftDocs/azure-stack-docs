@@ -23,7 +23,7 @@ During Azure Stack Hub registration, you must sign in with an Azure Active Direc
 
 * **App registration permissions in your Azure AD tenant:** Admins have app registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create an Azure AD app and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-    The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack Hub. If the app registrations setting is set to **No**, you can't use a user account to register Azure Stack Hub—you have to use a global admin account.
+    The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack Hub. If the app registrations setting is set to **No**, you can't use a user account to register Azure Stack Hub--you have to use a global admin account.
 
 * **A set of sufficient Azure Subscription permissions:** Users that belong to the Owner role have sufficient permissions. For other accounts, you can assign the permission set by assigning a custom role as outlined in the following sections.
 
@@ -78,7 +78,7 @@ To create a custom role, you must have the `Microsoft.Authorization/roleDefiniti
 
 After the registration custom role is created, assign the role to the user account that will be used for registering Azure Stack Hub.
 
-1. Sign in with the account with sufficient permission on the Azure subscription to delegate rights—such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator).
+1. Sign in with the account with sufficient permission on the Azure subscription to delegate rights--such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator).
 2. In **Subscriptions**, select **Access control (IAM) > Add role assignment**.
 3. In **Role**, choose the custom role you created: *Azure Stack Hub registration role*.
 4. Select the users you want to assign to the role.

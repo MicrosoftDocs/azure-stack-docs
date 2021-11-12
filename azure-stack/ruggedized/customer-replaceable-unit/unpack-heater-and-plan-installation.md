@@ -1,11 +1,11 @@
 ---
 title: Unpack the heater and plan the heater installation
 description: Learn how to unpack the heater and plan the heater installation
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -20,8 +20,8 @@ Read the following sections before you replace the Heater.
 
 ## Unpacking and taking inventory of the heater
 
-The Tactical 1U Heater -- V2 (the heater) typically ships as a
-pre-installed sub-component of the Tactical Cloud Appliance system.
+The Ruggedized 1U Heater -- V2 (the heater) typically ships as a
+pre-installed sub-component of the Ruggedized Cloud Appliance system.
 When shipped separately, the heater is shipped in a standard
 commercial shipping carton with protective packing material.
 

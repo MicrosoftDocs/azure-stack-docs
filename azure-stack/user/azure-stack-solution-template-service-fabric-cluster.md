@@ -101,7 +101,7 @@ Use the following script to create the Key Vault and add the *cluster certificat
    #==============================================================================
    
    Add-AzEnvironment -Name AzureStack -ARMEndpoint $armEndpoint
-   Login-AzAccount -Environment AzureStack -TenantId $tenantId
+   Connect-AzAccount -Environment AzureStack -TenantId $tenantId
    
    $rgName = "sfvaultrg"
    Write-Host "Creating Resource Group..." -ForegroundColor Yellow

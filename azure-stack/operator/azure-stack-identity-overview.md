@@ -4,7 +4,7 @@ description: Learn about the identity providers you can use with Azure Stack Hub
 author: BryanLa
 
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 11/02/2021
 ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
@@ -85,7 +85,7 @@ Apps can support two types of tenancy:
 
 - **Multi-tenant**: Supports use by users and services from both the directory where the app is registered and additional tenant directories. With multi-tenant apps, users of another tenant directory (another Azure AD tenant) can sign in to your app.
 
-  For more information about multi-tenancy, see [Enable multi-tenancy](azure-stack-enable-multitenancy.md).
+  For more information about multi-tenancy, see [Enable multi-tenancy](enable-multitenancy.md).
 
   For more information about developing a multi-tenant app, see [Multi-tenant apps](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
@@ -109,9 +109,9 @@ A service principal is created in each tenant where the app is used. The service
 Credentials for service principals can be either a key that's generated through the Azure portal or a certificate. The use of a certificate is suited for automation because certificates are considered more secure than keys.
 
 > [!NOTE]
-> When you use AD FS with Azure Stack Hub, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
+> When you use AD FS with Azure Stack Hub, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](./give-app-access-to-resources.md).
 
-To learn about service principals for Azure Stack Hub, see [Create service principals](azure-stack-create-service-principals.md).
+To learn about service principals for Azure Stack Hub, see [Create service principals](./give-app-access-to-resources.md).
 
 ### Services
 
@@ -190,6 +190,15 @@ Details about using Azure PowerShell to authenticate with Azure Stack Hub can be
 ### Authenticate with Azure CLI
 
 For information about using Azure PowerShell to authenticate with Azure Stack Hub, see [Install and configure Azure CLI for use with Azure Stack Hub](../user/azure-stack-version-profiles-azurecli2.md).
+
+## Azure Policy
+
+[Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at-scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to per-resource, per-policy granularity. It also helps to bring your resources to compliance through bulk remediation for existing resources and automatic remediation for new resources.
+
+Common use cases for Azure Policy include implementing governance for resource consistency, regulatory compliance, security, cost, and management. Policy definitions for these common use cases are already built in to your Azure environment to help you get started.
+
+> [!NOTE]
+> Azure Policy is currently not supported on Azure Stack Hub.
 
 ## Next steps
 

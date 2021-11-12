@@ -12,9 +12,9 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2020
+ms.date: 10/13/2021
 ms.author: sethm
-ms.reviewer: avishwan
+ms.reviewer: unknown
 ms.lastreviewed: 10/26/2020
 
 ---
@@ -31,11 +31,11 @@ Infrastructure backup is enabled by default during deployment of a new system an
 
 ### Networking
 
-The Universal Naming Convention (UNC) string for the path must use a fully qualified domain name (FQDN). IP address can be used if name resolution isn\'t possible. A UNC string specifies the location of resources such as shared files or devices.
+The Universal Naming Convention (UNC) string for the path must use a fully qualified domain name (FQDN). An IP address can be used if name resolution isn't possible. A UNC string specifies the location of resources such as shared files or devices.
 
 ### Encryption
 
-The encryption certificate is used to encrypt backup data that gets exported to external storage. The certificate can be a self-signed certificate since the certificate is only used to transport keys. Refer to New-SelfSignedCertificate for more info on how to create a certificate.
+The encryption certificate is used to encrypt backup data that gets exported to external storage. The certificate can be a self-signed certificate since the certificate is only used to transport keys. For more information about how to create a certificate, see the documentation for **New-SelfSignedCertificate**.
 
 The certificate must be stored in a secure location. The CER format of the certificate is used to encrypt data only and not used to establish communication.
 
@@ -43,17 +43,17 @@ The certificate must be stored in a secure location. The CER format of the certi
 
 ### Backups
 
-- Backup jobs execute while the system is running so there\'s no downtime to the management experiences or user apps. Expect the backup jobs to take 20-40 minutes for a solution that\'s under reasonable load.
+- Backup jobs execute while the system is running so there is no downtime to the management experiences or user apps. Expect the backup jobs to take 20-40 minutes for a solution that's under reasonable load.
 
 - Additional instructions provided to manually back up network switches and the hardware lifecycle host (HLH).
 
 ### Folder names
 
-- Infrastructure creates MASBACKUP folder automatically. This is a Microsoft-managed share. You can create shares at the same level as MASBACKUP. It\'s not recommended to create folders or storage data inside of MASBACKUP that Azure Stack doesn\'t create.
+- The infrastructure creates a MASBACKUP folder automatically. This is a Microsoft-managed share. You can create shares at the same level as MASBACKUP. It's not recommended to create folders or storage data inside of MASBACKUP that Azure Stack does not create.
 
-- User FQDN and region in your folder name to differentiate backup data from different clouds. The FQDN of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. For more info, see [Azure Stack datacenter integration - DNS](../../operator/azure-stack-integrate-dns.md).
+- The user FQDN and region in your folder name differentiates backup data from different clouds. The FQDN of your Azure Stack deployment and endpoints is the combination of the **Region** parameter and the **External Domain Name** parameter. For more information, see [Azure Stack datacenter integration - DNS](../../operator/azure-stack-integrate-dns.md).
 
-For example, the backup share is AzSBackups hosted on fileserver01.contoso.com. In that file share there may be a folder per Azure Stack deployment using the external domain name and a subfolder that uses the region name.
+For example, the backup share is **AzSBackups** hosted on **fileserver01.contoso.com**. In that file share, there may be a folder per Azure Stack deployment using the external domain name and a subfolder that uses the region name.
 
 - FQDN: contoso.com
 - Region: nyc
@@ -67,7 +67,7 @@ For example, the backup share is AzSBackups hosted on fileserver01.contoso.com. 
 
 The `MASBackup` folder is where Azure Stack stores its backup data. Don't use this folder to store your own data. OEMs should also not use this folder to store any backup data.
 
-OEMs are encouraged to store backup data for their components under the region folder. Each network switch, hardware lifecycle host (HLH), and so on, may be stored in its own subfolder. For example:
+OEMs are encouraged to store backup data for their components under the region folder. You can store each network switch, hardware lifecycle host (HLH), and so on, in its own subfolder. For example:
 
 ```shell
 \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\HLH
@@ -102,7 +102,7 @@ The Infrastructure Backup Controller is a Service Fabric service that gets insta
 
 ### Backup Resource Provider
 
-The Backup Resource Provider presents a user interface in the Azure Stack portal for basic configuration and listing of backup resources. Operators can do the following actions in the user interface:
+The Backup Resource Provider presents a user interface in the Azure Stack portal for basic configuration and listing of backup resources. Operators can perform the following actions in the user interface:
 
 - Enable backup for the first time by providing external storage location, credentials, and encryption key.
 - View completed created backup resources and status resources under creation.
@@ -141,8 +141,7 @@ The Infrastructure Backup Service supports transferring backup data to an extern
 
 #### Storage location sizing
 
-We recommend you back up at least twice a day, and keep at most seven days of backups. This is the default behavior when you enable infrastructure backups on Azure Stack.
-
+We recommend that you back up at least twice a day, and keep at most seven days of backups. This is the default behavior when you enable infrastructure backups on Azure Stack.
 
 |Environment Scale  |Projected size of backup  |Total amount of space required  |
 |---------|---------|---------|
@@ -150,6 +149,7 @@ We recommend you back up at least twice a day, and keep at most seven days of ba
 <!-- TZLASDKFIX 
 |ASDK     |   10 GB      |   140 GB     |
 -->
+
 ### Network requirements
 
 |Storage location  |Details  |
@@ -162,7 +162,7 @@ We recommend you back up at least twice a day, and keep at most seven days of ba
 
 ### Encryption requirements
 
-The Infrastructure Backup Service uses a certificate with a public key (.CER) to encrypt backup data. The certificate is used for transport of keys and is not used to establish secure authenticated communication. For this reason, the certificate can be a self-signed certificate. Azure Stack doesn't need to verify root or trust for this certificate, so external internet access is not required.
+The Infrastructure Backup Service uses a certificate with a public key (.CER) to encrypt backup data. The certificate is used for transport of keys and is not used to establish secure authenticated communication. For this reason, the certificate can be a self-signed certificate. Azure Stack does not need to verify root or trust for this certificate, so external internet access is not required.
 
 The self-signed certificate comes in two parts, one with the public key and one with the private key:
 

@@ -2,10 +2,10 @@
 title: Validate Azure registration
 titleSuffix: Azure Stack Hub
 description: Learn how to validate Azure registration with the Azure Stack Hub Readiness Checker tool.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
 ms.date: 10/19/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: jerskine
 ms.lastreviewed: 10/19/2020
 
@@ -50,7 +50,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 
    ```powershell
    Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-   Install-AzProfile -Profile 2019-03-01-hybrid -Force
+   Install-AzProfile -Profile 2020-09-01-hybrid -Force
    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
    ```
 

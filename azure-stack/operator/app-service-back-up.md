@@ -61,7 +61,7 @@ To manually back up these databases while logged into the SQL Server, use the fo
   ```
 
 > [!NOTE]
-> If you need to back up SQL AlwaysOn databases, follow [these instructions](/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017). 
+> If you need to back up SQL AlwaysOn databases, follow [these instructions](/sql/database-engine/availability-groups/windows/configure-backup-on-availability-replicas-sql-server?view=sql-server-2017&preserve-view=true). 
 
 After all databases have been successfully backed up, copy the .bak files to a safe location along with the App Service secrets info.
 

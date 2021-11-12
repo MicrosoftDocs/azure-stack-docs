@@ -23,13 +23,13 @@ The information in this article helps you understand and resolve common issues w
 
 **Issue** - Certificate does not contain HTTP CRL in CDP Extension.
 
-**Fix** - This is a non-blocking issue. Azure Stack requires HTTP CRL for revocation checking as per [Azure Stack Hub public key infrastructure (PKI) certificate requirements](https://aka.ms/azspki).  A HTTP CRL was not detected on the certificate.  To ensure certificate revocation checking works, the Certificate Authority should issue a certificate with a HTTP CRL in the CDP extension.
+**Fix** - This is a non-blocking issue. Azure Stack requires HTTP CRL for revocation checking as per [Azure Stack Hub public key infrastructure (PKI) certificate requirements](./azure-stack-pki-certs.md).  A HTTP CRL was not detected on the certificate.  To ensure certificate revocation checking works, the Certificate Authority should issue a certificate with a HTTP CRL in the CDP extension.
 
 ## HTTP CRL - Fail
 
 **Issue** - Cannot connect to HTTP CRL in CDP Extension.
 
-**Fix** - This is a blocking issue. Azure Stack requires connectivity to a HTTP CRL for revocation checking as per [Publishing Azure Stack Hub Ports and URLs (outbound)](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound).
+**Fix** - This is a blocking issue. Azure Stack requires connectivity to a HTTP CRL for revocation checking as per [Publishing Azure Stack Hub Ports and URLs (outbound)](./azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
 ## PFX Encryption
 

@@ -23,9 +23,10 @@ Containerization is an approach to software distribution in which an app or serv
 Container support is currently available for a subset of Azure Cognitive Services:
 
 - **Speech**
+    - Speech-to-text (standard)
+    - Speech-to-text (custom)
     - Text-to-speech (standard)
-    - Text-to-speech (custom)
-    - Text-to-speech (standard)
+    - Text-to-speech (Neural)
 - **Language**
     - Language understanding
     - Text analytics (sentiment analysis)

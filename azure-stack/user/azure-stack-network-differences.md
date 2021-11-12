@@ -2,7 +2,7 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: mattbriggs
-ms.date: 5/27/2020
+ms.date: 05/17/2021
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
@@ -25,7 +25,6 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Service | Feature | Azure (global) | Azure Stack Hub |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DNS | Multi-tenant DNS | Supported | Not yet supported |
-|  | DNS AAAA records | Supported | Not supported |
 |  | DNS zones per subscription | 100 (default)<br>Can be increased on request. | 100 |
 |  | DNS record sets per zone | 5000 (default)<br>Can be increased on request. | 5000 |
 |  | Name servers for zone delegation | Azure provides four name servers for each user (tenant) zone that is created. | Azure Stack Hub provides two name servers for each user (tenant) zone that is created. |
@@ -47,16 +46,17 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Virtual Network Gateway Type | Azure Supports VPN<br> Express Route <br> Hyper Net. | Azure Stack Hub currently supports only VPN type. |
 |  | VPN Gateway SKUs | Support for Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance. | Support for Basic, Standard, and High-Performance SKUs. |
 |  | VPN Type | Azure supports both policy-based and route-based. | Azure Stack Hub supports route-based only. |
-|  | BGP Settings | Azure supports configuration of BGP Peering Address and Peer Weight. | BGP Peering Address and Peer Weight are auto-configured in Azure Stack Hub. There's no way for the user to configure these settings with their own values. |
+|  | BGP Settings | Azure supports configuration of BGP Peering Address and Peer Weight. | BGP Peering Address and Peer Weight are auto-configured in Azure Stack Hub.<br/> Support for up to 150 routes for BGP advertisement.<br/> There's no way for the user to configure these settings with their own values. |
 |  | Default Gateway Site | Azure supports configuration of a default site for forced tunneling. | Not yet supported. |
 |  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Resizing not supported. |
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 |  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
-| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer /path/ cannot have more than 5 front-end IP configurations.  |
+| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |
+| Internal Load Balancer | Front end IP | No limit. | Azure Stack Hub provides an IP pool of 127 IPs for the internal load balancer's front end IPs. A small subset of that IP pool (8) is used for its internal infrastructure and 119 are available for users. |
 | Public IP Address | Public IP Address Version | Azure supports both IPv6 and IPv4. | Only IPv4 is supported. |
 | | SKU | Azure supports Basic and Standard. | Only Basic is supported. |
 | Network Interface | Get Effective Route Table | Supported | Not yet supported. |
@@ -67,6 +67,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Internal DNS Name Label | Supported | Not yet supported. |
 |  | Private IP Address Version | Both IPv6 and IPv4 are supported. | Only IPv4 is supported. |
 |  | Static MAC Address | Not supported | Not supported. Each Azure Stack Hub system uses the same MAC address pool. |
+| | Network interface for virtual machines | Supported. New network interface configuration only applied after rebooting the virtual machine. | Supported. New network interface configuration is applied while the virtual machine is running. This might impact overall virtual machine connectivity and drop existing connections for a few seconds. It is recommended to add the network interface while the virtual machine is stopped or during a planned maintenance.
 | Network Watcher | Network Watcher tenant network monitoring capabilities | Supported | Not yet supported. |
 | CDN | Content Delivery Network profiles | Supported | Not yet supported. |
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |

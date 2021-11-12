@@ -3,7 +3,7 @@ title: Clear portal user data on demand from Azure Stack Hub
 description: Learn how to clear portal user data when requested by Azure Stack Hub users.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 02/08/2021
 ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
@@ -24,7 +24,7 @@ Removing portal user settings should only be done after the user subscription ha
 > [!NOTE]
 > Some user data can still exist in the system section of event logs after following the guidance in this article. This data can remain for several days until the logs automatically roll over.
 
-## Requirements
+## Prerequisites
 
 - [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
 - [Download the latest Azure Stack Hub tools](azure-stack-powershell-download.md) from GitHub.

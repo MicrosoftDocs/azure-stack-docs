@@ -4,7 +4,7 @@ description: Learn how to register Azure Stack Hub as a Cloud Solution Provider 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2019
@@ -32,7 +32,7 @@ The following figure shows the required steps to choose your shared services acc
 Choose the type of shared services account that you use for Azure Stack Hub. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack Hub are:
 
 - Cloud Solution Provider
-- Partner Shared Services subscription
+- Azure Partner Shared Services subscription
 
 We've created a tutorial video to help you understand how to manage your multi-tenant rights:
 
@@ -52,7 +52,7 @@ CSP subscriptions are the preferred choice for registration when a CSP reseller 
 
 ## Register Azure Stack Hub
 
-Use the APSS subscription created using the information in the preceding section to register Azure Stack Hub with Azure. For more information, see [Register Azure Stack Hub with your Azure Subscription](azure-stack-registration.md).
+Use the APSS subscription created using the information in the preceding section to register Azure Stack Hub with Azure. For more information, see [Register Azure Stack Hub with your Azure subscription](azure-stack-registration.md).
 
 ## Add end customer
 

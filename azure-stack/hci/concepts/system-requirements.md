@@ -1,17 +1,17 @@
 ---
 title: System requirements for Azure Stack HCI
 description: How to choose servers, storage, and networking components for Azure Stack HCI.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/29/2020
+ms.date: 06/14/2021
 ---
 
 # System requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Use this topic to assess system requirements for servers, storage, and networking for Azure Stack HCI.
 
@@ -23,7 +23,7 @@ Keep the following in mind for various types of Azure Stack HCI deployments:
 
 - Stretched clusters require servers to be deployed at two separate sites. The sites can be in different countries, different cities, different floors, or different rooms. A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site).
 
-- It's recommended that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade, or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
+- It's required that all servers be the same manufacturer and model, using 64-bit Intel Nehalem grade, AMD EPYC grade, or later compatible processors with second-level address translation (SLAT). A second-generation Intel Xeon Scalable processor is required to support Intel Optane DC persistent memory. Processors must be at least 1.4 GHz and compatible with the x64 instruction set.
 
 - Make sure that the servers are equipped with at least 32 GB of RAM per node to accommodate the server operating system, VMs, and other apps or workloads. In addition, allow 4 GB of RAM per terabyte (TB) of cache drive capacity on each server for Storage Spaces Direct metadata.
 
@@ -57,19 +57,7 @@ An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency netwo
 - Verify at least one network adapter is available and dedicated for cluster management.
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
 
-There are multiple types of communication going on between server nodes:
-
-- Cluster communication (node joins, cluster updates, registry updates)
-- Cluster Heartbeats
-- Cluster Shared Volume (CSV) redirected traffic
-- Live migration traffic for virtual machines
-
-With Storage Spaces Direct, there is additional network traffic to consider:
-
-- Storage Bus Layer (SBL) – extents, or data, spread out between the nodes
-- Health – monitoring and managing objects (nodes, drives, network cards, Cluster Service)
-
-For stretched clusters, there is also additional Storage Replica traffic flowing between the sites. Storage Bus Layer (SBL) and Cluster Shared Volume (CSV) traffic does not go between sites, only between the server nodes within each site.
+For physical networking considerations and requirements, see [Physical network requirements](physical-network-requirements.md).
 
 For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
@@ -85,51 +73,6 @@ For more information about preparing for using SDN in Azure Stack HCI, see [Plan
 
    > [!NOTE]
    > SDN is not supported on stretched (multi-site) clusters.
-
-### SDN hardware requirements
-
-This section provides network hardware requirements for NICs and physical switches when planning for a SDN environment.
-
-#### Network interface cards (NICs)
-
-The NICs that you use in your Hyper-V hosts and storage hosts require specific capabilities to achieve the best performance.
-
-Remote Direct Memory Access (RDMA) is a kernel bypass technique that makes it possible to transfer large amounts of data without using the host CPU, which frees the CPU to perform other work. Switch Embedded Teaming (SET) is an alternative NIC Teaming solution that you can use in environments that include Hyper-V and the SDN stack. SET integrates some NIC Teaming functionality into the Hyper-V Virtual Switch.
-
-For more information, see [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
-
-To account for the overhead in tenant virtual network traffic caused by VXLAN or NVGRE encapsulation headers, the maximum transmission unit (MTU) of the Layer-2 fabric network (switches and hosts) must be set to greater than or equal to 1674 bytes \(including Layer-2 Ethernet headers\).
-
-NICs that support the new *EncapOverhead* advanced adapter keyword set the MTU automatically through the Network Controller Host Agent. NICs that do not support the new *EncapOverhead* keyword need to set the MTU size manually on each physical host using the *JumboPacket* \(or equivalent\) keyword.
-
-#### Switches and routers
-
-When selecting a physical switch and router for your SDN environment, make sure it supports the following set of capabilities:
-- Switchport MTU settings \(required\)
-- MTU set to >= 1674 bytes \(including L2-Ethernet Header\)
-- L3 protocols \(required\)
-- Equal-cost multi-path (ECMP) routing
-- BGP \(IETF RFC 4271\)\-based ECMP
-
-Implementations should support the MUST statements in the following IETF standards:
-- RFC 2545: [BGP-4 Multiprotocol extensions for IPv6 Inter-Domain Routing](https://tools.ietf.org/html/rfc2545)
-- RFC 4760: [Multiprotocol Extensions for BGP-4](https://tools.ietf.org/html/rfc4760)
-- RFC 4893: [BGP Support for Four-octet AS Number Space](https://tools.ietf.org/html/rfc4893)
-- RFC 4456: [BGP Route Reflection: An Alternative to Full Mesh Internal BGP (IBGP)](https://tools.ietf.org/html/rfc4456)
-- RFC 4724: [Graceful Restart Mechanism for BGP](https://tools.ietf.org/html/rfc4724)
-
-The following tagging protocols are required:
-- VLAN - Isolation of various types of traffic
-- 802.1q trunk
-
-The following items provide Link control:
-- Quality of Service \(QoS\) \(PFC only required if using RoCE\)
-- Enhanced Traffic Selection \(802.1Qaz\)
-- Priority-based Flow Control (PFC) \(802.1p/Q and 802.1Qbb\)
-
-The following items provide availability and redundancy:
-- Switch availability (required)
-- A highly available router is required to perform gateway functions. You can provide this by using either a multi-chassis switch\router or technologies like the Virtual Router Redundancy Protocol (VRRP).
 
 ### Domain requirements
 

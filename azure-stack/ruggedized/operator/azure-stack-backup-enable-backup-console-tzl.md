@@ -12,14 +12,14 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/16/2019
+ms.date: 06/08/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 12/16/2019
 
 ---
 
-# Configure backup for Azure Stack Hub from the administrator portal
+# Configure backup for Azure Stack Hub from the administrator portal - Azure Stack Hub Ruggedized
 
 *Applies to: Modular Data Center, Azure Stack Hub ruggedized*
 

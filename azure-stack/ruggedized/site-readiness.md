@@ -1,9 +1,9 @@
 ---
 title: Azure Stack Hub ruggedized site readiness for Azure Stack Hub | Microsoft Docs
-description: Learn site readiness specifications for a Azure Stack Hub ruggedized  .
+description: Learn site readiness specifications for an Azure Stack Hub ruggedized.
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: PatAltimore
 manager: femila
 editor: ''
 
@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 07/21/2021
 ms.author: wamota
 ms.reviewer: wamota
 ms.lastreviewed: 10/14/2020
@@ -20,7 +20,7 @@ ms.lastreviewed: 10/14/2020
 
 # Azure Stack Hub ruggedized site readiness
 
-This topic covers environmental and PDU power drop requirements for the Azure Stack Hub ruggedized. 
+This topic covers environmental and PDU power drop requirements for the Azure Stack Hub ruggedized.
 
 >[!NOTE]
 >These values are intended solely for facility planning purposes and are approximate and conservative. Actual requirements may vary.
@@ -29,28 +29,30 @@ This topic covers environmental and PDU power drop requirements for the Azure St
 
 The table below lists the environmental requirements for an Azure Stack Hub ruggedized solution with the following configuration:
 
-- 14 TB scale unit
-- 200 volt AC input voltage
+- 14-TB scale unit
+- 200-volt AC input voltage
 - 35°C maximum ambient temperature
 
-*Table 1. High/low configuration environmental requirements*
+*Table 1. Configuration environmental requirements*
 
 | Object                         | Azure Stack Hub ruggedized requirements               |
 |--------------------------------|--------------------------------|
 |Operating temperature           | Azure Stack Hub ruggedized operating temperature (with heater requirements): -32°C (-25.6°F) to 43°C (109°F).    |
-|Humidity and moisture           | Storage: 5% to 95% RH with 33°C (91°F) maximum dew point. Atmosphere must be non-condensing at all times. <br> Operating: 5% to 85% RH with 29°C (84.2°F) maximum dew point.
+|Humidity and moisture           | Storage: 5% to 95% RH with 33°C (91°F) maximum dew point. Atmosphere must be non-condensing always. <br> Operating: 5% to 85% RH with 29°C (84.2°F) maximum dew point.
 |Physical connectivity           | Azure Stack Hub ruggedized can be physically connected via the following: <br>4x10G SR SFP+ <br>4x1000BASE-SX <br>4x 1000BASE-T
-|Power input                     | Max 4.981 Kw, Avg 4.391 KW<br> Input Connector C13/C14<br> Input: 100-240V 50/60Hz
+|Power input                     | Max 4.981 Kw, Avg 4.391 KW<br> Input Connector C13/C14<br> Input: 100-240 V 50/60Hz
 
 ## PDU power drop requirements
 
-The following table lists the power drops required for the Azure Stack Hub ruggedized.
+It's recommended that you use a PDU to connect all the power components. Note that PDUs are not included with the Azure Stack Hub ruggedized system.
+
+The following table lists the power drops required for Azure Stack Hub ruggedized:
 
 *Table 2. Required number of power drops*
 
-| Configuration  | Single phase  | Three-phase Delta |Three-phase Wye |
-|----------------|---------------|-------------------|----------------|
-|High/low        | 2             | 2                 | 2              |
+| Single phase  | Three-phase Delta |Three-phase Wye |
+|---------------|-------------------|----------------|
+| 2             | 2                 | 2              |
 
 The Azure Stack integrated system enables you to use different PDU connector types to best integrate into your datacenter. The table below lists the connector types:
 

@@ -3,9 +3,9 @@ title: Prepare update package in Azure Stack Hub
 description: Learn to prepare an update package in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 05/11/2021
 ms.author: sethm
-ms.lastreviewed: 09/10/2019
+ms.lastreviewed: 03/10/2021
 ms.reviewer: sranthar
 
 # Intent: As an Azure Stack Hub operator, I want to prepare an update package so I can use it to update my Azure Stack Hub environment.
@@ -39,8 +39,10 @@ The update package for Azure Stack Hub updates and hotfixes is available for con
 
 Review the package contents. An update package typically consists of the following files:
 
-- **A self-extracting \<PackageName>.zip file**. This file contains the payload for the update.
-- **A Metadata.xml file**. This file contains essential information about the update; for example, the publisher, name, prerequisite, size, and support path URL.
+- One or more **.zip** files named **\<PackageName\>.zip**. These files contain the payload for the update.
+- A **metadata.xml** file. This file contains essential information about the update; for example, the publisher, name, prerequisite, size, and support path URL.
+
+SHA256 hashes are computed for the .zip file(s) with update package content and inserted into the metadata.xml associated with the package. The **metadata.xml** file itself is signed with an embedded signature using a certificate trusted by the Azure Stack Hub system.
 
 ### Automatic download and preparation for update packages
 
@@ -55,7 +57,7 @@ Azure Stack Hub updates for [full and express updates](./azure-stack-updates.md#
 
 ### Where to download Azure Stack Hub hotfix packages
 
-Packages for [Azure Stack Hub hotfixes](./azure-stack-updates.md#update-package-types) are hosted in the same secure Azure endpoint as Azure Stack Hub updates. Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](#automatic-download-and-preparation-for-update-packages) when they become available. You can download them using the embedded links in each of the respective hotfix KB articles, such as [Azure Stack Hub hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can also find links to hotfixes in the release notes corresponding to your Azure Stack Hub version.
+Packages for [Azure Stack Hub hotfixes](./azure-stack-updates.md#update-package-types) are hosted in the same secure Azure endpoint as Azure Stack Hub updates. Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](#automatic-download-and-preparation-for-update-packages) when they become available. You can download them using the embedded links in each of the respective hotfix KB articles. You can also find links to hotfix KB articles in the release notes corresponding to your Azure Stack Hub version.
 
 ### Where to download OEM update packages
 
@@ -68,41 +70,45 @@ The following procedure shows how to import and install update packages in the a
 > [!IMPORTANT]  
 > Notify users of any maintenance operations, and ensure you schedule normal maintenance windows during non-business hours as much as possible. Maintenance operations can affect both user workloads and portal operations.
 
-1. In the administrator portal, select **All services**. Then, under the **DATA + STORAGE** category, select **Storage accounts**. Or, in the filter box, start typing **storage accounts**, and select it.
+1. In the administrator portal, select **All services**. Then, under the **STORAGE** category, select **Storage accounts**. Or, in the filter box, start typing **storage accounts**, and then select it.
 
-    ![Azure Stack Hub update](./media/azure-stack-update-prepare-package/image1.png)
+    [![Azure Stack Hub update](./media/azure-stack-update-prepare-package/select-storage-small.png)](./media/azure-stack-update-prepare-package/select-storage.png#lightbox)
 
 2. In the filter box, type **update**, and select the **updateadminaccount** storage account.
 
-3. In the storage account details, under **Services**, select **Blobs**.
+3. In **All services**, under **Essentials** or **Blob service**, select **Containers**.
 
-    ![Azure Stack Hub update - blob](./media/azure-stack-update-prepare-package/image2.png)
+    [![Azure Stack Hub update - blob](./media/azure-stack-update-prepare-package/select-containers-small.png)](./media/azure-stack-update-prepare-package/select-containers.png#lightbox)
 
-4. Under **Blob service**, select **+ Container** to create a container. Enter a name (for example, **update-1811**), and then select **OK**.
+4. In **Containers**, select **+ Container** to create a container. Enter a name (for example, **update-2102**), and then select **Create**.
 
-    ![Azure Stack Hub update - container](./media/azure-stack-update-prepare-package/image3.png)
+    [![Azure Stack Hub update - container](./media/azure-stack-update-prepare-package/new-container-small.png)](./media/azure-stack-update-prepare-package/new-container.png#lightbox)
 
 5. After the container is created, select the container name, and then select **Upload** to upload the package files to the container.
 
-    ![Azure Stack Hub update - upload](./media/azure-stack-update-prepare-package/image4.png)
+    [![Azure Stack Hub update - upload](./media/azure-stack-update-prepare-package/upload-package-small.png)](./media/azure-stack-update-prepare-package/upload-package.png#lightbox)
 
 6. Under **Upload blob**, select the folder icon, browse to the update package .zip file, and then select **Open** in the file explorer window.
 
 7. Under **Upload blob**, select **Upload**.
 
-    ![Azure Stack Hub update - upload blob](./media/azure-stack-update-prepare-package/image5.png)
+    ![Azure Stack Hub update - upload blob](./media/azure-stack-update-prepare-package/upload-blob.png)
 
 8. Repeat steps 6 and 7 for the **Metadata.xml** file and any additional .zip files in the update package. Don't import the **Supplemental Notice.txt** file if included.
 
 9. When done, you can review the notifications (select the bell icon in the top-right corner of the portal). A notification should indicate that the upload has finished.
 
-10. Go back to the **Update** blade on the dashboard. The blade should indicate that an update is available. This indicates that the update has been prepared successfully. Select the blade to review the newly added update package.
+10. Go back to the **Update** blade on the dashboard. The blade should show that an update is available. This indicates that the update has been prepared successfully. Select the blade to review the newly-added update package.
 
-11. To install the update, select the package that's marked as **Ready**, and either right-click the package and select **Update now**, or select the **Update now** action near the top.
+11. Verify no updates are running. If an update is installing, an alert banner displays *The exclusive operation is in progress. Additional update operations are disabled while the operation is running*. Wait for the update to finish before starting another update.
 
-12. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for six months after the attempt ended.
+    ![Update dashboard showing an update installing and an alert that update operations are disabled](./media/azure-stack-update-prepare-package/update-alert.png)
 
-13. When the update finishes, the Update blade shows the updated Azure Stack Hub version.
+12. To install the update, select the package that's marked as **Ready**, and then select **Update now**.
+
+13. When you select the installing update package, you can view the status in the **Update run details** area. From here, you can also select **Download summary** to download the log files. Logs from update runs are available for six months after the attempt ended.
+
+14. When the update finishes, the **Update** blade shows the updated Azure Stack Hub version.
 
 You can manually delete updates from the storage account after they've been installed on Azure Stack Hub. Azure Stack Hub periodically checks for older update packages and removes them from storage. It may take Azure Stack Hub up to two weeks to remove the old packages.
 

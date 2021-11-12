@@ -1,11 +1,11 @@
 ---
 title: Recover from catastrophic data loss in Azure Stack Hub 
 description: Learn how to recover and restore your infrastructure data in Azure Stack Hub after catastrophic data loss.
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 10/23/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 10/23/2020
 
@@ -30,11 +30,11 @@ This scenario addresses recovering your entire installation if there's a failure
 
 The journey of protecting Azure Stack Hub starts with backing up the infrastructure and app/tenant data separately. This document covers how to protect the infrastructure. 
 
-![Azure Stack Hub data recovery workflow — Deployment](media/azure-stack-backup/azure-stack-backup-workflow1.png)
+![Azure Stack Hub data recovery workflow -- Deployment](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 In worst case scenarios where all data is lost, recovering Azure Stack Hub is the process of restoring the infrastructure data unique to that deployment of Azure Stack Hub and all user data. 
 
-![Azure Stack Hub data recovery workflow — Redeployment](media/azure-stack-backup/azure-stack-backup-workflow2.png)
+![Azure Stack Hub data recovery workflow -- Redeployment](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## Restore
 

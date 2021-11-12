@@ -3,9 +3,9 @@ title: Add a custom VM image to Azure Stack Hub
 description: Learn how to add or remove a custom VM image to Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 07/21/2021
 ms.author: sethm
-ms.reviewer: kivenkat
+ms.reviewer: unknown
 ms.lastreviewed: 9/8/2020
 
 # Intent: As an Azure Stack operator, I want to add a VM image to offer to my tenants.
@@ -17,9 +17,12 @@ ms.lastreviewed: 9/8/2020
 
 In Azure Stack Hub, as an operator you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from global Microsoft Azure Marketplace as a base for your custom image, or create your own using Hyper-V.
 
+> [!NOTE]
+   > Blob access is required to allow the read access.
+
 ## Add an image
 
-You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. You will want to create a generalized image before offering the image to your users. For instructions see [Move a VM to Azure Stack Hub Overview](../user/vm-move-overview.md). When creating images available for your tenants use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
+You can find instructions for adding generalized and specialized images in the **Compute** section of the user guide. You will want to create a generalized image before offering the image to your users. For instructions, see [Move a VM to Azure Stack Hub Overview](../user/vm-move-overview.md). When creating images available for your tenants, use the Azure Stack Hub administrative portal or administrator endpoints rather than the user portal or tenant directory endpoints.
 
 You have two options for making an image available to your users:
 
@@ -35,7 +38,7 @@ To add a platform image to Azure Stack Hub, use the Azure Stack Hub administrato
 
 ### [Portal](#tab/image-add-portal)
 
-Add the VM image as an Azure Stack Hub operator using the portal.
+Add a VM image as an Azure Stack Hub operator using the portal.
 
 1. Sign in to Azure Stack Hub as an operator. Select **Dashboard** from the left-hand navigation.
 
@@ -47,13 +50,13 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
    [![Add a VM image](./media/azure-stack-add-vm-image/tca4-small.png)](./media/azure-stack-add-vm-image/tca4.png#lightbox)
 
-2. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
+4. Under **Create image**, enter the **Publisher**, **Offer**, **SKU**, **Version**, and OS disk blob URI. Then, select **Create** to begin creating the VM image.
 
    [![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5-small.png)](./media/azure-stack-add-vm-image/tca5.png#lightbox)
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
 
-3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
+5. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
 
 ### [PowerShell](#tab/image-add-ps)
 
@@ -61,7 +64,7 @@ Add the VM image as an Azure Stack Hub operator using the portal.
 
 1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).  
 
-2. Sign in to Azure Stack Hub as an operator. For instructions, see [Sign in to Azure Stack Hub as an operator](azure-stack-powershell-configure-admin.md).
+2. [Sign in to Azure Stack Hub as an operator](azure-stack-powershell-configure-admin.md).
 
 3. Open PowerShell with an elevated prompt, and run:
 
@@ -122,7 +125,7 @@ To remove the VM image as an Azure Stack Hub operator using PowerShell, follow t
 
 1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
 
-2. Sign in to Azure Stack Hub as an operator.
+2. [Sign in to Azure Stack Hub as an operator](azure-stack-powershell-configure-admin.md).
 
 3. Open PowerShell with an elevated prompt, and run:
 

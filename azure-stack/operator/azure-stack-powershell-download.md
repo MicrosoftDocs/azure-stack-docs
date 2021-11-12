@@ -81,6 +81,7 @@ The **AzureStack-Tools** repository has PowerShell modules that support the foll
 
 | Functionality | Description | Who can use this module? |
 | --- | --- | --- |
+| [CapacityManagement](azure-stack-manage-storage-shares.md) | Use this module to generate Performance and Capacity Dashboard of storage volumes. | Cloud operators|
 | [Cloud capabilities](../user/azure-stack-validate-templates.md) | Use this module to get the cloud capabilities of a cloud. For example, you can get cloud capabilities like API version and Azure Resource Manager resources. You can also get the VM extensions for Azure Stack Hub and Azure clouds. | Cloud operators and users |
 | [Resource Manager policy for Azure Stack Hub](../user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack Hub. | Cloud operators and users |
 | [Register with Azure](azure-stack-registration.md ) | Use this module to register your ASDK instance with Azure. After registering, you can download Azure Marketplace items use them in Azure Stack Hub. | Cloud operators |

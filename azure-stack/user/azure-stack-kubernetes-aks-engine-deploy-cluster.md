@@ -4,39 +4,51 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 6/25/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/02/2020
+ms.lastreviewed: 6/25/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
 
 ---
-
-
 # Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub
 
 You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
 
 ## Define a cluster specification
 
-You can specify a cluster specification in a document file using the JSON format called the [API model](https://github.com/Azure/aks-engine/blob/master/docs/topics/architecture.md#architecture-diagram). The AKS engine uses a cluster specification in the API model to create your cluster. 
+You can specify a cluster specification in a document file using the JSON format called the API model. The AKS engine uses a cluster specification in the API model to create your cluster.
+
+You can find examples of the API model for your OS and AKS engine version number for recent releases at [AKS engine and corresponding image mapping](kubernetes-aks-engine-release-notes.md#aks-engine-and-corresponding-image-mapping).
+
+1. Find your AKS engine version number, for example, `v.0.63.0`, in the table.
+2. In the [API Model samples table](kubernetes-aks-engine-release-notes.md#aks-engine-and-corresponding-image-mapping), select and open the link for your OS.
+3. Select **Raw**. You can use the URL in the following instructions.
+
+A URL to the API model may look like:
+
+```http  
+https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+```
+
+For each of the following samples replace `<URL for the API Model>` with the URL.
 
 ### Update the API model
 
 This section looks at creating an API model for your cluster.
 
-1.  Start by using an Azure Stack Hub [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS engine, run:
+1.  Start by using an Azure Stack Hub API Model file for Linux or Windows. From the machine, you installed AKS engine, run:
 
     ```bash
-    curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
+    curl -o kubernetes-azurestack.json <URL for the API Model>
     ```
 
     > [!NOTE]  
     > If you are disconnected, you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
 
-2.  To open API model in an editor, you can use nano:
+2.  To open the API model in an editor, you can use nano:
 
     ```bash
     nano ./kubernetes-azurestack.json
@@ -45,7 +57,7 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions. For example, for `orchestratorRelease` use 1.14 or 1.15 and for `orchestratorVersion` use 1.14.7 or 1.15.10 respectively. Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions)
+3.  In the kubernetes-azurestack.json file, find orchestratorRelease and orchestratorVersion. Select one of the supported Kubernetes versions; [you can find the version table in the release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping). Specify the `orchestratorRelease` as x.xx and orchestratorVersion as x.xx.x. For a list of current versions, see [Supported AKS engine Versions](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping)
 
 4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
@@ -61,45 +73,60 @@ This section looks at creating an API model for your cluster.
     > [!NOTE]  
     > If you're using Azure AD for your identity system, you don't need to add the **identitySystem** field.
 
-6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
-
-7.  In `masterProfile`, set the following fields:
+6.  In `masterProfile`, set the following fields:
 
     | Field | Description |
     | --- | --- |
     | dnsPrefix | Enter a unique string that will serve to identify the hostname of VMs. For example, a name based on the resource group name. |
     | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allowed for non-HA deployments. |
     | vmSize |  Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
-    | distro | Enter `aks-ubuntu-16.04`. |
+    | distro | Enter `aks-ubuntu-16.04` or `aks-ubuntu-18.04`. |
 
-8.  In `agentPoolProfiles` update:
+7.  In `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
-    | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://github.com/Azure/aks-engine/blob/master/examples/azure-stack/kubernetes-azurestack.json).  |
+    | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count doesn't go beyond 50. Make sure to use the configuration items specified in [the sample API model JSON file](https://aka.ms/aksengine-json-example-raw).  |
     | vmSize | Enter [a size supported by Azure Stack Hub](./azure-stack-vm-sizes.md), example `Standard_D2_v2`. |
-    | distro | Enter `aks-ubuntu-16.04`. |
+    | distro | Enter `aks-ubuntu-16.04`, `aks-ubuntu-18.04` or `Windows`.<br>Use `Windows` for agents that will run on Windows. For example, see [kubernetes-windows.json](https://raw.githubusercontent.com/Azure/aks-engine/patch-release-v0.60.1/examples/azure-stack/kubernetes-windows.json) |
 
-
-
-
-9.  In `linuxProfile` update:
+8.  In `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
     | adminUsername | Enter the VM admin user name. |
     | ssh | Enter the public key that will be used for SSH authentication with VMs. Use `ssh-rsa` and then the key. For instructions on creating a public key, see [Create an SSH key for Linux](create-ssh-key-on-windows.md). |
 
-    If you are deploying to a custom virtual network, you can find instructions on finding and adding the required key and values to the appropriate arrays in the API Model in [Deploy a Kubernetes cluster to a custom virtual network](kubernetes-aks-engine-custom-vnet.md).
+    If you're deploying to a custom virtual network, you can find instructions on finding and adding the required key and values to the appropriate arrays in the API Model in [Deploy a Kubernetes cluster to a custom virtual network](kubernetes-aks-engine-custom-vnet.md).
 
     > [!NOTE]  
     > The AKS engine for Azure Stack Hub doesn't allow you to provide your own certificates for the creation of the cluster.
+
+9. If you're using Windows, in `windowsProfile` update the values of `adminUsername:` and `adminPassword`:
+
+    ```json
+    "windowsProfile": {
+    "adminUsername": "azureuser",
+    "adminPassword": "",
+    "sshEnabled": true
+    }
+    ```
 
 ### More information about the API model
 
 - For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).  
 - For highlights on specific options for Azure Stack Hub, refer to the [Azure Stack Hub cluster definition specifics](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cluster-definition-aka-api-model).  
 
+## Add certificate when using ASDK
+
+If you are deploying a cluster on the Azure Stack Development Kit (ASDK) and using Linux, you will need to add the root certificate to the trusted certificate store of the client VM running the AKS engine.
+
+1. Find the root certificate in the VM at this directory: `/var/lib/waagent/Certificates.pem.`
+2. Copy the certificate file:
+    ```bash  
+    sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azurestacka.crt
+    sudo update-ca-certificates
+    ```
 ## Deploy a Kubernetes cluster
 
 After you have collected all the required values in your API model, you can create your cluster. At this point you should:
@@ -121,7 +148,7 @@ Proceed to deploy a cluster:
     | location | local | The region name for your Azure Stack Hub. For the ASDK, the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
-    | output-directory | kube-rg | Enter the name of the directory to contain the output file `apimodel.json` as well as other generated files. |
+    | output-directory | kube-rg | Enter the name of the directory to contain the output file `apimodel.json` and other generated files. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. You set up the client secret when creating your service. |
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. You must provide a subscription for the tenent. Deployment to the administrative subscription is not supported.  For more information, see [Subscribe to an offer](./azure-stack-subscribe-services.md#subscribe-to-an-offer) |
@@ -153,7 +180,7 @@ Proceed to deploy a cluster:
 
 ## Verify your cluster
 
-Verify your cluster by deploying MySql with Helm to check your cluster.
+Check your cluster by connect to **kubectl**, getting the info, and then the states of your nodes.
 
 1. Get the public IP address of one of your master nodes using the Azure Stack Hub portal.
 
@@ -161,71 +188,35 @@ Verify your cluster by deploying MySql with Helm to check your cluster.
 
 3. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
 
-4. Run the following commands to create a sample deployment of a Redis master (for connected stamps only):
-
-   ```bash
-   kubectl apply -f https://k8s.io/examples/application/guestbook/redis-master-deployment.yaml
-   ```
-
-    1. Query the list of pods:
-
-       ```bash
-       kubectl get pods
-       ```
-
-    2. The response should be similar to the following:
-
-       ```shell
-       NAME                            READY     STATUS    RESTARTS   AGE
-       redis-master-1068406935-3lswp   1/1       Running   0          28s
-       ```
-
-    3. View the deployment logs:
-
-       ```shell
-       kubectl logs -f <pod name>
-       ```
-
-    For a complete deployment of a sample PHP app that includes the Redis master, follow [the instructions here](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/).
-
-5. For a disconnected stamp, the following commands should be sufficient:
-
-    1. First check that the cluster endpoints are running:
-
-       ```bash
-       kubectl cluster-info
-       ```
-
-       The output should look similar to the following:
-
-       ```shell
-       Kubernetes master is running at https://democluster01.location.domain.com
-       CoreDNS is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-       kubernetes-dashboard is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy
-       Metrics-server is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
-       ```
-
-    2. Then, review node states:
-
-       ```bash
-       kubectl get nodes
-       ```
-
-       The output should be similar to the following:
-
-       ```shell
-       k8s-linuxpool-29969128-0   Ready      agent    9d    v1.15.5
-       k8s-linuxpool-29969128-1   Ready      agent    9d    v1.15.5
-       k8s-linuxpool-29969128-2   Ready      agent    9d    v1.15.5
-       k8s-master-29969128-0      Ready      master   9d    v1.15.5
-       k8s-master-29969128-1      Ready      master   9d    v1.15.5
-       k8s-master-29969128-2      Ready      master   9d    v1.15.5
-       ```
-
-6. To clean up the redis POD deployment from the previous step, run the following command:
+4. Check that the cluster endpoints are running:
 
     ```bash
-    kubectl delete deployment -l app=redis
+    kubectl cluster-info
+    ```
+
+    The output should look similar to the following:
+
+    ```shell
+    Kubernetes master is running at https://democluster01.location.domain.com
+    CoreDNS is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    Metrics-server is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+    ```
+
+5. Then, review node states:
+
+    ```bash
+    kubectl get nodes
+    ```
+
+    The output should be similar to the following:
+
+    ```shell
+    k8s-linuxpool-29969128-0   Ready      agent    9d    v1.15.5
+    k8s-linuxpool-29969128-1   Ready      agent    9d    v1.15.5
+    k8s-linuxpool-29969128-2   Ready      agent    9d    v1.15.5
+    k8s-master-29969128-0      Ready      master   9d    v1.15.5
+    k8s-master-29969128-1      Ready      master   9d    v1.15.5
+    k8s-master-29969128-2      Ready      master   9d    v1.15.5
     ```
 
 ## Rotate your service principle secret
@@ -237,7 +228,7 @@ After the deployment of the Kubernetes cluster with AKS engine, the service prin
 
 ### Update each node manually
 
-1. Get a new secret for your service principal from your cloud operator. For instructions for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](../operator/azure-stack-create-service-principals.md).
+1. Get a new secret for your service principal from your cloud operator. For instructions for Azure Stack Hub, see [Use an app identity to access Azure Stack Hub resources](../operator/give-app-access-to-resources.md).
 2. Use the new credentials provided by your cloud operator to update `/etc/kubernetes/azure.json` on each node. After making the update, restart both **kubelet** and **kube-controller-manager**.
 
 ### Update the cluster with aks-engine update

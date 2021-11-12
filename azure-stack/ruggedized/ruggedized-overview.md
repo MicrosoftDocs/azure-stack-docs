@@ -1,18 +1,18 @@
 ---
-title: Azure Stack Hub ruggedized  
+title: Azure Stack Hub ruggedized
 description: Azure Stack Hub ruggedized is a versatile, ruggedized cloud appliance that easily expanded by adding additional scale units to provide Azure IaaS and PaaS capabilities
-author: BryanLa
-ms.author: bryanla
+author: PatAltimore
+ms.author: patricka
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 10/14/2020
+ms.date: 07/20/2021
 ms.reviewer: prchint
 ms.lastreviewed: 10/14/2020
 ---
 
-# Azure Stack Hub ruggedized 
+# Azure Stack Hub ruggedized
 
-Azure Stack Hub ruggedized is a versatile, ruggedized cloud appliance that can be expanded by adding additional scale units. Azure Stack Hub ruggedized provides Azure IaaS and PaaS capabilities in support of connected and disconnected operations for organizational units consisting of several hundred personnel. Azure Stack Hub ruggedized can support the IT workloads of personnel operating from temporary Combat Outposts (COP) or Tactical Action Centers (TAC) or address the needs of a deployed Army battalion. It has been proven in the field that Azure Stack Hub ruggedized provides sufficient compute and storage capacity to provide static, modular tactical cloud datacenter infrastructure in space-constrained environments such as an aircraft carrier or for small formations or expeditionary units operating at the edge.
+Azure Stack Hub ruggedized is a versatile, ruggedized cloud appliance that can be expanded by adding additional scale units. Azure Stack Hub ruggedized provides Azure IaaS and PaaS capabilities in support of connected and disconnected operations for organizational units consisting of several hundred personnel. Azure Stack Hub ruggedized provides sufficient compute and storage capacity to provide static, modular cloud datacenter infrastructure in space-constrained environments operating at the edge.
 
 ## How you can use Azure Stack Hub ruggedized
 
@@ -26,9 +26,9 @@ You can use Azure Stack Hub ruggedized to:
 
 ## Benefits of using Azure Stack Hub ruggedized
 
-Azure Stack Hub ruggedized supports a consistent environment with Azure in disadvantaged communications environments 
- - Includes one scale-unit of 4-node Azure Stack, capable of running multiple applications, in low, and high capacity options.
- - Delivered enclosed in tactical transit cases modified for enhanced isolation on ruggedized inner-frame.
+Azure Stack Hub ruggedized supports a consistent environment with Azure in disadvantaged communications environments
+ - Includes one scale-unit of 4-node Azure Stack, capable of running multiple applications.
+ - Delivered enclosed in ruggedized transit cases modified for enhanced isolation on ruggedized inner-frame.
  - Each module can be carried by two people.
  - Azure Stack Hub ruggedized is a multi-form factor device based on Azure Stack, with parity to the requirements of a portable datacenter delivering IaaS/PaaS offerings capable of running multiple applications within a range of network conditions.
 

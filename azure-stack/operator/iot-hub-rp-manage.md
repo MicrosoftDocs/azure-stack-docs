@@ -79,7 +79,7 @@ Refer to [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md) for
 
 Because Azure Stack Hub is deployed in an on-premises data center with limited resources, all services running on Azure Stack Hub share and compete for the same resource pool. Operators need to plan and manage the capacity based on the business needs. The IoT Hub resource provider gives operators the ability to manage the capacity requirements for the service.
 
-IoT Hub has a single VM type. As part of IoT Hub deployment, the system provisions a set of these VMs on Azure Stack Hub. The VMs can support a certain number of devices and message throughput. The default setting should meet most requirements. However, if you need more devices or higher message throughput, you can increase the capacity using the administrator portal, CLI, or PowerShell. 
+IoT Hub has a single VM type. As part of IoT Hub deployment, the system provisions a set of these VMs on Azure Stack Hub. The VMs can support a certain number of devices and message throughput. The default setting should meet most requirements. However, if you need more devices or higher message throughput, you can increase the capacity using the administrator portal, Azure CLI, or PowerShell. 
 
 To monitor and change capacity settings:
 
@@ -99,5 +99,4 @@ For more information on:
 
 Azure Stack Hub monitoring capabilities, including alerting, refer to [Monitor Health and Alerts](azure-stack-monitor-health.md).
 
-Azure Stack Hub log collection, see [Overview of Azure Stack diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md).
-
+Azure Stack Hub log collection, see [Overview of Azure Stack diagnostic log collection](./diagnostic-log-collection.md).

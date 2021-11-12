@@ -4,7 +4,7 @@ description: Learn about differences and considerations when working with manage
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/22/2020
+ms.date: 06/15/2021
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 11/22/2020
@@ -53,6 +53,10 @@ There are also differences with storage metrics:
 ## API versions
 
 Azure Stack Hub managed disks support the following API versions:
+
+::: moniker range=">=azs-2102"
+- 2019-07-01
+::: moniker-end
 
 ::: moniker range=">=azs-2008"
 - 2019-03-01
@@ -223,7 +227,7 @@ For Windows, follow the [Generalize the Windows VM using Sysprep](/azure/virtual
 
 ### Step 2: Create the managed image
 
-You can use the portal, PowerShell, or CLI to create the managed image. Follow the steps in [Create a managed image](/azure/virtual-machines/windows/capture-image-resource).
+You can use the portal, PowerShell, or Azure CLI to create the managed image. Follow the steps in [Create a managed image](/azure/virtual-machines/windows/capture-image-resource).
 
 ### Step 3: Choose the use case
 
@@ -359,7 +363,7 @@ After applying the 1808 update or later, you must make the following configurati
 - If a subscription was created before the 1808 update, follow below steps to update the subscription. Otherwise, deploying VMs in this subscription might fail with an error message "Internal error in disk manager."
    1. In the Azure Stack Hub user portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
    2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack Hub - Managed Disk** is listed.
-- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [this article](../operator/azure-stack-enable-multitenancy.md#register-azure-stack-hub-with-the-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with the error message "Internal error in disk manager."
+- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [Configure multi-tenancy in Azure Stack Hub](../operator/enable-multitenancy.md#configure-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with the error message "Internal error in disk manager."
 
 ## Next steps
 

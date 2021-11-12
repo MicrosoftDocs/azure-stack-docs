@@ -4,9 +4,9 @@ title: Troubleshoot site-to-site VPN connections in Azure Stack Hub
 description: Troubleshooting steps you can take after you configure a site-to-site VPN connection between an on-premises network and an Azure Stack Hub virtual network.
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/22/2020
+ms.date: 07/27/2021
 ms.topic: article
-ms.reviewer: sranthar
+ms.reviewer: unknown
 ms.lastreviewed: 11/22/2020
 
 ---
@@ -15,7 +15,7 @@ ms.lastreviewed: 11/22/2020
 
 This article describes troubleshooting steps you can take after you configure a site-to-site (S2S) VPN connection between an on-premises network and an Azure Stack Hub virtual network, and the connection suddenly stops working and cannot be reconnected.
 
-If your Azure Stack Hub issue is not addressed in this article, you can visit the [Azure Stack Hub MSDN forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
+If your Azure Stack Hub issue is not addressed in this article, you can visit the [Azure Stack Hub Q&A forum](/answers/questions/topics/single/25482.html).
 
 You also can submit an Azure support request. Please see [Azure Stack Hub support](../operator/azure-stack-manage-basics.md#where-to-get-support).
 
@@ -24,7 +24,7 @@ You also can submit an Azure support request. Please see [Azure Stack Hub suppor
 
 ## Initial troubleshooting steps
 
-The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting with the 1910 build](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters) Please contact your Azure Stack Hub operator for more information on the build version.
+The Azure Stack Hub [default parameters for IPsec/IKEV2 have changed](../user/azure-stack-vpn-gateway-settings.md#ike-phase-1-main-mode-parameters):
 
 > [!IMPORTANT]
 > When using an S2S tunnel, packets are further encapsulated with additional headers. This encapsulation increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. If your VPN devices do not support MSS clamping, you can set the MTU on the tunnel interface to **1400** bytes instead. For more information, see [Virutal Network TCPIP performance tuning](/azure/virtual-network/virtual-network-tcpip-performance-tuning).
@@ -33,7 +33,7 @@ The Azure Stack Hub default parameters for IPsec/IKEV2 have changed [starting wi
 
 - Check whether you are using a [validated VPN device and operating system version](/azure/vpn-gateway/vpn-gateway-about-vpn-devices#devicetable). If the device is not a validated VPN device, you might have to contact the device manufacturer to see if there is a compatibility issue.
 
-- Verify that there are no overlapping IP ranges between Azure Stack Hub virtual network and on-premises network. This can cause connectivity issues. 
+- Verify that there are no overlapping IP ranges between Azure Stack Hub virtual network and on-premises network. This can cause connectivity issues.
 
 - Verify the VPN peer IPs:
 
@@ -79,7 +79,7 @@ Get-AzurerRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -Re
 
    A user-defined route on the gateway subnet may be restricting some traffic and allowing other traffic. This makes it appear that the VPN connection is unreliable for some traffic, and good for others.
 
-- Check the on-premises VPN device external interface address. 
+- Check the on-premises VPN device external interface address.
 
   - If the internet-facing IP address of the VPN device is included in the **Local network** definition in Azure Stack Hub, you might experience sporadic disconnections.
 
@@ -95,4 +95,4 @@ Get-AzurerRMVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -Re
 
 ## Create a support ticket
 
-If none of the preceding steps resolve your issue, please create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/azure-stack-diagnostic-log-collection-overview.md) to provide logs.
+If none of the preceding steps resolve your issue, please create a [support ticket](../operator/azure-stack-manage-basics.md#where-to-get-support) and use the [on demand log collection tool](../operator/diagnostic-log-collection.md) to provide logs.

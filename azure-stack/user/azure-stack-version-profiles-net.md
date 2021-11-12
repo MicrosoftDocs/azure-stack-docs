@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with .NET SDK in Azure Stack 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 11/4/2021
 ms.author: sethm
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: weshi1
+ms.lastreviewed: 11/4/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with .NET SDK in Azure Stack so I can benefit from the use of profiles
 # Keyword: azure stack api profiles .net
@@ -31,7 +31,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
-- To use the latest API version of a service, use the **Latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
+- To use the latest API version of a service, use the **latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined inside the package.
 
@@ -59,7 +59,7 @@ You can combine all of the options in the same application.
 
 ## Prerequisites
 
-To use the .NET Azure SDK with Azure Stack Hub, you must supply the following values, and then set the values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
+To use the .NET Azure SDK with Azure Stack Hub, you must supply the following values, and then set the values with environment variables. To set the environment variables, see the instructions following the table for your specific operating system.
 
 | Value                     | Environment variables   | Description                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -80,7 +80,7 @@ To set the environment variables in a Windows command prompt, use the following 
 set Azure_Tenant_ID=Your_Tenant_ID
 ```
 
-### MacOS, Linux, and Unix-based systems
+### macOS, Linux, and Unix-based systems
 
 In Unix-based systems, use the following command:
 
@@ -122,13 +122,13 @@ Sample JSON file:
 
 - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Use this profile for services to be compatible with Azure Stack Hub for versions 1808 or later.
 
-- **Latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
+- **latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles][].
 
 ## Azure .NET SDK API profile usage
 
-Use the following code to instantiate a resource management client. Similar code can be used to instantiate other resource provider clients (such as Compute, Network, and Storage).
+Use the following code to instantiate a resource manager client. You can use similar code to instantiate other resource provider clients (such as Compute, Network, and Storage).
 
 ```csharp
 var client = new ResourceManagementClient(armEndpoint, credentials)
@@ -185,9 +185,7 @@ These steps enable you to use the API profile NuGet packages to deploy your appl
 
 You can use the following samples as a reference for creating solutions with .NET and the Azure Stack Hub API profiles:
 
-- [Manage Resource Groups](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
-- [Manage Storage Accounts](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
-- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm): This sample uses the **2019-03-01-hybrid** profile supported by Azure Stack Hub.
+[Azure-Samples/Hybrid-CSharp-Samples: Getting Started with Resources - Manage Resource Groups in Azure Stack Hybrid cloud by using Certificates for Authentication - in C# asynchronously (github.com)](https://github.com/Azure-Samples/Hybrid-CSharp-Samples)
 
 ## Next steps
 
@@ -200,11 +198,11 @@ Learn more about API profiles:
   [Finding and installing a package]: /nuget/tools/package-manager-ui
   [NuGet Package Manager instructions]: https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
   [Create subscriptions to offers in Azure Stack Hub]: ../operator/azure-stack-subscribe-plan-provision-vm.md
-  [Provide applications access to Azure Stack Hub]: ../operator/azure-stack-create-service-principals.md
+  [Provide applications access to Azure Stack Hub]: ../operator/give-app-access-to-resources.md
   [*tenant ID*]: ../operator/azure-stack-identity-overview.md
   [*subscription ID*]: ../operator/service-plan-offer-subscription-overview.md#subscriptions
   [*the Azure Stack Hub Resource Manager endpoint*]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint
   [Summary of API profiles]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
   [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
-  [Use Azure PowerShell to create a service principal with a certificate]: ../operator/azure-stack-create-service-principals.md
-  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017
+  [Use Azure PowerShell to create a service principal with a certificate]: ../operator/give-app-access-to-resources.md
+  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017&preserve-view=true

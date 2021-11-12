@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -51,7 +51,7 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 2.  Once you have a Windows Server 2019 image in your Azure Stack Hub environment, **sign into the Azure Stack Hub user portal**.
 
-3.  Once logged into the Azure Stack Hub user portal, ensure you have a [subscription to an offer](../operator/azure-stack-subscribe-plan-provision-vm.md?view=azs-1908), that allows you to provision IaaS resources (Compute, Storage and Network).
+3.  Once logged into the Azure Stack Hub user portal, ensure you have a [subscription to an offer](../operator/azure-stack-subscribe-plan-provision-vm.md), that allows you to provision IaaS resources (Compute, Storage and Network).
 
 4.  Once you have a subscription available, back on the **dashboard** in the Azure Stack Hub user portal, select **Create a resource**, select **Compute** and then select the **Windows Server 2019 Datacenter gallery item**.
 
@@ -265,7 +265,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 15. Repeat the process with the following:
 
-    a. ** IP address**: Your second iSCSI Target IP address.
+    a. **IP address**: Your second iSCSI Target IP address.
 
     b.  **Local adapter**: Microsoft iSCSI Initiator.
 
@@ -293,7 +293,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 1.  Repeat the process for the second initiator/target combination.
 
-    a. ** Local adapter**: Microsoft iSCSI Initiator.
+    a. **Local adapter**: Microsoft iSCSI Initiator.
 
     b.  **Initiator IP**: 10.10.11.4.
 
@@ -301,7 +301,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
     ![The "Connect using" dialog box shows the specified information for target portal 10.33.131.16/3260.](./media/azure-stack-network-howto-extend-datacenter/image21.png)
 
-2.  Select the **Volumes and Devices** tab, and then select **Auto Configure** – you should see an MPIO volume presented:
+2.  Select the **Volumes and Devices** tab, and then select **Auto Configure** - you should see an MPIO volume presented:
 
     ![The Volume List window shows volume name, mount point, and device for a single volume.](./media/azure-stack-network-howto-extend-datacenter/image22.png)
 

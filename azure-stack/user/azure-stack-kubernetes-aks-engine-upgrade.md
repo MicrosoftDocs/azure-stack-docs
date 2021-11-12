@@ -4,10 +4,10 @@ description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 3/4/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/02/2020
+ms.lastreviewed: 3/4/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -17,9 +17,8 @@ ms.lastreviewed: 09/02/2020
 
 # Upgrade a Kubernetes cluster on Azure Stack Hub
 
-## Upgrade a cluster
-
 The AKS engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS engine to apply them.
+## Upgrade a cluster
 
 The upgrade command updates the Kubernetes version and the base OS image. Every time that you run the upgrade command, for every node of the cluster, the AKS engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. You can use the `aks-engine upgrade` command to maintain the currency of every master and agent node in your cluster. 
 
@@ -46,17 +45,15 @@ When upgrading a production cluster, consider:
 > [!NOTE]  
 > The AKS base image will also be upgrade if you are using a newer version of the aks-engine and the image is available in the marketplace.
 
-The following instructions use the minimum steps to perform the upgrade. If would like additional detail, see the article [Upgrading Kubernetes Clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/upgrade.md).
+The following instructions use the minimum steps to perform the upgrade. If would like more detail, see the article [Upgrading Kubernetes Clusters](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
-1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The versions of Kubernetes supported in the latest update are 1.14.7 and 1.15.10. Follow this table for the upgrades available:
-
-| Current version | Upgrade available |
-| ------------------------- | ----------------------- |
-| 1.15.10 | 1.15.12 |
-| 1.15.12, 1.16.8, 1.16.9 | 1.16.14 |
-| 1.16.8, 1.16.9, 1.16.14 | 1.17.11 |
-
-For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions).
+1. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade. The Kubernetes versions supported by your AKS Engine can be listed by running the following command:
+    
+    ```bash
+    aks-engine get-versions --azure-env AzureStackCloud
+    ```
+    
+    For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see [Supported AKS Engine Versions](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 2. Collect the information you will need to run the `upgrade` command. The upgrade uses the following parameters:
 
@@ -80,7 +77,7 @@ For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see
     --resource-group kube-rg \
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
     --api-model kube-rg/apimodel.json \
-    --upgrade-version 1.13.5 \
+    --upgrade-version 1.18.15 \
     --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
     --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
     --identity-system adfs # required if using AD FS
@@ -90,11 +87,19 @@ For a complete mapping of AKS engine, AKS Base Image and Kubernetes versions see
 
 ## Steps to only upgrade the OS image
 
-1. Review [the supported-kubernetes-versions table](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-aks-engine-versions) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
+1. Review [the supported-kubernetes-versions table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
 2. Upgrade your AKS engine accordingly, in the machine where you have installed aks-engine run: `./get-akse.sh --version vx.xx.x` replacing **x.xx.x** with your targeted version.
 3. Ask your Azure Stack Hub operator to add the version of the AKS Base Image you need in the Azure Stack Hub Marketplace that you plan to use.
 4. Run the `aks-engine upgrade` command using the same version of Kubernetes that you are already using, but add the `--force`. You can see an example in [Forcing an upgrade](#forcing-an-upgrade).
 
+
+## Steps to update cluster to OS version Ubuntu 18.04
+
+With AKS engine version 0.60.1 and above you can upgrade your cluster VMs from Ubuntu 16.04 to 18.04. Follow these steps:
+
+1. Locate and edit the `api-model.json` file that was generated during deployment. This should be the same file used for any upgrade or scale operation with `aks-engine`.
+2. Locate the sections for `masterProfile` and `agentPoolProfiles`, within those sections change the value of `distro` to `aks-ubuntu-18.04`.
+2. Save the `api-model.json` file and use the `api-model.json` file in your` aks-engin upgrade` command as you would in the [Steps to upgrade to a newer Kubernetes version](#steps-to-upgrade-to-a-newer-kubernetes-version)
 
 ## Forcing an upgrade
 
@@ -107,7 +112,7 @@ aks-engine upgrade \
 --resource-group kube-rg \
 --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
 --api-model kube-rg/apimodel.json \
---upgrade-version 1.13.5 \
+--upgrade-version 1.18.15 \
 --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
 --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
 --force

@@ -1,17 +1,16 @@
 ### YamlMime:Landing
 
 title: Azure Stack HCI documentation
-summary: Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+summary: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
 
 metadata:
   title: Azure Stack HCI documentation
-  description: Azure Stack HCI is a hyperconverged cluster that uses validated hardware to run virtualized workloads on-premises.
+  description: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
 #  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page
-  author: khdownie
-  ms.author: v-kedow
-  ms.date: 12/10/2020
-
+  author: jasongerend
+  ms.author: jgerend
+  ms.date: 10/19/2021
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -23,6 +22,10 @@ landingContent:
         links:
           - text: What is Azure Stack HCI?
             url: overview.md
+      - linkListType: whats-new
+        links:
+          - text: What's new in Azure Stack HCI?
+            url: whats-new.md
       - linkListType: get-started
         links:
           - text: Use Azure Stack HCI with Windows Admin Center
@@ -35,19 +38,37 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Deploy the Azure Stack HCI OS
+          - text: 1. Deploy the Azure Stack HCI OS
             url: deploy/operating-system.md
-          - text: Create a cluster
+          - text: 2. Create a cluster
             url: deploy/create-cluster.md
-          - text: Setup a cluster witness
-            url: deploy/witness.md
-          - text: Register with Azure
+          - text: 3. Register with Azure
             url: deploy/register-with-azure.md
-          - text: Validate a cluster
-            url: deploy/validate.md 
+          - text: 4. Validate a cluster
+            url: deploy/validate.md
+      - linkListType: tutorial
+        links:
+          - text: Create a private forest lab environment with VMs
+            url: deploy/tutorial-private-forest.md
 
   # Card
   - title: Manage storage
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Replace drives
+            url: manage/replace-drives.md
+          - text: Use the CSV cache
+            url: manage/use-csv-cache.md
+          - text: Manage SMB Multichannel
+            url: manage/manage-smb-multichannel.md
+          - text: Storage thin provisioning
+            url: manage/thin-provisioning.md
+          - text: Adjustable storage repair speed
+            url: manage/storage-repair-speed.md
+
+  # Card
+  - title: Manage volumes
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -57,34 +78,50 @@ landingContent:
             url: manage/create-stretched-volumes.md
           - text: Protect volumes
             url: manage/volume-encryption-deduplication.md
-          - text: Extend volumes
+          - text: Expand volumes
             url: manage/extend-volumes.md
           - text: Delete volumes
             url: manage/delete-volumes.md
-          - text: Replace drives
-            url: manage/replace-drives.md
-          - text: Use the CSV cache
-            url: manage/use-csv-cache.md
-          - text: Manage SMB Multichannel
-            url: manage/manage-smb-multichannel.md
 
  # Card
   - title: Manage the cluster
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Manage cluster with Windows Admin Center
+          - text: Manage the cluster with Windows Admin Center
             url: manage/cluster.md
-          - text: Manage cluster with PowerShell
-            url: manage/cluster-powershell.md
           - text: Add or remove servers
             url: manage/add-cluster.md
-          - text: Monitor cluster
+          - text: Take a server offline for maintenance
+            url: manage/maintain-servers.md
+          - text: Monitor the cluster
             url: manage/monitor-cluster.md
-          - text: Update cluster
-            url: manage/update-cluster.md
+          - text: Update the cluster
+            url: manage/update-cluster.md            
           - text: Change languages
-            url: manage/vm-powershell.md
+            url: manage/languages.md
+
+  # Card
+  - title: Azure Stack HCI concepts
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Stretched clusters
+            url: concepts/stretched-clusters.md
+          - text: Billing
+            url: concepts/billing.md
+          - text: Firewall requirements
+            url: concepts/firewall-requirements.md
+          - text: Updates and upgrades
+            url: concepts/updates.md
+          - text: Choose drives
+            url: concepts/choose-drives.md
+          - text: Plan volumes
+            url: concepts/plan-volumes.md
+          - text: Fault tolerance and storage efficiency
+            url: concepts/fault-tolerance.md
+          - text: Security considerations
+            url: concepts/security.md
 
  # Card
   - title: Manage VMs
@@ -97,50 +134,22 @@ landingContent:
             url: manage/vm-powershell.md
           - text: Set up VM affinity rules
             url: manage/vm-affinity.md
-
-  # Card
-  - title: Azure Stack HCI concepts
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Stretched clusters
-            url: concepts/stretched-clusters.md
-          - text: Billing
-            url: concepts/billing.md
-          - text: Updates and upgrades
-            url: concepts/updates.md
-          - text: Choose drives
-            url: concepts/choose-drives.md
-          - text: Drive symmetry considerations
-            url: concepts/drive-symmetry-considerations.md
-          - text: Plan volumes
-            url: concepts/plan-volumes.md
-          - text: Fault tolerance and storage efficiency
-            url: concepts/fault-tolerance.md
-          - text: Security considerations
-            url: concepts/security.md
-          - text: Storage pool cache
-            url: concepts/cache.md
-          - text: Cluster and storage pool quorum
-            url: concepts/quorum.md
+          - text: VM load balancing
+            url: manage/vm-load-balancing.md
+          - text: Use GPUs with clustered VMs
+            url: manage/use-gpu-with-clustered-vm.md
 
   # Card 
   - title: Connect to Azure
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Manage Azure registration
+          - text: Register cluster with Azure
+            url: deploy/register-with-azure.md
+          - text: Manage cluster registration with Azure
             url: manage/manage-azure-registration.md
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
-          - text: Use Azure Site Recovery
-            url: manage/azure-site-recovery.md
-          - text: Monitor with Azure Monitor
-            url: manage/azure-monitor.md
-          - text: Use Azure Network Adapter
-            url: manage/use-azure-network-adapter.md
-          - text: Use Azure Backup
-            url: manage/use-azure-backup.md
 
  # Card
   - title: Software Defined Networking
@@ -157,9 +166,7 @@ landingContent:
             url: concepts/network-controller.md
           - text: Datacenter Firewall overview
             url: concepts/datacenter-firewall-overview.md
-          - text: Software Load Balancer overview
-            url: concepts/software-load-balancer.md
-          - text: RAS Gateway overview
-            url: concepts/gateway-overview.md
-          - text: Route Reflector overview
-            url: concepts/route-reflector-overview.md
+      - linkListType: how-to-guide
+        links:
+          - text: Deploy an SDN infrastructure
+            url: manage/sdn-express.md

@@ -1,11 +1,11 @@
 ---
 title: Verify Hardware Lifecycle Host health
 description: Learn how to verify Hardware Lifecycle Host health
-author: myoungerman
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -26,10 +26,10 @@ site, use the iDRAC to verify the Hardware Lifecycle Host health.
 the issue you worked on has cleared, if it was present in the web
 interface before the FRU process.
 
-    ![](media/image-5.png)
+    ![Screenshot that shows the 'System' page with the 'Overview' actions highlighted.](media/image-5.png)
     
 2.  Verify that the Hyper-V virtual
     machines are in a **Running** state.
 
-    ![](media/image-55.png) 
+    ![Screenshot that shows the 'Hyper-V Manager' page with the 'Virtual Machines' section highlighted.](media/image-55.png) 
 

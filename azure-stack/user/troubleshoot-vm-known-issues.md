@@ -4,9 +4,9 @@ description: Learn how to troubleshoot virtual machine known issues on Azure Sta
 author: mattbriggs
 
 ms.topic: troubleshooting
-ms.date: 07/09/2020
+ms.date: 07/30/2021
 ms.author: mabrigg
-ms.reviewer: kivenkat
+ms.reviewer: thoroet
 ms.lastreviewed: 07/09/2020
 
 # Intent: As a developer using Azure Stack Hub, I want to fix an issue I encounter when creating or managing my VM so that my users can use my VM or service delivered by the stack.
@@ -25,16 +25,6 @@ You can find known issues for troubleshooting the Azure Stack Hub compute resour
     When viewing details of a VM in the overview blade, the computer name shows as (not available). The display is by design for VMs created from specialized disks/disk snapshots.  
 - **Remediation**  
     In the portal select **Settings** > **Properties**.
-- **Occurrence**  
-    Common  
-
-## NVv4 VM size on portal
-- **Applicable**  
-    This issue applies to Azure Stack Hub release 2002 and later.  
-- **Cause**  
-    When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD MI25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.  
-- **Remediation**  
-    None.  
 - **Occurrence**  
     Common  
 

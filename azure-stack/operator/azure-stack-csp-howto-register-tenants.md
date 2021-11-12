@@ -1,10 +1,10 @@
-﻿---
+---
 title: Add tenants for usage and billing to Azure Stack Hub 
 description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 11/17/2020
@@ -55,11 +55,11 @@ Update your registration with the new customer subscription. Azure reports the c
 1. Open Windows PowerShell in an elevated prompt, and run:  
 
    ```powershell
-   Add-AzAccount
+   Connect-AzAccount
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
@@ -68,7 +68,7 @@ Update your registration with the new customer subscription. Azure reports the c
    New-AzResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-**New-AzResource PowerShell parameters**
+#### New-AzResource PowerShell parameters
 
 The following section describes the parameters for the **New-AzResource** cmdlet:
 
@@ -88,7 +88,7 @@ The following section describes the parameters for the **New-AzResource** cmdlet
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzAccount**: `Remove-AzAccount-Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzureRMAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
@@ -97,7 +97,7 @@ The following section describes the parameters for the **New-AzResource** cmdlet
    New-AzureRMResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
-**New-AzureRMResource PowerShell parameters**
+#### New-AzureRMResource PowerShell parameters
 
 The following section describes the parameters for the **New-AzureRMResource** cmdlet:
 
@@ -110,13 +110,12 @@ The following section describes the parameters for the **New-AzureRMResource** c
 
 ---
 
-
 > [!NOTE]  
 > Tenants must be registered with each Azure Stack Hub they use. If you have two Azure Stack Hub deployments, and a tenant uses both of them, you must update the initial registrations of each deployment with the tenant subscription.
 
 ### Onboard tenant to Azure Stack Hub
 
-Configure Azure Stack Hub to support users from multiple Azure AD tenants to use services in Azure Stack Hub. For instructions, see [Enable multi-tenancy in Azure Stack Hub](azure-stack-enable-multitenancy.md).
+Configure Azure Stack Hub to support users from multiple Azure AD tenants to use services in Azure Stack Hub. For instructions, see [Enable multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
 
 ### Create a local resource in the end customer tenant in Azure Stack Hub
 

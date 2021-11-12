@@ -1,11 +1,11 @@
 ---
 title: Azure Stack Hub overview 
 description: An overview of what Azure Stack Hub is and how it lets you run Azure services in your datacenter.  
-author: justinha
+author: PatAltimore
 
 ms.topic: overview
-ms.date: 04/20/2020
-ms.author: justinha
+ms.date: 03/22/2021
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
 ms.custom: conteperfq4
@@ -28,6 +28,10 @@ Azure provides a rich platform for developers to build modern apps. However, som
 - **Cloud apps that meet varied regulations**. Develop and deploy apps in Azure with full flexibility to deploy on-premises with Azure Stack Hub to meet regulatory or policy requirements. No code changes are needed. App examples include global audit, financial reporting, foreign exchange trading, online gaming, and expense reporting.
 
 - **Cloud app model on-premises**. Use Azure services, containers, serverless, and microservice architectures to update and extend existing apps or build new ones. Use consistent DevOps processes across Azure in the cloud and Azure Stack Hub on-premises to speed up app modernization for core mission-critical apps.
+
+### Data residency
+
+If the customer deploys Azure Stack Hub disconnected from global Azure and from the internet, no data that is stored on the appliance is sent to Microsoft. Azure Stack Hub is an on-premises appliance. Customers fully own and control the appliance, access to the appliance, and any data stored on the appliance. Disconnected deployment allows for complete control over data location by the customer. A customer can alternatively elect to connect an Azure Stack Hub appliance to global Azure or to the Internet in a hybrid workload scenario (for example, a solution that uses resources deployed on Azure Stack Hub and public Azure with data transmitting between both) or with hybrid cloud management (for example, connecting a virtual machine deployed on Azure Stack Hub to Azure Monitor in public Azure for monitoring.) In such scenarios, the customer is responsible for validating whether the Azure or other online services used with the appliance satisfy any data residency concerns. For more information about data residency, please see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ## Azure Stack Hub architecture
 
@@ -72,7 +76,7 @@ You can manage Azure Stack Hub with the administrator portal, user portal, or [P
 
 > For more information about managing Azure Stack Hub using the administrator portal, see the use the [Azure Stack Hub administration portal quickstart](azure-stack-manage-portals.md).
 
-As an Azure Stack Hub operator, you can deliver [VMs](./tutorial-offer-services.md?view=azs-2002), [web apps](azure-stack-app-service-overview.md), highly available [SQL Server](azure-stack-tutorial-sql.md), and [MySQL Server](azure-stack-tutorial-mysql.md) databases. You can also use [Azure Stack Hub quickstart Azure Resource Manager templates](https://github.com/Azure/AzureStack-QuickStart-Templates) to deploy SharePoint, Exchange, and more.
+As an Azure Stack Hub operator, you can deliver [VMs](./tutorial-offer-services.md), [web apps](azure-stack-app-service-overview.md), highly available [SQL Server](azure-stack-tutorial-sql.md), and [MySQL Server](azure-stack-tutorial-mysql.md) databases. You can also use [Azure Stack Hub quickstart Azure Resource Manager templates](https://github.com/Azure/AzureStack-QuickStart-Templates) to deploy SharePoint, Exchange, and more.
 
 An operator can manage Azure Stack Hub with the [administrator portal](azure-stack-manage-portals.md) or [PowerShell](/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). You can configure Azure Stack Hub to [deliver services](service-plan-offer-subscription-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts.
 

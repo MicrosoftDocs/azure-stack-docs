@@ -4,10 +4,10 @@ description: This topic contains the support policies for AKS engine on Azure St
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 04/23/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/0102020
+ms.lastreviewed: 04/23/2021
 
 # Intent: As an Azure Stack Hub user, I want to learn about the limitations of the AKS engine on Azure Stack Hub.
 # Keyword: AKS engine support policies kubernetes cluster
@@ -37,12 +37,12 @@ Microsoft provides technical support for the following:
 
 -  Issues with AKS engine commands: deploy, generate, upgrade, and scale. The tool should be consistent with its behavior on Azure.
 -  Issues with a Kubernetes cluster deployed following the [Overview of the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
--  Issues with connectivity to other Azure Stack Hub services. 
+-  Issues with connectivity to other Azure Stack Hub services.
 -  Issues with Kubernetes API connectivity.
 -  Issues with Azure Stack Hub Kubernetes provider functionality and connectivity with Azure Resource Manager.
--  Issues with the AKS engine-generated configuration of Azure Stack Hub native artifacts such as Load Balancers, Network Security Groups,  VNETs, Subnets, Network Interfaces, Route table, Availability sets, Public IP addresses, Storage account, and VM Machines. 
--  Issues with network performance and latency.
--  Issues with the AKS base image used by the AKS engine in disconnected deployments. 
+-  Issues with the AKS engine-generated configuration of Azure Stack Hub native artifacts such as Load Balancers, Network Security Groups,  VNETs, Subnets, Network Interfaces, Route table, Availability sets, Public IP addresses, Storage account, and VM Machines.
+-  Issues with network performance and latency. ASK engine on Azure Stack Hub can use the kubenet networking plugin and the Azure CNI networking plugin.
+-  Issues with the AKS base image used by the AKS engine in disconnected deployments.
 
 ## AKS engine areas not supported
 
@@ -86,7 +86,6 @@ Microsoft does not provide technical support for the following:
 -  Kubernetes configuration changes persisted outside the Kubernetes configuration store etcd. For example, static pods running in nodes of the cluster.
 -  Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
 -  Third-party open-source projects that aren't provided as part of the Kubernetes cluster deployed by AKS engine. These projects might include Kubeadm, Kubespray, Native, Istio, Helm, Envoy, or others.
--  Using the AKS engine in use-case scenarios outside the ones specified in [Supported scenarios with the AKS engine](azure-stack-kubernetes-aks-engine-overview.md#supported-scenarios-with-the-aks-engine).
 -  Third-party software. This software can include security scanning tools and networking devices or software.
 -  Issues about multicloud or multivendor build-outs. For example, Microsoft doesn't support issues related to running a federated multipublic cloud vendor solution.
 -  Network customizations other than those listed in the [AKS engine supported areas](#aks-engine-supported-areas) section.

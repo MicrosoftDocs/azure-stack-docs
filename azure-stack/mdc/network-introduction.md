@@ -1,8 +1,8 @@
 ---
 title: Introduction to Modular Datacenter (MDC) networking
 description: Learn about networking for the Azure Modular Datacenter device. 
-author: BryanLa
-ms.author: bryanla
+author: PatAltimore
+ms.author: patricka
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 12/31/2019
@@ -67,7 +67,7 @@ The network infrastructure for MDC consists of several logical networks that are
 
 This network is dedicated to connecting all the BMCs (also known as service processors) to the management network. Examples include iDRAC, iLO, and iBMC. Only one BMC account is used to communicate with any BMC node. If present, the Hardware Lifecycle Host (HLH) is located on this network and might provide OEM-specific software for hardware maintenance or monitoring.
 
-The HLH also hosts the deployment VM (DVM). The DVM is used during MDC deployment and is removed when deployment completes. The DVM requires internet access in connected deployment scenarios to test, validate, and access multiple components. These components can be inside and outside of your corporate network. Examples include NTP, Domain Name System (DNS), and Azure. For more information about connectivity requirements, see the network address translation (NAT) section in MDC firewall integration.
+The HLH also hosts the deployment VM (DVM). The DVM is used during MDC deployment and is removed when deployment completes. The DVM requires internet access in connected deployment scenarios to test, validate, and access multiple components. These components can be inside and outside of your corporate network. Examples include NTP, Domain Name System (DNS), and Azure. For more information about connectivity requirements, see the network address translation (NAT) section in MDC firewall integration.
 
 #### Private network
 
@@ -77,13 +77,13 @@ The /20 (4096 host IPs) network is private to the MDC region. It doesn't expand 
 - **Internal virtual IP network**: A /25 network dedicated to internal-only VIPs for the software load balancer.
 - **Container network**: A /23 (512 IPs) network dedicated to internal-only traffic between containers running infrastructure services.
 
-The size for the private network changed is /20 (4096 IPs) of private IP space. This network is private to the MDC system. It doesn't route beyond the border switch devices of the MDC system and can be reused on multiple MDC systems. While the network is private to MDC, it must not overlap with other networks in the datacenter. For guidance on private IP space, we recommend that you follow the RFC 1918.
+The size for the private network changed is /20 (4096 IPs) of private IP space. This network is private to the MDC system. It doesn't route beyond the border switch devices of the MDC system and can be reused on multiple MDC systems. While the network is private to MDC, it must not overlap with other networks in the datacenter. For guidance on private IP space, we recommend that you follow the RFC 1918.
 
-The /20 private IP space is divided into multiple networks that enable the MDC system infrastructure to run on containers in future releases. For more information, see the 1910 release notes. This new private IP space enables ongoing efforts to reduce the required routable IP space before deployment.
+The /20 private IP space is divided into multiple networks that enable the MDC system infrastructure to run on containers in future releases. This private IP space enables ongoing efforts to reduce the required routable IP space before deployment.
 
 #### MDC infrastructure network
 
-The /24 network is dedicated to internal MDC components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the MDC solution to your datacenter. We *don't* recommend using public or internet routable IP addresses on this subnet. This network is advertised to the border, but most of its IPs are protected by access control lists. The IPs allowed for access are within a small range, equivalent in size to a /27 network. The IPs host services like the privileged endpoint (PEP) and MDC backup.
+The /24 network is dedicated to internal MDC components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the MDC solution to your datacenter. We *don't* recommend using public or internet routable IP addresses on this subnet. This network is advertised to the border, but most of its IPs are protected by access control lists. The IPs allowed for access are within a small range, equivalent in size to a /27 network. The IPs host services like the privileged endpoint (PEP) and MDC backup.
 
 #### Public VIP network
 
@@ -103,7 +103,7 @@ There are two /25 networks. One lives on the TOR switch, and one /25 is used on 
 
 ## DNS design overview
 
-To access MDC endpoints (*portal*, *adminportal*, *management*, and *adminmanagement*) from outside MDC, you must integrate the MDC DNS services with the DNS servers that host the DNS zones you want to use in MDC.
+To access MDC endpoints (*portal*, *adminportal*, *management*, and *adminmanagement*) from outside MDC, you must integrate the MDC DNS services with the DNS servers that host the DNS zones you want to use in MDC.
 
 ### MDC DNS namespace
 
@@ -114,8 +114,8 @@ You're required to provide some important information related to DNS when you de
 | Region | The geographic location of your MDC deployment. | *east* |
 | External domain name | The name of the zone you want to use for your MDC deployment. | *cloud.fabrikam.com* |
 | Internal domain name | The name of the internal zone that's used for infrastructure services in the MDC. It's directory service-integrated and private (not reachable from outside the MDC deployment). | *azurestack.local* |
-| DNS forwarders | DNS servers that are used to forward DNS queries, DNS zones, and records that are hosted outside MDC, either on the corporate intranet or public internet. You can edit the DNS forwarder value with the **Set-AzSDnsForwarder** cmdlet after deployment. | |
-| Naming prefix (optional) | The naming prefix you want your MDC infrastructure role instance machine names to have. If not provided, the default is *azs*. | *azs* |
+| DNS forwarders | DNS servers that are used to forward DNS queries, DNS zones, and records that are hosted outside MDC, either on the corporate intranet or public internet. You can edit the DNS forwarder value with the **Set-AzSDnsForwarder** cmdlet after deployment. | |
+| Naming prefix (optional) | The naming prefix you want your MDC infrastructure role instance machine names to have. If not provided, the default is *azs*. | *azs* |
 
 The fully qualified domain name (FQDN) of your MDC deployment and endpoints is the combination of the region parameter and the external domain name parameter. Using the values from the examples in the previous table, the FQDN for this MDC deployment would be *east.cloud.fabrikam.com*.
 
@@ -126,9 +126,9 @@ Examples of some of the endpoints for this deployment would look like the follow
 
 To use this example DNS namespace for an MDC deployment, the following conditions are required:
 
-- The zone fabrikam.com is registered with a domain registrar, internal corporate DNS server, or both. Registration depends on your name resolution requirements.
-- The child domain cloud.fabrikam.com exists under the zone fabrikam.com.
-- The DNS servers that host the zones fabrikam.com and cloud.fabrikam.com can be reached from the MDC deployment.
+- The zone fabrikam.com is registered with a domain registrar, internal corporate DNS server, or both. Registration depends on your name resolution requirements.
+- The child domain cloud.fabrikam.com exists under the zone fabrikam.com.
+- The DNS servers that host the zones fabrikam.com and cloud.fabrikam.com can be reached from the MDC deployment.
 
 To resolve DNS names for MDC endpoints and instances from outside MDC, you must integrate the DNS servers. Include servers that host the external DNS zone for MDC with the DNS servers that host the parent zone you want to use.
 
@@ -136,11 +136,11 @@ To resolve DNS names for MDC endpoints and instances from outside MDC, you must 
 
 MDC supports adding a DNS name label to a public IP address to allow name resolution for public IP addresses. DNS labels are a convenient way for users to reach apps and services hosted in MDC by name. The DNS name label uses a slightly different namespace than the infrastructure endpoints. Following the previous example namespace, the namespace for DNS name labels would be *\*.east.cloudapp.cloud.fabrikam.com*.
 
-If a tenant specifies **MyApp** in the DNS name label field of a public IP address resource, it creates an A record for myapp in the zone *east.cloudapp.cloud.fabrikam.com* on the MDC external DNS server. The resulting FQDN would be *myapp.east.cloudapp.cloud.fabrikam.com*.
+If a tenant specifies **MyApp** in the DNS name label field of a public IP address resource, it creates an A record for myapp in the zone *east.cloudapp.cloud.fabrikam.com* on the MDC external DNS server. The resulting FQDN would be *myapp.east.cloudapp.cloud.fabrikam.com*.
 
 If you want to take advantage of this functionality and use this namespace, you must integrate the DNS servers. Include servers that host the external DNS zone for MDC and the DNS servers that host the parent zone you want to use as well. This namespace is different from the one used for the MDC service endpoints, so you must create an additional delegation or conditional forwarding rule.
 
-For more information about how the DNS name label works, see "Using DNS" in the MDC documentation.
+For more information about how the DNS name label works, see "Using DNS" in the MDC documentation.
 
 ### Resolution and delegation
 
@@ -153,13 +153,13 @@ MDC includes both authoritative and recursive DNS servers. The recursive servers
 
 ### Resolve external DNS names from MDC
 
-To resolve DNS names for endpoints outside MDC (for example, www.bing.com), you must provide DNS servers for MDC to forward DNS requests, for which MDC isn't authoritative. DNS servers that MDC forwards requests to are required in the Deployment Worksheet (in the DNS forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, MDC deployment fails. You can edit the DNS forwarder values with the **Set-AzSDnsForwarder** cmdlet after deployment.
+To resolve DNS names for endpoints outside MDC (for example, www.bing.com), you must provide DNS servers for MDC to forward DNS requests, for which MDC isn't authoritative. DNS servers that MDC forwards requests to are required in the Deployment Worksheet (in the DNS forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, MDC deployment fails. You can edit the DNS forwarder values with the **Set-AzSDnsForwarder** cmdlet after deployment.
 
 ## Firewall design overview
 
 We recommend that you use a firewall device to help secure MDC. Firewalls can help defend against things like distributed denial of service (DDoS) attacks, intrusion detection, and content inspection. They can also become a throughput bottleneck for Azure storage services like blobs, tables, and queues.
 
-If a disconnected deployment mode is used, you must publish the Active Directory Federation Services endpoint. For more information, see the datacenter integration identity article.
+If a disconnected deployment mode is used, you must publish the Active Directory Federation Services endpoint. For more information, see the datacenter integration identity article.
 
 The Azure Resource Manager (administrator), administrator portal, and Azure Key Vault (administrator) endpoints don't necessarily require external publishing. For example, as a service provider, you could limit the attack surface by only administering MDC from inside your network and not from the internet.
 
@@ -207,11 +207,11 @@ Before you can send network traffic between your Azure virtual network and your 
 
 A VPN gateway is a type of virtual network gateway that sends encrypted traffic across a public connection. You can use VPN gateways to send traffic securely between a virtual network in MDC and a virtual network in Azure. You can also send traffic securely between a virtual network and another network that's connected to a VPN device.
 
-When you create a virtual network gateway, you specify the gateway type that you want to create. MDC supports one type of virtual network gateway: the VPN type.
+When you create a virtual network gateway, you specify the gateway type that you want to create. MDC supports one type of virtual network gateway: the VPN type.
 
 Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example of this kind of setup is a multisite connection configuration.
 
-Before you create and configure VPN gateways for MDC, review the considerations for MDC networking. You'll learn how configurations for MDC differ from Azure.
+Before you create and configure VPN gateways for MDC, review the considerations for MDC networking. You'll learn how configurations for MDC differ from Azure.
 
 In Azure, the bandwidth throughput for the VPN gateway SKU you choose must be divided across all connections that are connected to the gateway. But in MDC, the bandwidth value for the VPN gateway SKU is applied to each connection resource that's connected to the gateway. For example:
 
@@ -225,8 +225,8 @@ When you create the virtual network gateway for a VPN gateway configuration, you
 >[!IMPORTANT]
 > Currently, MDC only supports the route-based VPN type. If your device only supports policy-based VPNs, connections to those devices from MDC aren't supported. MDC also doesn't support using policy-based traffic selectors for route-based gateways at this time because custom IPsec/IKE policy configurations aren't supported.
 
-- **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels, based on IPsec policies. Policies are configured with the combinations of address prefixes between your on-premises network, and the MDC virtual network. The policy, or traffic selector, is usually an access list in the VPN device configuration. **PolicyBased** is supported in Azure, but not in MDC.
-- **RouteBased**: Route-based VPNs use routes that are configured in the IP forwarding or routing table. The routes direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs is configured as any-to-any (or use wildcards). By default, they can't be changed. The value for a **RouteBased** VPN type is **RouteBased**.
+- **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels, based on IPsec policies. Policies are configured with the combinations of address prefixes between your on-premises network, and the MDC virtual network. The policy, or traffic selector, is usually an access list in the VPN device configuration. **PolicyBased** is supported in Azure, but not in MDC.
+- **RouteBased**: Route-based VPNs use routes that are configured in the IP forwarding or routing table. The routes direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs is configured as any-to-any (or use wildcards). By default, they can't be changed. The value for a **RouteBased** VPN type is **RouteBased**.
 
 ### Configure a VPN gateway
 
@@ -255,11 +255,11 @@ The diagrams and descriptions in the following sections can help you select a co
 
 ##### Site-to-site
 
-A site-to-site VPN gateway connection is a connection over an IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that's located on-premises and is assigned a public IP address. This device can't be located behind a NAT. Site-to-site connections can be used for cross-premises and hybrid configurations.
+A site-to-site VPN gateway connection is a connection over an IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that's located on-premises and is assigned a public IP address. This device can't be located behind a NAT. Site-to-site connections can be used for cross-premises and hybrid configurations.
 
 ##### Multisite
 
-A multisite connection is a variation of the site-to-site connection. You create more than one VPN connection from your virtual network gateway and typically connect to multiple on-premises sites. When you work with multiple connections, you must use a route-based VPN type (known as a dynamic gateway when you work with classic virtual networks). Because each virtual network can have only one VPN gateway, all connections through the gateway share the available bandwidth.
+A multisite connection is a variation of the site-to-site connection. You create more than one VPN connection from your virtual network gateway and typically connect to multiple on-premises sites. When you work with multiple connections, you must use a route-based VPN type (known as a dynamic gateway when you work with classic virtual networks). Because each virtual network can have only one VPN gateway, all connections through the gateway share the available bandwidth.
 
 ### Gateway SKUs
 
@@ -279,7 +279,7 @@ MDC doesn't support the Ultra Performance gateway SKU, which is used exclusively
 
 #### Gateway availability
 
-High-availability scenarios can only be configured on the High-Performance Gateway connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, MDC only supports the active/passive configuration.
+High-availability scenarios can only be configured on the High-Performance Gateway connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, MDC only supports the active/passive configuration.
 
 #### Failover
 
@@ -291,17 +291,17 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 | Gateway type | VPN gateway throughput (1) | VPN gateway maximum IPsec tunnels (2) |
 |--------------|----------------------------|---------------------------------------|
-| Basic SKU (3) | 100 Mbps | 20 |
+| Basic SKU (3) | 100 Mbps | 20 |
 | Standard SKU | 100 Mbps | 20 |
 | High-Performance SKU | 200 Mbps | 10 |
 
 Table notes:
 
-(1) VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.
+(1) VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.
 
-(2) Maximum tunnels is the total per MDC deployment for all subscriptions.
+(2) Maximum tunnels is the total per MDC deployment for all subscriptions.
 
-(3) BGP routing isn't supported for the Basic SKU.
+(3) BGP routing isn't supported for the Basic SKU.
 
 >[!IMPORTANT]
 > Only one site-to-site VPN connection can be created between two MDC deployments. This restriction is because a limitation in the platform only allows a single VPN connection to the same IP address. Because MDC uses the multitenant gateway, which uses a single public IP for all VPN gateways in the MDC system, there can be only one VPN connection between two MDC systems.
@@ -338,7 +338,7 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 
 ### Configure custom IPsec/IKE connection policies
 
-The IPsec and IKE protocol standard supports a wide range of cryptographic algorithms in various combinations. To see which parameters are supported in MDC to satisfy compliance or security requirements, see IPsec/IKE parameters.
+The IPsec and IKE protocol standard supports a wide range of cryptographic algorithms in various combinations. To see which parameters are supported in MDC to satisfy compliance or security requirements, see IPsec/IKE parameters.
 
 This article provides instructions on how to create and configure an IPsec/IKE policy and apply to a new or existing connection.
 
@@ -346,8 +346,8 @@ This article provides instructions on how to create and configure an IPsec/IKE p
 
 Note the following important considerations when you use these policies:
 
-- The IPsec/IKE policy only works on the Standard and High Performance (route-based) gateway SKUs.
-- You can only specify one policy combination for a given connection.
+- The IPsec/IKE policy only works on the Standard and High Performance (route-based) gateway SKUs.
+- You can only specify one policy combination for a given connection.
 - You must specify all algorithms and parameters for both IKE (Main Mode) and IPsec (Quick Mode). Partial policy specification isn't allowed.
 - Consult with your VPN device vendor specifications to ensure the policy is supported on your on-premises VPN devices. Site-to-site connections can't be established if the policies are incompatible.
 
@@ -417,7 +417,7 @@ the custom policy.
 
 Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud. You use a private connection supplied by a connectivity provider. ExpressRoute isn't a VPN connection over the public internet.
 
-For more information about Azure ExpressRoute, see the ExpressRoute overview.
+For more information about Azure ExpressRoute, see the ExpressRoute overview.
 
 #### Assumptions
 
@@ -431,7 +431,7 @@ This article assumes that you have a:
 
 To connect MDC and Azure by using ExpressRoute, you must meet the following requirements:
 
-- Have a provisioned ExpressRoute circuit through a connectivity provider.
+- Have a provisioned ExpressRoute circuit through a connectivity provider.
 - Have an Azure subscription to create an ExpressRoute circuit and virtual networks in Azure.
 - Have a router that must:
   - Support site-to-site VPN connections between its LAN interface and Azure Stack multitenant gateway.

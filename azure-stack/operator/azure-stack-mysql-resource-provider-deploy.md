@@ -3,7 +3,7 @@ title: Deploy MySQL resource provider on Azure Stack Hub
 description: Learn how to deploy the MySQL resource provider adapter and MySQL databases as a service on Azure Stack Hub.  
 author: bryanla
 ms.topic: article 
-ms.date: 12/07/2020
+ms.date: 04/19/2021
 ms.author: bryanla
 ms.reviewer: caoyang
 ms.lastreviewed: 12/07/2020
@@ -29,19 +29,19 @@ There are several prerequisites that need to be in place before you can deploy t
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
    - the [privileged endpoint](azure-stack-privileged-endpoint.md).
    - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
-   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (AD) as your identity provider.
+   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (Azure AD) as your identity provider.
 
 - If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
 - Add the required Windows Server VM to Azure Stack Hub Marketplace.
   - For MySQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
-  - For MySQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server INTERNAL ONLY** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
+  - For MySQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
 
 - Download the supported version of MySQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2008, 2005|[MySQL RP version 1.1.93.0](https://aka.ms/azshmysqlrp11930)|Microsoft AzureStack Add-on RP Windows Server INTERNAL ONLY
+  |2102, 2008, 2005|[MySQL RP version 1.1.93.5](https://aka.ms/azshmysqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
@@ -118,7 +118,7 @@ After you've completed all of the prerequisites, you can run the **DeployMySqlPr
 To deploy the MySQL resource provider, open a **new** elevated PowerShell window (not PowerShell ISE) and change to the directory where you extracted the MySQL resource provider binary files. 
 
 > [!IMPORTANT]
-> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the update script.
+> We strongly recommend using **Clear-AzureRmContext -Scope CurrentUser** and **Clear-AzureRmContext -Scope Process** to clear the cache before running the deployment or update script.
 
 Run the **DeployMySqlProvider.ps1** script, which completes the following tasks:
 
@@ -224,6 +224,10 @@ When the resource provider installation script finishes, refresh your browser to
 3. Select the **system.\<location\>.mysqladapter** resource group.
 4. On the summary page for Resource group Overview, there should be no failed deployments.
 5. Finally, select **Virtual machines** in the administrator portal to verify that the MySQL resource provider VM was successfully created and is running.
+
+## Important configuration for Azure AD
+
+If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed MySQL RP has outbound internet connectivity. 
 
 ## Next steps
 

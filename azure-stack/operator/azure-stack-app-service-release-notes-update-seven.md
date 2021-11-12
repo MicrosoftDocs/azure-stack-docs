@@ -8,6 +8,8 @@ ms.date: 10/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
+ms.custom: contperf-fy22q1
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack Hub operator, I want the release notes for update 7 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
 # Keyword: app service azure stack hub update 7 release notes
@@ -118,7 +120,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Known issues for cloud admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-2002)
+Refer to the documentation in the [Azure Stack Hub 1907 release notes](./release-notes.md?view=azs-1907&preserve-view=true)
 
 ## Next steps
 

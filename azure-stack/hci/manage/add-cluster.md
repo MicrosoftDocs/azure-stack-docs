@@ -5,18 +5,18 @@ ms.topic: how-to
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 12/10/2020
+ms.date: 05/27/2021
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
 Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally. This applies to both non-stretched and stretched clusters.
 
-## Obtain OEM hardware
+## Before you begin
 
 The first step is to acquire new HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
 
@@ -24,11 +24,13 @@ The first step is to acquire new HCI hardware from your original OEM. Always ref
 1. Enable physical switch ports and adjust access control lists (ACLs) and VLAN IDs if applicable.
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
-1. Run OEM validation tests to ensure homogeneity with the existing cluster servers.
+1. Run OEM validation tests to ensure hardware homogeneity with the existing clustered servers.
+1. Install the Azure Stack HCI operating system on the new server. For detailed information, see [Deploy Azure Stack HCI](../deploy/operating-system.md).
+1. Join the server to the cluster domain.
 
 ## Add a server to a cluster
 
-Once your server has spun up correctly, use Windows Admin Center to join the server to your cluster.
+Use Windows Admin Center to join the server to your cluster.
 
 :::image type="content" source="media/manage-cluster/add-server.png" alt-text="Add server screen" lightbox="media/manage-cluster/add-server.png":::
 
@@ -42,9 +44,24 @@ Once your server has spun up correctly, use Windows Admin Center to join the ser
 
 ## Remove a server from a cluster
 
-The steps for removing a server from your cluster are similar to those for adding a server to a cluster.
+Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
 
-Keep in mind that when you remove a server, you will also remove any virtual machines, drives, and workloads associated with the server.
+### Uninstall VM extensions
+
+Before you remove a server from a cluster, you must uninstall any VM extensions from your Azure Arc-enabled servers, or else you risk issues installing extensions later if you add the server back again.
+
+You can remove VM extensions by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#uninstall-extension), using the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#remove-an-installed-extension), or using [Azure PowerShell](/azure/azure-arc/servers/manage-vm-extensions-powershell#remove-an-installed-extension).
+
+### Remove a server by using PowerShell
+
+To remove a server from a cluster by using PowerShell:
+
+1. Run `Disable-AzureStackHCIArcIntegration` on the server to be removed.
+2. Run `Remove-ClusterNode -Name <ServerName>` from a management PC or another server in the cluster.
+
+### Remove a server by using Windows Admin Center
+
+The steps for removing a server from your cluster by using Windows Admin Center are similar to those for adding a server to a cluster.
 
 :::image type="content" source="media/manage-cluster/remove-server.png" alt-text="Remove server dialog" lightbox="media/manage-cluster/remove-server.png":::
 
@@ -66,9 +83,9 @@ Take a few minutes to watch the video on adding server nodes to a stretched clus
 
 > [!VIDEO https://www.youtube.com/embed/AVHPkRmsZ5Y]
 
-You add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
+You add or remove servers to a stretched cluster using Windows PowerShell. Using the [Get-ClusterFaultDomainXML](/powershell/module/failoverclusters/get-clusterfaultdomainxml) and [Set-ClusterFaultDomainXML](/powershell/module/failoverclusters/set-clusterfaultdomainxml) cmdlets, you first modify the site (fault domain) information prior to adding the servers.
 
-Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
+Then, you can add the server pair to each site simultaneously using the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) cmdlet, allowing each new server's drives to be added at the same time also.
 
 Typically, you manage clusters from a remote computer, rather than on a server in a cluster. This remote computer is called the management computer.
 
@@ -162,7 +179,11 @@ Once the servers have been successfully added, the associated drives are automat
 
 ## Remove server pairs from a stretched cluster
 
-Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](https://docs.microsoft.com/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
+Before you remove server pairs from a cluster, you must uninstall any VM extensions from your Azure Arc-enabled servers, or else you risk issues installing extensions later if you add the servers back again.
+
+You can remove VM extensions by using the [Azure portal](/azure/azure-arc/servers/manage-vm-extensions-portal#uninstall-extension), using the [Azure CLI](/azure/azure-arc/servers/manage-vm-extensions-cli#remove-an-installed-extension), or using [Azure PowerShell](/azure/azure-arc/servers/manage-vm-extensions-powershell#remove-an-installed-extension).
+
+Removing a server pair from a stretched cluster is a similar process to adding a server pair, but using the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode) cmdlet instead.
 
 1. Use the following PowerShell cmdlets to determine the state of the cluster:
 
@@ -207,6 +228,13 @@ Removing a server pair from a stretched cluster is a similar process to adding a
     ```
     Get-ClusterFaultDomain
     ```
+
+1. Run the following cmdlet on the servers to be removed (Server5 and Server6) to disable Azure Arc integration:
+
+    ```
+    Disable-AzureStackHCIArcIntegration
+    ```
+
 1. Remove the server pairs from the cluster using the `Remove-ClusterNode` cmdlet:
 
     ```

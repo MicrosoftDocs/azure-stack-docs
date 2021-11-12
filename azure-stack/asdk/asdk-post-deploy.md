@@ -1,11 +1,11 @@
 ---
 title: Post deployment configurations for the ASDK 
 description: Learn about the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
-author: justinha
+author: PatAltimore
 
 ms.topic: article
 ms.date: 12/03/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 12/03/2020
 
@@ -43,9 +43,9 @@ You can install the latest Azure Stack PowerShell module with or without interne
   ```powershell  
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-    Install-Module -Name Az.BootStrapper -Force -AllowPrerelease
-    Install-AzProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
+    Install-Module -Name Az.BootStrapper -Force
+    Install-AzProfile -Profile 2020-09-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 2.1.0
 
     Get-Module -Name "Az*" -ListAvailable
     Get-Module -Name "Azs*" -ListAvailable
@@ -63,7 +63,7 @@ If the installation is successful, the Az and AzureStack modules are displayed i
     
     # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
     Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.8.2
+    Install-Module -Name AzureStack -RequiredVersion 1.8.3
     
     Get-Module -Name "Az*" -ListAvailable
     Get-Module -Name "Azs*" -ListAvailable
@@ -81,10 +81,10 @@ If the installation is successful, the AureRM and AzureStack modules are display
   $Path = "<Path that is used to save the packages>"
 
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $Path -Force -RequiredVersion 2.3.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $Path -Force -RequiredVersion 1.10.0
   
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 2.1.0
   ```
 
   Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the Az and AzureStack modules from this repository:
@@ -106,10 +106,10 @@ If the installation is successful, the AureRM and AzureStack modules are display
   $Path = "<Path that is used to save the packages>"
 
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 1.8.3
   
   Save-Package `
-    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
+    -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 2.0.2-preview
   ```
 
   Next, copy the downloaded packages to the ASDK computer and register the location as the default repository and install the AzureRM and AzureStack modules from this repository:
@@ -198,7 +198,7 @@ If there was a failure, follow the troubleshooting steps to get help.
 
 ## Enable multi-tenancy
 
-For deployments using Azure AD, you need to [enable multi-tenancy](../operator/azure-stack-enable-multitenancy.md#enable-multi-tenancy) for your ASDK installation.
+For deployments using Azure AD, you need to [enable multi-tenancy](../operator/enable-multitenancy.md) for your ASDK installation.
 
 > [!NOTE]
 > When admin or user accounts from domains other than the one used to register Azure Stack are used to log in to an Azure Stack portal, the domain name used to register Azure Stack must be appended to the portal URL. For example, if Azure Stack has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the URL to use to log in to the user portal would be: https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com.

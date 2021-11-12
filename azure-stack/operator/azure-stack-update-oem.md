@@ -1,10 +1,10 @@
 ---
-title: Apply an OEM update to Azure Stack Hub 
+title: Apply an OEM update to Azure Stack Hub
 description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack Hub.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
-ms.date: 10/15/2019
-ms.author: inhenkel
+ms.date: 06/24/2021
+ms.author: patricka
 ms.lastreviewed: 03/04/2020
 ms.reviewer: ppacent
 
@@ -33,13 +33,13 @@ This section contains OEM contact information and links to OEM Azure Stack Hub r
 
 | Hardware Partner | Region | URL |
 |-----|----|-----|
-| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide](https://aka.ms/aa708e2)<br><br>[UCS C-Series Rack-Mount UCS-Managed Server Software](https://aka.ms/aa700rq) |
+| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_01000.html)<br><br>[UCS C-Series Rack-Mount UCS-Managed Server Software](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/series.html) |
 | Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and login required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and login required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
 | Fujitsu | JAPAN | [Fujitsu managed service support desk (account and login required)](https://eservice.fujitsu.com/supportdesk-web/) |
 |  | EMEA & US | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
 | HPE | All | [HPE ProLiant for Microsoft Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
-| Wortmann |  | [OEM/firmware package](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
+| Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
 
 ## Apply OEM updates
 
@@ -49,8 +49,8 @@ Apply the OEM packages with the following steps:
 > Before applying updates in Azure Stack Hub, ensure you've completed **ALL** steps in the [Pre-update checklist](release-notes-checklist.md) and have scheduled an appropriate maintenance window for the update type that you're applying.
 
 1. Contact your OEM to:
-      - Determine the current version of your OEM package.  
-      - Find the best method to download your OEM package.  
+      - Determine the current version of your OEM package.
+      - Find the best method to download your OEM package.
 2. Before applying an OEM package update, always apply the latest Azure Stack Hub hotfix available on your system's current Azure Stack Hub version. For more information on hotfixes, see [Azure Stack Hub hotfixes](azure-stack-servicing-policy.md).
 3. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md).
 4. Apply the updates with the steps outlined in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md).
@@ -63,15 +63,16 @@ For more information on the privileged endpoint in Azure Stack Hub, see [Using t
 
 1. Access the privileged endpoint.
 
-    ```powershell  
+    ```powershell
     $cred = Get-Credential
-    $session = New-PSSession -ComputerName <IP Address of ERCS>
-    -ConfigurationName PrivilegedEndpoint -Credential $cred
+    $session = New-PSSession -ComputerName <IP Address of ERCS> `
+    -ConfigurationName PrivilegedEndpoint -Credential $cred `
+    -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     ```
 
 2. Configure the hardware vendor VM using the **Set-OEMExternalVM** cmdlet. The cmdlet validates the IP address and credentials for **-VMType** `ProxyVM`. For **-VMType** `HardwareManager`, the cmdlet won't validate the input. The **-Credential** parameter provided to **Set-OEMExternalVM** is one that will be clearly documented by the hardware vendor documentation.  It is *NOT* the CloudAdmin credential used with the privileged endpoint, or any other existing Azure Stack Hub credential.
 
-    ```powershell  
+    ```powershell
     $VmCred = Get-Credential
     Invoke-Command -Session $session
         {

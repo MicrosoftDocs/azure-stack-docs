@@ -18,8 +18,8 @@ A persistent volume represents a piece of storage that has been provisioned for 
 
 Here's what you need to get started:
 
-* A Kubernetes cluster with at least one Windows worker node.
-* A kubeconfig file to access the Kubernetes cluster.
+* A [Kubernetes cluster](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster) with at least one Windows worker node.
+* A kubeconfig file to [access the Kubernetes cluster](./kubernetes-walkthrough-powershell.md#access-your-clusters-using-kubectl).
 
 ## Create a persistent volume claim
 

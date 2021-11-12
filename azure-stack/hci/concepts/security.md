@@ -1,15 +1,15 @@
 ---
 title: Azure Stack HCI security considerations
 description: This topic provides guidance on security considerations for the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author:  jasongerend
+ms.author:  jgerend
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 11/03/2021
 ---
 
 # Azure Stack HCI security considerations
 
->Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 This topic provides security considerations and recommendations related to the Azure Stack HCI operating system:
 - Part 1 covers basic security tools and technologies to harden the operating system, and protect data and identities to efficiently build a secure foundation for your organization.
@@ -33,6 +33,10 @@ This section discusses how to protect services and virtual machines (VMs) runnin
     - *Trusted Platform Module (TPM)* technology provides hardware-based, security-related functions. A TPM chip is a secure crypto-processor that generates, stores, and limits the use of cryptographic keys. To learn more, see [Trusted Platform Module Technology Overview](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
     To learn more about Azure Stack HCI certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
+
+- The **Security tool** is available natively in Windows Admin Center for both single server and Azure Stack HCI clusters to make security management and control easier. The tool centralizes some key security settings for servers and clusters, including the ability to view the Secured-core status of systems.
+
+    To learn more, see [Secured-core server](/windows-server/get-started/whats-new-in-windows-server-2022#secured-core-server).
 
 - **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
 
@@ -113,20 +117,18 @@ The following sections recommend advanced security tools and technologies to fur
     To learn more, see [Microsoft Security Baselines](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/bg-p/Microsoft-Security-Baselines).
 
 ### Protect data
-- **Hardening the Hyper-V environment** requires hardening Windows Server running on a VM just as you would harden the operating system running
-on a physical server. Because virtual environments typically have multiple VMs sharing the same physical host, it is imperative to protect both the physical host and the VMs running on it. An attacker who compromises a host can affect multiple VMs with a greater impact on workloads and services. This section discusses the following methods that you can use to harden Windows Server in a Hyper-V environment:
-
-    - **Guarded fabric and shielded VMs** strengthen the security for VMs running in Hyper-V environments by preventing attackers from modifying VM files. A *guarded fabric* consists of a Host Guardian Service (HGS) that is typically a cluster of three nodes, one or more guarded hosts, and a set of shielded VMs. The Attestation Service evaluates the validity of hosts requests, while the Key Protection Service determines whether to release keys that the guarded hosts can use to start the shielded VM.
-
-        To learn more, see [Guarded fabric and shielded VMs overview](/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms).
+- **Hardening the Hyper-V environment** requires hardening Windows Server running on a VM just as you would harden the operating system running on a physical server. Because virtual environments typically have multiple VMs sharing the same physical host, it is imperative to protect both the physical host and the VMs running on it. An attacker who compromises a host can affect multiple VMs with a greater impact on workloads and services. This section discusses the following methods that you can use to harden Windows Server in a Hyper-V environment:
      
      - **Virtual Trusted Platform Module (vTPM)** in Windows Server supports TPM for VMs, which lets you use advanced security technologies, such as BitLocker in VMs. You can enable TPM support on any Generation 2 Hyper-V VM by using either Hyper-V Manager or the `Enable-VMTPM` Windows PowerShell cmdlet.
      
         To learn more, see [Enable-VMTPM](/powershell/module/hyper-v/enable-vmtpm).
      
-     - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages physical and virtual network devices, such as routers, switches, and gateways in your datacenter. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
+     - **Software Defined Networking (SDN)** in Azure Stack HCI and Windows Server centrally configures and manages virtual network devices, such as the software load balancer, data center firewall, gateways, and virtual switches in your infrastructure. Virtual network elements, such as Hyper-V Virtual Switch, Hyper-V Network Virtualization, and RAS Gateway are designed to be integral elements of your SDN infrastructure.
 
         To learn more, see [Software Defined Networking (SDN)](/windows-server/networking/sdn/).
+
+       >[!NOTE]
+       > Shielded VMs are not supported in Azure Stack HCI.
 
 ### Protect identities
 - **Local Administrator Password Solution (LAPS)** is a lightweight mechanism for Active Directory domain-joined systems that periodically sets each computer’s local admin account password to a new random and unique value. Passwords are stored in a secured confidential attribute on the corresponding computer object in Active Directory, where only specifically-authorized users can retrieve them. LAPS uses local accounts for remote computer management in a way that offers some advantages over using domain accounts. To learn more, see [Remote Use of Local Accounts: LAPS Changes Everything](/archive/blogs/secguide/remote-use-of-local-accounts-laps-changes-everything).

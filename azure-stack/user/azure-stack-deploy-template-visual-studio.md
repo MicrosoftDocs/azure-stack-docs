@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: article
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to deploy templates in Azure Stack with Visual Studio so...... (article doesn't give any benefits)

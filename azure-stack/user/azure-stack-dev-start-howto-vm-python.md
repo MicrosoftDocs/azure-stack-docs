@@ -3,28 +3,26 @@ title: Deploy Python web app to VM in Azure Stack Hub
 description: Deploy a Python web app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
-ms.topic: overview
-ms.date: 12/2/2020
+ms.topic: how-to
+ms.date: 9/29/2021
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.lastreviewed: 12/2/2020
+ms.reviewer: raymondl
+ms.lastreviewed: 9/29/2021
+ms.custom: contperf-fy22q1
 
 # Intent: As an Azure Stack Hub user, I want to deploy a Python web app to a virtual machine in Azure Stack Hub.
 # Keyword: deploy python webapp VM azure stack hub
 
 ---
 
-
-
 # Deploy a Python web app to a VM in Azure Stack Hub
 
 You can create a VM to host your Python web app in Azure Stack Hub. In this article, you set up a server, configure the server to host your Python web app, and then deploy the app to Azure Stack Hub.
 
-This article uses Python 3.x running Flask in a virtual environment on an Nginx server.
-
+This article uses Python 3.x running Flask in a virtual environment on an Nginx server. Use **Ubuntu Server 18.04 LTS** from the Azure Stack Hub Marketplace.
 ## Create a VM
 
-1. Set up your VM in Azure Stack Hub by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack Hub](azure-stack-dev-start-howto-deploy-linux.md).
+1. Set up your VM in Azure Stack Hub by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack Hub](azure-stack-dev-start-howto-deploy-linux.md). Use **Ubuntu Server 18.04 LTS** from the Azure Stack Hub Marketplace.
 
 2. In the VM network pane, make sure that the following ports are accessible:
 
@@ -36,31 +34,38 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
     | 3389 | RDP | Optional. The Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface on your machine.   |
     | 5000, 8000 | Custom | The ports that are used by the Flask web framework in development. For a production server, you route your traffic through 80 and 443. |
 
+3. In the **Overview** pane, select **configure** under DNS name.
+
+4. Select **static** and then name the machine so that you have a DNS name such as: `<yourmachine>.<local>.cloudapp.azurestack.contoso.com`.
+
 ## Install Python
 
 1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 2. At your bash prompt on your VM, enter the following command:
 
     ```bash  
-    sudo apt-get -y install python3 python3-venv python3-dev
+    sudo apt-get update
+    sudo apt-get -y install python3 python3-dev
+    sudo apt install python3-pip
     ```
 
-3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
+3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command to open Python and note the version number. Then type `quit()` to exit the Python REPL.
 
     ```bash  
-        python -version
+    python3
+    quit()
     ```
 
 3. [Install Nginx](https://www.nginx.com/resources/wiki/), a lightweight web server. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
-       sudo apt-get -y install nginx git
+    sudo apt-get -y install nginx
     ```
 
 4. [Install Git](https://git-scm.com), a widely distributed version control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
-       sudo apt-get -y install git
+    sudo apt-get -y install git
     ```
 
 ## Deploy and run the app
@@ -73,22 +78,20 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
        cd azure-stack-hub-flask-hello-world
     ```
 
-2. Create a virtual environment, and populate it with all the package dependencies. While you're still connected to your VM in your SSH session, enter the following commands:
+2. While you're still connected to your VM in your SSH session, enter the following commands to install the dependencies. Install Flask using apt, and then pip to load the modules from `requirements.txt`.
 
     ```bash  
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    
+    sudo apt install python3-flask
+    pip3 install -r requirements.txt
+
     export FLASK_APP=application.py
-    # export FLASK_DEBUG=1 
     flask run -h 0.0.0.0
     ```
 
 3. Go to your new server. You should see your running web application.
 
     ```HTTP  
-       http://yourhostname.cloudapp.net:5000
+    <yourmachine>.<local>.cloudapp.azurestack.contoso.com:5000
     ```
 
 ## Update your server
@@ -98,15 +101,13 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
 2. Enter the following commands:
 
     ```bash  
-    deactivate
-    open the git repo
+    cd azure-stack-hub-flask-hello-world
     git pull
     ```
 
 3. Activate the virtual environment and start the app:
 
     ```bash  
-    source venv/bin/activate
     export FLASK_APP=application.py
     flask run -h 0.0.0.0
     ```

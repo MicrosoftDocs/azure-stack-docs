@@ -2,12 +2,12 @@
 title: Replace hardware component on Azure Stack Hub scale unit node
 titleSuffix: Azure Stack Hub
 description: Learn how to replace a hardware component on an Azure Stack Hub integrated system.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: how-to
-ms.date: 03/04/2020
-ms.author: inhenkel
+ms.date: 10/21/2021
+ms.author: patricka
 ms.reviewer: thoroet 
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 10/21/2021
 
 # Intent: As an Azure Stack operator, I want to replace a hardware component in Azure Stack.
 # Keyword: replace hardware component azure stack
@@ -20,26 +20,29 @@ ms.lastreviewed: 07/18/2019
 This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack Hub integrated system.
 
 > [!CAUTION]  
-> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack Hub automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threats, or prevent Azure Stack Hub automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md).
+
+[!INCLUDE [Add node warning](../includes/operator-add-node-warning.md)]
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[Release Notes for Cisco Integrated System for Microsoft Azure Stack Hub](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and sign-in required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and sign-in required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| Fujitsu | JAPAN | [Fujitsu managed service support desk (account and sign-in required)](https://eservice.fujitsu.com/supportdesk-web/) |
+| Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and sign in required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and sign in required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPAN | [Fujitsu managed service support desk (account and sign in required)](https://eservice.fujitsu.com/supportdesk-web/) |
 |  | EMEA | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
-|  | EU | [Fujitsu MySupport (account and sign-in required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+|  | EU | [Fujitsu MySupport (account and sign in required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
 | HPE | All | [HPE ProLiant for Microsoft Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
-| Wortmann |  | [OEM/firmware package](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
+| Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/)<br>[terra Azure Stack Hub documentation (including FRU)](https://aka.ms/aa6zktc)
 
 Non hot-swappable components include the following items:
 
-- CPU*
+- CPU (must be of the same type (model, cores)*
 - Memory*
 - Motherboard/baseboard management controller (BMC)/video card
 - Disk controller/host bus adapter (HBA)/backplane
 - Network adapter (NIC)
+- Graphics processing unit (GPU)
 - Operating system disk*
 - Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 

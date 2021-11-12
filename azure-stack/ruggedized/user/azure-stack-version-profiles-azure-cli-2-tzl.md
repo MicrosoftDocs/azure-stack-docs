@@ -11,9 +11,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/9/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 1/9/2020
 
 ---
@@ -43,7 +43,7 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 ### Install or upgrade CLI
 
-Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
+Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](/cli/azure/install-azure-cli) article. 
 
 To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
 
@@ -105,7 +105,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
    - Sign in as a *service principal*: 
     
-     Before you sign in, [create a service principal through the Azure portal](../../operator/azure-stack-create-service-principals.md) or CLI and assign it a role. Now, sign in by using the following command:
+     Before you sign in, [create a service principal through the Azure portal](../../operator/give-app-access-to-resources.md) or CLI and assign it a role. Now, sign in by using the following command:
 
      ```azurecli  
      az login --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com> --service-principal -u <Application Id of the Service Principal> -p <Key generated for the Service Principal>
@@ -214,4 +214,4 @@ There are known issues when using CLI in Azure Stack Hub:
 
 - [Deploy templates with Azure CLI](../../user/azure-stack-deploy-template-command-line.md)
 - [Enable Azure CLI for Azure Stack Hub users (Operator)](../../operator/azure-stack-cli-admin.md)
-- [Manage user permissions](../../user/azure-stack-manage-permissions.md) 
+- [Manage user permissions](../../user/azure-stack-manage-permissions.md)

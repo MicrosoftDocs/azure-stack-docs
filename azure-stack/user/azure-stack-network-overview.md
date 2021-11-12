@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub networking
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2020

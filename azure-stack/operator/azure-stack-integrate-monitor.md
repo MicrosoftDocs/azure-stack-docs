@@ -1,10 +1,10 @@
 ---
 title: Integrate external monitoring solution with Azure Stack Hub 
 description: Learn how to integrate Azure Stack Hub with an external monitoring solution in your datacenter.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: article
 ms.date: 11/18/2020
-ms.author: inhenkel
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 11/18/2020
 
@@ -115,7 +115,7 @@ samples/etc/azurestack_services.cfg
 
 The following parameters are available to be configured in the azurestack.cfg file. Parameters in bold need to be configured independently from the authentication model you choose.
 
-For more information on how to create an SPN, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
+For more information on how to create an SPN, see [Use an app identity to access resources](./give-app-access-to-resources.md).
 
 | Parameter | Description | Authentication |
 | --- | --- | --- |

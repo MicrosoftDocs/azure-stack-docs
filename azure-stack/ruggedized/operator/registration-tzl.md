@@ -1,5 +1,5 @@
 ---
-title: Register Azure Stack Hub with Azure
+title: Register Azure Stack Hub with Azure - Ruggedized
 description: Learn how to register Azure Stack Hub with Azure so you can download Azure Marketplace items and set up data reporting. 
 services: azure-stack
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 07/21/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 12/20/2019
 
 ---
 
-# Register Azure Stack Hub with Azure
+# Register Azure Stack Hub with Azure - Azure Stack Hub ruggedized
 
-To set up Marketplace syndication, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
+To set up Marketplace syndication and use PaaS services, you must register and activate your Modular Data Center (MDC) or Azure Stack Hub ruggedized, based on Azure Stack Hub, after deployment completes. With Marketplace syndication, an administrator populates the local Azure Stack Hub Marketplace with images downloaded from the Azure Marketplace.
 
 Registration is required for systems that will connect to the Azure cloud as well as for systems that will be disconnected.
 
@@ -35,9 +35,6 @@ The registration process consists of the following steps:
 4. Activate Azure Stack Hub.
 
 If a system is connected to the Azure cloud, all four steps can be executed with a single script. If the system is disconnected, the administrator must perform the steps individually.
-
-> [!NOTE]
-> For MDC, each of the Azure Stack Hub systems must be registered separately. Therefore, the following instructions must be performed three times.
 
 ## Prerequisites
 
@@ -55,12 +52,10 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 - The subscription ID for an Azure subscription.  
 
-    > [!Note]  
+    > [!NOTE]  
     > Azure subscriptions are associated to Azure cloud environments (Azure commercial, Azure government etc.) This determines which cloud you will connect to access Marketplace content.
-    > 
-    > The subscription you use for registration must be approved for JEDI services. This ensures that the device that you register will be entitled to unlimited usage of resources, with no reporting of the usage to Azure. In order to approve your subscription, send an email to azshregistration@microsoft.com with the subscription ID that needs to be approved along with the Azure Stack Hub ruggedized or Modular Data Center (MDC) you are registering.
 
-- The username and password for an account that's an owner for the subscription. 
+- The username and password for an account that's an owner for the subscription.
 - The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](../../operator/azure-stack-registration-role.md).
 - Register the Azure Stack Hub resource provider (see the following sections for details).
 
@@ -78,7 +73,7 @@ To successfully register Azure Stack Hub, the PowerShell language mode must be s
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Ensure that the output returns **FullLanguageMode**. If any other language mode is returned, registration needs to be run on another machine, or the language mode needs to be set to **FullLanguageMode** before continuing.
+Ensure that the output returns **FullLanguageMode**. If any other language mode is returned, registration needs to be run on another machine, or the language mode must be set to **FullLanguageMode** before continuing.
 
 ### Install PowerShell for Azure Stack Hub
 
@@ -90,14 +85,14 @@ If the latest version isn't already installed, see [Install PowerShell for Azure
 
 The [Azure Stack Hub tools module](https://www.powershellgallery.com/packages/azs.tools.admin/0.1.0) contains PowerShell modules that support Azure Stack Hub functionality, including registration functionality. During the registration process, you must import and use the **RegisterWithAzure.psm1** submodule to register your Azure Stack Hub instance with Azure.
 
-To install the most recent Azure Stack Hubs tool:
+To install the most recent Azure Stack Hubs tools:
 
 1. Open an elevated PowerShell prompt.
 2. Run the following cmdlet:
 
-    ```powershell  
-        Install-Module -Name Azs.Tools.Admin
-    ```
+   ```powershell  
+   Install-Module -Name Azs.Tools.Admin
+   ```
 
 ### Determine your registration scenario
 
@@ -105,15 +100,15 @@ Your Azure Stack Hub deployment may be *connected* or *disconnected*.
 
 - **Connected**: Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You can either have Azure AD or Active Directory Federation Services (AD FS) for your identity store.
 
-- **Disconnected**: With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet.
+- **Disconnected**: With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. Because disconnected systems can't report PaaS usage back to Azure, they must register as the **Capacity** billing model in order to use PaaS services.
 
 ### Determine a unique registration name to use
 
 When you register Azure Stack Hub with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack Hub subscription with an Azure registration is to use your Azure Stack Hub **Cloud ID**.
 
-To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the Privileged Endpoint, run the following commands, and then record the **CloudID** value:
+To determine the Cloud ID for your Azure Stack Hub deployment, open PowerShell as an admin on a computer that can access the privileged endpoint, run the following commands, and then record the **CloudID** value:
 
-```PowerShell
+```powershell
 Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
 Get-AzureStackStampInformation
 ```
@@ -129,36 +124,33 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack Hub resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters as follows).
 
-2. Add the Azure account that you used to register Azure Stack Hub. To add the account, run the **Add-AzureRmAccount** cmdlet. You are prompted to enter your Azure account credentials, and you may have to use two-factor authentication based on your account configuration.
+2. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
 
    ```powershell
-   Add-AzureRmAccount -EnvironmentName "<environment name>"
-   ```
-
-   | Parameter | Description |  
-   |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
-
-   >[!NOTE]
-   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
-
-3. In the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context is the Azure account that was used to register the Azure Stack Hub resource provider previously:
-
-   ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
+   For **AzureUSSec**, you must first initialize the `CustomCloud` environment and then call **Connect-AzureRmAccount**:
+
+   ```powershell
+   Initialize-AzureRmEnvironment -Name 'CustomCloud' -CloudManifestFilePath $CloudManifestFilePath
+   Connect-AzureRmAccount -Environment 'CustomCloud'
+   ```
+
    | Parameter | Description |  
    |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud** or **AzureUSGovernment**.  |
+   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or **AzureUSSec**.   |
 
-4. If you have multiple subscriptions, run the following command to select the one you want to use:
+   > [!NOTE]
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
 
-   ```powershell  
+3. If you have multiple subscriptions, run the following command to select the one you want to use:
+
+   ```powershell
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-5. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
+4. Run the following command to register the Azure Stack Hub resource provider with your Azure subscription:
 
    ```powershell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
@@ -168,8 +160,7 @@ Connected environments can access the internet and Azure. For these environments
 
    ![Register Azure Stack Hub Resource Provider](./media/registration-tzl/register-azure-resource-provider-portal.png)
 
-
-6. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
+5. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
 
    ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -179,16 +170,17 @@ Connected environments can access the internet and Azure. For these environments
    Set-AzsRegistration `
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
-      -BillingModel Custom `
+      -BillingModel Ruggedized `
       -RegistrationName $RegistrationName `
       -msAssetTag $msAssetTagName `
       -UsageReportingEnabled: $false
    ```
-   The MS Asset tag (`msAssetTag`) is a mandatory for Custom billing model registration and is printed on the product.
-    
-   The process takes between 10 and 15 minutes. When the command completes, you see the message. **Your environment is now registered and activated using the provided parameters.**
 
-## Registration and activation for systems not connected to the Azure cloud 
+   The MS asset tag (`msAssetTag`) is mandatory for Ruggedized billing model registration, and is printed on the product.
+
+   The process takes between 10 and 15 minutes. When the command completes, you see the message **Your environment is now registered and activated using the provided parameters**.
+
+## Registration and activation for systems not connected to the Azure cloud
 
 If you're registering Azure Stack Hub in a disconnected environment (with no internet connectivity), perform the following steps:
 
@@ -213,7 +205,7 @@ Get a registration token from the Azure Stack Hub environment. Then, use that to
       -PrivilegedEndpointCredential $YourCloudAdminCredential `
       -UsageReportingEnabled:$False `
       -PrivilegedEndpoint $YourPrivilegedEndpoint `
-      -BillingModel Custom -msAssetTag '<MS Asset tag>' `
+      -BillingModel Capacity -AgreementNumber '<EA agreement number>' -msAssetTag '<MS Asset tag>' `
       -TokenOutputFilePath $FilePathForRegistrationToken 
    ```
 
@@ -297,7 +289,7 @@ New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredentia
 
 You can use the **Region management** tile to verify that the Azure Stack Hub registration was successful. This tile is available on the default dashboard in the administrator portal. The status can be registered, or not registered. If registered, it also shows the Azure subscription ID that you used to register your Azure Stack Hub along with the registration resource group and name.
 
-1. Sign in to the Azure Stack Hub administrator portal (`https://adminportal.local.azurestack.external`).
+1. Sign in to the Azure Stack Hub administrator portal. The URL varies based on your operator's region and external domain name, and will be in the format `https://adminportal.<region>.<FQDN>`.
 
 2. From the Dashboard, select **Region management**.
 
@@ -312,16 +304,13 @@ You can use the **Region management** tile to verify that the Azure Stack Hub re
 
 4. You can use the Azure portal to view Azure Stack Hub registration resources, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com/) using an account associated with the subscription you used to register Azure Stack Hub. Select **All resources**, enable the **Show hidden types** checkbox, and then select the registration name.
 
-5. If the registration did not succeed, you must re-register by [Change the subscription you use](https://docs.microsoft.com/azure-stack/operator/azure-stack-registration#change-the-subscription-you-use) to resolve the issue.
+5. If the registration did not succeed, you must re-register. See [Change the subscription you use](../../operator/azure-stack-registration.md#change-the-subscription-you-use) to resolve the issue.
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of Marketplace items in the **Marketplace management** blade, your registration was successful. However, in disconnected environments, you can't see Marketplace items in Marketplace management.
 
 > [!NOTE]
 > After registration is complete, the active warning for not registering no longer appears.
 
-> [!NOTE]
-> The error message **[InvalidRegistrationToken]:BillingModel 'Custom' is not supported by subscription** indicates that the subscription you are using for registration has not been approved for Azure Stack Hub ruggedized or MDC use. Please contact azshregistration@microsoft.com to have a subscription approved along with the type of product (Azure Stack Hub ruggedized or MDC) you are registering.
-
 ## Next steps
 
-[Azure Stack Hub administration basics](../../operator/azure-stack-manage-basics.md)  
+[Azure Stack Hub administration basics](../../operator/azure-stack-manage-basics.md)

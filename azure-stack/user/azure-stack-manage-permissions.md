@@ -75,4 +75,4 @@ The following steps describe how to configure permissions for a user.
 
 ## Next steps
 
-[Create service principals](../operator/azure-stack-create-service-principals.md)
+[Create service principals](../operator/give-app-access-to-resources.md)

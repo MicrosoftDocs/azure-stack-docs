@@ -48,13 +48,7 @@ AzCopy is a command-line utility designed to copy data to and from Microsoft Azu
 
 ### Download and install AzCopy
 
-::: moniker range=">=azs-1811"
-* For the 1811 update or newer versions, [download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
-::: moniker-end
-
-::: moniker range="<azs-1811"
-* For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
-::: moniker-end
+[Download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
 
 ### AzCopy 10.1 configuration and limits
 
@@ -101,7 +95,7 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
 ### AzCopy known issues
 
  - Any AzCopy operation on a file storage isn't available because file storage isn't yet available in Azure Stack Hub.
- - If you want to transfer data between two Azure Stack Hub blob locations—or between Azure Stack Hub and Azure Storage by using AzCopy 10.1—you need to download the data to a local location first, and then reupload to the target directory on Azure Stack Hub or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
+ - If you want to transfer data between two Azure Stack Hub blob locations--or between Azure Stack Hub and Azure Storage by using AzCopy 10.1--you need to download the data to a local location first, and then reupload to the target directory on Azure Stack Hub or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
  - The Linux version of AzCopy only supports the 1802 update or later versions and it doesn't support Table service.
  - If you want to copy data to and from your Azure Table storage service, then [install AzCopy version 7.3.0](https://aka.ms/azcopyforazurestack20171109)
  
@@ -152,7 +146,7 @@ Add-AzEnvironment -Name $ARMEvnName -ARMEndpoint $ARMEndPoint
 
 # Login
 $TenantID = Get-AzsDirectoryTenantId -AADTenantName $AADTenantName -EnvironmentName $ARMEvnName
-Add-AzAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
+Connect-AzAccount -EnvironmentName $ARMEvnName -TenantId $TenantID 
 
 # Set a default Azure subscription.
 Select-AzSubscription -SubscriptionName $SubscriptionName
@@ -167,17 +161,17 @@ New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAccount
 Set-AzCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureStorageContainer -Name $ContainerName -Permission Off
+New-AzStorageContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzStorageBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureStorageBlob -Container $ContainerName
+Get-AzStorageBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.
-$blobs = Get-AzureStorageBlob -Container $ContainerName
+$blobs = Get-AzStorageBlob -Container $ContainerName
 
 # Create the destination directory.
 New-Item -Path $DestinationFolder -ItemType Directory -Force  
@@ -240,13 +234,13 @@ New-AzureRMStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageAc
 Set-AzureRMCurrentStorageAccount -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName 
 
 # Create a new container.
-New-AzureRMureStorageContainer -Name $ContainerName -Permission Off
+New-AzureContainer -Name $ContainerName -Permission Off
 
 # Upload a blob into a container.
-Set-AzureRMureStorageBlobContent -Container $ContainerName -File $ImageToUpload
+Set-AzureBlobContent -Container $ContainerName -File $ImageToUpload
 
 # List all blobs in a container.
-Get-AzureRMureStorageBlob -Container $ContainerName
+Get-AzureBlob -Container $ContainerName
 
 # Download blobs from the container:
 # Get a reference to a list of all blobs in a container.
@@ -267,6 +261,8 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 ### PowerShell known issues
 
+#### Get-AzStorageAccountKey difference
+
 The current compatible Azure PowerShell module version for Azure Stack Hub is 1.2.11 for the user operations. It's different from the latest version of Azure PowerShell. This difference impacts storage services operation in the following way:
 
 The return value format of `Get-AzStorageAccountKey` in version 1.2.11 has two properties: `Key1` and `Key2`, while the current Azure version returns an array containing all the account keys.
@@ -284,6 +280,10 @@ The return value format of `Get-AzStorageAccountKey` in version 1.2.11 has two p
 ```
 
 For more information, see [Get-AzureRMStorageAccountKey](/powershell/module/Az.storage/Get-AzStorageAccountKey).
+
+#### Copy blob between Azure Stack Hub clusters
+
+`Start-AzStorageBlobCopy` can be used to start a copy job to move a blob. When setting the property `AbsoluteUri` as the blob uri on another Azure Stack Hub cluster, this cmdlet can be used to copy blob between two Azure Stack Hub clusters. Make sure the source and destination Azure Stack Hub clusters are on the same update version. Azure Stack Hub currently doesn't support using `Start-AzStorageBlobCopy` to copy blob between two Azure Stack Hub clusters which have deployed different update versions.
 
 ## Azure CLI
 

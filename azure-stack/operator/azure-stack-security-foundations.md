@@ -2,13 +2,13 @@
 title: Azure Stack Hub security controls
 titleSuffix: Azure Stack Hub
 description: Learn about the security posture and controls applied to Azure Stack Hub.
-author: JustinHall
+author: BryanLa
 
 ms.topic: article
 ms.date: 06/10/2019
-ms.author: justinha
+ms.author: bryanla
 ms.reviewer: fiseraci
-ms.lastreviewed: 04/07/2020
+ms.lastreviewed: 04/01/2021
 
 # Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
 # Keyword: security controls azure stack
@@ -60,10 +60,6 @@ Authorized code is signed by either Microsoft or the OEM partner. The signed aut
 
 The WDAC policy also prevents third-party agents or software from running in the Azure Stack Hub infrastructure.
 For more information on WDAC, please refer to [Windows Defender Application Control and virtualization-based protection of code integrity](/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control).
-
-## Credential Guard
-
-Another Windows Server security feature in Azure Stack Hub is Windows Defender Credential Guard, which is used to protect Azure Stack Hub infrastructure credentials from Pass-the-Hash and Pass-the-Ticket attacks.
 
 ## Antimalware
 

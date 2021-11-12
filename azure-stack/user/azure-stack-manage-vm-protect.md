@@ -4,10 +4,10 @@ description: Learn how to build a recovery plan to protect VMs deployed on Azure
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 6/10/2021
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.lastreviewed: 3/5/2020
+ms.lastreviewed: 6/10/2021
 
 # Intent: As an Azure Stack user, I need a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime. 
 # Keyword: protect vms data loss
@@ -18,7 +18,7 @@ ms.lastreviewed: 3/5/2020
 
 Use this article as a guide to help you develop a data protection and disaster recovery strategy for user-deployed IaaS virtual machines (VMs) deployed on Azure Stack Hub.
 
-To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization’s comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack Hub: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
+To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack Hub: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## Considerations for protecting IaaS VMs
 
@@ -37,7 +37,7 @@ Users are responsible for protecting VMs. Operators are responsible for keeping 
 
 Users that need to protect against a datacenter or site outage can use another Azure Stack Hub or Azure to provide high availability or quick recovery. With primary and secondary location, users can deploy applications in an active/active or active/passive configuration across two environments. For less critical workloads, users can use capacity in the secondary location to perform on-demand restore of applications from backup.
 
-One or more Azure Stack Hub clouds can be deployed to a datacenter. To survive a catastrophic disaster, deploying at least one Azure Stack Hub cloud in a different datacenter ensures that you can failover workloads and minimize unplanned downtime. If you only have one Azure Stack Hub, you should consider using the Azure public cloud as your recovery cloud. The determination of where your application can run will be determined by government regulations, corporate policies, and stringent latency requirements. You have the flexibility to determine the appropriate recovery location per application. For example, you can have applications in one subscription backing up data to another datacenter and in another subscription, replicating data to the Azure public cloud.
+One or more Azure Stack Hub clouds can be deployed to a datacenter. To survive a catastrophic disaster, deploying at least one Azure Stack Hub cloud in a different datacenter ensures that you can fail over workloads and minimize unplanned downtime. If you only have one Azure Stack Hub, you should consider using the Azure public cloud as your recovery cloud. The determination of where your application can run will be determined by government regulations, corporate policies, and stringent latency requirements. You have the flexibility to determine the appropriate recovery location per application. For example, you can have applications in one subscription backing up data to another datacenter and in another subscription, replicating data to the Azure public cloud.
 
 ## Application recovery objectives
 
@@ -46,7 +46,7 @@ Application owners are primarily responsible for determining the amount of downt
  - **Recovery time objective (RTO)**  
 RTO is the maximum acceptable time that an app can be unavailable after an incident. For example, an RTO of 90 minutes means that you must be able to restore the app to a running state within 90 minutes from the start of a disaster. If you have a low RTO, you might keep a second deployment continually running on standby to protect against a regional outage.
  - **Recovery point objective (RPO)**  
-RPO is the maximum duration of data loss that is acceptable during a disaster. For example, if you store data in a single database which is backed up hourly and has no replication to other databases, you could lose up to an hour of data.
+RPO is the maximum duration of data loss that is acceptable during a disaster. For example, if you store data in a single database, which is backed up hourly and has no replication to other databases, you could lose up to an hour of data.
 
 Another metric is *Mean Time to Recover* (MTTR), which is the average time that it takes to restore the application after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system causes an unacceptable business disruption because it won't be possible to restore the system within the defined RTO.
 
@@ -54,7 +54,7 @@ Another metric is *Mean Time to Recover* (MTTR), which is the average time that 
 
 ### Backup-restore
 
-Backing up your applications and datasets enables you to quickly recover from downtime due to data corruption, accidental deletions, or disasters. For IaaS VM based applications you can use an in-guest agent to protect application data, operating system configuration, and data stored on volumes. 
+Backing up your applications and datasets enables you to quickly recover from downtime due to data corruption, accidental deletions, or disasters. For IaaS VM-based applications you can use an in-guest agent to protect application data, operating system configuration, and data stored on volumes. 
 
 #### Backup using in-guest agent
 
@@ -66,7 +66,7 @@ Recovering an application from an agent requires manually recreating the VM, ins
 
 Backup products can protect IaaS VM configuration and disks attached to a stopped VM. Use backup products that integrate with Azure Stack Hub APIs to capture VM configuration and create disk snapshots. If planned downtime for the application is possible, then make sure the VM is in a stopped state before starting backup workflow.  
 
-#### Backup using disk snapshot snapshot for running VMs
+#### Backup using disk snapshot for running VMs
 
 > [!Important]  
 > Using disk snapshots is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use an in-guest agent to protect the application if planned downtime is not an option. 
@@ -103,11 +103,20 @@ Important considerations for your Azure Stack Hub deployment:
 |**Deploy a backup target on the same Azure Stack Hub that also hosts all the applications protected by the same backup target.**| Stand-alone target: Not recommended </br> Target that replicates backup data externally: Recommended | If you choose to deploy a backup appliance on Azure Stack Hub (for the purposes of optimizing operational restore), you must ensure all data is continuously copied to an external backup location. |
 |**Deploy physical backup appliance into the same rack where the Azure Stack Hub solution is installed**| Not supported | Currently, you can't connect any other devices to the top of rack switches that aren't part of the original solution. |
 
+## Considerations for a restored IaaS VM
+
+You will need to make some changes to your VM after restoring the machine from backup. These include:
+- **MAC address**  
+    The virtual network adapter will get a new MAC address. There isn't a method to preserve the original MAC address.
+- **IP address**  
+    If your VM has a static IP internally set, the internal IP on the virtual network adapter can be set to match the original. You may need to consider if the VNET has a S2S VPN to an external environment where the IP address might be in use.
+- **Unneeded artifacts**  
+    If the VM was backed up on a different platform, such as VMware vSphere, you will need to follow some additional steps to clean up any unneeded artifacts from the source.
 ## Next steps
 
 This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, refer to:
 
-- [Azure Stack IaaS – part four – Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
+- [Azure Stack IaaS - part four - Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
 - [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
 
 ### Azure Backup Server

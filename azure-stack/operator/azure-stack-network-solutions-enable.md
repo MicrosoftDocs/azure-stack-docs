@@ -5,7 +5,7 @@ author: mattbriggs
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub operator, I want to add Fortinet FortiGate to Azure Stack Hub Marketplace so my users can create network solutions.
@@ -16,8 +16,6 @@ ms.lastreviewed: 12/2/2020
 # Offer a network solution in Azure Stack Hub with Fortinet FortiGate
 
 You can add FortiGate Next-Generation Firewall (NGFW) to your Azure Stack Hub Marketplace. FortiGate lets your users create network solutions such as a virtual private network (VPN) to Azure Stack Hub and VNET peering. A network virtual appliance (NVA) controls the flow of network traffic from a perimeter network to other networks or subnets.
-
-For more information on FortiGate in Azure Marketplace, see [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 
 ## Download the required Azure Stack Hub Marketplace items
 

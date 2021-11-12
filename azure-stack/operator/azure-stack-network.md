@@ -1,10 +1,10 @@
 ---
 title: Network integration planning for Azure Stack Hub 
 description: Learn how to plan for datacenter network integration with Azure Stack Hub integrated systems.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.author: inhenkel
+ms.date: 09/24/2021
+ms.author: patricka
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
 
@@ -45,12 +45,12 @@ The following table shows the logical networks and associated IPv4 subnet ranges
 | Public VIP | Azure Stack uses a total of 31 addresses from this network. Eight public IP addresses are used for a small set of Azure Stack services and the rest are used by tenant VMs. If you plan to use App Service and the SQL resource providers, 7 more addresses are used. The remaining 15 IPs are reserved for future Azure services. | /26 (62 hosts) - /22 (1022 hosts)<br><br>Recommended = /24 (254 hosts) | 
 | Switch infrastructure | Point-to-point IP addresses for routing purposes, dedicated switch management interfaces, and loopback addresses assigned to the switch. | /26 | 
 | Infrastructure | Used for Azure Stack internal components to communicate. | /24 |
-| Private | Used for the storage network, private VIPs, Infrastructure containers and other internal functions. Starting in 1910, the size for this subnet is changing to /20, for more details reference the [Private network](#private-network) section in this article. | /20 | 
+| Private | Used for the storage network, private VIPs, Infrastructure containers and other internal functions. For more details reference the [Private network](#private-network) section in this article. | /20 | 
 | BMC | Used to communicate with the BMCs on the physical hosts. | /26 | 
 | | | |
 
 > [!NOTE]
-> When the system is updated to 1910 version, an alert on the portal will remind the operator to run the new PEP cmdlet **Set-AzsPrivateNetwork** to add a new /20 Private IP space. Please see the [1910 release notes](release-notes.md?view=azs-1910&preserve-view=true) for instructions on running the cmdlet. For more information and guidance on selecting the /20 private IP space, please see the [Private network](#private-network) section in this article.
+> An alert on the portal will remind the operator to run the PEP cmdlet **Set-AzsPrivateNetwork** to add a new /20 Private IP space. For more information and guidance on selecting the /20 private IP space, please see the [Private network](#private-network) section in this article.
 
 ## Network infrastructure
 
@@ -72,22 +72,43 @@ This /20 (4096 IPs) network is private to the Azure Stack region (doesn't route 
 - **Internal virtual IP network**: A /25 network dedicated to internal-only VIPs for the software load balancer.
 - **Container network**: A /23 (512 IPs) network dedicated to internal-only traffic between containers running infrastructure services.
 
-Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network will be private to the Azure Stack system (doesn't route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with other networks in the datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers. In addition, this new Private IP space enables ongoing efforts to reduce the required routable IP space prior to deployment. The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space before deployment. For guidance on Private IP space, we recommend following  [RFC 1918](https://tools.ietf.org/html/rfc1918).
+The Azure Stack Hub system **requires** an additional /20 private internal IP space. This network will be private to the Azure Stack system (doesn't route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with other networks in the datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers. In addition, this new Private IP space enables ongoing efforts to reduce the required routable IP space prior to deployment. The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space before deployment. For guidance on Private IP space, we recommend following  [RFC 1918](https://tools.ietf.org/html/rfc1918).
 
+::: moniker range="<=azs-1910"
 For systems deployed before 1910, this /20 subnet will be an additional network to be entered into systems after updating to 1910. The additional network will need to be provided to the system through the **Set-AzsPrivateNetwork** PEP cmdlet.
 
 > [!NOTE]
 > The /20 input serves as a prerequisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 releases and you attempt to install it, the update will fail if you haven't completed the /20 input as described in the remediation steps as follows. An alert will be present in the administrator portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
 
-**Remediation steps**: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 10.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system can now update to the next version.
-
+**Remediation steps**: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 10.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system can now update to the next version.
+::: moniker-end
 ### Azure Stack infrastructure network
 
 This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the Azure Stack solution to your datacenter, we do not recommend using Public or Internet routable IP addresses on this subnet. This network is advertised to the Border but most of its IPs are protected by Access Control Lists (ACLs). The IPs allowed for access are within a small range equivalent in size to a /27 network and host services like the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) and [Azure Stack Backup](azure-stack-backup-reference.md).
 
 ### Public VIP network
 
-The Public VIP Network is assigned to the network controller in Azure Stack. It's not a logical network on the switch. The SLB uses the pool of addresses and assigns /32 networks for tenant workloads. On the switch routing table, these /32 IPs are advertised as an available route via BGP. This network contains the external-accessible or public IP addresses. The Azure Stack infrastructure reserves the first 31 addresses from this Public VIP Network while the remainder is used by tenant VMs. The network size on this subnet can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts). We recommend that you plan for a /24 network.
+The public VIP network is assigned to the network controller in Azure Stack. It's not a logical network on the switch. The SLB uses the pool of addresses and assigns /32 networks for tenant workloads. On the switch routing table, these /32 IPs are advertised as an available route via BGP. This network contains the external-accessible or public IP addresses. The Azure Stack infrastructure reserves the first 31 addresses from this public VIP network while the remainder is used by tenant VMs. The network size on this subnet can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts). We recommend that you plan for a /24 network.
+
+#### Connecting to on-premises networks
+
+Azure Stack Hub uses virtual networks for customer resources such as virtual machines, load balancers, and others.
+
+There are several different options for connecting from resources inside the virtual network to on-premises/corporate resources:
+
+- Use public IP addresses from the public VIP network.
+- Use Virtual Network Gateway or Network Virtual Appliance (NVA).
+
+When a S2S VPN tunnel is used to connect resources to or from on-premises networks, you may encounter a scenario in which a resource also has a public IP address assigned, and it is no longer reachable via that public IP address. If the source attempts to access the public IP fall within the same subnet range that is defined in the Local Network Gateway Routes (Virtual Network Gateway) or user-defined route for NVA solutions, Azure Stack Hub attempts to route the traffic outbound back to the source through the S2S tunnel, based on the routing rules that are configured. The return traffic uses the private IP address of the VM, rather than be source NATed as the public IP address:
+
+:::image type="content" source="media/azure-stack-network/pvip-1.png" alt-text="Route traffic" lightbox="media/azure-stack-network/pvip-1-expanded.png":::
+
+There are two solutions to this issue:
+
+- Route the traffic directed to the public VIP network to the internet.
+- Add a NAT device to NAT any subnet IPs defined in the local network gateway directed to the public VIP network.
+
+:::image type="content" source="media/azure-stack-network/pvip-2.png" alt-text="Route traffic solution" lightbox="media/azure-stack-network/pvip-2-expanded.png":::
 
 ### Switch infrastructure network
 
@@ -99,8 +120,9 @@ This /29 (six host IPs) network is dedicated to connecting the management ports 
 
 ## Permitted networks
 
-Starting on 1910, the Deployment Worksheet will have this new field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack switch configuration](./azure-stack-customer-defined.md#access-control-list-updates).
+The Deployment Worksheet has a field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack switch configuration](./azure-stack-customer-defined.md#access-control-list-updates).
 
 ## Next steps
 
-Learn about network planning: [Border connectivity](azure-stack-border-connectivity.md).
+- [Virtual network traffic routing](/azure/virtual-network/virtual-networks-udr-overview)
+- Learn about network planning: [Border connectivity](azure-stack-border-connectivity.md).

@@ -1,16 +1,15 @@
 ---
 title: Manage VMs with Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
-author: v-dasis
+author: jasongerend
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.date: 07/21/2021
+ms.author: jgerend
 ---
 
 # Manage VMs with Windows Admin Center
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 Windows Admin Center can be used to create and manage your virtual machines (VMs) on Azure Stack HCI.
 
@@ -28,9 +27,15 @@ You can easily create a new VM using Windows Admin Center.
 1. Under **Host**, select the server you want the VM to reside on.
 1. Under **Path**, select a preassigned file path from the dropdown list or click **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\server\share*.
 
-1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled for the VM.
+1. Under **Virtual processors**, select the number of virtual processors and whether you want [nested virtualization](../concepts/nested-virtualization.md) enabled for the VM. If the cluster is running Azure Stack HCI, version 21H2, you'll also see a checkbox to enable [processor compatibility mode](processor-compatibility-mode.md) on the VM.
 1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
-1. Under **Network**, select a network adapter from the dropdown list.
+1. Under **Network**, select a virtual switch from the dropdown list.
+1. Under **Network**, select one of the following for the isolation mode from the dropdown list:
+    - Set to **Default (None)** if the VM is connected to the virtual switch in access mode.
+    - Set to **VLAN** if the VM is connected to the virtual switch over a VLAN. Specify the VLAN identifier as well.
+    - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+    - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+
 1. Under **Storage**, click **Add** and select whether to create a new empty virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
 1. Under **Operating system**, do one of the following:
    - Select **Install an operating system later** if you want to install an operating system for the VM after the VM is created.
@@ -117,7 +122,13 @@ There are a variety of settings that you can change for a VM.
     :::image type="content" source="media/manage-vm/vm-settings-disk.png" alt-text="Change VM disk settings screen" lightbox="media/manage-vm/vm-settings-disk.png":::
 
 1. To add, remove, or change network adapter settings, select **Networks** and do the following:
-    - Specify the virtual switch to use, and whether to enable virtual LAN identification (you must also specify the VLAN identifier as well)
+    - Select a virtual switch from the dropdown list.
+    - Select one of the following for the isolation mode from the dropdown list:
+        - Set to **Default (None)** if the VM is connected to the virtual switch in access mode.
+        - Set to **VLAN** if the VM is connected to the virtual switch over a VLAN. Specify the VLAN identifier as well.
+        - Set to **Virtual Network (SDN)** if the VM is part of an SDN virtual network. Select a virtual network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+        - Set to **Logical Network (SDN)** if the VM is part of an SDN logical network. Select the logical network name, subnet, and specify the IP Address. Optionally, select an access control list that can be applied to the VM.
+
     - To change additional settings for a network adapter adapter, click **Advanced** to be able to:
         - Select between dynamic or static MAC address type
         - Enable MAC address spoofing
@@ -240,10 +251,18 @@ Instead of using Windows Admin Center, you can also manage your VMs through a Hy
 
 ## Protect VMs with Azure Site Recovery
 
-You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises VMs to Azure. This is an optional value-add service. To get started, see [Protect VMs using Azure Site Recovery](azure-site-recovery.md).
+You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises VMs to Azure. This is an optional value-add service. To get started, see [Protect VMs using Azure Site Recovery](/windows-server/manage/windows-admin-center/azure/azure-site-recovery).
 
 :::image type="content" source="media/manage-vm/vm-more-azure.png" alt-text="Setup Azure Site Recovery screen" lightbox="media/manage-vm/vm-more-azure.png":::
+
+## Remove a VM and resources
+
+To remove VM and it's resources, see [Remove a VM](vm-powershell.md#remove-a-vm).
 
 ## Next steps
 
 You can also create and manage VMs using Windows PowerShell. For more information, see [Manage VMs on Azure Stack HCI using Windows PowerShell](vm-powershell.md).
+
+See [Create and manage Azure virtual networks for Windows virtual machines](/azure/virtual-machines/windows/tutorial-virtual-network).
+
+See [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).

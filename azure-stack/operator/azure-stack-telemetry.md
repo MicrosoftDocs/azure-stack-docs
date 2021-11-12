@@ -2,13 +2,13 @@
 title: Configure Azure Stack Hub telemetry
 titleSuffix: Azure Stack
 description: Learn about Azure Stack Hub telemetry and how to configure telemetry settings using PowerShell.
-author: IngridAtMicrosoft
+author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 1/16/2020
-ms.author: inhenkel
+ms.date: 10/25/2021
+ms.author: patricka
 ms.reviewer: comartin
-ms.lastreviewed: 10/15/2019
+ms.lastreviewed: 09/30/2021
 
 # Intent: As an Azure Stack operator, I want to configure telemetry settings using Powershell.
 # Keyword: configure telemetry azure stack
@@ -24,10 +24,25 @@ For an Azure Stack Hub operator, telemetry can provide valuable insights into en
 > [!NOTE]
 > You can also configure Azure Stack Hub to forward usage information to Azure for billing. This is required for multi-node Azure Stack Hub customers who choose pay-as-you-use billing. Usage reporting is controlled independently from telemetry and isn't required for multi-node customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off [using the registration script](azure-stack-usage-reporting.md).
 
-Azure Stack Hub telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component. This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker range="< azs-1908"
+Azure Stack Hub telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component.
+This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker-end
 
-> [!IMPORTANT]
-> To enable telemetry data flow, port 443 (HTTPS) must be open in your network. The Connected User Experience and Telemetry component connects to the Microsoft Data Management service at `https://v10.events.data.microsoft.com`. The Connected User Experience and Telemetry component also connects to `https://settings-win.data.microsoft.com` to download configuration information. Other diagnostic data services connect `https://watson.telemetry.microsoft.com` for error reporting.
+::: moniker range=">= azs-1908"
+Azure Stack Hub telemetry is based on the Windows Server 2019 Connected User Experience and Telemetry component.
+This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker-end
+
+## Network requirements
+
+To enable telemetry data flow, the following outbound ports and endpoints must be open and allowed in your network:
+
+| Endpoint | Protocol / Ports | Description |
+|---------|---------|---------|
+| `https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
+|`https://login.live.com` | HTTPS 443 | Provides a more reliable device identity |
+|`*.events.data.microsoft.com` | HTTPS 443 | Endpoint for UTC, DiagTrack, Windows Error Reporting, and Aria |
 
 ## Privacy considerations
 
@@ -38,7 +53,7 @@ Microsoft believes in, and practices information minimization. We strive to gath
 We understand that the privacy and security of customer information is important.  Microsoft takes a thoughtful and comprehensive approach to customer privacy and the protection of customer data in Azure Stack Hub. IT administrators have controls to customize features and privacy settings at any time. Our commitment to transparency and trust is clear:
 
 - We're open with customers about the types of data we gather.
-- We put enterprise customers in control — they can customize their own privacy settings.
+- We put enterprise customers in control -- they can customize their own privacy settings.
 - We put customer privacy and security first.
 - We're transparent about how telemetry data gets used.
 - We use telemetry data to improve customer experiences.
@@ -71,13 +86,20 @@ Security data only. Information that's required to keep the operating system sec
 **1 (Basic)**</br>
 Security data, and Basic Health and Quality data. Basic device information, including: quality-related data, app compatibility, app usage data, and data from the **Security** level. Setting your telemetry level to Basic enables Azure Stack Hub telemetry. The data gathered at this level includes:
 
+::: moniker range="< azs-1908"
 - *Basic device information* that provides an understanding about the types and configurations of native and virtual Windows Server 2016 instances in the ecosystem. This includes:
-
   - Machine attributes, such as the OEM, and model.
   - Networking attributes, such as the number of network adapters and their speed.
   - Processor and memory attributes, such as the number of cores, and amount of installed memory.
   - Storage attributes, such as the number of drives, type of drive, and drive size.
-
+::: moniker-end
+::: moniker range=">= azs-1908"
+- *Basic device information* that provides an understanding about the types and configurations of native and virtual Windows Server 2019 instances in the ecosystem. This includes:
+  - Machine attributes, such as the OEM, and model.
+  - Networking attributes, such as the number of network adapters and their speed.
+  - Processor and memory attributes, such as the number of cores, and amount of installed memory.
+  - Storage attributes, such as the number of drives, type of drive, and drive size.
+::: moniker-end
 - *Telemetry functionality*, including the percentage of uploaded events, dropped events, and the last data upload time.
 - *Quality-related information* that helps Microsoft develop a basic understanding of how Azure Stack Hub is performing. For example, the count of critical alerts on a particular hardware configuration.
 - *Compatibility data* that helps provide an understanding about which Resource Providers are installed on a system and a virtual machine (VM). This identifies potential compatibility problems.
@@ -130,7 +152,7 @@ PARAMETER details:
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
-$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 Invoke-Command -Session $psSession {Set-Telemetry -Enable}
 if($psSession)
 {
@@ -144,7 +166,7 @@ if($psSession)
 $ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
-$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+$psSession = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 Invoke-Command -Session $psSession {Set-Telemetry -Disable}
 if($psSession)
 {

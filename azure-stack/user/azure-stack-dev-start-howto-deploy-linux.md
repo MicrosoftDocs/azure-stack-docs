@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: overview
 ms.date: 12/2/2020
 ms.author: mabrigg
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
@@ -164,7 +164,7 @@ In addition, you can create a DNS name for your server, so that users can connec
 
 ### Connect via SSH to update your VM
 
-1. On the same network as your Azure Stack Hub instance, open your SSH client. For more information, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
+1. On the same network as your Azure Stack Hub instance, open your SSH client. For more information, see [Use an SSH key pair with Azure Stack Hub](azure-stack-dev-start-howto-ssh-public-key.md).
 
 1. Enter the following commands:
 

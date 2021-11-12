@@ -1,30 +1,28 @@
 ---
 title: Azure Stack Hub hardware diagram
-description: Learn about the hardware in the Azure Stack Hub TCA.
-author: myoungerman
+description: Learn about the hardware in the Azure Stack Hub ruggedized.
+author: PatAltimore
 
 ms.topic: how-to
-ms.date: 11/13/2020
-ms.author: v-myoung
-ms.reviewer: 
-ms.lastreviewed: 
+ms.date: 07/14/2021
+ms.author: patricka
+ms.reviewer:
+ms.lastreviewed:
 
-# Intent: 
-# Keyword: 
+# Intent:
+# Keyword:
 
 ---
 
 # Azure Stack Hub hardware diagram
 
-The following figures show the complete stack with
-Hardware Lifecycle Host, switches, and Scale Unit servers for the Dell
-EMC Integrated System for Microsoft Azure Stack Hub Tactical.
+The following figures show the complete stack with Hardware Lifecycle Host, switches, and scale unit servers for Microsoft Azure Stack Hub ruggedized.
 
 Figure 1. Front
 
-![](media/image-58.png)
+![Diagram that shows the front of a complete stack.](media/hardware-diagram-front.png)
 
 Figure 2. Rear
 
-![](media/image-59.png)
+![Diagram that shows the rear of a complete stack.](media/hardware-diagram-rear.png)
 

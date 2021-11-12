@@ -5,10 +5,10 @@ description: Understand the differences between Azure Stack Hub storage and Azur
 author: mattbriggs
 
 ms.topic: conceptual
-ms.date: 5/27/2020
+ms.date: 5/7/2021
 ms.author: mabrigg
 ms.reviwer: jiahan
-ms.lastreviewed: 08/12/2020
+ms.lastreviewed: 5/7/2021
 
 # Intent: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Azure Stack keyword
@@ -26,7 +26,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 | Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported. | Not yet supported.
-|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn't supported.
+|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.| Systems deployed before release 2002 use BitLocker with 128-bit AES encryption; systems deployed starting with 2002, or newer, use BitLocker with AES-256 bit encryption.
 |Storage account type|General-purpose V1, V2, and Blob storage accounts. |General-purpose V1 only.
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage. |Locally redundant storage.
 |Premium storage|Provide high-performance and low-latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Wouldn't block using block blobs, append blobs, tables, and queues in premium storage accounts.
@@ -43,7 +43,8 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview. |Not yet supported.
-|Immutable Blobs|General available. |Not yet supported.
+|Immutable Blobs|General available. |Supported when you use version 2008 or later.
+|Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|General available. |Not yet supported.|
 
 There are also differences with storage metrics:
@@ -98,6 +99,24 @@ Previous versions:
 - [2015-04-05](/rest/api/storageservices/version-2015-04-05)
 
 Azure Storage services management APIs:
+
+::: moniker range=">=azs-2102"
+
+2102 update or newer versions:
+- [2019-06-01](/rest/api/storagerp/)
+- [2019-04-01](/rest/api/storagerp/)
+- [2018-11-01](/rest/api/storagerp/)
+- [2018-07-01](/rest/api/storagerp/)
+- [2018-02-01](/rest/api/storagerp/)
+- [2017-10-01](/rest/api/storagerp/)
+- [2017-06-01](/rest/api/storagerp/)
+- [2016-12-01](/rest/api/storagerp/)
+- [2016-05-01](/rest/api/storagerp/)
+- [2016-01-01](/rest/api/storagerp/)
+- [2015-06-15](/rest/api/storagerp/)
+- [2015-05-01-preview](/rest/api/storagerp/)
+
+::: moniker-end
 
 ::: moniker range=">=azs-2008"
 

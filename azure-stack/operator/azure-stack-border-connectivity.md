@@ -1,12 +1,12 @@
 ---
-title: Border connectivity and network integration for Azure Stack Hub integrated systems 
+title: Border connectivity and network integration for Azure Stack Hub integrated systems
 description: Learn how to plan for datacenter border network connectivity in Azure Stack Hub integrated systems.
-author: IngridAtMicrosoft
+author: PatAltimore
 ms.topic: conceptual
-ms.date: 03/04/2020
-ms.author: inhenkel
+ms.date: 08/18/2021
+ms.author: patricka
 ms.reviewer: wamota
-ms.lastreviewed: 11/15/2019
+ms.lastreviewed: 01/14/2021
 
 # Intent: As an Azure Stack operator, I want to know how to plan for datacenter border network connectivity with multi-node Azure Stack.
 # Keyword: azure stack border connectivity
@@ -14,11 +14,13 @@ ms.lastreviewed: 11/15/2019
 ---
 
 
-# Border connectivity 
+# Border connectivity
 Network integration planning is an important prerequisite for successful Azure Stack Hub integrated systems deployment, operation, and management. Border connectivity planning begins by choosing if you want use dynamic routing with border gateway protocol (BGP). This requires assigning a 16-bit autonomous system number (ASN), public or private, or using static routing.
 
 > [!IMPORTANT]
 > The top of rack (TOR) switches require Layer 3 uplinks with Point-to-Point IPs (/30 networks) configured on the physical interfaces. Layer 2 uplinks with TOR switches supporting Azure Stack Hub operations isn't supported. The Border device can support 32-bit BGP autonomous system number (ASN).
+>
+> The physical connectivity between the border devices and Azure Stack Hub's top of rack (TOR) switches require network transceivers. It is important to ensure the required module type (SR, LR, ER, or other) is discussed with the hardware solution provider prior to the onsite deployment.
 
 ## BGP routing
 Using a dynamic routing protocol like BGP guarantees that your system is always aware of network changes and facilitates administration. For enhanced security, a password may be set on the BGP peering between the TOR and the Border.
@@ -50,17 +52,7 @@ Static routing applies only to the uplinks between the TOR and border switches. 
 
 <sup>\*\*\*</sup> The Switch Management network is required and can be added separately from the Switch Infrastructure network.
 
-## Transparent proxy
-If your datacenter requires all traffic to use a proxy, you must configure a *transparent proxy* to process all traffic from the rack to handle it according to policy, separating traffic between the zones on your network.
-
-> [!IMPORTANT]
-> The Azure Stack Hub solution doesn't support normal web proxies.  
-
-A transparent proxy (also known as an intercepting, inline, or forced proxy) intercepts normal communication at the network layer without requiring any special client configuration. Clients don't need to be aware of the existence of the proxy.
-
-![Transparent proxy](media/azure-stack-border-connectivity/transparent-proxy.svg)
-
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts.
-
 ## Next steps
-[DNS integration](azure-stack-integrate-dns.md)
+
+- [DNS integration](azure-stack-integrate-dns.md)
+- [Transparent proxy for Azure Stack Hub](azure-stack-transparent-proxy.md)

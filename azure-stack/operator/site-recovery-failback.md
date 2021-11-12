@@ -4,7 +4,7 @@ title: Azure Site Recovery failback tool user guide
 description: Learn how to use the Azure Site Recovery failback tool to protect virtual machines (VMs).
 author: sethmanheim
 ms.author: sethm
-ms.date: 11/19/2020
+ms.date: 07/26/2021
 ms.topic: how-to
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/19/2020
@@ -21,12 +21,12 @@ In the event of an outage, the Azure Stack Hub operator goes through the *failov
 2. Download the VHDs.
 3. Upload the VHDs to Azure Stack Hub.
 4. Recreate the VMs.
-5. Finally, start that VM running on Azure Stack Hub. 
+5. Finally, start that VM running on Azure Stack Hub.
 
 As this process can be error prone and time consuming, we've built scripts to help accelerate and automate this process.
 
-> [!Note]  
-> The Azure Site Recovery tool requires the Azure Stack Hub Az modules. If you are running the Azure Stack Hub AzureRM modules, you will need to upgrade your workstation or use the Azure Site Recovery failback tool in an isolated environment with the Az modules. For more information see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
+> [!NOTE]  
+> The Azure Site Recovery tool requires the Azure Stack Hub **Az** modules. If you are running the Azure Stack Hub **AzureRM** modules, you must upgrade your workstation or use the Azure Site Recovery failback tool in an isolated environment with the **Az** modules. For more information, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md).
 
 ## Failback procedure
 
@@ -38,7 +38,7 @@ The automated failback process contains three main parts:
   - Copies the disk either through AzCopy or StorageBlobCopy.
   - Uploads the disk to an Azure Stack Hub storage account.
 
-- Once the disk is copied, there are two scenarios covered through **Prepare-AzSiteRecoveryVMFailBack**:
+- Once the disk is copied, there are two scenarios covered by **Prepare-AzSiteRecoveryVMFailBack**:
   - The original Azure Stack Hub has recovered. The original VM still exists, and you only need to change its VHDs.
   - In the case of a disaster, if the original VMs are lost, you must rebuild the entire VM.
 
@@ -120,7 +120,7 @@ Note the following considerations:
   - The script generates a Resource Manager template to deploy this VM, and deletes the existing VM from Azure Stack Hub.
   
   > [!NOTE]
-  > Deleting the Azure Stack Hub VM itself doesn’t remove the other objects (such as VNET, resource group, NSGs). It only removes the VM resource itself, and then the template is deployed with the `-incremental` parameter.
+  > Deleting the Azure Stack Hub VM itself doesn't remove the other objects (such as VNET, resource group, NSGs). It only removes the VM resource itself, and then the template is deployed with the `-incremental` parameter.
 
   - By not providing the `-TargetVM` parameter, the script assumes that the VM no longer exists on the Azure Stack Hub side, so the script creates a Resource Manager template to deploy a completely new VM.
 

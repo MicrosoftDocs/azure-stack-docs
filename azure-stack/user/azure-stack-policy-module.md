@@ -36,7 +36,7 @@ You can use the following commands to apply a default Azure Stack Hub policy to 
 ### [Az modules](#tab/az1)
 
 ```powershell
-Add-AzAccount
+Connect-AzAccount
 $s = Select-AzSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)
 $subscriptionID = $s.Subscription.SubscriptionId
@@ -61,7 +61,7 @@ You might want to apply policies that are more granular. For example, you might 
 ### [Az modules](#tab/az2)
 
 ```powershell
-Add-AzAccount
+Connect-AzAccount
 $rgName = 'myRG01'
 $s = Select-AzSubscription -SubscriptionName "Azure subscription name"
 $policy = New-AzPolicyDefinition -Name AzureStackPolicyDefinition -Policy (Get-AzsPolicy)

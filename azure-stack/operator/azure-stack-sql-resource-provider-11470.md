@@ -1,10 +1,10 @@
 ---
 title: Azure Stack Hub SQL resource provider 1.1.47.0 release notes 
 description: See what's new in the latest Azure Stack Hub SQL resource provider update, including new features, fixes, and known issues.
-author: justinha
+author: PatAltimore
 ms.topic: article
 ms.date: 11/26/2019
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
 

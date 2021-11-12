@@ -1,11 +1,11 @@
 ---
-title: Verify Scale Unit node health
-description: Learn how to verify Scale Unit node health
-author: myoungerman
+title: Verify scale unit node health
+description: Learn how to verify scale unit node health
+author: PatAltimore
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: v-myoung
+ms.author: patricka
 ms.reviewer: 
 ms.lastreviewed: 
 
@@ -14,7 +14,7 @@ ms.lastreviewed:
 
 ---
 
-# Verifying Scale Unit node health
+# Verifying scale unit node health
 
 1.  In the **Administration Portal**, verify the **Cores** and
     **Memory** columns are populated for the node as expected.

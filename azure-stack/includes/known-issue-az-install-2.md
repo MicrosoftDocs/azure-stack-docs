@@ -4,7 +4,7 @@ ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: include
 ms.date: 12/9/2020
-ms.reviewer: sijuman
+ms.reviewer: raymondl
 ms.lastreviewed: 12/9/2020
 
 ---

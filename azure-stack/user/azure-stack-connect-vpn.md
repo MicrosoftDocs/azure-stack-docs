@@ -4,9 +4,9 @@ description: How to connect virtual networks in Azure Stack Hub to virtual netwo
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 07/27/2021
 ms.author: sethm
-ms.reviewer: TBD
+ms.reviewer: unknown
 ms.lastreviewed: 11/20/2020
 
 # Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
@@ -113,7 +113,7 @@ First, create the network resources for Azure. The following instructions show h
 
 ## Create a custom IPSec policy
 
-Since the Azure Stack Hub default parameters for IPSec policies have changed for [builds 1910 and later](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), a custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
+A custom IPSec policy is needed in order for Azure to match Azure Stack Hub.
 
 ### [Az modules](#tab/az1)
 

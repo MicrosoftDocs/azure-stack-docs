@@ -12,13 +12,13 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 06/03/2021
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 10/26/2020
 ---
 
-# Download Marketplace items to Azure Stack Hub - Modular Data Center (MDC) 
+# Download Marketplace items to Azure Stack Hub - Modular Data Center (MDC)
 
 As a cloud operator, you can download items to Azure Stack Hub from the Marketplace and make them available to all users using the Azure Stack Hub environment. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 
@@ -70,7 +70,7 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
 In a disconnected environment, you cannot download marketplace items from Azure. You must use the offline syndication tool to download the marketplace items to a local drive, and then upload those items to your Azure Stack Hub from there.
 
-You can [download the offline syndication tools here](https://aka.ms/azsSyndicationtool).
+You can [download the offline syndication tools here](../../operator/azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 
 ### Download Marketplace items from Azure
 
@@ -103,7 +103,7 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     Alternatively, if you've already logged in through Azure PowerShell, you can pass in the Azure context:
 
     ```powershell
-    Add-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
+    Connect-AzAccount -Environment AzureCloud -Tenant mytenant.onmicrosoft.com 
     .\Invoke-AzSMarketplaceDownload.ps1 -RegistrationResourceGroup 'azurestack' -RegistrationName '<registration name>' -DownloadFolder 'F:\offlineSyndication' -AzureContext $(Get-AzureRMContext)
     ```
     If you do not pass in the Azure context, it will ask you to sign in.
@@ -162,7 +162,7 @@ You can [download the offline syndication tools here](https://aka.ms/azsSyndicat
     ```powershell
     Add-AzEnvironment -Name Redmond-Admin -ARMEndpoint https://adminmanagement.redmond.azurestack.corp.microsoft.com
 
-    Add-AzAccount -Environment Redmond-Admin
+    Connect-AzAccount -Environment Redmond-Admin
 
     .\Invoke-AzsMarketplaceUpload.ps1 -DownloadFolder F:\Downloads\offlining -AzureContext $(GetAzContext)
     ```

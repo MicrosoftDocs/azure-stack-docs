@@ -4,10 +4,10 @@ description: Learn how to connect to Azure Stack Hub with PowerShell.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 11/19/2020
+ms.lastreviewed: 2/1/2021
 
 # Intent: As an Azure Stack operator, I want to learn how to connect to Azure Stack using Powershell.
 # Keyword: connect azure stack powershell
@@ -47,7 +47,7 @@ To configure the Azure Stack Hub operator environment with PowerShell, run one o
 
     # After signing in to your environment, Azure Stack Hub cmdlets
     # can be easily targeted at your Azure Stack Hub instance.
-    Add-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
+    Connect-AzAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
 ```
 ### [AzureRM modules](#tab/azurerm1)
 
@@ -85,7 +85,7 @@ Connect to the Azure Stack Hub operator environment with PowerShell with Azure A
       -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
 
   # Sign in to your environment.
-  Login-AzAccount -EnvironmentName "AzureStackAdmin"
+  Connect-AzAccount -EnvironmentName "AzureStackAdmin"
   ```
 
 ### [AzureRM modules](#tab/azurerm2)
@@ -124,6 +124,7 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## Next steps
 
+- [Use PowerShell to manage subscriptions, plans, and offers in Azure Stack Hub](azure-stack-powershell-plan-offer.md)
 - [Develop templates for Azure Stack Hub](../user/azure-stack-develop-templates.md).
 - [Deploy templates with PowerShell](../user/azure-stack-deploy-template-powershell.md).
-  - [Azure Stack Hub Module Reference](/powershell/azure/azure-stack/overview).
+- [Azure Stack Hub Module Reference](/powershell/azure/azure-stack/overview).

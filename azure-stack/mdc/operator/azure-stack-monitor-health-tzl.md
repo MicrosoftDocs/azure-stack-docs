@@ -1,6 +1,6 @@
 ---
-title: Monitor health and alerts in Azure Stack | Microsoft Docs
-description: Learn how to monitor health and alerts in Azure Stack.
+title: Monitor health and alerts in Azure Stack - MDC | Microsoft Docs
+description: Learn how to monitor health and alerts in Azure Stack for a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,7 +17,7 @@ ms.author: mabrigg
 ms.lastreviewed: 10/26/2020
 
 ---
-# Monitor health and alerts in Azure Stack
+# Monitor health and alerts in Azure Stack - Modular Data Center (MDC)
 
 Azure Stack includes infrastructure monitoring capabilities that help you view health and alerts for an Azure Stack region. The **Region management** tile lists all the deployed regions of Azure Stack. It's pinned by default in the administrator portal for the Default Provider Subscription. The tile shows the number of active critical and warning alerts for each region. The tile is your entry point into the health and alert functionality of Azure Stack.
 

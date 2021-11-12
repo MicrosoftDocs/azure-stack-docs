@@ -2,11 +2,11 @@
 title: Differences between global Azure, Azure Stack Hub, Azure Stack HCI
 titleSuffix: Azure Stack Hub 
 description: Learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
-author: justinha
+author: PatAltimore
 
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: justinha
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
 
@@ -44,7 +44,7 @@ Azure Stack Hub is an extension of Azure that brings the agility and innovation 
 - Containers
 - Admin tools (Plans, offers, RBAC, and so on)
 
-The PaaS capabilities of Azure Stack Hub are optional because Azure Stack Hub isn't operated by Microsoft—it's operated by our customers. This means you can offer whatever PaaS service you want to end users if you're prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack Hub does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers so they're multi-tenant ready, updated over time with standard Azure Stack Hub updates, visible in the Azure Stack Hub portal, and well integrated with Azure Stack Hub.
+The PaaS capabilities of Azure Stack Hub are optional because Azure Stack Hub isn't operated by Microsoft--it's operated by our customers. This means you can offer whatever PaaS service you want to end users if you're prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack Hub does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers so they're multi-tenant ready, updated over time with standard Azure Stack Hub updates, visible in the Azure Stack Hub portal, and well integrated with Azure Stack Hub.
 
 In addition to the resource providers described above, there are additional PaaS services available and tested as [Azure Resource Manager template-based solutions](https://github.com/Azure/AzureStack-QuickStart-Templates) that run in IaaS. As an Azure Stack Hub operator, you can offer them as PaaS services to your users including:
 
@@ -82,6 +82,8 @@ Azure Stack HCI uses Microsoft-validated hardware from an OEM partner to ensure 
 - Lower-cost storage
 - High availability and disaster recovery in the cloud
 - Virtualizing enterprise apps like SQL Server
+- Run containers with [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md)
+- Run Azure Arc enabled servies such as [Azure data services](/azure/azure-arc/data/overview), which inlcudes SQL Managed Instance and PostgreSQL Hyperscale, and [Azure enabled application services (preview)](/azure/app-service/overview-arc-integration), which includes App Service, Functions, Logic Apps, API Management, and Event Grid.
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci/) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners.
 

@@ -1,8 +1,8 @@
 ---
 title: Introduction to Azure Stack Hub ruggedized networking.
 description: Learn about networking for the Azure Stack Hub ruggedized device. 
-author: BryanLa
-ms.author: bryanla
+author: PatAltimore
+ms.author: patricka
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 10/14/2020
@@ -102,8 +102,8 @@ The fully qualified domain name (FQDN) of your Azure Stack Hub ruggedized deploy
 
 As such, examples of some of the endpoints for this deployment would look like the following URLs:
 
-- https://portal.east.cloud.fabrikam.com
-- https://adminportal.east.cloud.fabrikam.com
+- `https://portal.east.cloud.fabrikam.com`
+- `https://adminportal.east.cloud.fabrikam.com`
 
 To use this example DNS namespace for an Azure Stack Hub ruggedized deployment, the following conditions are required:
 

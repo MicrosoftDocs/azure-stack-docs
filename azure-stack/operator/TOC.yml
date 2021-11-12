@@ -12,6 +12,68 @@
       href: release-notes-security-updates.md
     - name: Release notes
       href: release-notes.md
+    - name: Hotfixes
+      items:
+      - name: Hotfix 1.2102.30.109
+        href: hotfix-1-2102-30-109.md      
+      - name: Hotfix 1.2102.30.106
+        href: hotfix-1-2102-30-106.md      
+      - name: Hotfix 1.2102.30.104
+        href: hotfix-1-2102-30-104.md
+      - name: Hotfix 1.2008.40.154
+        href: hotfix-1-2008-40-154.md
+      - name: Hotfix 1.2005.48.137
+        href: hotfix-1-2005-48-137.md      
+      - name: Hotfix 1.2102.30.102
+        href: hotfix-1-2102-30-102.md
+      - name: Hotfix 1.2008.40.151
+        href: hotfix-1-2008-40-151.md
+      - name: Hotfix 1.2005.47.135
+        href: hotfix-1-2005-47-135.md      
+      - name: Hotfix 1.2102.30.101
+        href: hotfix-1-2102-30-101.md
+      - name: Hotfix 1.2008.40.150
+        href: hotfix-1-2008-40-150.md      
+      - name: Hotfix 1.2005.46.133
+        href: hotfix-1-2005-46-133.md      
+      - name: Hotfix 1.2102.28.89
+        href: hotfix-1-2102-28-89.md              
+      - name: Hotfix 1.2008.40.148
+        href: hotfix-1-2008-40-148.md      
+      - name: Hotfix 1.2005.42.126
+        href: hotfix-1-2005-42-126.md
+      - name: Hotfix 1.2102.28.87
+        href: hotfix-1-2102-28-87.md
+      - name: Hotfix 1.2008.37.139
+        href: hotfix-1-2008-37-139.md
+      - name: Hotfix 1.2005.41.124
+        href: hotfix-1-2005-41-124.md     
+      - name: Hotfix 1.2002.69.179
+        href: hotfix-1-2002-69-179.md
+      - name: Hotfix 1.2008.33.131
+        href: hotfix-1-2008-33-131.md      
+      - name: Hotfix 1.2005.35.112
+        href: hotfix-1-2005-35-112.md
+      - name: Hotfix 1.2008.31.126
+        href: hotfix-1-2008-31-126.md      
+      - name: Hotfix 1.2005.33.108
+        href: hotfix-1-2005-33-108.md
+      - name: Hotfix 1.2008.27.118
+        href: hotfix-1-2008-27-118.md      
+      - name: Hotfix 1.2005.32.106
+        href: hotfix-1-2005-32-106.md      
+      - name: Hotfix 1.2002.67.175
+        href: hotfix-1-2002-67-175.md
+      - name: Hotfix 1.2008.26.116
+        href: hotfix-1-2008-26-116.md      
+      - name: Hotfix 1.2005.30.102
+        href: hotfix-1-2005-30-102.md
+      - name: Hotfix 1.2002.66.173
+        href: hotfix-1-2002-66-173.md      
+      - name: Hotfix 1.2008.25.114
+        href: hotfix-1-2008-25-114.md  
+      - name: Hotfix 1.2005.29.100
+        href: hotfix-1-2005-29-100.md
     - name: Known issues
       href: known-issues.md
 - name: Quickstarts
@@ -67,18 +129,23 @@
         href: azure-stack-configure-dns.md
       - name: Configure time server
         href: azure-stack-configure-time.md
-      - name: Firewall integration
-        href: azure-stack-firewall.md
+      - name: Firewall / proxy
         items:
+        - name: Firewall integration
+          href: azure-stack-firewall.md
+        - name: Transparent proxy
+          href: azure-stack-transparent-proxy.md
         - name: Publish endpoints
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
+      - name: Validate datacenter network integration
+        href: azure-stack-validate-network.md
     - name: Deployment worksheet
       href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
-      - name: Choose an identity provider 
+      - name: Identity providers and ADFS integration
         href: azure-stack-integrate-identity.md
       - name: Create registration role
         href: azure-stack-registration-role.md
@@ -193,6 +260,8 @@
           href: azure-stack-manage-storage-infrastructure.md
         - name: Manage physical memory capacity
           href: azure-stack-manage-storage-physical-memory-capacity.md
+        - name: Manage GPU capacity
+          href: manage-gpu-capacity.md  
         - name: Add scale unit nodes
           href: azure-stack-add-scale-node.md
         - name: Add public IP addresses
@@ -225,10 +294,10 @@
         href: azure-stack-add-new-user-aad.md
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
-      - name: Use an app identity to access resources
-        href: Azure-stack-create-service-principals.md
+      - name: Give apps access to resources
+        href: give-app-access-to-resources.md
       - name: Enable multi-tenancy
-        href: azure-stack-enable-multitenancy.md
+        href: enable-multitenancy.md
     - name: Data at rest encryption
       href: azure-stack-security-bitlocker.md
     - name: Rotate secrets
@@ -247,6 +316,8 @@
       href: azure-stack-marketplace-azure-items.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
+    - name: Update Marketplace items
+      href: marketplace-update-items.md
     - name: Add a custom virtual machine image
       href: azure-stack-add-vm-image.md
     - name: Create and publish a marketplace item
@@ -256,7 +327,7 @@
     - name: Offer a virtual machine scale set
       href: azure-stack-compute-add-scalesets.md
     - name: Azure Stack Hub Marketplace FAQ
-      href: azure-stack-windows-server-faq.md
+      href: azure-stack-windows-server-faq.yml
     - name: Offer Linux virtual machines
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
@@ -285,6 +356,8 @@
       href: azure-stack-delegated-provider.md
     - name: Quota types
       href: azure-stack-quota-types.md
+    - name: Use PowerShell to manage plans and offers
+      href: azure-stack-powershell-plan-offer.md
   - name: Offer network solutions
     href: azure-stack-network-solutions-enable.md
   - name: Manage value-add resource providers
@@ -296,7 +369,7 @@
       - name: App Service capacity planning
         href: azure-stack-app-service-capacity-planning.md
       - name: App Service billing FAQ
-        href: app-service-billing-faq.md
+        href: app-service-billing-faq.yml
       - name: Prerequisites
         href: azure-stack-app-service-before-you-get-started.md
       - name: Deploy App Service
@@ -319,12 +392,12 @@
           href: app-service-remove.md
       - name: Release notes
         items:
+        - name: 2021 Q1 release notes [June 2021]
+          href: app-service-release-notes-2021-Q1.md
         - name: 2020 Q3 release notes [September 2020]
           href: app-service-release-notes-2020-Q3.md
-        - name: 2020 Q2 release notes [May2020]
+        - name: 2020 Q2 release notes [May 2020]
           href: app-service-release-notes-2020-Q2.md
-        - name: Update 8 release notes [Jan2020]
-          href: azure-stack-app-service-release-notes-update-eight.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -351,6 +424,16 @@
           href: event-hubs-rp-rotate-secrets.md          
         - name: Service update announcements
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
+      - name: Release notes
+        items:
+        - name: 1.2102.1.0 release notes [Oct 2021] 
+          href: event-hubs-rp-release-1-2102-10.md
+        - name: 1.2102.0.0 release notes [Jul 2021] 
+          href: event-hubs-rp-release-1-2102-00.md          
+        - name: 1.2012.2.0 release notes [May 2021] 
+          href: event-hubs-rp-release-1-2012-20.md          
+        - name: 1.2012.1.0 release notes [Feb 2021] 
+          href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
         href: event-hubs-rp-remove.md 
     - name: IoT Hub on Azure Stack Hub
@@ -368,7 +451,7 @@
         - name: Backup & restore
           href: azure-stack-backup-infrastructure-backup.md
         - name: Collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md
+          href: ./diagnostic-log-collection.md
         - name: Health & alerts
           href: azure-stack-monitor-health.md
         - name: Manage 
@@ -403,10 +486,6 @@
           href: azure-stack-mysql-resource-provider-11930.md
         - name: MySQL resource provider 1.1.47.0 release notes
           href: azure-stack-mysql-resource-provider-11470.md
-        - name: MySQL resource provider 1.1.33.0 release notes
-          href: azure-stack-mysql-resource-provider-11330.md
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
     - name: SQL on Azure Stack Hub
       items:
       - name: Overview
@@ -431,10 +510,6 @@
           href: azure-stack-sql-resource-provider-11930.md   
         - name: SQL resource provider 1.1.47.0 release notes
           href: azure-stack-sql-resource-provider-11470.md   
-        - name: SQL resource provider 1.1.33.0 release notes
-          href: azure-stack-sql-resource-provider-11330.md   
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:
@@ -456,7 +531,7 @@
       - name: Tenant usage API
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
-        href: azure-stack-usage-related-faq.md
+        href: azure-stack-usage-related-faq.yml
       - name: Troubleshooting usage issues
         items:
         - name: Usage connectivity errors
@@ -506,7 +581,7 @@
   - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview
   - name: Azure Stack Hub privileged endpoint
-    href: ../reference/pep-2002/    
+    href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI
@@ -521,15 +596,21 @@
     href: /hybrid    
 - name: Resources
   items:
-  - name: Training and certification
-    href: azure-stack-train-and-cert.md
-  - name: Azure Stack Hub road map
-    href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
-  - name: Azure Stack Hub Microsoft Q&A
-    href: /answers/questions/topics/single/50514.html
-  - name: Azure Stack Hub Documentation feedback
-    href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
-  - name: Pricing information
-    href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-stack
+    - name: Release notes archive
+      items:
+      - name: Release notes
+        href: ./relnotearchive/release-notes.md
+      - name: Known issues
+        href: ./relnotearchive/known-issues.md    
+    - name: Training and certification
+      href: azure-stack-train-and-cert.md
+    - name: Azure Stack Hub road map
+      href: https://azure.microsoft.com/updates/?query=azure%20stack%20hub
+    - name: Azure Stack Hub Microsoft Q&A
+      href: /answers/questions/topics/single/50514.html
+    - name: Azure Stack Hub Documentation feedback
+      href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
+    - name: Pricing information
+      href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-stack

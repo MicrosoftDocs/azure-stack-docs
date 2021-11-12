@@ -1,6 +1,6 @@
 ---
-title: Enable backup for Azure Stack with PowerShell | Microsoft Docs
-description: Learn how to enable the Infrastructure Backup Service with PowerShell so that Azure Stack can be restored if there's a failure. 
+title: Enable backup for Azure Stack with PowerShell - MDC
+description: Learn how to enable the Infrastructure Backup Service with PowerShell so that Azure Stack can be restored if there's a failure. For a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,14 +12,14 @@ ms.workload: tzl
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 06/08/2021
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 10/27/2020
 
 ---
 
-# Configure backup for Azure Stack with PowerShell
+# Configure backup for Azure Stack with PowerShell - Modular Data Center (MDC)
 
 *Applies to: Modular Data Center, Azure Stack Hub ruggedized*
 

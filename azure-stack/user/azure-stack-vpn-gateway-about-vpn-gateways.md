@@ -4,7 +4,7 @@ description: Create and configure VPN gateways for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 04/12/2021
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
 
@@ -101,11 +101,13 @@ High availability scenarios can only be configured on the **High Performance Gat
 
 There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
 
-## Estimated aggregate throughput by SKU
+Gateway failovers are expected during an OEM or an Azure Stack Hub update, as the VMs are patched and live migrated. This can result in a temporary disconnect of the tunnels.
 
-The following table shows the gateway types and the estimated aggregate throughput by gateway SKU:
+## Estimated aggregate tunnel throughput by SKU
 
-|| VPN Gateway throughput (1) | VPN Gateway max IPsec tunnels (2) |
+The following table shows the gateway types and the estimated aggregate throughput for each tunnel/connection by gateway SKU:
+
+|| Tunnel throughput (1) | VPN Gateway max IPsec tunnels (2) |
 |-------|-------|-------|
 |**Basic SKU** **(3)** | 100 Mbps | 20 |
 |**Standard SKU** | 100 Mbps | 20 |
@@ -113,7 +115,7 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 ### Table notes
 
-**(1)** - VPN throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement.  
+**(1)** - Tunnel throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement. The total aggregate is 2 Gbps.  
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing is not supported for the Basic SKU.
 

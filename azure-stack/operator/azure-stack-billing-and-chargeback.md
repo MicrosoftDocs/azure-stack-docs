@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub users are billed for resource usage, and 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
@@ -35,7 +35,7 @@ The following figure shows the key components in the usage pipeline:
 
 ## What usage information can I find, and how?
 
-Azure Stack Hub resource providers (such as Compute, Storage, and Network) generate usage data at hourly intervals for each subscription. The usage data contains information about the resource used, such as resource name, subscription used, and quantity used. To learn about the meters' ID resources, see the [Usage API FAQ](azure-stack-usage-related-faq.md).
+Azure Stack Hub resource providers (such as Compute, Storage, and Network) generate usage data at hourly intervals for each subscription. The usage data contains information about the resource used; such as resource name, subscription used, and quantity used. To learn about the meters' ID resources, see the [Usage API FAQ](azure-stack-usage-related-faq.yml).
 
 After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal.
 
@@ -56,4 +56,4 @@ Each customer has their identity represented by a different Azure Active Directo
 - [Report Azure Stack Hub usage data to Azure](azure-stack-usage-reporting.md)
 - [Provider Resource Usage API](azure-stack-provider-resource-api.md)
 - [Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
-- [Usage-related FAQ](azure-stack-usage-related-faq.md)
+- [Usage-related FAQ](azure-stack-usage-related-faq.yml)

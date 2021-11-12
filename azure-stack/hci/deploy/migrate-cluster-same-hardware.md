@@ -3,16 +3,16 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: v-dasis 
 ms.topic: how-to 
-ms.date: 12/10/2020 
+ms.date: 02/12/2021
 ms.author: v-dasis 
 ms.reviewer: JasonGerend 
 ---
 
 # Migrate to Azure Stack HCI on same hardware
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
-This topic describes how to migrate a Windows Server 2016 or Windows Server 2019 cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
+This topic describes how to migrate a Windows Server failover cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
 
 The following diagram depicts migrating your Windows Server cluster in-place using the same server hardware. After shutting your cluster down, Azure Stack HCI is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
@@ -31,7 +31,7 @@ There are several requirements and things to consider before you begin migration
 
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
 
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](https://docs.microsoft.com/azure-stack/hci/manage/use-azure-backup).
+- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
 
@@ -176,7 +176,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
     Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
     ```
 
-1. Create the quorum witness. For information on how, see [Set up a cluster witness](https://docs.microsoft.com/azure-stack/hci/deploy/witness).
+1. Create the quorum witness. For information on how, see [Set up a cluster witness](../manage/witness.md).
 
 1. Verify that storage repair jobs are completed using the following:
 
@@ -210,15 +210,9 @@ For more information on how to create the cluster using PowerShell, see [Create 
 
 ## ReFS volumes
 
-If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes do not benefit from the following performance enhancements in Azure Stack HCI:
+If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes do not benefit from performance enhancements in Azure Stack HCI from using mirror-accelerated parity (MAP) volumes. This enhancement requires a new ReFS volume to be created using the PowerShell `New-Volume` cmdlet.
 
-- Mirror-accelerated parity
-- MAP log bypass
-
-These enhancements require a new ReFS volume to be created using the `New-Volume` cmdlet.
-
-> [!NOTE]
-> For Windows Server 2016 Mirror Accelerated Parity Volumes, ReFS compaction was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume on an Azure Stack HCI cluster.
+For Windows Server 2016 MAP volumes, ReFS compaction was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume in an Azure Stack HCI cluster.
 
 ## Import the VMs
 
