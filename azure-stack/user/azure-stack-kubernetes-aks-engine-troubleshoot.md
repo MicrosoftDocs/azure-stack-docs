@@ -117,4 +117,4 @@ If you are unable to resolve your deployment error, you can open a GitHub Issue.
 
 ## Next steps
 
--   Read about the [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview).
+-   Read about the [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md).
