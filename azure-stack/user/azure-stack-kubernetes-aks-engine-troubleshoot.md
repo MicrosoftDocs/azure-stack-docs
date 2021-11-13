@@ -55,7 +55,7 @@ By default, `aks-engine get-logs` collects logs from nodes that successfully joi
 --vm-name k8s-pool-01,k8s-pool-02
 ```
 
-## Usage
+### Usage aks-engine get-logs
 
 Assuming that you have a cluster deployed and the API model originally used to deploy that cluster is stored at `_output/<dnsPrefix>/apimodel.json`, then you can collect logs running a command like:
 
