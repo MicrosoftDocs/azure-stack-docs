@@ -38,10 +38,8 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
-You can use the following cmdlet to install the required Windows features:
-
-> [!NOTE]
-> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+> [!IMPORTANT]
+> Deploying Network ATC in virtual environments is not supported. Several of the host networking properties it configures are not available in virtual machines, which will result in errors.    
 
 ## Common Network ATC commands
 
