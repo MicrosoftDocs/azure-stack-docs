@@ -46,6 +46,7 @@ PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://cont
 ### Configure Proxy Settings without credentials and a proxy exception list
 ```powershell
 PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16
+
 ```
 
 ### Configure Proxy Settings with credentials and no proxy exception list
@@ -128,7 +129,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16
+Default value: localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -160,7 +161,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16
+Default value: localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
