@@ -1,12 +1,11 @@
 ---
-title: #Required; page title is displayed in search results. Include the brand.
-description: #Required; article description that is displayed in search results. 
-author: #Required; your GitHub user alias, with correct capitalization.
-ms.author: #Required; microsoft alias of author; optional team alias.
-ms.service: #Required; service per approved list. slug assigned by ACOM.
-ms.topic: how-to #Required; leave this attribute/value as-is.
-ms.date: #Required; mm/dd/yyyy format.
-ms.custom: template-how-to #Required; leave this attribute/value as-is.
+title: Update solution templates to work with new CreateUiDefinition changes
+description: Learn how to update solution templates to work with new upcoming CreateUiDefinition changes 
+author: sethmanheim
+ms.author: sethm
+ms.topic: how-to
+ms.date: 11/15/2021
+ms.custom: template-how-to
 ---
 
 # Update solution templates to work with new CreateUiDefinition changes
