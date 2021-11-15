@@ -7,9 +7,9 @@ ms.date: 11/02/2021
 ms.author: mikek
 ---
 
-# Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell and a proxy server
+# Quickstart: Set up an AKS host on Azure Stack HCI and deploy a workload cluster using PowerShell and a proxy server
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell in an environment where a proxy server filters and scans internet bound traffic. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
 
@@ -32,39 +32,36 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 - **Your proxy server configuration information**
-    - HTTP URL and port i.e. http://proxy.corp.contoso.com:8080
-    - HTTPS URL and port i.e. https://proxy.corp.contoso.com:8443
-    - (Optional) Valid credentials for authentication to the proxy server.
-    - (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This cerificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
-    - IP Address ranges and domain names to be excluded from being sent to the proxy:
-        - Kubernetes Node IP pool
-        - Kubernetes Services VIP pool
-        - the cluster network IP addresses
-        - DNS server IP addresses
-        - time service IP addresses
-        - local domain name(s)
-        - local host name(s)
-        - the default proxy exclusion settings:
-            - 'localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16'
-            - These are comprised of: 
-                - 'localhost,127.0.0.1': standard localhost exclusion
-                - '.svc': Wildcard exclusion for all Kubernetes Services host names
-                - '10.96.0.0/12': Kubernetes services IP address pool
-                - '10.244.0.0/16': Kubernetes pod IP address pool
+   - HTTP URL and port such as http://proxy.corp.contoso.com:8080
+   - HTTPS URL and port such as https://proxy.corp.contoso.com:8443
+   - (Optional) Valid credentials for authentication to the proxy server.
+   - (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This certificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
+   - IP address ranges and domain names to exclude from being sent to the proxy:
+      - Kubernetes node IP pool
+      - Kubernetes services VIP pool
+      - The cluster network IP addresses
+      - DNS server IP addresses
+      - Time service IP addresses
+      - Local domain name(s)
+      - Local host name(s)
+      - The default exclusion list in the AksHci PowerShell is shown below:
+        - 'localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
+        - To exempt all private subnets from being sent to the proxy:
+            - 'localhost,127.0.0.1': standard localhost exclusion
+            - '.svc': Wildcard exclusion for all Kubernetes Services host names
+            - '10.96.0.0/12': Kubernetes services IP address pool
+            - '10.244.0.0/16': Kubernetes pod IP address pool
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 
-Configure the System proxy settings on each of the physical nodes in the cluster and ensure that all nodes have access to the URLs and ports outlined in the [System Requirements documentation](system-requirements.md#Network port and URL requirements)
+Configure the System proxy settings on each of the physical nodes in the cluster and ensure that all nodes have access to the URLs and ports outlined in [System requirements](system-requirements.md#network-port-and-url-requirements).
 
 **If you are using remote PowerShell, you must use CredSSP.**
 
 > ![Note]
-> If your environment uses a proxy server to access the Internet, it may be necessary to add proxy parameters to the **Install-Module** command before installing
-> AKS on Azure Stack HCI. 
-> See the [Install-Module Documentation](/powershell/module/powershellget/install-module) for details, and follow the [Azure Stack HCI > documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
+> If your environment uses a proxy server to access the internet, you may need to add proxy parameters to the **Install-Module** command before installing AKS on Azure Stack HCI. See the [Install-Module documentation](/powershell/module/powershellget/install-module) for details and follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
 
-
-**Close all open PowerShell windows.** If you have removed an older installation from the system delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
+**Close all open PowerShell windows.** If you removed an older installation from the system, delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
 
 ```powershell
 Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
@@ -89,23 +86,22 @@ To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell]
 
 ### Register the resource provider to your subscription
 
-> ![Note]
-> **Use the Az PowerShell module behind a proxy**
-> If a proxy is necessary for HTTP request, the Azure PowerShell team recommends the following proxy
-configuration for different platforms:
+> [!NOTE]
+> **Use the Az PowerShell module behind a proxy.** If a proxy is necessary for HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
 
-> |      **Platform**       |                          **Recommended Proxy Settings**                           |                                               **Comment**                                                |
-> | ----------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-> | Windows PowerShell 5.1  | System proxy settings                                                             | Do not suggest setting HTTP_PROXY/HTTPS_PROXY environment variables.                                     |
-> | PowerShell 7 on Windows | System proxy settings                                                             | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.              |
-> | PowerShell 7 on macOS   | System proxy settings                                                             | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.              |
+
+> |      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |
+> | ----------------------- | ------------------------------------ | ------------------------ |
+> | Windows PowerShell 5.1  | System proxy settings settings  | Do not suggest setting HTTP_PROXY/HTTPS_PROXY environment variables.|
+> | PowerShell 7 on Windows | System proxy settings   | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.    |
+> | PowerShell 7 on macOS   | System proxy settings  | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
 > | PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus optional NO_PROXY | The environment variables should be set before starting PowerShell, otherwise they may not be respected. |
 >
 > The environment variables used are:
 >
 > - HTTP_PROXY: the proxy server used on HTTP requests.
 > - HTTPS_PROXY: the proxy server used on HTTPS requests.
-> - NO_PROXY: a comma-separated list of hostnames and IP addresses that should be excluded from proxying.
+> - NO_PROXY: a comma-separated list of hostnames and IP addresses that should be excluded from the proxy.
 >
 > On systems where environment variables are case-sensitive, the variable names may be all lowercase
 or all uppercase. The lowercase names are checked first.
@@ -147,14 +143,16 @@ Initialize-AksHciNode
 
 ## Step 1a: (Optional) Prepare your Active Directory and DNS server for deployment
 
-If you cannot enable Dynamic DNS updates in your DNS environment to allow AKS-HCI to register the cloudagent generic cluster name in Active Directory and the DNS system for discovery you will need to pre-create the respective records in Active Directory and DNS.
-To do so create a generic cluster service in Active Directory with the name 'ca-cloudagent' or a name of your choice (do not exceed 32 characters in length) as well an associated DNS record pointing to the FQDN of the generic cluster service with the provided 'cloudservicecidr' address. More details on the steps in this process can be found in the [Azure Stack HCI documentation](/windows-server/failover-clustering/prestage-cluster-adds).
+If you cannot enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the CloudAgent generic cluster name in Active Directory and the DNS system for discovery, you need to pre-create the respective records in Active Directory and DNS.
 
-AKS on Azure Stack HCI deployment will try and locate the specified 'clusterRoleName' in Active Directory before proceeding with the deployment.
+Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
+
+The AKS on Azure Stack HCI deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+
 > [!Note]
-> Once AKS on Azure Stack HCI is deployed this information cannot be changed.
+> Once AKS on Azure Stack HCI is deployed, this information cannot be changed.
 
-Follow Step 3a after Step 2 to specifiy the pre-created object name in 'Set-AksHciConfig'
+Follow Step 3a after Step 2 to specify the pre-created object name in `Set-AksHciConfig`.
 
 ## Step 2: Create a virtual network
 
@@ -195,9 +193,9 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
-## Step 3a: Optional if you have prestaged cluster service objects and DNS records
+## Step 3a: (Optional) Configure your deployment if you have prestaged cluster service objects and DNS records
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, 'clusterrolename', 'cloudservicecidr' and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, `clusterrolename`, `cloudservicecidr` and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
@@ -206,6 +204,7 @@ PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultS
 
 Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" -clusterRoleName "ca-cloudagent"
 ```
+
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
@@ -229,7 +228,7 @@ Install-AksHci
 
 ## Step 6: Create a Kubernetes cluster
 
-After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, please visit [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
+After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, see [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType Linux
