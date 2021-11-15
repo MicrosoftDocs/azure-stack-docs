@@ -3,10 +3,10 @@ title: Generate certificate signing requests for Azure Stack Hub
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: BryanLa
 ms.topic: article
-ms.date: 10/19/2020
+ms.date: 11/15/2021
 ms.author: bryanla
 ms.reviewer: ppacent
-ms.lastreviewed: 10/19/2020
+ms.lastreviewed: 11/15/2021
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
 # Keyword: azure stack certificate signing request 
@@ -37,8 +37,9 @@ Your system should meet the following prerequisites before generating any CSRs f
 
   > [!NOTE]  
   > When you receive your certificates back from your certificate authority, the steps in [Prepare Azure Stack Hub PKI certificates](azure-stack-prepare-pki-certs.md) will need to be completed on the same system!
-  
-  > Elevation is required to generated Certificate Signing Requests.  In restricted environments where elevation is not possible, this tool can be used to generate clear text template files containing all the information required for Azure Stack external certificates.  Those template files then need to be used on an elevated session to finish the public/private key pair generation.  
+  >
+  > Elevation is required to generate Certificate Signing Requests.  In restricted environments where elevation is not possible, this tool can be used to generate clear text template files containing all the information required for Azure Stack Hub external certificates.  Those template files then need to be used on an elevated session to finish the public/private key pair generation.  
+
 ## Generate certificate signing requests for new deployments
 
 Use these steps to prepare certificate signing requests for new Azure Stack Hub PKI certificates:
@@ -112,30 +113,34 @@ Use these steps to prepare certificate signing requests for new Azure Stack Hub 
     New-AzsHubIoTHubCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
     ```
 
-7. Alternatively, for low privilege environments, to generate a clear text certificate template file with the neccessary attributes declared add **-LowPrivilege** parameter:
+7. Alternatively, for low privilege environments, to generate a clear text certificate template file with the necessary attributes declared, add the **-LowPrivilege** parameter:
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -LowPrivilege
     ```
 
-8. Alternatively, for Dev/Test environments, to generate a single certificate request with multiple Subject Alternative Names add **-RequestType SingleCSR** parameter and value (**not** recommended for production environments):
+8. Alternatively, for Dev/Test environments, to generate a single certificate request with multiple Subject Alternative Names, add the **-RequestType SingleCSR** parameter and value (**not** recommended for production environments):
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
-8.  Review the output:
+9. Review the output:
 
     ```powershell  
     Starting Certificate Request Process for Deployment
     CSR generating for following SAN(s): *.adminhosting.east.azurestack.contoso.com,*.adminvault.east.azurestack.contoso.com,*.blob.east.azurestack.contoso.com,*.hosting.east.azurestack.contoso.com,*.queue.east.azurestack.contoso.com,*.table.east.azurestack.contoso.com,*.vault.east.azurestack.contoso.com,adminmanagement.east.azurestack.contoso.com,adminportal.east.azurestack.contoso.com,management.east.azurestack.contoso.com,portal.east.azurestack.contoso.com
-    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\[*redacted*]\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538.req
+    Present this CSR to your Certificate Authority for Certificate Generation:  C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538.req
     Certreq.exe output: CertReq: Request Created
     ```
 
-9.  Submit the **.REQ** file generated to your CA (either internal or public). The output directory of **New-AzsCertificateSigningRequest** contains the CSR(s) necessary to submit to a Certificate Authority. The directory also contains, for your reference, a child directory containing the INF file(s) used during certificate request generation. Be sure that your CA generates certificates using your generated request that meet the [Azure Stack Hub PKI Requirements](azure-stack-pki-certs.md).
+10. Submit the **.REQ** file generated to your CA (either internal or public). The output directory of **New-AzsCertificateSigningRequest** contains the CSR(s) necessary to submit to a Certificate Authority. The directory also contains, for your reference, a child directory containing the INF file(s) used during certificate request generation. Be sure that your CA generates certificates using your generated request that meet the [Azure Stack Hub PKI Requirements](azure-stack-pki-certs.md).
 
-10.  **If -LowPrivilege parameter was used**, copy the resulting inf file(s) e.g. C:\Users\[*redacted*]\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf to a system were elevation is allowed and sign each request with certreq using the following syntax **certreq -new <example.inf> <example.req>**. The rest of the process will then need to be completed on that elevated system as it requires matching the new certificate signed by the CA with it's private key (generated on the elevated system).
+11. **If the -LowPrivilege parameter was used**, copy the resulting inf file(s), for example:  
+
+    `C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf` 
+
+    to a system where elevation is allowed. Then sign each request with certreq using the following syntax: **certreq -new <example.inf> <example.req>**. The rest of the process will then need to be completed on that elevated system, as it requires matching the new certificate signed by the CA with it's private key (generated on the elevated system).
 
 ## Generate certificate signing requests for certificate renewal
 
@@ -198,7 +203,7 @@ Use these steps to prepare certificate signing requests for renewal of existing 
     Querying StampEndpoint portal.east.azurestack.contoso.com for existing certificate
     Starting Certificate Request Process for Deployment
     CSR generating for following SAN(s): *.adminhosting.east.azurestack.contoso.com,*.adminvault.east.azurestack.contoso.com,*.blob.east.azurestack.contoso.com,*.hosting.east.azurestack.contoso.com,*.queue.east.azurestack.contoso.com,*.table.east.azurestack.contoso.com,*.vault.east.azurestack.contoso.com,adminmanagement.east.azurestack.contoso.com,adminportal.east.azurestack.contoso.com,management.east.azurestack.contoso.com,portal.east.azurestack.contoso.com
-    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\[*redacted*]\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710122723.req
+    Present this CSR to your Certificate Authority for Certificate Generation: C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710122723.req
     Certreq.exe output: CertReq: Request Created
     ```
 
