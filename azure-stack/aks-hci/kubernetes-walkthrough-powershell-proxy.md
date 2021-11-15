@@ -31,12 +31,12 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > [!NOTE]
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
-- **Your proxy server configuration information**
-   - HTTP URL and port such as http://proxy.corp.contoso.com:8080
-   - HTTPS URL and port such as https://proxy.corp.contoso.com:8443
+- **Proxy server configuration information:**
+   - HTTP URL and port, such as http://proxy.corp.contoso.com:8080.
+   - HTTPS URL and port, such as https://proxy.corp.contoso.com:8443.
    - (Optional) Valid credentials for authentication to the proxy server.
    - (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This certificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
-   - IP address ranges and domain names to exclude from being sent to the proxy:
+   - IP address ranges and domain names to exclude so they are not sent to the proxy:
       - Kubernetes node IP pool
       - Kubernetes services VIP pool
       - The cluster network IP addresses
@@ -45,12 +45,11 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
       - Local domain name(s)
       - Local host name(s)
       - The default exclusion list in the AksHci PowerShell is shown below:
-        - 'localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
-        - To exempt all private subnets from being sent to the proxy:
-            - 'localhost,127.0.0.1': standard localhost exclusion
-            - '.svc': Wildcard exclusion for all Kubernetes Services host names
-            - '10.96.0.0/12': Kubernetes services IP address pool
-            - '10.244.0.0/16': Kubernetes pod IP address pool
+        - 'localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16', which exempts all private subnets from being sent to the proxy:
+           - 'localhost,127.0.0.1': standard localhost exclusion
+           - '.svc': Wildcard exclusion for all Kubernetes Services host names
+           - '172.16.0.0/12': Kubernetes services IP address pool
+           - '192.168.0.0/16': Kubernetes pod IP address pool
 
 ## Install the Azure PowerShell and AksHci PowerShell modules
 
@@ -58,7 +57,7 @@ Configure the System proxy settings on each of the physical nodes in the cluster
 
 **If you are using remote PowerShell, you must use CredSSP.**
 
-> ![Note]
+> [!NOTE]
 > If your environment uses a proxy server to access the internet, you may need to add proxy parameters to the **Install-Module** command before installing AKS on Azure Stack HCI. See the [Install-Module documentation](/powershell/module/powershellget/install-module) for details and follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
 
 **Close all open PowerShell windows.** If you removed an older installation from the system, delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
@@ -90,20 +89,20 @@ To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell]
 > **Use the Az PowerShell module behind a proxy.** If a proxy is necessary for HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
 
 
-> |      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |
-> | ----------------------- | ------------------------------------ | ------------------------ |
-> | Windows PowerShell 5.1  | System proxy settings settings  | Do not suggest setting HTTP_PROXY/HTTPS_PROXY environment variables.|
-> | PowerShell 7 on Windows | System proxy settings   | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.    |
-> | PowerShell 7 on macOS   | System proxy settings  | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
-> | PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus optional NO_PROXY | The environment variables should be set before starting PowerShell, otherwise they may not be respected. |
->
-> The environment variables used are:
->
-> - HTTP_PROXY: the proxy server used on HTTP requests.
-> - HTTPS_PROXY: the proxy server used on HTTPS requests.
-> - NO_PROXY: a comma-separated list of hostnames and IP addresses that should be excluded from the proxy.
->
-> On systems where environment variables are case-sensitive, the variable names may be all lowercase
+|      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |
+| ----------------------- | ------------------------------------ | ------------------------ |
+| Windows PowerShell 5.1  | System proxy settings settings  | Do not suggest setting HTTP_PROXY/HTTPS_PROXY environment variables.|
+| PowerShell 7 on Windows | System proxy settings   | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.    |
+| PowerShell 7 on macOS   | System proxy settings  | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
+| PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus optional NO_PROXY | The environment variables should be set before starting PowerShell, otherwise they may not be respected. |
+
+The environment variables used are:
+
+- HTTP_PROXY: the proxy server used on HTTP requests.
+- HTTPS_PROXY: the proxy server used on HTTPS requests.
+- NO_PROXY: a comma-separated list of hostnames and IP addresses that should be excluded from the proxy.
+
+On systems where environment variables are case-sensitive, the variable names may be all lowercase
 or all uppercase. The lowercase names are checked first.
 
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI registration. To do that, run the following PowerShell commands.
