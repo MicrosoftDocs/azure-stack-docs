@@ -8,7 +8,7 @@ ms.author: dawhite
 ---
 # Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 After you have set up your Azure Kubernetes Service host, you can create a Kubernetes cluster using Windows Admin Center. To instead use PowerShell, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
 
