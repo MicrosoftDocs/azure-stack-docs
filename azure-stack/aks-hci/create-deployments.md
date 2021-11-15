@@ -77,4 +77,6 @@ Kubernetes provides several deployment strategies so you can update in various w
 
 ## Next steps
 
-[Create a DaemonSet](create-daemonsets.md)
+- [Create pods](create-pods.md)
+- [Create a ReplicaSet](create-replicasets.md)
+- [Create a DaemonSet](create-daemonsets.md)

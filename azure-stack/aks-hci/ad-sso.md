@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Use Active Directory single sign-in credentials for AKS on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
