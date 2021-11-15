@@ -31,6 +31,7 @@ Your system should meet the following prerequisites before packaging PKI certifi
 - Certificates returned from Certificate Authority are stored in a single directory, in .cer format (other configurable formats such as .cert, .sst or .pfx).
 - Windows 10, or Windows Server 2016 or later
 - Use the same system that generated the Certificate Signing Request (unless you're targeting a certificate prepackaged into PFXs).
+- PowerShell process should be elevated
 
 Continue to the appropriate [Prepare certificates (Azure Stack readiness checker)](#prepare-certificates-azure-stack-readiness-checker) or [Prepare certificates (manual steps)](#prepare-certificates-manual-steps) section.
 
