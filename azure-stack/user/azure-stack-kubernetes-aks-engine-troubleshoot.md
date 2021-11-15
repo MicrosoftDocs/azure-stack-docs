@@ -20,7 +20,54 @@ You may find an issue when deploying or working with the AKS engine on Azure Sta
 
 ## Troubleshoot the AKS engine install
 
-### Collect Node and Cluster Logs
+### Try GoFish
+
+If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+
+#### Install the AKS engine with GoFish on Linux
+
+Install GoFish from the [Install](https://gofi.sh/#install) page.
+
+1. From a bash prompt, run the following command:
+
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
+    ```
+
+2.  Run the following command to install the AKS engine with GoFish:
+
+    ```bash
+    Run "gofish install aks-engine"
+    ```
+
+#### Install the AKS engine with GoFish on Windows
+
+Install GoFish from the [Install](https://gofi.sh/#install) page.
+
+1. From an elevated PowerShell prompt, run the following command:
+
+    ```PowerShell
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
+    ```
+
+2.  Run the following command in the same session to install the AKS engine with GoFish:
+
+    ```PowerShell
+    gofish install aks-engine
+    ```
+
+### Checklist for common deployment issues
+
+When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
+
+1.  Are you using the correct Service Principal credentials (SPN)?
+2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
+3. Do you have a large enough quota in your Azure Stack Hub plan?
+4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
+
+For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
+## Collect Node and Cluster Logs
 
 You can find the instructions on collecting node and cluster logs at [Retrieving Node and Cluster Logs](https://github.com/Azure/aks-engine/blob/master/docs/topics/get-logs.md).
 
