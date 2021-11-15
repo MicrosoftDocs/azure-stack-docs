@@ -84,7 +84,7 @@ Address any issues reported by the sandbox blade.
    AzureStackHubGallery.exe package -m <azpkg file\manifest.json> -o <outfile path>
    ```
 
-This command creates a new AZPKG from the file that holds the different files above. This AZPKG can then be used to publish the new solution template onto the marketplace.
+   This command creates a new AZPKG from the file that holds the different files above. This AZPKG can then be used to publish the new solution template onto the marketplace.
 
 ## Next steps
 
