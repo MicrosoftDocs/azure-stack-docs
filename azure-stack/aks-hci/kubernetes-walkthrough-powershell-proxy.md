@@ -85,24 +85,24 @@ To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell]
 
 ### Register the resource provider to your subscription
 
-> [!NOTE]
-> **Use the Az PowerShell module behind a proxy.** If a proxy is necessary for HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
+**Use the Az PowerShell module behind a proxy.** If a proxy is necessary for a HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
 
 
 |      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |
 | ----------------------- | ------------------------------------ | ------------------------ |
-| Windows PowerShell 5.1  | System proxy settings settings  | Do not suggest setting HTTP_PROXY/HTTPS_PROXY environment variables.|
-| PowerShell 7 on Windows | System proxy settings   | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.    |
-| PowerShell 7 on macOS   | System proxy settings  | Proxy could be configured by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
-| PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus optional NO_PROXY | The environment variables should be set before starting PowerShell, otherwise they may not be respected. |
+| Windows PowerShell 5.1  | System proxy settings  | It's recommended you do not set HTTP_PROXY/HTTPS_PROXY environment variables.|
+| PowerShell 7 on Windows | System proxy settings   | You can configure proxy by setting both HTTP_PROXY and HTTPS_PROXY environment variables.    |
+| PowerShell 7 on macOS   | System proxy settings  | You can configure proxy by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
+| PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus NO_PROXY(optional) | You should set the environment variables before starting PowerShell, otherwise, they may not be respected. |
 
-The environment variables used are:
+The environment variables used include the following:
 
 - HTTP_PROXY: the proxy server used on HTTP requests.
 - HTTPS_PROXY: the proxy server used on HTTPS requests.
 - NO_PROXY: a comma-separated list of hostnames and IP addresses that should be excluded from the proxy.
 
-On systems where environment variables are case-sensitive, the variable names may be all lowercase
+> [!NOTE]
+> On systems where environment variables are case-sensitive, the variable names may be all lowercase
 or all uppercase. The lowercase names are checked first.
 
 Before the registration process, you need to enable the appropriate resource provider in Azure for AKS on Azure Stack HCI registration. To do that, run the following PowerShell commands.
@@ -196,7 +196,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 
 Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, `clusterrolename`, `cloudservicecidr` and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
-Configure your deployment with the following command.
+Configure your deployment with the following command:
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7
