@@ -30,8 +30,7 @@ Old:
 
 The first step is to determine which solution templates on your Azure Stack Hub marketplace need to be updated. The following JavaScript snippet can help you find the different items you may need to validate.
 
-Run the script in the web console in which you are logged into the admin portal. The console can usually be found in the web browser's development tools (can vary depending on browser). Once the console is open, copy and paste the script below into the console and hit Enter. The output is a list of solution templates from your Azure Stack
-Hub marketplace that are not compatible with the new **CreateUiDefinition** format.
+Run the script in the web console in which you are signed into the admin portal. The console can usually be found in the web browser's development tools (can vary depending on browser). Once the console is open, copy and paste the following script into the console, and then hit **Enter**. The output is a list of solution templates from your Azure Stack Hub marketplace that are not compatible with the new **CreateUiDefinition** format:
 
 ```javascript
 uri = "/providers/Microsoft.Gallery/GalleryItems?api-version=2015-04-01"
