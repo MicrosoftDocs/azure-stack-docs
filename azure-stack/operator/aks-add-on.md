@@ -1,4 +1,4 @@
-> ---
+---
 title: Install and offer the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to install and offer the Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
