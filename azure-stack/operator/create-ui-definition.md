@@ -33,6 +33,29 @@ The first step is to determine which solution templates on your Azure Stack Hub 
 Run the script in the web console in which you are logged into the admin portal. The console can usually be found in the web browser's development tools (can vary depending on browser). Once the console is open, copy and paste the script below into the console and hit Enter. The output is a list of solution templates from your Azure Stack
 Hub marketplace that are not compatible with the new **CreateUiDefinition** format.
 
+```javascript
+uri = "/providers/Microsoft.Gallery/GalleryItems?api-version=2015-04-01"
+let galleryItemsResult = await MsPortalFx.Base.Net2.ajax({uri: uri, useFxArmEndpoint: true});
+const result = [];
+console.log("Checking....");
+for (let i=0;i<galleryItemsResult.length;i++) {
+   const v = galleryItemsResult[i];
+   const uidef = await MsPortalFx.Base.Net2.ajax({uri: v.uiDefinitionUri, useRawAjax: true});   
+   const createBlade = uidef.createDefinition.createBlade;
+   if (createBlade.name === "CreateMultiVmWizardBlade" && createBlade.extension === "Microsoft_Azure_Compute") {
+       result.push(v);
+   }
+}
+if (result.length === 0) {
+    console.log("\n\n You don't have to udpate any item :)");
+} else {
+    console.log("\n\nThese items need to be updated:");
+    result.forEach((v)=>{
+        console.log(v.itemDisplayName);
+    });
+}
+```
+
 With the list of incompatible solution templates, use the following chart to determine next steps:
 
 :::image type="content" source="media/create-ui-definition/uiflow.png" alt-text="Flow chart for UI definition":::
