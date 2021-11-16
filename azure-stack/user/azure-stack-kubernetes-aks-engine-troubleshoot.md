@@ -38,7 +38,7 @@ This guide also assumes that you've deployed a cluster using the AKS engine. For
 
 The `aks-engine get-logs` command can be useful to troubleshoot issues with your cluster. The command produces, collects, and downloads a set of files to your workstation. The files include node configuration, cluster state and configuration, and set up log files. 
 
-At a high level: the command works by establishing an SSH session into each node, executing a log collection script that collects and zips relevant files, and downloading the zip file to your local computer.
+At a high level: the command works by establishing an SSH session into each node, executing a log collection script that collects and zips relevant files, and downloading the .ZIP file to your local computer.
 
 ### SSH authentication
 
@@ -93,13 +93,17 @@ When you use the AKS engine to set up your cluster, you may throw an error. The 
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
-If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `aks-engine get-logs`. The command will produce a ZIP file and save it to the machine where your ran the command.
+If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `aks-engine get-logs`. The command will produce a .ZIP file and save it to the machine where your ran the command.
 
 Your operator may combine the logs you produced along with other system logs that may be needed by Microsoft support. The operator may make them available to the Microsoft.
 
 You can provide Kubernetes logs in several ways:
 - You can contact your Azure Stack Hub operator. Your operator uses the information from you're the logs stored in the .ZIP file to create the support case.
-- If you have the SAS URL for a storage account where you can upload your Kubernetes logs, you can include the following command and flag with the SAS URL to save the logs to the storage account: `aks-engine get-logs -upload-sas-url <SAD-URL>`
+- If you have the SAS URL for a storage account where you can upload your Kubernetes logs, you can include the following command and flag with the SAS URL to save the logs to the storage account: 
+    ```Bash  
+    `aks-engine get-logs -upload-sas-url <SAS-URL>`
+    ```
+    For instructions, see [Upload logs to a storage account container](#upload-logs-to-a-storage-account-container).
 - If you're a cloud operator, you can:
     - Use the **Help + support** blade in the Azure Stack Hub Administration portal to upload logs. For instructions, see [Send logs now with the administrator portal](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-the-administrator-portal).
     -  Use the **Get-AzureStackLog** PowerShell cmdlet using the Privileged End Point (PEP) For instruction, see [Send logs now with PowerShell](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-powershell).
