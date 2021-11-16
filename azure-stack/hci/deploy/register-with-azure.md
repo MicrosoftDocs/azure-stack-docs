@@ -6,7 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/02/2021
+ms.date: 11/16/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -50,7 +50,7 @@ Azure Stack HCI needs to periodically connect to the Azure public cloud. If outb
 
 ### Azure subscription and permissions
 
-If you don’t already have an Azure account, [create one](https://azure.microsoft.com/).
+If you don't already have an Azure account, [create one](https://azure.microsoft.com/).
 
 You can use an existing subscription of any type:
 - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -110,6 +110,16 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
 
 You'll also need appropriate Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions) for more information.
 
+## Region availability
+
+Azure Stack HCI is currently supported in the following public regions. These regions support geographic locations worldwide:
+
+- East US
+- West Europe
+- Southeast Asia
+- China East 2
+- US Gov Virginia
+
 ## Register a cluster using Windows Admin Center
 
 The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. 
@@ -131,7 +141,7 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you'll be asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
-3. Specify the Azure subscription ID that you want to register the cluster to. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to **Subscriptions** and copy/paste your ID from the list. If your Azure AD admin gave you an Azure resource group to use, select it from the drop-down menu; otherwise, select **Create new**. Select the Azure region from the drop-down menu and click **Register**.
+3. Specify the Azure subscription ID that you want to register the cluster to. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to **Subscriptions** and copy/paste your ID from the list. If your Azure AD admin gave you an Azure resource group to use, select it from the drop-down menu; otherwise, select **Create new**. Select the [Azure region](#region-availability) from the drop-down menu and click **Register**.
 
    :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
@@ -165,7 +175,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    > 
    > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
    > 
-   > If you’re registering in Azure Government, use these parameters:
+   > If you're registering in Azure Government, use these parameters:
    > 
    > -EnvironmentName AzureUSGovernment -Region "USGovVirginia"
 
@@ -173,7 +183,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
    ```
 
-   This syntax registers the cluster (of which Server1 is a member), as the current user, with the default Azure region and cloud environment, and using smart default names for the Azure resource and resource group. You can also add the optional `-Region`, `-ResourceName`, `-TenantId`, and `-ResourceGroupName` parameters to this command to specify these values.
+   This syntax registers the cluster (of which Server1 is a member), as the current user, with the default [Azure region](#region-availability) and cloud environment, and using smart default names for the Azure resource and resource group. You can also add the optional `-Region`, `-ResourceName`, `-TenantId`, and `-ResourceGroupName` parameters to this command to specify these values.
 
    > [!NOTE]
    > If you're running Azure Stack HCI, version 21H2, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
