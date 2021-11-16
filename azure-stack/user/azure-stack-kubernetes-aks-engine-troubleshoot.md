@@ -67,7 +67,7 @@ When encountering errors while deploying a Kubernetes cluster using the AKS engi
 4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
 
 For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
-## Collect Node and Cluster Logs
+## Collect node and cluster logs
 
 You can find the instructions on collecting node and cluster logs at [Retrieving Node and Cluster Logs](https://github.com/Azure/aks-engine/blob/master/docs/topics/get-logs.md).
 
@@ -77,21 +77,21 @@ This guide assumes you've already downloaded the [Azure CLI](azure-stack-version
 
 This guide also assumes that you've deployed a cluster using the AKS engine. For more information, see [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md) .
 
-### Retrieving Logs
+### Retrieving logs
 
 The `aks-engine get-logs` command can be useful to troubleshoot issues with your cluster. The command produces, collects, and downloads a set of files to your workstation. The files include node configuration, cluster state and configuration, and create log files.
 
 At a high level: the command works by establishing an SSH session into each node, executing a log collection script that collects and zips relevant files, and downloading the zip file to your local computer.
 
-### SSH Authentication
+### SSH authentication
 
 You will need a  valid SSH private key to establish an SSH session to the cluster Linux nodes. Windows credentials are stored in the API model and will be loaded from there. Set `windowsprofile.sshEnabled` to true to enable SSH in your Windows nodes.
 
-### Upload logs to a Storage Account Container
+### Upload logs to a storage account container
 
 Once the cluster logs were successfully retrieved, AKS Engine can save them on an Azure Storage Account container if optional parameter --storage-container-sas-url is set. AKS Engine expects the container name to be part of the provided [SAS URL](/azure/storage/common/storage-sas-overview). The expected format is `https://{blob-service-uri}/{container-name}?{sas-token}`.
 
-> [NOTE!]  
+> [!NOTE]  
 > Storage accounts on custom clouds using the AD FS identity provider are not yet supported.
 
 ### Nodes unable to join the cluster
@@ -102,7 +102,7 @@ By default, `aks-engine get-logs` collects logs from nodes that successfully joi
 --vm-name k8s-pool-01,k8s-pool-02
 ```
 
-### Usage aks-engine get-logs
+### Usage for aks-engine get-logs
 
 Assuming that you have a cluster deployed and the API model originally used to deploy that cluster is stored at `_output/<dnsPrefix>/apimodel.json`, then you can collect logs running a command like:
 
