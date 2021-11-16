@@ -19,6 +19,9 @@ ms.lastreviewed: 01/11/2020
 > [!IMPORTANT]
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.
 
+> [!IMPORTANT]
+> Updating the resource provider will NOT update the hosting MySQL Server. 
+
 A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
