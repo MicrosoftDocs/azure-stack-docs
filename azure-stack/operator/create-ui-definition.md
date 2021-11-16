@@ -12,7 +12,7 @@ ms.custom: template-how-to
 
 This article describes how to prepare for the upcoming Azure Stack Hub update and its changes to **CreateUiDefinition.json**. This JSON file is used to create the user experience when deploying solution templates.
 
-## Description of issues
+## Description of CreateUiDefinition issues
 
 **CreateUiDefinition.json** will be updated to work with the UI changes in the upcoming release. The changes provide a more complete user experience when deploying a solution template. For more information about the new experience, [see the CreateUiDefinition overview](/azure-resource-manager/managed-applications/create-uidefinition-overview).
 
