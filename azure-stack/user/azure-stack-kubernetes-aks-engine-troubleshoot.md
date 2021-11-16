@@ -9,7 +9,7 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 11/16/2020
 
-# Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
+# Intent: As as an Azure Stack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
 
 ---
