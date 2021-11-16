@@ -22,7 +22,10 @@ ms.lastreviewed: 08/24/2021
 > [!IMPORTANT]
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.
 
-A new SQL resource provider might be released when Azure Stack Hub is updated to a new build. Although the existing resource provider may continues to work, we recommend updating to the latest build as soon as possible.
+> [!IMPORTANT]
+> Updating the resource provider will NOT update the hosting SQL Server. 
+
+A new SQL resource provider might be released when Azure Stack Hub is updated to a new build. Although the existing resource provider continues to work, we recommend updating to the latest build as soon as possible.
 
 |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
@@ -45,9 +48,9 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 
 2. [open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
  
-3.	Download Microsoft AzureStack Add-On RP Windows Server	1.2009.0 to marketplace. 
+3.    Download Microsoft AzureStack Add-On RP Windows Server    1.2009.0 to marketplace. 
 
-4.	Ensure datacenter integration prerequisites are met.
+4.    Ensure datacenter integration prerequisites are met.
 
   |Prerequisite|Reference|
   |-----|-----|
@@ -56,7 +59,7 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
   |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
   |     |     |
 
-5.	(for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
+5.    (for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
 
 ### Trigger MajorVersionUpgrade
 Run the following script:
@@ -105,8 +108,8 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 ### Validate the upgrade is successful
 
-1.	The MajorVersionUpgrade script executed without any errors.
-2.	Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
+1.    The MajorVersionUpgrade script executed without any errors.
+2.    Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
 
 
 ## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
