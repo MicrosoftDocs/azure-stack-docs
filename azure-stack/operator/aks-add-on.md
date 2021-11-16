@@ -1,4 +1,4 @@
----
+> ---
 title: Install and offer the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to install and offer the Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) enables your users to deploy Kubernetes clusters 
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 > [!NOTE]  
-Azure Kubernetes Service on Azure Stack Hub doesn't support the creation of a cluster in the Administration environment. You can only create AKS clusters in the user environment. 
+> Azure Kubernetes Service on Azure Stack Hub doesn't support the creation of a cluster in the administration environment. You can only create AKS clusters in the user environment. 
 
 ## Download required VM extensions
 
