@@ -1,12 +1,12 @@
 ---
 title: Azure Stack HCI release information
-description: Release information for Azure Stack HCI
-author: khdownie
-ms.author: v-kedow
+description: A list of the Azure Stack HCI releases and corresponding OS builds.
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/09/2021
+ms.date: 11/16/2021
 ---
 
 # Azure Stack HCI release information
@@ -28,6 +28,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.379    | 2021-11-16            | [KB 5007254](https://support.microsoft.com/topic/98eb640f-81f6-4317-b965-100428db037f) |
 | 20348.350    | 2021-11-09            | [KB 5007205](https://support.microsoft.com/topic/a54d80e0-b1af-493e-9981-d4597a166119) |
 | 20348.320    | 2021-10-26            | [KB 5006745](https://support.microsoft.com/topic/572c595a-aff6-4976-a961-07aafb257973) |
 
