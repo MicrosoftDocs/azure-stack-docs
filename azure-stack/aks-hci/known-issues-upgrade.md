@@ -14,15 +14,14 @@ This article describes known issues and errors you may encounter when upgrading 
 
 ## Restarting the management cluster after upgrading to the October release makes the workload cluster unreachable
 
-After upgrading, when restarting the management cluster, the workload cluster is unreachable, and Windows Admin Center and PowerShell display the following errors:
+After upgrading, when the management cluster was restarted, the workload cluster became unreachable, and Windows Admin Center and PowerShell displayed the following errors:
 
-*[Error: Get "https://10.0.0.0:6443/api?timeout=10s": context deadline exceeded (Client.Timeout exceeded while awaiting headers)]*
-
-*[Error: Get "https://10.0.0.0:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]*
+- *[Error: Get "https://10.0.0.0:6443/api?timeout=10s": context deadline exceeded (Client.Timeout exceeded while awaiting headers)]*
+- *[Error: Get "https://10.0.0.0:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]*
 
 This issue is caused by a bug in the October Update (version: 1.0.5.11028) VHD image. In deployments with this issue, the most common symptom is that commands return the above error messages when you attempt any Day 2 operations in both Windows Admin Center and PowerShell. This issue is most common in deployments that used proxy settings during an AKS on Azure Stack HCI installation of the September Update.
 
-To resolve this issue, you can find a workaround on this [public GitHub issues page](https://github.com/Azure/aks-hci/issues/147).
+To resolve this issue, you can find a workaround on this [public GitHub issues page](https://github.com/Azure/aks-hci/issues/147). This issue will be fixed in the November Update.
 
 ## When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
