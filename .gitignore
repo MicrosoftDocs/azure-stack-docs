@@ -22,3 +22,6 @@ AzureMigration.ps1
 
 # macOS finder files
 .DS_Store
+
+# validating Doc Index Validator
+.docIndex/
