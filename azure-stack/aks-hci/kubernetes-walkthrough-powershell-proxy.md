@@ -140,7 +140,7 @@ Run checks on every physical node to see if all the requirements are satisfied t
 Initialize-AksHciNode
 ```
 
-## Step 1a: (Optional) Prepare your Active Directory and DNS server for deployment
+## Step 2: Prepare your Active Directory and DNS server for deployment
 
 If you cannot enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the CloudAgent generic cluster name in Active Directory and the DNS system for discovery, you need to pre-create the respective records in Active Directory and DNS.
 
@@ -153,7 +153,7 @@ The AKS on Azure Stack HCI deployment will attempt to locate the specified `clus
 
 Follow Step 3a after Step 2 to specify the pre-created object name in `Set-AksHciConfig`.
 
-## Step 2: Create a virtual network
+## Step 3: Create a virtual network
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
 
@@ -179,7 +179,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
-## Step 3: Configure your deployment
+## Step 4: Configure your deployment
 
 Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -192,7 +192,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
-## Step 3a: (Optional) Configure your deployment if you have prestaged cluster service objects and DNS records
+## Step 5: Configure your deployment if you have prestaged cluster service objects and DNS records
 
 Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, `clusterrolename`, `cloudservicecidr` and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -207,7 +207,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
-## Step 4: Log in to Azure and configure registration settings
+## Step 6: Log in to Azure and configure registration settings
 
 Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the East US, Southeast Asia, or West Europe Azure regions to proceed.
 
@@ -215,7 +215,7 @@ Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
 ```
 
-## Step 5: Start a new deployment
+## Step 7: Start a new deployment
 
 After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin deployment, run the following command.
 
@@ -225,7 +225,7 @@ Install-AksHci
 > [!WARNING]
 > During installation of your Azure Kuberenetes Service host, a *Kubernetes - Azure Arc* resource type is created in the resource group that's set during registration. Do not delete this resource as it represents your Azure Kuberenetes Service host. You can identify the resource by checking its distribution field for a value of `aks_management`. Deleting this resource will result in an out-of-policy deployment.
 
-## Step 6: Create a Kubernetes cluster
+## Step 8: Create a Kubernetes cluster
 
 After installing your Azure Kubernetes Service host, you are ready to deploy a Kubernetes cluster. Open PowerShell as an administrator and run the following [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. This example command will create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with a node count of 1. To read more information about node pools, see [Use node pools in AKS on Azure Stack HCI](use-node-pools.md).
 
@@ -268,7 +268,7 @@ VmSize       : Standard_K8S3_v1
 Phase        : Deployed
 ```
 
-## Step 7: Connect your cluster to Arc enabled Kubernetes
+## Step 9: Connect your cluster to Arc enabled Kubernetes
 
 Connect your cluster to Arc enabled Kubernetes by running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command. The below example connects your AKS on Azure Stack HCI cluster to Arc using the subscription and resource group details you passed in the `Set-AksHciRegistration` command.
 
