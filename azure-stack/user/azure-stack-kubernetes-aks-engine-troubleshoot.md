@@ -4,10 +4,10 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 11/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/07/2020
+ms.lastreviewed: 11/16/2020
 
 # Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
@@ -89,22 +89,20 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-When you use the AKS engine to set up your cluster, you may throw an error. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go). <!-- have a question out to walter about this. -->
-
-You can consult the of error code returned by the custom script extension (CSE) in setting up your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu Server used in your Kubernetes cluster supports many of the AKS engine operations. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+When you use the AKS engine to set up your cluster, you may throw an error. The AKS engine uses the custom script extension (CSE) installed on the Ubuntu Server to perform deployment tasks. If the script throws an error, it will pass the error to the AKS engine. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
-If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `getkuberneteslogs.sh` with the `--upload-logs` parameter set.
-
-Contact your Azure Stack Hub operator. Your operator uses the information from your logs to create the support case.
-
-While addressing any support issues, a Microsoft support engineer may request that your Azure Stack Hub operator collect the Azure Stack Hub system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
-
-Your operator may run the **Get-AzureStackLog** PowerShell cmdlet. This command uses a parameter (`-InputSaSUri`) that specifies the storage account where you stored the Kubernetes logs. For more information see [Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)](/azure-stack/operator/azure-stack-get-azurestacklog).
+If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `aks-engine get-logs`. The command will produce a ZIP file and save it to the machine where your ran the command.
 
 Your operator may combine the logs you produced along with other system logs that may be needed by Microsoft support. The operator may make them available to the Microsoft.
 
+You can provide Kubernetes logs in several ways:
+- You can contact your Azure Stack Hub operator. Your operator uses the information from you're the logs stored in the .ZIP file to create the support case.
+- If you have the SAS URL for a storage account where you can upload your Kubernetes logs, you can include the following command and flag with the SAS URL to save the logs to the storage account: `aks-engine get-logs -upload-sas-url <SAD-URL>`
+- If you're a cloud operator, you can:
+    - Use the **Help + support** blade in the Azure Stack Hub Administration portal to upload logs. For instructions, see [Send logs now with the administrator portal](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-the-administrator-portal).
+    -  Use the **Get-AzureStackLog** PowerShell cmdlet using the Privileged End Point (PEP) For instruction, see [Send logs now with PowerShell](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-powershell).
 ## Open GitHub issues
 
 If you are unable to resolve your deployment error, you can open a GitHub Issue.
@@ -117,7 +115,7 @@ If you are unable to resolve your deployment error, you can open a GitHub Issue.
 
     -   The cluster configuration file, `apimodel.json`, used to deploy the cluster. Remove all secrets and keys before posting it on GitHub.
 
-    -   The output of the following **kubectl** command get nodes.
+    -   The output of the following **kubectl** command `get nodes`.
 
     -   The content of `/var/log/azure/cluster-provision.log` from an unhealthy node.
 
