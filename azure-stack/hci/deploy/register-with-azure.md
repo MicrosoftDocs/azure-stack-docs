@@ -112,12 +112,18 @@ You'll also need appropriate Azure Active Directory permissions to complete the 
 
 ## Region availability
 
-Azure Stack HCI is currently supported in the following public regions. These regions support geographic locations worldwide:
+The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions. These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
 
 - East US
 - West Europe
 - Southeast Asia
+
+This region supports Azure China:
+
 - China East 2
+
+This region supports Azure Government:
+
 - US Gov Virginia
 
 ## Register a cluster using Windows Admin Center
