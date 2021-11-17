@@ -57,7 +57,7 @@ if (result.length === 0) {
 
 With the list of incompatible solution templates, use the following chart to determine next steps:
 
-:::image type="content" source="media/create-ui-definition/uiflow.png" alt-text="Flow chart for UI definition":::
+:::image type="content" source="media/create-ui-definition/ui-flow.png" alt-text="Flow chart for UI definition":::
 
 If your solution template is downloaded with Marketplace management, update the template to the latest version. Solution templates from marketplace management will be updated in the coming months, so watch for the latest versions of your marketplace items.
 
