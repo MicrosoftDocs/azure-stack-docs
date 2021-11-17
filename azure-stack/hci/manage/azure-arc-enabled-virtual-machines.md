@@ -160,7 +160,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
      az extension add --name k8s-configuration --version 1.1.1
      az extension add --name k8s-extension --version 0.7.1
      az extension add --name customlocation --version 0.1.3
-     az extension add --source "https://akshcistorage.z5.web.core.windows.net/SelfServiceVM/CLI/azurestackhci-0.2.0-py3-none-any.whl" --yes
+     az extension add --name azurestackhci --version 0.2.1
      ```
 
 ## Create a custom location by installing Azure Arc Resource Bridge
@@ -182,7 +182,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 2. Log in to your Azure subscription:
    
    ```PowerShell
-   az login
+   az login --use-device-code
    az account set -s "$subscription"
    ```
    
