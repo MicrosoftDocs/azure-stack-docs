@@ -25,11 +25,8 @@ $loginFile = ".\login.yaml" # location of generated login file for new identity
 New-MocIdentity -name "admin2" -validityDays 60 -location MocLocation -outfile $loginFile # create new identity with chosen name
 
 # Assign required roles to new identity
-
 New-MocRoleAssignment -identityName "admin2" -roleName "GalleryImageContributor" -location MocLocation
-
 New-MocRoleAssignment -identityName "admin2" -roleName "SecretReader" -location MocLocation
-
 New-MocRoleAssignment -identityName "admin2" -roleName "NodeReader" -location MocLocation
 ```
 
