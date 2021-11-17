@@ -68,9 +68,7 @@ aks-engine get-logs \
     --location <location> \
     --api-model _output/<dnsPrefix>/apimodel.json \
     --ssh-host <dnsPrefix>.<location>.cloudapp.azure.com \
-    --linux-ssh-private-key ~/.ssh/id_rsa \
-    --linux-script scripts/collect-logs.sh \
-    --windows-script scripts/collect-windows-logs.ps1
+    --linux-ssh-private-key ~/.ssh/id_rsa
 ```
 
 ### Parameters
