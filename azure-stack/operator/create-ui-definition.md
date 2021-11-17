@@ -4,7 +4,7 @@ description: Learn how to update solution templates to work with new upcoming Cr
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 11/15/2021
+ms.date: 11/17/2021
 ms.custom: template-how-to
 ---
 
@@ -110,5 +110,5 @@ Address any issues reported by the sandbox blade.
 
 ## Next steps
 
-- [How to create and publish gallery item to the Azure Stack Hub marketplace](azure-stack-create-and-publish-marketplace-item.md?view=azs-2102&tabs=az)
+- [How to create and publish gallery item to the Azure Stack Hub marketplace](azure-stack-create-and-publish-marketplace-item.md)
 - [Createuidefinition.json official document](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview)
