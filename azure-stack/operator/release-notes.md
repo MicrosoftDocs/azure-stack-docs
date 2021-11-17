@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/09/2021
+ms.date: 11/17/2021
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 09/09/2020
@@ -94,7 +94,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-- Fixed an issue in which one repository failure when uploading to the external SMB share caused the whole infrastructure backup to fail.
+- Fixed an issue in which one repository failure when uploading to the external SMB share caused the entire infrastructure backup to fail.
 - Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
 - Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
 - Fixed an issue that caused internal load balancers to use external IPs.
