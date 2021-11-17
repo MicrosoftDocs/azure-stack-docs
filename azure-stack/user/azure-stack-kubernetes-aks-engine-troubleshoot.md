@@ -46,7 +46,7 @@ You will need a  valid SSH private key to establish an SSH session to the cluste
 
 ### Upload logs to a storage account container
 
-Once the cluster logs were successfully retrieved, AKS Engine can save them on an Azure Storage Account container if optional parameter --upload-sas-url is set. AKS Engine expects the container name to be part of the provided [SAS URL](/azure/storage/common/storage-sas-overview). The expected format is `https://{blob-service-uri}/{container-name}?{sas-token}`.
+Once the cluster logs were successfully retrieved, AKS Engine can save them on an Azure Storage Account container if optional parameter `--upload-sas-url` is set. AKS Engine expects the container name to be part of the provided [SAS URL](/azure/storage/common/storage-sas-overview). The expected format is `https://{blob-service-uri}/{container-name}?{sas-token}`.
 
 > [!NOTE]  
 > Storage accounts on custom clouds using the AD FS identity provider are not yet supported.
@@ -91,12 +91,12 @@ When you use the AKS engine to set up your cluster, you may throw an error. The 
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
-If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `aks-engine get-logs`. The command will produce a .ZIP file and save it to the machine where your ran the command.
+If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected.
 
 Your operator may combine the logs you produced along with other system logs that may be needed by Microsoft support. The operator may make them available to the Microsoft.
 
 You can provide Kubernetes logs in several ways:
-- You can contact your Azure Stack Hub operator. Your operator uses the information from you're the logs stored in the .ZIP file to create the support case.
+- You can contact your Azure Stack Hub operator. Your operator uses the information from the logs stored in the .ZIP file to create the support case.
 - If you have the SAS URL for a storage account where you can upload your Kubernetes logs, you can include the following command and flag with the SAS URL to save the logs to the storage account: 
     ```Bash  
     aks-engine get-logs -upload-sas-url <SAS-URL>
