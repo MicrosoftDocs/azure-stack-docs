@@ -21,6 +21,9 @@ ms.lastreviewed: 11/11/2019
 > [!IMPORTANT]
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.
 
+> [!IMPORTANT]
+> Updating the resource provider will NOT update the hosting SQL Server. 
+
 A new SQL resource provider might be released when Azure Stack Hub is updated to a new build. Although the existing resource provider continues to work, we recommend updating to the latest build as soon as possible.
 
 |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
