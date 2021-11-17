@@ -183,7 +183,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    
    ```PowerShell
    az login --use-device-code
-   az account set -s "$subscription"
+   az account set --subscription $subscription
    ```
    
 3. Run the following cmdlets:
