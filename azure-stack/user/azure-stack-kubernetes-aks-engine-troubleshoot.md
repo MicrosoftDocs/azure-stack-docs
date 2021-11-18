@@ -78,12 +78,14 @@ aks-engine get-logs \
 | --location                   | Yes          | Azure location of the cluster's resource group.                                                                                                                |
 | --api-model                  | Yes          | Path to the generated API model for the cluster.                                                                                                               |
 | --ssh-host                   | Yes          | FQDN, or IP address, of an SSH listener that can reach all nodes in the cluster.                                                                               |
+| --linux-ssh-private-key | Yes           | Path to a SSH private key that can be use to create a remote session on the cluster Linux nodes. |
 | --windows-script             | No           | Custom log collection PowerShell script. Required only when the Windows node distribution is not `aks-windows`. The script should produce file `%TEMP%\\{NodeName}.zip`. |
 | --output-directory           | No           | Output directory, derived from `--api-model` if missing.                                                                                                         |
 | --control-plane-only         | No           | Only collect logs from control plane nodes.                                                                                                                           |
 | --vm-names                   | No           | Only collect logs from the specified VMs (comma-separated names).                                                                                              |
 | --upload-sas-url             | No           | Azure Storage Account SAS URL to upload the collected logs.                                                                                                    |
 | --storage-container-sas-url  | No           | Storage account SAS URL with corresponding container name. AKS will store the logs in this storage account's container.                                        |
+
 
 ## Review custom script extension error codes
 
