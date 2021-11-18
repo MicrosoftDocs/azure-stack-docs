@@ -25,24 +25,10 @@ To resolve this issue, run the following steps:
    sudo su
    ```
 
-2. Open and edit the `/etc/containerd/config.toml` file and add the following:
-
-   ```
-   [plugin."io.containerd.grpc.v1.cri".registry.configs."ecpacr.azurecr.io".auth]
-   username = "USERNAME_FROM_ME"
-   password = "PASSWORD_FROM_ME"
-   ```
-
-4. Save the `config.toml` file and run the following command:
-
-   ```
-   Systemctl restart containerd
-   ```
-
-5. To pull the image, run the following command:
+2. To pull the image, run the following command:
 
    ```powershell
-   crictl pull ecpacr.azurecr.io/pause:3.2
+   crictl pull --creds aaa:bbb ecpacr.azurecr.io/pause:3.2
    ```
 
 ## Running Remove-AksHciCluster results in the error: _A workload cluster with the name 'my-workload-cluster' was not found_
