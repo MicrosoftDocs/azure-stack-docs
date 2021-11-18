@@ -89,6 +89,8 @@
             href: stop-start-cluster.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Back up and restore workload clusters using Velero
+            href: backup-workload-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
           - name: Use node pools
