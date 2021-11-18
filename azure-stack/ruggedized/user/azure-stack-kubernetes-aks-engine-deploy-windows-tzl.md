@@ -55,7 +55,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     ```
 
 > [!NOTE]  
-> If this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](../../user/azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
+> If this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
 
 ## Install in a disconnected environment
 

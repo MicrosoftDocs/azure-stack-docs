@@ -4,183 +4,125 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 11/16/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/07/2020
+ms.lastreviewed: 11/16/2020
 
-# Intent: As as an Azure STack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
+# Intent: As as an Azure Stack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
 
 ---
 
 # Troubleshoot the AKS engine on Azure Stack Hub
 
-You may encounter an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
+You may find an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine. Collect information about your AKS engine, collect Kubernetes logs, and review custom script extension error codes. You can also open a GitHub issue for the AKS engine.
 
 ## Troubleshoot the AKS engine install
 
-### Try GoFish
-
 If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
 
-#### Install the AKS engine with GoFish on Linux
+You can find instructions for using GoFish to install the AKS engine at [Install the aks-engine command line tool](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool)
 
-Install GoFish from the [Install](https://gofi.sh/#install) page.
+## Collect node and cluster logs
 
-1. From a bash prompt, run the following command:
+You can find the instructions on collecting node and cluster logs at [Retrieving Node and Cluster Logs](https://github.com/Azure/aks-engine/blob/master/docs/topics/get-logs.md).
 
-    ```bash
-    curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
-    ```
+### Prerequisites
 
-2.  Run the following command to install the AKS engine with GoFish:
+This guide assumes you've already downloaded the [Azure CLI](azure-stack-version-profiles-azurecli2.md) and the [AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
-    ```bash
-    Run "gofish install aks-engine"
-    ```
+This guide also assumes that you've deployed a cluster using the AKS engine. For more information, see [Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-deploy-cluster.md) .
 
-#### Install the AKS engine with GoFish on Windows
+### Retrieving logs
 
-Install GoFish from the [Install](https://gofi.sh/#install) page.
+The `aks-engine get-logs` command can be useful to troubleshoot issues with your cluster. The command produces, collects, and downloads a set of files to your workstation. The files include node configuration, cluster state and configuration, and set up log files. 
 
-1. From an elevated PowerShell prompt, run the following command:
+At a high level: the command works by establishing an SSH session into each node, executing a log collection script that collects and zips relevant files, and downloading the .ZIP file to your local computer.
 
-    ```PowerShell
-    Set-ExecutionPolicy Bypass -Scope Process -Force
-    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
-    ```
+### SSH authentication
 
-2.  Run the following command in the same session to install the AKS engine with GoFish:
+You will need a  valid SSH private key to establish an SSH session to the cluster Linux nodes. Windows credentials are stored in the API model and will be loaded from there. Set `windowsprofile.sshEnabled` to true to enable SSH in your Windows nodes.
 
-    ```PowerShell
-    gofish install aks-engine
-    ```
+### Upload logs to a storage account container
 
-### Checklist for common deployment issues
+Once the cluster logs were successfully retrieved, AKS Engine can save them on an Azure Storage Account container if optional parameter `--upload-sas-url` is set. AKS Engine expects the container name to be part of the provided [SAS URL](/azure/storage/common/storage-sas-overview). The expected format is `https://{blob-service-uri}/{container-name}?{sas-token}`.
 
-When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
+> [!NOTE]  
+> Storage accounts on custom clouds using the AD FS identity provider are not yet supported.
 
-1.  Are you using the correct Service Principal credentials (SPN)?
-2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
-3. Do you have a large enough quota in your Azure Stack Hub plan?
-4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
+### Nodes unable to join the cluster
 
-For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
+By default, `aks-engine get-logs` collects logs from nodes that successfully joined the cluster. To collect logs from VMs that were not able to join the cluster, set flag `--vm-names`:
 
-## Collect AKS engine logs
+```bash
+--vm-name k8s-pool-01,k8s-pool-02
+```
 
-You can review information created by the AKS engine. The AKS engine reports status and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
+### Usage for aks-engine get-logs
 
-1.  Gather standard output and error from information displayed in the AKS engine command-line tool.
+Assuming that you have a cluster deployed and the API model originally used to deploy that cluster is stored at `_output/<dnsPrefix>/apimodel.json`, then you can collect logs running a command like:
 
-2. Get logs from a local file. You can set the output directory with the `get-logs` command by setting **--output-directory** flag.
+```bash
+aks-engine get-logs \
+    --location <location> \
+    --api-model _output/<dnsPrefix>/apimodel.json \
+    --ssh-host <dnsPrefix>.<location>.cloudapp.azure.com \
+    --linux-ssh-private-key ~/.ssh/id_rsa
+```
 
-    To set the local path for the logs:
+### Parameters
 
-    ```bash  
-    aks-engine get-logs --output-directory <path to the directory>
-    ```
+| **Parameter**                | **Required** | **Description**                                                                                                                                                |
+|------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --location                   | Yes          | Azure location of the cluster's resource group.                                                                                                                |
+| --api-model                  | Yes          | Path to the generated API model for the cluster.                                                                                                               |
+| --ssh-host                   | Yes          | FQDN, or IP address, of an SSH listener that can reach all nodes in the cluster.                                                                               |
+| --linux-ssh-private-key | Yes           | Path to a SSH private key that can be use to create a remote session on the cluster Linux nodes. |
+| --windows-script             | No           | Custom log collection PowerShell script. Required only when the Windows node distribution is not `aks-windows`. The script should produce file `%TEMP%\\{NodeName}.zip`. |
+| --output-directory           | No           | Output directory, derived from `--api-model` if missing.                                                                                                         |
+| --control-plane-only         | No           | Only collect logs from control plane nodes.                                                                                                                           |
+| --vm-names                   | No           | Only collect logs from the specified VMs (comma-separated names).                                                                                              |
+| --upload-sas-url             | No           | Azure Storage Account SAS URL to upload the collected logs.                                                                                                    |
+| --storage-container-sas-url  | No           | Storage account SAS URL with corresponding container name. AKS will store the logs in this storage account's container.                                        |
 
-## Collect Kubernetes logs
-
-In addition, to the AKS engine logs, the Kubernetes components generate status and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.5).
-
-This script automates the process of gathering the following logs: 
-
-- Log files in directory `/var/log/azure/`
-- Log files in directory `/var/log/kubeaudit` (kube audit logs)
-- Log file `/var/log/waagent.log` (waagent)
-- Log file `/var/log/azure/deploy-script-dvm.log` (if deployed using Azure Stack Hub's Kubernetes Cluster marketplace item)
-- Static manifests in directory `/etc/kubernetes/manifests`
-- Static addons in directory` /etc/kubernetes/addons`
-- kube-system containers metadata and logs
-- kubelet status and journal
-- etcd status and journal
-- Docker status and journal
-- kube-system snapshot
-- Azure CNI config files
-
-Some additional logs are retrieved for Windows nodes:
-
-- Log file `c:\Azure\CustomDataSetupScript.log`
-- kube-proxy status and journal
-- containerd status and journal
-- azure-vnet log and azure-vnet-telemetry log
-- ETW events for docker
-- ETW events for Hyper-V
-
-Without this script, you would need to connect to each node in the cluster locate and download the logs manually. In addition, the script can, optionally, upload the collected logs to a storage account that you can use to share the logs with others.
-
-Requirements:
-
- - A Linux VM, Git Bash or Bash on Windows.
- - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed on the machine where the script will be run.
- - Service principal identity signed into an Azure CLI session to Azure Stack Hub. Since the script has the capability of discovering and creating Azure Stack Resource Manager resources to do its work, it requires the Azure CLI and a service principal identity.
- - User account (subscription) where the Kubernetes cluster is already selected in the environment. 
-1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
-
-    Run the following commands:
-
-    ```bash  
-    mkdir -p $HOME/kuberneteslogs
-    cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.5/diagnosis-v0.1.5.tar.gz
-    tar xvf diagnosis-v0.1.5.tar.gz -C ./
-    ```
-
-2. Look for the parameters required by the `getkuberneteslogs.sh` script. The script will use the following parameters:
-
-    | Parameter | Description | Required | Example |
-    | --- | --- | --- | --- |
-    | -h, --help | Print command usage. | no | 
-    -u,--user | The administrator username for the cluster VMs | yes | azureuser<br>(default value) |
-    | -i, --identity-file | RSA private key tied to the public key used to create the Kubernetes cluster (sometimes named 'id_rsa')  | yes | `./rsa.pem` (Putty)<br>`~/.ssh/id_rsa` (SSH) |
-    |   -g, --resource-group    | Kubernetes cluster resource group | yes | k8sresourcegroup |
-    |   -n, --user-namespace               | Collect logs from containers in the specified namespaces (kube-system logs are always collected) | no |   monitoring |
-    |       --api-model                    | Persists apimodel.json file in an Azure Stack Hub Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | `./apimodel.json` |
-    | --all-namespaces               | Collect logs from containers in all namespaces. It overrides --user-namespace | no | |
-    | --upload-logs                  | Persists retrieved logs in an Azure Stack Hub storage account. Logs can be found in KubernetesLogs resource group | no | |
-    --disable-host-key-checking    | Sets SSH's StrictHostKeyChecking option to "no" while the script executes. Only use in a safe environment. | no | |
-
-3. Run any of the following example commands with your information:
-
-    ```bash
-    ./getkuberneteslogs.sh -u azureuser -i private.key.1.pem -g k8s-rg
-    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --disable-host-key-checking
-    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg -n default -n monitoring
-    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs --api-model clusterDefinition.json
-    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs
-    ```
 
 ## Review custom script extension error codes
 
-You can consult a list of error codes created by the custom script extension (CSE) in running your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu server used in your Kubernetes cluster supports many of the AKS engine operations. For more information about the CSE exit codes, see [cse_helpers.sh](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+When you use the AKS engine to set up your cluster, you may throw an error. The AKS engine uses the custom script extension (CSE) installed on the Ubuntu Server to perform deployment tasks. If the script throws an error, it will pass the error to the AKS engine. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
-### Providing Kubernetes logs to a Microsoft support engineer
+## Providing Kubernetes logs to a Microsoft support engineer
 
-If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `getkuberneteslogs.sh` with the `--upload-logs` parameter set. 
+If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected.
 
-Contact your Azure Stack Hub operator. Your operator uses the information fro your logs to create the support case.
+Your operator may combine the logs you produced along with other system logs that may be needed by Microsoft support. The operator may make them available to the Microsoft.
 
-During the process of addressing any support issues, a Microsoft support engineer may request that your Azure Stack Hub operator collect the Azure Stack Hub system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
-
-Your operator may run the **Get-AzureStackLog** PowerShell cmdlet. This command uses a parameter (`-InputSaSUri`) that specifies the storage account where you stored the Kubernetes logs.
-
-Your operator may combine the logs you produced along with whatever other system logs may be needed by Microsoft support and make them available to the Microsoft.
-
+You can provide Kubernetes logs in several ways:
+- You can contact your Azure Stack Hub operator. Your operator uses the information from the logs stored in the .ZIP file to create the support case.
+- If you have the SAS URL for a storage account where you can upload your Kubernetes logs, you can include the following command and flag with the SAS URL to save the logs to the storage account: 
+    ```Bash  
+    aks-engine get-logs -upload-sas-url <SAS-URL>
+    ```
+    For instructions, see [Upload logs to a storage account container](#upload-logs-to-a-storage-account-container).
+- If you're a cloud operator, you can:
+    - Use the **Help + support** blade in the Azure Stack Hub Administration portal to upload logs. For instructions, see [Send logs now with the administrator portal](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-the-administrator-portal).
+    -  Use the **Get-AzureStackLog** PowerShell cmdlet using the Privileged End Point (PEP) For instruction, see [Send logs now with PowerShell](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-powershell).
 ## Open GitHub issues
 
-If you are unable to resolve your deployment error, you can open a GitHub Issue. 
+If you are unable to resolve your deployment error, you can open a GitHub Issue.
 
-1. Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
-2. Add a title using the following format: C`SE error: exit code <INSERT_YOUR_EXIT_CODE>`.
-3. Include the following information in the issue:
+1.  Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
 
-    - The cluster configuration file, `apimodel json`, used to deploy the cluster. Remove all secrets and keys before posting it on GitHub.  
-     - The output of the following **kubectl** command `get nodes`.  
-     - The content of `/var/log/azure/cluster-provision.log` and `/var/log/cloud-init-output.log`
+2.  Add a title using the following format: CSE error: `exit code <INSERT_YOUR_EXIT_CODE>`.
+
+3.  Include the following information in the issue:
+
+    -   The cluster configuration file, `apimodel.json`, used to deploy the cluster. Remove all secrets and keys before posting it on GitHub.
+
+    -   The output of the following **kubectl** command `get nodes`.
+
+    -   The content of `/var/log/azure/cluster-provision.log` from an unhealthy node.
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
+-   Read about the [AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md).
