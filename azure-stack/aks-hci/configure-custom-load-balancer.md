@@ -1,0 +1,55 @@
+---
+title: Create and use a custom load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI
+description: Learn how to create and use a custom load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI.
+author: baziwane
+ms.topic: how-to
+ms.date: 11/18/2021
+ms.author: rbaziwane
+---
+
+# Create and use a custom load balancer in AKS on Azure Stack HCI
+
+This article covers how to create and use a custom load balancer. In AKS on Azure Stack HCI, you use load balancers to send requests to the Kubernetes API server and to manage traffic to application services. You can also create and use a custom load balancer, such as MetalLB or SDN load balancer, to load balance traffic to application services.  
+
+## Before you begin 
+
+This topic assumes you have [AKS on Azure Stack HCI installed](kubernetes-walkthrough-powershell.md) and have provided a range of virtual IP addresses for the load balancer during the installation.  
+
+> [!NOTE]
+> When using a custom load balancer, [kube-vip](https://kube-vip.io/) automatically deploys to manage the load balancing of requests to the Kubernetes API server and to make sure that it's highly available. 
+
+## Configure a custom load balancer 
+
+> [!WARNING]
+> If you choose to deploy your own load balancer, it will make your Kubernetes cluster unreachable after installation. If you deploy any services with `type=LoadBalancer`, the services will be unreachable until you configure your load balancer.
+
+This configuration assumes you want to leverage a custom load balancer in your AKS on Azure Stack HCI cluster. In this case, the workload cluster is deployed without a load balancer. 
+
+1. Create a load balancer configuration using the `New-AksHciLoadBalancerSettings` cmdlet and then select `none` for the `loadBalancerSku` parameter:
+
+   ```powershell
+   $lbCfg=New-AksHciLoadBalancerSettings-Name "myLb" -loadBalancerSku "none" 
+   ```
+ 
+2. To deploy a workload cluster without providing the load balancer configuration use the following command:
+
+   ```powershell
+   New-AksHciCluster -Name "summertime" -nodePoolName mynodepool -nodeCount 2 -OSType linux -nodeVmSize Standard_A4_v2 -loadBalancerSettings $lbCfg 
+   ```
+
+3. Verify that the cluster is successfully deployed with the control plane nodes running `kube-vip` and that the API server requests are reachable. 
+
+4. Manually configure your load balancer.  
+
+During upgrades, the load balancer configuration (`loadBalancerSku` and `count`) that you previously defined during installation will be the same configuration deployed when the upgrade completes. If you have existing clusters running a HAProxy-based load balancer, you should continue running your workloads and upgrade successfully. If you want to update `loadBalancerSku` during an upgrade, you are required to redeploy your workload clusters. 
+
+> [!IMPORTANT]
+> If you change from using a custom load balancer to using the default load balancer, you're required to  redeploy your workload cluster with the desired load balancer configuration. For instructions to configure a default load balancer, see [Configure a load balancer](configure-load-balancer.md).  
+
+## Next Steps 
+
+To learn more about Kubernetes services, see the [Kubernetes services documentation](https://kubernetes.io/docs/concepts/services-networking/service/). 
+
+ 
+
+ 
