@@ -55,13 +55,11 @@ You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AK
 
     ![Add Azure CNI for networking](media/aks-how-to-use/create-aks-network.png)
 
-
-
 ## Upgrade cluster
 
 1.  To upgrade the cluster's control plane, in the cluster details, select **Configuration**, then select the Kubernetes upgrade version to upgrade to and select save.
 
-    !Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
+    ![Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
 
     ![Select version and select save in the portal.](media/aks-how-to-use/upgrade-to-select-version.png)
 
