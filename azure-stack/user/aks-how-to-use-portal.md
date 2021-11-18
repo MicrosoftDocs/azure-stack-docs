@@ -40,11 +40,11 @@ You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AK
 
     ![Create an AKS cluster.](media/aks-how-to-use/create-an-aks-cluster.png)
 
+    Use a version of Kubernetes 1.20 or greater. For more information, see [Applications deployed to AKS clusters fail to access persistent volumes](aks-known-issues.md#applications-deployed-to-aks-clusters-fail-to-access-persistent-volumes).
+
 1.  In **Node pools** you can see that only a single node pool is allowed in Azure Stack Hub:
 
     ![Open the **Node pools** blade.](media/aks-how-to-use/open-the-node-pool-settings.png)
-
-    Use a version of Kubernetes 1.20 or greater. For more information, see [Applications deployed to AKS clusters fail to access persistent volumes](aks-known-issues.md#applications-deployed-to-aks-clusters-fail-to-access-persistent-volumes)
 
 1. In **Authentication**, provide the service principal (SPN). The SPN won't be automatically generated as in Azure. Select the **Configure service principal** link and add the service principal. You can find [the instructions](../operator/give-app-access-to-resources.md) to create one.
 
