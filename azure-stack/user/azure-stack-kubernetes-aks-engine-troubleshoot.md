@@ -4,10 +4,10 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 11/18/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/16/2020
+ms.lastreviewed: 11/18/2020
 
 # Intent: As as an Azure Stack Hub developer, I want to fix the AKS engine so that can my cluster without incident.
 # Keyword: Azure Stack Hub AKS engine error codes
@@ -79,7 +79,6 @@ aks-engine get-logs \
 | --api-model                  | Yes          | Path to the generated API model for the cluster.                                                                                                               |
 | --ssh-host                   | Yes          | FQDN, or IP address, of an SSH listener that can reach all nodes in the cluster.                                                                               |
 | --linux-ssh-private-key | Yes           | Path to a SSH private key that can be use to create a remote session on the cluster Linux nodes. |
-| --windows-script             | No           | Custom log collection PowerShell script. Required only when the Windows node distribution is not `aks-windows`. The script should produce file `%TEMP%\\{NodeName}.zip`. |
 | --output-directory           | No           | Output directory, derived from `--api-model` if missing.                                                                                                         |
 | --control-plane-only         | No           | Only collect logs from control plane nodes.                                                                                                                           |
 | --vm-names                   | No           | Only collect logs from the specified VMs (comma-separated names).                                                                                              |
@@ -89,7 +88,7 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-When you use the AKS engine to set up your cluster, you may throw an error. The AKS engine uses the custom script extension (CSE) installed on the Ubuntu Server to perform deployment tasks. If the script throws an error, it will pass the error to the AKS engine. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error it will log an error in /var/log/azure/cluster-provision.log. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
