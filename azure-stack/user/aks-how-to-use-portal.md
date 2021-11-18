@@ -40,22 +40,26 @@ You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AK
 
     ![Create an AKS cluster.](media/aks-how-to-use/create-an-aks-cluster.png)
 
+    Use a version of Kubernetes 1.20 or greater. For more information, see [Applications deployed to AKS clusters fail to access persistent volumes](aks-known-issues.md#applications-deployed-to-aks-clusters-fail-to-access-persistent-volumes).
+
 1.  In **Node pools** you can see that only a single node pool is allowed in Azure Stack Hub:
 
     ![Open the **Node pools** blade.](media/aks-how-to-use/open-the-node-pool-settings.png)
 
-1.  In the **Authentication**, provide the service principal (SPN). The SPN won't be automatically generated as in Azure. Select the **Configure service principal** link and add the service principal. You can find [the instructions](../operator/give-app-access-to-resources.md) to create one.
+1. In **Authentication**, provide the service principal (SPN). The SPN won't be automatically generated as in Azure. Select the **Configure service principal** link and add the service principal. You can find [the instructions](../operator/give-app-access-to-resources.md) to create one.
 
     ![Add the service principle.](media/aks-how-to-use/add-service-principal-to-aks.png)
 
 
-1.  Follow the steps of creating an AKS cluster.
+1.  In **Networking**, select **Azure CNI**, and then continue to create the cluster.
+
+    ![Add Azure CNI for networking](media/aks-how-to-use/create-aks-network.png)
 
 ## Upgrade cluster
 
 1.  To upgrade the cluster's control plane, in the cluster details, select **Configuration**, then select the Kubernetes upgrade version to upgrade to and select save.
 
-    !Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
+    ![Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
 
     ![Select version and select save in the portal.](media/aks-how-to-use/upgrade-to-select-version.png)
 
