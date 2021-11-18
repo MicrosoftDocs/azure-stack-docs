@@ -88,7 +88,7 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error it will log an error in /var/log/azure/cluster-provision.log. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
