@@ -27,7 +27,7 @@ Use the following steps to deploy and configure Velero:
 
    You need an active Azure subscription to create an Azure storage account and the blob container as Velero requires both to store backups. If you'd prefer to use a different Azure subscription than the one used when creating your backups, you can change the Azure subscription. By default, Velero stores backups in the same subscription as your VMs and disks and doesn't allow you to restore backups to a resource group in a different subscription. To enable backups and restore across subscriptions, you need to specify the subscription ID that you want to use.
 
-   To switch to the subscription you want the backups to be created in, use [`az account`](/cli/azure/account?view=azure-cli-latest&preserve-view=true) PowerShell command.
+   To switch to the Azure subscription you want to create the backups on, use the [`az account`](/cli/azure/account?view=azure-cli-latest&preserve-view=true) PowerShell command.
 
    First, find the name of the subscription ID:
 
@@ -56,13 +56,13 @@ Use the following steps to deploy and configure Velero:
    ```bash
    AZURE_STORAGE_ACCOUNT_ID="velero$(uuidgen | cut -d '-' -f5 | tr '[A-Z]' '[a-z]')"
    az storage account create \
-       --name $AZURE_STORAGE_ACCOUNT_ID \
-       --resource-group $AZURE_BACKUP_RESOURCE_GROUP \
-       --sku Standard_GRS \
-       --encryption-services blob \
-       --https-only true \
-       --kind BlobStorage \
-       --access-tier Hot
+      --name $AZURE_STORAGE_ACCOUNT_ID \
+      --resource-group $AZURE_BACKUP_RESOURCE_GROUP \
+      --sku Standard_GRS \
+      --encryption-services blob \
+      --https-only true \
+      --kind BlobStorage \
+      --access-tier Hot
    ```
    
    Finally, create the blob container named `velero`. You can choose a different name, but it should preferably be unique to a single Kubernetes cluster.
@@ -118,16 +118,16 @@ Use the following steps to deploy and configure Velero:
 
    Install Velero, including all the prerequisites, on the cluster and then start the deployment. The deployment creates a namespace called `velero` and places a deployment named `velero` in it.
 
-   Make sure to add `--use-restic` to enable the backup of Kubernetes volumes at the filesystem level using [Restic](https://velero.io/docs/v1.6/restic/). AKS on Azure Stack HCI does not currently support volume snapshots.
+   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI does not support volume snapshots.
 
    ```bash
    velero install \
-       --provider azure \
-       --plugins velero/velero-plugin-for-microsoft-azure:v1.3.0 \
-       --bucket $BLOB_CONTAINER \
-       --secret-file ./credentials-velero \
-       --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID[,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID] \
-       --use-restic
+      --provider azure \
+      --plugins velero/velero-plugin-for-microsoft-azure:v1.3.0 \
+      --bucket $BLOB_CONTAINER \
+      --secret-file ./credentials-velero \
+      --backup-location-config resourceGroup=$AZURE_BACKUP_RESOURCE_GROUP,storageAccount=$AZURE_STORAGE_ACCOUNT_ID[,subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID] \
+      --use-restic
    ```
 
 5. Check whether the Velero service is running properly by running the following command:
@@ -153,23 +153,23 @@ To check progress of a backup:
 velero backup describe <BACKUP-NAME>
 ```
 
-If you followed the instructions above, you can now view your backup in your Azure storage account under the blob/container that you created.
+After following the instructions above, you can view your backup in your Azure storage account under the blob container that you created.
 
 ## Use Velero to restore a workload cluster
 
-You must first create a new cluster to restore to; you cannot restore a cluster backup to an existing cluster. The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can restore only a filtered subset of objects and persistent volumes. 
+You must first create a new cluster to restore to since you cannot restore a cluster backup to an existing cluster. The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. 
 
-On the destination cluster where you want to restore the backup to, run the following steps:
+On the destination cluster where you want to restore the backup, run the following steps:
 
-1. Deploy Velero (see instructions above). Use the same Azure credentials as you did for the source cluster.
+1. [Deploy and configure Velero](#deploy-and-configure-velero) using the same Azure credentials as you did for the source cluster.
 
-2. Make sure that the Velero Backup object is created. Velero resources are synchronized with the backup files in cloud storage.
+2. Make sure that the Velero Backup object is created by running the following command. Velero resources are synchronized with the backup files in cloud storage.
 
    ```
    velero backup describe <BACKUP-NAME>
    ```
 
-3. Once you have confirmed that the right backup (`<BACKUP-NAME>`) is now present, you can restore everything with the following command:
+3. Once you have confirmed that the right backup (`<BACKUP-NAME>`) is available, you can restore everything with the following command:
 
    ```
    velero restore create --from-backup <BACKUP-NAME>
@@ -188,7 +188,7 @@ kubectl delete crds -l component=velero
 
 - Velero on Windows: Velero does not officially support Windows. In testing, the Velero team was able to backup only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes are not supported.
 
-- Velero CLI help: To see all options associated with a specific command, provide the `–help` flag with that command. For example, `velero restore create --help` shows all options associated with the **create** command.
+- Velero CLI help: To see all options associated with a specific command, provide the `--help` flag with that command. For example, `velero restore create --help` shows all options associated with the **create** command.
 
   To list all options of restore, use `velero restore --help`:
 
