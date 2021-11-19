@@ -29,7 +29,7 @@ The following steps walk through connecting Azure Kubernetes Service on Azure St
 Verify you've the following requirements ready:
 
 * An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
-* Have the [Azure Kubernetes Service on Azure Stack HCI PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules) installed.
+* Have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 - **At least one** of the following access levels on your Azure subscription:
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access".
    - A service principal with either the built-in [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles#kubernetes-cluster---azure-arc-onboarding) role (minimum), the built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role, or the built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role. 
