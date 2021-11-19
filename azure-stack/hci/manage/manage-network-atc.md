@@ -141,9 +141,9 @@ If you previously deployed and configured Network ATC on your system, you may ne
 
 There are several tasks to complete following a Network ATC deployment, including the following:
 
-* **Add non-APIPA addresses to storage adapters:** This can be accomplished using DHCP on the storage VLANs or by using the `NetIPAddress` cmdlets.
-* **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
-* **Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
+- **Add DHCP or static IP addresses to storage adapters:** Use DHCP on the storage VLANs or set static IP addresses using the NetIPAdress cmdlet. You can't use the Automatic Private IP Addressing (APIPA) addresses given to adapters that can't get an address from a DHCP server.
+- **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
+- **Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
     1)	All nodes in the cluster must use the same intent.
     2)	There is no automatic provisioning for storage replica.
 
