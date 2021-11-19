@@ -32,11 +32,11 @@ Make sure that the following VM extensions are available in your Azure Stack Hub
 
 You can find them in the Azure Stack Hub Marketplace. You can download them from Azure if you need to add them to a disconnected environment. You can follow these instructions in [Download Marketplace items to Azure Stack Hub (Disconnected)](azure-stack-download-azure-marketplace-item.md?&tabs=az1%2Caz2&pivots=state-disconnected):
 
--   Run Command for Linux (latest version)
+-   Run Command for Linux (version 2.0.6)
 
     ![Get the run command for Linux](media/aks-add-on/get-run-command-for-linux.png)
 
--   Custom Script for Linux (latest version)
+-   Custom Script for Linux (version 2.0.6)
 
     ![Get custom script for Linux](media/aks-add-on/get-custom-script-for-linux.png)
 
