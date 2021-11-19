@@ -321,7 +321,7 @@ Because of the cumulative nature of Windows updates, this update contains the se
 
 - [CVE-2021-26414](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26414)
 
--[CVE-2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)
+- [CVE-2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)
 
 - [CVE-2021-28465](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28465)
 
@@ -333,7 +333,7 @@ Because of the cumulative nature of Windows updates, this update contains the se
 
 - [CVE-2021-31193](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31193)
 
-- [CVE-2021-31192](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31192)
+- [CVE-2021-31192](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31192) 
 
 - [CVE-2021-31191](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31191)
 
