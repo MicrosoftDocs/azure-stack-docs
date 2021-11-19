@@ -233,7 +233,7 @@ If resolving the cluster isn't successful after some time, in most cases you can
 
 Microsoft recommends using [Network ATC](./network-atc.md) to deploy host networking if you're running Azure Stack HCI version 21H2 or newer. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
 
-Network ATC provides an “intent-based” approach to host network deployment. The system can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
+Network ATC can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
 
 - Compute – adapters will be used to connect virtual machines traffic to the physical network
 - Storage – adapters will be used for SMB traffic including Storage Spaces Direct
