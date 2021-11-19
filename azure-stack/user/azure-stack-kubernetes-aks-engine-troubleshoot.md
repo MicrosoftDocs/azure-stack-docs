@@ -83,7 +83,6 @@ aks-engine get-logs \
 | --control-plane-only         | No           | Only collect logs from control plane nodes.                                                                                                                           |
 | --vm-names                   | No           | Only collect logs from the specified VMs (comma-separated names).                                                                                              |
 | --upload-sas-url             | No           | Azure Storage Account SAS URL to upload the collected logs.                                                                                                    |
-| --storage-container-sas-url  | No           | Storage account SAS URL with corresponding container name. AKS will store the logs in this storage account's container.                                        |
 
 
 ## Review custom script extension error codes
