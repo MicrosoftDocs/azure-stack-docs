@@ -14,7 +14,7 @@ In this how-to guide, you'll learn how to configure your AKS host deployment usi
 ## Before you begin
 
 - Make sure you have satisfied all the prerequisites in [system requirements](system-requirements.md). 
-- Download and install the [Azure PowerShell and AksHci PowerShell modules](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules).
+- Download and install the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 
 ## Step 1: Prepare your Active Directory and DNS server for deployment
 
