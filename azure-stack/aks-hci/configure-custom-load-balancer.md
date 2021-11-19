@@ -41,7 +41,7 @@ This configuration assumes you want to leverage a custom load balancer in your c
 
 4. Manually configure your load balancer.  
 
-If you run an upgrade, the load balancer configuration (`loadBalancerSku` and `count`) you defined during installation will remain the same after the upgrade completes. If you have existing clusters running a HAProxy-based load balancer, you can continue running your workloads and the upgrade will successfully complete. However, if you want to update `loadBalancerSku` during an upgrade, you must redeploy your workload clusters. 
+If you run an upgrade, the load balancer configuration (`loadBalancerSku` and `count`) you defined during installation will remain the same after the upgrade completes. However, if you want to update `loadBalancerSku` during an upgrade, you must redeploy your workload clusters. If you have existing clusters running a HAProxy-based load balancer, you can continue running your workloads and the upgrade will successfully complete. 
 
 > [!IMPORTANT]
 > If you change from using a custom load balancer to using the default load balancer, you're required to  redeploy your workload cluster with the new load balancer configuration. For instructions on how to configure a default load balancer, see [Configure a load balancer](configure-load-balancer.md).  
