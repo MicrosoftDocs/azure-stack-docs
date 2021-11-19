@@ -36,7 +36,7 @@ You can find them in the Azure Stack Hub Marketplace. You can download them from
 
     ![Get the run command for Linux](media/aks-add-on/get-run-command-for-linux.png)
 
--   Custom Script for Linux (latest version)
+-   Custom Script for Linux (version 2.0.6)
 
     ![Get custom script for Linux](media/aks-add-on/get-custom-script-for-linux.png)
 
