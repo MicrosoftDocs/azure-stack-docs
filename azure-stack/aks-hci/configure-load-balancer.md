@@ -29,6 +29,6 @@ New-AksHciCluster -name mycluster -loadBalancerVmSize Standard_A4_v2
 
 This example creates a new workload cluster with a load balancer deployed as a virtual machine running HAProxy to manage traffic for your applications.
 
-## Next Steps 
+## Next steps 
 
 To learn more about Kubernetes services, see the [Kubernetes services documentation](https://kubernetes.io/docs/concepts/services-networking/service/). 

@@ -46,7 +46,7 @@ If you run an upgrade, the load balancer configuration (`loadBalancerSku` and `c
 > [!IMPORTANT]
 > If you change from using a custom load balancer to using the default load balancer, you're required to  redeploy your workload cluster with the new load balancer configuration. For instructions on how to configure a default load balancer, see [Configure a load balancer](configure-load-balancer.md).  
 
-## Next Steps 
+## Next steps 
 
 To learn more about Kubernetes services, see the [Kubernetes services documentation](https://kubernetes.io/docs/concepts/services-networking/service/). 
 
