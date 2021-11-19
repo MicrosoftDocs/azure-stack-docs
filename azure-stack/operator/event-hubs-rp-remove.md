@@ -48,7 +48,7 @@ To uninstall Event Hubs on Azure Stack Hub and all related resources created by 
 
 ## Delete Event Hubs packages
 
-Use the **Delete** option after uninstalling Event Hubs on Azure Stack Hub, if you also wish to remove any installation ackages. 
+Use the **Delete** option after uninstalling Event Hubs on Azure Stack Hub, if would also like to remove the related installation packages. 
 
 ## Next steps
 
