@@ -98,7 +98,7 @@ This task will help you override the default configuration which has already bee
     ```
 
     > [!NOTE]
-    >It is expected that no values appear for any property you don’t override.
+    > Values are only shown for the properties that you override.
 
 1. Submit the intent request specifying the override:
 
