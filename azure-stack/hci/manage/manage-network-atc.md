@@ -152,9 +152,6 @@ There are several tasks to complete following a Network ATC deployment, includin
 ## Validate automatic remediation
 Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this optional section, we will modify our configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
 
->[!NOTE]
-> ATC will automatically remediate all of the configuration it manages.
-
 1. Check the adapter's existing MTU (JumboPacket) value:
 
     ```powershell
