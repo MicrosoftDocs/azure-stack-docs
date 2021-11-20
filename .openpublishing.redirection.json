@@ -91,10 +91,25 @@
       "redirect_document_id": false
     },
     { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v0.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v1.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q3#known-issues-update", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v2.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q2#known-issues-update", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/known-issues-vn.md", 
       "redirect_url": "/azure-stack/operator/known-issues", 
       "redirect_document_id": false
-    },
+    },    
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
