@@ -48,7 +48,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
     > [!NOTE]  
-    > If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
+    > If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment).
 
 ## Install in a disconnected environment
 

@@ -89,6 +89,8 @@
             href: stop-start-cluster.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Back up and restore workload clusters using Velero
+            href: backup-workload-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
           - name: Use node pools
@@ -127,6 +129,12 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Helper scripts
+      items: 
+          - name: Set up multiple administrators
+            href: set-multiple-administrators.md
+          - name: Remove old PowerShell modules
+            href: https://github.com/Azure/aks-hci/issues/130
     - name: Manage workloads
       items:
           - name: Create and delete pods

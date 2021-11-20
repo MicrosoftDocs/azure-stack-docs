@@ -72,7 +72,7 @@ Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 If you want to scale the control plane nodes, use the [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) command.
 
 > [!NOTE]
-> In previous versions of AKS on Azure Stack HCI, the [Set-AksHciCluster](set-akshcicluster.md) command was also used to scale worker nodes. AKS on Azure Stack HCI is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](new-akshcicluster.md). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](set-akshcinodepool.md) command.
+> In previous versions of AKS on Azure Stack HCI, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. AKS on Azure Stack HCI is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
 
 Run the following command to confirm that scaling was successful.
 
