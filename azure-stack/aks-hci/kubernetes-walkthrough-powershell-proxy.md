@@ -90,7 +90,7 @@ To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell]
 
 |      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |
 | ----------------------- | ------------------------------------ | ------------------------ |
-| Windows PowerShell 5.1  | System proxy settings  | It's recommended you do not set HTTP_PROXY/HTTPS_PROXY environment variables.|
+| Windows PowerShell 5.1  | System proxy settings  | We recommend you don't set HTTP_PROXY/HTTPS_PROXY environment variables.|
 | PowerShell 7 on Windows | System proxy settings   | You can configure proxy by setting both HTTP_PROXY and HTTPS_PROXY environment variables.    |
 | PowerShell 7 on macOS   | System proxy settings  | You can configure proxy by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
 | PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus NO_PROXY(optional) | You should set the environment variables before starting PowerShell, otherwise, they may not be respected. |
