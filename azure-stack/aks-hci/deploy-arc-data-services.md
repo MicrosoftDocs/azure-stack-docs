@@ -13,6 +13,8 @@ This topic provides a checklist of prerequisites you need to follow to deploy Az
 
 ## Prerequisites for AKS on Azure Stack HCI
 
+To configure the prerequisites, you need to:
+
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md)
 > * Configure storage [using the AKS on Azure Stack HCI disk Container Storage Interface drivers](./container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk)
@@ -21,6 +23,8 @@ This topic provides a checklist of prerequisites you need to follow to deploy Az
 
 ## Prerequisites for Azure Arc enabled data services
 
+To configure the prerequisites, you need to:
+
 > [!div class="checklist"]
 > * [Connect your clusters to Azure Arc for Kubernetes](/azure-stack/aks-hci/connect-to-arc)
 > * [Create and manage custom locations on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/custom-locations)(for direct connectivity mode only)
@@ -28,4 +32,5 @@ This topic provides a checklist of prerequisites you need to follow to deploy Az
 ## Next steps
 
 - [Create data controller](/azure/azure-arc/data/create-data-controller)
+- [Connect your clusters to Azure Arc for Kubernetes](./connect-to-arc.md).
 
