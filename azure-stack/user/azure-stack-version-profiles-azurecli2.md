@@ -4,10 +4,10 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/5/2021
+ms.date: 11/22/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 11/5/2021
+ms.lastreviewed: 11/05/2021
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
@@ -156,6 +156,9 @@ If the resource group is created successfully, the previous command outputs the 
 ### [AD FS on Windows](#tab/adfs-win)
 
 This section walks you through setting up CLI if you're using Active Directory Federated Services (AD FS) as your identity management service, and are using CLI on a Windows machine.
+
+> [!IMPORTANT]
+> If you have Azure Stack Hub deployed with AD FS as your identity system, you must use Azure CLI version 2.29.2 or earlier. Microsoft has discovered an issue with Azure Stack Hub that prevents using Azure CLI version 2.30.0 or newer.
 
 #### Connect to Azure Stack Hub
 
