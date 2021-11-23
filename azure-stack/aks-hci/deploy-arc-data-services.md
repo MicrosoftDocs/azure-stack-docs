@@ -9,7 +9,7 @@ ms.author: rbaziwane
 
 # Deploy Azure Arc enabled data services in AKS on Azure Stack HCI
 
-This checklist provides a list of prerequisites you need to follow to deploy Azure Arc enabled data services. You must have [AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md) installed before using the checklist.
+This topic provides a checklist of prerequisites you need to follow to deploy Azure Arc enabled data services on AKS on Azure Stack HCI. You must have [AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md) installed before using the checklist.
 
 ## Prerequisites for AKS on Azure Stack HCI
 
@@ -21,7 +21,7 @@ This checklist provides a list of prerequisites you need to follow to deploy Azu
 
 > [!div class="checklist"]
 > * [Connect your clusters to Azure Arc for Kubernetes](/azure-stack/aks-hci/connect-to-arc)
-> * [Create and manage custom locations on Azure Arc-enabled Kubernetes](/Azure/azure-arc/kubernetes/custom-locations)(for direct connectivity mode only)
+> * [Create and manage custom locations on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/custom-locations)(for direct connectivity mode only)
 
 ## Next steps
 
