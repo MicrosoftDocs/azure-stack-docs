@@ -67,8 +67,10 @@
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
     - name: Install Azure Kubernetes Service host
       items:
-          - name: Prestaged cluster service objects and DNS records
+          - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
+          - name: With a proxy server
+            href: kubernetes-walkthrough-powershell-proxy.md
     - name: Upgrade the AKS on Azure Stack HCI host
       items:
           - name: Use PowerShell
@@ -105,6 +107,10 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Configure a load balancer
+            href: configure-load-balancer.md
+          - name: Configure a custom load balancer
+            href: configure-custom-load-balancer.md
     - name: Manage storage
       items:
           - name: Use persistent volume
