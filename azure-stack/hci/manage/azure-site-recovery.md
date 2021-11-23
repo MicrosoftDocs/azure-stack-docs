@@ -60,15 +60,16 @@ This could take up to 10 minutes. You can watch the progress by going to **Notif
 ## Step 2: Select virtual machines to protect
 
 1. Navigate back to the server or cluster you configured in step 2 above, and go to **Virtual Machines > Inventory**.
-2. Select the VM you want to protect.
-3. Select **More** > **Protect VM**.
-4. Review the [capacity requirements for protecting the VM](/azure/site-recovery/site-recovery-capacity-planner).
+2. Go to **Virtual Machines** > **Inventory**.
+3. Select any VM (this doesn't need to be the VM you want to protect).
+4. Select **Manage** > **Replicate using Azure Site Recovery**.
+5. Review the [capacity requirements for protecting the VM](/azure/site-recovery/site-recovery-capacity-planner).
 
     If you want to use a premium storage account, [create one in the Azure portal](/azure/storage/common/storage-premium-storage). The **Create New** option provided in the Windows Admin Center pane creates a standard storage account.
 
-5. Enter the name of the **Storage Account** to use for this VM's replication, and select **Protect VM**. This step enables replication for the selected Virtual Machine.
+6. Enter the name of the **Storage Account** to use for this VM's replication, and select **Protect VM**. This step enables replication for the selected Virtual Machine.
 
-6. Azure Site Recovery will start replication. Replication is completed and the VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This can take several minutes.
+7. Azure Site Recovery will start replication. Replication is completed and the VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This can take several minutes.
 
 ## Step 3: Configure and run a test failover in the Azure portal
 
