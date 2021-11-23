@@ -24,6 +24,7 @@ New-AksHciCluster -name <String>
                  [-windowsNodeCount <int>]
                  [-controlPlaneVmSize <VmSize>]
                  [-loadBalancerVmSize <VmSize>]
+                 [-loadBalancerSettings <loadBalancer>]
                  [-linuxNodeVmSize <VmSize>]
                  [-windowsNodeVmSize <VmSize>]
                  [-taints <Taint>]
@@ -238,6 +239,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: Standard_A4_V2
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -loadBalancerSettings
+The load balancer setting object that is created with [New-AksHciLoadBalancerSetting](new-akshciloadbalancersetting.md).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
