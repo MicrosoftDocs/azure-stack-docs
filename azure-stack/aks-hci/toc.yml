@@ -21,6 +21,8 @@
       items:
         - name: Deploy applications with Helm
           href: helm-deploy.md
+        - name: Deploy Azure Arc enabled data services
+          href: deploy-arc-data-services.md
 - name: Tutorial
   items:
     - name: 1 - Prepare an application
@@ -107,7 +109,7 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
-          - name: Configure a load balancer
+          - name: Configure load balancer
             href: configure-load-balancer.md
           - name: Configure a custom load balancer
             href: configure-custom-load-balancer.md
