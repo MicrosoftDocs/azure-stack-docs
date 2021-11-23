@@ -388,7 +388,7 @@ SDN is currently not supported for VMs created from Azure Portal.
  
 ## Next steps
 
-Now you're ready to create VMs in Azure portal.
+Now you're ready to create VMs in Azure portal. For preview access,
 
 > [!div class="nextstepaction"]
-> [Go to Azure portal](https://portal.azure.com/)
+> [Go to Azure portal](https://aka.ms/hci-selfservicevm/)
