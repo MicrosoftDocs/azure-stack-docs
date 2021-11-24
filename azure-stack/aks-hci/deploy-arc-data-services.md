@@ -19,8 +19,6 @@ To configure the prerequisites, you need to:
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md)
 > * Configure storage [using the AKS on Azure Stack HCI disk Container Storage Interface drivers](./container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk)
 
-[Download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
-
 ## Prerequisites for Azure Arc enabled data services
 
 To configure the prerequisites, you need to:
