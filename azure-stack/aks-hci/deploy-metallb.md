@@ -9,11 +9,11 @@ ms.author: rbaziwane
 
 # Deploy MetalLB for load balancing on Azure Kubernetes Service on Azure Stack HCI
 
-In the November Update of AKS on Azure Stack HCI, we added support so users could configure custom load balancers for their workload clusters. Previously, customers didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI. The default behavior remains the same: a virtual machine that runs Mariner Linux and [HAProxy](http://www.haproxy.org/) is automatically created. The HAProxy ensures high availability (HA) for requests to the Kubernetes API server and load balances Kubernetes services of *type=LoadBalancer*. With the added support for configuring a custom load balancer, the task of ensuring high availability of the API server requests shifts to [*kube-vip*](https://kube-vip.io/), which will be automatically deployed in each worker node when you use this option. 
+In the November Update of AKS on Azure Stack HCI, we added support so users could configure custom load balancers for their workload clusters. Previously, customers didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI. The default behavior remains the same: a virtual machine that runs Mariner Linux and [HAProxy](http://www.haproxy.org/) is automatically created. The HAProxy ensures high availability for requests to the Kubernetes API server and load balances Kubernetes services of *type=LoadBalancer*. With the added support for configuring a custom load balancer, the task of ensuring high availability of the API server requests shifts to [*kube-vip*](https://kube-vip.io/), which will be automatically deployed in each worker node when you use this option. 
 
 Providing customers with the flexibility to deploy custom load balancing configurations is important because it: 
 
-1. Guarantees that AKS on Azure Stack HCI works alongside existing customer deployments, such as Software Defined Network (SDN) deployments that use Software Load Balancers.
+1. Guarantees that AKS on Azure Stack HCI works alongside existing customer deployments such as Software Defined Network (SDN) deployments that use Software Load Balancers.
 2. Enhances the platform with additional flexibility, unlocking a myriad of potential use cases for customers.
 
 This article explains how this feature works and includes an example of how to use [MetalLB](https://metallb.org/) for load balancing services in a workload cluster.
@@ -45,9 +45,9 @@ Verify that you have the following set up:
 
 ## Verify the control plane is reachable
 
-When you deploy an AKS cluster with no load balancer, you still need to make sure that the Kubernetes API server is reachable. Since [kube-vip](https://kube-vip.io/) is automatically deployed to handle requests to the API server, you can still perform cluster operations immediately. 
+When you deploy an AKS cluster with no load balancer, you still need to make sure that the Kubernetes API server is reachable. Since [kube-vip](https://kube-vip.io/) is automatically deployed to handle requests to the API server, you can still immediately perform cluster operations. 
 
-1. Make sure you have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+1. Configure your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 
 2. Run `kubectl get nodes` and verify that you get a response from the API server.
 
