@@ -113,6 +113,8 @@
             href: configure-load-balancer.md
           - name: Configure a custom load balancer
             href: configure-custom-load-balancer.md
+          - name: Deploy MetalLB for load balancing
+            href: deploy-metallb.md
     - name: Manage storage
       items:
           - name: Use persistent volume
