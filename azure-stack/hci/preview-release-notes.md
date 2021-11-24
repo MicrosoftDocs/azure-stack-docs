@@ -142,7 +142,7 @@ This nonsecurity update includes quality improvements. Key changes include:
 Microsoft is aware of one issue with this update.
 
 #### Symptom
-When using Live Migration to move a VM between Windows Server and Azure Stack HCI operating systems, you may see the error: "Blocked a migration operation for virtual machine <vmname> because VM migration between differing Windows editions is not supported (virtual machine ID)."
+When using Live Migration to move a VM between Windows Server and Azure Stack HCI operating systems, you may see the error: "Blocked a migration operation for virtual machine \<vmname\> because VM migration between differing Windows editions is not supported (virtual machine ID)."
 
 Alternatively, this may also cause a Cluster Aware Updating (CAU) operation to fail if any of the VMs are expected to perform Live Migration during CAU.
 
