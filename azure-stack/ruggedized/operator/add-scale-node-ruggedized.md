@@ -143,7 +143,7 @@ The following are the steps for cabling the new nodes into the existing switches
      - Subnet mask – 255.255.255.192
      - Gateway – None
 
-   - Starting with Node 1 of the 2nd RCA and working your way through all 4 nodes, directly attach the laptop to the BMC NIC of each node and connect via web browser to its current BMC web portal. Sign in using the standard RCA credentials (user: changeme, password: <stamp default password assigned to your RCA>), and change the IP for that node per the following table:
+   - Starting with Node 1 of the 2nd RCA and working your way through all 4 nodes, directly attach the laptop to the BMC NIC of each node and connect via web browser to its current BMC web portal. Sign in using the standard RCA credentials (user: changeme, password: \<stamp default password assigned to your RCA\>), and change the IP for that node per the following table:
 
      | 2nd RCA Node | Current BMC IP | New BMC IP  |
      |--------------|----------------|-------------|
