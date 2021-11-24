@@ -31,7 +31,7 @@ Verify that you have the following set up:
 
 ## Create a workload cluster with no load balancer
 
-1. Create a load balancer using the [New-AksHciLoadBalancerSetting](./reference/ps/new-akshciloadbalancersetting.md) command and then select `none` for `-loadBalancerSku`. 
+1. Use the [New-AksHciLoadBalancerSetting](./reference/ps/new-akshciloadbalancersetting.md) command to create a load balancer and select `none` for the `-loadBalancerSku` parameter: 
 
    ```powershell
    $lbCfg=New-AksHciLoadBalancerSetting -Name "myLb" -loadBalancerSku "none" 
@@ -63,7 +63,7 @@ When you deploy an AKS cluster with no load balancer, you still need to make sur
 
 With the AKS cluster deployed, configure MetalLB to handle traffic for Kubernetes services of `type=Loadbalancer`.
 
-1. Create a new namespace (for example, `metallb-system`) on which you'll create MetalLB resources:
+1. Create a new namespace `metallb-system` on which you'll create MetalLB resources:
 
    ```powershell
    kubectl create namespace metallb-system
