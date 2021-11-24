@@ -146,8 +146,8 @@ There are several tasks to complete following a Network ATC deployment, includin
 - **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
 
 - **Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
-- All nodes in the cluster must use the same intent.
-- There is no automatic provisioning for storage replica.
+   - All nodes in the cluster must use the same intent.
+   - There is no automatic provisioning for storage replica.
 
 ## Validate automatic remediation
 Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this optional section, we will modify our configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
