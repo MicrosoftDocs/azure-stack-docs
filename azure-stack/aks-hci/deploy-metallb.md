@@ -7,14 +7,14 @@ ms.date: 11/23/2021
 ms.author: rbaziwane
 ---
 
-# Deploy MetalLB for load balancing on Azure Kubernetes Service (AKS) on Azure Stack HCI
+# Deploy MetalLB for load balancing on Azure Kubernetes Service on Azure Stack HCI
 
-In the November Update of AKS on Azure Stack HCI, support was added to allow users to configure custom load balancers for their workload clusters. Previously, customers did not have the flexibility to configure different load balancers on AKS on Azure Stack HCI. The default behavior remains the same: a virtual machine that runs Mariner Linux and [HAProxy](http://www.haproxy.org/) is automatically created. The HAProxy ensures high availability (HA) for requests to the Kubernetes API server and load balancing for Kubernetes services of *type=LoadBalancer*. With the added support for configuring a custom load balancer, the task of ensuring high availability of the API server requests shifts to [*kube-vip*](https://kube-vip.io/), which will be automatically deployed in each worker node when you use this option. 
+In the November Update of AKS on Azure Stack HCI, we added support so users could configure custom load balancers for their workload clusters. Previously, customers didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI. The default behavior remains the same: a virtual machine that runs Mariner Linux and [HAProxy](http://www.haproxy.org/) is automatically created. The HAProxy ensures high availability (HA) for requests to the Kubernetes API server and load balances Kubernetes services of *type=LoadBalancer*. With the added support for configuring a custom load balancer, the task of ensuring high availability of the API server requests shifts to [*kube-vip*](https://kube-vip.io/), which will be automatically deployed in each worker node when you use this option. 
 
 Providing customers with the flexibility to deploy custom load balancing configurations is important because it: 
 
 1. Guarantees that AKS on Azure Stack HCI works alongside existing customer deployments, such as Software Defined Network (SDN) deployments that use Software Load Balancers.
-2. Enhances the platform with additional flexibility, and therefore, unlocks a myriad of potential use cases for customers.
+2. Enhances the platform with additional flexibility, unlocking a myriad of potential use cases for customers.
 
 This article explains how this feature works and includes an example of how to use [MetalLB](https://metallb.org/) for load balancing services in a workload cluster.
 
