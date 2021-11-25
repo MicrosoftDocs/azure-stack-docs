@@ -7,7 +7,7 @@
       "locale": "en-us",
       "monikers": [],
       "moniker_ranges": [
-        "\u003E=azs-1802"
+        ">=azs-1802"
       ],
       "open_to_public_contributors": true,
       "type_mapping": {
