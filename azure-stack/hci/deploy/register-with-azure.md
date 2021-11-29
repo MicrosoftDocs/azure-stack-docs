@@ -150,7 +150,14 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
 
    :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
-   If you want to use the **Create new** resource group option, you must provide the following two permissions to the subscription. Add these two lines to the **customHCIRole.json** file shown in step 1 of [Azure subscription and permissions](#azure-subscription-and-permissions). The file will appear as follows:
+   If you want to use the **Create new** resource group option, you must provide the following two permissions to the subscription. Add these two lines to the **customHCIRole.json** file shown in step 1 of [Azure subscription and permissions](#azure-subscription-and-permissions):
+
+   ```json
+   "Microsoft.Resources/subscriptions/resourceGroups/write"
+   "Microsoft.Resources/subscriptions/resourceGroups/delete"
+   ```
+
+   The file will appear as follows:
 
    ```json
    {
