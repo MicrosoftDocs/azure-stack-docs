@@ -150,7 +150,7 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
 
    :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
-   If you want to use the **Create new** resource group option, you must provide the following to permissions to the subscription:
+   If you want to use the **Create new** resource group option, you must provide the following two permissions to the subscription:
 
    ```json
    "Microsoft.Resources/subscriptions/resourceGroups/write"
@@ -185,11 +185,11 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    > [!IMPORTANT]
    > If you're registering Azure Stack HCI in Azure China, run the `Register-AzStackHCI` cmdlet with these additional parameters: 
    >
-   > -EnvironmentName AzureChinaCloud -Region "ChinaEast2"
+   > `-EnvironmentName AzureChinaCloud -Region "ChinaEast2"`
    >
    > If you're registering in Azure Government, use these parameters:
    >
-   > -EnvironmentName AzureUSGovernment -Region "USGovVirginia"
+   > `-EnvironmentName AzureUSGovernment -Region "USGovVirginia"`
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -ResourceGroupName cluster1-rg
