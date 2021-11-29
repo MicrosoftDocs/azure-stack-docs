@@ -180,7 +180,7 @@ Select the **Successfully validated cluster** notice, and then select **Go to Fa
 ## Validate the cluster using PowerShell
 You can also use Windows PowerShell to run validation tests on your server cluster and view the results. You can run tests both before and after a cluster is set up.
 
-To run a validation test on a server cluster, issue the **Get-Cluster** and **Test-Cluster** <server clustername> PowerShell cmdlets from your management PC, or run only the **Test-Cluster** cmdlet directly on the cluster:
+To run a validation test on a server cluster, issue the **Get-Cluster** and **Test-Cluster** \<server clustername\> PowerShell cmdlets from your management PC, or run only the **Test-Cluster** cmdlet directly on the cluster:
 
 ```PowerShell
 $Cluster = Get-Cluster -Name 'server-cluster1'

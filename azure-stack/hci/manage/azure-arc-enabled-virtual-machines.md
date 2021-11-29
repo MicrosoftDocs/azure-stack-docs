@@ -65,7 +65,7 @@ Deploying Azure Arc Resource Bridge requires the following:
   - At least 4 cores
   - At least 6GiB of memory
 - A virtual switch of type “External”. Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
-- A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server. We currently do not support proxy settings.
+- A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server. We currently do not support proxy configurations.
 - An IP address for the load balancer running inside the Resource Bridge. The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
 - An IP address for the cloud agent running inside the Resource Bridge. If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
 - A shared cluster volume to store configuration details and the OS image for your Resource Bridge VM.
@@ -108,7 +108,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck  
    Install-Module -Name Moc -Repository PSGallery -AcceptLicense -Force
    Initialize-MocNode
-   Install-Module -Name ArcHci -RequiredVersion 0.2.5 -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
+   Install-Module -Name ArcHci -RequiredVersion 0.2.6 -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
    ```
 
 2. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster, using the parameters described below.
@@ -349,7 +349,7 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
    > [!NOTE]
    > On every attempt to reinstall the appliance, remove the ".wssd\python" python folder in the user profile folder using this cmdlet:
    > 
-   > rmdir $env:USERPROFILE\.wssd\python -Recurse -Force
+   > rmdir $env:USERPROFILE\\.wssd\python -Recurse -Force
 
 6. Remove the config files:
 
@@ -388,7 +388,7 @@ SDN is currently not supported for VMs created from Azure Portal.
  
 ## Next steps
 
-Now you're ready to create VMs in Azure portal.
+Now you're ready to create VMs in Azure portal. For preview access,
 
 > [!div class="nextstepaction"]
-> [Go to Azure portal](https://portal.azure.com/)
+> [Go to Azure portal](https://aka.ms/hci-selfservicevm/)
