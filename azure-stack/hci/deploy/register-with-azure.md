@@ -91,9 +91,7 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
    }
    ```
 
-   Optionally, you can include write and delete permissions, which will enable you to create a new resource group instead of selecting a pre-existing one:
-
-   With those two permissions added, the file appears as follows:
+   Optionally, you can include write and delete permissions, which will enable you to create a new resource group instead of selecting a pre-existing one. With those two permissions added, the file appears as follows:
 
    ```json
    {
