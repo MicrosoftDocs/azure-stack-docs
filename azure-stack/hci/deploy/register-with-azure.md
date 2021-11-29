@@ -146,16 +146,38 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you'll be asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
-3. Specify the Azure subscription ID that you want to register the cluster to. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to **Subscriptions** and copy/paste your ID from the list. If your Azure AD admin gave you an Azure resource group to use, select it from the drop-down menu. Always use the existing resource group option to register the Azure stack HCi cluster. Select the [Azure region](#region-availability) from the drop-down menu and click **Register**.
+3. Specify the Azure subscription ID that you want to register the cluster to. To get your Azure subscription ID, visit [portal.azure.com](https://portal.azure.com), navigate to **Subscriptions** and copy/paste your ID from the list. If your Azure AD admin gave you an Azure resource group to use, select it from the drop-down menu. Use the **Use existing** resource group option to register the Azure stack HCI cluster:
 
    :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
-   If you want to use the **Create new** resource group option, you must provide the following two permissions to the subscription:
+   If you want to use the **Create new** resource group option, you must provide the following two permissions to the subscription. Add these two lines to the **customHCIRole.json** file shown in step 1 of [Azure subscription and permissions](#azure-subscription-and-permissions). The file will appear as follows:
 
    ```json
-   "Microsoft.Resources/subscriptions/resourceGroups/write"
-   "Microsoft.Resources/subscriptions/resourceGroups/delete"
+   {
+     "Name": "Azure Stack HCI registration role",
+     "Id": null,
+     "IsCustom": true,
+     "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+     "Actions": [
+       "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.Resources/subscriptions/resourceGroups/write"
+       "Microsoft.Resources/subscriptions/resourceGroups/delete"
+       "Microsoft.AzureStackHCI/register/action",
+       "Microsoft.AzureStackHCI/Unregister/Action",
+       "Microsoft.AzureStackHCI/clusters/*",
+       "Microsoft.Authorization/roleAssignments/write",
+       "Microsoft.HybridCompute/register/action",
+       "Microsoft.GuestConfiguration/register/action"
+     ],
+     "NotActions": [
+     ],
+   "AssignableScopes": [
+       "/subscriptions/<subscriptionId>"
+     ]
+   }
    ```
+
+   Finally, select the [Azure region](#region-availability) from the drop-down menu and click **Register**.
 
 4. If you have sufficient Azure Active Directory permissions, the cluster registration workflow should now proceed to completion, and you should be able to see your cluster in the Azure portal. If you receive a message that you need additional Azure Active Directory permissions, proceed to step 5.
 
