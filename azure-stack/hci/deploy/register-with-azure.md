@@ -91,6 +91,34 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
    }
    ```
 
+   Optionally, you can include write and delete permissions, which will enable you to create a new resource group instead of selecting a pre-existing one:
+
+   With those two permissions added, the file appears as follows:
+
+   ```json
+   {
+     "Name": "Azure Stack HCI registration role",
+     "Id": null,
+     "IsCustom": true,
+     "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+     "Actions": [
+       "Microsoft.Resources/subscriptions/resourceGroups/read",
+       "Microsoft.Resources/subscriptions/resourceGroups/write"
+       "Microsoft.Resources/subscriptions/resourceGroups/delete"
+       "Microsoft.AzureStackHCI/register/action",
+       "Microsoft.AzureStackHCI/Unregister/Action",
+       "Microsoft.AzureStackHCI/clusters/*",
+       "Microsoft.Authorization/roleAssignments/write",
+       "Microsoft.HybridCompute/register/action",
+       "Microsoft.GuestConfiguration/register/action"
+     ],
+     "NotActions": [
+     ],
+   "AssignableScopes": [
+       "/subscriptions/<subscriptionId>"
+     ]
+   }
+
 2. Create the custom role:
 
    ```powershell
@@ -224,7 +252,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -ResourceGroupName cluster1-rg
    ```
 
-   This syntax registers the cluster (of which `Server1` is a member) as the current user, and places the HCI cluster resource in the specified resource group (`cluster1-rg`) with the default Azure region and cloud environment, and using smart default names for the Azure resource. You can also add the optional `-Region`, `-ResourceName`, and `-TenantId` parameters to this command to specify these values.
+   This syntax registers the cluster (of which `Server1` is a member) as the current user, and places the HCI cluster resource in the specified pre-existing resource group (`cluster1-rg`) with the default Azure region and cloud environment, and using smart default names for the Azure resource. You can also add the optional `-Region`, `-ResourceName`, and `-TenantId` parameters to this command to specify these values.
 
    > [!NOTE]
    > If you're running Azure Stack HCI, version 21H2, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
