@@ -89,7 +89,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- Before starting the 2108 update, you must stop (deallocate) all virtual machines that use a GPU, to ensure the update can complete successfully. This applies to AMD and Nvidia GPUs, as the underlying implementation changes to no pooled resources.
+- Before starting the 2108 update, you must stop (deallocate) all virtual machines that use a GPU, to ensure the update can complete successfully. This applies to AMD and NVIDIA GPUs, as the underlying implementation changes to no pooled resources.
 - SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these resource providers, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
 - The infrastructure backup resource provider has a new API version that supports restoring progressive backups.
 
