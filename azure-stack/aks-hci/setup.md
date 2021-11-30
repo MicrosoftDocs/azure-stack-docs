@@ -5,6 +5,7 @@ author: davannaw-msft
 ms.topic: quickstart
 ms.date: 05/22/2021
 ms.author: dawhite
+ms.custom: mode-portal
 ---
 
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center

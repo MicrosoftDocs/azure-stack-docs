@@ -11,6 +11,7 @@ ms.lastreviewed: 02/18/2021
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using PowerShell.
 # Keyword: linuxVM powershell
 
+ms.custom: mode-api
 ---
 
 
@@ -152,6 +153,7 @@ $pip = New-AzureRMPublicIpAddress `
   -Name "mypublicdns$(Get-Random)"
 
 ```
+ms.custom: mode-api
 ---
 ### Create a network security group and a network security group rule
 
@@ -238,6 +240,7 @@ $nic = New-AzureRMNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
+ms.custom: mode-api
 ---
 
 
@@ -688,6 +691,7 @@ New-AzureRMVM `
   -VM $VirtualMachine
 ```
 
+ms.custom: mode-api
 ---
 
 ## Connect to the VM
@@ -751,6 +755,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 ```powershell
 Remove-AzureRMResourceGroup -Name myResourceGroup
 ```
+ms.custom: mode-api
 ---
 
 ## Next steps
