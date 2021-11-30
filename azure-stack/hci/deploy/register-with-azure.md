@@ -6,7 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/29/2021
+ms.date: 11/30/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -153,7 +153,7 @@ This region supports Azure Government:
 
 ## Register a cluster using Windows Admin Center
 
-The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to re-run the registration wizard once permissions are granted. 
+The easiest way to register your Azure Stack HCI cluster is using Windows Admin Center. Remember that the user must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval, and the user will have to rerun the registration wizard once permissions are granted. 
 
 If you're running Azure Stack HCI, version 21H2, the user must be assigned an Azure Owner role or a User Access Administrator role, or they will encounter an error message: "Failed to assign required roles for Azure Arc integration." Users who are not assigned these roles can still [Register a cluster using PowerShell](#register-a-cluster-using-powershell), but they must manually disable Azure Arc integration.
 
@@ -167,7 +167,7 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
    > [!IMPORTANT]
    > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit [portal.azure.com](https://portal.azure.com) and select **Azure Active Directory**. Your tenant ID will be displayed under **Tenant information**. To get your Azure subscription ID, navigate to **Subscriptions** and copy/paste your ID from the list.
 
-2. Open Windows Admin Center and select **Settings** from the very bottom of the **Tools** menu at the left. Then select **Azure Stack HCI registration** from the bottom of the **Settings** menu. If your cluster has not yet been registered with Azure, then **Registration status** will say **Not registered**. Click the **Register** button to proceed. You can also select **Register this cluster** from the Windows Admin Center dashboard.
+2. Open Windows Admin Center and select **Settings** from the bottom of the **Tools** menu at the left. Then select **Azure Stack HCI registration** from the bottom of the **Settings** menu. If your cluster has not yet been registered with Azure, then **Registration status** will say **Not registered**. Click the **Register** button to proceed. You can also select **Register this cluster** from the Windows Admin Center dashboard.
 
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you'll be asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
@@ -214,7 +214,7 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
 
 5. If you have sufficient Azure Active Directory permissions, the cluster registration workflow should now proceed to completion, and you should be able to see your cluster in the Azure portal. If you receive a message that you need additional Azure Active Directory permissions, proceed to step 5.
 
-6. If you don't have sufficient Azure Active Directory permissions, you'll need to ask your Azure AD admin to [grant permissions to the app](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions). You should see a link to the Azure portal that goes to the cluster's specific app ID, as in the screenshot below. Copy this link and give it to your Azure AD admin. To check whether consent has been granted, select **View consent in Azure AD**. After consent has been granted, re-run the wizard beginning with step 2 above.
+6. If you don't have sufficient Azure Active Directory permissions, you'll need to ask your Azure AD admin to [grant permissions to the app](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions). You should see a link to the Azure portal that goes to the cluster's specific app ID, as in the screenshot below. Copy this link and give it to your Azure AD admin. To check whether consent has been granted, select **View consent in Azure AD**. After consent has been granted, rerun the wizard beginning with step 2 above.
 
    :::image type="content" source="media/register/registration-permissions.png" alt-text="If you need additional Azure Active Directory permissions to register the cluster, you'll be given a link to provide to your Azure AD admin" lightbox="media/register/registration-permissions.png":::
 
@@ -255,7 +255,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    > [!NOTE]
    > If you're running Azure Stack HCI, version 21H2, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, pass this additional parameter: `-EnableAzureArcServer:$false`
 
-   Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, simply re-run `Register-AzStackHCI` to complete registration.
+   Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, rerun `Register-AzStackHCI` to complete registration.
 
 3. Authenticate with Azure
 
@@ -274,7 +274,7 @@ If you're a preview channel customer and you registered your preview channel clu
    Install-Module -Name Az.StackHCI
    ```
 
-2. Re-run the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID to which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first.
+2. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID to which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first.
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1
@@ -300,7 +300,7 @@ Troubleshooting Azure Stack HCI registration issues requires looking at both Pow
 
 ### Collect PowerShell registration logs
 
-When `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files called **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue which needs the additional debug logs, set debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`.
+When `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files called **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue that needs the additional debug logs, set debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`.
 
 ```PowerShell
 $DebugPreference = 'Continue'
@@ -308,7 +308,7 @@ $DebugPreference = 'Continue'
 
 ### Collect on-premises hcisvc logs
 
-To enable debug logs for hcisvc, run the following in PowerShell on each server in the cluster:
+To enable debug logs for hcisvc, run the following command in PowerShell on each server in the cluster:
 
 ```PowerShell
 wevtutil.exe sl /q /e:true Microsoft-AzureStack-HCI/Debug
