@@ -11,6 +11,7 @@ ms.lastreviewed: 01/14/2019
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using Azure CLI.
 # Keyword: linux virtual machine CLI
 
+ms.custom: mode-api
 ---
 
 
