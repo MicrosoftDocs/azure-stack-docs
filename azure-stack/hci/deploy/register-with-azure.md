@@ -62,7 +62,7 @@ You can use an existing subscription of any type:
 The user registering the cluster must have Azure subscription permissions to:
 
 - Register a resource provider.
-- Get Azure resources and resource groups.
+- Get resource groups and create/get/delete Azure resources (HCI cluster resources, Arc resources and Arc extensions).
 
 If your Azure subscription is through an EA or CSP, the easiest way is to ask your Azure subscription admin to assign a built-in "Owner" role to your subscription, or a "User Access Administrator" role along with a "Contributor" role. However, some admins may prefer a more restrictive option. In this case, it's possible to create a custom Azure role specific for Azure Stack HCI registration by following these steps:
 
@@ -101,8 +101,8 @@ If your Azure subscription is through an EA or CSP, the easiest way is to ask yo
      "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
      "Actions": [
        "Microsoft.Resources/subscriptions/resourceGroups/read",
-       "Microsoft.Resources/subscriptions/resourceGroups/write"
-       "Microsoft.Resources/subscriptions/resourceGroups/delete"
+       "Microsoft.Resources/subscriptions/resourceGroups/write",
+       "Microsoft.Resources/subscriptions/resourceGroups/delete",
        "Microsoft.AzureStackHCI/register/action",
        "Microsoft.AzureStackHCI/Unregister/Action",
        "Microsoft.AzureStackHCI/clusters/*",
@@ -179,8 +179,8 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
    If you want to use the **Create new** resource group option, you must provide the following two permissions to the subscription. Add these two lines to the **customHCIRole.json** file shown in step 1 of [Azure subscription and permissions](#azure-subscription-and-permissions):
 
    ```json
-   "Microsoft.Resources/subscriptions/resourceGroups/write"
-   "Microsoft.Resources/subscriptions/resourceGroups/delete"
+   "Microsoft.Resources/subscriptions/resourceGroups/write",
+   "Microsoft.Resources/subscriptions/resourceGroups/delete",
    ```
 
    The file will appear as follows:
@@ -193,8 +193,8 @@ If you're running Azure Stack HCI, version 21H2, the user must be assigned an Az
      "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
      "Actions": [
        "Microsoft.Resources/subscriptions/resourceGroups/read",
-       "Microsoft.Resources/subscriptions/resourceGroups/write"
-       "Microsoft.Resources/subscriptions/resourceGroups/delete"
+       "Microsoft.Resources/subscriptions/resourceGroups/write",
+       "Microsoft.Resources/subscriptions/resourceGroups/delete",
        "Microsoft.AzureStackHCI/register/action",
        "Microsoft.AzureStackHCI/Unregister/Action",
        "Microsoft.AzureStackHCI/clusters/*",
