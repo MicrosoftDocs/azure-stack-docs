@@ -5,6 +5,7 @@ author: davannaw-msft
 ms.topic: quickstart
 ms.date: 05/25/2021
 ms.author: dawhite
+ms.custom: mode-portal
 ---
 # Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center
 
