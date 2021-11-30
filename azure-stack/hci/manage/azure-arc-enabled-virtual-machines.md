@@ -135,7 +135,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
    ```PowerShell
    $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
-   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog arc-appliance-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP> vLanID=$vLANID]
+   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-int -ring stable [-CloudServiceIP <$CloudServiceIP> vLanID=$vLANID]
    Install-moc
    ```
 
