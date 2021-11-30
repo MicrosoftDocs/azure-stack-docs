@@ -5,6 +5,7 @@ author: jessicaguan
 ms.topic: quickstart
 ms.date: 09/02/2021
 ms.author: jeguan
+ms.custom: mode-api
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
 
