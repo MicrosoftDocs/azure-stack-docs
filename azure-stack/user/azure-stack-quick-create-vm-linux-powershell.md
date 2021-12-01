@@ -239,7 +239,6 @@ $nic = New-AzureRMNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-ms.custom: mode-api
 ---
 
 
@@ -690,7 +689,6 @@ New-AzureRMVM `
   -VM $VirtualMachine
 ```
 
-ms.custom: mode-api
 ---
 
 ## Connect to the VM
@@ -754,7 +752,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 ```powershell
 Remove-AzureRMResourceGroup -Name myResourceGroup
 ```
-ms.custom: mode-api
 ---
 
 ## Next steps
