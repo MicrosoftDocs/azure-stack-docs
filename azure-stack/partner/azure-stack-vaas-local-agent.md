@@ -132,7 +132,6 @@ The tests run remote operations. The machine that runs the tests must have acces
       **Parameters**  
 
     | Parameter | Description |
-ms.custom: mode-api
     | --- | --- |
     | `CloudAdminUserName` | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example: AzusreStack\CloudAdmin. See [Workflow common parameters for VaaS](azure-stack-vaas-parameters.md) for more information. |
     | `CloudAdminPassword` | The password for cloud admin account.|
