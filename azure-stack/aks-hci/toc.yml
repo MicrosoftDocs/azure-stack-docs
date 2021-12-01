@@ -21,6 +21,8 @@
       items:
         - name: Deploy applications with Helm
           href: helm-deploy.md
+        - name: Deploy Azure Arc enabled data services
+          href: deploy-arc-data-services.md
 - name: Tutorial
   items:
     - name: 1 - Prepare an application
@@ -67,28 +69,32 @@
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
     - name: Install Azure Kubernetes Service host
       items:
-          - name: Prestaged cluster service objects and DNS records
+          - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
+          - name: With a proxy server
+            href: kubernetes-walkthrough-powershell-proxy.md
+    - name: Upgrade the AKS on Azure Stack HCI host
+      items:
+          - name: Use PowerShell
+            href: update-akshci-host-powershell.md
+          - name: Use Windows Admin Center
+            href: update-akshci-host-windows-admin-center.md
+    - name: Upgrade the Kubernetes version
+      items:
+          - name: Use PowerShell
+            href: upgrade.md
+          - name: Use Windows Admin Center
+            href: upgrade-kubernetes.md
     - name: Cluster operations
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
           - name: Stop an AKS on Azure Stack HCI cluster
             href: stop-start-cluster.md
-          - name: Upgrade the Kubernetes version
-            items:
-                - name: Use PowerShell
-                  href: upgrade.md
-                - name: Use Windows Admin Center
-                  href: upgrade-kubernetes.md
-          - name: Upgrade the AKS on Azure Stack HCI host
-            items:
-                - name: Use PowerShell
-                  href: update-akshci-host-powershell.md
-                - name: Use Windows Admin Center
-                  href: update-akshci-host-windows-admin-center.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Back up and restore workload clusters using Velero
+            href: backup-workload-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
           - name: Use node pools
@@ -97,10 +103,18 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
+          - name: Az CLI commands
+            href: /cli/azure/connectedk8s?view=azure-cli-latest
     - name: Configure networking
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Configure load balancer
+            href: configure-load-balancer.md
+          - name: Configure a custom load balancer
+            href: configure-custom-load-balancer.md
+          - name: Deploy MetalLB for load balancing
+            href: deploy-metallb.md
     - name: Manage storage
       items:
           - name: Use persistent volume
@@ -115,6 +129,8 @@
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
+          - name: Secrets Store CSI Driver configuration
+            href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
           - name: Secure communication with certificates
@@ -123,6 +139,12 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Helper scripts
+      items: 
+          - name: Set up multiple administrators
+            href: set-multiple-administrators.md
+          - name: Remove old PowerShell modules
+            href: https://github.com/Azure/aks-hci/issues/130
     - name: Manage workloads
       items:
           - name: Create and delete pods

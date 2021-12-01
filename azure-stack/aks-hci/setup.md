@@ -5,11 +5,12 @@ author: davannaw-msft
 ms.topic: quickstart
 ms.date: 05/22/2021
 ms.author: dawhite
+ms.custom: mode-portal
 ---
 
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this quickstart, you set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center. To instead use PowerShell, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
 

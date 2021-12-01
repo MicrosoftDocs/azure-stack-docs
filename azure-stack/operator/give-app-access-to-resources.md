@@ -4,8 +4,8 @@ description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 07/07/2021
-ms.lastreviewed: 07/07/2021
+ms.date: 11/11/2021
+ms.lastreviewed: 11/11/2021
 ms.custom: contperf-fy22q1
 zone_pivot_groups: state-connected-disconnected
 
@@ -103,10 +103,11 @@ Once you have a certificate, use the PowerShell script below to register your ap
     # Create a PSSession to the Privileged Endpoint VM
     $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the Get-Item cmdlet to retrieve the certificate from the certificate store.
-    # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
-    # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
-    # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+    # To use a managed certificate from the certificate store, use the Get-Item cmdlet.
+    # To use a certificate file, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
+    # To use a test certificate, use the New-SelfSignedCertificate cmdlet
+    #   See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+    #   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
     
     # Use the privileged endpoint to create the new app registration
@@ -162,12 +163,13 @@ Keep your PowerShell console session open, as you use it with the `ApplicationId
     # Create a PSSession to the Privileged Endpoint VM
     $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
     
-    # Use the Get-Item cmdlet to retrieve the certificate from the certificate store.
-    # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
-    # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
-    # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+    # To use a managed certificate from the certificate store, use the Get-Item cmdlet.
+    # To use a certificate file, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.
+    # To use a self-signed test certificate, use the New-SelfSignedCertificate cmdlet
+    #   See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
+    #   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
-    
+   
     # Use the privileged endpoint to create the new app registration
     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -ClientCertificates $using:cert}
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
@@ -233,7 +235,8 @@ Update the certificate credential using PowerShell, substituting your own values
      # Create a PSSession to the PrivilegedEndpoint VM
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
-     # Create a self-signed certificate for testing purposes. 
+     # Create a self-signed certificate for testing purposes, using the New-SelfSignedCertificate cmdlet 
+     # See https://docs.microsoft.com/powershell/module/pki/new-selfsignedcertificate for usage details, including using the -Provider parameter
      $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
      # In production, use Get-Item to retrieve a managed certificate from the certificate store.
      # Alteratively, use Get-Certificate for a .cer file, or Get-PfxCertificate for a .pfx file.

@@ -64,6 +64,8 @@
     href: new-akshcicluster.md
   - name: New-AksHciClusterNetwork
     href: new-akshciclusternetwork.md
+  - name: New-AksHciLoadBalancerSetting
+    href: new-akshciloadbalancersetting.md
   - name: New-AksHciNetworkSetting
     href: new-akshcinetworksetting.md
   - name: New-AksHciNodePool

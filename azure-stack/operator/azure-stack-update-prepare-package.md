@@ -3,7 +3,7 @@ title: Prepare update package in Azure Stack Hub
 description: Learn to prepare an update package in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 11/24/2021
 ms.author: sethm
 ms.lastreviewed: 03/10/2021
 ms.reviewer: sranthar
@@ -50,10 +50,12 @@ Azure Stack Hub software updates and hotfixes are prepared automatically for sys
 
 ### Where to download Azure Stack Hub update packages
 
-Azure Stack Hub updates for [full and express updates](./azure-stack-updates.md#update-package-types) are hosted at a secure Azure endpoint. When updates become available, Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](#automatic-download-and-preparation-for-update-packages). For disconnected systems or systems with weak internet connectivity, update packages can be downloaded using the [Azure Stack Hub updates downloader tool](https://aka.ms/azurestackupdatedownload). Azure Stack Hub software update packages may contain updates to Azure Stack Hub services and updates to the operating system of your Azure Stack Hub's scale units.
+Azure Stack Hub updates for [full and express updates](./azure-stack-updates.md#update-package-types) are hosted at a secure Azure endpoint. When updates become available, Azure Stack Hub operators with connected instances will see the [Azure Stack Hub updates automatically appear in the administrator portal](#automatic-download-and-preparation-for-update-packages).
+
+For disconnected systems or systems with weak internet connectivity, *full* update packages can be downloaded using the [Azure Stack Hub updates downloader tool](https://aka.ms/azurestackupdatedownload). Hotfix packages can be downloaded from the hotfix KB link listed in [Azure Stack Hub release notes](release-notes.md). Azure Stack Hub software update packages may contain updates to Azure Stack Hub services and updates to the operating system of your Azure Stack Hub's scale units.
 
 >[!NOTE]
->The update package itself and its contents (such as binaries, PowerShell scripts, and so on) are signed with Microsoft-owned certificates. Tampering with the package will make the signature invalid.​
+>The update package itself and its contents (such as binaries, PowerShell scripts, and so on) are signed with Microsoft-owned certificates. Tampering with the package will make the signature invalid.
 
 ### Where to download Azure Stack Hub hotfix packages
 
