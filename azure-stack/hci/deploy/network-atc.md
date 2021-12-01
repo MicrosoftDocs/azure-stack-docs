@@ -179,7 +179,7 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 |Default|All other traffic types|0|Remainder|
 
 > [!NOTE]
-> Network ATC allows you to override default settings like VLANs. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
+> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
 
 ## Next steps
 
