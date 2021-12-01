@@ -153,7 +153,6 @@ $pip = New-AzureRMPublicIpAddress `
   -Name "mypublicdns$(Get-Random)"
 
 ```
-ms.custom: mode-api
 ---
 ### Create a network security group and a network security group rule
 
