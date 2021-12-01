@@ -6,7 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/30/2021
+ms.date: 12/01/2021
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -15,7 +15,7 @@ ms.date: 11/30/2021
 
 Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms.
 
-This topic explains how to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
+This article explains how to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 
    > [!IMPORTANT]
    > Registering with Azure is required, and your cluster is not fully supported until your registration is active. If you do not register your cluster with Azure upon deployment, or if your cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
