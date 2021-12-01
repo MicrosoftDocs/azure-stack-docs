@@ -134,7 +134,12 @@
       "source_path": "azure-stack/operator/hotfix-v0.md", 
       "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
       "redirect_document_id": false
-    },     
+    },
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-111.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
+      "redirect_document_id": false
+    },         
     { 
       "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 

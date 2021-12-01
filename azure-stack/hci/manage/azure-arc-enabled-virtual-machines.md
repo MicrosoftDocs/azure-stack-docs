@@ -135,7 +135,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
    ```PowerShell
    $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
-   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog arc-appliance-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP> vLanID=$vLANID]
+   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-int -ring monthly [-CloudServiceIP <$CloudServiceIP> vLanID=$vLANID]
    Install-moc
    ```
 
@@ -208,8 +208,6 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
     ```PowerShell
     $hciClusterId= (Get-AzureStackHci).AzureResourceUri
     az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
-
-    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\workingDir\hci-config.json --configuration-settings HCIClusterID="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.AzureStackHCI/clusters/$hciClusterName"
     ```
 
 6. Verify that the extensions are installed. Keep running the following cmdlets until the extension provisioning state is **Succeeded**. This operation can take up to five minutes.

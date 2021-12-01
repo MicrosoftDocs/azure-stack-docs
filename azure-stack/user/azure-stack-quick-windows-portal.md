@@ -7,7 +7,7 @@ ms.date: 10/4/2021
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/4/2021
-ms.custom: contperf-fy22q2
+ms.custom: contperf-fy22q2, mode-portal
 
 # Intent: As an Azure Stack user, I want to quickly create a VM using the Azure Stack portal so I can begin using the VM.
 # Keyword: azure stack vm windows
