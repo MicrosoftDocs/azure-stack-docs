@@ -153,7 +153,6 @@ $pip = New-AzureRMPublicIpAddress `
   -Name "mypublicdns$(Get-Random)"
 
 ```
-ms.custom: mode-api
 ---
 ### Create a network security group and a network security group rule
 
@@ -240,7 +239,6 @@ $nic = New-AzureRMNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-ms.custom: mode-api
 ---
 
 
@@ -691,7 +689,6 @@ New-AzureRMVM `
   -VM $VirtualMachine
 ```
 
-ms.custom: mode-api
 ---
 
 ## Connect to the VM
@@ -755,7 +752,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 ```powershell
 Remove-AzureRMResourceGroup -Name myResourceGroup
 ```
-ms.custom: mode-api
 ---
 
 ## Next steps
