@@ -3,7 +3,7 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: v-susbo
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 11/30/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -12,6 +12,10 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [upgrading](known-issues-upgrade.md).
 
+## Error: `The process cannot access the file 'mocstack.cab' because it is being used by another process`
+
+`Install-AksHci` failed with this error because another process is accessing `mocstack.cab`. To resolve this issue, close all open PowerShell windows and then reopen a new PowerShell window.
+ 
 ## Error: `An existing connection was forcibly closed by the remote host`
 
 `Install-AksHci` failed with this error because the IP pool ranges provided in the AKS on Azure Stack HCI configuration was off by one in the CIDR, and can cause CloudAgent to crash. For example, if you have subnet 10.0.0.0/21 with an address range 10.0.0.0 - 10.0.7.255, and then you use start address of 10.0.0.1 or an end address of 10.0.7.254, then this would cause CloudAgent to crash. 
