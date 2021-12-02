@@ -181,7 +181,7 @@ Create a second workflow using the yaml in this section. In this example, you're
         steps:
         # checkout the repo
         - name: 'Checkout Github Action' 
-          uses: actions/checkout@master
+          uses: actions/checkout@main
     
         - name: Setup Python 3.6
           uses: actions/setup-node@v1
