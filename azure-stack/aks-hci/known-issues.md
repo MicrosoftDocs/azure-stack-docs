@@ -17,7 +17,7 @@ Antivirus software may be causing this error by blocking the execution of PowerS
 
 [ ![Deployment: Connecting to remote server localhost failed.](media/known-issues/get-akshcicluster-error.png) ](media/known-issues/get-akshcicluster-error.png#lightbox)
 
-To resolve this issue, verify that the following processes and folders that are required to perform AKS on Azure Stack HCI cluster operations are excluded from the antivirus software:
+To resolve this issue, verify the following processes and folders (which are required to perform AKS on Azure Stack HCI cluster operations) are excluded from the antivirus software:
 
 Processes:
 - kubectl.exe
