@@ -1195,6 +1195,11 @@
       "source_path": "azure-stack/hci/manage/configure-firewalls.md",
       "redirect_url": "/azure-stack/hci/concepts/firewall-requirements",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-template-cognitive-services.md",
+      "redirect_url": "/azure/cognitive-services/cognitive-services-container-support",
+      "redirect_document_id": false
     }
   ]
 }
