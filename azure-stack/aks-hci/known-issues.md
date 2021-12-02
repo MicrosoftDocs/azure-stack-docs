@@ -11,6 +11,63 @@ ms.reviewer:
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
+## If a cluster is shut down for more than four days, it becomes unreachable
+
+When you shut down a management or workload cluster for more than 4 days, the certificates will expire which makes the cluster unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
+
+To get the cluster up and running, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
+
+```powershell
+Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
+```
+
+## If a management or workload cluster is not used for more than 60 days, the certificates will expire
+
+If you don't use a management or workload cluster for longer than 60 days, the certificates expire and must be renewed before you can upgrade AKS on Azure Stack HCI. When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and certificates both expire within the 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call support to upgrade. If the cluster is rebooted after this period, it will continue to remain in the same non-functional state.
+
+To resolve this issue, run the following steps:
+
+1. Repair the management cluster certificates.
+2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
+3. Repair the workload cluster certificates by running the following command:
+   ```powershell
+   Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
+   ```
+
+## The certificate renewal pod is in a crash loop state
+
+After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state. The pod is expecting a certificate tattoo YAML file from the location `/etc/Kubernetes/pki location`.
+
+This issue may be caused by a configuration file that's present in the control plane VMs, but it's not in worker node VMs. To resolve this issue, you can manually copy the certificate tattoo YAML file from the control plane node to all worker nodes.
+
+1. Copy the YAML file from control plane VM on the workload cluster to the current directory of your host machine:
+   
+   ```
+   ssh clouduser@<comtrol-plane-vm-ip> -i (get-mocconfig).sshprivatekey
+   sudo cp /etc/kubernetes/pki/cert-tattoo-kubelet.yaml ~/
+   sudo chown clouduser cert-tattoo-kubelet.yaml
+   sudo chgrp clouduser cert-tattoo-kubelet.yaml
+   (Change file permissions here, so that `scp` will work)
+   scp -i (get-mocconfig).sshprivatekey clouduser@<comtrol-plane-vm-ip>:~/cert*.yaml .\
+   ```
+
+1. Copy the YAML file from the host machine to the worker node VM. Before you copy the file, you must change the name of the machine in the file to the node name to which you're copying (this should be the node name for the workload cluster control plane).
+
+   ```
+   scp -i (get-mocconfig).sshprivatekey .\cert-tattoo-kubelet.yaml clouduser@<workernode-vm-ip>:~/cert-tattoo-kubelet.yaml
+   ```
+
+3. If the owner and group information on the YAML file is not already set to root, set the information to the root:
+
+   ```
+   ssh clouduser@<workernode-vm-ip> -i (get-mocconfig).sshprivatekey
+   sudo cp ~/cert-tattoo-kubelet.yaml /etc/kubernetes/pki/cert-tattoo-kubelet.yaml (copies the certificate file to the correct location)
+   sudo chown root cert-tattoo-kubelet.yaml
+   sudo chgrp root cert-tattoo-kubelet.yaml
+   ```
+
+4. Repeat steps 2 and 3 for all worker nodes.
+
 ## When running AksHci PowerShell cmdlets, an `Unable to Load DLL` error appears
 
 Antivirus software may be causing this error by blocking the execution of PowerShell binaries that are required to perform cluster operations. An example of a similar error is shown below:
