@@ -29,6 +29,8 @@ An API profile is a combination of resource providers and API versions. Use an A
   - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
   - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
+    > [!NOTE] API Profile 2020_09_01 is now available as a [NuGet package](Microsoft.Azure.Management.Profiles.hybrid_2020_09_01). Change the profile date to `_2020_09_01`.
+
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
 - To use the latest API version of a service, use the **latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
@@ -48,6 +50,8 @@ You can combine all of the options in the same application.
   - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
   - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+
+    > [!NOTE] API Profile 2020_09_01 is now available as a [NuGet package](Microsoft.Azure.Management.Profiles.hybrid_2020_09_01). Change the profile date to `_2020_09_01`.
 
 - To install the correct NuGet packages for Visual Studio Code, see the following link to download the [NuGet Package Manager instructions][].
 
@@ -119,6 +123,8 @@ Sample JSON file:
 ## Existing API profiles
 
 - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 1904 or later.
+
+    > [!NOTE] API Profile 2020_09_01 is now available as a [NuGet package](Microsoft.Azure.Management.Profiles.hybrid_2020_09_01). Change the profile date to `_2020_09_01`.
 
 - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Use this profile for services to be compatible with Azure Stack Hub for versions 1808 or later.
 
