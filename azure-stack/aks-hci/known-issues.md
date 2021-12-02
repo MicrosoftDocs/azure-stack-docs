@@ -11,6 +11,40 @@ ms.reviewer:
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
+## When running PowerShell cmdlets, an `Unable to Load DLL` error appears
+
+Antivirus software may be causing this error by blocking the execution of PowerShell binaries required to perform cluster operations. Below is an example of a similar error:
+
+[ ![Deployment: Connecting to remote server localhost failed.](media/known-issues/get-akshcicluster-error.png) ](media/known-issues/get-akshcicluster-error.png#lightbox)
+
+To resolve this issue, verify that the following processes and folders that are required to perform AKS on Azure Stack HCI cluster operations are excluded from the antivirus software:
+
+Processes:
+kubectl.exe
+kvactl.exe
+mocctl.exe
+nodectl.exe
+wssdagent.exe
+wssdcloudagent.exe
+kubectl-adsso.exe
+AksHciHealth.exe
+
+Folders:
+C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\
+C:\Program Files\WindowsPowerShell\Modules\TraceProvider\
+C:\Program Files\WindowsPowerShell\Modules\AksHci\
+C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\
+C:\Program Files\WindowsPowerShell\Modules\Az.Resources\
+C:\Program Files\WindowsPowerShell\Modules\AzureAD\
+C:\Program Files\WindowsPowerShell\Modules\DownloadSdk\
+C:\Program Files\WindowsPowerShell\Modules\Kva\
+C:\Program Files\WindowsPowerShell\Modules\Microsoft.SME.CredSspPolicy\
+C:\Program Files\WindowsPowerShell\Modules\Moc\
+C:\Program Files\WindowsPowerShell\Modules\PackageManagement\
+C:\Program Files\AksHci\
+C:\AksHci\
+
+
 ## ContainerD is unable to pull the pause image as _kubelet_ mistakenly collects the image 
 
 When _kubelet_ is under disk pressure, it collects unused container images which may include pause images, and when this happens, ContainerD cannot pull the image. 
