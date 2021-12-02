@@ -36,9 +36,9 @@ To resolve this issue, run the following steps:
 
 ## The certificate renewal pod is in a crash loop state
 
-After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state. The pod is expecting a certificate tattoo YAML file from the location `/etc/Kubernetes/pki location`.
+After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the location `/etc/Kubernetes/pki`.
 
-This issue may be caused by a configuration file that's present in the control plane VMs, but it's not in worker node VMs. To resolve this issue, you can manually copy the certificate tattoo YAML file from the control plane node to all worker nodes.
+This issue may be due to a configuration file that's present in the control plane VMs but not in the worker node VMs. To resolve this issue, manually copy the certificate tattoo YAML file from the control plane node to all worker nodes.
 
 1. Copy the YAML file from control plane VM on the workload cluster to the current directory of your host machine:
    
@@ -51,13 +51,13 @@ This issue may be caused by a configuration file that's present in the control p
    scp -i (get-mocconfig).sshprivatekey clouduser@<comtrol-plane-vm-ip>:~/cert*.yaml .\
    ```
 
-1. Copy the YAML file from the host machine to the worker node VM. Before you copy the file, you must change the name of the machine in the file to the node name to which you're copying (this should be the node name for the workload cluster control plane).
+1. Copy the YAML file from the host machine to the worker node VM. Before you copy the file, you must change the name of the machine in the YAML file to the node name to which you're copying (this is the node name for the workload cluster control plane).
 
    ```
    scp -i (get-mocconfig).sshprivatekey .\cert-tattoo-kubelet.yaml clouduser@<workernode-vm-ip>:~/cert-tattoo-kubelet.yaml
    ```
 
-3. If the owner and group information on the YAML file is not already set to root, set the information to the root:
+3. If the owner and group information in the YAML file is not already set to root, set the information to the root:
 
    ```
    ssh clouduser@<workernode-vm-ip> -i (get-mocconfig).sshprivatekey
