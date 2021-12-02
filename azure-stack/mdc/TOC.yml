@@ -716,8 +716,6 @@
               href: ../user/azure-stack-kubernetes-aks-engine-dvm.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Troubleshoot Kubernetes cluster
               href: ../user/azure-stack-solution-template-kubernetes-trouble.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Deploy Cognitive Services
-          href: ../user/azure-stack-solution-template-cognitive-services.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Deploy apps
       items: 
       - name: Deploy a C# web app to a Windows VM
