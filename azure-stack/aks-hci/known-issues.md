@@ -3,7 +3,7 @@ title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
 description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: EkeleAsonye
 ms.topic: troubleshooting
-ms.date: 09/22/2021
+ms.date: 12/03/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -11,11 +11,11 @@ ms.reviewer:
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
-## If a cluster is shut down for more than four days, it becomes unreachable
+## If a cluster is shut down for more than four days, the cluster will be unreachable
 
-When you shut down a management or workload cluster for more than 4 days, the certificates will expire which makes the cluster unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
+When you shut down a management or workload cluster for more than four days, the certificates expire and the cluster is unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
 
-To get the cluster up and running, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
+To get the cluster up and running again, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
 
 ```powershell
 Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
@@ -23,11 +23,11 @@ Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
 
 ## If a management or workload cluster is not used for more than 60 days, the certificates will expire
 
-If you don't use a management or workload cluster for longer than 60 days, the certificates expire and must be renewed before you can upgrade AKS on Azure Stack HCI. When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and certificates both expire within the 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call support to upgrade. If the cluster is rebooted after this period, it will continue to remain in the same non-functional state.
+If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS on Azure Stack HCI. When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will continue to remain in a non-functional state.
 
 To resolve this issue, run the following steps:
 
-1. Repair the management cluster certificates.
+1. Repair the management cluster certificate by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days).
 2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
 3. Repair the workload cluster certificates by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days). 
   

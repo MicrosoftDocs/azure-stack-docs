@@ -3,7 +3,7 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: v-susbo
 ms.topic: troubleshooting
-ms.date: 11/30/2021
+ms.date: 12/03/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -39,11 +39,11 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
       Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
       ```
 
-## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.] Please use an IPAddress that belongs to Get-ClusterNetwork and has ClusterAndClient role enabled` 
+## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]  
 
 This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that has the `client and cluster communication` role enabled.
 
-To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps) where { $_.Role -eq "ClusterAndClient" }. Then, on one of the cluster nodes, select the name, address, and address mask to check that the IP address provided to the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
+To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where { $_.Role -eq "ClusterAndClient" }. Then, on one of the cluster nodes, select the name, address, and address mask to check that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
 
 ## Error: `The process cannot access the file 'mocstack.cab' because it is being used by another process`
 
