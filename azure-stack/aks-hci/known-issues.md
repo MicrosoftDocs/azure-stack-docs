@@ -15,7 +15,7 @@ This article describes some common known issues with Azure Kubernetes Service on
 
 When you shut down a management or workload cluster for more than four days, the certificates expire and the cluster is unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
 
-To get the cluster up and running again, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
+To restart the cluster, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
 
 ```powershell
 Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
@@ -33,7 +33,7 @@ To resolve this issue, run the following steps:
   
 ## The certificate renewal pod is in a crash loop state
 
-After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the location `/etc/Kubernetes/pki`.
+After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the file location `/etc/Kubernetes/pki`.
 
 This issue may be due to a configuration file that's present in the control plane VMs but not in the worker node VMs. To resolve this issue, manually copy the certificate tattoo YAML file from the control plane node to all worker nodes.
 

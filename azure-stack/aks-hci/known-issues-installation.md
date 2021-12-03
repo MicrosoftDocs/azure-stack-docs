@@ -21,11 +21,11 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
       ```powershell
       Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
       ```
-   2. To check whether your IP address and gateway configuration is correct, run the command `ipconfig/all`.
+   2. To check whether your IP address and gateway configuration are correct, run the command `ipconfig/all`.
    3. Attempt to ping the IP gateway and the DNS server.
 
 2. Check the CloudAgent service to make sure it's running:
-   1. Ping the CloudAgent service to ensure it is reachable.
+   1. Ping the CloudAgent service to ensure it's reachable.
    2. Make sure all nodes can resolve the CloudAgent's DNS by running the following command on each node:
       ```powershell
       Resolve-DnsName <FQDN of cloudagent>
@@ -39,11 +39,11 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
       Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
       ```
 
-## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]  
+## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]`  
 
-This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that has the `client and cluster communication` role enabled.
+This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.
 
-To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where { $_.Role -eq "ClusterAndClient" }. Then, on one of the cluster nodes, select the name, address, and address mask to check that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
+To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where `Role` equals `ClusterAndClient`. Then, on one of the cluster nodes, select the name, address, and address mask to verify that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
 
 ## Error: `The process cannot access the file 'mocstack.cab' because it is being used by another process`
 
@@ -213,9 +213,9 @@ az login -tenant <tenant>
 ## Deployment fails on an Azure Stack HCI configured with SDN
 While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
 
-## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
+## Creating a workload cluster fails with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`
 
-On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
+On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
 
 To resolve this issue, do one of the following:
 

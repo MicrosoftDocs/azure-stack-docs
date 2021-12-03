@@ -13,7 +13,7 @@ author: mkostersitz
 This article describes how to upgrade the AKS on Azure Stack HCI core system to the latest version. For information on updating an AKS workload cluster, see [update the Kubernetes version of AKS clusters](./upgrade.md).
 
 > [!Note]
-> When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and certificates both expire within 60 days. The cluster is still functional, however since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will continue to remain in the same non-functional state.
+> When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and the certificates both expire within 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will continue to remain in a non-functional state.
 
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
