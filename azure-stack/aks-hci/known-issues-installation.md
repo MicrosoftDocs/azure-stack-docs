@@ -14,17 +14,17 @@ This article describes known issues and errors you may encounter when running an
 
 ## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
 
-This error may occur when there is an infrastructure misconfiguration. You should use the following steps to resolve this error:
+This error may occur when there's an infrastructure misconfiguration. Use the following steps to resolve this error:
 
-1. Check the host DNS server configuration and gateway settings.
+1. Check the host DNS server configuration and gateway settings:
    1. Confirm that the DNS server is correctly configured. To check the host's DNS server address, run the following command: 
       ```powershell
       Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
       ```
-   2. To check whether you have the right configuration for your IP address and gateway, run the command `ipconfig/all`.
+   2. To check whether your IP address and gateway configuration is correct, run the command `ipconfig/all`.
    3. Attempt to ping the IP gateway and the DNS server.
 
-2. Check that the CloudAgent service is running by running the following steps:
+2. Check the CloudAgent service to make sure it's running:
    1. Ping the CloudAgent service to ensure it is reachable.
    2. Make sure all nodes can resolve the CloudAgent's DNS by running the following command on each node:
       ```powershell
@@ -38,6 +38,13 @@ This error may occur when there is an infrastructure misconfiguration. You shoul
       ```powershell
       Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
       ```
+
+## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]` 
+
+This errors requests that you use an IPAddress that belongs to Get-ClusterNetwork and has the `client and cluster communication` role enabled.
+This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that has the `client and cluster communication` role enabled.
+
+To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps) where { $_.Role -eq "ClusterAndClient" }. Then, on one of the cluster nodes, select the name, address, and address mask to check that the IP address provided to the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
 
 ## Error: `The process cannot access the file 'mocstack.cab' because it is being used by another process`
 
