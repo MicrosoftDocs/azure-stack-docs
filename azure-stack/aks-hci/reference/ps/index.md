@@ -21,7 +21,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Disable-AksHciPreview](disable-akshcipreview.md) | Reverts AKS on Azure Stack HCI from a preview channel back to the stable channel. |
 | [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI cluster. |
 | [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS on Azure Stack HCI to a preview channel. |
-| [Get-AksHciBillingStatuss](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
+| [Get-AksHciBillingStatus](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [Get-AksHciCluster](./get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [Get-AksHciClusterNetwork](./get-akshciclusternetwork.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
 | [Get-AksHciClusterUpdates](./get-akshciclusterupdates.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
