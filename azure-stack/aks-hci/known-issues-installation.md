@@ -39,9 +39,8 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
       Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
       ```
 
-## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]` 
+## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.] Please use an IPAddress that belongs to Get-ClusterNetwork and has ClusterAndClient role enabled` 
 
-This errors requests that you use an IPAddress that belongs to Get-ClusterNetwork and has the `client and cluster communication` role enabled.
 This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that has the `client and cluster communication` role enabled.
 
 To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps) where { $_.Role -eq "ClusterAndClient" }. Then, on one of the cluster nodes, select the name, address, and address mask to check that the IP address provided to the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
