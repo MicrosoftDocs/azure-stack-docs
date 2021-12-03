@@ -3,7 +3,7 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: v-susbo
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 12/03/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -12,6 +12,43 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [upgrading](known-issues-upgrade.md).
 
+## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
+
+This error may occur when there's an infrastructure misconfiguration. Use the following steps to resolve this error:
+
+1. Check the host DNS server configuration and gateway settings:
+   1. Confirm that the DNS server is correctly configured. To check the host's DNS server address, run the following command: 
+      ```powershell
+      Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
+      ```
+   2. To check whether your IP address and gateway configuration are correct, run the command `ipconfig/all`.
+   3. Attempt to ping the IP gateway and the DNS server.
+
+2. Check the CloudAgent service to make sure it's running:
+   1. Ping the CloudAgent service to ensure it's reachable.
+   2. Make sure all nodes can resolve the CloudAgent's DNS by running the following command on each node:
+      ```powershell
+      Resolve-DnsName <FQDN of cloudagent>
+      ```
+   3. When the previous step succeeds on the nodes, make sure the nodes can reach the CloudAgent port to verify that a proxy is not trying to block this connection and the port is open. To do this, run the following command on each node:
+      ```powershell
+      Test-NetConnection <FQDN of cloudagent> -Port <Cloudagent port - default 65000>
+      ```
+   4. To check if the cluster service is running for a failover cluster, you can also run the following command:
+      ```powershell
+      Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
+      ```
+
+## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]`  
+
+This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.
+
+To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where `Role` equals `ClusterAndClient`. Then, on one of the cluster nodes, select the name, address, and address mask to verify that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
+
+## Error: `The process cannot access the file 'mocstack.cab' because it is being used by another process`
+
+`Install-AksHci` failed with this error because another process is accessing `mocstack.cab`. To resolve this issue, close all open PowerShell windows and then reopen a new PowerShell window.
+ 
 ## Error: `An existing connection was forcibly closed by the remote host`
 
 `Install-AksHci` failed with this error because the IP pool ranges provided in the AKS on Azure Stack HCI configuration was off by one in the CIDR, and can cause CloudAgent to crash. For example, if you have subnet 10.0.0.0/21 with an address range 10.0.0.0 - 10.0.7.255, and then you use start address of 10.0.0.1 or an end address of 10.0.7.254, then this would cause CloudAgent to crash. 
@@ -176,9 +213,9 @@ az login -tenant <tenant>
 ## Deployment fails on an Azure Stack HCI configured with SDN
 While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
 
-## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
+## Creating a workload cluster fails with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`
 
-On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
+On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
 
 To resolve this issue, do one of the following:
 
