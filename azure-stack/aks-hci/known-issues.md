@@ -29,11 +29,8 @@ To resolve this issue, run the following steps:
 
 1. Repair the management cluster certificates.
 2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
-3. Repair the workload cluster certificates by running the following command:
-   ```powershell
-   Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
-   ```
-
+3. Repair the workload cluster certificates by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days). 
+  
 ## The certificate renewal pod is in a crash loop state
 
 After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the location `/etc/Kubernetes/pki`.
