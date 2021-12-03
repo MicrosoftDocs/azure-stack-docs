@@ -313,24 +313,6 @@
             href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md
-      - name: Use Azure Container Registry
-        items:
-        - name: Overview
-          href: container-registry-overview.md
-        - name: Add and manage container registry
-          href: container-registry-how-to-use-portal.md
-        - name: Use Azure CLI
-          href: container-registry-use-cli.md
-        - name: Supported commands
-          href: container-registry-commands.md
-        - name: Deploy image to AKS cluster
-          href: container-registry-deploy-image-aks-cluster.md
-        - name: Troubleshoot
-          href: container-registry-troubleshoot.md
-        - name: FAQ
-          href: container-registry-faq.yml
-      - name: Deploy Cognitive Services
-        href: azure-stack-solution-template-cognitive-services.md
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
