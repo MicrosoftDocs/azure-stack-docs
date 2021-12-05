@@ -59,11 +59,17 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ## Portal
 
 ### Container Registries
-
+#### Metrics unavailable for Container Registries in the user portal.
 - Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub.
 - Cause: An issue is preventing metrics from displaying when viewing a container registry in the Azure portal. The metrics are also not available in Shoebox.
 - Remediation: No remediation available, will be addressed in an upcoming hotfix.
 - Occurrence: Common
+
+#### Container Registry operator experience prompting to install although installation already complete
+- Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub.
+- Cause: Seven days following the installation of the Container Registry, the operator experience in the admin portal may prompt the operator to install the Container registry again.  The service is operating normally but the operator experience is not available.  Tenants will be able to create and manage container registries.
+- Remediation: No remediation available, will be addressed in an upcoming hotfix.
+- Occurence: Common
 
 ### Administrative subscriptions
 
