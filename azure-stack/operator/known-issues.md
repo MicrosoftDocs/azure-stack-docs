@@ -70,7 +70,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 #### Container Registry operator experience prompting to install although installation already complete
 
 - Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub.
-- Cause: Seven days following the installation of Container Registry, the operator experience in the admin portal may prompt the operator to install Container registry again. The service is operating normally but the operator experience is not available. Tenants will be able to create and manage container registries.
+- Cause: Seven days following the installation of Container Registry, the operator experience in the admin portal may prompt the operator to install Container Registry again. The service is operating normally but the operator experience is not available. Tenants are able to create and manage container registries.
 - Remediation: No remediation available, will be addressed in an upcoming hotfix.
 - Occurence: Common
 
