@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with .NET SDK in Azure Stack 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/4/2021
+ms.date: 12/6/2021
 ms.author: sethm
 ms.reviewer: weshi1
-ms.lastreviewed: 11/4/2021
+ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with .NET SDK in Azure Stack so I can benefit from the use of profiles
 # Keyword: azure stack api profiles .net
@@ -17,7 +17,7 @@ ms.lastreviewed: 11/4/2021
 
 # Use API version profiles with .NET in Azure Stack Hub
 
-The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis). The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2019-03-01-hybrid** or **2018-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
+The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis). The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2020-09-01-hybrid** or **2019-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
 
 ## .NET and API version profiles
 
@@ -26,11 +26,8 @@ An API profile is a combination of resource providers and API versions. Use an A
 - To make use of the latest versions of all the services, use the **latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use the services compatible with Azure Stack Hub, use one of the following packages:
+  - **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg**
   - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
-
-  > [!NOTE] 
-  > API Profile 2020_09_01 is now available as a [NuGet package](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01). Change the profile date to `_2020_09_01` to use the package.
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
@@ -42,26 +39,20 @@ You can combine all of the options in the same application.
 
 ## Install the Azure .NET SDK
 
-- Install Git. For instructions, see [Getting Started - Installing Git][].
+- Install Git. For instructions, see [Getting Started - Installing Git][https://git-scm.com/download].
 
-- To install the correct NuGet packages, see [Finding and installing a package][].
+- To install the correct NuGet packages, see [Available NuGet Distribution Versions][https://www.nuget.org/downloads].
 
 - The packages that need to be installed depend on the profile version you want to use. The package names for the profile versions are:
 
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+  - **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg**
+  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview**
 
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+- If not available, create a subscription and save the subscription ID to be used later. For information about how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-  > [!NOTE]
-  > API Profile 2020_09_01 is now available as a [NuGet package](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01). Change the profile date to `_2020_09_01` to use the package.
+- Create a service principal and save the client ID and the client secret. For information about how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md). The client ID is also known as the application ID when creating a service principal.
 
-- To install the correct NuGet packages for Visual Studio Code, see the following link to download the [NuGet Package Manager instructions][].
-
-- If not available, create a subscription and save the subscription ID to be used later. For information about how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub][].
-
-- Create a service principal and save the client ID and the client secret. For information about how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub][]. The client ID is also known as the application ID when creating a service principal.
-
-- Make sure your service principal has the contributor/owner role on your subscription. For information about how to assign a role to service principal, see [Provide applications access to Azure Stack Hub][].
+- Make sure your service principal has the contributor/owner role on your subscription. For information about how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
 
 ## Prerequisites
 
@@ -69,11 +60,11 @@ To use the .NET Azure SDK with Azure Stack Hub, you must supply the following va
 
 | Value                     | Environment variables   | Description                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Tenant ID                 | `AZURE_TENANT_ID `      | The value of your Azure Stack Hub [*tenant ID*][].                                                                          |
+| Tenant ID                 | `AZURE_TENANT_ID `      | The value of your Azure Stack Hub *tenant ID*.                                                                          |
 | Client ID                 | `AZURE_CLIENT_ID `      | The service principal app ID saved when the service principal was created in the previous section of this article. |
-| Subscription ID           | `AZURE_SUBSCRIPTION_ID` | The [*subscription ID*][] is how you access offers in Azure Stack Hub.                                                      |
+| Subscription ID           | `AZURE_SUBSCRIPTION_ID` | The *subscription ID* is how you access offers in Azure Stack Hub.                                                      |
 | Client Secret             | `AZURE_CLIENT_SECRET`   | The service principal app secret saved when the service principal was created.                                      |
-| Resource Manager Endpoint | `ARM_ENDPOINT`          | See [*the Azure Stack Hub Resource Manager endpoint*][].                                                                    |
+| Resource Manager Endpoint | `ARM_ENDPOINT`          | See *the Azure Stack Hub Resource Manager endpoint*.                                                                    |
 | Location                  | `RESOURCE_LOCATION`     | Location of Azure Stack Hub.
 
 To find the tenant ID for your Azure Stack Hub, follow the instructions [in this article](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following:
@@ -124,16 +115,13 @@ Sample JSON file:
 
 ## Existing API profiles
 
-- **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 1904 or later.
+- **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 2102 or later.
 
-  > [!NOTE] 
-  > API Profile 2020_09_01 is now available as a [NuGet package](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01). Change the profile date to `_2020_09_01` to use the package.
-
-- **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Use this profile for services to be compatible with Azure Stack Hub for versions 1808 or later.
+- **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 1904 or later.
 
 - **latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
-For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles][].
+For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles][zure-stack-version-profiles.md].
 
 ## Azure .NET SDK API profile usage
 
@@ -202,7 +190,6 @@ Learn more about API profiles:
 
 - [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
-
   [Getting Started - Installing Git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
   [Finding and installing a package]: /nuget/tools/package-manager-ui
   [NuGet Package Manager instructions]: https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
