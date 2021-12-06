@@ -17,7 +17,7 @@ ms.lastreviewed: 12/6/2021
 
 # Use API version profiles with .NET in Azure Stack Hub
 
-The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis). The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2020-09-01-hybrid** or **2019-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
+The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and Key Vault. The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2020-09-01-hybrid** or **2019-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
 
 ## .NET and API version profiles
 
@@ -26,8 +26,8 @@ An API profile is a combination of resource providers and API versions. Use an A
 - To make use of the latest versions of all the services, use the **latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use the services compatible with Azure Stack Hub, use one of the following packages:
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg**
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+  - **[Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01)**
+  - **[Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2019_03_01)**
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
@@ -39,9 +39,9 @@ You can combine all of the options in the same application.
 
 ## Install the Azure .NET SDK
 
-- Install Git. For instructions, see [Getting Started - Installing Git][https://git-scm.com/download].
+- Install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/download).
 
-- To install the correct NuGet packages, see [Available NuGet Distribution Versions][https://www.nuget.org/downloads].
+- To install the correct NuGet packages, see [Available NuGet Distribution Versions](https://www.nuget.org/downloads).
 
 - The packages that need to be installed depend on the profile version you want to use. The package names for the profile versions are:
 
@@ -60,11 +60,11 @@ To use the .NET Azure SDK with Azure Stack Hub, you must supply the following va
 
 | Value                     | Environment variables   | Description                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Tenant ID                 | `AZURE_TENANT_ID `      | The value of your Azure Stack Hub *tenant ID*.                                                                          |
+| Tenant ID                 | `AZURE_TENANT_ID `      | The value of your Azure Stack Hub  [*tenant ID*](../operator/azure-stack-identity-overview.md).                                                                          |
 | Client ID                 | `AZURE_CLIENT_ID `      | The service principal app ID saved when the service principal was created in the previous section of this article. |
-| Subscription ID           | `AZURE_SUBSCRIPTION_ID` | The *subscription ID* is how you access offers in Azure Stack Hub.                                                      |
+| Subscription ID           | `AZURE_SUBSCRIPTION_ID` | The [*subscription ID*](../operator/service-plan-offer-subscription-overview.md#subscriptions) is how you access offers in Azure Stack Hub.                                                      |
 | Client Secret             | `AZURE_CLIENT_SECRET`   | The service principal app secret saved when the service principal was created.                                      |
-| Resource Manager Endpoint | `ARM_ENDPOINT`          | See *the Azure Stack Hub Resource Manager endpoint*.                                                                    |
+| Resource Manager Endpoint | `ARM_ENDPOINT`          | See [*the Azure Stack Hub Resource Manager endpoint*](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint).                                                                    |
 | Location                  | `RESOURCE_LOCATION`     | Location of Azure Stack Hub.
 
 To find the tenant ID for your Azure Stack Hub, follow the instructions [in this article](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following:
@@ -190,15 +190,6 @@ Learn more about API profiles:
 
 - [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
-  [Getting Started - Installing Git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-  [Finding and installing a package]: /nuget/tools/package-manager-ui
-  [NuGet Package Manager instructions]: https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
-  [Create subscriptions to offers in Azure Stack Hub]: ../operator/azure-stack-subscribe-plan-provision-vm.md
-  [Provide applications access to Azure Stack Hub]: ../operator/give-app-access-to-resources.md
-  [*tenant ID*]: ../operator/azure-stack-identity-overview.md
-  [*subscription ID*]: ../operator/service-plan-offer-subscription-overview.md#subscriptions
-  [*the Azure Stack Hub Resource Manager endpoint*]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint
-  [Summary of API profiles]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
-  [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
-  [Use Azure PowerShell to create a service principal with a certificate]: ../operator/give-app-access-to-resources.md
-  [Run unit tests with Test Explorer.]: /visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017&preserve-view=true
+- [Test Project to Virtual Machine, vNet, resource groups, and storage account](https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject)
+- [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md)
+- [Run unit tests with Test Explorer.](/visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017&preserve-view=true)
