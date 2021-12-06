@@ -117,11 +117,11 @@ Sample JSON file:
 
 - **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 2102 or later.
 
-- **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 1904 or later.
+- **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview**:  Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 1904 or later.
 
 - **latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
-For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles][zure-stack-version-profiles.md].
+For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md).
 
 ## Azure .NET SDK API profile usage
 
