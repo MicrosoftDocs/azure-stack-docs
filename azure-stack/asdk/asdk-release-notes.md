@@ -3,7 +3,7 @@ title: ASDK Release Notes
 description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
 author: sethmanheim
 ms.topic: article
-ms.date: 11/11/2021
+ms.date: 12/06/2021
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -21,7 +21,7 @@ This article provides information about changes, fixes, and known issues in the 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](/api/search/rss?locale=en-us&search=ASDK+release+notes).
 
 ::: moniker range="azs-2108"
-## Build 1.2108.xx.xx
+## Build 1.2108.2.65
 
 ### New features
 
