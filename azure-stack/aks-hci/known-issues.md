@@ -3,13 +3,100 @@ title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
 description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: EkeleAsonye
 ms.topic: troubleshooting
-ms.date: 09/22/2021
+ms.date: 12/03/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
 
 # Common issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
+
+## If a cluster is shut down for more than four days, the cluster will be unreachable
+
+When you shut down a management or workload cluster for more than four days, the certificates expire and the cluster is unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
+
+To restart the cluster, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
+
+```powershell
+Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
+```
+
+## If a management or workload cluster is not used for more than 60 days, the certificates will expire
+
+If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS on Azure Stack HCI. When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will continue to remain in a non-functional state.
+
+To resolve this issue, run the following steps:
+
+1. Repair the management cluster certificate by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days).
+2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
+3. Repair the workload cluster certificates by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days). 
+  
+## The certificate renewal pod is in a crash loop state
+
+After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the file location `/etc/Kubernetes/pki`.
+
+This issue may be due to a configuration file that's present in the control plane VMs but not in the worker node VMs. To resolve this issue, manually copy the certificate tattoo YAML file from the control plane node to all worker nodes.
+
+1. Copy the YAML file from control plane VM on the workload cluster to the current directory of your host machine:
+   
+   ```
+   ssh clouduser@<comtrol-plane-vm-ip> -i (get-mocconfig).sshprivatekey
+   sudo cp /etc/kubernetes/pki/cert-tattoo-kubelet.yaml ~/
+   sudo chown clouduser cert-tattoo-kubelet.yaml
+   sudo chgrp clouduser cert-tattoo-kubelet.yaml
+   (Change file permissions here, so that `scp` will work)
+   scp -i (get-mocconfig).sshprivatekey clouduser@<comtrol-plane-vm-ip>:~/cert*.yaml .\
+   ```
+
+1. Copy the YAML file from the host machine to the worker node VM. Before you copy the file, you must change the name of the machine in the YAML file to the node name to which you're copying (this is the node name for the workload cluster control plane).
+
+   ```
+   scp -i (get-mocconfig).sshprivatekey .\cert-tattoo-kubelet.yaml clouduser@<workernode-vm-ip>:~/cert-tattoo-kubelet.yaml
+   ```
+
+3. If the owner and group information in the YAML file is not already set to root, set the information to the root:
+
+   ```
+   ssh clouduser@<workernode-vm-ip> -i (get-mocconfig).sshprivatekey
+   sudo cp ~/cert-tattoo-kubelet.yaml /etc/kubernetes/pki/cert-tattoo-kubelet.yaml (copies the certificate file to the correct location)
+   sudo chown root cert-tattoo-kubelet.yaml
+   sudo chgrp root cert-tattoo-kubelet.yaml
+   ```
+
+4. Repeat steps 2 and 3 for all worker nodes.
+
+## When running AksHci PowerShell cmdlets, an `Unable to Load DLL` error appears
+
+Antivirus software may be causing this error by blocking the execution of PowerShell binaries that are required to perform cluster operations. An example of a similar error is shown below:
+
+[ ![Deployment: Connecting to remote server localhost failed.](media/known-issues/get-akshcicluster-error.png) ](media/known-issues/get-akshcicluster-error.png#lightbox)
+
+To resolve this issue, verify the following processes and folders (which are required to perform AKS on Azure Stack HCI cluster operations) are excluded from the antivirus software:
+
+Processes:
+- kubectl.exe
+- kvactl.exe
+- mocctl.exe
+- nodectl.exe
+- wssdagent.exe
+- wssdcloudagent.exe
+- kubectl-adsso.exe
+- AksHciHealth.exe
+
+Folders:
+- C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\
+- C:\Program Files\WindowsPowerShell\Modules\TraceProvider\
+- C:\Program Files\WindowsPowerShell\Modules\AksHci\
+- C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\
+- C:\Program Files\WindowsPowerShell\Modules\Az.Resources\
+- C:\Program Files\WindowsPowerShell\Modules\AzureAD\
+- C:\Program Files\WindowsPowerShell\Modules\DownloadSdk\
+- C:\Program Files\WindowsPowerShell\Modules\Kva\
+- C:\Program Files\WindowsPowerShell\Modules\Microsoft.SME.CredSspPolicy\
+- C:\Program Files\WindowsPowerShell\Modules\Moc\
+- C:\Program Files\WindowsPowerShell\Modules\PackageManagement\
+- C:\Program Files\AksHci\
+- C:\AksHci\
 
 ## ContainerD is unable to pull the pause image as _kubelet_ mistakenly collects the image 
 
@@ -25,24 +112,10 @@ To resolve this issue, run the following steps:
    sudo su
    ```
 
-2. Open and edit the `/etc/containerd/config.toml` file and add the following:
-
-   ```
-   [plugin."io.containerd.grpc.v1.cri".registry.configs."ecpacr.azurecr.io".auth]
-   username = "USERNAME_FROM_ME"
-   password = "PASSWORD_FROM_ME"
-   ```
-
-4. Save the `config.toml` file and run the following command:
-
-   ```
-   Systemctl restart containerd
-   ```
-
-5. To pull the image, run the following command:
+2. To pull the image, run the following command:
 
    ```powershell
-   crictl pull ecpacr.azurecr.io/pause:3.2
+   crictl pull --creds aaa:bbb ecpacr.azurecr.io/pause:3.2
    ```
 
 ## Running Remove-AksHciCluster results in the error: _A workload cluster with the name 'my-workload-cluster' was not found_

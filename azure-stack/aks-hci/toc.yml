@@ -21,6 +21,8 @@
       items:
         - name: Deploy applications with Helm
           href: helm-deploy.md
+        - name: Deploy Azure Arc enabled data services
+          href: deploy-arc-data-services.md
 - name: Tutorial
   items:
     - name: 1 - Prepare an application
@@ -67,8 +69,10 @@
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
     - name: Install Azure Kubernetes Service host
       items:
-          - name: Prestaged cluster service objects and DNS records
+          - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
+          - name: With a proxy server
+            href: kubernetes-walkthrough-powershell-proxy.md
     - name: Upgrade the AKS on Azure Stack HCI host
       items:
           - name: Use PowerShell
@@ -89,6 +93,8 @@
             href: stop-start-cluster.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Back up and restore workload clusters using Velero
+            href: backup-workload-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
           - name: Use node pools
@@ -103,6 +109,12 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Configure load balancer
+            href: configure-load-balancer.md
+          - name: Configure a custom load balancer
+            href: configure-custom-load-balancer.md
+          - name: Deploy MetalLB for load balancing
+            href: deploy-metallb.md
     - name: Manage storage
       items:
           - name: Use persistent volume
@@ -127,6 +139,12 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Helper scripts
+      items: 
+          - name: Set up multiple administrators
+            href: set-multiple-administrators.md
+          - name: Remove old PowerShell modules
+            href: https://github.com/Azure/aks-hci/issues/130
     - name: Manage workloads
       items:
           - name: Create and delete pods

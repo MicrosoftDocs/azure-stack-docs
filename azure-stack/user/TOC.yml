@@ -293,8 +293,6 @@
             href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md
-      - name: Deploy Cognitive Services
-        href: azure-stack-solution-template-cognitive-services.md
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
