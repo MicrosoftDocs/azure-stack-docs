@@ -13,8 +13,10 @@ ms.lastreviewed: 10/16/2019
 
 ---
 
-
 # Create MySQL databases in Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
+
 An Azure Stack Hub user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
 
 ## Create a MySQL database
