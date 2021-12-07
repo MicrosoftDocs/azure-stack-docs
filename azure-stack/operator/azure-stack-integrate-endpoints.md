@@ -1,5 +1,5 @@
 ---
-title: Publish Azure Stack Hub services in your datacenter 
+title: Publish Azure Stack Hub services in your datacenter
 description: Learn how to publish Azure Stack Hub services in your datacenter.
 author: PatAltimore
 ms.topic: article
@@ -27,7 +27,7 @@ To make Azure Stack Hub services (like the portals, Azure Resource Manager, DNS,
 
 In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
 
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. 
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints.
 
 ## Ports and protocols (inbound)
 
@@ -69,8 +69,8 @@ Azure Stack Hub supports only transparent proxy servers. In a deployment with a 
 
 SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
 
-> [!Note]  
-> Azure Stack Hub doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints. 
+> [!Note]
+> Azure Stack Hub doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
 
 |Purpose|Destination URL|Protocol / Ports|Source Network|Requirement|
 |---------|---------|---------|---------|---------|
@@ -90,7 +90,7 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |**LDAP GC SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP 3269|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
 |**AD FS**<br>Allows Azure Stack Hub to communicate with on-premise AD FS.|AD FS metadata endpoint provided for AD FS integration|TCP 443|Public VIP - /27|Optional. The AD FS claims provider trust can be created using a [metadata file](azure-stack-integrate-identity.md#setting-up-ad-fs-integration-by-providing-federation-metadata-file).|
 |**Diagnostic log collection**<br>Allows Azure Stack Hub to send logs either proactively or manually by an operator to Microsoft support.|`https://*.blob.core.windows.net`<br>`https://azsdiagprdlocalwestus02.blob.core.windows.net`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com` | HTTPS 443 | Public VIP - /27 |Not required. You can [save logs locally](diagnostic-log-collection.md#save-logs-locally).|
-|**Telemetry**<br>Allows Azure Stack Hub to send telemetry data to Microsoft.|`https://settings-win.data.microsoft.com`<br>`https://login.live.com`<br>`*.events.data.microsoft.com` | HTTPS 443 | Public VIP - /27 | Required when Azure Stack Hub telemetry is enabled. |
+|**Telemetry**<br>Allows Azure Stack Hub to send telemetry data to Microsoft.|`https://settings-win.data.microsoft.com`<br>`https://login.live.com`<br>`*.events.data.microsoft.com`<br>Beginning with version 2108, the following endpoints are also required:<br>`https://*.blob.core.windows.net/`<br>`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` | HTTPS 443 | Public VIP - /27 | Required when Azure Stack Hub telemetry is enabled. |
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. Use a device that supports filtering by URL rather than by IP.
 

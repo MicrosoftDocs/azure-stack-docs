@@ -3,31 +3,45 @@ title: MySQL resource provider maintenance operations - Azure Stack Hub
 description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 author: bryanla
 ms.topic: article
-ms.date: 9/22/2020
+ms.date: 9/26/2020
 ms.author: bryanla
-ms.reviewer: jiahan
-ms.lastreviewed: 01/11/2020
+ms.reviewer: jiadu
+ms.lastreviewed: 09/26/2021
 
 # Intent: As an Azure Stack operator, I want to perform maintenance operations on my MySQL resource provider.
 # Keyword: azure stack mysql resource provider maintenance
 
 ---
 
-
 # MySQL resource provider maintenance operations in Azure Stack Hub
 
-The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
-## Update the VM operating system
+::: moniker range="< azs-2108"
+The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use [PowerShell Just Enough Administration (JEA)](/powershell/scripting/learn/remoting/jea/overview) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
+::: moniker-end
 
-Because the resource provider runs on a *user* VM, you need to apply the required patches and updates when they're released. You can use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
+## Patching and updating
 
-Update the provider VM using one of the following methods:
+The MySQL resource provider isn't serviced as part of Azure Stack Hub because it's an add-on component. Microsoft provides updates to the MySQL resource provider as necessary. 
 
-- Install the latest resource provider package using a currently patched VM image.
-- Install a Windows Update package during the installation or update of the resource provider.
+For MySQL RP V1, When an updated MySQL Server resource provider is released, a script is provided to apply the update. This script creates a new resource provider VM, migrating the state of the old provider VM to the new VM. 
+
+For MySQL RP V2, resource providers are updated using the same update feature that is used to apply Azure Stack Hub updates.
+
+For more information, see [Update the MySQL resource provider](azure-stack-mysql-resource-provider-update.md).
+
+### Update the provider VM
+
+MySQL RP V1 runs on a *user* VM, you need to apply the required patches and updates when they're released. You can install a Windows Update package during the installation of, or update to, the resource provider.
+
+MySQL RP V2 runs on a managed Windows Server that is hidden. You don't need to patch or update the resource provider VM. It will be updated automatically when you update the RP.
+
+::: moniker range="< azs-2108"
 
 ## Update the VM Windows Defender definitions
+
+*These instructions only apply to SQL RP V1 running on Azure Stack Hub Integrated Systems.*
 
 To update the Defender definitions, follow these steps:
 
@@ -84,8 +98,39 @@ $session | Remove-PSSession
 
 ```
 
+## Configure Azure Diagnostics extension for MySQL resource provider
+
+*These instructions only apply to SQL RP V1 running on Azure Stack Hub Integrated Systems.*
+
+The Azure Diagnostics extension is installed on the MySQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the MySQL resource provider operational event logs and IIS logs for troubleshooting and auditing purposes.
+
+1. Sign in to the Azure Stack Hub administrator portal.
+
+2. Select **Virtual machines** from the pane on the left, search for the MySQL resource provider adapter VM and select the VM.
+
+3. In the **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
+   
+   ![Go to diagnostics settings](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
+
+4. Add **Microsoft-AzureStack-DatabaseAdapter/Operational!\*** to collect MySQL resource provider operational event logs.
+
+   ![Add event logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
+
+5. To enable the collection of IIS logs, check **IIS logs** and **Failed request logs**.
+
+   ![Add IIS logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
+
+6. Finally, select **Save** to save all the diagnostics settings.
+
+Once the event logs and IIS logs collection are configured for MySQL resource provider, the logs can be found in a system storage account named **mysqladapterdiagaccount**.
+
+To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview).
+
+::: moniker-end
+
 ## Secrets rotation
 
+::: moniker range="< azs-2108"
 *These instructions only apply to Azure Stack Hub Integrated Systems.*
 
 When using the SQL and MySQL resource providers with Azure Stack Hub integrated systems, the Azure Stack Hub operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
@@ -166,6 +211,128 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 |DependencyFilesLocalPath|Dependency files local path.|Optional|
 |KeyVaultPfxPassword|The password used for generating the Key Vault certificate for database adapter.|Optional|
 
+::: moniker-end
+
+::: moniker range=">= azs-2108"
+
+*These instructions only apply to MySQL RP V2 running on Azure Stack Hub Integrated Systems.*
+
+> [!NOTE]
+> Secret rotation for value-add resource providers (RPs) is currently only supported via PowerShell. 
+
+Like the Azure Stack Hub infrastructure, value-add resource providers use both internal and external secrets. As an operator, you're responsible for:
+
+- Providing updated external secrets, such as a new TLS certificate used to secure resource provider endpoints.
+
+- Managing resource provider secret rotation on a regular basis.
+
+When secrets are nearing expiration, the following alerts are generated in the administrator portal. Completing secret rotation will resolve these alerts:
+
+- Pending internal certificate expiration
+
+- Pending external certificate expiration
+
+### Prerequisites
+
+In preparation for the rotation process:
+
+1. If you haven't already, [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md) before continuing. Version 2.0.2-preview or later is required for Azure Stack Hub secret rotation. For more information, see [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](../operator/migrate-azurerm-az.md).
+
+2. Install Azs.Deployment.Admin 1.0.0 modules: [PowerShell Gallery | Azs.Deployment.Admin 1.0.0](https://www.powershellgallery.com/packages/Azs.Deployment.Admin/1.0.0)
+
+```powershell
+Install-Module -Name Azs.Deployment.Admin
+```
+
+3. If external certificate is nearing expiration, review [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../operator/azure-stack-pki-certs.md#certificate-requirements) for important prerequisite information before acquiring/renewing your X509 certificate, including details on the required PFX format. Also review the requirements specified in the [Optional PaaS certificates section](../operator/azure-stack-pki-certs.md#optional-paas-certificates), for your specific value-add resource provider.
+
+### Prepare a new TLS certificate for external certificate rotation
+
+> [!NOTE]
+> If only internal certificate is nearing expiration, you can skip this section.
+
+Next, create or renew your TLS certificate for securing the value-add resource provider endpoints:
+
+1. Complete the steps in [Generate certificate signing requests (CSRs) for certificate renewal](../operator/azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal) for your resource provider. Here you use the Azure Stack Hub Readiness Checker tool to create the CSR. Be sure to run the correct cmdlet for your resource provider, in the step "Generate certificate requests for other Azure Stack Hub services". For example `New-AzsDbAdapterCertificateSigningRequest` is used for SQL and MySQL RPs. When finished, you submit the generated .REQ file to your Certificate Authority (CA) for the new certificate.
+
+2. Once you've received your certificate file from the CA, complete the steps in [Prepare certificates for deployment or rotation](../operator/azure-stack-prepare-pki-certs.md). You use the Readiness Checker tool again, to process the file returned from the CA.
+
+3. Finally, complete the steps in [Validate Azure Stack Hub PKI certificates](../operator/azure-stack-validate-pki-certs.md). You use the Readiness Checker tool once more, to perform validation tests on your new certificate.
+
+### Rotate the internal certificate
+
+Open an elevated PowerShell console and complete the following steps to rotate the resource provider's external secrets:
+
+1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to use the PowerShell Az cmdlets (instead of AzureRM), and replace all placeholder values, such as endpoint URLs and directory tenant name.
+
+2. Determine the product-id of the resource provider. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
+   - `"name"` - contains the resource provider product ID in the second segment of the value.
+
+   For example, the MySQL RP deployment may have a product ID of `"microsoft.mysqlrp"`.
+
+3. Run the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the internal certificate:
+
+   ```powershell
+   Invoke-AzsProductRotateSecretsAction -ProductId $productId
+   ```
+
+### Rotate the external certificate
+
+You need to first make note of the values for the following parameters.
+
+   | Placeholder | Description | Example value |
+   | ----------- | ----------- | --------------|
+   | `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.mysqlrp` |
+   | `<installed-version>` | The version of the latest resource provider deployment. | `2.0.0.2` |
+   | `<package-id>` | The package ID is built by concatenating the product-id and installed-version. | `microsoft.mysqlrp.2.0.0.2` |
+   | `<cert-secret-name>` | The name under which the certificate secret is stored. | `SSLCert` |
+   | `<cert-pfx-file-path>` | The path to your certificate PFX file. | `C:\dir\dbadapter-cert-file.pfx` |
+   | `<pfx-password>` | The password assigned to your certificate .PFX file. | `strong@CertSecret6` |
+
+Open an elevated PowerShell console and complete the following steps:
+
+1. Sign in to your Azure Stack Hub environment using your operator credentials. See [Connect to Azure Stack Hub with PowerShell](../operator/azure-stack-powershell-configure-admin.md) for PowerShell sign-in script. Be sure to use the PowerShell Az cmdlets (instead of AzureRM), and replace all placeholder values, such as endpoint URLs and directory tenant name.
+
+2. Get the product-id parameter value. Run the `Get-AzsProductDeployment` cmdlet to retrieve a list of the latest resource provider deployments. The returned `"value"` collection contains an element for each deployed resource provider. Find the resource provider of interest and make note of the values for these properties:
+   - `"name"` - contains the resource provider product ID in the second segment of the value. 
+   - `"properties"."deployment"."version"` - contains the currently deployed version number. 
+
+   For example, the MySQL RP deployment may have a product ID of `"microsoft.mysqlrp"`, and version `"2.0.0.2"`.
+
+3. Build the resource provider's package ID, by concatenating the resource provider product ID and version. For example, using the values derived in the previous step, the SQL RP package ID is `microsoft.mysqlrp.2.0.0.2`. 
+
+4. Using the package ID derived in the previous step, run `Get-AzsProductSecret -PackageId` to retrieve the list of secret types being used by the resource provider. In the returned `value` collection, find the element containing a value of `"Certificate"` for the `"properties"."secretKind"` property. This element contains properties for the RP's certificate secret. Make note of the name assigned to this certificate secret, which is identified by the last segment of the `"name"` property, just above `"properties"`. 
+
+   For example, the secrets collection returned for the SQL RP contains a `"Certificate"` secret named `SSLCert`. 
+
+5. Use the `Set-AzsProductSecret` cmdlet to import your new certificate to Key Vault, which will be used by the rotation process. Replace the variable placeholder values accordingly before running the script. 
+
+   ```powershell
+   $productId = '<product-id>'
+   $packageId = $productId + '.' + '<installed-version>'
+   $certSecretName = '<cert-secret-name>' 
+   $pfxFilePath = '<cert-pfx-file-path>'
+   $pfxPassword = ConvertTo-SecureString '<pfx-password>' -AsPlainText -Force   
+   Set-AzsProductSecret -PackageId $packageId -SecretName $certSecretName -PfxFileName $pfxFilePath -PfxPassword $pfxPassword -Force
+   ```
+
+6. Finally, use the `Invoke-AzsProductRotateSecretsAction` cmdlet to rotate the secrets:
+
+   ```powershell
+   Invoke-AzsProductRotateSecretsAction -ProductId $productId
+   ```
+
+### Monitor the secret rotation progress
+
+You can monitor secret rotation progress in either the PowerShell console, or in the administrator portal by selecting the resource provider in the Marketplace service:
+
+![Screen of secret rotation in progress.](media/azure-stack-sql-resource-provider-maintain/sql-mysql-secrete-rotate.png)
+
+> [!NOTE]
+> The secret rotation time might cost more than 10 minutes. After it is done, Status of the resource provider will change to “Installed”.
+
+::: moniker-end
+
 ## Collect diagnostic logs
 
 ::: moniker range=">= azs-2008"
@@ -231,7 +398,7 @@ $session | Remove-PSSession
 ```
 ::: moniker-end
 
-### Known limitations
+### Known limitations of MySQL Server resource provider Version 1
 
 **Limitation**:<br>
 When the deployment, upgrade, or secret rotation script failed, some logs cannot be collected by the standard log collection mechanism.
@@ -239,32 +406,6 @@ When the deployment, upgrade, or secret rotation script failed, some logs cannot
 **Workaround**:<br>
 Besides using the standard log collection mechanism, go to the Logs folder in the extracted folder where the script locates, to find more logs.
 
-## Configure Azure Diagnostics extension for MySQL resource provider
-
-The Azure Diagnostics extension is installed on the MySQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the MySQL resource provider operational event logs and IIS logs for troubleshooting and auditing purposes.
-
-1. Sign in to the Azure Stack Hub administrator portal.
-
-2. Select **Virtual machines** from the pane on the left, search for the MySQL resource provider adapter VM and select the VM.
-
-3. In the **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
-   
-   ![Go to diagnostics settings](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
-
-4. Add **Microsoft-AzureStack-DatabaseAdapter/Operational!\*** to collect MySQL resource provider operational event logs.
-
-   ![Add event logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
-
-5. To enable the collection of IIS logs, check **IIS logs** and **Failed request logs**.
-
-   ![Add IIS logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
-
-6. Finally, select **Save** to save all the diagnostics settings.
-
-Once the event logs and IIS logs collection are configured for MySQL resource provider, the logs can be found in a system storage account named **mysqladapterdiagaccount**.
-
-To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview).
-
 ## Next steps
 
-[Remove the MySQL resource provider](azure-stack-mysql-resource-provider-remove.md)
+[Add MySQL Server hosting servers](azure-stack-mysql-resource-provider-hosting-servers.md)
