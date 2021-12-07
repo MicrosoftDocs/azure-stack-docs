@@ -28,9 +28,7 @@ Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
 
 ```output
 Computer Name Subscription Name           Status   Valid To
-
 ------------- -----------------           ------   --------
-
 MS-HCIv2-01   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
 MS-HCIv2-01   Windows Server Subscription Inactive
 
