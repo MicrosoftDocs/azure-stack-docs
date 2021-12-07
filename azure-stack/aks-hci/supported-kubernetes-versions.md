@@ -130,8 +130,8 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 | 1.23  | Dec 2021 | Jan 2022   | Feb 2022  | 1.26 GA |
 
 > [!NOTE]
-> AKS on Azure Stack HCI and the holiday season: To ease the burden of upgrade and change during the holiday season, AKS on Azure Stack HCI is extending a limited scope of support for all clusters and node pools on Kubernetes version 1.19 as a courtesy. Customers with clusters and node pools on 1.19 after the [announced deprecation date of 2021-11-30](#aks-on-azure-stack-hci-kubernetes-release-calendar) will be granted an extension of capabilities outside the [usual scope of support for deprecated versions](#kubernetes-version-support-policy). 
-> The scope of this limited extension is effective from '12-01-2021 to 01-31-2022' and is limited to the following:
+> To ease the burden of upgrading Kubernetes versions during the period of time between 12-01-2021 and 01-31-2022, AKS on Azure Stack HCI is extending a limited scope of support for all clusters and node pools on Kubernetes version 1.19 as a courtesy. Customers with clusters and node pools using 1.19 after the [announced deprecation date of 2021-11-30](#aks-on-azure-stack-hci-kubernetes-release-calendar) are granted an extension of capabilities outside the [usual scope of support for deprecated versions](#kubernetes-version-support-policy). 
+> The scope of this limited extension is effective from 12-01-2021 to 01-31-2022 and is limited to the following:
 > * Creating new clusters and node pools on version 1.19.
 > * CRUD operations on 1.19 clusters.
 > * Support of non-Kubernetes related platform issues. Platform issues include trouble with networking, storage, or compute running on Azure Stack HCI. Any support requests for Kubernetes patching and troubleshooting will result in a request to upgrade to a supported Kubernetes version.

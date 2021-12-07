@@ -14,9 +14,9 @@ This article describes known issues and errors you may encounter when running an
 
 ## Error: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
 
-This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired. run Sync-AzureStackHCI to renew the subscription`.
+This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
 
-To resolve this error, check that the cluster is registered with Azure. You can do that using the `Get-AzureStackHCI` PowerShell cmdlet that's available on your machine. The Windows Admin Center dashboard also shows status information about the cluster's Azure registration.
+To resolve this error, verify that the cluster is registered with Azure using the `Get-AzureStackHCI` PowerShell cmdlet that's available on your machine. The Windows Admin Center dashboard also shows status information about the cluster's Azure registration.
 
 If the cluster is already registered, then you should view the `LastConnected` field in the output of `Get-AzureStackHCI`. If the field shows it's been more than 30 days, you should attempt to resolve the situation by using the `Sync-AzureStackHCI` cmdlet.
 
@@ -41,7 +41,7 @@ MS-HCIv2-03   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
 MS-HCIv2-03   Windows Server Subscription Inactive
 ```
 
-If the issue isn't resolved after running the `Get-ClusterNode` cmdlet, you should reach out to Microsoft support.
+If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
 
 ## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
 
