@@ -123,7 +123,7 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 
 |  K8s version | Upstream release  | AKS on Azure Stack HCI preview  | AKS on Azure Stack HCI GA  | End of life |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.19*  | Aug-04-20  | Sep 2020   | Nov 2020  | 1.22 GA |
+| 1.19 *(see note)*  | Aug-04-20  | Sep 2020   | Nov 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1.23 GA |
 | 1.21  | Apr-08-21 | May 2021   | Jul 2021  | 1.24 GA |
 | 1.22  | Aug-04-21 | Sept 2021   | Nov 2021  | 1.25 GA |
