@@ -4,10 +4,10 @@ description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/22/2021
+ms.date: 12/6/2021
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 12/2/2020
+ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 
 # Keyword: azure stack api version profiles
