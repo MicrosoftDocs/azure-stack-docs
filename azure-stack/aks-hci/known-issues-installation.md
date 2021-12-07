@@ -12,6 +12,35 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [upgrading](known-issues-upgrade.md).
 
+## Error: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
+
+This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
+
+To resolve this error, verify that the cluster is registered with Azure using the `Get-AzureStackHCI` PowerShell cmdlet that's available on your machine. The Windows Admin Center dashboard also shows status information about the cluster's Azure registration.
+
+If the cluster is already registered, then you should view the `LastConnected` field in the output of `Get-AzureStackHCI`. If the field shows it's been more than 30 days, you should attempt to resolve the situation by using the `Sync-AzureStackHCI` cmdlet.
+
+You can also validate whether each node of your cluster has the required license by using the following cmdlet:
+
+```powershell
+Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
+```
+
+```output
+Computer Name Subscription Name           Status   Valid To
+------------- -----------------           ------   --------
+MS-HCIv2-01   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
+MS-HCIv2-01   Windows Server Subscription Inactive
+
+MS-HCIv2-02   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
+MS-HCIv2-02   Windows Server Subscription Inactive
+
+MS-HCIv2-03   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
+MS-HCIv2-03   Windows Server Subscription Inactive
+```
+
+If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
+
 ## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
 
 This error may occur when there's an infrastructure misconfiguration. Use the following steps to resolve this error:
