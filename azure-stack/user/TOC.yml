@@ -133,6 +133,8 @@
           href: azure-stack-compute-overview.md
         - name: VM considerations
           href: azure-stack-vm-considerations.md
+        - name: Emergency VM access
+          href: emergency-vm-access.md
         - name: VM sizes
           href: azure-stack-vm-sizes.md
         - name: Supported GPU VMs
@@ -279,6 +281,24 @@
             href: /azure/azure-monitor/insights/container-insights-hybrid-setup
           - name: Known issues with AKS engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-known-issues.md
+        - name: Azure Kubernetes Service
+          items:
+          - name: Overview
+            href: aks-overview.md
+          - name: AKS commands
+            href: aks-commands.md
+          - name: Use AKS with CLI
+            href: aks-how-to-use-cli.md
+          - name: Use AKS with portal
+            href: aks-how-to-use-portal.md
+          - name: Deploy test apps
+            href: aks-how-to-push-an-app-cli.md
+          - name: Known issues
+            href: aks-known-issues.md
+          - name: Support
+            href: aks-support.md
+          - name: Troubleshoot
+            href: aks-troubleshoot.md
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
