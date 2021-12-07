@@ -16,7 +16,7 @@ Setting up a witness resource is highly recommended for all clusters, and should
 
 You can either use an SMB file share as a witness or an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. This article covers creating a cloud witness.
 
-Cloud witness uses the HTTPS default port 443 to establish outbound communication with the Azure blob service. Ensure that the HTTPS port is accessible.
+Cloud witness uses the HTTPS default port 443 to establish outbound communication with the Azure blob service. Ensure that the HTTPS port is accessible. Azure uses **.core.windows.net** as the Endpoint. Hence you need to have it included in any firewall allow lists you're using between the cluster and Azure Storage.
 
 ## Before you begin
 
