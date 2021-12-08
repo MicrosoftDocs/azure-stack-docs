@@ -165,7 +165,6 @@
               href: vm-move-specialized.md
             - name: Generalized VM on-prem
               href: vm-move-generalized.md
-
       - name: Storage
         items:
         - name: Overview
@@ -253,12 +252,6 @@
           href: container-registry-troubleshoot.md
         - name: FAQ
           href: container-registry-faq.yml
-    - name: Deploy add-on services
-      items:
-      - name: Deploy Ethereum
-        href: azure-stack-ethereum.md
-      - name: Deploy a Service Fabric cluster
-        href: azure-stack-solution-template-service-fabric-cluster.md
       - name: Deploy a Kubernetes cluster
         items:
         - name: AKS engine
@@ -329,6 +322,12 @@
             href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md
+    - name: Deploy add-on services
+      items:
+      - name: Deploy Ethereum
+        href: azure-stack-ethereum.md
+      - name: Deploy a Service Fabric cluster
+        href: azure-stack-solution-template-service-fabric-cluster.md
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
