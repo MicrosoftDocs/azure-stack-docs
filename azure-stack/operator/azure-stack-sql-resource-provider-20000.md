@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub SQL resource provider 2.0.00.x release notes 
-description: View the release notes to see what's new in the Azure Stack Hub SQL resource provider 2.0.00.x update.
+title: Azure Stack Hub SQL resource provider 2.0.6.x release notes 
+description: View the release notes to see what's new in the Azure Stack Hub SQL resource provider 2.0.6.x update.
 author: caoyang
 ms.topic: article
 ms.date: 08/17/2021
@@ -8,13 +8,13 @@ ms.author: caoyang
 ms.reviewer: jiadu
 ms.lastreviewed: 08/17/2021
 
-# Intent: As an Azure Stack Hub operator, I want the release notes for the SQL resource provider 2.0.00.x update.
-# Keyword: azure stack hub sql resource provider 2.0.00.x release notes
+# Intent: As an Azure Stack Hub operator, I want the release notes for the SQL resource provider 2.0.6.x update.
+# Keyword: azure stack hub sql resource provider 2.0.6.x release notes
 ---
 
-# SQL resource provider 2.0.00.x release notes
+# SQL resource provider 2.0.6.x release notes
 
-These release notes describe the improvements and known issues in SQL resource provider version 2.0.00.x.
+These release notes describe the improvements and known issues in SQL resource provider version 2.0.6.x.
 
 ## Build reference
 Starting from this release, SQL resource provider becomes a standard Azure Stack Hub value-add RP. If you want to get access to the SQL resource provider in Azure Stack Hub marketplace, [open a support case](../operator/azure-stack-help-and-support-overview.md) to add your subscription to the allowlist. 
@@ -25,7 +25,7 @@ It is required that you apply the minimum supported Azure Stack Hub update to yo
 
 > |Supported Azure Stack Hub version|SQL resource provider version|
 > |-----|-----|
-> |Version 2108|SQL RP version 2.0.00.x|  
+> |Version 2108|SQL RP version 2.0.6.0|  
 > |     |     |
 
 > [!IMPORTANT]
