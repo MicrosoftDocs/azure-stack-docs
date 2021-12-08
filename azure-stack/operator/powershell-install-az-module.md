@@ -133,8 +133,8 @@ Installation has five steps:
 
 ### Install Azure Stack Hub PowerShell
 
-::: moniker range=">=azs-2108"
-Azure Stack Hub 2102 or later.
+::: moniker range=">=azs-2102"
+Azure Stack Hub 2108 or later.
 
 You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
@@ -150,7 +150,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 ```
 ::: moniker-end
 ::: moniker range="<=azs-2102"
-Azure Stack Hub 2102 or later.
+Azure Stack Hub 2102.
 
 You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
