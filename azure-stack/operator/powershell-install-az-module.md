@@ -99,10 +99,10 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
     
     Install-Module -Name Az.BootStrapper -Force
     Install-AzProfile -Profile 2020-09-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.0.0 
+    Install-Module -Name AzureStack -RequiredVersion 2.2.0 
     ```
 ::: moniker-end
-::: moniker range="<=azs-2108"
+::: moniker range="<=azs-2102"
 3. Run the following command from a PowerShell session:
 
     ```powershell  
@@ -110,7 +110,7 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
     
     Install-Module -Name Az.BootStrapper -Force
     Install-AzProfile -Profile 2020-09-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.1.1 
+    Install-Module -Name AzureStack -RequiredVersion 2.1.1
     ```
 ::: moniker-end
 
@@ -133,7 +133,7 @@ Installation has five steps:
 
 ### Install Azure Stack Hub PowerShell
 
-::: moniker range=">=azs-2102"
+::: moniker range=">=azs-2108"
 Azure Stack Hub 2108 or later.
 
 You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
