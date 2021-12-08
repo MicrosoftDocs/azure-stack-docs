@@ -44,7 +44,7 @@ The MySQL resource provider runs as a service on a special Add-on RP Windows Ser
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2108|MySQL RP version 2.0.0.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2102, 2008, 2005|[MySQL RP version 1.1.93.1](https://aka.ms/azshmysqlrp11931)|Microsoft AzureStack Add-on RP Windows Server|
   |     |     |     |
 
