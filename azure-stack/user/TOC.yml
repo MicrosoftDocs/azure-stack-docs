@@ -237,6 +237,22 @@
           href: azure-stack-metrics-supported.md
         - name: Consume Azure monitoring data
           href: azure-stack-metrics-monitor.md
+      - name: Container Registry
+        items:
+        - name: Overview
+          href: container-registry-overview.md
+        - name: Add and manage container registry
+          href: container-registry-how-to-use-portal.md
+        - name: Use Azure CLI
+          href: container-registry-use-cli.md
+        - name: Supported commands
+          href: container-registry-commands.md
+        - name: Deploy image to AKS cluster
+          href: container-registry-deploy-image-aks-cluster.md
+        - name: Troubleshoot
+          href: container-registry-troubleshoot.md
+        - name: FAQ
+          href: container-registry-faq.yml
     - name: Deploy add-on services
       items:
       - name: Deploy Ethereum
