@@ -40,7 +40,7 @@ If you have already deployed SQL RP V2, and want to check for updates, check [Ho
 
 If you want to update from SQL RP V1 to SQL RP V2, make sure you have first updated to SQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from SQl RP V1 to SQL RP V2.
 
-## Update from SQL RP V1.1.93.x to SQL RP V2.0.00.0
+## Update from SQL RP V1.1.93.x to SQL RP V2.0.6.0
 
 ### Prerequisites
 
