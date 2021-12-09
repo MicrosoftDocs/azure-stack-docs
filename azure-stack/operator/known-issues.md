@@ -4,9 +4,9 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/06/2021
+ms.date: 12/08/2021
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
@@ -37,11 +37,11 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker range="azs-2108"
 ## Update
 
-### Update to 2108 will not proceed if there are AKS clusters created and the private preview of AKS service is installed
+### Update to 2108 will not proceed if there are AKS clusters or ACR registries created and the private previews of AKS and ACR services are installed
 
-- Applicable: This issue applies to Azure Kubernetes Service (AKS) private preview customers who plan to upgrade to 2108.
-- Remediation: The operator must delete all AKS clusters and uninstall the private preview of the AKS service.
-- Occurrence: Any stamp that has the AKS private preview installed will experience this message.
+- Applicable: This issue applies to Azure Kubernetes Service (AKS) and Azure Container Registry (ACR) private preview customers who plan to upgrade to 2108.
+- Remediation: The operator must delete all AKS clusters and ACR Registries and uninstall the private preview of the AKS and ACR services.
+- Occurrence: Any stamp that has the AKS and ACR private previews installed will experience this message.
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
@@ -72,7 +72,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to the public preview release of Azure Container Registry on Azure Stack Hub.
 - Cause: Seven days following the installation of Container Registry, the operator experience in the admin portal may prompt the operator to install Container Registry again. The service is operating normally but the operator experience is not available. Tenants are able to create and manage container registries.
 - Remediation: No remediation available, will be addressed in an upcoming hotfix.
-- Occurence: Common
+- Occurrence: Common
 
 ### Administrative subscriptions
 
