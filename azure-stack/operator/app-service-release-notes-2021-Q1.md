@@ -130,7 +130,7 @@ This script must be run under the following conditions
     - appservice_hosting_WebWorkerManager
     - appservice_metering_Common
     - appservice_metering_Operations
-    - All WebWorker logins - which are in the form WebWorker_<instance ip address>
+    - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
 ```sql
         USE appservice_hosting
@@ -213,7 +213,7 @@ This script must be run under the following conditions
   - Action: Allow
   - Priority: 710
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
-  
+
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
 - Custom domains are not supported in disconnected environments
