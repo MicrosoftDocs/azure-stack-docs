@@ -36,7 +36,7 @@ Make sure you always have the latest PowerShell modules installed on the AKS on 
 > You should close all open PowerShell windows and then open a fresh session to run the update command. If you do not close all PowerShell windows, you may end up with modules that are in-use and can't be updated.
 
 ```powershell
-Update-Module -Name AksHci -Force
+Update-Module -Name AksHci -Force -AcceptLicense
 ```
 
 ### Get current AKS on Azure Stack HCI version
