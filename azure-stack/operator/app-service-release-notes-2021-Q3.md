@@ -118,7 +118,7 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 - Updated load balancer health probes on Front Ends and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front End role instance(s) when not in Ready state.
 
-- Aligned per site temporary directory quota size with Azure, limit on Dedicated Workers is 10GB, Shared Workers is 500MB
+- Aligned per site temporary directory quota size with Azure, limit on Dedicated Workers is 10 GB, Shared Workers is 500 MB
 
 - Added algorithm to Log Scavenger routines to prevent workers entering repair loop in event generated http logs exceed available space on worker.
 
