@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/09/2021
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/23/2020
@@ -103,7 +103,7 @@ Azure App Service on Azure Stack Update Q3 includes the following improvements a
 
 - Moved wait for Management Servers step outside of Deploy Cloud step during installation to improve reliability of deployment and upgrade
 
-- Issue whereby workers fail to complete the health check exercise due to worker runtime log file folder size violating quota limit after error in clean-up logic.  Clean-up logic has been fixed in this update.
+- Issue whereby workers fail to complete the health check exercise due to worker runtime log file folder size, violating quota limit after error in clean-up logic.  Clean-up logic has been fixed in this update.
 
 ## Pre-Update steps
 
