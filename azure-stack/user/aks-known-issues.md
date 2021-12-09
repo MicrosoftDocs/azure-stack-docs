@@ -50,7 +50,7 @@ No. The service principal (SPN) is not automatically created as in Azure (no MSI
 
  - The AKS service is limited to 50 nodes per subscription in the public preview.
  
- - [Azure Kubernetes Service (AKS) PowerShell](https://docs.microsoft.com/powershell/module/az.aks) is not supported in the public preview.
+ - [Azure Kubernetes Service (AKS) PowerShell](/powershell/module/az.aks) is not supported in the public preview.
 
  - For the public preview, no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added. This means that only Windows containers can be deployed to these clusters, no Linux containers can be deployed. For example, a Linux based Ingress Controller will not work in Windows clusters.
 
