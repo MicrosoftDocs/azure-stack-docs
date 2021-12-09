@@ -112,7 +112,7 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 - Customers can successfully upload and delete private certificates in the tenant portal
 
-- Issue resolved whereby FrontEnd role instancess can remain in Auto Repair loop because of a missing dependency in Functions scaling components
+- Issue resolved whereby FrontEnd role instances can remain in Auto Repair loop because of a missing dependency in Functions scaling components
 
 - Resolved Single Sign On Failures to SCM Site because of changes in AAD endpoints
 
