@@ -102,7 +102,7 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 ## Issues fixed in this release
 
-- App Service can now be deployed when running the installer from a FIPS Compliant Client machine
+- App Service can now be deployed when running the installer from a FIPS-Compliant Client machine
 
 - App Service Role Health is now automatically checked before completing App Service secret rotation procedures.  If all roles not in ready state, secret rotation will be blocked
 
@@ -112,11 +112,11 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 - Customers can successfully upload and delete private certificates in the tenant portal
 
-- Issue resolved whereby Front Ends can remain in Auto Repair loop due to missing dependency in Functions scaling components
+- Issue resolved whereby FrontEnd role instancess can remain in Auto Repair loop because of a missing dependency in Functions scaling components
 
-- Resolved Single Sign On Failures to SCM Site due to changes in AAD endpoints
+- Resolved Single Sign On Failures to SCM Site because of changes in AAD endpoints
 
-- Updated load balancer health probes on Front Ends and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front End role instance(s) when not in Ready state.
+- Updated load balancer health probes on Front-End roles and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front-End role instance(s) when not in Ready state.
 
 - Aligned per site temporary directory quota size with Azure, limit on Dedicated Workers is 10 GB, Shared Workers is 500 MB
 
