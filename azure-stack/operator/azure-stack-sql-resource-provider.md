@@ -15,8 +15,9 @@ ms.lastreviewed: 10/25/2019
 
 ---
 
-
 # Use SQL databases on Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Use the SQL resource provider to offer SQL databases on [Azure Stack Hub](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
 
@@ -30,6 +31,7 @@ Limitations to consider before installing the SQL resource provider:
 - Databases from different users in different subscriptions may be located on the same database server instance. The RP doesn't provide any mechanism for isolating databases on different hosts or database server instances.
 - The RP doesn't provide any reporting on tenant usage of databases.
 - You can only move a SQL hosting server to another subscription in global Azure. Azure Stack Hub doesn't support moving a SQL hosting server to another subscription.
+- The RP doesn't monitor the SQL Server's health.
 
 For traditional SQL Server workload on premises, SQL Server virtual machine on Azure Stack Hub is recommended.
 

@@ -3,13 +3,13 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/27/2021
+ms.date: 10/29/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
-> Applies to: Azure Stack HCI, version v20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
@@ -103,7 +103,7 @@ Add-LocalGroupMember -Group "Administrators" -Member "king@contoso.local"
 The next step is to install required Windows roles and features on every server for the cluster. Here are the roles to install:
 
 - BitLocker
-- Data Center Bridging (for RoCEv2 network adapters)
+- Data Center Bridging
 - Failover Clustering
 - File Server
 - FS-Data-Deduplication module
@@ -111,12 +111,13 @@ The next step is to install required Windows roles and features on every server 
 - Hyper-V PowerShell
 - RSAT-AD-Clustering-PowerShell module
 - RSAT-AD-PowerShell module
+- NetworkATC
 - Storage Replica (for stretched clusters)
 
 Use the following command for each server:
 
 ```powershell
-Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
 ```
 
 To run the command on all servers in the cluster at the same time, use the following script, modifying the list of variables at the beginning to fit your environment:
@@ -124,13 +125,16 @@ To run the command on all servers in the cluster at the same time, use the follo
 ```powershell
 # Fill in these variables with your values
 $ServerList = "Server1", "Server2", "Server3", "Server4"
-$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "Storage-Replica"
+$FeatureList = "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica"
 
 # This part runs the Install-WindowsFeature cmdlet on all servers in $ServerList, passing the list of features in $FeatureList.
 Invoke-Command ($ServerList) {
     Install-WindowsFeature -Name $Using:Featurelist -IncludeAllSubFeature -IncludeManagementTools
 }
 ```
+
+> [!NOTE]
+> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
 
 Next, restart all the servers:
 
@@ -139,15 +143,8 @@ $ServerList = "Server1", "Server2", "Server3", "Server4"
 Restart-Computer -ComputerName $ServerList -WSManAuthentication Kerberos
 ```
 
-## Step 2: Configure host networking
 
-We no longer recommend that you configure host networking manually.
-
-If you are an [Azure Stack HCI preview channel](../manage/preview-channel.md) customer, see [Host networking with Network ATC](network-atc.md) to deploy host networking. 
-
-Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
-
-## Step 3: Prep for cluster setup
+## Step 2: Prep for cluster setup
 
 Next, verify that your servers are ready for clustering.
 
@@ -171,7 +168,7 @@ Use `Get-ClusterNetwork` to show all cluster networks:
 Get-ClusterNetwork
 ```
 
-### Step 3.1: Prepare drives
+### Step 2.1: Prepare drives
 
 Before you enable Storage Spaces Direct, ensure your permanent drives are empty. Run the following script to remove any old partitions and other data.
 
@@ -199,7 +196,7 @@ Invoke-Command ($ServerList) {
 } | Sort -Property PsComputerName, Count
 ```
 
-### Step 3.2: Test cluster configuration
+### Step 2.2: Test cluster configuration
 
 In this step, you'll ensure that the server nodes are configured correctly to create a cluster. The `Test-Cluster` cmdlet is used to run tests to verify your configuration is suitable to function as a hyperconverged cluster. The example below uses the `-Include` parameter, with the specific categories of tests specified. This ensures that the correct tests are included in the validation.
 
@@ -207,7 +204,7 @@ In this step, you'll ensure that the server nodes are configured correctly to cr
 Test-Cluster –Node $ServerList –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
 ```
 
-## Step 4: Create the cluster
+## Step 3: Create the cluster
 
 You are now ready to create a cluster with the server nodes that you have validated in the preceding steps.
 
@@ -231,6 +228,72 @@ Get-Cluster -Name $ClusterName | Get-ClusterResource
 ```
 
 If resolving the cluster isn't successful after some time, in most cases you can connect by using the name of one of the clustered servers instead of the cluster name.
+
+## Step 4: Configure host networking
+
+Microsoft recommends using [Network ATC](./network-atc.md) to deploy host networking if you're running Azure Stack HCI version 21H2 or newer. Otherwise, see [Host network requirements](../concepts/host-network-requirements.md) for specific requirements and information.
+
+Network ATC can automate the deployment of your intended networking configuration if you specify one or more of the following intents for an adapter:
+
+- Compute – adapters will be used to connect virtual machines traffic to the physical network
+- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
+- Management – adapters will be used for management access to nodes
+
+### Step 4.1: Review physical adapters
+
+On one of the cluster nodes, run `Get-NetAdapter` to review the physical adapters. Ensure that each node in the cluster has the same named physical adapters and that they report status as 'Up'.
+
+```powershell
+Get-NetAdapter -Name pNIC01, pNIC02 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
+```
+
+If a physical adapter name varies across nodes in your cluster, you can rename it using `Rename-NetAdapter`. 
+
+```powershell
+Rename-NetAdapter -Name oldName -NewName newName
+```
+
+### Step 4.2: Configure an intent
+
+In this example, an intent is created that specifies the compute and storage intent. See [Simplify host networking with Network ATC](./network-atc.md) for more intent examples. 
+
+Run the following command to add the storage and compute intent types to pNIC01 and pNIC02. Note that we specify the `-ClusterName` parameter.
+
+```powershell
+Add-NetIntent -Name Cluster_ComputeStorage -Compute -Storage -ClusterName $ClusterName -AdapterName pNIC01, pNIC02
+```
+
+The command should immediately return after some initial verification. The cmdlet checks that each node in the cluster has:
+- the adapters specified
+- adapters report status 'Up'
+- adapters ready to be teamed to create the specified vSwitch
+
+### Step 4.3: Validate intent deployment
+
+Run the `Get-NetIntent` cmdlet to see the cluster intent. If you have more than one intent, you can specify the `Name` parameter to see details of only a specific intent.
+
+```powershell
+Get-NetIntent -ClusterName $ClusterName
+```
+
+To see the provisioning status of the intent, run the `Get-NetIntentStatus` command:
+
+```powershell
+Get-NetIntentStatus -ClusterName $ClusterName -Name Cluster_ComputeStorage
+```
+
+Note the status parameter that shows Provisioning, Validating, Success, Failure.
+
+Status should display success in a few minutes. If this doesn't occur or you see a Status parameter failure, check the event viewer for issues.
+ 
+Check that the configuration has been applied to all cluster nodes. For this example, check that the VMSwitch was deployed on each node in the cluster and that host virtual NICs were created for storage.
+
+```powershell
+Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
+```
+
+> [!NOTE]
+> At this time, Network ATC does not configure IP addresses for any of its managed adapters. Once `Get-NetIntentStatus` reports status completed, you should add IP addresses to the adapters.
 
 ## Step 5: Set up sites (stretched cluster)
 
@@ -343,3 +406,4 @@ Now that you are done, there are still some important tasks you need to complete
 
 - Register your cluster with Azure. See [Connect Azure Stack HCI to Azure](register-with-azure.md).
 - Do a final validation of the cluster. See [Validate an Azure Stack HCI cluster](validate.md)
+- Manage host networking. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).

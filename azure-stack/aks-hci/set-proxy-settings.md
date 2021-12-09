@@ -9,6 +9,9 @@ author: mkostersitz
 ---
 # Use proxy server settings on AKS on Azure Stack HCI
 
+> [!NOTE]
+> This topic covers how to configure proxy settings for AKS on Azure Stack HCI. If you want to use Arc enabled Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) when you configure proxy settings for AKS on Azure Stack HCI. 
+
 If your network requires the use of a proxy server to connect to the internet, this topic walks you through the steps required to set up proxy support on AKS on Azure Stack HCI using the **AksHci** PowerShell module. You can set up proxy configurations for an AKS host installation using the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command. There are different sets of steps depending on whether the proxy server requires authentication.
 
 Once you have configured your deployment using the options listed below, you can [install an AKS host on Azure Stack HCI](./kubernetes-walkthrough-powershell.md) and [create AKS clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
@@ -57,7 +60,7 @@ Set-AksHciConfig -proxySetting $proxySetting -...
 
 In most networks, you'll need to exclude certain networks, hosts, or domains from being accessed through the proxy server. You can exclude these things by exempting address strings using the `-noProxy` parameter in [`New-AksHciProxySetting`](./reference/ps/new-akshciproxysetting.md).
 
-The default value for `proxyServerNoProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`
+The default value for `proxyServerNoProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`.
 
 When you run this command, the following are excluded:
 

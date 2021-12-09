@@ -1,15 +1,15 @@
 ---
 title: Enable volume encryption, deduplication, and compression - Azure Stack HCI
 description: This topic covers how to use volume encryption, deduplication, and compression in Azure Stack HCI using Windows Admin Center.
-author: JohnCobb1
-ms.author: v-johcob
+author: JohnMarlin-MSFT
+ms.author: johnmar
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 11/05/2021
 ---
 
 # Enable volume encryption, deduplication, and compression in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI using Windows Admin Center. It also covers how to enable deduplication and compression on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
 
@@ -17,14 +17,17 @@ This topic covers how to enable encryption with BitLocker on volumes in Azure St
 To turn on BitLocker in Windows Admin Center:
 
 1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
+
+    >[!NOTE]
+    > To use a new feature that provides an additional locally held BitLocker key and not rely on Active Directory, you must use Windows PowerShell. The new feature is only available in Windows Server 2022 and Azure Stack HCI, version 21H2. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+
 1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
 
     :::image type="content" source="media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
 
 1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
 
->[!NOTE]
-   > If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
+   If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
 ## Turn on deduplication and compression
 Deduplication and compression are managed per volume. Deduplication and compression use a post-processing model, which means that you won't see savings until it runs. When it does, it will work over all files, even files that were there from before.

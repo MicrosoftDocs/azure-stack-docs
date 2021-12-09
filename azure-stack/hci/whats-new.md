@@ -2,20 +2,54 @@
 title: What's new in Azure Stack HCI
 description: Find out what's new in Azure Stack HCI
 ms.topic: overview
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/09/2021
+ms.date: 11/02/2021
 ---
 
 # What's new in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-## What's new in Azure Stack HCI
+## What's new in Azure Stack HCI, version 21H2
 
-Windows Admin Center version 2103 adds a number of features and improvements to Azure Stack HCI, version 20H2, including the following:
+Windows Admin Center version 2110 added a number of features and improvements to Azure Stack HCI, including the following:
+
+- **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
+
+- **Windows Admin Center platform upgraded to Angular 11**: Upgrading the front-end of our platform from Angular 7 to Angular 11 enhances security and performance across the product. We also updated our SDK so that extension developers can use it too.
+
+- **Virtual Machine tool improvements**: We’ve improved the tool’s performance and you can now create VHDs when adding a new disk to your VM.
+
+- **New Security tool**: This new tool centralizes some key security settings for servers and clusters, including the ability to easily view the Secured-core status of systems.
+
+- **New features when creating volumes on clusters**: The Volumes tool in Cluster Manager now can create volumes with thin provisioning, nested resiliency, and optional stretched cluster features. 
+
+- **Feature updates for Azure Stack HCI**: The Updates tool has an improved history page and can upgrade clusters to Azure Stack HCI, version 21H2.
+
+- **Automatic VM activation**: You can now set up Azure Stack HCI clusters to automatically activate Windows Server VMs (this was previously available via an extension update). To do so, connect to the cluster and then go to Settings > Activate Windows Server VMs.
+
+- **Set up SDN at any time**: You can now set up SDN after creating the cluster in addition to during cluster creation.
+
+- **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
+
+Clusters running Azure Stack HCI, version 21H2 have the following new features:
+
+- **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
+- **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
+- **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
+- **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
+- **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
+- **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
+- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
+
+To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+## What's new in Azure Stack HCI, version 20H2
+
+Windows Admin Center version 2103 added a number of features and improvements to Azure Stack HCI, version 20H2, including the following:
 
 - **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
 

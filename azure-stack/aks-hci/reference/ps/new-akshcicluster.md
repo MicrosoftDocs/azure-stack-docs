@@ -24,6 +24,7 @@ New-AksHciCluster -name <String>
                  [-windowsNodeCount <int>]
                  [-controlPlaneVmSize <VmSize>]
                  [-loadBalancerVmSize <VmSize>]
+                 [-loadBalancerSettings <loadBalancer>]
                  [-linuxNodeVmSize <VmSize>]
                  [-windowsNodeVmSize <VmSize>]
                  [-taints <Taint>]
@@ -242,6 +243,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -loadBalancerSettings
+The load balancer setting object that is created with [New-AksHciLoadBalancerSetting](new-akshciloadbalancersetting.md).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -linuxNodeCount 
 The number of Linux nodes in your Kubernetes cluster. Default is one. **This parameter will be deprecated in a future release.**
 
@@ -319,7 +335,7 @@ Accept wildcard characters: False
 ```
 
 ### -nodeMaxPodCount
-The maximum number of pods deployable to a node. This number must at least by 50.
+The maximum number of pods deployable to a node. This number needs to be greater than 50.
 
 ```yaml
 Type: System.Int32

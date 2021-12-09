@@ -1,8 +1,8 @@
 ---
 title: Quickstart to create an Azure Stack HCI cluster and register it with Azure
 description: Learn how to deploy Azure Stack HCI, create a cluster using Windows Admin Center, and register it with Azure.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -11,7 +11,7 @@ ms.date: 10/06/2021
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure
 
-> Applies to: Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 In this quickstart, you'll learn how to deploy a two-server, single-site Azure Stack HCI cluster and register it with Azure. For multisite deployments, see the [Stretched clusters overview](../concepts/stretched-clusters.md).
 
@@ -19,7 +19,7 @@ In this quickstart, you'll learn how to deploy a two-server, single-site Azure S
 
 Before creating a cluster, do the following:
 
-* Purchase two servers from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
+* Purchase two servers from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner with the Azure Stack HCI operating system pre-installed. Review the [system requirements](../concepts/system-requirements.md) to make sure the hardware you select will support the workloads you plan to run on the cluster. We recommend using a system with high-speed network adapters that use iWARP for simple configuration.
 * Create a user account that’s a member of the local Administrators group on each server.
 * Create an Active Directory domain controller on-premises, if you don't already have one.
 

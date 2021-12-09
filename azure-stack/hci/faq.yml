@@ -3,11 +3,11 @@ metadata:
   title: Azure Stack HCI FAQ
   description: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
   ms.topic: conceptual
-  author: JohnCobb1
-  ms.author: v-johcob
+  author: cosmosdarwin
+  ms.author: cosdar
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 3/24/2021
+  ms.date: 10/15/2021
     
 title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
@@ -74,6 +74,10 @@ sections:
       - question: How does Azure Stack HCI relate to Windows Server?
         answer: |
           Windows Server is the foundation of nearly every Azure product, and all the features you value continue to release with support in Windows Server. The initial offering of Azure Stack HCI was based on Windows Server 2019 and used the traditional Windows Server licensing model. Today, Azure Stack HCI has its own operating system and subscription-based licensing model. Azure Stack HCI is the recommended way to deploy HCI on-premises, using Microsoft-validated hardware from our partners.
+
+      - question: Which guest operating systems are supported on Azure Stack HCI?
+        answer: |
+          Azure Stack HCI supports several guest operating systems. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
       - question: Can I upgrade from Windows Server 2019 to Azure Stack HCI?
         answer: |

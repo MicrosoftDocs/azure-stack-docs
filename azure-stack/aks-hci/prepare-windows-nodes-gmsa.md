@@ -9,7 +9,7 @@ ms.author: v-susbo
 
 # Configure group Managed Service Account with AKS on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 To use AD Authentication, you can configure a Windows container to run with a group Managed Service Account (gMSA) for containers with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without having to know the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
 
@@ -40,6 +40,7 @@ To run a Windows container with a group managed service account, you need the fo
 - An Active Directory domain with at least one domain controller running Windows Server 2012 or later. There are no forest or domain functional level requirements to use gMSAs, but the gMSA passwords can only be distributed by domain controllers running Windows Server 2012 or later. For more information, see [Active Directory requirements for gMSAs](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req).
 - Permission to create a gMSA account. To create a gMSA account, you'll need to be a Domain Administrator or use an account that has been given the permission to create msDS-GroupManagedServiceAccount objects.
 - Access to the internet to download the [CredentialSpec](https://aka.ms/credspec) PowerShell module. If you're working in a disconnected environment, you can [save the module](/powershell/module/powershellget/save-module?preserve-view=true&view=powershell-5.1) on a computer with internet access and copy it to your development machine or container host.
+- To ensure gMSA and AD authentication work, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with a domain controller or another time source. You should also make sure Hyper-V is configured to synchronize time to any virtual machines.
 
 ## Prepare the gMSA in the domain controller
 

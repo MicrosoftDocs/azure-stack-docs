@@ -3,16 +3,18 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: v-dasis
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 10/22/2021
 ms.author: v-dasis
 ms.reviewer: JasonGerend
 ---
 
 # Host network requirements for Azure Stack HCI
 
-> Applies to Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
+
+For information on how to simplify host networking using Network ATC, see [Simplify host networking with Network ATC](../deploy/network-atc.md).
 
 ## Network traffic types
 
@@ -89,7 +91,7 @@ For more information on deploying RDMA, download the document from the [SDN GitH
 
 #### iWARP
 
-iWARP uses the Transmission Control Protocol (TCP), and can be optionally enhanced with Data Center Bridging (DCB) Priority-based Flow Control (PFC) and Enhanced Transmission Service (ETS).
+iWARP uses Transmission Control Protocol (TCP), and can be optionally enhanced with Priority-based Flow Control (PFC) and Enhanced Transmission Service (ETS).
 
 Use iWARP if:
 
@@ -101,7 +103,7 @@ Use iWARP if:
 
 #### RoCE
 
-RoCE uses User Datagram Protocol (UDP), and requires DCB PFC and ETS to provide reliability.
+RoCE uses User Datagram Protocol (UDP), and requires PFC and ETS to provide reliability.
 
 Use RoCE if:
 
@@ -259,8 +261,8 @@ The following assumptions are made for this example:
 Here is the example bandwidth allocation table:
 
 |NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|10 Gbps|20 Gbps|10 Gbps|70%|7 Gbps|*|*|2%|200 Mbps|
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+|10 Gbps|20 Gbps|10 Gbps|70%|7 Gbps|*|*|2%|200 Mbps||
 |25 Gbps|50 Gbps|25 Gbps|70%|17.5 Gbps|29%|7.25 Gbps|1%|250 Mbps|
 |40 Gbps|80 Gbps|40 Gbps|70%|28 Gbps|29%|11.6 Gbps|1%|400 Mbps|
 |50 Gbps|100 Gbps|50 Gbps|70%|35 Gbps|29%|14.5 Gbps|1%|500 Mbps|
@@ -333,7 +335,7 @@ The following shows the details for the example stretched cluster configuration.
 #### SiteA – Stretched replication, RDMA disabled, routable between sites
 
 |Node name|vNIC name|Physical NIC (mapped)|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|-----|
 |NodeA1|Stretch1|pNIC01|173.0.0.1/8|Cross-Site Routable|
 |NodeA2|Stretch1|pNIC01|173.0.0.2/8|Cross-Site Routable|
 |NodeA1|Stretch2|pNIC02|174.0.0.1/8|Cross-Site Routable|
@@ -342,7 +344,7 @@ The following shows the details for the example stretched cluster configuration.
 #### SiteB – Stretched replication, RDMA disabled, routable between sites
 
 |Node name|vNIC name|Physical NIC (mapped)|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|-----|
 |NodeB1|Stretch1|pNIC01|175.0.0.1/8|Cross-Site Routable|
 |NodeB2|Stretch1|pNIC01|175.0.0.2/8|Cross-Site Routable|
 |NodeB1|Stretch2|pNIC02|176.0.0.1/8|Cross-Site Routable|
@@ -351,6 +353,7 @@ The following shows the details for the example stretched cluster configuration.
 ## Next steps
 
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
+- Learn how to simplify host networking using Network ATC. See [Simplify host networking with Network ATC](../deploy/network-atc.md).
 - Brush up on [failover clustering networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
 - For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
 - For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).

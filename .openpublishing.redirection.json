@@ -91,10 +91,25 @@
       "redirect_document_id": false
     },
     { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v0.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v1.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q3#known-issues-update", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v2.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q2#known-issues-update", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/known-issues-vn.md", 
       "redirect_url": "/azure-stack/operator/known-issues", 
       "redirect_document_id": false
-    },
+    },    
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
@@ -117,9 +132,14 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-102", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
       "redirect_document_id": false
-    },     
+    },
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-111.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
+      "redirect_document_id": false
+    },         
     { 
       "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
@@ -867,11 +887,6 @@
       "redirect_document_id": true
     },
     { 
-      "source_path": "azure-stack/hci/manage/azure-site-recovery.md", 
-      "redirect_url": "/windows-server/manage/windows-admin-center/azure/azure-site-recovery", 
-      "redirect_document_id": false
-    },
-    { 
       "source_path": "azure-stack/hci/manage/use-azure-backup.md", 
       "redirect_url": "/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines", 
       "redirect_document_id": false
@@ -1179,6 +1194,11 @@
     {
       "source_path": "azure-stack/hci/manage/configure-firewalls.md",
       "redirect_url": "/azure-stack/hci/concepts/firewall-requirements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-template-cognitive-services.md",
+      "redirect_url": "/azure/cognitive-services/cognitive-services-container-support",
       "redirect_document_id": false
     }
   ]

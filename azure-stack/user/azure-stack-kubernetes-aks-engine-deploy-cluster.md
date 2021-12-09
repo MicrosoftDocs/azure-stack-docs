@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 6/25/2021
+ms.date: 11/16/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 6/25/2021
+ms.lastreviewed: 11/16/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -218,6 +218,17 @@ Check your cluster by connect to **kubectl**, getting the info, and then the sta
     k8s-master-29969128-1      Ready      master   9d    v1.15.5
     k8s-master-29969128-2      Ready      master   9d    v1.15.5
     ```
+
+## Troubleshoot cluster deployment
+
+When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
+
+1.  Are you using the correct Service Principal credentials (SPN)?
+2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
+3. Do you have a large enough quota in your Azure Stack Hub plan?
+4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
+
+For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
 
 ## Rotate your service principle secret
 

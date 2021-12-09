@@ -10,7 +10,7 @@ ms.date: 09/16/2021
 
 # Convert to a stretched Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, version 21H2 Preview; Azure Stack HCI, version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This article explains and gives the steps required to create a stretched cluster by adding new server nodes to an existing single-site cluster. You use Windows PowerShell commands to accomplish this.
 
@@ -20,7 +20,7 @@ Single-site clusters use Windows Admin Center to [Add or remove servers](add-clu
 
 The first step is to acquire new Azure Stack HCI server hardware from your original OEM vendor, with the same characteristics as the existing server node hardware. Each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
-Refer to your OEM-provided documentation when adding new server hardware for use in a cluster. For more information about Azure Stack HCI Integrated System solution hardware, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+Refer to your OEM-provided documentation when adding new server hardware for use in a cluster. For more information about Azure Stack HCI Integrated System solution hardware, see the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog).
 
 Follow these steps to prep the new server nodes:
 

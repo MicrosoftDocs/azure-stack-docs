@@ -1,16 +1,15 @@
 ---
 title: Troubleshoot cluster validation reporting
 description: Troubleshoot cluster validation reporting and validate QoS settings configuration for Azure Stack HCI clusters
-author: khdownie
+author: jasongerend
 ms.topic: troubleshooting
-ms.date: 01/05/2021
-ms.author: v-kedow
-ms.reviewer: JasonGerend
+ms.date: 11/04/2021
+ms.author: jgerend
 ---
 
 # Troubleshoot cluster validation reporting
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 This topic helps you troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster, and verify that important rules are defined. For optimal connectivity and performance, the cluster validation process verifies that Data Center Bridging (DCB) QoS configuration is consistent and, if defined, contains appropriate rules for Failover Clustering and SMB/SMB Direct traffic classes.
 
@@ -87,7 +86,7 @@ Validate that all nodes have a QoS rule for failover clustering and for SMB or S
 If **any** storage QoS rules are defined in a cluster, then a QoS rule for failover clustering should be present, or connectivity problems may occur. To add a new QoS rule for failover clustering, use the `New-NetQosPolicy` cmdlet as in the following example:
 
 ```PowerShell
-New-NetQosPolicy "Cluster" -IPDstPort 3343 -Priority 6
+New-NetQosPolicy "Cluster" -Cluster -Priority 6
 ```
 
 ### QoS rule for SMB

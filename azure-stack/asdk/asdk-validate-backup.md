@@ -4,7 +4,7 @@ description: Learn how to use the ASDK to validate an Azure Stack integrated sys
 author: PatAltimore
 
 ms.topic: article
-ms.date: 1/15/2020
+ms.date: 10/15/2021
 ms.author: patricka
 ms.reviewer: hectorl
 ms.lastreviewed: 1/15/2020
@@ -16,6 +16,7 @@ ms.lastreviewed: 1/15/2020
 
 
 # Use the ASDK to validate an Azure Stack backup
+
 After deploying Azure Stack and provisioning user resources (such as offers, plans, quotas, and subscriptions), you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure infrastructure management data isn't lost if there's a catastrophic hardware or service failure.
 
 > [!TIP]
@@ -38,14 +39,22 @@ The following scenario **is not** supported when validating backups on the ASDK:
 |ASDK build to build backup and restore.|Restore backup data from a previous version of the ASDK to a newer version.|
 |     |     |
 
-
 ## Cloud recovery deployment
+
 Infrastructure backups from your integrated systems deployment can be validated by performing a cloud recovery deployment of the ASDK. In this type of deployment, specific service data is restored from backup after the ASDK is installed on the host computer.
 
-### <a name="prereqs"></a>Cloud recovery prerequisites
-Before starting a cloud recovery deployment of the ASDK, ensure that you have the following info:
+### Cloud recovery prerequisites
 
-**UI installer requirements**
+Before starting a cloud recovery deployment of the ASDK, ensure that you have the following info.
+
+> [!IMPORTANT]
+> Starting with the 2108 release, using the ASDK for cloud recovery validation requires that you resize the ASDK VHD before you start the validation. You can use the following PowerShell example to resize the VHD:
+>
+> ```powershell
+> Resize-VHD -Path c:\CloudBuilder.vhdx -SizeBytes 140GB
+> ```
+
+#### UI installer requirements
 
 |Prerequisite|Description|
 |-----|-----|
@@ -56,7 +65,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |Decryption certification password|Optional. Required only if the backup is encrypted using a certificate. The password is for the self-signed certificate's (.pfx) that contains the private key necessary to decrypt backup data.|
 |     |     | 
 
-**PowerShell installer requirements**
+#### PowerShell installer requirements
 
 |Prerequisite|Description|
 |-----|-----|
@@ -67,7 +76,8 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |Decryption certification password|The password is for the self-signed certificate's (.pfx) that contains the private key necessary to decrypt backup data.|
 |     |     | 
 
-## Prepare the host computer 
+## Prepare the host computer
+
 As in a normal ASDK deployment, the ASDK host system environment must be prepared for installation. When the ASDK host computer has been prepared, it will boot from the CloudBuilder.vhdx VM hard drive to begin ASDK deployment.
 
 On the ASDK host computer, download a new cloudbuilder.vhdx corresponding to the same version of Azure Stack that was backed up, and follow the instructions for [preparing the ASDK host computer](asdk-prepare-host.md).
@@ -92,6 +102,7 @@ Finally, copy the decryption certificate (.pfx) to the certificate directory: `C
 > 3. ASDK installation supports exactly one network interface card (NIC) for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script.
 
 ### Use the installer UI to deploy the ASDK in recovery mode
+
 The steps in this section show you how to deploy the ASDK using a graphical user interface (GUI) provided by downloading and running the **asdk-installer.ps1** PowerShell script.
 
 > [!NOTE]
@@ -121,7 +132,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
     ![ASDK Network card settings verification](media/asdk-validate-backup/5.PNG) 
 
-7. Provide the required info described earlier in [prerequisites section](#prereqs) on the Backup Settings page and the username and password to be used to access the share. Click **Next**: 
+7. Provide the required info described in the [prerequisites section](#cloud-recovery-prerequisites) on the **Backup Settings** page and the username and password to be used to access the share. Click **Next**: 
 
    ![ASDK Backup settings page](media/asdk-validate-backup/6.PNG) 
 
@@ -129,12 +140,11 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
     ![ASDK Summary page](media/asdk-validate-backup/7.PNG) 
 
-
 ### Use PowerShell to deploy the ASDK in recovery mode
 
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
-**Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate.**
+#### Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate
 
 ```powershell
 cd C:\CloudDeployment\Setup     
@@ -151,12 +161,13 @@ $decryptioncertpassword  = Read-Host -AsSecureString -Prompt "Password for the d
  -TimeServer "<Valid time server IP>" -ExternalCertPassword $certPass
 ```
 
-## Complete cloud recovery 
+## Complete cloud recovery
+
 After a successful cloud recovery deployment, you need to complete the restore using the **Restore-AzureStack** cmdlet. 
 
 After logging in as the Azure Stack operator, [install Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) and run the following commands to specify the certificate and password to be used when restoring from backup:
 
-**Recovery mode with certificate file**
+### Recovery mode with certificate file
 
 > [!NOTE]
 > Azure Stack deployment doesn't persist the decryption certificate for security reasons. You'll need to provide the decryption certificate and associated password again.
@@ -168,7 +179,8 @@ Restore-AzsBackup -Name "<BackupID>" `
  -DecryptionCertPassword $decryptioncertpassword
 ```
 
-**Recovery mode with encryption key**
+### Recovery mode with encryption key
+
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
 Restore-AzsBackup -Name "<BackupID>"
@@ -177,5 +189,6 @@ Restore-AzsBackup -Name "<BackupID>"
 Wait 60 minutes after calling this cmdlet to start verification of backup data on the cloud recovered ASDK.
 
 ## Next steps
+
 [Register Azure Stack](asdk-register.md)
 

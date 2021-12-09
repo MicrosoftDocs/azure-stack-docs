@@ -9,7 +9,7 @@ ms.date: 08/19/2021
 
 # System requirements for Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server 2019 Datacenter and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
 
@@ -149,6 +149,8 @@ The following requirements apply to an Azure Stack HCI cluster as well as a Wind
 - Make sure that there is network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
 - DNS name resolution is required for all nodes to be able to communicate with each other.
+ 
+- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS is not an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-dns-record). 
 
 ## IP address assignment  
 
@@ -194,19 +196,26 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 
-| URL        | Port | Service | Notes |
-| ---------- | ---- | --- | ---- |
-<https://helm.sh/blog/get-helm-sh/>  | 443 | Download Agent, WAC | Used to download the Helm binaries
-<https://storage.googleapis.com/>  | 443 | Cloud Init | Downloading Kubernetes binaries
-<https://azurecliprod.blob.core.windows.net/> | 443 | Cloud Init | Downloading binaries and containers
-<https://aka.ms/installazurecliwindows> | 443 | WAC | Downloading Azure CLI
-*.blob.core.windows.net | 443 | TCP | Required for downloads
-*.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com. | 80, 443 | Download Agent | Downloading VHD images
-ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images
-`https://azurestackhci.azurefd.net` | | AzureFrontDoor.Frontend | Azure Stack HCI Cloud Service
+| URL        | Port | Notes |
+| ---------- | ---- | ---- |
+| msk8s.api.cdp.microsoft.com | 443 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
+| msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
+| msk8s.f.tlu.dl.delivery.mp.microsoft.com | 80 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
+| login.microsoftonline.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| login.windows.net  | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| management.azure.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| www.microsoft.com  | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| msft.sts.microsoft.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
+| graph.windows.net | 443 | Used when running `Install-AksHci`. |
+| ecpacr.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.blob.core.windows.net <br> US endpoint: wus2replica&ast;.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
+| mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
 
 > [!NOTE]
-> If you are using Azure Arc with your Kubernetes clusters, the network requirements for the same can be found [here](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
+> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
 
 ## Storage requirements
 

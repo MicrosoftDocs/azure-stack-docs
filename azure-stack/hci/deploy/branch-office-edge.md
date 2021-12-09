@@ -1,15 +1,15 @@
 ---
 title: Deploy branch office and edge on Azure Stack HCI
 description: This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author: hsuzuki
+ms.author: hsuzuki1999
 ms.topic: how-to
 ms.date: 01/21/2021
 ---
 
 # Deploy branch office and edge on Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system. The guidance positions your organization to run complex, highly available workloads in virtual machines (VMs) and containers in remote branch office and edge deployments. Computing at the edge shifts most data processing from a centralized system to the edge of the network, closer to a device or system that requires data quickly.
 
@@ -35,7 +35,7 @@ To learn more, see [What is Azure IoT Edge](/azure/iot-edge/about-iot-edge).
 This section describes at a high level how to acquire hardware for branch office and edge deployments on Azure Stack HCI and use Windows Admin Center for management. It also covers deploying Azure IoT Edge to manage containers in the cloud.
 
 ### Acquire hardware from the Azure Stack HCI Catalog
-First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
+First, you'll need to procure hardware. The easiest way to do that is to locate your preferred Microsoft hardware partner in the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) and purchase an integrated system with the Azure Stack HCI operating system preinstalled. In the catalog, you can filter to see vendor hardware that is optimized for this type of workload.
 
 Otherwise, you'll need to deploy the Azure Stack HCI operating system on your own hardware. For details on Azure Stack HCI deployment options and installing Windows Admin Center, see [Deploy the Azure Stack HCI operating system](./operating-system.md).
 

@@ -5,7 +5,7 @@ description: Learn about Azure Stack Hub telemetry and how to configure telemetr
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 09/30/2021
+ms.date: 10/25/2021
 ms.author: patricka
 ms.reviewer: comartin
 ms.lastreviewed: 09/30/2021
@@ -24,17 +24,39 @@ For an Azure Stack Hub operator, telemetry can provide valuable insights into en
 > [!NOTE]
 > You can also configure Azure Stack Hub to forward usage information to Azure for billing. This is required for multi-node Azure Stack Hub customers who choose pay-as-you-use billing. Usage reporting is controlled independently from telemetry and isn't required for multi-node customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off [using the registration script](azure-stack-usage-reporting.md).
 
-Azure Stack Hub telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component. This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker range="< azs-1908"
+Azure Stack Hub telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component.
+This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker-end
+
+::: moniker range=">= azs-1908"
+Azure Stack Hub telemetry is based on the Windows Server 2019 Connected User Experience and Telemetry component.
+This component uses the [Event Tracing for Windows (ETW)](/windows/win32/tracelogging/trace-logging-about) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack Hub components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+::: moniker-end
 
 ## Network requirements
 
 To enable telemetry data flow, the following outbound ports and endpoints must be open and allowed in your network:
 
+::: moniker range="< azs-2108"
 | Endpoint | Protocol / Ports | Description |
 |---------|---------|---------|
-| `https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
+|`https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
 |`https://login.live.com` | HTTPS 443 | Provides a more reliable device identity |
 |`*.events.data.microsoft.com` | HTTPS 443 | Endpoint for UTC, DiagTrack, Windows Error Reporting, and Aria |
+::: moniker-end
+
+::: moniker range=">= azs-2108"
+| Endpoint | Protocol / Ports | Description |
+|---------|---------|---------|
+|`https://settings-win.data.microsoft.com` | HTTPS 443 |Cloud configuration endpoint for UTC, DiagTrack, and Feedback hub |
+|`https://login.live.com` | HTTPS 443 | Provides a more reliable device identity |
+|`*.events.data.microsoft.com` | HTTPS 443 | Endpoint for UTC, DiagTrack, Windows Error Reporting, and Aria |
+|`https://*.blob.core.windows.net/` | HTTPS 443 | Azure Storage account |
+|`https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` | HTTPS 443 | Required for successful telemetry data upload to Microsoft |
+
+Beginning with Azure Stack Hub version 2108, telemetry data will upload to Azure Storage account managed and controlled by Microsoft.
+::: moniker-end
 
 ## Privacy considerations
 
@@ -78,13 +100,20 @@ Security data only. Information that's required to keep the operating system sec
 **1 (Basic)**</br>
 Security data, and Basic Health and Quality data. Basic device information, including: quality-related data, app compatibility, app usage data, and data from the **Security** level. Setting your telemetry level to Basic enables Azure Stack Hub telemetry. The data gathered at this level includes:
 
+::: moniker range="< azs-1908"
 - *Basic device information* that provides an understanding about the types and configurations of native and virtual Windows Server 2016 instances in the ecosystem. This includes:
-
   - Machine attributes, such as the OEM, and model.
   - Networking attributes, such as the number of network adapters and their speed.
   - Processor and memory attributes, such as the number of cores, and amount of installed memory.
   - Storage attributes, such as the number of drives, type of drive, and drive size.
-
+::: moniker-end
+::: moniker range=">= azs-1908"
+- *Basic device information* that provides an understanding about the types and configurations of native and virtual Windows Server 2019 instances in the ecosystem. This includes:
+  - Machine attributes, such as the OEM, and model.
+  - Networking attributes, such as the number of network adapters and their speed.
+  - Processor and memory attributes, such as the number of cores, and amount of installed memory.
+  - Storage attributes, such as the number of drives, type of drive, and drive size.
+::: moniker-end
 - *Telemetry functionality*, including the percentage of uploaded events, dropped events, and the last data upload time.
 - *Quality-related information* that helps Microsoft develop a basic understanding of how Azure Stack Hub is performing. For example, the count of critical alerts on a particular hardware configuration.
 - *Compatibility data* that helps provide an understanding about which Resource Providers are installed on a system and a virtual machine (VM). This identifies potential compatibility problems.

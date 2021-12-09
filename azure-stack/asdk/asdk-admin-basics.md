@@ -4,7 +4,7 @@ description: Learn how to do basic admin tasks for the Azure Stack Development K
 author: PatAltimore
 
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 10/29/2021
 ms.author: patricka
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2019

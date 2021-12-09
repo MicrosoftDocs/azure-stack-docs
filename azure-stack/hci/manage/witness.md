@@ -10,7 +10,7 @@ ms.reviewer: JasonGerend
 
 # Set up a cluster witness
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 Setting up a witness resource is highly recommended for all clusters, and should be set up right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
 

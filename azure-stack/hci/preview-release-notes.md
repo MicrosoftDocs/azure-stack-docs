@@ -1,8 +1,8 @@
 ---
 title: Azure Stack HCI release notes archive
 description: Archived release notes for Azure Stack HCI, version 20H2 Public Preview releases.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -142,7 +142,7 @@ This nonsecurity update includes quality improvements. Key changes include:
 Microsoft is aware of one issue with this update.
 
 #### Symptom
-When using Live Migration to move a VM between Windows Server and Azure Stack HCI operating systems, you may see the error: "Blocked a migration operation for virtual machine <vmname> because VM migration between differing Windows editions is not supported (virtual machine ID)."
+When using Live Migration to move a VM between Windows Server and Azure Stack HCI operating systems, you may see the error: "Blocked a migration operation for virtual machine \<vmname\> because VM migration between differing Windows editions is not supported (virtual machine ID)."
 
 Alternatively, this may also cause a Cluster Aware Updating (CAU) operation to fail if any of the VMs are expected to perform Live Migration during CAU.
 

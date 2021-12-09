@@ -5,12 +5,17 @@ author: jessicaguan
 ms.topic: quickstart
 ms.date: 09/02/2021
 ms.author: jeguan
+ms.custom: mode-api
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
+
+> [!NOTE]
+> - If you have prestaged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
+> - If you have a proxy server, see [set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](kubernetes-walkthrough-powershell-proxy.md).
 
 ## Before you begin
 
@@ -26,23 +31,11 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > [!NOTE]
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
-## Install the Azure PowerShell and AksHci PowerShell modules
+## Install the AksHci PowerShell module
 **If you are using remote PowerShell, you must use CredSSP.**
 
-**Close all open PowerShell windows.** Delete any existing directories for AksHci, AksHci.Day2, Kva, Moc and MSK8sDownloadAgent located in the path `%systemdrive%\program files\windowspowershell\modules` and then install the following Azure PowerShell modules.
-
 ```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
 Install-Module -Name AksHci -Repository PSGallery
-```
-
-```powershell
-Import-Module Az.Accounts
-Import-Module Az.Resources
-Import-Module AzureAD
-Import-Module AksHci
 ```
 
 **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
@@ -116,7 +109,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolN
 
 ## Step 3: Configure your deployment
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your config details, run the command again with new parameters.
+Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
@@ -139,9 +132,14 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin deployment, run the following command.
 
+> [!TIP]
+> To see additional status detail during installation, set `$VerbosePreference = "Continue"` before proceeding.
+
 ```powershell
 Install-AksHci
 ```
+> [!WARNING]
+> During installation of your Azure Kuberenetes Service host, a *Kubernetes - Azure Arc* resource type is created in the resource group that's set during registration. Do not delete this resource as it represents your Azure Kuberenetes Service host. You can identify the resource by checking its distribution field for a value of `aks_management`. Deleting this resource will result in an out-of-policy deployment.
 
 ## Step 6: Create a Kubernetes cluster
 
@@ -169,9 +167,6 @@ LinuxNodeCount        : 0
 ControlPlaneNodeCount : 1
 Name                  : mycluster
 ```
-
-> [!NOTE]
-> If you use the new parameter sets in `New-AksHciCluster` to deploy a cluster and then run `Get-AksHciCluster` to get the cluster information, the fields `WindowsNodeCount` and `LinuxNodeCount` in the output will return `0`. To get the accurate number of nodes in each node pool, please use the command `Get-AksHciNodePool` with the specified cluster name. 
 
 To get a list of the node pools in the cluster, run the following [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md) PowerShell command.
 
@@ -217,6 +212,8 @@ To scale the worker nodes in your node pool, run the following command.
 Set-AksHciNodePool –clusterName mycluster -name linuxnodepool -count 3
 ```
 
+> [!NOTE]
+> In previous versions of AKS on Azure Stack HCI, the [Set-AksHciCluster](/azure-stack/aks-hci/reference/ps/set-akshcicluster) command was also used to scale worker nodes. AKS on Azure Stack HCI is introducing node pools in workload clusters now, so this command can only be used to scale worker nodes if your cluster was created with the old parameter set in [New-AksHciCluster](/azure-stack/aks-hci/reference/ps/new-akshcicluster). To scale worker nodes in a node pool, use the [Set-AksHciNodePool](/azure-stack/aks-hci/reference/ps/set-akshcinodepool) command.
 
 ## Access your clusters using kubectl
 

@@ -9,7 +9,7 @@ ms.date: 04/14/2021
 
 # Utility applications for Azure Stack HCI
 
->Applies to: Azure Stack HCI, version 20H2
+>Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 Azure Stack HCI is a hyperconverged infrastructure stack that’s uniquely positioned for hybrid infrastructure, allowing customers to take advantage of cloud and on-premises resources working together and natively monitor, secure and back up to the cloud. To learn more, see the [Azure Stack HCI solution overview](../overview.md).
 
