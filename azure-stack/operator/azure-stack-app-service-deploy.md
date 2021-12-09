@@ -4,10 +4,10 @@ description: Learn how to deploy App Service in Azure Stack Hub.
 author: bryanla
 
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 12/09/2021
 ms.author: bryanla
 ms.reviewer: anwestg
-ms.lastreviewed: 10/28/2020
+ms.lastreviewed: 12/09/2021
 zone_pivot_groups: state-connected-disconnected
 # Intent: As an Azure Stack operator, I want to deploy App Service on Azure Stack.
 # Keyword: deploy app service azure stack
@@ -192,6 +192,19 @@ If you're deploying to an existing virtual network and using an internal IP addr
 - Action: Allow
 - Priority: 700
 - Name: Outbound_Allow_SMB445
+
+To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+
+  Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  - Source: Any
+  - Source port range: *
+  - Destination: IP Addresses
+  - Destination IP address range: Range of IPs for your AD Servers, for example with the Quickstart template 10.0.0.100, 10.0.0.101
+  - Destination port range: 389,88
+  - Protocol: TCP
+  - Action: Allow
+  - Priority: 710
+  - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
 ## Validate the App Service on Azure Stack Hub installation
 
@@ -430,6 +443,19 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 - Action: Allow
 - Priority: 700
 - Name: Outbound_Allow_SMB445
+
+To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+
+  Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  - Source: Any
+  - Source port range: *
+  - Destination: IP Addresses
+  - Destination IP address range: Range of IPs for your AD Servers, for example with the Quickstart template 10.0.0.100, 10.0.0.101
+  - Destination port range: 389,88
+  - Protocol: TCP
+  - Action: Allow
+  - Priority: 710
+  - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
 ## Validate the Azure App Service on Azure Stack Hub installation
 

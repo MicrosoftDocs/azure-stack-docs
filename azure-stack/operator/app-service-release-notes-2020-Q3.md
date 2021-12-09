@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/09/2021
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/23/2020
@@ -103,7 +103,7 @@ Azure App Service on Azure Stack Update Q3 includes the following improvements a
 
 - Moved wait for Management Servers step outside of Deploy Cloud step during installation to improve reliability of deployment and upgrade
 
-- Issue whereby workers fail to complete the health check exercise due to worker runtime log file folder size violating quota limit after error in clean-up logic.  Clean-up logic has been fixed in this update.
+- Issue whereby workers fail to complete the health check exercise due to worker runtime log file folder size, violating quota limit after error in clean-up logic.  Clean-up logic has been fixed in this update.
 
 ## Pre-Update steps
 
@@ -206,6 +206,19 @@ This script must be run under the following conditions
   - Action: Allow
   - Priority: 700
   - Name: Outbound_Allow_SMB445
+
+- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+
+  Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  - Source: Any
+  - Source port range: *
+  - Destination: IP Addresses
+  - Destination IP address range: Range of IPs for your AD Servers, for example with the Quickstart template 10.0.0.100, 10.0.0.101
+  - Destination port range: 389,88
+  - Protocol: TCP
+  - Action: Allow
+  - Priority: 710
+  - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 

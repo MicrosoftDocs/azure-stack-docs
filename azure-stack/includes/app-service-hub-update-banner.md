@@ -3,7 +3,7 @@ author: apwestgarth
 ms.author: anwestg
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 12/09/2021
 ms.reviewer: bryanla
 ms.lastreviewed: 10/28/2020
 ---
@@ -13,7 +13,7 @@ ms.lastreviewed: 10/28/2020
 
 > | Supported Azure Stack Hub version | App Service RP version |
 > |-----|---|
+> | 2108 | 2021.Q3 [Installer](https://aka.ms/appsvcupdate21q3installer) ([release notes](../operator/app-service-release-notes-2021-Q3.md)) |
 > | 2102 | 2021.Q1 [Installer](https://aka.ms/appsvcupdate21q1installer) ([release notes](../operator/app-service-release-notes-2021-Q1.md)) |
 > | 2008 | 2020.Q3 [Installer](https://aka.ms/appsvcupdateq3installer) ([release notes](../operator/app-service-release-notes-2020-Q3.md)) |
-> | 2005 | 2020.Q2 [Installer](https://aka.ms/appsvcupdateq2installer) ([release notes](../operator/app-service-release-notes-2020-Q2.md)) |
 
