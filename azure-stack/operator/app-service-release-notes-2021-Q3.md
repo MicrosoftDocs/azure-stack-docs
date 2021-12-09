@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 12/6/2021
+ms.date: 12/9/2021
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -55,10 +55,6 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
 
-- Addition of Full Screen Create experience for Web and Function Apps
-
-- New Azure Functions Portal Experience to be consistent with Web Apps
-
 - Updates **Azure Functions runtime** to **v1.0.13154**.
 
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
@@ -102,8 +98,29 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 - TLS Cipher Suites updated to maintain consistency with Azure Service.
 
+- Added support for 2020-09-01-hybrid profile
+
 ## Issues fixed in this release
 
+- App Service can now be deployed when running the installer from a FIPS Compliant Client machine
+
+- App Service Role Health is now automatically checked before completing App Service secret rotation procedures.  If all roles not in ready state, secret rotation will be blocked
+
+- Outbound IP Address for sites is now displayed in the properties and Custom Domains blades within the tenant portal
+
+- Included further details on event of Custom Domain verification failure
+
+- Customers can successfully upload and delete private certificates in the tenant portal
+
+- Issue resolved whereby Front Ends can remain in Auto Repair loop due to missing dependency in Functions scaling components
+
+- Resolved Single Sign On Failures to SCM Site due to changes in AAD endpoints
+
+- Updated load balancer health probes on Front Ends and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front End role instance(s) when not in Ready state.
+
+- Aligned per site temporary directory quota size with Azure, limit on Dedicated Workers is 10GB, Shared Workers is 500MB
+
+- Added algorithm to Log Scavenger routines to prevent workers entering repair loop in event generated http logs exceed available space on worker.
 
 ## Pre-Update steps
 
@@ -206,6 +223,20 @@ This script must be run under the following conditions
   - Action: Allow
   - Priority: 700
   - Name: Outbound_Allow_SMB445
+
+- To remove latency when workers are communicating with the file server we also advise adding the following rule to the Worker NSG to allow outbound LDAP and Kerberos traffic to your Active Directory Controllers if securing the file server using Active Directory, for example if you have used the Quickstart template to deploy a HA File Server and SQL Server.
+
+  Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+  - Source: Any
+  - Source port range: *
+  - Destination: IP Addresses
+  - Destination IP address range: Range of IPs for your AD Servers, for example with the Quickstart template 10.0.0.100, 10.0.0.101
+  - Destination port range: 389,88
+  - Protocol: TCP
+  - Action: Allow
+  - Priority: 710
+  - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
+
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
