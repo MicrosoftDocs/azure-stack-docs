@@ -114,7 +114,8 @@ Azure App Service on Azure Stack Update 2021 Q3 includes the following improveme
 
 - Issue resolved whereby FrontEnd role instances can remain in Auto Repair loop because of a missing dependency in Functions scaling components
 
-- Resolved Single Sign On Failures to SCM Site because of changes in AAD endpoints
+- Resolved Single Sign On Failures to SCM Site because of changes in Azure AD endpoints
+
 
 - Updated load balancer health probes on Front-End roles and Management roles to be in alignment with Azure implementation.  Traffic blocked from reaching Front-End role instance(s) when not in Ready state.
 
