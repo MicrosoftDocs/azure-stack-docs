@@ -21,7 +21,7 @@ The following table describes the different options for returning a device:
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Standard return           | Customer chooses to return device with the assumption that data on drives will be destroyed and hardware can be refurbished.                                                         |
 | Return without drives     | Customer chooses to keep the data drives and return other hardware. There will be a fee for the drives.                                                                          |
-| Keep entire system          | Customer chooses to keep their ASH-R. There will be a Loss fee for keeping the device. |
+| Keep entire system          | Customer chooses to keep their ASH-R. There will be a loss fee for keeping the device. |
 
 ## Initiate device return
 
