@@ -103,7 +103,7 @@ Azure Arc-enabled Kubernetes deploys a few operators into the `azure-arc` namesp
 kubectl -n azure-arc get deployments,pods
 ```
 
-Azure Arc-enabled Kubernetes consists of a few agents (operators) that run in your cluster deployed to the `azure-arc` namespace. More information about these agents can be found [here](/azure/azure-arc/kubernetes/conceptual-agent-architecture).
+Azure Arc-enabled Kubernetes consists of a few agents (operators) that run in your cluster deployed to the `azure-arc` namespace. More information about these agents can be found [here](/azure/azure-arc/kubernetes/conceptual-agent-overview).
 
 ## Disconnect your AKS on Azure Stack HCI cluster from Azure Arc
 
