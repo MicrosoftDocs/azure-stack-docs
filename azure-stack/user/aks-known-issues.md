@@ -3,10 +3,10 @@ title: Known issues for the Azure Kubernetes Service on Azure Stack Hub
 description: Learn about working with Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 12/8/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/26/2021
+ms.lastreviewed: 12/8/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -49,6 +49,8 @@ No. The service principal (SPN) is not automatically created as in Azure (no MSI
 ## Known issues
 
  - The AKS service is limited to 50 nodes per subscription in the public preview.
+ 
+ - [Azure Kubernetes Service (AKS) PowerShell](https://docs.microsoft.com/powershell/module/az.aks) is not supported in the public preview.
 
  - For the public preview, no more than one node pool can be created per AKS cluster. Windows clusters are limited to a single node pool, no Linux pool can be added. This means that only Windows containers can be deployed to these clusters, no Linux containers can be deployed. For example, a Linux based Ingress Controller will not work in Windows clusters.
 
