@@ -288,9 +288,17 @@ kubectl logs ad-auth-webhook-xxx
 
 If you see certificate validation errors, complete the steps to [uninstall and reinstall the webhook](ad-sso.md#uninstall-and-reinstall-ad-authentication) and get new certificates.
 
+## Clean up and best practices
+
+- Use a unique account for each cluster.
+- Do not reuse the password for the API server account across clusters.
+- Delete the local copy of the keytab file as soon as you create the cluster and verify that the SSO credentials work.
+- Delete the Active Directory user that was created for the API server. For more information, see [Remove-ADUser](/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps).
+
 ## Next steps 
 
 In this how-to guide, you learned how to configure AD Authentication to securely connect to the API server with SSO credentials. Next, you can:
 
 - [Deploy Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+

@@ -576,8 +576,8 @@ This example shows a sample of Go code that creates a virtual network on Azure S
 Some of the code samples available for Azure Stack Hub using the Go SDK are:
 
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/2018-03-01-hybrid)
-- [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane/tree/2018-03-01-hybrid)
-- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks/tree/2019-03-01-hybrid)
+- [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/master/dataplane/hybridstorage)
+- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/master/manageddisk)
 ::: moniker-end
 ## Next steps
 

@@ -32,8 +32,8 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 - **Proxy server configuration information:**
-   - HTTP URL and port, such as http://proxy.corp.contoso.com:8080.
-   - HTTPS URL and port, such as https://proxy.corp.contoso.com:8443.
+   - HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
+   - HTTPS URL and port, such as `https://proxy.corp.contoso.com:8443`.
    - (Optional) Valid credentials for authentication to the proxy server.
    - (Optional) Valid certificate chain if your proxy server is configured to intercept SSL traffic. This certificate chain will be imported into all AKS control plane and worker nodes as well as the management cluster to establish a trusted connection to the proxy server.
    - IP address ranges and domain names to exclude so they are not sent to the proxy:
