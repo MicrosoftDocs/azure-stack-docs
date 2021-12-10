@@ -46,11 +46,11 @@ You can use the following steps to generate an ACR certificate using The Azure S
     ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     New-Item -ItemType Directory "$ENV:USERPROFILE\Documents\AzsCertRequests"
-                $certificateRequestParams = @{
-                    'regionName' = 'azurestack'
-                    'externalFQDN' = 'contoso.com'
-                    'subject' = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack"
-                    'OutputRequestPath' = "$ENV:USERPROFILE\Documents\AzsCertRequests" }
+        $certificateRequestParams = @{
+            'regionName' = 'azurestack'
+            'externalFQDN' = 'contoso.com'
+            'subject' = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack"
+            'OutputRequestPath' = "$ENV:USERPROFILE\Documents\AzsCertRequests" }
     New-AzsHubAzureContainerRegistryCertificateSigningRequest @certificateRequestParams
     ```
 
@@ -71,7 +71,7 @@ Validate the ACR certificate adheres to Azure Stack Hub requirements.
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     $Path = "\$ENV:USERPROFILE\Documents\AzureStack"
     $pfxPassword = Read-Host -AsSecureString -Prompt "PFX Password"
-    ConvertTo-AzsPFX -Path \$Path -pfxPassword \$pfxPassword -ExportPath \$Path
+    ConvertTo-AzsPFX -Path $Path -pfxPassword $pfxPassword -ExportPath $Path
     ```
 ## Installation steps
 
