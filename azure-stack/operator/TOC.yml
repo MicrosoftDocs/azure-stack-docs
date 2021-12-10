@@ -390,12 +390,12 @@
           href: app-service-remove.md
       - name: Release notes
         items:
+        - name: 2021 Q3 release notes [December 2021]
+          href: app-service-release-notes-2021-Q3.md
         - name: 2021 Q1 release notes [June 2021]
           href: app-service-release-notes-2021-Q1.md
         - name: 2020 Q3 release notes [September 2020]
           href: app-service-release-notes-2020-Q3.md
-        - name: 2020 Q2 release notes [May 2020]
-          href: app-service-release-notes-2020-Q2.md
     - name: Azure Container Registry
       items:
       - name: Overview
