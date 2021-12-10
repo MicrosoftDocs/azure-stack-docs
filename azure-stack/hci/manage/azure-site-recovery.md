@@ -61,7 +61,7 @@ This could take up to 10 minutes. You can watch the progress by going to **Notif
 
 1. Navigate back to the server or cluster you configured in step 2 above, and go to **Virtual Machines > Inventory**.
 2. Select the VM you want to protect.
-3. Select **More** > **Protect VM**.
+3. Select **Manage** > **Replicate using Azure Site Recovery**.
 4. Review the [capacity requirements for protecting the VM](/azure/site-recovery/site-recovery-capacity-planner).
 
     If you want to use a premium storage account, [create one in the Azure portal](/azure/storage/common/storage-premium-storage). The **Create New** option provided in the Windows Admin Center pane creates a standard storage account.

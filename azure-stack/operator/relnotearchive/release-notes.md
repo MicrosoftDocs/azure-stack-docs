@@ -974,12 +974,6 @@ After the installation of this update, install any applicable hotfixes. For more
 
 Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
 
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
->
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
-
 ## Next steps
 
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
