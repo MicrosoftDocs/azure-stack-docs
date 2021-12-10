@@ -215,7 +215,7 @@ This script must be run under the following conditions
   - Destination: IP Addresses
   - Destination IP address range: Range of IPs for your AD Servers, for example with the Quickstart template 10.0.0.100, 10.0.0.101
   - Destination port range: 389,88
-  - Protocol: TCP
+  - Protocol: Any
   - Action: Allow
   - Priority: 710
   - Name: Outbound_Allow_LDAP_and_Kerberos_to_Domain_Controllers
