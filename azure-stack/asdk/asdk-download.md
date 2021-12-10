@@ -29,14 +29,14 @@ After ensuring that your development kit host computer meets the basic requireme
 4. Under **Download the software**, click **Azure Stack Development Kit**.
 
    > [!NOTE]
-   > The ASDK download (AzureStackDevelopmentKit.exe) is approximately 10GB.
+   > The ASDK download (AzureStackDevelopmentKit.exe) is approximately 30.0 GB (ASDK version 1.2108.0.29).
 
 ## Extract the ASDK
 1. After the download completes, click **Run** to launch the ASDK self-extractor (AzureStackDevelopmentKit.exe).
 2. Review and accept the displayed license agreement from the **License Agreement** page of the Self-Extractor Wizard and then click **Next**.
 3. Review the privacy statement info displayed on the **Important Notice** page of the Self-Extractor Wizard and then click **Next**.
 4. Select the location for Azure Stack setup files to be extracted to on the **Select Destination Location** page of the Self-Extractor Wizard and then click **Next**. The default location is *current folder*\Azure Stack Development Kit. 
-5. Review the destination location summary on the **Ready to Extract** page of the Self-Extractor Wizard, and then click **Extract** to extract the CloudBuilder.vhdx (approximately 28GB) and ThirdPartyLicenses.rtf files. This process takes some time to complete.
+5. Review the destination location summary on the **Ready to Extract** page of the Self-Extractor Wizard, and then click **Extract** to extract the CloudBuilder.vhdx (approximately 70.0 GB) and ThirdPartyLicenses.rtf files. This process takes some time to complete.
 6. Copy or move the CloudBuilder.vhdx file to the root of the C:\ drive (`C:\CloudBuilder.vhdx`) on the ASDK host computer.
 
 > [!NOTE]
