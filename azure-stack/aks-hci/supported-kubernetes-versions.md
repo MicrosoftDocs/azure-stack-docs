@@ -135,7 +135,7 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 > * Creating new clusters and node pools on 1.19 using the November 2021 or December 2021 AKS on Azure Stack HCI release.
 > * CRUD operations on existing 1.19-based clusters.
 > * Support of non-Kubernetes related, platform issues. Platform issues include trouble with networking, storage, or compute running on Azure Stack HCI. Any support requests for Kubernetes patching and troubleshooting will result in a request to upgrade to a supported Kubernetes version.
-> * Note that upgrading to the January 2022 or later AKS on Azure Stack HCI release will require updating the 1.19-based Kubernetes workloads clusters to the latest patch version of Kubernetes 1.20 as Kubernetes 1.19 will not be available in the AKS on Azure Stack HCI January 2022 release.
+> * Understand that upgrading to the January 2022 or later AKS on Azure Stack HCI release will require updating the 1.19-based Kubernetes workloads clusters to the latest patch version of Kubernetes 1.20 as Kubernetes 1.19 will not be available in the AKS on Azure Stack HCI January 2022 release.
 
 ## FAQ
 
