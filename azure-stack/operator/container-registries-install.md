@@ -26,7 +26,7 @@ You can install the Azure Container Registry (ACR) on Azure Stack Hub and make i
 * **Azure Stack Hub version**  
     You can only enable the Microsoft Azure Container in an Azure Stack Hub integrated system running the 2108 update and later releases. Install the Azure Stack Hub update before you complete the steps in this article. The Azure Container Registry (ACR) service is not supported on the Azure Stack Developer Kit (ASDK) deployments.
 * **Certificate requirements**  
-    The configuration of the ACR on your Azure Stack Hub system adds a new data path that requires a certificate. The certificate must meet the same requirements as the other certificates required to install and operate Azure Stack Hub. You can find more information in the article, "[Azure Stack Hub public key infrastructure (PKI) certificate requirements](/azure-stack-pki-certs.md)."
+    The configuration of the ACR on your Azure Stack Hub system adds a new data path that requires a certificate. The certificate must meet the same requirements as the other certificates required to install and operate Azure Stack Hub. You can find more information in the article, "[Azure Stack Hub public key infrastructure (PKI) certificate requirements](azure-stack-pki-certs.md)."
 
     The URI for this new certificate should have the following format:
 
@@ -46,11 +46,11 @@ You can use the following steps to generate an ACR certificate using The Azure S
     ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     New-Item -ItemType Directory "$ENV:USERPROFILE\Documents\AzsCertRequests"
-                $certificateRequestParams = @{
-                    'regionName' = 'azurestack'
-                    'externalFQDN' = 'contoso.com'
-                    'subject' = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack"
-                    'OutputRequestPath' = "$ENV:USERPROFILE\Documents\AzsCertRequests" }
+        $certificateRequestParams = @{
+            'regionName' = 'azurestack'
+            'externalFQDN' = 'contoso.com'
+            'subject' = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack"
+            'OutputRequestPath' = "$ENV:USERPROFILE\Documents\AzsCertRequests" }
     New-AzsHubAzureContainerRegistryCertificateSigningRequest @certificateRequestParams
     ```
 
@@ -71,7 +71,7 @@ Validate the ACR certificate adheres to Azure Stack Hub requirements.
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
     $Path = "\$ENV:USERPROFILE\Documents\AzureStack"
     $pfxPassword = Read-Host -AsSecureString -Prompt "PFX Password"
-    ConvertTo-AzsPFX -Path \$Path -pfxPassword \$pfxPassword -ExportPath \$Path
+    ConvertTo-AzsPFX -Path $Path -pfxPassword $pfxPassword -ExportPath $Path
     ```
 ## Installation steps
 
