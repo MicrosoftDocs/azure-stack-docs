@@ -288,7 +288,7 @@ The **Aks-Hci** PowerShell commands do not validate the available memory on the 
 
 ## After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing
 
-After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing. To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](known-issues.md#the-api-server-is-not-responsive-after-several-days).
+After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing. To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](known-issues-workload-clusters.md#the-api-server-is-not-responsive-after-several-days).
 
 ## Next steps
 

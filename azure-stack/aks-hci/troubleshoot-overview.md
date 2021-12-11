@@ -10,9 +10,9 @@ ms.reviewer:
 
 # Troubleshooting overview
 
-This article provides an overview of the issues you may encounter when using AKS on Azure Stack HCI. The troubleshooting and known issues are organized by functional area, and you can use the links below to find solutions and workarounds to help you troubleshoot and resolve known issues. 
+This article provides an overview of the issues you may encounter when using AKS on Azure Stack HCI. The troubleshooting and known issues are organized by functional area, and you can use the links below to find solutions and workarounds to help you resolve known issues. 
 
-You can also [open a support issue](./help-support.md) if none of the workarounds listed below apply to you.
+You can also [open a support issue](./help-support.md) if none of the workarounds found in the topics below apply to you.
 
 |  Functional area  |   Description  |
 | --------------   |  ----------------  |

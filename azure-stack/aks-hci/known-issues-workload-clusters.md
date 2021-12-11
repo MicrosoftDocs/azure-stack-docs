@@ -28,9 +28,9 @@ If you don't use a management or workload cluster for longer than 60 days, the c
 
 To resolve this issue, run the following steps:
 
-1. Repair the management cluster certificate by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days).
+1. Repair the management cluster certificate by [manually rotating the token and then restart the KMS plug-in and container](#the-api-server-is-not-responsive-after-several-days).
 2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
-3. Repair the workload cluster certificates by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days). 
+3. Repair the workload cluster certificates by [manually rotating the token and then restart the KMS plug-in and container](#the-api-server-is-not-responsive-after-several-days). 
  
 
 ## The certificate renewal pod is in a crash loop state
