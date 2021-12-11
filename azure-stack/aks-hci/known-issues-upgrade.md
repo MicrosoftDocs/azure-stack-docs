@@ -12,17 +12,6 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
-## Restarting the management cluster after upgrading to the October release makes the workload cluster unreachable
-
-After upgrading, when the management cluster was restarted, the workload cluster became unreachable, and Windows Admin Center and PowerShell displayed the following errors:
-
-- *[Error: Get "https://10.0.0.0:6443/api?timeout=10s": context deadline exceeded (Client.Timeout exceeded while awaiting headers)]*
-- *[Error: Get "https://10.0.0.0:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]*
-
-This issue is caused by a bug in the October Update (version: 1.0.5.11028) VHD image. In deployments with this issue, the most common symptom is that commands return the above error messages when you attempt any Day 2 operations in both Windows Admin Center and PowerShell. This issue is most common in deployments that used proxy settings during an AKS on Azure Stack HCI installation of the September Update.
-
-To resolve this issue, you can find a workaround on this [public GitHub issues page](https://github.com/Azure/aks-hci/issues/147). This issue will be fixed in the November Update.
-
 ## When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
 When upgrading Kubernetes clusters with an Open Policy Agent (OPA), such as OPA GateKeeper, the process may hang and unable to complete. This issue can occur because the policy agent is configured to prevent pulling container images from private registries.
@@ -49,11 +38,11 @@ To work around this issue, run the [New-AksHciNodePool](./reference/ps/new-akshc
 
 To work around this issue, you need to [run a script to uninstall older PowerShell versions](https://github.com/Azure/aks-hci/issues/130).
 
-## Running an upgrade results in the error: _Error occurred while fetching platform upgrade information..._
+## Running an upgrade results in the error: `Error occurred while fetching platform upgrade information`
 
 When running an upgrade in Windows Admin Center, the following error occurred:
 
-_Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories._
+`Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories.`
 
 This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
 
@@ -149,7 +138,6 @@ If you experience this issue, run the following steps:
       Update-AksHci
    ```
 
-
 ## Incorrect upgrade notification in Windows Admin Center
 
 If you receive an incorrect upgrade notification message `Successfully installed AksHci PowerShell module version null`, the upgrade operation is successful even if the notification is misleading.
@@ -187,9 +175,8 @@ Then, to restart _kubelet_, run the following command:
 ```
 
 ## Next steps
-- [Known issues](./known-issues.md)
+- [Troubleshooting overview](troubleshoot-overview.md)
 - [Installation issues and errors](known-issues-installation.md)
 - [Windows Admin Center known issues](known-issues-windows-admin-center.md)
-- [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
 
 If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).

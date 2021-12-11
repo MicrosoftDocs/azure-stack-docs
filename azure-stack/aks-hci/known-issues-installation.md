@@ -3,7 +3,7 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: v-susbo
 ms.topic: troubleshooting
-ms.date: 12/03/2021
+ms.date: 09/15/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -11,6 +11,35 @@ ms.reviewer:
 # Known issues and errors during an AKS on Azure Stack HCI installation
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [upgrading](known-issues-upgrade.md).
+
+## Error: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
+
+This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
+
+To resolve this error, verify that the cluster is registered with Azure using the `Get-AzureStackHCI` PowerShell cmdlet that's available on your machine. The Windows Admin Center dashboard also shows status information about the cluster's Azure registration.
+
+If the cluster is already registered, then you should view the `LastConnected` field in the output of `Get-AzureStackHCI`. If the field shows it's been more than 30 days, you should attempt to resolve the situation by using the `Sync-AzureStackHCI` cmdlet.
+
+You can also validate whether each node of your cluster has the required license by using the following cmdlet:
+
+```powershell
+Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
+```
+
+```output
+Computer Name Subscription Name           Status   Valid To
+------------- -----------------           ------   --------
+MS-HCIv2-01   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
+MS-HCIv2-01   Windows Server Subscription Inactive
+
+MS-HCIv2-02   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
+MS-HCIv2-02   Windows Server Subscription Inactive
+
+MS-HCIv2-03   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
+MS-HCIv2-03   Windows Server Subscription Inactive
+```
+
+If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
 
 ## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
 
@@ -54,6 +83,33 @@ To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclust
 `Install-AksHci` failed with this error because the IP pool ranges provided in the AKS on Azure Stack HCI configuration was off by one in the CIDR, and can cause CloudAgent to crash. For example, if you have subnet 10.0.0.0/21 with an address range 10.0.0.0 - 10.0.7.255, and then you use start address of 10.0.0.1 or an end address of 10.0.7.254, then this would cause CloudAgent to crash. 
 
 To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) and use any other valid IP address range for your VIP pool and Kubernetes node pool. Make sure that the values you use are not off by one at the start or end the address range. 
+
+## An _Unable to acquire token_ error appears when running Set-AksHciRegistration
+An *Unable to acquire token* error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
+
+## Cloud agent may fail to start successfully when using path names with spaces in them
+When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
+
+```powershell
+Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
+```
+Workaround: Use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
+
+## Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
+When running [Set-AksHciConfig](./reference/ps/./set-akshciconfig.md), you might encounter the following error:
+
+```powershell
+WinRM service is already running on this machine.
+WinRM is already set up for remote management on this computer.
+Powershell remoting to TK5-3WP08R0733 was not successful.
+At C:\Program Files\WindowsPowerShell\Modules\Moc\0.2.23\Moc.psm1:2957 char:17
++ ...             throw "Powershell remoting to "+$env:computername+" was n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Powershell remo...not successful.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
+```
+
+Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
 
 ## Install-AksHci failed on a multi-node installation with the error _Nodes have not reached active state_
 
@@ -135,8 +191,8 @@ To resolve this issue, use the following steps:
 ## After a failed installation, running Install-AksHci does not work
 If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshci.md), you should run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) before running `Install-AksHci` again. This issue happens because a failed installation may result in leaked resources that have to be cleaned up before you can install again.
 
-## When running Get-AksHciCluster, a _release version not found_ error occurs
-When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS on Azure Stack HCI installation in Windows Admin Center, the output shows an error: _A release with version 1.0.3.10818 was NOT FOUND_. However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build is expired. To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS on Azure Stack HCI build.
+## The AKS on Azure Stack HCI download package fails with the error: _msft.sme.aks couldn't load_
+If you get a _msft.sme.aks couldn't load_ error, and the error message also indicates that loading chunks failed, you should use the latest version of Microsoft Edge or Google Chrome and try again.
 
 ## During deployment, the error _Waiting for pod ‘Cloud Operator’ to be ready_ appears
 When attempting to deploy an AKS on Azure Stack HCI cluster on an Azure VM, the installation was stuck at _Waiting for pod 'Cloud Operator' to be ready..._, and then failed and timed out after two hours. Attempts to troubleshoot by checking the gateway and DNS server showed they were working appropriately. Checks to see if there was an IP or MAC address conflict showed none were found. When viewing the logs, it showed that the VIP pool had not reached the logs. There was a restriction on pulling the container image using `sudo docker pull ecpacr.azurecr.io/kube-vip:0.3.4` that returned a Transport Layer Security (TLS) timeout instead of _unauthorized_. 
@@ -197,32 +253,8 @@ When configuring an AKS on Azure Stack HCI environment, running [Install-AksHci]
 
 To get more information on the error, run `$error[0].Exception.InnerException`. 
 
-## When creating a new workload cluster, the error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs
-
-This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error _Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded_ occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system. 
-
-To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md#update-the-aks-on-azure-stack-hci-host).
-
-## Deployment fails when using Azure Arc with multiple tenant IDs
-If you're using Azure Arc and have multiple tenant IDs, run the following command to specify the tenant you plan to use before starting the deployment. If you don't specify a tenant, your deployment might fail.
-
-```azurecli
-az login -tenant <tenant>
-```
-
 ## Deployment fails on an Azure Stack HCI configured with SDN
 While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
-
-## Creating a workload cluster fails with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`
-
-On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
-
-To resolve this issue, do one of the following:
-
-- Use PowerShell to manually update the workload cluster to version 1.1.0 or later.
-- Use Windows Admin Center to update the cluster to version 1.1.0 or to the latest PowerShell version.
-
-This issue does not occur if the management cluster is deployed using Windows Admin Center as it already has the latest PowerShell modules installed.
 
 ## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
 When deploying AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.

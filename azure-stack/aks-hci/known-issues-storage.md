@@ -41,4 +41,4 @@ kube-system   csi-msk8scsi-node-9x47m     0/3     ContainerCreating   0         
 kube-system   kube-proxy-qqnkr            1/1     Terminating         0          5h44m  
 ```
 
-Since _kubelet_ ended up in a bad state and can no longer talk to the API server, the only solution is to restart the _kubelet_ service. After restarting, the cluster goes into a _running_ state.
+Since `kubelet` ended up in a bad state and can no longer talk to the API server, the only solution is to restart the `kubelet` service. After restarting, the cluster goes into a _running_ state.

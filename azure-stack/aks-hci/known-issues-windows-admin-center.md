@@ -43,9 +43,6 @@ The error _Cannot index into a null array_ appears when moving from PowerShell t
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.
 
-## IPv6 must be disabled in the hosting environment
-If both IPv4 and IPv6 addresses are bound to the physical NIC, the `cloudagent` service for clustering uses the IPv6 address for communication. Other components in the deployment framework only use IPv4. This issue will result in Windows Admin Center unable to connect to the cluster and will report a failure when trying to remotely connect to the machine. The workaround is to disable IPv6 the physical network adapters.
-
 ## Cannot deploy AKS to an environment that has separate storage and compute clusters
 Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
 
@@ -153,8 +150,28 @@ If you have difficulties running this script, you can run the following command 
 GetHelp .\Get-SMEUILogs.ps1 -Examples
 ```
 
+## Running an upgrade results in the error: `Error occurred while fetching platform upgrade information`
+
+When running an upgrade in Windows Admin Center, the following error occurred:
+
+`Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories.`
+
+This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+
+## Incorrect upgrade notification in Windows Admin Center
+
+If you receive an incorrect upgrade notification message `Successfully installed AksHci PowerShell module version null`, the upgrade operation is successful even if the notification is misleading.
+
+![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
+
+## Windows Admin Center update dashboard doesn't refresh after successful updates
+
+After a success upgrade, the Windows Admin Center update dashboard still shows the previous version. Refresh the browser to fix this issue.
+
+![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
+
 ## Next steps
-- [Known issues](./known-issues.md)
+- [Troubleshooting overview](troubleshoot-overview.md)
 - [Installation issues and errors](known-issues-installation.md)
 - [Upgrade known issues](known-issues-upgrade.md)
 

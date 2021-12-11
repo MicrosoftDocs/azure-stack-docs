@@ -35,10 +35,11 @@ Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.m
 ## Cloud agent may fail to start successfully when using path names with spaces in them
 When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
 
-```powershell
+```
 Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
 ```
-Workaround: Use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
+
+To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
 
 ## Network proxy server blocks HTTP requests
 When applying the platform configuration, the network proxy server blocked HTTP requests originating from the user agent string **Google Chrome 65** because this string is an out-of-date user agent client. 
@@ -83,7 +84,7 @@ At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
 The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool.
 
 ## Creating virtual networks with a similar configuration cause overlap issues
-When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, this can happen in scenarios where two virtual network configurations are almost the same.
+When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, issues may happen in scenarios where two virtual network configurations are almost the same.
 
 ## Using Remote Desktop to connect to the management cluster produces a connection error
 When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), an error appears and says the connection failed because the host failed to respond.

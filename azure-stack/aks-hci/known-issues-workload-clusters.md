@@ -12,6 +12,61 @@ ms.reviewer:
 
 Use this topic to help you troubleshoot and resolve Kubernetes workload cluster-related issues in AKS on Azure Stack HCI.
 
+## If a cluster is shut down for more than four days, the cluster will be unreachable
+
+When you shut down a management or workload cluster for more than four days, the certificates expire and the cluster is unreachable. The certificates expire because they're rotated every 3-4 days for security reasons.
+
+To restart the cluster, you need to manually repair the certificates before you can perform any cluster operations. To repair the certificates, run the following [Repair-AksHciClusterCerts](./reference/ps/repair-akshciclustercerts.md) command:
+
+```powershell
+Repair-AksHciClusterCerts -Name <cluster-name> -fixKubeletCredentials
+```
+
+## If a management or workload cluster is not used for more than 60 days, the certificates will expire
+
+If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS on Azure Stack HCI. When an AKS on Azure Stack HCI cluster is not upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will continue to remain in a non-functional state.
+
+To resolve this issue, run the following steps:
+
+1. Repair the management cluster certificate by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days).
+2. Repair the `mocctl` certificates by running `Repair-MocLogin`.
+3. Repair the workload cluster certificates by [manually rotating the token and then restart the KMS plug-in and container](known-issues.md#the-api-server-is-not-responsive-after-several-days). 
+ 
+
+## The certificate renewal pod is in a crash loop state
+
+After upgrading or scaling up the workload cluster, the certificate renewal pod is now in a crash loop state because the pod is expecting the certificate tattoo YAML file from the file location `/etc/Kubernetes/pki`.
+
+This issue may be due to a configuration file that's present in the control plane VMs but not in the worker node VMs. To resolve this issue, manually copy the certificate tattoo YAML file from the control plane node to all worker nodes.
+
+1. Copy the YAML file from control plane VM on the workload cluster to the current directory of your host machine:
+   
+   ```
+   ssh clouduser@<comtrol-plane-vm-ip> -i (get-mocconfig).sshprivatekey
+   sudo cp /etc/kubernetes/pki/cert-tattoo-kubelet.yaml ~/
+   sudo chown clouduser cert-tattoo-kubelet.yaml
+   sudo chgrp clouduser cert-tattoo-kubelet.yaml
+   (Change file permissions here, so that `scp` will work)
+   scp -i (get-mocconfig).sshprivatekey clouduser@<comtrol-plane-vm-ip>:~/cert*.yaml .\
+   ```
+
+1. Copy the YAML file from the host machine to the worker node VM. Before you copy the file, you must change the name of the machine in the YAML file to the node name to which you're copying (this is the node name for the workload cluster control plane).
+
+   ```
+   scp -i (get-mocconfig).sshprivatekey .\cert-tattoo-kubelet.yaml clouduser@<workernode-vm-ip>:~/cert-tattoo-kubelet.yaml
+   ```
+
+3. If the owner and group information in the YAML file is not already set to root, set the information to the root:
+
+   ```
+   ssh clouduser@<workernode-vm-ip> -i (get-mocconfig).sshprivatekey
+   sudo cp ~/cert-tattoo-kubelet.yaml /etc/kubernetes/pki/cert-tattoo-kubelet.yaml (copies the certificate file to the correct location)
+   sudo chown root cert-tattoo-kubelet.yaml
+   sudo chgrp root cert-tattoo-kubelet.yaml
+   ```
+
+4. Repeat steps 2 and 3 for all worker nodes.
+
 ## ContainerD is unable to pull the pause image as _kubelet_ mistakenly collects the image 
 
 When _kubelet_ is under disk pressure, it collects unused container images which may include pause images, and when this happens, ContainerD cannot pull the image. 
@@ -26,24 +81,10 @@ To resolve this issue, run the following steps:
    sudo su
    ```
 
-2. Open and edit the `/etc/containerd/config.toml` file and add the following:
-
-   ```
-   [plugin."io.containerd.grpc.v1.cri".registry.configs."ecpacr.azurecr.io".auth]
-   username = "USERNAME_FROM_ME"
-   password = "PASSWORD_FROM_ME"
-   ```
-
-4. Save the `config.toml` file and run the following command:
-
-   ```
-   Systemctl restart containerd
-   ```
-
-5. To pull the image, run the following command:
+2. To pull the image, run the following command:
 
    ```powershell
-   crictl pull ecpacr.azurecr.io/pause:3.2
+   crictl pull --creds aaa:bbb ecpacr.azurecr.io/pause:3.2
    ```
 
 ## In a workload cluster with static IP, all pods in a node are stuck in a _ContainerCreating_ state
@@ -91,7 +132,7 @@ To fix this issue, you need to manually rotate the token and then restart the KM
    $ ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo docker container ls | grep 'kms'"
    ```
 
-   The output should with the following fields:
+   The output should appear with the following fields:
 
    ```Output
    CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -150,7 +191,7 @@ At C:\Program Files\WindowsPowerShell\Modules\Kva\0.2.23\Common.psm1:3083 char:9
 > [!NOTE]
 > Your cluster name will be different.
 
-## Hyper-V manager shows high CPU and/or memory demands for the management cluster
+## Hyper-V manager shows high CPU and/or memory demands for the management cluster (AKS host)
 When you check Hyper-V manager, high CPU and memory demands for the management cluster can be safely ignored. They are usually related to spikes in compute resource usage when provisioning workload clusters. Increasing the memory or CPU size for the management cluster has not shown a significant improvement and can be safely ignored.
 
 ## Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
@@ -181,7 +222,7 @@ If you get this error, verify that the IP addresses have been assigned to the cr
 ```
 Then, verify the network settings to ensure there are enough IP addresses left in the pool to create more VMs.  
 
-## When running **kubectl get pods**, pods were stuck in a _Terminating_ state
+## When running `kubectl get pods`, pods were stuck in a _Terminating_ state
 When deploying AKS on Azure Stack HCI, and then running `kubectl get pods`, pods in the same node are stuck in the _Terminating_ state. The machine rejects SSH connections because the node was likely experiencing a lot of memory demand. This issue occurs because the Windows nodes are over-provisioned, and there's no reserve for core components. 
 
 To avoid this situation, add the resource limits and resource requests for CPU and memory to the pod specification to ensure that the nodes aren't over-provisioned. Windows nodes don't support eviction based on resource limits, so you should estimate how much the containers will use and then ensure the nodes have sufficient CPU and memory amounts. You can find more information in [system requirements](system-requirements.md).
@@ -207,7 +248,7 @@ This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2
 
 To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md#update-the-aks-on-azure-stack-hci-host).
 
-## Creating a workload cluster fails with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_
+## Creating a workload cluster fails with the error `A parameter cannot be found that matches parameter name 'nodePoolName'`
 
 On an AKS on Azure Stack HCI installation with the Windows Admin Center extension version 1.82.0, the management cluster was set up using PowerShell, and an attempt was made to deploy a workload cluster using Windows Admin Center. One of the machines had PowerShell module version 1.0.2 installed, and other machines had PowerShell module 1.1.3 installed. The attempt to deploy the workload cluster failed with the error _A parameter cannot be found that matches parameter name 'nodePoolName'_. This error may have occurred because of a version mismatch. Starting with PowerShell version 1.1.0, the `-nodePoolName <String>` parameter was added to the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) cmdlet, and by design, this parameter is now mandatory when using the Windows Admin Center extension version 1.82.0.
 
