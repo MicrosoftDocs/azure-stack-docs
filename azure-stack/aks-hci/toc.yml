@@ -189,7 +189,7 @@
             href: deploy-linux-application.md
 - name: Troubleshooting
   items:
-  - name: Troubleshoot overview
+  - name: Troubleshooting overview
     href: troubleshoot-overview.md
   - name: Connect to nodes with SSH
     href: ssh-connection.md
@@ -205,7 +205,7 @@
       href: known-issues-upgrade.md  
     - name: Windows Admin Center issues and errors
       href: known-issues-windows-admin-center.md
-    - name: Azure Arc enabled Kubernetes
+    - name: Azure Arc enabled Kubernetes errors
       href: known-issues-arc.md
     - name: Uninstall issues
       href: known-issues-uninstall.md
@@ -217,7 +217,7 @@
       href: known-issues-security.md
     - name: Storage issues
       href: known-issues-storage.md
-    - name: General issues and errors
+    - name: Other issues and errors
       href: known-issues.md
 
 - name: Related

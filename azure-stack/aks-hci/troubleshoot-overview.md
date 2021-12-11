@@ -10,11 +10,15 @@ ms.reviewer:
 
 # Troubleshooting overview
 
-This article provides an overview of the issues you may encounter when using AKS on Azure Stack HCI. The troubleshooting and known issues are organized by functional area, and you can use the links below to find solutions and workarounds to help you resolve known issues. 
+This article provides an overview of the issues you may encounter when using AKS on Azure Stack HCI. The troubleshooting and known issues topics are organized by functional area, and you can use the links in this topic to find solutions and workarounds to help you resolve known issues. 
 
-You can also [open a support issue](./help-support.md) if none of the workarounds found in the topics below apply to you.
+For some troubleshooting operations, you may need to use a secure SSH connection to access Windows or Linux worker nodes, which allows you to securely access the nodes for maintenance, log collection, as well as troubleshooting. For more information, see [create an SSH connection](ssh-connection.md).  
 
-|  Functional area  |   Description  |
+> [!NOTE]
+> If none of the workarounds found in the table below apply to you, [open a support issue](./help-support.md).
+
+
+|  Where is your issue?  |   Description  |
 | --------------   |  ----------------  |
 | [Cluster validation reporting in Azure Stack HCI](/azure-stack/hci/manage/validate-qos) | Troubleshoot cluster validation reporting for network and storage QoS (quality of service) settings across servers in an Azure Stack HCI cluster. |
 | [Credential Security Support Provider](/azure-stack/hci/manage/troubleshoot-credssp) |  Some Azure Stack HCI operations use Windows Remote Management (WinRM), which doesn't allow credential delegation by default. To allow delegation, the computer needs to have CredSSP enabled temporarily. |
