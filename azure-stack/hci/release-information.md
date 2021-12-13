@@ -21,7 +21,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 20348.405    | 2021-14-12            | [KB 5008223](https://support.microsoft.com/topic/9bfc69ea-cd28-4e5d-95c5-934d67d48ee1) |
+| 20348.405    | 2021-12-14            | [KB 5008223](https://support.microsoft.com/topic/9bfc69ea-cd28-4e5d-95c5-934d67d48ee1) |
 | 20348.380    | 2021-11-22            | [KB 5007254](https://support.microsoft.com/topic/98eb640f-81f6-4317-b965-100428db037f) |
 | 20348.350    | 2021-11-09            | [KB 5007205](https://support.microsoft.com/topic/a54d80e0-b1af-493e-9981-d4597a166119) |
 | 20348.320    | 2021-10-26            | [KB 5006745](https://support.microsoft.com/topic/572c595a-aff6-4976-a961-07aafb257973) |
@@ -33,7 +33,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 17784.2135   | 2021-14-12            | [KB 5008210](https://support.microsoft.com/topic/95627012-444e-48b2-976e-75e0cd9f45d9) |
+| 17784.2135   | 2021-12-14            | [KB 5008210](https://support.microsoft.com/topic/95627012-444e-48b2-976e-75e0cd9f45d9) |
 | 17784.2100   | 2021-11-22            | [KB 5007264](https://support.microsoft.com/topic/4b09984a-e87b-4dea-91a0-7137f1d1e952) |
 | 17784.2067   | 2021-11-09            | [KB 5007187](https://support.microsoft.com/topic/november-09-2021-security-update-kb5007187-94e2ce51-339e-4802-8a35-561c9a384e99) |
 | 17784.2060   | 2021-11-09            | [KB 5007349](https://support.microsoft.com/topic/november-09-2021-servicing-stack-update-kb5007349-c080ffd6-7f9f-4e44-abce-da0e58927ee2) |
