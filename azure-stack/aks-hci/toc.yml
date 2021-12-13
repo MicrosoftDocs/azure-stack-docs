@@ -195,30 +195,34 @@
     href: ssh-connection.md
   - name: How to fix
     items:
-    - name: Cluster validation reporting in Azure Stack HCI
-      href: ../hci/manage/validate-qos.md
-    - name: CredSSP in Azure Stack HCI
-      href: ../hci/manage/troubleshoot-credssp.md
-    - name: Installation issues and errors
-      href: known-issues-installation.md
-    - name: Upgrade issues 
-      href: known-issues-upgrade.md  
-    - name: Windows Admin Center issues and errors
-      href: known-issues-windows-admin-center.md
-    - name: Azure Arc enabled Kubernetes errors
-      href: known-issues-arc.md
-    - name: Uninstall issues
-      href: known-issues-uninstall.md
-    - name: Kubernetes workload clusters issues
-      href: known-issues-workload-clusters.md
-    - name: Networking issues
-      href: known-issues-networking.md
-    - name: Security issues
-      href: known-issues-security.md
-    - name: Storage issues
-      href: known-issues-storage.md
-    - name: Other issues and errors
-      href: known-issues.md
+    - name: AKS on Azure Stack HCI issues
+      items: 
+          - name: Installation
+            href: known-issues-installation.md
+          - name: Upgrade 
+            href: known-issues-upgrade.md  
+          - name: Windows Admin Center
+            href: known-issues-windows-admin-center.md
+          - name: Azure Arc enabled Kubernetes
+            href: known-issues-arc.md
+          - name: Uninstall
+            href: known-issues-uninstall.md
+          - name: Kubernetes workload clusters
+            href: known-issues-workload-clusters.md
+          - name: Networking
+            href: known-issues-networking.md
+          - name: Security
+            href: known-issues-security.md
+          - name: Storage
+            href: known-issues-storage.md
+          - name: Other
+            href: known-issues.md
+    - name: Azure Stack HCI issues
+      items:
+          - name: Cluster validation reporting in Azure Stack HCI
+            href: ../hci/manage/validate-qos.md
+          - name: CredSSP in Azure Stack HCI
+            href: ../hci/manage/troubleshoot-credssp.md
 
 - name: Related
   items:
