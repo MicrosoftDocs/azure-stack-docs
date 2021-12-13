@@ -122,7 +122,7 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 
 | Resource Types | API Versions |
 |--------------------|--------------------|
-| Vailable cluster regions | 2018-01-01-preview |
+| Available cluster regions | 2018-01-01-preview |
 | Clusters | 2018-01-01-preview |
 | Namespaces | 2018-01-01-preview |
 | Check name availability | 2017-04-01 |
