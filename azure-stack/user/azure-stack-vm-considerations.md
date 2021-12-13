@@ -63,9 +63,9 @@ The following table lists the VMs that are supported on Azure Stack Hub along wi
 |General purpose  |DS-series      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
 |General purpose  |DSv2-series    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dv2-series)      |
 |Memory optimized |D-series       |[D11 - D14](azure-stack-vm-sizes.md#d-series)            |
-|Memory optimized |DS-series      |[DS11 - DS14](azure-stack-vm-sizes.md#d-seriess)|
-|Memory optimized |Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#d-seriesv2)     |
-|Memory optimized |DSv2-series    |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#d-seriessv2)    |
+|Memory optimized |DS-series      |[DS11 - DS14](azure-stack-vm-sizes.md#d-series)|
+|Memory optimized |Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#dv2-series)     |
+|Memory optimized |DSv2-series    |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#dv2-series)    |
 |Compute optimized|F-series       |[F1 - F16](azure-stack-vm-sizes.md#f-series)    |
 |Compute optimized|Fs-series      |[F1s - F16s](azure-stack-vm-sizes.md#fs-series)    |
 |Compute optimized|Fsv2-series    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series)    |
