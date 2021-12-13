@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Known issues in Windows Admin Center
+# Fix issues in Windows Admin Center
 
 This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [common known issues](known-issues.md) and [installation issues and errors](known-issues-installation.md).
 

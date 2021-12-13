@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Common issues when using Azure Kubernetes Service on Azure Stack HCI
+# Resolve general issues when using Azure Kubernetes Service on Azure Stack HCI
 This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](known-issues-windows-admin-center.md) and [installation issues and errors](known-issues-installation.md).
 
 ## When running AksHci PowerShell cmdlets, an `Unable to Load DLL` error appears
