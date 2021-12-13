@@ -38,7 +38,7 @@ Get-AksHciCredential -name mycluster
 To install the Secrets Store CSI Driver, run the following Helm command:
 
 ```powershell
-helm repo add csi-secrets-store-provider-azure https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/chartsy
+helm repo add csi-secrets-store-provider-azure https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/charts
 ```
 
 The following command installs both the Secrets Store CSI Driver and the Azure Key Vault provider:
