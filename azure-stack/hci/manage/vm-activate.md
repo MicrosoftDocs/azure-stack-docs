@@ -30,7 +30,7 @@ There are multiple benefits to this approach:
 
 There are two options for purchasing licensing for Automatic Virtual Machine Activation. Choose the option that best serves your needs:
 
-- **Windows Server subscription:** subscribe to Windows Server licenses through Azure. [See pricing information here](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
+- **Windows Server Subscription:** subscribe to Windows Server licenses through Azure. [See pricing information here](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
   - Used for Azure Stack HCI VMs only
   - Access all Windows Server editions
   - Includes access to Windows Server Azure edition
@@ -50,7 +50,7 @@ There are two options for purchasing licensing for Automatic Virtual Machine Act
 
 Windows Server Subscription is a simple and flexible option for Windows Server guest licensing, exclusively for Azure Stack HCI customers.
 
-### How does Windows Server subscription work?
+### How does Windows Server Subscription work?
 
 When Windows Server Subscription is enabled, Azure Stack HCI servers retrieve licenses from the cloud and automatically set up Automatic Virtual Machine Activation. In other words, the customer simply has to enroll in the subscription – there are no other steps required to host Automatic Virtual Machine Activation, and the customer can start activating Windows Server VMs right away.
 
@@ -58,13 +58,13 @@ When Windows Server Subscription is enabled, Azure Stack HCI servers retrieve li
 
 ### How does billing work?
 
-Windows Server subscription is an optional add-on to Azure Stack HCI, and therefore is aligned to its billing model:
+Windows Server Subscription is an optional add-on to Azure Stack HCI, and therefore is aligned to its billing model:
 
 - Simplified billing through Azure, and charged to the same subscription and resource as base Azure Stack HCI.
 - Charged monthly, based on the number of physical cores in your Azure Stack HCI cluster.
 - Follows the same 60-day free trial period as Azure Stack HCI. If Azure Stack HCI and Windows Server Subscription both start on day 0, both will have the same 60-day free trial. If Azure Stack HCI is in day 40 of its free trial when Windows Server Subscription is purchased, both will still have the same 20 remaining days of free trial.
 - As Automatic Virtual Machine Activation is a cluster-wide feature, Windows Server Subscription applies to your entire Azure Stack HCI cluster.
-- Customers can sign up and cancel their Windows Server subscription at any time.
+- Customers can sign up and cancel their Windows Server Subscription at any time.
 
 ### What guest versions does Windows Server Subscription activate?
 
@@ -97,7 +97,7 @@ Windows Server Subscription always activates all Windows Server editions up to t
 
 **Error 1**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
 
-This means that your cluster does not yet have the latest status on Windows Server subscription (i.e., just enrolled or just cancelled), and therefore might not have the latest licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next periodic cloud sync, or you can choose to
+This means that your cluster does not yet have the latest status on Windows Server Subscription (i.e., just enrolled or just cancelled), and therefore might not have the latest licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next periodic cloud sync, or you can choose to
 manually sync: [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
 ### Enable Windows Server Subscription using Windows Admin Center
@@ -265,10 +265,10 @@ Now that you have set up Automatic Virtual Machine Activation, you can activate 
 
 This FAQ provides answers to some questions about using Automatic Virtual Machine Activation:
 
-### I can't decide between Windows Server subscription and bringing my own license – is one better than the other?
+### I can't decide between Windows Server Subscription and bringing my own license – is one better than the other?
 
 - These are both good licensing options! It depends on your needs:
-  - Do you need the flexibility of a monthly licensing model and billing through Azure? Do you want ease of management and not having to deal with keys? Do you want to be able to keep up to date with the latest Windows innovations? Then Windows Server subscription is probably best for you.
+  - Do you need the flexibility of a monthly licensing model and billing through Azure? Do you want ease of management and not having to deal with keys? Do you want to be able to keep up to date with the latest Windows innovations? Then Windows Server Subscription is probably best for you.
   - Or do you already have an existing license? Is the cost-effectiveness of long-term perpetual licensing for specific editions most important to you? Do you have broad-spanning deployments? Then bring your own license is most suited for you.
 
 ### I want to change an existing key. What happens to the previous key if the overwrite is successful/unsuccessful?
@@ -299,7 +299,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 
 ### I'm excited about using Windows Server 2022 Datacenter Azure Edition. If I follow the instructions in this article, will my Windows Server 2022 Datacenter Azure Edition guests activate on Azure Stack HCI?
 
-- Yes, but you'll need to use either Windows Server subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
+- Yes, but you'll need to use either Windows Server Subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
 
 ## Next steps
 
