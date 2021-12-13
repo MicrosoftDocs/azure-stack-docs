@@ -23,7 +23,8 @@ Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function 
 
 VM vCPU depends on the number of cores per node. For example, systems with cores or logical processor of less than 64 will not support VM size Standard_F64s_v2.
 
-## VM general purpose
+
+## VM General Purpose
 
 General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
 
@@ -65,43 +66,8 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8x500   |4 |
 |**Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16x500 |8 |
 
-### D-series
-|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
-|----------------|----|----|-----|----|------|------------|---------|
-|**Standard_D1** |1   |3.5 |50   |500 |3000  |4 / 4x500   |2 |
-|**Standard_D2** |2   |7   |100  |500 |6000  |8 / 8x500   |2 |
-|**Standard_D3** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
-|**Standard_D4** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
 
-
-### DS-series
-|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
-|-----------------|----|----|-----|-----|------|-------------|---------|
-|**Standard_DS1** |1   |3.5 |7    |1000 |4000  |4 / 4x2300   |2 |
-|**Standard_DS2** |2   |7   |14   |1000 |8000  |8 / 8x2300   |2 |
-|**Standard_DS3** |4   |14  |28   |1000 |16000 |16 / 16x2300 |4 |
-|**Standard_DS4** |8   |28  |56   |1000 |32000 |32 / 32x2300 |8 |
-
-### Dv2-series
-|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
-|-------------------|----|----|-----|----|------|------------|---------|
-|**Standard_D1_v2** |1   |3.5 |50   |500 |3000  |4 / 4x500   |2 |
-|**Standard_D2_v2** |2   |7   |100  |500 |6000  |8 / 8x500   |2 |
-|**Standard_D3_v2** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
-|**Standard_D4_v2** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
-|**Standard_D5_v2** |16  |56  |800  |500 |48000 |64 / 64x500 |8 |
-
-### DSv2-series
-|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
-|--------------------|----|----|----|-----|------|-------------|---------|
-|**Standard_DS1_v2** |1   |3.5 |7   |1000 |4000  |4 / 4x2300   |2 |
-|**Standard_DS2_v2** |2   |7   |14  |1000 |8000  |8 / 8x2300   |2 |
-|**Standard_DS3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 |
-|**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 |
-|**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 |
-
-
-## Compute optimized
+## Compute Optimized
 ### F-series
 *Requires Azure Stack Hub version 1804 or later*
 
@@ -139,7 +105,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |8 |
 
 
-## Memory optimized
+## Memory Optimized
 
 Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed for relational database servers, medium to large caches, and in-memory analytics.
 
@@ -177,6 +143,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 |
 
 ::: moniker range="azs-2102"
+::: moniker range="azs-2108"
 ### <a name="mo-dv3"></a>Dv3-series
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks/throughput (IOPS) | Max NICs/Network bandwidth |
@@ -206,6 +173,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_E8_v3**  | 8  | 64  | 200  | 16 /16x500| 4 |
 | **Standard_E16_v3** | 16 | 128 | 400  | 32 /32x500| 8 |
 
+::: moniker-end
 ::: moniker-end
 
 ## Next steps
