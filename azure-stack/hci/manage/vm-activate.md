@@ -21,7 +21,8 @@ Automatic Virtual Machine Activation allows properly activated host servers to a
 
 :::image type="content" source="./media/vm-activation/avma-binding-process.png" alt-text="Conceptual figure showing how Automatic Virtual Machine Activation binds the VM activation key process to each host server instead of binding the process to each VM running on top of each host server." lightbox="./media/vm-activation/avma-binding-process.png":::
 
-There are multiple benefits to this approach:
+There are several benefits to this approach:
+
 - Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
 - License management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with just a properly licensed server.
 - Automatic Virtual Machine Activation acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with Product Use Rights and Microsoft Software License Terms.
