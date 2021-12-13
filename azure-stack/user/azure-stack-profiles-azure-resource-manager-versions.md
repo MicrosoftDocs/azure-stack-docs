@@ -4,10 +4,10 @@ description: Learn about the Azure Resource Manager API versions supported by pr
 author: sethmanheim
 ms.custom: contperf-fy20q4
 ms.topic: article
-ms.date: 05/03/2021
+ms.date: 12/6/2021
 ms.author: sethm
 ms.reviewer: raymondl
-ms.lastreviewed: 05/03/2021
+ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to know which resource provider API versions are supported by profiles in Azure Stack.
 # Keyword: resource api versions
@@ -122,7 +122,7 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 
 | Resource Types | API Versions |
 |--------------------|--------------------|
-| Vailable cluster regions | 2018-01-01-preview |
+| Available cluster regions | 2018-01-01-preview |
 | Clusters | 2018-01-01-preview |
 | Namespaces | 2018-01-01-preview |
 | Check name availability | 2017-04-01 |
