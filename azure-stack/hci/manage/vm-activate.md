@@ -152,7 +152,7 @@ Choose from the following options to get a product key:
 
 Product-key based Automatic Virtual Machine Activation activates all editions (Datacenter, Standard, or Essentials) of the following guest OS versions:
 
-| Guest OS version                         | Host server key versions                 | |
+| Guest OS version                         | Host server key versions                 | - |
 | :--------------------------------------- | :-------------------------------------- | :-- |
 |                                          | Windows Server 2019 Datacenter          | Windows Server 2022 Datacenter |
 | Windows Server 2022 Datacenter           | No                                       | Yes |
@@ -291,7 +291,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 ### Can I run Windows Server 2016 VMs on Azure Stack HCI? I have a license for it.
 
 - Yes. While Windows Server 2016 keys cannot be used to set up Automatic Virtual Machine Activation on Azure Stack HCI, they may still be applied using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
-- Windows Server Subscription and Windows Server 2022 and 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#supported-guest-os-versions)), and you can set this up through Automatic Virtual Machine Activation.
+- Windows Server Subscription and Windows Server 2022 and 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#guest-os-versions-your-key-can-activate)), and you can set this up through Automatic Virtual Machine Activation.
 
 ### I previously purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?
 
