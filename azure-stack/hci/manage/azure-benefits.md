@@ -86,18 +86,22 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 
 ##### Troubleshooting
 
-- To turn off and reset Azure benefits on your cluster: under the **Cluster** tab, click **Turn off Azure Benefits**.
-- To remove access to Azure benefits for VMs: under the **VM** tab, select the VM(s) in the top table **VMs without Azure Benefits**, and then click **Turn on Azure Benefits for VMs**.
-- Under the **Cluster** tab, one or more servers appear as **Expired**: if Azure Benefits for one or more servers has not synced with Azure for more than 30 days, it appears as **Expired** or **Inactive**. Click **Sync with Azure** to schedule a manual sync.
-- Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**: you will not be able to add or remove Azure benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for erroring host servers, then try and manage VMs again.
+- To turn off and reset Azure benefits on your cluster: 
+  - Under the **Cluster** tab, click **Turn off Azure Benefits**.
+- To remove access to Azure benefits for VMs:
+  - Under the **VM** tab, select the VM(s) in the top table **VMs without Azure Benefits**, and then click **Turn on Azure Benefits for VMs**.
+- Under the **Cluster** tab, one or more servers appear as **Expired**:
+  - If Azure Benefits for one or more servers has not synced with Azure for more than 30 days, it appears as **Expired** or **Inactive**. Click **Sync with Azure** to schedule a manual sync.
+- Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
+  - You will not be able to add or remove Azure benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for erroring host servers, then try and manage VMs again.
 
 ### Turn on Azure Benefits using PowerShell
 
 1. To set up Azure Benefits, run the following command from an elevated PowerShell window on your Azure Stack HCI cluster:
 
-  ```powershell
-  Enable-AzStackHCIAttestation
-  ```
+   ```powershell
+   Enable-AzStackHCIAttestation
+   ```
 
    Or, if you want to add all existing VMs on setup, you can run the following command:
 
@@ -113,9 +117,9 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 
    Or, to view Azure Benefits status for servers, run the following command:
 
-  ```powershell
-  Get-AzureStackHCIAttestation [[-ComputerName] <string>]
-  ```
+   ```powershell
+   Get-AzureStackHCIAttestation [[-ComputerName] <string>]
+   ```
 
 3. To check access to Azure Benefits for VMs, run the following command:
 
