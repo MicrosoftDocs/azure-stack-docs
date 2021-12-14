@@ -17,7 +17,7 @@
   - name: 20H2 release notes
     href: https://support.microsoft.com/help/4595086
   - name: Azure Benefits on Azure Stack HCI
-    href: azure-benefits.md
+    href: ./manage/azure-benefits.md
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
