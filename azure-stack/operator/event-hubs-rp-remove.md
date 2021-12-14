@@ -1,28 +1,26 @@
 ---
-title: How to uninstall Event Hubs on Azure Stack Hub
-description: Learn how to uninstall Event Hubs on Azure Stack Hub.
+title: How to uninstall Azure Stack Hub Event Hubs resources
+description: Learn how to uninstall Azure Stack Hub Event Hubs resources.
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 12/13/2021
 ms.reviewer: jfggdl
-ms.lastreviewed: 12/09/2019
+ms.lastreviewed: 12/13/2021
 ms.custom: contperf-fy22q2
 ---
 
-# How to uninstall Event Hubs on Azure Stack Hub
+# How to uninstall Azure Stack Hub Event Hubs resources
 
 > [!WARNING]
-> Uninstalling Event Hubs will remove (erase) the resource provider, and all user-created Event Hubs clusters, namespaces, and event hubs resources. It will also remove their associated event data.  
-> Please proceed with extreme caution before deciding to uninstall Event Hubs. 
+> Uninstalling Azure Stack Hub Event Hubs resources will remove (erase) the resource provider, and all user-created Event Hubs clusters, namespaces, and event hubs resources. It will also remove their associated event data.  
+> Please proceed with extreme caution before deciding to uninstall Event Hubs on Azure Stack Hub. 
 > Uninstalling Event Hubs **does not** delete the packages used to install Event Hubs on Azure Stack Hub. To achieve that, please refer to [Delete Event Hubs packages](#delete-event-hubs-packages).
 
-## Uninstall Event Hubs on Azure Stack Hub
+## Uninstall Azure Stack Hub Event Hubs resources
 
-This sequence of steps will delete all Event Hubs on Azure Stack Hub resources, including clusters, namespaces, event hubs, and the resource provider.
-
-To uninstall Event Hubs on Azure Stack Hub and all related resources created by users, complete the following steps:
+This sequence of steps will delete all Azure Stack Hub Event Hubs resources, including clusters, namespaces, event hubs, and the resource provider:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **Marketplace management** on the left.
