@@ -40,7 +40,7 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
    > [!NOTE]
    > Certificates are renewed every time the Azure Stack HCI cluster syncs with Azure, and each renewal is valid for 30 days. As long as you maintain the usual 30 day connectivity requirements for Azure Stack HCI, no user action is required.
 
-2. HciSvc exposes a private and non-routable REST endpoint, accessible only to VMs on the same server. To enable this endpoint, an internal vSwitch is configured on the AzureStack HCI host (named **AZSHCI_HOST-IMDS_DO_NOT_MODIFY**). VMs then must have a NIC configured and attached to the same vSwitch (**AZSHCI_GUEST-IMDS_DO_NOT_MODIFY**).
+2. HciSvc exposes a private and non-routable REST endpoint, accessible only to VMs on the same server. To enable this endpoint, an internal vSwitch is configured on the AzureStack HCI host (named *AZSHCI_HOST-IMDS_DO_NOT_MODIFY*). VMs then must have a NIC configured and attached to the same vSwitch (*AZSHCI_GUEST-IMDS_DO_NOT_MODIFY*).
 
    > [!NOTE]
    > Modifying or deleting this switch and NIC prevents Azure Benefits from working properly. If errors occur, disable Azure Benefits using Windows Admin Center or the PowerShell instructions that follow, and then try again.
@@ -48,7 +48,7 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
 3. Consumer workloads (for example, Windows Server Azure Edition guests) requests attestation. HciSvc then signs the response with an Azure certificate.
 
    > [!NOTE]
-   > You can manually enable access for each VM that needs Azure Benefits.
+   > You must manually enable access for each VM that needs Azure Benefits.
 
 ## Enable Azure Benefits
 
