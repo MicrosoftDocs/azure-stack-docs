@@ -18,7 +18,7 @@ ms.custom: contperf-fy22q2
 > Please proceed with extreme caution before deciding to uninstall Event Hubs on Azure Stack Hub. 
 > Uninstalling Event Hubs **does not** delete the packages used to install Event Hubs on Azure Stack Hub. To achieve that, please refer to [Delete Event Hubs packages](#delete-event-hubs-packages).
 
-## Uninstall Event Hubs resources from Azure Stack Hub
+## Uninstall Azure Stack Hub Event Hubs resources
 
 This sequence of steps will delete all Azure Stack Hub Event Hubs resources, including clusters, namespaces, event hubs, and the resource provider:
 
