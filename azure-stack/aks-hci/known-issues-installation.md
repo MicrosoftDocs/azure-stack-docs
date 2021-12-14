@@ -12,7 +12,7 @@ ms.reviewer:
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with when [upgrading](known-issues-upgrade.md) and using [Windows Admin Center](known-issues-windows-admin-center.md).
 
-## Error: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
+## During installation, this error appears: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
 
 This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
 
