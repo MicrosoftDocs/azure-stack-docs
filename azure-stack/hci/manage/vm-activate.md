@@ -101,24 +101,24 @@ To change or add keys to host servers in a cluster:
 ### Troubleshooting
 If you receive the following Automatic Virtual Machine Activation error messages, try using the verification steps in this section to resolve them.
 
-`Error 1: “The key you entered didn’t work”`
+`Error 1: "The key you entered didn't work"`
 
 This error might be due to any of the following issues:
 - A key submitted to activate a server in the cluster was not accepted.
 - A disruption of the activation process prevented a server in the cluster from being activated.
-- A valid key hasn’t yet been applied to a server that was added to the cluster.
+- A valid key hasn't yet been applied to a server that was added to the cluster.
 
 To resolve such issues, on the **Activate Windows Server VMs** tab, select the server with the warning, and then select **Manage activation keys** to enter a new key.
 
-`Error 2: “Some servers use keys for an older version of Windows Server.”`
+`Error 2: "Some servers use keys for an older version of Windows Server."`
 
 All servers must use the same version of keys. Update the keys to the same version to ensure that the VMs stay activated regardless of which server they run on.
 
-`Error 3: “Server is down”`
+`Error 3: "Server is down"`
 
 Your server is offline and cannot be reached. Bring all servers online and then refresh the page.
 
-`Error 4: “Couldn’t check the status on this server.” or “To use this feature, install the latest update”`
+`Error 4: "Couldn't check the status on this server." or "To use this feature, install the latest update"`
 
 One or more of your servers is not updated and does not have the required packages to set up Automatic Virtual Machine Activation. Ensure that your cluster is updated, and then refresh the page. To learn more, see [Update Azure Stack HCI clusters](./update-cluster.md).
 
@@ -172,7 +172,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 
 **I'm excited about Windows Server 2022. If I follow the instructions in this article, will my Windows Server 2022 guests activate on Azure Stack HCI?**
 
-- Yes, but you’ll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
+- Yes, but you'll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
 
 ## Next steps
 For more information, see also:
