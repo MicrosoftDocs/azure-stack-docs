@@ -25,7 +25,7 @@ VM vCPU depends on the number of cores per node. For example, systems with cores
 
 ## VM general purpose
 
-General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
+General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. All General purpose VMs have a 500 IOPS limit for OS and data disks, except for the Basic A series VMs which have 300 IOPS for disks.
 
 ### Basic A
 
@@ -132,7 +132,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_D14_v2** |16  |112 |800  |500 |48000  |64 / 64x500  |8 |
 
 
-### Sv2-series
+### DSv2-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |8 / 8x2300    |2 |
