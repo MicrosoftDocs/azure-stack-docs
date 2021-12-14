@@ -163,7 +163,7 @@ Take a few minutes to watch the video on using Automatic Virtual Machine Activat
 
 ### Before you start
 
-The following prerequisites are required:
+The following is required:
 
 - An Azure Stack HCI cluster (version 21H2 or version 20H2 with the June 8, 2021 cumulative update or later)
 - Windows Admin Center (version 2103 or later)
@@ -250,7 +250,7 @@ Open PowerShell as an administrator and run the following commands.
 
 1. Repeat these steps on each of the other servers in your Azure Stack HCI cluster.
 
-### Activate VMs against a host server
+## Activate VMs against a host server
 
 Now that you have set up Automatic Virtual Machine Activation, you can activate VMs against the host server by [following the steps here](/windows-server/get-started/automatic-vm-activation).
 
