@@ -60,7 +60,7 @@ Windows Server subscription is an optional add-on to Azure Stack HCI, and theref
 
 ### What guest versions does Windows Server subscription activate?
 
-Windows Server subscription always enables you to get the latest Windows Server version, as well as all previous editions, and Windows Server Azure Edition. Currently, this includes:
+Windows Server subscription always enables you to get the latest Windows Server version, all previous editions, and Windows Server Azure Edition. Currently, the versions include:
 
 - Windows Server 2022 Datacenter: Azure Edition
 - Windows Server 2022 Datacenter
@@ -89,7 +89,7 @@ Windows Server subscription always enables you to get the latest Windows Server 
 
 **Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
 
-Your cluster does not yet have the latest status on Windows Server subscription (i.e., just enrolled or just cancelled), and therefore might not have retrieved the licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next cloud sync, or you can choose to
+Your cluster does not yet have the latest status on Windows Server subscription (that is, just enrolled or just cancelled), and therefore might not have retrieved the licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next cloud sync, or you can choose to
 manually sync: [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
 ### Enable Windows Server subscription using Windows Admin Center
