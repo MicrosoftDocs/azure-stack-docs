@@ -11,9 +11,9 @@ ms.date: 12/13/2021
 
 >Applies to Azure Stack HCI, version 21H2 and later
 
-Microsoft Azure offers a range of differentiated workloads and capabilities to customers. The goal with Azure Stack HCI is to extend many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
+Microsoft Azure offers a range of different workloads and capabilities. The goal with Azure Stack HCI is to extend many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
-Azure Benefits, a recommended and optional feature in Azure Stack HCI, makes it possible for supported Azure-exclusive workloads to work outside of the cloud. Customers can enable Azure Benefits on Azure Stack HCI at no additional cost.
+*Azure Benefits*, a recommended but optional feature in Azure Stack HCI, makes it possible for supported Azure-exclusive workloads to work outside of the cloud. Customers can enable Azure Benefits on Azure Stack HCI at no additional cost.
 
 ## Supported workloads with Azure Benefits
 
@@ -33,7 +33,7 @@ This is modeled after the same [IMDS Attestation](/azure/virtual-machines/window
 
 :::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture":::
 
-Turning on Azure Benefits initiates the service to run on your Azure Stack HCI cluster:
+Turning on Azure Benefits starts the service running on your Azure Stack HCI cluster:
 
 - On every server, HciSvc obtains a certificate from Azure, and securely stores it within an enclave on the server.
 
@@ -75,7 +75,7 @@ then under Settings, select **Azure Benefits**.
    1. Check that cluster-wide Azure Benefits is turned on: **Azure benefits cluster status** appears as **On**.
    2. For each server, check that: Under the **Cluster** tab in the dashboard, check that Azure Benefits for every server shows as **Active** in the table.
 
-##### Troubleshooting
+##### Troubleshooting - Windows Admin Center
 
 - To turn off Azure Benefits for the cluster, under the **Cluster** tab, click **Turn off Azure Benefits**.
 - If Azure Benefits for one or more servers is not yet synced with Azure, it may appear as **Expired** or **Inactive**. Click **Sync with Azure** to schedule a manual sync.
@@ -157,9 +157,9 @@ then under Settings, select **Azure Benefits**.
 
 - To remove access to Azure Benefits for selected VMs:
 
-```powershell
-Remove-AzStackHCIVMAttestation [-VMName]
-```
+  ```powershell
+  Remove-AzStackHCIVMAttestation [-VMName]
+  ```
 
 - To remove access for all existing VMs:
 
@@ -176,7 +176,7 @@ Remove-AzStackHCIVMAttestation [-VMName]
 ### View only using portal
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
-2. Under the feature **Enable Azure benefits**, view the host attestation status.
+2. Under the feature **Enable Azure benefits**, view the host attestation status:
 
    :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
 
