@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Fix networking known issues and errors
+# Fix known issues and errors when configuring a network
 
 Use this topic to help you troubleshoot and resolve networking-related issues in AKS on Azure Stack HCI.
 

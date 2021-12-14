@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Fix Kubernetes workload cluster known issues and errors
+# Fix known issues and errors when managing your Kubernetes workload clusters
 
 Use this topic to help you troubleshoot and resolve Kubernetes workload cluster-related issues in AKS on Azure Stack HCI.
 

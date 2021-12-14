@@ -8,7 +8,7 @@ ms.author: v-susbo
 ms.reviewer: 
 ---
 
-# Fix storage known issues and errors
+# Fix known issues and errors when managing storage
 
 Use this topic to help you troubleshoot and resolve storage-related issues in AKS on Azure Stack HCI.
 
