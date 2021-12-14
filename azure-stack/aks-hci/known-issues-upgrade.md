@@ -3,7 +3,7 @@ title: Known issues when upgrading Azure Kubernetes Service on Azure Stack HCI
 description: Known issues when upgrading  Azure Kubernetes Service on Azure Stack HCI 
 author: EkeleAsonye
 ms.topic: troubleshooting
-ms.date: 09/22/2021
+ms.date: 12/13/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -24,7 +24,7 @@ If you created a management cluster but haven't deployed a workload cluster in t
 
 If you haven't deployed a workload cluster in 60 days, the billing goes out of policy. The only way to fix this issue is to redeploy with a clean installation.
 
-## After upgrading to PowerShell module 1.1.9, this error appears: _Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1’ on node: ‘node1’_ 
+## After upgrading to PowerShell module 1.1.9, this error appears: `Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1’ on node: ‘node1’`
 
 This error was resolved in PowerShell module version 1.1.11. Update the PowerShell module to version 1.1.11 on all nodes to resolve this issue.
 
@@ -46,20 +46,18 @@ When running an upgrade in Windows Admin Center, the following error occurred:
 
 This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
 
-## When running Update-AksHci, the update process was stuck at _Waiting for deployment 'AksHci Billing Operator' to be ready_
+## When running Update-AksHci, the update process was stuck at `Waiting for deployment 'AksHci Billing Operator' to be ready`
 
-When running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet, the update was stuck with a status message: _Waiting for deployment 'AksHci Billing Operator' to be ready_.
-
-This issue could have the following root causes:
+This status message appears when running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet. Review the following root causes to resolve the issue:
 
 * **Reason one**:
-   During the update of the _AksHci Billing Operator_, it's that the _Operator_ incorrectly marked itself as out of policy. To resolve this issue, open up a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
+   During the update of the _AksHci Billing Operator_, the _Operator_ incorrectly marked itself as out of policy. To resolve this issue, open up a new PowerShell window and run [Sync-AksHciBilling](./reference/ps/sync-akshcibilling.md). You should see the billing operation continue within the next 20-30 minutes. 
 
 * **Reason two**:
-   The management cluster VM may be out of memory, which causes the API server to be unreachable, and consequently, makes all commands from Get-AksHciCluster, billing, and update run into a timeout. As a workaround, set the management cluster VM to 32 GB in Hyper-V and reboot it. 
+   The management cluster VM may be out of memory, which causes the API server to be unreachable, and consequently, makes all commands from [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), billing, and update run into a timeout. As a workaround, set the management cluster VM to 32 GB in Hyper-V and reboot it. 
 
 * **Reason three**:
-   The AKS on Azure Stack HCI Billing Operator may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To work around this issue, manually resize the billing pod `pvc` using the following steps. 
+   The _AksHci Billing Operator_ may be out of storage space, which is due to a bug in the Microsoft SQL configuration settings. The lack of storage space may be causing the upgrade to stop responding. To work around this issue, manually resize the billing pod `pvc` using the following steps. 
 
    1. Run the following command to edit the pod settings:
 
@@ -82,7 +80,7 @@ This issue could have the following root causes:
       kubectl get deployments/billing-manager-deployment --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n azure-arc
       ```
 
-## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at _Update-KvaInternal_
+## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at `Update-KvaInternal`
 
 When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
 

@@ -10,10 +10,10 @@ ms.reviewer:
 
 # Fix issues in Windows Admin Center
 
-This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [common known issues](known-issues.md) and [installation issues and errors](known-issues-installation.md).
+This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [upgrade](known-issues.md) and [installation](known-issues-installation.md) issues and errors.
 
-## During deployment the error _No match was found for the specified search criteria for the provider 'Nuget'_ appears
-The error _No match was found for the specified search criteria for the provider 'Nuget'_ appears when deploying through Windows Admin Center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
+## During deployment the error `No match was found for the specified search criteria for the provider 'Nuget'` appears
+This error appears when deploying through Windows Admin Center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
 
 This is an error occurs from PowerShell and states that there are internet connectivity issues. PowerShell is trying to install the pre-requisites package and is unable to install it. You should check to make sure the server or failover cluster has internet connectivity and then start a fresh installation.
 
@@ -37,8 +37,8 @@ The AKS host cluster deployment fails at system checks with a WinRM service erro
 
 There are inconsistencies in network field names showing up in the host cluster deployment flow, and the workload cluster deployment flow.
 
-## The error _Cannot index into a null array_ appears when creating an Arc enabled workload cluster
-The error _Cannot index into a null array_ appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
+## The error `Cannot index into a null array` appears when creating an Arc enabled workload cluster
+This error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
 
 ## Recovering from a failed AKS on Azure Stack HCI deployment
 If you're experiencing deployment issues or want to reset your deployment, make sure you close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.
@@ -68,14 +68,14 @@ Sometimes, due to network issues, Windows Admin Center times out an Arc connecti
 ## Error occurs when attempting to use Windows Admin Center
 For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account. If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
 
-## On Windows Admin Center, the message **error occurred while creating service principal** appears while installing an AKS host on Azure Stack HCI
+## On Windows Admin Center, the message `error occurred while creating service principal` appears while installing an AKS host on Azure Stack HCI
 You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign-in pop-up is blocked and causes the service principal error.
 
 ## The Setup or Cluster Create wizard displays an error about a wrong configuration
-If you receive an error in either wizard about a wrong configuration, perform cluster cleanup operations. These operations might involve removing the C:\Program Files\AksHci\mocctl.exe file.
+If you receive an error in either wizard about a wrong configuration, perform cluster cleanup operations. These operations might involve removing the `C:\Program Files\AksHci\mocctl.exe` file.
 
 ## When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
-If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the [release notes.](https://github.com/Azure/aks-hci/releases).
+If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires). Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the AKS on Azure Stack HCI [release notes.](https://github.com/Azure/aks-hci/releases).
 
 ## A WinRM error is displayed when creating a new workload cluster
 

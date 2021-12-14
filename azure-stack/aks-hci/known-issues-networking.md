@@ -3,7 +3,7 @@ title: Troubleshoot networking issues and errors in Azure Kubernetes Service on 
 description: Get help to troubleshoot networking issues and errors in Azure Kubernetes Service on Azure Stack HCI.
 author: v-susbo
 ms.topic: troubleshooting
-ms.date: 11/05/2021
+ms.date: 12/13/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---

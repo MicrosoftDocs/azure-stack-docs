@@ -12,20 +12,20 @@ ms.reviewer:
 
 Use this topic to help you troubleshoot and resolve issues when uninstalling AKS on Azure Stack HCI.
 
-## Running Remove-AksHciCluster results in the error: _A workload cluster with the name 'my-workload-cluster' was not found_
+## Running Remove-AksHciCluster results in the error: `A workload cluster with the name 'my-workload-cluster' was not found`
 
 If you encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), you should check to make sure you have used the correct information for removing the cluster.
 
-## Running Remove-AksHciCluster results in the error: _Error: unable to delete group clustergroup-spdb:..._
+## Running Remove-AksHciCluster results in the error: `Error: unable to delete group clustergroup-spdb:...`
 
 When running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), the following error occurs because there may be a deadlock:
 
- _Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded_
+`Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded`
 
 To resolve this issue, restart CloudAgent. 
 
-## Uninstall-AksHciAdAuth fails with the error _[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]_
-If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays the error, _[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]_. You should ignore this error for now as this issue will be fixed.
+## Uninstall-AksHciAdAuth fails with the error `[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]`
+If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays this error, you should ignore it for now as this issue will be fixed.
 
 ## Uninstall-AksHCI is not cleaning up cluster resources (`ownergroup ca-<GUID>`)
 Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.

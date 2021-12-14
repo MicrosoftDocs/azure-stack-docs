@@ -3,7 +3,7 @@ title: Troubleshoot storage issues and errors in Azure Kubernetes Service on Azu
 description: Get help to troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI.
 author: v-susbo
 ms.topic: troubleshooting
-ms.date: 11/05/2021
+ms.date: 12/13/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -12,14 +12,14 @@ ms.reviewer:
 
 Use this topic to help you troubleshoot and resolve storage-related issues in AKS on Azure Stack HCI.
 
-## Configuring persistent volume claims results in the error: _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ 
+## Configuring persistent volume claims results in the error: `Unable to initialize agent. Error: mkdir /var/log/agent: permission denied`
 
-The permission denied error, _Unable to initialize agent. Error: mkdir /var/log/agent: permission denied_ indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
+This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
 
 To resolve this issue, [define a custom storage class](container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk) that you can use to provision PVCs. 
 
 ## When creating a persistent volume, an attempt to mount the volume fails
-After deleting a persistent volume or a persistent volume claim in an AKS on Azure Stack HCI environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, _NewSmbGlobalMapping failed_.
+After deleting a persistent volume or a persistent volume claim in an AKS on Azure Stack HCI environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, `NewSmbGlobalMapping failed`.
 
 To work around the failure to mount the new volume, you can SSH into the Windows node and run `Remove-SMBGlobalMapping` and provide the share that corresponds to the volume. After running this command, attempts to mount the volume should succeed.
 
@@ -42,3 +42,8 @@ kube-system   kube-proxy-qqnkr            1/1     Terminating         0         
 ```
 
 Since `kubelet` ended up in a bad state and can no longer talk to the API server, the only solution is to restart the `kubelet` service. After restarting, the cluster goes into a _running_ state.
+
+## Next steps
+
+- [Troubleshooting overview](troubleshoot-overview.md)
+- [Windows Admin Center known issues](known-issues-windows-admin-center.md)

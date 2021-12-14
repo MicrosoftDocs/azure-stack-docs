@@ -3,7 +3,7 @@ title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
 description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: EkeleAsonye
 ms.topic: troubleshooting
-ms.date: 09/22/2021
+ms.date: 12/13/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---
@@ -44,24 +44,26 @@ Folders:
 - C:\Program Files\AksHci\
 - C:\AksHci\
 
-## Running Remove-AksHciCluster results in the error: _A workload cluster with the name 'my-workload-cluster' was not found_
+## Running Remove-AksHciCluster results in the error: `A workload cluster with the name 'my-workload-cluster' was not found`
 
 If you encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), you should check to make sure you have used the correct information for removing the cluster.
 
-## Running Remove-AksHciCluster results in the error: _Error: unable to delete group clustergroup-spdb:..._
+## Running Remove-AksHciCluster results in the error: `Error: unable to delete group clustergroup-spdb:...`
 
 When running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md), the following error occurs because there may be a deadlock:
 
- _Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded_
+`Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded`
 
 To resolve this issue, restart CloudAgent. 
 
 ## In a workload cluster with static IP, all pods in a node are stuck in a _ContainerCreating_ state
-In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a _Connection timed out_ error.
+In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a `Connection timed out` error.
 
 To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
 
 ## Next steps
+
+- [Troubleshooting overview](troubleshoot-overview.md)
 - [Windows Admin Center known issues](known-issues-windows-admin-center.md)
 - [Installation issues and errors](known-issues-installation.md)
 - [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
