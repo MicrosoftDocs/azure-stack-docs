@@ -31,7 +31,7 @@ There are several benefits to this approach:
 
 There are two options for purchasing licensing for Automatic Virtual Machine Activation. Choose the option that best serves your needs:
 
-:::image type="content" source="media/vm-activation/compare.png" alt-text="Compare":::
+:::image type="content" source="media/vm-activation/compare.png" alt-text="Compare AVMA options":::
 
 - [Pricing details for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-stack/hci/)
 - [Pricing details for Windows Server licenses](https://www.microsoft.com/windows-server/pricing)
