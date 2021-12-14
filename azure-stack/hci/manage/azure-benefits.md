@@ -19,7 +19,7 @@ Azure Benefits, a recommended and optional feature in Azure Stack HCI, makes it 
 
 Turning on Azure Benefits enables you to use these Azure-exclusive workloads on Azure Stack HCI:
 
-|     Workload                                      |     Versions supported                                |     What it is                                                                                                                                                                                                                                                                                  |
+|     Workload                                      |     Versions supported                                |     What it is |                                                                                                                                                                    |
 |---------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     Windows Server Datacenter: Azure Edition    |     2022 edition or later                           |     An Azure-only guest operating system that includes all the latest Windows Server innovations and additional exclusive features. <br/> Learn more: [Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview)|                                                                                                     |
 |     Extended Security Update (ESUs)             |     October 12th, 2021 security updates or later    |     A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> Learn more: [Extended Security Updates for SQL Server and Windows Server 2008 and 2008 R2](https://www.microsoft.com/windows-server/extended-security-updates)   |
@@ -199,7 +199,7 @@ No, Azure Benefits is a feature built into the Azure Stack HCI OS, and can only 
 ### I have just set up Azure Benefits on my cluster. How do I ensure that Azure Benefits stays active?
 
 - In most cases, there is no user action required. Azure Stack HCI automatically renews Azure Benefits during its syncs with Azure. In general, Azure Stack HCI needs to sync with Azure at least once every 30 days, so that not only Azure Benefits, but other services can continue to work.
-- However, if the cluster disconnects for more than 30 days and Azure Benefits shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Stack HCI](../faq.md#what-happens-if-the-30-day-limit-is-exceeded).
+- However, if the cluster disconnects for more than 30 days and Azure Benefits shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Stack HCI](../faq.yml#what-happens-if-the-30-day-limit-is-exceeded).
 
 ### What happens when I deploy new VMs, or delete VMs?
 
