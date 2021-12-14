@@ -4,7 +4,7 @@ description: This topic explains the benefits of using Automatic Virtual Machine
 author: jelei
 ms.author: jelei
 ms.topic: how-to
-ms.date: 12/13/2021
+ms.date: 12/14/2021
 ---
 
 # Activate Windows Server VMs using Automatic Virtual Machine Activation
@@ -13,7 +13,7 @@ ms.date: 12/13/2021
 
 Automatic Virtual Machine Activation (AVMA) is an *optional* feature in Azure Stack HCI that you can use to activate Windows Server VMs running on Azure Stack HCI hosts. This topic explains the benefits of using Automatic Virtual Machine Activation over other activation methods and provides instructions on setting up this feature on Azure Stack HCI.
 
-To use other methods to activate VMs, see [Windows Server 2019 Activation](/windows-server/get-started/kms-activation-planning).
+To use other methods to activate VMs, see [Key Management Services (KMS) activation](/windows-server/get-started/kms-activation-planning).
 
 ## Background: Why use Automatic Virtual Machine Activation?
 
@@ -31,45 +31,36 @@ There are several benefits to this approach:
 
 There are two options for purchasing licensing for Automatic Virtual Machine Activation. Choose the option that best serves your needs:
 
-- **Windows Server Subscription:** subscribe to Windows Server licenses through Azure. [See pricing information here](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
-  - Used for Azure Stack HCI VMs only
-  - Access all Windows Server editions
-  - Includes access to Windows Server Azure edition
-  - No keys required for activation
-  - 60-day free trial (aligned with trial for Azure Stack HCI)
+:::image type="content" source="media/vm-activation/compare.png" alt-text="Compare":::
 
-- **Bring your own license:** Use existing Windows Server Datacenter licenses. [See pricing information here](https://www.microsoft.com/windows-server/pricing).
-  - Used for VMs anywhere
-  - Access specific edition(s)
-  - Requires Software Assurance for Windows Server Azure Edition
-  - Key-based activation
+- [Pricing details for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-stack/hci/)
+- [Pricing details for Windows Server licenses](https://www.microsoft.com/windows-server/pricing)
 
 > [!NOTE]
 > This article describes how to activate and set up Automatic Virtual Machine Activation on the host cluster. To complete end-to-end activation, activate VMs against the activated hosts by [following the steps here](/windows-server/get-started/automatic-vm-activation).
 
-## Windows Server Subscription
+## Windows Server subscription
 
-Windows Server Subscription is a simple and flexible option for Windows Server guest licensing, exclusively for Azure Stack HCI customers.
+Windows Server subscription is a simple and flexible option for Windows Server guest licensing, exclusively for Azure Stack HCI customers.
 
-### How does Windows Server Subscription work?
+### How does Windows Server subscription work?
 
-When Windows Server Subscription is enabled, Azure Stack HCI servers retrieve licenses from the cloud and automatically set up Automatic Virtual Machine Activation. In other words, the customer simply has to enroll in the subscription – there are no other steps required to host Automatic Virtual Machine Activation, and the customer can start activating Windows Server VMs right away.
+When Windows Server subscription is turned on, Azure Stack HCI servers retrieve licenses from the cloud and automatically set up Automatic Virtual Machine Activation. In other words, the customer simply has to enroll in the subscription – there are no other steps required to set up Automatic Virtual Machine Activation, and the customer can start activating Windows Server VMs right away.
 
-:::image type="content" source="media/vm-activation/windows-server-subscription.png" alt-text="Windows Server Subscription":::
+:::image type="content" source="media/vm-activation/windows-server-subscription.png" alt-text="Windows Server subscription":::
 
 ### How does billing work?
 
-Windows Server Subscription is an optional add-on to Azure Stack HCI, and therefore is aligned to its billing model:
+Windows Server subscription is an optional add-on to Azure Stack HCI, and therefore is aligned to the billing model of Azure Stack HCI:
 
 - Simplified billing through Azure, and charged to the same subscription and resource as base Azure Stack HCI.
-- Charged monthly, based on the number of physical cores in your Azure Stack HCI cluster.
-- Follows the same 60-day free trial period as Azure Stack HCI. If Azure Stack HCI and Windows Server Subscription both start on day 0, both will have the same 60-day free trial. If Azure Stack HCI is in day 40 of its free trial when Windows Server Subscription is purchased, both will still have the same 20 remaining days of free trial.
-- As Automatic Virtual Machine Activation is a cluster-wide feature, Windows Server Subscription applies to your entire Azure Stack HCI cluster.
-- Customers can sign up and cancel their Windows Server Subscription at any time.
+- Charged monthly, based on the number of physical cores in your Azure Stack HCI cluster. Enabling Windows Server subscription will therefore turn on Automatic Virtual Machine Activation for your entire Azure Stack HCI cluster.
+- Follows the same 60-day free trial period as Azure Stack HCI. If Azure Stack HCI and Windows Server subscription are both enrolled on day 0, both will have the same 60-day free trial. If Azure Stack HCI is in day 40 of its free trial when Windows Server subscription is purchased, both will still have the same 20 remaining days of free trial.
+- Customers can sign up and cancel their Windows Server subscription at any time.
 
-### What guest versions does Windows Server Subscription activate?
+### What guest versions does Windows Server subscription activate?
 
-Windows Server Subscription always activates all Windows Server editions up to the latest, including Windows Server Azure Edition. Currently, this includes:
+Windows Server subscription always enables you to get the latest Windows Server version, as well as all previous editions, and Windows Server Azure Edition. Currently, this includes:
 
 - Windows Server 2022 Datacenter: Azure Edition
 - Windows Server 2022 Datacenter
@@ -86,48 +77,48 @@ Windows Server Subscription always activates all Windows Server editions up to t
 - If using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
 
-### Enable Windows Server Subscription using the Azure portal
+### Enable Windows Server subscription using the Azure portal
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Windows Server subscription add-on**, click **Purchase.** In the context pane, click **Purchase** again to confirm.
-3. When Windows Server Subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Note that licenses will take a few minutes to be applied on your cluster. You can wait for the next cluster sync with Azure, or use Windows Admin Center or PowerShell to prompt an immediate sync from your cluster.
+3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Note that licenses will take a few minutes to be applied on your cluster. You can wait for the next cluster sync with Azure, or use Windows Admin Center or PowerShell to prompt an immediate sync from your cluster.
 
 :::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation":::
 
 ### Troubleshooting
 
-**Error 1**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
+**Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
 
-This means that your cluster does not yet have the latest status on Windows Server Subscription (i.e., just enrolled or just cancelled), and therefore might not have the latest licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next periodic cloud sync, or you can choose to
+Your cluster does not yet have the latest status on Windows Server subscription (i.e., just enrolled or just cancelled), and therefore might not have retrieved the licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next cloud sync, or you can choose to
 manually sync: [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
-### Enable Windows Server Subscription using Windows Admin Center
+### Enable Windows Server subscription using Windows Admin Center
 
 1. Select Cluster Manager from the top drop-down, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
-2. In the **Activate Windows Server VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Click **Next** and confirm details, then click **Purchase.**
+2. In the **Automatically activate VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Click **Next** and confirm details, then click **Purchase.**
 3. When the purchase is completed successfully, the cluster retrieves licenses from the cloud and sets up Automatic Virtual Machine Activation on your cluster.
 
 :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
 
-### Enable Windows Server Subscription using Powershell
+### Enable Windows Server subscription using Powershell
 
-- **Purchase Windows Server Subscription**: From your cluster, run the following command:
+- **Purchase Windows Server subscription**: From your cluster, run the following command:
 
    ```powershell
-   Set-AzStackHCI -ComputerName <string> -EnableWSsubscription $true
+   Set-AzStackHCI -EnableWSsubscription $true
    ```
 
-- **Check status:**: To check subscription status for each server, run the following command on each server:
+- **Check status**: To check subscription status for each server, run the following command on each server:
 
    ```powershell
    Get-AzureStackHCISubscriptionStatus
    ```
 
-   To check that Automatic Virtual Machine Activation has been set up with Windows Server Subscription, run the following command on each server:
+- To check that Automatic Virtual Machine Activation has been set up with Windows Server subscription, run the following command on each server:
 
-   ```powershell
-   Get-VMAutomaticActivation
-   ```
+  ```powershell
+  Get-VMAutomaticActivation
+  ```
 
 ## Bring your own license
 
@@ -137,7 +128,8 @@ Setting up Automatic Virtual Machine Activation using your Datacenter license re
 - **Number of keys:** One key for each host server you are activating. Each server requires a unique key, unless you have a valid volume license key.
 - **Consistency across cluster:** All servers in a cluster need to use the same edition of keys, so that VMs may stay activated regardless of which server they run on.
 
-For VMs to stay activated regardless of which server they run on, Automatic Virtual Machine Activation must be set up for each server in the cluster.
+> [!NOTE]
+> For VMs to stay activated regardless of which server they run on, Automatic Virtual Machine Activation must be set up for each server in the cluster.
 
 :::image type="content" source="media/vm-activation/datacenter-license.png" alt-text="License architecture":::
 
@@ -149,7 +141,7 @@ Choose from the following options to get a product key:
 - **Volume Licensing Service Center (VLSC):** From the VLSC, you can download a Multiple Activation Key (MAK) that you can reuse up to a predetermined number of allowed activations. To learn more, see [MAK keys](/licensing/products-keys-faq#what-is-a-multiple-activation-key-mak).
 - **Retail channels:** You can also find a retail key on a retail box label. You can only use this key once per server in the cluster. To learn more, see [Packaged Software](https://www.microsoft.com/howtotell/software-packaged).
 
-### Guest OS versions your key can activate
+### What guest versions does your key activate?
 
 Product-key based Automatic Virtual Machine Activation activates all editions (Datacenter, Standard, or Essentials) of the following guest OS versions:
 
@@ -161,7 +153,7 @@ Product-key based Automatic Virtual Machine Activation activates all editions (D
 | Windows Server 2016                      | Yes                                       | Yes |
 | Windows Server 2012 R2                   | Yes                                       | Yes|
 
-### Set up bring your own license in Windows Admin Center
+### Bring your own license in Windows Admin Center
 
 You can use Windows Admin Center to set up and manage product keys for your Azure Stack HCI cluster.
 
@@ -178,7 +170,7 @@ The following prerequisites are required:
 - The Cluster Manager extension for Windows Admin Center (version 1.523.0 or later)
 - Windows Server Datacenter key(s) (version 2019 or later)
 
-### Apply activation keys - Windows Admin Center
+### Apply activation keys
 
 To use Automatic Virtual Machine Activation in Windows Admin Center:
 
@@ -236,7 +228,7 @@ Your server is offline and cannot be reached. Bring all servers online and then 
 
 One or more of your servers is not updated and does not have the required packages to set up Automatic Virtual Machine Activation. Ensure that your cluster is updated, and then refresh the page. To learn more, see [Update Azure Stack HCI clusters](./update-cluster.md).
 
-## Set up bring your own license in PowerShell
+## Bring your own license in PowerShell
 
 You can also use PowerShell to set up and manage key-based Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
 
@@ -266,10 +258,10 @@ Now that you have set up Automatic Virtual Machine Activation, you can activate 
 
 This FAQ provides answers to some questions about using Automatic Virtual Machine Activation:
 
-### I can't decide between Windows Server Subscription and bringing my own license – is one better than the other?
+### I can't decide between Windows Server subscription and bringing my own license – is one better than the other?
 
 - These are both good licensing options! It depends on your needs:
-  - Do you need the flexibility of a monthly licensing model and billing through Azure? Do you want ease of management and not having to deal with keys? Do you want to be able to keep up to date with the latest Windows innovations? Then Windows Server Subscription is probably best for you.
+  - Do you need the flexibility of a monthly licensing model and billing through Azure? Do you want ease of management and not having to deal with keys? Do you want to be able to keep up to date with the latest Windows innovations? Then Windows Server subscription is probably best for you.
   - Or do you already have an existing license? Is the cost-effectiveness of long-term perpetual licensing for specific editions most important to you? Do you have broad-spanning deployments? Then bring your own license is most suited for you.
 
 ### I want to change an existing key. What happens to the previous key if the overwrite is successful/unsuccessful?
@@ -282,7 +274,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 
 ### What happens if I add or remove a new server?
 
-- For Windows Server Subscription, no action is needed, as new servers automatically retrieve licenses from the cloud.
+- For Windows Server subscription, no action is needed, as new servers automatically retrieve licenses from the cloud.
 - For Bring your own license, you'll need to [add activation keys](#change-or-add-keys-later-optional) for each new server, so that the Windows Server VMs may be activated against the new server. Removing a server does not impact how Automatic Virtual Machine Activation is set up for the remaining servers in the cluster.
 
 ### Does Automatic Virtual Machine Activation work in disconnected scenarios?
@@ -292,7 +284,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 ### Can I run Windows Server 2016 VMs on Azure Stack HCI? I have a license for it.
 
 - Yes. While Windows Server 2016 keys cannot be used to set up Automatic Virtual Machine Activation on Azure Stack HCI, they may still be applied using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
-- Windows Server Subscription and Windows Server 2022 and 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#guest-os-versions-your-key-can-activate)), and you can set this up through Automatic Virtual Machine Activation.
+- Windows Server subscription and Windows Server 2022 and 2019 keys also support running Windows Server 2016 guests ([see the full list of supported versions](#guest-os-versions-your-key-can-activate)), and you can set this up through Automatic Virtual Machine Activation.
 
 ### I previously purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?
 
@@ -300,7 +292,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 
 ### I'm excited about using Windows Server 2022 Datacenter Azure Edition. If I follow the instructions in this article, will my Windows Server 2022 Datacenter Azure Edition guests activate on Azure Stack HCI?
 
-- Yes, but you'll need to use either Windows Server Subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
+- Yes, but you'll need to use either Windows Server subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
 
 ## Next steps
 
