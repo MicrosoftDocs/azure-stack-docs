@@ -211,7 +211,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ### Marketplace -->
 ::: moniker-end
 
-::: moniker range=">=azs-2112"
+::: moniker range=">=azs-2102"
 ## Archive
 
 To access archived known issues for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
