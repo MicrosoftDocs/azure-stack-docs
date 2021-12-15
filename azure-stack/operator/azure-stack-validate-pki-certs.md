@@ -160,8 +160,6 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
     # EventHubs
     Invoke-AzsHubEventHubsCertificateValidation -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
-    # IoTHub
-    Invoke-AzsHubIoTHubCertificateValidation -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
     ```
     Each folder should contain a single PFX file for the certificate type. If a certificate type has multi-certificate requirements, nested folders for each individual certificate are expected and name-sensitive. The following code shows an example folder/certificate structure for all certificate types, and the appropriate value for ```-CertificateType``` and ```-CertificatePath```.
     
@@ -200,13 +198,9 @@ Use these steps to validate the Azure Stack Hub PKI certificates for deployment 
                 |   \---Public Portal
                 |           portal.pfx
                 |
-                +---EventHubs           # Invoke-AzsCertificateValidation `
-                |       eventhubs.pfx   #   -CertificateType EventHubs `
-                |                       #   -CertificatePath C:\Certificates\EventHubs
-                |
-                \---IoTHub              # Invoke-AzsCertificateValidation `
-                        iothub.pfx      #   -CertificateType IoTHub `
-                                        #   -CertificatePath C:\Certificates\IoTHub
+                \---EventHubs           # Invoke-AzsCertificateValidation `
+                        eventhubs.pfx   #   -CertificateType EventHubs `
+                                        #   -CertificatePath C:\Certificates\EventHubs
     ```
 
 ### Known issues

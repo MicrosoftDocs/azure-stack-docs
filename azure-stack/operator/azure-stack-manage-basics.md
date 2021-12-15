@@ -51,7 +51,6 @@ Currently, we support the following additional Platform-as-a-Service (PaaS) serv
 - Azure Functions
 - SQL and MySQL databases
 - Event Hubs
-- IoT Hub (in preview)
 - Kubernetes (in preview)
 
 These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides\Offer services" sections of our Azure Stack Hub operator documentation.
