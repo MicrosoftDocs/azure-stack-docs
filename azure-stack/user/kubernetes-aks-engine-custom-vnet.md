@@ -80,7 +80,6 @@ For example, for a cluster with three master nodes. If you are using a subnet wi
 
 | Range for /24 subnet | Number | Note |
 | --- | --- | --- |
-<<<<<<< HEAD
 | 172.100.0.0  - 172.100.0.3 | 4 | Reserved in Azure subnet. |
 | **172.100.0.224**-172.100.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
 | 172.100.0.238 - 172.100.0.254 | 16 | 16 IP address buffer. |
@@ -88,12 +87,6 @@ For example, for a cluster with three master nodes. If you are using a subnet wi
   
 In this example, then `firstConsecutiveStaticIP` property would be `172.100.0.224`.
 
-=======
-| 10.100.0.0  - 10.100.0.3 | 4 | Reserved by Azure subnet. |
-| **10.100.0.239**-10.100.0.255 | 14 | Reserved by AKS Engine.<br><br> 5 IP addresses for 5 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
-  
-In this example, then `firstConsecutiveStaticIP` property would be `10.100.0.239`.
->>>>>>> 8e751d8e25e2f55000557ed9086031b8eefea939
 For larger subnets, for example /16 with more than 60 thousand addresses, you may not find it to be practical to set your static IP assignments to the end of the network space. Set your cluster static IP address range away from the first 24 addresses in your IP space so that the cluster can be resilient when claiming addresses.
 
 ## Kubenet address blocks example
