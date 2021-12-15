@@ -228,7 +228,7 @@ Your server is offline and cannot be reached. Bring all servers online and then 
 
 One or more of your servers is not updated and does not have the required packages to set up Automatic Virtual Machine Activation. Ensure that your cluster is updated, and then refresh the page. To learn more, see [Update Azure Stack HCI clusters](./update-cluster.md).
 
-## Bring your own license in PowerShell
+### Bring your own license in PowerShell
 
 You can also use PowerShell to set up and manage key-based Automatic Virtual Machine Activation for your Azure Stack HCI cluster.
 
