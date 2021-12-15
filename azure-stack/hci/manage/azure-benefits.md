@@ -17,7 +17,7 @@ Microsoft Azure offers a range of differentiated workloads and capabilities that
 
 Take a few minutes to watch the introductory video on Azure Benefits:
 
-> [!VIDEO https://www.youtube.com/embed/s3CE9ob3hDo]]
+> [!VIDEO https://www.youtube.com/embed/s3CE9ob3hDo]
 
 ## Supported workloads with Azure Benefits
 
