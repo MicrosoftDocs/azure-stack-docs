@@ -47,7 +47,7 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
   |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
   |2108|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
-  |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.1](https://aka.ms/azshsqlrp11931)|Microsoft AzureStack Add-on RP Windows Server|
+  |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server|
   |     |     |     |
 
 - Make sure that the required Windows Server VM is downloaded to Azure Stack Hub Marketplace. Manually download the image according to the version mapping table above if needed. 
