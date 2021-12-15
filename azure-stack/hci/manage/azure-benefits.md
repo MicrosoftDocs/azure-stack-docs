@@ -15,7 +15,9 @@ Microsoft Azure offers a range of differentiated workloads and capabilities that
 
 *Azure Benefits*, a recommended and optional feature in Azure Stack HCI, makes it possible for supported Azure-exclusive workloads to work outside of the cloud. Customers can enable Azure Benefits on Azure Stack HCI at no additional cost.
 
-Take a few minutes to watch [the introductory video on Azure Benefits](https://youtu.be/s3CE9ob3hDo).
+Take a few minutes to watch the introductory video on Azure Benefits:
+
+> [!VIDEO https://www.youtube.com/embed/s3CE9ob3hDo]]
 
 ## Supported workloads with Azure Benefits
 
