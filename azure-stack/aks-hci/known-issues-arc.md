@@ -14,6 +14,14 @@ This article describes errors you may encounter (and their workarounds) while co
 
 You can also [open a support issue](./help-support.md) if none of the workarounds listed below apply to you.
 
+## Error: `Error while updating agents for enabling features`
+
+If you enable the *custom location* and *cluster connect* features on your Azure Arc connected AKS on Azure Stack HCI cluster, you may see the following error: 
+
+`Error while updating agents for enabling features. Please run "kubectl get pods -n azure-arc" to check the pods in case of timeout error. Error: Error: UPGRADE FAILED: timed out waiting for the condition`
+
+This is a known issue with the September release and is fixed in the October release. New AKS on Azure Stack HCI clusters created using the October release and connected to Arc using [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) do not experience this issue. Update your AKS on Azure Stack HCI deployment to the October release and then reconnect your existing clusters to Arc for a workaround to this issue.
+
 ## Error: `addons.msft.microsoft "demo-arc-onboarding" already exists`
 
 This error usually means that you have already connected your AKS on Azure Stack HCI cluster to Arc enabled Kubernetes. To confirm it's connected, go to the [Azure portal](https://portal.azure.com) and check under the subscription and resource group you provided when running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) (if you've used default values) or [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) (if you haven't used default values). You can also confirm if your AKS on Azure Stack HCI cluster is connected to Azure by running the [az connectedk8s show ](/cli/azure/connectedk8s?view=azure-cli-latest#az_connectedk8s_show&preserve-view=true) Azure CLI command. If you do not see your workload cluster, run `Disable-AksHciArcConnection` and try again.

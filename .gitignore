@@ -1,6 +1,7 @@
 # Visual Studio and VS Code files
 .settings.json
 .vscode/*
+*/.vscode/*
 .vs/*
 log/
 obj/
@@ -21,3 +22,6 @@ AzureMigration.ps1
 
 # macOS finder files
 .DS_Store
+
+# validating Doc Index Validator
+.docIndex/

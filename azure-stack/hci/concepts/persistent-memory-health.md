@@ -1,8 +1,8 @@
 ---
 title: Persistent memory health management in Azure Stack HCI and Windows Server
 description: This article provides information about error handling and health management specific to persistent memory (PMem) devices in Azure Stack HCI and Windows Server.
-author: khdownie
-ms.author: v-kedow
+author: Anhansen
+ms.author: Anhansen
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -18,7 +18,6 @@ This article provides information about error handling and health management spe
 These short videos provide an overview of Windows' support for persistent memory:
 - [Using Non-volatile Memory (NVDIMM-N) as Block Storage in Windows Server 2016](https://channel9.msdn.com/Events/Build/2016/P466)
 - [Using Non-volatile Memory (NVDIMM-N) as Byte-Addressable Storage in Windows Server 2016](https://channel9.msdn.com/Events/Build/2016/P470)
-- [Accelerating SQL Server 2016 performance with Persistent Memory in Windows Server 2016](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-Windows-Server-2016-SCM--FAST)
 
 Also see [Understand and deploy persistent memory](deploy-persistent-memory.md).
 

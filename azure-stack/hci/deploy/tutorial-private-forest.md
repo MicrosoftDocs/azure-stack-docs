@@ -1,8 +1,8 @@
 ---
 title: Tutorial on creating a private forest environment and virtual machines for an Azure Stack HCI cluster
 description: Tutorial on how to create a private forest environment for Azure Stack HCI evaluation and testing using MSLab scripts
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -193,7 +193,7 @@ Start the Azure Stack HCI VMs using Hyper-V Manager on the virtualization host. 
 
 ### Enable the Hyper-V role on the Azure Stack HCI VMs
 
-If your cluster VMs are running Azure Stack HCI 20H2, you’ll need to run a script to enable the Hyper-V role on the VMs. Save [this script](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/nested/steps/3a_AzSHCINodesGUI.md#enable-the-hyper-v-role-on-your-azure-stack-hci-node) to **C:\Lab** on your virtualization host as PreviewWorkaround.ps1.
+If your cluster VMs are running Azure Stack HCI 20H2, you’ll need to run a script to enable the Hyper-V role on the VMs. Save [this script](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/steps/3a_AzSHCINodesGUI.md#enable-the-hyper-v-role-on-your-azure-stack-hci-node) to **C:\Lab** on your virtualization host as PreviewWorkaround.ps1.
 
 
 Right-click on the PreviewWorkaround.ps1 file and select **Edit with PowerShell**. Change the **$domainName**, **$domainAdmin**, and **$nodeName** variables if they don’t match, such as:

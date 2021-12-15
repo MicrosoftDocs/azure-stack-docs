@@ -60,7 +60,7 @@ Set-AksHciConfig -proxySetting $proxySetting -...
 
 In most networks, you'll need to exclude certain networks, hosts, or domains from being accessed through the proxy server. You can exclude these things by exempting address strings using the `-noProxy` parameter in [`New-AksHciProxySetting`](./reference/ps/new-akshciproxysetting.md).
 
-The default value for `proxyServerNoProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`
+The default value for `proxyServerNoProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`.
 
 When you run this command, the following are excluded:
 

@@ -21,7 +21,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Disable-AksHciPreview](disable-akshcipreview.md) | Reverts AKS on Azure Stack HCI from a preview channel back to the stable channel. |
 | [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI cluster. |
 | [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS on Azure Stack HCI to a preview channel. |
-| [Get-AksHciBillingStatuss](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
+| [Get-AksHciBillingStatus](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [Get-AksHciCluster](./get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [Get-AksHciClusterNetwork](./get-akshciclusternetwork.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
 | [Get-AksHciClusterUpdates](./get-akshciclusterupdates.md) | Get the available upgrades for an Azure Kubernetes Service cluster. |
@@ -46,6 +46,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Install-AksHciMonitoring](./install-akshcimonitoring.md) | Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [New-AksHciCluster](./new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [New-AksHciClusterNetwork](./new-akshciclusternetwork.md) | Create an object for a new virtual network. |
+| [New-AksHciLoadBalancerSetting](./new-akshciloadbalancersetting.md) | Create a load balancer object for the workload clusters. |
 | [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) | Create an object for a new virtual network. |
 | [New-AksHciNodePool](./new-akshcinodepool.md) | Create a new node pool to an existing cluster. |
 | [New-AksHciProxySetting](./new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |

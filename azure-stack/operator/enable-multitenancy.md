@@ -3,10 +3,10 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to configure multi-tenancy for guest Azure Active Directory tenants in Azure Stack Hub.
 author: BryanLa
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 11/05/2021
 ms.author: bryanla
 ms.reviewer: bryanr
-ms.lastreviewed: 02/19/2021
+ms.lastreviewed: 11/05/2021
 zone_pivot_groups: management-tool-portal-powershell
 
 # Intent: As an Azure Stack Hub operator, I want to configure multi-tenancy so multiple directory tenants can access my Azure Stack Hub instance.
@@ -101,7 +101,7 @@ Register-AzSWithMyDirectoryTenant `
 
 ### Direct users to sign in
 
-Finally, Mary can direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://management.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
+Finally, Mary can direct Adatum users with @adatum.onmicrosoft.com accounts to sign in by visiting the [Azure Stack Hub user portal](../user/azure-stack-use-portal.md). For multinode systems, the user portal URL is formatted as `https://portal.<region>.<FQDN>`. For an ASDK deployment, the URL is `https://portal.local.azurestack.external`.
 
 Mary must also direct any foreign principals (users in the Adatum directory without the suffix of adatum.onmicrosoft.com) to sign in using `https://<user-portal-url>/adatum.onmicrosoft.com`. If they don't specify the `/adatum.onmicrosoft.com` directory tenant in the URL, they're sent to their default directory and receive an error that says their administrator hasn't consented.
 

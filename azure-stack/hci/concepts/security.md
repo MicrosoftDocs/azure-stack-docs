@@ -1,10 +1,10 @@
 ---
 title: Azure Stack HCI security considerations
 description: This topic provides guidance on security considerations for the Azure Stack HCI operating system.
-author: JohnCobb1
-ms.author: v-johcob
+author:  jasongerend
+ms.author:  jgerend
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 11/03/2021
 ---
 
 # Azure Stack HCI security considerations
@@ -33,6 +33,10 @@ This section discusses how to protect services and virtual machines (VMs) runnin
     - *Trusted Platform Module (TPM)* technology provides hardware-based, security-related functions. A TPM chip is a secure crypto-processor that generates, stores, and limits the use of cryptographic keys. To learn more, see [Trusted Platform Module Technology Overview](/windows/security/information-protection/tpm/trusted-platform-module-overview).
 
     To learn more about Azure Stack HCI certified hardware providers, see the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
+
+- The **Security tool** is available natively in Windows Admin Center for both single server and Azure Stack HCI clusters to make security management and control easier. The tool centralizes some key security settings for servers and clusters, including the ability to view the Secured-core status of systems.
+
+    To learn more, see [Secured-core server](/windows-server/get-started/whats-new-in-windows-server-2022#secured-core-server).
 
 - **Device Guard** and **Credential Guard**. Device Guard protects against malware with no known signature, unsigned code, and malware that gains access to the kernel to either capture sensitive information or damage the system. Windows Defender Credential Guard uses virtualization-based security to isolate secrets so that only privileged system software can access them.
 

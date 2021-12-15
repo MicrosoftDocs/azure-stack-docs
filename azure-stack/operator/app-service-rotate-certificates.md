@@ -110,7 +110,7 @@ The identity application is created by the operator before deployment of Azure A
 
 1. Go to **Subscriptions** and select **Default Provider Subscription**.
 
-1. Select **Access Control (IAM)** and select the **AzureStack-AppService-<guid>** application.
+1. Select **Access Control (IAM)** and select the **AzureStack-AppService-\<guid\>** application.
 
 1. Take a note of the **Object ID**, this value is the ID of the Service Principal that must be updated in AD FS.
 

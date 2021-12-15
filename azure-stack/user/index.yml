@@ -89,7 +89,7 @@ landingContent:
         links:
           - text: Deploy a Service Fabric cluster
             url: azure-stack-solution-template-service-fabric-cluster.md
-          - text: Deploy a Kubernetes Cluster
-            url: azure-stack-kubernetes-aks-engine-overview.md
-          - text: Deploy Azure Cognitive Services
-            url: azure-stack-solution-template-cognitive-services.md
+          - text: Deploy a container to a Azure Stack Hub registry
+            url: container-registry-overview.md
+          - text: Deploy an Azure Kubernetes Services (AKS) cluster
+            url: aks-overview.md

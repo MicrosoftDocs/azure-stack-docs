@@ -4,10 +4,10 @@ description: Learn about using API version profiles with Node.js in Azure Stack 
 author: mattbriggs
 
 ms.topic: article
-ms.date: 08/25/2021
+ms.date: 12/6/2021
 ms.author: mabrigg
-ms.reviewer: raymondl
-ms.lastreviewed: 08/25/2021
+ms.reviewer: weshi1
+ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack Hub developer, I want to use NodeJS to create a VM.
 # Keyword: Azure Stack NodeJS
@@ -25,7 +25,7 @@ In this article, you can use [Visual Studio Code](https://code.visualstudio.com/
 
 ## The Node.js SDK
 
-The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2020-09-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
+The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2020-09-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
 An API profile is a combination of resource providers and API versions. You can use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
@@ -211,9 +211,7 @@ function main() {
 
 You can use the following samples as a reference for creating solutions with Node.js and Azure Stack Hub API profiles. You can get the samples from GitHub in the following repositories:
 
-- [Storage node resource provider getting started](https://github.com/Azure-Samples/hybrid-storage-nodejs-create-storageaccount)
-- [Compute node manage](https://github.com/Azure-Samples/Hybrid-compute-nodejs-create-vm)
-- [Resource-manager node resources and groups](https://github.com/Azure-Samples/Hybrid-resourcegroups-nodejs-manageresources)
+[Azure-Samples/Hybrid-JavaScript-Samples: Creating and deleting of resource groups using nodejs for Azure Stack (github.com)](https://github.com/Azure-Samples/Hybrid-JavaScript-Samples)
 
 ### Sample create storage account 
 

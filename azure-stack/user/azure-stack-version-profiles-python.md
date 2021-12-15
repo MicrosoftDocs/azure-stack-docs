@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with Python in Azure Stack Hu
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/25/2021
+ms.date: 11/4/2021
 ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 08/18/2021
+ms.reviewer: weshi1
+ms.lastreviewed: 11/4/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Python in Azure Stack so I can benefit from the use of profiles.
 # Keyword: azure stack api profiles python
@@ -107,9 +107,7 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
 
 Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
-- [Manage resources and resource groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
-- [Manage storage account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/)
+[Azure-Samples/Hybrid-Python-Samples: An example illustrating how to use Python to manage storage account in Hybrid Clouds. Eg. Azure Stack (github.com)](https://github.com/Azure-Samples/Hybrid-Python-Samples)
 
 ## Manage virtual machine sample
 
@@ -277,9 +275,7 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
 
 Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
-- [Manage resources and resource groups](https://github.com/Azure-Samples/Hybrid-ResourceManager-Python-Manage-Resources/releases/tag/2019_03_01_hybrid)
-- [Manage storage account](https://github.com/Azure-Samples/Hybrid-Storage-Python-Manage-Storage-Account/releases/tag/2019_03_01_hybrid)
-- [Manage virtual machines](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM/releases/tag/2019_03_01_hybrid): This sample uses **2019-03-01-hybrid** profile.
+[Azure-Samples/Hybrid-Python-Samples: An example illustrating how to use Python to manage storage account in Hybrid Clouds. Eg. Azure Stack (github.com)](https://github.com/Azure-Samples/Hybrid-Python-Samples)
 
 ## Manage virtual machine sample
 
