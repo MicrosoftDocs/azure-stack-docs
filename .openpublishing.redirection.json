@@ -1,6 +1,46 @@
 {
   "redirections": [
-       { 
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-manage.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-overview.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-prerequisites.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-remove.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-rotate-secrets.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/user/iot-hub-connect-iot-edge-device.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/user/iot-hub-overview.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/aks-hci/troubleshoot-windows-admin-center.md", 
       "redirect_url": "/azure-stack/aks-hci/known-issues-windows-admin-center", 
       "redirect_document_id": false
