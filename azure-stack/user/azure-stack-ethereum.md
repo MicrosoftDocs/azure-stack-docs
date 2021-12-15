@@ -39,8 +39,6 @@ Download the latest items [from the Marketplace](../operator/azure-stack-downloa
 - Custom Script for Linux 2.0
 - Custom Script Extension for Windows
 
-For more info on blockchain scenarios, see [Ethereum proof-of-authority consortium solution template](/azure/blockchain/templates/ethereum-poa-deployment).
-
 ## Deployment architecture
 
 This solution template can deploy a single or multi-member Ethereum consortium network. The virtual network is connected in a chain topology using Network Virtual Appliance and connection resources.
