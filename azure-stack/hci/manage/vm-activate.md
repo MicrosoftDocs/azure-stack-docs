@@ -89,7 +89,7 @@ Windows Server subscription always enables you to get the latest Windows Server 
 
 **Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
 
-Your cluster does not yet have the latest status on Windows Server subscription (that is, just enrolled or just cancelled), and therefore might not have retrieved the licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next cloud sync, or you can choose to
+Your cluster does not yet have the latest status on Windows Server subscription (that is, just enrolled or just canceled), and therefore might not have retrieved the licenses to set up Automatic Virtual Machine Activation yet. In most cases, this will get automatically resolved with the next cloud sync, or you can choose to
 manually sync: [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
 ### Enable Windows Server subscription using Windows Admin Center
@@ -100,7 +100,7 @@ manually sync: [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-h
 
 :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
 
-### Enable Windows Server subscription using Powershell
+### Enable Windows Server subscription using PowerShell
 
 - **Purchase Windows Server subscription**: From your cluster, run the following command:
 
