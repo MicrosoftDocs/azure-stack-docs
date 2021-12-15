@@ -157,11 +157,6 @@ If you're using the **Send logs now** method and want to use PowerShell instead 
   ```
 
   ::: moniker-end
-
-  To send diagnostic logs for IoT Hub:
-
-  ```powershell
-  Send-AzureStackDiagnosticLog -FilterByResourceProvider IotHub
   ```
 
   To send diagnostic logs for Event Hubs:

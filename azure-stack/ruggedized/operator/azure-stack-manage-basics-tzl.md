@@ -45,7 +45,6 @@ We support the following additional platform-as-a-service (PaaS) services:
 - Azure Functions
 - SQL and MySQL databases
 - Kubernetes
-- IoT Hub
 - Event Hub
 
 These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](../../operator/index.yml).

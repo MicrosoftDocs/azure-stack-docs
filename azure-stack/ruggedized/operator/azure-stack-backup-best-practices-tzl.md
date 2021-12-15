@@ -187,7 +187,7 @@ Consider these limits as you plan, deploy, and operate your Microsoft Azure Stac
 |Network switch configuration     | Not in scope         | Admin must back up network switch configuration using OEM tools. Refer to documentation for Azure Stack provided by each OEM vendor.        |
 |Hardware Lifecycle Host     | Not in scope         | Admin must back up Hardware Lifecycle Host using OEM tools. Refer to documentation for Azure Stack provided by each OEM vendor.        |
 |Maximum number of file shares     | 1        | Only one file share can be used to store backup data.        |
-|Backup value-add resource providers     | In scope        | Infrastructure backup includes backup for Event Hubs RP, IoT Hub RP, Data Box Edge RP.        |
+|Backup value-add resource providers     | In scope        | Infrastructure backup includes backup for Event Hubs RP, Data Box Edge RP.        |
 
 ## Next steps
 
