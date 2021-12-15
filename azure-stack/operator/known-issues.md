@@ -228,7 +228,7 @@ To access archived known issues for an older version, use the version selector d
 ::: moniker range="azs-2008"
 ## 2008 archived known issues
 ::: moniker-end
-::: moniker range="azs-2008"
+::: moniker range="azs-2005"
 ## 2005 archived known issues
 ::: moniker-end
 ::: moniker range="azs-2002"
