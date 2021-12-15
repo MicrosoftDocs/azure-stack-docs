@@ -3,7 +3,7 @@ title: Deploy Ethereum blockchain network on Azure Stack Hub
 description: Tutorial using a custom solution templates to deploy and configure a consortium Ethereum blockchain network on Azure Stack Hub.
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/07/2020
+ms.date: 12/15/2021
 ms.topic: tutorial
 ms.reviewer: seyadava
 ms.lastreviewed: 10/07/2020
@@ -54,7 +54,7 @@ The template can deploy Ethereum consortium for leader and member in a variety o
 
 The consortium leader template configures the first member's footprint in the network. 
 
-1. Download the [leader template from GitHub](https://aka.ms/aa6z619).
+1. Download the [leader template from GitHub](https://aka.ms/aa6zdyt).
 1. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 1. Select **Build your own template in the editor** to edit the new custom template.
 1. In the editing pane on the right, copy and paste the leader template JSON you previously downloaded.
@@ -99,7 +99,7 @@ To verify leader's deployment, go to the leader's admin site. The admin site add
 
 ## Joining consortium member deployment
 
-1. Download the [consortium member template from GitHub](https://aka.ms/aa6zkua).
+1. Download the [consortium member template from GitHub](https://aka.ms/aa6zdyt).
 1. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 1. Select **Build your own template in the editor** to edit the new custom template.
 1. In the editing pane on the right, copy and paste the consortium member template JSON you previously downloaded.
