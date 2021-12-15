@@ -5,18 +5,19 @@ description: Learn how to update the Azure Stack Hub SQL resource provider.
 author: bryanla
 
 ms.topic: article
-ms.date: 8/19/2020
+ms.date: 8/24/2020
 ms.author: bryanla
-ms.reviewer: xiaofmao
-ms.lastreviewed: 11/11/2019
+ms.reviewer: jiadu
+ms.lastreviewed: 08/24/2021
 
 # Intent: As an Azure Stack operator, I want to update the SQL resource provider.
 # Keyword: update sql resource provider azure stack
 
 ---
 
-
 # Update the SQL resource provider
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 > [!IMPORTANT]
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.
@@ -33,18 +34,98 @@ A new SQL resource provider might be released when Azure Stack Hub is updated to
   |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
 
-SQL resource provider update is cumulative. When updating from an old version, you can directly update to the latest version. 
+## Update SQL Server resource provider V2
 
-To update the resource provider, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
+If you have already deployed SQL RP V2, and want to check for updates, check [How to apply updates to resource provider](resource-provider-apply-updates.md).
+
+If you want to update from SQL RP V1 to SQL RP V2, make sure you have first updated to SQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from SQl RP V1 to SQL RP V2.
+
+## Update from SQL RP V1.1.93.x to SQL RP V2.0.6.0
+
+### Prerequisites
+
+1. Make sure you have updated SQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.`<region`>.sqladapter). Confirm the version tag and SQL RP VM name in resource group.
+
+2. [open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
+ 
+3.    Download Microsoft AzureStack Add-On RP Windows Server    1.2009.0 to marketplace. 
+
+4.    Ensure datacenter integration prerequisites are met.
+
+  |Prerequisite|Reference|
+  |-----|-----|
+  |Conditional DNS forwarding is set correctly.|[Azure Stack Hub datacenter integration - DNS](azure-stack-integrate-dns.md)|
+  |Inbound ports for resource providers are open.|[Azure Stack Hub datacenter integration - Ports and protocols inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+  |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
+  |     |     |
+
+5.    (for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
+
+### Trigger MajorVersionUpgrade
+Run the following script:
+
+``` powershell
+# Use the NetBIOS name for the Azure Stack Hub domain. 
+$domain = "YouDomain" 
+
+# For integrated systems, use the IP address of one of the ERCS VMs
+$privilegedEndpoint = "YouDomain-ERCS01"
+
+# Provide the Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
+$AzureEnvironment = "AzureCloud"
+
+# Point to the directory where the resource provider installation files were extracted.
+$tempDir = 'C:\extracted-folder\MajorVersionUpgrade-SQLRP'
+
+# The service admin account can be Azure Active Directory or Active Directory Federation Services.
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString 'xxxxxxxx' -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
+
+# Add the cloudadmin credential that's required for privileged endpoint access.
+$CloudAdminPass = ConvertTo-SecureString 'xxxxxxxx' -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# Change the following as appropriate.
+$PfxPass = ConvertTo-SecureString 'xxxxxxx' -AsPlainText -Force
+
+# Provide the pfx file path
+$PfxFilePath = "C:\tools\sqlcert\SSL.pfx"
+
+# PowerShell modules used by the RP MajorVersionUpgrade are placed in C:\Program Files\SqlMySqlPsh
+# The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
+$rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
+$env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
+
+. $tempDir\MajorVersionUpgradeSQLProvider.ps1 `
+  -AzureEnvironment $AzureEnvironment `
+  -AzCredential $AdminCreds `
+  -CloudAdminCredential $CloudAdminCreds `
+  -Privilegedendpoint $privilegedEndpoint `
+  -PfxPassword $PfxPass `
+  -PfxCert $PfxFilePath
+```
+
+### Validate the upgrade is successful
+
+1.    The MajorVersionUpgrade script executed without any errors.
+2.    Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
+
+
+## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
+
+SQL resource provider V1 update is cumulative. You can directly update to the 1.1.93.x version. 
+
+To update the resource provider to 1.1.93.x, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
 
 The update process is similar to the process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md). The update script uses the same arguments as the DeploySqlProvider.ps1 script, and you'll need to provide certificate information.
 
-## Update script processes
+### Update script processes
 
 The **UpdateSQLProvider.ps1** script creates a new virtual machine (VM) with the latest OS image, deploy the latest resource provider code, and migrates the settings from the old resource provider to the new resource provider. 
 
 > [!NOTE]
->We recommend that you download the latest Windows Server 2016 Core image or Microsoft AzureStack Add-on RP Windows Server image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
+>We recommend that you download the Microsoft AzureStack Add-on RP Windows Server 1.2009.0 image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
 
 After the *UpdateSQLProvider.ps1* script creates a new VM, the script migrates the following settings from the old resource provider VM:
 
@@ -73,7 +154,7 @@ You can specify the following parameters from the command line when you run the 
 | **Uninstall** | Removes the resource provider and all associated resources. | No |
 | **DebugMode** | Prevents automatic cleanup on failure. | No |
 
-## Update script PowerShell example
+### Update script PowerShell example
 
 If you are updating the SQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. 
 

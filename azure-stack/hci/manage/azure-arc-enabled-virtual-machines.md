@@ -134,8 +134,8 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 3. Prepare configuration for Arc Resource Bridge:
 
    ```PowerShell
-   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP
-   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-int -ring monthly [-CloudServiceIP <$CloudServiceIP> vLanID=$vLANID]
+   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [vLanID=$vLANID]
+   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
    Install-moc
    ```
 
@@ -155,7 +155,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    - Install the new extensions:
    
      ```PowerShell
-     az extension add --name arcappliance --version 0.1.42
+     az extension add --name arcappliance --version 0.2.11
      az extension add --name connectedk8s --version 1.2.0
      az extension add --name k8s-configuration --version 1.1.1
      az extension add --name k8s-extension --version 0.7.1
@@ -191,7 +191,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    mkdir $csv_path\workingDir
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\workingDir [-vlanID $vlanID]
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\workingDir
    az arcappliance prepare hci --config-file $csv_path\workingDir\hci-appliance.yaml
    az arcappliance deploy hci --config-file  $csv_path\workingDir\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
    az arcappliance create hci --config-file $csv_path\workingDir\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
@@ -363,10 +363,12 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 
 ## Limitations and known issues
 
-- All resource names should use lower case alphabets, numbers & hypens only.
-- Arc Resource Bridge provisioning should be done on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
+- All resource names should use lower case alphabets, numbers & hypens only. The resource names must be unique for an Azure Stack HCI cluster.
+- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
 - Enabling Azure Kubernetes & Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires deploying AKS management cluster first and then Arc Resource Bridge for VMs. If the AKS management cluster is already deployed, you don’t need to perform "set-MocConfig" & "install-moc". In this configuration, uninstalling AKS management cluster will also remove the Arc Resource Bridge for VM management. A new Arc Resource Bridge can be deployed again, but it will not remember the VM entities that were created earlier.
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in Portal for management.
+- Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure Portal.
+- Arc VMs must be created in the same Azure subscription as the Custom location.
 
 ## FAQ
 
