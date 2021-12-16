@@ -11,9 +11,9 @@ ms.date: 06/24/2021
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is available on Azure Stack HCI and Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale. Azure Kubernetes Service is available on Azure Stack HCI, Windows Server 2019 Datacenter, and Windows Server 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
-To get started with Azure Kubernetes Service on-premises, on Windows Server 2019 or Azure Stack HCI, [set up Azure Kubernetes Service on Azure Stack HCI](setup.md). 
+To get started with Azure Kubernetes Service on-premises, on Windows Server 2019/2022 or Azure Stack HCI, [set up Azure Kubernetes Service on Azure Stack HCI](setup.md). 
 
 To instead use Azure Kubernetes Service to orchestrate your cloud-based containers, see [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).  If you are using Azure Stack Hub, see [AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-overview.md).
 
@@ -37,7 +37,7 @@ Here's some of the functionality provided by Azure Kubernetes Service on Azure S
 
 ## Simplify setting up Kubernetes
 
-Azure Kubernetes Service simplifies the process of setting up Kubernetes on Azure Stack HCI and Windows Server 2019 Datacenter, and includes the following features:
+Azure Kubernetes Service simplifies the process of setting up Kubernetes on Azure Stack HCI and Windows Server 2019/2022 Datacenter, and includes the following features:
 
 - A Windows Admin Center wizard for setting up Azure Kubernetes Service and its dependencies 
 - A Windows Admin Center wizard for creating Kubernetes clusters to run your containerized applications
@@ -80,11 +80,11 @@ The following sections summarize what you need to run Azure Kubernetes Service o
 Your machine running the Windows Admin Center gateway must be:  
 
  - Registered with Azure
- - In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
+ - In the same domain as the Azure Stack HCI or Windows Server 2019/2022 Datacenter cluster
 
-### On the Azure Stack HCI cluster or Windows Server 2019 Datacenter failover cluster that hosts Azure Kubernetes Service
+### On the Azure Stack HCI cluster or Windows Server 2019/2022 Datacenter failover cluster that hosts Azure Kubernetes Service
 
-The Azure Stack HCI cluster or Windows Server 2019 Datacenter failover cluster has the following requirements:
+The Azure Stack HCI cluster or Windows Server 2019/2022 Datacenter failover cluster has the following requirements:
 
 - A maximum of four servers in the cluster
 - 1 TB of available capacity in the storage pool for Azure Kubernetes Service
@@ -95,7 +95,7 @@ For general Azure Stack HCI system requirements, see [Azure Stack HCI system req
 
 ### The network configuration for Azure Stack HCI
 
-The network connected to VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster requires a dedicated scope of IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019 Datacenter cluster. For more information on networking requirements, see [AKS on Azure Stack HCI system requirements](system-requirements.md).
+The network connected to VMs on the Azure Stack HCI or Windows Server 2019/2022 Datacenter cluster requires a dedicated scope of IPv4 addresses available for Azure Kubernetes Service and accessible by VMs on the Azure Stack HCI or Windows Server 2019/2022 Datacenter cluster. For more information on networking requirements, see [AKS on Azure Stack HCI system requirements](system-requirements.md).
 
 ## Next steps
 
