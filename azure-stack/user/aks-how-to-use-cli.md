@@ -171,7 +171,8 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     --generate-ssh-keys \
     --load-balancer-sku basic \
     --vm-set-type VirtualMachineScaleSets \
-    --location <Azure Stack Hub location>
+    --location <Azure Stack Hub location> \
+    --kubernetes-version 1.20.7
     ```
 
     The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` have been generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
@@ -205,7 +206,8 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     --network-plugin azure \
     --windows-admin-username azureuser \
     --windows-admin-password $PASSWORD_WIN \
-    --location redmond
+    --location redmond \
+    --kubernetes-version 1.20.7
     ```
 
 4. Now you can proceed to repeat the tests for [Upgrade](#upgrade-cluster), [Scale](#scale-cluster), [deploy a Windows app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
