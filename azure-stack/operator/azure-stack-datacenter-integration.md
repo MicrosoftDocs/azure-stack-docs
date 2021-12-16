@@ -67,7 +67,7 @@ You must decide which licensing model you want to use. The available options dep
 - For a [connected deployment](azure-stack-connected-deployment.md), you can choose either pay-as-you-use or capacity-based licensing. Pay-as-you-use requires a connection to Azure to report usage, which is then billed through Azure commerce.
 - Only capacity-based licensing is supported if you [deploy disconnected](azure-stack-disconnected-deployment.md) from the internet.
 
-For more information about the licensing models, see [Microsoft Azure Stack Hub packaging and pricing](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+For more information about the licensing models, see [Microsoft Azure Stack Hub packaging and pricing](https://azure.microsoft.com/resources/azure-stack-hub-licensing-packaging-pricing-guide/).
 
 
 ## Naming decisions

@@ -108,9 +108,6 @@ Use these steps to prepare certificate signing requests for new Azure Stack Hub 
 
     # EventHubs
     New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
-
-    # IoTHub
-    New-AzsHubIoTHubCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
     ```
 
 7. Alternatively, for low privilege environments, to generate a clear text certificate template file with the necessary attributes declared, add the **-LowPrivilege** parameter:
@@ -186,9 +183,6 @@ Use these steps to prepare certificate signing requests for renewal of existing 
 
     # EventHubs
     New-AzsHubEventHubsCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
-
-    # IoTHub
-    New-AzsHubIotHubCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
     ```
 
 5. Alternatively, for Dev/Test environments, to generate a single certificate request with multiple Subject Alternative Names add **-RequestType SingleCSR** parameter and value (**not** recommended for production environments):

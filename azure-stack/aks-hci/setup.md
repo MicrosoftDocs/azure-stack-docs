@@ -33,7 +33,7 @@ You need to set up an Azure Kubernetes Service host on your Azure Stack HCI clus
 
 [![Picture of an architecture diagram that highlights the platform services portion.](.\media\setup\aks-hci-architecture-focused.png)](.\media\setup\aks-hci-architecture-focused.png)
 
-This system can be a Windows Server 2019 Datacenter cluster, a single node Windows Server 2019 Datacenter, or a 2-4 node Azure Stack HCI cluster.
+This system can be a Windows Server 2019/2022 Datacenter cluster, a single node Windows Server 2019/2022 Datacenter, or a 2-4 node Azure Stack HCI cluster.
 
 > [!NOTE]
 > Setting up Azure Kubernetes Service hosts on two independent systems with the intention of merging them during Kubernetes cluster creation is not a supported scenario.
