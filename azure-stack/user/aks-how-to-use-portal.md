@@ -3,10 +3,10 @@ title: Use Azure Kubernetes Service on Azure Stack Hub in the portal
 description: Learn how to use Azure Kubernetes Service (ASK) on Azure Stack Hub in the portal.
 author: mattbriggs
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 12/16/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/26/2021
+ms.lastreviewed: 12/16/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -16,6 +16,21 @@ ms.lastreviewed: 10/26/2021
 
 You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AKS), to discover, create, scale, upgrade, and delete AKS clusters.
 
+## Verify your resource providers
+
+You will need to have the `Microsoft.ContainerService `resource provider available for your subscription. To find the services available in your subscription:
+
+1. Sign in to the Azure Stack user portal. Select **All services** > **Resource Explorer** in the **General** group.
+
+    ![Check for the Microsoft.ContainerService resource provider.](media/aks-how-to-use/check-for-container-step1.png)
+
+2. In the **Resource Explorer**, find the `Microsoft.ContainerService`.
+
+    ![Check for the Microsoft.ContainerService in the Resource explorer.](media/aks-how-to-use/check-for-container-step2.png)
+
+3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to add it. You will need to use the Azure CLI connected to your environment to add the resource provider.
+    1. You can find instructions on setting up [Azure CLI](aks-how-to-use-cli.md?tabs=ubuntu%2Clinuxcon#install-azure-cli).
+    2. You can find the steps for adding `Microsoft.ContainerService` resource provider in [Use AKS CLI](aks-how-to-use-cli.md?tabs=windows%2Clinuxcon#connect-to-azure-stack-hub).
 ## Discover available AKS clusters
 
 1.  In the Azure Stack tenant portal, find **All Services**, and select **Kubernetes services**.

@@ -3,10 +3,10 @@ title: Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
 author: mattbriggs
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 12/16/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/26/2021
+ms.lastreviewed: 12/16/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -20,13 +20,6 @@ In the following sections you will:
 
 1.  Complete the prerequisites to use AKS on Azure Stack Hub.
 2.  Complete the lifecycle operations of an AKS cluster using Azure CLI and the Azure Stack Hub user portal.
-
-## Prerequisites
-
-Before you can start, you will need to:
-
-1.  Ask your Azure Stack Hub cloud operator to install [Azure Stack Hub Update 2108](/azure-stack/operator/release-notes) or greater. AKS in Azure Stack Hub Preview is only available starting with that update
-2.  Ask your Azure Stack Hub administrator to create a plan and offer that includes this resource provider, see the [installation instructions](../operator/aks-add-on.md).
 
 ### Install Azure CLI
 
@@ -160,7 +153,7 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     ```
 
 2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
-    1.  To create an service principle (SPN) using Azure Active Directory (Azure AD), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
+    1.  To create a service principle (SPN) using Azure Active Directory (Azure AD), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
     2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
 3.  Create an AKS cluster of three agent nodes. Provide values to the parameters below, examples are provided. Run:
