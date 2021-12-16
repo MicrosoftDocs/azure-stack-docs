@@ -84,7 +84,7 @@ Before you begin, you need the following prerequisites:
 
 5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
 
-#### Manage access to Azure Benefits for your VMs
+#### Manage access to Azure Benefits for your VMs - WAC
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
@@ -133,7 +133,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
    Get-AzStackHCIVMAttestation
    ```
 
-#### Manage access to Azure Benefits for your VMs
+#### Manage access to Azure Benefits for your VMs - PowerShell
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
@@ -181,10 +181,10 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 
 ### View only using portal
 
-:::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
-
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
+
+   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
 
 ## FAQ
 
@@ -217,3 +217,8 @@ No, Azure Benefits is a feature built into the Azure Stack HCI OS, and can only 
 - When you add a server, you can navigate to the **Azure Benefits** page in Windows Admin Center, and a banner will appear with a link to **Enable inactive server**.
 - Or, you can run `Enable-AzStackHCIAttestation [[-ComputerName] <String>]` in PowerShell.
 - You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** will still exist on the server after removal from the cluster. You can leave it if you are planning to add the server back to the cluster later, or you can remove it manually.
+
+## Next steps
+
+- [Azure Stack HCI overview](../overview.md)
+- [Azure Stack HCI FAQ](../faq.yml)
