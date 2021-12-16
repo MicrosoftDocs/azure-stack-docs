@@ -6,16 +6,53 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/02/2021
+ms.date: 12/15/2021
 ---
 
 # What's new in Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
+This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and 20H2. It also lists what's new in different versions of Windows Admin Center for Azure Stack HCI.
+
+Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
+
 ## What's new in Azure Stack HCI, version 21H2
 
-Windows Admin Center version 2110 added a number of features and improvements to Azure Stack HCI, including the following:
+Clusters running Azure Stack HCI, version 21H2 now have the following new features:
+
+- **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
+- **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
+- **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
+- **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
+- **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
+- **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
+- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
+
+To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+## What's new in Azure Stack HCI, version 20H2
+
+Clusters running Azure Stack HCI, version 20H2 now have the following new features:
+
+- **Azure Kubernetes Service hosting**: Azure Stack HCI now includes the ability to host [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
+- **New capabilities in Windows Admin Center**: With the ability to create and update hyperconverged clusters via an intuitive UI, Azure Stack HCI is easier than ever to use.
+- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
+- **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
+- **Azure portal integration**: The Azure portal experience for Azure Stack HCI is designed to view all of your Azure Stack HCI clusters across the globe, with new features in development.
+- **GPU acceleration for high-performance workloads**: AI/ML applications can benefit from boosting performance with GPUs.
+- **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
+- **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
+
+To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.
+
+## Windows Admin Center enhancements
+
+This section lists the enhancements done in Windows Admin Center version 2110 and 2103 to support Azure Stack HCI clusters.
+
+### What's new in Windows Admin Center version 2110
+
+Windows Admin Center version 2110 added a number of features and improvements for Azure Stack HCI, version 21H1, including the following:
 
 - **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
 
@@ -35,21 +72,9 @@ Windows Admin Center version 2110 added a number of features and improvements to
 
 - **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
 
-Clusters running Azure Stack HCI, version 21H2 have the following new features:
+### What's new in Windows Admin Center version 2103
 
-- **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
-- **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
-- **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
-- **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
-- **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
-- **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
-- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
-
-To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
-
-## What's new in Azure Stack HCI, version 20H2
-
-Windows Admin Center version 2103 added a number of features and improvements to Azure Stack HCI, version 20H2, including the following:
+Windows Admin Center version 2103 added a number of features and improvements for Azure Stack HCI, version 20H2, including the following:
 
 - **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
 
@@ -68,19 +93,6 @@ To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](
 - **Virtual machines tool improvements**: You can now create your own VM groups in the tool and edit columns. We’ve also made moving a VM easier, allowing you to reassign virtual switches while moving a VM.
 
 For details on the new features and improvements, see [Windows Admin Center version 2103 is now generally available](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).
-
-Clusters running Azure Stack HCI, version 20H2 have the following new features:
-
-- **Azure Kubernetes Service hosting**: Azure Stack HCI now includes the ability to host [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
-- **New capabilities in Windows Admin Center**: With the ability to create and update hyperconverged clusters via an intuitive UI, Azure Stack HCI is easier than ever to use.
-- **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
-- **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
-- **Azure portal integration**: The Azure portal experience for Azure Stack HCI is designed to view all of your Azure Stack HCI clusters across the globe, with new features in development.
-- **GPU acceleration for high-performance workloads**: AI/ML applications can benefit from boosting performance with GPUs.
-- **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
-- **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
-
-To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.
 
 ## Next steps
 
