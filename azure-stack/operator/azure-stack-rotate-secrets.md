@@ -67,7 +67,6 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 > - **Value-add resource provider (RP) secrets** is covered under seperate guidance:
 >    - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
 >    - [Event Hubs on Azure Stack Hub](event-hubs-rp-rotate-secrets.md)
->    - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
 >    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 >    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
 > - **Baseboard management controller (BMC) credentials** is also a manual process, [covered later in this article](#update-the-bmc-credential). 

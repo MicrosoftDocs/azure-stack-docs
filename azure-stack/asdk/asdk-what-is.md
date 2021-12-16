@@ -45,7 +45,6 @@ Single-node ASDK deployments differ from multi-node Azure Stack Hub deployments 
 |**Resilience**|Single-node configuration does not provide high availability.|High availability capabilities are supported.|
 |**Networking**|The ASDK host routes all ASDK network traffic. There are no additional switch requirements.|More complex [network routing infrastructure](../operator/azure-stack-network.md#network-infrastructure) in multi-node deployments is necessary including Top-Of-Rack (TOR), Baseboard Management Controller (BMC), and border (datacenter network) switches.|
 | **GPU support** | Not available. | [Support for GPU virtual machines on Azure Stack Hub](../user/gpu-vms-about.md) |
-| **IoT Hub** | Not available. | [Available as a private preview](../operator/iot-hub-rp-overview.md). |
 | **Event Hubs** | Not available. | [Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-overview.md) |
 |**Patch and update process**|To move to a new version of the ASDK, you must redeploy the ASDK on the ASDK host computer.|[Patch and update](../operator/azure-stack-updates.md) process used to update the installed Azure Stack Hub version.|
 |**Support**|MSDN Azure Stack forum. Microsoft Support is not available for non-production environments.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) and full support.|

@@ -45,7 +45,6 @@ We support the following additional platform-as-a-service (PaaS) services:
 - Azure Functions
 - SQL and MySQL databases
 - Kubernetes
-- IoT Hub
 - Event Hub
 
 These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](../../operator/index.yml).
@@ -87,11 +86,10 @@ In addition to providing services, you must do the regular duties of an operator
 - Manage [network](../../operator/azure-stack-viewing-public-ip-address-consumption.md) and [storage](../../operator/azure-stack-manage-storage-accounts.md) resources.
 - [Start and stop Azure Stack Hub](../../operator/azure-stack-start-and-stop.md).
 - [Operating the extended storage](../../user/azure-stack-network-howto-extend-datacenter.md).
-- [Manage IoT Hub](/azure/iot-hub/about-iot-hub).
-- [Manage Event Hub](../../operator/event-hubs-rp-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
-- [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
+- [Manage Event Hub](../../operator/event-hubs-rp-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json).
+- [Manage App Service](../../operator/azure-stack-app-service-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json).
 - Replace bad hardware. Here is the list of [replaceable parts](../../operator/azure-stack-replace-component.md).
-- [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json&view=azs-2002).
+- [Get support](../../operator/azure-stack-help-and-support-overview.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json&branch=release-tzl&toc=%2fazure-stack%2ftdc%2ftoc.json).
 
 ## Operator tasks
 
