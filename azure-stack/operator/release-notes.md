@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/13/2021
+ms.date: 12/16/2021
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
@@ -99,6 +99,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
 - Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
 - Fixed an issue that caused internal load balancers to use external IPs.
+- Fixed an issue downloading serial logs from the portal.
 
 ## Security updates
 

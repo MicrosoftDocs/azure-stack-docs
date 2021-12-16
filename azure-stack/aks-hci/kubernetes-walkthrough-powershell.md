@@ -27,7 +27,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 - An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - **At least one** of the following:
    - 2-4 node Azure Stack HCI cluster
-   - Windows Server 2019 Datacenter failover cluster
+   - Windows Server 2019/2022 Datacenter failover cluster
    > [!NOTE]
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
