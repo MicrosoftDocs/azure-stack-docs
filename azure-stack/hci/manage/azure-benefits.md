@@ -1,10 +1,12 @@
 ---
 title: Azure Benefits on Azure Stack HCI
 description: This topic explains the Azure Benefits feature on Azure Stack HCI.
-author: jelei
-ms.author: jelei
+author: sethmanheim
+ms.author: sethm
 ms.topic: conceptual
-ms.date: 12/14/2021
+ms.reviewer: jlei
+ms.lastreviewed: 12/14/2021
+ms.date: 12/16/2021
 ---
 
 # Azure Benefits on Azure Stack HCI
@@ -33,7 +35,7 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 
 Azure Benefits is a built-in platform attestation service on Azure Stack HCI, and helps to provide guarantees that VMs are indeed running on Azure environments.
 
-This is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload; the main difference is that because it is running on Azure Stack HCI, it guarantees that the VM is in Azure Stack HCI.
+This is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload; the main difference is that it runs on-premises and therefore guarantees that VMs are on Azure Stack HCI instead of Azure.
 
 :::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture":::
 
