@@ -48,7 +48,7 @@ To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https
 
 ## Windows Admin Center enhancements
 
-This section lists the enhancements done in Windows Admin Center version 2110 and 2103 to support Azure Stack HCI clusters.
+This section lists the enhancements available in Windows Admin Center version 2110 and 2103 to support Azure Stack HCI clusters.
 
 ### What's new in Windows Admin Center version 2110
 
@@ -72,6 +72,8 @@ Windows Admin Center version 2110 added a number of features and improvements fo
 
 - **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
 
+For details on the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579).
+
 ### What's new in Windows Admin Center version 2103
 
 Windows Admin Center version 2103 added a number of features and improvements for Azure Stack HCI, version 20H2, including the following:
@@ -92,7 +94,7 @@ To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](
 
 - **Virtual machines tool improvements**: You can now create your own VM groups in the tool and edit columns. We’ve also made moving a VM easier, allowing you to reassign virtual switches while moving a VM.
 
-For details on the new features and improvements, see [Windows Admin Center version 2103 is now generally available](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).
+For details on the new features and improvements, see the blog on [Windows Admin Center version 2103](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).
 
 ## Next steps
 
