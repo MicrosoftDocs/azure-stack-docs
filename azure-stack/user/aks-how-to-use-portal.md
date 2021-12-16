@@ -18,7 +18,7 @@ You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AK
 
 ## Verify your resource providers
 
-You will need to have the `Microsoft.ContainerService `resource provider available for your subscription. To find the services available in your subscription:
+You will need to have the `Microsoft.ContainerService` resource provider available for your subscription. To find the services available in your subscription:
 
 1. Sign in to the Azure Stack user portal. Select **All services** > **Resource Explorer** in the **General** group.
 
