@@ -110,19 +110,13 @@ Azure CLI should be 2.28.0 or above.
     > 
     > In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md)
 
-6. Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains.
-
-    ![subscription ID and resource providers](media/aks-how-to-use/subscription-id-and-resource-providers.png)
-
-    ![your Azure CLI session](media/aks-how-to-use/your-azure-cli-session.png)
-
-7. Set the subscription in your Azure CLI session as the default with:
+6. Set the subscription in your Azure CLI session as the default with:
 
     ```azurecli  
     az account set --subscription <subscription-id>
     ```
 
-8. Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
+7 Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
 
     ```azurecli  
     az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
@@ -132,11 +126,13 @@ Azure CLI should be 2.28.0 or above.
 
     ![The output should look like](media/aks-how-to-use/example-of-output.png)
 
-9. Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
+8. Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
 
     ```azurecli  
     az provider register --namespace Microsoft.ContainerService
     ```
+
+    The registration can take several minutes to complete.
 
 Once those prerequisite steps are completed, you can proceed to test the following scenarios.
 
@@ -235,73 +231,6 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     ```
 
 ![verify the connection to your cluster](media/aks-how-to-use/verify-the-connection-to-your-cluster.png)
-
-
-## Upgrade cluster
-
-After the deploying a cluster and connect to it to verify it was deployed as expected, you can proceed to upgrade it.
-
-1.  Get the available cluster versions by running:
-
-    ```azurecli
-    az aks get-upgrades --resource-group myResourceGroup --name myakscluster
-    ```
-    The output should contain the current version of each of the masters and agents and to which versions of Kubernetes they can be updated.
-
-    ```json  
-    "agentPoolProfiles": [
-        {
-        "kubernetesVersion": "1.19.11",
-        "name": null,
-        "osType": "Linux",
-        "upgrades": [
-            {
-            "isPreview": null,
-            "kubernetesVersion": "1.20.7"
-            }
-        ]
-        }
-    ],
-    "controlPlaneProfile": {
-        "kubernetesVersion": "1.19.11",
-        "name": null,
-        "osType": "Linux",
-        "upgrades": [
-        {
-            "isPreview": null,
-            "kubernetesVersion": "1.20.7"
-        }
-        ]
-    },
-    ...
-    }
-
-    ```
-
-2.  Upgrade the cluster by selecting the Kubernetes version desired. For example `1.20.7`, and running.
-
-    ```azurecli  
-    az aks upgrade \
-        --resource-group myResourceGroup \
-        --name myakscluster \
-        --kubernetes-version 1.20.7
-    ```
-
-    You can only upgrade one minor version at a time. For example, you can upgrade from 1.19.x to 1.20.x, but cannot upgrade from 1.18.x to 1.20.x directly. To upgrade from 1.18.x to 1.20.x, first upgrade from 1.18.x to 1.19.x, then perform another upgrade from 1.19.x to 1.20.x.
-
-3.  Validate the upgrade by querying the current version of the cluster with:
-
-    ```azurecli
-        az aks show --resource-group myResourceGroup --name myakscluster --output table
-    ```
-
-    The output should look like:
-
-    ```azurecli
-    Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-    ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-    myakscluster  redmond      myResourceGroup  1.20.7               Succeeded            myaksclust-myresourcegroup-…
-    ```
 
 ## Scale cluster
 

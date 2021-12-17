@@ -28,7 +28,9 @@ You will need to have the `Microsoft.ContainerService` resource provider availab
 
     ![Check for the Microsoft.ContainerService in the Resource explorer.](media/aks-how-to-use/check-for-container-step2.png)
 
-3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to add it. You will need to use the Azure CLI connected to your environment to add the resource provider.
+3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to have your cloud operator add the resoruce provider to your subscription, or you will need to subscribe to a subscription with the provider. Contact your your cloud operator. 
+
+    The cloud operator can use the Azure CLI connected to your environment to add the resource provider.
     1. You can find instructions on setting up [Azure CLI](aks-how-to-use-cli.md?tabs=ubuntu%2Clinuxcon#install-azure-cli).
     2. You can find the steps for adding `Microsoft.ContainerService` resource provider in [Use AKS CLI](aks-how-to-use-cli.md?tabs=windows%2Clinuxcon#connect-to-azure-stack-hub).
 ## Discover available AKS clusters
@@ -70,21 +72,6 @@ You will need to have the `Microsoft.ContainerService` resource provider availab
 
     ![Add Azure CNI for networking](media/aks-how-to-use/create-aks-network.png)
 
-## Upgrade cluster
-
-1.  To upgrade the cluster's control plane, in the cluster details, select **Configuration**, then select the Kubernetes upgrade version to upgrade to and select save.
-
-    ![Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
-
-    ![Select version and select save in the portal.](media/aks-how-to-use/upgrade-to-select-version.png)
-
-2. To upgrade the agent node pool, in the cluster details, select **Node pools**, then either select the node pool version link or **Upgrade**.
-
-    ![Select version link in the portal.](media/aks-how-to-use/upgrade-agent-click-version.png)
-
-3.  Select the node pool Kubernetes version
-
-    ![Upgraded by checking the cluster.](media/aks-how-to-use/upgraded-by-checking-the-cluster.png)
 
 ## Scale cluster
 
