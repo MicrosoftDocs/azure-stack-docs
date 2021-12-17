@@ -48,7 +48,7 @@ To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https
 
 ## What's new in Windows Admin Center for Azure Stack HCI
 
-Windows Admin Center version 2110 and 2103 include a number of features and improvements to manage Azure Stack HCI systems. More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/what-is).
+Windows Admin Center versions 2110 and 2103 include a number of features and improvements to manage Azure Stack HCI systems. More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/what-is).
 
 ### What's new in Windows Admin Center version 2110
 
