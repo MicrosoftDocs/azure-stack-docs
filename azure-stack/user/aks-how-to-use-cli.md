@@ -116,7 +116,7 @@ Azure CLI should be 2.28.0 or above.
     az account set --subscription <subscription-id>
     ```
 
-7 Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
+7. Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
 
     ```azurecli  
     az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table

@@ -28,11 +28,11 @@ You will need to have the `Microsoft.ContainerService` resource provider availab
 
     ![Check for the Microsoft.ContainerService in the Resource explorer.](media/aks-how-to-use/check-for-container-step2.png)
 
-3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to have your cloud operator add the resoruce provider to your subscription, or you will need to subscribe to a subscription with the provider. Contact your your cloud operator. 
+3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to have your cloud operator add the resource provider to your subscription, or you will need to subscribe to a subscription with the provider. Contact your cloud operator. 
 
     The cloud operator can use the Azure CLI connected to your environment to add the resource provider.
-    1. You can find instructions on setting up [Azure CLI](aks-how-to-use-cli.md?tabs=ubuntu%2Clinuxcon#install-azure-cli).
-    2. You can find the steps for adding `Microsoft.ContainerService` resource provider in [Use AKS CLI](aks-how-to-use-cli.md?tabs=windows%2Clinuxcon#connect-to-azure-stack-hub).
+      1. You can find instructions on setting up [Azure CLI](aks-how-to-use-cli.md?tabs=ubuntu%2Clinuxcon#install-azure-cli).
+      2. You can find the steps for adding `Microsoft.ContainerService` resource provider in [Use AKS CLI](aks-how-to-use-cli.md?tabs=windows%2Clinuxcon#connect-to-azure-stack-hub).
 ## Discover available AKS clusters
 
 1.  In the Azure Stack tenant portal, find **All Services**, and select **Kubernetes services**.
