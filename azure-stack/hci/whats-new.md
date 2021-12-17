@@ -13,7 +13,7 @@ ms.date: 12/15/2021
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and 20H2. It also lists what's new in different versions of Windows Admin Center for Azure Stack HCI.
+This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and 20H2. It also lists what's new in different versions of Windows Admin Center to manage Azure Stack HCI systems.
 
 Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
 
@@ -46,13 +46,13 @@ Clusters running Azure Stack HCI, version 20H2 now have the following new featur
 
 To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.
 
-## Windows Admin Center enhancements
+## What's new in Windows Admin Center for Azure Stack HCI
 
-This section lists the enhancements available in Windows Admin Center version 2110 and 2103 to support Azure Stack HCI clusters.
+Windows Admin Center version 2110 and 2103 include a number of features and improvements to manage Azure Stack HCI systems. More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](../manage/windows-admin-center/understand/what-is.md).
 
 ### What's new in Windows Admin Center version 2110
 
-Windows Admin Center version 2110 added a number of features and improvements for Azure Stack HCI, version 21H1, including the following:
+Windows Admin Center version 2110 includes the following improvements:
 
 - **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
 
@@ -62,7 +62,7 @@ Windows Admin Center version 2110 added a number of features and improvements fo
 
 - **New Security tool**: This new tool centralizes some key security settings for servers and clusters, including the ability to easily view the Secured-core status of systems.
 
-- **New features when creating volumes on clusters**: The Volumes tool in Cluster Manager now can create volumes with thin provisioning, nested resiliency, and optional stretched cluster features. 
+- **New features when creating volumes on clusters**: The Volumes tool in Cluster Manager can now create volumes with thin provisioning, nested resiliency, and optional stretched cluster features.
 
 - **Feature updates for Azure Stack HCI**: The Updates tool has an improved history page and can upgrade clusters to Azure Stack HCI, version 21H2.
 
@@ -76,7 +76,7 @@ For details on the new features and improvements, see the blog on [Windows Admin
 
 ### What's new in Windows Admin Center version 2103
 
-Windows Admin Center version 2103 added a number of features and improvements for Azure Stack HCI, version 20H2, including the following:
+Windows Admin Center version 2103 includes the following improvements:
 
 - **Windows Admin Center updates automatically**: Windows Admin Center and extensions now update automatically when a new release is available.
 
