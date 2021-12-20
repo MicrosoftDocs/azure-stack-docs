@@ -1,95 +1,7 @@
----
-title: Use API version profiles with Java in Azure Stack Hub 
-description: Learn how to use API version profiles with Java in Azure Stack Hub.
-author: sethmanheim
+## Introduction to the Azure Stack Hub SDK for Java
 
-ms.topic: article
-ms.date: 11/4/2021
-ms.author: sethm
-ms.reviewer: weshi1
-ms.lastreviewed: 11/4/2021
+The open-source Azure Stack Hub SDK for Java simplifies provisioning, managing, and using Azure resources from Java application code. For more context about using Java with Azure, see [Use the Azure SDK for Java](https://docs.microsoft.com/en-us/azure/developer/java/sdk/overview)
 
-# Intent: As an Azure Stack user, I want to use API version profiles with Java in Azure stack so I can benefit from the use of profiles.
-# Keyword: azure stack api profiles java
-
----
-
-
-# Use API version profiles with Java in Azure Stack Hub
-
-The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis).
-
-The Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that loads the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you can select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack Hub.
-
-Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack Hub.
-
-::: moniker range=">=azs-2102"
-
-`Draft-2021-20-12`
-
-1. Set up your development environment
-    a. Install Git.
-    b. Install the Java SDK.
-    c. Install Maven.
-
-2. Set up access to your Azure Stack Hub environment.
-    a. You need a subscription to the user (tenant) of an Azure Stack Hub environment.
-    b. Get the your service principal
-    c. Get the values you will need.
-    d. Save them as a JSON file.
-3. Get the samples repository.
-    a. https://github.com/bbridges/hybrid-compute-java-manage-vm.git
-4. Create and delete a resource group in your Azure Stack Hub environment.
-    a. https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/resourcegroup
-5. Other samples
-    a. Work with resource groups in Azure Stack Hub
-        Azure Stack Resource sample for managing resource groups:
-            • Create a resource group
-            • Update a resource group
-            • Create another resource group
-            • List resource groups
-            • Delete a resource group
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/resourcegroup> 
-        
-    
-    b. Work with Key vault in Azure Stack Hub
-        Azure Stack Key Vault sample for managing secrets:
-            • Create a key vault
-            • Set a secret
-            • Get a secret
-            • Delete a key vault
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/secret> 
-        
-    c. Work with the storage service in Azure Stack Hub
-        Azure Stack Storage sample for managing storage accounts:
-            • Create a storage account
-            • Get | regenerate storage account access keys
-            • Create another storage account
-            • List storage accounts
-            • Delete a storage account
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/storage> 
-        
-    d. Work with VMs in Azure Stack Hub.
-        Azure Stack Compute sample for managing virtual machines:
-            • Create a virtual machine with managed OS Disk
-            • Start a virtual machine
-            • Stop a virtual machine
-            • Restart a virtual machine
-            • Update a virtual machine
-            • Tag a virtual machine (there are many possible variations here)
-            • Attach data disks
-            • Detach data disks
-            • List virtual machines
-            • Delete a virtual machine
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/vm> 
-
-
-::: moniker-end
-::: moniker range="<=azs-2008"
 ## Java and API version profiles
 
 An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
@@ -97,25 +9,13 @@ An API profile is a combination of resource providers and API versions. Use an A
 - To use the latest versions of all the services, use the **latest** profile as the dependency.
 
   - To use the latest profile, the dependency is **com.microsoft.azure**.
-
-  - To use the latest supported services available in Azure Stack Hub, use the
-    **com.microsoft.azure.profile\_2019\_03\_01\_hybrid** profile.
-
-    - The profile is specified in the **Pom.xml** file as a dependency, which loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
-
-  - Dependencies appear as follows:
-
-     ```xml
-     <dependency>
-     <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
-     <artifactId>azure</artifactId>
-     <version>1.0.0-beta-1</version>
-     </dependency>
-     ```
-
+  - The profile is specified in the `pom.xml` file as a dependency, which loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
   - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined through Intellisense.
 
 You can combine all of the options in the same app.
+
+For more information about Azure Stack Hub and API profiles, see the [Summary
+of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
 ## Install the Azure Java SDK
 
@@ -123,29 +23,27 @@ Follow these steps to install the Java SDK:
 
 1. Follow the official instructions to install Git. See [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2. Follow the instructions to install the [Java SDK](https://zulu.org/download/) and [Maven](https://maven.apache.org/). The correct version is version 8 of the Java Developer Kit. The correct version of Apache Maven is 3.0 or above. To complete the quickstart, the `JAVA_HOME` environment variable must be set to the install location of the Java Development Kit. For more info, see [Create your first function with Java and Maven](/azure/azure-functions/functions-create-first-java-maven).
+2. Follow the instructions to install the [OpenJDK](https://www.microsoft.com/openjdk) and [Maven](https://maven.apache.org/). Install version 8 or greater of the Java Developer Kit. The correct version of Apache Maven is 3.0 or above. To complete the steps in this article, the `JAVA_HOME` environment variable must be set to the install location of the Java Development Kit. For more info, see [Create your first function with Java and Maven](/azure/azure-functions/functions-create-first-java-maven).
 
-3. To install the correct dependency packages, open the **Pom.xml** file in your Java app. Add a dependency, as shown in the following code:
+3. To install the correct dependency packages, open the `pom.xml`** file in your Java app. Add a dependency, as shown in the following code:
 
-   ```xml  
-   <dependency>
-   <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
-   <artifactId>azure</artifactId>
-   <version>1.0.0-beta-1</version>
-   </dependency>
-   ```
+     ```xml
+    <dependency>
+    <groupId>com.azure.resourcemanager</groupId>
+    <artifactId>azure-resourcemanager</artifactId>
+    <version>1.0.0-hybrid</version>
+    </dependency>
+     ```
 
 4. The set of packages that need to be installed depends on the profile version you want to use. The package names for the profile versions are:
 
-   - **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**
    - **com.microsoft.azure**
-     - **latest**
 
 5. If not available, create a subscription and save the subscription ID for later use. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
 6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md). The client ID is also known as the application ID when creating a service principal.
 
-7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
+7. Make sure your service principal has the **contributor/owner** role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
 
 ## Prerequisites
 
@@ -157,8 +55,6 @@ To use the Azure Java SDK with Azure Stack Hub, you must supply the following va
 | Client ID                 | `AZURE_CLIENT_ID`             | The service principal application ID saved when the service principal was created in the previous section.                                                                                              |
 | Subscription ID           | `AZURE_SUBSCRIPTION_ID`      | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub.                |
 | Client Secret             | `AZURE_CLIENT_SECRET`        | The service principal application secret saved when the service principal was created.                                                                                                                                   |
-| Resource Manager Endpoint | `ARM_ENDPOINT`              | See the [Azure Stack Hub Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint) article. |
-| Location                  | `RESOURCE_LOCATION`    | **Local** for Azure Stack Hub.                                                                                                                                                                                                |
 
 To find the tenant ID for your Azure Stack Hub, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, use the procedures in the following sections:
 
@@ -206,7 +102,7 @@ Note the following considerations:
 
 - The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 
-To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
+To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=2019-10-01`.
 
 Sample JSON file:
 
@@ -222,17 +118,6 @@ Sample JSON file:
       }
 }
 ```
-
-## Existing API profiles
-
-- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 1904 or later.
-
-- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profile built for Azure Stack Hub. Use this profile for services to be compatible with Azure Stack Hub versions 1808 or later.
-
-- **com.microsoft.azure**: Profile consisting of the latest versions of all services. Use the latest versions of all the services.
-
-For more information about Azure Stack Hub and API profiles, see the [Summary
-of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
 ## Azure Java SDK API profile usage
 
@@ -282,7 +167,7 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         // Create new getRequest with below mentioned URL
-        HttpGet getRequest = new HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
+        HttpGet getRequest = new HttpGet(String.format("%s/metadata/endpoints?api-version=2019-10-01",
                              armEndpoint));
 
         // Add additional header to getRequest which accepts application/xml data
@@ -379,11 +264,6 @@ Use the following GitHub samples as references for creating solutions with .NET 
    mvn clean compile exec:java
    ```
 
-::: moniker-end
+## For more information
 
-## Next steps
-
-For more information about API profiles, see:
-
-- [Version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
-- [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
+[Use the Azure SDK for Java](https://docs.microsoft.com/azure/developer/java/sdk/overview)
