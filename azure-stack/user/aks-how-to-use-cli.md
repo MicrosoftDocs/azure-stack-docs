@@ -132,7 +132,7 @@ Azure CLI should be 2.28.0 or above.
     az provider register --namespace Microsoft.ContainerService
     ```
 
-9. Re-run step seven to verify the resource provider registration status. The registration can take several minutes to complete. 
+9. Rerun step seven to verify the resource provider registration status. The registration can take several minutes to complete. 
 
 Once those prerequisite steps are completed, you can proceed to test the following scenarios.
 
