@@ -4,7 +4,7 @@ description: Reference for the supported VM sizes in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: reference
-ms.date: 12/13/2021
+ms.date: 12/20/2021
 ms.author: mabrigg
 ms.reviewer: nebird
 ms.lastreviewed: 12/13/2021
@@ -25,7 +25,7 @@ VM vCPU depends on the number of cores per node. For example, systems with cores
 
 ## VM general purpose
 
-General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. All General purpose VMs have a 500 IOPS limit for OS and data disks, except for the Basic A series VMs which have 300 IOPS for disks.
+General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. All Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
 
 ### Basic A
 
@@ -64,6 +64,24 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_A2m_v2** |2   |16  |20   |500 |2000  |4 / 4x500   |2 |
 |**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8x500   |4 |
 |**Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16x500 |8 |
+
+### Dv2-series
+|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
+|-------------------|----|----|-----|----|------|------------|---------|
+|**Standard_D1_v2** |1   |3.5 |50   |500 |3000  |4 / 4x500   |2 |
+|**Standard_D2_v2** |2   |7   |100  |500 |6000  |8 / 8x500   |2 |
+|**Standard_D3_v2** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
+|**Standard_D4_v2** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
+|**Standard_D5_v2** |16  |56  |800  |500 |48000 |64 / 64x500 |8 |
+
+### DSv2-series
+|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
+|--------------------|----|----|----|-----|------|-------------|---------|
+|**Standard_DS1_v2** |1   |3.5 |7   |1000 |4000  |4 / 4x2300   |2 |
+|**Standard_DS2_v2** |2   |7   |14  |1000 |8000  |8 / 8x2300   |2 |
+|**Standard_DS3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 |
+|**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 |
+|**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 |
 
 ## Compute optimized
 ### F-series
