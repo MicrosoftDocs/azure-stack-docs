@@ -155,6 +155,8 @@
             href: create-daemonsets.md
           - name: Create a ReplicaSet
             href: create-replicasets.md
+          - name: Create a StatefulSet
+            href: create-statefulset.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
