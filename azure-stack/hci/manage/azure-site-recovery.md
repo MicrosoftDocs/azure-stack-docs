@@ -5,7 +5,6 @@ ms.topic: article
 author: IngridAtMicrosoft
 ms.author: wscontent
 ms.date: 11/02/2021
-ms.localizationpriority: low
 ---
 # Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center
 
