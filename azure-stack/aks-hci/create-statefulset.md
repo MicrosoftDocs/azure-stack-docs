@@ -11,9 +11,9 @@ ms.author: v-susbo
 
 *StatefulSets* maintain the state of applications beyond an individual pod lifecycle, such as storage. Like deployments, a StatefulSet creates and manages at least one identical pod with unique, persistent identities and stable host names. Replicas in a StatefulSet follow a sequential approach to deployment, scale, and upgrade. 
 
-A StatefulSet is useful for applications that require stable and unique identifiers, persistent storage, ordered deployment, deletion and scaling. Examples of these apps include MySQL, MongoDB, Kafka, and Cassandra. Stateless applications, such as Apache and Tomcat, do not care what network they're using and do not require persistent storage.
+A StatefulSet is useful for applications that require stable and unique identifiers, persistent storage, an ordered deployment, and scaling. Examples of these apps include MySQL, MongoDB, Kafka, and Cassandra. Stateless applications, such as Apache and Tomcat, do not care what network they're using and do not require persistent storage.
 
-The main components of Statefulsets are the persistent volume provisioner and the headless service. For more information, see [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+The main components of StatefulSets are the persistent volume provisioner and the headless service. For more information, see [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
 ## Create a StatefulSet
 
@@ -22,19 +22,29 @@ You create a StatefulSet using the `kubectl create` or `kubectl apply` command, 
 ```powershell
 kubectl create –f statefulset.yaml
 ```
-The headless service used by the StatefulSet can be created in the same manifest file.
 
-To view the created components of your StatefulSet, run `kubectl get statefulset`, `kubectl get pv` for persistent volumes, and `kubectl get pvc` for a persistent volume claim.
+You can create the headless service that's used by the StatefulSet in the same manifest file.
+
+To view the components you created for your StatefulSet, run the following command:
+
+```powershell
+kubectl get statefulset
+```
+ ``
+
+You can also run `kubectl get pv` for persistent volumes and `kubectl get pvc` for a persistent volume claim.
 
 ## Update StatefulSets
 
-To update a StatefulSet, edit the manifest file and run the same command used in creating the StatefulSet: `kubectl apply –f statefulset.yaml`. The update strategies can either be an _OnDelete_ update or a _rolling_ update. With the OnDelete strategy, pods will not be replaced when you apply the manifest, but you will have to manually delete existing StatefulSet pods before the new version is created. In a rolling update, StatefulSet pods will be removed and then be replaced in reverse ordinal order when you apply the manifest.
+To update a StatefulSet, edit the manifest file and run the same command used when creating the StatefulSet: `kubectl apply –f statefulset.yaml`. You can use either an _OnDelete_ update or a _rolling_ update as the update strategy. With an _OnDelete_ update, pods are not replaced when you apply the manifest, but you'll have to manually delete existing StatefulSet pods before the new version is created. In a _rolling_ update, StatefulSet pods are removed and then be replaced in reverse ordinal order when you apply the manifest.
 
 ## Delete a StatefulSet
 
-Use the `kubectl delete` command to delete a StatefulSet, but you must manually delete the headless service. For example, `kubectl delete statefulset <statefulset_NAME>`, and `kubectl delete service <svc_NAME>`. You can also delete the PV and PVC manually using `kubectl delete pv` and `kubectl delete pvc`, respectively. To prevent data loss, the PV and PVC are not deleted when StatefulSet is deleted.
+Use the `kubectl delete` command to delete a StatefulSet, but you must also manually delete the headless service. For example, run `kubectl delete statefulset <statefulset_NAME>` to delete the StatefulSet, and `kubectl delete service <svc_NAME>` to delete the headless service. 
+
+To delete the persistent volume and the persistent volume claim, use `kubectl delete pv` and `kubectl delete pvc`, respectively. To prevent data loss, the persistent volume and persistent volume claim are not deleted when a StatefulSet is deleted.
 
 ## Next steps
 
-- [Create replicasets](create-replicaset.md)
+- [Create replicasets](create-replicasets.md)
 - [Create pods](create-pods.md)
