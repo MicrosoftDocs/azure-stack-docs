@@ -23,3 +23,18 @@ You create a StatefulSet using the `kubectl create` or `kubectl apply` command, 
 kubectl create –f statefulset.yaml
 ```
 The headless service used by the StatefulSet can be created in the same manifest file.
+
+To view the created components of your StatefulSet, run `kubectl get statefulset`, `kubectl get pv` for persistent volumes, and `kubectl get pvc` for a persistent volume claim.
+
+## Update StatefulSets
+
+To update a StatefulSet, edit the manifest file and run the same command used in creating the StatefulSet: `kubectl apply –f statefulset.yaml`. The update strategies can either be an _OnDelete_ update or a _rolling_ update. With the OnDelete strategy, pods will not be replaced when you apply the manifest, but you will have to manually delete existing StatefulSet pods before the new version is created. In a rolling update, StatefulSet pods will be removed and then be replaced in reverse ordinal order when you apply the manifest.
+
+## Delete a StatefulSet
+
+Use the `kubectl delete` command to delete a StatefulSet, but you must manually delete the headless service. For example, `kubectl delete statefulset <statefulset_NAME>`, and `kubectl delete service <svc_NAME>`. You can also delete the PV and PVC manually using `kubectl delete pv` and `kubectl delete pvc`, respectively. To prevent data loss, the PV and PVC are not deleted when StatefulSet is deleted.
+
+## Next steps
+
+- [Create replicasets](create-replicaset.md)
+- [Create pods](create-pods.md)
