@@ -30,13 +30,12 @@ To view the components you created for your StatefulSet, run the following comma
 ```powershell
 kubectl get statefulset
 ```
- ``
 
-You can also run `kubectl get pv` for persistent volumes and `kubectl get pvc` for a persistent volume claim.
+To view persistent volumes, run `kubectl get pv`, and to view a persistent volume claim, run `kubectl get pvc`.
 
 ## Update StatefulSets
 
-To update a StatefulSet, edit the manifest file and run the same command used when creating the StatefulSet: `kubectl apply –f statefulset.yaml`. You can use either an _OnDelete_ update or a _rolling_ update as the update strategy. With an _OnDelete_ update, pods are not replaced when you apply the manifest, but you'll have to manually delete existing StatefulSet pods before the new version is created. In a _rolling_ update, StatefulSet pods are removed and then be replaced in reverse ordinal order when you apply the manifest.
+To update a StatefulSet, edit the manifest file and run the same command used when creating the StatefulSet: `kubectl apply –f statefulset.yaml`. You can use either an _OnDelete_ update or a _rolling_ update as the update strategy. With an _OnDelete_ update, pods are not replaced when you apply the manifest, but you'll have to manually delete existing StatefulSet pods before the new version is created. In a _rolling_ update, StatefulSet pods are removed and then replaced in reverse ordinal order when you apply the manifest.
 
 ## Delete a StatefulSet
 
