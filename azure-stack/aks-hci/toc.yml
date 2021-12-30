@@ -131,6 +131,8 @@
             href: ad-sso.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
+          - name: Secure containers
+            href: container-security.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
           - name: Secure communication with certificates
