@@ -9,15 +9,38 @@ ms.subservice: azure-stack-hci
 ms.date: 12/15/2021
 ---
 
-# What's new in Azure Stack HCI
+# What's new in Azure Stack HCI, version 21H2
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and 20H2. It also lists what's new in different versions of Windows Admin Center to manage Azure Stack HCI systems.
+This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and the features and enhancements that are currently in the preview mode. It also lists what's new in different versions of Windows Admin Center to manage Azure Stack HCI systems.
 
 Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
 
 ## What's new in Azure Stack HCI, version 21H2
+
+The following section lists 
+
+### Azure workloads and benefits
+
+With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads and the benefits associated with them in your on-premises Azure Stack HCI clusters. Azure benefits is a recommended and optional feature in Azure Stack HCI, which makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure benefits on Azure Stack HCI at no additional cost. For more information, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
+
+**Continuous innovations for Azure Kubernetes Service on Azure Stack HCI**
+
+Microsoft releases regular AKS-HCI updates since its general availability in May 2021. For the latest release information, see [Azure Kubernetes Service on Azure Stack HCI release information page](https://github.com/azure/aks-hci/releases).
+
+
+
+### Azure management and governance
+
+**Azure Backup support for Azure Stack HCI**
+With MABS v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and VMs running on the Azure stack HCI cluster. For more information see [Back up Azure Stack HCI virtual machines with Azure Backup Server](azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+
+**Azure Site Recovery support for Azure Stack HCI**
+For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery)
+
+
+### Azure infrastructure innovation
 
 Clusters running Azure Stack HCI, version 21H2 now have the following new features:
 
@@ -30,6 +53,22 @@ Clusters running Azure Stack HCI, version 21H2 now have the following new featur
 - **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
 
 To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
+
+## What's new in Azure Stack HCI, version 21H2 (preview)
+
+The following section lists the features and enhancements that are available in preview Azure Stack HCI, version 21H2. [Join the Azure Stack HCI preview channel](manage/preview-channel) to evaluate these new features and enhancements.
+
+### Azure Virtual Desktop for Azure Stack HCI preview release
+
+With Azure Stack HCI, version 21H2, you can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
+
+### Arc-enabled PaaS services on Azure Stack HCI**
+
+Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart][https://azurearcjumpstart.io/].
+
+### Multi-cluster monitoring in the Azure Portal
+
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization. For more information, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights).
 
 ## What's new in Azure Stack HCI, version 20H2
 
