@@ -3,10 +3,10 @@ title: Use Azure Kubernetes Service on Azure Stack Hub with the CLI
 description: Learn how to use Azure Kubernetes Service on Azure Stack Hub using Azure CLI.
 author: mattbriggs
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 12/16/2021
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/26/2021
+ms.lastreviewed: 12/16/2021
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -20,13 +20,6 @@ In the following sections you will:
 
 1.  Complete the prerequisites to use AKS on Azure Stack Hub.
 2.  Complete the lifecycle operations of an AKS cluster using Azure CLI and the Azure Stack Hub user portal.
-
-## Prerequisites
-
-Before you can start, you will need to:
-
-1.  Ask your Azure Stack Hub cloud operator to install [Azure Stack Hub Update 2108](/azure-stack/operator/release-notes) or greater. AKS in Azure Stack Hub Preview is only available starting with that update
-2.  Ask your Azure Stack Hub administrator to create a plan and offer that includes this resource provider, see the [installation instructions](../operator/aks-add-on.md).
 
 ### Install Azure CLI
 
@@ -117,19 +110,13 @@ Azure CLI should be 2.28.0 or above.
     > 
     > In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md)
 
-6. Ensure you have selected the subscription with the offer/plan with the **Microsoft.ContainerService** resource provider. You can check the subscription in the portal by selecting your subscription and examining the subscription ID and resource providers it contains.
-
-    ![subscription ID and resource providers](media/aks-how-to-use/subscription-id-and-resource-providers.png)
-
-    ![your Azure CLI session](media/aks-how-to-use/your-azure-cli-session.png)
-
-7. Set the subscription in your Azure CLI session as the default with:
+6. Set the subscription in your Azure CLI session as the default with:
 
     ```azurecli  
     az account set --subscription <subscription-id>
     ```
 
-8. Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
+7. Register the Azure Kubernetes Service resource provider. List the available resource providers in your subscription.
 
     ```azurecli  
     az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
@@ -139,11 +126,13 @@ Azure CLI should be 2.28.0 or above.
 
     ![The output should look like](media/aks-how-to-use/example-of-output.png)
 
-9. Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
+8. Make note of the **Microsoft.ContainerService** resource provider and then register the provider:
 
     ```azurecli  
     az provider register --namespace Microsoft.ContainerService
     ```
+
+9. Rerun step seven to verify the resource provider registration status. The registration can take several minutes to complete. 
 
 Once those prerequisite steps are completed, you can proceed to test the following scenarios.
 
@@ -160,7 +149,7 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     ```
 
 2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
-    1.  To create an service principle (SPN) using Azure Active Directory (Azure AD), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
+    1.  To create a service principle (SPN) using Azure Active Directory (Azure AD), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-a-client-secret-credential).
     2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#create-a-service-principal-that-uses-client-secret-credentials).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure-stack/operator/azure-stack-create-service-principals?view=azs-2005#assign-a-role). Make sure to select the "Contributor" role.
 3.  Create an AKS cluster of three agent nodes. Provide values to the parameters below, examples are provided. Run:
@@ -178,12 +167,13 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     --generate-ssh-keys \
     --load-balancer-sku basic \
     --vm-set-type VirtualMachineScaleSets \
-    --location <Azure Stack Hub location>
+    --location <Azure Stack Hub location> \
+    --kubernetes-version 1.20.7
     ```
 
     The output from this operation will be in json format and contain a specification of the cluster including the ssh public key generated, fully qualified domain name (FQDN) used in the cluster among other properties. Notice that the command will output a text such as this one highlighting the location of the private key: `SSH key files '/home/azureuser/.ssh/id_rsa'` and `'/home/azureuser/.ssh/id_rsa.pub'` have been generated under `\~/.ssh` to allow SSH access to the VM. Store these keys in a safe location to be use in case there is a need to ssh into the VMs as is the case when troubleshooting issues.
 
-4. Now you can proceed to repeat the tests for [Upgrade](#upgrade-cluster), [Scale](#scale-cluster), [deploy an app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
+4. Now you can proceed to repeat the tests for [Scale](#scale-cluster), [deploy an app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
 ### [Windows containers](#tab/wincon)
 
 1.  Create a resource group
@@ -212,10 +202,11 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     --network-plugin azure \
     --windows-admin-username azureuser \
     --windows-admin-password $PASSWORD_WIN \
-    --location redmond
+    --location redmond \
+    --kubernetes-version 1.20.7
     ```
 
-4. Now you can proceed to repeat the tests for [Upgrade](#upgrade-cluster), [Scale](#scale-cluster), [deploy a Windows app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
+4. Now you can proceed to repeat the tests for [Scale](#scale-cluster), [deploy a Windows app](aks-how-to-push-an-app-cli.md), and [Delete](#delete-cluster).
 
 ---
 
@@ -240,73 +231,6 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
     ```
 
 ![verify the connection to your cluster](media/aks-how-to-use/verify-the-connection-to-your-cluster.png)
-
-
-## Upgrade cluster
-
-After the deploying a cluster and connect to it to verify it was deployed as expected, you can proceed to upgrade it.
-
-1.  Get the available cluster versions by running:
-
-    ```azurecli
-    az aks get-upgrades --resource-group myResourceGroup --name myakscluster
-    ```
-    The output should contain the current version of each of the masters and agents and to which versions of Kubernetes they can be updated.
-
-    ```json  
-    "agentPoolProfiles": [
-        {
-        "kubernetesVersion": "1.19.11",
-        "name": null,
-        "osType": "Linux",
-        "upgrades": [
-            {
-            "isPreview": null,
-            "kubernetesVersion": "1.20.7"
-            }
-        ]
-        }
-    ],
-    "controlPlaneProfile": {
-        "kubernetesVersion": "1.19.11",
-        "name": null,
-        "osType": "Linux",
-        "upgrades": [
-        {
-            "isPreview": null,
-            "kubernetesVersion": "1.20.7"
-        }
-        ]
-    },
-    ...
-    }
-
-    ```
-
-2.  Upgrade the cluster by selecting the Kubernetes version desired. For example `1.20.7`, and running.
-
-    ```azurecli  
-    az aks upgrade \
-        --resource-group myResourceGroup \
-        --name myakscluster \
-        --kubernetes-version 1.20.7
-    ```
-
-    You can only upgrade one minor version at a time. For example, you can upgrade from 1.19.x to 1.20.x, but cannot upgrade from 1.18.x to 1.20.x directly. To upgrade from 1.18.x to 1.20.x, first upgrade from 1.18.x to 1.19.x, then perform another upgrade from 1.19.x to 1.20.x.
-
-3.  Validate the upgrade by querying the current version of the cluster with:
-
-    ```azurecli
-        az aks show --resource-group myResourceGroup --name myakscluster --output table
-    ```
-
-    The output should look like:
-
-    ```azurecli
-    Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-    ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-    myakscluster  redmond      myResourceGroup  1.20.7               Succeeded            myaksclust-myresourcegroup-…
-    ```
 
 ## Scale cluster
 

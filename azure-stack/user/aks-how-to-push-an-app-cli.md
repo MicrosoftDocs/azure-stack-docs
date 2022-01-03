@@ -76,7 +76,7 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 
 ## Deploy apps to AKS using ACR
 
-At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below. Otherwise, you can skip to the section title [Upgrade the cluster](aks-how-to-use-cli.md#upgrade-cluster).
+At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below.
 
 ### Docker registry secret for accessing local ACR
 
