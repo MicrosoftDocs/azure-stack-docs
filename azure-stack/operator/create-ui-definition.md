@@ -111,4 +111,4 @@ Address any issues reported by the sandbox blade.
 ## Next steps
 
 - [How to create and publish gallery item to the Azure Stack Hub marketplace](azure-stack-create-and-publish-marketplace-item.md)
-- [Createuidefinition.json official document](/azure/azure/azure-resource-manager/managed-applications/create-uidefinition-overview)
+- [Createuidefinition.json official document](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview)
