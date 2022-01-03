@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/19/2021
+ms.date: 01/03/2022
 ---
 
 # Azure Stack HCI release information
@@ -32,6 +32,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.407    | 2022-01-04            | [KB 5010197](https://support.microsoft.com/topic/1ecad3b4-fc07-4b0b-a13f-f3d6a9a610ca) |
 | 20348.405    | 2021-12-14            | [KB 5008223](https://support.microsoft.com/topic/9bfc69ea-cd28-4e5d-95c5-934d67d48ee1) |
 | 20348.380    | 2021-11-22            | [KB 5007254](https://support.microsoft.com/topic/98eb640f-81f6-4317-b965-100428db037f) |
 | 20348.350    | 2021-11-09            | [KB 5007205](https://support.microsoft.com/topic/a54d80e0-b1af-493e-9981-d4597a166119) |
