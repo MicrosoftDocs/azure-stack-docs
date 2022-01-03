@@ -44,7 +44,7 @@ Three-way mirroring can safely tolerate at least [two hardware problems (drive o
 
 ## Parity
 
-Parity encoding, often called "erasure coding," provides fault tolerance using bitwise arithmetic, which can get [remarkably complicated](https://www.microsoft.com/research/wp-content/uploads/2016/02/LRC12-cheng20webpage.pdf). The way this works is less obvious than mirroring, and there are many great online resources (for example, this third-party [Dummies Guide to Erasure Coding](http://smahesh.com/blog/2012/07/01/dummies-guide-to-erasure-coding/)) that can help you get the idea. Sufficed to say it provides better storage efficiency without compromising fault tolerance.
+Parity encoding, often called "erasure coding," provides fault tolerance using bitwise arithmetic, which can get [remarkably complicated](https://www.microsoft.com/research/wp-content/uploads/2016/02/LRC12-cheng20webpage.pdf). The way this works is less obvious than mirroring, and there are many great online resources (for example, this third-party [Dummies Guide to Erasure Coding](https://smahesh.com/dummies-guide-to-erasure-coding/)) that can help you get the idea. Sufficed to say it provides better storage efficiency without compromising fault tolerance.
 
 Storage Spaces offers two flavors of parity – "single" parity and "dual" parity, the latter employing an advanced technique called "local reconstruction codes" at larger scales.
 
