@@ -11,36 +11,50 @@ ms.date: 12/15/2021
 
 # What's new in Azure Stack HCI, version 21H2
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 21H2
 
-This article lists the various features and improvements introduced in Azure Stack HCI, versions 21H2 and the features and enhancements that are currently in the preview mode. It also lists what's new in different versions of Windows Admin Center to manage Azure Stack HCI systems.
+This article lists the various features and improvements that are now generally available in Azure Stack HCI, versions 21H2 and also the ones that are currently in public preview. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
 
 Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
 
-## What's new in Azure Stack HCI, version 21H2
+To evaluate the new features and enhancements that are currently in public preview, [join the Azure Stack HCI preview channel](manage/preview-channel).
 
-The following section lists 
+## New Azure workloads and benefits
+Azure Stack HCI, version 21H2 brings the most popular Azure workloads and their benefits to your Azure Stack HCI clusters. This section describes the Azure workloads and benefits that are now generally available (and in public preview) with Azure Stack HCI, version 21H2.
 
-### Azure workloads and benefits
+### New Azure platform attestation service
 
 With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads and the benefits associated with them in your on-premises Azure Stack HCI clusters. Azure benefits is a recommended and optional feature in Azure Stack HCI, which makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure benefits on Azure Stack HCI at no additional cost. For more information, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
 
-**Continuous innovations for Azure Kubernetes Service on Azure Stack HCI**
+### Continuous innovations for Azure Kubernetes Service on Azure Stack HCI
 
 Microsoft releases regular AKS-HCI updates since its general availability in May 2021. For the latest release information, see [Azure Kubernetes Service on Azure Stack HCI release information page](https://github.com/azure/aks-hci/releases).
 
+### Azure Virtual Desktop for Azure Stack HCI (preview)
 
+With Azure Stack HCI, version 21H2, you can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
 
-### Azure management and governance
+## New Azure management and governance capabilities
 
-**Azure Backup support for Azure Stack HCI**
+Azure Stack HCI natively integrates with the Azure Resource Manager to project your cluster into Azure as a first-class resource in the Azure Portal. This section lists the new features and enhancements introduced in Azure Stack HCI, version 21H2 to manage your Azure Stack HCI resources just like you’d manage cloud resources.
+
+### Azure Backup support for Azure Stack HCI
+
 With MABS v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and VMs running on the Azure stack HCI cluster. For more information see [Back up Azure Stack HCI virtual machines with Azure Backup Server](azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
-**Azure Site Recovery support for Azure Stack HCI**
-For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery)
+### Azure Site Recovery support for Azure Stack HCI
 
+With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, failover, and failback. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery)
 
-### Azure infrastructure innovation
+### Arc-enabled PaaS services on Azure Stack HCI (preview)
+
+Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart][https://azurearcjumpstart.io/].
+
+### Multi-cluster monitoring in the Azure Portal (preview)
+
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization. For more information, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights).
+
+## New Azure infrastructure innovations
 
 Clusters running Azure Stack HCI, version 21H2 now have the following new features:
 
@@ -51,26 +65,10 @@ Clusters running Azure Stack HCI, version 21H2 now have the following new featur
 - **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
 - **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
 - **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
-
 To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
-## What's new in Azure Stack HCI, version 21H2 (preview)
 
-The following section lists the features and enhancements that are available in preview Azure Stack HCI, version 21H2. [Join the Azure Stack HCI preview channel](manage/preview-channel) to evaluate these new features and enhancements.
-
-### Azure Virtual Desktop for Azure Stack HCI preview release
-
-With Azure Stack HCI, version 21H2, you can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
-
-### Arc-enabled PaaS services on Azure Stack HCI**
-
-Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart][https://azurearcjumpstart.io/].
-
-### Multi-cluster monitoring in the Azure Portal
-
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization. For more information, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights).
-
-## What's new in Azure Stack HCI, version 20H2
+<!--## What's new in Azure Stack HCI, version 20H2
 
 Clusters running Azure Stack HCI, version 20H2 now have the following new features:
 
@@ -83,15 +81,11 @@ Clusters running Azure Stack HCI, version 20H2 now have the following new featur
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
 - **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
 
-To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.
+To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.-->
 
-## What's new in Windows Admin Center for Azure Stack HCI
+## Enhancements in Windows Admin Center
 
-Windows Admin Center versions 2110 and 2103 include a number of features and improvements to manage Azure Stack HCI systems. More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
-
-### What's new in Windows Admin Center version 2110
-
-Windows Admin Center version 2110 includes the following improvements:
+Windows Admin Center version 2110 includes a number of features and improvements to manage Azure Stack HCI systems.
 
 - **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
 
@@ -111,9 +105,11 @@ Windows Admin Center version 2110 includes the following improvements:
 
 - **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
 
-For details on the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579).
+For details on the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579). 
 
-### What's new in Windows Admin Center version 2103
+More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
+
+<!--### What's new in Windows Admin Center version 2103
 
 Windows Admin Center version 2103 includes the following improvements:
 
@@ -133,7 +129,7 @@ To learn more, see [Enabling Linux based Azure IoT Edge Modules on Windows IoT](
 
 - **Virtual machines tool improvements**: You can now create your own VM groups in the tool and edit columns. We’ve also made moving a VM easier, allowing you to reassign virtual switches while moving a VM.
 
-For details on the new features and improvements, see the blog on [Windows Admin Center version 2103](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).
+For details on the new features and improvements, see the blog on [Windows Admin Center version 2103](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2103-is-now-generally-available/ba-p/2176438).-->
 
 ## Next steps
 
