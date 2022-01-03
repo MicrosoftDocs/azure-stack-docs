@@ -3,10 +3,10 @@ title: Use Azure Kubernetes Service on Azure Stack Hub in the portal
 description: Learn how to use Azure Kubernetes Service (ASK) on Azure Stack Hub in the portal.
 author: mattbriggs
 ms.topic: article
-ms.date: 12/16/2021
+ms.date: 1/3/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 12/16/2021
+ms.lastreviewed: 1/3/2022
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -22,11 +22,11 @@ You will need to have the `Microsoft.ContainerService` resource provider availab
 
 1. Sign in to the Azure Stack user portal. Select **All services** > **Resource Explorer** in the **General** group.
 
-    ![Check for the Microsoft.ContainerService resource provider.](media/aks-how-to-use/check-for-container-step1.png)
+    ![Check for the Microsoft.ContainerService resource provider.](media/aks-how-to-use/check-for-container-step-1.png)
 
 2. In the **Resource Explorer**, find the `Microsoft.ContainerService`.
 
-    ![Check for the Microsoft.ContainerService in the Resource explorer.](media/aks-how-to-use/check-for-container-step2.png)
+    ![Check for the Microsoft.ContainerService in the Resource explorer.](media/aks-how-to-use/check-for-container-step-2.png)
 
 3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to have your cloud operator add the resource provider to your subscription, or you will need to subscribe to a subscription with the provider. Contact your cloud operator. 
 
