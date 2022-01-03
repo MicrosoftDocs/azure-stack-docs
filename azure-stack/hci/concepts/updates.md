@@ -19,7 +19,7 @@ You can expect hardware service, support, and security updates from Microsoft Ha
 
 :::image type="content" source="media/updates/lifecycle-versions.png" alt-text="Azure Stack HCI annual release roadmap" border="false":::
 
-Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](../release-information).
+Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](../release-information.md).
 
 ## Updating Azure Stack HCI
 
