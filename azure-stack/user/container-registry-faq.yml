@@ -39,7 +39,7 @@ sections:
       - question: |
           How do I configure Kubernetes with Azure Container Registry?
         answer: |
-          See the documentation for [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) and steps for [Azure Kubernetes Service](/azure/container-registry/cluster-container-registry-integration).
+          See the documentation for [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) and steps for [Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration).
           
       - question: |
           How do I get admin credentials for a container registry?
@@ -465,4 +465,3 @@ additionalContent: |
 
   ## Next steps
     * [Learn more](/azure/container-registry/container-registry-intro) about Azure Container Registry.
-
