@@ -4,7 +4,7 @@ description: An overview of how updates and upgrades are applied to Azure Stack 
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 01/03/2022
 ---
 
 # Updates and upgrades
@@ -18,6 +18,8 @@ Azure Stack HCI solutions are designed to have a predictable update and upgrade 
 You can expect hardware service, support, and security updates from Microsoft Hardware Solution Partner for at least five years. The Azure Stack HCI operating system is supported by Microsoft for two years, with annual feature updates that the customer has up to one year to deploy.
 
 :::image type="content" source="media/updates/lifecycle-versions.png" alt-text="Azure Stack HCI annual release roadmap" border="false":::
+
+Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](../release-information).
 
 ## Updating Azure Stack HCI
 
