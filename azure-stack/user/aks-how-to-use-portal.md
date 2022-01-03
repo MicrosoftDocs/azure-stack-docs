@@ -3,10 +3,10 @@ title: Use Azure Kubernetes Service on Azure Stack Hub in the portal
 description: Learn how to use Azure Kubernetes Service (ASK) on Azure Stack Hub in the portal.
 author: mattbriggs
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 1/3/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/26/2021
+ms.lastreviewed: 1/3/2022
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS difference
@@ -15,6 +15,20 @@ ms.lastreviewed: 10/26/2021
 # Use Azure Kubernetes Service on Azure Stack Hub in the portal
 
 You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AKS), to discover, create, scale, upgrade, and delete AKS clusters.
+
+## Verify your resource providers
+
+You will need to have the `Microsoft.ContainerService` resource provider available for your subscription. To find the services available in your subscription:
+
+1. Sign in to the Azure Stack user portal. Select **All services** > **Resource Explorer** in the **General** group.
+
+    ![Check for the Microsoft.ContainerService resource provider.](media/aks-how-to-use/check-for-container-step-1.png)
+
+2. In the **Resource Explorer**, find the `Microsoft.ContainerService`.
+
+    ![Check for the Microsoft.ContainerService in the Resource explorer.](media/aks-how-to-use/check-for-container-step-2.png)
+
+3. If your subscription doesn't have `Microsoft.ContainerService`, you will need to have your cloud operator add the resource provider to your subscription, or you will need to subscribe to a subscription with the provider. Contact your cloud operator. 
 
 ## Discover available AKS clusters
 
@@ -55,21 +69,6 @@ You can use the Azure Stack Hub user portal, in the Azure Kubernetes Service (AK
 
     ![Add Azure CNI for networking](media/aks-how-to-use/create-aks-network.png)
 
-## Upgrade cluster
-
-1.  To upgrade the cluster's control plane, in the cluster details, select **Configuration**, then select the Kubernetes upgrade version to upgrade to and select save.
-
-    ![Upgrade and select save](media/aks-how-to-use/upgrade-to-and-select-save.png)
-
-    ![Select version and select save in the portal.](media/aks-how-to-use/upgrade-to-select-version.png)
-
-2. To upgrade the agent node pool, in the cluster details, select **Node pools**, then either select the node pool version link or **Upgrade**.
-
-    ![Select version link in the portal.](media/aks-how-to-use/upgrade-agent-click-version.png)
-
-3.  Select the node pool Kubernetes version
-
-    ![Upgraded by checking the cluster.](media/aks-how-to-use/upgraded-by-checking-the-cluster.png)
 
 ## Scale cluster
 
