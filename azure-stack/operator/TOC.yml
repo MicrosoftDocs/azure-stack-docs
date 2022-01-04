@@ -451,7 +451,7 @@
     - name: IoT Hub on Azure Stack Hub
       items:
       - name: Remove
-        href: iot-hub-rp-remove
+        href: iot-hub-rp-remove.md
     - name: Kubernetes
       items:
       - name: Offer the AKS engine
