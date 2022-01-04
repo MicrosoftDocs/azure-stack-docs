@@ -25,7 +25,7 @@ This article provides instructions on how to remove IoT Hub resource provider on
 
     [![Uninstall IoT Hub and confirm](../operator/media/iot-hub-rp-remove/uninstall2.png)](../operator/media/iot-hub-rp-remove/uninstall2.png#lightbox)
 
-3) Wait for the uninstall to complete. Before trying to install IoT Hub again, wait for at least 10 minutes.
+3) Wait for the uninstall to complete. A "Resource Provider installation has been completed successfully" banner will show at the top of the page.
 
 >[!IMPORTANT]
 >The dependencies (eg. Event Hub) will **NOT** be uninstalled. Should you want to uninstall/ remove any of the dependencies from marketplace, you will need to do it separately.
