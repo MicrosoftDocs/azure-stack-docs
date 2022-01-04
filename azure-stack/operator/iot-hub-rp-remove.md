@@ -29,3 +29,7 @@ This article provides instructions on how to remove IoT Hub resource provider on
 
 >[!IMPORTANT]
 >The dependencies (eg. Event Hub) will **NOT** be uninstalled. Should you want to uninstall/ remove any of the dependencies from marketplace, you will need to do it separately.
+
+## Next steps
+
+For more information on Azure IoT Hub, see the [Azure IoT Hub Documentation](https://docs.microsoft.com/azure/iot-hub/).
