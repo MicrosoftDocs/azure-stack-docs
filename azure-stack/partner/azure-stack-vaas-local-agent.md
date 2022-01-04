@@ -15,6 +15,7 @@ ROBOTS: NOINDEX
 # Intent: As an Azure Stack Hub user, I want to learn how to deploy the local agent for Azure Stack Hub validation as a service.
 # Keyword: azure stack hub deploy local agent
 
+ms.custom: mode-api
 ---
 
 

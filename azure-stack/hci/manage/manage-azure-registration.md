@@ -1,15 +1,15 @@
 ---
 title: Manage Azure Stack HCI cluster registration with Azure
 description: How to manage your Azure registration for Azure Stack HCI clusters, understand registration status, and unregister a cluster when you're ready to decommission it.
-author: khdownie
-ms.author: v-kedow
+author: arduppal
+ms.author: arduppal
 ms.topic: how-to
 ms.date: 02/10/2021
 ---
 
 # Manage cluster registration with Azure
 
-> Applies to Azure Stack HCI version 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 After you've created an Azure Stack HCI cluster, you must [register Windows Admin Center with Azure](register-windows-admin-center.md) and then [register the cluster with Azure](../deploy/register-with-azure.md). After the cluster is registered, it periodically syncs information between the on-premises cluster and the cloud. 
 
@@ -55,7 +55,7 @@ If the user who registers the cluster is an Azure AD administrator or has suffic
 
 To grant consent, open [portal.azure.com](https://portal.azure.com) and sign in with an Azure account that has sufficient permissions in Azure AD. Go to **Azure Active Directory** > **App registrations**. Select the app identity named after your cluster, and go to **API permissions**.
 
-For the general availability (GA) release of Azure Stack HCI, the app requires the following permissions. They're different from the app permissions that were required in public preview.
+For the general availability (GA) release of Azure Stack HCI, the app requires the following permissions.
 
 ```http
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Cluster.Read
@@ -65,14 +65,6 @@ https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Cluster.ReadWrite
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.ClusterNode.Read
 
 https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.ClusterNode.ReadWrite
-```
-
-For public preview, the app permissions (now deprecated) were:
-
-```http
-https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Census.Sync
-
-https://azurestackhci-usage.trafficmanager.net/AzureStackHCI.Billing.Sync
 ```
 
 Seeking approval from your Azure AD administrator might take some time, so the `Register-AzStackHCI` cmdlet will exit and leave the registration in a `pending admin consent` (partially completed) status. After consent is granted, rerun `Register-AzStackHCI` to complete registration.
@@ -106,7 +98,7 @@ Assign the built-in *Cloud Application Administration* Azure AD role to the user
 The most restrictive option is to create a custom Active Directory role with a custom consent policy that delegates tenant-wide admin consent for required permissions to the Azure Stack HCI service. When you assign this custom role to users, they can both register and grant consent without the need for additional Active Directory admin consent.
 
 > [!NOTE]
-> This option requires an Azure AD Premium license. It uses custom Active Directory roles and custom consent policy features that are now in public preview.
+> This option requires an Azure AD Premium license. It uses custom Active Directory roles and custom consent policy features.
 
 1. Connect to Azure AD:
    
@@ -123,7 +115,7 @@ The most restrictive option is to create a custom Active Directory role with a c
 3. Add a condition that includes required app permissions for the Azure Stack HCI service, which carries the app ID 1322e676-dee7-41ee-a874-ac923822781c. 
    
    > [!NOTE]
-   > The following permissions are for the GA release of Azure Stack HCI. They won't work with public preview unless you have applied the [November 23, 2020, preview update (KB4586852)](https://support.microsoft.com/help/4595086/azure-stack-hci-release-notes-overview) to every server in your cluster and have downloaded Az.StackHCI module version 0.4.1 or later.
+   > The following permissions are for the GA release of Azure Stack HCI.
    
    ```powershell
    New-AzureADMSPermissionGrantConditionSet -PolicyId "AzSHCI-registration-consent-policy" -ConditionSetType "includes" -PermissionType "application" -ResourceApplication "1322e676-dee7-41ee-a874-ac923822781c" -Permissions "bbe8afc9-f3ba-4955-bb5f-1cfb6960b242","8fa5445e-80fb-4c71-a3b1-9a16a81a1966","493bd689-9082-40db-a506-11f40b68128f","2344a320-6a09-4530-bed7-c90485b5e5e2"

@@ -3,7 +3,7 @@ title: Plan datacenter integration for Azure Stack Hub integrated systems
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 07/27/2021
+ms.date: 11/02/2021
 ms.author: patricka
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
@@ -49,7 +49,7 @@ You'll need to consider which identity provider you want to use for Azure Stack 
 
 Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, or whether they can join an Active Directory domain, and so on. These things are separate.
 
-You can learn more about choosing an identity provider in the [Azure Stack Hub integrated systems connection models article](./azure-stack-connection-models.md).
+You can deploy multiple Azure Stack Hub systems with the same Azure Active Directory tenant or Active Directory.
 
 ### AD FS and Graph integration
 
@@ -67,7 +67,7 @@ You must decide which licensing model you want to use. The available options dep
 - For a [connected deployment](azure-stack-connected-deployment.md), you can choose either pay-as-you-use or capacity-based licensing. Pay-as-you-use requires a connection to Azure to report usage, which is then billed through Azure commerce.
 - Only capacity-based licensing is supported if you [deploy disconnected](azure-stack-disconnected-deployment.md) from the internet.
 
-For more information about the licensing models, see [Microsoft Azure Stack Hub packaging and pricing](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+For more information about the licensing models, see [Microsoft Azure Stack Hub packaging and pricing](https://azure.microsoft.com/resources/azure-stack-hub-licensing-packaging-pricing-guide/).
 
 
 ## Naming decisions

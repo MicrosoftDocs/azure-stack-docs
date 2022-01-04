@@ -4,7 +4,7 @@ description: Learn how to delegate tasks like creating offers and signing up use
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/01/2021
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -114,7 +114,7 @@ Sign in to the user portal as the delegated provider and then create a new offer
    ![Assign a name in Azure Stack Hub user portal](media/azure-stack-delegated-provider/image6.png)
 
    >[!IMPORTANT]
-   >It's important to understand that delegated providers can only choose offers that are delegated to them. They cannot make changes to those offers; only an Azure Stack Hub operator can change these offers. For example, only an operator can change their plans and quotas. A delegated provider does not construct an offer from base plans and add-on plans.
+   >Delegated providers can only choose offers that are delegated to them. They cannot make changes to those offers; only an Azure Stack Hub operator can change these offers. For example, only an operator can change their plans and quotas. A delegated provider does not construct an offer from base plans and add-on plans.
 
 3. The delegated provider can make these offers public through their own portal URL. To make the offer public, select **Browse**, and then **Offers**. Select the offer, and then select **Change State**.
 

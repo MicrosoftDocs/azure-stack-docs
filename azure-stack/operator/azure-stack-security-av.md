@@ -27,16 +27,16 @@ For those Azure Stack Hub deployments that are connected to the public Internet,
 
 ## Disconnected scenario
 
-For those Azure Stack Hub deployments that are not connected to the public Internet (e.g. air-gapped datacenters), starting with the 1910 release, customers have the ability to apply the antimalware definitions and engine updates as they are published. 
+For those Azure Stack Hub deployments that are not connected to the public Internet (such as air-gapped datacenters) customers have the ability to apply the antimalware definitions and engine updates as they are published. 
 
 To apply the updates to your Azure Stack Hub solution, you first have to download them from the Microsoft site (links below) and subsequently, import them into a storage blob container under your *updateadminaccount*. A scheduled task scans the blob container every 30 minutes and, if new Defender definitions and engine updates are found, it applies them to the Azure Stack Hub infrastructure. 
 
-For those disconnected deployments that are not yet on 1910 or later, or that don't have the ability to download Defender definitions and engine updates on a daily basis, the monthly Azure Stack Hub update includes Microsoft Defender Antivirus definitions, engine, and platform updates for the month. 
+For those disconnected deployments that don't have the ability to download Defender definitions and engine updates on a daily basis, the monthly Azure Stack Hub update includes Microsoft Defender Antivirus definitions, engine, and platform updates for the month. 
 
 
 ### Set up Microsoft Defender for manual updates 
 
-With the 1910 release, two new cmdlets were added to the privileged endpoint to configure Microsoft Defender Antivirus manual update in Azure Stack Hub. 
+You can use two new cmdlets in the privileged endpoint to configure Microsoft Defender Antivirus manual update in Azure Stack Hub. 
 
 ```powershell 
 ### cmdlet to configure the storage blob container for the Defender updates 

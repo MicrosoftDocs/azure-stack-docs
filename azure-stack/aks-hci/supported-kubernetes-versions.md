@@ -3,7 +3,7 @@ title: Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack 
 description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS on Azure Stack HCI)
 services: container-service
 ms.topic: article
-ms.date: 05/11/2021
+ms.date: 12/07/2021
 author: mkostersitz
 ms.author: mikek
 ---
@@ -99,7 +99,7 @@ To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI i
 
 ## Release and deprecation process
 
-You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI Kubernetes Release Calendar](#AKS on Azure Stack HCI-kubernetes-release-calendar).
+You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI Kubernetes Release Calendar](#aks-on-azure-stack-hci-kubernetes-release-calendar).
 
 For new **minor** versions of Kubernetes:
   * AKS on Azure Stack HCI publishes a pre-announcement with the planned date of a new version release and respective old version deprecation in the [AKS on Azure Stack HCI Release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
@@ -123,12 +123,19 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 
 |  K8s version | Upstream release  | AKS on Azure Stack HCI preview  | AKS on Azure Stack HCI GA  | End of life |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.18  | Mar-23-20  | May 2020   | Aug 2020  | 1.21 GA | 
-| 1.19  | Aug-04-20  | Sep 2020   | Nov 2020  | 1.22 GA | 
+| 1.19 _(see note)_  | Aug-04-20  | Sep 2020   | Nov 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1.23 GA |
-| 1.21  | Apr-08-21 | May 2021   | Jun 2021  | 1.24 GA |
+| 1.21  | Apr-08-21 | May 2021   | Jul 2021  | 1.24 GA |
+| 1.22  | Aug-04-21 | Sept 2021   | Nov 2021  | 1.25 GA |
+| 1.23  | Dec 2021 | Jan 2022   | Feb 2022  | 1.26 GA |
 
-
+> [!NOTE]
+> To ease the burden of upgrading Kubernetes versions during the period of time between 12-01-2021 and 01-31-2022, AKS on Azure Stack HCI is extending a limited scope of support for all clusters and node pools on version 1.19 as a courtesy. Customers with clusters and node pools using 1.19 after the [announced deprecation date of 2021-11-30](/azure-stack/aks-hci/supported-kubernetes-versions#aks-on-azure-stack-hci-kubernetes-release-calendar) will be granted an extension of capabilities outside the [usual scope of support for deprecated versions](/azure-stack/aks-hci/supported-kubernetes-versions#kubernetes-version-support-policy).
+ The scope of this limited extension is effective from '2021-12-01 to 2022-01-31' and is limited to the following:
+> * Creating new clusters and node pools on 1.19 using the November 2021 or December 2021 AKS on Azure Stack HCI release.
+> * CRUD operations on existing 1.19-based clusters.
+> * Support of non-Kubernetes related, platform issues. Platform issues include trouble with networking, storage, or compute running on Azure Stack HCI. Any support requests for Kubernetes patching and troubleshooting will result in a request to upgrade to a supported Kubernetes version.
+> * Understand that upgrading to the January 2022 or later AKS on Azure Stack HCI release will require updating the 1.19-based Kubernetes workloads clusters to the latest patch version of Kubernetes 1.20 as Kubernetes 1.19 will not be available in the AKS on Azure Stack HCI January 2022 release.
 
 ## FAQ
 
@@ -151,7 +158,7 @@ If you're on the *n-3* version or older, it means you're outside of support and 
 
 Downgrades are not supported.
 
-**What does 'Outside of Support' mean**
+**What does 'Outside of Support' mean?**
 
 'Outside of Support' means that:
 * The version you're running is outside of the supported versions list.

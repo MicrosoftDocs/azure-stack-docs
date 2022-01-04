@@ -4,14 +4,20 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: What's new in Azure Stack HCI?
+    href: whats-new.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
   - name: Release information
     href: release-information.md
-  - name: Release notes
+  - name: 21H2 release notes
+    href: https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173
+  - name: 20H2 release notes
     href: https://support.microsoft.com/help/4595086
+  - name: Azure Benefits on Azure Stack HCI
+    href: ./manage/azure-benefits.md
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -22,6 +28,10 @@
     href: deploy/deploy-manage-azure-stack-hci.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
+- name: Tutorial
+  items:
+  - name: Create a private forest environment
+    href: deploy/tutorial-private-forest.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
@@ -44,6 +54,16 @@
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
       href: deploy/cluster-set.md
+    - name: Host networking with Network ATC
+      href: deploy/network-atc.md
+  - name: Deploy SDN
+    items:
+    - name: Deploy using Windows Admin Center
+      href: deploy/sdn-wizard.md
+    - name: Deploy using SDN Express
+      href: manage/sdn-express.md
+    - name: Deploy at cluster creation
+      href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
     - name: Branch office and edge
@@ -68,6 +88,12 @@
       href: manage/vm-affinity.md
     - name: VM load balancing
       href: manage/vm-load-balancing.md
+    - name: Dynamic CPU compatibility
+      href: manage/processor-compatibility-mode.md
+    - name: Use GPUs with clustered VMs
+      href: manage/use-gpu-with-clustered-vm.md
+    - name: Azure Arc-enabled VMs (preview)
+      href: manage/azure-arc-enabled-virtual-machines.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage storage
@@ -88,40 +114,62 @@
       href: manage/use-csv-cache.md
     - name: Manage SMB Multichannel
       href: manage/manage-smb-multichannel.md
-  - name: Manage the cluster
+    - name: Storage thin provisioning
+      href: manage/thin-provisioning.md
+    - name: Adjustable storage repair speed
+      href: manage/storage-repair-speed.md
+  - name: Manage clusters 
     items:
-    - name: Manage the cluster
-      href: manage/cluster.md
-    - name: Manage clusters with PowerShell
-      href: manage/cluster-powershell.md
-    - name: Update the cluster
-      href: manage/update-cluster.md
-    - name: Monitor clusters from Windows Admin Center
-      href: manage/monitor-cluster.md
-    - name: Monitor clusters with Health Service
-      href: manage/health-service-overview.md
-    - name: Track Health Service actions
-      href: manage/health-service-actions.md
-    - name: Modify Health Service settings
-      href: manage/health-service-settings.md
-    - name: Configure firewalls
-      href: manage/configure-firewalls.md
-    - name: Set up a cluster witness
-      href: manage/witness.md
-    - name: Use DISKSPD to test workloads
-      href: manage/diskspd-overview.md
-    - name: Add or remove servers
-      href: manage/add-cluster.md
-    - name: Take a server offline for maintenance
-      href: manage/maintain-servers.md
-    - name: Change languages
-      href: manage/languages.md
-    - name: Change privacy settings
-      href: manage/change-privacy-settings.md
-    - name: Troubleshoot cluster validation reporting
-      href: manage/validate-qos.md
-    - name: Troubleshoot CredSSP
-      href: manage/troubleshoot-credssp.md
+    - name: Management
+      items:
+      - name: Manage the cluster
+        href: manage/cluster.md
+      - name: Manage clusters with PowerShell
+        href: manage/cluster-powershell.md
+      - name: Manage Network ATC
+        href: manage/manage-network-atc.md
+      - name: Update the cluster
+        href: manage/update-cluster.md
+      - name: Update SDN infrastructure
+        href: manage/update-sdn.md 
+      - name: Manage quick restarts
+        href: manage/kernel-soft-reboot.md
+      - name: Set up a cluster witness
+        href: manage/witness.md
+    - name: Monitoring
+      items:
+      - name: Configure Azure portal to monitor clusters (preview)
+        href: manage/monitor-azure-portal.md
+      - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+        href: manage/azure-stack-hci-insights.md
+      - name: Monitor clusters from Windows Admin Center
+        href: manage/monitor-cluster.md
+      - name: Monitor clusters with Health Service
+        href: manage/health-service-overview.md        
+      - name: Get cluster performance history
+        href: manage/health-service-cluster-performance-history.md
+      - name: View Health Service faults
+        href: manage/health-service-faults.md
+      - name: Track Health Service actions
+        href: manage/health-service-actions.md
+      - name: Modify Health Service settings
+        href: manage/health-service-settings.md
+      - name: Use DISKSPD to test workloads
+        href: manage/diskspd-overview.md
+    - name: Cluster servers
+      items:
+      - name: Add or remove servers
+        href: manage/add-cluster.md
+      - name: Convert to stretched cluster
+        href: manage/convert-to-stretched-cluster.md
+      - name: Take a server offline for maintenance
+        href: manage/maintain-servers.md
+      - name: Change languages
+        href: manage/languages.md
+      - name: Change privacy settings
+        href: manage/change-privacy-settings.md
+      - name: Use BitLocker with Cluster Shared Volumes
+        href: manage/bitlocker-on-csv.md
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
@@ -148,8 +196,18 @@
       href: manage/azure-portal.md
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
+    - name: Use Azure Site Recovery
+      href: manage/azure-site-recovery.md
     - name: Use Azure Network Adapter
-      href: manage/use-azure-network-adapter.md
+      href: /windows-server/manage/windows-admin-center/azure/use-azure-network-adapter
+- name: Troubleshooting
+  items:
+  - name: Troubleshoot cluster validation reporting
+    href: manage/validate-qos.md
+  - name: Troubleshoot CredSSP
+    href: manage/troubleshoot-credssp.md
+  - name: Collect diagnostic data
+    href: manage/collect-diagnostic-data.md
 - name: Concepts
   items:
   - name: Storage and clusters
@@ -176,12 +234,16 @@
       href: concepts/persistent-memory-health.md
     - name: Nested virtualization
       href: concepts/nested-virtualization.md
-  - name: Networking
+  - name: Host networking
     items:
     - name: Physical network requirements
       href: concepts/physical-network-requirements.md
     - name: Host network requirements
       href: concepts/host-network-requirements.md
+    - name: Network ATC overview
+      href: concepts/network-atc-overview.md
+    - name: Firewall requirements
+      href: concepts/firewall-requirements.md
   - name: Software Defined Networking (SDN)
     items:
     - name: SDN overview
@@ -216,22 +278,6 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
-  - name: Configure Azure portal to monitor clusters
-    href: manage/monitor-azure-portal.md
-  - name: Monitor multiple clusters with Azure Stack HCI Insights
-    href: manage/azure-stack-hci-insights.md
-  - name: Host networking with Network ATC
-    href: deploy/network-atc.md
-  - name: Use GPUs with clustered VMs
-    href: manage/use-gpu-with-clustered-vm.md
-  - name: Dynamic CPU compatibility
-    href: manage/processor-compatibility-mode.md
-  - name: Storage thin provisioning
-    href: manage/thin-provisioning.md
-  - name: Adjustable storage repair speed
-    href: manage/storage-repair-speed.md
-  - name: Kernel Soft Reboot
-    href: manage/kernel-soft-reboot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

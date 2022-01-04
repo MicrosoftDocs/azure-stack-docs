@@ -1,8 +1,8 @@
 ---
 title: Storage thin provisioning in Azure Stack HCI
 description: How to use storage thin provisioning on Azure Stack HCI clusters by using Windows PowerShell or Windows Admin Center.
-author: khdownie
-ms.author: v-kedow
+author: TinaWu-Msft
+ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -11,13 +11,13 @@ ms.date: 07/27/2021
 
 # Storage thin provisioning in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2 Preview
+> Applies to: Azure Stack HCI, version 21H2
 
-A brand-new way to provision storage volumes is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool’s resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
+Thin provisioning is now available in Azure Stack HCI 21H2. Traditionally, volumes are fixed provisioned, meaning that all storage is allocated from the storage pool when a volume is created. Despite the volume being empty, a portion of the storage pool’s resources are depleted. Other volumes can't make use of this storage, which impacts storage efficiency and requires more maintenance.
 
-## Capacity management: thin vs. fixed provisioned volumes 
+## Capacity management: thin vs. fixed provisioned volumes
 
-New in Azure Stack HCI, version 21H2, thin provisioning is recommended over the traditional fixed provisioning if you don't know exactly how much storage a volume will need and want more flexibility. If you want to limit the size of a volume or limit how much storage a volume can take from the pool, then use fixed provisioning instead.
+Thin provisioning is recommended over the traditional fixed provisioning if you don't know exactly how much storage a volume will need and want more flexibility. If you want to limit the size of a volume or limit how much storage a volume can take from the pool, then use fixed provisioning instead.
 
 Below is a comparison of the two provisioning types with empty volumes.
 
@@ -96,6 +96,16 @@ To change the default provisioning type for a storage pool to **Thin** in Window
 
 :::image type="content" source="media/thin-provisioning/thin-provisioning-wac.png" alt-text="You can change the default provisioning type by selecting Storage Spaces and pools under Settings in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-wac.png":::
 
+To create a thinly provisioned volume in Windows Admin Center:
+
+1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
+1. Click **+** to open the volume creation pane and fill in the volume name, resiliency, and size.
+1. Click on **More options**.
+1. Under **Provisioning type**, select **Thin**.
+1. Click **Create** to finish the process.
+
+:::image type="content" source="media\thin-provisioning\thin-provisioning-volume-wac.png" alt-text="You can create a thinly provisioned volume in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-volume-wac.png":::
+
 To check a volume’s provisioning type:
 
 1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
@@ -115,13 +125,13 @@ To display Provisioning type as a column heading:
 
 ## Thin provisioning FAQ
 
-This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 21H2 Preview.
+This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 21H2.
 
 ### Can existing fixed volumes be converted to thin?
 
 No. At this time, converting from a fixed volume to a thin volume is not supported.
 
-### Is it possible to go back to fixed provisioned volumes after switching to thin?
+### Is it possible to go back to creating fixed provisioned volumes as a default after switching the setting to thin?
 
 Yes. Navigate to **Settings > Storage Spaces and pools**, and change the **Default provisioning type** back to **Fixed**.  
 
@@ -131,11 +141,11 @@ Yes, it's possible to have a mix of both fixed and thin volumes in one pool.
 
 ### Will space be given back to the pool immediately after files are deleted?
 
-No. This is a gradual process that can take 15 minutes or so after the files are deleted.
+No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the cluster, it may take longer for all of the space to be returned to the pool.
 
 ### Can I overprovision the volume in Windows Admin Center?
 
-At this time, overprovisioning can't be performed in Windows Admin Center, so you'll need to use PowerShell.
+Yes. When creating a volume, the size can be greater than the pool's available capacity if the Provisioning type is Thin.
 
 ## Next steps
 

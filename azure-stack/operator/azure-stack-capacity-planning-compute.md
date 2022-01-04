@@ -3,7 +3,7 @@ title: Azure Stack Hub compute capacity
 description: Learn about compute capacity planning for Azure Stack Hub deployments.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 11/19/2021
 ms.author: patricka
 ms.reviewer: kivenkat
 ms.lastreviewed: 03/02/2021
@@ -19,7 +19,8 @@ ms.lastreviewed: 03/02/2021
 The [virtual machine (VM) sizes](../user/azure-stack-vm-sizes.md) supported on Azure Stack Hub are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack Hub that match Azure limitations. For storage resources on Azure Stack Hub, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
->The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
+>The [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance. The administrator portal shows a warning alert when the total system memory consumption has reached 85%. This alert can be remediated by [adding additional capacity](azure-stack-add-scale-node.md), or by removing virtual machines that are no longer required.
+
 
 ## VM placement
 
@@ -37,7 +38,7 @@ Since placement algorithms don't look at the existing virtual to physical core o
 
 ## Consideration for total number of VMs
 
-There's a new consideration for accurately planning Azure Stack Hub capacity. With the 1901 update (and every update going forward), there's now a limit on the total number of VMs that can be created. The source of the stability issue at higher numbers of VMs is being addressed but a specific timeline for remediation hasn't been determined. There's now a per-server limit of 60 VMs with a total solution limit of 700. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
+There is a limit on the total number of VMs that can be created. The total number of VMs on Azure Stack Hub is 700 and 60 per scale unit node. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
 

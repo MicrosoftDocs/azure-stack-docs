@@ -6,47 +6,51 @@ author: bryanla
 
 ms.topic: article
 ms.date: 04/09/2021
-ms.lastreviewed: 12/07/2020
-ms.author: bryanla
-ms.reviewer: xiao
+ms.lastreviewed: 8/16/2021
+ms.author: caoyang
+ms.reviewer: jiadu
 
 # Intent: As an Azure Stack operator, I want to deploy the SQL server resource provider.
 # Keyword: deploy sql server resource provider azure stack
 
 ---
 
-
 # Deploy the SQL Server resource provider on Azure Stack Hub
 
-Use the Azure Stack Hub SQL Server resource provider to expose SQL databases as an Azure Stack Hub service. The SQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (for adapter version <= 1.1.47.0>) or a special Add-on RP Windows Server (for adapter version >= 1.1.93.0).
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
+
+Use the Azure Stack Hub SQL Server resource provider to expose SQL databases as an Azure Stack Hub service. 
+::: moniker range="<=azs-2008"
+The SQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine.
+::: moniker-end
+::: moniker range=">=azs-2102"
+The SQL resource provider runs as a service on a special Add-on RP Windows Server. 
+::: moniker-end
 
 > [!IMPORTANT]
 > Only the resource provider should create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider are unsupported, and may result in a mismatched state.
 
 ## Prerequisites
 
-There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub SQL resource provider:
+[!INCLUDE [Common RP prerequisites](../includes/resource-provider-prerequisites.md)]
+
+## SQL Server resource provider prerequisites
 
 - You'll need a computer and account that can access:
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
-   - the [privileged endpoint](azure-stack-privileged-endpoint.md).
-   - the Azure Resource Manager admin endpoint, `https://management.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name (or `https://management.local.azurestack.external` if using the ASDK)
+   - the [privileged endpoint](azure-stack-privileged-endpoint.md) (needed only when you're deploying SQL Server resource provider V1 or upgrading from SQL Server resource provider V1 to SQL Server resource provider V2).
+   - the Azure Resource Manager admin endpoint, `https://adminmanagement.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name.
    - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (Azure AD) as your identity provider.
 
-- If you haven't already, [register Azure Stack Hub](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
-
-- Add the required Windows Server VM to Azure Stack Hub Marketplace.
-  - For SQL RP version <= 1.1.47.0, download the **Windows Server 2016 Datacenter - Server Core** image.
-  - For SQL RP version >= 1.1.93.0, download the **Microsoft AzureStack Add-On RP Windows Server** image. This Windows Server version is specialize for Azure Stack Add-On RP Infrastructure and it is not visible to the tenant marketplace.
-
-- Download the supported version of SQL resource provider binary according to the version mapping table below. Run the self-extractor to extract the downloaded contents to a temporary directory. 
+- Download the supported version of SQL resource provider binary according to the version mapping table below. For V2 SQL resource provider, [download the marketplace item to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 
   |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2102, 2008, 2005|[SQL RP version 1.1.93.1](https://aka.ms/azshsqlrp11931)|Microsoft AzureStack Add-on RP Windows Server
-  |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
-  |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
+  |2108|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server|
   |     |     |     |
+
+- Make sure that the required Windows Server VM is downloaded to Azure Stack Hub Marketplace. Manually download the image according to the version mapping table above if needed. 
 
 - Ensure datacenter integration prerequisites are met:
 
@@ -57,30 +61,40 @@ There are several prerequisites that need to be in place before you can deploy t
     |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
     |     |     |
 
-In a disconnected scenario, complete the following steps to download the required PowerShell modules and register the repository manually.
+- Prepare the certificate. (_For integrated systems installations only_.) 
+   - You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). The Subject Alternative Name (SAN) must adhere to the following naming pattern: CN=*.dbadapter.\<region\>.\<fqdn\>, with password protected.
+      ![Screenshot of marketplace management downloaded packages.](media/azure-stack-sql-rp-deploy/0-cert-requirement.png)
+   - When deploying SQL Server resource provider V1, place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
+   - When deploying SQL Server resource provider V2, prepare the certificate for the following installation steps.
+
+### Disconnected scenario
+
+When deploying SQL Server resource provider V2 in a disconnected scenario, follow the [download marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) instruction to download the SQL Server resource provider item and Add-on RP Windows Server item to your Azure Stack Hub environment. 
+
+When deploying SQL Server resource provider V1 in a disconnected scenario, complete the following steps to download the required PowerShell modules and register the repository manually.
 
 1. Sign in to a computer with internet connectivity and use the following scripts to download the PowerShell modules.
 
-```powershell
-Import-Module -Name PowerShellGet -ErrorAction Stop
-Import-Module -Name PackageManagement -ErrorAction Stop
+   ```powershell
+   Import-Module -Name PowerShellGet -ErrorAction Stop
+   Import-Module -Name PackageManagement -ErrorAction Stop
 
-# path to save the packages, c:\temp\azs1.6.0 as an example here
-$Path = "c:\temp\azs1.6.0"
-```
+   # path to save the packages, c:\temp\azs1.6.0 as an example here
+   $Path = "c:\temp\azs1.6.0"
+   ```
 
 2. Depending on the version of resource provider that you are deploying, run one of the scripts.
 
-```powershell
-# for resource provider version >= 1.1.93.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
-```
-```powershell
-# for resource provider version <= 1.1.47.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
-```
+   ```powershell
+   # for resource provider version >= 1.1.93.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.2
+   ```
+   ```powershell
+   # for resource provider version <= 1.1.47.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+   Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+   ```
 
 3. Then you copy the downloaded packages to a USB device.
 
@@ -88,27 +102,69 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 5. Register this location as a local repository.
 
-```powershell
-# requires -Version 5
-# requires -RunAsAdministrator
-# requires -Module PowerShellGet
-# requires -Module PackageManagement
+   ```powershell
+   # requires -Version 5
+   # requires -RunAsAdministrator
+   # requires -Module PowerShellGet
+   # requires -Module PackageManagement
 
-$SourceLocation = "C:\temp\azs1.6.0"
-$RepoName = "azs1.6.0"
+   $SourceLocation = "C:\temp\azs1.6.0"
+   $RepoName = "azs1.6.0"
 
-Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-New-Item -Path $env:ProgramFiles -name "SqlMySqlPsh" -ItemType "Directory"
-```
+   New-Item -Path $env:ProgramFiles -name "SqlMySqlPsh" -ItemType "Directory"
+   ```
 
-### Certificates
+## Deploy the SQL resource provider V2
 
-_For integrated systems installations only_. You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack Hub deployment PKI requirements](./azure-stack-pki-certs.md). Place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
+If you are upgrading from a V1 version, refer to the doc [Update the SQL Server resource provider](azure-stack-sql-resource-provider-update.md).
 
-## Deploy the SQL resource provider
+### Start installation
 
-After you've completed all of the prerequisites, run the **DeploySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Azure Resource Manager admin endpoint and the privileged endpoint, to deploy the SQL resource provider. The DeploySqlProvider.ps1 script is extracted as part of the SQL resource provider binary that you downloaded for your version of Azure Stack Hub.
+1. If you haven't already, sign in to the Azure Stack Hub administrator portal, select **Marketplace Management** on the left, select **Resource providers**.
+
+2. Once SQL resource provider and other required software have been downloaded, **Marketplace Management** shows the "SQL Server resource provider" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". 
+   ![Screenshot of marketplace management before installing the RP.](media/azure-stack-sql-rp-deploy/1-before-install-marketplace.png)
+ 
+3. Select the row you wish to install. The SQL Server resource provider install package page shows a blue banner across the top. Select the banner to start the installation.
+   ![Screenshot of marketplace management begin install.](media/azure-stack-sql-rp-deploy/2-blue-banner-for-start-install.png)
+
+### Install prerequisites
+
+1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
+   ![Screenshot of marketplace management install prerequisites.](media/azure-stack-sql-rp-deploy/3-install-prerequisites.png)
+ 
+2. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
+   ![Screenshot of marketplace management install prerequisites succeeded.](media/azure-stack-sql-rp-deploy/4-prerequisites-installed.png)
+
+### Prepare secrets 
+
+1. Under the **2. Prepare secrets** step, select **Add certificate**, and the **Add a certificate** panel will appear.
+   ![Screenshot of marketplace management prepare secrets.](media/azure-stack-sql-rp-deploy/5-prepare-secrets.png)
+
+2. Select the browse button on **Add a certificate**, just to the right of the certificate filename field. Select the .pfx certificate file you procured when completing the prerequisites. 
+
+4. Enter the password you provided to create a secure string for SQL Server resource provider SSL Certificate. Then select **Add**.
+   ![Screenshot of marketplace management add certificate.](media/azure-stack-sql-rp-deploy/6-add-certificate.png)
+
+### Install resource provider
+
+1. When the installation of the certificate succeeds, you should see a green checkmark next to **Prepare secrets** before proceeding to the next step. Now select the **Install** button next to **3 Install resource provider**.
+   ![Screenshot of marketplace management start RP install.](media/azure-stack-sql-rp-deploy/7-start-to-install-rp.png)
+ 
+2. Next you'll see the following page, which indicates that SQL resource provider is being installed.
+   ![Screenshot of marketplace management RP installing.](media/azure-stack-sql-rp-deploy/7-installing.png)
+ 
+3. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
+   ![Screenshot of marketplace management RP install in progress.](media/azure-stack-sql-rp-deploy/8-installation-in-progress.png)
+
+4. Verify that the installation of SQL Server resource provider has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of SQL Server resource provider should show "Installed".
+   ![Screenshot of marketplace management RP installed.](media/azure-stack-sql-rp-deploy/9-installed.png)
+
+## Deploy the SQL resource provider V1
+
+After you've completed all of the prerequisites, run the self-extractor to extract the downloaded installation package to a temporary directory. run the **DeploySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Azure Resource Manager admin endpoint and the privileged endpoint, to deploy the SQL resource provider. The DeploySqlProvider.ps1 script is extracted as part of the SQL resource provider binary that you downloaded for your version of Azure Stack Hub.
 
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
@@ -150,7 +206,11 @@ You can specify the following parameters from the command line. If you don't, or
 
 ## Deploy the SQL resource provider using a custom script
 
-If you're deploying the SQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you're deploying the SQL resource provider version 1.1.47.0 or later, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
+::: moniker range="<=azs-2005"
+If you're deploying the SQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. 
+::: moniker-end
+
+If you're deploying the SQL resource provider version 1.1.47.0 or later, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureStack module
@@ -213,7 +273,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 When the resource provider installation script finishes, refresh your browser to make sure you can see the latest updates and close the current PowerShell session.
 
-## Verify the deployment using the Azure Stack Hub portal
+### Verify the V1 deployment using the Azure Stack Hub portal
 
 1. Sign in to the administrator portal as the service admin.
 2. Select **Resource Groups**.
@@ -223,7 +283,11 @@ When the resource provider installation script finishes, refresh your browser to
 
 ## Important configuration for Azure AD
 
-If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed SQL RP has outbound internet connectivity. 
+If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed SQL Server resource provider has outbound internet connectivity. 
+
+::: moniker range=">=azs-2108"
+If there is a need to get the IP of the VM that has installed SQL Server resource provider (i.e. add the IP to your firewall allowlist), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the SQL Server resource provider subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.
+::: moniker-end
 
 ## Next steps
 

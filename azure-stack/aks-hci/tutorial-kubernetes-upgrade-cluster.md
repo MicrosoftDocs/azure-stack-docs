@@ -159,7 +159,7 @@ The example below assumes there's a new Kubernetes version available, and the cu
 
 ## Validate an upgrade
 
-Confirm that the upgrade was successful using the [Get-AksHciCluster](get-akshcicluster.md) command as follows:
+Confirm that the upgrade was successful using the [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) command as follows:
 
 ```powershell
 Get-AksHciCluster -name mycluster
@@ -180,7 +180,7 @@ Name                  : mycluster
 
 ## Delete the cluster
 
-As this tutorial is the last part of the series, you may want to delete the cluster.  Use the [Remove-AksHciCluster](remove-akshcicluster.md) command to remove the resource group, container service, and all related resources.
+As this tutorial is the last part of the series, you may want to delete the cluster.  Use the [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md) command to remove the resource group, container service, and all related resources.
 
 ```powershell
 Remove-AksHciCluster -name mycluster

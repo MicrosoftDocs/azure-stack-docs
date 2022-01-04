@@ -9,7 +9,7 @@ ms.date: 08/03/2021
 
 # Clusters and workloads for Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 Azure Kubernetes Service on Azure Stack HCI is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host with a goal to have a **simple deployment and life cycle management experience**.
 
@@ -24,36 +24,36 @@ The deployment operation will create multiple Linux or Windows virtual machines 
 > [!NOTE]
 > To help improve the reliability of the system, if you are running multiple Cluster Shared Volumes (CSV) in your Azure Stack HCI cluster, by default virtual machine data is automatically spread out across all available CSVs in the cluster. This ensures that applications survive in the event of CSV outages. This applies to only new installations (not upgrades).
 
-The deployed system is ready to receive standard Kubernetes workloads, scale these workloads, or even scale the number of virtual machines as well as the number of clusters up and down as needed.
+The deployed system is ready to receive standard Kubernetes workloads, scale these workloads, or even scale the number of virtual machines and the number of clusters up and down as needed.
 
 An Azure Kubernetes Service cluster has the following components on Azure Stack HCI:
 
-- *Management cluster* (also known as the AKS host) provides the the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
+- *Management cluster* (also known as the AKS host) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - *Workload clusters* (also known as target clusters) are where containerized applications are deployed.
 
 ![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\architecture.png)
 
 ## Manage AKS on Azure Stack HCI
 
-You can manage AKS on Azure Stack HCI using the management options below:
+You can manage AKS on Azure Stack HCI using the following management options:
 
 - **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
-- A **PowerShell module** that makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring additional workload clusters as well as reconfiguring existing ones.
+- A **PowerShell module** that makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring additional workload clusters and reconfiguring existing ones.
 
 ## The management cluster
 
 When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster is automatically created and configured. This management cluster is responsible for provisioning and managing workload clusters where workloads run. A management cluster includes the following core Kubernetes components:
 
 - *API Server* - The API server is how the underlying Kubernetes APIs are exposed. This component provides the interaction for management tools, such as Windows Admin Center, PowerShell modules, or `kubectl`.
-- *Load Balancer* - The load balancer is a single dedicated Linux VM with a load balancing rule for the API server of the management cluster.
+- *Load Balancer* - The load balancer is a single dedicated Linux VM with a load-balancing rule for the API server of the management cluster.
 
 ## The workload cluster
 
-The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components as well as Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload cluster(s) managed by one management cluster.
+The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components and Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload cluster(s) managed by one management cluster.
 
 ### Workload cluster components
 
-The workload cluster has many components, which are described in the sections below.
+The workload cluster has many components, which are described in the following sections.
 
 #### Control plane
 
@@ -62,11 +62,11 @@ The workload cluster has many components, which are described in the sections be
 
 #### Load balancer
 
-The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load balancing rule in the VM.
+The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load-balancing rule in the VM.
 
 #### Worker nodes
 
-To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which is a virtual machine (VM) that runs the Kubernetes node components, as well as hosting the pods and services that make up the application workload. There are a number of core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters such as pods and deployments.
+To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which are a virtual machines (VM) that runs the Kubernetes node components, and hosting the pods and services that make up the application workload. There are core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters such as pods and deployments.
 
 #### pods
 
@@ -111,7 +111,7 @@ If a given workload cluster consists of both Linux and Windows worker node
 For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
 ## Next steps
-In this topic, you learned about the cluster architecture of AKS on Azure Stack HCI and the workload cluster components. To learn more about AKS on Azure Stack HCI concepts, see the following topics:
+In this article, you learned about the cluster architecture of AKS on Azure Stack HCI and the workload cluster components. To learn more about AKS on Azure Stack HCI concepts, see the following articles:
 
 - [Security](./concepts-security.md)
 - [Container networking](./concepts-container-networking.md)

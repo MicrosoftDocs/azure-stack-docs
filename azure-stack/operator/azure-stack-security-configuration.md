@@ -23,7 +23,7 @@ Azure Stack Hub architecture is built on two security principle pillars: assume 
 
 The Transport Layer Security (TLS) protocol is a widely adopted cryptographic protocol to establish encrypted communication over the network. TLS has evolved over time and multiple versions have been released. Azure Stack Hub infrastructure exclusively uses TLS 1.2 for all its communications. For external interfaces, Azure Stack Hub currently defaults to use TLS 1.2. However, for backwards compatibility, it also supports negotiating down to TLS 1.1. and 1.0. When a TLS client requests to communicate over TLS 1.1 or TLS 1.0, Azure Stack Hub honors the request by negotiating to a lower TLS version. If the client requests TLS 1.2, Azure Stack Hub will establish a TLS connection using TLS 1.2.
 
-Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizations and compliance standards, beginning with the 1906 update, you can now configure the TLS policy in Azure Stack Hub. You can enforce a TLS 1.2 only policy where any attempt of establishing a TLS session with a version lower than 1.2 isn't permitted and is rejected.
+Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizations and compliance standards you can now configure the TLS policy in Azure Stack Hub. You can enforce a TLS 1.2 only policy where any attempt of establishing a TLS session with a version lower than 1.2 isn't permitted and is rejected.
 
 > [!IMPORTANT]
 > Microsoft recommends using TLS 1.2 only policy for Azure Stack Hub production environments.
@@ -121,9 +121,9 @@ VERBOSE: TLS 1.2 is not enforced
 
 ## Legal notice for PEP sessions
 
-There are scenarios where it's useful to display a legal notice, upon login to a [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) session. The [Set-AzSLegalNotice](../reference/pep-2002/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep-2002/get-azslegalnotice.md) cmdlets are used to manage the caption and body of such legal notice text.
+There are scenarios where it's useful to display a legal notice, upon login to a [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) session. The [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) cmdlets are used to manage the caption and body of such legal notice text.
 
-To set the legal notice caption and text, see the [Set-AzSLegalNotice cmdlet](../reference/pep-2002/set-azslegalnotice.md). If the legal notice caption and text have previously been set, you can review them by using the [Get-AzSLegalNotice cmdlet](../reference/pep-2002/get-azslegalnotice.md).
+To set the legal notice caption and text, see the [Set-AzSLegalNotice cmdlet](../reference/pep/set-azslegalnotice.md). If the legal notice caption and text have previously been set, you can review them by using the [Get-AzSLegalNotice cmdlet](../reference/pep/get-azslegalnotice.md).
 
 ## Next steps
 

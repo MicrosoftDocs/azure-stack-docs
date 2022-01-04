@@ -4,7 +4,7 @@ description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/01/2021
+ms.date: 10/11/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 11/17/2020
@@ -59,7 +59,7 @@ Update your registration with the new customer subscription. Azure reports the c
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzAccount-Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
@@ -88,7 +88,7 @@ The following section describes the parameters for the **New-AzResource** cmdlet
    ```
 
    >[!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzAccount-Scope Process`.
+   > If your session expires, your password has changed, or you want to switch accounts, run the following cmdlet before you sign in using **Connect-AzAccount**: `Remove-AzureRMAccount-Scope Process`.
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:

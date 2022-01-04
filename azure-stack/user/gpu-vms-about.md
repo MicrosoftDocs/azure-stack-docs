@@ -15,9 +15,9 @@ ms.lastreviewed: 4/28/2021
 
 # Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack  Hub integrated systems*
 
-This article describes which graphics processing unit (GPU) models are supported on an Azure Stack Hub multinode system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as Artificial Intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
+This article describes which graphics processing unit (GPU) models are supported on an Azure Stack Hub integrated system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as artificial intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
 You can choose from three GPU models. They are available in NVIDIA V100, NVIDIA T4 and AMD MI25 GPUs. These physical GPUs align with the following Azure N-Series virtual machine (VM) types as follows:
 
@@ -74,11 +74,11 @@ The Azure Stack Hub capacity planner has been updated to support GPU configurati
 
 ## Adding GPUs on an existing Azure Stack Hub
 
-Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute stop-azurestack, run through the procedure of stop-azurestack, add GPUs , and then run **start-azurestack** until completion. If the system already had GPUs then any previously created GPU VMs will need to be **stop-deallocated** and then **restarted**.
+Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute stop-azurestack, run through the procedure of stop-azurestack, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs will need to be **stop-deallocated** and then **restarted**.
 
 ## Patch and update, FRU behavior of VMs 
 
-GPU VMs will undergo downtime during operations such as patch and update (PnU) as well as hardware replacement (FRU) of Azure Stack Hub. The following table goes over the state of the VM as observed during these activities as well as the manual action that the user can do to make these VMs available again post these operations. 
+GPU VMs will undergo downtime during operations such as patch and update (PnU) and hardware replacement (FRU) of Azure Stack Hub. The following table covers the state of the VM as observed during these activities and the manual action you can do to make these VMs available after the operation.
 
 | Operation | PnU - Full Update, OEM update | FRU | 
 | --- | --- | --- | 
@@ -87,7 +87,7 @@ GPU VMs will undergo downtime during operations such as patch and update (PnU) a
 
 ## Guest driver installation
 
-The following PowerShell commands can be used for driver installation:
+The following PowerShell cmdlets can be used for driver installation:
 
 ```powershell
 $VmName = <VM Name In Portal>
@@ -117,51 +117,66 @@ The above command can be used with the appropriate driver type for AMD. The arti
 
 ### AMD MI25 - Disconnected
 
-Since the extension pulls the driver from a location on the internet, a VM that is completely disconnected from the external network cannot access it. You can download the driver from the link below and upload to a storage account from where driver can be installed on the VM.
+Since the extension pulls the driver from a location on the internet, a VM that is disconnected from the external network cannot access it. You can download the driver from the link below and upload to a storage account in your local network accessible to the VM.
 
 Driver URL: https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe
 
-Adding the above driver to a storage account and attach the URL in Settings. These settings will need to be used in the Set-AzureRMVMExtension commandlet.
+Adding the above driver to a storage account and attach the URL in Settings. These settings will need to be used in the **Set-AzureRMVMExtension** cmdlet.
+
+```powershell  
 $Settings = @{
 "DriverURL" = <URL to Driver in Storage Account>
 }
+```
 
 ### NVIDIA
 
-NVIDIA drivers must be installed inside the virtual machine for  CUDA or GRID workloads using the GPU.
+NVIDIA drivers must be installed inside the virtual machine for CUDA or GRID workloads using the GPU.
 
 #### Use case: graphics/visualization GRID
 
 This scenario requires the use of GRID drivers. GRID drivers can be downloaded through the NVIDIA Application Hub provided you have the required licenses. The GRID drivers also require a GRID license server with appropriate GRID licenses before using the GRID drivers on the VM. 
 
+```powershell  
 $Settings = @{
 "DriverURL" = "https://download.microsoft.com/download/e/8/2/e8257939-a439-4da8-a927-b64b63743db1/431.79_grid_win10_server2016_server2019_64bit_international.exe"; "DriverCertificateUrl" = "https://go.microsoft.com/fwlink/?linkid=871664"; 
 "DriverType"="GRID"
 }
+```
 
-#### Use case: compute/CUDA - Connected
+### Use case: compute/CUDA - Connected
 
 CUDA drivers do not need a license server and do not need modified settings.
 
-#### Use case: compute/CUDA - Disconnected
+### Use case: compute/CUDA - Disconnected
 
 Links to NVIDIA CUDA drivers can be obtained using the link:
 https://raw.githubusercontent.com/Azure/azhpc-extensions/master/NvidiaGPU/resources.json
 
 **Windows:**
+
+```powershell  
 $Settings = @{
 "DriverURL" = "";
 "DriverCertificateUrl" = "https://go.microsoft.com/fwlink/?linkid=871664"; 
 "DriverType"="CUDA"
 }
+```
 
 **Linux:**
-The PUBKEY_URL is the public key for the Nvidia driver repository not for the Linux VM. It is used to install driver for Ubuntu.
-DKMS_URL is used to get the package to compile the Nvidia kernel module on RedHat/CentOs
-LIS_URL is the url to download Linux Integration Service package for RedHat/CentOs (https://www.microsoft.com/en-us/download/details.aspx?id=55106) by default it is not installed
-LIS_RHEL_ver is the fall back kernel version that should work with the Nvidia driver. It is used on RedHat/CentOs if the Linux VM's kernel is not compatible with the requested Nvidia driver. 
-DRIVER_URL is the url to download the Nvidia driver's repository information and it is added to the Linux VM's list of repos.
 
+You will need to reference some URLs for your settings.
+
+| URL | Notes |
+| --- | --- |
+| PUBKEY_URL | The PUBKEY_URL is the public key for the Nvidia driver repository not for the Linux VM. It is used to install driver for Ubuntu. |
+| DKMS_URL | DKMS_URL is used to get the package to compile the Nvidia kernel module on RedHat/CentOs. |
+| DRIVER_URL  | DRIVER_URL is the URL to download the Nvidia driver's repository information and it is added to the Linux VM's list of repos. |
+| LIS_URL  | LIS_URL is the URL to download the Linux Integration Service package for RedHat/CentOs, [Linux Integration Services v4.3 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) at URL `https://www.microsoft.com/download/details.aspx?id=55106` by default it is not installed LIS_RHEL_ver is the fallback kernel version that should work with the Nvidia driver. It is used on RedHat/CentOs if the Linux VM's kernel is not compatible with the requested Nvidia driver. |
+
+Add the URLs to your settings.
+
+```powershell 
 $Settings=@{
 "isCustomInstall"=$true;
 "DRIVER_URL"="https://go.microsoft.com/fwlink/?linkid=874273";
@@ -171,6 +186,7 @@ $Settings=@{
 "LIS_URL"="https://aka.ms/lis";
 "LIS_RHEL_ver"="3.10.0-1062.9.1.el7"
 }
+```
 
 ## Next steps
 

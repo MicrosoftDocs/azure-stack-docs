@@ -5,41 +5,125 @@ author: bryanla
 ms.topic: article 
 ms.date: 9/22/2020
 ms.author: bryanla
-ms.reviewer: xiaofmao
-ms.lastreviewed: 01/11/2020
+ms.reviewer: jiadu
+ms.lastreviewed: 09/26/2021
 
 # Intent: As an Azure Stack operator, I want to update the Azure Stack MySQL resource provider.
 # Keyword: azure stack update mysql resource provider
 
 ---
 
-
 # Update the MySQL resource provider in Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 > [!IMPORTANT]
 > Before updating the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment. The release notes also specify the minimum Azure Stack Hub version required for the resource provider.
+
+> [!IMPORTANT]
+> Updating the resource provider will NOT update the hosting MySQL Server. 
 
 A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2102, 2008, 2005|[MySQL RP version 1.1.93.1](https://aka.ms/azshmysqlrp11931)|Microsoft AzureStack Add-on RP Windows Server
+  |2108|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108, 2102, 2008, 2005|[MySQL RP version 1.1.93.5](https://aka.ms/azshmysqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
 
-MySQL resource provider update is cumulative. When updating from an old version, you can directly update to the latest version. 
+## Update MySQL Server resource provider V2
+
+If you have already deployed MySQL RP V2, and want to check for updates, check [How to apply updates to resource provider](resource-provider-apply-updates.md).
+
+If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first updated to MySQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from MySQl RP V1 to MySQL RP V2.
+
+## Update from MySQL RP V1.1.93.x to MySQL RP V2.0.6.0
+
+### Prerequisites
+
+1. Make sure you have updated MySQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.`<region`>.sqladapter). Confirm the version tag and MySQL RP VM name in resource group.
+
+2. [Open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
+
+3. Download Microsoft AzureStack Add-On RP Windows Server 1.2009.0 to marketplace. 
+
+4. Ensure datacenter integration prerequisites are met.
+
+   |Prerequisite|Reference|
+   |-----|-----|
+   |Conditional DNS forwarding is set correctly.|[Azure Stack Hub datacenter integration - DNS](azure-stack-integrate-dns.md)|
+   |Inbound ports for resource providers are open.|[Azure Stack Hub datacenter integration - Ports and protocols inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+   |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md)<br>[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md)|
+   |     |     |
+
+5. (for disconnected environment) Install the required PowerShell modules, similar to the update process used to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md).
+
+6. Prepare the MySQL Connector Uri. For details, refer to [Deploy the MySQL resource provider](./azure-stack-mysql-resource-provider-deploy.md). 
+e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi
+
+### Trigger MajorVersionUpgrade
+Run the following script:
+
+``` powershell
+# Use the NetBIOS name for the Azure Stack Hub domain. 
+$domain = "YouDomain" 
+# For integrated systems, use the IP address of one of the ERCS VMs
+$privilegedEndpoint = "YouDomain-ERCS01"
+# Provide the Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
+$AzureEnvironment = "AzureCloud"
+# Point to the directory where the resource provider installation files were extracted.
+$tempDir = 'C:\extracted-folder\MajorVersionUpgrade-SQLRP'
+# The service admin account can be Azure Active Directory or Active Directory Federation Services.
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString 'xxxxxxxx' -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
+# Add the cloudadmin credential that's required for privileged endpoint access.
+$CloudAdminPass = ConvertTo-SecureString 'xxxxxxxx' -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+# Change the following as appropriate.
+$PfxPass = ConvertTo-SecureString 'xxxxxxx' -AsPlainText -Force
+# Provide the pfx file path
+$PfxFilePath = "C:\tools\sqlcert\SSL.pfx"
+# Local blob uri where stores the required mysql connector
+$MySQLConnector = "Provide the MySQL Connector Uri according to Prerequisites step."
+# PowerShell modules used by the RP MajorVersionUpgrade are placed in C:\Program Files\SqlMySqlPsh
+# The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
+$rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
+$env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
+. $tempDir\MajorVersionUpgradeSQLProvider.ps1 `
+  -AzureEnvironment $AzureEnvironment `
+  -AzCredential $AdminCreds `
+  -CloudAdminCredential $CloudAdminCreds `
+  -Privilegedendpoint $privilegedEndpoint `
+  -PfxPassword $PfxPass `
+  -PfxCert $PfxFilePath `
+  -MySQLConnector $MySQLConnector
+
+```
+
+### Validate the upgrade is successful
+
+1.	The MajorVersionUpgrade script executed without any errors.
+2.	Check the resource provider in marketplace and make sure that MySQL RP 2.0 has been installed successfully.
+
+## Update from MySQL RP V1 earlier version to MySQL RP V1.1.93.x
+
+MySQL resource provider V1 update is cumulative. You can directly update to the 1.1.93.x version. 
+
+To update the resource provider to 1.1.93.x, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
 
 To update the resource provider, you use the **UpdateMySQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. The update script is included with the download of the resource provider. 
 
 The update process is similar to the process used to [Deploy the resource provider](./azure-stack-mysql-resource-provider-deploy.md). The update script uses the same arguments as the DeployMySqlProvider.ps1 script, and you'll need to provide certificate information.
 
-## Update script processes
+### Update script processes
 
 The **UpdateMySQLProvider.ps1** script creates a new virtual machine (VM) with the latest OS image, deploy the latest resource provider code, and migrates the settings from the old resource provider to the new resource provider.
 
 >[!NOTE]
->We recommend that you download the latest Windows Server 2016 Core image or Microsoft AzureStack Add-on RP Windows Server image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
+>We recommend that you download the Microsoft AzureStack Add-on RP Windows Server 1.2009.0 image from Marketplace Management. If you need to install an update, you can place a **single** MSU package in the local dependency path. The script will fail if there's more than one MSU file in this location.
 
 After the *UpdateMySQLProvider.ps1* script creates a new VM, the script migrates the following settings from the old resource provider VM:
 
@@ -68,7 +152,7 @@ Specify the following parameters from the command line when you run the **Update
 | **DebugMode** | Prevents automatic cleanup on failure. | No | 
 | **AcceptLicense** | Skips the prompt to accept the GPL license.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
 
-## Update script example
+### Update script example
 
 If you are updating the MySQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. 
 
@@ -140,4 +224,5 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 When the resource provider update script finishes, close the current PowerShell session.
 
 ## Next steps
+
 [Maintain MySQL resource provider](azure-stack-mysql-resource-provider-maintain.md)

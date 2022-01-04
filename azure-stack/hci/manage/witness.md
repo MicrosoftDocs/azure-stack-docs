@@ -10,13 +10,13 @@ ms.reviewer: JasonGerend
 
 # Set up a cluster witness
 
-> Applies to Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 Setting up a witness resource is highly recommended for all clusters, and should be set up right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
 
 You can either use an SMB file share as a witness or an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. This article covers creating a cloud witness.
 
-Cloud witness uses the HTTPS default port 443 to establish outbound communication with the Azure blob service. Ensure that the HTTPS port is accessible.
+Cloud witness uses the HTTPS default port 443 to establish outbound communication with the Azure Blob Storage service. Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allow lists you're using between the cluster and Azure Storage.
 
 ## Before you begin
 

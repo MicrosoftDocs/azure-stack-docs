@@ -184,15 +184,6 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 |Perfect Forward Secrecy (PFS)* | ECP384 |
 |Dead Peer Detection | Supported| 
 
->[!NOTE]
->The default values for Diffie-Hellman Group, Hashing Algorithm and Perfect Forward Secrecy have been changed for builds 1910 and above. If your Azure Stack Hub is on a build version below 1910, please use the following values for the above parameters:
-
->| Property| Value|
->|-|-|
->|Diffie-Hellman Group   | DHGroup2 |
->|Hashing Algorithms | SHA256 |
->|Perfect Forward Secrecy (PFS) | None |
-
 \* New or changed parameter.
 
 ## Next steps

@@ -26,7 +26,7 @@ You can use the Azure command-line interface (CLI) to deploy Azure Resource Mana
 4. Update the region and location in the following command. Use `local` for the location parameter if you are using the ASDK. To deploy the template:
     ```azurecli
     az group create --name testDeploy --location local
-    az group deployment create --resource-group testDeploy --template-file ./azuredeploy.json --parameters ./azuredeploy.parameters.json
+    az deployment group create --resource-group testDeploy --template-file ./azuredeploy.json --parameters ./azuredeploy.parameters.json
     ```
 
 This command deploys the template to the resource group **testDeploy** in your Azure Stack Hub instance.

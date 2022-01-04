@@ -2,42 +2,34 @@
 description: "Learn more about: Health Service actions"
 title: Track Health Service actions
 manager: eldenc
-ms.author: cosdar
+ms.author: arduppal
 ms.topic: article
-author: cosmosdarwin
-ms.date: 07/28/2021
+author: arduppal
+ms.date: 08/20/2021
 ---
 # Track Health Service actions
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
+The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct. This topic describes workflows that the Health Service automates.
 
-## Actions
+The Health Service generates "Actions" to verify that they are taken autonomously, or to track their progress or outcome. Unlike logs, Actions disappear shortly after they have completed. They are intended primarily to provide insight into ongoing activity that may impact performance or capacity, such as restoring resiliency or rebalancing data.
 
-The next section describes workflows that are automated by the Health Service. To verify that an action is indeed being taken autonomously, or to track its progress or outcome, the Health Service generates "Actions". Unlike logs, Actions disappear shortly after they have completed, and are intended primarily to provide insight into ongoing activity that may impact performance or capacity (for example restoring resiliency or rebalancing data).
-
-### Usage
-
-One new PowerShell cmdlet displays all Actions:
+## Usage
+One PowerShell cmdlet displays all Actions:
 
 ```PowerShell
 Get-StorageHealthAction
 ```
 
-### Coverage
+## Coverage
+The **Get-StorageHealthAction** cmdlet can return any of the following information:
 
-In Windows Server 2016, the **Get-StorageHealthAction** cmdlet can return any of the following information:
-
--   Retiring failed, lost connectivity, or unresponsive physical disk
-
--   Switching storage pool to use replacement physical disk
-
--   Restoring full resiliency to data
-
--   Rebalancing storage pool
+- Retiring failed, lost connectivity, or unresponsive physical disk
+- Switching storage pool to use replacement physical disk
+- Restoring full resiliency to data
+- Rebalancing storage pool
 
 ## Additional References
-
 - [Health Service in Windows Server 2016](health-service-overview.md)
 - [Developer documentation, sample code, and API reference on MSDN](https://msdn.microsoft.com/windowshealthservice)

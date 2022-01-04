@@ -1,8 +1,8 @@
 ---
 title: Use the CSV in-memory read cache with Azure Stack HCI and Windows Server clusters
 description: This topic describes how to use system memory to boost performance.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -11,7 +11,7 @@ ms.date: 03/18/2021
 
 # Use the CSV in-memory read cache
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic describes how to use system memory to boost the performance of Azure Stack HCI by caching frequent reads. Writes cannot be cached in memory.
 

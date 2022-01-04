@@ -51,7 +51,6 @@ Currently, we support the following additional Platform-as-a-Service (PaaS) serv
 - Azure Functions
 - SQL and MySQL databases
 - Event Hubs
-- IoT Hub (in preview)
 - Kubernetes (in preview)
 
 These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides\Offer services" sections of our Azure Stack Hub operator documentation.
@@ -124,7 +123,7 @@ Before a user can use services, they must [subscribe to an offer](azure-stack-su
 ## Where to get support
 
 > [!Note]  
-> To find support information for earlier releases of Azure Stack Hub (pre-1905), see [Help and Support for earlier releases Azure Stack Hub (pre-1905)](azure-stack-servicing-policy.md).
+> To find support information for earlier releases of Azure Stack Hub, see [Help and Support for earlier releases Azure Stack Hub](azure-stack-servicing-policy.md).
 
 ### Integrated systems
 

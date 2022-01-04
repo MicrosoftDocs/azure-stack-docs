@@ -1,8 +1,8 @@
 ---
 title: Choose drives for Azure Stack HCI and Windows Server clusters
 description: How to choose drives for Azure Stack HCI and Windows Server clusters to meet performance and capacity requirements.
-author: khdownie
-ms.author: v-kedow
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -11,7 +11,7 @@ ms.date: 09/01/2020
 
 # Choose drives for Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server 2019
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
 This article provides guidance on how to choose drives to meet your performance and capacity requirements.
 

@@ -1,9 +1,9 @@
 ---
-title: Border connectivity and network integration for Azure Stack Hub integrated systems 
+title: Border connectivity and network integration for Azure Stack Hub integrated systems
 description: Learn how to plan for datacenter border network connectivity in Azure Stack Hub integrated systems.
 author: PatAltimore
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 08/18/2021
 ms.author: patricka
 ms.reviewer: wamota
 ms.lastreviewed: 01/14/2021
@@ -14,11 +14,13 @@ ms.lastreviewed: 01/14/2021
 ---
 
 
-# Border connectivity 
+# Border connectivity
 Network integration planning is an important prerequisite for successful Azure Stack Hub integrated systems deployment, operation, and management. Border connectivity planning begins by choosing if you want use dynamic routing with border gateway protocol (BGP). This requires assigning a 16-bit autonomous system number (ASN), public or private, or using static routing.
 
 > [!IMPORTANT]
 > The top of rack (TOR) switches require Layer 3 uplinks with Point-to-Point IPs (/30 networks) configured on the physical interfaces. Layer 2 uplinks with TOR switches supporting Azure Stack Hub operations isn't supported. The Border device can support 32-bit BGP autonomous system number (ASN).
+>
+> The physical connectivity between the border devices and Azure Stack Hub's top of rack (TOR) switches require network transceivers. It is important to ensure the required module type (SR, LR, ER, or other) is discussed with the hardware solution provider prior to the onsite deployment.
 
 ## BGP routing
 Using a dynamic routing protocol like BGP guarantees that your system is always aware of network changes and facilitates administration. For enhanced security, a password may be set on the BGP peering between the TOR and the Border.

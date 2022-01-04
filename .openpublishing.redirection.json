@@ -1,10 +1,66 @@
 {
   "redirections": [
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-manage.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-overview.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-prerequisites.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-remove.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-rotate-secrets.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/user/iot-hub-connect-iot-edge-device.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/user/iot-hub-overview.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/aks-hci/troubleshoot-windows-admin-center.md", 
+      "redirect_url": "/azure-stack/aks-hci/known-issues-windows-admin-center", 
+      "redirect_document_id": false
+    },
+       { 
+      "source_path": "azure-stack/aks-hci/troubleshoot-known-issues.md", 
+      "redirect_url": "/azure-stack/aks-hci/known-issues", 
+      "redirect_document_id": false
+    },
+       { 
+      "source_path": "azure-stack/aks-hci/troubleshoot-installation.md", 
+      "redirect_url": "/azure-stack/aks-hci/known-issues-installation", 
+      "redirect_document_id": false
+    },
        { 
       "source_path": "azure-stack/aks-hci/update-aks-hci-concepts.md", 
       "redirect_url": "/azure-stack/aks-hci/update-akshci-host-powershell", 
       "redirect_document_id": false
-    },{ 
+    },
+       { 
       "source_path": "azure-stack/aks-hci/troubleshoot.md", 
       "redirect_url": "/azure-stack/aks-hci/troubleshoot-known-issues", 
       "redirect_document_id": false
@@ -75,10 +131,25 @@
       "redirect_document_id": false
     },
     { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v0.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2021-q1#known-issues-update", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v1.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q3#known-issues-update", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/app-service-known-issues-v2.md", 
+      "redirect_url": "/azure-stack/operator/app-service-release-notes-2020-q2#known-issues-update", 
+      "redirect_document_id": false
+    },    
+    { 
       "source_path": "azure-stack/operator/known-issues-vn.md", 
       "redirect_url": "/azure-stack/operator/known-issues", 
       "redirect_document_id": false
-    },
+    },    
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
       "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
@@ -101,9 +172,14 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-28-89", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
       "redirect_document_id": false
-    },     
+    },
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-111.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
+      "redirect_document_id": false
+    },         
     { 
       "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 
@@ -851,14 +927,319 @@
       "redirect_document_id": true
     },
     { 
-      "source_path": "azure-stack/hci/manage/azure-site-recovery.md", 
-      "redirect_url": "/windows-server/manage/windows-admin-center/azure/azure-site-recovery", 
-      "redirect_document_id": false
-    },
-    { 
       "source_path": "azure-stack/hci/manage/use-azure-backup.md", 
       "redirect_url": "/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines", 
       "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/use-azure-network-adapter.md", 
+      "redirect_url": "/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter", 
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/aks-hci/add-akshcigmsacredentialspec.md",
+      "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcigmsacredentialspec",
+      "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/add-akshcinode.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcinode",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/disable-akshciarcconnection.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/disable-akshciarcconnection",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/enable-akshciarcconnection.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/enable-akshciarcconnection",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcibillingstatus.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcibillingstatus",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcicluster.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcicluster",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciclusternetwork.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciclusternetwork",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciclusterupdates.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciconfig.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciconfig",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcicredential.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcicredential",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcieventlog.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcieventlog",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcikubernetesversion.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcikubernetesversion",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcilogs.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcilogs",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcinodepool.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcinodepool",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciproxysetting.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciproxysetting",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciregistration.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciregistration",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcistoragecontainer.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcistoragecontainer",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciupdates.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciupdates",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshciversion.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshciversion",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/get-akshcivmsize.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/get-akshcivmsize",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/initialize-akshcinode.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/initialize-akshcinode",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/install-akshci.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/install-akshci",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/install-akshciadauth.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/install-akshciadauth",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/install-akshcicsinfs.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/install-akshcicsinfs",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/install-akshcicsismb.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/install-akshcicsismb",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/install-akshcigmsawebhook.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/install-akshcigmsawebhook",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/install-akshcimonitoring.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/install-akshcimonitoring",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/new-akshcicluster.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/new-akshcicluster",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/new-akshciclusternetwork.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/new-akshciclusternetwork",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/new-akshcinetworksetting.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/new-akshcinetworksetting",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/new-akshcinodepool.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/new-akshcinodepool",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/new-akshciproxysetting.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/new-akshciproxysetting",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/new-akshcistoragecontainer.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/new-akshcistoragecontainer",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/remove-akshcicluster.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/remove-akshcicluster",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/remove-akshciclusternetwork.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/remove-akshciclusternetwork",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/remove-akshcigmsacredentialspec.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/remove-akshcigmsacredentialspec",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/remove-akshcinode.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/remove-akshcinode",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/remove-akshcinodepool.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/remove-akshcinodepool",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/repair-akshcicerts.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/repair-akshcicerts",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/repair-akshciclustercerts.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/repair-akshciclustercerts",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/restart-akshci.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/restart-akshci",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/set-akshcicluster.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/set-akshcicluster",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/set-akshciconfig.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/set-akshciconfig",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/set-akshcinodepool.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/set-akshcinodepool",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/set-akshciregistration.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/set-akshciregistration",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/sync-akshcibilling.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/sync-akshcibilling",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/uninstall-akshci.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/uninstall-akshci",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/uninstall-akshciadauth.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/uninstall-akshciadauth",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/uninstall-akshcicsinfs.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/uninstall-akshcicsinfs",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/uninstall-akshcicsismb.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/uninstall-akshcicsismb",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/uninstall-akshcigmsawebhook.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/uninstall-akshcigmsawebhook",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/uninstall-akshcimonitoring.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/uninstall-akshcimonitoring",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/update-akshci.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshci",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/update-akshcicluster.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/update-akshcicluster",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "azure-stack/aks-hci/akshci.md",
+        "redirect_url": "/azure-stack/aks-hci/reference/ps/",
+        "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-network-howto-vnet-peering.md",
+      "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-stack/user/network-howto-vpn-tunnel.md",
+      "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-stack/user/network-howto-vpn-tunnel-gre.md",
+      "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-stack/user/network-howto-vpn-tunnel-ipsec.md",
+      "redirect_url": "/azure-stack/user/deploy-foundational-patterns/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/configure-firewalls.md",
+      "redirect_url": "/azure-stack/hci/concepts/firewall-requirements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-template-cognitive-services.md",
+      "redirect_url": "/azure/cognitive-services/cognitive-services-container-support",
+      "redirect_document_id": false
     }
   ]
 }

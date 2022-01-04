@@ -1,22 +1,22 @@
 ---
 title: Dynamic processor compatibility mode in Azure Stack HCI
 description: Processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment.
-author: khdownie
-ms.author: v-kedow
+author: alvinmorales1
+ms.author: alvinm
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/14/2021
+ms.date: 10/19/2021
 ---
 
 # Dynamic processor compatibility mode in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 21H2 Preview
+> Applies to: Azure Stack HCI, version 21H2
 
 The dynamic processor compatibility mode in Azure Stack HCI has been updated to take advantage of new processor capabilities in a clustered environment. Processor compatibility works by determining the supported processor features for each individual node in the cluster and calculating the common denominator across all processors. Virtual machines (VMs) are configured to use the maximum number of features available across all servers in the cluster. This improves performance compared to the previous version of processor compatibility that defaulted to a minimal, fixed set of processor capabilities.
 
    > [!NOTE]
-   > This feature is only available in Azure Stack HCI, version 21H2, and it won't be backported to version 20H2. For information about processor compatibility mode in Windows Server, see [Processor Compatibility Mode in Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn859550(v=ws.11)).
+   > Dynamic processor compatibility mode is only available in Azure Stack HCI, version 21H2, and it won't be backported to version 20H2. For information about processor compatibility mode in Windows Server, see [Processor Compatibility Mode in Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn859550(v=ws.11)).
 
 ## When to use processor compatibility mode
 
@@ -56,7 +56,7 @@ Assuming that all servers in each cluster are running the same hardware, which i
 
 - **Live migrating a VM from a cluster with older processors to a cluster with newer processors.** The VM capabilities will be transferred to the destination cluster. In this scenario, if the VM is restarted, it will receive the latest calculated capability of the destination cluster.
 
-- **Live migrating a VM from a cluster with newer processors to a cluster with older processors.** You'll need to set the VM processor to use the `MinimumFeatureSet` for the `CompatibilityForMigrationMode` parameter in PowerShell, or check the **Default Minimum Features** checkbox in Windows Admin Center under **Virtual machines > Settings > Processors**. This will assign the VM to the minimum processor capabilities offered on the server. Once the cluster capability is cleared, if the VM is restarted, it will receive the latest calculated capability of the destination cluster.
+- **Live migrating a VM from a cluster with newer processors to a cluster with older processors.** You'll need to set the VM processor to use the `MinimumFeatureSet` for the `CompatibilityForMigrationMode` parameter in PowerShell, or select **Compatible across other hosts with the same CPU manufacturer** in Windows Admin Center under **Virtual machines > Settings > Processors**. This will assign the VM to the minimum processor capabilities offered on the server. Once the compatibility is moved to **Compatible across the cluster (Recommended)** and the VM is restarted, it will receive the latest calculated capability of the destination cluster.
 
 ## Configure a VM to use processor compatibility mode
 
@@ -70,10 +70,19 @@ This section explains how to configure a VM to use processor compatibility mode 
 To enable processor compatibility mode using Windows Admin Center:
 
 1. Connect to your cluster, and then in the **Tools** pane, select **Virtual machines**.
-1. Under **Inventory**, select the VM on which you want to enable processor compatibility mode, expand the **Power** menu, then select **Shut down**.
-1. Select **Settings**, then **Processors**, and check the box for **Processor compatibility**.
-1. Select **Save processor settings**.
-1. Restart the VM.
+2. Under **Inventory**, select the VM on which you want to enable processor compatibility mode, expand the **Power** menu, then select **Shut down**.
+3. Select **Settings**, then **Processors**, and check the box for **Processor compatibility**.
+
+   :::image type="content" source="media/processor-compatibility-mode/processor-compatibility.png" alt-text="Check the box to enable processor compatibility" lightbox="media/processor-compatibility-mode/processor-compatibility.png":::
+
+4. If you want to set the VM's CPU features to the maximum level supported by all servers in a cluster, select **Compatible across the cluster (Recommended)**. This maximizes VM performance while preserving the ability to move the running VM to other servers in the cluster. We recommend enabling this for all VMs running on Azure Stack HCI 21H2 clusters; if disabled, the VM must be restarted to move to a host with a different level of supported CPU instructions, common with different generations of CPUs. 
+
+   Alternatively, if you want to set the VM's CPU features to minimum to ensure that you can move the running VM to other Hyper-V hosts outside the cluster as long as they have the same CPU manufacturer, select **Compatible across other hosts with the same CPU manufacturer**.
+
+   > [!NOTE]
+   > Like dynamic processor compatibility mode, **Compatible across the cluster** is exclusive to Azure Stack HCI 21H2 and is not supported for any other operating systems.
+
+5. Select **Save processor settings** and restart the VM.
 
 ## Enable processor compatibility mode using PowerShell
 

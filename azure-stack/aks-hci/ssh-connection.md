@@ -17,7 +17,7 @@ This topic describes how to create an SSH connection to access both Windows and 
 To sign in to a Windows worker node using SSH, first get the IP address of your node by running `kubectl get` and capturing the `EXTERNAL-IP` value.
 
 > [!NOTE]
-> You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for [Set-AksHciConfig](./set-akshciconfig.md).
+> You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for [Set-AksHciConfig](./reference/ps/set-akshciconfig.md).
 
 To get the IP address of the Windows worker node, run the following command:  
 
@@ -37,7 +37,7 @@ After you SSH in to the node, you can run `net user administrator *` to update y
 To sign in to a Linux worker node using SSH, first get the IP address of your node by running `kubectl get` and capture the `EXTERNAL-IP` value.
 
 > [!NOTE]
-> You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for [Set-AksHciConfig](./set-akshciconfig.md).
+> You must pass the right location to your SSH private key. The following example uses the default location of %systemdrive%\akshci\.ssh\akshci_rsa, but you may need to change this location if you requested a different path by specifying the `-sshPublicKey` parameter for [Set-AksHciConfig](./reference/ps/set-akshciconfig.md).
 
 To get the IP address of the Linux worker node:  
 
@@ -55,5 +55,4 @@ After you SSH in to the node, you can run `net user administrator *` to update y
 
 ## Next steps
 - [Known issues](./known-issues.md)
-- [Troubleshoot Windows Admin Center](./troubleshoot-windows-admin-center.md)
-- [Resolve known issues](./troubleshoot-known-issues.md)
+- [Windows Admin Center known issues](./known-issues-windows-admin-center.md)

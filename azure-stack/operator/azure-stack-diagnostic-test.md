@@ -4,10 +4,11 @@ description: Learn how to use the Azure Stack Hub validation tool to validate sy
 author: PatAltimore
 
 ms.topic: article
-ms.date: 05/26/2021
+ms.date: 12/02/2021
 ms.author: patricka
 ms.reviewer: adshar
 ms.lastreviewed: 01/10/2020
+ms.custom: contperf-fy22q2
 
 # Intent: As an Azure Stack operator, I want to use the Azure Stack validation tool to validate the system state.
 # Keyword: azure stack validation tool
@@ -17,7 +18,7 @@ ms.lastreviewed: 01/10/2020
 
 # Validate Azure Stack Hub system state
 
-As an Azure Stack Hub operator, being able to determine the health and status of your system on demand is essential. The Azure Stack Hub validation tool (**[Test-AzureStack](../reference/pep-2002/test-azurestack.md)**) is a PowerShell cmdlet that lets you run a series of tests on your system to identify failures if present. You'll typically be asked to run this tool through the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) when you contact Microsoft Customer Services Support (Microsoft Support) with an issue. With the system-wide health and status information at hand, Microsoft Support can collect and analyze detailed logs, focus on the area where the error occurred, and work with you to fix the issue.
+As an Azure Stack Hub operator, being able to determine the health and status of your system on demand is essential. The [Azure Stack Hub validation tool (**Test-AzureStack**)](../reference/pep/test-azurestack.md)) is a PowerShell cmdlet that lets you run a series of tests on your system to identify failures if present. You'll typically be asked to run this tool through the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) when you contact Microsoft Customer Services Support (Microsoft Support) with an issue. With the system-wide health and status information at hand, Microsoft Support can collect and analyze detailed logs, focus on the area where the error occurred, and work with you to fix the issue.
 
 ## Running the validation tool and accessing results
 
@@ -170,7 +171,7 @@ The cloud admin user name must be typed in the UPN format: serviceadmin@contoso.
 To improve the operator experience, a **Group** parameter has been enabled to run multiple test categories at the same time. Currently, there are three groups defined: **Default**, **UpdateReadiness**, and **SecretRotationReadiness**.
 
 - **Default**: Considered to be a standard run of **Test-AzureStack**. This group is run by default if no other groups are selected.
-- **UpdateReadiness**: A check to see if the Azure Stack Hub instance can be updated. When the **UpdateReadiness** group is run, warnings are displayed as errors in the console output, and they should be considered as blockers for the update. As of Azure Stack Hub Version 1910 the following categories are part of the **UpdateReadiness** group:
+- **UpdateReadiness**: A check to see if the Azure Stack Hub instance can be updated. When the **UpdateReadiness** group is run, warnings are displayed as errors in the console output, and they should be considered as blockers for the update. The following categories are part of the **UpdateReadiness** group:
 
   - **AzsInfraFileValidation**
   - **AzsActionPlanStatus**
@@ -195,14 +196,6 @@ The following example runs **Test-AzureStack** to test system readiness before i
 ```powershell
 Test-AzureStack -Group UpdateReadiness
 ```
-
-If your Azure Stack Hub is running a version before 1811, use the following PowerShell commands to run **Test-AzureStack**:
-
-```powershell
-New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
-Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-```
-
 ### Run validation tool to test infrastructure backup settings
 
 *Before* configuring infrastructure backup, you can test the backup share path and credential using the **AzsBackupShareAccessibility** test:

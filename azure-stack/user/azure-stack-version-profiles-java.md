@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with Java in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/26/2021
+ms.date: 11/4/2021
 ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 12/2/2020
+ms.reviewer: weshi1
+ms.lastreviewed: 11/4/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Java in Azure stack so I can benefit from the use of profiles.
 # Keyword: azure stack api profiles java

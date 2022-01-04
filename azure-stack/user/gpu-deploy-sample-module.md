@@ -5,9 +5,9 @@ author: mattbriggs
 ms.author: mabrigg
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 8/20/2021
 ms.reviewer: gara
-ms.lastreviewed: 11/13/2020
+ms.lastreviewed: 8/20/2021
 
 # Intent: As a a developer on Azure Stack Hub, I want to deploy a solution using a Graphics Processing Unit (GPU) in order to deliver an processing intensive visualization application.
 # Keyword: Graphics Processing Unit (GPU) module solution
@@ -162,15 +162,15 @@ For instructions see [Select device and add modules](/azure/iot-edge/how-to-depl
 
 1. In the VS Code command palette, run **Azure IoT Hub: Select IoT Hub**.
 
-2. Choose the subscription and IoT hub that contain the IoT Edge device that you want to configure. In this case, select the subscription used to deploy the Azure Stack Edge device, and select the IoT Edge device created for your Azure Stack Edge device. This occurs when you configure compute via the Azure portal in the earlier steps.
+2. Choose the subscription and IoT hub that contain the IoT Edge device that you want to configure. In this case, select the subscription in your Azure Stack Hub instance, and select the IoT Edge device created for your Azure Stack Hub. This occurs when you configure compute via the Azure portal in the earlier steps.
 
-3. In the VS Code explorer, expand the Azure IoT Hub section. Under **Devices**, you should see the IoT Edge device corresponding to your Azure Stack Edge device. 
+3. In the VS Code explorer, expand the Azure IoT Hub section. Under **Devices**, you should see the IoT Edge device corresponding to your Azure Stack Hub. 
 
     1. Select that device, right-click, and select **Start Monitoring Built-in Event Endpoint**.
 
     2. Go to **Devices > Modules** and you should see your **GPU module** running.
 
-    3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Edge device.
+    3. The VS Code terminal should also show the IoT Hub events as the monitoring output for your Azure Stack Hub.
 
     ![a valid install is](media/gpu-deploy-sample-module/gpu-monitor-events-output.png)
 

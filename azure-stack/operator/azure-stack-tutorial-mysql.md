@@ -15,8 +15,9 @@ ms.lastreviewed: 10/23/2019
 
 ---
 
-
 # Create highly available MySQL databases
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 As an Azure Stack Hub operator, you can configure server virtual machines (VMs) to host MySQL Server databases. After a MySQL cluster is successfully created and managed by Azure Stack Hub, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 
@@ -41,7 +42,7 @@ Before starting, ensure that the [MySQL Server resource provider](azure-stack-my
 
 - [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster): This is the Bitnami solution template that will be used for the MySQL cluster deployment.
 - [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian): Debian 8 "Jessie" with backports kernel for Microsoft Azure provided by credativ. Debian GNU/Linux is one of the most popular Linux distributions.
-- [Custom script for linux 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.custom-script-linux?tab=Overview): Custom Script Extension is a tool to execute your VM customization tasks post VM provision. When this Extension is added to a VM, it can download scripts from Azure storage and run them on the VM. Custom Script Extension tasks can also be automated using the Azure PowerShell cmdlets and Azure Cross-Platform Command-Line Interface (xPlat CLI).
+- [Custom script for linux 2.0](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftcorporation1610754355835.azure-linux-stig-templates): Custom Script Extension is a tool to execute your VM customization tasks post VM provision. When this Extension is added to a VM, it can download scripts from Azure storage and run them on the VM. Custom Script Extension tasks can also be automated using the Azure PowerShell cmdlets and Azure Cross-Platform Command-Line Interface (xPlat CLI).
 - VM Access For Linux Extension 1.4.7: The VM Access extension enables you to reset the password, SSH key, or the SSH configurations so you can regain access to your VM. You can also add a new user with password or SSH key, or delete a user using this extension. This extension targets Linux VMs.
 
 To learn more about adding items to Azure Stack Marketplace, see the [Azure Stack Marketplace overview](azure-stack-marketplace.md).
@@ -79,7 +80,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - Number of MySQL database replica VMs to create (default is 2).
    - Select the subscription to use.
    - Select the resource group to use or create a new one.
-   - Select the location (default is local for ASDK).
+   - Select the location (default is local for ASDK before version 2107).
 
      ![Deployment basics -- Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img2.png)
 

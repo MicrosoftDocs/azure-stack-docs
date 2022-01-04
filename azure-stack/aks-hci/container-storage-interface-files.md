@@ -16,9 +16,9 @@ The CSI is a standard for exposing arbitrary block and file storage systems to c
 
 The CSI storage driver support on AKS on Azure Stack HCI allows you to use:
 
-- AKS on Azure Stack HCI disks, which can be used to create a Kubernetes *DataDisk* resource. These are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. To learn more, see [using disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md). 
+- AKS on Azure Stack HCI disks to create a Kubernetes *DataDisk* resource. These disks are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. To learn more, see [using disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md). 
 
-- AKS on Azure Stack HCI files, which can be used to mount an SMB or NFS share to pods. These are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification. This topic covers how to use the AKS on Azure Stack HCI files Container Storage Interface (CSI) drivers.
+- AKS on Azure Stack HCI files to mount an SMB or NFS share to pods. These files are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification. This topic covers how to use the AKS on Azure Stack HCI files Container Storage Interface (CSI) drivers.
 
 ## Use AKS on Azure Stack HCI File persistent volumes using _ReadWriteMany_ CSI drivers
 
@@ -26,7 +26,7 @@ If multiple nodes need concurrent access to the same storage volume, you can use
 
 ### Use SMB drivers
 
-1. Deploy the driver using the following [Install-AksHciCsiSmb](./install-akshcicsismb.md) PowerShell command: 
+1. Deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
 
    ```powershell
    Install-AksHciCsiSmb -clusterName mycluster
@@ -55,15 +55,15 @@ If multiple nodes need concurrent access to the same storage volume, you can use
       reclaimPolicy: Retain  # only Retain is supported
       volumeBindingMode: Immediate
       mountOptions:
-        dir_mode=0777
-        file_mode=0777
-        uid=1001
-        gid=1001
+        - dir_mode=0777
+        - file_mode=0777
+        - uid=1001
+        - gid=1001
       ```  
 
 ### Use NFS drivers
 
-1. Deploy the driver using the following [Install-AksHciCsiNfs](install-akshcicsinfs.md) PowerShell command:
+1. Deploy the driver using the following [Install-AksHciCsiNfs](./reference/ps/install-akshcicsinfs.md) PowerShell command:
 
    ```powershell
    Install-AksHciCsiNfs -clusterName mycluster
@@ -83,8 +83,8 @@ If multiple nodes need concurrent access to the same storage volume, you can use
       reclaimPolicy: Retain
       volumeBindingMode: Immediate
       mountOptions:
-        hard
-        nfsvers=4.1
+        - hard
+        - nfsvers=4.1
       ```
 
 ### To uninstall SMB or NFS drivers

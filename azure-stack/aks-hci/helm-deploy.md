@@ -18,7 +18,7 @@ In this topic, you'll use Helm to package and deploy an application on AKS on Az
 Verify that you have the following set up:
 
 * An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * An available container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
 

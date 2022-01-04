@@ -13,7 +13,7 @@ Logs present an important means to collect and review data from multiple sources
 
 ## Use PowerShell commands to view logs
 
-To get logs from your all your pods, run the [Get-AksHciLogs](./get-akshcilogs.md) PowerShell command. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. 
+To get logs from your all your pods, run the [Get-AksHciLogs](./reference/ps/get-akshcilogs.md) PowerShell command. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. 
 
 The following `Get-AksHciLogs` parameters describe how you can use the command to view logs and collect data:
 

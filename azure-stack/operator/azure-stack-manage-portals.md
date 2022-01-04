@@ -12,6 +12,7 @@ ms.lastreviewed: 06/07/2019
 # Intent: As an Azure Stack operator, I want to learn how to use the administrator portal so I can do my day-to-day operations.
 # Keyword: administrator portal azure stack
 
+ms.custom: mode-portal
 ---
 
 # Use the administrator portal in Azure Stack Hub
@@ -85,6 +86,10 @@ If you click the help icon (question mark) in the upper-right corner of the admi
 ### Quick access to the Azure roadmap
 
 If you select **Help and support** (the question mark) in the upper right corner of the administrator portal, and then select **Azure roadmap**, a new browser tab opens and takes you to the Azure roadmap. By typing **Azure Stack Hub** in the **Products** search box, you can see all Azure Stack Hub roadmap updates.
+
+### Recommended browsers
+
+Similar to Azure, we recommend that you use the most up-to-date browser that's compatible with your operating system. For a list of Azure recommended browsers, see [Recommended browsers](/azure/azure-portal/azure-portal-supported-browsers-devices#recommended-browsers).
 
 ## Next steps
 

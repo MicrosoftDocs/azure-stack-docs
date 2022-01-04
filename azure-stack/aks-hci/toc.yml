@@ -21,6 +21,8 @@
       items:
         - name: Deploy applications with Helm
           href: helm-deploy.md
+        - name: Deploy Azure Arc enabled data services
+          href: deploy-arc-data-services.md
 - name: Tutorial
   items:
     - name: 1 - Prepare an application
@@ -65,24 +67,34 @@
   items: 
     - name: Evaluate on an Azure VM
       href: https://github.com/Azure/aks-hci/blob/main/eval/readme.md
+    - name: Install Azure Kubernetes Service host
+      items:
+          - name: With prestaged cluster service objects and DNS records
+            href: prestage-cluster-service-host-create.md
+          - name: With a proxy server
+            href: kubernetes-walkthrough-powershell-proxy.md
+    - name: Upgrade the AKS on Azure Stack HCI host
+      items:
+          - name: Use PowerShell
+            href: update-akshci-host-powershell.md
+          - name: Use Windows Admin Center
+            href: update-akshci-host-windows-admin-center.md
+    - name: Upgrade the Kubernetes version
+      items:
+          - name: Use PowerShell
+            href: upgrade.md
+          - name: Use Windows Admin Center
+            href: upgrade-kubernetes.md
     - name: Cluster operations
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
-          - name: Upgrade the Kubernetes version
-            items:
-                - name: Use PowerShell
-                  href: upgrade.md
-                - name: Use Windows Admin Center
-                  href: upgrade-kubernetes.md
-          - name: Update the AKS on Azure Stack HCI host
-            items:
-                - name: Use PowerShell
-                  href: update-akshci-host-powershell.md
-                - name: Use Windows Admin Center
-                  href: update-akshci-host-windows-admin-center.md
+          - name: Stop an AKS on Azure Stack HCI cluster
+            href: stop-start-cluster.md
           - name: Restart, remove, or reinstall AKS on Azure Stack HCI
             href: restart-cluster.md
+          - name: Back up and restore workload clusters using Velero
+            href: backup-workload-cluster.md
           - name: Deploy a container image from ACR to AKS on Azure Stack HCI
             href: deploy-azure-container-registry.md
           - name: Use node pools
@@ -91,16 +103,18 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Azure Arc Jumpstart
-            items:
-                - name: Use PowerShell to create a cluster and connect to Azure Arc for Kubernetes
-                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-                - name: Create a GitOps configuration on a cluster
-                  href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/day2/aks_stack_hci/
+          - name: Az CLI commands
+            href: /cli/azure/connectedk8s?view=azure-cli-latest
     - name: Configure networking
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Configure load balancer
+            href: configure-load-balancer.md
+          - name: Configure a custom load balancer
+            href: configure-custom-load-balancer.md
+          - name: Deploy MetalLB for load balancing
+            href: deploy-metallb.md
     - name: Manage storage
       items:
           - name: Use persistent volume
@@ -115,6 +129,8 @@
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
+          - name: Secrets Store CSI Driver configuration
+            href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
             href: encrypt-secrets.md
           - name: Secure communication with certificates
@@ -123,6 +139,22 @@
             href: calico-networking-policy.md
           - name: Defend Azure Arc enabled Kubernetes clusters
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
+    - name: Helper scripts
+      items: 
+          - name: Set up multiple administrators
+            href: set-multiple-administrators.md
+          - name: Remove old PowerShell modules
+            href: https://github.com/Azure/aks-hci/issues/130
+    - name: Manage workloads
+      items:
+          - name: Create and delete pods
+            href: create-pods.md
+          - name: Create deployments
+            href: create-deployments.md
+          - name: Create a DaemonSet
+            href: create-daemonsets.md
+          - name: Create a ReplicaSet
+            href: create-replicasets.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
@@ -153,26 +185,27 @@
             href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
+          - name: Deploy Linux applications
+            href: deploy-linux-application.md
     - name: Troubleshoot
       items:
-          - name: Known issues
+          - name: Common known issues
             href: known-issues.md
-          - name: Resolve known issues
-            href: troubleshoot-known-issues.md
-          - name: Windows Admin Center
-            items:
-                - name: Known issues
-                  href: known-issues-windows-admin-center.md
-                - name: Troubleshoot Windows Admin Center
-                  href: troubleshoot-windows-admin-center.md
-          - name: SSH node access
+          - name: Installation issues and errors
+            href: known-issues-installation.md
+          - name: Upgrade issues 
+            href: known-issues-upgrade.md  
+          - name: Windows Admin Center issues and errors
+            href: known-issues-windows-admin-center.md
+          - name: Azure Arc enabled Kubernetes
+            href: known-issues-arc.md
+          - name: Connect to nodes with SSH
             href: ssh-connection.md
           - name: Cluster validation reporting in Azure Stack HCI
             href: ../hci/manage/validate-qos.md
-          - name: CredSSP
+          - name: CredSSP in Azure Stack HCI
             href: ../hci/manage/troubleshoot-credssp.md
-          - name: Azure Arc enabled Kubernetes
-            href: /azure/azure-arc/kubernetes/troubleshooting
+
 
 - name: Related
   items:
@@ -188,12 +221,16 @@
   items:
   - name: Release notes
     href: https://aka.ms/aks-hci-relnotes/
-  - name: PowerShell
-    href: AksHci.md
+  - name: AksHci PowerShell
+    href: ./reference/ps/index.md
+  - name: Azure Arc Jumpstart
+    href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
     href: pricing.md
   - name: Support policies
     href: support-policies.md
+  - name: Get support
+    href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: AKS on Azure Stack HCI roadmap
