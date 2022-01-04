@@ -17,7 +17,7 @@ This article lists the various features and improvements that are now generally 
 
 Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
 
-To evaluate the new features and enhancements that are currently in public preview, [join the Azure Stack HCI preview channel](manage/preview-channel).
+To evaluate the new features and enhancements that are currently in public preview, [join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
 ## New Azure workloads and benefits
 Azure Stack HCI, version 21H2 brings the most popular Azure workloads and their benefits to your Azure Stack HCI clusters. This section describes the Azure workloads and benefits that are now generally available (and in public preview) with Azure Stack HCI, version 21H2.
@@ -40,19 +40,19 @@ Azure Stack HCI natively integrates with the Azure Resource Manager to project y
 
 ### Azure Backup support for Azure Stack HCI
 
-With MABS v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and VMs running on the Azure stack HCI cluster. For more information see [Back up Azure Stack HCI virtual machines with Azure Backup Server](azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+With MABS v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and VMs running on the Azure stack HCI cluster. For more information see [Back up Azure Stack HCI virtual machines with Azure Backup Server](azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md).
 
 ### Azure Site Recovery support for Azure Stack HCI
 
-With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, failover, and failback. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery)
+With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, failover, and failback. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery.md)
 
 ### Arc-enabled PaaS services on Azure Stack HCI (preview)
 
-Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
+Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](azure/azure-arc/data/managed-instance-overview.md) and [PostgreSQL Hyperscale (preview)](azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale.md), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](azure/app-service/overview-arc-integration.md) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
 
 ### Multi-cluster monitoring in the Azure Portal (preview)
 
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization. For more information, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights).
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization. For more information, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
 
 ## New Azure infrastructure innovations
 
