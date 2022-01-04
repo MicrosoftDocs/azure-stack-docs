@@ -40,7 +40,7 @@ Azure Stack HCI natively integrates with the Azure Resource Manager to project y
 
 ### Azure Backup support for Azure Stack HCI
 
-With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure stack HCI cluster. For more information see [Back up Azure Stack HCI virtual machines with Azure Backup Server](azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md).
+With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. For more information, see [Back up Azure Stack HCI virtual machines with Azure Backup Server](azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md).
 
 ### Azure Site Recovery support for Azure Stack HCI
 
@@ -52,7 +52,7 @@ Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azur
 
 ### Multi-cluster monitoring in the Azure Portal (preview)
 
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. For more information on the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
 
 ## New Azure infrastructure innovations
 
@@ -64,16 +64,16 @@ Clusters running Azure Stack HCI, version 21H2 now have the following new featur
 - **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
 - **[Adjustable storage repair speed](manage/storage-repair-speed.md)**: Gain more control over the data resync process by allocating resources to either resiliency or performance to service your clusters more flexibly and efficiently.
 - **[Support for nested virtualization on AMD processors](concepts/nested-virtualization.md#nested-virtualization-processor-support)**: Improve flexibility in evaluation and testing scenarios with VM-based clusters.
-- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI Integrated Systems).
+- **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI integrated systems).
 To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
 ## Enhancements in Windows Admin Center
 
-Windows Admin Center version 2110 includes a number of features and improvements to manage Azure Stack HCI systems.
+Windows Admin Center version 2110 includes several features and improvements to manage your Azure Stack HCI systems.
 
 - **Support for new operating systems**: Windows Admin Center now supports managing systems running Azure Stack HCI, version 21H2 and Windows Server 2022.
 
-- **Windows Admin Center platform upgraded to Angular 11**: Upgrading the front-end of our platform from Angular 7 to Angular 11 enhances security and performance across the product. We also updated our SDK so that extension developers can use it too.
+- **Windows Admin Center platform upgraded to Angular 11**: Upgrading the front end of our platform from Angular 7 to Angular 11 enhances security and performance across the product. We also updated our SDK so that extension developers can use it too.
 
 - **Virtual Machine tool improvements**: We’ve improved the tool’s performance and you can now create VHDs when adding a new disk to your VM.
 
