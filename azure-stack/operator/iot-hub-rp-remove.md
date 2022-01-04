@@ -32,4 +32,4 @@ This article provides instructions on how to remove IoT Hub resource provider on
 
 ## Next steps
 
-For more information on Azure IoT Hub, see the [Azure IoT Hub Documentation](https://docs.microsoft.com/azure/iot-hub/).
+For more information on Azure IoT Hub, see the [Azure IoT Hub Documentation](/azure/iot-hub/).
