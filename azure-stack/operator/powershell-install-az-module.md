@@ -80,7 +80,7 @@ Before installing the required version, make sure that you uninstall any previou
     ```
     If you hit an error such as 'The module is already in use', close the PowerShell sessions that are using the modules and rerun the above script.
 
-2. Delete all the folders that start with `Azure`, `Az` or `Azs.` from the `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` folders. Deleting these folders removes any existing PowerShell modules.
+2. If the Uninstall-Module did not succeed, delete all the folders that start with `Azure`, `Az`, or `Azs.` from the  $env:PSModulePath locations. For Windows PowerShell, the locations might be `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules`. For PowerShell Core, the locations might be `C:\Program Files\PowerShell\7\Modules` and `C:\Users\{yourusername}\Documents\PowerShell\Modules`. Deleting these folders removes any existing Azure PowerShell modules.
 
 ## 4. Connected: Install with internet connectivity
 
