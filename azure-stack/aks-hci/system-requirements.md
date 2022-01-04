@@ -239,8 +239,8 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
-| Physical servers per cluster | 4       |
-| Kubernetes Clusters            | 4       |
+| Physical servers per cluster | 8       |
+| Kubernetes Clusters            | 8       |
 | Total number of VMs          | 200     |
 
 ## Windows Admin Center requirements
