@@ -66,7 +66,7 @@ e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/my
 ### Trigger MajorVersionUpgrade
 Run the following script to perform major version upgrade. 
 
-If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine doesn't not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
+If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine does not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
 
 1. [If you run the script on OAW] Disable FIPS by running the script below. Then restart PowerShell.
 
