@@ -46,7 +46,11 @@
   - name: System requirements
     href: system-requirements.md
   - name: Security
-    href: concepts-security.md
+    items:
+      - name: Security for AKS on Azure Stack HCI
+        href: concepts-security.md
+      - name: Container security
+        href: container-security.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -155,6 +159,8 @@
             href: create-daemonsets.md
           - name: Create a ReplicaSet
             href: create-replicasets.md
+          - name: Create a StatefulSet
+            href: create-statefulset.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
@@ -187,25 +193,42 @@
             href: deploy-java-liberty-app.md
           - name: Deploy Linux applications
             href: deploy-linux-application.md
-    - name: Troubleshoot
-      items:
-          - name: Common known issues
-            href: known-issues.md
-          - name: Installation issues and errors
+- name: Troubleshooting
+  items:
+  - name: Troubleshooting overview
+    href: troubleshoot-overview.md
+  - name: Connect to nodes with SSH
+    href: ssh-connection.md
+  - name: How to fix
+    items:
+    - name: AKS on Azure Stack HCI issues
+      items: 
+          - name: Installation
             href: known-issues-installation.md
-          - name: Upgrade issues 
+          - name: Upgrade 
             href: known-issues-upgrade.md  
-          - name: Windows Admin Center issues and errors
+          - name: Windows Admin Center
             href: known-issues-windows-admin-center.md
           - name: Azure Arc enabled Kubernetes
             href: known-issues-arc.md
-          - name: Connect to nodes with SSH
-            href: ssh-connection.md
+          - name: Uninstall
+            href: known-issues-uninstall.md
+          - name: Kubernetes workload clusters
+            href: known-issues-workload-clusters.md
+          - name: Networking
+            href: known-issues-networking.md
+          - name: Security
+            href: known-issues-security.md
+          - name: Storage
+            href: known-issues-storage.md
+          - name: Other
+            href: known-issues.md
+    - name: Azure Stack HCI issues
+      items:
           - name: Cluster validation reporting in Azure Stack HCI
             href: ../hci/manage/validate-qos.md
           - name: CredSSP in Azure Stack HCI
             href: ../hci/manage/troubleshoot-credssp.md
-
 
 - name: Related
   items:
