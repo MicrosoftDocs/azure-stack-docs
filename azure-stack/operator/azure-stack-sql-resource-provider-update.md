@@ -62,9 +62,45 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 5.    (for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
 
 ### Trigger MajorVersionUpgrade
-Run the following script:
+Run the following script to perform major version upgrade. 
+
+If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine does not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
+
+1. [If you run the script on OAW] Disable FIPS by running the script below. Then restart PowerShell.
 
 ``` powershell
+Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 0 -ErrorAction Stop 
+```
+
+2. Run the following script from an elevated PowerShell console.
+``` powershell
+# Check Operating System version
+$osVersion = [environment]::OSVersion.Version
+if ($osVersion.Build -lt 10240)
+{
+    Write-Host "OS version is too old: $osVersion. Please consider using OAW and disable FIPS to perform the major upgrade."
+    return
+}
+
+$osArch = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
+if ($osArch -ne "64-bit")
+{
+    Write-Host "OS Architecture is not 64 bit. Please consider using OAW and disable FIPS to perform the major upgrade."
+    return
+}
+
+# Check LongPathsEnabled registry key
+$regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem'
+$longPathsEnabled = 'LongPathsEnabled'
+$property = Get-ItemProperty -Path $regPath -Name $longPathsEnabled -ErrorAction Stop
+if ($property.LongPathsEnabled -eq 0)
+{
+    Write-Host "Detect LongPathsEnabled equals to 0, prepare to set the property."
+    Set-ItemProperty -Path $regPath -Name $longPathsEnabled -Value 1 -ErrorAction Stop
+    Write-Host "Set the long paths property, please restart the PowerShell."
+    return
+} 
+
 # Use the NetBIOS name for the Azure Stack Hub domain. 
 $domain = "YouDomain" 
 
@@ -104,6 +140,12 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -Privilegedendpoint $privilegedEndpoint `
   -PfxPassword $PfxPass `
   -PfxCert $PfxFilePath
+```
+
+3. [If you run the script on OAW] Re-enable FIPS by running the script below. 
+
+``` powershell
+Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 1 -ErrorAction Stop 
 ```
 
 ### Validate the upgrade is successful
