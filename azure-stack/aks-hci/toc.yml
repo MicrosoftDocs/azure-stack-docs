@@ -46,7 +46,11 @@
   - name: System requirements
     href: system-requirements.md
   - name: Security
-    href: concepts-security.md
+    items:
+      - name: Security for AKS on Azure Stack HCI
+        href: concepts-security.md
+      - name: Container security
+        href: container-security.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -155,6 +159,8 @@
             href: create-daemonsets.md
           - name: Create a ReplicaSet
             href: create-replicasets.md
+          - name: Create a StatefulSet
+            href: create-statefulset.md
     - name: Monitoring and logging
       items:    
           - name: Use Azure Monitor for containers
