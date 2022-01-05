@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/15/2021
+ms.date: 01/05/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
@@ -81,6 +81,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to release 2108.
 - Cause: Missing properties for the object type data disk.
 - Remediation: Add data disks after deployment.
+- Occurrence: Common
+
+### Create disk snapshot can fail
+
+- Applicable: This issue applies to release 2108.
+- Cause: Missing properties for snapshot operation.
+- Remediation: No remediation available, will be addressed in an upcoming hotfix.
 - Occurrence: Common
 
 ## Portal

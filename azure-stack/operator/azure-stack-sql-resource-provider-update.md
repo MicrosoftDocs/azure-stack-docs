@@ -29,7 +29,8 @@ A new SQL resource provider might be released when Azure Stack Hub is updated to
 
 |Supported Azure Stack Hub version|SQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-  |2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
+  |2108|SQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108, 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
   |2005, 2002, 1910|[SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)|Windows Server 2016 Datacenter - Server Core|
   |1908|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|Windows Server 2016 Datacenter - Server Core|
   |     |     |     |
@@ -62,9 +63,45 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 5.    (for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
 
 ### Trigger MajorVersionUpgrade
-Run the following script:
+Run the following script to perform major version upgrade. 
+
+If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine does not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
+
+1. [If you run the script on OAW] Disable FIPS by running the script below. Then restart PowerShell.
 
 ``` powershell
+Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 0 -ErrorAction Stop 
+```
+
+2. Run the following script from an elevated PowerShell console.
+``` powershell
+# Check Operating System version
+$osVersion = [environment]::OSVersion.Version
+if ($osVersion.Build -lt 10240)
+{
+    Write-Host "OS version is too old: $osVersion. Please consider using OAW and disable FIPS to perform the major upgrade."
+    return
+}
+
+$osArch = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
+if ($osArch -ne "64-bit")
+{
+    Write-Host "OS Architecture is not 64 bit. Please consider using OAW and disable FIPS to perform the major upgrade."
+    return
+}
+
+# Check LongPathsEnabled registry key
+$regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem'
+$longPathsEnabled = 'LongPathsEnabled'
+$property = Get-ItemProperty -Path $regPath -Name $longPathsEnabled -ErrorAction Stop
+if ($property.LongPathsEnabled -eq 0)
+{
+    Write-Host "Detect LongPathsEnabled equals to 0, prepare to set the property."
+    Set-ItemProperty -Path $regPath -Name $longPathsEnabled -Value 1 -ErrorAction Stop
+    Write-Host "Set the long paths property, please restart the PowerShell."
+    return
+} 
+
 # Use the NetBIOS name for the Azure Stack Hub domain. 
 $domain = "YouDomain" 
 
@@ -106,10 +143,17 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -PfxCert $PfxFilePath
 ```
 
+3. [If you run the script on OAW] Re-enable FIPS by running the script below. 
+
+``` powershell
+Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 1 -ErrorAction Stop 
+```
+
 ### Validate the upgrade is successful
 
 1.    The MajorVersionUpgrade script executed without any errors.
 2.    Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
+3.    The old **system.\<location\>.sqladapter** resource group in the default provider subscription will not be automatically deleted by the script. After validating that the upgrade is successful and making sure there is no other resource in the resource group, you can manually delete the resource group.
 
 
 ## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
