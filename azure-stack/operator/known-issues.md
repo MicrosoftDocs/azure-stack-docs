@@ -56,6 +56,14 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: Add data disks after deployment.
 - Occurrence: Common
 
+### Create disk snapshot could be failed
+
+- Applicable: This issue applies to release 2108.
+- Cause: Missing properties for snapshot operation.
+- Remediation: No remediation available, will be addressed in an upcoming hotfix.
+- Occurrence: Common
+
+
 ## Portal
 
 ### Container registries
