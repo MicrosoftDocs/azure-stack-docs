@@ -1243,7 +1243,7 @@
     },
     {
       "source_path": "azure-stack/hci/whats-new.md",
-      "redirect_url": "azure-stack/hci/whats-new-in-hci-21h2",
+      "redirect_url": "/azure-stack/hci/whats-new-in-hci-21h2",
       "redirect_document_id": false
     }
   ]

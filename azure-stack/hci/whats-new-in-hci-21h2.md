@@ -13,16 +13,16 @@ ms.date: 01/04/2022
 
 > Applies to: Azure Stack HCI, versions 21H2
 
-This article lists the various features and improvements that are now generally available in Azure Stack HCI, versions 21H2 and also the ones that are currently in public preview. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
+This article lists the various features and improvements that are now available in Azure Stack HCI, versions 21H2 and also the ones that are currently in public preview. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
 
 Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
 
 To evaluate the new features and enhancements that are currently in public preview, [join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
 ## New Azure workloads and benefits
-Azure Stack HCI, version 21H2 brings the most popular Azure workloads and their benefits to your Azure Stack HCI clusters.
+Azure Stack HCI, version 21H2 brings new Azure workloads and their benefits to your Azure Stack HCI clusters.
 
-The previous version of Azure Stack HCI included the ability to host [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md). With AKS on Azure Stack HCI, you get the same push-button experience for deploying a robust, managed Kubernetes infrastructure as in the public cloud, but running completely on your servers, on your premises. Since its general availability in May 2021, Microsoft releases regular AKS on Azure Stack HCI updates to continuously support the latest Kubernetes version, deliver management functionality, and make quality improvements. For the latest release information, see [Azure Kubernetes Service on Azure Stack HCI release information page](https://github.com/azure/aks-hci/releases).
+The previous version of Azure Stack HCI included the ability to host [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md). With AKS on Azure Stack HCI, you get the same push-button experience for deploying a robust, managed Kubernetes infrastructure as in the public cloud, but running completely on your servers, on your premises. Since its availability in May 2021, Microsoft releases regular AKS on Azure Stack HCI updates to continuously support the latest Kubernetes version, deliver management functionality, and make quality improvements. For the latest release information, see [Azure Kubernetes Service on Azure Stack HCI release information page](https://github.com/azure/aks-hci/releases).
 
 This section describes the Azure workloads and benefits that are now generally available (and in public preview) with Azure Stack HCI, version 21H2.
 
@@ -36,7 +36,7 @@ With Azure Stack HCI, version 21H2, you can now deploy Azure Virtual Desktop ses
 
 ## New Azure management and governance capabilities
 
-Azure Stack HCI natively integrates with the Azure Resource Manager to project your cluster into Azure as a first-class resource in the Azure Portal. This section lists the new features and enhancements introduced in Azure Stack HCI, version 21H2 to manage your Azure Stack HCI resources just like you’d manage cloud resources.
+Azure Stack HCI natively integrates with the Azure Resource Manager to project your cluster into Azure as a first-class resource in the Azure portal. This section lists the new features and enhancements introduced in Azure Stack HCI, version 21H2 to manage your Azure Stack HCI resources just like you’d manage cloud resources.
 
 ### Azure Backup support for Azure Stack HCI
 
@@ -50,7 +50,7 @@ With Azure Site Recovery support, you can now continuously replicate VMs from Az
 
 Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](azure/azure-arc/data/managed-instance-overview.md) and [PostgreSQL Hyperscale (preview)](azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale.md), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](azure/app-service/overview-arc-integration.md) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
 
-### Multi-cluster monitoring in the Azure Portal (preview)
+### Multi-cluster monitoring in the Azure portal (preview)
 
 Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
 
@@ -75,7 +75,7 @@ Windows Admin Center version 2110 includes several features and improvements to 
 
 - **Windows Admin Center platform upgraded to Angular 11**: Upgrading the front end of our platform from Angular 7 to Angular 11 enhances security and performance across the product. We also updated our SDK so that extension developers can use it too.
 
-- **Virtual Machine tool improvements**: We’ve improved the tool’s performance and you can now create VHDs when adding a new disk to your VM.
+- **Virtual Machine tool improvements**: We've improved the tool's performance and you can now create VHDs when adding a new disk to your VM.
 
 - **New Security tool**: This new tool centralizes some key security settings for servers and clusters, including the ability to easily view the Secured-core status of systems.
 
@@ -83,7 +83,7 @@ Windows Admin Center version 2110 includes several features and improvements to 
 
 - **Feature updates for Azure Stack HCI**: The Updates tool has an improved history page and can upgrade clusters to Azure Stack HCI, version 21H2.
 
-- **Automatic VM activation**: You can now set up Azure Stack HCI clusters to automatically activate Windows Server VMs (this was previously available via an extension update). To do so, connect to the cluster and then go to Settings > Activate Windows Server VMs.
+- **Automatic VM activation**: You can now set up Azure Stack HCI clusters to automatically activate Windows Server VMs (this was previously available via an extension update). To do so, connect to the cluster and then go to **Settings** > **Activate Windows Server VMs**.
 
 - **Set up SDN at any time**: You can now set up SDN after creating the cluster in addition to during cluster creation.
 
