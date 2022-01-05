@@ -47,9 +47,9 @@
     href: system-requirements.md
   - name: Security
     items:
-      - name: Secure AKS on Azure Stack HCI
+      - name: Security for AKS on Azure Stack HCI
         href: concepts-security.md
-      - name: Secure containers
+      - name: Container security
         href: container-security.md
   - name: Networking
     items:
