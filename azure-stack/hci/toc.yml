@@ -7,9 +7,9 @@
   - name: What's new in Azure Stack HCI?
     items:
     - name: What's new in Azure Stack HCI, version 21H2
-      href: whats-new-hci-21h2.md
+      href: whats-new-in-hci-21h2.md
     - name: What's new in Azure Stack HCI, version 20H2
-      href: whats-new-hci-20h2.md
+      href: whats-new-in-hci-20h2.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub

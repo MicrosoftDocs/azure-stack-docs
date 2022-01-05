@@ -1241,5 +1241,10 @@
       "redirect_url": "/azure/cognitive-services/cognitive-services-container-support",
       "redirect_document_id": false
     }
+    {
+      "source_path": "azure-stack/hci/whats-new.md",
+      "redirect_url": "azure-stack/hci/whats-new-in-hci-21h2",
+      "redirect_document_id": false
+    }
   ]
 }

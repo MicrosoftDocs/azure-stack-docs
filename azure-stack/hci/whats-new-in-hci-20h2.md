@@ -32,7 +32,7 @@ Clusters running Azure Stack HCI, version 20H2 now have the following new featur
 - **BitLocker encryption**: You can now use BitLocker to encrypt the contents of data volumes on Azure Stack HCI, helping government and other customers stay compliant with standards such as FIPS 140-2 and HIPAA.
 - **Improved Storage Spaces Direct volume repair speed**: Repair volumes quickly and seamlessly.
 
-To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.-->
+To learn more about what's new in Azure Stack HCI 20H2, [watch this video](https://www.youtube.com/watch?v=DPG7wGhh3sAa) from Microsoft Inspire.
 
 ## Enhancements in Windows Admin Center
 
