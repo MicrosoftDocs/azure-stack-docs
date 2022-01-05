@@ -94,4 +94,4 @@ For information about what's included in each version of Azure Stack HCI, see th
 
 ## Next steps
 
-[Azure Stack HCI Lifecycle](https://docs.microsoft.com/lifecycle/products/azure-stack-hci)
+[Azure Stack HCI Lifecycle](/lifecycle/products/azure-stack-hci)
