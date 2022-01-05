@@ -6,16 +6,12 @@
     href: overview.md
   - name: What's new in Azure Stack HCI?
     href: whats-new.md
+  - name: Release information
+    href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
-  - name: Release information
-    href: release-information.md
-  - name: 21H2 release notes
-    href: https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173
-  - name: 20H2 release notes
-    href: https://support.microsoft.com/help/4595086
   - name: Azure Benefits on Azure Stack HCI
     href: ./manage/azure-benefits.md
   - name: FAQ
