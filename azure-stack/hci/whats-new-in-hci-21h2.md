@@ -56,7 +56,7 @@ Azure Stack HCI Insights provides health, performance, and usage insights about 
 
 ## New Azure infrastructure innovations
 
-When you use Azure Stack HCI, any new feature or enhancements done for Azure datacenters are also delivered to your on-premises Azure Stack HCI clusters. This section lists the features that are now available on the clusters running Azure Stack HCI, version 21H2:
+When you use Azure Stack HCI, any new feature or enhancements in Azure datacenters are also delivered to your on-premises Azure Stack HCI clusters. This section lists the features that are now available on the clusters running Azure Stack HCI, version 21H2:
 
 - **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
 - **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
