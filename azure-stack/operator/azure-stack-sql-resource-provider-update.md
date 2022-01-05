@@ -110,6 +110,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 1.    The MajorVersionUpgrade script executed without any errors.
 2.    Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
+3.    The old **system.\<location\>.sqladapter** resource group in the default provider subscription will not be automatically deleted by the script. After validating that the upgrade is successful and making sure there is no other resource in the resource group, you can manually delete the resource group.
 
 
 ## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
