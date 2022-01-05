@@ -17,7 +17,7 @@ The main components of StatefulSets are the persistent volume provisioner and th
 
 ## Create a StatefulSet
 
-You create a StatefulSet using the `kubectl create` or `kubectl apply` command, for example:
+You create a StatefulSet using the `kubectl create` or the `kubectl apply` command, for example:
 
 ```powershell
 kubectl create –f statefulset.yaml
@@ -39,7 +39,7 @@ To update a StatefulSet, edit the manifest file and run the same command used wh
 
 ## Delete a StatefulSet
 
-Use the `kubectl delete` command to delete a StatefulSet, but you must also manually delete the headless service. To delete the StatefulSet, run the following command:
+Use the `kubectl delete` command to delete a StatefulSet and to delete the headless service separately. To delete the StatefulSet, run the following command:
 
 ```powershell
 kubectl delete statefulset <statefulset_NAME>
