@@ -454,6 +454,10 @@
           href: event-hubs-rp-release-1-2012-10.md
       - name: Remove
         href: event-hubs-rp-remove.md 
+    - name: IoT Hub on Azure Stack Hub
+      items:
+      - name: Remove
+        href: iot-hub-rp-remove.md
     - name: Kubernetes
       items:
       - name: Offer the AKS engine
