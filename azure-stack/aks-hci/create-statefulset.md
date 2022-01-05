@@ -3,15 +3,15 @@ title: Create StatefulSets in Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to create StatefulSets in Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: EkeleAsonye
 ms.topic: how-to
-ms.date: 12/21/2021
+ms.date: 12/28/2021
 ms.author: v-susbo
 ---
 
 # Create a StatefulSet
 
-*StatefulSets* maintain the state of applications beyond an individual pod lifecycle, such as storage. Like deployments, a StatefulSet creates and manages at least one identical pod with unique, persistent identities and stable host names. Replicas in a StatefulSet follow a sequential approach to deployment, scale, and upgrade. 
+*StatefulSets* maintain the state of applications beyond an individual pod lifecycle. Like deployments, a StatefulSet creates and manages at least one identical pod with unique, persistent identities and stable host names. Replicas in a StatefulSet follow a sequential approach to deployment, scale, and upgrade. 
 
-A StatefulSet is useful for applications that require stable and unique identifiers, persistent storage, an ordered deployment, and scaling. Examples of these apps include MySQL, MongoDB, Kafka, and Cassandra. Stateless applications, such as Apache and Tomcat, do not care what network they're using and do not require persistent storage.
+A StatefulSet is useful for applications that require stable and unique identifiers, persistent storage, an ordered deployment, and scaling. Examples of these apps include MySQL, MongoDB, Kafka, and Cassandra. Stateless applications, such as Apache and Tomcat, are not concerned what network they're using and do not require persistent storage.
 
 The main components of StatefulSets are the persistent volume provisioner and the headless service. For more information, see [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
@@ -23,7 +23,7 @@ You create a StatefulSet using the `kubectl create` or `kubectl apply` command, 
 kubectl create –f statefulset.yaml
 ```
 
-You can create the headless service that's used by the StatefulSet in the same manifest file.
+In the same manifest YAML file, you can also create the headless service that the StatefulSet uses.
 
 To view the components you created for your StatefulSet, run the following command:
 
@@ -31,7 +31,7 @@ To view the components you created for your StatefulSet, run the following comma
 kubectl get statefulset
 ```
 
-To view persistent volumes, run `kubectl get pv`, and to view a persistent volume claim, run `kubectl get pvc`.
+If you want to view persistent volumes, run `kubectl get pv`, and to view a persistent volume claim, run `kubectl get pvc`.
 
 ## Update StatefulSets
 
@@ -39,7 +39,17 @@ To update a StatefulSet, edit the manifest file and run the same command used wh
 
 ## Delete a StatefulSet
 
-Use the `kubectl delete` command to delete a StatefulSet, but you must also manually delete the headless service. For example, run `kubectl delete statefulset <statefulset_NAME>` to delete the StatefulSet, and `kubectl delete service <svc_NAME>` to delete the headless service. 
+Use the `kubectl delete` command to delete a StatefulSet, but you must also manually delete the headless service. To delete the StatefulSet, run the following command:
+
+```powershell
+kubectl delete statefulset <statefulset_NAME>
+```
+
+Then, to delete the headless service, run the following command:
+
+```powershell
+kubectl delete service <svc_NAME>
+```
 
 To delete the persistent volume and the persistent volume claim, use `kubectl delete pv` and `kubectl delete pvc`, respectively. To prevent data loss, the persistent volume and persistent volume claim are not deleted when a StatefulSet is deleted.
 
