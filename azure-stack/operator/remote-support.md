@@ -113,7 +113,8 @@ In this example, you get the details for remote session with the ID *SessionID*.
 Get-RemoteSupportSessionHistory -SessionId <SessionId> -IncludeSessionTranscript
 ```
 
-> [!NOTE] Session transcript details are retained for ninety days. You can retrieve detail for a remote session within ninety days after the session.
+> [!NOTE]
+> Session transcript details are retained for ninety days. You can retrieve detail for a remote session within ninety days after the session.
 
 ## List of Microsoft support operations
 
