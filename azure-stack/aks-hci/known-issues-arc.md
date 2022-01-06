@@ -3,7 +3,7 @@ title: Resolve errors when enabling and disabling Azure Arc on AKS on Azure Stac
 description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS on Azure Stack HCI workload clusters
 author: abha
 ms.topic: troubleshooting
-ms.date: 09/30/2021
+ms.date: 12/13/2021
 ms.author: v-susbo
 ms.reviewer: 
 ---

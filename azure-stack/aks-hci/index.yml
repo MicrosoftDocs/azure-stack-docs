@@ -116,3 +116,13 @@ landingContent:
             url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - text: Use Bridge to Kubernetes with Visual Studio
             url:  /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Troubleshooting overview
+            url: troubleshoot-overview.md
+          - text: Connect to nodes with SSH
+            url: ssh-connection.md
+

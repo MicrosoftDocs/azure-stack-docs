@@ -14,7 +14,7 @@ This article describes how to prepare for the upcoming Azure Stack Hub update an
 
 ## Description of CreateUiDefinition issues
 
-**CreateUiDefinition.json** will be updated to work with the UI changes in the upcoming release. The changes provide a more complete user experience when deploying a solution template. For more information about the new experience, [see the CreateUiDefinition overview](/azure-resource-manager/managed-applications/create-uidefinition-overview).
+**CreateUiDefinition.json** will be updated to work with the UI changes in the upcoming release. The changes provide a more complete user experience when deploying a solution template. For more information about the new experience, [see the CreateUiDefinition overview](/azure/azure-resource-manager/managed-applications/create-uidefinition-overview).
 
 However, we are aware of an issue in which certain solution templates are unable to work with the new changes to the UI, unless the templates are updated. To ensure that there are minimal disruptions, we have outlined a series of steps you can take to make sure all your items are compatible with the latest update. The following images are a side-by-side comparison between the old (bottom) and the new experience (top).
 
