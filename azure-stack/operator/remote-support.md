@@ -5,7 +5,7 @@ description: Learn about remote support for Azure Stack Hub
 author: PatAltimore
 
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 01/06/2022
 ms.author: patricka
 ms.reviewer: shisab
 ms.lastreviewed: 06/09/2021
@@ -112,6 +112,8 @@ In this example, you get the details for remote session with the ID *SessionID*.
 ```powershell
 Get-RemoteSupportSessionHistory -SessionId <SessionId> -IncludeSessionTranscript
 ```
+
+> [!NOTE] Session transcript details are retained for ninety days. You can retrieve detail for a remote session within ninety days after the session.
 
 ## List of Microsoft support operations
 
