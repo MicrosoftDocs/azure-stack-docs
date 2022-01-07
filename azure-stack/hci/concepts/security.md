@@ -70,7 +70,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
  
     To learn more, see [User access options with Windows Admin Center](/windows-server/manage/windows-admin-center/plan/user-access-options) and [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).
 
-- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Azure Active Directory (Azure AD), and role-based access control (RBAC) for managing target servers.
+- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Azure Active Directory (Azure AD) for managing target servers.
 
     Windows Admin Center supports Microsoft Edge (Windows 10, version 1709 or later), Google Chrome, and Microsoft Edge Insider on Windows 10. You can install Windows Admin Center on either a Windows 10 PC or a Windows server.
 
@@ -84,10 +84,6 @@ This section discusses how to use Windows Admin Center to protect privileged ide
     - Manage disaggregated SMB storage in VMs.
 
     To learn more, see [Does Windows Admin Center use CredSSP?](/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp)
-
-- **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
-
-    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview).
 
 - **Security tools** in Windows Admin Center that you can use to manage and protect identities include Active Directory, Certificates, Firewall, Local Users and Groups, and more.
 
