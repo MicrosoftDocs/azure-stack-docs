@@ -23,7 +23,7 @@ There are two ways that you can offer Red Hat-based VM in Azure Stack Hub:
 
 - You can add the virtual machine to the Azure Stack Hub Marketplace.
   - Get familiar with the [Red Hat Cloud Access program](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) terms. Enable your Red Hat subscriptions for Cloud Access at [Red Hat Subscription-Manager](https://access.redhat.com/management/cloud). To be registered for Cloud Access, you must have on hand the Azure subscriptions with which your Azure Stack Hub is registered.
-  - Red Hat Enterprise Linux Images are a private offering on Azure Stack Hub. To make this offering available to your **Marketplace Management** tab, you will need to [complete a survey](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR_e32WQju3tMrgXNcUR94AVUNkJTWjdQRjc3TzFLREdGU0dIVFRUQ1JCSi4u). After you post the survey, it takes seven business days to see it in your **Add from Azure** tab within Marketplace Management.
+  - Red Hat Enterprise Linux Images are a private offering on Azure Stack Hub. To make this offering available to your **Marketplace Management** tab, you will need to [complete a survey](https://forms.office.com/r/F10XvmPLVw). After you post the survey, it takes seven business days to see it in your **Add from Azure** tab within Marketplace Management.
   - For more information, see the [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
 - You can add your own custom image to your Azure Stack Hub, and then offer the image in the Marketplace.
   1. You must have Red Hat cloud access.
