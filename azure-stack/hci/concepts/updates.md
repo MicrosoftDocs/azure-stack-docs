@@ -11,8 +11,6 @@ ms.date: 01/07/2022
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
-
 Azure Stack HCI solutions are designed to have a predictable update and upgrade experience:
 
 - Microsoft releases monthly quality and security updates as well as annual feature updates to the Azure Stack HCI operating system.
