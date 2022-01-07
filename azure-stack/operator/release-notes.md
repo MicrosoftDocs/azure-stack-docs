@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/04/2022
+ms.date: 01/07/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
@@ -129,7 +129,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- - [Azure Stack Hub hotfix 1.2108.2.70](hotfix-1-2108-2-70.md)
+- [Azure Stack Hub hotfix 1.2108.2.71](hotfix-1-2108-2-71.md)
 ::: moniker-end
 
 ::: moniker range="azs-2102"
