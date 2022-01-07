@@ -112,13 +112,13 @@ To prepare certificate signing requests for new Azure Stack Hub PKI certificates
     New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
     ```
 
-1. Alternatively, for low-privilege environments, to generate a clear-text certificate template file with the necessary attributes declared, add the **-LowPrivilege** parameter:
+1. Alternatively, for low-privilege environments, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -LowPrivilege
     ```
 
-1. Alternatively, for development and test environments, to generate a single CSR with multiple-subject alternative names, add the **-RequestType SingleCSR** parameter and value (we do *not* recommend using this approach for production environments):
+1. Alternatively, for development and test environments, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. (We do *not* recommend using this approach for production environments.)
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
@@ -135,7 +135,7 @@ To prepare certificate signing requests for new Azure Stack Hub PKI certificates
 
 1. Submit the generated *.req* file to your certificate authority (CA) (either internal or public). Output directory *New-AzsCertificateSigningRequest* contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the *.inf* files that are used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
 
-1. **If the -LowPrivilege parameter was used**, copy the resulting *.inf* file, for example:  
+1. If the `-LowPrivilege` parameter was used, copy the resulting *.inf* file. For example:  
 
     `C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf` 
 
@@ -151,7 +151,7 @@ To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the
         Install-Module Microsoft.AzureStack.ReadinessChecker -Force -AllowPrerelease
     ```
 
-1. Declare the **stampEndpoint** in the form of regionname.domain.com of the Azure Stack Hub System. For example, if the Azure Stack Hub tenant portal address is *<code>https://</code><code>portal.east.azurestack.contoso.com</code>*, run the following:
+1. Declare `stampEndpoint` in the form of *regionname.domain.com* of the Azure Stack Hub system. For example, if the Azure Stack Hub tenant portal address is *<code>https://</code><code>portal.east.azurestack.contoso.com</code>*, run the following:
 
     ```powershell  
     $stampEndpoint = 'east.azurestack.contoso.com'
@@ -160,9 +160,9 @@ To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the
     > [!NOTE]  
     > You need HTTPS connectivity for the previously discussed Azure Stack Hub system.
     >
-    > The Readiness Checker uses stampendpoint (region and domain) to build a pointer to existing certificates that are required by the certificate type. For example, for deployment certificates, 'portal' is prepended by the tool, so portal.east.azurestack.contoso.com is used in certificate cloning, for AppServices sso.appservices.east.azurestack.contoso.com.
+    > The Readiness Checker uses `stampEndpoint` (region and domain) to build a pointer to existing certificates that the certificate type requires. For example, for deployment certificates, "portal" is prepended by the tool. So *portal.east.azurestack.contoso.com* is used in certificate cloning, and *sso.appservices.east.azurestack.contoso.com* is used for app services.
     >
-    > The certificate that's bound to the computed endpoint will be used to clone such attributes as subject, key length, and signature algorithm.  To change any of these attributes, follow the instructions for [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
+    > The certificate that's bound to the computed endpoint will be used to clone such attributes as subject, key length, and signature algorithm.  To change any of these attributes, follow the instructions in [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
 
 1. Declare an output directory that already exists. For example, run:
 
@@ -189,7 +189,7 @@ To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the
     New-AzsHubEventHubsCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
     ```
 
-1. Alternatively, for development and test environments, to generate a single certificate request with multiple-subject alternative names, add the **-RequestType SingleCSR** parameter and value (we do *not* recommend using this approach for production environments):
+1. Alternatively, for development and test environments, to generate a single certificate request with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. (We do *not* recommend using this approach for production environments.)
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampendpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
