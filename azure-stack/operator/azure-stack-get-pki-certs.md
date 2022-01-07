@@ -59,7 +59,7 @@ To prepare certificate signing requests for new Azure Stack Hub PKI certificates
     ```
 
     > [!NOTE]  
-    > If you supply a common name, it will be configured on every certificate request. If you omit a common name, the first DNS name of the Azure Stack Hub service will be configured on the certificate request.
+    > If you supply a common name (CN), it will be configured on every certificate request. If you omit the CN, the first DNS name of the Azure Stack Hub service will be configured on the certificate request.
 
 1. Declare an output directory that already exists. For example, run:
 
