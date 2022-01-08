@@ -26,7 +26,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 | Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported. | Not yet supported.
-|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.| Systems deployed before release 2002 use BitLocker with 128-bit AES encryption; systems deployed starting with 2002, or newer, use BitLocker with AES-256 bit encryption.
+|Azure Storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.| Systems deployed before release 2002 use BitLocker with 128-bit AES encryption; systems deployed starting with 2002, or newer, use BitLocker with AES-256 bit encryption.
 |Storage account type|General-purpose V1, V2, and Blob storage accounts. |General-purpose V1 only.
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage. |Locally redundant storage.
 |Premium storage|Provide high-performance and low-latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Wouldn't block using block blobs, append blobs, tables, and queues in premium storage accounts.
