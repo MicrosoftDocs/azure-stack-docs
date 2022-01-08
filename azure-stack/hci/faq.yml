@@ -69,7 +69,7 @@ sections:
 
       - question: Can I transfer data offline between an "air-gapped" Azure Stack HCI and Azure?
         answer: |
-          No. There is currently no mechanism to register and sync between on-premises and Azure without network connectivity. For example, you can't transport certificates or billing data using removable storage. If there is sufficient customer demand, we're open to exploring such a feature in the future. Let us know in the [Azure Stack HCI feedback forum](https://feedback.azure.com/forums/929833-azure-stack-hci).
+          No. There is currently no mechanism to register and sync between on-premises and Azure without network connectivity. For example, you can't transport certificates or billing data using removable storage. If there is sufficient customer demand, we're open to exploring such a feature in the future. Let us know in the [Azure Stack HCI feedback forum](https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8).
 
       - question: How does Azure Stack HCI relate to Windows Server?
         answer: |
