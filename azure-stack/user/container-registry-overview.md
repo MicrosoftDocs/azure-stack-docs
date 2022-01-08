@@ -56,7 +56,7 @@ Azure Stack Hub key differences for ACR compared to ACR on Azure:
 
 | Aspect | Container Registry on Azure | Container Registry and Azure Stack Hub |
 | --- | --- | --- |
-| Service Tiers (SKUs) | [Registry service tiers and features - Azure Container Registry \| Microsoft Docs](https://azure/container-registry/container-registry-skus) | By default a single service tier (SKU) is available to create on Azure Stack Hub with a maximum of 100 GB of storage and 10 webhooks. Azure Stack Hub operators may customize that storage limit lower based on needs. |
+| Service Tiers (SKUs) | [Registry service tiers and features - Azure Container Registry \| Microsoft Docs](/azure/container-registry/container-registry-skus) | By default a single service tier (SKU) is available to create on Azure Stack Hub with a maximum of 100 GB of storage and 10 webhooks. Azure Stack Hub operators may customize that storage limit lower based on needs. |
 | Login Server | `<registry-name>.azurecr.io`<br>(All lower case)<br> | `<registry-name>.azsacr.<regionname>.<fqdn>` <br> (All lower case) <br> Example: `myregistry.azsacr.azurestack.contoso.com`|
 
 ## Service tier features and limits

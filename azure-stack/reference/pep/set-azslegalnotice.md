@@ -4,7 +4,7 @@ description: Reference for PowerShell Azure Stack privileged endpoint - Set-AzSL
 author: BryanLa
 
 ms.topic: reference
-ms.date: 02/19/2021
+ms.date: 01/04/2022
 ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 02/19/2021
@@ -22,7 +22,13 @@ Set-AzSLegalNotice [-Caption <String>] [-Text <String>]
 ```
 
 ## Description
-Sets the legal notice caption and text that is presented, after sign-in using the `Enter-PSSession` cmdlet.
+Sets the legal notice caption and text that is presented:
+
+- After sign-in using the **Enter-PSSession** cmdlet.
+
+or
+
+- When opening a new instance of the Azure Stack Hub portal.
 
 ## Examples
 

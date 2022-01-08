@@ -64,9 +64,46 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/mysql-connector-net-8.0.21.msi
 
 ### Trigger MajorVersionUpgrade
-Run the following script:
+Run the following script to perform major version upgrade. 
+
+If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine does not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
+
+1. [If you run the script on OAW] Disable FIPS by running the script below. Then restart PowerShell.
 
 ``` powershell
+Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 0 -ErrorAction Stop 
+```
+
+2. Run the following script from an elevated PowerShell console.
+
+``` powershell
+# Check Operating System version
+$osVersion = [environment]::OSVersion.Version
+if ($osVersion.Build -lt 10240)
+{
+    Write-Host "OS version is too old: $osVersion. Please consider using OAW and disable FIPS to perform the major upgrade."
+    return
+}
+
+$osArch = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
+if ($osArch -ne "64-bit")
+{
+    Write-Host "OS Architecture is not 64 bit. Please consider using OAW and disable FIPS to perform the major upgrade."
+    return
+}
+
+# Check LongPathsEnabled registry key
+$regPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem'
+$longPathsEnabled = 'LongPathsEnabled'
+$property = Get-ItemProperty -Path $regPath -Name $longPathsEnabled -ErrorAction Stop
+if ($property.LongPathsEnabled -eq 0)
+{
+    Write-Host "Detect LongPathsEnabled equals to 0, prepare to set the property."
+    Set-ItemProperty -Path $regPath -Name $longPathsEnabled -Value 1 -ErrorAction Stop
+    Write-Host "Set the long paths property, please restart the PowerShell."
+    return
+} 
+
 # Use the NetBIOS name for the Azure Stack Hub domain. 
 $domain = "YouDomain" 
 # For integrated systems, use the IP address of one of the ERCS VMs
@@ -92,7 +129,7 @@ $MySQLConnector = "Provide the MySQL Connector Uri according to Prerequisites st
 # The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
 $rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
 $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
-. $tempDir\MajorVersionUpgradeSQLProvider.ps1 `
+. $tempDir\MajorVersionUpgradeMySQLProvider.ps1 `
   -AzureEnvironment $AzureEnvironment `
   -AzCredential $AdminCreds `
   -CloudAdminCredential $CloudAdminCreds `
@@ -103,10 +140,17 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 ```
 
+3. [If you run the script on OAW] Re-enable FIPS by running the script below. 
+
+``` powershell
+Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 1 -ErrorAction Stop 
+```
+
 ### Validate the upgrade is successful
 
 1.	The MajorVersionUpgrade script executed without any errors.
 2.	Check the resource provider in marketplace and make sure that MySQL RP 2.0 has been installed successfully.
+3.  The old **system.\<location\>.mysqladapter** resource group in the default provider subscription will not be automatically deleted by the script. We recommend to keep the Storage Account in this resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the Storage Account.
 
 ## Update from MySQL RP V1 earlier version to MySQL RP V1.1.93.x
 

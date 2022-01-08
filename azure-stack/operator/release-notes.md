@@ -4,13 +4,13 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/13/2021
+ms.date: 01/04/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
 
-# Intent: As an Azure Stack Hub user, I want to know what's new in the latest release so that I can plan my update.
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
+# Keyword: release notes what's new
 
 ---
 
@@ -77,6 +77,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Windows Server 2022 is now supported as a guest operating system.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 - Two new services, [Azure Kubernetes Service](../user/aks-overview.md) and [Azure Container Registry](../user/container-registry-overview.md), are available in public preview with this release.
+- [**AzureStack** module 2.2.0](/powershell/azure/azure-stack/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
 - With this release, telemetry data is uploaded to an Azure Storage account that's managed and controlled by Microsoft. Azure Stack Hub telemetry service connects to `https://*.blob.core.windows.net/` and `https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` for a successful telemetry data upload to Microsoft. Port 443 (HTTPS) must be opened. For more information, see [Azure Stack Hub telemetry](azure-stack-telemetry.md).
 - This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely, so that support engineers can perform limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](remote-support.md).
 
@@ -92,6 +93,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Before starting the 2108 update, you must stop (deallocate) all virtual machines that use a GPU, to ensure the update can complete successfully. This applies to AMD and NVIDIA GPUs, as the underlying implementation changes to no pooled resources.
 - SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these resource providers, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
 - The infrastructure backup resource provider has a new API version that supports restoring progressive backups.
+- **Set-AzSLegalNotice** now triggers the appearance of a new screen that contains the caption and the text that were set when running the command. This screen appears every time a new instance of the portal is created.
 
 ### Fixes
 
@@ -99,6 +101,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
 - Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
 - Fixed an issue that caused internal load balancers to use external IPs.
+- Fixed an issue downloading serial logs from the portal.
 
 ## Security updates
 

@@ -25,7 +25,7 @@ The following quickstart templates are [available on GitHub](https://aka.ms/azur
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
-Use the PowerShell [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
+Use the PowerShell [Desired State Configuration](/powershell/dsc/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
 
 * A virtual network
 * Three storage accounts
