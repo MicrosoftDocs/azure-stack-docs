@@ -96,6 +96,11 @@ For details on the new features and improvements, see the blog on [Windows Admin
 
 More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
 
+## What's new in the previous versions of Azure Stack HCI
+
+- [What's new in Azure Stack HCI, version 20H2](whats-new-in-hci-20h2.md)
+- [What's new in Azure Stack HCI, version 20H2 Public Preview](preview-release-notes.md)
+
 ## Next steps
 
 - [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)

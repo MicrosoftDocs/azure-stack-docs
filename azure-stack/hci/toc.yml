@@ -337,4 +337,8 @@
   - name: Training
     href: /learn/paths/azure-stack-hci-foundations/
   - name: Archived release notes
-    href: preview-release-notes.md
+    items:
+    - name: Azure Stack HCI, version 20H2 release notes
+      href: whats-new-in-hci-20h2.md
+    - name: Azure Stack HCI, version 20H2 Public Preview release notes 
+      href: preview-release-notes.md
