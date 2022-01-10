@@ -119,6 +119,8 @@
             href: configure-custom-load-balancer.md
           - name: Deploy MetalLB for load balancing
             href: deploy-metallb.md
+          - name: Ingress controllers
+            href: create-ingress-controller.md
     - name: Manage storage
       items:
           - name: Use persistent volume
