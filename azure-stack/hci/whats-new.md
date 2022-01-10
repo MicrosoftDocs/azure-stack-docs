@@ -13,26 +13,29 @@ ms.date: 01/04/2022
 
 > Applies to: Azure Stack HCI, versions 21H2
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, versions 21H2 and also the ones that are currently in public preview. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
 
 Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
 
-To evaluate the new features and enhancements that are currently in public preview, [join the Azure Stack HCI preview channel](manage/preview-channel.md).
+You can also join the Azure Stack HCI preview channel to test out features coming to a future version of the Azure Stack HCI operating system. For more info, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
 ## New Azure workloads and benefits
+
 Azure Stack HCI, version 21H2 brings new Azure workloads and their benefits to your Azure Stack HCI clusters.
 
-The previous version of Azure Stack HCI included the ability to host [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md). With AKS on Azure Stack HCI, you get the same push-button experience for deploying a robust, managed Kubernetes infrastructure as in the public cloud, but running completely on your servers, on your premises. Since its availability in May 2021, Microsoft releases regular AKS on Azure Stack HCI updates to continuously support the latest Kubernetes version, deliver management functionality, and make quality improvements. For the latest release information, see [Azure Kubernetes Service on Azure Stack HCI release information page](https://github.com/azure/aks-hci/releases).
-
-This section describes the Azure workloads and benefits that are now generally available (and in public preview) with Azure Stack HCI, version 21H2.
+This section describes the Azure workloads and benefits that are now available or in public preview with Azure Stack HCI, version 21H2.
 
 ### Azure-exclusive workloads on Azure Stack HCI
 
-With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads, such as Windows Server Datacenter: Azure Edition, in your on-premises Azure Stack HCI clusters. Azure Stack HCI, version 21H2 includes a new Azure platform attestation service, Azure Benefits, which makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure Benefits on Azure Stack HCI at no additional cost. For more information on Azure Benefits and the supported workloads, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
+With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads, such as Windows Server Datacenter: Azure Edition, in your on-premises Azure Stack HCI clusters. Azure Stack HCI, version 21H2 includes a new Azure platform attestation service called Azure Benefits, which makes it possible for supported Azure-exclusive workloads to work on your Azure Stack HCI cluster. You can enable Azure Benefits on Azure Stack HCI at no additional cost. For more information on Azure Benefits and the supported workloads, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
 
 ### Azure Virtual Desktop for Azure Stack HCI (preview)
 
-With Azure Stack HCI, version 21H2, you can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview.md).
+You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview.md).
+
+### Improvements to Azure Kubernetes Service on Azure Stack HCI
+
+We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](../aks-hci/overview.md).
 
 ## New Azure management and governance capabilities
 
@@ -44,7 +47,7 @@ With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stac
 
 ### Azure Site Recovery support for Azure Stack HCI
 
-With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, failover, and failback. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery.md)
+With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery.md)
 
 ### Arc-enabled PaaS services on Azure Stack HCI (preview)
 
@@ -56,7 +59,7 @@ Azure Stack HCI Insights provides health, performance, and usage insights about 
 
 ## New Azure infrastructure innovations
 
-When you use Azure Stack HCI, any new feature or enhancements in Azure datacenters are also delivered to your on-premises Azure Stack HCI clusters. This section lists the features that are now available on the clusters running Azure Stack HCI, version 21H2:
+This section lists the new cluster infrastructure features that are available in Azure Stack HCI, version 21H2:
 
 - **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
 - **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.

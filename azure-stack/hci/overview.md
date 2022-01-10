@@ -44,7 +44,7 @@ Azure Stack HCI combines the following:
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
 
-Using Azure Stack HCI and Windows Admin Center, you can create a hyperconverged cluster that's easy to manage and uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites and use automatic failover. See [What's new in Azure Stack HCI, version 21H2](whats-new-in-hci-21h2.md) for details on the latest functionality enhancements.
+Using Azure Stack HCI and Windows Admin Center, you can create a hyperconverged cluster that's easy to manage and uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites and use automatic failover. See [What's new in Azure Stack HCI, version 21H2](whats-new.md) for details on the latest functionality enhancements.
 
 ## Why Azure Stack HCI?
 
