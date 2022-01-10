@@ -3,7 +3,7 @@ title: Publish Azure Stack Hub services in your datacenter
 description: Learn how to publish Azure Stack Hub services in your datacenter.
 author: PatAltimore
 ms.topic: article
-ms.date: 01/07/2022
+ms.date: 01/10/2022
 ms.author: patricka
 ms.reviewer: wamota
 ms.lastreviewed: 09/30/2021
@@ -84,7 +84,7 @@ SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-intercep
 |**DNS**<br>Allows Azure Stack Hub to connect to the DNS server forwarder.|(IP of DNS server provided for deployment)|TCP & UDP 53|Public VIP - /27|Required|
 |**SYSLOG**<br>Allows Azure Stack Hub to send syslog message for monitoring or security purposes.|(IP of SYSLOG server provided for deployment)|TCP 6514,<br>UDP 514|Public VIP - /27|Optional|
 | **CRL**<br/>Allows Azure Stack Hub to validate certificates and check for revoked certificates.|URL under CRL Distribution Points on your certificates|HTTP 80|Public VIP - /27|Required|
-|**CRL**<br>Allows Azure Stack Hub to validate certificates and check for revoked certificates.|URL under CRL Distribution Points on your certificates<br>`http://crl.microsoft.com/pki/crl/products`<br>`http://mscrl.microsoft.com/pki/mscorp`<br>`http://www.microsoft.com/pki/certs`<br>`http://www.microsoft.com/pki/mscorp`<br>`http://www.microsoft.com/pkiops/crl`<br>`http://www.microsoft.com/pkiops/certs`<br>|HTTP 80|Public VIP - /27|Not required. Highly recommended security best practice.|
+|**CRL**<br>Allows Azure Stack Hub to validate certificates and check for revoked certificates.|`http://crl.microsoft.com/pki/crl/products`<br>`http://mscrl.microsoft.com/pki/mscorp`<br>`http://www.microsoft.com/pki/certs`<br>`http://www.microsoft.com/pki/mscorp`<br>`http://www.microsoft.com/pkiops/crl`<br>`http://www.microsoft.com/pkiops/certs`<br>|HTTP 80|Public VIP - /27|Not required. Highly recommended security best practice.|
 |**LDAP**<br>Allows Azure Stack Hub to communicate with Microsoft Active Directory on-premises.|Active Directory Forest provided for Graph integration|TCP & UDP 389|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
 |**LDAP SSL**<br>Allows Azure Stack Hub to communicate encrypted with Microsoft Active Directory on-premises.|Active Directory Forest provided for Graph integration|TCP 636|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
 |**LDAP GC**<br>Allows Azure Stack Hub to communicate with Microsoft Active Global Catalog Servers.|Active Directory Forest provided for Graph integration|TCP 3268|Public VIP - /27|Required when Azure Stack Hub is deployed using AD FS.|
