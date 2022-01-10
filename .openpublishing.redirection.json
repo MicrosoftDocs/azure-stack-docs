@@ -21,11 +21,6 @@
       "redirect_document_id": false
     },
     { 
-      "source_path": "azure-stack/operator/iot-hub-rp-remove.md", 
-      "redirect_url": "/azure/iot-hub/", 
-      "redirect_document_id": false
-    },
-    { 
       "source_path": "azure-stack/operator/iot-hub-rp-rotate-secrets.md", 
       "redirect_url": "/azure/iot-hub/", 
       "redirect_document_id": false
