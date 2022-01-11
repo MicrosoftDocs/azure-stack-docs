@@ -24,7 +24,7 @@ landingContent:
             url: overview.md
       - linkListType: whats-new
         links:
-          - text: What's new in Azure Stack HCI?
+          - text: What's new in Azure Stack HCI, version 21H2?
             url: whats-new.md
       - linkListType: get-started
         links:
