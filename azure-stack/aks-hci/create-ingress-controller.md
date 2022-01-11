@@ -9,9 +9,11 @@ ms.author: v-susbo
 
 # Deploy an ingress controller
 
-An ingress controller is a Kubernetes resource that allows external access to services within the Kubernetes cluster. Ingress lets an operator expose a service to external network requests, usually HTTP or HTTPS. You configure access by creating a set of rules that define which inbound connections reach which services.
+An ingress controller is a Kubernetes resource that allows external access to services within the Kubernetes cluster. Ingress lets an operator expose a service to external network requests, usually HTTP or HTTPS. You configure access by creating a set of rules that define the inbound connections that reach specific services.
 
-Ingress controllers are pods (similar to other applications in a cluster) that can see other pods. After deploying the controller in your environment, you can then create and deploy the ingress manifest. Currently, you use ingress in AKS on Azure Stack HCI by using the NGINX ingress controller. For instructions on how to install, configure, and use the NGINX Ingress Controller, see [Installation with Manifests](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
+An ingress controller is a piece of software that provides configurable traffic routing for Kubernetes services. Kubernetes ingress resources are used to configure the ingress rules and routes for individual Kubernetes services. Using an ingress controller and ingress rules, a single IP address can be used to route traffic to multiple services in a Kubernetes cluster.
+
+After deploying the controller in your environment, you can then create and deploy the ingress manifest. Currently, you use ingress in AKS on Azure Stack HCI by using the NGINX ingress controller. For instructions on how to install, configure, and use the NGINX Ingress Controller, see [Installation with Manifests](https://docs.nginx.com/nginx-ingress-controller/installation/installation-with-manifests/).
 
 Ingress differs from the [NodePort and LoadBalancer](concepts-container-networking.md#kubernetes-services) in a unique way, and it improves traffic routing to your cluster in a less costly way. Defining NodePort services creates numerous random ports, and defining LoadBalancer services increases the cost for cloud resources more than you would preferably want. When you define an ingress controller, you consolidate the traffic-routing rules into a single resource that runs as part of your cluster. The NodePort and LoadBalancer let you expose a service by specifying that value in the service's type, whereas ingress is an independent resource for the service. Ingress is defined, created, and destroyed separately from the service.
 
