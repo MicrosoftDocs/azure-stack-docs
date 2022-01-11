@@ -17,8 +17,6 @@ This article lists the various features and improvements that are now available 
 
 For information on monthly quality and security updates, see [Azure Stack HCI release information](release-information.md). To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 20H2](whats-new-in-hci-20h2.md).
 
-To learn about what's new in Azure Stack HCI, version 20H2, see [What's new in Azure Stack HCI, version 20H2](whats-new-in-hci-20h2.md).
-
 You can also join the Azure Stack HCI preview channel to test out features coming to a future version of the Azure Stack HCI operating system. For more info, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
 ## New Azure workloads and benefits
