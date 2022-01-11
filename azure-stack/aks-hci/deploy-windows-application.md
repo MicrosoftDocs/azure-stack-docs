@@ -10,7 +10,7 @@ ms.reviewer:
 
 # Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this tutorial, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster and learn how to see how to test and scale your application. You will also learn how to join a Windows nodes to an Active Directory domain.
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
@@ -21,7 +21,7 @@ Verify you have the following requirements ready:
 
 * An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node that is up and running. 
 * A kubeconfig file to access the cluster.
-* Have the [Azure Kubernetes Service on Azure Stack HCI PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-azure-powershell-and-akshci-powershell-modules) installed.
+* Have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 

@@ -9,7 +9,7 @@ ms.date: 08/19/2021
 
 # System requirements for Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server 2019 Datacenter and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
 
@@ -213,6 +213,8 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
+| pypi.org | 443 | Required for connecting AKS clusters on Azure Stack HCI to Azure Arc. |
+| files.pythonhosted.org  | 443 |  Required for connecting AKS clusters on Azure Stack HCI to Azure Arc. |
 
 > [!NOTE]
 > Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
@@ -239,8 +241,8 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
-| Physical servers per cluster | 4       |
-| Kubernetes Clusters            | 4       |
+| Physical servers per cluster | 8       |
+| Kubernetes Clusters            | 8       |
 | Total number of VMs          | 200     |
 
 ## Windows Admin Center requirements

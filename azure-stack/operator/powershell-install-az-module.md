@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 09/03/2021
+ms.date: 12/6/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed:  09/03/2021
+ms.lastreviewed:  12/6/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -51,12 +51,17 @@ To use Azure PowerShell in PowerShell 5.1 on Windows:
    [Windows PowerShell 5.1](/powershell/scripting/windows-powershell/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
 2. Install [.NET Framework 4.7.2 or later](/dotnet/framework/install).
-3. Make sure you have the latest version of PowerShellGet. Run the following cmdlets:
+3. Make sure you have the latest version of PowerShellGet. Run the following cmdlets from an elevated prompt:
 
 ```powershell  
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-Install-Module PowerShellGet -MinimumVersion 2.2.3 -Force
+powershell -noprofile
+$PSVersionTable
+Uninstall-Module PowershellGet -AllVersions -Force -Confirm:$false
+Get-module PowershellGet
+Find-module PowershellGet
+Install-Module PowershellGet -MinimumVersion 2.2.3 -Force
 ```
 
 ## 2. Prerequisites for Linux and Mac
@@ -75,7 +80,7 @@ Before installing the required version, make sure that you uninstall any previou
     ```
     If you hit an error such as 'The module is already in use', close the PowerShell sessions that are using the modules and rerun the above script.
 
-2. Delete all the folders that start with `Azure`, `Az` or `Azs.` from the `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` folders. Deleting these folders removes any existing PowerShell modules.
+2. If the Uninstall-Module did not succeed, delete all the folders that start with `Azure`, `Az`, or `Azs.` from the  $env:PSModulePath locations. For Windows PowerShell, the locations might be `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules`. For PowerShell Core, the locations might be `C:\Program Files\PowerShell\7\Modules` and `C:\Users\{yourusername}\Documents\PowerShell\Modules`. Deleting these folders removes any existing Azure PowerShell modules.
 
 ## 4. Connected: Install with internet connectivity
 
@@ -91,7 +96,7 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
 
 2. Close your PowerShell session, then open a new PowerShell session so that update can take effect.
 
-::: moniker range=">=azs-2102"
+::: moniker range=">=azs-2108"
 3. Run the following command from a PowerShell session:
 
     ```powershell  
@@ -99,23 +104,21 @@ The Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows 
     
     Install-Module -Name Az.BootStrapper -Force
     Install-AzProfile -Profile 2020-09-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.1.1 
+    Install-Module -Name AzureStack -RequiredVersion 2.2.0 
     ```
 ::: moniker-end
-::: moniker range="<=azs-2008"
+::: moniker range="<=azs-2102"
 3. Run the following command from a PowerShell session:
 
     ```powershell  
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     
     Install-Module -Name Az.BootStrapper -Force
-    Install-AzProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 2.0.2-preview -AllowPrerelease
+    Install-AzProfile -Profile 2020-09-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 2.1.1
     ```
-
-> [!Note]  
-> Azure Stack Hub module version 2.0.2 is a breaking change. Refer to the [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md) for details.
 ::: moniker-end
+
 > [!WARNING]
 > You can't have both the Azure Resource Manager (AzureRM) and Az modules installed for PowerShell 5.1 for Windows at the same time. If you need to keep Azure Resource Manager available on your system, install the Az module for PowerShell Core 6.x or later. To do this, [install PowerShell Core 6.x or later](/powershell/scripting/install/installing-powershell-core-on-windows) and then follow these instructions in a PowerShell Core terminal.
 
@@ -135,8 +138,8 @@ Installation has five steps:
 
 ### Install Azure Stack Hub PowerShell
 
-::: moniker range=">=azs-2102"
-Azure Stack Hub 2102 or later.
+::: moniker range=">=azs-2108"
+Azure Stack Hub 2108 or later.
 
 You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
@@ -147,13 +150,12 @@ Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
 
 $savedModulesPath = "<Path that is used to save the packages>"
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 1.10.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.1.1
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 2.0.1
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.2.0
 ```
 ::: moniker-end
-
-::: moniker range="<=azs-2008"
-Azure Stack Hub 2008 or earlier.
+::: moniker range="<=azs-2102"
+Azure Stack Hub 2102.
 
 You could either use Azure Resource Manager or Az modules. For Azure Resource Manager, see the instructions at [Install PowerShell AzureRM module](powershell-install-az-module.md). The following code saves modules from trustworthy online repository https://www.powershellgallery.com/.
 
@@ -164,8 +166,8 @@ Install-module -Name PowerShellGet -MinimumVersion 2.2.3 -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
 
 $savedModulesPath = "<Path that is used to save the packages>"
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 0.10.0-preview
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.0.2-preview
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Az -Path $savedModulesPath -Force -RequiredVersion 2.0.1
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $savedModulesPath -Force -RequiredVersion 2.1.1
 ```
 ::: moniker-end
 
@@ -184,7 +186,26 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
 4. Register this location as the default repository and install the `AzureRM` and `AzureStack` modules from this repository:
-::: moniker range=">=azs-2102"
+::: moniker range=">=azs-2108"
+   ```powershell
+    # requires -Version 5
+    # requires -RunAsAdministrator
+    # requires -Module PowerShellGet
+    # requires -Module PackageManagement
+
+    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
+    $RepoName = "MyNuGetSource"
+
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+
+    Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.2.0 -Scope AllUsers
+
+    Install-Module -Name Az -Repository $RepoName -RequiredVersion 2.0.1 -Scope AllUsers
+   ```
+::: moniker-end
+::: moniker range="<=azs-2102"
    ```powershell
     # requires -Version 5
     # requires -RunAsAdministrator
@@ -200,26 +221,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
     Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.1.1 -Scope AllUsers
 
-    Install-Module -Name Az -Repository $RepoName -RequiredVersion 1.10.0 -Scope AllUsers
-   ```
-::: moniker-end
-::: moniker range="<=azs-2008"
-   ```powershell
-   # requires -Version 5
-   # requires -RunAsAdministrator
-   # requires -Module PowerShellGet
-   # requires -Module PackageManagement
-
-   $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
-   $RepoName = "MyNuGetSource"
-
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
-
-   Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.2-preview -AllowPrerelease -Scope AllUsers
-
-   Install-Module -Name Az -Repository $RepoName -RequiredVersion 0.10.0-preview -Scope AllUsers
+    Install-Module -Name Az -Repository $RepoName -RequiredVersion 2.0.1 -Scope AllUsers
    ```
 ::: moniker-end
 
@@ -262,6 +264,8 @@ For a more thorough discussion and guidance for moving AzurRM script to Az and b
 [!Include[Known issue for install - three](../includes/known-issue-az-install-3.md)]
 
 [!Include[Known issue for install - four](../includes/known-issue-az-install-4.md)]
+
+[!Include[Known issue for install - five](../includes/known-issue-az-install-5-az.md)]
 
 ## Next steps
 

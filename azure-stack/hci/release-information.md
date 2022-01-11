@@ -1,39 +1,61 @@
 ---
 title: Azure Stack HCI release information
-description: Release information for Azure Stack HCI
-author: khdownie
-ms.author: v-kedow
+description: This article provides a list of the Azure Stack HCI releases, including monthly updates, and corresponding OS builds.
+author: jasongerend
+ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/26/2021
+ms.date: 01/03/2022
 ---
 
 # Azure Stack HCI release information
 
 > Azure Stack HCI, versions 21H2 and 20H2
 
-Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. This page provides a list of the Azure Stack HCI releases and corresponding OS builds.
+Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates.
 
-## Release information tables
+This article provides a list of the available updates for each version of Azure Stack HCI.  
+
+## Azure Stack HCI release summary
+
+The following table provides the release summary of each version of Azure Stack HCI and the date by when you must apply updates to keep your Azure Stack HCI service in a supported state.
 
 All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
-| **Version** | **Availability date** | **OS build**      | **Latest revision date** |
+| **Version** | **Availability date** | **OS build**      | **Apply update by** |
 |:------------|:----------------------|:------------------|:-------------------------|
-| 21H2        | 2021-10-19            | 20348.288         | 2021-10-19               |
-| 20H2        | 2020-12-10            | 17784.1408        | 2020-12-10               |
+| 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
+| 20H2        | 2020-12-10            | 17784.1408        | Initial release          |
 
-### Azure Stack HCI, version 21H2 (OS build 20348)
+## Azure Stack HCI, version 21H2 (OS build 20348)
+
+The following are the available updates for Azure Stack HCI, version 21H2.
+
+All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.469    | 2022-01-11            | [KB 5009555](https://support.microsoft.com/topic/6064a83d-dc47-48a3-af78-d83f6d54f21a) |
+| 20348.407    | 2022-01-05            | [KB 5010197](https://support.microsoft.com/topic/1ecad3b4-fc07-4b0b-a13f-f3d6a9a610ca) |
+| 20348.405    | 2021-12-14            | [KB 5008223](https://support.microsoft.com/topic/9bfc69ea-cd28-4e5d-95c5-934d67d48ee1) |
+| 20348.380    | 2021-11-22            | [KB 5007254](https://support.microsoft.com/topic/98eb640f-81f6-4317-b965-100428db037f) |
+| 20348.350    | 2021-11-09            | [KB 5007205](https://support.microsoft.com/topic/a54d80e0-b1af-493e-9981-d4597a166119) |
 | 20348.320    | 2021-10-26            | [KB 5006745](https://support.microsoft.com/topic/572c595a-aff6-4976-a961-07aafb257973) |
 
-### Azure Stack HCI, version 20H2 (OS build 17784)
+## Azure Stack HCI, version 20H2 (OS build 17784)
+
+The following are the available updates for Azure Stack HCI, version 20H2.
+
+All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.2190   | 2022-01-11            | [KB 5009542](https://support.microsoft.com/topic/03d9e2b0-a079-4c23-b780-58c608430682) |
+| 17784.2135   | 2021-12-14            | [KB 5008210](https://support.microsoft.com/topic/95627012-444e-48b2-976e-75e0cd9f45d9) |
+| 17784.2100   | 2021-11-22            | [KB 5007264](https://support.microsoft.com/topic/4b09984a-e87b-4dea-91a0-7137f1d1e952) |
+| 17784.2067   | 2021-11-09            | [KB 5007187](https://support.microsoft.com/topic/november-09-2021-security-update-kb5007187-94e2ce51-339e-4802-8a35-561c9a384e99) |
+| 17784.2060   | 2021-11-09            | [KB 5007349](https://support.microsoft.com/topic/november-09-2021-servicing-stack-update-kb5007349-c080ffd6-7f9f-4e44-abce-da0e58927ee2) |
 | 17784.2038   | 2021-10-19            | [KB 5006741](https://support.microsoft.com/topic/october-19-2021-preview-update-kb5006741-cb2e6fc3-e92d-4168-b1ce-186443c2510a) |
 | 17784.2036   | 2021-10-19            | [KB 5006751](https://support.microsoft.com/topic/october-19-2021-servicing-stack-update-kb5006751-349c013e-959d-42bc-90c5-cac95ebfbec5) |
 | 17784.2005   | 2021-10-12            | [KB 5006679](https://support.microsoft.com/topic/october-12-2021-security-update-kb5006679-4d659940-f2f6-4737-b6ee-066f30ec3158) |
@@ -64,10 +86,14 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 17784.1466   | 2021-01-12            | [KB 4598232](https://support.microsoft.com/help/4598232/january-12-2021-security-update-kb4598232) |
 | 17784.1408   | 2020-12-10            | [KB 4592441](https://support.microsoft.com/topic/december-8-2020-security-update-kb4592441-81a1f99c-717f-7cd6-b9d4-76d88206634d) |
 
-## Next steps
+## Release notes
 
-For more information, see also:
+For information about what's included in each version of Azure Stack HCI, see the release notes:
 
 - [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)
 - [Release notes for Azure Stack HCI, version 20H2](https://support.microsoft.com/help/4595086/)
 - [Release notes for Azure Stack HCI, version 20H2 preview releases](preview-release-notes.md)
+
+## Next steps
+
+[Azure Stack HCI Lifecycle](/lifecycle/products/azure-stack-hci)

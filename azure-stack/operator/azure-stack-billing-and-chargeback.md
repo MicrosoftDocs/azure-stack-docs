@@ -4,7 +4,7 @@ description: Learn how Azure Stack Hub users are billed for resource usage, and 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/11/2021
+ms.date: 12/15/2021
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 03/21/2019
@@ -40,7 +40,7 @@ Azure Stack Hub resource providers (such as Compute, Storage, and Network) gener
 After the usage data has been collected, it is [reported to Azure](azure-stack-usage-reporting.md) to generate a bill, which can be viewed through the Azure billing portal.
 
 > [!NOTE]  
-> Usage data reporting is not required for the Azure Stack Development Kit (ASDK) and for Azure Stack Hub integrated system users who license under the capacity model. To learn more about licensing in Azure Stack Hub, see the [packaging and pricing data sheet](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+> Usage data reporting is not required for the Azure Stack Development Kit (ASDK) and for Azure Stack Hub integrated system users who license under the capacity model. To learn more about licensing in Azure Stack Hub, see the [packaging and pricing data sheet](https://azure.microsoft.com/resources/azure-stack-hub-licensing-packaging-pricing-guide/).
 
 The Azure billing portal shows usage data for the chargeable resources. In addition to the chargeable resources, Azure Stack Hub captures usage data for a broader set of resources, which you can access in your Azure Stack Hub environment through REST APIs or PowerShell cmdlets. Azure Stack Hub operators can get the usage data for all user subscriptions. Individual users can only get their own usage details.
 

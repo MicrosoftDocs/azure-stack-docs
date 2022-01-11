@@ -13,8 +13,9 @@ ms.lastreviewed: 10/25/2019
 
 ---
 
-
 # Use MySQL databases on Microsoft Azure Stack Hub
+
+[!INCLUDE [preview-banner](../includes/sql-mysql-rp-limit-access.md)]
 
 Use the MySQL resource provider to offer MySQL databases on [Azure Stack Hub](azure-stack-overview.md). After you deploy the resource provider and connect it to one or more MySQL server instances, you can create:
 
@@ -27,6 +28,7 @@ There are several limitations to consider, before installing the MySQL resource 
 - Your Azure Stack Hub operator is responsible for deploying, updating, securing, configuring and maintaining the MySQL database servers and hosts. The RP service does not provide any host and database server instance management functionality. 
 - Databases from different users in different subscriptions may be located on the same database server instance. The RP does not provide any mechanism for isolating databases on different hosts or database server instances.
 - The RP does not provide any reporting on tenant usage of databases.
+- The RP doesn't monitor the MySQL Server's health.
 
 ## MySQL resource provider adapter architecture
 

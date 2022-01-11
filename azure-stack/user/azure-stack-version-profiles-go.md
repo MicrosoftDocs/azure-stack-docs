@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with GO in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/4/2021
+ms.date: 12/6/2021
 ms.author: sethm
 ms.reviewer: weshi1
-ms.lastreviewed: 11/4/2021
+ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Go in Azure Stack so I can benefit from the use of profiles.
 # Keyword: azure stack API profiles Go
@@ -24,7 +24,7 @@ A profile is a combination of different resource types with different versions f
 - Stability for your app by locking to specific API versions.
 - Compatibility for your app with Azure Stack Hub and regional Azure datacenters.
 
-In the Go SDK, profiles are available under the profiles path. Profile version numbers are labeled in the **YYYY-MM-DD** format. The latest Azure Stack Hub API profile version is **2020-09-01** for Azure Stack Hub versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2020-09-01** profile, use the following code:
+In the Go SDK, profiles are available under the profiles path. Profile version numbers are labeled in the **YYYY-MM-DD** format. The latest Azure Stack Hub API profile version is **2020-09-01** for Azure Stack Hub versions 2102 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2020-09-01** profile, use the following code:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/compute/mgmt/compute"
@@ -576,8 +576,8 @@ This example shows a sample of Go code that creates a virtual network on Azure S
 Some of the code samples available for Azure Stack Hub using the Go SDK are:
 
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/2018-03-01-hybrid)
-- [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane/tree/2018-03-01-hybrid)
-- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks/tree/2019-03-01-hybrid)
+- [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/master/dataplane/hybridstorage)
+- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Golang-Samples/tree/master/manageddisk)
 ::: moniker-end
 ## Next steps
 

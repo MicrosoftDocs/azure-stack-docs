@@ -70,7 +70,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
  
     To learn more, see [User access options with Windows Admin Center](/windows-server/manage/windows-admin-center/plan/user-access-options) and [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).
 
-- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Azure Active Directory (Azure AD), and role-based access control (RBAC) for managing target servers.
+- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Azure Active Directory (Azure AD), and role-based access control (RBAC) for managing the Windows Admin Center gateway.
 
     Windows Admin Center supports Microsoft Edge (Windows 10, version 1709 or later), Google Chrome, and Microsoft Edge Insider on Windows 10. You can install Windows Admin Center on either a Windows 10 PC or a Windows server.
 
@@ -85,10 +85,6 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     To learn more, see [Does Windows Admin Center use CredSSP?](/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp)
 
-- **Role-based access control (RBAC)** in Windows Admin Center allows users limited access to the servers they need to manage instead of making them full local administrators. To use RBAC in Windows Admin Center, you configure each managed server with a PowerShell Just Enough Administration endpoint.
-
-    To learn more, see [Role-based access control](/windows-server/manage/windows-admin-center/plan/user-access-options#role-based-access-control) and [Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview).
-
 - **Security tools** in Windows Admin Center that you can use to manage and protect identities include Active Directory, Certificates, Firewall, Local Users and Groups, and more.
 
     To learn more, see [Manage Servers with Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers).
@@ -98,7 +94,7 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 Security Center protects VMs for both Windows servers and Linux servers by installing the Log Analytics agent on these resources. Azure correlates events that the agents collect into recommendations (hardening tasks) that you perform to make your workloads secure. The hardening tasks based on security best practices include managing and enforcing security policies. You can then track the results and manage compliance and governance over time through Security Center monitoring while reducing the attack surface across all of your resources.
 
-Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure role-based access control (RBAC) is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
+Managing who can access your Azure resources and subscriptions is an important part of your Azure governance strategy. Azure RBAC is the primary method of managing access in Azure. To learn more, see [Manage access to your Azure environment with role-based access control](/azure/cloud-adoption-framework/ready/azure-setup-guide/manage-access).
 
 Working with Security Center through Windows Admin Center requires an Azure subscription. To get started, see [Integrate Azure Security Center with Windows Admin Center](/azure/security-center/windows-admin-center-integration).
 

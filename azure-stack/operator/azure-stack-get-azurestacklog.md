@@ -96,12 +96,6 @@ if ($session) {
   ```
   
   ::: moniker-end
-
-  To collect logs for IoT Hub: 
-
-  ```powershell
-  Get-AzureStackLog -FilterByResourceProvider iothubServiceHealth
-  ```
  
   To collect logs for Event Hubs:
 

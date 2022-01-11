@@ -96,6 +96,16 @@ To change the default provisioning type for a storage pool to **Thin** in Window
 
 :::image type="content" source="media/thin-provisioning/thin-provisioning-wac.png" alt-text="You can change the default provisioning type by selecting Storage Spaces and pools under Settings in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-wac.png":::
 
+To create a thinly provisioned volume in Windows Admin Center:
+
+1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
+1. Click **+** to open the volume creation pane and fill in the volume name, resiliency, and size.
+1. Click on **More options**.
+1. Under **Provisioning type**, select **Thin**.
+1. Click **Create** to finish the process.
+
+:::image type="content" source="media\thin-provisioning\thin-provisioning-volume-wac.png" alt-text="You can create a thinly provisioned volume in Windows Admin Center." lightbox="media/thin-provisioning/thin-provisioning-volume-wac.png":::
+
 To check a volume’s provisioning type:
 
 1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
@@ -131,11 +141,11 @@ Yes, it's possible to have a mix of both fixed and thin volumes in one pool.
 
 ### Will space be given back to the pool immediately after files are deleted?
 
-No. This is a gradual process that can take 15 minutes or so after the files are deleted.
+No. This is a gradual process that can take 15 minutes or so after the files are deleted. If there are many workloads running on the cluster, it may take longer for all of the space to be returned to the pool.
 
 ### Can I overprovision the volume in Windows Admin Center?
 
-At this time, overprovisioning can't be performed in Windows Admin Center, so you'll need to use PowerShell.
+Yes. When creating a volume, the size can be greater than the pool's available capacity if the Provisioning type is Thin.
 
 ## Next steps
 

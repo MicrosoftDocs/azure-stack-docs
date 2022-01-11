@@ -1,61 +1,20 @@
 ---
-title: Simplify host networking with Network ATC
-description: This topic covers how to simplify host networking for Azure Stack HCI.
-author: v-dasis
+title: Deploy host networking with Network ATC
+description: This topic covers how to deploy host networking for Azure Stack HCI.
+author: jacobpedd
 ms.topic: how-to
-ms.date: 10/19/2021
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.date: 01/22/2022
+ms.author: jpeddicord
+ms.reviewer: jgerend
 ---
 
-# Simplify host networking with Network ATC
+# Deploy host networking with Network ATC
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article guides you through the key functions of using Network ATC, which simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration.
+This article guides you through the requirements, best practices, and deployment of Network ATC. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. This provides an intent-based approach to host network deployment. By specifying one or more intents (management, compute, or storage) for a network adapter, you can automate the deployment of the intended configuration. For more information on Network ATC, including an overview and definitions, see [Network ATC overview](../concepts/network-atc-overview.md). 
 
 If you have feedback or encounter any issues, review the Requirements and best practices section, check the Network ATC event log, and work with your Microsoft support team.
-
-## Overview
-
-Deployment and operation of Azure Stack HCI networking can be a complex and error-prone process. Due to the configuration flexibility provided with the host networking stack, there are many moving parts that can be easily misconfigured or overlooked. Staying up to date with the latest best practices is also a challenge as improvements are continuously made to the underlying technologies. Additionally, configuration consistency across HCI cluster nodes is important as it leads to a more reliable experience.
-
-Network ATC can help:
-
-- Reduce host networking deployment time, complexity, and errors
-- Deploy the latest Microsoft validated and supported best practices
-- Ensure configuration consistency across the cluster
-- Eliminate configuration drift
-
-## Definitions
-
-Here is some new terminology:
-
-**Intent**: An intent is a definition of how you intend to use the physical adapters in your system. An intent has a friendly name, identifies one or more physical adapters, and includes one or more intent types.
-
-An individual physical adapter can only be included in one intent. By default, an adapter does not have an intent (there is no special status or property given to adapters that don’t have an intent). You can have multiple intents; the number of intents you have will be limited by the number of adapters in your system.
-
-**Intent type**: Every intent requires one or more intent types. The currently supported intent types are:
-
-- Management - adapters are used for management access to nodes
-- Compute - adapters are used to connect virtual machine (VM) traffic to the physical network
-- Storage - adapters are used for SMB traffic including Storage Spaces Direct
-
-Any combination of the intent types can be specified for any specific single intent. However, certain intent types can only be specified in one intent:
-
-- Management: Can be defined in a maximum of one intent
-- Compute: Unlimited
-- Storage: Can be defined in a maximum of one intent
-
-**Intent mode**: An intent can be specified at a standalone level or at a cluster level. Modes are system-wide; you can't have an intent that is standalone and another that is clustered on the same host system. Clustered mode is the most common choice as Azure Stack HCI nodes are clustered.
-
-- *Standalone mode*: Intents are expressed and managed independently for each host. This mode allows you to test an intent before implementing it across a cluster. Once a host is clustered, any standalone intents are ignored. Standalone intents can be copied to a cluster from a node that is not a member of that cluster, or from one cluster to another cluster.
-
-- *Cluster mode*: Intents are applied to all cluster nodes. This is the recommended deployment mode and is required when a server is a member of a failover cluster.
-
-**Override**: By default, Network ATC deploys the most common configuration, asking for the smallest amount of user input. Overrides allow you to customize your deployment if required. For example, you may choose to modify the VLANs used for storage adapters from the defaults.
-
-Network ATC allows you to modify all configuration that the OS allows. However, the OS limits some modifications to the OS and Network ATC respects these limitations. For example, a virtual switch does not allow modification of SR-IOV after it has been deployed.
 
 ## Requirements and best practices
 
@@ -80,18 +39,16 @@ The following are requirements and best practices for using Network ATC in Azure
   - Failover Clustering
   - Hyper-V
    Here's an example of installing the required features via PowerShell:
-```powershell
-Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
-```
-
+   
+   ```powershell
+   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+   ```
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
-You can use the following cmdlet to install the required Windows features:
-
-> [!NOTE]
-> Network ATC does not require a system reboot if the other Azure Stack HCI features have already been installed.
+> [!IMPORTANT]
+> Deploying Network ATC in virtual environments is not supported. Several of the host networking properties it configures are not available in virtual machines, which will result in errors.    
 
 ## Common Network ATC commands
 
@@ -105,9 +62,17 @@ Typically, only a few of these cmdlets are needed. Here is a brief overview of t
 |Set-NetIntent|Modifies an existing intent|
 |Get-NetIntent|Gets a list of intents|
 |Get-NetIntentStatus|Gets the status of intents|
-|New-NetIntentOverrides|Specifies overrides to the default configuration|
+|Update-NetIntentAdapter|Updates the adapters managed by an existing intent|
 |Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
 |Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
+
+You can also modify the default configuration Network ATC creates using overrides. To see a list of possible override commandlets, use the following command:
+
+```powershell
+Get-Command -Noun NetIntent*Over* -Module NetworkATC
+```
+
+For more information on overrides, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
 
 ## Example intents
 
@@ -179,25 +144,6 @@ Add-NetIntent -Name Compute1 -Compute -ClusterName HCI01 -AdapterName pNIC03, pN
 Add-NetIntent -Name Compute2 -Compute -ClusterName HCI01 -AdapterName pNIC05, pNIC06
 ```
 
-## Deploy intents
-
-The following activities represent common host networking deployment tasks using Network ATC. You can specify any combination of the following types of intents:
-
-- Compute – adapters will be used to connect virtual machines traffic to the physical network
-- Storage – adapters will be used for SMB traffic including Storage Spaces Direct
-- Management – adapters will be used for management access to nodes. This intent is not covered in this article, but feel free to explore.
-
-This article covers the following deployment tasks:
-
-- Configure an intent
-
-- Configure an intent override
-
-- Validate automatic remediation
-
-This article assumes you have already created a cluster. See [Create a cluster using PowerShell](create-cluster-powershell.md).
-
-
 
 ## Default Network ATC values
 
@@ -228,6 +174,9 @@ Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterN
 
 The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
+> [!NOTE]
+> Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
+
 ### Default Data Center Bridging (DCB) configuration
 
 Network ATC establishes the following priorities and bandwidth reservations. This configuration should also be configured on the physical network.
@@ -237,6 +186,9 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 |Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps; 1% if the adapter(s) are > 10 Gbps|
 |SMB_Direct|RDMA Storage Traffic|3|50%|
 |Default|All other traffic types|0|Remainder|
+
+> [!NOTE]
+> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
 
 ## Next steps
 
