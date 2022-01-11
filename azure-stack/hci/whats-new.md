@@ -25,7 +25,7 @@ You can also join the Azure Stack HCI preview channel to test out features comin
 
 Azure Stack HCI, version 21H2 brings new Azure workloads and their benefits to your Azure Stack HCI clusters.
 
-This section describes the Azure workloads and benefits that are now available or in public preview with Azure Stack HCI, version 21H2.
+This section describes the Azure workloads and benefits that are now available or in preview with Azure Stack HCI, version 21H2.
 
 ### Azure-exclusive workloads on Azure Stack HCI
 
