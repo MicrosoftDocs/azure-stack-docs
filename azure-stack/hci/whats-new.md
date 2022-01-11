@@ -11,7 +11,7 @@ ms.date: 01/10/2022
 
 # What's new in Azure Stack HCI, version 21H2
 
-> Applies to: Azure Stack HCI, versions 21H2
+> Applies to: Azure Stack HCI, version 21H2
 
 This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
 
