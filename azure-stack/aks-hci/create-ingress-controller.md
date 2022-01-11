@@ -21,7 +21,7 @@ You can deploy ingress in various ways depending on the use case. Ingress resour
 
 ## Use ingress to expose services through externally reachable URLs
 
-An example of using ingress is shown in the following YAML manifest. The Ingress-class that's used is shown within the metadata (in this example, `ingress-nginx`), and this lets the NGINX ingress controller know what it needs to monitor and update.
+An example of using ingress is shown in the following YAML manifest. The Ingress-class that's used appeaers within the metadata (in this example, `ingress-nginx`), and this seting lets the NGINX ingress controller know what it needs to monitor and update.
 
 ```yml
 apiVersion: networking.k8s.io/v1  
@@ -45,11 +45,15 @@ backend:
        	          number: 8080
 ```
 
-Information on what is configured is included in the `spec` section. In the example above, a rule or set of rules are defined, including the host to which the rules will be applied, whether the traffic is HTTP or HTTPS, the path that's monitored, and the internal service and port where the traffic is sent.
+The `spec` section specifies information on what's configured. In the example above, a rule (or set of rules) that are defined include the following items:
+- The host to which the rules are applied
+- Whether the traffic is HTTP or HTTPS
+- The path that's monitored
+- The internal service and port where the traffic is sent
 
 ## Use ingress to load balance traffic
 
-In the example below, another path is added to the manifest example, which permits the load balancing between different backends of an application. In this example, the operator can split traffic and send it to different service endpoints and deployments based on the path described. Behind each path is a deployment and a service, which is helpful for endpoints that receive more traffic (just as a single deployment for `/hello-world` can be scaled without having to scale it).
+In the example below, another path is added to the manifest that permits load balancing between different backends of an application. In this example, the operator can split traffic and send it to different service endpoints and deployments based on the path described. Behind each path is a deployment and a service, which is helpful for endpoints that receive more traffic.
 
 ```yml
 apiVersion: networking.k8s.io/v1  
@@ -81,7 +85,7 @@ backend:
 
 ## Use ingress to route HTTP traffic to multiple host names on the same IP address
 
-You can use a different ingress resource per each host, which lets you control the traffic with multiple host names. Point multiple host names at the same public IP address that's used for the LoadBalancer service. In the following manifest file, a production version of `hello-world` was added. The hostname `prod.example.com` is used, and traffic is pointed to a new service `hello-world-prod`. Traffic comes in through the load balancer IP address and is routed based on the host name that's given and also the path.
+You can use a different ingress resource for each host, which lets you control the traffic with multiple host names. To do this, point multiple host names at the same public IP address that's used for the LoadBalancer service. In the following manifest file, a production version of `hello-world` was added. The hostname `prod.example.com` is used, and traffic is pointed to the new service `hello-world-prod`. Traffic comes in through the load balancer IP address and is routed based on the host name that's given and also on the path.
 
 ```yml
 apiVersion: networking.k8s.io/v1  
