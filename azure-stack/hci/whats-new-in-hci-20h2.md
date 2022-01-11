@@ -15,7 +15,7 @@ ms.date: 01/04/2022
 
 This article lists the various features and improvements that are now available in Azure Stack HCI, version 20H2. It also describes what's added in Windows Admin Center version 2103 to manage and support these new Azure Stack HCI features. To find out what's new in the latest version of Azure Stack HCI, see [What's new in Azure Stack HCI](whats-new.md).
 
-Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates. For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](release-information.md).
+For information on monthly quality and security updates, see [Azure Stack HCI release information](release-information.md).
 
 You can also join the Azure Stack HCI preview channel to test out features coming to a future version of the Azure Stack HCI operating system. For more info, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
