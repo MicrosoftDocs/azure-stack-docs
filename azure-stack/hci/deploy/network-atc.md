@@ -79,7 +79,7 @@ The following are requirements and best practices for using Network ATC in Azure
   - Data Center Bridging (DCB)
   - Failover Clustering
   - Hyper-V
-
+   Here's an example of installing the required features via PowerShell:
 ```powershell
 Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
 ```
