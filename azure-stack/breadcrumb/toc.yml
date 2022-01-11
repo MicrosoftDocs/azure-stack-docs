@@ -34,4 +34,12 @@
       topicHref: /azure-stack/aks-hci/index
     - name: HCI
       tocHref: /azure-stack/hci/
-      topicHref: /azure-stack/hci/index  
+      topicHref: /azure-stack/hci/index
+### For contextual TOC
+    - name: HCI
+      tocHref: /windows-server/
+      topicHref: /azure-stack/hci/index
+      items:
+      - name: Manage              # Original doc set name
+        tocHref: /windows-server/failover-clustering/             # Destination doc set route
+        topicHref: /azure-stack/hci/manage    # Original doc set route
