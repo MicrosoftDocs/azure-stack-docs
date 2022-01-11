@@ -31,7 +31,7 @@ With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads, s
 
 ### Azure Virtual Desktop for Azure Stack HCI (preview)
 
-You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview.md).
+You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
 
 ### Improvements to Azure Kubernetes Service on Azure Stack HCI
 
