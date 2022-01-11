@@ -166,7 +166,7 @@ Add-NetIntent -Name Cluster_ComputeStorage -Storage -ClusterName HCI01 -AdapterN
 The physical NIC (or virtual NIC if required) is configured to use VLANs 711, 712, 713, and 714 respectively.
 
 > [!NOTE]
-> Network ATC allows you to override default settings like VLANs. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
+> Network ATC allows you to change the VLANs used with the `StorageVlans` parameter on `Add-NetIntent`.
 
 ### Default Data Center Bridging (DCB) configuration
 
@@ -177,6 +177,9 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 |Cluster|Cluster Heartbeat reservation|7|2% if the adapter(s) are <= 10 Gbps; 1% if the adapter(s) are > 10 Gbps|
 |SMB_Direct|RDMA Storage Traffic|3|50%|
 |Default|All other traffic types|0|Remainder|
+
+> [!NOTE]
+> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
 
 ## Next steps
 

@@ -62,4 +62,4 @@ Set-StorageSubSystem -FriendlyName <name of cluster subsystem> -VirtualDiskRepai
 
 For more information, see also:
 
-- [Taking an Azure Stack HCI server offline for maintenance](maintain-servers.md)
+- [Taking an Azure Stack HCI server offline for maintenance](/azure-stack/hci/manage/maintain-servers)
