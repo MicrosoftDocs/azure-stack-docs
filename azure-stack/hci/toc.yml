@@ -182,7 +182,7 @@
       href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
-    - name: Use Azure Benefits on Azure Stack HCI
+    - name: Use Azure Benefits
       href: ./manage/azure-benefits.md
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
