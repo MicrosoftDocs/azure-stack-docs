@@ -12,8 +12,6 @@
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
-  - name: Azure Benefits on Azure Stack HCI
-    href: ./manage/azure-benefits.md
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -184,6 +182,8 @@
       href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
+    - name: Use Azure Benefits on Azure Stack HCI
+      href: ./manage/azure-benefits.md
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
     - name: Manage cluster registration with Azure
@@ -320,8 +320,6 @@
     href: /windows-server/
   - name: Windows Admin Center
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-  - name: Software Defined Networking
-    href: /windows-server/networking/sdn
   - name: System Center
     href: /system-center/
 - name: Resources
