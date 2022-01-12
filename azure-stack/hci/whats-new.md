@@ -25,7 +25,7 @@ Azure Stack HCI, version 21H2 brings new Azure workloads and their benefits to y
 
 This section describes the Azure workloads and benefits that are now available or in preview with Azure Stack HCI, version 21H2.
 
-### Azure Benefits enables Azure-exclusive workloads on Azure Stack HCI
+### Azure Benefits enables Azure-exclusive workloads
 
 With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads, such as Windows Server Datacenter: Azure Edition, on your on-premises Azure Stack HCI clusters. Azure Stack HCI, version 21H2 includes a new Azure platform attestation service called Azure Benefits, which makes it possible for supported Azure-exclusive workloads to work on your Azure Stack HCI cluster. You can enable Azure Benefits on Azure Stack HCI at no additional cost. For more information on Azure Benefits and the supported workloads, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
 
