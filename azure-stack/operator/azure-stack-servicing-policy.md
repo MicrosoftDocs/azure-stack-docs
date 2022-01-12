@@ -66,11 +66,11 @@ For information about currently available hotfixes, [see the release notes](rele
 
 ## Keep your system under support
 
-For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions (N-1, N-2). The following support restrictions apply to systems that are not within our general N-2 support policy:
+For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions (N-1, N-2). The following support restrictions apply to systems that aren't within our general N-2 support policy:
 
-- Hotfixes for the platform will not be provided for versions outside N-2.
-- Root Cause Analysis (RCAs) will not be provided for versions outside N-2.
-- Support incidents (SRs) will automatically be set to the lowest priority unless you are performing an update, meaning your request will be acknowledged after other customer issues are addressed that are within N-2. This could mean longer than anticipated delays in response times.
+- Hotfixes for the platform aren't provided for versions outside N-2.
+- Root Cause Analysis (RCAs) aren't provided for versions outside N-2.
+- Support incidents (SRs) are set to the lowest priority unless you're performing an update. Customer issues that are within the N-2 support policy are prioritized first. Support incidents for versions outside N-2 could mean longer than expected delays in response times.
 
 You must also have an active support agreement with the hardware partner that manufactured the system. Microsoft is not able to support you without a hardware support agreement in place.
 
