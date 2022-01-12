@@ -34,7 +34,7 @@ Using the Java SDK enables a true hybrid cloud developer experience. API profile
 
 2. Set up access to your Azure Stack Hub environment.
     a. You need a subscription to the user (tenant) of an Azure Stack Hub environment.
-    b. Get the your service principal
+    b. Get your service principal
     c. Get the values you will need.
     d. Save them as a JSON file.
 3. Get the samples repository.
