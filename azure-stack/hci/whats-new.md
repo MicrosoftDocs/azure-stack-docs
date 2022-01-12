@@ -43,7 +43,7 @@ Azure Stack HCI natively integrates with the Azure Resource Manager to project y
 
 ### Azure Backup support for Azure Stack HCI
 
-With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. For more information, see [Back up Azure Stack HCI virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md).
+With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. For more information, see [Back up Azure Stack HCI virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 ### Azure Site Recovery support for Azure Stack HCI
 
@@ -51,7 +51,7 @@ With Azure Site Recovery support, you can now continuously replicate VMs from Az
 
 ### Arc-enabled PaaS services on Azure Stack HCI (preview)
 
-Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](/azure/azure-arc/data/managed-instance-overview.md) and [PostgreSQL Hyperscale (preview)](/azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale.md), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](/azure/app-service/overview-arc-integration.md) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
+Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](/azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](/azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](/azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
 
 ### Multi-cluster monitoring in the Azure portal (preview)
 
