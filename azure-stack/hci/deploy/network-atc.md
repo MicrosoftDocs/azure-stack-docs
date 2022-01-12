@@ -1,11 +1,11 @@
 ---
 title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI.
-author: v-dasis
+author: jacobpedd
 ms.topic: how-to
-ms.date: 10/19/2021
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.date: 01/22/2022
+ms.author: jpeddicord
+ms.reviewer: jgerend
 ---
 
 # Deploy host networking with Network ATC
@@ -32,8 +32,17 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
-- Install features from [Step 1.3: Install roles and features](../deploy/create-cluster-powershell.md#step-13-install-roles-and-features).
+- Cluster nodes must install the following Azure Stack HCI features on each node:
 
+  - Network ATC
+  - Data Center Bridging (DCB)
+  - Failover Clustering
+  - Hyper-V
+   Here's an example of installing the required features via PowerShell:
+   
+   ```powershell
+   Install-WindowsFeature -Name NetworkATC, Data-Center-Bridging, Hyper-V, Failover-Clustering -IncludeManagementTools
+   ```
 - Best practice: Insert each adapter in the same PCI slot(s) in each host. This leads to ease in automated naming conventions by imaging systems.
 
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
