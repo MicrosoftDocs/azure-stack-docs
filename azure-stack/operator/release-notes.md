@@ -120,7 +120,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2102.30.116](hotfix-1-2102-30-116.md)
+- [Azure Stack Hub hotfix 1.2102.30.119](hotfix-1-2102-30-119.md)
 
 ### After successfully applying the 2108 update
 
@@ -128,7 +128,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2108.
+- [Azure Stack Hub hotfix 1.2108.2.73](hotfix-1-2102-2-73.md)
 ::: moniker-end
 
 ::: moniker range="azs-2102"
@@ -222,7 +222,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-40-154.md)
+- [Azure Stack Hub hotfix 1.2008.41.159](hotfix-1-2008-41-159.md)
 
 ### After successfully applying the 2102 update
 
@@ -230,7 +230,7 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2102.30.116](hotfix-1-2102-30-116.md)
+- [Azure Stack Hub hotfix 1.2102.30.119](hotfix-1-2102-30-119.md)
 ::: moniker-end
 
 ::: moniker range="azs-2008"
@@ -315,7 +315,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-40-154.md)
+- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-41-159.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
