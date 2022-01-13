@@ -1,10 +1,10 @@
 ---
 title: Use the Azure login action with Azure CLI and PowerShell on Azure Stack Hub 
 description: Use the Azure login action with Azure CLI and PowerShell to create a continuous integration, continuous deployment (CI/CD) workflow on Azure Stack Hub
-author: mattbriggs
+author: BryanLa
 ms.topic: how-to
 ms.date: 1/11/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: gara
 ms.lastreviewed: 1/11/2021
 

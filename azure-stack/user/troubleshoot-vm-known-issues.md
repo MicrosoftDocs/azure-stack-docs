@@ -1,11 +1,11 @@
 ---
 title: Troubleshooting VM known issues on Azure Stack Hub
 description: Learn how to troubleshoot virtual machine known issues on Azure Stack Hub
-author: mattbriggs
+author: BryanLa
 
 ms.topic: troubleshooting
 ms.date: 07/30/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 07/09/2020
 

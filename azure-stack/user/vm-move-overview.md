@@ -1,10 +1,10 @@
 ---
 title: Move a VM to Azure Stack Hub
 description: Learn about the different ways that you can move a VM to Azure Stack Hub.
-author: mattbriggs
+author: BryanLa
 ms.topic: conceptual
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020
 

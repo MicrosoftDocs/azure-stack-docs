@@ -1,11 +1,11 @@
 ---
 title: Deploy foundational patterns on Azure Stack Hub
 description: Learn how to Deploy foundational patterns with Azure Stack Hub.
-author: mattbriggs
+author: BryanLa
 
 ms.topic: how-to
 ms.date: 9/8/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: raymondl
 ms.lastreviewed: 9/8/2021
 
