@@ -6,7 +6,7 @@ author: BryanLa
 ms.topic: how-to
 ms.date: 9/8/2021
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 9/8/2021
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >

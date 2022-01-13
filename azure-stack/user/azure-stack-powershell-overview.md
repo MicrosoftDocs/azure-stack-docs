@@ -6,7 +6,7 @@ author: BryanLa
 ms.topic: article
 ms.date: 12/2/2020
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
 # Intent: As a developer or system admin, I want to write scripts to work with Azure Stack Hub so that I can automate my workflows. I need to understand the various version of PowerShell used in Azure Stack Hub.

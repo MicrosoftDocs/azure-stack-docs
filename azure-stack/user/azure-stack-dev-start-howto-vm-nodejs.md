@@ -6,7 +6,7 @@ author: BryanLa
 ms.topic: how-to
 ms.date: 8/20/2021
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 8/20/2021
 ms.custom: contperf-fy22q1
 

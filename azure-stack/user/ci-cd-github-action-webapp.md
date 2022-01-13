@@ -5,7 +5,7 @@ author: BryanLa
 ms.topic: how-to
 ms.date: 2/16/2021
 ms.author: bryanla
-ms.reviewer: gara
+ms.reviewer: thoroet
 ms.lastreviewed: 2/16/2021
 
 # Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.

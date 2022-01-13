@@ -6,7 +6,7 @@ ms.custom: contperf-fy20q4
 ms.topic: article
 ms.date: 12/6/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to know which resource provider API versions are supported by profiles in Azure Stack.

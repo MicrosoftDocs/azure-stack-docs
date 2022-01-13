@@ -6,7 +6,7 @@ author: BryanLa
 ms.topic: how-to
 ms.date: 8/27/2021
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 8/27/2021
 
 # Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.

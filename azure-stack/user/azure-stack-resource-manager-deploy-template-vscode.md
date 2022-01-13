@@ -5,7 +5,7 @@ author: BryanLa
 ms.topic: article
 ms.date: 6/1/2021
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 6/1/2021
 
 # Intent: Notdone: As a user, I want to create an Azure Resource Manager template in Visual Studio Code and use the deployment schema to prepare a template that is compatible with my version of Azure Stack Hub.

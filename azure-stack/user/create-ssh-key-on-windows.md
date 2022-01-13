@@ -6,7 +6,7 @@ author: BryanLa
 ms.topic: article
 ms.date: 12/2/2020
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub user, I would like to create a public/private ssh key pair to use when creating Linux VMs.

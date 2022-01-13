@@ -6,7 +6,7 @@ author: BryanLa
 ms.topic: how-to
 ms.date: 12/2/2020
 ms.author: bryanla
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack Hub user, I want to deploy a template using the portal in Azure Stack Hub so I can manage resources efficiently.
