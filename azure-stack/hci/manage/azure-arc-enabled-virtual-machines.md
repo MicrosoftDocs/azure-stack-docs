@@ -179,11 +179,17 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    > [!TIP]
    > These details can be found by running `Get-AzureStackHCI`.
 
-2. Log in to your Azure subscription:
+2. Log in to your Azure subscription & get the extension and providers for Arc Resource Bridge:
    
    ```PowerShell
    az login --use-device-code
    az account set --subscription $subscription
+   az provider register --namespace Microsoft.Kubernetes
+   az provider register --namespace Microsoft.KubernetesConfiguration
+   az provider register --namespace Microsoft.ExtendedLocation
+   az provider register --namespace Microsoft.ResourceConnector
+   az provider register --namespace Microsoft.AzureStackHCI
+   az feature register --namespace Microsoft.ResourceConnector --name Appliances-ppauto
    ```
    
 3. Run the following cmdlets:
