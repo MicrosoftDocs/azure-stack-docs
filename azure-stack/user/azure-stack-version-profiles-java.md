@@ -19,7 +19,7 @@ ms.lastreviewed: 1/13/2022
 
 The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis).
 
-The Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that loads the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you can select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack Hub.
+The Azure Stack Hub Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that load the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2020-09-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you interact with an Azure Stack Hub resource provider you will use the right version of the API. This enables you to use the latest versions in Azure, while developing your solution for the most current API versions for Azure Stack Hub.
 
 Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack Hub.
 
@@ -56,7 +56,7 @@ You will use a service principal to access resources in your Azure Stack Hub sys
 
     | Name | Key | Description |
     | --- | --- | --- |
-    | Client ID | clientId | The service principal application ID saved when the service principal was created |
+    | Client ID | clientId | The service principal application ID saved when the service principal was created. |
     | Client Secret | clientSecret | The service principal application secret saved when the service principal was created. |
     | Client Object ID | clientObjectId | The ID of service principal. You can retrieve the ID with the following cmdlet: `Get-AzADServicePrincipal -DisplayName $name`. |
     | Subscription ID | subscriptionId | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub. |
