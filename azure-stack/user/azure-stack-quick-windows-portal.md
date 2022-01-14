@@ -1,10 +1,10 @@
 ---
 title: Create a Windows VM with Azure Stack Hub portal 
 description: Learn how to create a Windows Server 2016 virtual machine (VM) with the Azure Stack Hub portal.
-author: mattbriggs
+author: BryanLa
 ms.topic: quickstart
 ms.date: 10/4/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/4/2021
 ms.custom: contperf-fy22q2, mode-portal

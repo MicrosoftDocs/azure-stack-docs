@@ -1,12 +1,12 @@
 ---
 title: Deploy templates with Visual Studio in Azure Stack Hub 
 description: Learn how to deploy templates with Visual Studio in Azure Stack Hub.
-author: mattbriggs
+author: BryanLa
 
 ms.topic: article
 ms.date: 12/2/2020
-ms.author: mabrigg
-ms.reviewer: raymondl
+ms.author: bryanla
+ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
 # Intent: As an Azure Stack user, I want to deploy templates in Azure Stack with Visual Studio so...... (article doesn't give any benefits)
