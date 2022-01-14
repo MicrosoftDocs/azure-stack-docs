@@ -1,10 +1,12 @@
 ---
 title: Uninstall-AksHciCsiSmb for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Uninstall-AksHciCsiSmb PowerShell command uninstalls the CSI SMB plug-in in a cluster.
 ms.topic: reference
 ms.date: 4/13/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Uninstall-AksHciCsiSmb

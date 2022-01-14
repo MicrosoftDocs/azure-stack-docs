@@ -2,8 +2,10 @@
 title: What is Azure Kubernetes Service on Azure Stack HCI?
 description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 ms.topic: overview
-author: v-susbo
-ms.author: v-susbo
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ms.date: 06/24/2021
 #Customer intent: As an IT Pro, I want AKS on Azure Stack HCI so that I can easily deploy Kubernetes on-premises to orchestrate my containerized workloads.
 ---

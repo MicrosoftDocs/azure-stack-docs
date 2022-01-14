@@ -4,8 +4,10 @@ description: In this tutorial, learn how to scale nodes and pods in Kubernetes
 services: container-service
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.author: jeguan
-author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+author: mattbriggs
 ---
 
 # Tutorial: Scale applications in Azure Kubernetes Service on Azure Stack HCI

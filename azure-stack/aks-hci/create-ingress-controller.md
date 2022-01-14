@@ -1,10 +1,12 @@
 ---
 title: Use an ingress controller in Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to deploy an ingress controller in Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: EkeleAsonye
+author: mattbriggs
 ms.topic: how-to
 ms.date: 01/10/2022
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ---
 
 # Deploy an ingress controller

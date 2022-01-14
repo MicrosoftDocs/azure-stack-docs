@@ -1,10 +1,12 @@
 ---
 title: Concepts about securing containers in Azure Kubernetes Service on Azure Stack HCI
 description: Learn some of the methods you can use to implement security for containers in Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: EkeleAsonye
+author: mattbriggs
 ms.topic: how-to
 ms.date: 12/30/2021
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ---
 
 # Container security

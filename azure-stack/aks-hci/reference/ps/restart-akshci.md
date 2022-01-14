@@ -1,10 +1,12 @@
 ---
 title: Restart-AksHci for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Restart-AksHci PowerShell command restarts AKS on Azure Stack HCI and removes all deployed Kubernetes clusters.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Restart-AksHci

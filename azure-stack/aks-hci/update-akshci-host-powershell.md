@@ -4,8 +4,10 @@ description: Learn about using PowerShell to upgrade the Azure Kubernetes Servic
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.custom: 
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 ---
 
 # Upgrade the AKS on Azure Stack HCI host using PowerShell

@@ -1,10 +1,12 @@
 ---
 title: Back up and restore workload clusters using Velero and Azure Blob storage in Azure Kubernetes Service (AKS) on Azure Stack HCI
 description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI.
-author: scooley
+author: mattbriggs
 ms.topic: how-to
 ms.date: 11/16/2021
-ms.author: scooley
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: scooley
 ---
 
 # Back up and restore workload clusters using Velero and Azure Blob storage

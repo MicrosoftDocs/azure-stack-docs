@@ -1,10 +1,12 @@
 ---
 title: Uninstall-AksHciAdAuth for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Uninstall-AksHciAdAuth PowerShell command uninstalls AD authentication.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Uninstall-AksHciAdAuth

@@ -1,10 +1,12 @@
 ---
 title: Set-AksHciRegistration for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Set-AksHciRegistration PowerShell command registers Azure Kubernetes Service on Azure Stack HCI with Azure.
 ms.topic: reference
 ms.date: 04/12/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Set-AksHciRegistration

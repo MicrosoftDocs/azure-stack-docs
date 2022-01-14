@@ -4,8 +4,10 @@ description: In this tutorial, learn how to prepare and build a multi-container 
 services: container-service
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.author: jeguan
-author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+author: mattbriggs
 ---
 
 # Tutorial: Prepare an application for Azure Kubernetes Service on Azure Stack HCI

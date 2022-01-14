@@ -4,8 +4,10 @@ description: Learn about using network policy to secure traffic between pods in 
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 
 ---
 
