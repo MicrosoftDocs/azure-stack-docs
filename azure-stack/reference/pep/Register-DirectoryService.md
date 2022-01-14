@@ -1,11 +1,11 @@
 ---
 title: Register-DirectoryService privileged endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint -Register-DirectoryService
-author: mattbriggs
+author: PatAltimore
 
 ms.topic: reference
 ms.date: 04/27/2020
-ms.author: mabrigg
+ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---
