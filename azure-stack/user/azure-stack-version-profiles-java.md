@@ -4,10 +4,10 @@ description: Learn how to use API version profiles with Java in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/4/2021
+ms.date: 1/13/2022
 ms.author: sethm
 ms.reviewer: weshi1
-ms.lastreviewed: 11/4/2021
+ms.lastreviewed: 1/13/2022
 
 # Intent: As an Azure Stack user, I want to use API version profiles with Java in Azure stack so I can benefit from the use of profiles.
 # Keyword: azure stack api profiles java
@@ -25,68 +25,125 @@ Using the Java SDK enables a true hybrid cloud developer experience. API profile
 
 ::: moniker range=">=azs-2102"
 
-`Draft-2021-20-12`
+To use the latest versions of all the services, use the **latest** profile as the dependency.
 
-1. Set up your development environment
-    a. Install Git.
-    b. Install the Java SDK.
-    c. Install Maven.
+  - To use the latest profile, the dependency is **com.azure.resourcemanager**.
+  - The profile is specified in the `pom.xml` file as a dependency, which loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
+  - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined through Intellisense.
 
-2. Set up access to your Azure Stack Hub environment.
-    a. You need a subscription to the user (tenant) of an Azure Stack Hub environment.
-    b. Get your service principal
-    c. Get the values you will need.
-    d. Save them as a JSON file.
-3. Get the samples repository.
-    a. https://github.com/bbridges/hybrid-compute-java-manage-vm.git
-4. Create and delete a resource group in your Azure Stack Hub environment.
-    a. https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/resourcegroup
-5. Other samples
-    a. Work with resource groups in Azure Stack Hub
-        Azure Stack Resource sample for managing resource groups:
-            • Create a resource group
-            • Update a resource group
-            • Create another resource group
-            • List resource groups
-            • Delete a resource group
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/resourcegroup> 
-        
-    
-    b. Work with Key vault in Azure Stack Hub
-        Azure Stack Key Vault sample for managing secrets:
-            • Create a key vault
-            • Set a secret
-            • Get a secret
-            • Delete a key vault
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/secret> 
-        
-    c. Work with the storage service in Azure Stack Hub
-        Azure Stack Storage sample for managing storage accounts:
-            • Create a storage account
-            • Get | regenerate storage account access keys
-            • Create another storage account
-            • List storage accounts
-            • Delete a storage account
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/storage> 
-        
-    d. Work with VMs in Azure Stack Hub.
-        Azure Stack Compute sample for managing virtual machines:
-            • Create a virtual machine with managed OS Disk
-            • Start a virtual machine
-            • Stop a virtual machine
-            • Restart a virtual machine
-            • Update a virtual machine
-            • Tag a virtual machine (there are many possible variations here)
-            • Attach data disks
-            • Detach data disks
-            • List virtual machines
-            • Delete a virtual machine
-        
-        From <https://github.com/bbridges/hybrid-compute-java-manage-vm/tree/track-2/vm> 
+You can combine all of the options in the same app.
 
+For more information about Azure Stack Hub and API profiles, see the [Summary
+of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
+## Set up your development environment
+
+To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed.
+
+1. Install Git. You can find the official instructions to install Git at [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+2. Install the Java SDK and set your `JAVA_HOME` environment variable to the location of the binaries for Java Development Kit. You can find the downloadable installation media instructions for the [OpenJDK](https://www.microsoft.com/openjdk). Install version 8 or greater of the Java Developer Kit.
+
+3. Install Apache Maven. You can find instruction at [the Apache Maven Project](https://maven.apache.org/). Install Apache Maven is 3.0 or above. 
+
+## Set up access to Azure Stack Hub
+
+You will use a service principal to access resources in your Azure Stack Hub system.
+
+1. You need a subscription to the user (tenant) of an Azure Stack Hub environment. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
+2. Get your service principal (SPN) and a client secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md). The client ID is also known as the application ID when creating a service principal. If you do not have access, request the SPN and secret from your cloud operator.
+3. Add your service principal as a **contributor/owner** to your subscription.  For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
+4. Validate that you have the following credentials:
+
+    | Name | Key | Description |
+    | --- | --- | --- |
+    | Client ID | clientId | The service principal application ID saved when the service principal was created |
+    | Client Secret | clientSecret | The service principal application secret saved when the service principal was created. |
+    | Client Object ID | clientObjectId | The ID of service principal. You can retrieve the ID with the following cmdlet: `Get-AzADServicePrincipal -DisplayName $name`. |
+    | Subscription ID | subscriptionId | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub. |
+    | Tenant ID | tenantId | Your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). To find the tenant ID for your Azure Stack Hub, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). |
+    | Resource Manager URL | resourceManagerUrl | See the [Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md?#the-azure-stack-hub-resource-manager-endpoint) article. |
+    | Location | location | Azure regions are global datacenters where Azure compute, networking, and storage resources are located. When creating an Azure resource, a customer needs to select a resource location. Azure Stack Hub may have locations specific to the datacenter hosting the system. |
+
+    For example:
+
+    ```json
+    {
+        "clientId": "0cbd71bb-xxxx-4305-9250-8a8efa19082e",
+        "clientSecret": "3qx7xxxx5RQaf8o2hUtvVuGvTda2CWghNbLg",
+        "clientObjectId": "cbe4b8d0-xxxx-47c3-8ae4-f652a5e55aaf",
+        "subscriptionId": "246b1785-xxxx-40d8-a0f0-d94b15dc002c",
+        "tenantId": "246b1785-xxxx-40d8-a0f0-d94b15dc002c",
+        "resourceManagerUrl": "https://management.azure.com/",
+        "location": "Boston"
+     }
+    ```
+
+## Run an SDK sample
+
+Clone the GitHub repository that contains the sample, add your service principal values to the app configuration, update the application `POM.xml`, compile, and run the Maven project.
+
+1. Clone the samples repository to your development machine. You find the sample at: https://github.com/bbridges/hybrid-compute-java-manage-vm.git
+
+2. Copy `azureAppSpConfig.json.dist` in the root folder of the repository and rename as `azureAppSpConfig.json`. Add the credentials for your system and service principal.
+
+3. Install the correct dependency packages, open the `pom.xml`** file in your Java app. In this sample,, the `pom` is located at `\resourcegroup\pom.xml`. Add a dependency in the `<dependencies>` section as shown in the following code:
+
+    ```xml
+    <dependency>
+    <groupId>com.azure.resourcemanager</groupId>
+    <artifactId>azure-resourcemanager</artifactId>
+    <version>1.0.0-hybrid</version>
+    </dependency>
+     ```
+
+    The set of packages that need to be installed depends on the profile version you want to use. The package names for the profile versions are: `com.azure.resourcemanager`
+
+1. Create and delete a resource group in your Azure Stack Hub environment.
+    a. Open the `resourcegruop` subfolder.
+        ```bash
+        cd resourcegroup
+        ```
+    b. Run the sample with the following Maven commands:
+        ```bash
+        mvn clean compile
+        mvn exec:java
+        ```
+
+## More samples and steps
+
+You can use the samples in the Azure Stack Hub Java SDK to perform the following tasks:
+
+1. Samples for managing resource groups:
+    - Create a resource group
+    - Update a resource group
+    - Create another resource group
+    - List resource groups
+    - Delete a resource group
+
+2. Samples for Key vault in Azure Stack Hub
+    - Create a key vault
+    - Set a secret
+    - Get a secret
+    - Delete a key vault
+
+3. Samples for storage service in Azure Stack Hub
+    - Create a storage account
+    - Get and regenerate storage account access keys
+    - Create another storage account
+    - List storage accounts
+    - Delete a storage account
+
+4. Samples for working with VMs in Azure Stack Hub.
+    - Create a virtual machine with managed OS Disk
+    - Start a virtual machine
+    - Stop a virtual machine
+    - Restart a virtual machine
+    - Update a virtual machine
+    - Tag a virtual machine (there are many possible variations here)
+    - Attach data disks
+    - Detach data disks
+    - List virtual machines
+    - Delete a virtual machine
 
 ::: moniker-end
 ::: moniker range="<=azs-2008"
@@ -387,3 +444,4 @@ For more information about API profiles, see:
 
 - [Version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
+- [Develop enterprise Java applications in the cloud with your favorite tools and frameworks](/develop/java/)
