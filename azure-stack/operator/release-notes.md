@@ -2,9 +2,8 @@
 title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 01/07/2022
+ms.date: 01/13/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020

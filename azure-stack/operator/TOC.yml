@@ -13,7 +13,7 @@
     - name: Release notes
       href: release-notes.md
     - name: Hotfixes
-      items:
+      items:   
       - name: Hotfix 1.2102.30.116
         href: hotfix-1-2102-30-116.md
       - name: Hotfix 1.2102.30.109

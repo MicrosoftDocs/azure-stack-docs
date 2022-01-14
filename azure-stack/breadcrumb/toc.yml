@@ -34,4 +34,8 @@
       topicHref: /azure-stack/aks-hci/index
     - name: HCI
       tocHref: /azure-stack/hci/
-      topicHref: /azure-stack/hci/index  
+      topicHref: /azure-stack/hci/index
+### For contextual TOC
+    - name: HCI
+      tocHref: /windows-server/
+      topicHref: /azure-stack/hci/index

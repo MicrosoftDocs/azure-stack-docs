@@ -1,11 +1,11 @@
 ---
 title: Consume monitoring data from Azure Stack Hub 
 description: Learn about options for consuming monitoring data from Azure Stack Hub.
-author: mattbriggs
+author: BryanLa
 
 ms.topic: article
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.lastreviewed: 11/11/2019
 
 # Intent: As an Azure Stack user, I want to consume monitoring data in Azure Stack so I can make decisions based on those metrics.
