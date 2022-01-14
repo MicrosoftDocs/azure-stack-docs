@@ -17,24 +17,20 @@ ms.lastreviewed: 1/13/2022
 
 # Use API version profiles with Java in Azure Stack Hub
 
-The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis).
+The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and Azure Key Vault. You can find the [Hybrid Java Samples repository](https://github.com/Azure-Samples/Hybrid-Java-Samples) on GitHub. This article will help you set up your environment, get the right credentials, grab the repository, and create a resource group in Azure Stack Hub.
 
-The Azure Stack Hub Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that load the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2020-09-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you interact with an Azure Stack Hub resource provider you will use the right version of the API. This enables you to use the latest versions in Azure, while developing your solution for the most current API versions for Azure Stack Hub.
-
-Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack Hub.
+Using the Java SDK enables a true hybrid cloud developer experience. Switching the version dependencies in the `POM.xml` in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources to resources in Azure Stack Hub.
 
 ::: moniker range=">=azs-2102"
 
-To use the latest version of the services, use the **2020-09-01-hybrid** profile as the dependency.
+To use the latest version of the services, use the **latest** profile as the dependency.
 
-  - To use the latest profile, the dependency is **com.azure.resourcemanager**. The **2020-09-01-hybrid** profile Java packages provide a consistent experience with Azure. The packages share the same group ID as Azure **com.azure.resourcemanager**. The artifact ID and namespaces are also the same as global Azure. This helps in porting your Azure app to Azure Stack Hub.
-  - The profile is specified in the `pom.xml` file as a dependency, which loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
-  - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined through Intellisense.
+You can target your app to resource in Azure tack Hub by taking your existing **com.azure.resourcemanager** dependency and change the version from `x.y.z` to `x.y.z-hybrid`. The hybrid packages, which provide support for Azure Stack Hub, use a `-hybrid` suffix at the end of the version, for example, `1.0.0-hybrid`. This will point to a static collection of endpoints associated with the version.
 
-You can combine all of the options in the same app.
-
-For more information about Azure Stack Hub and API profiles, see the [Summary
+To get the the latest profile, take your existing **com.azure.resourcemanager** dependency and change the version to **latest**. The **latest** profile Java packages provide a consistent experience with Azure. The packages share the same group ID as Azure **com.azure.resourcemanager**. The artifact ID and namespaces are also the same as global Azure. This helps in porting your Azure app to Azure Stack Hub. To find more about the endpoints used in Azure Stack Hub as par of the hybrid profile, see the [Summary
 of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
+
+The profile is specified in the `pom.xml` file in the Maven project as a dependency. The profile loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
 ## Set up your development environment
 
 To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed. You can find details about the prerequisites for the setting up your development environment at [Use the Azure SDK for Java](/developer/java/sdk/overview)
@@ -85,12 +81,12 @@ Clone the GitHub repository that contains the sample, add your service principal
 1. Clone the samples repository to your development machine.
 
     ```bash
-    git clone https://github.com/bbridges/hybrid-compute-java-manage-vm.git
+    git clone https://github.com/Azure-Samples/Hybrid-Java-Samples
     ```
 
 2. Copy `azureAppSpConfig.json.dist` in the root folder of the repository and rename as `azureAppSpConfig.json`. Add the credentials for your system and service principal.
 
-3. Install the correct dependency packages, open the `pom.xml`** file in your Java app. In this sample,, the `pom` is located at `\resourcegroup\pom.xml`. Add a dependency in the `<dependencies>` section as shown in the following code:
+3. Install the correct dependency packages, open the `pom.xml` file in your Java app. In this sample,, the `pom` is located at `\resourcegroup\pom.xml`. Add a dependency in the `<dependencies>` section as shown in the following code:
 
     ```xml
     <dependency>
@@ -143,11 +139,6 @@ You can use the samples in the Azure Stack Hub Java SDK to perform the following
 
 4. Samples for working with VMs in Azure Stack Hub:
     - Create a virtual machine with managed OS Disk
-    - Start a virtual machine
-    - Stop a virtual machine
-    - Restart a virtual machine
-    - Update a virtual machine
-    - Tag a virtual machine (there are many possible variations here)
     - Attach data disks
     - Detach data disks
     - List virtual machines
