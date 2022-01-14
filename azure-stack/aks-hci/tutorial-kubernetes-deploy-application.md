@@ -4,8 +4,10 @@ description: In this Azure Kubernetes Service on Azure Stack HCI tutorial, learn
 services: container-service
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.author: jeguan
-author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+author: mattbriggs
 ---
 
 # Tutorial: Run applications in Azure Kubernetes Service on Azure Stack HCI

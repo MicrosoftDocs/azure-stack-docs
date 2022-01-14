@@ -1,11 +1,13 @@
 ---
 title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI
 description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI.
-author: v-susbo
+author: mattbriggs
 ms.topic: how-to
 ms.date: 05/14/2021
-ms.author: oadeniji
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: oadeniji
+
 ---
 
 # Get kubelet logs from cluster nodes on AKS on Azure Stack HCI

@@ -1,11 +1,13 @@
 ---
 title: Known issues in Windows Admin Center for Azure Kubernetes Service on Azure Stack HCI 
 description: Known issues in Windows Admin Center for Azure Kubernetes Service on Azure Stack HCI 
-author: abha
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 09/22/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Fix issues in Windows Admin Center

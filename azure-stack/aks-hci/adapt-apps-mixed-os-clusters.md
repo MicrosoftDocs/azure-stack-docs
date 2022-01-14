@@ -1,11 +1,13 @@
 ---
 title: Adapt applications for use in mixed-OS Kubernetes clusters
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
-author: abha
+author: mattbriggs
 ms.topic: how-to
 ms.date: 05/21/2021
-ms.author: abha
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 # Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations
 

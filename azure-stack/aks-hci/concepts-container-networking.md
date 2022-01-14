@@ -4,8 +4,10 @@ description: Learn about container networking in Azure Kubernetes Service (AKS) 
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 ---
 
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
