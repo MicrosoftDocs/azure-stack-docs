@@ -25,9 +25,9 @@ Using the Java SDK enables a true hybrid cloud developer experience. API profile
 
 ::: moniker range=">=azs-2102"
 
-To use the latest versions of all the services, use the **latest** profile as the dependency.
+To use the latest version of the services, use the **2020-09-01-hybrid** profile as the dependency.
 
-  - To use the latest profile, the dependency is **com.azure.resourcemanager**.
+  - To use the latest profile, the dependency is **com.azure.resourcemanager**. The **2020-09-01-hybrid** profile Java packages provide a consistent experience with Azure. The packages share the same group ID as Azure **com.azure.resourcemanager**. The artifact ID and namespaces are also the same as global Azure. This helps in porting your Azure app to Azure Stack Hub.
   - The profile is specified in the `pom.xml` file as a dependency, which loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
   - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined through Intellisense.
 
@@ -37,7 +37,7 @@ For more information about Azure Stack Hub and API profiles, see the [Summary
 of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 ## Set up your development environment
 
-To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed.
+To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed. You can find details about the prerequisites for the setting up your development environment at [Use the Azure SDK for Java](/developer/java/sdk/overview)
 
 1. Install Git. You can find the official instructions to install Git at [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
@@ -157,9 +157,7 @@ You can use the samples in the Azure Stack Hub Java SDK to perform the following
 ::: moniker range="<=azs-2008"
 ## Java and API version profiles
 
-An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
-
-- To use the latest versions of all the services, use the **latest** profile as the dependency.
+To use the latest versions of all the services, use the **latest** profile as the dependency.
 
   - To use the latest profile, the dependency is **com.microsoft.azure**.
 
