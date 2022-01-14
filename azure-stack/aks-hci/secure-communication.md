@@ -1,11 +1,13 @@
 ---
 title: Secure communication between control plane nodes for AKS on Azure Stack HCI
 description: Learn how to secure communication between in-cluster components.
-author: aabhathipsay
+author: mattbriggs
 ms.topic: how-to
 ms.date: 03/04/2021
-ms.author: aathipsa
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: aathipsa
+
 ---
 
 # Secure communication with certificates  

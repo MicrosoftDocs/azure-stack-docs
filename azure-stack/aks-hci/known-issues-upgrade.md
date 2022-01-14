@@ -1,11 +1,13 @@
 ---
 title: Known issues when upgrading Azure Kubernetes Service on Azure Stack HCI 
 description: Known issues when upgrading  Azure Kubernetes Service on Azure Stack HCI 
-author: EkeleAsonye
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 12/13/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Resolve issues when upgrading AKS on Azure Stack HCI

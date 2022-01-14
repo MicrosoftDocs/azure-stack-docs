@@ -1,10 +1,13 @@
 ---
 title: Install-AksHciCsiSmb for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Install-AksHciCsiSmb PowerShell command Installs CSI SMB Plugin to a cluster
 ms.topic: reference
 ms.date: 4/13/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+
 ---
 
 # Install-AksHciCsiSmb
