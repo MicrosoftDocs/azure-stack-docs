@@ -7,6 +7,7 @@ ms.date: 4/16/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
+
 ---
 
 # Get-AksHciProxySetting

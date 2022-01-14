@@ -7,6 +7,7 @@ ms.date: 09/08/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mamezgeb
+
 ---
 
 # Enable-AksHciPreview

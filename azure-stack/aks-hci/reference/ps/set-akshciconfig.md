@@ -7,6 +7,7 @@ author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
+
 ---
 
 # Set-AksHciConfig
