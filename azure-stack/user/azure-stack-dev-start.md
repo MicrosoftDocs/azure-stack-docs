@@ -2,11 +2,11 @@
 
 title: Set up a development environment in Azure Stack Hub  
 description: Get started developing applications for Azure Stack Hub.  
-author: mattbriggs 
+author: BryanLa 
 ms.topic: overview 
 ms.date: 12/2/2020
-ms.author: mabrigg 
-ms.reviewer: raymondl 
+ms.author: bryanla 
+ms.reviewer: thoroet 
 ms.lastreviewed: 12/2/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
