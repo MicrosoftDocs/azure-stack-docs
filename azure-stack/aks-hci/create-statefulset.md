@@ -1,10 +1,12 @@
 ---
 title: Create StatefulSets in Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to create StatefulSets in Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: EkeleAsonye
+author: mattbriggs
 ms.topic: how-to
 ms.date: 12/28/2021
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ---
 
 # Create a StatefulSet

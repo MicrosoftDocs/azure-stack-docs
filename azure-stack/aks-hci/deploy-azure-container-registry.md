@@ -1,11 +1,13 @@
 ---
 title: How to - Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI
 description: Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI.
-author: baziwane
+author: mattbriggs
 ms.topic: how-to
 ms.date: 05/10/2021
-ms.author: rbaziwane
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: rbaziwane
+
 ---
 
 # Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI

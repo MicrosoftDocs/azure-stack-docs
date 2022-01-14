@@ -4,8 +4,10 @@ description: Understand the Kubernetes version support policy and lifecycle of c
 services: container-service
 ms.topic: article
 ms.date: 12/07/2021
-author: mkostersitz
-ms.author: mikek
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
 ---
 
 # Supported Kubernetes versions in Azure Kubernetes Service (AKS on Azure Stack HCI)

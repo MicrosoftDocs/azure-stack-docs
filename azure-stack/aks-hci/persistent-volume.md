@@ -1,11 +1,13 @@
 ---
 title: Use persistent volume in an AKS on Azure Stack HCI cluster
 description: Use persistent storage in a Windows container and prepare Windows nodes for group Managed Service Accounts
-author: v-susbo
+author: mattbriggs
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Use persistent volume in an AKS on Azure Stack HCI cluster

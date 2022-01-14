@@ -1,11 +1,11 @@
 ---
 title: Install PowerShell AzureRM module for Azure Stack Hub 
 description: Learn how to install PowerShell for Azure Stack Hub. See how to install the PowerShell AzureRM module and required API profiles.
-author: mattbriggs
+author: PatAltimore
 
 ms.topic: article
 ms.date: 7/22/2021
-ms.author: mabrigg
+ms.author: patricka
 ms.reviewer: raymondl
 ms.lastreviewed: 7/22/2021
 

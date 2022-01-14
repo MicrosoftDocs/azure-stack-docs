@@ -1,10 +1,12 @@
 ---
 title: Quickstart to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell and a proxy server
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell and a proxy server
-author: mkostersitz
+author: mattbriggs
 ms.topic: quickstart
 ms.date: 11/02/2021
-ms.author: mikek
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
 ---
 
 # Quickstart: Set up an AKS host on Azure Stack HCI and deploy a workload cluster using PowerShell and a proxy server

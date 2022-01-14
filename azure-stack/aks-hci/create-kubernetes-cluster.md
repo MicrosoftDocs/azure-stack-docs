@@ -1,10 +1,12 @@
 ---
 title: Quickstart to create a Kubernetes cluster using Windows Admin Center
 description: Learn how to create a Kubernetes cluster using Windows Admin Center
-author: davannaw-msft
+author: mattbriggs
 ms.topic: quickstart
 ms.date: 05/25/2021
-ms.author: dawhite
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: dawhite
 ms.custom: mode-portal
 ---
 # Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center

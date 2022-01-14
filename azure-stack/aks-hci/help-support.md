@@ -4,8 +4,10 @@ description: Learn about how to get support and open a support request for AKS o
 ms.topic: conceptual
 ms.date: 08/27/2021
 ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 ---
 
 # Get support for Azure Kubernetes Services on Azure Stack HCI

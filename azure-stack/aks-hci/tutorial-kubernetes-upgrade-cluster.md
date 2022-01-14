@@ -4,8 +4,10 @@ description: In this tutorial, learn how to upgrade an existing cluster to the l
 services: container-service
 ms.topic: tutorial
 ms.date: 07/02/2021
-ms.author: jeguan
-author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+author: mattbriggs
 ---
 
 # Tutorial: Upgrade Kubernetes in Azure Kubernetes Service on Azure Stack HCI
