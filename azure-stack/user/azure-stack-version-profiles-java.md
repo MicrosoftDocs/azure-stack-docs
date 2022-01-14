@@ -82,7 +82,11 @@ You will use a service principal to access resources in your Azure Stack Hub sys
 
 Clone the GitHub repository that contains the sample, add your service principal values to the app configuration, update the application `POM.xml`, compile, and run the Maven project.
 
-1. Clone the samples repository to your development machine. You find the sample at: https://github.com/bbridges/hybrid-compute-java-manage-vm.git
+1. Clone the samples repository to your development machine.
+
+    ```bash
+    git clone https://github.com/bbridges/hybrid-compute-java-manage-vm.git
+    ```
 
 2. Copy `azureAppSpConfig.json.dist` in the root folder of the repository and rename as `azureAppSpConfig.json`. Add the credentials for your system and service principal.
 
@@ -98,12 +102,16 @@ Clone the GitHub repository that contains the sample, add your service principal
 
     The set of packages that need to be installed depends on the profile version you want to use. The package names for the profile versions are: `com.azure.resourcemanager`
 
-1. Create and delete a resource group in your Azure Stack Hub environment.
-    a. Open the `resourcegruop` subfolder.
+4. Create and delete a resource group in your Azure Stack Hub environment.
+
+    1. Open the `resourcegroup` subfolder.
+
         ```bash
         cd resourcegroup
         ```
-    b. Run the sample with the following Maven commands:
+
+    2. Run the sample with the following Maven commands:
+
         ```bash
         mvn clean compile
         mvn exec:java
@@ -120,20 +128,20 @@ You can use the samples in the Azure Stack Hub Java SDK to perform the following
     - List resource groups
     - Delete a resource group
 
-2. Samples for Key vault in Azure Stack Hub
+2. Samples for Key vault in Azure Stack Hub:
     - Create a key vault
     - Set a secret
     - Get a secret
     - Delete a key vault
 
-3. Samples for storage service in Azure Stack Hub
+3. Samples for storage service in Azure Stack Hub:
     - Create a storage account
     - Get and regenerate storage account access keys
     - Create another storage account
     - List storage accounts
     - Delete a storage account
 
-4. Samples for working with VMs in Azure Stack Hub.
+4. Samples for working with VMs in Azure Stack Hub:
     - Create a virtual machine with managed OS Disk
     - Start a virtual machine
     - Stop a virtual machine
