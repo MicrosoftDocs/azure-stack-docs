@@ -1,10 +1,13 @@
 ---
 title: Set-AksHciNodePool for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Set-AksHciNodePool PowerShell command scales a node pool
 ms.topic: reference
 ms.date: 7/20/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+
 ---
 
 # Set-AksHciNodePool

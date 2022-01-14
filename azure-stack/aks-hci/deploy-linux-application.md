@@ -1,11 +1,13 @@
 ---
 title: Tutorial - Deploy a Linux application in AKS on Azure Stack HCI
 description: In this tutorial, you deploy a multi-container Linux application to your cluster using a custom image stored in Azure Container Registry.
-author: abha
+author: mattbriggs
 ms.topic: tutorial
 ms.date: 12/02/2020
-ms.author: abha
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Tutorial: Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI

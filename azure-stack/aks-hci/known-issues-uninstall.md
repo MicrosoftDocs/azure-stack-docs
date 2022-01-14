@@ -1,11 +1,13 @@
 ---
 title: Troubleshoot issues when uninstalling AKS on Azure Stack HCI. 
 description: Get help to troubleshoot issues and errors when uninstalling AKS on Azure Stack HCI.
-author: v-susbo
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 11/05/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Fix known issues and errors when uninstalling AKS on Azure Stack HCI

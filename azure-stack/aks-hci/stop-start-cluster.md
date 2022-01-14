@@ -1,10 +1,12 @@
 ---
 title: Stop and restart a cluster on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to stop and restart a cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: EkeleAsonye
+author: mattbriggs
 ms.topic: how-to
 ms.date: 08/09/2021
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ---
 
 # Stop and start an AKS on Azure Stack HCI cluster

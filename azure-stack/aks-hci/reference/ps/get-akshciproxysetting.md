@@ -1,10 +1,13 @@
 ---
 title: Get-AksHciProxySetting for AKS on Azure Stack HCI
-author: mkostersitz
+author: mattbriggs
 description: The Get-AksHciProxySetting PowerShell command retrieves a proxy configuration.
 ms.topic: reference
 ms.date: 4/16/2021
-ms.author: mikek
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+
 ---
 
 # Get-AksHciProxySetting

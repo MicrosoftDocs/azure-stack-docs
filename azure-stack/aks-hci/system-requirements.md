@@ -2,8 +2,10 @@
 title: Azure Kubernetes Service on Azure Stack HCI requirements
 description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
-author: abhilashaagarwala
-ms.author: abha
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ms.date: 08/19/2021
 ---
 

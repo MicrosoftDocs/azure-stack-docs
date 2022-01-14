@@ -1,11 +1,13 @@
 ---
 title: Troubleshoot known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
-author: v-susbo
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 12/13/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Resolve issues and errors during an AKS on Azure Stack HCI installation
