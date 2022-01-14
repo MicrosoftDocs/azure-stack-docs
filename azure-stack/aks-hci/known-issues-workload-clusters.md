@@ -1,11 +1,13 @@
 ---
 title: Troubleshoot Kubernetes workload cluster issues and errors in Azure Kubernetes Service on Azure Stack HCI 
 description: Get help to troubleshoot Kubernetes workload cluster issues and errors in Azure Kubernetes Service on Azure Stack HCI.
-author: v-susbo
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 11/05/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Fix known issues and errors when managing your Kubernetes workload clusters

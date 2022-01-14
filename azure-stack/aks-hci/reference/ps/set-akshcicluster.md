@@ -1,10 +1,13 @@
 ---
 title: Set-AksHciCluster for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Set-AksHciCluster PowerShell command scales the number of control plane nodes or worker nodes in a cluster.
 ms.topic: reference
 ms.date: 07/28/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+
 ---
 
 # Set-AksHciCluster

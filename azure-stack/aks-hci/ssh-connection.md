@@ -1,10 +1,12 @@
 ---
 title: Connect with SSH to Azure Kubernetes Service on Azure Stack HCI nodes
 description: Learn how to connect with SSH to worker nodes for maintenance and troubleshooting in AKS on Azure Stack HCI.
-author: v-susbo
+author: mattbriggs
 ms.topic: how-to
 ms.date: 05/18/2021
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ---
 
 # Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting

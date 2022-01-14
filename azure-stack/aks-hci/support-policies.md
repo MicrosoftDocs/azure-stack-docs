@@ -4,8 +4,10 @@ description: Learn about Azure Kubernetes Service on Azure Stack HCI (AKS on Azu
 services: container-service
 ms.topic: article
 ms.date: 05/11/2021
-author: mkostersitz
-ms.author: mikek
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
 
 #Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
 ---

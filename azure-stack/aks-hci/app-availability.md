@@ -1,11 +1,13 @@
 ---
 title: Concepts - Application availability in Azure Kubernetes Service on Azure Stack HCI
 description: Learn about application availability in Azure Kubernetes Service on Azure Stack HCI
-author: baziwane
+author: mattbriggs
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.author: rbaziwane
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: rbaziwane
+
 ---
 
 # Application availability on AKS on Azure Stack HCI

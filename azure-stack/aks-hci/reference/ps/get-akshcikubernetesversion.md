@@ -1,10 +1,13 @@
 ---
 title: Get-AksHciKubernetesVersion for AKS on Azure Stack HCI
-author: jessicaguan
+author: mattbriggs
 description: The Get-AksHciKubernetesVersion PowerShell command lists the available versions for creating a managed Kubernetes cluster.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+
 ---
 
 # Get-AksHciKubernetesVersion
