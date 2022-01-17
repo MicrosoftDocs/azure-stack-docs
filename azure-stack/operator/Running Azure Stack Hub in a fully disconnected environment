@@ -49,11 +49,11 @@ At a high level, any feature that will require a connection to the internet will
 A disconnected deployment will require a [capacity-based] (https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-hub-licensing-packaging-pricing-guide/Azure%20Stack%20Hub%20Licensing%20Packaging%20and%20Pricing%20Guide.pdf) billing model which requires an enterprise agreement.
 Capacity-based billing model is based on an ASH capacity plan SKU that is based on the capacity of the system (Physical cores in ASH).
 
-A sample of ASH capacity-based billing is shown below ![ASH Services Billing] (). This will change as more services are added/updated.
+A sample of ASH capacity-based billing is shown below ![ASH Services Billing] (https://github.com/MicrosoftDocs/azure-stack-docs/blob/31d65a513587beff77f5d67f3537b1a870247d73/azure-stack/operator/ASH%20Pricing%20-%20Capacity%20based.png?raw=true). This will change as more services are added/updated.
  
 To check available/assigned cores run this command in PowerShell test-azurestack -include AzsVmPlacement -debug
 
-### ASH Device registration
+### ASH Device registration approach
 In a disconnected deployment, registration is NOT automated and will require a removable media and a separate device that is connected to Azure.
 Step by step instructions for how to register ASH in a fully disconnected mode can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-registration?view=azs-2102&tabs=az1%2Caz2%2Caz3%2Caz4&pivots=state-disconnected).
 
@@ -74,9 +74,11 @@ Detailed step by step for preparing and importing update packages can be found [
 Multitenancy is not supported in a disconnected deployment as that will require AAD. 
 
 ### External monitoring
-External monitoring solutions must be agentless as it is not possible to install third party agents inside ASH components. The system centre operations manager management pack for ASH supports AD FS and can be downloaded from here.
-Using Nagios is also possible with 1.2 ASH as Nagios plugin supports AD FS. Step by step for configuring external monitoring can be found [here] (https://www.microsoft.com/en-us/download/details.aspx?id=55184).
-Detailed instructions for how to connect to external monitoring solutions using syslog forwarding can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-monitor?view=azs-2102&tabs=az).
+External monitoring solutions must be agentless as it is not possible to install third party agents inside ASH components. The system centre operations manager management pack for ASH supports AD FS and can be downloaded from [here] (https://www.microsoft.com/en-us/download/details.aspx?id=55184).
+
+Using Nagios is also possible with 1.2 ASH as Nagios plugin supports AD FS. Step by step for configuring external monitoring can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-monitor?view=azs-2102&tabs=az).
+
+Detailed instructions for how to connect to external monitoring solutions using syslog forwarding can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-security?view=azs-2102).
 
 ## ASH basic disconnected deployment tasks
 
