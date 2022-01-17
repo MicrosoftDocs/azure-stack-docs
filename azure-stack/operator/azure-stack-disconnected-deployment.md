@@ -29,6 +29,8 @@ Choose this option if:
 
 A disconnected deployment doesn't restrict you from later connecting your Azure Stack Hub instance to Azure for hybrid tenant VM scenarios. It means that you don't have connectivity to Azure during deployment or you don't want to use Azure AD as your identity store.
 
+For more details about running Azure Stack Hub in a fully disconnected mode, please refer to [Running Azure Stack Hub in a fully disconnected environment] (https://github.com/MicrosoftDocs/azure-stack-docs/blob/53fb6ece29687b9b04e0b790ab2d1ff32e06762f/azure-stack/operator/Runnin%20Azure%20Stack%20Hub%20in%20a%20fully%20disconnected%20environment)
+
 ## Features that are impaired or unavailable in disconnected deployments 
 Azure Stack Hub was designed to work best when connected to Azure, so it's important to note that there are some features and functionality that are either impaired or completely unavailable in the disconnected mode.
 
