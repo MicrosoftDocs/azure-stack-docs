@@ -1,12 +1,12 @@
 # Running Azure Stack Hub in a fully disconnected environment
 
 This article describes the basic considerations for configuring Azure Stack Hub (ASH) in a fully disconnected environment and some guidance around minimum configurations required for ASH to work in the new environment.
-Use cases:
+**Use cases:**
 -	Deploy Azure Stack Hub in an environment with no connection to the internet.
 -	Block data (including usage data) from being sent to Azure.
 -	Use Azure Stack Hub purely as a private cloud solution deployed to corporate intranet.
 -	Hybrid cloud scenarios are not possible or allowed.
-ASH available services
+## ASH available services
 ASH supports a subset of Azure services to run on ASH. These services will continue to grow and evolve. Currently, the following core services are available in ASH:
 •	Compute
 •	Key Vault
@@ -16,23 +16,27 @@ In addition to these services, some PaaS services are supported:
 •	SQL and MYSQL DBs
 •	Azure Functions
 •	App Service
-Internet and Azure Connectivity
+## Internet and Azure Connectivity
 A key decision point is to choose whether ASH will have any connection to Azure or be fully disconnected. This is a one-time decision that must be made at deployment time and will have impact on:
-1-	Identify store: 
+1-	Identify store
 2-	Impaired features
 3-	Billing model and Licensing
 4-	ASH Registration
 5-	Approach for patching and updates
 6-	Multi tenancy
 7-	External monitoring
-Identity store
+### Identity store
 ASFS is the only supported identity provider for a disconnected ASH deployment. This can’t be changed later without redeploying the environment. 
-AD FS allows identities in an existing AD forest to authenticate with resources in ASH. A full description of how to integrate ASH AD FS with the existing datacentre AD FS to create AD FS federation trust can be found here.
+AD FS allows identities in an existing AD forest to authenticate with resources in ASH. 
+A full description of how to integrate ASH AD FS with the existing datacentre AD FS to create AD FS federation trust can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-identity?view=azs-2102).
 
-Impaired features
+### Impaired features
 At this stage, ASH is still designed to work best in hybrid cloud environments where there is a connection to Azure. There are features that will either be impaired or completely not available when running ASH in a fully disconnected mode.
-Full list of impaired features is listed here. At high level, any feature that will require a connection to the internet will either be impaired or unavailable. For example:
-1-	Virtual Machines with extensions that check internet for latest versions (DSC or Docker) will fail to check latest versions
+
+Full list of impaired features is listed [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-disconnected-deployment?view=azs-2102#features-that-are-impaired-or-unavailable-in-disconnected-deployments).
+At a high level, any feature that will require a connection to the internet will either be impaired or unavailable. For example:
+
+1-	Virtual Machines with extensions that check internet for latest versions ([DSC] (https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-overview) or [Docker] (https://github.com/Azure/azure-docker-extension/blob/master/README.md) ) will fail to check latest versions
 2-	Documentation links on ASH or remediation alerts that use an internet link will not open
 3-	Downloading marketplace components will not work from ASH portal will not work. Can still work through syndication (Transfer from a machine with connectivity).
 4-	No certificated as require internet for CRL and OCSP
@@ -40,42 +44,44 @@ Full list of impaired features is listed here. At high level, any feature that w
 6-	Visual studio cloud discovery doesn’t work and only VS Code or enterprise can be used (AD FS)
 7-	Azure AD accounts can’t be used to manage deployment
 8-	Heavily Reduced CLI functionality
-Billing model and licensing
-A disconnected deployment will require a capacity-based billing model which requires an enterprise agreement. Capacity-based billing model is based on an ASH capacity plan SKU that is based on the capacity of the system (Physical cores in ASH).
-A sample of ASH capacity-based billing is shown below. This will change as more services are added/updated.
+
+### Billing model and licensing
+A disconnected deployment will require a [capacity-based] (https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-hub-licensing-packaging-pricing-guide/Azure%20Stack%20Hub%20Licensing%20Packaging%20and%20Pricing%20Guide.pdf) billing model which requires an enterprise agreement. Capacity-based billing model is based on an ASH capacity plan SKU that is based on the capacity of the system (Physical cores in ASH).
+A sample of ASH capacity-based billing is shown below ![ASH Services Billing] (). This will change as more services are added/updated.
  
 To check available/assigned cores run this command in PowerShell test-azurestack -include AzsVmPlacement -debug
-ASH Device registration
+
+### ASH Device registration
 In a disconnected deployment, registration is NOT automated and will require a removable media and a separate device that is connected to Azure.
-Step by step instructions for how to register ASH in a fully disconnected mode can be found here.
-Patching an updates
+Step by step instructions for how to register ASH in a fully disconnected mode can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-registration?view=azs-2102&tabs=az1%2Caz2%2Caz3%2Caz4&pivots=state-disconnected).
+
+### Patching an updates
 Patching and updating ASH will also need to use a separate device connected to Azure and a removable media. 
+
 The update process will involve two steps as follows:
 1-	Downloading the update package on a connected device
 2-	Importing the update package into ASH
+
 Type of updates supported in a disconnected deployment:
 1-	ASH software updates
 2-	ASH hotfixes
 3-	ASH OEM package updates
-Detailed step by step for preparing and importing update packages can be found here.
-Multitenancy
+Detailed step by step for preparing and importing update packages can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-update-prepare-package?view=azs-2102#download-the-update-package).
+
+### Multitenancy
 Multitenancy is not supported in a disconnected deployment as that will require AAD. 
-External monitoring
-External monitoring solutions must be agentless as it is not possible to install third party agents inside ASH components. The system centre operations manager management pack for ASH supports AD FS and can be downloaded from here. Using Nagios is also possible with 1.2 ASH as Nagios plugin supports AD FS. Step by step for configuring external monitoring can be found here.
-Detailed instructions for how to connect to external monitoring solutions using syslog forwarding can be found here.
-ASH basic disconnected deployment tasks
-DNS integration
+
+### External monitoring
+External monitoring solutions must be agentless as it is not possible to install third party agents inside ASH components. The system centre operations manager management pack for ASH supports AD FS and can be downloaded from here.
+Using Nagios is also possible with 1.2 ASH as Nagios plugin supports AD FS. Step by step for configuring external monitoring can be found [here] (https://www.microsoft.com/en-us/download/details.aspx?id=55184).
+Detailed instructions for how to connect to external monitoring solutions using syslog forwarding can be found [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-monitor?view=azs-2102&tabs=az).
+
+## ASH basic disconnected deployment tasks
+
+### DNS integration
 In a disconnected deployment, External DNS names will require DNS servers to forward DNS requests. Configuration will be required to integrate DNS servers that host the external DNS zone for ASH with DNS servers that host the parent zone.
-Detailed steps for how to configure that available here.
-Open questions
-Connecting ASH VMs to Microsoft Sentinel in disconnected mode
+Detailed steps for how to configure that available [here] (https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-dns?view=azs-2102#resolving-external-dns-names-from-azure-stack-hub).
+
+### Connecting ASH VMs to Microsoft Sentinel in disconnected mode
 Microsoft sentinel makes it possible to monitor VMs running on ASH in one location. This is possible through adding the Azure monitor, update, and config mgmt. extension to VMs
-In a disconnected mode, the extension can be syndicated into ASH marketplace, but testing is required to check if this will work or be impaired due to no connection in Azure.
-If not possible, a PR to this page might be required to detail the nuances of Sentinel on ASH disconnected and a discussion with PG on next steps if any to support that.
-
-
-
-
-
-
- 
+This is not possible yet In a disconnected mode, the extension can be [syndicated] (https://docs.microsoft.com/en-us/azure-stack/mdc/operator/azure-stack-download-azure-marketplace-item-tca?tabs=az1%2Caz2) into ASH marketplace, but the service might be impaired with no connection in Azure.
