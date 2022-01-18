@@ -1,11 +1,13 @@
 ---
 title: Troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI 
 description: Get help to troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI.
-author: v-susbo
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 12/13/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Fix known issues and errors when managing storage

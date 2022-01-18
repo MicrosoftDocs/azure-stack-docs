@@ -1,10 +1,12 @@
 ---
 title: Set up multiple administrators on Azure Kubernetes Service (AKS) on Azure Stack HCI
 description: Learn how to set up multiple administrators and register additional users with the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI.
-author: scooley
+author: mattbriggs
 ms.topic: how-to
 ms.date: 11/16/2021
-ms.author: scooley
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: scooley
 ---
 
 # Set up multiple administrators

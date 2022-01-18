@@ -1,11 +1,13 @@
 ---
 title: Concepts - Pricing options for AKS on Azure Stack HCI
 description: Learn about the pricing options for AKS on Azure Stack HCI.
-author: mamezgeb
+author: mattbriggs
 ms.topic: conceptual
 ms.date: 10/14/2021
-ms.author: mamezgeb
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mamezgeb
+
 ---
 
 # Pricing for AKS on Azure Stack HCI

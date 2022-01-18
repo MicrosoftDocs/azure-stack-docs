@@ -1,12 +1,14 @@
 ---
 title: Concepts - Supported resource limits, VM sizes, and regions in AKS on Azure Stack HCI
 description: Supported resource limits, VM sizes, and regions in AKS on Azure Stack HCI
-author: mamezgeb
+author: mattbriggs
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.author: mamezgeb
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mamezgeb
 ms.custom: references_regions
-ms.reviewer: 
+
 ---
 
 # Supported resource limits, VM sizes, and regions

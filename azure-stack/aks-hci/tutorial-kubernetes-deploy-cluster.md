@@ -4,8 +4,10 @@ description: In this tutorial, learn how to create an AKS on Azure Stack HCI clu
 services: 
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.author: jeguan
-author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+author: mattbriggs
 ---
 
 # Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI
