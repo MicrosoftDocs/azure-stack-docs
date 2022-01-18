@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/13/2022
+ms.date: 01/18/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
@@ -315,7 +315,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.154](hotfix-1-2008-41-159.md)
+- [Azure Stack Hub hotfix 1.2008.41.159](hotfix-1-2008-41-159.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
