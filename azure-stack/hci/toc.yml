@@ -335,11 +335,11 @@
   - name: Azure Stack HCI Learn modules
     items:
     - name: Azure Stack HCI foundations
-    - href: /learn/paths/azure-stack-hci-foundations/
+      href: /learn/paths/azure-stack-hci-foundations/
     - name: Operate and maintain Azure Stack HCI
-    - href: /learn/paths/operate-maintain-azure-stack-hci/
+      href: /learn/paths/operate-maintain-azure-stack-hci/
     - name: Implement Datacenter Firewall and Software Load Balancer
-    - href: /learn/modules/implement-firewall-load-balancer/
+      href: /learn/modules/implement-firewall-load-balancer/
   - name: Earlier versions
     items:
     - name: What's new in version 20H2
