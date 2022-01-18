@@ -48,9 +48,9 @@ You can also add several nodes to the cluster at once.
 
 You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
 
-    ``` powershell
-    Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
-    ```
+   ``` powershell
+   Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
+   ```
 
 ## Add or remove network adapters from an intent
 
