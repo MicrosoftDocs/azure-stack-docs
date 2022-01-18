@@ -83,7 +83,7 @@ Azure Stack HCI uses Microsoft-validated hardware from an OEM partner to ensure 
 - High availability and disaster recovery in the cloud
 - Virtualizing enterprise apps like SQL Server
 - Run containers with [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md)
-- Run Azure Arc enabled servies such as [Azure data services](/azure/azure-arc/data/overview), which inlcudes SQL Managed Instance and PostgreSQL Hyperscale, and [Azure enabled application services (preview)](/azure/app-service/overview-arc-integration), which includes App Service, Functions, Logic Apps, API Management, and Event Grid.
+- Run Azure Arc enabled services such as [Azure data services](/azure/azure-arc/data/overview), which includes SQL Managed Instance and PostgreSQL Hyperscale, and [Azure enabled application services (preview)](/azure/app-service/overview-arc-integration), which includes App Service, Functions, Logic Apps, API Management, and Event Grid.
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci/) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners.
 
