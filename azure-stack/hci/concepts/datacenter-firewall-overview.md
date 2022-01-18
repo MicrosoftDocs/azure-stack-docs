@@ -60,3 +60,4 @@ For related information, see also:
 - [Use Datacenter Firewall to configure ACLs with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md)
 - [Use Datacenter Firewall to configure ACLs with PowerShell](../manage/use-datacenter-firewall-powershell.md)
 - [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [Learn module on how to implement Datacenter Firewall on Azure Stack HCI](/learn/modules/implement-firewall-load-balancer/)

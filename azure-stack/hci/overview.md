@@ -117,3 +117,4 @@ Some Microsoft partners are developing software that extends the capabilities of
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)
 - [Compare Azure Stack HCI to Windows Server](concepts/compare-windows-server.md)
 - [Compare Azure Stack HCI to Azure Stack Hub](concepts/compare-azure-stack-hub.md)
+- [Checkout the Azure Stack HCI foundations learning path](/learn/paths/azure-stack-hci-foundations/)
