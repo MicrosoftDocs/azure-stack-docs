@@ -26,7 +26,7 @@ This article describes the differences between global Azure, Azure Stack Hub, an
 
 ## Global Azure
 
-Microsoft Azure is an ever-expanding set of cloud services to help your organization meet your business challenges. It's the freedom to build, manage, and deploy apps on a massive, global network using your favourite tools and frameworks.
+Microsoft Azure is an ever-expanding set of cloud services to help your organization meet your business challenges. It's the freedom to build, manage, and deploy apps on a massive, global network using your favorite tools and frameworks.
 
 Global Azure offers more than 100 services available in 54 regions around the globe. For the most current list of global Azure services, see the [*Products available by region*](https://azure.microsoft.com/regions/services). The services available in Azure are listed by category and also by whether they're generally available or available through preview.
 
@@ -55,7 +55,7 @@ In addition to the resource providers described above, there are additional PaaS
 
 ### Example use cases for Azure Stack Hub
 
-- Financial modelling
+- Financial modeling
 - Clinical and claims data
 - IoT device analytics
 - Retail assortment optimization
