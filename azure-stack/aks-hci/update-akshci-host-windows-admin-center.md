@@ -4,8 +4,10 @@ description: Learn about using Windows Admin Center to update the Azure Kubernet
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 ---
 
 # Upgrade the AKS on Azure Stack HCI host using Windows Admin Center

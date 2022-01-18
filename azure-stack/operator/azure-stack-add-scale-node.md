@@ -1,11 +1,11 @@
 ---
 title: Add scale unit nodes in Azure Stack Hub 
 description: Learn how to add scale unit nodes to scale units in Azure Stack Hub.
-author: mattbriggs
+author: PatAltimore
 
 ms.topic: article
 ms.date: 11/15/2021
-ms.author: mabrigg
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 4/26/2021
 

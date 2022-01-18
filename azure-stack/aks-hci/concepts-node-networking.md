@@ -4,8 +4,10 @@ description: Learn about virtual machine networking in Azure Kubernetes Service 
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 ---
 
 ---

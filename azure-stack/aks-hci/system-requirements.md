@@ -2,8 +2,10 @@
 title: Azure Kubernetes Service on Azure Stack HCI requirements
 description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
-author: abhilashaagarwala
-ms.author: abha
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ms.date: 08/19/2021
 ---
 
@@ -213,6 +215,8 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
+| pypi.org | 443 | Required for connecting AKS clusters on Azure Stack HCI to Azure Arc. |
+| files.pythonhosted.org  | 443 |  Required for connecting AKS clusters on Azure Stack HCI to Azure Arc. |
 
 > [!NOTE]
 > Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).

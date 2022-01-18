@@ -1,10 +1,12 @@
 ---
 title: Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI 
 description: Learn how to restart, remove, or reinstall Azure Kubernetes Service on Azure Stack
-author: jessicaguan
+author: mattbriggs
 ms.topic: article
 ms.date: 05/04/2021
-ms.author: jeguan
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI

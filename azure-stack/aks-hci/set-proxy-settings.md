@@ -4,8 +4,10 @@ description: Learn about proxy server settings in Azure Kubernetes Service (AKS)
 ms.topic: conceptual
 ms.date: 09/28/2021
 ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+author: mattbriggs
 ---
 # Use proxy server settings on AKS on Azure Stack HCI
 
