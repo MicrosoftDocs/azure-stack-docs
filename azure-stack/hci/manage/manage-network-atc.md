@@ -44,7 +44,7 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 You can also add several nodes to the cluster at once.
 
-## Modify default VLANs Storage or Management systems
+## Modify default VLANs for storage or management systems
 
 You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
 
