@@ -26,7 +26,7 @@ This article describes the differences between global Azure, Azure Stack Hub, an
 
 ## Global Azure
 
-Microsoft Azure is an ever-expanding set of cloud services to help your organization meet your business challenges. It's the freedom to build, manage, and deploy apps on a massive, global network using your favorite tools and frameworks.
+Microsoft Azure is an ever-expanding set of cloud services to help your organization meet your business challenges. It's the freedom to build, manage, and deploy apps on a massive, global network using your favourite tools and frameworks.
 
 Global Azure offers more than 100 services available in 54 regions around the globe. For the most current list of global Azure services, see the [*Products available by region*](https://azure.microsoft.com/regions/services). The services available in Azure are listed by category and also by whether they're generally available or available through preview.
 
@@ -55,7 +55,7 @@ In addition to the resource providers described above, there are additional PaaS
 
 ### Example use cases for Azure Stack Hub
 
-- Financial modeling
+- Financial modelling
 - Clinical and claims data
 - IoT device analytics
 - Retail assortment optimization
@@ -83,7 +83,7 @@ Azure Stack HCI uses Microsoft-validated hardware from an OEM partner to ensure 
 - High availability and disaster recovery in the cloud
 - Virtualizing enterprise apps like SQL Server
 - Run containers with [Azure Kubernetes Service (AKS) on Azure Stack HCI](../aks-hci/overview.md)
-- Run Azure Arc enabled servies such as [Azure data services](/azure/azure-arc/data/overview), which inlcudes SQL Managed Instance and PostgreSQL Hyperscale, and [Azure enabled application services (preview)](/azure/app-service/overview-arc-integration), which includes App Service, Functions, Logic Apps, API Management, and Event Grid.
+- Run Azure Arc enabled services such as [Azure data services](/azure/azure-arc/data/overview), which includes SQL Managed Instance and PostgreSQL Hyperscale, and [Azure enabled application services (preview)](/azure/app-service/overview-arc-integration), which includes App Service, Functions, Logic Apps, API Management, and Event Grid.
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci/) to view 70+ Azure Stack HCI solutions currently available from Microsoft partners.
 
