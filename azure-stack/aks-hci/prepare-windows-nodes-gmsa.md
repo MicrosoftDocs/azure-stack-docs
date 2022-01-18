@@ -1,10 +1,12 @@
 ---
 title: Configure group Managed Service Account with AKS on Azure Stack HCI
 description: Learn how to configure group Managed Service Accounts for containers on Windows nodes
-author: v-susbo
+author: mattbriggs
 ms.topic: how-to
 ms.date: 04/16/2021
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
 ---
 
 # Configure group Managed Service Account with AKS on Azure Stack HCI

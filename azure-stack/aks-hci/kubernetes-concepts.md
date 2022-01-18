@@ -1,8 +1,10 @@
 ---
 title: Concepts - Kubernetes cluster architecture for Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to features in Azure Kubernetes Service on Azure Stack HCI
-author: daschott
-ms.author: daschott
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: daschott
 ms.topic: conceptual
 ms.date: 08/03/2021
 ---

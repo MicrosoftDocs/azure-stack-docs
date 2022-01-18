@@ -1,11 +1,13 @@
 ---
 title: Troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI 
 description: Get help to troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI.
-author: v-susbo
+author: mattbriggs
 ms.topic: troubleshooting
 ms.date: 12/13/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Fix security and identity known issues and errors

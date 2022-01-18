@@ -3,8 +3,10 @@ title: Upgrade the Kubernetes version of AKS workload clusters using PowerShell
 description: Learn how to upgrade the Kubernetes version of AKS workload clusters on Azure Stack HCI using PowerShell
 ms.topic: article
 ms.date: 07/02/2021
-author: jessicaguan
-ms.author: jeguan
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Upgrade the Kubernetes version of AKS clusters on Azure Stack HCI using PowerShell
