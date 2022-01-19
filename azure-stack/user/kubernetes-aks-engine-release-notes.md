@@ -154,7 +154,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 
 ::: moniker-end
 
-::: moniker range=">=azs-2002 <=azs-2007"
+::: moniker range=">=azs-2102 <=azs-2107"
 *Applies to version v0.67.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
