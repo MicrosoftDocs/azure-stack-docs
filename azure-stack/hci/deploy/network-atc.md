@@ -4,7 +4,7 @@ description: This topic covers how to deploy host networking for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
 ms.date: 01/22/2022
-ms.author: dacuomo
+ms.author: dacuo
 ms.reviewer: jgerend
 ---
 
