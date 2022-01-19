@@ -1,11 +1,10 @@
 ---
 title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
-author: v-dasis
+author: jasongerend
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.author: jgerend
 ---
 
 # Manage Network ATC
