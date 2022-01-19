@@ -176,13 +176,13 @@
       "redirect_document_id": false
     },         
     { 
-      "source_path": "azure-stack/operator/hotfix-1-2008-40-156.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2008-41-159.md", 
+      "source_path": "azure-stack/operator/hotfix-1-2008-41-159.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-40-156.md", 
       "redirect_document_id": false
     },         
     { 
-      "source_path": "azure-stack/operator/hotfix-1-2102-30-118.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-119.md", 
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-119.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-118.md", 
       "redirect_document_id": false
     },         
     { 
