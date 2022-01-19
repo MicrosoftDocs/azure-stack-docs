@@ -172,7 +172,7 @@ landingContent:
             url: manage/sdn-express.md
  
  # Card
-  - title: Azure Stack HCI Learn modules
+  - title: Azure Stack HCI learning paths and modules
     linkLists:
       - linkListType: learn
         links:
@@ -182,3 +182,5 @@ landingContent:
             url: /learn/paths/operate-maintain-azure-stack-hci/
           - text: Implement Datacenter Firewall and Software Load Balancer
             url: /learn/modules/implement-firewall-load-balancer/
+          - text: Plan for and deploy SDN infrastructure on Azure Stack HCI
+            url: /learn/modules/plan-deploy-sdn-infrastructure/
