@@ -332,7 +332,7 @@
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
     href: manage/get-support.md
-  - name: Azure Stack HCI Learn modules
+  - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
       href: /learn/paths/azure-stack-hci-foundations/
