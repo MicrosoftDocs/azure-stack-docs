@@ -9,8 +9,9 @@ ms.author: gkayed
 ms.reviewer: PatAltimore
 ms.lastreviewed: 19/01/2022
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub Operator, I want to run Azure Stack Hub fully disconnected so that I can deploy Azure to an environment with no connection to the internet.
+# Keyword: Running Azure Stack Hub Fully Disconnected
+
 ---
 
 # Running Azure Stack Hub in a fully disconnected environment
