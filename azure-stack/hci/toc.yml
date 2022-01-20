@@ -332,8 +332,16 @@
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
     href: manage/get-support.md
-  - name: Training
-    href: /learn/paths/azure-stack-hci-foundations/
+  - name: Learning paths and modules
+    items:
+    - name: Azure Stack HCI foundations
+      href: /learn/paths/azure-stack-hci-foundations/
+    - name: Operate and maintain Azure Stack HCI
+      href: /learn/paths/operate-maintain-azure-stack-hci/
+    - name: Implement Datacenter Firewall and Software Load Balancer
+      href: /learn/modules/implement-firewall-load-balancer/
+    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
+      href: /learn/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
     - name: What's new in version 20H2

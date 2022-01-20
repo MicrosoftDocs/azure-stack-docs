@@ -60,7 +60,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to release 2108.
 - Cause: Missing properties for snapshot operation.
-- Remediation: No remediation available, will be addressed in an upcoming hotfix.
+- Remediation: Apply hotfix 1.2108.2.73.
 - Occurrence: Common
 
 ## Portal
