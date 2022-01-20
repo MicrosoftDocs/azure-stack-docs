@@ -191,3 +191,4 @@ Feature|Deployment requirements|Network requirements|
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
 - [SDN in Azure Stack HCI](./software-defined-networking.md)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
