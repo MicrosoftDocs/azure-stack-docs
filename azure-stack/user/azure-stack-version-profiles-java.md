@@ -33,7 +33,7 @@ of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles
 The profile is specified in the `pom.xml` file in the Maven project as a dependency. The profile loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
 ## Set up your development environment
 
-To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed. You can find details about the prerequisites for the setting up your development environment at [Use the Azure SDK for Java](/developer/java/sdk/overview)
+To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed. You can find details about the prerequisites for the setting up your development environment at [Use the Azure SDK for Java](/azure/developer/java/sdk/overview)
 
 1. Install Git. You can find the official instructions to install Git at [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
@@ -441,4 +441,3 @@ For more information about API profiles, see:
 
 - [Version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
-- [Develop enterprise Java applications in the cloud with your favorite tools and frameworks](/develop/java/)
