@@ -70,9 +70,9 @@ This section lists the new cluster infrastructure features that are available in
 - **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI integrated systems).
 To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
-## New Azure Stack HCI sizing tool (preview)
+## New Azure Stack HCI sizing tool (public preview)
 
-To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new sizing tool called Azure Stack HCI Sizer. This sizing tool comes with no additional cost and does not require Azure subscription. This is currently in public preview and requires your personal (not corporate) Microsoft email account to sign in. To try it out, click [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
+To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new sizing tool called Azure Stack HCI Sizer. This sizing tool comes with no additional cost and does not require Azure subscription. The tool is currently in public preview and requires your personal (not corporate) Microsoft email account to sign in. To try it out, click [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
 
 For more information, see the blog on [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
 

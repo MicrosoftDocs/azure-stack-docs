@@ -16,7 +16,7 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 
-Azure Stack HCI, version 21H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options.
+Azure Stack HCI, version 21H2 is now [available for download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options. You can use [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) (currently in public preview) to estimate the hardware requirements for your Azure Stack HCI solution.
 
 Azure Stack HCI is intended as a virtualization host, so most apps and server roles must run inside of virtual machines (VMs). Exceptions include Hyper-V, Network Controller, and other components required for Software Defined Networking (SDN) or for the management and health of hosted VMs.
 
@@ -107,8 +107,6 @@ Azure Stack HCI is priced on a per core basis on your on-premises servers. For c
 Microsoft recommends purchasing Integrated Systems built by our hardware partners and validated by Microsoft to provide the best experience running Azure Stack HCI. You can also run Azure Stack HCI on Validated Nodes, which offer a basic building block for HCI clusters to give customers more hardware choices. Microsoft partners also offer a single point of contact for implementation and support services.
 
 Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) page or browse the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Stack HCI solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
-
-Use the [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) (currently in public preview) to estimate the hardware requirements for your Azure Stack HCI solution.
 
 Some Microsoft partners are developing software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
 
