@@ -72,7 +72,7 @@ To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stac
 
 ## New Azure Stack HCI sizing tool (public preview)
 
-To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new sizing tool called Azure Stack HCI Sizer. This sizing tool comes with no additional cost and does not require Azure subscription. The tool is currently in public preview and requires your personal (not corporate) Microsoft email account to sign in. To try it out, click [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
+To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new sizing tool called Azure Stack HCI Sizer. This sizing tool, currently in public preview, comes with no additional cost and does not require Azure subscription. Sign in with your personal (not corporate) Microsoft email account to try [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
 
 For more information, see the blog on [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
 
