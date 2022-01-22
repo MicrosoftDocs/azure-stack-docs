@@ -72,9 +72,9 @@ To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stac
 
 ## New Azure Stack HCI sizing tool (public preview)
 
-To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new sizing tool called Azure Stack HCI Sizer. This sizing tool, currently in public preview, comes with no additional cost and does not require Azure subscription. Sign in with your personal (not corporate) Microsoft email account to try [Azure Stack HCI Sizer](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
+To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new Azure Stack HCI sizing tool. This tool, currently in public preview, comes with no additional cost and does not require Azure subscription. Sign in with your personal Microsoft account (MSA) credentials (not a corporate account) to try the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
 
-For more information, see the blog on [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
+For more information, see the blog on the [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
 
 ## Enhancements in Windows Admin Center
 
@@ -98,9 +98,9 @@ Windows Admin Center version 2110 includes several features and improvements to 
 
 - **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
 
-For details on the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579).
+For more information about the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579).
 
-More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
+For more information about Windows Admin Center, see the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
 
 ## Next steps
 
