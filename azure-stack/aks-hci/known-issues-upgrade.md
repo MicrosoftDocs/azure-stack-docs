@@ -20,7 +20,7 @@ After upgrading or up-scaling the target cluster the certificate renewal pod is 
 
 To resolve this issue, you manually copy the cert tattoo file from the control plane node to each of the worker nodes.
 
-1. Copy the file from control plane VM to your host machine current directory
+1. Copy the file from control plane VM to your host machine current directory.
 
     ```bash
     ssh clouduser@<comtrol-plane-vm-ip> -i (get-mocconfig).sshprivatekey
