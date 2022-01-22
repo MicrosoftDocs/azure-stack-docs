@@ -3,9 +3,9 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/13/2021
+ms.date: 1/21/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 1/21/2022
 ms.reviewer: abha
 
 ---
@@ -43,6 +43,11 @@ MS-HCIv2-03   Windows Server Subscription Inactive
 
 If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
 
+## Error: `Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.`
+
+The file cannot be access because it is being used by another process.
+
+You can resolve this issue by restarting your PowerShell session. Close the PowerShell window and try Install-MOC again.
 
 
 ## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
