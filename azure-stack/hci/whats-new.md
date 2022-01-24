@@ -19,6 +19,20 @@ For information on monthly quality and security updates, see [Azure Stack HCI re
 
 You can also join the Azure Stack HCI preview channel to test out features coming to a future version of the Azure Stack HCI operating system. For more info, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
+## New hardware security capabilities
+
+This section describes the new hardware security capabilities in Azure Stack HCI, version 21H2 systems that provide additional defense-in-depth protection against advanced threats.
+
+### Secured-core server
+
+Certified Secured-core server hardware from an original equipment manufacturer (OEM) partner provides additional security protections that are useful against sophisticated attacks. This can provide increased assurance when handling mission critical data in some of the most data sensitive industries. A Secured-core server uses hardware, firmware, and driver capabilities to enable advanced Azure Stack HCI security features. Many of these features are available in [Windows Secured-core PCs](/windows-hardware/design/device-experiences/oem-highly-secure) and are now also available with Secured-core server hardware and Azure Stack HCI, version 21H2. For more information about Secured-core server, see [Secured-core server](/windows-server/security/secured-core-server).
+
+### SMB Direct and RDMA encryption
+
+Server Message Block Direct (SMB Direct) and Remote Direct Memory Access (RDMA) supply high bandwidth, low latency networking fabric for workloads like Storage Spaces Direct, Storage Replica, Hyper-V, Scale-out File Server, and SQL Server. SMB Direct in Azure Stack HCI, version 21H2 now supports encryption. Previously, enabling SMB encryption disabled direct data placement; this was intentional, but seriously impacted performance. Now data is encrypted before data placement, leading to far less performance degradation while adding AES-128 and AES-256 protected packet privacy.
+
+For more information about SMB encryption, signing acceleration, secure RDMA, and cluster support, see [SMB Direct](/windows-server/storage/file-server/smb-direct). For more information about SMB security enhancements, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
+
 ## New Azure workloads and benefits
 
 Azure Stack HCI, version 21H2 brings new Azure workloads and their benefits to your Azure Stack HCI clusters.
@@ -70,6 +84,12 @@ This section lists the new cluster infrastructure features that are available in
 - **[Manage quick restarts with Kernel Soft Reboot](manage/kernel-soft-reboot.md)**: Improve reboot performance and reduce overall cluster update time (available only on Azure Stack HCI integrated systems).
 To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stack HCI clusters](manage/update-cluster.md).
 
+## New Azure Stack HCI sizing tool (public preview)
+
+To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new Azure Stack HCI sizing tool. This tool, currently in public preview, comes with no additional cost and does not require Azure subscription. Sign in with your personal Microsoft account (MSA) credentials (not a corporate account) to try the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
+
+For more information, see the blog on the [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
+
 ## Enhancements in Windows Admin Center
 
 Windows Admin Center version 2110 includes several features and improvements to manage your Azure Stack HCI systems.
@@ -92,9 +112,9 @@ Windows Admin Center version 2110 includes several features and improvements to 
 
 - **Azure hybrid services are available in Azure US Government**: You can now register Windows Admin Center with the Azure Government region to use Azure hybrid services.
 
-For details on the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579). 
+For more information about the new features and improvements, see the blog on [Windows Admin Center version 2110](https://techcommunity.microsoft.com/t5/windows-admin-center-blog/windows-admin-center-version-2110-is-now-generally-available/ba-p/2911579).
 
-More information on these and many more improvements to Windows Admin Center can be found in the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
+For more information about Windows Admin Center, see the [Windows Admin Center documentation](/windows-server/manage/windows-admin-center/understand/what-is).
 
 ## Next steps
 
