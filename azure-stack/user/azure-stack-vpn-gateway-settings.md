@@ -3,7 +3,7 @@ title: Configure VPN gateway settings for Azure Stack Hub
 description: Learn about and configure VPN gateways settings for Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 05/17/2021
+ms.date: 01/24/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/27/2019
@@ -89,7 +89,7 @@ When you create the virtual network gateway for a VPN gateway configuration, you
 > [!IMPORTANT]  
 > Currently, Azure Stack Hub only supports the route-based VPN type. If your device only supports policy-based VPNs, then connections to those devices from Azure Stack Hub are not supported.  
 >
-> In addition, Azure Stack Hub does not support using policy-based traffic selectors for route-based gateways at this time, because custom IPSec/IKE policy configurations are not supported.
+> In addition, Azure Stack Hub does not support using policy-based traffic selectors for route-based gateways at this time, because Azure Stack Hub does not support policy-based traffic selectors, though they are supported in Azure.
 
 * **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies that are configured with the combinations of address prefixes between your on-premises network and the Azure Stack Hub VNet. The policy, or traffic selector, is usually an access list in the VPN device configuration.
 
