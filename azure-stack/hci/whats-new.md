@@ -25,13 +25,13 @@ This section describes the new hardware security capabilities in Azure Stack HCI
 
 ### Secured-core server
 
-Certified Secured-core server hardware from an original equipment manufacturer (OEM) partner provides additional security protections that are useful against sophisticated attacks. This can provide increased assurance when handling mission critical data in some of the most data sensitive industries. A Secured-core server uses hardware, firmware, and driver capabilities to enable advanced Azure Stack HCI security features. Many of these features are available in [Windows Secured-core PCs](/windows-hardware/design/device-experiences/oem-highly-secure) and are now also available with Secured-core server hardware and Azure Stack HCI, version 21H2. For more information, see [Secured-core server](/windows-server/security/secured-core-server).
+Certified Secured-core server hardware from an original equipment manufacturer (OEM) partner provides additional security protections that are useful against sophisticated attacks. This can provide increased assurance when handling mission critical data in some of the most data sensitive industries. A Secured-core server uses hardware, firmware, and driver capabilities to enable advanced Azure Stack HCI security features. Many of these features are available in [Windows Secured-core PCs](/windows-hardware/design/device-experiences/oem-highly-secure) and are now also available with Secured-core server hardware and Azure Stack HCI, version 21H2. For more information about Secured-core server, see [Secured-core server](/windows-server/security/secured-core-server).
 
 ### SMB Direct and RDMA encryption
 
 Server Message Block Direct (SMB Direct) and Remote Direct Memory Access (RDMA) supply high bandwidth, low latency networking fabric for workloads like Storage Spaces Direct, Storage Replica, Hyper-V, Scale-out File Server, and SQL Server. SMB Direct in Azure Stack HCI, version 21H2 now supports encryption. Previously, enabling SMB encryption disabled direct data placement; this was intentional, but seriously impacted performance. Now data is encrypted before data placement, leading to far less performance degradation while adding AES-128 and AES-256 protected packet privacy.
 
-For more information on SMB encryption, signing acceleration, secure RDMA, and cluster support, see [SMB Direct](/windows-server/storage/file-server/smb-direct). For more information on SMB security enhancements, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
+For more information about SMB encryption, signing acceleration, secure RDMA, and cluster support, see [SMB Direct](/windows-server/storage/file-server/smb-direct). For more information about SMB security enhancements, see [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
 ## New Azure workloads and benefits
 
