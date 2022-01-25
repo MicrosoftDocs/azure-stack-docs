@@ -134,12 +134,15 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 3. Prepare configuration for Arc Resource Bridge:
 
    ```PowerShell
-   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [vLanID=$vLANID]
+   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID]
    Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
    Install-moc
    ```
+   > [!TIP]
+   > To provide static IP address to the Arc Resource Bridge VM, replace the above command with
+   > $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID] -k8snodeippoolstart $staticIPaddress -k8snodeippoolend $staticIPaddress -gateway $gateway -dnsservers $dnsservers -ipaddressprefix $ipaddressprefix 
 
-5. Update the required extensions:
+4. Update the required extensions:
    
    - Uninstall the old extensions:
      
@@ -391,6 +394,11 @@ Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from Azure 
 - **Can I use SDN for Azure Stack HCI VMs created from Azure portal?**
   
 SDN is currently not supported for VMs created from Azure Portal.
+
+- My environment does not support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
+
+If you cannot enable dynamic DNS updates in your DNS environment, you need to pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name _ca-cloudagent_ (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided _cloudservicecidr address_. More details on the steps in this process can be found in the [Failover Clustering documentation](https://docs.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds).
+
  
 ## Next steps
 
