@@ -317,7 +317,7 @@ New-ClusterFaultDomain -CimSession "ClusterS1" -FaultDomainType Site -Name "Site
 Use the `Get-ClusterFaultDomain` cmdlet to verify that both sites have been created for the cluster.
 
 ```powershell
-New-ClusterFaultDomain -CimSession "ClusterS1"
+Get-ClusterFaultDomain -CimSession "ClusterS1"
 ```
 
 ### Step 5.2: Assign server nodes

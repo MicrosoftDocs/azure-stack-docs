@@ -3,9 +3,9 @@ title: Azure Benefits on Azure Stack HCI
 description: This topic explains the Azure Benefits feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
-ms.topic: conceptual
+ms.topic: overview
 ms.reviewer: jlei
-ms.lastreviewed: 12/14/2021
+ms.lastreviewed: 01/25/2022
 ms.date: 12/16/2021
 ---
 
@@ -58,7 +58,7 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
 
 ## Enable Azure Benefits
 
-Before you begin, you need the following prerequisites:
+Before you begin, you'll need the following prerequisites:
 
 - An Azure Stack HCI cluster:
   - [Install updates](../manage/update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008223 or later.
