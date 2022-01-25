@@ -41,10 +41,6 @@ We continue to make improvements to Microsoft's on-premises Kubernetes solution 
 
 Azure Stack HCI natively integrates with the Azure Resource Manager to project your cluster into Azure as a first-class resource in the Azure portal. This section lists the new features and enhancements introduced in Azure Stack HCI, version 21H2 to manage your Azure Stack HCI resources just like you’d manage cloud resources.
 
-### Azure Backup support for Azure Stack HCI
-
-With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. For more information, see [Back up Azure Stack HCI virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
-
 ### Azure Site Recovery support for Azure Stack HCI
 
 With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery.md)
