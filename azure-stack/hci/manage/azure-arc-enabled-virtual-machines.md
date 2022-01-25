@@ -397,7 +397,7 @@ SDN is currently not supported for VMs created from Azure Portal.
 
 - **My environment does not support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
 
-If you cannot enable dynamic DNS updates in your DNS environment, you need to pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name _ca-cloudagent_ (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided _cloudservicecidr address_. More details on the steps in this process can be found in the [Failover Clustering documentation](https://docs.microsoft.com/en-us/windows-server/failover-clustering/prestage-cluster-adds).
+If you cannot enable dynamic DNS updates in your DNS environment, you need to pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name _ca-cloudagent_ (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided _cloudservicecidr address_. More details on the steps in this process can be found in the [Failover Clustering documentation](https://docs.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds).
 
  
 ## Next steps
