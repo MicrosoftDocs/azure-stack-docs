@@ -1,10 +1,10 @@
 ---
 title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
-author: dacuo
+author: dcuomo
 ms.topic: how-to
 ms.date: 10/22/2021
-ms.author: dacuo
+ms.author: dcuomo
 ms.reviewer: JasonGerend
 ---
 
@@ -21,7 +21,7 @@ For information on how to simplify host networking using Network ATC, see [Simpl
 Azure Stack HCI network traffic can be classified by its intended purpose:
 
 - **Compute traffic:** Traffic originating from or destined for a virtual machine (VM).
-- **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct.
+- **Storage traffic:** Traffic using Server Message Block, for example Storage Spaces Direct.
 - **Management traffic:** Traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, Active Directory, etc.
 
 ## Select a network adapter
