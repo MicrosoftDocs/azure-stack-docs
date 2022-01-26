@@ -4,7 +4,7 @@ description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
 ms.date: 10/22/2021
-ms.author: dcuomo
+ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
 
