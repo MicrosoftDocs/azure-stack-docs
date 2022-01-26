@@ -5,8 +5,9 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
+ms.date: 01/25/2022
 ms.lastreviewed: 01/25/2022
-ms.date: 12/16/2021
+
 ---
 
 # Azure Benefits on Azure Stack HCI
@@ -144,7 +145,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
   Or, to add all existing VMs, run the following command:
 
    ```powershell
-   Add-AzStackHCIAttestation -AddAll
+   Add-AzStackHCIVMAttestation -AddAll
    ```
 
 #### Troubleshooting - PowerShell
