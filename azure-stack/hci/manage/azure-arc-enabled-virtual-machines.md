@@ -138,9 +138,13 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
    Install-moc
    ```
+
    > [!TIP]
-   > To provide a static IP address to the Arc Resource Bridge VM, replace the previous command with
-   > $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID] -k8snodeippoolstart $staticIPaddress -k8snodeippoolend $staticIPaddress -gateway $gateway -dnsservers $dnsservers -ipaddressprefix $ipaddressprefix 
+   > To provide a static IP address to the Arc Resource Bridge VM, replace the previous command with:
+   >
+   > ```powershell
+   > $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID] -k8snodeippoolstart $staticIPaddress -k8snodeippoolend $staticIPaddress -gateway $gateway -dnsservers $dnsservers -ipaddressprefix $ipaddressprefix
+   > ```
 
 4. Update the required extensions:
    
