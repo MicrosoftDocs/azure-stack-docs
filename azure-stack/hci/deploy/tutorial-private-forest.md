@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 09/03/2021
 ---
 
-# Tutorial: Create a private forest environment for Azure Stack HCI
+# Tutorial: Create a private forest lab environment with VMs
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
