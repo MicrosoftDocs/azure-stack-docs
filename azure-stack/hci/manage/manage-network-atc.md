@@ -129,19 +129,50 @@ This task will help you override the default configuration which has already bee
 
 If you want to test various configurations on the same adapters, you may need to remove an intent. 
 
-If you previously deployed and configured Network ATC on your system, you may need to reset the node so that the configuration can be deployed. To do this, copy and paste the following commands to remove all existing intents and their corresponding vSwitch:
+If you previously deployed and configured Network ATC on your system, you may need to reset the cluster or node so that the configuration can be deployed. To do this on a cluster-based deploynent, copy and paste the following commands to one cluster node to remove all existing intents and their corresponding vSwitch:
 
 ```powershell
-    $intents = Get-NetIntent
-    foreach ($intent in $intents)
+$clusname = Get-Cluster
+$clusternodes = Get-ClusterNode    
+$intents = Get-NetIntent -ClusterName $clusname
+
+foreach ($intent in $intents)
+{
+    Remove-NetIntent -Name $intent.IntentName -ClusterName $clusname
+}
+
+foreach ($intent in $intents)
+{
+    foreach ($clusternode in $clusternodes)
     {
-        Remove-NetIntent -Name $intent.IntentName
-        Remove-VMSwitch -Name "*$($intent.IntentName)*" -ErrorAction SilentlyContinue -Force
+        Remove-VMSwitch -Name "*$($intent.IntentName)*" -ComputerName $clusternode -ErrorAction SilentlyContinue -Force
     }
-    
-    Get-NetQosTrafficClass | Remove-NetQosTrafficClass
-    Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
-    Get-NetQosFlowControl | Disable-NetQosFlowControl
+}
+
+foreach ($clusternode in $clusternodes)
+{    
+    New-CimSession -ComputerName $clusternode -Name $clusternode
+    $CimSession = Get-CimSession
+    Get-NetQosTrafficClass -CimSession $CimSession | Remove-NetQosTrafficClass -CimSession $CimSession
+    Get-NetQosPolicy -CimSession $CimSession | Remove-NetQosPolicy -Confirm:$false -CimSession $CimSession
+    Get-NetQosFlowControl -CimSession $CimSession | Disable-NetQosFlowControl -CimSession $CimSession
+    Get-CimSession | Remove-CimSession
+}
+```
+
+To remove the configuration on a per-node deployment, copy and paste the following commands to each node to remove all existing intents and their corresponding vSwitch:
+
+```powershell
+$intents = Get-NetIntent
+foreach ($intent in $intents)
+{
+    Remove-NetIntent -Name $intent.IntentName
+    Remove-VMSwitch -Name "*$($intent.IntentName)*" -ErrorAction SilentlyContinue -Force
+}
+
+Get-NetQosTrafficClass | Remove-NetQosTrafficClass
+Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
+Get-NetQosFlowControl | Disable-NetQosFlowControl
 ```
 
 ## Post-deployment tasks
