@@ -3,9 +3,9 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 01/27/2022
 ms.author: sethm
-ms.reviewer: avishwan
+ms.reviewer: vrajasekaran
 ms.lastreviewed: 12/16/2020
 zone_pivot_groups: state-connected-disconnected
 
@@ -288,15 +288,23 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
    ![Marketplace download directory structure](media/azure-stack-download-azure-marketplace-item/mp1.png)
 
-2. Follow the instructions in [this article](azure-stack-powershell-configure-admin.md) to configure the Azure Stack Hub Operator PowerShell session.
+2. Follow the instructions in [Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md) to configure the Azure Stack Hub operator PowerShell session.
 
-3. Sign in to your Azure Stack Hub with an identity that has owner access to the "Default Provider Subscription".
+3. Sign in to your Azure Stack Hub with an identity that has owner access to the **Default Provider Subscription**.
 
-4. Import the syndication module and then launch the marketplace syndication tool by running the following script:
+4. Copy the name of the folder; for example, **microsoft.dsc-arm-2.77.0**, and create a folder with that name.
+
+5. Move the downloaded folder to that folder. At this point, you have **C:\microsoft.dsc-arm-2.77.0\microsoft.dsc-arm-2.77.0\original-sub-folders-are-here** and **C:\microsoft.dsc-arm-2.77.0\microsoft.dsc-arm-2.77.0\productDetails.json**.
+
+6. Import the syndication module and then launch the marketplace syndication tool by running the following cmdlet:
 
     ```powershell
-    Import-AzsMarketplaceItem -RepositoryDir "Source folder path in quotes"
+    Import-AzsMarketplaceItem -RepositoryDir "C:\microsoft.dsc-arm-2.77.0"
     ```
 
-5. After the script successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
+7. After the cmdlet successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
 ::: zone-end
+
+## Next steps
+
+[Connect to Azure Stack Hub with PowerShell](azure-stack-powershell-configure-admin.md)
