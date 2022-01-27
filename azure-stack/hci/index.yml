@@ -48,7 +48,7 @@ landingContent:
             url: deploy/validate.md
       - linkListType: tutorial
         links:
-          - text: Create a private forest lab environment with VMs
+          - text: Create a VM-based lab for Azure Stack HCI
             url: deploy/tutorial-private-forest.md
 
   # Card

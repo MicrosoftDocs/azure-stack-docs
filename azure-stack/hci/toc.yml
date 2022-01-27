@@ -24,7 +24,7 @@
     href: deploy/deployment-quickstart.md
 - name: Tutorial
   items:
-  - name: Create a private forest environment
+  - name: Create a VM-based lab
     href: deploy/tutorial-private-forest.md
 - name: Deploy
   items:
