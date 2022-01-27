@@ -5,17 +5,20 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 1/6/2020
+ms.date: 1/26/2020
 ---
 
 # How to remove IoT Hub on Azure Stack Hub
 
 This article provides instructions on how to remove IoT Hub resource provider on Azure Stack Hub. This process takes around 37 minutes.
 
-> [!WARNING]
-> Once IoT Hub is uninstalled, **_all devices and data will be deleted_**. The operation is **NOT** recoverable.
+> [!IMPORTANT]
+> The public preview of the IoT Hub on Azure Stack Hub resource provider is now closed, and will not be moving to General Availability (GA).
 
 ## Uninstalling IoT Hub
+
+> [!WARNING]
+> Once IoT Hub is uninstalled, **_all devices and data will be deleted_**. The operation is **NOT** recoverable.
 
 1) Go to **Marketplace management**. IoT Hub will be in the list and marked as installed. Click on **IoT Hub**.
 
