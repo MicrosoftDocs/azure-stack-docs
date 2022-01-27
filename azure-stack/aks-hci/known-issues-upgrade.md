@@ -14,6 +14,42 @@ ms.reviewer: abha
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
+## Upgrade fails with Error: failed to patch capi: action failed after 10 attempts: context deadline exceeded
+
+When attempting to upgrade cluster an the upgrade fails with the following error even thought the cluster is still up and reachable.
+
+```bash
+Update Failed [C:\Program Files\AksHci\kvactl.exe upgrade --configfile "C:\AksHci\1.0.4.10928\yaml\appliance-update.yaml" --kubeconfig "C:\AksHci\1.0.4.10928\kubeconfig-mgmt" --cloudop "C:\AksHci\1.0.4.10928\cloud-operator.yaml" --sshprivatekey "C:\AksHci\.ssh\akshci_rsa" returned a non zero exit code 1 [Error: failed to patch capi: action failed after 10 attempts: context deadline exceeded]]
+```
+
+The **kva-webhook** enters a deadlock on certificate update.
+
+To resolve this issue, restart the **kva-webhook**. You can restart the **kva-webhook** by:
+
+1. Get the **kva-webhook** pod name.
+2. Delete the **kva-webhook** pod.
+
+### Get the **kva-webhook** pod name
+
+```bash
+$kubectl.exe get pods --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -A | select-string kva-webhook
+```
+The command should return the results in the format: `NAMESPACE NAME READY STATUS RESTARTS AGE`
+
+For example: 
+
+```bash
+kube-system kva-webhook-******* 1/1 Running 0 5m36s
+```
+
+### Delete the **kva-webhook** pod.
+
+```bash
+$kubectl.exe delete pod <kva-webhook-pod-name> kva-webhook-5cdf58775-5dl2x --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n kube-system
+```
+
+Once the command is complete, a new **kva-webhook** pod should be running. You can attempt an upgrade again.
+
 ## When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
 When upgrading Kubernetes clusters with an Open Policy Agent (OPA), such as OPA GateKeeper, the process may hang and unable to complete. This issue can occur because the policy agent is configured to prevent pulling container images from private registries.
