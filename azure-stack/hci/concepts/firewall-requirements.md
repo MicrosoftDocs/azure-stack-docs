@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: cosmosdarwin
 ms.author: cosdar
 ms.topic: how-to
-ms.date: 12/14/2021
+ms.date: 01/27/2022
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -145,7 +145,6 @@ If your outbound firewall is restricted, then we recommend adding the following 
 | Cloud Init service to download Kubernetes binaries       | `storage.googleapis.com`          | 443     | Outbound  |
 | Windows Admin Center to download Azure CLI               | `aka.ms/installazurecliwindows`   | 443     | Outbound  |
 | Kubernetes service to download container images          | `ecpacr.azurecr.io`               | 443     | Outbound  |
-| TCP to support Azure Arc agents                          | `git://:9418`                     | 9,418   | Outbound  |
 | PowerShell Gallery central repository                    | `*.powershellgallery.com`         | 80,443  | Outbound  |
 | Web-hosting platform that supports multiple technologies | `*.azurewebsites.net`             | 443     | Outbound  |
 | Content Delivery Network (CDN) downloads                 | `*.msecnd.net`                    | 443     | Outbound  |
@@ -166,7 +165,7 @@ A *service tag* represents a group of IP addresses from a given Azure service. M
 
 ### Required endpoint daily access (after Azure registration)
 
-Azure maintains well-known IP addresses for Azure services that are organized using service tags. Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don’t change often, but they do change a few times per year. The following table shows the service tag endpoints that the operating system needs to access.
+Azure maintains well-known IP addresses for Azure services that are organized using service tags. Azure publishes a weekly JSON file of all the IP addresses for every service. The IP addresses don't change often, but they do change a few times per year. The following table shows the service tag endpoints that the operating system needs to access.
 
 | Description                   | Service tag for IP range  | URL                                                                       | Azure China URL                         |
 | :-----------------------------| :-----------------------  | :------------------------------------------------------------------------ | :-------------------------------------- |
@@ -187,7 +186,7 @@ This section shows how to configure Microsoft Defender Firewall to allow IP addr
     $json = Get-Content -Path .\ServiceTags_Public_20201012.json | ConvertFrom-Json
     ```
 
-1. Get the list of IP address ranges for a given service tag, such as the “AzureResourceManager” service tag:
+1. Get the list of IP address ranges for a given service tag, such as the "AzureResourceManager" service tag:
 
     ```powershell
     $IpList = ($json.values | where Name -Eq "AzureResourceManager").properties.addressPrefixes
