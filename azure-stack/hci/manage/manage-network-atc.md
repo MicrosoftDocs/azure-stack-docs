@@ -129,7 +129,7 @@ This task will help you override the default configuration which has already bee
 
 If you want to test various configurations on the same adapters, you may need to remove an intent. 
 
-If you previously deployed and configured Network ATC on your system, you may need to reset the cluster or node so that the configuration can be deployed. To do this on a cluster-based deploynent, copy and paste the following commands to one cluster node to remove all existing intents and their corresponding vSwitch:
+If you previously configured and deployed Network ATC on your system, you may need to remove the existing configuration as Network ATC will not remove them for you. To do this on a cluster-based deployment, copy and paste the following commands on one cluster node to remove all existing intents and their corresponding vSwitch:
 
 ```powershell
 $clusname = Get-Cluster
@@ -160,7 +160,7 @@ foreach ($clusternode in $clusternodes)
 }
 ```
 
-To remove the configuration on a per-node deployment, copy and paste the following commands to each node to remove all existing intents and their corresponding vSwitch:
+To remove the configuration on a per-node deployment, copy and paste the following commands on each node to remove all existing intents and their corresponding vSwitch:
 
 ```powershell
 $intents = Get-NetIntent
