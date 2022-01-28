@@ -127,7 +127,6 @@ This task will help you override the default configuration which has already bee
 
 ## Remove an intent
 
-If you want to test various configurations on the same adapters, you may need to remove an intent. 
 
 Sometimes you might want to remove all intents and start over—for example, to test a different configuration. While you can remove intents using the Remove-NetIntent cmdlet, doing so won’t clean up the virtual switches and DCB/NetQoS configurations created for the intents. Network ATC makes a point of not destroying things on your system, which is usually a good thing, but it does mean you must perform some manual steps to start over.
  
