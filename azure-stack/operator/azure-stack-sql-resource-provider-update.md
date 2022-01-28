@@ -153,7 +153,9 @@ Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmP
 
 1.    The MajorVersionUpgrade script executed without any errors.
 2.    Check the resource provider in marketplace and make sure that SQL RP 2.0 has been installed successfully.
-3.    The old **system.\<location\>.sqladapter** resource group in the default provider subscription will not be automatically deleted by the script. We recommend to keep the Storage Account in this resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the Storage Account.
+3.    The old **system.\<location\>.sqladapter** resource group and **system.\<location\>.dbadapter.dns** resource group in the default provider subscription will not be automatically deleted by the script. 
+* We recommend to keep the Storage Account and the Key Vault in the sqladapter resource group for some time. If after the upgrade, any tenant user observes inconsistent database or login metadata, it is possible to get support to restore the metadata from the resource group.
+* After verifying that the DNS Zone in the dbadapter.dns resource group is empty with no DNS record, it is safe to delete the dbadapter.dns resource group.
 
 
 ## Update from SQL RP V1 earlier version to SQL RP V1.1.93.x
