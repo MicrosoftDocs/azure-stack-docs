@@ -129,7 +129,9 @@ This task will help you override the default configuration which has already bee
 
 If you want to test various configurations on the same adapters, you may need to remove an intent. 
 
-If you previously configured and deployed Network ATC on your system, you may need to remove the existing configuration as Network ATC will not remove them for you. To do this on a cluster-based deployment, copy and paste the following commands on one cluster node to remove all existing intents and their corresponding vSwitch:
+Sometimes you might want to remove all intents and start over—for example, to test a different configuration. While you can remove intents using the Remove-NetIntent cmdlet, doing so won’t clean up the virtual switches and DCB/NetQoS configurations created for the intents. Network ATC makes a point of not destroying things on your system, which is usually a good thing, but it does mean you must perform some manual steps to start over.
+ 
+To remove all network intents and delete the virtual switches and NetQoS configurations created by Network ATC for these intents, run the following script in a PowerShell session running locally on one of the servers in the cluster (doesn’t matter which).
 
 ```powershell
 $clusname = Get-Cluster
