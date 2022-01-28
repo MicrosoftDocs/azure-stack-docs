@@ -35,6 +35,7 @@ Before you add a SQL hosting server, review the following mandatory and general 
 ### General requirements
 
 * Dedicate the SQL instance for use by the resource provider and user workloads. You can't use a SQL instance that's being used by any other consumer. This restriction also applies to App Services.
+* If you have multiple SQL Server instances on a single VM that you want to configure as hosting servers, each of the SQL Server instance should have unique IP or FQDN. It is not supported to configure multiple SQL Server instances that share the same IP or FQDN as hosting servers.
 * Configure an account with the appropriate privilege levels for the resource provider (described below).
 * You're responsible for managing the SQL instances and their hosts. For example, the resource provider doesn't apply updates, handle backups, or handle credential rotation.
 
