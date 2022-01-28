@@ -7,7 +7,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/16/2021
+ms.date: 01/27/2022
 ---
 
 # VM provisioning through Azure portal on Azure Stack HCI (preview)
@@ -37,7 +37,7 @@ A resource bridge is required to enable VM provisioning through Azure portal on 
 
 A **custom location** for an Azure Stack HCI cluster is analogous to an Azure region. As an extension of the Azure location construct, custom locations allow tenant administrators to use their Azure Stack HCI clusters as target location for deploying Azure services.
 
-A **cluster extension** is the on-premises equivalent of an Azure Resource Manager resource provider. The Azure Stack HCI cluster extension helps manage VMs on an Azure Stack HCI cluster in the same way that the “Microsoft.Compute” resource provider manages VMs in Azure, for example.
+A **cluster extension** is the on-premises equivalent of an Azure Resource Manager resource provider. The Azure Stack HCI cluster extension helps manage VMs on an Azure Stack HCI cluster in the same way that the "Microsoft.Compute" resource provider manages VMs in Azure, for example.
 
    > [!NOTE]
    > **Arc Appliance** is an earlier name for Arc Resource Bridge, and you may see the term used in some places like the PowerShell commands or on Azure Portal. The feature has also been called self-service VMs in the past; however, this is only one of the several capabilities available with Arc-enabled Azure Stack HCI.
@@ -46,10 +46,10 @@ A **cluster extension** is the on-premises equivalent of an Azure Resource Manag
 
 To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you must:
 
-1.	Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension. This can be done using Windows Admin Center or PowerShell.
-2.	Create a custom location for the Azure Stack HCI cluster.
-3.	Create virtual network projections which will be used by VM network interfaces.
-4.	Create OS gallery images for provisioning VMs.
+1.    Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension. This can be done using Windows Admin Center or PowerShell.
+2.    Create a custom location for the Azure Stack HCI cluster.
+3.    Create virtual network projections which will be used by VM network interfaces.
+4.    Create OS gallery images for provisioning VMs.
 
 The following sections describe these steps in more detail. 
 
@@ -64,7 +64,7 @@ Deploying Azure Arc Resource Bridge requires the following:
   - At least 50GB of space in C:\.
   - At least 4 cores
   - At least 6GiB of memory
-- A virtual switch of type “External”. Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
+- A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
 - A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server. We currently do not support proxy configurations.
 - An IP address for the load balancer running inside the Resource Bridge. The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
 - An IP address for the cloud agent running inside the Resource Bridge. If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
@@ -134,12 +134,19 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 3. Prepare configuration for Arc Resource Bridge:
 
    ```PowerShell
-   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [vLanID=$vLANID]
+   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID]
    Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
    Install-moc
    ```
 
-5. Update the required extensions:
+   > [!TIP]
+   > To provide a static IP address to the Arc Resource Bridge VM, replace the previous command with:
+   >
+   > ```powershell
+   > $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID] -k8snodeippoolstart $staticIPaddress -k8snodeippoolend $staticIPaddress -gateway $gateway -dnsservers $dnsservers -ipaddressprefix $ipaddressprefix
+   > ```
+
+4. Update the required extensions:
    
    - Uninstall the old extensions:
      
@@ -157,10 +164,10 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
      ```PowerShell
      az extension add --name arcappliance --version 0.2.11
      az extension add --name connectedk8s --version 1.2.0
-     az extension add --name k8s-configuration --version 1.1.1
-     az extension add --name k8s-extension --version 0.7.1
+     az extension add --name k8s-configuration --version 1.4.1
+     az extension add --name k8s-extension --version 1.0.4
      az extension add --name customlocation --version 0.1.3
-     az extension add --name azurestackhci --version 0.2.1
+     az extension add --name azurestackhci --version 0.2.3
      ```
 
 ## Create a custom location by installing Azure Arc Resource Bridge
@@ -266,17 +273,17 @@ You can provision and manage VMs through Azure portal by navigating to **Virtual
 
 In this step, you'll assign users to a custom location and grant them permissions to create, manage, or view the VMs.
 
-1.	From your browser, go to the Azure portal and select the Custom location under the subscription and resource group.
+1.    From your browser, go to the Azure portal and select the Custom location under the subscription and resource group.
 
-2.	Select Access control (IAM) > Add role assignments > Grant access to this resource.
+2.    Select Access control (IAM) > Add role assignments > Grant access to this resource.
 
-3.	Select the role you want to assign:
+3.    Select the role you want to assign:
 
    - **Owner**: Has full access to the custom location for creating and managing VMs, including managing roles in Azure role-based access control.
    - **Contributor**: Has full access to the custom location for creating and managing VMs.
    - **Reader**: Has read-only access to the custom location.
 
-4.	Search and select the Azure Active Directory (AAD) user or group. Repeat this step for each user or group you want to grant permission.
+4.    Search and select the Azure Active Directory (AAD) user or group. Repeat this step for each user or group you want to grant permission.
 
 ## Create a VM on Azure Stack HCI using Azure Portal
 
@@ -371,30 +378,34 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
 - Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
-- Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires deploying AKS management cluster first and then Arc Resource Bridge for VMs. If the AKS management cluster is already deployed, you don’t need to perform "set-MocConfig" and "install-moc". In this configuration, uninstalling AKS management cluster will also remove the Arc Resource Bridge for VM management. A new Arc Resource Bridge can be deployed again, but it will not remember the VM entities that were created earlier.
+- Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires deploying AKS management cluster first and then Arc Resource Bridge for VMs. If the AKS management cluster is already deployed, you don't need to perform "set-MocConfig" and "install-moc". In this configuration, uninstalling AKS management cluster will also remove the Arc Resource Bridge for VM management. A new Arc Resource Bridge can be deployed again, but it will not remember the VM entities that were created earlier.
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in Portal for management.
 - Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure Portal.
 - Arc VMs must be created in the same Azure subscription as the Custom location.
 
 ## FAQ
 
-The following are frequently asked questions about Azure Arc-enabled Azure Stack HCI.
+The following section answers some frequently asked questions about Azure Arc-enabled Azure Stack HCI.
 
-- **Can I create virtual machines on a tagged vLAN?**
+### Can I create virtual machines on a tagged vLAN?
   
 vLAN tagged VMs is currently not supported.
 
-- **Can Azure Kubernetes Service on Azure Stack HCI and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?**
+### Can Azure Kubernetes Service on Azure Stack HCI and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
 
 Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from Azure portal can be deployed on the same Arc-enabled Azure Stack HCI cluster. This requires deploying the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster will also remove Arc Resource Bridge.
 
-- **Can I use SDN for Azure Stack HCI VMs created from Azure portal?**
+### Can I use SDN for Azure Stack HCI VMs created from Azure portal?
   
 SDN is currently not supported for VMs created from Azure Portal.
- 
+
+### My environment does not support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
+
+If you cannot enable dynamic DNS updates in your DNS environment, you must pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering article](/windows-server/failover-clustering/prestage-cluster-adds).
+
 ## Next steps
 
 Now you're ready to create VMs in Azure portal. For preview access,
 
 > [!div class="nextstepaction"]
-> [Go to Azure portal](https://aka.ms/AzureArcVM/)
+> [Go to Azure portal](https://aka.ms/hci-selfservicevm/)

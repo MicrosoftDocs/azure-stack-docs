@@ -85,13 +85,13 @@ csi-csi-secrets-store-provider-azure-tpb4j   1/1     Running   0          3h52m
 
 You need an Azure Key Vault resource that contains your secret data. You can use an existing Azure Key Vault resource or create a new one. If you need to create an Azure Key Vault resource, run the command below. Make sure you are logged in by running `az login` and logging in with your Azure credentials and then change the following values to your environment.
 
-```powershell
+```azurecli
 az keyvault create -n <keyvault-name> -g <resourcegroup-name> -l eastus
 ```
 
 Azure Key Vault can store keys, secrets, and certificates. In the following example, a plain text secret called `ExampleSecret` is configured.
 
-```powershell
+```azurecli
 az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyAKSHCIExampleSecret
 ```
 
@@ -101,13 +101,13 @@ Use a Service Principal to access the Azure Key Vault instance that was created 
 
 The following command provides the Client Secret:
 
-```powershell
-az ad sp create-for-rbac --skip-assignment --name http://secrets-store-test --query 'password' -otsv
+```azurecli
+az ad sp create-for-rbac --role Contributor --name http://secrets-store-test --query 'password' -otsv
 ```
 
-The follow command provides the Client ID:
+The following command provides the Client ID:
 
-```powershell
+```azurecli
 az ad sp show --id http://secrets-store-test --query 'appId' -otsv
 ```
 
@@ -115,7 +115,7 @@ az ad sp show --id http://secrets-store-test --query 'appId' -otsv
 
 Use the values from the previous step to set permissions as shown in the following command:
 
-```powershell
+```azurecli
 az keyvault set-policy -n <keyvault-name> --secret-permissions get --spn <client-id>
 ```
 

@@ -3,9 +3,9 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/13/2021
+ms.date: 1/21/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 1/21/2022
 ms.reviewer: abha
 
 ---
@@ -43,34 +43,12 @@ MS-HCIv2-03   Windows Server Subscription Inactive
 
 If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
 
-## Error: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
+## Error: `Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.`
 
-This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
+The file cannot be access because it is being used by another process.
 
-To resolve this error, verify that the cluster is registered with Azure using the `Get-AzureStackHCI` PowerShell cmdlet that's available on your machine. The Windows Admin Center dashboard also shows status information about the cluster's Azure registration.
+You can resolve this issue by restarting your PowerShell session. Close the PowerShell window and try Install-MOC again.
 
-If the cluster is already registered, then you should view the `LastConnected` field in the output of `Get-AzureStackHCI`. If the field shows it's been more than 30 days, you should attempt to resolve the situation by using the `Sync-AzureStackHCI` cmdlet.
-
-You can also validate whether each node of your cluster has the required license by using the following cmdlet:
-
-```powershell
-Get-ClusterNode | % { Get-AzureStackHCISubscriptionStatus -ComputerName $_ }
-```
-
-```output
-Computer Name Subscription Name           Status   Valid To
-------------- -----------------           ------   --------
-MS-HCIv2-01   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
-MS-HCIv2-01   Windows Server Subscription Inactive
-
-MS-HCIv2-02   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
-MS-HCIv2-02   Windows Server Subscription Inactive
-
-MS-HCIv2-03   Azure Stack HCI             Active   12/23/2021 12:00:14 AM
-MS-HCIv2-03   Windows Server Subscription Inactive
-```
-
-If the issue isn't resolved after running the `Sync-AzureStackHCI` cmdlet, you should reach out to Microsoft support.
 
 ## Error: `Install-Moc failed with error - Exception [CloudAgent is unreachable. MOC CloudAgent might be unreachable for the following reasons]` 
 
@@ -99,6 +77,11 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
       Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
       ```
 
+## Error:  `[Doc]Install-Moc failed with error - [The object already exists] An error occurred while creating resource 'IPv4 Address xxx.xx.xx.xx' for the clustered role 'xx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx'
+
+A previously installed feature remains in a failed state and has not been cleared.
+
+You will need to manually clean up the cluster role manually. You can remove the resource from the  fail-over  cluster manager by running the following PowerShell cmdlet:  `Remove-ClusterResource -name <resource name>`.
 ## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]`  
 
 This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.

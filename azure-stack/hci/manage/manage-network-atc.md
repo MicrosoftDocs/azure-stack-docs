@@ -1,11 +1,10 @@
 ---
 title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
-author: v-dasis
+author: jasongerend
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.author: jgerend
 ---
 
 # Manage Network ATC
@@ -44,7 +43,15 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 You can also add several nodes to the cluster at once.
 
-## Update an intent network adapter
+## Modify default VLANs for storage or management systems
+
+You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
+
+   ``` powershell
+   Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
+   ```
+
+## Add or remove network adapters from an intent
 
 This task will help you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents. 
 

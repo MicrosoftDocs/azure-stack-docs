@@ -1,10 +1,10 @@
 --- 
 title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
-author: v-dasis 
+author: sethmanheim 
 ms.topic: how-to 
-ms.date: 10/22/2021
-ms.author: v-dasis 
+ms.date: 01/19/2022
+ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
 
@@ -213,4 +213,5 @@ The following configuration sample files for deploying SDN are available on the 
 
 ## Next steps
 
-Manage your VMs. For more information, see [Manage VMs](../manage/vm.md).
+- [Manage VMs](../manage/vm.md)
+- [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
