@@ -14,12 +14,18 @@ ms.reviewer: abha
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
-## Upgrade fails with Error: failed to patch capi: action failed after 10 attempts: context deadline exceeded
+## Upgrade fails with Error: `failed to patch capi: action failed after 10 attempts: context deadline exceeded`
 
-When attempting to upgrade cluster an the upgrade fails with the following error even thought the cluster is still up and reachable.
+When attempting to upgrade,  cluster and the upgrade fails with the following error even thought the cluster is still up and reachable. The error can be thrown in during this two-day operation. The error may trigger the following message:
 
 ```bash
 Update Failed [C:\Program Files\AksHci\kvactl.exe upgrade --configfile "C:\AksHci\1.0.4.10928\yaml\appliance-update.yaml" --kubeconfig "C:\AksHci\1.0.4.10928\kubeconfig-mgmt" --cloudop "C:\AksHci\1.0.4.10928\cloud-operator.yaml" --sshprivatekey "C:\AksHci\.ssh\akshci_rsa" returned a non zero exit code 1 [Error: failed to patch capi: action failed after 10 attempts: context deadline exceeded]]
+```
+
+Or the error may trigger a message that resembles the following message:
+
+```bash
+failed to patch AksHciNodepool: action failed after 10 attempts: Put \"https://10.168.32.240:6443/apis/msft.microsoft/v1/namespaces/default/akshcinodepools/***-linux?timeout=10s\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
 ```
 
 The **kva-webhook** enters a deadlock on certificate update.
