@@ -285,7 +285,7 @@ In this step, you'll assign users to a custom location and grant them permission
 
 4.    Search and select the Azure Active Directory (AAD) user or group. Repeat this step for each user or group you want to grant permission.
 
-## Create a VM on Azure Stack HCI using Azure Portal
+## Create a VM on Azure Stack HCI using Azure portal
 
 Once your administrator has configured an Azure Stack HCI cluster for Azure portal-based provisioning, a custom location for this cluster will be available as a resource in Azure. Once the administrator gives you permissions on this resource, you'll be able to create and manage VMs on the cluster.
 
@@ -379,8 +379,8 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
 - Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
 - Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires deploying AKS management cluster first and then Arc Resource Bridge for VMs. If the AKS management cluster is already deployed, you don't need to perform "set-MocConfig" and "install-moc". In this configuration, uninstalling AKS management cluster will also remove the Arc Resource Bridge for VM management. A new Arc Resource Bridge can be deployed again, but it will not remember the VM entities that were created earlier.
-- VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in Portal for management.
-- Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure Portal.
+- VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in portal for management.
+- Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure portal.
 - Arc VMs must be created in the same Azure subscription as the Custom location.
 
 ## FAQ
@@ -397,7 +397,7 @@ Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from Azure 
 
 ### Can I use SDN for Azure Stack HCI VMs created from Azure portal?
   
-SDN is currently not supported for VMs created from Azure Portal.
+SDN is currently not supported for VMs created from Azure portal.
 
 ### My environment does not support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
 
