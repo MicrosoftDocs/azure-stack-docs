@@ -18,11 +18,11 @@ Use this topic to help you troubleshoot and resolve security and identity-relate
 
 KVA certificate expires after 60 day if no upgrade is performed.
 
-`Update-AksHci` and any command involving `kvactl` will throws the following error.
+`Update-AksHci` and any command involving `kvactl` will throw the following error.
 
 `Error: failed to get new provider: failed to create azurestackhci session: Certificate has expired: Expired`
 
-To resolve this error, delete the expired certificate file at `\kvactl\cloudconfig` and try `Update-AksHci` again. Try the following command:
+To resolve this error, delete the expired certificate file at `\kvactl\cloudconfig` and try `Update-AksHci` again. You can use the following command:
 
 ```bash
 $env:UserProfile.wssd\kvactl\cloudconfig
