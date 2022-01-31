@@ -3,9 +3,9 @@ title: Troubleshoot security and identity issues and errors in Azure Kubernetes 
 description: Get help to troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/13/2021
+ms.date: 1/31/2021
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 1/31/2021
 ms.reviewer: abha
 
 ---
@@ -14,9 +14,21 @@ ms.reviewer: abha
 
 Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS on Azure Stack HCI.
 
+## KVA certificate needs to be deleted if KVA certificate expired after 60 days
+
+KVA certificate expires after 60 day if no upgrade is performed.
+
+`Update-AksHci` and any command involving `kvactl` will throws the following error.
+
+`Error: failed to get new provider: failed to create azurestackhci session: Certificate has expired: Expired`
+
+To resolve this error, delete the expired certificate file at `\kvactl\cloudconfig` and try `Update-AksHci` again. Try the following command:
+
+```bash
+$env:UserProfile.wssd\kvactl\cloudconfig
+```
 ## Uninstall-AksHciAdAuth fails with the error `[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]`
 If [Uninstall-AksHciAdAuth](./reference/ps/./uninstall-akshciadauth.md) displays this error, you should ignore it for now as this issue will be fixed.
-
 ## Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
 Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have **Full Control** permission to create AD objects in the Active Directory container the server and service objects are created in. 
 
