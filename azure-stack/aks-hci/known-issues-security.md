@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS on Azure Stack HCI.
 
-## KVA certificate needs to be deleted if KVA certificate expired after 60 days
+## Delete KVA certificate if expired after 60 days
 
 KVA certificate expires after 60 day if no upgrade is performed.
 
