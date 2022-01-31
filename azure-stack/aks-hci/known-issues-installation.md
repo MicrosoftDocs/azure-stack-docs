@@ -57,7 +57,7 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
 1. Check the host DNS server configuration and gateway settings:
    1. Confirm that the DNS server is correctly configured. To check the host's DNS server address, run the following command: 
       ```powershell
-      Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
+      ((Get-NetIPConfiguration).DNSServer | ?{ $_.AddressFamily -ne 23}).ServerAddresses
       ```
    2. To check whether your IP address and gateway configuration are correct, run the command `ipconfig/all`.
    3. Attempt to ping the IP gateway and the DNS server.
