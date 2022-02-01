@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 05/14/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: mmcspirt
+ms.reviewer: scooley
 
 #Customer intent: As a cluster operator or developer, I want to learn how to deploy Helm into an AKS-HCI cluster and then install and manage applications using Helm charts.
 ---
