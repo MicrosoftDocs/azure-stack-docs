@@ -105,7 +105,7 @@ Use the following steps to deploy and configure Velero:
 
    Finally, create a file that contains all the relevant environment variables. The command looks like the following example:
 
-      ```azurecli
+      ```bash
       cat << EOF  > ./credentials-velero
       AZURE_SUBSCRIPTION_ID=${AZURE_SUBSCRIPTION_ID}
       AZURE_TENANT_ID=${AZURE_TENANT_ID}
