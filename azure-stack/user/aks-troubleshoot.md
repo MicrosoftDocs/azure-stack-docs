@@ -90,7 +90,7 @@ Some more logs are retrieved for Windows nodes:
 
 ### Examples
 
-```bash
+```azurecli
 # switch to the subscription where the Kubernetes cluster is deployed.
 az account set --subscription <Subscription ID>
 
