@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: EkeleAsonye
 ---
 
 # Stop and start an AKS on Azure Stack HCI cluster
