@@ -217,7 +217,7 @@ ExampleSecret
 To show the test secret held in `secrets-store`, run the following command:
 
 ```powershell
-kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/ExampleSecret --namespace kube-system
+kubectl exec busybox-secrets-store-inline --namespace kube-system -- cat /mnt/secrets-store/ExampleSecret 
 ```
 
 If successful, the output should show the value of the secret. In this example, it should show the output below:
