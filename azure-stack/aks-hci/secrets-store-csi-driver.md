@@ -205,7 +205,7 @@ kubectl apply -f ./my-deployment.yaml
 To show the secrets that are held in `secrets-store`, run the following command:
 
 ```powershell
-kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/ --namespace kube-system
+kubectl exec busybox-secrets-store-inline --namespace kube-system -- ls /mnt/secrets-store/
 ```
 
 If successful, the output should show the name of the secret. In this example, it should display the output below:
