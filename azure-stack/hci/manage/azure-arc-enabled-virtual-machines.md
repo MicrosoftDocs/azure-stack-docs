@@ -300,7 +300,7 @@ In order to create and manage VMs, you'll need:
 
 To create a VM using Azure portal, follow these steps:
 
-1. From your browser, go to the [Azure portal](https://portal.azure.com). You'll see a unified browsing experience for Azure and Arc VMs.
+1. From your browser, go to the [Azure portal](https://aka.ms/AzureArcVM). You'll see a unified browsing experience for Azure and Arc VMs.
 
 2. Select **Add**, and then select **Azure Arc machine** from the drop-down.
 
