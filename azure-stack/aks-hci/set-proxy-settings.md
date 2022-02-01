@@ -77,7 +77,7 @@ $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy
 Set-AksHciConfig -proxySetting $proxySetting -...
 ```
 
-In order to exclude all addresses in a domain, you need to add the domain to the `noProxy` list. Use a leading period rather than a wildcard (*) character. In the sample, addresses at `.contoso.com` such as `prefix1.contoso.com` and `prefix2.contoso.com` would be excluded.
+In order to exclude all addresses in a domain, you need to add the domain to the `noProxy` list. Use a leading period rather than a wildcard (*) character. In the sample, the addresses `.contoso.com` excludes addresses `prefix1.contoso.com`, `prefix2.contoso.com`, and so on.
 
 ## Next steps
 
