@@ -12,7 +12,7 @@ ms.lastreviewed: 02/02/2022
 
 # Azure Instance Metadata Service – public preview
 
-The Azure Instance Metadata Service (IMDS) provides information about currently running virtual machine instances. You can use it to manage and configure your virtual machines. This information includes the SKU, storage and network configurations. For a complete list of the data available, see the endpoint categories summary.
+The Azure Instance Metadata Service (IMDS) provides information about currently running virtual machine instances. You can use it to manage and configure your virtual machines. This information includes the SKU, storage, and network configurations. For a complete list of the data available, see the [endpoint categories summary](#supported-endpoint-categories).
 
 IMDS is available for running instances of virtual machines (VMs) and virtual machine scale set instances. All endpoints support VMs created and managed by using Azure Resource Manager.
 
@@ -20,7 +20,7 @@ IMDS is a REST API that's available at a well-known, non-routable IP address (16
 
 ## Usage
 
-See the [Azure Instance Metadata Service documentation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows) to learn more about IMDS and how to use it. This article focuses on differences between Azure and Azure Stack Hub as the service is in public preview.
+To learn more about IMDS and how to use it, see the [Azure Instance Metadata Service documentation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows). This article focuses on differences between Azure and Azure Stack Hub, as the service is in public preview.
 
 ## Differences between Azure and Azure Stack Hub
 
@@ -30,11 +30,11 @@ The IMDS API contains multiple endpoint categories representing different data s
 
 |     Category root             |     Description                                       |     Available in Azure Stack Hub    |
 |-------------------------------|-------------------------------------------------------|---------------------------------------|
-|     /metadata/attested        |     See [Attested Data](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows)                               |     Not available                     |
-|     /metadata/identity        |     See [Managed Identity via IMDS](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows)                   |     Not available                     |
-|     /metadata/instance        |     See [Instance metadata](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows)                           |     Azure Stack Hub 1.2108.2.73     |
-|     /metadata/loadbalancer    |     See [Retrieve Load Balancer metadata via IMDS](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows)    |     Not available                     |
-|     /metadata/versions        |     See [Versions](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows)                                    |     Azure Stack Hub 1.2108.2.73     |
+|     /metadata/attested        |     See [Attested Data](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data)                               |     Not available                     |
+|     /metadata/identity        |     See [Managed Identity via IMDS](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#managed-identity)                   |     Not available                     |
+|     /metadata/instance        |     See [Instance metadata](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#instance-metadata)                           |     Azure Stack Hub 1.2108.2.73     |
+|     /metadata/loadbalancer    |     See [Retrieve Load Balancer metadata via IMDS](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#load-balancer-metadata)    |     Not available                     |
+|     /metadata/versions        |     See [Versions](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#versions)                                    |     Azure Stack Hub 1.2108.2.73     |
 
 ## Rest response
 
