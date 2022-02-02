@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 05/14/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: mmcspirt
+ms.reviewer: scooley
 ---
 
 # Using OpenFaaS on AKS on Azure Stack HCI

@@ -110,7 +110,7 @@ Prior to rotation of external secrets:
      <sup>*</sup>Part of the [Windows Trusted Root Program](/security/trusted-root/participants-list).
 
    - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
-   - Make sure there are no special characters in the password, like `*` or `)`.
+   - Make sure there are no special characters in the password, like for example `$`,`*`,`#`,`@`,` or `)`.
    - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
 
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
