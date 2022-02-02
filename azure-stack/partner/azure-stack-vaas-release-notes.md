@@ -24,6 +24,13 @@ ROBOTS: NOINDEX
 
 This article has the release notes for Azure Stack Hub validation as a service.
 
+## Version 4.4.6.35
+
+2022 February 1
+
+- Service compliance updates.
+- Security bug fixes
+
 ## Version 4.4.5.1
 
 2021 April 21
