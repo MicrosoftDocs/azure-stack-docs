@@ -19,7 +19,7 @@ If a workload cluster crashes and fails to recover, you can use a Velero backup 
 
 Use the following steps to deploy and configure Velero:
 
-1. Install the Velero CLI on your workstation. On a Windows machine, you can use [Chocolatey](https://chocolatey.org/install) to install the [Velero client](https://chocolatey.org/packages/velero):
+1. [Install the Velero CLI on your workstation](https://docs.pivotal.io/tkgi/1-13/velero-install.html#velero-cli-install). On a Windows machine, you can use [Chocolatey](https://chocolatey.org/install) to install the [Velero client](https://chocolatey.org/packages/velero):
 
    ```powershell
    choco install velero
