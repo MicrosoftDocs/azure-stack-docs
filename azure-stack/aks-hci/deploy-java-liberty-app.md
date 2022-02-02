@@ -4,7 +4,7 @@ description: Deploy a Java application with Open Liberty or WebSphere Liberty on
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: mmcspirt
+ms.reviewer: scooley
 ms.topic: conceptual
 ms.date: 05/19/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks-hci, kubernetes
