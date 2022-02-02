@@ -25,10 +25,11 @@ This document describes the contents of Azure Stack Hub Ruggedized first party u
 
 | Release | Date       | Description of changes         |
 |---------|------------|--------------------------------|
-| 2112    | 02/02/2022 | 2.2.2112.4 OEM package updates |
 | 2008    | 10/13/2020 | 2.2.2010.5 OEM package updates |
 | 2102    | 04/07/2021 | 2.2.2102.16 OEM package updates|
 | 2108    | 09/28/2021 | 2.2.2108.8 OEM package updates |
+| 2112    | 02/02/2022 | 2.2.2112.4 OEM package updates |
+
 ## Azs Hub Node
 
 ### Boot Drive Controller - Azure Stack Hub
