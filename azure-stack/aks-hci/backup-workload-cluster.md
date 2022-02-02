@@ -201,8 +201,3 @@ kubectl delete crds -l component=velero
     get         Get restores
     logs        Get restore logs
   ```
-
-## References
-
-How Velero Works
-Restic integration
