@@ -3,7 +3,7 @@ title: Azure Stack Hub Ruggedized OEM Release Notes
 description: OEM Release Notes for Azure Stack Hub Ruggedized. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/28/2022
+ms.date: 02/02/2022
 ms.author: sethm
 ms.reviewer: danlewi
 ms.lastreviewed:
@@ -18,13 +18,14 @@ This article contains release and version information for Azure Stack Hub Rugged
 
 This document describes the contents of Azure Stack Hub Ruggedized first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub Ruggedized. Below are the download links:
 
-* https://aka.ms/azshwpackage
-* https://aka.ms/azshwmanifest
+* https://aka.ms/azsruggedhwpackage
+* https://aka.ms/azsruggedhwmanifest
 
 ## Baseline and document history
 
 | Release | Date       | Description of changes         |
 |---------|------------|--------------------------------|
+| 2112    | 02/02/2022 | 2.2.2112.4 OEM package updates |
 | 2008    | 10/13/2020 | 2.2.2010.5 OEM package updates |
 | 2102    | 04/07/2021 | 2.2.2102.16 OEM package updates|
 | 2108    | 09/28/2021 | 2.2.2108.8 OEM package updates |
