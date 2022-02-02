@@ -92,7 +92,7 @@ The value V, largest HA VM in the scale unit, is dynamically based on the larges
 
 ### Sample calculation
 
-We have small 4 node Azure Stack Hub deployment with 768 GB RAM on each node. We plann place virtual machine for SQL server with 128GB of RAM (Standard_E16_v3). What will be the  available memory for VM placement?
+We have a small four-node Azure Stack Hub deployment with 768 GB RAM on each node. We plan to place a virtual machine for SQL server with 128GB of RAM (Standard_E16_v3). What will be the available memory for VM placement?
 
 * Total host memory = Sum of memory from all nodes = 4 * 768 GB = 3072 GB
 * Resiliency reserve = H + R * ((N-1) * H) + V * (N-2) = 768 + 0.15 * ((4 - 1) * 768) + 128 * (4 - 2) = 1370 GB
