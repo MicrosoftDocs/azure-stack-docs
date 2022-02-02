@@ -29,7 +29,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 2022 February 1
 
 - Service compliance updates.
-- Security bug fixes
+- Security bug fixes.
 
 ## Version 4.4.5.1
 
