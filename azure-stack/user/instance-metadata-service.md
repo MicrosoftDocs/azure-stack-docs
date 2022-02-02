@@ -65,7 +65,7 @@ Sample response:
           "name":  "IMDSVALI",
           "offer":  "WindowsServer",
           "osProfile":  {
-                            "adminUsername":  "thoroet",
+                            "adminUsername":  "sampleuser",
                             "computerName":  "IMDSVALI",
                             "disablePasswordAuthentication":  ""
                         },
