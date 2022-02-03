@@ -137,7 +137,7 @@ As stated earlier in this article, the tested configuration is eight (8) Azure S
 
 Assuming you want to be able to completely tolerate the loss of one physical node in the Azure Stack HCI cluster, support upgrading target clusters to newer versions and also allow for high availability of the target cluster control plane nodes and load balancer nodes.
 
-Based on this assumption, you need to reserve ~30% of the overall cluster capacity for failover and updates. 15% for the loss of one physical node and 15% to still allow for AKS on Azure Stack HCI updates, scaling, and further failovers if needed should it take longer to recover the failed Azure Stack HCI node.
+Based on this assumption, you need to reserve ~30% of the overall cluster capacity for failover and updates. Based on this assumption, you need to reserve ~30% of the total cluster capacity for failover and updates. You can also reserve another 30% for the unlikely event of losing one physical HCI node and still be able to update and scale AKS on Azure Stack HCI, as well as other failover operations.
 
 If you want to grow beyond the 200 VM limit for a maximum hardware sized eight (8) node Azure Stack HCI clusters increase the size of the AKS Host VM. Doubling in size gets roughly double the number of VMs. In an eight (8) node Azure Stack HCI cluster, you can get to 8,192 (8x1024) VMs based on the Azure Stack HCI recommended resource limits documented in the [Maximum supported hardware specifications](/azure-stack/hci/concepts/system-requirements#maximum-supported-hardware-specifications). You'll want to reserve ~30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
 
