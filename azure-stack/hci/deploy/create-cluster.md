@@ -4,7 +4,7 @@ description: Learn how to create a server cluster for Azure Stack HCI using Wind
 author: v-dasis
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-dasis
+ms.author: v-tamarshall
 ms.reviewer: JasonGerend
 ---
 
