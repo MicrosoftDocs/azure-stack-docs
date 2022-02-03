@@ -245,7 +245,7 @@ Now that the custom location is available, you can create or add virtual network
 
    ```azurecli
    $vnetName=<name of the vnet>
-   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --virtualnetworks-name $vnetName
+   az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName
    ```
 
 2. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described below. Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
@@ -254,7 +254,7 @@ Now that the custom location is available, you can create or add virtual network
    $galleryImageName=<gallery image name>
    $galleryImageSourcePath=<path to the source gallery image>
    $osType="<Windows/Linux>"
-   az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --galleryimages-name $galleryImageName --os-type $osType
+   az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
    ```
    
    **galleryImageName**: Name of the gallery image, for example: "win-os". Note that Azure rejects all names that contains the keyword "Windows".
@@ -330,13 +330,13 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 1. Remove the virtual network:
 
    ```azurecli
-   az azurestackhci virtualnetwork delete --subscription $subscription --resource-group $resource_group --virtualnetworks-name $vnetName --yes
+   az azurestackhci virtualnetwork delete --subscription $subscription --resource-group $resource_group --name $vnetName --yes
    ```
 
 2. Remove the gallery images:
 
    ```azurecli
-   az azurestackhci galleryimage delete --subscription $subscription --resource-group $resource_group --location $Location --galleryimages-name $galleryImageName
+   az azurestackhci galleryimage delete --subscription $subscription --resource-group $resource_group --location $Location --name $galleryImageName
    ```
 
 3. Remove the custom location:
