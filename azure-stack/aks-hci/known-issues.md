@@ -3,9 +3,9 @@ title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
 description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 02/02/22
+ms.date: 02/02/2022
 ms.author: mabrigg 
-ms.lastreviewed: 02/02/22
+ms.lastreviewed: 02/02/2022
 ms.reviewer: EkeleAsonye
 
 ---
