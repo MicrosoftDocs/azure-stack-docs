@@ -2,9 +2,9 @@
 title: Kubernetes Secrets Store CSI Driver integration with AKS on Azure Stack HCI
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with Azure Kubernetes Service (AKS) on Azure Stack HCI.
 ms.topic: how-to
-ms.date: 11/10/2021
+ms.date: 02/01/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 02/01/2022
 ms.reviewer: jeguan
 author: mattbriggs
 ---
@@ -205,7 +205,7 @@ kubectl apply -f ./my-deployment.yaml
 To show the secrets that are held in `secrets-store`, run the following command:
 
 ```powershell
-kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/ --namespace kube-system
+kubectl exec busybox-secrets-store-inline --namespace kube-system -- ls /mnt/secrets-store/
 ```
 
 If successful, the output should show the name of the secret. In this example, it should display the output below:
@@ -217,7 +217,7 @@ ExampleSecret
 To show the test secret held in `secrets-store`, run the following command:
 
 ```powershell
-kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/ExampleSecret --namespace kube-system
+kubectl exec busybox-secrets-store-inline --namespace kube-system -- cat /mnt/secrets-store/ExampleSecret 
 ```
 
 If successful, the output should show the value of the secret. In this example, it should show the output below:

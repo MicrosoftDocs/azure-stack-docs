@@ -115,7 +115,7 @@ docker push <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
 
 To confirm that the image was successfully pushed to Azure Container Registry, you can run the following command:
 
-```powershell
+```azurecli
 az acr repository list --name <REGISTRY_NAME>.azurecr.io --output table
 ```
 

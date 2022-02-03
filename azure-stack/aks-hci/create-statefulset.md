@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 12/28/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: EkeleAsonye
 ---
 
 # Create a StatefulSet

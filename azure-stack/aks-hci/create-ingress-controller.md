@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 01/10/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: EkeleAsonye
 ---
 
 # Deploy an ingress controller
