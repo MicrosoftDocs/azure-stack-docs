@@ -33,7 +33,7 @@ Deploying Network Controller enables the following functionalities:
 - Attach virtual appliances to your virtual networks.
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-We recommend deploying [Network Controller using SDN Express](../manage/sdn-express.md).
+You have the option to [deploy SDN Network Controller using SDN Express](../manage/sdn-express.md) PowerShell scripts, or [deploy SDN Network Controller using Windows Admin Center](../deploy/sdn-wizard.md) either during or after creating a cluster.
 
 ## Software Load Balancing
 
