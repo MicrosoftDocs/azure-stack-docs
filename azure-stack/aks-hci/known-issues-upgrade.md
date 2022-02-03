@@ -6,13 +6,55 @@ ms.topic: troubleshooting
 ms.date: 12/13/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: EkeleAsonye
 
 ---
 
 # Resolve issues when upgrading AKS on Azure Stack HCI
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
+
+## Upgrade fails with Error: `failed to patch capi: action failed after 10 attempts: context deadline exceeded`
+
+When attempting to upgrade,  cluster and the upgrade fails with the following error even thought the cluster is still up and reachable. The error can be thrown in during this two-day operation. The error may trigger the following message:
+
+```bash
+Update Failed [C:\Program Files\AksHci\kvactl.exe upgrade --configfile "C:\AksHci\1.0.4.10928\yaml\appliance-update.yaml" --kubeconfig "C:\AksHci\1.0.4.10928\kubeconfig-mgmt" --cloudop "C:\AksHci\1.0.4.10928\cloud-operator.yaml" --sshprivatekey "C:\AksHci\.ssh\akshci_rsa" returned a non zero exit code 1 [Error: failed to patch capi: action failed after 10 attempts: context deadline exceeded]]
+```
+
+Or the error may trigger a message that resembles the following message:
+
+```bash
+failed to patch AksHciNodepool: action failed after 10 attempts: Put \"https://10.168.32.240:6443/apis/msft.microsoft/v1/namespaces/default/akshcinodepools/***-linux?timeout=10s\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+```
+
+The **kva-webhook** enters a deadlock on certificate update.
+
+To resolve this issue, restart the **kva-webhook**. You can restart the **kva-webhook** by:
+
+1. Get the **kva-webhook** pod name.
+2. Delete the **kva-webhook** pod.
+
+### Get the **kva-webhook** pod name
+
+```bash
+$kubectl.exe get pods --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -A | select-string kva-webhook
+```
+The command should return the results in the format: `NAMESPACE NAME READY STATUS RESTARTS AGE`
+
+For example: 
+
+```bash
+kube-system kva-webhook-******* 1/1 Running 0 5m36s
+```
+
+### Delete the **kva-webhook** pod.
+
+```bash
+$kubectl.exe delete pod <kva-webhook-pod-name> kva-webhook-5cdf58775-5dl2x --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n kube-system
+```
+
+Once the command is complete, a new **kva-webhook** pod should be running. You can attempt an upgrade again.
 
 ## When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
