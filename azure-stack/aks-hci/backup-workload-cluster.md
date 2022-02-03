@@ -11,7 +11,7 @@ ms.reviewer: scooley
 
 # Back up and restore workload clusters using Velero and Azure Blob storage
 
-This topic describes how to back up and restore AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes, and it supports a variety of [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups.
+This topic describes how to back up and restore AKS on Azure Stack HCI workload clusters using Velero and Azure Blob as the storage. Velero is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes, and it supports a variety of storage providers to store its backups.
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
@@ -19,7 +19,7 @@ If a workload cluster crashes and fails to recover, you can use a Velero backup 
 
 Use the following steps to deploy and configure Velero:
 
-1. [Install the Velero CLI on your workstation](https://velero.io/docs/v1.6/basic-install/#install-the-cli). On a Windows machine, you can use [Chocolatey](https://chocolatey.org/install) to install the [Velero client](https://chocolatey.org/packages/velero):
+1. [Install the Velero CLI on your workstation](https://docs.pivotal.io/tkgi/1-13/velero-install.html#velero-cli-install). On a Windows machine, you can use [Chocolatey](https://chocolatey.org/install) to install the [Velero client](https://chocolatey.org/packages/velero):
 
    ```powershell
    choco install velero
@@ -120,7 +120,7 @@ Use the following steps to deploy and configure Velero:
 
    Install Velero, including all the prerequisites, on the cluster and then start the deployment. The deployment creates a namespace called `velero` and places a deployment named `velero` in it.
 
-   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI does not support volume snapshots.
+   To back up Kubernetes volumes at the file system level, use Restic and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI does not support volume snapshots.
 
    ```powershell
    velero install \
@@ -188,7 +188,7 @@ kubectl delete crds -l component=velero
 
 ## Additional notes
 
-- Velero on Windows: Velero does not officially support Windows. In testing, the Velero team was able to backup only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes are not supported.
+- Velero on Windows: Velero does not officially support Windows. In testing, the Velero team was able to backup only stateless Windows applications. Restic integration and backups of stateful applications or persistent volumes are not supported.
 
 - Velero CLI help: To see all options associated with a specific command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. Or, to list all options of `velero restore`, run `velero restore --help`:
 
@@ -201,8 +201,3 @@ kubectl delete crds -l component=velero
     get         Get restores
     logs        Get restore logs
   ```
-
-## References
-
-[How Velero Works](https://velero.io/docs/v1.6/how-velero-works/)
-[Restic integration](https://velero.io/docs/v1.6/restic/)

@@ -3,9 +3,9 @@ title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
 description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/13/2021
+ms.date: 02/02/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 02/02/2022
 ms.reviewer: EkeleAsonye
 
 ---
@@ -62,6 +62,9 @@ To resolve this issue, restart CloudAgent.
 In a workload cluster with static IP and Windows nodes, all of the pods in a node (including the `daemonset` pods) are stuck in a _ContainerCreating_ state. When attempting to connect to that node using SSH, it fails with a `Connection timed out` error.
 
 To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to turn off the VM of that node. After five to ten minutes, the node should have been recreated and with all the pods running.
+## Insufficient privileges to complete the operation
+
+This error usually occurs when the service principal (SPN) or your Azure credentials (username and password) used to connect your AKS on Azure Stack HCI cluster don't have sufficient privileges in the Azure subscription to perform the operation. Review the privilege requirements here - [Azure Requirements for AKS on Azure Stack HCI clusters](/azure-stack/aks-hci/system-requirements#azure-requirements).
 
 ## Next steps
 
