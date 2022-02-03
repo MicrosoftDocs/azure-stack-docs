@@ -151,7 +151,7 @@ Depending on the number of Kubernetes services hosted in each target cluster, yo
 
 The deployment of AKS on Azure Stack HCI will distribute the worker nodes for each node pool in a target cluster across the available Azure Stack HCI nodes using the Azure Stack HCI placement logic. 
 
->![Note]  
+> ![Note]  
 > Do not try to run more than four (4) target cluster creations at the same time if the physical cluster is already 50% full as that that could lead to temporary resource contention. 
 > When scaling target cluster node pools up by large numbers while creating target clusters take into account available physical resources as AKS on Azure Stack HCI does not verify resource availability for parallel running creation/scaling processes. 
 > Always ensure enough reserve to allow for upgrades and failover. Especially in very large environments these operations, when run in parallel, can lead to rapid resource exhaustion.
