@@ -68,7 +68,7 @@ This error usually occurs when the service principal (SPN) or your Azure credent
 
 ## Error: invalid_client. The provided client secret keys are expired
 
-This error usually occurs when service principal (SPN) secret you used when running the PowerShell cmdlet running **Enable-AksHciArcConnection** expired. Visit the Azure Portal to create a new secret for your service principal (SPN). YOu can also use [certificate credentials for added security]/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](/reference/ps/enable-akshciarcconnection.md).
+This error usually occurs when service principal (SPN) secret you used when running the PowerShell cmdlet running **Enable-AksHciArcConnection** expired. Visit the Azure Portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security]/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
 
 ## Next steps
 
