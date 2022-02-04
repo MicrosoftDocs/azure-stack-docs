@@ -12,6 +12,8 @@ ms.custom: references_regions
 ---
 
 # Tested resource limits, VM sizes, and regions on Azure Stack HCI
+
+In this article you can find information about tested resource limits, VM sizes, and regions on Azure Stack HCI for Azure Kubernetes Service on Azure Stack HCI.
 ## Maximum specifications
 
 Azure Kubernetes Service on Azure Stack HCI deployments have been validated with the following configuration and up to the specified maximums. Exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance to avoid common configuration mistakes and can help creating a larger configuration. If in doubt, contact your local Microsoft office for assistance or post in the AKS in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
@@ -35,7 +37,7 @@ The hardware configuration of each node in the Azure Stack HCI cluster is as fol
 - Disk: 8x HDDs (2 TB or larger) and 2x 1.6TB NVMe to support S2D storage configurations
 - Network: Four (4) 100-Gbit NICs (Mellanox or Intel)
 
-Microsoft engineering has tested the configuration. If you want to go,  exceed the tested configuration, see [Scaling AKS on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
+Microsoft engineering has tested the configuration. If you want to exceed the tested configuration, see [Scaling AKS on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
 
 > [!IMPORTANT]  
 > When you upgrade a deployment of Azure Kubernetes Service on Azure Stack HCI, extra resources are temporarily consumed.
@@ -79,24 +81,24 @@ Scaling AKS on Azure Stack HCI involves planning ahead and knowing what your wor
 Consider the following before you start the exercise of determining your maximum scale.
 
 To determine the number of target clusters you need to support, consider the following: 
-1. Number of IP addresses you have available for pods in a target cluster.
-2. Number of IP addresses available for Kubernetes services in a target cluster.
-3. Number of pods you'll need to run your workloads.
+ - Number of IP addresses you have available for pods in a target cluster.
+ - Number of IP addresses available for Kubernetes services in a target cluster.
+ - Number of pods you'll need to run your workloads.
 
 To determine the size of your Azure Kubernetes Services Host VM, you'll need to know the number of worker nodes and target clusters as that determines the size of the AKS Host VM.
-1. Number of target clusters in the final deployed system
-2. Number of nodes including control plane, load balancer and worker nodes across all target clusters.
+ - Number of target clusters in the final deployed system
+ - Number of nodes including control plane, load balancer and worker nodes across all target clusters.
 
 To determine the size of your target cluster control plane node you'll need to know the number of pods, containers and worker nodes you're planning to deploy:
-1. Number of pods.
-2. Number of containers.
-3. Number of worker nodes in a target cluster.
+ - Number of pods.
+ - Number of containers.
+ - Number of worker nodes in a target cluster.
 
 ### Default settings that currently can't be changed in AKS on Azure Stack HCI
 
 There are many default configurations and settings that are currently not exposed to be controlled by the customer during or after deployment. These will also limit how far you can scale a given target cluster.
 
-1. The number of IP addresses for Kubernetes pods in a target cluster is limited to the subnet `10.244.0.0/16`. That is 255 IP addresses per worker node across all Kubernetes namespaces can be used for pods. To see the pod CIDR assigned to each worker node in your cluster use the following command in PowerShell:
+ - The number of IP addresses for Kubernetes pods in a target cluster is limited to the subnet `10.244.0.0/16`. That is 255 IP addresses per worker node across all Kubernetes namespaces can be used for pods. To see the pod CIDR assigned to each worker node in your cluster use the following command in PowerShell:
 
 ```powershell
 kubectl get nodes -o json | findstr 'hostname podCIDR'
@@ -125,11 +127,11 @@ kubectl get nodes -o json | findstr 'hostname podCIDR'
 
 In the example you can see three (3) nodes with three (3) CIDRs each capable of hosting 254 pods. The Kubernetes scale documentation recommends that you don't exceed 110 pods per node for performance reasons (see [Considerations for large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/)).
 
-1. The number of IP addresses for Kubernetes services, outside of the VIP pool you've allocated, these come from the `10.96.0.0/16` address pool and the system consumes one (1) address out of the 255 available addresses for the Kubernetes API server.
+ - The number of IP addresses for Kubernetes services, outside of the VIP pool you've allocated, these come from the `10.96.0.0/16` address pool and the system consumes one (1) address out of the 255 available addresses for the Kubernetes API server.
 
-1. The size of the AKS Host VM can only be set at installation time when you run **Set-AksHciConfig** for the first time. It can't be changed later.
+ - The size of the AKS Host VM can only be set at installation time when you run **Set-AksHciConfig** for the first time. It can't be changed later.
 
-1. The size of target cluster control plane and load balancer VMs can only be set at target cluster creation.
+ - The size of target cluster control plane and load balancer VMs can only be set at target cluster creation.
 
 ### Scale example
 
@@ -154,7 +156,7 @@ The deployment of AKS on Azure Stack HCI will distribute the worker nodes for ea
 > When scaling target cluster node pools up by large numbers while creating target clusters take into account available physical resources as AKS on Azure Stack HCI does not verify resource availability for parallel running creation/scaling processes. 
 > Always ensure enough reserve to allow for upgrades and failover. Especially in very large environments these operations, when run in parallel, can lead to rapid resource exhaustion.
 
-If in doubt, contact your local Microsoft office for assistance or post in the AKS in the [Azure Stack HCI community] (https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
+If in doubt, contact your local Microsoft office for assistance or post in the AKS in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
 ## Next steps
 - [Storage options](./concepts-storage.md)
