@@ -70,6 +70,10 @@ This error usually occurs when the service principal (SPN) or your Azure credent
 
 This error usually occurs when service principal (SPN) secret you used when running the PowerShell cmdlet running **Enable-AksHciArcConnection** expired. Visit the Azure Portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security](/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
 
+## Transport: Error while dialing dial unix /var/run/moc-kms-plugin/kmsPlugin.sock: connect: no such file or directory
+
+This error happens when the KMS plugin on your AKS-HCI target cluster has stopped running, because of an expired KMS plugin token. Run [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to fix this issue.
+
 ## Next steps
 
 - [Troubleshooting overview](troubleshoot-overview.md)
