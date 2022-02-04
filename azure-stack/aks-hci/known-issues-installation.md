@@ -300,7 +300,7 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 
 The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This issue can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message. If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
 
-## Error: unable to reconcile virtual network or Error: Install-Moc failed with error - Exception [[Moc] This machine does not appear to be configured for deployment.]
+## Error: unable to reconcile virtual network or Error: Install-Moc failed with error - Exception [[Moc] This machine does not appear to be configured for deployment]
 
 This happens when you run `Install-AksHci` without running [Set-AksHciConfig](/ps/set-akshciconfig). To resolve this, run `uninstall-akshci` and close all PowerShell windows. Open a new PowerShell session, and restart your AKS-HCI installation process by following [installing AKS-HCI using PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell).
 
