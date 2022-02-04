@@ -4,7 +4,7 @@ description: Learn how to create a cluster for Azure Stack HCI using Windows Pow
 author: v-dasis
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-dasis
+ms.author: v-tamarshall
 ms.reviewer: JasonGerend
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
@@ -24,7 +24,7 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
-If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization, either in Azure, or on a single physical system on-premises.
+If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you begin
 
@@ -317,7 +317,7 @@ New-ClusterFaultDomain -CimSession "ClusterS1" -FaultDomainType Site -Name "Site
 Use the `Get-ClusterFaultDomain` cmdlet to verify that both sites have been created for the cluster.
 
 ```powershell
-New-ClusterFaultDomain -CimSession "ClusterS1"
+Get-ClusterFaultDomain -CimSession "ClusterS1"
 ```
 
 ### Step 5.2: Assign server nodes

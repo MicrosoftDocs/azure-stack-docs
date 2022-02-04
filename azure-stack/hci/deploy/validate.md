@@ -189,6 +189,8 @@ Test-Cluster -InputObject $Cluster -Verbose
 
 For more examples and usage information, see the [Test-Cluster](/powershell/module/failoverclusters/test-cluster?view=win10-ps&preserve-view=true) reference documentation.
 
+[Test-NetStack](https://github.com/microsoft/Test-NetStack) is a PowerShell-based testing tool available from GitHub that you can use to perform ICMP, TCP, and RDMA traffic testing of networks and identify potential network fabric and host misconfigurations or operational instability. Use Test-NetStack to validate network data paths by testing native, synthetic, and hardware offloaded (RDMA) network data paths for issues with connectivity, packet fragmentation, low throughput, and congestion.
+
 ## Validate replication for Storage Replica
 If you're using Storage Replica to replicate volumes in a stretched cluster or cluster-to-cluster, there are there are several events and cmdlets that you can use to get the state of replication. 
 

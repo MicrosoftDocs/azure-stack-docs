@@ -3,10 +3,10 @@ title: Install Azure Container Registry on Azure Stack Hub
 description: Learn how to install Azure Container Registry on Azure Stack Hub.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 10/26/2021
+ms.date: 1/26/2021
 ms.author: mabrigg
 ms.reviewer: chasat
-ms.lastreviewed: 10/26/2021
+ms.lastreviewed: 1/26/2021
 
 # Intent: As an Azure Stack user, I want to XXX so I can XXX.
 # Keyword: XXX
@@ -63,13 +63,13 @@ contains a child directory containing the INF file(s) used during certificate re
 
 Validate the ACR certificate adheres to Azure Stack Hub requirements.
 
-1. Copy resulting certificate file (.cer) signed by the CA (supported extensions .cer, .cert, .srt, .pfx) to `\$ENV:USERPROFILE\Documents\AzureStack`.
+1. Copy resulting certificate file (.cer) signed by the CA (supported extensions .cer, .cert, .srt, .pfx) to `$ENV:USERPROFILE\Documents\AzureStack`.
 
 2. Run the following PowerShell cmdlets from an elevated prompt:
 
     ```powershell
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker 
-    $Path = "\$ENV:USERPROFILE\Documents\AzureStack"
+    $Path = "$ENV:USERPROFILE\Documents\AzureStack"
     $pfxPassword = Read-Host -AsSecureString -Prompt "PFX Password"
     ConvertTo-AzsPFX -Path $Path -pfxPassword $pfxPassword -ExportPath $Path
     ```

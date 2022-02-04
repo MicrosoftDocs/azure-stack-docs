@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: abha
+ms.reviewer: lahirisl
 ---
 
 # Security concepts in AKS on Azure Stack HCI
