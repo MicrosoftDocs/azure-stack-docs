@@ -3,9 +3,9 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 1/21/2022
+ms.date: 02/04/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/21/2022
+ms.lastreviewed: 02/04/2022
 ms.reviewer: abha
 
 ---
