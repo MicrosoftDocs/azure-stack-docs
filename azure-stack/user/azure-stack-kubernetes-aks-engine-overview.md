@@ -19,6 +19,9 @@ ms.lastreviewed: 09/02/2020
 
 You can use the AKS engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack Hub. Use the AKS engine to create, upgrade, and scale Azure Resource Manager native clusters. You can use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS engine, supported scenarios for using the engine with Azure Stack Hub, and an introduction to operations such as deploy, upgrade, and scale.
 
+> [!NOTE]  
+If you are new to AKS engine on Azure Stack Hub, or you are planning to test Kubernetes on Azure Stack Hub for the first time, you may want to use Azure Kubernetes Service (AKS) on Azure Stack Hub. As a managed Kubernetes service, AKS on Azure Stack Hub handles critical tasks like health monitoring and facilitates maintenance for you.  For more information, see [Azure Kubernetes Service on Azure Stack Hub](aks-overview.md).
+
 ## Overview of the AKS engine
 
 The [AKS engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack Hub. By using the Azure Resource Manager, the AKS engine helps you create and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service (IaaS) resources in Azure Stack Hub.
@@ -27,7 +30,7 @@ The [AKS engine](https://github.com/Azure/aks-engine) provides a command-line to
 
 Before you use the AKS engine on Azure Stack Hub, it's important to understand the differences between Azure Stack Hub and Azure. This section identifies different features and key considerations when using Azure Stack Hub with the AKS engine to manage your Kubernetes cluster.
 
-For more information on the specifics of the AKS engine on Azure Stack Hub and its differences with respect to Azure see [AKS engine on Azure Stack Hub](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md).
+For more information on the specifics of the AKS engine on Azure Stack Hub and its differences with respect to Azure, see [AKS engine on Azure Stack Hub](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md).
 
 For more information on the AKS engine and Azure Stack Hub, see [Support policies for AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-support.md).
 
