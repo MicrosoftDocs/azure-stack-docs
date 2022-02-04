@@ -164,7 +164,7 @@ There are multiple reasons why an installation might fail with the `waiting for 
 If you're using static IP and you received the following error message, confirm that the configuration for the IP address and gateway is correct. 
 ```PowerShell
 Install-AksHci 
-C:\AksHci\kvactl.exe create –configfile C:\AksHci\yaml\appliance.yaml  --outfile C:\AksHci\kubeconfig-clustergroup-management returned a non zero exit code 1 [ ]
+C:\AksHci\kvactl.exe create --configfile C:\AksHci\yaml\appliance.yaml  --outfile C:\AksHci\kubeconfig-clustergroup-management returned a non zero exit code 1 [ ]
 ```
 
 To check whether you have the right configuration for your IP address and gateway, run the following: 
@@ -178,7 +178,7 @@ In the displayed configuration settings, confirm the configuration. You could al
 If these methods don't work, use [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) to change the configuration.
 
 ### Reason 2: Incorrect DNS server
-If you’re using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
+If you're using static IP, confirm that the DNS server is correctly configured. To check the host's DNS server address, use the following command:
 
 ```powershell
 Get-NetIPConfiguration.DNSServer | ?{ $_.AddressFamily -ne 23} ).ServerAddresses
@@ -210,7 +210,7 @@ If your installation fails using [Install-AksHci](./reference/ps/uninstall-akshc
 ## The AKS on Azure Stack HCI download package fails with the error: `msft.sme.aks couldn't load`
 If you get this error, and the error message also indicates that loading chunks failed, you should use the latest version of Microsoft Edge or Google Chrome and try again.
 
-## Error: `Waiting for pod ‘Cloud Operator’ to be ready`
+## Error: `Waiting for pod 'Cloud Operator' to be ready`
 When attempting to deploy an AKS on Azure Stack HCI cluster on an Azure VM, the installation was stuck at `Waiting for pod 'Cloud Operator' to be ready...`, and then failed and timed out after two hours. Attempts to troubleshoot by checking the gateway and DNS server showed they were working appropriately. Checks to see if there was an IP or MAC address conflict showed none were found. When viewing the logs, it showed that the VIP pool had not reached the logs. There was a restriction on pulling the container image using `sudo docker pull ecpacr.azurecr.io/kube-vip:0.3.4` that returned a Transport Layer Security (TLS) timeout instead of _unauthorized_. 
 
 To resolve this issue, run the following steps:
@@ -299,6 +299,10 @@ To resolve this issue, you need to determine where the breakdown occurred in the
 ## PowerShell deployment doesn't check for available memory before creating a new workload cluster
 
 The **Aks-Hci** PowerShell commands do not validate the available memory on the host server before creating Kubernetes nodes. This issue can lead to memory exhaustion and virtual machines that do not start. This failure is currently not handled gracefully, and the deployment will stop responding with no clear error message. If you have a deployment that stops responding, open Event Viewer and check for a Hyper-V-related error message indicating there's not enough memory to start the VM.
+
+## Error: unable to reconcile virtual network or Error: Install-Moc failed with error - Exception [[Moc] This machine does not appear to be configured for deployment.]
+
+This happens when you run `Install-AksHci` without running [Set-AksHciConfig](/ps/set-akshciconfig). To resolve this, run `uninstall-akshci` and close all PowerShell windows. Open a new PowerShell session, and restart your AKS-HCI installation process by following [installing AKS-HCI using PowerShell](/azure-stack/aks-hci/kubernetes-walkthrough-powershell).
 
 ## Next steps
 
