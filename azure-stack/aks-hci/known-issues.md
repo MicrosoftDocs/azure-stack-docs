@@ -3,9 +3,9 @@ title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
 description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 02/02/2022
+ms.date: 02/04/2022
 ms.author: mabrigg 
-ms.lastreviewed: 02/02/2022
+ms.lastreviewed: 02/04/2022
 ms.reviewer: EkeleAsonye
 
 ---
@@ -65,6 +65,10 @@ To resolve this issue, use Hyper-V Manager or the Failover Cluster Manager to tu
 ## Insufficient privileges to complete the operation
 
 This error usually occurs when the service principal (SPN) or your Azure credentials (username and password) used to connect your AKS on Azure Stack HCI cluster don't have sufficient privileges in the Azure subscription to perform the operation. Review the privilege requirements here - [Azure Requirements for AKS on Azure Stack HCI clusters](/azure-stack/aks-hci/system-requirements#azure-requirements).
+
+## Error: invalid_client. The provided client secret keys are expired
+
+This error usually occurs when service principal (SPN) secret you used when running the PowerShell cmdlet running **Enable-AksHciArcConnection** expired. Visit the Azure Portal to create a new secret for your service principal (SPN). You can also use [certificate credentials for added security](/azure/active-directory/develop/active-directory-certificate-credentials). For example of using the cmdlet, see [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md).
 
 ## Next steps
 
