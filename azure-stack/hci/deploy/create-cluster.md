@@ -4,7 +4,7 @@ description: Learn how to create a server cluster for Azure Stack HCI using Wind
 author: v-dasis
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-dasis
+ms.author: v-tamarshall
 ms.reviewer: JasonGerend
 ---
 
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-Now that you've deployed the Azure Stack HCI operating system, you will learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 You have a choice between creating two cluster types:
 
@@ -21,7 +21,7 @@ You have a choice between creating two cluster types:
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
-If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization, either in Azure, or on a single physical system on-premises.
+If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you run the wizard
 
@@ -33,7 +33,7 @@ Before you run the Create Cluster wizard, make sure you:
 - Have an account that’s a member of the local Administrators group on each server.
 - Ensure all servers are in the correct time zone.
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
-- If you are using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates. To install them, open Windows Admin Center and click Settings (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
+- If you're using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates. To install them, open Windows Admin Center and click Settings (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
 - For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
 
 If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
@@ -44,13 +44,13 @@ Here are the major steps in the Create Cluster wizard:
 
 1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
 1. **Networking** - assigns and configures network adapters and creates the virtual switches for each server.
-1. **Clustering** - validates the cluster is set up correctly. For stretched clusters, also sets up up the two sites.
+1. **Clustering** - validates the cluster is set up correctly. For stretched clusters, also sets up the two sites.
 1. **Storage** - configures Storage Spaces Direct.
 1. **SDN** - sets up a Network Controller for SDN deployment.
 
 After the wizard completes, you set up the cluster witness, register with Azure, and create volumes (which also sets up replication between sites if you're creating a stretched cluster).
 
-Now you are ready, so let's begin:
+Now you're ready, so let's begin:
 
 1. In Windows Admin Center, under **All connections**, click **Add**.
 1. In the **Add or create resources** panel, under **Server clusters**, select **Create new**.
@@ -63,7 +63,7 @@ Now you are ready, so let's begin:
     - **All servers in one site**
     - **Servers in two sites** (for stretched cluster)
 
-1. When finished, click **Create**. You will now see the Create Cluster wizard, as shown below.
+1. When finished, click **Create**. You'll now see the Create Cluster wizard, as shown below.
 
     :::image type="content" source="media/cluster/create-cluster-wizard.png" alt-text="Create cluster wizard - Get Started" lightbox="media/cluster/create-cluster-wizard.png":::
 
@@ -100,7 +100,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 ## Step 2: Networking
 
-Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE ) network adapters are supported.
+Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE) network adapters are supported.
 
 You can choose to use Network ATC to simplify set up of hosting networking for your cluster, or you can have the wizard walk you through [manually configuring](#manually-configure-host-networking) each networking element.
 
@@ -150,7 +150,7 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
 
     - **One physical network adapter for management**. For this option, both DHCP or static IP address assignment is supported.
 
-    - **Two physical network adapters teamed for management**. When a pair of adapters are teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP addresses would be converted to static IP addresses before virtual switch creation.
+    - **Two physical network adapters teamed for management**. When a pair of adapters is teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP addresses would be converted to static IP addresses before virtual switch creation.
 
     By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
 
@@ -195,7 +195,7 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
 
 1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
 
-1. Step **2.4 RDMA** is optional. If you are using RDMA, select the **Configure RDMA (Recommended)** checkbox and click **Next**.
+1. Step **2.4 RDMA** is optional. If you're using RDMA, select the **Configure RDMA (Recommended)** checkbox and click **Next**.
 
     :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
 
