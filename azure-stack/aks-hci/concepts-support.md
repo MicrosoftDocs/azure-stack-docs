@@ -1,18 +1,18 @@
 ---
-title: Concepts - Supported resource limits, VM sizes, and regions in AKS on Azure Stack HCI
-description: Supported resource limits, VM sizes, and regions in AKS on Azure Stack HCI
+title: Tested resource limits, VM sizes, and regions on Azure Stack HCI
+description: Tested resource limits, VM sizes, and regions in AKS on Azure Stack HCI
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 02/03/2022
 ms.author: mabrigg 
-ms.lastreviewed: 02/03/2021
+ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
 ms.custom: references_regions
 
 ---
 
-# Supported resource limits, VM sizes, and regions
-## Maximum supported specifications
+# Tested resource limits, VM sizes, and regions on Azure Stack HCI
+## Maximum specifications
 
 Azure Kubernetes Service on Azure Stack HCI deployments have been validated with the following configuration and up to the specified maximums. Exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance to avoid common configuration mistakes and can help creating a larger configuration. If in doubt, contact your local Microsoft office for assistance or post in the AKS in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
@@ -23,16 +23,16 @@ Azure Kubernetes Service on Azure Stack HCI deployments have been validated with
 
 The limits are tested with the default virtual machine (VM) sizes based on the following table:
 - AKS-Host: **Standard_A4_v2**
-- Target Cluster Control Plane: Default
+- Target Cluster Control Plane: **Default**
 - Target Cluster load balancer: **Standard_A4_v2**
 - Target Cluster Linux Node: **Standard_K8S3_v1**
 - Target Cluster Windows Node: **Standard_K8S3_v1**
 
 The hardware configuration of each node in the Azure Stack HCI cluster is as follows:
 - Chassis: Dell PowerEdge R650 Server or similar
-- RAM: RDIMM, 3200MT/s, Dual Rank Total of 256 GB
+- RAM: RDIMM, 3200MT/s, Dual Rank, total of 256 GB
 - CPU: Two (2) Intel Xeon Silver 4316 2.3G, 20C/40T, 10.4GT/s, 30M Cache, Turbo, HT (150 W) DDR4-2666
-- Disk: One (1) TB SSD (System), 1.2 TB HDD (Storage)
+- Disk: 8x HDDs (2 TB or larger) and 2x 1.6TB NVMe to support S2D storage configurations
 - Network: Four (4) 100-Gbit NICs (Mellanox or Intel)
 
 Microsoft engineering has tested the configuration. If you want to go,  exceed the tested configuration, see [Scaling AKS on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
@@ -43,9 +43,9 @@ Microsoft engineering has tested the configuration. If you want to go,  exceed t
 > Each VM is upgraded in a rolling update, starting with the control plane nodes. For each VM, a new VM is created before the old VM is cordoned off to prevent workloads from being deployed to it. The cordoned VM is then drained of all containers to distribute the containers to other VMs in the system.
 The drained VM will then be removed from the cluster, shut down, and replaced by the new, updated VM. This process will repeat until all VMs are updated. 
 
-## Supported VM sizes
+## Validated VM sizes
 
-Azure Kubernetes Service on Azure Stack HCI supports the following VM sizes for control plane nodes, Linux worker nodes, and Windows worker nodes. While VM sizes such as **Standard_K8S2_v1** and **Standard_K8S_v1** are supported, you may not want to use these sizes as they may result in unexpected failures due to out of memory issues.
+The following VM sizes for control plane nodes, Linux worker nodes, and Windows worker nodes have been tested for Azure Kubernetes Service on Azure Stack HCI. While VM sizes such as **Standard_K8S2_v1** and **Standard_K8S_v1** are supported, you may not want to use these sizes as they may result in unexpected failures due to out of memory issues.
 
 | VM Size        | CPU | Memory (GB) |
 | -------------- | ----| ------------|
@@ -123,7 +123,7 @@ kubectl get nodes -o json | findstr 'hostname podCIDR'
                 "podCIDRs": [
 ```
 
-In the example you can see three (3) nodes with three (3) CIDRs each capable of hosting 253 pods. The Kubernetes scale documentation recommends that you don't exceed 110 pods per node for performance reasons (see [Considerations for large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/)).
+In the example you can see three (3) nodes with three (3) CIDRs each capable of hosting 254 pods. The Kubernetes scale documentation recommends that you don't exceed 110 pods per node for performance reasons (see [Considerations for large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/)).
 
 1. The number of IP addresses for Kubernetes services, outside of the VIP pool you've allocated, these come from the `10.96.0.0/16` address pool and the system consumes one (1) address out of the 255 available addresses for the Kubernetes API server.
 
@@ -133,11 +133,9 @@ In the example you can see three (3) nodes with three (3) CIDRs each capable of 
 
 ### Scale example
 
-As stated earlier in this article, the tested configuration is eight (8) Azure Stack HCI nodes and with all default settings this can comfortably handle AKS on Azure Stack HCI with a total of 200 VMs. This assumes that there are no other VM based workloads on the Azure Stack HCI cluster.
+Assuming you want to be able to completely tolerate the loss of one physical node in the Azure Stack HCI cluster, support upgrading target clusters to newer versions and also allow for high availability of the target cluster control plane nodes and load balancer nodes you want to reserve a part of the overall Azure Stack HCI capacity for these cases.
 
-Assuming you want to be able to completely tolerate the loss of one physical node in the Azure Stack HCI cluster, support upgrading target clusters to newer versions and also allow for high availability of the target cluster control plane nodes and load balancer nodes.
-
-Based on this assumption, you need to reserve ~30% of the overall cluster capacity for failover and updates. Based on this assumption, you need to reserve ~30% of the total cluster capacity for failover and updates. You can also reserve another 30% for the unlikely event of losing one physical HCI node and still be able to update and scale AKS on Azure Stack HCI, as well as other failover operations.
+You should ensure you set at least 15% (100/8=12.5) of cluster capacity aside to allow all resources from one physical node to be re-distributed to the other seven (7) nodes and still have some reserve available to do an upgrade or other AKS on Azure Stack HCI day two (2) operations.
 
 If you want to grow beyond the 200 VM limit for a maximum hardware sized eight (8) node Azure Stack HCI clusters increase the size of the AKS Host VM. Doubling in size gets roughly double the number of VMs. In an eight (8) node Azure Stack HCI cluster, you can get to 8,192 (8x1024) VMs based on the Azure Stack HCI recommended resource limits documented in the [Maximum supported hardware specifications](/azure-stack/hci/concepts/system-requirements#maximum-supported-hardware-specifications). You'll want to reserve ~30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
 
