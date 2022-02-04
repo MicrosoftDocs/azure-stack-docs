@@ -3,10 +3,10 @@ title: Known issues when upgrading Azure Kubernetes Service on Azure Stack HCI
 description: Known issues when upgrading  Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/13/2021
+ms.date: 1/21/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
-ms.reviewer: EkeleAsonye
+ms.lastreviewed: 1/21/2022
+ms.reviewer: abha
 
 ---
 
@@ -14,47 +14,39 @@ ms.reviewer: EkeleAsonye
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
-## Upgrade fails with Error: `failed to patch capi: action failed after 10 attempts: context deadline exceeded`
+## Certificate renewal pod is in a crash loop state
 
-When attempting to upgrade,  cluster and the upgrade fails with the following error even thought the cluster is still up and reachable. The error can be thrown in during this two-day operation. The error may trigger the following message:
+After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It is expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
 
-```bash
-Update Failed [C:\Program Files\AksHci\kvactl.exe upgrade --configfile "C:\AksHci\1.0.4.10928\yaml\appliance-update.yaml" --kubeconfig "C:\AksHci\1.0.4.10928\kubeconfig-mgmt" --cloudop "C:\AksHci\1.0.4.10928\cloud-operator.yaml" --sshprivatekey "C:\AksHci\.ssh\akshci_rsa" returned a non zero exit code 1 [Error: failed to patch capi: action failed after 10 attempts: context deadline exceeded]]
-```
+To resolve this issue, you manually copy the cert tattoo file from the control plane node to each of the worker nodes.
 
-Or the error may trigger a message that resembles the following message:
+1. Copy the file from control plane VM to your host machine current directory.
 
-```bash
-failed to patch AksHciNodepool: action failed after 10 attempts: Put \"https://10.168.32.240:6443/apis/msft.microsoft/v1/namespaces/default/akshcinodepools/***-linux?timeout=10s\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
-```
+    ```bash
+    ssh clouduser@<comtrol-plane-vm-ip> -i (get-mocconfig).sshprivatekey
+    sudo cp /etc/kubernetes/pki/cert-tattoo-kubelet.yaml ~/
+    sudo chown clouduser cert-tattoo-kubelet.yaml
+    sudo chgrp clouduser cert-tattoo-kubelet.yaml
+    (change file permissions here so that scp will work)
+    scp -i (get-mocconfig).sshprivatekey clouduser@<comtrol-plane-vm-ip>:~/cert*.yaml .\
+    ```
 
-The **kva-webhook** enters a deadlock on certificate update.
+2. Copy the file from host machine to the worker node VM.
 
-To resolve this issue, restart the **kva-webhook**. You can restart the **kva-webhook** by:
+    ```bash
+    scp -i (get-mocconfig).sshprivatekey .\cert-tattoo-kubelet.yaml clouduser@<workernode-vm-ip>:~/cert-tattoo-kubelet.yaml
+    ```
 
-1. Get the **kva-webhook** pod name.
-2. Delete the **kva-webhook** pod.
+3. Set the owner and group information on this file back to root if it not already set to root.
 
-### Get the **kva-webhook** pod name
+    ```bash
+    ssh clouduser@<workernode-vm-ip> -i (get-mocconfig).sshprivatekey
+    sudo cp ~/cert-tattoo-kubelet.yaml /etc/kubernetes/pki/cert-tattoo-kubelet.yaml (copies the cert file to correct location)
+    sudo chown root cert-tattoo-kubelet.yaml
+    sudo chgrp root cert-tattoo-kubelet.yaml
+    ```
 
-```bash
-$kubectl.exe get pods --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -A | select-string kva-webhook
-```
-The command should return the results in the format: `NAMESPACE NAME READY STATUS RESTARTS AGE`
-
-For example: 
-
-```bash
-kube-system kva-webhook-******* 1/1 Running 0 5m36s
-```
-
-### Delete the **kva-webhook** pod.
-
-```bash
-$kubectl.exe delete pod <kva-webhook-pod-name> kva-webhook-5cdf58775-5dl2x --kubeconfig (Get-AksHciConfig).Kva.kubeconfig -n kube-system
-```
-
-Once the command is complete, a new **kva-webhook** pod should be running. You can attempt an upgrade again.
+4. Repeat steps two and three for each of your worker nodes.
 
 ## When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
 
@@ -68,7 +60,7 @@ If you created a management cluster but haven't deployed a workload cluster in t
 
 If you haven't deployed a workload cluster in 60 days, the billing goes out of policy. The only way to fix this issue is to redeploy with a clean installation.
 
-## After upgrading to PowerShell module 1.1.9, this error appears: `Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1’ on node: ‘node1’`
+## After upgrading to PowerShell module 1.1.9, this error appears: `Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1' on node: 'node1'`
 
 This error was resolved in PowerShell module version 1.1.11. Update the PowerShell module to version 1.1.11 on all nodes to resolve this issue.
 
