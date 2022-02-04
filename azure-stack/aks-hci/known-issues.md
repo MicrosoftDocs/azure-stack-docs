@@ -72,7 +72,7 @@ This error usually occurs when service principal (SPN) secret you used when runn
 
 ## Transport: Error while dialing dial unix /var/run/moc-kms-plugin/kmsPlugin.sock: connect: no such file or directory
 
-This error happens when the KMS plugin on your AKS-HCI target cluster has stopped running, because of an expired KMS plugin token. Run [Repair-AksHciCerts](./reference/ps/repair-akshcicerts) to fix this issue.
+This error happens when the KMS plugin on your AKS-HCI target cluster has stopped running, because of an expired KMS plugin token. Run [Repair-AksHciCerts](./reference/ps/repair-akshcicerts.md) to fix this issue.
 
 ## Next steps
 
