@@ -24,7 +24,7 @@ landingContent:
             url: overview.md
       - linkListType: whats-new
         links:
-          - text: What's new in Azure Stack HCI?
+          - text: What's new in Azure Stack HCI, version 21H2?
             url: whats-new.md
       - linkListType: get-started
         links:
@@ -48,7 +48,7 @@ landingContent:
             url: deploy/validate.md
       - linkListType: tutorial
         links:
-          - text: Create a private forest lab environment with VMs
+          - text: Create a VM-based lab for Azure Stack HCI
             url: deploy/tutorial-private-forest.md
 
   # Card
@@ -170,3 +170,17 @@ landingContent:
         links:
           - text: Deploy an SDN infrastructure
             url: manage/sdn-express.md
+ 
+ # Card
+  - title: Azure Stack HCI learning paths and modules
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Azure Stack HCI foundations
+            url: /learn/paths/azure-stack-hci-foundations/
+          - text: Operate and maintain Azure Stack HCI
+            url: /learn/paths/operate-maintain-azure-stack-hci/
+          - text: Implement Datacenter Firewall and Software Load Balancer
+            url: /learn/modules/implement-firewall-load-balancer/
+          - text: Plan for and deploy SDN infrastructure on Azure Stack HCI
+            url: /learn/modules/plan-deploy-sdn-infrastructure/

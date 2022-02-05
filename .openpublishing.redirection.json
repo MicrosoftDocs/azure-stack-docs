@@ -1,6 +1,41 @@
 {
   "redirections": [
-       { 
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-manage.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-overview.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-prerequisites.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/iot-hub-rp-rotate-secrets.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/user/iot-hub-connect-iot-edge-device.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/user/iot-hub-overview.md", 
+      "redirect_url": "/azure/iot-hub/", 
+      "redirect_document_id": false
+    },
+    { 
       "source_path": "azure-stack/aks-hci/troubleshoot-windows-admin-center.md", 
       "redirect_url": "/azure-stack/aks-hci/known-issues-windows-admin-center", 
       "redirect_document_id": false
@@ -132,14 +167,34 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-73", 
       "redirect_document_id": false
     },
     { 
       "source_path": "azure-stack/operator/hotfix-1-2102-30-111.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-109", 
+      "redirect_url": "/azure-stack/operator", 
       "redirect_document_id": false
     },         
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2008-41-159.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2008-40-156", 
+      "redirect_document_id": false
+    },         
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-119.md", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2102-30-118", 
+      "redirect_document_id": false
+    },         
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-71.md", 
+      "redirect_url": "/azure-stack/operator", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2108-2-73.md", 
+      "redirect_url": "/azure-stack/operator", 
+      "redirect_document_id": false
+    },             
     { 
       "source_path": "azure-stack/operator/relnotearchive/release-notes-known-issues-1802.md", 
       "redirect_url": "/azure-stack/operator/relnotearchive/release-notes?view=azs-1802", 

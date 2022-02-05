@@ -4,8 +4,10 @@ description: In this tutorial, learn how to create an Azure Container Registry i
 services: container-service
 ms.topic: tutorial
 ms.date: 04/13/2021
-ms.author: jeguan
-author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
+author: mattbriggs
 ---
 
 # Tutorial: Deploy and use Azure Container Registry

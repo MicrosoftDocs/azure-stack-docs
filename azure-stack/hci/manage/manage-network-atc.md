@@ -1,11 +1,10 @@
 ---
 title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
-author: v-dasis
+author: jasongerend
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.author: jgerend
 ---
 
 # Manage Network ATC
@@ -44,7 +43,15 @@ In this task, you will add additional nodes to the cluster and observe how a con
 
 You can also add several nodes to the cluster at once.
 
-## Update an intent network adapter
+## Modify default VLANs for storage or management systems
+
+You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
+
+   ``` powershell
+   Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
+   ```
+
+## Add or remove network adapters from an intent
 
 This task will help you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents. 
 
@@ -120,21 +127,53 @@ This task will help you override the default configuration which has already bee
 
 ## Remove an intent
 
-If you want to test various configurations on the same adapters, you may need to remove an intent. 
 
-If you previously deployed and configured Network ATC on your system, you may need to reset the node so that the configuration can be deployed. To do this, copy and paste the following commands to remove all existing intents and their corresponding vSwitch:
+Sometimes you might want to remove all intents and start over—for example, to test a different configuration. While you can remove intents using the Remove-NetIntent cmdlet, doing so won’t clean up the virtual switches and DCB/NetQoS configurations created for the intents. Network ATC makes a point of not destroying things on your system, which is usually a good thing, but it does mean you must perform some manual steps to start over.
+ 
+To remove all network intents and delete the virtual switches and NetQoS configurations created by Network ATC for these intents, run the following script in a PowerShell session running locally on one of the servers in the cluster (doesn’t matter which).
 
 ```powershell
-    $intents = Get-NetIntent
-    foreach ($intent in $intents)
+$clusname = Get-Cluster
+$clusternodes = Get-ClusterNode    
+$intents = Get-NetIntent -ClusterName $clusname
+
+foreach ($intent in $intents)
+{
+    Remove-NetIntent -Name $intent.IntentName -ClusterName $clusname
+}
+
+foreach ($intent in $intents)
+{
+    foreach ($clusternode in $clusternodes)
     {
-        Remove-NetIntent -Name $intent.IntentName
-        Remove-VMSwitch -Name "*$($intent.IntentName)*" -ErrorAction SilentlyContinue -Force
+        Remove-VMSwitch -Name "*$($intent.IntentName)*" -ComputerName $clusternode -ErrorAction SilentlyContinue -Force
     }
-    
-    Get-NetQosTrafficClass | Remove-NetQosTrafficClass
-    Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
-    Get-NetQosFlowControl | Disable-NetQosFlowControl
+}
+
+foreach ($clusternode in $clusternodes)
+{    
+    New-CimSession -ComputerName $clusternode -Name $clusternode
+    $CimSession = Get-CimSession
+    Get-NetQosTrafficClass -CimSession $CimSession | Remove-NetQosTrafficClass -CimSession $CimSession
+    Get-NetQosPolicy -CimSession $CimSession | Remove-NetQosPolicy -Confirm:$false -CimSession $CimSession
+    Get-NetQosFlowControl -CimSession $CimSession | Disable-NetQosFlowControl -CimSession $CimSession
+    Get-CimSession | Remove-CimSession
+}
+```
+
+To remove the configuration on a per-node deployment, copy and paste the following commands on each node to remove all existing intents and their corresponding vSwitch:
+
+```powershell
+$intents = Get-NetIntent
+foreach ($intent in $intents)
+{
+    Remove-NetIntent -Name $intent.IntentName
+    Remove-VMSwitch -Name "*$($intent.IntentName)*" -ErrorAction SilentlyContinue -Force
+}
+
+Get-NetQosTrafficClass | Remove-NetQosTrafficClass
+Get-NetQosPolicy | Remove-NetQosPolicy -Confirm:$false
+Get-NetQosFlowControl | Disable-NetQosFlowControl
 ```
 
 ## Post-deployment tasks

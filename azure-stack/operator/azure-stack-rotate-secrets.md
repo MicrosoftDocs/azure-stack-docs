@@ -67,7 +67,6 @@ For more information on alert monitoring and remediation, refer to [Monitor heal
 > - **Value-add resource provider (RP) secrets** is covered under seperate guidance:
 >    - [App Service on Azure Stack Hub](app-service-rotate-certificates.md)
 >    - [Event Hubs on Azure Stack Hub](event-hubs-rp-rotate-secrets.md)
->    - [IoT Hub on Azure Stack Hub](iot-hub-rp-rotate-secrets.md)
 >    - [MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider-maintain.md#secrets-rotation)
 >    - [SQL on Azure Stack Hub](azure-stack-sql-resource-provider-maintain.md#secrets-rotation)
 > - **Baseboard management controller (BMC) credentials** is also a manual process, [covered later in this article](#update-the-bmc-credential). 
@@ -111,7 +110,7 @@ Prior to rotation of external secrets:
      <sup>*</sup>Part of the [Windows Trusted Root Program](/security/trusted-root/participants-list).
 
    - Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md)
-   - Make sure there are no special characters in the password, like `*` or `)`.
+   - Make sure there are no special characters in the password, like for example `$`,`*`,`#`,`@`,` or `)`.
    - Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack Hub PKI certificates](azure-stack-remediate-certs.md#pfx-encryption).
 
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.

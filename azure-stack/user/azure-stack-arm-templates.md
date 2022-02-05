@@ -1,12 +1,12 @@
 ---
 title: Use Azure Resource Manager templates in Azure Stack Hub 
 description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
-author: mattbriggs
+author: BryanLa
 
 
 ms.topic: article
-ms.date: 2/1/2021
-ms.author: mabrigg
+ms.date: 2/1/2022
+ms.author: bryanla
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2019
 
@@ -22,17 +22,6 @@ You can use Azure Resource Manager templates to deploy and provision all the res
 These templates can be deployed with the Microsoft Azure Stack Hub portal, PowerShell, the command line, and Visual Studio.
 
 The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
-
-## Deploy SharePoint Server (non-high-availability deployment)
-
-Use the PowerShell [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
-
-* A virtual network
-* Three storage accounts
-* Two external load balancers
-* One virtual machine (VM) configured as a domain controller for a new forest with a single domain
-* One VM configured as a SQL Server 2014 stand-alone server
-* One VM configured as a one-machine SharePoint Server 2013 farm
 
 ## Deploy AD (non-high-availability-deployment)
 

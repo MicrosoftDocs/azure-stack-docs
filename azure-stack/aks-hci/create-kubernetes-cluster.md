@@ -1,10 +1,12 @@
 ---
 title: Quickstart to create a Kubernetes cluster using Windows Admin Center
 description: Learn how to create a Kubernetes cluster using Windows Admin Center
-author: davannaw-msft
+author: mattbriggs
 ms.topic: quickstart
 ms.date: 05/25/2021
-ms.author: dawhite
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: dawhite
 ms.custom: mode-portal
 ---
 # Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center
@@ -30,7 +32,7 @@ You've reached the Kubernetes cluster create wizard through the Azure Kubernetes
 
 1. Review the prerequisites for the system that will host the Kubernetes cluster and those for Windows Admin Center. When finished, select **Next**. 
 
-2. On the **Basics** page, configure information about your Kubernetes cluster. The Azure Kubernetes Service host field requires the fully qualified domain name of the Azure Stack HCI or Windows Server 2019 Datacenter cluster that you used when walking through the [setup](setup.md) page. You must have completed the host setup for this system through the Azure Kubernetes Service tool. When complete, select **Next**.
+2. On the **Basics** page, configure information about your Kubernetes cluster. The Azure Kubernetes Service host field requires the fully qualified domain name of the Azure Stack HCI or Windows Server 2019/2022 Datacenter cluster that you used when walking through the [setup](setup.md) page. You must have completed the host setup for this system through the Azure Kubernetes Service tool. When complete, select **Next**.
 
     [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png) ](.\media\create-kubernetes-cluster\basics.png#lightbox)
  

@@ -76,7 +76,7 @@ If your stamp is connected, you can follow these instructions to deploy Promethe
 
 ## Deploy apps to AKS using ACR
 
-At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below. Otherwise, you can skip to the section title [Upgrade the cluster](aks-how-to-use-cli.md#upgrade-cluster).
+At this point, your client machine is connected to the cluster and you can proceed to use **kubectl** to configure the cluster and deploy your applications. If you are also testing the Azure Container Registry (ACR) service, you can follow the instructions below.
 
 ### Docker registry secret for accessing local ACR
 
@@ -89,7 +89,7 @@ Add the SPN as a contributor to the ACR.
 > [!NOTE]  
 > This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Be sure to add the values for your system.
 
-```powershell  
+```azurecli  
 # Modify for your environment. The ACR_NAME is the name of your Azure Container
 # Registry, and the SERVICE_PRINCIPAL_ID is the SPN's 'appId' or
 # one of its 'servicePrincipalNames' values.

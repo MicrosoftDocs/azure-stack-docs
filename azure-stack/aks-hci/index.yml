@@ -1,15 +1,15 @@
 ### YamlMime:Landing
 
 title: Azure Kubernetes Service on Azure Stack HCI documentation
-summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+
 metadata:
   title: Azure Kubernetes Service on Azure Stack HCI documentation
-  description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on Windows Server 2019 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+  description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
   ms.topic: landing-page
-  author: jasongerend
-  ms.author: jgerend
-  ms.date: 09/22/2020
-
+  author: mattbriggs
+  ms.author: mabrigg 
+  ms.date: 03/19/2020
 
 landingContent:
   - title: About Azure Kubernetes Service
@@ -116,3 +116,13 @@ landingContent:
             url:  https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - text: Use Bridge to Kubernetes with Visual Studio
             url:  /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+
+  - title: Troubleshoot
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Troubleshooting overview
+            url: troubleshoot-overview.md
+          - text: Connect to nodes with SSH
+            url: ssh-connection.md
+

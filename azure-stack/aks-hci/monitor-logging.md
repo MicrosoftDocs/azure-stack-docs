@@ -1,11 +1,13 @@
 ---
 title: Monitor and logging on Azure Kubernetes Service on Azure Stack HCI clusters
 description: Learn how to monitor and view logging data for Azure Kubernetes Service on Azure Stack HCI clusters.
-author: v-susbo
+author: mattbriggs
 ms.topic: how-to
 ms.date: 06/22/2021
-ms.author: v-susbo
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: abha
+
 ---
 
 # Monitor and logging for AKS on Azure Stack HCI clusters

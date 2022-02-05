@@ -1,10 +1,13 @@
 ---
 title: Azure Benefits on Azure Stack HCI
 description: This topic explains the Azure Benefits feature on Azure Stack HCI.
-author: jelei
-ms.author: jelei
-ms.topic: conceptual
-ms.date: 12/14/2021
+author: sethmanheim
+ms.author: sethm
+ms.topic: overview
+ms.reviewer: jlei
+ms.date: 01/25/2022
+ms.lastreviewed: 01/25/2022
+
 ---
 
 # Azure Benefits on Azure Stack HCI
@@ -33,7 +36,7 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 
 Azure Benefits is a built-in platform attestation service on Azure Stack HCI, and helps to provide guarantees that VMs are indeed running on Azure environments.
 
-This is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload; the main difference is that because it is running on Azure Stack HCI, it guarantees that the VM is in Azure Stack HCI.
+This is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload; the main difference is that it runs on-premises and therefore guarantees that VMs are on Azure Stack HCI instead of Azure.
 
 :::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture":::
 
@@ -56,10 +59,10 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
 
 ## Enable Azure Benefits
 
-Before you begin, you need the following prerequisites:
+Before you begin, you'll need the following prerequisites:
 
 - An Azure Stack HCI cluster:
-  - [Install updates](../manage/update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008210 or later.
+  - [Install updates](../manage/update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008223 or later.
   - [Register Azure Stack HCI](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center): All servers must be online and registered to Azure.
   - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
@@ -82,7 +85,7 @@ Before you begin, you need the following prerequisites:
 
 5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
 
-#### Manage access to Azure Benefits for your VMs
+#### Manage access to Azure Benefits for your VMs - WAC
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
@@ -131,7 +134,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
    Get-AzStackHCIVMAttestation
    ```
 
-#### Manage access to Azure Benefits for your VMs
+#### Manage access to Azure Benefits for your VMs - PowerShell
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
@@ -142,7 +145,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
   Or, to add all existing VMs, run the following command:
 
    ```powershell
-   Add-AzStackHCIAttestation -AddAll
+   Add-AzStackHCIVMAttestation -AddAll
    ```
 
 #### Troubleshooting - PowerShell
@@ -179,10 +182,10 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 
 ### View only using portal
 
-:::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
-
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
+
+   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
 
 ## FAQ
 
@@ -215,3 +218,8 @@ No, Azure Benefits is a feature built into the Azure Stack HCI OS, and can only 
 - When you add a server, you can navigate to the **Azure Benefits** page in Windows Admin Center, and a banner will appear with a link to **Enable inactive server**.
 - Or, you can run `Enable-AzStackHCIAttestation [[-ComputerName] <String>]` in PowerShell.
 - You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** will still exist on the server after removal from the cluster. You can leave it if you are planning to add the server back to the cluster later, or you can remove it manually.
+
+## Next steps
+
+- [Azure Stack HCI overview](../overview.md)
+- [Azure Stack HCI FAQ](../faq.yml)

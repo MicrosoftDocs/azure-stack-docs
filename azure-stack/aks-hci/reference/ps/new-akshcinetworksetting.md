@@ -1,10 +1,13 @@
 ---
 title: New-AksHciNetworkSetting for AKS on Azure Stack HCI
-author: mkostersitz
+author: mattbriggs
 description: The New-AksHciNetworkSetting PowerShell command creates an object for a new virtual network.
 ms.topic: reference
 ms.date: 4/12/2021
-ms.author: mikek
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: mikek
+
 ---
 
 # New-AksHciNetworkSetting
@@ -100,7 +103,7 @@ PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloud
 ### Deploy with a DHCP environment and a VLAN
 
 ```powershell
-PS C:\> $vnet = New-AksHciNetworkSetting -name DHCPVnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
+PS C:\> $vnet = New-AksHciNetworkSetting -name dhcpvnet -vswitchName "External" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
 PS C:\> Set-AksHciConfig -workingDir c:\clusterstorage\volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 

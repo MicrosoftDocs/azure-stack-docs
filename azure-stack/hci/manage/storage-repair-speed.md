@@ -36,7 +36,7 @@ The storage speed repair settings are:
 
 To change the storage repair speed for a cluster by using Windows Admin Center:
 
-:::image type="content" source="media/storage-repair-speed/change-storage-repair-speed.png" alt-text="You can change storage repair speeds in Cluster Manager > Settings > Storage Spaces and pools" lightbox="media/storage-repair-speed/change-storage-repair-speed.png":::
+:::image type="content" source="/azure-stack/hci/manage/media/storage-repair-speed/change-storage-repair-speed.png" alt-text="You can change storage repair speeds in Cluster Manager > Settings > Storage Spaces and pools" lightbox="/azure-stack/hci/manage/media/storage-repair-speed/change-storage-repair-speed.png":::
 
 1. In **Cluster Manager**, select **Settings** from the lower left.
 1. In the **Settings** pane, select **Storage Spaces and pools**.
@@ -62,4 +62,4 @@ Set-StorageSubSystem -FriendlyName <name of cluster subsystem> -VirtualDiskRepai
 
 For more information, see also:
 
-- [Taking an Azure Stack HCI server offline for maintenance](maintain-servers.md)
+- [Taking an Azure Stack HCI server offline for maintenance](/azure-stack/hci/manage/maintain-servers)

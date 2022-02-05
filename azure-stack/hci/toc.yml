@@ -6,18 +6,12 @@
     href: overview.md
   - name: What's new in Azure Stack HCI?
     href: whats-new.md
+  - name: Release information
+    href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
-  - name: Release information
-    href: release-information.md
-  - name: 21H2 release notes
-    href: https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173
-  - name: 20H2 release notes
-    href: https://support.microsoft.com/help/4595086
-  - name: Azure Benefits on Azure Stack HCI
-    href: ./manage/azure-benefits.md
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -30,7 +24,7 @@
     href: deploy/deployment-quickstart.md
 - name: Tutorial
   items:
-  - name: Create a private forest environment
+  - name: Create a VM-based lab
     href: deploy/tutorial-private-forest.md
 - name: Deploy
   items:
@@ -169,7 +163,7 @@
       - name: Change privacy settings
         href: manage/change-privacy-settings.md
       - name: Use BitLocker with Cluster Shared Volumes
-        href: manage/bitlocker-on-csv.md
+        href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
@@ -188,6 +182,8 @@
       href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
+    - name: Use Azure Benefits
+      href: ./manage/azure-benefits.md
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
     - name: Manage cluster registration with Azure
@@ -324,8 +320,6 @@
     href: /windows-server/
   - name: Windows Admin Center
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-  - name: Software Defined Networking
-    href: /windows-server/networking/sdn
   - name: System Center
     href: /system-center/
 - name: Resources
@@ -338,7 +332,19 @@
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
     href: manage/get-support.md
-  - name: Training
-    href: /learn/paths/azure-stack-hci-foundations/
-  - name: Archived release notes
-    href: preview-release-notes.md
+  - name: Learning paths and modules
+    items:
+    - name: Azure Stack HCI foundations
+      href: /learn/paths/azure-stack-hci-foundations/
+    - name: Operate and maintain Azure Stack HCI
+      href: /learn/paths/operate-maintain-azure-stack-hci/
+    - name: Implement Datacenter Firewall and Software Load Balancer
+      href: /learn/modules/implement-firewall-load-balancer/
+    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
+      href: /learn/modules/plan-deploy-sdn-infrastructure/
+  - name: Earlier versions
+    items:
+    - name: What's new in version 20H2
+      href: whats-new-in-hci-20h2.md
+    - name: Release notes for version 20H2 Public Preview 
+      href: preview-release-notes.md

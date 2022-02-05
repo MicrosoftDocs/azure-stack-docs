@@ -56,7 +56,7 @@ Once you've joined the preview channel, your cluster will always be offered the 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. If you've successfully joined the preview channel, feature updates will be displayed.
 
    :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
-
+<!--- This image is currently shared with the Updates page. --->
    > [!NOTE]
    > If you're installing build 22471, Windows Admin Center displays the correct update title, but incorrectly shows a banner advertising "version 21H2." This is a known issue.
 

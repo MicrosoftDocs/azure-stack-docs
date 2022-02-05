@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/06/2021
+ms.date: 01/11/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
@@ -48,7 +48,7 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2108 update](./release-notes.md?preserve-view=true&view=azs-2108)
+<!-- - [Azure Stack Hub 2108 update](./release-notes.md?preserve-view=true&view=azs-2108) -->
 - [Azure Stack Hub 2102 update](./release-notes.md?preserve-view=true&view=azs-2102)
 - [Azure Stack Hub 2008 update](./release-notes.md?preserve-view=true&view=azs-2008)
 
@@ -66,7 +66,11 @@ For information about currently available hotfixes, [see the release notes](rele
 
 ## Keep your system under support
 
-For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
+For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions (N-1, N-2). The following support restrictions apply to systems that aren't within our general two preceding versions support policy:
+
+- Hotfixes for the platform are provided for the current version and two preceding versions (N-1, N-2).
+- Root Cause Analysis (RCAs) is provided for the current version and two preceding versions (N-1, N-2).
+- Support incidents (SRs) for unsupported versions are set to the lowest priority unless you're performing an update. Customer issues for supported versions are prioritized first. Support incidents for unsupported versions could mean longer than expected delays in response times.
 
 You must also have an active support agreement with the hardware partner that manufactured the system. Microsoft is not able to support you without a hardware support agreement in place.
 

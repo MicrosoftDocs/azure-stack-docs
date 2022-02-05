@@ -6,7 +6,7 @@ ms.custom: contperf-fy20q4
 ms.topic: article
 ms.date: 12/6/2021
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: thoroet
 ms.lastreviewed: 12/6/2021
 
 # Intent: As an Azure Stack user, I want to know which resource provider API versions are supported by profiles in Azure Stack.
@@ -114,7 +114,6 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 | Check name availability | 2019-07-01-preview |
 | Operations | 2019-07-01-preview |
 | Operation results | 2019-07-01-preview |
-| IotHubs | 2019-07-01-preview |
 | Backup providers | 2019-07-01-preview |
 | Backup providers/operationResults | 2019-07-01-preview |
 

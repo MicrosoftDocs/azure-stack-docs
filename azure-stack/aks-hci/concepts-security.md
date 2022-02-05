@@ -1,10 +1,12 @@
 ---
 title: Concepts - Securing the infrastructure and applications on a Kubernetes cluster for Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS on Azure Stack HCI.
-author: lahirisl
+author: mattbriggs
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.author: v-susbo
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: lahirisl
 ---
 
 # Security concepts in AKS on Azure Stack HCI

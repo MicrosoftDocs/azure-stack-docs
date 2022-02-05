@@ -1,11 +1,11 @@
 ---
 title: Replicate resources across multiple Azure Stack Hub subscriptions 
 description: Learn how to replicate resources using the Azure Stack Hub subscription replicator set of scripts.
-author: mattbriggs
+author: BryanLa
 
 ms.topic: how-to
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
 

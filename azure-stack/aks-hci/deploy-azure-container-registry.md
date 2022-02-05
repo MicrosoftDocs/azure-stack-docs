@@ -1,11 +1,13 @@
 ---
 title: How to - Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI
 description: Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI.
-author: baziwane
+author: mattbriggs
 ms.topic: how-to
 ms.date: 05/10/2021
-ms.author: rbaziwane
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: rbaziwane
+
 ---
 
 # Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI
@@ -113,7 +115,7 @@ docker push <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
 
 To confirm that the image was successfully pushed to Azure Container Registry, you can run the following command:
 
-```powershell
+```azurecli
 az acr repository list --name <REGISTRY_NAME>.azurecr.io --output table
 ```
 

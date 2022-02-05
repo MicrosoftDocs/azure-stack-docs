@@ -1,11 +1,13 @@
 ---
 title: Encrypt etcd secrets in AKS on Azure Stack HCI
 description: Learn how to encrypt etcd secrets in AKS on Azure Stack HCI
-author: aabhathipsay
+author: mattbriggs
 ms.topic: how-to
 ms.date: 02/02/2021
-ms.author: aathipsa
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: aathipsa
+
 ---
 
 # Encrypt etcd secrets in AKS on Azure Stack HCI clusters

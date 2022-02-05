@@ -1,13 +1,13 @@
 ---
 title: VM sizes supported in Azure Stack Hub 
 description: Reference for the supported VM sizes in Azure Stack Hub.
-author: mattbriggs
+author: BryanLa
 
 ms.topic: reference
-ms.date: 2/1/2021
-ms.author: mabrigg
-ms.reviewer: kivenkat
-ms.lastreviewed: 03/23/2020
+ms.date: 12/20/2021
+ms.author: bryanla
+ms.reviewer: nebird
+ms.lastreviewed: 12/13/2021
 
 # Intent: As an Azure Stack user, I want to learn about virtual machine sizes available in Azure Stack.
 # Keyword: virtual machine sizes
@@ -65,23 +65,6 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8x500   |4 |
 |**Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16x500 |8 |
 
-### D-series
-|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
-|----------------|----|----|-----|----|------|------------|---------|
-|**Standard_D1** |1   |3.5 |50   |500 |3000  |4 / 4x500   |2 |
-|**Standard_D2** |2   |7   |100  |500 |6000  |8 / 8x500   |2 |
-|**Standard_D3** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
-|**Standard_D4** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
-
-
-### DS-series
-|Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
-|-----------------|----|----|-----|-----|------|-------------|---------|
-|**Standard_DS1** |1   |3.5 |7    |1000 |4000  |4 / 4x2300   |2 |
-|**Standard_DS2** |2   |7   |14   |1000 |8000  |8 / 8x2300   |2 |
-|**Standard_DS3** |4   |14  |28   |1000 |16000 |16 / 16x2300 |4 |
-|**Standard_DS4** |8   |28  |56   |1000 |32000 |32 / 32x2300 |8 |
-
 ### Dv2-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-------------------|----|----|-----|----|------|------------|---------|
@@ -99,7 +82,6 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_DS3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 |
 |**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 |
 |**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 |
-
 
 ## Compute optimized
 ### F-series
@@ -143,7 +125,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 
 Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed for relational database servers, medium to large caches, and in-memory analytics.
 
-### <a name="mo-d"></a>D-series
+### D-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |------------------|---|----|----|--------|------|------------|---------|
 |**Standard_D11**  |2  |14  |100 |500     |6000  |8 / 8x500   |2 |
@@ -151,7 +133,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_D13**  |8  |56  |400 |500     |24000 |32 / 32x500 |8 |
 |**Standard_D14**  |16 |112 |800 |500     |48000 |64 / 64x500 |8 |
 
-### <a name="mo-ds"></a>DS-series
+### DS-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-------------------|---|----|----|--------|------|-------------|---------|
 |**Standard_DS11**  |2  |14  |28  |1000    |8000  |8 / 8x2300   |2 |
@@ -159,7 +141,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_DS13**  |8  |56  |112 |1000    |32000 |32 / 32x2300 |8 |
 |**Standard_DS14**  |16 |112 |224 |1000    |64000 |64 / 64x2300 |8 |
 
-### <a name="mo-dv2"></a>Dv2-series
+### Dv2-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |--------------------|----|----|-----|----|-------|-------------|---------|
 |**Standard_D11_v2** |2   |14  |100  |500 |6000   |8 / 8x500    |2 |
@@ -168,7 +150,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_D14_v2** |16  |112 |800  |500 |48000  |64 / 64x500  |8 |
 
 
-### <a name="mo-dsv2"></a>DSv2-series
+### DSv2-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |8 / 8x2300    |2 |
@@ -176,8 +158,8 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_DS13_v2** |8   |56  |112  |1000 |32000  |32 / 32x2300  |8 |
 |**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 |
 
-::: moniker range="azs-2102"
-### <a name="mo-dv3"></a>Dv3-series
+::: moniker range=">=azs-2102"
+### Dv3-series
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks/throughput (IOPS) | Max NICs/Network bandwidth |
 |---|---|---|---|---|---|
@@ -187,7 +169,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_D16_v3** | 16 | 64  | 400  | 32 /32x500 | 8 |
 | **Standard_D32_v3** | 32 | 128 | 800  | 32 /32x500 | 8 |
 
-### <a name="mo-dsn_v2"></a>DS-n_v2-series
+### DS-n_v2-series
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs |
 |---|---|---|---|---|---|
 | **Standard_DS11-1_v2**  | 1  | 14   | 28   | 8 / 8x2300 | 2 |
@@ -198,7 +180,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_DS14-4_v2** | 4 | 112 | 224  | 64 /64x2300 | 8 |
 | **Standard_DS14-8_v2** | 8 | 112 | 224  | 64 /64x2300 | 8|
 
-### <a name="mo-dv3"></a>Ev3-series
+### Ev3-series
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs  |
 |---|---|---|---|---|---|
 | **Standard_E2_v3**  | 2  | 16  | 50   | 4 /4x500 | 2 |

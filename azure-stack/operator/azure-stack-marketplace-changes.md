@@ -3,9 +3,9 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/03/2021
+ms.date: 01/18/2022
 ms.author: sethm
-ms.reviewer: thoroet
+ms.reviewer: vrajasekaran
 ms.lastreviewed: 05/28/2020
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new or changed in Azure Stack Hub Marketplace so I can stay up to date.
@@ -57,6 +57,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
+- 01/18/2022: eXo Platform
 - 06/29/2021: Open Atrium
 - 06/22/2021: SharePoint Server 2013 Trial
 - 06/22/2021: SharePoint Server 2016 Trial

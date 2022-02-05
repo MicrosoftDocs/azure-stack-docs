@@ -1,11 +1,13 @@
 ---
 title: Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to use Helm to deploy applications on Azure Kubernetes Service on Azure Stack HCI
-author: baziwane
+author: mattbriggs
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.author: rbaziwane
-ms.reviewer: 
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: rbaziwane
+
 ---
 
 # Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI

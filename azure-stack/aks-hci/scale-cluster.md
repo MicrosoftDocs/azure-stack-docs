@@ -3,8 +3,10 @@ title: Scale an Azure Kubernetes Service on Azure Stack HCI cluster
 description: Learn how to scale the number of nodes in an Azure Kubernetes Service on Azure Stack HCI cluster.
 ms.topic: article
 ms.date: 03/02/2021
-author: jessicaguan
-ms.author: jeguan
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: jeguan
 ---
 
 # Scale the node count in an Azure Kubernetes Service on Azure Stack HCI cluster

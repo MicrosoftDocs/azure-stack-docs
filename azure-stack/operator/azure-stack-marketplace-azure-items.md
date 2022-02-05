@@ -3,9 +3,9 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/03/2021
+ms.date: 01/18/2022
 ms.author: sethm
-ms.reviewer: avishwan
+ms.reviewer: vrajasekaran
 ms.lastreviewed: 12/9/2020
 
 # Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
@@ -106,7 +106,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/espocrm.png" border="false"::: | [EspoCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.espocrm) | Simple CRM system that helps manage customer relationships. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/etcd.png" border="false"::: | [etcd](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.etcd) | etcd is a distributed key-value store designed to securely store data across a cluster. etcd is widely used in production for its reliability, fault-tolerance, and ease of use. | Bitnami |
 | ![etcd Cluster](media/azure-stack-marketplace-azure-items/etcd.png) | [etcd Cluster](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.etcd-cluster) | etcd is a distributed key-value store designed to securely store data across a cluster. etcd is widely used in production for its reliability, fault-tolerance and ease of use. This solution provisions a configurable number of etcd nodes to create a fault-tolerant, distributed and reliable key-value store. This solution template also requires **Debian 9** and **Custom Script for Linux 2.0 Extension**. | Bitnami |
-| ![eXo Platform](media/azure-stack-marketplace-azure-items/exoplatform.png) | [eXo Platform](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.exoplatform) | Open-source, social software designed for enterprises. | Bitnami |
 | ![Fat Free CRM](media/azure-stack-marketplace-azure-items/fatfreecrm.png) | [Fat Free CRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.fatfreecrm) | Open-source Ruby on Rails-based CRM. | Bitnami |
 | ![GitLab Community Edition](media/azure-stack-marketplace-azure-items/bitnami.png) | [GitLab Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.gitlab) | Fast, secure Git management software. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/ghost.png" border="false"::: | [Ghost](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.ghost) | A platform dedicated to publishing. | Bitnami |
@@ -164,7 +163,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Open edX](media/azure-stack-marketplace-azure-items/openedx.png) | [Open edX](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.openedx) | eLearning software from the leading publisher. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/openfire.png" border="false"::: | [OpenFire](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.openfire) | Open-source real-time collaboration server with XMPP. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/openproject.png" border="false"::: | [OpenProject](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.openproject) | Popular open-source project management software. | Bitnami |
-| :::image type="icon" source="media/azure-stack-marketplace-azure-items/orangehrm.png" border="false"::: | [OrangeHRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.orangehrm) | HR management system with a wealth of modules. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/orocrm.png" border="false"::: | [OroCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.orocrm) | Flexible open-source CRM app. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/osclass.png" border="false"::: | [Osclass](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.osclass) | Create and manage free classified ads without technical know-how. | Bitnami |
 | :::image type="icon" source="media/azure-stack-marketplace-azure-items/owncloud.png" border="false"::: | [ownCloud](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.owncloud) | Popular open-source file sync and share solution. | Bitnami |

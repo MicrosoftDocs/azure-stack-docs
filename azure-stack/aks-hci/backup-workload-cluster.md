@@ -1,10 +1,12 @@
 ---
 title: Back up and restore workload clusters using Velero and Azure Blob storage in Azure Kubernetes Service (AKS) on Azure Stack HCI
 description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI.
-author: scooley
+author: mattbriggs
 ms.topic: how-to
 ms.date: 11/16/2021
-ms.author: scooley
+ms.author: mabrigg 
+ms.lastreviewed: 1/14/2022
+ms.reviewer: scooley
 ---
 
 # Back up and restore workload clusters using Velero and Azure Blob storage
@@ -31,20 +33,20 @@ Use the following steps to deploy and configure Velero:
 
    First, find the name of the subscription ID:
 
-   ```bash
+   ```azurecli
    AZURE_BACKUP_SUBSCRIPTION_NAME=<NAME_OF_TARGET_SUBSCRIPTION>
    AZURE_BACKUP_SUBSCRIPTION_ID=$(az account list --query="[?name=='$AZURE_BACKUP_SUBSCRIPTION_NAME'].id | [0]" -o tsv)
    ```
 
    Second, set a subscription to be the current active subscription:
 
-   ```bash
+   ```azurecli
    az account set -s $AZURE_BACKUP_SUBSCRIPTION_ID
    ```
      
    Next, create a resource group for the backups storage account, run the command below (changing the location as needed). The example shows the storage account created in a separate `Velero_Backups` resource group.
    
-   ```bash
+   ```azurecli
    AZURE_BACKUP_RESOURCE_GROUP=Velero_Backups
    az group create -n $AZURE_BACKUP_RESOURCE_GROUP --location WestUS
    ```
@@ -53,7 +55,7 @@ Use the following steps to deploy and configure Velero:
 
    To create the storage account, run the following command:
 
-   ```bash
+   ```azurecli
    AZURE_STORAGE_ACCOUNT_ID="velero$(uuidgen | cut -d '-' -f5 | tr '[A-Z]' '[a-z]')"
    az storage account create \
       --name $AZURE_STORAGE_ACCOUNT_ID \
@@ -67,7 +69,7 @@ Use the following steps to deploy and configure Velero:
    
    Finally, create the blob container named `velero`. You can choose a different name, but it should preferably be unique to a single Kubernetes cluster.
    
-   ```bash
+   ```azurecli
    BLOB_CONTAINER=velero
    az storage container create -n $BLOB_CONTAINER --public-access off --account-name $AZURE_STORAGE_ACCOUNT_ID
    ```
@@ -76,7 +78,7 @@ Use the following steps to deploy and configure Velero:
 
    First, obtain your Azure account subscription ID and tenant ID by running the following command:
 
-   ```bash
+   ```azurecli
    AZURE_SUBSCRIPTION_ID=`az account list --query '[?isDefault].id' -o tsv`
    AZURE_TENANT_ID=`az account list --query '[?isDefault].tenantId' -o tsv`
    ```
@@ -88,7 +90,7 @@ Use the following steps to deploy and configure Velero:
    > [!NOTE]
    > If you're using a different subscription for backups and cluster resources, make sure to specify both subscriptions in the `az` command using `--scopes`.
 
-   ```bash
+   ```azurecli
    AZURE_CLIENT_SECRET=`az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv \
    --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID[ /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID]`
    ```
@@ -97,7 +99,7 @@ Use the following steps to deploy and configure Velero:
 
    After creating the service principal, obtain the client ID by running the following command:
 
-   ```bash
+   ```azurecli
    AZURE_CLIENT_ID=`az ad sp list --display-name "velero" --query '[0].appId' -o tsv`
    ```
 
@@ -120,7 +122,7 @@ Use the following steps to deploy and configure Velero:
 
    To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI does not support volume snapshots.
 
-   ```bash
+   ```powershell
    velero install \
       --provider azure \
       --plugins velero/velero-plugin-for-microsoft-azure:v1.3.0 \
@@ -132,7 +134,7 @@ Use the following steps to deploy and configure Velero:
 
 5. Check whether the Velero service is running properly by running the following command:
 
-   ```
+   ```powershell
    kubectl -n velero get pods
    kubectl logs deployment/velero -n Velero
    ```
@@ -143,13 +145,13 @@ You can back up or restore all objects in your cluster, or you can filter object
 
 To run a basic on-demand backup of your cluster:
 
-```
+```powershell
 velero backup create <BACKUP-NAME> --default-volumes-to-restic
 ```
 
 To check progress of a backup:
 
-```
+```powershell
 velero backup describe <BACKUP-NAME>
 ```
 
@@ -165,13 +167,13 @@ On the destination cluster where you want to restore the backup, run the followi
 
 2. Make sure that the Velero Backup object is created by running the following command. Velero resources are synchronized with the backup files in cloud storage.
 
-   ```
+   ```powershell
    velero backup describe <BACKUP-NAME>
    ```
 
 3. Once you have confirmed that the right backup (`<BACKUP-NAME>`) is available, you can restore everything with the following command:
 
-   ```
+   ```powershell
    velero restore create --from-backup <BACKUP-NAME>
    ```
 
@@ -179,7 +181,7 @@ On the destination cluster where you want to restore the backup, run the followi
 
 If you would like to completely uninstall Velero from your cluster, the following commands will remove all resources created by `velero install`:
 
-```
+```powershell
 kubectl delete namespace/velero clusterrolebinding/velero
 kubectl delete crds -l component=velero
 ```

@@ -13,7 +13,11 @@
     - name: Release notes
       href: release-notes.md
     - name: Hotfixes
-      items:
+      items:   
+      - name: Hotfix 1.2102.30.118
+        href: hotfix-1-2102-30-118.md      
+      - name: Hotfix 1.2008.40.156
+        href: hotfix-1-2008-40-156.md
       - name: Hotfix 1.2102.30.116
         href: hotfix-1-2102-30-116.md
       - name: Hotfix 1.2102.30.109
@@ -450,29 +454,7 @@
         href: event-hubs-rp-remove.md 
     - name: IoT Hub on Azure Stack Hub
       items:
-      - name: Overview 
-        href: iot-hub-rp-overview.md
-      - name: Prerequisites
-        href: iot-hub-rp-prerequisites.md
-      - name: Install 
-        href: iot-hub-rp-install.md
-      - name: Lifecycle management
-        items:
-        - name: Apply updates
-          href: resource-provider-apply-updates.md
-        - name: Backup & restore
-          href: azure-stack-backup-infrastructure-backup.md
-        - name: Collect logs
-          href: ./diagnostic-log-collection.md
-        - name: Health & alerts
-          href: azure-stack-monitor-health.md
-        - name: Manage 
-          href: iot-hub-rp-manage.md
-        - name: Rotate secrets
-          href: iot-hub-rp-rotate-secrets.md
-        - name: Service update announcements
-          href: https://azure.microsoft.com/updates/?query=IoT%20Hub
-      - name: Remove 
+      - name: Remove
         href: iot-hub-rp-remove.md
     - name: Kubernetes
       items:
