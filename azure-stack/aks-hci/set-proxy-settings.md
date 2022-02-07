@@ -83,7 +83,7 @@ To exclude all addresses in a domain, you must add the domain to the `noProxy` l
 
 If you already have machine-wide proxy settings on your Azure Stack HCI/Windows Server cluster, the settings might override any AKS-specific proxy settings and lead to a failure during installation. 
 
-To detect whether you have machine-wide proxy settings, run the following script on **each** of your physical cluster nodes:
+To detect whether you have machine-wide proxy settings, run the following script on *each* of your physical cluster nodes:
 
 ```powershell
 $http_proxy = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
