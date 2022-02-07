@@ -137,7 +137,7 @@ You should copy the three files listed below from the Azure Stack HCI cluster to
 
 ### Step 6: Connect to the API server from the client machine
 
-After you've completed the previous steps, log in to your Windows domain-joined client machine using your SSO credentials. Open PowerShell, and then attempt to access the API server using `kubectl`. If you're prompted for authentication, then you have successfully set up AD SSO.
+After you've completed the previous steps, log in to your Windows domain-joined client machine using your SSO credentials. Open PowerShell, and then attempt to access the API server using `kubectl`. If you are successfully able to complete the operation, you have set up AD SSO correctly.
 
 ## Create and update the AD group role binding
 
