@@ -90,7 +90,7 @@ The cache should be sized to accommodate the working set of your applications an
 
 ### General
 
-We recommend limiting the total storage capacity per server to approximately 400 terabytes (TB). The more storage capacity per server, the longer the time required to resync data after downtime or rebooting, such when applying software updates. The current maximum size per storage pool is 4 petabytes (PB) (4,000 TB) for Windows Server 2019.
+We recommend limiting the total storage capacity per server to approximately 400 terabytes (TB). The more storage capacity per server, the longer the time required to resync data after downtime or rebooting, such when applying software updates. The current maximum size per storage pool is 4 petabytes (PB) (4,000 TB) (1 PB for Windows Server 2016).
 
 ## Next steps
 
