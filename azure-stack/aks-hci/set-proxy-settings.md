@@ -70,7 +70,7 @@ When you run this command, the following are excluded:
 - Internal Kubernetes service traffic (.svc) where _.svc_ represents a wildcard name. This is similar to saying *.svc, but none is used in this schema.
 - The private network address space (10.0.0.0/8,172.16.0.0/12,192.168.0.0/16). Note that the private network address space contains important networks, such as the Kubernetes Service CIDR (10.96.0.0/12) and Kubernetes POD CIDR (10.244.0.0/16).
 
-While these default values will work for many networks, you may need to add more subnet ranges and/or names to the exemption list. For example, you may want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the proxyServerNoProxy list:
+While these default values will work for many networks, you may need to add more subnet ranges and/or names to the exemption list. For example, you may want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the `-noProxy` list:
 
 ```powershell
 $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com
@@ -101,10 +101,10 @@ Configure machine-wide proxy exclusions on **each** of the physical cluster host
 > [!NOTE]
 > We recommend having the same proxy settings on all the nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster may lead to unexpected issues.
 
-Run the following PowerShell script and replace the $no_proxy parameter string with a suitable NO_PROXY exclusion string for your environment.
+Run the following PowerShell script and replace the $no_proxy parameter string with a suitable NO_PROXY exclusion string for your environment. Look at the above sections for information on how to correctly configure `-noProxy` for your environment.
 
 ```powershell
-$no_proxy = localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+$no_proxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
 $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
 ```
