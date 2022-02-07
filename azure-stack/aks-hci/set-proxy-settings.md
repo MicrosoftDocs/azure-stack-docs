@@ -70,7 +70,7 @@ When you run this command, the following are excluded:
 - Internal Kubernetes service traffic (.svc) where _.svc_ represents a wildcard name. This is similar to saying *.svc, but none is used in this schema.
 - The private network address space (10.0.0.0/8,172.16.0.0/12,192.168.0.0/16). Note that the private network address space contains important networks, such as the Kubernetes Service CIDR (10.96.0.0/12) and Kubernetes POD CIDR (10.244.0.0/16).
 
-While these default values will work for many networks, you may need to add more subnet ranges and/or names to the exemption list. For example, you may want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the proxyServer NoProxy list:
+While these default values will work for many networks, you may need to add more subnet ranges and/or names to the exemption list. For example, you may want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the proxyServerNoProxy list:
 
 ```powershell
 $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com
@@ -78,6 +78,38 @@ Set-AksHciConfig -proxySetting $proxySetting -...
 ```
 
 In order to exclude all addresses in a domain, you need to add the domain to the `noProxy` list. Use a leading period rather than a wildcard (*) character. In the sample, the addresses `.contoso.com` excludes addresses `prefix1.contoso.com`, `prefix2.contoso.com`, and so on.
+
+## Setting proxy for Azure Stack HCI and Windows Server clusters with machine wide proxy settings
+
+If you already have machine wide proxy settings on your Azure Stack HCI/Windows Server cluster, these settings may override any AKS specific proxy settings and lead to a failure while installation. 
+
+To detect if you have machine wide proxy settings, run the following script on **each** of your physical cluster nodes.
+
+```powershell
+$http_proxy = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
+$https_proxy = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
+$no_proxy = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
+
+if ($http_proxy -or $https_proxy) {
+    if (-not $no_proxy) {
+        Write-Host "Problem Detected! A machine-wide proxy server is configured, but no proxy exclusions are configured"
+    }
+}
+```
+Configure machine-wide proxy exclusions on **each** of the physical cluster hosts where the problem was detected.
+
+> [!NOTE]
+> We recommend having the same proxy settings on all the nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster may lead to unexpected issues.
+
+Run the following PowerShell script and replace the $no_proxy parameter string with a suitable NO_PROXY exclusion string for your environment.
+
+```powershell
+$no_proxy = localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+[Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
+$env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
+```
+
+You can now proceed to installing AKS on your Azure Stack HCI/Windows Server cluster.
 
 ## Next steps
 
