@@ -66,8 +66,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
           -n <environmentname> `
           --endpoint-resource-manager "https://management.<region>.<fqdn>" `
           --suffix-storage-endpoint "<fqdn>" `
-          --suffix-keyvault-dns ".vault.<fqdn>" `
-          --endpoint-active-directory-graph-resource-id "https://graph.windows.net/"
+          --suffix-keyvault-dns ".vault.<fqdn>" 
       ```
 
     You can find a reference for the [register command](/cli/azure/cloud?view=azure-cli-latest#az_cloud_register) in the Azure CLI reference documentation.
