@@ -203,20 +203,20 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | msk8s.api.cdp.microsoft.com | 443 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
 | msk8s.b.tlu.dl.delivery.mp.microsoft.com | 80 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
 | msk8s.f.tlu.dl.delivery.mp.microsoft.com | 80 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
-| login.microsoftonline.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
-| login.windows.net  | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
-| management.azure.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
-| www.microsoft.com  | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
-| msft.sts.microsoft.com | 443 | Used when logging into Azure when running `Set-AksHciRegistration`. |
-| graph.windows.net | 443 | Used when running `Install-AksHci`. |
+| login.microsoftonline.com | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
+| login.windows.net  | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
+| management.azure.com | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
+| www.microsoft.com  | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
+| msft.sts.microsoft.com | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
+| graph.windows.net | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
 | ecpacr.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.blob.core.windows.net <br> US endpoint: wus2replica&ast;.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
 | mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
-| pypi.org | 443 | Required for connecting AKS clusters on Azure Stack HCI to Azure Arc. |
-| files.pythonhosted.org  | 443 |  Required for connecting AKS clusters on Azure Stack HCI to Azure Arc. |
+| api.github.com | 443 | Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
+| objects.githubusercontent.com  | 443 |  Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 
 > [!NOTE]
 > Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
