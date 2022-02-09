@@ -1,6 +1,6 @@
 ---
 title: Azure Benefits on Azure Stack HCI
-description: This topic explains the Azure Benefits feature on Azure Stack HCI.
+description: Learn about the Azure Benefits feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
 ms.topic: overview
