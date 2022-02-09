@@ -38,17 +38,17 @@ Create a proxy settings object to use for all virtual machines in the deployment
 Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
 ```powershell
 PS C:\> $proxyCredential=Get-Credential
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -credential $proxyCredential
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -noProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" -credential $proxyCredential
 ```
 
 ### Configure Proxy Settings with a certificate and a proxy exception list
 ```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -certFile c:\Temp\proxycert.cer
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -noProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" -certFile c:\Temp\proxycert.cer
 ```
 
 ### Configure Proxy Settings without credentials and a proxy exception list
 ```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -noProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 
 ```
 
@@ -57,17 +57,17 @@ PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://cont
 Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
 ```powershell
 PS C:\> $proxyCredential=Get-Credential
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -credential $proxyCredential
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -credential $proxyCredential
 ```
 
 ### Configure Proxy Settings with a certificate and no proxy exception list
 ```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -certFile c:\Temp\proxycert.cer
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -certFile c:\Temp\proxycert.cer
 ```
 
 ### Configure Proxy Settings without credentials and no proxy exception list
 ```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443"
 ```
 
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ### -http
 
 The URL of the proxy server for HTTP (insecure) requests. i.e. 'http://contosoproxy'.
-If the proxy server uses a different port than 80 for HTTP requests 'http://contosoproxy:8080'.
+If the proxy server uses a different port than 80 for HTTP requests '"http://contosoproxy:8080"'.
 
 ```yaml
 Type: System.String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ### -https
 
 The URL of the proxy server for HTTPS (secure) requests. i.e. 'https://contosoproxy'.
-If the proxy server uses a different port than 443 for HTTPS requests 'https://contosoproxy:8443'.
+If the proxy server uses a different port than 443 for HTTPS requests "https://contosoproxy:8443".
 
 ```yaml
 Type: System.String
@@ -132,7 +132,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+Default value: "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -164,7 +164,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+Default value: "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
