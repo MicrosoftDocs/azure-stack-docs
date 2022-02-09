@@ -3,9 +3,9 @@ title: Troubleshoot known issues and errors when installing Azure Kubernetes Ser
 description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 02/04/2022
+ms.date: 02/08/2022
 ms.author: mabrigg 
-ms.lastreviewed: 02/04/2022
+ms.lastreviewed: 02/08/2022
 ms.reviewer: abha
 
 ---
@@ -266,9 +266,6 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ## Error: `Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10`
 
 If you receive this error when running [Install-AksHci](./reference/ps/install-akshci.md), you can get more information by running `$error[0].Exception.InnerException`. 
-
-## Deployment fails on an Azure Stack HCI configured with SDN
-While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
 
 ## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
 When deploying AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
