@@ -51,7 +51,7 @@ To turn on Azure Benefits on the host:
 
 - Follow the instructions to [turn on Azure Benefits using Windows Admin Center](azure-benefits.md#turn-on-azure-benefits-using-windows-admin-center):
 
-:::image type="content" source="media/azure-benefits-esu/benefits-windows-admin-center.png" alt-text="Benefits on Windows Admin Center ":::
+  :::image type="content" source="media/azure-benefits-esu/benefits-windows-admin-center.png" alt-text="Benefits on Windows Admin Center ":::
 
 - Follow the instructions to [turn on Azure Benefits using PowerShell](azure-benefits.md#turn-on-azure-benefits-using-powershell).
 
@@ -61,7 +61,7 @@ To turn on Azure Benefits on each VM that requires ESU:
 
 - Follow these instructions for Windows Admin Center: [Manage access to Azure Benefits for your VMs - WAC](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---wac). Check that your ESU VMs (highlighted) are in the bottom table for **VMs with Azure Benefits**:
 
-:::image type="content" source="media/azure-benefits-esu/benefits-virtual-machines.png" alt-text="Virtual machines":::
+  :::image type="content" source="media/azure-benefits-esu/benefits-virtual-machines.png" alt-text="Virtual machines":::
 
 - Follow these instructions for PowerShell: [Manage access to Azure Benefits for your VMs - PowerShell](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---powershell).
 
