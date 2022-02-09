@@ -111,7 +111,7 @@ As a user, you provide consent to the operator to create console access for a sp
    $VMName = "your VM name" 
    $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
 
-   $enableVMAccessResponse = Invoke-AzureRmResourceAction ` 
+   $enableVMAccessResponse = Invoke-AzResourceAction ` 
        -ResourceId $vmResourceId ` 
        -Action "enableVmAccess" ` 
        -ApiVersion "2020-06-01" ` 
