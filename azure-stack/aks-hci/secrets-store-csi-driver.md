@@ -125,7 +125,11 @@ To create the Kubernetes secret with the Service Principal credentials, run the 
 
 ```powershell
 kubectl create secret generic secrets-store-creds --from-literal clientid=<client-id> --from-literal clientsecret=<client-secret>
+```
 
+By default the secret store provider has filtered watch enabled on secrets. You can allow the command to find the secret in the default configuration by adding the label `secrets-store.csi.k8s.io/used=true` to the secret.
+
+```powershell
 kubectl label secret secrets-store-creds secrets-store.csi.k8s.io/used=true
 ```
 
