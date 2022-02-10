@@ -82,6 +82,28 @@
         href: hotfix-1-2005-29-100.md
     - name: Known issues
       href: known-issues.md
+  - name: Manage updates
+    items:
+    - name: Manage updates overview
+      href: azure-stack-updates.md
+    - name: Updates and servicing policy
+      href: azure-stack-servicing-policy.md
+    - name: Checklist for applying updates
+      href: release-notes-checklist.md
+    - name: Prepare the update package
+      href: azure-stack-update-prepare-package.md
+    - name: Apply updates
+      items:
+      - name: Apply updates
+        href: azure-stack-apply-updates.md
+      - name: Apply OEM updates
+        href: azure-stack-update-oem.md
+    - name: Monitor update status
+      items:
+      - name: Use PowerShell
+        href: azure-stack-update-monitor.md
+      - name: Use privileged endpoint
+        href: azure-stack-monitor-update.md
 - name: Quickstarts
   expanded: true
   items:
@@ -222,28 +244,6 @@
         href: azure-stack-powershell-configure-admin.md
     - name: Access privileged endpoint
       href: azure-stack-privileged-endpoint.md
-    - name: Manage updates
-      items:
-      - name: Manage updates overview
-        href: azure-stack-updates.md
-      - name: Updates and servicing policy
-        href: azure-stack-servicing-policy.md
-      - name: Checklist for applying updates
-        href: release-notes-checklist.md
-      - name: Prepare the update package
-        href: azure-stack-update-prepare-package.md
-      - name: Apply updates
-        items:
-        - name: Apply updates
-          href: azure-stack-apply-updates.md
-        - name: Apply OEM updates
-          href: azure-stack-update-oem.md
-      - name: Monitor update status
-        items:
-        - name: Use PowerShell
-          href: azure-stack-update-monitor.md
-        - name: Use privileged endpoint
-          href: azure-stack-monitor-update.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
     - name: Monitor hardware components
