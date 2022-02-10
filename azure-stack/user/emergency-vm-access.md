@@ -38,7 +38,7 @@ To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS
 ```powershell
 Revoke-RdpAccessToErcsVM
 ```
-
+[!NOTE] Any one of the ERCS VMs will be assigned the tenant user's access request, therefore the CloudAdmin should run the command on each privileged endpoint (PEP).
 ## Operator enables a user subscription for EVA
 
 In this scenario, the operator can decide which subscription should be able to use the emergency VM access feature.
