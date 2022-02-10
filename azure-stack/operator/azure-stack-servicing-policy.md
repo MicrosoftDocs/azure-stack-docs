@@ -70,7 +70,7 @@ For your Azure Stack Hub instance to remain in a supported state, the instance m
 
 - Hotfixes for the platform are provided for the current version and two preceding versions (N-1, N-2).
 - Root Cause Analysis (RCAs) is provided for the current version and two preceding versions (N-1, N-2).
-- Support incidents (SRs) for unsupported versions are set to the lowest priority unless you're performing an update. Customer issues for supported versions are prioritized first. Support incidents for unsupported versions could mean longer than expected delays in response times.
+- Issues on systems for unsupported versions (preceding N-2) are not entitled to receive support from Microsoft unless you're performing an update.
 
 You must also have an active support agreement with the hardware partner that manufactured the system. Microsoft is not able to support you without a hardware support agreement in place.
 
