@@ -24,16 +24,14 @@ ms.lastreviewed: 11/4/2021
         $app=New-AzADApplication -DisplayName 'newapp' -IdentifierUris http://anything.contoso.onmicrosoft.com
         New-AzADServicePrincipal -Role Owner -ApplicationId $app.ApplicationId
         ```
-
 - Occurrence: Common
 
-
-### Error thrown with Set-AzKeyvaultAccessPolicy
+### Error thrown with Set-AzureRMKeyvaultAccessPolicy, Set-AzKeyvaultAccessPolicy
 
 - Applicable: Azure Stack environments using ADFS.
 - Symptom: Error thrown as  `Requested OData version is not supported.  Only OData version 4.0 is supported` while executing the cmdlet. 
 - Remediation: 
-    - Please use the BypassObjectIdValidation parameter
+    - Please use the BypassObjectIdValidation parameter. Azure stack ADFS supports only the OData version 4, while the powershell client is making the call with Odata 3 resulting in the error
         ```powershell  
                 Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $RGName -ObjectId $ServicePrincipalObjectId -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
         ```
