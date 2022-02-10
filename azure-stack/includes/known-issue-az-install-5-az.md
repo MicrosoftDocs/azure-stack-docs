@@ -26,3 +26,16 @@ ms.lastreviewed: 11/4/2021
         ```
 
 - Occurrence: Common
+
+
+### Error thrown with Set-AzKeyvaultAccessPolicy
+
+- Applicable: Azure Stack environments using ADFS.
+- Symptom: Error thrown as  `Requested OData version is not supported.  Only OData version 4.0 is supported` while executing the cmdlet. 
+- Remediation: 
+    - Please use the BypassObjectIdValidation parameter
+        ```powershell  
+                Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $RGName -ObjectId $ServicePrincipalObjectId -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
+        ```
+- Occurrence: Common
+
