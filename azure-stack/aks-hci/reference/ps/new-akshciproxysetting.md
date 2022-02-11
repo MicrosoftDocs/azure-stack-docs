@@ -64,8 +64,8 @@ Accept wildcard characters: False
 
 ### -http
 
-The URL of the proxy server for HTTP (insecure) requests. i.e. 'http://contosoproxy'.
-If the proxy server uses a different port than 80 for HTTP requests 'http://contosoproxy:8080'.
+The URL of the proxy server for HTTP (insecure) requests, for example, 'http://contosoproxy'.
+If the proxy server uses a different port then 80 for HTTP requests 'http://contosoproxy:8080'.
 
 ```yaml
 Type: System.String
@@ -81,8 +81,8 @@ Accept wildcard characters: False
 
 ### -https
 
-The URL of the proxy server for HTTPS (secure) requests. i.e. 'https://contosoproxy'.
-If the proxy server uses a different port than 443 for HTTPS requests 'https://contosoproxy:8443'.
+The URL of the proxy server for HTTPS (secure) requests, for example, 'https://contosoproxy'.
+If the proxy server uses a different port then 443 for HTTPS requests 'https://contosoproxy:8443'.
 
 ```yaml
 Type: System.String
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -credential
 
-The PS Credential object containing the username and password to authenticate against the proxy server.
+The PowerShell credential object containing the username and password to authenticate against the proxy server.
 
 ```yaml
 Type: PSCredential
