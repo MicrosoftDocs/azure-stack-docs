@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/09/2021
+ms.date: 02/11/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2021
@@ -23,6 +23,7 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 
 | Operating system | Description | Available in Azure Stack Hub Marketplace |
 | --- | --- | --- |
+| Windows Server 2022 | 64-bit | Datacenter, Datacenter core |
 | Windows Server, version 1709 | 64-bit | Core with containers |
 | Windows Server 2019 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
 | Windows Server 2016 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
