@@ -20,10 +20,10 @@ To get general information about the ESU program, products that are covered, and
 
 ## Benefits of getting ESU for VMs on Azure Stack HCI
 
-There are multiple advantages to getting ESU through Azure, which extend to Azure Stack HCI:
+There are several advantages to getting ESU through Azure, which extend to Azure Stack HCI:
 
 - **Free of charge**: You can get ESUs through Azure Stack HCI for free.
-- **Get an additional year of ESU for Windows Server and SQL Server 2008 and 2008 R2**: On Azure and Azure Stack HCI only, ESUs for Windows Server and SQL Server 2008 and 2008 R2 will end on January 14, 2024 and July 12, 2023 respectively; a year longer than the usual three-year ESU programs.
+- **Get an additional year of ESUs for Windows Server and SQL Server 2008 and 2008 R2**: On Azure and Azure Stack HCI only, ESUs for Windows Server and SQL Server 2008 and 2008 R2 will end on January 14, 2024 and July 12, 2023 respectively; a year longer than the usual three-year ESU programs.
 
 ## Tutorial: Get free ESUs through Azure Stack HCI
 
@@ -52,7 +52,6 @@ Follow these instructions to turn on Azure Benefits on the host:
 You must also turn on Azure Benefits on each VM that requires ESU. Follow these instructions:
 
 - Using Windows Admin Center: [Manage access to Azure Benefits for your VMs - WAC](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---wac). Check that your ESU VMs (highlighted) are in the bottom table for **VMs with Azure Benefits**.
-
 - Using PowerShell: [Manage access to Azure Benefits for your VMs - PowerShell](azure-benefits.md#manage-access-to-azure-benefits-for-your-vms---powershell).
 
 ### Step 3: Install Extended Security Updates
@@ -82,7 +81,7 @@ The operating systems currently supported for AVD on Azure Stack HCI are not yet
 
 ### Do I need to do anything to renew for Year 1/Year 2/Year 3, etc.?
 
-No. Once you have set up Azure Benefits, you don't need to renew, or do anything else.
+No. Once you have set up Azure Benefits, you don't need to renew or do anything else.
 
 ## Next steps
 

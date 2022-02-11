@@ -80,7 +80,7 @@
       href: manage/vm.md
     - name: Manage VMs with PowerShell
       href: manage/vm-powershell.md
-    - name: Extended security updates (ESUs)
+    - name: Extended Security Updates (ESUs)
       href: ./manage/azure-benefits-esu.md
     - name: Create VM affinity rules
       href: manage/vm-affinity.md
