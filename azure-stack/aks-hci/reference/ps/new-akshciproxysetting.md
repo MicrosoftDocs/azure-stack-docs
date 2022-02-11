@@ -3,10 +3,10 @@ title: New-AksHciProxySetting for AKS on Azure Stack HCI
 author: mattbriggs
 description: The New-AksHciProxySetting PowerShell command creates an object for a new proxy configuration.
 ms.topic: reference
-ms.date: 4/16/2021
+ms.date: 02/11/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
-ms.reviewer: mikek
+ms.lastreviewed: 02/11/2022
+ms.reviewer: nwood
 
 ---
 
@@ -26,54 +26,29 @@ New-AksHciProxySetting -name <String>
 ```
 
 ## Description
-Create a proxy settings object to use for all virtual machines in the deployment. This proxy settings object can be used to configure the proxy settings across all Azure Stack HCI and Kubernetes cluster nodes.
+Create a proxy settings object to use for all virtual machines in the deployment. This proxy settings object will be used to configure proxy settings across all Kubernetes cluster nodes and underlying VMs.
 
 > [!Note]
-> Proxy settings are only applied during `Install-AksHci` and `New-AksHciCluster`. If you change the proxy settings object after running `Install-AksHci` or `New-AksHciCluster`, the new settings will only be applied to new Kubernetes workload clusters. The existing Azure Stack HCI and workload cluster nodes will not be updated.
+> Proxy settings are only applied once during `Install-AksHci` and cannot be changed after installation. All AKS workload clusters created after installation will use the same proxy object. If you change the proxy settings object after running `Install-AksHci` or `New-AksHciCluster`, the settings will NOT be applied to any new or existing Kubernetes workload clusters. 
 
 ## Examples
 
-### Configure Proxy Settings with credentials and a proxy exception list
+### Configure proxy settings with credentials
 
 Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
 ```powershell
 PS C:\> $proxyCredential=Get-Credential
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -noProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" -credential $proxyCredential
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -credential $proxyCredential
 ```
 
-### Configure Proxy Settings with a certificate and a proxy exception list
+### Configure proxy settings with a certificate 
 ```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -noProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" -certFile c:\Temp\proxycert.cer
+PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -certFile c:\Temp\proxycert.cer
 ```
-
-### Configure Proxy Settings without credentials and a proxy exception list
-```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -noProxy "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
-
-```
-
-### Configure Proxy Settings with credentials and no proxy exception list
-
-Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
-```powershell
-PS C:\> $proxyCredential=Get-Credential
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -credential $proxyCredential
-```
-
-### Configure Proxy Settings with a certificate and no proxy exception list
-```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443" -certFile c:\Temp\proxycert.cer
-```
-
-### Configure Proxy Settings without credentials and no proxy exception list
-```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http "http://contosoproxy:8080" -https "https://contosoproxy:8443"
-```
-
 
 ### -name
 
-The alphanumeric name of your Proxy Server settings.
+The alphanumeric name of your proxy settings object for AKS-HCI.
 
 ```yaml
 Type: System.String
@@ -90,7 +65,7 @@ Accept wildcard characters: False
 ### -http
 
 The URL of the proxy server for HTTP (insecure) requests. i.e. 'http://contosoproxy'.
-If the proxy server uses a different port than 80 for HTTP requests '"http://contosoproxy:8080"'.
+If the proxy server uses a different port than 80 for HTTP requests 'http://contosoproxy:8080'.
 
 ```yaml
 Type: System.String
@@ -107,7 +82,7 @@ Accept wildcard characters: False
 ### -https
 
 The URL of the proxy server for HTTPS (secure) requests. i.e. 'https://contosoproxy'.
-If the proxy server uses a different port than 443 for HTTPS requests "https://contosoproxy:8443".
+If the proxy server uses a different port than 443 for HTTPS requests 'https://contosoproxy:8443'.
 
 ```yaml
 Type: System.String
@@ -123,7 +98,7 @@ Accept wildcard characters: False
 
 ### -noProxy
 
-The comma delimited list of URLs, IP Addresses and domains that should be requested directly without going through the Proxy server.
+The comma delimited list of URLs, IP Addresses and domains that should be requested directly without going through the proxy server.
 
 ```yaml
 Type: System.String
@@ -132,14 +107,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+Default value: localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -credential
 
-The PS Credential object containing the username and password to authenticate against the Proxy server.
+The PS Credential object containing the username and password to authenticate against the proxy server.
 
 ```yaml
 Type: PSCredential
@@ -164,7 +139,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
