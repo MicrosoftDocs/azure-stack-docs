@@ -3,7 +3,7 @@ title: Emergency VM access in Azure Stack Hub
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/21/2021
+ms.date: 02/14/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 08/13/2021
@@ -38,7 +38,9 @@ To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS
 ```powershell
 Revoke-RdpAccessToErcsVM
 ```
-[!NOTE] Any one of the ERCS VMs will be assigned the tenant user's access request, consider proactively running the command on each privileged endpoint (PEP). 
+
+[!NOTE] Any one of the ERCS VMs will be assigned the tenant user's access request. Consider proactively running the command on each privileged endpoint (PEP).
+
 ## Operator enables a user subscription for EVA
 
 In this scenario, the operator can decide which subscription should be able to use the emergency VM access feature.
@@ -105,15 +107,33 @@ As a user, you provide consent to the operator to create console access for a sp
 
 1. As a user, open PowerShell, sign in to your subscription, and run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
 
+   ### [AzureRM modules](#tab/azurerm1)
+
    ```powershell
    $SubscriptionID= "your Azure subscription ID" 
    $ResourceGroup = "your resource group name" 
    $VMName = "your VM name" 
    $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
 
-   $enableVMAccessResponse = Invoke-AzResourceAction ` 
-       -ResourceId $vmResourceId ` 
-       -Action "enableVmAccess" ` 
+   $enableVMAccessResponse = Invoke-AzResourceAction `
+       -ResourceId $vmResourceId `
+       -Action "enableVmAccess" `
+       -ApiVersion "2020-06-01" ` 
+       -ErrorAction Stop ` 
+       -Force 
+   ```
+
+   ### [Az modules](#tab/az1)
+
+   ```powershell
+   $SubscriptionID= "your Azure subscription ID" 
+   $ResourceGroup = "your resource group name" 
+   $VMName = "your VM name" 
+   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
+
+   $enableVMAccessResponse = Invoke-AzureRMResourceAction `
+       -ResourceId $vmResourceId `
+       -Action "enableVmAccess" `
        -ApiVersion "2020-06-01" ` 
        -ErrorAction Stop ` 
        -Force 
