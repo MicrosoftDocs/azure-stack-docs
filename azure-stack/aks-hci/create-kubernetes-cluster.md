@@ -3,7 +3,7 @@ title: Quickstart to create a Kubernetes cluster using Windows Admin Center
 description: Learn how to create a Kubernetes cluster using Windows Admin Center
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 05/25/2021
+ms.date: 02/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: dawhite
@@ -66,3 +66,4 @@ You've reached the Kubernetes cluster create wizard through the Azure Kubernetes
 In this quickstart, you deployed a Kubernetes cluster. To learn more about Azure Kubernetes Service on Azure Stack HCI and walk through how to deploy and manage Linux applications on AKS on Azure Stack HCI, continue to the following tutorial:
 
 - [Tutorial: Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI](deploy-linux-application.md)
+- [Set up multiple administrators](./set-multiple-administrators.md)
