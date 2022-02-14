@@ -224,7 +224,7 @@ Open a web browser to the external IP address of your service (`192.168.0.152` f
 
 ## Clean up the resources
 
-To avoid Azure charges, you should clean up unnecessary resources. When the cluster is no longer needed, use the [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) command to remove the resource group, container registry, and related Azure resources.
+To avoid Azure charges, you should clean up unnecessary resources. When the cluster is no longer needed, use the [az group delete](/cli/azure/group#az_group_delete) command to remove the resource group, container registry, and related Azure resources.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project
