@@ -84,8 +84,8 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Specify the number of VMs to be dedicated for Network Controller. We strongly recommend three VMs for production deployments.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
 1. For **VM network addressing**, select either **DHCP** or **Static**.
-    - If you selected **DHCP**, enter the name for the Network Controller VMs. You can also use the default populated names.
-    - If you selected **Static**, do the following:
+    - For **DHCP**, enter the name for the Network Controller VMs. You can also use the default populated names.
+    - For **Static**, do the following:
         1. Specify an IP address.
         1. Specify a subnet prefix.
         1. Specify the default gateway.
@@ -108,28 +108,28 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
 > Network Controller must be set up before you configure SLB.
 
 1. In Windows Admin Center, under **Tools**, select **Settings**, and then select **Extensions**.
-2. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
-3. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started** on the **Load Balancer** tab.
-4. Under **Load Balancer Settings**, under **Front-End subnets**, provide the following: 
+1. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
+1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started** on the **Load Balancer** tab.
+1. Under **Load Balancer Settings**, under **Front-End subnets**, provide the following: 
     - **Public VIP subnet prefix**. This could be public Internet subnets. They serve as the front end IP addresses for accessing workloads behind the load balancer, which use IP addresses from a private backend network.
     - **Private VIP subnet prefix**. These don’t need to be routable on the public Internet because they are used for internal load balancing.
-5. Under **BGP Router Settings**, enter the **SDN ASN** for the SLB. This ASN is used to peer the SLB infrastructure with the Top of the Rack switches to advertise the Public VIP and Private VIP IP addresses.
-6. Under **BGP Router Settings**, enter the **IP Address** and **ASN** of the Top of Rack switch. SLB infrastructure needs these settings to create a BGP peer with the switch. If you have an additional Top of Rack switch that you want to peer the SLB infrastructure with, add **IP Address** and **ASN** for that switch as well.
-7. Under **VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
-8. Specify the number of VMs to be dedicated for software load balancing. We strongly recommend at least two VMs for production deployments.
-9. Under **Network**, enter the VLAN ID of the management network. SLB needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
-10. For **VM network addressing**, select either **DHCP** or **Static**.
-    - If you selected **DHCP**, enter the name for the Network Controller VMs. You can also use the default populated names.
-    - If you selected **Static**, do the following:
+1. Under **BGP Router Settings**, enter the **SDN ASN** for the SLB. This ASN is used to peer the SLB infrastructure with the Top of the Rack switches to advertise the Public VIP and Private VIP IP addresses.
+1. Under **BGP Router Settings**, enter the **IP Address** and **ASN** of the Top of Rack switch. SLB infrastructure needs these settings to create a BGP peer with the switch. If you have an additional Top of Rack switch that you want to peer the SLB infrastructure with, add **IP Address** and **ASN** for that switch as well.
+1. Under **VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
+1. Specify the number of VMs to be dedicated for software load balancing. We strongly recommend at least two VMs for production deployments.
+1. Under **Network**, enter the VLAN ID of the management network. SLB needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
+1. For **VM network addressing**, select either **DHCP** or **Static**.
+    - For **DHCP**, enter the name for the Network Controller VMs. You can also use the default populated names.
+    - For **Static**, do the following:
         1. Specify an IP address.
         1. Specify a subnet prefix.
         1. Specify the default gateway.
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
-11. Under **Credentials**, enter the username and password that you used to join the Software Load Balancer VMs to the cluster domain.
-12. Enter the local administrative password for these VMs.
-13. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
-14. When finished, click **Next: Deploy**.
-15. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
+1. Under **Credentials**, enter the username and password that you used to join the Software Load Balancer VMs to the cluster domain.
+1. Enter the local administrative password for these VMs.
+1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
+1. When finished, click **Next: Deploy**.
+1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 
 ## Deploy SDN Gateway
 
@@ -139,28 +139,28 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 > Network Controller and SLB must be set up before you configure Gateways.
 
 1. In Windows Admin Center, under **Tools**, select **Settings**, then select **Extensions**.
-2. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
-3. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started** on the **Gateway** tab.
-4. Under **Define the Gateway Settings**, under **Tunnel subnets**, provide the **GRE Tunnel Subnets**. IP addresses from this subnet are used for provisioning on the SDN gateway VMs for GRE tunnels. If you don't plan to use GRE tunnels, put any placeholder subnets in this field.
-5. Under **BGP Router Settings**, enter the **SDN ASN** for the Gateway. This ASN is used to peer the gateway VMs with the Top of the Rack switches to advertise the GRE IP addresses. This field is auto populated to the SDN ASN used by SLB.
-6. Under **BGP Router Settings**, enter the **IP Address** and **ASN** of the Top of Rack switch. Gateway VMs need these settings to create a BGP peer with the switch. These fields are auto populated from the SLB deployment wizard. If you have an additional Top of Rack switch that you want to peer the gateway VMs with, add **IP Address** and **ASN** for that switch as well.
-7. Under **Define the Gateway VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
-8. Specify the number of VMs to be dedicated for gateways. We strongly recommends at least two VMs for production deployments.
-9. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend to have at least one redundant gateway.
-10. Under **Network**, enter the VLAN ID of the management network. Gateways needs connectivity to same management network as the Hyper-V hosts and Network Controller VMs.
-11. For VM network addressing, select either **DHCP** or **Static**.
-    - If you select **DHCP**, enter the name for the Gateway VMs. You can also use the default populated names.
-    - If you select **Static**, do the following:
+1. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
+1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started** on the **Gateway** tab.
+1. Under **Define the Gateway Settings**, under **Tunnel subnets**, provide the **GRE Tunnel Subnets**. IP addresses from this subnet are used for provisioning on the SDN gateway VMs for GRE tunnels. If you don't plan to use GRE tunnels, put any placeholder subnets in this field.
+1. Under **BGP Router Settings**, enter the **SDN ASN** for the Gateway. This ASN is used to peer the gateway VMs with the Top of the Rack switches to advertise the GRE IP addresses. This field is auto populated to the SDN ASN used by SLB.
+1. Under **BGP Router Settings**, enter the **IP Address** and **ASN** of the Top of Rack switch. Gateway VMs need these settings to create a BGP peer with the switch. These fields are auto populated from the SLB deployment wizard. If you have an additional Top of Rack switch that you want to peer the gateway VMs with, add **IP Address** and **ASN** for that switch as well.
+1. Under **Define the Gateway VM Settings**, specify a path to the Azure Stack HCI VHDX file. Use **Browse** to find it quicker.
+1. Specify the number of VMs to be dedicated for gateways. We strongly recommends at least two VMs for production deployments.
+1. Enter the value for **Redundant Gateways**. Redundant gateways don't host any gateway connections. In event of failure or restart of an active gateway VM, gateway connections from the active VM are moved to the redundant gateway and the redundant gateway is then marked as active. In a production deployment, we strongly recommend to have at least one redundant gateway.
+1. Under **Network**, enter the VLAN ID of the management network. Gateways needs connectivity to same management network as the Hyper-V hosts and Network Controller VMs.
+1. For VM network addressing, select either **DHCP** or **Static**.
+    - For **DHCP**, enter the name for the Gateway VMs. You can also use the default populated names.
+    - For **Static**, do the following:
         1. Specify an IP address.
         1. Specify a subnet prefix.
         1. Specify the default gateway.
         1. Specify one or more DNS servers. Click **Add** to add additional DNS servers.
-12. Under **Credentials**, enter the username and password used to join the Gateway VMs to the cluster domain.
-13. Enter the local administrative password for these VMs.
-14. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value depends on the physical NIC speed on the host, number of VMs on the same host, and their throughput requirements.
-15. Enter the path to the VMs. You can also use the default populated path.
-16. When finished, click **Next: Deploy the Gateway**.
-17. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
+1. Under **Credentials**, enter the username and password used to join the Gateway VMs to the cluster domain.
+1. Enter the local administrative password for these VMs.
+1. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value depends on the physical NIC speed on the host, number of VMs on the same host, and their throughput requirements.
+1. Enter the path to the VMs. You can also use the default populated path.
+1. When finished, click **Next: Deploy the Gateway**.
+1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 
 ## Next steps
 
