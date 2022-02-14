@@ -1,12 +1,12 @@
 ---
 title: Azure Benefits on Azure Stack HCI
-description: This topic explains the Azure Benefits feature on Azure Stack HCI.
+description: Learn about the Azure Benefits feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 01/25/2022
-ms.lastreviewed: 01/25/2022
+ms.date: 02/14/2022
+ms.lastreviewed: 02/09/2022
 
 ---
 
@@ -29,7 +29,7 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 |     Workload                                      |     Versions supported                                |     What it is |                                                                                                                                                                    |
 |---------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     Windows Server Datacenter: Azure Edition    |     2022 edition or later                           |     An Azure-only guest operating system that includes all the latest Windows Server innovations and additional exclusive features. <br/> Learn more: [Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview)|                                                                                                     |
-|     Extended Security Update (ESUs)             |     October 12th, 2021 security updates or later    |     A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> Learn more: [Extended Security Updates for SQL Server and Windows Server 2008 and 2008 R2](https://www.microsoft.com/windows-server/extended-security-updates)   |
+|     Extended Security Update (ESUs)             |     October 12th, 2021 security updates or later    |     A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> For more information, see [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md).   |
 |     Azure Policy guest configuration            |     Arc agent version 1.13 or later                 |     A feature that can audit or configure OS settings as code, for both host and   guest machines. <br/> Learn more: [Understand the guest configuration feature of Azure Policy](/azure/governance/policy/concepts/guest-configuration) |
 
 ## Technical concepts
@@ -221,5 +221,6 @@ No, Azure Benefits is a feature built into the Azure Stack HCI OS, and can only 
 
 ## Next steps
 
+- [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md)
 - [Azure Stack HCI overview](../overview.md)
 - [Azure Stack HCI FAQ](../faq.yml)
