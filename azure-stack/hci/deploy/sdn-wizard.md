@@ -1,10 +1,10 @@
 ---
 title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
-author: v-dasis
+author: ManikaDhiman
 ms.topic: how-to
-ms.date: 10/27/2021
-ms.author: v-dasis
+ms.date: 02/14/2022
+ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you configured your Azure Stack HCI cluster. With Windows Admin Center, you can deploy the SDN infrastructure components, in the given order:
+This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you configured your Azure Stack HCI cluster. Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
 
 - Network Controller
 - Software Load Balancer (SLB)
@@ -56,7 +56,7 @@ SDN uses a VHDX file containing the Azure Stack HCI operating system (OS) as a s
 
 If you've downloaded and installed the Azure Stack HCI OS from an ISO, you can create the VHDX file using the `Convert-WindowsImage` utility. The following is an example of using `Convert-WindowsImage`:
 
-~~~powershell
+```powershell
 Install-Module -Name Convert-WindowsImage
 Import-Module Convert-WindowsImage
 
@@ -64,7 +64,7 @@ $wimpath = "E:\sources\install.wim"
 $vhdpath = "D:\temp\AzureStackHCI.vhdx"
 $edition=1
 Convert-WindowsImage -SourcePath $wimpath -Edition $edition -VHDPath $vhdpath -SizeBytes 500GB -DiskLayout UEFI
-~~~
+```
 
 > [!NOTE]
 > You must run this script from a Windows client computer. You will probably need to run this as Administrator and to modify the execution policy for scripts using the Set-ExecutionPolicy command.
@@ -108,6 +108,7 @@ SDN SLB deployment is a functionality of the SDN Infrastructure extension in Win
 > Network Controller must be set up before you configure SLB.
 
 1. In Windows Admin Center, under **Tools**, select **Settings**, and then select **Extensions**.
+
 1. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
 1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started** on the **Load Balancer** tab.
 1. Under **Load Balancer Settings**, under **Front-End subnets**, provide the following: 
@@ -139,6 +140,7 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
 > Network Controller and SLB must be set up before you configure Gateways.
 
 1. In Windows Admin Center, under **Tools**, select **Settings**, then select **Extensions**.
+
 1. On the **Installed Extensions** tab, verify that the **SDN Infrastructure** extension is installed. If not, install it.
 1. In Windows Admin Center, under **Tools**, select **SDN Infrastructure**, then click **Get Started** on the **Gateway** tab.
 1. Under **Define the Gateway Settings**, under **Tunnel subnets**, provide the **GRE Tunnel Subnets**. IP addresses from this subnet are used for provisioning on the SDN gateway VMs for GRE tunnels. If you don't plan to use GRE tunnels, put any placeholder subnets in this field.
