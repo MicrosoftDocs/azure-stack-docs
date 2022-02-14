@@ -85,7 +85,7 @@ $tenantSubscriptionSettings = @{
     TenantSubscriptionId = $tenantSubscriptionId
 }
 
-#Add Environment & Authenticate
+#Add environment & authenticate
 Add-AzEnvironment -Name AzureStackAdmin -ARMEndpoint https://adminmanagement.$RegionName.$FQDN
 Login-AzAccount -Environment AzureStackAdmin -TenantId $TenantID
 
@@ -144,7 +144,7 @@ As a user, you provide consent to the operator to create console access for a sp
 3. The operator uses the ERCS name, and connects to it using the Remote Desktop Client (RDP); for example, from the operator access workstation (OAW).
 
    > [!NOTE]
-   > The operator authenticates using the **cloudadmin** account.
+   > The operator authenticates using the same cloud admin account that executed [**Grant-RdpAccessToErcsVM**](#operator-enables-remote-desktop-access-to-ercs-vms).
 
 4. Once connected to the ERCS VM via RDP, launch PowerShell.
 
