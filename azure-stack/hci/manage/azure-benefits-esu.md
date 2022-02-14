@@ -38,7 +38,7 @@ This tutorial walks you through how you can use [Azure Benefits](azure-benefits.
 
 The following screen capture shows typical output when checking for required prerequisites using PowerShell. Your actual output may look different; this is example output that shows installed prerequisites:
 
-:::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="ESU prerequisites":::
+:::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
 
 ### Step 1: Turn on Azure Benefits on the host
 
@@ -59,7 +59,7 @@ You must also turn on Azure Benefits on each VM that requires ESU. Follow these 
 Once Azure Benefits is set up, you can install free Extended Security Updates for eligible VMs on your cluster. Install updates using your current method of preference; for example, Windows
 Update, Windows Server Update Services (WSUS), Microsoft Update Catalog, or other. The following screenshot shows installation of security updates using Windows Update:
 
-:::image type="content" source="media/azure-benefits-esu/control-panel.png" alt-text="Control Panel":::
+:::image type="content" source="media/azure-benefits-esu/control-panel.png" alt-text="Screenshot that shows the Control Panel." lightbox="media/azure-benefits-esu/control-panel.png":::
 
 ## FAQ
 
