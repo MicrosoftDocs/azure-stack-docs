@@ -127,7 +127,7 @@ Azure Stack Hub supports a subset of the features available in global Azure. Tak
     * No parameter enable-private-cluster </azure/aks/private-clusters>
     * No cluster autoscaler: </azure/aks/cluster-autoscaler>
     * No parameter enable-cluster-autoscaler
-    * [az aks update](/cli/azure/aks?view=azure-cli-latest#az_aks_update) not available.
+    * [az aks update](/cli/azure/aks#az_aks_update) not available.
     * No multiple node-pool support. The node pool commands are not available.
     * UI support for multi-node-pool operations is not enabled.
  - No Azure Regions or Availability Zones

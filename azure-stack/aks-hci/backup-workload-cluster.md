@@ -29,7 +29,7 @@ Use the following steps to deploy and configure Velero:
 
    You need an active Azure subscription to create an Azure storage account and the blob container as Velero requires both to store backups. If you'd prefer to use a different Azure subscription than the one used when creating your backups, you can change the Azure subscription. By default, Velero stores backups in the same subscription as your VMs and disks and doesn't allow you to restore backups to a resource group in a different subscription. To enable backups and restore across subscriptions, you need to specify the subscription ID that you want to use.
 
-   To switch to the Azure subscription you want to create the backups on, use the [`az account`](/cli/azure/account?view=azure-cli-latest&preserve-view=true) PowerShell command.
+   To switch to the Azure subscription you want to create the backups on, use the [`az account`](/cli/azure/account) PowerShell command.
 
    First, find the name of the subscription ID:
 
