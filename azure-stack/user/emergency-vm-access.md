@@ -39,7 +39,8 @@ To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS
 Revoke-RdpAccessToErcsVM
 ```
 
-> [!NOTE] Any one of the ERCS VMs will be assigned the tenant user's access request. Consider proactively running the command on each privileged endpoint (PEP).
+> [!NOTE]
+> Any one of the ERCS VMs will be assigned the tenant user's access request. Consider proactively running the command on each privileged endpoint (PEP).
 
 ## Operator enables a user subscription for EVA
 
