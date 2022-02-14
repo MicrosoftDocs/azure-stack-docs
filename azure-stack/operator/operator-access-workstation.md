@@ -45,7 +45,7 @@ The following table lists the pre-installed software on the OAW VM.
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                        | [SystemDrive]\\Program Files (x86)\\Microsoft\\Edge\\Application     |
 | [Az Modules](./powershell-install-az-module.md?view=azs-2008) | [SystemDrive]\\ProgramFiles\\WindowsPowerShell\\Modules              |
 | [PowerShell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)                           | [SystemDrive]\\Program Files\\PowerShell\\7                          |
-| [Azure Command-Line Interface (CLI)](/cli/azure/?view=azure-cli-latest)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
+| [Azure Command-Line Interface (CLI)](/cli/azure/)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)                     | [SystemDrive]\\Program Files (x86)\\Microsoft Azure Storage Explorer |
 | [AzCopy](/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_10.3.4               |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                                          | [SystemDrive]\\VMSoftware\\AzureStack-Tools                          |

@@ -45,7 +45,7 @@ Azure Stack Hub was designed to work best when connected to Azure, so it's impor
 |Visual Studio - Cloud discovery|Impaired - Cloud Discovery will either discover different clouds or won't work at all.|
 |Visual Studio - AD FS|Impaired - Only Visual Studio Enterprise and Visual Studio Code support AD FS authentication.
 Telemetry|Unavailable - Telemetry data for Azure Stack Hub and any third-party gallery packages that depend on telemetry data.|
-|Certificates|Unavailable - internet connectivity is required for Certificate Revocation List (CRL) and Online Certificate Status Protocol (OSCP) services in the context of HTTPS.|
+|Certificates|Unavailable - internet connectivity is required for Certificate Revocation List (CRL) and Online Certificate Status Protocol (OCSP) services in the context of HTTPS.|
 |Key Vault|Impaired - A common use case for Key Vault is to have an app read secrets at runtime. For this use case, the app needs a service principal in the directory. In Azure AD, regular users (non-admins) are by default allowed to add service principals. In Azure AD (using AD FS), they're not. This impairment places a hurdle in the end-to-end experience because one must always go through a directory admin to add any app.
 
 ## Learn more
