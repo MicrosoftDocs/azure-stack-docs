@@ -35,7 +35,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 
 ## Install the AksHci PowerShell module
 **If you are using remote PowerShell, you must use CredSSP.**
-
+Run the following command on all nodes in your Azure Stack HCI cluster
 ```powershell
 Install-Module -Name AksHci -Repository PSGallery
 ```
@@ -78,12 +78,15 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
+Run the following command on all nodes in your Azure Stack HCI cluster.
 
 ```powershell
 Initialize-AksHciNode
 ```
 
 ## Step 2: Create a virtual network
+
+Run the following commands in step 2 on any one node in your Azure Stack HCI cluster.
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
 
@@ -103,13 +106,15 @@ To create a virtual network for the nodes in your deployment to use, create an e
 
 ```powershell
 #static IP
-$vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -macPoolName myMacPool -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanId 9
+$vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" -vlanId 9
 ```
 
 > [!NOTE]
 > The values given in this example command will need to be customized for your environment.
 
 ## Step 3: Configure your deployment
+
+Run the following commands in step 3 on any one node in your Azure Stack HCI cluster.
 
 Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -131,6 +136,8 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 ```
 
 ## Step 5: Start a new deployment
+
+Run the following command in step 5 on any one node in your Azure Stack HCI cluster.
 
 After you've configured your deployment, you must start it. This will install the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin deployment, run the following command.
 
