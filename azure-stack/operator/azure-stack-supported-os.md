@@ -62,7 +62,7 @@ Datacenter editions are available in Azure Stack Hub Marketplace for downloading
 Linux distributions listed as available in Azure Stack Hub Marketplace include the necessary Windows Azure Linux Agent (WALA). If you bring your own image to Azure Stack, follow the guidelines in [Add Linux images to Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]  
-> Custom images should be built with the latest public WALA version. For the minimum supported Azure Linux agent see [Minimum supported Azure Linux Agent](azure-stack-linux.md#minimum-supported-azure-linux-agent). 
+> Custom images should be built with the latest public WALA version. For the minimum supported Azure Linux agent see [Minimum supported Azure Linux Agent](azure-stack-linux.md#minimum-supported-azure-linux-agent).
 >
 > [cloud-init](https://cloud-init.io/) is supported.
 
