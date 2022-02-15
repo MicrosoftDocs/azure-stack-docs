@@ -187,6 +187,8 @@ For more information on networking requirements, visit [node networking concepts
 
 ### Network port and URL requirements
 
+#### AKS on Azure Stack HCI requirements
+
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
 
 | Firewall port               | Description     |
@@ -211,15 +213,22 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | graph.windows.net | 443 | Used for logging into Azure when running `Set-AksHciRegistration`. |
 | ecpacr.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
 | *.blob.core.windows.net <br> US endpoint: wus2replica&ast;.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
-| mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
-| *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
-| *.data.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
+| mcr.microsoft.com, *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 | akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
 | api.github.com | 443 | Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 | objects.githubusercontent.com  | 443 |  Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 
+#### Arc for Kubernetes requirements
 > [!NOTE]
-> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters. You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
+> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters.
+
+#### Azure Stack HCI requirements
+> [!NOTE]
+> You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
+
+#### Arc for servers requirements
+> [!NOTE]
+> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration).
 
 ## Storage requirements
 
