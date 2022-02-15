@@ -76,7 +76,7 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     ```
 
 
-## Update an intent override
+## Update or override network settings
 
 This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
 
