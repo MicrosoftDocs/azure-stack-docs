@@ -48,6 +48,8 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 | Windows Server 2008 SP2 | 64-bit |  Bring your own image |
 | Windows 10 *(see note 1)* | 64-bit, Pro, and Enterprise | Bring your own image |
 
+---
+
 > [!NOTE]
 > To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a [Qualified Multitenant Hoster (QMTH)](https://partner.microsoft.com/membership/cloud-solution-provider).
 
