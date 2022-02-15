@@ -168,7 +168,7 @@ SDN Gateway deployment is a functionality of the SDN Infrastructure extension in
         
 1. Under **Credentials**, enter the username and password used to join the Gateway VMs to the cluster domain.
 1. Enter the local administrative password for these VMs.
-1. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value depends on the physical NIC speed on the host, number of VMs on the same host, and their throughput requirements.
+1. Under **Advanced**, provide the **Gateway Capacity**. It is auto populated to 10 Gbps. Ideally, you should set this value to approximate throughput available to the gateway VM. This value may depend on various factors, such as physical NIC speed on the host machine, other VMs on the host machine and their throughput requirements.
 1. Enter the path to the VMs. You can also use the default populated path.
 1. When finished, click **Next: Deploy the Gateway**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
