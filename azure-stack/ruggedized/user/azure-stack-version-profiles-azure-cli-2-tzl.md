@@ -9,12 +9,13 @@ manager: femila
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: na, azurecli
 ms.topic: article
 ms.date: 2/1/2021
 ms.author: mabrigg
 ms.reviewer: raymondl
-ms.lastreviewed: 1/9/2020
+ms.lastreviewed: 1/9/2020 
+ms.custom: devx-track-azurecli
 
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
