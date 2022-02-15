@@ -23,6 +23,10 @@
           href: helm-deploy.md
         - name: Deploy Azure Arc enabled data services
           href: deploy-arc-data-services.md
+        - name: Deploy configurations using GitOps
+          href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2
+        - name: Implement CI/CD using GitOps
+          href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd
 - name: Tutorial
   items:
     - name: 1 - Prepare an application
