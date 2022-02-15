@@ -74,6 +74,7 @@ Invoke-AzureRmResourceAction `
     -Force
 ```
 
+
 ### [Az modules](#tab/az1)
 
 ```powershell
@@ -139,6 +140,8 @@ As a user, you provide consent to the operator to create console access for a sp
        -ErrorAction Stop ` 
        -Force 
    ```
+
+   ---
 
 2. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
 
