@@ -163,6 +163,9 @@ As a user, you provide consent to the operator to create console access for a sp
 
 7. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator does not have any credentials with which to sign in to the guest operating system.
 
+   > [!NOTE]
+   > In the sign-in screen, pressing the Windows + U keys launches the on-screen keyboard, which allows sending CTRL + ALT + Delete.
+
 8. The operator can now screen share with the tenant to debug any issues that prevent connecting to the VM via the network.
 
 9. When finished, the operator can run the following command to remove the user consent:
