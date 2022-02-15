@@ -23,7 +23,7 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 
 | Operating system | Description | Available in Azure Stack Hub Marketplace |
 | --- | --- | --- |
-| Windows Server 2022 | 64-bit | Datacenter, Datacenter core |
+| Windows Server 2022 (requires Azure Stack Hub 2108 or later) | 64-bit | Datacenter, Datacenter core |
 | Windows Server, version 1709 | 64-bit | Core with containers |
 | Windows Server 2019 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
 | Windows Server 2016 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
