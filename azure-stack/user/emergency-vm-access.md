@@ -3,7 +3,7 @@ title: Emergency VM access in Azure Stack Hub
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/21/2021
+ms.date: 02/14/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 08/13/2021
@@ -38,7 +38,10 @@ To disable the remote desktop access to the Emergency Recovery Console VMs (ERCS
 ```powershell
 Revoke-RdpAccessToErcsVM
 ```
-[!NOTE] Any one of the ERCS VMs will be assigned the tenant user's access request, consider proactively running the command on each privileged endpoint (PEP). 
+
+> [!NOTE]
+> Any one of the ERCS VMs will be assigned the tenant user's access request. Consider proactively running the command on each privileged endpoint (PEP).
+
 ## Operator enables a user subscription for EVA
 
 In this scenario, the operator can decide which subscription should be able to use the emergency VM access feature.
@@ -71,6 +74,7 @@ Invoke-AzureRmResourceAction `
     -Force
 ```
 
+
 ### [Az modules](#tab/az1)
 
 ```powershell
@@ -83,7 +87,7 @@ $tenantSubscriptionSettings = @{
     TenantSubscriptionId = $tenantSubscriptionId
 }
 
-#Add Environment & Authenticate
+#Add environment & authenticate
 Add-AzEnvironment -Name AzureStackAdmin -ARMEndpoint https://adminmanagement.$RegionName.$FQDN
 Login-AzAccount -Environment AzureStackAdmin -TenantId $TenantID
 
@@ -105,26 +109,46 @@ As a user, you provide consent to the operator to create console access for a sp
 
 1. As a user, open PowerShell, sign in to your subscription, and run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
 
+   ### [AzureRM modules](#tab/azurerm1)
+
    ```powershell
    $SubscriptionID= "your Azure subscription ID" 
    $ResourceGroup = "your resource group name" 
    $VMName = "your VM name" 
    $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
 
-   $enableVMAccessResponse = Invoke-AzResourceAction ` 
-       -ResourceId $vmResourceId ` 
-       -Action "enableVmAccess" ` 
+   $enableVMAccessResponse = Invoke-AzResourceAction `
+       -ResourceId $vmResourceId `
+       -Action "enableVmAccess" `
        -ApiVersion "2020-06-01" ` 
        -ErrorAction Stop ` 
        -Force 
    ```
+
+   ### [Az modules](#tab/az1)
+
+   ```powershell
+   $SubscriptionID= "your Azure subscription ID" 
+   $ResourceGroup = "your resource group name" 
+   $VMName = "your VM name" 
+   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
+
+   $enableVMAccessResponse = Invoke-AzureRMResourceAction `
+       -ResourceId $vmResourceId `
+       -Action "enableVmAccess" `
+       -ApiVersion "2020-06-01" ` 
+       -ErrorAction Stop ` 
+       -Force 
+   ```
+
+   ---
 
 2. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
 
 3. The operator uses the ERCS name, and connects to it using the Remote Desktop Client (RDP); for example, from the operator access workstation (OAW).
 
    > [!NOTE]
-   > The operator authenticates using the **cloudadmin** account.
+   > The operator authenticates using the same cloud admin account that executed [**Grant-RdpAccessToErcsVM**](#operator-enables-remote-desktop-access-to-ercs-vms).
 
 4. Once connected to the ERCS VM via RDP, launch PowerShell.
 
@@ -141,6 +165,9 @@ As a user, you provide consent to the operator to create console access for a sp
    ```
 
 7. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator does not have any credentials with which to sign in to the guest operating system.
+
+   > [!NOTE]
+   > In the sign-in screen, pressing the Windows + U keys launches the on-screen keyboard, which allows sending CTRL + ALT + Delete.
 
 8. The operator can now screen share with the tenant to debug any issues that prevent connecting to the VM via the network.
 
