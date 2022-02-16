@@ -12,7 +12,6 @@ ms.lastreviewed: 01/14/2019
 # Keyword: linux virtual machine CLI
 
 ms.custom: mode-api, devx-track-azurecli
-ms.devlang: azurecli
 ---
 
 

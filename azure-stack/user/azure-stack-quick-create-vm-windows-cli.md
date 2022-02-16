@@ -12,7 +12,6 @@ ms.lastreviewed: 01/14/2020
 # Keyword: windows virtual machine CLI
 
 ms.custom: mode-api, devx-track-azurecli
-ms.devlang: azurecli
 ---
 
 

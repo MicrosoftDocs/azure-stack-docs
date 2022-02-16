@@ -9,7 +9,7 @@ manager: femila
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na, azurecli
+ms.devlang: na
 ms.topic: article
 ms.date: 2/1/2021
 ms.author: mabrigg
