@@ -229,7 +229,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 
 #### Arc for servers requirements
 > [!NOTE]
-> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](https://docs.microsoft.com/azure/azure-arc/servers/agent-overview#networking-configuration).
+> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/agent-overview#networking-configuration).
 
 ## Storage requirements
 
