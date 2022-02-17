@@ -206,9 +206,16 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    mkdir $csv_path\workingDir
    New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\workingDir
    az arcappliance prepare hci --config-file $csv_path\workingDir\hci-appliance.yaml
+   ```
+   
+   ```PowerShell
    az arcappliance deploy hci --config-file  $csv_path\workingDir\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+   ```
+   
+   ```PowerShell
    az arcappliance create hci --config-file $csv_path\workingDir\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
    ```
+   
 
 4. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
 
@@ -336,7 +343,7 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 2. Remove the gallery images:
 
    ```azurecli
-   az azurestackhci galleryimage delete --subscription $subscription --resource-group $resource_group --location $Location --name $galleryImageName
+   az azurestackhci galleryimage delete --subscription $subscription --resource-group $resource_group --name $galleryImageName
    ```
 
 3. Remove the custom location:
@@ -373,6 +380,12 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
    ```PowerShell
    Uninstall-Moc
    ```
+## Debugging
+Please see the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
+You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require the CloudServiceIP & the path containing HCI login configuration.
+- The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning the Arc Resource Bridge.
+- The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
+- Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
