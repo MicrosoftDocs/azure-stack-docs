@@ -206,9 +206,16 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    mkdir $csv_path\workingDir
    New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\workingDir
    az arcappliance prepare hci --config-file $csv_path\workingDir\hci-appliance.yaml
+   ```
+   
+   ```PowerShell
    az arcappliance deploy hci --config-file  $csv_path\workingDir\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+   ```
+   
+   ```PowerShell
    az arcappliance create hci --config-file $csv_path\workingDir\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
    ```
+   
 
 4. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
 
