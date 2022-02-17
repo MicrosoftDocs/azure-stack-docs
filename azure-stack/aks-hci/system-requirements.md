@@ -4,7 +4,7 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 2/16/2022
 ms.reviewer: abha
 ms.date: 08/19/2021
 ---
@@ -34,7 +34,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacente
 ## Azure requirements
 
 ### Azure account and subscription
-If you don’t already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
+If you don't already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
 - Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
 - Subscription obtained through an Enterprise Agreement (EA)
@@ -132,7 +132,7 @@ You must have an Azure resource group in the East US, Southeast Asia, or West Eu
 
 - While you can technically run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter, we do not recommend doing so. However, you can run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter for evaluation purposes.
 
-- Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI’s requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
+- Other compute requirements for Azure Kubernetes Service on Azure Stack HCI are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
 - You must install the Azure Stack HCI operating system on each server in the cluster using the EN-US region and language selections. At this time, you cannot change these settings after installation.
 
@@ -140,7 +140,7 @@ You must have an Azure resource group in the East US, Southeast Asia, or West Eu
 
 The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster:
 
-- Verify that you have an existing, external virtual switch configured if you’re using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
+- Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
 
 - Verify that you have disabled IPv6 on all network adapters.
 
@@ -217,6 +217,7 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
 | api.github.com | 443 | Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 | objects.githubusercontent.com  | 443 |  Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
+| arck8onboarding.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
 
 #### Arc for Kubernetes requirements
 > [!NOTE]
