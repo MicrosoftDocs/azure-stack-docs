@@ -24,7 +24,7 @@ As your organization digitally transforms, you may find you can move faster by u
 
 ## When to use Azure Stack HCI versus Azure Stack Hub
 
-The following table compares Azure Stack HCI to Azure Stack Hub and explains which one may be better for your use case: 
+The following table compares Azure Stack HCI to Azure Stack Hub and explains why one may be better than the other for your use case: 
 
 | Use cases and features | Azure Stack HCI | Azure Stack Hub |
 | ---------| ----------------| --------------- |
