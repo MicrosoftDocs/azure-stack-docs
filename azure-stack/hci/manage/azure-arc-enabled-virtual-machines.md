@@ -336,7 +336,7 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 2. Remove the gallery images:
 
    ```azurecli
-   az azurestackhci galleryimage delete --subscription $subscription --resource-group $resource_group --location $Location --name $galleryImageName
+   az azurestackhci galleryimage delete --subscription $subscription --resource-group $resource_group --name $galleryImageName
    ```
 
 3. Remove the custom location:
@@ -373,6 +373,11 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
    ```PowerShell
    Uninstall-Moc
    ```
+## Debugging
+Please see the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
+You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require the CloudServiceIP & the path containing HCI login configuration.
+- The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning the Arc Resource Bridge.
+- The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
 
 ## Limitations and known issues
 
