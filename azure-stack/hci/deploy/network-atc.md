@@ -72,7 +72,7 @@ You can also modify the default configuration Network ATC creates using override
 Get-Command -Noun NetIntent*Over* -Module NetworkATC
 ```
 
-For more information on overrides, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
+For more information on overrides, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
 ## Example intents
 
@@ -188,7 +188,7 @@ Network ATC establishes the following priorities and bandwidth reservations. Thi
 |Default|All other traffic types|0|Remainder|
 
 > [!NOTE]
-> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update an intent override](../manage/manage-network-atc.md#update-an-intent-override).
+> Network ATC allows you to override default settings like default bandwidth reservation. For examples, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 
 ## Next steps
 
