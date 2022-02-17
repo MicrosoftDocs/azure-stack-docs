@@ -378,6 +378,7 @@ Please see the support topics for any errors and their remedial steps. If the er
 You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require the CloudServiceIP & the path containing HCI login configuration.
 - The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning the Arc Resource Bridge.
 - The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
+- Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
