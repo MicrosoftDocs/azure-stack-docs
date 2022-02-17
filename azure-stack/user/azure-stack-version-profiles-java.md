@@ -374,18 +374,20 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 Use the following GitHub samples as references for creating solutions with .NET and Azure Stack Hub API profiles:
 
-- [Manage resource groups](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
+- [Manage resource groups](https://github.com/Azure-Samples/Hybrid-Java-Samples/tree/resourcegroup-2019-03-01-hybrid)
 
-- [Manage storage accounts](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
+- [Manage storage accounts](https://github.com/Azure-Samples/Hybrid-Java-Samples/tree/storage-2019-03-01-hybrid)
 
-- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (updated with 2019-03-01-hybrid profile)
+- [Manage a Virtual Machine](https://github.com/Azure-Samples/Hybrid-Java-Samples/tree/vm-2019-03-01-hybrid)
+
+- [Manage secrets](https://github.com/Azure-Samples/Hybrid-Java-Samples/tree/secret-2019-03-01-hybrid)
 
 ### Sample unit test project
 
 1. Clone the repository using the following command:
 
    ```shell
-   git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
+   git clone https://github.com/Azure-Samples/Hybrid-Java-Samples.git -b resourcegroup-2019-03-01-hybrid
    ```
 
 2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md).
