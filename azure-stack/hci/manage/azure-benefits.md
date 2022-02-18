@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 02/14/2022
+ms.date: 02/18/2022
 ms.lastreviewed: 02/09/2022
 
 ---
@@ -14,15 +14,15 @@ ms.lastreviewed: 02/09/2022
 
 >Applies to Azure Stack HCI, version 21H2 and later
 
-Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. The goal with Azure Stack HCI is to extend many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
+Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends any many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
-*Azure Benefits*, a recommended and optional feature in Azure Stack HCI, makes it possible for supported Azure-exclusive workloads to work outside of the cloud. Customers can enable Azure Benefits on Azure Stack HCI at no additional cost.
+*Azure Benefits* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. If you have Windows Server workloads, we recommend turning it on. You can enable Azure Benefits on Azure Stack HCI at no additional cost, though it is an optional feature.
 
 Take a few minutes to watch the introductory video on Azure Benefits:
 
 > [!VIDEO https://www.youtube.com/embed/s3CE9ob3hDo]
 
-## Supported workloads with Azure Benefits
+## Azure Benefits available on Azure Stack HCI
 
 Turning on Azure Benefits enables you to use these Azure-exclusive workloads on Azure Stack HCI:
 
@@ -32,9 +32,11 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 |     Extended Security Update (ESUs)             |     October 12th, 2021 security updates or later    |     A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> For more information, see [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md).   |
 |     Azure Policy guest configuration            |     Arc agent version 1.13 or later                 |     A feature that can audit or configure OS settings as code, for both host and   guest machines. <br/> Learn more: [Understand the guest configuration feature of Azure Policy](/azure/governance/policy/concepts/guest-configuration) |
 
-## Technical concepts
+## Azure Benefits implementation
 
-Azure Benefits is a built-in platform attestation service on Azure Stack HCI, and helps to provide guarantees that VMs are indeed running on Azure environments.
+This section is optional, and explains more about how Azure Benefits on HCI works "under the hood."
+
+Azure Benefits relies on a built-in platform attestation service on Azure Stack HCI, and helps to provide assurance that VMs are indeed running on Azure environments. 
 
 This is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload; the main difference is that it runs on-premises and therefore guarantees that VMs are on Azure Stack HCI instead of Azure.
 
@@ -69,7 +71,9 @@ Before you begin, you'll need the following prerequisites:
 - If you are using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with Cluster Manager extension (version 2.41.0 or later).
 
-### Turn on Azure Benefits using Windows Admin Center
+You can enable Azure Benefits on HCI using either Windows Admin Center, or PowerShell. The following sections describe each option.
+
+### Option 1: turn on Azure Benefits using Windows Admin Center
 
 :::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in WAC":::
 
@@ -102,7 +106,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
   - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for erroring host servers, then try and manage VMs again.
 
-### Turn on Azure Benefits using PowerShell
+### Option 2: turn on Azure Benefits using PowerShell
 
 1. To set up Azure Benefits, run the following command from an elevated PowerShell window on your Azure Stack HCI cluster:
 
