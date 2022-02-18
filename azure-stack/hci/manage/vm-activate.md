@@ -80,7 +80,7 @@ For more information about product key requirements, see the [Bring your own lic
 2. Under the feature **Windows Server subscription add-on**, click **Purchase.** In the context pane, click **Purchase** again to confirm.
 3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Note that licenses will take a few minutes to be applied on your cluster. You can wait for the next cluster sync with Azure, or use Windows Admin Center or PowerShell to prompt an immediate sync from your cluster.
 
-:::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activation/portal-purchase-expanded.png":::
+  :::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activation/portal-purchase-expanded.png":::
 
 ### Troubleshooting
 
