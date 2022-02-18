@@ -95,7 +95,7 @@ You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Cent
 
 To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in the top table **VMs without Azure Benefits,** and then click **Turn on Azure Benefits for VMs.**
 
-##### Troubleshooting - WAC
+#### Troubleshooting - WAC
 
 - To turn off and reset Azure Benefits on your cluster:
   - Under the **Cluster** tab, click **Turn off Azure Benefits**.
