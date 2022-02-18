@@ -95,7 +95,7 @@ manually sync: [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-h
 2. In the **Automatically activate VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Click **Next** and confirm details, then click **Purchase.**
 3. When the purchase is completed successfully, the cluster retrieves licenses from the cloud and sets up Automatic Virtual Machine Activation on your cluster.
 
-:::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
+   :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
 
 ### Enable Windows Server subscription using PowerShell
 
