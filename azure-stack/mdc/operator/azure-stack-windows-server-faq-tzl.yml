@@ -12,12 +12,11 @@ metadata:
   ms.workload: tzl
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.topic: article
+  ms.topic: faq
   ms.date: 06/03/2021
   ms.author: sethm
   ms.reviewer: avishwan
   ms.lastreviewed: 10/26/2020
-    
 title: Windows Server in Azure Stack marketplace FAQ - Modular Data Center (MDC)
 summary: |
   This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub marketplace](../../operator/azure-stack-marketplace.md).
