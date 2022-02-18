@@ -197,7 +197,7 @@ This FAQ provides answers to some questions about using Azure Benefits.
 
 ### What Azure-exclusive workloads can I enable with Azure Benefits?
 
-See the [full list here](#supported-workloads-with-azure-benefits).
+See the [full list here](#azure-benefits-available-on-azure-stack-hci).
 
 ### Does it cost anything to turn on Azure Benefits?
 
