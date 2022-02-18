@@ -4,7 +4,7 @@ metadata:
   titleSuffix: Azure Stack Hub
   description: List of Azure Stack Hub FAQs for  Azure Container Registry.
   author: mattbriggs
-  ms.topic: article
+  ms.topic: faq
   ms.date: 10/26/2021
   ms.author: mabrigg
   ms.reviewer: chasat
