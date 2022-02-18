@@ -73,7 +73,7 @@ Before you begin, you'll need the following prerequisites:
 
 You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Center, or PowerShell. The following sections describe each option.
 
-### Option 1: turn on Azure Benefits using Windows Admin Center
+## Option 1: turn on Azure Benefits using Windows Admin Center
 
 :::image type="content" source="media/azure-benefits/manage-benefits.gif" alt-text="Manage Benefits in WAC":::
 
@@ -89,13 +89,13 @@ You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Cent
 
 5. To check access to Azure Benefits for VMs: Check the status for VMs with Azure Benefits turned on. It's recommended that all of your existing VMs have Azure Benefits turned on; for example, 3 out of 3 VMs.
 
-#### Manage access to Azure Benefits for your VMs - WAC
+### Manage access to Azure Benefits for your VMs - WAC
 
 :::image type="content" source="media/azure-benefits/manage-benefits-2.gif" alt-text="Manage Benefits for VMs":::
 
 To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in the top table **VMs without Azure Benefits,** and then click **Turn on Azure Benefits for VMs.**
 
-#### Troubleshooting - WAC
+### Troubleshooting - WAC
 
 - To turn off and reset Azure Benefits on your cluster:
   - Under the **Cluster** tab, click **Turn off Azure Benefits**.
@@ -106,7 +106,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
   - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for erroring host servers, then try and manage VMs again.
 
-### Option 2: turn on Azure Benefits using PowerShell
+## Option 2: turn on Azure Benefits using PowerShell
 
 1. To set up Azure Benefits, run the following command from an elevated PowerShell window on your Azure Stack HCI cluster:
 
@@ -138,7 +138,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
    Get-AzStackHCIVMAttestation
    ```
 
-#### Manage access to Azure Benefits for your VMs - PowerShell
+### Manage access to Azure Benefits for your VMs - PowerShell
 
 - To turn on benefits for selected VMs, run the following command on your Azure Stack HCI cluster:
 
@@ -152,7 +152,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
    Add-AzStackHCIVMAttestation -AddAll
    ```
 
-#### Troubleshooting - PowerShell
+### Troubleshooting - PowerShell
 
 - To turn off and reset Azure Benefits on your cluster, run the following command:
 
