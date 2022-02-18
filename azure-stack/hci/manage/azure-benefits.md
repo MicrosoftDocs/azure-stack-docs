@@ -71,7 +71,7 @@ Before you begin, you'll need the following prerequisites:
 - If you are using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with Cluster Manager extension (version 2.41.0 or later).
 
-You can enable Azure Benefits on HCI using either Windows Admin Center, or PowerShell. The following sections describe each option.
+You can enable Azure Benefits on Azure Stack HCI using either Windows Admin Center, or PowerShell. The following sections describe each option.
 
 ### Option 1: turn on Azure Benefits using Windows Admin Center
 
@@ -95,7 +95,7 @@ You can enable Azure Benefits on HCI using either Windows Admin Center, or Power
 
 To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in the top table **VMs without Azure Benefits,** and then click **Turn on Azure Benefits for VMs.**
 
-##### Troubleshooting
+##### Troubleshooting - WAC
 
 - To turn off and reset Azure Benefits on your cluster:
   - Under the **Cluster** tab, click **Turn off Azure Benefits**.
