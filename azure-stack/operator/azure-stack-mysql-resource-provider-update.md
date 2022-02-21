@@ -134,7 +134,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 ```
 
 > [!NOTE] 
-> The NDS address and the corresponding IP address of MySQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the MySQLRPVM1130-PublicIP resource. You can also run "nslookup mysqlrp.dbadapter.<fqdn>" from a client machine that already passed the endpoint test to find out the public IP.
+> The NDS address and the corresponding IP address of MySQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the MySQLRPVM1130-PublicIP resource. You can also run "nslookup mysqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
 
 ### Validate the upgrade is successful
 
