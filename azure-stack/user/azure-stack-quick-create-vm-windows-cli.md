@@ -11,7 +11,7 @@ ms.lastreviewed: 01/14/2020
 # Intent: As an Azure Stack user, I want to create a Windows  virtual server using CLI.
 # Keyword: windows virtual machine CLI
 
-ms.custom: mode-api
+ms.custom: mode-api, devx-track-azurecli
 ---
 
 
