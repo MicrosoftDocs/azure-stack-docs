@@ -63,30 +63,24 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 5.    (for disconnected environment) Install the required PowerShell modules, similar to he update process used to [Deploy the resource provider](./azure-stack-sql-resource-provider-deploy.md).
 
 ### Trigger MajorVersionUpgrade
-Run the following script to perform major version upgrade. 
+Run the following script from an elevated PowerShell console to perform major version upgrade. 
 
-If the client machine you run the script on is of OS version older than Windows 10 or Windows Server 2016, or if the client machine does not have X64 Operating System Architecture, you should run the script on the [Operator Access Workstation (OAW)](./operator-access-workstation.md).
+> [!NOTE]
+> Make sure the client machine that you run the script on is of OS version newer than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
 
-1. [If you run the script on OAW] Disable FIPS by running the script below. Then restart PowerShell.
-
-``` powershell
-Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 0 -ErrorAction Stop 
-```
-
-2. Run the following script from an elevated PowerShell console.
 ``` powershell
 # Check Operating System version
 $osVersion = [environment]::OSVersion.Version
 if ($osVersion.Build -lt 10240)
 {
-    Write-Host "OS version is too old: $osVersion. Please consider using OAW and disable FIPS to perform the major upgrade."
+    Write-Host "OS version is too old: $osVersion."
     return
 }
 
 $osArch = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
 if ($osArch -ne "64-bit")
 {
-    Write-Host "OS Architecture is not 64 bit. Please consider using OAW and disable FIPS to perform the major upgrade."
+    Write-Host "OS Architecture is not 64 bit."
     return
 }
 
@@ -143,11 +137,8 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
   -PfxCert $PfxFilePath
 ```
 
-3. [If you run the script on OAW] Re-enable FIPS by running the script below. 
-
-``` powershell
-Set-ItemProperty -Path HKLM:\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy -Name Enabled -Value 1 -ErrorAction Stop 
-```
+> [!NOTE] 
+> The NDS address and the corresponding IP address of SQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the SQLRPVM1130-PublicIP resource. You can also run "nslookup sqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
 
 ### Validate the upgrade is successful
 

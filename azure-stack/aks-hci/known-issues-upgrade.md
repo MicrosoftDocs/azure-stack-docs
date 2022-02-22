@@ -3,7 +3,7 @@ title: Known issues when upgrading Azure Kubernetes Service on Azure Stack HCI
 description: Known issues when upgrading  Azure Kubernetes Service on Azure Stack HCI 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 1/21/2022
+ms.date: 2/16/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/21/2022
 ms.reviewer: abha
@@ -14,6 +14,22 @@ ms.reviewer: abha
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
+## Update of host OS HCI to HCIv2 breaks AKS-HCI installation
+
+Running an OS update on a host with an AKS HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
+
+To Reproduce
+When you update a cluster with an existing AKS HCI deployment from HCI to HCIv2, an AKS HCI operation such as `New-AksHciCluster` may fail. The error message will state the MOC nodes are OutOfCapacity. For example:
+
+```PowerShell
+System.Collections.Hashtable.generic_non_zero1 [Error: failed to create nic test-load-balancer-whceb-nic for machinetest-load-balancer-whceb: unable to create VM network interface: failed to create network interface test-load-balancer-whceb-nic in resource group clustergroup-test: rpc error: code = Unknown desc = Location 'MocLocation' doesn't expose any nodes to create VNIC 'test-load-balancer-whceb-nic' on: OutOfCapacity]
+```
+
+To resolve this issue, start the wssdagent Moc NodeAgent Service on the affected nodes. This will solve the issue, and bring the deployment back to a good state. Run the following command:
+
+```PowerShell
+Get-ClusterNode -ErrorAction Stop | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { Start-Service wssdagent -WarningAction:SilentlyContinue } }
+```
 ## Certificate renewal pod is in a crash loop state
 
 After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It is expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
