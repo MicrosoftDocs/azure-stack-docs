@@ -218,6 +218,8 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | api.github.com | 443 | Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 | objects.githubusercontent.com  | 443 |  Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 | arck8onboarding.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
+| v20.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host. |
+| adhs.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from control plane nodes. |
 
 #### Arc for Kubernetes requirements
 > [!NOTE]
