@@ -271,9 +271,10 @@ Now that the custom location is available, you can create or add virtual network
    **osType**: The OS type. Can be "Windows" or "Linux". Example: "Windows"
 
 ## View your cluster in Azure portal & manage virtual machines
-IT administrators can create and manage VMs and their associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://aka.ms/hci-selfservicevm). The cluster resource page also has links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. On the Azure Stack HCI cluster resource page in Portal, you can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
 
-VM management is also available from the Virtual Machines blades in Azure Portal with the following instructions:
+IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://aka.ms/hci-selfservicevm). The cluster resource page provides links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in Portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
+
+For VM management from the Virtual Machines blade in Azure Portal, use the following steps:
 
 1. From your browser, go to the [Azure portal](https://aka.ms/AzureArcVM). You'll see a unified browsing experience for Azure and Arc VMs.
 
