@@ -270,42 +270,11 @@ Now that the custom location is available, you can create or add virtual network
    
    **osType**: The OS type. Can be "Windows" or "Linux". Example: "Windows"
 
-## View your cluster in Azure portal
+## View your cluster in Azure portal & manage virtual machines
 
-You should be able to access and view Azure Arc Resource Bridge and your cluster's custom Location in Azure portal.
+IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://aka.ms/hci-selfservicevm). The cluster resource page provides links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in Portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
 
-You can provision and manage VMs through Azure portal by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. IT and cluster administrators can create and manage VMs and their associated disks and network interfaces from the Azure Stack HCI resource page in Azure portal.
-
-## Assign users or groups to custom location
-
-In this step, you'll assign users to a custom location and grant them permissions to create, manage, or view the VMs.
-
-1.    From your browser, go to the Azure portal and select the Custom location under the subscription and resource group.
-
-2.    Select Access control (IAM) > Add role assignments > Grant access to this resource.
-
-3.    Select the role you want to assign:
-
-   - **Owner**: Has full access to the custom location for creating and managing VMs, including managing roles in Azure role-based access control.
-   - **Contributor**: Has full access to the custom location for creating and managing VMs.
-   - **Reader**: Has read-only access to the custom location.
-
-4.    Search and select the Azure Active Directory (AAD) user or group. Repeat this step for each user or group you want to grant permission.
-
-## Create a VM on Azure Stack HCI using Azure portal
-
-Once your administrator has configured an Azure Stack HCI cluster for Azure portal-based provisioning, a custom location for this cluster will be available as a resource in Azure. Once the administrator gives you permissions on this resource, you'll be able to create and manage VMs on the cluster.
-
-In order to create and manage VMs, you'll need:
-
-- A custom location in an Azure subscription and resource group where you have a contributor role
-- At least one VM image in the gallery provisioned by the administrator
-- A virtual network resource provisioned by the administrator (optional)
-
-   > [!NOTE]
-   > You can also create and manage VMs directly from your Azure Stack HCI cluster page in Azure portal. If VMs are created in a subscription where the administrator does not have at least a **Contributor** role, the VM won't be listed, and you won't be able to manage the VM from Azure portal.
-
-To create a VM using Azure portal, follow these steps:
+For VM management from the Virtual Machines blade in Azure Portal, use the following steps:
 
 1. From your browser, go to the [Azure portal](https://aka.ms/AzureArcVM). You'll see a unified browsing experience for Azure and Arc VMs.
 
@@ -395,6 +364,8 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in portal for management.
 - Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure portal.
 - Arc VMs must be created in the same Azure subscription as the Custom location.
+- An IT admininstrator will not be able to view or manage VMs from cluster resource page in Azure portal, if they are created in a subscription where the IT administrator does not have at least read-only access role.
+- If the Arc for servers agents are installed on VMs provisioned through Azure portal, there will be two projections of the VMs on Azure Portal.
 
 ## FAQ
 
