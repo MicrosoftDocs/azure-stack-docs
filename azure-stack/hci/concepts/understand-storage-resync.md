@@ -76,7 +76,7 @@ Windows Admin Center uses Health faults to set the status and color of the clust
 
 The following image compares how storage resync progresses in Windows Server 2016 vs. Windows Server 2019.
 
-![Image of Windows Server 2016 vs Window Server 2019 view of resync.](media/understand-storage-resync/compare.png)
+![Image of Windows Server 2016 vs Window Server 2019 view of resync.](media/understand-storage-resync/compare-view.png)
 
 By showing the overall storage resync progress, you can accurately know how much data is out of sync and whether your system is making forward progress. In Windows Admin Center, go to the **Dashboard** to see the new alert, as shown in the following screenshot:
 
