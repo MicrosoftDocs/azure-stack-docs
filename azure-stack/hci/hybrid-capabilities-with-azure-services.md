@@ -36,7 +36,7 @@ The Azure Stack HCI cloud service in Azure is an integral part of the Azure Stac
 
 - **Diagnostics.** We collect required diagnostic data to keep Azure Stack HCI secure, up to date, and working as expected. The Azure Stack HCI cloud service processes this data for diagnostic purposes. To learn more about diagnostics, see [Azure Stack HCI data collection](concepts/data-collection.md).
 
-In the Azure Stack HCI cloud service, standard Azure components exist, including a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These Azure components enable access to Azure Stack HCI functionality via standard Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest). The Azure Stack HCI cloud service also enables contextual navigation from an Azure Stack HCI cluster resource to its Azure Arc-enabled node resources, and Azure Arc-enabled virtual machine (VM) resources.
+In the Azure Stack HCI cloud service, standard Azure components exist, including a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These Azure components enable access to Azure Stack HCI functionality via standard Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Stack HCI cloud service also enables contextual navigation from an Azure Stack HCI cluster resource to its Azure Arc-enabled node resources, and Azure Arc-enabled virtual machine (VM) resources.
 
 ## Azure Arc on Azure Stack HCI
 
