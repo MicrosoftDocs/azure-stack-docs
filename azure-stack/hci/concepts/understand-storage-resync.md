@@ -10,7 +10,7 @@ ms.date: 02/18/2022
 
 >Applies to: Windows Server 2022, Windows Server 2019, Azure Stack HCI, versions 21H2 and 20H2
 
-Storage resync alert is a capability of [Storage Spaces Direct](storage-spaces-direct-overview.md) in Azure Stack HCI and Windows Server. It allows the Health Service to throw a fault, notifying you about the resync. This helps prevent you from accidentally taking down more servers, which could affect multiple fault domains resulting in your cluster going down.
+Storage resync alert is a capability of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) in Azure Stack HCI and Windows Server. It allows the Health Service to throw a fault, notifying you about the resync. This helps prevent you from accidentally taking down more servers, which could affect multiple fault domains resulting in your cluster going down.
 
 This article provides an overview of storage resync and how you can monitor it in a failover cluster with Storage Spaces Direct.
 
@@ -46,7 +46,7 @@ The following GIF shows how storage resync works in a hyper-converged cluster:
 
 ## How to monitor storage resync
 
-Starting with Windows Server 2019, we added a new fault to the [Health Service](../../failover-clustering/health-service-overview.md) that shows up when your storage is resyncing.
+Starting with Windows Server 2019, we added a new fault to the [Health Service](manage/health-service-overview.md) that shows up when your storage is resyncing.
 
 To view this fault in PowerShell, run the following cmdlet:
 
@@ -112,4 +112,4 @@ This view is more granular because the storage jobs are listed per volume. You c
 ## Additional References
 
 - [Taking a server offline for maintenance](maintain-servers.md)
-- [Storage Spaces Direct overview](storage-spaces-direct-overview.md)
+- [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
