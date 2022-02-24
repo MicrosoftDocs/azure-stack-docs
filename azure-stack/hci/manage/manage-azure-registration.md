@@ -221,6 +221,30 @@ If the resource group was created during registration and doesn't contain any ot
 Remove-AzResourceGroup -Name "HCI001-rg"
 ```
 
+## FAQ
+
+A previously registered cluster is showing a status of ‘OutOfPolicy’ 
+
+Some changes to the system configuration can cause the registration status of Azure Stack HCI to fall out of policy. Examples of these systems changes include, but are not limited to, turning off Secure Boot where it was previously enabled on the registered node, clearing the TPM, or a significant system time change. 
+
+Azure Stack HCI 21H2 and newer will attempt to automatically recover from the ‘OutOfPolicy’ state. The Microsoft-AzureStack-HCI/Admin Event Log will provide more information. 
+
+[Informational] **Event ID 592:** “Azure Stack HCI has initiated a repair of its data. No further action from the user is required at this time.” 
+
+[Informational] **Event ID 594:** "Azure Stack HCI encountered an error accessing its data. To repair, please check which nodes are affected - if the entire cluster is OutOfPolicy (run Get-AzureStackHCI) please run Unregister-AzStackHCI on the cluster, restart and then run Register-AzStackHCI. If only this node is affected, remove this node from the cluster, restart and wait for repair to complete, then rejoin to cluster." 
+
+Possible delays in re-establishing full connection to Azure are expected after successful automatic repair and may result in Event ID 585 appearing for some time. This does not affect workloads/licensing of the node.  (E.g., there is still an installed license, unless the node was out of the 30-day window before automatic repair). 
+
+[Warning] **Event ID 585:** “Azure Stack HCI failed to renew license from Azure. To get more details about the specific error, enable the Microsoft-AzureStack-HCI/Debug event channel.” 
+
+In some cases, Azure Stack HCI may not succeed in automatic recovery. This can occur when the registration status of all nodes in the cluster are ‘OutOfPolicy’. Some manual steps are required as listed in the following Microsoft-AzureStack-HCI/Admin Event Log entries. 
+
+[Error] **Event ID 591:** "Azure Stack HCI failed to connect with Azure. If you continue to see this error, try running Register-AzStackHCI again with the -RepairRegistration parameter." 
+
+[Error] **Event ID 594:** "Azure Stack HCI encountered an error accessing its data. To repair, please check which nodes are affected - if the entire cluster is OutOfPolicy (run Get-AzureStackHCI) please run Unregister-AzStackHCI on the cluster, restart and then run Register-AzStackHCI. If only this node is affected, remove this node from the cluster, restart and wait for repair to complete, then rejoin to cluster." 
+
+
+
 ## Next steps
 
 For related information, see:
