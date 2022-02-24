@@ -93,7 +93,7 @@ Azure Stack HCI can function in various data center architectures including 2-ti
 Network traffic can be classified by its direction. Traditional Storage Area Network (SAN) environments are heavily North-South where traffic flows from a compute tier to a storage tier across a Layer-3 (IP) boundary. Hyperconverged infrastructure is more heavily East-West where a substantial portion of traffic stays within a Layer-2 (VLAN) boundary.
 
 > [!IMPORTANT]
->We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
+> Between nodes within an Azure Stack HCI a high-performance and low latency connection is exspected. Which means that the latency between nodes must be beneath one millisecond and a minimum connection bandwidth of 25 Gbit/s or larger is required. It is also require to provide synchronous latency between als cluster nodes. We still highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
 ### North-South traffic for Azure Stack HCI
 
