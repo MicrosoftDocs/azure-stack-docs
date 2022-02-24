@@ -20,7 +20,7 @@ Let's start with a simple example to understand how storage could get out of syn
 
 Suppose you want to store the string "HELLO".
 
-![Image of a s c i i of a hello string.](media/understand-storage-resync/hello.png)
+![Image of a s c i i of a hello string.](media/understand-storage-resync/hello-string.png)
 
 Assuming that you have three-way mirror resiliency, you have three copies of this string. If you take down server #1 temporarily (for maintenance), then you can't access copy #1.
 
@@ -28,21 +28,21 @@ Assuming that you have three-way mirror resiliency, you have three copies of thi
 
 Suppose you update the string from "HELLO" to "HELP!" at this time.
 
-![Image of a s c i i of a help! string.](media/understand-storage-resync/help.png)
+![Image of a s c i i of a help! string.](media/understand-storage-resync/help-string.png)
 
 After you update the string, copy #2 and #3 are updated successfully. However, copy #1 can't be accessed because server #1 is down temporarily (for maintenance).
 
-![GIF of writing to copy number 2 and 3.](media/understand-storage-resync/write.gif)
+![GIF of writing to copy number 2 and 3.](media/understand-storage-resync/write-copies.gif)
 
 You now have copy #1 with out-of-sync data. The operating system uses granular dirty region tracking to keep track of the bits that are out of sync. This way when server #1 comes back online, you can sync the changes by reading the data from copy #2 or #3 and overwriting the data in copy #1. With this approach, you need to copy over only that data which is stale, instead of resyncing all of the data from server #2 or server #3.
 
-![GIF of overwriting to copy number 1.](media/understand-storage-resync/overwrite.gif)
+![GIF of overwriting to copy number 1.](media/understand-storage-resync/overwrite-data.gif)
 
 The preceding section described how data could get out of sync. But what does this look like at a high level? Suppose you have a three-server, hyper-converged cluster. When server #1 is in maintenance, you see it as being down. When you bring server #1 back up, it starts resyncing all of its storage using the granular dirty region tracking (explained in the preceding section). Once the data is all back in sync, all servers are shown as up. 
 
 The following GIF shows how storage resync works in a hyper-converged cluster:
 
-![GIF of admin view of resync.](media/understand-storage-resync/admin.gif)
+![GIF of admin view of resync.](media/understand-storage-resync/admin-view.gif)
 
 ## How to monitor storage resync
 
@@ -80,7 +80,7 @@ The following image compares how storage resync progresses in Windows Server 201
 
 By showing the overall storage resync progress, you can accurately know how much data is out of sync and whether your system is making forward progress. In Windows Admin Center, go to the **Dashboard** to see the new alert, as shown in the following screenshot:
 
-![Screen capture of alert in Windows Admin Center.](media/understand-storage-resync/alert.png)
+![Screen capture of alert in Windows Admin Center.](media/understand-storage-resync/wac-alert.png)
 
 The alert is useful in notifying you when resync is happening, so that you don't accidentally take down more servers (which could cause multiple fault domains to be affected, resulting in your cluster going down).
 
@@ -88,7 +88,7 @@ To get a detailed view of how storage resync appears on a per-server basis in Wi
 
 The following screenshot displays the server view in Windows Admin Center:
 
-![Screen capture of server view in Windows Admin Center.](media/understand-storage-resync/server.png)
+![Screen capture of server view in Windows Admin Center.](media/understand-storage-resync/server-view.png)
 
 ## How to monitor storage resync in Windows Server 2016
 
