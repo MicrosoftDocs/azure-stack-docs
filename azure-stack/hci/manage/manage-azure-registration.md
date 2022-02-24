@@ -223,7 +223,9 @@ Remove-AzResourceGroup -Name "HCI001-rg"
 
 ## FAQ
 
-A previously registered cluster is showing a status of ‘OutOfPolicy’ 
+This is an FAQ for that explains the information, warnings or messages for Azure Stack HCI Registration.
+
+### A previously registered cluster is showing a status of ‘OutOfPolicy’
 
 Some changes to the system configuration can cause the registration status of Azure Stack HCI to fall out of policy. Examples of these systems changes include, but are not limited to, turning off Secure Boot where it was previously enabled on the registered node, clearing the TPM, or a significant system time change. 
 
