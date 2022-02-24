@@ -14,27 +14,27 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-There are many integration points between the Azure cloud and your on-premises Azure Stack HCI solution, as shown in the following diagram:
+There are many integration points between your on-premises Azure Stack HCI solution and Azure cloud, as shown in the following diagram:
 
-:::image type="content" source="media/overview/azure-stack-hci-azure-cloud.png" alt-text="Diagram shows the integration points between the Azure cloud and your on-premises Azure Stack HCI solution" border="false":::
+:::image type="content" source="media/overview/azure-stack-hci-azure-cloud.png" alt-text="Diagram shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false":::
 
 This article describes the functionality provided by core cloud service components of Azure Stack HCI. It also describes the functionality provided by other cloud service components like Azure Arc and Azure hybrid services.
 
 ## Azure Stack HCI cloud service
 
-The Azure Stack HCI cloud service in Azure is an integral part of the Azure Stack HCI product offering.
+The Azure Stack HCI cloud service in Azure is an integral part of the Azure Stack HCI product offering. In your Azure Stack HCI cluster, the Azure Stack HCI operating system (OS) has an always-running system service called HciSvc. This OS service initiates communications to the Azure Stack HCI cloud service to deliver the following core functionality:
 
-In your Azure Stack HCI cluster, the Azure Stack HCI operating system (OS) has an always-running system service called HciSvc. This OS service initiates communications to the Azure Stack HCI cloud service to deliver the following core functionality:
+- **Registration:** You must register your Azure Stack HCI cluster with Azure to enable other hybrid capabilities. The Azure Stack HCI cloud service processes registration requests initiated from Azure Stack HCI OS deployments. To learn more about registration, see [Connect Azure Stack HCI to Azure](deploy/register-with-azure.md).
 
-- **Registration:** Registering your Azure Stack HCI cluster with Azure is a required first step to enable other hybrid capabilities. The Azure Stack HCI cloud service processes registration requests initiated from Azure Stack HCI OS deployments. To learn more about registration, see [Connect Azure Stack HCI to Azure](deploy/register-with-azure.md).
-
-- **Monitoring:** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them. The Azure Stack HCI cloud service enables access to a projected view of your Azure Stack HCI clusters in the Azure portal and other Azure tools. To learn more about basic monitoring, see [Use the Azure portal with Azure Stack HCI](manage/azure-portal.md). Advanced monitoring can also be optionally enabled via Azure Arc and Azure Monitor. This is covered in the Arc section later in this article.
+- **Monitoring:** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them. The Azure Stack HCI cloud service enables access to a projected view of your Azure Stack HCI clusters in the Azure portal and other Azure tools. To learn more about basic monitoring, see [Use the Azure portal with Azure Stack HCI](manage/azure-portal.md). Advanced monitoring can also be optionally enabled via Azure Arc and Azure Monitor. This is covered in the [Azure Arc on Azure Stack HCI](#azure-arc-on-azure-stack-hci) section later in this article.
 
 - **Support:** Azure Stack HCI follows the same support process as Azure. The Azure Stack HCI cloud service, through its projected view of your Azure Stack HCI cluster in the Azure portal, enables you to create and support requests. To learn more about support, see [Get support for Azure Stack HCI](manage/get-support.md).
 
 - **Billing:** Pay for Azure Stack HCI through your Azure subscription. The Azure Stack HCI cloud service sends usage data to Azure Commerce to calculate the monthly bill for the registered subscription. To learn more about billing, see [Azure Stack HCI billing and payment](concepts/billing.md).
 
-- **Licensing:** An Azure Stack HCI cluster requires cloud connectivity to keep its license up to date. The Azure Stack HCI cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Stack HCI FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded) Enabling a related feature, the Azure Stack HCI cloud service also distributes certificates to Azure Stack HCI clusters which have enabled Azure Benefits. To learn more Azure Benefits, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
+- **Licensing:** An Azure Stack HCI cluster requires cloud connectivity to keep its license up to date. The Azure Stack HCI cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Stack HCI FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded)
+
+    The Azure Stack HCI cloud service also distributes certificates to the Azure Stack HCI clusters that have the Azure Benefits service enabled. To learn more about Azure Benefits, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
 
 - **Diagnostics:** We collect required diagnostic data to keep Azure Stack HCI secure, up to date, and working as expected. The Azure Stack HCI cloud service processes this data for diagnostic purposes. To learn more about diagnostics, see [Azure Stack HCI data collection](concepts/data-collection.md).
 
@@ -54,7 +54,7 @@ Azure Stack HCI delivers significant hybrid value through the following Azure Ar
 
 - [Azure Arc resource bridge](/azure/azure-arc/resource-bridge/overview). Deploying Azure Arc resource bridge enables Azure Arc-enabled VMs on Azure Stack HCI, including self-service VM creation and management. To learn more about VM provisioning through Azure portal on Azure Stack HCI, see [VM provisioning through Azure portal on Azure Stack HCI](manage/azure-arc-enabled-virtual-machines.md). This is currently in preview.
 
-- [Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/overview). If you run Azure Kubernetes Service on your Azure Stack HCI cluster, you can project it to Azure via Azure Arc-enabled Kubernetes. To learn more about connecting an Azure Kubernetes Service on Azure Stack HCI cluster, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](../aks-hci/connect-to-arc).
+- [Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/overview). If you run Azure Kubernetes Service on your Azure Stack HCI cluster, you can project it to Azure via Azure Arc-enabled Kubernetes. To learn more about connecting an Azure Kubernetes Service on Azure Stack HCI cluster, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](../aks-hci/connect-to-arc.md).
 
 ## Other Azure hybrid services
 
@@ -68,5 +68,5 @@ In addition to hybrid functionality provided through Azure Arc, you can enable t
 
 ## Next steps
 
-- [Azure Stack HCI overview](../overview.md)
-- [Azure Stack HCI FAQ](../faq.yml)
+- [Azure Stack HCI overview](overview.md)
+- [Azure Stack HCI FAQ](faq.yml)
