@@ -46,7 +46,7 @@ The following GIF shows how storage resync works in a hyper-converged cluster:
 
 ## How to monitor storage resync
 
-Starting with Windows Server 2019, we added a new fault to the [Health Service](manage/health-service-overview.md) that shows up when your storage is resyncing.
+Starting with Windows Server 2019, we added a new fault to the [Health Service](../manage/health-service-overview.md) that shows up when your storage is resyncing.
 
 To view this fault in PowerShell, run the following cmdlet:
 
@@ -111,5 +111,5 @@ This view is more granular because the storage jobs are listed per volume. You c
 
 ## Additional References
 
-- [Taking a server offline for maintenance](maintain-servers.md)
+- [Taking a server offline for maintenance](../manage/maintain-servers.md)
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
