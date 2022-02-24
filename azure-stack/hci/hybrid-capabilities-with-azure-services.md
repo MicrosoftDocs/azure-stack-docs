@@ -4,8 +4,6 @@ description: This article describes the cloud service components of Azure Stack 
 ms.topic: overview
 author: ManikaDhiman
 ms.author: v-mandhiman
-ms.service: azure-stack
-ms.subservice: azure-stack-hci
 ms.date: 02/23/2022
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
@@ -61,8 +59,6 @@ In addition to hybrid functionality provided through Azure Arc, you can enable t
 - **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. To learn more about Azure Backup, see [Back up Azure Stack HCI virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines). 
 
 - **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md). 
-
-- **Azure Network Adapter.** With Azure Network Adapter, you can connect a server to an Azure Virtual Network. To learn more about Azure Network Adapter, see [Connect server to Azure Virtual Network](/windows-server/manage/windows-admin-center/azure/use-azure-network-adapter).
 
 ## Next steps
 
