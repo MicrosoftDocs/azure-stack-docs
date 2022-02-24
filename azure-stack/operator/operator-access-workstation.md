@@ -45,9 +45,9 @@ The following table lists the pre-installed software on the OAW VM.
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                        | [SystemDrive]\\Program Files (x86)\\Microsoft\\Edge\\Application     |
 | [Az Modules](./powershell-install-az-module.md?view=azs-2008) | [SystemDrive]\\ProgramFiles\\WindowsPowerShell\\Modules              |
 | [PowerShell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)                           | [SystemDrive]\\Program Files\\PowerShell\\7                          |
-| [Azure Command-Line Interface (CLI)](/cli/azure/)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
+| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/en-us/cli/azure/)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)                     | [SystemDrive]\\Program Files (x86)\\Microsoft Azure Storage Explorer |
-| [AzCopy](/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_10.3.4               |
+| [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_*               |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                                          | [SystemDrive]\\VMSoftware\\AzureStack-Tools                          |
 ## Download files
 To get the files to create the OAW VM, [download here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you download.
@@ -68,7 +68,7 @@ param(
     [string] 
     $DownloadedOAWZipFilePath 
 ) 
-$expectedHash = '9636CB9AE74A5A9296C2B42ADC0452977F8557BCF815CFE31B544086DA7948ED' 
+$expectedHash = '08B863F6886E6D9FFBE2DA3ABA62FF0E22779D14569FAF203E75CAD1303B5E76' 
 $actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
 Write-Host "Expected hash: $expectedHash" 
 if ($expectedHash -eq $actualHash) 
@@ -92,7 +92,7 @@ Another way to copy this script to your environment is to use the Test-FileHash 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
  
    ```powershell
-   Test-FileHash -ExpectedHash "9636CB9AE74A5A9296C2B42ADC0452977F8557BCF815CFE31B544086DA7948ED" -FilePath "<path to the OAW.zip file>"
+   Test-FileHash -ExpectedHash "08B863F6886E6D9FFBE2DA3ABA62FF0E22779D14569FAF203E75CAD1303B5E76" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version
