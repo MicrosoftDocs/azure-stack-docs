@@ -24,7 +24,7 @@ Suppose you want to store the string "HELLO".
 
 Assuming that you have three-way mirror resiliency, you have three copies of this string. If you take down server #1 temporarily (for maintenance), then you can't access copy #1.
 
-![Image showing you cannot access copy number 1 if you take down server number 1.](media/understand-storage-resync/copy1.png)
+![Image showing you cannot access copy number 1 if you take down server number 1.](media/understand-storage-resync/copy-1.png)
 
 Suppose you update the string from "HELLO" to "HELP!" at this time.
 
