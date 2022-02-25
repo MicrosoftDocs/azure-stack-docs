@@ -141,7 +141,7 @@ Windows products must be used in accordance with Product Use Rights and Microsof
 - Azure Stack host activates Windows with AVMA keys for Windows Server 2016. All VMs that run Windows Server 2012 R2 or later are automatically activated.
 - VMs that run Windows Server 2012 or earlier aren't automatically activated and must be activated by using [MAK activation](/previous-versions/tn-archive/ff793438(v=technet.10)). To use MAK activation, you must provide your own product key.
 
-Microsoft Azure uses KMS activation to activate Windows VMs. If you move a VM from Azure Stack to Azure and encounter activation problems, see [Troubleshoot Azure Windows VM activation problems](/azure/virtual-machines/windows/troubleshoot-activation-problems). Additional info can be found at the [Troubleshooting Windows activation failures on Azure VMs](/archive/blogs/mast/troubleshooting-windows-activation-failures-on-azure-vms) Azure Support Team Blog post.
+Hyperscale Azure uses KMS activation to activate Windows VMs. If you move a VM from Azure Stack to Azure and encounter activation problems, see [Troubleshoot Azure Windows VM activation problems](/azure/virtual-machines/windows/troubleshoot-activation-problems). Additional info can be found at the [Troubleshooting Windows activation failures on Azure VMs](/archive/blogs/mast/troubleshooting-windows-activation-failures-on-azure-vms) Azure Support Team Blog post.
 
 ## Next steps
 

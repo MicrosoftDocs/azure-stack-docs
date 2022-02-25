@@ -1,10 +1,10 @@
 ---
 title: What is the Azure Stack Development Kit (ASDK)? | Microsoft Docs
 description: Learn about the Azure Stack Development Kit and how it's used to evaluate Azure Stack Hub.
-author: PatAltimore
+author: sethmanheim
 ms.topic: overview
-ms.date: 10/04/2021
-ms.author: patricka
+ms.date: 02/24/2022
+ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
 ms.custom: contperf-fy22q2
@@ -46,6 +46,8 @@ Single-node ASDK deployments differ from multi-node Azure Stack Hub deployments 
 |**Networking**|The ASDK host routes all ASDK network traffic. There are no additional switch requirements.|More complex [network routing infrastructure](../operator/azure-stack-network.md#network-infrastructure) in multi-node deployments is necessary including Top-Of-Rack (TOR), Baseboard Management Controller (BMC), and border (datacenter network) switches.|
 | **GPU support** | Not available. | [Support for GPU virtual machines on Azure Stack Hub](../user/gpu-vms-about.md) |
 | **Event Hubs** | Not available. | [Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-overview.md) |
+| **Azure Kubernetes Service** | Not available. | [Azure Kubernetes Service on Azure Stack Hub](../operator/aks-add-on.md) |
+| **Azure Container Registry** | Not available. | [Azure Container Registry on Azure Stack Hub](../operator/container-registries-overview.md) |
 |**Patch and update process**|To move to a new version of the ASDK, you must redeploy the ASDK on the ASDK host computer.|[Patch and update](../operator/azure-stack-updates.md) process used to update the installed Azure Stack Hub version.|
 |**Support**|MSDN Azure Stack forum. Microsoft Support is not available for non-production environments.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) and full support.|
 | | |
