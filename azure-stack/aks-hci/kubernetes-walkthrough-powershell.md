@@ -36,7 +36,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ### Install PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
 
-Install pre-requisite Powershell packages and modules.
+Install pre-requisite Powershell packages and modules. Run the following command on all nodes in your Azure Stack HCI cluster.
 ```
 Install-PackageProvider -Name NuGet -Force 
 Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
