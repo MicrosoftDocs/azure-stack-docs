@@ -231,10 +231,10 @@ If a previously registered cluster is showing a status of ‘OutOfPolicy’ then
 
 **Examples** Systems changes may include, but are not limited to;
 - Turning off Secure Boot settings conflicts on the registered node 
-- Clearing the Trust Platform Module (TPM) 
+- Clearing the Trusted Platform Module (TPM) 
 - A significant system time change 
 
-**Note** Azure Stack HCI 21H2 and later versions, will attempt to automatically recover from the ‘OutOfPolicy’ state. Review the Microsoft-AzureStack-HCI/Admin Event Log for more information regarding the present ‘OutOfPolicy’ status and other information. 
+**Note** Azure Stack HCI 21H2 with KB5010421, and later versions, will attempt to automatically recover from the ‘OutOfPolicy’ state. Review the Microsoft-AzureStack-HCI/Admin Event Log for more information regarding the present ‘OutOfPolicy’ status and other information. 
 
 ### What ‘OutOfPolicy’ Event ID messages could I expect to see during registration?  
 There are three types of event ID messages: Informational, Warnings, and Errors. These are common Event ID messages you may see.
