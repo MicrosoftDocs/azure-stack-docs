@@ -197,7 +197,7 @@ An interactive Azure login window appears. The exact prompts that you see will v
 
 ## Clean up after a cluster that was not properly unregistered
 
-If a user destroys an Azure Stack HCI cluster without unregistering it, such as by reimaging the host servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These artifacts are harmless and won't incur billing or use resources, but they can clutter the Azure portal. To clean them up, you can manually delete them.
+If a user destroys an Azure Stack HCI cluster without un-registering it, such as by re-imaging the host servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These artifacts are harmless and won't incur billing or use resources, but they can clutter the Azure portal. To clean them up, you can manually delete them.
 
 To delete the Azure Stack HCI resource, go to its page in the Azure portal and select **Delete** from the action bar at the top. Enter the name of the resource to confirm the deletion, and then select **Delete**. 
 
@@ -229,7 +229,7 @@ This FAQ outlines concepts, and messaging associated with ‘OutOfPolicy’ test
 
 If a previously registered cluster is showing a status of ‘OutOfPolicy’ then Changes to the system configuration may have caused the registration status of Azure Stack HCI to fall out of policy. 
 
-**Examples** of these systems changes may include, but are not limited to;
+**Examples** Systems changes may include, but are not limited to;
 - Turning off Secure Boot settings conflicts on the registered node 
 - clearing the Trust Platform Module (TPM) 
 - a significant system time change 
@@ -237,26 +237,26 @@ If a previously registered cluster is showing a status of ‘OutOfPolicy’ then
 **Note** Azure Stack HCI 21H2 and later versions, will attempt to automatically recover from the ‘OutOfPolicy’ state. Review the Microsoft-AzureStack-HCI/Admin Event Log for more information regarding the present ‘OutOfPolicy’status and other information. 
 
 ### What ‘OutOfPolicy’ Event ID messages could I expect to see during registration?  
-There are three types of event ID messages, informational, warnings, and Errors. These are common Event ID messages you may see.
+There are three types of event ID messages: Informational, Warnings, and Errors. These are common Event ID messages you may see.
 
 #### Information Event ID
-Informational Event ID Messages that occur during registration. Review and follow-through on suggestions. 
+Informational Event ID Messages that occur during registration. Review and follow-through on any suggestions in the message. 
 
 - [Informational] **Event ID 592:** “Azure Stack HCI has initiated a repair of its data. No further action from the user is required at this time.” 
 
 - [Informational] **Event ID 594:** "Azure Stack HCI encountered an error accessing its data. To repair, please check which nodes are affected - if the entire cluster is OutOfPolicy (run Get-AzureStackHCI) please run Unregister-AzStackHCI on the cluster, restart and then run Register-AzStackHCI. If only this node is affected, remove this node from the cluster, restart and wait for repair to complete, then rejoin to cluster." 
 
 #### Warning Event ID
-With warning messages, the status of the registration is not completed.  There may be a problem. First review the Event ID message before taking any trouble shooting step.
+With warning messages, the status of the registration is not completed.  There may or may not be a problem. First review the Event ID message before taking any trouble shooting step(s).
 
 - [Warning] **Event ID 585:** “Azure Stack HCI failed to renew license from Azure. To get more details about the specific error, enable the Microsoft-AzureStack-HCI/Debug event channel.” 
 
 **Note:** Possible delays in re-establishing full connection to Azure are expected after successful automatic repair and may result in Event ID 585 appearing for some time. This does not affect workloads/licensing of the node.  (E.g., there is still an installed license, unless the node was out of the 30-day window before automatic repair). 
 
-**Note:** In some cases, Azure Stack HCI may not succeed in automatic recovery. This can occur when the registration status of all nodes in the cluster are ‘OutOfPolicy’. Some manual steps are required as listed in the following Microsoft-AzureStack-HCI/Admin Event Log entries. 
+**Note:** In some cases, Azure Stack HCI may not succeed in automatic recovery. This can occur when the registration status of all nodes in the cluster are ‘OutOfPolicy’. Some manual steps are required. See the Microsoft-AzureStack-HCI/Admin Event ID messages. 
 
 #### Error Event ID
-Error messages in the log identify a failure. The Event ID message gives an indication of what needs to be done.
+Event ID error messages identify a failure in the registration process. The Event ID message will give instructions for what needs to be done to resolve the error.
 
 - [Error] **Event ID 591:** "Azure Stack HCI failed to connect with Azure. If you continue to see this error, try running Register-AzStackHCI again with the -RepairRegistration parameter." 
 
