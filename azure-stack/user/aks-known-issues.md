@@ -42,11 +42,11 @@ Yes, the preview for AKS and Azure Container Registry (ACR) must be uninstalled 
 
 No, you will not need to uninstall AKS or ACR again. These two services are integrated into the infrastructure of Azure Stack Hub, they will be updated, maintained, and monitored and all other infrastructure services.
 
-## Is the service principal automatically created?
+### Is the service principal automatically created?
 
 No. The service principal (SPN) is not automatically created as in Azure (no MSI).
 
-## Are the Azure Container Service (ACR) and Azure Kubernetes Service (AKS) public previews available on the Azure Stack Development Kit (ASDK)?
+### Are the Azure Container Service (ACR) and Azure Kubernetes Service (AKS) public previews available on the Azure Stack Development Kit (ASDK)?
 
 The Azure Container Service (ACR) and Azure Kubernetes Service (AKS) are not available for the Azure Stack Development Kit (ASDK). You must use a multi-node Azure Stack Hub to use the ACR and AKS while in public preview.
 
