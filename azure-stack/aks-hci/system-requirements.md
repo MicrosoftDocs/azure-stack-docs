@@ -13,17 +13,17 @@ ms.date: 08/19/2021
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server 2019 Datacenter and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
+This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of Azure Kubernetes Service on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
 
 ## General requirements
 
-For Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+For Azure Kubernetes Service on Azure Stack HCI or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
 
 - Ensure time synchronization is set up and the divergence is not greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top).
 
-- Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU.
+- Ensure the user account(s) that adds updates, and manages Azure Kubernetes Service on Azure Stack HCI or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you are using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU.
 
-- Use a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server 2019 Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
+- Use a separate OU for the servers and services to which you add your Azure Kubernetes Service on Azure Stack HCI or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
 - If you are using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent release.
 ## Hardware requirements
@@ -41,7 +41,7 @@ Azure Kubernetes Service on Azure Stack HCI deployments that exceed the followin
 | Total number of VMs          | 200     |
 ## Compute requirements
 
-Run AKS on an Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with:
+Run AKS on an Azure Stack HCI cluster or a Windows Server Datacenter failover cluster with:
 
 | Environment | Maximum per cluster | Minimum CPU cores per server | Minimum CPU cores per server | at least RAM |
 | --- | --- | --- | --- | --- |
@@ -50,14 +50,11 @@ Run AKS on an Azure Stack HCI cluster or a Windows Server 2019 Datacenter failov
 
 For a production environment final sizing will depend on the application and number of worker nodes you are planning to deploy on the Azure Stack HCI cluster.
 
-While you **can** run AKS on a single node Windows Server 2019 Datacenter, we do not recommend doing so. However, you can run AKS on a single node Windows Server 2019 Datacenter for evaluation purposes.
+While you **can** run AKS on a single node Windows Server Datacenter , we do not recommend doing so. However, you can run AKS on a single node Windows Server Datacenter for evaluation purposes.
 
 Other compute requirements for AKS on Azure Stack HCI are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
 You must install the Azure Stack HCI operating system on each server in the cluster using the `EN-US` region and language selections. At this time, you cannot change these settings after installation.
-
-`bookmark`
-
 ## Storage requirements
 
 The following storage implementations are supported by Azure Kubernetes Service on Azure Stack HCI:
@@ -65,19 +62,23 @@ The following storage implementations are supported by Azure Kubernetes Service 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
 | Azure Stack HCI Cluster          | Cluster Shared Volumes          | 1 TB              |
-| Windows Server 2019 Datacenter failover cluster          | Cluster Shared Volumes          | 1 TB              |
-| Single-node Windows Server 2019 Datacenter | Direct Attached Storage | 500 GB|
+| Windows Server Datacenter failover cluster          | Cluster Shared Volumes          | 1 TB              |
+| Single-node Windows Server Datacenter | Direct Attached Storage | 500 GB|
 
-For an Azure Stack HCI cluster, you have two supported storage configurations for running virtual machine workloads. Hybrid storage that balances performance and capacity using all-flash storage and hard disk drives (HDDs), and all-flash storage that maximizes performance using solid-state drives (SSDs) or NVMe. Systems that only have HDD-based storage are not supported by Azure Stack HCI, and thus are not recommended for running AKS on Azure Stack HCI. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](../hci/concepts/choose-drives.md). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
+For an Azure Stack HCI cluster, you have two supported storage configurations for running virtual machine workloads. 
+- **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
+- **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe. 
 
-For a Windows Server 2019 Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
+Systems that only have HDD-based storage are not supported by Azure Stack HCI, and thus are not recommended for running AKS on Azure Stack HCI. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](../hci/concepts/choose-drives.md). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
+
+For a Windows Server Datacenter -based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
 
 For single-node Windows Server 2019 deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
 
 
 ## Network requirements
 
-The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server 2019 Datacenter cluster:
+The following requirements apply to an Azure Stack HCI cluster as well as a Windows Server Datacenter cluster:
 
 - Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
 
@@ -180,7 +181,7 @@ Here are the requirements for the machine running the Windows Admin Center gatew
 
 - Windows 10 or Windows Server machine
 - [Registered with Azure](/windows-server/manage/windows-admin-center/azure/azure-integration)
-- In the same domain as the Azure Stack HCI or Windows Server 2019 Datacenter cluster
+- In the same domain as the Azure Stack HCI or Windows Server Datacenter cluster
 - An Azure subscription on which you are an Owner. You can check your access level by navigating to your subscription and clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
 ## Azure requirements
