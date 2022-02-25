@@ -45,9 +45,9 @@ The following table lists the pre-installed software on the OAW VM.
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                        | [SystemDrive]\\Program Files (x86)\\Microsoft\\Edge\\Application     |
 | [Az Modules](./powershell-install-az-module.md?view=azs-2008) | [SystemDrive]\\ProgramFiles\\WindowsPowerShell\\Modules              |
 | [PowerShell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)                           | [SystemDrive]\\Program Files\\PowerShell\\7                          |
-| [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/en-us/cli/azure/)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
+| [Azure Command-Line Interface (CLI)](/cli/azure/)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)                     | [SystemDrive]\\Program Files (x86)\\Microsoft Azure Storage Explorer |
-| [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_*               |
+| [AzCopy](/azure/storage/common/storage-use-azcopy-v10)                         | [SystemDrive]\\VMSoftware\\azcopy_windows_amd64_*               |
 | [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools/tree/az)                                          | [SystemDrive]\\VMSoftware\\AzureStack-Tools                          |
 ## Download files
 To get the files to create the OAW VM, [download here](https://aka.ms/OAWDownload). Be sure to review the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement) and [Legal Terms](/legal/azure-stack-hub/azure-stack-operator-access-workstation-legal-terms) before you download.
