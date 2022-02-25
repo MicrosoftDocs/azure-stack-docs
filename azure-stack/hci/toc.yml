@@ -222,6 +222,8 @@
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
       href: concepts/fault-tolerance.md
+    - name: Understand and monitor storage resync
+      href: concepts/understand-storage-resync.md
     - name: Stretched clusters
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum
