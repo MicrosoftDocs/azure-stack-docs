@@ -33,9 +33,17 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    > [!NOTE]
    > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
-## Install the AksHci PowerShell module
+### Install PowerShell modules
 **If you are using remote PowerShell, you must use CredSSP.**
-Run the following command on all nodes in your Azure Stack HCI cluster
+
+Install pre-requisite Powershell packages and modules.
+```
+Install-PackageProvider -Name NuGet -Force 
+Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
+```
+**You must close all existing Powershell windows** to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all Powershell windows.
+
+Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI cluster.
 ```powershell
 Install-Module -Name AksHci -Repository PSGallery
 ```
