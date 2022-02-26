@@ -9,9 +9,9 @@ metadata:
   services: azure-stack
   ms.service: azure-stack #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page # Required
-  author: BryanLa #Required; your GitHub user alias, with correct capitalization.
-  ms.author: bryanla #Required; microsoft alias of author; optional team alias.
-  ms.date: 04/13/2020 #Required; mm/dd/yyyy format.
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 04/13/2020
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
 
