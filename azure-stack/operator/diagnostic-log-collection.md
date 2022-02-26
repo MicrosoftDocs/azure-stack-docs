@@ -1,10 +1,10 @@
 ---
 title: Diagnostic log collection
 description: Learn about diagnostic log collection.
-author: PatAltimore
+author: BryanLa
 ms.topic: article
 ms.date: 09/20/2021
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: shisab
 ms.lastreviewed: 09/20/2021
 
