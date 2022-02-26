@@ -1,14 +1,14 @@
 ### YamlMime:Landing
 
-title: Azure Stack Hub Operator Documentation # < 60 chars
-summary: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage Azure Stack Hub. # < 160 chars
+title: Azure Stack Hub Operator Documentation
+summary: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage Azure Stack Hub.
 
 metadata:
-  title: Azure Stack Hub Documentation - Tutorials, API Reference # Required; page title displayed in search results. Include the brand. < 60 chars.
-  description: Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials. # Required; article description that is displayed in search results. < 160 chars.
+  title: Azure Stack Hub Documentation - Tutorials, API Reference
+  description: Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials.
   services: azure-stack
-  ms.service: azure-stack #Required; service per approved list. service slug assigned to your service by ACOM.
-  ms.topic: landing-page # Required
+  ms.service: azure-stack
+  ms.topic: landing-page
   author: BryanLa
   ms.author: bryanla
   ms.date: 04/13/2020
