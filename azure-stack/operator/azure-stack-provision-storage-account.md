@@ -2,11 +2,11 @@
 title: Create storage accounts in Azure Stack Hub 
 titleSuffix: Azure Stack Hub
 description: Learn how to create storage accounts in Azure Stack Hub.
-author: PatAltimore
+author: BryanLa
 
 ms.topic: how-to
 ms.date: 1/22/2020
-ms.author: patricka
+ms.author: bryanla
 ms.lastreviewed: 01/18/2019
 
 # Intent: As an Azure Stack operator, I want to create storage accounts in Azure Stack.

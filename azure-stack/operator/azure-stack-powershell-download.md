@@ -1,11 +1,11 @@
 ---
 title: Download Azure Stack Hub tools from GitHub 
 description: Learn how to download tools required for working with Azure Stack Hub.
-author: PatAltimore
+author: BryanLa
 
 ms.topic: article
 ms.date: 10/16/2020
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 10/16/2020
 
