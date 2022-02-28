@@ -1,10 +1,10 @@
 ---
 title: Plan datacenter integration for Azure Stack Hub integrated systems
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
-author: PatAltimore
+author: BryanLa
 ms.topic: conceptual
 ms.date: 11/02/2021
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2019
 
