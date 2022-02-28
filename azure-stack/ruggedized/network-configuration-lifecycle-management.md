@@ -1,8 +1,8 @@
 ---
 title: Azure Stack Hub ruggedized network configuration lifecycle management
 description: Learn about network configuration lifecycle management for the Azure Stack Hub ruggedized device.
-author: PatAltimore
-ms.author: patricka
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 10/14/2020

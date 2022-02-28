@@ -198,8 +198,6 @@
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
-    - name: Use Azure Network Adapter
-      href: /windows-server/manage/windows-admin-center/azure/use-azure-network-adapter
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster validation reporting
@@ -224,6 +222,8 @@
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
       href: concepts/fault-tolerance.md
+    - name: Understand and monitor storage resync
+      href: concepts/understand-storage-resync.md
     - name: Stretched clusters
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum

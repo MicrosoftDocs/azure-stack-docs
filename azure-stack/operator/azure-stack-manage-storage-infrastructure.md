@@ -2,11 +2,11 @@
 title: Manage storage infrastructure for Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to manage storage infrastructure for Azure Stack Hub. See how to monitor volumes and drives. View troubleshooting tips on adding drives to pools.
-author: PatAltimore
+author: BryanLa
 
 ms.topic: article
 ms.date: 10/19/2020
-ms.author: patricka
+ms.author: bryanla
 ms.lastreviewed: 5/4/2020
 ms.reviewer: jiaha
 
