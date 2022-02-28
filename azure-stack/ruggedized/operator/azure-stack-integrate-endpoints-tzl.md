@@ -1,10 +1,10 @@
 ---
 title: Publish Azure Stack Hub services in in your ruggedized network
 description: Learn how to publish Azure Stack Hub services in your datacenter.
-author: PatAltimore
+author: sethmanheim
 ms.topic: article
 ms.date: 03/02/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/24/2020
 

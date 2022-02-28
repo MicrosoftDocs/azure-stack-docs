@@ -1,11 +1,11 @@
 ---
 title: Include for Remove-AzureRmAccount 
 description: An include file that explains how to run Remove-AzureRmAccount.
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 09/17/2019
 ---
