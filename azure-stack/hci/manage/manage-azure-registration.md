@@ -239,6 +239,8 @@ If a previously registered cluster is showing a status of ‘OutOfPolicy’ then
 ### What ‘OutOfPolicy’ Event ID messages could I expect to see during registration?  
 There are three types of event ID messages: Informational, Warnings, and Errors. These are common Event ID messages you may see.
 
+**Note** The following messages were updates with Azure Stack HCI 21H2 with KB5010421 and will not be seen if the KB is not installed.
+
 #### Information Event ID
 Informational Event ID Messages that occur during registration. Review and follow-through on any suggestions in the message. 
 
