@@ -49,7 +49,7 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 
 2. [open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
  
-3.    Download Microsoft AzureStack Add-On RP Windows Server    1.2009.0 to marketplace. 
+3.    Download Microsoft AzureStack Add-On RP Windows Server 1.2009.0 to marketplace. 
 
 4.    Ensure datacenter integration prerequisites are met.
 
@@ -66,7 +66,7 @@ If you want to update from SQL RP V1 to SQL RP V2, make sure you have first upda
 Run the following script from an elevated PowerShell console to perform major version upgrade. 
 
 > [!NOTE]
-> Make sure the client machine that you run the script on is of OS version newer than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
+> Make sure the client machine that you run the script on is of OS version no older than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
 
 ``` powershell
 # Check Operating System version
@@ -138,7 +138,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 ```
 
 > [!NOTE] 
-> The NDS address and the corresponding IP address of SQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the SQLRPVM1130-PublicIP resource. You can also run "nslookup sqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
+> The DNS address and the corresponding IP address of SQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the SQLRPVM1130-PublicIP resource. You can also run "nslookup sqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
 
 ### Validate the upgrade is successful
 
