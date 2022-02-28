@@ -66,7 +66,7 @@ e.g. https://\<storageAcountName\>.blob.\<region\>.\<FQDN\>/\<containerName\>/my
 ### Trigger MajorVersionUpgrade
 Run the following script from an elevated PowerShell console to perform major version upgrade. 
 > [!NOTE]
-> Make sure the client machine that you run the script on is of OS version newer than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
+> Make sure the client machine that you run the script on is of OS version no older than Windows 10 or Windows Server 2016, and the client machine has X64 Operating System Architecture.
 
 
 ``` powershell
@@ -134,7 +134,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 ```
 
 > [!NOTE] 
-> The NDS address and the corresponding IP address of MySQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the MySQLRPVM1130-PublicIP resource. You can also run "nslookup mysqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
+> The DNS address and the corresponding IP address of MySQL RP V2 are different. To get the new public IP, you can contact support to require a DRP break glass and find the MySQLRPVM1130-PublicIP resource. You can also run "nslookup mysqlrp.dbadapter.\<fqdn\>" from a client machine that already passed the endpoint test to find out the public IP.
 
 ### Validate the upgrade is successful
 
