@@ -1,11 +1,11 @@
 ---
 title: Register-CustomDnsServer
 description: Learn about the script to register custom DNS servers with Azure Stack Hub DNS - Register-CustomDnsServer.
-author: PatAltimore
+author: BryanLa
 
 ms.topic: reference
 ms.date: 04/27/2020
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---
