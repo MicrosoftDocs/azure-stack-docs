@@ -1,11 +1,11 @@
 ---
 title: Invoke-AzureStackOnDemandLog endpoint for Azure Stack Hub
 description: Reference for PowerShell Azure Stack privileged endpoint - Invoke-AzureStackOnDemandLog
-author: PatAltimore
+author: BryanLa
 
 ms.topic: reference
 ms.date: 04/27/2020
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---

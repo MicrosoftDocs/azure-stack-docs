@@ -1,11 +1,11 @@
 ---
 title: Replace a power supply unit
 description: Learn how to replace a power supply unit
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: 
 ms.lastreviewed: 
 
