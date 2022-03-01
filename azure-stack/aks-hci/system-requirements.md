@@ -247,7 +247,7 @@ You can cut and paste the allow list for Firewall URL exceptions.
     "Notes": "Used periodically to send Microsoft required diagnostic data from control plane nodes."
 }]
 ```
-
+[allow-list-end-points.json](allow-list-end-points.json)
 ----
 
 #### Arc for Kubernetes requirements
