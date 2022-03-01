@@ -69,7 +69,7 @@ Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 
 Use **ExpireInMinutes** parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access cannot be established.
 
-You can set **ExpireInDay** a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
+You can set **ExpireInMinutes** a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
 If duration is not defined the remote session will expire in 480 (8 hours) by default.
 

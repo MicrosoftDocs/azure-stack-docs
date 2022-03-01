@@ -126,9 +126,9 @@ You must have an Azure resource group in the East US, Southeast Asia, or West Eu
 
 ## Compute requirements
 
-- For test environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 8 (recommended 16) CPU cores and at least 256 GB RAM.
+- For test environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of eight servers in the cluster. We recommend that each server in the cluster have at least 8 (recommended 16) CPU cores and at least 256 GB RAM.
 
-- For production environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of four servers in the cluster. We recommend that each server in the cluster have at least 16 (recommended 32) CPU cores and at least 256 GB RAM. The final sizing will depend on the application and number of worker nodes you are planning to deploy on the Azure Stack HCI cluster.
+- For production environments: An Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster with a maximum of eight servers in the cluster. We recommend that each server in the cluster have at least 16 (recommended 32) CPU cores and at least 256 GB RAM. The final sizing will depend on the application and number of worker nodes you are planning to deploy on the Azure Stack HCI cluster.
 
 - While you can technically run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter, we do not recommend doing so. However, you can run Azure Kubernetes Service on a single node Windows Server 2019 Datacenter for evaluation purposes.
 

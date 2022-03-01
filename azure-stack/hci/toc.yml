@@ -12,6 +12,8 @@
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
+  - name: Hybrid capabilities with Azure services
+    href: hybrid-capabilities-with-azure-services.md
   - name: Use Azure Benefits
     href: ./manage/azure-benefits.md
   - name: FAQ
