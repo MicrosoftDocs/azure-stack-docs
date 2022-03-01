@@ -161,8 +161,6 @@ You can cut and paste the allowlist for Firewall URL exceptions.
 
 :::code language="json" source="data/allow-list-end-points.json":::
 
-You can download [data/allow-list-end-points.json](/azure-stack/aks-hci/data/allow-list-end-points.json).
-
 ----
 
 #### Arc for Kubernetes requirements
