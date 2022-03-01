@@ -143,7 +143,9 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 | 65000            | wssdcloudagent GPRC authentication port  |
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
-### [Table](#tab/url-table)
+### [Table](#tab/allow-table)
+
+The following URLs need to be added to your allow list.
 
 | URL        | Port | Notes |
 | ---------- | ---- | ---- |
@@ -165,8 +167,9 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | arck8onboarding.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
 | v20.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host. |
 | adhs.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from control plane nodes. |
+
 ---
-### [Json] (#tab/allow-json)
+### [Json](#tab/allow-json)
 
 You can cut and paste the allow list for Firewall URL exceptions.
 
