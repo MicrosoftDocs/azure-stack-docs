@@ -391,24 +391,25 @@ If you cannot enable dynamic DNS updates in your DNS environment, you must pre-c
 
 ### Is there a fee to use Arc management for VMs on Azure Stack HCI cluster?
 
-VM management for Azure Stack HCI from Azure control plane does not have any additional fee. Some VM extensions may have a fee.
+VM management for Azure Stack HCI from the Azure control plane does not have any additional fees. Some VM extensions may have a fee.
 
 ### Can I use the same name for gallery image projections & will the existing VMs use the new image?
 
-Two images with the same name will result in errors at the time of creating them. This is true for other resources as well such as Virtual networks, virtual hard disks etc. An updated image will not change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
+Two images with the same name will result in errors at the time of creating them. This is true for other resources as well, such as virtual networks, virtual hard disks etc. An updated image will not change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
 
 ### How can I delete a gallery image?
 
-Gallery images & all other entities can be removed from CLI or from Azure Portal. See examples [here](https://docs.microsoft.com/en-us/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#uninstall-azure-arc-resource-bridge).
+Gallery images and all other entities can be removed from CLI or from the Azure portal. [See examples here](https://docs.microsoft.com/en-us/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#uninstall-azure-arc-resource-bridge).
 
 ### If I delete a gallery image would all the VMs also get deleted which are deployed?
 
-Deleting a gallery image does not affect the VMs that were created using that gallery image. The VMs will not be able to show the image name in VM details.
+Deleting a gallery image does not affect the VMs that were created using that gallery image. The VMs will not be able to show the image name in the VM details.
 
 ### If I re-install the Arc Resource Bridge will the VMs also be re-deployed?
 
-If an Arc Resource Bridge is deleted, then management through Azure control plane(Portal, Az CLI etc.) will be unavailable. The VMs will remain on the cluster and would be only manageable through on-premises tools (Windows Admin Center, PowerShell etc.)
-Re-deploying an Arc Resource Bridge will not enabled Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from Azure control plane.
+If an Arc Resource Bridge is deleted, then management through the Azure control plane (portal, Az CLI etc.) will be unavailable. The VMs will remain on the cluster and are only manageable through on-premises tools (Windows Admin Center, PowerShell etc.).
+
+Re-deploying an Arc Resource Bridge will not enable Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from the Azure control plane.
 
 
 ## Next steps
