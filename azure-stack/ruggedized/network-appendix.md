@@ -1,8 +1,8 @@
 ---
 title: Azure Stack Hub ruggedized networking appendix
 description: Appendices for Azure Stack Hub ruggedized networking. 
-author: PatAltimore
-ms.author: patricka
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 10/14/2020

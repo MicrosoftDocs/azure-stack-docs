@@ -88,7 +88,7 @@ Your machine running the Windows Admin Center gateway must be:
 
 The Azure Stack HCI cluster or Windows Server 2019/2022 Datacenter failover cluster has the following requirements:
 
-- A maximum of four servers in the cluster
+- A maximum of eight servers in the cluster
 - 1 TB of available capacity in the storage pool for Azure Kubernetes Service
 - At least 30 GB of available memory for running Azure Kubernetes Service VMs
 - All servers in the cluster must use the EN-US region and language selection

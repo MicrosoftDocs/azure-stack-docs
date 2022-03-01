@@ -1,10 +1,10 @@
 ---
 title: Register Windows Admin Center with Azure
 description: How to register your Windows Admin Center gateway with Azure.
-author: prasidharora
-ms.author: praror
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 07/02/2021
+ms.date: 02/24/2022
 ---
 
 # Register Windows Admin Center with Azure
@@ -15,6 +15,9 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
    > [!IMPORTANT]
    > In order to use Windows Admin Center to register Azure Stack HCI clusters, your Windows Admin Center gateway must be registered to an Azure Active Directory (Azure AD) application ID that is approved by your organization's Azure AD admin. Register Windows Admin Center on the same management PC you plan to use to register your cluster(s), using the same Azure Active Directory (tenant) ID.
+
+   > [!NOTE]
+   > If your network is configured to use a proxy server for internet connection, it is required that you configure the proxy settings on the Windows Admin Center gateway settings. After the proxy settings are configured, to avoid registration failures restart the **ServerManagmentGateway** (Windows Admin Center) service on the server running Windows Admin Center before proceeding with Azure AD registration.
 
 ## Complete the registration process
 

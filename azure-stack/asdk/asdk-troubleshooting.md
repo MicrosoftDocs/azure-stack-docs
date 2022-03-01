@@ -1,11 +1,11 @@
 ---
 title: Troubleshoot the ASDK 
 description: Learn how to troubleshoot Azure Stack Development Kit (ASDK).
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: article
 ms.date: 01/06/2021
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 01/06/2021
 

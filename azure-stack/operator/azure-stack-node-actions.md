@@ -1,11 +1,11 @@
 ---
 title: Scale unit node actions in Azure Stack Hub 
 description: Learn about scale unit node actions, including power on, power off, disable, resume, and how to view node status in Azure Stack Hub integrated systems.
-author: PatAltimore
+author: BryanLa
 
 ms.topic: how-to
 ms.date: 1/19/2021
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 1/19/2021
 

@@ -1,0 +1,73 @@
+[{
+    "URL": "msk8s.api.cdp.microsoft.com",
+    "Port": "443 ",
+    "Notes ": "Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS.Occurs when running Set - AksHciConfig and at any time you download from SFS."
+}, {
+    "URL": "msk8s.b.tlu.dl.delivery.mp.microsoft.com",
+    "Port": "80",
+    "Notes": "Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS."
+}, {
+    "URL": "msk8s.f.tlu.dl.delivery.mp.microsoft.com",
+    "Port": "80",
+    "Notes": "Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS."
+}, {
+    "URL": "login.microsoftonline.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "login.windows.net",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "management.azure.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "www.microsoft.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "msft.sts.microsoft.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "graph.windows.net",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "ecpacr.azurecr.io",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "*.blob.core.windows.net  US endpoint: wus2replica*.blob.core.windows.net",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "mcr.microsoft.com, *.mcr.microsoft.com",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "akshci.azurefd.net",
+    "Port": "443",
+    "Notes": "Required for AKS on Azure Stack HCI billing when running Install-AksHci."
+}, {
+    "URL": "api.github.com",
+    "Port": "443",
+    "Notes": "Required for installing AKS on Azure Stack HCI management cluster (AKS host)."
+}, {
+    "URL": "objects.githubusercontent.com",
+    "Port": "443",
+    "Notes": "Required for installing AKS on Azure Stack HCI management cluster (AKS host)."
+}, {
+    "URL": "arck8onboarding.azurecr.io",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "v20.events.data.microsoft.com",
+    "Port": "443",
+    "Notes": "Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host."
+}, {
+    "URL": "adhs.events.data.microsoft.com",
+    "Port": "443",
+    "Notes": "Used periodically to send Microsoft required diagnostic data from control plane nodes."
+}]

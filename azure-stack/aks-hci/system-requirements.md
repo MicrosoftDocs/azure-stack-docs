@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 2/16/2022
+ms.lastreviewed: 03/01/2022
 ms.reviewer: abha
-ms.date: 08/19/2021
+ms.date: 03/01/2022
 ---
 
 # System requirements for Azure Kubernetes Service on Azure Stack HCI
@@ -28,7 +28,7 @@ For Azure Kubernetes Service on Azure Stack HCI or Windows Server Datacenter to 
 - If you are using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent release.
 ## Hardware requirements
 
-Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you are using are Windows ServerCertified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
 ### Maximum supported hardware specifications
 
@@ -71,9 +71,9 @@ For an Azure Stack HCI cluster, you have two supported storage configurations fo
 
 Systems that only have HDD-based storage are not supported by Azure Stack HCI, and thus are not recommended for running AKS on Azure Stack HCI. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](../hci/concepts/choose-drives.md). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
 
-For a Windows Server Datacenter -based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
+For a Windows Server Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
 
-For single-node Windows Server 2019 deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
+For single-node Windows Serverdeployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
 
 
 ## Network requirements
@@ -101,9 +101,13 @@ In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to
 > [!NOTE]
  > The virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your data center.
 
-- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
+- **Static IP networking**
 
-- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
+    The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers and any Kubernetes services you run on top of your cluster.
+
+- **DHCP networking**
+
+    The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster are still allocated static IP addresses.
 
 ### Minimum IP address reservation
 
@@ -140,6 +144,8 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 
+### [Allowlist (table)](#tab-url-table)
+
 | URL        | Port | Notes |
 | ---------- | ---- | ---- |
 | msk8s.api.cdp.microsoft.com | 443 | Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running `Set-AksHciConfig` and at any time you download from SFS. |
@@ -160,6 +166,88 @@ Firewall URL exceptions are needed for the Windows Admin Center machine and all 
 | arck8onboarding.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
 | v20.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host. |
 | adhs.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from control plane nodes. |
+---
+### Allowlist (json)
+
+You can cut and paste the allow list for Firewall URL exceptions.
+
+```json
+[{
+    "URL": "msk8s.api.cdp.microsoft.com",
+    "Port": "443 ",
+    "Notes ": "Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS.Occurs when running Set - AksHciConfig and at any time you download from SFS."
+}, {
+    "URL": "msk8s.b.tlu.dl.delivery.mp.microsoft.com",
+    "Port": "80",
+    "Notes": "Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS."
+}, {
+    "URL": "msk8s.f.tlu.dl.delivery.mp.microsoft.com",
+    "Port": "80",
+    "Notes": "Used when downloading the AKS on Azure Stack HCI product catalog, product bits, and OS images from SFS. Occurs when running Set-AksHciConfig and at any time you download from SFS."
+}, {
+    "URL": "login.microsoftonline.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "login.windows.net",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "management.azure.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "www.microsoft.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "msft.sts.microsoft.com",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "graph.windows.net",
+    "Port": "443",
+    "Notes": "Used for logging into Azure when running Set-AksHciRegistration."
+}, {
+    "URL": "ecpacr.azurecr.io",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "*.blob.core.windows.net  US endpoint: wus2replica*.blob.core.windows.net",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "mcr.microsoft.com, *.mcr.microsoft.com",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "akshci.azurefd.net",
+    "Port": "443",
+    "Notes": "Required for AKS on Azure Stack HCI billing when running Install-AksHci."
+}, {
+    "URL": "api.github.com",
+    "Port": "443",
+    "Notes": "Required for installing AKS on Azure Stack HCI management cluster (AKS host)."
+}, {
+    "URL": "objects.githubusercontent.com",
+    "Port": "443",
+    "Notes": "Required for installing AKS on Azure Stack HCI management cluster (AKS host)."
+}, {
+    "URL": "arck8onboarding.azurecr.io",
+    "Port": "443",
+    "Notes": "Required to pull container images when running Install-AksHci."
+}, {
+    "URL": "v20.events.data.microsoft.com",
+    "Port": "443",
+    "Notes": "Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host."
+}, {
+    "URL": "adhs.events.data.microsoft.com",
+    "Port": "443",
+    "Notes": "Used periodically to send Microsoft required diagnostic data from control plane nodes."
+}]
+```
+
+----
 
 #### Arc for Kubernetes requirements
 > [!NOTE]
@@ -186,8 +274,9 @@ Here are the requirements for the machine running the Windows Admin Center gatew
 
 ## Azure requirements
 
-`Summary`
+You will need to connect to your Azure account.
 ### Azure account and subscription
+
 If you don't already have an Azure account, [create one](https://azure.microsoft.com). You can use an existing subscription of any type:
 - Free account with Azure credits for [students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card
@@ -195,6 +284,7 @@ If you don't already have an Azure account, [create one](https://azure.microsoft
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
 ### Azure AD permissions, role and access level
+
 You must have have sufficient permissions to register an application with your Azure AD tenant.
 
 To check that you have sufficient permissions, follow the information below:

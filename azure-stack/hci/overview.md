@@ -85,6 +85,8 @@ After you [register your Azure Stack HCI cluster](deploy/register-with-azure.md)
 
 You can also subscribe to additional Azure hybrid services.
 
+For more details on the cloud service components of Azure Stack HCI, see [Azure Stack HCI hybrid capabilities with Azure services](hybrid-capabilities-with-azure-services.md).
+
 ## What you need for Azure Stack HCI
 
 To get started, you'll need:

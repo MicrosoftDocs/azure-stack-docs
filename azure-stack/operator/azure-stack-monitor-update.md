@@ -1,11 +1,11 @@
 ---
 title: Monitor updates in Azure Stack Hub using the privileged endpoint 
 description: Learn how to use the privileged endpoint to monitor update status for Azure Stack Hub integrated systems.
-author: PatAltimore
+author: BryanLa
 
 ms.topic: how-to
 ms.date: 03/04/2020
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 11/05/2019
 

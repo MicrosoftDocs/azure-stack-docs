@@ -23,13 +23,13 @@ Once completed, the following application runs in your local development environ
 
 :::image type="content" source="./media/azure-vote-local.png" alt-text="This image shows the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
 
-In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into a Azure Kubernetes Service on Azure Stack HCI cluster.
+In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into an Azure Kubernetes Service on Azure Stack HCI cluster.
 
 ## Before you begin
 
 This tutorial assumes a basic understanding of core Docker concepts such as containers, container images, and `docker` commands. For a primer on container basics, see [Get started with Docker][docker-get-started].
 
-To complete this tutorial, you need a local Docker development environment running Linux containers. Docker provides packages that configure Docker on a [Windows][docker-for-windows].
+To complete this tutorial, you need a local Docker development environment running Linux containers. Docker provides packages that configure Docker on [Windows][docker-for-windows].
 
 > [!NOTE]
 > Azure Kubernetes Service on Azure Stack HCI does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
@@ -115,7 +115,7 @@ d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoi
 
 To see the running application, enter `http://localhost:8080` in a local web browser. The sample application loads, as shown in the following example:
 
-:::image type="content" source="./media/azure-vote-local.png" alt-text="Screenshot showing the container image that hte Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
+:::image type="content" source="./media/azure-vote-local.png" alt-text="Screenshot showing the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
 
 ## Clean up resources
 

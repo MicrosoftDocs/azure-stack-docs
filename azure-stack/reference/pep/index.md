@@ -1,11 +1,11 @@
 ---
 title: Azure Stack Hub privileged endpoint reference
 description: Reference for PowerShell Azure Stack privileged endpoint
-author: PatAltimore
+author: BryanLa
 
 ms.topic: reference
 ms.date: 02/19/2021
-ms.author: patricka
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/27/2020
 ---
