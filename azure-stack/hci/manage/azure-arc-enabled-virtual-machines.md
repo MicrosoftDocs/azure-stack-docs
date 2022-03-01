@@ -399,7 +399,7 @@ Two images with the same name will result in errors at the time of creating them
 
 ### How can I delete a gallery image?
 
-Gallery images and all other entities can be removed from CLI or from the Azure portal. [See examples here](https://docs.microsoft.com/en-us/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#uninstall-azure-arc-resource-bridge).
+Gallery images and all other entities can be removed from CLI or from the Azure portal. [See examples here](azure-arc-enabled-virtual-machines.md#uninstall-azure-arc-resource-bridge).
 
 ### If I delete a gallery image would all the VMs also get deleted which are deployed?
 
