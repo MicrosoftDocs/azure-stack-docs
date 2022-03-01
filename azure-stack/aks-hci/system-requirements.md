@@ -161,7 +161,7 @@ You can cut and paste the allowlist for Firewall URL exceptions.
 
 :::code language="json" source="data/allow-list-end-points.json":::
 
-You can download [data/allow-list-end-points.json](allow-list-end-points.json).
+You can download [data/allow-list-end-points.json](data/allow-list-end-points.json).
 
 ----
 
@@ -210,7 +210,7 @@ To check that you have sufficient permissions, follow the information below:
 
 If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
-If you don't have enough permissions to register an application and your admin can’t give you these permissions, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
+If you don't have enough permissions to register an application and your admin can't give you these permissions, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
 ### Azure subscription role and access level
 To check your access level, navigate to your subscription, select **Access control (IAM)** on the left-hand side of the Azure portal, and then select **View my access**.
