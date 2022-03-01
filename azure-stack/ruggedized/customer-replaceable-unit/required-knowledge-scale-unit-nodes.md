@@ -1,11 +1,11 @@
 ---
 title: Required knowledge for working with scale unit nodes in Azure Stack Hub ruggedized
 description: Learn about the required knowledge for working with scale unit nodes in Azure Stack Hub ruggedized
-author: PatAltimore
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 11/13/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: 
 ms.lastreviewed: 
 
