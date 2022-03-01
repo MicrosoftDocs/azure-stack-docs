@@ -8,6 +8,9 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 ms.date: 06/24/2021
 #Customer intent: As an IT Pro, I want AKS on Azure Stack HCI so that I can easily deploy Kubernetes on-premises to orchestrate my containerized workloads.
+
+#Intent: As a system operator, I want to learn about AKS on HCI so that I can offer a managed Kubernetes cluster to my on-premises system users.
+#Keyword: on-premises Kubernetes
 ---
 # What is Azure Kubernetes Service on Azure Stack HCI?
 
