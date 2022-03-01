@@ -4,7 +4,7 @@ description: Learn how to use the cross-platform command-line interface (CLI) to
 author: BryanLa
 
 ms.topic: article
-ms.date: 11/22/2021
+ms.date: 02/28/2022
 ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 11/05/2021
@@ -34,7 +34,7 @@ You can install the Azure CLI to manage Azure Stack Hub with a Windows or Linux 
 
     ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. Make a note of the CLI's Python location. 
+4. Make a note of the CLI's Python location. 
 
 ## Add certificate
 
@@ -86,7 +86,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
  
 6. Sign in to your Azure Stack Hub environment by using the `az login` command.
 
-    You can sign in to the Azure Stack Hub environment using your user credentials, or with a [service principal](/azure/active-directory/develop/app-objects-and-service-principals) (SPN) provided to you by your cloud operator. 
+    You can sign in to the Azure Stack Hub environment using your user credentials, or with a [service principal](../operator/give-app-access-to-resources.md) (SPN) provided to you by your cloud operator. 
 
    - Sign in as a *user*: 
 
@@ -195,7 +195,7 @@ This section walks you through setting up CLI if you're using Active Directory F
     >[!NOTE]  
     >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2020-09-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+6. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](../operator/give-app-access-to-resources.md).
 
    - Sign in as a *user*:
 
@@ -205,11 +205,8 @@ This section walks you through setting up CLI if you're using Active Directory F
      az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>   --profile "2020-09-01-hybrid"
      ```
 
-     > [!NOTE]
-     > If your user account has multifactor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
+   - Sign in as a *service principal*:
 
-   - Sign in as a *service principal*: 
-    
      Prepare the .pem file to be used for service principal login.
 
      On the client machine where the principal was created, export the service principal certificate as a pfx with the private key located at `cert:\CurrentUser\My`. The cert name has the same name as the principal.
@@ -221,7 +218,7 @@ This section walks you through setting up CLI if you're using Active Directory F
      ```azurecli  
      az login --service-principal \
       -u <Client ID from the Service Principal details> \
-      -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+      -p <Client secret (password), or certificate's fully qualified name, such as, C:\certs\spn.pem>
       --tenant <Tenant ID> \
       --debug 
      ```
@@ -406,7 +403,7 @@ Use the following steps to connect to Azure Stack Hub:
       ```azurecli  
       az login --service-principal \
         -u <Client ID from the Service Principal details> \
-        -p <Certificate's fully qualified name, such as, C:\certs\spn.pem>
+        -p <Client secret (password), or certificate's fully qualified name, such as, C:\certs\spn.pem>
         --tenant <Tenant ID> \
         --debug 
       ```
