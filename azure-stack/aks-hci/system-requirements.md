@@ -151,16 +151,17 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 ### [Table](#tab/allow-table)
 
-The following URLs need to be added to your allowlist.
+The following URLs need to be added to your allow list.
 
-[!INCLUDE [URL Allow table](includes/data-allow-table.md)]
+[!INCLUDE [URL allow table](includes/data-allow-table.md)]
 
 ### [Json](#tab/allow-json)
 
-You can cut and paste the allowlist for Firewall URL exceptions.
+You can cut and paste the allow list for Firewall URL exceptions.
 
 :::code language="json" source="data/allow-list-end-points.json":::
 
+Download [URL allow list (json](data/allow-list-end-points.json).
 ----
 
 #### Arc for Kubernetes requirements
