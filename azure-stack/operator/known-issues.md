@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/05/2022
+ms.date: 03/02/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
@@ -86,6 +86,22 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are Metering, and Consumption.
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
+
+### Create DNS blade results in portal crashing
+
+- Applicable: This issue applies to all supported releases with hotfix version 1.2108.2.81.
+- Cause: Two specific flows sometimes end with the user portal crashing:
+  - **Create a resource > Networking > DNS zone**
+  - **Create a resource > Networking > Connection**
+- Remediation: The following workflow can ensure there are no crashes:
+  - **All services > DNS zone > + Add** or **All services > Connections > + Add**
+- Occurrence: Common
+
+### Portal shows "Unidentified User" instead of user email
+
+- Applicable: This issue applies to all systems with hotfix version 1.2108.2.81 that are using an Azure AD account without an email address in the account profile.
+- Remediation: Sign in to the Azure portal, and add an email address to the Azure AD account that is experiencing this issue.
 - Occurrence: Common
 
 <!-- ## Storage -->
