@@ -91,7 +91,7 @@ Use the following steps to deploy and configure Velero:
    > If you're using a different subscription for backups and cluster resources, make sure to specify both subscriptions in the `az` command using `--scopes`.
 
    ```azurecli
-   AZURE_CLIENT_SECRET=`az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv \
+   AZURE_CLIENT_SECRET=`az ad sp create-for-rbac --name "velero" --role "Contributor" --scopes /subscriptions/<subscription_id> --query 'password' -o tsv \
    --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID[ /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID]`
    ```
 
