@@ -59,7 +59,7 @@ While you **can** run AKS on a single node Windows Server Datacenter, we don't r
 
 Other compute requirements for AKS on Azure Stack HCI are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
-You must install the Azure Stack HCI operating system on each server in the cluster using the `EN-US` region and language selections. You can’t change these settings after installation.
+You must install the Azure Stack HCI operating system on each server in the cluster using the `EN-US` region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 
@@ -162,6 +162,7 @@ You can cut and paste the allow list for Firewall URL exceptions.
 :::code language="json" source="data/allow-list-end-points.json":::
 
 Download [URL allow list (json](data/allow-list-end-points.json).
+
 ----
 
 #### Arc for Kubernetes requirements
