@@ -91,10 +91,10 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Create DNS blade results in portal crashing
 
 - Applicable: This issue applies to all supported releases with hotfix version 1.2108.2.81.
-- Cause: Two specific flows sometimes end with the user portal crashing.
+- Cause: Two specific flows sometimes end with the user portal crashing:
   - **Create a resource > Networking > DNS zone**
   - **Create a resource > Networking > Connection**
-- Remediation: This issue will be fixed in a future hotfix, but the following flow can ensure there are no crashes:
+- Remediation: The following workflow can ensure there are no crashes:
   - **All services > DNS zone > + Add** or **All services > Connections > + Add**
 - Occurrence: Common
 
