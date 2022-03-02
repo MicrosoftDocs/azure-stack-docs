@@ -102,7 +102,7 @@ Use a Service Principal to access the Azure Key Vault instance that was created 
 The following command provides the Client Secret:
 
 ```azurecli
-az ad sp create-for-rbac --role Contributor --name http://secrets-store-test --query 'password' -otsv
+az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscription-id> --name http://secrets-store-test --query 'password' -otsv
 ```
 
 The following command provides the Client ID:
