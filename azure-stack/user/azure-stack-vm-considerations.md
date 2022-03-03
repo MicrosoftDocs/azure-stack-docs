@@ -170,7 +170,7 @@ Arc enabled servers do not support installing the connected machine agent on vir
 
 ## Microsoft Office server products on Azure Stack Hub VMs
 
-In addition to the list of server products found in [Microsoft server software support for Azure virtual machines](/azure/virtual-machines/server-software-support), support for Microsoft Office server products on Azure Stack Hub VMs is clarified as follows:
+In addition to the list of server products found in [Microsoft server software support for Azure virtual machines](/troubleshoot/azure/virtual-machines/server-software-support), support for Microsoft Office server products on Azure Stack Hub VMs is clarified as follows:
 
 | Product | Supported | Source | Notes |
 | --------| --------- | ------ | ----- |
