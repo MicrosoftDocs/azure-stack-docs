@@ -99,8 +99,18 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. When finished, click **Next: Deploy**.
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 
-> [!NOTE]
-> If deployment fails, delete all Network Controller VMs and their VHDs from all server nodes, then run the deployment wizard again.
+### Redeploy SDN Network Controller
+
+If the Network Controller deployment fails or you want to deploy it again, do the following:
+
+1. Delete all Network Controller VMs and their VHDs from all server nodes.
+1. Remove the following registry key from all hosts by running this command:
+
+   ```powershell
+    Remove-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\NcHostAgent\Parameters\' -Name Connections
+   ```
+
+1. Run the deployment wizard again.
 
 ## Deploy SDN Software Load Balancer
 
