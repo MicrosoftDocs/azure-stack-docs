@@ -174,9 +174,9 @@ In addition to the list of server products found in [Microsoft server software s
 
 | Product | Supported | Source | Notes |
 | --------| --------- | ------ | ----- |
-| Exchange | No | /exchange/plan-and-deploy/virtualization | Azure Stack Hub does not meet the virtualization requirements for Exchange. | 
-| SharePoint | Yes | /sharepoint/install/deploy-sharepoint-virtual-machines | Supported with a few limitations listed. | 
-| Skype | No | /skypeforbusiness/virtualization-guidance | Skype does not support live migration, a core virtualization feature used in Azure Stack Hub.  | 
+| Exchange | No | [Exchange Server virtualization](/exchange/plan-and-deploy/virtualization) | Azure Stack Hub does not meet the virtualization requirements for Exchange. | 
+| SharePoint | Yes | [Plan for virtualization of SharePoint Server](/sharepoint/install/deploy-sharepoint-virtual-machines) | Supported with a few limitations listed. | 
+| Skype | No | [Virtualization support for Skype for Business Server 2019](/skypeforbusiness/virtualization-guidance) | Skype does not support live migration, a core virtualization feature used in Azure Stack Hub.  | 
 
 
 ## Next steps
