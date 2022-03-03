@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/18/2022
+ms.date: 03/02/2022
 ms.author: sethm
 ms.reviewer: vrajasekaran
 ms.lastreviewed: 05/28/2020
@@ -57,6 +57,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## Deprecated marketplace items
 
+- 03/01/2022: Horde Groupware Webmail
 - 01/18/2022: eXo Platform
 - 06/29/2021: Open Atrium
 - 06/22/2021: SharePoint Server 2013 Trial
