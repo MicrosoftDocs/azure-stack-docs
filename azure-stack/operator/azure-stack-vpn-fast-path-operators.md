@@ -69,7 +69,7 @@ There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two 
 
 Gateway connections failover are expected during an OEM or an Azure Stack Hub update, as the VMs are patched and live migrated. This can result in a temporary disconnect of the tunnels.
 
-![Gateway VM failover diagram](media/azure-stack-vpn-operator/azure-vpn-gateway-pool-failover.png)
+![Gateway VM failover diagram](media/azure-stack-vpn-fast-path-operators/azure-vpn-gateway-pool-failover.png)
 
 ## New Gateway Pool total capacity
 
@@ -94,7 +94,7 @@ The following table shows the gateway types and the estimated aggregate throughp
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing is not supported for the Basic SKU.
 
-![Gateway Pool - Azure VPN Fast Path Disabled](media/azure-stack-vpn-operator/azure-vpn-fast-path-disabled.png)
+![Gateway Pool - Azure VPN Fast Path Disabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-disabled.png)
 
 ### Estimated aggregate tunnel throughput by SKU with VPN Fast Path Enabled
 
@@ -116,7 +116,7 @@ the two active Gateway VMs, each Gateway VM has a capacity of 5 Gbps. The amount
 **(2)** - Max tunnels is the total per Azure Stack Hub deployment for all subscriptions.  
 **(3)** - BGP routing is not supported for the Basic SKU.
 
-![Gateway Pool - Azure VPN Fast Path Enabled](media/azure-stack-vpn-operator/azure-vpn-fast-path-enabled.png)
+![Gateway Pool - Azure VPN Fast Path Enabled](media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enabled.png)
 
 ## Monitoring Gateway Pool usage from the Azure Stack Hub admin portal
 

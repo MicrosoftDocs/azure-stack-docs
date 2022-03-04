@@ -54,7 +54,7 @@ https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 
 Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp.
 
-![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
+![Azure VNG new SKUs](media/azure-stack-vpn-fast-path-user/vpn-fast-path-vng-new-skus.png)
 
 ### Create virtual network gateways with new SKUs from PowerShell
 
