@@ -234,6 +234,8 @@
       href: azure-stack-connect-expressroute.md  
     - name: Enable CLI for users
       href: azure-stack-cli-admin.md
+    - name: VPN Fast Path
+      href: azure-stack-vpn-fast-path-operators.md
     - name: Set up management environment
       items:
       - name: Install PowerShell Az

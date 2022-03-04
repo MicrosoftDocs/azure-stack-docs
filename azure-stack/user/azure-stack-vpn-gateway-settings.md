@@ -5,8 +5,8 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 01/24/2022
 ms.author: sethm
-ms.reviewer: thoroet
-ms.lastreviewed: 12/27/2019
+ms.reviewer: cedward
+ms.lastreviewed: 02/03/2022
 
 # Intent: As an Azure Stack user, I want to configure my VPN gateway settings so that my VPN gateway works the way I want it to.
 # Keyword: azure stack vpn gateway settings
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/27/2019
 
 A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack Hub and a remote VPN gateway. The remote VPN gateway can be in Azure, a device in your datacenter, or a device on another site. If there is network connectivity between the two endpoints, you can establish a secure Site-to-Site (S2S) VPN connection between the two networks.
 
-A VPN gateway connection relies on the configuration of multiple resources, each of which contains configurable settings. This article describes the resources and settings that relate to a VPN gateway for a virtual network that you create in the Resource Manager deployment model. You can find descriptions and topology diagrams for each connection solution in [Create VPN gateways for Azure Stack Hub](azure-stack-vpn-gateway-about-vpn-gateways.md).
+A VPN gateway relies on the configuration of multiple resources, each of which contains configurable settings. This article describes the resources and settings that relate to a VPN gateway for a virtual network that you create in the Resource Manager deployment model. You can find descriptions and topology diagrams for each connection solution in [Create VPN gateways for Azure Stack Hub](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 ## VPN gateway settings
 
@@ -34,31 +34,57 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
    -VpnType RouteBased
 ```
 
-### Gateway SKUs
+### Gateway SKUs without VPN Fast Path Enabled
 
-When you create a virtual network gateway, you must specify the gateway SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughputs, features, and SLAs.
+When you create a virtual network gateway, you must specify the SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughput, features, and SLAs.
 
-You can have 10 high performance gateways or 20 basic and standard before your reach the maximum capacity. The maximum can also be reached for a total aggregate throughput of 2 Gbps. 
+You can have 10 high performance gateways or 20 basic and standard before your reach the maximum capacity. The maximum can also be reached for a total aggregate throughput of 4 Gbps.
 
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
-| | Tunnel throughput |VPN gateway maximum IPsec tunnels |
-|-------|-------|-------|
-|**Basic SKU**  | 100 Mbps    | 20    |
-|**Standard SKU**   | 100 Mbps  | 20 |
-|**High Performance SKU** | 200 Mbps | 10 |
+| SKU | Max VPN Connection throughput | Max # of connections per active GW VM | Max # of VPN Connections per stamp |
+|-------|-------|-------|-------|
+|**Basic**| 100 Mbps Tx/Rx | 10 | 20 |
+|**Standard** | 100 Mbps Tx/Rx | 10 | 20 |
+|**High Performance** | 200 Mbps Tx/Rx | 5 | 10 |
 
-### Resizing gateway SKUs
+### Gateway SKUs with VPN Fast Path Enabled
 
-Azure Stack Hub does not support a resize of SKUs between the supported legacy SKUs.
+With the release of VPN Fast Path Public Preview, Azure Stack Hub supports three new SKUs with higher throughput. It also increases the overall stamp capacity from 4 Gbps to 10 Gbps.
 
-Similarly, Azure Stack Hub does not support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
+New limits and throughput's will be enabled once VPN Fast Path is enabled on your Azure Stack Stamp.
+Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
-### Configure the gateway SKU
+| SKU | Max VPN Connection throughput |Max # of connections per active GW VM | Max # of VPN Connections per stamp |
+|-------|-------|-------|-------|
+|**Basic** | 100 Mbps Tx/Rx | 25 | 50 |
+|**Standard** | 100 Mbps Tx/Rx | 25 | 50 |
+|**High Performance** | 200 Mbps Tx/Rx | 12 | 24 |
+|**VPNGw1**| 650 Mbps Tx/Rx | 3 | 6 |
+|**VPNGw2**| 1000 Mbps Tx/Rx | 2 | 4 |
+|**VPNGw3**| 1250 Mbps Tx/Rx | 2 | 4 |
+
+### Resizing virtual network gateways SKUs
+
+Azure Stack Hub does not support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
+
+New virtual network gateways and connections must be created in order to use the new SKUs enabled by VPN Fast Path.
+
+### Configure the virtual network gateway SKU
 
 #### Azure Stack Hub portal
 
-If you use the Azure Stack Hub portal to create a Resource Manager virtual network gateway, you can select the gateway SKU by using the dropdown list. The options correspond to the gateway type and VPN type that you select.
+If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) will only be visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the URL and refreshing.
+
+The following URL example makes the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
+
+```http
+https://portal.local.azurestack.local/?azurestacknewvpnskus=true
+```
+
+Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp.
+
+![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
 
 #### PowerShell
 
@@ -106,16 +132,25 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
    -GatewayType Vpn -VpnType RouteBased
 ```
 
-### Gateway requirements
+### Virtual network gateways supported configurations when VPN Fast Path is not enabled
 
-The following table lists the requirements for VPN gateways.
-
-| |Policy-based Basic VPN Gateway | Route-based Basic VPN Gateway | Route-based Standard VPN Gateway | Route-based High Performance VPN Gateway|
+|| **VPN Type** | **Connection type**| **Active Routing support (BGP)** | **Remote endpoint NAT-T Enabled** |
 |--|--|--|--|--|
-| **Site-to-Site connectivity (S2S connectivity)** | Not supported | Route-based VPN configuration | Route-based VPN configuration | Route-based VPN configuration |
-| **Authentication method**  | Not supported | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  |
-| **Maximum number of S2S connections**  | Not supported | 20 | 20| 10|
-|**Active routing support (BGP)** | Not supported | Not supported | Supported, up to 150 routes | Supported, up to 150 routes |
+|Basic VNG SKU| Route-based VPN | IPSec Pre-shared key | Not Supported | Not required |
+|Standard VNG SKU | Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Not required |
+|High-Performance VNG SKU| Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Not required |
+
+### Virtual network gateways supported configurations when VPN Fast Path is enabled
+
+|| **VPN Type** | **Connection type**| **Active routing support (BGP)** | **Remote endpoint NAT-T Enabled** |
+|--|--|--|--|--|
+|Basic VNG SKU| Route-based VPN | IPSec Pre-shared key | Not Supported | Required  |
+|Standard VNG SKU | Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Required  |
+|High-Performance VNG SKU| Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Required  |
+|VPNGw1 VNG SKU| Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Required |
+|VPNGw2 VNG SKU| Route-based VPN | IPSec Pre-shared key | Supported, up to 150 routes | Required  |
+|VPNGw2 VNG SKU| Route-based VPN  | IPSec Pre-shared key | Supported, up to 150 routes | Required  |
+
 
 ### Gateway subnet
 
