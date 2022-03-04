@@ -20,7 +20,7 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 ## Update
 
-After applying the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
+After you apply the 2002 update, an alert for an "Invalid Time Source" may incorrectly appear in the Administrator portal. This false-positive alert can be ignored and will be fixed in an upcoming release. 
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
@@ -56,7 +56,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Create Managed Disk snapshot
 
 - Applicable: This issue applies to release 2002.
-- Cause: In the user portal, when creating a Managed Disk snapshot, the **Account type** box is empty. When you select the **Create** button with an empty account type, the snapshot creation fails.
+- Cause: In the user portal, when you create a Managed Disk snapshot, the **Account type** box is empty. When you select the **Create** button with an empty account type, the snapshot creation fails.
 - Remediation: Select an account type from the **Account type** dropdown list, then create the snapshot.
 - Occurrence: Common
 
@@ -71,27 +71,27 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### DenyAllOutbound rule cannot be created
 
 - Applicable: This issue applies to all supported releases.
-- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete.
+- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as creating this will prevent the communication required for the VM deployment to complete.
 - Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
 - Occurrence: Common
 
 ### ICMP protocol not supported for NSG rules
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
+- Cause: When creating an inbound or an outbound network security rule, the **Protocol** option shows an **ICMP** option. This rule is currently not supported on Azure Stack Hub. This issue is fixed and will not appear in the next Azure Stack Hub release.
 - Occurrence: Common
 
 ### Cannot delete an NSG if NICs not attached to running VM
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When disassociating an NSG and a NIC that is not attached to a running VM, the update (PUT) operation for that object fails at the network controller layer. The NSG will be updated at the network resource provider layer, but not on the network controller, so the NSG moves to a failed state.
-- Remediation: Attach the NICs associated to the NSG that needs to be removed with running VMs, and disassociate the NSG or remove all the NICs that were associated with the NSG.
+- Remediation: Attach the NICs associated to the NSG that needs to be removed with running VMs. Then disassociate the NSG or remove all the NICs that were associated with the NSG.
 - Occurrence: Common
 
 ### Load Balancer directing traffic to one backend VM in specific scenarios 
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
+- Cause: When you enable **Session Affinity** on a load balancer, the 2-tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
 - Occurrence: Common
 
 ### Network interface
@@ -134,7 +134,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Cannot create a virtual machine scale set with Standard_DS2_v2 VM size on portal
 
 - Applicable: This issue applies to the 2002 release.
-- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one will error out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for virtual machine scale set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
+- Cause: There is a portal bug that prevents virtual machine scale set creation with the Standard_DS2_v2 VM size. Creating one errors out with: "{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"BadRequest","message":"{\r\n \"error\": {\r\n \"code\": \"NetworkProfileValidationError\",\r\n \"message\": \"Virtual Machine size Standard_DS2_v2 is not in the allowed list of VM sizes for accelerated networking to be enabled on the VM at index 0 for virtual machine scale set /subscriptions/x/resourceGroups/RGVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/vmss. Allowed sizes: .\"\r\n }\r\n}"}]}"
 - Remediation: Create a virtual machine scale set with PowerShell or a Resource Manager template.
 
 ### VM overview blade does not show correct computer name
@@ -159,7 +159,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### VM boot diagnostics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When trying to start a stop-deallocated virtual machine,the following error might be displayed: **VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted**. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.
+- Cause: When trying to start a stop-deallocated virtual machine, the following error might be displayed: **VM diagnostics Storage account 'diagnosticstorageaccount' not found. Ensure storage account is not deleted**. The error occurs if you attempt to start a VM with boot diagnostics enabled, but the referenced boot diagnostics storage account is deleted.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
@@ -176,20 +176,20 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+- Remediation: You can create single VMs in an availability set with two fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
 ### SQL VM
 
 #### Storage account creating failure when configuring Auto Backup
 
 - Applicable: This issue applies to 2002.
-- Cause: When configuring the automated backup of SQL VMs with a new storage account, it fails with the error **Deployment template validation failed. The template parameter for 'SqlAutobackupStorageAccountKind' is not found.**
+- Cause: When you configure the automated backup of SQL VMs with a new storage account, it fails with the error **Deployment template validation failed. The template parameter for 'SqlAutobackupStorageAccountKind' is not found.**
 - Remediation: Apply the latest 2002 hotfix.
 
 #### Auto backup cannot be configured with TLS 1.2 enabled
 
 - Applicable: This issue applies to new installations of 2002 and later, or any previous release with TLS 1.2 enabled.
-- Cause: When configuring the automated backup of SQL VMs with an existing storage account, it fails with the error **SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send.**
+- Cause: When you configure the automated backup of SQL VMs with an existing storage account, it fails with the error **SQL Server IaaS Agent: The underlying connection was closed: An unexpected error occurred on a send.**
 - Occurrence: Common
 
 ## Storage
