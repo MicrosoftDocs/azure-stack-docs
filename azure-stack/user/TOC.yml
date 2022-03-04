@@ -187,7 +187,7 @@
           items:
           - name: Connect using VPN
             href: azure-stack-connect-vpn.md
-          - name: About VPN gateway
+          - name: About VPN gateways
             href: azure-stack-vpn-gateway-about-vpn-gateways.md
           - name: Configure IPSec/IKE connection policies
             href: azure-stack-vpn-s2s.md
