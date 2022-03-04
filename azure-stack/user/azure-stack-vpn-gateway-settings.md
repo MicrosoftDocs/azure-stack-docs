@@ -78,7 +78,9 @@ If you use the Azure Stack Hub portal to create a virtual network gateway, the S
 
 URL example to make the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
 
->  https://portal.local.azurestack.local/?azurestacknewvpnskus=true
+```http
+https://portal.local.azurestack.local/?azurestacknewvpnskus=true
+```
 
 Before creating these resources the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp.
 
