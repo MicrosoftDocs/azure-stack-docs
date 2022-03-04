@@ -71,8 +71,6 @@ Gateway connections failover are expected during an OEM or an Azure Stack Hub up
 
 ![Gateway VM failover diagram](media/azure-stack-vpn-operator/azure-vpn-gateway-pool-failover.png)
 
-
-
 ## New Gateway Pool total capacity
 
 The overall Gateway Pool Capacity of an Azure Stack Hub stamp is 4 Gbps. This capacity is divided between the two Active Gateway VMs, with each Gateway VM
@@ -133,4 +131,4 @@ the two active Gateway VMs, each Gateway VM has a capacity of 5 Gbps. The amount
 
 ## Next steps
 
-* [VPN gateway configuration settings for Azure Stack Hub](azure-stack-vpn-gateway-settings.md)
+- [VPN gateway configuration settings for Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md)
