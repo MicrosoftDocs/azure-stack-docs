@@ -68,21 +68,21 @@ Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 Azure Stack Hub does not support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
 
-New virtual network gateways and connections has to be created to leverage the new SKUs enabled by VPN Fast Path.
+New virtual network gateways and connections must be created in order to use the new SKUs enabled by VPN Fast Path.
 
 ### Configure the virtual network gateway SKU
 
 #### Azure Stack Hub portal
 
-If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) will only be visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the url and refreshing.
+If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) will only be visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the URL and refreshing.
 
-URL example to make the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
+The following URL example makes the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
 
 ```http
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 ```
 
-Before creating these resources the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp.
+Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp.
 
 ![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
 

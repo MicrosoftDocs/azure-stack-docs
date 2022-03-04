@@ -17,7 +17,7 @@ ms.lastreviewed: 03/02/2022
 
 ## What is the Azure Stack Hub VPN Fast Path feature?
 
-Azure Stack Hub is introducing three new SKUs listed below as part of the VPN Fast Path Public Preview feature. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps using the HighPerformance SKU. The new SKUs will enable many customer scenarios where higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the given throughput on either send or receive traffic.
+Azure Stack Hub is introducing three new SKUs listed below as part of the VPN Fast Path public preview. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps using the HighPerformance SKU. The new SKUs will enable many customer scenarios where higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the given throughput on either send or receive traffic.
 
 When the Azure Stack operator enables the VPN Fast Path feature on the Azure Stack Hub stamp, the tenant users will be able to create virtual network gateways using the new SKUs.
 
@@ -38,15 +38,15 @@ The following table shows the new throughput for each SKU when VPN Fast Path is 
 |**VPNGw2**|  1000 Mbps Tx/Rx |
 |**VPNGw3**|  1250 Mbps Tx/Rx |
 
-## How to create virtual network gateways to use the new SKUs
+## Create virtual network gateways to use the new SKUs
 
-With the VPN Fast Path public preview release, tenant users will be able to create virtual network gateways with the new SKUs using either the Azure Stack Hub portal or PowerShell.
+With the VPN Fast Path public preview release, tenant users are able to create virtual network gateways with the new SKUs using either the Azure Stack Hub portal or PowerShell.
 
-### Create virtual network gateways with new SKUs from Azure Stack Hub portal
+### Create virtual network gateways with new SKUs using the Azure Stack Hub portal
 
-If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) will only be visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the url and refreshing.
+If you use the Azure Stack Hub portal to create a virtual network gateway, the SKU can be selected using the dropdown list. The new VPN Fast Path SKUs (**VpnGw1**, **VpnGw2**, **VpnGw3**) are only visible after adding the query parameter **"?azurestacknewvpnskus=true"** to the URL and refreshing.
 
-URL example to make the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
+The following URL example makes the new virtual network gateway SKUs visible in the Azure Stack Hub user portal:
 
 ```http
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
@@ -56,9 +56,9 @@ Before creating these resources, the operator must have enabled VPN Fast Path on
 
 ![Azure VNG new SKUs](media/azure-stack-vpn-fast-path-user/vpn-fast-path-vng-new-skus.png)
 
-### Create virtual network gateways with new SKUs from PowerShell
+### Create virtual network gateways with new SKUs using PowerShell
 
-AzureRM modules example
+The following example uses the AzureRM modules:
 
 ```powershell
 # Create PIP
@@ -88,9 +88,9 @@ $vpnconnection = New-AzureRmVirtualNetworkGatewayConnection -Name 'Connection-01
 
 There are different configurations available for VPN gateways. Determine which configuration best fits your needs. In the following sections, you can view information and topology diagrams about the following VPN gateway scenarios:
 
-* Site-to-site connections
-* Site-to-multi-site connections
-* Site-to-site or Site-to-Multi-site connections between Azure Stack Hub Stamps
+- Site-to-site connections
+- Site-to-multi-site connections
+- Site-to-site or Site-to-Multi-site connections between Azure Stack Hub Stamps
 
 The diagrams and descriptions in the following sections can help you select a connection topology to match your requirements. The diagrams show the main baseline topologies, but it's possible to build more complex configurations using the diagrams as a guide.
 
@@ -112,7 +112,10 @@ Only one site-to-site VPN connection can be created between two Azure Stack Hub 
 
 The following diagram shows how you can inter-connect multiple Azure Stack Hub stamps if you need to create a mesh topology between stamps.
 
-In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for additional VPN connections required for other use cases.
-
+In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for additional VPN connections required for other use cases:
 
 ![Azure VPN Gateway connections between stamps](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png)
+
+## Next steps
+
+- [VPN gateway configuration settings for Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md)
