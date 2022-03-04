@@ -193,6 +193,8 @@
             href: azure-stack-vpn-s2s.md
           - name: VPN gateway settings
             href: azure-stack-vpn-gateway-settings.md
+          - name: VPN Fast Path
+            href: azure-stack-vpn-fast-path-user.md
           - name: Troubleshoot Network Virtual Appliance issues
             href: network-virtual-appliance.md
           - name: Troubleshoot site-to-site connections
