@@ -28,10 +28,10 @@ You can use the Secrets Store CSI driver to mount your secrets, keys, and certif
 - Multiple secrets stores providers in the same cluster.
 ## Get started secrets store CSI driver
 
-1. Set up the correct [role assignments and access policies](https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/).
-2. Install Azure Key Vault Provider for Secrets Store CSI Driver through [Helm](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/#deployment-using-helm) or [YAML deployment files](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/#using-deployment-yamls). 
-3. Learn [how to use the Azure Key Vault Provider](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/usage/) and supported [configurations](https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/).
-4. Get up to speed with the application workflow with the [walkthrough](https://azure.github.io/secrets-store-csi-driver-provider-azure/demos/standard-walkthrough/).
+1. Set up the correct [role assignments and access policies](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/configurations/identity-access-modes/).
+2. Install Azure Key Vault Provider for Secrets Store CSI Driver through [Helm](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/getting-started/installation/#deployment-using-helm) or [YAML deployment files](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/getting-started/installation/#using-deployment-yamls). 
+3. Learn [how to use the Azure Key Vault Provider](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/getting-started/usage/) and supported [configurations](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/configurations/).
+4. Get up to speed with the application workflow with the [walkthrough](https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/demos/standard-walkthrough/).
 
 ![Secrets Store CSI Driver Azure Key Vault Provider Demo](media/aks-how-to-store-secrets/demo.gif)
 ## Support for the driver
