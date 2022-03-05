@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/05/2022
+ms.date: 03/02/2022
 ms.author: sethm
 ms.reviewer: niy
 ms.lastreviewed: 09/09/2020
@@ -34,7 +34,7 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 
-::: moniker range="azs-2108"
+<!-- ::: moniker range="azs-2108"
 ## Update
 
 ### Update to 2108 will not proceed if there are AKS clusters or ACR registries created and the private previews of AKS and ACR services are installed
@@ -43,11 +43,11 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: The operator must delete all AKS clusters and ACR Registries and uninstall the private preview of the AKS and ACR services.
 - Occurrence: Any stamp that has the AKS and ACR private previews installed will experience this message.
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates). -->
 
 <!-- ## Networking -->
 
-## Compute
+<!-- ## Compute
 
 ### Cannot create a Virtual Machine Scale Set with a data disk attached
 
@@ -88,6 +88,22 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
+### Create DNS blade results in portal crashing
+
+- Applicable: This issue applies to all supported releases with hotfix version 1.2108.2.81.
+- Cause: Two specific flows sometimes end with the user portal crashing:
+  - **Create a resource > Networking > DNS zone**
+  - **Create a resource > Networking > Connection**
+- Remediation: The following workflow can ensure there are no crashes:
+  - **All services > DNS zone > + Add** or **All services > Connections > + Add**
+- Occurrence: Common
+
+### Portal shows "Unidentified User" instead of user email
+
+- Applicable: This issue applies to all systems with hotfix version 1.2108.2.81 that are using an Azure AD account without an email address in the account profile.
+- Remediation: Sign in to the Azure portal, and add an email address to the Azure AD account that is experiencing this issue.
+- Occurrence: Common -->
+
 <!-- ## Storage -->
 
 <!-- ## SQL and MySQL-->
@@ -100,7 +116,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ### Marketplace -->
 
-## Event Hubs
+<!-- ## Event Hubs
 
 [!INCLUDE [event hubs secret rotation related issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
@@ -108,7 +124,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 [!INCLUDE [Applications deployed to AKS clusters fail to access persistent volumes](../includes/known-issue-aks-1.md)]
 
-::: moniker-end
+::: moniker-end -->
 
 ::: moniker range="azs-2102"
 ## Update
