@@ -151,6 +151,9 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 | 65000            | wssdcloudagent GPRC authentication port  |
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
+
+If your network requires the use of a proxy server to connect to the internet, see [Use proxy server settings on AKS on Azure Stack HCI](et-proxy-settings.md)
+
 ### [Table](#tab/allow-table)
 
 The following URLs need to be added to your allow list.
