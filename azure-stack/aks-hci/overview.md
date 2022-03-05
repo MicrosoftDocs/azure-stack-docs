@@ -106,4 +106,3 @@ To get started with Azure Kubernetes Service on Azure Stack HCI, see the followi
 - [Review requirements](./system-requirements.md)
 - [Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center](./create-kubernetes-cluster.md)
 - [Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell](./kubernetes-walkthrough-powershell.md)
-
