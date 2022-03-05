@@ -14,7 +14,7 @@ ms.date: 07/27/2020
 This article provides guidance for how to plan cluster volumes to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 
    >[!NOTE]
-   > Storage Spaces Direct does not support a File Server for general use.
+   > Storage Spaces Direct does not support a File Server for general use. If you need to run the file server or other generic services on Storage Space Direct, please plan to configure it on the virtual machines.
 
 ## Review: What are volumes
 
