@@ -34,25 +34,27 @@ You create a deployment using the `kubectl apply` or `kubectl create` commands. 
 The following example describes the features of a deployment manifest file in YAML format.
 
 ```yml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata: 
-      name: nginx
-spec:  
-      replicas: 3
-      selector:
-           matchlabels:
-containers:
-      template:
-           metadata:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: Recreate
+  template:
+    metadata:
       labels:
         app: nginx
-            spec:  
-      	    containers:  
-       	    -name: nginx  
-       	    image: nginx: 1.7.9
-       	    ports:  
-        	  -containerPort: 80  
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+          ports:
+            - containerPort: 80
 ```
 
 To view the deployment, the replica set, and the pods, run the following command:
