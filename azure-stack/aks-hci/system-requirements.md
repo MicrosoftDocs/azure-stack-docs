@@ -59,7 +59,7 @@ While you **can** run AKS on a single node Windows Server Datacenter, we don't r
 
 Other compute requirements for AKS on Azure Stack HCI are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
-You must install the Azure Stack HCI operating system on each server in the cluster using the `EN-US` region and language selections. You can't change these settings after installation.
+You must install the same operating system on each server in the cluster. If you are using Azure Stack HCI, the same OS and version must be on same on each server in the cluster. If you are using Windows Server Datacenter the same OS and version must be the same on each server in the cluster. Each OS must use the `EN-US` region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 
