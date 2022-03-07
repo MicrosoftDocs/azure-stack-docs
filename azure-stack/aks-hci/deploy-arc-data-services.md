@@ -23,6 +23,16 @@ This topic provides a checklist of prerequisites you need to follow to deploy Az
 
 > [!div class="checklist"]
 > * [Connect your clusters to Azure Arc for Kubernetes](/azure-stack/aks-hci/connect-to-arc)
+
+Confirm whether custom location has been enabled on your AKS-HCI cluster by running the following command and checking for `customLocation: enabled: true`
+```
+helm get values azure-arc
+```
+
+If custom location has not been enabled on your AKS-HCI run the following Az CLI command:
+```
+az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
+```
 > * [Create and manage custom locations on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/custom-locations)(for direct connectivity mode only)
 
 ## Next steps
