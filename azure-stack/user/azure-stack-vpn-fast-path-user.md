@@ -84,6 +84,24 @@ $lng = New-AzureRmLocalNetworkGateway -Name 'Site1' -ResourceGroupName $rgName -
 $vpnconnection = New-AzureRmVirtualNetworkGatewayConnection -Name 'Connection-01' -ResourceGroupName $rgName -Location $location -VirtualNetworkGateway1 $vng -LocalNetworkGateway2 $lng -ConnectionType IPSec -SharedKey $key
 ```
 
+## Upgrading legacy virtual network gateways
+
+It is not possible to update the SKU without recreating the virtual network gateway, which will require deleting all connections associated with the virtual network gateway. Is possible to re-use the Local Network Gateway resources after creating a virtual network gateway with the new SKU. The Local Network Gateway resource defines the address space and IP address of your on-premise device and is possible keep that configuration.
+
+These are the steps to upgrade virtual network gateways SKUs:
+
+1. Delete all connections on the existing virtual network gateway
+   - Make note of the Pre-Shared Key and if BGP Flag is set to enabled.
+2. Delete the existing virtual network gateway using the legacy SKU
+   - It is not possible to create two virtual network gateways in the same virtual network so you need to delete the existing one.
+3. Create a new virtual network gateway resource with the new SKU
+    - You can select one of the new SKUs enabled with VPN Fast Path
+4. Create a new connection between the new virtual network gateway and the existing Local Network Gateway
+   - If using a custom IP Sec policy the connection will need to be created via PowerShell
+   - Use the Pre-Shared Key and BGP Flag noted in step 1
+5. Repeat step 4 for any other connections you want to move to the new SKU
+    - This is relevant for Multi-site scenarios.
+
 ## VPN connection topologies
 
 There are different configurations available for VPN gateways. Determine which configuration best fits your needs. In the following sections, you can view information and topology diagrams about the following VPN gateway scenarios:
