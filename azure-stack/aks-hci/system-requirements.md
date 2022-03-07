@@ -166,7 +166,7 @@ You can cut and paste the allow list for Firewall URL exceptions.
 
 :::code language="json" source="~/../modules/aks-hci/config/allow-list-end-points.json":::
 
-Download [URL allow list (json)](data/allow-list-end-points.json).
+Download [URL allow list (json)](https://raw.githubusercontent.com/MicrosoftDocs/edge-modules/main/aks-hci/config/allow-list-end-points.json).
 
 ----
 
