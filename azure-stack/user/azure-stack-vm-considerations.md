@@ -168,6 +168,17 @@ In Azure Stack Hub, VMs are live migrated across the other online hosts in the c
 
 Arc enabled servers do not support installing the connected machine agent on virtual machines running in Azure, or virtual machines running on Azure Stack Hub or Azure Stack Edge, as they are already modeled as Azure VMs.
 
+## Microsoft Office server products on Azure Stack Hub VMs
+
+Not all Microsoft Office server products are supported on Azure Stack Hub VMs, which is clarified as follows:
+
+| Product | Office support statement | More information |
+| --------| ------------------------ | ---------------- |
+| Exchange | Not supported. Does not meet the storage virtualization requirements for Exchange. |  [Exchange Server virtualization](/exchange/plan-and-deploy/virtualization) | 
+| SharePoint | Supported only if specific networking requirements are met. | [Plan for virtualization of SharePoint Server](/sharepoint/install/deploy-sharepoint-virtual-machines) | 
+| Skype | Not supported. Skype does not support live migration, a core virtualization feature used in Azure Stack Hub. | [Virtualization support for Skype for Business Server 2019](/skypeforbusiness/virtualization-guidance) |  
+
+
 ## Next steps
 
 [Create a Windows VM with PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-windows-powershell.md)
