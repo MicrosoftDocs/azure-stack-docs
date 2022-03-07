@@ -164,7 +164,7 @@ The following URLs need to be added to your allow list.
 
 You can cut and paste the allow list for Firewall URL exceptions.
 
-:::code language="json" source="data/allow-list-end-points.json":::
+:::code language="json" source="~/../modules/aks-hci/config/allow-list-end-points.json":::
 
 Download [URL allow list (json)](data/allow-list-end-points.json).
 
