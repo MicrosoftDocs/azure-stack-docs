@@ -1237,12 +1237,6 @@ After the installation of this update, install any applicable hotfixes. For more
 
 Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
 
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
->
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
-
 ## Next steps
 
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](../azure-stack-updates.md).  
@@ -1492,11 +1486,6 @@ The Azure Stack 1902 update build type is **Full**. For more information about u
 Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest Azure Stack hotfix](#azure-stack-hotfixes) for 1901 before updating Azure Stack to 1902.
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
-
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### Azure Stack hotfixes
 
@@ -1773,11 +1762,6 @@ The Azure Stack 1901 update build number is **1.1901.0.95** or **1.1901.0.99** a
 Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest Azure Stack hotfix](#azure-stack-hotfixes) for 1811 before updating Azure Stack to 1901.
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
-
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### Azure Stack hotfixes
 
@@ -2561,12 +2545,6 @@ For more information about these vulnerabilities, click on the preceding links, 
 ### Prerequisites
 
 - Install the latest Azure Stack Hotfix for 1808 before applying 1809. For more information, see [KB 4481066 - Azure Stack Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/). While Microsoft recommends the latest Hotfix available, the minimum version required to install 1809 is 1.1808.5.110.
-
-  > [!TIP]  
-  > Subscribe to the following *RRS* or *Atom* feeds to keep up with Azure Stack Hotfixes:
-  > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss 
-  > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom
-
 
 - Before you start installation of this update, run [Test-AzureStack](../azure-stack-diagnostic-test.md) with the following parameters to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts, and resolve any that require action.  
 
