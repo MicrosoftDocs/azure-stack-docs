@@ -8,12 +8,14 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 ms.custom: mode-api
+# intent: As an IT Pro, I want to set up an Azure Kubernetes Service host and use Windows PowerShell to create AKS on Azure Stack HCI clusters. 
+# keyword: AKS Azure Stack host HCI clusters PowerShell 
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. To instead use Windows Admin Center, see [Set up with Windows Admin Center](setup.md).
+In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. To use Windows Admin Center instead, see [Set up with Windows Admin Center](setup.md).
 
 > [!NOTE]
 > - If you have prestaged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
@@ -22,12 +24,12 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Before you begin
 
 - Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
-- An Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
-- **At least one** of the following access levels to your Azure subscription you use for AKS on Azure Stack HCI: 
+- Use an Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
+- Make sure you have **at least one** of the following access levels to the Azure subscription you use for AKS on Azure Stack HCI: 
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left-hand side of the Azure portal and then clicking on "View my access".
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
-- An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
-- **At least one** of the following:
+- Your subscription should specify an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
+- Use **at least one** of the following:
    - 2-4 node Azure Stack HCI cluster
    - Windows Server 2019/2022 Datacenter failover cluster
    > [!NOTE]
@@ -36,13 +38,13 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the AksHci PowerShell module
 **If you are using remote PowerShell, you must use CredSSP.**
 
-You must close all existing Powershell windows and open a fresh administrative session to install the pre-requisite Powershell packages and modules. Run the following command on all nodes in your Azure Stack HCI cluster.
+You must close all existing PowerShell windows and open a fresh administrative session to install the pre-requisite PowerShell packages and modules. Run the following command on all nodes in your Azure Stack HCI cluster.
 ```
 Install-PackageProvider -Name NuGet -Force 
 Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
 ```
 
-**You must close all existing Powershell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all Powershell windows.
+**You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all Powershell windows.
 
 Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI cluster.
 ```powershell
@@ -125,7 +127,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeI
 
 Run the following commands in step 3 on any one node in your Azure Stack HCI cluster.
 
-Set the configuration settings for the Azure Kubernetes Service host using the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
+To create the configuration settings for the Azure Kubernetes Service host, use the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
 Configure your deployment with the following command.
 
