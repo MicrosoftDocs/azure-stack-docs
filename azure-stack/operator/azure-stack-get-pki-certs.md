@@ -163,6 +163,8 @@ To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the
     > The Readiness Checker uses `stampEndpoint` (region and domain) to build a pointer to existing certificates that the certificate type requires. For example, for deployment certificates, "portal" is prepended by the tool. So *portal.east.azurestack.contoso.com* is used in certificate cloning, and *sso.appservices.east.azurestack.contoso.com* is used for app services.
     >
     > The certificate that's bound to the computed endpoint will be used to clone such attributes as subject, key length, and signature algorithm.  To change any of these attributes, follow the instructions in [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
+    > 
+    > **Known Issue**: Older clients Windows 10 and Windows 2016 with build number less than 14393 cannot discover SSL certificates from HTTPS endpoints. To workaround this issue, either use a more recent client or follow the instructions in [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
 
 1. Declare an output directory that already exists. For example, run:
 
