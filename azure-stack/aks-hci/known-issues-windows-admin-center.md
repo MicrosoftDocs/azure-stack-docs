@@ -9,7 +9,6 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
 ---
-
 # Fix issues in Windows Admin Center
 
 This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [upgrade](known-issues.md) and [installation](known-issues-installation.md) issues and errors.
@@ -18,6 +17,54 @@ This article describes known issues with Windows Admin Center in AKS on Azure St
 This error appears when deploying through Windows Admin Center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
 
 This is an error occurs from PowerShell and states that there are internet connectivity issues. PowerShell is trying to install the pre-requisites package and is unable to install it. You should check to make sure the server or failover cluster has internet connectivity and then start a fresh installation.
+
+In Stage 2.1: System Validation, there may be an error when you hit install: `No match was found for the specified search criteria for the provider 'NuGet'. The package provider requires 'PackageManagement' and 'Provider' tags. Please check if the specified package has the tags.`
+For the PS commands, please complete them on the node(s) that you are trying to deploy to. You will have to manually install the Nuget using the PS command below: 
+```powershell-interactive
+Install-PackageProvider -Name NuGet -Scope CurrentUser -Force
+
+```
+After running that command, please close all open PS windows and try again in Windows Admin Center.
+
+## `Install-Module` was not recognized
+
+In stage 2.1: System Validation, you may get an error: `The item 'Install-Module' was not recognized as the name of a cmdlet, function, script file, or runnable program. Please check the spelling of the name, if the path is included, make sure the path is correct and try again` when you install. For the PS commands, please complete them on the node(s) that you are trying to deploy to. Please run the following command (ensure your PS version is at least 5.1) to resolve:
+```powershell-interactive
+Install-Module -Name PowershellGet -Repository PSGallery -Force -Confirm:$false -SkipPublisherCheck
+```
+
+Then run these commands if you encounter any errors from the first command: 
+```powershell-interactive
+Get-PSRepository
+Register-PSRepository -Default
+```
+
+## Unable to find repository 'PSGallery'
+
+In stage 2.1: System Validation, you may encounter this error: `Unable to find repository 'PSGallery'. Use Get-PSRepository to see all available repositories.` when you click install. For the PS commands, please complete them on the node(s) that you are trying to deploy to. Please unregister and reregister the PSRepository in an administrative PS window. Close all PS windows afterwards.
+```powershell-interactive
+Unregister-PSRepository -Name 'PSGallery'
+Register-PSRepository -Default
+```
+
+Then, please uninstall and reinstall PowerShellGet in an administrative PS window. Close all PS windows afterwards.
+```powershell-interactive
+Uninstall-Module PowerShellGet
+Install-Module PowerShellGet -Force
+```
+
+After this, please go back to Windows Admin Center and retry.
+
+## Access is denied
+
+In Stage 2.1: Basic Step Component, you may encounter this error: `Connecting to remote server *** failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.` when trying to use your credentials for your server node(s).
+Please first make sure that the account/credentials added is an administrative account on the machine. Then verify that PSRemoting is enabled and remote hosts are trusted. You can do this with the following PS commands:
+```powershell-interactive
+Enable-PSRemoting -Force 
+winrm quickconfig 
+```
+
+If you are still encountering issues, please follow this [troubleshooting guide](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.2).
 
 ## When updating the Kubernetes version, the update page shows the update is still processing when the update is completed
 If you have workload clusters with Kubernetes version 1.19.9 installed, and then use Windows Admin Center to update them to Kubernetes version 1.19.11, the Kubernetes update page continues to show that the update is still in process. However, if you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), the output shows that the update is complete, and if you open Windows Admin Center in a new tab, the cluster is updated to 1.19.11 in the **Kubernetes clusters** list. You can ignore this issue as the update process did complete.
