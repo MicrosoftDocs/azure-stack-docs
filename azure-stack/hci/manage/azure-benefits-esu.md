@@ -77,7 +77,7 @@ Yes. You can discover ESUs even if you don't have Azure Benefits, but for the in
 
 ### Can I get ESUs through Azure Virtual Desktops (AVD) on Azure Stack HCI?
 
-The operating systems currently supported for AVD on Azure Stack HCI are not yet eligible for ESUs. [See the list here](/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
+The operating systems currently supported for AVD on Azure Stack HCI are not yet eligible for ESUs. [See the list here](/azure/virtual-desktop/azure-stack-hci-faq#what-session-host-operating-system-images-does-this-feature-support-).
 
 ### Do I need to do anything to renew for Year 1/Year 2/Year 3, etc.?
 
