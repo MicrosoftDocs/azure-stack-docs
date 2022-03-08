@@ -362,7 +362,21 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
 - Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
-- Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires deploying AKS management cluster first and then Arc Resource Bridge for VMs. If the AKS management cluster is already deployed, you don't need to perform "set-MocConfig" and "install-moc". In this configuration, uninstalling AKS management cluster will also remove the Arc Resource Bridge for VM management. A new Arc Resource Bridge can be deployed again, but it will not remember the VM entities that were created earlier.
+- Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
+      - First. the AKS management cluster
+      - And then, Arc Resource Bridge for Arc enabled VMs.
+If Arc Resource Bridge is already deployed, the AKS Management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
+
+While deploying Arc Resource bridge when AKS management cluster is available on the cluster you don't need to perform the following steps:
+      - new-MocNetworkSetting
+      - set-MocConfig
+      - install-Moc
+
+Uninstallation of these features should also be done in order:
+      - Uninstall Arc Resource Bridge first
+      - Then, uninstall AKS Management cluster
+Uninstalling AKS management cluster can impair Arc VM management capabilities. A new Arc Resource Bridge can be deployed again after cleanup, but it will not remember the VM entities that were created earlier.
+
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in portal for management.
 - Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure portal.
 - Arc VMs must be created in the same Azure subscription as the Custom location.
