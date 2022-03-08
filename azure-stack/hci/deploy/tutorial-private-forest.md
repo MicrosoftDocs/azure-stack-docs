@@ -134,7 +134,7 @@ Creating the parent disks can take as long as 1-2 hours, although it can take mu
 
 ### Create the Azure Stack HCI parent disk
 
-Download the [Convert-WindowsImage.ps1 function](https://raw.githubusercontent.com/microsoft/MSLab/master/Tools/Convert-WindowsImage.ps1) to the C:\Lab\wslab_xxx\ParentDisks folder as **CreateParentDisk.ps1**. Then run **CreateParentDisk.ps1** as administrator. Choose the Azure Stack HCI ISO from C:\Labs\Isos, and accept the default name and size.
+Download the [Convert-WindowsImage.ps1 function](https://raw.githubusercontent.com/microsoft/MSLab/master/Tools/Convert-WindowsImage.ps1) to the C:\Lab\wslab_xxx\ParentDisks folder as **Convert-WindowsImage.ps1**. Then run **CreateParentDisk.ps1** as administrator. Choose the Azure Stack HCI ISO from C:\Labs\Isos, and accept the default name and size.
 
 Creating the parent disk will take a while. When the operation is complete, you’ll be prompted to start the VMs. Don’t start them yet - type **N**.
 
