@@ -1,7 +1,9 @@
 ---
+
 title: Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI
 description: Use containerd as the container runtime for Windows Server node pools on Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
+ms.author: mabrigg
 ms.topic: how-to
 ms.date: 03/07/2022
 ms.lastreviewed: 03/07/2022
@@ -26,7 +28,7 @@ Beginning in Kubernetes version v1.22.1, you can use `containerd` as the contain
 
 Verify you have the following requirements ready:
 
-- You've prepared your machine [for deployment](https://docs.microsoft.com/en-us/azure-stack/aks-hci/prestage-cluster-service-host-create#step-2-prepare-your-machines-for-deployment)
+- You've prepared your machine [for deployment](/azure-stack/aks-hci/prestage-cluster-service-host-create#step-2-prepare-your-machines-for-deployment)
 - You have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 - You can run commands in this article from an elevated PowerShell session.
 
@@ -92,5 +94,5 @@ Reboot the node after setting this reg key in order to apply the change.
 
 ## Next steps
 
-- [Deploy .NET applications](https://docs.microsoft.com/en-us/azure-stack/aks-hci/deploy-windows-application).
-- [Monitor AKS on Azure Stack HCI clusters](https://docs.microsoft.com/en-us/azure-stack/aks-hci/monitor-logging).
+- [Deploy .NET applications]deploy-windows-application.md).
+- [Monitor AKS on Azure Stack HCI clusters](monitor-logging.md).
