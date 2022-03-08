@@ -45,11 +45,11 @@ Before your deploy your AKS cluster on Azure Stack Hub HCI, set the cluster to b
 1. You'll need the following parameters to run the **[Set-AksHciConfig](./reference/ps/set-akshciconfig.md)** cmdlet:
     1. **workingDir**  
         This is a working directory for the module to use for storing small files. for example: c:\ClusterStorage\Volume1\workingDir
-    1. **cloudConfigLocation** `this wasn't in your example?`
+    1. **cloudConfigLocation** `this wasn't in your example?`  
         The location where the cloud agent will store its configuration. 
     1. **Version**  
         The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. 
-    1. **vnet**
+    1. **vnet**  
         The name of the **AksHciNetworkSetting** object created with **New-AksHciNetworkSetting** command.
     1. **imageDir**  
         The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images.
@@ -94,5 +94,5 @@ Reboot the node after setting this reg key in order to apply the change.
 
 ## Next steps
 
-- [Deploy .NET applications]deploy-windows-application.md).
+- [Deploy .NET applications](deploy-windows-application.md).
 - [Monitor AKS on Azure Stack HCI clusters](monitor-logging.md).
