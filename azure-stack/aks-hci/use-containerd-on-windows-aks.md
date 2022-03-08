@@ -9,7 +9,7 @@ ms.date: 03/07/2022
 ms.lastreviewed: 03/07/2022
 ms.reviewer: crwilhit
 
-# Intent: As a < type of user >, I want < what? > so that < why? >.
+# Intent: As a Kubernetes cluster administrator, I want to use containerd as my runtime so that my cluster is ready for the deprecation of dockershim.
 # Keyword: containerd Windows AKS HCI
 
 ---
