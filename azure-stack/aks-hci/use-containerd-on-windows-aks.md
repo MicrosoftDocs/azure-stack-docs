@@ -31,13 +31,7 @@ Verify you have the following requirements ready:
 - You've prepared your machine [for deployment](/azure-stack/aks-hci/prestage-cluster-service-host-create#step-2-prepare-your-machines-for-deployment)
 - You have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 - You can run commands in this article from an elevated PowerShell session.
-
-<!-- 4. H2s 
-Required. A how-to article explains how to do a task. The bulk of each H2 should be 
-a procedure.
--->
-
-## Set the AKS-HCI configuration
+## Set the AKS on Azure Stack Hub configuration
 
 Before your deploy your AKS cluster on Azure Stack Hub HCI, set the cluster to be deployed with the `containerd` runtime for Windows nodes. To set the runtime to `containerd`, you'll use the **Set-AksHciConfig** PowerShell cmdlet with the `-ring wincontainerd` and `-catalog aks-hci-stable-catalogs-ext` flags.
 
@@ -55,12 +49,12 @@ Before your deploy your AKS cluster on Azure Stack Hub HCI, set the cluster to b
         The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images.
 1. Run the following cmdlet:
     ```powershell
-    Set-AksHciConfig -workingDir $workingDir -Version $version -vnet $vnet -imageDir $imageStore -skipHostLimitChecks -ring wincontainerd -catalog aks-hci-stable-catalogs-ext
+    Set-AksHciConfig -workingDir $workingDir -Version $version -vnet $vnet -imageDir $imageStore -skipHostLimitChecks -ring wincontainerd -catalog AKS on Azure Stack Hub-stable-catalogs-ext
     ```
 
-## Deploy an AKS-HCI cluster
+## Deploy an AKS on Azure Stack Hub cluster
 
-Deploy your AKS-HCI cluster.
+Deploy your AKS on Azure Stack Hub cluster.
 1. Run Windows PowerShell as an Administrator on any node in your Azure Stack HCI cluster.
 1. Run the following cmdlet:
     ```PowerShell
