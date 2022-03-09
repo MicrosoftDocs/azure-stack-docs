@@ -14,6 +14,9 @@ ms.reviewer: abha
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with when [upgrading](known-issues-upgrade.md) and using [Windows Admin Center](known-issues-windows-admin-center.md).
 
+## I'm getting `Install-AksHci Failed, Service returned an error. Status=403 Code="RequestDisallowedByPolicy"` error when installing AKS-HCI. What should I do?
+
+This error may be caused by the installation process attempting to violate an Azure Policy that's been set on the Azure subscription or resource group provided during the Azure Arc onboarding process. This error may occur for users who have defined Azure Policies at a subscription or resource group level, and then attempt to install AKS on Azure Stack HCI which violates an Azure Policy. To resolve this issue, read the error message to understand which Azure Policy set by your Azure administrator has been violated, and then modify the Azure Policy by making an exception to the Azure Policy. To learn more about Policy exceptions, see [Azure Policy exemption structure](/azure/governance/policy/concepts/exemption-structure).
 ## During installation, this error appears: `unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]`
 
 This error occurs when Azure Stack HCI is out of policy. The connection status on the cluster may show it's connected, but the event log shows the warning message that `Azure Stack HCI's subscription is expired, run Sync-AzureStackHCI to renew the subscription`.
