@@ -1,8 +1,9 @@
 ---
 title: Connect Azure Stack HCI to Azure
 description: How to register Azure Stack HCI clusters with Azure.
-author: arduppal
-ms.author: arduppal
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
