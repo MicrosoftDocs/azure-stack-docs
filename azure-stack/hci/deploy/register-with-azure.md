@@ -135,20 +135,6 @@ If your Azure subscription is through an EA or CSP, ask your Azure subscription 
 
 You'll also need appropriate Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions) for more information.
 
-## Upgrade Arc agent on cluster servers
-
-To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. Make sure Microsoft Update is correctly configured.
-
-1. Select the option to "Install Updates" (6):
-
-   :::image type="content" source="media/register/sconfig-install.png" alt-text="Options to install update":::
-
-2. Select the option for "All quality updates" (1).
-
-3. You can choose to specifically update the Arc agent, or install all of the updates available:
-
-   :::image type="content" source="media/register/sconfig-updates.png" alt-text="Sconfig options":::
-
 ## Region availability
 
 The Azure Stack HCI service is used for registration, billing, and management. It is currently supported in the following regions. These public regions support geographic locations worldwide, for clusters deployed anywhere in the world:
@@ -273,7 +259,7 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
 
 3. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 2, in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (such as your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
-## Enabling Azure Arc integration
+## Enable Azure Arc integration
 
 If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. Otherwise, you'll need to take the following steps to enable Azure Arc integration on the servers.
 
@@ -305,6 +291,20 @@ If you're a preview channel customer and you registered your preview channel clu
    ```
 
    Then, re-register the Azure Stack HCI cluster.
+
+### Upgrade Arc agent on cluster servers
+
+To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. Make sure Microsoft Update is correctly configured.
+
+1. Select the option to "Install Updates" (6):
+
+   :::image type="content" source="media/register/sconfig-install.png" alt-text="Options to install update":::
+
+2. Select the option for "All quality updates" (1).
+
+3. You can choose to specifically update the Arc agent, or install all of the updates available:
+
+   :::image type="content" source="media/register/sconfig-updates.png" alt-text="Sconfig options":::
 
 ## Troubleshooting
 
