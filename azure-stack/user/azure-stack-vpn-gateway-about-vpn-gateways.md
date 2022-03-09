@@ -17,7 +17,7 @@ ms.lastreviewed: 03/02/2022
 
 # Create VPN gateways for Azure Stack Hub
 
-A virtual network gateway is the software VPN device (VPN gateway) for your Azure Stack Hub virtual network. Use this with a connection or connections to set up a site-to-site or site-to-multi-site VPN connection between an Azure Stack Hub virtual network and your local network, or a VNet-to-VNet VPN connection between two Azure Stack Hub virtual networks.
+A virtual network gateway is the software VPN device (VPN gateway) for your Azure Stack Hub virtual network. Use this with a connection or connections to set up a site-to-site or site-to-multi-site VPN connection between an Azure Stack Hub virtual network and your local network, or a VNet-to-VNet VPN connection between two virtual networks created on different Azure Stack Hub stamps.
 
 When you create a virtual network gateway, you specify the gateway type that you want to create. Azure Stack Hub only supports the **Vpn** type.
 
