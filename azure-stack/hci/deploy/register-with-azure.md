@@ -1,12 +1,14 @@
 ---
 title: Connect Azure Stack HCI to Azure
 description: How to register Azure Stack HCI clusters with Azure.
-author: arduppal
-ms.author: arduppal
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/01/2021
+ms.custom: references_regions
+ms.date: 03/09/2022
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -253,13 +255,13 @@ Use the following procedure to register an Azure Stack HCI cluster with Azure us
    This syntax registers the cluster (of which `Server1` is a member) as the current user, and places the HCI cluster resource in the specified pre-existing resource group (`cluster1-rg`) with the default Azure region and cloud environment, and using smart default names for the Azure resource. You can also add the optional `-Region`, `-ResourceName`, and `-TenantId` parameters to this cmdlet to specify these values.
 
    > [!NOTE]
-   > If you're running Azure Stack HCI, version 21H2, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enabling-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, specify this additional parameter: `-EnableAzureArcServer:$false`
+   > If you're running Azure Stack HCI, version 21H2, running the `Register-AzStackHCI` cmdlet [enables Azure Arc integration](#enable-azure-arc-integration) on every server in the cluster by default, and the user running it must be an Azure Owner or User Access Administrator. If you do not want the servers to be Arc enabled or do not have the proper roles, specify this additional parameter: `-EnableAzureArcServer:$false`
 
    Remember that the user running the `Register-AzStackHCI` cmdlet must have [Azure Active Directory permissions](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions), or the registration process will not complete; instead, it will exit and leave the registration pending admin approval. Once permissions have been granted, rerun `Register-AzStackHCI` to complete registration.
 
 3. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 2, in order for registration to proceed. Copy the code provided, navigate to microsoft.com/devicelogin on another device (such as your PC or phone), enter the code, and sign in there. The registration workflow will detect when you've logged in and proceed to completion. You should then be able to see your cluster in the Azure portal.
 
-## Enabling Azure Arc integration
+## Enable Azure Arc integration
 
 If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. Otherwise, you'll need to take the following steps to enable Azure Arc integration on the servers.
 
@@ -291,6 +293,24 @@ If you're a preview channel customer and you registered your preview channel clu
    ```
 
    Then, re-register the Azure Stack HCI cluster.
+
+## Upgrade Arc agent on cluster servers
+
+> Applies to: Azure Stack HCI, version 21H2
+
+To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. See the steps under [Microsoft Update configuration](/azure/azure-arc/servers/manage-agent#windows-agent) to make sure Microsoft Update is correctly configured.
+
+1. In the Server Configuration Tool (Sconfig.exe), select the option to **Install Updates** (option 6):
+
+   :::image type="content" source="media/register/sconfig-install.png" alt-text="Options to install update":::
+
+2. Select the option for **All quality updates** (option 1).
+
+3. You can choose to specifically update the Arc agent, or install all of the updates available:
+
+   :::image type="content" source="media/register/sconfig-updates.png" alt-text="Sconfig options":::
+
+4. Run `azcmagent version` from PowerShell on each node to verify the Arc agent version.
 
 ## Troubleshooting
 
