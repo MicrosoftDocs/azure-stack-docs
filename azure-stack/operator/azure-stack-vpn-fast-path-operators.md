@@ -54,12 +54,12 @@ The Azure Stack Hub VPN Fast Path relies on the new SDN Gateway Service, and it 
 
 ### Plan with tenant users before enabling VPN Fast Path
 
-1. List of existing virtual network gateway resources settings.
-2. List of existing connections resources settings.
-3. List of IPSec policies and settings used on their existing connections.
-4. This ensures your users have policies configured that work with their device, including custom IPSec policies.
-5. List Local network gateway settings. Tenant users will be able to re-use local network gateway resources and configurations. However, we also recommend to save existing configuration just in case they need to be re-created
-6. Once VPN Fast Path is enabled, tenant’s would be required to re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
+- List of existing virtual network gateway resources settings.
+- List of existing connections resources settings.
+- List of IPSec policies and settings used on their existing connections.
+   - This ensures your users have policies configured that work with their device, including custom IPSec policies.
+- List Local network gateway settings. Tenant users will be able to re-use local network gateway resources and configurations. However, we also recommend to save existing configuration just in case they need to be re-created
+- Once VPN Fast Path is enabled, tenants would be required to re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
 
 ## How to enable Azure Stack Hub VPN Fast Path
 

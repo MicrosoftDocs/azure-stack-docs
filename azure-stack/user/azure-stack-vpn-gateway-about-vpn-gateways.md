@@ -79,7 +79,7 @@ The following diagram shows how you can inter-connect multiple Azure Stack Hub s
 
 In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for additional VPN connections required for other use cases:
 
-![Azure VPN Gateway connections between stamps](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png)
+[![Azure VPN Gateway connections between stamps](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png)](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png#lightbox)
 ## Gateway SKUs
 
 When you create a virtual network gateway for Azure Stack Hub, you specify the gateway SKU that you want to use. The following Virtual Network gateway SKUs are supported:
