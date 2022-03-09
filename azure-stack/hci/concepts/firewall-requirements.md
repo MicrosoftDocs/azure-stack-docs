@@ -119,33 +119,33 @@ If your outbound firewall is restricted, then we recommend adding the following 
 
 | Description                                              | URL                               | Port    | Direction |
 | :--------------------------------------------------------| :---------------------------------| :------ | :-------- |
-| Azure portal URL for proxy bypass                        | `*.aadcdn.microsoftonline-p.com`  | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.aka.ms`                        | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.applicationinsights.io`        | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.azure.com`                     | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.azure.net`                     | 80,443  | Outbound  |
-| Azure Stack HCI Cloud Service                            | `*.azurefd.net`                   | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.azure-api.net`                 | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.azuredatalakestore.net`        | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.azureedge.net`                 | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.loganalytics.io`               | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.microsoft.com`                 | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.microsoftonline.com`           | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.microsoftonline-p.com`         | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.msauth.net`                    | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.msftauth.net`                  | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.trafficmanager.net`            | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.visualstudio.com`              | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.windows.net`                   | 80,443  | Outbound  |
-| Azure portal URL for proxy bypass                        | `*.windows-int.net`               | 80,443  | Outbound  |
-| Windows Update                                           | `*.windowsupdate.com`             | 80,443  | Outbound  |
-| Microsoft Office                                         | `www.office.com`                  | 80,443  | Outbound  |
-| Azure Automation service for Azure management tasks      | `*.azure-automation.net`          | 80,443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.aadcdn.microsoftonline-p.com`  | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.aka.ms`                        | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.applicationinsights.io`        | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azure.com`                     | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azure.net`                     | 80 443  | Outbound  |
+| Azure Stack HCI Cloud Service                            | `*.azurefd.net`                   | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azure-api.net`                 | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azuredatalakestore.net`        | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.azureedge.net`                 | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.loganalytics.io`               | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.microsoft.com`                 | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.microsoftonline.com`           | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.microsoftonline-p.com`         | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.msauth.net`                    | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.msftauth.net`                  | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.trafficmanager.net`            | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.visualstudio.com`              | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.windows.net`                   | 80 443  | Outbound  |
+| Azure portal URL for proxy bypass                        | `*.windows-int.net`               | 80 443  | Outbound  |
+| Windows Update                                           | `*.windowsupdate.com`             | 80 443  | Outbound  |
+| Microsoft Office                                         | `www.office.com`                  | 80 443  | Outbound  |
+| Azure Automation service for Azure management tasks      | `*.azure-automation.net`          | 80 443  | Outbound  |
 | Agent to download Helm binaries                          | `*.helm.sh`                       | 443     | Outbound  |
 | Cloud Init service to download Kubernetes binaries       | `storage.googleapis.com`          | 443     | Outbound  |
 | Windows Admin Center to download Azure CLI               | `aka.ms/installazurecliwindows`   | 443     | Outbound  |
 | Kubernetes service to download container images          | `ecpacr.azurecr.io`               | 443     | Outbound  |
-| PowerShell Gallery central repository                    | `*.powershellgallery.com`         | 80,443  | Outbound  |
+| PowerShell Gallery central repository                    | `*.powershellgallery.com`         | 80 443  | Outbound  |
 | Web-hosting platform that supports multiple technologies | `*.azurewebsites.net`             | 443     | Outbound  |
 | Content Delivery Network (CDN) downloads                 | `*.msecnd.net`                    | 443     | Outbound  |
 
