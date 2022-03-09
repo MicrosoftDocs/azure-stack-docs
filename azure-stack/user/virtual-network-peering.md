@@ -4,7 +4,7 @@ title: Virtual network peering in Azure Stack Hub
 description: Learn how to use Virtual network peering to connect virtual networks in Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/01/2021
+ms.date: 03/09/2022
 ms.topic: conceptual
 ms.reviewer: thoroet
 ms.lastreviewed: 10/09/2020
@@ -76,7 +76,9 @@ You can't use remote gateways if you already have a gateway configured in your v
 
 ### Permissions
 
-Please ensure that when creating peerings with VNETs in different subscriptions and Azure AD tenants, the accounts have the **Contributor** role assigned. Additionally, there is no user interface capability for peering between different Azure AD tenants. You can use Azure CLI and PowerShell to create the peerings.
+Please ensure that when creating peerings with VNETs in different subscriptions, the accounts have the **Network Contributor** role assigned at the VNET level. For example, User1 has the Network Contributor role on VNET2, and User2 has the Network Contributor role on VNET1. User1 owns Subscription1 where VNET1 is created, and User2 owns Subscription2 where VNET2 is created.
+
+Additionally, there is no user interface capability for peering between different Azure AD tenants. You can use Azure CLI and PowerShell to create the peerings.
 
 ## Virtual network peering frequently asked questions (FAQ)
 
@@ -102,7 +104,7 @@ No, peering can only be created between virtual networks in one Azure Stack Hub 
 
 ### Can I enable peering if my virtual networks belong to subscriptions within different Azure Active Directory tenants?
 
-Yes. It is possible to establish VNet Peering if your subscriptions belong to different Azure Active Directory tenants. You can do this via PowerShell or CLI. The portal is not yet supported.
+No. It is not possible to establish VNet Peering if your subscriptions belong to different Azure Active Directory tenants. This is a specific limitation for Azure Stack Hub.
 
 ### Can I peer my virtual network with a virtual network in a different subscription?
 
