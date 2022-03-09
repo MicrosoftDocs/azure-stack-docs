@@ -6,7 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/01/2021
+ms.date: 03/09/2022
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -134,6 +134,20 @@ If your Azure subscription is through an EA or CSP, ask your Azure subscription 
 ### Azure Active Directory permissions
 
 You'll also need appropriate Azure Active Directory permissions to complete the registration process. If you don't already have them, ask your Azure AD administrator to grant consent or delegate the permissions to you. See [Manage Azure registration](../manage/manage-azure-registration.md#assign-azure-ad-app-permissions) for more information.
+
+## Upgrade Arc agent on cluster servers
+
+To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. Make sure Microsoft Update is correctly configured.
+
+1. Select the option to "Install Updates" (6):
+
+   :::image type="content" source="media/register/sconfig-install.png" alt-text="Options to install update":::
+
+2. Select the option for "All quality updates" (1).
+
+3. You can choose to specifically update the Arc agent, or install all of the updates available:
+
+   :::image type="content" source="media/register/sconfig-updates.png" alt-text="Sconfig options":::
 
 ## Region availability
 
