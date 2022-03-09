@@ -295,7 +295,7 @@ If you're a preview channel customer and you registered your preview channel clu
 
 ### Upgrade Arc agent on cluster servers
 
-To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. Make sure Microsoft Update is correctly configured.
+To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. See the steps under [Microsoft Update configuration](/azure/azure-arc/servers/manage-agent#windows-agent) to make sure Microsoft Update is correctly configured.
 
 1. Select the option to "Install Updates" (6):
 
