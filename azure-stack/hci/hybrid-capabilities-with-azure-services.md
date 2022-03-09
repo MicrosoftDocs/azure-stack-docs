@@ -42,7 +42,7 @@ Azure Arc simplifies governance and management by delivering a consistent manage
 
 Azure Stack HCI delivers hybrid value through the following Azure Arc technologies:
 
-- [**Azure Arc-enabled servers.**](/azure/azure-arc/servers/overview) Starting with Azure Stack HCI, version 21H2, registering your cluster also Arc-enables every cluster node by default. To learn more about enabling Azure Arc integration, see [Enabling Azure Arc integration](deploy/register-with-azure.md#enabling-azure-arc-integration).
+- [**Azure Arc-enabled servers.**](/azure/azure-arc/servers/overview) Starting with Azure Stack HCI, version 21H2, registering your cluster also Arc-enables every cluster node by default. To learn more about enabling Azure Arc integration, see [Enable Azure Arc integration](deploy/register-with-azure.md#enable-azure-arc-integration).
 
     To monitor your Azure Arc-enabled clusters, you can enable Logs and Monitoring capabilities. To learn more about enabling Logs and Monitoring capabilities, see [Configure Azure portal to monitor Azure Stack HCI clusters](manage/monitor-azure-portal.md).
 
