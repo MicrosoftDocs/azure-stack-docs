@@ -100,7 +100,7 @@ To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/new-aks
 
 ## After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing
 
-After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing. To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](known-issues-workload-clusters.md#the-api-server-is-not-responsive-after-several-days).
+After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing. To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](known-issues-workload-clusters.md#the-api-server-isnt-responsive-after-several-days).
 
 ## An `Unable to acquire token` error appears when running Set-AksHciRegistration
 This error can occur when you have multiple tenants on your Azure account. Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
