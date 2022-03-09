@@ -102,7 +102,7 @@ No, peering can only be created between virtual networks in one Azure Stack Hub 
 
 ### Can I enable peering if my virtual networks belong to subscriptions within different Azure Active Directory tenants?
 
-Yes. It is possible to establish VNet Peering if your subscriptions belong to different Azure Active Directory tenants. You can do this via PowerShell or CLI. The portal is not yet supported.
+No. It is not possible to establish VNet Peering if your subscriptions belong to different Azure Active Directory tenants. This is a specific limitation for Azure Stack Hub.
 
 ### Can I peer my virtual network with a virtual network in a different subscription?
 
