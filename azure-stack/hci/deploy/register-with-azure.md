@@ -295,6 +295,8 @@ If you're a preview channel customer and you registered your preview channel clu
 
 ### Upgrade Arc agent on cluster servers
 
+> Applies to: Azure Stack HCI, version 21H2
+
 To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. See the steps under [Microsoft Update configuration](/azure/azure-arc/servers/manage-agent#windows-agent) to make sure Microsoft Update is correctly configured.
 
 1. Start the Server Configuration Tool (Sconfig.exe): in an elevated command prompt, type `sconfig` and then press ENTER.
