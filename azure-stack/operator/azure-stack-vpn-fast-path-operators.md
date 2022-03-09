@@ -17,7 +17,7 @@ ms.lastreviewed: 03/02/2022
 
 ## What is the Azure Stack Hub VPN Fast Path feature?
 
-Azure Stack Hub is introducing new SKUs as part of the VPN Fast Path public preview. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps Tx/Rx using the High Performance SKU. 
+Azure Stack Hub is introducing new SKUs as part of the VPN Fast Path public preview. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps Tx/Rx using the High Performance SKU.
 
 The new SKUs will enable many customer scenarios where higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the said throughput on either of send or receive traffic.
 
@@ -43,13 +43,23 @@ With the introduction of the VPN Fast Path feature in Azure Stack Hub, tenant us
 - VpnGw2 (new)
 - VpnGw3 (new)
 
-<!-- ## Important considerations before enabling Azure Stack Hub VPN Fast Path
+## Important considerations before enabling Azure Stack Hub VPN Fast Path
 
-> - add here the NAT-T considerations, including NAT-T requirement on remote VPN devices, 
-> - planning the update with Tenant users and 
-> - how the users can leverage the new SKUs (link to the VPN Fast Path for users page)
-> - It is not possible to update the SKU without recreating the Virtual Network Gateway, which will require deleting all connections associated with the VNGs. Local Network Gateway resources can be re-used after creating a VNG with the new SKU.
-> - ExpressRoute-VPN gateway coexisting configurations are not supported in Azure Stack Hub. -->
+It is important to prepare your Azure Stack Hub stamp to make any update process go as smoothly as possible so that there's minimal impact on your users.
+
+As the Azure Stack Hub Operator enabling VPN Fast Path, we recommend to coordinate with tenant users to schedule maintenance window when the change-over would happen. Notify your users of any possible VPN connections service outage and then follow the steps below to prepare your stamp for the update.
+### VPN Fast Path requires NAT-T on remote VPN devices
+
+The Azure Stack Hub VPN Fast Path relies on the new SDN Gateway Service, and it comes with a new requirement when planning 
+
+### Plan with tenant users before enabling VPN Fast Path
+
+- List of existing virtual network gateway resources settings.
+- List of existing connections resources settings.
+- List of IPSec policies and settings used on their existing connections.
+   - This ensures your users have policies configured that work with their device, including custom IPSec policies.
+- List Local network gateway settings. Tenant users will be able to re-use local network gateway resources and configurations. However, we also recommend to save existing configuration just in case they need to be re-created
+- Once VPN Fast Path is enabled, tenants would be required to re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
 
 ## How to enable Azure Stack Hub VPN Fast Path
 
