@@ -14,14 +14,14 @@ ms.reviewer: crwilhit
 
 ---
 
-# Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI
+# Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI (preview)
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-Beginning in Kubernetes version v1.22.1, you can use `containerd` as the container runtime for Windows Server node pools. The use of the `containerd` runtime for Windows on AKS on Azure Stack Hub is currently in **preview**. While dockershim remains the default runtime for now, it's deprecated and will be removed in Kubernetes v1.24.
+Beginning in Kubernetes version v1.22.1, you can use `containerd` as the container runtime for Windows Server node pools. The use of the `containerd` runtime for Windows on AKS on Azure Stack HCI is currently in **preview**. While dockershim remains the default runtime for now, it's deprecated and will be removed in Kubernetes v1.24.
 
 > [!IMPORTANT]  
-> The `containerd` runtime for Windows on AKS on Azure Stack Hub is currently in PREVIEW.
+> The `containerd` runtime for Windows on AKS on Azure Stack HCI is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Prerequisites
@@ -31,7 +31,7 @@ Verify you have the following requirements ready:
 - You've prepared your machine [for deployment](/azure-stack/aks-hci/prestage-cluster-service-host-create#step-2-prepare-your-machines-for-deployment)
 - You have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 - You can run commands in this article from an elevated PowerShell session.
-## Set the AKS on Azure Stack Hub configuration
+## Set the AKS on Azure Stack HCI configuration
 
 Before your deploy your AKS cluster on Azure Stack Hub HCI, set the cluster to be deployed with the `containerd` runtime for Windows nodes. To set the runtime to `containerd`, you'll use the **Set-AksHciConfig** PowerShell cmdlet with the `-ring wincontainerd` and `-catalog aks-hci-stable-catalogs-ext` flags.
 
@@ -49,12 +49,12 @@ Before your deploy your AKS cluster on Azure Stack Hub HCI, set the cluster to b
         The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images.
 1. Run the following cmdlet:
     ```powershell
-    Set-AksHciConfig -workingDir $workingDir -Version $version -vnet $vnet -imageDir $imageStore -skipHostLimitChecks -ring wincontainerd -catalog AKS on Azure Stack Hub-stable-catalogs-ext
+    Set-AksHciConfig -workingDir $workingDir -Version $version -vnet $vnet -imageDir $imageStore -skipHostLimitChecks -ring wincontainerd -catalog AKS on Azure Stack HCI-stable-catalogs-ext
     ```
 
-## Deploy an AKS on Azure Stack Hub cluster
+## Deploy an AKS on Azure Stack HCI cluster
 
-Deploy your AKS on Azure Stack Hub cluster.
+Deploy your AKS on Azure Stack HCI cluster.
 1. Run Windows PowerShell as an Administrator on any node in your Azure Stack HCI cluster.
 1. Run the following cmdlet:
     ```PowerShell
