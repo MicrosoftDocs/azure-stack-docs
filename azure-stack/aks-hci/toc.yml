@@ -179,6 +179,8 @@
             href: get-kubelet-logs.md
     - name: Use Windows Server containers
       items:
+          - name: Use containerd (preview)
+            href: use-containerd-on-windows-aks.md
           - name: Deploy .NET applications
             href: deploy-windows-application.md
           - name: Configure group Managed Service Account support
