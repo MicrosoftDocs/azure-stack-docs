@@ -55,7 +55,7 @@ You can set up your AKS cluster in the following way, to run AKS on a single nod
 | ------------- | ------------------ | ---------- | ----------| -------------|
 | AKS Host | Standard_A4_v2 VM size = 8GB |  NA - AKS host does not have worker nodes  |  8GB |  NA - AKS host uses kubevip for load balancing  |
 | Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use the 8GB reserved above for workload cluster upgrade | NA if kubevip is used for load balancing (instead of the default HAProxy load balancer) |
-**Total minimum requirement | 30GB RAM**
+**Total minimum requirement** | **30GB RAM**
 
 Keep in mind that the above minimum requirement is for an AKS-HCI deployment with 1 worker node for running containerized applications. If you choose to add worker nodes or a HAProxy load balancer, the final RAM requirement will change appropriately. 
 
