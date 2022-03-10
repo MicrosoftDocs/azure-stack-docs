@@ -4,10 +4,8 @@ description: Learn about Azure Kubernetes Service on Azure Stack HCI (AKS on Azu
 services: container-service
 ms.topic: article
 ms.date: 05/11/2021
-author: mattbriggs
-ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
-ms.reviewer: mikek
+author: mkostersitz
+ms.author: mikek
 
 #Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
 ---
@@ -20,6 +18,20 @@ This article provides details about technical support policies and limitations f
 
 * For release information, see [AKS on Azure Stack HCI release notes](https://github.com/Azure/aks-hci/releases).
 * For information on features in preview, see [AKS on Azure Stack HCI preview features](https://github.com/Azure/aks-hci/tree/main/preview).
+
+## Supported version policy
+
+Azure Kubernetes Service on Azure Stack HCI versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
+
+Azure Kubernetes Service on Azure Stack HCI maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
+
+Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI follow the [Kubernetes version policy](https://kubernetes.io/releases/version-skew-policy/). For details on the supported Kubernetes Versions see [Supported Kubernetes Versions](./supported-kubernetes-versions.md).
+
+To keep your Azure Kubernetes Service on Azure Stack HCI environment in a supported state it is recommended to always stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
+
+After 120 days Microsoft cannot guarantee that older versions of Azure Kubernetes Service on Azure Stack HCI are still available on the release servers for download and scale operations, upgrades, re-installations and other operation in the cluster will start to fail requiring a re-deployment of the Azure Kubernetes Service on Azure Stack HCI environment with the latest version.
+
+If your cluster falls behind more than 60 days (2 versions) you will have to upgrade in multiple steps to get current again.
 
 ## Managed features in AKS on Azure Stack HCI
 
@@ -142,11 +154,11 @@ Although you can sign in to and change agent nodes, doing this operation is disc
 
 You may only customize the network settings using AKS on Azure Stack HCI defined subnets. You may not customize network settings at the NIC level of the agent nodes. AKS on Azure Stack HCI has egress requirements to specific endpoints, to control egress and ensure the necessary connectivity, see [System Requirements](./system-requirements.md).
 
-## Stopped or de-allocated clusters
+## Stopped or disconnected clusters
 
 As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC renders the cluster out of support.
 
-Clusters that are stopped for more than 90 days  will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
+Clusters that are stopped for more than 90 days will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
 
 If your Azure subscription is suspended or deleted, your cluster will be out of support after 60 days.
 
