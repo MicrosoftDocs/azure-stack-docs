@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 03/01/2022
+ms.lastreviewed: 03/10/2022
 ms.reviewer: abha
-ms.date: 03/01/2022
+ms.date: 03/10/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that IO can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -19,7 +19,7 @@ ms.date: 03/01/2022
 
 This article covers the requirements for setting up Azure Kubernetes Service (AKS) on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of AKS on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
 
-## General AKS on Azure Stack HCI requirements
+## Active Directory requirements
 
 For AKS on Azure Stack HCI or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
 

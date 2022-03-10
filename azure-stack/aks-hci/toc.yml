@@ -219,7 +219,7 @@
             href: known-issues-arc.md
           - name: Uninstall
             href: known-issues-uninstall.md
-          - name: Kubernetes workload clusters
+          - name: Kubernetes clusters
             href: known-issues-workload-clusters.md
           - name: Networking
             href: known-issues-networking.md
