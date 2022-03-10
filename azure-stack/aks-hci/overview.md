@@ -56,8 +56,8 @@ View the GIF below to familiarize yourself with the deployment process:
 
 Once you've set up Azure Kubernetes Service on-premises and created a Kubernetes cluster, we provide a couple ways to manage and monitor your Kubernetes infrastructure:
 
-- **In the Azure portal using Azure Arc** - Use Azure Arc to manage applications deployed on top of Kubernetes clusters across your cloud and on-premises environments. 
-  <br>Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
+- **In the Azure portal using Azure Arc** - Use Azure Arc to manage applications deployed on top of Kubernetes clusters across your cloud and on-premises environments.  
+  Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
   - Azure Monitor
   - Azure Policy
   - Role-Based Access Control

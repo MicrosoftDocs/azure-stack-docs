@@ -3,9 +3,9 @@ title: Quickstart to set up an Azure Kubernetes Service host and create AKS on A
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 02/11/2011
+ms.date: 03/08/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 03/08/2022
 ms.reviewer: jeguan
 ms.custom: mode-api
 # intent: As an IT Pro, I want to set up an Azure Kubernetes Service host and use Windows PowerShell to create AKS on Azure Stack HCI clusters. 
@@ -38,20 +38,27 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
 ## Install the AksHci PowerShell module
 **If you are using remote PowerShell, you must use CredSSP.**
 
-You must close all existing PowerShell windows and open a fresh administrative session to install the pre-requisite PowerShell packages and modules. Run the following command on all nodes in your Azure Stack HCI cluster.
+> [!IMPORTANT]  
+> You must close all existing Powershell windows and open a fresh administrative session to install the pre-requisite Powershell packages and modules. 
+
+Run the following command on all nodes in your Azure Stack HCI cluster.
+
 ```
 Install-PackageProvider -Name NuGet -Force 
 Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
 ```
 
-**You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all Powershell windows.
+> [!IMPORTANT]  
+> **You must close all existing Powershell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all Powershell windows.
 
 Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI cluster.
 ```powershell
 Install-Module -Name AksHci -Repository PSGallery
 ```
 
-**Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
+> [!IMPORTANT]  
+> **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
+
   
 ```powershell
 Get-Command -Module AksHci
