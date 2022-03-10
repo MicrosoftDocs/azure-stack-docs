@@ -55,7 +55,7 @@ There are different configurations available for VPN gateways. Determine which c
 
 * Site-to-site connections
 * Site-to-multi-site connections
-* Site-to-site or Site-to-Multi-site connections between Azure Stack Hub Stamps
+* Site-to-site or site-to-multi-site connections between Azure Stack Hub stamps
 
 The diagrams and descriptions in the following sections can help you select a connection topology to match your requirements. The diagrams show the main baseline topologies, but it's possible to build more complex configurations using the diagrams as a guide.
 
@@ -71,15 +71,16 @@ A *Site-to-multi-site* topology is a variation of the site-to-site topology. You
 
 ![Azure VPN gateway Site-to-Multi-Site connections example](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-multi-site-topology.png)
 
-## Site-to-site or Site-to-Multi-site connections between Azure Stack Hub Stamps
+## Site-to-site or site-to-multi-site connections between Azure Stack Hub stamps
 
-Only one site-to-site VPN connection can be created between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
+You can only create one site-to-site VPN connection between two Azure Stack Hub deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack Hub leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack Hub system, there can be only one VPN connection between two Azure Stack Hub systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack Hub does not allow more than one local network gateway resource to be created using the same IP address.
 
 The following diagram shows how you can inter-connect multiple Azure Stack Hub stamps if you need to create a mesh topology between stamps.
 
-In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, the users can connect networks and workloads between stamps with VPN connections throughput up to 1250 Mbps Tx/Rx, allocating 50% of the Gateway Pool capacity of each stamp. Remaining capacity on each stamp can be used for additional VPN connections required for other use cases:
+In this scenario, there are 3 Azure Stack Hub stamps, and each of them has 1 virtual network gateway with 2 connections and 2 local network gateways. With the new SKUs, users can connect networks and workloads between stamps with VPN connection throughput up to 1250 Mbps Tx/Rx, allocating 50% of the gateway pool capacity of each stamp. You can use the remaining capacity on each stamp for additional VPN connections required for other use cases:
 
 [![Azure VPN Gateway connections between stamps](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png)](media/azure-stack-vpn-fast-path-user/vpn-connections-between-azure-stack-hub-stamps.png#lightbox)
+
 ## Gateway SKUs
 
 When you create a virtual network gateway for Azure Stack Hub, you specify the gateway SKU that you want to use. The following Virtual Network gateway SKUs are supported:

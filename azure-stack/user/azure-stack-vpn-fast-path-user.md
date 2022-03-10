@@ -4,10 +4,10 @@ description: What's new in Azure Stack Hub VPN Fast Path Public Preview for user
 author: cedward
 
 ms.topic: conceptual
-ms.date: 03/02/2022
+ms.date: 03/09/2022
 ms.author: cedward
 ms.reviewer: iacarago
-ms.lastreviewed: 03/02/2022
+ms.lastreviewed: 03/09/2022
 
 # Intent: As an Azure Stack Hub user, I want to create a VPN Gateways using the new SKUs with increased throughput
 # Keyword: azure stack hub VPN Gateways
