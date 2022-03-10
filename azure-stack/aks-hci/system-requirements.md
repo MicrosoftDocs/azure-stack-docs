@@ -8,7 +8,7 @@ ms.lastreviewed: 03/10/2022
 ms.reviewer: abha
 ms.date: 03/10/2022
 
-# Intent: As a system administrator, I want to understand the hardware and software needed so that IO can run AKS in my datacenter.
+# Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
 
 ---
@@ -44,18 +44,31 @@ AKS on Azure Stack HCI deployments that exceed the following specifications aren
 | Physical servers per cluster | 8       |
 | Kubernetes Clusters          | 8       |
 | Total number of VMs          | 200     |
+
 ## Compute requirements
 
-Run AKS on an Azure Stack HCI cluster or a Windows Server Datacenter failover cluster with:
+### Minimum memory requirements
 
-| Environment | Maximum per cluster | Minimum CPU cores per server | Minimum CPU cores per server | at least RAM |
-| --- | --- | --- | --- | --- |
-| Test |  4 | 8 | 16 | 256 GB |
-| Production | 4 | 16 | 32 | 256 GB |
+You can set up your AKS cluster in the following way, to run AKS on a single node Windows Server with limited RAM.
 
-For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI cluster.
+| Cluster type  | Control plane VM size | Worker node | For update operations | Load balancer  |
+| ------------- | ------------------ | ---------- | ----------| -------------|
+| AKS Host | Standard_A4_v2 VM size = 8GB |  NA - AKS host does not have worker nodes  |  8GB |  NA - AKS host uses kubevip for load balancing  |
+| Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use the 8GB reserved above for workload cluster upgrade | NA if kubevip is used for load balancing (instead of the default HAProxy load balancer) |
+Total minimum requirement | 30GB RAM
 
-While you **can** run AKS on a single node Windows Server Datacenter, we don't recommend doing so. However, you can run AKS on a single node Windows Server Datacenter for evaluation purposes.
+Keep in mind that the above minimum requirement is for an AKS-HCI deployment with 1 worker node for running containerized applications. If you choose to add worker nodes or a HAProxy load balancer, the final RAM requirement will change appropriately. 
+
+
+### Recommended compute requirements 
+
+| Environment | CPU cores per server | RAM |
+| --- | --- | --- |
+| Azure Stack HCI cluster | 32 | 256 GB |
+| Windows Server failover cluster | 32 | 256 GB |
+| Single node Windows Server | 16 | 128 GB
+
+For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI cluster. If you choose to run AKS on a single node Windows Server, you will not get features like high availability that come with running AKS on an Azure Stack HCI cluster or Windows Server failover cluster.
 
 Other compute requirements for AKS on Azure Stack HCI are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
