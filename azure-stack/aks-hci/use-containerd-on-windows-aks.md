@@ -35,7 +35,7 @@ Verify you have the following requirements ready:
 
 Before your deploy your AKS cluster on Azure Stack HCI, set the cluster to be deployed with the `containerd` runtime for Windows nodes. To set the runtime to `containerd`, you'll use the **Set-AksHciConfig** PowerShell cmdlet with the `-ring wincontainerd` and `-catalog aks-hci-stable-catalogs-ext` flags.
 
-In the following steps, the values of the parameters are given, but you will need to update these values for your specific environment.
+In the following steps, the values of the parameters are given, but you'll need to update these values for your specific environment.
 
 1. Run Windows PowerShell as an Administrator.
 1. You'll need the following parameters to run the **[Set-AksHciConfig](./reference/ps/set-akshciconfig.md)** cmdlet:
