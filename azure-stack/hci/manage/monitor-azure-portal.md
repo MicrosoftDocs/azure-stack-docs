@@ -18,7 +18,7 @@ This article explains how to enable Logs and Monitoring capabilities to monitor 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
-   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enabling-azure-arc-integration).
+   > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration).
 
 ## Logs capability (preview)
 
@@ -54,7 +54,7 @@ You have now successfully installed the log analytics extension.
 
 ### Disable Log Analytics
 
-If you’d like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the Extensions settings. Note that this does not delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
+If you'd like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the Extensions settings. Note that this does not delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
 
 To remove the Microsoft Monitoring Agent from every server in the cluster, follow these steps:
 
@@ -128,21 +128,21 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 ### How to use the Log Analytics Troubleshooting Tool
 
-1.	Open a PowerShell prompt as Administrator on the Azure Stack HCI host where Log Analytics Agent is installed.
+1.    Open a PowerShell prompt as Administrator on the Azure Stack HCI host where Log Analytics Agent is installed.
 
-2.	Navigate to the directory where the tool is located.
+2.    Navigate to the directory where the tool is located.
 
    ```PowerShell
    cd C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter
    ```
 
-3.	Execute the main script using this command:
+3.    Execute the main script using this command:
 
    ```PowerShell
    .\GetAgentInfo.ps1
    ```
 
-4.	When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
+4.    When prompted to select a troubleshooting scenario, choose option **1: Agent not reporting data or heartbeat data missing**.
 
 :::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
 
