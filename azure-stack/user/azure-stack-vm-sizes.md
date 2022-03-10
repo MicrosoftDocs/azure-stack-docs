@@ -23,7 +23,7 @@ Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function 
 
 VM vCPU depends on the number of cores per node. For example, systems with cores or logical processor of less than 64 will not support VM size Standard_F64s_v2.
 
-Each data disk is 2300 IOPS for VM series with premium storage. For general purpose Basic A, the data disk size is 300 IOPS. All others are 500 IOPS.
+VM series with premium storage have data disks with 2300 IOPS throughput. Data disks for all other VM series have 500 IOPS, with the exception of general purpose Basic A VMs which have 300 IOPS.
 
 ## VM general purpose
 
@@ -75,7 +75,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_D3** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
 |**Standard_D4** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
 
-### DS-series (premium storage)
+### <a name="general-purpose-ds-series"></a>DS-series (premium storage)
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-----------------|----|----|-----|-----|------|-------------|---------|
 |**Standard_DS1** |1   |3.5 |7    |1000 |4000  |4 / 4x2300   |2 |
@@ -92,7 +92,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_D4_v2** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
 |**Standard_D5_v2** |16  |56  |800  |500 |48000 |64 / 64x500 |8 |
 
-### DSv2-series (premium storage)
+### <a name="general-purpose-dsv2-series"></a>DSv2-series (premium storage)
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |--------------------|----|----|----|-----|------|-------------|---------|
 |**Standard_DS1_v2** |1   |3.5 |7   |1000 |4000  |4 / 4x2300   |2 |
@@ -114,7 +114,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_F16** |16  |32  |256  |500 |48000 |64 / 64x500 |8 |
 
 
-### Fs-series (premium storage)
+### <a name="compute-optimized-fs-series"></a>Fs-series (premium storage)
 *Requires Azure Stack Hub version 1804 or later*  
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
@@ -126,7 +126,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_F16s** |16  |32  |64  |1000 |64000 |64 / 64x2300 |8 |
 
 
-### Fsv2-series (premium storage)
+### <a name="compute-optimized-fsv2-series"></a>Fsv2-series (premium storage)
 *Requires Azure Stack Hub version 1804 or later* 
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
@@ -151,7 +151,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_D13**  |8  |56  |400 |500     |24000 |32 / 32x500 |8 |
 |**Standard_D14**  |16 |112 |800 |500     |48000 |64 / 64x500 |8 |
 
-### DS-series (premium storage)
+### <a name="memory-optimized-ds-series"></a>DS-series (premium storage)
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-------------------|---|----|----|--------|------|-------------|---------|
 |**Standard_DS11**  |2  |14  |28  |1000    |8000  |8 / 8x2300   |2 |
@@ -168,7 +168,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 |**Standard_D14_v2** |16  |112 |800  |500 |48000  |64 / 64x500  |8 |
 
 
-### DSv2-series (premium storage)
+### <a name="memory-optimized-dsv2-series"></a>DSv2-series (premium storage)
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |8 / 8x2300    |2 |
@@ -187,7 +187,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 | **Standard_D16_v3** | 16 | 64  | 400  | 32 /32x500 | 8 |
 | **Standard_D32_v3** | 32 | 128 | 800  | 32 /32x500 | 8 |
 
-### DS-n_v2-series (premium storage)
+### <a name="memory-optimized-dsnv2-series"></a>DS-n_v2-series (premium storage)
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | Max data disks /throughput (IOPS) | Max NICs |
 |---|---|---|---|---|---|
 | **Standard_DS11-1_v2**  | 1  | 14   | 28   | 8 / 8x2300 | 2 |
