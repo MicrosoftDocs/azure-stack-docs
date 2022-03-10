@@ -89,6 +89,8 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 | Disks per VM (SCSI)          | 256     |
 | Storage per cluster          | 4 PB    |
 | Storage per server           | 400 TB  |
+|Volumes per Cluster           | 64      |
+|Volume Size                   | 64 TB
 | Logical processors per host  | 512     |
 | RAM per host                 | 24 TB   |
 | RAM per VM                   | 12 TB (generation 2 VM) or 1 TB (generation 1)|
