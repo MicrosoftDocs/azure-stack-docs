@@ -24,19 +24,19 @@ Get-Service wssdagent | Select-Object -Property Name, Status
 
 Expected behavior: the node agent would be in the starting phase, which will constantly try joining the cloud agent and exhausting the ports.
 
-To resolve the issue, you will need to first stop the wssdagent from running. Since the service is in starting phase, it may prevent you from stopping the service. You will need to kill the process before attempting to stop the service.
+To resolve the issue, you'll need to first stop the wssdagent from running. Since the service is in starting phase, it may prevent you from stopping the service. You'll need to kill the process before attempting to stop the service.
 
-1. Confirm the wssdagent is in starting phase
+1. Confirm the wssdagent is in starting phase.
     ```powershell
     Get-Service wssdagent | Select-Object -Property Name, Status
     ```
 
-1. Kill the process
+1. Kill the process.
     ```powershell
     kill -Name wssdagent -Force
     ```
 
-1. Stop the service
+1. Stop the service.
     ```powershell
     Stop-Service wssdagent -Force
     ```
@@ -60,12 +60,12 @@ To resolve the issue, you will need to first stop the wssdagent from running. Si
 
 1. Step 1, 2, and 3 should be repeated at each node of the HCI cluster hitting this issue.
 
-1. After confirming the wssdagent is not running. We would need to start the cloudagent if it is not running.
+1. After confirming the wssdagent is not running. You need to start the cloudagent if it isn't running.
    ```powershell
    Start-ClusterGroup -Name (Get-MocConfig).clusterRoleName
    ```
 
-1. Once we confirm the cloudagent is up and running.
+1. Once you confirm the cloudagent is up and running.
     ```powershell
     Get-ClusterGroup -Name (Get-MocConfig).clusterRoleName
     ```
@@ -96,7 +96,7 @@ Get-ClusterNode -ErrorAction Stop | ForEach-Object { Invoke-Command -ComputerNam
 ```
 ## Certificate renewal pod is in a crash loop state
 
-After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It is expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
+After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It's expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
 
 To resolve this issue, you manually copy the cert tattoo file from the control plane node to each of the worker nodes.
 
@@ -160,7 +160,7 @@ When running an upgrade in Windows Admin Center, the following error occurred:
 
 `Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories.`
 
-This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center doesn't have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
 
 ## When running Update-AksHci, the update process was stuck at `Waiting for deployment 'AksHci Billing Operator' to be ready`
 
@@ -198,7 +198,7 @@ This status message appears when running the [Update-AksHci](./reference/ps/upda
 
 ## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at `Update-KvaInternal`
 
-When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
+When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and doesn't support version rollback, so if you get stuck, you can’t upgrade.
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.
