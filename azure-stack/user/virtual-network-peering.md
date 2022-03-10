@@ -76,11 +76,10 @@ You can't use remote gateways if you already have a gateway configured in your v
 
 ### Permissions
 
-<<<<<<< HEAD
 Please ensure that when creating peerings with VNETs in different subscriptions within the same Azure AD tenants, the accounts have at least the **Network Contributor** role assigned.
 
 > [!IMPORTANT]
-> Azure Stack Hub does not support VNET peering between virtual networks on different subscription and on different Azure AD tenants. It does support VNET peering between VNETs on different subscriptions as long as those subscriptions belong to the same Azure AD tenant. This is different from Azure implementation.
+> Azure Stack Hub does not support VNET peering between virtual networks on different subscriptions and on different Azure AD tenants. It does support VNET peering between VNETs on different subscriptions as long as those subscriptions belong to the same Azure AD tenant. This is different from the Azure implementation.
 
 ## Virtual network peering frequently asked questions (FAQ)
 
