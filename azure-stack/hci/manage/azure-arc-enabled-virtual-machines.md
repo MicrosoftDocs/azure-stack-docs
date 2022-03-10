@@ -351,9 +351,12 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
    ```PowerShell
    Uninstall-Moc
    ```
+
 ## Debugging
+
 Please see the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
 You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require the CloudServiceIP & the path containing HCI login configuration.
+
 - The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning the Arc Resource Bridge.
 - The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
 - Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
@@ -363,19 +366,19 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
 - Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
 - Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
-      - First. the AKS management cluster
-      - And then, Arc Resource Bridge for Arc enabled VMs.
-If Arc Resource Bridge is already deployed, the AKS Management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
+      - First, the AKS management cluster.
+      - And then, Arc Resource Bridge for Arc-enabled VMs.
+If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
 
-While deploying Arc Resource bridge when AKS management cluster is available on the cluster you don't need to perform the following steps:
-      - new-MocNetworkSetting
-      - set-MocConfig
-      - install-Moc
+While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
+      - **new-MocNetworkSetting**
+      - **set-MocConfig**
+      - **install-Moc**
 
-Uninstallation of these features should also be done in order:
-      - Uninstall Arc Resource Bridge first
-      - Then, uninstall AKS Management cluster
-Uninstalling AKS management cluster can impair Arc VM management capabilities. A new Arc Resource Bridge can be deployed again after cleanup, but it will not remember the VM entities that were created earlier.
+Uninstallation of these features should also be done in the following order:
+      - Uninstall Arc Resource Bridge.
+      - Then, uninstall the AKS management cluster.
+Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in portal for management.
 - Updating Arc VMs on Azure Stack HCI must be done from Azure management plane only. Any modifications to these VMs from other management tools will not be updated in Azure portal.
