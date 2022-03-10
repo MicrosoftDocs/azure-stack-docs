@@ -1,6 +1,6 @@
 ---
 
-title: Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI
+title: Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI (preview)
 description: Use containerd as the container runtime for Windows Server node pools on Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.author: mabrigg
@@ -28,31 +28,33 @@ Beginning in Kubernetes version v1.22.1, you can use `containerd` as the contain
 
 Verify you have the following requirements ready:
 
-- You've prepared your machine [for deployment](/azure-stack/aks-hci/prestage-cluster-service-host-create#step-2-prepare-your-machines-for-deployment)
+- You've prepared your machine [for deployment](/azure-stack/aks-hci/prestage-cluster-service-host-create#step-2-prepare-your-machines-for-deployment).
 - You have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 - You can run commands in this article from an elevated PowerShell session.
-## Set the AKS on Azure Stack HCI configuration
+## Set the configuration
 
-Before your deploy your AKS cluster on Azure Stack Hub HCI, set the cluster to be deployed with the `containerd` runtime for Windows nodes. To set the runtime to `containerd`, you'll use the **Set-AksHciConfig** PowerShell cmdlet with the `-ring wincontainerd` and `-catalog aks-hci-stable-catalogs-ext` flags.
+Before your deploy your AKS cluster on Azure Stack HCI, set the cluster to be deployed with the `containerd` runtime for Windows nodes. To set the runtime to `containerd`, you'll use the **Set-AksHciConfig** PowerShell cmdlet with the `-ring wincontainerd` and `-catalog aks-hci-stable-catalogs-ext` flags.
+
+In the following steps, the values of the parameters are given, but you will need to update these values for your specific envorionemtn.
 
 1. Run Windows PowerShell as an Administrator.
 1. You'll need the following parameters to run the **[Set-AksHciConfig](./reference/ps/set-akshciconfig.md)** cmdlet:
     1. **workingDir**  
-        This is a working directory for the module to use for storing small files. for example: c:\ClusterStorage\Volume1\workingDir
+        Specify a working directory for the module to use for storing small files, for example: `c:\ClusterStorage\Volume1\workingDir`.
     1. **cloudConfigLocation** `this wasn't in your example?`  
-        The location where the cloud agent will store its configuration. 
+        Specify where the cloud agent will store its configuration. 
     1. **Version**  
         The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. 
     1. **vnet**  
         The name of the **AksHciNetworkSetting** object created with **New-AksHciNetworkSetting** command.
     1. **imageDir**  
         The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images.
-1. Run the following cmdlet:
+1. Run the following cmdlet. The values given in this example command will need to be customized for your environment.
     ```powershell
     Set-AksHciConfig -workingDir $workingDir -Version $version -vnet $vnet -imageDir $imageStore -skipHostLimitChecks -ring wincontainerd -catalog AKS on Azure Stack HCI-stable-catalogs-ext
     ```
 
-## Deploy an AKS on Azure Stack HCI cluster
+## Deploy a cluster
 
 Deploy your AKS on Azure Stack HCI cluster.
 1. Run Windows PowerShell as an Administrator on any node in your Azure Stack HCI cluster.
@@ -62,7 +64,7 @@ Deploy your AKS on Azure Stack HCI cluster.
     ```
 1. Verify that `containerd` is the container runtime with kubectl. Run the following command from a PowerShell or bash prompt:
     ```PowerShell
-    kubectl get nodes -owide
+    kubectl get nodes -o wide
     ```
     Kubectl returns the nodes for your cluster. For example:
     ```output
@@ -78,7 +80,8 @@ Deploy your AKS on Azure Stack HCI cluster.
 You may encounter the following issues when using `containerd` on AKS on Azure Stack HCI.
 
 ### Issues accessing SMB shares from a pod configured with GMSA
-When a Windows pod is configured with GMSA and the runtime is `containerd`, pods sometimes have difficulty accessing SMB shares. If this occurs, you can work around this by opening an administrator terminal on the target node and run the following:
+
+When a Windows pod is configured with GMSA and the runtime is `containerd`, pods sometimes have difficulty accessing SMB shares. If this occurs, you can work around this by opening an elevated PowerShell session on the target node and run the following:
 
 ```powershell  
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\hns\State" /v EnableCompartmentNamespace /t REG_DWORD /d 1
