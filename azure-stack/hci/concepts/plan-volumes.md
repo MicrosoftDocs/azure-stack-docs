@@ -15,7 +15,7 @@ This article provides guidance for how to plan cluster volumes to meet the perfo
 
 ## Review: What are volumes
 
-Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), the software-defined storage technology behind Azure Stack HCI.
+Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), the software-defined storage technology behind Azure Stack HCI and Windows Server.
 
    >[!NOTE]
    > We use term "volume" to refer jointly to the volume and the virtual disk under it, including functionality provided by other built-in Windows features such as Cluster Shared Volumes (CSV) and ReFS. Understanding these implementation-level distinctions is not necessary to plan and deploy Storage Spaces Direct successfully.
