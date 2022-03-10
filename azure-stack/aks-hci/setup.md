@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal
 # intent: As an IT pro, I want to set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center.
-# keyword: Azure Kebernetes Service Azure Stack HCI Windows Admin Center
+# keyword: Azure Kubernetes Service Azure Stack HCI Windows Admin Center
 ---
 
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI using Windows Admin Center
