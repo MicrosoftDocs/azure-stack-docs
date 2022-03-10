@@ -47,7 +47,7 @@ Virtual network peering enables the next hop in a user-defined route to be the I
 
 ## Gateways and on-premises connectivity
 
-Each virtual network, including a peered virtual network, can have its own gateway. A virtual network can use its gateway to connect to an on-premises network. Please review the [Azure stack Hub Virtual Network Gateway documentation](/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways.md).
+Each virtual network, including a peered virtual network, can have its own gateway. A virtual network can use its gateway to connect to an on-premises network. Please review the [Azure stack Hub Virtual Network Gateway documentation](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 You can also configure the gateway in the peered virtual network as a transit point to an on-premises network. In this case, the virtual network that is using a remote gateway can't have its own gateway. A virtual network has only one gateway. The gateway is either a local or remote gateway in the peered virtual network, as shown in the following figure:
 
