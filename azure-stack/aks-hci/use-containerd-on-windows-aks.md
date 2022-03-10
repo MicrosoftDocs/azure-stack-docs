@@ -35,25 +35,24 @@ Verify you have the following requirements ready:
 
 Before your deploy your AKS cluster on Azure Stack HCI, set the cluster to be deployed with the `containerd` runtime for Windows nodes. To set the runtime to `containerd`, you'll use the **Set-AksHciConfig** PowerShell cmdlet with the `-ring wincontainerd` and `-catalog aks-hci-stable-catalogs-ext` flags.
 
-In the following steps, the values of the parameters are given, but you will need to update these values for your specific envorionemtn.
+In the following steps, the values of the parameters are given, but you will need to update these values for your specific environment.
 
 1. Run Windows PowerShell as an Administrator.
 1. You'll need the following parameters to run the **[Set-AksHciConfig](./reference/ps/set-akshciconfig.md)** cmdlet:
     1. **workingDir**  
-        Specify a working directory for the module to use for storing small files, for example: `c:\ClusterStorage\Volume1\workingDir`.
-    1. **cloudConfigLocation** `this wasn't in your example?`  
-        Specify where the cloud agent will store its configuration. 
+        Specify a working directory for the module to use for storing small files, for example: `c:\ClusterStorage\Volume1\ImageStore`.
+    1. **cloudConfigLocation**  
+        Specify where the cloud agent will store its configuration, for example: `c:\clusterstorage\volume1\Config`
     1. **Version**  
-        The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. 
+        The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy, for example `v1.22.1`.
     1. **vnet**  
-        The name of the **AksHciNetworkSetting** object created with **New-AksHciNetworkSetting** command.
+        The name of the **AksHciNetworkSetting** object created with **New-AksHciNetworkSetting** command. For an example of the cmdlet that stores the result in the `$vnet` variable, see [Create a virtual network](./kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network).
     1. **imageDir**  
-        The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images.
+        The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images, for example `c:\clusterstorage\volume1\Images`
 1. Run the following cmdlet. The values given in this example command will need to be customized for your environment.
     ```powershell
-    Set-AksHciConfig -workingDir $workingDir -Version $version -vnet $vnet -imageDir $imageStore -skipHostLimitChecks -ring wincontainerd -catalog AKS on Azure Stack HCI-stable-catalogs-ext
+    Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\ImageStore -Version v1.22.1 -vnet $vnet -imageDir $c:\clusterstorage\volume1\Images -skipHostLimitChecks -ring wincontainerd -catalog aks-hci-stable-catalogs-ext
     ```
-
 ## Deploy a cluster
 
 Deploy your AKS on Azure Stack HCI cluster.
@@ -89,6 +88,8 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\hns\State" /v EnableCompartmentN
 
 Reboot the node after setting this reg key in order to apply the change.
 
+> [!IMPORTANT]  
+> The `containerd` preview doesn't currently support Flannel Overlay networking. You must use Calico.
 ## Next steps
 
 - [Deploy .NET applications](deploy-windows-application.md).
