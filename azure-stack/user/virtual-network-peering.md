@@ -4,7 +4,7 @@ title: Virtual network peering in Azure Stack Hub
 description: Learn how to use Virtual network peering to connect virtual networks in Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/01/2021
+ms.date: 03/09/2022
 ms.topic: conceptual
 ms.reviewer: cedward
 ms.lastreviewed: 03/10/2022
@@ -76,10 +76,16 @@ You can't use remote gateways if you already have a gateway configured in your v
 
 ### Permissions
 
+<<<<<<< HEAD
 Please ensure that when creating peerings with VNETs in different subscriptions within the same Azure AD tenants, the accounts have at least the **Network Contributor** role assigned.
 
 > [!IMPORTANT]
 > Azure Stack Hub does not support VNET peering between virtual networks on different subscription and on different Azure AD tenants. It does support VNET peering between VNETs on different subscriptions as long as those subscriptions belong to the same Azure AD tenant. This is different from Azure implementation.
+=======
+Please ensure that when creating peerings with VNETs in different subscriptions, the accounts have the **Network Contributor** role assigned at the VNET level. For example, User1 has the Network Contributor role on VNET2, and User2 has the Network Contributor role on VNET1. User1 owns Subscription1 where VNET1 is created, and User2 owns Subscription2 where VNET2 is created.
+
+Additionally, there is no user interface capability for peering between different Azure AD tenants. You can use Azure CLI and PowerShell to create the peerings.
+>>>>>>> b4a77067d26a31c7b0f9dc8e8b3e43c1360146db
 
 ## Virtual network peering frequently asked questions (FAQ)
 
