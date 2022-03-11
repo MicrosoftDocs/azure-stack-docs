@@ -18,7 +18,7 @@ Troubleshoots and fixes errors related to expired certificates for the AKS on Az
 ## Syntax
 
 ```powershell
-Repair-AksHciClusterCerts [-sshPrivateKeyFile <String>] 
+Repair-AksHciCerts [-sshPrivateKeyFile <String>] 
 ```
 
 ## Description
