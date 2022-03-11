@@ -13,22 +13,22 @@ ms.reviewer: abha
 
 This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [upgrade](known-issues.md) and [installation](known-issues-installation.md) issues and errors.
 
-## During deployment the error `No match was found for the specified search criteria for the provider 'Nuget'` appears
+## During deployment the error `No match was found for the specified search criteria for the provider 'NuGet'` appears
 This error appears when deploying through Windows Admin Center. The package provider requires the `PackageManagement` and `Provider` tags. You should check if the specified package has tags error when attempting a deployment through Windows Admin Center. 
 
 This is an error occurs from PowerShell and states that there are internet connectivity issues. PowerShell is trying to install the pre-requisites package and is unable to install it. You should check to make sure the server or failover cluster has internet connectivity and then start a fresh installation.
 
 In Stage 2.1: System Validation, there may be an error when you hit install: `No match was found for the specified search criteria for the provider 'NuGet'. The package provider requires 'PackageManagement' and 'Provider' tags. Please check if the specified package has the tags.`
-For the PS commands, please complete them on the node(s) that you are trying to deploy to. You will have to manually install the Nuget using the PS command below: 
+For the PowerShell commands, please complete them on the node(s) that you are trying to deploy to. You will have to manually install the NuGet using the PowerShell command below: 
 ```powershell-interactive
 Install-PackageProvider -Name NuGet -Scope CurrentUser -Force
 
 ```
-After running that command, please close all open PS windows and try again in Windows Admin Center.
+After running that command, please close all open PowerShell windows and try again in Windows Admin Center.
 
 ## `Install-Module` was not recognized
 
-In stage 2.1: System Validation, you may get an error: `The item 'Install-Module' was not recognized as the name of a cmdlet, function, script file, or runnable program. Please check the spelling of the name, if the path is included, make sure the path is correct and try again` when you install. For the PS commands, please complete them on the node(s) that you are trying to deploy to. Please run the following command (ensure your PS version is at least 5.1) to resolve:
+In stage 2.1: System Validation, you may get an error: `The item 'Install-Module' was not recognized as the name of a cmdlet, function, script file, or runnable program. Please check the spelling of the name, if the path is included, make sure the path is correct and try again` when you install. For the PowerShell commands, please complete them on the node(s) that you are trying to deploy to. Please run the following command (ensure your PowerShell version is at least 5.1) to resolve:
 ```powershell-interactive
 Install-Module -Name PowershellGet -Repository PSGallery -Force -Confirm:$false -SkipPublisherCheck
 ```
@@ -41,13 +41,13 @@ Register-PSRepository -Default
 
 ## Unable to find repository 'PSGallery'
 
-In stage 2.1: System Validation, you may encounter this error: `Unable to find repository 'PSGallery'. Use Get-PSRepository to see all available repositories.` when you click install. For the PS commands, please complete them on the node(s) that you are trying to deploy to. Please unregister and reregister the PSRepository in an administrative PS window. Close all PS windows afterwards.
+In stage 2.1: System Validation, you may encounter this error: `Unable to find repository 'PSGallery'. Use Get-PSRepository to see all available repositories.` when you click install. For the PowerShell commands, please complete them on the node(s) that you are trying to deploy to. Please unregister and reregister the PSRepository in an administrative PowerShell window. Close all PowerShell windows afterward.
 ```powershell-interactive
 Unregister-PSRepository -Name 'PSGallery'
 Register-PSRepository -Default
 ```
 
-Then, please uninstall and reinstall PowerShellGet in an administrative PS window. Close all PS windows afterwards.
+Then, please uninstall and reinstall PowerShellGet in an administrative PowerShell window. Close all PowerShell windows afterwards.
 ```powershell-interactive
 Uninstall-Module PowerShellGet
 Install-Module PowerShellGet -Force
@@ -58,7 +58,7 @@ After this, please go back to Windows Admin Center and retry.
 ## Access is denied
 
 In Stage 2.1: Basic Step Component, you may encounter this error: `Connecting to remote server *** failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.` when trying to use your credentials for your server node(s).
-Please first make sure that the account/credentials added is an administrative account on the machine. Then verify that PSRemoting is enabled and remote hosts are trusted. You can do this with the following PS commands:
+Please first make sure that the account/credentials added is an administrative account on the machine. Then verify that PSRemoting is enabled and remote hosts are trusted. You can do this with the following PowerShell commands:
 ```powershell-interactive
 Enable-PSRemoting -Force 
 winrm quickconfig 
