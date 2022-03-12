@@ -32,6 +32,36 @@ To resolve the issue:
 
 These steps start the log rotation only after 100 new logs are generated from the agent restart. If there are already **n** agent logs at the time of restart, log rotation will start only after **n**+100 logs are generated.
 
+## Install-AksHci hangs in the `Waiting for azure-arc-onboarding to complete` stage before timing out.
+
+Install-AksHci hangs at `Waiting for azure-arc-onboarding to complete` before timing out when:
+
+ - A service principal is used in AKS on Azure Stack HCI Registration (Set-AksHciRegistration).
+ - Az.Accounts PowerShell modules version(2.7.x) installed.
+
+`Az.Accounts 2.7.x` versions removes the `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount`, which is used by AKS on Azure Stack HCI for Azure Arc onboarding.
+
+To reproduce:
+
+1. Install `Az.Accounts` PowerShell modules version (>= 2.7.0).
+2. `Set-AksHciRegistration` using a service principal.
+3. `Install-AksHci`.
+
+Expected behavior:
+
+1. The AKS on Azure Stack HCI installation hangs at `Waiting for azure-arc-onboarding to complete`.
+2. `Azure-arc-onboarding` pods goes into crash loop.
+3. The `Azure-arc-onboarding` pods error with the following error:  
+    `Starting onboarding process ERROR: variable CLIENT_SECRET is required`
+
+To resolve this issue:
+
+Uninstall Az.Accounts modules with versions 2.7.x. run the following cmdlet:
+
+```powershell  
+Uninstall-Module -Name Az.Accounts -RequiredVersion 2.7.0 -Force
+```
+
 ## I'm getting `Install-AksHci Failed, Service returned an error. Status=403 Code="RequestDisallowedByPolicy"` error when installing AKS-HCI. What should I do?
 
 This error may be caused by the installation process attempting to violate an Azure Policy that's been set on the Azure subscription or resource group provided during the Azure Arc onboarding process. This error may occur for users who have defined Azure Policies at a subscription or resource group level, and then attempt to install AKS on Azure Stack HCI which violates an Azure Policy. To resolve this issue, read the error message to understand which Azure Policy set by your Azure administrator has been violated, and then modify the Azure Policy by making an exception to the Azure Policy. To learn more about Policy exceptions, see [Azure Policy exemption structure](/azure/governance/policy/concepts/exemption-structure).
