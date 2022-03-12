@@ -79,7 +79,7 @@ To resolve the issue, you'll need to first stop the wssdagent from running. Sinc
     ```powershell
     Get-Service wssdagent | Select-Object -Property Name, Status
     ```
-## Update of host OS HCI to HCIv2 breaks AKS-HCI installation
+## Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation
 
 Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
 
@@ -94,6 +94,43 @@ To resolve this issue, start the wssdagent Moc NodeAgent Service on the affected
 ```PowerShell
 Get-ClusterNode -ErrorAction Stop | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { Start-Service wssdagent -WarningAction:SilentlyContinue } }
 ```
+## Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster
+
+Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, rendering the management cluster's API server unreachable and fail day two operations. The kube-vip pod will not be able to apply VIP configuration to the interface, and as a result the VIP will be unreachable.
+
+To Reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2 then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster will fail with errors such as:
+
+```powershell
+PS C:\Users\wolfpack> Get-AksHciCluster
+C:\Program Files\AksHci\kvactl.exe cluster list --kubeconfig="C:\ClusterStorage\Volume1\Msk8s\WorkingDir\1.0.8.10223\kubeconfig-mgmt" System.Collections.Hashtable.generic_non_zero 1 [Error: failed to connect to the cluster: action failed after 9
+attempts: Get "https://10.193.237.5:6443/api?timeout=10s": net/http: request canceled while waiting for connection
+(Client.Timeout exceeded while awaiting headers)]
+At C:\Program Files\WindowsPowerShell\Modules\Kva\1.0.22\Common.psm1:2164 char:9
++         throw $errMessage
++         ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (C:\Program File...iting headers)]:String) [], RuntimeException
+    + FullyQualifiedErrorId : C:\Program Files\AksHci\kvactl.exe cluster list --kubeconfig="C:\ClusterStorage\Volume1\Msk8s\WorkingDir\1.0.8.10223\kubeconfig-mgmt" System.Collections.Hashtable.generic_non_zero 1 [Error: failed to connect to the cluster: action failed after 9 attempts: Get "https://10.193.237.5:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]
+``` 
+
+To resolve this issue: restart the `kube-vip` container to bring the deployment back to a good state.
+
+1. Get the `kube-vip` container ID:
+
+   ```powershell  
+   ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo crictl ls | grep 'kube-vip'"
+   ```
+
+   The output should look something like this, with the container ID being the first value `4a49a5158a5f8`.
+   ```powershell  
+   4a49a5158a5f8       7751a28bb5ce1       28 minutes ago      Running             kube-vip                         1                   cf9681f921a55
+   ```
+
+1. Restart the Restart the container:
+
+   ```powershell  
+   ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo crictl stop <Container ID>"
+   ```
+
 ## Certificate renewal pod is in a crash loop state
 
 After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It's expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
