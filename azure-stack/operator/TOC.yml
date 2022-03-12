@@ -446,6 +446,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.1.2 release notes [Mar 2022] 
+          href: event-hubs-rp-release-1-2102-20.md        
         - name: 1.2102.1.0 release notes [Oct 2021] 
           href: event-hubs-rp-release-1-2102-10.md
         - name: 1.2102.0.0 release notes [Jul 2021] 
