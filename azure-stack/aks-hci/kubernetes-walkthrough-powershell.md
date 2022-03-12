@@ -18,16 +18,16 @@ ms.custom: mode-api
 In this quickstart, you'll learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using PowerShell. To use Windows Admin Center instead, see [Set up with Windows Admin Center](setup.md).
 
 > [!NOTE]
-> - If you have prestaged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
+> - If you have prestaged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](presagers-cluster-service-host-create.md).
 > - If you have a proxy server, see [set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](kubernetes-walkthrough-powershell-proxy.md).
 
 ## Before you begin
 
-- Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
+- Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 - Use an Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
 - Make sure you have **at least one** of the following access levels to the Azure subscription you use for AKS on Azure Stack HCI: 
-   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left-hand side of the Azure portal and then clicking on "View my access".
-   - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
+- A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left-hand side of the Azure portal and then clicking on "View my access".
+- A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role.
 - Your subscription should specify an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - Use **at least one** of the following:
    - 2-4 node Azure Stack HCI cluster
