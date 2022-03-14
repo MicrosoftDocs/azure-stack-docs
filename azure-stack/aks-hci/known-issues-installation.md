@@ -23,12 +23,14 @@ To reproduce: `Install AksHci` and have a cluster up and running until the numbe
 To resolve the issue:
 
 1. Modify the cloud agent and node agents' logconf files.
-    Cloud agent **logconfig** is located at `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
-    Node agent **logconfig** is located at `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
+    Cloud agent **logconfig** is located at:  
+    `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
+    Node agent **logconfig** is located at:
+      `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
 
-2. Change the value of Limit to 100 and Slots to 100 and save the configuration files.
+2. Change the value of **Limit** to 100 and Slots to 100 and save the configuration files.
 
-3. Restart the cloud agent and node agents to pick up these changes.
+3. Restart the cloud agent and node agents to register these changes.
 
 These steps start the log rotation only after 100 new logs are generated from the agent restart. If there are already **n** agent logs at the time of restart, log rotation will start only after **n**+100 logs are generated.
 
