@@ -12,7 +12,7 @@ ms.lastreviewed: 03/14/2022
 
 # Event Hubs on Azure Stack Hub 1.2102.2.0 release notes
 
-These release notes describe improvements and fixes in Event Hubs on Azure Stack Hub version 1.2102.1.0, and any known issues. 
+These release notes describe improvements and fixes in Event Hubs on Azure Stack Hub version 1.2102.2.0, and any known issues. 
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/event-hubs-hub-update-banner.md)]
 
@@ -20,14 +20,13 @@ These release notes describe improvements and fixes in Event Hubs on Azure Stack
 
 This release includes the following updates:
 
-- Support for Windows OS version 1.2104.0.
 - Support for 2020-09-01 API Profile.
 
 ## Issues fixed in this release
 
 This release includes the following fixes:
 
-- Initial VM provisioning failures in slow environments.
+- Initial VM provisioning failures in environments with slow networking.
 - VM rejoining the cluster after a reboot fails sometimes.
 
 ## Known issues 
