@@ -83,7 +83,8 @@ To resolve the issue, you'll need to first stop the wssdagent from running. Sinc
 
 Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
 
-> [!NOTE] This issue only happens occasionally.
+> [!NOTE]
+> This issue only happens occasionally.
 
 To Reproduce: When you update a cluster with an existing AKS HCI deployment from HCI to HCIv2, an AKS HCI operation such as `New-AksHciCluster` may fail. The error message will state the MOC nodes are OutOfCapacity. For example:
 
