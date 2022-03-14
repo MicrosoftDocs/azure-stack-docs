@@ -18,7 +18,7 @@ This article describes known issues and errors you may encounter when running an
 
 Moc agents are expected to keep only the last 100 agent logs. They are supposed to delete the older logs. However, the log rotation is not happening and logs keep getting accumulated consuming disk space.
 
-To Reproduce: `Install AksHci` and have a cluster up and running until the number of agent logs exceeds 100. At the time of the **nth** log creation, the agents are expected to delete the **n**-100th log, if they exist.
+To reproduce: `Install AksHci` and have a cluster up and running until the number of agent logs exceeds 100. At the time of the **nth** log creation, the agents are expected to delete the **n**-100th log, if they exist.
 
 To resolve the issue:
 

@@ -99,9 +99,9 @@ Get-ClusterNode -ErrorAction Stop | ForEach-Object { Invoke-Command -ComputerNam
 ```
 ## Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster
 
-Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, rendering the management cluster's API server unreachable and fail day two operations. The kube-vip pod will not be able to apply VIP configuration to the interface, and as a result the VIP will be unreachable.
+Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, rendering the management cluster's API server unreachable and fail day two operations. The `kube-vip` pod will not be able to apply VIP configuration to the interface, and as a result the VIP will be unreachable.
 
-To Reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2 then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster will fail with errors such as:
+To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2 then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster will fail with errors such as:
 
 ```powershell
 PS C:\Users\wolfpack> Get-AksHciCluster
@@ -123,7 +123,7 @@ To resolve this issue: restart the `kube-vip` container to bring the deployment 
    ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo crictl ls | grep 'kube-vip'"
    ```
 
-   The output should look something like this, with the container ID being the first value `4a49a5158a5f8`.
+   The output should look something like this, with the container ID being the first value `4a49a5158a5f8`. For example:
    ```powershell  
    4a49a5158a5f8       7751a28bb5ce1       28 minutes ago      Running             kube-vip                         1                   cf9681f921a55
    ```
