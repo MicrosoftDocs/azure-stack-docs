@@ -102,9 +102,9 @@ Storage Spaces Direct supports the following two deployment options:
 
 ### Hyperconverged deployment
 
-In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. For deploying Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). For deploying Storage Spaces Direct on Azure Stack HCI, see [](/deploy/operating-system).
+In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. To deploy Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). To deploy Storage Spaces Direct as part of Azure Stack HCI, see [What is the deployment process for Azure Stack HCI?](/deploy/operating-system).
 
-![Storage Spaces Direct serves storage to Hyper-V VMs in the same cluster](media/storage-spaces-direct-in-windows-server-2016/hyper-converged-minimal.png)
+![Storage Spaces Direct serves storage to Hyper-V VMs in the same cluster](media/storage-spaces-direct/hyper-converged-minimal.png)
 
 ### Converged deployment
 
@@ -121,7 +121,7 @@ You can use the following tools to manage and monitor Storage Spaces Direct:
 | [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)     | Graphical    | Included |
 | Server Manager & Failover Cluster Manager                                 | Graphical    | Included |
 | Windows PowerShell                                                        | Command-line | Included |
-| [System Center Virtual Machine Manager (SCVMM)](/system-center/vmm/s2d?view=sc-vmm-2019) <br>& [Operations Manager (SCOM)](/system-center/scom/welcome?view=sc-om-2019) | Graphical    | Paid     |
+| [System Center Virtual Machine Manager (SCVMM)](/system-center/vmm/s2d?view=sc-vmm-2019&preserve-view=true) <br>& [Operations Manager (SCOM)](/system-center/scom/welcome?view=sc-om-2019&preserve-view=true) | Graphical    | Paid     |
 
 ## Videos
 
@@ -147,7 +147,7 @@ There are [over 10,000 clusters](https://techcommunity.microsoft.com/t5/storage-
 
 Visit [Microsoft.com/HCI](https://www.microsoft.com/hci) to read their stories.
 
-[![Grid of customer logos](media/storage-spaces-direct-in-windows-server-2016/customer-stories.png)](https://www.microsoft.com/hci)
+[![Grid of customer logos](media/storage-spaces-direct/customer-stories.png)](https://www.microsoft.com/hci)
 
 ## Additional references
 
