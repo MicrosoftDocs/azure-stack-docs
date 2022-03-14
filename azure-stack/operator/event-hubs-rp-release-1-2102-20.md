@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/11/2022
+ms.date: 03/14/2022
 ms.reviewer: kalkeea
-ms.lastreviewed: 03/11/2022
+ms.lastreviewed: 03/14/2022
 ---
 
 # Event Hubs on Azure Stack Hub 1.2102.2.0 release notes
@@ -22,14 +22,13 @@ This release includes the following updates:
 
 - Support for Windows OS version 1.2104.0.
 - Support for 2020-09-01 API Profile.
-- Automatic OS updates for clusters has been disabled.
 
 ## Issues fixed in this release
 
 This release includes the following fixes:
 
-- Initial VM provisioning failures.
-- VM rejoining the cluster after a reboot failed in some slow environments.
+- Initial VM provisioning failures in slow environments.
+- VM rejoining the cluster after a reboot fails sometimes.
 
 ## Known issues 
 
