@@ -61,7 +61,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker-end
 
-::: moniker range="azs-2108"
+<!-- ::: moniker range="azs-2108"
 ## Update
 
 ### Update to 2108 will not proceed if there are AKS clusters or ACR registries created and the private previews of AKS and ACR services are installed
@@ -70,11 +70,11 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: The operator must delete all AKS clusters and ACR Registries and uninstall the private preview of the AKS and ACR services.
 - Occurrence: Any stamp that has the AKS and ACR private previews installed will experience this message.
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates). -->
 
 <!-- ## Networking -->
 
-## Compute
+<!-- ## Compute
 
 ### Cannot create a Virtual Machine Scale Set with a data disk attached
 
@@ -129,7 +129,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all systems with hotfix version 1.2108.2.81 that are using an Azure AD account without an email address in the account profile.
 - Remediation: Sign in to the Azure portal, and add an email address to the Azure AD account that is experiencing this issue.
-- Occurrence: Common
+- Occurrence: Common -->
 
 <!-- ## Storage -->
 
@@ -143,7 +143,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 <!-- ### Marketplace -->
 
-## Event Hubs
+<!-- ## Event Hubs
 
 [!INCLUDE [event hubs secret rotation related issues](../includes/event-hubs-secret-rotation-related-known-issues.md)]
 
@@ -151,7 +151,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 [!INCLUDE [Applications deployed to AKS clusters fail to access persistent volumes](../includes/known-issue-aks-1.md)]
 
-::: moniker-end
+::: moniker-end -->
 
 ::: moniker range="azs-2102"
 ## Update
