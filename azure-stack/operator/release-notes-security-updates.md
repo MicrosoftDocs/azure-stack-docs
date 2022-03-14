@@ -310,7 +310,7 @@ For more information about these vulnerabilities, click on the links below.
 - [CVE-2021-22947](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-22947)
 - [CVE-2013-3900](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2013-3900)
 
-::: moniker end
+::: moniker-end
 
 ::: moniker range="azs-2108"
 ## 2108 update
