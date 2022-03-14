@@ -83,7 +83,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-- TBD
+- Fix to improve SLB throughput.
 
 ## Security updates
 
