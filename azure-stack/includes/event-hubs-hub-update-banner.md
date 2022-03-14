@@ -13,6 +13,7 @@ ms.lastreviewed: 06/08/2021
 >
 > | Supported Azure Stack Hub version(s) | Event Hubs RP release |
 > |-----|---|
+> | 2102 and higher | 1.2102.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-20.md) |
 > | 2102 and higher | 1.2102.1.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-10.md) |
 > | 2102 and higher | 1.2102.0.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-00.md) |
 > | 2008 and higher | 1.2012.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2012-20.md) |
