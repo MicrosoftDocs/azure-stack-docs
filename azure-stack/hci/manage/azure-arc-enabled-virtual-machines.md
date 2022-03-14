@@ -61,7 +61,7 @@ Deploying Azure Arc Resource Bridge requires the following:
 
 - The latest version of Azure CLI installed on all servers of the cluster.
   - To install Azure CLI on each cluster node use RDP connection.
-  - Follow the instructions on this KB: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows
+  - Follow the instructions on this article: [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
   - At least 50GB of space in C:\.
   - At least 4 cores
@@ -101,7 +101,7 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps (throught RDP or console session, remote Powershell is not supported):
+To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps (through RDP or console session, remote Powershell is not supported):
 
 1. Install the required PowerShell modules by running the following cmdlet as administrator on all servers of the Azure Stack HCI cluster:
 
