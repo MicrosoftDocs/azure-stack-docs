@@ -17,7 +17,7 @@ Azure Stack HCI and Windows Server clusters work best when every server has exac
 
 In reality, we recognize this is not always practical. Today, you may buy spacious 3 TB hard drives; next year, it may become impossible to find drives that small. Therefore, some amount of mixing-and-matching is expected and supported. Keep in mind, however, that more symmetry is always better.
 
-This article explains the constraints and provides examples of supported and unsupported configurations in Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI.
+This article explains the constraints and provides examples of supported and unsupported configurations in Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI and Windows Server.
 
 ## Constraints
 
