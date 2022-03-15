@@ -4,10 +4,10 @@ description: Learn how to use a Linux machine in your Azure Stack Hub to host th
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/4/2021
+ms.date: 03/15/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/4/2021
+ms.lastreviewed: 03/15/2022
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -33,10 +33,16 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 1. Create a Linux VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack Hub portal](./azure-stack-quick-linux-portal.md).
 2. Connect to your VM.
-3. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Image must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command will install the latest version, which may need a VHD image that is not available in your marketplace.
+3. User your package manager to check that you have the following tools installed:
+    - `jq` a JSON processor.
+    - `curl` - a tool for transferrring files using a variety of network protocols.
+    - `openssh` an ssh client.
+    - `tar` a tool used to work with TAR archives.
+4. Install Azure CLI. Packages for Azure CLI are available for most distributions. You can find instructions at [Install the Azure CLI on Linux](/cli/azure/install-azure-cli-linux).
+5. Find the version of AKS engine in the [AKS engine and Azure Stack version mapping table](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping) table. The AKS Base Image must be available in your Azure Stack Hub Marketplace. When running the command, you must specify the version `--version v0.xx.x`. If you don't specify the version, the command will install the latest version, which may need a VHD image that is not available in your marketplace.
     > [!NOTE]  
     > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
-1. Run the following command:
+6. Run the following command:
 
     ```bash  
         curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
