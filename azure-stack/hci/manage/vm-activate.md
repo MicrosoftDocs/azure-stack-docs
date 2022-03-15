@@ -1,34 +1,37 @@
 ---
 title: Activate Windows Server VMs using Automatic Virtual Machine Activation
 description: This topic explains the benefits of using Automatic Virtual Machine Activation over other activation methods and provides instructions on setting up this optional feature on Azure Stack HCI.
-author: jelei
-ms.author: jelei
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/14/2022
 
 ---
 
-# Activate Windows Server VMs using Automatic Virtual Machine Activation
+# Licensing Windows Server VMs on Azure Stack HCI
 
 >Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 
-Automatic Virtual Machine Activation (AVMA) is an optional feature in Azure Stack HCI that you can use to activate Windows Server VMs running on Azure Stack HCI hosts. This article explains the advantages of using Automatic Virtual Machine Activation over other activation methods, and provides instructions on setting up this feature on Azure Stack HCI.
+Windows Server virtual machines (VMs) must be licensed and activated before you can use them on Azure Stack HCI. You can use any existing Windows Server licenses and activation methods that you already have; or optionally, Azure Stack HCI offers new licensing models and tools to help simplify this process. This article describes general licensing concepts and the new options that are available on Azure Stack HCI.
 
-To use other methods to activate VMs, see [Key Management Services (KMS) activation](/windows-server/get-started/kms-activation-planning).
+## Summary
 
-## Background: Why use Automatic Virtual Machine Activation?
+The following diagram shows the different Windows Server VM licensing options:
 
-Automatic Virtual Machine Activation allows properly activated host servers to activate VMs. The process binds VM activation to host servers, instead of to each individual VM.
 
-:::image type="content" source="./media/vm-activation/avma-binding-process.png" alt-text="Conceptual figure showing how Automatic Virtual Machine Activation binds the VM activation key process to each host server instead of binding the process to each VM running on top of each host server." lightbox="./media/vm-activation/avma-binding-process.png":::
 
-There are several benefits to this approach:
+First, choose one of two licensing options:
 
-- Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
-- License management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with just a properly licensed server.
-- Automatic Virtual Machine Activation acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with Product Use Rights and Microsoft Software License Terms.
+- Windows Server subscription – subscribe to Windows Server guest licenses through Azure. Available for Azure Stack HCI only.
+- Bring your own license (BYOL) – apply your existing Windows Server licenses.
 
-## Two ways to license for AVMA
+For more information, see [Compare licensing options](#compare-licensing-options).
+
+Next, activate your Windows Server VMs. If you are using Windows Server subscription, activation is handled automatically for you. If you are using BYOL, you must use corresponding keys associated with your license in order to activate. The most convenient way to activate VMs on Azure Stack HCI is to use Automatic VM Activation – see the TBD section. 
+
+To use other methods to activate VMs, see Key [Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
+
+## Compare licensing options
 
 There are two options for purchasing licensing for Automatic Virtual Machine Activation, although both use the same mechanism behind the scenes. Choose the option that best serves your needs:
 
