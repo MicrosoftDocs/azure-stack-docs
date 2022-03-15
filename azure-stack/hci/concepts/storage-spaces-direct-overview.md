@@ -102,7 +102,7 @@ Storage Spaces Direct supports the following two deployment options:
 
 ### Hyperconverged deployment
 
-In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. To deploy Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). To deploy Storage Spaces Direct as part of Azure Stack HCI, see [What is the deployment process for Azure Stack HCI?](/deploy/operating-system).
+In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. To deploy Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). To deploy Storage Spaces Direct as part of Azure Stack HCI, see [What is the deployment process for Azure Stack HCI?](/deploy/operating-system)
 
 ![Storage Spaces Direct serves storage to Hyper-V VMs in the same cluster](media/storage-spaces-direct/hyper-converged-minimal.png)
 
