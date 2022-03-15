@@ -33,7 +33,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 1. Create a Linux VM in your Azure Stack Hub. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack Hub portal](./azure-stack-quick-linux-portal.md).
 2. Connect to your VM.
-3. User your package manager to check that you have the following tools installed:
+3. Use your package manager to check that you have the following tools installed:
     - `jq` a JSON processor.
     - `curl` - a tool for transferrring files using a variety of network protocols.
     - `openssh` an ssh client.
