@@ -14,12 +14,79 @@ ms.reviewer: abha
 
 This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](known-issues-windows-admin-center.md) and when [installing AKS on Azure Stack HCI](known-issues-installation.md).
 
-## Update of host OS HCI to HCIv2 breaks AKS-HCI installation
+## Nodeagent leaking ports when unable to join cloudagent due to expired token when cluster not upgraded for more than 60 days
 
-Running an OS update on a host with an AKS HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
+When cluster not upgraded for more than 60 days. The node agent would fail to start due to token expiry on restart of node agent. This would cause the agents to be in starting phase. The continuous try to join the cloudagent may exhaust the ports in the host. The status for the below command would be **Starting**.
 
-To Reproduce
-When you update a cluster with an existing AKS HCI deployment from HCI to HCIv2, an AKS HCI operation such as `New-AksHciCluster` may fail. The error message will state the MOC nodes are OutOfCapacity. For example:
+```powershell
+Get-Service wssdagent | Select-Object -Property Name, Status
+```
+
+Expected behavior: the node agent would be in the starting phase, which will constantly try joining the cloud agent and exhausting the ports.
+
+To resolve the issue, you'll need to first stop the wssdagent from running. Since the service is in starting phase, it may prevent you from stopping the service. You'll need to kill the process before attempting to stop the service.
+
+1. Confirm the wssdagent is in starting phase.
+    ```powershell
+    Get-Service wssdagent | Select-Object -Property Name, Status
+    ```
+
+1. Kill the process.
+    ```powershell
+    kill -Name wssdagent -Force
+    ```
+
+1. Stop the service.
+    ```powershell
+    Stop-Service wssdagent -Force
+    ```
+   
+   > [!NOTE]  
+   > Even after stopping the service the wssdagent process appears to start in few seconds for a couple of times before stopping. Before proceeding to the next step, make sure the below command returns back with an error on all the nodes.
+   
+   ```powershell
+   Get-Process -Name wssdagent
+   ```
+   
+   ```output  
+   PS C:\WINDOWs\system32 Get-process -Name wssdagent 
+   Get-process : Cannot find a process with the name "wssdaqent". Verify the process name and call the cmdlet again.
+   At line: 1 char: 1 
+   + Get-process -Name wssdagent
+   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      + Categorylnfo          : ObjectNotFound: (wssdagent:String) [Get-Process], ProcessCommandException 
+      + FullyQua1ifiedErrorId : NoProcess FoundForGivenName , Microsoft.PowerShell.Commands.Getprocesscommand
+   ```
+
+1. Step 1, 2, and 3 should be repeated at each node of the HCI cluster hitting this issue.
+
+1. After confirming the wssdagent is not running. You need to start the cloudagent if it isn't running.
+   ```powershell
+   Start-ClusterGroup -Name (Get-MocConfig).clusterRoleName
+   ```
+
+1. Once you confirm the cloudagent is up and running.
+    ```powershell
+    Get-ClusterGroup -Name (Get-MocConfig).clusterRoleName
+    ```
+
+1. Run the below command to fix the wssdagent.
+    ```powershell
+    Repair-Moc
+    ```
+
+1. Once this command completes, the wssdagent should be in running state.
+    ```powershell
+    Get-Service wssdagent | Select-Object -Property Name, Status
+    ```
+## Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: OutOfCapacity 
+
+Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state and fail day two operations. The MOC NodeAgent Services may fail to start on updated hosts. All MOC calls to the nodes will fail.
+
+> [!NOTE]
+> This issue only happens occasionally.
+
+To Reproduce: When you update a cluster with an existing AKS HCI deployment from HCI to HCIv2, an AKS HCI operation such as `New-AksHciCluster` may fail. The error message will state the MOC nodes are OutOfCapacity. For example:
 
 ```PowerShell
 System.Collections.Hashtable.generic_non_zero1 [Error: failed to create nic test-load-balancer-whceb-nic for machinetest-load-balancer-whceb: unable to create VM network interface: failed to create network interface test-load-balancer-whceb-nic in resource group clustergroup-test: rpc error: code = Unknown desc = Location 'MocLocation' doesn't expose any nodes to create VNIC 'test-load-balancer-whceb-nic' on: OutOfCapacity]
@@ -30,9 +97,46 @@ To resolve this issue, start the wssdagent Moc NodeAgent Service on the affected
 ```PowerShell
 Get-ClusterNode -ErrorAction Stop | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { Start-Service wssdagent -WarningAction:SilentlyContinue } }
 ```
+## Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster
+
+Running an OS update on a host with an AKS on Azure Stack HCI deployment can cause the deployment to enter a bad state, rendering the management cluster's API server unreachable and fail day two operations. The `kube-vip` pod will not be able to apply VIP configuration to the interface, and as a result the VIP will be unreachable.
+
+To reproduce: Update a cluster with an existing AKS HCI deployment from HCI to HCIv2 then try running commands that attempt to reach the management cluster such as `Get-AksHciCluster`. Any operations that attempt to reach the management cluster will fail with errors such as:
+
+```powershell
+PS C:\Users\wolfpack> Get-AksHciCluster
+C:\Program Files\AksHci\kvactl.exe cluster list --kubeconfig="C:\ClusterStorage\Volume1\Msk8s\WorkingDir\1.0.8.10223\kubeconfig-mgmt" System.Collections.Hashtable.generic_non_zero 1 [Error: failed to connect to the cluster: action failed after 9
+attempts: Get "https://10.193.237.5:6443/api?timeout=10s": net/http: request canceled while waiting for connection
+(Client.Timeout exceeded while awaiting headers)]
+At C:\Program Files\WindowsPowerShell\Modules\Kva\1.0.22\Common.psm1:2164 char:9
++         throw $errMessage
++         ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (C:\Program File...iting headers)]:String) [], RuntimeException
+    + FullyQualifiedErrorId : C:\Program Files\AksHci\kvactl.exe cluster list --kubeconfig="C:\ClusterStorage\Volume1\Msk8s\WorkingDir\1.0.8.10223\kubeconfig-mgmt" System.Collections.Hashtable.generic_non_zero 1 [Error: failed to connect to the cluster: action failed after 9 attempts: Get "https://10.193.237.5:6443/api?timeout=10s": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)]
+``` 
+
+To resolve this issue: restart the `kube-vip` container to bring the deployment back to a good state.
+
+1. Get the `kube-vip` container ID:
+
+   ```powershell  
+   ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo crictl ls | grep 'kube-vip'"
+   ```
+
+   The output should look something like this, with the container ID being the first value `4a49a5158a5f8`. For example:
+   ```powershell  
+   4a49a5158a5f8       7751a28bb5ce1       28 minutes ago      Running             kube-vip                         1                   cf9681f921a55
+   ```
+
+1. Restart the Restart the container:
+
+   ```powershell  
+   ssh -i (Get-AksHciConfig).Moc.sshPrivateKey clouduser@<ip> "sudo crictl stop <Container ID>"
+   ```
+
 ## Certificate renewal pod is in a crash loop state
 
-After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It is expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
+After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It's expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
 
 To resolve this issue, you manually copy the cert tattoo file from the control plane node to each of the worker nodes.
 
@@ -96,7 +200,7 @@ When running an upgrade in Windows Admin Center, the following error occurred:
 
 `Error occurred while fetching platform upgrade information. RemoteException: No match was found for the specified search criteria and module name 'AksHci'. Try Get-PSRepository to see all available registered module repositories.`
 
-This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
+This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center doesn't have support to install modules in a proxy environment. To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
 
 ## When running Update-AksHci, the update process was stuck at `Waiting for deployment 'AksHci Billing Operator' to be ready`
 
@@ -134,7 +238,7 @@ This status message appears when running the [Update-AksHci](./reference/ps/upda
 
 ## Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at `Update-KvaInternal`
 
-When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and does not support version rollback, so if you get stuck, you cannot upgrade.
+When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. An AKS on Azure Stack HCI upgrade is forward only and doesn't support version rollback, so if you get stuck, you can’t upgrade.
 
 ## When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
 The June 1.0.1.10628 build of AKS on Azure Stack HCI creates an excess number of Kubernetes configuration secrets in the cluster. The upgrade path from the June 1.0.1.10628 release to the July 1.0.2.10723 release was improved to clean up the extra Kubernetes secrets. However, in some cases during upgrading, the secrets were still not cleaned up, and therefore, the upgrade process fails.

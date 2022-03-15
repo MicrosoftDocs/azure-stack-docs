@@ -14,6 +14,56 @@ ms.reviewer: abha
 
 This article describes known issues and errors you may encounter when running an installation of AKS on Azure Stack HCI. You can also review known issues with when [upgrading](known-issues-upgrade.md) and using [Windows Admin Center](known-issues-windows-admin-center.md).
 
+## Moc agent log rotation is failing
+
+Moc agents are expected to keep only the last 100 agent logs. They are supposed to delete the older logs. However, the log rotation is not happening and logs keep getting accumulated consuming disk space.
+
+To reproduce: `Install AksHci` and have a cluster up and running until the number of agent logs exceeds 100. At the time of the **nth** log creation, the agents are expected to delete the **n**-100th log, if they exist.
+
+To resolve the issue:
+
+1. Modify the cloud agent and node agents' logconf files.
+    Cloud agent **logconfig** is located at:  
+    `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
+    Node agent **logconfig** is located at:
+      `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
+
+2. Change the value of **Limit** to 100 and Slots to 100 and save the configuration files.
+
+3. Restart the cloud agent and node agents to register these changes.
+
+These steps start the log rotation only after 100 new logs are generated from the agent restart. If there are already **n** agent logs at the time of restart, log rotation will start only after **n**+100 logs are generated.
+
+## Install-AksHci hangs in the `Waiting for azure-arc-onboarding to complete` stage before timing out.
+
+Install-AksHci hangs at `Waiting for azure-arc-onboarding to complete` before timing out when:
+
+ - A service principal is used in AKS on Azure Stack HCI Registration (Set-AksHciRegistration).
+ - Az.Accounts PowerShell modules version(2.7.x) installed.
+
+`Az.Accounts 2.7.x` versions removes the `ServicePrincipalSecret` and `CertificatePassword` in `PSAzureRmAccount`, which is used by AKS on Azure Stack HCI for Azure Arc onboarding.
+
+To reproduce:
+
+1. Install `Az.Accounts` PowerShell modules version (>= 2.7.0).
+2. `Set-AksHciRegistration` using a service principal.
+3. `Install-AksHci`.
+
+Expected behavior:
+
+1. The AKS on Azure Stack HCI installation hangs at `Waiting for azure-arc-onboarding to complete`.
+2. `Azure-arc-onboarding` pods goes into crash loop.
+3. The `Azure-arc-onboarding` pods error with the following error:  
+    `Starting onboarding process ERROR: variable CLIENT_SECRET is required`
+
+To resolve this issue:
+
+Uninstall Az.Accounts modules with versions 2.7.x. run the following cmdlet:
+
+```powershell  
+Uninstall-Module -Name Az.Accounts -RequiredVersion 2.7.0 -Force
+```
+
 ## I'm getting `Install-AksHci Failed, Service returned an error. Status=403 Code="RequestDisallowedByPolicy"` error when installing AKS-HCI. What should I do?
 
 This error may be caused by the installation process attempting to violate an Azure Policy that's been set on the Azure subscription or resource group provided during the Azure Arc onboarding process. This error may occur for users who have defined Azure Policies at a subscription or resource group level, and then attempt to install AKS on Azure Stack HCI which violates an Azure Policy. To resolve this issue, read the error message to understand which Azure Policy set by your Azure administrator has been violated, and then modify the Azure Policy by making an exception to the Azure Policy. To learn more about Policy exceptions, see [Azure Policy exemption structure](/azure/governance/policy/concepts/exemption-structure).
@@ -82,9 +132,23 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
 
 ## Error:  `[Doc]Install-Moc failed with error - [The object already exists] An error occurred while creating resource 'IPv4 Address xxx.xx.xx.xx' for the clustered role 'xx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx'
 
-A previously installed feature remains in a failed state and has not been cleared.
+A previously installed feature remains in a failed state and has not been cleared. You may see the following error:
 
-You will need to manually clean up the cluster role manually. You can remove the resource from the  fail-over  cluster manager by running the following PowerShell cmdlet:  `Remove-ClusterResource -name <resource name>`.
+```powershell
+Exception [An error occurred while creating resource 'MOC Cloud Agent Service' for the clustered role 'ca-3f72bdeb-d289-4ae9-a721-3aa902a998f0'.]
+Stacktrace [at Add-FailoverClusterGenericRole, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Common.psm1: line 2987
+at Install-CloudAgent, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1310
+at Install-MocAgents, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1229
+at Initialize-Cloud, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1135
+at Install-MocInternal, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1078
+at Install-Moc, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 207
+at Install-AksHciInternal, C:\Program Files\WindowsPowerShell\Modules\AksHci\1.1.25\AksHci.psm1: line 3867
+at Install-AksHci, C:\Program Files\WindowsPowerShell\Modules\AksHci\1.1.25\AksHci.psm1: line 778
+at <ScriptBlock>, <No file>: line 1]
+InnerException[The object already exists]
+```
+
+To resolve this issue, you will need to manually clean up the cluster role manually. You can remove the resource from the  fail-over  cluster manager by running the following PowerShell cmdlet:  `Remove-ClusterResource -name <resource name>`.
 ## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]`  
 
 This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.
