@@ -47,7 +47,7 @@ In these volumes, you can place your files, such as .vhd and .vhdx for VMs. You 
 
 The following section describes the features and components of a Storage Spaces Direct stack.
 
-![Storage Spaces Direct Stack](media/storage-spaces-direct/converged-full-stack.png)
+:::image type="content" source="media/storage-spaces-direct/converged-full-stack.png" alt-text="Storage Spaces Direct Stack":::
 
 **Networking Hardware.** Storage Spaces Direct uses SMB3, including SMB Direct and SMB Multichannel, over Ethernet to communicate between servers. We strongly recommend using 10+ GbE with remote-direct memory access (RDMA), either iWARP or RoCE.
 
@@ -104,13 +104,13 @@ Storage Spaces Direct supports the following two deployment options:
 
 In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. To deploy Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). To deploy Storage Spaces Direct as part of Azure Stack HCI, see [What is the deployment process for Azure Stack HCI?](/deploy/operating-system)
 
-![Storage Spaces Direct serves storage to Hyper-V VMs in the same cluster](media/storage-spaces-direct/hyper-converged-minimal.png)
+:::image type="content" source="media/storage-spaces-direct/hyper-converged-minimal.png" alt-text="[Storage Spaces Direct serves storage to Hyper-V VMs in the same cluster]":::
 
 ### Converged deployment
 
 In a converged deployment, you use separate clusters for storage and compute. The converged deployment option, also known as 'disaggregated,' layers a Scale-out File Server (SoFS) atop Storage Spaces Direct to provide network-attached storage over SMB3 file shares. This allows for scaling compute and workload independently from the storage cluster, essential for larger-scale deployments such as Hyper-V IaaS (Infrastructure as a Service) for service providers and enterprises.
 
-![Storage Spaces Direct serves storage using the Scale-Out File Server feature to Hyper-V VMs in another server or cluster](media/storage-spaces-direct/converged-minimal.png)
+:::image type="content" source="media/storage-spaces-direct/converged-minimal.png" alt-text="Storage Spaces Direct serves storage using the Scale-Out File Server feature to Hyper-V VMs in another server or cluster":::
 
 ## Manage and monitor
 
@@ -147,7 +147,7 @@ There are [over 10,000 clusters](https://techcommunity.microsoft.com/t5/storage-
 
 Visit [Microsoft.com/HCI](https://www.microsoft.com/hci) to read their stories.
 
-[![Grid of customer logos](media/storage-spaces-direct/customer-stories.png)](https://www.microsoft.com/hci)
+:::image type="content" source="media/storage-spaces-direct/customer-stories.png" alt-text="Grid of customer logos" link="https://www.microsoft.com/hci":::
 
 ## Additional references
 
