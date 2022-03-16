@@ -7,6 +7,8 @@ ms.date: 10/14/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mamezgeb
+#intent: As an IT Pro, I want to learn about pricing options for AKS on Azure Stack HCI
+#keyword: AKS Azure Stack HCI pricing billing hyper-threading
 
 ---
 
@@ -27,7 +29,7 @@ Use the following list to explore the pricing options:
   - Windows Server Datacenter: Unlimited Windows and Hyper-V containers
 - Includes Azure Arc-enabled Kubernetes at no extra charge and also the following items:
   - **Inventory, grouping, and tagging** in Azure
-  - **Deploy apps and configurations with GitOps**: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is $2 per vCPU per month)
+  - **Deployment of apps and configurations with GitOps**: Included at no extra charge (normally, the initial six vCPUs are free, and then afterwards, the charge is $2 per vCPU per month)
   - **Azure Policy for Kubernetes**: Included at no extra charge (normally, the charge is $3 per vCPU per cluster for each month)
 
 ## Impact of hyper-threading
@@ -54,6 +56,10 @@ Use the table below to compare pricing options.
 - AKS is consistently priced across on-premises deployment scenarios using either Windows Server or Azure Stack HCI as the host system. 
 -	AKS on Azure Stack HCI pricing is based on the US currency list pricing with no discounts applied.
 -	Running Windows Server containers on AKS on Azure Stack HCI requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added into the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, Azure Hybrid benefits may apply, reducing or eliminating the Windows Server license fees.
--	For hyper-threading, price assumes hyper-threading is available and enabled on physical systems.
--	Azure Pricing for running workloads on AKS is based on US currency list pricing in the East US region with: pay-as-you-go pricing, D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4), standard HDD, and no uptime SLA in the included support level.
+-	Price assumes hyper-threading is available and enabled on physical systems.
+-	Azure Pricing for running workloads on AKS is based on US currency list pricing in the East US region with:
+    - pay-as-you-go pricing
+    - D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4)
+    - standard HDD
+    - no uptime SLA (included in the support level)
 -	Monthly price estimates are based on 730 hours of usage. Price assumes that systems are running for the entire month.

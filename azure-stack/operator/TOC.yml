@@ -18,6 +18,8 @@
         # href: hotfix-1-2108-2-81.md
       # - name: Hotfix 1.2108.2.73
         # href: hotfix-1-2108-2-73.md
+      - name: Hotfix 1.2102.30.122
+        href: hotfix-1-2102-30-122.md
       - name: Hotfix 1.2102.30.118
         href: hotfix-1-2102-30-118.md      
       - name: Hotfix 1.2008.40.156
@@ -446,6 +448,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.2.0 release notes [Mar 2022] 
+          href: event-hubs-rp-release-1-2102-20.md        
         - name: 1.2102.1.0 release notes [Oct 2021] 
           href: event-hubs-rp-release-1-2102-10.md
         - name: 1.2102.0.0 release notes [Jul 2021] 
