@@ -431,7 +431,7 @@ Re-deploying an Arc Resource Bridge will not enable Arc management of existing V
 
 ### What should I do if the deployment of Arc Resource Bridge did not succeed?
 
-Please see the [Debugging section](https://docs.microsoft.com/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#debugging) for common errors. If you are re-deploying the Arc Resource Bridge, please make sure to clean up the previous deployment completely following the [Uninstall procedure](#uninstall-azure-arc-resource-bridge).
+Please see the [Debugging section](#debugging) for common errors. If you are re-deploying the Arc Resource Bridge, please make sure to clean up the previous deployment completely following the [Uninstall procedure](#uninstall-azure-arc-resource-bridge).
 
 
 
