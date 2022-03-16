@@ -60,6 +60,8 @@ Only one Arc Resource Bridge can be deployed on a cluster. Each Azure Stack HCI 
 Deploying Azure Arc Resource Bridge requires the following:
 
 - The latest version of Azure CLI installed on all servers of the cluster.
+  - To install Azure CLI on each cluster node, use RDP connection.
+  - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
   - At least 50GB of space in C:\.
   - At least 4 cores
@@ -99,7 +101,7 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps:
+To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps (through RDP or console session; remote Powershell isn't supported):
 
 1. Install the required PowerShell modules by running the following cmdlet as administrator on all servers of the Azure Stack HCI cluster:
 
@@ -364,7 +366,7 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 ## Limitations and known issues
 
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
-- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
+- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
 - Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
       - First, the AKS management cluster.
       - And then, Arc Resource Bridge for Arc-enabled VMs.
