@@ -361,6 +361,7 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 - The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
 - Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
 
+
 ## Limitations and known issues
 
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
@@ -371,9 +372,9 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
 
 While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-      - **new-MocNetworkSetting**
-      - **set-MocConfig**
-      - **install-Moc**
+**new-MocNetworkSetting**
+**set-MocConfig**
+**install-Moc**
 
 Uninstallation of these features should also be done in the following order:
       - Uninstall Arc Resource Bridge.
@@ -427,6 +428,11 @@ Deleting a gallery image does not affect the VMs that were created using that ga
 If an Arc Resource Bridge is deleted, then management through the Azure control plane (portal, Az CLI etc.) will be unavailable. The VMs will remain on the cluster and are only manageable through on-premises tools (Windows Admin Center, PowerShell etc.).
 
 Re-deploying an Arc Resource Bridge will not enable Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from the Azure control plane.
+
+### What should I do if the deployment of Arc Resource Bridge did not succeed?
+
+Please see the [Debugging section](#debugging) for common errors. If you are re-deploying the Arc Resource Bridge, please make sure to clean up the previous deployment completely following the [Uninstall procedure](#uninstall-azure-arc-resource-bridge).
+
 
 
 ## Next steps
