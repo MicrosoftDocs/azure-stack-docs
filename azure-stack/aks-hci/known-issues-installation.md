@@ -23,10 +23,10 @@ To reproduce: `Install AksHci` and have a cluster up and running until the numbe
 To resolve the issue:
 
 1. Modify the cloud agent and node agents' logconf files.
-    Cloud agent **logconfig** is located at:  
-    `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
-    Node agent **logconfig** is located at:
-      `$(Get-MocConfig)['cloudConfigLocation']\log\logconf`.  
+   Cloud agent **logconfig** is located at:  
+   `(Get-MocConfig).cloudConfigLocation+"\log\logconf"`.  
+   Node agent **logconfig** is located at:  
+   `(Get-MocConfig).cloudConfigLocation+"\log\logconf"`.  
 
 2. Change the value of **Limit** to 100 and Slots to 100 and save the configuration files.
 
