@@ -46,14 +46,16 @@ The two licensing options for VM activation address different customer needs:
 
 ### Guest versions
 
+The following table shows the guest operating systems that the different licensing methods can activate:
+
 |                                    | BYO Windows Server 2019 license | BYO Windows Server 2022 license | Windows Server subscription |
 |------------------------------------|---------------------------------|---------------------------------|-----------------------------|
 | Windows Server 2012/R2             | X                               | X                               | X                           |
 | Windows Server 2016                | X                               | X                               | X                           |
 | Windows Server 2019                | X                               | X                               | X                           |
 | Windows Server 2022                |                                 | X                               | X                           |
-| Windows Server 2022: Azure Edition | Require Software Assurance      | Require Software Assurance      |                             |
-| Future editions (evergreen)        | Require Software Assurance      | Require Software Assurance      | X                           |
+| Windows Server 2022: Azure Edition | Requires Software Assurance     | Requires Software Assurance     |                             |
+| Future editions (evergreen)        | Requires Software Assurance     | Requires Software Assurance     | X                           |
 
 ## Pricing and purchasing
 
