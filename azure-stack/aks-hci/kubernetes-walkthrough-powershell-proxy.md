@@ -27,7 +27,7 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
 - An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - **At least one** of the following:
-   - anAzure Stack HCI cluster
+   - Azure Stack HCI cluster
    - Windows Server 2019 Datacenter failover cluster
     
    > [!NOTE]
