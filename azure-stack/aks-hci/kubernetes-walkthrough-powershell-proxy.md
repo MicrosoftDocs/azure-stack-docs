@@ -27,11 +27,11 @@ In this quickstart, you'll learn how to set up an Azure Kubernetes Service host 
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role. 
 - An Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - **At least one** of the following:
-   - 2-4 node Azure Stack HCI cluster
+   - anAzure Stack HCI cluster
    - Windows Server 2019 Datacenter failover cluster
     
    > [!NOTE]
-   > **We recommend having a 2-4 node Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+   > **We recommend having an Azure Stack HCI cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 - **Proxy server configuration information:**
    - HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
