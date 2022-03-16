@@ -121,7 +121,7 @@ You can use the following tools to manage and monitor Storage Spaces Direct:
 | [Windows Admin Center](/windows-server/manage/windows-admin-center/overview)     | Graphical    | Included |
 | Server Manager & Failover Cluster Manager                                 | Graphical    | Included |
 | Windows PowerShell                                                        | Command-line | Included |
-| [System Center Virtual Machine Manager (SCVMM)](/system-center/vmm/s2d?view=sc-vmm-2019&preserve-view=true) <br>& [Operations Manager (SCOM)](/system-center/scom/welcome?view=sc-om-2019&preserve-view=true) | Graphical    | Paid     |
+| [System Center Virtual Machine Manager (SCVMM)](/system-center/vmm/s2d?view=sc-vmm-2019&preserve-view=true) <br>& [Operations Manager](/system-center/scom/welcome?view=sc-om-2019&preserve-view=true) | Graphical    | Paid     |
 
 ## Videos
 
