@@ -117,6 +117,7 @@ backend:
     service: 
          name: hello-world-prod 
        	         port:  
+       	          number: 8080
 ```
 
 ## Next steps
