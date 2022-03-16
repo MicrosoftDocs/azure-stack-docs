@@ -3,10 +3,10 @@ title: Use the Azure web apps deploy action with Azure Stack Hub
 description: Use the Azure web apps deploy action to create a continuous integration, continuous deployment (CI/CD) workflow to Azure Stack Hub
 author: BryanLa
 ms.topic: how-to
-ms.date: 2/16/2021
+ms.date: 03/16/2022
 ms.author: bryanla
 ms.reviewer: thoroet
-ms.lastreviewed: 2/16/2021
+ms.lastreviewed: 03/16/2022
 
 # Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.
 # Keyword: GitHub Actions Azure Stack Hub web app deploy
@@ -20,21 +20,21 @@ You can set up GitHub Actions to deploy a web app to your Azure Stack Hub instan
 GitHub Actions are workflows composed of actions that enable automation right in your code repository. You can trigger the workflows with events in your GitHub development process. You can set common DevOps automation tasks such as testing, deployment, and continuous integration.
 
 This example workflow includes:
-- Instructions on creating and validating your service principal (SPN).
+- Instructions on creating and validating your service principal
 - Instructions on creating your web app publish profile
 - Adding a runtime-specific workflow
 - Adding a matching workflow with web app deploy
+
 ## Get service principal
 
-An SPN provides role-based credentials so that processes outside of Azure can connect to and interact with resources. You'll need an SPN with contributor access and the attributes specified in these instructions to use with your GitHub Actions.
+A service principal can use role-based access control in order to connect to and interact with resources. You'll need a service principal with contributor access and the attributes specified in these instructions to use with your GitHub Actions.
 
-As a user of Azure Stack Hub you don't have the permission to create the SPN. You'll need to request this principle from your cloud operator. The instructions are being provided here so you can create the SPN if you're a cloud operator. Or if you're a developer, you can validate the SPN provided by a cloud operator.
-
-The cloud operator will need to create the SPN using Azure CLI.
+> [!IMPORTANT]
+> If you're a developer or user of Azure Stack Hub, you don't have permission to create a service principal. You'll either need to have cloud operator privileges, or request this principle from your cloud operator. 
 
 The following code snippets are written for a Windows machine using the PowerShell prompt with Azure CLI. If you're using CLI on a Linux machine and bash, either remove the line extension or replace them with a `\`.
 
-1. Prepare the values of the following parameters used to create the SPN:
+1. Prepare the values of the following parameters used to create the service principal:
 
     | Parameter | Example | Description |
     | --- | --- | --- |
@@ -64,9 +64,9 @@ The following code snippets are written for a Windows machine using the PowerShe
         --profile 2020-09-01-hybrid
     ```
 
-4. Get your subscription ID and resource group that you want to use for the SPN.
+4. Get your subscription ID and resource group that you want to use for the service principal.
 
-5. Create the SPN with the following command with the subscription ID and resource group:
+5. Create the service principal with the following command with the subscription ID and resource group:
 
     ```azurecli  
     az ad sp create-for-rbac --name "myApp" --role contributor `
@@ -74,21 +74,14 @@ The following code snippets are written for a Windows machine using the PowerShe
         --sdk-auth
     ```
 
-    If you don't have cloud operator privileges, you can also sign in with the SPN provided to you by your cloud operator. You'll need the client ID, the secret, and your tenant ID. With these values, you can use the following Azure CLI commands to create the JSON object you can add to your GitHub repository as a secret.
-
-    ```azurecli  
-    az login --service-principal -u "<client-id>" -p "<secret>" --tenant "<tenant-ID>" --allow-no-subscriptions
-    az account show --sdk-auth
-    ```
-
-6. Check the resulting JSON object. You'll use the JSON object to create your secret in your GitHub repository that contains your action. The JSON object should have the following attributes:
+6. Copy the resulting JSON object. You'll use the JSON object to create your secret in your GitHub repository that contains your action. The JSON object should have the following attributes:
 
     ```json
     {
-      "clientId": <Application ID for the SPN>,
-      "clientSecret": <Client secret for the SPN>,
-      "subscriptionId": <Subscription ID for the SPN>,
-      "tenantId": <Tenant ID for the SPN>,
+      "clientId": <Application ID for the service principal>,
+      "clientSecret": <Client secret for the service principal>,
+      "subscriptionId": <Subscription ID for the service principal>,
+      "tenantId": <Tenant ID for the service principal>,
       "activeDirectoryEndpointUrl": "https://login.microsoftonline.com/",
       "resourceManagerEndpointUrl": "https://management.<FQDN>",
       "activeDirectoryGraphResourceId": "https://graph.windows.net/",
@@ -124,7 +117,7 @@ The following code snippets are written for a Windows machine using the PowerShe
 
 ## Add your secrets to the repository
 
-You can use GitHub secrets to encrypt sensitive information to use in your actions. You'll create a secret to contain your SPN and another secret to contain your web app publish profile so that the action can sign in to your Azure Stack Hub instance and build your app to the web app target.
+You can use GitHub secrets to encrypt sensitive information to use in your actions. You'll create a secret to contain your service principal, and another secret to contain your web app publish profile. The action uses these to sign in to your Azure Stack Hub instance and build your app to the web app target.
 
 1. Open or create a GitHub repository. If you need guidance on creating a repository in GitHub, you can find [instructions in the GitHub docs](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/create-a-repo).
 1. Select **Settings**.
@@ -132,7 +125,7 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
 1. Select **New repository secret**.
     ![Add your GitHub Actions secret](.\media\ci-cd-github-action-login-cli\github-action-secret.png)
 1. Name your secret `AZURE_CREDENTIALS`.
-1. Paste the JSON object that represents your SPN.
+1. Paste the JSON object that represents your service principal.
 1. Select **Add secret**.
 1. Select **New repository secret**.
 1. Name your secret `AZURE_WEBAPP_PUBLISH_PROFILE`.
