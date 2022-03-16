@@ -1,12 +1,14 @@
 ---
 title: Concepts - Kubernetes cluster architecture for Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn the basic cluster and workload components of Kubernetes and how they relate to features in Azure Kubernetes Service on Azure Stack HCI
+description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service on Azure Stack HCI features
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: daschott
 ms.topic: conceptual
 ms.date: 08/03/2021
+#intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features in ASK on Azure Stack HCI.
+#keyword: Azure Kubernetes ASK workload components Azure Stack HCI
 ---
 
 # Clusters and workloads for Azure Kubernetes Service on Azure Stack HCI
@@ -40,7 +42,7 @@ An Azure Kubernetes Service cluster has the following components on Azure Stack 
 You can manage AKS on Azure Stack HCI using the following management options:
 
 - **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
-- A **PowerShell module** that makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring additional workload clusters and reconfiguring existing ones.
+- A **PowerShell module**  makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring additional workload clusters and reconfiguring existing ones.
 
 ## The management cluster
 
@@ -70,7 +72,7 @@ The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to 
 
 To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which are a virtual machines (VM) that runs the Kubernetes node components, and hosting the pods and services that make up the application workload. There are core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters such as pods and deployments.
 
-#### pods
+#### Pods
 
 Kubernetes uses *pods* to run an instance of your application. A pod represents a single instance of your application. Typically, pods have a 1:1 mapping with a container, although there are advanced scenarios where a pod may contain multiple containers. These multi-container pods are scheduled together on the same node and allow containers to share related resources. For more information, see [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) and [Kubernetes pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/).
 
