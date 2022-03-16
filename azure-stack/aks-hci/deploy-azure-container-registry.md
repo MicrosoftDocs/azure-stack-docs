@@ -16,18 +16,18 @@ ms.custom: contperf-fy22q3
 
 # Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Azure Stack HCI
 
-In this guide, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR). You will deploy to your on-premises Kubernetes cluster hosted by AKS on Azure Stack HCI. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. The guide walks you through creating a private container registry in Azure and then pushing your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI.
+In this guide, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR). You'll deploy to your on-premises Kubernetes cluster hosted by AKS on Azure Stack HCI. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. The guide walks you through creating a private container registry in Azure and then pushing your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI.
 
-This guide looks at using ACR on Azure Stack HCI, which you can run in your own datacenter. If you are interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
+This guide looks at using ACR on Azure Stack HCI, which you can run in your own datacenter. If you're interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
 ## Prerequisites
 
-Verify that you have the following:
+Verify that you've the following:
 - A basic understanding of [Kubernetes concepts](kubernetes-concepts.md). 
 - An AKS on Azure Stack HCI cluster that's up and running.
 - [Azure CLI installed](/cli/azure/install-azure-cli)
 - Your local `kubectl` environment configured to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to configure your cluster for access using `kubectl`.
 
-## Create an a private container registry in Azure
+## Create a private container registry in Azure
 
 To create an ACR, you first need a resource group. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the [az group create](/cli/azure/group#az-group-create) command. In the following example, a resource group in the *eastus* region is created:
 
