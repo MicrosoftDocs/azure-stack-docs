@@ -89,7 +89,7 @@ The Deployment Controller uses the Kubernetes Scheduler to run a given number of
 
 #### Namespaces
 
-Kubernetes resources, such as pods and Deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI workload cluster and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
+Kubernetes resources, such as pods and deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI workload cluster and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
 
 When you create an Azure Kubernetes Service cluster on Azure Stack HCI, the following namespaces are available:
 
