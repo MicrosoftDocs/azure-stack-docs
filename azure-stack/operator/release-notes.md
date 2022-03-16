@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/15/2022
+ms.date: 03/16/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -49,7 +49,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-<!-- ::: moniker range="azs-2108"
+::: moniker range="azs-2108"
 ## 2108 build reference
 
 The latest Azure Stack Hub 2108 update build number is **1.2108.2.65**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
@@ -128,8 +128,8 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2108.2.81](hotfix-1-2108-2-81.md)
-::: moniker-end  -->
+- [Azure Stack Hub hotfix 1.2108.2.83](hotfix-1-2108-2-83.md)
+::: moniker-end
 
 ::: moniker range="azs-2102"
 ## 2102 build reference
