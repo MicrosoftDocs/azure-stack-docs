@@ -19,18 +19,18 @@ You can set up GitHub Actions to deploy a web app to your Azure Stack Hub instan
 
 GitHub Actions are workflows composed of actions that enable automation right in your code repository. You can trigger the workflows with events in your GitHub development process. You can set common DevOps automation tasks such as testing, deployment, and continuous integration.
 
-This example workflow includes:
-- Instructions on creating and validating your service principal
-- Instructions on creating your web app publish profile
+This example workflow includes instructions for:
+- Creating and validating your service principal
+- Creating your web app publish profile
 - Adding a runtime-specific workflow
 - Adding a matching workflow with web app deploy
 
-## Get service principal
+## Create a service principal
 
 A service principal can use role-based access control in order to connect to and interact with resources. You'll need a service principal with contributor access and the attributes specified in these instructions to use with your GitHub Actions.
 
 > [!IMPORTANT]
-> If you're a developer or user of Azure Stack Hub, you don't have permission to create a service principal. You'll either need to have cloud operator privileges, or request this principle from your cloud operator. 
+> If you're a developer or user of Azure Stack Hub, you don't have permission to create a service principal. You'll either need to have cloud operator privileges, or request this principle from your cloud operator using the instructions in this section. 
 
 The following code snippets are written for a Windows machine using the PowerShell prompt with Azure CLI. If you're using CLI on a Linux machine and bash, either remove the line extension or replace them with a `\`.
 
@@ -45,7 +45,7 @@ The following code snippets are written for a Windows machine using the PowerShe
     endpoint-sql-management | https://notsupported  | The sql server management endpoint. Set this to `https://notsupported` |
     profile | 2020-09-01-hybrid | Profile to use for this cloud. |
 
-2. Open your command-line tool such as Windows PowerShell or Bash and sign in. Use the following command:
+2. Open your command line tool such as Windows PowerShell or Bash. Sign in to Azure CLI using the following command:
 
     ```azurecli  
     az login
@@ -64,9 +64,9 @@ The following code snippets are written for a Windows machine using the PowerShe
         --profile 2020-09-01-hybrid
     ```
 
-4. Get your subscription ID and resource group that you want to use for the service principal.
+4. Get the subscription ID and resource group that you want to use for the service principal.
 
-5. Create the service principal with the following command with the subscription ID and resource group:
+5. Create the service principal using the following command with the subscription ID and resource group:
 
     ```azurecli  
     az ad sp create-for-rbac --name "myApp" --role contributor `
