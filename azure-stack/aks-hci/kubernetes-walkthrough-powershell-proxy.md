@@ -87,7 +87,7 @@ To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell]
 
 ### Register the resource provider to your subscription
 
-**Use the Az PowerShell module behind a proxy.** If a proxy is necessary for a HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
+**Use the Az PowerShell module behind a proxy.** If a proxy is necessary for an HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
 
 
 |      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |

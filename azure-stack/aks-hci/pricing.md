@@ -8,7 +8,7 @@ ms.author: mabrigg
 ms.lastreviewed: 03/16/2022
 ms.reviewer: mamezgeb
 
-# Intent: As an Kubernetes administrator, I want to learn about pricing for AKS on Azure Stack HCI
+# Intent: As a Kubernetes administrator, I want to learn about pricing for AKS on Azure Stack HCI
 # Keyword: cost of on-premises Kubernetes
 
 ---
@@ -38,7 +38,7 @@ Use the following list to explore pricing for AKS:
 
 The AKS on Azure Stack HCI billing unit is a virtual core. If you enable hyper-threading on your physical computer, AKS on Azure Stack HCI will also enable hyper-threading on the worker nodes.  If you enable hyper-threading, it will effectively halve the number of virtual cores needed in each worker node.
 
-![Pricing for AKS is affected hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
+![Pricing for A K S is affected by hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
 
 ##  Pricing for AKS comparison summary
 
