@@ -59,7 +59,7 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
    > [!NOTE]
    > You must manually enable access for each VM that needs Azure Benefits.
 
-## Tutorial: Enable Azure Benefits
+## Enable Azure Benefits
 
 Before you begin, you'll need the following prerequisites:
 
@@ -184,14 +184,14 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
   Enable-AzStackHCIAttestation
   ```
 
-## (Optional) View Azure Benefits using Azure portal
+## (Optional) View Azure Benefits using the Azure portal
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
 
    :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
 
-## (Optional) Access Azure Benefits from VM
+## (Optional) Access Azure Benefits from VMs
 
 To check that VMs can properly access Azure Benefis on the host, you can run this command from the VM and confirm that there is a response:
 
