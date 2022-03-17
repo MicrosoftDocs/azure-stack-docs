@@ -45,11 +45,12 @@ Set-AksHciConfig  -imageDir <String>
 ```
 
 ## Description
-Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the -workingDir and -cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
+
+Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-8 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the -workingDir and -cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values.
 
 ## Examples
 
-### To deploy on a 2-4 node cluster with DHCP networking and a VLAN
+### To deploy on a 2-8 node cluster with DHCP networking and a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
@@ -57,7 +58,7 @@ PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultS
 Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
-### To deploy on a 2-4 node cluster with DHCP networking without a VLAN
+### To deploy on a 2-8 node cluster with DHCP networking without a VLAN
 
 ```powershell
 PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254"
@@ -106,7 +107,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 ## Parameters
 
 ### -imageDir
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is mandatory.The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
