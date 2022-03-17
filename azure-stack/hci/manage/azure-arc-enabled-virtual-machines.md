@@ -389,6 +389,18 @@ Uninstalling the AKS management cluster can impair Arc VM management capabilitie
 - An IT admininstrator will not be able to view or manage VMs from cluster resource page in Azure portal, if they are created in a subscription where the IT administrator does not have at least read-only access role.
 - If the Arc for servers agents are installed on VMs provisioned through Azure portal, there will be two projections of the VMs on Azure Portal.
 
+During the run of "az arcappliance prepare hci", you get the following error:
+   ```code
+   "Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'"
+   ```
+![error](https://user-images.githubusercontent.com/52012973/158719946-e46cf4cb-08ed-49bd-bde9-a1f3ab4d4149.png)
+
+You Powershell session don’t have the rights to write in the current directory(ex: C:\ClusterStorage), go to your home directory:
+   ```PowerShell
+   cd ~
+   ```
+   and rerun the previous command.
+
 ## FAQ
 
 The following section answers some frequently asked questions about Azure Arc-enabled Azure Stack HCI.
