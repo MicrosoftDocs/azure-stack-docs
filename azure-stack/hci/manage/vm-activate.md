@@ -292,7 +292,7 @@ This FAQ provides answers to some questions about using Automatic Virtual Machin
 
 ### I'm excited about using Windows Server 2022 Datacenter Azure Edition. If I follow the instructions in this article, will my Windows Server 2022 Datacenter Azure Edition guests activate on Azure Stack HCI?
 
-- Yes, but you'll need to use either Windows Server subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
+- Yes, but you'll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
 
 ## Next steps
 
