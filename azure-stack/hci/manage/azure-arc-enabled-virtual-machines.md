@@ -395,11 +395,11 @@ During the run of "az arcappliance prepare hci", you get the following error:
    ```
 ![error](https://user-images.githubusercontent.com/52012973/158719946-e46cf4cb-08ed-49bd-bde9-a1f3ab4d4149.png)
 
-You Powershell session don’t have the rights to write in the current directory(ex: C:\ClusterStorage), go to your home directory:
-   ```PowerShell
-   cd ~
-   ```
-   and rerun the previous command.
+You PowerShell session don’t have the rights to write in the current directory(ex: C:\ClusterStorage), go to your home directory:
+```PowerShell
+cd ~
+```
+and rerun the previous command.
 
 ## FAQ
 
