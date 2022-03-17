@@ -222,7 +222,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.40.156](hotfix-1-2008-40-156.md)
+- [Azure Stack Hub hotfix 1.2008.41.159](hotfix-1-2008-41-159.md)
 
 ### After successfully applying the 2102 update
 
@@ -315,7 +315,7 @@ Because Azure Stack Hub hotfixes are cumulative, as a best practice you should i
 
 After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2008.40.156](hotfix-1-2008-40-156.md)
+- [Azure Stack Hub hotfix 1.2008.41.159](hotfix-1-2008-41-159.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
