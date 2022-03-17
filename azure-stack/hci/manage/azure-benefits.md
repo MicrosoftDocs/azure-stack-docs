@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 03/18/2022
-ms.lastreviewed: 02/09/2022
+ms.date: 03/17/2022
+ms.lastreviewed: 03/17/2022
 
 ---
 
@@ -190,7 +190,6 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
 
    :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Attestation status":::
-   
 
 ## (Optional) Access Azure Benefits from VM
 
@@ -199,6 +198,7 @@ To check that VMs can properly access Azure Benefis on the host, you can run thi
 ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
 ```
+
 ## FAQ
 
 This FAQ provides answers to some questions about using Azure Benefits.
