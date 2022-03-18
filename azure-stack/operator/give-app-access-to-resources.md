@@ -68,13 +68,13 @@ In this section, you register your app in your Azure AD tenant using the Azure p
 
 Proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity. 
 
-### Additional operations for Azure AD apps
+### Additional Azure AD app management articles
 
-See the following Azure articles for details on additional Azure AD app operations:
+See the following Azure articles for more details on managing Azure AD apps:
 
 - [More details on registering an Azure AD app](/azure/active-directory/develop/quickstart-register-app), including how to create an app registration that uses a certificate credential.
-- How to [Remove an application registration](/azure/active-directory/develop/howto-remove-app).
-- How to [Restore or remove a recently deleted application](/azure/active-directory/develop/howto-restore-app).
+- How to [Remove an app registration](/azure/active-directory/develop/howto-remove-app).
+- How to [Restore or remove a recently deleted app registration](/azure/active-directory/develop/howto-restore-app).
 
 ::: zone-end
 
