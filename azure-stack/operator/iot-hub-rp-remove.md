@@ -13,7 +13,7 @@ ms.date: 1/26/2020
 This article provides instructions on how to remove IoT Hub resource provider on Azure Stack Hub. This process takes around 37 minutes.
 
 > [!IMPORTANT]
-> The public preview of the IoT Hub on Azure Stack Hub resource provider is now closed, and will not be moving to General Availability (GA).
+> The public preview of the IoT Hub on Azure Stack Hub resource provider is now closed.
 
 ## Uninstalling IoT Hub
 

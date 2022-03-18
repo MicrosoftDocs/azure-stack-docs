@@ -1,30 +1,33 @@
 ---
-title: How to - Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI
-description: Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI.
+title: Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry to AKS on Azure Stack HCI
+description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 02/08/2022
+ms.date: 03/16/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
 ms.custom: contperf-fy22q3
 
+# Intent: As a developer, I want to deploy a container image from a private container registry to AKS on Azure Stack HCI.
+# Keyword: private container registry Kubernetes on-premises
+
 ---
 
-# Deploy a container image from Azure Container Registry to AKS on Azure Stack HCI
+# Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Azure Stack HCI
 
-In this how-to guide, you can deploy container images from the Azure Container Registry (ACR) to AKS on Azure Stack HCI and create a private ACR. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
+In this guide, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR). You'll deploy to your on-premises Kubernetes cluster hosted by AKS on Azure Stack HCI. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. The guide walks you through creating a private container registry in Azure and then pushing your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI.
 
-This guide looks at using ACR on Azure Stack HCI, which you can run in your own datacenter. If you are interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
+This guide looks at using ACR on Azure Stack HCI, which you can run in your own datacenter. If you're interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
 ## Prerequisites
 
-Verify that you've the following installed:
+Verify that you've the following:
 - A basic understanding of [Kubernetes concepts](kubernetes-concepts.md). 
 - An AKS on Azure Stack HCI cluster that's up and running.
-- [Install the Azure CLI ](/cli/azure/install-azure-cli)
-- Your local `kubectl` environment is configured to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to configure your cluster for access using `kubectl`.
+- [Azure CLI installed](/cli/azure/install-azure-cli)
+- Your local `kubectl` environment configured to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to configure your cluster for access using `kubectl`.
 
-## Create an Azure Container Registry
+## Create a private container registry in Azure
 
 To create an ACR, you first need a resource group. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the [az group create](/cli/azure/group#az-group-create) command. In the following example, a resource group in the *eastus* region is created:
 
@@ -47,7 +50,7 @@ az ad sp create-for-rbac
   --name <SERVICE_PRINCIPAL_NAME>
 ```
 
-ACR supports three access roles, the **Contributor** role is the most common for application developers, however, in real world scenarios, you might need to create multiple service principals depending on the type of access needed:
+ACR supports three access roles. The **Contributor** role is the most common for application developers, however, in real world scenarios, you might need to create multiple service principals depending on the type of access needed:
 
 - **Contributor**: This role offers push and pull access to the repository.
 - **Reader**: This role only allows pull access to the repository.
@@ -69,7 +72,7 @@ Once the service principal has been successfully created, copy the `appId` and `
 
 For more about working with service principals and ACR, see [Azure Container Registry authentication with service principals](/azure/container-registry/container-registry-auth-service-principal).
 
-## Sign in to the container registry
+## Sign in to the private container registry
 
 To use the ACR instance, you must first sign in. You can use either the Azure CLI or the Docker CLI to sign in.
 
@@ -135,7 +138,7 @@ where:
 
 | Value             | Description                                                  |
 | :---------------- | :----------------------------------------------------------- |
-| `secret-name`     | Name of the image pull secret, for example, *acr-secret*     |
+| `secret-name`     | Name of the image pulls secret, for example, *acr-secret*     |
 | `namespace`       | Kubernetes namespace to put the secret into Only needed if you want to place the secret in a namespace other than the default namespace |
 | `<REGISTRY_NAME>` | Name of your ACR, for example, *myregistry*  The `--docker-server` is the fully qualified name of the registry sign in server |
 | `appId`           | ID of the service principal that will be used by Kubernetes to access your registry |
@@ -166,7 +169,7 @@ You can save the above pod configuration in a file such as `pod-example.yaml`, a
 kubectl create -f pod-example.yaml
 ```
 
-To confirm that the pod was successfully created using the container image from the ACR, run `kubectl describe pod <POD_NAME>` which should show the container image used to create the pod. 
+To confirm that the pod was successfully created using the container image from the ACR, run `kubectl describe pod <POD_NAME>`, which should show the container image used to create the pod. 
 
 ## Next steps
 

@@ -1,8 +1,8 @@
 ---
 title: Deploy Ethereum blockchain network on Azure Stack Hub 
 description: Tutorial using a custom solution templates to deploy and configure a consortium Ethereum blockchain network on Azure Stack Hub.
-author: PatAltimore
-ms.author: patricka
+author: BryanLa
+ms.author: bryanla
 ms.date: 12/15/2021
 ms.topic: tutorial
 ms.reviewer: seyadava

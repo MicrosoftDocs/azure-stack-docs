@@ -297,7 +297,7 @@ You'll need to [add activation keys](#change-or-add-keys-later-optional) for eac
 
 ### I previously purchased a Windows Server Software-Defined Datacenter (WSSD) solution with a Windows Server 2019 key. Can I use that key for Azure Stack HCI?
 
-First, ensure that you are not using the key on another system (unless your key is a multi-use volume key), then apply this key on the host server running Azure Stack HCI.
+- Yes, but you'll need to use keys for Windows Server 2022 or later, which will be available after the general availability of Windows Server 2022.
 
 ## Next steps
 

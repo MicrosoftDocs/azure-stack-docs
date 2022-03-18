@@ -183,9 +183,9 @@ Feature|Deployment requirements|Network requirements|
 |Logical Network management<br> Access control lists (ACLs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br>|Network Controller|None|
 |Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)<br> Virtual network peering|Network Controller|HNV PA VLAN, Subnet, Router|
 |Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB/MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
-|GRE gateway connections|Network Controller<br> Gateway|BGP on HNV PA network<br> GRE VIP subnet|
-|IPSec gateway connections|Network Controller<br> SLB/MUX<br> Gateway|BGP on HNV PA network<br> Public VIP subnet|
-|L3 gateway connections|Network Controller<br> Gateway|Tenant VLAN, Subnet, Router<br> BGP on tenant VLAN optional.|
+|GRE gateway connections|Network Controller<br>SLB/MUX<br> Gateway|BGP on HNV PA network<br>Private and Public VIP subnets<br> GRE VIP subnet|
+|IPSec gateway connections|Network Controller<br> SLB/MUX<br> Gateway|BGP on HNV PA network<br> Private and Public VIP subnets|
+|L3 gateway connections|Network Controller<br>SLB/MUX<br> Gateway|BGP on HNV PA network<br>Private and Public VIP subnets<br>Tenant VLAN, Subnet, Router<br> BGP on tenant VLAN optional|
 
 ## Next steps
 For related information, see also:
