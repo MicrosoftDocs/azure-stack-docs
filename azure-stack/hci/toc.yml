@@ -218,6 +218,8 @@
       href: concepts/drive-symmetry-considerations.md
     - name: Plan volumes
       href: concepts/plan-volumes.md
+    - name: Understand Storage Spaces Direct
+      href: concepts/storage-spaces-direct-overview.md
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
