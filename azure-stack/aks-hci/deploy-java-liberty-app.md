@@ -41,7 +41,7 @@ This article is divided into two main parts.
 
 An Azure resource group is a logical group in which Azure resources are deployed and managed.  
 
-Create a resource group called *java-liberty-project* using the [az group create](/cli/azure/group#az_group_create) command in the *eastus* location. This resource group will be used later for creating the Azure Container Registry instance. 
+Create a resource group called *java-liberty-project* using the [az group create](/cli/azure/group#az-group-create) command in the *eastus* location. This resource group will be used later for creating the Azure Container Registry instance. 
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project
@@ -50,7 +50,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## Create an ACR instance in Azure
 
-Use the [az acr create](/cli/azure/acr#az_acr_create) command to create the ACR instance. The following example creates an ACR instance named *youruniqueacrname*. Make sure *youruniqueacrname* is unique within Azure.
+Use the [az acr create](/cli/azure/acr#az-acr-create) command to create the ACR instance. The following example creates an ACR instance named *youruniqueacrname*. Make sure *youruniqueacrname* is unique within Azure.
 
 ```azurecli-interactive
 REGISTRY_NAME=youruniqueacrname
@@ -224,7 +224,7 @@ Open a web browser to the external IP address of your service (`192.168.0.152` f
 
 ## Clean up the resources
 
-To avoid Azure charges, you should clean up unnecessary resources. When the cluster is no longer needed, use the [az group delete](/cli/azure/group#az_group_delete) command to remove the resource group, container registry, and related Azure resources.
+To avoid Azure charges, you should clean up unnecessary resources. When the cluster is no longer needed, use the [az group delete](/cli/azure/group#az-group-delete) command to remove the resource group, container registry, and related Azure resources.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project
