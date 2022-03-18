@@ -1,14 +1,19 @@
 ---
-title: Concepts - Horizontal Node Auto Scaler in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Horizontal Node Auto Scaler in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about automatically scaling node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
+author: mattbriggs
+ms.author: mabrigg 
+ms.lastreviewed: 03/16/2022
+ms.reviewer: mikek
 ms.date: 03/16/2022
-ms.custom: fasttrack-edit
-ms.author: mikek
-author: mkostersitz
+
+# Intent: As an IT Pro, I want to use AKS on Azure Stack HCI to deploy on-premises Kubernetes and orchestrate containerized workloads.
+# Keyword: horizontal scale Kubernetes
+
 ---
 
-# AKS on Azure Stack HCI horizontal scaling of node-pools
+# Horizontal node auto-scaler in Azure Kubernetes Services (AKS) on Azure Stack HCI
 
 ## Overview
 
@@ -18,7 +23,7 @@ be scheduled because of resource constraints. When issues are detected, the numb
 is increased to meet the application demand. Nodes are also regularly checked for a lack of running pods,
 with the number of nodes then decreased as needed. This ability to automatically scale up or down the
 number of nodes in an AKS cluster lets customers run efficient, cost-effective clusters.
-By “autoscaling” we should imply ability of the system to automatically adjust (with help of some script or a
+By "autoscaling" we should imply ability of the system to automatically adjust (with help of some script or a
 programm) specific parameters based on some inputs, metrics, rules.
 
 ## Horizontal node scaling in AKS-HCI
