@@ -17,11 +17,11 @@ ms.custom: mode-portal
 
 After you have set up your Azure Kubernetes Service host, you can use Windows Admin Center to create a Kubernetes cluster. To use PowerShell instead, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
 
-Before proceeding to the Create Kubernetes cluster wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md). You can access the Create Kubernetes cluster wizard through the [Azure Kubernetes Service host dashboard](#create-a-kubernetes-cluster-from-the-azure-kubernetes-service-host-dashboard).
+Before proceeding to the Create Kubernetes cluster wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md). You can access the Create Kubernetes cluster wizard through the [Azure Kubernetes Service host dashboard](#create-a-kubernetes-cluster-in-the-azure-kubernetes-service-host-dashboard).
 
 ## Create a Kubernetes cluster in the Azure Kubernetes Service host dashboard
 
-You can create a Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool if you're connected to the system that has an Azure Kubernetes Service host deployed on it. Follow the steps below and then proceed to the [Create Kubernetes cluster wizard](#the-kubernetes-cluster-create-wizard) section:
+You can create a Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool if you're connected to the system that has an Azure Kubernetes Service host deployed on it. Follow the steps below and then proceed to the [Use the Create Kubernetes cluster wizard](#use-the-create-kubernetes-cluster-wizard) section:
 
 1. Connect to the system where you wish to create your Kubernetes cluster and then navigate to the **Azure Kubernetes Service** tool. This system should already have an Azure Kubernetes Service host set up.
 
