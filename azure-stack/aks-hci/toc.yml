@@ -65,8 +65,8 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
-  - name: Horizontal node auto-scaler
-    href: concepts-horizontal-node-auto-scaler.md
+  - name: Horizontal node autoscaling
+    href: concepts-horizontal-node-autoscaling.md
   - name: Node auto-repair
     href: node-repair.md
   - name: Supported Kubernetes versions
