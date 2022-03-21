@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 03/17/2022
-ms.lastreviewed: 03/17/2022
+ms.date: 03/21/2022
+ms.lastreviewed: 03/21/2022
 
 ---
 
@@ -14,7 +14,7 @@ ms.lastreviewed: 03/17/2022
 
 >Applies to Azure Stack HCI, version 21H2 and later
 
-Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends any many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
+Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
 *Azure Benefits* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure Benefits on Azure Stack HCI at no additional cost. If you have Windows Server workloads, we recommend turning it on. 
 
