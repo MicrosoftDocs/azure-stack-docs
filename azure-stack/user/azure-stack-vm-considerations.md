@@ -59,7 +59,7 @@ The following table lists the VMs that are supported on Azure Stack Hub along wi
 |General purpose  |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
 |General purpose  |Av2-series     |[A1_v2 - A8m_v2](azure-stack-vm-sizes.md#av2-series)     |
 |General purpose  |D-series       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
-|General purpose  |Dv2-series     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|General purpose  |Dv2-series     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#general-purpose-dsv2-series) |
 |General purpose  |DS-series      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
 |General purpose  |DSv2-series    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dv2-series)      |
 |Memory optimized |D-series       |[D11 - D14](azure-stack-vm-sizes.md#d-series)            |
@@ -67,8 +67,8 @@ The following table lists the VMs that are supported on Azure Stack Hub along wi
 |Memory optimized |Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#dv2-series)     |
 |Memory optimized |DSv2-series    |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#dv2-series)    |
 |Compute optimized|F-series       |[F1 - F16](azure-stack-vm-sizes.md#f-series)    |
-|Compute optimized|Fs-series      |[F1s - F16s](azure-stack-vm-sizes.md#fs-series)    |
-|Compute optimized|Fsv2-series    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series)    |
+|Compute optimized|Fs-series      |[F1s - F16s](azure-stack-vm-sizes.md#compute-optimized-fs-series) |
+|Compute optimized|Fsv2-series    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#compute-optimized-fsv2-series) |
 |GPU | NCv3-series |[NC6s_v3-NC24s_v3](gpu-vms-about.md#ncv3) |
 |GPU | NVv4-series |[NV4as_v4](gpu-vms-about.md#nvv4) |
 |GPU | NCasT4_v3-series |[NC4as_T4_v3-NC64as_T4_v3](gpu-vms-about.md#ncast4_v3)
@@ -167,6 +167,17 @@ In Azure Stack Hub, VMs are live migrated across the other online hosts in the c
 ## Arc on Azure Stack Hub VMs
 
 Arc enabled servers do not support installing the connected machine agent on virtual machines running in Azure, or virtual machines running on Azure Stack Hub or Azure Stack Edge, as they are already modeled as Azure VMs.
+
+## Microsoft Office server products on Azure Stack Hub VMs
+
+Not all Microsoft Office server products are supported on Azure Stack Hub VMs, which is clarified as follows:
+
+| Product | Office support statement | More information |
+| --------| ------------------------ | ---------------- |
+| Exchange | Not supported. Does not meet the storage virtualization requirements for Exchange. |  [Exchange Server virtualization](/exchange/plan-and-deploy/virtualization) | 
+| SharePoint | Supported only if specific networking requirements are met. | [Plan for virtualization of SharePoint Server](/sharepoint/install/deploy-sharepoint-virtual-machines) | 
+| Skype | Not supported. Skype does not support live migration, a core virtualization feature used in Azure Stack Hub. | [Virtualization support for Skype for Business Server 2019](/skypeforbusiness/virtualization-guidance) |  
+
 
 ## Next steps
 

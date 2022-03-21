@@ -12,6 +12,8 @@
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
     href: concepts/compare-azure-stack-hub.md
+  - name: Hybrid capabilities with Azure services
+    href: hybrid-capabilities-with-azure-services.md
   - name: Use Azure Benefits
     href: ./manage/azure-benefits.md
   - name: FAQ
@@ -196,8 +198,6 @@
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
-    - name: Use Azure Network Adapter
-      href: /windows-server/manage/windows-admin-center/azure/use-azure-network-adapter
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster validation reporting
@@ -218,10 +218,14 @@
       href: concepts/drive-symmetry-considerations.md
     - name: Plan volumes
       href: concepts/plan-volumes.md
+    - name: Understand Storage Spaces Direct
+      href: concepts/storage-spaces-direct-overview.md
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
       href: concepts/fault-tolerance.md
+    - name: Understand and monitor storage resync
+      href: concepts/understand-storage-resync.md
     - name: Stretched clusters
       href: concepts/stretched-clusters.md
     - name: Cluster and storage pool quorum

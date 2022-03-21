@@ -2,10 +2,10 @@
 title: Azure Stack Hub administration basics - Ruggedized
 titleSuffix: Azure Stack Hub
 description: Learn the basics to Azure Stack Hub administration.
-author: PatAltimore
+author: sethmanheim
 ms.topic: article
 ms.date: 06/16/2020
-ms.author: patricka
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 06/16/2020
 
