@@ -148,7 +148,7 @@ at <ScriptBlock>, <No file>: line 1]
 InnerException[The object already exists]
 ```
 
-or your may see:
+Or you may see:
 
 ```powershell
 Install-Moc failed.
