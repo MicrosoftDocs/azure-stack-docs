@@ -49,7 +49,7 @@ Set `New-AksHciCluster` and all newly created node pools will have autoscaling e
 New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName myAutoScalerProfile
 ```
 
-### Enable autoscaling on an existing cluster
+## Enable autoscaling on an existing cluster
 
 Set `enableAutoScaler` on an existing cluster using `Set-AksHciCluster` and all additionally created node pools will have autoscaling enabled. You must enable autoScaling for existing node pools using `Update-AksHcinode pool`.
 
