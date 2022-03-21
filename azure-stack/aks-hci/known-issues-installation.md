@@ -130,12 +130,12 @@ This error may occur when there's an infrastructure misconfiguration. Use the fo
       Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
       ```
 
-## Error:  `[Doc]Install-Moc failed with error - [The object already exists] An error occurred while creating resource 'IPv4 Address xxx.xx.xx.xx' for the clustered role 'xx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx'
+## Error:  `Install-Moc failed with error - [The object already exists] An error occurred while creating resource 'IPv4 Address xxx.xx.xx.xx' for the clustered role 'xx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx'
 
 A previously installed feature remains in a failed state and has not been cleared. You may see the following error:
 
 ```powershell
-Exception [An error occurred while creating resource 'MOC Cloud Agent Service' for the clustered role 'ca-3f72bdeb-d289-4ae9-a721-3aa902a998f0'.]
+Exception [An error occurred while creating resource 'MOC Cloud Agent Service' for the clustered role 'ca-3f72bdeb-xxxx-4ae9-a721-3aa902a998f0'.]
 Stacktrace [at Add-FailoverClusterGenericRole, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Common.psm1: line 2987
 at Install-CloudAgent, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1310
 at Install-MocAgents, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1229
@@ -148,7 +148,25 @@ at <ScriptBlock>, <No file>: line 1]
 InnerException[The object already exists]
 ```
 
+Or you may see:
+
+```powershell
+Install-Moc failed.
+Exception [Unable to save property changes for 'IPv4 Address xxx.168.18.0'.]
+Stacktrace [at Add-FailoverClusterGenericRole, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Common.psm1: line 2971
+at Install-CloudAgent, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1310
+at Install-MocAgents, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1229
+at Initialize-Cloud, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1135
+at Install-MocInternal, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 1078
+at Install-Moc, C:\Program Files\WindowsPowerShell\Modules\Moc\1.0.20\Moc.psm1: line 207
+at Install-AksHciInternal, C:\Program Files\WindowsPowerShell\Modules\AksHci\1.1.25\AksHci.psm1: line 3867
+at Install-AksHci, C:\Program Files\WindowsPowerShell\Modules\AksHci\1.1.25\AksHci.psm1: line 778
+at <ScriptBlock>, <No file>: line 1]
+InnerException[A matching cluster network for the specified IP address could not be found]
+```
+
 To resolve this issue, you will need to manually clean up the cluster role manually. You can remove the resource from the  fail-over  cluster manager by running the following PowerShell cmdlet:  `Remove-ClusterResource -name <resource name>`.
+
 ## Error: `Install-Moc failed with error - Exception [Could not create the failover cluster generic role.]`  
 
 This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.
