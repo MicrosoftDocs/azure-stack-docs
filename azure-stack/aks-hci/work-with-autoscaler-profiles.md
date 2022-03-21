@@ -15,7 +15,7 @@ ms.date: 03/16/2022
 
 # Use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
 
-You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You cannot set an autoscaler profile per node pool.
+You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You can't set an autoscaler profile per node pool.
 
 The profiles have the following attributes:
 
@@ -42,7 +42,7 @@ The default profile consists of the below default values.
 | scale-downdelay-afterdelete | How long after node deletion that scale down evaluation resumes. | scaninterval |
 | scale-downdelay-afterfailure | How long after scale down failure that scale down evaluation resumes. | 3 minutes |
 | scale-downunneededtime | How long a node should be unneeded before it's eligible for scale down. | 10 minutes |
-| scale-downunreadytime | How long an unready node should be unneeded before it is eligible for scale down. | 20 minutes |
+| scale-downunreadytime | How long an unready node should be unneeded before it's eligible for scale down. | 20 minutes |
 | scale-downutilizationthreshold | Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down. | 0.5 |
 | max-gracefulterminationsec | Maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. | 600 seconds |
 | balancesimilarnodegroups | Detects similar node pools and balances the number of nodes between them. | false |

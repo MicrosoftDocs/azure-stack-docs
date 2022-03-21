@@ -43,7 +43,7 @@ You can update the **autoscalerconfig** object. The object contains the paramete
 
 ## Enable autoscaling for new clusters
 
-Set `New-AksHciCluster` and all subsequently created node pools will have autoscaling enabled upon creation.
+Set `New-AksHciCluster` and all newly created node pools will have autoscaling enabled upon creation.
 
 ``` powershell 
 New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName myAutoScalerProfile
@@ -51,7 +51,7 @@ New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName
 
 ### Enable autoscaling on an existing cluster
 
-Set `enableAutoScaler` on an existing cluster using `Set-AksHciCluster` and all subsequently created node pools will have autoscaling enabled. You must enable autoScaling for existing node pools using `Update-AksHcinode pool`.
+Set `enableAutoScaler` on an existing cluster using `Set-AksHciCluster` and all additionally created node pools will have autoscaling enabled. You must enable autoScaling for existing node pools using `Update-AksHcinode pool`.
 
 ``` powershell 
 Set-AksHciCluster -Name <string> [-enableAutoScaler <boolean>] [-autoScalerProfileName <String>] 
@@ -59,7 +59,7 @@ Set-AksHciCluster -Name <string> [-enableAutoScaler <boolean>] [-autoScalerProfi
 
 ## Disable autoscaling
 
-Set `enableAutoScaler` to false on an existing cluster using `Set-AksHciCluster` to disable autoscaling on all existing and subsequently created node pools.
+Set `enableAutoScaler` to false on an existing cluster using `Set-AksHciCluster` to disable autoscaling on all existing and newly created node pools.
 
 ``` powershell 
 Set-AksHciCluster -Name <string> -enableAutoScaler $false
