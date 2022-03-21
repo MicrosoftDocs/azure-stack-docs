@@ -15,33 +15,42 @@ ms.date: 03/16/2022
 
 # Horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
 
-To keep up with application demands in Azure Kubernetes Service (AKS), you need to adjust the number of nodes that run their workloads. Horizontal node autoscaling through the cluster autoscaler can watch for pods in your cluster that can't be scheduled because of resource constraints. When issues are detected, the number of nodes in a node pool is increased to meet the application demand. Nodes are also regularly checked for a lack of running pods, with the number of nodes then decreased as needed. This ability to automatically scale up or down the number of nodes in an AKS cluster lets customers run efficient, cost-effective clusters. By "autoscaling" we should imply ability of the system to automatically adjust (with help of some script or a program) specific parameters based on some inputs, metrics, rules.
+You can adjust the number of nodes that run application workloads using  Azure Kubernetes Service (AKS) to keep up with demand.  For this preview release, you can use PowerShell to enable the autoscaler and to manage  automatic scaling of node pools in your target clusters. In this article we look at the context of the autoscaler on AKS on Azure Stack HCI, how the autoscaler works, configuration the scaling behavior with autoscaler profiles, and how to use PowerShell for horizontal node autoscaling.
 
 > [!IMPORTANT]
 > Horizontal node autoscaling is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+## Horizontal node autoscaling
 
-## Horizontal node autoscaling in AKS on Azure Stack HCI
+In AKS, the cluster autoscaler watches for pods in your cluster that can't be scheduled because of resource constraints. When issues are detected, the number of nodes in a node pool increases to meet application demand. Nodes are also regularly checked for a lack of running pods, and then the number of nodes decreases, as needed. This ability to automatically scale up or scale down the number of nodes in your AKS cluster lets you run efficient, cost-effective clusters. *Autoscaling* is the ability of the system to automatically adjust your workloads through automation and configuration that contains specific parameters based on input, measures, and rules.
 
-To enable horizontal node scaling the system needs to implement basic resource management. It's understood and assumed that resource requirement estimations at autoscaler enablement are only point in time measurements and won't take into account resource consumption from outside of AKS on Azure Stack HCI, for example, due to the customer running more VMs after enabling the autoscaler. For this preview release we'll focus on PowerShell user experience for enabling and managing automatic scaling of node pools in target clusters and a simplified WAC experience.
+To enable horizontal node scaling AKS needs to implement basic resource management. AKS estimates resource requirement that trigger autoscaling events at a point in time. AKS won't take into account resource consumption from outside of AKS on Azure Stack HCI. For example, when you add VMs after enabling the autoscaler, this event occurs outside of the context of the autoscaler.
+### Purpose of horizontal node autoscaling 
 
-## Purpose of horizontal node autoscaling 
+The autoscaler automatically increases the size of a node pool from the minimum to the maximum number of nodes specified. When you have enabled automatic scaling, the autoscaler will determine if the maximum number of nodes is feasible and warn you about over provisioning the hardware resources available. 
 
-Automatically scale a node pool from the minimum to the maximum number of nodes specified. On enabling automatic scaling the system will determine if the maximum number of nodes is feasible and warn the customer about over provisioning the hardware resources available. On scaling a node pool up the system will verify that at the time of the operation enough resources are available. The system must be aware of available and promised resources across all deployed target clusters and node pools to make an informed decision. Utilize the builtin Kubernetes autoscaling feature analog to Azure autoscaler.
+The autoscaler tracks available and promised resources across all deployed target clusters and node pools.  The scaler uses this data to make an informed decision. As the autoscaler increases node pool, the autoscaler checks for the availability of resources. 
 
-## How horizontal node autoscaling works
+AKS on Azure Stack HCI uses the built in Kubernetes autoscaling feature to support operations similar to the Azure autoscaler.
 
-To adjust to changing application demands, such as between the workday and evening or on a weekend, clusters often need a way to automatically scale. AKS clusters can scale in one of two ways: 
-- Triggers based on node utilization. 
+### How horizontal node autoscaling works
+
+The autoscaler adjusts to  changing application demands. As demands change between workday and evening loads, the autoscaler shifts your clusters resources. AKS clusters scale in two ways:  
+
+- **Triggers based on node utilization**.  
  The cluster autoscaler watches for pods that can't be scheduled on nodes because of resource constraints. The cluster autoscaler decreases the number of nodes when there has been unused capacity for time. 
-- Triggers defined in the autoscaler profiles. 
+- **Triggers defined in the autoscaler profiles**.  
  The cluster autoscaler uses startup parameters for triggers like time intervals between scale events and resource thresholds. See [Autoscaler Profiles](#autoscaler-profiles). 
 
-When enabling autoscaling on a node pool, the default profile is applied unless one or more of the settings are overridden using the '-ClusterAutoScalingProfile' parameter on `Set-AksHciCluster`. The default state of the node autoscaler is disabled at both the cluster and node pool creation time unless specified as enabled by the customer. When a customer enables autoscaler for a cluster and no **autoscalerconfig** object is provided the default autoscaler profile is added to the cluster. A customer can then fine tune the parameters in the profile by using the `Set-AksHciCluster` command and passing in an **autoscalerconfig** object with the values that need to change. The user doesn't have to provide all parameters in the object, only changed parameters have to be in the object.
+When you enable autoscaling on a node pool, the default profile is applied unless you override one or more of the settings using the `-ClusterAutoScalingProfile` parameter on `Set-AksHciCluster`. Unless you enable them, the default state of the node autoscaler is disabled at both the cluster and node pool creation time. 
+
+When you enable the autoscaler for a cluster and you don't provide an **autoscalerconfig** object, the default autoscaler profile is added to the cluster. You can then fine tune the parameters in the profile by using the `Set-AksHciCluster` command and pass an **autoscalerconfig** object with the updated values. You don't need to provide all parameters in the object, you can just provide your updated paramaters in the object.
 
 ## Autoscaler profiles
 
-Autoscaler profiles define the parameters used to trigger scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You cannot set an autoscaler profile per node pool. The profiles have the following attributes:
+Autoscaler profiles define the parameters used to trigger scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You cannot set an autoscaler profile per node pool.
+
+The profiles have the following attributes:
 
 - Autoscaler profiles will apply to all node pools in a cluster.
 - Profiles are global deployment level objects.
@@ -75,7 +84,7 @@ The default profile consists of the below default values.
 | max-nodeprovisiontime | Maximum time the autoscaler waits for a node to be provisioned. | 15 minutes |
 
 > [!NOTE] 
-> The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it does not enforce them after updating the min or max counts. For example, setting a min count of 5 when the current node count is 3 will not immediately scale the pool up to 5. If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require 2 new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized after 10 minutes. If you had workloads that ran every 15 minutes, you may want to change the autoscaler profile to scale down under utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings. The cluster autoscaler profile has the following settings that you can update: To change the settings in the cluster autoscaler profile we introduce a new command to `Set-AksHciAutoScalerConfig`.
+> The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it does not enforce them after updating the min or max counts. For example, setting a min count of five when the current node count is three will not immediately scale the pool up to five. If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require 2 new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized after 10 minutes. If you had workloads that ran every 15 minutes, you may want to change the autoscaler profile to scale down under utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings. The cluster autoscaler profile has the following settings that you can update: To change the settings in the cluster autoscaler profile we introduce a new command to `Set-AksHciAutoScalerConfig`.
 
 ## Use PowerShell for horizontal node autoscaling
 
@@ -155,7 +164,7 @@ The cluster autoscaler logs events on the cluster autoscaler status configmap wh
 kubectl --kubeconfig ~\.kube\config describe configmap cluster-autoscaler-status
 ```
 
-The cluster autoscaler emits events on pods in the target cluster when it makes a scaling decision if the pod can’t be scheduled. Run this command to view the events on a pod:
+The cluster autoscaler emits events on pods in the target cluster when it makes a scaling decision if the pod can'’'t be scheduled. Run this command to view the events on a pod:
 
 ``` powershell
 kubectl --kubeconfig ~\.kube\config describe pod <pod_name>
