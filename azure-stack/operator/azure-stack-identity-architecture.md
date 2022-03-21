@@ -34,7 +34,7 @@ The identity provider that you choose can limit your options, including support 
 |Create service principals with secrets (keys)    |Yes |Yes|
 |Applications can use the Graph service           |Yes |No|
 |Applications can use identity provider for sign-in |Yes |Yes (requires apps to federate with on-premises AD FS instances) |
-| Managed System Identities | No | No |
+| Managed identities | No | No |
 
 ## Topologies
 
