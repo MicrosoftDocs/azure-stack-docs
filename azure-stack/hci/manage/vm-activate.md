@@ -4,7 +4,7 @@ description: This topic explains the benefits of using Automatic Virtual Machine
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/17/2022
+ms.date: 03/21/2022
 
 ---
 
@@ -172,8 +172,8 @@ To use AVMA in Windows Admin Center:
 
    When you have finished entering keys for each host server in the cluster, select **Apply**. The process then takes a few minutes to complete.
 
-  > [!NOTE]
-  > Each server requires a unique key, unless you have a valid volume license key.
+   > [!NOTE]
+   > Each server requires a unique key, unless you have a valid volume license key.
 
 After AVMA is successfully set up, you can view and manage the feature for your cluster.
 
@@ -189,8 +189,8 @@ To change or add keys:
 
 2. In the **Manage activation keys** pane, enter the new keys for the selected host servers, and then select **Apply**.
 
-  > [!NOTE]
-  > Overwriting keys does not reset the activation count for used keys. Ensure that you're using the right keys before applying them to the servers.
+   > [!NOTE]
+   > Overwriting keys does not reset the activation count for used keys. Ensure that you're using the right keys before applying them to the servers.
 
 ### Troubleshooting - Windows Admin Center
 
