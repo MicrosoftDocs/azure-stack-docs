@@ -111,6 +111,12 @@
             href: deploy-azure-container-registry.md
           - name: Use node pools
             href: use-node-pools.md
+          - name: Use autoscaling
+            items:
+            - name: Work with horizontal node autoscaling
+              href: work-with-horizontal-autoscaler.md
+            - name: Use autoscaler profiles
+              href: work-with-autoscaler-profiles.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes
