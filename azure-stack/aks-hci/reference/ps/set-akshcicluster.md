@@ -20,9 +20,10 @@ Scale the number of control plane nodes, enable or disable the auto scaler, set 
 ### Scale control plane nodes
 ```powershell
 Set-AksHciCluster -name <String>
-                  -controlPlaneNodeCount <int> 
-                  -enableAutoScaler <boolean>
-                  -autoScalerProfileName <string>
+                  [-controlPlaneNodeCount <int>]
+                  [-enableAutoScaler <boolean>]
+                  [-autoScalerProfileName <string>]
+                  [-controlPlaneVmSize <string>]
 ```
 
 ## Description
@@ -53,6 +54,13 @@ PS C:\> Set-AksHciCluster -name myCluster -enableAutoScaler $false
 ### Change the auto scaler configuration profile
 ```powershell
 PS C:\> Set-AksHciCluster -name myCluster -autoScalerProfileName anotherAutoScalerProfile
+```
+
+## Update the virtual machine size for the control plane nodes in a target cluster
+To update the contol plane nodes in 'mycluster-linux' to use Standard_A4_v2 as the new virtual machine size.
+
+``` powershell
+PS C:\> Set-AksHciCluster -name mycluster -controlPlaneVmSize Standard_A4_v2
 ```
 
 ## Parameters
@@ -107,6 +115,21 @@ Accept wildcard characters: False
 
 ### -autoScalerProfleName
 The Name of the auto scaler configuration profile that was defined by the 'New-AksHciAutoScalerProfile' command. If not specified the default profile is used.  See the documentation [Link to auto scaler doc.md](link to autoscalerdoc.md) for more details.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -controlPlaneVmSize
+Change the virtual vm size of a node pool
 
 ```yaml
 Type: System.String

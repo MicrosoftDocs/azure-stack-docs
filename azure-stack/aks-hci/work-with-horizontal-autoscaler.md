@@ -82,8 +82,8 @@ kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig get events
 ```
 The cluster autoscaler deployment creates a `configmap` in the target cluster that it manages. This `configmap` holds information about the autoscaler's status at the cluster wide level and per node pool. Run this command against the target cluster to view the status:
 
-> ![!NOTE]
-> Ensure you have run `Get-AksHciCredentials -Name <clustername>` to retrieve the `kubeconfig` information to access the target cluster in question!
+> [!NOTE] 
+> Ensure you have run `Get-AksHciCredentials -Name <clustername>` to retrieve the `kubeconfig` information to access the target cluster in question.
 
 ``` powershell 
 kubectl --kubeconfig ~\.kube\config get configmap cluster-autoscaler-status -o yaml

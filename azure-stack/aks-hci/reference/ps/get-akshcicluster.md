@@ -45,6 +45,7 @@ NodePools :             linuxnodepool
 WindowsNodeCount :      0
 LinuxNodeCount :        0
 ControlPlaneNodeCount : 1
+ControlPlaneVmSize :    Standard_A4_v2
 Name :                  mycluster
 ```
 

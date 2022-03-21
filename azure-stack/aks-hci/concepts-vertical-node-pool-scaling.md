@@ -1,6 +1,6 @@
 ---
-title: Vertical scaling of node pools Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about vertically scaling of node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Vertical node scaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
+description: Learn about the vertically scaling of node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
@@ -8,34 +8,40 @@ ms.lastreviewed: 03/18/2022
 ms.reviewer: mikek
 ms.date: 03/18/2022
 
-# Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
-# Keyword: vertical node autoscaling Kubernetes
+# Intent: As a Kubernetes user, I want to use increase my VM size in place to grow my nodes to keep up with application demand.
+# Keyword: vertical node scaling Kubernetes
 
 ---
 
 
-# Vertical node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
 
-To keep up with application demands in Azure Kubernetes Service (AKS), customers need to adjust the number of nodes that run their workloads. In some cases scaling a cluster horizontally by adding additional nodes is not sufficient as application demand for more CPU cores or memory would require to re-deploy a new node pool and migration of the app which might also not be ideal in resource limited edge environments. To enable this flexibility Azure Kubernetes Service in Azure Stack HCI introduces the capability to change the SKU of the virtual machines in a given node pool.
+
+# Vertical node scaling in Azure Kubernetes Services on Azure Stack HCI
+
+You can change the size of the virtual machines in a given node pool to increase the resources available to your node pool.
+
+To keep up with app demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. In some cases, scaling a cluster horizontally by adding additional nodes isn't sufficient to meet the demands from your app for more CPU cores or memory. Without vertical node scaling, you would need to redeploy to a new node pool and move the app. This might not be ideal in resource limited edge environments. To enable this flexibility Azure Kubernetes Service (AKS) in Azure Stack HCI introduces the capability to change the virtual machine (VM) size (SKU) of the VMs in a given node pool.
 
 > [!IMPORTANT]
-> Horizontal node autoscaling is currently in PREVIEW.
+> Vertical node scaling is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 ### How vertical node scaling in AKS on Azure Stack HCI works
 
-In AKS on Azure Stack HCI target cluster node pools are managed internally as a machineDeployment. One property of an machineDeployment is the VMSize (SKU)  that was selected when the 'New-AksHciNodePool' command was executed.
-To change the node pool to a different VM size (SKU) the user will use the 'Set-AksHciNodePool' command for changing the VM size for worker nodes and the 'Set-AksHciCluster' command to change the VM size for control plane nodes.
+In AKS on Azure Stack HCI target cluster node pools are managed internally as a **machineDeployment**. One property of a **machineDeployment** is the VM size (SKU) that was selected when the `New-AksHciNodePool` command was executed.
 
-Once the user submits the command with the new VM size (SKU) a new machineDeployment for the node pool or cluster will be created replacing the existing machine set. This will trigger an update flow in the underlying deployment system which will, like during an OS or Kubernetes version upgrade, use a rolling update to replace one virtual machine in the node pool or control plane after the other ensuring the old node is correctly cordoned and drained before it is removed.
+To change the node pool to a different VM size (SKU), you can use the `Set-AksHciNodePool` command for changing the VM size for worker nodes and the `Set-AksHciCluster` command to change the VM size for control plane nodes.
 
-> ![NOTE] 
-> The system assumes the user ensures there are enough hardware resources available to scale up the new machine set in place of the old machine set.
+Once you submit the command with the new VM size (SKU), a new **machineDeployment** for the node pool or cluster will be created replacing the existing machine set. This triggers an update flow in the underlying deployment system. Similar to an OS or Kubernetes version upgrade the new **machineDeployment** uses a rolling update to replace one virtual machine in the node pool or control plane after the other. Each upgrade checks that the old node is correctly cordoned and drained before it's removed.
 
-### Example process
+> [!NOTE]
+> The system assumes that you have checked that are enough hardware resources available to scale up the new machine set in place of the old machine set.
 
-#### Change the VM Size for a Linux worker node pool from 4 cores and 6 GB of memory to 4 cores and 8 GB of memory
+## Example process
 
-First check what the current VM size is for the node pool on cluster 'mycluster'. From the output below we can see it is 'Standard_K8S3_v1'.
+The following example illustrates vertical node scaling.
+### Change the VM Size for a Linux worker node pool from 4 cores and 6 GB of memory to 4 cores and 8 GB of memory
+
+First, check what the current VM size is for the node pool on cluster `mycluster`. From the output, you can see it's `Standard_K8S3_v1`.
 
 ``` powershell
 get-akshcinodepool -clustername mycluster
@@ -52,7 +58,7 @@ VmSize       : Standard_K8S3_v1
 Phase        : scaling
 ```
 
-Looking up 'Standard_K8S3_v1' in the list of available VM sizes shows that it has 4 cores and 6 GB of memory. 
+Look up `Standard_K8S3_v1` in the list of available VM sizes shows that it has four cores and six GB of memory. 
 
 ``` powershell
 Get-AksHciVmSize
@@ -79,18 +85,20 @@ Standard_K8S2_v1 2   2
 Standard_K8S3_v1 4   6
 ```
 
-The new size we want to set for 4 cores and 8 GB of memory would be 'Standard_A4_v2'
-To update the node pool 'mycluster-linux' we will use the 'Set-AksHciNodePool' command which has been updated to accept a '-VMsize' parameter.
+The new size you want to set for four cores and eight GB of memory would be `Standard_A4_v2`.
+To update the node pool `mycluster-linux` you'll use the `Set-AksHciNodePool` cmdlet, which has been updated to accept a `-VMsize` parameter.
 
 ``` powershell
-PS C:\> Set-AksHciNodePool -ClusterName mycluster -name mycluster-linux -vmsize Standard_A4_v2
+Set-AksHciNodePool -ClusterName mycluster -name mycluster-linux -vmsize Standard_A4_v2
 ```
 
-After a few minutes the process is complete. We can check the result by running 'Get-AksHciNodePool' again and ensuring that the VmSize is now 'Standard_A4_v2'.
+After a few minutes the process is complete. You can check the result by running `Get-AksHciNodePool` again and verify that the `VmSize` is now `Standard_A4_v2`.
 
 ``` powershell
-PS C:\> get-akshcinodepool -clustername mycluster
+get-akshcinodepool -clustername mycluster
+```
 
+```outpout
 Status       : {Error, Phase, Details}
 ClusterName  : mycluster
 NodePoolName : mycluster-linux
