@@ -64,7 +64,7 @@ Enable-PSRemoting -Force
 winrm quickconfig 
 ```
 
-If you are still encountering issues, please follow this [troubleshooting guide](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.2).
+If you are still encountering issues, please follow this [troubleshooting guide](/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.2).
 
 ## When updating the Kubernetes version, the update page shows the update is still processing when the update is completed
 If you have workload clusters with Kubernetes version 1.19.9 installed, and then use Windows Admin Center to update them to Kubernetes version 1.19.11, the Kubernetes update page continues to show that the update is still in process. However, if you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), the output shows that the update is complete, and if you open Windows Admin Center in a new tab, the cluster is updated to 1.19.11 in the **Kubernetes clusters** list. You can ignore this issue as the update process did complete.
