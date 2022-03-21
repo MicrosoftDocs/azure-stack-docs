@@ -16,7 +16,7 @@ ms.lastreviewed: 03/21/2022
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
-*Azure Benefits* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure Benefits on Azure Stack HCI at no additional cost. If you have Windows Server workloads, we recommend turning it on. 
+*Azure Benefits* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. You can enable Azure Benefits on Azure Stack HCI at no extra cost. If you have Windows Server workloads, we recommend turning it on. 
 
 Take a few minutes to watch the introductory video on Azure Benefits:
 
@@ -28,7 +28,7 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 
 |     Workload                                      |     Versions supported                                |     What it is |                                                                                                                                                                    |
 |---------------------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Windows Server Datacenter: Azure Edition    |     2022 edition or later                           |     An Azure-only guest operating system that includes all the latest Windows Server innovations and additional exclusive features. <br/> Learn more: [Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview)|                                                                                                     |
+|     Windows Server Datacenter: Azure Edition    |     2022 edition or later                           |     An Azure-only guest operating system that includes all the latest Windows Server innovations and other exclusive features. <br/> Learn more: [Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview)|                                                                                                     |
 |     Extended Security Update (ESUs)             |     October 12th, 2021 security updates or later    |     A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> For more information, see [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md).   |
 |     Azure Policy guest configuration            |     Arc agent version 1.13 or later                 |     A feature that can audit or configure OS settings as code, for both host and   guest machines. <br/> Learn more: [Understand the guest configuration feature of Azure Policy](/azure/governance/policy/concepts/guest-configuration) |
 
@@ -38,7 +38,7 @@ This section is optional reading, and explains more about how Azure Benefits on 
 
 Azure Benefits relies on a built-in platform attestation service on Azure Stack HCI, and helps to provide assurance that VMs are indeed running on Azure environments. 
 
-This is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload; the main difference is that it runs on-premises and therefore guarantees that VMs are on Azure Stack HCI instead of Azure.
+This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are on Azure Stack HCI instead of Azure.
 
 :::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture":::
 
@@ -209,7 +209,7 @@ See the [full list here](#azure-benefits-available-on-azure-stack-hci).
 
 ### Does it cost anything to turn on Azure Benefits?
 
-No, turning on Azure Benefits comes with no additional fees.
+No, turning on Azure Benefits comes with no extra fees.
 
 ### Can I use Azure Benefits on environments other than Azure Stack HCI?
 

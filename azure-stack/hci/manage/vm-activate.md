@@ -12,7 +12,7 @@ ms.date: 03/17/2022
 
 >Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019 Datacenter Edition and later
 
-Windows Server virtual machines (VMs) must be licensed and activated before you can use them on Azure Stack HCI. You can use any existing Windows Server licenses and activation methods that you already have; or optionally, Azure Stack HCI offers new licensing models and tools to help simplify this process. This article describes general licensing concepts and the new options that are available on Azure Stack HCI.
+Windows Server virtual machines (VMs) must be licensed and activated before you can use them on Azure Stack HCI. You can use any existing Windows Server licenses and activation methods that you already have. Optionally, Azure Stack HCI offers new licensing models and tools to help simplify this process. This article describes general licensing concepts and the new options that are available on Azure Stack HCI.
 
 ## Summary
 
@@ -41,7 +41,7 @@ Choose the licensing option that is best suited to your needs:
 |-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 |     Where do I want to deploy my Windows Server (WS) VMs?               |     Azure Stack HCI only.                                                                                           |     Can be applied anywhere.                                               |
 |     What versions of WS VMs do you want to use?         |     Evergreen – all versions up to the latest version.                                                                  |     Version-specific.                                                      |
-|     Does this also allow me to use Windows Server: Azure edition?    |     Yes.                                                                                                            |     Need to have both Software Assurance (SA) and WS volume license keys.    |
+|     Does this option also allow me to use Windows Server: Azure edition?    |     Yes.                                                                                                            |     Need to have both Software Assurance (SA) and WS volume license keys.    |
 |     How do I activate my WS VMs?                          |     Automatically handled – no keys/true-up.                                                                        |     Key based – for example, KMS/AVMA/enter keys in VM.                            |
 |     What are the CAL requirements?                        |     No CAL required – included in WS subscription.                                                                  |     Windows Server CAL.                                                    |
 |     What is the pricing model?                            |     Per physical core/per month pricing, purchased and billed through Azure (free trial within the first 60 days of registering your Azure Stack HCI). For details, see [Pricing for Windows Server subscription](https://azure.microsoft.com/pricing/details/azure-stack/hci/).    |     Core licenses. For details, see [Licensing Windows Server](https://www.microsoft.com/licensing/product-licensing/windows-server) and [Pricing for Windows Server licenses](https://www.microsoft.com/windows-server/pricing?rtc=1).                                                         |
@@ -82,7 +82,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Windows Server subscription add-on**, click **Purchase.** In the context pane, click **Purchase** again to confirm.
-3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Note that licenses will take a few minutes to be applied on your cluster.
+3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Licenses will take a few minutes to be applied on your cluster.
 
    :::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activation/portal-purchase-expanded.png":::
 
@@ -90,13 +90,13 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
 **Error**: One or more servers in the cluster does not have the latest changes to this setting. We'll apply the changes as soon as the servers sync again.
 
-**Remediation**: Your cluster does not yet have the latest status on Windows Server subscription (that is, just enrolled or just canceled), and therefore might not have retrieved the licenses to set up AVMA yet. In most cases, this will get automatically resolved with the next cloud sync, or you can sync manually. See [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
+**Remediation**: Your cluster does not yet have the latest status on Windows Server subscription (for example, just enrolled or just canceled), and therefore might not have retrieved the licenses to set up AVMA yet. In most cases, the next cloud sync will resolve this discrepancy, or you can sync manually. See [Syncing Azure Stack HCI](../faq.yml#how-often-does-azure-stack-hci-sync-with-the-cloud).
 
 ### Enable Windows Server subscription using Windows Admin Center
 
 1. Select **Cluster Manager** from the top drop-down, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
 2. In the **Automatically activate VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Click **Next** and confirm details, then click **Purchase.**
-3. When the purchase is completed successfully, the cluster retrieves licenses from the cloud and sets up AVMA on your cluster.
+3. When you complete the purchase successfully, the cluster retrieves licenses from the cloud, and sets up AVMA on your cluster.
 
    :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
 
@@ -128,7 +128,7 @@ You can use any existing method to activate VMs on Azure Stack HCI. Optionally, 
 
 ### Benefits of AVMA
 
-Because VM activation can be done through host servers, this presents several benefits:
+VM activation through host servers presents several benefits:
 
 - Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
 - License management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with just a properly licensed server.
@@ -179,7 +179,7 @@ After AVMA is successfully set up, you can view and manage the feature for your 
 
 ### Change or add keys later (optional)
 
-You might want to either change or add keys later; for example, when adding a server to the cluster, or using new Windows Server VM versions.
+You might want to either change or add keys later; for example, when you add a server to the cluster, or use new Windows Server VM versions.
 
 To change or add keys:
 
@@ -248,7 +248,7 @@ This FAQ provides answers to some questions about licensing Windows Server.
 
 ### Will my Windows Server 2022 Datacenter Azure Edition guests activate on Azure Stack HCI?
 
-Yes, but you'll need to use either Windows Server subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
+Yes, but you must use either Windows Server subscription-based AVMA, or else bring Windows Server 2022 Datacenter keys with Software Assurance. Please look forward to the general availability of Windows Server 2022 Datacenter Azure Edition on Azure Stack HCI.
 
 ### Do I still need Windows Server CALs?
 
