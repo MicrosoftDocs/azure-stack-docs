@@ -54,7 +54,7 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
    > [!NOTE]
    > Modifying or deleting this switch and NIC prevents Azure Benefits from working properly. If errors occur, disable Azure Benefits using Windows Admin Center or the PowerShell instructions that follow, and then try again.
 
-3. Consumer workloads (for example, Windows Server Azure Edition guests) requests attestation. HciSvc then signs the response with an Azure certificate.
+3. Consumer workloads (for example, Windows Server Azure Edition guests) request attestation. HciSvc then signs the response with an Azure certificate.
 
    > [!NOTE]
    > You must manually enable access for each VM that needs Azure Benefits.
@@ -104,7 +104,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
 - Under the **Cluster** tab, one or more servers appear as **Expired**:
   - If Azure Benefits for one or more servers has not synced with Azure for more than 30 days, it appears as **Expired** or **Inactive**. Click **Sync with Azure** to schedule a manual sync.
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
-  - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for erroring host servers, then try and manage VMs again.
+  - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for host servers with errors, then try and manage VMs again.
 
 ## Option 2: turn on Azure Benefits using PowerShell
 
@@ -120,7 +120,7 @@ To turn on Azure Benefits for VMs, click the **VMs** tab, select the VM(s) in th
    Enable-AzStackHCIAttestation -AddVM
    ```
 
-2. When Azure Benefits set up is successful, you can view Azure Benefits status. Check the cluster property **IMDS Attestation** by running the following command:
+2. When Azure Benefits setup is successful, you can view the Azure Benefits status. Check the cluster property **IMDS Attestation** by running the following command:
 
    ```powershell
    Get-AzureStackHCI
