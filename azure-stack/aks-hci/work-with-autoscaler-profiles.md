@@ -1,6 +1,6 @@
 ---
-title: Horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about automatically scaling node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
+description: Learn how to use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
 ms.topic: how-to
 author: mattbriggs
 ms.author: mabrigg 
@@ -13,7 +13,7 @@ ms.date: 03/16/2022
 
 ---
 
-# How to use the autoscaler profiles
+# Use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
 
 You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You cannot set an autoscaler profile per node pool.
 

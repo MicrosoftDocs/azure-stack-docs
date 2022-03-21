@@ -1,6 +1,6 @@
 ---
-title: Horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about automatically scaling node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Use PowerShell for horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
+description: Learn how to use PowerShell for horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI.
 ms.topic: how-to
 author: mattbriggs
 ms.author: mabrigg 

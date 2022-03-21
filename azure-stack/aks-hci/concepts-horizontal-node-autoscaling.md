@@ -40,7 +40,7 @@ The autoscaler adjusts to  changing application demands. As demands change betwe
 - **Triggers based on node utilization**.  
  The cluster autoscaler watches for pods that can't be scheduled on nodes because of resource constraints. The cluster autoscaler decreases the number of nodes when there has been unused capacity for time. 
 - **Triggers defined in the autoscaler profiles**.  
- The cluster autoscaler uses startup parameters for triggers like time intervals between scale events and resource thresholds. See [Autoscaler Profiles](#autoscaler-profiles). 
+ The cluster autoscaler uses startup parameters for triggers like time intervals between scale events and resource thresholds. See [Autoscaler Profiles](work-with-autoscaler-profiles.md). 
 
 When you enable autoscaling on a node pool, the default profile is applied unless you override one or more of the settings using the `-ClusterAutoScalingProfile` parameter on `Set-AksHciCluster`. Unless you enable them, the default state of the node autoscaler is disabled at both the cluster and node pool creation time. 
 
@@ -50,7 +50,7 @@ When you enable the autoscaler for a cluster and you don't provide an **autoscal
 
 You can set the parameters in the  autoscaler profile to configure the autoscaler. For more information, see [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
 
-You can use Powershell to enable, configure, and disable the autoscaler. For more information, see [Use PowerShell for horizontal node autoscaling](ork-with-horizontal-autoscaler.md).
+You can use Powershell to enable, configure, and disable the autoscaler. For more information, see [Use PowerShell for horizontal node autoscaling](work-with-horizontal-autoscaler.md).
 
 ## Horizontal node autoscaling during a cluster upgrade
 
@@ -58,6 +58,6 @@ During cluster upgrade and update, the autoscaler will be *paused* and no scalin
 
 ## Next steps
 
-- [Use PowerShell for horizontal node autoscaling](ork-with-horizontal-autoscaler.md)  
+- [Use PowerShell for horizontal node autoscaling](work-with-horizontal-autoscaler.md)  
 - [How to use the autoscaler profiles](work-with-autoscaler-profiles.md)  
 - [Vertical node autoscaling](concepts-vertical-node-pool-scaling.md)
