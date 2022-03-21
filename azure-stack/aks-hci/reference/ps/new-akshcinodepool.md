@@ -1,60 +1,82 @@
 ---
-title: Set-AksHciNodePool for AKS on Azure Stack HCI
+title: New-AksHciNodePool for AKS on Azure Stack HCI
 author: mkostersitz
-description: The Set-AksHciNodePool PowerShell command scales a node pool
+description: The New-AksHciNodePool PowerShell command creates a new node pool to an existing cluster
 ms.topic: reference
 ms.date: 3/16/2022
 ms.author: mikek
 ---
 
-# Set-AksHciNodePool
+# New-AksHciNodePool
 
 ## Synopsis
-Scale a node pool within a Kubernetes cluster.
+Create a new node pool to an existing cluster.
 
 ## Syntax
 ```powershell
-Set-AksHciNodePool -clusterName <String>
+New-AksHciNodePool -clusterName <String>
                    -name <String>
-                   -count <int>
-                   [-autoScaler <boolean>]
-                   [-vmsize <String>]
+                  [-count <int>]
+                  [-osType <String>]
+                  [-vmSize <VmSize>]
+                  [-taints <Taint>]
+                  [-maxPodCount <int>]
+                  [-disableAutoScaler]
 ```
 
 ## Description
-Scale a node pool within a Kubernetes cluster.
+Create a new node pool to an existing cluster.
 
-## Configure the number of nodes in a node pool
+## Examples
 
-```powershell
-PS C:\> Set-AksHciNodePool -clusterName mycluster -name nodepool1 -count 3
-```
-
-## Enable horizontal node auto scaler for the node pool
->![Note]
->This will only work if the horizontal autoscaler is enabled for the cluster.
+### Create a new node pool with default parameters
 
 ```powershell
-PS C:\> Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $true
+PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1
 ```
 
-## Disable horizontal node auto scaler for the node pool
->![Note]
->This will only work if the horizontal autoscaler is enabled for the cluster.
+### Create a Linux node pool
 
 ```powershell
-PS C:\> Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $false
+PS C:\> New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
 ```
 
-## Update the virtual machine size on a worker node pool
-To update the node pool 'mycluster-linux' to use Standard_A4_v2 as the new virtual machine size.
+### Create a Windows node pool
 
-``` powershell
-PS C:\> Set-AksHciNodePool -ClusterName mycluster -name mycluster-linux -vmsize Standard_A4_v2
+```powershell
+PS C:\> New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
 ```
+
+### Create a node pool with custom VM size
+
+```powershell
+PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -vmSize Standard_A2_v2
+```
+
+### Create a node pool with taints
+
+```powershell
+PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -taints sku=gpu:NoSchedule
+```
+
+### Create a node pool with max pod count
+
+```powershell
+PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 100
+```
+
+### Disable the horizontal auto scaler on a new node pool
+
+This parameter will be ignored if the horizontal auto scaler is not enabled on the cluster.
+
+```powershell
+PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -disableAutoscaler
+```
+
+## Parameters
 
 ### -clusterName
-The name of the Kubernetes cluster.
+The name of the existing Kubernetes cluster.
 
 ```yaml
 Type: System.String
@@ -69,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -name
-The name of your node pool.
+The name of your node pool. The node pool name must not be the same as another existing node pool.
 
 ```yaml
 Type: System.String
@@ -84,25 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -count
-The number of nodes to scale to.
+The node count of your node pool. Defaults to 1.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -autoScaler
-Toggle the horizontal auto scaler for a node pool
-
-```yaml
-Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -113,11 +120,72 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -vmsize
-Change the virtual vm size of a node pool
+### -osType
+The OS type of the nodes in your node pool. Defaults to Linux.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Linux
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -vmSize
+The VM size of the nodes in your node pool. Defaults to Standard_K8S3_v1. To get the available VM sizes, use the [Get-AksHciVmSize](get-akshcivmsize.md) command.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Standard_K8S3_v1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -taints
+The node taints for the node pool. You can't change the node taints after the node pool is created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -maxPodCount
+The maximum number of pods deployable to a node. This number needs to be greater than 50.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 110
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -disableAutoScaler
+Disable the horizontal auto scaler for this node pool.
+Only valid if the the horizontal auto scaler is enabled for the cluster.
+
+```yaml
+Type: Parameter
 Parameter Sets: (All)
 Aliases:
 
