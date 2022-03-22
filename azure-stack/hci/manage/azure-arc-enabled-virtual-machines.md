@@ -16,9 +16,6 @@ ms.date: 03/10/2022
 
 Azure Stack HCI, version 21H2 customers can use Azure portal to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters. With [Azure Arc](https://azure.microsoft.com/services/azure-arc/), IT administrators can delegate permissions and roles to app owners and DevOps teams to enable self-service VM management for their Azure Stack HCI clusters through the Azure cloud control plane. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, VM provisioning can be easily automated in a secure cloud environment.
 
-   > [!IMPORTANT]
-   > VM provisioning through Azure portal on Azure Stack HCI is currently in preview. This preview is provided without a service level agreement, and Microsoft doesn't recommend using it for production workloads. Certain features might not be supported or might have constrained capabilities. To sign up for this capability in preview, fill out [this form](https://aka.ms/joinEAP). For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## Benefits of Azure Arc-enabled Azure Stack HCI
 
 With Azure Arc-enabled Azure Stack HCI, you can perform various operations from Azure portal, such as:
@@ -276,11 +273,11 @@ Now that the custom location is available, you can create or add virtual network
 
 ## View your cluster in Azure portal & manage virtual machines
 
-IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://aka.ms/hci-selfservicevm). The cluster resource page provides links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in Portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
+IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters). The cluster resource page provides links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in Portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
 
 For VM management from the Virtual Machines blade in Azure Portal, use the following steps:
 
-1. From your browser, go to the [Azure portal](https://aka.ms/AzureArcVM). You'll see a unified browsing experience for Azure and Arc VMs.
+1. From your browser, go to the [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines). You'll see a unified browsing experience for Azure and Arc VMs.
 
 2. Select **Add**, and then select **Azure Arc machine** from the drop-down.
 
@@ -374,9 +371,7 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
 
 While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-**new-MocNetworkSetting**
-**set-MocConfig**
-**install-Moc**
+**new-MocNetworkSetting**, **set-MocConfig** and **install-Moc**.
 
 Uninstallation of these features should also be done in the following order:
       - Uninstall Arc Resource Bridge.
@@ -388,6 +383,7 @@ Uninstalling the AKS management cluster can impair Arc VM management capabilitie
 - Arc VMs must be created in the same Azure subscription as the Custom location.
 - An IT admininstrator will not be able to view or manage VMs from cluster resource page in Azure portal, if they are created in a subscription where the IT administrator does not have at least read-only access role.
 - If the Arc for servers agents are installed on VMs provisioned through Azure portal, there will be two projections of the VMs on Azure Portal.
+- Arc VM Management is currently not available for stretched cluster configurations on Azure Stack HCI.
 
 ## FAQ
 
@@ -439,7 +435,7 @@ Please see the [Debugging section](#debugging) for common errors. If you are re-
 
 ## Next steps
 
-Now you're ready to create VMs in Azure portal. For preview access,
+Now you're ready to create VMs in Azure portal.
 
 > [!div class="nextstepaction"]
-> [Go to Azure portal](https://aka.ms/hci-selfservicevm/)
+> [Go to Azure portal](https://portal.azure.com/#home)
