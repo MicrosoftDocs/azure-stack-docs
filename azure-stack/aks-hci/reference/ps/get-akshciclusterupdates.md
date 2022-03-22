@@ -28,7 +28,7 @@ Get the available upgrades for an Azure Kubernetes Service cluster.
 ## Examples
 
 ```powershell
-PS C:\> Get-AksHciClusterUpdates -name mycluster
+Get-AksHciClusterUpdates -name mycluster
 ```
 
 ## Parameters

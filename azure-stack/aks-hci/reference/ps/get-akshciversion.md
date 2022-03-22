@@ -30,7 +30,7 @@ Get the current Kubernetes version of Azure Kubernetes Service on Azure Stack HC
 
 ### Get current version
 ```powershell
-PS C:\> Get-AksHciVersion
+Get-AksHciVersion
 ```
 ## Next steps
 
