@@ -3,10 +3,10 @@ title: Identity architecture for Azure Stack Hub
 description: Learn about identity architecture for Azure Stack Hub, and the differences between Azure AD and AD FS.
 author: BryanLa
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 03/21/2022
 ms.author: bryanla
 ms.reviewer: fiseraci
-ms.lastreviewed: 03/10/2021
+ms.lastreviewed: 03/21/2022
 
 # Intent: As an Azure Stack operator, I want to know about identity architecture, and the differences between Azure AD and AD FS.
 # Keyword: azure stack identity architecture
@@ -34,7 +34,7 @@ The identity provider that you choose can limit your options, including support 
 |Create service principals with secrets (keys)    |Yes |Yes|
 |Applications can use the Graph service           |Yes |No|
 |Applications can use identity provider for sign-in |Yes |Yes (requires apps to federate with on-premises AD FS instances) |
-| Managed System Identities | No | No |
+| Managed identities | No | No |
 
 ## Topologies
 

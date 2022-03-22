@@ -174,7 +174,12 @@
       "source_path": "azure-stack/operator/hotfix-1-2102-30-111.md", 
       "redirect_url": "/azure-stack/operator", 
       "redirect_document_id": false
-    },         
+    },
+    { 
+      "source_path": "azure-stack/operator/hotfix-1-2102-30-122.md", 
+      "redirect_url": "/azure-stack/operator", 
+      "redirect_document_id": false
+    },             
     { 
       "source_path": "azure-stack/operator/hotfix-1-2108-2-71.md", 
       "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-83", 
