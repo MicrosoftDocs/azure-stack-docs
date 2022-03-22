@@ -1,5 +1,5 @@
 ---
-title: Use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
+title: Use the autoscaler profile to configure horizontal node autoscaling in AKS on Azure Stack Hub
 description: Learn how to use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
 ms.topic: how-to
 author: mattbriggs
@@ -13,7 +13,7 @@ ms.date: 03/16/2022
 
 ---
 
-# Use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
+# Use the autoscaler profile to configure horizontal node autoscaling in AKS on Azure Stack Hub
 
 You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You can't set an autoscaler profile per node pool.
 
@@ -31,7 +31,7 @@ The profiles have the following attributes:
  
 ## Profile settings
 
-The default profile consists of the below default values.
+The default profile consists of the below default values. You can update  the following settings:
 
 | Setting | Description | Default value |
 | --- | --- | --- |
@@ -54,10 +54,12 @@ The default profile consists of the below default values.
 | max-totalunreadypercentage | Maximum percentage of unready nodes in the cluster. After this percentage is exceeded, CA halts operations. | 45% |
 | max-nodeprovisiontime | Maximum time the autoscaler waits for a node to be provisioned. | 15 minutes |
 
-> [!NOTE] 
-> The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it does not enforce them after updating the min or max counts. For example, setting a min count of five when the current node count is three will not immediately scale the pool up to five. If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require 2 new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized after 10 minutes. If you had workloads that ran every 15 minutes, you may want to change the autoscaler profile to scale down under utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings. The cluster autoscaler profile has the following settings that you can update: To change the settings in the cluster autoscaler profile we introduce a new command to `Set-AksHciAutoScalerConfig`.
+## Notes on configuration the autoscaler
 
 
+You can change settings in the cluster autoscaler profile using the cmdlet [Set-AksHciAutoScalerConfig](work-with-horizontal-autoscaler.md#change-an-existing-akshciautoscalerconfig-profile-object).
+
+The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it does not enforce them after updating the min or max counts. For example, setting a min count of five when the current node count is three will not immediately scale the pool up to five. If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require 2 new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized after 10 minutes. If you had workloads that ran every 15 minutes, you may want to change the autoscaler profile to scale down under utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings. 
 ## Next steps
 - [Use PowerShell for horizontal node autoscaling](work-with-horizontal-autoscaler.md)
 - [Learn about horizontal node autoscaling](concepts-horizontal-node-autoscaling.md)

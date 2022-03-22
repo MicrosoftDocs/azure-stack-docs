@@ -29,7 +29,7 @@ Run checks on every physical node to see if all requirements are satisfied to in
 
 ### Example
 ```powershell
-PS C:\> Initialize-AksHciNode
+Initialize-AksHciNode
 ```
 ## Next steps
 

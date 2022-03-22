@@ -26,23 +26,23 @@ Scale a node pool within a Kubernetes cluster.
 ## Configure the number of nodes in a node pool
 
 ```powershell
-PS C:\> Set-AksHciNodePool -clusterName mycluster -name nodepool1 -count 3
+Set-AksHciNodePool -clusterName mycluster -name nodepool1 -count 3
 ```
 
 ## Enable horizontal node auto scaler for the node pool
->![Note]
+> [!NOTE]  
 >This will only work if the horizontal autoscaler is enabled for the cluster.
 
 ```powershell
-PS C:\> Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $true
+Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $true
 ```
 
 ## Disable horizontal node auto scaler for the node pool
->![Note]
+> [!NOTE]  
 >This will only work if the horizontal autoscaler is enabled for the cluster.
 
 ```powershell
-PS C:\> Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $false
+Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $false
 ```
 
 ### -clusterName

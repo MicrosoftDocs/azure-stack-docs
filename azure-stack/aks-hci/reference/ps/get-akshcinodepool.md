@@ -29,12 +29,12 @@ Lists the node pools in a Kubernetes cluster.
 
 ### List all node pools in a Kubernetes cluster
 ```powershell
-PS C:\> Get-AksHCiNodePool -clusterName mycluster
+Get-AksHCiNodePool -clusterName mycluster
 ```
 
 ### List a specific node pool in a Kubernetes cluster
 ```powershell
-PS C:\> Get-AksHciNodePool -clusterName mycluster -name nodepool1
+Get-AksHciNodePool -clusterName mycluster -name nodepool1
 ```
 
 ```output

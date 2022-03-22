@@ -31,7 +31,7 @@ New-AksHciAutoScalerProfile -Name asp1 -AutoScalerProfileConfig @{ "min-node-cou
 
 You can provide the **autoscalerconfig** object when creating your cluster. The object contains the parameters for your autoscaler. For more information about the parameters. See [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
 
-## Change an existing **AksHciAutoScalerConfig profile** object
+## Change an existing AksHciAutoScalerConfig profile object
 
 Change an existing **AksHciAutoScalerConfig profile** object. Clusters using this object will be updated to use the new parameters. 
 

@@ -14,7 +14,7 @@ ms.reviewer: jeguan
 
 ## Synopsis
 Create a new auto scaler configuration profile for the node pool auto scaler.
-Auto scaler configuration profiles are stored on an AKS on Azure Stack HCI deployment wide basis and can be re-used across multiple clusters.
+Auto scaler configuration profiles are stored on an AKS on Azure Stack HCI deployment wide basis and can be reused across multiple clusters.
 Changing a profile will impact all clusters using that profile.
 
 ## Syntax
@@ -36,7 +36,7 @@ Create a new auto scaler configuration profile setting the minimum node count to
 ### Create a copy of the default auto scaler configuration profile with a minimum node count of 1 and a maximum node count of 3
 
 ```powershell
-PS C:\> New-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "min-node-count"=1; "max-node-count"=3}
+New-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "min-node-count"=1; "max-node-count"=3}
 ```
 
 ## Parameters
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -autoScalerProfileConfig
-An array of the key-value pair parameters to change from the default profile values. If not specificied the default values are assumed.  See the documentation [Link to auto scaler doc.md](link to autoscalerdoc.md) for more details.
+An array of the key-value pair parameters to change from the default profile values. If not specified the default values are assumed. See the documentation [Use the autoscaler profile to configure Horizontal node autoscaling](../../work-with-autoscaler-profiles.md) for more details.
 Default values for min-node-count is 0 and max-node-count is 1.
 
 ```yaml

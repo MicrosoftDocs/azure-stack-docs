@@ -12,10 +12,6 @@ ms.date: 03/18/2022
 # Keyword: vertical node scaling Kubernetes
 
 ---
-
-
-
-
 # Vertical node scaling in Azure Kubernetes Services on Azure Stack HCI
 
 You can change the size of the virtual machines in a given node pool to increase the resources available to your node pool.
@@ -25,7 +21,7 @@ To keep up with app demands in Azure Kubernetes Service (AKS), you may need to a
 > [!IMPORTANT]
 > Vertical node scaling is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-### How vertical node scaling in AKS on Azure Stack HCI works
+## How vertical node scaling in AKS on Azure Stack HCI works
 
 In AKS on Azure Stack HCI target cluster node pools are managed internally as a **machineDeployment**. One property of a **machineDeployment** is the VM size (SKU) that was selected when the `New-AksHciNodePool` command was executed.
 
@@ -109,7 +105,7 @@ VmSize       : Standard_A4_v2
 Phase        : scaling
 ```
 
-## Next Steps
+## Next steps
 
 See the documentation for the updated PowerShell commands.
 - [Set-AksHciNodePool](reference/ps/set-akshcinodepool.md)

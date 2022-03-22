@@ -30,19 +30,19 @@ Gets the VirtualNetwork object for a target cluster given either the vnet name o
 ### Get the configuration of a vnet named "MyClusterVnet1"
 
 ```powershell
-PS C:\> $clusterVNet = Get-AksHciClusterNetwork -name MyClusterVnet1
+$clusterVNet = Get-AksHciClusterNetwork -name MyClusterVnet1
 ```
 
 ### Get the vnet associated with a cluster named "MyCluster"
 
 ```powershell
-PS C:\> $clusterVNet = Get-AksHciClusterNetwork -clusterName MyCluster
+$clusterVNet = Get-AksHciClusterNetwork -clusterName MyCluster
 ```
 
 ### Get all vNet configurations in the system
 
 ```powershell
-PS C:\> $allClusterVNets = Get-AksHciClusterNetwork
+$allClusterVNets = Get-AksHciClusterNetwork
 ```
 
 > [!NOTE]

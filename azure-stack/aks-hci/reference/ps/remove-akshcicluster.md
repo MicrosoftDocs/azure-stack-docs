@@ -33,7 +33,7 @@ Delete a managed Kubernetes cluster.
 
 ### Delete an existing managed Kubernetes cluster
 ```powershell
-PS C:\> Remove-AksHciCluster -name myCluster
+Remove-AksHciCluster -name myCluster
 ```
 
 ## Parameters

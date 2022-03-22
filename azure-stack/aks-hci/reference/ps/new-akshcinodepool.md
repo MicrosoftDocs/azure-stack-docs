@@ -32,37 +32,37 @@ Create a new node pool to an existing cluster.
 ### Create a new node pool with default parameters
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1
+New-AksHciNodePool -clusterName mycluster -name nodepool1
 ```
 
 ### Create a Linux node pool
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
+New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
 ```
 
 ### Create a Windows node pool
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
+New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
 ```
 
 ### Create a node pool with custom VM size
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -vmSize Standard_A2_v2
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -vmSize Standard_A2_v2
 ```
 
 ### Create a node pool with taints
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -taints sku=gpu:NoSchedule
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -taints sku=gpu:NoSchedule
 ```
 
 ### Create a node pool with max pod count
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 100
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 100
 ```
 
 ### Disable the horizontal auto scaler on a new node pool
@@ -70,7 +70,7 @@ PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 1
 This parameter will be ignored if the horizontal auto scaler is not enabled on the cluster.
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -disableAutoscaler
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -disableAutoscaler
 ```
 
 ## Parameters

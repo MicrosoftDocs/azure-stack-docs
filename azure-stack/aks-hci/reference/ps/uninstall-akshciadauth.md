@@ -28,7 +28,7 @@ Uninstall Active Directory authentication.
 
 ### Example
 ```powershell
-PS C:\> Uninstall-AksHciAksHciAdAuth -name myCluster
+Uninstall-AksHciAksHciAdAuth -name myCluster
 ```
 
 ## Parameters

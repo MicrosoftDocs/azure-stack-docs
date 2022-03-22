@@ -36,7 +36,7 @@ When `ConvertTo-Json` is included, the configuration values will be returned as 
 
 ### Example 
 ```powershell
-PS C:\> Get-AksHciConfig | ConvertTo-Json
+Get-AksHciConfig | ConvertTo-Json
 ```
 
 ## Next steps

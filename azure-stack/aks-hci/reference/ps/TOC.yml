@@ -62,6 +62,8 @@
     href: install-akshcigmsawebhook.md
   - name: Install-AksHciMonitoring
     href: install-akshcimonitoring.md
+  - name: New-AksHciAutoScalerProfile 
+    href: new-akshciautoscalerprofile.md
   - name: New-AksHciCluster
     href: new-akshcicluster.md
   - name: New-AksHciClusterNetwork

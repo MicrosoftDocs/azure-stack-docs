@@ -28,7 +28,7 @@ List the available Kubernetes updates for Azure Kubernetes Service on Azure Stac
 
 ### Example
 ```powershell
-PS C:\> Get-AksHciUpdates
+Get-AksHciUpdates
 ```
 ## Next steps
 

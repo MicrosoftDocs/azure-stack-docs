@@ -30,7 +30,7 @@ If PowerShell commands are run on a cluster where Windows Admin Center was previ
 
 ### Example
 ```powershell
-PS C:\> Uninstall-AksHci
+Uninstall-AksHci
 ```
 
 ## Parameters

@@ -23,13 +23,13 @@ Remove-AksHciAutoScalerProfile -name myProfile
 ```
 
 ## Description
-This command will verify that the profile is not associated with any cluster or node pool and then remove it from the system. If there is still an active auto scaler associated witht the profile a respective error message will be displayed and the operation will be stopped.
+This command will verify that the profile isn't associated with any cluster or node pool and then remove it from the system. If there's still an active auto scaler associated with the profile a respective error message will be displayed and the operation will be stopped.
 
 ## Examples
 
 ### Remove the auto scaler configuration profile myProfile from the system
 ```powershell
-PS C:\> Remove-AksHciAutoScalerProfile -name myProfile
+Remove-AksHciAutoScalerProfile -name myProfile
 ```
 
 ## Parameters
