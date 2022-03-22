@@ -263,7 +263,7 @@ You do need internet connectivity:
 
 You do not need internet connectivity:
 
-- For VMs to activate via Windows Server subscription or BYOL-based AVMA. For connectivity requirements for other forms of activation, see the [Windows Server documentation](/windows-server/get-started/server-2016-activation).
+- For VMs to activate via Windows Server subscription or BYOL-based AVMA. For connectivity requirements for other forms of activation, see the [Windows Server documentation](/windows-server/get-started/kms-activation-planning).
 
 ### When does Windows Server subscription start/end billing?
 
@@ -273,7 +273,7 @@ You can sign up or cancel your Windows Server subscription at any time. Upon can
 
 ### I have a license for Windows Server, can I run Windows Server 2016 VMs on Azure Stack HCI?
 
-Yes. Although you cannot use Windows Server 2016 keys to set up AVMA on Azure Stack HCI, they can still be applied using [other activation methods](/windows-server/get-started/server-2016-activation). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
+Yes. Although you cannot use Windows Server 2016 keys to set up AVMA on Azure Stack HCI, they can still be applied using [other activation methods](/windows-server/get-started/kms-activation-planning). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
 
 ### Where can I get BYOL keys for AVMA?
 
