@@ -76,10 +76,10 @@ When you deploy Azure Arc Resource Bridge on Azure Stack HCI, the following fire
 
 | **Port** | **Service** |
 |:---------|:------------|
-| 45000    | wssdagent GPRC server |
-| 45001    | wssdagent GPRC authentication |
-| 55000    | wssdcloudagent GPRC server |
-| 65000    | wssdcloudagent GPRC authentication |
+| 45000    | wssdagent gPRC server |
+| 45001    | wssdagent gPRC authentication |
+| 55000    | wssdcloudagent gPRC server |
+| 65000    | wssdcloudagent gPRC authentication |
 
 ## Firewall URL exceptions
 
