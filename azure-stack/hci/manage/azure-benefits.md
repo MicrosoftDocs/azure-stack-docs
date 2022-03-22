@@ -193,7 +193,7 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
 
 ## (Optional) Access Azure Benefits from VMs
 
-To check that VMs can properly access Azure Benefis on the host, you can run this command from the VM and confirm that there is a response:
+To check that VMs can properly access Azure Benefits on the host, you can run this command from the VM and confirm that there is a response:
 
 ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
