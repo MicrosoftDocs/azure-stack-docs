@@ -50,7 +50,7 @@ When you enable the autoscaler for a cluster and you don't provide an **autoscal
 
 You can set the parameters in the  autoscaler profile to configure the autoscaler. For more information, see [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
 
-You can use Powershell to enable, configure, and disable the autoscaler. For more information, see [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md).
+You can use PowerShell to enable, configure, and disable the autoscaler. For more information, see [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md).
 
 ## Cluster autoscale during a cluster upgrade
 

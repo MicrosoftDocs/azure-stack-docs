@@ -182,7 +182,7 @@ Accept wildcard characters: False
 
 ### -disableAutoScaler
 Disable the horizontal autoscaler for this node pool.
-Only valid if the the horizontal autoscaler is enabled for the cluster.
+Only valid if the horizontal autoscaler is enabled for the cluster.
 
 ```yaml
 Type: Parameter
