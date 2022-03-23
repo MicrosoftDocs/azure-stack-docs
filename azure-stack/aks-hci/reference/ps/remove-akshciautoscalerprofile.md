@@ -1,7 +1,7 @@
 ---
 title: Remove-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mkostersitz
-description: The Remove-AksHciAutoScalerProfile PowerShell command removes an unused auto scaler configuration profile from the system.
+description: The Remove-AksHciAutoScalerProfile PowerShell command removes an unused autoscaler configuration profile from the system.
 ms.topic: reference
 ms.date: 03/16/2022
 ms.author: mikek 
@@ -13,21 +13,21 @@ ms.reviewer: jeguan
 # Remove-AksHciAutoScalerProfile
 
 ## Synopsis
-Remove an unused auto scaler configuration profile from the system.
+Remove an unused autoscaler configuration profile from the system.
 
 ## Syntax
 
-### Remove an unused auto scaler profile
+### Remove an unused autoscaler profile
 ```powershell
 Remove-AksHciAutoScalerProfile -name myProfile
 ```
 
 ## Description
-This command will verify that the profile isn't associated with any cluster or node pool and then remove it from the system. If there's still an active auto scaler associated with the profile a respective error message will be displayed and the operation will be stopped.
+This command will verify that the profile isn't associated with any cluster or node pool and then remove it from the system. If there's still an active autoscaler associated with the profile a respective error message will be displayed and the operation will be stopped.
 
 ## Examples
 
-### Remove the auto scaler configuration profile myProfile from the system
+### Remove the autoscaler configuration profile myProfile from the system
 ```powershell
 Remove-AksHciAutoScalerProfile -name myProfile
 ```
@@ -35,7 +35,7 @@ Remove-AksHciAutoScalerProfile -name myProfile
 ## Parameters
 
 ### -name
-The alphanumeric name of auto scaler configuration profile.
+The alphanumeric name of autoscaler configuration profile.
 ```yaml
 Type: System.String
 Parameter Sets: (All)

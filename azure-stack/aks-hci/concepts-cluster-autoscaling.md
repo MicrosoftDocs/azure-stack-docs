@@ -46,13 +46,13 @@ When you enable autoscaling on a node pool, the default profile is applied unles
 
 When you enable the autoscaler for a cluster and you don't provide an **autoscalerconfig** object, the default autoscaler profile is added to the cluster. You can then fine tune the parameters in the profile by using the `Set-AksHciCluster` command and pass an **autoscalerconfig** object with the updated values. You don't need to provide all parameters in the object, you can just provide your updated parameters in the object.
 
-## Working with horizontal node autoscaler
+## Working with the autoscaler
 
 You can set the parameters in the  autoscaler profile to configure the autoscaler. For more information, see [How to use the autoscaler profiles](work-with-autoscaler-profiles.md).
 
 You can use Powershell to enable, configure, and disable the autoscaler. For more information, see [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md).
 
-## Cluster autoscaler during a cluster upgrade
+## Cluster autoscale during a cluster upgrade
 
 During cluster upgrade and update, the autoscaler will be *paused* and no scaling operation will take place until the cluster and all node pools in the cluster have completed the update operation. If the customer updates a specific node pool in a cluster to a newer K8s version autoscaler for that node pool will be paused. autoscaling operation will continue on all other node pools.
 

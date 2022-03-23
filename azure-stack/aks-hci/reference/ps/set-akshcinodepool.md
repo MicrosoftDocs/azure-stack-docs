@@ -29,7 +29,7 @@ Scale a node pool within a Kubernetes cluster.
 Set-AksHciNodePool -clusterName mycluster -name nodepool1 -count 3
 ```
 
-## Enable horizontal node auto scaler for the node pool
+## Enable horizontal node autoscaler for the node pool
 > [!NOTE]  
 >This will only work if the horizontal autoscaler is enabled for the cluster.
 
@@ -37,7 +37,7 @@ Set-AksHciNodePool -clusterName mycluster -name nodepool1 -count 3
 Set-AksHciNodePool -clusterName mycluster -name nodepool1 -autoScaler $true
 ```
 
-## Disable horizontal node auto scaler for the node pool
+## Disable horizontal node autoscaler for the node pool
 > [!NOTE]  
 >This will only work if the horizontal autoscaler is enabled for the cluster.
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -autoScaler
-Toggle the horizontal auto scaler for a node pool
+Toggle the horizontal autoscaler for a node pool
 
 ```yaml
 Type: System.Boolean

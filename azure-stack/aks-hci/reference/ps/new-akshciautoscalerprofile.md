@@ -1,7 +1,7 @@
 ---
 title: New-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mkostersitz
-description: The New-AksHciAutoScalerProfile PowerShell command creates an auto scaler configuration profile
+description: The New-AksHciAutoScalerProfile PowerShell command creates an autoscaler configuration profile
 ms.topic: reference
 ms.date: 03/16/2022
 ms.author: mikek 
@@ -13,13 +13,13 @@ ms.reviewer: jeguan
 # New-AksHciAutoScalerProfile
 
 ## Synopsis
-Create a new auto scaler configuration profile for the node pool auto scaler.
+Create a new autoscaler configuration profile for the node pool autoscaler.
 Auto scaler configuration profiles are stored on an AKS on Azure Stack HCI deployment wide basis and can be reused across multiple clusters.
 Changing a profile will impact all clusters using that profile.
 
 ## Syntax
 
-### Create a new auto scaler configuration profile
+### Create a new autoscaler configuration profile
 
 ```powershell
 New-AksHciAutoScalerProfile 
@@ -29,11 +29,11 @@ New-AksHciAutoScalerProfile
 
 ## Description
 
-Create a new auto scaler configuration profile setting the minimum node count to 2, the maximum node count to 7 and the time the system will wait until unneeded nodes are scaled down again to 1 minute. 
+Create a new autoscaler configuration profile setting the minimum node count to 2, the maximum node count to 7 and the time the system will wait until unneeded nodes are scaled down again to 1 minute. 
 
 ## Examples
 
-### Create a copy of the default auto scaler configuration profile with a minimum node count of 1 and a maximum node count of 3
+### Create a copy of the default autoscaler configuration profile with a minimum node count of 1 and a maximum node count of 3
 
 ```powershell
 New-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "min-node-count"=1; "max-node-count"=3}
@@ -42,7 +42,7 @@ New-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "min-nod
 ## Parameters
 
 ### -name
-The alphanumeric name of the auto scaler configuration profile.
+The alphanumeric name of the autoscaler configuration profile.
 
 ```yaml
 Type: System.String
