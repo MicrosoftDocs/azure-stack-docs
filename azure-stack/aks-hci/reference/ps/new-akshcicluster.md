@@ -172,13 +172,13 @@ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAd
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
 ```
-### New AKS-HCI cluster with auto scaler enabled and the default auto scaler configuration profile
+### New AKS-HCI cluster with autoscaler enabled and the default autoscaler configuration profile
 
 ```powershell
 New-AksHciCluster -name mycluster -enableAutoScaler $true
 ```
 
-### New AKS-HCI cluster with auto scaler enabled and a named auto scaler configuration profile
+### New AKS-HCI cluster with autoscaler enabled and a named autoscaler configuration profile
 
 ```powershell
 New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName myAutoScalerProfile
@@ -488,7 +488,7 @@ Accept wildcard characters: False
 ```
 
 ### -enableAutoScaler
-Use this flag to enable the auto scaler
+Use this flag to enable the autoscaler
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
@@ -502,7 +502,7 @@ Accept wildcard characters: False
 ```
 
 ### -autoScalerProfileName
-The name of the auto scaler configuration profile
+The name of the autoscaler configuration profile
 ```yaml
 Type: System.String
 Parameter Sets: (All)

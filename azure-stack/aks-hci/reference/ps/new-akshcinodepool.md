@@ -65,9 +65,9 @@ New-AksHciNodePool -clusterName mycluster -name nodepool1 -taints sku=gpu:NoSche
 New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 100
 ```
 
-### Disable the horizontal auto scaler on a new node pool
+### Disable the horizontal autoscaler on a new node pool
 
-This parameter will be ignored if the horizontal auto scaler is not enabled on the cluster.
+This parameter will be ignored if the horizontal autoscaler is not enabled on the cluster.
 
 ```powershell
 New-AksHciNodePool -clusterName mycluster -name nodepool1 -disableAutoscaler
@@ -181,8 +181,8 @@ Accept wildcard characters: False
 ```
 
 ### -disableAutoScaler
-Disable the horizontal auto scaler for this node pool.
-Only valid if the the horizontal auto scaler is enabled for the cluster.
+Disable the horizontal autoscaler for this node pool.
+Only valid if the horizontal autoscaler is enabled for the cluster.
 
 ```yaml
 Type: Parameter

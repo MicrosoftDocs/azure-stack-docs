@@ -1,7 +1,7 @@
 ---
 title: Set-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mkostersitz
-description: The Set-AksHciAutoScalerProfile PowerShell command allows reconfiguration of an auto scaler configuration profile
+description: The Set-AksHciAutoScalerProfile PowerShell command allows reconfiguration of an autoscaler configuration profile
 ms.topic: reference
 ms.date: 03/16/2022
 ms.author: mikek 
@@ -13,11 +13,11 @@ ms.reviewer: jeguan
 # Set-AksHciAutoScalerProfile
 
 ## Synopsis
-Configure individual settings of an auto scaler configuration profile. 
+Configure individual settings of an autoscaler configuration profile. 
 
 ## Syntax
 
-### Change a setting in an existing auto scaler configuration profile
+### Change a setting in an existing autoscaler configuration profile
 ```powershell
 Set-AksHciAutoScalerProfile 
                               -name myProfile 
@@ -25,7 +25,7 @@ Set-AksHciAutoScalerProfile
 ```
 
 ## Description
-Changes one or more individual settings of an existing auto scaler configuration profile to a new value.
+Changes one or more individual settings of an existing autoscaler configuration profile to a new value.
 Possible values to set are:
 
 | ProfileSetting  | Value |
@@ -59,7 +59,7 @@ Set-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "max-nod
 ```
 
 ### Change the time the system waits between scale attempts to 1 minute.
-Setting this too low, for example, to 1 second could result in excessive node creation/deletion cycles if this happens. Use the `Set-AksHciCluster -name myCluster -enableAutoScaler $false` command to turn off the auto scaler. Modify the profile to a more moderate value and then re-enable the auto scaler to recover more gracefully.
+Setting this too low, for example, to 1 second could result in excessive node creation/deletion cycles if this happens. Use the `Set-AksHciCluster -name myCluster -enableAutoScaler $false` command to turn off the autoscaler. Modify the profile to a more moderate value and then re-enable the autoscaler to recover more gracefully.
 ```powershell
 Set-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "scan-interval"="1m" }
 ```
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -autoScalerProfileConfig
-An array of key-value pairs of parameters to set for the auto scaler configuration profile
+An array of key-value pairs of parameters to set for the autoscaler configuration profile
 
 ```yaml
 Type: System.Array

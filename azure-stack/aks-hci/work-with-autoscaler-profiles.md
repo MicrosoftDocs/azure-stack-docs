@@ -1,6 +1,6 @@
 ---
-title: Use the autoscaler profile to configure horizontal node autoscaling in AKS on Azure Stack Hub
-description: Learn how to use the autoscaler profile to configure Horizontal node autoscaling in AKS on Azure Stack Hub
+title: Use the autoscaler profile to configure cluster autoscaling in AKS on Azure Stack Hub
+description: Learn how to use the autoscaler profile to configure Cluster autoscaler in AKS on Azure Stack Hub
 ms.topic: how-to
 author: mattbriggs
 ms.author: mabrigg 
@@ -9,11 +9,11 @@ ms.reviewer: mikek
 ms.date: 03/16/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
-# Keyword: horizontal node autoscaling Kubernetes
+# Keyword: cluster autoscaling Kubernetes
 
 ---
 
-# Use the autoscaler profile to configure horizontal node autoscaling in AKS on Azure Stack Hub
+# Use the autoscaler profile to configure cluster autoscaling in AKS on Azure Stack Hub
 
 You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You can't set an autoscaler profile per node pool.
 
@@ -26,7 +26,7 @@ The profiles have the following attributes:
 - Changes to the profile are applied to all node pools, which have the autoscaler function enabled.
 
 > [!IMPORTANT]
-> Horizontal node autoscaling is currently in PREVIEW.
+> Cluster autoscaler is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
  
 ## Profile settings
@@ -75,5 +75,5 @@ kvactl.exe autoscalerprofile create --profileconfig .\def.yaml --kubeconfig (Get
 ```
 
 ## Next steps
-- [Use PowerShell for horizontal node autoscaling](work-with-horizontal-autoscaler.md)
-- [Learn about horizontal node autoscaling](concepts-horizontal-node-autoscaling.md)
+- [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md)
+- [Learn about cluster autoscaling](concepts-cluster-autoscaling.md)

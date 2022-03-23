@@ -65,8 +65,8 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
-  - name: Horizontal node autoscaling
-    href: concepts-horizontal-node-autoscaling.md
+  - name: Cluster autoscaler
+    href: concepts-cluster-autoscaling.md
   - name: Vertical node autoscaling
     href: concepts-vertical-node-pool-scaling.md
   - name: Node auto-repair
@@ -113,7 +113,7 @@
             href: use-node-pools.md
           - name: Use autoscaling
             items:
-            - name: Work with horizontal node autoscaling
+            - name: Work with cluster autoscaling
               href: work-with-horizontal-autoscaler.md
             - name: Use autoscaler profiles
               href: work-with-autoscaler-profiles.md

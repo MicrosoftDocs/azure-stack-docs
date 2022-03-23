@@ -1,7 +1,7 @@
 ---
 title: Get-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mattbriggs
-description: The Get-AksHciAutoScalerProfile PowerShell command retrieves a list of auto scaler configuration profiles or a specific auto scaler profile and its settings.
+description: The Get-AksHciAutoScalerProfile PowerShell command retrieves a list of autoscaler configuration profiles or a specific autoscaler profile and its settings.
 ms.topic: reference
 ms.date: 03/16/2022
 ms.author: mabrigg 
@@ -12,11 +12,11 @@ ms.reviewer: mikek
 # Get-AksHciAutoScalerProfile
 
 ## Synopsis
-Retrieve a list of available auto scaler configuration profiles in the system or a specific auto scaler configuration profile and its settings.
+Retrieve a list of available autoscaler configuration profiles in the system or a specific autoscaler configuration profile and its settings.
 
 ## Syntax
 
-### Retrieve a list of auto scaler configuration profiles
+### Retrieve a list of autoscaler configuration profiles
 ```powershell
 Get-AksHciAutoScalerProfile
 ```
@@ -29,7 +29,7 @@ myProfile2              staging3,dev3,dev2,...
 myProfile4              myCluster2
 ```
 
-### Retrieve the settings of a specific auto scaler profile
+### Retrieve the settings of a specific autoscaler profile
 ```powershell
 Get-AksHciAutoScalerProfile -name myProfile
 ```
@@ -60,7 +60,7 @@ clusters                         [myCluster1,dev2,dev3,...]
 ## Parameters
 
 ### -name
-The alphanumeric name of the auto scaler configuration profile.
+The alphanumeric name of the autoscaler configuration profile.
 
 ```yaml
 Type: System.String

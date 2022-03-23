@@ -1,6 +1,6 @@
 ---
-title: Use PowerShell for horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn how to use PowerShell for horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI.
+title: Use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
+description: Learn how to use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI.
 ms.topic: how-to
 author: mattbriggs
 ms.author: mabrigg 
@@ -9,16 +9,16 @@ ms.reviewer: mikek
 ms.date: 03/16/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
-# Keyword: horizontal node autoscaling Kubernetes
+# Keyword: cluster autoscaling Kubernetes
 
 ---
 
-# Use PowerShell for horizontal node autoscaling
+# Use PowerShell for cluster autoscaling
 
-You can use PowerShell to enable the autoscaler and to manage  automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage horizontal node autoscaling.
+You can use PowerShell to enable the autoscaler and to manage  automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage cluster autoscaling.
 
 > [!IMPORTANT]
-> Horizontal node autoscaling is currently in PREVIEW.
+> Cluster autoscaler is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Create a new AksHciAutoScalerConfig object
@@ -103,7 +103,7 @@ kubectl --kubeconfig ~\.kube\config describe pod <pod_name>
 
 ## PowerShell reference
 
-You can review the reference for the PowerShell cmdlets that support horizontal node autoscaling: 
+You can review the reference for the PowerShell cmdlets that support cluster autoscaling: 
 
  - [Get-AksHciAutoScalerProfile](./reference/ps/get-akshciautoscalerprofile.md)
  - [Get-AksHciCluster for AKS](./reference/ps/get-akshcicluster.md)
@@ -118,4 +118,4 @@ You can review the reference for the PowerShell cmdlets that support horizontal 
 
 ## Next steps
 - [Learn about the autoscaler profiles](work-with-autoscaler-profiles.md)
-- [Learn about horizontal node autoscaling](concepts-horizontal-node-autoscaling.md)
+- [Learn about cluster autoscaling](concepts-cluster-autoscaling.md)

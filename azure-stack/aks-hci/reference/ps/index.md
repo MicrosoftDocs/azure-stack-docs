@@ -22,7 +22,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Add-AksHciNode](./add-akshcinode.md) | Add a new physical node to a deployment. |
 | [Disable-AksHciArcConnection](./disable-akshciarcconnection.md) | Disables the Arc connection on an AKS on Azure Stack HCI cluster.|
 | [Disable-AksHciPreview](disable-akshcipreview.md) | Reverts AKS on Azure Stack HCI from a preview channel back to the stable channel. |
-| [Get-AksHciAutoScalerProfile](./get-akshciautoscalerprofile.md) | Retrieve a list of available auto scaler configuration profiles in the system or a specific auto scaler configuration profile and its settings. |
+| [Get-AksHciAutoScalerProfile](./get-akshciautoscalerprofile.md) | Retrieve a list of available autoscaler configuration profiles in the system or a specific autoscaler configuration profile and its settings. |
 | [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI cluster. |
 | [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS on Azure Stack HCI to a preview channel. |
 | [Get-AksHciBillingStatus](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
@@ -48,7 +48,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Install-AksHciCsiSmb](./install-akshcicsismb.md) | Installs the CSI SMB plug-in to a cluster. |
 | [Install-AksHciGmsaWebhook](./install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.  |
 | [Install-AksHciMonitoring](./install-akshcimonitoring.md) | Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI deployment. |
-| [New-AksHciAutoScalerProfile](./new-akshciautoscalerprofile.md) | Create a new auto scaler configuration profile for the node pool auto scaler. | 
+| [New-AksHciAutoScalerProfile](./new-akshciautoscalerprofile.md) | Create a new autoscaler configuration profile for the node pool autoscaler. | 
 | [New-AksHciCluster](./new-akshcicluster.md) | Create a new managed Kubernetes cluster. |
 | [New-AksHciClusterNetwork](./new-akshciclusternetwork.md) | Create an object for a new virtual network. |
 | [New-AksHciLoadBalancerSetting](./new-akshciloadbalancersetting.md) | Create a load balancer object for the workload clusters. |
@@ -56,7 +56,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [New-AksHciNodePool](./new-akshcinodepool.md) | Create a new node pool to an existing cluster. |
 | [New-AksHciProxySetting](./new-akshciproxysetting.md) | Create an object defining proxy server settings to pass into `Set-AksHciConfig`. |
 | [New-AksHciStorageContainer](./new-akshcistoragecontainer.md) | Creates a new storage container.  |
-| [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Remove an unused auto scaler configuration profile from the system.  |
+| [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Remove an unused autoscaler configuration profile from the system.  |
 | [Remove-AksHciCluster](./remove-akshcicluster.md) | Delete a managed Kubernetes cluster. |
 | [Remove-AksHciGmsaCredentialSpec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [Remove-AksHciClusterNetwork](./remove-akshciclusternetwork.md) | Remove a cluster network object. |
@@ -67,7 +67,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Repair-AksHciCerts](./repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host. |
 | [Repair-AksHciClusterCerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
 | [Restart-AksHci](./restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
-| [Set-AksHciAutoScalerProfile](./set-akshciautoscalerprofile.md) | Configure individual settings of an auto scaler configuration profile.  |
+| [Set-AksHciAutoScalerProfile](./set-akshciautoscalerprofile.md) | Configure individual settings of an autoscaler configuration profile.  |
 | [Set-AksHciCluster](./set-akshcicluster.md) | Scale the number of control plane nodes or worker nodes in a cluster. |
 | [Set-AksHciConfig](./set-akshciconfig.md) | Set or update the configurations settings for the Azure Kubernetes Service host. |
 | [Set-AksHciNodePool](./set-akshcinodepool.md) | Scale a node pool within a Kubernetes cluster. |
