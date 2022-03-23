@@ -44,8 +44,8 @@ The following screen capture shows typical output when checking for required pre
 
 Follow these instructions to turn on Azure Benefits on the host:
 
-- Using Windows Admin Center: [turn on Azure Benefits using Windows Admin Center](azure-benefits.md#turn-on-azure-benefits-using-windows-admin-center).
-- Using PowerShell: [turn on Azure Benefits using PowerShell](azure-benefits.md#turn-on-azure-benefits-using-powershell).
+- Using Windows Admin Center: [turn on Azure Benefits using Windows Admin Center](azure-benefits.md#option-1-turn-on-azure-benefits-using-windows-admin-center).
+- Using PowerShell: [turn on Azure Benefits using PowerShell](azure-benefits.md#option-2-turn-on-azure-benefits-using-powershell).
 
 ### Step 2: Turn on Azure Benefits on the VM
 

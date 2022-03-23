@@ -48,7 +48,7 @@ For best results, adhere to the following:
 - SCSI Enclosure Services (SES) is required for slot mapping and identification. Each external enclosure must present a unique identifier (Unique ID). 
 
    > [!IMPORTANT]
-   > **NOT SUPPORTED:** RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths. Host-bus adapter (HBA) cards must implement simple pass-through mode.
+   > **NOT SUPPORTED:** RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths. Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
 
 ## Networking requirements
 
@@ -89,6 +89,8 @@ Azure Stack HCI deployments that exceed the following specifications are not sup
 | Disks per VM (SCSI)          | 256     |
 | Storage per cluster          | 16 PB    |
 | Storage per server           | 400 TB  |
+| Volumes per cluster          | 64      |
+| Volume size                  | 64 TB
 | Logical processors per host  | 512     |
 | RAM per host                 | 24 TB   |
 | RAM per VM                   | 12 TB (generation 2 VM) or 1 TB (generation 1)|

@@ -16,9 +16,6 @@ ms.date: 03/10/2022
 
 Azure Stack HCI, version 21H2 customers can use Azure portal to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters. With [Azure Arc](https://azure.microsoft.com/services/azure-arc/), IT administrators can delegate permissions and roles to app owners and DevOps teams to enable self-service VM management for their Azure Stack HCI clusters through the Azure cloud control plane. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, VM provisioning can be easily automated in a secure cloud environment.
 
-   > [!IMPORTANT]
-   > VM provisioning through Azure portal on Azure Stack HCI is currently in preview. This preview is provided without a service level agreement, and Microsoft doesn't recommend using it for production workloads. Certain features might not be supported or might have constrained capabilities. To sign up for this capability in preview, fill out [this form](https://aka.ms/joinEAP). For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## Benefits of Azure Arc-enabled Azure Stack HCI
 
 With Azure Arc-enabled Azure Stack HCI, you can perform various operations from Azure portal, such as:
@@ -60,6 +57,8 @@ Only one Arc Resource Bridge can be deployed on a cluster. Each Azure Stack HCI 
 Deploying Azure Arc Resource Bridge requires the following:
 
 - The latest version of Azure CLI installed on all servers of the cluster.
+  - To install Azure CLI on each cluster node, use RDP connection.
+  - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
   - At least 50GB of space in C:\.
   - At least 4 cores
@@ -77,10 +76,10 @@ When you deploy Azure Arc Resource Bridge on Azure Stack HCI, the following fire
 
 | **Port** | **Service** |
 |:---------|:------------|
-| 45000    | wssdagent GPRC server |
-| 45001    | wssdagent GPRC authentication |
-| 55000    | wssdcloudagent GPRC server |
-| 65000    | wssdcloudagent GPRC authentication |
+| 45000    | wssdagent gRPC server |
+| 45001    | wssdagent gRPC authentication |
+| 55000    | wssdcloudagent gRPC server |
+| 65000    | wssdcloudagent gRPC authentication |
 
 ## Firewall URL exceptions
 
@@ -99,7 +98,7 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps:
+To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps (through RDP or console session; remote Powershell isn't supported):
 
 1. Install the required PowerShell modules by running the following cmdlet as administrator on all servers of the Azure Stack HCI cluster:
 
@@ -274,11 +273,11 @@ Now that the custom location is available, you can create or add virtual network
 
 ## View your cluster in Azure portal & manage virtual machines
 
-IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://aka.ms/hci-selfservicevm). The cluster resource page provides links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in Portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
+IT or cluster administrators can create and manage VMs and the associated disks, network interfaces from the Azure Stack HCI resource page in [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.AzureStackHCI%2Fclusters). The cluster resource page provides links to view & access Azure Arc Resource Bridge and Custom Location associated with the Azure Stack HCI cluster. From the Azure Stack HCI cluster resource page in Portal, admins can provision and manage VMs by navigating to **Virtual Machines** under **Resources** in the left nav on Azure portal. Other Azure Active Directory (AAD) user or groups with **Owner** or **Contributor** access on this subscription will also be able to view, create & manage VMs on this Azure Stack HCI cluster.
 
 For VM management from the Virtual Machines blade in Azure Portal, use the following steps:
 
-1. From your browser, go to the [Azure portal](https://aka.ms/AzureArcVM). You'll see a unified browsing experience for Azure and Arc VMs.
+1. From your browser, go to the [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines). You'll see a unified browsing experience for Azure and Arc VMs.
 
 2. Select **Add**, and then select **Azure Arc machine** from the drop-down.
 
@@ -361,19 +360,18 @@ You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require 
 - The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
 - Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
 
+
 ## Limitations and known issues
 
 - All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
-- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It cannot be done in a remote PowerShell window from a machine which is not a host of the Azure Stack HCI cluster.
+- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
 - Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
       - First, the AKS management cluster.
       - And then, Arc Resource Bridge for Arc-enabled VMs.
 If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
 
 While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-      - **new-MocNetworkSetting**
-      - **set-MocConfig**
-      - **install-Moc**
+**new-MocNetworkSetting**, **set-MocConfig** and **install-Moc**.
 
 Uninstallation of these features should also be done in the following order:
       - Uninstall Arc Resource Bridge.
@@ -385,6 +383,7 @@ Uninstalling the AKS management cluster can impair Arc VM management capabilitie
 - Arc VMs must be created in the same Azure subscription as the Custom location.
 - An IT admininstrator will not be able to view or manage VMs from cluster resource page in Azure portal, if they are created in a subscription where the IT administrator does not have at least read-only access role.
 - If the Arc for servers agents are installed on VMs provisioned through Azure portal, there will be two projections of the VMs on Azure Portal.
+- Arc VM Management is currently not available for stretched cluster configurations on Azure Stack HCI.
 
 ## FAQ
 
@@ -428,10 +427,15 @@ If an Arc Resource Bridge is deleted, then management through the Azure control 
 
 Re-deploying an Arc Resource Bridge will not enable Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from the Azure control plane.
 
+### What should I do if the deployment of Arc Resource Bridge did not succeed?
+
+Please see the [Debugging section](#debugging) for common errors. If you are re-deploying the Arc Resource Bridge, please make sure to clean up the previous deployment completely following the [Uninstall procedure](#uninstall-azure-arc-resource-bridge).
+
+
 
 ## Next steps
 
-Now you're ready to create VMs in Azure portal. For preview access,
+Now you're ready to create VMs in Azure portal.
 
 > [!div class="nextstepaction"]
-> [Go to Azure portal](https://aka.ms/hci-selfservicevm/)
+> [Go to Azure portal](https://portal.azure.com/#home)

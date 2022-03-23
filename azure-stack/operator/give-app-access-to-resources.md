@@ -4,8 +4,8 @@ description: Learn how to give an app access to Azure Stack Hub resources
 author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
-ms.date: 11/11/2021
-ms.lastreviewed: 11/11/2021
+ms.date: 03/18/2022
+ms.lastreviewed: 03/18/2022
 ms.custom: contperf-fy22q1
 zone_pivot_groups: state-connected-disconnected
 
@@ -66,7 +66,16 @@ In this section, you register your app in your Azure AD tenant using the Azure p
 
     ![Saved key in client secrets](./media/give-app-access-to-resources/create-client-secret.png)
 
-Now proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity.
+Proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity. 
+
+### Additional Azure AD app management articles
+
+See the following Azure articles for more details on managing Azure AD apps:
+
+- [More details on registering an Azure AD app](/azure/active-directory/develop/quickstart-register-app), including how to create an app registration that uses a certificate credential.
+- How to [Remove an app registration](/azure/active-directory/develop/howto-remove-app).
+- How to [Restore or remove a recently deleted app registration](/azure/active-directory/develop/howto-restore-app).
+
 ::: zone-end
 
 ## Manage an AD FS app
