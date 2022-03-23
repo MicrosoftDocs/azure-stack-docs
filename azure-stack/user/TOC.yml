@@ -116,7 +116,7 @@
         - name: Python
           href: azure-stack-version-profiles-python.md
         - name: NodeJS
-          href: azure-stack-version-profile-nodejs.md
+          href: azure-stack-version-profiles-nodejs.md
   - name: Use resource providers
     items:
     - name: Security, compliance, and identity

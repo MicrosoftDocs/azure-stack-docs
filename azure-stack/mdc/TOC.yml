@@ -578,7 +578,7 @@
           - name: Python
             href: ../user/azure-stack-version-profiles-python.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: NodeJS
-            href: ../user/azure-stack-version-profile-nodejs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            href: ../user/azure-stack-version-profiles-nodejs.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: Resource provider APIs supported by profiles
             href: ../user/azure-stack-profiles-azure-resource-manager-versions.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Use resource providers

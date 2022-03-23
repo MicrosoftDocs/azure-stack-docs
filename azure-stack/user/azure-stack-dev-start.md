@@ -59,7 +59,7 @@ Azure Stack Hub uses an Azure Stack Hub version of Azure Resource Manager. To he
 - [Go](azure-stack-version-profiles-go.md)
 - [Ruby](azure-stack-version-profiles-ruby.md)
 - [Python](azure-stack-version-profiles-python.md)
-- [Node.js](azure-stack-version-profile-nodejs.md)
+- [Node.js](azure-stack-version-profiles-nodejs.md)
 
 ## Before you start 
 

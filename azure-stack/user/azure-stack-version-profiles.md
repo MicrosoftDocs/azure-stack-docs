@@ -85,7 +85,7 @@ The Ruby SDK for the Azure Stack Hub Resource Manager provides tools to help you
 - **Python**  
 The Python SDK supports API version profiles to target different cloud platforms such as Azure Stack Hub and global Azure. Use API profiles to create solutions for a hybrid cloud. For information, see [Use API version profiles with Python](azure-stack-version-profiles-python.md).
 - **Node.js**  
-The Node.js SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. For more information, see [Use API version Profiles with Node.js](azure-stack-version-profile-nodejs.md).
+The Node.js SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. For more information, see [Use API version Profiles with Node.js](azure-stack-version-profiles-nodejs.md).
 
 ## Next steps
 
