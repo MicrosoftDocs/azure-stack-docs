@@ -8,11 +8,13 @@ author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
+#intent:
+#keyword: Kubernetes versioning Semantic Versioning
 ---
 
 # Supported Kubernetes versions in Azure Kubernetes Service (AKS on Azure Stack HCI)
 
-The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from 9 months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19. 
+The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19. 
 
 Minor version releases include new features and improvements. Patch releases are more frequent (sometimes weekly) and are intended for critical bug fixes within a minor version. Patch releases include fixes for security vulnerabilities or major bugs.
 
@@ -34,11 +36,11 @@ Each number in the version indicates general compatibility with the previous ver
 * **Minor versions** change when functionality updates are made that are backwards compatible to the other minor releases.
 * **Patch versions** change when backwards-compatible bug fixes are made.
 
-Aim to run the latest patch release of the minor version you're running. For example, your production cluster is on **`1.17.7`**. **`1.17.8`** is the latest available patch version available for the *1.17* series. You should upgrade to **`1.17.8`** as soon as possible to ensure your cluster is fully patched and supported.
+You should aim to run the latest patch release of the minor version you're running. For example, if your production cluster is on **`1.17.7`**. **`1.17.8`** is the latest available patch version available for the *1.17* series. You should upgrade to **`1.17.8`** as soon as possible to ensure your cluster is fully patched and supported.
 
 ## Kubernetes version support policy
 
-AKS on Azure Stack HCI defines a generally available version as a version available for download when deploying or updating AKS on Azure Stack HCI. AKS on Azure Stack HCI supports three GA minor versions of Kubernetes:
+AKS on Azure Stack HCI defines a generally available (GA) version as a version that's available for download when deploying or updating AKS on Azure Stack HCI. AKS on Azure Stack HCI supports three GA minor versions of Kubernetes:
 
 * The latest GA minor version that is released in AKS on Azure Stack HCI (which we'll refer to as N).
 * Two previous minor versions.
@@ -110,7 +112,7 @@ For new **minor** versions of Kubernetes:
 
 For new **patch** versions of Kubernetes:
   * Because of the urgent nature of patch versions, they can be introduced into the service as they become available.
-  * In general, AKS on Azure Stack HCI does not broadly communicate the release of new patch versions. However, AKS on Azure Stack HCI constantly monitors and validates available CVE patches to support them in AKS on Azure Stack HCI in a timely manner. If a critical patch is found or user action is required, AKS on Azure Stack HCI will notify users to upgrade to the newly available patch.
+  * In general, AKS on Azure Stack HCI doesn't broadly communicate the release of new patch versions. However, AKS on Azure Stack HCI constantly monitors and validates available CVE patches to support them in AKS on Azure Stack HCI in a timely manner. If a critical patch is found or user action is required, AKS on Azure Stack HCI will notify users to upgrade to the newly available patch.
   * Users have **30 days** from a patch release's removal from AKS on Azure Stack HCI to upgrade into a supported patch and continue receiving support.
 
 ### Supported versions policy exceptions
@@ -136,18 +138,18 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
  The scope of this limited extension is effective from '2021-12-01 to 2022-01-31' and is limited to the following:
 > * Creating new clusters and node pools on 1.19 using the November 2021 or December 2021 AKS on Azure Stack HCI release.
 > * CRUD operations on existing 1.19-based clusters.
-> * Support of non-Kubernetes related, platform issues. Platform issues include trouble with networking, storage, or compute running on Azure Stack HCI. Any support requests for Kubernetes patching and troubleshooting will result in a request to upgrade to a supported Kubernetes version.
+> * Support of non-Kubernetes related platform issues. Platform issues include trouble with networking, storage, or compute running on Azure Stack HCI. Any support requests for Kubernetes patching and troubleshooting will result in a request to upgrade to a supported Kubernetes version.
 > * Understand that upgrading to the January 2022 or later AKS on Azure Stack HCI release will require updating the 1.19-based Kubernetes workloads clusters to the latest patch version of Kubernetes 1.20 as Kubernetes 1.19 will not be available in the AKS on Azure Stack HCI January 2022 release.
 
 ## FAQ
 
 **How does Microsoft notify me of new Kubernetes versions?**
 
-The AKS on Azure Stack HCI team publishes pre-announcements with planned dates of the new Kubernetes versions in our documentation, our [GitHub](https://github.com/Azure/aks-hci/releases).
+The AKS on Azure Stack HCI team publishes pre-announcements with planned dates of new Kubernetes versions in our documentation on [GitHub](https://github.com/Azure/aks-hci/releases).
 
 **How often should I expect to upgrade Kubernetes versions to stay in support?**
 
-Starting with Kubernetes 1.19, the [open source community has expanded support to 1 year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS on Azure Stack HCI commits to enabling patches and support matching the upstream commitments. For AKS on Azure Stack HCI clusters on 1.19 and greater, you will be able to upgrade at a minimum of once a year to stay on a supported version. 
+Starting with Kubernetes 1.19, the [open source community has expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS on Azure Stack HCI commits to enabling patches and support matching the upstream commitments. For AKS on Azure Stack HCI clusters on 1.19 and greater, you'll be able to upgrade a minimum of once a year to stay on a supported version. 
 
 For versions on 1.18 or below, the window of support remains at 9 months, requiring an upgrade once every 9 months to stay on a supported version. Regularly test new versions and be prepared to upgrade to newer versions to capture the latest stable enhancements within Kubernetes.
 
@@ -160,19 +162,19 @@ If you're on the *n-3* version or older, it means you're outside of support and 
 
 Downgrades are not supported.
 
-**What does 'Outside of Support' mean?**
+**What does 'outside of support' mean?**
 
-'Outside of Support' means that:
+'Outside of support' means that:
 * The version you're running is outside of the supported versions list.
 * You'll be asked to upgrade the cluster to a supported version when requesting support, unless you're within the 30-day grace period after version deprecation. 
 
-Additionally, AKS on Azure Stack HCI doesn't make any runtime or other guarantees for clusters outside of the supported versions list.
+Additionally, AKS on Azure Stack HCI doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list.
 
 **What happens when a user scales a Kubernetes cluster with a minor version that isn't supported?**
 
 For minor versions not supported by AKS on Azure Stack HCI, scaling in or out should continue to work. Since there are no Quality of Service guarantees, we recommend upgrading to bring your cluster back into support.
 
-**Can I skip multiple AKS on Azure Stack HCI versions during cluster upgrade?**
+**Can I skip multiple AKS on Azure Stack HCI versions during a cluster upgrade?**
 
 When you upgrade a supported AKS on Azure Stack HCI cluster, Kubernetes minor versions cannot be skipped. For example, upgrades between:
   * *1.12.x* -> *1.13.x*: allowed.
@@ -187,7 +189,7 @@ Skipping multiple versions can only be done when upgrading from an unsupported v
 
 **Can I create a new 1.xx.x cluster during its 30 day support window?**
 
-No. Once a version is deprecated/removed, you cannot create a cluster with that version. As the change rolls out, you will start to see the old version removed from your version list. This process may take up to two weeks from announcement, progressively by region.
+No. Once a version is deprecated/removed, you cannot create a cluster with that version. As the change rolls out, you will start to see the old version removed from your version list. This process may take up to two weeks from the announcement, progressively by region.
 
 **I am on a freshly deprecated version, can I still add new node pools? Or will I have to upgrade?**
 
