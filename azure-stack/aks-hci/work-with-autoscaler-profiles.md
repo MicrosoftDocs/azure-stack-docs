@@ -56,10 +56,24 @@ The default profile consists of the below default values. You can update  the fo
 
 ## Notes on configuration the autoscaler
 
-
 You can change settings in the cluster autoscaler profile using the cmdlet [Set-AksHciAutoScalerConfig](work-with-horizontal-autoscaler.md#change-an-existing-akshciautoscalerconfig-profile-object).
 
-The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it does not enforce them after updating the min or max counts. For example, setting a min count of five when the current node count is three will not immediately scale the pool up to five. If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require 2 new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized after 10 minutes. If you had workloads that ran every 15 minutes, you may want to change the autoscaler profile to scale down under utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings. 
+The cluster autoscaler makes scaling decisions based on the minimum and maximum counts set on each node pool, but it does not enforce them after updating the min or max counts. For example, setting a min count of five when the current node count is three will not immediately scale the pool up to five. If the minimum count on the node pool has a value higher than the current number of nodes, the new min or max settings will be respected when there are enough unschedulable pods present that would require 2 new additional nodes and trigger an autoscaler event. After the scale event, the new count limits are respected. You can also configure more granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile. For example, a scale down event happens after nodes are under-utilized after 10 minutes. If you had workloads that ran every 15 minutes, you may want to change the autoscaler profile to scale down under utilized nodes after 15 or 20 minutes. When you enable the cluster autoscaler, a default profile is used unless you specify different settings.
+
+## Save and load the autoscaler profile
+
+You save a copy of the profile using `kvactl` as a `yaml` file. After you have defined your profile, run the following commands:
+
+```powershell
+kvactl.exe autoscalerprofile get --name default --kubeconfig (Get-AksHciConfig).Kva.kubeconfig --outputformat=yaml > def.yaml
+```
+
+You can then store your `def.yaml` file. You can load your stored profile from the `def.yaml` file. Run the following command:
+
+```powershell
+kvactl.exe autoscalerprofile create --profileconfig .\def.yaml --kubeconfig (Get-AksHciConfig).Kva.kubeconfig
+```
+
 ## Next steps
 - [Use PowerShell for horizontal node autoscaling](work-with-horizontal-autoscaler.md)
 - [Learn about horizontal node autoscaling](concepts-horizontal-node-autoscaling.md)

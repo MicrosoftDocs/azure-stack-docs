@@ -46,7 +46,7 @@ You can update the **autoscalerconfig** object. The object contains the paramete
 Set `New-AksHciCluster` and all newly created node pools will have autoscaling enabled upon creation.
 
 ``` powershell 
-New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName myAutoScalerProfile
+New-AksHciCluster -name mycluster -enableAutoScaler -autoScalerProfileName myAutoScalerProfile
 ```
 
 ## Enable autoscaling on an existing cluster
