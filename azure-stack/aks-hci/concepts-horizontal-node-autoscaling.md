@@ -15,8 +15,6 @@ ms.date: 03/16/2022
 
 # Horizontal node autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
 
-You can adjust the number of nodes that run application workloads using  Azure Kubernetes Service (AKS) to keep up with demand.  For this preview release, you can use PowerShell to enable the autoscaler and to manage  automatic scaling of node pools in your target clusters. In this article we look at the context of the autoscaler on AKS on Azure Stack HCI, and how the autoscaler works.
-
 You can adjust the number of nodes that run application workloads using Azure Kubernetes Service (AKS) to keep up with demand. For this preview release, you can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. In this article we look at the context of the autoscaler on AKS on Azure Stack HCI, and how the autoscaler works. For the node auto scaler to work effectively you can also make use of the Kubernetes horizontal pod autoscaler which is a standard Kubernetes component. More information about the Kubernetes horizontal Pod autoscaler can be found here [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 > [!IMPORTANT]
