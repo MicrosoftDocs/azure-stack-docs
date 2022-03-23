@@ -57,6 +57,8 @@ New-AksHciCluster -name <String>
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
                  [-enableMonitoring]
+                 [-enableAutoScaler] 
+                 [-autoScalerProfileName]
 ```
 
 
