@@ -96,10 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -enableAutoScaler
-If set to `$true`: Enables the workernode autoscaler for the specified AKS on Azure Stack HCI cluster. All nodepools in the cluster will now automatically scale from the minimum to the maximum number of nodes based on demand for additional nodes when the Kubernetes scheduler is not able to find sufficient worker node resources to schedule pods. See the documentation [Use PowerShell for horizontal node autoscaling](../../work-with-horizontal-autoscaler.md) for more details.
+If set to `$true`: Enables the workernode autoscaler for the specified AKS on Azure Stack HCI cluster. All nodepools in the cluster will now automatically scale from the minimum to the maximum number of nodes based on demand for additional nodes when the Kubernetes scheduler is not able to find sufficient worker node resources to schedule pods. See the documentation [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md) for more details.
 If set to $false: Disables the auto scaler for the specified cluster. The node pools in the cluster will remain at the scale they were when the auto scaler was disabled.
 > [!NOTE]  
-> Unlike in Azure the auto scaler in AKS on Azure Stack HCI does not have unlimited resources available. It does not reserve resources to ensure automatic scaling can always succeed. If there are other workloads in the cluster i.e. virtual machines, AKS clusters etc. consuming resources, the auto scaler can potentially fail. You can use the `kubectl get events` command to determine the reason why an auto scaler operation has failed. The auto scaler will retry a failed operation based on the settings in the auto scaler configuration profile.  See the documentation, [Use PowerShell for horizontal node autoscaling](../../work-with-horizontal-autoscaler.md), for more details.
+> Unlike in Azure the auto scaler in AKS on Azure Stack HCI does not have unlimited resources available. It does not reserve resources to ensure automatic scaling can always succeed. If there are other workloads in the cluster i.e. virtual machines, AKS clusters etc. consuming resources, the auto scaler can potentially fail. You can use the `kubectl get events` command to determine the reason why an auto scaler operation has failed. The auto scaler will retry a failed operation based on the settings in the auto scaler configuration profile.  See the documentation, [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md), for more details.
  
 ```yaml
 Type: System.Boolean
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -autoScalerProfleName
-The Name of the auto scaler configuration profile that was defined by the `New-AksHciAutoScalerProfile` command. If not specified the default profile is used.  See the documentation [Use PowerShell for horizontal node autoscaling](../../work-with-horizontal-autoscaler.md) for more details.
+The Name of the auto scaler configuration profile that was defined by the `New-AksHciAutoScalerProfile` command. If not specified the default profile is used.  See the documentation [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md) for more details.
 
 ```yaml
 Type: System.String
