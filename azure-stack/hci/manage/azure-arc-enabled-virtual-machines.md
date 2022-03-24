@@ -47,8 +47,6 @@ To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you mus
 3. Create virtual network projections which will be used by VM network interfaces.
 4. Create OS gallery images for provisioning VMs.
 
-The following sections describe these steps in more detail.
-
 Only one Arc Resource Bridge can be deployed on a cluster. Each Azure Stack HCI cluster can have only one custom location. Each virtual switch on the Azure Stack HCI cluster can have one virtual network. Multiple OS images can be added to the gallery. Additional virtual networks and images can be added any time after the initial setup.
 
 ## Prerequisites for deploying Azure Arc Resource Bridge
@@ -97,7 +95,5 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 
 ## Next steps
 
-Now you're ready to create VMs in Azure portal.
-
-> [!div class="nextstepaction"]
-> [Go to Azure portal](https://portal.azure.com/#home)
+- [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md)
+- [Deploy Azure Arc Resource Bridge using command line](deploy-arc-resource-bridge-using-command-line.md)

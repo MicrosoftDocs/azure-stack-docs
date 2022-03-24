@@ -1,41 +1,45 @@
 ---
-title: Troubleshoot CredSSP
-description: Learn how to troubleshoot CredSSP
-author: jasongerend
+title: Troubleshoot Arc-enabled virtual machines
+description: Learn how to troubleshoot Arc-enabled virtual machines
+author: ManikaDhiman
 ms.topic: how-to
-ms.date: 06/04/2021
-ms.author: jgerend
+ms.date: 03/24/2022
+ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
 
 # Troubleshoot Arc-enabled virtual machines
 
-If you experience issues with your Arc-enabled virtual machines (VMs), this article will help you with debugging and troubleshooting the issue. It also describes the limitations and known issues that currently exist.
- 
-> Applies to: Azure Stack HCI, versions 21H2
+> Applies to: Azure Stack HCI, version 21H2
 
-## Debugging
+This article lists common issues that you might encounter when using Arc-enabled virtual machines (VMs), and provides guidance on how to debug and troubleshoot the issues. It also describes the limitations and known issues that currently exist.
+ 
+> Applies to: Azure Stack HCI, version 21H2
+
+## Troubleshoot and debug
 
 See the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, contact Microsoft support.
 
 Collect diagnostics information before contacting Microsoft support as they may ask for it.
 
-You can get logs from the cluster using the `Get-ArcHCILogs` cmdlet. It will require the CloudServiceIP and the path containing HCI login configuration.
+Collect logs from the cluster using the `Get-ArcHCILogs` cmdlet. It requires the CloudServiceIP and the path containing HCI login configuration.
 
 - The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning the Arc Resource Bridge.
 - You can find the login configuration file under the following path:
 $csv_path\workingDir\kvatoken.tok. 
-Please provide the absolute file path name.
+Make sure that you provide the absolute file path name.
 - Optionally, you may provide parameter `-logDir` to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
-- All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
-- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
-- Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
+- Resource names must contain only lower case alphabets, numbers, and hypens. The resource names must be unique for an Azure Stack HCI cluster.
+- Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
+- Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster must be enabled in the following deployment order:
+      
       - First, the AKS management cluster.
       - And then, Arc Resource Bridge for Arc-enabled VMs.
-If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
+      
+        If Arc Resource Bridge is already deployed, you should not deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
 While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
 **new-MocNetworkSetting**, **set-MocConfig** and **install-Moc**.
