@@ -7,7 +7,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/10/2022
+ms.date: 03/24/2022
 ---
 
 # VM provisioning through Azure portal on Azure Stack HCI (preview)
@@ -353,30 +353,32 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 
 ## Debugging
 
-Please see the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
-For issues related to Arc VM management, you can generate logs from the cluster using Get-ArcHCILogs cmdlet.
-   ```PowerShell
-   Get-ArcHCILogs -workDirectory <path>
-   ```
-The workDirectory is located under the following path $csv_path\ResourceBridge\kvatoken.tok. Please provide the absolute file path name.
-Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
+Please see the support topics for any errors and their remediation steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
+For issues related to Arc VM management, you can generate logs from the cluster using the **Get-ArcHCILogs** cmdlet.
 
+```PowerShell
+Get-ArcHCILogs -workDirectory <path>
+```
+
+The `workDirectory` is located under the following path: `$csv_path\ResourceBridge\kvatoken.tok`. Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
-- All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
-- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
+- All resource names should use only lower case letters, numbers and hypens. The resource names must be unique for an Azure Stack HCI cluster.
+- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server using PowerShell. It can't be done in a remote PowerShell window from a machine that is not a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
 - Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
       - First, the AKS management cluster.
       - And then, Arc Resource Bridge for Arc-enabled VMs.
-If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
+If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resource Bridge has been removed.
 
-While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
+While deploying Arc Resource bridge when the AKS management cluster is available on the cluster, you don't need to perform the following steps:
 **new-MocNetworkSetting**, **set-MocConfig** and **install-Moc**.
 
 Uninstallation of these features should also be done in the following order:
-      - Uninstall Arc Resource Bridge.
-      - Then, uninstall the AKS management cluster.
+
+1. Uninstall Arc Resource Bridge.
+2. Uninstall the AKS management cluster.
+
 Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in portal for management.
