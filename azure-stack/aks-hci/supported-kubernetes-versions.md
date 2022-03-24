@@ -8,7 +8,7 @@ author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
-#intent:
+#intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS.
 #keyword: Kubernetes versioning Semantic Versioning
 ---
 
