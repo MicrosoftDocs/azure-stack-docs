@@ -6,7 +6,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/23/2022
+ms.date: 03/24/2022
 ---
 
 # VM provisioning through Azure portal on Azure Stack HCI (preview)
