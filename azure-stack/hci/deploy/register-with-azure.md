@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 03/09/2022
+ms.date: 03/23/2022
 ---
 
 # Connect Azure Stack HCI to Azure
@@ -144,6 +144,7 @@ The Azure Stack HCI service is used for registration, billing, and management. I
 - East US
 - West Europe
 - Southeast Asia
+- Australia East
 
 This region supports Azure China:
 
