@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, version 21H2
 
-To enable virtual machine (VM) provisioning through Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.mdazure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
+To enable virtual machine (VM) provisioning through Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
 
 You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line. This article describes how to deploy Azure Arc Resource Bridge for Arc VM
 management on Azure Stack HCI using Windows Admin Center. It also describes how to create a custom location for the Azure Stack HCI cluster.
@@ -112,5 +112,4 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
 
 ## Next steps
 
-[Create virtual machines from Azure
-portal](https://docs.microsoft.com/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#view-your-cluster-in-azure-portal--manage-virtual-machines).
+- [Manage virtual machines in Azure portal](manage-virtual-machines-in-azure-portal.md)

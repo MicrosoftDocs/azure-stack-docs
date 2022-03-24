@@ -1,6 +1,6 @@
 ---
-title: Azure Arc-enabled Azure Stack HCI FAQs
-description: Find answers to the frequently asked questions (FAQs) about Azure Arc-enabled Azure Stack HCI
+title: Azure Arc-enabled VMs on Azure Stack HCI FAQs
+description: Find answers to the frequently asked questions (FAQs) about Azure Arc-enabled VMs on Azure Stack HCI
 author: ManikaDhiman
 ms.topic: reference
 ms.date: 03/23/2022
@@ -8,11 +8,13 @@ ms.author: v-mandhiman
 ms.reviewer: ksurjan
 ---
 
-# Azure Arc-enabled Azure Stack HCI FAQs
+# Azure Arc-enabled VMs on Azure Stack HCI FAQs
 
 > Applies to: Azure Stack HCI, version 21H2
 
-The following section answers some frequently asked questions (FAQs) about Azure Arc-enabled Azure Stack HCI.
+Azure Stack HCI, version 21H2 enables you to use Azure portal to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters.
+
+This article answers some frequently asked questions (FAQs) about Azure Arc-enabled VMs running on Azure Stack HCI clusters.
 
 ## Can I create virtual machines on a tagged vLAN?
   

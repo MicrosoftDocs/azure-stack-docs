@@ -13,7 +13,11 @@ ms.date: 03/24/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-Azure Stack HCI, version 21H2 customers can use Azure portal to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters. With [Azure Arc](https://azure.microsoft.com/services/azure-arc/), IT administrators can delegate permissions and roles to app owners and DevOps teams to enable self-service VM management for their Azure Stack HCI clusters through the Azure cloud control plane. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, VM provisioning can be easily automated in a secure cloud environment.
+Azure Stack HCI, version 21H2 enables you to use Azure portal to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters. With [Azure Arc](https://azure.microsoft.com/services/azure-arc/), IT administrators can delegate permissions and roles to app owners and DevOps teams to enable self-service VM management for their Azure Stack HCI clusters through the Azure cloud control plane. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, VM provisioning can be easily automated in a secure cloud environment.
+
+To find answers to frequently asked questions about Arc-enabled VMs on Azure Stack HCI, see [FAQs](faqs-arc-enabled-vms.md).
+
+To troubleshoot issues with your Arc-enabled VMs or to know existing known issues and limitations, see [Troubleshoot Arc-enabled virtual machines](troubleshoot-arc-enabled-vms.md).
 
 ## Benefits of Azure Arc-enabled Azure Stack HCI
 
