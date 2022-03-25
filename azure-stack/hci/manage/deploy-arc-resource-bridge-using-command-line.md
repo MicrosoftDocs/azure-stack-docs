@@ -1,6 +1,6 @@
 ---
 title: Deploy Azure Arc Resource Bridge using command line
-description: Learn how to Deploy Azure Arc Resource Bridge on Azure Stack HCI using command line
+description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using command line
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 03/24/2022
@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, version 21H2
 
-To enable virtual machine (VM) provisioning through Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
+To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
 
 You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line.
 
@@ -22,9 +22,9 @@ This article describes how to use command line to deploy Azure Arc Resource Brid
 - [Setting up Arc Resource Bridge and creating custom location](#set-up-azure-arc-resource-bridge-and-create-custom-location)
 - [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
 
-If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center][deploy-arc-resource-bridge-using-wac.md].
+If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
-For more information about VM provisioning through Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
+For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
 
 ## Before you begin
 

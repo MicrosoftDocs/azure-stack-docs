@@ -104,6 +104,8 @@
       href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc-enabled VMs in Azure portal
       href: /manage/manage-virtual-machines-in-azure-portal.md
+    - name: Uninstall Azure Arc Resource Bridge
+      href: /manage/uninstall-arc-resource-bridge.md
     - name: Troubleshoot
       href: /manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs

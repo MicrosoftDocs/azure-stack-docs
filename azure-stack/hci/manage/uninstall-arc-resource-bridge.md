@@ -48,7 +48,7 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
    ```
 
    > [!NOTE]
-   > On every attempt to reinstall the appliance, remove the ".wssd\python" python folder in the user profile folder using this cmdlet:
+   > On every attempt to reinstall the appliance, remove the `.wssd\python` python folder in the user profile folder using the following cmdlet:
    > 
    > rmdir $env:USERPROFILE\\.wssd\python -Recurse -Force
 

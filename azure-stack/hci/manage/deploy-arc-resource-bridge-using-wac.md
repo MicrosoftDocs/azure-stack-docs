@@ -1,6 +1,6 @@
 ---
 title: Deploy Azure Arc Resource Bridge using Windows Admin Center
-description: Learn how to Deploy Azure Arc Resource Bridge on Azure Stack HCI using Windows Admin Center
+description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using Windows Admin Center
 author: ManikaDhiman
 ms.topic: how-to
 ms.date: 03/24/2022
@@ -12,12 +12,11 @@ ms.reviewer: JasonGerend
 
 > Applies to: Azure Stack HCI, version 21H2
 
-To enable virtual machine (VM) provisioning through Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
+To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
 
-You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line. This article describes how to deploy Azure Arc Resource Bridge for Arc VM
-management on Azure Stack HCI using Windows Admin Center. It also describes how to create a custom location for the Azure Stack HCI cluster.
+You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line.
 
-Azure Arc Resource Bridge deployment using Windows Admin Center involves completing the following steps:
+This article describes how to use Windows Admin Center to deploy Azure Arc Resource Bridge, which includes:
 
 - [Setting up Windows Admin Center](#set-up-windows-admin-center)
 
@@ -27,7 +26,7 @@ Azure Arc Resource Bridge deployment using Windows Admin Center involves complet
 
 If you want to deploy Azure Arc Resource Bridge using command line, see [Deploy Azure Arc Resource Bridge on Azure Stack HCI using command line][deploy-arc-resource-bridge-using-command-line.md].
 
-For more information about VM provisioning through Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
+For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
 
 ## Before you begin
 
@@ -50,30 +49,30 @@ Also ensure that the latest version of the following extensions are installed:
 These extensions come pre-installed with Windows Admin Center versions 2110.2 and later. To check the version of these extensions:
 
 1. In Windows Admin Center, under **Tools** select **Settings**, then select **Extensions**.
-2. On the **Installed Extensions** tab, find these extensions and verify their versions.
+1. On the **Installed Extensions** tab, find the **Azure Kubernetes Service** and **Cluster Manager** extensions and verify their versions.
 
- :::image type="content" source="media/manage-azure-arc-vm/installed-extensions.png" alt-text="[Windows Admin Center Installed Extensions screenshot":::
+    :::image type="content" source="media/manage-azure-arc-vm/installed-extensions.png" alt-text="[Windows Admin Center Installed Extensions screenshot":::
 
 ## Set up Arc Resource Bridge and create custom location
 
-To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI Cluster, select **Settings** when connected to a cluster and navigate to **Azure Arc VM setup for Azure Stack HCI**. 
+To check all the prerequisites that should be met to deploy Arc Resource Bridge on an Azure Stack HCI Cluster, select **Settings** when connected to a cluster and navigate to **Azure Arc VM setup for Azure Stack HCI**.
 
-If an Resource Bridge deployment is detected, skip the steps in the following section and move to the [] section.
+If an Arc Resource Bridge is already deployed, navigate to the Arc Resource Bridge dashboard to see the details of the custom location and Arc Resource Bridge. Skip the steps in the following section and move to the [Project virtual network and images](#project-virtual-network-and-images) section.
 
 If an Arc Resource Bridge is not detected, a button is displayed to deploy Resource Bridge.
 
  :::image type="content" source="media/manage-azure-arc-vm/deploy-resource-bridge-button.png" alt-text="[Windows Admin Center Deploy Resource Bridge button screenshot":::
 
-Perform the following steps to deploy Resource Bridge.
+Perform the following steps to deploy Azure Arc Resource Bridge.
 
 1. Select **Deploy Resource Bridge** to launch the setup wizard.
 
 1. Review the prerequisites for the machine you're running Windows Admin Center on, the cluster you're connected to, and the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you want to use is not expired. You must have the Owner role on your Azure subscription that you want to use. When finished reviewing the prerequisites, select **Next**.
 
->[!WARNING]
-> Make sure you configured at least one external virtual switch before proceeding further. Otherwise, you won't be able to successfully set up your Azure Kubernetes Service host.
+    > [!WARNING]
+    > Make sure you configured at least one external virtual switch before proceeding further. Otherwise, you won't be able to successfully set up your Azure Kubernetes Service host.
 
-1. On the **System validation** page of the wizard, take required actions to connect Windows Admin Center gateway to the Azure Stack HCI cluster. As a result of validation, it will prompt you to install the required modules for deploying Arc Resource Bridge.
+1. On the **System validation** page of the wizard, take the required actions to connect Windows Admin Center gateway to the Azure Stack HCI cluster. As a result of validation, it will prompt you to install the required modules for deploying Arc Resource Bridge.
 
 1. Ensure system connectivity through CredSSP in the Connectivity step. CredSSP lets Windows Admin Center delegate the user's credentials from the gateway to a target server for remote authentication. CredSSP needs to be enabled to set up Azure Kubernetes Service. After you enabled CredSSP, select **Next**.
 
@@ -95,7 +94,7 @@ Perform the following steps to deploy Resource Bridge.
 
     When finished, select **Review Settings**.
 
-1. Review all of your selections in the **Review Settings** step. If you're satisfied with your selections, select, **Apply** to prepare the cluster hosts & after completion of that step, proceed to **Deployment**.
+1. Review all of your selections in the **Review Settings** step. If you're satisfied with your selections, select, **Apply** to prepare the cluster hosts, and after completion of that step, proceed to **Deployment**.
 
 1. On the **Deployment** page, you can watch the progress of the Arc Resource Bridge. At this point, you are welcome to open Windows Admin Center in a new tab and continue your management tasks. The deployment takes about 15-30 minutes to complete.
 
@@ -112,4 +111,4 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
 
 ## Next steps
 
-- [Manage virtual machines in Azure portal](manage-virtual-machines-in-azure-portal.md)
+- [Manage virtual machines in the Azure portal](manage-virtual-machines-in-azure-portal.md)
