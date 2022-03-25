@@ -52,7 +52,7 @@ Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 With the release of VPN Fast Path Public Preview, Azure Stack Hub supports three new SKUs with higher throughput. It also increases the overall stamp capacity from 4 Gbps to 10 Gbps.
 
-New limits and throughput's will be enabled once VPN Fast Path is enabled on your Azure Stack Stamp.
+New limits and throughput will be enabled once VPN Fast Path is enabled on your Azure Stack Stamp.
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 | SKU | Max VPN Connection throughput |Max # of connections per active GW VM | Max # of VPN Connections per stamp |
@@ -82,7 +82,8 @@ The following URL example makes the new virtual network gateway SKUs visible in 
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 ```
 
-Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp.
+Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp. For additional information please review the following article
+[VPN Fast Path for Operators](/azure-stack/operator/azure-stack-vpn-fast-path-operators.md)
 
 ![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
 
@@ -154,7 +155,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### Gateway subnet
 
-Before you create a VPN gateway, you must create a gateway subnet. The gateway subnet has the IP addresses that the virtual network gateway VMs and services use. When you create your virtual network gateway, gateway VMs are deployed to the gateway subnet and configured with the required VPN gateway settings. Don't deploy anything else (for example, additional VMs) to the gateway subnet.
+Before you create a VPN gateway, you must create a gateway subnet. The gateway subnet has the IP addresses that the virtual network gateway VMs and services use. When you create your virtual network gateway and the connection, the Gateway VM owning the connection will be linked to the gateway subnet and will be configured with the required VPN gateway settings. Don't deploy anything else (for example, additional VMs) to the gateway subnet.
 
 >[!IMPORTANT]
 >The gateway subnet must be named **GatewaySubnet** to work properly. Azure Stack Hub uses this name to identify the subnet to which to deploy the virtual network gateway VMs and services.
@@ -176,7 +177,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 When creating a VPN gateway configuration in Azure, the local network gateway often represents your on-premises location. In Azure Stack Hub, it represents any remote VPN device that sits outside Azure Stack Hub. This device could be a VPN device in your datacenter (or a remote datacenter), or a VPN gateway in Azure.
 
-You give the local network gateway a name, the public IP address of the VPN device, and specify the address prefixes that are on the on-premises location. Azure looks at the destination address prefixes for network traffic, consults the configuration that you've specified for your local network gateway, and routes packets accordingly.
+You give the local network gateway a name, the public IP address of the remote VPN device, and specify the address prefixes that are on the on-premises location. Azure Stack Hub looks at the destination address prefixes for network traffic, consults the configuration that you've specified for your local network gateway, and routes packets accordingly.
 
 This PowerShell example creates a new local network gateway:
 
