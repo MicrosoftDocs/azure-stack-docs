@@ -112,7 +112,7 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 
 | Element | Source |
 | ------- | ------ |
-| Azure Resource Manager URL | [The Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint) |
+| Azure Resource Manager URL | [The Azure Stack Hub Resource Manager endpoint](authenticate-azure-stack-hub.md#get-the-azure-resource-manager-endpoint) |
 | Application name |  |
 | Application ID |  The ID assigned to the service principal when the [application was registered](../operator/give-app-access-to-resources.md) |
 | Subscription ID | Created when you [subscribe to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md) |
