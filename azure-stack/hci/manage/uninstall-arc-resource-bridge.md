@@ -66,4 +66,4 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
 
 ## Next steps
 
-[Troubleshoot](https://portal.azure.com/#home)
+[Troubleshoot](troubleshoot-arc-enabled-vms.md)
