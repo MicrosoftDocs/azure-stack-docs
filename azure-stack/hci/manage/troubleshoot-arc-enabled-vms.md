@@ -25,9 +25,9 @@ Collect logs from the cluster using the `Get-ArcHCILogs` cmdlet. To run this cmd
 - The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning Arc Resource Bridge.
 - The login configuration file is located under the following path:
 
-  `$csv_path\workingDir\kvatoken.tok.`
+    $csv_path\workingDir\kvatoken.tok.
 
-   Make sure that you provide the absolute file path name.
+    Make sure that you provide the absolute file path name.
 
 - Optionally, you may provide parameter `-logDir` to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
 
@@ -47,9 +47,9 @@ Collect logs from the cluster using the `Get-ArcHCILogs` cmdlet. To run this cmd
     **new-MocNetworkSetting**, **set-MocConfig**, and **install-Moc**.
 
 - You must uninstall these in the following order:
-
-      1. Uninstall Arc Resource Bridge
-      1. Uninstall the AKS management cluster
+    
+    1. Uninstall Arc Resource Bridge
+    1. Uninstall the AKS management cluster
       
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
