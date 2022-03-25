@@ -7,7 +7,7 @@ ms.author: ksurjan
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/10/2022
+ms.date: 03/24/2022
 ---
 
 # VM provisioning through Azure portal on Azure Stack HCI (preview)
@@ -134,7 +134,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
    ```PowerShell
    $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID]
-   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
+   Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
    Install-moc
    ```
    > [!TIP]
@@ -204,17 +204,17 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
-   mkdir $csv_path\workingDir
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\workingDir
-   az arcappliance prepare hci --config-file $csv_path\workingDir\hci-appliance.yaml
+   mkdir $csv_path\ResourceBridge
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
+   az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
    ```
    
    ```PowerShell
-   az arcappliance deploy hci --config-file  $csv_path\workingDir\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+   az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
    ```
    
    ```PowerShell
-   az arcappliance create hci --config-file $csv_path\workingDir\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
+   az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
    ```
    
 
@@ -228,7 +228,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
     ```azurecli
     $hciClusterId= (Get-AzureStackHci).AzureResourceUri
-    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
+    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
     ```
 
 6. Verify that the extensions are installed. Keep running the following cmdlets until the extension provisioning state is **Succeeded**. This operation can take up to five minutes.
@@ -331,7 +331,7 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 5. Remove the appliance:
 
    ```azurecli
-   az arcappliance delete hci --config-file $csv_path\workingDir\hci-appliance.yaml --yes
+   az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
    ```
 
    > [!NOTE]
@@ -353,29 +353,32 @@ To uninstall Azure Arc Resource Bridge and remove VM management on an Azure Arc-
 
 ## Debugging
 
-Please see the support topics for any errors and their remedial steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
-You can grab logs from the cluster using Get-ArcHCILogs cmdlet. It will require the CloudServiceIP & the path containing HCI login configuration.
+Please see the support topics for any errors and their remediation steps. If the error condition is not mentioned or you need additional help, please contact Microsoft support.
+For issues related to Arc VM management, you can generate logs from the cluster using the **Get-ArcHCILogs** cmdlet.
 
-- The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning the Arc Resource Bridge.
-- The login configuration file can be located under the following path $csv_path\workingDir\kvatoken.tok. Please provide the absolute file path name.
-- Optionally, you may provide parameter -logDir to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
+```PowerShell
+Get-ArcHCILogs -workDirectory <path>
+```
 
+The `workDirectory` is located under the following path: `$csv_path\ResourceBridge\kvatoken.tok`. Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
-- All resource names should use lower case alphabets, numbers and hypens only. The resource names must be unique for an Azure Stack HCI cluster.
-- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
+- All resource names should use only lower case letters, numbers and hypens. The resource names must be unique for an Azure Stack HCI cluster.
+- Arc Resource Bridge provisioning through CLI should be performed on a local HCI server using PowerShell. It can't be done in a remote PowerShell window from a machine that is not a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use RDP connected with a domain user admin of the cluster.
 - Enabling Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster requires the following deployment order:
       - First, the AKS management cluster.
       - And then, Arc Resource Bridge for Arc-enabled VMs.
-If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resoure Bridge has been removed.
+If Arc Resource Bridge is already deployed, the AKS management cluster should not be deployed unless the Arc Resource Bridge has been removed.
 
-While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
+While deploying Arc Resource bridge when the AKS management cluster is available on the cluster, you don't need to perform the following steps:
 **new-MocNetworkSetting**, **set-MocConfig** and **install-Moc**.
 
 Uninstallation of these features should also be done in the following order:
-      - Uninstall Arc Resource Bridge.
-      - Then, uninstall the AKS management cluster.
+
+1. Uninstall Arc Resource Bridge.
+2. Uninstall the AKS management cluster.
+
 Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
 - VMs provisioned from Windows Admin Center, PowerShell or other HyperV management tools will not be visible in portal for management.
