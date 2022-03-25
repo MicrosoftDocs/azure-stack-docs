@@ -7,16 +7,19 @@ ms.date: 05/21/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: lahirisl
+#intent:
+#keyword: Single sign-on AD authentication
+
 
 ---
 
-# Use Active Directory single sign-in credentials for AKS on Azure Stack HCI
+# Use Active Directory single sign-on (SSO) credentials for AKS on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
-As an alternative to using certificate-based _kubeconfig_, you can use Active Directory (AD) single sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service on Azure Stack HCI lets a user on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
+As an alternative to using certificate-based _kubeconfig_, you can use Active Directory (AD) single sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service on Azure Stack HCI lets users on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
 
 AD integration uses AD _kubeconfig_, which is distinct from the certificate-based _kubeconfig_ files and doesn't contain any secrets. However, the certificate-based _kubeconfig_ file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 
@@ -27,7 +30,7 @@ Another security benefit with AD integration is that the users and groups are st
 
 This document will guide you through the following steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
 
-- Create the AD account for the API server and then create the [keytab](https://web.mit.edu/kerberos/krb5-devel/doc/basic/keytab_def.html) file associated with the account. See [create AD Auth using the keytab file](#create-ad-auth-using-the-keytab-file) to create the AD account and generate the keytab file.
+- Create the AD account for the API server, and then create the [keytab](https://web.mit.edu/kerberos/krb5-devel/doc/basic/keytab_def.html) file associated with the account. See [Create AD Auth using the keytab file](#create-ad-auth-using-the-keytab-file) to create the AD account and generate the keytab file.
 - Use the [keytab](https://web.mit.edu/kerberos/krb5-devel/doc/basic/keytab_def.html) file to install AD Auth on the Kubernetes cluster. As part of this step, a default role-based access control (RBAC) configuration is automatically created.
 - Convert group names to SIDs and vice-versa when creating or editing RBAC configurations, see [create and update the AD group role binding](#create-and-update-the-ad-group-role-binding) for instructions.
  
@@ -37,7 +40,7 @@ Before you start the process of configuring Active Directory SSO credentials, yo
 
  - The latest **Aks-Hci PowerShell** module is installed. If you need to install it, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module). 
  - The AKS host is installed and configured. If you need to install the host, follow the steps to [configure your deployment](./kubernetes-walkthrough-powershell.md#step-3-configure-your-deployment).  
- - The keytab file is available to use, and if it is not available, follow the steps to [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
+ - The keytab file is available to use. If it is not available, follow the steps to [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
  
    > [!NOTE]
    > You should generate the keytab file for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You must also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
@@ -84,9 +87,9 @@ If the cluster host is not domain-joined, use the admin user name or group name 
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8
 ```  
 
-To find the SID for the user account, see [determine the user or group security identifier](#determine-the-user-or-group-security-identifier). 
+To find the SID for the user account, see [Determine the user or group security identifier](#determine-the-user-or-group-security-identifier). 
 
-Before proceeding to the next steps, you should note the following items:
+Before proceeding to the next steps, you should make note of the following items:
 
 - Make sure the keytab file is named _current.keytab_.
 - Replace the SPN that corresponds to your environment.
@@ -117,7 +120,7 @@ You need to make sure the AD webhook is running on the API server and the keytab
 ### Step 4: Create the AD kubeconfig file
 
 Once the AD webhook and keytab are successfully deployed, create the AD _kubeconfig_ file.
-After the file is created, you'll copy the AD _kubeconfig_ file to the client machine and use it to authenticate to the API server. Unlike the certificate-based _kubeconfig_ file, AD _kubeconfig_ is not a secret and is safe to copy as plain text.
+After the file is created, copy the AD _kubeconfig_ file to the client machine and use it to authenticate to the API server. Unlike the certificate-based _kubeconfig_ file, AD _kubeconfig_ is not a secret and is safe to copy as plain text.
 
 Open PowerShell as an administrator and run the following command:  
 
@@ -137,7 +140,7 @@ You should copy the three files listed below from the Azure Stack HCI cluster to
 
 ### Step 6: Connect to the API server from the client machine
 
-After you've completed the previous steps, log in to your Windows domain-joined client machine using your SSO credentials. Open PowerShell, and then attempt to access the API server using `kubectl`. If you are successfully able to complete the operation, you have set up AD SSO correctly.
+After you've completed the previous steps, use your SSO credentials to log in to your Windows domain-joined client machine. Open PowerShell, and then attempt to access the API server using `kubectl`. If you are successfully able to complete the operation, you have set up AD SSO correctly.
 
 ## Create and update the AD group role binding
 
@@ -214,7 +217,7 @@ kubectl-adsso sidtoname <rbac.yml>
 
 When the password is changed for the API server account, you must uninstall the AD authentication add-on and reinstall it using the updated current and previous keytabs. 
 
-Every time you change the password, you must rename the current keytab (_current.keytab_) to _previous.keytab_, and then make sure you name the new password _current.keytab_.
+Every time you change the password, you must rename the current keytab (_current.keytab_) to _previous.keytab_.  Then, make sure you name the new password _current.keytab_.
 
 > [!Important] 
 > The files must be named _current.keytab_ and _previous.keytab_, respectively. The existing role bindings are not affected by this.
@@ -240,7 +243,7 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab <.\current.keytab> -previousKey
 
 ## Create the API server AD Account and the keytab file
 
-There are two steps involved in this process. First, create a new AD account/user for the API server with the service principal name (SPN) and second, create keytab file for the AD account.
+There are two steps involved in this process. First, create a new AD account/user for the API server with the service principal name (SPN) and second, create a keytab file for the AD account.
 
 ### Step 1: Create a new AD account or user for the API server
 
@@ -266,7 +269,7 @@ ktpass /out current.keytab /princ k8s/apiserver@BCONTOSO.COM /mapuser contoso\ap
   
 ## Determine the user or group security identifier
 
-Use one of the following two options to find the SID for your account or for other accounts.
+Use one of the following two options to find the SID for your account or other accounts.
 
 To find the SID associated with your account, from a command prompt of your home directory, type the following:
 
