@@ -1,31 +1,34 @@
 ---
 title: Deploy a Windows .NET application in AKS on Azure Stack HCI
-description: Learn how to deploy a Windows .NET application to your cluster using a custom image stored in Azure Container Registry.
+description: Learn how to deploy a Windows.NET application to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial
 ms.date: 12/02/2020
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-
+#intent: As an IT Pro, I want to deploy Win
+#keyword: Windows .NET application ASP.NET application
 ---
 
 # Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-In this tutorial, you deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster and learn how to see how to test and scale your application. You will also learn how to join a Windows nodes to an Active Directory domain.
+In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster, and then see how to test and scale your application. You will also learn how to join a Windows nodes to an Active Directory domain.
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
 ## Before you begin
 
-Verify you have the following requirements ready:
+Verify that you are ready with the following requirements:
 
 * An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node that is up and running. 
 * A kubeconfig file to access the cluster.
-* Have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
+* The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
+
+In addition:
 * Run the commands in this document in a PowerShell administrative window.
-* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
+* Ensure that OS specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can use either node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
 ## Deploy the application
 
@@ -98,7 +101,7 @@ service/sample created
 
 ## Test the application
 
-When the application runs, a Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete. Occasionally the service can take longer than a few minutes to provision. Allow up to 10 minutes in these cases.
+When the application runs, a Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete. Occasionally, the service can take longer than a few minutes to provision. Allow up to 10 minutes in these cases.
 
 To monitor progress, use the `kubectl get service` command with the `--watch` argument.
 
