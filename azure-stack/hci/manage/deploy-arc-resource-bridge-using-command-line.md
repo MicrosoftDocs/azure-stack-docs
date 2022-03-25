@@ -30,7 +30,7 @@ For more information about VM provisioning through the Azure portal, see [VM pro
 
 Before you begin the Azure Arc Resource Bridge deployment, plan out and configure your physical and host network infrastructure. Reference the following sections:
 
-- [Prerequisites for deploying Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#prerequisites-for-deploying-azure-arc-resource-bridge).
+- [Prerequisites for deploying Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#prerequisites-for-deploying-azure-arc-resource-bridge)
 - [Network port requirements](azure-arc-enabled-virtual-machines.md#network-port-requirements)
 - [Firewall URL exceptions](azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
 
