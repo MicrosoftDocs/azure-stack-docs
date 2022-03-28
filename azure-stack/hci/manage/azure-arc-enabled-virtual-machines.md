@@ -19,6 +19,9 @@ To find answers to frequently asked questions about Arc-enabled VMs on Azure Sta
 
 To troubleshoot issues with your Arc-enabled VMs or to know existing known issues and limitations, see [Troubleshoot Arc-enabled virtual machines](troubleshoot-arc-enabled-vms.md).
 
+> [!IMPORTANT]
+> VM provisioning through Azure portal on Azure Stack HCI is currently in preview. This preview is provided without a service level agreement, and Microsoft doesn't recommend using it for production workloads. Certain features might not be supported or might have constrained capabilities. To sign up for this capability in preview, fill out [this form](https://aka.ms/joinEAP). For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## Benefits of Azure Arc-enabled Azure Stack HCI
 
 With Azure Arc-enabled Azure Stack HCI, you can perform various operations from the Azure portal, such as:
