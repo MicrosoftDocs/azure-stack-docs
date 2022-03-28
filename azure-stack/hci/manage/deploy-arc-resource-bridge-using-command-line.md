@@ -139,7 +139,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    mkdir $csv_path\ResourceBridge
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
    az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
    ```
    
