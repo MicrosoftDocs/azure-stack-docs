@@ -28,17 +28,17 @@ Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from the Az
   
 SDN is currently not supported for VMs created from the Azure portal.
 
-## My environment does not support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
+## My environment doesn't support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
 
-If you cannot enable dynamic DNS updates in your DNS environment, you must pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering article](/windows-server/failover-clustering/prestage-cluster-adds).
+If you can't enable dynamic DNS updates in your DNS environment, you must pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but don't exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering article](/windows-server/failover-clustering/prestage-cluster-adds).
 
 ## Is there a fee to use Arc management for VMs on Azure Stack HCI cluster?
 
-VM management for Azure Stack HCI from the Azure control plane does not have any additional fees. Some VM extensions may have a fee.
+VM management for Azure Stack HCI from the Azure control plane doesn't have any additional fees. Some VM extensions may have a fee.
 
 ## Can I use the same name for gallery image projections and will the existing VMs use the new image?
 
-Two images with the same name will result in errors at the time of creating them. This is true for other resources as well, such as virtual networks, virtual hard disks etc. An updated image will not change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
+Two images with the same name will result in errors at the time of creating them. This is true for other resources as well, such as virtual networks, virtual hard disks etc. An updated image won't change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
 
 ## How can I delete a gallery image?
 
@@ -46,17 +46,17 @@ Gallery images and all other entities can be removed from CLI or from the Azure 
 
 ## If I delete a gallery image would all the VMs also get deleted which are deployed?
 
-Deleting a gallery image does not affect the VMs that were created using that gallery image. The VMs will not be able to show the image name in the VM details.
+Deleting a gallery image doesn't affect the VMs that were created using that gallery image. The VMs won't be able to show the image name in the VM details.
 
-## If I re-install the Arc Resource Bridge will the VMs also be re-deployed?
+## If I reinstall the Arc Resource Bridge will the VMs also be redeployed?
 
 If an Arc Resource Bridge is deleted, then management through the Azure control plane (portal, Az CLI etc.) will be unavailable. The VMs will remain on the cluster and are only manageable through on-premises tools (Windows Admin Center, PowerShell etc.).
 
-Re-deploying an Arc Resource Bridge will not enable Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from the Azure control plane.
+Re-deploying an Arc Resource Bridge won't enable Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from the Azure control plane.
 
-## What should I do if the deployment of Arc Resource Bridge did not succeed?
+## What should I do if the deployment of Arc Resource Bridge didn't succeed?
 
-See the [Troubleshoot and debug](troubleshoot-arc-enabled-vms.md) article for common errors. If you are re-deploying Arc Resource Bridge, make sure to clean up the previous deployment completely by following the [Uninstall procedure](uninstall-arc-resource-bridge.md).
+See the [Troubleshoot and debug](troubleshoot-arc-enabled-vms.md) article for common errors. If you're redeploying Arc Resource Bridge, make sure to clean up the previous deployment completely by following the [Uninstall procedure](uninstall-arc-resource-bridge.md).
 
 ## Next steps
 
