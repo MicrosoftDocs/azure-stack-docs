@@ -35,7 +35,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azur
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your development kit or the Azure Stack Hub integrated system, run the [az group create](/cli/azure/group#az_group_create) command to create a resource group.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your development kit or the Azure Stack Hub integrated system, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
 
 > [!NOTE]
 > We've assigned values for all variables in the following code examples. However, you can assign your own values.
@@ -48,7 +48,7 @@ az group create --name myResourceGroup --location local
 
 ## Create a virtual machine
 
-Create a virtual machine by using the [az vm create](/cli/azure/vm#az_vm_create) command. The following example creates a VM named myVM. The example uses *Demouser* as the admin username and *Demouser@123* as the admin password. Change these values to something that's appropriate for your environment.
+Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. The example uses *Demouser* as the admin username and *Demouser@123* as the admin password. Change these values to something that's appropriate for your environment.
 
 ```azurecli
 az vm create \

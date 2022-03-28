@@ -69,7 +69,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
           --suffix-keyvault-dns ".vault.<fqdn>" 
       ```
 
-    You can find a reference for the [register command](/cli/azure/cloud#az_cloud_register) in the Azure CLI reference documentation.
+    You can find a reference for the [register command](/cli/azure/cloud#az-cloud-register) in the Azure CLI reference documentation.
 
 
 4. Set the active environment by using the following commands.

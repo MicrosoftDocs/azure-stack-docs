@@ -7,6 +7,8 @@ ms.author: mabrigg
 ms.lastreviewed: 02/01/2022
 ms.reviewer: jeguan
 author: mattbriggs
+#intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
+#keyword: secret stores CSI driver
 ---
 
 # Use the Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with AKS on Azure Stack HCI
@@ -14,19 +16,21 @@ author: mattbriggs
 > [!NOTE]
 > AKS on Azure Stack HCI preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and it's recommended that you do not use these features in production scenarios. AKS on Azure Stack HCI preview features are partially covered by customer support on a best-effort basis.
 
-The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrating the Secrets Store CSI Driver with AKS on Azure Stack HCI allows you to mount secrets, keys, and certificates as a volume, and the data is mounted into the container's file system. 
+The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrating the Secrets Store CSI Driver with AKS on Azure Stack HCI allows you to mount secrets, keys, and certificates as a volume. The data is then mounted into the container's file system. 
 
 With the Secrets Store CSI Driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
 ## Before you begin
 
-- You need to have an existing deployment of AKS on Azure Stack HCI with an existing workload cluster. If you do not, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
+- You need to have an Azure account and subscription.
+- You need to have an existing deployment of AKS on Azure Stack HCI with an existing workload cluster. If you don't, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
 - If you are running Linux clusters, they need to be on version 1.16.0 or later.
 - If you are running Windows clusters, they need to be on version 1.18.0 or later.
-- You need to have [Helm](https://helm.sh/) installed. 
-- You need `kubectl` installed.
-- You need to have the latest version of the [Azure CLI installed](/cli/azure/install-azure-cli).
-- You need to have an Azure account and subscription.
+- Make sure you have the following installed:
+  - [Helm](https://helm.sh/)
+  - `kubectl`
+  - The latest version of the [Azure CLI](/cli/azure/install-azure-cli).
+
 
 ## Access your clusters using kubectl
 Run the following command to access your cluster through `kubectl`. In the command, replace the value for `-name` with your existing cluster name. You cluster name will use the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`.
@@ -97,7 +101,7 @@ az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyA
 
 ## Create an identity on Azure
 
-Use a Service Principal to access the Azure Key Vault instance that was created in the previous step. You should record the outputs when running the following commands as both the Client Secret and Client ID will be used in the next steps.
+Use a Service Principal to access the Azure Key Vault instance that was created in the previous step. You should record the outputs when running the following commands, as both the Client Secret and Client ID will be used in the next steps.
 
 The following command provides the Client Secret:
 
@@ -111,7 +115,7 @@ The following command provides the Client ID:
 az ad sp show --id http://secrets-store-test --query 'appId' -otsv
 ```
 
-## Provide the identity to access Azure Key Vault
+## Provide the identity to access the Azure Key Vault
 
 Use the values from the previous step to set permissions as shown in the following command:
 
@@ -161,7 +165,7 @@ spec:
 
 ## Apply the SecretProviderClass to your cluster
 
-Deploy the `SecretProviderClass` you created in the previous by running the following command:
+To deploy the `SecretProviderClass` you created in the previous step, use the following command:
 
 ```powershell
 kubectl apply -f ./new-secretproviderclass.yaml --namespace 

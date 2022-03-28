@@ -3,10 +3,10 @@ title: Install and offer the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to install and offer the Azure Kubernetes Service on Azure Stack Hub.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 12/17/2021
+ms.date: 03/24/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 12/17/2021
+ms.lastreviewed: 03/24/2022
 
 # Intent: As an Azure Stack operator, I want to install and offer Azure Kubernetes Service on Azure Stack Hub so my supported user can offer containerized solutions.
 # Keyword: Kubernetes AKS
@@ -58,7 +58,7 @@ For information about installing and using the AzureStack PowerShell module, see
 
 The AKS Service needs a special VM image referred to the "AKS base Image". The AKS service will not work without the correct image version available in the local Azure Stack Hub marketplace. The image is meant to be used by the AKS service, not to be used by tenants to create individual VMs. The image will not be visible to tenants in the Marketplace. This is a task that needs to be done alongside every Azure Stack Hub Update. Every time there is a new update there will be a new AKS base image associated with the AKS Service. Here are the steps:
 
-1.  Using the administrator portal, go the Marketplace management blade and select "Add from Azure", type "AKS" in the search box, locate, and download Linux "AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q3" version "2021.02.17"and Windows AKS base image select version "AKS Base Windows Image" version "17763.1697.210210".
+1.  Using the administrator portal, go the Marketplace management blade and select "Add from Azure", type "AKS" in the search box, locate, and download Linux "AKS Base Ubuntu 18.04-LTS Image Distro, 2021 Q4" version "2021.12.08"and Windows AKS base image select version "AKS Base Windows Image" version "17763.1697.210210".
 
     - Linux base image:
 
