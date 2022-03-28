@@ -100,8 +100,6 @@
       href: manage/azure-arc-enabled-virtual-machines.md
     - name: Deploy Azure Arc Resource Bridge using command line
       href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Deploy Azure Arc Resource Bridge using Windows Admin Center
-      href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc-enabled VMs in Azure portal
       href: manage/manage-virtual-machines-in-azure-portal.md
     - name: Uninstall Azure Arc Resource Bridge
