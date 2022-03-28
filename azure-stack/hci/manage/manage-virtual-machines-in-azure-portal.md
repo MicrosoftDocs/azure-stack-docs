@@ -42,7 +42,5 @@ For VM management from the Virtual Machines blade in the Azure portal, perform t
 
 ## Next steps
 
-Now you're ready to create VMs in the Azure portal.
-
-> [!div class="nextstepaction"]
-> [Go to the Azure portal](https://portal.azure.com/#home)
+- [Troubleshoot](troubleshoot-arc-enabled-vms.md)
+- [FAQs](faqs-arc-enabled-vms.md)

@@ -44,7 +44,7 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
 5. Remove the appliance:
 
    ```azurecli
-   az arcappliance delete hci --config-file $csv_path\workingDir\hci-appliance.yaml --yes
+   az arcappliance delete hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --yes
    ```
 
    > [!NOTE]
@@ -66,4 +66,4 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
 
 ## Next steps
 
-[Troubleshoot](troubleshoot-arc-enabled-vms.md)
+- [Troubleshoot](troubleshoot-arc-enabled-vms.md)

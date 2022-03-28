@@ -111,4 +111,5 @@ Access **Azure Arc VM setup for Azure Stack HCI** under cluster **Settings** aga
 
 ## Next steps
 
+- [Go to the Azure portal to create VMs](https://portal.azure.com/#home)
 - [Manage virtual machines in the Azure portal](manage-virtual-machines-in-azure-portal.md)

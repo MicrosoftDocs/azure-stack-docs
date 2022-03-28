@@ -60,4 +60,4 @@ See the [Troubleshoot and debug](troubleshoot-arc-enabled-vms.md) article for co
 
 ## Next steps
 
-[VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md)
+- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md)

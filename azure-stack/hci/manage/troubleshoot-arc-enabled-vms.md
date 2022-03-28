@@ -20,16 +20,17 @@ See the support topics for any errors and their remedial steps. If the error con
 
 Collect diagnostics information before contacting Microsoft support as they may ask for it.
 
-Collect logs from the cluster using the `Get-ArcHCILogs` cmdlet. To run this cmdlet, you need the CloudServiceIP and the path containing HCI login configuration.
+For issues related to Arc VM management, you can generate logs from the cluster using the **Get-ArcHCILogs** cmdlet.
 
-- The CloudServiceIP is the IP address of the cloud service agent that is running in the Arc Resource Bridge. This was provided at the time of provisioning Arc Resource Bridge.
-- The login configuration file is located under the following path:
+```PowerShell
+Get-ArcHCILogs -workDirectory <path>
+```
 
-    $csv_path\workingDir\kvatoken.tok.
+The `workDirectory` is located under the following path: 
 
-    Make sure that you provide the absolute file path name.
+`$csv_path\ResourceBridge\kvatoken.tok`
 
-- Optionally, you may provide parameter `-logDir` to provide path to the directory where generated logs will be saved. If not provided, the location defaults to the current working directory.
+Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
@@ -63,5 +64,5 @@ Collect logs from the cluster using the `Get-ArcHCILogs` cmdlet. To run this cmd
 
 ## Next steps
 
-[VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md)
-[Azure Arc-enabled Azure Stack HCI FAQs](faqs-arc-enabled-vms.md)
+- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md)
+- [Azure Arc-enabled Azure Stack HCI FAQs](faqs-arc-enabled-vms.md)

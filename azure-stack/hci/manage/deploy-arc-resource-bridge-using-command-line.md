@@ -19,7 +19,7 @@ You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Wi
 This article describes how to use command line to deploy Azure Arc Resource Bridge, which includes:
 
 - [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
-- [Setting up Arc Resource Bridge and creating custom location](#set-up-azure-arc-resource-bridge-and-create-custom-location)
+- [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
 - [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
 
 If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
@@ -72,7 +72,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
    ```PowerShell
    $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID]
-   Set-MocConfig -workingDir $csv_path\workingDir  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
+   Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
    Install-moc
    ```
    > [!TIP]
@@ -109,7 +109,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
      az extension add --upgrade --name azurestackhci
      ```
 
-## Set up Azure Arc Resource Bridge and create custom location
+## Create a custom location by installing Azure Arc Resource Bridge
 
 To create a custom location, install Azure Arc Resource Bridge by launching an elevated PowerShell window and perform these steps:
 
@@ -142,17 +142,17 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
-   mkdir $csv_path\workingDir
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\workingDir
-   az arcappliance prepare hci --config-file $csv_path\workingDir\hci-appliance.yaml
+   mkdir $csv_path\ResourceBridge
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
+   az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
    ```
    
    ```PowerShell
-   az arcappliance deploy hci --config-file  $csv_path\workingDir\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+   az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
    ```
    
    ```PowerShell
-   az arcappliance create hci --config-file $csv_path\workingDir\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
+   az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
    ```
    
 4. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
@@ -165,7 +165,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
     ```azurecli
     $hciClusterId= (Get-AzureStackHci).AzureResourceUri
-    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\workingDir\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
+    az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
     ```
 
 6. Verify that the extensions are installed. Keep running the following cmdlet until the extension provisioning state is **Succeeded**. This operation can take up to five minutes.
@@ -210,4 +210,5 @@ Now that the custom location is available, you can create or add virtual network
 
 ## Next steps
 
+- [Go to the Azure portal to create VMs](https://portal.azure.com/#home)
 - [Manage virtual machines in Azure portal](manage-virtual-machines-in-azure-portal.md)
