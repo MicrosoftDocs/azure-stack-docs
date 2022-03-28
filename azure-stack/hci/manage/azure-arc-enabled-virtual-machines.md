@@ -102,5 +102,4 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 
 ## Next steps
 
-- [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md)
 - [Deploy Azure Arc Resource Bridge using command line](deploy-arc-resource-bridge-using-command-line.md)
