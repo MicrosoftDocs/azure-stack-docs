@@ -53,7 +53,7 @@ We continue to make improvements to Microsoft's on-premises Kubernetes solution 
 
 ## New Azure management and governance capabilities
 
-Azure Stack HCI natively integrates with the Azure Resource Manager to project your cluster into Azure as a first-class resource in the Azure portal. This section lists the new features and enhancements introduced in Azure Stack HCI, version 21H2 to manage your Azure Stack HCI resources just like you’d manage cloud resources.
+Azure Stack HCI natively integrates with the Azure Resource Manager to project your cluster into Azure as a first-class resource in the Azure portal. This section lists the new features and enhancements introduced in Azure Stack HCI, version 21H2 to manage your Azure Stack HCI resources just like you'd manage cloud resources.
 
 ### Azure Backup support for Azure Stack HCI
 
@@ -69,7 +69,7 @@ Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azur
 
 ### Multi-cluster monitoring in the Azure portal (preview)
 
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you’re ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you're ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
 
 ## New Azure infrastructure innovations
 
@@ -86,7 +86,7 @@ To upgrade your cluster to Azure Stack HCI, version 21H2, see [Update Azure Stac
 
 ## New Azure Stack HCI sizing tool (public preview)
 
-To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new Azure Stack HCI sizing tool. This tool, currently in public preview, comes with no additional cost and does not require Azure subscription. Sign in with your personal Microsoft account (MSA) credentials (not a corporate account) to try the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer).
+To help plan your Azure Stack HCI solution, you can now estimate the hardware requirements and visualize utilization by using the new Azure Stack HCI sizing tool. This tool, currently in public preview, comes with no additional cost and does not require Azure subscription. Sign in with your personal Microsoft account (MSA) credentials (not a corporate account) to try the [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer).
 
 For more information, see the blog on the [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
 
