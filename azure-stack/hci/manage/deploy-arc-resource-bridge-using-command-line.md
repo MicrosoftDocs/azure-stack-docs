@@ -41,7 +41,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck  
    Install-Module -Name Moc -Repository PSGallery -AcceptLicense -Force
    Initialize-MocNode
-   Install-Module -Name ArcHci -RequiredVersion 0.2.7 -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
+   Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
    ```
 
 2. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster, using the parameters described below.
@@ -139,7 +139,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    mkdir $csv_path\ResourceBridge
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
    az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
    ```
    
