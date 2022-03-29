@@ -64,7 +64,8 @@ Use the specific API versions defined inside the package for the specific API-ve
     Profile consists of latest versions of all services. Use the latest versions of all the services in Azure.
 
 ## Profiles
-For profiles containing dates, to use a different SDK profile or version simply substitute the date in `@azure/arm-keyvault-profile-<date>-hybrid`. E.g., for 2008 version, the profile is `2019-03-01`, and the string would become `@azure/arm-keyvault-profile-2019-03-01-hybrid`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See table below for association of profiles and Azure Stack versions.
+
+For profiles containing dates, to use a different SDK profile or version you can substitute the date in `@azure/arm-keyvault-profile-<date>-hybrid`. For example, for the 2008 version, the profile is `2019-03-01`, and the string becomes `@azure/arm-keyvault-profile-2019-03-01-hybrid`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
 | Azure Stack Version | Profile |
 |---------------------|---------|
