@@ -7,6 +7,8 @@ ms.date: 09/08/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+#intent: As an IT Pro I want to learn how to create and delete pods in AKS.
+#keyword: create pods delete pods
 ---
 
 # Create and delete pods
