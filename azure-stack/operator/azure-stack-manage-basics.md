@@ -71,7 +71,7 @@ There are a few account considerations to be aware of when managing Azure Stack 
 |Azure AD Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 |
 
-[!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)
+[!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)]
 
 ## What tools do I use to manage?
  
