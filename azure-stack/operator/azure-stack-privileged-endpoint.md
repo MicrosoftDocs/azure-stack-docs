@@ -89,6 +89,8 @@ You will need set your current culture setting to `en-US` when running the privi
    > [!NOTE]
    > If you're unable to connect to the ERCS endpoint, retry steps one and two with another ERCS VM IP address.
 
+   [!INCLUDE] [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)
+
 1. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
 
    You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep/index.md)

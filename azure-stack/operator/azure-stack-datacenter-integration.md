@@ -193,6 +193,8 @@ If catastrophic data loss occurs, you can use the infrastructure backup to resee
 - RBAC policy and role assignments
 - Key Vault secrets
 
+[!INCLUDE] [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)
+
 ### Protect tenant apps on IaaS VMs
 
 Azure Stack Hub doesn't back up tenant apps and data. You must plan for backup and disaster recovery protection to a target external to Azure Stack Hub. Tenant protection is a tenant-driven activity. For IaaS VMs, tenants can use in-guest technologies to protect file folders, app data, and system state. However, as an enterprise or service provider, you may want to offer a backup and recovery solution in the same datacenter or externally in a cloud.

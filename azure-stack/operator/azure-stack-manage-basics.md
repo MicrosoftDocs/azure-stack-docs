@@ -71,6 +71,8 @@ There are a few account considerations to be aware of when managing Azure Stack 
 |Azure AD Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 |
 
+[!INCLUDE] [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)
+
 ## What tools do I use to manage?
  
 You can use the [administrator portal](azure-stack-manage-portals.md) or PowerShell to manage Azure Stack Hub. The easiest way to learn the basic concepts is through the portal. If you want to use PowerShell, there are preparation steps. Before you get started, you might want to get familiar with how PowerShell is used on Azure Stack Hub. For more information, see [Get started with PowerShell on Azure Stack Hub](../user/azure-stack-powershell-overview.md).
