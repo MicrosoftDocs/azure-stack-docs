@@ -35,7 +35,8 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/compute/mgmt/compu
 1. Install Go. API profiles for Azure require Go version 1.9 or newer. See [Go programming language](https://go.dev/dl/). 
 
 ## Profiles
-To use a different SDK profile or version, simply substitute the date in an import statement such as `github.com/Azure/azure-sdk-for-go/profiles/<date>/storage/mgmt/storage`. E.g., for 2008 version, the profile is `2019-03-01`, and the string would become `github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/storage/mgmt/storage`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See table below for association of profiles and Azure Stack versions.
+
+To use a different SDK profile or version, substitute the date in an import statement such as `github.com/Azure/azure-sdk-for-go/profiles/<date>/storage/mgmt/storage`. For example, for the 2008 version, the profile is `2019-03-01`, and the string becomes `github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/storage/mgmt/storage`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
 | Azure Stack Version | Profile |
 |---------------------|---------|
