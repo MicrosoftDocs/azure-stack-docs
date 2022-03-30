@@ -126,7 +126,7 @@ For instance, to get the list of parameters for a given cmdlet, run the followin
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternatively, you can use the [**Import-PSSession**](/powershell/module/microsoft.powershell.utility/import-pssession?view=powershell-5.1) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
+Alternatively, you can use the [**Import-PSSession**](/powershell/module/microsoft.powershell.utility/import-pssession) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
 
 To import the PEP session on your local machine, do the following steps:
 
