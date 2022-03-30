@@ -63,7 +63,7 @@ If an Arc Resource Bridge is not detected, a button is displayed to deploy Resou
 
  :::image type="content" source="media/manage-azure-arc-vm/deploy-resource-bridge-button.png" alt-text="[Windows Admin Center Deploy Resource Bridge button screenshot":::
 
-Perform the following steps to deploy Azure Arc Resource Bridge.
+Perform the following steps to deploy Azure Arc Resource Bridge:
 
 1. Select **Deploy Resource Bridge** to launch the setup wizard.
 
