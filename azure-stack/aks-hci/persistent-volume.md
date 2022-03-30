@@ -7,14 +7,15 @@ ms.date: 12/02/2020
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-
+#intent: As an IT Pro, I want to learn how to create and use persistent storage volumes in a Windows container and prepare Windows nodes.
+#keyword: persistent volumes PVC storage
 ---
 
 # Use persistent volume in an AKS on Azure Stack HCI cluster
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-A persistent volume represents a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It's also independent of pod or node lifecycle. While you can provision a PVC for both Windows and Linux nodes, in this section, you'll see how to create a persistent volume and how to use this volume in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
+A *persistent volume* is the term used to represent a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It is also independent of pod or node lifecycles. While you can provision a persistent volume for **both** Windows and Linux nodes, this section shows you how to create a persistent volume for use in your Windows application. For more information, see [Persistent volumes in Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/).
 
 ## Before you begin
 
@@ -25,7 +26,7 @@ Here's what you need to get started:
 
 ## Create a persistent volume claim
 
-A persistent volume claim is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy in the following YAML definition. The claim requests a disk that is 10 GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).  
+A persistent volume claim (PVC) is used to automatically provision storage based on a storage class. To create a volume claim, first create a file named `pvc-akshci-csi.yaml` and copy and paste the following YAML definition. The PVC requires a disk that is 10 GB in size with *ReadWriteOnce* access. The *default* storage class is specified as the storage class (vhdx).  
 
 ```yaml
 apiVersion: v1
@@ -39,7 +40,7 @@ spec:
   requests:
    storage: 10Gi
 ```
-Create the volume by running the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
+To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
 
 ```
 kubectl create -f pvc-akshci-csi.yaml 
@@ -53,7 +54,7 @@ persistentvolumeclaim/pvc-akshci-csi created
 
 ## Use persistent volume
 
-To use a persistent volume, create a file named winwebserver.yaml and copy in the following YAML definition. You will then create a pod with access to the persistent volume claim and vhdx. 
+To use a persistent volume, create a file named `winwebserver.yaml` and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx. 
 
 In the yaml definition below, *mountPath* is the path to mount a volume inside a container. After a successful pod creation, you will see the subdirectory *mnt* created in *C:\\* and the subdirectory *akshciscsi* created inside *mnt*.
 
@@ -97,7 +98,7 @@ To create a pod with the above yaml definition, run:
 kubectl create -f winwebserver.yaml 
 ```
 
-To make sure the pod is running, run the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
+To make sure the pod is running, execute the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
 ```
 kubectl get pods -o wide 
 ```
@@ -113,7 +114,7 @@ kubectl exec -it %podname% cmd.exe 
 
 ## Delete a persistent volume claim
 
-Before deleting a persistent volume claim, you must delete the app deployment by running:
+Before you delete a persistent volume claim, you must delete the app deployment by running:
 ```
 kubectl delete deployments win-webserver
 ```
