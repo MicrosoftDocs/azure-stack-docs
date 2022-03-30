@@ -77,7 +77,8 @@ gem install 'azure_sdk'
 ```
 
 ## Profiles
-For profiles containing dates, to use a different SDK profile or version simply substitute the date in `V<date>_Hybrid`. E.g., for 2008 version, the profile is `2019_03_01`, and the string would become `V2019_03_01_Hybrid`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See table below for association of profiles and Azure Stack versions.
+
+For profiles containing dates, to use a different SDK profile or version, substitute the date in `V<date>_Hybrid`. For example, for the 2008 version, the profile is `2019_03_01`, and the string becomes `V2019_03_01_Hybrid`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
 You may also use `latest` instead of the date.
 
