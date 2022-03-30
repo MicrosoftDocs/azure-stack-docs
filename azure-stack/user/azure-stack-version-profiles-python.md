@@ -39,7 +39,8 @@ The Python SDK supports the following API profiles:
 1. [Install Python SDK](/python/azure/python-sdk-azure-install?view=azure-python&preserve-view=true).
 
 ## Profiles
-For profiles containing dates, to use a different SDK profile or version simply substitute the date in `v<date>_hybrid`. E.g., for 2008 version, the profile is `2019_03_01`, and the string would become `v2019_03_01_hybrid`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See table below for association of profiles and Azure Stack versions.
+
+For profiles containing dates, to use a different SDK profile or version, substitute the date in `v<date>_hybrid`. For example, for the 2008 version, the profile is `2019_03_01`, and the string becomes `v2019_03_01_hybrid`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
 | Azure Stack Version | Profile |
 |---------------------|---------|
