@@ -61,7 +61,7 @@ With Microsoft Azure Backup Server (MABS) v3 UR2, you can now back up Azure Stac
 
 ### Azure Site Recovery support for Azure Stack HCI
 
-With Azure Site Recovery support, you can now continuously replicate virtual machines (VMs) from Azure Stack HCI to Azure, as well as fail over and fail back. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery.md)
+With Azure Site Recovery support, you can now continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. For more information, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery](manage/azure-site-recovery.md)
 
 ### Arc-enabled PaaS services on Azure Stack HCI (preview)
 
