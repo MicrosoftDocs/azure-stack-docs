@@ -76,6 +76,14 @@ Set-AzSVPNFastPath -Enable
 
 ![Enable VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enable.png)
 
+### Validate Azure Stack Hub VPN Fast Path is enabled using PowerShell
+
+```powershell
+Get-AzSVPNFastPath
+```
+
+![Enable VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-get.png)
+
 ## Azure Stack Hub Gateway Pool architecture
 
 There are three multi-tenant gateway infrastructure VMs in Azure Stack Hub. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
