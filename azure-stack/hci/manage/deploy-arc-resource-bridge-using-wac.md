@@ -24,7 +24,7 @@ This article describes how to use Windows Admin Center to deploy Azure Arc Resou
 
 - [Projecting virtual network and images](#project-virtual-network-and-images)
 
-If you want to deploy Azure Arc Resource Bridge using command line, see [Deploy Azure Arc Resource Bridge on Azure Stack HCI using command line][deploy-arc-resource-bridge-using-command-line.md].
+If you want to deploy Azure Arc Resource Bridge using command line, see [Deploy Azure Arc Resource Bridge on Azure Stack HCI using command line](deploy-arc-resource-bridge-using-command-line.md).
 
 For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
 
