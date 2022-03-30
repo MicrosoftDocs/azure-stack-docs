@@ -68,11 +68,13 @@ For the VPN Fast Path public preview, operators can enable the new feature using
 
 Existing setups can be adjusted by re-creating the virtual network gateway and its connections with one of the new SKUs.
 
-<!-- ### Enable Azure Stack Hub VPN Fast Path using PowerShell
+### Enable Azure Stack Hub VPN Fast Path using PowerShell
 
 ```powershell
-add here new commands for the operators to enable VPN Fast Path in public preview
-``` -->
+Set-AzSVPNFastPath -Enable
+```
+
+![Enable VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enable.png)
 
 ## Azure Stack Hub Gateway Pool architecture
 
