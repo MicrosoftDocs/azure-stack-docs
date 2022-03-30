@@ -36,7 +36,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
 ## Profiles
 
-For profiles containing dates, to use a different SDK profile or version, substitute the date in `Microsoft.Azure.Management.Profiles.hybrid_<date>.ResourceManager`. For example, for the 2008 version, the profile is `2019_03_01`, and the string would become `Microsoft.Azure.Management.Profiles.hybrid_2019_03_01.ResourceManager`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
+For profiles containing dates, to use a different SDK profile or version, substitute the date in `Microsoft.Azure.Management.Profiles.hybrid_<date>.ResourceManager`. For example, for the 2008 version, the profile is `2019_03_01`, and the string becomes `Microsoft.Azure.Management.Profiles.hybrid_2019_03_01.ResourceManager`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
 | Azure Stack Version | Profile |
 |---------------------|---------|
