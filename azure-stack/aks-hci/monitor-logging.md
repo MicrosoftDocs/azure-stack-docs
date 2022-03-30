@@ -7,6 +7,8 @@ ms.date: 06/22/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+#intent: As an IT Pro, I want to learn how to monitor and view logging data for AKS.
+#keyword: monitor data logging data
 
 ---
 
@@ -58,7 +60,7 @@ To view the Grafana dashboards available in AKS on Azure Stack HCI, see [Grafana
 
 This section describes the two options you can use to deploy monitoring on a workload cluster.
 
-### Option one: Deploy the monitoring solution when creating the workload cluster
+### Option 1: Deploy the monitoring solution when creating the workload cluster
 
 To enable monitoring, provide the `-enableMonitoring` parameter when creating the workload cluster using [New-AksHciCluster](./reference/ps/new-akshcicluster.md) as shown in the following example:
 
@@ -71,7 +73,7 @@ Monitoring is installed with the following default configuration:
 - The size of the persistent volume that's provisioned to store metrics (`storageSizeGB`) is 100 GB.
 - The retention time for collected metrics (`retentionTimeHours`) is 240 hours (or 10 days).
 
-### Option two: Deploy the monitoring solution on an existing workload cluster 
+### Option 2: Deploy the monitoring solution on an existing workload cluster 
 
 Run the [Install-AksHciMonitoring](./reference/ps/install-akshcimonitoring.md) command to deploy the monitoring solution on an existing workload cluster as shown below:
 
