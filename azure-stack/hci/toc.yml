@@ -92,10 +92,22 @@
       href: manage/processor-compatibility-mode.md
     - name: Use GPUs with clustered VMs
       href: manage/use-gpu-with-clustered-vm.md
-    - name: Azure Arc-enabled VMs (preview)
-      href: manage/azure-arc-enabled-virtual-machines.md
     - name: Attach GPU to Linux VM
       href: manage/attach-gpu-to-linux-vm.md
+  - name: Manage Azure Arc-enabled VMs (preview)
+    items:
+    - name: Manage Azure Arc-enabled VMs
+      href: manage/azure-arc-enabled-virtual-machines.md
+    - name: Deploy Azure Arc Resource Bridge using command line
+      href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Manage Arc-enabled VMs in Azure portal
+      href: manage/manage-virtual-machines-in-azure-portal.md
+    - name: Uninstall Azure Arc Resource Bridge
+      href: manage/uninstall-arc-resource-bridge.md
+    - name: Troubleshoot
+      href: manage/troubleshoot-arc-enabled-vms.md
+    - name: FAQs
+      href: manage/faqs-arc-enabled-vms.md
   - name: Manage storage
     items:
     - name: Create volumes
@@ -291,9 +303,9 @@
   - name: Azure Stack HCI Java service classes and interfaces
     href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
   - name: Azure Stack HCI management service Python package
-    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python
+    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
   - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest
+    href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest&preserve-view=true
   - name: Azure Stack HCI REST API reference
     href: /rest/api/stackhci
   - name: .NET Namespaces for Azure Stack HCI

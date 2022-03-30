@@ -4,7 +4,7 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 03/10/2022
+ms.lastreviewed: 03/22/2022
 ms.reviewer: abha
 ms.date: 03/10/2022
 
@@ -158,10 +158,10 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 | Firewall port               | Description     |
 | ---------------------------- | ------------ |
-| 45000           | wssdagent GPRC   server port     |
-| 45001             | wssdagent GPRC authentication port  |
-| 55000           | wssdcloudagent GPRC   server port      |
-| 65000            | wssdcloudagent GPRC authentication port  |
+| 45000           | wssdagent gRPC   server port     |
+| 45001             | wssdagent gRPC authentication port  |
+| 55000           | wssdcloudagent gRPC   server port      |
+| 65000            | wssdcloudagent gRPC authentication port  |
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 
