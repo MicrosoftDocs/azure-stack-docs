@@ -67,6 +67,10 @@ With Azure Site Recovery support, you can now continuously replicate VMs from Az
 
 Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](/azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](/azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](/azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
 
+### Arc-enabled VM management on Azure Stack HCI (preview)
+
+Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision and manage on-premises Windows and Linux VMs running on Azure Stack HCI clusters. For more information about managing Arc-enabled VMs, see [Manage Arc-enabled VMs](manage/azure-arc-enabled-virtual-machines.md).
+ 
 ### Multi-cluster monitoring in the Azure portal (preview)
 
 Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you're ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
