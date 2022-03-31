@@ -7,12 +7,14 @@ ms.date: 04/16/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+#intent: As an IT Pro, I need to understand the storage options available for applications in AKS so that I can optimize how to best to store and retrieve data.
+#keyword: storage options PV claims
 
 ---
 
 # Storage options for applications in AKS on Azure Stack HCI
 
-Applications that run in AKS on Azure Stack HCI may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
+Applications that run in AKS on Azure Stack HCI may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
 
 ![Architectural storage image showing a cluster master and node](media/storage-architecture.png)
 
@@ -20,7 +22,7 @@ This article introduces the core concepts that provide storage to your applicati
 - Volumes 
 - Persistent volumes 
 - Storage classes 
-- Persistent volume claims 
+- Persistent volume claims (PVC) 
 
 ## Volumes
 Applications often need to be able to store and retrieve data. As Kubernetes typically treats individual pods as temporary, disposable resources, different approaches are available for applications to use and persist data. A volume represents a way to store, retrieve, and persist data across pods and through the application lifecycle. 
@@ -31,7 +33,7 @@ In Kubernetes, volumes can represent more than just a traditional disk where inf
 
 - `secret` - This volume is used to include sensitive data, such as passwords, into pods. First, you create a secret using the Kubernetes API. When you define your pod or deployment, you can request a specific secret. Secrets are only provided to nodes with a scheduled pod that requires it, and the secret is stored in _tmpfs_, and not written to disk. When the last pod on a node that requires a secret is deleted, the secret is deleted from the node's tmpfs. Secrets are stored within a given namespace and can only be accessed by pods within the same namespace. 
 
-- `configMap` - This volume type is used to inject key-value pair properties into pods, such as application configuration information. Rather than defining application configuration information within a container image, you can define it as a Kubernetes resource that can be easily updated and applied to new instances of pods as they are deployed. Similar to using a secret, you first create a ConfigMap using the Kubernetes API. This ConfigMap can then be requested when you define a pod or deployment. ConfigMaps are stored within a given namespace and can only be accessed by pods within the same namespace. 
+- `configMap` - This volume type is used to inject key-value pair properties into pods, such as application configuration information. Instead of defining application configuration information within a container image, you can define it as a Kubernetes resource that can be easily updated and applied to new instances of pods as they are deployed. Similar to using a secret, you first create a ConfigMap using the Kubernetes API. This ConfigMap can then be requested when you define a pod or deployment. ConfigMaps are stored within a given namespace and can only be accessed by pods within the same namespace. 
 
 ## Persistent volumes
 Volumes that are defined and created as part of the pod lifecycle only exist until the pod is deleted. Pods often expect their storage to remain if a pod is rescheduled on a different host during a maintenance event, especially in StatefulSets. A persistent volume is a storage resource created and managed by the Kubernetes API that can exist beyond the lifetime of an individual pod. 
