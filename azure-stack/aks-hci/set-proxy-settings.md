@@ -62,7 +62,7 @@ Get-Command -Module AksHci
 ```
 To view the complete list of AksHci PowerShell commands, see [AksHci PowerShell](./reference/ps/index.md).
 
-When you download AksHci PowerShell moduel, we also download Az PowerShell modules that are required for registering for AKS host to Azure for billing. If a proxy is necessary for an HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
+When you download AksHci PowerShell module, we also download Az PowerShell modules that are required for registering for AKS host to Azure for billing. If a proxy is necessary for an HTTP request, the Azure PowerShell team recommends the following proxy configuration for different platforms:
 
 
 |      **Platform**       |    **Recommended Proxy Settings**    |         **Comment**   |
