@@ -96,10 +96,12 @@
       href: manage/attach-gpu-to-linux-vm.md
   - name: Manage Azure Arc-enabled VMs (preview)
     items:
-    - name: Manage Azure Arc-enabled VMs
+    - name: Set up Azure Arc-enabled VMs
       href: manage/azure-arc-enabled-virtual-machines.md
-    - name: Deploy Azure Arc Resource Bridge using command line
+    - name: Deploy Arc Resource Bridge using command line
       href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Deploy Arc Resource Bridge using Windows Admin Center
+      href: manage/deploy-arc-resource-bridge-using-wac.md
     - name: Manage Arc-enabled VMs in Azure portal
       href: manage/manage-virtual-machines-in-azure-portal.md
     - name: Uninstall Azure Arc Resource Bridge
