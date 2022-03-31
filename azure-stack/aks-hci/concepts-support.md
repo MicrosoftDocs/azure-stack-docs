@@ -15,7 +15,7 @@ ms.custom: references_regions
 
 # Tested resource limits, VM sizes, and regions on Azure Stack HCI
 
-In this article you can find information about tested resource limits, VM sizes, and regions on Azure Stack HCI for Azure Kubernetes Service on Azure Stack HCI.
+In this article, you can find information about tested resource limits, VM sizes, and regions on Azure Stack HCI for Azure Kubernetes Service on Azure Stack HCI.
 ## Maximum specifications
 
 Azure Kubernetes Service on Azure Stack HCI deployments 's been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or submit a question in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
