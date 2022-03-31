@@ -8,11 +8,13 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
+#intent: As an IT Pro, I want to learn about the advantages of using container networking in AKS.
+#keyword: Container networking applications networking
 ---
 
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
 
-In a container-based microservices approach to application development, application components must work together to process their tasks. Kubernetes provides various resources that enable this application communication where you can connect to and expose applications internally or externally. To build highly available applications, you can load balance your applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. For security reasons, you may also need to restrict the flow of network traffic into or between pods and nodes.
+In a container-based microservices approach to application development, application components must work together to process their tasks. Kubernetes provides various resources that enable application communications and allow you to connect to and expose applications internally or externally. To build highly available applications, you can load balance your applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. For security reasons, you may also need to restrict the flow of network traffic into or between pods and nodes.
 
 This article introduces the core concepts that provide networking to your applications in AKS on Azure Stack HCI:
 
@@ -36,7 +38,7 @@ To simplify the network configuration for application workloads, Kubernetes uses
 
 ![Diagram showing Load Balancer traffic flow in an AKS-HCI cluster](media/net/aks-load-balancer.png)
 
-For additional control and routing of the inbound traffic, you may instead use an Ingress controller.
+For other control and routing of the inbound traffic, you may instead use an Ingress controller.
 
 **ExternalName** - Creates a specific DNS entry for easier application access.
 
@@ -86,7 +88,7 @@ For more information about the Calico Network plug-in and policies, check out [g
 
 #### Flannel
 
-Flannel is a virtual networking layer designed specifically for containers. Flannel creates a flat network that overlays the host network. All containers/pods will be assigned one IP address in this overlay network, and they communicate with each other by directly connecting to each other’s IP address.
+Flannel is a virtual networking layer designed specifically for containers. Flannel creates a flat network that overlays the host network. All containers/pods are assigned one IP address in this overlay network, and communicate directly by connecting to each other’s IP address.
 
 #### Calico
 
