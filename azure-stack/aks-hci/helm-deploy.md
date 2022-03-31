@@ -7,6 +7,8 @@ ms.date: 04/13/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+#intent: As an IT Pro, I want to learn how to deploy applications with Helm on AKS
+#keyword: Helm chart Helm deployment
 
 ---
 
@@ -14,10 +16,10 @@ ms.reviewer: rbaziwane
 
 [Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as *APT* and *Yum*, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-In this topic, you'll use Helm to package and deploy an application on AKS on Azure Stack HCI. 
+In this topic, you'll learn how to use Helm to package and deploy an application on AKS on Azure Stack HCI. 
 
 ## Before you begin
-Verify that you have the following set up:
+Verify that you have the following requirements set up:
 
 * An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
 * You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
@@ -69,14 +71,14 @@ acr.azurecr.io/mymicroservice 0.1.0   5be713db571b   About a minute ago 107MB
 ....
 ```
 
-Next, you need to push your image up to a container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/). In this example, the container image is pushed to Azure Container Registry (ACR). To learn more, see [pulling images from ACR to a Kubernetes cluster](/azure/container-registry/container-registry-auth-kubernetes).
+Next, you need to push your image up to a container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/). In this example, the container image is pushed to Azure Container Registry (ACR). To learn more, see [Pull images from an ACR to a Kubernetes cluster](/azure/container-registry/container-registry-auth-kubernetes).
 
 ```
 docker push acr.azurecr.io/mymicroservice:0.1.0
 ```
 
-## Create your helm chart
-Now that you have the sample application ready, the next step is to generate a helm chart using the `helm create` command as shown below:
+## Create your Helm chart
+Now that you have the sample application ready, the next step is to generate a Helm chart using the `helm create` command as shown below:
 
 ```Console
 helm create mymicroserviceapp
@@ -123,7 +125,7 @@ Navigate to the *mymicroserviceapp/templates/deployment.yaml* file to configure 
 ...
 ```
 
-## Deploy your helm chart to Kubernetes
+## Deploy your Helm chart to Kubernetes
 
 Starting from the *charts\mymicroserviceapp* directory in the solution directory, run the following command:
 
@@ -145,7 +147,7 @@ NOTES:
   export NODE_IP=$(kubectl get nodes --namespace local -o jsonpath="{.items[0].status.addresses[0].address}")
   echo http://$NODE_IP:$NODE_PORT
 ```
-After deploying the helm chart, you can check that the resources were correctly deployed by running `kubectl get all -n local`. 
+After deploying the Helm chart, you can check that the resources were correctly deployed by running `kubectl get all -n local`. 
 
 The output from running the command is shown below:
 

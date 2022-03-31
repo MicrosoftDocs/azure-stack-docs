@@ -104,9 +104,6 @@ The _kube-vip_ pod can go down for two reasons:
 
 To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
 
-## Deployment fails on an Azure Stack HCI configured with SDN
-While deploying an AKS on Azure Stack HCI cluster and Azure Stack HCI has Software Defined Network (SDN) configured, the cluster creation fails because SDN is not supported with AKS on Azure Stack HCI.
-
 ## When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
 When deploying AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
 
