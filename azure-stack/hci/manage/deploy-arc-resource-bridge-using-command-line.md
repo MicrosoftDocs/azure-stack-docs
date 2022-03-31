@@ -44,6 +44,11 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    ```PowerShell
    Install-PackageProvider -Name NuGet -Force 
    Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck  
+   ```
+   
+   Restart any open PowerShell windows.
+   
+   ```PowerShell
    Install-Module -Name Moc -Repository PSGallery -AcceptLicense -Force
    Initialize-MocNode
    Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
