@@ -24,7 +24,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - All servers in the cluster must be running Azure Stack HCI, version 21H2.
 
-- Must use physical host that are Azure Stack HCI certified.
+- Must use physical hosts that are Azure Stack HCI certified.
 
 - Any number of cluster nodes are supported.
 
