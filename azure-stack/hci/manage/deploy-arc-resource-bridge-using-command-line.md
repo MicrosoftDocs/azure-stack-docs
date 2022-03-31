@@ -14,11 +14,16 @@ ms.reviewer: JasonGerend
 
 To enable virtual machine (VM) provisioning through the Azure portal on Azure Stack HCI, you need to deploy [Azure Arc Resource Bridge](azure-arc-enabled-virtual-machines.md#what-is-azure-arc-resource-bridge).
 
+You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Windows Admin Center or command line.
+
 This article describes how to use command line to deploy Azure Arc Resource Bridge, which includes:
 
 - [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
 - [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
+
+
+If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
 For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
 
@@ -39,9 +44,14 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    ```PowerShell
    Install-PackageProvider -Name NuGet -Force 
    Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck  
+   ```
+   
+   Restart any open PowerShell windows.
+   
+   ```PowerShell
    Install-Module -Name Moc -Repository PSGallery -AcceptLicense -Force
    Initialize-MocNode
-   Install-Module -Name ArcHci -RequiredVersion 0.2.7 -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
+   Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
    ```
 
 2. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster, using the parameters described below.
@@ -139,7 +149,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    mkdir $csv_path\ResourceBridge
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
    az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
    ```
    

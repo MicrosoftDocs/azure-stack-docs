@@ -61,6 +61,7 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
 - An IT administrator can't view or manage VMs from cluster resource page in the Azure portal, if they are created in a subscription where the IT administrator does not have at least read-only access role.
 - If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
 - Arc VM management is currently not available for stretched cluster configurations on Azure Stack HCI.
+- Support for Arc Resource Bridge & Arc VM Management is currently available only in English language.
 
 ## Next steps
 
