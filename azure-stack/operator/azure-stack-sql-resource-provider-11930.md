@@ -22,8 +22,11 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 
 > |Supported Azure Stack Hub version|SQL resource provider version|
 > |-----|-----|
-> |Version 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|  
+> |Version 2108*， 2102, 2008, 2005|[SQL RP version 1.1.93.5](https://aka.ms/azshsqlrp11935)|  
 > |     |     |
+
+> [!NOTE]
+> It is supported to run SQL RP 1.1.93.x on Azure Stack 2108, however it is an known issue that the monitoring panel cannot load.
 
 > [!IMPORTANT]
 > Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system before deploying the latest version of the MySQL resource provider.
