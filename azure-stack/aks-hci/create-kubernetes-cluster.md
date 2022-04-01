@@ -46,9 +46,9 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
    When you're finished, select **Next**.
 
-4. In the **Authentication** step, select whether you'd like to enable Active Directory authentication. If you choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
+4. In the **Authentication** step, select whether you'd like to enable Active Directory authentication. If you choose to enable this feature, you'll need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
 
-5. Specify your network configuration on the **Networking** page. You can either select an existing virtual network or create a new one by clicking on **Add network interface**. If you select the **Flannel** container network interface (CNI), keep in mind that only Windows or hybrid clusters are supported. Once **Flannel** is set, it cannot be changed, and the cluster will not support any network policy. If the **Calico** CNI is selected, note that it is not needed to support Calico Network Policy and Calico will be the default option for your network policy under **Security**. When complete, select **Next: Review + Create**.
+5. Specify your network configuration on the **Networking** page. You can either select an existing virtual network or create a new one by clicking on **Add network interface**. If you select the **Flannel** container network interface (CNI), keep in mind that only Windows or hybrid clusters are supported. Once **Flannel** is set, it can't be changed, and the cluster won't support any network policy. If the **Calico** CNI is selected, it isn't needed to support Calico Network Policy and Calico will be the default option for your network policy under **Security**. When complete, select **Next: Review + Create**.
 
     The following image illustrates the static IP configuration settings:
 

@@ -15,7 +15,7 @@ author: mattbriggs
 
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
 
-In a container-based microservices approach to application development, application components must work together to process their tasks. Kubernetes provides various resources that enable application communications and allow you to connect to and expose applications internally or externally. To build highly available applications, you can load balance your applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. For security reasons, you may also need to restrict the flow of network traffic into or between pods and nodes.
+Application components must work together to process their tasks in a container-based microservices approach. Kubernetes provides resources that enable application communications and allow you to connect to and expose applications internally or externally. You can load balance your applications to build highly available applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You may also need to restrict the flow of network traffic into or between pods and nodes for security.
 
 This article introduces the core concepts that provide networking to your applications in AKS on Azure Stack HCI:
 
@@ -44,7 +44,7 @@ For other control and routing of the inbound traffic, you may instead use an Ing
 **ExternalName** - Creates a specific DNS entry for easier application access.
 
 The IP addresses for load balancers and services can be internal or external addresses depending on your overall network setup and can be dynamically assigned. Or, you can specify an existing static IP address to use. An existing static IP address is often tied to a DNS entry.
-Internal load balancers are only assigned a private IP address, so they cannot be accessed from the Internet.
+Internal load balancers are only assigned a private IP address, so they can't be accessed from the Internet.
 
 ## Kubernetes networking basics on Azure Stack HCI
 

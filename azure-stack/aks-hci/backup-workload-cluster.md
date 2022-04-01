@@ -15,7 +15,7 @@ ms.reviewer: scooley
 
 # Perform workload cluster backup or restore using Velero and Azure Blob storage
 
-You can create a workload cluster backup or restore from a backup on AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports a variety of [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
+You can create a workload cluster backup or restore from a backup on AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports several [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
@@ -99,7 +99,7 @@ Use the following steps to deploy and configure Velero:
    --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID[ /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID]`
    ```
 
-   Ensure that the value for `--name` does not conflict with other service principals and app registrations.
+   Ensure that the value for `--name` doesn't conflict with other service principals and app registrations.
 
    After creating the service principal, obtain the client ID by running the following command:
 
@@ -124,7 +124,7 @@ Use the following steps to deploy and configure Velero:
 
    Install Velero, including all the prerequisites, on the cluster, and then start the deployment. The deployment creates a namespace called `velero` and places a deployment named `velero` in it.
 
-   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI does not support volume snapshots.
+   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI doesn't support volume snapshots.
 
    ```powershell
    velero install \
@@ -163,7 +163,7 @@ After following the instructions above, you can view the backup in your Azure st
 
 ## Use Velero to restore a workload cluster
 
-You must first create a new cluster to restore to since you cannot restore a cluster backup to an existing cluster. The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. 
+You must first create a new cluster to restore to since you can't restore a cluster backup to an existing cluster. The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. 
 
 On the destination cluster where you want to restore the backup, run the following steps:
 
@@ -192,7 +192,7 @@ kubectl delete crds -l component=velero
 
 ## Additional notes
 
-- Velero on Windows: Velero does not officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes are not supported.
+- Velero on Windows: Velero doesn't officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes aren't supported.
 
 - Velero CLI help: To see all options associated with a specific command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. Or, to list all options of `velero restore`, run `velero restore --help`:
 
