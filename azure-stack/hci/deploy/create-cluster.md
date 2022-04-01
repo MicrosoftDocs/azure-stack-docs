@@ -95,7 +95,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps.
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
-    - **Define intents with Network ATC** - we recommend this option. For more information on using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
+    - **Define intents with Network ATC** - (Recommended) For more information on using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
     - **Manually configure host networking** - use to configure host networking manually. For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 
 ## Step 2: Networking
