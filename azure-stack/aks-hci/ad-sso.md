@@ -1,25 +1,27 @@
 ---
-title: Use Active Directory single sign-on in AKS for Azure Stack HCI
+title: Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS for Azure Stack HCI
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: mattbriggs
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: lahirisl
-#intent:
-#keyword: Single sign-on AD authentication
 
+# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials
+# Keyword: secure connection to Kubernetes API server
 
 ---
 
-# Use Active Directory single sign-on (SSO) credentials for AKS on Azure Stack HCI
+# Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS for Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
+You can create a secure connection to Kubernetes API server using Active Directory (AD) single sign-on (SSO) credentials. 
+
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
-As an alternative to using certificate-based _kubeconfig_, you can use Active Directory (AD) single sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service on Azure Stack HCI lets users on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
+As an alternative to using certificate-based _kubeconfig_, you can use AD SSO sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service on Azure Stack HCI lets users on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
 
 AD integration uses AD _kubeconfig_, which is distinct from the certificate-based _kubeconfig_ files and doesn't contain any secrets. However, the certificate-based _kubeconfig_ file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 
@@ -40,7 +42,7 @@ Before you start the process of configuring Active Directory SSO credentials, yo
 
  - The latest **Aks-Hci PowerShell** module is installed. If you need to install it, see [download and install the AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module). 
  - The AKS host is installed and configured. If you need to install the host, follow the steps to [configure your deployment](./kubernetes-walkthrough-powershell.md#step-3-configure-your-deployment).  
- - The keytab file is available to use. If it is not available, follow the steps to [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
+ - The keytab file is available to use. If it isn't available, follow the steps to [create the API server AD account and the keytab file](#create-the-api-server-ad-account-and-the-keytab-file). 
  
    > [!NOTE]
    > You should generate the keytab file for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You must also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
@@ -52,7 +54,7 @@ Before you start the process of configuring Active Directory SSO credentials, yo
 
 ### Step 1: Create the workload cluster and enable AD authentication
 
-Before you install AD authentication, you must first create an AKS on Azure Stack HCI workload cluster and enable the AD authentication add-on on the cluster. If you don't enable AD authentication when you create the new cluster, you will not be able to enable it later.
+Before you install AD authentication, you must first create an AKS on Azure Stack HCI workload cluster and enable the AD authentication add-on on the cluster. If you don't enable AD authentication when you create the new cluster, you won't be able to enable it later.
 
 Open PowerShell as an administrator and run the following using the **-enableADAuth** parameter of the `New-AksHciCluster` command:
 
@@ -81,7 +83,7 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 
 #### Option 2
 
-If the cluster host is not domain-joined, use the admin user name or group name in SID format as shown in the example below:
+If the cluster host isn't domain-joined, use the admin user name or group name in SID format as shown in the example below:
  
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8
@@ -120,7 +122,7 @@ You need to make sure the AD webhook is running on the API server and the keytab
 ### Step 4: Create the AD kubeconfig file
 
 Once the AD webhook and keytab are successfully deployed, create the AD _kubeconfig_ file.
-After the file is created, copy the AD _kubeconfig_ file to the client machine and use it to authenticate to the API server. Unlike the certificate-based _kubeconfig_ file, AD _kubeconfig_ is not a secret and is safe to copy as plain text.
+After the file is created, copy the AD _kubeconfig_ file to the client machine and use it to authenticate to the API server. Unlike the certificate-based _kubeconfig_ file, AD _kubeconfig_ isn't a secret and is safe to copy as plain text.
 
 Open PowerShell as an administrator and run the following command:  
 
@@ -140,7 +142,7 @@ You should copy the three files listed below from the Azure Stack HCI cluster to
 
 ### Step 6: Connect to the API server from the client machine
 
-After you've completed the previous steps, use your SSO credentials to log in to your Windows domain-joined client machine. Open PowerShell, and then attempt to access the API server using `kubectl`. If you are successfully able to complete the operation, you have set up AD SSO correctly.
+After you've completed the previous steps, use your SSO credentials to sign in to your Windows domain-joined client machine. Open PowerShell, and then attempt to access the API server using `kubectl`. If you're successfully able to complete the operation, you have set up AD SSO correctly.
 
 ## Create and update the AD group role binding
 
@@ -296,7 +298,7 @@ If you see certificate validation errors, complete the steps to [uninstall and r
 ## Clean up and best practices
 
 - Use a unique account for each cluster.
-- Do not reuse the password for the API server account across clusters.
+- Don't reuse the password for the API server account across clusters.
 - Delete the local copy of the keytab file as soon as you create the cluster and verify that the SSO credentials work.
 - Delete the Active Directory user that was created for the API server. For more information, see [Remove-ADUser](/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps).
 

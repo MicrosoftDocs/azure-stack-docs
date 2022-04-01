@@ -3,18 +3,20 @@ title: Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack 
 description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS on Azure Stack HCI)
 services: container-service
 ms.topic: article
-ms.date: 12/07/2021
+ms.date: 04/01/2022
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
-#intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS.
-#keyword: Kubernetes versioning Semantic Versioning
+
+# Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS.
+# Keyword: supported Kubernetes versions
+
 ---
 
 # Supported Kubernetes versions in Azure Kubernetes Service (AKS on Azure Stack HCI)
 
-The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19. 
+You can find the supported Kubernetes versions in AKS on Azure Stack Hub in this topic. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19. 
 
 Minor version releases include new features and improvements. Patch releases are more frequent (sometimes weekly) and are intended for critical bug fixes within a minor version. Patch releases include fixes for security vulnerabilities or major bugs.
 
