@@ -17,10 +17,11 @@ ms.lastreviewed: 3/23/2022
 
 # Use API version profiles with Java in Azure Stack Hub
 
-::: moniker range=">=azs-2102"
 The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and Azure Key Vault. You can find the [Hybrid Java Samples repository](https://github.com/Azure-Samples/Hybrid-Java-Samples) on GitHub. This article will help you set up your environment, get the right credentials, grab the repository, and create a resource group in Azure Stack Hub.
 
 Using the Java SDK enables a true hybrid cloud developer experience. Switching the version dependencies in the `POM.xml` in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources to resources in Azure Stack Hub.
+
+::: moniker range=">=azs-2102"
 
 To use the latest version of the services, use the **latest** profile as the dependency.
 
