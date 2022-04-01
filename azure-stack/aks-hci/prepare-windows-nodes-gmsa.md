@@ -1,6 +1,6 @@
 ---
 title: Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI
-description: Learn how to configure  Managed Service Accounts (gMSA)for containers on Windows nodes
+description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/01/2022
