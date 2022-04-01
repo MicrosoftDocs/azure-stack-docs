@@ -1,5 +1,5 @@
 ---
-title: Concepts - Kubernetes cluster architecture for Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Kubernetes cluster architecture for Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service on Azure Stack HCI features
 author: mattbriggs
 ms.author: mabrigg 
@@ -7,11 +7,13 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: daschott
 ms.topic: conceptual
 ms.date: 08/03/2021
-#intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features in ASK on Azure Stack HCI.
-#keyword: basic clusters workload components 
+
+# Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features in ASK in global Azure.
+# Keyword: Kubernetes cluster architecture
+
 ---
 
-# Clusters and workloads for Azure Kubernetes Service on Azure Stack HCI
+# Kubernetes cluster architecture and workloads for Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
@@ -19,7 +21,7 @@ Azure Kubernetes Service (AKS) on Azure Stack HCI is an enterprise-grade Kuber
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
-## Cluster components
+## Kubernetes cluster architecture
 
 Kubernetes is the core component of the Azure Kubernetes Service on Azure Stack HCI. Azure Kubernetes Service on Azure Stack HCI uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
 

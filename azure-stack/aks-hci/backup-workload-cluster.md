@@ -1,19 +1,21 @@
 ---
-title: Back up and restore workload clusters using Velero and Azure Blob storage in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI
 description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
-#intent: As an IT Pro, I want to learn how to back up and restore workload clusters.   
-#keyword: workload clusters backup storage
+
+# Intent: As an IT Pro, I want to learn how to perform a workload cluster backup or restore so I can recover from a failure or disaster.   
+# Keyword: workload cluster backup
+
 ---
 
-# Back up and restore workload clusters using Velero and Azure Blob storage
+# Perform workload cluster backup or restore using Velero and Azure Blob storage
 
-This topic describes how to back up and restore AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports a variety of [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
+You can create a workload cluster backup or restore from a backup on AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports a variety of [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
@@ -141,7 +143,7 @@ Use the following steps to deploy and configure Velero:
    kubectl logs deployment/velero -n Velero
    ```
 
-## Use Velero to back up a workload cluster
+## Use Velero to create a workload cluster backup
 
 You can back up or restore all objects in your cluster, or you can filter objects by type, namespace, or label.
 

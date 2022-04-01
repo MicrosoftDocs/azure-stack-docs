@@ -2,14 +2,15 @@
 title: Concepts - Container networking in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about container networking in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.custom: fasttrack-edit
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
-#intent: As an IT Pro, I want to learn about the advantages of using container networking in AKS.
-#keyword: Container networking applications networking
+
+# Intent: As an IT Pro, I want to learn about the advantages of using container networking in AKS.
+# Keyword: Container applications networking
+
 ---
 
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
