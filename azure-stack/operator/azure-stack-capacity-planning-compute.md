@@ -38,10 +38,12 @@ Since placement algorithms don't look at the existing virtual to physical core o
 
 ## Consideration for total number of VMs
 
-There is a limit on the total number of VMs that can be created. The total number of VMs on Azure Stack Hub is 700 and 60 per scale unit node. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
+There is a limit on the total number of VMs that can be created. The maximum number of VMs on Azure Stack Hub is 700 and 60 per scale unit node. For example, an eight-server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. 
 
 If the VM scale limit is reached, the following error codes are returned as a result: `VMsPerScaleUnitLimitExceeded`, `VMsPerScaleUnitNodeLimitExceeded`.
 
+> [!NOTE]
+> A portion of the 700 VM maximum is reserved for Azure Stack Hub infrastructure VMs. For more information, refer to the [Azure Stack Hub capacity planner](https://aka.ms/azstackcapacityplanner).
 ## Consideration for batch deployment of VMs
 
 In releases prior to and including 2002, 2-5 VMs per batch with 5 mins gap in between batches provided reliable VM deployments to reach a scale of 700 VMs. With the 2005 version of Azure Stack Hub onwards, we are able to reliably provision VMs at batch sizes of 40 with 5 mins gap in between batch deployments. Start, Stop-deallocate, and update operations should be done at a batch size of 30, leaving 5 mins in between each batch.
@@ -62,7 +64,7 @@ You can review a pie chart in the administrator portal that shows the free and u
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart:  
 
 - **Host OS usage or reserve:** The memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
-- **Infrastructure services:** The infrastructure VMs that make up Azure Stack Hub. As of the 2102 release version of Azure Stack Hub, this includes approximately 31 VMs that take up 268 GB + (4 GB x no. of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
+- **Infrastructure services:** The infrastructure VMs that make up Azure Stack Hub. As discussed previously, these VMs are part of the 700 VM maximum. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient. For more information see the [Azure Stack Hub capacity planner](https://aka.ms/azstackcapacityplanner)
 - **Resiliency reserve:** Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
 - **Tenant VMs:** The tenant VMs created by Azure Stack Hub users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli won't consume memory from Azure Stack Hub.
 - **Value-add resource providers (RPs):** VMs deployed for the value-add RPs like SQL, MySQL, App Service, and so on.
