@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 03/22/2022
+ms.lastreviewed: 04/04/2022
 ms.reviewer: abha
-ms.date: 03/10/2022
+ms.date: 04/04/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -42,7 +42,6 @@ AKS on Azure Stack HCI deployments that exceed the following specifications aren
 | Resource                     | Maximum |
 | ---------------------------- | --------|
 | Physical servers per cluster | 8       |
-| Kubernetes Clusters          | 8       |
 | Total number of VMs          | 200     |
 
 ## Compute requirements
