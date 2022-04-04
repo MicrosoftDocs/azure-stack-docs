@@ -2,23 +2,25 @@
 title: Kubernetes Secrets Store CSI Driver integration with AKS on Azure Stack HCI
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with Azure Kubernetes Service (AKS) on Azure Stack HCI.
 ms.topic: how-to
-ms.date: 02/01/2022
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 02/01/2022
 ms.reviewer: jeguan
 author: mattbriggs
-#intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
-#keyword: secret stores CSI driver
+
+# Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
+# Keyword: secrets stores CSI driver
+
 ---
 
 # Use the Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with AKS on Azure Stack HCI
 
-> [!NOTE]
-> AKS on Azure Stack HCI preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and it's recommended that you do not use these features in production scenarios. AKS on Azure Stack HCI preview features are partially covered by customer support on a best-effort basis.
-
-The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrating the Secrets Store CSI Driver with AKS on Azure Stack HCI allows you to mount secrets, keys, and certificates as a volume. The data is then mounted into the container's file system. 
+The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrate the Secrets Store CSI Driver with AKS on Azure Stack HCI allows to mount secrets, keys, and certificates as a volume. The data is then mounted into the container's file system. 
 
 With the Secrets Store CSI Driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
+
+> [!NOTE]  
+> AKS on Azure Stack HCI preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and it's recommended that you do not use these features in production scenarios. AKS on Azure Stack HCI preview features are partially covered by customer support on a best-effort basis.
 
 ## Before you begin
 
