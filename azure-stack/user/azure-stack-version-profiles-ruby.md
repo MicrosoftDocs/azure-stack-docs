@@ -82,7 +82,7 @@ For profiles containing dates, to use a different SDK profile or version, substi
 
 You may also use `latest` instead of the date.
 
-| Azure Stack Version | Profile |
+| Azure Stack version | Profile |
 |---------------------|---------|
 |2108|2020_09_01|
 |2102|2020_09_01|
@@ -94,7 +94,7 @@ See [Ruby SDK profiles](https://github.com/Azure/azure-sdk-for-ruby/tree/master/
 
 ## Subscription
 
-If you do not already have a subscription, create a subscription and save the subscription Id to be used later. For information about how to create a subscription, see this [document](../operator/azure-stack-subscribe-plan-provision-vm.md).
+If you do not already have a subscription, create a subscription and save the subscription ID to be used later. For information about how to create a subscription, see this [document](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
 ## Service Principal
 
@@ -108,15 +108,15 @@ A service principal and its associated environment information should be created
 | Client Secret | `AZURE_CLIENT_SECRET` | The service principal app secret saved when the service principal was created. |
 | Resource Manager Endpoint | `ARM_ENDPOINT` | See [The Azure Stack Hub Resource Manager endpoint](#azure-stack-resource-manager-endpoint).  |
 
-## Tenant Id
+## Tenant ID
 
-To find the directory or tenant Id for your Azure Stack Hub, follow the instructions [in this article](./authenticate-azure-stack-hub.md#get-the-tenant-id).
+To find the directory or tenant ID for your Azure Stack Hub, follow the instructions [in this article](./authenticate-azure-stack-hub.md#get-the-tenant-id).
 
-## Register Resource Providers
+## Register resource providers
 
 Register required resource providers by following this [document](/azure/azure-resource-manager/management/resource-providers-and-types). These resource providers will be required depending on the samples you want to run. For example, if you want to run a VM sample, the `Microsoft.Compute` resource provider registration is required.
 
-## Azure Stack Resource Manager Endpoint
+## Azure Stack resource manager endpoint
 
 Azure Resource Manager (ARM) is a management framework that enables administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation. You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
 
@@ -228,7 +228,7 @@ Use the following samples on GitHub as references for creating solutions with Ru
 - [Manage virtual machines using Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM)
 - [Deploy an SSH Enabled VM with a Template in Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment).
 
-### Sample Resource Manager and groups
+### Sample resource manager and groups
 
 To run the sample, ensure that you've installed Ruby. If you're using Visual Studio Code, download the Ruby SDK extension as well.
 
