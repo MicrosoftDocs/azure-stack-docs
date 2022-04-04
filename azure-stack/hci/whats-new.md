@@ -30,7 +30,7 @@ Certified Secured-core server hardware from an original equipment manufacturer (
 > [!NOTE]
 > This is a test for training purposes. We are testing release branches.
 > This is another test
-> We have another line to add here. Yes we do.
+> We have another line to add here.
 
 ### SMB Direct and RDMA encryption
 
