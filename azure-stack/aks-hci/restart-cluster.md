@@ -7,6 +7,8 @@ ms.date: 05/04/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
+#intent: As an IT Pro, I want to learn how to restart, remove, or reinstall AKS Stack HCI when needed.
+#keyword: service restart service removal
 ---
 
 # Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI

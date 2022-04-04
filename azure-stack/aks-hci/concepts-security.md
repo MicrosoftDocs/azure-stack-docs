@@ -7,17 +7,19 @@ ms.date: 05/05/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: lahirisl
+#intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
+#keyword: security concepts infrastructure security
 ---
 
 # Security concepts in AKS on Azure Stack HCI
-Security in AKS on Azure Stack HCI involves securing the infrastructure and the applications running on the Kubernetes cluster. This topic covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
+Security in AKS on Azure Stack HCI involves securing the infrastructure and the applications running on the Kubernetes cluster. This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security
 AKS on Azure Stack HCI applies various security measures to secure its infrastructure. The following diagram highlights these measures:
 
 ![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\security-infrastructure.png)
 
-The table below describes the security hardening aspects of AKS on Azure Stack HCI that are shown in the previous diagram. For conceptual background information on AKS on Azure Stack HCI infrastructure, see [clusters and workloads](./kubernetes-concepts.md). 
+The table below describes the security hardening aspects of AKS on Azure Stack HCI that are shown in the previous diagram. For conceptual background information on AKS on Azure Stack HCI infrastructure, see [Clusters and workloads](./kubernetes-concepts.md). 
 
 | Security aspect |  Description  |
 | ------  | --------|
@@ -33,7 +35,7 @@ The table below describes the security hardening aspects of AKS on Azure Stack H
 The table below describes the different application security options available in AKS on Azure Stack HCI. 
 
 > [!NOTE]
-> You have the option to use open source application hardening options available in the open source ecosystem if you choose.
+> You have the option to use the open source application hardening options available in the open source ecosystem you choose.
 
 | Option |  Description  |
 | ------- | -----------|
