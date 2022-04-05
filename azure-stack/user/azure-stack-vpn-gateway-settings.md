@@ -52,7 +52,8 @@ Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 With the release of VPN Fast Path Public Preview, Azure Stack Hub supports three new SKUs with higher throughput. It also increases the overall stamp capacity from 4 Gbps to 10 Gbps.
 
-New limits and throughput will be enabled once VPN Fast Path is enabled on your Azure Stack Stamp.
+New limits and throughput will be enabled once VPN Fast Path is enabled on your Azure Stack stamp. 
+
 Azure Stack Hub offers the VPN gateway SKUs shown in the following table:
 
 | SKU | Max VPN Connection throughput |Max # of connections per active GW VM | Max # of VPN Connections per stamp |
@@ -82,8 +83,7 @@ The following URL example makes the new virtual network gateway SKUs visible in 
 https://portal.local.azurestack.local/?azurestacknewvpnskus=true
 ```
 
-Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp. For additional information please review the following article
-[VPN Fast Path for Operators](/azure-stack/operator/azure-stack-vpn-fast-path-operators.md)
+Before creating these resources, the operator must have enabled VPN Fast Path on the Azure Stack Hub stamp. For more information, see [VPN Fast Path for operators](/azure-stack/operator/azure-stack-vpn-fast-path-operators.md).
 
 ![Azure VNG new SKUs](media/azure-stack-vpn-gateway-settings/vpn-fast-path-vng-new-skus.png)
 
