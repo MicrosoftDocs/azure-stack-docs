@@ -1,19 +1,21 @@
 ---
-title: Back up and restore workload clusters using Velero and Azure Blob storage in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI
 description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
-#intent: As an IT Pro, I want to learn how to back up and restore workload clusters.   
-#keyword: workload clusters backup storage
+
+# Intent: As an IT Pro, I want to learn how to perform a workload cluster backup or restore so I can recover from a failure or disaster.   
+# Keyword: workload cluster backup
+
 ---
 
-# Back up and restore workload clusters using Velero and Azure Blob storage
+# Perform workload cluster backup or restore using Velero and Azure Blob storage
 
-This topic describes how to back up and restore AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports a variety of [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
+You can create a workload cluster backup or restore from a backup on AKS on Azure Stack HCI workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports several [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
@@ -97,7 +99,7 @@ Use the following steps to deploy and configure Velero:
    --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID[ /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID]`
    ```
 
-   Ensure that the value for `--name` does not conflict with other service principals and app registrations.
+   Ensure that the value for `--name` doesn't conflict with other service principals and app registrations.
 
    After creating the service principal, obtain the client ID by running the following command:
 
@@ -122,7 +124,7 @@ Use the following steps to deploy and configure Velero:
 
    Install Velero, including all the prerequisites, on the cluster, and then start the deployment. The deployment creates a namespace called `velero` and places a deployment named `velero` in it.
 
-   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI does not support volume snapshots.
+   To back up Kubernetes volumes at the file system level, use [Restic](https://velero.io/docs/v1.6/restic/) and make sure to add `--use-restic`. Currently, AKS on Azure Stack HCI doesn't support volume snapshots.
 
    ```powershell
    velero install \
@@ -141,7 +143,7 @@ Use the following steps to deploy and configure Velero:
    kubectl logs deployment/velero -n Velero
    ```
 
-## Use Velero to back up a workload cluster
+## Use Velero to create a workload cluster backup
 
 You can back up or restore all objects in your cluster, or you can filter objects by type, namespace, or label.
 
@@ -161,7 +163,7 @@ After following the instructions above, you can view the backup in your Azure st
 
 ## Use Velero to restore a workload cluster
 
-You must first create a new cluster to restore to since you cannot restore a cluster backup to an existing cluster. The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. 
+You must first create a new cluster to restore to since you can't restore a cluster backup to an existing cluster. The restore operation allows you to restore all of the objects and persistent volumes from a previously created backup. You can also restore only a filtered subset of objects and persistent volumes. 
 
 On the destination cluster where you want to restore the backup, run the following steps:
 
@@ -190,7 +192,7 @@ kubectl delete crds -l component=velero
 
 ## Additional notes
 
-- Velero on Windows: Velero does not officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes are not supported.
+- Velero on Windows: Velero doesn't officially support Windows. In testing, the Velero team was able to back up only stateless Windows applications. [Restic integration](https://velero.io/docs/v1.6/restic/) and backups of stateful applications or persistent volumes aren't supported.
 
 - Velero CLI help: To see all options associated with a specific command, use the `--help` flag with the command. For example, `velero restore create --help` shows all options associated with the `velero restore create` command. Or, to list all options of `velero restore`, run `velero restore --help`:
 

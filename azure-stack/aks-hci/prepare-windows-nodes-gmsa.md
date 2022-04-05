@@ -1,21 +1,23 @@
 ---
-title: Configure group Managed Service Account with AKS on Azure Stack HCI
-description: Learn how to configure group Managed Service Accounts for containers on Windows nodes
+title: Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI
+description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-#intent: As an IT Pro, I want to learn how to configure group managed Service Accounts (gMSA) for containers
-#keyword: gMSA containers Windows containers 
+
+# Intent: As an IT Pro, I want to learn how to configure group managed Service Accounts (gMSA) for containers
+# Keyword: group Managed Service Accounts (gMSA) for Windows containers
+
 ---
 
-# Configure group Managed Service Accounts with AKS on Azure Stack HCI
+# Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-To use AD Authentication, you can configure a Windows container to run with a group Managed Service Account (gMSA) for containers with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without knowing the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
+To use AD Authentication, you can configure group Managed Service Accounts (gMSA) for Windows containers to run with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without knowing the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
 
 > [!NOTE]
 > To learn how the Kubernetes community supports using gMSA with Windows containers, see [Configure gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa).
