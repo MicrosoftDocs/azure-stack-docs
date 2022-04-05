@@ -7,13 +7,17 @@ ms.date: 09/08/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-#intent: As an IT Pro I want to learn how to create and delete pods in AKS.
-#keyword: create pods delete pods
+
+# Intent: As an IT Pro I want to learn how to create and delete pods in AKS.
+# Keyword: create and delete pods
+
 ---
 
 # Create and delete pods
 
-Kubernetes uses pods to run an instance of your application, and a pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host and is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
+You can create and delete pods when managing your workloads in AKS on Azure Stack Hub.
+
+Kubernetes uses pods to run an instance of your application. A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
 
 ## Create a pod
 
@@ -28,10 +32,10 @@ kubectl get nodes
 To create a pod, run the following command. In this example, a pod is created using an nginx image.  
 
 ```powershell
-kubectl run nginx –image=nginx --restart=Never
+kubectl run nginx -image=nginx --restart=Never
 ```
 
-When you set the parameter `–restart=Never`, Kubernetes creates a single pod, instead of creating a deployment.
+When you set the parameter `-restart=Never`, Kubernetes creates a single pod, instead of creating a deployment.
 
 To see the status of your pod, run the following command:
 

@@ -55,6 +55,8 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
+- If only Arc Resource Bridge needs to be uninstalled, then skip the step **uninstall-moc** for Azure Kubernetes Service to continue runnig on the cluster.
+
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
 - You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.
 - Arc VMs must be created in the same Azure subscription as the Custom location.
