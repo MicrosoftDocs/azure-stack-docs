@@ -38,7 +38,7 @@ import "github.com/Azure/azure-sdk-for-go/profiles/2020-09-01/compute/mgmt/compu
 
 To use a different SDK profile or version, substitute the date in an import statement such as `github.com/Azure/azure-sdk-for-go/profiles/<date>/storage/mgmt/storage`. For example, for the 2008 version, the profile is `2019-03-01`, and the string becomes `github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/storage/mgmt/storage`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
-| Azure Stack Version | Profile |
+| Azure Stack version | Profile |
 |---------------------|---------|
 |2108|2020-09-01|
 |2102|2020-09-01|
@@ -50,21 +50,21 @@ See [Go SDK profiles](https://github.com/Azure/azure-sdk-for-go/tree/main/profil
 
 ## Subscription
 
-If you do not already have a subscription, create a subscription and save the subscription Id to be used later. For information about how to create a subscription, see this [document](../operator/azure-stack-subscribe-plan-provision-vm.md).
+If you do not already have a subscription, create a subscription and save the subscription ID to be used later. For information about how to create a subscription, see this [document](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-## Service Principal
+## Service principal
 
 A service principal and its associated environment information should be created and saved somewhere. Service principal with `owner` role is recommended, but depending on the sample, a `contributor` role may suffice. Refer to the README in the [sample repository](https://github.com/Azure-Samples/Hybrid-Golang-Samples) for the required values. You may read these values in any format supported by the SDK language such as from a JSON file (which our samples use). Depending on the sample being run, not all of these values may be used. See the [sample repository](https://github.com/Azure-Samples/Hybrid-Golang-Samples) for updated sample code or further information.
 
-## Tenant Id
+## Tenant ID
 
-To find the directory or tenant Id for your Azure Stack Hub, follow the instructions [in this article](./authenticate-azure-stack-hub.md#get-the-tenant-id).
+To find the directory or tenant ID for your Azure Stack Hub, follow the instructions [in this article](./authenticate-azure-stack-hub.md#get-the-tenant-id).
 
-## Register Resource Providers
+## Register resource providers
 
 Register required resource providers by following this [document](/azure/azure-resource-manager/management/resource-providers-and-types). These resource providers will be required depending on the samples you want to run. For example, if you want to run a VM sample, the `Microsoft.Compute` resource provider registration is required.
 
-## Azure Stack Resource Manager Endpoint
+## Azure Stack resource manager endpoint
 
 Azure Resource Manager (ARM) is a management framework that enables administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation. You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
 

@@ -3,12 +3,14 @@ title: Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) dri
 description: Learn how to use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/22/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-#intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers on AKS.
-#keyword: CSI drivers storage class
+
+# Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers on AKS.
+# Keyword: container storage interface drivers, csi drivers
+
 ---
 
 # Use the AKS on Azure Stack HCI disk Container Storage Interface (CSI) drivers
