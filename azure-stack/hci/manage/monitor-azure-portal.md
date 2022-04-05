@@ -105,21 +105,21 @@ As described earlier, when you enable monitoring visualization, logs are collect
 
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004)
 
-Azure Monitor has pay-as-you-go pricing, and the first GB per billing account per month is free.
+Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account per month is free. For exact costs, see the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for price per GB after the first 5 GB. The following table can help you calculate the cost:
 
-| **Clusters in standalone Log Analytics workspace** | **GB ingested per month** | **Estimated cost** |
-|:---------------------------------------------------|:--------------------------|:-------------------|
-| Two-node cluster                                   | ~1 MB per hour            | Free               |
-| Four-node cluster                                  | ~1 MB per hour            | Free               |
-| Eight-node cluster                                 | ~1 MB per hour            | Free               |
+| **Clusters in standalone Log Analytics workspace** | **GB ingested per month** |
+|:---------------------------------------------------|:--------------------------|
+| Two-node cluster                                   | ~1 MB per hour            |
+| Four-node cluster                                  | ~1 MB per hour            |
+| Eight-node cluster                                 | ~1 MB per hour            |
 
-The table below shows a rough pricing estimate for Azure Stack HCI clusters of different sizes.
+The following table shows the pricing structure for Azure Stack HCI clusters of different sizes:
 
-| **Clusters in same Log Analytics Workspace** | **GB ingested per month** | **Estimated cost**            |
-|:---------------------------------------------|:--------------------------|:------------------------------|
-| Small deployment (3 two-node clusters)       | ~3 GB                     | Free                          |
-| Medium deployment (10 four-node clusters)    | ~10 GB                    | See [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for price per GB after first 5 GB |
-| Large deployment (25 four-node clusters)     | ~25 GB                    | See [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for price per GB after first 5 GB |
+| **Clusters in same Log Analytics workspace** | **GB ingested per month** |
+|:---------------------------------------------|:--------------------------|
+| Small deployment (3 two-node clusters)       | ~3 GB                     |
+| Medium deployment (10 four-node clusters)    | ~10 GB                    |
+| Large deployment (25 four-node clusters)     | ~25 GB                    |
 
 Every GB of data ingested into your Log Analytics workspace can be retained at no charge for up to 31 days. Data retained beyond the first 31 days will be charged per GB per month. For pricing details, see the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/).
 
