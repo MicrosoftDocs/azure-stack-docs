@@ -1,12 +1,13 @@
 ---
 title: Configure Azure portal to monitor Azure Stack HCI clusters
 description: How to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters from Azure portal.
-author: arduppal
-ms.author: arduppal
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/16/2021
+ms.date: 04/05/2022
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
@@ -117,10 +118,10 @@ The table below shows a rough pricing estimate for Azure Stack HCI clusters of d
 | **Clusters in same Log Analytics Workspace** | **GB ingested per month** | **Estimated cost**            |
 |:---------------------------------------------|:--------------------------|:------------------------------|
 | Small deployment (3 two-node clusters)       | ~3 GB                     | Free                          |
-| Medium deployment (10 four-node clusters)    | ~10 GB                    | $2.76 per GB after first 5 GB |
-| Large deployment (25 four-node clusters)     | ~25 GB                    | $2.76 per GB after first 5 GB |
+| Medium deployment (10 four-node clusters)    | ~10 GB                    | See [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for price per GB after first 5 GB |
+| Large deployment (25 four-node clusters)     | ~25 GB                    | See [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for price per GB after first 5 GB |
 
-Every GB of data ingested into your Log Analytics workspace can be retained at no charge for up to 31 days. Data retained beyond the first 31 days will be charged $0.12 per GB per month.
+Every GB of data ingested into your Log Analytics workspace can be retained at no charge for up to 31 days. Data retained beyond the first 31 days will be charged per GB per month. For pricing details, see the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## Troubleshooting
 
