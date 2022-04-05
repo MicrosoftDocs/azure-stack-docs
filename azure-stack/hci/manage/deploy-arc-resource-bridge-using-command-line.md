@@ -83,7 +83,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    ```
 
    > [!TIP]
-   > See [Limitations and known issues](troubleshoot-arc-enabled-vms#limitations-and-known-issues.md) if Azure Kubernetes Service is also enabled to run on this cluster.
+   > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
 
    > [!TIP]
    > To provide a static IP address to the Azure Arc Resource Bridge VM, replace the previous command with:
