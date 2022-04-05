@@ -78,7 +78,7 @@ For more information about the Azure Stack Hub PEP, see [Access privileged endpo
 Set-AzSVPNFastPath -Enable
 ```
 
-![Enable VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enable.png)
+![PowerShell enabling VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-enable.png)
 
 ### Validate Azure Stack Hub VPN Fast Path is enabled using PowerShell
 
@@ -88,7 +88,7 @@ Once the VPN Fast Path feature is enabled, you can validate the current state of
 Get-AzSVPNFastPath
 ```
 
-![Enable VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-get.png)
+![PowerShell validating VPN Fast Path](/azure-stack/operator/media/azure-stack-vpn-fast-path-operators/azure-vpn-fast-path-get.png)
 
 ## Azure Stack Hub Gateway Pool architecture
 
