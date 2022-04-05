@@ -72,7 +72,7 @@ Existing setups can be adjusted by re-creating the virtual network gateway and i
 
 From the Azure Stack Hub privileged endpoint you can run the following PowerShell command to enable the VPN Fast Path feature. 
 
-For more information about the Azure Stack Hub PEP you can read this page [Access privileged endpoint](/azure-stack/operator/azure-stack-privileged-endpoint.md)
+For more information about the Azure Stack Hub PEP, see [Access privileged endpoint](/azure-stack/operator/azure-stack-privileged-endpoint.md)
 
 ```powershell
 Set-AzSVPNFastPath -Enable
@@ -82,7 +82,7 @@ Set-AzSVPNFastPath -Enable
 
 ### Validate Azure Stack Hub VPN Fast Path is enabled using PowerShell
 
-Once the VPN Fast Path feature is enabled, you can validate the current state of the Gateway VMs and the used capacity using the following PowerShell command.
+Once the VPN Fast Path feature is enabled, you can validate the current state of the Gateway VMs and the used capacity using the following PowerShell command:
 
 ```powershell
 Get-AzSVPNFastPath
