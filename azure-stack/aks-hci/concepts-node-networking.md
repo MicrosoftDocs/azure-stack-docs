@@ -1,27 +1,29 @@
 ---
-title: Concepts - Node virtual machine networking in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Node virtual machine networking in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.custom: fasttrack-edit
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
-#intent: As an IT Pro, I want to learn about virtual machine networking in AKS on Azure Stack HCI
-#keyword: virtual machine IP pool
+
+# Intent: As an IT Pro, I want to learn about virtual machine networking in AKS on Azure Stack HCI
+# Keyword: virtual machine networking
 
 ---
 # Network concepts for deploying Azure Kubernetes Service (AKS) nodes on Azure Stack HCI
 
-Depending on the AKS on Azure Stack HCI networking architecture you use, you can choose between two IP address assignment models.
+You can choose between two IP address assignment models for your AKS on Azure Stack HCI networking architecture.
 
-> [!NOTE]
+- **Static IP networking**  
+    The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
+
+- **DHCP networking**  
+    The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
+
+> [!NOTE]  
 > The virtual networking architecture defined here for AKS on Azure Stack HCI deployments could be different from the underlying physical networking architecture in a data center.
-
-- Static IP networking - The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
-
-- DHCP networking - The virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
 
 ## Virtual IP pool
 

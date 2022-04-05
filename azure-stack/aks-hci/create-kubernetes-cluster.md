@@ -1,27 +1,29 @@
 ---
-title: Quickstart to create a Kubernetes cluster using Windows Admin Center
-description: Learn how to create a Kubernetes cluster using Windows Admin Center
+title: Quickstart to create a local Kubernetes cluster using Windows Admin Center
+description: Learn how to create a local Kubernetes cluster using Windows Admin Center
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 02/11/2022
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal
-#intent: As an IT Pro, I want to learn how to use Windows Admin Center to create a Kubernetes cluster.
-#keyword: Kubernetes cluster 
+
+# Intent: As an IT Pro, I want to learn how to use Windows Admin Center to create a local Kubernetes cluster.
+# Keyword: local Kubernetes cluster
+
 ---
-# Quickstart: Create a Kubernetes cluster on Azure Stack HCI using Windows Admin Center
+# Quickstart: Create a local Kubernetes cluster on Azure Stack HCI using Windows Admin Center
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-After you have set up your Azure Kubernetes Service host, you can use Windows Admin Center to create a Kubernetes cluster. To use PowerShell instead, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
+After you have set up your Azure Kubernetes Service host, you can use Windows Admin Center to create a local Kubernetes cluster. To use PowerShell instead, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
 
-Before proceeding to the Create Kubernetes cluster wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md). You can access the Create Kubernetes cluster wizard through the [Azure Kubernetes Service host dashboard](#create-a-kubernetes-cluster-in-the-azure-kubernetes-service-host-dashboard).
+Before proceeding to the Create Kubernetes cluster wizard, make sure you have [Set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md). You can access the Create Kubernetes cluster wizard through the [Azure Kubernetes Service host dashboard](#create-a-local-kubernetes-cluster-in-the-azure-kubernetes-service-host-dashboard).
 
-## Create a Kubernetes cluster in the Azure Kubernetes Service host dashboard
+## Create a local Kubernetes cluster in the Azure Kubernetes Service host dashboard
 
-You can create a Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool if you're connected to the system that has an Azure Kubernetes Service host deployed on it. Follow the steps below and then proceed to the [Use the Create Kubernetes cluster wizard](#use-the-create-kubernetes-cluster-wizard) section:
+You can create a local Kubernetes cluster through the Azure Kubernetes Service host dashboard. This dashboard can be found in the Azure Kubernetes Service tool if you're connected to the system that has an Azure Kubernetes Service host deployed on it. Follow the steps below and then proceed to the [Use the Create Kubernetes cluster wizard](#use-the-create-kubernetes-cluster-wizard) section:
 
 1. Connect to the system where you wish to create your Kubernetes cluster and then navigate to the **Azure Kubernetes Service** tool. This system should already have an Azure Kubernetes Service host set up.
 
@@ -44,9 +46,9 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
    When you're finished, select **Next**.
 
-4. In the **Authentication** step, select whether you'd like to enable Active Directory authentication. If you choose to enable this feature, you will need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
+4. In the **Authentication** step, select whether you'd like to enable Active Directory authentication. If you choose to enable this feature, you'll need to provide information such as your API Server service principal name, a Keytab file, and a cluster admin group or user name. When you're finished, select **Next**.
 
-5. Specify your network configuration on the **Networking** page. You can either select an existing virtual network or create a new one by clicking on **Add network interface**. If you select the **Flannel** container network interface (CNI), keep in mind that only Windows or hybrid clusters are supported. Once **Flannel** is set, it cannot be changed, and the cluster will not support any network policy. If the **Calico** CNI is selected, note that it is not needed to support Calico Network Policy and Calico will be the default option for your network policy under **Security**. When complete, select **Next: Review + Create**.
+5. Specify your network configuration on the **Networking** page. You can either select an existing virtual network or create a new one by clicking on **Add network interface**. If you select the **Flannel** container network interface (CNI), keep in mind that only Windows or hybrid clusters are supported. Once **Flannel** is set, it can't be changed, and the cluster won't support any network policy. If the **Calico** CNI is selected, it isn't needed to support Calico Network Policy and Calico will be the default option for your network policy under **Security**. When complete, select **Next: Review + Create**.
 
     The following image illustrates the static IP configuration settings:
 
