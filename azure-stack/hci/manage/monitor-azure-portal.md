@@ -7,7 +7,7 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/05/2022
+ms.date: 04/06/2022
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
@@ -75,12 +75,12 @@ To change the frequency of log collection, see [Event Log Channel](azure-stack-h
 
 Enabling monitoring turns on monitoring for all Azure Stack HCI clusters currently associated with the Log Analytics workspace. You will be billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
 
-To enable this capability from Azure portal, follow these steps:
+To enable this capability from the Azure portal, follow these steps:
 
 1. Under the **Capabilities** tab, select **Monitoring**, then **Enable**.
 1. Monitoring should now show as **Configured** under the **Capabilities** tab.
 
-The **Microsoft-windows-sddc-management/operational** Windows event channel will be added to your Log Analytics workspace. By collecting these logs, we'll be able to show the health status of the individual servers, drives, volumes, and VMs.
+The **Microsoft-windows-sddc-management/operational** Windows event channel will be added to your Log Analytics workspace. By collecting these logs, these analytics  show the health status of the individual servers, drives, volumes, and VMs.
 
 After you enable monitoring, it can take up to an hour to collect the data. When the process is finished, you'll be able go to the **Monitoring** tab and see a rich visualization of the health of your cluster, as in the screenshot below.
 
