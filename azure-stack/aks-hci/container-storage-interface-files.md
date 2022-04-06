@@ -7,7 +7,8 @@ ms.date: 04/16/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-
+# Intent: As an IT Pro, I need to understand and learn about the benefits of using CSI drivers in my AKS on Azure Stack HCI deployment.
+# Keyword: CSI drivers container storage
 ---
 
 # Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers
