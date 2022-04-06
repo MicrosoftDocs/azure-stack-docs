@@ -1,20 +1,21 @@
 ---
-title: Monitor and logging on Azure Kubernetes Service on Azure Stack HCI clusters
-description: Learn how to monitor and view logging data for Azure Kubernetes Service on Azure Stack HCI clusters.
+title: Monitor and logging data on Azure Kubernetes Service on Azure Stack HCI
+description: Learn how to create and access monitor and logging data for Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 04/01/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-#intent: As an IT Pro, I want to learn how to monitor and view logging data for AKS.
-#keyword: monitor data logging data
+
+# Intent: As an IT Pro, I want to learn how to monitor and view logging data for AKS.
+# Keyword: monitor and logging data
 
 ---
 
-# Monitor and logging for AKS on Azure Stack HCI clusters
+# Monitor and logging data on Azure Kubernetes Service on Azure Stack HCI
 
-For AKS on Azure Stack HCI clusters, there are two types of monitoring and logging solutions available as described in the following table: 
+You can create and access monitor and logging data on AKS on Azure Stack HCI. There are two types of monitoring and logging solutions available as described in the following table: 
 
 | Solution  | Azure connectivity  | Support and service  | Cost | Deployment |
 | ------- |  ------------  | ---------  | --------------  | ---------------- |

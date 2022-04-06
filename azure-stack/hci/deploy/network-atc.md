@@ -24,7 +24,9 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - All servers in the cluster must be running Azure Stack HCI, version 21H2.
 
-- Must use two or more physical host systems that are Azure Stack HCI certified.
+- Must use physical hosts that are Azure Stack HCI certified.
+
+- Any number of cluster nodes are supported.
 
 - Adapters in the same Network ATC intent must be symmetric (of the same make, model, speed, and configuration) and available on each cluster node. For more information on adapter symmetry, see [Switch Embedded Teaming (SET)](../concepts/host-network-requirements.md#set)
 
@@ -32,7 +34,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 - Ensure each network adapter has an "Up" status, as verified by the PowerShell `Get-NetAdapter` cmdlet.
 
-- Cluster nodes must install the following Azure Stack HCI features on each node:
+- Each node must have the following Azure Stack HCI features installed:
 
   - Network ATC
   - Data Center Bridging (DCB)
@@ -48,7 +50,9 @@ The following are requirements and best practices for using Network ATC in Azure
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
 > [!IMPORTANT]
-> Deploying Network ATC in virtual environments is not supported. Several of the host networking properties it configures are not available in virtual machines, which will result in errors.    
+> Deploying Network ATC in virtual environments is not supported. Several of the host networking properties it configures are not available in virtual machines, which will result in errors.
+> 
+> Deploying Network ATC in standalone mode may be used for test and validation purposes only.
 
 ## Common Network ATC commands
 

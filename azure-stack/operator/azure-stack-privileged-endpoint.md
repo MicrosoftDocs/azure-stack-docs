@@ -89,6 +89,8 @@ You will need set your current culture setting to `en-US` when running the privi
    > [!NOTE]
    > If you're unable to connect to the ERCS endpoint, retry steps one and two with another ERCS VM IP address.
 
+   [!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)]
+
 1. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
 
    You can find a reference for cmdlets in at [Azure Stack Hub privileged endpoint reference](../reference/pep/index.md)
@@ -124,7 +126,7 @@ For instance, to get the list of parameters for a given cmdlet, run the followin
     Get-Command <cmdlet_name> -Syntax
 ```
 
-Alternatively, you can use the [**Import-PSSession**](/powershell/module/microsoft.powershell.utility/import-pssession?view=powershell-5.1) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
+Alternatively, you can use the [**Import-PSSession**](/powershell/module/microsoft.powershell.utility/import-pssession) cmdlet to import all the PEP cmdlets into the current session on your local machine. The cmdlets and functions of the PEP are now available on your local machine, together with tab completion and, more in general, scripting. You can also run the **[Get-Help](/powershell/module/microsoft.powershell.core/get-help)** module to review cmdlet instructions.
 
 To import the PEP session on your local machine, do the following steps:
 

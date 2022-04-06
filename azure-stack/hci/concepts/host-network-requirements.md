@@ -20,8 +20,8 @@ For information on how to simplify host networking using Network ATC, see [Simpl
 
 Azure Stack HCI network traffic can be classified by its intended purpose:
 
-- **Compute traffic:** Traffic originating from or destined for a virtual machine (VM).
-- **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct.
+- **Compute traffic:** Traffic originating from or destined to a virtual machine (VM). 
+- **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration.
 - **Management traffic:** Traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, Active Directory, etc.
 
 ## Select a network adapter

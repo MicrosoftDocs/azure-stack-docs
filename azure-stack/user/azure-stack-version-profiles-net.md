@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 12/6/2021
 ms.author: sethm
 ms.reviewer: weshi1
-ms.lastreviewed: 12/6/2021
+ms.lastreviewed: 3/23/2022
 
 # Intent: As an Azure Stack user, I want to use API version profiles with .NET SDK in Azure Stack so I can benefit from the use of profiles
 # Keyword: azure stack api profiles .net
@@ -19,11 +19,14 @@ ms.lastreviewed: 12/6/2021
 
 The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and Key Vault. The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2020-09-01-hybrid** or **2019-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
 
+## Install the Azure .NET SDK
+
+- Install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/download).
+- To install the correct NuGet packages, see [Available NuGet Distribution Versions](https://www.nuget.org/downloads).
+
 ## .NET and API version profiles
 
 An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
-
-- To make use of the latest versions of all the services, use the **latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use the services compatible with Azure Stack Hub, use one of the following packages:
   - **[Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg](https://www.nuget.org/packages?q=Microsoft.Azure.Management.Profiles.hybrid_2020_09_01)**
@@ -31,75 +34,44 @@ An API profile is a combination of resource providers and API versions. Use an A
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
-- To use the latest API version of a service, use the **latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **Compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
+## Profiles
 
-- To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined inside the package.
+For profiles containing dates, to use a different SDK profile or version, substitute the date in `Microsoft.Azure.Management.Profiles.hybrid_<date>.ResourceManager`. For example, for the 2008 version, the profile is `2019_03_01`, and the string becomes `Microsoft.Azure.Management.Profiles.hybrid_2019_03_01.ResourceManager`. Note that sometimes the SDK team changes the name of the packages, so simply replacing the date of a string with a different date might not work. See the following table for association of profiles and Azure Stack versions.
 
-You can combine all of the options in the same application.
+| Azure Stack version | Profile |
+|---------------------|---------|
+|2108|2020_09_01|
+|2102|2020_09_01|
+|2008|2019_03_01|
 
-## Install the Azure .NET SDK
+For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md).
 
-- Install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/download).
+## Subscription
 
-- To install the correct NuGet packages, see [Available NuGet Distribution Versions](https://www.nuget.org/downloads).
+If you do not already have a subscription, create a subscription and save the subscription ID to be used later. For information about how to create a subscription, see this [document](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-- The packages that need to be installed depend on the profile version you want to use. The package names for the profile versions are:
+## Service principal
 
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0.nupkg**
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview**
+A service principal and its associated environment information should be created and saved somewhere. Service principal with `owner` role is recommended, but depending on the sample, a `contributor` role may suffice. Refer to the README in the [sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for the required values. You may read these values in any format supported by the SDK language such as from a JSON file (which our samples use). Depending on the sample being run, not all of these values may be used. See the [sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for updated sample code or further information.
 
-- If not available, create a subscription and save the subscription ID to be used later. For information about how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
+## Tenant ID
 
-- Create a service principal and save the client ID and the client secret. For information about how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md). The client ID is also known as the application ID when creating a service principal.
+To find the directory or tenant ID for your Azure Stack Hub, follow the instructions [in this article](./authenticate-azure-stack-hub.md#get-the-tenant-id).
 
-- Make sure your service principal has the contributor/owner role on your subscription. For information about how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/give-app-access-to-resources.md).
+## Register resource providers
 
-## Prerequisites
+Register required resource providers by following this [document](/azure/azure-resource-manager/management/resource-providers-and-types). These resource providers will be required depending on the samples you want to run. For example, if you want to run a VM sample, the `Microsoft.Compute` resource provider registration is required.
 
-To use the .NET Azure SDK with Azure Stack Hub, you must supply the following values, and then set the values with environment variables. To set the environment variables, see the instructions following the table for your specific operating system.
+## Azure Stack resource manager endpoint
 
-| Value                     | Environment variables   | Description                                                                                                             |
-|---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Tenant ID                 | `AZURE_TENANT_ID `      | The value of your Azure Stack Hub  [*tenant ID*](../operator/azure-stack-identity-overview.md).                                                                          |
-| Client ID                 | `AZURE_CLIENT_ID `      | The service principal app ID saved when the service principal was created in the previous section of this article. |
-| Subscription ID           | `AZURE_SUBSCRIPTION_ID` | The [*subscription ID*](../operator/service-plan-offer-subscription-overview.md#subscriptions) is how you access offers in Azure Stack Hub.                                                      |
-| Client Secret             | `AZURE_CLIENT_SECRET`   | The service principal app secret saved when the service principal was created.                                      |
-| Resource Manager Endpoint | `ARM_ENDPOINT`          | See [*the Azure Stack Hub Resource Manager endpoint*](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint).                                                                    |
-| Location                  | `RESOURCE_LOCATION`     | Location of Azure Stack Hub.
+Azure Resource Manager (ARM) is a management framework that enables administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation. You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
 
-To find the tenant ID for your Azure Stack Hub, follow the instructions [in this article](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following:
+- The **ResourceManagerEndpointUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`.
+- The **ResourceManagerEndpointUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
+- To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
+For available API versions, see [Azure rest API specifications](https://github.com/Azure/azure-rest-api-specs/tree/main/profile). E.g., in `2020-09-01` profile version, you can change the `api-version` to `2019-10-01` for resource provider `microsoft.resources`.
 
-### Windows
-
-To set the environment variables in a Windows command prompt, use the following format:
-
-```shell
-set Azure_Tenant_ID=Your_Tenant_ID
-```
-
-### macOS, Linux, and Unix-based systems
-
-In Unix-based systems, use the following command:
-
-```shell
-export Azure_Tenant_ID=Your_Tenant_ID
-```
-
-### The Azure Stack Hub Resource Manager endpoint
-
-Azure Resource Manager is a management framework that enables administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
-
-You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
-
-Consider the following:
-
-- The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`.
-
-- The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
-To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
-
-Sample JSON file:
-
+Sample JSON:
 ```json
 {
    "galleryEndpoint": "https://portal.local.azurestack.external:30015/",
@@ -113,83 +85,18 @@ Sample JSON file:
 }
 ```
 
-## Existing API profiles
+## Samples
 
-- **Microsoft.Azure.Management.Profiles.hybrid\_2020\_09\_01.<*ResourceProvider*>.1.0.0**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 2102 or later.
+See the [sample repository](https://github.com/Azure-Samples/Hybrid-CSharp-Samples) for update-to-date sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
 
-- **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview**:  Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on version 1904 or later.
+::: moniker range="<=azs-2008"
 
-- **latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
+See [here](https://github.com/Azure-Samples/Hybrid-CSharp-Samples/tree/8958588381b80e7d0d62ec4d4c2bb3286802c2a5) for the sample applicable for Azure Stack version `2008` or profile `2019-03-01` and below.
 
-For more information about Azure Stack Hub and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md).
-
-## Azure .NET SDK API profile usage
-
-Use the following code to instantiate a resource manager client. You can use similar code to instantiate other resource provider clients (such as Compute, Network, and Storage).
-
-```csharp
-var client = new ResourceManagementClient(armEndpoint, credentials)
-{
-    SubscriptionId = subscriptionId;
-};
-```
-
-The `credentials` parameter in this code is required to instantiate a client. The following code generates an authentication token by the tenant ID and the service principal:
-
-```csharp
-var azureStackSettings = getActiveDirectoryServiceSettings(armEndpoint);
-var credentials = ApplicationTokenProvider.LoginSilentAsync(tenantId, servicePrincipalId, servicePrincipalSecret, azureStackSettings).GetAwaiter().GetResult();
-```
-
-The `getActiveDirectoryServiceSettings` call in the code retrieves Azure Stack Hub endpoints from the metadata endpoint. It states the environment variables from the call that's made:
-
-```csharp
-public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(string armEndpoint)
-{
-    var settings = new ActiveDirectoryServiceSettings();
-    try
-    {
-        var request = (HttpWebRequest)HttpWebRequest.Create(string.Format("{0}/metadata/endpoints?api-version=1.0", armEndpoint));
-        request.Method = "GET";
-        request.UserAgent = ComponentName;
-        request.Accept = "application/xml";
-        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-        {
-            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
-            {
-                var rawResponse = sr.ReadToEnd();
-                var deserialized = JObject.Parse(rawResponse);
-                var authenticationObj = deserialized.GetValue("authentication").Value<JObject>();
-                var loginEndpoint = authenticationObj.GetValue("loginEndpoint").Value<string>();
-                var audiencesObj = authenticationObj.GetValue("audiences").Value<JArray>();
-                settings.AuthenticationEndpoint = new Uri(loginEndpoint);
-                settings.TokenAudience = new Uri(audiencesObj[0].Value<string>());
-                settings.ValidateAuthority = loginEndpoint.TrimEnd('/').EndsWith("/adfs", StringComparison.OrdinalIgnoreCase) ? false : true;
-            }
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(String.Format("Could not get AD service settings. Exception: {0}", ex.Message));
-    }
-    return settings;
-}
-```
-
-These steps enable you to use the API profile NuGet packages to deploy your application successfully to Azure Stack Hub.
-
-## Samples using API Profiles
-
-You can use the following samples as a reference for creating solutions with .NET and the Azure Stack Hub API profiles:
-
-[Azure-Samples/Hybrid-CSharp-Samples: Getting Started with Resources - Manage Resource Groups in Azure Stack Hybrid cloud by using Certificates for Authentication - in C# asynchronously (github.com)](https://github.com/Azure-Samples/Hybrid-CSharp-Samples)
+::: moniker-end
 
 ## Next steps
 
 Learn more about API profiles:
-
 - [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
-- [Test Project to Virtual Machine, vNet, resource groups, and storage account](https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject)
-- [Use Azure PowerShell to create a service principal with a certificate](../operator/give-app-access-to-resources.md)
-- [Run unit tests with Test Explorer.](/visualstudio/test/run-unit-tests-with-test-explorer?view=vs-2017&preserve-view=true)
