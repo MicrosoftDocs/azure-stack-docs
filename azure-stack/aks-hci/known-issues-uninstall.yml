@@ -53,7 +53,6 @@ sections:
         answer: | 
           This failure causes the system not to recognize that the node is missing, and therefore, a new node will not spin up. 
           
-          
           You'll see this issue if you follow these steps:
           
           1. Create a Kubernetes cluster.
@@ -93,5 +92,5 @@ sections:
 additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
-  - [Installation issues and errors](known-issues-installation.md)
+  - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
     

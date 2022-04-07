@@ -130,6 +130,6 @@ additionalContent: |
   ## Next steps
   
   - [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting)
-  - [Known issues](./known-issues.md)
+  - [Known issues](/azure-stack/aks-hci/known-issues)
   
     

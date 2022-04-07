@@ -322,7 +322,7 @@ sections:
 additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
-  - [Networking issues and errors](known-issues-networking.md)
-  - [storage known issues](known-issues-storage.md)
+  - [Networking issues and errors](/azure-stack/aks-hci/known-issues-networking)
+  - [storage known issues](/azure-stack/aks-hci/known-issues-storage)
   
     

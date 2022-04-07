@@ -161,7 +161,7 @@ sections:
 additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
-  - [Installation issues and errors](known-issues-installation.md)
-  - [Storage known issues](known-issues-storage.md)
+  - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
+  - [Storage known issues](/azure-stack/aks-hci/known-issues-storage)
   
     

@@ -5,7 +5,7 @@ metadata:
 
 title: Fix issues in Windows Admin Center
 summary: |
-  This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [upgrade](known-issues.md) and [installation](known-issues-installation.md) issues and errors.
+  This article describes known issues with Windows Admin Center in AKS on Azure Stack HCI. You can also review [upgrade](/azure-stack/aks-hci/known-issues) and [installation](/azure-stack/aks-hci/known-issues-installation) issues and errors.
   
 sections:
   - name: Single section - ignored
@@ -320,8 +320,8 @@ sections:
 additionalContent: |
   ## Next steps
   - [Troubleshooting overview](troubleshoot-overview.md)
-  - [Installation issues and errors](known-issues-installation.md)
-  - [Upgrade known issues](known-issues-upgrade.md)
+  - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
+  - [Upgrade known issues](/azure-stack/aks-hci/known-issues-upgrade)
   
   If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
   
