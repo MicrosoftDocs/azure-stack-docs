@@ -73,7 +73,7 @@ sections:
           After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing.
 
         answer: | 
-          To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](/azure-stack/aks-hci/known-issues-workload-clusters#the-api-server-isnt-responsive-after-several-days).
+          To resolve this issue, follow the instructions to [manually rotate the token and restart the KMS plug-in](/azure-stack/aks-hci/known-issues-workload-clusters#the-api-server-isn-t-responsive-after-several-days-).
           After deployment, when rebooting the Azure Stack HCI nodes, the AKS report showed a failed status for billing.
           
       - question: | 
