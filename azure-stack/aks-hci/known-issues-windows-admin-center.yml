@@ -43,7 +43,6 @@ sections:
           Networking field names are inconsistent in the Windows Admin Center portal
 
         answer: | 
-          
           There are inconsistencies in network field names showing up in the host cluster deployment flow, and the workload cluster deployment flow.
           
       - question: | 
