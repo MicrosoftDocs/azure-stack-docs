@@ -227,7 +227,7 @@ Enable-AksHciArcConnection -name mycluster
 ```
 
 > [!NOTE]
-> If you encounter issues or error messages during the installation process, see [installation known issues and errors](known-issues-installation.md) for more information.
+> If you encounter issues or error messages during the installation process, see [installation known issues and errors](/azure-stack/aks-hci/known-issues-installation) for more information.
 
 ## Scale a Kubernetes cluster
 
