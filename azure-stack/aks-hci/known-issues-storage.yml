@@ -11,14 +11,14 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Configuring persistent volume claims results in the error: `Unable to initialize agent. Error: mkdir /var/log/agent: permission denied`
+          Configuring persistent volume claims results in the error: 'Unable to initialize agent. Error: mkdir /var/log/agent: permission denied'.
 
         answer: | 
           To resolve this issue, [define a custom storage class](container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk) that you can use to provision PVCs. 
           This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
           
       - question: | 
-          Container storage interface pod stuck in a _ContainerCreating_ state
+          Container storage interface pod stuck in a 'ContainerCreating' state.
 
         answer: | 
           Since `kubelet` ended up in a bad state and can no longer talk to the API server, the only solution is to restart the `kubelet` service. After restarting, the cluster goes into a _running_ state.
@@ -40,7 +40,7 @@ sections:
           ```
           
       - question: | 
-          When creating a persistent volume, an attempt to mount the volume fails
+          When creating a persistent volume, an attempt to mount the volume fails.
 
         answer: | 
           To work around the failure to mount the new volume, you can SSH into the Windows node and run `Remove-SMBGlobalMapping` and provide the share that corresponds to the volume. After running this command, attempts to mount the volume should succeed.

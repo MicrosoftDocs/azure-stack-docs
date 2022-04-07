@@ -11,14 +11,14 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Uninstall-AksHCI is not cleaning up cluster resources (`ownergroup ca-<GUID>`)
+          Uninstall-AksHCI is not cleaning up cluster resources ('ownergroup ca-<GUID>').
 
         answer: | 
           To fix this issue, ensure that the user performing the installation has Full Control permissions to create/modify/remove Active Directory objects in the Active Directory container that the server and service objects are created in.
           Due to insufficient permissions in Active Directory, [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) could not remove cluster resource objects in Active Directory, which can lead to failures in subsequent deployments. 
           
       - question: | 
-          Uninstall-AksHciAdAuth fails with the error `[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]`
+          Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'.
 
         answer: | 
           `This issue will be fixed.`
@@ -39,7 +39,7 @@ sections:
           Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. This issue occurs because the VHD is in shared storage, and the evicted node does not have access to it.
           
       - question: | 
-          Running Remove-AksHciCluster results in the error: `Error: unable to delete group clustergroup-spdb:...`
+          Running Remove-AksHciCluster results in the error: 'Error: unable to delete group clustergroup-spdb:...'.
 
         answer: | 
           To resolve this issue, restart CloudAgent. 
@@ -48,7 +48,7 @@ sections:
           `Error: unable to delete group clustergroup-spdb: failed to delete group clustergroup-spdb: rpc error: code = DeadlineExceeded desc = context deadline exceeded`
           
       - question: | 
-          When using kubectl to delete a node, the associated VM might not be deleted
+          When using kubectl to delete a node, the associated VM might not be deleted.
 
         answer: | 
           This failure causes the system not to recognize that the node is missing, and therefore, a new node will not spin up. 
@@ -74,14 +74,14 @@ sections:
           The removed node is still listed.
           
       - question: | 
-          Running Remove-AksHciCluster results in the error: `A workload cluster with the name 'my-workload-cluster' was not found`
+          Running Remove-AksHciCluster results in the error: 'A workload cluster with the name 'my-workload-cluster' was not found'.
 
         answer: | 
           Check to make sure you have used the correct information for removing the cluster.
           If may encounter this error when running [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md).
           
       - question: | 
-          Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed
+          Error occurs when running Uninstall-AksHci and AKS on Azure Stack HCI is not installed.
 
         answer: | 
           You can safely ignore the error message as there is no functional impact.

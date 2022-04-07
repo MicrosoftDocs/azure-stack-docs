@@ -11,7 +11,7 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Delete KVA certificate if expired after 60 days
+          Delete KVA certificate if expired after 60 days.
 
         answer: | 
           You can find a discussion about the issue at [KVA certificate needs to be deleted if KVA Certificate expired after 60 days](https://github.com/Azure/aks-hci/issues/146)
@@ -29,14 +29,14 @@ sections:
           ```
           
       - question: | 
-          Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes 
+          Special Active Directory permissions are needed for domain joined Azure Stack HCI nodes. 
 
         answer: | 
           Elevate the user's permissions.
           Users deploying and configuring Azure Kubernetes Service on Azure Stack HCI need to have **Full Control** permission to create AD objects in the Active Directory container the server and service objects are created in. 
           
       - question: | 
-          Uninstall-AksHciAdAuth fails with the error `[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]`
+          Uninstall-AksHciAdAuth fails with the error '[Error from server (NotFound): secrets "keytab-akshci-scale-reliability" not found]'.
 
         answer: | 
           `This issue will be fixed.`

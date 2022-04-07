@@ -11,7 +11,7 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Incorrect upgrade notification in Windows Admin Center
+          Incorrect upgrade notification in Windows Admin Center.
 
         answer: | 
           No action needed.
@@ -20,14 +20,14 @@ sections:
           ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
           
       - question: | 
-          After a successful upgrade, older versions of PowerShell are not removed
+          After a successful upgrade, older versions of PowerShell are not removed.
 
         answer: | 
           To work around this issue, you need to [run a script to uninstall older PowerShell versions](https://github.com/Azure/aks-hci/issues/130).
           Older versions of PowerShell are not removed
           
       - question: | 
-          Certificate renewal pod is in a crash loop state
+          Certificate renewal pod is in a crash loop state.
 
         answer: | 
           To resolve this issue, you manually copy the cert tattoo file from the control plane node to each of the worker nodes.
@@ -62,7 +62,7 @@ sections:
           After upgrading or up-scaling the target cluster the certificate renewal pod is now in a crash loop state. It's expecting a cert tattoo `yaml` file from the path `/etc/Kubernetes/pki`. The configuration file is present in control plane node VMs but not on worker node VMs. 
           
       - question: | 
-          Nodeagent leaking ports when unable to join cloudagent due to expired token when cluster not upgraded for more than 60 days
+          Nodeagent leaking ports when unable to join cloudagent due to expired token when cluster not upgraded for more than 60 days.
 
         answer: | 
           To resolve the issue, you'll need to first stop the wssdagent from running. Since the service is in starting phase, it may prevent you from stopping the service. You'll need to kill the process before attempting to stop the service.
@@ -129,14 +129,14 @@ sections:
           Expected behavior: the node agent would be in the starting phase, which will constantly try joining the cloud agent and exhausting the ports.
           
       - question: | 
-          During an upgrade, custom node taints, roles, and labels are lost
+          During an upgrade, custom node taints, roles, and labels are lost.
 
         answer: | 
           To work around this issue, run the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) cmdlet to correctly [create a node pool with taints](./reference/ps/new-akshcinodepool.md#create-a-node-pool-with-taints) for your worker nodes.
           When upgrading, you may lose all custom taints, roles, and labels that you added to your worker nodes. Since AKS on Azure Stack HCI is a managed service, adding custom taints, labels, and roles when performed outside the provided PowerShell cmdlets or Windows Admin Center is not supported.
           
       - question: | 
-          AKS on Azure Stack HCI goes out-of-policy if a workload cluster hasn't been created in 60 days
+          AKS on Azure Stack HCI goes out-of-policy if a workload cluster hasn't been created in 60 days.
 
         answer: | 
           The only way to fix this issue is to redeploy with a clean installation.
@@ -145,7 +145,7 @@ sections:
           If you haven't deployed a workload cluster in 60 days, the billing goes out of policy. 
           
       - question: | 
-          When upgrading a deployment, some pods might be stuck at _waiting for static pods to have a ready condition_
+          When upgrading a deployment, some pods might be stuck at 'waiting for static pods to have a ready condition'.
 
         answer: | 
           To release the pods and resolve this issue, you should restart _kubelet_. To view the NotReady node with the static pods, run the following command: 
@@ -173,7 +173,7 @@ sections:
           Pods stuck at _waiting for static pods to have a ready condition_.
           
       - question: | 
-          Running an upgrade results in the error: `Error occurred while fetching platform upgrade information`
+          Running an upgrade results in the error: 'Error occurred while fetching platform upgrade information'.
 
         answer: | 
           To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
@@ -184,14 +184,14 @@ sections:
           This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center doesn't have support to install modules in a proxy environment. 
           
       - question: | 
-          When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs
+          When upgrading a Kubernetes cluster with an Open Policy Agent, the upgrade process hangs.
 
         answer: | 
           To resolve this issue, if you upgrade clusters deployed with an OPA, make sure that your policies allow for pulling images from Azure Container Registry. For an AKS on Azure Stack HCI upgrade, you should add the following endpoint in your policy's list: _ecpacr.azurecr.io_.
           When upgrading Kubernetes clusters with an Open Policy Agent (OPA), such as OPA GateKeeper, the process may hang and unable to complete. This issue can occur because the policy agent is configured to prevent pulling container images from private registries.
           
       - question: | 
-          Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: OutOfCapacity 
+          Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: OutOfCapacity.
 
         answer: | 
           To resolve this issue, start the wssdagent Moc NodeAgent Service on the affected nodes. This will solve the issue, and bring the deployment back to a good state. Run the following command:
@@ -212,21 +212,21 @@ sections:
           ```
           
       - question: | 
-          After upgrading to PowerShell module 1.1.9, this error appears: `Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1' on node: 'node1'`
+          After upgrading to PowerShell module 1.1.9, this error appears: 'Applying platform configurations failed. Error: No adapter is connected to the switch:'swtch1' on node: 'node1''.
 
         answer: | 
           Update the PowerShell module to version 1.1.11 on all nodes to resolve this issue.
           This error was resolved in PowerShell module version 1.1.11.
           
       - question: | 
-          Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at `Update-KvaInternal`
+          Attempt to upgrade from the GA release to version 1.0.1.10628 is stuck at 'Update-KvaInternal'.
 
         answer: | 
           An AKS on Azure Stack HCI upgrade is forward only and doesn't support version rollback, so if you get stuck, you can't upgrade.
           When attempting to upgrade AKS on Azure Stack HCI from the GA release to version 1.0.1.10628, if the `ClusterStatus` shows `OutOfPolicy`, you could be stuck at the _Update-KvaInternal_ stage of the upgrade installation. If you use the [repair-akshcicerts](./reference/ps/repair-akshcicerts.md) PowerShell cmdlet as a workaround, it also may not work. The AKS on Azure Stack HCI billing status must show as connected before upgrading. 
           
       - question: | 
-          Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster
+          Update of host OS HCI to HCIv2 breaks AKS on Azure Stack HCI installation: Cannot reach management cluster.
 
         answer: | 
           To resolve this issue: restart the `kube-vip` container to bring the deployment back to a good state.
@@ -264,7 +264,7 @@ sections:
           ``` 
           
       - question: | 
-          When running Update-AksHci, the update process was stuck at `Waiting for deployment 'AksHci Billing Operator' to be ready`
+          When running Update-AksHci, the update process was stuck at 'Waiting for deployment 'AksHci Billing Operator' to be ready'.
 
         answer: | 
           Review the following root causes to resolve the issue:
@@ -301,7 +301,7 @@ sections:
           This status message appears when running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet. XX
           
       - question: | 
-          Windows Admin Center update dashboard doesn't refresh after successful updates
+          Windows Admin Center update dashboard doesn't refresh after successful updates.
 
         answer: | 
           Refresh the browser to fix this issue.
@@ -310,7 +310,7 @@ sections:
           ![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
           
       - question: | 
-          When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster
+          When using PowerShell to upgrade, an excess number of Kubernetes configuration secrets is created on a cluster.
 
         answer: | 
           If you experience this issue, run the following steps:

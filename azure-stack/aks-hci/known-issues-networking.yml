@@ -11,7 +11,7 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Cloud agent may fail to start successfully when using path names with spaces in them
+          Cloud agent may fail to start successfully when using path names with spaces in them.
 
         answer: | 
           To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
@@ -23,7 +23,7 @@ sections:
           ```
           
       - question: | 
-          Load balancer in Azure Kubernetes Service requires DHCP reservation
+          Load balancer in Azure Kubernetes Service requires DHCP reservation.
 
         answer: | 
           To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool.
@@ -31,7 +31,7 @@ sections:
           The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. 
           
       - question: | 
-          Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly
+          Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly.
 
         answer: | 
           Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
@@ -50,7 +50,7 @@ sections:
           ```
           
       - question: | 
-          Using Remote Desktop to connect to the management cluster produces a connection error
+          Using Remote Desktop to connect to the management cluster produces a connection error.
 
         answer: | 
           To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
@@ -89,14 +89,14 @@ sections:
           > Your cluster name will be different.
           
       - question: | 
-          Creating virtual networks with a similar configuration cause overlap issues
+          Creating virtual networks with a similar configuration cause overlap issues.
 
         answer: | 
           `What is the fix?`
           When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, issues may happen in scenarios where two virtual network configurations are almost the same.
           
       - question: | 
-          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses
+          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses.
 
         answer: | 
           To find out what IP addresses are currently in use in a virtual network, use the steps below:
@@ -120,7 +120,7 @@ sections:
           Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. 
           
       - question: | 
-          When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points
+          When deploying AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points.
 
         answer: | 
           To resolve this issue, you need to determine where the breakdown occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:

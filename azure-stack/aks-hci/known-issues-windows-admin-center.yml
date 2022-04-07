@@ -11,21 +11,21 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Issues occurred when registering the Windows Admin Center gateway with Azure
+          Issues occurred when registering the Windows Admin Center gateway with Azure.
 
         answer: | 
           To mitigate this problem, sign in to your Azure account in another browser tab or window, and then register the Windows Admin Center gateway to Azure.
           If you've just created a new Azure account and haven't signed in to the account on your gateway machine, you might experience problems with registering your Windows Admin Center gateway with Azure. 
           
       - question: | 
-          Only the user who set up the AKS host can create clusters
+          Only the user who set up the AKS host can create clusters.
 
         answer: | 
           To work around this issue, copy the _wssd_ folder from the profile of the user who set up the AKS host to the profile of the user who will be creating the new Kubernetes clusters.
           When deploying Azure Kubernetes Service on Azure Stack HCI through Windows Admin Center, only the user who set up the AKS host can create Kubernetes clusters.
           
       - question: | 
-          Recovering from a failed AKS on Azure Stack HCI deployment
+          Recovering from a failed AKS on Azure Stack HCI deployment.
 
         answer: | 
           Close all Windows Admin Center instances connected to Azure Kubernetes Service on Azure Stack HCI before running [Uninstall-AksHci](./reference/ps/uninstall-akshci.md) from a PowerShell administrative window.  
@@ -33,27 +33,27 @@ sections:
           You are experiencing deployment issues or want to reset your deployment.
           
       - question: | 
-          The Setup or Cluster Create wizard displays an error about a wrong configuration
+          The Setup or Cluster Create wizard displays an error about a wrong configuration.
 
         answer: | 
           Perform cluster cleanup operations. These operations might involve removing the `C:\Program Files\AksHci\mocctl.exe` file.
           You may receive an error in either wizard about a wrong configuration.
           
       - question: | 
-          Networking field names are inconsistent in the Windows Admin Center portal
+          Networking field names are inconsistent in the Windows Admin Center portal.
 
         answer: | 
           There are inconsistencies in network field names showing up in the host cluster deployment flow, and the workload cluster deployment flow.
           
       - question: | 
-          On Windows Admin Center, the message `error occurred while creating service principal` appears while installing an AKS host on Azure Stack HCI
+          On Windows Admin Center, the message 'error occurred while creating service principal' appears while installing an AKS host on Azure Stack HCI.
 
         answer: | 
           Enable pop-ups.
           You will get this error if you have disabled pop-ups. Google Chrome blocks pop-ups by default, and therefore, the Azure sign-in pop-up is blocked and causes the service principal error.
           
       - question: | 
-          A WinRM error is displayed when creating a new workload cluster
+          A WinRM error is displayed when creating a new workload cluster.
 
         answer: | 
           To resolve this issue, use the **SetSPN** command to create the SPN. From a command prompt on the Windows Admin Center gateway, run the following command: 
@@ -77,7 +77,7 @@ sections:
           When switching from DHCP to static IP, Windows Admin Center displayed an error that said the WinRM client cannot process the request. This error also occurred outside of Windows Admin Center. WinRM broke when static IP addresses were used, and the servers were not registering a Service Principal Name (SPN) when moving to static IP addresses. 
           
       - question: | 
-          Incorrect upgrade notification in Windows Admin Center
+          Incorrect upgrade notification in Windows Admin Center.
 
         answer: | 
           You can safely disregard this message.
@@ -86,11 +86,11 @@ sections:
           ![WAC update dashboard doesn't refresh after successful updates.](media/known-issues-windows-admin-center/wac-known-issue-incorrect-notification.png)
           
       - question: | 
-          Access is denied
+          Access is denied.
 
         answer: | 
           Make sure that the account/credentials added is an administrative account on the machine. Then verify that PSRemoting is enabled and remote hosts are trusted. You can do this with the following PowerShell commands:
-          ```powershell-interactive
+          ```powershell
           Enable-PSRemoting -Force 
           winrm quickconfig 
           ```
@@ -99,7 +99,7 @@ sections:
           In Stage 2.1: Basic Step Component, you may encounter this error: `Connecting to remote server *** failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.` when trying to use your credentials for your server node(s).
           
       - question: | 
-          Windows Admin Center doesn't have an Arc offboarding experience
+          Windows Admin Center doesn't have an Arc offboarding experience.
 
         answer: | 
           To delete Arc agents on a cluster that has been destroyed, navigate to the resource group of the cluster in the Azure portal, and manually delete the Arc content. To delete Arc agents on a cluster that is still up and running, you should run the following command:
@@ -113,7 +113,7 @@ sections:
           Windows Admin Center does not currently have a process to off board a cluster from Azure Arc.
           
       - question: | 
-          Windows Admin Center update dashboard doesn't refresh after successful updates
+          Windows Admin Center update dashboard doesn't refresh after successful updates.
 
         answer: | 
           Refresh the browser to fix this issue. 
@@ -121,7 +121,7 @@ sections:
           ![Networking field names inconsistent in WAC portal.](media/known-issues-windows-admin-center/wac-update-shows-previous-version.png)
           
       - question: | 
-          Troubleshoot CredSSP issues
+          Troubleshoot CredSSP issues.
 
         answer: | 
           Try the following steps to troubleshoot your deployment:
@@ -149,23 +149,23 @@ sections:
           When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deployment hangs for an extended period, you might be having Credential Security Support Provider (CredSSP) or connectivity problems. 
           
       - question: | 
-          A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center
+          A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center.
 
         answer: | 
           Use the PowerShell command [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) to connect the AKS workload cluster to Azure Arc while we actively work on improving the user experience.
           Sometimes, due to network issues, Windows Admin Center times out an Arc connection. 
           
       - question: | 
-          `Install-Module` was not recognized
+          'Install-Module' was not recognized.
 
         answer: | 
           Check the spelling of the name, if the path is included, make sure the path is correct and try again` when you install. For the PowerShell commands, please complete them on the node(s) that you are trying to deploy to. Please run the following command (ensure your PowerShell version is at least 5.1) to resolve:
-          ```powershell-interactive
+          ```powershell
           Install-Module -Name PowershellGet -Repository PSGallery -Force -Confirm:$false -SkipPublisherCheck
           ```
           
           Then run these commands if you encounter any errors from the first command: 
-          ```powershell-interactive
+          ```powershell
           Get-PSRepository
           Register-PSRepository -Default
           ```
@@ -179,14 +179,14 @@ sections:
           Unable to connect Windows Admin Center to Azure because you can't automatically create and use an Azure App ID on the gateway.
           
       - question: | 
-          When updating the Kubernetes version, the update page shows the update is still processing when the update is completed
+          When updating the Kubernetes version, the update page shows the update is still processing when the update is completed.
 
         answer: | 
           You can ignore this issue as the update process did complete.
           If you have workload clusters with Kubernetes version 1.19.9 installed, and then use Windows Admin Center to update them to Kubernetes version 1.19.11, the Kubernetes update page continues to show that the update is still in process. However, if you run [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), the output shows that the update is complete, and if you open Windows Admin Center in a new tab, the cluster is updated to 1.19.11 in the **Kubernetes clusters** list. 
           
       - question: | 
-          Create Windows Admin Center logs
+          Create Windows Admin Center logs.
 
         answer: | 
           To collect logs for Windows Admin Center, use the `Get-SMEUILogs.ps1` script that's provided in the public preview package. 
@@ -219,7 +219,7 @@ sections:
           - JavaScript problems that surface in the browser console 
           
       - question: | 
-          Running an upgrade results in the error: `Error occurred while fetching platform upgrade information`
+          Running an upgrade results in the error: 'Error occurred while fetching platform upgrade information'.
 
         answer: | 
           To resolve this error, set up AKS on Azure Stack HCI [using the proxy PowerShell command](set-proxy-settings.md).
@@ -230,7 +230,7 @@ sections:
           This error message typically occurs when AKS on Azure Stack HCI is deployed in an environment that has a proxy configured. Currently, Windows Admin Center does not have support to install modules in a proxy environment. 
           
       - question: | 
-          Deployment: Connecting to remote server localhost failed
+          Deployment: Connecting to remote server localhost failed.
 
         answer: | 
           Try applying the solutions suggested in the [Manual troubleshooting](../hci/manage/troubleshoot-credssp.md#manual-troubleshooting). 
@@ -240,7 +240,7 @@ sections:
           The AKS host cluster deployment fails at system checks with a WinRM service error.
           
       - question: | 
-          When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version
+          When multiple versions of PowerShell modules are installed, Windows Admin Center does not pick the latest version.
 
         answer: | 
           Make sure you have only one PowerShell module installed. You should uninstall all unused PowerShell versions of the PowerShell modules and leave just one installed. More information on which Windows Admin Center version is compatible with which PowerShell version can be found in the AKS on Azure Stack HCI [release notes.](https://github.com/Azure/aks-hci/releases).
@@ -248,14 +248,14 @@ sections:
           If you have multiple versions of the PowerShell modules installed (for example, 0.2.26, 0.2.27, and 0.2.28), Windows Admin Center may not use the latest version (or the one it requires).
           
       - question: | 
-          During deployment the error `No match was found for the specified search criteria for the provider 'NuGet'` appears
+          During deployment the error 'No match was found for the specified search criteria for the provider 'NuGet'' appears.
 
         answer: | 
           Check to make sure the server or failover cluster has internet connectivity and then start a fresh installation.
           
           In Stage 2.1: System Validation, there may be an error when you hit install: `No match was found for the specified search criteria for the provider 'NuGet'. The package provider requires 'PackageManagement' and 'Provider' tags. Please check if the specified package has the tags.`
           For the PowerShell commands, please complete them on the node(s) that you are trying to deploy to. You will have to manually install the NuGet using the PowerShell command below: 
-          ```powershell-interactive
+          ```powershell
           Install-PackageProvider -Name NuGet -Scope CurrentUser -Force
           
           ```
@@ -265,17 +265,17 @@ sections:
           This is an error occurs from PowerShell and states that there are internet connectivity issues. PowerShell is trying to install the pre-requisites package and is unable to install it. 
           
       - question: | 
-          Unable to find repository 'PSGallery'
+          Unable to find repository 'PSGallery'.
 
         answer: | 
           Use Get-PSRepository to see all available repositories.` when you click install. For the PowerShell commands, please complete them on the node(s) that you are trying to deploy to. Please unregister and reregister the PSRepository in an administrative PowerShell window. Close all PowerShell windows afterward.
-          ```powershell-interactive
+          ```powershell
           Unregister-PSRepository -Name 'PSGallery'
           Register-PSRepository -Default
           ```
           
           Then, please uninstall and reinstall PowerShellGet in an administrative PowerShell window. Close all PowerShell windows afterwards.
-          ```powershell-interactive
+          ```powershell
           Uninstall-Module PowerShellGet
           Install-Module PowerShellGet -Force
           ```
@@ -284,14 +284,14 @@ sections:
           In stage 2.1: System Validation, you may encounter this error: `Unable to find repository 'PSGallery'.
           
       - question: | 
-          Error occurs when attempting to use Windows Admin Center
+          Error occurs when attempting to use Windows Admin Center.
 
         answer: | 
           For CredSSP to function successfully in the Cluster Create wizard, Windows Admin Center must be installed and used by the same account.
           If you install Windows Admin Center with one account and try to use it with another, you'll get errors.
           
       - question: | 
-          The error `Cannot index into a null array` appears when creating an Arc enabled workload cluster
+          The error 'Cannot index into a null array' appears when creating an Arc enabled workload cluster.
 
         answer: | 
           You can safely ignore this error as it is part of the validation step, and the cluster has already been created. 
@@ -299,7 +299,7 @@ sections:
           This error appears when moving from PowerShell to Windows Admin Center to create an Arc enabled workload cluster. 
           
       - question: | 
-          Restarting Azure Stack HCI nodes causes timing issue
+          Restarting Azure Stack HCI nodes causes timing issue.
 
         answer: | 
           To work around this issue, pause and drain the nodes before you plan to restart them. Sometimes, the workload clusters may just take longer to appear in the dashboard.
@@ -308,7 +308,7 @@ sections:
           Restarting the Azure Stack HCI cluster nodes hosting the management cluster and workload clusters may cause the workload clusters to disappear from the WAC dashboard. 
           
       - question: | 
-          Cannot deploy AKS to an environment that has separate storage and compute clusters
+          Cannot deploy AKS to an environment that has separate storage and compute clusters.
 
         answer: | 
           Windows Admin Center will not deploy Azure Kubernetes Service to an environment with separate storage and compute clusters as it expects the compute and storage resources to be provided by the same cluster. In most cases, it will not find CSVs exposed by the compute cluster and will refuse to continue with deployment.
