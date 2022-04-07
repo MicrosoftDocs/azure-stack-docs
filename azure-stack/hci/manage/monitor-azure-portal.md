@@ -1,21 +1,22 @@
 ---
 title: Configure Azure portal to monitor Azure Stack HCI clusters
 description: How to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters from Azure portal.
-author: arduppal
-ms.author: arduppal
+author: sethmanheim
+ms.author: sethm
+ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/16/2021
+ms.date: 04/06/2022
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article explains how to enable Logs and Monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+This article explains how to enable logs and monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
 
-If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled Logs and Monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
+If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
    > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration).
@@ -24,15 +25,15 @@ If you haven't already, be sure to [Register your cluster with Azure](../deploy/
 
 After you register your cluster and Arc-enable the servers, you'll see the following in Azure portal:
 
-- An Azure Stack HCI resource in the specified resource group
-- **Server - Azure Arc** resources for every server in the cluster in the `<clustername>ArcInstanceResourceGroup`
-- Nodes with **Server-Azure Arc** resource link on the Azure Stack HCI resource page under the **Nodes** tab
+- An Azure Stack HCI resource in the specified resource group.
+- **Server - Azure Arc** resources for every server in the cluster in the `<clustername>ArcInstanceResourceGroup`.
+- Nodes with a **Server-Azure Arc** resource link on the Azure Stack HCI resource page under the **Nodes** tab.
 
-Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you will see the option to enable Logs, which should say **Not configured**.
+Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you will see the option to enable logs, which should say **Not configured**.
 
 :::image type="content" source="media/monitor-azure-portal/logs-capability.png" alt-text="Select the Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
 
-This capability is an Arc for Servers extension that simplifies installing the Microsoft Monitoring Agent. Because you're using the Arc for Servers extension to enable this workflow, if you ever add additional servers to your cluster, they will automatically have the Microsoft Monitoring Agent installed on them as well.
+This capability is an Arc for Servers extension that simplifies installing the Microsoft Monitoring Agent. Because you're using the Arc for Servers extension to enable this workflow, if you ever add additional servers to your cluster, they will automatically have the Microsoft Monitoring Agent installed on them.
 
    > [!NOTE]
    > The Microsoft Monitoring Agent for Windows communicates outbound to the Azure Monitor service over TCP port 443. If the servers connect through a firewall or proxy server to communicate over the internet, review [these requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements) to understand the network configuration required.
@@ -41,9 +42,9 @@ This capability is an Arc for Servers extension that simplifies installing the M
 
 To configure the Log Analytics Agent extension:
 
-1. Under the **Capabilities** tab, select **Logs.**
+1. Under the **Capabilities** tab, select **Logs**.
 2. Select **Use existing** to use the existing workspace for your subscription.
-3. Click **Add** at the bottom of the page.
+3. Select **Add** at the bottom of the page.
 
    :::image type="content" source="media/monitor-azure-portal/enable-log-analytics.png" alt-text="Enable Log Analytics on Azure portal" lightbox="media/monitor-azure-portal/enable-log-analytics.png":::
 
@@ -54,7 +55,7 @@ You have now successfully installed the log analytics extension.
 
 ### Disable Log Analytics
 
-If you'd like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the Extensions settings. Note that this does not delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
+If you'd like to disable the Logs capability, you'll need to remove the Microsoft Monitoring Agent from the **Extensions** settings. Note that this does not delete the Log Analytics workspace in Azure or any of the data that resides in it, so you'll have to do that manually.
 
 To remove the Microsoft Monitoring Agent from every server in the cluster, follow these steps:
 
@@ -68,18 +69,18 @@ Now that you've set up a Log Analytics workspace, you can enable monitoring. Onc
 
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004)
 
-To change the frequency of log collection, refer to [Event Log Channel](azure-stack-hci-insights.md#event-log-channel).
+To change the frequency of log collection, see [Event Log Channel](azure-stack-hci-insights.md#event-log-channel).
 
 ### Enable monitoring visualizations
 
-Enabling monitoring will turn on monitoring for all Azure Stack HCI clusters currently associated with the Log Analytics workspace. You will be billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
+Enabling monitoring turns on monitoring for all Azure Stack HCI clusters currently associated with the Log Analytics workspace. You will be billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
 
-To enable this capability from Azure portal, follow these steps:
+To enable this capability from the Azure portal, follow these steps:
 
 1. Under the **Capabilities** tab, select **Monitoring**, then **Enable**.
 1. Monitoring should now show as **Configured** under the **Capabilities** tab.
 
-The **Microsoft-windows-sddc-management/operational** Windows event channel will be added to your Log Analytics workspace. By collecting these logs, we'll be able to show the health status of the individual servers, drives, volumes, and VMs.
+The **Microsoft-windows-sddc-management/operational** Windows event channel will be added to your Log Analytics workspace. By collecting these logs, these analytics  show the health status of the individual servers, drives, volumes, and VMs.
 
 After you enable monitoring, it can take up to an hour to collect the data. When the process is finished, you'll be able go to the **Monitoring** tab and see a rich visualization of the health of your cluster, as in the screenshot below.
 
@@ -104,23 +105,21 @@ As described earlier, when you enable monitoring visualization, logs are collect
 
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004)
 
-Azure Monitor has pay-as-you-go pricing, and the first GB per billing account per month is free.
+Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account per month is free. For exact costs, see the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for price per GB after the first 5 GB. The following table can help you calculate the cost:
 
-| **Clusters in standalone Log Analytics workspace** | **GB ingested per month** | **Estimated cost** |
-|:---------------------------------------------------|:--------------------------|:-------------------|
-| Two-node cluster                                   | ~1 MB per hour            | Free               |
-| Four-node cluster                                  | ~1 MB per hour            | Free               |
-| Eight-node cluster                                 | ~1 MB per hour            | Free               |
+| **Clusters in standalone Log Analytics workspace** | **GB ingested per month** |
+|:---------------------------------------------------|:--------------------------|
+| Two-node cluster                                   | ~1 MB per hour            |
+| Four-node cluster                                  | ~1 MB per hour            |
+| Eight-node cluster                                 | ~1 MB per hour            |
 
-The table below shows a rough pricing estimate for Azure Stack HCI clusters of different sizes.
+The following table shows the pricing structure for Azure Stack HCI clusters of different sizes:
 
-| **Clusters in same Log Analytics Workspace** | **GB ingested per month** | **Estimated cost**            |
-|:---------------------------------------------|:--------------------------|:------------------------------|
-| Small deployment (3 two-node clusters)       | ~3 GB                     | Free                          |
-| Medium deployment (10 four-node clusters)    | ~10 GB                    | $2.76 per GB after first 5 GB |
-| Large deployment (25 four-node clusters)     | ~25 GB                    | $2.76 per GB after first 5 GB |
-
-Every GB of data ingested into your Log Analytics workspace can be retained at no charge for up to 31 days. Data retained beyond the first 31 days will be charged $0.12 per GB per month.
+| **Clusters in same Log Analytics workspace** | **GB ingested per month** |
+|:---------------------------------------------|:--------------------------|
+| Small deployment (3 two-node clusters)       | ~3 GB                     |
+| Medium deployment (10 four-node clusters)    | ~10 GB                    |
+| Large deployment (25 four-node clusters)     | ~25 GB                    |
 
 ## Troubleshooting
 
