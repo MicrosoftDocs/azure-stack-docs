@@ -28,7 +28,7 @@ Get-ArcHCILogs -workDirectory <path>
 
 The `workDirectory` is located under the following path: 
 
-`$csv_path\ResourceBridge\kvatoken.tok`
+`$csv_path\ResourceBridge`
 
 Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
