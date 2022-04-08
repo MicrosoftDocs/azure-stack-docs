@@ -79,7 +79,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- TBD
+- SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrading to ASH 2112. 
 
 ### Fixes
 
