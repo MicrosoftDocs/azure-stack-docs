@@ -3,9 +3,9 @@ title: Troubleshooting overview for Azure Kubernetes Service on Azure Stack HCI
 description: An overview for troubleshooting issues encountered when using Azure Kubernetes Service on Azure Stack HCI. 
 author: mattbriggs
 ms.topic: troubleshooting
-ms.date: 12/13/2021
+ms.date: 04/08/2022
 ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 04/08/2022
 ms.reviewer: abha
 
 ---
@@ -25,7 +25,7 @@ Logs are an important method to collect and review data from many sources that c
 AKS on Azure Stack HCI troubleshooting topics are organized by functional area. Use the links below to find solutions to issues and errors: 
 
 - [Installation ](/azure-stack/aks-hci/known-issues-installation)  
-- [Upgrade ](/azure-stack/aks-hci/known-issues-upgrade
+- [Upgrade ](/azure-stack/aks-hci/known-issues-upgrade)
 - [Windows Admin Center ](/azure-stack/aks-hci/known-issues-windows-admin-center)
 - [Azure Arc enabled Kubernetes](/azure-stack/aks-hci/known-issues-arc)
 - [Uninstall](/azure-stack/aks-hci/known-issues-uninstall) 
@@ -33,7 +33,7 @@ AKS on Azure Stack HCI troubleshooting topics are organized by functional area. 
 - [Networking](/azure-stack/aks-hci/known-issues-networking)
 - [Security and identity](/azure-stack/aks-hci/known-issues-security) 
 - [Storage](/azure-stack/aks-hci/known-issues-storage)
-- [General](/azure-stack/aks-hci/known-issues) 
+- [General](/azure-stack/aks-hci/known-issues)
 
 > [!NOTE]
 > If none of the workarounds found in the links above apply to you, [open a support issue](./help-support.md).
