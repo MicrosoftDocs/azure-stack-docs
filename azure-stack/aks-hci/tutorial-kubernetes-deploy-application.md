@@ -8,6 +8,8 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+# Intent:
+# Keyword: 
 ---
 
 # Tutorial: Run applications in Azure Kubernetes Service on Azure Stack HCI
