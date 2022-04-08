@@ -7,11 +7,13 @@ ms.date: 10/27/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+# Intent: As an IT Pro, I want step-by-step instructions on how to use PowerShell to use prestaged cluster objects to deploy my AKS host.
+# Keyword: prestaged cluster DNS records
 ---
 
 # Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell 
 
-In this how-to guide, you'll learn how to configure your AKS host deployment using PowerShell if you have prestaged cluster service objects and DNS records.
+In this how-to guide, you'll learn how to use PowerShell to configure your AKS host deployment if you have prestaged cluster service objects and DNS records.
 
 ## Before you begin
 

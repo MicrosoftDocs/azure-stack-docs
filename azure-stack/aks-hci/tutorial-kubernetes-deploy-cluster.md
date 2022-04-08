@@ -8,11 +8,13 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI cluster and use kubect1 so I can connect to the Kubernetes master node.
+# Keyword: workload cluster AKS installation AKS host
 ---
 
 # Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI
 
-Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI cluster is deployed in Azure Kubernetes Service on Azure Stack HCI. You learn how to:
+Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI cluster is deployed in Azure Kubernetes Service on Azure Stack HCI. You'll learn how to:
 
 > [!div class="checklist"]
 > * Deploy an AKS cluster on Azure Stack HCI 
@@ -23,7 +25,7 @@ In later tutorials, the Azure Vote application is deployed to the cluster, scale
 
 ## Before you begin
 
-In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, and would like to follow along, start at [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, start at [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following commands to install it.
 

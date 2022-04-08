@@ -79,8 +79,6 @@
       items:
           - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
-          - name: With a proxy server
-            href: kubernetes-walkthrough-powershell-proxy.md
     - name: Upgrade the AKS on Azure Stack HCI host
       items:
           - name: Use PowerShell
