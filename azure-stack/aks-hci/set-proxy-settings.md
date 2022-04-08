@@ -65,7 +65,7 @@ Configure machine-wide proxy exclusions on *each* of the physical cluster hosts 
 > [!NOTE]
 > We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues.
 
-Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclude specific hosts or domains from using the proxy server](#exclude-specific-hosts-or-domains-from-using-the-proxy-server).
+Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclusion list for excluding private subnets from being sent to the proxy](#Exclusion list for excluding private subnets from being sent to the proxy).
 
 ```powershell
 $no_proxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.contoso.com"
