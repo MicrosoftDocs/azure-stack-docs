@@ -212,25 +212,25 @@
     - name: AKS on Azure Stack HCI issues
       items: 
           - name: Installation
-            href: known-issues-installation.md
+            href: /azure-stack/aks-hci/known-issues-installation
           - name: Upgrade 
-            href: known-issues-upgrade.md  
+            href: /azure-stack/aks-hci/known-issues-upgrade 
           - name: Windows Admin Center
-            href: known-issues-windows-admin-center.md
+            href: /azure-stack/aks-hci/known-issues-windows-admin-center
           - name: Azure Arc enabled Kubernetes
-            href: known-issues-arc.md
+            href: /azure-stack/aks-hci/known-issues-arc
           - name: Uninstall
-            href: known-issues-uninstall.md
+            href: /azure-stack/aks-hci/known-issues-uninstall
           - name: Kubernetes clusters
-            href: known-issues-workload-clusters.md
+            href: /azure-stack/aks-hci/known-issues-workload-clusters
           - name: Networking
-            href: known-issues-networking.md
+            href: /azure-stack/aks-hci/known-issues-networking
           - name: Security
-            href: known-issues-security.md
+            href: /azure-stack/aks-hci/known-issues-security
           - name: Storage
-            href: known-issues-storage.md
+            href: /azure-stack/aks-hci/known-issues-storage
           - name: Other
-            href: known-issues.md
+            href: /azure-stack/aks-hci/known-issues
     - name: Azure Stack HCI issues
       items:
           - name: Cluster validation reporting in Azure Stack HCI
