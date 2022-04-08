@@ -280,7 +280,7 @@ Enable-AksHciArcConnection -name mycluster
 ```
 
 > [!NOTE]
-> If you encounter issues or error messages during the installation process, see [installation known issues and errors](known-issues-installation.md) for more information.
+> If you encounter issues or error messages during the installation process, see [installation known issues and errors](/azure-stack/aks-hci/known-issues-installation) for more information.
 
 ## Scale a Kubernetes cluster
 
@@ -289,13 +289,13 @@ If you need to scale your cluster up or down, you can change the number of contr
 To scale control plane nodes, run the following command.
 
 ```powershell
-Set-AksHciCluster –name mycluster -controlPlaneNodeCount 3
+Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 ```
 
 To scale the worker nodes in your node pool, run the following command.
 
 ```powershell
-Set-AksHciNodePool –clusterName mycluster -name linuxnodepool -count 3
+Set-AksHciNodePool -clusterName mycluster -name linuxnodepool -count 3
 ```
 
 > [!NOTE]
