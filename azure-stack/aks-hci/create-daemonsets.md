@@ -7,6 +7,8 @@ ms.date: 09/08/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+#intent: As an IT Pro, I want to learn how to create and utilize a DaemonSet to help manage my Kubernetes configuration and improve the overall cluster performance.
+#keyword: DaemonSet how-to worker nodes
 ---
 
 # Create DaemonSets

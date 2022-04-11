@@ -7,6 +7,8 @@ ms.date: 12/02/2020
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+# Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux application to my cluster.
+# Keyword: Linux deployment Windows runtime 
 
 ---
 
@@ -14,7 +16,7 @@ ms.reviewer: abha
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-In this tutorial, you deploy a multi-container application that includes a web front end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
+In this tutorial, you'll learn how to deploy a multi-container application that includes a web front-end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
 
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
@@ -136,7 +138,7 @@ service "azure-vote-front" created
 
 ## Test the application
 
-When the application runs, a Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete.
+When the application runs, a Kubernetes service exposes the application front-end to the internet. This process can take a few minutes to complete.
 
 To monitor progress, use the `kubectl get service` command with the `--watch` argument.
 
@@ -164,13 +166,13 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 
 ## Scale application pods
 
-We have created a single replica of the Azure Vote front end and Redis instance. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
+We have created a single replica of the Azure Vote front-end and Redis instance. To see the number and state of pods in your cluster, use the `kubectl get` command:
 
 ```console
 kubectl get pods -n default
 ```
 
-The following example output shows one front end pod and one back-end pod:
+The following example output shows one front-end pod and one back-end pod:
 
 ```
 NAME                                READY     STATUS    RESTARTS   AGE
@@ -178,7 +180,7 @@ azure-vote-back-6bdcb87f89-g2pqg    1/1       Running   0          25m
 azure-vote-front-84c8bf64fc-cdq86   1/1       Running   0          25m
 ```
 
-To change the number of pods in the *azure-vote-front* deployment, use the `kubectl scale` command. The following example increases the number of front end pods to *5*:
+To change the number of pods in the *azure-vote-front* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front

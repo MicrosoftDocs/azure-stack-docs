@@ -8,6 +8,8 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
+# Intent: As an IT Pro, I want to learn how to use Calico's network policies to secure traffic between pods in my AKS Azure Stack HCI deployment.
+# Keyword: Calico policies client pods server pods workload cluster
 
 ---
 
