@@ -7,33 +7,34 @@ ms.date: 12/02/2020
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-
+#intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Stack HCI cluster to Azure Arc-enabled Kubernetes so I can extend those capabilities to my Kubernetes clusters.
+#keyword: AKS cluster HCI cluster
 ---
 
 # Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Azure Arc-enabled Kubernetes representation allows for extending the following capabilities on to your Kubernetes cluster:
+When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Azure Arc-enabled Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
 
 * Management services - Configurations (GitOps), Azure Monitor for containers, Azure Policy (Gatekeeper)
 * Data Services - SQL Managed Instance, PostgreSQL Hyperscale
 * Application services - App Service, Functions, Event Grid, Logic Apps, API Management
 
-To connect a Kubernetes cluster to Azure, the cluster administrator needs to deploy agents. These agents run in a Kubernetes namespace named `azure-arc` and are standard Kubernetes deployments. The agents are responsible for connectivity to Azure, collecting Azure Arc logs and metrics, and enabling above-mentioned scenarios on the cluster.
+To connect a Kubernetes cluster to Azure, the cluster administrator needs to deploy agents. These agents run in a Kubernetes namespace named `azure-arc` and are standard Kubernetes deployments. The agents are responsible for connectivity to Azure, collecting Azure Arc logs and metrics, and enabling the above-mentioned scenarios on the cluster.
 
 Azure Arc-enabled Kubernetes supports industry-standard SSL to secure data in transit. Also, data is stored encrypted at rest in an Azure Cosmos DB database to ensure data confidentiality.
 
-The following steps walk through connecting Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc. **You may skip these steps if you've already connected your Kubernetes cluster to Azure Arc through Windows Admin Center.**
+The following steps describe how to connect Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc. **You may skip these steps if you've already connected your Kubernetes cluster to Azure Arc through Windows Admin Center.**
 
 ## Before you begin
 
-Verify you've the following requirements ready:
+Verify that you have the following requirements:
 
 * An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
-* Have the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
-- **At least one** of the following access levels on your Azure subscription:
-   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left hand side of the Azure portal and then clicking on "View my access".
+* Installed the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
+* **At least one** of the following access levels on your Azure subscription:
+   - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, selecting "Access control (IAM)" on the left hand side of the Azure portal, and then clicking on "View my access".
    - A service principal with either the built-in [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles#kubernetes-cluster---azure-arc-onboarding) role (minimum), the built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role, or the built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role. 
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that you have met the [network requirements of Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
@@ -51,9 +52,9 @@ If you want to switch to a different subscription, run the [Set-AzContext](/powe
 Set-AzContext -Subscription "myAzureSubscription"
 ```
 
-## Step 2: Register the two providers for Azure Arc-enabled Kubernetes:
+## Step 2: Register the two providers for Azure Arc-enabled Kubernetes
 
-You can skip this step if you've already registered the two providers for Azure Arc-enabled Kubernetes service on your subscription. Registration is an asynchronous process and needs to be once per subscription. Registration may take approximately 10 minutes. 
+You can skip this step if you've already registered the two providers for Azure Arc-enabled Kubernetes service on your subscription. Registration is an asynchronous process and needs to occur once per subscription. Registration may take approximately 10 minutes. 
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
@@ -79,20 +80,20 @@ Enable-AksHciArcConnection -name mynewcluster
 
 ## Connect your AKS cluster to Azure Arc using a service principal
 
-If you do not have access to a subscription on which you're an "Owner", you can connect your AKS cluster to Azure Arc using a service principal.
+If you do not have access to a subscription on which you're an "Owner", you can connect your AKS cluster to Azure Arc using a *service principal*.
 
-The first command prompts for service principal credentials and stores them in the `credential` variable. Enter your application ID for the username and service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects your cluster to Azure Arc using the service principal credentials stored in the `credential` variable. 
+The first command prompts for service principal credentials and stores them in the `credential` variable. Enter your application ID for the username and then use the service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects your cluster to Azure Arc using the service principal credentials stored in the `credential` variable. 
 
 ```powershell
 $Credential = Get-Credential
 Enable-AksHciArcConnection -name "myCluster" -subscriptionId "3000e2af-000-46d9-0000-4bdb12000000" -resourceGroup "myAzureResourceGroup" -credential $Credential -tenantId "xxxx-xxxx-xxxx-xxxx" -location "eastus"
 ```
 
-Make sure the service principal used in the command above has the "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role assigned to them and that it has scope over the subscription ID and resource group used in the command. For more information on service principals, visit [creating service principals with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal)
+Make sure the service principal used in the command above has the "Owner", "Contributor" or "Kubernetes Cluster - Azure Arc Onboarding" role assigned to them and that it has scope over the subscription ID and resource group used in the command. For more information on service principals, see [Create a service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal).
 
-## Verify connected cluster
+## Verify the connected cluster
 
-You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have the portal open in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used earlier in the [enable-akshciarcconnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command.
+You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you have opened the portal in your browser, navigate to the resource group and the Azure Arc-enabled Kubernetes resource that's based on the resource name and resource group name inputs used in the [enable-akshciarcconnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command.
 
 > [!NOTE]
 > After connecting the cluster, it may take a maximum of around five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the Azure Arc-enabled Kubernetes resource in Azure portal.
