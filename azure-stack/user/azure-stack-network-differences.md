@@ -73,6 +73,8 @@ This article provides an overview of the unique considerations for Azure Stack H
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |
 | Traffic Manager | Route incoming traffic for optimal application performance and reliability. | Supported | Not yet supported. |
 | Express Route | Set up a fast, private connection to Microsoft cloud services from your on-premises infrastructure or colocation facility. | Supported | Support for connecting Azure Stack Hub to an Express Route circuit. |
+| Virtual Machine Scale Sets | Public IP per Virtual Machine | Supported | Not supported. If needed, similar functionality can be achieved with a Load Balancer |
+|  | Update or change VMs primary NIC | Supported | Not supported. In Azure Stack Hub is not possible to elevate a secondary NIC to primary or vice versa |
 
 ## API versions 
 
