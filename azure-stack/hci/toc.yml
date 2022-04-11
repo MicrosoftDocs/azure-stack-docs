@@ -307,7 +307,7 @@
   - name: Azure Stack HCI management service Python package
     href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
   - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/overview/azure/azurestack/stackhci?view=azure-node-latest&preserve-view=true
+    href: /javascript/api/@azure/arm-azurestackhci
   - name: Azure Stack HCI REST API reference
     href: /rest/api/stackhci
   - name: .NET Namespaces for Azure Stack HCI
