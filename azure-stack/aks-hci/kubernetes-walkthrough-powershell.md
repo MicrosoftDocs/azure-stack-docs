@@ -20,7 +20,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 
 > [!NOTE]
 > - If you have pre-staged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
-> - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](kubernetes-walkthrough-powershell-proxy.md).
+> - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](kubernetes-walkthrough-powershell.md).
 
 ## Before you begin
 

@@ -7,6 +7,8 @@ ms.date: 05/14/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+# Intent: As an IT Pro, I want to learn how to use and review log data in order to gain insight to my AKS on Azure Stack HCI deployment.
+# Keyword: Log views troubleshooting 
 ---
 
 # View logs to collect and review data in AKS on Azure Stack HCI
