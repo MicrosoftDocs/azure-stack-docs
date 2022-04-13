@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 04/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: lahirisl
+ms.reviewer: sulahiri
 
 # Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
 # Keyword: security in AKS on Azure Stack HCI
