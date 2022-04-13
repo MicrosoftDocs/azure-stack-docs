@@ -3,12 +3,14 @@ title: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure A
 description: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
 author: mattbriggs
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 04/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-#intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Stack HCI cluster to Azure Arc-enabled Kubernetes so I can extend those capabilities to my Kubernetes clusters.
-#keyword: AKS cluster HCI cluster
+
+# Intent: As an IT Pro, I want to learn how to connect an Azure Kubernetes Stack HCI cluster to Azure Arc-enabled Kubernetes so I can extend those capabilities to my Kubernetes clusters.
+# Keyword: azure arc
+
 ---
 
 # Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
