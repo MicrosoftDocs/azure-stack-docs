@@ -57,4 +57,4 @@ Hardware, software, and network requirements for multi-server apply to single-se
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Configure Single-Server]()
+> [Configure Single-Server](../deploy/configure-hci-os-single-server.md)
