@@ -20,7 +20,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 
 > [!NOTE]
 > - If you have pre-staged cluster service objects and DNS records, see [deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
-> - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](kubernetes-walkthrough-powershell-proxy.md).
+> - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](kubernetes-walkthrough-powershell.md).
 
 ## Before you begin
 
@@ -227,7 +227,7 @@ Enable-AksHciArcConnection -name mycluster
 ```
 
 > [!NOTE]
-> If you encounter issues or error messages during the installation process, see [installation known issues and errors](known-issues-installation.md) for more information.
+> If you encounter issues or error messages during the installation process, see [installation known issues and errors](/azure-stack/aks-hci/known-issues-installation) for more information.
 
 ## Scale a Kubernetes cluster
 

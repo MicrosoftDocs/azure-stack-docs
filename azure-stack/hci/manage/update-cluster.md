@@ -402,6 +402,8 @@ Although the update header says Azure Stack HCI 22H2, if a cluster hasn't joined
 For related information, see also:
 
 - [Cluster-Aware Updating (CAU)](/windows-server/failover-clustering/cluster-aware-updating)
+- [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements)
+- [Troubleshoot CAU: Log Files for Cluster-Aware Updating](https://social.technet.microsoft.com/wiki/contents/articles/13414.troubleshoot-cau-log-files-for-cluster-aware-updating.aspx)
 - [Manage quick restarts with Kernel Soft Reboot](kernel-soft-reboot.md)
 - [Updating drive firmware in Storage Spaces Direct](/windows-server/storage/update-firmware)
 - [Validate an Azure Stack HCI cluster](../deploy/validate.md)

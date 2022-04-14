@@ -28,7 +28,7 @@ Get-ArcHCILogs -workDirectory <path>
 
 The `workDirectory` is located under the following path: 
 
-`$csv_path\ResourceBridge\kvatoken.tok`
+`$csv_path\ResourceBridge`
 
 Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
@@ -40,7 +40,7 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
 
     1. Deploy AKS management cluster
     1. Deploy Arc Resource Bridge for Arc-enabled VMs
-      
+
     > [!NOTE]
     > If Arc Resource Bridge is already deployed, you should not deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
@@ -48,12 +48,14 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
     **new-MocNetworkSetting**, **set-MocConfig**, and **install-Moc**.
 
 - You must uninstall these in the following order:
-    
+
     1. Uninstall Arc Resource Bridge
     1. Uninstall the AKS management cluster
-      
+
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
+
+- If only Arc Resource Bridge needs to be uninstalled, skip the step **uninstall-moc** for Azure Kubernetes Service to continue running on the cluster.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
 - You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.

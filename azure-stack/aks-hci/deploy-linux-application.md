@@ -1,20 +1,23 @@
 ---
-title: Tutorial - Deploy a Linux application in AKS on Azure Stack HCI
-description: In this tutorial, you deploy a multi-container Linux application to your cluster using a custom image stored in Azure Container Registry.
+title: Deploy a Linux app in AKS on Azure Stack HCI
+description: In this tutorial, you deploy a multi-container Linux app to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial
-ms.date: 12/02/2020
+ms.date: 04/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
+# Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux app to my cluster.
+# Keyword: deploy an app
+
 ---
 
-# Tutorial: Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
 
-In this tutorial, you deploy a multi-container application that includes a web front end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your application. 
+In this tutorial, you'll learn how to deploy a multi-container app that includes a web front-end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your app. 
 
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
@@ -28,9 +31,9 @@ Verify you have the following requirements ready:
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS-specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
-## Deploy the application
+## Deploy the app
 
-A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this quickstart, a manifest is used to create all objects needed to run the [Azure vote application](https://github.com/Azure-Samples/azure-voting-app-redis). This manifest includes two Kubernetes deployments - one for the sample Azure Vote Python applications, and the other for a Redis instance. Two Kubernetes services are also created - an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet.
+A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this quickstart, a manifest is used to create all objects needed to run the [Azure vote app](https://github.com/Azure-Samples/azure-voting-app-redis). This manifest includes two Kubernetes deployments - one for the sample Azure Vote Python apps, and the other for a Redis instance. Two Kubernetes services are also created - an internal service for the Redis instance, and an external service to access the Azure Vote app from the internet.
 
 Create a file named `azure-vote.yaml` and copy in the following YAML definition.
 
@@ -119,7 +122,7 @@ spec:
     app: azure-vote-front
 ```
 
-Deploy the application using the `kubectl apply` command and specify the name of your YAML manifest:
+Deploy the app using the `kubectl apply` command and specify the name of your YAML manifest:
 
 ```PowerShell
 kubectl apply -f azure-vote.yaml
@@ -134,9 +137,9 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## Test the application
+## Test the app
 
-When the application runs, a Kubernetes service exposes the application front end to the internet. This process can take a few minutes to complete.
+When the app runs, a Kubernetes service exposes the app front-end to the internet. This process can take a few minutes to complete.
 
 To monitor progress, use the `kubectl get service` command with the `--watch` argument.
 
@@ -164,13 +167,13 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 
 ## Scale application pods
 
-We have created a single replica of the Azure Vote front end and Redis instance. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
+We have created a single replica of the Azure Vote front-end and Redis instance. To see the number and state of pods in your cluster, use the `kubectl get` command:
 
 ```console
 kubectl get pods -n default
 ```
 
-The following example output shows one front end pod and one back-end pod:
+The following example output shows one front-end pod and one back-end pod:
 
 ```
 NAME                                READY     STATUS    RESTARTS   AGE
@@ -178,7 +181,7 @@ azure-vote-back-6bdcb87f89-g2pqg    1/1       Running   0          25m
 azure-vote-front-84c8bf64fc-cdq86   1/1       Running   0          25m
 ```
 
-To change the number of pods in the *azure-vote-front* deployment, use the `kubectl scale` command. The following example increases the number of front end pods to *5*:
+To change the number of pods in the *azure-vote-front* deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
