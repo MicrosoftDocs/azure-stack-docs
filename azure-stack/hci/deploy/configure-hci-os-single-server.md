@@ -23,8 +23,6 @@ The following sections will provide configuration steps, when installing Azure S
 - [Manual Deployment](/azure-stack/hci/deploy/operating-system#manual-deployment) Azure Stack HCI OS.
 - [Install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install) (WAC).
 
-
-
 ## **Single-Server (On Physical Hardware)**
 
 1. Configure 21H2 HCI server with SConfig.
@@ -86,5 +84,5 @@ The following sections will provide configuration steps, when installing Azure S
 10. You are now ready to create a volume and workload VM.
     - Create a Volume from PowerShell.
         - *New-Volume -FriendlyName "Volume1" -FileSystem CSVFS_ReFS -StoragePoolFriendlyName S2D -Size 1TB -ProvisioningType Thin14*.
-    - Create a VM in WAC on Volume (***Need to clarity the steps here***)
+    - Create a VM in WAC on Volume (***Need to clarity the steps here***).
 
