@@ -154,6 +154,7 @@ sections:
           The workload cluster isn't found.
 
         answer: | 
+          
           The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
           
           The error message you receive will look similar to the example shown below.

@@ -50,7 +50,7 @@ sections:
           Shows up as the following:
           - `Test-NetConnection -ComputerName <computer IP/Name> -Port <port>` from the node where the node agent is failing towards the cloud agent is working properly on the system (even when the wssdagent fails to start)
           - Curl.exe from the node on which the agent is failing towards the cloud agent reproduces the problem and is getting stuck:
-          `curl.exe https://<computerIP>:<port> `
+          `curl.exe https://<computerIP>:6500`
           - When you pass the `--noproxy` flag to curl.exe, this fixes the problem. Curl returns an error from from wssdcloudagent. This is expected since curl is not a GRPC client. Curl doesn't get stuck waiting when you send the `--noproxy` flag. So returning an error is considered a success here):
           
           ```bash
