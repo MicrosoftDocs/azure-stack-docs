@@ -146,7 +146,7 @@ sections:
           
            For additional CredSSP troubleshooting tips, see [Troubleshoot CredSSP](../hci/manage/troubleshoot-credssp.md).
            
-          When deploying AKS on Azure Stack HCI using Windows Admin Center, and the deployment hangs for an extended period, you might be having Credential Security Support Provider (CredSSP) or connectivity problems. 
+          When you deploy AKS on Azure Stack HCI using Windows Admin Center, and the deployment hangs for an extended period, you might be having Credential Security Support Provider (CredSSP) or connectivity problems. 
           
       - question: | 
           A timeout error appears when trying to connect an AKS workload cluster to Azure Arc through Windows Admin Center.
