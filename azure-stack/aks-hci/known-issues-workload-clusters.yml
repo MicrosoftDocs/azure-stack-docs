@@ -21,7 +21,7 @@ sections:
           3. Add the node back to the cluster.
           4. Run `Add-AksHciNode` to register the node with CloudAgent.
           When running the [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=windowsserver2019-ps&preserve-view=true) command, the node is evicted from the failover cluster, but if [Remove-AksHciNode](./reference/ps/remove-akshcinode.md) isn't run afterwards, the node will still exist in CloudAgent.
-          
+
           Since the node was removed from the cluster, but not from CloudAgent, if you use the VHD to create a new node, a _File not found_ error appears. This issue occurs because the VHD is in shared storage, and the evicted node doesn't have access to it.
           
       - question: | 
@@ -154,7 +154,6 @@ sections:
           The workload cluster isn't found.
 
         answer: | 
-          
           The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
           
           The error message you receive will look similar to the example shown below.
