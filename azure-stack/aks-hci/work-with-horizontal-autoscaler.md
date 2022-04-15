@@ -4,9 +4,9 @@ description: Learn how to use PowerShell for cluster autoscaling in Azure Kubern
 ms.topic: how-to
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 03/16/2022
+ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
-ms.date: 03/16/2022
+ms.date: 04/15/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes

@@ -3,9 +3,9 @@ title: New-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mkostersitz
 description: The New-AksHciAutoScalerProfile PowerShell command creates an autoscaler configuration profile
 ms.topic: reference
-ms.date: 03/16/2022
+ms.date: 04/15/2022
 ms.author: mikek 
-ms.lastreviewed: 03/16/2022
+ms.lastreviewed: 04/15/2022
 ms.reviewer: jeguan
 
 ---

@@ -4,12 +4,12 @@ description: Learn about automatically scaling node pools in Azure Kubernetes Se
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 03/16/2022
+ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
-ms.date: 03/16/2022
+ms.date: 04/15/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
-# Keyword: cluster autoscaling Kubernetes
+# Keyword: cluster autoscaling
 
 ---
 

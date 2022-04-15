@@ -3,7 +3,7 @@ title: Remove-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mkostersitz
 description: The Remove-AksHciAutoScalerProfile PowerShell command removes an unused autoscaler configuration profile from the system.
 ms.topic: reference
-ms.date: 03/16/2022
+ms.date: 04/15/2022
 ms.author: mikek 
 ms.lastreviewed: 
 ms.reviewer: jeguan
