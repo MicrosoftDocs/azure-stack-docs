@@ -82,7 +82,7 @@ You can edit the profile definition in the `yaml` file. For example, you can ope
 You can load the profile definition using `kvactl` from the saved `yaml` file. Run the following commands:
 
 ```powershell
-kvactl.exe autoscalerprofile create --profileconfig .\def.-newyaml --kubeconfig (Get-AksHciConfig).Kva.kubeconfig
+kvactl.exe autoscalerprofile create --profileconfig .\def-new.yaml --kubeconfig (Get-AksHciConfig).Kva.kubeconfig
 ```
 ## Next steps
 - [Use PowerShell for cluster autoscaling](work-with-horizontal-autoscaler.md)
