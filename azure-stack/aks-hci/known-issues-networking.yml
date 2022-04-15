@@ -31,6 +31,35 @@ sections:
           The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. 
           
       - question: | 
+          The WSSDAgent service is stuck while starting and fails to connect to the cloud agent.
+
+        answer: | 
+          You will need to fix the proxy settings by changing the environmental variables on the machine.
+          On the machine, change hte variables with the following commands:
+          
+          ```bash
+            [Environment]::SetEnvironmentVariable("https_proxy", <Value>, "Machine")
+            [Environment]::SetEnvironmentVariable("http_proxy", <Value>, "Machine")
+            [Environment]::SetEnvironmentVariable("no_proxy", <Value>, "Machine")
+          ````
+          
+          Reboot the machine so that the service manager, and the WSSDAgent, pick up the fixed proxy.
+          
+          Symptoms:
+          - Proxy enabled in AKS-HCI. The WSSDAgent service stuck in the `starting` state.
+          Shows up as the following:
+          - `Test-NetConnection -ComputerName <computer IP/Name> -Port <port>` from the node where the node agent is failing towards the cloud agent is working properly on the system (even when the wssdagent fails to start)
+          - Curl.exe from the node on which the agent is failing towards the cloud agent reproduces the problem and is getting stuck:
+          `curl.exe https://<computerIP>:<port> `
+          - When you pass the `--noproxy` flag to curl.exe, this fixes the problem. Curl returns an error from from wssdcloudagent. This is expected since curl is not a GRPC client. Curl doesn't get stuck waiting when you send the `--noproxy` flag. So returning an error is considered a success here):
+          
+          ```bash
+          curl.exe --noproxy '*' https://<computerIP>:65000`
+          ```
+          
+          It is likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS on Azure Stack HCI are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It is possible faulty proxy settings were set on the host and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
+          
+      - question: | 
           Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly.
 
         answer: | 
