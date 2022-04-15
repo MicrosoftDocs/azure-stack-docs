@@ -3,7 +3,7 @@ title: Set-AksHciAutoScalerProfile for AKS on Azure Stack HCI
 author: mkostersitz
 description: The Set-AksHciAutoScalerProfile PowerShell command allows reconfiguration of an autoscaler configuration profile
 ms.topic: reference
-ms.date: 03/16/2022
+ms.date: 04/15/2022
 ms.author: mikek 
 ms.lastreviewed: 
 ms.reviewer: jeguan
