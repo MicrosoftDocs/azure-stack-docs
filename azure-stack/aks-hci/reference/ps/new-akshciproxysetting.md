@@ -37,13 +37,13 @@ Create a proxy settings object to use for all virtual machines in the deployment
 
 Use the `Get-Credential` PowerShell command to create a credential object and pass the credential object to the New-AksHciProxySetting command
 ```powershell
-PS C:\> $proxyCredential=Get-Credential
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -credential $proxyCredential
+$proxyCredential=Get-Credential
+$proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -credential $proxyCredential
 ```
 
 ### Configure proxy settings with a certificate 
 ```powershell
-PS C:\> $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -certFile c:\Temp\proxycert.cer
+$proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -certFile c:\Temp\proxycert.cer
 ```
 
 ### -name

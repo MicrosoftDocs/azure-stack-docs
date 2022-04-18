@@ -28,7 +28,7 @@ List the available versions for creating a managed Kubernetes cluster.
 
 ### Example 
 ```powershell
-PS C:\> Get-AksHciKubernetesVersion
+Get-AksHciKubernetesVersion
 ```
 
 ```Output

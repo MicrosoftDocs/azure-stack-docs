@@ -65,6 +65,10 @@
     href: concepts-storage.md
   - name: Application availability
     href: app-availability.md
+  - name: Cluster autoscaler
+    href: concepts-cluster-autoscaling.md
+  - name: Vertical node autoscaling
+    href: concepts-vertical-node-pool-scaling.md
   - name: Node auto-repair
     href: node-repair.md
   - name: Supported Kubernetes versions
@@ -105,6 +109,12 @@
             href: deploy-azure-container-registry.md
           - name: Use node pools
             href: use-node-pools.md
+          - name: Use autoscaling
+            items:
+            - name: Work with cluster autoscaling
+              href: work-with-horizontal-autoscaler.md
+            - name: Use autoscaler profiles
+              href: work-with-autoscaler-profiles.md
     - name: Use Azure Arc Kubernetes
       items:
           - name: Connect to Azure Arc for Kubernetes

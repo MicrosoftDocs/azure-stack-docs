@@ -1,13 +1,10 @@
 ---
 title: New-AksHciNodePool for AKS on Azure Stack HCI
-author: mattbriggs
+author: mkostersitz
 description: The New-AksHciNodePool PowerShell command creates a new node pool to an existing cluster
 ms.topic: reference
-ms.date: 7/20/2021
-ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
-ms.reviewer: jeguan
-
+ms.date: 3/16/2022
+ms.author: mikek
 ---
 
 # New-AksHciNodePool
@@ -24,6 +21,7 @@ New-AksHciNodePool -clusterName <String>
                   [-vmSize <VmSize>]
                   [-taints <Taint>]
                   [-maxPodCount <int>]
+                  [-disableAutoScaler]
 ```
 
 ## Description
@@ -34,37 +32,45 @@ Create a new node pool to an existing cluster.
 ### Create a new node pool with default parameters
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1
+New-AksHciNodePool -clusterName mycluster -name nodepool1
 ```
 
 ### Create a Linux node pool
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
+New-AksHciNodePool -clusterName mycluster -name linuxnodepool -osType linux
 ```
 
 ### Create a Windows node pool
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
+New-AksHciNodePool -clusterName mycluster -name windowsnodepool -osType windows
 ```
 
 ### Create a node pool with custom VM size
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -vmSize Standard_A2_v2
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -vmSize Standard_A2_v2
 ```
 
 ### Create a node pool with taints
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -taints sku=gpu:NoSchedule
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -taints sku=gpu:NoSchedule
 ```
 
 ### Create a node pool with max pod count
 
 ```powershell
-PS C:\> New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 100
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -maxPodCount 100
+```
+
+### Disable the horizontal autoscaler on a new node pool
+
+This parameter will be ignored if the horizontal autoscaler is not enabled on the cluster.
+
+```powershell
+New-AksHciNodePool -clusterName mycluster -name nodepool1 -disableAutoscaler
 ```
 
 ## Parameters
@@ -170,6 +176,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: 110
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -disableAutoScaler
+Disable the horizontal autoscaler for this node pool.
+Only valid if the horizontal autoscaler is enabled for the cluster.
+
+```yaml
+Type: Parameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

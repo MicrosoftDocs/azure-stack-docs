@@ -14,6 +14,8 @@
     href: enable-akshciarcconnection.md
   - name: Enable-AksHciPreview
     href: enable-akshcipreview.md
+  - name: Get-AksHciAutoScalerProfile
+    href: get-akshciautoscalerprofile.md
   - name: Get-AksHciBillingStatus
     href: get-akshcibillingstatus.md
   - name: Get-AksHciCluster
@@ -60,6 +62,8 @@
     href: install-akshcigmsawebhook.md
   - name: Install-AksHciMonitoring
     href: install-akshcimonitoring.md
+  - name: New-AksHciAutoScalerProfile 
+    href: new-akshciautoscalerprofile.md
   - name: New-AksHciCluster
     href: new-akshcicluster.md
   - name: New-AksHciClusterNetwork
@@ -74,6 +78,8 @@
     href: new-akshciproxysetting.md
   - name: New-AksHciStorageContainer
     href: new-akshcistoragecontainer.md
+  - name: Remove-AksHciAutoScalerProfile
+    href: remove-akshciautoscalerprofile.md
   - name: Remove-AksHciCluster
     href: remove-akshcicluster.md
   - name: Remove-AksHciClusterNetwork
@@ -90,6 +96,8 @@
     href: repair-akshciclustercerts.md
   - name: Restart-AksHci
     href: restart-akshci.md
+  - name:  Set-AksHciAutoScalerProfile
+    href: set-akshciautoscalerprofile.md
   - name: Set-AksHciCluster
     href: set-akshcicluster.md
   - name: Set-AksHciConfig

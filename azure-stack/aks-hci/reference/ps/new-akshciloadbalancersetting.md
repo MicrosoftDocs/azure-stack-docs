@@ -32,7 +32,7 @@ Create a load balancer object for the workload clusters.
 ### Create a load balancer object
 
 ```powershell
-PS C:\> $loadbalancer = New-AksHciLoadBalancerObject -name mylb -loadBalancerSku none
+$loadbalancer = New-AksHciLoadBalancerObject -name mylb -loadBalancerSku none
 ```
 
 ## Parameters

@@ -28,7 +28,7 @@ List supported VM sizes.
 
 ### Example
 ```powershell
-PS C:\> Get-AksHciVmSize
+Get-AksHciVmSize
 ```
 
 **Output:**
