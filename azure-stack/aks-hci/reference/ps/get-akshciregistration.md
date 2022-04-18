@@ -29,7 +29,7 @@ Get registration information for the Azure Kubernetes Service on Azure Stack HCI
 
 ### Example
 ```powershell
-PS C:\> Get-AksHciRegistration
+Get-AksHciRegistration
 ```
 ## Next steps
 

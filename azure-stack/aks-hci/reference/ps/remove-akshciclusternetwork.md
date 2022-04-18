@@ -30,7 +30,7 @@ You can get a list of clusters associated with the network by running `Get-AksHc
 ### Remove the cluster network named "MyClusterNetwork"
 
 ```powershell
-PS C:\> Remove-AksHciClusterNetwork -name MyClusterNetwork
+Remove-AksHciClusterNetwork -name MyClusterNetwork
 ```
 
 > [!NOTE]

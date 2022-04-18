@@ -22,13 +22,13 @@ Get-AksHciConfig | ConvertTo-Json
 ```
 
 ## Description
-List the current configuration settings for the Azure Kubernetes Service host. If the `ConvertTo-Json` cmdlet is not included when running `Get-AksHciConfig`, the values will not be returned and look like the following.
+List the current configuration settings for the Azure Kubernetes Service host. If the `ConvertTo-Json` cmdlet isn't included when running `Get-AksHciConfig`, the values won't be returned and look like the following.
 
-Name                           Value
-----                           -----
-MOC                            {catalog, ipaddressprefix, cloudServiceCidr, deploymentType...}
-AksHci                         {manifestCache, enableDiagnosticData, installationPackageDir, workingDir...}
-Kva                            {catalog, vlanid, vnetvippoolend, ring...}
+| Name | Value |
+| ---- | -----  |
+| MOC | {catalog, ipaddressprefix, cloudServiceCidr, deploymentType...}  |
+| AksHci | {manifestCache, enableDiagnosticData, installationPackageDir, workingDir...}  |
+| KVA | {catalog, vlanid, vnetvippoolend, ring...}  |
 
 When `ConvertTo-Json` is included, the configuration values will be returned as JSON objects.
 
@@ -36,7 +36,7 @@ When `ConvertTo-Json` is included, the configuration values will be returned as 
 
 ### Example 
 ```powershell
-PS C:\> Get-AksHciConfig | ConvertTo-Json
+Get-AksHciConfig | ConvertTo-Json
 ```
 
 ## Next steps

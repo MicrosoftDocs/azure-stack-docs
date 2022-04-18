@@ -27,7 +27,7 @@ Troubleshoots and fixes errors related to expired certificates for the AKS on Az
 ## Example
 
 ```powershell
-PS C:\> Repair-AksHciCerts
+Repair-AksHciCerts
 ```
 
 ## Parameters

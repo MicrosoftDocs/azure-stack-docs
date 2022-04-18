@@ -28,7 +28,7 @@ Install the Azure Kubernetes Service on Azure Stack HCI agents/services and host
 
 ### Example
 ```powershell
-PS C:\> Install-AksHci
+Install-AksHci
 ```
 ## Next steps
 
