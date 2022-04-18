@@ -82,7 +82,7 @@ Now that you've verified the system settings, let's get started:
  
    Select **Next** after you're finished.
 
-6. On the **Azure Registration** page of the wizard, provide details about the subscription, resource group, and region you wish to use for this service. Your resource group will need to be in the East US, Southeast Asia, or West Europe region.  
+6. On the **Azure Registration** page of the wizard, provide details about the subscription, resource group, and region you wish to use for this service. Your resource group will need to be in the Australia East, East US, Southeast Asia, or West Europe region.  
 
     Windows Admin Center requires permissions to access resources in your organization that only an admin can grant. Click **View in Azure**  to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent for the following:
 
