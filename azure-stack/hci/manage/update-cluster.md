@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 04/18/2022
 ---
 
 # Update Azure Stack HCI clusters
@@ -14,13 +14,13 @@ ms.date: 11/02/2021
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI, version 21H2 has entered General Availability (GA) and is available as a feature update. To update your cluster to version 21H2 and gain access to new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center). If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI clusters, don't attempt to upgrade to version 21H2 without first installing [System Center 2022 Preview](https://aka.ms/SC2022preview). Don't upgrade your cluster using Windows Admin Center or PowerShell if you intend to continue to manage it using Virtual Machine Manager.
+   > Azure Stack HCI, version 21H2 has entered General Availability (GA) and is available as a feature update. To update your cluster to version 21H2 and gain access to new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center). If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI clusters, don't attempt to upgrade to version 21H2 without first installing [System Center 2022](/system-center/vmm/overview). Don't upgrade your cluster using Windows Admin Center or PowerShell if you intend to continue to manage it using Virtual Machine Manager.
 
 This topic focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 
 ## Install operating system and hardware updates using Windows Admin Center
 
-Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it’s easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
+Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware was not purchased as an integrated system, firmware and driver updates may need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
    > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, skip ahead to [Update a cluster using PowerShell](#update-a-cluster-using-powershell).
@@ -29,7 +29,7 @@ Follow these steps to install updates:
 
 1. When you connect to a cluster, the Windows Admin Center dashboard will alert you if one or more servers have updates ready to be installed, and provide a link to update now. Alternatively, you can select **Updates** from the **Tools** menu at the left.
 
-2. If you are updating your cluster for the first time, Windows Admin Center will check if the cluster is properly configured to run Cluster-Aware Updating, and if needed, will ask if you’d like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules. To begin the update process, click **Get Started**.
+2. If you are updating your cluster for the first time, Windows Admin Center will check if the cluster is properly configured to run Cluster-Aware Updating, and if needed, will ask if you'd like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules. To begin the update process, click **Get Started**.
 
    :::image type="content" source="media/update-cluster/add-cau-role.png" alt-text="Windows Admin Center will automatically configure the cluster to run Cluster-Aware Updating" lightbox="media/update-cluster/add-cau-role.png":::
 
@@ -216,7 +216,7 @@ The updating run process also includes ensuring that quorum is maintained, check
 
 To install feature updates using PowerShell, follow these steps. If your cluster is running Azure Stack HCI, version 20H2, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) via Windows Update, or the `Set-PreviewChannel` cmdlet won't work.
 
-1.	Run the following cmdlets on every server in the cluster:
+1.    Run the following cmdlets on every server in the cluster:
 
     ```PowerShell
     Set-WSManQuickConfig
@@ -224,7 +224,7 @@ To install feature updates using PowerShell, follow these steps. If your cluster
     Set-NetFirewallRule -Group "@firewallapi.dll,-36751" -Profile Domain -Enabled true
     ```
 
-2.	To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:
+2.    To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:
 
     ```PowerShell
     Test-CauSetup -ClusterName Cluster1
@@ -236,7 +236,7 @@ To install feature updates using PowerShell, follow these steps. If your cluster
     Test-Cluster
     ```
 
-4.	Run the following cmdlet with no parameters on every server in the cluster:
+4.    Run the following cmdlet with no parameters on every server in the cluster:
 
     ```PowerShell
     Set-PreviewChannel
@@ -244,7 +244,7 @@ To install feature updates using PowerShell, follow these steps. If your cluster
 
     This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server was not already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
 
-5.	Check for the feature update:
+5.    Check for the feature update:
 
     ```PowerShell
     Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
@@ -252,7 +252,7 @@ To install feature updates using PowerShell, follow these steps. If your cluster
 
     Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
 
-6.	You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
+6.    You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
 
     ```PowerShell
     Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
