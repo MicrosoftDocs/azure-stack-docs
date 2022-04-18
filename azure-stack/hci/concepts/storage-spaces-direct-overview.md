@@ -16,7 +16,7 @@ Storage Spaces Direct is a feature of Azure Stack HCI and Windows Server that en
 
 This article provides an overview of Storage Spaces Direct, how it works, when to use it, and its key benefits. You can also explore videos and real-world customer stories in this article to learn more about Storage Spaces Direct.
 
-To get started, try [Storage Spaces Direct](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB) in Microsoft Azure, or download a 180-day-licensed evaluation copy of Windows Server from [Windows Server Evaluations](https://go.microsoft.com/fwlink/?linkid=842602). To know the minimum hardware requirements for Storage Spaces Direct on Windows Server and Azure Stack HCI, see [System requirements for Windows Server](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements) and [System requirements for Azure Stack HCI](system-requirements.md), respectively. To deploy Storage Spaces Direct as part of Azure Stack HCI, see [Deploy the Azure Stack HCI operating system](/deploy/operating-system).
+To get started, try [Storage Spaces Direct](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB) in Microsoft Azure, or download a 180-day-licensed evaluation copy of Windows Server from [Windows Server Evaluations](https://go.microsoft.com/fwlink/?linkid=842602). To know the minimum hardware requirements for Storage Spaces Direct on Windows Server and Azure Stack HCI, see [System requirements for Windows Server](/windows-server/storage/storage-spaces/storage-spaces-direct-hardware-requirements) and [System requirements for Azure Stack HCI](system-requirements.md), respectively. To deploy Storage Spaces Direct as part of Azure Stack HCI, see [Deploy the Azure Stack HCI operating system](/azure-stack/hci/deploy/operating-system).
 
 ## What is Storage Spaces Direct?
 
@@ -26,11 +26,11 @@ You can scale out the storage capacity of your cluster by adding more drives or 
 
 Storage Spaces Direct is a core technology of Azure Stack HCI, versions 21H2 and 20H2. It’s also included in the Datacenter editions of Windows Server 2022, Windows Server 2019, Windows Server 2016, [Windows Server Insider Preview Builds](https://insider.windows.com/for-business-getting-started-server/) and Azure editions of Windows Server 2022 and Windows Server 2019.
 
-You can deploy Storage Spaces Direct on a cluster of physical servers or on virtual machine (VM) guest clusters. If deploying it on a hyperconverged cluster of physical servers, we recommend using Azure Stack HCI servers. To deploy Storage Spaces Direct as part of Azure Stack HCI, see [Deploy the Azure Stack HCI operating system](/deploy/operating-system).
+You can deploy Storage Spaces Direct on a cluster of physical servers or on virtual machine (VM) guest clusters. If deploying it on a hyperconverged cluster of physical servers, we recommend using Azure Stack HCI servers. To deploy Storage Spaces Direct as part of Azure Stack HCI, see [Deploy the Azure Stack HCI operating system](/azure-stack/hci/deploy/operating-system).
 
 Deploying Storage Spaces Direct on VM guest clusters delivers virtual shared storage across a set of VMs on top of a private or public cloud. In production environments, this deployment is supported only in Windows Server. For information about how to deploy Storage Spaces Direct on VM guest clusters in Windows Server, see [Using Storage Spaces Direct in guest virtual machine clusters](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm).
 
-For testing and evaluation purposes only, you can deploy Storage Spaces Direct on VM guest clusters in Azure Stack HCI test environments. For information about deploying it in Azure Stack HCI test environments, see [Tutorial: Create a VM-based lab for Azure Stack HCI](/deploy/tutorial-private-forest).
+For testing and evaluation purposes only, you can deploy Storage Spaces Direct on VM guest clusters in Azure Stack HCI test environments. For information about deploying it in Azure Stack HCI test environments, see [Tutorial: Create a VM-based lab for Azure Stack HCI](/azure-stack/hci/deploy/tutorial-private-forest).
 
 ## How it works
 
@@ -79,7 +79,7 @@ Storage Spaces Direct offers the following key benefits:
 | ![High performance](media/storage-spaces-direct/performance-icon.png) | **High performance.** Whether all-flash or hybrid, Storage Spaces Direct can exceed [13.7 million IOPS per server](https://techcommunity.microsoft.com/t5/storage-at-microsoft/the-new-hci-industry-record-13-7-million-iops-with-windows/ba-p/428314). The hypervisor-embedded architecture of Storage Spaces Direct provides consistent, low latency, built-in read/write cache, and support for cutting-edge NVMe drives mounted directly on the PCIe bus. |
 | ![Fault tolerance](media/storage-spaces-direct/fault-tolerance-icon.png) | **Fault tolerance.** Built-in resiliency handles drive, server, or component failures with continuous availability. Larger deployments can also be configured for [chassis and rack fault tolerance](/windows-server/failover-clustering/fault-domains). When hardware fails, just swap it out; the software heals itself, with no complicated management steps. |
 | ![Resource efficiency](media/storage-spaces-direct/efficiency-icon.png) | **Resource efficiency.** Erasure coding delivers up to 2.4x greater storage efficiency, with unique innovations, such as Local Reconstruction Codes and ReFS real-time tiers to extend these gains to hard disk drives and mixed hot or cold workloads, all while minimizing CPU consumption to give resources back to where they're needed the most—to the VMs. |
-| ![Manageability](media/storage-spaces-direct/manageability-icon.png) | **Manageability**. Use [Storage QoS Controls](/windows-server/storage/storage-qos/storage-qos-overview) to keep busy VMs in check with minimum and maximum per-VM IOPS limits. The [Health Service](/manage/health-service-overview) provides continuous built-in monitoring and alerting. New APIs make it easy to collect rich, cluster-wide performance and capacity metrics. |
+| ![Manageability](media/storage-spaces-direct/manageability-icon.png) | **Manageability**. Use [Storage QoS Controls](/windows-server/storage/storage-qos/storage-qos-overview) to keep busy VMs in check with minimum and maximum per-VM IOPS limits. The [Health Service](/azure/service-health/service-health-overview) provides continuous built-in monitoring and alerting. New APIs make it easy to collect rich, cluster-wide performance and capacity metrics. |
 | ![Scalability](media/storage-spaces-direct/scalability-icon.png) | **Scalability**. Go up to 16 servers and over 400 drives, for up to 4 petabyte (4,000 terabytes) of storage per cluster. To scale out, add more drives or add more servers; Storage Spaces Direct automatically onboards new drives and begin using them. Storage efficiency and performance improve predictably at scale. |
 
 ## When to use it
@@ -102,7 +102,7 @@ Storage Spaces Direct supports the following two deployment options:
 
 ### Hyperconverged deployment
 
-In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. To deploy Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). To deploy Storage Spaces Direct as part of Azure Stack HCI, see [What is the deployment process for Azure Stack HCI?](/deploy/operating-system)
+In a hyperconverged deployment, you use single cluster for both compute and storage. The hyperconverged deployment option runs Hyper-V virtual machines or SQL Server databases directly on the servers providing the storage—storing their files on the local volumes. This eliminates the need to configure file server access and permissions, which in turn reduces hardware costs for small-to-medium business and remote or branch office deployments. To deploy Storage Spaces Direct on Windows Server, see [Deploy Storage Spaces Direct on Windows Server](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct). To deploy Storage Spaces Direct as part of Azure Stack HCI, see [What is the deployment process for Azure Stack HCI?](/azure-stack/hci/deploy/operating-system)
 
 :::image type="content" source="media/storage-spaces-direct/hyper-converged-minimal.png" alt-text="[Storage Spaces Direct serves storage to Hyper-V VMs in the same cluster]":::
 
@@ -151,7 +151,7 @@ Visit [Microsoft.com/HCI](https://www.microsoft.com/hci) to read their stories.
 
 ## Additional references
 
-- [Fault tolerance and storage efficiency](/concepts/fault-tolerance)
+- [Fault tolerance and storage efficiency](/azure-stack/hci/concepts/fault-tolerance)
 - [Storage Replica](/windows-server/storage/storage-replica/storage-replica-overview)
 - [Storage at Microsoft blog](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB)
 - [Storage Spaces Direct throughput with iWARP](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB) (TechNet blog)
