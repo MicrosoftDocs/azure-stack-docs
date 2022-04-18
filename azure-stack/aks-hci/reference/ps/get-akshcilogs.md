@@ -34,7 +34,7 @@ Create a zipped folder with logs from all your pods. This command will create an
 ### Example
 
 ```powershell
-PS C:\> Get-AksHciLogs
+Get-AksHciLogs
 ```
 
 ## Parameters

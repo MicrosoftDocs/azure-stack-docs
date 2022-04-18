@@ -38,13 +38,13 @@ Troubleshoots and fixes errors related to expired certificates for Kubernetes bu
 ### To fix cloudagent related certs, if the target cluster loses communication with the cloud agent
 
 ```powershell
-PS C:\> Repair-AksHciClusterCerts -name mycluster -fixCloudCredentials
+Repair-AksHciClusterCerts -name mycluster -fixCloudCredentials
 ```
 
 ### To fix the cluster certs, if there are communication issues between target clusters
 
 ```powershell
-PS C:\> Repair-AksHciClusterCerts -name mycluster -fixKubeletCredentials
+Repair-AksHciClusterCerts -name mycluster -fixKubeletCredentials
 ```
 
 ## Parameters

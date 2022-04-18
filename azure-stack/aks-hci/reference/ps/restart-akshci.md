@@ -29,7 +29,7 @@ Restarting Azure Kubernetes Service on Azure Stack HCI will remove all of your K
 
 ### Example
 ```powershell
-PS C:\> Restart-AksHci
+Restart-AksHci
 ```
 
 ## Next steps

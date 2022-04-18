@@ -31,7 +31,7 @@ Creates a new storage container.
 ### New AKS-HCI cluster with required parameters
 
 ```powershell
-PS C:\> New-AksHciStorageContainer -name mystoragecontainer -path c:\clusterstorage\volume1
+New-AksHciStorageContainer -name mystoragecontainer -path c:\clusterstorage\volume1
 ```
 
 ## Parameters

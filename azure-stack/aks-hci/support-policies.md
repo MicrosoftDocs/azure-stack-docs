@@ -3,10 +3,10 @@ title: Support policies for Azure Kubernetes Service on Azure Stack HCI (AKS on 
 description: Learn about Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI) support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 05/11/2021
+ms.date: 03/30/2022
 author: mattbriggs
-ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
+ms.author: mabrigg
+ms.lastreviewed: 03/30/2022
 ms.reviewer: mikek
 
 #Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
@@ -21,9 +21,23 @@ This article provides details about technical support policies and limitations f
 * For release information, see [AKS on Azure Stack HCI release notes](https://github.com/Azure/aks-hci/releases).
 * For information on features in preview, see [AKS on Azure Stack HCI preview features](https://github.com/Azure/aks-hci/tree/main/preview).
 
+## Supported version policy
+
+AKS on Azure Stack HCI versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
+
+AKS on Azure Stack HCI maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
+
+Kubernetes versions in AKS on Azure Stack HCI follow the [Kubernetes version policy](https://kubernetes.io/releases/version-skew-policy/). For details on the supported Kubernetes Versions see [Supported Kubernetes Versions](./supported-kubernetes-versions.md).
+
+To keep your AKS on Azure Stack HCI environment in a supported state, it's recommended to always stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
+
+After 120 days Microsoft can't guarantee that older versions of AKS on Azure Stack HCI are still available on the release servers for download and scale operations, upgrades, reinstallations and other operation in the cluster will start to fail requiring a redeployment of the AKS on Azure Stack HCI environment with the latest version.
+
+If your cluster falls behind more than 60 days (2 versions), you'll have to upgrade in multiple steps to get current again.
+
 ## Managed features in AKS on Azure Stack HCI
 
-Base infrastructure as a service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options. By contrast, AKS on Azure Stack HCI provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
+Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options. By contrast, AKS on Azure Stack HCI provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
 
 With AKS on Azure Stack HCI, you get a partially managed *control plane*. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
 
@@ -43,7 +57,7 @@ The services are *managed* in the sense that Microsoft and the AKS on Azure Stac
 
 When a cluster is created, you define the Kubernetes agent nodes that AKS on Azure Stack HCI creates. Your workloads are executed on these nodes.
 
-Because your agent nodes execute private code and store sensitive data, Microsoft Support can access them only in a very limited way. Microsoft Support can't sign in to, execute commands in, or view logs for these nodes without your express permission or assistance.
+Because your agent nodes execute private code and store sensitive data, Microsoft Support can access them only in a limited way. Microsoft Support can't sign in to, execute commands in, or view logs for these nodes without your express permission or assistance.
 
 Any modification done directly to the agent nodes using any of the IaaS APIs renders the cluster unsupportable. Any modification done to the agent nodes must be done using kubernetes-native mechanisms such as `Daemon Sets`.
 
@@ -100,7 +114,7 @@ Microsoft and users share responsibility for Kubernetes agent nodes where:
 
 * The base OS image has required additions (such as monitoring and networking agents).
 * The agent nodes receive OS patches automatically.
-* Issues with the Kubernetes control plane components that run on the agent nodes are automatically remediated during the update cycle or when you re-deploy an agent node. These components include the below:
+* Issues with the Kubernetes control plane components that run on the agent nodes are automatically remediated during the update cycle or when you redeploy an agent node. These components include the below:
   * `Kube-proxy`
   * Networking tunnels that provide communication paths to the Kubernetes master components
   * `Kubelet`
@@ -113,7 +127,7 @@ Microsoft and users share responsibility for Kubernetes agent nodes where:
 
 Microsoft provides patches and new images for your image nodes monthly, but doesn't automatically patch them by default. To keep your agent node OS and runtime components patched, you should keep a regular upgrade schedule or automate it.
 
-Similarly, AKS on Azure Stack HCI regularly releases new kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible to keep your clusters' kubernetes version updated and according to the [AKS on Azure Stack HCI Kubernetes Support Version Policy](supported-kubernetes-versions.md).
+Similarly, AKS on Azure Stack HCI regularly releases new Kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible to keep your clusters' kubernetes version updated and according to the [AKS on Azure Stack HCI Kubernetes Support Version Policy](supported-kubernetes-versions.md).
 
 #### User customization of agent nodes
 > [!NOTE]
@@ -126,7 +140,7 @@ For workload-specific configurations or packages, AKS on Azure Stack HCI recomme
 
 Using Kubernetes privileged `daemon sets` and init containers enables you to tune/modify or install 3rd party software on cluster agent nodes. Examples of such customizations include adding custom security scanning software or updating sysctl settings.
 
-While this path is recommended if the above requirements apply, AKS on Azure Stack HCI engineering and support cannot assist in troubleshooting or diagnosing modifications that render the node unavailable due to a custom deployed `daemon set`.
+While this path is recommended if the above requirements apply, AKS on Azure Stack HCI engineering and support can't help with troubleshooting or diagnosing modifications that render the node unavailable due to a custom deployed `daemon set`.
 
 ### Security issues and patching
 
@@ -142,11 +156,11 @@ Although you can sign in to and change agent nodes, doing this operation is disc
 
 You may only customize the network settings using AKS on Azure Stack HCI defined subnets. You may not customize network settings at the NIC level of the agent nodes. AKS on Azure Stack HCI has egress requirements to specific endpoints, to control egress and ensure the necessary connectivity, see [System Requirements](./system-requirements.md).
 
-## Stopped or de-allocated clusters
+## Stopped or disconnected clusters
 
 As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC renders the cluster out of support.
 
-Clusters that are stopped for more than 90 days  will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
+Clusters that are stopped for more than 90 days will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
 
 If your Azure subscription is suspended or deleted, your cluster will be out of support after 60 days.
 
