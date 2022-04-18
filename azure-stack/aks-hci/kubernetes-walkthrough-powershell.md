@@ -29,7 +29,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 - Make sure you have **at least one** of the following access levels to the Azure subscription you use for AKS on Azure Stack HCI: 
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, clicking on "Access control (IAM)" on the left-hand side of the Azure portal and then clicking on "View my access".
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role.
-   - Your subscription should specify an Azure resource group in the East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
+   - Your subscription should specify an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - Use **at least one** of the following:
    - Azure Stack HCI cluster
    - Windows Server 2019/2022 Datacenter failover cluster
@@ -153,7 +153,7 @@ Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\Clust
 
 ## Step 4: Log in to Azure and configure registration settings
 
-Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the East US, Southeast Asia, or West Europe Azure regions to proceed.
+Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) PowerShell command with your subscription and resource group name to log into Azure. You must have an Azure subscription, and an existing Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure regions to proceed.
 
 ```powershell
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
