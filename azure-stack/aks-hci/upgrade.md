@@ -2,7 +2,7 @@
 title: Upgrade the Kubernetes version of AKS workload clusters using PowerShell
 description: Learn how to upgrade the Kubernetes version of AKS workload clusters on Azure Stack HCI using PowerShell
 ms.topic: article
-ms.date: 04/11/2022
+ms.date: 04/15/2022
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
@@ -74,7 +74,7 @@ Update-AksHciCluster -name myCluster -kubernetesVersion v1.20.5
 
 ## Update the container operating system version without updating the Kubernetes version
 
-Keep in mind that if you decide to upload a workload cluster to a newer version of the operating system without changing the Kubernetes version, it will not work unless the new operating system version requires a different Kubernetes version. Run the [Update-AksHciCluster](./reference/ps/update-akshcicluster.md) command and specify the `operatingSystem` parameter to update the container hosts of AKS workload clusters to a newer version of the operating system. The example below assumes that the workload cluster `myCluster` currently has an operating system version that's more than 30 days old.
+Keep in mind that if you decide to upload a workload cluster to a newer version of the operating system without changing the Kubernetes version, it will not work unless the new operating system version does not require a different Kubernetes version. Run the [Update-AksHciCluster](./reference/ps/update-akshcicluster.md) command and specify the `operatingSystem` parameter to update the container hosts of AKS workload clusters to a newer version of the operating system. The example below assumes that the workload cluster `myCluster` currently has an operating system version that's more than 30 days old.
 
 ```powershell
 Update-AksHciCluster -name myCluster -operatingSystem
