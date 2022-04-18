@@ -85,12 +85,12 @@ If you need to add the Azure Stack HCI  hosts to the VMM fabric, [follow these s
 > Typically, a Storage Spaces Direct node requires RDMA, QOS and SET settings. To configure these settings for a node using bare metal computers, you can use the post deployment script capability in PCP. Here is the  [sample PCP post deployment script](/system-center/vmm/hyper-v-bare-metal#sample-script).
 > You can also use this script to configure RDMA, QoS and SET while adding a new node to an existing Storage Spaces Direct deployment from bare metal computers.
 
-1.    Read the [prerequisites](/system-center/vmm/hyper-v-bare-metal#before-you-start) for bare-metal cluster deployment. Note that:
+1. Read the [prerequisites](/system-center/vmm/hyper-v-bare-metal#before-you-start) for bare-metal cluster deployment. Note that:
 
-    - The generalized VHD or VHDX in the VMM library should be running Azure Stack HCI with the latest updates. The **Operating system** and **Virtualization platform** values for the hard disk should be set.
-    - For bare-metal deployment, you need to add a pre-boot execution environment (PXE) server to the VMM fabric. The PXE server is provided through Windows Deployment Services. VMM uses its own WinPE image, and you need to make sure that it's the latest. To do this, click **Fabric** > **Infrastructure** > **Update WinPE image**, and make sure that the job finishes.
+   - The generalized VHD or VHDX in the VMM library should be running Azure Stack HCI with the latest updates. The **Operating system** and **Virtualization platform** values for the hard disk should be set.
+   - For bare-metal deployment, you need to add a pre-boot execution environment (PXE) server to the VMM fabric. The PXE server is provided through Windows Deployment Services. VMM uses its own WinPE image, and you need to make sure that it's the latest. To do this, click **Fabric** > **Infrastructure** > **Update WinPE image**, and make sure that the job finishes.
 
-2.    Follow the instructions for [provisioning a cluster from bare-metal computers](/system-center/vmm/hyper-v-bare-metal).
+2. Follow the instructions for [provisioning a cluster from bare-metal computers](/system-center/vmm/hyper-v-bare-metal).
 
 ## Step 2: Set up networking for the cluster
 
