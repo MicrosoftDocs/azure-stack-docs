@@ -128,7 +128,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2108.2.84](hotfix-1-2108-2-84.md)
+- [Azure Stack Hub hotfix 1.2108.2.102](hotfix-1-2108-2-102.md)
 ::: moniker-end
 
 ::: moniker range="azs-2102"
