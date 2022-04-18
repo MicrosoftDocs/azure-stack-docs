@@ -75,6 +75,7 @@ The following VM sizes for control plane nodes, Linux worker nodes, and Windows 
 
 ## Supported Azure regions for Azure registration
 Azure Kubernetes Service on Azure Stack HCI supports the following Azure regions:
+- Australia East
 - East US
 - Southeast Asia
 - West Europe

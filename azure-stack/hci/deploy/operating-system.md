@@ -6,7 +6,7 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/23/2022
+ms.date: 04/18/2022
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -82,10 +82,10 @@ The Windows System Image Manager tool is available in the Windows Assessment and
 
 ### System Center Virtual Machine Manager (VMM) deployment
 
-You can use [System Center 2022 Preview](https://aka.ms/SC2022preview) to deploy the Azure Stack HCI, version 21H2 operating system on bare-metal hardware, as well as to cluster and manage the servers. For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal).
+You can use [System Center 2022](/system-center/) to deploy the Azure Stack HCI, version 21H2 operating system on bare-metal hardware, as well as to cluster and manage the servers. For more information about using VMM to do a bare-metal deployment of the operating system, see [Provision a Hyper-V host or cluster from bare metal computers](/system-center/vmm/hyper-v-bare-metal).
 
 > [!IMPORTANT]
-> You can't use Microsoft System Center Virtual Machine Manager 2019 to deploy or manage clusters running Azure Stack HCI, version 21H2. If you're using VMM 2019 to manage your Azure Stack HCI, version 20H2 cluster, don't attempt to upgrade the cluster to version 21H2 without first installing [System Center 2022 Preview](https://aka.ms/SC2022preview).
+> You can't use Microsoft System Center Virtual Machine Manager 2019 to deploy or manage clusters running Azure Stack HCI, version 21H2. If you're using VMM 2019 to manage your Azure Stack HCI, version 20H2 cluster, don't attempt to upgrade the cluster to version 21H2 without first installing [System Center 2022](/system-center/).
 
 ### Network deployment
 
@@ -120,7 +120,7 @@ To manually install the Azure Stack HCI operating system:
     > [!NOTE]
     > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
 
-1. At the Administrator command prompt, select **Ok** to change the user’s password before signing in to the operating system, and press Enter.
+1. At the Administrator command prompt, select **Ok** to change the user's password before signing in to the operating system, and press Enter.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="The change password prompt.":::
 

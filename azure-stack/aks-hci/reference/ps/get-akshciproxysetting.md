@@ -31,7 +31,7 @@ Get-AksHciProxySetting
 ### Example return a list of proxy server settings
 
 ```powershell
-PS C:\> Get-AksHciProxySetting
+Get-AksHciProxySetting
 
 name                proxyServerHTTP            proxyServerHTTPS                    proxyServerBypass
 ---------           ------------------         ----------------------              ----------------------
@@ -41,7 +41,7 @@ myProxy             <http://contosoproxy:8080>      <https://contosoproxy:8443> 
 ### Example return the details of a proxy server setting
 
 ```powershell
-PS C:\> Get-AksHciProxySetting -name myProxy
+Get-AksHciProxySetting -name myProxy
 
 name: myProxy
 proxyServerHTTP: <http://contosoproxy:8080>
