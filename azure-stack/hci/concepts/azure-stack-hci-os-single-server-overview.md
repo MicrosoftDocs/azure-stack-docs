@@ -21,7 +21,7 @@ Single-server or single-node, is a cluster with one server and no failover to an
 >Single-server may also be an initial configuration for users with plans to scale out in the future.
 
 > [!IMPORTANT]
-> This setup can only provide hardware resiliency. VMs will have downtime when restarting the single node.
+> This setup can only provide hardware resiliency. In Azure Stack HCI 21H1, a single server/node scale is only supported on single storage type configurations. VMs will have downtime when restarting the single node.
 ## **Requirements**
 Hardware, software, and network requirements for multi-server apply to single-server, see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci) for more detail.
 
@@ -49,7 +49,7 @@ Hardware, software, and network requirements for multi-server apply to single-se
 |WAC doesn't support single-server cluster creation. | Deploy with PowerShell. |
 |WAC cosmetic UI changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
 |WAC pause node fails since it tries to drain the node. | Utilize PowerShell to pause (suspend the node). |
-|WAC and PowerShell fail to create a volume. | Use PowerShell without "StorageTier" parameter. For example,  New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin. |
+|WAC and PowerShell fail to create a volume. | Use PowerShell without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
 |Cluster Aware Updating (CAU) doesn't support single-node. | Update using SCONFIG and/or WAC (through server manager). |
 |Cache drives don't auto rebind if failed. | All-flash, Nonvolatile Memory Express (NVMe) or Solid-State Drives (SSD), flat configuration must be used. ***SBL cache will not be supported at this time**. |
 |Scale-out doesn't automatically fix up S2D. | Manual fixup in 21H2. |
