@@ -15,15 +15,13 @@ ms.date: 04/04/2022
 The following sections will provide configuration steps, when installing Azure Stack HCI OS on an Azure VM.
 ## Prerequisites
 
-- Check if Active Directory and DNS are installed and accessible.
-- Check if you have access to relevant domain credentials and password for adding a computer to the domain.
-- Check if DHCP is installed and accessible (optional, if required).
-    - If not DHCP, Static IP address/Default Gateway and DNS IP address/FQDN are known. (***I need clarity on this sentence***)
 - [Download](https://azure.microsoft.com/products/azure-stack/hci/hci-download/) Azure Stack HCI software.
-- [Manual Deployment](/azure-stack/hci/deploy/operating-system#manual-deployment) Azure Stack HCI OS.
 - [Install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install) (WAC).
 
-## **Single-Server (on Azure VM) Steps**
+## **Single-Server (on Azure VM)**
+> [!TIP]
+> You can have one VM as a host and one VM for WAC. If you don't want to use your corporate domains, you may need to configure a VM with Active Directory.
+
 1. 
 2. 
 3. 
@@ -59,7 +57,6 @@ The following sections will provide configuration steps, when installing Azure S
         - [Register Azure Stack HCI cluster with WAC](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center).
 
 11. - You are now ready to create a volume and workload VM, utilizing PowerShell or WAC.
-    - Create a Volume from PowerShell.
+    - **Create a Volume** from PowerShell.
         - *New-Volume -FriendlyName "Volume1" -FileSystem CSVFS_ReFS -StoragePoolFriendlyName S2D -Size 1TB -ProvisioningType Thin14*.
-    - Create a VM in WAC on Volume, see the following:
-        - [Create Volumes on Azure Stack HCI](../manage/create-volumes.md)
+    - [Create a VM in WAC](../manage/vm.md#create-a-new-vm) on Volume1
