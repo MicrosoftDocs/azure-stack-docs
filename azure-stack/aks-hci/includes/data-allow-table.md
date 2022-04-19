@@ -26,8 +26,6 @@ ms.lastreviewed: 04/19/2022
 |  *.blob.core.windows.net  US endpoint: wus2replica*.blob.core.windows.net | 443 | Required to pull container images when running `Install-AksHci`. |
 |  mcr.microsoft.com, *.mcr.microsoft.com | 443 | Required to pull container images when running `Install-AksHci`. |
 |  akshci.azurefd.net | 443 | Required for AKS on Azure Stack HCI billing when running `Install-AksHci`. |
-|  api.github.com | 443 | Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
-|  objects.githubusercontent.com | 443 | Required for installing AKS on Azure Stack HCI management cluster (AKS host). |
 |  arck8onboarding.azurecr.io | 443 | Required to pull container images when running `Install-AksHci`. |
 |  v20.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from the Azure Stack HCI or Windows Server host. |
 |  adhs.events.data.microsoft.com | 443 | Used periodically to send Microsoft required diagnostic data from control plane nodes. |
