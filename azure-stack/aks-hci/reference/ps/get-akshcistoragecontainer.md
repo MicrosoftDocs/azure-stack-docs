@@ -28,7 +28,7 @@ Get the information of the specified Storage Container. If the Storage Container
 
 ### Example
 ```powershell
-PS C:\> Get-AksHciStorageContainer -name mystoragecontainer
+Get-AksHciStorageContainer -name mystoragecontainer
 ```
 
 ## Parameters

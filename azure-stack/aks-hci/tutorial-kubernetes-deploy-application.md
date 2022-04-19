@@ -1,20 +1,30 @@
 ---
-title: Tutorial - Deploy an application in Azure Kubernetes Service on Azure Stack HCI
+title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI
 description: In this Azure Kubernetes Service on Azure Stack HCI tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
+<<<<<<< HEAD
 ms.date: 04/15/2022
+=======
+ms.date: 04/22/2022
+>>>>>>> d56f402bf668b33fa03ee1fc3d27d37d338cc352
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+
 # Intent: As an IT Pro, I want step-by-step instructions on how to deploy an application into a Kubernetes cluster so that the cluster manage the availability and connectivity.
+<<<<<<< HEAD
 # Keyword: Azure Stack HCI Kubernetes cluster container image containerized applications
+=======
+# Keyword: deploy apps
+
+>>>>>>> d56f402bf668b33fa03ee1fc3d27d37d338cc352
 ---
 
-# Tutorial: Run applications in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI
 
-Kubernetes provides a distributed platform for containerized applications. You build and deploy your own applications and services into a Kubernetes cluster, and let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how to deploy a sample application into a Kubernetes cluster. 
+You can build and deploy your own apps and services into a Kubernetes cluster. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
 
 You will learn how to:
 
@@ -31,7 +41,11 @@ This quickstart assumes a basic understanding of Kubernetes concepts.
 
 Previous tutorials described how to package an application into a container image, and then upload the image to the Azure Container Registry and create a Kubernetes cluster.
 
+<<<<<<< HEAD
 To complete this tutorial, you'll need the pre-created `azure-vote-all-in-one-redis.yaml` Kubernetes manifest file. This file was downloaded with the application source code in a previous tutorial. Verify that you've cloned the repo, and that you have changed directories into the cloned repo. If you haven't done these steps, start with [Tutorial 1 – Create container images][aks-tutorial-prepare-application.md].
+=======
+To complete this tutorial, you need the pre-created `azure-vote-all-in-one-redis.yaml` Kubernetes manifest file. This file was downloaded with the application source code in a previous tutorial. Verify that you've cloned the repo, and that you have changed directories into the cloned repo. If you haven't done these steps, start with [Tutorial 1 - Create container images][aks-tutorial-prepare-application.md].
+>>>>>>> d56f402bf668b33fa03ee1fc3d27d37d338cc352
 
 This tutorial requires Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install it or upgrade, see [Install Azure CLI][azure-cli-install].
 

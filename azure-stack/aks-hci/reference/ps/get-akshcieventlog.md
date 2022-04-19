@@ -28,7 +28,7 @@ Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI Pow
 
 ### Example
 ```powershell
-PS C:\> Get-AksHciEventLog
+Get-AksHciEventLog
 ```
 ## Next steps
 

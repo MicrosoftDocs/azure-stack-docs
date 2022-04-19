@@ -28,7 +28,7 @@ Delete a node pool from a cluster.
 ## Example
 
 ```powershell
-PS C:\> Remove-AksHciNodePool -clusterName mycluster -name nodepool1
+Remove-AksHciNodePool -clusterName mycluster -name nodepool1
 ```
 
 

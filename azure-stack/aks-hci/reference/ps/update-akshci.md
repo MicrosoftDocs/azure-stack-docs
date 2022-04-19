@@ -28,7 +28,7 @@ Update the Azure Kubernetes Service host to the latest Kubernetes version.
 
 ### Example
 ```powershell
-PS C:\> Update-AksHci
+Update-AksHci
 ```  
 ## Next steps
 

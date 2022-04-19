@@ -1,21 +1,25 @@
 ---
-title: Concepts - Securing the infrastructure and applications on a Kubernetes cluster for Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Security in Azure Kubernetes Services (AKS) on Azure Stack HCI
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS on Azure Stack HCI.
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 05/05/2021
+ms.date: 04/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: lahirisl
-#intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
-#keyword: security concepts infrastructure security
+ms.reviewer: sulahiri
+
+# Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
+# Keyword: security in AKS on Azure Stack HCI
+
 ---
 
-# Security concepts in AKS on Azure Stack HCI
+# Security in AKS on Azure Stack HCI
+
 Security in AKS on Azure Stack HCI involves securing the infrastructure and the applications running on the Kubernetes cluster. This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
-## Infrastructure security
-AKS on Azure Stack HCI applies various security measures to secure its infrastructure. The following diagram highlights these measures:
+## Infrastructure security in AKS on Azure Stack HCI
+
+The  Kubernetes service applies various measures for infrastructure security in AKS on Azure Stack HCI. The following diagram highlights these measures:
 
 ![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\security-infrastructure.png)
 
@@ -41,7 +45,7 @@ The table below describes the different application security options available i
 | ------- | -----------|
 | Build security | The goal for securing builds is to prevent vulnerabilities from being introduced in the application code or in the container images when the images are generated. Integration with Azure GitOps of Arc enabled Kubernetes helps with analysis and observation, which allows developers the opportunity to fix security issues. For more information, see [Deploy configurations using GitOps on an Azure Arc enabled Kubernetes cluster](/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster).  |
 | Container registry security| The goal for container registry security is to ensure vulnerabilities are not introduced when uploading container images into the registry, while the image is stored in the registry, and during image downloads from the registry. AKS on Azure Stack HCI recommends using Azure Container Registry (ACR). ACR comes with vulnerability scanning and other security features. For more information, see the [Azure Container Registry documentation](/azure/container-registry/).  |
-| AD identities for Windows workloads using gMSA for containers | Windows container workloads can inherit the identity of the container host and use that for authentication. With new enhancements, container host doesn’t need to be domain joined. For more information, see [gMSA integration for Windows workloads](./prepare-windows-nodes-gmsa.md). |
+| AD identities for Windows workloads using gMSA for containers | Windows container workloads can inherit the identity of the container host and use that for authentication. With new enhancements, container host doesn't need to be domain joined. For more information, see [gMSA integration for Windows workloads](./prepare-windows-nodes-gmsa.md). |
 
 ## Security built-in features
 The security built-in features that are currently available in AKS on Azure Stack HCI are listed in the table below. 
