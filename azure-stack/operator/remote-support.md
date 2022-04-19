@@ -5,10 +5,10 @@ description: Learn about remote support for Azure Stack Hub
 author: BryanLa
 
 ms.topic: conceptual
-ms.date: 01/06/2022
+ms.date: 04/19/2022
 ms.author: bryanla
 ms.reviewer: shisab
-ms.lastreviewed: 06/09/2021
+ms.lastreviewed: 04/19/2022
 
 # Intent: As an Azure Stack operator, I want to use remote support to enable Microsoft support to diagnose and troubleshoot Azure Stack Hub
 ---
@@ -16,7 +16,9 @@ ms.lastreviewed: 06/09/2021
 # Remote support for Azure Stack Hub
 
 > [!IMPORTANT]
-> Remote support is in public preview and only applies to version 2108.
+> Remote support is in public preview and only available in the following versions:
+> - 2108
+> - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
 Use remote support to allow a Microsoft support professional to solve your support case faster by
 permitting access to your device remotely and performing limited troubleshooting and repair. You can
