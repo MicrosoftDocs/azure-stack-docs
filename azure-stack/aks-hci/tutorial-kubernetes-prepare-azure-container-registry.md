@@ -1,18 +1,20 @@
 ---
 title: Tutorial - Create a container registry in Azure Kubernetes Service on Azure Stack HCI 
-description: In this tutorial, learn how to create an Azure Container Registry instance and upload a sample application container image.
+description: In this tutorial, you will learn how to create an Azure Container Registry instance and upload a sample application container image.
 services: container-service
 ms.topic: tutorial
-ms.date: 04/13/2021
+ms.date: 04/14/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+# Intent: As an IT Pro, I need step-by-step instructions on how to create an Azure Container Registry instance so I can  upload an application container image.
+# Keyword: container registry container images
 ---
 
-# Tutorial: Deploy and use Azure Container Registry
+# Tutorial: Deploy and use an Azure Container Registry
 
-Azure Container Registry (ACR) is a private registry for container images. A private container registry lets you securely build and deploy your applications and custom code. In this tutorial, part two of seven, you deploy an ACR instance and push a container image to it. You learn how to:
+An Azure Container Registry (ACR) is a private registry for container images. A private container registry lets you securely build and deploy your applications and custom code. In this tutorial, part two of seven, you deploy an ACR instance and push a container image to it. You'll learn how to:
 
 > [!div class="checklist"]
 > * Create an Azure Container Registry (ACR) instance
@@ -24,13 +26,13 @@ In later tutorials, this ACR instance is integrated with a Kubernetes cluster in
 
 ## Before you begin
 
-In the [previous tutorial](tutorial-kubernetes-prepare-application.md), a container image was created for a simple Azure Voting application. If you have not created the Azure Voting app image, return to [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+The [previous tutorial](tutorial-kubernetes-prepare-application.md) described how to create a container image for a simple Azure Voting application. If you have not created the Azure Voting app image, return to [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
-This tutorial requires that you're running the Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][azure-cli-install].
+This tutorial requires that you run the Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][azure-cli-install].
 
 ## Create an Azure Container Registry
 
-To create an Azure Container Registry, you first need a resource group. An Azure resource group is a logical container into which Azure resources are deployed and managed.
+To create an Azure Container Registry, you first need a *resource group*. An Azure resource group is a logical container into which Azure resources are deployed and managed.
 
 Create a resource group with the [az group create][az-group-create] command. In the following example, a resource group named *myResourceGroup* is created in the *eastus* region:
 
@@ -70,7 +72,7 @@ mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c 
 tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
-To use the *azure-vote-front* container image with ACR, the image needs to be tagged with the login server address of your registry. This tag is used for routing when pushing container images to an image registry.
+To use the *azure-vote-front* container image with ACR, make sure you tag the image with the login server address of your registry. This tag is used for routing when pushing container images to an image registry.
 
 To get the login server address, use the [az acr list][az-acr-list] command and query for the *loginServer* as follows:
 
