@@ -58,8 +58,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
-|--|--|
-|Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
+The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This does not destroy the invoked configuration.
 
 ## Example intents
 
