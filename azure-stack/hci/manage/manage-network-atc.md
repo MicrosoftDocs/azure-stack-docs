@@ -125,6 +125,16 @@ This task will help you override the default configuration which has already bee
     Get-NetQosTrafficClass -Cimsession (Get-ClusterNode).Name | Select PSComputerName, Name, Priority, Bandwidth
     ```
 
+## Test Network ATC in VMs
+
+Running Azure Stack HCI inside VMs is useful for test environments. To do so, add an adapter property override to your intent that disables the NetworkDirect adapter property.
+
+```powershell
+$AdapterOverride = New-NetIntentAdapterPropertyOverrides
+$AdapterOverride.NetworkDirect = 0
+Add-NetIntent -Name MyIntent -AdapterName vmNIC01, vmNIC02 -Management -Compute -Storage -AdapterPropertyOverrides $AdapterOverride
+```
+
 ## Remove an intent
 
 
