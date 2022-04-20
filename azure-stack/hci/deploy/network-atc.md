@@ -50,7 +50,7 @@ The following are requirements and best practices for using Network ATC in Azure
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
 > [!IMPORTANT]
-> Deploying Network ATC in virtual environments is not supported. Several of the host networking properties it configures are not available in virtual machines, which will result in errors.
+> Updated: Deploying Network ATC in virtual machines may be used for test and validation purposes only. VM-based deployment requires an override to the default adapter settings to disable the NetworkDirect property. For more information on submission of an override, please see: [Override default network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 > 
 > Deploying Network ATC in standalone mode may be used for test and validation purposes only.
 
