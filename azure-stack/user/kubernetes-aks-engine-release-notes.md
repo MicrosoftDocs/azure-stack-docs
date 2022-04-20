@@ -26,7 +26,7 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Upgrade considerations
 
--   Are you using the correct marketplace items, AKS Base Ubuntu 18.04 Image Distro or AKS Base Windows Server for your version of the AKS engine? You can find the versions in the section [Download new images and AKS engine](#download-new-images-and-aks-engine).
+-   Are you using the correct marketplace items, AKS Base Ubuntu 18.04 Image Distro or AKS Base Windows Server for your version of the AKS engine? You can find the versions in the section [Download new images and AKS engine](#download-new-image-and-aks-engine).
 -   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md?view=azs-2008#deploy-a-kubernetes-cluster).
 -   Are you using a reliable machine to run the AKS engine and from which you're performing upgrade operations?
 -   If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
