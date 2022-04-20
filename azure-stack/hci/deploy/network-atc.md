@@ -3,7 +3,7 @@ title: Deploy host networking with Network ATC
 description: This topic covers how to deploy host networking for Azure Stack HCI.
 author: dcuomo
 ms.topic: how-to
-ms.date: 01/22/2022
+ms.date: 04/20/2022
 ms.author: dacuo
 ms.reviewer: jgerend
 ---
@@ -50,7 +50,7 @@ The following are requirements and best practices for using Network ATC in Azure
 - Best practice: Configure the physical network (switches) prior to Network ATC including VLANs, MTU, and DCB configuration. See [Physical Network Requirements](../concepts/physical-network-requirements.md) for more information.
 
 > [!IMPORTANT]
-> Deploying Network ATC in virtual environments is not supported. Several of the host networking properties it configures are not available in virtual machines, which will result in errors.
+> Updated: Deploying Network ATC in virtual machines may be used for test and validation purposes only. VM-based deployment requires an override to the default adapter settings to disable the NetworkDirect property. For more information on submission of an override, please see: [Override default network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
 > 
 > Deploying Network ATC in standalone mode may be used for test and validation purposes only.
 
@@ -58,25 +58,7 @@ The following are requirements and best practices for using Network ATC in Azure
 
 There are several new PowerShell commands included with Network ATC. Run the`Get-Command -ModuleName NetworkATC` cmdlet to identify them. Ensure PowerShell is run as an administrator.
 
-Typically, only a few of these cmdlets are needed. Here is a brief overview of the cmdlets before you start:
-
-|PowerShell command|Description|
-|--|--|
-|Add-NetIntent|Creates and submits an intent|
-|Set-NetIntent|Modifies an existing intent|
-|Get-NetIntent|Gets a list of intents|
-|Get-NetIntentStatus|Gets the status of intents|
-|Update-NetIntentAdapter|Updates the adapters managed by an existing intent|
-|Remove-NetIntent|Removes an intent from the local node or cluster. This does not destroy the invoked configuration.|
-|Set-NetIntentRetryState|This command instructs Network ATC to try implementing the intent again if it has failed after three attempts. (`Get-NetIntentStatus` = 'Failed').|
-
-You can also modify the default configuration Network ATC creates using overrides. To see a list of possible override commandlets, use the following command:
-
-```powershell
-Get-Command -Noun NetIntent*Over* -Module NetworkATC
-```
-
-For more information on overrides, see [Update or override network settings](../manage/manage-network-atc.md#update-or-override-network-settings).
+The `Remove-NetIntent` cmdlet removes an intent from the local node or cluster. This does not destroy the invoked configuration.
 
 ## Example intents
 
@@ -86,11 +68,6 @@ For simplicity we only demonstrate two physical adapters per SET team, however i
 
 ### Fully converged intent
 
-For this intent, compute, storage, and management networks are deployed and managed across all cluster nodes.
-
-:::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent"  lightbox="media/network-atc/network-atc-2-full-converge.png":::
-
-```powershell
 Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 ```
 
