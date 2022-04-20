@@ -110,7 +110,11 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
 
 1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster.
 
+:::image type="content" source="media/cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Get Started" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+
 1. To see all adapters available, select **See all adapters**. Then select the checkbox for any adapters listed that you want to cluster. When finished, click **Next**.
+
+:::image type="content" source="media/cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - Get Started" lightbox="media/cluster/create-cluster-atc-see-all-adaptor.png":::
 
 1. On **2.2 Define network intents**, under **Intent 1**, do the following:
     - For **Intent name**, enter a friendly name for the intent
@@ -125,6 +129,8 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
     - whether to enable RDMA
     - RDMA protocol type
 
+:::image type="content" source="media/cluster/create-cluster-atc-define-intents.png" alt-text="Create cluster wizard - Get Started" lightbox="media/cluster/create-cluster-atc-define-intents.png":::
+
 1. When finished, click **Save**.
 
 1. To add another intent, select **Add an intent**, and repeat step 4.
@@ -133,6 +139,8 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
     - Subnet mask/CIDR
     - VLAN ID
     - IP address
+
+:::image type="content" source="media/cluster/create-cluster-atc-provide-network.png" alt-text="Create cluster wizard - Get Started" lightbox="media/cluster/create-cluster-atc-provide-network.png":::
 
 ### Manually configure host networking
 
