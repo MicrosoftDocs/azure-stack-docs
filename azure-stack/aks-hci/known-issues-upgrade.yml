@@ -301,6 +301,21 @@ sections:
           This status message appears when running the [Update-AksHci](./reference/ps/update-akshci.md) PowerShell cmdlet. XX
           
       - question: | 
+          When upgrading AKS on Azure Stack HCI from the February 2022 Update to April 2022 Update, the CSI deployments disappears and causes the upgrade to stall.
+
+        answer: | 
+          To manually resolve the issue, the CSI driver can be manually deleted. Once you have removed it, the cloud-operator will reconcile the AksHci CSI addon within the 10 minutes and recreate the driver along with the rest of the missing addon resources.
+          
+          ```bash
+          kubectl --kubeconfig $(Get-AksHciConfig).Kva.kubeconfig delete csidriver disk.csi.akshci.com`
+          ````
+          When you upgrade clusters from the AKS on Azure Stack HCI February 2022 Update to the April 2022 Update, the update be stuck upgrading for an indefinite period of time. There may be be pods stuck in either the `Terminating` or `CrashLoopBackoff` state.
+          
+          You may see that some of the AksHci CSI addon resources are missing. These are pods deployed using the `csi-akshcicsi-controller` or from the `csi-akshcicsi-node` daemonset.
+          
+          The AksHci CSI addon in the February 2022 Update contained a change to the CSI driver spec that can sometimes leave the addon's resources in a unresponsive state during upgrade. The CSI driver's `.spec.fsGroupPolicy` was set to a new value even though it is an immutable field. Since the field is immutable, the driver spec will not update. A consequence of this is that the other AksHci CSI addon resources might not fully get reconciled. All of the CSI resources would be recreated.
+          
+      - question: | 
           Windows Admin Center update dashboard doesn't refresh after successful updates.
 
         answer: | 
