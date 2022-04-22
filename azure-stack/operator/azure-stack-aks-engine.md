@@ -4,10 +4,10 @@ description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Ma
 author: mattbriggs
 
 ms.topic: article
-ms.date: 3/1/2021
+ms.date: 04/22/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/1/2021
+ms.lastreviewed: 04/22/2022
 
 # Intent: As a Azure Stack Hub operator, I want to offer the Kubernetes so that users can run the AKS engine.
 # Keyword: Kubernetes Azure Stack Hub Marketplace
@@ -17,14 +17,14 @@ ms.lastreviewed: 3/1/2021
 
 # Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 
-You can set up the Azure Kubernetes Services (AKS) Engine for your users. Add the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image. The AKS engine requires that you're running [Azure Stack Hub 1910](release-notes.md?view=azs-1910&preserve-view=true) or greater.
+You can set up the Azure Kubernetes Services (AKS) Engine for your users. Add the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity. The AKS engine also will need to have in the marketplace: a Custom Script extension, and the AKS Base Image. The AKS engine requires that you're running [Azure Stack Hub 1910](release-notes.md?view=azs-1910&preserve-view=true) or greater.
 
 > [!NOTE]  
 > You can find the mapping of Azure Stack Hub to AKS engine version number in the [AKS engine release notes](../user/kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 ## Check your user's service offering
 
-Your users will need a plan, offer, and subscription to Azure Stack Hub with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
+Your users will need a plan, offer, and subscription to Azure Stack Hub with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You'll want to make sure they have a large enough quota.
 
 If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack Hub](service-plan-offer-subscription-overview.md)
 
@@ -32,13 +32,17 @@ If you need more information about planning and setting up a service offering, s
 
 The Kubernetes cluster will need service principal (SPN) and role-based permissions in Azure Stack Hub.
 
-### Create an SPN in Azure AD
+- **Create an SPN in Azure AD**
 
-If you use Azure Active Directory (Azure AD) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-aad).
+    If you use Azure Active Directory (Azure AD) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-aad).
 
-### Create an SPN in AD FS
+- **Create an SPN in AD FS**
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
+    If you use Active Directory Federated Services (AD FS) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
+
+- **Assign a role**
+
+    The SPN will need access to resources in the user subscription using the SPN. The SPN will need **Contributor** access. For instructions on assigning a role, see [Assign a role](./give-app-access-to-resources?#assign-a-role).
 
 ## Add an AKS Base Image
 
