@@ -3,7 +3,7 @@ title: Network ATC overview
 description: This topic introduces Network ATC for Azure Stack HCI.
 author: jpeddicord
 ms.topic: how-to
-ms.date: 11/09/2021
+ms.date: 04/22/2022
 ms.author: jpeddicord
 ms.reviewer: JasonGerend
 ---
@@ -27,7 +27,7 @@ Here is some new terminology:
 
 **Intent**: An intent is a definition of how you intend to use the physical adapters in your system. An intent has a friendly name, identifies one or more physical adapters, and includes one or more intent types.
 
-An individual physical adapter can only be included in one intent. By default, an adapter does not have an intent (there is no special status or property given to adapters that don’t have an intent). You can have multiple intents; the number of intents you have will be limited by the number of adapters in your system.
+An individual physical adapter can only be included in one intent. By default, an adapter does not have an intent (there is no special status or property given to adapters that don't have an intent). You can have multiple intents; the number of intents you have will be limited by the number of adapters in your system.
 
 **Intent type**: Every intent requires one or more intent types. The currently supported intent types are:
 
@@ -53,6 +53,6 @@ Network ATC allows you to modify all configuration that the OS allows. However, 
 
 ## Next steps
 
+- Review Network ATC defaults and example deployment options. See [Deploy host networking with Network ATC](../deploy/network-atc.md).
 - Configure Network ATC using PowerShell. See [Step 4: Configure host networking](../deploy/create-cluster-powershell.md#step-4-configure-host-networking).
-
 - Manage Network ATC after deployment. See [Manage host networking using Network ATC](../manage/manage-network-atc.md).
