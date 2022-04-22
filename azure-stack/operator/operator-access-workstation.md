@@ -312,14 +312,14 @@ the guardian associated with the VM.
 4.  Remove the VM by running the Remove-OAW.ps1 script:
 
     ```powershell
-    Remove-OAW.ps1 -VirtualMachineName \<name\>
+    .\Remove-OAW.ps1 -VirtualMachineName \<name\>
     ```
     Where \<name\> is the name of the virtual machine to be removed. By default, the name is **AzSOAW**.
 
     For example:
 
     ```powershell
-    Remove-OAW.ps1 -VirtualMachineName AzSOAW
+    .\Remove-OAW.ps1 -VirtualMachineName AzSOAW
     ```
 
 ## Next steps
