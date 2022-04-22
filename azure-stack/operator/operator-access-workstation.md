@@ -280,7 +280,7 @@ The following table lists the definition for each parameter.
 2.  Open PowerShell ISE and run the following script:
 
     ```powershell
-    C:\\Version\\Get-Version.ps1
+    C:\Version\Get-Version.ps1
     ```
 
     For example:
