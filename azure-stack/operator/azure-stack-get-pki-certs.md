@@ -59,6 +59,8 @@ To prepare certificate signing requests for new Azure Stack Hub PKI certificates
     ```
 
     > [!NOTE]  
+    > If you require truncated subject with only a common name attribute, you must use New-AzsCertificateSigningRequest with the -CertificateType parameter.
+    >
     > If you supply a common name (CN), it will be configured on every certificate request. If you omit the CN, the first DNS name of the Azure Stack Hub service will be configured on the certificate request.
 
 1. Declare an output directory that already exists. For example, run:
@@ -141,7 +143,7 @@ To prepare certificate signing requests for new Azure Stack Hub PKI certificates
 
     Copy the file to a system where elevation is allowed, and then sign each request with *certreq* by using the following syntax: *certreq -new <example.inf> <example.req>*. You then need to complete the rest of the process on that elevated system, because it requires matching the new certificate that's signed by the CA with its private key, which is generated on the elevated system.
 
-## Generate certificate signing requests for certificate renewal
+## Generate certificate signing requests for certificate renewal  
 
 To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the following:
 
@@ -164,7 +166,7 @@ To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the
     >
     > The certificate that's bound to the computed endpoint will be used to clone such attributes as subject, key length, and signature algorithm.  To change any of these attributes, follow the instructions in [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
     > 
-    > **Known Issue**: Older clients Windows 10 and Windows 2016 with build number less than 14393 cannot discover SSL certificates from HTTPS endpoints. To workaround this issue, either use a more recent client or follow the instructions in [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
+    > **Known Issue**: Certificates subjects containing only a common name cannot be processed by this commandlet, if a truncated subject attribute is required for successful renewal follow the instructions in [Generate certificate signing request for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
 
 1. Declare an output directory that already exists. For example, run:
 
