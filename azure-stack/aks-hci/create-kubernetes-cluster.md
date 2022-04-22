@@ -52,18 +52,18 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
     The following image illustrates the static IP configuration settings:
 
-    [ ![Illustrates the Networking, static page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/networking-static.png) ](/media/create-kubernetes-cluster/networking-static.png#lightbox)
+    [ ![Illustrates the Networking, static page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/networking-static.png) ](./media/create-kubernetes-cluster/networking-static.png#lightbox)
 
    The following image illustrates the DHCP configuration settings:
 
-    [ ![Illustrates the Networking, DHCP page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/networking-dhcp.png) ](/media/create-kubernetes-cluster/networking-dhcp.png#lightbox)
+    [ ![Illustrates the Networking, DHCP page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/networking-dhcp.png) ](./media/create-kubernetes-cluster/networking-dhcp.png#lightbox)
  
  
 6. Review your selections on the **Review + create** page. When you're satisfied, select **Create** to begin deployment. Your deployment progress will be shown at the top of this page. 
 
 7. After your deployment is complete, the **Next steps** page details how to manage your cluster. If you chose to disable the Azure Arc integration in the previous step, some of the information and instructions on this page may not be available or functional.
     
-    [ ![Illustrates the successful completion of the Kubernetes cluster.](./media/create-kubernetes-cluster/deployment-complete.png) ](/media/create-kubernetes-cluster/deployment-complete.png#lightbox)
+    [ ![Illustrates the successful completion of the Kubernetes cluster.](./media/create-kubernetes-cluster/deployment-complete.png) ](./media/create-kubernetes-cluster/deployment-complete.png#lightbox)
  
 ## Next steps
 
