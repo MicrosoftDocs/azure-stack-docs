@@ -57,27 +57,27 @@ Because of the stateless nature of the solution, there are no updates for the OA
 Validate the hash of the downloaded OAW.zip file to make sure it hasn't been modified before using it to create the OAW VM. Run the following PowerShell script. If the return value is True, you can use the downloaded OAW.zip:
 
 
-> [!NOTE]  
+> [!NOTE]
 > Unblock the script files after extracting the download.
 
 ```powershell
-param( 
-    [Parameter(Mandatory=$True)] 
-    [ValidateNotNullOrEmpty()] 
-    [ValidateScript({Test-Path $_ -PathType Leaf})] 
-    [string] 
-    $DownloadedOAWZipFilePath 
-) 
-$expectedHash = '2F6242F122532E176A5FACD694C132D3DAFD50D0F17F5F23F26A8102C7BA6157' 
-$actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash 
-Write-Host "Expected hash: $expectedHash" 
-if ($expectedHash -eq $actualHash) 
-{ 
-    Write-Host 'SUCCESS: OAW.zip file hash matches.' 
-} 
-else 
-{ 
-    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again. Actual hash: $actualHash" 
+param(
+    [Parameter(Mandatory=$True)]
+    [ValidateNotNullOrEmpty()]
+    [ValidateScript({Test-Path $_ -PathType Leaf})]
+    [string]
+    $DownloadedOAWZipFilePath
+)
+$expectedHash = '2F6242F122532E176A5FACD694C132D3DAFD50D0F17F5F23F26A8102C7BA6157'
+$actualHash = (Get-FileHash -Path $DownloadedOAWZipFilePath).Hash
+Write-Host "Expected hash: $expectedHash"
+if ($expectedHash -eq $actualHash)
+{
+    Write-Host 'SUCCESS: OAW.zip file hash matches.'
+}
+else
+{
+    Write-Error "ERROR: OAW.zip file hash does not match! It isn't safe to use it, please download it again. Actual hash: $actualHash"
 }
 ```
 
@@ -90,21 +90,21 @@ Another way to copy this script to your environment is to use the Test-FileHash 
    ```
 
 2. After you import the Test-FileHash module, verify the hash of the OAW.zip file:
- 
+
    ```powershell
    Test-FileHash -ExpectedHash "2F6242F122532E176A5FACD694C132D3DAFD50D0F17F5F23F26A8102C7BA6157" -FilePath "<path to the OAW.zip file>"
    ```
 
 ## Check HLH version
 
-> [!NOTE]  
-> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step. 
+> [!NOTE]
+> This step is important to determine if you deploy the OAW on a HLH that was deployed using a Microsoft image or an OEM image. This PowerShell cmdlet is not present on a HLH that was deployed using an OEM image. If you deploy the OAW on a general Microsoft Hyper-V, you can skip this step.
 
 1.  Sign in to the HLH with your credentials.
 
 2.  Open PowerShell ISE and run the following script:
 
-    ```powershell  
+    ```powershell
     C:\Version\Get-Version.ps1
     ```
 
@@ -128,30 +128,30 @@ The following script prepares the virtual machine as the Operator Access Worksta
 
 ### Example: Deploy on HLH using a Microsoft Image
 
-```powershell  
+```powershell
 $oawRootPath = "D:\oawtest"
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
 
 if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
 { Write-Host "Execution failed, unblock the script files first" }
-else { New-OAW.ps1 -LocalAdministratorPassword $securePassword }
+else { .\New-OAW.ps1 -LocalAdministratorPassword $securePassword }
 ```
 
 
 ### Example: Deploy on HLH using an OEM Image
 
-```powershell  
+```powershell
 $oawRootPath = "D:\oawtest"
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
 
 if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
 { Write-Host "Execution failed, unblock the script files first" }
-else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json' }
+else { .\New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' -DeploymentDataFilePath 'F:\DeploymentData.json' -AzSStampInfoFilePath 'F:\AzureStackStampInformation.json' }
 ```
 
-If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep/get-azurestackstampinformation.md) in case it is not present on the HLH. 
+If the `AzureStackStampInformation.json` file includes the naming prefix for OAW VM, that value will be used for the `VirtualMachineName` parameter. Otherwise, the default name is `AzSOAW` or whatever name specified is by the user. The `AzureStackStampInformation.json` can be re-created using the [privileged endpoint](../reference/pep/get-azurestackstampinformation.md) in case it is not present on the HLH.
 
-> [!NOTE]  
+> [!NOTE]
 > The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. If the `DeploymentData.json` is not available, reach out to your hardware partner to retrieve it or continue with the example deploy on Microsoft Hyper-V.
 
 ### Example: Deploy on Microsoft Hyper-V
@@ -167,16 +167,16 @@ The machine running Microsoft Hyper-V does requires four (4) cores and two (2) G
 | Subnet Mask | 255.255.255.192 |
 | Default Gateway | 10.26.5.193 |
 
-```powershell  
+```powershell
 $oawRootPath = "D:\oawtest"
 $securePassword = Read-Host -Prompt "Enter password for Azure Stack OAW's local administrator" -AsSecureString
 
 if (Get-ChildItem -Path $oawRootPath -Recurse | Get-Item -Stream Zone* -ErrorAction SilentlyContinue | Select-Object FileName)
 { Write-Host "Execution failed, unblock the script files first" }
-else { New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example }
+else { .\New-OAW.ps1 -LocalAdministratorPassword $securePassword -AzureStackCertificatePath 'F:\certroot.cer' `-SkipNetworkConfiguration -VirtualSwitchName Example }
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > The parameter `AzureStackCertificatePath` should only be used when Azure Stack Hub was deployed using certificates issued from an enterprise certificate authority. The OAW virtual machine will be deployed without a network configuration. You can configure a static IP address or retrieve an IP address via DHCP.
 
 ## User account policy
@@ -194,57 +194,57 @@ The following user account policy is applied to the OAW VM:
 Two parameter sets are available for New-OAW. Optional parameters are shown in
 brackets.
 
-```powershell  
-New-OAW  
--LocalAdministratorPassword <Security.SecureString> ` 
-[-AzureStackCertificatePath <String>] ` 
-[-AzSStampInfoFilePath <String>] ` 
-[-CertificatePassword <Security.SecureString>] ` 
-[-ERCSVMIP <String[]>] ` 
-[-DNS <String[]>] ` 
-[-DeploymentDataFilePath <String>] ` 
-[-SkipNetworkConfiguration] ` 
-[-ImageFilePath <String>] ` 
-[-VirtualMachineName <String>] ` 
-[-VirtualMachineMemory <int64>] ` 
-[-VirtualProcessorCount <int>] ` 
-[-VirtualMachineDiffDiskPath <String>] ` 
-[-PhysicalAdapterMACAddress <String>] ` 
-[-VirtualSwitchName <String>] ` 
-[-ReCreate] ` 
-[-AsJob] ` 
-[-Passthru] ` 
-[-WhatIf] ` 
-[-Confirm] ` 
-[<CommonParameters>] 
+```powershell
+New-OAW
+-LocalAdministratorPassword <Security.SecureString> `
+[-AzureStackCertificatePath <String>] `
+[-AzSStampInfoFilePath <String>] `
+[-CertificatePassword <Security.SecureString>] `
+[-ERCSVMIP <String[]>] `
+[-DNS <String[]>] `
+[-DeploymentDataFilePath <String>] `
+[-SkipNetworkConfiguration] `
+[-ImageFilePath <String>] `
+[-VirtualMachineName <String>] `
+[-VirtualMachineMemory <int64>] `
+[-VirtualProcessorCount <int>] `
+[-VirtualMachineDiffDiskPath <String>] `
+[-PhysicalAdapterMACAddress <String>] `
+[-VirtualSwitchName <String>] `
+[-ReCreate] `
+[-AsJob] `
+[-Passthru] `
+[-WhatIf] `
+[-Confirm] `
+[<CommonParameters>]
 
 ```
 
-```powershell  
-New-OAW 
--LocalAdministratorPassword <Security.SecureString> ` 
--IPAddress <String> ` 
--SubnetMask <String> ` 
--DefaultGateway <String> ` 
--DNS <String[]> ` 
+```powershell
+New-OAW
+-LocalAdministratorPassword <Security.SecureString> `
+-IPAddress <String> `
+-SubnetMask <String> `
+-DefaultGateway <String> `
+-DNS <String[]> `
 -TimeServer<String> `
-[-AzureStackCertificatePath <String>] ` 
-[-AzSStampInfoFilePath <String>] ` 
-[-CertificatePassword <Security.SecureString>] ` 
-[-ERCSVMIP <String[]>] ` 
-[-ImageFilePath <String>] ` 
-[-VirtualMachineName <String>] ` 
-[-VirtualMachineMemory <int64>] ` 
-[-VirtualProcessorCount <int>] ` 
-[-VirtualMachineDiffDiskPath <String>] ` 
-[-PhysicalAdapterMACAddress <String>] ` 
-[-VirtualSwitchName <String>] ` 
-[-ReCreate] ` 
-[-AsJob] ` 
-[-Passthru] ` 
-[-WhatIf] ` 
-[-Confirm] ` 
-[<CommonParameters>] 
+[-AzureStackCertificatePath <String>] `
+[-AzSStampInfoFilePath <String>] `
+[-CertificatePassword <Security.SecureString>] `
+[-ERCSVMIP <String[]>] `
+[-ImageFilePath <String>] `
+[-VirtualMachineName <String>] `
+[-VirtualMachineMemory <int64>] `
+[-VirtualProcessorCount <int>] `
+[-VirtualMachineDiffDiskPath <String>] `
+[-PhysicalAdapterMACAddress <String>] `
+[-VirtualSwitchName <String>] `
+[-ReCreate] `
+[-AsJob] `
+[-Passthru] `
+[-WhatIf] `
+[-Confirm] `
+[<CommonParameters>]
 
 ```
 
@@ -279,12 +279,12 @@ The following table lists the definition for each parameter.
 
 2.  Open PowerShell ISE and run the following script:
 
-    ```powershell  
+    ```powershell
     C:\\Version\\Get-Version.ps1
     ```
 
     For example:
-    
+
     ![Screenshot of PowerShell cmdlet to check the Hardware LifeCycle Host version.](media/operator-access-workstation/check-operator-access-workstation-vm-version.png)
 
 ## Transfer files between the HLH and OAW
@@ -311,14 +311,14 @@ the guardian associated with the VM.
 
 4.  Remove the VM by running the Remove-OAW.ps1 script:
 
-    ```powershell  
+    ```powershell
     Remove-OAW.ps1 -VirtualMachineName \<name\>
     ```
     Where \<name\> is the name of the virtual machine to be removed. By default, the name is **AzSOAW**.
 
     For example:
 
-    ```powershell  
+    ```powershell
     Remove-OAW.ps1 -VirtualMachineName AzSOAW
     ```
 
