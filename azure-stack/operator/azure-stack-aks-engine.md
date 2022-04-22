@@ -43,7 +43,6 @@ The Kubernetes cluster will need service principal (SPN) and role-based permissi
 
     If you use Active Directory Federated Services (AD FS) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret.  
 
-    For instructions using the Administrative portal, see [Create an app registration](./give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-connected#create-an-app-registration-that-uses-a-certificate-credential).  
     For instructions using PowerShell, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
 
 - **Assign a role**
