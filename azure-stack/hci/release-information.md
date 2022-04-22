@@ -36,6 +36,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.679    | 2022-04-25            | [KB 5012637](https://support.microsoft.com/topic/5bd3942b-6e47-42b2-a4bd-f442c2f3a01b)  |
 | 20348.643    | 2022-04-12            | [KB 5012604](https://support.microsoft.com/topic/090da9ce-1c1d-452b-a410-2b02e583a287)  |
 | 20348.617    | 2022-03-22            | [KB 5011558](https://support.microsoft.com/topic/4142756d-672b-4aac-b696-1b4e44d55c7c)  |
 | 20348.587    | 2022-03-08            | [KB 5011497](https://support.microsoft.com/topic/7d03d4b7-992d-4044-acf0-1ee1a86fc5f5)  |
