@@ -29,7 +29,7 @@ You can create a local Kubernetes cluster through the Azure Kubernetes Service h
 
 2. Select the **Add cluster** button under the **Kubernetes cluster** heading as shown in the image below:
 
-   [ ![Illustrates the Azure Kubernetes Service tool dashboard that appears after you set up an Azure Kubernetes Service host.](.\media\create-kubernetes-cluster\dashboard-kubernetes-wizard.png) ](.\media\create-kubernetes-cluster\dashboard-kubernetes-wizard.png#lightbox)
+   [ ![Illustrates the Azure Kubernetes Service tool dashboard that appears after you set up an Azure Kubernetes Service host.](./media/create-kubernetes-cluster/dashboard-kubernetes-wizard.png) ](./media/create-kubernetes-cluster/dashboard-kubernetes-wizard.png#lightbox)
    
 ## Use the Create Kubernetes cluster wizard
 This section describes how to use the Create Kubernetes cluster wizard through the Azure Kubernetes Service tool.  
@@ -38,11 +38,11 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
 2. On the **Basics** page, configure information about your Kubernetes cluster. The Azure Kubernetes Service host field requires the fully qualified domain name of the Azure Stack HCI or Windows Server 2019/2022 Datacenter cluster that you used when walking through the [setup](setup.md) page. You must have completed the host setup for this system through the Azure Kubernetes Service tool. When you're finished, select **Next**.
 
-    [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\basics.png) ](.\media\create-kubernetes-cluster\basics.png#lightbox)
+    [ ![Illustrates the Basics page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/basics.png) ](./media/create-kubernetes-cluster/basics.png#lightbox)
  
 3. Configure node pools to run your workloads on the **Node pools** page. *This step is mandatory*. You may add any number of Windows node pools and Linux node pools. If you enabled Azure Arc integration earlier in this wizard, you need to configure a Linux node pool with at least one Linux worker node. However, if you disabled Azure Arc integration earlier, then any node pool addition allows you to proceed to the next step. You can also set maximum pod counts and node taints when configuring node pools. Both of these settings are optional. For more information on the available taint settings, see [New-AksHciCluster](./reference/ps/new-akshcicluster.md#new-aks-hci-cluster-with-a-linux-node-pool-and-taints).
 
-    ![Screenshot that illustrates the Node pools page of the Kubernetes cluster wizard where you can configure maximum pod counts and taints.](.\media\create-kubernetes-cluster\node-pool-added.png)
+    ![Screenshot that illustrates the Node pools page of the Kubernetes cluster wizard where you can configure maximum pod counts and taints.](./media/create-kubernetes-cluster/node-pool-added.png)
 
    When you're finished, select **Next**.
 
@@ -52,18 +52,18 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
     The following image illustrates the static IP configuration settings:
 
-    [ ![Illustrates the Networking, static page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking-static.png) ](\media\create-kubernetes-cluster\networking-static.png#lightbox)
+    [ ![Illustrates the Networking, static page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/networking-static.png) ](/media/create-kubernetes-cluster/networking-static.png#lightbox)
 
    The following image illustrates the DHCP configuration settings:
 
-    [ ![Illustrates the Networking, DHCP page of the Kubernetes cluster wizard.](.\media\create-kubernetes-cluster\networking-dhcp.png) ](\media\create-kubernetes-cluster\networking-dhcp.png#lightbox)
+    [ ![Illustrates the Networking, DHCP page of the Kubernetes cluster wizard.](./media/create-kubernetes-cluster/networking-dhcp.png) ](/media/create-kubernetes-cluster/networking-dhcp.png#lightbox)
  
  
 6. Review your selections on the **Review + create** page. When you're satisfied, select **Create** to begin deployment. Your deployment progress will be shown at the top of this page. 
 
 7. After your deployment is complete, the **Next steps** page details how to manage your cluster. If you chose to disable the Azure Arc integration in the previous step, some of the information and instructions on this page may not be available or functional.
     
-    [ ![Illustrates the successful completion of the Kubernetes cluster.](.\media\create-kubernetes-cluster\deployment-complete.png) ](\media\create-kubernetes-cluster\deployment-complete.png#lightbox)
+    [ ![Illustrates the successful completion of the Kubernetes cluster.](./media/create-kubernetes-cluster/deployment-complete.png) ](/media/create-kubernetes-cluster/deployment-complete.png#lightbox)
  
 ## Next steps
 
