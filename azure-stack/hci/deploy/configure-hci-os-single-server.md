@@ -1,6 +1,6 @@
 ---
 title: Configure Azure Stack HCI OS - Single-Server 
-description: This article describes Azure Stack HCI OS configuration on a Single Server
+description: This article describes Azure Stack HCI OS configuration on a single server
 author: robess
 ms.author: robess
 ms.topic: how-to
