@@ -34,11 +34,17 @@ The Kubernetes cluster will need service principal (SPN) and role-based permissi
 
 - **Create an SPN in Azure AD**
 
-    If you use Azure Active Directory (Azure AD) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-aad).
+    If you use Azure Active Directory (Azure AD) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret.  
+
+    For instructions using the Administrative portal, see [Create an app registration](./give-app-access-to-resources?tabs=az1%2Caz2&pivots=state-connected#manage-an-azure-ad-app).  
+    For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-aad).
 
 - **Create an SPN in AD FS**
 
-    If you use Active Directory Federated Services (AD FS) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret. For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
+    If you use Active Directory Federated Services (AD FS) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret.  
+
+    For instructions using the Administrative portal, see [Create an app registration](./give-app-access-to-resources?tabs=az1%2Caz2&pivots=state-connected#create-an-app-registration-that-uses-a-certificate-credential).  
+    For instructions using PowerShell, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-app-registration-client-secret-adfs).
 
 - **Assign a role**
 
