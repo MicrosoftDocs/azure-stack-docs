@@ -1,6 +1,6 @@
 ---
 title: Configure Azure Stack HCI OS - Single-Server 
-description: This article describes Azure Stack HCI OS on a Single Server
+description: This article describes Azure Stack HCI OS configuration on a Single Server
 author: robess
 ms.author: robess
 ms.topic: how-to
@@ -30,7 +30,7 @@ To review single-server supported systems or to size a single-server, see the [C
 1. [Deploy OS](../deploy/operating-system.md#manual-deployment).
 2. Configure 21H2 HCI server with the [Server Configuration Tool](https://docs.microsoft.com/windows-server/administration/server-core/server-core-sconfig) (SConfig).
 3. [Create a Cluster with PowerShell](../deploy/create-cluster-powershell.md).
-4. Optional, [add server to Windows Admin Center (WAC)](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
+4. Optional, [add server to Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
 
 > [!NOTE]
 > Cluster witness is not required for single node.
