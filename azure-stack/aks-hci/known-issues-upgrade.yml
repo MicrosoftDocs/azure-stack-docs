@@ -224,8 +224,8 @@ sections:
           If there is a machine with `PHASE` Deleting and `VERSION` matching the previous Kubernetes version, proceed with the following steps.
           
           To address this problem, you will need the following pieces of information:
-          1. Kubernetes version to which you're upgrading your workload cluster.
-          2. IP address of the node which is stuck.
+          - Kubernetes version to which you're upgrading your workload cluster.
+          - IP address of the node which is stuck.
           
           To find this information, run the following cmdlet and command. Note that by default the cmdlet, `Get-AksHciCredential`, writes the kubeconfig to `~/.kube/config`. If you specify a different location for your workload cluster kubeconfig when calling `Get-AksHciCredential`, you will need to provide that location to kubectl as an additional argument. For example, `kubectl get nodes -o wide --kubeconfig <path to workload cluster kubeconfig>`.
           
