@@ -39,7 +39,6 @@ Single-server hardware, software, and network requirements are the same as multi
 |GPU, Azure Site Recovery, *Stretch cluster support | Yes, ***Stretch cluster not supported** | Yes |
 |AKS-HCI, Azure Virtual Desktop, Security features | Yes | Yes |
 
-
 > [!Note]
 > Features that require multiple servers will not be supported, e.g. live migration of VMs (within the cluster), affinity rules, and others.
 ## **Known Issues**

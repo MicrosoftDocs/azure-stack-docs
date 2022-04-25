@@ -40,4 +40,3 @@ To review single-server supported systems or to size a single-server, see the [C
 
 > [!Note]
 > Create Volume for single node is only supported with PowerShell.
-
