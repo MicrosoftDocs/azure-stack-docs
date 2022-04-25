@@ -18,12 +18,12 @@ groups:
     title: PowerShell 
 - id: csr-cert-type
   title: CSR type
-  prompt: Choose a CSR scenario
+  prompt: Choose a CSR certificate scenario
   pivots:
   - id: csr-type-new-deployment
-    title: New deployment certificates
+    title: New deployment
   - id: csr-type-renewal
-    title: Renew certificates
+    title: Renewal
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
