@@ -46,33 +46,48 @@ Before you generate any CSRs for PKI certificates for an Azure Stack Hub deploym
 
 To prepare certificate signing requests for new Azure Stack Hub PKI certificates, select a "Subject" format then proceed with the following steps:
 
-# [Subject with no CN](#tab/omit-cn)
-
-> [!NOTE]  
-> The first DNS name of the Azure Stack Hub service will be configured on the certificate request.
-
-# [Subject with CN](#tab/add-cn)
-
-> [!NOTE]  
-> The CN you specify will be configured on every certificate request. 
-
-# [Subject with only CN](#tab/only-cn)
-
-TBD: Customize steps below to show `New-AzsCertificateSigningRequest` with the `-CertificateType` parameter below, instead of `New-AzsHub<type>CertificateSigningRequest`.
-
----
-
 1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or later) by running the following cmdlet:
 
     ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
+# [Subject with no CN](#tab/omit-cn)
+
+> [!NOTE]  
+> The first DNS name of the Azure Stack Hub service will be configured as the CN field on the certificate request.
+
 1. Declare the *subject*. For example, run:
 
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
     ```
+
+# [Subject with CN](#tab/add-cn)
+
+> [!NOTE]  
+> The CN you specify will be configured on every certificate request. 
+
+1. Declare the *subject*. For example, run:
+
+    ```powershell  
+    $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=portal.domain.com"
+    ```
+
+# [Subject with only CN](#tab/only-cn)
+
+> [!NOTE]  
+> **Only** the CN you specify will be configured on every certificate request. 
+
+1. Declare the *subject*. For example, run:
+
+    ```powershell  
+    $subject = "CN=portal.domain.com"
+    ```
+
+TBD: Customize steps below to show `New-AzsCertificateSigningRequest` with the `-CertificateType` parameter below, instead of `New-AzsHub<type>CertificateSigningRequest`.
+
+---
 
 1. Declare an output directory that already exists. For example, run:
 
