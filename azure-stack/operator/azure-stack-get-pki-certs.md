@@ -60,34 +60,34 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
     > [!NOTE]  
     > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In this example, the portal would be `portal.east.azurestack.contoso.com`.  
 
-Now generate the CSRs, based on the Subject format you select below:
+Now generate the CSRs. The instructions are specific to the Subject format you select below:
 
 # [Subject with no CN](#tab/omit-cn)
 
 > [!NOTE]  
 > The first DNS name of the Azure Stack Hub service will be configured as the CN field on the certificate request.
 
-1. Declare the subject. For example, run:
+1. Declare the subject:
 
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
     ```
 
-1. Generate CSRs for a **production deployment environment**:
+1. Generate CSRs for your **production deployment environment**:
 
-   - Generate CSRs for deployment certificates using the `New-AzsHubDeploymentCertificateSigningRequest` cmdlet:
+   - Generate CSRs for deployment certificates:
 
       ```powershell  
       New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
 
-   - If you've installed Azure Stack Hub PaaS services, also run the `New-AzsHub<service>CertificateSigningRequest` cmdlets. For example:
+   - Optionally, generate CSRs for any PaaS services you've installed:
 
       ```powershell  
       # App Services
       New-AzsHubAppServicesCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
 
-      # DBAdapter
+      # DBAdapter (SQL/MySQL)
       New-AzsHubDbAdapterCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
 
       # EventHubs
@@ -114,10 +114,46 @@ Now generate the CSRs, based on the Subject format you select below:
 > [!NOTE]  
 > The CN you specify will be configured on every certificate request. 
 
-1. Declare the subject. For example, run:
+1. Declare the subject:
 
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=portal.domain.com"
+    ```
+
+1. Generate CSRs for your **production deployment environment**:
+
+   - Generate CSRs for deployment certificates:
+
+      ```powershell  
+      New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+      ```
+
+   - Optionally, generate CSRs for any PaaS services you've installed:
+
+      ```powershell  
+      # App Services
+      New-AzsHubAppServicesCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+
+      # DBAdapter (SQL/MySQL)
+      New-AzsHubDbAdapterCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+
+      # EventHubs
+      New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+      ```
+
+1. Alternatively, for **low-privilege environments**, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
+
+    ```powershell  
+    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -LowPrivilege
+    ```
+
+1. Alternatively, for **development and test environments**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
+
+    > [!IMPORTANT]
+    > We do *not* recommend using this approach for production environments.
+
+    ```powershell  
+    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
 # [Subject with only CN](#tab/only-cn)
@@ -125,11 +161,12 @@ Now generate the CSRs, based on the Subject format you select below:
 > [!NOTE]  
 > **Only** the CN you specify will be configured on every certificate request. 
 
-1. Declare the subject. For example, run:
+1. Declare the subject:
 
     ```powershell  
     $subject = "CN=portal.domain.com"
     ```
+
 
 
 ---
@@ -181,7 +218,7 @@ You must also confirm that you have HTTPS connectivity for your Azure Stack Hub 
     >
     > The Readiness Checker uses `stampEndpoint` (region and domain) to build a pointer to existing certificates that the certificate type requires. For example, for deployment certificates, "portal" is prepended by the tool. So `portal.east.azurestack.contoso.com` is used in certificate cloning, and `sso.appservices.east.azurestack.contoso.com` is used for app services.
 
-1. Declare the path to an existing output directory. For example, run:
+1. Declare the path to an existing output directory:
 
     ```powershell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
