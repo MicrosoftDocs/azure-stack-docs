@@ -44,17 +44,17 @@ Before you generate any CSRs for PKI certificates for an Azure Stack Hub deploym
 
 ## Generate certificate signing requests for new deployments
 
-To prepare certificate signing requests for new Azure Stack Hub PKI certificates, do the following:
+To prepare certificate signing requests for new Azure Stack Hub PKI certificates, select one of following the proceed with the following steps:
 
-# [Omit CN](#tab/omit-cn)
+# [Subject with no CN](#tab/omit-cn)
 
 Content for Subject with no CN
 
-# [Add CN](#tab/add-cn)
+# [Subject with CN](#tab/add-cn)
 
 Content for Subject with a CN
 
-# [Only CN](#tab/only-cn)
+# [Subject with only CN](#tab/only-cn)
 
 Content for Subject with only a CN
 
@@ -159,7 +159,17 @@ Content for Subject with only a CN
 
 ## Generate certificate signing requests for certificate renewal  
 
-To prepare CSRs for renewal of existing Azure Stack Hub PKI certificates, do the following:
+This section covers preparation of CSRs for renewal of existing Azure Stack Hub PKI certificates.
+
+### Prerequisites
+
+- Confirm that you have HTTPS connectivity for your Azure Stack Hub system.
+- Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting info from existing certificates. As such, if any of the following apply to your scenario you must use the previous [Generate certificate signing request for new deployments section](#generate-certificate-signing-request-for-new-deployments) instead:
+   - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
+   - You want to use a certificate subject that contains only the common name attribute.
+
+
+### Generate CSRs 
 
 1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or later), by running the following cmdlet:
 
