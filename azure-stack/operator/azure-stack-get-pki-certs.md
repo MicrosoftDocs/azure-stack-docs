@@ -46,6 +46,20 @@ Before you generate any CSRs for PKI certificates for an Azure Stack Hub deploym
 
 To prepare certificate signing requests for new Azure Stack Hub PKI certificates, do the following:
 
+# [Omit CN](#tab/omit-cn)
+
+Content for Subject with no CN
+
+# [Add CN](#tab/add-cn)
+
+Content for Subject with a CN
+
+# [Only CN](#tab/only-cn)
+
+Content for Subject with only a CN
+
+---
+
 1. Install AzsReadinessChecker from a PowerShell prompt (5.1 or later) by running the following cmdlet:
 
     ```powershell  
