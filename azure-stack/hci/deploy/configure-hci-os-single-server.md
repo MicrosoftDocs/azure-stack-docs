@@ -23,14 +23,14 @@ To review single-server supported systems or to size a single-server, see the [C
 
 - A single server with one drive type (NVMe or SSD drives) chosen from the Azure Stack HCI Catalog.
 - Follow [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
-- Optional, [Install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install) (WAC).
+- Optional, [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) (WAC).
 
 ## **Single-Server**
 
 1. [Deploy OS](../deploy/operating-system.md#manual-deployment).
-2. Configure 21H2 HCI server with the [Server Configuration Tool](https://docs.microsoft.com/windows-server/administration/server-core/server-core-sconfig) (SConfig).
+2. Configure 21H2 HCI server with the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
 3. [Create a Cluster with PowerShell](../deploy/create-cluster-powershell.md).
-4. Optional, [add server to Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
+4. Optional, [add server to Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
 
 > [!NOTE]
 > Cluster witness is not required for single node.

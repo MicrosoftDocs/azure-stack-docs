@@ -14,12 +14,12 @@ ms.date: 04/04/2022
 
 This article provides information about Azure Stack HCI OS on a single-server.
 
-Single-server, also referred to as single-node, is a cluster with one server and no failover to another server. At the workload level, if high resiliency isn't a requirement, single-server can provide flexibility, minimize hardware, and reduce Azure costs in locations that can tolerate lower resiliency. Therefore, contributing to more overall cost savings.
+Single-server, also referred to as single-node, is a cluster with one server and no failover to another server. At the workload level, if high resiliency isn't a requirement, single-server can provide flexibility. It can also minimize hardware and reduce Azure costs in locations that can tolerate lower resiliency. Therefore, contributing to more overall cost savings.
 
 Additionally, single-server could be an alternative for users with plans to scale out in the future.
 
 ## **Requirements**
-Single-server hardware, software, and network requirements are the same as multi-server. For more detail see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
+Single-server hardware, software, and network requirements are the same as multi-server. For more detail, see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
 
 > [!IMPORTANT]
 > Azure Stack HCI 21H2 single server scale is only supported on single storage type configurations. Stretch cluster and SBL cache are not supported, and when restarting the server VMs will have downtime.
