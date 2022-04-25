@@ -28,7 +28,7 @@ Add a new physical node to your deployment.
 
 ### Add a new physical node
 ```powershell
-PS C:\> Add-AksHciNode -nodeName newnode
+Add-AksHciNode -nodeName newnode
 ```
 
 ## Parameters

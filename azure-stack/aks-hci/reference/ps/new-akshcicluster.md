@@ -3,10 +3,10 @@ title: New-AksHciCluster for AKS on Azure Stack HCI
 author: mattbriggs
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
-ms.date: 7/28/2021
-ms.author: mabrigg 
-ms.lastreviewed: 1/14/2022
-ms.reviewer: jeguan
+ms.date: 03/16/2022
+ms.author: mabrigg
+ms.lastreviewed: 
+ms.reviewer: mikek
 
 ---
 
@@ -36,6 +36,8 @@ New-AksHciCluster -name <String>
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
                  [-enableMonitoring]
+                 [-enableAutoScaler] 
+                 [-autoScalerProfileName]
 ```
 
 > [!NOTE]
@@ -55,6 +57,8 @@ New-AksHciCluster -name <String>
                  [-primaryNetworkPlugin <Network Plugin>]   
                  [-enableAdAuth]
                  [-enableMonitoring]
+                 [-enableAutoScaler] 
+                 [-autoScalerProfileName]
 ```
 
 
@@ -74,7 +78,7 @@ Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
 ### New AKS on Azure Stack HCI cluster with required parameter
 
 ```powershell
-PS C:\> New-AksHciCluster -name mycluster
+New-AksHciCluster -name mycluster
 ```
 
 > [!NOTE]
@@ -118,55 +122,66 @@ The command above deploys a cluster with its default values. The deployed cluste
 ### New AKS-HCI cluster with a Linux node pool
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType linux
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType linux
 ```
 
 ### New AKS-HCI cluster with a Windows node pool
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType windows
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -nodeVmSize Standard_K8S3_v1 -osType windows
 ```
 
 ### New AKS-HCI cluster with a Linux node pool and taints
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -taints sku=gpu:NoSchedule
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -taints sku=gpu:NoSchedule
 ```
 
 ### New AKS-HCI cluster with a Linux node pool and max pod count
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -nodeMaxPodCount 100
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 1 -osType linux -nodeMaxPodCount 100
 ```
 
 ### New AKS-HCI cluster with custom VM sizes
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -controlPlaneVmSize Standard_D4s_v3 -loadBalancerVmSize Standard_A4_v2 -nodePoolName nodepool1 -nodeCount 3 -nodeVmSize Standard_D8s_v3
+New-AksHciCluster -name mycluster -controlPlaneVmSize Standard_D4s_v3 -loadBalancerVmSize Standard_A4_v2 -nodePoolName nodepool1 -nodeCount 3 -nodeVmSize Standard_D8s_v3
 ```
 
 ### New AKS-HCI cluster with highly available control plane nodes
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -controlPlaneNodeCount 3 -nodePoolName nodepool1 -nodeCount 3
+New-AksHciCluster -name mycluster -controlPlaneNodeCount 3 -nodePoolName nodepool1 -nodeCount 3
 ```
 
 ### New AKS-HCI cluster with monitoring enabled
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableMonitoring
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableMonitoring
 ```
 
 ### New AKS-HCI cluster with AD auth enabled
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAdAuth
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -enableAdAuth
 ```
 
 ### New AKS-HCI cluster with a specific Kubernetes version
 
 ```powershell
-PS C:\ New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
+New-AksHciCluster -name mycluster -nodePoolName nodepool1 -nodeCount 3 -kubernetesVersion v1.21.2
+```
+### New AKS-HCI cluster with autoscaler enabled and the default autoscaler configuration profile
+
+```powershell
+New-AksHciCluster -name mycluster -enableAutoScaler $true
+```
+
+### New AKS-HCI cluster with autoscaler enabled and a named autoscaler configuration profile
+
+```powershell
+New-AksHciCluster -name mycluster -enableAutoScaler $true -autoScalerProfileName myAutoScalerProfile
 ```
 
 ## Parameters
@@ -462,6 +477,34 @@ Use this flag to enable Prometheus monitoring.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -enableAutoScaler
+Use this flag to enable the autoscaler
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -autoScalerProfileName
+The name of the autoscaler configuration profile
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -28,7 +28,7 @@ Remove a physical node from your deployment. You can use this command in the cas
 
 ### Add a new physical node
 ```powershell
-PS C:\> Remove-AksHciNode -nodeName newnode
+Remove-AksHciNode -nodeName newnode
 ```
 
 ## Parameters
