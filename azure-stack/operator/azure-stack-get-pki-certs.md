@@ -7,12 +7,12 @@ ms.date: 04/25/2022
 ms.author: bryanla
 ms.reviewer: ppacent
 ms.lastreviewed: 04/25/2022
+zone_pivot_groups: csr-cert-type
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
 # Keyword: azure stack certificate signing request 
 
 ---
-
 
 # Generate certificate signing requests for Azure Stack Hub
 
@@ -42,6 +42,7 @@ Before you generate CSRs for PKI certificates for an Azure Stack Hub deployment,
 >
 > Elevation is required to generate certificate signing requests. In restricted environments where elevation is not possible, you can use this tool to generate clear-text template files, which contain all the information that's required for Azure Stack Hub external certificates. You then need to use these template files on an elevated session to finish the public/private key pair generation.  
 
+::: zone pivot="csr-type-new-deployment"
 ## Generate certificate signing requests for new deployments
 
 To prepare certificate signing requests for new Azure Stack Hub PKI certificates, complete the following steps:
@@ -78,7 +79,7 @@ To prepare certificate signing requests for new Azure Stack Hub PKI certificates
     > [!NOTE]  
     > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In this example, the portal would be `portal.east.azurestack.contoso.com`.  
 
-To generate CSRs for deployment, select a "Subject" format then proceed with the following steps:
+Now select a Subject format. The remaining steps will be customized, based on the format selected below:
 
 # [Subject with no CN](#tab/omit-cn)
 
@@ -89,6 +90,42 @@ To generate CSRs for deployment, select a "Subject" format then proceed with the
 
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
+    ```
+
+1. To generate CSRs for a **production deployment environment**:
+
+   - First run the `New-AzsHubDeploymentCertificateSigningRequest` cmdlet:
+
+      ```powershell  
+      New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+      ```
+
+   - If you've installed Azure Stack Hub PaaS services, also run the `New-AzsHub<service>CertificateSigningRequest` cmdlets. For example:
+
+      ```powershell  
+      # App Services
+      New-AzsHubAppServicesCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+
+      # DBAdapter
+      New-AzsHubDbAdapterCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+
+      # EventHubs
+      New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
+      ```
+
+1. Alternatively, for **low-privilege environments**, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
+
+    ```powershell  
+    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -LowPrivilege
+    ```
+
+1. Alternatively, for **development and test environments**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
+
+    > [!IMPORTANT]
+    > We do *not* recommend using this approach for production environments.
+
+    ```powershell  
+    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
 # [Subject with CN](#tab/add-cn)
@@ -113,40 +150,10 @@ To generate CSRs for deployment, select a "Subject" format then proceed with the
     $subject = "CN=portal.domain.com"
     ```
 
-TBD: Customize steps below to show `New-AzsCertificateSigningRequest` with the `-CertificateType` parameter below, instead of `New-AzsHub<type>CertificateSigningRequest`.
 
 ---
 
-1. To generate CSRs for deployment, run:
-
-    ```powershell  
-    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ```
-
-    To generate CSRs for other Azure Stack Hub services, change the cmdlet name. For example:
-
-    ```powershell  
-    # App Services
-    New-AzsHubAppServicesCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
-
-    # DBAdapter
-    New-AzsHubDbAdapterCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
-
-    # EventHubs
-    New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
-    ```
-
-1. Alternatively, for low-privilege environments, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
-
-    ```powershell  
-    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -LowPrivilege
-    ```
-
-1. Alternatively, for development and test environments, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. (We do *not* recommend using this approach for production environments.)
-
-    ```powershell  
-    New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ```
+Complete the remaining steps:
 
 1. Review the output:
 
@@ -157,14 +164,16 @@ TBD: Customize steps below to show `New-AzsCertificateSigningRequest` with the `
     Certreq.exe output: CertReq: Request Created
     ```
 
-1. Submit the generated .req file to your certificate authority (CA) (either internal or public). Output directory named New-AzsCertificateSigningRequest contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the .inf files that are used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
+1. Submit the generated .req file to your certificate authority (CA) (either internal or public). The output directory named New-AzsCertificateSigningRequest contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the .inf files that are used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
 
 1. If the `-LowPrivilege` parameter was used, copy the resulting .inf file. For example:  
 
     `C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf` 
 
     Copy the file to a system where elevation is allowed, and then sign each request with `certreq` by using the following syntax: `certreq -new <example.inf> <example.req>`. You then need to complete the rest of the process on that elevated system, because it requires matching the new certificate that's signed by the CA with its private key, which is generated on the elevated system.
+::: zone-end
 
+::: zone pivot="csr-type-renewal"
 ## Generate certificate signing requests for certificate renewal  
 
 This section covers preparation of CSRs for renewal of existing Azure Stack Hub PKI certificates.
@@ -230,7 +239,8 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
     ```
 
 1. Submit the generated .req file to your CA (either internal or public). The output directory named New-AzsCertificateSigningRequest contains the CSRs that you must submit to a certificate authority. The directory also contains, for your reference, a child directory that contains the .inf files to be used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
+::: zone-end
 
 ## Next steps
 
-After you receive your certificates from your certificate authority, follow the steps in [Prepare Azure Stack Hub PKI certificates](azure-stack-prepare-pki-certs.md) on the same system.
+Once you receive your certificates back from your certificate authority, follow the steps in [Prepare Azure Stack Hub PKI certificates](azure-stack-prepare-pki-certs.md) on the same system.
