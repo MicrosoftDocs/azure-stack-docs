@@ -44,19 +44,21 @@ Before you generate any CSRs for PKI certificates for an Azure Stack Hub deploym
 
 ## Generate certificate signing requests for new deployments
 
-To prepare certificate signing requests for new Azure Stack Hub PKI certificates, select one of following the proceed with the following steps:
+To prepare certificate signing requests for new Azure Stack Hub PKI certificates, select a "Subject" format then proceed with the following steps:
 
 # [Subject with no CN](#tab/omit-cn)
 
-Content for Subject with no CN
+> [!NOTE]  
+> The first DNS name of the Azure Stack Hub service will be configured on the certificate request.
 
 # [Subject with CN](#tab/add-cn)
 
-Content for Subject with a CN
+> [!NOTE]  
+> The CN you specify will be configured on every certificate request. 
 
 # [Subject with only CN](#tab/only-cn)
 
-Content for Subject with only a CN
+TBD: Customize steps below to show `New-AzsCertificateSigningRequest` with the `-CertificateType` parameter below, instead of `New-AzsHub<type>CertificateSigningRequest`.
 
 ---
 
@@ -71,11 +73,6 @@ Content for Subject with only a CN
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
     ```
-
-    > [!NOTE]  
-    > If you require truncated subject with only a common name attribute, you must use New-AzsCertificateSigningRequest with the -CertificateType parameter.
-    >
-    > If you supply a common name (CN), it will be configured on every certificate request. If you omit the CN, the first DNS name of the Azure Stack Hub service will be configured on the certificate request.
 
 1. Declare an output directory that already exists. For example, run:
 
