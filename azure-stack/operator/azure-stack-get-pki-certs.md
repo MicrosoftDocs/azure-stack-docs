@@ -60,7 +60,7 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
     > [!NOTE]  
     > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In this example, the portal would be `portal.east.azurestack.contoso.com`.  
 
-Now generate the CSRs. The instructions are specific to the Subject format you select below:
+Now generate the CSRs. The instructions are specific to the Subject format that you select below:
 
 # [Subject with no CN](#tab/omit-cn)
 

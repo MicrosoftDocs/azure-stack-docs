@@ -8,15 +8,13 @@ ms.reviewer: bryanla
 ms.lastreviewed: 04/26/2022
 ---
 
-1. Generate CSRs for your **production deployment environment**:
+2. Generate CSRs by completing one the following:
 
-   - Generate CSRs for deployment certificates:
+   - For a **production deployment environment**, the first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
 
       ```powershell  
       New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
-
-   - Optionally, generate CSRs for any PaaS services you've installed:
 
       ```powershell  
       # App Services
@@ -29,13 +27,13 @@ ms.lastreviewed: 04/26/2022
       New-AzsHubEventHubsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory
       ```
 
-1. Alternatively, for **low-privilege environments**, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
+   - For a **low-privilege environment**, to generate a clear-text certificate template file with the necessary attributes declared, add the `-LowPrivilege` parameter:
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem -LowPrivilege
     ```
 
-1. Alternatively, for **development and test environments**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
+   - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
 
     > [!IMPORTANT]
     > We do *not* recommend using this approach for production environments.
