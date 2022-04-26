@@ -103,7 +103,7 @@ standard privacy practices.**
 
 ## Allowed Microsoft support operations
 
-The following sections list the allowed commands that Microsoft support can execute during a remote support session.
+This section lists the allowed diagnostic or repair commands that Microsoft support can execute during a remote support session.
 
 ### Access level: Diagnostics
 
