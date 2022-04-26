@@ -32,7 +32,7 @@ Remote support gives you the ability to:
 
 ## Before you begin
 
-Before you begin using remote support, complete the following:
+Before you begin using remote support, you must:
 
 - [Install PowerShell module](#install-powershell-module)
 - [Configure proxy settings](#configure-proxy-settings)
