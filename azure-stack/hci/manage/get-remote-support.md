@@ -4,7 +4,7 @@ description: This topic provides guidance on how to get remote support for the A
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 04/21/2022
+ms.date: 04/26/2022
 ---
 
 # Get remote support for Azure Stack HCI
@@ -17,7 +17,7 @@ You can use remote support to allow a Microsoft support professional to solve yo
 duration of access. Microsoft support can access your device only after a support request is submitted.
 
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the
-access level granted using [just enough administration](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) (JEA).
+access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
 :::image type="content" source="media/remote-support/remote-support-workflow.png" alt-text="Diagram shows how the remote support works" border="true":::
 
@@ -26,11 +26,8 @@ access level granted using [just enough administration](https://docs.microsoft.
 Remote support gives you the ability to:
 
 - Improve the speed to resolution as Microsoft support no longer needs to arrange a meeting with you for troubleshooting.
-
 - View the detailed transcript of all executed operations at any time.
-
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
-
 - Revoke consent at any time, which in turn terminates the remote session. Access is automatically disabled once the consent duration expires.
 
 ## Before you begin
@@ -87,22 +84,22 @@ Install the Remote Support extension from the Windows Admin Center Extensions fe
 
 ### Grant remote support access
 
-Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands:
+Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands.
 
 :::image type="content" source="media/remote-support/remote-support-grant-access.png" alt-text="Screenshot of grant remote support access options" border="false":::
 
-The following are the remote support data handling terms and conditions:
+The following are the data handling terms and conditions for remote access. Carefully read these before granting access:
 
-By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described
-in the Microsoft support case.
+**By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described
+in the Microsoft support case.**
 
-During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostics log collection by a Microsoft Support Engineer to address a support case. You also acknowledge and consent to the upload and
-retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI.
+**During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostics log collection by a Microsoft Support Engineer to address a support case. You also acknowledge and consent to the upload and
+retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI.**
 
-The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our
-standard privacy practices.
+**The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our
+standard privacy practices.**
 
-Any data previously collected with your consent will not be affected by the revocation of your permission.
+**Any data previously collected with your consent will not be affected by the revocation of your permission.**
 
 ## Allowed Microsoft support operations
 
