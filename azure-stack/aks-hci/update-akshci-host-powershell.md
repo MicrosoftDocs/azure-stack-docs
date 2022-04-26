@@ -16,7 +16,7 @@ author: mattbriggs
 
 Updates to the Azure Kubernetes Services (AKS) on Azure Stack HCI host always include the latest available version. Although updates to the host can happen independently from updates to the workload clusters, you must always update the host before updating a workload cluster.
 
-All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When you sucessfully remove the  resources, the _old_ node is decommissioned and removed from the cluster.
+All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When you successfully remove the resources, the _old_ node is decommissioned and removed from the cluster.
 
 > [!Note]
 > You must upgrade an AKS on Azure Stack HCI cluster *within 60 days*, otherwise, the KMS plug-in token and the certificates both expire. The cluster is still functional, however, but you will need to call Microsoft support to upgrade. If the cluster is rebooted after the 60-day period, it will continue to remain in a non-functional state.
