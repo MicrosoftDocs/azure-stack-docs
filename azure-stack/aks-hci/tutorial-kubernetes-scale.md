@@ -3,16 +3,18 @@ title: Tutorial - Scale an application in Azure Kubernetes Service on Azure Stac
 description: In this tutorial, learn how to scale nodes and pods in Kubernetes
 services: container-service
 ms.topic: tutorial
-ms.date: 04/13/2021
+ms.date: 04/21/2021
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+# Intent: As an IT Pro, I need step-by-step instructions on how to scale application nodes and pods in a Kubernetes cluster.
+# Keyword: scale applications scale pods
 ---
 
 # Tutorial: Scale applications in Azure Kubernetes Service on Azure Stack HCI
 
-If you've followed the tutorials, you have a working Kubernetes cluster in AKS on Azure Stack HCI and you deployed the sample Azure Voting app. In this tutorial, part five of seven, you scale out the pods in the app. You learn how to:
+If you have completed the previous tutorials, you should have a working Kubernetes cluster in AKS on Azure Stack HCI and also deployed the sample Azure Voting app. This tutorial, part five of seven, describes how to scale out the pods in the app. You'll learn how to:
 
 > [!div class="checklist"]
 > * Scale the Kubernetes nodes
@@ -22,12 +24,12 @@ In later tutorials, the Azure Vote application is updated to a new version.
 
 ## Before you begin
 
-In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI cluster. The application was then deployed to the AKS cluster. If you haven't done these steps, and would like to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+Previous tutorials described how to package an application into a container image, upload the image to Azure Container Registry, and create an AKS on Azure Stack HCI cluster. The application was then deployed to the AKS cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 
 ## Manually scale pods
 
-When the Azure Vote front-end and Redis instance were deployed in previous tutorials, a single replica was created. To see the number and state of pods in your cluster, use the [kubectl get][kubectl-get] command as follows:
+Previous tutorials described how to deploy the Azure Vote front-end and Redis instance in order to create a single replica. To see the number and state of pods in your cluster, use the following [kubectl get][kubectl-get] command:
 
 ```console
 kubectl get pods

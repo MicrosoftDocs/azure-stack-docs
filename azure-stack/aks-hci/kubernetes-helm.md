@@ -4,23 +4,25 @@ description: Learn how to use the Helm packaging tool to deploy containers on Az
 services: container-service
 author: mattbriggs
 ms.topic: article
-ms.date: 05/14/2021
+ms.date: 04/20/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 
-#Customer intent: As a cluster operator or developer, I want to learn how to deploy Helm into an AKS-HCI cluster and then install and manage applications using Helm charts.
+# Customer intent: As a cluster operator or developer, I want to learn how to deploy Helm into an AKS-HCI cluster and then install and manage applications using Helm charts.
+# Intent: As an IT Pro, I want to learn how to deploy Helm into an AKS-HCI cluster so that I can use Helm charts to install and manage applications.
+# Keyword: Helm charts deploy Helm
 ---
 
 # Install existing applications with Helm on Azure Kubernetes Service (AKS) on Azure Stack HCI
 
-[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Yum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
+[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
 This article shows you how to configure and use Helm in a Kubernetes cluster on AKS on Azure Stack HCI 
 
 ## Before you begin
 
-Verify that you have the following set up:
+Verify that you have set up the following requirements:
 
 * An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
 * You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
@@ -28,7 +30,7 @@ Verify that you have the following set up:
 * [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands, if you prefer this to PowerShell.
 
 > [!IMPORTANT]
-> Helm is intended to run on Linux nodes. If you have Windows Server nodes in your cluster, you must ensure that Helm pods are only scheduled to run on Linux nodes. You also need to ensure that any Helm charts you install are also scheduled to run on the correct nodes. The commands in this article use [node-selectors](./adapt-apps-mixed-os-clusters.md#node-selector) to make sure pods are scheduled to the correct nodes, but not all Helm charts may expose a node selector. You can also consider using other options on your cluster, such as [taints](./adapt-apps-mixed-os-clusters.md#taints-and-tolerations).
+> Helm is intended to run on Linux nodes. If you have Windows Server nodes in your cluster, you must ensure that Helm pods are scheduled to run only on Linux nodes. You also need to ensure that any Helm charts you install are scheduled to run on the correct nodes. The commands in this article use [node-selectors](./adapt-apps-mixed-os-clusters.md#node-selector) to make sure pods are scheduled to the correct nodes, but not all Helm charts will expose a node selector. You can also consider using other options on your cluster, such as [taints](./adapt-apps-mixed-os-clusters.md#taints-and-tolerations).
 
 ## Verify your version of Helm
 
@@ -85,9 +87,9 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ### Run Helm charts
 
-To install charts with Helm, use the [helm install][helm-install-command] command and specify a release name and the name of the chart to install. To see installing a Helm chart in action, let's install a basic nginx deployment using a Helm chart.
+To install charts with Helm, use the [helm install][helm-install-command] command and specify a release name and the name of the chart to install. To see a Helm chart installation in action, let's install a basic nginx deployment using a Helm chart.
 
-The command below is provided twice, one for use in Azure CLI, and once for use in a PowerShell console. If you're running inside a PowerShell console you'll see the command includes the backtick ( ` ) to allow line continuation.
+The command below is provided twice, one for use in Azure CLI, and once for use in a PowerShell console. If you're running inside a PowerShell console, you'll see the command includes the backtick ( ` ) to allow line continuation.
 
 ```console
 helm install my-nginx-ingress ingress-nginx/ingress-nginx \
@@ -150,7 +152,7 @@ my-nginx-ingress	default  	1       	2021-05-14 17:43:27.1670709 +0000 UTC	deploy
 
 ### Clean up resources
 
-When you deploy a Helm chart, a number of Kubernetes resources are created. These resources include pods, deployments, and services. To clean up these resources, use the [helm uninstall][helm-cleanup] command and specify your release name, as found in the previous `helm list` command.
+When you deploy a Helm chart, many Kubernetes resources are created. These resources include pods, deployments, and services. To clean up these resources, use the [helm uninstall][helm-cleanup] command and specify your release name, as found in the previous `helm list` command.
 
 ```console
 helm uninstall my-nginx-ingress
