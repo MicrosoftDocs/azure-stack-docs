@@ -96,7 +96,7 @@ For more information, see the blog on the [Azure Stack HCI sizing tool](https://
 
 ## New remote support capability
 
-You can now get remote support from Microsoft for limited troubleshooting and repairs of your Azure Stack HCI operating system. You can enable this feature by granting consent while controlling the access level and duration of access. Microsoft support can access your device only after a support request is submitted. For more information about how to get remote support, see [Get remote support](manage/get-remote-support).
+You can now get remote support from Microsoft for limited troubleshooting and repairs of your Azure Stack HCI operating system. You can enable this feature by granting consent while controlling the access level and duration of access. Microsoft support can access your device only after a support request is submitted. For more information about how to get remote support, see [Get remote support](manage/get-remote-support.md).
 
 ## Enhancements in Windows Admin Center
 
