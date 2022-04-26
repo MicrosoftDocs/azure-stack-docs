@@ -33,7 +33,7 @@ If you need to update, follow the instructions [here](update-akshci-host-powersh
 
 ## Create an AKS on Azure Stack HCI cluster
 
-To get started, create an AKS on Azure Stack HCI cluster with a single node pool. The follow example uses the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command to create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with 1 node. **If you already have a cluster deployed with an older version of AKS on Azure Stack HCI and you wish to continue using your old deployment, you can skip this step. You can still use the new set of node pool commands to add more node pool to your existing cluster.**
+To get started, create an AKS on Azure Stack HCI cluster with a single node pool. The following example uses the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command to create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with 1 node. **If you already have a cluster deployed with an older version of AKS on Azure Stack HCI and you wish to continue using your old deployment, you can skip this step. You can still use the new set of node pool commands to add more node pool to your existing cluster.**
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType linux
