@@ -1,5 +1,5 @@
 ---
-title: Remove-AksHciNode for AKS on Azure Stack HCI
+title: Remove-AksHciNode for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Remove-AksHciNode PowerShell command removes a physical node from your deployment.
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciCluster for AKS on Azure Stack HCI
+title: Set-AksHciCluster for AKS on Azure Stack HCI and Windows Server
 author: mkostersitz
 description: The Set-AksHciCluster PowerShell command scales the number of control plane nodes, enable or disable the autoscaler, set the autoscaler configuration profile.
 ms.topic: reference
@@ -96,10 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -enableAutoScaler
-If set to `$true`: Enables the workernode autoscaler for the specified AKS on Azure Stack HCI cluster. All nodepools in the cluster will now automatically scale from the minimum to the maximum number of nodes based on demand for additional nodes when the Kubernetes scheduler is not able to find sufficient worker node resources to schedule pods. See the documentation [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md) for more details.
+If set to `$true`: Enables the workernode autoscaler for the specified AKS on Azure Stack HCI and Windows Server cluster. All nodepools in the cluster will now automatically scale from the minimum to the maximum number of nodes based on demand for additional nodes when the Kubernetes scheduler is not able to find sufficient worker node resources to schedule pods. See the documentation [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md) for more details.
 If set to $false: Disables the autoscaler for the specified cluster. The node pools in the cluster will remain at the scale they were when the autoscaler was disabled.
 > [!NOTE]  
-> Unlike in Azure the autoscaler in AKS on Azure Stack HCI does not have unlimited resources available. It does not reserve resources to ensure automatic scaling can always succeed. If there are other workloads in the cluster i.e. virtual machines, AKS clusters etc. consuming resources, the autoscaler can potentially fail. You can use the `kubectl get events` command to determine the reason why an autoscaler operation has failed. The autoscaler will retry a failed operation based on the settings in the autoscaler configuration profile.  See the documentation, [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md), for more details.
+> Unlike in Azure the autoscaler in AKS on Azure Stack HCI and Windows Server does not have unlimited resources available. It does not reserve resources to ensure automatic scaling can always succeed. If there are other workloads in the cluster i.e. virtual machines, AKS clusters etc. consuming resources, the autoscaler can potentially fail. You can use the `kubectl get events` command to determine the reason why an autoscaler operation has failed. The autoscaler will retry a failed operation based on the settings in the autoscaler configuration profile.  See the documentation, [Use PowerShell for cluster autoscaling](../../work-with-horizontal-autoscaler.md), for more details.
  
 ```yaml
 Type: System.Boolean
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 > [!NOTE]  
->The parameters `windowsNodeCount` and `linuxNodeCount` have been deprecated and removed from the `Set-AksHciCLuster` command. Please use the `count` parameter for the  `Set-AksHciNodePool` command to manually change the number of worker nodes in a nodepool of a AKS on Azure Stack HCI cluster.
+>The parameters `windowsNodeCount` and `linuxNodeCount` have been deprecated and removed from the `Set-AksHciCLuster` command. Please use the `count` parameter for the  `Set-AksHciNodePool` command to manually change the number of worker nodes in a nodepool of a AKS on Azure Stack HCI and Windows Server cluster.
 
 ## Next steps
 

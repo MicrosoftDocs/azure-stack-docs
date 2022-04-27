@@ -7,19 +7,19 @@ ms.date: 04/21/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
-# Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data in AKS on Azure Stack HCI.
+# Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data in AKS on Azure Stack HCI and Windows Server.
 # Keyword: Azure Arc data services
 ---
 
-# Deploy Azure Arc enabled data services in AKS on Azure Stack HCI
+# Deploy Azure Arc enabled data services in AKS on Azure Stack HCI and Windows Server
 
-This topic provides a checklist of prerequisites you need to follow to deploy Azure Arc enabled data services on AKS on Azure Stack HCI. You must have [AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md) installed before using the checklist.
+This topic provides a checklist of prerequisites you need to follow to deploy Azure Arc enabled data services on AKS on Azure Stack HCI and Windows Server. You must have [AKS on Azure Stack HCI and Windows Server](kubernetes-walkthrough-powershell.md) installed before using the checklist.
 
-## Prerequisites for AKS on Azure Stack HCI
+## Prerequisites for AKS on Azure Stack HCI and Windows Server
 
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md)
-> * Configure storage [using the AKS on Azure Stack HCI disk Container Storage Interface drivers](./container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-disk)
+> * Configure storage [using the AKS on Azure Stack HCI and Windows Server disk Container Storage Interface drivers](./container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk)
 
 ## Prerequisites for Azure Arc enabled data services
 

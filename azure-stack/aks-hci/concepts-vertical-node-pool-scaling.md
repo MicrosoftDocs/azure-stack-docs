@@ -21,9 +21,9 @@ To keep up with app demands in Azure Kubernetes Service (AKS), you may need to a
 > [!IMPORTANT]
 > Vertical node scaling is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-## How vertical node scaling in AKS on Azure Stack HCI works
+## How vertical node scaling in AKS on Azure Stack HCI and Windows Server works
 
-In AKS on Azure Stack HCI target cluster node pools are managed internally as a **machineDeployment**. One property of a **machineDeployment** is the VM size (SKU) that was selected when the `New-AksHciNodePool` command was executed.
+In AKS on Azure Stack HCI and Windows Server target cluster node pools are managed internally as a **machineDeployment**. One property of a **machineDeployment** is the VM size (SKU) that was selected when the `New-AksHciNodePool` command was executed.
 
 To change the node pool to a different VM size (SKU), you can use the `Set-AksHciNodePool` command for changing the VM size for worker nodes and the `Set-AksHciCluster` command to change the VM size for control plane nodes.
 

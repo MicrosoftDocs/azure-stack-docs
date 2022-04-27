@@ -1,5 +1,5 @@
 ---
-title: Install-AksHciMonitoring for AKS on Azure Stack HCI
+title: Install-AksHciMonitoring for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Install-AksHciMonitoring PowerShell command deploys Prometheus-based monitoring solution.
 ms.topic: reference

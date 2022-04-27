@@ -1,5 +1,5 @@
 ---
-title: Deploy a Windows .NET application in AKS on Azure Stack HCI
+title: Deploy a Windows .NET application in AKS on Azure Stack HCI and Windows Server
 description: Learn how to deploy a Windows.NET application to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial
@@ -24,7 +24,7 @@ This tutorial assumes a basic understanding of Kubernetes concepts. For more inf
 
 Verify that you are ready with the following requirements:
 
-* An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node that is up and running. 
+* An [Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node that is up and running. 
 * A kubeconfig file to access the cluster.
 * The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) installed.
 

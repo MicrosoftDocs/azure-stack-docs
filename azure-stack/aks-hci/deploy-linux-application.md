@@ -1,5 +1,5 @@
 ---
-title: Deploy a Linux app in AKS on Azure Stack HCI
+title: Deploy a Linux app in AKS on Azure Stack HCI and Windows Server
 description: In this tutorial, you deploy a multi-container Linux app to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial
@@ -15,9 +15,9 @@ ms.reviewer: abha
 
 # Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: AKS on Azure Stack HCI and Windows Server, AKS runtime on Windows Server 2019 Datacenter
 
-In this tutorial, you'll learn how to deploy a multi-container app that includes a web front-end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI cluster. You then see how to test and scale your app. 
+In this tutorial, you'll learn how to deploy a multi-container app that includes a web front-end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster. You then see how to test and scale your app. 
 
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
@@ -25,7 +25,7 @@ This tutorial assumes a basic understanding of Kubernetes concepts. For more inf
 
 Verify you have the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI cluster with at least one Linux worker node that is up and running. 
+* An Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster with at least one Linux worker node that is up and running. 
 * A kubeconfig file to access the cluster.
 * Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.

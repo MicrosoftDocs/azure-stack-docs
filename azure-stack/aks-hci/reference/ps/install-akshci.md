@@ -1,5 +1,5 @@
 ---
-title: Install-AksHci for AKS on Azure Stack HCI
+title: Install-AksHci for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Install-AksHci PowerShell command installs the Azure Kubernetes Service on Azure Stack HCI agents/services and host.
 ms.topic: reference
