@@ -1,6 +1,6 @@
 ---
-title: Use multiple node pools in AKS on Azure Stack HCI
-description: Learn how to create and manage multiple node pools for a cluster in AKS on Azure Stack HCI
+title: Use multiple node pools in AKS on Azure Stack HCI and Windows Server
+description: Learn how to create and manage multiple node pools for a cluster in AKS on Azure Stack HCI and Windows Server
 services: 
 ms.topic: article
 ms.date: 04/13/2022
@@ -8,18 +8,18 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
-# Intent: As an IT Pro, I want to learn how to create and manage multiple node pools for a cluster in AKS on Azure Stack HCI.
+# Intent: As an IT Pro, I want to learn how to create and manage multiple node pools for a cluster in AKS on Azure Stack HCI and Windows Server.
 # Keyword: node pools control plane nodes
 ---
 
 # Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI
 
-In AKS on Azure Stack HCI, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. 
+In AKS on Azure Stack HCI and Windows Server, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. 
 
 > [!NOTE]
 > This feature enables higher control over how to create and manage multiple node pools. As a result, separate commands are required for create/update/delete operations. Previously, cluster operations through [New-AksHciCluster](./reference/ps/new-akshcicluster.md) or [Set-AksHciCluster](./reference/ps/set-akshcicluster.md) were the only option to create/scale a cluster with one Windows node pool and one Linux node pool. This feature exposes a separate operation set for node pools that require the use of the node pool commands [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md), [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md), [Get-AksHciNodePool](./reference/ps/get-akshcinodepool.md), and [Remove-AksHciNodePool](./reference/ps/remove-akshcinodepool.md) to execute operations on an individual node pool. 
 
-This article shows you how to create and manage multiple node pools in an AKS on Azure Stack HCI cluster.
+This article shows you how to create and manage multiple node pools in an AKS on Azure Stack HCI and Windows Server cluster.
 
 ## Before you begin
 
@@ -31,9 +31,9 @@ Get-Command -Module AksHci
 
 If you need to update, follow the instructions [here](update-akshci-host-powershell.md).
 
-## Create an AKS on Azure Stack HCI cluster
+## Create an AKS on Azure Stack HCI and Windows Server cluster
 
-To get started, create an AKS on Azure Stack HCI cluster with a single node pool. The following example uses the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command to create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with 1 node. **If you already have a cluster deployed with an older version of AKS on Azure Stack HCI and you wish to continue using your old deployment, you can skip this step. You can still use the new set of node pool commands to add more node pool to your existing cluster.**
+To get started, create an AKS on Azure Stack HCI and Windows Server cluster with a single node pool. The following example uses the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command to create a new Kubernetes cluster with one Linux node pool named *linuxnodepool* with 1 node. **If you already have a cluster deployed with an older version of AKS on Azure Stack HCI and Windows Server and you wish to continue using your old deployment, you can skip this step. You can still use the new set of node pool commands to add more node pool to your existing cluster.**
 
 ```powershell
 New-AksHciCluster -name mycluster -nodePoolName linuxnodepool -nodeCount 1 -osType linux

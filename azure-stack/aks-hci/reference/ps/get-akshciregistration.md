@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciRegistration for AKS on Azure Stack HCI
+title: Get-AksHciRegistration for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciRegistration PowerShell command gets the registration information for the Azure Kubernetes Service on Azure Stack HCI deployment.
 ms.topic: reference

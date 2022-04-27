@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciRegistration for AKS on Azure Stack HCI
+title: Set-AksHciRegistration for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Set-AksHciRegistration PowerShell command registers Azure Kubernetes Service on Azure Stack HCI with Azure.
 ms.topic: reference
@@ -37,7 +37,7 @@ Register Azure Kubernetes Service on Azure Stack HCI with Azure.
 
 ## Examples
 
-### Register AKS on Azure Stack HCI using a subscription ID and resource group name
+### Register AKS on Azure Stack HCI and Windows Server using a subscription ID and resource group name
 
 ```powershell
 Set-AksHciRegistration -subscriptionId 57ac26cf-a9f0-4908-b300-9a4e9a0fb205 -resourceGroupName myresourcegroup
@@ -48,7 +48,7 @@ Set-AksHciRegistration -subscriptionId 57ac26cf-a9f0-4908-b300-9a4e9a0fb205 -res
 Set-AksHciRegistration -subscriptionId myazuresubscription -resourceGroupName myresourcegroup -UseDeviceAuthentication
 ```
 
-### Register AKS on Azure Stack HCI using a service principal
+### Register AKS on Azure Stack HCI and Windows Server using a service principal
 
 If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal.
 
@@ -94,7 +94,7 @@ $secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runt
 Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```   
-From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of these items and store them safely.
+From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI and Windows Server. You should take a note of these items and store them safely.
 Now that you have the application ID and secret available, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new service principal.
 
 Store your service principal credentials (the application ID and secret) with [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), then set the registration.

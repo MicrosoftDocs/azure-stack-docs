@@ -79,7 +79,7 @@ To deploy your application, use the [kubectl apply][kubectl-apply] command. This
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-The following example output shows the resources successfully created in the AKS on Azure Stack HCI cluster:
+The following example output shows the resources successfully created in the AKS on Azure Stack HCI and Windows Server cluster:
 
 ```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -120,7 +120,7 @@ If the application didn't load, it might be due to an authorization problem with
 
 ## Next steps
 
-In this tutorial, you deployed a sample Azure vote application to a Kubernetes cluster in AKS on Azure Stack HCI. You learned how to:
+In this tutorial, you deployed a sample Azure vote application to a Kubernetes cluster in AKS on Azure Stack HCI and Windows Server. You learned how to:
 
 > [!div class="checklist"]
 > * Update a Kubernetes manifest files

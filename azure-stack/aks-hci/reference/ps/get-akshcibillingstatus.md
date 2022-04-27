@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciBillingStatus for AKS on Azure Stack HCI
+title: Get-AksHciBillingStatus for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciBillingStatus PowerShell command gets the billing status for the Azure Kubernetes Service on Azure Stack HCI deployment.
 ms.topic: reference

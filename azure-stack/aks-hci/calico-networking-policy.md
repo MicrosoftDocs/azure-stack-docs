@@ -14,17 +14,17 @@ author: mattbriggs
 
 ---
 
-# Secure traffic between pods using network policies in AKS on Azure Stack HCI
+# Secure traffic between pods using network policies in AKS on Azure Stack HCI and Windows Server
 
 Use this step-by-step guide to verify and try out basic pod-to-pod connectivity and to use Calico network policies in a cluster. In this guide, you'll learn how to create client and server pods on Linux and Windows nodes, verify connectivity between the pods, and then apply a basic network policy to isolate pod traffic.
 
 ## Prerequisites
 
- To deploy AKS on Azure Stack HCI, follow the steps to [install AKS on Azure Stack HCI](./kubernetes-walkthrough-powershell.md).
+ To deploy AKS on Azure Stack HCI and Windows Server, follow the steps to [install AKS on Azure Stack HCI and Windows Server](./kubernetes-walkthrough-powershell.md).
 
 To use this guide, you will need:
 
-- An AKS on Azure Stack HCI workload cluster.
+- An AKS on Azure Stack HCI and Windows Server workload cluster.
 - At least one Windows worker node deployed in the cluster.
 - At least one Linux worker node deployed in the cluster.
 - The Calico network plug-in enabled when creating the workload cluster. If this plug-in wasn't enabled, see [`New-AksHciCluster`](./reference/ps/new-akshcicluster.md) for instructions.

@@ -1,6 +1,6 @@
 ---
-title: Scale an Azure Kubernetes Service on Azure Stack HCI cluster
-description: Learn how to scale the number of nodes in an Azure Kubernetes Service on Azure Stack HCI cluster.
+title: Scale an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster
+description: Learn how to scale the number of nodes in an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster.
 ms.topic: article
 ms.date: 03/02/2021
 author: mattbriggs
@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 ---
 
-# Scale the node count in an Azure Kubernetes Service on Azure Stack HCI cluster
+# Scale the node count in an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster
 
 If the resource needs of your applications change, you can manually scale an AKS cluster to run a different number of control plane nodes and worker nodes. The control plane nodes and worker nodes must be scaled separately.
 
@@ -31,6 +31,6 @@ Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -nodeCount 3
 
 ## Next steps
 
-In this article, you learned how to manually scale an Azure Kubernetes Service on Azure Stack HCI cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
+In this article, you learned how to manually scale an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

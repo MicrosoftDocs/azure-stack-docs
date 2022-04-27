@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciConfig for AKS on Azure Stack HCI
+title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 09/02/2021
@@ -93,10 +93,10 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 
 Before running this example, you need to prestage a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. 
 
-The AKS on Azure Stack HCI deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+The AKS on Azure Stack HCI and Windows Server deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
 
 > [!Note] 
-> Once AKS on Azure Stack HCI is deployed, this information cannot be changed.
+> Once AKS on Azure Stack HCI and Windows Server is deployed, this information cannot be changed.
 
 ```powershell
 $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7

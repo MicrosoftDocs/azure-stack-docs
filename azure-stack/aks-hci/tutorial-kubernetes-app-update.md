@@ -24,7 +24,7 @@ In this tutorial, part six of seven, the sample Azure Vote app is updated. You l
 
 ## Before you begin
 
-In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI cluster. The application was then deployed to the cluster.
+In previous tutorials, an application was packaged into a container image. This image was uploaded to Azure Container Registry, and you created an AKS on Azure Stack HCI and Windows Server cluster. The application was then deployed to the cluster.
 
 An application repository was also cloned that includes the application source code, and a pre-created Docker Compose file used in this tutorial. Verify that you've created a clone of the repo, and have changed directories into the cloned directory. If you haven't completed these steps, and want to follow along, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
@@ -32,7 +32,7 @@ This tutorial requires that you're running the Azure CLI version 2.0.53 or later
 
 ## Update an application
 
-Let's make a change to the sample application, then update the version already deployed to your AKS on Azure Stack HCI cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
+Let's make a change to the sample application, then update the version already deployed to your AKS on Azure Stack HCI and Windows Server cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
 
 ```console
 notepad azure-vote/azure-vote/config_file.cfg

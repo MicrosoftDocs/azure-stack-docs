@@ -1,5 +1,5 @@
 ---
-title: Install-AksHciCsiNfs for AKS on Azure Stack HCI
+title: Install-AksHciCsiNfs for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Install-AksHciCsiNfs PowerShell command Installs CSI NFS Plugin to a cluster
 ms.topic: reference

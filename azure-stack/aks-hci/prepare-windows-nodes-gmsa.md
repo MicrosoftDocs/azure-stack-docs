@@ -1,5 +1,5 @@
 ---
-title: Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI
+title: Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI and Windows Server
 description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
 author: mattbriggs
 ms.topic: how-to
@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 ---
 
-# Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI
+# Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
@@ -46,7 +46,7 @@ To run a Windows container with a group managed service account, you need the fo
 - An Active Directory domain with at least one domain controller running Windows Server 2012 or later. There are no forest or domain functional level requirements to use gMSAs, but gMSA passwords can only be distributed by domain controllers running Windows Server 2012 or later. For more information, see [Active Directory requirements for gMSAs](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req).
 - Permission to create a gMSA account. To create a gMSA account, you'll need to be a Domain Administrator or use an account that has been given the permission to create msDS-GroupManagedServiceAccount objects.
 - Access to the internet to download the [CredentialSpec](https://aka.ms/credspec) PowerShell module. If you're working in a disconnected environment, you can [save the module](/powershell/module/powershellget/save-module?preserve-view=true&view=powershell-5.1) on a computer with internet access and copy it to your development machine or container host.
-- To ensure gMSA and AD authentication work, ensure that the Azure Stack HCI cluster nodes are configured to synchronize their time with either a domain controller or other time source. You should also make sure Hyper-V is configured to synchronize time to any virtual machines.
+- To ensure gMSA and AD authentication work, ensure that the Azure Stack HCI or Windows Server cluster nodes are configured to synchronize their time with either a domain controller or other time source. You should also make sure Hyper-V is configured to synchronize time to any virtual machines.
 
 ## Prepare the gMSA in the domain controller
 
@@ -71,7 +71,7 @@ To prepare the gMSA credential spec JSON file, follow the steps for [creating a 
 
 ## Configure gMSA for Windows pods and containers in the cluster
 
-The Kubernetes community already supports domain joined Windows worker nodes for [gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Although you don't need to domain join a Windows worker node in AKS on Azure Stack HCI, there are other required configuration steps. These steps include installing the webhook, the custom resource definition (CRD), and the credential spec, as well as enabling role-based access control (RBAC role). The following steps use PowerShell commands that are built to help simplify the configuration process. 
+The Kubernetes community already supports domain joined Windows worker nodes for [gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). Although you don't need to domain join a Windows worker node in AKS on Azure Stack HCI and Windows Server, there are other required configuration steps. These steps include installing the webhook, the custom resource definition (CRD), and the credential spec, as well as enabling role-based access control (RBAC role). The following steps use PowerShell commands that are built to help simplify the configuration process. 
 
 Before completing the steps below, make sure the **AksHci** PowerShell module is installed and `kubectl` can connect to your cluster.
 
@@ -225,4 +225,4 @@ Uninstall-AksHciGMSAWebhook -Name <cluster name>
 ## Next steps
 
 - [Use persistent volume on a Kubernetes cluster](persistent-volume.md).
-- [Monitor AKS on Azure Stack HCI clusters](monitor-logging.md)
+- [Monitor AKS on Azure Stack HCI and Windows Server clusters](monitor-logging.md)

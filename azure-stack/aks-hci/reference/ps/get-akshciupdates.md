@@ -1,7 +1,7 @@
 ---
-title: Get-AksHciUpdates for AKS on Azure Stack HCI
+title: Get-AksHciUpdates for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
-description: The Get-AksHciUpdates PowerShell command lists the available updates for AKS on Azure Stack HCI.
+description: The Get-AksHciUpdates PowerShell command lists the available updates for AKS on Azure Stack HCI and Windows Server.
 ms.topic: reference
 ms.date: 2/12/2021
 ms.author: mabrigg 

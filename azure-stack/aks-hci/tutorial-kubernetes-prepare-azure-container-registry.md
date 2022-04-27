@@ -146,7 +146,7 @@ You now have a container image that is stored in a private Azure Container Regis
 
 ## Next steps
 
-In this tutorial, you created an Azure Container Registry and pushed an image for use in an AKS on Azure Stack HCI cluster. You learned how to:
+In this tutorial, you created an Azure Container Registry and pushed an image for use in an AKS on Azure Stack HCI and Windows Server cluster. You learned how to:
 
 > [!div class="checklist"]
 > * Create an Azure Container Registry (ACR) instance

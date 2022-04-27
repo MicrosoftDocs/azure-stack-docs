@@ -1,6 +1,6 @@
 ---
 title: Use OpenFaaS with Azure Kubernetes Service (AKS) on Azure Stack HCI
-description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster to build serverless functions with containers.
+description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server cluster to build serverless functions with containers.
 author: mattbriggs
 ms.topic: article
 ms.date: 05/14/2021
@@ -9,17 +9,17 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 ---
 
-# Using OpenFaaS on AKS on Azure Stack HCI
+# Using OpenFaaS on AKS on Azure Stack HCI and Windows Server
 
-[OpenFaaS][open-faas] is a framework for building serverless functions through the use of containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on Kubernetes cluster running on AKS on Azure Stack HCI.
+[OpenFaaS][open-faas] is a framework for building serverless functions through the use of containers. As an open source project, it has gained large-scale adoption within the community. This document details installing and using OpenFaas on Kubernetes cluster running on AKS on Azure Stack HCI and Windows Server.
 
 ## Prerequisites
 
 In order to complete the steps within this article, you need the following.
 
 * Basic understanding of Kubernetes.
-* An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* An [AKS on Azure Stack HCI and Windows Server cluster](./setup.md) with at least one Linux worker node that's up and running.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI and Windows Server cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands, if you prefer this to PowerShell.
 * Git command-line tools installed on your system

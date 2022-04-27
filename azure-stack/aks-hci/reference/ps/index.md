@@ -1,6 +1,6 @@
 ---
-title: AksHci PowerShell module for AKS on Azure Stack HCI
-description: Learn how to use the AksHci module commands to manage AKS on Azure Stack HCI 
+title: AksHci PowerShell module for AKS on Azure Stack HCI and Windows Server
+description: Learn how to use the AksHci module commands to manage AKS on Azure Stack HCI and Windows Server 
 author: mattbriggs
 ms.topic: reference
 ms.date: 04/15/2022
@@ -20,11 +20,11 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | ------- | ---------- |
 | [Add-AksHciGmsaCredentialSpec](./add-akshcigmsacredentialspec.md) | Adds a credentials spec for gMSA deployments on a cluster. |
 | [Add-AksHciNode](./add-akshcinode.md) | Add a new physical node to a deployment. |
-| [Disable-AksHciArcConnection](./disable-akshciarcconnection.md) | Disables the Arc connection on an AKS on Azure Stack HCI cluster.|
-| [Disable-AksHciPreview](disable-akshcipreview.md) | Reverts AKS on Azure Stack HCI from a preview channel back to the stable channel. |
+| [Disable-AksHciArcConnection](./disable-akshciarcconnection.md) | Disables the Arc connection on an AKS on Azure Stack HCI and Windows Server cluster.|
+| [Disable-AksHciPreview](disable-akshcipreview.md) | Reverts AKS on Azure Stack HCI and Windows Server from a preview channel back to the stable channel. |
 | [Get-AksHciAutoScalerProfile](./get-akshciautoscalerprofile.md) | Retrieve a list of available autoscaler configuration profiles in the system or a specific autoscaler configuration profile and its settings. |
-| [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI cluster. |
-| [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS on Azure Stack HCI to a preview channel. |
+| [Enable-AksHciArcConnection](./enable-akshciarcconnection.md) |  Enables the Arc connection for an AKS on Azure Stack HCI and Windows Server cluster. |
+| [Enable-AksHciPreview](enable-akshcipreview.md) | Updates AKS on Azure Stack HCI and Windows Server to a preview channel. |
 | [Get-AksHciBillingStatus](./get-akshcibillingstatus.md) | Get billing status for the Azure Kubernetes Service on Azure Stack HCI deployment. |
 | [Get-AksHciCluster](./get-akshcicluster.md) | List deployed clusters including the Azure Kubernetes Service host. |
 | [Get-AksHciClusterNetwork](./get-akshciclusternetwork.md) | Retrieve virtual network settings by name, cluster name, or a list of all virtual network settings in the system. |
@@ -64,7 +64,7 @@ Commands to interact with Azure Kubernetes Service on Azure Stack HCI.
 | [Remove-AksHciGmsaCredentialSpec](./remove-akshcigmsacredentialspec.md) | Deletes a credentials spec for gMSA deployments on a cluster. |
 | [Remove-AksHciNode](./remove-akshcinode.md) | Remove a physical node from your deployment. |
 | [Remove-AksHciNodePool](./remove-akshcinodepool.md) | Delete a node pool from a cluster. |
-| [Repair-AksHciCerts](./repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host. |
+| [Repair-AksHciCerts](./repair-akshcicerts.md) | Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI and Windows Server host. |
 | [Repair-AksHciClusterCerts](./repair-akshciclustercerts.md) | Troubleshoots and fixes errors related to expired certificated for Kubernetes built-in components. |
 | [Restart-AksHci](./restart-akshci.md) | Restart Azure Kubernetes Service on Azure Stack HCI and remove all deployed Kubernetes clusters. |
 | [Set-AksHciAutoScalerProfile](./set-akshciautoscalerprofile.md) | Configure individual settings of an autoscaler configuration profile.  |
