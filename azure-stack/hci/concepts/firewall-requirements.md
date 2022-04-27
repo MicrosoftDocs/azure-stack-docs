@@ -11,11 +11,21 @@ ms.date: 01/27/2022
 
 >Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations, and explains how service tags group IP addresses in Microsoft Azure that the operating system needs to access. The topic also provides steps to update Microsoft Defender Firewall, and information on how to set up a proxy server.
+This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations. The topic also provides information on how to set up a proxy server.
 
 ## Connectivity requirements and recommendations
 
-Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Connectivity recommendations](#connectivity-recommendations) allowlist section of this topic.
+Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the Connectivity recommendations allowlist section of this topic.
+
+Azure Stack HCI needs to periodically connect to Azure. Access is limited to only:
+
+- Well-known Azure IPs
+- Outbound direction
+- Port 443 (HTTPS)
+
+This topic describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included on your allowlist.
+
+As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
 ### Azure connectivity requirements
 
