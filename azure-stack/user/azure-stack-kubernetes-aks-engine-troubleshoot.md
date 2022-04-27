@@ -42,7 +42,7 @@ At a high level: the command works by establishing an SSH session into each node
 
 ### SSH authentication
 
-You will need a  valid SSH private key to establish an SSH session to the cluster Linux nodes. Windows credentials are stored in the API model and will be loaded from there. Set `windowsprofile.sshEnabled` to true to enable SSH in your Windows nodes.
+You'll need a  valid SSH private key to establish an SSH session to the cluster Linux nodes. Windows credentials are stored in the API model and will be loaded from there. Set `windowsprofile.sshEnabled` to true to enable SSH in your Windows nodes.
 
 ### Upload logs to a storage account container
 
@@ -53,12 +53,35 @@ Once the cluster logs were successfully retrieved, AKS Engine can save them on a
 
 ### Nodes unable to join the cluster
 
-By default, `aks-engine get-logs` collects logs from nodes that successfully joined the cluster. To collect logs from VMs that were not able to join the cluster, set flag `--vm-names`:
+By default, `aks-engine get-logs` collects logs from nodes that successfully joined the cluster. To collect logs from VMs that weren't able to join the cluster, set flag `--vm-names`:
 
 ```bash
 --vm-name k8s-pool-01,k8s-pool-02
 ```
 
+## Rotate AKS engine certificates
+
+A Kubernetes cluster relies on multiple PKIs to secure the communication between its components (`apiserver`, `kubelet`, and `etcd`). An AKS engine cluster uses two certificate authorities (CA), one for the front-proxy PKI and another one for the remaining PKIs. On control plane nodes, `aks-engine `rotate-certs rotates the non-front-proxy PKIs first, reboots the virtual machines, and finally rotates the front-proxy PKI. On agent nodes, `kubelet` and `kube-proxy` are restarted once the node certificates are replaced.
+
+The AKS engine creates a separate PKI for  the `front-proxy `as part of node bootstrapping process and delivers them to all nodes through `etcd`. To effectively reuse this functionality, `rotate-certs` has to replace the certificates stored in `etcd`. The `front-proxy` certificates expire after 30 years.
+### To rotate your AKS engine certificates
+
+From control plane nodes, run these commands to regenerate Proxy certs:
+ - `/etc/kubernetes/generate-proxy-certs.sh`
+ - `/etc/kubernetes/rotate-certs/rotate-certs.sh`
+ - `source /etc/environmentlocal NODE_INDEXNODE_INDEX=$(hostname | tail -c 2)if [[ $NODE_INDEX == 0 ]]; thenexport OVERRIDE_PROXY_CERTS="true"fi/etc/kubernetes/generate-proxy-certs.sh`
+ - `cp_proxy() {source /etc/environmentlocal NODE_INDEXNODE_INDEX=$(hostname | tail -c 2)if [[ $NODE_INDEX == 0 ]]; thenexport OVERRIDE_PROXY_CERTS="true"fi/etc/kubernetes/generate-proxy-certs.sh}`
+
+Then, delete the secret for metric server:
+ - `kubectl get secret -n kube-system | grep metrics-server`
+ - `kubectl delete secret -n kube-system metrics-server-token`
+ - `kubectl delete pod -n kube-system  metrics-server
+`
+After that, restart Kube Controller Manager server from each of the control plane nodes:
+ - `docker ps | grep controller`
+ - `docker stop ContainerID`
+ 
+For more information, see [Rotating Kubernetes Certificates](https://github.com/Azure/aks-engine/blob/master/docs/topics/rotate-certs.md)
 ### Usage for aks-engine get-logs
 
 Assuming that you have a cluster deployed and the API model originally used to deploy that cluster is stored at `_output/<dnsPrefix>/apimodel.json`, then you can collect logs running a command like:
@@ -78,7 +101,7 @@ aks-engine get-logs \
 | --location                   | Yes          | Azure location of the cluster's resource group.                                                                                                                |
 | --api-model                  | Yes          | Path to the generated API model for the cluster.                                                                                                               |
 | --ssh-host                   | Yes          | FQDN, or IP address, of an SSH listener that can reach all nodes in the cluster.                                                                               |
-| --linux-ssh-private-key | Yes           | Path to a SSH private key that can be use to create a remote session on the cluster Linux nodes. |
+| --linux-ssh-private-key | Yes           | Path to an SSH private key that can be used to create a remote session on the cluster Linux nodes. |
 | --output-directory           | No           | Output directory, derived from `--api-model` if missing.                                                                                                         |
 | --control-plane-only         | No           | Only collect logs from control plane nodes.                                                                                                                           |
 | --vm-names                   | No           | Only collect logs from the specified VMs (comma-separated names).                                                                                              |
@@ -87,11 +110,11 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error, it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
-If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected.
+If after collecting and examining logs you still can't resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected.
 
 Your operator may combine the logs you produced along with other system logs that may be needed by Microsoft support. The operator may make them available to the Microsoft.
 
@@ -107,7 +130,7 @@ You can provide Kubernetes logs in several ways:
     -  Use the **Get-AzureStackLog** PowerShell cmdlet using the Privileged End Point (PEP) For instruction, see [Send logs now with PowerShell](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-powershell).
 ## Open GitHub issues
 
-If you are unable to resolve your deployment error, you can open a GitHub Issue.
+If you're unable to resolve your deployment error, you can open a GitHub Issue.
 
 1.  Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
 
