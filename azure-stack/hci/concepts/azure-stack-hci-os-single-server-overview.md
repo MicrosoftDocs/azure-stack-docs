@@ -19,6 +19,9 @@ An Azure Stack HCI 21H2 single server is a physically validated server that prom
 Along with the mentioned benefits, there are some initial limitations to recognize.
 - Single server is only supported on single storage type configurations.
 - Failover to another server isn't supplied.
+- Stretch cluster is not supported.
+- SBL cache is not supported.
+- VMs will have downtime when restarting the server.
 ## **Requirements**
 
 1. A single server cluster from [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/)
@@ -26,8 +29,8 @@ Along with the mentioned benefits, there are some initial limitations to recogni
 
 For hardware, software, and network requirements reference [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
 
-> [!IMPORTANT]
->  Stretch cluster and SBL cache are not supported for single-server. VMs will have downtime when restarting the server.
+> [!Note]
+> Features that require multiple servers will not be supported for single-server.
 ## **Comparing single-server and multi-server clusters**
 |Attributes | Single-Server | Multi-Server |
 |----------|-----------|-----------|
@@ -44,8 +47,6 @@ For hardware, software, and network requirements reference [What you need for Az
 |Software Defined Networking (SDN), Secured Core | Yes | Yes |
 |AKS-HCI, Azure Virtual Desktop, Security features | Yes | Yes |
 
-> [!Note]
-> Features that require multiple servers will not be supported for single-server.
 ## **Known Issues**
 |Issue | Notes|
 |-----------|---------------|
