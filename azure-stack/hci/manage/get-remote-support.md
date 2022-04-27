@@ -19,7 +19,7 @@ duration of access. Microsoft support can access your device only after a suppor
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the
 access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
-:::image type="content" source="media/remote-support/remote-support-workflow.png" alt-text="Diagram shows how the remote support works" border="true":::
+:::image type="content" source="media/remote-support/remote-support-workflow.png" alt-text="Diagram shows how the remote support works" border="false":::
 
 ## Why use remote support?
 
@@ -489,7 +489,7 @@ Update-AzureStackHCIRegistrationCertificate
 
 ## Remote support terms and conditions
 
-The following are the data handling terms and conditions for remote access. Carefully read them before granting access:
+The following are the data handling terms and conditions for remote access. Carefully read them before granting access.
 
 **By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described
 in the Microsoft support case.**
