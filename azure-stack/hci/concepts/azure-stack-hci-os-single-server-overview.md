@@ -14,10 +14,11 @@ ms.date: 04/04/2022
 
 This article provides information about Azure Stack HCI single-server.
 
-An Azure Stack HCI 21H2 single-server is a physically validated server, only supported on single storage type configurations, without failover to another server. Single-server provides flexibility, at the workload level, if high resiliency isn't a requirement, minimizes hardware on-premises, and lowers Azure costs in locations that can tolerate lower resiliency.
+An Azure Stack HCI 21H2 single server is a physically validated server that promotes flexibility if high resiliency isn't a requirement; specifically at the workload level. This server scale minimizes hardware and promotes lower Azure costs in locations that can tolerate lower resiliency. Single server may also be a concept for users who desire a minimal initial setup, with plans to scale out in the future.
 
-Additionally, for users with plans to scale out in the future, single server may be a consideration.
-
+Along with the mentioned benefits, there are some initial limitations to recognize.
+- Single server is only supported on single storage type configurations.
+- Failover to another server isn't supplied.
 ## **Requirements**
 
 1. A single server cluster from [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/)
