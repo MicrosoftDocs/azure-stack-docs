@@ -4,10 +4,10 @@ description: Learn how to rotate Kubernetes certificates on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 3/1/2021
+ms.date: 04/27/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 3/1/2021
+ms.lastreviewed: 04/27/2022
 
 # Intent: As an Azure Stack Hub user, I would like to rotate Kubernetes certificates on a Kubernetes cluster so that I can keep my cluster secure.
 # Keywords: certificates AKS engine Kubernetes
@@ -94,6 +94,26 @@ For example:
   --azure-env "AzureStackCloud" # optional if targeting AzureCloud
 ```
 
+## Rotate `front-proxy` certificates
+
+The AKS engine creates a separate PKI for  the `front-proxy` as part of node bootstrapping process and delivers them to all nodes through `etcd`. To effectively reuse this functionality, `rotate-certs` has to replace the certificates stored in `etcd`. The `front-proxy` certificates expire after 30 years.
+### To rotate your AKS engine certificates
+
+From control plane nodes, run these commands to regenerate Proxy certs:
+ - `/etc/kubernetes/generate-proxy-certs.sh`
+ - `/etc/kubernetes/rotate-certs/rotate-certs.sh`
+ - `source /etc/environmentlocal NODE_INDEXNODE_INDEX=$(hostname | tail -c 2)if [[ $NODE_INDEX == 0 ]]; thenexport OVERRIDE_PROXY_CERTS="true"fi/etc/kubernetes/generate-proxy-certs.sh`
+ - `cp_proxy() {source /etc/environmentlocal NODE_INDEXNODE_INDEX=$(hostname | tail -c 2)if [[ $NODE_INDEX == 0 ]]; thenexport OVERRIDE_PROXY_CERTS="true"fi/etc/kubernetes/generate-proxy-certs.sh}`
+
+Then, delete the secret for metric server:
+ - `kubectl get secret -n kube-system | grep metrics-server`
+ - `kubectl delete secret -n kube-system metrics-server-token`
+ - `kubectl delete pod -n kube-system  metrics-server
+`
+After that, restart Kube Controller Manager server from each of the control plane nodes:
+ - `docker ps | grep controller`
+ - `docker stop ContainerID`
+ 
 ## Troubleshooting
 
 If the certificate rotation process halts before completion due to a failure or transient issue, for example, network connectivity, it is safe to rerun `aks-engine rotate-certs` using the `--force` flag.

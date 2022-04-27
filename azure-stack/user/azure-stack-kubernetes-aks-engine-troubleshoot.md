@@ -58,30 +58,6 @@ By default, `aks-engine get-logs` collects logs from nodes that successfully joi
 ```bash
 --vm-name k8s-pool-01,k8s-pool-02
 ```
-
-## Rotate AKS engine certificates
-
-A Kubernetes cluster relies on multiple PKIs to secure the communication between its components (`apiserver`, `kubelet`, and `etcd`). An AKS engine cluster uses two certificate authorities (CA), one for the front-proxy PKI and another one for the remaining PKIs. On control plane nodes, `aks-engine `rotate-certs rotates the non-front-proxy PKIs first, reboots the virtual machines, and finally rotates the front-proxy PKI. On agent nodes, `kubelet` and `kube-proxy` are restarted once the node certificates are replaced.
-
-The AKS engine creates a separate PKI for  the `front-proxy `as part of node bootstrapping process and delivers them to all nodes through `etcd`. To effectively reuse this functionality, `rotate-certs` has to replace the certificates stored in `etcd`. The `front-proxy` certificates expire after 30 years.
-### To rotate your AKS engine certificates
-
-From control plane nodes, run these commands to regenerate Proxy certs:
- - `/etc/kubernetes/generate-proxy-certs.sh`
- - `/etc/kubernetes/rotate-certs/rotate-certs.sh`
- - `source /etc/environmentlocal NODE_INDEXNODE_INDEX=$(hostname | tail -c 2)if [[ $NODE_INDEX == 0 ]]; thenexport OVERRIDE_PROXY_CERTS="true"fi/etc/kubernetes/generate-proxy-certs.sh`
- - `cp_proxy() {source /etc/environmentlocal NODE_INDEXNODE_INDEX=$(hostname | tail -c 2)if [[ $NODE_INDEX == 0 ]]; thenexport OVERRIDE_PROXY_CERTS="true"fi/etc/kubernetes/generate-proxy-certs.sh}`
-
-Then, delete the secret for metric server:
- - `kubectl get secret -n kube-system | grep metrics-server`
- - `kubectl delete secret -n kube-system metrics-server-token`
- - `kubectl delete pod -n kube-system  metrics-server
-`
-After that, restart Kube Controller Manager server from each of the control plane nodes:
- - `docker ps | grep controller`
- - `docker stop ContainerID`
- 
-For more information, see [Rotating Kubernetes Certificates](https://github.com/Azure/aks-engine/blob/master/docs/topics/rotate-certs.md)
 ### Usage for aks-engine get-logs
 
 Assuming that you have a cluster deployed and the API model originally used to deploy that cluster is stored at `_output/<dnsPrefix>/apimodel.json`, then you can collect logs running a command like:
