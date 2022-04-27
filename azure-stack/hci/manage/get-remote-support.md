@@ -64,8 +64,7 @@ If you are using a proxy with Azure Stack HCI, include the following endpoints i
 
 ### Install JEA configurations (before Azure registration)
 
-A local domain administrator must install the following JEA (just enough administration) configurations to grant remote support access. If the cluster is not registered with Azure, Microsoft support will provide you with the shared access signature (SAS) token required
-to enable remote support.
+A local domain administrator must install the following JEA configurations to grant remote support access. If the cluster is not registered with Azure, Microsoft support will provide you with the shared access signature (SAS) token required to enable remote support.
 
 | Name | Description |
 |--|--|
@@ -84,28 +83,22 @@ Install the Remote Support extension from the Windows Admin Center Extensions fe
 
 ### Grant remote support access
 
-Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands.
+Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands. Carefully read the [remote support terms and conditions](#remote-support-terms-and-conditions) before granting access.
 
 :::image type="content" source="media/remote-support/remote-support-grant-access.png" alt-text="Screenshot of grant remote support access options" border="false":::
 
-The following are the data handling terms and conditions for remote access. Carefully read these before granting access:
+## Access levels and supported commands
 
-**By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described
-in the Microsoft support case.**
+You can grant Microsoft support one of the following access levels for remote support:
 
-**During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostics log collection by a Microsoft Support Engineer to address a support case. You also acknowledge and consent to the upload and
-retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI.**
+- **Diagnostics:** To view diagnostic info and logs
+- **Diagnostics and repair:** To view diagnostic info and logs in addition to perform software repairs
 
-**The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our
-standard privacy practices.**
-
-**Any data previously collected with your consent will not be affected by the revocation of your permission.**
-
-## Allowed Microsoft support operations
-
-This section lists the allowed diagnostic or repair commands that Microsoft support can execute during a remote support session.
+The following sections list the allowed diagnostic or repair commands that Microsoft support can execute during a remote support session.
 
 ### Access level: Diagnostics
+
+The **Diagnostics** access level includes the following commands that Microsoft support can execute during a remote support session:
 
 ```powershell
 Get-AzureStackHCI 
@@ -479,8 +472,7 @@ Get-StorageJob
 
 ### Access level: Diagnostics and Repair
 
-Includes all the diagnostics commands listed in the [Access level: Diagnostics](#access-level-diagnostics) section in addition to the following repair
-commands:
+The **Diagnostics and Repair** access level includes the following repair commands in addition to the commands listed in the [Access level: Diagnostics](#access-level-diagnostics) section:
 
 ```powershell
 Add-AzStackHCIVMAttestation 
@@ -494,6 +486,21 @@ Set-AzureStackHCIRegistrationCertificate
 Sync-AzureStackHCI 
 Update-AzureStackHCIRegistrationCertificate 
 ```
+
+## Remote support terms and conditions
+
+The following are the data handling terms and conditions for remote access. Carefully read them before granting access:
+
+**By approving this request, the Microsoft support organization or the Azure engineering team supporting this feature ("Microsoft Support Engineer") will be given direct access to your device for troubleshooting purposes and/or resolving the technical issue described
+in the Microsoft support case.**
+
+**During a remote support session, a Microsoft Support Engineer may need to collect logs. By enabling remote support, you have agreed to a diagnostics log collection by a Microsoft Support Engineer to address a support case. You also acknowledge and consent to the upload and
+retention of those logs in an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack HCI.**
+
+**The data will be used only to troubleshoot failures that are subject to a support ticket, and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data may be retained for up to ninety (90) days and will be handled following our
+standard privacy practices.**
+
+**Any data previously collected with your consent will not be affected by the revocation of your permission.**
 
 ## Next steps
 

@@ -19,7 +19,7 @@ For more information, see:
 - [Compare support plans](https://azure.microsoft.com/support/plans/)
 - [Azure Support Plans FAQs](https://azure.microsoft.com/support/faq/)
 
-You can also get remote support by allowing Microsoft support to access your device remotely and perform limited troubleshooting and repair. For information about how to get remote support, see [Get remote support](get-remote-support.md).
+Get remote support by allowing Microsoft support to access your device remotely and perform limited troubleshooting and repair. For information about how to get remote support, see [Get remote support](get-remote-support.md).
 
 ## Azure support resources for Azure Stack HCI
 For information about other Azure Stack HCI support resources available through Azure, see:
