@@ -12,7 +12,7 @@ ms.date: 04/04/2022
 # **Azure Stack HCI OS - Single-Server**
 > Applies to: Azure Stack HCI, version 21H2
 
-The implementation of a single-server configuration aims to provide flexibility, hardware resiliency, and cost savings in scenarios where lower  resiliency can be tolerated. To review single-server supported systems or to size a single-server, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/).
+The implementation of an Azure Stack HCI 21H2 single-server configuration aims to provide flexibility, hardware resiliency, and cost savings in scenarios where lower  resiliency can be tolerated. To review single-server supported systems or to size a single-server, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/).
 
 The following sections will provide information for installing Azure Stack HCI OS on a single server.
 
