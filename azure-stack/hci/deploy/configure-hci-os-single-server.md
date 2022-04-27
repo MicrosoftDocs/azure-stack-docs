@@ -34,7 +34,6 @@ Here are the steps to deploy Azure Stack HCI OS on a single server.
 2. Configure the 21H2 HCI server with the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
 3. Using PowerShell, [Create a Cluster](../deploy/create-cluster-powershell.md).
 4. Optional, [add server to Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
-
 5. [Register cluster with Azure](../deploy/register-with-azure.md), using PowerShell or WAC.
 6. [Create Volumes]() with PowerShell.
 
