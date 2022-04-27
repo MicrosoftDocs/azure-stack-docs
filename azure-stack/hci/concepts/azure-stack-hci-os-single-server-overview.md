@@ -44,7 +44,7 @@ For hardware, software, and network requirements reference [What you need for Az
 |AKS-HCI, Azure Virtual Desktop, Security features | Yes | Yes |
 
 > [!Note]
-> Features, such as live migration of VMs (within the cluster) and affinity rules, that require multiple servers will not be supported for single-server.
+> Features that require multiple servers will not be supported for single-server.
 ## **Known Issues**
 |Issue | Notes|
 |-----------|---------------|
