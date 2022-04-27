@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2022
 
 - *Applicable*: This issue applies to all releases.
 - *Cause*: When your certificate expires, your cluster will fail.
-- *Remediation*: You'll need to renew your certificate. You can find the steps at [Rotate Kubernetes certificates on Azure Stack Hub](kubernetes-aks-engine-rotate-certs.md)
+- *Remediation*: You'll need to renew your certificate. You can find the steps at [Rotate Kubernetes certificates on Azure Stack Hub](../user/kubernetes-aks-engine-rotate-certs.md)
 - *Occurrence*: Common
 
 This is by-design and will affect 
