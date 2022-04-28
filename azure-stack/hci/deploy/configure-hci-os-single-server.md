@@ -34,7 +34,7 @@ Here are the steps to configure Azure Stack HCI OS on a single server.
 > Cluster witness is not required for a single server deployment.
 
 1. After successfully deploying the Azure Stack HCI OS, configure the 21H2 HCI server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-1. Use PowerShell to [Create a Cluster](../deploy/create-cluster-powershell.md), *recommended*.
+1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), *recommended*.
 1. Use PowerShell to [add a server](../manage/cluster-powershell#add-or-remove-a-server) to the cluster.
     1. Optionally, you may choose to [add a server using WAC](/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
 1. Use PowerShell to [Register a cluster](../deploy/register-with-azure#register-a-cluster-using-powershell)
