@@ -138,7 +138,7 @@ For information about firewall requirements of Qualys, see [Qualys extension fir
 
 ### Microsoft Defender
 
-For information about firewall requirements of Microsoft Defender, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
+For information about firewall requirements of Microsoft Defender, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 
 ### Azure portal
 
@@ -146,7 +146,7 @@ For information about firewall requirements of the Azure portal, see [Allow the 
 
 ### Azure Arc Resource Bridge
 
-For information about the firewall requirements of Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](https://docs.microsoft.com/en-us/azure/azure-arc/resource-bridge/overview)
+For information about the firewall requirements of Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](/azure/azure-arc/resource-bridge/overview)
 
 ## Required firewall URLs for cluster creation and registration
 
