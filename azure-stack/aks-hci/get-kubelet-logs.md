@@ -3,10 +3,12 @@ title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI
 description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 04/24/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
+# Intent: As an IT Pro, I need to learn how to obtain Kubelet logs in order to troubleshoot problems with my AKS on Azure Stack HCI cluster.  
+# Keyword: kubelet logs cluster nodes troubleshooting
 
 ---
 
@@ -20,7 +22,7 @@ This article assumes that you have an existing AKS on Azure Stack HCI and Window
 
 ## Create an SSH connection
 
-First, you need to create an SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./ssh-connection.md) for Windows and Linux worker nodes.
+First, you need to create a SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./ssh-connection.md) for Windows and Linux worker nodes.
 
 ## Get kubelet logs
 
