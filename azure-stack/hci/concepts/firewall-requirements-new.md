@@ -148,7 +148,7 @@ Firewall: [Azure Arc resource bridge (preview) overview - Azure Arc \|
 Microsoft
 Docs](https://docs.microsoft.com/en-us/azure/azure-arc/resource-bridge/overview)
 
-Table View:
+### Required URLs
 
 Required URLs for HCI cluster creation and registration:
 
@@ -156,7 +156,7 @@ Required URLs for HCI cluster creation and registration:
 
 The following URLs need to be added to your allowlist.
 
-[!INCLUDE [URL allow table](includes/data-allow-table.md)]
+[!INCLUDE [Required URLs table](includes/required-urls-table.md)]
 
 ### [Json](#tab/allow-json)
 
@@ -223,145 +223,197 @@ You can cut and paste the allowlist for Firewall URL exceptions.
 ----
 
 
-Recommended URLs:
+### Recommended URLs
 
-JSON: [Recommended URLs
-JSON](https://microsoft-my.sharepoint-df.com/:w:/p/timathur/EfLB-ANAjbRPoTgWW3oWeKoBnMg7pwN3bFrV1WuTAulrmw)
+Recommended URLs for HCI cluster creation and registration:
 
-+-------------------------------------+--------------+-----------------+
-| URL                                 | Port         | Notes           |
-+=====================================+==============+=================+
-| https://login.microsoftonline.com   | 443          | For Active      |
-|                                     |              | Directory       |
-| (Azure Public)                      |              | Authority and   |
-|                                     |              | used for        |
-| https://login.chinacloudapi.cn/     |              | authentication, |
-|                                     |              | token fetch,    |
-| (Azure China)                       |              | and validation. |
-|                                     |              | Service Tag:    |
-| https://login.microsoftonline.us    |              | AzureA          |
-|                                     |              | ctiveDirectory. |
-| (Azure Gov)                         |              |                 |
-+-------------------------------------+--------------+-----------------+
-| https://graph.windows.net/          | 443          | For Graph, and  |
-|                                     |              | used for        |
-| (Azure Public, Azure Gov)           |              | authentication, |
-|                                     |              | token fetch,    |
-| https://graph.chinacloudapi.cn/     |              | and validation. |
-|                                     |              | Service Tag:    |
-| (Azure China)                       |              | AzureA          |
-|                                     |              | ctiveDirectory. |
-+-------------------------------------+--------------+-----------------+
-| https://management.azure.com/       | 443          | For Resource    |
-|                                     |              | Manager and     |
-| (Azure Public)                      |              | used during     |
-|                                     |              | initial         |
-| h                                   |              | bootstrapping   |
-| ttps://management.chinacloudapi.cn/ |              | of the cluster  |
-|                                     |              | to Azure for    |
-| (Azure China)                       |              | registration    |
-|                                     |              | purposes and to |
-| ht                                  |              | unregister the  |
-| tps://management.usgovcloudapi.net/ |              | cluster.        |
-|                                     |              | Service Tag:    |
-| (Azure Gov)                         |              | AzureR          |
-|                                     |              | esourceManager. |
-+-------------------------------------+--------------+-----------------+
-| https://azurestackhci.azurefd.net   | 443          | For Dataplane   |
-|                                     |              | which pushes up |
-| (Azure Public)                      |              | diagnostics     |
-|                                     |              | data, is used   |
-| https://dp.stackhci.azure.cn        |              | in the Portal   |
-|                                     |              | pipeline, and   |
-| (Azure China)                       |              | pushes billing  |
-|                                     |              | data.           |
-| https://dp.azurestackchi.azure.us   |              |                 |
-|                                     |              |                 |
-| (Azure Gov)                         |              |                 |
-+-------------------------------------+--------------+-----------------+
-| ht                                  | 443          | For Microsoft   |
-| tp://\*.windowsupdate.microsoft.com |              | Update, which   |
-|                                     |              | allows the OS   |
-| htt                                 |              | to receive      |
-| ps://\*.windowsupdate.microsoft.com |              | updates.        |
-|                                     |              |                 |
-| http://\*.update.microsoft.com      |              |                 |
-|                                     |              |                 |
-| https://\*.update.microsoft.com     |              |                 |
-|                                     |              |                 |
-| http://\*.windowsupdate.com         |              |                 |
-|                                     |              |                 |
-| http://download.windowsupdate.com   |              |                 |
-|                                     |              |                 |
-| https://download.microsoft.com      |              |                 |
-|                                     |              |                 |
-| h                                   |              |                 |
-| ttp://\*.download.windowsupdate.com |              |                 |
-|                                     |              |                 |
-| http://wustat.windows.com           |              |                 |
-|                                     |              |                 |
-| http://ntservicepack.microsoft.com  |              |                 |
-|                                     |              |                 |
-| http://go.microsoft.com             |              |                 |
-|                                     |              |                 |
-| http://dl.delivery.mp.microsoft.com |              |                 |
-|                                     |              |                 |
-| h                                   |              |                 |
-| ttps://dl.delivery.mp.microsoft.com |              |                 |
-+-------------------------------------+--------------+-----------------+
-| \*.blob.core.windows.net OR         | 443          | For Cluster     |
-|                                     |              | Cloud Witness,  |
-| \[my                                |              | in order to use |
-| blobstorage\].blob.core.windows.net |              | a cloud witness |
-|                                     |              | as the cluster  |
-|                                     |              | witness.        |
-+-------------------------------------+--------------+-----------------+
-| \*.servicebus.windows.net           | 443          | For Remote      |
-|                                     |              | Support, in     |
-| \*.core.windows.net                 |              | order to allow  |
-|                                     |              | remote access   |
-| login.microsoftonline.com           |              | to Microsoft    |
-|                                     |              | support for     |
-| https://edgesupprdwestuu            |              | t               |
-| frontend.westus2.cloudapp.azure.com |              | roubleshooting. |
-|                                     |              |                 |
-| https://edgesupprdwesteufro         |              |                 |
-| ntend.westeurope.cloudapp.azure.com |              |                 |
-|                                     |              |                 |
-| https://edgesupprdeastu             |              |                 |
-| sfrontend.eastus.cloudapp.azure.com |              |                 |
-|                                     |              |                 |
-| https://edgesupprdwestcufronte      |              |                 |
-| nd.westcentralus.cloudapp.azure.com |              |                 |
-|                                     |              |                 |
-| https://edgesupprdasiasefronte      |              |                 |
-| nd.southeastasia.cloudapp.azure.com |              |                 |
-|                                     |              |                 |
-| ht                                  |              |                 |
-| tps://edgesupprd.trafficmanager.net |              |                 |
-+-------------------------------------+--------------+-----------------+
-| \*.powershellgallery.com OR install | 443          | To obtain the   |
-| module at                           |              | Az.StackHCI     |
-| [https://www.powershellgallery.co   |              | PowerShell      |
-| m/packages/Az.StackHCI](https://nam |              | module, which   |
-| 06.safelinks.protection.outlook.com |              | is required for |
-| /?url=https%3A%2F%2Fwww.powershellg |              | cluster         |
-| allery.com%2Fpackages%2FAz.StackHCI |              | registration.   |
-| &data=05%7C01%7CTiara.Mathur%40micr |              |                 |
-| osoft.com%7C3a9527f2928a4f804a7b08d |              |                 |
-| a1ef84485%7C72f988bf86f141af91ab2d7 |              |                 |
-| cd011db47%7C1%7C0%7C637856348914018 |              |                 |
-| 481%7CUnknown%7CTWFpbGZsb3d8eyJWIjo |              |                 |
-| iMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTi |              |                 |
-| I6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C% |              |                 |
-| 7C%7C&sdata=ODZr6pfGWRW2LF8kfqjlSnx |              |                 |
-| 8AMbalzR5FdBEbMruEgU%3D&reserved=0) |              |                 |
-+-------------------------------------+--------------+-----------------+
+### [Table](#tab/allow-table)
 
-Refer to the linked documentation for firewall rules for additional
-recommended services.
+The following URLs need to be added to your allowlist.
 
-\[Copy and Download Button\]
+[!INCLUDE [Recommended URLs table](includes/recommended-urls-table.md)]
+
+### [Json](#tab/allow-json)
+
+You can cut and paste the allowlist for Firewall URL exceptions.
+
+```json
+[{ 
+        "URL": "https://login.microsoftonline.com", 
+        "Port": "443", 
+        "Notes": “(Azure Public) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.“ 
+    }, 
+    { 
+        "URL": "https://login.chinacloudapi.cn/", 
+        "Port": "443", 
+        "Notes": “(Azure China) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.“ 
+    }, 
+    { 
+        "URL": "https://login.microsoftonline.us", 
+        "Port": "443", 
+        "Notes": “(Azure Gov) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.“ 
+    }, 
+    { 
+        "URL": "https://graph.windows.net/", 
+        "Port": "443", 
+        "Notes": “(Azure Public, Azure Gov) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.” 
+    }, 
+    { 
+        "URL": "https://graph.chinacloudapi.cn/", 
+        "Port": "443", 
+        "Notes": “(Azure China) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.” 
+    }, 
+    { 
+        "URL": "https://management.azure.com/", 
+        "Port": "443", 
+        "Notes": “(Azure Public) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
+    }, 
+    { 
+        "URL": "https://management.chinacloudapi.cn/", 
+        "Port": "443", 
+        "Notes": “(Azure China) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
+    }, 
+    { 
+        "URL": "https://management.usgovcloudapi.net/", 
+        "Port": "443", 
+        "Notes": “(Azure Gov) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
+    }, 
+    { 
+        "URL": "https://azurestackhci.azurefd.net", 
+        "Port": "443", 
+        "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
+    }, 
+    { 
+        "URL": "https://dp.stackhci.azure.cn", 
+        "Port": "443", 
+        "Notes": “(Azure China) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
+    }, 
+    { 
+        "URL": "https://dp.azurestackchi.azure.us", 
+        "Port": "443", 
+        "Notes": “(Azure Gov) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
+    }, 
+    { 
+        "URL": "http://*.windowsupdate.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "https://*.windowsupdate.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://*.update.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "https://*.update.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://*.windowsupdate.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://download.windowsupdate.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "https://download.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://*.download.windowsupdate.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://wustat.windows.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://ntservicepack.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://go.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "http://dl.delivery.mp.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "https://dl.delivery.mp.microsoft.com", 
+        "Port": "443", 
+        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
+    }, 
+    { 
+        "URL": "*.blob.core.windows.net", 
+        "Port": "443", 
+        "Notes": “Alternatively, [myblobstorage].blob.core.windows.net for the blob storage account for the cluster witness. For Cluster Cloud Witness.” 
+    }, 
+    { 
+        "URL": "*.powershellgallery.com", 
+        "Port": "443", 
+        "Notes": “Alternatively, download the Az.StackHCI PowerShell module at https://www.powershellgallery.com/packages/Az.StackHCI. For HCI Registration.” 
+    }, 
+    { 
+        "URL": "*.servicebus.windows.net", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "*.core.windows.net", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "login.microsoftonline.com", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    }, 
+    { 
+        "URL": "https://edgesupprd.trafficmanager.net", 
+        "Port": "443", 
+        "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
+    } ] 
+```
 
 ## Set up a Proxy Server
 
@@ -376,22 +428,14 @@ Use the ProxySettingsPerUser 0 flag to make the proxy configuration server-wide 
 
 To remove the proxy configuration, run the PowerShell command Set-WinInetProxy without arguments.
 
-To configure a proxy for AKS-HCI:
-> <https://docs.microsoft.com/en-us/azure-stack/aks-hci/set-proxy-settings>.
-> Refer to this documentation to configure the HTTPS-PROXY environment
-> correctly with AKS-HCI:
-> [https://docs.microsoft.com/en-us/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Faks-hci%2Fset-proxy-settings%23set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings&data=05%7C01%7CTiara.Mathur%40microsoft.com%7Cacd13fe394d24521e65108da19a1ca8c%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637850480166713310%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=2PP08kDxkk%2FLfHsqcwL5fU1O6JkYeYyjGtFJytrgkhQ%3D&reserved=0)
->
-> To configure a proxy for Arc for Servers: :
-> <https://docs.microsoft.com/en-us/azure/azure-arc/servers/manage-agent>
->
-> To configure a proxy for MMA:
-> <https://docs.microsoft.com/en-us/azure/azure-monitor/agents/log-analytics-agent#network-requirements>
->
+Refer to the following articles for additional information:
+
+- To configure a proxy for Arc for Servers, see [Configure proxy server settings on AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings).
+- To configure the HTTPS-PROXY environment correctly with AKS-HCI, see [Set proxy for Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings)
+- To configure a proxy for Arc for Servers, see [Update or remove proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings)
+- To configure a proxy for Microsoft Monitoring Agent (MMA), see [Network requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+
 ## Next steps
 
 Learn about how to [update Microsoft Defender firewall] \[link out to new page\]
-
-> The Windows Firewall and WinRM 2.0 ports section of [Installation and
-> configuration for Windows Remote
-> Management](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
+- [Windows Firewall and WinRM 2.0 ports](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
