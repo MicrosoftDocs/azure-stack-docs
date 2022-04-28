@@ -3,10 +3,13 @@ title: Stop and restart a cluster on Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to stop and restart a cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 04/25/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+# Intent: As an IT Pro, I need to learn how to stop and restart a cluster in order to optimize resource costs on my AKS on Azure Stack on HCI deployment.
+# Keyword: stop cluster start cluster cluster service
+
 ---
 
 # Stop and start an AKS on Azure Stack HCI and Windows Server cluster
@@ -32,7 +35,7 @@ To stop the cluster service on all nodes of the local cluster, open PowerShell a
 ```powershell
 PS:> Stop-Cluster 
 ```
-After running this command, type Y [Yes] to confirm that you want to stop the cluster. 
+After you run the command, type Y [Yes] to confirm that you want to stop the cluster. 
 
 > [!NOTE]
 > If you run `Stop-Cluster` twice on the same machine, or on more than one machine in the cluster, you'll receive an error that says _No cluster service running_.
@@ -46,7 +49,11 @@ PS:> Stop-Computer
 
 ## Start an Azure Stack HCI or Windows Server cluster
 
+<<<<<<< HEAD
 To start a stopped Azure Stack HCI or Windows Server cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
+=======
+To start a stopped Azure Stack HCI cluster, first restart the operating system on the local and/or remote computers, and then restart the cluster. 
+>>>>>>> a4a314babbbd426e3b106749a89edc1ac119230d
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 
@@ -65,14 +72,14 @@ A node can only function as part of a cluster when the cluster service is runnin
 > [!NOTE]
 > You cannot remotely run **Start-Cluster** without CredSSP authentication on the server machine.
  
-You can verify that your cluster has started by using the [Get-ClusterNode](/powershell/module/failoverclusters/get-clusternode?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown in the example below:
+To verify that your cluster has started, use the [Get-ClusterNode](/powershell/module/failoverclusters/get-clusternode?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown in the example below:
 
 ```powershell
 PS:> Get-ClusterNode -ErrorAction SilentlyContinue | foreach-object { 
         $node = $_.Name 
         $state = $_.State 
         Write-Host "$node State = $state" 
-      	} 
+          } 
 ```
 The output would be similar to the following list of cluster nodes:
 

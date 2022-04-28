@@ -68,6 +68,11 @@ For simplicity we only demonstrate two physical adapters per SET team, however i
 
 ### Fully converged intent
 
+For this intent, compute, storage, and management networks are deployed and managed across all cluster nodes.
+
+:::image type="content" source="media/network-atc/network-atc-2-full-converge.png" alt-text="Fully converged intent" lightbox="media/network-atc/network-atc-2-full-converge.png":::
+
+```powershell
 Add-NetIntent -Name ConvergedIntent -Management -Compute -Storage -ClusterName HCI01 -AdapterName pNIC01, pNIC02
 ```
 
