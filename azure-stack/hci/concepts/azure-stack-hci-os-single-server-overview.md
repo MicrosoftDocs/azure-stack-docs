@@ -29,7 +29,7 @@ For hardware, software, and network requirements reference [What you need for Az
 ## **Comparing single-server and multi-server clusters**
 |Attributes | Single-Server | Multi-Server |
 |----------|-----------|-----------|
-|Full SDDC stack (hypervisor, storage, networking) | Yes | Yes|
+|Full software-defined data center (SDDC) stack (hypervisor, storage, networking) | Yes | Yes|
 |Storage Spaces Direct (S2D) support | Yes | Yes |
 |Software Defined Networking (SDN) support | Yes | Yes |
 |Native Azure Arc integration | Yes | Yes |
@@ -45,14 +45,14 @@ For hardware, software, and network requirements reference [What you need for Az
 |Azure Virtual Desktop | Yes | Yes |
 |Azure Site Recovery | Yes | Yes |
 |Azure Stack HCI: Stretch cluster support | No | Yes |
-|Use GPUs with clustered VMs | Yes | Yes |
+|Use Graphics Processing Units (GPUs) with clustered VMs | Yes | Yes |
 
 ## **Known Issues**
 |Issue | Notes|
 |-----------|---------------|
 |Cache drives don't auto rebind if failed. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. ***SBL cache will not be supported at this time**. |
 |Windows Admin Center (WAC) doesn't support single-server cluster creation. | [Deploy Single-server with PowerShell](../deploy/create-cluster-powershell.md). |
-|WAC cosmetic UI changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
+|WAC cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
 |WAC pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |WAC and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
 |Cluster Aware Updating (CAU) doesn't support single-server. |Update using command line, SCONFIG and/or use WAC to update (through server manager). |
