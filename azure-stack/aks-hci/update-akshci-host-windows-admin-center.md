@@ -2,12 +2,14 @@
 title: Concepts - Updating Azure Kubernetes Services on Azure Stack HCI host using Windows Admin Center
 description: Learn about using Windows Admin Center to update the Azure Kubernetes Service on Azure Stack HCI host.
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 04/27/2022
 ms.custom: fasttrack-edit
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
+# Intent: As an IT Pro, I need to understand how to use Windows Admin Center to update my AKS HCI host.
+# Keyword: auto-update Windows Admin Center
 ---
 
 # Upgrade the AKS on Azure Stack HCI host using Windows Admin Center
@@ -24,7 +26,9 @@ There are several types of updates, which can happen independently from each oth
 - Update the container hosts of AKS workload clusters to a newer version of the operating system.
 - Combined update of the operating system and Kubernetes version of AKS workload clusters.
 
-All updates are done in a rolling update flow to avoid outages in  AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
+All updates are done in a rolling update flow to avoid outages and availability in AKS on Azure Stack HCI. 
+
+When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node, and when the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
 
 We recommend that you update workload clusters immediately after updating the AKS host to prevent running unsupported container host OS versions or Kubernetes versions in your workload clusters. If your workload clusters are on an old Kubernetes version, they are still supported, but you will not be able to scale your cluster. 
 

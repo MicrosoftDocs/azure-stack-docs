@@ -3,21 +3,24 @@ title: Node auto-repair on Azure Kubernetes Service on Azure Stack HCI
 description: Learn about automatic node repair on AKS on Azure Stack HCI Windows and Linux nodes.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 04/27/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
+# Intent: As an IT Pro, I need to learn how to automatically repair unhealthy nodes in order to avoid service disruptions.
+# Keyword: unhealthy nodes service disruptions node repair auto-repair
 
 ---
 
 # Node auto-repair on AKS on Azure Stack HCI
 
-AKS on Azure Stack HCI continuously monitors the health state of worker nodes and performs automatic node repair if issues arise or if they become unhealthy. AKS on Azure Stack HCI works to minimize service disruptions for clusters.
+AKS on Azure Stack HCI continuously monitors the state of *unhealthy* worker nodes. Then, it works to perform automatic node repair in order to minimize service disruptions on clusters.
+
 In this topic, you will learn how to automatically repair nodes for both Windows and Linux nodes.
 
 ## How AKS checks for unhealthy nodes
 
-AKS on Azure Stack HCI uses the following rules to determine if a node is unhealthy and needs repair:
+AKS on Azure Stack HCI uses the following rules to determine if a node is *unhealthy* i.e., needs repair:
 
 - The node reports a **NotReady** status on consecutive checks. 
 - The node does not report any status within a couple of minutes.
