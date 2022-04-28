@@ -12,9 +12,9 @@ ms.date: 04/04/2022
 # **Azure Stack HCI OS - Single-Server**
 > Applies to: Azure Stack HCI, version 21H2
 
-The implementation of an Azure Stack HCI 21H2 single-server configuration aims to provide flexibility, hardware resiliency, and cost savings in scenarios where lower  resiliency can be tolerated. To review single-server supported systems or to size a single-server, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/).
+Azure Stack HCI 21H2 single-server configuration aims to provide flexibility, hardware resiliency, and cost savings in scenarios where lower  resiliency can be tolerated. The following sections will provide information for installing Azure Stack HCI OS on a single server, cluster creation, and more.
 
-The following sections will provide information for installing Azure Stack HCI OS on a single server.
+To review single-server supported systems or to size a single-server, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/).
 
 > [!IMPORTANT]
 > Using PowerShell is the only supported method for a single-server deployment.
@@ -22,7 +22,7 @@ The following sections will provide information for installing Azure Stack HCI O
 
 - A single server with only type NVMe or SSD drives from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog).
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
-- Optional, you can utilize [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) (WAC) to register and manage the server once it has been configured.
+- Optional, [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) (WAC) to register and manage the server once it has been configured.
 
 ## **Single-Server Steps**
 
