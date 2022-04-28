@@ -33,7 +33,7 @@ For hardware, software, and network requirements reference [What you need for Az
 |Storage Spaces Direct (S2D) support | Yes | Yes |
 |Software Defined Networking (SDN) support | Yes | Yes |
 |Native Azure Arc integration | Yes | Yes |
-|Managed through WAC and/or Azure portal | Yes | Yes |
+|Managed through Windows Admin Center (WAC) and/or Azure portal | Yes | Yes |
 |Azure billing/registration | Yes | Yes |
 |Charged per physical core| Yes | Yes |
 |Support through Azure | Yes | Yes |
