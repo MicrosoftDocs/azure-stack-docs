@@ -59,7 +59,7 @@ For hardware, software, and network requirements reference [What you need for Az
 |WAC cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
 |WAC pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |WAC and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
-|Cluster Aware Updating (CAU) doesn't support single-server. |Update using command line, SCONFIG and/or use WAC to update (through server manager). |
+|Cluster Aware Updating (CAU) doesn't support single-server. |Update using command line, Server Configuration tool (SConfig), and/or WAC (through server manager). |
 |Adding a node to scale out the single-server cluster doesn't automatically change the S2D FaultDomainAwarenessDefault. |FaultDomainAwarenessDefault can be changed manually from PhysicalDisk to StorageScaleUnit. |
 
 ## Next steps
