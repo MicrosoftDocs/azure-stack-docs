@@ -22,7 +22,7 @@ You will learn how to:
 
 > [!div class="checklist"]
 > * Update a Kubernetes manifest file
-> * Run an application in Kubernetes
+> * Deploy an application in Kubernetes
 > * Test the application
 
 Later tutorials describe how to scale and update this application.
@@ -31,11 +31,11 @@ This quickstart assumes a basic understanding of Kubernetes concepts.
 
 ## Before you begin
 
-Previous tutorials described how to package an application into a container image. Then, upload the image to the Azure Container Registry and create a Kubernetes cluster.
+Previous tutorials described how to package an application into a container image, and then upload the image to the Azure Container Registry and create a Kubernetes cluster.
 
 To complete this tutorial, you need the pre-created `azure-vote-all-in-one-redis.yaml` Kubernetes manifest file. This file was downloaded with the application source code in a previous tutorial. Verify that you've cloned the repo, and that you have changed directories into the cloned repo. If you haven't done these steps, start with [Tutorial 1 - Create container images][aks-tutorial-prepare-application.md].
 
-This tutorial requires that you run the Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][azure-cli-install].
+This tutorial requires Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install it or upgrade, see [Install Azure CLI][azure-cli-install].
 
 ## Update the manifest file
 
