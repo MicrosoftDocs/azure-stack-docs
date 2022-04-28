@@ -3,15 +3,17 @@ title: Create and use a custom load balancer with Azure Kubernetes Service (AKS)
 description: Learn how to create and use a custom load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 11/18/2021
+ms.date: 04/27/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+# Intent: As an IT Pro, I need to create a custom load balancer and use it to send requests to the Kubernetes API server.
+# Keyword: custom load balancer
 ---
 
 # Create and use a custom load balancer in AKS on Azure Stack HCI
 
-This article covers how to create and use a custom load balancer. In AKS on Azure Stack HCI, you use load balancers to send requests to the Kubernetes API server and to manage traffic to application services. When using a custom load balancer, [kube-vip](https://kube-vip.io/) automatically deploys to manage the load balancing of requests to the Kubernetes API server and to make sure that it's highly available.
+This article covers how to create and use a custom load balancer. AKS on Azure Stack HCI, uses load balancers to send requests to the Kubernetes API server and to manage traffic to application services. When using a custom load balancer, [kube-vip](https://kube-vip.io/) automatically deploys to manage the load balancing of requests to the Kubernetes API server and to make sure that it's highly available.
 
 > [!NOTE]
 > You can also use a other load balancers, such as MetalLB or Software Defined Networking (SDN) load balancing, to load balance traffic to application services.  
