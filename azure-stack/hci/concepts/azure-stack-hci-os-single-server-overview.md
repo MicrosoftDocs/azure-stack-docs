@@ -41,11 +41,15 @@ For hardware, software, and network requirements reference [What you need for Az
 |Azure benefits on Azure Stack HCI | Yes | Yes |
 |Activate Windows Server Subscriptions | Yes | Yes |
 |Azure Defender and Secured-core | Yes | Yes |
-|Azure Kubernetes Service on Azure Stack HCI (AKS-HCI) | Yes | Yes |
+|Azure Kubernetes Service on Azure Stack HCI (AKS-HCI) | Yes <sup>1</sup> | Yes |
 |Azure Virtual Desktop | Yes | Yes |
 |Azure Site Recovery | Yes | Yes |
-|Azure Stack HCI: Stretch cluster support | No | Yes |
+|Azure Stack HCI: Stretch cluster support | No <sup>2</sup> | Yes |
 |Use Graphics Processing Units (GPUs) with clustered VMs | Yes | Yes |
+
+<sup>1</sup> Limited support, AKS-HCI is "in-preview" as of June 2022.
+
+<sup>2</sup> Planned for future versions.
 
 ## **Known Issues**
 |Issue | Notes|
@@ -57,6 +61,7 @@ For hardware, software, and network requirements reference [What you need for Az
 |WAC and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
 |Cluster Aware Updating (CAU) doesn't support single-server. |Update using command line, SCONFIG and/or use WAC to update (through server manager). |
 |Adding a node to scale out the single-server cluster doesn't automatically change the S2D FaultDomainAwarenessDefault. |FaultDomainAwarenessDefault can be changed manually from PhysicalDisk to StorageScaleUnit. |
+
 ## Next steps
 
 > [!div class="nextstepaction"]
