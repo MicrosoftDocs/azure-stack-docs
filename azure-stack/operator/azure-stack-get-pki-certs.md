@@ -20,8 +20,8 @@ You use the Azure Stack Hub Readiness Checker tool to create certificate signing
 
 The tool is used to request the following certificates:
 
-- **Standard certificates**: [Generate certificate signing requests for new deployments](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-new-deployments).
-- **Renewal certificates**: [Generate certificate signing request for certificate renewal](azure-stack-get-pki-certs.md#generate-certificate-signing-requests-for-certificate-renewal).
+- **Standard certificates**: [Generate certificate signing requests for new deployments](azure-stack-get-pki-certs.md#generate-csrs-for-new-deployments).
+- **Renewal certificates**: [Generate certificate signing request for certificate renewal](azure-stack-get-pki-certs.md#generate-csrs-for-certificate-renewal).
 - **Platform-as-a-service (PaaS) certificates**: [Azure Stack Hub public key infrastructure (PKI) certificate requirements - optional PaaS certificates](azure-stack-pki-certs.md#optional-paas-certificates).
 
 ## Prerequisites
