@@ -29,12 +29,9 @@ As shown in the following diagram, Azure Stack HCI accesses Azure using more tha
 
 :::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-Firewall connectivity requirements and recommendations
-Firewall rules and port requirements
-
 ## Firewall connectivity requirements and recommendations
 
-This section describes the firewall connectivity requirements and recommendations for your Azure Stack HCI clusters.
+This section describes the firewall connectivity requirements and recommendations for your Azure Stack HCI cluster and the associated services.
 
 ### Cluster creation
 
@@ -122,35 +119,35 @@ https://edgesupprd.trafficmanager.net
 
 ### AKS on Azure Stack HCI
 
-For information about firewall requirements of AKS on Azure Stack HCI, see [AKS on Azure Stack HCI firewall requirements](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements).
+For information about firewall requirements for using AKS on Azure Stack HCI, see [AKS on Azure Stack HCI firewall requirements](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements).
 
 ### Arc for Servers
 
-For information about firewall requirements of Arc for Servers, see [Arc for Servers firewall requirements](/azure/azure-arc/servers/network-requirements).
+For information about firewall requirements for using Arc for Servers, see [Arc for Servers firewall requirements](/azure/azure-arc/servers/network-requirements).
 
-### Microsoft Monitoring Agent (MMA)/Log Analytics Agent
+### Microsoft Monitoring Agent (MMA) and Log Analytics Agent
 
-For information about firewall requirements of MMA/log analytics agent, see [Microsoft Monitoring Agent (MMA)/Log Analytics Agent firewall requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+For information about firewall requirements for using MMA/log analytics agent, see [Microsoft Monitoring Agent (MMA)/Log Analytics Agent firewall requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 
 ### Qualys
 
-For information about firewall requirements of Qualys, see [Qualys extension firewall requirements](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
+For information about firewall requirements for using Qualys, see [Qualys extension firewall requirements](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
 
 ### Microsoft Defender
 
-For information about firewall requirements of Microsoft Defender, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
+For information about Microsoft Defender firewall requirements, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 
 ### Azure portal
 
-For information about firewall requirements of the Azure portal, see [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
+For information about firewall requirements for using Azure portal, see [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 
 ### Azure Arc Resource Bridge
 
-For information about the firewall requirements of Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](/azure/azure-arc/resource-bridge/overview)
+For information about firewall requirements for using Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](/azure/azure-arc/resource-bridge/overview)
 
 ## Required firewall URLs for cluster creation and registration
 
-Required URLs for HCI cluster creation and registration:
+This section lists the required firewall URLs for Azure Stack HCI cluster creation and registration.
 
 ### [Table](#tab/allow-table)
 
@@ -496,7 +493,7 @@ Refer to the following articles for information about how to configure proxy ser
 - To configure a proxy for Arc for Servers, see [Update or remove proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings).
 - To configure a proxy for Microsoft Monitoring Agent (MMA), see [Network requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements).
 
-## Update Microsoft Defender firewall
+## Configure Microsoft Defender firewall
 
 This section shows how to configure Microsoft Defender firewall to allow IP addresses associated with a service tag to connect with the operating system. A *service tag* represents a group of IP addresses from a given Azure service. Microsoft manages the IP addresses included in the service tag, and automatically updates the service tag as IP addresses change to keep updates to a minimum. To learn more, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).
 
@@ -527,4 +524,6 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
 
 ## Next steps
 
-- Learn about [Windows Firewall and WinRM 2.0 ports](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
+For more information, see also:
+
+- The Windows Firewall and WinRM 2.0 ports section of [Installation and configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#windows-firewall-and-winrm-20-ports)
