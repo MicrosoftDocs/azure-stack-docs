@@ -3,10 +3,10 @@ title: Generate certificate signing requests for Azure Stack Hub
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: BryanLa
 ms.topic: article
-ms.date: 04/25/2022
+ms.date: 04/29/2022
 ms.author: bryanla
 ms.reviewer: ppacent
-ms.lastreviewed: 04/25/2022
+ms.lastreviewed: 04/29/2022
 zone_pivot_groups: csr-cert-type
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
@@ -37,13 +37,12 @@ Before you generate CSRs for PKI certificates for an Azure Stack Hub deployment,
   - Region name
   - External fully qualified domain name (FQDN)
   - Subject
+::: zone pivot="csr-type-new-deployment"
+## Generate CSRs for new deployment certificates
 
 > [!NOTE]  
 >
-> Elevation is required to generate certificate signing requests. In restricted environments where elevation is not possible, you can use this tool to generate clear-text template files, which contain all the information that's required for Azure Stack Hub external certificates. You then need to use these template files on an elevated session to finish the public/private key pair generation.  
-
-::: zone pivot="csr-type-new-deployment"
-## Generate CSRs for new deployment certificates
+> Elevation is required to generate certificate signing requests. In restricted environments where elevation is not possible, you can use this tool to generate clear-text template files, which contain all the information that's required for Azure Stack Hub external certificates. You then need to use these template files on an elevated session to finish the public/private key pair generation. See below for more details.
 
 To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following steps:
 
@@ -58,7 +57,7 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
     ```
 
     > [!NOTE]  
-    > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In this example, the portal would be `portal.east.azurestack.contoso.com`.  
+    > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack Hub are created. In the above example, the portal would be `portal.east.azurestack.contoso.com`.  
 
 Now generate the CSRs. The instructions are specific to the Subject format that you select below:
 
@@ -73,7 +72,7 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
     ```
 
-[!INCLUDE [prepare](../includes/get-pki-certs-csrs.md)]
+[!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
 
 
 # [Subject with CN](#tab/add-cn)
@@ -87,7 +86,7 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=portal.domain.com"
     ```
 
-[!INCLUDE [prepare](../includes/get-pki-certs-csrs.md)]
+[!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
 
 # [Subject with only CN](#tab/only-cn)
 
@@ -100,7 +99,7 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     $subject = "CN=portal.domain.com"
     ```
 
-[!INCLUDE [prepare](../includes/get-pki-certs-csrs-cn-only.md)]
+[!INCLUDE [prepare](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
 ---
 
@@ -127,13 +126,15 @@ Complete the final steps:
 
 
 ::: zone pivot="csr-type-renewal"
+- test prereq
+
 ## Generate CSRs for renewal certificates  
 
 This section covers preparation of CSRs for renewal of existing Azure Stack Hub PKI certificates.
 
 ### Before you begin
 
-Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article and choose the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
+Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article, and choose the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
    - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
    - You want to use a certificate subject that contains only the common name attribute.
 

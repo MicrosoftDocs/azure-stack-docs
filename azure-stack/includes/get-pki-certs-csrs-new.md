@@ -3,13 +3,10 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: include
-ms.date: 04/26/2022
+ms.date: 04/29/2022
 ms.reviewer: bryanla
-ms.lastreviewed: 04/26/2022
+ms.lastreviewed: 04/29/2022
 ---
-
-{{test}}
-
 2. Generate CSRs by completing one the following:
 
    - For a **production deployment environment**, the first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
