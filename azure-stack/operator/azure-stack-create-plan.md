@@ -97,6 +97,9 @@ ms.lastreviewed: 06/11/2019
   
    ![Assign the quota for new plan in Azure Stack Hub](media/azure-stack-create-plan/assign-quota1901.png)
 
+   > [!NOTE]
+   > Once a quota has been created and used, its name cannot be changed.
+
 8. Repeat steps 6 and 7 to create and assign quotas for **Microsoft.Network (local)** and **Microsoft.Compute (local)**. When all three services have quotas assigned, they'll look like the next example.
 
    ![Complete quota assignments for new plan in Azure Stack Hub](media/azure-stack-create-plan/all-quotas-assigned1901.png)
