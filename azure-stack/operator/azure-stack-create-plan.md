@@ -4,9 +4,8 @@ description: Learn how to create a plan in Azure Stack Hub that lets subscribers
 author: bryanla
 
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 04/29/2022
 ms.author: bryanla
-ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
 
 # Intent: As an Azure Stack operator, I want to create plans to offer to my users.
@@ -48,6 +47,9 @@ ms.lastreviewed: 06/11/2019
 7. If you're creating a new quota, enter a **Name** for the quota, and then specify the quota values. Select **OK** to create the quota.
 
    ![Screenshot that shows how to create new quota for new plan in Azure Stack Hub.](media/azure-stack-create-plan/new-quota.png)
+
+   > [!NOTE]
+   > Once a quota has been created and used, its name cannot be changed.
 
 8. Repeat steps 6 and 7 to create and assign quotas for **Microsoft.Network** and **Microsoft.Compute**. When all three services have quotas assigned, they'll look like the next example.
 
