@@ -10,6 +10,7 @@ ms.date: 04/04/2022
 ---
 
 # **Azure Stack HCI Single-server clusters overview**
+
 > Applies to: Azure Stack HCI, version 21H2
 
 This article provides information about Azure Stack HCI single-server.
@@ -17,16 +18,20 @@ This article provides information about Azure Stack HCI single-server.
 Azure Stack HCI Single-server is a new cluster configuration option that is available for all Azure Stack HCI installations starting with version 21H2. This configuration option promotes flexibility if high resiliency isn't a requirement. Additionally, this server scale minimizes hardware and promotes lower Azure costs in locations that can tolerate lower resiliency. Single server may also be a concept for users who desire a minimal initial setup, with plans to scale out in the future.
 
 Along with the benefits mentioned, there are some initial limitations to recognize.
+
 - Storage Bus Layer (SBL) cache isn't supported. Single-server is only supported on single storage type configurations (for example all NVMe or all SSD).
 - Stretch cluster isn't supported at this time.
 - Host update that requires a restart will cause downtime to running virtual machines (VMs). Shut them down gracefully before restarting the host.
+
 ## **Requirements**
 
 1. A single server cluster purchased from your preferred Microsoft hardware partner from [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/)
 2. An [Azure Subscription](https://azure.microsoft.com/)
 
 For hardware, software, and network requirements reference [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
+
 ## **Comparing single-server and multi-server clusters**
+
 |Attributes | Single-Server | Multi-Server |
 |----------|-----------|-----------|
 |Full software-defined data center (SDDC) stack (hypervisor, storage, networking) | Yes | Yes|
@@ -52,6 +57,7 @@ For hardware, software, and network requirements reference [What you need for Az
 <sup>2</sup> Planned for future versions.
 
 ## **Known Issues**
+
 |Issue | Notes|
 |-----------|---------------|
 |Cache drives don't auto rebind if failed. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. ***SBL cache will not be supported at this time**. |
