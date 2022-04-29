@@ -409,6 +409,7 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
         "Notes": “For Remote Support, in order to allow remote access to Microsoft support for troubleshooting.” 
     } ] 
 ```
+----
 
 ## Firewall rules and port requirements
 
