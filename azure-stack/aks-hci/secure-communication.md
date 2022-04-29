@@ -3,20 +3,22 @@ title: Secure communication between control plane nodes for AKS on Azure Stack H
 description: Learn how to secure communication between in-cluster components.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 04/18/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
+# Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI deployment.
+# Keyword: control plane nodes secure communication certificate revocation
 
 ---
 
 # Secure communication with certificates  
 
-Certificates are a means to build secure communication between in-cluster components. In AKS on Azure Stack HCI, zero-touch, out-of-the-box provisioning and management of certificates is provided for the Kubernetes built-in components. 
+Certificates are used to build secure communication between in-cluster components. AKS on Azure Stack HCI provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
 
 ## Certificates and CAs
 
-AKS on Azure Stack HCI generates and uses the following certificates and CAs: 
+AKS on Azure Stack HCI generates and uses the following certificates and Certificate Authorities (CAs): 
 
 **Cluster CA**:
   - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.
@@ -46,15 +48,15 @@ Non-root certificates are automatically renewed. All control plane certificates 
 - Kubelet server certificate 
 - Kubeconfig client certificate 
 
-It's recommended that you use [Active Directory single sign-in](./ad-sso.md) for user authentication as a security best practice.
+As a best security practice, it's recommended that you use [Active Directory single sign-in](./ad-sso.md) for user authentication.
 
 ## Certificate revocation
-Revocation should be a rare incident and is applied at the time of certificate renewal. 
+Revocation should be a rare incident and applied at the time of certificate renewal. 
 
 Once you have the serial number of the certificate you would like to revoke, use Kubernetes Custom Resource for defining and persisting revocation information. Each revocation object can consist of one or more revocation entries.  
 
-Revocation can be performed using:
-- Serial Number 
+To perform a revocation, use one of the following:
+- Serial number 
 - Group 
 - DNS name 
 - IP address  
@@ -143,7 +145,7 @@ To get the logs from the certificate renewal pod:
 kubectl.exe --kubeconfig .\testcluster-kubeconfig -n=kube-system logs certificate-renewal-controller-2cdmz
 ```
 
-Control plane nodes can’t be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail due to expired certificates, run the command as below: 
+Control plane nodes can’t be recreated like worker nodes, but you can use the **Repair-AksHciClusterCerts** module to help fix errors related to expired certificates. If the cluster begins to fail due to expired certificates, run the command as shown below: 
 
 ```powershell
 Repair-AksHciClusterCerts -Name mytargetcluster 
