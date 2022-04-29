@@ -50,7 +50,7 @@ To change the partition size, do the following:
    ```powershell
    Get-AzsScaleUnit                    # Returns a list of information about scale units in your stamp 
    ```
-   Update the `$partitionSize` and `$scaleUnitName` variables using the "**name**" value returned in the previous step, then run the following to update the scale unit partition size:
+   Update the following `$partitionSize` and `$scaleUnitName` variables using the "**name**" value returned in the previous step, then run the following to update the scale unit partition size:
 
    ```powershell
    $partitionSize = 4                  # Specify the partition size (1, 2, 4, 8)
