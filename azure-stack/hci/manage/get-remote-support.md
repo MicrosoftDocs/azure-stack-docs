@@ -75,7 +75,7 @@ A local domain administrator must install the following JEA configurations to gr
 | Get-AzStackHCIRemoteSupportSessionHistory –FromDate `<DateTime>` -IncludeSessionTranscript –SessionId `<ID>` | View the remote support session history  |
 | Remove-AzStackHCIRemoteSupport | Uninstall remote support agent |
 
-Find the example scenarios that show how to perform various operations to enable remote support access for Microsoft support in the [Remote support examples](#remote-support-examples) section.  
+For example scenarios that show how to perform various operations to enable remote support access for Microsoft support, see the [Remote support examples](#remote-support-examples) section later in this article.  
 
 ### Install Remote Support extension (after Azure registration)
 
@@ -98,7 +98,7 @@ The following example scenarios show you how to perform various operations to en
 In this example, you enable remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
 ```powershell
-Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
+Enable-AzStackHCIRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 ```
 
 Use **ExpireInMinutes** parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access cannot be established.
@@ -112,7 +112,7 @@ If duration is not defined, the remote session expires in 480 (8 hours) by defau
 In this example, you enable remote support access for diagnostic and repair related operations only. Because expiration was not explicitly provided, it expires in eight hours by default.
 
 ```powershell
-Enable-RemoteSupport -AccessLevel DiagnosticsRepair
+Enable-AzStackHCIRemoteSupport -AccessLevel DiagnosticsRepair
 ```
 
 ### Retrieve existing consent grants
@@ -120,7 +120,7 @@ Enable-RemoteSupport -AccessLevel DiagnosticsRepair
 In this example, you retrieve any previously granted consent. The result includes expired consent in the last 30 days.
 
 ```powershell
-Get-RemoteSupportAccess -IncludeExpired
+Get-AzStackHCIRemoteSupportAccess -IncludeExpired
 ```
 
 ### Revoke remote access consent
@@ -128,7 +128,7 @@ Get-RemoteSupportAccess -IncludeExpired
 In this example, you revoke remote access consent. Any existing sessions are terminated and new sessions can no longer be established.
 
 ```powershell
-Disable-RemoteSupport
+Disable-AzStackHCIRemoteSupport
 ```
 
 ### List existing remote sessions
@@ -136,7 +136,7 @@ Disable-RemoteSupport
 In this example, you list all the remote sessions that were made to the device since *FromDate*.
 
 ```powershell
-Get-RemoteSupportSessionHistory -FromDate <Date>
+Get-AzStackHCIRemoteSupportSessionHistory -FromDate <Date>
 ```
 
 ### Get details on a specific remote session
@@ -144,7 +144,7 @@ Get-RemoteSupportSessionHistory -FromDate <Date>
 In this example, you get the details for remote session with the ID *SessionID*.
 
 ```powershell
-Get-RemoteSupportSessionHistory -SessionId <SessionId> -IncludeSessionTranscript
+Get-AzStackHCIRemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 ```
 
 > [!NOTE]
