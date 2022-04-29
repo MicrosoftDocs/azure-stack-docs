@@ -133,7 +133,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
 
 ### Before you begin
 
-Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector above and chose the [New deployment](\azure-stack\operator\azure-stack-get-pki-cert?pivots=csr-type-new-deployment) version of this article instead:
+Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article and choose the [New deployment](azure-stack-get-pki-cert?pivots=csr-type-new-deployment) version of this article instead:
    - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
    - You want to use a certificate subject that contains only the common name attribute.
 
