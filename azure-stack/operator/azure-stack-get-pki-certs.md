@@ -18,11 +18,11 @@ zone_pivot_groups: csr-cert-type
 
 You use the Azure Stack Hub Readiness Checker tool to create certificate signing requests (CSRs) that are suitable for an Azure Stack Hub deployment. It's important to request, generate, and validate certificates with enough time to test them before they're deployed. 
 
-The tool is used to request the following certificates:
+The tool is used to request the following certificates, based on the **Choose a CSR certificate scenario** selector at the top of this article:
 
-- **Standard certificates**: [Generate certificate signing requests for new deployments](azure-stack-get-pki-certs.md#generate-csrs-for-new-deployments).
-- **Renewal certificates**: [Generate certificate signing request for certificate renewal](azure-stack-get-pki-certs.md#generate-csrs-for-certificate-renewal).
-- **Platform-as-a-service (PaaS) certificates**: [Azure Stack Hub public key infrastructure (PKI) certificate requirements - optional PaaS certificates](azure-stack-pki-certs.md#optional-paas-certificates).
+- **Standard certificates**: [Generate certificate signing requests for new deployments]((?pivots=csr-type-new-deployment)).
+- **Renewal certificates**: [Generate certificate signing request for certificate renewal]((?pivots=csr-type-renewal)).
+- **Platform-as-a-service (PaaS) certificates**: Can be generated with both standard and renewal certificates. See [Azure Stack Hub public key infrastructure (PKI) certificate requirements - optional PaaS certificates](azure-stack-pki-certs.md#optional-paas-certificates) for more details.
 
 ## Prerequisites
 
