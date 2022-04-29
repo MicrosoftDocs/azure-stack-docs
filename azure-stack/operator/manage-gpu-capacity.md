@@ -43,13 +43,22 @@ To change the partition size, do the following:
 1. Deallocate all VMs that are currently using a GPU.
 1. Ensure that the [PowerShell Az module](powershell-install-az-module.md) for Azure Stack Hub is installed.
 1. [Connect PowerShell](azure-stack-powershell-configure-admin.md) to the admin Azure Resource Manager endpoint.
-1. Run the following PowerShell command:
+1. Run the following PowerShell cmdlets:
+
+   First determine the name of the scale unit to be updated:
 
    ```powershell
-   Set-AzsScaleUnit -NumberOfGPUPartition X
+   Get-AzsScaleUnit                    # Returns a list of information about scale units in your stamp 
+   ```
+   Update the `$partitionSize` and `$scaleUnitName` variables using the "**name**" value returned in the previous step, then run the following to update the scale unit partition size:
+
+   ```powershell
+   $partitionSize = 4                  # Specify the partition size (1, 2, 4, 8)
+   $scaleUnitName = "contoso/cluster"  # Specify the scale unit name
+   Set-AzsScaleUnit -Name $scaleUnitName -NumberOfGPUPartition $partitionSize
    ```
 
-   Supported values for `X` are:
+   Supported values for `$partitionSize` are:
 
    | Value        | Description              |
    |--------------|--------------------------|
