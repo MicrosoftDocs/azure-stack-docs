@@ -11,13 +11,13 @@ ms.date: 04/28/2022
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This topic provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations. The topic also provides information on how to set up a proxy server.
+This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes connectivity requirements and recommendations. The topic also provides information on how to set up a proxy server.
 
 ## Connectivity requirements and recommendations
 
-Opening port 443 for outbound network traffic on your organization\'s firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the Connectivity recommendations allowlist section of this topic.
+Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section of this article.
 
-Azure Stack HCI needs to periodically connect to Azure. Access is limited to only:
+Azure Stack HCI needs to periodically connect to Azure. Access is limited only to:
 
 - Well-known Azure IPs
 - Outbound direction
@@ -49,8 +49,8 @@ You must allow-list the following URL endpoints for registration and billing. De
 
 - The first URL under each tab is used for Active Directory Authority. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
 - The second URL under each tab is used for Graph. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
-- The third URL is used for Resource Manager during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Its service tag is AzureResourceManager.
-- The last URL is for Dataplane, which pushes up diagnostics data. It is used in the Azure portal pipeline, and pushes billing data.
+- The third URL under each tab is used for Resource Manager. This is used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Its service tag is AzureResourceManager.
+- The last URL under each tab is used for Dataplane. This is used to push up diagnostics data. It is used in the Azure portal pipeline, and pushes billing data.
 
 #### [Azure Public Cloud](#tab/public-cloud)
 
@@ -84,20 +84,20 @@ https://dp.stackhci.azure.cn
 
 If there is a corporate firewall between the Azure Stack HCI operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, you must obtain authorization to allow internet access to the following URLs:
 
-http\://windowsupdate.microsoft.com
-http\://\*.windowsupdate.microsoft.com
-https\://\*.windowsupdate.microsoft.com
-http\://\*.update.microsoft.com
-https\://\*.update.microsoft.com
-http\://\*.windowsupdate.com
-http\://download.windowsupdate.com
-https\://download.microsoft.com
-http\://\*.download.windowsupdate.com
-http\://wustat.windows.com
-http\://ntservicepack.microsoft.com
-http\://go.microsoft.com
-http\://dl.delivery.mp.microsoft.com
-https\://dl.delivery.mp.microsoft.com
+- http\://windowsupdate.microsoft.com
+- http\://\*.windowsupdate.microsoft.com
+- https\://\*.windowsupdate.microsoft.com
+- http\://\*.update.microsoft.com
+- https\://\*.update.microsoft.com
+- http\://\*.windowsupdate.com
+- http\://download.windowsupdate.com
+- https\://download.microsoft.com
+- http\://\*.download.windowsupdate.com
+- http\://wustat.windows.com
+- http\://ntservicepack.microsoft.com
+- http\://go.microsoft.com
+- http\://dl.delivery.mp.microsoft.com
+- https\://dl.delivery.mp.microsoft.com
 
 ### Cluster Cloud Witness
 
@@ -107,15 +107,15 @@ This is optional. If you choose to use a cloud witness as the cluster witness, y
 
 This is optional. You can use remote support to allow a Microsoft support professional to access your device remotely and perform limited troubleshooting and repair. If you choose to configure remote support, you must allow firewall access to the following URLs:
 
-\*.servicebus.windows.net
-\*.core.windows.net
-login.microsoftonline.com
-https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
-https://edgesupprd.trafficmanager.net
+- \*.servicebus.windows.net
+- \*.core.windows.net
+- login.microsoftonline.com
+- https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
+- https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
+- https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
+- https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
+- https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https://edgesupprd.trafficmanager.net
 
 ### AKS on Azure Stack HCI
 
@@ -127,7 +127,7 @@ For information about firewall requirements for using Arc for Servers, see [Arc 
 
 ### Microsoft Monitoring Agent (MMA) and Log Analytics Agent
 
-For information about firewall requirements for using MMA/log analytics agent, see [Microsoft Monitoring Agent (MMA)/Log Analytics Agent firewall requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+For information about firewall requirements for using MMA and Log Analytics Agent, see [Microsoft Monitoring Agent (MMA)/Log Analytics Agent firewall requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 
 ### Qualys
 
@@ -135,7 +135,7 @@ For information about firewall requirements for using Qualys, see [Qualys extens
 
 ### Microsoft Defender
 
-For information about Microsoft Defender firewall requirements, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
+For information about firewall requirements for using Microsoft Defender, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 
 ### Azure portal
 
@@ -145,19 +145,19 @@ For information about firewall requirements for using Azure portal, see [Allow t
 
 For information about firewall requirements for using Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](/azure/azure-arc/resource-bridge/overview)
 
-## Required firewall URLs for cluster creation and registration
+## Required firewall URLs
 
-This section lists the required firewall URLs for Azure Stack HCI cluster creation and registration.
+This section provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
 ### [Table](#tab/allow-table)
 
-The following table provides a list of required firewall URLs to be added to the allowlist.
+The following table provides a list of required firewall URLs.
 
 [!INCLUDE [Required URLs table](includes/required-urls-table.md)]
 
-### [Json](#tab/allow-json)
+### [JSON](#tab/allow-json)
 
-The following is the list of required firewall URLs in the JSON format. Use the Copy button to the right of the code to copy this content, and then directly paste it into your allowlist.
+The following are the required firewall URLs in the JSON format. Use the Copy button to directly copy and paste this content to your allowlist.
 
 ```json
 [{ 
@@ -218,17 +218,19 @@ The following is the list of required firewall URLs in the JSON format. Use the 
 `````
 ----
 
-## Recommended firewall URLs for cluster creation and registration
+## Recommended firewall URLs
+
+This section provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
 
 ### [Table](#tab/allow-table)
 
-The following table provides a list of recommended firewall URLs to be added to the allowlist.
+The following table provides a list of recommended firewall URLs.
 
 [!INCLUDE [Recommended URLs table](includes/recommended-urls-table.md)]
 
 ### [Json](#tab/allow-json)
 
-The following is the list of recommended firewall URLs in the JSON format. Use the Copy button to the right of the code to copy this content, which you can directly paste into the allowlist.
+The following are the recommended firewall URLs in the JSON format. Use the Copy button to directly copy and paste this content to your allowlist.
 
 ```json
 [{ 
