@@ -41,11 +41,11 @@ You don't need any additional firewall rules if you use Windows Admin Center or 
 
 Cluster registration requires the Az.StackHCI PowerShell module, which is not included in the Azure Stack HCI operating system. If you use Windows Admin Center or PowerShell, you need to either unblock \*.powershellgallery.com or download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1).
 
-Optionally, download the Arc for Servers agent for registration. This is required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allow-list the URL endpoints in order to download the Arc for Servers agent for registration.
+Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allow-list the URL endpoints in order to download the Arc for Servers agent for registration.
 
 For information about networking requirements for using the Connected Machine agent to onboard a physical server or virtual machine to Azure Arc-enabled servers, see [Connected Machine agent network requirements](/azure/azure-arc/servers/network-requirements).
 
-You must allow-list the following URL endpoints for registration and billing. Depending on your cluster and its location, select the appropriate tab.
+You must allow-list the following URL endpoints for registration and billing. Depending on your cluster and its location, select the appropriate tab below.
 
 - The first URL under each tab is used for Active Directory Authority. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
 - The second URL under each tab is used for Graph. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
@@ -101,7 +101,7 @@ If there is a corporate firewall between the Azure Stack HCI operating system an
 
 ### Cluster Cloud Witness
 
-This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example: \[myblobstorage\].blob.core.windows.net.
+This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `\[myblobstorage\].blob.core.windows`.net.
 
 ### Remote support
 
@@ -157,7 +157,7 @@ The following table provides a list of required firewall URLs.
 
 ### [JSON](#tab/allow-json)
 
-The following are the required firewall URLs in the JSON format. Use the Copy button to directly copy and paste this content to your allowlist.
+The following are the required firewall URLs in the JSON format. Use the Copy button to copy-and-paste this content to your allowlist.
 
 ```json
 [{ 
@@ -230,7 +230,7 @@ The following table provides a list of recommended firewall URLs.
 
 ### [Json](#tab/allow-json)
 
-The following are the recommended firewall URLs in the JSON format. Use the Copy button to directly copy and paste this content to your allowlist.
+The following are the recommended firewall URLs in the JSON format. Use the Copy button to copy-and-paste this content to your allowlist.
 
 ```json
 [{ 
@@ -488,7 +488,7 @@ Use the `ProxySettingsPerUser` `0` flag to make the proxy configuration server-w
 
 To remove the proxy configuration, run the PowerShell command `Set-WinInetProxy` without arguments.
 
-Refer to the following articles for information about how to configure proxy servers for different products:
+Refer to the following articles for information about how to configure proxy servers:
 
 - To configure a proxy for Arc for Servers, see [Configure proxy server settings on AKS on Azure Stack HCI](/azure-stack/aks-hci/set-proxy-settings).
 - To configure the HTTPS-PROXY environment correctly with AKS-HCI, see [Set proxy for Azure Stack HCI and Windows Server clusters with machine-wide proxy settings](/azure-stack/aks-hci/set-proxy-settings#set-proxy-for-azure-stack-hci-and-windows-server-clusters-with-machine-wide-proxy-settings).
