@@ -20,9 +20,9 @@ You use the Azure Stack Hub Readiness Checker tool to create certificate signing
 
 The tool is used to request the following certificates, based on the **Choose a CSR certificate scenario** selector at the top of this article:
 
-- **Standard certificates**: [Generate certificate signing requests for new deployments]((?pivots=csr-type-new-deployment)).
-- **Renewal certificates**: [Generate certificate signing request for certificate renewal]((?pivots=csr-type-renewal)).
-- **Platform-as-a-service (PaaS) certificates**: Can be generated with both standard and renewal certificates. See [Azure Stack Hub public key infrastructure (PKI) certificate requirements - optional PaaS certificates](azure-stack-pki-certs.md#optional-paas-certificates) for more details.
+- Standard certificates for a new deployment: Choose **New deployment** using the **Choose a CSR certificate scenario** selector at the top of this article.
+- Renewal certificates for an existing deployment: Choose **Renewal** using the **Choose a CSR certificate scenario** selector at the top of this article.
+- Platform-as-a-service (PaaS) certificates: Can optionally be generated with both standard and renewal certificates. See [Azure Stack Hub public key infrastructure (PKI) certificate requirements - optional PaaS certificates](azure-stack-pki-certs.md#optional-paas-certificates) for more details.
 
 ## Prerequisites
 
@@ -126,19 +126,14 @@ Complete the final steps:
 
 
 ::: zone pivot="csr-type-renewal"
-- test prereq
+- Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article, and choose the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
+   - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
+   - You want to use a certificate subject that contains only the common name attribute.
+- You must also confirm that you have HTTPS connectivity for your Azure Stack Hub system before beginning.
 
 ## Generate CSRs for renewal certificates  
 
 This section covers preparation of CSRs for renewal of existing Azure Stack Hub PKI certificates.
-
-### Before you begin
-
-Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article, and choose the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
-   - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
-   - You want to use a certificate subject that contains only the common name attribute.
-
-You must also confirm that you have HTTPS connectivity for your Azure Stack Hub system before beginning.
 
 ### Generate CSRs 
 
