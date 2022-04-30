@@ -16,7 +16,7 @@ zone_pivot_groups: csr-cert-type
 
 # Generate certificate signing requests for Azure Stack Hub
 
-You use the Azure Stack Hub Readiness Checker tool to create certificate signing requests (CSRs) that are suitable for an Azure Stack Hub deployment. It's important to request, generate, and validate certificates with enough time to test them before they're deployed. 
+You use the Azure Stack Hub Readiness Checker tool to create certificate signing requests (CSRs) that are suitable for an Azure Stack Hub deployment, or for renewal of certificates for an existing deployment. It's important to request, generate, and validate certificates with enough lead time to test them before they're deployed. 
 
 The tool is used to request the following certificates, based on the **Choose a CSR certificate scenario** selector at the top of this article:
 
@@ -114,8 +114,6 @@ Complete the final steps:
     Certreq.exe output: CertReq: Request Created
     ```
 
-1. Submit the generated .req file to your certificate authority (CA) (either internal or public). The output directory named New-AzsCertificateSigningRequest contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the .inf files to be used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
-
 1. If the `-LowPrivilege` parameter was used, an .inf file was generated in the `C:\Users\username\Documents\AzureStackCSR` subdirectory. For example: 
 
     `C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710165538_ClearTextTemplate.inf` 
@@ -126,7 +124,7 @@ Complete the final steps:
 
 
 ::: zone pivot="csr-type-renewal"
-- Your system’s region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article, and choose the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
+- Your system's region and external domain name (FQDN) will be used by the Readiness Checker to determine the endpoint for extracting attributes from your existing certificates. If either of the following apply to your scenario, you must use the **Choose a CSR certificate scenario** selector at the top of this article, and pick the [New deployment](?pivots=csr-type-new-deployment) version of this article instead:
    - You want to change the attributes of certificates at the endpoint, such as subject, key length, and signature algorithm.
    - You want to use a certificate subject that contains only the common name attribute.
 - You must also confirm that you have HTTPS connectivity for your Azure Stack Hub system before beginning.
@@ -137,29 +135,27 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
 
 ### Generate CSRs 
 
-1. Declare `stampEndpoint` in the form of `regionname.domain.com` of the Azure Stack Hub system. For example, if the Azure Stack Hub tenant portal address is `https://</code><code>portal.east.azurestack.contoso.com`, run the following:
-
-    ```powershell  
-    $stampEndpoint = 'east.azurestack.contoso.com'
-    ```
+1. Open a PowerShell session on the machine where you installed the Readiness Checker tool.
+1. Declare the following variables:
 
     > [!NOTE]  
     >
-    > The Readiness Checker uses `stampEndpoint` (region and domain) to build a pointer to existing certificates that the certificate type requires. For example, for deployment certificates, "portal" is prepended by the tool. So `portal.east.azurestack.contoso.com` is used in certificate cloning, and `sso.appservices.east.azurestack.contoso.com` is used for app services.
+    > The Readiness Checker uses `stampEndpoint` plus a prepended string to find existing certificates. For example, `portal.east.azurestack.contoso.com` is used for deployment certificates, `sso.appservices.east.azurestack.contoso.com` for app services certificates, etc. 
 
-1. Declare the path to an existing output directory:
-
-    ```powershell  
-    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
+    ```powershell
+    $regionName = 'east'                                            # The region name for your Azure Stack Hub deployment
+    $externalFQDN = 'azurestack.contoso.com'                        # The external FQDN for your Azure Stack Hub deployment    
+    $stampEndpoint = "$regionName.$externalFQDN"
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"   # Declare the path to an existing output directory
     ```
 
-1. To generate certificate signing requests for deployment, run:
+1. Generate CSRs by completing one or more of the following:
+
+   - The first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
     ```
-
-    To generate certificate requests for other Azure Stack Hub services, run:
 
     ```powershell  
     # App Services
@@ -172,7 +168,10 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
     New-AzsHubEventHubsCertificateSigningRequest -StampEndpoint $stampEndpoint -OutputRequestPath $OutputDirectory
     ```
 
-1. Alternatively, for development and test environments, to generate a single certificate request with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. (We do *not* recommend using this approach for production environments.)
+   - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value. 
+
+      > [!IMPORTANT]
+      > We do *not* recommend using this approach for production environments.
 
     ```powershell  
     New-AzsHubDeploymentCertificateSigningRequest -StampEndpoint $stampendpoint -OutputRequestPath $OutputDirectory -RequestType SingleCSR
@@ -187,9 +186,9 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
     Present this CSR to your certificate authority for certificate generation: C:\Users\username\Documents\AzureStackCSR\Deployment_east_azurestack_contoso_com_SingleCSR_CertRequest_20200710122723.req
     Certreq.exe output: CertReq: Request Created
     ```
+::: zone-end
 
 1. Submit the generated .req file to your CA (either internal or public). The output directory named New-AzsCertificateSigningRequest contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the .inf files to be used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
-::: zone-end
 
 ## Next steps
 
