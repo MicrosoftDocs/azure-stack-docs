@@ -214,7 +214,8 @@ When creating the cluster, you'll get a warning that states - `"There were issue
 > If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `–StaticAddress <X.X.X.X>;`.
 
 ```powershell
-$ClusterName="cluster1" New-Cluster -Name $ClusterName –Node $ServerList –nostorage
+$ClusterName="cluster1" 
+New-Cluster -Name $ClusterName –Node $ServerList –nostorage
 ```
 
 Congrats, your cluster has now been created.
