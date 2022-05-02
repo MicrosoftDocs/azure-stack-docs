@@ -40,6 +40,8 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
+### On all nodes in your Azure Stack HCI cluster
+
 Run the following command on all nodes in your Azure Stack HCI cluster.
 
 ```powershell  
