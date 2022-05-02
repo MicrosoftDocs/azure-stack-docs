@@ -65,8 +65,8 @@ Deploying Azure Arc Resource Bridge requires the following:
   - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
   - At least 50GB of space in C:\.
-  - At least 4 cores
-  - At least 6GiB of memory
+  - At least 4 vCPUs
+  - At least 8GB of memory
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
 - A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server. We currently do not support proxy configurations.
 - An IP address for the load balancer running inside the Resource Bridge. The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
