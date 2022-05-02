@@ -22,4 +22,5 @@ ms.lastreviewed: 04/27/2022
     ```bash  
     sudo systemctl restart kubelet
     ```
+You can also use the SPN and secret with the API model and force an upgrade. For instructions, see [Forcing an upgrade](../user/azure-stack-kubernetes-aks-engine-upgrade.md?#forcing-an-upgrade).
 - **Occurrence**: Common

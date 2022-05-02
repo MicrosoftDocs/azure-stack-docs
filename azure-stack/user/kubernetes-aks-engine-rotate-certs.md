@@ -110,9 +110,8 @@ Then, delete the secret for metric server:
  - `kubectl delete secret -n kube-system metrics-server-token`
  - `kubectl delete pod -n kube-system  metrics-server
 `
-After that, restart Kube Controller Manager server from each of the control plane nodes:
- - `docker ps | grep controller`
- - `docker stop ContainerID`
+
+Drain and restart the control lane nodes one by one.
  
 ## Troubleshooting
 
