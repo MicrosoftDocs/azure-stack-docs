@@ -32,7 +32,7 @@ Import-Module AksHci
 > [!IMPORTANT]  
 > **You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all PowerShell windows.
 
-**Validate your installation**
+**Validate your installation.**
 
 > [!IMPORTANT]  
 > **Close all PowerShell windows** and reopen a new administrative session to check if you have the latest version of the PowerShell module.
