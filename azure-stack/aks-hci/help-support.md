@@ -2,12 +2,14 @@
 title: Concepts - Get support for Azure Kubernetes Services on Azure Stack HCI
 description: Learn about how to get support and open a support request for AKS on Azure Stack HCI.
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 05/02/2022
 ms.custom: fasttrack-edit
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
+# Intent: As an IT Pro, I want to find out what options are available to get help and support, such as creating a ticket.
+# Keyword: AKS support AKS help support requests
 ---
 
 # Get support for Azure Kubernetes Services on Azure Stack HCI

@@ -3,18 +3,20 @@ title: Support policies for Azure Kubernetes Service on Azure Stack HCI (AKS on 
 description: Learn about Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI) support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 03/30/2022
+ms.date: 04/29/2022
 author: mattbriggs
 ms.author: mabrigg
 ms.lastreviewed: 03/30/2022
 ms.reviewer: mikek
 
-#Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
+# Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
+# Intent: As an IT Pro, I want to understand the support policies associated with my AKS deployment, including security patches, networking, and preview features.
+# Keyword: support policies AKS technical support control plane service updates
 ---
 
 # Support policies for Azure Kubernetes Service on Azure Stack HCI
 
-This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI). The article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
+This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI). The article also details cluster node management, control plane components, third-party open-source components, and security or patch management.
 
 ## Service updates and releases
 
@@ -23,13 +25,13 @@ This article provides details about technical support policies and limitations f
 
 ## Supported version policy
 
-AKS on Azure Stack HCI versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
+AKS on Azure Stack HCI versions are expressed (following Semantic Versioning terminology) as *w.z.y.zzzz*, where *w* is the major version, *x* is the minor version, *y* is the patch version, and *zzzz* is the build of the specific version. 
 
 AKS on Azure Stack HCI maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
 
 Kubernetes versions in AKS on Azure Stack HCI follow the [Kubernetes version policy](https://kubernetes.io/releases/version-skew-policy/). For details on the supported Kubernetes Versions see [Supported Kubernetes Versions](./supported-kubernetes-versions.md).
 
-To keep your AKS on Azure Stack HCI environment in a supported state, it's recommended to always stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
+To keep your AKS on Azure Stack HCI environment in a supported state, it's recommended to always stay within a 30 day window of the latest release, and not to let your installation lapse more than 60 days from the latest update.
 
 After 120 days Microsoft can't guarantee that older versions of AKS on Azure Stack HCI are still available on the release servers for download and scale operations, upgrades, reinstallations and other operation in the cluster will start to fail requiring a redeployment of the AKS on Azure Stack HCI environment with the latest version.
 
@@ -37,7 +39,11 @@ If your cluster falls behind more than 60 days (2 versions), you'll have to upgr
 
 ## Managed features in AKS on Azure Stack HCI
 
-Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options. By contrast, AKS on Azure Stack HCI provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
+Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options. 
+
+By contrast, AKS on Azure Stack HCI provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. 
+
+As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
 
 With AKS on Azure Stack HCI, you get a partially managed *control plane*. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
 
