@@ -33,119 +33,7 @@ As shown in the following diagram, Azure Stack HCI accesses Azure using more tha
 
 This section describes the firewall connectivity requirements and recommendations for your Azure Stack HCI cluster and the associated services.
 
-### Cluster creation
-
-You don't need any additional firewall rules if you use Windows Admin Center or PowerShell to create your Azure Stack HCI cluster.
-
-### Cluster registration and billing
-
-Cluster registration requires the Az.StackHCI PowerShell module, which is not included in the Azure Stack HCI operating system. If you use Windows Admin Center or PowerShell, you need to either unblock \*.powershellgallery.com or download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1).
-
-Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allow-list the URL endpoints in order to download the Arc for Servers agent for registration.
-
-For information about networking requirements for using the Connected Machine agent to onboard a physical server or virtual machine to Azure Arc-enabled servers, see [Connected Machine agent network requirements](/azure/azure-arc/servers/network-requirements).
-
-You must allow-list the following URL endpoints for registration and billing. Depending on your cluster and its location, select the appropriate tab below.
-
-- The first URL under each tab is used for Active Directory Authority. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
-- The second URL under each tab is used for Graph. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
-- The third URL under each tab is used for Resource Manager. This is used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Its service tag is AzureResourceManager.
-- The last URL under each tab is used for Dataplane. This is used to push up diagnostics data. It is used in the Azure portal pipeline, and pushes billing data.
-
-#### [Azure Public Cloud](#tab/public-cloud)
-
-```
-https://login.microsoftonline.com
-https://graph.windows.net/
-https://management.azure.com/
-https://azurestackhci.azurefd.net
-```
-
-#### [U.S. Government Cloud](#tab/us-government-cloud)
-
-```
-https://login.microsoftonline.us
-https://graph.windows.net
-https://management.usgovcloudapi.net/
-https://dp.azurestackchi.azure.us
-```
-
-#### [China Government Cloud](#tab/china-government-cloud)
-
-```
-https://login.chinacloudapi.cn/
-https://graph.chinacloudapi.cn/
-https://management.chinacloudapi.cn/
-https://dp.stackhci.azure.cn
-```
----
-
-### Microsoft Update
-
-If there is a corporate firewall between the Azure Stack HCI operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, you must obtain authorization to allow internet access to the following URLs:
-
-- http\://windowsupdate.microsoft.com
-- http\://\*.windowsupdate.microsoft.com
-- https\://\*.windowsupdate.microsoft.com
-- http\://\*.update.microsoft.com
-- https\://\*.update.microsoft.com
-- http\://\*.windowsupdate.com
-- http\://download.windowsupdate.com
-- https\://download.microsoft.com
-- http\://\*.download.windowsupdate.com
-- http\://wustat.windows.com
-- http\://ntservicepack.microsoft.com
-- http\://go.microsoft.com
-- http\://dl.delivery.mp.microsoft.com
-- https\://dl.delivery.mp.microsoft.com
-
-### Cluster Cloud Witness
-
-This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `\[myblobstorage\].blob.core.windows`.net.
-
-### Remote support
-
-This is optional. You can use remote support to allow a Microsoft support professional to access your device remotely and perform limited troubleshooting and repair. If you choose to configure remote support, you must allow firewall access to the following URLs:
-
-- \*.servicebus.windows.net
-- \*.core.windows.net
-- login.microsoftonline.com
-- https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-- https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-- https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-- https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-- https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
-- https://edgesupprd.trafficmanager.net
-
-### AKS on Azure Stack HCI
-
-For information about firewall requirements for using AKS on Azure Stack HCI, see [AKS on Azure Stack HCI firewall requirements](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements).
-
-### Arc for Servers
-
-For information about firewall requirements for using Arc for Servers, see [Arc for Servers firewall requirements](/azure/azure-arc/servers/network-requirements).
-
-### Microsoft Monitoring Agent (MMA) and Log Analytics Agent
-
-For information about firewall requirements for using MMA and Log Analytics Agent, see [Microsoft Monitoring Agent (MMA)/Log Analytics Agent firewall requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
-
-### Qualys
-
-For information about firewall requirements for using Qualys, see [Qualys extension firewall requirements](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
-
-### Microsoft Defender
-
-For information about firewall requirements for using Microsoft Defender, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
-
-### Azure portal
-
-For information about firewall requirements for using Azure portal, see [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
-
-### Azure Arc Resource Bridge
-
-For information about firewall requirements for using Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](/azure/azure-arc/resource-bridge/overview)
-
-## Required firewall URLs
+### Required firewall URLs
 
 This section provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
@@ -218,7 +106,7 @@ The following are the required firewall URLs in the JSON format. Use the Copy bu
 `````
 ----
 
-## Recommended firewall URLs
+### Recommended firewall URLs
 
 This section provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
 
@@ -410,6 +298,118 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     } ] 
 ```
 ----
+
+### Cluster creation
+
+You don't need any additional firewall rules if you use Windows Admin Center or PowerShell to create your Azure Stack HCI cluster.
+
+### Cluster registration and billing
+
+Cluster registration requires the Az.StackHCI PowerShell module, which is not included in the Azure Stack HCI operating system. If you use Windows Admin Center or PowerShell, you need to either unblock \*.powershellgallery.com or download and install the Az.StackHCI PowerShell module manually from [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.StackHCI/1.1.1).
+
+Optionally, download the Arc for Servers agent for registration. This isn't required but recommended to manage your cluster from the Azure portal or use Arc services. You need to allow-list the URL endpoints in order to download the Arc for Servers agent for registration.
+
+For information about networking requirements for using the Connected Machine agent to onboard a physical server or virtual machine to Azure Arc-enabled servers, see [Connected Machine agent network requirements](/azure/azure-arc/servers/network-requirements).
+
+You must allow-list the following URL endpoints for registration and billing. Depending on your cluster and its location, select the appropriate tab below.
+
+- The first URL under each tab is used for Active Directory Authority. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
+- The second URL under each tab is used for Graph. This is used for authentication, token fetch, and validation. Its service tag is AzureActiveDirectory.
+- The third URL under each tab is used for Resource Manager. This is used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Its service tag is AzureResourceManager.
+- The last URL under each tab is used for Dataplane. This is used to push up diagnostics data. It is used in the Azure portal pipeline, and pushes billing data.
+
+#### [Azure Public Cloud](#tab/public-cloud)
+
+```
+https://login.microsoftonline.com
+https://graph.windows.net/
+https://management.azure.com/
+https://azurestackhci.azurefd.net
+```
+
+#### [U.S. Government Cloud](#tab/us-government-cloud)
+
+```
+https://login.microsoftonline.us
+https://graph.windows.net
+https://management.usgovcloudapi.net/
+https://dp.azurestackchi.azure.us
+```
+
+#### [China Government Cloud](#tab/china-government-cloud)
+
+```
+https://login.chinacloudapi.cn/
+https://graph.chinacloudapi.cn/
+https://management.chinacloudapi.cn/
+https://dp.stackhci.azure.cn
+```
+---
+
+### Microsoft Update
+
+If there is a corporate firewall between the Azure Stack HCI operating system and the internet, you might have to configure that firewall to ensure the operating system can obtain updates. To obtain updates from Microsoft Update, the operating system uses port 443 for the HTTPS protocol. Although most corporate firewalls allow this type of traffic, some companies restrict internet access due to their security policies. If your company restricts access, you must obtain authorization to allow internet access to the following URLs:
+
+- http\://windowsupdate.microsoft.com
+- http\://\*.windowsupdate.microsoft.com
+- https\://\*.windowsupdate.microsoft.com
+- http\://\*.update.microsoft.com
+- https\://\*.update.microsoft.com
+- http\://\*.windowsupdate.com
+- http\://download.windowsupdate.com
+- https\://download.microsoft.com
+- http\://\*.download.windowsupdate.com
+- http\://wustat.windows.com
+- http\://ntservicepack.microsoft.com
+- http\://go.microsoft.com
+- http\://dl.delivery.mp.microsoft.com
+- https\://dl.delivery.mp.microsoft.com
+
+### Cluster Cloud Witness
+
+This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `\[myblobstorage\].blob.core.windows`.net.
+
+### Remote support
+
+This is optional. You can use remote support to allow a Microsoft support professional to access your device remotely and perform limited troubleshooting and repair. If you choose to configure remote support, you must allow firewall access to the following URLs:
+
+- \*.servicebus.windows.net
+- \*.core.windows.net
+- login.microsoftonline.com
+- https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
+- https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
+- https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
+- https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
+- https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https://edgesupprd.trafficmanager.net
+
+### AKS on Azure Stack HCI
+
+For information about firewall requirements for using AKS on Azure Stack HCI, see [AKS on Azure Stack HCI firewall requirements](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements).
+
+### Arc for Servers
+
+For information about firewall requirements for using Arc for Servers, see [Arc for Servers firewall requirements](/azure/azure-arc/servers/network-requirements).
+
+### Microsoft Monitoring Agent (MMA) and Log Analytics Agent
+
+For information about firewall requirements for using MMA and Log Analytics Agent, see [Microsoft Monitoring Agent (MMA)/Log Analytics Agent firewall requirements](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
+
+### Qualys
+
+For information about firewall requirements for using Qualys, see [Qualys extension firewall requirements](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
+
+### Microsoft Defender
+
+For information about firewall requirements for using Microsoft Defender, see [Microsoft Defender firewall requirements](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
+
+### Azure portal
+
+For information about firewall requirements for using Azure portal, see [Allow the Azure portal URLs on your firewall or proxy server](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
+
+### Azure Arc Resource Bridge
+
+For information about firewall requirements for using Azure Arc Resource Bridge, see [Azure Arc resource bridge networking requirements](/azure/azure-arc/resource-bridge/overview)
 
 ## Firewall rules and port requirements
 
