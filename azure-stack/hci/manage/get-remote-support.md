@@ -97,7 +97,7 @@ Before remote support is enabled, you must provide consent to authorize Microsof
 
 The following example scenarios show you how to perform various operations to grant remote support access for Microsoft support.
 
-### Grant remote support for diagnostics
+### Enable remote support for diagnostics
 
 In this example, you grant remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
@@ -111,7 +111,7 @@ You can set **ExpireInMinutes** a minimum duration of 60 minutes (one hour) and 
 
 If duration is not defined, the remote session expires in 480 (8 hours) by default.
 
-### Grant remote support for diagnostics and repair
+### Enable remote support for diagnostics and repair
 
 In this example, you grant remote support access for diagnostic and repair related operations only. Because expiration was not explicitly provided, it expires in eight hours by default.
 
