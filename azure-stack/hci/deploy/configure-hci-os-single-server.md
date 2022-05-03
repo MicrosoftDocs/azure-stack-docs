@@ -17,15 +17,12 @@ The following sections will provide information for deploying Azure Stack HCI OS
 
 To review single server supported systems, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/).
 
-> [!IMPORTANT]
-> For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center (WAC) can be used to manage specific components following a successful deployment.
-
 ## Prerequisites
 
 - A single server configured with all NVMe or all SSD drives from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog).
 
-> [!Note]
-> Single server is only supported on single storage type configurations
+> [!NOTE]
+> Single server is only supported on single storage type configurations.
 
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
 - Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) (WAC) to register and manage the server once it has been configured.
@@ -49,5 +46,8 @@ Here are the steps to configure Azure Stack HCI OS on a single server.
 1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
 
 Now that you've completed the single server configuration, you're ready to deploy your workload.
+
+> [!IMPORTANT]
+> For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center (WAC) can be used to manage specific components following a successful deployment.
 
 ## Next steps
