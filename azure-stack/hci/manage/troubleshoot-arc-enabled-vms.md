@@ -28,6 +28,13 @@ $resourcebridgevmip="<input-from-admin>"
 Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
 ```
 
+> [!NOTE]
+> Make sure that you have the latest PowerShell module for log collection.
+>```PowerShell
+> #Update the PowerShell module
+> Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
+```
+
 **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 **$resourcebridgevmip** is the IP address of the Arc Resource Bridge virtual machine.
 
