@@ -22,18 +22,18 @@ Collect diagnostics information before contacting Microsoft support as they may 
 
 For issues related to Arc VM management, you can generate logs from the cluster using the following command:
 
-```PowerShell
-$csv_path="<input-from-admin>"
-$resourcebridgevmip="<input-from-admin>"
-Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
-```
-
 > [!NOTE]
 > Make sure that you have the latest PowerShell module for log collection.
 >```PowerShell
 > #Update the PowerShell module
 > Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
 >```
+
+```PowerShell
+$csv_path="<input-from-admin>"
+$resourcebridgevmip="<input-from-admin>"
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
+```
 
 **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 **$resourcebridgevmip** is the IP address of the Arc Resource Bridge virtual machine.
