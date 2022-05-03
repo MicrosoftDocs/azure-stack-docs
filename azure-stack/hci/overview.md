@@ -30,7 +30,7 @@ Watch the video on the high-level features of Azure Stack HCI:
 
 > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
-Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
+Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. Clustered servers, two or more, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
 Azure Stack HCI combines the following:
 
