@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 04/04/2022
+ms.lastreviewed: 05/03/2022
 ms.reviewer: abha
-ms.date: 04/04/2022
+ms.date: 05/03/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -164,15 +164,15 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
 
-| Firewall port               | Description     |
-| ---------------------------- | ------------ |
-| 22 | Required to collect logs using `Get-AksHciLogs`. This is a port on the AKS VMs that needs to be reached by the physical host.
-| 6443 | Port on the AKS VMs that needs to be reached by the physical host.
-| 46000 | Port on the AKS VMs that needs to be reached by the physical host.
-| 55000 | wssdcloudagent gRPC server port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. | 
-| 65000 | wssdcloudagent gRPC authentication port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. |
-
-Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
+| Port | Source | Description | Firewall Notes |
+|---|---|---|---|
+| 22 | AKS VMs | Required to collect logs when using Get-AksHciLogs. | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 6443 | AKS VMs | Required to communicate with Kubernetes APIs. | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 45000 | Physical Hyper-V Hosts | wssdAgent gRPC Server | No cross-VLAN rules are needed. |
+| 45001 | Physical Hyper-V Hosts | wssdAgent gRPC Authentication | No cross-VLAN rules are needed. |
+| 46000 | AKS VMs | ??? | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 55000 | Cluster Resource | wssdCloudAgent gRPC Server | If using separate VLANs, the AKS VMs need to access the Cluster Resource's IP on this port. |
+| 65000 | Cluster Resource | wssdCloudAgent gRPC Authentication | If using separate VLANs, the AKS VMs need to access the Cluster Resource's IP on this port. |
 
 If your network requires the use of a proxy server to connect to the internet, see [Use proxy server settings on AKS on Azure Stack HCI](set-proxy-settings.md).
 
