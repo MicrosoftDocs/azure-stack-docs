@@ -3,15 +3,17 @@ title: Create a ReplicaSet in Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 11/03/2021
+ms.date: 04/25/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+# Intent: As an IT Pro, I need to understand ReplicaSets and how to create or delete them in order to manage pods in my AKS on Azure Stack HCI deployment. 
+# Keyword: ReplicaSet replica pods pod fails create ReplicaSets delete ReplicaSets
 ---
 
 # Create ReplicaSets
 
-A ReplicaSet is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods is running at any given time, which guarantees a specified number of identical pods are available.
+A *ReplicaSet* is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods is running at any given time, which guarantees an available specified number of identical pods.
 
 When a pod fails, a ReplicaSet brings up a new instance of the pod and scales up when the running instances reach a specified number. Conversely, it scales down or deletes pods when an instance with the same label is created.
 

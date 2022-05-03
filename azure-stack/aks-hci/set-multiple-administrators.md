@@ -1,17 +1,21 @@
 ---
 title: Set up multiple administrators on Azure Kubernetes Service (AKS) on Azure Stack HCI
-description: Learn how to set up multiple administrators and register additional users with the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI.
+description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 11/16/2021
+ms.date: 04/21/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
+# Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI.
+# Keyword: administrator setup register users Microsoft on Cloud (MOC) service 
 ---
 
 # Set up multiple administrators
 
-For various reasons, AKS on Azure Stack HCI is currently tightly coupled to the user who installed the service with no awareness of other local users or AD users with administrative rights. We are working on resolving this issue, but you can use the steps in this topic to register additional users with the Microsoft on Cloud (MOC) service under AKS on Azure Stack HCI. This will allow multiple people to perform administrative tasks.
+Currently, AKS on Azure Stack HCI is tightly coupled to the user who installed the service, with no awareness of other local users or AD users with administrative rights. We are working on resolving this issue. 
+
+In the meantime, you can use the steps in this topic to register additional users with the Microsoft on Cloud (MOC) service under AKS on Azure Stack HCI. This will allow multiple people to perform administrative tasks.
 
 ## Create a new MOC user
 
@@ -44,7 +48,7 @@ $loginFile = “.\login.yaml”
 mocctl.exe security login --loginpath $loginFile --identity  # login to new identity
 ```
 
-That's it! `Admin1` and `admin2` now both have administrative rights.
+`Admin1` and `admin2` now both have administrative rights.
 
 ## Next steps
 
