@@ -22,6 +22,7 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 - Storage Bus Layer (SBL) cache isn't supported. Single server is only supported on single storage type configurations (for example all NVMe or all SSD).
 - Stretch cluster isn't supported at this time.
 - Host update that requires a restart will cause downtime to running virtual machines (VMs). Shut them down gracefully before restarting the host.
+- Single server deployment needs to be done through PowerShell.
 
 ## Prerequisites
 
