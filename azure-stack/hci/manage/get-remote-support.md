@@ -1,5 +1,5 @@
 ---
-title: Get remote support for Azure Stack HCI
+title: Get remote support for Azure Stack HCI (preview)
 description: This topic provides guidance on how to get remote support for the Azure Stack HCI operating system.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -7,14 +7,18 @@ ms.topic: how-to
 ms.date: 04/26/2022
 ---
 
-# Get remote support for Azure Stack HCI
+# Get remote support for Azure Stack HCI (preview)
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
+
+> [!IMPORTANT]
+> Remote support for Azure Stack HCI is currently in preview.
+> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 This topic provides guidance on how to get remote support for your Azure Stack HCI operating system.
 
 You can use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and
-duration of access. Microsoft support can access your device only after a support request is submitted.
+duration of access. Microsoft support can access your device only after a [support request is submitted](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the
 access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
@@ -69,13 +73,13 @@ A local domain administrator must install the following JEA configurations to gr
 | Name | Description |
 |--|--|
 | Install-AzStackHCIRemoteSupport | Install remote support agent |
-|Enable-AzStackHCIRemoteSupport -AccessLevel `<Access Diagnostics or DiagnosticsRepair>` -AgreeToRemoteSupportConsent -ExpireInMinutes `<NumberOfMinutes>` -SasCredential `<SAS>`  | Enable remote support access by providing consent details and SAS token |
+|Enable-AzStackHCIRemoteSupport -AccessLevel `<Access Diagnostics or DiagnosticsRepair>` -AgreeToRemoteSupportConsent -ExpireInMinutes `<NumberOfMinutes>` -SasCredential `<SAS>`  | Grant remote support access by providing consent details and SAS token |
 | Disable-AzStackHCIRemoteSupport | Disable remote support access by revoking consent |
 | Get-AzStackHCIRemoteSupportAccess -Cluster  -IncludeExpired | Check the current remote support access status |
 | Get-AzStackHCIRemoteSupportSessionHistory –FromDate `<DateTime>` -IncludeSessionTranscript –SessionId `<ID>` | View the remote support session history  |
 | Remove-AzStackHCIRemoteSupport | Uninstall remote support agent |
 
-For example scenarios that show how to perform various operations to enable remote support access for Microsoft support, see the [Remote support examples](#remote-support-examples) section later in this article.  
+For example scenarios that show how to perform various operations to grant remote support access for Microsoft support, see the [Remote support examples](#remote-support-examples) section later in this article.  
 
 ### Install Remote Support extension (after Azure registration)
 
@@ -91,11 +95,11 @@ Before remote support is enabled, you must provide consent to authorize Microsof
 
 ## Remote support examples
 
-The following example scenarios show you how to perform various operations to enable remote support access for Microsoft support.
+The following example scenarios show you how to perform various operations to grant remote support access for Microsoft support.
 
-### Enable remote support for diagnostics
+### Grant remote support for diagnostics
 
-In this example, you enable remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
+In this example, you grant remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
 ```powershell
 Enable-AzStackHCIRemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
@@ -107,9 +111,9 @@ You can set **ExpireInMinutes** a minimum duration of 60 minutes (one hour) and 
 
 If duration is not defined, the remote session expires in 480 (8 hours) by default.
 
-### Enable remote support for diagnostics and repair
+### Grant remote support for diagnostics and repair
 
-In this example, you enable remote support access for diagnostic and repair related operations only. Because expiration was not explicitly provided, it expires in eight hours by default.
+In this example, you grant remote support access for diagnostic and repair related operations only. Because expiration was not explicitly provided, it expires in eight hours by default.
 
 ```powershell
 Enable-AzStackHCIRemoteSupport -AccessLevel DiagnosticsRepair
