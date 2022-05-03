@@ -13,10 +13,18 @@ ms.reviewer: JasonGerend
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
+> [!NOTE]
+> If you're doing a single server installation of Azure Stack HCI 21H2, use PowerShell to create the cluster.
+
 You have a choice between two cluster types:
 
-- Standard cluster with at least two server nodes, all residing in a single site.
+- Standard cluster with one or two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
+
+For the single server scenario, complete the same instructions below for the one server.
+
+> [!NOTE]
+> Stretch clusters are not supported in a single server configuration.
 
 In this article, we will create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
 
@@ -24,7 +32,7 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
-If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
+If you're interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you begin
 
@@ -34,7 +42,7 @@ Before you begin, make sure you:
 - Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Ensure all servers are in the correct time zone.
-- Have an account that’s a member of the local Administrators group on each server.
+- Have an account that's a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 - For stretched clusters, set up your two sites beforehand in Active Directory.
 
@@ -370,6 +378,8 @@ After creating the cluster, use the `Enable-ClusterStorageSpacesDirect` cmdlet, 
 - **Configure Storage Spaces Direct caches:** If there is more than one media (drive) type available for Storage Spaces Direct, it enables the fastest as cache devices (read and write in most cases).
 
 - **Create tiers:** Creates two tiers as default tiers. One is called "Capacity" and the other called "Performance". The cmdlet analyzes the devices and configures each tier with the mix of device types and resiliency.
+
+For the single server scenario, the only FaultDomainAwarenessDefault is PhysicalDisk. `Enable-ClusterStorageSpacesDirect` cmdlet will detect single server and automatically configure FaultDomainAwarenessDefault as PyhsicalDisk during enablement.
 
 For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also do the following:
 
