@@ -75,4 +75,4 @@ The following table describes currently known issues for single server. This lis
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Configure Single Server](../deploy/configure-hci-os-single-server.md)
+> [Configure single server](../deploy/configure-hci-os-single-server.md)
