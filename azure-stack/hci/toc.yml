@@ -226,7 +226,7 @@
   items:
   - name: Storage and clusters
     items:
-    - name: single server cluster
+    - name: Single server cluster
       href: concepts/azure-stack-hci-os-single-server-overview.md
     - name: System requirements
       href: concepts/system-requirements.md
