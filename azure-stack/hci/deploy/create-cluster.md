@@ -1,11 +1,11 @@
 ---
 title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
-author: v-dasis
+author: JasonGerend
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-tamarshall
-ms.reviewer: JasonGerend
+ms.author: jgerend
+ms.reviewer: shsathee
 ---
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
@@ -21,7 +21,7 @@ You have a choice between creating two cluster types:
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
-If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
+If you're interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you run the wizard
 
@@ -30,7 +30,7 @@ Before you run the Create Cluster wizard, make sure you:
 - Have read the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
 - Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
-- Have an account that’s a member of the local Administrators group on each server.
+- Have an account that's a member of the local Administrators group on each server.
 - Ensure all servers are in the correct time zone.
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - If you're using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates. To install them, open Windows Admin Center and click Settings (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
@@ -150,7 +150,7 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
 1. Select **Next: Networking**.
 1. On **2.1 Check network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
-1. On **2.2 Select management adapters**, select one or two management adapters to use for each server. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it’s excluded from the rest of the wizard workflow.
+1. On **2.2 Select management adapters**, select one or two management adapters to use for each server. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it's excluded from the rest of the wizard workflow.
 
     :::image type="content" source="media/cluster/create-cluster-management-adapters.png" alt-text="Create cluster wizard - Select management adapters" lightbox="media/cluster/create-cluster-management-adapters.png":::
 
