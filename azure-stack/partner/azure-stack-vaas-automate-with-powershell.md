@@ -280,4 +280,4 @@ For other options, see [Monitor and manage tests in the VaaS portal](azure-stack
 
 To learn more about PowerShell on Azure Stack Hub, review the latest modules.
 
-- [Azure Stack Hub module](/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)
+- [Azure Stack Hub module](/powershell/azure/azure-stack/overview?&preserve-view=true)

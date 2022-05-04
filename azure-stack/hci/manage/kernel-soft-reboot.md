@@ -105,7 +105,7 @@ The following table shows how each name-value pair provides more information on 
 | **BootType** | Specifies the type of reboot performed in the last run. |
 | **SoftBootStatus** | Indicates if Kernel Soft Reboot is **Enabled**, **NotEnabled**, **NotInstalled**, or **Bypassed** if the server opts out of Kernel Soft Reboot using registry key settings. |
 
-For additional troubleshooting, see [Save-CauDebugTrace](/powershell/module/clusterawareupdating/save-caudebugtrace?view=windowsserver2019-ps).
+For additional troubleshooting, see [Save-CauDebugTrace](/powershell/module/clusterawareupdating/save-caudebugtrace/?&preserve-view=true).
 
 ## FAQ
 
@@ -128,5 +128,5 @@ This section answers frequently asked questions about Kernel Soft Reboot on Azur
 For more information, see also:
 
 - [Update Azure Stack HCI clusters](update-cluster.md)
-- [Cluster-Aware Updating PowerShell commands](/powershell/module/clusterawareupdating/?view=windowsserver2019-ps)
+- [Cluster-Aware Updating PowerShell commands](/powershell/module/clusterawareupdating/?&preserve-view=true)
 - [Cluster-Aware Updating requirements and best practices](/windows-server/failover-clustering/cluster-aware-updating-requirements)
