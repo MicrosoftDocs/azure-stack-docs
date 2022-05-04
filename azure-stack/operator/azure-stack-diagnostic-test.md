@@ -231,6 +231,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## Next steps
 
-To learn more about Azure Stack Hub diagnostics tools and issue logging, see [Azure Stack Hub diagnostics tools](./diagnostic-log-collection.md&preserve-view=true).
+To learn more about Azure Stack Hub diagnostics tools and issue logging, see [Azure Stack Hub diagnostics tools](/azure-stack/operator/diagnostic-log-collection).
 
 To learn more about troubleshooting, see [Microsoft Azure Stack Hub troubleshooting](azure-stack-troubleshooting.md).
