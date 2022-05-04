@@ -41,8 +41,8 @@ Here are the steps to configure Azure Stack HCI OS on a single server.
 1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md).
 1. Use PowerShell to [add a server](../manage/cluster-powershell.md#add-or-remove-a-server) to the cluster.
     1. Optionally, you may choose to [add a server using WAC](/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
-1. Use PowerShell to [Register a cluster](../deploy/register-with-azure.md#register-a-cluster-using-powershell)
-    1. Optionally, you may choose to [register your cluster using WAC](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center)
+1. Use PowerShell to [Register a cluster](../deploy/register-with-azure.md#register-a-cluster-using-powershell).
+    1. Optionally, you may choose to [register your cluster using WAC](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center).
 1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
 
 Now that you've completed the single server configuration, you're ready to deploy your workload.
