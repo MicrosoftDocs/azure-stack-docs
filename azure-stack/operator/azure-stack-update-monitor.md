@@ -21,11 +21,11 @@ You can use the following PowerShell cmdlets to manage your updates:
 
 | Cmdlet | Description |
 |------------------------------------------------------|-------------|
-| [Get-AzsUpdate](/powershell/module/azs.update.admin/get-azsupdate?view=azurestackps-1.8.0) | Get the list of available updates. |
-| [Get-AzsUpdateLocation](/powershell/module/azs.update.admin/get-azsupdatelocation?view=azurestackps-1.8.0)| Get the list of update locations. |
-| [Get-AzsUpdateRun](/powershell/module/azs.update.admin/get-azsupdaterun?view=azurestackps-1.8.0) | Get the list of update runs.  |
-| [Install-AzsUpdate](/powershell/module/azs.update.admin/install-azsupdate?view=azurestackps-1.8.0) | Apply a specific update at an update location. |
-| [Resume-AzsUpdateRun](/powershell/module/azs.update.admin/resume-azsupdaterun?view=azurestackps-1.8.0) | Resumes a previously started update run that failed. |
+| [Get-AzsUpdate](/powershell/module/azs.update.admin/get-azsupdate&preserve-view=true) | Get the list of available updates. |
+| [Get-AzsUpdateLocation](/powershell/module/azs.update.admin/get-azsupdatelocation&preserve-view=true)| Get the list of update locations. |
+| [Get-AzsUpdateRun](/powershell/module/azs.update.admin/get-azsupdaterun&preserve-view=true) | Get the list of update runs.  |
+| [Install-AzsUpdate](/powershell/module/azs.update.admin/install-azsupdate&preserve-view=true) | Apply a specific update at an update location. |
+| [Resume-AzsUpdateRun](/powershell/module/azs.update.admin/resume-azsupdaterun&preserve-view=true) | Resumes a previously started update run that failed. |
 
 ## Get a list of update runs
 
