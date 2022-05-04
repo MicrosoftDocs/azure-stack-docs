@@ -50,9 +50,9 @@
 - name: Reference
   items:
   - name: Azure Stack PowerShell
-    href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10
+    href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.10&preserve-view=true
   - name: CLI
-    href: /cli/azure/?view=azure-cli-2017-03-09-profile
+    href: /cli/azure/?view=azure-cli-2017-03-09-profile&preserve-view=true
 - name: Related
   items:
   - name: Azure Stack Hub operator documentation

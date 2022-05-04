@@ -204,7 +204,7 @@
           - name: Use Bridge to Kubernetes with Visual Studio Code
             href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - name: Use Bridge to Kubernetes with Visual Studio
-            href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+            href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019&preserve-view=true
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
           - name: Deploy Linux applications
