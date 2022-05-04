@@ -4,7 +4,7 @@ description: Physical network requirements and considerations for Azure Stack HC
 author: jacobpedd
 ms.topic: conceptual
 ms.date: 11/10/2021
-ms.author: jpeddicord
+ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
 
