@@ -61,6 +61,8 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
 
 Now generate the CSRs. The instructions are specific to the Subject format that you select below:
 
+
+
 # [Subject with no CN](#tab/omit-cn)
 
 > [!NOTE]  
@@ -73,6 +75,7 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     ```
   
 [!INCLUDE [generate CSRs - no CN](../includes/get-pki-certs-csrs-new.md)]
+
 
 
 # [Subject with CN](#tab/add-cn)
@@ -88,10 +91,12 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
   
 [!INCLUDE [generate CSRs - with CN](../includes/get-pki-certs-csrs-new.md)]
 
-1. Test
+
 
 # [Subject with only CN](#tab/only-cn)
   
+1. Test
+
 [!INCLUDE [generate CSRs - with only CN](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
 ---
