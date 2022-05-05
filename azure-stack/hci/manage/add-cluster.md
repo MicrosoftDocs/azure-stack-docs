@@ -2,9 +2,9 @@
 title: Add or remove servers for an Azure Stack HCI cluster
 description: Learn how to add or remove server nodes from a cluster in Azure Stack HCI
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
+author: JasonGerend
+ms.author: jgerend
+ms.reviewer: stevenek
 ms.date: 05/27/2021
 ---
 

@@ -157,13 +157,20 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 | Firewall port               | Description     |
 | ---------------------------- | ------------ |
-| 22 | Required to collect logs using `Get-AksHciLogs`, when the physical host and AKS VMs are on different vLANs. This is a port on the VMs that need to be reached by the physical host.
-| 6443 | Ports on the AKS VMs that need to be reached by the physical host. This is required when the physical host and AKS VMs are on the same vLAN. This is a port on the VMs that need to be reached by the physical host.
-| 45000 | wssdagent gRPC server port. Required when the physical host and AKS VMs are on the same vLAN.
-| 45001 | wssdagent gRPC authentication port. Required when the physical host and AKS VMs are on the same vLAN.
-| 46000 | Ports on the AKS VMs that need to be reached by the physical host. This is required when the physical host and AKS VMs are on the same vLAN. This is a port on the VMs that need to be reached by the physical host.
-| 55000 | wssdcloudagent gRPC server port. This is a port on the physical host and needs to be reachable by processes in the AKS VMs. | 
-| 65000 | wssdcloudagent gRPC authentication port. This is a port on the physical host and needs to be reachable by processes in the AKS VMs. |
+| 45000           | wssdagent gRPC   server port     |
+| 45001             | wssdagent gRPC authentication port  |
+| 55000           | wssdcloudagent gRPC   server port      |
+| 65000            | wssdcloudagent gRPC authentication port  |
+
+If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
+
+| Firewall port               | Description     |
+| ---------------------------- | ------------ |
+| 22 | Required to collect logs using `Get-AksHciLogs`. This is a port on the AKS VMs that needs to be reached by the physical host.
+| 6443 | Port on the AKS VMs that needs to be reached by the physical host.
+| 46000 | Port on the AKS VMs that needs to be reached by the physical host.
+| 55000 | wssdcloudagent gRPC server port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. | 
+| 65000 | wssdcloudagent gRPC authentication port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. |
 
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI or Windows Server cluster.
 
