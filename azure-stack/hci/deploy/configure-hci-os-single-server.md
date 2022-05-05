@@ -33,16 +33,14 @@ Before you can configure your purchased single server, follow these instructions
 
 ## Configure single server
 
-Here are the steps to configure Azure Stack HCI OS on a single server.
+Here are the steps to configure the Azure Stack HCI OS, on a single server, after it has been successfully deployed.
 > [!NOTE]
 > Cluster witness is not required for a single server deployment.
 
-1. After Azure Stack HCI OS is successfully deployed, configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
+1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
 1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md).
 1. Use PowerShell to [add a server](../manage/cluster-powershell.md#add-or-remove-a-server) to the cluster.
-    1. Optionally, you may choose to [add a server using WAC](/windows-server/manage/windows-admin-center/use/manage-servers#adding-a-server-to-windows-admin-center).
-1. Use PowerShell to [Register a cluster](../deploy/register-with-azure.md#register-a-cluster-using-powershell).
-    1. Optionally, you may choose to [register your cluster using WAC](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center).
+1. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [WAC](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
 1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
 
 Now that you've completed the single server configuration, you're ready to deploy your workload.
@@ -51,3 +49,7 @@ Now that you've completed the single server configuration, you're ready to deplo
 > For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center (WAC) can be used to manage specific components following a successful deployment.
 
 ## Next steps
+
+- [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure.md)
+- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview.md)
+- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview.md)

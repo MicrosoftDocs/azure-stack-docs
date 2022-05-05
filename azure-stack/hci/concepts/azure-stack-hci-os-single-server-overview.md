@@ -15,7 +15,7 @@ ms.date: 04/04/2022
 
 This article provides information about Azure Stack HCI single server.
 
-Azure Stack HCI single server is a new cluster configuration option that is available for all Azure Stack HCI installations starting with version 21H2. This configuration option promotes flexibility if high resiliency isn't a requirement. Additionally, this server scale minimizes hardware and promotes lower Azure costs in locations that can tolerate lower resiliency. Single server may also be a concept for users who desire a minimal initial setup, with plans to scale out in the future.
+Azure Stack HCI single server is a new cluster configuration option that is available for all Azure Stack HCI installations starting with version 21H2. This configuration option promotes flexibility if high resiliency isn't a requirement. Additionally, this server scale minimizes hardware and promotes reduced Azure costs in locations that can tolerate lower resiliency. Single server may also be a concept for users who desire a minimal initial setup, with plans to scale out in the future.
 
 Along with the benefits mentioned, there are some initial limitations to recognize.
 
