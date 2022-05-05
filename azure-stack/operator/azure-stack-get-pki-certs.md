@@ -59,7 +59,7 @@ To prepare CSRs for new Azure Stack Hub PKI certificates, complete the following
     $externalFQDN = 'azurestack.contoso.com'    # The external FQDN for your Azure Stack Hub deployment
     ```
 
-Now generate the CSRs. The instructions are specific to the Subject format that you select below:
+Now generate the CSRs using the same PowerShell session. The instructions are specific to the **Subject** format that you select below:
 
 
 
