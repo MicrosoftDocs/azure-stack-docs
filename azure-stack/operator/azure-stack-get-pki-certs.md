@@ -72,7 +72,7 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
     ```
   
-[!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
+[!INCLUDE [generate CSRs - no CN](../includes/get-pki-certs-csrs-new.md)]
 
 
 # [Subject with CN](#tab/add-cn)
@@ -86,11 +86,13 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=NWTraders"
     ```
   
-[!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
+[!INCLUDE [generate CSRs - with CN](../includes/get-pki-certs-csrs-new.md)]
+
+1. Test
 
 # [Subject with only CN](#tab/only-cn)
   
-[!INCLUDE [prepare](../includes/get-pki-certs-csrs-new-cn-only.md)]
+[!INCLUDE [generate CSRs - with only CN](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
 ---
 
