@@ -94,7 +94,10 @@ Now generate the CSRs using the same PowerShell session. The instructions are sp
 
 
 # [Subject with only CN](#tab/only-cn)
-  
+
+> [!NOTE]  
+> The Readiness Checker tool will generate a CN for each certificate, and no other relative distinguished names will be included in the subject.
+
 [!INCLUDE [generate CSRs - with only CN](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
 ---
@@ -184,7 +187,7 @@ This section covers preparation of CSRs for renewal of existing Azure Stack Hub 
     ```
 ::: zone-end
 
-When you're ready, submit the generated .req file to your CA (either internal or public). The output directory named New-AzsCertificateSigningRequest contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the .inf files to be used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
+When you're ready, submit the generated .req file to your CA (either internal or public). The directory specified by the `$outputDirectory` variable contains the CSRs that must be submitted to a CA. The directory also contains, for your reference, a child directory containing the .inf files to be used during certificate request generation. Be sure that your CA generates certificates by using a generated request that meets the [Azure Stack Hub PKI requirements](azure-stack-pki-certs.md).
 
 ## Next steps
 
