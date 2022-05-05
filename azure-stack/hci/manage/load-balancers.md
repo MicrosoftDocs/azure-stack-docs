@@ -2,9 +2,9 @@
 title: Manage Software Load Balancer for SDN
 description: Learn how to manage Software Load Balancer for SDN
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
+author: ManikaDhiman
+ms.author: v-mandhiman
+ms.reviewer: anpaul
 ms.date: 07/21/2021
 ---
 

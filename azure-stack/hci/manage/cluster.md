@@ -2,9 +2,9 @@
 title: Manage Azure Stack HCI clusters - Windows Admin Center
 description: Learn to manage your Azure Stack HCI clusters using Windows Admin Center.
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
+author: ManikaDhiman
+ms.author: v-mandhiman
+ms.reviewer: stevenek
 ms.date: 07/15/2021
 ---
 
