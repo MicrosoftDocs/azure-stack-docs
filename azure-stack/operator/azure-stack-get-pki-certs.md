@@ -71,7 +71,7 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub"
     ```
-
+  
 [!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
 
 
@@ -85,11 +85,11 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
     ```powershell  
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=NWTraders"
     ```
-
+  
 [!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
 
 # [Subject with only CN](#tab/only-cn)
-
+  
 [!INCLUDE [prepare](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
 ---
