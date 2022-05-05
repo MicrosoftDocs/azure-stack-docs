@@ -4,10 +4,10 @@ description: Learn how to use a Linux machine in your Azure Stack Hub to host th
 author: mattbriggs
 
 ms.topic: article
-ms.date: 03/15/2022
+ms.date: 05/05/2022
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 03/15/2022
+ms.lastreviewed: 05/05/2022
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -45,9 +45,11 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 6. Run the following command:
 
     ```bash  
-        curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
-        chmod 700 get-akse.sh
-        ./get-akse.sh --version v0.xx.x
+    sudo apt update
+    sudo apt install jq
+    curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
+    chmod 700 get-akse.sh
+    ./get-akse.sh --version v0.xx.x
     ```
 
     > [!NOTE]  
