@@ -95,8 +95,6 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
 
 # [Subject with only CN](#tab/only-cn)
   
-1. Test
-
 [!INCLUDE [generate CSRs - with only CN](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
 ---
