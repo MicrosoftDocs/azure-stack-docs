@@ -1,11 +1,11 @@
 ---
 title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
-author: v-dasis
+author: ronmiab
 ms.topic: how-to
 ms.date: 10/29/2021
-ms.author: v-tamarshall
-ms.reviewer: JasonGerend
+ms.author: robess
+ms.reviewer: stevenek
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
@@ -24,7 +24,7 @@ For the stretched cluster scenario, we will use ClusterS1 as the name and use th
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 
-If you’re interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we’ll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
+If you're interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Before you begin
 
@@ -34,7 +34,7 @@ Before you begin, make sure you:
 - Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Ensure all servers are in the correct time zone.
-- Have an account that’s a member of the local Administrators group on each server.
+- Have an account that's a member of the local Administrators group on each server.
 - Have rights in Active Directory to create objects.
 - For stretched clusters, set up your two sites beforehand in Active Directory.
 

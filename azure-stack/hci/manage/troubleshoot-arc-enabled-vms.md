@@ -20,17 +20,25 @@ See the support topics for any errors and their remedial steps. If the error con
 
 Collect diagnostics information before contacting Microsoft support as they may ask for it.
 
-For issues related to Arc VM management, you can generate logs from the cluster using the **Get-ArcHCILogs** cmdlet.
+For issues related to Arc VM management, you can generate logs from the cluster using the following command:
+
+> [!NOTE]
+> Make sure that you have the latest PowerShell module for log collection.
+>```PowerShell
+> #Update the PowerShell module
+> Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
+>```
 
 ```PowerShell
-Get-ArcHCILogs -workDirectory <path>
+$csv_path="<input-from-admin>"
+$resourcebridgevmip="<input-from-admin>"
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
 ```
 
-The `workDirectory` is located under the following path: 
+**$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
+**$resourcebridgevmip** is the IP address of the Arc Resource Bridge virtual machine.
 
-`$csv_path\ResourceBridge`
-
-Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
+Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
 ## Limitations and known issues
 

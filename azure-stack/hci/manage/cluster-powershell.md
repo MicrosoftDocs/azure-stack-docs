@@ -1,11 +1,11 @@
 ---
 title: Manage Azure Stack HCI clusters using PowerShell
 description: Learn how to manage clusters on Azure Stack HCI using PowerShell
-author: v-dasis
+author: JasonGerend
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.author: jgerend
+ms.reviewer: stevenek
 ---
 
 # Manage Azure Stack HCI clusters using PowerShell
