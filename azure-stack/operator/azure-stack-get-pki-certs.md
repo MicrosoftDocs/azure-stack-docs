@@ -83,21 +83,12 @@ Now generate the CSRs. The instructions are specific to the Subject format that 
 1. Declare a subject, for example:
 
     ```powershell  
-    $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=portal.domain.com"
+    $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack Hub,CN=NWTraders"
     ```
 
 [!INCLUDE [prepare](../includes/get-pki-certs-csrs-new.md)]
 
 # [Subject with only CN](#tab/only-cn)
-
-> [!NOTE]  
-> **Only** the CN you specify will be configured on every certificate request. 
-
-1. Declare a subject, for example:
-
-    ```powershell  
-    $subject = "CN=portal.domain.com"
-    ```
 
 [!INCLUDE [prepare](../includes/get-pki-certs-csrs-new-cn-only.md)]
 
