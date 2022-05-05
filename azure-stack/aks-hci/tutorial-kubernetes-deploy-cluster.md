@@ -29,22 +29,9 @@ In later tutorials, the Azure Vote application is deployed to the cluster, scale
 
 In previous tutorials, a container image was created and uploaded to an Azure Container Registry instance. If you haven't done these steps, start at [Tutorial 1 - Create container images](tutorial-kubernetes-prepare-application.md).
 
-This tutorial uses the AksHci PowerShell module. If you have not installed it yet, run the following commands to install it.
+This tutorial uses the AksHci PowerShell module.
 
-```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-Install-Module -Name AksHci -Repository PSGallery
-```
-
-```powershell
-Import-Module Az.Accounts
-Import-Module Az.Resources
-Import-Module AzureAD
-Import-Module AksHci
-```
-**If you are using remote PowerShell, you must use CredSSP.** 
+[!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
 ## Install the Azure Kubernetes Service Host
 
