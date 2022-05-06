@@ -42,6 +42,9 @@ Use Windows Admin Center to join the server to your cluster.
 1. In **Server name**, enter the full-qualified domain name of the server you want to add, click **Add**, then click **Add** again at the bottom.
 1. Verify the server has been successfully added to your cluster.
 
+>[!NOTE]
+> If the node has been added to a single server, see these [manual steps](../deploy/configure-hci-os-single-server.md#scale-out-single-server) to reconfigure Storage Spaces Direct.
+
 ## Remove a server from a cluster
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.

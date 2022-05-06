@@ -105,6 +105,9 @@ This example removes the node named node4 from cluster Cluster1:
 Remove-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
+>[!NOTE]
+> If the node has been added to a single server, see these [manual steps](../deploy/configure-hci-os-single-server.md#scale-out-single-server) to reconfigure Storage Spaces Direct.
+
 ## Setup the cluster witness
 
 Use the `Set-ClusterQuorum` cmdlet to set quorum witness options for the cluster. For more examples and usage information, see the [Set-ClusterQuorum](/powershell/module/failoverclusters/set-clusterquorum?view=win10-ps) reference documentation.
