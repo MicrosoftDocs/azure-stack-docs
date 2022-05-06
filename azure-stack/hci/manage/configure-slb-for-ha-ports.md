@@ -1,0 +1,100 @@
+---
+title: Configure Software Load Balancer for high availability ports
+description: Learn how to configure Software Load Balancer for high availability ports.
+ms.author: v-mandhiman
+ms.reviewer: anpaul
+ms.topic: article
+author: ManikaDhiman
+ms.date: 05/06/2022
+---
+
+# Configure Software Load Balancer for high availability ports
+
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+
+## Overview of high availability ports
+
+High availability port is a type of load balancing rule that helps you load-balance all protocols across all ports, both frontend and backend. Similar to all load balancing rules, high availability port relies on the 5-tuple connection: source address, destination address, source port, destination port, and protocol. To apply this rule, you set your **Protocol** status to **All**, so that both User Datagram Protocol (UDP) and Transmission Control Protocol (TCP) datagrams are accepted. You also need to set your **Frontend Port** and **Backend Port** to **0** for high availability.
+
+### Why to use high availability ports?
+
+High availability ports are useful in key scenarios, such as high availability scenarios
+and scaling out Network Virtual Appliances (NVA) within your virtual and logical networks. This feature can also assist in load balancing a large number of ports.
+
+An example use case regarding NVAs and high availability ports is to secure your workload from threats where the appliances need to be highly available and reliable. High availability port can provide high availability and reliability by offering:
+
+- Fast failover to healthy instances
+
+- High performance with scale-out to *n*-active instances
+
+- *n*-active and active-passive scenarios
+
+## Prerequisites
+
+To set up the high availability port rule, you must configure the following:
+
+- **Backend Pool**
+
+- Frontend IP configuration
+
+- Health Probe
+
+> [!NOTE]
+> For **Backend Pool**, you must configure your virtual machines first. To learn how to set up a virtual machine as well as other configurations, refer to the following articles:
+>
+> - For Virtual Machine Management, see [Manage VMs with Windows Admin Center](../manage/vm.md)
+> - For Software Load Balancer Management, see [Manage Software Load Balancer for SDN](../manage/load-balancers.md)
+
+## Configure load balancer rule for high availability port
+
+1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
+1. Under **Tools**, scroll down to **Networking**, and select **Load Balancer**.
+    1. If **Load Balancer** isn't available under **Tools**, you will have to add the feature through the **SDN Load balancers** extension. For information about how to install the extension, see [Install and manage extensions](/windows-admin-center/configure/using-extensions)
+    1. If you don't have **Load Balancer** created yet, see [Deploy SDN Software Load Balancer](../deploy/sdn-wizard#deploy-sdn-software-load-balancer)
+
+1. After creating your **Load Balancer** or selecting the appropriate **Load Balancer** to apply the high availability rule to, scroll down to where you can see the **Load Balancing Rule** section.
+1. Add **+New** rule.
+1. Fill out the information as provided in the following table:
+
+| Name | Description or Value |
+|----- | -------------------------- |
+| Frontend IP Configuration | Choose your frontend IP configuration |
+| Protocol | ALL |
+| Frontend Port | 0 |
+| Backend Port | 0 |
+| Backend Pool | Choose your Backend Pool |
+| Health Probe | Choose your Health Probe |
+| Session Persistence | Default |
+| Idle Timeout (minutes) | Configurable |
+| Floating IP (direct server return) | On/Off|
+
+1. After filling out the necessary information, select **Create** or **Submit**.
+
+## Supported configurations
+
+- A single, non-floating IP (non-Direct Server Return) HA-ports. Select **Disable** for the **Floating IP** button for this configuration.
+
+- A single, floating IP (Direct Server Return) HA-ports. Select **Enable** for the **Floating IP** button for this configuration.
+
+- Multiple high availability ports configurations on a load balancer. To configure more than one high availability port frontend for the same backend pool, use the following steps:
+
+    - Configure more than one front-end IP address for a single internal load balancer
+    - Configure multiple load-balancing rules, where each rule has single unique front-end IP address
+    - Set the high availability ports configurations and set **Floating IP** to **Enabled** for all load balancing rules
+
+- Internal Load Balancer with high availability ports and a public load balancer on the same back-end instance and vice versa.
+
+- High availability ports load balancing for both Internal Load Balancers and Public Load Balancers.
+
+## Limitations
+
+The following are the limitations of using high availability ports load balancing rules:
+
+- Combining HA ports load balancing rules and non-HA ports load-balancing rules pointing to the same backend ipconfigurations is not supported on a single Frontend IP configuration unless both have **Floating IP** enabled.
+- Flow symmetry (primarily for NVA scenarios) is only supported with a single front-end NIC (single front-end IP configuration) and a backend pool. Using multiple load-balancers, load balancing rules or multiple NICs will not provide symmetry.
+- The backend instance of an HA ports internal load balancer cannot be the backend instance of another internal load balancer.
+- The backend instance of a **Floating IP** HA ports internal load balancer cannot be the backend instance of another non-floating IP HA ports internal load balancer.
+
+## Next steps
+
+See [Deploy an SDN infrastructure using SDN Express](sdn-express.md).
