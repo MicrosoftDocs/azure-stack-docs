@@ -449,7 +449,7 @@ additionalContent: |
   
   - [Troubleshooting overview](troubleshoot-overview.md)
   - [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center)
-  - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)
+  - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
   
   If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-    
+   
