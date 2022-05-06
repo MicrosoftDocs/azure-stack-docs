@@ -50,9 +50,9 @@ The following table compares attributes of a single server cluster to multi-serv
 |[Activate Windows Server Subscriptions](../manage/vm-activate.md) | Yes | Yes |
 |[Azure Defender and Secured-core](/shows/inside-azure-for-it/securing-azure-stack-hci-with-azure-defender-and-secured-core) | Yes | Yes |
 |[Azure Kubernetes Service on Azure Stack HCI](/azure-stack/aks-hci/) (AKS-HCI) | Yes <sup>1</sup> | Yes |
-|Azure Virtual Desktop | Yes | Yes |
+|[Azure Virtual Desktop](/azure/virtual-desktop/overview) | Yes | Yes |
 |[Azure Site Recovery](../manage/azure-site-recovery.md) | Yes | Yes |
-|Azure Stack HCI: Stretch cluster support | No <sup>2</sup> | Yes |
+|[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No <sup>2</sup> | Yes |
 |[Use Graphics Processing Units (GPUs) with clustered VMs](../manage/use-gpu-with-clustered-vm.md)  | Yes | Yes |
 
 <sup>1</sup> Limited support, AKS-HCI is "in-preview" as of June 2022.
