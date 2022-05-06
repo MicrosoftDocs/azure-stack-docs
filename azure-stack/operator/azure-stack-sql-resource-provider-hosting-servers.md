@@ -43,7 +43,7 @@ Before you add a SQL hosting server, review the following mandatory and general 
 
 SQL IaaS VM images are available through the Marketplace Management feature. These images are the same as the SQL VMs that are available in Azure.
 
-Make sure you always download the latest version of the **SQL IaaS Extension** before you deploy a SQL VM using a Marketplace item. The IaaS extension and corresponding portal enhancements provide additional features such as automatic patching and backup. For more information about this extension, see [Automate management tasks on Azure VMs with the SQL Server Agent Extension](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Make sure you always download the latest version of the **SQL IaaS Extension** before you deploy a SQL VM using a Marketplace item. The IaaS extension and corresponding portal enhancements provide additional features such as automatic patching and backup. For more information about this extension, see [Automate management tasks on Azure VMs with the SQL Server Agent Extension](/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management).
 
 > [!NOTE]
 > The SQL IaaS Extension is _required_ for all SQL on Windows images in the marketplace; the VM will fail to deploy if you didn't download the extension. It's not used with Linux-based SQL VM images.
