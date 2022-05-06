@@ -57,6 +57,9 @@ After you've acquired the server hardware for your Azure Stack HCI solution, it'
 1. Connect the server nodes to your network switches.
 1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
 
+> [!NOTE]
+> If you are preparing a single server deployment, see the [Azure Stack HCI OS single server overview](../concepts/azure-stack-hci-os-single-server-overview.md)
+
 ## Operating system deployment options
 
 You can deploy the Azure Stack HCI operating system in the same ways that you're used to deploying other Microsoft operating systems:
