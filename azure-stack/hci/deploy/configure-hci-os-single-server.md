@@ -34,12 +34,12 @@ Before you can configure your purchased single server, follow these instructions
 ## Configure single server
 
 Here are the steps to configure the Azure Stack HCI OS, on a single server, after it has been successfully deployed.
+
 > [!NOTE]
 > Cluster witness is not required for a single server deployment.
 
 1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
 1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md).
-
 1. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [WAC](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
 1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
 
@@ -55,23 +55,26 @@ Single server can be scaled-out to a multi-server configuration by adding an add
 1. Validate the cluster by specifying existing server(s) and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
 2. If cluster validation was successful, add the node to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md)
 3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
+
 ```powershell
 Set-Storagepool -Friendlyname Poolname - FaultDomainAwarenessDefault StorageScaleUnit
 ```
+
 > [!NOTE]
 > The resiliency is now node level and data copies are spread across nodes in the cluster. The volume fault domain is derived from the storage pool's default settings and the resiliency will remain as 2-way mirror (unless otherwise specified). This means any new volumes created (in PS or in WAC) will use `StorageScaleUnit` as the fault domain setting and have a 2-way mirror resiliency setting.
 
 4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`
-1. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
-```powershell 
+5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
+
+```powershell
 Enable-ClusterS2D -Verbose 
 ```
- 
+
 6. To change the fault domain on existing volumes after scale-out, do the following:
     1. Create a new volume that's thinly provisioned and has the same size as the old volume  
-    1.  Migrate all VMs and data from old volume to new volume.
+    1. Migrate all VMs and data from old volume to new volume.
     1. Delete the old volume
-    
+
 The scale-out process is now complete.
 
 ## Next steps
