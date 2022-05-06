@@ -20,7 +20,7 @@ To apply this rule, you set your **Protocol** status to **All**, so that both Us
 
 ### Why use high availability ports?
 
-High availability ports are useful high availability scenarios and scaling out Network Virtual Appliances (NVA) within your virtual and logical networks. This feature can also assist in load balancing a large number of ports.
+High availability ports are useful for high availability scenarios and scaling out Network Virtual Appliances (NVA) within your virtual and logical networks. This feature can also assist in load balancing a large number of ports.
 
 An example use case regarding NVAs and high availability ports is to secure your workload from threats where the appliances need to be highly available and reliable. High availability ports can provide high availability and reliability by offering:
 
@@ -39,8 +39,8 @@ To set up the high availability ports rule, you must configure the following:
 > [!NOTE]
 > For **Backend Pool**, you must first configure your virtual machines. To learn how to set up a virtual machine and other configurations, refer to the following articles:
 >
-> - For Virtual Machine Management, see [Manage VMs with Windows Admin Center](../manage/vm.md)
-> - For Software Load Balancer management, see [Manage Software Load Balancer for SDN](../manage/load-balancers.md)
+> - For Virtual Machine Management, see [Manage VMs with Windows Admin Center](../manage/vm.md).
+> - For Software Load Balancer management, see [Manage Software Load Balancer for SDN](../manage/load-balancers.md).
 
 ## Configure load-balancer rule for high availability ports
 
