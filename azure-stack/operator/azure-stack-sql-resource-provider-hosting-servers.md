@@ -111,7 +111,7 @@ To add a standalone hosting server that's already set up, follow these steps:
 
 Configuring SQL Always On instances requires additional steps and requires three VMs (or physical machines.) This article assumes that you already have a solid understanding of Always On availability groups. For more information, see the following articles:
 
-* [Introducing SQL Server Always On availability groups on Azure virtual machines](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)
+* [Introducing SQL Server Always On availability groups on Azure virtual machines](/azure/azure-sql/virtual-machines/windows/availability-group-overview)
 * [Always On Availability Groups (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2017&preserve-view=true)
 
 > [!NOTE]
