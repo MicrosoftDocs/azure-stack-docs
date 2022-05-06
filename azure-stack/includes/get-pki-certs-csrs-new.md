@@ -8,7 +8,7 @@ ms.reviewer: bryanla
 ms.lastreviewed: 04/29/2022
 ---
 
-2. Generate CSRs by completing one the following:
+2. Generate CSRs by completing one of the following:
 
    - For a **production deployment environment**, the first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
 
