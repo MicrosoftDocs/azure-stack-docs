@@ -1,6 +1,6 @@
 ---
 title: Deploy deploy a workload cluster in Azure Kubernetes Service on Azure Stack HCI
-description: In this tutorial, learn how to create an AKS on Azure Stack HCI cluster and to use kubectl to connect to the Kubernetes master node.
+description: In this tutorial, learn how to create an AKS on Azure Stack HCI cluster and to use kubectl to connect to the Kubernetes control plane node.
 services: 
 ms.topic: tutorial
 ms.date: 04/22/2022
@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
 
-# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI cluster and use kubect1 so I can connect to the Kubernetes master node.
+# Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI cluster and use kubect1 so I can connect to the Kubernetes control plane node.
 # Keyword: deploy a workload cluster
 
 ---
