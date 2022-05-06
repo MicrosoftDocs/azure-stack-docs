@@ -60,9 +60,12 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Support          | Covered under Azure support | Can be covered by different support agreements, including Microsoft Premier Support |
 | Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
-| Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog. [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
-| Sizing| Azure Stack HCI sizing tool |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog. [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
+| Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
+| Sizing| Azure Stack HCI sizing tool |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 | Lifecycle policy | Always up to date with the latest features | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
+
+> [!NOTE]
+> Download new versions of the Azure Stack HCI operating system within 6 months of released updates.
 
 ## Compare technical features
 
@@ -78,6 +81,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Affinity rules | Yes | - |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
+
 
 Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md). See also https://gearup.microsoft.com/download/bdb1fbb1-1d4a-4a4d-b1ec-d751a02ccf76
 
