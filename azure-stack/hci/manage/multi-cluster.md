@@ -439,7 +439,7 @@ Cluster event 3004
    }
 ```
 
-For more information about the data that's collected, see [Health Service faults](/windows-server/failover-clustering/health-service-faults) and Performance counters in the "Single cluster" article.
+For more information about the data that's collected, see [Health Service faults](/windows-server/failover-clustering/health-service-faults) and [Performance counters](single-cluster.md#performance-counters).
 
 ## Next steps
 
