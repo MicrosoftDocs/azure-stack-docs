@@ -19,7 +19,7 @@ ms.lastreviewed: 01/14/2020
 
 This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack Hub virtual machines (VMs). When running SQL Server in Azure Stack Hub VMs, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack Hub cloud depends on many factors, including family size of a VM and the configuration of the data disks.
 
-When creating SQL Server images, [consider provisioning your VMs in the Azure Stack Hub portal](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Hub administrator portal and download your choice of SQL Server VM images. These include SQL Server 2016 SP1, SQL Server 2016 SP2, and SQL Server 2017.
+When creating SQL Server images, [consider provisioning your VMs in the Azure Stack Hub portal](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Hub administrator portal and download your choice of SQL Server VM images. These include SQL Server 2016 SP1, SQL Server 2016 SP2, and SQL Server 2017.
 
 > [!NOTE]  
 > While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack Hub with the following differences: SSD isn't available for the operating system disk and there are minor differences in storage configuration.
@@ -29,7 +29,7 @@ In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL)
 Getting the *best* performance for SQL Server on Azure Stack Hub VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
 > [!NOTE]  
-> For performance guidance for SQL Server in Azure VMs, refer to [this article](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
+> For performance guidance for SQL Server in Azure VMs, refer to [this article](/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices-vm-size).
 
 ## Checklist for SQL server best practices
 
@@ -141,7 +141,7 @@ Some deployments may achieve additional performance benefits using more advanced
 
 - **Back up to Azure** **storage.** When making backups for SQL Server running in Azure Stack Hub VMs, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
 
-    When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting?view=sql-server-ver15&preserve-view=true) and [Restoring From Backups Stored in Microsoft Azure](/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017&preserve-view=true). You can also automate these backups using [Automated Backup for SQL Server in Azure VMs](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
+    When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting?view=sql-server-ver15&preserve-view=true) and [Restoring From Backups Stored in Microsoft Azure](/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017&preserve-view=true). You can also automate these backups using [Automated Backup for SQL Server in Azure VMs](/azure/azure-sql/virtual-machines/windows/automated-backup).
 
 -   **Back up to Azure Stack Hub storage.** You can back up to Azure Stack Hub storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You can't use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack Hub subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack Hub portal or with PowerShell.
 
