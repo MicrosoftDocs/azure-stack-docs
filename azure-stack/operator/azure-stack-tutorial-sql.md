@@ -42,7 +42,7 @@ Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-
    > [!NOTE]
    > Standard version is not supported. When setting up the SQL Server AlwaysOn availability group with SQL Server Standard version, only one database can be created for one availability group. This limitation makes Standard version unsuitable for our scenario. For more details, check the document [here](/sql/database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups).
 
-- [SQL Server IaaS Extension](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.3.20180 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
+- [SQL Server IaaS Extension](/azure/azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management) version 1.3.20180 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
 
 To learn more about adding items to Azure Stack Marketplace, see the [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
 
