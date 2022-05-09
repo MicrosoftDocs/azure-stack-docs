@@ -30,7 +30,7 @@ Watch the video on the high-level features of Azure Stack HCI:
 
 > [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
-Each Azure Stack HCI cluster consists of between 2 and 16 physical, validated servers. The clustered servers share common configuration and resources by leveraging the Windows Server Failover Clustering feature.
+Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. All clustered servers, including single server, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
 Azure Stack HCI combines the following:
 
@@ -91,7 +91,7 @@ For more details on the cloud service components of Azure Stack HCI, see [Azure 
 
 To get started, you'll need:
 
-- A cluster of two or more servers from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), purchased from your preferred Microsoft hardware partner.
+- A cluster of one or more servers from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), purchased from your preferred Microsoft hardware partner.
 - An [Azure subscription](https://azure.microsoft.com/).
 - Operating system licenses for your workload VMs – for example, Windows Server. See [Activate Windows Server VMs](manage/vm-activate.md). 
 - An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](concepts/firewall-requirements.md) for more information.

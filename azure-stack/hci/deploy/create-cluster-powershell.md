@@ -13,10 +13,18 @@ ms.reviewer: stevenek
 
 In this article you will learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
+> [!NOTE]
+> If you're doing a single server installation of Azure Stack HCI 21H2, use PowerShell to create the cluster.
+
 You have a choice between two cluster types:
 
-- Standard cluster with at least two server nodes, all residing in a single site.
+- Standard cluster with one or two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with two nodes per site.
+
+For the single server scenario, complete the same instructions below for the one server.
+
+> [!NOTE]
+> Stretch clusters are not supported in a single server configuration.
 
 In this article, we will create an example cluster named Cluster1 that is composed of four server nodes named Server1, Server2, Server3, and Server4.
 
@@ -370,6 +378,8 @@ After creating the cluster, use the `Enable-ClusterStorageSpacesDirect` cmdlet, 
 - **Configure Storage Spaces Direct caches:** If there is more than one media (drive) type available for Storage Spaces Direct, it enables the fastest as cache devices (read and write in most cases).
 
 - **Create tiers:** Creates two tiers as default tiers. One is called "Capacity" and the other called "Performance". The cmdlet analyzes the devices and configures each tier with the mix of device types and resiliency.
+
+For the single server scenario, the only FaultDomainAwarenessDefault is PhysicalDisk. `Enable-ClusterStorageSpacesDirect` cmdlet will detect single server and automatically configure FaultDomainAwarenessDefault as PyhsicalDisk during enablement.
 
 For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also do the following:
 
