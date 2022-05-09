@@ -20,7 +20,7 @@ You may find an issue when deploying or working with the AKS engine on Azure Sta
 
 ## Troubleshoot the AKS engine install
 
-If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. GoFish describes itself as a cross-platform Homebrew.
 
 You can find instructions for using GoFish to install the AKS engine at [Install the aks-engine command line tool](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool)
 

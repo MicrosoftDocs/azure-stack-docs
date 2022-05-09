@@ -363,7 +363,7 @@ If there is a corporate firewall between the Azure Stack HCI operating system an
 - http\://ntservicepack.microsoft.com
 - http\://go.microsoft.com
 - http\://dl.delivery.mp.microsoft.com
-- https\://dl.delivery.mp.microsoft.com
+- https\://dl.delivery.mp.microsoft.com`
 
 ### Cluster Cloud Witness
 
@@ -376,12 +376,12 @@ This is optional. You can use remote support to allow a Microsoft support profes
 - \*.servicebus.windows.net
 - \*.core.windows.net
 - login.microsoftonline.com
-- https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-- https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-- https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-- https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-- https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
-- https://edgesupprd.trafficmanager.net
+- https\://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
+- https\://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
+- https\://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
+- https\://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
+- https\://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https\://edgesupprd.trafficmanager.net
 
 ### AKS on Azure Stack HCI
 
