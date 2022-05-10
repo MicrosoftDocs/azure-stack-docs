@@ -135,7 +135,7 @@ The following table provides the health of volumes in the cluster:
 | Deduplication      | The process of reducing the physical amount of bytes of data that needs to be stored on disk. | Available or not                                | Yes/No                    |
 | File system        | The type of filesystem.                                                                    | No unit                                         | ReFS                      |
 
-## Disable Insights
+### Disable Insights
 
 To disable insights, follow these steps:
 
@@ -147,7 +147,7 @@ To disable insights, follow these steps:
 When you disable the Insights feature, the Health Service and SDDC Management logs are no longer collected; however, existing data is not
 deleted. If you'd like to delete that data, go into your Log Analytics workspace and delete the data manually.
 
-## Needs update
+### Needs update
 
 The Insights tile shows a **Needs update** message in the following cases:
 
