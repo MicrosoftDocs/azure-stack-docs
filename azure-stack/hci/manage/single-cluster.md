@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 ms.date: 05/06/2022
 ---
 
-# Single cluster workbook
+# Single cluster workbook (old version)
 
 This article explains how to enable Azure Insights capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
 
