@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 06/16/2021
 ---
 
-# Monitor multiple clusters with Azure Stack HCI Insights (preview)
+# Monitor multiple clusters with Azure Stack HCI Insights (old)
 
 > Applies to: Azure Stack HCI, version 21H2
 
@@ -37,7 +37,7 @@ Azure Stack HCI Insights offers three primary benefits:
 
 To use Azure Stack HCI Insights, make sure you've completed the following:
 
-1.	Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
+1.    Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
 2. [Enable Log Analytics](monitor-azure-portal.md#configure-the-log-analytics-agent-extension) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
 3. [Enable Monitoring](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
 
@@ -87,10 +87,10 @@ This view provides two things:
 
 This view provides four cluster performance trends:
 
--	CPU usage
--	Average volume latency
--	Volume IOPS
--	Volume throughput
+-    CPU usage
+-    Average volume latency
+-    Volume IOPS
+-    Volume throughput
 
 The views are built using the [cluster event ID 3004](#cluster-event-3004-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
