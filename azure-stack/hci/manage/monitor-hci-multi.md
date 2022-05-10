@@ -11,7 +11,7 @@ ms.date: 05/06/2022
 zone_pivot_groups: hci-versions
 ---
 
-# Monitor multiple clusters with Azure Stack HCI Insights
+# Monitor multiple clusters with Azure Stack HCI Insights (preview)
 
 > Applies to: Azure Stack HCI, version 21H2
 
