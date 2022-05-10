@@ -72,7 +72,7 @@ The following table describes currently known issues for single server. This lis
 |Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
 |Cluster Aware Updating (CAU) doesn't support single server. |Update using command line, Server Configuration tool (SConfig), or Windows Admin Center (through server manager). |
-|Adding a node to scale out the single server cluster doesn't automatically change the S2D FaultDomainAwarenessDefault. |FaultDomainAwarenessDefault can be changed manually from PhysicalDisk to StorageScaleUnit. |
+|Adding a node to scale out the single server cluster doesn't automatically change the Storage Spaces Direct `FaultDomainAwarenessDefault`. |`FaultDomainAwarenessDefault` can be changed manually from PhysicalDisk to StorageScaleUnit. |
 
 ## Next steps
 
