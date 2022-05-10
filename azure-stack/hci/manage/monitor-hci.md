@@ -1,6 +1,6 @@
 ---
-title: Configure Azure portal to monitor single Azure Stack HCI clusters (new)
-description: How to enable Logs and Monitoring capabilities to monitor single Azure Stack HCI clusters from the Azure portal.
+title: How to monitor single Azure Stack HCI clusters (new)
+description: Enable Logs and Monitoring capabilities to monitor single Azure Stack HCI clusters from the Azure portal.
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
