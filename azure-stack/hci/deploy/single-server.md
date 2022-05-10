@@ -23,10 +23,6 @@ Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a
 ## Prerequisites
 
 - A single server configured with all NVMe or all SSD drives from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog).
-
-> [!IMPORTANT]
-> Single server is only supported on single storage type configurations.
-
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
 - Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) (WAC) to register and manage the server once it has been configured.
 
