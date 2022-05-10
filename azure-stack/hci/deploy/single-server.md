@@ -70,6 +70,7 @@ Enable-ClusterS2D -Verbose
     1. Delete the old volume
 
 That completes the process of adding a server.
+
 ## Next steps
 
 - [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure.md)
