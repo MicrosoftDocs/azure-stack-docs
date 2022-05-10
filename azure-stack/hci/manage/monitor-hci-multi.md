@@ -524,7 +524,7 @@ Cluster event 3004
    }
 ```
 
-For more information about the data that's collected, see [Health Service faults](/windows-server/failover-clustering/health-service-faults) and [Performance counters](single-cluster.md#performance-counters).
+For more information about the data that's collected, see [Health Service faults](/windows-server/failover-clustering/health-service-faults) and [Performance counters](monitor-hci-single.md#performance-counters).
 ::: zone-end
 
 ::: zone pivot="on-5b"
