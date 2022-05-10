@@ -8,11 +8,18 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 05/06/2022
+zone_pivot_groups: hci-versions
 ---
 
 # Single cluster workbook
 
+::: zone pivot="above-5b"
 This article explains how to enable Azure Insights capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+::: zone-end
+
+::: zone pivot="on-5b"
+This article explains how to enable logs and monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+::: zone-end
 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
