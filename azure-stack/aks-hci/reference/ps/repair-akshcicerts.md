@@ -1,6 +1,6 @@
 ---
-title: Repair-AksHciCerts for AKS on Azure Stack HCI
-description: The Repair-AksHciCerts PowerShell troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host.
+title: Repair-AksHciCerts for AKS on Azure Stack HCI and Windows Server
+description: The Repair-AksHciCerts PowerShell troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI and Windows Server host.
 author: mattbriggs
 ms.topic: reference
 ms.date: 6/30/2021
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Repair-AksHciCerts
 
 ## Synopsis
-Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host.
+Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI and Windows Server host.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Repair-AksHciCerts [-sshPrivateKeyFile <String>]
 ```
 
 ## Description
-Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI host.
+Troubleshoots and fixes errors related to expired certificates for the AKS on Azure Stack HCI and Windows Server host.
 
 ## Example
 

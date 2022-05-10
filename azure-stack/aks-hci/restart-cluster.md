@@ -8,7 +8,7 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
-# Intent: As an IT Pro, I want to learn how to restart, remove, and/or reinstall my AKS on Azure Stack HCI deployment.
+# Intent: As an IT Pro, I want to learn how to restart, remove, and/or reinstall my AKS on Azure Stack HCI and Windows Server deployment.
 # Keyword: restart, remove, reinstall
 
 ---

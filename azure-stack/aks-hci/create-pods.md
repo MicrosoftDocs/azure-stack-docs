@@ -21,7 +21,7 @@ Kubernetes uses pods to run an instance of your application. A pod represents a 
 
 ## Create a pod
 
-Before creating a pod, you must [set up an AKS host and create AKS on Azure Stack HCI clusters using Windows PowerShell](./kubernetes-walkthrough-powershell.md). You can also use Windows Admin Center to [set up the host](./setup.md) and [create the clusters](./create-kubernetes-cluster.md).
+Before creating a pod, you must [set up an AKS host and create AKS on Azure Stack HCI and Windows Server clusters using Windows PowerShell](./kubernetes-walkthrough-powershell.md). You can also use Windows Admin Center to [set up the host](./setup.md) and [create the clusters](./create-kubernetes-cluster.md).
 
 To make sure you are connected to the Kubernetes cluster, run the following command:
 

@@ -12,22 +12,20 @@ ms.reviewer: EkeleAsonye
 
 ---
 
-# Stop and start an AKS on Azure Stack HCI cluster
+# Stop and start an AKS on Azure Stack HCI and Windows Server cluster
 
-Your workloads may not need to run continuously. To save resource costs, you might need to stop (or shut down) your AKS on Azure Stack HCI cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. 
-
-This article also covers how to start a stopped cluster, and how to verify that the control plane nodes are running after a restart.
+Your workloads may not need to run continuously, and to save resource costs, you might need to stop (or shut down) your AKS on Azure Stack HCI and Windows Server cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
 
 ## Before you begin
 
-This article assumes that you have an existing AKS on Azure Stack HCI cluster installed and configured on your machine. If you need to install a cluster, see the AKS on Azure Stack HCI quickstart to [set up an AKS host and deploy a workload cluster](kubernetes-walkthrough-powershell.md). 
+This article assumes that you have an existing AKS on Azure Stack HCI and Windows Server cluster installed and configured on your machine. If you need to install a cluster, see the AKS on Azure Stack HCI and Windows Server quickstart to [set up an AKS host and deploy a workload cluster](kubernetes-walkthrough-powershell.md). 
 
-## Stop an Azure Stack HCI cluster
+## Stop an Azure Stack HCI or Windows Server cluster
 
 To stop (or shut down) a cluster, you must first stop the cluster service and then stop the local and/or remote computers. 
 
 ### Stop the cluster service
-Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command to shut down an Azure Stack HCI cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
+Use the [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command to shut down an Azure Stack HCI or Windows Server cluster and stop the cluster service on all nodes in the cluster. Running this command stops all services and applications configured in the cluster. 
 
 > [!IMPORTANT]
 > When you run `Stop-Cluster`, all other nodes and VM-based applications in the cluster will also be impacted.
@@ -49,9 +47,13 @@ To shut down the local and remote computers, use the [Stop-Computer](/powershell
 PS:> Stop-Computer 
 ```
 
-## Start an Azure Stack HCI cluster
+## Start an Azure Stack HCI or Windows Server cluster
 
+<<<<<<< HEAD
+To start a stopped Azure Stack HCI or Windows Server cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
+=======
 To start a stopped Azure Stack HCI cluster, first restart the operating system on the local and/or remote computers, and then restart the cluster. 
+>>>>>>> a4a314babbbd426e3b106749a89edc1ac119230d
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 
@@ -59,7 +61,7 @@ To restart the operating system on your local and remote computers, use the foll
 PS:> Restart-Computer 
 ```
 
-To restart all the nodes of the Azure Stack HCI cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
+To restart all the nodes of the Azure Stack HCI or Windows Server cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
 
 ```powershell
 PS:> Start-Cluster 
@@ -77,7 +79,7 @@ PS:> Get-ClusterNode -ErrorAction SilentlyContinue | foreach-object {
         $node = $_.Name 
         $state = $_.State 
         Write-Host "$node State = $state" 
-      	} 
+          } 
 ```
 The output would be similar to the following list of cluster nodes:
 
@@ -113,6 +115,6 @@ PS:> Restart-VM -name $vmName -force
 
 ## Next steps
 
-- [Scale the node count in an AKS on Azure Stack HCI cluster](scale-cluster.md)
-- [Upgrade the AKS on Azure Stack HCI host](update-akshci-host-powershell.md)
+- [Scale the node count in an AKS on Azure Stack HCI and Windows Server cluster](scale-cluster.md)
+- [Upgrade the AKS on Azure Stack HCI and Windows Server host](update-akshci-host-powershell.md)
 

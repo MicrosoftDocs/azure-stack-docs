@@ -21,7 +21,7 @@ The profiles have the following attributes:
 
 - Autoscaler profiles will apply to all node pools in a cluster.
 - Profiles are global deployment level objects.
-- There can be multiple profiles available in an AKS on Azure Stack HCI deployment.
+- There can be multiple profiles available in an AKS on Azure Stack HCI and Windows Server deployment.
 - Only one profile is assigned to a given cluster. The profile is used for all node pools in the cluster.
 - Changes to the profile are applied to all node pools, which have the autoscaler function enabled.
 

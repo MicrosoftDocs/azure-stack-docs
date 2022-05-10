@@ -1,5 +1,5 @@
 ---
-title: Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS for Azure Stack HCI
+title: Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS on Azure Stack HCI and Windows Server
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: mattbriggs
 ms.topic: how-to
@@ -13,7 +13,7 @@ ms.reviewer: lahirisl
 
 ---
 
-# Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS for Azure Stack HCI
+# Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
@@ -47,14 +47,14 @@ Before you start the process of configuring Active Directory SSO credentials, yo
    > [!NOTE]
    > You should generate the keytab file for a specific service principal name (SPN), and this SPN must correspond to the API server AD account for the workload cluster. You must also ensure that the same SPN is used throughout the AD authentication process. The keytab file should be named _current.keytab_.
 
- - One API server AD account is available for each AKS on Azure Stack HCI workload cluster.
+ - One API server AD account is available for each AKS on Azure Stack HCI and Windows Server workload cluster.
  - The client machine must be a Windows domain-joined machine.
 
 ## Create AD Auth using the keytab file
 
 ### Step 1: Create the workload cluster and enable AD authentication
 
-Before you install AD authentication, you must first create an AKS on Azure Stack HCI workload cluster and enable the AD authentication add-on on the cluster. If you don't enable AD authentication when you create the new cluster, you won't be able to enable it later.
+Before you install AD authentication, you must first create an AKS on Azure Stack HCI and Windows Server workload cluster and enable the AD authentication add-on on the cluster. If you don't enable AD authentication when you create the new cluster, you won't be able to enable it later.
 
 Open PowerShell as an administrator and run the following using the **-enableADAuth** parameter of the `New-AksHciCluster` command:
 
@@ -72,7 +72,7 @@ Before you can install AD authentication, the workload cluster must be installed
 
 #### Option 1
 
-For a domain-joined Azure Stack HCI cluster, open PowerShell as an administrator and run the following command:
+For a domain-joined Azure Stack HCI or Windows Server cluster, open PowerShell as an administrator and run the following command:
 
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
@@ -132,11 +132,11 @@ Open PowerShell as an administrator and run the following command:
 
 ### Step 5: Copy kubeconfig and other files to the client machine
 
-You should copy the three files listed below from the Azure Stack HCI cluster to your client machine:
+You should copy the three files listed below from the Azure Stack HCI or Windows Server cluster to your client machine:
 
 - Copy the AD _kubeconfig_ file created in the previous step to $env:USERPROFILE\.kube\config.
 
-- Create the folder path `c:\adsso` and copy the following files from the Azure Stack HCI cluster to your client machine.
+- Create the folder path `c:\adsso` and copy the following files from the Azure Stack HCI or Windows Server cluster to your client machine.
   - Kubectl.exe under `$env:ProgramFiles\AksHci` to c:\adsso
   - Kubectl-adsso.exe under `$env:ProgramFiles\AksHci` to c:\adsso
 

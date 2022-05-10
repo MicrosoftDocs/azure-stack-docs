@@ -1,6 +1,6 @@
 ---
 title: Connect with SSH to Azure Kubernetes Service on Azure Stack HCI nodes
-description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS on Azure Stack HCI.
+description: Learn how to use Secure Shell Protocol (SSH) to connect to worker nodes for maintenance and troubleshooting in AKS on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/13/2022
@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 # Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting
 
-You may need to access Windows or Linux worker nodes in AKS on Azure Stack HCI for maintenance, log collection, or other troubleshooting operations. For security purposes, you'll need to create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
+You may need to access Windows or Linux worker nodes in AKS on Azure Stack HCI and Windows Server for maintenance, log collection, or other troubleshooting operations. For security purposes, you'll need to create a Secure Shell Protocol (SSH) connection to access the Windows or Linux worker nodes. To use SSH, you sign in using the node's IP address.
 
 This topic describes how to create a SSH connection to access both Windows and Linux nodes.
 

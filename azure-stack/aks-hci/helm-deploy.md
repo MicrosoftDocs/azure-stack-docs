@@ -17,13 +17,13 @@ ms.reviewer: rbaziwane
 
 [Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as *APT* and *Yum*, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-In this topic, you'll learn how to use Helm to package and deploy an application on AKS on Azure Stack HCI. 
+In this topic, you'll learn how to use Helm to package and deploy an application on AKS on Azure Stack HCI and Windows Server. 
 
 ## Before you begin
 Verify that you have the following requirements set up:
 
-* An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* An [AKS on Azure Stack HCI and Windows Server cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI and Windows Server cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * An available container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
 

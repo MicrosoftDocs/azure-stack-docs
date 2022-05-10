@@ -8,7 +8,7 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
-# Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS on Azure Stack HCI cluster to the latest Kubernetes version.
+# Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS on Azure Stack HCI and Windows Server cluster to the latest Kubernetes version.
 # Keyword: upgrade cluster upgrade Kubernetes
 ---
 
@@ -29,9 +29,9 @@ This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluste
 ## What are the available update options?
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
-- [Update the AKS on Azure Stack HCI host](update-akshci-host-powershell.md) to the latest version.
-- Update an AKS on Azure Stack HCI workload cluster to a new Kubernetes version.
-- Update the AKS on Azure Stack HCI container hosts to a newer version of the operating system.
+- [Update the AKS on Azure Stack HCI and Windows Server host](update-akshci-host-powershell.md) to the latest version.
+- Update an AKS on Azure Stack HCI and Windows Server workload cluster to a new Kubernetes version.
+- Update the AKS on Azure Stack HCI and Windows Server container hosts to a newer version of the operating system.
 - Combined update of operating system and Kubernetes version.
 
 All updates are performed in a rolling flow in order to avoid outages in workload availability. When a _new_ Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the _old_ node to the _new_ node.  Once this is completed successfully, the _old_ node is decommissioned and removed from the cluster.
@@ -40,11 +40,11 @@ The examples in this tutorial assume that the workload cluster, `mycluster`, is 
 
 ## Before you begin
 
-In previous tutorials, you learned how to package an application into a container image, upload it to the Azure Container Registry, and create an AKS cluster. Then you deployed the application to the AKS on Azure Stack HCI cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+In previous tutorials, you learned how to package an application into a container image, upload it to the Azure Container Registry, and create an AKS cluster. Then you deployed the application to the AKS on Azure Stack HCI and Windows Server cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 ## Update the Kubernetes version of a workload cluster
 
-You must upgrade the PowerShell modules and the AKS on Azure Stack HCI host first before updating the Kubernetes version.
+You must upgrade the PowerShell modules and the AKS on Azure Stack HCI and Windows Server host first before updating the Kubernetes version.
 
 > [!Important]
 > Updating a workload cluster to a newer version of Kubernetes works *only* if the target Kubernetes version is supported by the current operating system version. To check for the supported operating system and Kubernetes version combinations, use the `Get-AksHciUpdates` command.
@@ -192,7 +192,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Next steps
 
-In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI cluster. You learned how to:
+In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI and Windows Server cluster. You learned how to:
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions
@@ -201,7 +201,7 @@ In this tutorial, you upgraded Kubernetes in an AKS on Azure Stack HCI cluster. 
 > * Upgrade a Kubernetes cluster to the latest version
 > * Validate a successful upgrade
 
-For more information on AKS on Azure Stack HCI, see the [AKS on Azure Stack HCI overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
+For more information on AKS on Azure Stack HCI and Windows Server, see the [AKS on Azure Stack HCI and Windows Server overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
 
 <!-- LINKS - external -->
 

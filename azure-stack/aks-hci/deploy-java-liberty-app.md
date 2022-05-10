@@ -1,6 +1,6 @@
 ---
-title: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster
-description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI cluster.
+title: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server cluster
+description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server cluster.
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
@@ -11,13 +11,12 @@ ms.date: 04/29/2022
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
 
-
-# Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS on Azure Stack HCI cluster
+# Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS on Azure Stack HCI and Windows Server cluster
 
 This article demonstrates how to:  
 * Run your Java, Java EE, Jakarta EE, or MicroProfile application on the Open Liberty or WebSphere Liberty runtime.
 * Build the application Docker image using Open Liberty container images.
-* Deploy the containerized application to an on-premises AKS on Azure Stack HCI cluster using the Open Liberty Operator.   
+* Deploy the containerized application to an on-premises AKS on Azure Stack HCI and Windows Server cluster using the Open Liberty Operator.   
 
 The Open Liberty Operator simplifies the deployment and management of applications running on Kubernetes clusters. With Open Liberty Operator, you can also perform more advanced operations, such as gathering traces and dumps. 
 
@@ -33,10 +32,10 @@ This article is divided into two main parts.
   * Install [Maven](https://maven.apache.org/download.cgi) 3.5.0 or higher.
   * Install [Docker](https://docs.docker.com/get-docker/) for your operating system.
 
-**Part 2** focuses on deploying the application from your Azure Container Registry down into the AKS on Azure Stack HCI environment. For this, **you cannot use Azure Cloud Shell**. For the AKS on Azure Stack HCI environment, the following items are required:
+**Part 2** focuses on deploying the application from your Azure Container Registry down into the AKS on Azure Stack HCI and Windows Server environment. For this, **you cannot use Azure Cloud Shell**. For the AKS on Azure Stack HCI and Windows Server environment, the following items are required:
 
-* An [AKS on Azure Stack HCI cluster](./setup.md) with at least one Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* An [AKS on Azure Stack HCI and Windows Server cluster](./setup.md) with at least one Linux worker node that's up and running.
+* You have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI and Windows Server cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * Git command-line tools installed on your system. On a Windows system, you can use [**Git Bash**](https://git-scm.com/downloads) as the main console, and within the Git Bash console, call PowerShell and Azure when required.
 
 ## Create a resource group in Azure
@@ -69,7 +68,7 @@ After a short time, you should see a JSON output that contains:
 
 ### Connect to the ACR instance in Azure
 
-You will need to sign in to the ACR instance before you can push an image to it. Run the following commands to verify the connection. Make a note of your login details as you'll use those later when connecting to AKS on Azure Stack HCI.
+You will need to sign in to the ACR instance before you can push an image to it. Run the following commands to verify the connection. Make a note of your login details as you'll use those later when connecting to AKS on Azure Stack HCI and Windows Server.
 
 ```azurecli-interactive
 LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
@@ -87,7 +86,7 @@ You should see `Login Succeeded` at the end of command output if you have logged
 
 ## Build application image in Azure
 
-To deploy and run your Liberty application on the AKS on Azure Stack HCI cluster, you first need to containerize your application as a Docker image using [Open Liberty container images](https://github.com/OpenLiberty/ci.docker) or [WebSphere Liberty container images](https://github.com/WASdev/ci.docker).
+To deploy and run your Liberty application on the AKS on Azure Stack HCI and Windows Server cluster, you first need to containerize your application as a Docker image using [Open Liberty container images](https://github.com/OpenLiberty/ci.docker) or [WebSphere Liberty container images](https://github.com/WASdev/ci.docker).
 
 1. Clone the sample code for this guide. The sample is on [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
 1. Change directory to `javaee-app-simple-cluster` of your local clone.
@@ -108,11 +107,11 @@ To deploy and run your Liberty application on the AKS on Azure Stack HCI cluster
      az acr build -t javaee-cafe-simple:1.0.0 -r $REGISTRY_NAME --file=Dockerfile-wlp .
      ```
 
-### Connect to your AKS on Azure Stack HCI cluster
+### Connect to your AKS on Azure Stack HCI and Windows Server cluster
 
 To manage a Kubernetes cluster, you use [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes command-line client. Once installed, on Windows, kubectl can be run from the CMD prompt, PowerShell console, and Git Bash.
 
-As one of the pre-requisites, you should have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`:
+As one of the pre-requisites, you should have configured your local `kubectl` environment to point to your AKS on Azure Stack HCI and Windows Server cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`:
 
 ```powershell
 Get-AksHciCredential -name AksHciClusterName
@@ -156,11 +155,11 @@ curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/mast
       | kubectl apply -n ${OPERATOR_NAMESPACE} -f -
 ```
 
-## Deploy application on the AKS on Azure Stack HCI cluster
+## Deploy application on the AKS on Azure Stack HCI and Windows Server cluster
 
-Follow steps below to deploy the Liberty application on the AKS on Azure Stack HCI cluster. You will need to retrieve your login details from your [earlier session](#connect-to-the-acr-instance-in-azure).
+Follow steps below to deploy the Liberty application on the AKS on Azure Stack HCI and Windows Server cluster. You will need to retrieve your login details from your [earlier session](#connect-to-the-acr-instance-in-azure).
 
-1. If you used Azure Cloud Shell earlier, and are now using a separate console to connect to AKS on Azure Stack HCI, you'll need to lock in your credentials again.
+1. If you used Azure Cloud Shell earlier, and are now using a separate console to connect to AKS on Azure Stack HCI and Windows Server, you'll need to lock in your credentials again.
 
    ```console
    LOGIN_SERVER=YourLoginServerFromEarlier
@@ -168,7 +167,7 @@ Follow steps below to deploy the Liberty application on the AKS on Azure Stack H
    PASSWORD=YourPwdFromEarlier
    ```
 
-2. Create a pull secret so that the AKS on Azure Stack HCI cluster is authenticated to pull image from the ACR instance.
+2. Create a pull secret so that the AKS on Azure Stack HCI and Windows Server cluster is authenticated to pull image from the ACR instance.
 
    ```console
    kubectl create secret docker-registry acr-secret \
@@ -177,9 +176,9 @@ Follow steps below to deploy the Liberty application on the AKS on Azure Stack H
       --docker-password=${PASSWORD}
    ```
 
-3. Again, if you used Azure Cloud Shell earlier, and are now using a separate tool or session to connect to AKS on Azure Stack HCI, you will need to clone the sample code for this guide. The sample is on [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
+3. Again, if you used Azure Cloud Shell earlier, and are now using a separate tool or session to connect to AKS on Azure Stack HCI and Windows Server, you will need to clone the sample code for this guide. The sample is on [GitHub](https://github.com/Azure-Samples/open-liberty-on-aks).
 4. Verify the current working directory is `javaee-app-simple-cluster` of your local clone.
-5. Run the following commands to deploy your Liberty application with 3 replicas to the AKS on Azure Stack HCI cluster. Command output is also shown inline.
+5. Run the following commands to deploy your Liberty application with 3 replicas to the AKS on Azure Stack HCI and Windows Server cluster. Command output is also shown inline.
 
    ```console
    # Create OpenLibertyApplication "javaee-app-simple-cluster"
@@ -217,9 +216,9 @@ javaee-app-simple-cluster   LoadBalancer   10.109.118.3   192.168.0.152   80:305
 
 Once the *EXTERNAL-IP* address changes from *pending* to an actual public IP address, use `CTRL-C` to stop the `kubectl` watch process.
 
-Open a web browser to the external IP address of your service (`192.168.0.152` for the above example) to see the application home page. You should see the pod name of your application replicas displayed at the top-left of the page. Wait for a few minutes and refresh the page to see a different pod name displayed due to load balancing provided by the AKS on Azure Stack HCI cluster.
+Open a web browser to the external IP address of your service (`192.168.0.152` for the above example) to see the application home page. You should see the pod name of your application replicas displayed at the top-left of the page. Wait for a few minutes and refresh the page to see a different pod name displayed due to load balancing provided by the AKS on Azure Stack HCI and Windows Server cluster.
 
-![Picture of a Java liberty application successfully deployed on AKS on Azure Stack HCI.](.\media\deploy-java-app/deploy-succeeded.png)
+![Picture of a Java liberty application successfully deployed on AKS on Azure Stack HCI and Windows Server.](.\media\deploy-java-app/deploy-succeeded.png)
 
 >[!NOTE]
 > Currently, the application is not using HTTPS. It is recommended to [enable TLS with your own certificates](/azure/aks/ingress-own-tls).
@@ -233,7 +232,7 @@ RESOURCE_GROUP_NAME=java-liberty-project
 az group delete --name $RESOURCE_GROUP_NAME --yes --no-wait
 ```
 
-To clean up the resources deployed on AKS on Azure Stack HCI, run the following commands from your local console:
+To clean up the resources deployed on AKS on Azure Stack HCI and Windows Server, run the following commands from your local console:
 
 ```console
 kubectl delete -f https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-crd.yaml

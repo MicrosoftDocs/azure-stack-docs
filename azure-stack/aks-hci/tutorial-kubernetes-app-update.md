@@ -38,7 +38,11 @@ This tutorial requires that you run the Azure CLI version 2.0.53 or later. Run `
 
 ## Update an application
 
+<<<<<<< HEAD
 This section describes how to make a change to the sample application, and then update the version already deployed to your AKS on Azure Stack HCI cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
+=======
+Let's make a change to the sample application, then update the version already deployed to your AKS on Azure Stack HCI and Windows Server cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
+>>>>>>> 6249c3b4284efaa8feb028cfec3a51cb307e3a87
 
 ```console
 notepad azure-vote/azure-vote/config_file.cfg

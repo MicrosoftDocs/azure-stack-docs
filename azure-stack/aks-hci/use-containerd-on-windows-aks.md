@@ -18,10 +18,10 @@ ms.reviewer: crwilhit
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-Beginning in Kubernetes version v1.22.1, you can use `containerd` as the container runtime for Windows Server node pools. The use of the `containerd` runtime for Windows on AKS on Azure Stack HCI is currently in **preview**. While dockershim remains the default runtime for now, it's deprecated and will be removed in Kubernetes v1.24.
+Beginning in Kubernetes version v1.22.1, you can use `containerd` as the container runtime for Windows Server node pools. The use of the `containerd` runtime for Windows on AKS on Azure Stack HCI and Windows Server is currently in **preview**. While dockershim remains the default runtime for now, it's deprecated and will be removed in Kubernetes v1.24.
 
 > [!IMPORTANT]  
-> The `containerd` runtime for Windows on AKS on Azure Stack HCI is currently in PREVIEW.
+> The `containerd` runtime for Windows on AKS on Azure Stack HCI and Windows Server is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Prerequisites
@@ -55,8 +55,8 @@ In the following steps, the values of the parameters are given, but you'll need 
     ```
 ## Deploy a cluster
 
-Deploy your AKS on Azure Stack HCI cluster.
-1. Run Windows PowerShell as an Administrator on any node in your Azure Stack HCI cluster.
+Deploy your AKS on Azure Stack HCI and Windows Server cluster.
+1. Run Windows PowerShell as an Administrator on any node in your Azure Stack HCI or Windows Server cluster.
 1. Run the following cmdlet:
     ```PowerShell
     Install-AksHCI $VerbosePreference = "Continue"
@@ -76,7 +76,7 @@ Deploy your AKS on Azure Stack HCI cluster.
 
 ## Known issues
 
-You may encounter the following issues when using `containerd` on AKS on Azure Stack HCI.
+You may encounter the following issues when using `containerd` on AKS on Azure Stack HCI and Windows Server.
 
 ### Issues accessing SMB shares from a pod configured with GMSA
 
@@ -93,4 +93,4 @@ Reboot the node after setting this reg key in order to apply the change.
 ## Next steps
 
 - [Deploy .NET applications](deploy-windows-application.md).
-- [Monitor AKS on Azure Stack HCI clusters](monitor-logging.md).
+- [Monitor AKS on Azure Stack HCI and Windows Server clusters](monitor-logging.md).

@@ -28,17 +28,17 @@ Before getting started, make sure you've satisfied all the prerequisites on the 
 
 ## Set up Windows Admin Center
 
-The AKS on Azure Stack HCI extension for Windows Admin Center is natively available as part of the Windows Admin Center MSI. You can [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) either on a Windows 10 machine or on a server. If you have already installed Windows Admin Center, make sure your version is `2103.2` or later. You can check your Windows Admin Center version by clicking on the question mark on the top right hand corner.
+The AKS on Azure Stack HCI and Windows Server extension for Windows Admin Center is natively available as part of the Windows Admin Center MSI. You can [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) either on a Windows 10 machine or on a server. If you have already installed Windows Admin Center, make sure your version is `2103.2` or later. You can check your Windows Admin Center version by clicking on the question mark on the top right hand corner.
 
 ![Checks that you have the latest version of Windows Admin Center](.\media\setup\check-wac-version.png)
 
 ## Set up an Azure Kubernetes Service host
 
-You need to set up an Azure Kubernetes Service host on your Azure Stack HCI cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
+You need to set up an Azure Kubernetes Service host on your Azure Stack HCI or Windows Server cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
 
 [![Picture of an architecture diagram that highlights the platform services portion.](.\media\setup\aks-hci-architecture-focused.png)](.\media\setup\aks-hci-architecture-focused.png)
 
-This system can be a Windows Server 2019/2022 Datacenter cluster, a single node Windows Server 2019/2022 Datacenter, or an Azure Stack HCI cluster.
+This system can be a Windows Server 2019/2022 Datacenter cluster, a single node Windows Server 2019/2022 Datacenter, or an Azure Stack HCI or Windows Server cluster.
 
 > [!NOTE]
 > Setting up Azure Kubernetes Service hosts on two independent systems with the intention of merging them during Kubernetes cluster creation is not a supported scenario.
@@ -103,7 +103,7 @@ Now that you've verified the system settings, let's get started:
    1. Search for **Directory.AccessAsUser.All**, and if necessary, expand the **Directory** dropdown box.
    1. Select the checkbox and then click **Add permissions**.
 
-   You can also remove permissions that aren't required for AKS on Azure Stack HCI.  To remove permissions before granting admin consent:
+   You can also remove permissions that aren't required for AKS on Azure Stack HCI and Windows Server.  To remove permissions before granting admin consent:
    1. Select the **...** to the right of the permission that shouldn't be granted.
    1. Select **Remove permission**.
 

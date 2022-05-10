@@ -28,7 +28,7 @@ Kubernetes is the core component of the Azure Kubernetes Service on Azure Stack 
 The deployment operation will create multiple Linux or Windows virtual machines and join them together to create Kubernetes cluster(s).
 
 > [!NOTE]
-> To help improve the reliability of the system, if you are running multiple Cluster Shared Volumes (CSV) in your Azure Stack HCI cluster, by default virtual machine data is automatically spread out across all available CSVs in the cluster. This ensures that applications survive in the event of CSV outages. This applies to only new installations (not upgrades).
+> To help improve the reliability of the system, if you are running multiple Cluster Shared Volumes (CSV) in your Azure Stack HCI or Windows Server cluster, by default virtual machine data is automatically spread out across all available CSVs in the cluster. This ensures that applications survive in the event of CSV outages. This applies to only new installations (not upgrades).
 
 The deployed system is ready to receive standard Kubernetes workloads, scale these workloads, or even scale the number of virtual machines and the number of clusters up and down as needed.
 
@@ -39,9 +39,9 @@ An Azure Kubernetes Service cluster has the following components on Azure Stack 
 
 ![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\architecture.png)
 
-## Manage AKS on Azure Stack HCI
+## Manage AKS on Azure Stack HCI and Windows Server
 
-You can manage AKS on Azure Stack HCI using the following management options:
+You can manage AKS on Azure Stack HCI and Windows Server using the following management options:
 
 - **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
 - A **PowerShell module**  makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring other workload clusters and reconfiguring existing ones.
@@ -85,7 +85,7 @@ Kubernetes uses *pods* to run an instance of your application. A pod represents 
 
 The Deployment Controller uses the Kubernetes Scheduler to run a given number of replicas on any available node with available resources. This approach of using deployments may be sufficient for stateless applications, but not for applications that require a persistent naming convention or storage. For applications that require a replica to exist on each node (or selected nodes) within a cluster, the Deployment Controller doesn't look at how replicas are distributed across the nodes.
 
-- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. *Replicas* in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. Replicas in a StatefulSet are scheduled and run across any available node in an Azure Kubernetes Service on Azure Stack HCI cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. *Replicas* in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. Replicas in a StatefulSet are scheduled and run across any available node in an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
 - *DaemonSets* - For specific log collection or monitoring needs, you may need to run a given pod on all, or selected, nodes. A *DaemonSet* is again used to deploy one or more identical pods, but the DaemonSet Controller ensures that each node specified runs an instance of the pod. For more information, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
@@ -117,7 +117,7 @@ If a given workload cluster consists of both Linux and Windows worker node
 For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
 ## Next steps
-In this article, you learned about the cluster architecture of AKS on Azure Stack HCI and the workload cluster components. To learn more about AKS on Azure Stack HCI concepts, see the following articles:
+In this article, you learned about the cluster architecture of AKS on Azure Stack HCI and Windows Server and the workload cluster components. To learn more about AKS on Azure Stack HCI and Windows Server concepts, see the following articles:
 
 - [Security](./concepts-security.md)
 - [Container networking](./concepts-container-networking.md)

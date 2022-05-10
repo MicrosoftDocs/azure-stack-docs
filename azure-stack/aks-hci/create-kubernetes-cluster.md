@@ -67,7 +67,7 @@ This section describes how to use the Create Kubernetes cluster wizard through t
  
 ## Next steps
 
-In this quickstart, you deployed a Kubernetes cluster. To learn more about Azure Kubernetes Service on Azure Stack HCI and walk through how to deploy and manage Linux applications on AKS on Azure Stack HCI, continue to the following tutorial:
+In this quickstart, you deployed a Kubernetes cluster. To learn more about Azure Kubernetes Service on Azure Stack HCI and walk through how to deploy and manage Linux applications on AKS on Azure Stack HCI and Windows Server, continue to the following tutorial:
 
 - [Tutorial: Deploy Linux applications in Azure Kubernetes Service on Azure Stack HCI](deploy-linux-application.md)
 - [Set up multiple administrators](./set-multiple-administrators.md)
