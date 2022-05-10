@@ -8,6 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 05/06/2022
+zone_pivot_groups: hci-versions
 ---
 
 # Monitor multiple clusters with Azure Stack HCI Insights
