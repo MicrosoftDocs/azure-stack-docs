@@ -9,20 +9,21 @@ ms.lastreviewed: 04/28/2022
 ms.date: 04/04/2022
 ---
 
-# Azure Stack HCI single server clusters overview
+# Using Azure Stack HCI on a single server
 
 > Applies to: Azure Stack HCI, version 21H2
 
 This article provides information about Azure Stack HCI single server.
 
-Azure Stack HCI single server is a new cluster configuration option that is available for all Azure Stack HCI installations starting with version 21H2. This configuration option promotes flexibility if high resiliency isn't a requirement. Additionally, this server scale minimizes hardware and promotes reduced Azure costs in locations that can tolerate lower resiliency. Single server may also be a concept for users who desire a minimal initial setup, with plans to scale out in the future.
+This article provides an overview of running Azure Stack HCI, version 21H2 on a single server, also known as a single-server cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
 
 Along with the benefits mentioned, there are some initial limitations to recognize.
 
-- Storage Bus Layer (SBL) cache isn't supported. Single server is only supported on single storage type configurations (for example all NVMe or all SSD).
-- Stretch cluster isn't supported at this time.
-- Host update that requires a restart will cause downtime to running virtual machines (VMs). Shut them down gracefully before restarting the host.
 - Single server deployment needs to be done through PowerShell.
+- Single servers must use only NVMe or SSD drives.
+- Stretched (dual-site) clusters don't support individual servers (you must use a minimum of four servers in a stretched cluster).
+- To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool. Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). You'll have to get solution updates directly from your solution vendor.
+- Host update that requires a restart will cause downtime to running virtual machines (VMs). Shut them down gracefully before restarting the host.
 
 ## Prerequisites
 
@@ -31,17 +32,17 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 
 For hardware, software, and network requirements see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
 
-## Comparing single server and multi-server clusters
+## Comparing single-server and multi-server clusters
 
 The following table compares attributes of a single server cluster to multi-server clusters.
 
-|Attributes | Single Server | Multi-Server |
+|Attributes | Single-server | Multi-server |
 |----------|-----------|-----------|
 |Full software-defined data center (SDDC) stack (hypervisor, storage, networking) | Yes | Yes|
-|Storage Spaces Direct (S2D) support | Yes | Yes |
+|Storage Spaces Direct support | Yes | Yes |
 |Software Defined Networking (SDN) support | Yes | Yes |
 |Native Azure Arc integration | Yes | Yes |
-|Managed through Windows Admin Center (WAC) and/or Azure portal | Yes | Yes |
+|Managed through Windows Admin Center and Azure portal | Yes | Yes |
 |Azure billing/registration | Yes | Yes |
 |Charged per physical core| Yes | Yes |
 |Support through Azure | Yes | Yes |
@@ -66,11 +67,11 @@ The following table describes currently known issues for single server. This lis
 |Issue | Notes|
 |-----------|---------------|
 |Cache drives don't auto rebind if failed. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. ***SBL cache is not supported at this time**. |
-|Windows Admin Center (WAC) doesn't support single server cluster creation. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
-|WAC cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
-|WAC pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
-|WAC and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
-|Cluster Aware Updating (CAU) doesn't support single server. |Update using command line, Server Configuration tool (SConfig), and/or WAC (through server manager). |
+|Windows Admin Center doesn't support single server cluster creation. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
+|Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
+|Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
+|Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
+|Cluster Aware Updating (CAU) doesn't support single server. |Update using command line, Server Configuration tool (SConfig), or Windows Admin Center (through server manager). |
 |Adding a node to scale out the single server cluster doesn't automatically change the S2D FaultDomainAwarenessDefault. |FaultDomainAwarenessDefault can be changed manually from PhysicalDisk to StorageScaleUnit. |
 
 ## Next steps
