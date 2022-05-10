@@ -8,17 +8,25 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 05/06/2022
+zone_pivot_groups: hci-versions
 ---
 
 # Single cluster workbook
 
+::: zone pivot="above-5b"
 This article explains how to enable Azure Insights capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+::: zone-end
+
+::: zone pivot="on-5b"
+This article explains how to enable logs and monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+::: zone-end
 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
 > [!IMPORTANT]
 > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration).
 
+::: zone pivot="above-5b"
 ## Insights capability (preview)
 
 Insights was previously known as "monitoring" and is used to monitor your resources and provide useful insights regarding cluster, servers, virtual machines, storage, and much more.
@@ -152,15 +160,20 @@ To enable Insights again,
 - Select **Update** to see the visualizations again.
 
 :::image type="content" source="media/single-cluster/needs-update.png" alt-text="Portal shows update needed" lightbox="media/single-cluster/needs-update.png":::
+::: zone-end
 
 ## Azure Monitor pricing
 
 As described previously, when you enable monitoring visualization, logs are collected from:
 
+::: zone pivot="above-5b"
 - Health Management (Microsoft-windows-health/operational).
+::: zone-end
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004).
 
+::: zone pivot="above-5b"
 You are billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
+::: zone-end
 
 Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account per month is free. Because pricing can vary due to multiple factors, such as the region of Azure you're using, visit the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for the most up-to-date pricing calculations. The following table can help you calculate the cost:
 
@@ -198,18 +211,39 @@ If the Logs capability and Monitoring capability are enabled without errors but 
    ```
 
 4. When prompted to select a troubleshooting scenario, choose option 1: **Agent not reporting data or heartbeat data missing**.
+   ::: zone pivot="on-5b"
+   :::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
+   :::zone-end
 
 5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
 
+   ::: zone pivot="above-5b"
    :::image type="content" source="media/single-cluster/tool-options-1.png" alt-text="Troubleshooting tool command line options" lightbox="media/single-cluster/tool-options-1.png":::
+   ::: zone-end
+
+   ::: zone pivot="on-5b"
+   :::image type="content" source="media/monitor-azure-portal/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-azure-portal/select-option-1.png":::
+   :::zone-end    
 
 6. If you encounter the error that's highlighted in the following screenshot but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue.
 
+   ::: zone pivot="above-5b"
    :::image type="content" source="media/single-cluster/tool-errors.png" alt-text="Command prompt showing tool errors" lightbox="media/single-cluster/tool-errors.png":::
+   ::: zone-end
+
+   ::: zone pivot="on-5b"
+   :::image type="content" source="media/monitor-azure-portal/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-azure-portal/timezone-issue-1.png":::
+   ::: zone-end
 
    The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
 
+   ::: zone pivot="above-5b"
    :::image type="content" source="media/single-cluster/tool-errors-prompt.png" alt-text="Move to next error" lightbox="media/single-cluster/tool-errors-prompt.png":::
+   ::: zone-end
+
+   ::: zone pivot="on-5b"
+   :::image type="content" source="media/monitor-azure-portal/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-azure-portal/timezone-issue-2.png":::
+   ::: zone-end
 
 7. To resolve the issue:
 
