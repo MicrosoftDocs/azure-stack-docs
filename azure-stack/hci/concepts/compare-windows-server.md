@@ -45,7 +45,7 @@ Use Windows Server for:
 
 ## Compare product positioning
 
-The following table shows the high-level product packaging for Azure Stack HCI and Windows Server.
+The following table shows the high-level product packaging for Azure Stack HCI and Windows Server 2022.
 
 | **Attribute**    | **Azure Stack HCI** | **Windows Server** |
 | ---------------- | ------------------- | ----------------------- |
@@ -64,6 +64,16 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 
 ## Compare workloads and benefits
 
+The following table compares the workloads and benefits of Azure Stack HCI and Windows Server 2022.
+
+| **Attribute** | **Azure Stack HCI** | **Windows Server 2022** |
+| ------------- | ------------------- | ----------------------- |
+| Azure Kubernetes Service (AKS)| Yes | Yes |
+| Azure Arc-Enabled Paas Services | Yes | Yes |
+| Windows Server 2022 Azure Edition | Yes | No|
+| Windows Server subscription add-on (Dec. 2021)| Yes | No |
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. (**Important:** This requires purchasing an ESU license key and manually applying it to every VM.)| Yes | No |
+
 ## Compare technical features
 
 The following table compares the technical features of Azure Stack HCI and Windows Server 2022.
@@ -79,7 +89,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
 
-Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md). See also <https://gearup.microsoft.com/download/bdb1fbb1-1d4a-4a4d-b1ec-d751a02ccf76>
+Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md). See also <https://gearup.microsoft.com/download/bdb1fbb1-1d4a-4a4d-b1ec-d751a02ccf76
 
 ## Compare management options
 
