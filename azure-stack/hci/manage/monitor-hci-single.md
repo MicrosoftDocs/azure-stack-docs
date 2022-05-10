@@ -68,40 +68,6 @@ To remove the Microsoft Monitoring Agent from every server in the cluster, follo
 2. Select the **MicrosoftMonitoringAgent** checkbox.
 3. Click **Remove**, and then **Yes**.
 
-## Monitoring capability (preview)
-
-Now that you've set up a Log Analytics workspace, you can enable monitoring. Once monitoring is enabled, the data generated from your on-premises Azure Stack HCI cluster will then be collected in a Log Analytics workspace in Azure. Within that workspace, you can collect data about the health of your cluster. By default, monitoring collects the following logs every hour:
-
-- SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004)
-
-To change the frequency of log collection, see [Event Log Channel](azure-stack-hci-insights.md#event-log-channel).
-
-### Enable monitoring visualizations
-
-Enabling monitoring turns on monitoring for all Azure Stack HCI clusters currently associated with the Log Analytics workspace. You will be billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
-
-To enable this capability from the Azure portal, follow these steps:
-
-1. Under the **Capabilities** tab, select **Monitoring**, then **Enable**.
-1. Monitoring should now show as **Configured** under the **Capabilities** tab.
-
-The **Microsoft-windows-sddc-management/operational** Windows event channel will be added to your Log Analytics workspace. By collecting these logs, these analytics  show the health status of the individual servers, drives, volumes, and VMs.
-
-After you enable monitoring, it can take up to an hour to collect the data. When the process is finished, you'll be able go to the **Monitoring** tab and see a rich visualization of the health of your cluster, as in the screenshot below.
-
-:::image type="content" source="media/monitor-azure-portal/monitoring-visualization.png" alt-text="Enabling monitoring displays a rich visualization of the health of your cluster from Azure portal" lightbox="media/monitor-azure-portal/monitoring-visualization.png":::
-
-You'll see tiles for the health status of your overall cluster along with key subcomponents. The first tile shows any health faults that the Health Service has thrown on your cluster. The other three tiles show you the health status of your drives, VMs, and volumes so that you can easily discern what's going on with the internals of your HCI cluster. You'll also see charts for CPU, memory, and storage usage. These charts are populated using the SDDC Management logs that are collected every hour by default. This view will allow you to check up on your HCI cluster through the Azure portal without having to connect to it directly.
-
-### Disable monitoring visualizations
-
-To disable monitoring, follow these steps:
-
-1. Select **Monitoring** under the **Capabilities** tab.
-2. Select **Disable Monitoring**.
-
-When you disable the monitoring feature, the Health Service and SDDC Management logs are no longer collected; however, existing data is not deleted. If you'd like to delete that data, go into your Log Analytics workspace and delete the data manually.
-
 ::: zone pivot="above-5b"
 ## Insights capability (preview)
 
