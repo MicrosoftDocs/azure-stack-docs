@@ -11,6 +11,7 @@ ms.date: 04/29/2022
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
 
+
 # Deploy a Java application with Open Liberty or WebSphere Liberty on an AKS on Azure Stack HCI cluster
 
 This article demonstrates how to:  

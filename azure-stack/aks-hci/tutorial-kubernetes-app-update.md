@@ -3,10 +3,12 @@ title:  Tutorial - Update an application in Azure Kubernetes Service on Azure St
 description: In this tutorial, learn how to update an existing application deployment with a new version of the application code.
 services: container-service
 ms.topic: tutorial
-ms.date: 04/29/2022
+ms.date: 05/09/2022
+author: mattbriggs
+ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+
 # Intent: As an IT Pro, I need step-by-step instructions on how to update an existing application deployment in order to use a new version of the application code.
 # Keyword: update application tutorial container image
 ---
