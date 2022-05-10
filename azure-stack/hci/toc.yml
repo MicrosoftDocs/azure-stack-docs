@@ -163,7 +163,7 @@
       - name: Monitor a single server cluster
         href: manage/monitor-hci-single.md
       - name: Monitor multiple clusters
-        href: manage/monitor-hci-multi-md
+        href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Monitor clusters with Health Service
