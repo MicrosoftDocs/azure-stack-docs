@@ -47,7 +47,7 @@
   - name: Deploy with PowerShell
     items:
     - name: Deploy a single server
-      href: deploy/configure-hci-os-single-server.md
+      href: deploy/single-server.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
@@ -226,8 +226,8 @@
   items:
   - name: Storage and clusters
     items:
-    - name: Single server cluster
-      href: concepts/azure-stack-hci-os-single-server-overview.md
+    - name: Single server clusters
+      href: concepts/single-server-clusters.md
     - name: System requirements
       href: concepts/system-requirements.md
     - name: Choose drives
