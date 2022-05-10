@@ -105,7 +105,7 @@ The following table shows how each name-value pair provides more information on 
 | **BootType** | Specifies the type of reboot performed in the last run. |
 | **SoftBootStatus** | Indicates if Kernel Soft Reboot is **Enabled**, **NotEnabled**, **NotInstalled**, or **Bypassed** if the server opts out of Kernel Soft Reboot using registry key settings. |
 
-For additional troubleshooting, see [Save-CauDebugTrace](/powershell/module/clusterawareupdating/save-caudebugtrace/?&preserve-view=true).
+For additional troubleshooting, see [Save-CauDebugTrace](/powershell/module/clusterawareupdating/save-caudebugtrace?&preserve-view=true).
 
 ## FAQ
 
