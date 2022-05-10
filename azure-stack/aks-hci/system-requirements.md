@@ -162,6 +162,16 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 | 55000           | wssdcloudagent gRPC   server port      |
 | 65000            | wssdcloudagent gRPC authentication port  |
 
+If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
+
+| Firewall port               | Description     |
+| ---------------------------- | ------------ |
+| 22 | Required to collect logs using `Get-AksHciLogs`. This is a port on the AKS VMs that needs to be reached by the physical host.
+| 6443 | Port on the AKS VMs that needs to be reached by the physical host.
+| 46000 | Port on the AKS VMs that needs to be reached by the physical host.
+| 55000 | wssdcloudagent gRPC server port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. | 
+| 65000 | wssdcloudagent gRPC authentication port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. |
+
 Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
 
 If your network requires the use of a proxy server to connect to the internet, see [Use proxy server settings on AKS on Azure Stack HCI](set-proxy-settings.md).
