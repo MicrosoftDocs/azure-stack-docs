@@ -36,7 +36,13 @@ After you register your cluster and Arc-enable the servers, you'll see the follo
 
 Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you will see the option to enable logs, which should say **Not configured**.
 
+::: zone pivot="on-5b"
 :::image type="content" source="media/monitor-azure-portal/logs-capability.png" alt-text="Select the Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
+::: zone-end
+
+::: zone pivot="above-5b"
+:::image type="content" source="media/monitor-hci-single/logs-capability.png" alt-text="Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
+::: zone-end
 
 This capability is an Arc for Servers extension that simplifies installing the Microsoft Monitoring Agent. Because you're using the Arc for Servers extension to enable this workflow, if you ever add additional servers to your cluster, they will automatically have the Microsoft Monitoring Agent installed on them.
 
@@ -51,7 +57,13 @@ To configure the Log Analytics Agent extension:
 2. Select **Use existing** to use the existing workspace for your subscription.
 3. Select **Add** at the bottom of the page.
 
+   ::: zone pivot="on-5b"
    :::image type="content" source="media/monitor-azure-portal/enable-log-analytics.png" alt-text="Enable Log Analytics on Azure portal" lightbox="media/monitor-azure-portal/enable-log-analytics.png":::
+   ::: zone-end
+
+   ::: zone pivot="above-5b"
+   :::image type="content" source="media/monitor-hci-single/enable-log-analytics.png" alt-text="Enable Log Analytics on Azure portal" lightbox="media/monitor-hci-single/enable-log-analytics.png":::
+   ::: zone-end
 
 4. When the configuration is finished, **Logs** will appear as **Configured** under the **Capabilities** tab.
 5. Select **Settings > Extensions** from the toolbar on the left. You should see that each of your servers has successfully installed the Microsoft Monitoring Agent.
@@ -73,7 +85,7 @@ To remove the Microsoft Monitoring Agent from every server in the cluster, follo
 
 Insights was previously known as "monitoring" and is used to monitor your resources and provide useful insights regarding cluster, servers, virtual machines, storage, and much more.
 
-:::image type="content" source="media/single-cluster/cluster-preview.png" alt-text="Cluster portal screen" lightbox="media/single-cluster/cluster-preview.png":::
+:::image type="content" source="media/monitor-hci-single/cluster-preview.png" alt-text="Cluster portal screen" lightbox="media/monitor-hci-single/cluster-preview.png":::
 
 The data generated from your on-premises Azure Stack HCI cluster is collected in a Log Analytics workspace in Azure. Within that workspace, you can collect data about the health of your cluster. By default, monitoring collects the following logs every hour:
 
@@ -89,16 +101,16 @@ Enabling Insights helps you monitor all Azure Stack HCI clusters currently assoc
 1. Under the **Capabilities** tab, select **Insights**. Then select **Turn on**.
 2. Insights should now show as **Configured** in the **Capabilities** tab.
 
-:::image type="content" source="media/single-cluster/enable-insights.png" alt-text="Portal screen to enable Insights" lightbox="media/single-cluster/enable-insights.png":::
+:::image type="content" source="media/monitor-hci-single/enable-insights.png" alt-text="Portal screen to enable Insights" lightbox="media/monitor-hci-single/enable-insights.png":::
 
 The **Microsoft-windows-sddc-management/operational** and **microsoft-windows-health/operational** Windows event channel will be
 added to your Log Analytics workspace under **Windows event logs**.
 
-:::image type="content" source="media/single-cluster/windows-event-logs.png" alt-text="Portal workspace for Windows event logs" lightbox="media/single-cluster/windows-event-logs.png":::
+:::image type="content" source="media/monitor-hci-single/windows-event-logs.png" alt-text="Portal workspace for Windows event logs" lightbox="media/monitor-hci-single/windows-event-logs.png":::
 
 By collecting these logs, analytics will show the health status of the individual servers, drives, volumes, and VMs. By default, 5 performance counters will be added:
 
-:::image type="content" source="media/single-cluster/performance-counters.png" alt-text="Windows performance counters" lightbox="media/single-cluster/performance-counters.png":::
+:::image type="content" source="media/monitor-hci-single/performance-counters.png" alt-text="Windows performance counters" lightbox="media/monitor-hci-single/performance-counters.png":::
 
 ### Performance counters
 
@@ -114,7 +126,7 @@ The following table describes the performance counters that are monitored:
 
 After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you'll be able to see a rich visualization of the health of your cluster, under the **Insights (preview)** tab on the left navigation, as shown in the following screen shot:
 
-:::image type="content" source="media/single-cluster/server-health.png" alt-text="Server visualizations" lightbox="media/single-cluster/server-health.png":::
+:::image type="content" source="media/monitor-hci-single/server-health.png" alt-text="Server visualizations" lightbox="media/monitor-hci-single/server-health.png":::
 
 ### Insights visualizations
 
@@ -184,7 +196,7 @@ To disable insights, follow these steps:
 1. Select **Insights** under the **Capabilities** tab.
 2. Select **Disable Insights**.
 
-   :::image type="content" source="media/single-cluster/disable-insights.png" alt-text="Portal screen for disabling Insights" lightbox="media/single-cluster/disable-insights.png":::
+   :::image type="content" source="media/monitor-hci-single/disable-insights.png" alt-text="Portal screen for disabling Insights" lightbox="media/monitor-hci-single/disable-insights.png":::
 
 When you disable the Insights feature, the Health Service and SDDC Management logs are no longer collected; however, existing data is not
 deleted. If you'd like to delete that data, go into your Log Analytics workspace and delete the data manually.
@@ -201,7 +213,7 @@ To enable Insights again,
 - Select the **Insights** tile under **Capabilities**.
 - Select **Update** to see the visualizations again.
 
-:::image type="content" source="media/single-cluster/needs-update.png" alt-text="Portal shows update needed" lightbox="media/single-cluster/needs-update.png":::
+:::image type="content" source="media/monitor-hci-single/needs-update.png" alt-text="Portal shows update needed" lightbox="media/monitor-hci-single/needs-update.png":::
 ::: zone-end
 
 ## Azure Monitor pricing
@@ -254,37 +266,37 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 4. When prompted to select a troubleshooting scenario, choose option 1: **Agent not reporting data or heartbeat data missing**.
    ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-azure-portal/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-azure-portal/select-troubleshooting-scenario.png":::
+   :::image type="content" source="media/monitor-hci-single/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-hci-single/select-troubleshooting-scenario.png":::
    :::zone-end
 
 5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
 
    ::: zone pivot="above-5b"
-   :::image type="content" source="media/single-cluster/tool-options-1.png" alt-text="Troubleshooting tool command line options" lightbox="media/single-cluster/tool-options-1.png":::
+   :::image type="content" source="media/monitor-hci-single/tool-options-1.png" alt-text="Troubleshooting tool command line options" lightbox="media/monitor-hci-single/tool-options-1.png":::
    ::: zone-end
 
    ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-azure-portal/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-azure-portal/select-option-1.png":::
-   :::zone-end    
+   :::image type="content" source="media/tomonitor-hci-single/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-hci-single/select-option-1.png":::
+   :::zone-end
 
 6. If you encounter the error that's highlighted in the following screenshot but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue.
 
    ::: zone pivot="above-5b"
-   :::image type="content" source="media/single-cluster/tool-errors.png" alt-text="Command prompt showing tool errors" lightbox="media/single-cluster/tool-errors.png":::
+   :::image type="content" source="media/monitor-hci-single/tool-errors.png" alt-text="Command prompt showing tool errors" lightbox="media/monitor-hci-single/tool-errors.png":::
    ::: zone-end
 
    ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-azure-portal/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-azure-portal/timezone-issue-1.png":::
+   :::image type="content" source="media/monitor-hci-single/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-hci-single/timezone-issue-1.png":::
    ::: zone-end
 
    The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
 
    ::: zone pivot="above-5b"
-   :::image type="content" source="media/single-cluster/tool-errors-prompt.png" alt-text="Move to next error" lightbox="media/single-cluster/tool-errors-prompt.png":::
+   :::image type="content" source="media/monitor-hci-single/tool-errors-prompt.png" alt-text="Move to next error" lightbox="media/monitor-hci-single/tool-errors-prompt.png":::
    ::: zone-end
 
    ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-azure-portal/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-azure-portal/timezone-issue-2.png":::
+   :::image type="content" source="media/monitor-hci-single/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-hci-single/timezone-issue-2.png":::
    ::: zone-end
 
 7. To resolve the issue:
