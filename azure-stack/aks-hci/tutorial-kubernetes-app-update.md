@@ -3,7 +3,7 @@ title:  Tutorial - Update an application in Azure Kubernetes Service on Azure St
 description: In this tutorial, learn how to update an existing application deployment with a new version of the application code.
 services: container-service
 ms.topic: tutorial
-ms.date: 05/09/2022
+ms.date: 05/11/2022
 author: mattbriggs
 ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
@@ -38,11 +38,7 @@ This tutorial requires that you run the Azure CLI version 2.0.53 or later. Run `
 
 ## Update an application
 
-<<<<<<< HEAD
-This section describes how to make a change to the sample application, and then update the version already deployed to your AKS on Azure Stack HCI cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
-=======
-Let's make a change to the sample application, then update the version already deployed to your AKS on Azure Stack HCI and Windows Server cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
->>>>>>> 6249c3b4284efaa8feb028cfec3a51cb307e3a87
+This section describes how to make a change to the sample application, and then update the version already deployed to your AKS on Azure Stack HCI and Windows Server cluster. Make sure that you're in the cloned *azure-voting-app-redis* directory. The sample application source code can then be found inside the *azure-vote* directory. Open the *config_file.cfg* file with an editor, such as `notepad`:
 
 ```console
 notepad azure-vote/azure-vote/config_file.cfg

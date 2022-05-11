@@ -7,6 +7,7 @@ ms.date: 04/25/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+
 # Intent: As an IT Pro, I need to learn how to stop and restart a cluster in order to optimize resource costs on my AKS on Azure Stack on HCI deployment.
 # Keyword: stop cluster start cluster cluster service
 
@@ -47,13 +48,8 @@ To shut down the local and remote computers, use the [Stop-Computer](/powershell
 PS:> Stop-Computer 
 ```
 
-## Start an Azure Stack HCI or Windows Server cluster
-
-<<<<<<< HEAD
-To start a stopped Azure Stack HCI or Windows Server cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
-=======
-To start a stopped Azure Stack HCI cluster, first restart the operating system on the local and/or remote computers, and then restart the cluster. 
->>>>>>> a4a314babbbd426e3b106749a89edc1ac119230d
+## Start an Azure Stack HCI cluster
+To start a stopped Azure Stack HCI cluster,  first restart the operating system on the local and/or remote computers, and then restart the cluster.
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 
@@ -61,7 +57,7 @@ To restart the operating system on your local and remote computers, use the foll
 PS:> Restart-Computer 
 ```
 
-To restart all the nodes of the Azure Stack HCI or Windows Server cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
+To restart all the nodes of the Azure Stack HCI on Windows cluster, use the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown below:  
 
 ```powershell
 PS:> Start-Cluster 
