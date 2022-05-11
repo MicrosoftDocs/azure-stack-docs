@@ -50,11 +50,7 @@ PS:> Stop-Computer
 
 ## Start an Azure Stack HCI or Windows Server cluster
 
-<<<<<<< HEAD
 To start a stopped Azure Stack HCI or Windows Server cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
-=======
-To start a stopped Azure Stack HCI cluster, first restart the operating system on the local and/or remote computers, and then restart the cluster. 
->>>>>>> a4a314babbbd426e3b106749a89edc1ac119230d
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 

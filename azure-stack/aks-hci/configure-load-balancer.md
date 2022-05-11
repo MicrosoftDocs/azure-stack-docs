@@ -7,8 +7,10 @@ ms.date: 04/27/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+
 # Intent: As an IT Pro, I need to learn how to create a load balancer and use it as a Virtual Machine (VM)
 # Keyword: load balancer configure HAProxy + KeepAliveS
+
 ---
 
 # Create and use load balancer in AKS on Azure Stack HCI and Windows Server

@@ -7,6 +7,7 @@ ms.date: 04/13/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+
 # Intent: As an IT Pro, I want to learn how use node selectors, taints, and tolerations so I can adapt apps for use on mixed-OS Kubernetes clusters. 
 # Keyword: Node Selector mixed-OS clusters taints tolerations
 

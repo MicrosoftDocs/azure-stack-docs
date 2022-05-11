@@ -300,7 +300,7 @@ If you see certificate validation errors, complete the steps to [uninstall and r
 - Use a unique account for each cluster.
 - Don't reuse the password for the API server account across clusters.
 - Delete the local copy of the keytab file as soon as you create the cluster and verify that the SSO credentials work.
-- Delete the Active Directory user that was created for the API server. For more information, see [Remove-ADUser](/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps).
+- Delete the Active Directory user that was created for the API server. For more information, see [Remove-ADUser](/powershell/module/activedirectory/remove-aduser?view=windowsserver2019-ps&preserve-view=true).
 
 ## Next steps 
 

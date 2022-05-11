@@ -7,8 +7,10 @@ ms.date: 04/27/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+
 # Intent: As an IT Pro, I need to create a custom load balancer and use it to send requests to the Kubernetes API server.
 # Keyword: custom load balancer
+
 ---
 
 # Create and use a custom load balancer in AKS on Azure Stack HCI and Windows Server
