@@ -276,7 +276,7 @@ If the Logs capability and Monitoring capability are enabled without errors but 
    ::: zone-end
 
    ::: zone pivot="on-5b"
-   :::image type="content" source="media/tomonitor-hci-single/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-hci-single/select-option-1.png":::
+   :::image type="content" source="media/monitor-hci-single/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-hci-single/select-option-1.png":::
    :::zone-end
 
 6. If you encounter the error that's highlighted in the following screenshot but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue.
