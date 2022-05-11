@@ -13,9 +13,9 @@ ms.reviewer: sulahiri
 
 ---
 
-# Security in AKS on Azure Stack HCI and Windows Server
+# Security in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-Security in AKS on Azure Stack HCI and Windows Server involves securing the infrastructure and the applications running on the Kubernetes cluster. This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
+Security in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server involves securing the infrastructure and the applications running on the Kubernetes cluster. This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security in AKS on Azure Stack HCI and Windows Server
 

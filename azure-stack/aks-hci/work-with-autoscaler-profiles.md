@@ -13,7 +13,7 @@ ms.date: 03/16/2022
 
 ---
 
-# Use the autoscaler profile to configure cluster autoscaling in AKS on Azure Stack HCI and Windows Server
+# Use the autoscaler profile to configure cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You can't set an autoscaler profile per node pool.
 

@@ -14,9 +14,9 @@ ms.custom: contperf-fy22q3
 
 ---
 
-# Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Azure Stack HCI and Windows Server
+# Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-In this guide, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR). You'll deploy to your on-premises Kubernetes cluster hosted by AKS on Azure Stack HCI and Windows Server. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. The guide walks you through creating a private container registry in Azure and then pushing your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI and Windows Server.
+In this guide, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR). You'll deploy to your on-premises Kubernetes cluster hosted by Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. The guide walks you through creating a private container registry in Azure and then pushing your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI and Windows Server.
 
 This guide looks at using ACR on Azure Stack HCI, which you can run in your own datacenter. If you're interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
 ## Prerequisites
@@ -174,6 +174,6 @@ To confirm that the pod was successfully created using the container image from 
 ## Next steps
 
 In this article, you learned how to deploy a container image from the ACR to AKS on Azure Stack HCI and Windows Server. Next, you can:
-- [Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI](./use-node-pools.md)
+- [Create and manage multiple node pools for a cluster in Azure Kubernetes Service on Azure Stack HCI](./use-node-pools.md)
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

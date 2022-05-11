@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 
 # Scale the node count in an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster
 
-If the resource needs of your applications change, you can manually scale an AKS cluster to run a different number of control plane nodes and worker nodes. To do this, you must scale the control plane nodes and worker nodes separately.
+If the resource needs of your applications change, you can manually scale an Azure Kubernetes Service (AKS) cluster to run a different number of control plane nodes and worker nodes. To do this, you must scale the control plane nodes and worker nodes separately.
 
 ## Scale the control plane nodes
 

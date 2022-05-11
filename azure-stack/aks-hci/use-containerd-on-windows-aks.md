@@ -18,7 +18,7 @@ ms.reviewer: crwilhit
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-Beginning in Kubernetes version v1.22.1, you can use `containerd` as the container runtime for Windows Server node pools. The use of the `containerd` runtime for Windows on AKS on Azure Stack HCI and Windows Server is currently in **preview**. While dockershim remains the default runtime for now, it's deprecated and will be removed in Kubernetes v1.24.
+Beginning in Kubernetes version v1.22.1, you can use `containerd` as the container runtime for Windows Server node pools. The use of the `containerd` runtime for Windows on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is currently in **preview**. While dockershim remains the default runtime for now, it's deprecated and will be removed in Kubernetes v1.24.
 
 > [!IMPORTANT]  
 > The `containerd` runtime for Windows on AKS on Azure Stack HCI and Windows Server is currently in PREVIEW.

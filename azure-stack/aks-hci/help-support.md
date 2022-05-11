@@ -10,9 +10,9 @@ ms.reviewer: mikek
 author: mattbriggs
 ---
 
-# Get support for Azure Kubernetes Services on Azure Stack HCI
+# Get support for Azure Kubernetes Services on Azure Stack HCI and Windows Server
 
-If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, this article describes the steps you need to run to open a support request.
+If you encounter an issue with Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, this article describes the steps you need to run to open a support request.
 
 ## Go to Help + support in the Azure portal
 

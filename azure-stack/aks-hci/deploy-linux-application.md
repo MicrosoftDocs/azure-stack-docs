@@ -25,7 +25,7 @@ This tutorial assumes a basic understanding of Kubernetes concepts. For more inf
 
 Verify you have the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster with at least one Linux worker node that is up and running. 
+* An Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server cluster with at least one Linux worker node that is up and running. 
 * A kubeconfig file to access the cluster.
 * Have the AKS on Azure Stack HCI and Windows Server PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.

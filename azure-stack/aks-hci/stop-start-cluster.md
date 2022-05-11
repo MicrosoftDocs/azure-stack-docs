@@ -13,9 +13,9 @@ ms.reviewer: EkeleAsonye
 
 ---
 
-# Stop and start an AKS on Azure Stack HCI and Windows Server cluster
+# Stop and start an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster
 
-Your workloads may not need to run continuously, and to save resource costs, you might need to stop (or shut down) your AKS on Azure Stack HCI and Windows Server cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
+Your workloads may not need to run continuously, and to save resource costs, you might need to stop (or shut down) your Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
 
 ## Before you begin
 

@@ -12,9 +12,9 @@ author: mattbriggs
 # Keyword: virtual machine networking
 
 ---
-# Network concepts for deploying Azure Kubernetes Service (AKS) nodes on Azure Stack HCI
+# Network concepts for deploying Azure Kubernetes Service nodes on Azure Stack HCI
 
-You can choose between two IP address assignment models for your AKS on Azure Stack HCI and Windows Server networking architecture.
+You can choose between two IP address assignment models for your Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server networking architecture.
 
 - **Static IP networking**  
     The virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.

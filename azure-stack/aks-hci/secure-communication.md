@@ -14,7 +14,7 @@ ms.reviewer: aathipsa
 
 # Secure communication with certificates  
 
-Certificates are used to build secure communication between in-cluster components. AKS on Azure Stack HCI and Windows Server provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
+Certificates are used to build secure communication between in-cluster components. Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
 
 ## Certificates and CAs
 

@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 ---
 
-# Configure group Managed Service Accounts (gMSA) for Windows containers with AKS on Azure Stack HCI and Windows Server
+# Configure group Managed Service Accounts (gMSA) for Windows containers with Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 

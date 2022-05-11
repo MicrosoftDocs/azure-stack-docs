@@ -10,9 +10,10 @@ ms.reviewer: oadeniji
 
 ---
 
-# Node auto-repair on AKS on Azure Stack HCI and Windows Server
+# Node auto-repair on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-AKS on Azure Stack HCI and Windows Server continuously monitors the health state of worker nodes and performs automatic node repair if issues arise or if they become unhealthy. AKS on Azure Stack HCI and Windows Server works to minimize service disruptions for clusters.
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server continuously monitors the health state of worker nodes and performs automatic node repair if issues arise or if they become unhealthy. AKS on Azure Stack HCI and Windows Server works to minimize service disruptions for clusters.
+
 In this topic, you will learn how to automatically repair nodes for both Windows and Linux nodes.
 
 ## How AKS checks for unhealthy nodes

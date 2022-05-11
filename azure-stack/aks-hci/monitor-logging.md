@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 # Monitor and logging data on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-You can create and access monitor and logging data on AKS on Azure Stack HCI and Windows Server. There are two types of monitoring and logging solutions available as described in the following table: 
+You can create and access monitor and logging data on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. There are two types of monitoring and logging solutions available as described in the following table: 
 
 | Solution  | Azure connectivity  | Support and service  | Cost | Deployment |
 | ------- |  ------------  | ---------  | --------------  | ---------------- |

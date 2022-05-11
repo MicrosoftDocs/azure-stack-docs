@@ -13,7 +13,7 @@ ms.reviewer: lahirisl
 
 ---
 
-# Use Active Directory single sign-on for a secure connection to Kubernetes API server in AKS on Azure Stack HCI and Windows Server
+# Use Active Directory single sign-on for a secure connection to Kubernetes API server in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
@@ -21,7 +21,7 @@ You can create a secure connection to Kubernetes API server using Active Directo
 
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The _kubeconfig_ file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
-As an alternative to using certificate-based _kubeconfig_, you can use AD SSO sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service on Azure Stack HCI and Windows Serverlets users on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
+As an alternative to using certificate-based _kubeconfig_, you can use AD SSO sign-on (SSO) credentials as a secure way to connect to the API server. AD integration with Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Serverlets users on a Windows domain-joined machine connect to the API server (via `kubectl`) using their SSO credentials. This removes the need to manage and distribute certificate-based _kubeconfig_ files that contain private keys.
 
 AD integration uses AD _kubeconfig_, which is distinct from the certificate-based _kubeconfig_ files and doesn't contain any secrets. However, the certificate-based _kubeconfig_ file can be used for backup purposes, such as troubleshooting, if there are issues with connecting using Active Directory credentials.
 

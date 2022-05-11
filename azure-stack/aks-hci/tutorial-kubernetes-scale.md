@@ -14,7 +14,7 @@ author: mattbriggs
 
 # Tutorial: Scale applications in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-If you have completed the previous tutorials, you should have a working Kubernetes cluster in AKS on Azure Stack HCI and Windows Server and also deployed the sample Azure Voting app. This tutorial, part five of seven, describes how to scale out the pods in the app. You'll learn how to:
+If you have completed the previous tutorials, you should have a working Kubernetes cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server and also deployed the sample Azure Voting app. This tutorial, part five of seven, describes how to scale out the pods in the app. You'll learn how to:
 
 > [!div class="checklist"]
 > * Scale the Kubernetes nodes

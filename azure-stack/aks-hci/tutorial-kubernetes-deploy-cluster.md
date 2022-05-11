@@ -16,7 +16,7 @@ author: mattbriggs
 
 # Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI and Windows Server cluster is deployed in AKS on Azure Stack HCI and Windows Server. You'll learn how to:
+Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster is deployed in AKS on Azure Stack HCI and Windows Server. You'll learn how to:
 
 > [!div class="checklist"]
 > * Deploy an AKS cluster on Azure Stack HCI 

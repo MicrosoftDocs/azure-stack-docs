@@ -14,7 +14,7 @@ ms.reviewer: mikek
 
 # Support policies for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-This article provides details about technical support policies and limitations for AKS on Azure Stack HCI and Windows Server. The article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
+This article provides details about technical support policies and limitations for Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. The article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
 
 ## Service updates and releases
 

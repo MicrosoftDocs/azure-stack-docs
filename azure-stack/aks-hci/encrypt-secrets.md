@@ -12,9 +12,9 @@ ms.reviewer: aathipsa
 
 ---
 
-# Encrypt etcd secrets in AKS on Azure Stack HCI and Windows Server clusters
+# Encrypt etcd secrets in Azure Kubernetes Service on Azure Stack HCI and Windows Server clusters
 
-A *secret* in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in _etcd_, which is a highly available key values store used as the Kubernetes backing store for all cluster data. AKS on Azure Stack HCI and Windows Server comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
+A *secret* in Kubernetes is an object that contains a small amount of sensitive data, such as passwords and SSH keys. In the Kubernetes API server, secrets are stored in _etcd_, which is a highly available key values store used as the Kubernetes backing store for all cluster data. Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server comes with encryption of etcd secrets and automates the management and rotation of encryption keys.
 
 ## Monitor and troubleshoot
 

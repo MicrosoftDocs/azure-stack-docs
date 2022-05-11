@@ -13,11 +13,11 @@ author: mattbriggs
 
 ---
 
-# Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
+# Container networking concepts in Azure Kubernetes Service on Azure Stack HCI
 
 Application components must work together to process their tasks in a container-based microservices approach. Kubernetes provides resources that enable application communications and allow you to connect to and expose applications internally or externally. You can load balance your applications to build highly available applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You may also need to restrict the flow of network traffic into or between pods and nodes for security.
 
-This article introduces the core concepts that provide networking to your applications in AKS on Azure Stack HCI and Windows Server:
+This article introduces the core concepts that provide networking to your applications in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server:
 
 - Kubernetes Services
 - Ingress controller

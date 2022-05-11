@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 > Applies to: Azure Stack HCI versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-Azure Kubernetes Service on Azure Stack HCI and Windows Server enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors, or taints and tolerations.
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors, or taints and tolerations.
 
 This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
 

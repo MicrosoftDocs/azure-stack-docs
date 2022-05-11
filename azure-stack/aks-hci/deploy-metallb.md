@@ -13,7 +13,7 @@ ms.reviewer: rbaziwane
 
 # Deploy MetalLB for load balancing on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-In the November update of AKS on Azure Stack HCI and Windows Server, we added support to allow users to configure custom load balancers for their workload clusters. Previously, users didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI and Windows Server. 
+In the November update of Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, we added support to allow users to configure custom load balancers for their workload clusters. Previously, users didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI and Windows Server. 
 
 The default behavior remains the same: a virtual machine that runs Mariner Linux and [HAProxy](http://www.haproxy.org/) is automatically created. The HAProxy ensures high availability for requests to the Kubernetes API server, and load balances Kubernetes services of *type=LoadBalancer*. 
 

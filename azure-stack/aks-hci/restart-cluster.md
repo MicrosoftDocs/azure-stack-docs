@@ -15,7 +15,7 @@ ms.reviewer: jeguan
 
 # Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-After deploying AKS on Azure Stack HCI and Windows Server, you can restart, remove, or reinstall your deployment.
+After deploying Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, you can restart, remove, or reinstall your deployment.
 
 ## Restart AKS on Azure Stack HCI and Windows Server
 

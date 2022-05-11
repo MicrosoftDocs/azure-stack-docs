@@ -14,11 +14,11 @@ ms.reviewer: scooley
 # Keyword: Helm charts deploy Helm
 ---
 
-# Install existing applications with Helm on Azure Kubernetes Service (AKS) on Azure Stack HCI
+# Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI
 
 [Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
-This article shows you how to configure and use Helm in a Kubernetes cluster on AKS on Azure Stack HCI and Windows Server 
+This article shows you how to configure and use Helm in a Kubernetes cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server 
 
 ## Before you begin
 
