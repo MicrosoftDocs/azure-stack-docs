@@ -1,6 +1,6 @@
 ---
-title: Use multiple node pools in AKS on Azure Stack HCI and Windows Server
-description: Learn how to create and manage multiple node pools for a cluster in AKS on Azure Stack HCI and Windows Server
+title: Use multiple node pools in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to create and manage multiple node pools for a cluster in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 services: 
 ms.topic: article
 ms.date: 04/13/2022

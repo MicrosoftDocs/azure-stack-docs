@@ -1,6 +1,6 @@
 ---
-title: Create and use a custom load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI
-description: Learn how to create and use a custom load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Create and use a custom load balancer with Azure Kubernetes Service on Azure Stack HCI
+description: Learn how to create and use a custom load balancer with Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/27/2022

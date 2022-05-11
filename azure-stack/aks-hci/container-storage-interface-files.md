@@ -1,6 +1,6 @@
 ---
-title: Use the AKS on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers
-description: Learn how to use the AKS on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers.
+title: Use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers
+description: Learn how to use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/11/2022

@@ -1,5 +1,5 @@
 ---
-title: Secure communication between control plane nodes for AKS on Azure Stack HCI and Windows Server
+title: Secure communication between control plane nodes for  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to secure communication between in-cluster components.
 author: mattbriggs
 ms.topic: how-to

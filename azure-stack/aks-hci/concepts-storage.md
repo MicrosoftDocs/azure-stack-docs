@@ -1,6 +1,6 @@
 ---
-title: Storage options for applications in AKS on Azure Stack HCI and Windows Server
-description: Storage options for applications in AKS on Azure Stack HCI and Windows Server.
+title: Storage options for applications in Azure Kubernetes ServiceKS on Azure Stack HCI and Windows Server
+description: Storage options for applications in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 04/11/2022

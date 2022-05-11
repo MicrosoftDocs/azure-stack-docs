@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Secrets Store CSI Driver integration with AKS on Azure Stack HCI and Windows Server
+title: Kubernetes Secrets Store CSI Driver integration with  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with Azure Kubernetes Service on Azure Stack HCI.
 ms.topic: how-to
 ms.date: 04/01/2022
@@ -13,7 +13,7 @@ author: mattbriggs
 
 ---
 
-# Use the Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with AKS on Azure Stack HCI and Windows Server
+# Use the Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). Integrate the Secrets Store CSI Driver with AKS on Azure Stack HCI and Windows Server allows to mount secrets, keys, and certificates as a volume. The data is then mounted into the container's file system. 
 

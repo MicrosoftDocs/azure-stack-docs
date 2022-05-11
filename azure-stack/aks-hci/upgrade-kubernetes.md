@@ -1,6 +1,6 @@
 ---
-title: Upgrade the Kubernetes version of AKS workload clusters with Windows Admin Center
-description: Learn how to upgrade the Kubernetes version of AKS workload clusters on Azure Stack HCI using Windows Admin Center
+title: Upgrade the Kubernetes version of  Azure Kubernetes Service workload clusters with Windows Admin Center
+description: Learn how to upgrade the Kubernetes version of  Azure Kubernetes Service workload clusters on Azure Stack HCI using Windows Admin Center
 ms.topic: article
 ms.date: 07/07/2021
 author: mattbriggs

@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS on Azure Stack HCI and Windows Server.
+title: Security in Azure Kubernetes Service on Azure Stack HCI
+description: Learn about securing the infrastructure and applications on a Kubernetes cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 04/11/2022

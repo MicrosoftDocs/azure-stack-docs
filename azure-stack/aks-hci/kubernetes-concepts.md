@@ -1,5 +1,5 @@
 ---
-title: Kubernetes cluster architecture for Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Kubernetes cluster architecture for Azure Kubernetes Service (AKS) on Azure Stack HCI
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service on Azure Stack HCI and Windows Server features
 author: mattbriggs
 ms.author: mabrigg 

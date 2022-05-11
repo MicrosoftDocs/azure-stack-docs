@@ -1,6 +1,6 @@
 ---
-title: Encrypt etcd secrets in AKS on Azure Stack HCI and Windows Server
-description: Learn how to encrypt etcd secrets in AKS on Azure Stack HCI and Windows Server
+title: Encrypt etcd secrets in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to encrypt etcd secrets in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/13/2022

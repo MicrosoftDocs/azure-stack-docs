@@ -1,5 +1,5 @@
 ---
-title: Deploy a Linux app in AKS on Azure Stack HCI and Windows Server
+title: Deploy a Linux app in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, you deploy a multi-container Linux app to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial

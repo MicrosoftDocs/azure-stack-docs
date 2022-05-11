@@ -1,6 +1,6 @@
 ---
-title: Pricing for AKS on Azure Stack HCI and Windows Server
-description: Learn about the pricing for AKS on Azure Stack HCI and Windows Server.
+title: Pricing for  Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about the pricing for  Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 03/16/2022
