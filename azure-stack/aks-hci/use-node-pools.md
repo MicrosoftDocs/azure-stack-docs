@@ -12,7 +12,7 @@ author: mattbriggs
 # Keyword: node pools control plane nodes
 ---
 
-# Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI
+# Create and manage multiple node pools for a cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
 
 In AKS on Azure Stack HCI and Windows Server, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. 
 

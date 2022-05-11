@@ -36,7 +36,7 @@ This tutorial assumes a basic understanding of core Docker concepts such as cont
 To complete this tutorial, you need a local Docker development environment running Linux containers. Docker provides packages that configure Docker on [Windows][docker-for-windows].
 
 > [!NOTE]
-> Azure Kubernetes Service on Azure Stack HCI and Windows Server does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
+> AKS on Azure Stack HCI and Windows Server does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
 
 ## Get app code
 

@@ -14,7 +14,7 @@ ms.reviewer: mikek
 
 ---
 
-# Supported Kubernetes versions in Azure Kubernetes Service (AKS on Azure Stack HCI and Windows Server)
+# Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 You can find the supported Kubernetes versions in AKS on Azure Stack Hub in this topic. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19. 
 

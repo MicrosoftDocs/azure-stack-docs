@@ -1,6 +1,6 @@
 ---
-title: View troubleshooting logs to collect and review data on Azure Kubernetes Services on Azure Stack HCI
-description: Learn how to view logs to collect and review data on Azure Kubernetes Services on Azure Stack HCI.
+title: View troubleshooting logs to collect and review data on Azure Kubernetes Services on Azure Stack HCI and Windows Server
+description: Learn how to view logs to collect and review data on Azure Kubernetes Services on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/11/2022

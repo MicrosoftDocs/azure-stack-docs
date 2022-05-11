@@ -33,6 +33,6 @@ Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -nodeCount 3
 
 ## Next steps
 
-In this article, you learned how to manually scale an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
+In this article, you learned how to manually scale an AKS on Azure Stack HCI and Windows Server cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

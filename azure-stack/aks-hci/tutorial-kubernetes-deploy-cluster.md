@@ -16,7 +16,7 @@ author: mattbriggs
 
 # Tutorial: Deploy a workload cluster on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI and Windows Server cluster is deployed in Azure Kubernetes Service on Azure Stack HCI and Windows Server. You'll learn how to:
+Kubernetes provides a distributed platform for containerized applications. In this tutorial, part three of seven, an AKS on Azure Stack HCI and Windows Server cluster is deployed in AKS on Azure Stack HCI and Windows Server. You'll learn how to:
 
 > [!div class="checklist"]
 > * Deploy an AKS cluster on Azure Stack HCI 
@@ -73,7 +73,7 @@ Then, configure your deployment with the following command.
 Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" 
 ```
 
-Now, you are ready to install the Azure Kubernetes Service on Azure Stack HCI and Windows Server host.
+Now, you are ready to install the AKS on Azure Stack HCI and Windows Server host.
 
 ```powershell
 Install-AksHCi
