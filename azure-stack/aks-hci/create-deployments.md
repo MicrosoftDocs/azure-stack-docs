@@ -1,6 +1,6 @@
 ---
-title: Create deployments in Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to create deployments in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Create deployments in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to create deployments in Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 03/04/2022
@@ -9,7 +9,7 @@ ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
 ---
 
-# Create deployments
+# Create deployments in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 A _deployment_ refers to a Kubernetes object that manages the performance and specifies the desired behavior of a pod. It specifies the application's life cycle, including the pods assigned to the application. It provides a way to communicate your desired state for your application, and the controller works on changing the present state into your desired state.
 

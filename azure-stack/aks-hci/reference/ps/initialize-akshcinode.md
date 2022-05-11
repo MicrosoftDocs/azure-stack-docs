@@ -14,7 +14,7 @@ ms.reviewer: jeguan
 # Initialize-AksHciNode
 
 ## Synopsis
-Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
+Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Initialize-AksHciNode
 ```
 
 ## Description
-Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI.
+Run checks on every physical node to see if all requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 ## Examples
 

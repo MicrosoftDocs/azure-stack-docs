@@ -1,8 +1,8 @@
-- name: Azure Kubernetes Service on Azure Stack HCI documentation
+- name: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     href: overview.md
 - name: Quickstarts
   expanded: true

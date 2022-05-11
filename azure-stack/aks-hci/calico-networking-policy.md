@@ -1,6 +1,6 @@
 ---
-title: How to - Use Calico network policy to secure pod traffic in Azure Kubernetes Service on Azure Stack HCI
-description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service on Azure Stack HCI.
+title: How to - Use Calico network policy to secure pod traffic in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+description: Learn about using network policy to secure traffic between pods in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 ms.topic: how-to
 ms.date: 04/11/2022
 ms.custom: fasttrack-edit
@@ -14,13 +14,13 @@ author: mattbriggs
 
 ---
 
-# Secure traffic between pods using network policies in AKS on Azure Stack HCI and Windows Server
+# Secure traffic between pods using network policies in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 Use this step-by-step guide to verify and try out basic pod-to-pod connectivity and to use Calico network policies in a cluster. In this guide, you'll learn how to create client and server pods on Linux and Windows nodes, verify connectivity between the pods, and then apply a basic network policy to isolate pod traffic.
 
 ## Prerequisites
 
- To deploy AKS on Azure Stack HCI and Windows Server, follow the steps to [install AKS on Azure Stack HCI and Windows Server](./kubernetes-walkthrough-powershell.md).
+ To deploy Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, follow the steps to [install AKS on Azure Stack HCI and Windows Server](./kubernetes-walkthrough-powershell.md).
 
 To use this guide, you will need:
 

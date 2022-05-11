@@ -1,5 +1,5 @@
 ---
-title: Deploy a Windows .NET application in AKS on Azure Stack HCI and Windows Server
+title: Deploy a Windows .NET application in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to deploy a Windows.NET application to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial
@@ -13,12 +13,13 @@ ms.reviewer: abha
 
 ---
 
-# Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI
+# Deploy Windows applications in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 In this tutorial, you will learn how to deploy an ASP.NET sample application in a Windows Server container to the Kubernetes cluster, and then see how to test and scale your application. You will also learn how to join a Windows nodes to an Active Directory domain.
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
+
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
 
 ## Before you begin
 
@@ -36,7 +37,7 @@ In addition:
 
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. In this article, a manifest is used to create all objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a Kubernetes deployment for the ASP.NET sample application and an external Kubernetes service to access the application from the internet.
 
-The ASP.NET sample application is provided as part of the .NET Framework Samples and runs in a Windows Server container. Azure Kubernetes Service on Azure Stack HCI requires Windows Server containers to be based on images of *Windows Server 2019*. 
+The ASP.NET sample application is provided as part of the .NET Framework Samples and runs in a Windows Server container. AKS on Azure Stack HCI and Windows Server requires Windows Server containers to be based on images of *Windows Server 2019*. 
 
 The Kubernetes manifest file must also define a node selector to tell your AKS cluster to run your ASP.NET sample application's pod on a node that can run Windows Server containers.
 

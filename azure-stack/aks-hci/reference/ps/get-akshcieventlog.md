@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Get-AksHciEventLog
 
 ## Synopsis
-Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI PowerShell module.
+Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server PowerShell module.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksHciEventLog
 ```
 
 ## Description
-Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI PowerShell module.
+Gets all the event logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server PowerShell module.
 
 ## Examples
 

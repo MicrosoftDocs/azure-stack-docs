@@ -1,6 +1,6 @@
 ---
-title: Kubernetes cluster architecture for Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service on Azure Stack HCI features
+title: Kubernetes cluster architecture for Azure Kubernetes Service (AKS) on Azure Stack HCI
+description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service on Azure Stack HCI and Windows Server features
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
@@ -13,7 +13,7 @@ ms.date: 08/03/2021
 
 ---
 
-# Kubernetes cluster architecture and workloads for Azure Kubernetes Service on Azure Stack HCI
+# Kubernetes cluster architecture and workloads for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
@@ -23,7 +23,7 @@ This article introduces the core Kubernetes infrastructure components, such as t
 
 ## Kubernetes cluster architecture
 
-Kubernetes is the core component of the Azure Kubernetes Service on Azure Stack HCI. Azure Kubernetes Service on Azure Stack HCI uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
+Kubernetes is the core component of the AKS on Azure Stack HCI and Windows Server. AKS on Azure Stack HCI and Windows Server uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
 
 The deployment operation will create multiple Linux or Windows virtual machines and join them together to create Kubernetes cluster(s).
 
@@ -37,14 +37,14 @@ An Azure Kubernetes Service cluster has the following components on Azure Stack 
 - *Management cluster* (also known as the AKS host) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - *Workload clusters* (also known as target clusters) are where containerized applications are deployed.
 
-![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\architecture.png)
+![Illustrates the technical architecture of AKS on Azure Stack HCI and Windows Server](.\media\concepts\architecture.png)
 
 ## Manage AKS on Azure Stack HCI and Windows Server
 
 You can manage AKS on Azure Stack HCI and Windows Server using the following management options:
 
 - **Windows Admin Center** offers an intuitive UI for the Kubernetes operator to manage the lifecycle of Azure Kubernetes Service clusters on Azure Stack HCI.
-- A **PowerShell module**  makes it easy to download, configure, and deploy Azure Kubernetes Service on Azure Stack HCI. The PowerShell module also supports deploying and configuring other workload clusters and reconfiguring existing ones.
+- A **PowerShell module**  makes it easy to download, configure, and deploy AKS on Azure Stack HCI and Windows Server. The PowerShell module also supports deploying and configuring other workload clusters and reconfiguring existing ones.
 
 ## The management cluster
 
@@ -68,11 +68,11 @@ The workload cluster has many components, which are described in the following s
 
 #### Load balancer
 
-The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, Azure Kubernetes Service on Azure Stack HCI will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load-balancing rule in the VM.
+The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, AKS on Azure Stack HCI and Windows Server will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load-balancing rule in the VM.
 
 #### Worker nodes
 
-To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which are a virtual machines (VM) that run the Kubernetes node components, and host the pods and services that make up the application workload. There are core Kubernetes workload components that can be deployed on Azure Kubernetes Service on Azure Stack HCI workload clusters, such as pods and deployments.
+To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which are a virtual machines (VM) that run the Kubernetes node components, and host the pods and services that make up the application workload. There are core Kubernetes workload components that can be deployed on AKS on Azure Stack HCI and Windows Server workload clusters, such as pods and deployments.
 
 #### Pods
 
@@ -91,7 +91,7 @@ The Deployment Controller uses the Kubernetes Scheduler to run a given number of
 
 #### Namespaces
 
-Kubernetes resources, such as pods and deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an Azure Kubernetes Service on Azure Stack HCI workload clusters and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
+Kubernetes resources, such as pods and deployments, are logically grouped into a *namespace*. These groupings provide a way to logically divide an AKS on Azure Stack HCI and Windows Server workload clusters and restrict access to create, view, or manage resources. You can create namespaces to separate business groups, for example. Users can only interact with resources within their assigned namespaces. For more information, see [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). 
 
 When you create an Azure Kubernetes Service cluster on Azure Stack HCI, the following namespaces are available:
 

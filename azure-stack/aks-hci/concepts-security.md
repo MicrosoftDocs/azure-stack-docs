@@ -1,6 +1,6 @@
 ---
-title: Security in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about securing the infrastructure and applications on a Kubernetes cluster in AKS on Azure Stack HCI and Windows Server.
+title: Security in Azure Kubernetes Service on Azure Stack HCI
+description: Learn about securing the infrastructure and applications on a Kubernetes cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 04/11/2022
@@ -13,15 +13,15 @@ ms.reviewer: sulahiri
 
 ---
 
-# Security in AKS on Azure Stack HCI and Windows Server
+# Security in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-Security in AKS on Azure Stack HCI and Windows Server involves securing the infrastructure and the applications running on the Kubernetes cluster. This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
+Security in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server involves securing the infrastructure and the applications running on the Kubernetes cluster. This article covers the security hardening measures and the built-in security features used to secure the infrastructure and the applications on Kubernetes clusters.
 
 ## Infrastructure security in AKS on Azure Stack HCI and Windows Server
 
 The  Kubernetes service applies various measures for infrastructure security in AKS on Azure Stack HCI and Windows Server. The following diagram highlights these measures:
 
-![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\security-infrastructure.png)
+![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI and Windows Server](.\media\concepts\security-infrastructure.png)
 
 The table below describes the security hardening aspects of AKS on Azure Stack HCI and Windows Server that are shown in the previous diagram. For conceptual background information on AKS on Azure Stack HCI and Windows Server infrastructure, see [Clusters and workloads](./kubernetes-concepts.md). 
 

@@ -1,5 +1,5 @@
 ---
-title: Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI
+title: Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server
 description: Learn how to back up and restore workload clusters using Velero and Azure Blob storage on AKS on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.reviewer: scooley
 
 # Perform workload cluster backup or restore using Velero and Azure Blob storage
 
-You can create a workload cluster backup or restore from a backup on AKS on Azure Stack HCI and Windows Server workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports several [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
+You can create a workload cluster backup or restore from a backup on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server workload clusters using [Velero](https://velero.io/docs) and Azure Blob as the storage. Velero is an open-source community standard tool you can use to back up and restore Kubernetes cluster objects and persistent volumes. It supports several [storage providers](https://velero.io/docs/main/supported-providers/) to store backups.
 
 If a workload cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
