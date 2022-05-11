@@ -1,7 +1,7 @@
 ---
 
-title: Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI (preview)
-description: Use containerd as the container runtime for Windows Server node pools on Azure Kubernetes Service on Azure Stack HCI.
+title: Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI and Windows Server(preview)
+description: Use containerd as the container runtime for Windows Server node pools on Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.author: mabrigg
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.reviewer: crwilhit
 
 ---
 
-# Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI (preview)
+# Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI and Windows Server(preview)
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
@@ -44,11 +44,11 @@ In the following steps, the values of the parameters are given, but you'll need 
     1. **cloudConfigLocation**  
         Specify where the cloud agent will store its configuration, for example: `c:\clusterstorage\volume1\Config`
     1. **Version**  
-        The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy, for example `v1.22.1`.
+        The version of Azure Kubernetes Service on Azure Stack HCI and Windows Server that you want to deploy, for example `v1.22.1`.
     1. **vnet**  
         The name of the **AksHciNetworkSetting** object created with **New-AksHciNetworkSetting** command. For an example of the cmdlet that stores the result in the `$vnet` variable, see [Create a virtual network](./kubernetes-walkthrough-powershell.md#step-2-create-a-virtual-network).
     1. **imageDir**  
-        The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images, for example `c:\clusterstorage\volume1\Images`
+        The path to the directory where Azure Kubernetes Service on Azure Stack HCI and Windows Server will store its VHD images, for example `c:\clusterstorage\volume1\Images`
 1. Run the following cmdlet. The values given in this example command will need to be customized for your environment.
     ```powershell
     Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\ImageStore -Version v1.22.1 -vnet $vnet -imageDir $c:\clusterstorage\volume1\Images -skipHostLimitChecks -ring wincontainerd -catalog aks-hci-stable-catalogs-ext

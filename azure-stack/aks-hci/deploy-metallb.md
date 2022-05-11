@@ -11,7 +11,7 @@ ms.reviewer: rbaziwane
 # Keyword: MetalLB load balancers workload cluster
 ---
 
-# Deploy MetalLB for load balancing on Azure Kubernetes Service on Azure Stack HCI
+# Deploy MetalLB for load balancing on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 In the November update of AKS on Azure Stack HCI and Windows Server, we added support to allow users to configure custom load balancers for their workload clusters. Previously, users didn't have the flexibility to configure different load balancers on AKS on Azure Stack HCI and Windows Server. 
 

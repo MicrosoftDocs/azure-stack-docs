@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Get-AksHciUpdates
 
 ## Synopsis
-List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI.
+List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Get-AksHciUpdates
 ```
 
 ## Description
-List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI.
+List the available Kubernetes updates for Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 ## Examples
 

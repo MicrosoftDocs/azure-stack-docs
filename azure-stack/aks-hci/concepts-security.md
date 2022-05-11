@@ -21,7 +21,7 @@ Security in AKS on Azure Stack HCI and Windows Server involves securing the infr
 
 The  Kubernetes service applies various measures for infrastructure security in AKS on Azure Stack HCI and Windows Server. The following diagram highlights these measures:
 
-![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI](.\media\concepts\security-infrastructure.png)
+![Illustrates the infrastructure security of Azure Kubernetes Service on Azure Stack HCI and Windows Server](.\media\concepts\security-infrastructure.png)
 
 The table below describes the security hardening aspects of AKS on Azure Stack HCI and Windows Server that are shown in the previous diagram. For conceptual background information on AKS on Azure Stack HCI and Windows Server infrastructure, see [Clusters and workloads](./kubernetes-concepts.md). 
 

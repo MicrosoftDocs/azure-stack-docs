@@ -1,5 +1,5 @@
 ---
-title: Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI
+title: Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS on Azure Stack HCI and Windows Server)
 services: container-service
 ms.topic: article

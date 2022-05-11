@@ -1,5 +1,5 @@
 ---
-title: Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI
+title: Install existing applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service on Azure Stack HCI or Windows Server clusters
 services: container-service
 author: mattbriggs

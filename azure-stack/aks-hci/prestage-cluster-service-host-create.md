@@ -35,7 +35,7 @@ The AKS on Azure Stack HCI and Windows Server deployment will attempt to locate 
 
 ## Step 2: Prepare your machine(s) for deployment
 
-Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
+Run checks on every physical node to see if all the requirements are satisfied to install Azure Kubernetes Service on Azure Stack HCI and Windows Server. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
 
 ```powershell
 Initialize-AksHciNode
@@ -76,7 +76,7 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ## Step 5: Start a new deployment
 
-After you've configured your deployment, you must start it. Starting the deployment installs the Azure Kubernetes Service on Azure Stack HCI agents/services and the Azure Kubernetes Service host. To begin the deployment, run the following command:
+After you've configured your deployment, you must start it. Starting the deployment installs the Azure Kubernetes Service on Azure Stack HCI and Windows Server agents/services and the Azure Kubernetes Service host. To begin the deployment, run the following command:
 
 ```powershell
 Install-AksHci

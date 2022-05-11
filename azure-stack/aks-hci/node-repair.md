@@ -1,5 +1,5 @@
 ---
-title: Node auto-repair on Azure Kubernetes Service on Azure Stack HCI
+title: Node auto-repair on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn about automatic node repair on AKS on Azure Stack HCI and Windows Server Windows and Linux nodes.
 author: mattbriggs
 ms.topic: how-to

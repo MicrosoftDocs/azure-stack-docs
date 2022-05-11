@@ -1,5 +1,5 @@
 ---
-title:  Tutorial - Update an application in Azure Kubernetes Service on Azure Stack HCI
+title:  Tutorial - Update an application in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, learn how to update an existing application deployment with a new version of the application code.
 services: container-service
 ms.topic: tutorial
@@ -10,7 +10,7 @@ ms.reviewer: jeguan
 author: mattbriggs
 ---
 
-# Tutorial: Update an application in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Update an application in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 After an application has been deployed in Kubernetes, it can be updated by specifying a new container image or image version. An update is staged so that only a portion of the deployment is updated at the same time. This staged update enables the application to keep running during the update. It also provides a rollback mechanism if a deployment failure occurs.
 

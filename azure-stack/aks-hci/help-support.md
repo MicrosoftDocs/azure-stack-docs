@@ -32,7 +32,7 @@ If you encounter an issue with Azure Kubernetes Services on Azure Stack HCI, thi
 
     ![Illustrates adding a description for the support request](media/support/basics-page.png)
  
-6. Select the appropriate subscription in the dropdown menu, and then change the **Service** type to **All services**. Begin typing _Azure Kubernetes Service_ in the search box to locate the Azure Kubernetes Service on Azure Stack HCI service under **Compute**:
+6. Select the appropriate subscription in the dropdown menu, and then change the **Service** type to **All services**. Begin typing _Azure Kubernetes Service_ in the search box to locate the Azure Kubernetes Service on Azure Stack HCI and Windows Server service under **Compute**:
 
     ![Illustrates selecting the AKS on Azure Stack HCI and Windows Server product](media/support/basic-select-service.png)
  

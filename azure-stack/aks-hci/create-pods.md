@@ -1,5 +1,5 @@
 ---
-title: Create and delete pods in Azure Kubernetes Service on Azure Stack HCI
+title: Create and delete pods in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to create and delete pods in Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to

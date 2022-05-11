@@ -1,6 +1,6 @@
 ---
-title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI
-description: In this Azure Kubernetes Service on Azure Stack HCI tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
+title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: In this Azure Kubernetes Service on Azure Stack HCI and Windows Server tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
 ms.date: 04/22/2022
@@ -14,7 +14,7 @@ author: mattbriggs
 
 ---
 
-# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 You can build and deploy your own apps and services into a Kubernetes cluster. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
 

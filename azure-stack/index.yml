@@ -70,7 +70,7 @@ productDirectory:
         text: Azure Stack HCI FAQ
       - url: https://azure.microsoft.com/products/azure-stack/hci/
         text: Product overview and purchasing info        
-  - title: Azure Kubernetes Service on Azure Stack HCI
+  - title: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     imageSrc: media/index/kubernetes-services.svg
     links:
       - url: ./aks-hci/overview.md
