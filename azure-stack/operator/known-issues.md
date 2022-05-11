@@ -175,6 +175,13 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
 - Occurrence: Common
 
+#### Load Balancer Rules
+
+- Applicable: This issue applies to all supported releases
+- Cause: Updating/changing the load distribution property (Session Persistence) has no effect and some virtual machines might not participate in the traffic load distribution. For example, if you have 4 backend virtual machines and only 2 clients connecting to the load balancer, and the load distribution is set to client IP, the client sessions will always use the same backend virtual machines. Changing the load distribution property to none to distribute the client connections across all the backend virtual machines will not have any effect.
+- Remediation: Recreating the Load Balancing rule will ensure the selected settings are correctly configured to all backend VMs.
+- Occurrence: Common
+
 <!-- ## Compute -->
 
 ## Health and alerts
