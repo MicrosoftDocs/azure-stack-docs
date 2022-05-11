@@ -86,9 +86,16 @@ sections:
           ```
                     
       - question: |
-          How do I push a container in Azure Container Registry to a disconnected Azure Stack Hub deployment running Kubernetes?
+          How do I push a container image in Azure Container Registry to a disconnected Azure Stack Hub deployment running Kubernetes?
         answer: |
-          You can perform a machine-to-machine image transfer over a local network from a machine that already has the required container image(s). First, retrieve the required container image(s) using a machine with Internet connectivity by using the docker cli and docker pull command. See [Import container images to a container registry](/azure/container-registry/container-registry-import-images) for more information. After you have the required image(s) imported onto the machine, use the [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) and [docker push](https://docs.docker.com/engine/reference/commandline/push/) commands to tag and push the image to the local Azure Container Registry on the Azure Stack Hub repository.
+          You can perform a machine-to-machine image transfer over a local network from a machine that already has the required container image(s). To do this:
+          
+          1. First, retrieve the required container image(s) using a machine with Internet connectivity by using the docker cli and docker pull command. See [Import container images to a container registry](/azure/container-registry/container-registry-import-images) for more information.
+          
+          2. After you have the required image(s) imported, transport the machine to the location of the disconnected Azure Hub instance.
+          
+          3. Use the [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) and [docker push](https://docs.docker.com/engine/reference/commandline/push/) commands to tag and push the image to the local Azure Container Registry on the Azure Stack Hub repository.
+       
           
           
   - name: Registry operations
