@@ -3,10 +3,11 @@ title: Concepts - Application availability in Azure Kubernetes Service on Azure 
 description: Learn about application availability in Azure Kubernetes Service on Azure Stack HCI
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/18/2022
+ms.date: 05/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+
 # Intent: As an IT Pro, I need to understand how disruptions can impact the availability of applications on my AKS on Azure Stack HCI and Windows Server deployment.
 # Keyword: AKS on Azure Stack HCI and Windows Server architecture live migration disruption Kubernetes container orchestration
 ---

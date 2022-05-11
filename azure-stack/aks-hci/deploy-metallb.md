@@ -3,7 +3,7 @@ title: Deploy MetalLB for load balancing in Azure Kubernetes Service (AKS) on Az
 description: Learn how to deploy MetalLB for load balancing in Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/15/2022
+ms.date: 05/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane

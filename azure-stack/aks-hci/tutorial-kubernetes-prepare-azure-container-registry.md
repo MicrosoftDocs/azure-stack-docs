@@ -3,11 +3,12 @@ title: Tutorial - Create a container registry in Azure Kubernetes Service on Azu
 description: In this tutorial, you will learn how to create an Azure Container Registry instance and upload a sample application container image.
 services: container-service
 ms.topic: tutorial
-ms.date: 04/14/2022
+ms.date: 05/10/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+
 # Intent: As an IT Pro, I need step-by-step instructions on how to create an Azure Container Registry instance so I can  upload an application container image.
 # Keyword: container registry container images
 ---
