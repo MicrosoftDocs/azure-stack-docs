@@ -68,7 +68,7 @@ The visualization can be filtered across subscriptions. You can filter the resul
 
 This feature provides details of clusters that are not monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
 
-:::image type="content" source="media/multi-cluster/add-to-monitoring.png" alt-text="Select cluster for monitoring" lightbox="media/multi-cluster/add-to-monitoring.png":::
+:::image type="content" source="media/monitor-hci-multi/add-to-monitoring.png" alt-text="Select cluster for monitoring" lightbox="media/monitor-hci-multi/add-to-monitoring.png":::
 
 | Column              | Description                           | Example      |
 |-------------------------|-------------------------------------------|------------------|
@@ -78,11 +78,11 @@ This feature provides details of clusters that are not monitored by the user. To
 
 By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:
 
-:::image type="content" source="media/multi-cluster/grid-rows.png" alt-text="Set grid values" lightbox="media/multi-cluster/grid-rows.png":::
+:::image type="content" source="media/monitor-hci-multi/grid-rows.png" alt-text="Set grid values" lightbox="media/monitor-hci-multi/grid-rows.png":::
 
 You can export the details in Excel by selecting **Export to Excel** as shown in the following image:
 
-:::image type="content" source="media/multi-cluster/export.png" alt-text="Export to Excel" lightbox="media/multi-cluster/export.png":::
+:::image type="content" source="media/monitor-hci-multi/export.png" alt-text="Export to Excel" lightbox="media/monitor-hci-multi/export.png":::
 
 Excel will provide Azure connection status as follows:
 
@@ -95,7 +95,7 @@ Excel will provide Azure connection status as follows:
 
 This view provides an overview of the health of clusters.
 
-:::image type="content" source="media/multi-cluster/cluster-health.png" alt-text="Cluster health overview" lightbox="media/multi-cluster/cluster-health.png":::
+:::image type="content" source="media/monitor-hci-multi/cluster-health.png" alt-text="Cluster health overview" lightbox="media/monitor-hci-multi/cluster-health.png":::
 
 | Column        | Description                                                                                               | Example                    |
 |-------------------|---------------------------------------------------------------------------------------------------------------|--------------------------------|
@@ -112,13 +112,13 @@ the **microsoft-windows-health/operational** log. Also make sure the clusters 
 
 This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](azure-stack-hci-insights.md#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
 
-:::image type="content" source="media/multi-cluster/server-health.png" alt-text="Display health of servers" lightbox="media/multi-cluster/server-health.png":::
+:::image type="content" source="media/monitor-hci-multi/server-health.png" alt-text="Display health of servers" lightbox="media/monitor-hci-multi/server-health.png":::
 
 #### Virtual machines
 
 This view provides the state of all the VMs in the selected cluster. The view is built using the [virtual machine event ID 3003](azure-stack-hci-insights.md#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
-:::image type="content" source="media/multi-cluster/virtual-machine-state.png" alt-text="Health of virtual machines" lightbox="media/multi-cluster/virtual-machine-state.png":::
+:::image type="content" source="media/monitor-hci-multi/virtual-machine-state.png" alt-text="Health of virtual machines" lightbox="media/monitor-hci-multi/virtual-machine-state.png":::
 
 | Metric        | Description                                                                                                                                    | Example           |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
@@ -135,7 +135,7 @@ This view provides the state of all the VMs in the selected cluster. The view is
 This view shows the health of volumes, usage, and performance across monitored clusters. Expand a cluster to see the state of individual
 volumes. This view is built using the [volume event ID 3002](azure-stack-hci-insights.md#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. The tiles on the top provide an overview of the health of storage.
 
-:::image type="content" source="media/multi-cluster/volume-health.png" alt-text="Health of storage volumes" lightbox="media/multi-cluster/volume-health.png":::
+:::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Health of storage volumes" lightbox="media/monitor-hci-multi/volume-health.png":::
 
 | Metric          | Description                                                                      | Example                                 |
 |---------------------|--------------------------------------------------------------------------------------|---------------------------------------------|
@@ -162,13 +162,13 @@ The **Get started** view calls out the prerequisites to use Azure Stack HCI Insi
 
 This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
 
-:::image type="content" source="media/azure-stack-hci-insights/overview.png" alt-text="This view provides an overview of server health and performance, and usage of selected clusters." lightbox="media/azure-stack-hci-insights/overview.png":::
+:::image type="content" source="media/monitor-hci-multi/overview.png" alt-text="This view provides an overview of server health and performance, and usage of selected clusters." lightbox="media/monitor-hci-multi/overview.png":::
 
 ### Virtual machines
 
 This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
-:::image type="content" source="media/azure-stack-hci-insights/virtual-machines.png" alt-text="This view provides the state of all the VMs in the selected cluster. " lightbox="media/azure-stack-hci-insights/virtual-machines.png":::
+:::image type="content" source="media/monitor-hci-multi/virtual-machines.png" alt-text="This view provides the state of all the VMs in the selected cluster. " lightbox="media/monitor-hci-multi/virtual-machines.png":::
 
 ### Storage
 
@@ -176,11 +176,11 @@ This view provides two things:
 
 **Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
-:::image type="content" source="media/azure-stack-hci-insights/volume-health.png" alt-text="Volume health, usage, and performance information" lightbox="media/azure-stack-hci-insights/volume-health.png":::
+:::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Volume health, usage, and performance information" lightbox="media/monitor-hci-multi/volume-health.png":::
 
 **Drive health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
 
-:::image type="content" source="media/azure-stack-hci-insights/drive-health.png" alt-text="Drive health information" lightbox="media/azure-stack-hci-insights/drive-health.png":::
+:::image type="content" source="media/monitor-hci-multi/drive-health.png" alt-text="Drive health information" lightbox="media/monitor-hci-multi/drive-health.png":::
 
 ### Cluster performance
 
@@ -195,11 +195,11 @@ The views are built using the [cluster event ID 3004](#cluster-event-3004-render
 
 The screenshot below displays CPU usage and average volume latency trends.
 
-:::image type="content" source="media/azure-stack-hci-insights/cluster-performance-cpu-latency.png" alt-text="CPU usage and average volume latency" lightbox="media/azure-stack-hci-insights/cluster-performance-cpu-latency.png":::
+:::image type="content" source="media/monitor-hci-multi/cluster-performance-cpu-latency.png" alt-text="CPU usage and average volume latency" lightbox="media/monitor-hci-multi/cluster-performance-cpu-latency.png":::
 
 The screenshot below displays volume IOPS and throughput trends.
 
-:::image type="content" source="media/azure-stack-hci-insights/cluster-performance-iops-throughput.png" alt-text="Volume IOPS and throughput" lightbox="media/azure-stack-hci-insights/cluster-performance-iops-throughput.png":::
+:::image type="content" source="media/monitor-hci-multi/cluster-performance-iops-throughput.png" alt-text="Volume IOPS and throughput" lightbox="media/monitor-hci-multi/cluster-performance-iops-throughput.png":::
 ::: zone-end
 
 ## Customize Azure Stack HCI Insights
