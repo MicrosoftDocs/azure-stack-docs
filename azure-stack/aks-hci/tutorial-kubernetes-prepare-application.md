@@ -1,9 +1,9 @@
 ﻿---
-title: Prepare a multi-container app in Azure Kubernetes Service on Azure Stack HCI 
-description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS on Azure Stack HCI and Windows Server .
+title: Prepare a multi-container app in Azure Kubernetes Service on Azure Stack HCI on Windows Server
+description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS on Azure Stack HCI and Windows Server.
 services: container-service
 ms.topic: tutorial
-ms.date: 04/22/2022
+ms.date: 05/10/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ author: mattbriggs
 
 ---
 
-# Tutorial: Prepare an app for Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Prepare an app for Azure Kubernetes Service on Azure Stack HCI on Windows Server
 
 In this tutorial, part one of seven, a multi-container app is prepared for use in Kubernetes. Existing development tools such as Docker Compose are used to locally build and test an app. You learn how to:
 
@@ -27,7 +27,7 @@ Once completed, the following app runs in your local development environment:
 
 :::image type="content" source="./media/azure-vote-local.png" alt-text="This image shows the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
 
-In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster.
+In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into an Azure Kubernetes Service on Azure Stack HCI on Windows Server cluster.
 
 ## Before you begin
 
