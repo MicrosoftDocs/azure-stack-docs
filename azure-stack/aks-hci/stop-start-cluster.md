@@ -7,6 +7,7 @@ ms.date: 04/25/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+
 # Intent: As an IT Pro, I need to learn how to stop and restart a cluster in order to optimize resource costs on my AKS on Azure Stack on HCI deployment.
 # Keyword: stop cluster start cluster cluster service
 
