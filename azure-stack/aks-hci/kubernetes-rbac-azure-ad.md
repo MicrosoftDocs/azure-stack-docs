@@ -77,7 +77,7 @@ az ad group member add --group appdev --member-id $AKSDEV_ID
 
 ## Create a custom Kubernetes RBAC role binding on the AKS cluster resource for the Azure AD group
 
-Configure the AKS cluster to allow your Azure AD group to access the AKS cluster. If you would like to add a group and users to follow the steps in this guide, see [Create demo groups in Azure AD](#create-demo-groups-in azure-ad).
+Configure the AKS cluster to allow your Azure AD group to access the AKS cluster. If you would like to add a group and users to follow the steps in this guide, see [Create demo groups in Azure AD](#create-a-demo-group-in-azure-ad).
 
 1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command. 
 
@@ -172,7 +172,7 @@ To learn more about built-in Kubernetes RBAC roles, visit [Kubernetes RBAC user 
 | edit                | None                       | Allows read/write access to most objects in a namespace. This role doesn't allow viewing or modifying roles or role bindings. However, this role allows accessing Secrets and running Pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. This role also doesn't allow write access to Endpoints in clusters created using Kubernetes v1.22+. More information is available in the [Write Access for Endpoints](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#write-access-for-endpoints) section.                |
 | view                | None                       | Allows read-only access to see most objects in a namespace. It doesn't allow viewing roles or role bindings. This role doesn't allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation).                                                                                                                                                         |
 
-### Add built-in view Kubernetes RBAC role  
+### Use a built-in Kubernetes RBAC role with Azure AD  
 
 1. Apply the built-in `view` Kubernetes RBAC role to your Azure AD group:
 
@@ -239,6 +239,4 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 
 ## Next steps
 
-For more information about how to secure Kubernetes clusters, see [Access and identity options for AKS](/azure/aks/concepts-identity#kubernetes-rbac).
-
-For best practices on identity and resource control, see [Best practices for authentication and authorization in AKS](/azure/aks/operator-best-practices-identity).
+Learn more about the security with AKS on Azure Stack HCI and Windows Server, see [Security in AKS on Azure Stack HCI and Windows Server](concepts-security.md)
