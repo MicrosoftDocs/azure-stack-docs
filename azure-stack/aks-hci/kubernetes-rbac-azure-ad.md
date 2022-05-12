@@ -59,7 +59,7 @@ To demonstrate working with Azure AD and Kubernetes RBAC, you can create an Azur
 
 ### Create a demo group in Azure AD
 
-First, create the group in Azure AD for the application developers using the [az ad group create][az-ad-group-create] command. The following example creates a group named **appdev**:
+First, create the group in Azure AD for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example creates a group named **appdev**:
 
 ```azurecli  
 az ad group create --display-name appdev --mail-nickname appdev
@@ -69,7 +69,7 @@ az ad group create --display-name appdev --mail-nickname appdev
 
 With the example group created in Azure AD for our application developers, let's add a user to the `appdev` group. To test the Kubernetes RBAC integration at the end of the article, you sign in to the AKS cluster with this user account.
 
-Add a user to the *appdev* group created in the previous section using the [az ad group member add][az-ad-group-member-add] command.
+Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command.
 
 ```azurecli  
 az ad group member add --group appdev --member-id $AKSDEV_ID
@@ -79,19 +79,19 @@ az ad group member add --group appdev --member-id $AKSDEV_ID
 
 Configure the AKS cluster to allow your Azure AD group to access the AKS cluster. If you would like to add a group and users to follow the steps in this guide, see [Create demo groups in Azure AD](#create-demo-groups-in azure-ad).
 
-1. Get the cluster admin credentials using the [Get-AksHciCredential] command. 
+1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command. 
 
     ```powershell
     Get-AksHciCredential -name myAKSCluster
     ```
 
-2. Create a namespace in the AKS cluster using the [kubectl create namespace] command. The following example creates a namespace name *dev*:
+2. Create a namespace in the AKS cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace name **dev**:
 
     ```bash  
     kubectl create namespace dev
     ```
 
-    In Kubernetes, **Roles** define the permissions to grant, and **RoleBindings** apply the permissions to desired users or groups. These assignments can be applied to a given namespace, or across an entire cluster. For more information, see [Using Kubernetes RBAC authorization][/azure/aks/concepts-identity#kubernetes-rbac].
+    In Kubernetes, **Roles** define the permissions to grant, and **RoleBindings** apply the permissions to desired users or groups. These assignments can be applied to a given namespace, or across an entire cluster. For more information, see [Using Kubernetes RBAC authorization](/azure/aks/concepts-identity#kubernetes-rbac).
     
     Create a Role for the **dev** namespace. This role grants full permissions to the namespace. In production environments, you may want to specify more granular permissions for different users or groups.
 
@@ -114,13 +114,13 @@ Configure the AKS cluster to allow your Azure AD group to access the AKS cluster
       verbs: ["*"]
     ```
 
-4. Create the Role using the [kubectl apply][https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply] command and specify the filename of your YAML manifest:
+4. Create the Role using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
 
     ```bash  
     kubectl apply -f role-dev-namespace.yaml
     ```
 
-5. Get the resource ID for the **appdev** group using the [az ad group show][az-ad-group-show] command. This group is set as the subject of a RoleBinding in the next step.
+5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step.
 
 ```azurecli  
 az ad group show --group appdev --query objectId -o tsv
