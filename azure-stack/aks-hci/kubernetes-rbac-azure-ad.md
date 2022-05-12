@@ -51,7 +51,7 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
 
 [!INCLUDE[Install AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
-## Optional steps
+## Optional first steps
 
 If you don't already have an Azure AD group containing members, you may want to create a group and add some members to follow the instructions in this article.
 
@@ -153,7 +153,7 @@ az ad group show --group appdev --query objectId -o tsv
     kubectl apply -f rolebinding-dev-namespace.yaml
     ```
 
-## Use in-built Kubernetes RBAC roles for your AKS cluster resource
+## Use built-in Kubernetes RBAC roles for your AKS cluster resource
 
 Kubernetes also provides built-in user-facing roles. These built-in roles include:
 
@@ -161,7 +161,7 @@ Kubernetes also provides built-in user-facing roles. These built-in roles includ
 - Roles intended to be granted cluster-wide using ClusterRoleBindings
 - Roles intended to be granted within particular namespaces using RoleBindings (admin, edit, view)
 
-To learn more about in-built Kubernetes RBAC roles, visit [Kubernetes RBAC user facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
+To learn more about built-in Kubernetes RBAC roles, visit [Kubernetes RBAC user facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)
 
 ### User-facing roles
 
@@ -172,7 +172,7 @@ To learn more about in-built Kubernetes RBAC roles, visit [Kubernetes RBAC user 
 | edit                | None                       | Allows read/write access to most objects in a namespace. This role doesn't allow viewing or modifying roles or role bindings. However, this role allows accessing Secrets and running Pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. This role also doesn't allow write access to Endpoints in clusters created using Kubernetes v1.22+. More information is available in the [Write Access for Endpoints](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#write-access-for-endpoints) section.                |
 | view                | None                       | Allows read-only access to see most objects in a namespace. It doesn't allow viewing roles or role bindings. This role doesn't allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation).                                                                                                                                                         |
 
-### the in-built `view` Kubernetes RBAC role  
+### Add built-in view Kubernetes RBAC role  
 
 1. Apply the built-in `view` Kubernetes RBAC role to your Azure AD group:
 
@@ -180,7 +180,7 @@ To learn more about in-built Kubernetes RBAC roles, visit [Kubernetes RBAC user 
     kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --group=<Azure AD group object ID>
     ```
 
-2. Apply the in-built `view` Kubernetes RBAC role to each of your Azure AD users:
+2. Apply the built-in `view` Kubernetes RBAC role to each of your Azure AD users:
 
     ```bash
     kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --user=<Azure AD user object ID>
@@ -239,6 +239,6 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 
 ## Next steps
 
-For more information about how to secure Kubernetes clusters, see [Access and identity options for AKS][rbac-authorization].
+For more information about how to secure Kubernetes clusters, see [Access and identity options for AKS](/azure/aks/concepts-identity#kubernetes-rbac).
 
-For best practices on identity and resource control, see [Best practices for authentication and authorization in AKS][operator-best-practices-identity].
+For best practices on identity and resource control, see [Best practices for authentication and authorization in AKS](/azure/aks/operator-best-practices-identity).
