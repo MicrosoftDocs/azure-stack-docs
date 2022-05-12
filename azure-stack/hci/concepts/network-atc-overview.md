@@ -4,7 +4,7 @@ description: This topic introduces Network ATC for Azure Stack HCI.
 author: jpeddicord
 ms.topic: how-to
 ms.date: 04/22/2022
-ms.author: jpeddicord
+ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
 
