@@ -45,7 +45,16 @@ To access known issues for a different version, use the version selector dropdow
 
 For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
-<!-- ## Networking -->
+## Networking
+
+### Load Balancer
+
+#### Load Balancer rules
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Updating/changing the load distribution property (session persistence) has no effect and some virtual machines might not participate in the traffic load distribution. For example, if you have 4 backend virtual machines and only 2 clients connecting to the load balancer, and the load distribution is set to client IP, the client sessions will always use the same backend virtual machines. Changing the load distribution property to "none" to distribute the client connections across all the backend virtual machines will have no effect.
+- Remediation: Recreating the load balancing rule will ensure the selected settings are correctly configured to all backend VMs.
+- Occurrence: Common
 
 <!-- ## Compute -->
 
@@ -163,7 +172,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Load balancer
 
-#### Load Balancer Rules
+#### Load Balancer rules
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Updating/changing the load distribution property (session persistence) has no effect and some virtual machines might not participate in the traffic load distribution. For example, if you have 4 backend virtual machines and only 2 clients connecting to the load balancer, and the load distribution is set to client IP, the client sessions will always use the same backend virtual machines. Changing the load distribution property to "none" to distribute the client connections across all the backend virtual machines will have no effect.
@@ -180,13 +189,6 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
-- Occurrence: Common
-
-#### Load Balancer Rules
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Updating/changing the load distribution property (session persistence) has no effect and some virtual machines might not participate in the traffic load distribution. For example, if you have 4 backend virtual machines and only 2 clients connecting to the load balancer, and the load distribution is set to client IP, the client sessions will always use the same backend virtual machines. Changing the load distribution property to "none" to distribute the client connections across all the backend virtual machines will have no effect.
-- Remediation: Recreating the load balancing rule will ensure the selected settings are correctly configured to all backend VMs.
 - Occurrence: Common
 
 <!-- ## Compute -->
@@ -269,7 +271,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Load Balancer
 
-#### Load Balancer Rules
+#### Load Balancer rules
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Updating/changing the load distribution property (session persistence) has no effect and some virtual machines might not participate in the traffic load distribution. For example, if you have 4 backend virtual machines and only 2 clients connecting to the load balancer, and the load distribution is set to client IP, the client sessions will always use the same backend virtual machines. Changing the load distribution property to "none" to distribute the client connections across all the backend virtual machines will have no effect.
