@@ -41,11 +41,13 @@ To use Azure Stack HCI Insights, make sure you've completed the following:
 
 1. Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
 2. [Enable Log Analytics](monitor-azure-portal.md#configure-the-log-analytics-agent-extension) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
+
 ::: zone pivot="above-5b"
-3. [Enable Insights](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
+1. [Enable Insights](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
 ::: zone-end
+
 ::: zone pivot="on-5b"
-3. [Enable Monitoring](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
+1. [Enable Monitoring](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
 ::: zone-end
 
 ## View health, performance, and usage insights
