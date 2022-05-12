@@ -31,7 +31,7 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
 
 - **Azure Arc connection**
 
-    You'll need to have an Azure Arc connection to your AKS cluster on Azure Stack HCI or Windows Server. For instruction on enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](onnect-to-arc.md).
+    You'll need to have an Azure Arc connection to your AKS cluster on Azure Stack HCI or Windows Server. For instruction on enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
 
 - You'll need access to the following command line tools:
 
