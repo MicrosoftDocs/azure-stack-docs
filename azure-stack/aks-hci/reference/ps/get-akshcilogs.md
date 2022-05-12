@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -virtualMachineLogs
-Use this flag to get the logs from the guest virtual machines created by Azure Kubernetes Service on Azure Stack HCI.
+Use this flag to get the logs from the guest virtual machines created by Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -kvaLogs
-Use this flag to get the logs from the Azure Kubernetes Service on Azure Stack HCI host.
+Use this flag to get the logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server host.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -downloadSdkLogs
-Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI uses.
+Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI and Windows Server uses.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

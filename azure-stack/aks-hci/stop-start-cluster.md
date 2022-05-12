@@ -1,5 +1,5 @@
 ---
-title: Stop and restart a cluster on Azure Kubernetes Service on Azure Stack HCI
+title: Stop and restart a cluster on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to stop and restart a cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
@@ -13,9 +13,9 @@ ms.reviewer: EkeleAsonye
 
 ---
 
-# Stop and start an AKS on Azure Stack HCI and Windows Server cluster
+# Stop and start an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster
 
-Your workloads may not need to run continuously, and to save resource costs, you might need to stop (or shut down) your AKS on Azure Stack HCI and Windows Server cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
+Your workloads may not need to run continuously, and to save resource costs, you might need to stop (or shut down) your Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
 
 ## Before you begin
 
@@ -48,8 +48,14 @@ To shut down the local and remote computers, use the [Stop-Computer](/powershell
 PS:> Stop-Computer 
 ```
 
+<<<<<<< HEAD
 ## Start an Azure Stack HCI cluster
 To start a stopped Azure Stack HCI cluster,  first restart the operating system on the local and/or remote computers, and then restart the cluster.
+=======
+## Start an Azure Stack HCI or Windows Server cluster
+
+To start a stopped Azure Stack HCI or Windows Server cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster. 
+>>>>>>> c6404192ba26d0f0f5d5ca2409909b3269b288ab
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 

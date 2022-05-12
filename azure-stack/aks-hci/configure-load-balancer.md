@@ -1,19 +1,21 @@
 ---
-title: Create and use load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI
-description: Learn how to create and use load balancer with Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Create and use load balancer with Azure Kubernetes Service on Azure Stack HCI
+description: Learn how to create and use load balancer with Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/27/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
+
 # Intent: As an IT Pro, I need to learn how to create a load balancer and use it as a Virtual Machine (VM)
 # Keyword: load balancer configure HAProxy + KeepAliveS
+
 ---
 
-# Create and use load balancer in AKS on Azure Stack HCI and Windows Server
+# Create and use load balancer in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-In AKS on Azure Stack HCI and Windows Server, the load balancer is deployed as a virtual machine (VM) running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters. It load balances requests to the Kubernetes API server and manages traffic to application services.
+In Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, the load balancer is deployed as a virtual machine (VM) running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters. It load balances requests to the Kubernetes API server and manages traffic to application services.
 
 This article details how to configure HAProxy as your load balancer for a workload cluster. For custom load balancer integration, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
 

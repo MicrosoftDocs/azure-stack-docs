@@ -1,6 +1,6 @@
 ---
-title: Concepts - Updating Azure Kubernetes Services on Azure Stack HCI host using Windows Admin Center
-description: Learn about using Windows Admin Center to update the Azure Kubernetes Service on Azure Stack HCI host.
+title: Concepts - Updating Azure Kubernetes Service on Azure Stack HCI host using Windows Admin Center
+description: Learn about using Windows Admin Center to update the Azure Kubernetes Service on Azure Stack HCI and Windows Server host.
 ms.topic: conceptual
 ms.date: 04/27/2022
 ms.custom: fasttrack-edit
@@ -13,9 +13,9 @@ author: mattbriggs
 # Keyword: auto-update Windows Admin Center
 ---
 
-# Upgrade the AKS on Azure Stack HCI and Windows Server host using Windows Admin Center
+# Upgrade the Azure Kubernetes Service on Azure Stack HCI and Windows Server host using Windows Admin Center
 
-This article describes how to upgrade the AKS on Azure Stack HCI and Windows Server core system to the latest version. For information on updating an AKS workload cluster, see [update the Kubernetes version of AKS clusters](./upgrade.md).
+This article describes how to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server core system to the latest version. For information on updating an AKS workload cluster, see [update the Kubernetes version of AKS clusters](./upgrade.md).
 
 > [!Note]
 > When an AKS on Azure Stack HCI and Windows Server cluster is not upgraded within 60 days, the KMS plug-in token and the certificates both expire within 60 days. The cluster is still functional, however, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will continue to remain in a non-functional state.

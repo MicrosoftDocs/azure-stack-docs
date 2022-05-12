@@ -1,5 +1,5 @@
 ---
-title: Deploy a Linux app in AKS on Azure Stack HCI and Windows Server
+title: Deploy a Linux app in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, you deploy a multi-container Linux app to your cluster using a custom image stored in Azure Container Registry.
 author: mattbriggs
 ms.topic: tutorial
@@ -13,21 +13,21 @@ ms.reviewer: abha
 
 ---
 
-# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: AKS on Azure Stack HCI and Windows Server, AKS runtime on Windows Server 2019 Datacenter
 
-In this tutorial, you'll learn how to deploy a multi-container app that includes a web front-end and a Redis database instance in your Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster. You then see how to test and scale your app. 
+In this tutorial, you'll learn how to deploy a multi-container app that includes a web front-end and a Redis database instance in your AKS on Azure Stack HCI and Windows Serverand Windows Server  or Windows Server cluster. You then see how to test and scale your app. 
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
 
 ## Before you begin
 
 Verify you have the following requirements ready:
 
-* An Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster with at least one Linux worker node that is up and running. 
+* An Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server cluster with at least one Linux worker node that is up and running. 
 * A kubeconfig file to access the cluster.
-* Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
+* Have the AKS on Azure Stack HCI and Windows Server PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS-specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 

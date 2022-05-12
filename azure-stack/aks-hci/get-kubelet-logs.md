@@ -1,6 +1,6 @@
 ---
-title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI
-description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI.
+title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/24/2022
@@ -12,9 +12,9 @@ ms.reviewer: oadeniji
 
 ---
 
-# Get kubelet logs from cluster nodes on AKS on Azure Stack HCI and Windows Server
+# Get kubelet logs from cluster nodes on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-As part of operating an AKS on Azure Stack HCI and Windows Server cluster, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS on Azure Stack HCI and Windows Server, and you may also need to get _kubelet_ logs from an AKS on Azure Stack HCI and Windows Server node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
+As part of operating an Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS on Azure Stack HCI and Windows Server, and you may also need to get _kubelet_ logs from an AKS on Azure Stack HCI and Windows Server node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
 
 ## Before you begin
 

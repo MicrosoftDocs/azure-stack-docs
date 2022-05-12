@@ -1,6 +1,6 @@
 ---
-title: Support policies for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI and Windows Server)
-description: Learn about Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI and Windows Server) support policies, shared responsibility, and features that are in preview (or alpha or beta).
+title: Support policies for Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about Azure Kubernetes Service on Azure Stack HCI and Windows Server support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
 ms.date: 05/11/2022
@@ -14,7 +14,7 @@ ms.reviewer: mikek
 # Keyword: support policies AKS technical support control plane service updates
 ---
 
-# Support policies for Azure Kubernetes Service on Azure Stack HCI
+# Support policies for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI and Windows Server). 
 

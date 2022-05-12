@@ -1,6 +1,6 @@
 ---
-title: Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to use Helm to deploy applications on Azure Kubernetes Service on Azure Stack HCI
+title: Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to use Helm to deploy applications on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/1/2022
@@ -13,7 +13,7 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI
+# Deploy applications with Helm on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 [Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as *APT* and *Yum*, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 

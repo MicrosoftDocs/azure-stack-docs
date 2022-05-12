@@ -1,5 +1,5 @@
 ﻿---
-title: Prepare a multi-container app in Azure Kubernetes Service on Azure Stack HCI on Windows Server
+title: Prepare a multi-container app in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS on Azure Stack HCI and Windows Server.
 services: container-service
 ms.topic: tutorial
@@ -14,9 +14,9 @@ author: mattbriggs
 
 ---
 
-# Tutorial: Prepare an app for Azure Kubernetes Service on Azure Stack HCI on Windows Server
+# Tutorial: Prepare an app for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-In this tutorial, part one of seven, a multi-container app is prepared for use in Kubernetes. Existing development tools such as Docker Compose are used to locally build and test an app. You learn how to:
+This tutorial, part one of seven, describes how to prepare a multi-container app for use in Kubernetes. You can use existing development tools such as Docker Compose to locally build and test an app. You will learn how to:
 
 > [!div class="checklist"]
 > * Clone a sample app source from GitHub
@@ -36,7 +36,7 @@ This tutorial assumes a basic understanding of core Docker concepts such as cont
 To complete this tutorial, you need a local Docker development environment running Linux containers. Docker provides packages that configure Docker on [Windows][docker-for-windows].
 
 > [!NOTE]
-> Azure Kubernetes Service on Azure Stack HCI does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
+> AKS on Azure Stack HCI and Windows Server does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
 
 ## Get app code
 
@@ -86,7 +86,7 @@ azure-voting-app-redis
 
 ## Create container images
 
-[Docker Compose][docker-compose] can be used to automate building container images and the deployment of multi-container applications.
+You can use [Docker Compose][docker-compose] to automate building container images and the deployment of multi-container applications.
 
 Use the sample `docker-compose.yaml` file to create the container image, download the Redis image, and start the application:
 

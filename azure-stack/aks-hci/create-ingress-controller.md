@@ -1,6 +1,6 @@
 ---
-title: Use an ingress controller in Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to deploy an ingress controller in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+title: Use an ingress controller in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to deploy an ingress controller in Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 01/10/2022
@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 ---
 
-# Deploy an ingress controller
+# Deploy an ingress controller in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 An ingress controller is a Kubernetes resource that allows external access to services within the Kubernetes cluster. Ingress lets an operator expose a service to external network requests, usually HTTP or HTTPS. You configure access by creating a set of rules that define the inbound connections that reach specific services.
 

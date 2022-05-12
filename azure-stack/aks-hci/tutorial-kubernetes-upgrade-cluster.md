@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Upgrade a cluster in Azure Kubernetes Service on Azure Stack HCI
+title: Tutorial - Upgrade a cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, learn how to upgrade an existing cluster to the latest available Kubernetes version.
 services: container-service
 ms.topic: tutorial
@@ -12,7 +12,7 @@ author: mattbriggs
 # Keyword: upgrade cluster upgrade Kubernetes
 ---
 
-# Tutorial: Upgrade Kubernetes in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Upgrade Kubernetes in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes.
 
