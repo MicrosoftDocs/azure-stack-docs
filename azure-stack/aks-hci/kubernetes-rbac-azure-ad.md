@@ -49,7 +49,7 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
     
     - **PowerShell and the AksHci PowerShell module**
 
-        PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. If you have installed AKS on Azure Stack HCI and Windows Server, then you will have access to the AksHci PowerShell module.
+        PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. If you have installed AKS on Azure Stack HCI and Windows Server, then you'll have access to the AksHci PowerShell module.
 ## Optional first steps
 
 If you don't already have an Azure AD group containing members, you may want to create a group and add some members to follow the instructions in this article.
@@ -58,7 +58,7 @@ To demonstrate working with Azure AD and Kubernetes RBAC, you can create an Azur
 
 ### Create a demo group in Azure AD
 
-First, create the group in Azure AD in your tenant for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example has you sign into your Azure tenant and then create a group named **appdev**:
+First, create the group in Azure AD in your tenant for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example has you sign into your Azure tenant and then creates a group named **appdev**:
 
 ```azurecli  
 az login
