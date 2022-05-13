@@ -73,7 +73,7 @@ By default, the grid view shows the first 250 rows. You can set the value by edi
 
 You can export the details in Excel by selecting **Export to Excel** as shown in the following image:
 
-:::image type="content" source="media/monitor-hci-multi/export.png" alt-text="Link for exporting to Excel" lightbox="media/monitor-hci-multi/export.png":::
+:::image type="content" source="media/monitor-hci-multi/export.png" alt-text="Screenshot showing the link for exporting to Excel." lightbox="media/monitor-hci-multi/export.png":::
 
 Excel will provide Azure connection status as follows:
 
