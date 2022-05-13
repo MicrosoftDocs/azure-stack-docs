@@ -290,12 +290,12 @@ The following table lists the definition for each parameter.
 ## Transfer files between the HLH and OAW
 
 If you need to transfer files between the HLH and the OAW, create an SMB share
-by using the [New-SmbShare](/powershell/module/smbshare/new-smbshare&preserve-view=true) cmdlet.
+by using the [New-SmbShare](/powershell/module/smbshare/new-smbshare) cmdlet.
 New-SmbShare exposes a file system folder to remote clients as a Server Message
 Block (SMB) share. For example:
 
 To delete a share that was created by this cmdlet, use
-the [Remove-SmbShare](/powershell/module/smbshare/remove-smbshare&preserve-view=true) cmdlet.
+the [Remove-SmbShare](/powershell/module/smbshare/remove-smbshare) cmdlet.
 
 ## Remove the OAW VM
 
