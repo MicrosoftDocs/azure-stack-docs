@@ -59,7 +59,7 @@ The visualization can be filtered across subscriptions. You can filter the resul
 
 This feature provides details of clusters that are not monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
 
-:::image type="content" source="media/monitor-hci-multi/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring" lightbox="media/monitor-hci-multi/add-to-monitoring.png":::
+:::image type="content" source="media/monitor-hci-multi/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring." lightbox="media/monitor-hci-multi/add-to-monitoring.png":::
 
 | Column              | Description                           | Example      |
 |-------------------------|-------------------------------------------|------------------|
