@@ -7,8 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/11/2022
-zone_pivot_groups: hci-versions
+ms.date: 05/13/2022
 ---
 
 # Monitor multiple clusters with Azure Stack HCI Insights (preview)
@@ -41,14 +40,7 @@ To use Azure Stack HCI Insights, make sure you've completed the following:
 
 1. Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
 2. [Enable Log Analytics](monitor-azure-portal.md#configure-the-log-analytics-agent-extension) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
-
-::: zone pivot="above-5b"
-1. [Enable Insights](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
-::: zone-end
-
-::: zone pivot="on-5b"
-1. [Enable Monitoring](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
-::: zone-end
+3. [Enable Insights](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
 
 ## View health, performance, and usage insights
 
@@ -61,11 +53,8 @@ The visualization can be filtered across subscriptions. You can filter the resul
 - **Time range:** This filter allows you to select a range for trend view. The default value is **Last 24 hours**.
 - **Subscriptions:**  Shows the subscriptions that have registered Azure Stack HCI clusters. You can select multiple subscriptions in this filter.
 - **HCI clusters:** Lists the registered Azure Stack HCI clusters that have Logs and Monitoring capabilities enabled in the selected time range. You can select multiple clusters from this filter.
-::: zone pivot="above-5b"
 - **Resource groups:** This filter allows you to select all the clusters within a resource group.
-::: zone-end
 
-::: zone pivot="above-5b"
 ## Add to monitoring
 
 This feature provides details of clusters that are not monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
@@ -150,59 +139,8 @@ volumes. This view is built using the [volume event ID 3002](azure-stack-hci-in
 | Trend               | The IOPS trend.                                                              |                                             |
 | Throughput          | Number of bytes per second the Application Gateway has served.                        | 5B/s                                        |
 | Trend (B/s)         | The throughput trend.                                                        |                                             |
-| Average Latency     | Latency is the average time it takes for the I/O request to be completed.             | 334 μs                                      |
-::: zone-end
-
-::: zone pivot="on-5b"
-### Get started
-
-The **Get started** view calls out the prerequisites to use Azure Stack HCI Insights and displays the number of registered Azure Stack HCI clusters that have Log Analytics and Monitoring enabled. It also shows a list of unmonitored clusters across subscriptions that are connected to Azure or have recently connected to Azure.
-
-:::image type="content" source="media/azure-stack-hci-insights/get-started.png" alt-text="The Get started view displays the number of registered Azure Stack HCI clusters that have Log Analytics and Monitoring enabled and shows a list of unmonitored clusters" lightbox="media/azure-stack-hci-insights/get-started.png":::
-
-### Overview
-
-This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
-
-:::image type="content" source="media/monitor-hci-multi/overview.png" alt-text="This view provides an overview of server health and performance, and usage of selected clusters." lightbox="media/monitor-hci-multi/overview.png":::
-
-### Virtual machines
-
-This view provides the state of all the VMs in the selected cluster. This view is built using the [virtual machine event ID 3003](#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
-
-:::image type="content" source="media/monitor-hci-multi/virtual-machines.png" alt-text="This view provides the state of all the VMs in the selected cluster. " lightbox="media/monitor-hci-multi/virtual-machines.png":::
-
-### Storage
-
-This view provides two things:
-
-**Volume health, usage, and performance information.** This view is built using the [volume event ID 3002](#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
-
-:::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Volume health, usage, and performance information" lightbox="media/monitor-hci-multi/volume-health.png":::
-
-**Drive health information.** This view is built using the [drive event ID 3001](#drive-event-3001-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
-
-:::image type="content" source="media/monitor-hci-multi/drive-health.png" alt-text="Drive health information" lightbox="media/monitor-hci-multi/drive-health.png":::
-
-### Cluster performance
-
-This view provides four cluster performance trends:
-
--    CPU usage
--    Average volume latency
--    Volume IOPS
--    Volume throughput
-
-The views are built using the [cluster event ID 3004](#cluster-event-3004-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel.
-
-The screenshot below displays CPU usage and average volume latency trends.
-
-:::image type="content" source="media/monitor-hci-multi/cluster-performance-cpu-latency.png" alt-text="CPU usage and average volume latency" lightbox="media/monitor-hci-multi/cluster-performance-cpu-latency.png":::
-
-The screenshot below displays volume IOPS and throughput trends.
-
-:::image type="content" source="media/monitor-hci-multi/cluster-performance-iops-throughput.png" alt-text="Volume IOPS and throughput" lightbox="media/monitor-hci-multi/cluster-performance-iops-throughput.png":::
-::: zone-end
+| Average Latency     | Latency is the average time it takes for the I/O request to be completed.             | 334 μs
+                                      |
 
 ## Customize Azure Stack HCI Insights
 
@@ -291,13 +229,11 @@ This channel includes five events. Each event has cluster name and Azure Resourc
             "m_totalVmsStopping":"Integer",
             "m_totalVmsPausing":"Integer",
             "m_totalVmsResuming":"Integer"
-::: zone pivot="above-5b"
          },
          "m_osVersion":"String",
          "m_buildNumber":"String",
          "m_totalPhysicalProcessors":"Integer",
          "m_totalLogicalProcessors":"Integer"
-::: zone-end
       },
       "…"
    ],
@@ -345,7 +281,6 @@ Values for the **m_status** variable are as follows:
 
 ### Drive event 3001 RenderedDescription column value
 
-::: zone pivot="above-5b"
 Drive event 3001
 
 ```json
@@ -371,24 +306,6 @@ Drive event 3001
     "m_isLastElement":"Boolean"
 }
 ```
-::: zone-end
-
-::: zone pivot="on-5b"
-```json
-{
-   "m_totalDrivesUnknown":"Integer",
-   "m_totalDrivesHealthy":"Integer",
-   "m_totalDrivesWarning":"Integer",
-   "m_totalDrivesUnhealthy":"Integer",
-   "m_alerts":{
-      "m_totalUnknown":"Integer",
-      "m_totalHealthy":"Integer",
-      "m_totalWarning":"Integer",
-      "m_totalCritical":"Integer"
-   }
-}
-```
-::: zone-end
 
 ### Volume event 3002 RenderedDescription column value
 
@@ -411,11 +328,9 @@ Volume event 3002
          "m_TotalIops":"Double (Count/second)",
          "m_TotalThroughput":"Double (Bytes/Second)",
          "m_AverageLatency":"Double (Seconds)",
-::: zone pivot="above-5b"
          "m_Resiliency":"Integer",
          "m_IsDedupEnabled":"Boolean",
          "m_FileSystem":"String"
-::: zone-end
       },
       "…"
    ],
@@ -503,7 +418,6 @@ Virtual machine event 3003
 
 Cluster event 3004
 
-::: zone pivot="above-5b"
 ```json
 {
    "m_cpuUsage":"Double (%)",
@@ -527,30 +441,6 @@ Cluster event 3004
 ```
 
 For more information about the data that's collected, see [Health Service faults](/windows-server/failover-clustering/health-service-faults) and [Performance counters](monitor-hci-single.md#performance-counters).
-::: zone-end
-
-::: zone pivot="on-5b"
-```json
-{
-   "m_cpuUsage":"Double (%)",
-   "m_totalVolumeIops":"Double",
-   "m_averageVolumeLatency":"Double (Seconds)",
-   "m_totalVolumeThroughput":"Double (Bytes/Second)",
-   "m_totalVolumeSizeInBytes":"Double",
-   "m_totalVolumeSizeInBytes":"Integer",
-   "m_usedVolumeSizeInBytes":"Integer",
-   "m_totalMemoryInBytes":"Integer",
-   "m_usedMemoryInBytes":"Integer",
-   "m_isStretch":"Boolean",
-   "m_alerts":{
-      "m_totalUnknown":"Integer",
-      "m_totalHealthy":"Integer",
-      "m_totalWarning":"Integer",
-      "m_totalCritical":"Integer"
-   }
-}
-```
-::: zone-end
 
 ## Next steps
 
