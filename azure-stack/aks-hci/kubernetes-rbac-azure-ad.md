@@ -49,12 +49,22 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
     
     - **PowerShell and the AksHci PowerShell module**
 
-        PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. For instructions on installing PowerShell, see [Install PowerShell on Windows, Linux, and macOS](/powershell/scripting/install/installing-powershell). For instructions on installing the required AksHci module see, [Install AksHci PowerShell module](#install-akshci-powershell-module)
+        PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. For instructions on installing PowerShell, see [Install PowerShell on Windows, Linux, and macOS](/powershell/scripting/install/installing-powershell). To install the  AksHci PowerShell module:
 
-### Install AksHci PowerShell module
+        1. Run the following PowerShell command as administrator, accepting any prompts:
+        
+            ```powershell
+            Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+            Install-PackageProvider -Name NuGet -Force 
+            Install-Module -Name PowershellGet -Force
+            Exit
+            ```
 
-[!INCLUDE[Install AksHci PowerShell module](./includes/install-akshci-ps.md)]
+        2. Open a new administrative PowerShell console, and run the following to install the required PowerShell module and dependencies:
 
+            ```powershell
+            Install-Module -Name AksHci -Repository PSGallery -AcceptLicense -Force
+            ```
 ## Optional first steps
 
 If you don't already have an Azure AD group containing members, you may want to create a group and add some members to follow the instructions in this article.
