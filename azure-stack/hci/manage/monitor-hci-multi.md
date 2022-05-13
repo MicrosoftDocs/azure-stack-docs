@@ -126,7 +126,7 @@ This view provides the state of all the VMs in the selected cluster. The view is
 This view shows the health of volumes, usage, and performance across monitored clusters. Expand a cluster to see the state of individual
 volumes. This view is built using the [volume event ID 3002](azure-stack-hci-insights.md#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. The tiles on the top provide an overview of the health of storage.
 
-:::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Screenshot showing health of storage volumes" lightbox="media/monitor-hci-multi/volume-health.png":::
+:::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Screenshot showing health of storage volumes." lightbox="media/monitor-hci-multi/volume-health.png":::
 
 | Metric          | Description                                                                      | Example                                 |
 |---------------------|--------------------------------------------------------------------------------------|---------------------------------------------|
