@@ -109,7 +109,7 @@ This view provides an overview of server health and performance, and usage of se
 
 This view provides the state of all the VMs in the selected cluster. The view is built using the [virtual machine event ID 3003](azure-stack-hci-insights.md#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
 
-:::image type="content" source="media/monitor-hci-multi/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines" lightbox="media/monitor-hci-multi/virtual-machine-state.png":::
+:::image type="content" source="media/monitor-hci-multi/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines." lightbox="media/monitor-hci-multi/virtual-machine-state.png":::
 
 | Metric        | Description                                                                                                                                    | Example           |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
