@@ -942,6 +942,11 @@
       "redirect_document_id": true
     },
     { 
+      "source_path": "azure-stack/hci/manage/azure-stack-hci-insights.md", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-multi", 
+      "redirect_document_id": true
+    },
+    { 
       "source_path": "azure-stack/hci/manage/use-azure-backup.md", 
       "redirect_url": "/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines", 
       "redirect_document_id": false
