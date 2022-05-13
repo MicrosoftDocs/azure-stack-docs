@@ -49,28 +49,12 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
     
     - **PowerShell and the AksHci PowerShell module**
 
-        PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. For instructions on installing PowerShell, see [Install PowerShell on Windows, Linux, and macOS](/powershell/scripting/install/installing-powershell). To install the  AksHci PowerShell module:
-
-        1. Run the following PowerShell command as administrator, accepting any prompts:
-        
-            ```powershell
-            Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-            Install-PackageProvider -Name NuGet -Force 
-            Install-Module -Name PowershellGet -Force
-            Exit
-            ```
-
-        2. Open a new administrative PowerShell console, and run the following to install the required PowerShell module and dependencies:
-
-            ```powershell
-            Install-Module -Name AksHci -Repository PSGallery -AcceptLicense -Force
-            Exit
-            ```
+        PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. If you have installed AKS on Azure Stack HCI and Windows Server, then you will have access to the AksHci PowerShell module.
 ## Optional first steps
 
 If you don't already have an Azure AD group containing members, you may want to create a group and add some members to follow the instructions in this article.
 
-To demonstrate working with Azure AD and Kubernetes RBAC, you can create an Azure AD group for application developers that can be used to show how Kubernetes RBAC and Azure AD RBAC control access to cluster resources. In production environments, you can use existing users and groups within an Azure AD tenant.
+To demonstrate working with Azure AD and Kubernetes RBAC, you can create an Azure AD group for application developers that can be used to show how Kubernetes RBAC and Azure AD control access to cluster resources. In production environments, you can use existing users and groups within an Azure AD tenant.
 
 ### Create a demo group in Azure AD
 
@@ -189,7 +173,7 @@ To learn more about built-in Kubernetes RBAC roles, visit [Kubernetes RBAC user 
 | edit                | None                       | Allows read/write access to most objects in a namespace. This role doesn't allow viewing or modifying roles or role bindings. However, this role allows accessing Secrets and running Pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. This role also doesn't allow write access to Endpoints in clusters created using Kubernetes v1.22+. More information is available in the [Write Access for Endpoints](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#write-access-for-endpoints) section.                |
 | view                | None                       | Allows read-only access to see most objects in a namespace. It doesn't allow viewing roles or role bindings. This role doesn't allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation).                                                                                                                                                         |
 
-### Use a built-in Kubernetes RBAC role with Azure AD  
+### Use a built-in Kubernetes RBAC role with Azure AD
 
 1. Apply the built-in `view` Kubernetes RBAC role to your Azure AD group:
 
