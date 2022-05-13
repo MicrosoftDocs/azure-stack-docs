@@ -43,7 +43,7 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
     
     - **Kubectl**
 
-      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. o check if you have the kubectl, open a command line tool, and type: `kubectl version`.
+      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. o check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least` v1.24.0`.
       
       For instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
     
@@ -83,7 +83,7 @@ Configure the AKS cluster to allow your Azure AD group to access the AKS cluster
 1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command. 
 
     ```powershell
-    Get-AksHciCredential -name myAKSCluster
+    Get-AksHciCredential -name <name-of-your-cluster>
     ```
 
 2. Create a namespace in the AKS cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace name **dev**:
@@ -123,9 +123,14 @@ Configure the AKS cluster to allow your Azure AD group to access the AKS cluster
 
 5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step.
 
-```azurecli  
-az ad group show --group appdev --query objectId -o tsv
-```
+    ```azurecli  
+    az ad group show --group appdev --query objectId -o tsv
+    ```
+    
+    Az ad group will return the value you will use as `groupObjectId`.
+    ```output  
+    38E5FA30-XXXX-4895-9A00-050712E3673A
+    ```
 
 6. Create a file named `rolebinding-dev-namespace.yaml` and paste the following YAML manifest. You're establishing the **RoleBinding** for the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command:
 
@@ -153,7 +158,10 @@ az ad group show --group appdev --query objectId -o tsv
     ```bash  
     kubectl apply -f rolebinding-dev-namespace.yaml
     ```
-
+    
+    ```output  
+    rolebinding.rbac.authorization.k8s.io/dev-user-access created
+    ```
 ## Use built-in Kubernetes RBAC roles for your AKS cluster resource
 
 Kubernetes also provides built-in user-facing roles. These built-in roles include:
