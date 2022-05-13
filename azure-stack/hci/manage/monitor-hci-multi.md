@@ -69,7 +69,7 @@ This feature provides details of clusters that are not monitored by the user. To
 
 By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:
 
-:::image type="content" source="media/monitor-hci-multi/grid-rows.png" alt-text="Screen for settin grid values" lightbox="media/monitor-hci-multi/grid-rows.png":::
+:::image type="content" source="media/monitor-hci-multi/grid-rows.png" alt-text="Screenshot showing the screen for setting grid values." lightbox="media/monitor-hci-multi/grid-rows.png":::
 
 You can export the details in Excel by selecting **Export to Excel** as shown in the following image:
 
