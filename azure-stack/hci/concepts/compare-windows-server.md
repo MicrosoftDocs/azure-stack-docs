@@ -72,7 +72,9 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Azure Arc-Enabled Paas Services | Yes | Yes |
 | Windows Server 2022 Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. (**Important:** This requires purchasing an ESU license key and manually applying it to every VM.)| Yes | No |
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. <sup>1<sup>| Yes | No |
+
+<sup> 1 This requires purchasing an Extended Security Updates license key and manually applying it to every VM.<sup> 
 
 ## Compare technical features
 
@@ -80,12 +82,20 @@ The following table compares the technical features of Azure Stack HCI and Windo
 
 | **Attribute** | **Azure Stack HCI** | **Windows Server 2022** |
 | ------------- | ------------------- | ----------------------- |
-| Core Hyper-V | Yes | Yes |
-| Core Storage Spaces Direct | Yes | Yes |
-| Core SDN | Yes | Yes |
-| Stretch clustering for disaster recovery | Yes | - |
+| Hyper-V | Yes | Yes |
+| Storage Spaces Direct | Yes | Yes |                          
+| Software-Defined Networking (SDN) | Yes | Yes |
+| Stretch clustering for disaster recovery with Solid State Storage Drives (SSD) | No | Yes |
+| Adjustable Repair Speed | Yes | Yes|
+| Secured-core Server| Yes | Yes |
+| Stronger, faster network organization | Yes | Yes |
+| High availability for GPU workload | Yes | No |
+| Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
+| Intent-driven cluster networking configuration| Yes | No |
+| Storage Spaces Direct (SDD) Thin Provisioning | Yes | No |
+| Dynamic processor compatibility mode| Yes | No |
 | 4-5x faster Storage Spaces repairs | Yes | - |
-| Affinity rules | Yes | - |
+| Cluster-Aware OS Feature Update (HTGI)| Yes | - |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
 
