@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 11/15/2021
 ms.author: bryanla
 ms.reviewer: thoroet
-ms.lastreviewed: 4/26/2021
+ms.lastreviewed: 5/13/2022
 
 # Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
 # Keyword: (add) scale unit node azure stack
@@ -49,12 +49,13 @@ Let your Azure Stack Hub return to the **Running** state before adding another n
 
 The following steps are a high-level overview of how to add a node. Don't follow these steps without first referring to your OEM-provided capacity expansion documentation.
 
-1. Place the new physical server in the rack and cable it appropriately. 
-2. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
-3. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation.
-4. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
-5. Run the add node operation in the Azure Stack Hub administrator portal.
-6. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations). 
+1. Make sure the new node is configured with the BMC credentials that are already configured within Azure Stack Hub.
+2. Place the new physical server in the rack and cable it appropriately. 
+3. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
+4. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation.
+5. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
+6. Run the add node operation in the Azure Stack Hub administrator portal.
+7. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations).
 
 ## Add the node
 
