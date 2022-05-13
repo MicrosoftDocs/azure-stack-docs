@@ -63,9 +63,10 @@ To demonstrate working with Azure AD and Kubernetes RBAC, you can create an Azur
 
 ### Create a demo group in Azure AD
 
-First, create the group in Azure AD for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example creates a group named **appdev**:
+First, create the group in Azure AD in your tenant for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example has you sign into your Azure tenant and then create a group named **appdev**:
 
 ```azurecli  
+az login
 az ad group create --display-name appdev --mail-nickname appdev
 ```
 
@@ -73,9 +74,10 @@ az ad group create --display-name appdev --mail-nickname appdev
 
 With the example group created in Azure AD for our application developers, let's add a user to the `appdev` group. To test the Kubernetes RBAC integration at the end of the article, you sign in to the AKS cluster with this user account.
 
-Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command.
+Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you have quit your session, you will need to reconnect to Azure using `az login`.
 
 ```azurecli  
+$AKSDEV_ID = az ad user create --display-name <name> --password <strongpassword> --user-principal-name <name>@contoso.onmicrosoft.com
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
