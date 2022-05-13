@@ -3,18 +3,18 @@ title: Quickstart to set up an Azure Kubernetes Service host and create AKS on A
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI and Windows Server clusters using Windows PowerShell.
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 05/02/2022
+ms.date: 05/13/2022
 ms.author: mabrigg 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: jeguan
 ms.custom: mode-api
 
-# Intent: As an IT Pro, I want to create AKS on Azure Stack HCI and Windows Server using Windows PowerShell.
+# Intent: As an IT Pro, I want to use Windows PowerShell to create AKS on Azure Stack HCI and Windows Server.
 # Keyword: AKS setup PowerShell 
 ---
 # Quickstart: Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI on Windows
 
 In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS) host. You will create AKS on Azure Stack HCI and Windows Server clusters using PowerShell. To use Windows Admin Center instead, see [Set up with Windows Admin Center](setup.md).
 
@@ -31,10 +31,10 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
    - A service principal with either the built-in **Kubernetes Cluster - Azure Arc Onboarding** role (minimum), the built-in **Contributer** role, or the built-in **Owner** role.
    - Your subscription should specify an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region, available before registration, on the subscription mentioned above.
 - Use **at least one** of the following:
-   - Azure Stack HCI or Windows Server cluster
+   - Azure Stack HCI on Windows Server cluster
    - Windows Server 2019/2022 Datacenter failover cluster
    > [!NOTE]
-   > **We recommend having an Azure Stack HCI or Windows Server cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
+   > **We recommend having an Azure Stack HCI on Windows Server cluster.** If you don't have any of the above, follow instructions on the [Azure Stack HCI registration page](https://azure.microsoft.com/products/azure-stack/hci/hci-download/).
 
 ## Install the AksHci PowerShell module
 
@@ -42,7 +42,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 
 ### On all nodes in your Azure Stack HCI cluster
 
-Run the following command on all nodes in your Azure Stack HCI or Windows Server cluster.
+Run the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
 
 ```powershell  
 Install-PackageProvider -Name NuGet -Force 
@@ -52,7 +52,7 @@ Install-Module -Name PowershellGet -Force -Confirm:$false -SkipPublisherCheck
 > [!IMPORTANT]  
 > **You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all PowerShell windows.
 
-Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI or Windows Server cluster.
+Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
 
 ```powershell
 Install-Module -Name AksHci -Repository PSGallery
@@ -90,7 +90,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install AKS on Azure Stack HCI and Windows Server. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
-Run the following command on all nodes in your Azure Stack HCI or Windows Server cluster.
+Run the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
 
 ```powershell
 Initialize-AksHciNode
@@ -98,7 +98,7 @@ Initialize-AksHciNode
 
 ## Step 2: Create a virtual network
 
-Run the following commands in step 2 on any one node in your Azure Stack HCI or Windows Server cluster.
+Run the following commands in step 2 on any one node in your Azure Stack HCI on Windows Server cluster.
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
 
@@ -126,7 +126,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeI
 
 ## Step 3: Configure your deployment
 
-Run the following commands in step 3 on any one node in your Azure Stack HCI or Windows Server cluster.
+Run the following commands in step 3 on any one node in your Azure Stack HCI on Windows Server cluster.
 
 To create the configuration settings for the AKS host, use the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
@@ -149,7 +149,7 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ## Step 5: Start a new deployment
 
-Run the following command in step 5 on any one node in your Azure Stack HCI or Windows Server cluster.
+Run the following command in step 5 on any one node in your Azure Stack HCI on Windows Server cluster.
 
 After you've configured your deployment, you must start it in order to install the AKS on Azure Stack HCI and Windows Server agents/services and the AKS host. To begin deployment, run the following command.
 
