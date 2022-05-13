@@ -64,6 +64,7 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
 
             ```powershell
             Install-Module -Name AksHci -Repository PSGallery -AcceptLicense -Force
+            Exit
             ```
 ## Optional first steps
 
