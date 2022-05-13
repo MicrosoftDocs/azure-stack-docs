@@ -3,22 +3,18 @@ title: Concepts - Application availability in Azure Kubernetes Service on Azure 
 description: Learn about application availability in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 05/11/2022
+ms.date: 05/13/2022    
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-<<<<<<< HEAD
 ms.reviewer: rbaziwane
 
-=======
-ms.reviewer: rbaziwan
->>>>>>> c6404192ba26d0f0f5d5ca2409909b3269b288ab
 # Intent: As an IT Pro, I need to understand how disruptions can impact the availability of applications on my AKS on Azure Stack HCI and Windows Server deployment.
 # Keyword: AKS on Azure Stack HCI and Windows Server architecture live migration disruption Kubernetes container orchestration
 ---
 
 # Application availability on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-Azure Kubernetes Service (AKS)  on Azure Stack HCI and Windows Server is a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads on top of Azure Stack HCI and Windows Server. 
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads on top of Azure Stack HCI and Windows Server. 
 
 The AKS on Azure Stack HCI and Windows Server architecture is built with failover clustering and live migration that is automatically enabled for target (workload) clusters. During various disruption events, virtual machines that host customer workloads are freely moved around without perceived application downtime. This means that a traditional enterprise customer, who's managing a legacy application as a singleton to AKS on Azure Stack HCI and Windows Server, will get similar (or better) uptime than what's currently experienced on a legacy VM application. 
 
