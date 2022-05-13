@@ -103,7 +103,7 @@ the **microsoft-windows-health/operational** log. Also make sure the clusters 
 
 This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](azure-stack-hci-insights.md#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
 
-:::image type="content" source="media/monitor-hci-multi/server-health.png" alt-text="Screenshot showing health of servers" lightbox="media/monitor-hci-multi/server-health.png":::
+:::image type="content" source="media/monitor-hci-multi/server-health.png" alt-text="Screenshot showing health of servers." lightbox="media/monitor-hci-multi/server-health.png":::
 
 #### Virtual machines
 
