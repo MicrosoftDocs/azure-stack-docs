@@ -86,7 +86,7 @@ Excel will provide Azure connection status as follows:
 
 This view provides an overview of the health of clusters.
 
-:::image type="content" source="media/monitor-hci-multi/cluster-health.png" alt-text="Screen showing cluster health overview" lightbox="media/monitor-hci-multi/cluster-health.png":::
+:::image type="content" source="media/monitor-hci-multi/cluster-health.png" alt-text="Screenshot showing cluster health overview information." lightbox="media/monitor-hci-multi/cluster-health.png":::
 
 | Column        | Description                                                                                               | Example                    |
 |-------------------|---------------------------------------------------------------------------------------------------------------|--------------------------------|
