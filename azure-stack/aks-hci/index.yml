@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service on Azure Stack HCI and Windows Serverdocumentation
+title: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
 summary: Azure Kubernetes Service on Azure Stack HCI and Windows Serveris an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
 metadata:
-  title: Azure Kubernetes Service on Azure Stack HCI and Windows Serverdocumentation
+  title: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
   description: Azure Kubernetes Service on Azure Stack HCI and Windows Server is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
   ms.topic: landing-page
   author: mattbriggs
