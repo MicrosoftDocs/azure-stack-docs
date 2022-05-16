@@ -72,9 +72,9 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Azure Arc-Enabled Paas Services | Yes | Yes |
 | Windows Server 2022 Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. <sup>1<sup>| Yes | No |
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. | Yes | No <sup>1</sup>|
 
-<sup> 1 This requires purchasing an Extended Security Updates license key and manually applying it to every VM.<sup> 
+<sup>1</sup> This requires purchasing an Extended Security Updates license key and manually applying it to every VM.
 
 ## Compare technical features
 
