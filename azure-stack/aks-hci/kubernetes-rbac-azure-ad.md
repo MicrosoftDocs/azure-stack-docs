@@ -43,7 +43,7 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
     
     - **Kubectl**
 
-      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. o check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least` v1.24.0`.
+      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. To check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least` v1.24.0`.
       
       For instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
     
@@ -69,7 +69,7 @@ az ad group create --display-name appdev --mail-nickname appdev
 
 With the example group created in Azure AD for our application developers, let's add a user to the `appdev` group. To test the Kubernetes RBAC integration at the end of the article, you sign in to the AKS cluster with this user account.
 
-Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you have quit your session, you will need to reconnect to Azure using `az login`.
+Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you have quit your session, you'll need to reconnect to Azure using `az login`.
 
 ```azurecli  
 $AKSDEV_ID = az ad user create --display-name <name> --password <strongpassword> --user-principal-name <name>@contoso.onmicrosoft.com
@@ -127,7 +127,8 @@ Configure the AKS cluster to allow your Azure AD group to access the AKS cluster
     az ad group show --group appdev --query objectId -o tsv
     ```
     
-    Az ad group will return the value you will use as `groupObjectId`.
+    Az ad group will return the value you'll use as `groupObjectId`.
+
     ```output  
     38E5FA30-XXXX-4895-9A00-050712E3673A
     ```
@@ -202,7 +203,7 @@ Test the expected permissions when you create and manage resources in an AKS clu
 1. Sign in to the Azure using the `$AKSDEV_ID` user account you passed as an input to the `az ad group member add` command. Run the `az connectedk8s proxy` command to open a channel to the AKS cluster:
 
     ```cli
-    az connectedk8s -n <cluster-name> -g <resource-group>
+    az connectedk8s proxy -n <cluster-name> -g <resource-group>
     ```
 
 2. After the proxy channel has been established, open another session and schedule an NGINX pod using the [kubectl run](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run) command in the **dev** namespace:
