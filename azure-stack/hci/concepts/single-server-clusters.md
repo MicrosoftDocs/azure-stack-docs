@@ -1,5 +1,5 @@
 ---
-title: Azure Stack HCI - Single Server Overview
+title: Using Azure Stack HCI on a single server
 description: This article describes Azure Stack HCI OS on a single server
 author: robess
 ms.author: robess
@@ -15,7 +15,7 @@ ms.date: 04/04/2022
 
 This article provides information about Azure Stack HCI single server.
 
-This article provides an overview of running Azure Stack HCI, version 21H2 on a single server, also known as a single-server cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
+This article provides an overview of running Azure Stack HCI, version 21H2 on a single server, also known as a single-node cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
 
 Along with the benefits mentioned, there are some initial limitations to recognize.
 
@@ -27,16 +27,16 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 
 ## Prerequisites
 
-- A single server cluster purchased from your preferred Microsoft hardware partner from [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/).
+- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - An [Azure Subscription](https://azure.microsoft.com/).
 
 For hardware, software, and network requirements see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
 
-## Comparing single-server and multi-server clusters
+## Comparing single-node and multi-node clusters
 
-The following table compares attributes of a single server cluster to multi-server clusters.
+The following table compares attributes of a single-node cluster to multi-node clusters.
 
-|Attributes | Single-server | Multi-server |
+|Attributes | Single-node | Multi-node |
 |----------|-----------|-----------|
 |Full software-defined data center (SDDC) stack (hypervisor, storage, networking) | Yes | Yes|
 |Storage Spaces Direct support | Yes | Yes |
@@ -62,19 +62,19 @@ The following table compares attributes of a single server cluster to multi-serv
 
 ## Known issues
 
-The following table describes currently known issues for single server. This list is subject to change as other items are identified, check back for updates.
+The following table describes currently known issues for single-node clusters. This list is subject to change as other items are identified, check back for updates.
 
 |Issue | Notes|
 |-----------|---------------|
 |Cache drives don't auto rebind if failed. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. ***SBL cache is not supported at this time**. |
-|Windows Admin Center doesn't support single server cluster creation. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
+|Windows Admin Center doesn't support creating single-node clusters. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
 |Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
 |Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
-|Cluster Aware Updating (CAU) doesn't support single server. |Update using command line, Server Configuration tool (SConfig), or Windows Admin Center (through server manager). |
-|Adding a node to scale out the single server cluster doesn't automatically change the Storage Spaces Direct `FaultDomainAwarenessDefault`. |`FaultDomainAwarenessDefault` can be changed manually from PhysicalDisk to StorageScaleUnit. |
+|Cluster Aware Updating (CAU) doesn't support single-node clusters. | Update using PowerShell, the Server Configuration tool (SConfig), or Windows Admin Center (through server manager). |
+|Adding a node to scale out the single-node cluster doesn't automatically change the Storage Spaces Direct `FaultDomainAwarenessDefault`. |`FaultDomainAwarenessDefault` can be changed manually from PhysicalDisk to StorageScaleUnit. |
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Configure single server](../deploy/single-server.md)
+> [Deploy on a single server](../deploy/single-server.md)

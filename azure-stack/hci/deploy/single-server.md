@@ -1,5 +1,5 @@
 ---
-title: Configure Azure Stack HCI OS - Single Server 
+title:  Deploy Azure Stack HCI on a single server
 description: This article describes Azure Stack HCI OS configuration on a single server
 author: robess
 ms.author: robess
@@ -13,30 +13,26 @@ ms.date: 04/04/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-server cluster. It also describes how to add servers to the cluster (scale-out) later.
+This article describes how to use PowerShell to deploy Azure Stack HCI on a single server that contains all NVMe or SSD drives, creating a single-node cluster. It also describes how to add servers to the cluster (scale-out) later.
 
-Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a single server. For more info, see [Single-server clusters](../concepts/single-server-clusters.md).
+Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
 > [!IMPORTANT]
-> For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center (WAC) can be used to manage specific components following a successful deployment.
+> For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center can be used to manage specific components following a successful deployment.
 
 ## Prerequisites
 
-- A single server configured with all NVMe or all SSD drives from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog).
+- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - For network, hardware and other requirements, see [Azure Stack HCI network and domain requirements](../deploy/operating-system.md#determine-hardware-and-network-requirements).
-- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) (WAC) to register and manage the server once it has been configured.
+- Optionally, [install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) to register and manage the server once it has been configured.
 
-## Configure single server
+## Deploy on a single server
 
-Here are the steps to configure the Azure Stack HCI OS, on a single server, after it has been successfully deployed.
-
-> [!NOTE]
-> Cluster witness is not required for a single server deployment.
+Here are the steps to install the Azure Stack HCI OS on a single server, create the single-node cluster, register the cluster with Azure, and create volumes.
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
-1. From the Welcome to Azure Stack HCI window, select option <em>15</em> to exit to the PowerShell command line.
 1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md).
+1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md). You don't need a cluster witness.
 1. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
 1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
 
@@ -70,6 +66,11 @@ Enable-ClusterS2D -Verbose
     1. Delete the old volume
 
 That completes the process of adding a server.
+
+## Updating single-node clusters
+
+Sconfig
+Windows Admin Center, click Server Manager, click Updates
 
 ## Next steps
 

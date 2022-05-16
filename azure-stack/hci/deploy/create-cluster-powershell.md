@@ -62,7 +62,7 @@ First we will connect to each of the servers, join them to a domain (the same do
 
 To connect to the servers, you must first have network connectivity, be joined to the same domain or a fully trusted domain, and have local administrative permissions to the servers.
 
-Open PowerShell and use either the fully-qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server. 
+Open PowerShell and use either the fully-qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server.
 
 For this example, we assume that the servers have been named Server1, Server2, Server3, and Server4:
 
@@ -122,7 +122,7 @@ The next step is to install required Windows roles and features on every server 
 - NetworkATC
 - Storage Replica (for stretched clusters)
 
-Use the following command for each server:
+Use the following command for each server (if you're connected via Remote Desktop omit the `-ComputerName` parameter here and in subsequent commands):
 
 ```powershell
 Install-WindowsFeature -ComputerName "Server1" -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
@@ -305,7 +305,7 @@ Get-VMSwitch -CimSession (Get-ClusterNode).Name | Select Name, ComputerName
 
 ## Step 5: Set up sites (stretched cluster)
 
-This task only applies if you are creating a stretched cluster between two sites. 
+This task only applies if you are creating a stretched cluster between two sites with at least two servers in each site.
 
 > [!NOTE]
 > If you have set up Active Directory Sites and Services beforehand, you do not need to create the sites manually as described below.
@@ -408,9 +408,9 @@ Congrats, you have now created a cluster.
 
 Now that you are done, there are still some important tasks you need to complete:
 
-- Setup a cluster witness. See [Set up a cluster witness](../manage/witness.md).
+- Set up a cluster witness if you're using a two-node or larger cluster. See [Set up a cluster witness](../manage/witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
-- For stretched clusters, create volumes and setup replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
+- For stretched clusters, create volumes and set up replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
 
 ## Next steps
 
