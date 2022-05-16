@@ -1,6 +1,6 @@
 ---
-title: Certificates and tokens Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-description: Learn how to use certificates and tokens Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+description: Learn how to use certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 04/13/2022
@@ -13,7 +13,7 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Certificates and tokens Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 The cloud agent service in  Azure Kubernetes Service on Azure Stack HCI and Windows Server is responsible for underlying orchestration of other services. There are many services that communicate with cloud agent, including:
  
