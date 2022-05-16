@@ -36,6 +36,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.735    | 2022-05-17            | [KB 5014021](https://support.microsoft.com/topic/b2e22509-31af-4efe-a9a8-1af0256541e5)  |
 | 20348.707    | 2022-05-10            | [KB 5013944](https://support.microsoft.com/topic/73df007f-f353-421a-8f1d-2cf067243040)  |
 | 20348.681    | 2022-04-25            | [KB 5012637](https://support.microsoft.com/topic/5bd3942b-6e47-42b2-a4bd-f442c2f3a01b)  |
 | 20348.643    | 2022-04-12            | [KB 5012604](https://support.microsoft.com/topic/090da9ce-1c1d-452b-a410-2b02e583a287)  |
@@ -60,6 +61,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 17784.2453  | 2022-05-17           | [KB 5014020](https://support.microsoft.com/topic/e530a977-a31b-46c5-b47e-7dc963b8e12f) |
 | 17784.2430  | 2022-05-10           | [KB 5013951](https://support.microsoft.com/topic/498b9df8-b7fc-4eda-8962-c8a24ad97059) |
 | 17784.2424   | 2022-05-10           | [KB 5014033](https://support.microsoft.com/topic/e8f5e8e8-fafa-4aad-a414-249d49736791) |
 | 17784.2398  | 2022-04-21           | [KB 5012660](https://support.microsoft.com/topic/b1c9150d-1bf1-4b74-aaf4-b516443c9ee6) |
