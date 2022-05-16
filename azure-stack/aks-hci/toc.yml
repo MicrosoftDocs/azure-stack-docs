@@ -149,6 +149,8 @@
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
+          - name: Use Kubernetes RBAC with Azure AD
+            href: kubernetes-rbac-azure-ad.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
