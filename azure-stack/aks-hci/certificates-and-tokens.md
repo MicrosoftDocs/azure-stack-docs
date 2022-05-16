@@ -18,16 +18,16 @@ ms.reviewer: rbaziwane
 The cloud agent service in  Azure Kubernetes Service on Azure Stack HCI and Windows Server is responsible for underlying orchestration of other services. There are many services that communicate with cloud agent, including:
  
  - **Mocctl** - This is an admin service with ultimate access to the cloudagent.
- - **Node agent** - Service on each node that does actual work that is VM creation, etc.
- - **Kva** - Kubernetes Virtual Appliance, sometimes called the management cluster
- - **KMS pod** - Key Management Service pod
- - **Others** - CAPH, Cloud Operator, Certificate Manager, CSI
+ - **Node agent** - Service on each node that does actual work that is VM creation, and so on.
+ - **Kva** - Kubernetes Virtual Appliance, sometimes called the management cluster.
+ - **KMS pod** - Key Management Service pod.
+ - **Others** - CAPH, Cloud Operator, Certificate Manager, CSI.
 
 ## Service identity
 
 To communicate with the cloud agent service, each service requires an identity to be associated with it. This identity defines the Role Based Access Control (RBAC) rules associated with the service. Each identity consists of two entities:
  
- - **A token** - Used for initial authentication, which returns a certificate
+ - **A token** - Used for initial authentication, which returns a certificate.
  - **A certificate** - The certificate obtained from the above sign-in process is used for authentication in any communication.
  
 Each entity is valid for a specific period of time that is 90 days, at the end of which it expires. For continued access to the cloud agent service, each service requires the certificate to be renewed and the token rotated.
