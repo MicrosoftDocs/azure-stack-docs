@@ -14,9 +14,9 @@ ms.date: 04/06/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article explains how to enable logs and monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+This article explains how to enable logs and monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi).
 
-If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
+If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi) to monitor cluster health, performance, and usage.
 
    > [!IMPORTANT]
    > Monitoring an Azure Stack HCI cluster from Azure portal requires every server in the cluster to be Azure Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you'll need to [enable Azure Arc integration](../deploy/register-with-azure.md#enable-azure-arc-integration).
@@ -69,7 +69,7 @@ Now that you've set up a Log Analytics workspace, you can enable monitoring. Onc
 
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004)
 
-To change the frequency of log collection, see [Event Log Channel](azure-stack-hci-insights.md#event-log-channel).
+To change the frequency of log collection, see [Event Log Channel](/azure-stack/hci/manage/monitor-hci-multi#event-log-channel).
 
 ### Enable monitoring visualizations
 
@@ -175,4 +175,4 @@ If the Logs capability and Monitoring capability are enabled without errors but 
 
 You're now ready to monitor multiple Azure Stack HCI clusters from Azure portal:
 > [!div class="nextstepaction"]
-> [Azure Stack HCI Insights](azure-stack-hci-insights.md)
+> [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi)

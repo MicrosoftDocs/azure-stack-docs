@@ -55,6 +55,8 @@
         href: concepts-security.md
       - name: Container security
         href: container-security.md
+      - name: Certificates and tokens
+        href: certificates-and-tokens.md
   - name: Networking
     items:
       - name: Kubernetes node networking

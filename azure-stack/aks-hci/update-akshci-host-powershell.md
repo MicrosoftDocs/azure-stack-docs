@@ -2,14 +2,15 @@
 title: Concepts - Upgrade the Azure Kubernetes Services (AKS) on Azure Stack HCI host using PowerShell
 description: Learn about using PowerShell to upgrade the Azure Kubernetes Service (AKS) on Azure Stack HCI host.
 ms.topic: conceptual
-ms.date: 04/13/2022
-ms.custom: 
+ms.date: 05/16/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
+
 # Intent: As an IT Pro, I need instructions on how to use PowerShell in order to upgrade my AKS on Azure Stack HCI host.
 # Keyword: PowerShell AKS on Azure Stack HCI updates
+
 ---
 
 # Upgrade the AKS on Azure Stack HCI host using PowerShell
@@ -18,8 +19,8 @@ Updates to the Azure Kubernetes Services (AKS) on Azure Stack HCI host always in
 
 All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When you successfully remove the resources, the _old_ node is decommissioned and removed from the cluster.
 
-> [!Note]
-> You must upgrade an AKS on Azure Stack HCI cluster *within 60 days*, otherwise, the KMS plug-in token and the certificates both expire. The cluster is still functional, however, but you will need to call Microsoft support to upgrade. If the cluster is rebooted after the 60-day period, it will continue to remain in a non-functional state.
+> [!Note]  
+> Microsoft recommends upgrading your AKS on Azure Stack HCI and Windows Server clusters within 30 days of a new release. If you do not update within this window, you have up to 90 days from your last upgrade before internal certificates and tokens expire. Once expired, the cluster will still be functional, however, you will need to call Microsoft Support to upgrade. Upon rebooting the cluster after the 90-day period, it will continue to remain in a non-functional state. For more information about internal certificates and tokens, visit  [Certificates and tokens](certificates-and-tokens.md).
 
 ## Update the AKS on Azure Stack HCI host
 
