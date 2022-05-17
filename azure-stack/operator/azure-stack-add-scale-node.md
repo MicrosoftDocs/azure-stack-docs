@@ -49,7 +49,7 @@ Let your Azure Stack Hub return to the **Running** state before adding another n
 
 The following steps are a high-level overview of how to add a node. Don't follow these steps without first referring to your OEM-provided capacity expansion documentation.
 
-1. Make sure the new node is configured with the BMC credentials that are already configured within Azure Stack Hub. For instructions on updating the BMC credentials in Azure Stack Hub, refer to [Update the BMC credential](/azure-stack/operator/azure-stack-rotate-secrets.md#update-the-bmc-credential).
+1. Make sure the new node is configured with the BMC credentials that are already configured within Azure Stack Hub. For instructions on updating the BMC credentials in Azure Stack Hub, refer to [Update the BMC credential](/azure-stack/operator/azure-stack-rotate-secrets#update-the-bmc-credential).
 2. Place the new physical server in the rack and cable it appropriately. 
 3. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
 4. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation.
