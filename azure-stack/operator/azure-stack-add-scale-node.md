@@ -144,14 +144,8 @@ The following steps are a high-level overview of how to add a node. Don't follow
   |Requires Remediation  |An error has been detected that requires the node to be repaired.|
 
 
-
 ## Troubleshooting
 The following are common issues seen when adding a node. 
-
-
-
-**Scenario 3:** You received an alert that indicates the storage scale-out job failed.  
-- Remediation: In this case, the storage configuration task has failed. This problem requires you to contact support.
 
 **Scenario 1:** The add scale unit node operation fails but one or more of the nodes are listed with a status of Stopped.
 - Remediation: Use the regular operation to repair one or more nodes. Only a single repair operation can be run at one time. 
@@ -162,5 +156,8 @@ The following are common issues seen when adding a node.
 Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
 ```
 
-## Next steps 
+**Scenario 3:** You received an alert that indicates the storage scale-out job failed.  
+- Remediation: In this case, the storage configuration task has failed. This problem requires you to contact support.
+
+## Next steps
 [Add public IP addresses](azure-stack-add-ips.md)
