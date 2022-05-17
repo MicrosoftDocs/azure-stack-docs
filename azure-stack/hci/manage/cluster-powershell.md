@@ -19,7 +19,7 @@ You manage clusters from a remote computer, rather than on a host server in a cl
 > [!NOTE]
 > When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing. In addition, you will need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
 
-For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](/powershell/module/failoverclusters/).
+For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](/powershell/module/failoverclusters).
 
 ## Using Windows PowerShell
 

@@ -13,16 +13,14 @@ ms.date: 05/16/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article provides information about Azure Stack HCI single server.
-
-This article provides an overview of running Azure Stack HCI, version 21H2 on a single server, also known as a single-node cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
+This article provides an overview of running Azure Stack HCI on a single server, also known as a single-node cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
 
 Along with the benefits mentioned, there are some initial limitations to recognize.
 
 - Single server deployment needs to be done through PowerShell.
 - Single servers must use only NVMe or SSD drives.
 - Stretched (dual-site) clusters don't support individual servers (you must use a minimum of four servers in a stretched cluster).
-- To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool. Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). You'll have to get solution updates directly from your solution vendor.
+- To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool. Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). For solution updates (such as driver and firmware updates), see your solution vendor.
 - Host update that requires a restart will cause downtime to running virtual machines (VMs). Shut them down gracefully before restarting the host.
 
 ## Prerequisites
@@ -56,7 +54,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No <sup>2</sup> | Yes |
 |[Use Graphics Processing Units (GPUs) with clustered VMs](../manage/use-gpu-with-clustered-vm.md)  | Yes | Yes |
 
-<sup>1</sup> Limited support, AKS-HCI is "in-preview" as of June 2022.
+<sup>1</sup> Limited support, AKS on Azure Stack HCI is "in-preview" as of June 2022.
 
 <sup>2</sup> Planned for future versions.
 

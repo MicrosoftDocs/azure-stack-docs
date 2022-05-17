@@ -38,9 +38,9 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 Now that you've completed the single server configuration, you're ready to deploy your workload(s).
 
-## Adding servers to a single server cluster
+## Adding servers to a single-node cluster
 
-You can add servers to your single server cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
+You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
 
 1. Validate the cluster by specifying existing server(s) and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md)
@@ -69,7 +69,7 @@ That completes the process of adding a server.
 
 ## Updating single-node clusters
 
-To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates please see your solution vendor.
+To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
 
 ## Next steps
 

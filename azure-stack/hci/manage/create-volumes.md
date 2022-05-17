@@ -16,6 +16,8 @@ This article describes how to create volumes on a cluster by using Windows Admin
 > [!TIP]
 > If you haven't already, check out [Plan volumes](../concepts/plan-volumes.md) first.
 
+When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](../manage/create-volumes#create-volumes-using-windows-powershell.md).
+
 ## Create a two-way or three-way mirror volume
 
 To create a two-way or three-way mirror volume using Windows Admin Center:
