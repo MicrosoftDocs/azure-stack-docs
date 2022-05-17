@@ -6,7 +6,7 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/18/2022
+ms.date: 05/16/2022
 ---
 
 # Deploy the Azure Stack HCI operating system

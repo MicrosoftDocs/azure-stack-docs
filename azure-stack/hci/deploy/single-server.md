@@ -5,7 +5,7 @@ author: robess
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
-ms.lastreviewed: 04/28/2022
+ms.lastreviewed: 05/16/2022
 ms.date: 04/04/2022
 ---
 
@@ -69,8 +69,9 @@ That completes the process of adding a server.
 
 ## Updating single-node clusters
 
-Sconfig
-Windows Admin Center, click Server Manager, click Updates
+To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool.
+
+Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). You'll have to get solution updates directly from your solution vendor.
 
 ## Next steps
 
