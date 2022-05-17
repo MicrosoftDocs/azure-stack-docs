@@ -158,4 +158,4 @@ The following are common issues seen when adding a node.
 - Remediation: In this case, the storage configuration task has failed. This problem requires you to contact support.
 
 ## Next steps 
-[Add public IP addresses](azure-stack-add-ips.md) 
+[Add public IP addresses](azure-stack-add-ips.md)
