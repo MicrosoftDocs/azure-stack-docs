@@ -147,16 +147,15 @@ The following steps are a high-level overview of how to add a node. Don't follow
 ## Troubleshooting
 The following are common issues seen when adding a node. 
 
-**Scenario 1:** The add scale unit node operation fails but one or more of the nodes are listed with a status of Stopped.
-- Remediation: Use the regular operation to repair one or more nodes. Only a single repair operation can be run at one time. 
+**Scenario 1:** The add scale unit node operation fails but one or more of the nodes are listed with a status of Stopped. 
+- Remediation: Use the regular operation to repair one or more nodes. Only a single repair operation can be run at one time.
 
-**Scenario 2:** One or more scale unit nodes have been added but the storage expansion failed. In this scenario, the scale unit node object reports a status of Running but the Configuring Storage task isn't started.
-- Remediation: Use the privileged endpoint to review the storage health by running the following PowerShell cmdlet:
+**Scenario 2:** One or more scale unit nodes have been added but the storage expansion failed. In this scenario, the scale unit node object reports a status of Running but the Configuring Storage task isn't started. 
+- Remediation: Use the privileged endpoint to review the storage health by running the following PowerShell cmdlet: 
 ```azurepowershell
-Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
+Get-VirtualDisk -CimSession s-Cluster | Get-StorageJob
 ```
-
-**Scenario 3:** You received an alert that indicates the storage scale-out job failed.  
+**Scenario 3:** You received an alert that indicates the storage scale-out job failed. 
 - Remediation: In this case, the storage configuration task has failed. This problem requires you to contact support.
 
 ## Next steps
