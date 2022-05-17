@@ -106,7 +106,7 @@ Remove-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
 >[!NOTE]
-> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-server-cluster) to reconfigure Storage Spaces Direct.
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster) to reconfigure Storage Spaces Direct.
 
 ## Setup the cluster witness
 

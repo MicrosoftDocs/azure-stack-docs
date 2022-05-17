@@ -410,7 +410,7 @@ Now that you are done, there are still some important tasks you need to complete
 
 - Set up a cluster witness if you're using a two-node or larger cluster. See [Set up a cluster witness](../manage/witness.md).
 - Create your volumes. See [Create volumes](../manage/create-volumes.md).
-When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](../manage/create-volumes#create-volumes-using-windows-powershell.md).
+When creating volumes on a single-node cluster, you must use PowerShell. See [Create volumes using PowerShell](../manage/create-volumes.md#create-volumes-using-windows-powershell).
 - For stretched clusters, create volumes and set up replication using Storage Replica. See [Create volumes and set up replication for stretched clusters](../manage/create-stretched-volumes.md).
 
 ## Next steps
