@@ -38,14 +38,14 @@ Let your Azure Stack Hub return to the **Running** state before adding another n
   > [!IMPORTANT]
   > The storage expansion phase can run up to multiple days before completion, as spaces are rebalanced in a pool to disks with capacity. There isn't an impact to running workloads on the system while another scale unit node is added.
 
-> [!WARNING]  
-> Do not attempt any of the following operations while an add scale unit node operation is already in progress:
->
-> - Update Azure Stack Hub
-> - Rotate certificates
-> - Stop Azure Stack Hub
-> - Repair scale unit node
-> - Add another node (the previous add-node action failure is also considered in progress)
+  > [!WARNING]  
+  > Do not attempt any of the following operations while an add scale unit node operation is already in progress:
+  >
+  > - Update Azure Stack Hub
+  > - Rotate certificates
+  > - Stop Azure Stack Hub
+  > - Repair scale unit node
+  > - Add another node (the previous add-node action failure is also considered in progress)
 
 ## Add scale unit nodes
 
