@@ -90,7 +90,7 @@ sections:
         answer: |
           You can perform a machine-to-machine image transfer over a local network from a machine that already has the required container image(s). To do this:
           
-          1. First, retrieve the required container image(s) using a machine with Internet connectivity by using the docker cli and docker pull command. See [Import container images to a container registry](/azure/container-registry/container-registry-import-images) for more information.
+          1. First, retrieve the required container image(s) using a machine with Internet connectivity by using the docker CLI and docker pull command. See [Import container images to a container registry](/azure/container-registry/container-registry-import-images) for more information.
           
           2. After you have the required image(s) imported, transport the machine to the location of the disconnected Azure Hub instance.
           
