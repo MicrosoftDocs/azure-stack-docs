@@ -102,8 +102,6 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Connect to Azure Arc for Kubernetes
-            url: connect-to-arc.md
-          - text: Monitor AKS on Azure Stack HCI and Windows Server clusters
             url: connect-to-arc.md 
           - text: Use Kubernetes RBAC with Azure AD
             url: kubernetes-rbac-azure-ad.md
@@ -129,4 +127,3 @@ landingContent:
             url: troubleshoot-overview.md
           - text: Connect to nodes with SSH
             url: ssh-connection.md
-

@@ -3,7 +3,7 @@ title: Create a DaemonSet in Azure Kubernetes Service on Azure Stack HCI and Win
 description: Learn how to create a DaemonSet in Azure Kubernetes Service on Azure Stack HCI.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/22/2022
+ms.date: 05/17/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye

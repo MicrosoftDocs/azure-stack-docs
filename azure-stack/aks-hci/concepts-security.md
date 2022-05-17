@@ -3,10 +3,10 @@ title: Security in Azure Kubernetes Service on Azure Stack HCI
 description: Learn about securing the infrastructure and applications on a Kubernetes cluster in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/11/2022
+ms.date: 05/17/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: sulahiri
+ms.reviewer: lahirisl
 
 # Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI and Windows Server deployment(s).
 # Keyword: security in AKS on Azure Stack HCI and Windows Server
