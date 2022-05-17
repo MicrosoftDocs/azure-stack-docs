@@ -13,7 +13,7 @@ ms.date: 01/10/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2, including the ability to run it on a [single server](../hci/concepts/single-server-clusters.md). It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
 
 For information on monthly quality and security updates, see [Azure Stack HCI release information](release-information.md). To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 20H2](whats-new-in-hci-20h2.md).
 
@@ -79,6 +79,7 @@ Azure Stack HCI Insights provides health, performance, and usage insights about 
 
 This section lists the new cluster infrastructure features that are available in Azure Stack HCI, version 21H2:
 
+- **[Use Azure Stack HCI on a single server](../hci/concepts/single-server-clusters.md)**: Minimize hardware and software costs in locations that can tolerate lower resiliency.
 - **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
 - **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
 - **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
