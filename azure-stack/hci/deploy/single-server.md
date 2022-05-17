@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
 ms.lastreviewed: 05/16/2022
-ms.date: 04/04/2022
+ms.date: 05/16/2022
 ---
 
 # Deploy Azure Stack HCI on a single server

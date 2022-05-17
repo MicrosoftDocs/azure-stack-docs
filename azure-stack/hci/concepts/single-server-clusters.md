@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: overview
 ms.reviewer: kerimhanif
 ms.lastreviewed: 05/16/2022
-ms.date: 04/04/2022
+ms.date: 05/16/2022
 ---
 
 # Using Azure Stack HCI on a single server
