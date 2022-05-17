@@ -46,7 +46,7 @@ Azure Stack HCI delivers hybrid value through the following Azure Arc technologi
 
     To monitor your Azure Arc-enabled clusters, you can enable Logs and Monitoring capabilities. To learn more about enabling Logs and Monitoring capabilities, see [Configure Azure portal to monitor Azure Stack HCI clusters](manage/monitor-azure-portal.md).
 
-    You can also get insights on health, performance, and usage of your registered Azure Stack HCI, version 21H2 cluster via Azure Stack HCI Insights. To learn more about Azure Stack HCI Insights, see [Monitor multiple clusters with Azure Stack HCI Insights](manage/azure-stack-hci-insights.md).
+    You can also get insights on health, performance, and usage of your registered Azure Stack HCI, version 21H2 cluster via Azure Stack HCI Insights. To learn more about Azure Stack HCI Insights, see [Monitor multiple clusters with Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi).
 
 - [**Azure Arc resource bridge.**](/azure/azure-arc/resource-bridge/overview) Deploying Azure Arc resource bridge enables Azure Arc-enabled VMs on Azure Stack HCI, including self-service VM creation and management. To learn more about VM provisioning through Azure portal on Azure Stack HCI, see [VM provisioning through Azure portal on Azure Stack HCI](manage/azure-arc-enabled-virtual-machines.md).
 

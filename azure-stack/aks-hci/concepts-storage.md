@@ -3,13 +3,13 @@ title: Storage options for applications in Azure Kubernetes ServiceKS on Azure S
 description: Storage options for applications in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/11/2022
+ms.date: 05/17/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I need to understand the storage options available for applications in AKS so that I can optimize how to best to store and retrieve data.
-# Keyword: storage options
+# Keyword: storage options PV claims
 
 ---
 
