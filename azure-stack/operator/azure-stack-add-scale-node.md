@@ -104,7 +104,7 @@ The following steps are a high-level overview of how to add a node. Don't follow
    ```  
    ---
 
-7. Verify whether the add node operation succeeded by checking the status, which should be "running". Refer to the Status for the add node operation section that follows for more details.
+7. Verify whether the add node operation succeeded by checking the status, which should be "running". Refer to the [Status for the add node operation section](#status-for-the-add-node-operation) that follows for more details.
 
 ## Monitor add node operations 
 Use the administrator portal or PowerShell to get the status of the add node operation. Add node operations can take several hours to days to complete.
