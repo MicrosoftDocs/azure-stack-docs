@@ -127,4 +127,3 @@ landingContent:
             url: troubleshoot-overview.md
           - text: Connect to nodes with SSH
             url: ssh-connection.md
-
