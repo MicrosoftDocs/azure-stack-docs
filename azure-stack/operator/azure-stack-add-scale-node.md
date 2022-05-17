@@ -107,14 +107,13 @@ The following steps are a high-level overview of how to add a node. Don't follow
 
   ### Use PowerShell
   The status for scale unit and scale unit nodes can be retrieved using PowerShell as follows:
-    ```powershell
-    #Retrieve Status for the Scale Unit
-    Get-AzsScaleUnit|select name,state
-  
-    #Retrieve Status for each Scale Unit Node
-    Get-AzsScaleUnitNode |Select Name, ScaleUnitNodeStatus
-  ```
 
+```powershell
+#Retrieve Status for the Scale Unit
+Get-AzsScaleUnit|select name,state
+#Retrieve Status for each Scale Unit Node
+Get-AzsScaleUnitNode |Select Name, ScaleUnitNodeStatus
+```
 
 7. Verify whether the add node operation succeeded by checking the status, which should be "running". Refer to the Status for the node operation section that follows for more details. 
 
