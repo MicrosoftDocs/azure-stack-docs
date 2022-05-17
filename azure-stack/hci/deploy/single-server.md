@@ -69,7 +69,7 @@ That completes the process of adding a server.
 
 ## Updating single-node clusters
 
-To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. You'll have to get solution updates directly from your solution vendor.
+To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates please see your solution vendor.
 
 ## Next steps
 
