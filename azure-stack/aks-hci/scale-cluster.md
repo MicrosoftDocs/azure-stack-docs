@@ -26,7 +26,7 @@ Set-AksHciCluster -name mycluster -controlPlaneNodeCount 3
 Use the [Set-AksHciNodePool](./reference/ps/set-akshcinodepool.md) command to scale the node pool. The following example scales a node pool called *linuxnodepool* in a cluster named *mycluster* to a node count of 3. 
 
 ```powershell
-Set-AksHciNodePool -name mycluster -nodePoolName linuxnodepool -nodeCount 3
+Set-AksHciNodePool -clustername mycluster -name linuxnodepool -count 3
 ``` 
 
 ## Next steps
