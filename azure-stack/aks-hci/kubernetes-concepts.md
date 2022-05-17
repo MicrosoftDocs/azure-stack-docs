@@ -1,12 +1,12 @@
 ---
-title: Kubernetes cluster architecture for Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Kubernetes cluster architecture for Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to Azure Kubernetes Service on Azure Stack HCI and Windows Server features
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: daschott
 ms.topic: conceptual
-ms.date: 08/03/2021
+ms.date: 05/16/2022
 
 # Intent: As an IT Pro, I want to learn about the basic cluster and workload components of Kubernetes and how they relate to features in ASK in global Azure.
 # Keyword: Kubernetes cluster architecture
@@ -15,15 +15,15 @@ ms.date: 08/03/2021
 
 # Kubernetes cluster architecture and workloads for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI on Windows Server
 
-Azure Kubernetes Service (AKS) on Azure Stack HCI is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a **simple deployment and life cycle management experience**.
+Azure Kubernetes Service (AKS) on Azure Stack HCI on Windows Server is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a **simple deployment and life cycle management experience**.
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
 ## Kubernetes cluster architecture
 
-Kubernetes is the core component of the AKS on Azure Stack HCI and Windows Server. AKS on Azure Stack HCI and Windows Server uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
+Kubernetes is the core component of the AKS on Azure Stack HCI and Windows Server. AKS on Azure Stack HCI uses a set of predefined configurations to deploy Kubernetes cluster(s) effectively and with scalability in mind.
 
 The deployment operation will create multiple Linux or Windows virtual machines and join them together to create Kubernetes cluster(s).
 
@@ -48,7 +48,7 @@ You can manage AKS on Azure Stack HCI and Windows Server using the following man
 
 ## The management cluster
 
-When you create an Azure Kubernetes Service cluster on Azure Stack HCI, a management cluster is automatically created and configured. This management cluster is responsible for provisioning and managing workload clusters where workloads run. A management cluster includes the following core Kubernetes components:
+When you create an AKS cluster on Azure Stack HCI, a management cluster is automatically created and configured. This management cluster is responsible for provisioning and managing workload clusters where workloads run. A management cluster includes the following core Kubernetes components:
 
 - *API Server* - The API server is how the underlying Kubernetes APIs are exposed. This component provides the interaction for management tools, such as Windows Admin Center, PowerShell modules, or `kubectl`.
 - *Load Balancer* - The load balancer is a single dedicated Linux VM with a load-balancing rule for the API server of the management cluster.
@@ -68,11 +68,13 @@ The workload cluster has many components, which are described in the following s
 
 #### Load balancer
 
-The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, AKS on Azure Stack HCI and Windows Server will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load-balancing rule in the VM.
+The load balancer is a virtual machine running Linux and HAProxy + KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, AKS on Azure Stack HCI will add at least one load balancer virtual machine. Any Kubernetes service of type `LoadBalancer` that is created on the workload cluster will end up creating a load-balancing rule in the VM.
 
 #### Worker nodes
 
-To run your applications and supporting services, you need a Kubernetes node. An Azure Kubernetes Service workload cluster on Azure Stack HCI has one or more worker nodes, which are a virtual machines (VM) that run the Kubernetes node components, and host the pods and services that make up the application workload. There are core Kubernetes workload components that can be deployed on AKS on Azure Stack HCI and Windows Server workload clusters, such as pods and deployments.
+To run your applications and supporting services, you need a *Kubernetes node*. An AKS workload cluster has one or more *worker nodes*. Worker nodes act as virtual machines (VMs) that run the Kubernetes node components, and host the pods and services that make up the application workload. 
+
+There are core Kubernetes workload components that can be deployed on AKS on Azure Stack HCI and Windows Server workload clusters, such as pods and deployments.
 
 #### Pods
 
@@ -85,7 +87,7 @@ Kubernetes uses *pods* to run an instance of your application. A pod represents 
 
 The Deployment Controller uses the Kubernetes Scheduler to run a given number of replicas on any available node with available resources. This approach of using deployments may be sufficient for stateless applications, but not for applications that require a persistent naming convention or storage. For applications that require a replica to exist on each node (or selected nodes) within a cluster, the Deployment Controller doesn't look at how replicas are distributed across the nodes.
 
-- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. *Replicas* in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. Replicas in a StatefulSet are scheduled and run across any available node in an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
+- *StatefulSets* -  A StatefulSet is similar to a deployment in that one or more identical pods are created and managed. *Replicas* in a StatefulSet follow a graceful, sequential approach to deployment, scale, upgrades, and terminations. With a StatefulSet (as replicas are rescheduled) the naming convention, network names, and storage persist. Replicas in a StatefulSet are scheduled and run across any available node in an AKS on Azure Stack HCI cluster. If you need to ensure that at least one pod in your Set runs on a node, you can instead use a DaemonSet. For more information, see [Kubernetes StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/).
 
 - *DaemonSets* - For specific log collection or monitoring needs, you may need to run a given pod on all, or selected, nodes. A *DaemonSet* is again used to deploy one or more identical pods, but the DaemonSet Controller ensures that each node specified runs an instance of the pod. For more information, see [Kubernetes DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
@@ -117,7 +119,7 @@ If a given workload cluster consists of both Linux and Windows worker node
 For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
 ## Next steps
-In this article, you learned about the cluster architecture of AKS on Azure Stack HCI and Windows Server and the workload cluster components. To learn more about AKS on Azure Stack HCI and Windows Server concepts, see the following articles:
+In this article, you learned about the cluster architecture of AKS on Azure Stack HCI and Windows Server and the workload cluster components. To learn more about these concepts, see the following articles:
 
 - [Security](./concepts-security.md)
 - [Container networking](./concepts-container-networking.md)
