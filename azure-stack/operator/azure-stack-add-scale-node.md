@@ -142,8 +142,10 @@ The following steps are a high-level overview of how to add a node. Don't follow
   |Maintenance           |The node is paused, and no active user workload is running. |
   |Requires Remediation  |An error has been detected that requires the node to be repaired.|
 
+
 ## Troubleshooting
 The following are common issues seen when adding a node. 
+
 
 **Scenario 1:**  The add scale unit node operation fails but one or more nodes are listed with a status of Stopped.  
 - Remediation: Use the repair operation to repair one or more nodes. Only a single repair operation can run at one time.
