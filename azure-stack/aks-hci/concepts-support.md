@@ -3,14 +3,13 @@ title: Tested resource limits, VM sizes, and regions on Azure Stack HCI
 description: Tested resource limits, VM sizes, and regions in AKS on Azure Stack HCI
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/11/2022
+ms.date: 02/03/2022
 ms.author: mabrigg 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
 ms.custom: references_regions
-
-# Intent: As an IT Pro, I need to understand and also leverage how resource limits, VM sizes, and regions work together in AKS on Azure Stack HCI.
-# Keyword: vm sizes
+#intent: As an IT Pro, I need to understand and also leverage how resource limits, VM sizes, and regions work together in AKS on Azure Stack HCI.
+#keyword: Resource limits VM sizes
 
 ---
 
@@ -20,7 +19,6 @@ In this article, you can find information about tested resource limits, VM sizes
 ## Maximum specifications
 
 Azure Kubernetes Service on Azure Stack HCI deployments 's been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or submit a question in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
-
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -75,7 +73,6 @@ The following VM sizes for control plane nodes, Linux worker nodes, and Windows 
 
 ## Supported Azure regions for Azure registration
 Azure Kubernetes Service on Azure Stack HCI supports the following Azure regions:
-- Australia East
 - East US
 - Southeast Asia
 - West Europe
