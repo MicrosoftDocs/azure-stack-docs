@@ -102,15 +102,14 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Connect to Azure Arc for Kubernetes
-<<<<<<< HEAD
             url: connect-to-arc.md
           - text: Monitor AKS on Azure Stack HCI and Windows Server clusters
-=======
             url: connect-to-arc.md 
           - text: Use Kubernetes RBAC with Azure AD
             url: kubernetes-rbac-azure-ad.md
           - text: Monitor AKS on Azure Stack HCI clusters
->>>>>>> b8df477f0c2cddd132be6d297f29025c7b273bbd
+=======
+>>>>>>> 4ab9ba936e72079d76c7a880fde57ead370d3e4c
             url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
