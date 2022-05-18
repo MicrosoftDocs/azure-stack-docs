@@ -43,7 +43,7 @@ Use Windows Admin Center to join the server to your cluster.
 1. Verify the server has been successfully added to your cluster.
 
 >[!NOTE]
-> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster) to reconfigure Storage Spaces Direct.
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
 ## Remove a server from a cluster
 
