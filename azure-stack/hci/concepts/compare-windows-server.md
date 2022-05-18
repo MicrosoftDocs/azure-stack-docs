@@ -64,9 +64,9 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 
 ## Compare workloads and benefits
 
-The following table compares the workloads and benefits of Azure Stack HCI and Windows Server 2022.
+The following table compares the workloads and benefits of Azure Stack HCI and Windows Server.
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server 2022** |
+| **Attribute** | **Azure Stack HCI** | **Windows Server** |
 | ------------- | ------------------- | ----------------------- |
 | Azure Kubernetes Service (AKS)| Yes | Yes |
 | Azure Arc-Enabled Paas Services | Yes | Yes |
@@ -83,7 +83,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | **Attribute** | **Azure Stack HCI** | **Windows Server 2022** |
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
-| Storage Spaces Direct | Yes | Yes |                          
+| Storage Spaces Direct (SSD) | Yes | Yes |                          
 | Software-Defined Networking (SDN) | Yes | Yes |
 | Stretch clustering for disaster recovery with Solid State Storage Drives (SSD) | No | Yes |
 | Adjustable Repair Speed | Yes | Yes|
@@ -103,25 +103,34 @@ Additional technical features are available in the [Azure Stack HCI Preview Chan
 
 ## Compare management options
 
-The following table compares the management options for Azure Stack HCI and Windows Server 2019. Both products are designed for remote management and can be managed with many of the same tools.
+The following table compares the management options for Azure Stack HCI and Windows Server. Both products are designed for remote management and can be managed with many of the same tools.
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| **Attribute** | **Azure Stack HCI** | **Windows Server** |
 | ------------- | ------------------- | ----------------------- |
 | Desktop experience | - | Yes |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
-| Azure portal | Yes (natively) | Requires Arc agent |
 | Third-party tools | Yes | Yes |
+| Azure portal | Yes (natively) | Requires Arc agent |
+| Azure Backup and Azure Site Recovery support | Yes | Yes |
+| Cluster integrates with Azure Resource Manager | Yes | No |
+| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>2</sup> |
+| Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
+| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>2</sup> |
+| Azure Arc-enabled VM management (preview)| Yes | N |
+
+<sup>2</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+
 
 ## Compare product pricing
 
-The table below compares the product pricing for Azure Stack HCI and Windows Server 2019. For details, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
+The table below compares the product pricing for Azure Stack HCI and Windows Server. For details, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server 2019** |
+| **Attribute** | **Azure Stack HCI** | **Windows Server** |
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
-| Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2019](https://www.microsoft.com/windows-server/pricing) |
+| Price | $10 USD per core, per month | See [Pricing and licensing for Windows Server 2022](https://www.microsoft.com/windows-server/pricing) |
 | Evaluation/trial period | 60-day free trial once registered | 180-day evaluation copy |
 | Channels | Enterprise agreement, cloud service provider, or direct | Enterprise agreement/volume licensing, OEM, services provider license agreement (SPLA) |
 
