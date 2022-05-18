@@ -356,7 +356,7 @@ Because of tenant usage patterns, some tenant volumes use more space than others
 You can free up space on an overused volume by manually migrating some managed disks to a different volume. You can migrate several managed disks to a single volume that has capacity to hold them all. Use migration to move *offline* managed disks. Offline managed disks are disks that aren't attached to a VM.
 
 > [!IMPORTANT]
-> Migration of managed disks is an offline operation that requires the use of PowerShell. You must detach the candidate disks for migration from their owner VM before starting migration job (once the migration job is done, you can reattach them). Until migration completes, all managed disks you are migrating must remain offline and can't be used, otherwise the migration job would abort and all unmigrated disks are still on their original volumes. You should also avoid upgrading Azure Stack Hub until all ongoing migration completes.
+> Migration of managed disks is an offline operation that requires the use of PowerShell. You must deallocate the owner VMs of the candidate disk, or detach the candidate disks for migration from their owner VM before starting migration job (once the migration job is done, you can reallocate the VMs or reattach the disks). Until migration completes, all managed disks you are migrating must remain reserved or offline status and can't be used, otherwise the migration job would abort and all unmigrated disks are still on their original volumes. You should also avoid upgrading Azure Stack Hub until all ongoing migration completes.
 
 #### To migrate managed disks using PowerShell
 
@@ -371,7 +371,7 @@ You can free up space on an overused volume by manually migrating some managed d
    $VolumeName = $SourceVolume.Name.Split("/")[2]
    $VolumeName = $VolumeName.Substring($VolumeName.IndexOf(".")+1)
    $MigrationSource = "\\SU1FileServer."+$VolumeName+"\SU1_"+$SourceVolume.VolumeLabel
-   $Disks = Get-AzsDisk -Status All -SharePath $MigrationSource | Select-Object -First 10
+   $Disks = Get-AzsDisk -Status OfflineMigration -SharePath $MigrationSource | Select-Object -First 10
    ```
    Then examine $disks:
 
