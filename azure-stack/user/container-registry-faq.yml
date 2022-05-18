@@ -5,7 +5,7 @@ metadata:
   description: List of Azure Stack Hub FAQs for  Azure Container Registry.
   author: mattbriggs
   ms.topic: faq
-  ms.date: 10/26/2021
+  ms.date: 05/10/2022
   ms.author: mabrigg
   ms.reviewer: chasat
   ms.lastreviewed: 10/26/2021
@@ -84,6 +84,18 @@ sections:
               "password": "[listCredentials(resourceId('Microsoft.ContainerRegistry/registries', 'myRegistry'), '2017-10-01').passwords[1].value]"
           }
           ```
+                    
+      - question: |
+          How do I push a container image in Azure Container Registry to a disconnected Azure Stack Hub deployment running Kubernetes?
+        answer: |
+          You can perform a machine-to-machine image transfer over a local network from a machine that already has the required container image(s). To do this:
+          
+          1. First, retrieve the required container image(s) using a machine with Internet connectivity by using the docker CLI and docker pull command. See [Import container images to a container registry](/azure/container-registry/container-registry-import-images) for more information.
+          
+          2. After you have the required image(s) imported, transport the machine to the location of the disconnected Azure Hub instance.
+          
+          3. Use the [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) and [docker push](https://docs.docker.com/engine/reference/commandline/push/) commands to tag and push the image to the local Azure Container Registry on the Azure Stack Hub repository.
+       
           
           
   - name: Registry operations

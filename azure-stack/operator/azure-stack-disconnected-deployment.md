@@ -3,7 +3,7 @@ title: Azure disconnected deployment decisions for Azure Stack Hub integrated sy
 description: Learn about Azure disconnected deployment of Azure Stack Hub integrated systems and the planning decisions to consider.
 author: BryanLa
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/10/2022
 ms.author: bryanla
 ms.reviewer: wfayed
 ms.lastreviewed: 11/01/2019
@@ -47,6 +47,7 @@ Azure Stack Hub was designed to work best when connected to Azure, so it's impor
 Telemetry|Unavailable - Telemetry data for Azure Stack Hub and any third-party gallery packages that depend on telemetry data.|
 |Certificate Authority (CA)|**Public/external Certificate Authority (CA)**<br>Unavailable – Deployment will fail if certificates were issued from a public CA, as internet connectivity is required to access the Certificate Revocation List (CRL) and Online Certificate Status Protocol (OCSP) services in the context of HTTPS.<br><br>**Private/internal Certificate Authority (CA)**<br>No impact - In cases where the deployment uses certificates issued by a private CA, such as an internal CA within an organization, only internal network access to the CRL endpoint is required. Internet connectivity is not required, but **you should verify that your Azure Stack Hub infrastructure has the required network access to contact the CRL endpoint defined in the certificates CDP extension.**|
 |Key Vault|Impaired - A common use case for Key Vault is to have an app read secrets at runtime. For this use case, the app needs a service principal in the directory. In Azure AD, regular users (non-admins) are by default allowed to add service principals. In Azure AD (using AD FS), they're not. This impairment places a hurdle in the end-to-end experience because one must always go through a directory admin to add any app.
+|Containers|Impaired - Unable to import container images in disconnected mode from an Azure Container Registry in Azure public or another accessible registry. See FAQ entry at [Azure Container Registry on Azure Stack Hub](/azure-stack/user/container-registry-faq.md#how-do-i-push-a-container-in-azure-container-registry-to-a-disconnected-azure-stack-hub-deployment-running-kubernetes-) for information on how to import container images in Azure Container Registry to a disconnected Azure Stack Hub deployment running Kubernetes.
 
 ## Learn more
 - For information about use cases, purchasing, partners, and OEM hardware vendors, see the [Azure Stack Hub](https://azure.microsoft.com/overview/azure-stack/) product page.
