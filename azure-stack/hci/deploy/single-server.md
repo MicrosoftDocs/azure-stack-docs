@@ -5,8 +5,8 @@ author: robess
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
-ms.lastreviewed: 05/16/2022
-ms.date: 05/16/2022
+ms.lastreviewed: 05/18/2022
+ms.date: 05/18/2022
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -36,9 +36,11 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 1. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
 1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
 
-Now that you've completed the single server configuration, you're ready to deploy your workload(s).
+## Updating single-node clusters
 
-## Adding servers to a single-node cluster
+To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
+
+## Adding servers to a single-node cluster (optional)
 
 You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
 
@@ -66,10 +68,6 @@ Enable-ClusterS2D -Verbose
     1. Delete the old volume
 
 That completes the process of adding a server.
-
-## Updating single-node clusters
-
-To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
 
 ## Next steps
 

@@ -5,8 +5,8 @@ author: robess
 ms.author: robess
 ms.topic: overview
 ms.reviewer: kerimhanif
-ms.lastreviewed: 05/16/2022
-ms.date: 05/16/2022
+ms.lastreviewed: 05/18/2022
+ms.date: 05/18/2022
 ---
 
 # Using Azure Stack HCI on a single server
@@ -54,7 +54,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No <sup>2</sup> | Yes |
 |[Use Graphics Processing Units (GPUs) with clustered VMs](../manage/use-gpu-with-clustered-vm.md)  | Yes | Yes |
 
-<sup>1</sup> Limited support, AKS on Azure Stack HCI is "in-preview" as of June 2022.
+<sup>1</sup> Limited support, AKS on Azure Stack HCI is "in-preview".
 
 <sup>2</sup> Planned for future versions.
 
@@ -64,12 +64,12 @@ The following table describes currently known issues for single-node clusters. T
 
 |Issue | Notes|
 |-----------|---------------|
-|Cache drives don't auto rebind if failed. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. ***SBL cache is not supported at this time**. |
+|SBL cache is not supported in single-node clusters. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. |
 |Windows Admin Center doesn't support creating single-node clusters. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
 |Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster, allows affinity rules to be created, etc. Actions will fail without any harm. |
 |Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
-|Cluster Aware Updating (CAU) doesn't support single-node clusters. | Update using PowerShell, the Server Configuration tool (SConfig), or Windows Admin Center (through server manager). |
+|Cluster Aware Updating (CAU) doesn't support single-node clusters. | Update using PowerShell, the Server Configuration tool (SConfig), or Windows Admin Center (through server manager). [Learn more](../deploy/single-server.md#updating-single-node-clusters) |
 |Adding a node to scale out the single-node cluster doesn't automatically change the Storage Spaces Direct `FaultDomainAwarenessDefault`. |`FaultDomainAwarenessDefault` can be changed manually from PhysicalDisk to StorageScaleUnit. |
 
 ## Next steps
