@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/14/2022
+ms.date: 05/18/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -49,23 +49,23 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2112"
-## 2112 build reference
+::: moniker range="azs-2206"
+## 2206 build reference
 
-The Azure Stack Hub 2112 update build number is **1.2112.x.xx**.
+The Azure Stack Hub 2206 update build number is **1.2206.x.xx**.
 
 ### Update type
 
-The Azure Stack Hub 2112 update build type is **Full**.
+The Azure Stack Hub 2206 update build type is **Full**.
 
-The 2112 update has the following expected runtimes based on our internal testing:
+The 2206 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2112 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2206 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -79,7 +79,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrading to ASH 2112. 
+- SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrading to ASH 2206.
 
 ### Fixes
 
@@ -100,19 +100,19 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2112 update
+### Hotfix prerequisites: before applying the 2206 update
 
-The 2112 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
+The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
 
 - [Azure Stack Hub hotfix 1.2108.2.83](hotfix-1-2108-2-83.md)
 
-### After successfully applying the 2112 update
+### After successfully applying the 2206 update
 
 When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2112, if any hotfixes for 2112 are subsequently released, you should install them:
+After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix available for 2112.
+- No Azure Stack Hub hotfix available for 2206.
 ::: moniker-end
 
 ::: moniker range="azs-2108"
