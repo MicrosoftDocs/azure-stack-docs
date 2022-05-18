@@ -3,7 +3,7 @@ title: Use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Fi
 description: Learn how to use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/11/2022
+ms.date: 05/17/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
