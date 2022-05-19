@@ -1,5 +1,5 @@
 ---
-title: Configure proxy server settings in Azure Kubernetes Service on Azure Stack HCI
+title: Configure proxy server settings in Azure Kubernetes Service on Azure Stack HCI on Windows Server
 description: Learn about proxy server settings in Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 ms.date: 05/17/2022
