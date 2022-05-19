@@ -45,7 +45,7 @@ Use Windows Server for:
 
 ## Compare product positioning
 
-The following table shows the high-level product packaging for Azure Stack HCI and Windows Server 2022.
+The following table shows the high-level product packaging for Azure Stack HCI and Windows Server.
 
 | **Attribute**    | **Azure Stack HCI** | **Windows Server** |
 | ---------------- | ------------------- | ----------------------- |
