@@ -48,7 +48,7 @@ Use Windows Server for:
 
 The following table shows the high-level product packaging for Azure Stack HCI and Windows Server.
 
-| **Attribute**    | **Azure Stack HCI** | **Windows Server** |
+| Attribute    | Azure Stack HCI | Windows Server |
 | ---------------- | ------------------- | ----------------------- |
 | Product type     | Cloud service which includes an operating system and more | Operating system |
 | Legal            | Covered under your Microsoft Customer Agreement or Online Subscription Agreement | Has its own end-user license agreement |
@@ -67,7 +67,7 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 
 The following table compares the workloads and benefits of Azure Stack HCI and Windows Server.
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server** |
+| Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Azure Kubernetes Service (AKS)| Yes | Yes |
 | Azure Arc-Enabled Paas Services | Yes | Yes |
@@ -81,7 +81,7 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 
 The following table compares the technical features of Azure Stack HCI and Windows Server 2022.
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server 2022** |
+| Attribute | Azure Stack HCI | Windows Server 2022 |
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
 | Storage Spaces Direct (SSD) | Yes | Yes |                          
@@ -101,13 +101,13 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
 
-For more info, see [What's New in Azure Stack HCI, version 21H2](http://whats-new.md) and [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
+For more info, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
 ## Compare management options
 
 The following table compares the management options for Azure Stack HCI and Windows Server. Both products are designed for remote management and can be managed with many of the same tools.
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server** |
+| Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Desktop experience | - | Yes |
 | Windows Admin Center | Yes | Yes |
@@ -128,7 +128,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 
 The table below compares the product pricing for Azure Stack HCI and Windows Server. For details, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
-| **Attribute** | **Azure Stack HCI** | **Windows Server** |
+| Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Price type | Subscription service | Varies: most often a one-time license |
 | Price structure | Per core, per month | Varies: usually per core |
