@@ -20,6 +20,7 @@ This article explains the key differences between Azure Stack HCI and Windows Se
 Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. It's an easy way to modernize and secure your datacenters and branch offices and achieve industry-best performance with low latency and data sovereignty.
 
 :::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
+
 Use Azure Stack HCI for:
 
 - The best virtualization host to modernize your infrastructure, either for existing workloads in your core datacenter or emerging requirements for branch office and edge locations
@@ -74,7 +75,7 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
 | Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. | Yes | No <sup>1</sup>|
 
-<sup>1</sup> This requires purchasing an Extended Security Updates license key and manually applying it to every VM.
+<sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
 ## Compare technical features
 
@@ -117,7 +118,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>2</sup> |
 | Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
 | Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>2</sup> |
-| Azure Arc-enabled VM management (preview)| Yes | N |
+| Azure Arc-enabled VM management (preview)| Yes | No |
 
 <sup>2</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
