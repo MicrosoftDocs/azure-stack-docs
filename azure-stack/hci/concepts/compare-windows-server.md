@@ -56,7 +56,7 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
-| Sizing| Azure Stack HCI sizing tool |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
+| Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 | Lifecycle policy | Always up to date with the latest features | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
 
 > [!NOTE]
