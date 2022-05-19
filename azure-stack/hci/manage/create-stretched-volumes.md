@@ -5,7 +5,7 @@ author: v-jamemurray
 ms.author: v-jamemurray
 ms.reviewer: johnmar
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 05/16/2022
 ---
 
 # Create stretched cluster volumes and set up replication
