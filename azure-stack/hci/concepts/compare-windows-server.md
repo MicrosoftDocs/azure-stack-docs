@@ -99,7 +99,6 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
 
-Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md). See also <https://gearup.microsoft.com/download/bdb1fbb1-1d4a-4a4d-b1ec-d751a02ccf76
 
 ## Compare management options
 
