@@ -3,7 +3,7 @@ title: Use a persistent volume with  Azure Kubernetes Service on Azure Stack HCI
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: mattbriggs
 ms.topic: how-to
-ms.date: 05/18s/2022
+ms.date: 05/18/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -44,7 +44,7 @@ spec:
   requests:
    storage: 10Gi
 ```
-To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI or Windows Server cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
+To create the volume, run the following commands in an administrative PowerShell session on one of the servers in the Azure Stack HCI cluster (using a method such as [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession) or Remote Desktop to connect to the server): 
 
 ```
 kubectl create -f pvc-akshci-csi.yaml 
