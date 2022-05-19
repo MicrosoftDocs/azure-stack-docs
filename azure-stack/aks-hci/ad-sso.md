@@ -15,7 +15,7 @@ ms.reviewer: lahirisl
 
 # Use Active Directory single sign-on for a secure connection to Kubernetes API server in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI on Windows Server
 
 You can create a secure connection to Kubernetes API server using Active Directory (AD) single sign-on (SSO) credentials. 
 
@@ -72,7 +72,7 @@ Before you can install AD authentication, the workload cluster must be installed
 
 #### Option 1
 
-For a domain-joined Azure Stack HCI or Windows Server cluster, open PowerShell as an administrator and run the following command:
+For a domain-joined Azure Stack HCI on Windows Server cluster, open PowerShell as an administrator and run the following command:
 
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUser contoso\bob
@@ -132,11 +132,11 @@ Open PowerShell as an administrator and run the following command:
 
 ### Step 5: Copy kubeconfig and other files to the client machine
 
-You should copy the three files listed below from the Azure Stack HCI or Windows Server cluster to your client machine:
+You should copy the three files listed below from the Azure Stack HCI cluster to your client machine:
 
 - Copy the AD _kubeconfig_ file created in the previous step to $env:USERPROFILE\.kube\config.
 
-- Create the folder path `c:\adsso` and copy the following files from the Azure Stack HCI or Windows Server cluster to your client machine.
+- Create the folder path `c:\adsso` and copy the following files from the Azure Stack HCI cluster to your client machine.
   - Kubectl.exe under `$env:ProgramFiles\AksHci` to c:\adsso
   - Kubectl-adsso.exe under `$env:ProgramFiles\AksHci` to c:\adsso
 
