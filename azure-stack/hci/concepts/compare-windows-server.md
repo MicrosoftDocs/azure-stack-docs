@@ -91,7 +91,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Stronger, faster network organization | Yes | Yes |
 | High availability for GPU workload | Yes | No |
 | Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
-| Intent-driven cluster networking configuration| Yes | No |
+| Simplified host networking with Network ATC | Yes | No |
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
