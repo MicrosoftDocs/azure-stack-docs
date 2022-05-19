@@ -3,7 +3,7 @@ title: Compare Azure Stack HCI to Windows Server
 description: This topic helps you determine whether Azure Stack HCI or Windows Server is right for your organization.
 ms.topic: conceptual
 author: jasongerend
-ms.author: jasongerend
+ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 01/21/2021
@@ -46,7 +46,7 @@ Use Windows Server for:
 
 ## Compare product positioning
 
-The following table shows the high-level product packaging for Azure Stack HCI and Windows Server 2022.
+The following table shows the high-level product packaging for Azure Stack HCI and Windows Server.
 
 | **Attribute**    | **Azure Stack HCI** | **Windows Server** |
 | ---------------- | ------------------- | ----------------------- |
@@ -57,7 +57,7 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
-| Sizing| Azure Stack HCI sizing tool |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
+| Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 | Lifecycle policy | Always up to date with the latest features | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
 
 > [!NOTE]
@@ -92,15 +92,15 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Stronger, faster network organization | Yes | Yes |
 | High availability for GPU workload | Yes | No |
 | Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
-| Intent-driven cluster networking configuration| Yes | No |
-| Storage Spaces Direct (SDD) Thin Provisioning | Yes | No |
+| Simplified host networking with Network ATC | Yes | No |
+| Single-node clusters with Storage Spaces Direct | Yes | No |
+| Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
 | 4-5x faster Storage Spaces repairs | Yes | - |
-| Cluster-Aware OS Feature Update (HTGI)| Yes | - |
+| Cluster-Aware OS feature update | Yes | - |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
 | Guided deployment | Yes | - |
-
-Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md). See also <https://gearup.microsoft.com/download/bdb1fbb1-1d4a-4a4d-b1ec-d751a02ccf76
+For more info, see [What's New in Azure Stack HCI, version 21H2](whats-new.md) and [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
 ## Compare management options
 

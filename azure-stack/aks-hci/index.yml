@@ -102,7 +102,9 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Connect to Azure Arc for Kubernetes
-            url: connect-to-arc.md
+            url: connect-to-arc.md 
+          - text: Use Kubernetes RBAC with Azure AD
+            url: kubernetes-rbac-azure-ad.md
           - text: Monitor AKS on Azure Stack HCI clusters
             url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - text: Enforce threat protection using Azure Defender
