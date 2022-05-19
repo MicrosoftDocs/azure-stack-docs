@@ -20,7 +20,7 @@ You may find an issue when deploying or working with the AKS engine on Azure Sta
 
 ## Troubleshoot the AKS engine install
 
-If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. GoFish describes itself as a cross-platform Homebrew.
 
 You can find instructions for using GoFish to install the AKS engine at [Install the aks-engine command line tool](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-the-aks-engine-command-line-tool)
 
@@ -42,7 +42,7 @@ At a high level: the command works by establishing an SSH session into each node
 
 ### SSH authentication
 
-You will need a  valid SSH private key to establish an SSH session to the cluster Linux nodes. Windows credentials are stored in the API model and will be loaded from there. Set `windowsprofile.sshEnabled` to true to enable SSH in your Windows nodes.
+You'll need a  valid SSH private key to establish an SSH session to the cluster Linux nodes. Windows credentials are stored in the API model and will be loaded from there. Set `windowsprofile.sshEnabled` to true to enable SSH in your Windows nodes.
 
 ### Upload logs to a storage account container
 
@@ -53,12 +53,11 @@ Once the cluster logs were successfully retrieved, AKS Engine can save them on a
 
 ### Nodes unable to join the cluster
 
-By default, `aks-engine get-logs` collects logs from nodes that successfully joined the cluster. To collect logs from VMs that were not able to join the cluster, set flag `--vm-names`:
+By default, `aks-engine get-logs` collects logs from nodes that successfully joined the cluster. To collect logs from VMs that weren't able to join the cluster, set flag `--vm-names`:
 
 ```bash
 --vm-name k8s-pool-01,k8s-pool-02
 ```
-
 ### Usage for aks-engine get-logs
 
 Assuming that you have a cluster deployed and the API model originally used to deploy that cluster is stored at `_output/<dnsPrefix>/apimodel.json`, then you can collect logs running a command like:
@@ -78,7 +77,7 @@ aks-engine get-logs \
 | --location                   | Yes          | Azure location of the cluster's resource group.                                                                                                                |
 | --api-model                  | Yes          | Path to the generated API model for the cluster.                                                                                                               |
 | --ssh-host                   | Yes          | FQDN, or IP address, of an SSH listener that can reach all nodes in the cluster.                                                                               |
-| --linux-ssh-private-key | Yes           | Path to a SSH private key that can be use to create a remote session on the cluster Linux nodes. |
+| --linux-ssh-private-key | Yes           | Path to an SSH private key that can be used to create a remote session on the cluster Linux nodes. |
 | --output-directory           | No           | Output directory, derived from `--api-model` if missing.                                                                                                         |
 | --control-plane-only         | No           | Only collect logs from control plane nodes.                                                                                                                           |
 | --vm-names                   | No           | Only collect logs from the specified VMs (comma-separated names).                                                                                              |
@@ -87,11 +86,11 @@ aks-engine get-logs \
 
 ## Review custom script extension error codes
 
-The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
+The AKS engine produces a script for each Ubuntu Server as a resource for the custom script extension (CSE) to perform deployment tasks. If the script throws an error, it will log an error in `/var/log/azure/cluster-provision.log`. The errors are displayed in the portal. The error code may be helpful in figuring out the case of the problem. For more information about the CSE exit codes, see [`cse_helpers.sh`](https://github.com/Azure/aks-engine/blob/master/pkg/engine/cse.go).
 
 ## Providing Kubernetes logs to a Microsoft support engineer
 
-If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected.
+If after collecting and examining logs you still can't resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected.
 
 Your operator may combine the logs you produced along with other system logs that may be needed by Microsoft support. The operator may make them available to the Microsoft.
 
@@ -107,7 +106,7 @@ You can provide Kubernetes logs in several ways:
     -  Use the **Get-AzureStackLog** PowerShell cmdlet using the Privileged End Point (PEP) For instruction, see [Send logs now with PowerShell](/azure-stack/operator/diagnostic-log-collection#send-logs-now-with-powershell).
 ## Open GitHub issues
 
-If you are unable to resolve your deployment error, you can open a GitHub Issue.
+If you're unable to resolve your deployment error, you can open a GitHub Issue.
 
 1.  Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
 
