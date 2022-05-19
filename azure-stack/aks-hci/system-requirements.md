@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 05/03/2022
+ms.lastreviewed: 05/19/2022
 ms.reviewer: abha
-ms.date: 05/03/2022
+ms.date: 05/19/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -170,7 +170,7 @@ If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster V
 | 6443 | AKS VMs | Required to communicate with Kubernetes APIs. | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
 | 45000 | Physical Hyper-V Hosts | wssdAgent gRPC Server | No cross-VLAN rules are needed. |
 | 45001 | Physical Hyper-V Hosts | wssdAgent gRPC Authentication | No cross-VLAN rules are needed. |
-| 46000 | AKS VMs | ??? | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 46000 | AKS VMs | wssdCloudAgent to lbagent | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
 | 55000 | Cluster Resource | wssdCloudAgent gRPC Server | If using separate VLANs, the AKS VMs need to access the Cluster Resource's IP on this port. |
 | 65000 | Cluster Resource | wssdCloudAgent gRPC Authentication | If using separate VLANs, the AKS VMs need to access the Cluster Resource's IP on this port. |
 
