@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Wi
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 05/19/2022
+ms.lastreviewed: 05/20/2022
 ms.reviewer: abha
-ms.date: 05/19/2022
+ms.date: 05/20/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
