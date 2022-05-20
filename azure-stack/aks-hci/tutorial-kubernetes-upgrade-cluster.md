@@ -3,7 +3,7 @@ title: Tutorial - Upgrade a cluster in Azure Kubernetes Service on Azure Stack H
 description: In this tutorial, learn how to upgrade an existing cluster to the latest available Kubernetes version.
 services: container-service
 ms.topic: tutorial
-ms.date: 07/02/2021
+ms.date: 05/19/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
