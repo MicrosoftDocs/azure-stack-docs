@@ -40,7 +40,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |Storage Spaces Direct support | Yes | Yes |
 |Software Defined Networking support | Yes | Yes |
 |Native Azure Arc integration | Yes | Yes |
-|Managed through Windows Admin Center and Azure Portal | Yes | Yes |
+|Managed through Windows Admin Center and Azure portal | Yes | Yes |
 |Azure billing/registration | Yes | Yes |
 |Charged per physical core| Yes | Yes |
 |Support through Azure | Yes | Yes |
