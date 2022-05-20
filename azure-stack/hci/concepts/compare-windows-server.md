@@ -84,22 +84,21 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Attribute | Azure Stack HCI | Windows Server 2022 |
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
-| Storage Spaces Direct (SSD) | Yes | Yes |                          
-| Software-Defined Networking (SDN) | Yes | Yes |
-| Stretch clustering for disaster recovery with Solid State Storage Drives (SSD) | No | Yes |
+| Storage Spaces Direct | Yes | Yes |                          
+| Software-Defined Networking | Yes | Yes |
+| Stretch clustering for disaster recovery with Solid State Storage Drives| No | Yes |
 | Adjustable Repair Speed | Yes | Yes|
 | Secured-core Server| Yes | Yes |
-| Stronger, faster network organization | Yes | Yes |
+| Stronger, faster network encryption | Yes | Yes |
 | High availability for GPU workload | Yes | No |
 | Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
-| 4-5x faster Storage Spaces repairs | Yes | - |
-| Cluster-Aware OS feature update | Yes | - |
-| Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
-| Guided deployment | Yes | - |
+| 4-5x faster Storage Spaces repairs | Yes | No|
+| Cluster-Aware OS feature update | Yes | No |
+| Integrated driver and firmware updates | Yes (Integrated Systems only) | No 
 
 For more info, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
@@ -109,19 +108,19 @@ The following table compares the management options for Azure Stack HCI and Wind
 
 | Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
-| Desktop experience | - | Yes |
+| Desktop experience | No | Yes |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
 | Third-party tools | Yes | Yes |
-| Azure portal | Yes (natively) | Requires Arc agent |
+| Azure Portal | Yes (natively) | Requires Azure Arc agent |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Cluster integrates with Azure Resource Manager | Yes | No |
-| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>2</sup> |
+| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>1</sup> |
 | Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
-| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>2</sup> |
+| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>1</sup> |
 | Azure Arc-enabled VM management (preview)| Yes | No |
 
-<sup>2</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+<sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
 
 ## Compare product pricing
