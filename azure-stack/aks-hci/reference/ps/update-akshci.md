@@ -1,5 +1,5 @@
 ---
-title: Update-AksHci for AKS on Azure Stack HCI
+title: Update-AksHci for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Update-AksHci PowerShell command updates the AKS host to the latest Kubernetes version.
 ms.topic: reference

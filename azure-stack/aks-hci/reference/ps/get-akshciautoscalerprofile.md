@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciAutoScalerProfile for AKS on Azure Stack HCI
+title: Get-AksHciAutoScalerProfile for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciAutoScalerProfile PowerShell command retrieves a list of autoscaler configuration profiles or a specific autoscaler profile and its settings.
 ms.topic: reference

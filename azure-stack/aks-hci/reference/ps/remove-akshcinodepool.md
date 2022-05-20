@@ -1,5 +1,5 @@
 ---
-title: Remove-AksHciNodePool for AKS on Azure Stack HCI
+title: Remove-AksHciNodePool for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Remove-AksHciNodePool PowerShell command deletes a node pool from a cluster
 ms.topic: reference

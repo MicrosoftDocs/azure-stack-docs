@@ -1,6 +1,6 @@
 ---
-title: Upgrade the Kubernetes version of AKS workload clusters using PowerShell
-description: Learn how to upgrade the Kubernetes version of AKS workload clusters on Azure Stack HCI using PowerShell
+title: Upgrade the Kubernetes version of  Azure Kubernetes Service workload clusters using PowerShell
+description: Learn how to upgrade the Kubernetes version of  Azure Kubernetes Service workload clusters on Azure Stack HCI using PowerShell
 ms.topic: article
 ms.date: 04/15/2022
 author: mattbriggs
@@ -11,9 +11,9 @@ ms.reviewer: jeguan
 # Keyword: Upgrade the Kubernetes version 
 ---
 
-# Upgrade the Kubernetes version of AKS clusters on Azure Stack HCI using PowerShell
+# Upgrade the Kubernetes version of Azure Kubernetes Service clusters on Azure Stack HCI using PowerShell
 
-There are two types of updates available for an AKS workload cluster on Azure Stack HCI: 
+There are two types of updates available for an Azure Kubernetes Service (AKS) workload cluster on Azure Stack HCI: 
 - Updating the Kubernetes version of an AKS cluster
 - Updating the operating system version of an AKS cluster without updating the Kubernetes version 
 
@@ -23,7 +23,7 @@ There are two types of updates available for an AKS workload cluster on Azure St
 We recommend updating an AKS workload cluster on Azure Stack HCI at least once every 60 days. New  Kubernetes version updates are available every 30 days. All updates are done in a rolling update flow to avoid outages in workload availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When the resources are successfully moved, the _old_ node is decommissioned and removed from the cluster.
 
 > [!Important]
-> Updating the AKS on Azure Stack HCI host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information on updating the AKS host, see [update the AKS host on Azure Stack HCI](./update-akshci-host-powershell.md). 
+> Updating the AKS on Azure Stack HCI and Windows Server host is the first step in any update flow and must be initiated before running [`Update-AksHciCluster`](./reference/ps/update-akshcicluster.md). For information on updating the AKS host, see [update the AKS host on Azure Stack HCI](./update-akshci-host-powershell.md). 
 
 ## Get available Kubernetes versions
 Use the `Get-AksHciKubernetesVersion` command to check for supported Kubernetes versions.

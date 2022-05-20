@@ -1,5 +1,5 @@
 ---
-title: Install-AksHciGmsaWebhook for AKS on Azure Stack HCI
+title: Install-AksHciGmsaWebhook for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Install-AksHciGmsaWebhook PowerShell command installs gMSA webhook addon to the cluster.
 ms.topic: reference
