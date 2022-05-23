@@ -1,9 +1,9 @@
 ---
-title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI
-description: In this Azure Kubernetes Service on Azure Stack HCI tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
+title: Deploy apps in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: In this Azure Kubernetes Service on Azure Stack HCI and Windows Server tutorial, learn how to deploy a multi-container application to a cluster using a custom image stored in Azure Container Registry.
 services: container-service
 ms.topic: tutorial
-ms.date: 04/22/2022
+ms.date: 05/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,7 +14,7 @@ author: mattbriggs
 
 ---
 
-# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI on Windows Server
 
 You can build and deploy your own apps and services into a Kubernetes cluster. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
 
@@ -33,7 +33,7 @@ This quickstart assumes a basic understanding of Kubernetes concepts.
 
 Previous tutorials described how to package an application into a container image, and then upload the image to the Azure Container Registry and create a Kubernetes cluster.
 
-To complete this tutorial, you need the pre-created `azure-vote-all-in-one-redis.yaml` Kubernetes manifest file. This file was downloaded with the application source code in a previous tutorial. Verify that you've cloned the repo, and that you have changed directories into the cloned repo. If you haven't done these steps, start with [Tutorial 1 - Create container images][aks-tutorial-prepare-application.md].
+To complete this tutorial, you will need the pre-created `azure-vote-all-in-one-redis.yaml` Kubernetes manifest file. This file was downloaded with the application source code in a previous tutorial. Verify that you've cloned the repo, and that you have changed directories into the cloned repo. If you haven't done these steps, start with [Tutorial 1 - Create container images][aks-tutorial-prepare-application.md].
 
 This tutorial requires Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install it or upgrade, see [Install Azure CLI][azure-cli-install].
 
@@ -79,7 +79,7 @@ To deploy your application, use the [kubectl apply][kubectl-apply] command. This
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-The following example output shows the resources successfully created in the AKS on Azure Stack HCI cluster:
+The following example output shows the resources successfully created in the AKS on Azure Stack HCI and Windows Server cluster:
 
 ```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -120,7 +120,7 @@ If the application didn't load, it might be due to an authorization problem with
 
 ## Next steps
 
-In this tutorial, you deployed a sample Azure vote application to a Kubernetes cluster in AKS on Azure Stack HCI. You learned how to:
+In this tutorial, you deployed a sample Azure vote application to a Kubernetes cluster in AKS on Azure Stack HCI and Windows Server. You learned how to:
 
 > [!div class="checklist"]
 > * Update a Kubernetes manifest files

@@ -1,9 +1,9 @@
 ---
-title: Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI
-description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS on Azure Stack HCI)
+title: Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Understand the Kubernetes version support policy and lifecycle of clusters in Azure Kubernetes Service (AKS on Azure Stack HCI and Windows Server)
 services: container-service
 ms.topic: article
-ms.date: 04/01/2022
+ms.date: 05/18/2022
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
@@ -14,7 +14,7 @@ ms.reviewer: mikek
 
 ---
 
-# Supported Kubernetes versions in Azure Kubernetes Service (AKS on Azure Stack HCI)
+# Supported Kubernetes versions in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 You can find the supported Kubernetes versions in AKS on Azure Stack HCI in this topic. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19. 
 
@@ -42,20 +42,20 @@ You should aim to run the latest patch release of the minor version you're runni
 
 ## Kubernetes version support policy
 
-AKS on Azure Stack HCI defines a generally available (GA) version as a version that's available for download when deploying or updating AKS on Azure Stack HCI. AKS on Azure Stack HCI supports three GA minor versions of Kubernetes:
+AKS on Azure Stack HCI and Windows Server defines a generally available (GA) version as a version that's available for download when deploying or updating AKS on Azure Stack HCI and Windows Server. AKS on Azure Stack HCI and Windows Server supports three GA minor versions of Kubernetes:
 
-* The latest GA minor version that is released in AKS on Azure Stack HCI (which we'll refer to as N).
+* The latest GA minor version that is released in AKS on Azure Stack HCI and Windows Server (which we'll refer to as N).
 * Two previous minor versions.
     * Each supported minor version also supports a maximum of two (2) stable patches.
 
-AKS on Azure Stack HCI may also support preview versions, which are explicitly labeled as such.
+AKS on Azure Stack HCI and Windows Server may also support preview versions, which are explicitly labeled as such.
 
 > [!NOTE]
-> AKS on Azure Stack HCI uses safe deployment practices which involve gradual region deployment. This means it may take up to 10 business days for a new release or a new version to be available in all regions.
+> AKS on Azure Stack HCI and Windows Server uses safe deployment practices which involve gradual region deployment. This means it may take up to 10 business days for a new release or a new version to be available in all regions.
 
-The supported window of Kubernetes versions on AKS on Azure Stack HCI is known as "N-2": (N (Latest release) - 2 (minor versions)).
+The supported window of Kubernetes versions on AKS on Azure Stack HCI and Windows Server is known as "N-2": (N (Latest release) - 2 (minor versions)).
 
-For example, if AKS on Azure Stack HCI introduces *1.17.a* today, support is provided for the following versions:
+For example, if AKS on Azure Stack HCI and Windows Server introduces *1.17.a* today, support is provided for the following versions:
 
 New minor version    |    Supported Version List
 -----------------    |    ----------------------
@@ -74,12 +74,12 @@ When a new minor version is introduced, the oldest minor version and patch relea
 1.15.f
 ```
 
-AKS on Azure Stack HCI releases 1.18.\*, removing all the 1.15.\* versions out of support in 30 days.
+AKS on Azure Stack HCI and Windows Server releases 1.18.\*, removing all the 1.15.\* versions out of support in 30 days.
 
 > [!NOTE]
-> If customers are running an unsupported Kubernetes version, they will be asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS on Azure Stack HCI support policies](./support-policies.md).
+> If customers are running an unsupported Kubernetes version, they will be asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS on Azure Stack HCI and Windows Server support policies](./support-policies.md).
 
-In addition to the above, AKS on Azure Stack HCI supports a maximum of two **patch** releases of a given minor version. So given the following supported versions:
+In addition to the above, AKS on Azure Stack HCI and Windows Server supports a maximum of two **patch** releases of a given minor version. So given the following supported versions:
 
 ```
 Current Supported Version List
@@ -87,7 +87,7 @@ Current Supported Version List
 1.17.8, 1.17.7, 1.16.10, 1.16.9
 ```
 
-If AKS on Azure Stack HCI releases `1.17.9` and `1.16.11`, the oldest patch versions are deprecated and removed, and the supported version list becomes:
+If AKS on Azure Stack HCI and Windows Server releases `1.17.9` and `1.16.11`, the oldest patch versions are deprecated and removed, and the supported version list becomes:
 
 ```
 New Supported Version List
@@ -101,33 +101,33 @@ You can use one minor version older or newer of `kubectl` relative to your *kube
 
 For example, if your *kube-apiserver* is at *1.17*, then you can use versions *1.16* to *1.18* of `kubectl` with that *kube-apiserver*.
 
-To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI install-cli`.
+To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI and Windows Server install-cli`.
 
 ## Release and deprecation process
 
-You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI Kubernetes Release Calendar](#aks-on-azure-stack-hci-kubernetes-release-calendar).
+You can reference upcoming version releases and deprecations on the [AKS on Azure Stack HCI and Windows Server Kubernetes Release Calendar](#aks-on-azure-stack-hci-and-windows-server-kubernetes-release-calendar).
 
 For new **minor** versions of Kubernetes:
-  * AKS on Azure Stack HCI publishes a pre-announcement with the planned date of a new version release and respective old version deprecation in the [AKS on Azure Stack HCI Release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
+  * AKS on Azure Stack HCI and Windows Server publishes a pre-announcement with the planned date of a new version release and respective old version deprecation in the [AKS on Azure Stack HCI and Windows Server Release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
     
   * Users have **30 days** from version removal to upgrade to a supported minor version release to continue receiving support.
 
 For new **patch** versions of Kubernetes:
   * Because of the urgent nature of patch versions, they can be introduced into the service as they become available.
-  * In general, AKS on Azure Stack HCI doesn't broadly communicate the release of new patch versions. However, AKS on Azure Stack HCI constantly monitors and validates available CVE patches to support them in AKS on Azure Stack HCI in a timely manner. If a critical patch is found or user action is required, AKS on Azure Stack HCI will notify users to upgrade to the newly available patch.
-  * Users have **30 days** from a patch release's removal from AKS on Azure Stack HCI to upgrade into a supported patch and continue receiving support.
+  * In general, AKS on Azure Stack HCI and Windows Server doesn't broadly communicate the release of new patch versions. However, AKS on Azure Stack HCI and Windows Server constantly monitors and validates available CVE patches to support them in AKS on Azure Stack HCI and Windows Server in a timely manner. If a critical patch is found or user action is required, AKS on Azure Stack HCI and Windows Server will notify users to upgrade to the newly available patch.
+  * Users have **30 days** from a patch release's removal from AKS on Azure Stack HCI and Windows Server to upgrade into a supported patch and continue receiving support.
 
 ### Supported versions policy exceptions
 
-AKS on Azure Stack HCI reserves the right to add or remove new/existing versions with one or more critical production-impacting bugs or security issues without advance notice.
+AKS on Azure Stack HCI and Windows Server reserves the right to add or remove new/existing versions with one or more critical production-impacting bugs or security issues without advance notice.
 
 Specific patch releases may be skipped or rollout accelerated, depending on the severity of the bug or security issue.
 
-## AKS on Azure Stack HCI Kubernetes Release Calendar
+## AKS on Azure Stack HCI and Windows Server Kubernetes Release Calendar
 
 For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
-|  K8s version | Upstream release  | AKS on Azure Stack HCI preview  | AKS on Azure Stack HCI GA  | End of life |
+|  K8s version | Upstream release  | AKS on Azure Stack HCI and Windows Server preview  | AKS on Azure Stack HCI and Windows Server GA  | End of life |
 |--------------|-------------------|--------------|---------|-------------|
 | 1.19 _(see note)_  | Aug-04-20  | Sep 2020   | Nov 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | Mar 2021  | 1.23 GA |
@@ -136,22 +136,22 @@ For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kub
 | 1.23  | Dec 2021 | Jan 2022   | Feb 2022  | 1.26 GA |
 
 > [!NOTE]
-> To ease the burden of upgrading Kubernetes versions during the period of time between 12-01-2021 and 01-31-2022, AKS on Azure Stack HCI is extending a limited scope of support for all clusters and node pools on version 1.19 as a courtesy. Customers with clusters and node pools using 1.19 after the [announced deprecation date of 2021-11-30](/azure-stack/aks-hci/supported-kubernetes-versions#aks-on-azure-stack-hci-kubernetes-release-calendar) will be granted an extension of capabilities outside the [usual scope of support for deprecated versions](/azure-stack/aks-hci/supported-kubernetes-versions#kubernetes-version-support-policy).
+> To ease the burden of upgrading Kubernetes versions during the period of time between 12-01-2021 and 01-31-2022, AKS on Azure Stack HCI and Windows Server is extending a limited scope of support for all clusters and node pools on version 1.19 as a courtesy. Customers with clusters and node pools using 1.19 after the [announced deprecation date of 2021-11-30](/azure-stack/aks-hci/supported-kubernetes-versions#aks-on-azure-stack-hci-and-windows-server-kubernetes-release-calendar) will be granted an extension of capabilities outside the [usual scope of support for deprecated versions](/azure-stack/aks-hci/supported-kubernetes-versions#kubernetes-version-support-policy).
  The scope of this limited extension is effective from '2021-12-01 to 2022-01-31' and is limited to the following:
-> * Creating new clusters and node pools on 1.19 using the November 2021 or December 2021 AKS on Azure Stack HCI release.
+> * Creating new clusters and node pools on 1.19 using the November 2021 or December 2021 AKS on Azure Stack HCI and Windows Server release.
 > * CRUD operations on existing 1.19-based clusters.
 > * Support of non-Kubernetes related platform issues. Platform issues include trouble with networking, storage, or compute running on Azure Stack HCI. Any support requests for Kubernetes patching and troubleshooting will result in a request to upgrade to a supported Kubernetes version.
-> * Understand that upgrading to the January 2022 or later AKS on Azure Stack HCI release will require updating the 1.19-based Kubernetes workloads clusters to the latest patch version of Kubernetes 1.20 as Kubernetes 1.19 will not be available in the AKS on Azure Stack HCI January 2022 release.
+> * Understand that upgrading to the January 2022 or later AKS on Azure Stack HCI and Windows Server release will require updating the 1.19-based Kubernetes workloads clusters to the latest patch version of Kubernetes 1.20 as Kubernetes 1.19 will not be available in the AKS on Azure Stack HCI and Windows Server January 2022 release.
 
 ## FAQ
 
 **How does Microsoft notify me of new Kubernetes versions?**
 
-The AKS on Azure Stack HCI team publishes pre-announcements with planned dates of new Kubernetes versions in our documentation on [GitHub](https://github.com/Azure/aks-hci/releases).
+The AKS on Azure Stack HCI and Windows Server team publishes pre-announcements with planned dates of new Kubernetes versions in our documentation on [GitHub](https://github.com/Azure/aks-hci/releases).
 
 **How often should I expect to upgrade Kubernetes versions to stay in support?**
 
-Starting with Kubernetes 1.19, the [open source community has expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS on Azure Stack HCI commits to enabling patches and support matching the upstream commitments. For AKS on Azure Stack HCI clusters on 1.19 and greater, you'll be able to upgrade a minimum of once a year to stay on a supported version. 
+Starting with Kubernetes 1.19, the [open source community has expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS on Azure Stack HCI and Windows Server commits to enabling patches and support matching the upstream commitments. For AKS on Azure Stack HCI and Windows Server clusters on 1.19 and greater, you'll be able to upgrade a minimum of once a year to stay on a supported version. 
 
 For versions on 1.18 or below, the window of support remains at 9 months, requiring an upgrade once every 9 months to stay on a supported version. Regularly test new versions and be prepared to upgrade to newer versions to capture the latest stable enhancements within Kubernetes.
 
@@ -159,7 +159,7 @@ For versions on 1.18 or below, the window of support remains at 9 months, requir
 
 If you're on the *n-3* version or older, it means you're outside of support and will be asked to upgrade. When your upgrade from version n-3 to n-2 succeeds, you're back within our support policies. For example:
 
-- If the oldest supported AKS on Azure Stack HCI version is *1.15.a* and you are on *1.14.b* or older, you're outside of support.
+- If the oldest supported AKS on Azure Stack HCI and Windows Server version is *1.15.a* and you are on *1.14.b* or older, you're outside of support.
 - When you successfully upgrade from *1.14.b* to *1.15.a* or higher, you're back within our support policies.
 
 Downgrades are not supported.
@@ -170,15 +170,15 @@ Downgrades are not supported.
 * The version you're running is outside of the supported versions list.
 * You'll be asked to upgrade the cluster to a supported version when requesting support, unless you're within the 30-day grace period after version deprecation. 
 
-Additionally, AKS on Azure Stack HCI doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list.
+Additionally, AKS on Azure Stack HCI and Windows Server doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list.
 
 **What happens when a user scales a Kubernetes cluster with a minor version that isn't supported?**
 
-For minor versions not supported by AKS on Azure Stack HCI, scaling in or out should continue to work. Since there are no Quality of Service guarantees, we recommend upgrading to bring your cluster back into support.
+For minor versions not supported by AKS on Azure Stack HCI and Windows Server, scaling in or out should continue to work. Since there are no Quality of Service guarantees, we recommend upgrading to bring your cluster back into support.
 
-**Can I skip multiple AKS on Azure Stack HCI versions during a cluster upgrade?**
+**Can I skip multiple AKS on Azure Stack HCI and Windows Server versions during a cluster upgrade?**
 
-When you upgrade a supported AKS on Azure Stack HCI cluster, Kubernetes minor versions cannot be skipped. For example, upgrades between:
+When you upgrade a supported AKS on Azure Stack HCI and Windows Server cluster, Kubernetes minor versions cannot be skipped. For example, upgrades between:
   * *1.12.x* -> *1.13.x*: allowed.
   * *1.13.x* -> *1.14.x*: allowed.
   * *1.12.x* -> *1.14.x*: not allowed.
