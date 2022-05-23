@@ -6,7 +6,7 @@ author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: abha
-ms.date: 03/16/2022
+ms.date: 05/13/2022
 
 # Intent: As an IT Pro, I want to use AKS on Azure Stack HCI and Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.
 # Keyword: on-premises Kubernetes
@@ -14,11 +14,11 @@ ms.date: 03/16/2022
 ---
 # What is on-premises Kubernetes with Azure Kubernetes Service on Azure Stack HCI and Windows Server?
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI and Windows Server
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI is an on-premises Kubernetes implementation of AKS. AKS on Azure Stack HCI and Windows Server automates running containerized applications at scale. AKS makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
-To get started with on-premises Kubernetes using AKS, on Windows Server 2019/2022 or Azure Stack HCI, [set upAKS on Azure Stack HCI and Windows Server](setup.md). 
+To get started with on-premises Kubernetes using AKS, [set upAKS on Azure Stack HCI and Windows Server](setup.md).
 
 Or, you can use AKS to orchestrate your cloud-based containers. See [Azure Kubernetes Service in Azure](/azure/aks/intro-kubernetes).  If you're using Azure Stack Hub, see [AKS engine on Azure Stack Hub](../user/azure-stack-kubernetes-aks-engine-overview.md).
 

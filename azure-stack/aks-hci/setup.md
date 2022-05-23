@@ -3,21 +3,21 @@ title: Quickstart to set up Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center
 author: mattbriggs
 ms.topic: quickstart
-ms.date: 03/16/2022
+ms.date: 05/13/2022
 ms.author: mabrigg 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
 ms.custom: mode-portal
 
-# Intent: As an IT pro, I want to set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center.
+# Intent: As an IT pro, I want to learn how to use Windows Admin Center in order to set up Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 # Keyword: Windows Admin Center Kubernetes
 ---
 
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI on Windows Server
 
-In this quickstart, you set up Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server using Windows Admin Center. To instead use PowerShell, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
+In this quickstart, you set up Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
 
 Set up involves the following tasks:
 
@@ -32,20 +32,18 @@ The AKS on Azure Stack HCI and Windows Server extension for Windows Admin Center
 
 ![Checks that you have the latest version of Windows Admin Center](.\media\setup\check-wac-version.png)
 
-## Set up an Azure Kubernetes Service host
+## Set up an Azure Kubernetes Service (AKS) host
 
-You need to set up an Azure Kubernetes Service host on your Azure Stack HCI or Windows Server cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
+You need to set up an AKS host on your Azure Stack HCI on Windows Server cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
 
 [![Picture of an architecture diagram that highlights the platform services portion.](.\media\setup\aks-hci-architecture-focused.png)](.\media\setup\aks-hci-architecture-focused.png)
-
-This system can be a Windows Server 2019/2022 Datacenter cluster, a single node Windows Server 2019/2022 Datacenter, or an Azure Stack HCI or Windows Server cluster.
 
 > [!NOTE]
 > Setting up Azure Kubernetes Service hosts on two independent systems with the intention of merging them during Kubernetes cluster creation is not a supported scenario.
 
 This set up can be done using the new Azure Kubernetes Service tool. This tool will install and download the necessary packages, as well as create an AKS host cluster that provides core Kubernetes services and orchestrates application workloads.
 
-Now that you've verified the system settings, let's get started:
+Now that you've verified the system settings, follow these steps:
 
 1. Select **Set up** to launch the Setup wizard.
 
@@ -60,7 +58,10 @@ Now that you've verified the system settings, let's get started:
 
 5. Configure the machine that will host Azure Kubernetes Service in the **Host configuration** step. We recommend you select **automatically download updates** in this section. This step of the wizard asks you to configure the following details:
    * **Host details**, such as a name for the AKS host cluster and an image directory where VM images will be stored. The image directory must point to a shared storage path or an SMB share that is accessible by the host machine.
-   * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management. You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. You can use Cloudagent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few extra fields that must be specified:
+   * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management.
+   
+       You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet connected virtual switch, virtual LAN identification enablement, IP address allocation method, and Cloudagent IP. 
+       You can use Cloudagent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few extra fields that must be specified:
       * **Subnet prefix**, an IP address range that does not conflict with other addresses
       * **Gateway**, the gateway through which packets will be routed outside the machine
       * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses. 
@@ -84,7 +85,7 @@ Now that you've verified the system settings, let's get started:
 
 6. On the **Azure Registration** page of the wizard, provide details about the subscription, resource group, and region you wish to use for this service. Your resource group will need to be in the Australia East, East US, Southeast Asia, or West Europe region.  
 
-    Windows Admin Center requires permissions to access resources in your organization that only an admin can grant. Click **View in Azure**  to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent for the following:
+    Windows Admin Center requires permissions to access resources in your organization that only an admin can grant. Select **View in Azure**  to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent for the following:
 
    * Azure Service Management - user_impersonation
    * Microsoft Graph - Application.ReadWrite.All
@@ -97,17 +98,17 @@ Now that you've verified the system settings, let's get started:
    If you haven't been granted permissions, you may need the Azure subscription owner to manually grant admin consent.  
 
    To add permissions:
-   1. Click **Add a permission** in the top left corner.
+   1. Select **Add a permission** in the top left corner.
    1. Select **Microsoft Graph**, and then select **Delegated permissions**.
    1. Search for **Application.ReadWrite.All**, and if necessary, expand the **Application** dropdown box.
    1. Search for **Directory.AccessAsUser.All**, and if necessary, expand the **Directory** dropdown box.
-   1. Select the checkbox and then click **Add permissions**.
+   1. Select the checkbox and then select **Add permissions**.
 
    You can also remove permissions that aren't required for AKS on Azure Stack HCI and Windows Server.  To remove permissions before granting admin consent:
    1. Select the **...** to the right of the permission that shouldn't be granted.
    1. Select **Remove permission**.
 
-   Once permissions are correct, click **Grant admin consent for <_user_>**, and to confirm the permissions, click **Yes**.  Permissions can be revoked at any time as needed.
+   Once permissions are correct, select **Grant admin consent for <_user_>** and then select **Yes** to confirm them. You can revoke permissions at any time as needed.
 
    When you're done, your permissions may look something like this:  
    ![Illustrates the current status for the Windows Admin Center gateway](.\media\setup\wac-api-permissions.png)

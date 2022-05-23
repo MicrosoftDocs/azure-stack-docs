@@ -3,18 +3,22 @@ title: Support policies for Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn about Azure Kubernetes Service on Azure Stack HCI and Windows Server support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 03/30/2022
+ms.date: 05/11/2022
 author: mattbriggs
 ms.author: mabrigg
 ms.lastreviewed: 03/30/2022
 ms.reviewer: mikek
 
-#Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI and Windows Server components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
+# Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
+# Intent: As an IT Pro, I want to understand the support policies associated with my AKS deployment, including security patches, networking, and preview features.
+# Keyword: support policies AKS technical support control plane service updates
 ---
 
 # Support policies for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-This article provides details about technical support policies and limitations for Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. The article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
+This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI and Windows Server). 
+
+This article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
 
 ## Service updates and releases
 
@@ -22,22 +26,23 @@ This article provides details about technical support policies and limitations f
 * For information on features in preview, see [AKS on Azure Stack HCI and Windows Server preview features](https://github.com/Azure/aks-hci/tree/main/preview).
 
 ## Supported version policy
-
 AKS on Azure Stack HCI and Windows Server versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
 
 AKS on Azure Stack HCI and Windows Server maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
 
 Kubernetes versions in AKS on Azure Stack HCI and Windows Server follow the [Kubernetes version policy](https://kubernetes.io/releases/version-skew-policy/). For details on the supported Kubernetes Versions see [Supported Kubernetes Versions](./supported-kubernetes-versions.md).
 
-To keep your AKS on Azure Stack HCI and Windows Server environment in a supported state, it's recommended to always stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
+To keep your AKS on Azure Stack HCI and Windows Server environment in a supported state, we recommended that you  stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
 
-After 120 days Microsoft can't guarantee that older versions of AKS on Azure Stack HCI and Windows Server are still available on the release servers for download and scale operations, upgrades, reinstallations and other operation in the cluster will start to fail requiring a redeployment of the AKS on Azure Stack HCI and Windows Server environment with the latest version.
+After 120 days, Microsoft can't guarantee that older versions of AKS on Azure Stack HCI and Windows Server are still available on the release servers for download. Scale operations, upgrades, reinstallations and other operations in the cluster will start to fail, requiring that you redeploy your AKS on Azure Stack HCI and Windows Server environment with the latest version.
 
 If your cluster falls behind more than 60 days (2 versions), you'll have to upgrade in multiple steps to get current again.
 
 ## Managed features in AKS on Azure Stack HCI and Windows Server
 
-Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options. By contrast, AKS on Azure Stack HCI and Windows Server provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI and Windows Server user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
+As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access .to low-level controls and customization options. 
+
+By contrast, AKS on Azure Stack HCI and Windows Server provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI and Windows Server user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
 
 With AKS on Azure Stack HCI and Windows Server, you get a partially managed *control plane*. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
 
@@ -158,7 +163,7 @@ You may only customize the network settings using AKS on Azure Stack HCI and Win
 
 ## Stopped or disconnected clusters
 
-As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC renders the cluster out of support.
+As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC will render the cluster out of support.
 
 Clusters that are stopped for more than 90 days will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
 

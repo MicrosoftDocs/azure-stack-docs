@@ -3,13 +3,13 @@ title: Monitor and logging data on Azure Kubernetes Service on Azure Stack HCI a
 description: Learn how to create and access monitor and logging data for Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/01/2022
+ms.date: 05/19/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to monitor and view logging data for AKS.
-# Keyword: monitor and logging data
+# Keyword: monitor and logging data, Prometheus
 
 ---
 

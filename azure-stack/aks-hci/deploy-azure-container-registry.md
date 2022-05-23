@@ -3,7 +3,7 @@ title: Deploy from a private container registry to on-premises Kubernetes using 
 description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 03/16/2022
+ms.date: 05/13/2022
 ms.author: mabrigg 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
@@ -16,12 +16,14 @@ ms.custom: contperf-fy22q3
 
 # Deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-In this guide, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR). You'll deploy to your on-premises Kubernetes cluster hosted by Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. The guide walks you through creating a private container registry in Azure and then pushing your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI and Windows Server.
+In this article, you'll learn how to deploy container images from a private container registry using Azure Container Registry (ACR), which you can run in your own datacenter. You'll deploy to your on-premises Kubernetes cluster hosted by Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments. 
 
-This guide looks at using ACR on Azure Stack HCI, which you can run in your own datacenter. If you're interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
+The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS on Azure Stack HCI and Windows Server.
+
+If you're interested in learning more about ACR in Azure, see [Azure Container Registry documentation](/azure/container-registry/).
 ## Prerequisites
 
-Verify that you've the following:
+Verify that you have the following requirements:
 - A basic understanding of [Kubernetes concepts](kubernetes-concepts.md). 
 - An AKS on Azure Stack HCI and Windows Server cluster that's up and running.
 - [Azure CLI installed](/cli/azure/install-azure-cli)
@@ -29,19 +31,19 @@ Verify that you've the following:
 
 ## Create a private container registry in Azure
 
-To create an ACR, you first need a resource group. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the [az group create](/cli/azure/group#az-group-create) command. In the following example, a resource group in the *eastus* region is created:
+In order to create an ACR, you need to begin with a *resource group*. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the [Az PowerShell module group create](/cli/azure/group#az-group-create) command. In the following example, a resource group in the *eastus* region is created:
 
 ```azurecli
 az group create --name <RESOURCE_GROUP_NAME> --location eastus
 ```
 
-Create an ACR instance with the [az acr create](/cli/azure/acr) command and provide your own registry name. The registry name must be unique within Azure and contain 5-50 alphanumeric characters. In the rest of this article, `<acrName>` is used as a placeholder for the container registry name, and you'll provide your own unique registry name. The *Basic* SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
+Create an ACR instance with the [az acr create](/cli/azure/acr) command and provide your own registry name. The registry name must be unique within Azure and contain 5-50 alphanumeric characters. In the rest of this article, `<acrName>` is used as a placeholder for the container registry name, but you will be able to provide your own unique registry name. The *Basic* SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
 
 ```azurecli
 az acr create --resource-group <RESOURCE_GROUP_NAME> --name <REGISTRY_NAME> --sku Basic
 ```
 
-Once your container registry has been created, use the following command to create a service principal, so you can access your container registry from Kubernetes: 
+Once you have created your container registry, use the following command to create a service principal, so you can access your container registry from Kubernetes: 
 
 ```azurecli
 az ad sp create-for-rbac
@@ -78,7 +80,7 @@ To use the ACR instance, you must first sign in. You can use either the Azure CL
 
 ### Option 1: Sign in from the Azure CLI
 
-Use the [az acr sign in](/cli/azure/acr#az-acr-login) command and provide the unique name given to the container registry in the previous step.
+Use the [az acr sign in](/cli/azure/acr#az-acr-login) command and provide the unique name assigned to the container registry in the previous step.
 
 ```azurecli
 az acr login --name <REGISTRY_NAME>
@@ -174,6 +176,6 @@ To confirm that the pod was successfully created using the container image from 
 ## Next steps
 
 In this article, you learned how to deploy a container image from the ACR to AKS on Azure Stack HCI and Windows Server. Next, you can:
-- [Create and manage multiple node pools for a cluster in Azure Kubernetes Service on Azure Stack HCI](./use-node-pools.md)
+- [Create and manage multiple node pools for a cluster in Azure Kubernetes Service on Azure Stack HCI](./use-node-pools.md).
 - [Deploy a Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).

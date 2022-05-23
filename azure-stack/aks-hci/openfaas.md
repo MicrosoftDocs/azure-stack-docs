@@ -3,10 +3,12 @@ title: Use OpenFaaS with Azure Kubernetes Service (AKS) on Azure Stack HCI  and 
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) on Azure Stack HCI or Windows Server cluster to build serverless functions with containers.
 author: mattbriggs
 ms.topic: article
-ms.date: 05/14/2021
+ms.date: 05/02/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
+# Intent: As an IT Pro, I want to learn how to use OpenFaaS in order to build serverless functions with containers.
+# Keyword: OpenFaaS serverless functions
 ---
 
 # Using OpenFaaS on Azure Kubernetes Service on Azure Stack HCI and Windows Server
@@ -15,7 +17,7 @@ ms.reviewer: scooley
 
 ## Prerequisites
 
-In order to complete the steps within this article, you need the following.
+In order to complete the steps within this article, make sure you have the following requirements:
 
 * Basic understanding of Kubernetes.
 * An [AKS on Azure Stack HCI and Windows Server cluster](./setup.md) with at least one Linux worker node that's up and running.
@@ -28,9 +30,9 @@ In order to complete the steps within this article, you need the following.
 > [!IMPORTANT]
 > Helm is intended to run on Linux nodes. If you have Windows Server nodes in your cluster, you must ensure that Helm pods are only scheduled to run on Linux nodes. You also need to ensure that any Helm charts you install are also scheduled to run on the correct nodes. The commands in this article use [node-selectors](./adapt-apps-mixed-os-clusters.md#node-selector) to make sure pods are scheduled to the correct nodes, but not all Helm charts may expose a node selector. You can also consider using other options on your cluster, such as [taints](./adapt-apps-mixed-os-clusters.md#taints-and -tolerations).
 
-## Add the OpenFaaS helm chart repo
+## Add the OpenFaaS Helm chart repo
 
-With your kubeconfig file in hand, open your console to start the deployment process. If you're running on Windows, downloading and running Git Bash is the easiest way to follow along. From there, to begin, OpenFaaS maintains its own helm charts to keep up to date with all the latest changes:
+With your kubeconfig file in hand, open your console to start the deployment process. If you're running on Windows, downloading and running Git Bash is the easiest way to follow along. From there, to begin, OpenFaaS maintains its own Helm charts to keep up to date with all the latest changes:
 
 ```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/

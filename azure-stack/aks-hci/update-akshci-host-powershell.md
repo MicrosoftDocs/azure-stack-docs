@@ -8,8 +8,8 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 author: mattbriggs
 
-# Intent: As an IT Pro, I need instructions on how to use PowerShell in order to upgrade my AKS on Azure Stack HCI and Windows Server host.
-# Keyword: PowerShell AKS on Azure Stack HCI and Windows Server updates
+# Intent: As an IT Pro, I need instructions on how to use PowerShell in order to upgrade my AKS on Azure Stack HCI host.
+# Keyword: PowerShell AKS on Azure Stack HCI updates
 
 ---
 
