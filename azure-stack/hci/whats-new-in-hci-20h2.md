@@ -23,7 +23,7 @@ You can also join the Azure Stack HCI preview channel to test out features comin
 
 Clusters running Azure Stack HCI, version 20H2 now have the following new features:
 
-- **Azure Kubernetes Service hosting**: Azure Stack HCI now includes the ability to host [Azure Kubernetes Service on Azure Stack HCI](../aks-hci/overview.md).
+- **Azure Kubernetes Service hosting**: Azure Stack HCI now includes the ability to host [Azure Kubernetes Service on Azure Stack HCI and Windows Server ](../aks-hci/overview.md).
 - **New capabilities in Windows Admin Center**: Azure Stack HCI now includes the ability to create and update hyperconverged clusters via an intuitive UI.
 - **Stretched clusters for automatic failover**: Multi-site clustering with Storage Replica replication and automatic VM failover provides native disaster recovery and business continuity.
 - **Affinity and anti-affinity rules**: These can be used similarly to how Azure uses Availability Zones to keep VMs and storage together or apart in clusters with multiple fault domains, such as stretched clusters.
