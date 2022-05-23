@@ -64,7 +64,7 @@ The following table describes currently known issues for single-node clusters. T
 |-----------|---------------|
 |SBL cache is not supported in single-node clusters. | All-flash, flat configuration with Non-volatile Memory Express (NVMe) or Solid-State Drives (SSD) must be used. |
 |Windows Admin Center doesn't support creating single-node clusters. | [Deploy single server with PowerShell](../deploy/create-cluster-powershell.md). |
-|Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration (LM) within the same cluster; allows affinity rules to be created, etc. Actions will fail without any harm. |
+|Windows Admin Center cosmetic user interface (UI) changes needed. | Doesn't limit Live Migration within the same cluster; allows affinity rules to be created, etc. Actions will fail without any harm. |
 |Windows Admin Center pause server fails since it tries to drain the server. | Utilize PowerShell to pause (suspend the server). |
 |Windows Admin Center and PowerShell fail to create a volume. | Use PowerShell to create the volume without "StorageTier" parameter. For example,  *New-Volume -FriendlyName "Volume1" -Size 1 TB -ProvisioningType Thin*. |
 |Cluster Aware Updating (CAU) doesn't support single-node clusters. | Update using PowerShell, the Server Configuration tool (SConfig), or Windows Admin Center (through server manager). [Learn more](../deploy/single-server.md#updating-single-node-clusters) |
