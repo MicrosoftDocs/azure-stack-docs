@@ -1,5 +1,5 @@
 ---
-title: Quickstart to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell
+title: Use PowerShell to set up Kubernetes on Azure Stack HCI clusters 
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: mattbriggs
 ms.topic: quickstart
@@ -7,7 +7,7 @@ ms.date: 05/02/2022
 ms.author: mabrigg 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: jeguan
-ms.custom: mode-api
+ms.custom: mode-api, kr2b-contr-experiment
 
 # Intent: As an IT Pro, I want to create AKS on Azure Stack HCI using Windows PowerShell.
 # Keyword: AKS setup PowerShell 
