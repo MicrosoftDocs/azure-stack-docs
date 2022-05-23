@@ -54,7 +54,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No | Yes |
 |[Use Graphics Processing Units (GPUs) with clustered VMs](../manage/use-gpu-with-clustered-vm.md)  | Yes | Yes |
 
-<sup>1</sup> Limited support, AKS on Azure Stack HCI is "in-preview."
+<sup>1</sup> Limited support, AKS on Azure Stack HCI is in preview on single-node clusters.
 
 ## Known issues
 
