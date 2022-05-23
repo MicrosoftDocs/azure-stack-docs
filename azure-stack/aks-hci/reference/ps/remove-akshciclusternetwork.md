@@ -1,5 +1,5 @@
 ---
-title: Remove-AksHciClusterNetwork for AKS on Azure Stack HCI
+title: Remove-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Remove-AksHciClusterNetwork PowerShell command removes a virtual network.
 ms.topic: reference
