@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciConfig for AKS on Azure Stack HCI
+title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 09/02/2021
@@ -93,10 +93,10 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 
 Before running this example, you need to prestage a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. 
 
-The AKS on Azure Stack HCI deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
+The AKS on Azure Stack HCI and Windows Server deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
 
 > [!Note] 
-> Once AKS on Azure Stack HCI is deployed, this information cannot be changed.
+> Once AKS on Azure Stack HCI and Windows Server is deployed, this information cannot be changed.
 
 ```powershell
 $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7
@@ -107,7 +107,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 ## Parameters
 
 ### -imageDir
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI and Windows Server will store its VHD images. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -sshPublicKey
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If you have your own SSH public key, you will pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location will be generated and used.
+Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment. If you have your own SSH public key, you will pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location will be generated and used.
 
 ```yaml
 Type: System.String
@@ -271,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -version
-The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. The default is the latest version. We do not recommend changing the default.
+The version of Azure Kubernetes Service on Azure Stack HCI and Windows Server that you want to deploy. The default is the latest version. We do not recommend changing the default.
 
 ```yaml
 Type: System.String
@@ -406,7 +406,7 @@ Accept wildcard characters: False
 ```
 
 ### -insecure
-Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
+Deploys Azure Kubernetes Service on Azure Stack HCI and Windows Server components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
 
 ```yaml
 Type: System.String
