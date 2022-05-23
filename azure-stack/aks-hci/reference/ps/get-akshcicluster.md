@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciCluster for AKS on Azure Stack HCI
+title: Get-AksHciCluster for AKS on Azure Stack HCI and Windows Server
 author: mkostersitz
 description: The Get-AksHciCluster PowerShell command lists Kubernetes managed clusters including the Azure Kubernetes Service host.
 ms.topic: reference

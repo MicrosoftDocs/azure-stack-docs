@@ -1,5 +1,5 @@
 ---
-title: Uninstall-AksHciCsiNfs for AKS on Azure Stack HCI
+title: Uninstall-AksHciCsiNfs for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Uninstall-AksHciCsiNfs PowerShell command uninstalls CSI NFS Plugin in a cluster
 ms.topic: reference

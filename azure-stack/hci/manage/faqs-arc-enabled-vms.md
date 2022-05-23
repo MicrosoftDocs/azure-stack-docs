@@ -20,9 +20,9 @@ This article answers some frequently asked questions (FAQs) about Azure Arc-enab
   
 vLAN tagged VMs is currently not supported.
 
-## Can Azure Kubernetes Service on Azure Stack HCI and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
+## Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
 
-Yes. Azure Kubernetes Service on Azure Stack HCI and VM provisioning from the Azure portal can be deployed on the same Arc-enabled Azure Stack HCI cluster. This requires deploying the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster will also remove Arc Resource Bridge.
+Yes. Azure Kubernetes Service on Azure Stack HCI and Windows Server and VM provisioning from the Azure portal can be deployed on the same Arc-enabled Azure Stack HCI cluster. This requires deploying the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster will also remove Arc Resource Bridge.
 
 ## Can I use SDN for Azure Stack HCI VMs created from the Azure portal?
   
