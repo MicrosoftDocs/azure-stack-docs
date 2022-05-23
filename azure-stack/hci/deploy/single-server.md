@@ -17,9 +17,6 @@ This article describes how to use PowerShell to deploy Azure Stack HCI on a sing
 
 Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
-> [!IMPORTANT]
-> For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center can be used to manage specific components following a successful deployment.
-
 ## Prerequisites
 
 - A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
@@ -38,7 +35,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 ## Updating single-node clusters
 
-To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
+To install updates in Windows Admin Center, use Server Manager > Updates, PowerShell, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
 
 ## Adding servers to a single-node cluster (optional)
 
