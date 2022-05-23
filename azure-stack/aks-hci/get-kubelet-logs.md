@@ -1,6 +1,6 @@
 ---
-title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI
-description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI.
+title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 author: mattbriggs
 ms.topic: how-to
 ms.date: 04/24/2022
@@ -12,13 +12,13 @@ ms.reviewer: oadeniji
 
 ---
 
-# Get kubelet logs from cluster nodes on AKS on Azure Stack HCI
+# Get kubelet logs from cluster nodes on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-As part of operating an AKS on Azure Stack HCI cluster, you may find it helpful to review logs in order to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS on Azure Stack HCI. You may also need to get _kubelet_ logs from an AKS on Azure Stack HCI node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
+As part of operating an Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS on Azure Stack HCI and Windows Server, and you may also need to get _kubelet_ logs from an AKS on Azure Stack HCI and Windows Server node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
 
 ## Before you begin
 
-This article assumes that you have an existing AKS on Azure Stack HCI cluster. If you need an AKS on Azure Stack HCI cluster, see this [quickstart](kubernetes-walkthrough-powershell.md) for deploying AKS on Azure Stack HCI.
+This article assumes that you have an existing AKS on Azure Stack HCI and Windows Server cluster. If you need an AKS on Azure Stack HCI and Windows Server cluster, see this [quickstart](kubernetes-walkthrough-powershell.md) for deploying AKS on Azure Stack HCI and Windows Server.
 
 ## Create an SSH connection
 
@@ -45,4 +45,4 @@ I0512 19:15:19.868169    1824 container_manager_linux.go:281]
 ## Next steps
 
 - [View logs to collect and review data](./view-logs.md) 
-- [Monitor AKS on Azure Stack HCI clusters](./monitor-logging.md)
+- [Monitor AKS on Azure Stack HCI and Windows Server clusters](./monitor-logging.md)
