@@ -38,11 +38,24 @@ Remote support gives you the ability to:
 
 Before you begin using remote support, you must:
 
-- [Install PowerShell module](#install-powershell-module)
+- [Create a KDS root key](#create-a-kds-root-key)
+- [Install the Az.StackHCI PowerShell module](#install-powershell-module)
 - [Configure proxy settings](#configure-proxy-settings)
 - [Install JEA configurations](#install-jea-configurations-before-azure-registration)
 - [Install Remote Support extension](#grant-remote-support-access)
 - [Grant remote support access](#grant-remote-support-access)
+
+### Create a KDS root key
+
+Your Active Directory environment must contain a Key Distribution Services (KDS) root key in order to host gMSA accounts.
+
+Run the following cmdlet to determine if your environment contains a KDS root key:
+
+```powershell
+Get-KDSRootKey
+```
+
+If the results are null, follow the steps given in the [Create the Key Distribution Services KDS Root Key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key#to-create-the-kds-root-key-using-the-add-kdsrootkey-cmdlet) article to create a KDS root key.
 
 ### Install PowerShell module
 
