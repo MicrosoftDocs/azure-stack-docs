@@ -1,5 +1,5 @@
 ---
-title: Install-AksHciAdAuth for AKS on Azure Stack HCI
+title: Install-AksHciAdAuth for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Install-AksHciAdAuth PowerShell command installs Active Directory authentication.
 ms.topic: reference

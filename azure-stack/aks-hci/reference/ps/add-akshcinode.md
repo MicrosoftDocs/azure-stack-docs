@@ -1,5 +1,5 @@
 ---
-title: Add-AksHciNode for AKS on Azure Stack HCI
+title: Add-AksHciNode for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Add-AksHciNode PowerShell command adds a new physical node to a deployment.
 ms.topic: reference
