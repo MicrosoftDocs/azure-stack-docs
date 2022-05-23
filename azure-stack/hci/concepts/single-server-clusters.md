@@ -38,7 +38,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |----------|-----------|-----------|
 |Full software-defined data center (SDDC) stack (hypervisor, storage, networking) | Yes | Yes|
 |Storage Spaces Direct support | Yes | Yes |
-|Software Defined Networking support | Yes | Yes |
+|Software Defined Networking (SDN) support | Yes | Yes |
 |Native Azure Arc integration | Yes | Yes |
 |Managed through Windows Admin Center and Azure portal | Yes | Yes |
 |Azure billing/registration | Yes | Yes |
