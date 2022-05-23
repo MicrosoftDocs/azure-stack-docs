@@ -5,7 +5,7 @@ author: v-jamemurray
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: v-jamemurray
-ms.reviewer: johnmar
+ms.reviewer: robhind
 ---
 
 # Create server and site affinity rules for VMs
