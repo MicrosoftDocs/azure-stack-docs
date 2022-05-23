@@ -89,7 +89,7 @@ The following are the required firewall URLs in the JSON format. Use the Copy bu
         "Notes": “(Azure Gov) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
     }, 
     { 
-        "URL": "https://azurestackhci.azurefd.net", 
+        "URL": "https://dp.stackhci.azure.com/", 
         "Port": "443", 
         "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
     }, 
@@ -162,7 +162,7 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
         "Notes": “(Azure Gov) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
     }, 
     { 
-        "URL": "https://azurestackhci.azurefd.net", 
+        "URL": "https://dp.stackhci.azure.com/", 
         "Port": "443", 
         "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
     }, 
@@ -324,7 +324,7 @@ You must allow-list the following URL endpoints for registration and billing. De
 https://login.microsoftonline.com
 https://graph.windows.net/
 https://management.azure.com/
-https://azurestackhci.azurefd.net
+https://dp.stackhci.azure.com/
 ```
 
 #### [U.S. Government Cloud](#tab/us-government-cloud)
@@ -363,7 +363,7 @@ If there is a corporate firewall between the Azure Stack HCI operating system an
 - http\://ntservicepack.microsoft.com
 - http\://go.microsoft.com
 - http\://dl.delivery.mp.microsoft.com
-- https\://dl.delivery.mp.microsoft.com
+- https\://dl.delivery.mp.microsoft.com`
 
 ### Cluster Cloud Witness
 
@@ -376,12 +376,12 @@ This is optional. You can use remote support to allow a Microsoft support profes
 - \*.servicebus.windows.net
 - \*.core.windows.net
 - login.microsoftonline.com
-- https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-- https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-- https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-- https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-- https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
-- https://edgesupprd.trafficmanager.net
+- https\://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
+- https\://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
+- https\://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
+- https\://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
+- https\://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https\://edgesupprd.trafficmanager.net
 
 ### AKS on Azure Stack HCI
 

@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciClusterNetwork for AKS on Azure Stack HCI
+title: Get-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciClusterNetwork PowerShell command retrieves virtual network settings.
 ms.topic: reference

@@ -1,13 +1,14 @@
 ---
-title: Tutorial - Create a container registry in Azure Kubernetes Service on Azure Stack HCI 
+title: Tutorial - Create a container registry in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: In this tutorial, you will learn how to create an Azure Container Registry instance and upload a sample application container image.
 services: container-service
 ms.topic: tutorial
-ms.date: 04/14/2022
+ms.date: 05/10/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: mattbriggs
+
 # Intent: As an IT Pro, I need step-by-step instructions on how to create an Azure Container Registry instance so I can  upload an application container image.
 # Keyword: container registry container images
 ---
@@ -22,7 +23,7 @@ An Azure Container Registry (ACR) is a private registry for container images. A 
 > * Upload the image to ACR
 > * View images in your registry
 
-In later tutorials, this ACR instance is integrated with a Kubernetes cluster in Azure Kubernetes Service on Azure Stack HCI, and an application is deployed from the image.
+In later tutorials, this ACR instance is integrated with a Kubernetes cluster in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, and an application is deployed from the image.
 
 ## Before you begin
 
@@ -146,7 +147,7 @@ You now have a container image that is stored in a private Azure Container Regis
 
 ## Next steps
 
-In this tutorial, you created an Azure Container Registry and pushed an image for use in an AKS on Azure Stack HCI cluster. You learned how to:
+In this tutorial, you created an Azure Container Registry and pushed an image for use in an AKS on Azure Stack HCI and Windows Server cluster. You learned how to:
 
 > [!div class="checklist"]
 > * Create an Azure Container Registry (ACR) instance

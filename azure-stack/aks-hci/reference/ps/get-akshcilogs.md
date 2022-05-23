@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciLogs for AKS on Azure Stack HCI
+title: Get-AksHciLogs for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciLogs PowerShell command creates a zipped folder with logs from all your pods.
 ms.topic: reference
@@ -27,7 +27,7 @@ Get-AksHciLogs [-virtualMachineLogs]
 ```
 
 ## Description
-Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI working directory. The full path to the `akshcilogs.zip` file will be the output after running  `Get-AksHciLogs` (for example, `C:\AksHci\0.9.6.3\akshcilogs.zip`, where `0.9.6.3` is the AKS on Azure Stack HCI release number). When the no flags are used, then the command will collect all logs.
+Create a zipped folder with logs from all your pods. This command will create an output zipped folder called `akshcilogs.zip` in your AKS on Azure Stack HCI and Windows Server working directory. The full path to the `akshcilogs.zip` file will be the output after running  `Get-AksHciLogs` (for example, `C:\AksHci\0.9.6.3\akshcilogs.zip`, where `0.9.6.3` is the AKS on Azure Stack HCI and Windows Server release number). When the no flags are used, then the command will collect all logs.
 
 ## Examples
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -virtualMachineLogs
-Use this flag to get the logs from the guest virtual machines created by Azure Kubernetes Service on Azure Stack HCI.
+Use this flag to get the logs from the guest virtual machines created by Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -kvaLogs
-Use this flag to get the logs from the Azure Kubernetes Service on Azure Stack HCI host.
+Use this flag to get the logs from the Azure Kubernetes Service on Azure Stack HCI and Windows Server host.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -downloadSdkLogs
-Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI uses.
+Use this flag to get the download logs from downloading the binaries and images that Azure Kubernetes Service on Azure Stack HCI and Windows Server uses.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

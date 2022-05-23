@@ -47,7 +47,7 @@ With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads, s
 
 You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
 
-### Improvements to Azure Kubernetes Service on Azure Stack HCI
+### Improvements to Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 
 We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](../aks-hci/overview.md).
 
@@ -73,7 +73,7 @@ Azure Stack HCI, version 21H2 enables you to use the Azure portal to provision a
  
 ### Multi-cluster monitoring in the Azure portal (preview)
 
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you're ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](manage/azure-stack-hci-insights.md).
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are enrolled in monitoring. Starting with Azure Stack HCI, version 21H2, your cluster automatically Arc-enables your host servers when you register, so that you're ready to start using extensions. For more information on the benefits of this new Azure Monitor experience and how to modify and adapt the experience to fit your unique needs, see [Monitor multiple clusters with Azure Stack HCI Insights (preview)](/azure-stack/hci/manage/monitor-hci-multi).
 
 ## New Azure infrastructure innovations
 

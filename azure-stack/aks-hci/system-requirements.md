@@ -1,35 +1,35 @@
 ---
-title: Azure Kubernetes Service on Azure Stack HCI requirements
-description: Before you begin Azure Kubernetes Service on Azure Stack HCI
+title: Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements
+description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Windows Server
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 04/04/2022
+ms.lastreviewed: 05/19/2022
 ms.reviewer: abha
-ms.date: 04/04/2022
+ms.date: 05/19/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
 
 ---
 
-# System requirements for Azure Kubernetes Service on Azure Stack HCI
+# System requirements for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-This article covers the requirements for setting up Azure Kubernetes Service (AKS) on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of AKS on Azure Stack HCI, see [AKS on Azure Stack HCI overview](overview.md).
+This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of AKS on Azure Stack HCI and Windows Server, see [AKS on Azure Stack HCI and Windows Server overview](overview.md).
 
 ## Active Directory requirements
 
-For AKS on Azure Stack HCI or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
 
 - Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top).
 
-- Make sure the user account(s) used to add update, and manage AKS on Azure Stack HCI or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU.
+- Make sure the user account(s) used to add update, and manage AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU.
 
-- Use a separate organizational unit (OU) for the servers and services by your AKS on Azure Stack HCI or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
+- Use a separate organizational unit (OU) for the servers and services by your AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 
-- If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI is exempt from the policy. Server hardening will be available in a subsequent release.
+- If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI and Windows Server is exempt from the policy. Server hardening will be available in a subsequent release.
 
 ## Hardware requirements
 
@@ -37,7 +37,7 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 ### Maximum supported hardware specifications
 
-AKS on Azure Stack HCI deployments that exceed the following specifications aren't supported:
+AKS on Azure Stack HCI and Windows Server deployments that exceed the following specifications aren't supported:
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -63,19 +63,19 @@ Keep in mind that the above minimum requirement is for an AKS-HCI deployment wit
 
 | Environment | CPU cores per server | RAM |
 | --- | --- | --- |
-| Azure Stack HCI cluster | 32 | 256 GB |
+| Azure Stack HCI or Windows Server cluster | 32 | 256 GB |
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB
 
-For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI cluster. If you choose to run AKS on a single node Windows Server, you will not get features like high availability that come with running AKS on an Azure Stack HCI cluster or Windows Server failover cluster.
+For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single node Windows Server, you will not get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
 
-Other compute requirements for AKS on Azure Stack HCI are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
+Other compute requirements for AKS on Azure Stack HCI and Windows Server are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](../hci/concepts/system-requirements.md#server-requirements) for more details on Azure Stack HCI server requirements.
 
 You must install the same operating system on each server in the cluster. If you are using Azure Stack HCI, the same OS and version must be on same on each server in the cluster. If you are using Windows Server Datacenter the same OS and version must be the same on each server in the cluster. Each OS must use the `EN-US` region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 
-The following storage implementations are supported by AKS on Azure Stack HCI:
+The following storage implementations are supported by AKS on Azure Stack HCI and Windows Server:
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
@@ -83,11 +83,11 @@ The following storage implementations are supported by AKS on Azure Stack HCI:
 | Windows Server Datacenter failover cluster          | Cluster Shared Volumes          | 1 TB              |
 | Single-node Windows Server Datacenter | Direct Attached Storage | 500 GB|
 
-For an Azure Stack HCI cluster, you've two supported storage configurations for running virtual machine workloads. 
+For an Azure Stack HCI or Windows Server cluster, you've two supported storage configurations for running virtual machine workloads. 
 - **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
 - **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe. 
 
-Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](../hci/concepts/choose-drives.md). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
+Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](../hci/concepts/choose-drives.md). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
 
 Kuberentes uses etcd to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information you, [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
 
@@ -98,13 +98,13 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Stack HCI cluster and a Windows Server Datacenter cluster:
+The following requirements apply to an Azure Stack HCI or Windows Server cluster and a Windows Server Datacenter cluster:
 
-- Verify that you've an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI clusters, this switch and its name must be the same across all cluster nodes. 
+- Verify that you've an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes. 
 
 - Verify that you have disabled IPv6 on all network adapters.
 
-- For a successful deployment, the Azure Stack HCI cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
+- For a successful deployment, the Azure Stack HCI or Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 
 - Make sure all subnets you define for the cluster are routable amongst each other and to the internet.
   
@@ -112,14 +112,14 @@ The following requirements apply to an Azure Stack HCI cluster and a Windows Ser
 
 - DNS name resolution is required for all nodes to be able to communicate with each other.
  
-- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS isn't an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-dns-record). 
+- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI and Windows Server to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS isn't an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-dns-record). 
 
 ### IP address assignment  
 
-In AKS on Azure Stack HCI, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI networking architecture.
+In AKS on Azure Stack HCI and Windows Server, virtual networks are used to allocate IP addresses to the Kubernetes resources that require them, as listed above. There are two networking models to choose from, depending on your desired AKS on Azure Stack HCI and Windows Server networking architecture.
 
 > [!NOTE]
- > The virtual networking architecture defined here for your AKS on Azure Stack HCI deployments is different from the underlying physical networking architecture in your data center.
+ > The virtual networking architecture defined here for your AKS on Azure Stack HCI and Windows Server deployments is different from the underlying physical networking architecture in your data center.
 
 - **Static IP networking**
 
@@ -145,13 +145,13 @@ Additionally, you should reserve the following number of IP addresses for your V
 | Cluster API server |  1 per cluster |
 | Kubernetes Services  |  1 per service |
 
-As you can see, the number of required IP addresses is variable depending on the AKS on Azure Stack HCI architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
+As you can see, the number of required IP addresses is variable depending on the AKS on Azure Stack HCI and Windows Server architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
 
-For more information on networking requirements, visit [node networking concepts in AKS on Azure Stack HCI](./concepts-node-networking.md) and [container networking concepts in AKS on Azure Stack HCI](./concepts-container-networking.md).
+For more information on networking requirements, visit [node networking concepts in AKS on Azure Stack HCI and Windows Server](./concepts-node-networking.md) and [container networking concepts in AKS on Azure Stack HCI and Windows Server](./concepts-container-networking.md).
 
 ### Network port and URL requirements
 
-#### AKS on Azure Stack HCI requirements
+#### AKS on Azure Stack HCI and Windows Server requirements
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
 
@@ -164,17 +164,8 @@ When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following fire
 
 If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
 
-| Firewall port               | Description     |
-| ---------------------------- | ------------ |
-| 22 | Required to collect logs using `Get-AksHciLogs`. This is a port on the AKS VMs that needs to be reached by the physical host.
-| 6443 | Port on the AKS VMs that needs to be reached by the physical host.
-| 46000 | Port on the AKS VMs that needs to be reached by the physical host.
-| 55000 | wssdcloudagent gRPC server port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. | 
-| 65000 | wssdcloudagent gRPC authentication port. This is a port on the physical host vlan and needs to be reachable by processes in the AKS VMs. |
 
-Firewall URL exceptions are needed for the Windows Admin Center machine and all nodes in the Azure Stack HCI cluster.
-
-If your network requires the use of a proxy server to connect to the internet, see [Use proxy server settings on AKS on Azure Stack HCI](set-proxy-settings.md).
+If your network requires the use of a proxy server to connect to the internet, see [Use proxy server settings on AKS on Azure Stack HCI and Windows Server](set-proxy-settings.md).
 
 ### [Table](#tab/allow-table)
 
@@ -206,7 +197,7 @@ Download [URL allow list (json)](https://raw.githubusercontent.com/MicrosoftDocs
 
 ## Windows Admin Center requirements
 
-Windows Admin Center is the user interface for creating and managing AKS on Azure Stack HCI. To use Windows Admin Center with AKS on Azure Stack HCI, you must meet all the criteria in the list below.
+Windows Admin Center is the user interface for creating and managing AKS on Azure Stack HCI and Windows Server. To use Windows Admin Center with AKS on Azure Stack HCI and Windows Server, you must meet all the criteria in the list below.
 
 Here are the requirements for the machine running the Windows Admin Center gateway: 
 
@@ -237,7 +228,7 @@ To check that you have sufficient permissions, follow the information below:
 
 If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
-If you don't have enough permissions to register an application and your admin can't give you these permissions, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
+If you don't have enough permissions to register an application and your admin can't give you these permissions, the easiest way to deploy AKS on Azure Stack HCI and Windows Server is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
 ### Azure subscription role and access level
 To check your access level, navigate to your subscription, select **Access control (IAM)** on the left-hand side of the Azure portal, and then select **View my access**.
@@ -250,7 +241,7 @@ To check your access level, navigate to your subscription, select **Access contr
       - The built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role
       - The built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role
 
-If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
+If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI and Windows Server is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
 
 ### Optional: Create a new service principal
 
@@ -305,7 +296,7 @@ Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```   
 
-From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI. You should take a note of these items and store them safely.
+From the output above, you now have the **application ID** and the **secret** available when deploying AKS on Azure Stack HCI and Windows Server. You should take a note of these items and store them safely.
 With that created, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
 ### Azure resource group
