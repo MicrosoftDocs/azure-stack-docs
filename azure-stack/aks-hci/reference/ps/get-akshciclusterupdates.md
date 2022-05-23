@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciClusterUpdates for AKS on Azure Stack HCI
+title: Get-AksHciClusterUpdates for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciClusterUpdates PowerShell command gets the available upgrades for an Azure Kubernetes Service cluster.
 ms.topic: reference

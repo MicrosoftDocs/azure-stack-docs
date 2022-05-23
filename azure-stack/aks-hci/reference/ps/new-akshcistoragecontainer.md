@@ -1,5 +1,5 @@
 ---
-title: New-AksHciStorageContainer for AKS on Azure Stack HCI
+title: New-AksHciStorageContainer for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The New-AksHciStorageContainer PowerShell command creates a new storage container.
 ms.topic: reference

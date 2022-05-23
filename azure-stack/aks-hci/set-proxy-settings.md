@@ -1,6 +1,6 @@
 ---
-title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Configure proxy server settings in Azure Kubernetes Service on Azure Stack HCI on Windows Server
+description: Learn about proxy server settings in Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 ms.date: 05/17/2022
 ms.author: mabrigg 
@@ -12,12 +12,12 @@ author: mattbriggs
 # Keyword: proxy server proxy settings
 
 ---
-# Use proxy server settings on AKS on Azure Stack HCI
+# Configure proxy server settings on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > [!NOTE]
-> This topic covers how to configure proxy settings for AKS on Azure Stack HCI. If you want to use Arc enabled Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements). 
+> This topic covers how to configure proxy settings for Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. If you want to use Arc enabled Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements). 
 
-If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps required to set up proxy support on AKS on Azure Stack HCI using the **AksHci** PowerShell module. There are different sets of steps depending on whether the proxy server requires authentication.
+If your network requires the use of a proxy server to connect to the internet, this article walks you through the steps required to set up proxy support on AKS on Azure Stack HCI and Windows Server using the **AksHci** PowerShell module. There are different sets of steps depending on whether the proxy server requires authentication.
 
 Once you've configured your deployment using the options listed below, you can [install an AKS host on Azure Stack HCI](./kubernetes-walkthrough-powershell.md) and [create AKS clusters using PowerShell](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster).
 
@@ -75,7 +75,7 @@ When you download AksHci PowerShell module, we also download Az PowerShell modul
 | PowerShell 7 on macOS   | System proxy settings  | You can configure proxy by setting both HTTP_PROXY and HTTPS_PROXY environment variables.     |
 | PowerShell 7 on Linux   | Set both HTTP_PROXY and HTTPS_PROXY environment variables, plus NO_PROXY(optional) | You should set the environment variables before starting PowerShell, otherwise, they may not be respected. |
 
-The environment variables used include the following:
+If your environment uses a proxy server to access the internet, you may need to add proxy parameters to the **Install-Module** command before installing AKS on Azure Stack HCI and Windows Server. See the [Install-Module documentation](/powershell/module/powershellget/install-module) for details and follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
 
 - HTTP_PROXY: the proxy server used on HTTP requests.
 - HTTPS_PROXY: the proxy server used on HTTPS requests.

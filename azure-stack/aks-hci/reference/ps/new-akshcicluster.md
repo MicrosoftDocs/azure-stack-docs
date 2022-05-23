@@ -1,5 +1,5 @@
 ---
-title: New-AksHciCluster for AKS on Azure Stack HCI
+title: New-AksHciCluster for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
@@ -41,7 +41,7 @@ New-AksHciCluster -name <String>
 ```
 
 > [!NOTE]
-> The parameter set above is going to be deprecated in a future release. This set will still be supported and will be the default behavior when running `New-AksHciCluster` with the `-name` parameter, which is the only required parameter. AKS on Azure Stack HCI is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. For more information on the new node pool experience, see [Create and manage multiple node pools for a cluster](../../use-node-pools.md).
+> The parameter set above is going to be deprecated in a future release. This set will still be supported and will be the default behavior when running `New-AksHciCluster` with the `-name` parameter, which is the only required parameter. AKS on Azure Stack HCI and Windows Server is introducing node pools to its cluster deployment experience and is now supporting the following parameter set. For more information on the new node pool experience, see [Create and manage multiple node pools for a cluster](../../use-node-pools.md).
 
 ```powershell
 New-AksHciCluster -name <String>
@@ -71,11 +71,11 @@ New-AksHciCluster -name <String>
 
 ## Description
 
-Create a new Azure Kubernetes Service on Azure Stack HCI cluster.
+Create a new Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster.
 
 ## Examples
 
-### New AKS on Azure Stack HCI cluster with required parameter
+### New AKS on Azure Stack HCI and Windows Server cluster with required parameter
 
 ```powershell
 New-AksHciCluster -name mycluster

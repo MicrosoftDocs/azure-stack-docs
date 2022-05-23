@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciVmSize for AKS on Azure Stack HCI
+title: Get-AksHciVmSize for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciVmSize PowerShell command lists the supported VM sizes.
 ms.topic: reference
