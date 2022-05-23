@@ -6,8 +6,9 @@ ms.author: mabrigg
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
-ms.date: 05/19/2021
-keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks-hci, kubernetes
+ms.date: 04/29/2022
+# Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
+# Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---
 
 # Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster
@@ -19,7 +20,7 @@ This article demonstrates how to:
 
 The Open Liberty Operator simplifies the deployment and management of applications running on Kubernetes clusters. With Open Liberty Operator, you can also perform more advanced operations, such as gathering traces and dumps. 
 
-For more details on Open Liberty, see [the Open Liberty project page](https://openliberty.io/). For more details on IBM WebSphere Liberty, see [the WebSphere Liberty product page](https://www.ibm.com/cloud/websphere-liberty).
+For more information on Open Liberty, see [the Open Liberty project page](https://openliberty.io/). For more details on IBM WebSphere Liberty, see [the WebSphere Liberty product page](https://www.ibm.com/cloud/websphere-liberty).
 
 This article is divided into two main parts.
 
@@ -39,9 +40,9 @@ This article is divided into two main parts.
 
 ## Create a resource group in Azure
 
-An Azure resource group is a logical group in which Azure resources are deployed and managed.  
+An *Azure resource group* is a logical group in which Azure resources are deployed and managed.  
 
-Create a resource group called *java-liberty-project* using the [az group create](/cli/azure/group#az-group-create) command in the *eastus* location. This resource group will be used later for creating the Azure Container Registry instance. 
+You can create a resource group called *java-liberty-project* when you use the [az group create](/cli/azure/group#az-group-create) command in the *eastus* location. This resource group will be used later for creating the Azure Container Registry instance. 
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=java-liberty-project

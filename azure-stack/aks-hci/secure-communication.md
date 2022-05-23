@@ -3,10 +3,11 @@ title: Secure communication between control plane nodes for  Azure Kubernetes Se
 description: Learn how to secure communication between in-cluster components.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/18/2022
+ms.date: 05/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
+
 # Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI and Windows Server deployment.
 # Keyword: control plane nodes secure communication certificate revocation
 

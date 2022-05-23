@@ -2,7 +2,7 @@
 title: Node virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI
 description: Learn about virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 04/01/2022
+ms.date: 05/16/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek

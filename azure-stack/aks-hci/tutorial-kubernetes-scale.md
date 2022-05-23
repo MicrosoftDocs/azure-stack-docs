@@ -3,7 +3,7 @@ title: Tutorial - Scale an application in Azure Kubernetes Service on Azure Stac
 description: In this tutorial, learn how to scale nodes and pods in Kubernetes
 services: container-service
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 05/19/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
