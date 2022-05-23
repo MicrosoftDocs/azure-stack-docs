@@ -939,7 +939,7 @@
     { 
       "source_path": "azure-stack/hci/manage/azure-monitor.md", 
       "redirect_url": "/azure-stack/hci/manage/monitor-hci-single", 
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     { 
       "source_path": "azure-stack/hci/manage/monitor-azure-portal.md", 
