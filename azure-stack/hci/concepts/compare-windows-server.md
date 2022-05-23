@@ -86,12 +86,12 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Hyper-V | Yes | Yes |
 | Storage Spaces Direct | Yes | Yes |                          
 | Software-Defined Networking | Yes | Yes |
-| Stretch clustering for disaster recovery with Solid State Storage Drives| No | Yes |
+| Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
 | Adjustable Repair Speed | Yes | Yes|
 | Secured-core Server| Yes | Yes |
 | Stronger, faster network encryption | Yes | Yes |
 | High availability for GPU workload | Yes | No |
-| Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
+| Restart up to 10x faster with kernel-only restarts | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
@@ -112,7 +112,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
 | Third-party tools | Yes | Yes |
-| Azure Portal | Yes (natively) | Requires Azure Arc agent |
+| Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Cluster integrates with Azure Resource Manager | Yes | No |
 | Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>1</sup> |
