@@ -20,7 +20,7 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 - You must use PowerShell to create the single-node cluster and enable Storage Spaces Direct.
 - Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 - Stretched (dual-site) clusters aren't supported with individual servers (stretched clusters require a minimum of two servers in each site).
-- To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool. Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). For solution updates (such as driver and firmware updates), see your solution vendor.
+- To install updates using Windows Admin Center, use the single-server Server Manager > Updates tool. Or use PowerShell or the Server Configuration tool (SConfig). For solution updates (such as driver and firmware updates), see your solution vendor. You can't use the Cluster Manager > Updates tool to update single-node clusters at this time.
 - Operating system or other updates that require a restart cause downtime to running virtual machines (VMs) because there isn't another running cluster node to move the VMs to. We recommend manually shutting down the VMs before restarting to ensure that the VMs have enough time to shut down prior to the restart.
 
 ## Prerequisites
