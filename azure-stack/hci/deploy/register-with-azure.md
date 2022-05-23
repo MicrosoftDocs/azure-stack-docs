@@ -290,7 +290,48 @@ The unregistration process automatically cleans up the Azure resource that repre
 
 ### Unregister Azure Stack HCI using PowerShell
 
+Using PowerShell. you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
 
+You might need to install the latest version of the **Az.StackHCI** module. If you see a prompt that says **Are you sure you want to install the modules from 'PSGallery'?**, answer yes (Y):
+
+```powershell
+Install-Module -Name Az.StackHCI
+```
+
+#### Unregister from cluster-node
+
+If you're running the `Unregister-AzStackHCI` cmdlet on a server in the cluster, use the following syntax. Specify your Azure subscription ID and the resource name of the Azure Stack HCI cluster that you want to unregister:
+
+```powershell
+Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+```
+
+You're prompted to visit microsoft.com/devicelogin on another device (such as your PC or phone). Enter the code, and sign in there to authenticate with Azure.
+
+#### Unregister from a management PC
+
+If you're running the cmdlet from a management PC, you must also specify the name of a server (node) in the cluster:
+
+```powershell
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+```
+
+An interactive Azure login window appears. The exact prompts that you see will vary depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
+
+> [!IMPORTANT]
+> If you're unregistering the Azure Stack HCI cluster in Azure China, run the `Unregister-AzStackHCI` cmdlet with these additional parameters:
+> 
+> `-EnvironmentName AzureChinaCloud -Region "ChinaEast2"`
+> 
+> If you're unregistering in Azure Government, use these additional parameters:
+> 
+> `-EnvironmentName AzureUSGovernment -Region "USGovVirginia"`
+> 
+> If you provide the `-SubscriptionId` parameter, make sure that it's the correct one. It's recommended that you let the unregister script determine the subscription automatically.
+
+## View the registration status in PowerShell
+
+To view the registration status, see [Manage cluster registration with Azure](manage-azure-registration.md#view-registration-status-in-powershell).
 
 ## Troubleshooting
 
