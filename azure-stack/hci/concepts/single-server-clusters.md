@@ -17,7 +17,7 @@ This article provides an overview of running Azure Stack HCI on a single server,
 
 Along with the benefits mentioned, there are some initial limitations to recognize.
 
-- Single server deployment needs to be done through PowerShell.
+- You must use PowerShell to create the single-node cluster and enable Storage Spaces Direct.
 - Single servers must use only Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 - Stretched (dual-site) clusters don't support individual servers (you must use a minimum of four servers in a stretched cluster).
 - To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool. Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). For solution updates (such as driver and firmware updates), see your solution vendor.
