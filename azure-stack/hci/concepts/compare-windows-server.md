@@ -91,7 +91,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Secured-core Server| Yes | Yes |
 | Stronger, faster network encryption | Yes | Yes |
 | High availability for GPU workload | Yes | No |
-| Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
+| Restart up to 10x faster with kernel-only restarts | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
