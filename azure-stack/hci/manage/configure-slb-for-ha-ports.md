@@ -50,7 +50,7 @@ To set up the high availability ports rule, you must configure the following:
 
 1. After creating your load balancer or selecting the appropriate load balancer to apply the high availability rule to, scroll down to where you can see the **Load Balancing Rules** section.
 
-    :::image type="content" source="media/software-load-balancer/load-balancing-rules.png" alt-text="Load Balancing Rules Screenshot":::
+    :::image type="content" source="media/software-load-balancer/load-balancing-rules.png" alt-text="Load Balancing Rules Screenshot" lightbox="media/software-load-balancer/load-balancing-rules.png":::
 
 1. Select **New** to add a new rule.
 1. Enter or select the following information in **Add load balancing rule**.
