@@ -21,7 +21,7 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 - Single servers must use only Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 - Stretched (dual-site) clusters aren't supported with individual servers (stretched clusters require a minimum of two servers in each site).
 - To install updates in Windows Admin Center, you can't use the Cluster Manager > Updates tool. Instead, you can use the single-server Server Manager > Updates tool or use Server Configuration tool (SConfig). For solution updates (such as driver and firmware updates), see your solution vendor.
-- Host update that requires a restart will cause downtime to running virtual machines (VMs). Shut them down gracefully before restarting the host.
+- Operating system or other updates that require a restart cause downtime to running virtual machines (VMs) because there isn't another running cluster node to move the VMs to. We recommend manually shutting down the VMs before restarting to ensure that the VMs have enough time to shut down prior to the restart.
 
 ## Prerequisites
 
