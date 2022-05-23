@@ -41,7 +41,7 @@ To install updates in Windows Admin Center, use Server Manager > Updates, PowerS
 
 You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
 
-1. Validate the cluster by specifying existing server(s) and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
+1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md)
 3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
 
