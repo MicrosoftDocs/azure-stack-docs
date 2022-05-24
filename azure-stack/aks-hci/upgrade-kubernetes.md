@@ -33,7 +33,7 @@ To upgrade the Kubernetes version of a workload cluster with Windows Admin Cente
    
    [ ![Illustrates the Setting option for Kubernetes clusters.](./media/wac-kubernetes-upgrade/kubernetes-upgrade-settings.png) ](./media/wac-kubernetes-upgrade/kubernetes-upgrade-settings.png#lightbox)
    
-5. Select **Update now** to upgrade your workload cluster’s Kubernetes version. 
+5. Select **Update now** to upgrade your workload cluster's Kubernetes version. 
    
    [ ![Illustrates the Update now button on the Host setting page.](./media/wac-kubernetes-upgrade/kubernetes-cluster-update-now.png) ](./media/wac-kubernetes-upgrade/kubernetes-cluster-update-now.png#lightbox)
 
