@@ -67,7 +67,11 @@ You can add servers to your single-node cluster, also known as scaling out, thou
    ```
 
    > [!NOTE]
-   > After changing the fault-domain awareness, data copies are spread across servers in the cluster, making the cluster resilient to faults at the entire server level. The volume fault domain is derived from the storage pool's default settings and the resiliency will remain as two-way mirror unless you change it. This means that any new volumes you create in Windows Admin Center or PowerShell will use `StorageScaleUnit` as the fault domain setting and will have a two-way mirror resiliency setting.
+   > After changing the fault-domain awareness, data copies are spread across servers in the cluster, making the 
+      cluster resilient to faults at the entire server level. The volume fault domain is derived from the storage pool's 
+      default settings and the resiliency will remain as two-way mirror unless you change it. This means that any new 
+      volumes you create in Windows Admin Center or PowerShell will use `StorageScaleUnit` as the fault domain 
+      setting and will have a two-way mirror resiliency setting.
 
 4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`
 5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
