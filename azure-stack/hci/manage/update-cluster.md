@@ -4,12 +4,14 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/18/2022
+ms.date: 05/17/2022
 ---
 
 # Update Azure Stack HCI clusters
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
+
+This article describes how to install, monitor, and troubleshoot updates on multi-node clusters. To update single-node clusters, see [Updating single-node clusters](../deploy/single-server.md#updating-single-node-clusters).
 
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
