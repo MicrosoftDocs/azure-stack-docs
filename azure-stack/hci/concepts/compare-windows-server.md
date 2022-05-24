@@ -84,7 +84,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Storage Spaces Direct | Yes | Yes |                          
 | Software-Defined Networking | Yes | Yes |
 | Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
-| Adjustable Storage Repair Speed | Yes | Yes|
+| Adjustable storage repair speed | Yes | Yes|
 | Secured-core Server| Yes | Yes |
 | Stronger, faster network encryption | Yes | Yes |
 | High availability for GPU workload | Yes | No |
