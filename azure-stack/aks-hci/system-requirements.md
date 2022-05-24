@@ -178,17 +178,17 @@ If your network requires the use of a proxy server to connect to the internet, s
 
 ### [Table](#tab/allow-table)
 
-The following URLs need to be added to your allow list.
+The following URLs need to be added to your allowlist.
 
 [!INCLUDE [URL allow table](includes/data-allow-table.md)]
 
 ### [Json](#tab/allow-json)
 
-You can cut and paste the allow list for Firewall URL exceptions.
+You can cut and paste the allowlist for Firewall URL exceptions.
 
 :::code language="json" source="~/../modules/aks-hci/config/allow-list-end-points.json":::
 
-Download [URL allow list (json)](https://raw.githubusercontent.com/MicrosoftDocs/edge-modules/main/aks-hci/config/allow-list-end-points.json).
+Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/edge-modules/main/aks-hci/config/allow-list-end-points.json).
 
 ----
 
