@@ -14,9 +14,12 @@ ms.reviewer: shsathee
 
 Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
+> [!NOTE]
+> If you are doing a single server installation of Azure Stack HCI 21H2, use [PowerShell](../deploy/create-cluster-powershell.md#using-windows-powershell) to create the cluster
+
 You have a choice between creating two cluster types:
 
-- Standard cluster with at least two server nodes, residing in a single site.
+- Standard cluster with one or two server nodes, all residing in a single site.
 - Stretched cluster with at least four server nodes that span across two sites, with at least two nodes per site.
 
 For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
