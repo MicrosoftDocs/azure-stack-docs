@@ -226,7 +226,7 @@
   items:
   - name: Storage and clusters
     items:
-    - name: Single-server clusters
+    - name: Single-node clusters
       href: concepts/single-server-clusters.md
     - name: System requirements
       href: concepts/system-requirements.md
