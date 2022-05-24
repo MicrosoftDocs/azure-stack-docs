@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
 ms.lastreviewed: 05/18/2022
-ms.date: 05/18/2022
+ms.date: 05/24/2022
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -69,5 +69,5 @@ That completes the process of adding a server.
 ## Next steps
 
 - [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure.md)
-- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview.md)
-- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview.md)
+- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview)
+- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview)
