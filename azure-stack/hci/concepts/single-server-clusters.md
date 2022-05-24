@@ -25,7 +25,7 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 
 ## Prerequisites
 
-- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all Non-volatile Memory Express (NVMe) or all Solid-State (SSD) drives.
+- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - An [Azure Subscription](https://azure.microsoft.com/).
 
 For hardware, software, and network requirements see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
@@ -38,7 +38,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |----------|-----------|-----------|
 |Full software-defined data center (SDDC) stack (hypervisor, storage, networking) | Yes | Yes|
 |Storage Spaces Direct support | Yes | Yes |
-|Software Defined Networking support | Yes | Yes |
+|Software Defined Networking (SDN) support | Yes | Yes |
 |Native Azure Arc integration | Yes | Yes |
 |Managed through Windows Admin Center and Azure portal | Yes | Yes |
 |Azure billing/registration | Yes | Yes |
