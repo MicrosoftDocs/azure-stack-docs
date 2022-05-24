@@ -197,9 +197,11 @@
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage software load balancers
-      href: manage/load-balancers.md
-    - name: Configure load balancer for HA ports
-      href: manage/configure-slb-for-ha-ports.md
+      items:
+      - name: Manage software load balancers
+        href: manage/load-balancers.md
+      - name: Configure load balancer for HA ports
+        href: manage/configure-slb-for-ha-ports.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
