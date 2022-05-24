@@ -68,6 +68,6 @@ That completes the process of adding a server.
 
 ## Next steps
 
-- [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure.md)
-- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview.md)
-- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview.md)
+- [Deploy workload – AVD](../deploy/virtual-desktop-infrastructure)
+- [Deploy workload – AKS-HCI](/azure-stack/aks-hci/overview)
+- [Deploy workload – Azure Arc-enabled data services](/azure/azure-arc/data/overview)
