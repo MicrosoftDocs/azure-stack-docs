@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/21/2021
+ms.date: 05/24/2021
 ---
 
 # Compare Azure Stack HCI to Windows Server
