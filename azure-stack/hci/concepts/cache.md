@@ -43,6 +43,9 @@ Hybrid deployments aim to balance performance and capacity or to maximize capaci
 
 ![Diagram shows hybrid deployments, including NVMe for cache with HDD for capacity, SSD for cache with HDD for capacity, and NVMe for cache with HDD plus SSD for capacity.](media/cache/Hybrid-Deployment-Possibilities.png)
 
+> [!NOTE]
+> Hybrid deployment is not supported in single server configuration. All flat single storage type configurations (for example all-NVMe or all-SSD) is the only supported storage type for single server.
+
 ## Cache drives are selected automatically
 
 In deployments with multiple types of drives, Storage Spaces Direct automatically uses all drives of the fastest type for caching. The remaining drives are used for capacity.
