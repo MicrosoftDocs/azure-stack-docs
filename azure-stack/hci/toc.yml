@@ -201,7 +201,7 @@
       - name: Manage software load balancers
         href: manage/load-balancers.md
       - name: Configure load balancer for high availability ports
-        href: manage/configure-slb-for-ha-ports.md
+        href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
