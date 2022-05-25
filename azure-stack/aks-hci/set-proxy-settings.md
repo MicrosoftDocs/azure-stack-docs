@@ -7,8 +7,10 @@ ms.author: mabrigg
 ms.lastreviewed: 05/25/2022
 ms.reviewer: mikek
 author: mattbriggs
-#intent: As an IT Pro, I want to learn how to configure proxy server settings in my AKS deployments that require authentication.
-#keyword: proxy server proxy settings
+
+# Intent: As an IT Pro, I want to learn how to configure proxy server settings in my AKS deployments that require authentication.
+# Keyword: proxy server proxy settings
+
 ---
 # Use proxy server settings on AKS on Azure Stack HCI
 
