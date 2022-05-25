@@ -1,5 +1,5 @@
 ---
-title: Concepts - Upgrade the Azure Kubernetes Service on Azure Stack HCI host using PowerShell
+title: Concepts - Upgrade the Azure Kubernetes Service on Azure Stack HCI and Windows Server host using PowerShell
 description: Learn about using PowerShell to upgrade the Azure Kubernetes Service on Azure Stack HCI host.
 ms.topic: conceptual
 ms.date: 05/16/2022
@@ -15,7 +15,7 @@ author: mattbriggs
 
 # Upgrade the AKS on Azure Stack HCI and Windows Server host using PowerShell
 
-Updates to the Azure Kubernetes Service (AKS) on Azure Stack HCI host always include the latest available version. Although updates to the host can happen independently from updates to the workload clusters, you must always update the host before updating a workload cluster.
+Updates to the Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server host always include the latest available version. Although updates to the host can happen independently from updates to the workload clusters, you must always update the host before updating a workload cluster.
 
 All updates are done in a rolling update flow to avoid outages in AKS on Azure Stack HCI and Windows Server availability. When you bring a _new_ node with a newer build into the cluster, resources move from the _old_ node to the _new_ node. When you successfully remove the resources, the _old_ node is decommissioned and removed from the cluster.
 
