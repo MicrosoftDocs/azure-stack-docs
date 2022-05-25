@@ -93,7 +93,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
-| 4-5x faster Storage Spaces repairs | Yes | No|
+| 4-5x faster Storage Spaces repairs | Yes | Yes |
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No 
 
