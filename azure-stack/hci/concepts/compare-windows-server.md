@@ -13,19 +13,11 @@ ms.date: 01/21/2021
 
 > Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
 
-<<<<<<< HEAD
-This topic explains the key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations may choose to deploy both as they are intended for different and complementary purposes.
-=======
 This article explains the key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations may choose to deploy both as they are intended for different and complementary purposes.
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 
 ## When to use Azure Stack HCI
 
 Azure Stack HCI is Microsoft's premier hyperconverged infrastructure platform for running VMs or virtual desktops on-premises with connections to Azure hybrid services. It's an easy way to modernize and secure your datacenters and branch offices and achieve industry-best performance with low latency and data sovereignty.
-<<<<<<< HEAD
-
-=======
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 
 :::image type="content" source="media/compare-windows-server/hci-scenarios.png" alt-text="When to use Azure Stack HCI over Windows Server 2019" border="false" lightbox="media/compare-windows-server/hci-scenarios.png":::
 
@@ -38,22 +30,12 @@ Use Azure Stack HCI for:
   >[!NOTE]
   >Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
 
-<<<<<<< HEAD
-## When to use Windows Server 
-
-Windows Server is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
-=======
 ## When to use Windows Server
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 
 Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
 :::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 Use Windows Server for:
 
 - A guest operating system inside of virtual machines (VMs) or containers
@@ -66,11 +48,7 @@ Use Windows Server for:
 
 The following table shows the high-level product packaging for Azure Stack HCI and Windows Server.
 
-<<<<<<< HEAD
-| **Attribute**    | **Azure Stack HCI** | **Windows Server** |
-=======
 | Attribute    | Azure Stack HCI | Windows Server |
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 | ---------------- | ------------------- | ----------------------- |
 | Product type     | Cloud service which includes an operating system and more | Operating system |
 | Legal            | Covered under your Microsoft Customer Agreement or Online Subscription Agreement | Has its own end-user license agreement |
@@ -79,22 +57,8 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on Integrated Systems | Microsoft Volume Licensing Service Center or Evaluation Center |
 | Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
-<<<<<<< HEAD
-<<<<<<< HEAD
-| Sizing| Azure Stack HCI sizing tool |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
-=======
-| Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
-| Lifecycle policy | Always up to date with the latest features | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
-
-> [!NOTE]
-> Download new versions of the Azure Stack HCI operating system within 6 months of released updates.
-<<<<<<< HEAD
-=======
-=======
 | Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) |None.|
 | Lifecycle policy | Always up to date with the latest features. You have up to six months to install updates. | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
->>>>>>> 06ae4d9bdf9691a7e6ec82b076484da2046ad4a3
 
 ## Compare workloads and benefits
 
@@ -109,20 +73,15 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. | Yes | No <sup>1</sup>|
 
 <sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 
 ## Compare technical features
 
 The following table compares the technical features of Azure Stack HCI and Windows Server 2022.
 
-<<<<<<< HEAD
-| **Attribute** | **Azure Stack HCI** | **Windows Server 2022** |
-=======
 | Attribute | Azure Stack HCI | Windows Server 2022 |
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
-| Storage Spaces Direct | Yes | Yes |                          
+| Storage Spaces Direct | Yes | Yes |
 | Software-Defined Networking | Yes | Yes |
 | Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
 | Adjustable storage repair speed | Yes | Yes|
@@ -138,12 +97,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No 
 
-<<<<<<< HEAD
-
-Additional technical features are available in the [Azure Stack HCI Preview Channel](../manage/preview-channel.md). See also https://gearup.microsoft.com/download/bdb1fbb1-1d4a-4a4d-b1ec-d751a02ccf76
-=======
 For more info, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
->>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 
 ## Compare management options
 
