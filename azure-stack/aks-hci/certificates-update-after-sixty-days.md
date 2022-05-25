@@ -27,7 +27,7 @@ If Azure Kubernetes Service (AKS) on Azure Stack HCI deployment is more than 60 
 
 2. Check that you can reach the management cluster `api-server`.
 
-    Run `[Get-AksHciCluster](./reference/ps/get-akshcicluster.md)` and verify that the command returns cluster information. If the command results an error message that says the certificate has expired or valid token required,  the certificate required for one of the management cluster services to communicate to the cloud agent has expired. You'll need to renew the certificate.
+    Run [`Get-AksHciCluster`](./reference/ps/get-akshcicluster.md) and verify that the command returns cluster information. If the command results an error message that says the certificate has expired or valid token required,  the certificate required for one of the management cluster services to communicate to the cloud agent has expired. You'll need to renew the certificate.
 
     The user is expected to relogin once the certificate expires. Execute the following command in PowerShell to relogin.
     ```powershell
