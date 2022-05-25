@@ -57,6 +57,11 @@
         href: container-security.md
       - name: Certificates and tokens
         href: certificates-and-tokens.md
+      - name: renewal and token refresh (duplicate?)
+        href: certificates-renewal.md
+      - name: Update certificates
+        href: certificates-update-after-sixty-days.md
+
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -135,6 +140,8 @@
             href: deploy-metallb.md
           - name: Use an ingress controller
             href: create-ingress-controller.md
+          - name: Use software defined networking
+            href: software-defined-networking.md
     - name: Manage storage
       items:
           - name: Use persistent volume
