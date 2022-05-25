@@ -40,6 +40,7 @@ Starting with the April 2022 update, Azure Kubernetes Service on Azure Stack HCI
 
 ## Next steps
 
+- Learn about [Update certificates on AKS on Azure Stack HCI and Windows Server after 60 days](certificates-update-after-sixty-days.md)
 - Learn about [Security in AKS on Azure Stack HCI and Windows Server](concepts-security.md)
 - Learn about [Secure communication with certificates](secure-communication.md).
-- Review issues with security, see [Fix security and identity known issues and errors](/azure-stack/aks-hci/known-issues-security)
+- 
