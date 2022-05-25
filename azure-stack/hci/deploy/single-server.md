@@ -17,9 +17,6 @@ This article describes how to use PowerShell to deploy Azure Stack HCI on a sing
 
 Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a single server. For more info, see [Using Azure Stack HCI on a single server](../concepts/single-server-clusters.md).
 
-> [!IMPORTANT]
-> For Azure StackHCI 21H2 using PowerShell is the only supported method for a single server deployment. Windows Admin Center can be used to manage specific components following a successful deployment.
-
 ## Prerequisites
 
 - A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
@@ -38,13 +35,13 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 ## Updating single-node clusters
 
-To install updates in Windows Admin Center, use Server Manager > Updates, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
+To install updates in Windows Admin Center, use Server Manager > Updates, PowerShell, or connect via Remote Desktop and use Server Configuration tool (Sconfig). You can't use the Cluster Manager > Updates tool to update single-node clusters for now. For solution updates (such as driver and firmware updates), see your solution vendor.
 
 ## Adding servers to a single-node cluster (optional)
 
 You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
 
-1. Validate the cluster by specifying existing server(s) and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
+1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md)
 3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
 

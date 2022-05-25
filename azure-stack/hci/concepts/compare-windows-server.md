@@ -11,7 +11,7 @@ ms.date: 01/21/2021
 
 # Compare Azure Stack HCI to Windows Server
 
-> Applies to: Azure Stack HCI, version 20H2; Windows Server
+> Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
 
 <<<<<<< HEAD
 This topic explains the key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations may choose to deploy both as they are intended for different and complementary purposes.
@@ -46,7 +46,7 @@ Windows Server is a highly versatile, multi-purpose operating system, with dozen
 ## When to use Windows Server
 >>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 
-Windows Server is a highly versatile, multi-purpose operating system, with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
+Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
 :::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
@@ -80,6 +80,7 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 | Runs in VMs      | For evaluation only; intended as a host OS | Yes, in the cloud or on premises |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) | Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 <<<<<<< HEAD
+<<<<<<< HEAD
 | Sizing| Azure Stack HCI sizing tool |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
 =======
 | Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) |Runs on any hardware with the "Certified for Windows Server" logo. See the Windows Server catalog at [WindowsServerCatalog](https://www.windowsservercatalog.com/)|
@@ -90,6 +91,10 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 > Download new versions of the Azure Stack HCI operating system within 6 months of released updates.
 <<<<<<< HEAD
 =======
+=======
+| Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer) |None.|
+| Lifecycle policy | Always up to date with the latest features. You have up to six months to install updates. | Use this option of the [Windows Server servicing channels](/windows-server/get-started/servicing-channels-comparison): Long-Term Servicing Channel (LTSC) |
+>>>>>>> 06ae4d9bdf9691a7e6ec82b076484da2046ad4a3
 
 ## Compare workloads and benefits
 
@@ -117,22 +122,21 @@ The following table compares the technical features of Azure Stack HCI and Windo
 >>>>>>> e190dac67b9568387917178947bbe94adc0b8531
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
-| Storage Spaces Direct (SSD) | Yes | Yes |                          
-| Software-Defined Networking (SDN) | Yes | Yes |
-| Stretch clustering for disaster recovery with Solid State Storage Drives (SSD) | No | Yes |
-| Adjustable Repair Speed | Yes | Yes|
+| Storage Spaces Direct | Yes | Yes |                          
+| Software-Defined Networking | Yes | Yes |
+| Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
+| Adjustable storage repair speed | Yes | Yes|
 | Secured-core Server| Yes | Yes |
-| Stronger, faster network organization | Yes | Yes |
+| Stronger, faster network encryption | Yes | Yes |
 | High availability for GPU workload | Yes | No |
-| Restart up to 10x faster with Kernel Soft Reboot | Yes | No |
+| Restart up to 10x faster with kernel-only restarts | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
-| 4-5x faster Storage Spaces repairs | Yes | - |
-| Cluster-Aware OS feature update | Yes | - |
-| Integrated driver and firmware updates | Yes (Integrated Systems only) | - |
-| Guided deployment | Yes | - |
+| 4-5x faster Storage Spaces repairs | Yes | No|
+| Cluster-Aware OS feature update | Yes | No |
+| Integrated driver and firmware updates | Yes (Integrated Systems only) | No 
 
 <<<<<<< HEAD
 
@@ -147,19 +151,19 @@ The following table compares the management options for Azure Stack HCI and Wind
 
 | Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
-| Desktop experience | - | Yes |
+| Desktop experience | No | Yes |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
 | Third-party tools | Yes | Yes |
-| Azure portal | Yes (natively) | Requires Arc agent |
+| Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Cluster integrates with Azure Resource Manager | Yes | No |
-| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>2</sup> |
+| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>1</sup> |
 | Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
-| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>2</sup> |
+| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>1</sup> |
 | Azure Arc-enabled VM management (preview)| Yes | No |
 
-<sup>2</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+<sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
 
 ## Compare product pricing
