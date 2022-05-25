@@ -13,7 +13,7 @@ ms.date: 01/10/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2. It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2, including the ability to run it on a [single server](../hci/concepts/single-server-clusters.md). It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features.
 
 For information on monthly quality and security updates, see [Azure Stack HCI release information](release-information.md). To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 20H2](whats-new-in-hci-20h2.md).
 
@@ -47,7 +47,7 @@ With Azure Stack HCI, version 21H2, you can now run Azure-exclusive workloads, s
 
 You can now deploy Azure Virtual Desktop session hosts to your on-premises Azure Stack HCI infrastructure with Azure Virtual Desktop for Azure Stack HCI (preview). You can also use Azure Virtual Desktop for Azure Stack HCI to manage your session hosts from the Azure portal. For more information, see [Azure Virtual Desktop for Azure Stack HCI (preview)](/azure/virtual-desktop/azure-stack-hci-overview).
 
-### Improvements to Azure Kubernetes Service on Azure Stack HCI
+### Improvements to Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 
 We continue to make improvements to Microsoft's on-premises Kubernetes solution for Azure Stack HCI, Azure Kubernetes Service (AKS) on Azure Stack HCI. For more info, see [AKS on Azure Stack HCI](../aks-hci/overview.md).
 
@@ -79,6 +79,7 @@ Azure Stack HCI Insights provides health, performance, and usage insights about 
 
 This section lists the new cluster infrastructure features that are available in Azure Stack HCI, version 21H2:
 
+- **[Use Azure Stack HCI on a single server](../hci/concepts/single-server-clusters.md)**: Minimize hardware and software costs in locations that can tolerate lower resiliency.
 - **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
 - **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
 - **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.

@@ -46,6 +46,8 @@
       href: deploy/migrate-cluster-same-hardware.md
   - name: Deploy with PowerShell
     items:
+    - name: Deploy on a single server
+      href: deploy/single-server.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
@@ -197,7 +199,11 @@
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage software load balancers
-      href: manage/load-balancers.md
+      items:
+      - name: Manage software load balancers
+        href: manage/load-balancers.md
+      - name: Configure load balancer for high availability ports
+        href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
@@ -224,6 +230,8 @@
   items:
   - name: Storage and clusters
     items:
+    - name: Single-node clusters
+      href: concepts/single-server-clusters.md
     - name: System requirements
       href: concepts/system-requirements.md
     - name: Choose drives
@@ -330,7 +338,7 @@
     href: /powershell/module/dcbqos
 - name: Related
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
     href: ../aks-hci/overview.md
   - name: Azure Stack family
     href: ../index.yml

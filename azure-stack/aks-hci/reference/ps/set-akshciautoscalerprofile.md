@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciAutoScalerProfile for AKS on Azure Stack HCI
+title: Set-AksHciAutoScalerProfile for AKS on Azure Stack HCI and Windows Server
 author: mkostersitz
 description: The Set-AksHciAutoScalerProfile PowerShell command allows reconfiguration of an autoscaler configuration profile
 ms.topic: reference

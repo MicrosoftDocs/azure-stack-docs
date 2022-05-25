@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciProxySetting for AKS on Azure Stack HCI
+title: Get-AksHciProxySetting for AKS on Azure Stack HCI and Windows Server
 author: mattbriggs
 description: The Get-AksHciProxySetting PowerShell command retrieves a proxy configuration.
 ms.topic: reference
@@ -21,7 +21,7 @@ Get-AksHciProxySetting
 ```
 
 ## Description
- Returns a list of all proxy settings objects known to the AKS on Azure Stack HCI host.
+ Returns a list of all proxy settings objects known to the AKS on Azure Stack HCI and Windows Server host.
 
 > [!NOTE]
 > Only one settings object can be defined and active at this point.
