@@ -252,7 +252,7 @@ If there's a corporate firewall between the Azure Stack HCI operating system and
 
 ### Cluster Cloud Witness
 
-This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `\[myblobstorage\].blob.core.windows`.net.
+This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `\[myblobstorage\].blob.core.windows.net`.
 
 ### AKS on Azure Stack HCI
 
