@@ -1,5 +1,5 @@
 ---
-title: Switch credentials
+title: Update switch credentials
 description: Learn how to update switch credentials on a ruggedized Azure Stack Hub from an HLH using Remote Desktop.
 author: troettinger
 ms.author: thoroet
@@ -11,7 +11,7 @@ ms.lastreviewed: 10/14/2020
 ms.custom: kr2b-contr-experiment
 ---
 
-# Switch credentials
+# Update switch credentials
 
 This article shows how to change the administrator (admin) and SNMP credentials on all switches in a ruggedized Azure Stack Hub.
 
