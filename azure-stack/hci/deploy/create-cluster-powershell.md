@@ -225,8 +225,6 @@ When creating the cluster, you'll get a warning that states - `"There were issue
 $ClusterName="cluster1" New-Cluster -Name $ClusterName –Node $ServerList –nostorage
 ```
 
-Congrats, your cluster has now been created.
-
 After the cluster is created, it can some take time for the cluster name to be replicated via DNS across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
 
 A good check to ensure all cluster resources are online:
@@ -390,10 +388,16 @@ For stretched clusters, the `Enable-ClusterStorageSpacesDirect` cmdlet will also
 - Creates a storage pool for each site and identifies it with the name of the site
 - Creates data and log volumes in each storage pool - one per site
 
-The following command enables Storage Spaces Direct. You can also specify a friendly name for a storage pool, as shown here:
+The following command enables Storage Spaces Direct on a multi-node cluster. You can also specify a friendly name for a storage pool, as shown here:
 
 ```powershell
 Enable-ClusterStorageSpacesDirect -PoolFriendlyName "$ClusterName Storage Pool" -CimSession $ClusterName
+```
+
+Here's an example on a single-node cluster, disabling the storage cache:
+
+```powershell
+Enable-ClusterStorageSpacesDirect -CacheState Disabled
 ```
 
 To see the storage pools, use this:
@@ -401,8 +405,6 @@ To see the storage pools, use this:
 ```powershell
 Get-StoragePool -CimSession $session
 ```
-
-Congrats, you have now created a cluster.
 
 ## After you create the cluster
 

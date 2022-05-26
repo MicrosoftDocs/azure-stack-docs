@@ -57,6 +57,9 @@
         href: container-security.md
       - name: Certificates and tokens
         href: certificates-and-tokens.md
+      - name: Update certificates
+        href: certificates-update-after-sixty-days.md
+
   - name: Networking
     items:
       - name: Kubernetes node networking
