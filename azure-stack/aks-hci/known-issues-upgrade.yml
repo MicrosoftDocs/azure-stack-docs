@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Known issues when upgrading Azure Kubernetes Service on Azure Stack HCI
-  description: Known issues when upgrading  Azure Kubernetes Service on Azure Stack HCI 
+  title: Known issues when upgrading Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Known issues when upgrading  Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-title: Resolve issues when upgrading AKS on Azure Stack HCI
+title: Resolve issues when upgradingAzure Kubernetes Service on Azure Stack HCI and Windows Server
 summary: |
-  This article describes known issues and errors you may encounter when upgrading AKS on Azure Stack HCI to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Stack HCI](/azure-stack/aks-hci/known-issues-installation).
+  This article describes known issues and errors you may encounter when upgrading Azure Kubernetes Service on Azure Stack HCI and Windows Server to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Stack HCI](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
   - name: Single section - ignored
@@ -224,8 +224,8 @@ sections:
           If there is a machine with `PHASE` Deleting and `VERSION` matching the previous Kubernetes version, proceed with the following steps.
           
           To address this problem, you will need the following pieces of information:
-          - Kubernetes version to which you're upgrading your workload cluster.
-          - IP address of the node which is stuck.
+          1. Kubernetes version to which you're upgrading your workload cluster.
+          2. IP address of the node which is stuck.
           
           To find this information, run the following cmdlet and command. Note that by default the cmdlet, `Get-AksHciCredential`, writes the kubeconfig to `~/.kube/config`. If you specify a different location for your workload cluster kubeconfig when calling `Get-AksHciCredential`, you will need to provide that location to kubectl as an additional argument. For example, `kubectl get nodes -o wide --kubeconfig <path to workload cluster kubeconfig>`.
           
@@ -419,6 +419,6 @@ additionalContent: |
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
   - [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center)
   
-  If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
+  If you continue to run into problems when you're using AKS on Azure Stack HCI and Windows Server, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
   
     
