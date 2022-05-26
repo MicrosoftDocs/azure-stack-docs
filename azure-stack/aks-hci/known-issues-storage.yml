@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI 
-  description: Get help to troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI.
+  title: Troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Get help to troubleshoot storage issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 title: Fix known issues and errors when managing storage
 summary: |
-  Use this topic to help you troubleshoot and resolve storage-related issues in AKS on Azure Stack HCI.
+  Use this topic to help you troubleshoot and resolve storage-related issues in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
   
 sections:
   - name: Single section - ignored
@@ -14,7 +14,7 @@ sections:
           Configuring persistent volume claims results in the error: 'Unable to initialize agent. Error: mkdir /var/log/agent: permission denied'.
 
         answer: | 
-          To resolve this issue, [define a custom storage class](container-storage-interface-disks.md#create-a-custom-storage-class-for-an-aks-on-azure-stack-hci-and-windows-server-disk) that you can use to provision PVCs. 
+          To resolve this issue, [define a custom storage class](container-storage-interface-disks.md) that you can use to provision PVCs. 
           This permission denied error indicates that the default storage class may not be suitable for your workloads and occurs in Linux workloads running on top of Kubernetes version 1.19.x or later. Following security best practices, many Linux workloads specify the `securityContext fsGroup` setting for a pod. The workloads fail to start on AKS on Azure Stack HCI since the default storage class does not specify the `fstype (=ext4)` parameter, so Kubernetes fails to change the ownership of files and persistent volumes based on the `fsGroup` requested by the workload.
           
       - question: | 

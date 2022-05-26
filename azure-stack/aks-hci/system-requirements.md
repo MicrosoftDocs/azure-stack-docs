@@ -155,13 +155,6 @@ For more information on networking requirements, visit [node networking concepts
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
 
-| Firewall port               | Description     |
-| ---------------------------- | ------------ |
-| 45000 | wssdagent gRPC server port |
-| 45001 | wssdagent gRPC authentication port |
-| 55000 | wssdcloudagent gRPC server port |
-| 65000 | wssdcloudagent gRPC authentication port |
-
 If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
 
 | Port   | Source                               | Description                                        | Firewall Notes                                                                               |
