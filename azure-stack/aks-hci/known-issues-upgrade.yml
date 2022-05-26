@@ -1,9 +1,9 @@
 ### YamlMime:FAQ
 metadata:
   title: Known issues when upgrading Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
-  description: Known issues when upgrading  Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Known issues when upgrading Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-title: Resolve issues when upgradingAzure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Resolve issues when upgrading Azure Kubernetes Service on Azure Stack HCI and Windows Server
 summary: |
   This article describes known issues and errors you may encounter when upgrading Azure Kubernetes Service on Azure Stack HCI and Windows Server to the newest release. You can also review known issues with [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and when [installing AKS on Azure Stack HCI](/azure-stack/aks-hci/known-issues-installation).
   
