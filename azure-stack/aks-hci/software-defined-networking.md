@@ -47,7 +47,7 @@ To deploy AKS on Azure Stack HCI and Windows Server with SDN, you need to make s
 - **AKS on Azure Stack HCI and Windows Server requirements**  
     [Azure Kubernetes Service on Azure Stack HCI requirements](system-requirements.md)
 - **SDN requirements**  
-    [Plan a Software Defined Network infrastructure](azure-stack/hci/concepts/plan-software-defined-networking-infrastructure)
+    [Plan a Software Defined Network infrastructure](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure)
 
 > [!NOTE]  
 > For SDN integration with AKS on Azure Stack HCI and Windows Server you need a network controller and software Load balancer. Gateway VMs are optional and not required.
@@ -65,7 +65,7 @@ Once the SDN Express deployment has completed, there should be a screen with the
 
 ![Your deployment will indicate that the status is active and healthy](media/software-defined-networking/status-active-and-healthy.png)
 
-If anything goes wrong or is being reported as unhealthy, see [Troubleshooting SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking). Contact [AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com](mailto:AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com) for assistance.
+If anything goes wrong or is being reported as unhealthy, see [Troubleshooting SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking). Contact <a href="mailto:AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com]</a> for assistance.
 
 It's important that SDN is healthy before proceeding. If you're deploying SDN in a new environment, create test VMs and verifying connectivity to the load balancer VIPs. See [how to create and attach VMs to an SDN virtual network](/azure-stack/hci/manage/vm) using Windows Admin Center.
 
@@ -127,45 +127,45 @@ Choose one of your HCI machines to drive the creation of AKS on Azure Stack HCI 
         $vnet = New-AksHciNetworkSetting -name "myvnet" -vswitchName "External" -k8sNodeIpPoolStart "10.20.0.2" -k8sNodeIpPoolEnd "10.20.0.255" -vipPoolStart "10.127.132.16" -vipPoolEnd "10.127.132.23" -useNetworkController -ipAddressPrefix "10.20.0.0/24" -gateway "10.20.0.1" -dnsServers "10.127.130.7"
         ```
 
-| Parameter                             | Description                                                                                                                                       |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| -name                                 | Name of virtual network in AKS on Azure Stack HCI and Windows Server                                                                                                                 |
-| -vswitchName                          | Name of external vSwitch on the HCI servers                                                                                                       |
-| -k8sNodeIpPoolStart -k8sNodeIpPoolEnd | IP start/end range of SDN virtual network                                                                                                         |
-| -vipPoolStart -vipPoolEnd             | IP start/end range of logical network used for load balancer VIP pool. Above, we've used an address range from the "PublicVIP" logical network. |
-| -useNetworkController                 | Enable integration with SDN                                                                                                                       |
-| -ipAddressPrefix                      | Virtual network subnet in CIDR notation                                                                                                           |
-| -gateway -dnsServers                  | Gateway and DNS server                                                                                                                            |
-
-> [!NOTE]  
-> For more information about these parameters, see: [New-AksHciNetworkSetting](/azure-stack/AKS-HCI/reference/ps/new-akshcinetworksetting)
+        | Parameter                             | Description                                                                                                                                       |
+        |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+        | -name                                 | Name of virtual network in AKS on Azure Stack HCI and Windows Server                                                                                                                 |
+        | -vswitchName                          | Name of external vSwitch on the HCI servers                                                                                                       |
+        | -k8sNodeIpPoolStart -k8sNodeIpPoolEnd | IP start/end range of SDN virtual network                                                                                                         |
+        | -vipPoolStart -vipPoolEnd             | IP start/end range of logical network used for load balancer VIP pool. Above, we've used an address range from the "PublicVIP" logical network. |
+        | -useNetworkController                 | Enable integration with SDN                                                                                                                       |
+        | -ipAddressPrefix                      | Virtual network subnet in CIDR notation                                                                                                           |
+        | -gateway -dnsServers                  | Gateway and DNS server                                                                                                                            |
+        
+        > [!NOTE]  
+        > For more information about these parameters, see: [New-AksHciNetworkSetting](/azure-stack/AKS-HCI/reference/ps/new-akshcinetworksetting)
 
 1.  In the same PowerShell window used in the last step, create the AKS on Azure Stack HCI and Windows Server  configuration for SDN by providing references to the targeted SDN networks, and passing in the network settings (**$vnet**) we defined:
 
-```powershell
-Set-AksHciConfig -imageDir "C:\\images" -workingDir "C:\\store" -cloudConfigLocation "C:\\config" -vnet $vnet -useNetworkController -networkControllerFqdnOrIpAddress "nc.contoso.com" -networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" -networkControllerLnetRef "/logicalnetworks/HNVPA" -ring "SDNPreview" -catalog AKS-HCI -stable-catalogs-ext -version 1.0.10.40517
-```
-
-> [!NOTE]  
-> The HNVPA logical network will be used as the underlay provider for the AKS on Azure Stack HCI and Windows Server virtual network.
-
-> [!NOTE]  
-> If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the `CloudServiceCidr` parameter. This is the IP Address of the MOC cloud service and must be in the same subnet as Azure Stack HCI cluster nodes. More details [Microsoft On-premises Cloud service](/azure-stack/AKS-HCI/concepts-node-networking#microsoft-on-premises-cloud-service).
-
-| Parameter                         | Description                                                                                                                                                                                                                                                                                                                                                           |
-|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| -imageDir                         | The path to the directory where VHD images are stored.                                                                                                                                                                                                                                                                                                                |
-| -workingDir                       | The path to the directory where AKS on Azure Stack HCI and Windows Server  stores temporary files                                                                                                                                                                                                                                                                                                        |
-| -cloudConfigLocation              | The path to the directory where cloud agent configuration is stored                                                                                                                                                                                                                                                                                                   |
-| -vnet                             | Name of AksHciNetworkSetting variable created in the previous step                                                                                                                                                                                                                                                                                                    |
-| -useNetworkController             | Enable integration with SDN                                                                                                                                                                                                                                                                                                                                           |
-| -networkControllerFqdnOrIpAddres  | Network controller FQDN. You can get the FQDN by executing Get-NetworkController on the Network Controller VM and using the RestName parameter.                                                                                                                                                                                                                       |
-| -networkControllerLbSubnetRef     | Reference to the public VIP logical network subnet configured in Network Controller. You can get this subnet by executing Get-NetworkControllerLogicalSubnet command. When using this command, use PublicVIP as the LogicalNetworkId. VipPoolStart and vipPoolEnd parameters in the New-AksHciNetworkSetting cmdlet must be part of the subnet referenced here. |
-| -networkControllerLnetRef         | Normally, this would be "/logicalnetworks/HNVPA"                                                                                                                                                                                                                                                                                                                      |
-| -version                          | Use 1.0.10.40517                                                                                                                                                                                                                                                                                                                                                      |
-| -ring                             | Use SDNPreview                                                                                                                                                                                                                                                                                                                                                        |
-| -catalog                          | Use AKS on Azure Stack HCI and Windows Server -stable-catalogs-ext                                                                                                                                                                                                                                                                                                                                       |
-
+    ```powershell
+    Set-AksHciConfig -imageDir "C:\\images" -workingDir "C:\\store" -cloudConfigLocation "C:\\config" -vnet $vnet -useNetworkController -networkControllerFqdnOrIpAddress "nc.contoso.com" -networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" -networkControllerLnetRef "/logicalnetworks/HNVPA" -ring "SDNPreview" -catalog AKS-HCI -stable-catalogs-ext -version 1.0.10.40517
+    ```
+    
+    > [!NOTE]  
+    > The HNVPA logical network will be used as the underlay provider for the AKS on Azure Stack HCI and Windows Server virtual network.
+    
+    > [!NOTE]  
+    > If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the `CloudServiceCidr` parameter. This is the IP Address of the MOC cloud service and must be in the same subnet as Azure Stack HCI cluster nodes. More details [Microsoft On-premises Cloud service](/azure-stack/AKS-HCI/concepts-node-networking#microsoft-on-premises-cloud-service).
+    
+    | Parameter                         | Description                                                                                                                                                                                                                                                                                                                                                           |
+    |-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | -imageDir                         | The path to the directory where VHD images are stored.                                                                                                                                                                                                                                                                                                                |
+    | -workingDir                       | The path to the directory where AKS on Azure Stack HCI and Windows Server  stores temporary files                                                                                                                                                                                                                                                                                                        |
+    | -cloudConfigLocation              | The path to the directory where cloud agent configuration is stored                                                                                                                                                                                                                                                                                                   |
+    | -vnet                             | Name of AksHciNetworkSetting variable created in the previous step                                                                                                                                                                                                                                                                                                    |
+    | -useNetworkController             | Enable integration with SDN                                                                                                                                                                                                                                                                                                                                           |
+    | -networkControllerFqdnOrIpAddres  | Network controller FQDN. You can get the FQDN by executing Get-NetworkController on the Network Controller VM and using the RestName parameter.                                                                                                                                                                                                                       |
+    | -networkControllerLbSubnetRef     | Reference to the public VIP logical network subnet configured in Network Controller. You can get this subnet by executing Get-NetworkControllerLogicalSubnet command. When using this command, use PublicVIP as the LogicalNetworkId. VipPoolStart and vipPoolEnd parameters in the New-AksHciNetworkSetting cmdlet must be part of the subnet referenced here. |
+    | -networkControllerLnetRef         | Normally, this would be "/logicalnetworks/HNVPA"                                                                                                                                                                                                                                                                                                                      |
+    | -version                          | Use 1.0.10.40517                                                                                                                                                                                                                                                                                                                                                      |
+    | -ring                             | Use SDNPreview                                                                                                                                                                                                                                                                                                                                                        |
+    | -catalog                          | Use AKS on Azure Stack HCI and Windows Server -stable-catalogs-ext                                                                                                                                                                                                                                                                                                                                       |
+    
 > [!NOTE]  
 > For more information about these parameters, see: [Set-AksHciConfig](/azure-stack/AKS-HCI/reference/ps/set-akshciconfig)
 
@@ -190,7 +190,7 @@ Once the installation has succeeded, a control plane VM (management cluster) sho
 
 ### Feedback and issues
 
-If you encounter any issues with the instructions in this guide, or would simply like to provide feedback,  reach out to us at [AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com](mailto:AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com). 
+If you encounter any issues with the instructions in this guide, or would simply like to provide feedback,  reach out to us at <a href="mailto:AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com]</a>. 
 
 There are also some self-help resources that can be found [Troubleshoot SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking) for SDN and [Resolve general issues when using Azure Kubernetes Service on Azure Stack HCI](/azure-stack/AKS-HCI/known-issues) for AKS on Azure Stack HCI and Windows Server. We sincerely appreciate and thank you for your feedback and participation!
 
