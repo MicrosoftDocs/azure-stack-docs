@@ -81,9 +81,9 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Attribute | Azure Stack HCI | Windows Server 2022 |
 | ------------- | ------------------- | ----------------------- |
 | Hyper-V | Yes | Yes |
-| Storage Spaces Direct | Yes | Yes |                          
+| Storage Spaces Direct | Yes | Yes |
 | Software-Defined Networking | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct | No | Yes |
+| Stretch clustering for disaster recovery with Storage Spaces Direct | Yes | No |
 | Adjustable storage repair speed | Yes | Yes|
 | Secured-core Server| Yes | Yes |
 | Stronger, faster network encryption | Yes | Yes |
@@ -93,9 +93,9 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
-| 4-5x faster Storage Spaces repairs | Yes | No|
+| 4-5x faster Storage Spaces repairs | Yes | Yes |
 | Cluster-Aware OS feature update | Yes | No |
-| Integrated driver and firmware updates | Yes (Integrated Systems only) | No 
+| Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
 
 For more info, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
