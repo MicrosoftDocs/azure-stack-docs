@@ -15,7 +15,7 @@ ms.reviewer: jeguan
 
 # Tutorial: Update an application in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-After you deploy an application in Kubernetes, you can update it by specifying a new container image or image version. You should stage an update so that only a portion of the deployment is updated at the same time. This staged update enables the application to keep running during the update. It also provides a rollback mechanism if a deployment failure occurs.
+After you deploy an application in Kubernetes in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, you can update it by specifying a new container image or image version. You should stage an update so that only a portion of the deployment is updated at the same time. This staged update enables the application to keep running during the update. It also provides a rollback mechanism if a deployment failure occurs.
 
 This tutorial, part six of seven, describes how to update the sample Azure Vote app. You will learn how to:
 
@@ -32,7 +32,7 @@ In previous tutorials you learned how to:
 - Create an AKS on Azure Stack HCI cluster and deploy the application to the cluster.
 -  Clone an application repository that includes the application source code and a pre-created Docker Compose file you can use in this tutorial. 
 
-Verify that you've created a clone of the repo, and have changed directories into the cloned directory. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+Verify that you've created a clone of the repo, and have changed directories into the cloned directory. If you haven't completed these steps, start with [Tutorial 1 - Create container images](tutorial-kubernetes-prepare-application.md).
 
 This tutorial requires that you run the Azure CLI version 2.0.53 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI][azure-cli-install].
 

@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI
-  description: Get help to troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI.
+  title: Troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Get help to troubleshoot security and identity issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 title: Fix security and identity known issues and errors
 summary: |
-  Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS on Azure Stack HCI.
+  Use this topic to help you troubleshoot and resolve security and identity-related issues in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
   
 sections:
   - name: Single section - ignored

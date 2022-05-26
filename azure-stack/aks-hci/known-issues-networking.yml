@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot networking issues and errors in Azure Kubernetes Service on Azure Stack HCI
-  description: Get help to troubleshoot networking issues and errors in Azure Kubernetes Service on Azure Stack HCI.
+  title: Troubleshoot networking issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Get help to troubleshoot networking issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
 title: Fix known issues and errors when configuring a network
 summary: |
-  Use this topic to help you troubleshoot and resolve networking-related issues in AKS on Azure Stack HCI.
+  Use this topic to help you troubleshoot and resolve networking-related issues with Azure Kubernetes Service on Azure Stack HCI and Windows Server.
   
 sections:
   - name: Single section - ignored
@@ -58,6 +58,19 @@ sections:
           ```
           
           It is likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS on Azure Stack HCI are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It is possible faulty proxy settings were set on the host and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
+          
+      - question: | 
+          Authentication handshake failed: x509: certificate signed by unknown authority
+
+        answer: | 
+          1. Check that the user who has run the command is the same user that installed AKS on Azure Stack or Windows Server. For more information on granting access to multiple users, see [Set up multiple administrators](set-multiple-administrators.md)
+          2. If the user is the same and you see the error again, you can:
+          If this error is seen when trying to perform operations such as deploying a new AKS cluster or adding a node pool to an existing cluster, ensure the user running the command is the same user who installed AKS-HCI. If the user is the same and the error persists, follow the below steps to resolve the issue:
+            - Delete old management appliance certificate by removing `$env:UserProfile.wssd\kvactl\cloudconfig`
+            - Run `Repair-AksHciCerts`.
+            - Run `Get-AksHciCluster` to check that it's fixed
+          
+          You may see this error when deploying a new AKS cluster or adding a node pool to an existing cluster.
           
       - question: | 
           Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly.

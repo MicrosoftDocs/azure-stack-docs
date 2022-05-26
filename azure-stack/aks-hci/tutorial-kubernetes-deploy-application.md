@@ -16,7 +16,7 @@ author: mattbriggs
 
 # Tutorial: Deploy apps in Azure Kubernetes Service on Azure Stack HCI on Windows Server
 
-You can build and deploy your own apps and services into a Kubernetes cluster. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
+You can build and deploy your own apps and services into a Kubernetes cluster on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Kubernetes provides a distributed platform for containerized apps. You can let the cluster manage the availability and connectivity. This tutorial, part four of seven, describes how you can deploy a sample application into a Kubernetes cluster.
 
 You will learn how to:
 
