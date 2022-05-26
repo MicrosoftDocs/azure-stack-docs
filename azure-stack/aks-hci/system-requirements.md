@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Wi
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
-ms.lastreviewed: 05/19/2022
+ms.lastreviewed: 05/20/2022
 ms.reviewer: abha
-ms.date: 05/19/2022
+ms.date: 05/20/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -154,13 +154,6 @@ For more information on networking requirements, visit [node networking concepts
 #### AKS on Azure Stack HCI and Windows Server requirements
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
-
-| Firewall port               | Description     |
-| ---------------------------- | ------------ |
-| 45000 | wssdagent gRPC server port |
-| 45001 | wssdagent gRPC authentication port |
-| 55000 | wssdcloudagent gRPC server port |
-| 65000 | wssdcloudagent gRPC authentication port |
 
 If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
 
