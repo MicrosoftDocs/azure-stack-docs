@@ -7,14 +7,14 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/23/2022
+ms.date: 05/26/2022
 zone_pivot_groups: hci-versions
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
 
 ::: zone pivot="above-5b"
-This article explains how to enable Azure Insights capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
+This article explains how to enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights.
 ::: zone-end
 
 ::: zone pivot="on-5b"
