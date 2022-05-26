@@ -1,9 +1,9 @@
 ---
-title: Concepts - Storage options for applications in AKS on Azure Stack HCI
+title: Concepts - Storage options for applications in AKS on Azure Stack HCI and Windows Server
 description: Storage options for applications in AKS on Azure Stack HCI.
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 05/17/2022
+ms.date: 05/26/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,9 +13,11 @@ ms.reviewer: abha
 
 ---
 
-# Storage options for applications in AKS on Azure Stack HCI
+# Storage options for applications in AKS on Azure Stack HCI and Windows Server
 
-Applications that run in AKS on Azure Stack HCI may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
+Applications that run in AKS on Azure Stack HCI may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). 
+
+Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
 
 ![Architectural storage image showing a cluster master and node](media/storage-architecture.png)
 
