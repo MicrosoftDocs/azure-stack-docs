@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI 
-  description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI
+  title: Troubleshoot known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Find solutions to known issues and errors when installing Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 title: Resolve issues and errors during an AKS on Azure Stack HCI installation
 summary: |
@@ -112,7 +112,7 @@ sections:
           Get-MocConfig
           ```
           
-          If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack HCI with the correct DNS server. For more information, see [Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI](./restart-cluster.md).
+          If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack HCI with the correct DNS server. For more information, see [Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI ](./restart-cluster.md).
           
           The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
           After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following error message:
@@ -229,7 +229,7 @@ sections:
           Expected behavior:
           
           1. The AKS on Azure Stack HCI installation hangs at `Waiting for azure-arc-onboarding to complete`.
-          2. `Azure-arc-onboarding` pods go into crash loop.
+          2. `Azure-arc-onboarding` pods goes into crash loop.
           3. The `Azure-arc-onboarding` pods error with the following error:  
               `Starting onboarding process ERROR: variable CLIENT_SECRET is required`
           
@@ -300,7 +300,7 @@ sections:
           dial tcp 52.184.220.11:443: connectex: 
           A connection attempt failed because the connected party did not properly
           respond after a period of time, or established connection failed because
-          connected host has failed to respond. At line:1 char:1+ powershell -command
+          connected host has failed to respond.At line:1 char:1+ powershell -command
           { Get-DownloadSdkRelease -Name "mocstack-stable"}
           ```
           
@@ -451,5 +451,5 @@ additionalContent: |
   - [Windows Admin Center known issues](/azure-stack/aks-hci/known-issues-windows-admin-center)
   - [Troubleshooting Kubernetes clusters](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
   
-  If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
-   
+  If you continue to run into problems when you're using AKS on Azure Stack HCI and Windows Server, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
+    

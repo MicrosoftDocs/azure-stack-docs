@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Common issues when using Azure Kubernetes Service on Azure Stack HCI
-  description: Common known issues when using Azure Kubernetes Service on Azure Stack HCI 
+  title: Common issues when using Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Common known issues when using Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-title: Resolve general issues when using Azure Kubernetes Service on Azure Stack HCI
+title: Resolve general issues when using Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 summary: |
-  This article describes some common known issues with Azure Kubernetes Service on Azure Stack HCI. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
+  This article describes some common known issues with Azure Kubernetes Service on Azure Kubernetes Service on Azure Stack HCI and Windows Server. You can also review [known issues with Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center) and [installation issues and errors](/azure-stack/aks-hci/known-issues-installation).
   
 sections:
   - name: Single section - ignored
@@ -98,6 +98,6 @@ additionalContent: |
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
   - [Connect with SSH to Windows or Linux worker nodes](./ssh-connection.md)
   
-  If you continue to run into problems when you're using Azure Kubernetes Service on Azure Stack HCI, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
+  If you continue to run into problems when you're using AKS on Azure Stack HCI and Windows Server, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
   
     
