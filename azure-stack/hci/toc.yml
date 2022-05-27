@@ -140,6 +140,8 @@
       items:
       - name: Manage the cluster
         href: manage/cluster.md
+      - name: Manage the cluster using Windows Admin Center in Azure
+        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
