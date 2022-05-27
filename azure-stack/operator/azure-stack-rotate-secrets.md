@@ -116,13 +116,14 @@ Prior to rotation of external secrets:
 3. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 4. Create a fileshare you can access from the ERCS VMs. The file share must be readable and writable for the **CloudAdmin** identity.
 5. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare, where you create directories to place your external certificates.
-6. Download **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to your network fileshare, and run the script. The script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure must begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All remaining subdirectories are contained within the preceding structure. For example:
+6. Download **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to your network fileshare, and run the script. The script will create a folder structure that adheres to ***.\Certificates\AAD*** or ***.\Certificates\ADFS***, depending on your identity provider. Your folder structure under the network fileshare MUST begin with a **\\Certificates** folder, followed by ONLY an **\\AAD** or **\\ADFS** folder. All remaining subdirectories are contained within the preceding structure. For example:
     - File share = **\\\\\<IPAddress>\\\<ShareName>**
-    - Certificate root folder for Azure AD provider = **\\Certificates\AAD**
-    - Full path = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
-
+    - Certificates root folder within fileshare = **\\\\\<IPAddress>\\\<ShareName>\\\Certificates**
+    - Full path to certificates folder for Azure AD provider = **\\\\\<IPAddress>\\\<ShareName>\Certificates\AAD**
+    - Full path to certificates folder for ADFS provider = **\\\\\<IPAddress>\\\<ShareName>\Certificates\ADFS**
+  
     > [!IMPORTANT]
-    > When you run `Start-SecretRotation` later, it will validate the folder structure. A folder structure that is not compliant will throw the following error:
+    > When you run `Start-SecretRotation` later, you pass the path to the certificates root folder. The cmdlet will validate the folder structure, and throw the following error if its not compliant:
     >
     > ```powershell
     > Cannot bind argument to parameter 'Path' because it is null.
@@ -180,33 +181,36 @@ Complete the following steps to rotate external secrets:
 
 1. Use the following PowerShell script to rotate the secrets. The script requires access to a Privileged EndPoint (PEP) session. The PEP is accessed through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (Prefix-ERCS01, Prefix-ERCS02, or Prefix-ERCS03) on different hosts. 
 
+   The script performs the following steps:
+
+   - Creates a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account, and stores the session as a variable. This variable is used as a parameter in the next step. 
+
+   - Runs [Invoke-Command](/powershell/module/microsoft.powershell.core/Invoke-Command), passing the PEP session variable as the `-Session` parameter.
+
+   - Runs `Start-SecretRotation` in the PEP session, using the following parameters. See the [Start-SecretRotation](#reference-start-secretrotation-cmdlet) reference for additional details:
+
+     | Parameter | Variable | Description |
+     | --------- | -------- | ----------- |
+     | `-PfxFilesPath` | $certSharePath | The network path to your certificates root folder as discussed in step #6 of the [Preparation section](#preparation), for example `\\<IPAddress>\<ShareName>\Certificates`. |
+     | `-PathAccessCredential` | $certShareCreds | The PSCredential object for credentials to the share. |
+     | `-CertificatePassword` | $certPassword | A secure string of the password used for all of the pfx certificate files created. |
+
     ```powershell
-    # Create a PEP Session
+    # Create a PEP session
     winrm s winrm/config/client '@{TrustedHosts= "<IP_address_of_ERCS>"}'
     $PEPCreds = Get-Credential
     $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
-    # Run Secret Rotation
-    $CertPassword = ConvertTo-SecureString '<Cert_Password>' -AsPlainText -Force
-    $CertShareCreds = Get-Credential
-    $CertSharePath = "<Network_Path_Of_CertShare>"
+    # Run secret rotation
+    $certPassword = ConvertTo-SecureString '<Cert_Password>' -AsPlainText -Force
+    $certShareCreds = Get-Credential
+    $certSharePath = "<Network_Path_Of_CertShare>"
     Invoke-Command -Session $PEPsession -ScriptBlock {
         param($certSharePath, $certPassword, $certShareCreds )
         Start-SecretRotation -PfxFilesPath $certSharePath -PathAccessCredential $certShareCreds -CertificatePassword $certPassword
     } -ArgumentList ($certSharePath, $certPassword, $certShareCreds)
     Remove-PSSession -Session $PEPSession
     ```
-
-    The script performs the following steps:
-
-    - Creates a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account, and stores the session as a variable. This variable is used as a parameter in the next step. 
-
-    - Runs [Invoke-Command](/powershell/module/microsoft.powershell.core/Invoke-Command), passing the PEP session variable as the `-Session` parameter.
-
-    - Runs `Start-SecretRotation` in the PEP session, using the following parameters:
-        - `-PfxFilesPath`: The network path to your Certificates directory created earlier.  
-        - `-PathAccessCredential`: The PSCredential object for credentials to the share.
-        - `-CertificatePassword`: A secure string of the password used for all of the pfx certificate files created.
 
 2. External secret rotation takes approximately one hour. After successful completion, your console will display a `ActionPlanInstanceID ... CurrentStatus: Completed` message, followed by `Action plan finished with status: 'Completed'`. Remove your certificates from the share created in the Preparation section and store them in their secure backup location.
 
@@ -331,7 +335,7 @@ The baseboard management controller monitors the physical state of your servers.
 
 | Parameter | Type | Required | Position | Default | Description |
 |--|--|--|--|--|--|
-| `PfxFilesPath` | String  | False  | Named  | None  | The fileshare path to the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets. End directory must be **\Certificates**. |
+| `PfxFilesPath` | String  | False  | Named  | None  | The fileshare path to the **\Certificates** root folder containing all external network endpoint certificates. Only required when rotating external secrets. Path must end with **\Certificates** folder, for example **\\\\\<IPAddress>\\\<ShareName>\\\Certificates**. |
 | `CertificatePassword` | SecureString | False  | Named  | None  | The password for all certificates provided in the -PfXFilesPath. Required value if PfxFilesPath is provided when external secrets are rotated. |
 | `Internal` | String | False | Named | None | Internal flag must be used anytime an Azure Stack Hub operator wishes to rotate internal infrastructure secrets. |
 | `PathAccessCredential` | PSCredential | False  | Named  | None  | The PowerShell credential for the fileshare of the **\Certificates** directory containing all external network endpoint certificates. Only required when rotating external secrets.  |
