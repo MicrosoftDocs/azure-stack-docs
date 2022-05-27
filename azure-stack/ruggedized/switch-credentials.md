@@ -5,7 +5,7 @@ author: troettinger
 ms.author: thoroet
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 05/27/2022
 ms.reviewer: justinha
 ms.lastreviewed: 10/14/2020
 ms.custom: kr2b-contr-experiment
