@@ -3,7 +3,7 @@ title: Manage Network ATC
 description: This topic covers how to manage your Network ATC deployment.
 author: jasongerend
 ms.topic: how-to
-ms.date: 04/20/2022
+ms.date: 05/27/2022
 ms.author: jgerend
 ---
 
@@ -75,7 +75,6 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     Get-NetIntent -Name Cluster_Compute -ClusterName HCI01
     ```
 
-
 ## Update or override network settings
 
 This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
@@ -127,16 +126,16 @@ This task will help you override the default configuration which has already bee
 
 ## Test Network ATC in VMs
 
-> [!NOTE]
-> Ensure you have multiple virtual CPUs on each VM.
-
-Running Azure Stack HCI inside VMs is useful for test environments. To do so, add an adapter property override to your intent that disables the NetworkDirect adapter property.
+Running Azure Stack HCI inside VMs is useful for test environments. To do so, add an adapter property override to your intent that disables the **NetworkDirect** adapter property:
 
 ```powershell
 $AdapterOverride = New-NetIntentAdapterPropertyOverrides
 $AdapterOverride.NetworkDirect = 0
 Add-NetIntent -Name MyIntent -AdapterName vmNIC01, vmNIC02 -Management -Compute -Storage -AdapterPropertyOverrides $AdapterOverride
 ```
+
+> [!NOTE]
+> Ensure you have multiple virtual CPUs on each VM.
 
 ## Remove an intent
 
