@@ -47,7 +47,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    Here's an example:
 
    ```powershell
-   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin"
+   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin
    ```
 
 ## Updating single-node clusters
@@ -63,7 +63,7 @@ You can add servers to your single-node cluster, also known as scaling out, thou
 3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
 
    ```powershell
-   Set-Storagepool -Friendlyname Poolname - FaultDomainAwarenessDefault StorageScaleUnit
+   Set-Storagepool -Friendlyname S2D* -FaultDomainAwarenessDefault StorageScaleUnit
    ```
 
    > [!NOTE]
@@ -74,10 +74,15 @@ You can add servers to your single-node cluster, also known as scaling out, thou
       setting and will have a two-way mirror resiliency setting.
 
 4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`
+
+   ```powershell
+   Stop-ClusterPerformanceHistory -DeleteHistory
+   ```
+
 5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
 
    ```powershell
-   Enable-ClusterS2D -Verbose 
+   Start-ClusterPerformanceHistory
    ```
 
 6. To change the fault domain on existing volumes after scale-out, do the following:
