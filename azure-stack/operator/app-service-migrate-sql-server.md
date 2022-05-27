@@ -77,10 +77,10 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
 1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.<region> and connect to **CN0-VM**.
 1. Stop the **WebFarmService** on all active controllers.  You may need to change the failure actions on the service to "Take no action and manually kill the process" - Note if you take this action you must restore the original behavior of the service once this process is complete.
-1. Repeat the steps [Update Hosting Connection string]() and [Update Metering Connection String]() for all controllers within the App Service deployment.
-1. [Update the connection strings inside the database]()
-1. [Update role instances]()
-1. [Update Virtual Machine Scale Set Definitions]()
+1. Repeat the steps [Update Hosting Connection string](#update-app-service-hosting-database-connection-string) and [Update Metering Connection String](#update-app-service-metering-database-connection-string) for all controllers within the App Service deployment.
+1. [Update the connection strings inside the database](#update-connection-strings-inside-the-database)
+1. [Update role instances](#update-role-instances)
+1. [Update Virtual Machine Scale Set Definitions](#update-virtual-machine-scale-set-definitions)
 1. In the Azure Stack Administration Portal navigate back to the **ControllersNSG** Network Security Group
 1. Modify the **Inbound_Rdp_3389** rule to deny access.
 
