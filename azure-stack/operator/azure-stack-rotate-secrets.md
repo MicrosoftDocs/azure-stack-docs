@@ -187,9 +187,9 @@ Complete the following steps to rotate external secrets:
 
      | Parameter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Variable | Description |
      | --------- | -------- | ----------- |
-     | `-PfxFilesPath` | $certSharePath | The network path to your certificates root folder as discussed in step #6 of the [Preparation section](#preparation), for example `\\<IPAddress>\<ShareName>\Certificates`. |
-     | `-PathAccessCredential` | $certShareCreds | The PSCredential object for credentials to the share. |
-     | `-CertificatePassword`  | $certPassword | A secure string of the password used for all of the pfx certificate files created. |
+     | `-PfxFilesPath` | $CertSharePath | The network path to your certificates root folder as discussed in step #6 of the [Preparation section](#preparation), for example `\\<IPAddress>\<ShareName>\Certificates`. |
+     | `-PathAccessCredential` | $CertShareCreds | The PSCredential object for credentials to the share. |
+     | `-CertificatePassword`  | $CertPassword | A secure string of the password used for all of the pfx certificate files created. |
 
     ```powershell
     # Create a PEP session
@@ -198,13 +198,13 @@ Complete the following steps to rotate external secrets:
     $PEPSession = New-PSSession -ComputerName <IP_address_of_ERCS_Machine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint" -SessionOption (New-PSSessionOption -Culture en-US -UICulture en-US)
 
     # Run secret rotation
-    $certPassword = ConvertTo-SecureString '<Cert_Password>' -AsPlainText -Force
-    $certShareCreds = Get-Credential
-    $certSharePath = "<Network_Path_Of_CertShare>"
+    $CertPassword = ConvertTo-SecureString '<Cert_Password>' -AsPlainText -Force
+    $CertShareCreds = Get-Credential
+    $CertSharePath = "<Network_Path_Of_CertShare>"
     Invoke-Command -Session $PEPsession -ScriptBlock {
-        param($certSharePath, $certPassword, $certShareCreds )
-        Start-SecretRotation -PfxFilesPath $certSharePath -PathAccessCredential $certShareCreds -CertificatePassword $certPassword
-    } -ArgumentList ($certSharePath, $certPassword, $certShareCreds)
+        param($CertSharePath, $CertPassword, $CertShareCreds )
+        Start-SecretRotation -PfxFilesPath $CertSharePath -PathAccessCredential $CertShareCreds -CertificatePassword $CertPassword
+    } -ArgumentList ($CertSharePath, $CertPassword, $CertShareCreds)
     Remove-PSSession -Session $PEPSession
     ```
 
@@ -389,9 +389,9 @@ $CertShareCreds = Get-Credential
 $CertSharePath = "<NetworkPathOfCertShare>"
 # Run Secret Rotation
 Invoke-Command -Session $PEPsession -ScriptBlock {
-    param($certSharePath, $certPassword, $certShareCreds )
-    Start-SecretRotation -PfxFilesPath $certSharePath -PathAccessCredential $certShareCreds -CertificatePassword $certPassword
-} -ArgumentList ($certSharePath, $certPassword, $certShareCreds)
+    param($CertSharePath, $CertPassword, $CertShareCreds )
+    Start-SecretRotation -PfxFilesPath $CertSharePath -PathAccessCredential $CertShareCreds -CertificatePassword $CertPassword
+} -ArgumentList ($CertSharePath, $CertPassword, $CertShareCreds)
 Remove-PSSession -Session $PEPSession
 ```
 
