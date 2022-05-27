@@ -127,6 +127,9 @@ This task will help you override the default configuration which has already bee
 
 ## Test Network ATC in VMs
 
+> [!NOTE]
+> Ensure you have multiple virtual CPUs on each VM.
+
 Running Azure Stack HCI inside VMs is useful for test environments. To do so, add an adapter property override to your intent that disables the NetworkDirect adapter property.
 
 ```powershell
