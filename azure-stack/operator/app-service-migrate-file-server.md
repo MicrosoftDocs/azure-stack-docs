@@ -34,4 +34,16 @@ robocopy $source $destination
 net use $destination /delete
 ```
 
+## Restore the App Service file share content to a new File Server
 
+After [preparing the new file server](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server) to host the App Service file share, you need to restore the tenant file share content from backup. You can use whatever method you have available to copy the files into the newly created App Service file share location. Running this example on the file server will use PowerShell and robocopy to connect to a remote share and copy the files to the share:
+
+```powershell
+$source = "<remote backup storage share location>"
+$destination = "<local file share location>"
+net use $source /user:<account to use to connect to the remote share in the format of domain\username> *
+robocopy /E $source $destination
+net use $source /delete
+```
+
+In addition to copying the file share contents, you must also reset permissions on the file share itself. To reset permissions, open an admin command prompt on the file server computer and run the **ReACL.cmd** file. The **ReACL.cmd** file is located in the App Service installation files in the **BCDR** directory.
