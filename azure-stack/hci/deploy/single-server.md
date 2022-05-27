@@ -29,9 +29,26 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
 1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md). You don't need a cluster witness.
+1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
+
+   Here's an example of creating the cluster and then enabling Storage Spaces Direct while disabling the storage cache:
+
+   ```powershell
+   New-Cluster -Name <cluster-name> -Node <node-name> -NOSTORAGE
+   ```
+
+   ```powershell
+   Enable-ClusterStorageSpacesDirect -CacheState Disabled 
+   ```
+
 1. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
-1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell.
+1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers. 
+
+   Here's an example:
+
+   ```powershell
+   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin"
+   ```
 
 ## Updating single-node clusters
 
@@ -45,19 +62,23 @@ You can add servers to your single-node cluster, also known as scaling out, thou
 2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md)
 3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
 
-```powershell
-Set-Storagepool -Friendlyname Poolname - FaultDomainAwarenessDefault StorageScaleUnit
-```
+   ```powershell
+   Set-Storagepool -Friendlyname Poolname - FaultDomainAwarenessDefault StorageScaleUnit
+   ```
 
-> [!NOTE]
-> After changing the fault-domain awareness, data copies are spread across servers in the cluster, making the cluster resilient to faults at the entire server level. The volume fault domain is derived from the storage pool's default settings and the resiliency will remain as two-way mirror unless you change it. This means that any new volumes you create in Windows Admin Center or PowerShell will use `StorageScaleUnit` as the fault domain setting and will have a two-way mirror resiliency setting.
+   > [!NOTE]
+   > After changing the fault-domain awareness, data copies are spread across servers in the cluster, making the 
+      cluster resilient to faults at the entire server level. The volume fault domain is derived from the storage pool's 
+      default settings and the resiliency will remain as two-way mirror unless you change it. This means that any new 
+      volumes you create in Windows Admin Center or PowerShell will use `StorageScaleUnit` as the fault domain 
+      setting and will have a two-way mirror resiliency setting.
 
 4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`
 5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
 
-```powershell
-Enable-ClusterS2D -Verbose 
-```
+   ```powershell
+   Enable-ClusterS2D -Verbose 
+   ```
 
 6. To change the fault domain on existing volumes after scale-out, do the following:
     1. Create a new volume that's thinly provisioned and has the same size as the old volume  

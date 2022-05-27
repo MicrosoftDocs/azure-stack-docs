@@ -14,7 +14,7 @@ author: mattbriggs
 
 # Tutorial: Upgrade Kubernetes in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes.
+As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server.
 
 This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluster. You'll learn how to:
 

@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot issues when uninstalling AKS on Azure Stack HCI.
-  description: Get help to troubleshoot issues and errors when uninstalling AKS on Azure Stack HCI.
+  title: Troubleshoot issues when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server.
+  description: Get help to troubleshoot issues and errors when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
-title: Fix known issues and errors when uninstalling AKS on Azure Stack HCI
+title: Fix known issues and errors when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server
 summary: |
-  Use this topic to help you troubleshoot and resolve issues when uninstalling AKS on Azure Stack HCI.
+  Use this topic to help you troubleshoot and resolve issues when uninstalling Azure Kubernetes Service on Azure Stack HCI and Windows Server.
   
 sections:
   - name: Single section - ignored

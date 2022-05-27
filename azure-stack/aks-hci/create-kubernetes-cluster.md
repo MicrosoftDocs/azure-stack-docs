@@ -13,7 +13,7 @@ ms.custom: mode-portal
 # Keyword: local Kubernetes cluster
 
 ---
-# Quickstart: Create a local Kubernetes cluster on Azure Stack HCI using Windows Admin Center
+# Quickstart: Create a local Kubernetes cluster on Azure Stack HCI and Windows Server using Windows Admin Center
 
 > Applies to: Azure Stack HCI on Windows Server
 
