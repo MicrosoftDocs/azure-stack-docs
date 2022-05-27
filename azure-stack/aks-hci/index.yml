@@ -1,11 +1,11 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service on Azure Stack HCI documentation
-summary: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+title: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
+summary: Azure Kubernetes Service on Azure Stack HCI and Windows Server is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
 
 metadata:
-  title: Azure Kubernetes Service on Azure Stack HCI documentation
-  description: Azure Kubernetes Service on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
+  title: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
+  description: Azure Kubernetes Service on Azure Stack HCI and Windows Server is an on-premises implementation of the popular Azure Kubernetes Service (AKS) orchestrator, which automates running containerized applications at scale. Azure Kubernetes Service is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter, making it quicker to get started hosting Linux and Windows containers in your datacenter.
   ms.topic: landing-page
   author: mattbriggs
   ms.author: mabrigg 
@@ -16,7 +16,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Kubernetes Service on Azure Stack HCI?
+          - text: What is Azure Kubernetes Service on Azure Stack HCI and Windows Server?
             url: overview.md
       - linkListType: concept
         links:
@@ -46,7 +46,7 @@ landingContent:
             url: kubernetes-walkthrough-powershell.md 
       - linkListType: quickstart
         links: 
-          - text: Deploy AKS on Azure Stack HCI using Windows Admin Center
+          - text: Deploy AKS on Azure Stack HCI and Windows Server using Windows Admin Center
             url: setup.md
           - text: Create a Kubernetes cluster using Windows Admin Center
             url: create-kubernetes-cluster.md
@@ -102,8 +102,10 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Connect to Azure Arc for Kubernetes
-            url: connect-to-arc.md
-          - text: Monitor AKS on Azure Stack HCI clusters
+            url: connect-to-arc.md 
+          - text: Use Kubernetes RBAC with Azure AD
+            url: kubernetes-rbac-azure-ad.md
+          - text: Monitor AKS on Azure Stack HCI clu sters
             url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
@@ -125,4 +127,3 @@ landingContent:
             url: troubleshoot-overview.md
           - text: Connect to nodes with SSH
             url: ssh-connection.md
-

@@ -1,19 +1,19 @@
-- name: Azure Kubernetes Service on Azure Stack HCI documentation
+- name: Azure Kubernetes Service on Azure Stack HCI and Windows Server documentation
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Kubernetes Service on Azure Stack HCI
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     href: overview.md
 - name: Quickstarts
   expanded: true
   items:
-    - name: Deploy AKS on Azure Stack HCI
+    - name: Deploy AKS on Azure Stack HCI and Windows Server
       items:
         - name: Use PowerShell
           href: kubernetes-walkthrough-powershell.md
         - name: Use Windows Admin Center
           items:
-            - name: Set up AKS on Azure Stack HCI
+            - name: Set up AKS on Azure Stack HCI and Windows Server
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
@@ -51,10 +51,12 @@
     href: system-requirements.md
   - name: Security
     items:
-      - name: Security for AKS on Azure Stack HCI
+      - name: Security for AKS on Azure Stack HCI and Windows Server
         href: concepts-security.md
       - name: Container security
         href: container-security.md
+      - name: Certificates and tokens
+        href: certificates-and-tokens.md
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -83,7 +85,7 @@
       items:
           - name: With prestaged cluster service objects and DNS records
             href: prestage-cluster-service-host-create.md
-    - name: Upgrade the AKS on Azure Stack HCI host
+    - name: Upgrade the AKS on Azure Stack HCI and Windows Server host
       items:
           - name: Use PowerShell
             href: update-akshci-host-powershell.md
@@ -99,13 +101,13 @@
       items:    
           - name: Scale an AKS cluster
             href: scale-cluster.md
-          - name: Stop an AKS on Azure Stack HCI cluster
+          - name: Stop an AKS on Azure Stack HCI and Windows Server cluster
             href: stop-start-cluster.md
-          - name: Restart, remove, or reinstall AKS on Azure Stack HCI
+          - name: Restart, remove, or reinstall AKS on Azure Stack HCI and Windows Server
             href: restart-cluster.md
           - name: Back up and restore workload clusters using Velero
             href: backup-workload-cluster.md
-          - name: Deploy a container image from ACR to AKS on Azure Stack HCI
+          - name: Deploy a container image from ACR to AKS on Azure Stack HCI and Windows Server
             href: deploy-azure-container-registry.md
           - name: Use node pools
             href: use-node-pools.md
@@ -119,7 +121,7 @@
       items:
           - name: Connect to Azure Arc for Kubernetes
             href: connect-to-arc.md
-          - name: Az CLI commands
+          - name: Az PowerShell module CLI commands
             href: /cli/azure/connectedk8s
     - name: Configure networking
       items:
@@ -147,6 +149,8 @@
       items:
           - name: Use Active Directory single sign-on
             href: ad-sso.md
+          - name: Use Kubernetes RBAC with Azure AD
+            href: kubernetes-rbac-azure-ad.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
@@ -204,7 +208,7 @@
           - name: Use Bridge to Kubernetes with Visual Studio Code
             href: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
           - name: Use Bridge to Kubernetes with Visual Studio
-            href: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019
+            href: /visualstudio/containers/bridge-to-kubernetes
           - name: Deploy a Java application with Open Liberty or WebSphere Liberty
             href: deploy-java-liberty-app.md
           - name: Deploy Linux applications
@@ -217,7 +221,7 @@
     href: ssh-connection.md
   - name: How to fix
     items:
-    - name: AKS on Azure Stack HCI issues
+    - name: AKS on Azure Stack HCI and Windows Server issues
       items: 
           - name: Installation
             href: /azure-stack/aks-hci/known-issues-installation
@@ -272,7 +276,7 @@
     href: help-support.md
   - name: Azure roadmap
     href: https://azure.microsoft.com/roadmap/
-  - name: AKS on Azure Stack HCI roadmap
+  - name: AKS on Azure Stack HCI and Windows Server roadmap
     href: https://aka.ms/aks-hci-roadmap/
   - name: File bugs
     href: https://aka.ms/aks-hci-issues/

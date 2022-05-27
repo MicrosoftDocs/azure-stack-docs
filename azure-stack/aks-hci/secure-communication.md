@@ -1,24 +1,25 @@
 ---
-title: Secure communication between control plane nodes for AKS on Azure Stack HCI
+title: Secure communication between control plane nodes for  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to secure communication between in-cluster components.
 author: mattbriggs
 ms.topic: how-to
-ms.date: 04/18/2022
+ms.date: 05/11/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
-# Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI deployment.
+
+# Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI and Windows Server deployment.
 # Keyword: control plane nodes secure communication certificate revocation
 
 ---
 
 # Secure communication with certificates  
 
-Certificates are used to build secure communication between in-cluster components. AKS on Azure Stack HCI provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
+Certificates are used to build secure communication between in-cluster components. Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
 
 ## Certificates and CAs
 
-AKS on Azure Stack HCI generates and uses the following certificates and Certificate Authorities (CAs): 
+AKS on Azure Stack HCI and Windows Server generates and uses the following certificates and Certificate Authorities (CAs): 
 
 **Cluster CA**:
   - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.

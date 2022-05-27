@@ -1,11 +1,11 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot Kubernetes management and workload clusters issues in Azure Kubernetes Service on Azure Stack HCI 
-  description: Get help to troubleshoot Kubernetes workload cluster issues and errors in Azure Kubernetes Service on Azure Stack HCI.
+  title: Troubleshoot Kubernetes management and workload clusters issues in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+  description: Get help to troubleshoot Kubernetes workload cluster issues and errors in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 
-title: Troubleshoot Kubernetes management and workload clusters issues in Azure Kubernetes Service on Azure Stack HCI 
+title: Troubleshoot Kubernetes management and workload clusters issues in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 summary: |
-  Use this article to help you troubleshoot and resolve Kubernetes management and workload clusters issues in AKS on Azure Stack HCI.
+  Use this article to help you troubleshoot and resolve Kubernetes management and workload clusters issues in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
   
 sections:
   - name: Single section - ignored
@@ -249,7 +249,7 @@ sections:
           When creating a new workload cluster, the error 'Error: rpc error: code = DeadlineExceeded desc = context deadline exceeded` occurs.
 
         answer: | 
-          To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md#update-the-aks-on-azure-stack-hci-host).
+          To resolve this issue, you should [upgrade to the latest AKS on Azure Stack HCI release](update-akshci-host-powershell.md).
           This is a known issue with the AKS on Azure Stack HCI July Update (version 1.0.2.10723). The error occurs because the CloudAgent service times out during distribution of virtual machines across multiple cluster shared volumes in the system. 
           
       - question: | 

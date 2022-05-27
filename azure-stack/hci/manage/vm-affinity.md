@@ -1,11 +1,11 @@
 ---
 title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
-author: v-dasis
+author: v-jamemurray
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.author: v-dasis
-ms.reviewer: JasonGerend
+ms.author: v-jamemurray
+ms.reviewer: robhind
 ---
 
 # Create server and site affinity rules for VMs
@@ -53,7 +53,7 @@ The **`New-ClusterAffinityRule`** cmdlet is used to create new rules.  With this
 
 **`-Name`** is the name of the rule
 
-**`-RuleType`**	values are `SameFaultDomain` | `SameNode` | `DifferentFaultDomain` | `DifferentNode`
+**`-RuleType`**    values are `SameFaultDomain` | `SameNode` | `DifferentFaultDomain` | `DifferentNode`
 
 Example:
 
