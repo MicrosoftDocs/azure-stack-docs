@@ -37,7 +37,9 @@ By using the Azure portal, you get the same consistent experience when provision
 ## What is Azure Arc Resource Bridge?
 
 A resource bridge is required to enable VM provisioning through the Azure portal on Azure Stack HCI. Azure Arc Resource Bridge is a Kubernetes-backed, lightweight VM that enables users to perform full lifecycle management of resources on Azure Stack HCI from the Azure control plane, including the Azure portal, Azure CLI, and Azure PS. Azure Arc Resource Bridge also creates Azure Resource Manager entities for VM disks, VM images, VM interfaces, VM networks, custom locations, and VM cluster extensions.
-
+   > [!NOTE]
+   > If the Arc Resource Bridge is to be used side-by-side with AKS (e.g. to run your container workloads) on the same cluster - beware that there are limitations e.g. a required deployment order. [Limitations and known issues](/troubleshoot-arc-enabled-vms#limitations-and-known-issues).  
+    
 A **custom location** for an Azure Stack HCI cluster is analogous to an Azure region. As an extension of the Azure location construct, custom locations allow tenant administrators to use their Azure Stack HCI clusters as target location for deploying Azure services.
 
 A **cluster extension** is the on-premises equivalent of an Azure Resource Manager resource provider. The Azure Stack HCI cluster extension helps manage VMs on an Azure Stack HCI cluster in the same way that the "Microsoft.Compute" resource provider manages VMs in Azure, for example.
