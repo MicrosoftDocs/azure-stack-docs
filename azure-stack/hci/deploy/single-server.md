@@ -29,7 +29,18 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
 1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
+1. Enable the required features on the System 
+
+ Here's an example of creating the cluster and then enabling Storage Spaces Direct while disabling the storage cache:
+
+   ```powershell
+   Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart -Verbose
+   reboot
+   Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Management-PowerShell -All -NoRestart -Verbose
+   reboot
+   ```
+   
+3. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
 
    Here's an example of creating the cluster and then enabling Storage Spaces Direct while disabling the storage cache:
 
