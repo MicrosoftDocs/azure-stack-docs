@@ -82,8 +82,9 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    Install-moc
    ```
 
-   > [!TIP]
-   > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
+   > [!NOTE]
+   > If Azure Kubernetes Service is already enabled on this cluster the above statements would not be required (and fail). You can still use / install the Arc Resource Bridge side-by-side with AKS onprem see [Limitations and known issues.](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues)
+   > To avoid issues, you should specify different IP addresses for the Arc resource bridge (i.e. that are not in use for AKS already) when using the New-ArcHciConfigFiles cmdlet - see below for a sample.
 
    > [!TIP]
    > To provide a static IP address to the Azure Arc Resource Bridge VM, replace the previous command with:
@@ -150,14 +151,36 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```PowerShell
    $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
    mkdir $csv_path\ResourceBridge
+   ```
+   **either a)** if you intend to install **Arc Resource Bridge standalone** (and want to use the MocNetworkSettings from above) 
+   ```PowerShell
    New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
+   ```
+   **or b)** if you intend to install **Arc Resource Bridge side-by-side AKS** (and use different IP addresses than AKS is using.) - Example: Please replace the IP ranges with something meaningful for your environment.
+   ```PowerShell
+   $arcbridge_vipPoolStart = "192.168.x.1"      # Following IPs should not overlap with AKS IPs   
+   $arcbridge_vipPoolEnd = "192.168.x.10"          
+   $arcbridge_k8sNodeIpPoolStart = "192.168.x.11"
+   $arcbridge_k8sNodeIpPoolEnd = "192.168.x.20"
+   $ipAddressPrefix = "192.168.x.0/24"
+   $gateway = "192.168.x.254"			# Your default gateway on the network
+   $dnsServers = "192.168.x.30"			# A valid DNS server. A record will be added. Should be able to resolve internet resources. Probably your domain controller on the network. 
+   $controlPlaneIP = "192.168.x.21"		# Arc Resource Bridge load balancer
+   $vswitchName = "extSwitch"    # Name of your(!) Hyper-V switch you used for AKS installation
+   $myaksnetwork = "myvnet"      # Name of your(!) vnet when executing New-AksHciNetworkSetting see https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell 
+   
+   New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory "$csv_path\ResourceBridge" -vipPoolStart $arcbridge_vipPoolStart -vipPoolEnd $arcbridge_vipPoolEnd -k8sNodeIpPoolStart $arcbridge_k8sNodeIpPoolStart -k8sNodeIpPoolEnd $arcbridge_k8sNodeIpPoolEnd -controlPlaneIP $controlPlaneIP -dnsServers $dnsServers -vSwitchName $vSwitchName -gateway $gateway -ipAddressPrefix $ipAddressPrefix -vnetName $myaksnetwork
+   ```
+   Execute the following to dowload the appliance to the ResourceBridge folder (may take a while)
+   ```PowerShell
    az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
    ```
-   
+   This will deploy the Arc Resource Bridge:
    ```PowerShell
    az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
-   ```
+   ```  
    
+   To create the Arc Resource Bridge, run:
    ```PowerShell
    az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
    ```
