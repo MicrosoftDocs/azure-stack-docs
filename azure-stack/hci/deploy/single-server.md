@@ -47,7 +47,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    Here's an example:
 
    ```powershell
-   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin"
+   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin
    ```
 
 ## Updating single-node clusters
