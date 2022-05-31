@@ -2,8 +2,8 @@
 title: Cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn about automatically scaling node pools in Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
 ms.date: 05/26/2022

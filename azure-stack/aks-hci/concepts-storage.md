@@ -1,10 +1,10 @@
 ---
 title: Concepts - Storage options for applications in AKS on Azure Stack HCI
 description: Storage options for applications in AKS on Azure Stack HCI.
-author: mattbriggs
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

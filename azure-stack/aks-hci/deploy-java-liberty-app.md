@@ -1,8 +1,8 @@
 ---
 title: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster
 description: Deploy a Java application with Open Liberty or WebSphere Liberty on an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster.
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual

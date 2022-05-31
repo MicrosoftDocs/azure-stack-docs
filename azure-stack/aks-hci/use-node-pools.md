@@ -4,10 +4,10 @@ description: Learn how to create and manage multiple node pools for a cluster in
 services: 
 ms.topic: article
 ms.date: 04/13/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 # Intent: As an IT Pro, I want to learn how to create and manage multiple node pools for a cluster in AKS on Azure Stack HCI and Windows Server.
 # Keyword: node pools control plane nodes
 ---

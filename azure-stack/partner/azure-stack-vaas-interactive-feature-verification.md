@@ -2,10 +2,10 @@
 title: Interactive feature verification testing
 titleSuffix: Azure Stack Hub
 description: Learn how to create interactive feature verification tests for Azure Stack Hub with validation as a service.
-author: mattbriggs
+author: sethmanheim
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
 

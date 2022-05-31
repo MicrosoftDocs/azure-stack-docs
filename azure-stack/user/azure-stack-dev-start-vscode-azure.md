@@ -64,10 +64,10 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 2. Run the following cmdlets in the same session:
 
     ```powershell
-    $AuthEndpoint = (Get-AzEnvironment -Name "mabrigg@microsoft.com").ActiveDirectoryAuthority.TrimEnd('/')
+    $AuthEndpoint = (Get-AzEnvironment -Name "sethm@microsoft.com").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "masselfhost.onmicrosoft.com"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-    Add-AzAccount -EnvironmentName "mabrigg@microsoft.com" -TenantId $TenantId
+    Add-AzAccount -EnvironmentName "sethm@microsoft.com" -TenantId $TenantId
     ```
 
     ```Output

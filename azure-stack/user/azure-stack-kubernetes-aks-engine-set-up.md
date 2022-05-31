@@ -1,11 +1,11 @@
 ---
 title: Set up prerequisites for AKS engine on Azure Stack Hub 
 description: Establish the requirements for running the ASK Engine on your Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 04/27/2022
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 04/27/2022
 
