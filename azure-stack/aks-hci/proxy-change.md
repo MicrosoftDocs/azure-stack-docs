@@ -1,7 +1,7 @@
 ---
 title: Update noProxy settings in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to update noProxy settings in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2022
 ms.author: mabrigg 
 ms.lastreviewed: 05/31/2022
@@ -21,9 +21,9 @@ If you need to update the noProxy settings of your Azure Kubernetes Service (AKS
 ## Limitations and other details
 
 The following scenarios are **not** supported:
-- Different proxy configurations per node pool/workload cluster
-- Updating HTTP and HTTPs settings post cluster creation
-- Updating proxy certificate post cluster creation
+- Different proxy configurations per node pool/workload cluster.
+- Updating HTTP and HTTPs settings post cluster creation.
+- Updating proxy certificate post cluster creation.
 
 
 ## Prerequisites
@@ -34,7 +34,7 @@ The following scenarios are **not** supported:
 
 ## Management
 
-You can use this scenario to change the proxy exclusion list if you have an update available for your AKS-HCI management cluster and/or target clusters.
+You can use this scenario to change the proxy exclusion list if you have an update available for your Azure Stack HCI and Windows Server management cluster or target clusters.
 
 1. Update proxy settings by using the below command:
 
