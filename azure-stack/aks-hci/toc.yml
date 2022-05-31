@@ -130,6 +130,8 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Update noProxy settings
+            href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
           - name: Configure a custom load balancer
