@@ -1,12 +1,12 @@
 ---
-title: Cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI
+title: Cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn about automatically scaling node pools in Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
 author: mattbriggs
 ms.author: mabrigg 
 ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
-ms.date: 04/15/2022
+ms.date: 05/26/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling
@@ -15,7 +15,9 @@ ms.date: 04/15/2022
 
 # Cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI
 
-You can adjust the number of nodes that run application workloads by using Azure Kubernetes Service (AKS) to keep up with demand. For this preview release, you can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. In this article, we look at the context of the autoscaler on AKS on Azure Stack HCI and Windows Server, and how the autoscaler works. For cluster autoscaling to work effectively, you can also make use of the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal Pod autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+You can adjust the number of nodes that run application workloads by using Azure Kubernetes Service (AKS) to keep up with demand. For this preview release, you can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. 
+
+This article describes the context of the autoscaler on AKS on Azure Stack HCI and Windows Server, and how the autoscaler works. For cluster autoscaling to work effectively, you can also make use of the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal Pod autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 > [!IMPORTANT]
 > The cluster autoscaler is currently in PREVIEW.
