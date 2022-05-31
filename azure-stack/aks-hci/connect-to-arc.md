@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 # Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter
+> Applies to: AKS on Azure Stack HCI and Windows Server
 
 When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Azure Arc-enabled Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
 

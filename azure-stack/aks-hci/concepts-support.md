@@ -3,7 +3,7 @@ title: Tested resource limits, VM sizes, and regions on Azure Stack HCI
 description: Tested resource limits, VM sizes, and regions in AKS on Azure Stack HCI
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 02/03/2022
+ms.date: 05/26/2022
 ms.author: mabrigg 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
@@ -13,12 +13,13 @@ ms.custom: references_regions
 
 ---
 
-# Tested resource limits, VM sizes, and regions on Azure Stack HCI
+# Tested resource limits, VM sizes, and regions on Azure Stack HCI and Windows Server
 
-In this article, you can find information about tested resource limits, VM sizes, and regions on Azure Stack HCI for Azure Kubernetes Service on Azure Stack HCI.
+This article provides information about tested resource limits, VM sizes, and regions in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server.
+
 ## Maximum specifications
 
-Azure Kubernetes Service on Azure Stack HCI deployments 's been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or submit a question in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
+AKS on Azure Stack HCI deployments have been validated with the following configurations, including the specified maximums. Keep in mind that exceeding these maximums is at your own risk and might lead to unexpected behaviors and failures. This article provides some guidance on how to avoid common configuration mistakes and can help you create a larger configuration. If in doubt, contact your local Microsoft office for assistance or submit a question in the [Azure Stack HCI community](https://feedback.azure.com/d365community/search/?q=Azure+Kubernetes).
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
@@ -78,7 +79,7 @@ Azure Kubernetes Service on Azure Stack HCI supports the following Azure regions
 - West Europe
 
 ## Scaling AKS on Azure Stack HCI
-Scaling AKS on Azure Stack HCI involves planning ahead and knowing what your workloads and target cluster needs will look like. Additionally, consider what your available hardware resources will look like on your Azure Stack HCI or Windows Server cluster.
+Scaling AKS on Azure Stack HCI involves planning ahead and knowing what your workloads and target cluster needs will look like. Additionally, consider what your available hardware resources will look like on your Azure Stack HCI and Windows Server cluster.
 
 Before you start, consider the following in order to determine your maximum scale and the number of target clusters you'll need to support:
 
