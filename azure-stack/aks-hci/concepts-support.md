@@ -1,10 +1,10 @@
 ---
 title: Tested resource limits, VM sizes, and regions on Azure Stack HCI
 description: Tested resource limits, VM sizes, and regions in AKS on Azure Stack HCI
-author: mattbriggs
+author: sethmanheim
 ms.topic: conceptual
-ms.date: 05/26/2022
-ms.author: mabrigg 
+ms.date: 02/03/2022
+ms.author: sethm 
 ms.lastreviewed: 02/03/2022
 ms.reviewer: mamezgeb
 ms.custom: references_regions

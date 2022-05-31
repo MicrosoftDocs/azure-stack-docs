@@ -4,10 +4,10 @@ description: In this tutorial, learn how to prepare and build a multi-container 
 services: container-service
 ms.topic: tutorial
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn how to prepare a multi-purpose application so I can add it to my AKS on Azure Stack HCI deployment.
 # Keyword: multi-container Kubernetes service

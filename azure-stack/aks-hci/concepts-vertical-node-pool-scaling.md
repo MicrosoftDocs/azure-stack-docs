@@ -2,8 +2,8 @@
 title: Vertical node scaling in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
 description: Learn about the vertical scaling of node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 03/18/2022
 ms.reviewer: mikek
 ms.date: 05/26/2022

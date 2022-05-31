@@ -1,9 +1,9 @@
 ---
- author: mattbriggs
+ author: sethmanheim
  ms.service: azure-stack
  ms.topic: include
  ms.date: 5/27/2020
- ms.author: mabrigg
+ ms.author: sethm
  ms.reviewer: johnhas
  ms.lastreviewed: 11/26/2018
 ---
