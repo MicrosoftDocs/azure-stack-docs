@@ -1,8 +1,8 @@
 ---
-title: Concepts - Container networking in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Concepts - Container networking in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
 description: Learn about container networking in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 05/31/2022
+ms.date: 05/26/2022
 ms.author: mabrigg 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
@@ -15,7 +15,9 @@ author: mattbriggs
 
 # Container networking concepts in Azure Kubernetes Service (AKS) on Azure Stack HCI
 
-Application components must work together to process their tasks in a container-based microservices approach. Kubernetes provides resources that enable application communications and allow you to connect to and expose applications internally or externally. You can load balance your applications to build highly available applications. More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You may also need to restrict the flow of network traffic into or between pods and nodes for security.
+Application components must work together to process their tasks in a container-based microservices approach. Kubernetes provides resources that enable application communications and allow you to connect to and expose applications internally or externally. You can load balance your applications to build highly available applications.
+
+More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You may also need to restrict the flow of network traffic into or between pods and nodes for security.
 
 This article introduces the core concepts that provide networking to your applications in AKS on Azure Stack HCI:
 
@@ -74,7 +76,7 @@ To simplify the network configuration for application workloads, AKS on Azure St
 
 - **HAProxy load balancers** - [HAProxy](https://www.haproxy.org/#desc) is a TCP/HTTP load balancer and proxy server that spreads incoming requests across multiple endpoints. Every workload cluster in AKS on Azure Stack HCI has a HAProxy load balancer deployed and configured as a specialized virtual machine.
 
-- **Microsoft On-Premise Cloud Service** - This is the Azure Stack HCI cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI cluster. The networking model followed by your Azure Stack HCI cluster determines the IP address allocation method used by the Microsoft On-Premise Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premise Cloud Service, see [Node networking concepts](concepts-node-networking.md).
+- **Microsoft On-Premise Cloud Service** - This is the Azure Stack HCI cloud provider that enables the creation and management of the virtualized environment hosting Kubernetes on an on-premises Azure Stack HCI and Windows Server cluster. The networking model followed by your Azure Stack HCI and Windows Server cluster determines the IP address allocation method used by the Microsoft On-Premises Cloud Service. To learn more about the networking concepts implemented by the Microsoft On-Premises Cloud Service, see [Node networking concepts](concepts-node-networking.md).
 
 ## Kubernetes networks
 

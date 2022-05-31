@@ -3,7 +3,7 @@ title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI an
 description: Learn how to use certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 author: mattbriggs
 ms.topic: conceptual
-ms.date: 04/13/2022
+ms.date: 05/26/2022
 ms.author: mabrigg 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
