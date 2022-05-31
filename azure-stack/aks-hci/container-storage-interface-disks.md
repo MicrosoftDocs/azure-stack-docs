@@ -9,7 +9,7 @@ ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to use Container Storage Interface (CSI) drivers on AKS.
-# Keyword: container storage interface drivers, csi drivers
+# Keyword: container storage interface drivers, CSI drivers
 
 ---
 

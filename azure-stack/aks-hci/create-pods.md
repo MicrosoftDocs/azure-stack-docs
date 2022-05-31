@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 # Create and delete pods
 
-You can create and delete pods when managing your workloads in AKS on Azure Stack HCI on Windows Server.
+You can create and delete pods when managing your workloads in AKS on Azure Stack HCI and Windows Server.
 
 Kubernetes uses pods to run an instance of your application. A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
 

@@ -3,8 +3,13 @@ title: Create deployments in Azure Kubernetes Service on Azure Stack HCI and Win
 description: Learn how to create deployments in Azure Kubernetes Service on Azure Stack HCI.
 author: sethmanheim
 ms.topic: how-to
+<<<<<<< HEAD
 ms.date: 04/29/2022
 ms.author: sethm 
+=======
+ms.date: 05/31/2022
+ms.author: mabrigg 
+>>>>>>> dd297da2ec476aa6c24b9856fe10a2c72c350235
 ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
 # Intent: As an IT Pro, I want to learn what I need to do in order to create deployments in Azure Kubernetes Service (AKS) on Azure Stack HCI.

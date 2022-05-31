@@ -7,7 +7,7 @@ ms.date: 04/21/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
-# Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data in AKS on Azure Stack HCI and Windows Server.
+# Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data.
 # Keyword: Azure Arc data services
 ---
 

@@ -6,7 +6,7 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
-ms.date: 04/29/2022
+ms.date: 05/31/2022
 # Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
 ---

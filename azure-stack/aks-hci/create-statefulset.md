@@ -7,6 +7,8 @@ ms.date: 12/28/2021
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+# Intent: As an IT Pro, I need to learn how to create Stateful Sets in AKS.
+# Keyword: Stateful Sets
 ---
 
 # Create a StatefulSet
