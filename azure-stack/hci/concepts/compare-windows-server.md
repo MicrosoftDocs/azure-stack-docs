@@ -28,11 +28,13 @@ Use Azure Stack HCI for:
 - All the benefits of hyperconverged infrastructure: a simpler, more consolidated datacenter architecture with high-speed storage and networking
 
   >[!NOTE]
-  >Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
+  > When using Azure Stack HCI, run all of your workloads inside virtual machines or containers, not directly on the cluster. Azure Stack HCI isn't licensed for clients to connect directly to it using Client Access Licenses (CALs).
+
+For info on licensing Window Server VMs running on an Azure Stack HCI cluster, see Activate Windows Server VMs.
 
 ## When to use Windows Server
 
-Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
+Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, and includes the right for clients to connect directly with appropriate Client Access Licenses (CALs). Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
 :::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
@@ -42,7 +44,7 @@ Use Windows Server for:
 - As the runtime server for a Windows application
 - To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, or Internet Information Services (IIS)
 - As a traditional server, such as a bare-metal domain controller or SQL Server installation
-- For traditional infrastructure such as VMs connected to Fibre Channel SAN storage
+- For traditional infrastructure connected to SAN storage
 
 ## Compare product positioning
 
