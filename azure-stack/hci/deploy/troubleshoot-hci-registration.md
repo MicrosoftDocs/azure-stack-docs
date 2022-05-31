@@ -233,5 +233,5 @@ To remediate this issue, ensure the time is synchronized to a known accurate tim
 
 ## Next steps
 
-- [Register Windows Admin Center with Azure](manage/register-windows-admin-center.md)
+- [Register Windows Admin Center with Azure](../manage/register-windows-admin-center.md)
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
