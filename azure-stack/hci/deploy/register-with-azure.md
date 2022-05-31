@@ -117,7 +117,7 @@ The following table explains why these permissions are required:
 | "Microsoft.Resources/subscriptions/resourceGroups/read", "Microsoft.AzureStackHCI/register/action", "Microsoft.AzureStackHCI/Unregister/Action", "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister Azure Stack HCI cluster      |
 | "Microsoft.Authorization/roleAssignments/write", "Microsoft.HybridCompute/register/action", "Microsoft.GuestConfiguration/register/action", "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources |
 
-### Register the cluster using Windows Admin Center
+### Register a cluster using Windows Admin Center
 
 Before registration make sure all the [prerequisites](#prerequisites-for-cluster-registration) are met.
 
@@ -136,19 +136,19 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
 3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select **Use existing resource group** to create the Azure stack HCI cluster resource in an existing resource group. Select the Azure region from the drop-down menu and then click **Register**.
 
-   :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
+   :::image type="content" source="media/register-with-azure/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
 ### View registration status using Windows Admin Center
 
 When you connect to a cluster by using Windows Admin Center, you'll see the dashboard, which displays the Azure connection status. **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
 
-:::image type="content" source="media/manage-azure-registration/registration-status.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/manage-azure-registration/registration-status.png":::
+:::image type="content" source="media/register-with-azure/registration-status.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/register-with-azure/registration-status.png":::
 
 You can get more information by selecting **Settings** at the bottom of the **Tools** menu on the left, and then selecting **Azure Stack HCI registration**.
 
-:::image type="content" source="media/manage-azure-registration/azure-stack-hci-registration.png" alt-text="Screenshot that shows selections for getting Azure Stack H C I registration information." lightbox="media/manage-azure-registration/azure-stack-hci-registration.png":::
+:::image type="content" source="media/register-with-azure/azure-stack-hci-registration.png" alt-text="Screenshot that shows selections for getting Azure Stack H C I registration information." lightbox="media/register-with-azure/azure-stack-hci-registration.png":::
 
-## Register the cluster using PowerShell
+## Register a cluster using PowerShell
 
 Before registration, [make sure all the prerequisites are met](#prerequisites-for-cluster-registration). Use the following workflow to register an Azure Stack HCI cluster with Azure using a management PC.
 
@@ -200,21 +200,21 @@ To view registration status by using Windows PowerShell, use the `Get-AzureStack
 
 For example, after you install the Azure Stack HCI operating system, but before you create or join a cluster, the `ClusterStatus` property shows a `NotYet` status:
 
-:::image type="content" source="media/manage-azure-registration/1-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status before cluster creation.":::
+:::image type="content" source="media/register-with-azure/1-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status before cluster creation.":::
 
 After the cluster is created, only `RegistrationStatus` shows a `NotYet` status:
 
-:::image type="content" source="media/manage-azure-registration/2-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after cluster creation.":::
+:::image type="content" source="media/register-with-azure/2-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after cluster creation.":::
 
 You must register an Azure Stack HCI cluster within 30 days of installation, as defined in the Azure Online Services Terms. If you haven't created or joined a cluster after 30 days, `ClusterStatus` will show `OutOfPolicy`. If you haven't registered the cluster after 30 days, `RegistrationStatus` will show `OutOfPolicy`.
 
 After the cluster is registered, you can see `ConnectionStatus` and the `LastConnected` time. The `LastConnected` time is usually within the last day unless the cluster is temporarily disconnected from the internet. An Azure Stack HCI cluster can operate fully offline for up to 30 consecutive days.
 
-:::image type="content" source="media/manage-azure-registration/3-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after registration.":::
+:::image type="content" source="media/register-with-azure/3-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after registration.":::
 
 If you exceed the maximum period of offline operation, `ConnectionStatus` will show `OutOfPolicy`.
 
-## Register the cluster using SPN
+## Register a cluster using SPN
 
 Before registration, make sure the prerequisites are met: the HCI cluster must exist, and internet access and firewall ports are configured correctly.
 
