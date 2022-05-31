@@ -398,7 +398,7 @@ Remove-AzResourceGroup -Name "HCI001-rg"
 
 ## Troubleshooting
 
-For information about common errors and mitigation steps to resolve them, see [Troubleshoot Azure Stack HCI registration](../manage/troubleshoot-hci-registration.md).
+For information about common errors and mitigation steps to resolve them, see [Troubleshoot Azure Stack HCI registration](../deploy/troubleshoot-hci-registration.md).
 
 ## Next steps
 
