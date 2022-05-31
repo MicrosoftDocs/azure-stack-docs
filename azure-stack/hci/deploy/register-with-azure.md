@@ -138,9 +138,15 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
    :::image type="content" source="media/register/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
 
-### View registration status in Windows Admin Center
+### View registration status using Windows Admin Center
 
-To view the registration status, see [View registration status in Windows Admin Center](../manage/manage-azure-registration.md#view-registration-status-in-windows-admin-center).
+When you connect to a cluster by using Windows Admin Center, you'll see the dashboard, which displays the Azure connection status. **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
+
+:::image type="content" source="media/manage-azure-registration/registration-status.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/manage-azure-registration/registration-status.png":::
+
+You can get more information by selecting **Settings** at the bottom of the **Tools** menu on the left, and then selecting **Azure Stack HCI registration**.
+
+:::image type="content" source="media/manage-azure-registration/azure-stack-hci-registration.png" alt-text="Screenshot that shows selections for getting Azure Stack H C I registration information." lightbox="media/manage-azure-registration/azure-stack-hci-registration.png":::
 
 ## Register the cluster using PowerShell
 
@@ -188,35 +194,65 @@ Using the latest **Az.StackHCI** module and running the `Register-AzStackHCI` cm
 Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -ResourceGroupName cluster1-rg -ArcServerResourceGroupName <ArcRgName>
 ```
 
-### View the registration status in PowerShell
+### View registration status using PowerShell
 
-To view the registration status, see [Manage cluster registration with Azure](manage-azure-registration.md#view-registration-status-in-powershell).
+To view registration status by using Windows PowerShell, use the `Get-AzureStackHCI` PowerShell cmdlet and the `ClusterStatus`, `RegistrationStatus`, and `ConnectionStatus` properties. 
+
+For example, after you install the Azure Stack HCI operating system, but before you create or join a cluster, the `ClusterStatus` property shows a `NotYet` status:
+
+:::image type="content" source="media/manage-azure-registration/1-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status before cluster creation.":::
+
+After the cluster is created, only `RegistrationStatus` shows a `NotYet` status:
+
+:::image type="content" source="media/manage-azure-registration/2-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after cluster creation.":::
+
+You must register an Azure Stack HCI cluster within 30 days of installation, as defined in the Azure Online Services Terms. If you haven't created or joined a cluster after 30 days, `ClusterStatus` will show `OutOfPolicy`. If you haven't registered the cluster after 30 days, `RegistrationStatus` will show `OutOfPolicy`.
+
+After the cluster is registered, you can see `ConnectionStatus` and the `LastConnected` time. The `LastConnected` time is usually within the last day unless the cluster is temporarily disconnected from the internet. An Azure Stack HCI cluster can operate fully offline for up to 30 consecutive days.
+
+:::image type="content" source="media/manage-azure-registration/3-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after registration.":::
+
+If you exceed the maximum period of offline operation, `ConnectionStatus` will show `OutOfPolicy`.
 
 ## Register the cluster using SPN
 
 Before registration, make sure the prerequisites are met: the HCI cluster must exist, and internet access and firewall ports are configured correctly.
 
-You can now create a SPN with the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles, and IT administrators can use the SPN credentials during registration. You are responsible for managing (rotating/sharing) SPN credentials.
+In some cases, the user running the registration cmdlet might not have permissions on the subscription to perform role assignments on the service principal. In such cases, you can create an SPN with the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles, and you can use the created SPN credentials during registration. HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
 
-To register the cluster and Arc-enable the servers, run the following PowerShell script after updating it with your environment information:
+To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of PowerShell. 
 
 ```powershell
-Connect-AzureAD -TenantId <TenantID> 
-  
-$app = New-AzureADApplication -DisplayName "<Name>" 
-$sp = New-AzureADServicePrincipal -AppId $app.AppId 
-$AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding" 
-$AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator" 
-New-AzRoleAssignment -ObjectId $sp.ObjectId -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null 
-New-AzRoleAssignment -ObjectId $sp.ObjectId -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null 
-  
-$IndefinitelyYears = 300 
-$start = Get-Date 
-$end = $start.AddYears($IndefinitelyYears) 
-$pw = New-AzureADServicePrincipalPasswordCredential -ObjectId $sp.ObjectId -StartDate $start -EndDate $end 
-$password = ConvertTo-SecureString $pw.Value -AsPlainText -Force 
-$Cred = New-Object System.Management.Automation.PSCredential ($app.AppId, $password) 
- Register-AzStackHCI -ResourceName sanraycluseus -SubscriptionId "<SubscriptionID>" -ResourceGroupName <RGName> -ArcSpnCredential $Cred -verbose 
+#Connect to subscription
+Connect-AzAccount -TenantId <Tenant_ID> -SubscriptionId <Subscription_ID> -Scope Process
+
+#Create a new application registration
+$app = New-AzADApplication -DisplayName "<unique_name>"
+
+#Create a new SPN corresponding to the application registration
+$sp = New-AzADServicePrincipal -ApplicationId  $app.AppId -Role "Reader" 
+
+#Roles required on SPN for Arc onboarding
+$AzureConnectedMachineOnboardingRole = "Azure Connected Machine Onboarding"
+$AzureConnectedMachineResourceAdministratorRole = "Azure Connected Machine Resource Administrator"
+
+#Assign roles to the created SPN
+New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineOnboardingRole | Out-Null
+New-AzRoleAssignment -ObjectId $sp.Id -RoleDefinitionName $AzureConnectedMachineResourceAdministratorRole | Out-Null
+
+# Set password validity time. SPN must be updated on the HCI cluster after this timeframe.
+$pwdExpiryInYears = 300
+$start = Get-Date
+$end = $start.AddYears($pwdExpiryInYears)
+$pw = New-AzADSpCredential -ObjectId $sp.Id -StartDate $start -EndDate $end
+$password = ConvertTo-SecureString $pw.SecretText -AsPlainText -Force  
+
+# Create SPN credentials object to be used in the register-azstackhci cmdlet
+$spnCred = New-Object System.Management.Automation.PSCredential ($app.AppId, $password)
+Disconnect-AzAccount -ErrorAction Ignore | Out-Null
+
+# Use the SPN credentials created previously in the register-azstackhci cmdlet
+Register-AzStackHCI   -SubscriptionId < Subscription_ID>  -ArcSpnCredential:$spnCred
 ```
 
 ## View the cluster and Arc resources in Azure portal
@@ -227,7 +263,6 @@ To view the status of the cluster and Arc resources, navigate to the following s
 
 > [!NOTE]
 > Azure Arc integration is not available for Azure Stack HCI, version 20H2. If you are running Azure Stack HCI 21H2 and do not want the servers to be Arc enabled or do not have the proper roles, specify this additional parameter: `-EnableAzureArcServer:$false`.
-
 
 If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. Otherwise, you'll need to take the following steps to enable Azure Arc integration on the servers.
 
@@ -303,7 +338,7 @@ Install-Module -Name Az.StackHCI
 If you're running the `Unregister-AzStackHCI` cmdlet on a server in the cluster, use the following syntax. Specify your Azure subscription ID and the resource name of the Azure Stack HCI cluster that you want to unregister:
 
 ```powershell
-Unregister-AzStackHCI -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+Unregister-AzStackHCI -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001
 ```
 
 You're prompted to visit microsoft.com/devicelogin on another device (such as your PC or phone). Enter the code, and sign in there to authenticate with Azure.
@@ -313,81 +348,47 @@ You're prompted to visit microsoft.com/devicelogin on another device (such as yo
 If you're running the cmdlet from a management PC, you must also specify the name of a server (node) in the cluster:
 
 ```powershell
-Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "e569b8af-6ecc-47fd-a7d5-2ac7f23d8bfe" -ResourceName HCI001
+Unregister-AzStackHCI -ComputerName ClusterNode1 -SubscriptionId "<subscription ID GUID>" -ResourceName HCI001
 ```
 
 An interactive Azure login window appears. The exact prompts that you see will vary depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
 
 > [!IMPORTANT]
 > If you're unregistering the Azure Stack HCI cluster in Azure China, run the `Unregister-AzStackHCI` cmdlet with these additional parameters:
-> 
+>
 > `-EnvironmentName AzureChinaCloud -Region "ChinaEast2"`
-> 
+>
 > If you're unregistering in Azure Government, use these additional parameters:
-> 
+>
 > `-EnvironmentName AzureUSGovernment -Region "USGovVirginia"`
-> 
+>
 > If you provide the `-SubscriptionId` parameter, make sure that it's the correct one. It's recommended that you let the unregister script determine the subscription automatically.
 
-## View the registration status in PowerShell
+## Clean up after a cluster that was not properly unregistered
 
-To view the registration status, see [Manage cluster registration with Azure](manage-azure-registration.md#view-registration-status-in-powershell).
+If a user destroys an Azure Stack HCI cluster without un-registering it, such as by re-imaging the host servers or deleting virtual cluster nodes, then artifacts will be left over in Azure. These artifacts are harmless and won't incur billing or use resources, but they can clutter the Azure portal. To clean them up, you can manually delete them.
 
-## Troubleshooting
+To delete the Azure Stack HCI resource, go to its page in the Azure portal and select **Delete** from the action bar at the top. Enter the name of the resource to confirm the deletion, and then select **Delete**. 
 
-Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
+To delete the Azure AD app identity, go to **Azure AD** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
 
-### Collect PowerShell registration logs
-
-When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files called **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue that needs the additional debug logs, set debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
+You can also delete the Azure Stack HCI resource by using PowerShell:
 
 ```PowerShell
-$DebugPreference = 'Continue'
+Remove-AzResource -ResourceId "HCI001"
 ```
 
-### Collect on-premises hcisvc logs
-
-To enable debug logs for hcisvc, run the following command in PowerShell on each server in the cluster:
+You might need to install the `Az.Resources` module:
 
 ```PowerShell
-wevtutil.exe sl /q /e:true Microsoft-AzureStack-HCI/Debug
+Install-Module -Name Az.Resources
 ```
 
-To get the logs:
+If the resource group was created during registration and doesn't contain any other resources, you can delete it too:
 
 ```PowerShell
-Get-WinEvent -Logname Microsoft-AzureStack-HCI/Debug -Oldest -ErrorAction Ignore
+Remove-AzResourceGroup -Name "HCI001-rg"
 ```
-
-### Common registration issues
-
-During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
-
-If registration fails, you may see the following message:
-
-**Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}**
-
-If there are node names after the 'Couldn't generate self-signed certificate on node(s)' part of the error message, then we weren't able to generate the certificate on those server(s). To troubleshoot:
-
-1. Check that each server listed in the above message is up and running. You can check the status of hcisvc by running `sc.exe query hcisvc` and start it if needed with `start-service hcisvc`.
-
-2. Check that each server listed in the error message has connectivity to the machine on which the `Register-AzStackHCI` cmdlet is run. Verify this by running the following cmdlet from the machine on which `Register-AzStackHCI` is run, using `New-PSSession` to connect to each server in the cluster and make sure it works:
-
-   ```PowerShell
-   New-PSSession -ComputerName {failing nodes}
-   ```
-
-If there are node names after the 'Couldn't set and verify registration certificate on node(s)' part of the error message, then we were able to generate the certificate on the server(s), but the server(s) weren't able to successfully call the HCI cloud service API. To troubleshoot:
-
-1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
-
-2. Try running the `Test-AzStackHCIConnection` cmdlet and make sure it succeeds. This cmdlet will invoke the health endpoint of HCI cloud services to test connectivity.
-
-3. Look at the hcisvc debug logs on each node listed in the error message.
-
-   - It's ok to have 'ExecuteWithRetry operation AADTokenFetch failed with retryable error' appear a few times before it either fails with 'ExecuteWithRetry operation AADTokenFetch failed after all retries' or 'ExecuteWithRetry operation AADTokenFetch succeeded in retry'.
-   - If you encounter 'ExecuteWithRetry operation AADTokenFetch failed after all retries' in the logs, we weren't able to fetch the Azure Active Directory token from the service even after all the retries. There will be an associated AAD exception that's logged with this message. 
-   - If you see "AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'", this is an issue with how the time is set on the server. Check the UTC time on all the servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct the times on the servers and then try registration again.
 
 ## Next steps
 
