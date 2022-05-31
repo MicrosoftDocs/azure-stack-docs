@@ -15,20 +15,20 @@ ms.date: 05/17/2022
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service and needs to register within 30 days of installation per the Azure Online Services Terms.
+Now that you've deployed the Azure Stack HCI operating system and created a cluster, you must register the cluster with Azure. Azure Stack HCI is delivered as an Azure service, and must be registered within 30 days of installation (per the Azure online services terms).
 
-This article explains the following topics:
+This article describes the following topics:
 
-- How to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synced between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
+- How to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent each on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synchronized between the Azure resource and the on-premises cluster(s). Azure registration is a native capability of the Azure Stack HCI operating system, so there is no agent needed to register.
 - How to view the registration status from Windows Admin Center and PowerShell.
 - How to unregister the cluster when you are ready to decommission it.
 
    > [!IMPORTANT]
    > Registering with Azure is required, and your cluster is not fully supported until your registration is active. If you do not register your cluster with Azure upon deployment, or if your cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
    >
-   > *There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.*
+   > "There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept."
    >
-   > The solution is to allow outbound connectivity to Azure and make sure your cluster is registered as described in this article.
+   > The solution is to allow outbound connectivity to Azure and to make sure your cluster is registered as described in this article.
 
 ## Region availability
 
@@ -59,6 +59,8 @@ This region supports Azure Government:
   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
   - Subscription obtained through an Enterprise Agreement (EA).
   - Subscription obtained through the Cloud Solution Provider (CSP) program.
+
+You can assign permissions using either the Azure portal, or using PowerShell cmdlets.
 
 ### Assign permissions from Azure portal
 
@@ -119,6 +121,8 @@ The following table explains why these permissions are required:
 
 ### Register a cluster using Windows Admin Center
 
+There are two ways to register a cluster: using Windows Admin Center, or using PowerShell.
+
 Before registration make sure all the [prerequisites](#prerequisites-for-cluster-registration) are met.
 
 > [!WARNING]
@@ -149,6 +153,8 @@ You can get more information by selecting **Settings** at the bottom of the **To
 :::image type="content" source="media/register-with-azure/azure-stack-hci-registration.png" alt-text="Screenshot that shows selections for getting Azure Stack H C I registration information." lightbox="media/register-with-azure/azure-stack-hci-registration.png":::
 
 ## Register a cluster using PowerShell
+
+You can register a cluster using PowerShell instead of Windows Admin Center.
 
 Before registration, [make sure all the prerequisites are met](#prerequisites-for-cluster-registration). Use the following workflow to register an Azure Stack HCI cluster with Azure using a management PC.
 
@@ -389,6 +395,10 @@ If the resource group was created during registration and doesn't contain any ot
 ```PowerShell
 Remove-AzResourceGroup -Name "HCI001-rg"
 ```
+
+## Troubleshooting
+
+For information about common errors and mitigation steps to resolve them, see [Troubleshoot Azure Stack HCI registration](../manage/troubleshoot-hci-registration.md).
 
 ## Next steps
 
