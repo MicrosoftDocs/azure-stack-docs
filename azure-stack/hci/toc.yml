@@ -39,7 +39,7 @@
   - name: 4. Validate the cluster
     href: deploy/validate.md
   - name: Troubleshoot cluster registration
-    href: manage/troubleshoot-hci-registration.md
+    href: deploy/troubleshoot-hci-registration.md
   - name: Migrate a cluster
     items:
     - name: Migrate to new hardware
