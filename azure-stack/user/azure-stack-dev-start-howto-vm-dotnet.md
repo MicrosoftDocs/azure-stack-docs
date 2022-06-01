@@ -98,7 +98,7 @@ Create a VM and then install the components you need to host your .NET web app. 
 
 ## Create an app 
 
-You can use either use the default .NET App in Visual Studio, your own web app, an example at [Publish an ASP.NET Core app to Azure with Visual Studio](/aspnet/core/tutorials/razor-pages/razor-pages/razor-pages-start?tabs=visual-studio&preserve-view=true). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2019. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack Hub instance.
+You can use either use the default .NET App in Visual Studio, your own web app, an example at [Publish an ASP.NET Core app to Azure with Visual Studio](/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-6.0&tabs=visual-studio). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2019. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack Hub instance.
 
 ## Deploy and run the app
 
