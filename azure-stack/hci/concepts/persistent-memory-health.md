@@ -16,8 +16,8 @@ ms.date: 05/11/2021
 This article provides information about error handling and health management specific to persistent memory (PMem) devices, often called storage-class memory (SCM), which is a type of non-volatile media that can be used as top-tier storage.
 
 These short videos provide an overview of Windows' support for persistent memory:
-- [Using Non-volatile Memory (NVDIMM-N) as Block Storage in Windows Server 2016](https://docs.microsoft.com/en-us/events/build-2016/p466)
-- [Using Non-volatile Memory (NVDIMM-N) as Byte-Addressable Storage in Windows Server 2016](https://docs.microsoft.com/en-us/events/build-2016/p470)
+- [Using Non-volatile Memory (NVDIMM-N) as Block Storage in Windows Server 2016](/events/build-2016/p466)
+- [Using Non-volatile Memory (NVDIMM-N) as Byte-Addressable Storage in Windows Server 2016](/events/build-2016/p470)
 
 Also see [Understand and deploy persistent memory](deploy-persistent-memory.md).
 
