@@ -1,11 +1,11 @@
 ---
 title: Troubleshoot the AKS engine on Azure Stack Hub 
 description: This article contains troubleshooting steps for the AKS engine on Azure Stack Hub. 
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 11/18/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/18/2020
 

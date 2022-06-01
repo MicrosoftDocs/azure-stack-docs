@@ -1,10 +1,10 @@
 ---
 title: Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers
 description: Learn how to use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 # Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers
 
-The AKS on Azure Stack HCI disk and file Container Storage Interface (CSI) drivers are [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant drivers used by AKS on Azure Stack HCI.
+The AKS on Azure Stack HCI disk and file Container Storage Interface (CSI) drivers are [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant drivers used by AKS on Azure Stack HCI and Windows Server.
 
 The CSI is a standard for exposing arbitrary block and file storage systems to containerized workloads on Kubernetes. By adopting and using CSI, AKS on Azure Stack HCI can write, deploy, and iterate plug-ins to expose new storage systems or improve existing ones in Kubernetes without having to touch the core Kubernetes code and wait for its release cycles.
 

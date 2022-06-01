@@ -1,10 +1,10 @@
 ---
 title: Deploy an image to an Azure Kubernetes Service (AKS) Cluster on Azure Stack Hub 
 description: Learn how to deploy an image to an AKS Cluster on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 10/26/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: chasat
 ms.lastreviewed: 10/26/2021
 

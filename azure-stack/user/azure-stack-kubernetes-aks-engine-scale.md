@@ -1,11 +1,11 @@
 ---
 title: Scale a Kubernetes cluster on Azure Stack Hub 
 description: Learn how to scale a Kubernetes cluster on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 2/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 09/02/2020
 
