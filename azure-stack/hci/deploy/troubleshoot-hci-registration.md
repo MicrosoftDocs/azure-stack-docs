@@ -34,11 +34,9 @@ To get the logs:
 Get-WinEvent -Logname Microsoft-AzureStack-HCI/Debug -Oldest -ErrorAction Ignore
 ```
 
-## Common registration issues
+## Certificate failure
 
 During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
-
-## Certificate failure
 
 If registration fails, you may see the following message: **Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}**
 
@@ -69,13 +67,13 @@ If there are node names after the 'Couldn't set and verify registration certific
 If you explicitly deleted the Azure Sack HCI cluster resource from the Azure portal without first unregistering the cluster from Windows Admin Center or PowerShell, deletion of an HCI Azure resource manager resource directly from the portal results in a bad-cluster resource state. Unregistration should be always triggered from within the HCI cluster using the `Unregister-AzStackHCI` cmdlet for a clean unregistration. This section describes cleanup steps for scenarios in which the HCI cluster resource was deleted from the portal:
 
 1. Sign in to the on-premises HCI cluster server using the cluster user credentials.
-2. Run the `Unregister-AzStackHCI` cmdlet on the cluster to clean up the cluster registration state and cluster ARC state.
+2. Run the `Unregister-AzStackHCI` cmdlet on the cluster to clean up the cluster registration state and cluster Arc state.
    a. If unregistration succeeds, navigate to **Azure Active Directory > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.
    b. If unregistration fails with the error **Couldn't disable Azure Arc integration on Node \<node name\>**, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.
 3. Sign in to each individual node:
-   1. Change directory to where the ARC agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.
+   1. Change directory to where the Arc agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.
    2. Get the status on arcmagent.exe and determine the Azure resource group it is projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information:
-4. Force disconnect the ARC agent from node: `.\azcmagent.exe disconnect --force-local-only`.
+4. Force disconnect the Arc agent from node: `.\azcmagent.exe disconnect --force-local-only`.
 5. Sign in to the Azure portal and delete the **Arc-for-Server** resource from the resource group determined in step 3.
 
 ## User deleted the App IDs by mistake
@@ -83,6 +81,7 @@ If you explicitly deleted the Azure Sack HCI cluster resource from the Azure por
 If the cluster is not connected for more than 8 hours, it is possible that the associated Azure AD app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
 
 - If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**.
+   - Look at HCIsvc debug logs on the node: the error message will be "Application with identifier '28b3766b-3a48-4bb1-b4d0-b78167d15571' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant."
 - If `<clustername>.arc` created during Arc enablement is deleted, there are no visible errors during normal operation. This identity is required only during the registration and un-registration processes. In this scenario, un-registration fails with the same error as previously noted. This scenario has the same remediation steps mentioned in this section.
 
 Deleting any of these applications results in a failure to communicate from the HCI cluster to the cloud.
@@ -171,7 +170,7 @@ To remediate this issue, do the following:
 
 ## Issuing Sync-AzureStackHCI immediately after restart of the nodes of the cluster result in Arc resource deletion
 
-Performing a census sync before node synchronization can result in the sync being sent to Azure, which does not include the node. This results in the Arc resource for that node being removed. The `Sync-AzureStackHCI1` cmdlet must be used only to debug the HCI cluster's cloud connectivity. The HCI cluster has a small warmup time after a reboot to reconcile the cluster state; therefore, do not execute `Sync-AzureStackHCI` soon after rebooting a node.
+Performing a census sync before node synchronization can result in the sync being sent to Azure, which does not include the node. This results in the Arc resource for that node being removed. The `Sync-AzureStackHCI` cmdlet must be used only to debug the HCI cluster's cloud connectivity. The HCI cluster has a small warmup time after a reboot to reconcile the cluster state; therefore, do not execute `Sync-AzureStackHCI` soon after rebooting a node.
 
 To remediate this issue, do the following:
 
@@ -196,7 +195,7 @@ To remediate this issue, do the following:
 
 ## Stale Arc agent and extension causes registration failure
 
-This happens in scenarios in which one or all of the HCI cluster nodes are already directly ARC-enabled before HCI registration. This can happen if you try to onboard Arc-for-Server manually before the `Register-AzStackHCI` cmdlet is called, or if the HCI cluster was not correctly unregistered as recommended in this article before trying to re-register the same cluster.
+This happens in scenarios in which one or all of the HCI cluster nodes are already Arc-enabled before HCI registration. This can happen if you try to onboard Arc-for-Server manually before the `Register-AzStackHCI` cmdlet is executed, or if the HCI cluster was not correctly unregistered [as recommended in this article](register-with-azure.md#unregister-azure-stack-hci) before trying to re-register the same cluster.
 
 With the cluster in this state, when you attempt to register HCI with Azure, the registration completes successfully. However, in the Azure portal, the **Azure Arc** connection displays **Not Installed**.
 

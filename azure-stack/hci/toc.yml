@@ -38,8 +38,6 @@
     href: deploy/register-with-azure.md
   - name: 4. Validate the cluster
     href: deploy/validate.md
-  - name: Troubleshoot cluster registration
-    href: deploy/troubleshoot-hci-registration.md
   - name: Migrate a cluster
     items:
     - name: Migrate to new hardware
@@ -216,6 +214,8 @@
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
   items:
+  - name: Troubleshoot cluster registration
+    href: deploy/troubleshoot-hci-registration.md
   - name: Troubleshoot cluster validation reporting
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
