@@ -1,11 +1,11 @@
 ---
 title: Rotate Kubernetes certificates on Azure Stack Hub  
 description: Learn how to rotate Kubernetes certificates on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 05/17/2022
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 05/17/2022
 

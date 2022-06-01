@@ -1,10 +1,10 @@
 ---
 title: New-AksHciNetworkSetting for AKS on Azure Stack HCI and Windows Server
-author: mattbriggs
+author: sethmanheim
 description: The New-AksHciNetworkSetting PowerShell command creates an object for a new virtual network.
 ms.topic: reference
 ms.date: 4/12/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 
