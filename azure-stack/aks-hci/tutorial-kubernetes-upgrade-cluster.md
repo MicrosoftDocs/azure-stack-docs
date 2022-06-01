@@ -4,10 +4,10 @@ description: In this tutorial, learn how to upgrade an existing cluster to the l
 services: container-service
 ms.topic: tutorial
 ms.date: 05/19/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 # Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS on Azure Stack HCI and Windows Server cluster to the latest Kubernetes version.
 # Keyword: upgrade cluster upgrade Kubernetes
 ---

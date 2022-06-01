@@ -3,8 +3,8 @@ title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 09/02/2021
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

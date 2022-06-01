@@ -3,10 +3,10 @@ title: Kubernetes Secrets Store CSI Driver integration with  Azure Kubernetes Se
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with Azure Kubernetes Service on Azure Stack HCI.
 ms.topic: how-to
 ms.date: 04/01/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 02/01/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
 # Keyword: secrets stores CSI driver

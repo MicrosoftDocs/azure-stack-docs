@@ -1,8 +1,8 @@
 ---
 title: Control access using Azure AD and Kubernetes RBAC Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to use Azure Active Directory group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in Azure Kubernetes Service on Azure Stack HCI or Windows Server
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 5/12/2022
 ms.reviewer: abha
 ms.topic: how-to

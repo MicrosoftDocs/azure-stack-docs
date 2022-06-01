@@ -1,10 +1,10 @@
 ---
 title: Initialize-AksHciNode for AKS on Azure Stack HCI and Windows Server
-author: mattbriggs
+author: sethmanheim
 description: The Initialize-AksHciNode PowerShell command runs checks on every physical node to see if all requirements are satisfied to install AKS on Azure Stack HCI and Windows Server..
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
