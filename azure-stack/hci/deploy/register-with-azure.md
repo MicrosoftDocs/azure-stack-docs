@@ -267,7 +267,7 @@ Register-AzStackHCI   -SubscriptionId < Subscription_ID>  -ArcSpnCredential:$spn
 
 To view the status of the cluster and Arc resources, navigate to the following screen in the Azure portal:
 
-:::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade" lightbox="media/register-with-azure/cluster-status.png:::
+:::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade" lightbox="media/register-with-azure/cluster-status.png":::
 
 ## Enable Azure Arc integration
 

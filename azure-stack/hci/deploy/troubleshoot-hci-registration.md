@@ -177,7 +177,7 @@ To remediate this issue, do the following:
 
 1. On the Azure portal, sign in to the node that appears as **Not installed**.
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes" lightbox="media/troubleshoot-hci-registration/node-monitor.png:::
+   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes" lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
 
 1. Disconnect the Arc agent using the following commands:
 
@@ -204,7 +204,7 @@ To remediate this issue, do the following:
 
 1. Sign in to the cluster-node with the **Azure Arc** status that shows as **Not installed**:
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes" lightbox="media/troubleshoot-hci-registration/node-monitor.png:::
+   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes" lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
 
 1. Disconnect the Arc agent using the following commands:
 
