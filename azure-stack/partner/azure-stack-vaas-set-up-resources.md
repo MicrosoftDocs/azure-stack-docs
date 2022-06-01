@@ -2,10 +2,10 @@
 title: Set up Azure AD and storage resources for VaaS
 titleSuffix: Azure Stack Hub
 description: Learn how to set up Azure AD and storage resources for Azure Stack Hub validation as a service.
-author: mattbriggs
+author: sethmanheim
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 
