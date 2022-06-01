@@ -1,7 +1,7 @@
 ---
 title:  Deploy Azure Stack HCI on a single server
 description: This article describes Azure Stack HCI OS configuration on a single server
-author: robess
+author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
