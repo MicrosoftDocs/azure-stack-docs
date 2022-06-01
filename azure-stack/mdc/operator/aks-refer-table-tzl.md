@@ -3,7 +3,7 @@ title: Azure Stack Hub help links cross-reference - MDC
 description: Look up portal reference links for Azure Stack Hub when operating from a Modular Data Center (MDC).
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/26/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.lastreviewed: 10/26/2020
 ms.reviewer: efemmano
 

@@ -4,8 +4,8 @@ description: Learn about Azure Kubernetes Service on Azure Stack HCI and Windows
 services: container-service
 ms.topic: article
 ms.date: 05/11/2022
-author: mattbriggs
-ms.author: mabrigg
+author: sethmanheim
+ms.author: sethm
 ms.lastreviewed: 03/30/2022
 ms.reviewer: mikek
 

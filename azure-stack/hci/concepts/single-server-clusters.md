@@ -1,7 +1,7 @@
 ---
 title: Using Azure Stack HCI on a single server
 description: This article describes Azure Stack HCI OS on a single server
-author: robess
+author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: kerimhanif
