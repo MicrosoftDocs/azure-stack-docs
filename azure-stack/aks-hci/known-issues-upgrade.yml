@@ -145,6 +145,50 @@ sections:
           
           The only way to fix this issue is to redeploy with a clean installation.
       - question: | 
+          vNIC goes missing after a machine reboot
+
+        answer: | 
+          If Azure Stack HCI nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This causes the VMs to lose network connectivity and the cluster falls into a bad state.
+          
+          **To Reproduce**
+          
+          1. Reboot one Azure Stack HCI node.
+          2. Wait for the node to complete the reboot. The node needs to be marked `Up` in the failover cluster.
+          3. Reboot the other nodes.
+          4. Repeat.
+          
+          **Expected behavior**
+          The cluster state should be healthy. All the VMs should have NICs attached to them.
+          
+          In order to resolve the problem, use the MOC commands to add the vNIC to the VM. 
+          
+          1. Get vNIC name for the VM.
+          
+            ```powershell
+            (Get-MocVirtualMachine -group <group> -name <vmname>).virtualmachineproperties.networkprofile.networkinterfaces
+            ```
+            or
+            ```powershell
+            mocctl.exe compute vm get --name <vmname> --group <group>
+            ```
+          2. Connect the vNIC to the VM.
+            ```powershell
+            Connect-MocNetworkInterface -name <vnicname> -group <group> -virtualMachineName <vmname>
+            ```
+            or
+            ```powershell
+            mocctl.exe compute vm nic add --name <vnicname> --vm-name <vmname> --group <group>
+            ```
+          
+          3. If the vNIC connect command fails, try disconnect and connect again. Following is the command for vNIC disconnect.
+            ```powershell
+            Disconnect-MocNetworkInterface -name <vnicname> -group <group> -virtualMachineName <vmname>
+            ```
+            or
+            ```powershell
+            mocctl.exe compute vm nic remove --name <vnicname> --vm-name <vmname> --group <group>
+            ```
+      - question: | 
           When upgrading a deployment, some pods might be stuck at 'waiting for static pods to have a ready condition'.
 
         answer: | 
