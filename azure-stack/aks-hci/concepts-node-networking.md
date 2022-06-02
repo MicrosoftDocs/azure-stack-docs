@@ -1,12 +1,12 @@
 ---
-title: Node virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Node virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server
 description: Learn about virtual machine networking in Azure Kubernetes Service (AKS) on Azure Stack HCI, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 05/16/2022
-ms.author: mabrigg 
+ms.date: 05/26/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
-author: mattbriggs
+author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn about virtual machine networking in AKS on Azure Stack HCI and Windows Server
 # Keyword: virtual machine networking
@@ -34,7 +34,7 @@ The number of IP addresses in the VIP pool depends on the number of workload clu
 Depending on your networking model, the VIP pool definition will differ in the following ways:
 
 - Static IP - If you're using static IP, make sure your virtual IP addresses are from the same subnet provided.
-- DHCP - If your network is configured with DHCP, you will need to work with your network administrator to exclude the VIP pool IP range from the DHCP scope used for the AKS on Azure Stack HCI and Windows Server deployment.
+- DHCP - If your network is configured with DHCP, you will need to work with your network administrator to exclude the VIP pool IP range from the DHCP scope used for the AKS on Azure Stack HCI deployment.
 
 ## Kubernetes node VM IP pool
 
@@ -85,19 +85,19 @@ You must specify the following parameters while defining a virtual network with 
 
 Microsoft On-premises Cloud (MOC) is the management stack that enables the virtual machines on Azure Stack HCI and Windows Server-based SDDC to be managed in the cloud. MOC consists of:
 
-- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI or Windows Server cluster and is configured to fail over to another node.
+- A single instance of a highly available `cloud agent` service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI and Windows Server cluster and is configured to fail over to another node.
 - A `node agent` running on every Azure Stack HCI physical node. 
 
 To enable communication with MOC, you need to provide the IP Address CIDR that will be used for the service. The `-cloudserviceCIDR` is a parameter in the [`Set-AksHciConfig`](./reference/ps/set-akshciconfig.md) command that's used to assign the IP address to the cloud agent service and enable high availability of the cloud agent service.
 
-The choice of an IP address for the MOC service depends on the underlying networking model used by your Azure Stack HCI or Windows Server cluster deployment.
+The choice of an IP address for the MOC service depends on the underlying networking model used by your Azure Stack HCI and Windows Server cluster deployment.
 
 > [!Note]
-> The IP address allocation for the MOC service is independent of your Kubernetes virtual network model. The IP address allocation is dependent on the underlying physical network, and the IP addresses configured for the Azure Stack HCI or Windows Server cluster nodes in your data center.
+> The IP address allocation for the MOC service is independent of your Kubernetes virtual network model. The IP address allocation is dependent on the underlying physical network, and the IP addresses configured for the Azure Stack HCI and Windows Server cluster nodes in your data center.
 
-- **Azure Stack HCI or Windows Server cluster nodes with a DHCP-based IP address allocation mode**: If your Azure Stack HCI nodes are assigned an IP address from a DHCP server present on the physical network, then you do not need to explicitly provide an IP address to the MOC service, as the MOC service will also receive an IP address from the DHCP server.
+- **Azure Stack HCI and Windows Server cluster nodes with a DHCP-based IP address allocation mode**: If your Azure Stack HCI nodes are assigned an IP address from a DHCP server present on the physical network, then you do not need to explicitly provide an IP address to the MOC service, as the MOC service will also receive an IP address from the DHCP server.
 
-- **Azure Stack HCI or Windows Server cluster nodes with a static IP allocation model**: If your Azure Stack HCI or Windows Server cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. The IP address for the MOC service must be in the same subnet as the IP addresses of Azure Stack HCI or Windows Server cluster nodes. To explicitly assign an IP address for MOC service, use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example: "10.11.23.45/16".
+- **Azure Stack HCI and Windows Server cluster nodes with a static IP allocation model**: If your cluster nodes are assigned static IP addresses, then you must explicitly provide an IP address for the MOC cloud service. The IP address for the MOC service must be in the same subnet as the IP addresses of Azure Stack HCI and Windows Server cluster nodes. To explicitly assign an IP address for MOC service, use the `-cloudserviceCIDR` parameter in the `Set-AksHciConfig` command. Make sure you enter an IP address in the CIDR format, for example: "10.11.23.45/16".
 
 ## Compare network models
 
@@ -119,7 +119,7 @@ The following table compares IP address allocation for resources between static 
 | Kubernetes nodes (on virtual machines) | Assigned using Kubernetes node IP pool | Assigned dynamically |
 | Kubernetes services | Assigned statically using VIP pool | Assigned statically using VIP pool |
 | HAProxy load balancer VM | Assigned using Kubernetes node IP pool | Assigned dynamically |
-| Microsoft On-Premise Cloud Service | Depends on the physical networking configuration for Azure Stack HCI or Windows Server cluster nodes | Depends on the physical networking configuration for Azure Stack HCI or Windows Server cluster nodes |
+| Microsoft On-Premise Cloud Service | Depends on the physical networking configuration for Azure Stack HCI and Windows Server cluster nodes | Depends on the physical networking configuration for Azure Stack HCI and Windows Server cluster nodes |
 | VIP pool | Mandatory | Mandatory |
 | Kubernetes node VM IP pool | Mandatory | Not Supported |
 
@@ -148,7 +148,7 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ### Walk through an example deployment
 
-Jane is an IT administrator just starting with AKS on Azure Stack HCI and Windows Server. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI or Windows Server cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
+Jane is an IT administrator just starting with AKS on Azure Stack HCI and Windows Server. She wants to deploy two Kubernetes clusters - Kubernetes cluster A and Kubernetes cluster B on her Azure Stack HCI and Windows Server cluster. She also wants to run a voting application on top of her cluster. This application has three instances of the front-end UI running across the two clusters and one instance of the backend database.
 
 - Kubernetes cluster A has 3 control plane nodes and 5 worker nodes
 - Kubernetes cluster B has 1 control plane node and 3 worker nodes

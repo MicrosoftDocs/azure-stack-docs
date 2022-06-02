@@ -4,10 +4,10 @@ description: Learn about how to get support and open a support request for AKS o
 ms.topic: conceptual
 ms.date: 05/02/2022
 ms.custom: fasttrack-edit
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
-author: mattbriggs
+author: sethmanheim
 # Intent: As an IT Pro, I want to find out what options are available to get help and support, such as creating a ticket.
 # Keyword: AKS support AKS help support requests
 ---

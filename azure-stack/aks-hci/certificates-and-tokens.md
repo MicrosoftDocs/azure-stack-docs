@@ -1,10 +1,10 @@
 ---
 title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 description: Learn how to use certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-author: mattbriggs
+author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/13/2022
-ms.author: mabrigg 
+ms.date: 05/26/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 
@@ -40,6 +40,6 @@ Starting with the April 2022 update, Azure Kubernetes Service on Azure Stack HCI
 
 ## Next steps
 
+- Learn about [Update certificates on AKS on Azure Stack HCI and Windows Server after 60 days](certificates-update-after-sixty-days.md)
 - Learn about [Security in AKS on Azure Stack HCI and Windows Server](concepts-security.md)
 - Learn about [Secure communication with certificates](secure-communication.md).
-- Review issues with security, see [Fix security and identity known issues and errors](/azure-stack/aks-hci/known-issues-security)

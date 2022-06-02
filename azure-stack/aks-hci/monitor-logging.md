@@ -1,10 +1,10 @@
 ---
 title: Monitor and logging data on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to create and access monitor and logging data for Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/19/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

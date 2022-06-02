@@ -1,10 +1,10 @@
 ---
 title: New-AksHciLoadBalancerSetting for AKS on Azure Stack HCI and Windows Server
-author: mattbriggs
+author: sethmanheim
 description: Use the New-AksHciLoadBalancerSetting command to create a load balancer in AKS on Azure Stack HCI and Windows Server.
 ms.topic: reference
 ms.date: 11/18/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

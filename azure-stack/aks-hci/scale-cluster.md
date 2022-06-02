@@ -3,8 +3,8 @@ title: Scale an Azure Kubernetes Service on Azure Stack HCI or Windows Server cl
 description: Learn how to scale the number of nodes in an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster.
 ms.topic: article
 ms.date: 04/25/2022
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 # Intent: As an IT Pro, I need to learn how to scale the number of nodes in an AKS cluster in order to run control plane nodes and worker nodes.
