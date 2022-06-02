@@ -463,7 +463,7 @@ You can further scope down the permissions required to perform HCI registration 
 
 ### What are some of the more commonly-used registration and Arc cmdlets?
 
-- For **Az.StackHCI** PowerShell module cmdlets, see the [PowerShell documentation here](/powershell/module/az.stackhci/?view=azps-8.0.0&viewFallbackFrom=azps-7.2.0).  
+- For **Az.StackHCI** PowerShell module cmdlets, see the [PowerShell documentation here](/powershell/module/az.stackhci/).  
 - **Get-AzureStackHCI**: returns the current node connection and policy information for Azure Stack HCI.
 - **Get-AzureStackHCIArcIntegration**: returns the status of node Arc integration.
 - **Sync-AzureStackHCI**:
