@@ -231,7 +231,7 @@ In some cases, the user running the registration cmdlet might not have permissio
 > [!NOTE]
 > HCI does not update the credentials of the SPN created in this way. When the SPN credentials are near expiry, you must regenerate the credentials and run the "repair registration" flow to update the SPN credentials on the cluster.
 
-To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of PowerShell. 
+To register the cluster and Arc-enable the servers, run the following PowerShell commands after updating them with your environment information. The following commands require **Az.Resources** (minimum version 5.6.0) and **Az.Accounts** (minimum version 2.7.6). You can use the `get-installedModule <module name>` cmdlet to check the installed version of a PowerShell module.
 
 ```powershell
 #Connect to subscription
@@ -273,9 +273,6 @@ To view the status of the cluster and Arc resources, navigate to the following s
 :::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade" lightbox="media/register-with-azure/cluster-status.png":::
 
 ## Enable Azure Arc integration
-
-> [!NOTE]
-> Azure Arc integration is not available for Azure Stack HCI, version 20H2. If you are running Azure Stack HCI 21H2 and do not want the servers to be Arc enabled or do not have the proper roles, specify this additional parameter: `-EnableAzureArcServer:$false`.
 
 If you're a preview channel customer and you registered your preview channel cluster with Azure for the first time on or after June 15, 2021, every server in the cluster will be Azure Arc-enabled by default, as long as the user registering the cluster has Azure Owner or User Access Administrator roles. Otherwise, you'll need to take the following steps to enable Azure Arc integration on the servers.
 
