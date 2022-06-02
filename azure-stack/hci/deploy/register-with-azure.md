@@ -337,7 +337,7 @@ When you're ready to decommission your Azure Stack HCI cluster, connect to the c
 The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
 
 > [!NOTE]
-> If your Windows Admin Center gateway is registered to a different AAD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
+> If your Windows Admin Center gateway is registered to a different Azure AD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
 
 ### Unregister Azure Stack HCI using PowerShell
 
@@ -409,6 +409,69 @@ Remove-AzResourceGroup -Name "HCI001-rg"
 ## Troubleshooting
 
 For information about common errors and mitigation steps to resolve them, see [Troubleshoot Azure Stack HCI registration](../deploy/troubleshoot-hci-registration.md).
+
+## FAQ
+
+The following are answers to some frequently asked questions:
+
+### How do I use a more restricted custom permissions role?
+
+You can further scope down the permissions required to perform HCI registration as described in [Assign permissions using PowerShell](#assign-permissions-using-powershell).
+
+1. Sign in to the subscription you will use to register the cluster. Under **Settings > Resource Providers**, select the following resource providers and then select **Register**:
+   1. Microsoft.AzureStackHCI
+   2. Microsoft.HybridCompute
+   3. Microsoft.GuestConfiguration
+   4. Microsoft.HybridConnectivity
+
+2. Create a JSON file called **customHCIRole.json** with the following content. Make sure to change `<subscriptionID>` to the ID of your Azure subscription. To get your subscription ID, visit the Azure portal, navigate to **Subscriptions**, then copy/paste your ID from the list.
+
+   ```json
+   {
+   "Name": "Azure Stack HCI registration role",
+   "Id": null,
+   "IsCustom": true,
+   "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+   "Actions": [
+     "Microsoft.Resources/subscriptions/resourceGroups/read",
+     "Microsoft.AzureStackHCI/clusters/*",
+     "Microsoft.Authorization/roleAssignments/write"
+   ],
+   "NotActions": [
+   ],
+    "AssignableScopes": [
+      "/subscriptions/<subscriptionId>"
+    ]
+   }
+   ```
+
+3. Create the custom role:
+
+   ```powershell
+   New-AzRoleDefinition -InputFile <path to customHCIRole.json>
+   ```
+
+4. Assign the custom role to the user:
+
+   ```powershell
+   $user = get-AzAdUser -DisplayName <userdisplayname>
+   $role = Get-AzRoleDefinition -Name "Azure Stack HCI registration role"
+   New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<subscriptionid>
+   ```
+
+   You can now register clusters in this subscription with more restrictive role permissions.
+
+### What are some of the more commonly-used registration and Arc cmdlets?
+
+- For **Az.StackHCI** PowerShell module cmdlets, see the [PowerShell documentation here](/powershell/module/az.stackhci/?view=azps-8.0.0&viewFallbackFrom=azps-7.2.0).  
+- **Get-AzureStackHCI**: returns the current node connection and policy information for Azure Stack HCI.
+- **Get-AzureStackHCIArcIntegration**: returns the status of node Arc integration.
+- **Sync-AzureStackHCI**:
+  - Performs billing, licensing, and census sync with Azure.
+  - The system runs this cmdlet automatically every 12 hours.
+  - Customers should only need to use this cmdlet when a cluster's internet connection has been unavailable for an extended period.
+  - Do not run this cmdlet immediately after server reboot, let the automatic sync happen. Otherwise, it may result in a bad state.
+
 
 ## Next steps
 
