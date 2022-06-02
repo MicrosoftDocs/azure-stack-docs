@@ -161,7 +161,7 @@ For example:
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -EnvironmentName AzureUSGovernment
    ```
 
-   But you then ran the `Unregister-AzStackHCI` cmdlet with `-EnvironmentName Azurecloud` as follows:
+   But you then ran the `Unregister-AzStackHCI` cmdlet with `-EnvironmentName Azurecloud` (the default) as follows:
 
    ```powershell
    Unregister-AzStackHCI -SubscriptionId "<subscription_ID>"
