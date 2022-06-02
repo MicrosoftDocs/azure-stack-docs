@@ -173,7 +173,7 @@ For example:
    Register-AzStackHCI  -SubscriptionId "<subscription_id_1>"
    ```
 
-   But you then ran the `Unregister-AzStackHCI` cmdlet for a different subscription ID; `-SubscriptionId "<subscription_id_2>"`:
+   But you then ran the `Unregister-AzStackHCI` cmdlet for a different subscription ID:
 
    ```powershell
    Unregister-AzStackHCI -SubscriptionId "subscription_id_2"
