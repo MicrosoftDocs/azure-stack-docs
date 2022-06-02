@@ -71,7 +71,7 @@ If there are node names after the 'Couldn't set and verify registration certific
 **Remediation action**:
 
 1. Sign in to the on-premises HCI cluster server using the cluster user credentials.
-2. Run the `Unregister-AzStackHCI` cmdlet on the cluster to clean up the cluster registration state and cluster Arc state.
+2. Run the `Unregister-AzStackHCI` cmdlet on the cluster to clean up the cluster registration state and cluster Arc state.</br>
     a. If unregistration succeeds, navigate to **Azure Active Directory > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.</br>
     b. If unregistration fails with the error **Couldn't disable Azure Arc integration on Node \<node name\>**, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.
 3. Sign in to each individual node:
