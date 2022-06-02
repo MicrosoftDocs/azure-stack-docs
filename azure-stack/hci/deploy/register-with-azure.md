@@ -19,7 +19,7 @@ Now that you've deployed the Azure Stack HCI operating system and created a clus
 
 This article describes the following topics:
 
-- How to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synchronized between the Azure resource and the on-premises cluster(s).
+- How to register your Azure Stack HCI cluster with Azure for monitoring, support, billing, and hybrid services. Upon registration, an Azure Resource Manager resource is created to represent the on-premises Azure Stack HCI cluster, and from HCI 21H2 onwards by default it will create an Azure Arc of server resource for each server in the Azure Stack HCI cluster, effectively extending the Azure management plane to Azure Stack HCI. Information is periodically synchronized between the Azure resource and the on-premises cluster(s).
 - How to view the registration status from Windows Admin Center and PowerShell.
 - How to unregister the cluster when you are ready to decommission it.
 
