@@ -182,7 +182,7 @@ For example:
 **Remediation action**:
 
 1. Delete the cluster and Arc resources from the portal.
-2. Navigate to **Azure Active Directory > App registrations (All applications)**, and search with the name matching `<clusterName>` and `<clusterName>.arc`, then delete the two app IDs.
+2. Navigate to **Azure Active Directory > App registrations (All applications)**, and search for the name matching `<clusterName>` and `<clusterName>.arc`, then delete the two app IDs.
 
 ## Issuing Sync-AzureStackHCI immediately after restart of the nodes of the cluster result in Arc resource deletion
 
@@ -238,7 +238,11 @@ With the cluster in this state, when you attempt to register HCI with Azure, the
    .\azcmagent.exe disconnect --force-local-only
    ```
 
-3. Run the repair registration cmdlet.
+3. Run the repair registration cmdlet:
+
+   ```powershell
+   Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1  -RepairRegistration
+   ```
 
 ## Not able to rotate certificates in Fairfax and Mooncake
 
