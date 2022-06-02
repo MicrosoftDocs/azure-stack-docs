@@ -466,8 +466,8 @@ You can further scope down the permissions required to perform HCI registration 
 - **Sync-AzureStackHCI**:
   - Performs billing, licensing, and census sync with Azure.
   - The system runs this cmdlet automatically every 12 hours.
-  - Customers should only need to use this cmdlet when a cluster's internet connection has been unavailable for an extended period.
-  - Do not run this cmdlet immediately after server reboot, let the automatic sync happen. Otherwise, it may result in a bad state.
+  - You should only use this cmdlet when a cluster's internet connection has been unavailable for an extended period.
+  - Do not run this cmdlet immediately after server reboot; let the automatic sync happen. Otherwise, it may result in a bad state.
 
 
 ## Next steps
