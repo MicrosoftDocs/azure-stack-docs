@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
-ms.date: 05/31/2022
+ms.date: 06/03/2022
 ---
 
 # Troubleshoot Azure Stack HCI registration
@@ -155,7 +155,7 @@ Event ID error messages identify a failure in the registration process. The erro
 
 For example:
 
-- **Wrong `-EnvironmentName <value>`**: If you registered your cluster in `-EnvironmentName AzureUSGovernment` as in the following example, this issue will occur. Note that the default `-EnvironmentName` is "Azurecloud". For example, you ran:
+- **Wrong `-EnvironmentName <value>`**: You registered your cluster in `-EnvironmentName AzureUSGovernment` as in the following example. Note that the default `-EnvironmentName` is "Azurecloud". For example, you ran:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -EnvironmentName AzureUSGovernment
