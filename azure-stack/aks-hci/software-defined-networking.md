@@ -18,7 +18,7 @@ ms.reviewer: anpaul
 You can deploy Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server on top of a software defined networking (SDN) virtual networking infrastructure using PowerShell.
 
 > [!IMPORTANT]
-> Azure Stack HCI and Windows Server with software defined networking and virtual networking infrastructure is currently in PREVIEW.
+> Integration of software defined networking and virtual networking infrastructure with AKS on Azure Stack HCI and Windows Server A with is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Scope of the public preview
@@ -48,9 +48,11 @@ To deploy AKS on Azure Stack HCI and Windows Server with SDN, you need to make s
     [Azure Kubernetes Service on Azure Stack HCI requirements](system-requirements.md)
 - **SDN requirements**  
     [Plan a Software Defined Network infrastructure](/azure-stack/hci/concepts/plan-software-defined-networking-infrastructure)
+- **Learn module**  
+    [Plan for and deploy SDN infrastructure on Azure Stack HCI](/learn/modules/plan-deploy-sdn-infrastructure/)
 
 > [!NOTE]  
-> For SDN integration with AKS on Azure Stack HCI and Windows Server you need a network controller and software Load balancer. Gateway VMs are optional and not required.
+> For SDN integration with AKS on Azure Stack HCI and Windows Server you need the network controller and software load balancer components. Gateway VMs are optional and not required.
 
 ## Install and preparing SDN
 
@@ -65,7 +67,7 @@ Once the SDN Express deployment has completed, there should be a screen with the
 
 ![Your deployment will indicate that the status is active and healthy](media/software-defined-networking/status-active-and-healthy.png)
 
-If anything goes wrong or is being reported as unhealthy, see [Troubleshooting SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking). Contact <a href="mailto:AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com</a> for assistance.
+If anything goes wrong or is being reported as unhealthy, see [Troubleshooting SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking). Contact <a href="mailto:AKS on Azure Stack HCI and Windows Server aks-hci-sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com</a> for assistance.
 
 It's important that SDN is healthy before proceeding. If you're deploying SDN in a new environment, create test VMs and verifying connectivity to the load balancer VIPs. See [how to create and attach VMs to an SDN virtual network](/azure-stack/hci/manage/vm) using Windows Admin Center.
 
@@ -135,7 +137,8 @@ Choose one of your HCI machines to drive the creation of AKS on Azure Stack HCI 
         | -vipPoolStart -vipPoolEnd             | IP start/end range of logical network used for load balancer VIP pool. Above, we've used an address range from the "PublicVIP" logical network. |
         | -useNetworkController                 | Enable integration with SDN                                                                                                                       |
         | -ipAddressPrefix                      | Virtual network subnet in CIDR notation                                                                                                           |
-        | -gateway -dnsServers                  | Gateway and DNS server                                                                                                                            |
+        | -gateway                  | Gateway                                                                                                                             |
+        | -dnsServers                  | DNS server                                                                                                                            |
         
         > [!NOTE]  
         > For more information about these parameters, see: [New-AksHciNetworkSetting](/azure-stack/AKS-HCI/reference/ps/new-akshcinetworksetting)
@@ -143,7 +146,7 @@ Choose one of your HCI machines to drive the creation of AKS on Azure Stack HCI 
 1.  In the same PowerShell window used in the last step, create the AKS on Azure Stack HCI and Windows Server  configuration for SDN by providing references to the targeted SDN networks, and passing in the network settings (**$vnet**) we defined:
 
     ```powershell
-    Set-AksHciConfig -imageDir "C:\\images" -workingDir "C:\\store" -cloudConfigLocation "C:\\config" -vnet $vnet -useNetworkController -networkControllerFqdnOrIpAddress "nc.contoso.com" -networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" -networkControllerLnetRef "/logicalnetworks/HNVPA" -ring "SDNPreview" -catalog AKS-HCI -stable-catalogs-ext -version 1.0.10.40517
+    Set-AksHciConfig -imageDir "C:\clusterstorage\Volume1\images" -workingDir "C:\clusterstorage\Volume1\store" -cloudConfigLocation "C:\clusterstorage\Volume1\config" -vnet $vnet -useNetworkController -networkControllerFqdnOrIpAddress "nc.contoso.com" -networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" -networkControllerLnetRef "/logicalnetworks/HNVPA" -ring "SDNPreview" -catalog AKS-HCI -stable-catalogs-ext -version 1.0.10.40517
     ```
     
     > [!NOTE]  
@@ -190,7 +193,7 @@ Once the installation has succeeded, a control plane VM (management cluster) sho
 
 ### Feedback and issues
 
-If you encounter any issues with the instructions in this guide, or would simply like to provide feedback,  reach out to us at <a href="mailto:AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com</a>. 
+If you encounter any issues with the instructions in this guide, or would simply like to provide feedback,  reach out to us at <a href="mailto:AKS on Azure Stack HCI and Windows Server aks-hci-sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com</a>. 
 
 There are also some self-help resources that can be found [Troubleshoot SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking) for SDN and [Resolve general issues when using Azure Kubernetes Service on Azure Stack HCI](/azure-stack/AKS-HCI/known-issues) for AKS on Azure Stack HCI and Windows Server. We sincerely appreciate and thank you for your feedback and participation!
 
