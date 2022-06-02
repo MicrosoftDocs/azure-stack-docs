@@ -1,10 +1,10 @@
 ---
 title: How to use AKS on Azure Stack HCI and Windows Server with SDN and virtual networking infrastructure (Public Preview)
 description: Learn how to use AKS on Azure Stack HCI and Windows Server with software defined networking and virtual networking infrastructure.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/31/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: anpaul
 
@@ -18,7 +18,7 @@ ms.reviewer: anpaul
 You can deploy Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server on top of a software defined networking (SDN) virtual networking infrastructure using PowerShell.
 
 > [!IMPORTANT]
-> Integration of software defined networking and virtual networking infrastructure with AKS on Azure Stack HCI and Windows Server A with is currently in PREVIEW.
+> Integration of software defined networking and virtual networking infrastructure with AKS on Azure Stack HCI and Windows Server is currently in PREVIEW.
 > See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Scope of the public preview
