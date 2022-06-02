@@ -85,7 +85,7 @@ If there are node names after the 'Couldn't set and verify registration certific
 **Failure state explanation**: If the cluster is disconnected for more than 8 hours, it is possible that the associated Azure AD app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
 
 - If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**.
-  - Look at the **HCIsvc** debug logs on the node: the error message will be **Application with identifier '28b3766b-3a48-4bb1-b4d0-b78167d15571' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
+  - Look at the **HCIsvc** debug logs on the node: the error message will be **Application with identifier '\<ID\>' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
 - If `<clustername>.arc` created during Arc enablement is deleted, there are no visible errors during normal operation. This identity is required only during the registration and unregistration processes. In this scenario, unregistration fails with the error **Couldn't disable Azure Arc integration on Node \<Node Name\>. Try running the Disable-AzureStackHCIArcIntegration cmdlet on the node. If the node is in a state where the Disable-AzureStackHCIArcIntegration cmdlet could not be run, remove the node from the cluster and try running the Unregister-AzStackHCI cmdlet again.**
 
 Deleting any of these applications results in a failure to communicate from the HCI cluster to the cloud.
@@ -100,7 +100,7 @@ Deleting any of these applications results in a failure to communicate from the 
 
    Repairing the registration recreates the necessary Azure AD applications while retaining other information such as resource name, resource group and other registration choices.
 
-2. If the `<clustername>.arc` app ID is deleted, there is no visible error in the logs. Unregistration will fail if `<clustername>.arc` is deleted. Follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
+2. If the `<clustername>.arc` app ID is deleted, there is no visible error in the logs. Unregistration will fail if `<clustername>.arc` is deleted. If unregistration fails, follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
 
 ## Out of policy error
 
