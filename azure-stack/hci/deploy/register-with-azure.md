@@ -119,8 +119,8 @@ The following table explains why these permissions are required:
 
 | Permissions                                                                                                                                                                                | Reason                                                  |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
-| "Microsoft.Resources/subscriptions/resourceGroups/read"</b> "Microsoft.AzureStackHCI/register/action"</b> "Microsoft.AzureStackHCI/Unregister/Action"</b> "Microsoft.AzureStackHCI/clusters/*"</b>     | To register and unregister Azure Stack HCI cluster      |
-| "Microsoft.Authorization/roleAssignments/write", "Microsoft.HybridCompute/register/action", "Microsoft.GuestConfiguration/register/action", "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources |
+| "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister the Azure Stack HCI cluster.      |
+| "Microsoft.Authorization/roleAssignments/write",</br> "Microsoft.HybridCompute/register/action",</br> "Microsoft.GuestConfiguration/register/action",</br> "Microsoft.HybridConnectivity/register/action</br>" | To register and unregister the Arc for server resources. |
 
 ### Register a cluster using Windows Admin Center
 
