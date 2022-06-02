@@ -28,11 +28,11 @@ The following scenarios are **not** supported:
 
 ## Prerequisites
 
-* AKS deployment running the February or April build
+* AKS deployment running the May build
 * Latest version of the AksHci PowerShell module. Fore more information see [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 * At least one (1) update available for your workload clusters. You can check if there's an update available using the AksHci PowerShell module cmdlet [`Get-AksHciClusterUpdates`](/azure-stack/aks-hci/reference/ps/get-akshciclusterupdates).
 
-## Management
+## Add URLs to the proxy exclusion list post deployment
 
 You can use this scenario to change the proxy exclusion list if you have an update available for your Azure Stack HCI and Windows Server management cluster or target clusters.
 
@@ -40,7 +40,7 @@ You can use this scenario to change the proxy exclusion list if you have an upda
 
     ```powershell  
     $noProxy = ".contoso.com"
-    Set-AksHciProxySetting -Name cluster-1 -noProxy $noProxy 
+    Set-AksHciProxySetting -noProxy $noProxy 
     ```
 
 2. Check if a management cluster update is possible by running the below command:
@@ -49,15 +49,23 @@ You can use this scenario to change the proxy exclusion list if you have an upda
     Get-AksHciUpdates
     ```
 
-    If an update is available, update the management cluster by running `Update-AksHci`. If an update isn't available, skip this step and proceed.
+    If an update is available, update the management cluster by running `Update-AksHci`. If an update isn't available, skip this step and proceed to the next step.
 
+    ```powershell  
+    Update-AksHci
+    ```
+   
 3. Check if there are workload cluster updates available by running the below command:
 
     ```powershell  
     Get-AksHciClusterUpdates -name mycluster
     ```
 
-If an update is available (either Kubernetes version or operating system (OS) image), update all of the workload clusters one-by-one by running `Update-AksHciCluster`.
+    If an update is available (either Kubernetes version or operating system (OS) image), update all of the workload clusters one-by-one by running `Update-AksHciCluster`.
+    
+    ```powershell  
+    Update-AksHciCluster -name cluster-1
+    ```
 
 
 ## Next steps
