@@ -133,10 +133,10 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
 1. Before beginning the registration process, you must first [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md) and sign into Windows Admin Center with your Azure account.
 
-> [!IMPORTANT]
-> When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit the Azure portal and select Azure Active Directory. Your tenant ID will be displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
+   > [!IMPORTANT]
+   > When registering Windows Admin Center with Azure, it's important to use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. An Azure AD tenant ID represents a specific instance of Azure AD containing accounts and groups, whereas an Azure subscription ID represents an agreement to use Azure resources for which charges accrue. To find your tenant ID, visit the Azure portal and select Azure Active Directory. Your tenant ID will be displayed under Tenant information. To get your Azure subscription ID, navigate to Subscriptions and copy/paste your ID from the list.
 
-1. Open Windows Admin Center. Do one of the following steps:
+2. Open Windows Admin Center and do the following:
    1. Select the cluster connection.
    2. Select **Settings** from the bottom of the **Tools** menu on the left.
    3. Select **Azure Stack HCI registration**. If your cluster has not yet been registered with Azure, then **Registration status** shows **Not registered**. Select **Register** to proceed.
@@ -337,7 +337,7 @@ When you're ready to decommission your Azure Stack HCI cluster, connect to the c
 The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
 
 > [!NOTE]
-> If your Windows Admin Center gateway is registered to a different AAD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, please use PowerShell instructions.
+> If your Windows Admin Center gateway is registered to a different AAD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
 
 ### Unregister Azure Stack HCI using PowerShell
 
