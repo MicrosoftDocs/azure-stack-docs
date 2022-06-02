@@ -176,7 +176,7 @@ For example:
    But you then ran the `Unregister-AzStackHCI` cmdlet for a different subscription ID:
 
    ```powershell
-   Unregister-AzStackHCI -SubscriptionId "subscription_id_2"
+   Unregister-AzStackHCI -SubscriptionId "<subscription_id_2>"
    ```
 
 **Remediation action**:
