@@ -1,11 +1,11 @@
 ---
-title: Deploy a Linux app in  Azure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Deploy a Linux app in AKS on Azure Stack HCI
 description: In this tutorial, you deploy a multi-container Linux app to your cluster using a custom image stored in Azure Container Registry.
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 04/11/2022
+ms.date: 05/31/2022
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
 
 # Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux app to my cluster.
@@ -13,13 +13,13 @@ ms.reviewer: abha
 
 ---
 
-# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI
 
 > Applies to: AKS on Azure Stack HCI and Windows Server
 
 This tutorial describes how to deploy a multi-container app that includes a web front-end and a Redis database instance in your AKS on Azure Stack HCI and Windows Server cluster. You will also learn how to test and scale your app. 
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
 
 ## Before you begin
 
@@ -27,9 +27,13 @@ Verify you have the following requirements ready:
 
 * An Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server cluster with at least one Linux worker node that is up and running. 
 * A kubeconfig file to access the cluster.
-* Have the AKS on Azure Stack HCI and Windows Server PowerShell module installed.
+* Have the Azure Kubernetes Service on Azure Stack HCI PowerShell module installed.
 * Run the commands in this document in a PowerShell administrative window.
 * Ensure that OS-specific workloads land on the appropriate container host. If you have a mixed Linux and Windows worker nodes Kubernetes cluster, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
+
+> [!NOTE]  
+> When deploying a target cluster that shares a network with another target cluster, there is the possibility of a load balancer IP address conflict.
+> This can happen if you deploy two workloads that use different ports in target clusters sharing the same `AksHciClusterNetwork` object. Because of the way the IP addresses and port mappings are allocated inside HA Proxy, this can lead to a duplicate IP address assignment. If this occurs, one or both workloads will encounter random network connectivity issues until you re-deploy your workloads. When you re-deploy your workloads, you can either use the same port that will cause each workload to receive a separate service IP address, or you can re-deploy your workloads on target clusters that use different `AksHciClusterNetwork` objects.
 
 ## Deploy the app
 

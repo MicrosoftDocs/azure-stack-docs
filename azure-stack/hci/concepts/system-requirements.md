@@ -21,7 +21,7 @@ A standard Azure Stack HCI cluster requires a minimum of one server and a maximu
 
 Keep the following in mind for various types of Azure Stack HCI deployments:
 
-- Stretched clusters require servers to be deployed at two separate sites. The sites can be in different countries, different cities, different floors, or different rooms. A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site).
+- Stretched clusters require servers to be deployed at two separate sites. The sites can be in different countries, different cities, different floors, or different rooms. A stretched cluster requires a minimum of 4 servers (2 per site) and a maximum of 16 servers (8 per site). Each site must have the same number of servers and drives.
 
 > [!NOTE]
 > Stretch clusters are not supported in a single server configuration.
