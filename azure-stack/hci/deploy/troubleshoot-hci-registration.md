@@ -75,9 +75,9 @@ If there are node names after the 'Couldn't set and verify registration certific
     a. If unregistration succeeds, navigate to **Azure Active Directory > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.</br>
     b. If unregistration fails with the error **ERROR: Couldn't disable Azure Arc integration on Node \<node name\>, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.**
       1. Sign in to each individual node:
-          a. Change directory to where the Arc agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.
-          b. Get the status on arcmagent.exe and determine the Azure resource group it is projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information.
-          c. Force disconnect the Arc agent from node: `.\azcmagent.exe disconnect --force-local-only`.
+          a. Change directory to where the Arc agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.</br>
+          b. Get the status on arcmagent.exe and determine the Azure resource group it is projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information.</br>
+          c. Force disconnect the Arc agent from node: `.\azcmagent.exe disconnect --force-local-only`.</br>
           d. Sign in to the Azure portal and delete the **Arc-for-Server** resource from the resource group determined in step 3.
 
 ## User deleted the App IDs by mistake
