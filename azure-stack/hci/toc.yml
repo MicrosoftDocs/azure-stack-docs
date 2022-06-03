@@ -156,8 +156,16 @@
         href: manage/witness.md
     - name: Monitoring
       items:
-      - name: Configure Azure portal to monitor clusters (preview)
-        href: manage/monitor-azure-portal.md
+      # - name: Monitor a single cluster (latest version)
+      #   href: manage/single-cluster.md
+      # - name: Configure Azure portal to monitor clusters (preview)
+      #   href: manage/monitor-azure-portal.md
+      # - name: Monitor multiple clusters with Azure Stack HCI Insights (latest version)
+      #   href: manage/multi-cluster.md        
+      # - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+      #   href: manage/azure-stack-hci-insights.md
+      - name: Monitor a single cluster using the Azure portal (preview)
+        href: manage/monitor-hci-single.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
         href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center

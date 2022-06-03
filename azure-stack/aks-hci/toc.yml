@@ -140,6 +140,8 @@
             href: deploy-metallb.md
           - name: Use an ingress controller
             href: create-ingress-controller.md
+          - name: Use software defined networking
+            href: software-defined-networking.md
     - name: Manage storage
       items:
           - name: Use persistent volume
