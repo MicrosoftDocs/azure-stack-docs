@@ -338,7 +338,7 @@ The unregistration process automatically cleans up the Azure resource that repre
 
 ### Unregister Azure Stack HCI using PowerShell
 
-Using PowerShell. you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
+with PowerShell, you can use the `Unregister-AzStackHCI` cmdlet to unregister an Azure Stack HCI cluster. You can run the cmdlet either on a cluster node or from a management computer.
 
 You might need to install the latest version of the **Az.StackHCI** module. If you see a prompt that says **Are you sure you want to install the modules from 'PSGallery'?**, answer yes (Y):
 
@@ -460,7 +460,7 @@ You can further scope down the permissions required to perform HCI registration 
 
 ### What are some of the more commonly-used registration and Arc cmdlets?
 
-- For **Az.StackHCI** PowerShell module cmdlets, see the [PowerShell documentation here](/powershell/module/az.stackhci/).  
+- For **Az.StackHCI** PowerShell module cmdlets, see the [HCI PowerShell documentation](/powershell/module/az.stackhci/).  
 - **Get-AzureStackHCI**: returns the current node connection and policy information for Azure Stack HCI.
 - **Get-AzureStackHCIArcIntegration**: returns the status of node Arc integration.
 - **Sync-AzureStackHCI**:

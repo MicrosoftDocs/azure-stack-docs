@@ -14,7 +14,7 @@ Troubleshooting Azure Stack HCI registration issues requires looking at both Pow
 
 ## Collect PowerShell registration logs
 
-When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files called **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue that needs the additional debug logs, set debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
+When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files named **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue that needs the additional debug logs, set the debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
 
 ```PowerShell
 $DebugPreference = 'Continue'
@@ -36,11 +36,13 @@ Get-WinEvent -Logname Microsoft-AzureStack-HCI/Debug -Oldest -ErrorAction Ignore
 
 ## Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}
 
-**Failure state explanation**: During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
+**Failure state explanation**:
+
+During registration, each server in the cluster must be up and running with outbound internet connectivity to Azure. The `Register-AzStackHCI` cmdlet talks to all servers in the cluster to provision certificates for each. Each server will use its certificate to make API call to HCI services in the cloud to validate registration.
 
 If registration fails, you may see the following message: **Failed to register. Couldn't generate self-signed certificate on node(s) {Node1,Node2}. Couldn't set and verify registration certificate on node(s) {Node1,Node2}**
 
-If there are node names after the 'Couldn't generate self-signed certificate on node(s)' part of the error message, then we weren't able to generate the certificate on those server(s).
+If there are node names after the **Couldn't generate self-signed certificate on node(s)** part of the error message, then the system wasn't able to generate the certificate on those server(s).
 
 **Remediation action**:
 
@@ -52,21 +54,23 @@ If there are node names after the 'Couldn't generate self-signed certificate on 
    New-PSSession -ComputerName {failing nodes}
    ```
 
-If there are node names after the 'Couldn't set and verify registration certificate on node(s)' part of the error message, then we were able to generate the certificate on the server(s), but the server(s) weren't able to successfully call the HCI cloud service API. To troubleshoot:
+If there are node names after the **Couldn't set and verify registration certificate on node(s)** part of the error message, then the service was able to generate the certificate on the server(s), but the server(s) weren't able to successfully call the HCI cloud service API. To troubleshoot:
 
 1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
-2. Try running the `Test-AzStackHCIConnection` cmdlet and make sure it succeeds. This cmdlet will invoke the health endpoint of HCI cloud services to test connectivity.
+2. Try running the `Test-AzStackHCIConnection` cmdlet and make sure it succeeds. This cmdlet invokes the health endpoint of HCI cloud services to test connectivity.
 
 3. Look at the hcisvc debug logs on each node listed in the error message.
 
-   - It's ok to have 'ExecuteWithRetry operation AADTokenFetch failed with retryable error' appear a few times before it either fails with 'ExecuteWithRetry operation AADTokenFetch failed after all retries' or 'ExecuteWithRetry operation AADTokenFetch succeeded in retry'.
-   - If you encounter 'ExecuteWithRetry operation AADTokenFetch failed after all retries' in the logs, we weren't able to fetch the Azure Active Directory token from the service even after all the retries. There will be an associated AAD exception that's logged with this message. 
-   - If you see "AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'", this is an issue with how the time is set on the server. Check the UTC time on all the servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct the times on the servers and then try registration again.
+   - It's OK to have the message **ExecuteWithRetry operation AADTokenFetch failed with retryable error** appear a few times before it either fails with **ExecuteWithRetry operation AADTokenFetch failed after all retries** or **ExecuteWithRetry operation AADTokenFetch succeeded in retry**.
+   - If you encounter **ExecuteWithRetry operation AADTokenFetch failed after all retries** in the logs, the system wasn't able to fetch the Azure Active Directory token from the service even after all the retries. There will be an associated Azure AD exception that's logged with this message. 
+   - If you see **AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'**, this is an issue with how the time is set on the server. Check the UTC time on all servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct the times on the servers and then try registration again.
 
 ## Deleting HCI resource from portal and re-registering the same cluster causes issues
 
-**Failure state explanation**: If you explicitly deleted the Azure Sack HCI cluster resource from the Azure portal without first unregistering the cluster from Windows Admin Center or PowerShell, deletion of an HCI Azure resource manager resource directly from the portal results in a bad-cluster resource state. Unregistration should be always triggered from within the HCI cluster using the `Unregister-AzStackHCI` cmdlet for a clean unregistration. This section describes cleanup steps for scenarios in which the HCI cluster resource was deleted from the portal.
+**Failure state explanation**:
+
+If you explicitly deleted the Azure Sack HCI cluster resource from the Azure portal without first unregistering the cluster from Windows Admin Center or PowerShell, deletion of an HCI Azure resource manager resource directly from the portal results in a bad-cluster resource state. Unregistration should be always triggered from within the HCI cluster using the `Unregister-AzStackHCI` cmdlet for a clean unregistration. This section describes cleanup steps for scenarios in which the HCI cluster resource was deleted from the portal.
 
 **Remediation action**:
 
@@ -81,10 +85,11 @@ If there are node names after the 'Couldn't set and verify registration certific
 
 ## User deleted the App IDs by mistake
 
-**Failure state explanation**: If the cluster is disconnected for more than 8 hours, it is possible that the associated Azure AD app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
+**Failure state explanation**:
 
-- If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**.
-  - Look at the **HCIsvc** debug logs on the node: the error message will be **Application with identifier '\<ID\>' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
+If the cluster is disconnected for more than 8 hours, it is possible that the associated Azure AD app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
+
+- If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**. Look at the **HCIsvc** debug logs on the node: the error message will be **Application with identifier '\<ID\>' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
 - If `<clustername>.arc` created during Arc enablement is deleted, there are no visible errors during normal operation. This identity is required only during the registration and unregistration processes. In this scenario, unregistration fails with the error **Couldn't disable Azure Arc integration on Node \<Node Name\>. Try running the Disable-AzureStackHCIArcIntegration cmdlet on the node. If the node is in a state where the Disable-AzureStackHCIArcIntegration cmdlet could not be run, remove the node from the cluster and try running the Unregister-AzStackHCI cmdlet again.**
 
 Deleting any of these applications results in a failure to communicate from the HCI cluster to the cloud.
@@ -103,7 +108,9 @@ Deleting any of these applications results in a failure to communicate from the 
 
 ## Out of policy error
 
-**Failure state explanation**: If a previously registered cluster is showing a status of **OutOfPolicy**, changes to the system configuration may have caused the registration status of Azure Stack HCI to fall out of policy.
+**Failure state explanation**:
+
+If a previously registered cluster is showing a status of **OutOfPolicy**, changes to the system configuration may have caused the registration status of Azure Stack HCI to fall out of policy.
 
 For example, system changes may include, but are not limited to:
 
@@ -150,7 +157,9 @@ Event ID error messages identify a failure in the registration process. The erro
 
 ## Cluster and Arc resource in Azure portal exists but the Get-AzureStackHCI status says "Not Yet" registered
 
-**Failure state explanation**: This issue is caused by unregistering an HCI cluster with the wrong cloud environment or subscription information. If a user runs the `Unregister-AzStackHCI` cmdlet with incorrect `-EnvironmentName` or `-SubcriptionId` parameters for a cluster, the registration state of the cluster is removed from the on-premises cluster itself, but the cluster and Arc resources in the Azure portal will still exist in the original environment or subscription.
+**Failure state explanation**:
+
+This issue is caused by unregistering an HCI cluster with the wrong cloud environment or incorrect subscription information. If a user runs the `Unregister-AzStackHCI` cmdlet with incorrect `-EnvironmentName` or `-SubcriptionId` parameters for a cluster, the registration state of the cluster is removed from the on-premises cluster itself, but the cluster and Arc resources in the Azure portal will still exist in the original environment or subscription.
 
 For example:
 
@@ -185,7 +194,9 @@ For example:
 
 ## Issuing Sync-AzureStackHCI immediately after restart of the nodes of the cluster result in Arc resource deletion
 
-**Failure state explanation**: Performing a census sync before node synchronization can result in the sync being sent to Azure, which does not include the node. This results in the Arc resource for that node being removed. The `Sync-AzureStackHCI` cmdlet must be used only to debug the HCI cluster's cloud connectivity. The HCI cluster has a small warmup time after a reboot to reconcile the cluster state; therefore, do not execute `Sync-AzureStackHCI` soon after rebooting a node.
+**Failure state explanation**:
+
+Performing a census sync before node synchronization can result in the sync being sent to Azure, which does not include the node. This results in the Arc resource for that node being removed. The `Sync-AzureStackHCI` cmdlet must be used only to debug the HCI cluster's cloud connectivity. The HCI cluster has a small warmup time after a reboot to reconcile the cluster state; therefore, do not execute `Sync-AzureStackHCI` soon after rebooting a node.
 
 **Remediation action**:
 
@@ -215,7 +226,9 @@ For example:
 
 ## Stale Arc agent and extension causes registration failure
 
-**Failure state explanation**: This happens in scenarios in which one or all of the HCI cluster nodes are already Arc-enabled before HCI registration. This can happen if you try to onboard Arc-for-Server manually before the `Register-AzStackHCI` cmdlet is executed, or if the HCI cluster was not correctly unregistered [as recommended in this article](register-with-azure.md#unregister-azure-stack-hci) before trying to re-register the same cluster.
+**Failure state explanation**:
+
+This happens in scenarios in which one or all of the HCI cluster nodes are already Arc-enabled before HCI registration. This can happen if you try to onboard Arc-for-Server manually before the `Register-AzStackHCI` cmdlet is executed, or if the HCI cluster was not correctly unregistered [as recommended in this article](register-with-azure.md#unregister-azure-stack-hci) before trying to re-register the same cluster.
 
 With the cluster in this state, when you attempt to register HCI with Azure, the registration completes successfully. However, in the Azure portal, the **Azure Arc** connection displays **Not Installed**.
 
@@ -251,7 +264,9 @@ With the cluster in this state, when you attempt to register HCI with Azure, the
 2. Look at the HCIsvc debug logs on the node. The error message will be **exception: AADSTS700027: Client assertion failed signature validation**.
 3. The error can also be shown as **RotateRegistrationCertificate failed: Invalid Audience**.
 
-**Remediation action**: Perform a repair registration on the cluster to add new certificates in the Azure AD application:
+**Remediation action**:
+
+Perform a repair registration on the cluster to add new certificates in the Azure AD application:
 
 ```powershell
 Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -RepairRegistration
@@ -261,11 +276,15 @@ Repairing the registration generates new replacement certificates in the Azure A
 
 ## OnPremisesPasswordValidationTimeSkew
 
-**Failure state explanation**: Azure AD token generation fails with a time error if the local node time is too far out of sync with true current time (UTC). Azure AD returns the following error:
+**Failure state explanation**:
+
+Azure AD token generation fails with a time error if the local node time is too far out of sync with true current time (UTC). Azure AD returns the following error:
 
 **AADSTS80013: OnPremisesPasswordValidationTimeSkew - The authentication attempt could not be completed due to time skew between the machine running the authentication agent and AD. Fix time sync issues.**
 
-**Remediation action**: Ensure the time is synchronized to a known and accurate time source.
+**Remediation action**:
+
+Ensure the time is synchronized to a known and accurate time source.
 
 ## Next steps
 
