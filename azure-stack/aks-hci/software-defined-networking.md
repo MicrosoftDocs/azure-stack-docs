@@ -67,7 +67,7 @@ Once the SDN Express deployment has completed, there should be a screen with the
 
 ![Your deployment will indicate that the status is active and healthy](media/software-defined-networking/status-active-and-healthy.png)
 
-If anything goes wrong or is being reported as unhealthy, see [Troubleshooting SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking). Contact <a href="mailto:AKS on Azure Stack HCI and Windows Server aks-hci-sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com</a> for assistance.
+If anything goes wrong or is being reported as unhealthy, see [Troubleshooting SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking).
 
 It's important that SDN is healthy before proceeding. If you're deploying SDN in a new environment, create test VMs and verifying connectivity to the load balancer VIPs. See [how to create and attach VMs to an SDN virtual network](/azure-stack/hci/manage/vm) using Windows Admin Center.
 
@@ -192,8 +192,6 @@ Once the installation has succeeded, a control plane VM (management cluster) sho
 ![After it runs, check successful AKS on Azure Stack HCI and Windows Server  installation.](media/software-defined-networking/output-state-online.png)
 
 ### Feedback and issues
-
-If you encounter any issues with the instructions in this guide, or would simply like to provide feedback,  reach out to us at <a href="mailto:AKS on Azure Stack HCI and Windows Server aks-hci-sdn@microsoft.com"><a>AKS on Azure Stack HCI and Windows Server -sdn@microsoft.com</a>. 
 
 There are also some self-help resources that can be found [Troubleshoot SDN](/windows-server/networking/sdn/troubleshoot/troubleshoot-software-defined-networking) for SDN and [Resolve general issues when using Azure Kubernetes Service on Azure Stack HCI](/azure-stack/AKS-HCI/known-issues) for AKS on Azure Stack HCI and Windows Server. We sincerely appreciate and thank you for your feedback and participation!
 
