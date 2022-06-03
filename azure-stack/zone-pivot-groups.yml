@@ -24,6 +24,14 @@ groups:
     title: New deployment
   - id: csr-type-renewal
     title: Renewal
+- id: hci-versions
+  title: Version
+  prompt: Choose an HCI version
+  pivots:
+  - id: on-5b
+    title: 5b
+  - id: above-5b
+    title: 5c and later
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.

@@ -2,8 +2,8 @@
 title: Use the autoscaler profile to configure cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service on  Azure Stack HCI and Windows Server
 ms.topic: how-to
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: mikek
 ms.date: 03/16/2022

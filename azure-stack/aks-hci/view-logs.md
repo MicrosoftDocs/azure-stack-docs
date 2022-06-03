@@ -1,10 +1,10 @@
 ---
 title: View logs to collect and review data on Azure Kubernetes Services on Azure Stack HCI
 description: Learn how to view logs to collect and review data on Azure Kubernetes Services on Azure Stack HCI.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 

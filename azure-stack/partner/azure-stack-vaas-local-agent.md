@@ -2,10 +2,10 @@
 title: Deploy the local agent
 titleSuffix: Azure Stack Hub
 description: Learn how to deploy the local agent for Azure Stack Hub validation as a service.
-author: mattbriggs
+author: sethmanheim
 ms.topic: quickstart
 ms.date: 12/16/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 

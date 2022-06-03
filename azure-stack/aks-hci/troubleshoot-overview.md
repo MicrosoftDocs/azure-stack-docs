@@ -1,10 +1,10 @@
 ---
 title: Troubleshooting overview for Azure Kubernetes Service on Azure Stack HCI and Windows Server 
 description: An overview for troubleshooting issues encountered when using Azure Kubernetes Service on Azure Stack HCI and Windows Server. 
-author: mattbriggs
+author: sethmanheim
 ms.topic: troubleshooting
 ms.date: 04/08/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 04/08/2022
 ms.reviewer: abha
 

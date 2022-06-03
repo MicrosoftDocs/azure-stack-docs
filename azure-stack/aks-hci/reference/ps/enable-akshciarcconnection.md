@@ -1,10 +1,10 @@
 ---
 title: Enable-AksHciArcConnection for AKS on Azure Stack HCI and Windows Server
-author: mattbriggs
+author: sethmanheim
 description: The Enable-AksHciArcConnection PowerShell command enables the Arc connection on an AKS on Azure Stack HCI and Windows Server cluster.
 ms.topic: reference
 ms.date: 05/25/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
