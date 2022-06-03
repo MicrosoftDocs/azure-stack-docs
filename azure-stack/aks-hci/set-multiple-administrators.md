@@ -1,10 +1,10 @@
 ---
 title: Set up multiple administrators on Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI and Windows Server.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/21/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
 # Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI and Windows Server.

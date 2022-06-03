@@ -1,10 +1,10 @@
 ---
 title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hub
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
-ms.date: 05/06/2022
-ms.author: mabrigg
+ms.date: 06/03/2022
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 05/06/2022
 
@@ -26,14 +26,14 @@ The AKS engine upgrade command fully automates the upgrade process of your clust
 
 ### Upgrade considerations
 
--   Are you using the correct marketplace items, AKS Base Ubuntu 18.04 Image Distro or AKS Base Windows Server for your version of the AKS engine? You can find the versions in the section [Download new images and AKS engine](#download-new-image-and-aks-engine).
--   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md?view=azs-2008#deploy-a-kubernetes-cluster).
--   Are you using a reliable machine to run the AKS engine and from which you're performing upgrade operations?
--   If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
--   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
--   Make sure that your subscription has enough quota for the entire process. The process allocates new VMs during the process. The resulting number of VMs would be the same as the original, but plan for a couple more VMs to be created during the process.
--   No system updates or scheduled tasks are planned.
--   Set up a staged upgrade on a cluster that's configured with the same values as the production cluster and test the upgrade there before doing so in your production cluster.
+- Are you using the correct marketplace items, AKS Base Ubuntu 18.04 Image Distro or AKS Base Windows Server for your version of the AKS engine? You can find the versions in the section [Download new images and AKS engine](#download-new-image-and-aks-engine).
+- Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster? When you originally deployed the cluster, this file was generated in your output directory. See the deploy command parameters [Deploy a Kubernetes cluster](./azure-stack-kubernetes-aks-engine-deploy-cluster.md?view=azs-2008#deploy-a-kubernetes-cluster).
+- Are you using a reliable machine to run the AKS engine and from which you're performing upgrade operations?
+- If you're updating an operational cluster with active workloads, you can apply the upgrade without affecting them, assuming the cluster is under normal load. However, you should have a backup cluster in case there's a need to redirect users to it. A backup cluster is highly recommended.
+- If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
+- Make sure that your subscription has enough quota for the entire process. The process allocates new VMs during the process. The resulting number of VMs would be the same as the original, but plan for a couple more VMs to be created during the process.
+- No system updates or scheduled tasks are planned.
+- Set up a staged upgrade on a cluster that's configured with the same values as the production cluster and test the upgrade there before doing so in your production cluster.
 
 ### Use the upgrade command
 
@@ -341,10 +341,10 @@ Download the new versions of the AKS base Ubuntu Image and AKS engine.
 
 As explained in the AKS engine for Azure Stack Hub documentation, deploying a Kubernetes cluster requires:
 
--   The aks-engine binary (required)
--   AKS Base Ubuntu 16.04-LTS Image Distro (required)
--   AKS Base Ubuntu 18.04-LTS Image Distro (optional)
--   AKS Base Windows Server Image Distro (optional)
+- The aks-engine binary (required)
+- AKS Base Ubuntu 16.04-LTS Image Distro (required)
+- AKS Base Ubuntu 18.04-LTS Image Distro (optional)
+- AKS Base Windows Server Image Distro (optional)
 
 New versions of these are available with this update:
 

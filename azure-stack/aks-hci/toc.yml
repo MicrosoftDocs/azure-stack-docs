@@ -57,6 +57,9 @@
         href: container-security.md
       - name: Certificates and tokens
         href: certificates-and-tokens.md
+      - name: Update certificates
+        href: certificates-update-after-sixty-days.md
+
   - name: Networking
     items:
       - name: Kubernetes node networking
@@ -127,6 +130,8 @@
       items:
           - name: Use proxy settings
             href: set-proxy-settings.md
+          - name: Update noProxy settings
+            href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
           - name: Configure a custom load balancer
@@ -135,6 +140,8 @@
             href: deploy-metallb.md
           - name: Use an ingress controller
             href: create-ingress-controller.md
+          - name: Use software defined networking
+            href: software-defined-networking.md
     - name: Manage storage
       items:
           - name: Use persistent volume

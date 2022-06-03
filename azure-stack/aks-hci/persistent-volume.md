@@ -1,10 +1,10 @@
 ---
 title: Use a persistent volume with  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/18/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

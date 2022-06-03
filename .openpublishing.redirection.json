@@ -938,9 +938,14 @@
     },
     { 
       "source_path": "azure-stack/hci/manage/azure-monitor.md", 
-      "redirect_url": "/azure-stack/hci/manage/monitor-azure-portal", 
-      "redirect_document_id": true
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-single", 
+      "redirect_document_id": false
     },
+    { 
+      "source_path": "azure-stack/hci/manage/monitor-azure-portal.md", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-single", 
+      "redirect_document_id": true
+    },    
     { 
       "source_path": "azure-stack/hci/manage/azure-stack-hci-insights.md", 
       "redirect_url": "/azure-stack/hci/manage/monitor-hci-multi", 
