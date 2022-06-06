@@ -92,7 +92,7 @@ No, volumes cannot be converted between resiliency types. For new deployments on
 
 ### Can I use nested resiliency with multiple types of capacity drives?
 
-Yes, just specify the `-MediaType` of each tier accordingly during [step 1](includes/create-volumes-with-nested-resiliency.md#step-1-create-storage-tier-templates-windows-server-2019-only) above. For example, with NVMe, SSD, and HDD in the same cluster, the NVMe provides cache while the latter two provide capacity: set the `NestedMirror` tier to `-MediaType SSD` and the `NestedParity` tier to `-MediaType HDD`. In this case, note that parity capacity efficiency depends on the number of HDD drives only, and you need at least 4 of them per server.
+Yes, just specify the `-MediaType` of each tier accordingly during [step 1](/concepts/includes/create-volumes-with-nested-resiliency.md#step-1-create-storage-tier-templates-windows-server-2019-only) above. For example, with NVMe, SSD, and HDD in the same cluster, the NVMe provides cache while the latter two provide capacity: set the `NestedMirror` tier to `-MediaType SSD` and the `NestedParity` tier to `-MediaType HDD`. In this case, note that parity capacity efficiency depends on the number of HDD drives only, and you need at least 4 of them per server.
 
 ### Can I use nested resiliency with 3 or more servers?
 
