@@ -69,7 +69,7 @@ If your Azure subscription is through an EA or CSP, ask your Azure subscription 
 - **User Access Administrator** role: Required to Arc-enable each server of an Azure Stack HCI cluster.
 - **Contributor** role: Required to register and unregister the Azure Stack HCI cluster.
 
-:::image type="content" source="media/register-with-azure/access-control.png" alt-text="Screenshot of assign permissions screen" lightbox="media/register-with-azure/access-control.png":::
+:::image type="content" source="media/register-with-azure/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/register-with-azure/access-control.png":::
 
 ### Assign permissions using PowerShell
 
@@ -145,9 +145,9 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
    > [!NOTE]
    > If you did not register Windows Admin Center in step 1, you are asked to do so now. Instead of the cluster registration wizard, you'll see the Windows Admin Center registration wizard.
 
-3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select **Use existing resource group** to create the Azure stack HCI cluster resource in an existing resource group. Select the Azure region from the drop-down menu and then click **Register**.
+3. Specify the Azure subscription ID to which you want to register the cluster. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. Select **Use existing resource group** to create the Azure Stack HCI cluster resource in an existing resource group. Select the Azure region from the drop-down menu and then click **Register**.
 
-   :::image type="content" source="media/register-with-azure/register-with-azure.png" alt-text="The cluster registration wizard will ask for your Azure subscription ID, resource group, and region" lightbox="media/register/register-with-azure.png":::
+   :::image type="content" source="media/register-with-azure/register-with-azure.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register/register-with-azure.png":::
 
 ### View registration status using Windows Admin Center
 
@@ -270,7 +270,7 @@ Register-AzStackHCI   -SubscriptionId < Subscription_ID>  -ArcSpnCredential:$spn
 
 To view the status of the cluster and Arc resources, navigate to the following screen in the Azure portal:
 
-:::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade" lightbox="media/register-with-azure/cluster-status.png":::
+:::image type="content" source="media/register-with-azure/cluster-status.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status.png":::
 
 ## Enable Azure Arc integration
 
@@ -416,10 +416,10 @@ The following are answers to some frequently asked questions:
 You can further scope down the permissions required to perform HCI registration as described in [Assign permissions using PowerShell](#assign-permissions-using-powershell).
 
 1. Sign in to the subscription you will use to register the cluster. Under **Settings > Resource Providers**, select the following resource providers and then select **Register**:
-   1. Microsoft.AzureStackHCI
-   2. Microsoft.HybridCompute
-   3. Microsoft.GuestConfiguration
-   4. Microsoft.HybridConnectivity
+   - Microsoft.AzureStackHCI
+   - Microsoft.HybridCompute
+   - Microsoft.GuestConfiguration
+   - Microsoft.HybridConnectivity
 
 2. Create a JSON file called **customHCIRole.json** with the following content. Make sure to change `<subscriptionID>` to the ID of your Azure subscription. To get your subscription ID, visit the Azure portal, navigate to **Subscriptions**, then copy/paste your ID from the list.
 

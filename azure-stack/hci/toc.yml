@@ -204,8 +204,6 @@
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
-    - name: Manage cluster registration with Azure
-      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
