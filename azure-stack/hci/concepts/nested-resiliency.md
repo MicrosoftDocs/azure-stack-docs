@@ -80,7 +80,7 @@ Capacity efficiency is the ratio of usable space to [volume footprint](/azure-st
 
 ## Create nested resiliency volumes
 
-[!INCLUDE [Create nested resiliency volumes](../concepts/includes/create-volumes-with-nested-resiliency.md)]
+[!INCLUDE [Create nested resiliency volumes](includes/create-volumes-with-nested-resiliency.md)]
 
 ## Frequently asked questions
 
