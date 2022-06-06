@@ -88,7 +88,7 @@ Find answers to frequently asked questions about nested resiliency.
 
 ### Can I convert an existing volume between two-way mirror and nested resiliency?
 
-No, volumes cannot be converted between resiliency types. For new deployments on Windows Server 2019, decide ahead of time which resiliency type best fits your needs. If you're upgrading from Windows Server 2016, you can create new volumes with nested resiliency, migrate your data, and then delete the older volumes.
+No, volumes cannot be converted between resiliency types. For new deployments on Azure Stack HCI, Windows Server 2022, or Windows Server 2019, decide ahead of time which resiliency type best fits your needs. If you're upgrading from Windows Server 2016, you can create new volumes with nested resiliency, migrate your data, and then delete the older volumes.
 
 ### Can I use nested resiliency with multiple types of capacity drives?
 
