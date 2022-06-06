@@ -3,7 +3,7 @@ title: Troubleshoot Azure Container Registry on Azure Stack Hub for cloud operat
 description: As an operator, learn to troubleshoot Azure Container Registry on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 06/06/2022
 ms.author: sethm
 ms.reviewer: chasat
 ms.lastreviewed: 10/26/2021
@@ -34,18 +34,18 @@ ACR logs are collected when collecting logs from the Azure Stack Hub administrat
 
 ### Collecting logs for ACR install issues
 
-To collect ACR logs for ACR issues including installation issues run **Get-AzureStackLog** with the following format:
+To collect ACR logs for ACR issues including installation issues run **Send-AzureStackDiagnosticLog** with the following parameters:
 
 ```powershell  
-Get-AzureStackLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices,ECE,CLM
+Send-AzureStackDiagnosticLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices,ECE,CLM
 ```
 
 ### Collecting logs for all other ACR issues
 
-To collect ACR logs for ACR issues, excluding installation issues run **Get-AzureStackLog** with the following format:
+To collect ACR logs for ACR issues, excluding installation issues run **Send-AzureStackDiagnosticLog** with the following parameters:
 
 ```powershell
-Get-AzureStackLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices
+Send-AzureStackDiagnosticLog -FilterByResourceProvider ACR -FilterByRole FabricRingServices
 ```
 
 ## Next steps
