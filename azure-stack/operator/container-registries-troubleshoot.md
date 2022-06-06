@@ -30,7 +30,7 @@ Users of ACR on Azure Stack Hub have troubleshooting guidance available for self
 
 ## Collect logs for support
 
-ACR logs are collected when collecting logs from the Azure Stack Hub administration portal or during a full run of **Get-AzureStackLog**. There may be circumstances where you just want to collect logs specific to ACR, for example, if you are collecting for more than a four-hour period.
+ACR logs are collected when collecting logs from the Azure Stack Hub administration portal or during a full run of **Send-AzureStackDiagnosticLog**. There may be circumstances where you just want to collect logs specific to ACR, for example, if you are collecting for more than a four-hour period.
 
 ### Collecting logs for ACR install issues
 
