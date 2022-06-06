@@ -34,7 +34,7 @@ This configuration assumes you want to leverage a custom load balancer in your c
 1. Create a load balancer configuration using the [New-AksHciLoadBalancerSetting](./reference/ps/new-akshciloadbalancersetting.md) cmdlet and then select `none` for the `loadBalancerSku` parameter:
 
    ```powershell
-   $lbCfg=New-AksHciLoadBalancerSettings -name "myLb" -loadBalancerSku "none" 
+   $lbCfg=New-AksHciLoadBalancerSetting -name "myLb" -loadBalancerSku "none" 
    ```
  
 2. Deploy a workload cluster without providing the load balancer configuration using the following command:
