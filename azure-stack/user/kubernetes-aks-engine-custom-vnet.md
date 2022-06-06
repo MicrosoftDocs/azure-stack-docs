@@ -1,11 +1,11 @@
 ---
 title: Deploy Kubernetes cluster to custom virtual network on Azure Stack Hub  
 description: Learn how to deploy a Kubernetes cluster to a custom virtual network on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 04/14/2022
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: walterov
 ms.lastreviewed: 04/14/2022
 

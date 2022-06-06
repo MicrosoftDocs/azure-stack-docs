@@ -1,13 +1,13 @@
 ---
 title: Set up prerequisites for AKS engine on Azure Stack Hub 
 description: Establish the requirements for running the ASK Engine on your Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
-ms.date: 3/4/2021
-ms.author: mabrigg
+ms.date: 04/27/2022
+ms.author: sethm
 ms.reviewer: waltero
-ms.lastreviewed: 3/4/2021
+ms.lastreviewed: 04/27/2022
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -33,7 +33,7 @@ Your cloud operator will need to have the following items in place.
 | Azure Stack Hub 1910 or greater | The AKS engine requires Azure Stack Hub 1910 or greater. | Required | If you are unsure of your version of Azure Stack Hub, contact your cloud operator. |
 | Linux custom script extension | Linux Custom Script extension 2.0<br>Offer: Custom Script for Linux 2.0<br>Version: 2.0.6 (or latest version)<br>Publisher: Microsoft Corp | Required | If you do not have this item in your subscription, contact your cloud operator. |
 | AKS Base images | AKS Base Ubuntu and Windows Image<br>See more information on the version dependency see [Matching engine to base image version](#matching-engine-to-base-image-version) | Required | If you don't have this item in your subscription, contact your cloud operator.<br> If you are the cloud operator for Azure Stack Hub and would like to offer the AKS engine, follow the instructions at [Add the AKS engine to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md). |
-| Service principal identity (SPN) |  An application that needs to deploy or configure resources through Azure Resource Manager, must be represented by a service principal. | Required | You may need to contact your Azure Stack Hub operator for this item.<br>If an Azure Active Directory (Azure AD) Service Principal identity is used, Internet access is required from the VMs in the Kubernetes cluster so that the Service Principal can be authenticated with Azure AD. If there is no internet access, the Kubernetes cluster will not be functional.<br>For instructions see [Use an app identity to access resources](../operator/give-app-access-to-resources.md) |
+| Service principal identity (SPN) |  An application that needs to deploy or configure resources through Azure Resource Manager, must be represented by a service principal. | Required | You may need to contact your Azure Stack Hub cloud operator to get an SPN and a current secret.<br>If an Azure Active Directory (Azure AD) service principal identity is used, Internet access is required from the VMs in the Kubernetes cluster so that the service principal can authenticate with Azure AD. You will also need an active secret. When your secret expires, your cluster **will not** be functional. If your environment doesn't have internet access, the Kubernetes cluster **will not** be functional.<br>For instructions see [Use an app identity to access resources](../operator/give-app-access-to-resources.md) |
 | (SPN) assigned **Contributor** role | To allow an application to access resources in your subscription using its service principal, you must assign the service principal to a role for a specific resource. | Required | For instructions, see [Assign a role](../operator/give-app-access-to-resources.md#assign-a-role) |
 
 

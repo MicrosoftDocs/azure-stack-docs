@@ -1,11 +1,11 @@
 ---
 title: Known issues with the AKS engine on Azure Stack Hub 
 description: Learn Known issues using the AKS engine on Azure Stack Hub. 
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 11/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/1/2021
 
@@ -17,6 +17,10 @@ ms.lastreviewed: 11/1/2021
 # Known issues with the AKS engine on Azure Stack Hub
 
 This topic covers known issues for the AKS engine on Azure Stack Hub.
+
+[!INCLUDE [Expired secret for service principal (SPN) causes cluster to fail](../includes/known-issue-aks-2.md)]
+
+[!INCLUDE [Expired certificates for the front-proxy](../includes/known-issue-aks-3.md)]
 
 ## Limit of 50 nodes per subscription
 

@@ -3,7 +3,7 @@ title: Manage Azure Stack HCI clusters using PowerShell
 description: Learn how to manage clusters on Azure Stack HCI using PowerShell
 author: JasonGerend
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 05/16/2022
 ms.author: jgerend
 ms.reviewer: stevenek
 ---
@@ -19,7 +19,7 @@ You manage clusters from a remote computer, rather than on a host server in a cl
 > [!NOTE]
 > When running PowerShell commands from a management computer, include the `-Name` or `-Cluster` parameter with the name of the cluster you are managing. In addition, you will need to specify the fully qualified domain name (FQDN) when using the `-ComputerName` parameter for a server node.
 
-For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](/powershell/module/failoverclusters/?view=win10-ps&preserve-view=true).
+For the complete reference documentation for managing clusters using PowerShell, see the [FailoverCluster reference](/powershell/module/failoverclusters).
 
 ## Using Windows PowerShell
 
@@ -75,7 +75,7 @@ Get-CimSession -ComputerName Server1 | Get-ClusterStorageSpacesDirect
 
 ## Start or stop a cluster
 
-Use the `Start-Cluster` and `Stop-Cluster` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Start-Cluster](/powershell/module/failoverclusters/start-cluster?view=win10-ps&preserve-view=true) and [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster?view=win10-ps&preserve-view=true) reference documentation.
+Use the `Start-Cluster` and `Stop-Cluster` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Start-Cluster](/powershell/module/failoverclusters/start-cluster) and [Stop-Cluster](/powershell/module/failoverclusters/stop-cluster) reference documentation.
 
 Starts the Cluster service on all server nodes of the cluster on which it is not yet started:
 
@@ -91,7 +91,7 @@ Stop-Cluster -Name Cluster1
 
 ## Add or remove a server
 
-Use the `Add-ClusterNode` and `Remove-ClusterNode` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode?view=win10-ps&preserve-view=true) and [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode?view=win10-ps&preserve-view=true) reference documentation.
+Use the `Add-ClusterNode` and `Remove-ClusterNode` cmdlets to add or remove a server node for your cluster. For more examples and usage information, see the [Add-ClusterNode](/powershell/module/failoverclusters/add-clusternode) and [Remove-ClusterNode](/powershell/module/failoverclusters/remove-clusternode) reference documentation.
 
 This example adds a server named Node4 to a cluster named Cluster1. Make sure the server is running and connected to the cluster network first.
 
@@ -105,9 +105,12 @@ This example removes the node named node4 from cluster Cluster1:
 Remove-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
+>[!NOTE]
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
+
 ## Setup the cluster witness
 
-Use the `Set-ClusterQuorum` cmdlet to set quorum witness options for the cluster. For more examples and usage information, see the [Set-ClusterQuorum](/powershell/module/failoverclusters/set-clusterquorum?view=win10-ps&preserve-view=true) reference documentation.
+Use the `Set-ClusterQuorum` cmdlet to set quorum witness options for the cluster. For more examples and usage information, see the [Set-ClusterQuorum](/powershell/module/failoverclusters/set-clusterquorum) reference documentation.
 
 This example changes the quorum configuration to use a cloud witness on cluster Cluster1:
 
@@ -123,7 +126,7 @@ Set-ClusterQuorum -Cluster Cluster1 -NodeAndFileShareMajority \\fileserver\fsw
 
 ## Enable Storage Spaces Direct
 
-Use the `Enable-ClusterStorageSpacesDirect` cmdlet to enable Storage Spaces Direct on the cluster. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](/powershell/module/failoverclusters/enable-clusterstoragespacesdirect?view=win10-ps&preserve-view=true) reference documentation.
+Use the `Enable-ClusterStorageSpacesDirect` cmdlet to enable Storage Spaces Direct on the cluster. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](/powershell/module/failoverclusters/enable-clusterstoragespacesdirect) reference documentation.
 
 This example enables Storage Spaces Direct on Server1:
 
@@ -133,7 +136,7 @@ Enable-ClusterStorageSpacesDirect -CimSession Cluster1
 
 ## Configure a Hyper-V host
 
-Use the `Set-VMHost` cmdlet to configure various Hyper-V host settings, such as VHD and VM paths, live migrations, storage migrations, authentication, NUMA spanning and others. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](/powershell/module/hyper-v/set-vmhost?view=win10-ps&preserve-view=true) reference documentation.
+Use the `Set-VMHost` cmdlet to configure various Hyper-V host settings, such as VHD and VM paths, live migrations, storage migrations, authentication, NUMA spanning and others. For more examples and usage information, see the [Enable-ClusterStorageSpacesDirect](/powershell/module/hyper-v/set-vmhost) reference documentation.
 
 This example specifies new default locations for virtual hard disks and VMs on host server Server1:
 
@@ -157,10 +160,10 @@ Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerb
 
 Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](manage-azure-registration.md#unregister-azure-stack-hci-by-using-powershell).
 
-Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource?view=win10-ps&preserve-view=true) reference documentation.
+Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource) reference documentation.
 
 > [!NOTE]
-> You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to remove a cluster. For more information, see [Enable-WSManCredSSP](/powershell/module/microsoft.wsman.management/enable-wsmancredssp?view=powershell-7&preserve-view=true).
+> You will need to temporarily enable Credential Security Service Provider (CredSSP) authentication to remove a cluster. For more information, see [Enable-WSManCredSSP](/powershell/module/microsoft.wsman.management/enable-wsmancredssp).
 
 The following example removes cluster resources by name on cluster Cluster1:
 

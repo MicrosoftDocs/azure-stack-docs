@@ -115,7 +115,7 @@ Storage Quality of Service (QoS) provides a way to centrally monitor and manage 
 
 ## Monitor from Azure portal
 
-You can [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md) and use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
+You can [Monitor Azure Stack HCI clusters from Azure portal](monitor-azure-portal.md) and use [Azure Stack HCI Insights](/azure-stack/hci/manage/monitor-hci-multi) to monitor cluster health, performance, and usage.
 
 ## Next steps
 

@@ -1,18 +1,19 @@
 ---
 title: Integrated Dell Remote Access Controller credentials
-description: Explains how to update credentials for Integrated Dell Remote Access Controller
+description: Learn how to update user credentials on an iDRAC from an Azure Stack Hub ruggedized appliance using Remote Desktop.
 author: troettinger
 ms.author: thoroet
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/28/2020
+ms.date: 05/27/2022
 ms.reviewer: justinha
 ms.lastreviewed: 04/28/2020
+ms.custom: kr2b-contr-experiment
 ---
 
-# Update credentials for the Integrated Dell Remote Access Controller
+# Update user credentials for the Integrated Dell Remote Access Controller
 
-This section describes how to change the Integrated Dell Remote Access Controller (iDRAC) credentials. 
+This section describes how to change the Integrated Dell Remote Access Controller (iDRAC) user credentials. 
 
 ## Prerequisites
 
@@ -25,14 +26,14 @@ Before running the procedure:
 
 To update the iDRAC credentials for all PowerEdge servers (HLH and scale unit nodes) in the environment:
 
-1. In a web browser, log in to https://<iDRAC_IP>. 
+1. In a web browser, sign in to https:\//*\<iDRAC_IP\>*. 
 1. Go to **iDRAC Settings** > **Users**. 
-1. Select the user that you want to modify, and then click **Edit**. 
-1. In the **Edit User** window, enter the new password in **Password** and **Confirm Password**, as shown in the following figure: 
+1. Choose a user to modify, and then select **Edit**. 
+1. In the **Edit User** window, enter the new password in the **Password** and **Confirm Password** boxes. 
 
-   ![Screenshot showing user information](../operator/media/idrac-credentials/enter-user.png)
+   ![Screenshot of the Edit User window showing the User Configuration tab. The password and confirm password fields are circled. Save is selected.](../operator/media/idrac-credentials/enter-user.png)
 
-1. Click **Save**, and then click **OK**. 
+1. Select **Save**, and then **OK**. 
 
 ## Next steps
 

@@ -1,9 +1,9 @@
 ---
-title: Use the autoscaler profile to configure cluster autoscaling in AKS on Azure Stack Hub
-description: Learn how to use the autoscaler profile to configure Cluster autoscaler in AKS on Azure Stack Hub
+title: Use the autoscaler profile to configure cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to use the autoscaler profile to configure Cluster autoscaler in Azure Kubernetes Service on  Azure Stack HCI and Windows Server
 ms.topic: how-to
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: mikek
 ms.date: 03/16/2022
@@ -13,7 +13,7 @@ ms.date: 03/16/2022
 
 ---
 
-# Use the autoscaler profile to configure cluster autoscaling in AKS on Azure Stack Hub
+# Use the autoscaler profile to configure cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 You can use the parameters in the autoscaler profile object to define scale events. The cluster autoscaler profile affects all node pools that use the cluster autoscaler. You can't set an autoscaler profile per node pool.
 
@@ -21,7 +21,7 @@ The profiles have the following attributes:
 
 - Autoscaler profiles will apply to all node pools in a cluster.
 - Profiles are global deployment level objects.
-- There can be multiple profiles available in an AKS on Azure Stack HCI deployment.
+- There can be multiple profiles available in an AKS on Azure Stack HCI and Windows Server deployment.
 - Only one profile is assigned to a given cluster. The profile is used for all node pools in the cluster.
 - Changes to the profile are applied to all node pools, which have the autoscaler function enabled.
 
