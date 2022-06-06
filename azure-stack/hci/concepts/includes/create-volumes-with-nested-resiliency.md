@@ -1,13 +1,3 @@
----
-author: ManikaDhiman
-ms.author: v-mandhiman
-ms.service: azure-stack
-ms.topic: include
-ms.date: 06/06/2022
-ms.lastreviewed: 06/06/2022
-
----
-
 You can use familiar storage cmdlets in PowerShell to create volumes with nested resiliency, as described in the following section.
 
 ### Step 1: Create storage tier templates (Windows Server 2019 only)
