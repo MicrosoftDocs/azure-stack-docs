@@ -4,7 +4,7 @@ description: Learn how to constrain an Azure subscription to behave like an Azur
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/22/2020
+ms.date: 06/06/2022
 ms.author: sethm
 ms.lastreviewed: 11/22/2020
 
@@ -17,6 +17,9 @@ ms.lastreviewed: 11/22/2020
 # Manage Azure policy using the Azure Stack Hub policy module
 
 The Azure Stack Hub policy module enables you to configure an Azure subscription with the same versioning and service availability as Azure Stack Hub. The module uses the [**New-AzPolicyDefinition**](/powershell/module/Az.resources/new-Azpolicydefinition) PowerShell cmdlet to create an Azure policy, which limits the resource types and services available in a subscription. You then create a policy assignment within the appropriate scope by using the [**New-AzPolicyAssignment**](/powershell/module/Az.resources/new-Azpolicyassignment) cmdlet. After configuring the policy, you can use your Azure subscription to develop apps targeted for Azure Stack Hub.
+
+> [!NOTE]
+> The Azure Stack Hub policy module is intended to be used in public Azure as a test for deployment to Azure Stack Hub.
 
 ## Install the module
 
