@@ -144,51 +144,9 @@ New-Volume -FriendlyName "Volume1" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 Repeat as needed to create more than one volume.
 
-### Nested resiliency volumes
-
-Nested resiliency only applies to two-server clusters running Azure Stack HCI or Windows Server 2019; you can't use nested resiliency if your cluster has three or more servers, or if your cluster runs Windows Server 2016. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Plan volumes: choosing the resiliency type](../concepts/plan-volumes.md#choosing-the-resiliency-type).
-
-#### Create nested storage tiers (Windows Server 2019 only)
-
-Windows Server 2019 requires you to create new storage tier templates using the `New-StorageTier` cmdlet before creating volumes. You only need to do this once, and then every new volume you create can reference these template. If you're running Windows Server 2022, Azure Stack HCI 21H2, or Azure Stack HCI 20H2, you can skip this step.
-
-Specify the `-MediaType` of your capacity drives and, optionally, the `-FriendlyName` of your choice. 
-
-For example, if your capacity drives are hard disk drives (HDD), launch PowerShell as Administrator and run the following cmdlets.
-
-To create a NestedMirror tier:
-
-```PowerShell
-New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedMirrorOnHDD -ResiliencySettingName Mirror -NumberOfDataCopies 4 -MediaType HDD -CimSession 2nodecluster
-```
-
-To create a NestedParity tier:
-
-```PowerShell
-New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedParityOnHDD -ResiliencySettingName Parity -NumberOfDataCopies 2 -PhysicalDiskRedundancy 1 -NumberOfGroups 1 -FaultDomainAwareness StorageScaleUnit -ColumnIsolation PhysicalDisk -MediaType HDD -CimSession 2nodecluster
-```
-
-If your capacity drives are solid-state drives (SSD), set the `-MediaType` to `SSD` instead, and change the `-FriendlyName` to `*OnSSD`.
-
-#### Create nested volumes
-
-To create a NestedMirror volume:
-
-```PowerShell
-New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyMirrorNestedVolume -StorageTierFriendlyNames NestedMirrorOnHDD -StorageTierSizes 500GB -CimSession 2nodecluster
-```
-
-To create a NestedParity volume:
-
-```PowerShell
-New-Volume -StoragePoolFriendlyName S2D* -FriendlyName MyParityNestedVolume -StorageTierFriendlyNames NestedMirrorOnHDD,NestedParityOnHDD -StorageTierSizes 200GB, 1TB -CimSession 2nodecluster
-```
-
-If your capacity drives are solid-state drives (SSD), change `-StorageTierFriendlyNames` to `*OnSSD`.
-
 ### Storage tier summary table
 
-The following tables summarize the storage tiers that are/can be created in Azure Stack HCI and Windows Server 2019.
+The following tables summarize the storage tiers that are/can be created in Azure Stack HCI and Windows Server.
 
 **NumberOfNodes: 2**
 
@@ -222,6 +180,12 @@ The following tables summarize the storage tiers that are/can be created in Azur
 | ParityOnHDD       | HDD       | Parity                | 1                  | 2                      | Auto           | StorageScaleUnit     | StorageScaleUnit| auto created |
 | ParityOnSSD       | SSD       | Parity                | 1                  | 2                      | Auto           | StorageScaleUnit     | StorageScaleUnit| auto created |
 | ParityOnSCM       | SCM       | Parity                | 1                  | 2                      | Auto           | StorageScaleUnit     | StorageScaleUnit| auto created |
+
+## Nested resiliency volumes
+
+Nested resiliency only applies to two-server clusters running Azure Stack HCI or Windows Server 2022 or Windows Server 2019; you can't use nested resiliency if your cluster has three or more servers, or if your cluster runs Windows Server 2016. Nested resiliency enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, allowing users, apps, and virtual machines to continue to run without disruption. To learn more, see [Nested Resiliency for Storage Spaces Direct](../concepts/nested-resiliency.md) and [Plan volumes: choosing the resiliency type](../concepts/plan-volumes.md#choosing-the-resiliency-type).
+
+[!INCLUDE [Create nested resiliency volumes](../concepts/includes/create-volumes-with-nested-resiliency.md)]
 
 ## Next steps
 
