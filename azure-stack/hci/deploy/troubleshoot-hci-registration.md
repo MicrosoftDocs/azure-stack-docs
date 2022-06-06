@@ -76,8 +76,8 @@ If you explicitly deleted the Azure Sack HCI cluster resource from the Azure por
 
 1. Sign in to the on-premises HCI cluster server using the cluster user credentials.
 2. Run the `Unregister-AzStackHCI` cmdlet on the cluster to clean up the cluster registration state and cluster Arc state.
-    1. If unregistration succeeds, navigate to **Azure Active Directory > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.
-    2. If unregistration fails with the error **ERROR: Couldn't disable Azure Arc integration on Node \<node name\>, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.** Sign in to each individual node:
+    - If unregistration succeeds, navigate to **Azure Active Directory > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.
+    - If unregistration fails with the error **ERROR: Couldn't disable Azure Arc integration on Node \<node name\>, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.** Sign in to each individual node:
         1. Change directory to where the Arc agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.
         2. Get the status on arcmagent.exe and determine the Azure resource group it is projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information.
         3. Force disconnect the Arc agent from node: `.\azcmagent.exe disconnect --force-local-only`.
@@ -96,7 +96,7 @@ Deleting any of these applications results in a failure to communicate from the 
 
 **Remediation action**:
 
-1. If only the `<clustername> AppId` is deleted, perform a repair registration on the cluster to set up the Azure AD applications:
+- If only the `<clustername> AppId` is deleted, perform a repair registration on the cluster to set up the Azure AD applications:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -RepairRegistration
@@ -104,7 +104,7 @@ Deleting any of these applications results in a failure to communicate from the 
 
    Repairing the registration recreates the necessary Azure AD applications while retaining other information such as resource name, resource group and other registration choices.
 
-2. If the `<clustername>.arc` app ID is deleted, there is no visible error in the logs. Unregistration will fail if `<clustername>.arc` is deleted. If unregistration fails, follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
+- If the `<clustername>.arc` app ID is deleted, there is no visible error in the logs. Unregistration will fail if `<clustername>.arc` is deleted. If unregistration fails, follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
 
 ## Out of policy error
 
@@ -202,7 +202,7 @@ Performing a census sync before node synchronization can result in the sync bein
 
 1. On the Azure portal, sign in to the node that appears as **Not installed**.
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes" lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
+   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
 
 2. Disconnect the Arc agent using the following two commands:
 
@@ -236,7 +236,7 @@ With the cluster in this state, when you attempt to register HCI with Azure, the
 
 1. Sign in to the cluster-node with the **Azure Arc** status that shows as **Not installed**:
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes" lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
+   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
 
 2. Disconnect the Arc agent using the following two commands:
 
