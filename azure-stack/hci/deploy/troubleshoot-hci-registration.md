@@ -70,7 +70,7 @@ If there are node names after the **Couldn't set and verify registration certifi
 
 **Failure state explanation**:
 
-If you explicitly deleted the Azure Sack HCI cluster resource from the Azure portal without first unregistering the cluster from Windows Admin Center or PowerShell, deletion of an HCI Azure resource manager resource directly from the portal results in a bad-cluster resource state. Unregistration should be always triggered from within the HCI cluster using the `Unregister-AzStackHCI` cmdlet for a clean unregistration. This section describes cleanup steps for scenarios in which the HCI cluster resource was deleted from the portal.
+If you explicitly deleted the Azure Sack HCI cluster resource from the Azure portal without first unregistering the cluster from Windows Admin Center or PowerShell, deletion of an HCI Azure Resource Manager resource directly from the portal results in a bad-cluster resource state. Unregistration should be always triggered from within the HCI cluster using the `Unregister-AzStackHCI` cmdlet for a clean unregistration. This section describes cleanup steps for scenarios in which the HCI cluster resource was deleted from the portal.
 
 **Remediation action**:
 
