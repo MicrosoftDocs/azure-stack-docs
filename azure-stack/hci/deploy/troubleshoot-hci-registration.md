@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: conceptual
-ms.date: 06/03/2022
+ms.date: 06/06/2022
 ---
 
 # Troubleshoot Azure Stack HCI registration
