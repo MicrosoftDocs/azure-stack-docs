@@ -3,7 +3,7 @@ title: Support policies for Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn about Azure Kubernetes Service on Azure Stack HCI and Windows Server support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 05/11/2022
+ms.date: 06/06/2022
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 03/30/2022
@@ -26,6 +26,7 @@ This article also details management cluster node management, control plane comp
 * For information on features in preview, see [AKS on Azure Stack HCI and Windows Server preview features](https://github.com/Azure/aks-hci/tree/main/preview).
 
 ## Supported version policy
+
 AKS on Azure Stack HCI and Windows Server versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
 
 AKS on Azure Stack HCI and Windows Server maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
@@ -37,6 +38,11 @@ To keep your AKS on Azure Stack HCI and Windows Server environment in a supporte
 After 120 days, Microsoft can't guarantee that older versions of AKS on Azure Stack HCI and Windows Server are still available on the release servers for download. Scale operations, upgrades, reinstallations and other operations in the cluster will start to fail, requiring that you redeploy your AKS on Azure Stack HCI and Windows Server environment with the latest version.
 
 If your cluster falls behind more than 60 days (2 versions), you'll have to upgrade in multiple steps to get current again.
+
+AKS on Azure Stack HCI and Windows Server follow their specific platform version support timeframes; that is, AKS is not supported on unsupported versions of those products. For more information, see their support policies:
+
+* [Azure Stack HCI supported versions information](../hci/release-information.md#azure-stack-hci-release-summary)
+* [Windows Server 2019 Datacenter and above supported versions](/windows-server/get-started/windows-server-release-info#windows-server-current-versions-by-servicing-option)
 
 ## Managed features in AKS on Azure Stack HCI and Windows Server
 
@@ -109,7 +115,6 @@ Microsoft doesn't provide technical support for the following examples:
 * Third-party closed-source software. This software can include security scanning tools and networking devices or software.
   
 * Network customizations other than the ones listed in the [AKS on Azure Stack HCI and Windows Server documentation](./index.yml).
-
 
 ## AKS on Azure Stack HCI and Windows Server support coverage for agent nodes
 
