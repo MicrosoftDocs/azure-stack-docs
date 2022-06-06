@@ -2,9 +2,10 @@
 description: "Learn about nested resiliency for Storage Spaces Direct"
 title: Nested resiliency for Storage Spaces Direct
 ms.author: jgerend
+manager: dansimpspaces
 ms.topic: article
 author: cosmosdarwin
-ms.date: 06/06/2022
+ms.date: 06/01/2022
 ---
 
 # Nested resiliency for Storage Spaces Direct
@@ -79,7 +80,7 @@ Capacity efficiency is the ratio of usable space to [volume footprint](/azure-st
 
 ## Create nested resiliency volumes
 
-[!INCLUDE [Create nested resiliency volumes](../concepts/includes/create-volumes-with-nested-resiliency.md)]
+[!INCLUDE [Create nested resiliency volumes](includes/create-volumes-with-nested-resiliency.md)]
 
 ## Frequently asked questions
 
