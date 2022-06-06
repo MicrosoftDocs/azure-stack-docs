@@ -202,7 +202,7 @@ Performing a census sync before node synchronization can result in the sync bein
 
 1. On the Azure portal, sign in to the node that appears as **Not installed**.
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
+   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of the Azure portal with nodes highlighted that appear as not installed." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
 
 2. Disconnect the Arc agent using the following two commands:
 
@@ -236,7 +236,7 @@ With the cluster in this state, when you attempt to register HCI with Azure, the
 
 1. Sign in to the cluster-node with the **Azure Arc** status that shows as **Not installed**:
 
-   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
+   :::image type="content" source="media/troubleshoot-hci-registration/node-monitor.png" alt-text="Screenshot of nodes that appear as not installed under the Azure Arc status cluster-node." lightbox="media/troubleshoot-hci-registration/node-monitor.png":::
 
 2. Disconnect the Arc agent using the following two commands:
 
