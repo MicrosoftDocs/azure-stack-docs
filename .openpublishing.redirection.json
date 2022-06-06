@@ -948,7 +948,7 @@
     },
     { 
       "source_path": "azure-stack/hci/manage/manage-azure-registration.md", 
-      "redirect_url": "/azure-stack/hci/manage/register-with-azure", 
+      "redirect_url": "/azure-stack/hci/deploy/register-with-azure", 
       "redirect_document_id": true
     },
     { 
