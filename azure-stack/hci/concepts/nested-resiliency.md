@@ -117,7 +117,7 @@ No. To replace a server node and its drives, follow this order:
 
 For details see the [Remove servers](/windows-server/storage/storage-spaces/remove-servers) article.
 
-## Additional References
+## Next steps
 
 - [Storage Spaces Direct overview](/azure-stack/hci/concepts/storage-spaces-direct-overview)
 - [Understand fault tolerance in Storage Spaces Direct](/azure-stack/hci/concepts/fault-tolerance)
