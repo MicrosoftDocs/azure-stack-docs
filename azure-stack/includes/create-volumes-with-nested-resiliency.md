@@ -53,7 +53,7 @@ Create new volumes using the `New-Volume` cmdlet.
 
 Volumes that use nested resiliency appear in [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) with clear labeling, as in the screenshot below. Once they're created, you can manage and monitor them using Windows Admin Center just like any other volume in Storage Spaces Direct.
 
-![Volume management in Windows Admin Center](../media/nested-resiliency/windows-admin-center.png)
+![Volume management in Windows Admin Center](media/nested-resiliency/windows-admin-center.png)
 
 ### Optional: Extend to cache drives
 
