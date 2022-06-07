@@ -41,7 +41,7 @@ This section provides a list of required firewall URLs. Make sure to include the
 
 The following table provides a list of required firewall URLs.
 
-[!INCLUDE [Required URLs table](includes/required-urls-table.md)]
+[!INCLUDE [Required URLs table](../../includes/required-urls-table.md)]
 
 ### [JSON](#tab/allow-json)
 
@@ -114,7 +114,7 @@ This section provides a list of recommended firewall URLs. If your outbound fire
 
 The following table provides a list of recommended firewall URLs.
 
-[!INCLUDE [Recommended URLs table](includes/recommended-urls-table.md)]
+[!INCLUDE [Recommended URLs table](../../includes/recommended-urls-table.md)]
 
 ### [Json](#tab/allow-json)
 
