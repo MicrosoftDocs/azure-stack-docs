@@ -190,6 +190,17 @@ If your capacity drives are solid-state drives (SSD), change `-StorageTierFriend
 
 The following tables summarize the storage tiers that are/can be created in Azure Stack HCI and Windows Server 2019.
 
+**NumberOfNodes: 1**
+
+| FriendlyName      | MediaType | ResiliencySettingName | NumberOfDataCopies | PhysicalDiskRedundancy | NumberOfGroups | FaultDomainAwareness | ColumnIsolation | Note         |
+| ----------------- | :-------: | :-------------------: | :----------------: | :--------------------: |:--------------:| :------------------: | :-------------: | :----------: |
+| MirrorOnHDD       | HDD       | Mirror                | 2                  | 1                      | 1              | PhysicalDisk         | PhysicalDisk    | auto created |
+| MirrorOnSSD       | SSD       | Mirror                | 2                  | 1                      | 1              | PhysicalDisk         | PhysicalDisk    | auto created |
+| MirrorOnSCM       | SCM       | Mirror                | 2                  | 1                      | 1              | PhysicalDisk         | PhysicalDisk    | auto created |
+| ParityOnHDD       | HDD       | Parity                | 1                  | 1                      | 1              | PhysicalDisk         | PhysicalDisk    | auto created |
+| ParityOnSSD       | SSD       | Parity                | 1                  | 1                      | 1              | PhysicalDisk         | PhysicalDisk    | auto created |
+| ParityOnSCM       | SCM       | Parity                | 1                  | 1                      | 1              | PhysicalDisk         | PhysicalDisk    | auto created |
+
 **NumberOfNodes: 2**
 
 | FriendlyName      | MediaType | ResiliencySettingName | NumberOfDataCopies | PhysicalDiskRedundancy | NumberOfGroups | FaultDomainAwareness | ColumnIsolation | Note         |
