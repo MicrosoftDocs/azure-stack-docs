@@ -220,8 +220,6 @@
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
-    - name: Manage cluster registration with Azure
-      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
@@ -230,6 +228,8 @@
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
   items:
+  - name: Troubleshoot cluster registration
+    href: deploy/troubleshoot-hci-registration.md
   - name: Troubleshoot cluster validation reporting
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
