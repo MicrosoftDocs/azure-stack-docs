@@ -23,8 +23,22 @@ Register Azure Stack Hub with Azure so you can download Azure Marketplace items 
 
 The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
 
+::: zone pivot="state-connected"
+
 > [!IMPORTANT]
 > Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
+
+**Connected Registration**
+As part of a connected registration, an Azure AD application and associated service principal is created in the Azure AD directory used for the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by unregistering and registering Azure Stack Hub with Azure. 
+::: zone-end
+::: zone pivot="state-disconnected"
+
+> [!IMPORTANT]
+> Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
+
+**Disconnected Registration** 
+Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use offline marketplace syndication. 
+::: zone-end
 
 ## Prerequisites
 
