@@ -246,39 +246,18 @@ If the Logs capability and Monitoring capability are enabled without errors but 
    ```
 
 4. When prompted to select a troubleshooting scenario, choose option 1: **Agent not reporting data or heartbeat data missing**.
-   ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-hci-single/select-troubleshooting-scenario.png" alt-text="choose option 1: Agent not reporting data or heartbeat data missing" lightbox="media/monitor-hci-single/select-troubleshooting-scenario.png":::
-   :::zone-end
 
 5. You'll be prompted to select the action that you'd like to perform. Choose option **1: Diagnose**.
 
-   ::: zone pivot="above-5b"
    :::image type="content" source="media/monitor-hci-single/tool-options-1.png" alt-text="Troubleshooting tool command line options" lightbox="media/monitor-hci-single/tool-options-1.png":::
-   ::: zone-end
-
-   ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-hci-single/select-option-1.png" alt-text="choose option 1: diagnose" lightbox="media/monitor-hci-single/select-option-1.png":::
-   :::zone-end
 
 6. If you encounter the error that's highlighted in the following screenshot but are still able to connect to all Log Analytics endpoints and your firewall and gateway settings are correct, you have likely encountered a timezone issue.
 
-   ::: zone pivot="above-5b"
    :::image type="content" source="media/monitor-hci-single/tool-errors.png" alt-text="Command prompt showing tool errors" lightbox="media/monitor-hci-single/tool-errors.png":::
-   ::: zone-end
-
-   ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-hci-single/timezone-issue-1.png" alt-text="If you see this error, you have likely encountered a timezone issue." lightbox="media/monitor-hci-single/timezone-issue-1.png":::
-   ::: zone-end
 
    The cause is that the local time is different than Azure time, and the workspace key could not be validated due to the mismatch.
 
-   ::: zone pivot="above-5b"
    :::image type="content" source="media/monitor-hci-single/tool-errors-prompt.png" alt-text="Move to next error" lightbox="media/monitor-hci-single/tool-errors-prompt.png":::
-   ::: zone-end
-
-   ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-hci-single/timezone-issue-2.png" alt-text="The cause is that the local time is different than Azure time, as shown in this screenshot." lightbox="media/monitor-hci-single/timezone-issue-2.png":::
-   ::: zone-end
 
 7. To resolve the issue:
 
