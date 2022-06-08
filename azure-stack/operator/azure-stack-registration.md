@@ -28,7 +28,7 @@ The information in this article describes registering Azure Stack Hub integrated
 
 ::: zone pivot="state-connected"
    > [!Note]
-   > For connected registrations, an Azure Active Directory application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by unregistering and then xregistering Azure Stack Hub with Azure. 
+   > For connected registrations, an Azure Active Directory application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by unregistering and then re-registering Azure Stack Hub with Azure. 
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
