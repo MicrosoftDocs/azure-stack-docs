@@ -16,7 +16,7 @@ ms.date: 06/03/2022
 > Applies to: Azure Stack HCI, version 21H2
 
 > [!IMPORTANT]
-> The functionality described in this article requires the latest 2022-05 cumulative update (or later) for Azure Stack HCI, installed on the cluster. On previous versions of Azure Stack HCI, a **Monitoring** tile instead of an **Insights** tile is displayed, and the **Insights** menu is not available. Please install the latest update to get the new capabilities.
+> The functionality described in this article requires the latest Azure Stack HCI update. Previous versions of Azure Stack HCI display a **Monitoring** tile instead of an **Insights** tile, and the **Insights** menu is not available. Please [install the latest update](update-cluster.md) to get the new capabilities.
 
 This article explains how to enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights.
 
