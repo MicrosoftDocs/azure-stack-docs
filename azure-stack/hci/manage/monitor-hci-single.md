@@ -8,18 +8,17 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 06/03/2022
-zone_pivot_groups: hci-versions
+# zone_pivot_groups: hci-versions
 ---
 
 # Configure Azure portal to monitor Azure Stack HCI clusters (preview)
 
-::: zone pivot="above-5b"
-This article explains how to enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights.
-::: zone-end
+> Applies to: Azure Stack HCI, version 21H2
 
-::: zone pivot="on-5b"
-This article explains how to enable logs and monitoring capabilities to monitor Azure Stack HCI clusters with [Azure Stack HCI Insights](azure-stack-hci-insights.md).
-::: zone-end
+> [!IMPORTANT]
+> The functionality described in this article requires the latest 2022-05 cumulative update (or later) for Azure Stack HCI, installed on the cluster. On previous versions of Azure Stack HCI, a **Monitoring** tile instead of an **Insights** tile is displayed, and the **Insights** menu is not available. Please install the latest update to get the new capabilities.
+
+This article explains how to enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights.
 
 If you haven't already, be sure to [Register your cluster with Azure](../deploy/register-with-azure.md). After you've enabled logs and monitoring, you can use [Azure Stack HCI Insights](azure-stack-hci-insights.md) to monitor cluster health, performance, and usage.
 
@@ -36,13 +35,7 @@ After you register your cluster and Arc-enable the servers, you'll see the follo
 
 Now that your cluster nodes are Arc-enabled, navigate to your Azure Stack HCI cluster resource page. Under the **Capabilities** tab you will see the option to enable logs, which should say **Not configured**.
 
-::: zone pivot="on-5b"
-:::image type="content" source="media/monitor-azure-portal/logs-capability.png" alt-text="Select the Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
-::: zone-end
-
-::: zone pivot="above-5b"
 :::image type="content" source="media/monitor-hci-single/logs-capability.png" alt-text="Logs capability under the Capabilities tab" lightbox="media/monitor-azure-portal/logs-capability.png":::
-::: zone-end
 
 This capability is an Arc for Servers extension that simplifies installing the Microsoft Monitoring Agent. Because you're using the Arc for Servers extension to enable this workflow, if you ever add additional servers to your cluster, they will automatically have the Microsoft Monitoring Agent installed on them.
 
@@ -57,13 +50,7 @@ To configure the Log Analytics Agent extension:
 2. Select **Use existing** to use the existing workspace for your subscription.
 3. Select **Add** at the bottom of the page.
 
-   ::: zone pivot="on-5b"
-   :::image type="content" source="media/monitor-azure-portal/enable-log-analytics.png" alt-text="Enable Log Analytics on Azure portal" lightbox="media/monitor-azure-portal/enable-log-analytics.png":::
-   ::: zone-end
-
-   ::: zone pivot="above-5b"
    :::image type="content" source="media/monitor-hci-single/enable-log-analytics.png" alt-text="Enable Log Analytics on Azure portal" lightbox="media/monitor-hci-single/enable-log-analytics.png":::
-   ::: zone-end
 
 4. When the configuration is finished, **Logs** will appear as **Configured** under the **Capabilities** tab.
 5. Select **Settings > Extensions** from the toolbar on the left. You should see that each of your servers has successfully installed the Microsoft Monitoring Agent.
@@ -80,7 +67,6 @@ To remove the Microsoft Monitoring Agent from every server in the cluster, follo
 2. Select the **MicrosoftMonitoringAgent** checkbox.
 3. Click **Remove**, and then **Yes**.
 
-::: zone pivot="above-5b"
 ## Insights capability (preview)
 
 Insights was previously known as "monitoring" and is used to monitor your resources and provide useful insights regarding cluster, servers, virtual machines, storage, and much more.
@@ -214,20 +200,15 @@ To enable Insights again,
 - Select **Update** to see the visualizations again.
 
 :::image type="content" source="media/monitor-hci-single/needs-update.png" alt-text="Portal shows update needed" lightbox="media/monitor-hci-single/needs-update.png":::
-::: zone-end
 
 ## Azure Monitor pricing
 
 As described previously, when you enable monitoring visualization, logs are collected from:
 
-::: zone pivot="above-5b"
 - Health Management (Microsoft-windows-health/operational).
-::: zone-end
 - SDDC Management (Microsoft-Windows-SDDC-Management/Operational; Event ID: 3000, 3001, 3002, 3003, 3004).
 
-::: zone pivot="above-5b"
 You are billed based on the amount of data ingested and the data retention settings of your Log Analytics workspace.
-::: zone-end
 
 Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account per month is free. Because pricing can vary due to multiple factors, such as the region of Azure you're using, visit the [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/) for the most up-to-date pricing calculations. The following table can help you calculate the cost:
 
