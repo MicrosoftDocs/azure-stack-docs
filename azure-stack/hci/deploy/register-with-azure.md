@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 06/06/2022
+ms.date: 06/08/2022
 ---
 
 # Connect and manage Azure Stack HCI registration
@@ -122,7 +122,7 @@ The following table explains why these permissions are required:
 | "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister the Azure Stack HCI cluster.      |
 | "Microsoft.Authorization/roleAssignments/write",</br> "Microsoft.HybridCompute/register/action",</br> "Microsoft.GuestConfiguration/register/action",</br> "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
 
-### Register a cluster using Windows Admin Center
+## Register a cluster using Windows Admin Center
 
 There are two ways to register a cluster: using Windows Admin Center, or using PowerShell.
 
@@ -149,7 +149,7 @@ Before registration make sure all the [prerequisites](#prerequisites-for-cluster
 
    :::image type="content" source="media/register-with-azure/register-with-azure.png" alt-text="Screenshot of cluster registration wizard." lightbox="media/register/register-with-azure.png":::
 
-### View registration status using Windows Admin Center
+## View registration status using Windows Admin Center
 
 When you connect to a cluster by using Windows Admin Center, you'll see the dashboard, which displays the Azure connection status. **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
 
@@ -202,7 +202,7 @@ Before registration, [make sure all the prerequisites are met](#prerequisites-fo
 
 3. Authenticate with Azure. To complete the registration process, you must authenticate (sign in) using your Azure account. Your account must have access to the Azure subscription that was specified in step 2. If your management node has a user interface, a sign-in screen appears, in order to proceed with the registration. If your management node doesn't have a UI, copy the code provided, navigate to microsoft.com/devicelogin on another device (such as your computer or phone), enter the code, and sign in there. The registration workflow detects when you've logged in, and proceeds to completion. You should then be able to see your cluster in the Azure portal.
 
-### View registration status using PowerShell
+## View registration status using PowerShell
 
 To view registration status by using Windows PowerShell, use the `Get-AzureStackHCI` PowerShell cmdlet and the `ClusterStatus`, `RegistrationStatus`, and `ConnectionStatus` properties. 
 
