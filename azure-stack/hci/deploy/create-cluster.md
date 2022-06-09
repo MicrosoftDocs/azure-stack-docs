@@ -31,10 +31,10 @@ If you're interested in testing Azure Stack HCI, but have limited or no spare ha
 Before you run the Create Cluster wizard, make sure you:
 
 - Have read the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
-- Have read the [Physical network requirements](../concepts/physical-network-requirements.md) and [Host network requirements](../concepts/host-network-requirements.md) for Azure Stack HCI.
+- Have consulted with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), [Deployment of host networking with network ATC](network-atc.md), and [Firewall requirements](../concepts/firewall-requirements.md).
 - Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Have an account that's a member of the local Administrators group on each server.
-- Ensure all servers are in the correct time zone.
+- Have all the servers in the correct time zone.
 - Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
 - If you're using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates. To install them, open Windows Admin Center and click Settings (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
 - For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
@@ -95,7 +95,10 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 1. On **1.5 Install updates**, click **Install updates** as needed to install any operating system updates. When complete, click **Next**.
 1. On **1.6 Install hardware updates**, click **Get updates** as needed to get available vendor hardware updates.
-1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps.
+    > [!NOTE]
+    > Some extensions require extra configuration on the servers or your network, such as configuring the baseboard management controller (BMC). Consult your vendor's documentation for details.
+
+1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps. 
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
     - **Define intents with Network ATC** - (Recommended) For more information on using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
