@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/24/2022
+ms.date: 06/09/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -84,6 +84,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### Fixes
 
 - Fix to improve SLB throughput.
+- Fixed an issue that prevented access to the storage subsystem when scale unit nodes are rebooted.
 
 ## Security updates
 
