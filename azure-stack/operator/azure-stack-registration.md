@@ -165,7 +165,7 @@ Connected environments can access the internet and Azure. For these environments
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Next, in the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. PowerShell to run:
+6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (as discussed in Step 2). This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously.
 
    ```powershell
    Connect-AzAccount -Environment "<environment name>"
@@ -285,7 +285,8 @@ Connected environments can access the internet and Azure. For these environments
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+5. Import the **RegisterWithAzure.psm1** module using PowerShell.
+6. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. 
 
    ```powershell
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -372,10 +373,10 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
    ```powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential '$YourCloudAdminCredential' -UsageReportingEnabled:$false -PrivilegedEndpoint '$YourPrivilegedEndpoint' -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 
-   Use the *EA agreement number* where your capacity SKU licenses were purchased.
+   You must enter the correct values for your cloud admin credentials `$YourCloudAdminCredential` and privileged endpoint `$YourPrivilegedEndpoint` for this cmdlet to run successfully. Use the *EA agreement number* where your capacity SKU licenses were purchased. 
 
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
 
