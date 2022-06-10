@@ -37,7 +37,7 @@ Prerequisites for the extension
  - [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
     and credentials with access to Azure Stack Hub.
  - An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
-    instructions see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&preserve-view=true).
+    instructions see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&preserve-view=true).
 
 ## Get your credentials
 
@@ -96,4 +96,4 @@ storage group.
 
 ## Next steps
 
-[Set up a development environment in Azure Stack Hub ](azure-stack-dev-start.md)
+[Set up a development environment in Azure Stack Hub](azure-stack-dev-start.md)
