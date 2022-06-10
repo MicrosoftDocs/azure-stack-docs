@@ -45,7 +45,7 @@ Also, your Windows Admin Center management computer must be joined to the same A
 
 Here are the major steps in the Create Cluster wizard:
 
-1. **Get Started** - ensures that each server meets the prerequisites for and features needed for cluster join.
+1. **Get Started** - ensures that each server meets the prerequisites and features needed for cluster join.
 1. **Networking** - assigns and configures network adapters and creates the virtual switches for each server.
 1. **Clustering** - validates the cluster is set up correctly. For stretched clusters, also sets up the two sites.
 1. **Storage** - configures Storage Spaces Direct.
@@ -101,8 +101,9 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps. 
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
-    - **Define intents with Network ATC** - (Recommended) For more information on using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
-    - **Manually configure host networking** - use to configure host networking manually. For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+    - **Use Network ATC to configure host networking (recommended)**. This is recommended. For more information about using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
+    - **Manually configure host networking**. Use to configure host networking manually. For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+1. Select **Next: Networking** to proceed to [Step 2: Networking](#step-2-networking).
 
 ## Step 2: Networking
 
@@ -112,25 +113,29 @@ You can choose to use Network ATC to simplify set up of hosting networking for y
 
 ### Use Network ATC to configure host networking (recommended)
 
-1. Select **Next: Networking**.
+This section provides the steps if you selected the **Use Network ATC to configure host networking (recommended)** option in **Step 1.8** above. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster.
 
     :::image type="content" source="media/cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
-1. To see all adapters available, select **See all adapters**. Then select the checkbox for any adapters listed that you want to cluster. When finished, click **Next**.
+1. To see all adapters available, select **Show hidden adapters**.
 
     :::image type="content" source="media/cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - See all adapters" lightbox="media/cluster/create-cluster-atc-see-all-adaptor.png":::
 
-1. On **2.2 Define network intents**, under **Intent 1**, do the following:
-    - For **Intent name**, enter a friendly name for the intent
-    - For **Traffic types**, select a traffic type from the pulldown. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
-    - For **Network adapters**, select an adapter from the pulldown.
-    - Click **Select another adapter for this traffic** if needed.
+1. On **Select the cluster network adapters**, select the checkbox for any adapters listed that you want to cluster. When finished, select **Close**.
 
-1. To optionally modify network settings for an intent, select **Customize network settings** in the adapter properties pane, and select the following as applicable:
-    - Traffic priority
-    - traffic bandwidth reservation (%)
+1. The adapter that you selected in the previous step displays under **Adapters available on all servers**. When finished selecting and verifying adapters, select **Next**.  
+
+1. On **2.2 Define network intents**, under **Intent 1**, do the following:
+    - For **Traffic types**, select a traffic type from the pulldown. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
+    - For **Intent name**, enter a friendly name for the intent.
+    - For **Network adapters**, select an adapter from the pulldown.
+    - (Optional) Click **Select another adapter for this traffic** if needed.
+
+1. (Optional) To modify network settings for an intent, select **Customize network settings** in the adapter properties pane, and select the following as applicable:
+    - Traffic priority for storage and cluster
+    - Traffic bandwidth reservation (%)
     - Jumbo frame size in bytes
     - whether to enable RDMA
     - RDMA protocol type
