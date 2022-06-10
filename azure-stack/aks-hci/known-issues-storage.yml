@@ -40,6 +40,17 @@ sections:
           
           Since `kubelet` ended up in a bad state and can no longer talk to the API server, the only solution is to restart the `kubelet` service. After restarting, the cluster goes into a _running_ state.
       - question: | 
+          Storage pod crashes and the logs say that the `createSubDir` parameter is invalid
+
+        answer: | 
+          An error may occur if you have a SMB or NFS CSI driver installed in your deployment and you upgrade to the May build from an older version. One of the parameters called `createSubDir` is no longer accepted. If this applies to your deployment, follow the instructions below to resolve the storage class failure. 
+          
+          If you have this error, the storage pod will crash and the logs will say that the `createSubDir` parameter is invalid. 
+          
+          The storage pod will crash.
+          
+          Recreate the storage class.
+      - question: | 
           When creating a persistent volume, an attempt to mount the volume fails.
 
         answer: | 
