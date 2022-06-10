@@ -70,9 +70,9 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Azure Arc-Enabled Paas Services | Yes | Yes |
 | Windows Server 2022 Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. | Yes | No <sup>1</sup>|
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2. | Yes | No (1)|
 
-<sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+(1) This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
 ## Compare technical features
 
@@ -112,13 +112,12 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Cluster integrates with Azure Resource Manager | Yes | No |
-| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>1</sup> |
+| Extensions and Azure Arc-enabled host servers | Yes | Manual (1) |
 | Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
-| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>1</sup> |
+| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual (1) |
 | Azure Arc-enabled VM management (preview)| Yes | No |
 
-<sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
-
+(1) This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
 ## Compare product pricing
 
