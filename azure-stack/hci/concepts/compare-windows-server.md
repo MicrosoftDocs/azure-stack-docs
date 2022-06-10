@@ -97,7 +97,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
 
-For more info, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
+For more information, see [What's New in Azure Stack HCI, version 21H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
 ## Compare management options
 
