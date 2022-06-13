@@ -373,9 +373,10 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
    ```powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential '$YourCloudAdminCredential' -UsageReportingEnabled:$false -PrivilegedEndpoint '$YourPrivilegedEndpoint' -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential # Update with your cloud admin credentials 
+   -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint # Update with your privileged endpoint 
+   -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
-
    You must enter the correct values for your cloud admin credentials `$YourCloudAdminCredential` and privileged endpoint `$YourPrivilegedEndpoint` for this cmdlet to run successfully. Use the *EA agreement number* where your capacity SKU licenses were purchased. 
 
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
