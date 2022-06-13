@@ -1,32 +1,33 @@
 ---
-title: Use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers
-description: Learn how to use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Files Container Storage Interface (CSI) drivers.
-author: mattbriggs
+title: Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers
+description: Learn how to use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers.
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
-# Intent: As an IT Pro, I need to understand and learn about the benefits of using CSI drivers in my AKS on Azure Stack HCI and Windows Server deployment.
-# Keyword: CSI drivers
+
+# Intent: As an IT Pro, I need to understand and learn about the benefits of using CSI drivers in my AKS on Azure Stack HCI deployment.
+# Keyword: CSI drivers container storage
 
 ---
 
-# Use the Azure Kubernetes Service on Azure Stack HCI and Windows Server Files Container Storage Interface drivers
+# Use the AKS on Azure Stack HCI Files Container Storage Interface (CSI) drivers
 
-The Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server disk and file Container Storage Interface (CSI) drivers are [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant. The CSI drivers are used by AKS on Azure Stack HCI and Windows Server.
+The AKS on Azure Stack HCI disk and file Container Storage Interface (CSI) drivers are [CSI specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-compliant drivers used by AKS on Azure Stack HCI and Windows Server.
 
-The CSI is a standard for exposing arbitrary block and file storage systems to containerized workloads on Kubernetes. By adopting and using CSI, AKS on Azure Stack HCI and Windows Server can write, deploy, and iterate plug-ins to expose new storage systems or improve existing ones in Kubernetes without having to touch the core Kubernetes code and wait for its release cycles.
+The CSI is a standard for exposing arbitrary block and file storage systems to containerized workloads on Kubernetes. By adopting and using CSI, AKS on Azure Stack HCI can write, deploy, and iterate plug-ins to expose new storage systems or improve existing ones in Kubernetes without having to touch the core Kubernetes code and wait for its release cycles.
 
-The CSI storage driver support on AKS on Azure Stack HCI and Windows Server allows you to use:
+The CSI storage driver support on AKS on Azure Stack HCI allows you to use:
 
-- AKS on Azure Stack HCI and Windows Server disks to create a Kubernetes *DataDisk* resource. These disks are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. To learn more, see [using disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md). 
+- AKS on Azure Stack HCI disks to create a Kubernetes *DataDisk* resource. These disks are mounted as *ReadWriteOnce*, so they're only available to a single pod at a time. To learn more, see [using disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md). 
 
-- AKS on Azure Stack HCI and Windows Server files to mount an SMB or NFS share to pods. These files are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification. This topic covers how to use the AKS on Azure Stack HCI and Windows Server files Container Storage Interface (CSI) drivers.
+- AKS on Azure Stack HCI files to mount an SMB or NFS share to pods. These files are mounted as *ReadWriteMany*, so you can share data across multiple nodes and pods. They can also be mounted as *ReadWriteOnce* based on the PVC specification. This topic covers how to use the AKS on Azure Stack HCI files Container Storage Interface (CSI) drivers.
 
-## Use AKS on Azure Stack HCI and Windows Server File persistent volumes using _ReadWriteMany_ CSI drivers
+## Use AKS on Azure Stack HCI File persistent volumes using _ReadWriteMany_ CSI drivers
 
-If multiple nodes need concurrent access to the same storage volume, you can use AKS on Azure Stack HCI and Windows Server File CSI drivers to mount SMB or NFS shares as *ReadWriteMany*. These drivers require that SMB or NFS shares are pre-provisioned.
+If multiple nodes need concurrent access to the same storage volume, you can use AKS on Azure Stack HCI File CSI drivers to mount SMB or NFS shares as *ReadWriteMany*. These drivers require that SMB or NFS shares are pre-provisioned.
 
 ### Use SMB drivers
 

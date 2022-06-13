@@ -1,10 +1,10 @@
 ---
 title: New-AksHciCluster for AKS on Azure Stack HCI and Windows Server
-author: mattbriggs
+author: sethmanheim
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
 ms.date: 03/16/2022
-ms.author: mabrigg
+ms.author: sethm
 ms.lastreviewed: 
 ms.reviewer: mikek
 

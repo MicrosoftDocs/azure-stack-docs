@@ -46,6 +46,8 @@
       href: deploy/migrate-cluster-same-hardware.md
   - name: Deploy with PowerShell
     items:
+    - name: Deploy on a single server
+      href: deploy/single-server.md
     - name: Create a cluster with PowerShell
       href: deploy/create-cluster-powershell.md
     - name: Deploy a cluster set
@@ -138,6 +140,8 @@
       items:
       - name: Manage the cluster
         href: manage/cluster.md
+      - name: Manage the cluster using Windows Admin Center in Azure
+        href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Manage clusters with PowerShell
         href: manage/cluster-powershell.md
       - name: Manage Network ATC
@@ -152,8 +156,16 @@
         href: manage/witness.md
     - name: Monitoring
       items:
-      - name: Configure Azure portal to monitor clusters (preview)
-        href: manage/monitor-azure-portal.md
+      # - name: Monitor a single cluster (latest version)
+      #   href: manage/single-cluster.md
+      # - name: Configure Azure portal to monitor clusters (preview)
+      #   href: manage/monitor-azure-portal.md
+      # - name: Monitor multiple clusters with Azure Stack HCI Insights (latest version)
+      #   href: manage/multi-cluster.md        
+      # - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
+      #   href: manage/azure-stack-hci-insights.md
+      - name: Monitor a single cluster using the Azure portal (preview)
+        href: manage/monitor-hci-single.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
         href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
@@ -197,15 +209,17 @@
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage software load balancers
-      href: manage/load-balancers.md
+      items:
+      - name: Manage software load balancers
+        href: manage/load-balancers.md
+      - name: Configure load balancer for high availability ports
+        href: manage/configure-software-load-balancer.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
   - name: Manage Azure services
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
-    - name: Manage cluster registration with Azure
-      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
@@ -214,6 +228,8 @@
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
   items:
+  - name: Troubleshoot cluster registration
+    href: deploy/troubleshoot-hci-registration.md
   - name: Troubleshoot cluster validation reporting
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
@@ -224,6 +240,8 @@
   items:
   - name: Storage and clusters
     items:
+    - name: Single-node clusters
+      href: concepts/single-server-clusters.md
     - name: System requirements
       href: concepts/system-requirements.md
     - name: Choose drives

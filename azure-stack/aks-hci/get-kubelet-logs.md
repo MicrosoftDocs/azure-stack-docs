@@ -1,10 +1,10 @@
 ---
 title: Get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn about how to get Kubelet logs in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/24/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: oadeniji
 # Intent: As an IT Pro, I need to learn how to obtain Kubelet logs in order to troubleshoot problems with my AKS on Azure Stack HCI cluster.  

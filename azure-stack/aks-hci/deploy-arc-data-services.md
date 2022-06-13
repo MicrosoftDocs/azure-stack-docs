@@ -1,13 +1,13 @@
 ---
 title: Deploy Azure Arc enabled data services in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to deploy Azure Arc enabled data services in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/21/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
-# Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data in AKS on Azure Stack HCI and Windows Server.
+# Intent: As an IT Pro, I need to learn the requirements needed in order to deploy Azure Arc data.
 # Keyword: Azure Arc data services
 ---
 

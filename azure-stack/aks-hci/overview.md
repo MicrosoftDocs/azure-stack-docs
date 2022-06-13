@@ -2,8 +2,8 @@
 title: What is on-premises Kubernetes with Azure Kubernetes Service on Azure Stack HCI and Windows Server?
 description: Azure Kubernetes Service on Azure Stack HCI and Windows Server is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 ms.topic: overview
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: abha
 ms.date: 05/13/2022
@@ -16,7 +16,7 @@ ms.date: 05/13/2022
 
 > Applies to: Azure Stack HCI and Windows Server
 
-Azure Kubernetes Service (AKS) on Azure Stack HCI is an on-premises Kubernetes implementation of AKS. AKS on Azure Stack HCI and Windows Server automates running containerized applications at scale. AKS makes it quicker to get started hosting Linux and Windows containers in your datacenter.
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is an on-premises Kubernetes implementation of AKS. AKS on Azure Stack HCI and Windows Server automates running containerized applications at scale. AKS makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
 To get started with on-premises Kubernetes using AKS, [set upAKS on Azure Stack HCI and Windows Server](setup.md).
 

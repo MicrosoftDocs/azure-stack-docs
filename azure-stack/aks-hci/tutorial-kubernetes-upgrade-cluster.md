@@ -4,17 +4,17 @@ description: In this tutorial, learn how to upgrade an existing cluster to the l
 services: container-service
 ms.topic: tutorial
 ms.date: 05/19/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 # Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS on Azure Stack HCI and Windows Server cluster to the latest Kubernetes version.
 # Keyword: upgrade cluster upgrade Kubernetes
 ---
 
 # Tutorial: Upgrade Kubernetes in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes.
+As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server.
 
 This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluster. You'll learn how to:
 

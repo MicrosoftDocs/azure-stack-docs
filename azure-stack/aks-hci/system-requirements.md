@@ -2,11 +2,11 @@
 title: Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements
 description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Windows Server
 ms.topic: conceptual
-author: mattbriggs
-ms.author: mabrigg 
-ms.lastreviewed: 05/19/2022
+author: sethmanheim
+ms.author: sethm 
+ms.lastreviewed: 05/20/2022
 ms.reviewer: abha
-ms.date: 05/19/2022
+ms.date: 05/20/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -155,31 +155,33 @@ For more information on networking requirements, visit [node networking concepts
 
 When creating an Azure Kubernetes Cluster on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
 
-| Firewall port               | Description     |
-| ---------------------------- | ------------ |
-| 45000           | wssdagent gRPC   server port     |
-| 45001             | wssdagent gRPC authentication port  |
-| 55000           | wssdcloudagent gRPC   server port      |
-| 65000            | wssdcloudagent gRPC authentication port  |
-
 If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes Cluster VMs are on two isolated vlans, these ports need to be opened at the Firewall between.
 
+| Port   | Source                               | Description                                        | Firewall Notes                                                                               |
+|-------|--------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------|
+| 22    | AKS VMs                              | Required to collect logs when using Get-AksHciLogs | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 6443  | AKS VMs                              | Required to communicate with Kubernetes APIs       | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 45000 | Physical Hyper-V Hosts               | wssdAgent gRPC Server                              | No cross-VLAN rules are needed.                                                              |
+| 45001 | Physical Hyper-V Hosts               | wssdAgent gRPC Authentication                      | No cross-VLAN rules are needed.                                                              |
+| 46000 | AKS VMs                              | wssdCloudAgent to lbagent                          | If using separate VLANs, the physical Hyper-V Hosts need to access the AKS VMs on this port. |
+| 55000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Server                            | If using separate VLANs, the AKS VMs need to access the Cluster Resource's IP on this port.  |
+| 65000 | Cluster Resource (-CloudServiceCIDR) | Cloud Agent gRPC Authentication                    | If using separate VLANs, the AKS VMs need to access the Cluster Resource's IP on this port.  |
 
 If your network requires the use of a proxy server to connect to the internet, see [Use proxy server settings on AKS on Azure Stack HCI and Windows Server](set-proxy-settings.md).
 
 ### [Table](#tab/allow-table)
 
-The following URLs need to be added to your allow list.
+The following URLs need to be added to your allowlist.
 
 [!INCLUDE [URL allow table](includes/data-allow-table.md)]
 
 ### [Json](#tab/allow-json)
 
-You can cut and paste the allow list for Firewall URL exceptions.
+You can cut and paste the allowlist for Firewall URL exceptions.
 
 :::code language="json" source="~/../modules/aks-hci/config/allow-list-end-points.json":::
 
-Download [URL allow list (json)](https://raw.githubusercontent.com/MicrosoftDocs/edge-modules/main/aks-hci/config/allow-list-end-points.json).
+Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/edge-modules/main/aks-hci/config/allow-list-end-points.json).
 
 ----
 

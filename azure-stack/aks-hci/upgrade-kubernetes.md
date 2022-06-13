@@ -3,8 +3,8 @@ title: Upgrade the Kubernetes version of  Azure Kubernetes Service workload clus
 description: Learn how to upgrade the Kubernetes version of  Azure Kubernetes Service workload clusters on Azure Stack HCI using Windows Admin Center
 ms.topic: article
 ms.date: 04/29/2022
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 # Intent: As an IT Pro, I want to learn how to use Windows Admin Center to upgrade my AKS cluster.s
@@ -33,7 +33,7 @@ To upgrade the Kubernetes version of a workload cluster with Windows Admin Cente
    
    [ ![Illustrates the Setting option for Kubernetes clusters.](./media/wac-kubernetes-upgrade/kubernetes-upgrade-settings.png) ](./media/wac-kubernetes-upgrade/kubernetes-upgrade-settings.png#lightbox)
    
-5. Select **Update now** to upgrade your workload cluster’s Kubernetes version. 
+5. Select **Update now** to upgrade your workload cluster's Kubernetes version. 
    
    [ ![Illustrates the Update now button on the Host setting page.](./media/wac-kubernetes-upgrade/kubernetes-cluster-update-now.png) ](./media/wac-kubernetes-upgrade/kubernetes-cluster-update-now.png#lightbox)
 

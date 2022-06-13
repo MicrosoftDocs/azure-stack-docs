@@ -4,10 +4,10 @@ description: In this tutorial, learn how to create an AKS on Azure Stack HCI and
 services: 
 ms.topic: tutorial
 ms.date: 04/22/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 
 # Intent: As an IT Pro, I want step-by-step instructions on how to create an AKS Azure Stack HCI or Windows Server cluster and use kubect1 so I can connect to the Kubernetes master node.
 # Keyword: deploy a workload cluster

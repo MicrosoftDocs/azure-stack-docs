@@ -1,10 +1,10 @@
 ---
-title: Connect an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster to Azure Arc-enabled Kubernetes
-description: Connect an Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster to Azure Arc-enabled Kubernetes
-author: mattbriggs
+title: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
+description: Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
@@ -12,11 +12,11 @@ ms.reviewer: abha
 # Keyword: AKS cluster HCI cluster
 ---
 
-# Connect an Azure Kubernetes Service on Azure Stack HCI on Windows Server cluster to Azure Arc-enabled Kubernetes
+# Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes
 
 > Applies to: AKS on Azure Stack HCI and Windows Server
 
-When an Azure Kubernetes Service (AKS) on Azure Stack HCI on Windows Server cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Azure Arc-enabled Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
+When an Azure Kubernetes Service on Azure Stack HCI cluster is attached to Azure Arc, it will get an Azure Resource Manager representation. Clusters are attached to standard Azure subscriptions, are located in a resource group, and can receive tags just like any other Azure resource. Also the Azure Arc-enabled Kubernetes representation allows you to extend the following capabilities onto your Kubernetes cluster:
 
 * Management services - Configurations (GitOps), Azure Monitor for containers, Azure Policy (Gatekeeper)
 * Data Services - SQL Managed Instance, PostgreSQL Hyperscale
@@ -26,13 +26,13 @@ To connect a Kubernetes cluster to Azure, the cluster administrator needs to dep
 
 Azure Arc-enabled Kubernetes supports industry-standard SSL to secure data in transit. Also, data is stored encrypted at rest in an Azure Cosmos DB database to ensure data confidentiality.
 
-The following steps describe how to connect Azure Kubernetes Service on Azure Stack HCI or Windows Server clusters to Azure Arc. **You may skip these steps if you've already connected your Kubernetes cluster to Azure Arc through Windows Admin Center.**
+The following steps describe how to connect Azure Kubernetes Service on Azure Stack HCI clusters to Azure Arc. **You may skip these steps if you've already connected your Kubernetes cluster to Azure Arc through Windows Admin Center.**
 
 ## Before you begin
 
 Verify that you have the following requirements:
 
-* An [Azure Kubernetes Service on Azure Stack HCI or Windows Server cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
+* An [Azure Kubernetes Service on Azure Stack HCI cluster](./kubernetes-walkthrough-powershell.md) with **at least one Linux worker node** that is up and running. 
 * Installed the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 * **At least one** of the following access levels on your Azure subscription:
    - A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, selecting "Access control (IAM)" on the left hand side of the Azure portal, and then clicking on "View my access".
@@ -73,7 +73,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 
 ## Step 3: Connect to Azure Arc using the Aks-Hci PowerShell module
 
-Connect your AKS on Azure Stack HCI and Windows Server cluster to Azure Arc-enabled Kubernetes using the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace.
+Connect your AKS on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes using the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command. This step deploys Azure Arc agents for Kubernetes into the `azure-arc` namespace.
 
 ```PowerShell
 Enable-AksHciArcConnection -name mynewcluster 
@@ -109,7 +109,7 @@ kubectl -n azure-arc get deployments,pods
 
 Azure Arc-enabled Kubernetes consists of a few agents (operators) that run in your cluster deployed to the `azure-arc` namespace. More information about these agents can be found [here](/azure/azure-arc/kubernetes/conceptual-agent-overview).
 
-## Disconnect your AKS on Azure Stack HCI and Windows Server cluster from Azure Arc
+## Disconnect your AKS on Azure Stack HCI cluster from Azure Arc
 
 If you want to disconnect your cluster from Azure Arc-enabled Kubernetes, run the [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) PowerShell command. Make sure you login to Azure before running the command.
 
