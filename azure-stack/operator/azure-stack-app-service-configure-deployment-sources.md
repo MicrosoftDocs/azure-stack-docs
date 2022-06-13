@@ -171,7 +171,7 @@ You must have a GitHub account to complete this task. You might want to use an a
 2. Enter an **Application name**. For example, **App Service on Azure Stack Hub**.
 3. Enter the **Homepage URL**. The Homepage URL must be the Azure Stack Hub portal address. For example, `https://portal.<region>.<FQDN>`. For more information on the Azure Stack Hub fully qualified domain name (FQDN), see [Azure Stack Hub DNS namespace](azure-stack-integrate-dns.md#azure-stack-hub-dns-namespace).
 4. Enter an **Application Description**.
-5. Enter the **Authorization callback URL**. In a default Azure Stack Hub deployment, the URL is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`. 
+5. Enter the **Authorization callback URL**. In a default Azure Stack Hub deployment, the URL is in the form `https://api.appservice.<region>.<FQDN>:44300/auth/github/callback`. 
 6. Select **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the app.
 
     ![GitHub - Completed application registration][5]
@@ -196,7 +196,7 @@ You must have a BitBucket account to complete this task. You might want to use a
 
 3. Enter a **Name** for the consumer. For example, **App Service on Azure Stack Hub**.
 4. Enter a **Description** for the app.
-5. Enter the **Callback URL**. In a default Azure Stack Hub deployment, the callback URL is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`. For BitBucket integration to succeed, the URL must follow the capitalization listed here.
+5. Enter the **Callback URL**. In a default Azure Stack Hub deployment, the callback URL is in the form `https://api.appservice.<region>.<FQDN>:44300/auth/bitbucket/callback`. For BitBucket integration to succeed, the URL must follow the capitalization listed here.
 6. Enter the **URL**. This URL should be the Azure Stack Hub portal URL. For example, `https://portal.<region>.<FQDN>`.
 7. Select the **Permissions** required:
 
@@ -232,7 +232,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 
 5. Under **Application Secrets**, select **Generate New Password**. Make a note of the **New password generated**. This password is your application secret and it's not retrievable after you select **OK**.
 6. Under **Platforms**, select **Add Platform** and then select **Web**.
-7. Enter the **Redirect URI**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`.
+7. Enter the **Redirect URI**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://api.appservice.<region>.<FQDN>:44300/auth/onedrive/callback`.
 
     ![OneDrive Application - Add Web Platform][12]
 
@@ -267,7 +267,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 
 6. Select **Create App**. You're presented with a page listing the settings for the app, including **App key** and **App secret**.
 7. Make sure that the **App folder name** is set to **App Service on Azure Stack Hub**.
-8. Set the **OAuth 2 Redirect URI** and then select **Add**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://portal.<region>.<FQDN>/TokenAuthorize`.
+8. Set the **OAuth 2 Redirect URI** and then select **Add**. In a default Azure Stack Hub deployment, the redirect URI is in the form `https://api.appservice.<region>.<FQDN>:44300/auth/dropbox/callback`.
 
     ![Dropbox application configuration][16]
 
