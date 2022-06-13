@@ -1,10 +1,10 @@
 ---
 title: Create a ReplicaSet in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to create a ReplicaSet in Azure Kubernetes Service on Azure Stack HCI.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/25/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 # Intent: As an IT Pro, I need to understand ReplicaSets and how to create or delete them in order to manage pods in my AKS on Azure Stack HCI deployment. 

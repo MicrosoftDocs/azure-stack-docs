@@ -68,7 +68,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    
    **controlPlaneIP**: The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
    
-   **csv_path**: A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation; for example, `C:\ClusterStorage\contosoVol\`.
+   **csv_path**: A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation; for example, `C:\ClusterStorage\contosoVol`.
    
    **vLanID** (optional): vLAN identifier.
    

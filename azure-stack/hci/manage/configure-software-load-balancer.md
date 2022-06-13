@@ -47,7 +47,7 @@ To set up the high availability ports rule, you must configure the following:
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load balancers**.
-    - If **Load balancers** isn't available under **Tools**, add the feature through the **SDN Load balancers** extension. For information about how to install the extension, see [Install and manage extensions](/windows-admin-center/configure/using-extensions).
+    - If **Load balancers** isn't available under **Tools**, add the feature through the **SDN Load balancers** extension. For information about how to install the extension, see [Install and manage extensions](/windows-server/manage/windows-admin-center/configure/using-extensions).
     - If you don't have a load balancer created yet, see [Deploy SDN Software Load Balancer](../deploy/sdn-wizard.md#deploy-sdn-software-load-balancer).
 
 1. After creating your load balancer or selecting the appropriate load balancer to apply the high availability rule to, scroll down to where you can see the **Load Balancing Rules** section.

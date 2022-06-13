@@ -1,10 +1,10 @@
 ---
 title: Create and use a custom load balancer with Azure Kubernetes Service on Azure Stack HCI
 description: Learn how to create and use a custom load balancer with Azure Kubernetes Service on Azure Stack HCI.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/27/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
 
@@ -34,7 +34,7 @@ This configuration assumes you want to leverage a custom load balancer in your c
 1. Create a load balancer configuration using the [New-AksHciLoadBalancerSetting](./reference/ps/new-akshciloadbalancersetting.md) cmdlet and then select `none` for the `loadBalancerSku` parameter:
 
    ```powershell
-   $lbCfg=New-AksHciLoadBalancerSettings -name "myLb" -loadBalancerSku "none" 
+   $lbCfg=New-AksHciLoadBalancerSetting -name "myLb" -loadBalancerSku "none" 
    ```
  
 2. Deploy a workload cluster without providing the load balancer configuration using the following command:

@@ -1,10 +1,10 @@
 ---
 title: Deploy an  Azure Kubernetes Service host with prestaged cluster service objects and DNS records using PowerShell
 description: Learn how to set up an AKS host if you have prestaged cluster service objects and DNS records.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/11/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 

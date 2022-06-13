@@ -2,8 +2,8 @@
 title: Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements
 description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Windows Server
 ms.topic: conceptual
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 05/20/2022
 ms.reviewer: abha
 ms.date: 05/20/2022
