@@ -109,42 +109,49 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE) network adapters are supported.
 
-You can choose to use Network ATC to simplify set up of hosting networking for your cluster, or you can have the wizard walk you through [manually configuring](#manually-configure-host-networking) each networking element.
+Depending on the host networking option you selected in **Step 1.8** of [Step 1: Get started](#step-1-get-started) above, refer to the corresponding section:
+
+- [Use Network ATC to simplify set up of hosting networking for your cluster](#use-network-atc-to-configure-host-networking-recommended)
+- [Manually configure host networking](#manually-configure-host-networking)
 
 ### Use Network ATC to configure host networking (recommended)
 
-This section provides the steps if you selected the **Use Network ATC to configure host networking (recommended)** option in **Step 1.8** above. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md).
+Follow the steps in this section, if you selected the **Use Network ATC to configure host networking (recommended)** option in **Step 1.8** of [Step 1: Get started](#step-1-get-started). To learn more about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md).
 
-1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster.
+1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. Wait for a couple of minutes for the adapters to show up. Only the adapters that have matching names, interface descriptions, and link speed on each server are displayed, all other adapters are hidden.
 
     :::image type="content" source="media/cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
-1. To see all adapters available, select **Show hidden adapters**.
+1. Select **Show hidden adapters** to see all the available adapters and then select the missing adapters.
+
+1.  On the **Select the cluster network adapters** page, select the checkbox for any adapters listed that you want to cluster. You can rename the adapters to match, or just select the matching adapters When finished, select **Close**.
 
     :::image type="content" source="media/cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - See all adapters" lightbox="media/cluster/create-cluster-atc-see-all-adaptor.png":::
 
-1. On **Select the cluster network adapters**, select the checkbox for any adapters listed that you want to cluster. When finished, select **Close**.
-
-1. The adapter that you selected in the previous step displays under **Adapters available on all servers**. When finished selecting and verifying adapters, select **Next**.  
+1. The selected adapters are displayed under **Adapters available on all servers**. When finished selecting and verifying adapters, select **Next**.  
 
 1. On **2.2 Define network intents**, under **Intent 1**, do the following:
-    - For **Traffic types**, select a traffic type from the pulldown. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
+    - For **Traffic types**, select a traffic type from the dropdown list. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
     - For **Intent name**, enter a friendly name for the intent.
-    - For **Network adapters**, select an adapter from the pulldown.
+    - For **Network adapters**, select an adapter from the dropdown list.
     - (Optional) Click **Select another adapter for this traffic** if needed.
-
-1. (Optional) To modify network settings for an intent, select **Customize network settings** in the adapter properties pane, and select the following as applicable:
+    
+    For more information and examples about network intents, see [Example intents](/deploy/network-atc#example-intents) in the Deploy host networking with Network ATC article.
+    
+1.  (Optional) To modify network settings for an intent, select **Customize network settings** in the adapter properties pane, and select the following as applicable:
     - Traffic priority for storage and cluster
-    - Traffic bandwidth reservation (%)
+    - Traffic bandwidth reservation in percentage
     - Jumbo frame size in bytes
-    - whether to enable RDMA
+    - Option to enable RDMA
     - RDMA protocol type
 
-    :::image type="content" source="media/cluster/create-cluster-atc-define-intents.png" alt-text="Create cluster wizard - Define network intents" lightbox="media/cluster/create-cluster-atc-define-intents.png":::
+        :::image type="content" source="media/cluster/create-cluster-atc-define-intents.png" alt-text="Create cluster wizard - Define network intents" lightbox="media/cluster/create-cluster-atc-define-intents.png":::
 
-1. When finished, click **Save**.
+       When finished customizing network settings, select **Save**. 
 
-1. To add another intent, select **Add an intent**, and repeat step 4.
+1. (Optional) To add another intent, select **Add an intent**, and repeat step 5.
+
+1. When finished defining network intents, select **Next**.
 
 1. On **2.3: Provide network details**, for each storage traffic adapter listed, enter the following:
     - Subnet mask/CIDR
@@ -152,6 +159,8 @@ This section provides the steps if you selected the **Use Network ATC to configu
     - IP address
 
     :::image type="content" source="media/cluster/create-cluster-atc-provide-network.png" alt-text="Create cluster wizard - Provide network details" lightbox="media/cluster/create-cluster-atc-provide-network.png":::
+
+1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
 
 ### Manually configure host networking
 
@@ -233,12 +242,11 @@ This section provides the steps if you selected the **Use Network ATC to configu
     :::image type="content" source="media/cluster/create-cluster-define-networks.png" alt-text="Create cluster wizard - Define networks" lightbox="media/cluster/create-cluster-define-networks.png":::
 
 1. When finished, click **Apply and test**. You may need to **Retry connectivity test** if status is not OK for an adapter.
+1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
 
 ## Step 3: Clustering
 
 Step 3 of the wizard makes sure everything thus far has been set up correctly, automatically sets up two sites in the case of stretched cluster deployments, and then actually creates the cluster. You can also set up your sites beforehand in Active Directory.
-
-1. Select **Next: Clustering**.
 
 1. On **3.1 Create the cluster**, specify a name for the cluster.
 
