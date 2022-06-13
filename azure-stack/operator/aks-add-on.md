@@ -1,10 +1,10 @@
 ---
 title: Install and offer the Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to install and offer the Azure Kubernetes Service on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 03/24/2022
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 03/24/2022
 
@@ -86,7 +86,7 @@ To allow tenant users to use the AKS Service the operator needs to make it avail
 
 You will need to configure Azure Stack Hub to support sign-ins from users that reside in other Azure Active Directory (Azure AD) directories, allowing them to use services in Azure Stack Hub.
 
-For instructions, see [Configure multi-tenancy in Azure Stack Hub](/azure-stack/operator/enable-multitenancy?view=azs-2108&pivots=management-tool-powershell)
+For instructions, see [Configure multi-tenancy in Azure Stack Hub](/azure-stack/operator/enable-multitenancy?view=azs-2108&pivots=management-tool-powershell&preserve-view=true)
 
 ## Monitor and act on alerts
 

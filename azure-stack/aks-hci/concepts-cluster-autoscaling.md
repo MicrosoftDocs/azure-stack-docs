@@ -1,21 +1,23 @@
 ---
-title: Cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
-description: Learn about automatically scaling node pools in Azure Kubernetes Service (AKS) on Azure Stack HCI
+title: Cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about automatically scaling node pools in Azure Kubernetes Service on Azure Stack HCI
 ms.topic: conceptual
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm 
 ms.lastreviewed: 04/15/2022
 ms.reviewer: mikek
-ms.date: 04/15/2022
+ms.date: 05/26/2022
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling
 
 ---
 
-# Cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
+# Cluster autoscaling in Azure Kubernetes Service on Azure Stack HCI
 
-You can adjust the number of nodes that run application workloads by using Azure Kubernetes Service (AKS) to keep up with demand. For this preview release, you can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. In this article, we look at the context of the autoscaler on AKS on Azure Stack HCI, and how the autoscaler works. For cluster autoscaling to work effectively, you can also make use of the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal Pod autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
+You can adjust the number of nodes that run application workloads by using Azure Kubernetes Service (AKS) to keep up with demand. For this preview release, you can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. 
+
+This article describes the context of the autoscaler on AKS on Azure Stack HCI and Windows Server, and how the autoscaler works. For cluster autoscaling to work effectively, you can also make use of the Kubernetes horizontal pod autoscaler, which is a standard Kubernetes component. For more information about the Kubernetes horizontal Pod autoscaler, see [Horizontal Pod Autoscaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
 > [!IMPORTANT]
 > The cluster autoscaler is currently in PREVIEW.
@@ -24,14 +26,14 @@ You can adjust the number of nodes that run application workloads by using Azure
 
 In AKS, the cluster autoscaler watches for pods in your cluster that can't be scheduled because of resource constraints. When issues are detected, the number of nodes in a node pool increases to meet application demand. Nodes are also regularly checked for a lack of running pods, and then the number of nodes decreases, as needed. This ability to automatically scale up or scale down the number of nodes in your AKS cluster lets you run efficient, cost-effective clusters. *Autoscaling* is the ability of the system to automatically adjust your workloads through automation and configuration that contains specific parameters based on input, measures, and rules.
 
-To enable cluster autoscaler AKS needs to implement basic resource management. AKS estimates resource requirement that trigger autoscaling events at a point in time. AKS won't take into account resource consumption from outside of AKS on Azure Stack HCI. For example, when you add VMs after enabling the autoscaler, this event occurs outside of the context of the autoscaler.
+To enable cluster autoscaler AKS needs to implement basic resource management. AKS estimates resource requirement that trigger autoscaling events at a point in time. AKS won't take into account resource consumption from outside of AKS on Azure Stack HCI and Windows Server. For example, when you add VMs after enabling the autoscaler, this event occurs outside of the context of the autoscaler.
 ## Purpose of cluster autoscaling 
 
 The autoscaler automatically increases the size of a node pool from the minimum to the maximum number of nodes specified. When you have enabled automatic scaling, the autoscaler will determine if the maximum number of nodes is feasible and warn you about over provisioning the hardware resources available. 
 
 The autoscaler tracks available and promised resources across all deployed target clusters and node pools.  The scaler uses this data to make an informed decision. As the autoscaler increases node pool, the autoscaler checks for the availability of resources. 
 
-AKS on Azure Stack HCI uses the built in Kubernetes autoscaling feature to support operations similar to the Azure autoscaler.
+AKS on Azure Stack HCI and Windows Server uses the built in Kubernetes autoscaling feature to support operations similar to the Azure autoscaler.
 
 ## How cluster autoscaling works
 

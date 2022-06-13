@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot the Azure Kubernetes Service on Azure Stack Hub 
 description: Learn how to collect logs and troubleshoot your AKS cluster on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 10/26/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
 
@@ -16,7 +16,7 @@ ms.lastreviewed: 10/26/2021
 
 ## Overview of troubleshooting
 
-Troubleshooting Azure Kubernetes Service (AKS) clusters in most respects are no different than troubleshooting most Kubernetes clusters. You can find information on the Kubernetes site, [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/). Another resource you may find useful in Azure Stack Hub is **Diagnostic settings** available in the Azure Stack Hub user [portal **AKS cluster** blade](aks-how-to-use-portal.md).
+Troubleshooting Azure Kubernetes Service (AKS) clusters in most respects are no different than troubleshooting most Kubernetes clusters. You can find information on the Kubernetes site, [Troubleshooting](https://kubernetes.io/docs/tasks/debug/debug-cluster/). Another resource you may find useful in Azure Stack Hub is **Diagnostic settings** available in the Azure Stack Hub user [portal **AKS cluster** blade](aks-how-to-use-portal.md).
 
 ![Diagnostic Settings to collect Kubernetes logs](media/aks-troubleshoot/diagnostic-settings.png)
 

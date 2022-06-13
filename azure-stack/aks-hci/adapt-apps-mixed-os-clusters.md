@@ -1,12 +1,13 @@
 ---
 title: Adapt applications for use in mixed-OS Kubernetes clusters
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/13/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
+
 # Intent: As an IT Pro, I want to learn how use node selectors, taints, and tolerations so I can adapt apps for use on mixed-OS Kubernetes clusters. 
 # Keyword: Node Selector mixed-OS clusters taints tolerations
 
@@ -15,9 +16,9 @@ ms.reviewer: abha
 
 > Applies to: Azure Stack HCI versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
-Azure Kubernetes Service on Azure Stack HCI enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors, or taints and tolerations.
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors, or taints and tolerations.
 
-This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for Azure Kubernetes Service on Azure Stack HCI](kubernetes-concepts.md).
+This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS on Azure Stack HCI and Windows Server](kubernetes-concepts.md).
 
 ## Node Selector
 
@@ -38,7 +39,7 @@ For more information on nodeSelectors, visit [node selectors](https://kubernetes
 
 *Taints* and *tolerations* work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" not to accept pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
-Windows OS nodes in AKS on Azure Stack HCI can be tainted when created in the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
+Windows OS nodes in AKS on Azure Stack HCI and Windows Server can be tainted when created in the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) command or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) command. You can also use these commands to taint Linux OS nodes. The following example uses Windows.
 
 If you are also creating a new cluster, run the following command to create a Windows node pool with a taint. If you have an existing cluster that you want to add a node pool with a taint to, go to the next example that uses the `New-AksHciNodePool` command.
 

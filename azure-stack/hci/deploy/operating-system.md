@@ -6,7 +6,7 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/18/2022
+ms.date: 05/16/2022
 ---
 
 # Deploy the Azure Stack HCI operating system
@@ -20,9 +20,9 @@ The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](htt
 
 ## Determine hardware and network requirements
 
-Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability, so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are Windows Server 2019 Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated against our reference architecture to ensure compatibility and reliability, so you get up and running quickly. Check that the systems, components, devices, and drivers you are using are certified for use with Azure Stack HCI. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
-At minimum, you will need two servers, a reliable high-bandwidth, low-latency network connection between servers, and SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each. However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the Azure Stack HCI [system requirements](../concepts/system-requirements.md).
+At minimum, you need one server, a reliable high-bandwidth, low-latency network connection between servers, and SATA, SAS, NVMe, or persistent memory drives that are physically attached to just one server each. However, your hardware requirements may vary depending on the size and configuration of the cluster(s) you wish to deploy. To make sure your deployment is successful, review the Azure Stack HCI [system requirements](../concepts/system-requirements.md).
 
 Before you deploy the Azure Stack HCI operating system:
 
@@ -30,13 +30,13 @@ Before you deploy the Azure Stack HCI operating system:
 - If your deployment will stretch across multiple sites, determine how many servers you will need at each site, and whether the cluster configuration will be active/passive or active/active. For more information, see [Stretched clusters overview](../concepts/stretched-clusters.md).
 - Carefully [choose drives](../concepts/choose-drives.md) and [plan volumes](../concepts/plan-volumes.md) to meet your storage performance and capacity requirements.
 
-For Azure Kubernetes Service on Azure Stack HCI requirements, see [AKS requirements on Azure Stack HCI](../../aks-hci/overview.md#what-you-need-to-get-started).
+For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS requirements on Azure Stack HCI](../../aks-hci/overview.md#what-you-need-to-get-started).
 
 ## Gather information
 
 To prepare for deployment, you'll need to take note of the server names, domain names, RDMA protocols and versions, and VLAN ID for your deployment. Gather the following details about your environment:
 
-- **Server names:** Get familiar with your organization's naming policies for computers, files, paths, and other resources. You'll need to provision several servers, each with unique names.
+- **Server name:** Get familiar with your organization's naming policies for computers, files, paths, and other resources. If you need to provision several servers, each should have a unique name.
 - **Domain name:** Get familiar with your organization's policies for domain naming and domain joining. You'll be joining the servers to your domain, and you'll need to specify the domain name.
 - **Static IP addresses:** Azure Stack HCI requires static IP addresses for storage and workload (VM) traffic and doesn't support dynamic IP address assignment through DHCP for this high-speed network. You can use DHCP for the management network adapter unless you're using two in a team, in which case again you need to use static IPs. Consult your network administrator about the IP address you should use for each server in the cluster.
 - **RDMA networking:** There are two types of RDMA protocols: iWarp and RoCE. Note which one your network adapters use, and if RoCE, also note the version (v1 or v2). For RoCE, also note the model of your top-of-rack switch.
@@ -57,6 +57,9 @@ After you've acquired the server hardware for your Azure Stack HCI solution, it'
 1. Connect the server nodes to your network switches.
 1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
 
+> [!NOTE]
+> If you are preparing a single server deployment, see the [Azure Stack HCI OS single server overview](../concepts/single-server-clusters.md)
+
 ## Operating system deployment options
 
 You can deploy the Azure Stack HCI operating system in the same ways that you're used to deploying other Microsoft operating systems:
@@ -71,7 +74,7 @@ You can deploy the Azure Stack HCI operating system in the same ways that you're
 
 For enterprise deployment of the Azure Stack HCI operating system, we recommend Azure Stack HCI Integrated System solution hardware from your preferred hardware partner. The solution hardware arrives with the operating system preinstalled, and supports using Windows Admin Center to deploy and update drivers and firmware from the hardware manufacturer.
 
-Solution hardware ranges from 2 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solution hardware from your preferred hardware partner, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
+Solution hardware ranges from 1 to 16 nodes and is tested and validated by Microsoft and partner vendors. ​To find Azure Stack HCI solution hardware from your preferred hardware partner, see the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net).
 
 ### Headless deployment
 
@@ -93,9 +96,10 @@ Another option is to install the Azure Stack HCI operating system over the netwo
 
 ### Manual deployment
 
-To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
+To manually deploy the Azure Stack HCI operating system on the system drive of each server to be clustered, install the operating system via your preferred method, such as booting from a DVD or USB drive. Complete the installation process using the Server Configuration tool (Sconfig) to prepare the server or servers for clustering. To learn more about the tool, see [Configure a Server Core installation with Sconfig](/windows-server/windows-server-2022/get-started/sconfig-on-ws2022).
 
 To manually install the Azure Stack HCI operating system:
+
 1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
 1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
@@ -133,14 +137,20 @@ Now you're ready to use the Server Configuration tool (Sconfig) to perform impor
 
 :::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
 
-From the main page of the Sconfig tool, you can perform the following initial configuration tasks:
+From the Welcome to Azure Stack HCI window (Sconfig tool), you can perform the following initial configuration tasks:
+
 - Configure networking or confirm that the network was configured automatically using Dynamic Host Configuration Protocol (DHCP).
 - Rename the server if the default automatically generated server name does not suit you.
 - Join the server to an Active Directory domain.
 - Add your domain user account or designated domain group to local administrators.
 - Enable access to Windows Remote Management (WinRM) if you plan to manage the server from outside the local subnet and decided not to join domain yet. (The default Firewall rules allow management both from local subnet and from any subnet within your Active Directory domain services.)
 
+For more detail, see [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
+
 After configuring the operating system as needed with Sconfig on each server, you're ready to use the Cluster Creation wizard in Windows Admin Center to cluster the servers.
+
+> [!NOTE]
+> If you're installing Azure Stack HCI on a single server, you must use PowerShell to create the cluster.
 
 ## Next steps
 

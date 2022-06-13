@@ -1,15 +1,17 @@
 ---
-title: Create deployments in Azure Kubernetes Service on Azure Stack HCI
-description: Learn how to create deployments in Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: mattbriggs
+title: Create deployments in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to create deployments in Azure Kubernetes Service on Azure Stack HCI.
+author: sethmanheim
 ms.topic: how-to
-ms.date: 03/04/2022
-ms.author: mabrigg 
+ms.date: 04/29/2022
+ms.author: sethm 
 ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
+# Intent: As an IT Pro, I want to learn what I need to do in order to create deployments in Azure Kubernetes Service (AKS) on Azure Stack HCI.
+# Keyword: Kubernetes deployment update deployment Kubernetes object
 ---
 
-# Create deployments
+# Create deployments in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 A _deployment_ refers to a Kubernetes object that manages the performance and specifies the desired behavior of a pod. It specifies the application's life cycle, including the pods assigned to the application. It provides a way to communicate your desired state for your application, and the controller works on changing the present state into your desired state.
 
@@ -29,7 +31,7 @@ For additional information, see [Kubernetes Deployments](https://kubernetes.io/d
 
 ## Create a deployment
 
-You create a deployment using the `kubectl apply` or `kubectl create` commands. Since the required number of pods is maintained and monitored, they're running and available after the deployment is created. If a pod fails, Kubernetes immediately rolls out a replica of the pod to take its place in the cluster.
+To create a deployment, you can use the `kubectl apply` or `kubectl create` commands. Since the required number of pods is maintained and monitored, they're running and available after the deployment is created. If a pod fails, Kubernetes immediately rolls out a replica of the pod to take its place in the cluster.
 
 The following example describes the features of a deployment manifest file in YAML format.
 

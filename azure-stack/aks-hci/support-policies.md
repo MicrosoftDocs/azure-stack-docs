@@ -1,45 +1,56 @@
 ---
-title: Support policies for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI)
-description: Learn about Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI) support policies, shared responsibility, and features that are in preview (or alpha or beta).
+title: Support policies for Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn about Azure Kubernetes Service on Azure Stack HCI and Windows Server support policies, shared responsibility, and features that are in preview (or alpha or beta).
 services: container-service
 ms.topic: article
-ms.date: 03/30/2022
-author: mattbriggs
-ms.author: mabrigg
+ms.date: 06/06/2022
+author: sethmanheim
+ms.author: sethm
 ms.lastreviewed: 03/30/2022
 ms.reviewer: mikek
 
-#Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
+# Customer intent: As a cluster operator or developer, I want to understand what AKS on Azure Stack HCI components I need to manage, what components are managed and supported by Microsoft (including security patches), and networking and preview features.
+# Intent: As an IT Pro, I want to understand the support policies associated with my AKS deployment, including security patches, networking, and preview features.
+# Keyword: support policies AKS technical support control plane service updates
 ---
 
-# Support policies for Azure Kubernetes Service on Azure Stack HCI
+# Support policies for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI). The article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
+This article provides details about technical support policies and limitations for Azure Kubernetes Service on Azure Stack HCI (AKS on Azure Stack HCI and Windows Server). 
+
+This article also details management cluster node management, control plane components, third-party open-source components, and security or patch management.
 
 ## Service updates and releases
 
-* For release information, see [AKS on Azure Stack HCI release notes](https://github.com/Azure/aks-hci/releases).
-* For information on features in preview, see [AKS on Azure Stack HCI preview features](https://github.com/Azure/aks-hci/tree/main/preview).
+* For release information, see [AKS on Azure Stack HCI and Windows Server release notes](https://github.com/Azure/aks-hci/releases).
+* For information on features in preview, see [AKS on Azure Stack HCI and Windows Server preview features](https://github.com/Azure/aks-hci/tree/main/preview).
 
 ## Supported version policy
 
-AKS on Azure Stack HCI versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
+AKS on Azure Stack HCI and Windows Server versions are expressed as w.z.y.zzzz, where w is the major version, x is the minor version, y is the patch version, and zzzz is the build of the specific version  following Semantic Versioning terminology.
 
-AKS on Azure Stack HCI maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
+AKS on Azure Stack HCI and Windows Server maintains upgrade support for the three most recent [releases](https://github.com/Azure/aks-hci/releases).
 
-Kubernetes versions in AKS on Azure Stack HCI follow the [Kubernetes version policy](https://kubernetes.io/releases/version-skew-policy/). For details on the supported Kubernetes Versions see [Supported Kubernetes Versions](./supported-kubernetes-versions.md).
+Kubernetes versions in AKS on Azure Stack HCI and Windows Server follow the [Kubernetes version policy](https://kubernetes.io/releases/version-skew-policy/). For details on the supported Kubernetes Versions see [Supported Kubernetes Versions](./supported-kubernetes-versions.md).
 
-To keep your AKS on Azure Stack HCI environment in a supported state, it's recommended to always stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
+To keep your AKS on Azure Stack HCI and Windows Server environment in a supported state, we recommended that you  stay within a 30 day window of the latest release and not fall behind more than 60 days from the latest update.
 
-After 120 days Microsoft can't guarantee that older versions of AKS on Azure Stack HCI are still available on the release servers for download and scale operations, upgrades, reinstallations and other operation in the cluster will start to fail requiring a redeployment of the AKS on Azure Stack HCI environment with the latest version.
+After 120 days, Microsoft can't guarantee that older versions of AKS on Azure Stack HCI and Windows Server are still available on the release servers for download. Scale operations, upgrades, reinstallations and other operations in the cluster will start to fail, requiring that you redeploy your AKS on Azure Stack HCI and Windows Server environment with the latest version.
 
 If your cluster falls behind more than 60 days (2 versions), you'll have to upgrade in multiple steps to get current again.
 
-## Managed features in AKS on Azure Stack HCI
+AKS on Azure Stack HCI and Windows Server follow their specific platform version support timeframes; that is, AKS is not supported on unsupported versions of those products. For more information, see their support policies:
 
-Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access to low-level controls and customization options. By contrast, AKS on Azure Stack HCI provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
+* [Azure Stack HCI supported versions information](../hci/release-information.md#azure-stack-hci-release-summary)
+* [Windows Server 2019 Datacenter and above supported versions](/windows-server/get-started/windows-server-release-info#windows-server-current-versions-by-servicing-option)
 
-With AKS on Azure Stack HCI, you get a partially managed *control plane*. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
+## Managed features in AKS on Azure Stack HCI and Windows Server
+
+As an AKS on Azure Stack HCI user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly. Base infrastructure-as-a-service (IaaS) cloud components, such as compute or networking components, allow you access .to low-level controls and customization options. 
+
+By contrast, AKS on Azure Stack HCI and Windows Server provides a turnkey Kubernetes deployment that gives you the common set of configurations and capabilities you need for your cluster. As an AKS on Azure Stack HCI and Windows Server user, you have limited customization and deployment options. In exchange, you don't need to worry about or manage Kubernetes cluster control plane and installation directly.
+
+With AKS on Azure Stack HCI and Windows Server, you get a partially managed *control plane*. The control plane contains all of the components and services you need to operate and provide Kubernetes clusters to end users. All Kubernetes components are maintained by Microsoft.
 
 Microsoft maintains the following components through the management cluster and the associated Virtual Machine base images:
 
@@ -49,13 +60,13 @@ Microsoft maintains the following components through the management cluster and 
 * Kubernetes proxy or networking.
 * Any additional addon or system component running in the kube-system namespace.
 
-AKS on Azure Stack HCI isn't a Platform-as-a-Service (PaaS) solution. Some components, such as workload cluster control plane and worker nodes, have *shared responsibility*, where users must help maintain the AKS on Azure Stack HCI cluster. User input is required, for example, to apply an operating system (OS) security patch or update to a newer Kubernetes version.
+AKS on Azure Stack HCI and Windows Server isn't a Platform-as-a-Service (PaaS) solution. Some components, such as workload cluster control plane and worker nodes, have *shared responsibility*, where users must help maintain the AKS on Azure Stack HCI and Windows Server cluster. User input is required, for example, to apply an operating system (OS) security patch or update to a newer Kubernetes version.
 
-The services are *managed* in the sense that Microsoft and the AKS on Azure Stack HCI team provide the tooling that deploys the management cluster, control plane and agent nodes for workloads clusters. Customers can't alter these managed components. Microsoft limits customization to ensure a consistent and scalable user experience. For a fully customizable solution in the cloud, see [AKS Engine](https://github.com/Azure/aks-engine).
+The services are *managed* in the sense that Microsoft and the AKS on Azure Stack HCI and Windows Server team provide the tooling that deploys the management cluster, control plane and agent nodes for workloads clusters. Customers can't alter these managed components. Microsoft limits customization to ensure a consistent and scalable user experience. For a fully customizable solution in the cloud, see [AKS Engine](https://github.com/Azure/aks-engine).
 
 ## Shared responsibility
 
-When a cluster is created, you define the Kubernetes agent nodes that AKS on Azure Stack HCI creates. Your workloads are executed on these nodes.
+When a cluster is created, you define the Kubernetes agent nodes that AKS on Azure Stack HCI and Windows Server creates. Your workloads are executed on these nodes.
 
 Because your agent nodes execute private code and store sensitive data, Microsoft Support can access them only in a limited way. Microsoft Support can't sign in to, execute commands in, or view logs for these nodes without your express permission or assistance.
 
@@ -63,7 +74,7 @@ Any modification done directly to the agent nodes using any of the IaaS APIs ren
 
 Similarly, while you may add any metadata to the cluster and nodes, such as tags and labels, changing any of the system created metadata will render the cluster unsupported.
 
-## AKS on Azure Stack HCI support coverage
+## AKS on Azure Stack HCI and Windows Server support coverage
 
 Microsoft provides technical support for the following examples:
 
@@ -89,26 +100,25 @@ Microsoft provides technical support for the following examples:
 
 
 > [!NOTE]
-> Any cluster actions taken by Microsoft/AKS on Azure Stack HCI are made with user consent and assistance. Microsoft Support will not log into your cluster unless you configure access for the support engineer.
+> Any cluster actions taken by Microsoft/AKS on Azure Stack HCI and Windows Server are made with user consent and assistance. Microsoft Support will not log into your cluster unless you configure access for the support engineer.
 
 Microsoft doesn't provide technical support for the following examples:
 
 * Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
   > [!NOTE]
-  > Microsoft Support can advise on AKS on Azure Stack HCI cluster functionality, customization, and tuning (for example, Kubernetes operations issues and procedures).
+  > Microsoft Support can advise on AKS on Azure Stack HCI and Windows Server cluster functionality, customization, and tuning (for example, Kubernetes operations issues and procedures).
 
-* Third-party open-source projects that aren't provided as part of the Kubernetes control plane or deployed when AKS on Azure Stack HCI clusters are created. These projects might include Istio, Helm, Envoy, or others.
+* Third-party open-source projects that aren't provided as part of the Kubernetes control plane or deployed when AKS on Azure Stack HCI and Windows Server clusters are created. These projects might include Istio, Helm, Envoy, or others.
   > [!NOTE]
-  > Microsoft can provide best-effort support for third-party open-source projects such as Helm. Where the third-party open-source tool integrates with  Kubernetes or other AKS on Azure Stack HCI-specific bugs, Microsoft supports examples and applications from Microsoft documentation.
+  > Microsoft can provide best-effort support for third-party open-source projects such as Helm. Where the third-party open-source tool integrates with  Kubernetes or other AKS on Azure Stack HCI and Windows Server-specific bugs, Microsoft supports examples and applications from Microsoft documentation.
 
 * Third-party closed-source software. This software can include security scanning tools and networking devices or software.
   
-* Network customizations other than the ones listed in the [AKS on Azure Stack HCI documentation](./index.yml).
+* Network customizations other than the ones listed in the [AKS on Azure Stack HCI and Windows Server documentation](./index.yml).
 
+## AKS on Azure Stack HCI and Windows Server support coverage for agent nodes
 
-## AKS on Azure Stack HCI support coverage for agent nodes
-
-### Microsoft responsibilities for AKS on Azure Stack HCI agent nodes
+### Microsoft responsibilities for AKS on Azure Stack HCI and Windows Server agent nodes
 
 Microsoft and users share responsibility for Kubernetes agent nodes where:
 
@@ -121,30 +131,30 @@ Microsoft and users share responsibility for Kubernetes agent nodes where:
   * `Moby` or `ContainerD`
 
 > [!NOTE]
-> If an agent node is not operational, AKS on Azure Stack HCI might restart individual components or the entire agent node. These restart operations are automated and provide auto-remediation for common issues.
+> If an agent node is not operational, AKS on Azure Stack HCI and Windows Server might restart individual components or the entire agent node. These restart operations are automated and provide auto-remediation for common issues.
 
-### Customer responsibilities for AKS on Azure Stack HCI agent nodes
+### Customer responsibilities for AKS on Azure Stack HCI and Windows Server agent nodes
 
 Microsoft provides patches and new images for your image nodes monthly, but doesn't automatically patch them by default. To keep your agent node OS and runtime components patched, you should keep a regular upgrade schedule or automate it.
 
-Similarly, AKS on Azure Stack HCI regularly releases new Kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible to keep your clusters' kubernetes version updated and according to the [AKS on Azure Stack HCI Kubernetes Support Version Policy](supported-kubernetes-versions.md).
+Similarly, AKS on Azure Stack HCI and Windows Server regularly releases new Kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible to keep your clusters' kubernetes version updated and according to the [AKS on Azure Stack HCI and Windows Server Kubernetes Support Version Policy](supported-kubernetes-versions.md).
 
 #### User customization of agent nodes
 > [!NOTE]
-> AKS on Azure Stack HCI agent nodes appear in Hyper-V as regular virtual machine resources. These virtual machines are deployed with a custom OS image and supported/managed Kubernetes components. You cannot change the base OS image or do any direct customizations to these nodes using the Hyper-V APIs or resources. Any custom changes that are not done via the AKS on Azure Stack HCI API will not persist through an upgrade, scale, update or reboot and may render the cluster unsupported.
+> AKS on Azure Stack HCI and Windows Server agent nodes appear in Hyper-V as regular virtual machine resources. These virtual machines are deployed with a custom OS image and supported/managed Kubernetes components. You cannot change the base OS image or do any direct customizations to these nodes using the Hyper-V APIs or resources. Any custom changes that are not done via the AKS on Azure Stack HCI and Windows Server API will not persist through an upgrade, scale, update or reboot and may render the cluster unsupported.
 > Avoid performing changes to the agent nodes unless Microsoft Support directs you to make changes.
 
-AKS on Azure Stack HCI manages the lifecycle and operations of agent node image on your behalf - modifying the resources associated with the agent nodes is **not supported**. An example of an unsupported operation is customizing a virtual machine network settings by manually changing configurations through the Hyper-V API or tools.
+AKS on Azure Stack HCI and Windows Server manages the lifecycle and operations of agent node image on your behalf - modifying the resources associated with the agent nodes is **not supported**. An example of an unsupported operation is customizing a virtual machine network settings by manually changing configurations through the Hyper-V API or tools.
 
-For workload-specific configurations or packages, AKS on Azure Stack HCI recommends using [Kubernetes `daemon sets`](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
+For workload-specific configurations or packages, AKS on Azure Stack HCI and Windows Server recommends using [Kubernetes `daemon sets`](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).
 
 Using Kubernetes privileged `daemon sets` and init containers enables you to tune/modify or install 3rd party software on cluster agent nodes. Examples of such customizations include adding custom security scanning software or updating sysctl settings.
 
-While this path is recommended if the above requirements apply, AKS on Azure Stack HCI engineering and support can't help with troubleshooting or diagnosing modifications that render the node unavailable due to a custom deployed `daemon set`.
+While this path is recommended if the above requirements apply, AKS on Azure Stack HCI and Windows Server engineering and support can't help with troubleshooting or diagnosing modifications that render the node unavailable due to a custom deployed `daemon set`.
 
 ### Security issues and patching
 
-If a security flaw is found in one or more of the managed components of AKS on Azure Stack HCI, the AKS on Azure Stack HCI team will patch all affected OS images to mitigate the issue and the team will give users upgrade guidance.
+If a security flaw is found in one or more of the managed components of AKS on Azure Stack HCI and Windows Server, the AKS on Azure Stack HCI and Windows Server team will patch all affected OS images to mitigate the issue and the team will give users upgrade guidance.
 
 For agent nodes affected by a security flaw, Microsoft will notify you with details on the impact and the steps to fix or mitigate the security issue (normally a node image upgrade or a cluster patch upgrade).
 
@@ -154,11 +164,11 @@ Although you can sign in to and change agent nodes, doing this operation is disc
 
 ## Network ports, IP Pools and access
 
-You may only customize the network settings using AKS on Azure Stack HCI defined subnets. You may not customize network settings at the NIC level of the agent nodes. AKS on Azure Stack HCI has egress requirements to specific endpoints, to control egress and ensure the necessary connectivity, see [System Requirements](./system-requirements.md).
+You may only customize the network settings using AKS on Azure Stack HCI and Windows Server defined subnets. You may not customize network settings at the NIC level of the agent nodes. AKS on Azure Stack HCI and Windows Server has egress requirements to specific endpoints, to control egress and ensure the necessary connectivity, see [System Requirements](./system-requirements.md).
 
 ## Stopped or disconnected clusters
 
-As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC renders the cluster out of support.
+As stated earlier, manually de-allocating all cluster nodes via the Hyper-V APIs/CLI/MMC will render the cluster out of support.
 
 Clusters that are stopped for more than 90 days will no longer be able to be updated. The control planes for clusters in this state will be out of support after 30 days, not able to update to the latest version after 60 days.
 
@@ -166,7 +176,7 @@ If your Azure subscription is suspended or deleted, your cluster will be out of 
 
 ## Unsupported alpha and beta Kubernetes features
 
-AKS on Azure Stack HCI only supports stable and beta features within the upstream Kubernetes project. Unless otherwise documented, AKS on Azure Stack HCI doesn't support any alpha feature that is available in the upstream Kubernetes project.
+AKS on Azure Stack HCI and Windows Server only supports stable and beta features within the upstream Kubernetes project. Unless otherwise documented, AKS on Azure Stack HCI and Windows Server doesn't support any alpha feature that is available in the upstream Kubernetes project.
 
 ## Preview features or feature flags
 
@@ -174,18 +184,18 @@ For features and functionality that requires extended testing and user feedback,
 
 Preview features or feature-flag features aren't meant for production. Ongoing changes in APIs and behavior, bug fixes, and other changes can result in unstable clusters and downtime.
 
-Features in public preview  fall under 'best effort' support as these features are in preview and not meant for production and are supported by the AKS on Azure Stack HCI technical support teams during business hours only. For more information, see:
+Features in public preview  fall under 'best effort' support as these features are in preview and not meant for production and are supported by the AKS on Azure Stack HCI and Windows Server technical support teams during business hours only. For more information, see:
 
 * [Azure Support FAQ](https://azure.microsoft.com/support/faq/)
 
 ## Upstream bugs and issues
 
-Given the speed of development in the upstream Kubernetes project, bugs invariably arise. Some of these bugs can't be patched or worked around within the AKS on Azure Stack HCI system. Instead, bug fixes require larger patches to upstream projects (such as Kubernetes, node or agent operating systems, and kernel). For components that Microsoft owns (such as the cluster API providers for Azure Stack HCI), AKS on Azure Stack HCI and Azure personnel are committed to fixing issues upstream in the community.
+Given the speed of development in the upstream Kubernetes project, bugs invariably arise. Some of these bugs can't be patched or worked around within the AKS on Azure Stack HCI and Windows Server system. Instead, bug fixes require larger patches to upstream projects (such as Kubernetes, node or agent operating systems, and kernel). For components that Microsoft owns (such as the cluster API providers for Azure Stack HCI), AKS on Azure Stack HCI and Windows Server and Azure personnel are committed to fixing issues upstream in the community.
 
-When a technical support issue is root-caused by one or more upstream bugs, AKS on Azure Stack HCI support and engineering teams will:
+When a technical support issue is root-caused by one or more upstream bugs, AKS on Azure Stack HCI and Windows Server support and engineering teams will:
 
 * Identify and link the upstream bugs with any supporting details to help explain why this issue affects your cluster or workload. Customers receive links to the required repositories so they can watch the issues and see when a new release will provide fixes.
-* Provide potential workarounds or mitigation. If the issue can be mitigated, a [known issue](https://github.com/Azure/aks-hci/issues?q=is%3Aopen+is%3Aissue+label%3Aknown-issue) will be filed in the AKS on Azure Stack HCI repository. The known-issue filing explains:
+* Provide potential workarounds or mitigation. If the issue can be mitigated, a [known issue](https://github.com/Azure/aks-hci/issues?q=is%3Aopen+is%3Aissue+label%3Aknown-issue) will be filed in the AKS on Azure Stack HCI and Windows Server repository. The known-issue filing explains:
   * The issue, including links to upstream bugs.
   * The workaround and details about an upgrade or another persistence of the solution.
   * Rough timelines for the issue's inclusion, based on the upstream release cadence.

@@ -1,13 +1,13 @@
 ---
 title: Rotate Kubernetes certificates on Azure Stack Hub  
 description: Learn how to rotate Kubernetes certificates on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: how-to
-ms.date: 3/1/2021
-ms.author: mabrigg
+ms.date: 05/17/2022
+ms.author: sethm
 ms.reviewer: waltero
-ms.lastreviewed: 3/1/2021
+ms.lastreviewed: 05/17/2022
 
 # Intent: As an Azure Stack Hub user, I would like to rotate Kubernetes certificates on a Kubernetes cluster so that I can keep my cluster secure.
 # Keywords: certificates AKS engine Kubernetes
@@ -94,6 +94,9 @@ For example:
   --azure-env "AzureStackCloud" # optional if targeting AzureCloud
 ```
 
+## Rotate `front-proxy` certificates
+
+The AKS engine creates a separate PKI for  the `front-proxy` as part of node bootstrapping process and delivers them to all nodes through `etcd`. To effectively reuse this functionality, `rotate-certs` has to replace the certificates stored in `etcd`. The `front-proxy` certificates expire after 30 years.` aks-engine rotate-certs` rotates the front-proxy certs.
 ## Troubleshooting
 
 If the certificate rotation process halts before completion due to a failure or transient issue, for example, network connectivity, it is safe to rerun `aks-engine rotate-certs` using the `--force` flag.

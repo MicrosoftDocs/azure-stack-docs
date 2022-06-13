@@ -1,10 +1,10 @@
 ---
-title: Get-AksHciConfig for AKS on Azure Stack HCI
-author: mattbriggs
+title: Get-AksHciConfig for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Get-AksHciConfig PowerShell command lists the current configuration settings for the Azure Kubernetes Service host.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
