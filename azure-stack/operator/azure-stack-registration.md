@@ -167,14 +167,6 @@ Connected environments can access the internet and Azure. For these environments
 
 6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (as discussed in Step 2). This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously.
 
-   ```powershell
-   Connect-AzAccount -Environment "<environment name>"
-   ```
-
-   | Parameter | Description |
-   |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Subscription, **AzureChinaCloud**.  |
-
 7. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet. PowerShell to run:
 
    ```powershell
