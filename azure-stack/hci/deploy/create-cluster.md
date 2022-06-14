@@ -101,7 +101,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 1. Follow the vendor-specific steps to install the updates on your hardware. These steps include performing symmetry and compliance checks on your hardware to ensure a successful update. You may need to re-run some steps. 
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
-    - **Use Network ATC to configure host networking (recommended)**. This is recommended. For more information about using Network ATC to simplify host networking, see [Network ATC](network-atc.md).
+    - **Use Network ATC to configure host networking (recommended)**. We recommended using Network ATC to simplify the deployment and network configuration management for Azure Stack HCI clusters. It provides an intent-based approach to host network deployment. For more information about using Network ATC, see [Network ATC](network-atc.md).
     - **Manually configure host networking**. Use to configure host networking manually. For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 1. Select **Next: Networking** to proceed to [Step 2: Networking](#step-2-networking).
 
@@ -109,16 +109,16 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE) network adapters are supported.
 
-Depending on the host networking option you selected in **Step 1.8** of [Step 1: Get started](#step-1-get-started) above, refer to the corresponding section:
+Depending on the option you selected in **1.8 Choose host networking** of [Step 1: Get started](#step-1-get-started) above, refer to one of the following sections to configure host networking for your cluster:
 
-- [Use Network ATC to simplify set up of hosting networking for your cluster](#use-network-atc-to-configure-host-networking-recommended)
+- [Use Network ATC to configure host networking (recommended)](#use-network-atc-to-configure-host-networking-recommended)
 - [Manually configure host networking](#manually-configure-host-networking)
 
 ### Use Network ATC to configure host networking (recommended)
 
-Follow the steps in this section, if you selected the **Use Network ATC to configure host networking (recommended)** option in **Step 1.8** of [Step 1: Get started](#step-1-get-started). To learn more about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md).
+Follow these steps to configure host networking using Network ATC. We recommend using this option for configuring host networking. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md). If you selected the option to manually configure host networking, skip this section and follow the steps in [Manually configure host networking](#manually-configure-host-networking) instead.
 
-1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. Wait for a couple of minutes for the adapters to show up. Only the adapters that have matching names, interface descriptions, and link speed on each server are displayed, all other adapters are hidden.
+1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. Wait for a couple of minutes for the adapters to show up. Only adapters with matching names, interface descriptions, and link speed on each server in the cluster are displayed, all other adapters are hidden.
 
     :::image type="content" source="media/cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
@@ -163,6 +163,8 @@ Follow the steps in this section, if you selected the **Use Network ATC to confi
 1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
 
 ### Manually configure host networking
+
+Follow these steps to manually configure host networking. If you selected the option to use Network ATC to configure host networking, skip this section and follow the steps in [Use Network ATC to configure host networking (recommended)](#use-network-atc-to-configure-host-networking-recommended) instead.
 
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
