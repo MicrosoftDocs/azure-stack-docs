@@ -91,7 +91,7 @@ The following are the required firewall URLs in the JSON format. Use the Copy bu
     { 
         "URL": "https://dp.stackhci.azure.com (Azure Public)", 
         "Port": "443", 
-        "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data. Note that this URL has been updated. Earlier the URL was: https://azurestackhci.azurefd.net. If you've already registered your cluster with the old URL, you must allowlist the old URL as well.” 
+        "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data. Note that this URL has been updated. Previously, this URL was: https://azurestackhci.azurefd.net. If you've already registered your cluster with the old URL, allowlist the old URL as well.” 
     }, 
     { 
         "URL": "https://dp.stackhci.azure.cn", 
