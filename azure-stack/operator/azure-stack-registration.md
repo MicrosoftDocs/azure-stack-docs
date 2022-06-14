@@ -705,7 +705,7 @@ You might see one of the errors below while attempting to register your Azure St
 
    Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
 ::: zone pivot="state-disconnected"
-- Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
+- Marketplace management still asks you to register and activate your Azure Stack Hub, even when you've already registered your stamp using the disconnected process.
 
    Cause: this is a known issue for disconnected environments, and requires you to [verify your registration status](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 ::: zone-end
