@@ -112,7 +112,7 @@ Starting with version 2206, you can select your geographical preference for data
 > [!IMPORTANT]
 > **Geographical region not provided.** Unable to detect geographical information. You must provide your device's geographical information to be in compliance with the Schrems II ruling.
 
-You can resolve this alert for your existing Azure stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
+You can resolve this alert for your existing Azure Stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
 
 - If you opt to have your data stored and processed **within the EU**, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be stored and processed in the EU.
   ```powershell
