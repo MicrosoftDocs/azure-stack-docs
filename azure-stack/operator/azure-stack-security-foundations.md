@@ -110,8 +110,7 @@ Microsoft has announced its intention to surpass existing data storage commitmen
 Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
 
 > [!IMPORTANT]
-> Geographical region not provided.
-> Description: Unable to detect geographical information. To be compliant with the Schrems II ruling, it is mandatory that you provide the geographic information of your device.
+> **Geographical region not provided.** Unable to detect geographical information. You must provide your device's geographical information to be in compliance with the Schrems II ruling.
 
 You can resolve this alert for your existing Azure stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
 
