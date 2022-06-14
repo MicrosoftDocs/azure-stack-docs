@@ -165,9 +165,7 @@ Connected environments can access the internet and Azure. For these environments
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (as discussed in Step 2). This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously.
-
-7. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet. PowerShell to run:
+6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (if not, repeat steps 2 and 3.) This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
 
    ```powershell
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -277,8 +275,11 @@ Connected environments can access the internet and Azure. For these environments
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Import the **RegisterWithAzure.psm1** module using PowerShell.
-6. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. 
+5. Start PowerShell ISE as an administrator and navigate to the Registration folder in the AzureStack-Tools-az directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+   ```powershell
+   Import-Module .\RegisterwithAzure.psm1
+   ```
+6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (if not, repeat steps 2 and 3.) This context is the Azure account that was used to register the Azure Stack Hub resource provider. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet: 
 
    ```powershell
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -365,12 +366,14 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
    ```powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential # Update with your cloud admin credentials 
-   -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint # Update with your privileged endpoint 
-   -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $YourCloudAdminCredential = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential `
+    -UsageReportingEnabled:$false `
+    -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
+    -BillingModel Capacity `
+    -AgreementNumber '<EA agreement number>' `
+    -TokenOutputFilePath $FilePathForRegistrationToken
    ```
-   You must enter the correct values for your cloud admin credentials `$YourCloudAdminCredential` and privileged endpoint `$YourPrivilegedEndpoint` for this cmdlet to run successfully. Use the *EA agreement number* where your capacity SKU licenses were purchased. 
-
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
 
    > [!Tip]
