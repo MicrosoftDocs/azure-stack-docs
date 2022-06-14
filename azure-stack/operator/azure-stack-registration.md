@@ -374,6 +374,8 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
     -AgreementNumber '<EA agreement number>' `
     -TokenOutputFilePath $FilePathForRegistrationToken
    ```
+   Use the EA agreement number where your capacity SKU licenses were purchased.
+
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
 
    > [!Tip]
