@@ -646,7 +646,7 @@ You can find the current version and upgrade version in the following table for 
 
 -   New hyperkube updates to support Kubernetes versions 1.14.8 and 1.15.10.
 
--   Update kubectl to match the version of Kubernetes for the cluster.. This component is available in the Kubernetes cluster master nodes, you can run it by SSH into a master.
+-   Update kubectl to match the version of Kubernetes for the cluster.. This component is available in the Kubernetes cluster control plane nodes, you can run it by SSH into a master.
 
 -   Updates for the Azure Container Monitor add-on with latest [February 2020 release](https://github.com/microsoft/Docker-Provider/blob/ci_feature_prod/README.md) ([\#2850](https://github.com/Azure/aks-engine/issues/2850)).
 
