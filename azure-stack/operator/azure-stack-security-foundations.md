@@ -110,19 +110,20 @@ Microsoft has announced its intention to surpass existing data storage commitmen
 Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
 
 > [!IMPORTANT]
-> Geographical region not provided. Description: Unable to detect geographical information. To be compliant with the Schrems II ruling, it is mandatory that you provide the geographic information of your device.
+> Geographical region not provided.
+> Description: Unable to detect geographical information. To be compliant with the Schrems II ruling, it is mandatory that you provide the geographic information of your device.
 
 You can resolve this alert for your existing Azure stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
 
 - If you opt to have your data stored and processed **within the EU**, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be stored and processed in the EU.
-```powershell
+  ```powershell
   Set-DataResidencyLocation -Europe
-```
+  ```
 
 - If you opt to have your data stored and processed outside the EU, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be processed outside the EU.
-```powershell
+  ```powershell
   Set-DataResidencyLocation -Europe:$false
-```
+  ```
 
 After you resolve this alert, you can verify your geographical region preference in the Admin portal.
 
