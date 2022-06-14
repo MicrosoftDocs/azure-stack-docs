@@ -21,10 +21,20 @@ zone_pivot_groups: state-connected-disconnected
 
 Register Azure Stack Hub with Azure so you can download Azure Marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack Hub, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
 
-The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
+The information in this article describes registering Azure Stack Hub integrated systems with Azure. For information about registering the ASDK with Azure see [Azure Stack Hub registration](../asdk/asdk-register.md) in the ASDK documentation.
 
 > [!IMPORTANT]
 > Registration is required to support full Azure Stack Hub functionality, including offering items in the marketplace. You'll be in violation of Azure Stack Hub licensing terms if you don't register when using the pay-as-you-use billing model. To learn more about Azure Stack Hub licensing models, see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
+
+::: zone pivot="state-connected"
+   > [!Note]
+   > For connected registrations, an Azure Active Directory application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by [unregistering and then re-registering](azure-stack-registration.md#renew-or-change-registration) Azure Stack Hub with Azure. 
+::: zone-end
+
+::: zone pivot="state-disconnected"
+   > [!Note]
+   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?tabs=az1%2Caz2&pivots=state-disconnected). 
+::: zone-end
 
 ## Prerequisites
 
@@ -61,7 +71,7 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 After registration, Azure Active Directory (Azure AD) global administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
-The user who registers Azure Stack Hub is the owner of the service principal in Azure AD. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they are a global admin, will have to be added to ‘Default Provider Subscription’ through ‘Access control (IAM)’. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
+The user that registers Azure Stack Hub is the owner of the service principal in Azure AD. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they are a global admin, will have to be added to ‘Default Provider Subscription’ through ‘Access control (IAM)’. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
 
 If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack Hub incurs no cost on your Azure subscription.
 
@@ -155,15 +165,7 @@ Connected environments can access the internet and Azure. For these environments
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Next, in the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. PowerShell to run:
-
-   ```powershell
-   Connect-AzAccount -Environment "<environment name>"
-   ```
-
-   | Parameter | Description |
-   |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Subscription, **AzureChinaCloud**.  |
+6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (as discussed in Step 2). This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously.
 
 7. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet. PowerShell to run:
 
@@ -275,7 +277,8 @@ Connected environments can access the internet and Azure. For these environments
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+5. Import the **RegisterWithAzure.psm1** module using PowerShell.
+6. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. 
 
    ```powershell
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -362,10 +365,11 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
    ```powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential # Update with your cloud admin credentials 
+   -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint # Update with your privileged endpoint 
+   -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
-
-   Use the *EA agreement number* where your capacity SKU licenses were purchased.
+   You must enter the correct values for your cloud admin credentials `$YourCloudAdminCredential` and privileged endpoint `$YourPrivilegedEndpoint` for this cmdlet to run successfully. Use the *EA agreement number* where your capacity SKU licenses were purchased. 
 
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
 
