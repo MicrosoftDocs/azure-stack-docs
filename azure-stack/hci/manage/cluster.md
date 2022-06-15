@@ -154,7 +154,7 @@ To register or unregister your cluster with Azure, see [Register a cluster with 
 
 ## Remove (destroy) the cluster
 
-Before you destroy a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-by-using-windows-admin-center).
+Before you destroy a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-windows-admin-center).
 
 You use PowerShell to destroy a cluster and its resources. For more information, see [Remove (destroy) a cluster](cluster-powershell.md#remove-a-cluster) for more information.
 
