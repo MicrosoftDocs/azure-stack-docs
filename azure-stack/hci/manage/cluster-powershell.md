@@ -158,7 +158,7 @@ Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerb
 
 ## Remove a cluster
 
-Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-by-using-powershell).
+Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-powershell.
 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource) reference documentation.
 
