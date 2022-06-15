@@ -17,7 +17,7 @@ ms.reviewer: rbaziwane
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server uses monthly upgrades to rotate any internal certificates and tokens that cannot be auto-rotated during normal operation of the cluster. During this process, token validity is set to 90 days from the date that a user upgraded.
 
-Microsoft recommends that you update your clusters within 60 days of a new release, not only for ensuring that internal certificates and tokens are kept up to date, but also to make sure that you get access to new features, bug fixes, and stay up to date with critical security patches.
+Microsoft recommends that you update your clusters within 60 days of a new release. These updates ensure that internal certificates and tokens are kept up to date, and that you get access to new features, bug fixes. They also ensure you stay up to date with critical security patches.
 
 The cloud agent service that is responsible for the underlying orchestration in AKS on Azure Stack HCI and Windows Server requires that clients that it communicates with [have valid certificates and tokens](certificates-and-tokens.md) in order to exchange data.
 
