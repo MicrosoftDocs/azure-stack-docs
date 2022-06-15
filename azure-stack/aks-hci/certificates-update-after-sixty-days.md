@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server uses monthl
 
 Microsoft recommends that you update your clusters within 60 days of a new release. These updates ensure that internal certificates and tokens are kept up to date, and that you get access to new features, bug fixes. They also ensure you stay up to date with critical security patches.
 
-The cloud agent service that is responsible for the underlying orchestration in AKS on Azure Stack HCI and Windows Server requires that clients that it communicates with [have valid certificates and tokens](certificates-and-tokens.md) in order to exchange data.
+The cloud agent service that is responsible for the underlying orchestration in AKS on Azure Stack HCI and Windows Server requires that clients it communicates with [have valid certificates and tokens](certificates-and-tokens.md) in order to exchange data.
 
 ## Update management cluster certificates and tokens
 
