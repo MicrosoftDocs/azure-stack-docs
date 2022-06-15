@@ -28,15 +28,15 @@ If you're interested in testing Azure Stack HCI, but have limited or no spare ha
 
 ## Before you run the wizard
 
-Before you run the Create Cluster wizard, make sure you:
+Before you run the Create Cluster wizard, make sure the following prerequisites are met:
 
-- Have read the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
-- Have consulted with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), [Deployment of host networking with network ATC](network-atc.md), and [Firewall requirements](../concepts/firewall-requirements.md).
-- Install the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
-- Have an account that's a member of the local Administrators group on each server.
-- Have all the servers in the correct time zone.
-- Install the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
-- If you're using an Integrated System from a Microsoft hardware partner, make sure you have the latest version of vendor extensions installed on Windows Admin Center to take advantage of integrated hardware and firmware updates. To install them, open Windows Admin Center and click Settings (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
+- You've read the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
+- You've consulted with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), [Deployment of host networking with network ATC](network-atc.md), and [Firewall requirements](../concepts/firewall-requirements.md).
+- You've installed the Azure Stack HCI OS on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
+- You've an account that's a member of the local Administrators group on each server.
+- You've all the servers in the correct time zone.
+- You've installed the latest version of Windows Admin Center on a PC or server for management. See [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install).
+-  If you're using an integrated system from a Microsoft hardware partner, you've installed the latest version of vendor extensions on Windows Admin Center to help keep the integrated hardware and firmware up to date. To install them, open Windows Admin Center and click Settings (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
 - For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too.
 
 If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway administrators group, or the local administrators group on the Windows Admin Center server.
