@@ -33,7 +33,7 @@ The information in this article describes registering Azure Stack Hub integrated
 
 ::: zone pivot="state-disconnected"
    > [!Note]
-   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?tabs=az1%2Caz2&pivots=state-disconnected). 
+   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected&tabs=az1%2caz2). 
 ::: zone-end
 
 ## Prerequisites
