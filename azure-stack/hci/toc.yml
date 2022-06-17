@@ -35,7 +35,7 @@
   - name: 2. Create a cluster
     href: deploy/create-cluster.md
   - name: 3. Set up a witness
-    href: /manage/witness.md
+    href: manage/witness.md
   - name: 4. Register a cluster with Azure
     href: deploy/register-with-azure.md
   - name: 5. Validate the cluster
