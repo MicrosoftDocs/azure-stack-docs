@@ -172,7 +172,7 @@ Follow these steps to configure host networking using Network ATC. This is the r
 
 ### Manually configure host networking
 
-Follow these steps to manually configure host networking. If you selected the option to use Network ATC to configure host networking, skip this section and follow the steps in [Use Network ATC to configure host networking (recommended)](#use-network-atc-to-configure-host-networking-recommended) instead.
+Follow these steps to manually configure host networking. If you selected the option to use Network ATC to configure host networking, skip this section and follow the steps in [Use Network ATC to deploy and manage networking (Recommended)](#use-network-atc-to-deploy-and-manage-networking-recommended) instead.
 
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
