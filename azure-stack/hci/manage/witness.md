@@ -131,6 +131,10 @@ Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Creden
 
 ## Next steps
 
+To perform the next management task related to this article, see:
+> [!div class="nextstepaction"]
+> [Connect Azure Stack HCI to Azure](..\deploy\register-with-azure.md)
+
 - For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 
 - For more information about creating and managing Azure Storage Accounts, see [Create a storage account](/azure/storage/common/storage-account-create).
