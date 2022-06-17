@@ -27,21 +27,23 @@ It is important to note that the operator can only authenticate to the operating
 
 In this scenario, the operator can decide which subscription should be able to use the emergency VM access feature.
 
-First, run the following PowerShell script. To run this script, you must have Azure Stack Hub PowerShell installed. Follow the guidance on how to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md).
+First, run the following PowerShell script. To run this script, you must have Azure Stack Hub PowerShell installed. Follow the guidance on how to install [Azure Stack Hub PowerShell](../operator/azure-stack-powershell-install.md). Replace the variable placeholders with the correct values:
 
 ### [AzureRM modules](#tab/azurerm1)
 
 ```powershell
-$FQDN = Read-Host "Enter External FQDN"
-$RegionName = Read-Host "Enter Azure Stack Region Name"
-$TenantID = Read-Host "Enter TenantID"
-$TenantSubscriptionId  = Read-Host "Enter Tenant Subscription ID"
+# Replace strings with your values before running the script
+$FQDN = "External FQDN"
+$RegionName = "Azure Stack Region Name"
+# The value for "TenantID" should always be the tenant ID of home directory as it's only used for connecting to the admin resource manager endpoint.
+$TenantID = "TenantID"
+$TenantSubscriptionId = "Tenant Subscription ID"
 
 $tenantSubscriptionSettings = @{
     TenantSubscriptionId = $tenantSubscriptionId
 }
 
-#Add environment & authenticate
+# Add environment & authenticate
 Add-AzureRmEnvironment -Name AzureStackAdmin -ARMEndpoint https://adminmanagement.$RegionName.$FQDN
 Login-AzureRmAccount -Environment AzureStackAdmin -TenantId $TenantID
 
@@ -55,14 +57,15 @@ Invoke-AzureRmResourceAction `
     -Force
 ```
 
-
 ### [Az modules](#tab/az1)
 
 ```powershell
-$FQDN = Read-Host "Enter External FQDN"
-$RegionName = Read-Host "Enter Azure Stack Region Name"
-$TenantID = Read-Host "Enter TenantID"
-$TenantSubscriptionId  = Read-Host "Enter Tenant Subscription ID"
+# Replace strings with your values before running the script
+$FQDN = "External FQDN"
+$RegionName = "Azure Stack Region Name"
+# The value for "TenantID" should always be the tenant ID of home directory as it's only used for connecting to the admin resource manager endpoint.
+$TenantID = "TenantID"
+$TenantSubscriptionId = "Tenant Subscription ID"
 
 $tenantSubscriptionSettings = @{
     TenantSubscriptionId = $tenantSubscriptionId
@@ -84,6 +87,48 @@ Invoke-AzResourceAction `
 
 ---
 
+## User to request VM console access
+
+As a user, you provide consent to the operator to create console access for a specific VM.
+
+1. As a user, open PowerShell, sign in to your subscription, and run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
+
+   ### [AzureRM modules](#tab/azurerm1)
+
+   ```powershell
+   $SubscriptionID = "your Azure subscription ID" 
+   $ResourceGroup = "your resource group name" 
+   $VMName = "your VM name" 
+   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
+
+   $enableVMAccessResponse = Invoke-AzureRMResourceAction `
+       -ResourceId $vmResourceId `
+       -Action "enableVmAccess" `
+       -ApiVersion "2020-06-01" `
+       -ErrorAction Stop `
+       -Force
+   ```
+
+   ### [Az modules](#tab/az1)
+
+   ```powershell
+   $SubscriptionID = "your Azure subscription ID" 
+   $ResourceGroup = "your resource group name" 
+   $VMName = "your VM name" 
+   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
+
+   $enableVMAccessResponse = Invoke-AzResourceAction `
+       -ResourceId $vmResourceId `
+       -Action "enableVmAccess" `
+       -ApiVersion "2020-06-01" `
+       -ErrorAction Stop `
+       -Force
+   ```
+
+   ---
+
+2. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
+
 ## Operator enables remote desktop access to ERCS VMs
 
 The next step for the Azure Stack Hub operator is to enable Remote Desktop access to the Emergency Recovery Console VMs (ERCS), which host the privileged endpoints.
@@ -101,77 +146,35 @@ Revoke-RdpAccessToErcsVM
 ```
 
 > [!NOTE]
-> Any one of the ERCS VMs will be assigned the tenant user's access request. Consider proactively running the command on each privileged endpoint (PEP).
+> Any one of the ERCS VMs will be assigned the tenant user's access request. As an operator, you can create a PEP session only to the ERCS VM received from the tenant (the output of `$enableVMAccessResponse`).
 
-## User to request VM console access
-
-As a user, you provide consent to the operator to create console access for a specific VM.
-
-1. As a user, open PowerShell, sign in to your subscription, and run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
-
-   ### [AzureRM modules](#tab/azurerm1)
-
-   ```powershell
-   $SubscriptionID= "your Azure subscription ID" 
-   $ResourceGroup = "your resource group name" 
-   $VMName = "your VM name" 
-   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
-
-   $enableVMAccessResponse = Invoke-AzureRMResourceAction `
-       -ResourceId $vmResourceId `
-       -Action "enableVmAccess" `
-       -ApiVersion "2020-06-01" `
-       -ErrorAction Stop ` 
-       -Force 
-   ```
-
-   ### [Az modules](#tab/az1)
-
-   ```powershell
-   $SubscriptionID= "your Azure subscription ID" 
-   $ResourceGroup = "your resource group name" 
-   $VMName = "your VM name" 
-   $vmResourceId = "/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroup/providers/Microsoft.Compute/virtualMachines/$VMName" 
-
-   $enableVMAccessResponse = Invoke-AzResourceAction `
-       -ResourceId $vmResourceId `
-       -Action "enableVmAccess" `
-       -ApiVersion "2020-06-01" `
-       -ErrorAction Stop ` 
-       -Force 
-   ```
-
-   ---
-
-2. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
-
-3. The operator uses the ERCS name, and connects to it using the Remote Desktop Client (RDP); for example, from the operator access workstation (OAW).
+1. The operator uses the ERCS name, and connects to it using the Remote Desktop Client (RDP); for example, from the operator access workstation (OAW).
 
    > [!NOTE]
    > The operator authenticates using the same cloud admin account that executed [**Grant-RdpAccessToErcsVM**](#operator-enables-remote-desktop-access-to-ercs-vms).
 
-4. Once connected to the ERCS VM via RDP, launch PowerShell.
+2. Once connected to the ERCS VM via RDP, launch PowerShell.
 
-5. Import the Emergency VM Access module by running the following command:
+3. Import the Emergency VM Access module by running the following command:
 
    ```powershell
    Import-module Microsoft.AzureStack.Compute.EmergencyVmAccess.PowerShellModule
    ```
 
-6. Connect to the console of the tenant virtual machine using the following command:
+4. Connect to the console of the tenant virtual machine using the following command:
 
    ```powershell
    ConnectTo-TenantVm -ResourceID
    ```
 
-7. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator does not have any credentials with which to sign in to the guest operating system.
+5. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator does not have any credentials with which to sign in to the guest operating system.
 
    > [!NOTE]
    > In the sign-in screen, pressing the Windows + U keys launches the on-screen keyboard, which allows sending CTRL + ALT + Delete. You must be in full screen RDP mode in order to use the Windows + U key combination.
 
-8. The operator can now screen share with the tenant to debug any issues that prevent connecting to the VM via the network.
+6. The operator can now screen share with the tenant to debug any issues that prevent connecting to the VM via the network.
 
-9. When finished, the operator can run the following command to remove the user consent:
+7. When finished, the operator can run the following command to remove the user consent:
 
    ```powershell
    Delete-TenantVMSession -ResourceID
