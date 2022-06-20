@@ -4,7 +4,7 @@ description: How to apply operating system and firmware updates to Azure Stack H
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 05/17/2022
+ms.date: 06/17/2022
 ---
 
 # Update Azure Stack HCI clusters
@@ -16,13 +16,13 @@ This article describes how to install, monitor, and troubleshoot updates on mult
 When updating Azure Stack HCI clusters, the goal is to maintain availability by updating only one server in the cluster at a time. Many operating system updates require taking the server offline, for example to do a restart or to update software such as the network stack. We recommend using Cluster-Aware Updating (CAU), a feature that makes it easy to install updates on every server in your cluster while keeping your applications running. Cluster-Aware Updating automates taking the server in and out of maintenance mode while installing updates and restarting the server, if necessary. Cluster-Aware Updating is the default updating method used by Windows Admin Center and can also be initiated using PowerShell.
 
    > [!IMPORTANT]
-   > Azure Stack HCI, version 21H2 has entered General availability (GA) and is available as a feature update. To update your cluster to version 21H2 and gain access to new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
-   > 
-   > If you're using Microsoft System Center to manage Azure Stack HCI clusters, you can use Virtual Machine Manager (VMM) to [orchestrate rolling upgrade](/system-center/vmm/hyper-v-rolling-upgrade) across your clusters and move from Azure Stack HCI, version 20H2 _(original release)_ to version 21H2. This is the same feature in VMM which allows upgrading from Windows Server 2019 to Windows Server 2022.
-   > 
-   > If you're currently using System Center 2019, please do not install feature updates to Azure Stack HCI yet. Upgrade to [System Center 2022](/system-center/vmm/whats-new-in-vmm#new-features-in-vmm-2022) before updating to Azure Stack HCI, version 21H2. Once on System Center 2022, you can update to Azure Stack HCI, version 21H2 using any available option: Windows Admin Center, PowerShell or cluster rolling upgrade feature in Virtual Machine Manager.
+   > Azure Stack HCI, version 21H2 has entered general availability (GA) and is available as a feature update. To update your cluster to version 21H2 and access new features, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
    >
-   > Please do not enroll the clusters managed by Virtual Machine Manager to the [Azure Stack HCI preview channel](/azure-stack/hci/manage/preview-channel). System Center 2022 does not support Azure Stack HCI _preview_ versions yet. Corresponding support will be introduced in future updates to System Center. Please keep en eye on the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) if you're interested in Azure Stack HCI previews.
+   > If you're using Microsoft System Center to manage Azure Stack HCI clusters, you can use Virtual Machine Manager (VMM) to [orchestrate rolling upgrades](/system-center/vmm/hyper-v-rolling-upgrade) across your clusters and move from Azure Stack HCI, version 20H2 (original release) to version 21H2. This is the same feature in VMM which allows upgrading from Windows Server 2019 to Windows Server 2022.
+   >
+   > If you're currently using System Center 2019, do not install feature updates to Azure Stack HCI yet. Upgrade to [System Center 2022](/system-center/vmm/whats-new-in-vmm#new-features-in-vmm-2022) before updating to Azure Stack HCI, version 21H2. After you've upgraded to System Center 2022, you can update to Azure Stack HCI, version 21H2 using any available option: Windows Admin Center, PowerShell or the cluster rolling upgrade feature in Virtual Machine Manager.
+   >
+   > Please do not enroll the clusters managed by Virtual Machine Manager to the [Azure Stack HCI preview channel](/azure-stack/hci/manage/preview-channel). System Center 2022 does not support Azure Stack HCI preview versions. You can monitor the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) if you're interested in Azure Stack HCI previews.
 
 This topic focuses on operating system and feature updates. If you need to take a server offline to perform maintenance on the hardware, see [Failover cluster maintenance procedures](maintain-servers.md).
 

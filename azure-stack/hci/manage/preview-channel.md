@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2021
+ms.date: 06/17/2022
 ---
 
 # Join the Azure Stack HCI preview channel
@@ -16,7 +16,7 @@ ms.date: 10/19/2021
 The Azure Stack HCI release preview channel is an opt-in program that lets customers install the next version of the operating system before it's officially released. It's intended for customers who want to evaluate new features, system architects who want to build a solution before conducting a broader deployment, or anyone who wants to see what's next for Azure Stack HCI. There are no program requirements or commitments. Preview builds are available via Windows Update using Windows Admin Center or PowerShell.
 
    > [!IMPORTANT]
-   > Now that Azure Stack HCI, version 21H2 has reached general availability (GA), we strongly encourage all participants to update their preview channel clusters to build 22471 (future version) to avoid being billed. If you don't install build 22471, stay on version 21H2 _and continue applying quality updates,_ your cluster will become billable. If you stay on version 21H2 _and don't apply further quality updates past September 2021,_ you won't be billed.
+   > Now that Azure Stack HCI, version 21H2 has reached general availability (GA), we strongly encourage all participants to update their preview channel clusters to build 22471 (future version) to avoid being billed. If you don't install build 22471, stay on version 21H2 and continue applying quality updates, your cluster will become billable. If you stay on version 21H2 and don't apply further quality updates past September 2021, you won't be billed.
 
    > [!WARNING]
    > Azure Stack HCI clusters that are managed by Microsoft System Center should not join the preview channel yet. System Center 2022 (including Virtual Machine Manager, Operations Manager, and other components) supports Azure Stack HCI, version 21H2 which is the current in-market (GA) version. System Center does not yet support further preview versions. See the [System Center blog](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog) for the latest updates.
@@ -83,47 +83,50 @@ You're now ready to perform [post installation steps](#post-installation-steps).
 
 To install a preview build using PowerShell, follow these steps. If your cluster is running Azure Stack HCI, version 20H2, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) via Windows Update, or the `Set-PreviewChannel` cmdlet won't work.
 
-1.	Run the following cmdlets on every server in the cluster:
+1. Run the following cmdlets on every server in the cluster:
 
-    ```PowerShell
-    Set-WSManQuickConfig
-    Enable-PSRemoting
-    Set-NetFirewallRule -Group "@firewallapi.dll,-36751" -Profile Domain -Enabled true
-    ```
+   ```PowerShell
+   Set-WSManQuickConfig
+   Enable-PSRemoting
+   Set-NetFirewallRule -Group "@firewallapi.dll,-36751" -Profile Domain -Enabled true
+   ```
 
-2.	To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:
+2. To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:
 
-    ```PowerShell
-    Test-CauSetup -ClusterName Cluster1
-    ```
+   ```PowerShell
+   Test-CauSetup -ClusterName Cluster1
+   ```
 
-3.  Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster. If any of the condition checks fail, resolve them before proceeding to step 4.
+3. Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster. If any of the condition checks fail, resolve them before proceeding to step 4.
 
-    ```PowerShell
-    Test-Cluster
-    ```
+   ```PowerShell
+   Test-Cluster
+   ```
 
-4.	Run the following cmdlet with no parameters on every server in the cluster:
+4. Run the following cmdlet with no parameters on every server in the cluster:
 
-    ```PowerShell
-    Set-PreviewChannel
-    ```
+   ```PowerShell
+   Set-PreviewChannel
+   ```
 
-    This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server was not already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
+   This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server was not already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
 
-5.	Check for the feature update:
+5. Check for the feature update:
 
-    ```PowerShell
-    Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
-    ```
+   ```PowerShell
+   Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
+   ```
 
-    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
+   Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
 
-6.	You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
+6. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. 
 
-    ```PowerShell
-    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
-    ```
+   > [!IMPORTANT]
+   > The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/en-us/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed.
+
+   ```PowerShell
+   Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
+   ```
 
 7. Check for any further updates and install them. See [Install operating system updates using PowerShell](update-cluster.md#install-operating-system-updates-using-powershell).
 
