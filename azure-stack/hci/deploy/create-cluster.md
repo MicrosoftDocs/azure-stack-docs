@@ -117,14 +117,11 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 
 Step 2 of the wizard walks you through configuring the host networking elements for your cluster. RDMA (both iWARP and RoCE) network adapters are supported.
 
-Depending on the option you selected in **1.8 Choose host networking** of [Step 1: Get started](#step-1-get-started) above, refer to one of the following sections to configure host networking for your cluster:
-
-- [Use Network ATC to deploy and manage networking (Recommended)](#use-network-atc-to-deploy-and-manage-networking-recommended)
-- [Manually configure host networking](#manually-configure-host-networking)
+Depending on the option you selected in **1.8 Choose host networking** of [Step 1: Get started](#step-1-get-started) above, refer to one of the following tabs to configure host networking for your cluster:
 
 ### [Use Network ATC to deploy and manage networking (Recommended)](#tab/use-network-atc-to-deploy-and-manage-networking-recommended)
 
-Follow these steps to configure host networking using Network ATC. This is the recommended option for configuring host networking. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md). If you selected the option to manually configure host networking, skip this section and follow the steps in [Manually configure host networking](#manually-configure-host-networking) instead.
+This is the recommended option for configuring host networking. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. Wait for a couple of minutes for the adapters to show up. Only adapters with matching names, interface descriptions, and link speed on each server are displayed. All other adapters are hidden.
 
@@ -132,7 +129,7 @@ Follow these steps to configure host networking using Network ATC. This is the r
 
 1. If you don't see your adapters in the list, click **Show hidden adapters** to see all the available adapters and then select the missing adapters.
 
-1.  On the **Select the cluster network adapters** page, select the checkbox for any adapters listed that you want to cluster. The adapters must have matching names, interface descriptions, and link speeds on each server. You can rename the adapters to match, or just select the matching adapters. When finished, click **Close**.
+1. On the **Select the cluster network adapters** page, select the checkbox for any adapters listed that you want to cluster. The adapters must have matching names, interface descriptions, and link speeds on each server. You can rename the adapters to match, or just select the matching adapters. When finished, click **Close**.
 
     :::image type="content" source="media/cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - See all adapters" lightbox="media/cluster/create-cluster-atc-see-all-adaptor.png":::
 
@@ -173,7 +170,7 @@ Follow these steps to configure host networking using Network ATC. This is the r
 
 ### [Manually configure host networking](#tab/manually-configure-host-networking)
 
-Follow these steps to manually configure host networking. If you selected the option to use Network ATC to configure host networking, skip this section and follow the steps in [Use Network ATC to deploy and manage networking (Recommended)](#use-network-atc-to-deploy-and-manage-networking-recommended) instead.
+Follow these steps to manually configure host networking.
 
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
@@ -256,139 +253,6 @@ Follow these steps to manually configure host networking. If you selected the op
 1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
 
 ---
-
-<!--### Use Network ATC to deploy and manage networking (Recommended)
-
-Follow these steps to configure host networking using Network ATC. This is the recommended option for configuring host networking. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md). If you selected the option to manually configure host networking, skip this section and follow the steps in [Manually configure host networking](#manually-configure-host-networking) instead.
-
-1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. Wait for a couple of minutes for the adapters to show up. Only adapters with matching names, interface descriptions, and link speed on each server are displayed. All other adapters are hidden.
-
-    :::image type="content" source="media/cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
-
-1. If you don't see your adapters in the list, click **Show hidden adapters** to see all the available adapters and then select the missing adapters.
-
-1.  On the **Select the cluster network adapters** page, select the checkbox for any adapters listed that you want to cluster. The adapters must have matching names, interface descriptions, and link speeds on each server. You can rename the adapters to match, or just select the matching adapters. When finished, click **Close**.
-
-    :::image type="content" source="media/cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - See all adapters" lightbox="media/cluster/create-cluster-atc-see-all-adaptor.png":::
-
-1. The selected adapters will now display under **Adapters available on all servers**. When finished selecting and verifying adapters, click **Next**.  
-
-1. On **2.2 Define intents**, under **Intent 1**, do the following:
-    - For **Traffic types**, select a traffic type from the dropdown list. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
-    - For **Intent name**, enter a friendly name for the intent.
-    - For **Network adapters**, select an adapter from the dropdown list.
-    - (Optional) Click **Select another adapter for this traffic** if needed.
-    
-    For more information and examples about network intents, see [Example intents](/deploy/network-atc#example-intents) in the Deploy host networking with Network ATC article.
-    
-1.  (Optional) After an intent is added, click **Customize network settings** to modify its network settings. 
-    1. Select the following as applicable:
-        - Traffic priority
-        - Traffic bandwidth reservation in percentage
-        - Jumbo frame size in bytes
-        - Option to enable RDMA
-        - RDMA protocol type
-
-        :::image type="content" source="media/cluster/create-cluster-atc-define-intents.png" alt-text="Create cluster wizard - Define network intents" lightbox="media/cluster/create-cluster-atc-define-intents.png":::
-
-    1. When finished, click **Save**.
-
-1. (Optional) To add another intent, select **Add an intent**, and repeat step 5 and optionally step 6.
-
-1. When finished defining network intents, select **Next**.
-
-1. On **2.3: Provide network details**, for each storage traffic adapter listed, enter the following or use the default values:
-    - Subnet mask/CIDR
-    - VLAN ID
-    - IP address
-
-    :::image type="content" source="media/cluster/create-cluster-atc-provide-network.png" alt-text="Create cluster wizard - Provide network details" lightbox="media/cluster/create-cluster-atc-provide-network.png":::
-
-1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
-
-### Manually configure host networking
-
-Follow these steps to manually configure host networking. If you selected the option to use Network ATC to configure host networking, skip this section and follow the steps in [Use Network ATC to deploy and manage networking (Recommended)](#use-network-atc-to-deploy-and-manage-networking-recommended) instead.
-
-> [!NOTE]
-> If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
-
-1. Select **Next: Networking**.
-1. On **2.1 Check network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
-
-1. On **2.2 Select management adapters**, select one or two management adapters to use for each server. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it's excluded from the rest of the wizard workflow.
-
-    :::image type="content" source="media/cluster/create-cluster-management-adapters.png" alt-text="Create cluster wizard - Select management adapters" lightbox="media/cluster/create-cluster-management-adapters.png":::
-
-    Management adapters have two configuration options:
-
-    - **One physical network adapter for management**. For this option, both DHCP or static IP address assignment is supported.
-
-    - **Two physical network adapters teamed for management**. When a pair of adapters is teamed, only static IP address assignment is supported. If the selected adapters use DHCP addressing (either for one or both), the DHCP IP addresses would be converted to static IP addresses before virtual switch creation.
-
-    By using teamed adapters, you have a single connection to multiple switches but only use a single IP address. Load-balancing becomes available and fault-tolerance is instant instead of waiting for DNS records to update.
-
-    Now do the following for each server:
-
-    - Select the **Description** checkbox. Note that all adapters are selected and that the wizard may offer a recommendation for you.
-    - Clear the checkboxes for those adapters you don't want used for cluster management.
-
-    > [!NOTE]
-    > You can use 1 Gb adapters as management adapters, but we recommend using 10 Gb or faster adapters for carrying storage and workload (VM) traffic.
-
-1. When changes have been made, click **Apply and test**.
-1. Under **Define networks**, make sure each network adapter for each server has a unique static IP address, a subnet mask, and a VLAN ID. Hover over each table element and enter or change values as needed. When finished, click **Apply and test**.
-
-    > [!NOTE]
-    > To support VLAN ID configuration for the cluster, all networks adapters on all servers must support the VLANID property.
-
-    > [!NOTE]
-    > We recommend using separate subnets in switchless deployments. For more information on switchless connections, see [Using switchless](../concepts/physical-network-requirements.md#using-switchless).
-
-1. Wait until the **Status** column shows **Passed** for each server, then click **Next**. This step verifies network connectivity between all adapters with the same subnet and VLAN ID. The provided IP addresses are transferred from the physical adapter to the virtual adapters once the virtual switches are created in the next step. It may take several minutes to complete depending on the number of adapters configured.
-
-1. Under **2.3 Virtual switch**, select one of the following options as applicable. Depending on how many network adapters there are, not all options may be available:
-
-    - **Skip virtual switch creation** - choose if you want set up virtual switches later.
-    - **Create one virtual switch for compute and storage together** - choose if you want to use the same virtual switch for your VMs and Storage Spaces Direct. This is the "converged" option.
-    - **Create one virtual switch for compute only** - choose if you want to use a virtual switch for your VMs only.
-    - **Create two virtual switches** - choose if you want a dedicated virtual switch each for VMs and for Storage Spaces Direct.
-
-        > [!NOTE]
-        > If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
-
-        :::image type="content" source="media/cluster/create-cluster-virtual-switches.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/cluster/create-cluster-virtual-switches.png":::
-
-    The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
-
-    | Option | 1-2 adapters | 3+ adapters | teamed adapters |
-    | :------------- | :--------- |:--------| :---------|
-    | single switch (compute + storage) | enabled | enabled  | not supported |
-    | single switch (compute only) | not supported| enabled | enabled |
-    | two switches | not supported | enabled | enabled |
-
-1. Change the name of a switch and other configuration settings as needed, then click **Apply and test**. The **Status** column should show **Passed** for each server after the virtual switches have been created.
-
-1. Step **2.4 RDMA** is optional. If you're using RDMA, select the **Configure RDMA (Recommended)** checkbox and click **Next**.
-
-    :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
-
-    For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements.md#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirements.md).
-
-1. Select **Advanced**, then select the **Data Center Bridging (DCB)** checkbox.
-
-1. Under **Cluster heartbeat**, assign a priority level and a bandwidth reservation percentage.
-
-1. Under **Storage**, assign a priority level and a bandwidth reservation percentage.
-
-1. When finished, select **Apply changes** and click **Next**.
-
-1. On **2.5 Define networks**, review and edit the Name, IP address, Subnet mask, VLAN ID, and Default gateway fields for each adapter listed.
-
-    :::image type="content" source="media/cluster/create-cluster-define-networks.png" alt-text="Create cluster wizard - Define networks" lightbox="media/cluster/create-cluster-define-networks.png":::
-
-1. When finished, click **Apply and test**. You may need to **Retry connectivity test** if status is not OK for an adapter.
-1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).-->
 
 ## Step 3: Clustering
 
