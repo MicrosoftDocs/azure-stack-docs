@@ -34,9 +34,9 @@ Here's the workflow for creating a cluster in Windows Admin Center:
 
 After you're done creating a cluster in the Create Cluster wizard, complete these post cluster creation steps:
 
-- [Register with Azure](register-with-azure.md). Your cluster is not fully supported until your registration is active.
 - [Set up a cluster witness](../manage/witness.md). This is highly recommended for all clusters with at least two nodes.
-- [Create volumes](../manage/create-volumes.md). This also sets up replication between sites if you're creating a stretched cluster.
+- [Register with Azure](register-with-azure.md). Your cluster is not fully supported until your registration is active.
+- [Validate an Azure Stack HCI cluster](validate.md). Your cluster is ready to work in a production environment after completing this step.
 
 ## Prerequisites
 
