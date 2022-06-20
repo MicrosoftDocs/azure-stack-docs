@@ -1,6 +1,6 @@
 ---
 title: Invoke-AksHciRotateCACertificate for AKS on Azure Stack HCI and Windows Server
-description: The Invoke-AksHciRotateCACertificate PowerShell command rotates the Cloudagent CA certificates.
+description: The Invoke-AksHciRotateCACertificate PowerShell command rotates the cloud agent CA certificates.
 author: sethmanheim
 ms.topic: reference
 ms.date: 6/16/2022
@@ -14,7 +14,7 @@ ms.reviewer: jeguan
 
 ## Synopsis
 
-Rotates the Cloudagent CA certificates.
+Rotates the cloud agent CA certificates.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ Invoke-AksHciRotateCACertificate
 
 ## Description
 
-Rotates the Cloudagent CA certificates. **This command will cause some service downtime and should be used with caution.**
+Rotates the cloud agent CA certificates. **This command will cause some service downtime and should be used with caution.**
 
 ## Examples
 
