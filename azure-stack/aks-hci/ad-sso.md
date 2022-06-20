@@ -8,7 +8,7 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
 
-# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials
+# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
 # Keyword: secure connection to Kubernetes API server
 
 ---
