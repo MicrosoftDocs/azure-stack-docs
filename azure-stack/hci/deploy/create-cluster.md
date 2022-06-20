@@ -353,4 +353,4 @@ If Network Controller deployment fails, do the following before you try this aga
 
 To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
-> [Set up a witness](../manage/witness.md)
+> [Set up a cluster witness](../manage/witness.md)
