@@ -14,7 +14,7 @@ ms.reviewer: jeguan
 
 ## Synopsis
 
-Rotates the the Cloudagent CA certificates.
+Rotates the Cloudagent CA certificates.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ Invoke-AksHciRotateCACertificate
 
 ## Description
 
-Rotates the the Cloudagent CA certificates. **This command will cause some service downtime and should be used with caution.**
+Rotates the Cloudagent CA certificates. **This command will cause some service downtime and should be used with caution.**
 
 ## Examples
 

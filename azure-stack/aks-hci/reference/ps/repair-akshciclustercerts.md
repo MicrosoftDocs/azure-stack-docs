@@ -40,7 +40,7 @@ Troubleshoots and fixes errors related to expired certificates for Kubernetes bu
 
 ## Examples
 
-### To fix cloudagent related certs, if the target cluster loses communication with the cloud agent
+### To fix cloud agent related certs, if the target cluster loses communication with the cloud agent
 
 ```powershell
 Repair-AksHciClusterCerts -name mycluster -fixCloudCredentials
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 
 ### -fixCloudCredentials
 
-Use this flag if the workload cluster loses communication with the cloudagent.
+Use this flag if the workload cluster loses communication with the cloud agent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

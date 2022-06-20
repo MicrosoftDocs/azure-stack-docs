@@ -36,7 +36,7 @@ Rotates the tokens and certificates of all clients in the workload cluster.
 
 ## Examples
 
-### To fix cloudagent related certs, if the target cluster loses communication with the cloud agent
+### To fix cloud agent related certs, if the target cluster loses communication with the cloud agent
 
 ```PowerShell
 Update-AksHciClusterCertificates -name mycluster -fixCloudCredentials
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 
 ### -fixCloudCredentials
 
-Reprovisions tokens for cluster pods that communicate with MOC. Use this flag if the workload cluster loses communication with the cloudagent.
+Reprovisions tokens for cluster pods that communicate with MOC. Use this flag if the workload cluster loses communication with the cloud agent.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
