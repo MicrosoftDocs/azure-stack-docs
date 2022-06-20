@@ -255,6 +255,8 @@ Follow these steps to manually configure host networking. If you selected the op
 1. When finished, click **Apply and test**. You may need to **Retry connectivity test** if status is not OK for an adapter.
 1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
 
+---
+
 <!--### Use Network ATC to deploy and manage networking (Recommended)
 
 Follow these steps to configure host networking using Network ATC. This is the recommended option for configuring host networking. For more information about Network ATC, see [Network ATC overview](../concepts/network-atc-overview.md). If you selected the option to manually configure host networking, skip this section and follow the steps in [Manually configure host networking](#manually-configure-host-networking) instead.
