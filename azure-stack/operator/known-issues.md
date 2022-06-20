@@ -35,11 +35,11 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 
 ::: moniker range="azs-2206"
-## Update
+<!-- ## Update -->
 
 <!-- ## Networking -->
 
-## Compute
+<!-- ## Compute -->
 
 ## Alerts
 
@@ -48,7 +48,7 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Close this alert manually, or ignore it after the geographical region preference appears in the admin portal (as described in [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub)).
 - Occurrence: Common
 
-## Portal
+<!-- ## Portal -->
 
 <!-- ## Storage -->
 
@@ -62,7 +62,7 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ### Marketplace -->
 
-## Event Hubs
+<!-- ## Event Hubs -->
 
 ::: moniker-end
 

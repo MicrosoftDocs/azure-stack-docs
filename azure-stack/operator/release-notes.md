@@ -73,9 +73,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - European Union-based customers can now choose to have all their data stored and processed inside the European Union boundary. For more information, see [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub).
 
-### Improvements
-
-- TBD
+<!-- ### Improvements -->
 
 ### Changes
 
