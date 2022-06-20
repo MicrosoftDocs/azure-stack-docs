@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/18/2022
+ms.date: 06/20/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -40,6 +40,13 @@ To access known issues for a different version, use the version selector dropdow
 <!-- ## Networking -->
 
 ## Compute
+
+## Alerts
+
+- Applicable: This issue applies to release 2206.
+- Cause: The following alert asks you to make a choice for Schrems II compliance: **Geographical region not provided**. The alert remains active for up to one week, even after the choice is made.
+- Remediation: Close this alert manually, or ignore it after the geographical region preference appears in the admin portal (as described in [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub)).
+- Occurrence: Common
 
 ## Portal
 
