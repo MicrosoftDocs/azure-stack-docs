@@ -175,7 +175,6 @@ Follow these steps to manually configure host networking.
 > [!NOTE]
 > If you see errors listed during any networking or virtual switch steps, select **Apply and test** again.
 
-1. Select **Next: Networking**.
 1. On **2.1 Check network adapters**, wait until green checkboxes appear next to each adapter, then select **Next**.
 
 1. On **2.2 Select management adapters**, select one or two management adapters to use for each server. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it's excluded from the rest of the wizard workflow.
