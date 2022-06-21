@@ -48,7 +48,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    ```
 
 5. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
-6. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers. 
+6. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers.
 
    Here's an example:
 
@@ -64,9 +64,9 @@ To install updates in Windows Admin Center, use Server Manager > Updates, PowerS
 
 You can add servers to your single-node cluster, also known as scaling out, though there are some manual steps you must take to properly configure Storage Spaces Direct fault domains (`FaultDomainAwarenessDefault`) in the process. These steps aren't present when adding servers to clusters with two or more servers.
 
-1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md)
-2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md)
-3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
+1. Validate the cluster by specifying the existing server and the new server: [Validate an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../deploy/validate.md).
+2. If cluster validation was successful, add the new server to the cluster: [Add or remove servers for an Azure Stack HCI cluster - Azure Stack HCI | Microsoft Docs](../manage/add-cluster.md).
+3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`.
 
    ```powershell
    Set-Storagepool -Friendlyname S2D* -FaultDomainAwarenessDefault StorageScaleUnit
@@ -79,24 +79,24 @@ You can add servers to your single-node cluster, also known as scaling out, thou
       volumes you create in Windows Admin Center or PowerShell will use `StorageScaleUnit` as the fault domain 
       setting and will have a two-way mirror resiliency setting.
 
-4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`
+4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`.
 
    ```powershell
    Stop-ClusterPerformanceHistory -DeleteHistory
    ```
 
-5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
+5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`.
 
    ```powershell
    Start-ClusterPerformanceHistory
    ```
 
 6. To change the fault domain on existing volumes after scale-out, do the following:
-    1. Create a new volume that's thinly provisioned and has the same size as the old volume  
-    1. Migrate all VMs and data from old volume to new volume.
-    1. Delete the old volume
+    1. Create a new volume that's thinly provisioned and has the same size as the old volume.
+    2. Migrate all VMs and data from old volume to new volume.
+    3. Delete the old volume.
 
-That completes the process of adding a server.
+7. [Set up a cluster witness](../manage/witness.md).
 
 ## Next steps
 

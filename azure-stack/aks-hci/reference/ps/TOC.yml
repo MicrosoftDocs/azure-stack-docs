@@ -62,6 +62,8 @@
     href: install-akshcigmsawebhook.md
   - name: Install-AksHciMonitoring
     href: install-akshcimonitoring.md
+  - name: Invoke-AksHciRotateCACertificate
+    href: invoke-akshcirotatecacertificate.md
   - name: New-AksHciAutoScalerProfile 
     href: new-akshciautoscalerprofile.md
   - name: New-AksHciCluster
@@ -122,5 +124,9 @@
     href: uninstall-akshcimonitoring.md
   - name: Update-AksHci
     href: update-akshci.md
+  - name: Update-AksHciCertificates
+    href: update-akshcicertificates.md
   - name: Update-AksHciCluster
     href: update-akshcicluster.md
+  - name: Update-AksHciClusterCertificates
+    href: update-akshciclustercertificates.md
