@@ -36,7 +36,7 @@ For info on licensing Window Server VMs running on an Azure Stack HCI cluster, s
 
 Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
-:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
+:::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
 Use Windows Server for:
 
@@ -107,17 +107,17 @@ The following table compares the management options for Azure Stack HCI and Wind
 
 | Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
-| Desktop experience | No | Yes |
 | Windows Admin Center | Yes | Yes |
 | Microsoft System Center | Yes (sold separately) | Yes (sold separately) |
 | Third-party tools | Yes | Yes |
-| Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
-| Cluster integrates with Azure Resource Manager | Yes | No |
+| Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>1</sup> |
-| Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
 | Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>1</sup> |
+| Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
+| Cluster integrates with Azure Resource Manager | Yes | No |
 | Azure Arc-enabled VM management (preview)| Yes | No |
+| Desktop experience | No | No |
 
 <sup>1</sup> This requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
