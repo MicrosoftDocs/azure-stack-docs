@@ -96,7 +96,7 @@ You can add servers to your single-node cluster, also known as scaling out, thou
     1. Migrate all VMs and data from old volume to new volume.
     1. Delete the old volume
 
-That completes the process of adding a server.
+7. [Set up a cluster witness](../manage/witness.md)
 
 ## Next steps
 
