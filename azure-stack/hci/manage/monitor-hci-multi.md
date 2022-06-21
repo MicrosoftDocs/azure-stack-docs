@@ -14,7 +14,7 @@ ms.date: 05/13/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are [enrolled in monitoring](monitor-azure-portal.md). This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization.
+Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are [enrolled in monitoring](/azure-stack/hci/manage/monitor-hci-single). This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization.
 
 Azure Stack HCI Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Azure Stack HCI Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
 
@@ -39,8 +39,8 @@ Azure Stack HCI Insights offers three primary benefits:
 To use Azure Stack HCI Insights, make sure you've completed the following:
 
 1. Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
-2. [Enable Log Analytics](monitor-azure-portal.md#configure-the-log-analytics-agent-extension) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
-3. [Enable Insights](monitor-azure-portal.md#enable-monitoring-visualizations) to allow Azure Monitor to start collecting the events that are required for monitoring.
+2. [Enable Log Analytics](/azure-stack/hci/manage/monitor-hci-single#configure-the-log-analytics-agent-extension) to link the cluster to a Log Analytics workspace where the log data required for monitoring will be saved.
+3. [Enable Insights](/azure-stack/hci/manage/monitor-hci-single#enable-insights) to allow Azure Monitor to start collecting the events that are required for monitoring.
 
 ## View health, performance, and usage insights
 
@@ -446,6 +446,6 @@ For more information about the data that's collected, see [Health Service faults
 
 For related information, see:
 
-- [Configure Azure portal to monitor Azure Stack HCI clusters](monitor-azure-portal.md)
+- [Configure Azure portal to monitor Azure Stack HCI clusters](/azure-stack/hci/manage/monitor-hci-single)
 - [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
 - [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)

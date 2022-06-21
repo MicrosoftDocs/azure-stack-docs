@@ -89,7 +89,7 @@ There are several general settings that can be applied to your cluster. Here is 
 1. To select a quorum witness type, select **Witness**, then for **Witness type** select one of the following:
 
    - **Cloud witness** - to use an Azure cloud resource as witness
-   - **Disk witness** - to use a disk resource as witness (do not use for stretched clusters)
+   - **Disk witness** - to use a disk resource as witness (don't use for stretched clusters or clusters using Azure Stack HCI or Storage Spaces Direct)
    - **File share witness** - to use a file share as witness
 
         For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
@@ -154,7 +154,7 @@ To register or unregister your cluster with Azure, see [Register a cluster with 
 
 ## Remove (destroy) the cluster
 
-Before you destroy a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](manage-azure-registration.md#unregister-azure-stack-hci-by-using-windows-admin-center).
+Before you destroy a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-windows-admin-center).
 
 You use PowerShell to destroy a cluster and its resources. For more information, see [Remove (destroy) a cluster](cluster-powershell.md#remove-a-cluster) for more information.
 
