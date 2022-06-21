@@ -40,9 +40,9 @@ After you're done creating a cluster in the Create Cluster wizard, complete thes
 
 ## Prerequisites
 
-Before you run the Create Cluster wizard in Windows Admin Center, you must:
+Before you run the Create Cluster wizard in Windows Admin Center, you must complete the following prerequisites. Failure to do so will potentially cause errors when running the wizard.  
 
-- Review the hardware and related requirements in [System requirements](../concepts/system-requirements.md).
+- Review the hardware and related requirements in [System requirements](../concepts/system-requirements.md).  
 - Consult with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), and [Firewall requirements](../concepts/firewall-requirements.md). Also, determine how you'd like to configure host networking, using [Network ATC](network-atc.md) or manually.
 - Install the Azure Stack HCI operating system on each server in the cluster. See [Deploy the Azure Stack HCI operating system](operating-system.md).
 - Obtain an account that's a member of the local Administrators group on each server.
@@ -136,30 +136,20 @@ This is the recommended option for configuring host networking. For more informa
 1. The selected adapters will now display under **Adapters available on all servers**. When finished selecting and verifying adapters, click **Next**.  
 
 1. On **2.2 Define intents**, under **Intent 1**, do the following:
-    - For **Traffic types**, select a traffic type from the dropdown list. Storage traffic must be added to exactly one intent, while compute traffic can be carried by one or more intents.
+    - For **Traffic types**, select a traffic type from the dropdown list. The Management and Storage intent types may be added to exactly one intent, while the Compute intent type can be added to one or more intents.
     - For **Intent name**, enter a friendly name for the intent.
     - For **Network adapters**, select an adapter from the dropdown list.
     - (Optional) Click **Select another adapter for this traffic** if needed.
     
-    For more information and examples about network intents, see [Example intents](/deploy/network-atc#example-intents) in the Deploy host networking with Network ATC article.
+    For more information and examples about network intents, see [Example intents](../deploy/network-atc#example-intents) in the Deploy host networking with Network ATC article.
     
-1.  (Optional) After an intent is added, click **Customize network settings** to modify its network settings. 
-    1. Select the following as applicable:
-        - Traffic priority
-        - Traffic bandwidth reservation in percentage
-        - Jumbo frame size in bytes
-        - Option to enable RDMA
-        - RDMA protocol type
-
-        :::image type="content" source="media/cluster/create-cluster-atc-define-intents.png" alt-text="Create cluster wizard - Define network intents" lightbox="media/cluster/create-cluster-atc-define-intents.png":::
-
-    1. When finished, click **Save**.
+1.  (Optional) After an intent is added, click **Customize network settings** to modify its network settings. When finished, click **Save**.
 
 1. (Optional) To add another intent, select **Add an intent**, and repeat step 5 and optionally step 6.
 
 1. When finished defining network intents, select **Next**.
 
-1. On **2.3: Provide network details**, for each storage traffic adapter listed, enter the following or use the default values:
+1. On **2.3: Provide network details**, for each storage traffic adapter listed, enter the following or use the default values (recommended):
     - Subnet mask/CIDR
     - VLAN ID
     - IP address
@@ -268,7 +258,7 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
     > [!NOTE]
     > The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
 
-1. On **3.2 Deploy host networking settings**, the status of Network ATC intents that you defined earlier will be retrieved. Click **Deploy** to apply the Network ATC intents you defined earlier. This may take a few minutes to complete. When finished, click **Next**.
+1. On **3.2 Deploy host networking settings**, click **Deploy** to apply the Network ATC intents you defined earlier. This may take a few minutes to complete. When finished, click **Next**.
 
 1. On **3.3 Validate cluster**, select **Validate**. Validation may take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production. If you experience issues with cluster validation, see [Troubleshoot cluster validation reporting](../manage/validate-qos.md).
 
