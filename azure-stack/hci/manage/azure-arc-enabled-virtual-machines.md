@@ -64,7 +64,7 @@ Deploying Azure Arc Resource Bridge requires the following:
   - To install Azure CLI on each cluster node, use RDP connection.
   - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
-  - At least 50GB of space in C:\.
+  - A cluster shared volume with at least 50GB of space.
   - At least 4 vCPUs
   - At least 8GB of memory
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
