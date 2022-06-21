@@ -41,8 +41,8 @@ The table below gives an overview of the cluster quorum outcomes per scenario:
 - If you have two nodes, a witness is **required**.
 - If you have three or four nodes, witness is **strongly recommended**.
 - If you have five nodes or more, a witness isn't needed and doesn't provide additional resiliency.
-- If you have Internet access, use a **[cloud witness](../manage/witness.md)**
-- If you're in an IT environment with other machines and file shares, use a file share witness
+- If you have internet access, use a **[cloud witness](../manage/witness.md)**.
+- If you're in an IT environment with other machines and file shares, use a file share witness.
 
 ## How cluster quorum works
 
