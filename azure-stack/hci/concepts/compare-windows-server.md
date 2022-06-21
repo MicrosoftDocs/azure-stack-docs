@@ -28,11 +28,13 @@ Use Azure Stack HCI for:
 - All the benefits of hyperconverged infrastructure: a simpler, more consolidated datacenter architecture with high-speed storage and networking.
 
   >[!NOTE]
-  >Because Azure Stack HCI is intended to be used as a Hyper-V virtualization host for a modern, hyperconverged architecture, it does not include guest rights. Because of this, Azure Stack HCI is only licensed to run a small number of server roles directly; any other roles must run inside of VMs.
+  > When using Azure Stack HCI, run all of your workloads inside virtual machines or containers, not directly on the cluster. Azure Stack HCI isn't licensed for clients to connect directly to it using Client Access Licenses (CALs).
+
+For info on licensing Window Server VMs running on an Azure Stack HCI cluster, see Activate Windows Server VMs.
 
 ## When to use Windows Server
 
-Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, including guest rights. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
+Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
 :::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server 2019 over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
@@ -67,7 +69,7 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Attribute | Azure Stack HCI | Windows Server |
 | ------------- | ------------------- | ----------------------- |
 | Azure Kubernetes Service (AKS)| Yes | Yes |
-| Azure Arc-Enabled Paas Services | Yes | Yes |
+| Azure Arc-Enabled PaaS Services | Yes | Yes |
 | Windows Server 2022 Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
 | Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No (1)|
@@ -83,17 +85,17 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Hyper-V | Yes | Yes |
 | Storage Spaces Direct | Yes | Yes |
 | Software-Defined Networking | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct | Yes | No |
 | Adjustable storage repair speed | Yes | Yes|
 | Secured-core Server| Yes | Yes |
 | Stronger, faster network encryption | Yes | Yes |
+| 4-5x faster Storage Spaces repairs | Yes | Yes |
+| Stretch clustering for disaster recovery with Storage Spaces Direct | Yes | No |
 | High availability for GPU workload | Yes | No |
 | Restart up to 10x faster with kernel-only restarts | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
 | Single-node clusters with Storage Spaces Direct | Yes | No |
 | Storage Spaces Direct thin provisioning | Yes | No |
 | Dynamic processor compatibility mode| Yes | No |
-| 4-5x faster Storage Spaces repairs | Yes | Yes |
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
 
