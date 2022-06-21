@@ -1,10 +1,10 @@
 ---
 title: Get-AksHciLogs for AKS on Azure Stack HCI and Windows Server
-author: mattbriggs
+author: sethmanheim
 description: The Get-AksHciLogs PowerShell command creates a zipped folder with logs from all your pods.
 ms.topic: reference
 ms.date: 04/13/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

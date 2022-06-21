@@ -4,8 +4,8 @@ description: In this tutorial, learn how to update an existing application deplo
 services: container-service
 ms.topic: tutorial
 ms.date: 05/11/2022
-author: mattbriggs
-ms.author: mabrigg
+author: sethmanheim
+ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 

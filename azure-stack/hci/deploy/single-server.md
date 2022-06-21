@@ -1,7 +1,7 @@
 ---
 title:  Deploy Azure Stack HCI on a single server
 description: This article describes Azure Stack HCI OS configuration on a single server
-author: robess
+author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: kerimhanif
@@ -28,8 +28,14 @@ Note that you can't yet use Windows Admin Center to install Azure Stack HCI on a
 Here are the steps to install the Azure Stack HCI OS on a single server, create the single-node cluster, register the cluster with Azure, and create volumes.
 
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
-1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
+2. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
+3. Install the required roles and features using the following command.
+
+   ```powershell
+   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+   ```
+
+4. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
 
    Here's an example of creating the cluster and then enabling Storage Spaces Direct while disabling the storage cache:
 
@@ -41,13 +47,13 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
    Enable-ClusterStorageSpacesDirect -CacheState Disabled 
    ```
 
-1. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
-1. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers. 
+5. Use [PowerShell](../deploy/register-with-azure.md#register-a-cluster-using-powershell) or [Windows Admin Center](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) to register the cluster.
+6. [Create volumes](../manage/create-volumes.md#create-volumes-using-windows-powershell) with PowerShell without any storage tiers. 
 
    Here's an example:
 
    ```powershell
-   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin"
+   New-Volume -FriendlyName "Volume1" -Size 1TB -ProvisioningType Thin
    ```
 
 ## Updating single-node clusters
@@ -63,7 +69,7 @@ You can add servers to your single-node cluster, also known as scaling out, thou
 3. Change the storage pool's fault domain awareness default parameter from `PhysicalDisk` to `StorageScaleUnit`
 
    ```powershell
-   Set-Storagepool -Friendlyname Poolname - FaultDomainAwarenessDefault StorageScaleUnit
+   Set-Storagepool -Friendlyname S2D* -FaultDomainAwarenessDefault StorageScaleUnit
    ```
 
    > [!NOTE]
@@ -74,10 +80,15 @@ You can add servers to your single-node cluster, also known as scaling out, thou
       setting and will have a two-way mirror resiliency setting.
 
 4. Delete the existing cluster performance history volume as its `FaultDomainAwarenessDefault` is set to `PhysicalDisk`
+
+   ```powershell
+   Stop-ClusterPerformanceHistory -DeleteHistory
+   ```
+
 5. Run the following command to recreate the cluster performance history volume, the `FaultDomainAwarenessDefault` should be automatically set to `StorageScaleUnit`
 
    ```powershell
-   Enable-ClusterS2D -Verbose 
+   Start-ClusterPerformanceHistory
    ```
 
 6. To change the fault domain on existing volumes after scale-out, do the following:

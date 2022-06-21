@@ -4,10 +4,10 @@ description: In this tutorial, you will learn how to create an Azure Container R
 services: container-service
 ms.topic: tutorial
 ms.date: 05/10/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 
 # Intent: As an IT Pro, I need step-by-step instructions on how to create an Azure Container Registry instance so I can  upload an application container image.
 # Keyword: container registry container images

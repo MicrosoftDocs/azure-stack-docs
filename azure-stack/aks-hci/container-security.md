@@ -1,17 +1,22 @@
 ---
 title: Concepts about securing containers in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn some of the methods you can use to implement security for containers in Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 12/30/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
+# Intent: As an IT Pro, I want to learn how to secure containers in my AKS deployment.
+# Keyword: container security
+
 ---
 
 # Container security
 
-This article covers some of the ways you can secure containers and avoid introducing security vulnerabilities. Containers are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model. 
+This article describes some of the ways you can secure containers and avoid introducing security vulnerabilities. *Containers* are an effective way to package and deploy applications. They provide operational and security benefits because applications and services are separated within an environment. Containers also help to reduce the effects of system-wide failures because of their abstraction, which ensures uptime and prevents attacks that could compromise applications or services. 
+
+Containers typically run on an abstracted layer on top of the host operating system, and the abstraction offers some barrier of separation and the opportunity to apply a layered defense model. 
 
 You can also set up continuous container security by securing the container pipeline, the application, and the container deployment environment. Examples for implementing container security are described in this topic.
 

@@ -1,10 +1,10 @@
 ---
 title: disable-akshcipreview
-author: mattbriggs
+author: sethmanheim
 description: The Disable-AksHciPreview PowerShell command enables the ability to revert from a preview channel back to the stable channel.
 ms.topic: reference
 ms.date: 09/08/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mamezgeb
 

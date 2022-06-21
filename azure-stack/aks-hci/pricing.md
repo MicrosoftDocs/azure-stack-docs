@@ -1,10 +1,10 @@
 ---
 title: Pricing for  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn about the pricing for  Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-author: mattbriggs
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 05/13/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: mamezgeb
 
