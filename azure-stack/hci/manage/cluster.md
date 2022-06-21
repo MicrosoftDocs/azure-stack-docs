@@ -89,7 +89,7 @@ There are several general settings that can be applied to your cluster. Here is 
 1. To select a quorum witness type, select **Witness**, then for **Witness type** select one of the following:
 
    - **Cloud witness** - to use an Azure cloud resource as witness
-   - **Disk witness** - to use a disk resource as witness (do not use for stretched clusters)
+   - **Disk witness** - to use a disk resource as witness (don't use for stretched clusters or clusters using Azure Stack HCI or Storage Spaces Direct)
    - **File share witness** - to use a file share as witness
 
         For detailed information on how to set up a witness, see [Set up a cluster witness](witness.md). Also see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
