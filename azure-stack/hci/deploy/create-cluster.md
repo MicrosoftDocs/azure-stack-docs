@@ -141,7 +141,7 @@ This is the recommended option for configuring host networking. For more informa
     - For **Network adapters**, select an adapter from the dropdown list.
     - (Optional) Click **Select another adapter for this traffic** if needed.
     
-    For more information and examples about network intents, see [Example intents](../deploy/network-atc#example-intents) in the Deploy host networking with Network ATC article.
+    For more information and examples about network intents, see [Example intents](network-atc#example-intents) in the Deploy host networking with Network ATC article.
     
 1.  (Optional) After an intent is added, click **Customize network settings** to modify its network settings. When finished, click **Save**.
 
