@@ -40,7 +40,10 @@ After you're done creating a cluster in the Create Cluster wizard, complete thes
 
 ## Prerequisites
 
-Before you run the Create Cluster wizard in Windows Admin Center, you must complete the following prerequisites. Failure to do so will potentially cause errors when running the wizard.  
+Before you run the Create Cluster wizard in Windows Admin Center, you must complete the following prerequisites.
+
+> [!WARNING]
+> Running the wizard prior to completing the prerequisites will potentially result in a failure.
 
 - Review the hardware and related requirements in [System requirements](../concepts/system-requirements.md).  
 - Consult with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), and [Firewall requirements](../concepts/firewall-requirements.md). Also, determine how you'd like to configure host networking, using [Network ATC](network-atc.md) or manually.
