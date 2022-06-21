@@ -107,7 +107,7 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 
 Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure stack Hub customers. See [Answering Europe’s Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
 
-Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
+Starting with version 2206 you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
 
 > [!IMPORTANT]
 > **Geographical region not provided.** Unable to detect geographical information. You must provide your device's geographical information to be in compliance with the Schrems II ruling.
