@@ -781,13 +781,13 @@
   - name: Reference
     items:
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0&preserve-view=true
+      href: /powershell/azure/azure-stack/overview
     - name: Alerts aka.ms link reference
       href: operator/aks-refer-table-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: REST API Browser
       href: /rest/api/
     - name: Azure CLI
-      href: /cli/azure/reference-index?view=azure-cli-2017-03-09-profile&preserve-view=true
+      href: /cli/azure/reference-index
   - name: Resources
     items:
     - name: Azure Stack Documentation feedback
