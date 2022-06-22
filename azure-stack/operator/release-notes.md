@@ -78,6 +78,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### Changes
 
 - SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrading to ASH 2206.
+- This release provides support for Azure Stack Hub root certificate rotation. Previously, secret rotation did not rotate the root. To rotate the root certificate, you must [perform internal secret rotation](azure-stack-rotate-secrets.md#rotate-internal-secrets) after installing the update. Otherwise, your stamp might become unrecoverable.
 
 ### Fixes
 
