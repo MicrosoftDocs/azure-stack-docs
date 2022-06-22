@@ -110,7 +110,9 @@ Microsoft has announced its intention to surpass existing data storage commitmen
 Starting with version 2206 you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
 
 > [!IMPORTANT]
-> **Geographical region not provided.** Unable to detect geographical information. You must provide your device's geographical information to be in compliance with the Schrems II ruling.
+> **Geographical Region Not Provided.** Unable to detect geographical information. You must provide your device's geographical information to be in compliance with the Schrems II ruling.
+
+![Image showing Azure Stack Hub Admin portal Dashboard Alerts window with the Geographical Region Not Provided alert listed.](media/geo-region-alert.png)
 
 You can resolve this alert for your existing Azure Stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
 
@@ -124,7 +126,9 @@ You can resolve this alert for your existing Azure Stack Hub deployment in one o
   Set-DataResidencyLocation -Europe:$false
   ```
 
-After you resolve this alert, you can verify your geographical region preference in the Admin portal.
+After you resolve this alert, you can verify your geographical region preference in the Admin portal Properties window.
+
+![Image showing Azure Stack Hub Admin portal Properties window with the Data Geolocation property now set to Europe.](media/data-geolocation-set.png)
 
 New Azure stack hub deployments can set geographical region during set up and deployment.
 ::: moniker-end
