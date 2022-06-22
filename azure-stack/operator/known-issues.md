@@ -23,7 +23,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ::: moniker range=">=azs-2102"
 > [!IMPORTANT]  
-> Review this section before applying the update.
+> Review this article before applying the update.
 ::: moniker-end
 ::: moniker range="<azs-2102"
 > [!IMPORTANT]  
