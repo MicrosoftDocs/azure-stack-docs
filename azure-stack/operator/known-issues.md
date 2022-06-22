@@ -45,7 +45,8 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to release 2206.
 - Cause: The alert **Geographical region not provided** is displayed, and asks you to make a choice for Schrems II compliance.
-- Remediation: Close this alert manually, or ignore it after the geographical region preference appears in the admin portal (as described in [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub)). The alert remains active for up to one week, even after the choice is made.
+- Remediation: You can run the following PowerShell cmdlet to set geographical preference: `Set-DataResidencyLocation -Europe:$true or $false`. The residency location for the data will be updated and all data will be stored and processed in the EU.
+  Close this alert manually, or ignore it after the geographical region preference appears in the admin portal (as described in [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub)). The alert remains active for up to one week, even after the choice is made.
 - Occurrence: Common
 
 <!-- ## Portal -->
