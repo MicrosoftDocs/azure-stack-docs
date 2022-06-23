@@ -95,7 +95,7 @@ Invoke-AzResourceAction `
 As a user, you provide consent to the operator to create console access for a specific VM.
 
 1. As a user, open PowerShell, sign in to your subscription, and [connect to Azure Stack Hub as described here](azure-stack-powershell-configure-user.md).
-1. Run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
+2. Run the following script. You must replace the subscription ID, resource group, and VM name in order to construct the **VMResourceID**:
 
    ### [AzureRM modules](#tab/azurerm1)
 
@@ -141,7 +141,7 @@ As a user, you provide consent to the operator to create console access for a sp
 
    ---
 
-1. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
+3. The script returns the emergency recovery console name (ERCS), which the tenant provides to the operator, along with the **VMResourceID**.
 
 ## Operator enables remote desktop access to ERCS VMs
 
