@@ -119,7 +119,6 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure Arc-enabled VM management (preview)| Yes | No |
 | Desktop experience | No | Yes |
 
-(1) Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
 
 ## Compare product pricing
 
