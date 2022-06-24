@@ -116,7 +116,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only |
 | Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
 | Azure portal >Azure Resource Manager integration for clusters | Yes | No |
-| Azure Arc-enabled VM management (preview)| Yes | No |
+| Azure portal > Arc-enabled VM management (preview) | Yes | No |
 | Desktop experience | No | Yes |
 
 
