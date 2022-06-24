@@ -105,7 +105,7 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 ::: moniker range=">=azs-2206"
 ### EU Schrems II initiative for Azure Stack Hub
 
-Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure stack Hub customers. See [Answering Europe’s Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
+Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure Stack Hub customers. See [Answering Europe’s Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
 
 Starting with version 2206 you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
 
@@ -130,7 +130,7 @@ After you resolve this alert, you can verify your geographical region preference
 
 ![Image showing Azure Stack Hub Admin portal Properties window with the Data Geolocation property now set to Europe.](media/azure-stack-security-foundations/data-geolocation-set.png)
 
-New Azure stack hub deployments can set geographical region during set up and deployment.
+New Azure Stack hub deployments can set geographical region during set up and deployment.
 ::: moniker-end
 
 ## Next steps
