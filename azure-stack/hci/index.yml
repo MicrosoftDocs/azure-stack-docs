@@ -147,7 +147,7 @@ landingContent:
           - text: Register cluster with Azure
             url: deploy/register-with-azure.md
           - text: Manage cluster registration with Azure
-            url: manage/manage-azure-registration.md
+            url: /azure-stack/hci/deploy/register-with-azure
           - text: Register Windows Admin Center with Azure
             url: manage/register-windows-admin-center.md
 

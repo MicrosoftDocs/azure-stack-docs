@@ -149,21 +149,11 @@
       - name: Manage Network ATC
         href: manage/manage-network-atc.md
       - name: Update the cluster
-        href: manage/update-cluster.md
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md 
+        href: manage/update-cluster.md      
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
     - name: Monitoring
       items:
-      # - name: Monitor a single cluster (latest version)
-      #   href: manage/single-cluster.md
-      # - name: Configure Azure portal to monitor clusters (preview)
-      #   href: manage/monitor-azure-portal.md
-      # - name: Monitor multiple clusters with Azure Stack HCI Insights (latest version)
-      #   href: manage/multi-cluster.md        
-      # - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
-      #   href: manage/azure-stack-hci-insights.md
       - name: Monitor a single cluster using the Azure portal (preview)
         href: manage/monitor-hci-single.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
@@ -199,7 +189,10 @@
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
+    
       href: manage/sdn-express.md
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md 
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell

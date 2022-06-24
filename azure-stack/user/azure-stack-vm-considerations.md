@@ -41,6 +41,7 @@ Azure Stack Hub virtual machines (VMs) provide on-demand, scalable computing res
 | Nested virtualization VM sizes | Supported | Supported from release 2102 and later. |
 | Reserved VM instances | Supported | Not supported. |
 | VM deallocation | Supported | Supports VM deallocation. The guest operating system recognizes all network adapters as the same device, and maintains settings. |
+| SAP workload certification | Azure supports [SAP workload certifications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications), including HANA, NetWeaver, and others. | Azure Stack Hub hardware does not support certification of any SAP workloads. |
 
 ## VM sizes
 
