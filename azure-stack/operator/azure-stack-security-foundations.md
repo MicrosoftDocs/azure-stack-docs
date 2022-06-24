@@ -107,12 +107,9 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 
 Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure Stack Hub customers. See [Answering Europe’s Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
 
-Starting with version 2206 you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert:
+Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert.
 
-> [!IMPORTANT]
-> **Geographical Region Not Provided.** Unable to detect geographical information. You must provide your device's geographical information to be in compliance with the Schrems II ruling.
-
-![Image showing Azure Stack Hub Admin portal Dashboard Alerts window with the Geographical Region Not Provided alert listed.](media/azure-stack-security-foundations/geo-region-alert.png)
+:::image type="content" source="media/azure-stack-security-foundations/geo-region-alert.png" alt-text="Screenshot that shows Azure Stack Hub Admin portal Dashboard Alerts window with the Geographical Region Not Provided alert listed." lightbox="media/azure-stack-security-foundations/geo-region-alert.png":::
 
 You can resolve this alert for your existing Azure Stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
 
@@ -128,9 +125,9 @@ You can resolve this alert for your existing Azure Stack Hub deployment in one o
 
 After you resolve this alert, you can verify your geographical region preference in the Admin portal Properties window.
 
-![Image showing Azure Stack Hub Admin portal Properties window with the Data Geolocation property now set to Europe.](media/azure-stack-security-foundations/data-geolocation-set.png)
+:::image type="content" source="media/azure-stack-security-foundations/data-geolocation-set.png" alt-text="Screenshot that shows Azure Stack Hub Admin portal Properties window with the Data Geolocation property now set to Europe." lightbox="media/azure-stack-security-foundations/data-geolocation-set.png":::
 
-New Azure Stack hub deployments can set geographical region during set up and deployment.
+New Azure Stack hub deployments can set geographical region during set up and deployment. 
 ::: moniker-end
 
 ## Next steps
