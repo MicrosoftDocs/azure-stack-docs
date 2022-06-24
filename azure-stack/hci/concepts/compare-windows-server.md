@@ -112,14 +112,14 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Third-party tools | Yes | Yes |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Azure portal | Yes (natively) | Requires Azure Arc agent |
-| Extensions and Azure Arc-enabled host servers | Yes | Manual <sup>1</sup> |
-| Windows Admin Center for Azure Stack HCI (preview)| Yes |Manual <sup>1</sup> |
-| Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
-| Cluster integrates with Azure Resource Manager | Yes | No |
-| Azure Arc-enabled VM management (preview)| Yes | No |
-| Desktop experience | No | No |
+| Azure portal > Extensions and Arc-enabled host | Yes | Manual |
+| Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only |
+| Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
+| Azure portal >Azure Resource Manager integration for clusters | Yes | No |
+| Azure portal > Arc-enabled VM management (preview) | Yes | No |
+| Desktop experience | No | Yes |
 
-(1) Requires manually installing the Arc Connected Machine agent on every machine
+(1) Requires manually installing the Arc Connected Machine agent on every machine.
 
 ## Compare product pricing
 
