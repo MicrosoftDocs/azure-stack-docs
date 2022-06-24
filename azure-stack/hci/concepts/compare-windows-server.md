@@ -112,7 +112,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Third-party tools | Yes | Yes |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Azure portal | Yes (natively) | Requires Azure Arc agent |
-| Extensions and Azure Arc-enabled host servers | Yes | Manual |
+| Azure portal > Extensions and Arc-enabled host | Yes | Manual |
 | Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only |
 | Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
 | Azure portal >Azure Resource Manager integration for clusters | Yes | No |
