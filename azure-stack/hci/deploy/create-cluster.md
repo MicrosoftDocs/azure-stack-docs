@@ -26,11 +26,11 @@ Here's the workflow for creating a cluster in Windows Admin Center:
 1. [Complete the prerequisites](#prerequisites).
 1. [Start the Create Cluster wizard](#start-the-create-cluster-wizard).
 1. Complete the following steps in the Create Cluster wizard:
-    - [**Step 1: Get Started**](#step-1-get-started). Ensures that each server meets the prerequisites and features needed for cluster join.
-    - [**Step 2: Networking**](#step-2-networking). Assigns and configures network adapters and creates the virtual switches for each server.
-    - [**Step 3: Clustering**](#step-3-clustering). Validates the cluster is set up correctly. For stretched clusters, also sets up the two sites.
-    - [**Step 4: Storage**](#step-4-storage). Configures Storage Spaces Direct.
-    - [**Step 5: SDN**](#step-5-sdn-optional). (Optional) Sets up a Network Controller for SDN deployment.
+    1. [**Step 1: Get Started**](#step-1-get-started). Ensures that each server meets the prerequisites and features needed for cluster join.
+    1. [**Step 2: Networking**](#step-2-networking). Assigns and configures network adapters and creates the virtual switches for each server.
+    1. [**Step 3: Clustering**](#step-3-clustering). Validates the cluster is set up correctly. For stretched clusters, also sets up the two sites.
+    1. [**Step 4: Storage**](#step-4-storage). Configures Storage Spaces Direct.
+    1. [**Step 5: SDN**](#step-5-sdn-optional). (Optional) Sets up a Network Controller for SDN deployment.
 
 After you're done creating a cluster in the **Create Cluster** wizard, complete these post-cluster creation steps:
 
