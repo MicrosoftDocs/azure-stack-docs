@@ -282,11 +282,12 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
 
 1. Next assign each server to a site. You'll set up replication across sites later. When finished, click **Apply changes**.
 
+1. Select **Next: Storage** to proceed to [Step 4: Storage](#step-4-storage).
+
 ## Step 4: Storage
 
 Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
 
-1. Select **Next: Storage**.
 1. On **4.1 Clean drives**, you can optionally select **Erase drives** if it makes sense for your deployment.
 1. On **4.2 Check drives**, click the **>** icon next to each server to verify that the disks are working and connected. If all is OK, click **Next**.
 1. On **4.3 Validate storage**, click **Next**.
@@ -296,9 +297,11 @@ Step 4 of the wizard walks you through setting up Storage Spaces Direct for your
 1. Select **Go to connections list**.
 1. After a few minutes, you should see your cluster in the list. Select it to view the cluster overview page.
 
-It can take some time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
+    It can take some time for the cluster name to be replicated across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
 
-If resolving the cluster isn't successful after some time, in most cases you can substitute a server name instead of the cluster name.
+    If resolving the cluster isn't successful after some time, in most cases you can substitute a server name instead of the cluster name.
+
+1. (Optional) Select **Next: SDN** to proceed to [Step 5: SDN](#step-5-sdn-optional).
 
 ## Step 5: SDN (optional)
 
@@ -311,7 +314,6 @@ You can also deploy Network Controller using SDN Express scripts. See [Deploy an
 
 :::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
 
-1. Select **Next: SDN**.
 1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with Network Controller. You can also use the default populated name.
 1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for Network Controller. Three VMs are strongly recommended for production deployments.
