@@ -97,7 +97,6 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 | https://helm.sh/blog/get-helm-sh/ | 443 | Download agent | Used to download the Helm binaries |
 | https://storage.googleapis.com/ | 443 | Cloud init | Downloading Kubernetes binaries |
 | https://azurecliprod.blob.core.windows.net/ | 443 | Cloud init | Downloading binaries and containers |
-| https://443 | 443 | TCP | Used to support Azure Arc agents |
 | *.blob.core.windows.net | 443 | TCP | Required for downloads |
 | *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com | 80, 443 | Download agent | Downloading VHD images |
 | ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images |
