@@ -32,7 +32,7 @@ Here's the workflow for creating a cluster in Windows Admin Center:
     - [**Step 4: Storage**](#step-4-storage). Configures Storage Spaces Direct.
     - [**Step 5: SDN**](#step-5-sdn-optional). (Optional) Sets up a Network Controller for SDN deployment.
 
-After you're done creating a cluster in the Create Cluster wizard, complete these post cluster creation steps:
+After you're done creating a cluster in the **Create Cluster** wizard, complete these post-cluster creation steps:
 
 - [Set up a cluster witness](../manage/witness.md). This is highly recommended for all clusters with at least two nodes.
 - [Register with Azure](register-with-azure.md). Your cluster is not fully supported until your registration is active.
@@ -40,10 +40,10 @@ After you're done creating a cluster in the Create Cluster wizard, complete thes
 
 ## Prerequisites
 
-Before you run the Create Cluster wizard in Windows Admin Center, you must complete the following prerequisites.
+Before you run the **Create Cluster** wizard in Windows Admin Center, you must complete the following prerequisites.
 
 > [!WARNING]
-> Running the wizard prior to completing the prerequisites will potentially result in a failure.
+> Running the wizard prior to completing the prerequisites can potentially result in a failure.
 
 - Review the hardware and related requirements in [System requirements](../concepts/system-requirements.md).  
 - Consult with your networking team to identify and understand [Physical network requirements](../concepts/physical-network-requirements.md), [Host network requirements](../concepts/host-network-requirements.md), and [Firewall requirements](../concepts/firewall-requirements.md). Also, determine how you'd like to configure host networking, using [Network ATC](network-atc.md) or manually.
@@ -56,7 +56,7 @@ Before you run the Create Cluster wizard in Windows Admin Center, you must compl
 - If you're running Windows Admin Center on a server (instead of a local PC), use an account that's a member of the Gateway Administrators group, or the local Administrators group on the Windows Admin Center server.
 - Verify that your Windows Admin Center management computer is joined to the same Active Directory domain in which you'll create the cluster or a fully trusted domain. The servers that you'll cluster don't need to belong to the domain yet; they can be added to the domain during cluster creation.
 - If you're using an integrated system from a Microsoft hardware partner, install the latest version of vendor extensions on Windows Admin Center to help keep the integrated hardware and firmware up to date. To install them, open Windows Admin Center and click **Settings** (gear icon) at the upper right. Select any applicable hardware vendor extensions, and click **Install**.
-- For stretched clusters, set up your two sites beforehand in Active Directory. But not to worry, the wizard can set them up for you too. For more information about stretched clusters, see [Stretched clusters overview](../concepts/stretched-clusters.md).
+- For stretched clusters, set up your two sites beforehand in Active Directory. Alternatively, the wizard can set them up for you too. For more information about stretched clusters, see the [Stretched clusters overview](../concepts/stretched-clusters.md).
 
 ## Start the Create Cluster wizard
 
@@ -113,7 +113,7 @@ Step 1 of the wizard walks you through making sure all prerequisites are met, ad
 1. On **1.7 Restart servers**, click **Restart servers** if required. Verify that each server has successfully started.
 1. On **1.8 Choose host networking**, select one of the following:
     - **Use Network ATC to deploy and manage networking (Recommended)**. We recommend using this option for configuring host networking. Network ATC provides an intent-based approach to host network deployment and helps simplify the deployment and network configuration management for Azure Stack HCI clusters. For more information about using Network ATC, see [Network ATC](network-atc.md).
-    - **Manually configure host networking**. Select this option to manually configure host networking. For more information on configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
+    - **Manually configure host networking**. Select this option to manually configure host networking. For more information about configuring RDMA and Hyper-V host networking for Azure Stack HCI, see [Host network requirements](../concepts/host-network-requirements.md).
 1. Select **Next: Networking** to proceed to [Step 2: Networking](#step-2-networking).
 
 ## Step 2: Networking
@@ -139,14 +139,14 @@ This is the recommended option for configuring host networking. For more informa
 1. The selected adapters will now display under **Adapters available on all servers**. When finished selecting and verifying adapters, click **Next**.  
 
 1. On **2.2 Define intents**, under **Intent 1**, do the following:
-    - For **Traffic types**, select a traffic type from the dropdown list. The Management and Storage intent types may be added to exactly one intent, while the Compute intent type can be added to one or more intents.
+    - For **Traffic types**, select a traffic type from the dropdown list. You can add the **Management** and **Storage** intent types to exactly one intent, while the **Compute** intent type can be added to one or more intents.
     - For **Intent name**, enter a friendly name for the intent.
     - For **Network adapters**, select an adapter from the dropdown list.
     - (Optional) Click **Select another adapter for this traffic** if needed.
     
-    For more information and examples about network intents, see [Example intents](network-atc.md#example-intents) in the Deploy host networking with Network ATC article.
+    For more information and examples about network intents, see [Example intents](network-atc.md#example-intents) in the [Deploy host networking with Network ATC](network-atc.md) article.
     
-1.  (Optional) After an intent is added, click **Customize network settings** to modify its network settings. When finished, click **Save**.
+1.  (Optional) After an intent is added, select **Customize network settings** to modify its network settings. When finished, select **Save**.
 
 1. (Optional) To add another intent, select **Add an intent**, and repeat step 5 and optionally step 6.
 
@@ -256,14 +256,14 @@ Step 3 of the wizard makes sure everything thus far has been set up correctly, a
     - Specify one or more static addresses. The IP address must be entered in the following format: IP address/current subnet length. For example: 10.0.0.200/24.
     - Assign address dynamically with DHCP.
 
-1. When finished, select **Create cluster**. This may take a while to complete.
+1. When finished, select **Create cluster**. This can take a while to complete.
 
     > [!NOTE]
     > The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
 
-1. On **3.2 Deploy host networking settings**, click **Deploy** to apply the Network ATC intents you defined earlier. This may take a few minutes to complete. When finished, click **Next**.
+1. On **3.2 Deploy host networking settings**, select **Deploy** to apply the Network ATC intents you defined earlier. This can take a few minutes to complete. When finished, select **Next**.
 
-1. On **3.3 Validate cluster**, select **Validate**. Validation may take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production. If you experience issues with cluster validation, see [Troubleshoot cluster validation reporting](../manage/validate-qos.md).
+1. On **3.3 Validate cluster**, select **Validate**. Validation can take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production. If you experience issues with cluster validation, see [Troubleshoot cluster validation reporting](../manage/validate-qos.md).
 
     If the **Credential Security Service Provider (CredSSP)** pop-up appears, select **Yes** to temporarily enable CredSSP for the wizard to continue. Once your cluster is created and the wizard has completed, you'll disable CredSSP to increase security. If you experience issues with CredSSP, see [Troubleshoot CredSSP](../manage/troubleshoot-credssp.md).
 
