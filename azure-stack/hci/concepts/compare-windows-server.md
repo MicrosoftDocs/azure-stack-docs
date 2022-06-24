@@ -72,10 +72,10 @@ The following table compares the workloads and benefits of Azure Stack HCI and W
 | Azure Arc-Enabled PaaS Services | Yes | Yes |
 | Windows Server 2022 Azure Edition | Yes | No|
 | Windows Server subscription add-on (Dec. 2021)| Yes | No |
-| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No </sup>1</sup>|
+| Free Extended Security Updates (ESUs) for Windows Server and SQL 2008/R2 and 2012/R2 | Yes | No <sup>1</sup>|
 
-</sup>1</sup> Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
-
+ <sup>1</sup> Requires purchasing an Extended Security Updates (ESU) license key and manually applying it to every VM.
+ 
 ## Compare technical features
 
 The following table compares the technical features of Azure Stack HCI and Windows Server 2022.
@@ -112,14 +112,14 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Third-party tools | Yes | Yes |
 | Azure Backup and Azure Site Recovery support | Yes | Yes |
 | Azure portal | Yes (natively) | Requires Azure Arc agent |
-| Azure portal > Extensions and Arc-enabled host | Yes | Manual </sup>1</sup>|
-| Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only </sup>1</sup>|
+| Azure portal > Extensions and Arc-enabled host | Yes | Manual <sup>1</sup>|
+| Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
 | Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
-| Azure portal >Azure Resource Manager integration for clusters | Yes | No |
+| Azure portal > Azure Resource Manager integration for clusters | Yes | No |
 | Azure portal > Arc-enabled VM management (preview) | Yes | No |
 | Desktop experience | No | Yes |
 
-(1) Requires manually installing the Arc Connected Machine agent on every machine.
+<sup>1</sup> Requires manually installing the Arc Connected Machine agent on every machine.
 
 ## Compare product pricing
 
