@@ -43,6 +43,8 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Alerts
 
+### Region not provided
+
 - Applicable: This issue applies to release 2206.
 - Cause: The alert **Geographical region not provided** is displayed, and asks you to make a choice for Schrems II compliance.
 - Remediation: You can run the following PowerShell cmdlet to set geographical preference: `Set-DataResidencyLocation -Europe:$true or $false`. The residency location for the data will be updated and all data will be stored and processed in the EU.
