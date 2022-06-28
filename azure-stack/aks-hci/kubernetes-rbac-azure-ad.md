@@ -1,9 +1,9 @@
 ---
 title: Control access using Azure AD and Kubernetes RBAC Azure Kubernetes Service on Azure Stack HCI and Windows Server
-description: Learn how to use Azure Active Directory group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in Azure Kubernetes Service on Azure Stack HCI or Windows Server
+description: Learn how to use Azure Active Directory group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 5/12/2022
+ms.lastreviewed: 06/28/2022
 ms.reviewer: abha
 ms.topic: how-to
 ms.date: 05/12/2022
@@ -15,7 +15,7 @@ ms.date: 05/12/2022
 
 # Control access using Azure AD and Kubernetes RBAC Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: AKS on Azure Stack HCI, AKS runtime on Windows Server 2019 Datacenter and Windows Server 2022
+> Applies to: AKS on Azure Stack HCI and Windows Server
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you sign in to an AKS cluster using an Azure AD authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
 
@@ -23,15 +23,15 @@ This article shows you how to control access using Kubernetes RBAC in an AKS clu
 
 ## Prerequisites
 
-Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
+Before you set up Kubernetes RBAC using Azure AD identity, you'll need:
 
 - **An AKS cluster with AKS on Azure Stack HCI and Windows Server**
 
-    You'll need an AKS cluster with AKS on Azure Stack HCI and Windows Server. If you need to set up your cluster, you can find instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS on Azure Stack HCI or Windows Server.
+    You'll need an AKS cluster with AKS on Azure Stack HCI and Windows Server. If you need to set up your cluster, you can find instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS on Azure Stack HCI and Windows Server.
 
 - **Azure Arc connection**
 
-    You'll need to have an Azure Arc connection to your AKS cluster on Azure Stack HCI or Windows Server. For instruction on enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
+    You'll need to have an Azure Arc connection to your AKS cluster on Azure Stack HCI and Windows Server. For instruction on enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
 
 - You'll need access to the following command line tools:
 
@@ -39,11 +39,11 @@ Before your setup Kubernetes RBAC using Azure AD identity, you'll need:
 
         The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check if you have the Azure CLI, open a command line tool, and type: `az -v`.
         
-        For instructions on installing see, [How to install the Azure CLI](/cli/azure/install-azure-cli).
+        For instructions on installing see [How to install the Azure CLI](/cli/azure/install-azure-cli).
     
     - **Kubectl**
 
-      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. To check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least` v1.24.0`.
+      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. To check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least`v1.24.0`.
       
       For instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
     
