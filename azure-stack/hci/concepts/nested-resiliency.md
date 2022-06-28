@@ -2,10 +2,9 @@
 description: "Learn about nested resiliency for Storage Spaces Direct"
 title: Nested resiliency for Storage Spaces Direct
 ms.author: jgerend
-manager: dansimpspaces
 ms.topic: article
 author: cosmosdarwin
-ms.date: 06/01/2022
+ms.date: 06/28/2022
 ---
 
 # Nested resiliency for Storage Spaces Direct
@@ -24,7 +23,7 @@ Nested resiliency is a capability of [Storage Spaces Direct](/azure-stack/hci/co
 ![Red X icon.](media/nested-resiliency/unsupported.png) **You can't use nested resiliency if:**
 
 - Your cluster runs Windows Server 2016; or
-- Your cluster has three or more server nodes
+- Your cluster has only a single server node or has three or more server nodes
 
 ## Why nested resiliency
 
@@ -48,11 +47,11 @@ RAID 5+1 is an established form of distributed storage resiliency that provides 
 
 Storage Spaces Direct in Azure Stack HCI and Windows Server offers two resiliency options implemented in software, without the need for specialized RAID hardware:
 
-- **Nested two-way mirror.** Within each server, local resiliency is provided by two-way mirroring, and then further resiliency is provided by two-way mirroring between the two servers. It's essentially a four-way mirror, with two copies in each server. Nested two-way mirroring provides uncompromising performance: writes go to all copies, and reads come from any copy.
+- **Nested two-way mirror.** Within each server, local resiliency is provided by two-way mirroring, and then further resiliency is provided by two-way mirroring between the two servers. It's essentially a four-way mirror, with two copies on each server that are located on different physical disks. Nested two-way mirroring provides uncompromising performance—writes go to all copies and reads come from any copy.
 
   ![Diagram that shows nested two-way mirror.](media/nested-resiliency/nested-two-way-mirror.png)
 
-- **Nested mirror-accelerated parity.** Combine nested two-way mirroring, from above, with nested parity. Within each server, local resiliency for most data is provided by single [bitwise parity arithmetic](/azure-stack/hci/concepts/fault-tolerance#parity), except new recent writes which use two-way mirroring. Then, further resiliency for all data is provided by two-way mirroring between the servers. For more information about how mirror-accelerated parity works, see [Mirror-accelerated parity](/windows-server/storage/refs/mirror-accelerated-parity).
+- **Nested mirror-accelerated parity.** Combine nested two-way mirroring, from above, with nested parity. Within each server, local resiliency for most data is provided by single [bitwise parity arithmetic](/azure-stack/hci/concepts/fault-tolerance#parity), except new recent writes which use two-way mirroring. Then, further resiliency for all data is provided by two-way mirroring between the servers. New writes to the volume go to the mirror part with two copies on separate physical disks on each server. As the mirror part of the volume fills on each server, the oldest data is converted and saved to the parity part in the background. As a result, each server has the data for the volume either in two-way mirror or in a single parity structure. This is similar to how [mirror-accelerated parity](/windows-server/storage/refs/mirror-accelerated-parity) works—with the difference being that mirror-accelerated parity requires four servers in the cluster and storage pool and uses a different parity algorithm.
 
   ![Diagram that shows nested mirror-accelerated parity.](media/nested-resiliency/nested-mirror-accelerated-parity.png)
 
