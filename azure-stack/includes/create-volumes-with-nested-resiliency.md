@@ -59,12 +59,12 @@ Volumes that use nested resiliency appear in [Windows Admin Center](/windows-ser
 
 With its default settings, nested resiliency protects against the loss of multiple capacity drives at the same time, or one server and one capacity drive at the same time. To extend this protection to [cache drives](/azure-stack/hci/concepts/cache), there's an additional consideration: because cache drives often provide read *and write* caching for *multiple* capacity drives, the only way to ensure you can tolerate the loss of a cache drive when the other server is down is to simply not cache writes, but that impacts performance.
 
-> [!IMPORTANT]
-> You don't need to consider automatic disabling of write caching if you are using an all cache (single media type) physical system. This issue arises only with the storage bus layer (SBL) cache, which is required only if you are using HDDs.
-
 To address this scenario, Storage Spaces Direct offers the option to automatically disable write caching when one server in a two-server cluster is down, and then re-enable write caching once the server is back up. To allow routine restarts without performance impact, write caching isn't disabled until the server has been down for 30 minutes. Once write caching is disabled, the contents of the write cache is written to capacity devices. After this, the server can tolerate a failed cache device in the online server, though reads from the cache might be delayed or fail if a cache device fails.
 
-To set this behavior (optional), launch PowerShell as Administrator and run:
+> [!NOTE]
+> For an all cache (single media type) physical system, you don't need to consider automatic disabling of write caching when one server in a two-server cluster is down. You need to consider this only with the storage bus layer (SBL) cache, which is required only if you are using HDDs.
+
+(Optional) To automatically disable write caching when one server in a two-server cluster is down, launch PowerShell as Administrator and run:
 
 ```PowerShell
 Get-StorageSubSystem Cluster* | Set-StorageHealthSetting -Name "System.Storage.NestedResiliency.DisableWriteCacheOnNodeDown.Enabled" -Value "True"
