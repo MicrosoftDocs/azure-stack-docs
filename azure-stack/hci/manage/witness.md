@@ -12,11 +12,13 @@ ms.reviewer: stevenek
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
 
-Setting up a witness resource is highly recommended for all clusters with at least two nodes, and should be set up right after you create a cluster. Two-node clusters need a witness so that either server going offline does not cause the other node to become unavailable as well. Three and higher-node clusters need a witness to be able to withstand two servers failing or being offline.  
+This article describes how to set up an Azure Stack HCI or Windows Server cluster with a cluster witness in Azure (known as a cloud witness).
 
-You can either use an SMB file share as a witness or an Azure cloud witness. An Azure cloud witness is recommended, provided all server nodes in the cluster have a reliable internet connection. This article covers creating a cloud witness.
+We recommend setting up a cluster witness for clusters with two, three, or four nodes. The witness helps the cluster determine which nodes have the most up-to-date cluster data if some nodes can't communicate with the rest of the cluster. You can host the cluster witness on a file share located on another server, or use a cloud witness.
 
-Cloud witness uses the HTTPS default port 443 to establish outbound communication with the Azure Blob Storage service. Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allow lists you're using between the cluster and Azure Storage.
+To learn more about cluster witnesses and quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md). To manage the witness, including setting a file share witness, see [Change cluster settings](../manage/cluster.md#change-cluster-settings).
+
+- Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allow lists you're using between the cluster and Azure Storage. For details, see [Recommended firewall URLs](../concepts/firewall-requirements.md#recommended-firewall-urls).
 
 ## Before you begin
 
@@ -26,8 +28,6 @@ Before you can create a cloud witness, you must have an Azure account and subscr
 - If applicable, [create an additional Azure subscription](/azure/cost-management-billing/manage/create-subscription)
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
 - Make sure DNS is available for the cluster
-
-For file share witnesses, there are requirements for the file server. See [System requirements](../concepts/system-requirements.md) for more information.
 
 ## Create an Azure storage account
 
@@ -130,6 +130,10 @@ Set-ClusterQuorum -FileShareWitness "\\fileserver\share" -Credential (Get-Creden
 ```
 
 ## Next steps
+
+To perform the next management task related to this article, see:
+> [!div class="nextstepaction"]
+> [Connect Azure Stack HCI to Azure](..\deploy\register-with-azure.md)
 
 - For more information on cluster quorum, see [Understanding cluster and pool quorum on Azure Stack HCI](../concepts/quorum.md).
 

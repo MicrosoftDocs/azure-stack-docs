@@ -64,7 +64,7 @@ Deploying Azure Arc Resource Bridge requires the following:
   - To install Azure CLI on each cluster node, use RDP connection.
   - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
-  - At least 50GB of space in C:\.
+  - A cluster shared volume with at least 50GB of space.
   - At least 4 vCPUs
   - At least 8GB of memory
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
@@ -97,7 +97,6 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 | https://helm.sh/blog/get-helm-sh/ | 443 | Download agent | Used to download the Helm binaries |
 | https://storage.googleapis.com/ | 443 | Cloud init | Downloading Kubernetes binaries |
 | https://azurecliprod.blob.core.windows.net/ | 443 | Cloud init | Downloading binaries and containers |
-| https://443 | 443 | TCP | Used to support Azure Arc agents |
 | *.blob.core.windows.net | 443 | TCP | Required for downloads |
 | *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com | 80, 443 | Download agent | Downloading VHD images |
 | ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images |
