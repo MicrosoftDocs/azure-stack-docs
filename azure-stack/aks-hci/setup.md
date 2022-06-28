@@ -3,7 +3,7 @@ title: Quickstart to set up Azure Kubernetes Service on Azure Stack HCI and Wind
 description: Learn how to set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 05/13/2022
+ms.date: 06/28/2022
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: dawhite
@@ -15,7 +15,7 @@ ms.custom: mode-portal
 
 # Quickstart: Set up Azure Kubernetes Service on Azure Stack HCI and Windows Server using Windows Admin Center
 
-> Applies to: Azure Stack HCI on Windows Server
+> Applies to: Azure Stack HCI and Windows Server
 
 In this quickstart, you set up Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
 
@@ -34,7 +34,7 @@ The AKS on Azure Stack HCI and Windows Server extension for Windows Admin Center
 
 ## Set up an Azure Kubernetes Service (AKS) host
 
-You need to set up an AKS host on your Azure Stack HCI on Windows Server cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
+You need to set up an AKS host on your Azure Stack HCI and Windows Server cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
 
 [![Picture of an architecture diagram that highlights the platform services portion.](.\media\setup\aks-hci-architecture-focused.png)](.\media\setup\aks-hci-architecture-focused.png)
 
