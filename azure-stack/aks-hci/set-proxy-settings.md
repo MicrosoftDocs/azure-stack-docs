@@ -23,7 +23,7 @@ Once you've configured your deployment using the options listed below, you can [
 
 ## Before you begin
 
-Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
+Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
 ### **Proxy server configuration information:**
    - HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
