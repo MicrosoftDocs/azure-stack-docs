@@ -18,7 +18,7 @@ ms.lastreviewed: 03/18/2020
 
 # Azure Stack Hub servicing policy
 
-Azure Stack Hub follows the [Modern Lifecycle Policy](https://docs.microsoft.com/lifecycle/policies/modern). This article describes the servicing policy for Azure Stack Hub integrated systems and what you must do to [keep your system in a supported state](#keep-your-system-under-support).
+Azure Stack Hub follows the [Modern Lifecycle Policy](/lifecycle/policies/modern). This article describes the servicing policy for Azure Stack Hub integrated systems and what you must do to [keep your system in a supported state](#keep-your-system-under-support).
 
 ## Download update packages for integrated systems
 
