@@ -11,27 +11,27 @@ ms.date: 06/28/2022
 
 >Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 and Windows Server 2019
 
-Nested resiliency is a capability of [Storage Spaces Direct](/azure-stack/hci/concepts/storage-spaces-direct-overview) in Azure Stack HCI and Windows Server that enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, so users, apps, and virtual machines continue to run without disruption. This article explains how it works, provides step-by-step instructions to get started, and answers the most frequently asked questions.
+Nested resiliency is a capability of [Storage Spaces Direct](/azure-stack/hci/concepts/storage-spaces-direct-overview) in Azure Stack HCI and Windows Server. It enables a two-server cluster to withstand multiple hardware failures at the same time without loss of storage availability, so users, apps, and virtual machines continue to run without disruption. This article explains how nested resiliency works, provides step-by-step instructions to get started, and answers the most frequently asked questions.
 
 ## Before you begin
 
-![Green checkmark icon.](media/nested-resiliency/supported.png) **Consider nested resiliency if:**
+**Consider nested resiliency if:**
 
 - Your cluster runs one of these operating systems: Azure Stack HCI, version 21H2, Azure Stack HCI, version 20H2, Windows Server 2022, or Windows Server 2019; and
-- Your cluster has exactly two server nodes
+- Your cluster has exactly two server nodes.
 
-![Red X icon.](media/nested-resiliency/unsupported.png) **You can't use nested resiliency if:**
+**You can't use nested resiliency if:**
 
 - Your cluster runs Windows Server 2016; or
-- Your cluster has only a single server node or has three or more server nodes
+- Your cluster has only a single server node or has three or more server nodes.
 
 ## Why nested resiliency
 
-Volumes that use nested resiliency can **stay online and accessible even if multiple hardware failures happen at the same time**, unlike classic [two-way mirroring](/azure-stack/hci/concepts/fault-tolerance) resiliency. For example, if two drives fail at the same time, or if a server goes down and a drive fails, volumes that use nested resiliency stay online and accessible. For hyper-converged infrastructure, this increases uptime for apps and virtual machines; for file server workloads, this means users enjoy uninterrupted access to their files.
+Volumes that use nested resiliency can stay online and accessible even if multiple hardware failures happen at the same time, unlike classic [two-way mirroring](/azure-stack/hci/concepts/fault-tolerance) resiliency. For example, if two drives fail at the same time, or if a server goes down and a drive fails, volumes that use nested resiliency stay online and accessible. For hyper-converged infrastructure, this increases uptime for apps and virtual machines; for file server workloads, this means users have uninterrupted access to their files.
 
 ![Storage availability](media/nested-resiliency/storage-availability.png)
 
-The trade-off is that nested resiliency has **lower capacity efficiency than classic two-way mirroring**, meaning you get slightly less usable space. For details, see the [Capacity efficiency](#capacity-efficiency) section below.
+The trade-off is that nested resiliency has lower capacity efficiency than classic two-way mirroring, meaning you get slightly less usable space. For details, see the [Capacity efficiency](#capacity-efficiency) following section.
 
 ## How it works
 
@@ -47,11 +47,11 @@ RAID 5+1 is an established form of distributed storage resiliency that provides 
 
 Storage Spaces Direct in Azure Stack HCI and Windows Server offers two resiliency options implemented in software, without the need for specialized RAID hardware:
 
-- **Nested two-way mirror.** Within each server, local resiliency is provided by two-way mirroring, and then further resiliency is provided by two-way mirroring between the two servers. It's essentially a four-way mirror, with two copies on each server that are located on different physical disks. Nested two-way mirroring provides uncompromising performance—writes go to all copies and reads come from any copy.
+- **Nested two-way mirror.** Within each server, local resiliency is provided by two-way mirroring, and then further resiliency is provided by two-way mirroring between the two servers. It's essentially a four-way mirror, with two copies on each server that are located on different physical disks. Nested two-way mirroring provides uncompromising performance: writes go to all copies and reads come from any copy.
 
   ![Diagram that shows nested two-way mirror.](media/nested-resiliency/nested-two-way-mirror.png)
 
-- **Nested mirror-accelerated parity.** Combine nested two-way mirroring, from above, with nested parity. Within each server, local resiliency for most data is provided by single [bitwise parity arithmetic](/azure-stack/hci/concepts/fault-tolerance#parity), except new recent writes which use two-way mirroring. Then, further resiliency for all data is provided by two-way mirroring between the servers. New writes to the volume go to the mirror part with two copies on separate physical disks on each server. As the mirror part of the volume fills on each server, the oldest data is converted and saved to the parity part in the background. As a result, each server has the data for the volume either in two-way mirror or in a single parity structure. This is similar to how [mirror-accelerated parity](/windows-server/storage/refs/mirror-accelerated-parity) works—with the difference being that mirror-accelerated parity requires four servers in the cluster and storage pool and uses a different parity algorithm.
+- **Nested mirror-accelerated parity.** Combine nested two-way mirroring, from the previous image, with nested parity. Within each server, local resiliency for most data is provided by single [bitwise parity arithmetic](/azure-stack/hci/concepts/fault-tolerance#parity), except new recent writes which use two-way mirroring. Then, further resiliency for all data is provided by two-way mirroring between the servers. New writes to the volume go to the mirror part with two copies on separate physical disks on each server. As the mirror part of the volume fills on each server, the oldest data is converted and saved to the parity part in the background. As a result, each server has the data for the volume either in two-way mirror or in a single parity structure. This is similar to how [mirror-accelerated parity](/windows-server/storage/refs/mirror-accelerated-parity) works—with the difference being that mirror-accelerated parity requires four servers in the cluster and storage pool, and uses a different parity algorithm.
 
   ![Diagram that shows nested mirror-accelerated parity.](media/nested-resiliency/nested-mirror-accelerated-parity.png)
 
@@ -59,7 +59,7 @@ Storage Spaces Direct in Azure Stack HCI and Windows Server offers two resilienc
 
 Capacity efficiency is the ratio of usable space to [volume footprint](/azure-stack/hci/concepts/plan-volumes#choosing-the-size-of-volumes). It describes the capacity overhead attributable to resiliency, and depends on the resiliency option you choose. As a simple example, storing data without resiliency is 100% capacity efficient (1 TB of data takes up 1 TB of physical storage capacity), while two-way mirroring is 50% efficient (1 TB of data takes up 2 TB of physical storage capacity).
 
-- **Nested two-way mirror** writes four copies of everything, meaning to store 1 TB of data, you need 4 TB of physical storage capacity. Although its simplicity is appealing, nested two-way mirror's capacity efficiency of 25% is the lowest of any resiliency option in Storage Spaces Direct.
+- **Nested two-way mirror** writes four copies of everything. This means that to store 1 TB of data, you need 4 TB of physical storage capacity. Although its simplicity is appealing, nested two-way mirror's capacity efficiency of 25% is the lowest of any resiliency option in Storage Spaces Direct.
 
 - **Nested mirror-accelerated parity** achieves higher capacity efficiency, around 35%-40%, that depends on two factors: the number of capacity drives in each server, and the mix of mirror and parity you specify for the volume. This table provides a lookup for common configurations:
 
@@ -70,8 +70,7 @@ Capacity efficiency is the ratio of usable space to [volume footprint](/azure-st
   | 6                          | 39.1%      | 36.8%      | 34.7%      |
   | 7+                         | 40.0%      | 37.5%      | 35.3%      |
 
-  > [!NOTE]
-  > **If you're curious, here's an example of the full math.** Suppose we have six capacity drives in each of two servers, and we want to create one 100 GB volume comprised of 10 GB of mirror and 90 GB of parity. Server-local two-way mirror is 50.0% efficient, meaning the 10 GB of mirror data takes 20 GB to store on each server. Mirrored to both servers, its total footprint is 40 GB. Server-local single parity, in this case, is 5/6 = 83.3% efficient, meaning the 90 GB of parity data takes 108 GB to store on each server. Mirrored to both servers, its total footprint is 216 GB. The total footprint is thus [(10 GB / 50.0%) + (90 GB / 83.3%)] × 2 = 256 GB, for 39.1% overall capacity efficiency.
+  The following is an example of the full math. Suppose we have six capacity drives in each of two servers, and we want to create one 100 GB volume comprised of 10 GB of mirror and 90 GB of parity. Server-local two-way mirror is 50.0% efficient, meaning the 10 GB of mirror data takes 20 GB to store on each server. Mirrored to both servers, its total footprint is 40 GB. Server-local single parity, in this case, is 5/6 = 83.3% efficient, meaning the 90 GB of parity data takes 108 GB to store on each server. Mirrored to both servers, its total footprint is 216 GB. The total footprint is thus [(10 GB / 50.0%) + (90 GB / 83.3%)] × 2 = 256 GB, for 39.1% overall capacity efficiency.
 
   Notice that the capacity efficiency of classic two-way mirroring (about 50%) and nested mirror-accelerated parity (up to 40%) are not very different. Depending on your requirements, the slightly lower capacity efficiency may be well worth the significant increase in storage availability. You choose resiliency per-volume, so you can mix nested resiliency volumes and classic two-way mirror volumes within the same cluster.
 
