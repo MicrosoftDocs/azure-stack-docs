@@ -368,3 +368,9 @@ After applying the 1808 update or later, you must make the following configurati
 ## Next steps
 
 - Learn about [Azure Stack Hub virtual machines](azure-stack-compute-overview.md).
+- [Azure Stack Hub managed disks differences and considerations](azure-stack-managed-disk-considerations.md#convert-to-managed-disks)
+- [Expand unmanaged virtual hard disks attached to a virtual machine](https://docs.microsoft.com/en-us/azure/virtual-machines/expand-unmanaged-disks)
+ 
+While there’s no specific documentation for resizing managed and unmanaged disks, the experience is consistent with public Azure.
+Expand unmanaged disks in Azure - Azure Virtual Machines | Microsoft Docs
+ 
