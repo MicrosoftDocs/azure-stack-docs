@@ -15,9 +15,9 @@ ms.date: 05/16/2022
 
 # Kubernetes cluster architecture and workloads for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI on Windows Server
+> Applies to: Azure Stack HCI and Windows Server
 
-Azure Kubernetes Service (AKS) on Azure Stack HCI on Windows Server is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a **simple deployment and life cycle management experience**.
+Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is an enterprise-grade Kubernetes container platform powered by Azure Stack HCI. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a **simple deployment and life cycle management experience**.
 
 This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
