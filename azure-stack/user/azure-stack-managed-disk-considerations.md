@@ -34,7 +34,7 @@ Managed disks are enabled by default when creating VMs using the Azure Stack Hub
 |Disks snapshot copy|Snapshot Azure managed disks attached to a running VM supported.|Supported through backup vendors. Check with your vendor to verify support. |
 |Disk types     |Premium SSD, Standard SSD, and Standard HDD. |Premium SSD, Standard HDD |
 |Encryption for data at rest |Azure Storage Service Encryption (SSE), Azure Disk Encryption (ADE).     |BitLocker 128-bit AES encryption      |
-|Expand disk – managed disk     |Supported  |Supported [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks)<br>[Linux](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)|
+|Expand disk – managed disk     |Supported  |Supported<br>[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks)<br>[Linux](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)|
 |Image          | Managed custom image |Supported|
 |Migration      |Provide tool to migrate from existing unmanaged Azure Resource Manager VMs without the need to recreate the VM.  |Not yet supported |
 |Premium disks  |Fully supported. |Can be provisioned, but no performance limit or guarantee  |
