@@ -51,7 +51,7 @@ Storage Spaces Direct in Azure Stack HCI and Windows Server offers two resilienc
 
   ![Diagram that shows nested two-way mirror.](media/nested-resiliency/nested-two-way-mirror.png)
 
-- **Nested mirror-accelerated parity.** Combine nested two-way mirroring, from the previous image, with nested parity. Within each server, local resiliency for most data is provided by single [bitwise parity arithmetic](/azure-stack/hci/concepts/fault-tolerance#parity), except new recent writes which use two-way mirroring. Then, further resiliency for all data is provided by two-way mirroring between the servers. New writes to the volume go to the mirror part with two copies on separate physical disks on each server. As the mirror part of the volume fills on each server, the oldest data is converted and saved to the parity part in the background. As a result, each server has the data for the volume either in two-way mirror or in a single parity structure. This is similar to how [mirror-accelerated parity](/windows-server/storage/refs/mirror-accelerated-parity) works—with the difference being that mirror-accelerated parity requires four servers in the cluster and storage pool, and uses a different parity algorithm.
+- **Nested mirror-accelerated parity.** Combine nested two-way mirroring, from the previous image, with nested parity. Within each server, local resiliency for most data is provided by single [bitwise parity arithmetic](/azure-stack/hci/concepts/fault-tolerance#parity), except new recent writes that use two-way mirroring. Then, further resiliency for all data is provided by two-way mirroring between the servers. New writes to the volume go to the mirror part with two copies on separate physical disks on each server. As the mirror part of the volume fills on each server, the oldest data is converted and saved to the parity part in the background. As a result, each server has the data for the volume either in two-way mirror or in a single parity structure. This is similar to how [mirror-accelerated parity](/windows-server/storage/refs/mirror-accelerated-parity) works—with the difference being that mirror-accelerated parity requires four servers in the cluster and storage pool, and uses a different parity algorithm.
 
   ![Diagram that shows nested mirror-accelerated parity.](media/nested-resiliency/nested-mirror-accelerated-parity.png)
 
@@ -72,7 +72,7 @@ Capacity efficiency is the ratio of usable space to [volume footprint](/azure-st
 
   The following is an example of the full math. Suppose we have six capacity drives in each of two servers, and we want to create one 100 GB volume comprised of 10 GB of mirror and 90 GB of parity. Server-local two-way mirror is 50.0% efficient, meaning the 10 GB of mirror data takes 20 GB to store on each server. Mirrored to both servers, its total footprint is 40 GB. Server-local single parity, in this case, is 5/6 = 83.3% efficient, meaning the 90 GB of parity data takes 108 GB to store on each server. Mirrored to both servers, its total footprint is 216 GB. The total footprint is thus [(10 GB / 50.0%) + (90 GB / 83.3%)] × 2 = 256 GB, for 39.1% overall capacity efficiency.
 
-  Notice that the capacity efficiency of classic two-way mirroring (about 50%) and nested mirror-accelerated parity (up to 40%) are not very different. Depending on your requirements, the slightly lower capacity efficiency may be well worth the significant increase in storage availability. You choose resiliency per-volume, so you can mix nested resiliency volumes and classic two-way mirror volumes within the same cluster.
+  Notice that the capacity efficiency of classic two-way mirroring (about 50%) and nested mirror-accelerated parity (up to 40%) aren't very different. Depending on your requirements, the slightly lower capacity efficiency may be well worth the significant increase in storage availability. You choose resiliency per-volume, so you can mix nested resiliency volumes and classic two-way mirror volumes within the same cluster.
 
   ![Diagram that shows the tradeoff between a two-way mirror and nested mirror-accelerated parity.](media/nested-resiliency/tradeoff.png)
 
@@ -86,19 +86,19 @@ Find answers to frequently asked questions about nested resiliency.
 
 ### Can I convert an existing volume between two-way mirror and nested resiliency?
 
-No, volumes cannot be converted between resiliency types. For new deployments on Azure Stack HCI, Windows Server 2022, or Windows Server 2019, decide ahead of time which resiliency type best fits your needs. If you're upgrading from Windows Server 2016, you can create new volumes with nested resiliency, migrate your data, and then delete the older volumes.
+No, volumes can't be converted between resiliency types. For new deployments on Azure Stack HCI, Windows Server 2022, or Windows Server 2019, decide ahead of time which resiliency type best fits your needs. If you're upgrading from Windows Server 2016, you can create new volumes with nested resiliency, migrate your data, and then delete the older volumes.
 
 ### Can I use nested resiliency with multiple types of capacity drives?
 
-Yes, just specify the `-MediaType` of each tier accordingly during [step 1](/concepts/includes/create-volumes-with-nested-resiliency.md#step-1-create-storage-tier-templates-windows-server-2019-only) above. For example, with NVMe, SSD, and HDD in the same cluster, the NVMe provides cache while the latter two provide capacity: set the `NestedMirror` tier to `-MediaType SSD` and the `NestedParity` tier to `-MediaType HDD`. In this case, note that parity capacity efficiency depends on the number of HDD drives only, and you need at least 4 of them per server.
+Yes, just specify the `-MediaType` of each tier accordingly during [step 1](/concepts/includes/create-volumes-with-nested-resiliency.md#step-1-create-storage-tier-templates-windows-server-2019-only) above. For example, with NVMe, SSD, and HDD in the same cluster, the NVMe provides cache while the latter two provide capacity: set the `NestedMirror` tier to `-MediaType SSD` and the `NestedParity` tier to `-MediaType HDD`. In this case, the parity capacity efficiency depends on the number of HDD drives only, and you need at least 4 of them per server.
 
-### Can I use nested resiliency with 3 or more servers?
+### Can I use nested resiliency with three or more servers?
 
-No, only use nested resiliency if your cluster has exactly 2 servers.
+No, only use nested resiliency if your cluster has exactly two servers.
 
 ### How many drives do I need to use nested resiliency?
 
-The minimum number of drives required for Storage Spaces Direct is 4 capacity drives per server node, plus 2 cache drives per server node (if any). This is unchanged from Windows Server 2016. There is no additional requirement for nested resiliency, and the recommendation for reserve capacity is unchanged too.
+The minimum number of drives required for Storage Spaces Direct is four capacity drives per server node, plus two cache drives per server node (if any). This is unchanged from Windows Server 2016. There's no other requirement for nested resiliency, and the recommendation for reserve capacity is unchanged too.
 
 ### Does nested resiliency change how drive replacement works?
 
