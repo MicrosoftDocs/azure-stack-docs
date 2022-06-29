@@ -29,7 +29,7 @@ Nested resiliency is a capability of [Storage Spaces Direct](/azure-stack/hci/co
 
 Volumes that use nested resiliency can stay online and accessible even if multiple hardware failures happen at the same time, unlike classic [two-way mirroring](/azure-stack/hci/concepts/fault-tolerance) resiliency. For example, if two drives fail at the same time, or if a server goes down and a drive fails, volumes that use nested resiliency stay online and accessible. For hyper-converged infrastructure, this increases uptime for apps and virtual machines; for file server workloads, this means users have uninterrupted access to their files.
 
-![Storage availability](media/nested-resiliency/storage-availability.png)
+![Diagram that shows storage availability.](media/nested-resiliency/storage-availability.png)
 
 The trade-off is that nested resiliency has lower capacity efficiency than classic two-way mirroring, meaning you get slightly less usable space. For details, see the [Capacity efficiency](#capacity-efficiency) following section.
 
@@ -41,7 +41,7 @@ This section provides the background on nested resiliency for Storage Spaces Dir
 
 RAID 5+1 is an established form of distributed storage resiliency that provides helpful background for understanding nested resiliency. In RAID 5+1, within each server, local resiliency is provided by RAID-5, or *single parity*, to protect against the loss of any single drive. Then, further resiliency is provided by RAID-1, or *two-way mirroring*, between the two servers to protect against the loss of either server.
 
-![RAID 5+1](media/nested-resiliency/raid-51.png)
+![Diagram that shows RAID 5+1.](media/nested-resiliency/raid-51.png)
 
 ### Resiliency options
 
