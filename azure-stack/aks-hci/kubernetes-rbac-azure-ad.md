@@ -43,7 +43,7 @@ Before you set up Kubernetes RBAC using Azure AD identity, you'll need:
     
     - **Kubectl**
 
-      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. To check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least`v1.24.0`.
+      The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. To check if you have the kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`.
       
       For instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
     
