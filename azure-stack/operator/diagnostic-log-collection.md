@@ -212,7 +212,7 @@ You can save logs to a local Server Message Block (SMB) share when Azure Stack H
 
 ## Bandwidth considerations
 
-The average size of diagnostic log collection varies based on whether it runs proactively or manually. The average size for **Proactive log collection** is around 2 GB. The collection size for **Send logs now** depends on how many hours are being collected.
+The average size of diagnostic log collection varies based on whether it runs proactively or manually. The average size for **Proactive log collection** is around 2 GB. The collection size for **Send logs now** depends on how many hours (_up to 4 hours_) are being collected and the number of physical nodes in the Azure Stack Hub scale unit (_4 to 16 nodes_).
 
 The following table lists considerations for environments with limited or metered connections to Azure.
 
@@ -221,6 +221,8 @@ The following table lists considerations for environments with limited or metere
 | Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete. |
 | Shared connection | The upload may also impact other apps/users sharing the network connection. |
 | Metered connection | There may be another charge from your ISP for the extra network usage. |
+
+To provide an example, if the internet connection / link speed from Azure Stack Hub is 5 Megabits/second (_low-bandwidth_), it would take approximately 57 minutes and 15 seconds to upload 2 Gigabytes of diagnostic log data to Microsoft support. For an 8 Gigabyte manual log collection using a 5 Megabits/second link speed, it would take approx. 3 hours 49 minutes 3 seconds to upload the data. This extended length of time to upload diagnostic data, could delay or impact the support experience.
 
 ## View log collection
 
