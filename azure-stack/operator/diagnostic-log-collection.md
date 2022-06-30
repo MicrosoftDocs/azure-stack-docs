@@ -222,7 +222,7 @@ The following table lists considerations for environments with limited or metere
 | Shared connection | The upload may also impact other apps/users sharing the network connection. |
 | Metered connection | There may be another charge from your ISP for the extra network usage. |
 
-For example, if the internet connection or link speed from Azure Stack Hub is 5 Megabits/second (low-bandwidth), it would take approximately 57 minutes and 15 seconds to upload 2 GB of diagnostic log data to Microsoft support. For an 8 GB manual log collection using a 5 Megabits/second link speed, it would take approx. 3 hours 49 minutes 3 seconds to upload the data. This extended length of time to upload diagnostic data could delay or impact the support experience.
+For example, if the internet connection or link speed from Azure Stack Hub is 5 Megabits/second (low-bandwidth), it would take approximately 57 minutes to upload 2 GB of diagnostic log data to Microsoft support. For an 8 GB manual log collection using a 5 Megabits/second link speed, it would take approx. 3 hours and 49 minutes to upload the data. This extended length of time to upload diagnostic data could delay or impact the support experience.
 
 ## View log collection
 
