@@ -148,6 +148,10 @@ sections:
           vNIC goes missing after a machine reboot
 
         answer: | 
+          
+          > [!NOTE]
+          > This issue is fixed in the May 2022 release and later.
+          
           If Azure Stack HCI nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This causes the VMs to lose network connectivity and the cluster falls into a bad state.
           
           **To Reproduce**
@@ -188,6 +192,7 @@ sections:
             ```powershell
             mocctl.exe compute vm nic remove --name <vnicname> --vm-name <vmname> --group <group>
             ```
+          
       - question: | 
           When upgrading a deployment, some pods might be stuck at 'waiting for static pods to have a ready condition'.
 

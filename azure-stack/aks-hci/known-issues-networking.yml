@@ -20,7 +20,7 @@ sections:
           Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
           ```
           
-          To work around this issue, use a path that doesn't include spaces, for example, `C:\CloudShare\AKS-HCI`.
+          To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
           
       - question: | 
           Load balancer in Azure Kubernetes Service requires DHCP reservation.
@@ -40,13 +40,13 @@ sections:
           - `Test-NetConnection -ComputerName <computer IP/Name> -Port <port>` from the node where the node agent is failing towards the cloud agent is working properly on the system (even when the wssdagent fails to start)
           - Curl.exe from the node on which the agent is failing towards the cloud agent reproduces the problem and is getting stuck:
           `curl.exe https://<computerIP>:6500`
-          - When you pass the `--noproxy` flag to curl.exe, this fixes the problem. Curl returns an error from from wssdcloudagent. This is expected since curl isn't a GRPC client. Curl doesn't get stuck waiting when you send the `--noproxy` flag. So returning an error is considered a success here):
+          - When you pass the `--noproxy` flag to curl.exe, this fixes the problem. Curl returns an error from from wssdcloudagent. This is expected since curl is not a GRPC client. Curl doesn't get stuck waiting when you send the `--noproxy` flag. So returning an error is considered a success here):
           
           ```bash
           curl.exe --noproxy '*' https://<computerIP>:65000
           ```
           
-          It's likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS on Azure Stack HCI are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It's possible faulty proxy settings were set on the host and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
+          It is likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS on Azure Stack HCI are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It is possible faulty proxy settings were set on the host and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
           
           You will need to fix the proxy settings by changing the environmental variables on the machine.
           On the machine, change the variables with the following commands:
@@ -65,9 +65,9 @@ sections:
         answer: | 
           This error occurs because every time the CAPH pod is started, a login to cloudagent is attempted and the certificate is stored in the temporary storage volume, which will clean out on pod restarts. Therefore, every time a pod is restarted, the certificate is destroyed and a new login attempt is made. 
           
-          A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login isn't attempted, assuming the renewal routine is already there.
+          A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login is not attempted, assuming the renewal routine is already there.
           
-          However, on a container restart, the temporary directory isn't cleaned, so the file is still persisted and the login attempt isn't made, causing the renewal routine to not start. This leads to certificate expiration.
+          However, on a container restart, the temporary directory is not cleaned, so the file is still persisted and the login attempt is not made, causing the renewal routine to not start. This leads to certificate expiration.
           
           To mitigate this issue, restart the CAPH pod using the following command:
           
@@ -121,11 +121,11 @@ sections:
           The _kube-vip_ pod can go down for two reasons:
           
           * The memory pressure in the system can slow down `etcd`, which ends up affecting _kube-vip_.
-          * The _kube-apiserver_ isn't available.
+          * The _kube-apiserver_ is not available.
           
           To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
       - question: | 
-          The workload cluster isn't found 
+          The workload cluster is not found 
 
         answer: | 
           The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
@@ -153,10 +153,10 @@ sections:
           
           `What is the fix?`
       - question: | 
-          Get-AksHCIClusterNetwork doesn't show the current allocation of IP addresses.
+          Get-AksHCIClusterNetwork does not show the current allocation of IP addresses.
 
         answer: | 
-          Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command doesn't show the current allocation of the IP addresses. 
+          Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. 
           
           To find out what IP addresses are currently in use in a virtual network, use the steps below:
           
