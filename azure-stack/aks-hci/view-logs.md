@@ -35,7 +35,7 @@ The following `Get-AksHciLogs` parameters describe how you can use the command t
   ![The image shows an output of running Get-AksHciLogs with the -BillingRecords parameter.](.\media\logs\billing-records.png)
 
 ## Microsoft On-premises Cloud 
-Microsoft On-premises Cloud (MOC) is the management stack that enables virtual machines on an Azure Stack HCI  Software Defined Data Center (SDDC) to be managed in the cloud. Microsoft On-premises Cloud includes the following components:
+Microsoft On-premises Cloud (MOC) is the management stack that enables virtual machines on an Azure Stack HCI Software Defined Data Center (SDDC) to be managed in the cloud. Microsoft On-premises Cloud includes the following components:
 
 - A single instance of a highly available cloud agent service deployed in the cluster. This agent runs on any one node in the Azure Stack HCI cluster and is configured to fail over to another node.
 - A node agent running on every Azure Stack HCI physical node.
