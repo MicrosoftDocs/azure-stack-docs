@@ -148,7 +148,7 @@ sections:
           Creating virtual networks with a similar configuration cause overlap issues.
 
         answer: | 
-          When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, issues may happen in scenarios where two virtual network configurations are almost the same.          
+          When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, issues may happen in scenarios where two virtual network configurations are almost the same.
 
       - question: | 
           Get-AksHCIClusterNetwork does not show the current allocation of IP addresses.
