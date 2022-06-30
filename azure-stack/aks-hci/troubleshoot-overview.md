@@ -3,7 +3,7 @@ title: Troubleshooting overview for Azure Kubernetes Service on Azure Stack HCI 
 description: An overview for troubleshooting issues encountered when using Azure Kubernetes Service on Azure Stack HCI and Windows Server. 
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 06/06/2022
+ms.date: 06/28/2022
 ms.author: sethm 
 ms.lastreviewed: 04/08/2022
 ms.reviewer: abha
@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 This overview provides guidance on how to find solutions for issues you encounter when using Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Known issues and errors topics are organized by functional area. You can use the links provided in this topic to find the solutions and workarounds to resolve them. 
 
-For some troubleshooting operations, you may need to use a secure SSH connection to access Windows or Linux worker nodes, which allows you to securely access the nodes for maintenance, log collection, and troubleshooting. For more information, see [create an SSH connection](ssh-connection.md).  
+For some troubleshooting operations, you may need to use a secure SSH connection to access Windows or Linux worker nodes, which allows you to securely access the nodes for maintenance, log collection, and troubleshooting. For more information, see [Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting](ssh-connection.md).  
 
 ## View logs to troubleshoot an issue
 
