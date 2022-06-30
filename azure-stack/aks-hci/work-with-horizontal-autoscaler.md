@@ -2,8 +2,8 @@
 title: Use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
 description: Learn how to use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI.
 ms.topic: how-to
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
 ms.date: 06/28/2022
