@@ -34,7 +34,7 @@ Managed disks are enabled by default when creating VMs using the Azure Stack Hub
 |Disks snapshot copy|Snapshot Azure managed disks attached to a running VM supported.|Supported through backup vendors. Check with your vendor to verify support. |
 |Disk types     |Premium SSD, Standard SSD, and Standard HDD. |Premium SSD, Standard HDD |
 |Encryption for data at rest |Azure Storage Service Encryption (SSE), Azure Disk Encryption (ADE).     |BitLocker 128-bit AES encryption      |
-|Expand disk – managed disk     |Supported  |Supported<br>[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks)<br>[Linux](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)|
+|Expand disk – managed disk     |Supported  |Supported<br>[Windows](/azure/virtual-machines/linux/expand-disks)<br>[Linux](/azure/virtual-machines/windows/expand-os-disk)|
 |Image          | Managed custom image |Supported|
 |Migration      |Provide tool to migrate from existing unmanaged Azure Resource Manager VMs without the need to recreate the VM.  |Not yet supported |
 |Premium disks  |Fully supported. |Can be provisioned, but no performance limit or guarantee  |
@@ -369,8 +369,5 @@ After applying the 1808 update or later, you must make the following configurati
 
 - Learn about [Azure Stack Hub virtual machines](azure-stack-compute-overview.md).
 - See also [Azure Stack Hub managed disks differences and considerations](azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
-- How to [Expand unmanaged virtual hard disks attached to a virtual machine](https://docs.microsoft.com/azure/virtual-machines/expand-unmanaged-disks).
- 
-While there’s no specific documentation for resizing managed and unmanaged disks, the experience is consistent with public Azure.
-Expand unmanaged disks in Azure - Azure Virtual Machines | Microsoft Docs
+- How to [Expand unmanaged virtual hard disks attached to a virtual machine](/azure/virtual-machines/expand-unmanaged-disks).
  
