@@ -109,6 +109,9 @@ Microsoft has announced its intention to surpass existing data storage commitmen
 
 Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert.
 
+> [!NOTE]  
+> Disconnected environments may also be required to select a Data Geolocation. This is a one-time setup that impacts the data residency location if the operator is providing diagnostic data to Microsoft. If the operator does not provide any diagnostic data to Microsoft this setting does not have any ramifications.
+
 :::image type="content" source="media/azure-stack-security-foundations/geo-region-alert.png" alt-text="Screenshot that shows Azure Stack Hub Admin portal Dashboard Alerts window with the Geographical Region Not Provided alert listed." lightbox="media/azure-stack-security-foundations/geo-region-alert.png":::
 
 You can resolve this alert for your existing Azure Stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
