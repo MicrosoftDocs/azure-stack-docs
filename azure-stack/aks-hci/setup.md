@@ -36,8 +36,6 @@ The AKS on Azure Stack HCI and Windows Server extension for Windows Admin Center
 
 You need to set up an AKS host on your Azure Stack HCI and Windows Server cluster before deploying AKS workload clusters. Setting up an AKS host is also referred to as setting up the platform services or management cluster.  
 
-[![Picture of an architecture diagram that highlights the platform services portion.](.\media\setup\aks-hci-architecture-focused.png)](.\media\setup\aks-hci-architecture-focused.png)
-
 :::image type="content" source="media/setup/aks-hci-architecture-focused.png" alt-text="Picture of an architecture diagram that highlights the platform services portion." lightbox="media/setup/aks-hci-architecture-focused.png":::
 
 > [!NOTE]
