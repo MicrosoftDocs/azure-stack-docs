@@ -21,7 +21,11 @@ To use Azure services with Windows Admin Center, you must first [install Windows
 
 ## Complete the registration process
 
-Launch Windows Admin Center and select the **Settings** gear icon in the upper right, which will take you to the **Settings** view. Then select **Register** under the **Gateway** settings on the left. Then select the **Register** button in the center of the page.
+Launch Windows Admin Center, then follow these steps:
+
+1. Select the **Settings** gear icon in the upper right, which will take you to the **Settings** view. 
+2. Select **Register** under the **Gateway** settings on the left. 
+3. Select the **Register** button in the center of the page, which will open the registration panel on the right:
 
    :::image type="content" source="media/register-wac/register-wac.png" alt-text="Select Settings > Gateway > Azure, then click Register" lightbox="media/register-wac/register-wac.png":::
 
