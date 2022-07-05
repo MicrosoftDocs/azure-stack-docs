@@ -1,11 +1,11 @@
 ---
-title: Internal certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to update AKS certificates on Azure Stack HCI and Windows Server
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/20/2022
+ms.date: 07/05/2022
 ms.author: sethm 
-ms.lastreviewed: 06/20/2022
+ms.lastreviewed: 07/05/2022
 ms.reviewer: rbaziwane
 
 # Intent: As an IT pro, I want to update my certificates so that my Kubernetes cluster continues to operate.
@@ -13,11 +13,11 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Internal certificates and tokens
+# Certificates and tokens
 
 Azure Kubernetes Service (AKS) on Windows Server and Azure Stack HCI uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
 
-## Agents
+## Cloud agent
 
 When you deploy AKS on Windows Server and Azure Stack HCI, it installs agents that are used to perform various functions within the cluster. These agents include:
 
@@ -30,8 +30,8 @@ The cloud agent service in Azure Kubernetes Service on Azure Stack HCI and Windo
 
 To communicate with the cloud agent, clients require certificates to be provisioned in order to secure this communication. Each client requires an identity to be associated with it, which defines the Role Based Access Control (RBAC) rules associated with the client. Each identity consists of two entities:
 
-- Token: used for initial authentication, which returns a certificate.
-- Certificate: obtained from the above sign-in process, and used for authentication in any communication.
+- A token, used for initial authentication, which returns a certificate, and
+- A certificate, obtained from the above sign-in process, and used for authentication in any communication.
 
 Each entity is valid for a specific period (the default is 90 days), at the end of which it expires. For continued access to the cloud agent, each client requires the certificate to be renewed and the token rotated.
 
