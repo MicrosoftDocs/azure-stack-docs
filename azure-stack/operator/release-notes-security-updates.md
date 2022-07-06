@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes - security updates
 description: Learn about security updates for Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/20/2022
+ms.date: 07/06/2022
 ms.author: sethm
 ms.reviewer: carlosm
-ms.lastreviewed: 03/14/2022
+ms.lastreviewed: 07/06/2022
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
