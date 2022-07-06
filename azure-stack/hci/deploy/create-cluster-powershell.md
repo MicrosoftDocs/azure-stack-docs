@@ -209,7 +209,7 @@ Invoke-Command ($ServerList) {
 In this step, you'll ensure that the server nodes are configured correctly to create a cluster. The `Test-Cluster` cmdlet is used to run tests to verify your configuration is suitable to function as a hyperconverged cluster. The example below uses the `-Include` parameter, with the specific categories of tests specified. This ensures that the correct tests are included in the validation.
 
 ```powershell
-Test-Cluster –Node $ServerList –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+Test-Cluster -Node $ServerList -Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
 ```
 
 ## Step 3: Create the cluster
@@ -219,10 +219,11 @@ You are now ready to create a cluster with the server nodes that you have valida
 When creating the cluster, you'll get a warning that states - `"There were issues while creating the clustered role that may prevent it from starting. For more information, view the report file below."` You can safely ignore this warning. It's due to no disks being available for the cluster witness that you will create later. 
 
 > [!NOTE]
-> If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `–StaticAddress <X.X.X.X>;`.
+> If the servers are using static IP addresses, modify the following command to reflect the static IP address by adding the following parameter and specifying the IP address: `-StaticAddress <X.X.X.X>;`.
 
 ```powershell
-$ClusterName="cluster1" New-Cluster -Name $ClusterName –Node $ServerList –nostorage
+$ClusterName = "cluster1"
+New-Cluster -Name $ClusterName -Node $ServerList -nostorage
 ```
 
 After the cluster is created, it can some take time for the cluster name to be replicated via DNS across your domain, especially if workgroup servers have been newly added to Active Directory. Although the cluster might be displayed in Windows Admin Center, it might not be available to connect to yet.
