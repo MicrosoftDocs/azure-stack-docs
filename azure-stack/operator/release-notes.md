@@ -52,7 +52,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2206"
 ## 2206 build reference
 
-The Azure Stack Hub 2206 update build number is **1.2206.x.xx**.
+The Azure Stack Hub 2206 update build number is **1.2206.0.6**.
 
 ### Update type
 
