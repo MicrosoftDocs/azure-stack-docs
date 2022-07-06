@@ -61,7 +61,7 @@ To access known issues for a different version, use the version selector dropdow
    Get-AzsRecoveryKeys -raw
    ```
 
-   For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md?view=azs-2108#retrieving-bitlocker-recovery-keys). Note that the alert will automatically close within 24 hours after running **Get-AzsRecoveryKeys** and storing those recovery keys in a secure location outside of Azure Stack Hub.
+   For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys). Note that the alert will automatically close within 24 hours after running **Get-AzsRecoveryKeys** and storing those recovery keys in a secure location outside of Azure Stack Hub.
 - Occurrence: Common
 
 <!-- ## Portal -->
