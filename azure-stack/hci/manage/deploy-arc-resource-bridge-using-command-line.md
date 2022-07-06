@@ -36,7 +36,7 @@ Before you begin the Azure Arc Resource Bridge deployment, plan out and configur
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through Remote Desktop Protocol (RDP) or console session. Remote Powershell isn't supported.
+To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through Remote Desktop Protocol (RDP) or console session. Remote PowerShell isn't supported.
 
 1. Install the required PowerShell modules by running the following cmdlet as an administrator on all servers of the Azure Stack HCI cluster:
 
