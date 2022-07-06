@@ -967,10 +967,15 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/aks-hci/certificates-and-tokens.md",
+      "redirect_url": "/azure-stack/aks-hci/certificates-update-after-sixty-days",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "azure-stack/aks-hci/add-akshcigmsacredentialspec.md",
       "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcigmsacredentialspec",
       "redirect_document_id": true
-    },
+    },    
     {
         "source_path": "azure-stack/aks-hci/add-akshcinode.md",
         "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcinode",
