@@ -33,7 +33,7 @@ AKS on Azure Stack HCI generates and uses the following certificates and Certifi
 
 ### Certificate provisioning 
 
-Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
+Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
 
 - The certificates are stored at /etc/kubernetes/pki
 - The keys are RSA 4096, EcdsaCurve: P384 
