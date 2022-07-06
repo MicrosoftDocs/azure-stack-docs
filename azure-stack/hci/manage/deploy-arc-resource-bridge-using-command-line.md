@@ -18,9 +18,9 @@ You can deploy Azure Arc Resource Bridge on the Azure Stack HCI cluster using Wi
 
 This article describes how to use command line to deploy Azure Arc Resource Bridge, which includes:
 
-1. [Installing PowerShell modules and updating extensions](#step-1-install-powershell-modules-and-update-extensions)
-1. [Creating custom location](#step-2-create-a-custom-location-by-installing-azure-arc-resource-bridge)
-1. [Creating virtual network and gallery image](#step-3-create-virtual-network-and-gallery-image)
+- [Installing PowerShell modules and updating extensions](#install-powershell-modules-and-update-extensions)
+- [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
+- [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
 
 If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
@@ -34,7 +34,7 @@ Before you begin the Azure Arc Resource Bridge deployment, plan out and configur
 - [Network port requirements](azure-arc-enabled-virtual-machines.md#network-port-requirements)
 - [Firewall URL exceptions](azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
 
-## Step 1: Install PowerShell modules and update extensions
+## Install PowerShell modules and update extensions
 
 To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through Remote Desktop Protocol (RDP) or console session. Remote Powershell isn't supported.
 
@@ -79,9 +79,9 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: "192.168.250.250","192.168.250.255". |
    | **IPAddressPrefix** | (Required only for static IP configurations) The PrefixLength specifies the subnet mask for the IP address. For example: "192.168.0.0/16". |
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
-   | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be carved from the underlay network (physical network). |
+   | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
 
-3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on if Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed or not.
+3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed or not.
    - **If AKS on Azure Stack HCI and Windows Server is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI and Windows Server is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
@@ -134,7 +134,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
      az extension add --upgrade --name azurestackhci
      ```
 
-## Step 2: Create a custom location by installing Azure Arc Resource Bridge
+## Create a custom location by installing Azure Arc Resource Bridge
 
 To create a custom location, install Azure Arc Resource Bridge by launching an elevated PowerShell window and perform these steps:
 
@@ -150,7 +150,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
 
-2. Log in to your Azure subscription and get the extension and providers for Azure Arc Resource Bridge:
+2. Sign in to your Azure subscription and get the extension and providers for Azure Arc Resource Bridge:
    
    ```azurecli
    az login --use-device-code
@@ -227,7 +227,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
 
 Now you can navigate to the resource group in Azure and see the custom location and Azure Arc Resource Bridge that you've created for the Azure Stack HCI cluster.
 
-## Step 3: Create virtual network and gallery image
+## Create virtual network and gallery image
 
 Now that the custom location is available, you can create or add virtual networks and gallery images for the custom location associated with the Azure Stack HCI cluster.
 
@@ -253,9 +253,9 @@ Now that the custom location is available, you can create or add virtual network
 
    | Value | Description |
    | ----- | ----------- |
-   | **galleryImageName** | Name of the gallery image. For example: "win-os". Note that Azure rejects all names that contains the keyword "Windows". |
-   |  **galleryImageSourcePath** | Path to the source gallery image VHDX. For example: "C:\OSImages\winos.vhdx". |
-   | **osType** | The OS type. This can be "Windows" or "Linux". For example: "Windows". |
+   | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
+   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\OSImages\winos.vhdx". |
+   | **osType** | The OS type. This can be "Windows" or "Linux"; for example, "Windows". |
 
 ## Next steps
 
