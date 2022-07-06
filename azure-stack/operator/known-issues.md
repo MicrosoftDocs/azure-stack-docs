@@ -52,8 +52,8 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Encryption recovery keys retrieval warning is displayed
 
-- Applicable: This issue applies to release 2206 and later
-- Cause: An **Encryption recovery keys retrieval** warning is displayed, and asks you to retrieve and securely store the encryption recovery keys outside of Azure Stack Hub. The warning occurs to ensure that you have retrieved the recovery keys. If you have already retrieved the recovery keys in the past and are getting this alert after the 2206 update (or beyond), please make sure to collect the recovery keys again. Recovery keys may be required in the case where host nodes display the BitLocker recovery key screen after unplanned reboots; for example, power outages.
+- Applicable: This issue applies to release 2206 and later.
+- Cause: An **Encryption recovery keys retrieval** warning is displayed, and asks you to retrieve and securely store the encryption recovery keys outside of Azure Stack Hub. The warning occurs to ensure that you have retrieved the recovery keys. If you have previously retrieved the recovery keys and are getting this alert after the 2206 update (or beyond), please make sure to collect the recovery keys again. Recovery keys may be required in the case where host nodes display the BitLocker recovery key screen after unplanned reboots; for example, power outages.
 - Remediation: Retrieve the encryption keys and store them in a secure location outside of Azure Stack Hub. From the PEP, run the following command, and save the recovery keys that are returned:
 
    ```powershell
