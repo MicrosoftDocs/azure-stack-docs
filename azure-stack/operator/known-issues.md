@@ -63,7 +63,7 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Retrieve the encryption keys and store them in a secure location outside of Azure Stack Hub. From the PEP, run the following command, and save the recovery keys that are returned:
 
    ```powershell
-   ## Retrieves recovery keys for all volumes that are encrypted with BitLocker.
+   ## Retrieves recovery keys for all volumes that are encrypted with BitLocker
    Get-AzsRecoveryKeys -raw
    ```
 
