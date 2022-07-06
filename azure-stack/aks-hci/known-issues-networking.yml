@@ -14,37 +14,26 @@ sections:
           Cloud agent may fail to start successfully when using path names with spaces in them.
 
         answer: | 
-          To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
-          
           When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
           
           ```
           Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state. Resources in 'failed' or 'pending' states: 'MOC Cloud Agent Service'
           ```
           
+          To work around this issue, use a path that does not include spaces, for example, `C:\CloudShare\AKS-HCI`.
+          
       - question: | 
           Load balancer in Azure Kubernetes Service requires DHCP reservation.
 
         answer: | 
-          To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool.
-          
           The load balancing solution in Azure Kubernetes Service on Azure Stack HCI uses DHCP to assign IP addresses to service endpoints. If the IP address changes for the service endpoint due to a service restart, DHCP lease expires due to a short expiration time. Therefore, the service becomes inaccessible because the IP address in the Kubernetes configuration is different from what is on the endpoint. This can lead to the Kubernetes cluster becoming unavailable. 
+          
+          To get around this issue, use a MAC address pool for the load balanced service endpoints and reserve specific IP addresses for each MAC address in the pool.
           
       - question: | 
           The WSSDAgent service is stuck while starting and fails to connect to the cloud agent.
 
         answer: | 
-          You will need to fix the proxy settings by changing the environmental variables on the machine.
-          On the machine, change the variables with the following commands:
-          
-          ```bash
-            [Environment]::SetEnvironmentVariable("https_proxy", <Value>, "Machine")
-            [Environment]::SetEnvironmentVariable("http_proxy", <Value>, "Machine")
-            [Environment]::SetEnvironmentVariable("no_proxy", <Value>, "Machine")
-          ````
-          
-          Reboot the machine so that the service manager, and the WSSDAgent, pick up the fixed proxy.
-          
           Symptoms:
           - Proxy enabled in AKS-HCI. The WSSDAgent service stuck in the `starting` state.
           Shows up as the following:
@@ -59,10 +48,38 @@ sections:
           
           It is likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS on Azure Stack HCI are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It is possible faulty proxy settings were set on the host and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
           
+          You will need to fix the proxy settings by changing the environmental variables on the machine.
+          On the machine, change the variables with the following commands:
+          
+          ```bash
+            [Environment]::SetEnvironmentVariable("https_proxy", <Value>, "Machine")
+            [Environment]::SetEnvironmentVariable("http_proxy", <Value>, "Machine")
+            [Environment]::SetEnvironmentVariable("no_proxy", <Value>, "Machine")
+          ````
+          
+          Reboot the machine so that the service manager, and the WSSDAgent, pick up the fixed proxy.
+          
+      - question: | 
+          CAPH pod fails to renew certificate
+
+        answer: | 
+          This error occurs because every time the CAPH pod is started, a login to cloudagent is attempted and the certificate is stored in the temporary storage volume, which will clean out on pod restarts. Therefore, every time a pod is restarted, the certificate is destroyed and a new login attempt is made. 
+          
+          A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login is not attempted, assuming the renewal routine is already there.
+          
+          However, on a container restart, the temporary directory is not cleaned, so the file is still persisted and the login attempt is not made, causing the renewal routine to not start. This leads to certificate expiration.
+          
+          To mitigate this issue, restart the CAPH pod using the following command:
+          
+          ```bash
+          kubectl delete pod pod-name
+          ````
       - question: | 
           Authentication handshake failed: x509: certificate signed by unknown authority
 
         answer: | 
+          You may see this error when deploying a new AKS cluster or adding a node pool to an existing cluster.
+          
           1. Check that the user who has run the command is the same user that installed AKS on Azure Stack or Windows Server. For more information on granting access to multiple users, see [Set up multiple administrators](set-multiple-administrators.md)
           2. If the user is the same and you see the error again, you can:
           If this error is seen when trying to perform operations such as deploying a new AKS cluster or adding a node pool to an existing cluster, ensure the user running the command is the same user who installed AKS-HCI. If the user is the same and the error persists, follow the below steps to resolve the issue:
@@ -70,14 +87,10 @@ sections:
             - Run `Repair-AksHciCerts`.
             - Run `Get-AksHciCluster` to check that it's fixed
           
-          You may see this error when deploying a new AKS cluster or adding a node pool to an existing cluster.
-          
       - question: | 
           Set-AksHciConfig fails with WinRM errors, but shows WinRM is configured correctly.
 
         answer: | 
-          Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
-          
           When running [Set-AksHciConfig](./reference/ps/./set-akshciconfig.md), you might encounter the following error:
           
           ```powershell
@@ -91,11 +104,12 @@ sections:
               + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
           ```
           
+          Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
+          
       - question: | 
           Using Remote Desktop to connect to the management cluster produces a connection error.
 
         answer: | 
-          To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
           When using Remote Desktop (RDP) to connect to one of the nodes in an Azure Stack HCI cluster and then running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md), an error appears and says the connection failed because the host failed to respond.
           
           The reason for the connection failure is because some PowerShell commands that use `kubeconfig-mgmt` fail with an error similar to the following one:
@@ -109,11 +123,11 @@ sections:
           * The memory pressure in the system can slow down `etcd`, which ends up affecting _kube-vip_.
           * The _kube-apiserver_ is not available.
           
+          To help resolve this issue, try rebooting the machine. However, the issue of the memory pressure slowing down may return.
       - question: | 
           The workload cluster is not found 
 
         answer: | 
-          `What is the fix?`
           The workload cluster may not be found if the IP address pools of two AKS on Azure Stack HCI deployments are the same or overlap. If you deploy two AKS hosts and use the same `AksHciNetworkSetting` configuration for both, PowerShell and Windows Admin Center will potentially fail to find the workload cluster as the API server will be assigned the same IP address in both clusters resulting in a conflict.
           
           The error message you receive will look similar to the example shown below.
@@ -134,13 +148,14 @@ sections:
           Creating virtual networks with a similar configuration cause overlap issues.
 
         answer: | 
-          `What is the fix?`
           When creating overlapping network objects using the `new-akshcinetworksetting` and `new-akshciclusternetwork` PowerShell cmdlets, issues can occur. For example, issues may happen in scenarios where two virtual network configurations are almost the same.
-          
+
       - question: | 
           Get-AksHCIClusterNetwork does not show the current allocation of IP addresses.
 
         answer: | 
+          Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. 
+          
           To find out what IP addresses are currently in use in a virtual network, use the steps below:
           
           1. To get the group, run the following command:
@@ -159,18 +174,10 @@ sections:
             ```powershell
             Get-MocLoadBalancer -Group <groupName> | ConvertTo-Json -depth 10
             ```
-          Running the [Get-AksHciClusterNetwork](./reference/ps/get-akshciclusternetwork.md) command provides a list of all virtual network configurations. However, the command does not show the current allocation of the IP addresses. 
-          
       - question: | 
           When you deploy AKS on Azure Stack HCI with a misconfigured network, deployment timed out at various points.
 
         answer: | 
-          To resolve this issue, you need to determine where the breakdown occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
-          
-          1. Ping the destination DNS name: ping `msk8s.api.cdp.microsoft.com`. 
-          2. If you get a response back and no time-out, then the basic network path is working. 
-          3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
-          
           When you deploy AKS on Azure Stack HCI, the deployment may time out at different points of the process depending on where the misconfiguration occurred. You should review the error message to determine the cause and where it occurred.
           
           For example, in the following error, the point at which the misconfiguration occurred is in `Get-DownloadSdkRelease -Name "mocstack-stable"`: 
@@ -190,13 +197,19 @@ sections:
           
           This indicates that the physical Azure Stack HCI node can resolve the name of the download URL, `msk8s.api.cdp.microsoft.com`, but the node can't connect to the target server.
           
+          To resolve this issue, you need to determine where the breakdown occurred in the connection flow. Here are some steps to try to resolve the issue from the physical cluster node:
+          
+          1. Ping the destination DNS name: ping `msk8s.api.cdp.microsoft.com`. 
+          2. If you get a response back and no time-out, then the basic network path is working. 
+          3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
+          
       - question: | 
           Network proxy server blocks HTTP requests
 
         answer: | 
-          The user agent will be updated to **Google Chrome 91** in the next release.
-          
           When applying the platform configuration, the network proxy server blocked HTTP requests originating from the user agent string **Google Chrome 65** because this string is an out-of-date user agent client. 
+          
+          The user agent will be updated to **Google Chrome 91** in the next release.
           
   
 

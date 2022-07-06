@@ -1,10 +1,10 @@
 ---
-title: Create a DaemonSet in Azure Kubernetes Service on Azure Stack HCI
+title: Create a DaemonSet in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to create a DaemonSet in Azure Kubernetes Service (AKS) on Azure Stack HCI.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
 ms.date: 05/17/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
 
@@ -15,7 +15,9 @@ ms.reviewer: EkeleAsonye
 
 # Create DaemonSets
 
-_DaemonSet_ is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node. Similarly, when a node is deleted, then the pod running on the node is also deleted and is not rescheduled on another node (for example, as happens when using a _ReplicaSet_). This allows a user to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
+_DaemonSet_ is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node. 
+
+Similarly, when a node is deleted, then the pod running on the node is also deleted and is not rescheduled on another node (for example, as happens when using a _ReplicaSet_). This allows a user to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
 
 DaemonSets can improve the overall cluster performance. For example, you can use them to deploy pods to perform maintenance tasks and support services to every node: 
 
@@ -31,7 +33,7 @@ For more information on how to use DaemonSets, see [Kubernetes DaemonSets](https
 
 ## Create a DaemonSet
 
-You describe a DaemonSet using a YAML file, and then create it using the `kubectl create` or `kubectl apply` commands (for example, `kubectl create –f example-daemon.yaml`).
+You describe a DaemonSet by using a YAML file, and then create it using the `kubectl create` or `kubectl apply` commands (for example, `kubectl create –f example-daemon.yaml`).
 
 The following example describes the features of a DaemonSet configuration file using an nginx image:
 

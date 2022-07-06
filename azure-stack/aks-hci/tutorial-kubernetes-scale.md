@@ -4,10 +4,10 @@ description: In this tutorial, learn how to scale nodes and pods in Kubernetes
 services: container-service
 ms.topic: tutorial
 ms.date: 05/19/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
-author: mattbriggs
+author: sethmanheim
 # Intent: As an IT Pro, I need step-by-step instructions on how to scale application nodes and pods in a Kubernetes cluster.
 # Keyword: scale applications scale pods
 ---

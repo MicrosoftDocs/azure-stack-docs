@@ -2,8 +2,8 @@
 
 title: Use containerd for Windows nodes in Azure Kubernetes Service on Azure Stack HCI and Windows Server (preview)
 description: Use containerd as the container runtime for Windows Server node pools on Azure Kubernetes Service on Azure Stack HCI and Windows Server.
-author: mattbriggs
-ms.author: mabrigg
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
 ms.date: 03/07/2022
 ms.lastreviewed: 03/07/2022

@@ -1,10 +1,10 @@
 ---
 title: Azure Container Registries supported commands 
 description: Review the list of supported commands for CLI and PowerShell for Azure Container Registries on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: reference
 ms.date: 10/26/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: chasat
 ms.lastreviewed: 10/26/2021
 
@@ -75,31 +75,31 @@ Some supported commands have optional parameters that are not supported on Azure
 
 | Command | Description |
 |---|---|
-| [Connect-AzContainerRegistry](/powershell/module/az.containerregistry/connect-azcontainerregistry?view=azps-5.9.0)                           | Log in to an Azure container registry.                                     |
-| [Get-AzContainerRegistry](/powershell/module/az.containerregistry/get-azcontainerregistry?view=azps-5.9.0)                                   | Gets a container registry.                                                |
-| [Get-AzContainerRegistryCredential](/powershell/module/az.containerregistry/get-azcontainerregistrycredential?view=azps-5.9.0)               | Gets the login credentials for a container registry.                      |
-| [Get-AzContainerRegistryManifest](/powershell/module/az.containerregistry/get-azcontainerregistrymanifest?view=azps-5.9.0)                   | Get or list ACR manifest.                                                 |
-| [Get-AzContainerRegistryRepository](/powershell/module/az.containerregistry/get-azcontainerregistryrepository?view=azps-5.9.0)               | Get or list ACR repositories.                                             |
-| [Get-AzContainerRegistryTag](/powershell/module/az.containerregistry/get-azcontainerregistrytag?view=azps-5.9.0)                             | Get or list ACR tag.                                                      |
-| [Get-AzContainerRegistryUsage](/powershell/module/az.containerregistry/get-azcontainerregistryusage?view=azps-5.9.0)                         | Get Usage of an Azure container registry.                                 |
-| [Get-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/get-azcontainerregistrywebhook?view=azps-5.9.0)                     | Gets a container registry webhook.                                        |
-| [Get-AzContainerRegistryWebhookEvent](/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent?view=azps-5.9.0)           | Gets events of a container registry webhook.                              |
-| [Import-AzContainerRegistryImage](/powershell/module/az.containerregistry/import-azcontainerregistryimage?view=azps-5.9.0)                   | Import image from a global Azure registry to an Azure container registry. |
-| [New-AzContainerRegistry](/powershell/module/az.containerregistry/new-azcontainerregistry?view=azps-5.9.0)                                   | Creates a container registry.                                             |
-| [New-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/new-azcontainerregistrywebhook?view=azps-5.9.0)                     | Creates a container registry webhook.                                     |
-| [Remove-AzContainerRegistry](/powershell/module/az.containerregistry/remove-azcontainerregistry?view=azps-5.9.0)                             | Removes a container registry.                                             |
-| [Remove-AzContainerRegistryManifest](/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest?view=azps-5.9.0)             | Delete ACR manifest.                                                      |
-| [Remove-AzContainerRegistryRepository](/powershell/module/az.containerregistry/remove-azcontainerregistryrepository?view=azps-5.9.0)         | Delete repository from ACR.                                               |
-| [Remove-AzContainerRegistryTag](/powershell/module/az.containerregistry/remove-azcontainerregistrytag?view=azps-5.9.0)                       | Untag ACR tag.                                                            |
-| [Remove-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/remove-azcontainerregistrywebhook?view=azps-5.9.0)               | Removes a container registry webhook.                                     |
-| [Test-AzContainerRegistryNameAvailability](/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability?view=azps-5.9.0) | Checks the availability of a container registry name.                     |
-| [Test-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/test-azcontainerregistrywebhook?view=azps-5.9.0)                   | Triggers a webhook ping event.                                            |
-| [Update-AzContainerRegistry](/powershell/module/az.containerregistry/update-azcontainerregistry?view=azps-5.9.0)                             | Updates a container registry.                                             |
-| [Update-AzContainerRegistryCredential](/powershell/module/az.containerregistry/update-azcontainerregistrycredential?view=azps-5.9.0)         | Regenerates a login credential for a container registry.                  |
-| [Update-AzContainerRegistryManifest](/powershell/module/az.containerregistry/update-azcontainerregistrymanifest?view=azps-5.9.0)             | Update ACR manifest.                                                      |
-| [Update-AzContainerRegistryRepository](/powershell/module/az.containerregistry/update-azcontainerregistryrepository?view=azps-5.9.0)         | Update ACR repository.                                                    |
-| [Update-AzContainerRegistryTag](/powershell/module/az.containerregistry/update-azcontainerregistrytag?view=azps-5.9.0)                       | Update ACR tag.                                                           |
-| [Update-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/update-azcontainerregistrywebhook?view=azps-5.9.0)               | Updates a container registry webhook.                                     |
+| [Connect-AzContainerRegistry](/powershell/module/az.containerregistry/connect-azcontainerregistry)                           | Log in to an Azure container registry.                                     |
+| [Get-AzContainerRegistry](/powershell/module/az.containerregistry/get-azcontainerregistry)                                   | Gets a container registry.                                                |
+| [Get-AzContainerRegistryCredential](/powershell/module/az.containerregistry/get-azcontainerregistrycredential)               | Gets the login credentials for a container registry.                      |
+| [Get-AzContainerRegistryManifest](/powershell/module/az.containerregistry/get-azcontainerregistrymanifest)                   | Get or list ACR manifest.                                                 |
+| [Get-AzContainerRegistryRepository](/powershell/module/az.containerregistry/get-azcontainerregistryrepository)               | Get or list ACR repositories.                                             |
+| [Get-AzContainerRegistryTag](/powershell/module/az.containerregistry/get-azcontainerregistrytag)                             | Get or list ACR tag.                                                      |
+| [Get-AzContainerRegistryUsage](/powershell/module/az.containerregistry/get-azcontainerregistryusage)                         | Get Usage of an Azure container registry.                                 |
+| [Get-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/get-azcontainerregistrywebhook)                     | Gets a container registry webhook.                                        |
+| [Get-AzContainerRegistryWebhookEvent](/powershell/module/az.containerregistry/get-azcontainerregistrywebhookevent)           | Gets events of a container registry webhook.                              |
+| [Import-AzContainerRegistryImage](/powershell/module/az.containerregistry/import-azcontainerregistryimage)                   | Import image from a global Azure registry to an Azure container registry. |
+| [New-AzContainerRegistry](/powershell/module/az.containerregistry/new-azcontainerregistry)                                   | Creates a container registry.                                             |
+| [New-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/new-azcontainerregistrywebhook)                     | Creates a container registry webhook.                                     |
+| [Remove-AzContainerRegistry](/powershell/module/az.containerregistry/remove-azcontainerregistry)                             | Removes a container registry.                                             |
+| [Remove-AzContainerRegistryManifest](/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest)             | Delete ACR manifest.                                                      |
+| [Remove-AzContainerRegistryRepository](/powershell/module/az.containerregistry/remove-azcontainerregistryrepository)         | Delete repository from ACR.                                               |
+| [Remove-AzContainerRegistryTag](/powershell/module/az.containerregistry/remove-azcontainerregistrytag)                       | Untag ACR tag.                                                            |
+| [Remove-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/remove-azcontainerregistrywebhook)               | Removes a container registry webhook.                                     |
+| [Test-AzContainerRegistryNameAvailability](/powershell/module/az.containerregistry/test-azcontainerregistrynameavailability) | Checks the availability of a container registry name.                     |
+| [Test-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/test-azcontainerregistrywebhook)                   | Triggers a webhook ping event.                                            |
+| [Update-AzContainerRegistry](/powershell/module/az.containerregistry/update-azcontainerregistry)                             | Updates a container registry.                                             |
+| [Update-AzContainerRegistryCredential](/powershell/module/az.containerregistry/update-azcontainerregistrycredential)         | Regenerates a login credential for a container registry.                  |
+| [Update-AzContainerRegistryManifest](/powershell/module/az.containerregistry/update-azcontainerregistrymanifest)             | Update ACR manifest.                                                      |
+| [Update-AzContainerRegistryRepository](/powershell/module/az.containerregistry/update-azcontainerregistryrepository)         | Update ACR repository.                                                    |
+| [Update-AzContainerRegistryTag](/powershell/module/az.containerregistry/update-azcontainerregistrytag)                       | Update ACR tag.                                                           |
+| [Update-AzContainerRegistryWebhook](/powershell/module/az.containerregistry/update-azcontainerregistrywebhook)               | Updates a container registry webhook.                                     |
 
 ## Next steps
 

@@ -1,11 +1,11 @@
 ---
 title: Deploy Kubernetes cluster with AKS engine on Azure Stack Hub 
 description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. 
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 11/16/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/16/2021
 
@@ -182,13 +182,16 @@ Proceed to deploy a cluster:
 
 Check your cluster by connect to **kubectl**, getting the info, and then the states of your nodes.
 
-1. Get the public IP address of one of your master nodes using the Azure Stack Hub portal.
+1. Get the `kubeconfig` file to connect to the control plane.
+    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly create cluster in this directory path `/kubeconfig/kubeconfig.json`. You can use add the `/kubeconfig.json` to the `.kube `directory to access your new cluster.  
+    If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the the instructions below to access the cluster from one of the control plane nodes.
+2. Get the public IP address of one of your control plane nodes using the Azure Stack Hub portal.
 
-2. From a machine with access to your Azure Stack Hub instance, connect via SSH into the new master node using a client such as PuTTY or MobaXterm. 
+3. From a machine with access to your Azure Stack Hub instance, connect via SSH into the new control plane node using a client such as PuTTY or MobaXterm. 
 
-3. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
+4. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
 
-4. Check that the cluster endpoints are running:
+5. Check that the cluster endpoints are running:
 
     ```bash
     kubectl cluster-info
@@ -202,7 +205,7 @@ Check your cluster by connect to **kubectl**, getting the info, and then the sta
     Metrics-server is running at https://democluster01.location.domain.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
     ```
 
-5. Then, review node states:
+6. Then, review node states:
 
     ```bash
     kubectl get nodes

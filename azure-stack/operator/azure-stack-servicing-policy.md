@@ -18,7 +18,7 @@ ms.lastreviewed: 03/18/2020
 
 # Azure Stack Hub servicing policy
 
-This article describes the servicing policy for Azure Stack Hub integrated systems and what you must do to keep your system in a supported state.
+Azure Stack Hub follows the [Modern Lifecycle Policy](/lifecycle/policies/modern). This article describes the servicing policy for Azure Stack Hub integrated systems and what you must do to [keep your system in a supported state](#keep-your-system-under-support).
 
 ## Download update packages for integrated systems
 
@@ -58,7 +58,7 @@ Occasionally, Microsoft provides hotfixes for Azure Stack Hub that address a spe
 
 Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack Hub. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Hub operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack Hub cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack Hub that's still in support. **Each hotfix for a specific iteration is cumulative and includes the previous hotfixes for that same version.** You can read more about the applicability of a specific hotfix in the corresponding KB article. See the release notes links in the previous section.
 
-Before you update to a new major version, apply the latest hotfix in the **current** major version. Operators should review and apply hotfixes as necessary, based on the current release notes. It's recommended that you keep your system updated with a hotfix that was released within 90 days since the most recently released hotfix.
+Before you update to a new major version, apply the latest hotfix in the **current** major version. It is recommended that cloud operators keep their scale units updated with hotfixes as they are released; for example, installing hotfixes within 45 days of their release date, if possible.
 
 Starting with build 2005, when you update to a **new** major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
 
@@ -70,7 +70,7 @@ Operators should maintain their OEM packages, and the recommendation is to be wi
 
 ## Keep your system under support
 
-For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions (N-1, N-2). The following support restrictions apply to systems that aren't within our general two preceding versions support policy:
+For your Azure Stack Hub instance to remain in a supported state, the instance must run the most recently released update version (N) or run either of the two preceding update versions (N-1, N-2). The following support restrictions apply to systems that aren't within our general two preceding versions support policy:
 
 - Hotfixes for the platform are provided for the current version and two preceding versions (N-1, N-2).
 - Root Cause Analysis (RCA) is provided for the current version and two preceding versions (N-1, N-2).

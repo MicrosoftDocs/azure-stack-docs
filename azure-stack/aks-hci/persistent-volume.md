@@ -1,10 +1,10 @@
 ---
 title: Use a persistent volume with  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
-ms.date: 05/18/2022
-ms.author: mabrigg 
+ms.date: 06/06/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 # Use a persistent volume with Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI on Windows Server
+> Applies to: Azure Stack HCI and Windows Server
 
 You can set up a persistent volume on Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. A *persistent volume* is the term used to represent a piece of storage that has been provisioned for use with Kubernetes pods. A persistent volume can be used by one or more pods and is meant for long-term storage. It is also independent of pod or node lifecycles.
 

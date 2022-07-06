@@ -41,7 +41,7 @@ This section provides a list of required firewall URLs. Make sure to include the
 
 The following table provides a list of required firewall URLs.
 
-[!INCLUDE [Required URLs table](includes/required-urls-table.md)]
+[!INCLUDE [Required URLs table](../../includes/required-urls-table.md)]
 
 ### [JSON](#tab/allow-json)
 
@@ -91,7 +91,7 @@ The following are the required firewall URLs in the JSON format. Use the Copy bu
     { 
         "URL": "https://dp.stackhci.azure.com (Azure Public)", 
         "Port": "443", 
-        "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
+        "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data. Note that this URL has been updated. Previously, this URL was: https://azurestackhci.azurefd.net. If you've already registered your cluster with the old URL, you must allowlist the old URL as well.” 
     }, 
     { 
         "URL": "https://dp.stackhci.azure.cn", 
@@ -114,7 +114,7 @@ This section provides a list of recommended firewall URLs. If your outbound fire
 
 The following table provides a list of recommended firewall URLs.
 
-[!INCLUDE [Recommended URLs table](includes/recommended-urls-table.md)]
+[!INCLUDE [Recommended URLs table](../../includes/recommended-urls-table.md)]
 
 ### [Json](#tab/allow-json)
 
@@ -230,6 +230,8 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
 - [Qualys](/azure/defender-for-cloud/deploy-vulnerability-assessment-vm#what-prerequisites-and-permissions-are-required-to-install-the-qualys-extension)
+- [Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/network-requirements)
+- [Windows Admin Center in Azure Portal](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=%2Fazure-stack%2Fhci%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json#networking-requirements)
 
 ## Firewall requirements for internal rules and ports
 

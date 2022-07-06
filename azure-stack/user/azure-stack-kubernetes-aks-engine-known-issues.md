@@ -1,11 +1,11 @@
 ---
 title: Known issues with the AKS engine on Azure Stack Hub 
 description: Learn Known issues using the AKS engine on Azure Stack Hub. 
-author: mattbriggs
+author: sethmanheim
 
 ms.topic: article
 ms.date: 11/1/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 11/1/2021
 
@@ -63,7 +63,7 @@ This topic covers known issues for the AKS engine on Azure Stack Hub.
     |**kube-proxy**	    | `kubectl delete ds kube-proxy -n kube-system`	|Connected, Disconnected |
     |**azure-cni-networkmonitor**	| `kubectl delete ds azure-cni-networkmonitor -n kube-system`	| Connected, Disconnected |
     |**csi-secrets-store**	|`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/secrets-store-csi-driver.yaml`<br>`kubectl delete ds csi-secrets-store -n kube-system` | Disconnected |
-    |**kubernetes-dashboard** |Run the following command on each master node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
+    |**kubernetes-dashboard** |Run the following command on each control plane node:<br>`sudo sed -i s/Always/IfNotPresent/g /etc/kubernetes/addons/kubernetes-dashboard.yaml` |Disconnected |
 
 * Kubernetes 1.17 is not supported in this release. Although there are GitHub pull requests (PR)s referencing 1.17, it is not supported.
 

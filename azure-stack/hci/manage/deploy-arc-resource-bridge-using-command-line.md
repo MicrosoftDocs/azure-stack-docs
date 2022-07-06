@@ -68,7 +68,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    
    **controlPlaneIP**: The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
    
-   **csv_path**: A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation; for example, `C:\ClusterStorage\contosoVol\`.
+   **csv_path**: A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation; for example, `C:\ClusterStorage\contosoVol`.
    
    **vLanID** (optional): vLAN identifier.
    
@@ -158,16 +158,16 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```
    **or b)** if you intend to install **Arc Resource Bridge side-by-side AKS** (and use different IP addresses than AKS is using.) - Example: Please replace the IP ranges with something meaningful for your environment.
    ```PowerShell
-   $arcbridge_vipPoolStart = "192.168.x.1"      # Following IPs should not overlap with AKS IPs   
-   $arcbridge_vipPoolEnd = "192.168.x.10"          
+   $arcbridge_vipPoolStart = "192.168.x.1"      #   These 2 IP ranges should be free (i.e. not be in use by AKS) 
+   $arcbridge_vipPoolEnd = "192.168.x.10" 
    $arcbridge_k8sNodeIpPoolStart = "192.168.x.11"
    $arcbridge_k8sNodeIpPoolEnd = "192.168.x.20"
-   $ipAddressPrefix = "192.168.x.0/24"
-   $gateway = "192.168.x.254"			# Your default gateway on the network
-   $dnsServers = "192.168.x.30"			# A valid DNS server. A record will be added. Should be able to resolve internet resources. Probably your domain controller on the network. 
-   $controlPlaneIP = "192.168.x.21"		# Arc Resource Bridge load balancer
-   $vswitchName = "extSwitch"    # Name of your(!) Hyper-V switch you used for AKS installation
-   $myaksnetwork = "myvnet"      # Name of your(!) vnet when executing New-AksHciNetworkSetting see https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell 
+   $ipAddressPrefix = "192.168.x.0/24"    # The CIDR of your management network
+   $gateway = "192.168.x.254"             # Your existing(!) default gateway on the network
+   $dnsServers = "192.168.x.30"           # Your existing(!) DNS server. A record will be added. Should be able to resolve internet resources. Probably your domain controller on the network. 
+   $controlPlaneIP = "192.168.x.21"		   # A free IP for the Arc Resource Bridge load balancer
+   $vswitchName = "extSwitch"    # Name of your existing(!) Hyper-V switch you used for AKS installation
+   $myaksnetwork = "myvnet"      # Name of your existing(!) vnet that was created e.g. when executing New-AksHciNetworkSetting see https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell 
    
    New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory "$csv_path\ResourceBridge" -vipPoolStart $arcbridge_vipPoolStart -vipPoolEnd $arcbridge_vipPoolEnd -k8sNodeIpPoolStart $arcbridge_k8sNodeIpPoolStart -k8sNodeIpPoolEnd $arcbridge_k8sNodeIpPoolEnd -controlPlaneIP $controlPlaneIP -dnsServers $dnsServers -vSwitchName $vSwitchName -gateway $gateway -ipAddressPrefix $ipAddressPrefix -vnetName $myaksnetwork
    ```
