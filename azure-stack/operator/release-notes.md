@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/20/2022
+ms.date: 07/06/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -52,7 +52,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2206"
 ## 2206 build reference
 
-The Azure Stack Hub 2206 update build number is **1.2206.x.xx**.
+The Azure Stack Hub 2206 update build number is **1.2206.0.6**.
 
 ### Update type
 
