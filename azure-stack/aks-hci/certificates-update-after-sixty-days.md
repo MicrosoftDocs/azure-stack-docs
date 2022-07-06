@@ -3,9 +3,9 @@ title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI an
 description: Learn how to update AKS certificates on Azure Stack HCI and Windows Server
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/05/2022
+ms.date: 07/06/2022
 ms.author: sethm 
-ms.lastreviewed: 07/05/2022
+ms.lastreviewed: 07/06/2022
 ms.reviewer: rbaziwane
 
 # Intent: As an IT pro, I want to update my certificates so that my Kubernetes cluster continues to operate.
@@ -13,7 +13,7 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Certificates and tokens
+# Update certificates
 
 Azure Kubernetes Service (AKS) on Windows Server and Azure Stack HCI uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
 
