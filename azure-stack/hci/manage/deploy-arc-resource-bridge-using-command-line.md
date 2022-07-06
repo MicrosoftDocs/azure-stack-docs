@@ -1,9 +1,9 @@
 ---
 title: Deploy Azure Arc Resource Bridge using command line
-description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using command line
+description: Learn how to deploy Azure Arc Resource Bridge on Azure Stack HCI using command line.
 author: ManikaDhiman
 ms.topic: how-to
-ms.date: 03/24/2022
+ms.date: 07/06/2022
 ms.author: v-mandhiman
 ms.reviewer: JasonGerend
 ---
@@ -22,7 +22,6 @@ This article describes how to use command line to deploy Azure Arc Resource Brid
 - [Creating custom location](#create-a-custom-location-by-installing-azure-arc-resource-bridge)
 - [Creating virtual network and gallery image](#create-virtual-network-and-gallery-image)
 
-
 If you want to deploy Azure Arc Resource Bridge using Windows Admin Center, see [Deploy Azure Arc Resource Bridge using Windows Admin Center](deploy-arc-resource-bridge-using-wac.md).
 
 For more information about VM provisioning through the Azure portal, see [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-enabled-virtual-machines.md).
@@ -37,7 +36,7 @@ Before you begin the Azure Arc Resource Bridge deployment, plan out and configur
 
 ## Install PowerShell modules and update extensions
 
-To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through Remote Desktop Protocol (RDP) or console session. Remote Powershell isn't supported.
+To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster and create a VM cluster-extension, perform these steps through Remote Desktop Protocol (RDP) or console session. Remote PowerShell isn't supported.
 
 1. Install the required PowerShell modules by running the following cmdlet as an administrator on all servers of the Azure Stack HCI cluster:
 
@@ -54,46 +53,64 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
    ```
 
-2. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster, using the parameters described below.
+2. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster. Refer to the following table for a description of these parameters.
 
    ```PowerShell
    $vswitchName="<Switch-Name>"
-   $controlPlaneIP="<IP-address>" 
+   $controlPlaneIP="<IP-address>"
    $csv_path="<input-from-admin>"
    $vlanID="<vLAN-ID>" (Optional)
-   $cloudServiceIP="<IP-address>" (Optional)
+   $VMIP="<static IP address for Resource Bridge VM>" (required only for static IP configurations)   
+   $DNSServers="<comma separated list of DNS servers>" (required only for static IP configurations)
+   $IPAddressPrefix="<subnet mask for the IP address>" (required only for static IP configurations)
+   $Gateway="<IPv4 address of the default gateway>" (required only for static IP configurations)
+   $cloudServiceIP="<IP-address>" (required only for static IP configurations)
    ```
 
-   **vswitchName**: Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.
+   where:
+
+   | Value | Description |
+   | ----- | ----------- |
+   | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
+   | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. |
+   | **csv_path** | A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation. For example: `C:\ClusterStorage\contosoVol`.|
+   | **vlanID** | (Optional) vLAN identifier. |
+   | **VMIP** | (Required only for static IP configurations) IP address for the Arc Resource Bridge. If you don't specify this parameter, the Arc Resource Bridge will get an IP address from DHCP. |
+   | **DNSServers** | (Required only for static IP configurations) Comma separated list of DNS servers. For example: "192.168.250.250","192.168.250.255". |
+   | **IPAddressPrefix** | (Required only for static IP configurations) The PrefixLength specifies the subnet mask for the IP address. For example: "192.168.0.0/16". |
+   | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
+   | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
+
+3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed or not.
+   - **If AKS on Azure Stack HCI and Windows Server is installed.** Skip this step and proceed to step 4 to update the required extensions.
+   - **If AKS on Azure Stack HCI and Windows Server is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
-   **controlPlaneIP**: The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
-   
-   **csv_path**: A CSV volume path that is accessible from all servers of the cluster. This is used for caching OS images used for the Azure Arc Resource Bridge. It also stores temporary configuration files during installation and cloud agent configuration files after installation; for example, `C:\ClusterStorage\contosoVol`.
-   
-   **vLanID** (optional): vLAN identifier.
-   
-   **cloudServiceIP** (required only for static IP configurations): The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be carved from the underlay network (physical network).
+      ### [For static IP address](#tab/for-static-ip-address)
 
-3. Prepare configuration for Azure Arc Resource Bridge:
+      ```PowerShell
+      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vlanID] -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix 
 
-   ```PowerShell
-   $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID]
-   Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable [-CloudServiceIP <$CloudServiceIP>]
-   Install-moc
-   ```
+      Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -CloudServiceIP $cloudServiceIP 
 
-   > [!NOTE]
-   > If Azure Kubernetes Service is already enabled on this cluster the above statements would not be required (and fail). You can still use / install the Arc Resource Bridge side-by-side with AKS onprem see [Limitations and known issues.](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues)
-   > To avoid issues, you should specify different IP addresses for the Arc resource bridge (i.e. that are not in use for AKS already) when using the New-ArcHciConfigFiles cmdlet - see below for a sample.
+      Install-Moc
+      ```
 
-   > [!TIP]
-   > To provide a static IP address to the Azure Arc Resource Bridge VM, replace the previous command with:
-   >
-   > ```powershell
-   > $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vLANID] -k8snodeippoolstart $staticIPaddress -k8snodeippoolend $staticIPaddress -gateway $gateway -dnsservers $dnsservers -ipaddressprefix $ipaddressprefix
-   > ```
+      ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
-4. Update the required extensions:
+      ```PowerShell
+      $vnet=New-MocNetworkSetting -Name hcirb-vnet -vswitchName $vswitchName -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP [-vLanID=$vlanID] 
+
+      Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable
+
+      Install-Moc
+      ```
+
+      ---
+
+      > [!TIP]
+      > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
+
+4. Update the required extensions.
    
    - Uninstall the old extensions:
      
@@ -121,7 +138,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
 To create a custom location, install Azure Arc Resource Bridge by launching an elevated PowerShell window and perform these steps:
 
-1. Provide inputs for the following, using the parameters described below.
+1. Provide inputs for the following, using the parameters described as follows.
    
    ```PowerShell
    $resource_group="<pre-created resource group in Azure>"
@@ -131,9 +148,9 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```
    
    > [!TIP]
-   > Run `Get-AzureStackHCI`to find these details.
+   > Run `Get-AzureStackHCI` to find these details.
 
-2. Log in to your Azure subscription and get the extension and providers for Azure Arc Resource Bridge:
+2. Sign in to your Azure subscription and get the extension and providers for Azure Arc Resource Bridge:
    
    ```azurecli
    az login --use-device-code
@@ -145,46 +162,44 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    az provider register --namespace Microsoft.AzureStackHCI
    az feature register --namespace Microsoft.ResourceConnector --name Appliances-ppauto
    ```
-   
-3. Run the following cmdlets:
 
-   ```PowerShell
-   $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
-   mkdir $csv_path\ResourceBridge
-   ```
-   **either a)** if you intend to install **Arc Resource Bridge standalone** (and want to use the MocNetworkSettings from above) 
-   ```PowerShell
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge
-   ```
-   **or b)** if you intend to install **Arc Resource Bridge side-by-side AKS** (and use different IP addresses than AKS is using.) - Example: Please replace the IP ranges with something meaningful for your environment.
-   ```PowerShell
-   $arcbridge_vipPoolStart = "192.168.x.1"      #   These 2 IP ranges should be free (i.e. not be in use by AKS) 
-   $arcbridge_vipPoolEnd = "192.168.x.10" 
-   $arcbridge_k8sNodeIpPoolStart = "192.168.x.11"
-   $arcbridge_k8sNodeIpPoolEnd = "192.168.x.20"
-   $ipAddressPrefix = "192.168.x.0/24"    # The CIDR of your management network
-   $gateway = "192.168.x.254"             # Your existing(!) default gateway on the network
-   $dnsServers = "192.168.x.30"           # Your existing(!) DNS server. A record will be added. Should be able to resolve internet resources. Probably your domain controller on the network. 
-   $controlPlaneIP = "192.168.x.21"		   # A free IP for the Arc Resource Bridge load balancer
-   $vswitchName = "extSwitch"    # Name of your existing(!) Hyper-V switch you used for AKS installation
-   $myaksnetwork = "myvnet"      # Name of your existing(!) vnet that was created e.g. when executing New-AksHciNetworkSetting see https://docs.microsoft.com/en-us/azure-stack/aks-hci/kubernetes-walkthrough-powershell 
+3. Run the following cmdlets based on your networking configurations:
+
+   ### [For static IP address](#tab/for-static-ip-address)
+
+      ```PowerShell
+      $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
+      mkdir $csv_path\ResourceBridge
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix
+      az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
+      ```
+
+      ```PowerShell
+      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+      ```
    
-   New-ArcHciConfigFiles -subscriptionID $subscription -location $Location -resourceGroup $resource_group -resourceName $resource_name -workDirectory "$csv_path\ResourceBridge" -vipPoolStart $arcbridge_vipPoolStart -vipPoolEnd $arcbridge_vipPoolEnd -k8sNodeIpPoolStart $arcbridge_k8sNodeIpPoolStart -k8sNodeIpPoolEnd $arcbridge_k8sNodeIpPoolEnd -controlPlaneIP $controlPlaneIP -dnsServers $dnsServers -vSwitchName $vSwitchName -gateway $gateway -ipAddressPrefix $ipAddressPrefix -vnetName $myaksnetwork
-   ```
-   Execute the following to dowload the appliance to the ResourceBridge folder (may take a while)
-   ```PowerShell
-   az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
-   ```
-   This will deploy the Arc Resource Bridge:
-   ```PowerShell
-   az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
-   ```  
+      ```PowerShell
+      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
+      ```
    
-   To create the Arc Resource Bridge, run:
-   ```PowerShell
-   az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
-   ```
+   ### [For dynamic IP address](#tab/for-dynamic-ip-address)
+
+      ```PowerShell
+      $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
+      mkdir $csv_path\ResourceBridge
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP
+      az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
+      ```
+
+      ```PowerShell
+      az arcappliance deploy hci --config-file  $csv_path\ResourceBridge\hci-appliance.yaml --outfile $env:USERPROFILE\.kube\config
+      ```
    
+      ```PowerShell
+      az arcappliance create hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml --kubeconfig $env:USERPROFILE\.kube\config
+      ```
+   ---
+
 4. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
 
    ```azurecli
@@ -223,7 +238,9 @@ Now that the custom location is available, you can create or add virtual network
    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName
    ```
 
-2. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described below. Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
+2. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table. 
+   
+   Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
 
    ```azurecli
    $galleryImageName=<gallery image name>
@@ -232,11 +249,13 @@ Now that the custom location is available, you can create or add virtual network
    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
    ```
    
-   **galleryImageName**: Name of the gallery image, for example: "win-os". Note that Azure rejects all names that contains the keyword "Windows".
-   
-   **galleryImageSourcePath**: Path to the source gallery image VHDX. Example: "C:\OSImages\winos.vhdx"
-   
-   **osType**: The OS type. Can be "Windows" or "Linux". Example: "Windows"
+   where:
+
+   | Value | Description |
+   | ----- | ----------- |
+   | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
+   |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\OSImages\winos.vhdx". |
+   | **osType** | The OS type. This can be "Windows" or "Linux"; for example, "Windows". |
 
 ## Next steps
 
