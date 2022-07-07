@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/28/2022
+ms.date: 07/06/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -19,11 +19,11 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2008"
+::: moniker range=">=azs-2102"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
-::: moniker range="<azs-2008"
+::: moniker range="<azs-2102"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -233,94 +233,12 @@ After the installation of 2102, if any hotfixes for 2102 are subsequently releas
 - [Azure Stack Hub hotfix 1.2102.30.147](hotfix-1-2102-30-147.md)
 ::: moniker-end
 
-::: moniker range="azs-2008"
-## 2008 build reference
-
-The latest Azure Stack Hub 2008 update build number is **1.2008.40.149**. For updated build and hotfix information, see the [Hotfixes](#hotfixes-1) section.
-
-### Update type
-
-The Azure Stack Hub 2008 update build type is **Full**.
-
-The 2008 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The 2008 update has had the following expected runtimes in our internal testing- 4 nodes: 13-20 hours, 8 nodes: 16-26 hours, 12 nodes: 19-32 hours, 16 nodes: 22-38 hours. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2008 update and should not be compared to other Azure Stack Hub updates.
-
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
-
-### What's new
-
-- Azure Stack Hub now supports VNET peering, which gives the ability to connect VNETs without a Network Virtual Appliance (NVA). For more information, see the [new VNET peering documentation](../user/virtual-network-peering.md).
-- Azure Stack Hub blob storage now enables users to use an immutable blob. By setting immutable policies on a container, you can store business-critical data objects in a WORM (Write Once, Read Many) state. In this release, immutable policies can only be set through the REST API or client SDKs. Append blob writes are also not possible in this release. For more information about immutable blobs, see [Store business-critical blob data with immutable storage](/azure/storage/blobs/storage-blob-immutable-storage).
-- Azure Stack Hub Storage now supports Azure Storage services APIs version **2019-07-07**. For Azure client libraries that is compatible with the new REST API version, see [Azure Stack Hub storage development tools](../user/azure-stack-storage-dev.md#azure-client-libraries). For Azure Storage services management APIs, **2018-02-01** has been add of support, with a subset of total available features.
-- Azure Stack Hub compute now supports Azure Compute APIs version **2020-06-01**, with a subset of total available features.
-- Azure Stack Hub managed disks now support Azure Disk APIs version **2019-03-01**, with a subset of the available features.
-- Preview of Windows Admin Center that can now connect to Azure Stack Hub to provide in-depth insights into the infrastructure during support operations (break-glass required).
-- Ability to add login banner to the privileged endpoint (PEP) at deployment time.
-- Released more **Exclusive Operations** banners, which improve the visibility of operations that are currently happening on the system, and disable users from initiating (and later failing) any other exclusive operation.
-- Introduced two new banners in each Azure Stack Hub Marketplace item's product page. If there is a Marketplace download failure, operators can view error details and attempt recommended steps to resolve the issue.
-- Released a rating tool for customers to provide feedback. This will enable Azure Stack Hub to measure and optimize the customer experience.
-- This release of Azure Stack Hub includes a private preview of Azure Kubernetes Service (AKS) and Azure Container Registry (ACR). The purpose of the private preview is to collect feedback about the quality, features, and user experience of AKS and ACR on Azure Stack Hub.
-- This release includes a public preview of Azure CNI and Windows Containers using [AKS Engine v0.55.4](../user/kubernetes-aks-engine-release-notes.md). For an example of how to use them in your API model, [see this example on GitHub](https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-windows.json).
-- There is now support for [Istio 1.3 deployment](https://github.com/Azure/aks-engine/tree/master/examples/service-mesh) on clusters deployed by [AKS Engine v0.55.4](../user/kubernetes-aks-engine-release-notes.md). For more information, [see the instructions here](../user/kubernetes-aks-engine-service-account.md).
-- There is now support for deployment of [private clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/features.md#private-cluster) using [AKS Engine v0.55.4](../user/kubernetes-aks-engine-release-notes.md).
-- This release includes support for [sourcing Kubernetes configuration secrets](https://github.com/Azure/aks-engine/blob/master/docs/topics/keyvault-secrets.md#use-key-vault-as-the-source-of-cluster-configuration-secrets) from Azure and Azure Stack Hub Key Vault instances.
-
-### Improvements
-
-- Implemented internal monitoring for Network Controller and SLB host agents, so the services are auto-remediated if they ever enter into a stopped state.
-- Active Directory Federation Services (AD FS) now retrieves the new token signing certificate after the customer has rotated it on their own AD FS server. To take advantage of this new capability for already configured systems, the AD FS integration must be configured again. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
-- Changes to the startup and shutdown process on infrastructure role instances and their dependencies on scale unit nodes. These changes increase the reliability for Azure Stack Hub startup and shutdown.
-- The **AzSScenarios** suite of the **Test-AzureStack** validation tool has been updated to enable Cloud Service Providers to run this suite successfully with multi-factor authentication enforced on all customer accounts.
-- Improved alert reliability by adding suppression logic for 29 customer facing alerts during lifecycle operations.
-- You can now view a detailed log collection HTML report that provides details on the roles, duration, and status of the log collection. The purpose of this report is to help users provide a summary of the logs collected. Microsoft Customer Support Services can then quickly assess the report to evaluate the log data, and help to troubleshoot and mitigate system issues.
-- The infrastructure fault detection coverage has been expanded with the addition of 7 new monitors across user scenarios such as CPU utilization and memory consumption, which helps to increase the reliability of fault detection.
-
-### Changes
-
-- The **supportHttpsTrafficOnly** storage account resource type property in SRP API version **2016-01-01** and **2016-05-01** has been enabled, but this property is not supported in Azure Stack Hub.
-- Raised volume capacity utilization alert threshold from 80% (warning) and 90% (critical) to 90% (warning) and 95% (critical). For more information, see [Storage space alerts](azure-stack-manage-storage-shares.md#storage-space-alerts)
-- The AD Graph configuration steps change with this release. For more information, see [Integrate AD FS identity with your Azure Stack Hub datacenter](azure-stack-integrate-identity.md).
-- To align to the current best practices defined for Windows Server 2019, Azure Stack Hub is changing to use an additional traffic class or priority to further separate server-to-server communication in support of the Failover Clustering control communication. The result of these changes provides better resiliency for Failover Cluster communication. This traffic class and bandwidth reservation configuration is accomplished by a change on the top-of-rack (ToR) switches of the Azure Stack Hub solution and on the host or servers of Azure Stack Hub.
-
-  These changes are added at the host level of an Azure Stack Hub system. Contact your OEM to make the change at the top-of-rack (ToR) network switches. This ToR change can be performed either prior to updating to the 2008 release or after updating to 2008. For more information, see the [Network Integration documentation](azure-stack-network.md).
-
-- The GPU capable VM sizes **NCas_v4 (NVIDIA T4)** have been replaced in this build with the VM sizes **NCasT4_v3**, to be consistent with Azure. Those are not visible in the portal yet, and can only be used via Azure Resource Manager templates.
-
-### Fixes
-
-- Fixed an issue in which deleting an NSG of a NIC that is not attached to a running VM failed.
-- Fixed an issue in which modifying the **IdleTimeoutInMinutes** value for a public IP that is associated to a load balancer put the public IP in a failed state.
-- Fixed the **Get-AzsDisk** cmdlet to return the correct **Attached** status, instead of **OnlineMigration**, for attached managed disks.
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes regularly. Make sure you install the latest 2005 hotfix before updating to 2008. Also, starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically. Your 2008 installation is then current with all hotfixes. From that point forward, if a hotfix is released for 2008, you should install it.
-
-> [!NOTE]
-> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
-
-For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
-
-> [!TIP]
-> If you want to be notified about each hotfix release, subscribe to the [**RSS feed**](https://azurestackhubdocs.azurewebsites.net/xml/hotfixes.rss) to be notified about each hotfix release.
-
-### After successfully applying the 2008 update
-
-Because Azure Stack Hub hotfixes are cumulative, as a best practice you should install all hotfixes released for your build, to ensure the best update experience between major releases. When you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any are available at the time of package download) in the new major version are installed automatically.
-
-After the installation of 2008, if any 2008 hotfixes are subsequently released, you should install them:
-
-- [Azure Stack Hub hotfix 1.2008.41.163](hotfix-1-2008-41-163.md)
-::: moniker-end
-
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2008"
+## 2008 archived release notes
+::: moniker-end
 ::: moniker range="azs-2005"
 ## 2005 archived release notes
 ::: moniker-end
@@ -379,6 +297,6 @@ After the installation of 2008, if any 2008 hotfixes are subsequently released, 
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2008"
+::: moniker range="<azs-2102"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
