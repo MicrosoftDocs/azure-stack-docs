@@ -53,8 +53,6 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
     > [!NOTE]
     > If Arc Resource Bridge is already deployed, you should not deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
-    While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-    **new-MocNetworkSetting**, **set-MocConfig**, and **install-Moc**.
 
 - You must uninstall these in the following order:
 
@@ -64,7 +62,6 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
-- If only Arc Resource Bridge needs to be uninstalled, skip the step **uninstall-moc** for Azure Kubernetes Service to continue running on the cluster.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
 - You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.

@@ -4,7 +4,7 @@ description: Learn about different features and considerations when working with
 author: BryanLa
 
 ms.topic: article
-ms.date: 07/30/2021
+ms.date: 02/02/2022
 ms.author: bryanla
 ms.reviewer: thoroet
 ms.lastreviewed: 07/15/2021
@@ -33,7 +33,7 @@ Azure Stack Hub virtual machines (VMs) provide on-demand, scalable computing res
 | Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of the VM, which the disks are attached to. For more info, refer to the [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md) article.
 | OS Disk Swap | If you have an existing VM, but you want to swap the disk for a backup disk or another OS disk, you can [swap the OS disks](/azure/virtual-machines/windows/os-disk-swap). You don't have to delete and recreate the VM. You can even use a managed disk in another resource group, as long as it isn't already in use. | OS Disk Swap is not supported on Azure Stack Hub. |
 | API versions | Azure always has the latest API versions for all the VM features. | Azure Stack Hub supports specific Azure services and specific API versions for these services. To view the list of supported API versions, refer to the [API versions](#api-versions) section of this article. |
-| Azure Instance Metadata Service | The Azure Instance Metadata Service provides info about running VM instances that can be used to manage and set up your VM.  | The Azure Instance Metadata Service isn't supported on Azure Stack Hub. |
+| Azure Instance Metadata Service | The Azure Instance Metadata Service provides info about running VM instances that can be used to manage and set up your VM.  | The Azure Instance Metadata Service is available as a public preview with the Azure Stack Hub hotfix 1.2108.2.73. It supports the Compute & Network namespace. For more information, see [Azure Instance Metadata Service](instance-metadata-service.md). |
 | Virtual machine availability sets|Multiple fault domains (2 or 3 per region).<br>Multiple update domains.|Multiple fault domains (2 or 3 per region).<br>Single update domain, with live migration to protect workloads during update. 20 update domains supported for template compatibility.<br>VM and availability set should be in the same location and resource group.|
 | Virtual machine scale sets|Autoscale is supported.|Autoscale isn't supported.<br><br>Add more instances to a scale set using the portal, Resource Manager templates, or PowerShell. |
 | Cloud Witness | Select the endpoints from the storage account properties available in Azure Stack Hub. | [Cloud Witness](/windows-server/failover-clustering/deploy-cloud-witness) is a type of Failover Cluster quorum witness that uses Microsoft Azure to provide a vote on cluster quorum.<br>The endpoints in global Azure compared to Azure Stack Hub may look like:<br>For global Azure:<br>`https://mywitness.blob.core.windows.net/`<br>For Azure Stack Hub:<br>`https://mywitness.blob.<region>.<FQDN>/`|
@@ -41,7 +41,7 @@ Azure Stack Hub virtual machines (VMs) provide on-demand, scalable computing res
 | Nested virtualization VM sizes | Supported | Supported from release 2102 and later. |
 | Reserved VM instances | Supported | Not supported. |
 | VM deallocation | Supported | Supports VM deallocation. The guest operating system recognizes all network adapters as the same device, and maintains settings. |
-| SAP workload certification | Azure supports [SAP workload certifications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications), including HANA, NetWeaver, and others. | Azure Stack Hub hardware does not support certification of any SAP workloads. |
+| SAP workload certification | Azure supports [SAP workload certifications](/azure/virtual-machines/workloads/sap/sap-certifications), including HANA, NetWeaver, and others. | Azure Stack Hub hardware does not support certification of any SAP workloads. |
 
 ## VM sizes
 

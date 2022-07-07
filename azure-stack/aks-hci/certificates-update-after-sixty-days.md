@@ -1,11 +1,11 @@
 ---
-title: Updating AKS on Azure Stack HCI and Windows Server after 60-days
-description: Learn how to update AKS on Azure Stack HCI and Windows Server after 60-days
-author: mattbriggs
+title: Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to update AKS certificates on Azure Stack HCI and Windows Server
+author: sethmanheim
 ms.topic: how-to
-ms.date: 05/31/2022
-ms.author: mabrigg 
-ms.lastreviewed: 05/31/2022
+ms.date: 07/06/2022
+ms.author: sethm 
+ms.lastreviewed: 07/06/2022
 ms.reviewer: rbaziwane
 
 # Intent: As an IT pro, I want to update my certificates so that my Kubernetes cluster continues to operate.
@@ -13,49 +13,70 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Update certificates on AKS on Azure Stack HCI and Windows Server after 60 days
+# Update certificates
 
-If Azure Kubernetes Service (AKS) on Azure Stack HCI deployment is more than 60 days old, follow the instructions in this article before upgrading the cluster:
+Azure Kubernetes Service (AKS) on Windows Server and Azure Stack HCI uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
 
-## Before upgrading
+## Cloud agent
 
-1. Check that AKS on Azure Stack HCI and Windows Server cluster isn't out-of-policy.
+When you deploy AKS on Windows Server and Azure Stack HCI, it installs agents that are used to perform various functions within the cluster. These agents include:
 
-    If you created a management cluster but haven't deployed a workload cluster in the first 90 days, you should be blocked from creating new workload clusters or node pools. The AKS cluster is out-of-policy.
-    
-    Follow the instructions [AKS on Azure Stack HCI goes out-of-policy if a workload cluster hasn't been created in 60 days.](/azure-stack/aks-hci/known-issues-upgrade#aks-on-azure-stack-hci-goes-out-of-policy-if-a-workload-cluster-hasn-t-been-created-in-60-days-) to resolve the issue.
+- Cloud agent: a service that is responsible for the underlying platform orchestration.
+- Node agent: a service that resides on each node that does the actual work of virtual machine creation, deletion, etc.
+- Key Management System (KMS) pod: a service responsible for key management.
+- Other services - cloud operator, certificate manager, etc.
 
-2. Check that you can reach the management cluster `api-server`.
+The cloud agent service in Azure Kubernetes Service on Azure Stack HCI and Windows Server is responsible for orchestrating the create, read, update, and delete (CRUD) operations of infrastructure components such as Virtual Machines (VMs), Virtual Network Interfaces (VNICs), and Virtual Networks (VNETs) in the cluster.
 
-    Run [`Get-AksHciCluster`](./reference/ps/get-akshcicluster.md) and verify that the command returns cluster information. If the command results an error message that says the certificate has expired or valid token required,  the certificate required for one of the management cluster services to communicate to the cloud agent has expired. You'll need to renew the certificate.
+To communicate with the cloud agent, clients require certificates to be provisioned in order to secure this communication. Each client requires an identity to be associated with it, which defines the Role Based Access Control (RBAC) rules associated with the client. Each identity consists of two entities:
 
-    The user is expected to relogin once the certificate expires. Execute the following command in PowerShell to relogin.
-    ```powershell
-    Repair-MocLogin
-    ```
+- A token, used for initial authentication, which returns a certificate, and
+- A certificate, obtained from the above sign-in process, and used for authentication in any communication.
 
-    For more information, see [Mocctl certificate expired if not used for more than 60 days](https://github.com/Azure/aks-hci/issues/168).
+Each entity is valid for a specific period (the default is 90 days), at the end of which it expires. For continued access to the cloud agent, each client requires the certificate to be renewed and the token rotated.
 
-3. Check that you can reach the workload cluster `api-server`.
+## Certificate types
 
-    Run any `kubectl` command to verify that you can access each workload cluster. If the command results in unable to connect to server error message,  a certificate required for one of the services to communicate to the cloud agent has expired and requires renewal.
-    
-    Follow the following instructions: `need instructions`
+There are two types of certificates used in AKS:
 
-## Troubleshooting
+- Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
+- Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 60 to 90 days.
 
-The following steps may help resolve common issues with the certificates.
-### Upgrade process seems to be hanging
+Currently, not all clients automatically renew their respective certificates or rotate tokens on a regular basis. Clients that automatically renew the certificate or rotate the tokens currently do the auto-rotation and auto-renewal on a frequent basis. Clients that don't have the capability to automatically renew the certificate must sign back in using a token to continue accessing the cloud agent. Sometimes these clients won't have a valid token and thus require manual rotation of the token.
 
-During the upgrade process, the node agent service fails to start due to token expiry on restart. The failure may cause the upgrade to hang.
+Microsoft recommends that you update clusters within 60 days of a new release, not only for ensuring that internal certificates and tokens are kept up to date, but also to make sure that you get access to new features, bug fixes, and to stay up to date with critical security patches. During these monthly updates, the update process rotates any tokens that can't be auto-rotated during normal operations of the cluster. Certificate and token validity is reset to the default 90 days from the date that the cluster is updated.
 
-Follow the instructions [Nodeagent leaking ports when unable to join cloudagent due to expired token when cluster not upgraded for more than 60 days](/azure-stack/aks-hci/known-issues-upgrade#nodeagent-leaking-ports-when-unable-to-join-cloudagent-due-to-expired-token-when-cluster-not-upgraded-for-more-than-60-days-) to resolve the issue.
+Starting with the May 2022 update, customers who are unable to update within the 60-day window can still ensure that internal certificates and tokens are up to date by manually triggering the renew/rotation of these entities.
 
-## Post upgrading, check that the certificate renewal pod is in running state
+## Update management cluster certificates and tokens
 
-After you upgrade or scaling up the workload cluster, the certificate renewal pod may run into a crash loop state.
+To update tokens and certificates for all clients in the  management cluster, including NodeAgent, KVA, KMS, CloudOperator, CSI, CertManager, CAPH, and CloudProvider, open a new PowerShell window and run the following cmdlet:
 
-Follow the instructions [Certificate renewal pod is in a crash loop state](/azure-stack/aks-hci/known-issues-upgrade#certificate-renewal-pod-is-in-a-crash-loop-state-).
+```powershell
+Update-AksHciCertificates
+```
+
+## Update workload cluster certificates and tokens
+
+To update tokens and certificates of all clients in a target cluster, including KMS, CSI, CertManager, and CloudProvider, open a new PowerShell window and run the following cmdlet:
+
+```powershell
+Update-AksHciClusterCertificates -fixCloudCredentials
+```
+
+## Rotate the CA certificates
+
+> [!WARNING]
+> Rotating CA certificates is a disruptive operation and requires minimal downtime, to be planned beforehand. During this operation, all clients lose communication with the cloud agent, so this operation must be used with caution.
+
+To rotate the CA certificates, open a new PowerShell window and run the following cmdlet:
+
+```powershell
+Invoke-AksHciRotateCACertificate
+```
+
 ## Next steps
 
-Learn about [Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server](certificates-and-tokens.md)
+- [Security concepts in AKS on Azure Stack HCI and Windows Server](concepts-security.md)
+- [Secure communication with certificates](secure-communication.md)
+- [Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server](certificates-and-tokens.md)
