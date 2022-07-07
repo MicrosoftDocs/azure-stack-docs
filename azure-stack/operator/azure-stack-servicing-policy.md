@@ -48,10 +48,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-<!-- - [Azure Stack Hub 2206 update](./release-notes.md?preserve-view=true&view=azs-2206) -->
+- [Azure Stack Hub 2206 update](./release-notes.md?preserve-view=true&view=azs-2206)
 - [Azure Stack Hub 2108 update](./release-notes.md?preserve-view=true&view=azs-2108)
 - [Azure Stack Hub 2102 update](./release-notes.md?preserve-view=true&view=azs-2102)
-- [Azure Stack Hub 2008 update](./release-notes.md?preserve-view=true&view=azs-2008)
 
 ## Hotfixes
 

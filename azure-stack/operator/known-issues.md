@@ -34,6 +34,60 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 
+::: moniker range="azs-2206"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+<!-- ## Compute -->
+
+## Alerts
+
+### Geographical region not provided
+
+- Applicable: This issue applies to release 2206.
+- Cause: The alert **Geographical region not provided** is displayed, and asks you to make a choice for Schrems II compliance.
+- Remediation: You can run the following PowerShell cmdlet to set geographical preference: 
+
+   ```powershell
+   Set-DataResidencyLocation -Europe:$true or $false 
+   ```
+
+   The residency location for the data will be updated and all data will be stored and processed in the EU. Close this alert manually, or ignore it after the geographical region preference appears in the admin portal (as described in [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub)). The alert remains active for up to one week, even after the choice is made.
+- Occurrence: Common
+
+### Encryption recovery keys retrieval warning
+
+- Applicable: This issue applies to release 2206 and later.
+- Cause: An **Encryption recovery keys retrieval** warning is displayed, and asks you to retrieve and securely store the encryption recovery keys outside of Azure Stack Hub. The warning occurs to ensure that you have retrieved the recovery keys. If you have previously retrieved the recovery keys and are getting this alert after the 2206 update (or beyond), please make sure to collect the recovery keys again. Recovery keys may be required in the case where host nodes display the BitLocker recovery key screen after unplanned reboots; for example, power outages.
+- Remediation: Retrieve the encryption keys and store them in a secure location outside of Azure Stack Hub. From the PEP, run the following command, and save the recovery keys that are returned:
+
+   ```powershell
+   ## Retrieves recovery keys for all volumes that are encrypted with BitLocker
+   Get-AzsRecoveryKeys -raw
+   ```
+
+   For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys). Note that the alert will automatically close within 24 hours after running **Get-AzsRecoveryKeys** and storing those recovery keys in a secure location outside of Azure Stack Hub.
+- Occurrence: Common
+
+<!-- ## Portal -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
+
 ::: moniker range="azs-2108"
 ## Update
 
