@@ -102,6 +102,37 @@ The assessments include the following standards:
 
 The compliance documentation can be found on the [Microsoft Service Trust Portal](https://aka.ms/azurestackcompliance). The compliance guides are a protected resource and require you to sign in with your Azure cloud service credentials.
 
+::: moniker range=">=azs-2206"
+### EU Schrems II initiative for Azure Stack Hub
+
+Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure Stack Hub customers. See [Answering Europe’s Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
+
+Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert.
+
+:::image type="content" source="media/azure-stack-security-foundations/geo-region-alert.png" alt-text="Screenshot that shows Azure Stack Hub Admin portal Dashboard Alerts window with the Geographical Region Not Provided alert listed." lightbox="media/azure-stack-security-foundations/geo-region-alert.png":::
+
+> [!NOTE]  
+> Disconnected environments may also be required to select a data geolocation. This is a one-time setup that impacts the data residency location if the operator is providing diagnostic data to Microsoft. If the operator does not provide any diagnostic data to Microsoft this setting does not have any ramifications.
+
+You can resolve this alert for your existing Azure Stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
+
+- If you opt to have your data stored and processed **within the EU**, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be stored and processed in the EU.
+  ```powershell
+  Set-DataResidencyLocation -Europe
+  ```
+
+- If you opt to have your data stored and processed outside the EU, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be processed outside the EU.
+  ```powershell
+  Set-DataResidencyLocation -Europe:$false
+  ```
+
+After you resolve this alert, you can verify your geographical region preference in the Admin portal Properties window.
+
+:::image type="content" source="media/azure-stack-security-foundations/data-geolocation-set.png" alt-text="Screenshot that shows Azure Stack Hub Admin portal Properties window with the Data Geolocation property now set to Europe." lightbox="media/azure-stack-security-foundations/data-geolocation-set.png":::
+
+New Azure Stack hub deployments can set geographical region during set up and deployment. 
+::: moniker-end
+
 ## Next steps
 
 - [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md)

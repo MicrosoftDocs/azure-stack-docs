@@ -55,8 +55,6 @@
         href: concepts-security.md
       - name: Container security
         href: container-security.md
-      - name: Certificates and tokens
-        href: certificates-and-tokens.md
       - name: Update certificates
         href: certificates-update-after-sixty-days.md
 

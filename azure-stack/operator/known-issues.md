@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/12/2022
+ms.date: 07/06/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -21,11 +21,11 @@ This article lists known issues in Azure Stack Hub releases. The list is updated
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2008"
+::: moniker range=">=azs-2102"
 > [!IMPORTANT]  
-> Review this section before applying the update.
+> Review this article before applying the update.
 ::: moniker-end
-::: moniker range="<azs-2008"
+::: moniker range="<azs-2102"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
@@ -223,100 +223,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ### Marketplace -->
 ::: moniker-end
 
-::: moniker range="azs-2008"
-## Update
-
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
-
-### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
-
-- Applicable: This issue applies to all supported releases.
-- Cause: During update, a process takes a lock on the new content that needs to be copied to CA VM. When the update fails, the lock is released.
-- Remediation: Resume the update.
-- Occurrence: Rare
-
-## Portal
-
-### Administrative subscriptions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
-- Occurrence: Common
-
-## Networking
-
-### Network Security Groups
-
-#### VM deployment fails due to DenyAllOutbound rule
-
-- Applicable: This issue applies to all supported releases.
-- Cause: An explicit **DenyAllOutbound** rule to the internet cannot be created in an NSG during VM creation as this will prevent the communication required for the VM deployment to complete. It will also deny the two essential IPs that are required in order to deploy VMs: DHCP IP:169.254.169.254 and DNS IP: 168.63.129.16.
-
-- Remediation: Allow outbound traffic to the internet during VM creation, and modify the NSG to block the required traffic after VM creation is complete.
-- Occurrence: Common
-
-### Virtual Network Gateway
-
-#### Documentation links are Azure-specific
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
-
-  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
-  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
-
-### Load Balancer
-
-#### Load Balancer rules
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Updating/changing the load distribution property (session persistence) has no effect and some virtual machines might not participate in the traffic load distribution. For example, if you have 4 backend virtual machines and only 2 clients connecting to the load balancer, and the load distribution is set to client IP, the client sessions will always use the same backend virtual machines. Changing the load distribution property to "none" to distribute the client connections across all the backend virtual machines will have no effect.
-- Remediation: Recreating the load balancing rule will ensure the selected settings are correctly configured to all backend VMs.
-- Occurrence: Common
-
-#### Load Balancer directing traffic to one backend VM in specific scenarios
-
-- Applicable: This issue applies to all supported releases. 
-- Cause: When enabling **Session Affinity** on a load balancer, the 2 tuple hash utilizes the PA IP (Physical Address IP) instead of the private IPs assigned to the VMs. In scenarios where traffic directed to the load balancer arrives through a VPN, or if all the client VMs (source IPs) reside on the same node and Session Affinity is enabled, all traffic is directed to one backend VM.
-- Occurrence: Common
-
-#### IPv6 button visible on "Add frontend IP address" 
-
-- Applicable: This issue applies to the 2008 release.
-- Cause: The IPv6 button is visible and enabled when creating the frontend IP configuration of a public load balancer. This is a cosmetic issue on the portal. IPv6 is not supported on Azure Stack Hub.
-- Occurrence: Common
-
-#### Backend port and frontend port need to be the same when floating IP is enabled
-
-- Applicable: This issue applies to all releases. 
-- Cause: Both the frontend port and backend port need to be the same in the load balancing rule when floating IP is enabled. This behavior is by design.
-- Occurrence: Common
-
-## Compute
-
-### Stop or start VM
-
-#### Stop-Deallocate VM results in MTU configuration removal
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Performing **Stop-Deallocate** on a VM results in MTU configuration on the VM to be removed. This behavior is inconsistent with Azure.
-- Occurrence: Common
-
-
-
-<!-- ## Storage -->
-<!-- ## SQL and MySQL-->
-<!-- ## App Service -->
-<!-- ## Usage -->
-<!-- ### Identity -->
-<!-- ### Marketplace -->
-::: moniker-end
-
-::: moniker range=">=azs-2008"
+::: moniker range=">=azs-2102"
 ## Archive
 
 To access archived known issues for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
@@ -330,6 +237,9 @@ To access archived known issues for an older version, use the version selector d
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2008"
+## 2008 archived known issues
+::: moniker-end
 ::: moniker range="azs-2005"
 ## 2005 archived known issues
 ::: moniker-end
@@ -388,6 +298,6 @@ To access archived known issues for an older version, use the version selector d
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-2008"
+::: moniker range="<azs-2102"
 You can access older versions of Azure Stack Hub known issues in the table of contents on the left side, under the [Resources > Release notes archive](./relnotearchive/known-issues.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
