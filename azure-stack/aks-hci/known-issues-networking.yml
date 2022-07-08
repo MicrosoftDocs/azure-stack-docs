@@ -62,7 +62,8 @@ sections:
       - question: | 
           CAPH pod fails to renew certificate
 
-        answer: |           
+        answer: | 
+          
           This error occurs because every time the CAPH pod is started, a login to cloudagent is attempted and the certificate is stored in the temporary storage volume, which will clean out on pod restarts. Therefore, every time a pod is restarted, the certificate is destroyed and a new login attempt is made. 
           
           A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login is not attempted, assuming the renewal routine is already there.
