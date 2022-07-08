@@ -57,8 +57,10 @@ Perform the following steps to uninstall Azure Arc Resource Bridge:
    ```PowerShell
    Remove-ArcHciConfigFiles
    ```
+   > [!NOTE]
+   >  The uninstallation of Azure Arc Resource Bridge completes at this step if Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed. If it's not installed, proceed to the next step.
 
-7. Uninstall the moc setup after testing:
+7. (Required only if AKS on Azure Stack HCI and Windows Server is not installed) Run the following cmdlet to uninstall the Microsoft on Cloud (MOC) service:
 
    ```PowerShell
    Uninstall-Moc
