@@ -147,8 +147,7 @@ sections:
       - question: | 
           vNIC goes missing after a machine reboot
 
-        answer: | 
-          
+        answer: |           
           This issue is fixed in the May 2022 release and later.
           
           If Azure Stack HCI nodes are rebooted one after the other, some of the virtual machines lose the vNICs attached to them. This causes the VMs to lose network connectivity and the cluster falls into a bad state.
