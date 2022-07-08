@@ -21,6 +21,7 @@ Install-Module -Name AksHci -Repository PSGallery
 ```powershell
 Import-Module AksHci
 ```
+
 Then, validate your installation. Open a new administrative session to confirm that you have the latest version of the PowerShell module and then run the following command.
 
 ```powershell
