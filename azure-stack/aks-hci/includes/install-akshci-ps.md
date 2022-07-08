@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/14/2022
+ms.date: 07/07/2022
 ms.reviewer: abha
 ms.lastreviewed: 05/02/2022
 
@@ -24,12 +24,9 @@ Import-Module AksHci
 
 **If you are using remote PowerShell, you must use CredSSP.**
 
-> [!IMPORTANT]  
-> **You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all PowerShell windows.
+**You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Please do not continue to the next step until you have closed all PowerShell windows. 
 
-**Validate your installation.**
-> [!IMPORTANT]  
-> To validate your installation, first make sure that you have closed all PowerShell windows. Then, reopen a new administrative session to confirm that you have the latest version of the PowerShell module. 
+Then, **validate your installation.**  Open a new administrative session to confirm that you have the latest version of the PowerShell module and then run the following command.
 
 ```powershell
 Get-Command -Module AksHci
