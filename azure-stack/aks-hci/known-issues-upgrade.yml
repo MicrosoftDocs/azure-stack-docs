@@ -147,7 +147,7 @@ sections:
       - question: | 
           vNIC goes missing after a machine reboot
 
-        answer: |          
+        answer: | 
           > [!NOTE]
           > This issue is fixed in the May 2022 release and later.
           

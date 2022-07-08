@@ -206,6 +206,9 @@ sections:
           Install-AksHci hangs in the 'Waiting for azure-arc-onboarding to complete' stage before timing out.
 
         answer: | 
+          > [!NOTE]
+          > This issue is fixed in the May 2022 release and later.
+          
           Install-AksHci hangs at `Waiting for azure-arc-onboarding to complete` before timing out when:
           
           - A service principal is used in AKS on Azure Stack HCI Registration (Set-AksHciRegistration).
@@ -233,6 +236,7 @@ sections:
           ```powershell  
           Uninstall-Module -Name Az.Accounts -RequiredVersion 2.7.0 -Force
           ```
+          
       - question: | 
           During installation, this error appears: 'unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]'.
 
