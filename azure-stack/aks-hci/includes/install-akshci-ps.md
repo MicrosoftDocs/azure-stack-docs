@@ -12,7 +12,7 @@ ms.lastreviewed: 05/02/2022
 If you have not installed the AksHci PowerShell module, run the following commands.
 
 > [!IMPORTANT]  
-> You must close all existing PowerShell windows and then open a fresh administrative session to install the pre-requisite PowerShell packages and modules. **If you are using remote PowerShell, you must use CredSSP.**
+> You must close all existing PowerShell windows and then open a fresh administrative session to install the pre-requisite PowerShell packages and modules. If you are using remote PowerShell, you must use CredSSP.
 
 ```powershell
 Install-Module -Name AksHci -Repository PSGallery
