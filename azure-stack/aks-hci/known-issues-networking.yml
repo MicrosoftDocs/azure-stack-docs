@@ -60,6 +60,21 @@ sections:
           Reboot the machine so that the service manager, and the WSSDAgent, pick up the fixed proxy.
           
       - question: | 
+          CAPH pod fails to renew certificate
+
+        answer: |           
+          This error occurs because every time the CAPH pod is started, a login to cloudagent is attempted and the certificate is stored in the temporary storage volume, which will clean out on pod restarts. Therefore, every time a pod is restarted, the certificate is destroyed and a new login attempt is made. 
+          
+          A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login is not attempted, assuming the renewal routine is already there.
+          
+          However, on a container restart, the temporary directory is not cleaned, so the file is still persisted and the login attempt is not made, causing the renewal routine to not start. This leads to certificate expiration.
+          
+          To mitigate this issue, restart the CAPH pod using the following command:
+          
+          ```bash
+          kubectl delete pod pod-name
+          ````
+      - question: | 
           Authentication handshake failed: x509: certificate signed by unknown authority
 
         answer: | 

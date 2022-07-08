@@ -6,7 +6,7 @@ author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
 ms.reviewer: abha
-ms.date: 05/13/2022
+ms.date: 06/06/2022
 
 # Intent: As an IT Pro, I want to use AKS on Azure Stack HCI and Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.
 # Keyword: on-premises Kubernetes
@@ -32,7 +32,7 @@ Kubernetes is an open-source orchestrator for automating container management at
 
 Here's some of the functionality AKS provides on Azure Stack HCI:
 
-- Deploy containerized apps at scale to Kubernetes clusters running across the Azure Stack HCI or Windows Server cluster.
+- Deploy containerized apps at scale to Kubernetes clusters running across the Azure Stack HCI and Windows Server cluster.
 - Deploy and manage both Linux and Windows-based containerized apps.
 - Scale up or down by adding or removing nodes to the Kubernetes cluster.
 - Manage storage and networking on your Kubernetes cluster.
@@ -87,9 +87,9 @@ Your machine running the Windows Admin Center gateway must be:
  - Registered with Azure
  - In the same domain as the Azure Stack HCI or Windows Server 2019/2022 Datacenter cluster
 
-### On the Azure Stack HCI or Windows Server cluster or Windows Server 2019/2022 Datacenter failover cluster that hosts AKS
+### On the Azure Stack HCI and Windows Server cluster or Windows Server 2019/2022 Datacenter failover cluster that hosts AKS
 
-The Azure Stack HCI or Windows Server cluster or Windows Server 2019/2022 Datacenter failover cluster has the following requirements:
+The Azure Stack HCI and Windows Server cluster or Windows Server 2019/2022 Datacenter failover cluster has the following requirements:
 
 - A maximum of eight servers in the cluster
 - 1 TB of available capacity in the storage pool for AKS

@@ -5,15 +5,15 @@ author: sethmanheim
 ms.topic: tutorial
 ms.date: 05/31/2022
 ms.author: sethm 
-ms.lastreviewed: 05/31/2022
+ms.lastreviewed: 06/27/2022
 ms.reviewer: abha
 
-# Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux app to my cluster.
+# Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux app to my AKS cluster.
 # Keyword: deploy an app
 
 ---
 
-# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI
+# Tutorial: Deploy a Linux app in Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
 > Applies to: AKS on Azure Stack HCI and Windows Server
 

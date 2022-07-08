@@ -33,7 +33,7 @@ The information in this article describes registering Azure Stack Hub integrated
 
 ::: zone pivot="state-disconnected"
    > [!Note]
-   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?tabs=az1%2Caz2&pivots=state-disconnected). 
+   > Online marketplace syndication, diagnostic log collection, and remote support are unavailable for disconnected registrations. You must use [offline marketplace syndication](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected&tabs=az1%2caz2). 
 ::: zone-end
 
 ## Prerequisites
@@ -165,17 +165,7 @@ Connected environments can access the internet and Azure. For these environments
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Next, in the same PowerShell session, ensure you're signed in to the correct Azure PowerShell context. This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. PowerShell to run:
-
-   ```powershell
-   Connect-AzAccount -Environment "<environment name>"
-   ```
-
-   | Parameter | Description |
-   |-----|-----|
-   | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Subscription, **AzureChinaCloud**.  |
-
-7. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet. PowerShell to run:
+6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (if not, repeat steps 2 and 3.) This context would be the Azure account that was used to register the Azure Stack Hub resource provider previously. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet:
 
    ```powershell
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -285,7 +275,11 @@ Connected environments can access the internet and Azure. For these environments
    Register-AzResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
-5. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-az** directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+5. Start PowerShell ISE as an administrator and navigate to the Registration folder in the AzureStack-Tools-az directory created when you downloaded the Azure Stack Hub tools. Import the **RegisterWithAzure.psm1** module using PowerShell:
+   ```powershell
+   Import-Module .\RegisterwithAzure.psm1
+   ```
+6. Before proceeding, in the same PowerShell session, verify again that you're signed in to the correct Azure PowerShell context (if not, repeat steps 2 and 3.) This context is the Azure account that was used to register the Azure Stack Hub resource provider. In the same PowerShell session, run the **Set-AzsRegistration** cmdlet: 
 
    ```powershell
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -372,10 +366,15 @@ If you're registering Azure Stack Hub in a disconnected environment (with no int
 
    ```powershell
    $FilePathForRegistrationToken = "$env:SystemDrive\RegistrationToken.txt"
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $YourCloudAdminCredential = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential `
+    -UsageReportingEnabled:$false `
+    -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
+    -BillingModel Capacity `
+    -AgreementNumber '<EA agreement number>' `
+    -TokenOutputFilePath $FilePathForRegistrationToken
    ```
-
-   Use the *EA agreement number* where your capacity SKU licenses were purchased.
+   Use the EA agreement number where your capacity SKU licenses were purchased.
 
    For more information on the Get-AzsRegistrationToken cmdlet, see [Registration reference](#registration-reference).
 
@@ -711,7 +710,7 @@ You might see one of the errors below while attempting to register your Azure St
 
    Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
 ::: zone pivot="state-disconnected"
-- Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
+- Marketplace management still asks you to register and activate your Azure Stack Hub, even when you've already registered your stamp using the disconnected process.
 
    Cause: this is a known issue for disconnected environments, and requires you to [verify your registration status](#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md?pivots=state-disconnected).
 ::: zone-end

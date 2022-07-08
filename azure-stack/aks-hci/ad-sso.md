@@ -3,12 +3,12 @@ title: Use Active Directory single sign-on for a secure connection to Kubernetes
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/26/2022
+ms.date: 06/20/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: lahirisl
+ms.reviewer: sulahiri
 
-# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials
+# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
 # Keyword: secure connection to Kubernetes API server
 
 ---
@@ -127,7 +127,7 @@ After the file is created, copy the AD _kubeconfig_ file to the client machine a
 Open PowerShell as an administrator and run the following command:  
 
    ```powershell
-   Get-AksHciCredential -name mynewcluster1 -outputLocation .\AdKubeconfig -adAuth
+   Get-AksHciCredential -name mynewcluster1 -configPath .\AdKubeconfig -adAuth
    ```
 
 ### Step 5: Copy kubeconfig and other files to the client machine

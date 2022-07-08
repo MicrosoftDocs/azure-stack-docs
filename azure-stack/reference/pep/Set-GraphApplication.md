@@ -29,7 +29,12 @@ Invokes the Set-GraphApplicationGroup on AD FS to modify an application on to AD
 
 ### Example 1
 ```
-New-GraphApplication -Name $ApplicationName -ClientRedirectUris $redirectUri -ClientCertificates $certificate
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2('c:\temp\testcert.cer')
+$appId = 'S-1-1-11-2222222222-3333333333-4444444444-5555'
+$script = {
+    Set-GraphApplication -ApplicationIdentifier $using:appId -ClientCertificates $using:cert
+}
+Invoke-Command -ComputerName '<ercs01 computer name>' -ScriptBlock $script -ConfigurationName PrivilegedEndpoint
 ```
 
 ## Parameters
