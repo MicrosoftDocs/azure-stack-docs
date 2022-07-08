@@ -22,9 +22,9 @@ Install-Module -Name AksHci -Repository PSGallery
 Import-Module AksHci
 ```
 
-**You must close all existing PowerShell windows** again to ensure that loaded modules are refreshed. Do not continue to the next step until you have closed all PowerShell windows. 
+You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Do not continue to the next step until you have closed all PowerShell windows. 
 
-Then, **validate your installation.**  Open a new administrative session to confirm that you have the latest version of the PowerShell module and then run the following command.
+Then, validate your installation. Open a new administrative session to confirm that you have the latest version of the PowerShell module and then run the following command.
 
 ```powershell
 Get-Command -Module AksHci
