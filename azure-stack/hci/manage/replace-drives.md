@@ -25,6 +25,18 @@ When a drive fails, an alert appears in the upper left **Alerts** area of the **
 ## Wait for the alert to clear
 In **Drives > Inventory**, the new drive will appear. In time, the alert will clear, volumes will repair back to OK status, and storage will rebalance onto the new drive – no user action is required.
 
+## Troubleshooting
+The new drive is not added to the pool.  AutoPool may be disabled.
+1. Run **Get-StorageSubsystem Cluster* | Get-StorageHealthSetting | select "System.Storage.PhysicalDisk.AutoPool.Enabled"**.  If the value is True, AutoPool is enabled.  If the value is False, AutoPool is disabled.  You have two choices, pick one.
+Option A: Leave AutoPool disabled and manually add the disk(s) to the pool.
+1. Run **Get-PhysicalDisk -CanPool $true** and verify the new physical disk is listed with an OperationalStatus of OK and a HealthStatus of Healthy.
+2. Run **Get-StoragePool -IsPrimordial $False** and make a note of the FriendlyName of the Storage Pool that you want to add the disk to.  If this is a stretch cluster, you should see more than one pool name.
+3. Run **$disks = Get-PhysicalDisk -CanPool $true**.
+4. Run **Add-PhysicalDisk -StoragePoolFriendlyName "Substitute FriendlyName from Step2" -PhysicalDisks $disks**
+
+Option B: Enable AutoPool and let the Health service add the disk to the pool.
+1. Run **Get-StorageSubsystem Cluster* | Set-StorageHealthSetting -Name "System.Storage.PhysicalDisk.AutoPool.Enabled" -Value True**.
+
 ## Next steps
 - To learn about how storage health is tracked at different levels, including at the drive level, see [Health and operational states](/windows-server/storage/storage-spaces/storage-spaces-states).
 - If you're using PMem, [Understand and deploy persistent memory](/windows-server/storage/storage-spaces/deploy-pmem)
