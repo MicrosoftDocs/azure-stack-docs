@@ -45,6 +45,22 @@ Use Windows Admin Center to join the server to your cluster.
 >[!NOTE]
 > If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
+### Add a server to SDN in an SDN-enabled cluster
+
+Windows Admin Center doesn't automatically add the new server to the Software Defined Networking (SDN) infrastructure of your cluster. You must use the SDN Express script to add the new server to SDN in an SDN-enabled cluster.
+
+Before you run the script, ensure that a virtual switch is already created and the server is successfully added to the cluster. Also ensure that the server is paused so that the workloads cannot move to it.
+
+1. Download the latest version of the [SDN Express PowerShell scripts from the SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts).
+1. Run the following PowerShell cmdlets on the newly added server:
+
+```powershell
+Import-Module SDNExpressModule.PSM1 -verbose
+$NCURI = “Insert NC URI”
+$creds = Get-Credential
+Add-SDNExpressHost -RestName $NCURI -VirtualSwitchName “Insert vSwitch Name” -ComputerName “Insert Name” -HostPASubnetPrefix “Example: 172.23.0.1/24” -Credential $creds
+```
+
 ## Remove a server from a cluster
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
