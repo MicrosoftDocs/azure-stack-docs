@@ -27,11 +27,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 - For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
 
-### Fixed and known issues
-
-- Backup and restore validation using the ASDK requires an increase to the VHD size. For more information, see [Validate an Azure Stack backup](asdk-validate-backup.md).
-- SQL RP and MySQL RP are no longer supported in the ASDK.
-- Metrics on the portal showing capacity information are no longer available due to product changes.
+<!-- ### Fixed and known issues -->
 
 ::: moniker-end
 
