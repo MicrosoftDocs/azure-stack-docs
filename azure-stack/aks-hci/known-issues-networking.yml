@@ -11,9 +11,11 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Cloud agent may fail to start successfully when using path names with spaces in them.
+          Error: 'Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state.'
 
         answer: | 
+          Cloud agent may fail to successfully start when using path names with spaces in them.
+          
           When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
           
           ```
@@ -104,7 +106,7 @@ sections:
               + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
           ```
           
-          Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
+          Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can create a support ticket through the Azure portal.
           
       - question: | 
           Using Remote Desktop to connect to the management cluster produces a connection error.
