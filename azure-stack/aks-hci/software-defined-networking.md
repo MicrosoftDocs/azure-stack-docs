@@ -3,13 +3,13 @@ title: How to use AKS on Azure Stack HCI and Windows Server with SDN and virtual
 description: Learn how to use AKS on Azure Stack HCI and Windows Server with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/31/2022
+ms.date: 07/07/2022
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: anpaul
 
-# Intent: As an IT pro, I want to XXX so that XXX.
-# Keyword: 
+# Intent: As an IT pro, I want to learn how to use PowerShell to deploy AKS on Azure Stack HCI on top of a software defined cluster.
+# Keyword: PowerShell networking software networking virtual networking
 
 ---
 
@@ -54,7 +54,7 @@ To deploy AKS on Azure Stack HCI and Windows Server with SDN, you need to make s
 > [!NOTE]  
 > For SDN integration with AKS on Azure Stack HCI and Windows Server you need the network controller and software load balancer components. Gateway VMs are optional and not required.
 
-## Install and preparing SDN
+## Install and prepare SDN
 
 In order to use SDN with AKS on Azure Stack HCI and Windows Server, you will need to set up your SDN, and then install AKS. 
 ### Install SDN
@@ -77,12 +77,12 @@ Initialize and prepare all the physical host machines for AKS on Azure Stack HCI
 
 ### Install the AKS on Azure Stack HCI and Windows Server  PowerShell module
 
-Refer to the instructions [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) to install the AKS on Azure Stack HCI and Windows Server PowerShell module.
+Refer to the instructions in [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) to install the AKS on Azure Stack HCI and Windows Server PowerShell module.
 
 > [!NOTE]  
 > You might have to change the PowerShell ExecutionPolicy to `Unrestricted` so that you can import and execute some of these scripts. You can do so by running `Set-ExecutionPolicy Unrestricted`.
 
-After you complete the previous step, follow instructions [On all nodes in your Azure Stack HCI cluster](kubernetes-walkthrough-powershell.md#on-all-nodes-in-your-azure-stack-hci-cluster) to install **PowerShellGet** and **AksHci** modules.
+After you complete the previous step, follow the instructions in [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md) to install **PowerShellGet** and **AksHci** modules.
 
 Retrieve the [`sdn_public_preview.zip` from Download Center](https://download.microsoft.com/download/3/f/f/3ffb7097-e32b-4aa0-b977-1c1feb774749/sdn_public_preview.zip). 
 
