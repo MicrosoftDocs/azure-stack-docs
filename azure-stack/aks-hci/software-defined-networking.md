@@ -3,7 +3,7 @@ title: How to use AKS on Azure Stack HCI and Windows Server with SDN and virtual
 description: Learn how to use AKS on Azure Stack HCI and Windows Server with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 07/07/2022
+ms.date: 07/11/2022
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: anpaul
