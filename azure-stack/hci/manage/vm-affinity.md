@@ -1,10 +1,10 @@
 ---
 title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
-author: v-jamemurray
+author: jasongerend
 ms.topic: how-to
-ms.date: 10/14/2020
-ms.author: v-jamemurray
+ms.date: 07/11/2022
+ms.author: jgerend
 ms.reviewer: robhind
 ---
 

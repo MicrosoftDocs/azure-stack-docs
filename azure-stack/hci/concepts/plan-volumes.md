@@ -4,7 +4,7 @@ description: How to plan storage volumes on Azure Stack HCI and Windows Server c
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 07/11/2022
 ---
 
 # Plan volumes on Azure Stack HCI and Windows Server clusters
@@ -13,8 +13,8 @@ ms.date: 07/27/2020
 
 This article provides guidance for how to plan cluster volumes to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 
-   >[!NOTE]
-   > Storage Spaces Direct does not support a File Server for general use. If you need to run the file server or other generic services on Storage Space Direct, please plan to configure it on the virtual machines.
+>[!NOTE]
+> Storage Spaces Direct does not support a file server for general use. If you need to run the file server or other generic services on Storage Space Direct, configure it on the virtual machines.
 
 ## Review: What are volumes
 
@@ -89,12 +89,12 @@ Which resiliency type to use depends on the needs of your workload. Here's a tab
 
 Workloads that have strict latency requirements or that need lots of mixed random IOPS, such as SQL Server databases or performance-sensitive Hyper-V virtual machines, should run on volumes that use mirroring to maximize performance.
 
-   >[!TIP]
-   > Mirroring is faster than any other resiliency type. We use mirroring for nearly all our performance examples.
+>[!TIP]
+> Mirroring is faster than any other resiliency type. We use mirroring for nearly all our performance examples.
 
 #### When capacity matters most
 
-Workloads that write infrequently, such as data warehouses or "cold" storage, should run on volumes that use dual parity to maximize storage efficiency. Certain other workloads, such as traditional file servers, virtual desktop infrastructure (VDI), or others that don't create lots of fast-drifting random IO traffic and/or don't require the best performance may also use dual parity, at your discretion. Parity inevitably increases CPU utilization and IO latency, particularly on writes, compared to mirroring.
+Workloads that write infrequently, such as data warehouses or "cold" storage, should run on volumes that use dual parity to maximize storage efficiency. Certain other workloads, such as Scale-Out File Server (SoFS), virtual desktop infrastructure (VDI), or others that don't create lots of fast-drifting random IO traffic and/or don't require the best performance may also use dual parity, at your discretion. Parity inevitably increases CPU utilization and IO latency, particularly on writes, compared to mirroring.
 
 #### When data is written in bulk
 

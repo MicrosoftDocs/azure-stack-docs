@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/09/2022
+ms.date: 07/11/2022
 ---
 
 # Tutorial: Create a VM-based lab for Azure Stack HCI
@@ -15,8 +15,8 @@ ms.date: 04/09/2022
 
 In this tutorial, you use MSLab PowerShell scripts to automate the process of creating a private forest to run Azure Stack HCI on virtual machines (VMs) using [nested virtualization](../concepts/nested-virtualization.md).
 
-   > [!IMPORTANT]
-   > Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in VMs, nested virtualization is not supported in production environments. Use nested virtualization for testing and evaluation purposes only.
+> [!IMPORTANT]
+> Because Azure Stack HCI is intended as a virtualization host where you run all of your workloads in VMs, nested virtualization is not supported in production environments. Use nested virtualization for testing and evaluation purposes only.
 
 You'll learn how to:
 
@@ -43,7 +43,7 @@ Carefully prepare the lab environment following these instructions.
 
 ### Connect to the virtualization host
 
-Connect to the physical server on which you'll create the VM-based lab. If you’re using a remote server, connect via Remote Desktop.
+Connect to the physical server on which you'll create the VM-based lab. If you're using a remote server, connect via Remote Desktop.
 
 ### Download Azure Stack HCI
 
@@ -53,7 +53,7 @@ Select **Download Azure Stack HCI**, which will trigger an ISO download.
 
 ### Download Windows Server
 
-You’ll also need a copy of Windows Server 2022, Windows Server 2019, or Windows Server 2016 for the domain controller and Windows Admin Center VMs. You can use evaluation media, or if you have access to either a VL or Visual Studio Subscription, you can use those. For this tutorial, we'll [download an evaluation copy](https://www.microsoft.com/evalcenter/evaluate-windows-server-2019).
+You'll also need a copy of Windows Server 2022, Windows Server 2019, or Windows Server 2016 for the domain controller and Windows Admin Center VMs. You can use evaluation media, or if you have access to either a VL or Visual Studio Subscription, you can use those. For this tutorial, we'll [download an evaluation copy](https://www.microsoft.com/evalcenter/evaluate-windows-server-2019).
 
 ### Create a folder for the lab files
 
@@ -70,7 +70,7 @@ MSLab VMs are defined in the LabConfig.ps1 PowerShell script as a simple hash ta
 To edit the script, use File Explorer to navigate to C:\Lab\wslab_xxx\ and then right-click on **LabConfig.ps1**. Select **Edit**, which will open the file using Windows PowerShell ISE.
 
    > [!TIP]
-   > Save the original version of **LabConfig.ps1** as **Original_LabConfig.ps1**, so it’s easy to start over if you need to.
+   > Save the original version of **LabConfig.ps1** as **Original_LabConfig.ps1**, so it's easy to start over if you need to.
 
 Notice that most of the script is commented out; you will only need to execute a few lines. Follow these steps to customize the script so it produces the desired output. Alternatively, you can simply copy the code block at the end of this section and replace the appropriate lines in LabConfig.
 
@@ -80,7 +80,7 @@ To customize the script:
 
 2. Change the admin name and password, if desired.
 
-3. If you plan to create multiple labs on the same server, change **Prefix = 'MSLab-'** to use a new Prefix name, such as **Lab1-**. We’ll stick with the default **MSLab-** prefix for this tutorial.
+3. If you plan to create multiple labs on the same server, change **Prefix = 'MSLab-'** to use a new Prefix name, such as **Lab1-**. We'll stick with the default **MSLab-** prefix for this tutorial.
 
 4. Comment out the default **ForEach-Object** line for Windows Server and remove the hashtag before the **ForEach-Object** line for Azure Stack HCI so that the script will create Azure Stack HCI VMs instead of Windows Server VMs for the cluster nodes.
 
@@ -125,10 +125,10 @@ Navigate to C:\Lab\wslab_xxx\ and run the **1_Prereq.ps1** script by right-click
 
 The **2_CreateParentDisks.ps1** script prepares virtual hard disks (VHDs) for Windows Server and Server Core from the operating system ISO file, and also prepares a domain controller for deployment with all required roles configured. Run **2_CreateParentDisks.ps1** by right-clicking on the file and selecting **Run with PowerShell**.
 
-You’ll be asked to select telemetry levels; choose **B** for **Basic** or **F** for **Full**. The script will also ask for the ISO file for Windows Server 2019. Point it to the location you copied the file to (C:\Labs\Isos). If there are multiple ISO files in the folder, you’ll be asked to select the ISO that you want to use. Select the Windows Server ISO. If you're asked to format a drive, select **N**.
+You'll be asked to select telemetry levels; choose **B** for **Basic** or **F** for **Full**. The script will also ask for the ISO file for Windows Server 2019. Point it to the location you copied the file to (C:\Labs\Isos). If there are multiple ISO files in the folder, you'll be asked to select the ISO that you want to use. Select the Windows Server ISO. If you're asked to format a drive, select **N**.
 
    > [!WARNING]
-   > **Don't select the Azure Stack HCI ISO** - you’ll create the Azure Stack HCI parent disk (VHD) in the next section.
+   > **Don't select the Azure Stack HCI ISO** - you'll create the Azure Stack HCI parent disk (VHD) in the next section.
 
 Creating the parent disks can take as long as 1-2 hours, although it can take much less time. When complete, the script will ask you if unnecessary files should be removed. If you select **Y**, it will remove the first two scripts because they're no longer needed. Press **Enter** to continue.
 
@@ -136,7 +136,7 @@ Creating the parent disks can take as long as 1-2 hours, although it can take mu
 
 Download the [Convert-WindowsImage.ps1 function](https://raw.githubusercontent.com/microsoft/MSLab/master/Tools/Convert-WindowsImage.ps1) to the C:\Lab\wslab_xxx\ParentDisks folder as **Convert-WindowsImage.ps1**. Then run **CreateParentDisk.ps1** as administrator. Choose the Azure Stack HCI ISO from C:\Labs\Isos, and accept the default name and size.
 
-Creating the parent disk will take a while. When the operation is complete, you’ll be prompted to start the VMs. Don’t start them yet - type **N**.
+Creating the parent disk will take a while. When the operation is complete, you'll be prompted to start the VMs. Don't start them yet - type **N**.
 
 ### Deploy the VMs
 
@@ -183,20 +183,20 @@ Your browser may warn you that it's an unsafe or insecure connection, but it's O
 
 ### Add an externally accessible network adapter (optional)
 
-If your lab is on a private network, you might want to add an externally accessible NIC to the AdminCenter VM so that you can connect to it and manage your lab from outside the private forest. To do this, use Windows Admin Center to connect to your virtualization host (**not** the domain controller) and go to **Virtual machines > MSLab-AdminCenter > Settings > Networks**. Make sure that you have a virtual switch connected to the appropriate network. Look for Switch Type = External (such as MSLab-LabSwitch-External). Then add/bind a VM NIC to this external virtual switch. Be sure to select the “Allow management OS to share these network adapters” checkbox.
+If your lab is on a private network, you might want to add an externally accessible NIC to the AdminCenter VM so that you can connect to it and manage your lab from outside the private forest. To do this, use Windows Admin Center to connect to your virtualization host (**not** the domain controller) and go to **Virtual machines > MSLab-AdminCenter > Settings > Networks**. Make sure that you have a virtual switch connected to the appropriate network. Look for Switch Type = External (such as MSLab-LabSwitch-External). Then add/bind a VM NIC to this external virtual switch. Be sure to select the "Allow management OS to share these network adapters" checkbox.
 
 Take note of the IP addresses of the network adapters on the AdminCenter VM. Append :443 to the IP address of the externally accessible NIC, and you should be able to log on to Windows Admin Center and create and manage your cluster from an external web browser, such as: **`https://10.217.XX.XXX:443`**
 
 ### Install operating system updates on the Azure Stack HCI VMs
 
-Start the Azure Stack HCI VMs using Hyper-V Manager on the virtualization host. Connect to each VM, and download and install security updates using Sconfig on each of them. You may need to restart the VMs multiple times. (You can skip this step if you’d rather install the OS updates later as part of the cluster creation wizard).
+Start the Azure Stack HCI VMs using Hyper-V Manager on the virtualization host. Connect to each VM, and download and install security updates using Sconfig on each of them. You may need to restart the VMs multiple times. (You can skip this step if you'd rather install the OS updates later as part of the cluster creation wizard).
 
 ### Enable the Hyper-V role on the Azure Stack HCI VMs
 
-If your cluster VMs are running Azure Stack HCI 20H2, you’ll need to run a script to enable the Hyper-V role on the VMs. Save [this script](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/steps/3a_AzSHCINodesGUI.md#enable-the-hyper-v-role-on-your-azure-stack-hci-node) to **C:\Lab** on your virtualization host as PreviewWorkaround.ps1.
+If your cluster VMs are running Azure Stack HCI 20H2, you'll need to run a script to enable the Hyper-V role on the VMs. Save [this script](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/steps/3a_AzSHCINodesGUI.md#enable-the-hyper-v-role-on-your-azure-stack-hci-node) to **C:\Lab** on your virtualization host as PreviewWorkaround.ps1.
 
 
-Right-click on the PreviewWorkaround.ps1 file and select **Edit with PowerShell**. Change the **$domainName**, **$domainAdmin**, and **$nodeName** variables if they don’t match, such as:
+Right-click on the PreviewWorkaround.ps1 file and select **Edit with PowerShell**. Change the **$domainName**, **$domainAdmin**, and **$nodeName** variables if they don't match, such as:
 
 ```PowerShell
 $domainName = "corp.contoso.com"
@@ -210,7 +210,7 @@ Save your changes, then open a PowerShell session as administrator and run the s
 PS C:\Lab> ./PreviewWorkaround.ps1
 ```
 
-The script will take some time to run, especially if you’ve created lots of VMs. You should see the message "MSLab-AzSHCI1 MSLab-AzSHCI2 is now online. Proceeding to install Hyper-V PowerShell." If the script appears to freeze after displaying the message, press Enter to wake it up. When it’s done, you should see: "MSLab-AzSHCI1 MSLab-AzSHCI2 is now online. Proceed to the next step ..."
+The script will take some time to run, especially if you've created lots of VMs. You should see the message "MSLab-AzSHCI1 MSLab-AzSHCI2 is now online. Proceeding to install Hyper-V PowerShell." If the script appears to freeze after displaying the message, press Enter to wake it up. When it's done, you should see: "MSLab-AzSHCI1 MSLab-AzSHCI2 is now online. Proceed to the next step ..."
 
 ### Add additional network adapters (optional)
 
