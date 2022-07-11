@@ -1,10 +1,10 @@
 ---
 title: Set up VM affinity rules using Windows PowerShell
 description: Learn how to set up VM affinity rules using Windows PowerShell
-author: v-jamemurray
+author: jasongerend
 ms.topic: how-to
-ms.date: 10/14/2020
-ms.author: v-jamemurray
+ms.date: 07/11/2022
+ms.author: jgerend
 ms.reviewer: robhind
 ---
 
@@ -58,7 +58,7 @@ The **`New-ClusterAffinityRule`** cmdlet is used to create new rules.  With this
 Example:
 
 ```powershell
-New-ClusterAffinityRule -Name -RuleType SameFaultDomain -Cluster Cluster1
+New-ClusterAffinityRule -Name Rule1 -RuleType SameFaultDomain
 ```
 
 #### Set-ClusterAffinityRule
@@ -72,7 +72,7 @@ The **`Set-ClusterAffinityRule`** cmdlet is used to enable or disable a rule, wh
 Example:
 
 ```powershell
-Set-ClusterAffinityRule -Name -Enabled -Cluster Cluster1
+Set-ClusterAffinityRule -Name Rule1 -Enabled
 ```
 
 #### Get-ClusterAffinityRule
@@ -82,7 +82,7 @@ The **`Get-ClusterAffinityRule`** cmdlet is used to display the specified rule a
 Example:
 
 ```powershell
-Get-ClusterAffinityRule -Name -Cluster Cluster1
+Get-ClusterAffinityRule -Name Rule1
 ```
 
 #### Add-ClusterGroupToAffinityRule
@@ -96,7 +96,7 @@ The **`Add-ClusterGroupToAffinityRule`** cmdlet is used to add a VM role or grou
 Example:
 
 ```powershell
-Add-ClusterGroupToAffinityRule -Groups -Name -Cluster Cluster1
+Add-ClusterGroupToAffinityRule -Groups Group1 -Name Rule1
 ```
 
 #### Add-ClusterSharedVolumeToAffinityRule
@@ -110,7 +110,7 @@ The **`Add-ClusterSharedVolumeToAffinityRule`** allows your VMs to stay together
 Example:
 
 ```powershell
-Add-ClusterSharedVolumeToAffinityRule  -ClusterSharedVolumes -Name -Cluster Cluster1
+Add-ClusterSharedVolumeToAffinityRule -ClusterSharedVolumes CSV1 -Name Rule1
 ```
 
 #### Remove-ClusterAffinityRule
@@ -120,7 +120,7 @@ The **`Remove-ClusterAffinityRule`** deletes the specified rule, where **`-Name`
 Example:
 
 ```powershell
-Remove-ClusterAffinityRule -Name -Cluster Cluster1
+Remove-ClusterAffinityRule -Name Rule1
 ```
 
 #### Remove-ClusterGroupFromAffinityRule
@@ -134,7 +134,7 @@ The **`Remove-ClusterGroupFromAffinityRule`** removes a VM group or role from a 
 Example:
 
 ```powershell
-Remove-ClusterGroupFromAffinityRule -Name -Groups -Cluster Cluster1
+Remove-ClusterGroupFromAffinityRule -Name Rule1 -Groups Group1
 ```
 
 #### Remove-ClusterSharedVolumeFromAffinityRule
@@ -148,7 +148,7 @@ The **`Remove-ClusterSharedVolumeFromAffinityRule`** cmdlet is used to remove th
 Example:
 
 ```powershell
-Remove-ClusterSharedVolumeFromAffinityRule -ClusterSharedVolumes -Name -Cluster Cluster1
+Remove-ClusterSharedVolumeFromAffinityRule -ClusterSharedVolumes CSV1 -Name Rule1
 ```
 
 ### Existing PowerShell cmdlets
