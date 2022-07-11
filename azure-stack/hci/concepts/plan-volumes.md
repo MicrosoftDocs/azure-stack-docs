@@ -13,6 +13,9 @@ ms.date: 07/27/2020
 
 This article provides guidance for how to plan cluster volumes to meet the performance and capacity needs of your workloads, including choosing their filesystem, resiliency type, and size.
 
+   >[!NOTE]
+   > Storage Spaces Direct does not support a File Server for general use. If you need to run the file server or other generic services on Storage Space Direct, please plan to configure it on the virtual machines.
+
 ## Review: What are volumes
 
 Volumes are where you put the files your workloads need, such as VHD or VHDX files for Hyper-V virtual machines. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), the software-defined storage technology behind Azure Stack HCI and Windows Server.
