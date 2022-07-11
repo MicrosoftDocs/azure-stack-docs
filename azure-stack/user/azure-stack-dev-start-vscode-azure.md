@@ -101,7 +101,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 
         | Parameter | Description |
         | --- | --- |
-        | azure.cloud | The name of your environment. |
+        | `azure.cloud` | You must use the literal constant "AzureCustomCloud" for this parameter.|
         | `azure.tenant` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `azure.customCloud.resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
         | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
@@ -111,7 +111,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
       ```JSON  
         "azure.cloud": "AzureCustomCloud",
         "azure.customCloud.resourceManagerEndpointUrl": "https://management.region.<fqdn>",
-        "azure.tenant": "<your-tenant-ID",
+        "azure.tenant": "<your-tenant-ID>",
       ```
 
 9. Save the user settings (JSON) and use **Ctrl+Shift+P** once again. Select **Azure: Sign in**. The authentication page loads in your browser. Sign in to your endpoint.
