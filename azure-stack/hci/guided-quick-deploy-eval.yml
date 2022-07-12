@@ -1,0 +1,394 @@
+### YamlMime:Tutorial
+title: Evaluate Azure Stack HCI 
+metadata:
+  title: Evaluate Azure Stack HCI - Quick deploy
+  description: Learn how to quickly deploy an HCI cluster for evaluation.
+  audience: IT Pro
+  level: Beginner
+  ms.date: 05/10/2022
+  ms.topic: interactive-tutorial
+  displayType: basic
+items:
+- durationInMinutes: 0
+  content: | 
+
+    This guide shows you how to quickly deploy and evaluate an Azure Stack HCI cluster with no hardware investment. You'll deploy a Windows Server 2019 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
+       - 1 VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and a domain controller
+       - 2 VMs running Azure Stack HCI 21H2, which are the servers that will form the Azure Stack HCI cluster
+
+    **Prerequisites**
+
+    Before beginning, make sure you have:
+
+    1. **An Azure subscription capable of deploying Azure VMs with at least 16 virtual CPUs**. If you don't, you have 2 options that support the Azure VM requirements:  
+        - If you have a Visual Studio subscription, [Activate your Azure credits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).  
+        - Sign up for a [free subscription](https://azure.microsoft.com/free/), then [upgrade it to pay-as-you-go](/azure/cost-management-billing/manage/upgrade-azure-subscription). The upgrade to pay-as-you-go is required  
+          in order to host the VM size required for this eval, and gives you 30 days to use the $200 credit from the free subscription.  
+    2. **An Azure account capable of accessing:**  
+        - your Azure subscription using [Azure RBAC](/azure/role-based-access-control/role-assignments-steps) membership in:
+          - either the "Owner" role (you'll already be a member if you created the subscription)  
+          - or the "User Access Administrator" and "Contributor" roles  
+        - your Azure Active Directory (AD) tenant using [Azure AD RBAC](/azure/active-directory/roles/custom-overview) membership in:
+          - either the "Global Administrator" role (you'll already be a member if you created the subscription)  
+          - or the "Cloud application administrator" role  
+    3. **A basic understanding of [how to use the Azure portal](/azure/azure-portal/)**, in particular creating and connecting to a VM.  
+
+- title: Deploy the Azure VM
+  durationInMinutes: 45
+  content: |
+
+    First you deploy an Azure VM to simulate a physical server. The VM will be completely configured with Windows Server, Hyper-V, networking components, the 2 Azure Stack HCI VM nodes, and an additional VM to host a Windows domain controller and Windows Admin Center.
+
+    1. Select the **Deploy to Azure** button to sign in to the Azure portal, and proceed with the Azure VM deployment:
+
+       > [!TIP] 
+       > Hold down **CTRL** while selecting the button to open the Azure portal in a new browser tab.
+
+       [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2FAzStackHCISandbox%2Fmain%2Fjson%2Fazuredeploy.json "Deploy to Azure")
+
+    1. In the Azure portal, you're presented with the **Custom deployment** form: 
+       
+       1. Under **Resource group**, select **Create new**, for example "HciEval".
+       1. Select an Azure **Region** for your VM and verify that "Standard_E16s_v4" is selected for **Virtual Machine Size** 
+       1. Specify an **Admin Password**.
+       1. If you have [Software Assurance Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit), select "Yes" for **Already Have a Windows Server License**.
+       1. Select **Next: Review + create >**.
+
+       >[!IMPORTANT]
+       > A VM with at least 16 cores, 64GB memory, nested virtualization, and Premium Storage is required. Temp storage is not required.
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/deploy-arm-details-50.png" alt-text="Deploy ARM template details" lightbox="./media/guided-quick-deploy-eval/deploy-arm-details.png" :::
+
+    1. On the **Review + create** tab, you should see a "Validation passed" message at the top. Select the **Create** button to continue with deployment. 
+
+       >[!NOTE]
+       > If validation fails with *The requested size for resource \<resource\> is currently not available in location \<region\> zones*, return to the **Basics** tab and select a [region that supports the Esv4-series VM size](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/deploy-arm-review-create.png" alt-text="Deploy ARM template review" lightbox="./media/guided-quick-deploy-eval/deploy-arm-review-create.png" :::
+
+    1. Next you'll see a **Deployment is in progress" page**. Deployment typically takes around 45 minutes.
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/deploy-arm-deploy-in-progress.png" alt-text="Deploy ARM template in-progress" lightbox="./media/guided-quick-deploy-eval/deploy-arm-deploy-in-progress.png" :::
+
+    1. Finally, you'll see a **Your deployment is complete** page. Expand the **Deployment details** section, and select the "AzSHCIHost001" resource to see your Azure VM. 
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/deploy-arm-deploy-complete.png" alt-text="Deploy ARM template complete" lightbox="./media/guided-quick-deploy-eval/deploy-arm-deploy-complete.png" :::
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/deploy-arm-vm-blade.png" alt-text="Azure VM page" lightbox="./media/guided-quick-deploy-eval/deploy-arm-vm-blade.png" :::
+
+    1. Select the **Next** button at the bottom of this page.
+
+- title: Remote into the Azure VM
+  durationInMinutes: 5
+  content: |
+
+    Now you'll use Windows Remote Desktop to remote into your new Azure VM:
+
+    1. Return to the "AzSHCIHost001" VM portal page from the previous section, and select the **Connect** link at the top of the page, then select **RDP**:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd.png" alt-text="Use remote desktop to connect to VM" lightbox="./media/guided-quick-deploy-eval/connect-rd.png" :::
+
+    1. Under **IP address** select the VM's public IP address, then select the **Download RDP File** button on the **Connect / RDP** page:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp.png" alt-text="Download the RDP file" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp.png" :::
+
+    1. After the .RDP file downloads in your browser, open it and select **Connect** on the publisher warning dialog:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-warn-50.png" alt-text="Accept the RDP publisher warning" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-warn.png" :::
+
+    1. Enter the VM admininstrator account (preceded with a backslash "\\") and the password you specified in the previous **Deploy the Azure VM** section, then select **OK** :  
+
+       > [!TIP]
+       > You may need to select **More choices** then **Use a different account** in order to enter user name and password credentials. 
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-creds-50.png" alt-text="Enter the RDP credentials" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-creds.png" :::
+
+    1. Select the **Yes** button on the RDP certificate warning dialog:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-cert-trust-50.png" alt-text="Accept the RDP certificate trust warning" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-cert-trust.png" :::
+
+    1. Once you've connected to the Azure VM, you'll see the Windows Server desktop.
+
+    1. Select the **Next** button at the bottom of this page.
+
+- title: Deploy the Azure Stack HCI cluster
+  durationInMinutes: 110
+  content: |
+
+    After you've remoted into the Azure VM, finalize your deployment by running a script to provision the Azure Stack HCI and management VMs and create the Azure Stack HCI cluster. The VMs are deployed into the Azure VM using nested virtualization:  
+
+    **TBD: Determine whether DSC can change the New-AzSHCISandbox shortcut properties, or if I should have them update the link and prefix with `PowerShell -NoExit`**  
+
+    1. Minimize or close the **Server Manager** app, then double-click the **New-AzSHCISandbox** icon on the desktop to start the PowerShell script:
+
+       > [!NOTE]
+       > Desired State Configuration may still be running in the background, configuring files and deployment scripts. Once complete, the **New-AzSHCISandbox** shortcut icon will appear on the desktop.
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-desktop.png" alt-text="RDP Windows Server desktop" lightbox="./media/guided-quick-deploy-eval/azure-vm-desktop-large.png" :::
+
+    1. The PowerShell script typically runs for about 1:50. When complete, you'll see a "Successfully deployed the Azure Stack HCI Sandbox" message:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-ps-cluster-deploy.png" alt-text="Run the cluster deployment script" lightbox="./media/guided-quick-deploy-eval/azure-vm-ps-cluster-deploy.png" :::
+ 
+    1. Select the **Next** button at the bottom of this page.
+
+- title: Remote into the management VM  
+  durationInMinutes: 5  
+  content: |  
+
+    The script that ran in the previous section created another shortcut on the Azure VM desktop. You'll use that shortcut to remote into the management VM and sign in to Windows Admin Center:  
+    
+    1. Double-click the **AdminCenter** icon on the Azure VM desktop, enter user "Contoso\Administrator" and password "Password01", then select **OK**:
+
+       > [!NOTE]
+       > If you get a "Remote Desktop can't find the computer \"AdminCenter\"" error, you may need to wait a few more minutes for the management VM to complete startup. 
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm.png" alt-text="RDP into the WAC VM, from the Azure VM" lightbox="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm.png" :::
+
+    1. After connecting to the management VM, double-click the **Windows Admin Center** shortcut on the desktop:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" alt-text="The management VM desktop" lightbox="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" :::
+
+    1. Sign in to the Windows Admin Center browser app by entering the "Contoso\Administrator" and "Password01" domain credentials again, then select **OK**:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/wac-sign-in.png" alt-text="Run the Windows Admin Center shortcut and sign in" lightbox="./media/guided-quick-deploy-eval/wac-sign-in.png" :::
+
+    1. Close the "What's new" dialog and you'll see the **All connections** view in Windows Admin Center:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/wac-sign-in-success.png" alt-text="Upon sign in verify that extensions have updated" lightbox="./media/guided-quick-deploy-eval/wac-sign-in-success.png" :::
+
+    1. Select the **Next** button at the bottom of this page.
+
+- title: Add the cluster to Windows Admin Center  
+  durationInMinutes: 5  
+  content: |  
+
+    Now you'll add your new cluster to Windows Admin Center Cluster Manager and make sure the extensions are updated: 
+
+    1. Select the view drop down, then select **Cluster Manager** to begin the process of adding your new cluster to Windows Admin Center:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/all-connections.png" alt-text="Select cluster manager view" lightbox="./media/guided-quick-deploy-eval/all-connections.png" :::
+
+    1. In the **Cluster Manager** view:
+
+       - Select **+ Add**
+       - Under **Cluster name** enter "azstackcluster". After a short pause you'll see a "Found \"AzStackCluster.contoso.com\"" validation message, and the 2 cluster VM nodes showing at the bottom.
+       - Select the **Manage Software-Defined Networking** checkbox.
+       - Under **Specify the Network Controller REST URI** enter "https://nc01.contoso.com"
+       - Select the **Validate** button. There will be a short pause while the SDN URI is detected and configured.
+       - Once you see the "Remote Server Administration Tool Network Controller Module not found" message, select the **Install RSAT-NetworkController** button.
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-add-cluster1.png" alt-text="Add cluster to Windows Admin Center step 1" lightbox="./media/guided-quick-deploy-eval/cluster-manager-add-cluster1.png" :::
+
+       - Wait for the Network Controller Module installation. When complete, you'll see a "Validate to continue" message. 
+       - Select the **Validate** button a second time. After another short pause you'll see a "Found \"https://nc01.contoso.com\"" validation message.
+       - Select the **Add** button at the bottom and wait for the addition of the cluster to Windows Admin Center to complete.
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-add-cluster2.png" alt-text="Add cluster to Windows Admin Center step 2" lightbox="./media/guided-quick-deploy-eval/cluster-manager-add-cluster2.png" :::  
+
+
+    1. Back in the **Cluster Manager** view, you'll see the new "azstackcluster.contoso.com" server cluster entry. Select the "azstackcluster.contoso.com" cluster:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-new-cluster.png" alt-text="Cluster manager view showing newly added cluster" lightbox="./media/guided-quick-deploy-eval/cluster-manager-new-cluster.png" :::
+
+    1. In **Cluster Manager**, if you see the banner "An update is available for this extension", complete the following items. Otherwise, jump to the next step:  
+
+       - **TBD: Decide whether we need to update the Cluster Manager extension, or remove this step entirely. I've only tested with the latest extension.**
+
+       - Select the **Update now** link:  
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-update-extension.png" alt-text="Select the Update Now link to go to the settings view" lightbox="./media/guided-quick-deploy-eval/cluster-manager-update-extension.png" :::
+
+       - In the **Settings Extensions** view, select the **Cluster Manager** extension row, then select the **Update** button at the top. Wait for the **Updating...** dialog to complete, then you'll be returned to **Settings Extensions** where you'll notice the **Cluster Creation** extension status changed to "Installed":  
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-update-extension-extensions.png" alt-text="In the settings view select the Update Available link for Cluster Manager the Update" lightbox="./media/guided-quick-deploy-eval/cluster-manager-update-extension-extensions.png" :::
+
+       - Select the back arrow in your browser to return to the **Cluster Manager** view.  
+
+    1. Select the **Next** button at the bottom of this page.
+
+- title: Register with Azure
+  durationInMinutes: 20
+  content: |
+
+    Now you'll integrate your cluster with Azure by completing the [Azure registration process using Windows Admin Center](/azure-stack/hci/deploy/register-with-azure#register-a-cluster-using-windows-admin-center), which includes:
+    - registering Windows Admin Center with Azure
+    - registering the Azure Stack HCI cluster with Azure          
+
+    > [!IMPORTANT]
+    > You'll need an Azure account to sign in during registration. For the easiest experience the account should have membership in the following roles:
+    >
+    > [Azure RBAC roles](/azure/role-based-access-control/role-assignments-steps) on the subscription:
+    > - Either membership in the "Owner" role (you'll already be a member if you created the subscription)  
+    > - Or membership in the "User Access Administrator" and "Contributor" roles  
+    >
+    > [Azure AD RBAC roles](/azure/active-directory/roles/custom-overview) on the on the Azure AD tenant:
+    > - Either "Global Administrator" (you'll already be a member if you created the subscription)  
+    > - or "Cloud application administrator"  
+    >
+    > **If you don't have an account with the appropriate permissions**, you'll need to work with an administrator that can either:
+    > - Complete this entire registration section for you
+    > - Or allow you to proceed with registration, but be available to provide permissions consent as necessary during the flow
+
+    1. Return to the **Cluster Manager** **Dashboard** view, where you'll see a status of **Not yet registered** under **Azure connection**. Select the **Register this cluster** link to begin the first part of the registration process, which registers your Windows Admin Center gateway with Azure:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-dashboard-not-yet-registered.png" alt-text="Register this cluster on dashboard" lightbox="./media/guided-quick-deploy-eval/cluster-manager-dashboard-not-yet-registered.png" :::
+
+    1. In the **Get started with Azure in Windows Admin Center** panel on the right, select the **Copy** button, then select the **Enter the code** link to open a new browser tab for authentication.
+
+       > [!NOTE]
+       > The device authentication code will expire after a few minutes. If yours expires you'll need to **Cancel** the panel and return to the previous step.
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-begin-auth.png" alt-text="Register prompt for device auth code" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-begin-auth.png" :::
+
+    1. In the new browser tab, paste the authentication code then select the **Next** button:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-auth-code-enter-code.png" alt-text="Enter auth code in browser" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-auth-code-enter-code.png" :::
+
+    1. Next, enter the email address then the password of the Azure account that has the permissions discussed earlier:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-creds-email.png" alt-text="Enter Azure account email address" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-creds-email.png" :::
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-creds-pass.png" alt-text="Enter Azure account password" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-creds-pass.png" :::
+
+    1. When you see the **Are you trying to sign in to Windows Admin Center?** confirmation dialog, select **Continue**. After you see the sign-in confirmation dialog, you can close the browser tab. 
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-conf.png" alt-text="Confirm Windows Admin Center sign in" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-conf.png" :::
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-done.png" alt-text="Sign in confirmation dialog" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-done.png" :::
+
+    1. Back in the **Cluster Manager** **Dashboard** view you'll see your **Azure Active Directory tenant ID** populated. Confirm the tenant ID, select **Create new**, then select the **Connect** button:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-aad-create-app.png" alt-text="Create service princpals in the Azure AD tenant" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-aad-create-app.png" :::
+
+       >[!WARNING]
+       > It is **critical** that you pause here for 60 seconds to avoid a syncronization problem. **Do not** proceeed until you've waited for at least 60 seconds, or you will run into problems later in the registration flow.
+
+    1. Once you've paused for at least 60 seconds after the previous step, and you see the "Now connected to Azure AD" confirmation, select the **Sign in** button.
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" alt-text="Sign in to Azure AD tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" :::
+
+       **TBD: there is a known bug in the current WAC gateway flow that throws up a "Login_in_process: error during login call - login is already in process". Not sure how soon this will be resolved.**
+
+    1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center by selecting **Accept**:
+       # [Global Administrator](#tab/global-admin)
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-global-admin.png" :::
+
+       # [Cloud Application Administrator](#tab/cloud-app-admin)
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" :::
+
+       # [None (non-administrator user)](#tab/non-admin)
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" :::
+       ---
+
+    1. You've completed Azure registration for Windows Admin Center. Next you'll return to the **Cluster Manager** **Dashboard** view where you'll still see a status of **Not yet registered** under **Azure connection**. Select the **Register this cluster** link again to finalize registration by registering the cluster with Azure:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-dashboard-not-yet-registered.png" alt-text="Register this cluster on dashboard" lightbox="./media/guided-quick-deploy-eval/cluster-manager-dashboard-not-yet-registered.png":::
+
+    1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your account:
+
+       # [Global Administrator](#tab/global-admin)
+
+       Select **Accept** to consent incremental permissions to the Azure AD application, allowing it to perform cluster registration:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app cluster registration perms" lightbox="./media/guided-quick-deploy-eval/register-cluster-consent-as-global-admin.png":::
+
+       # [Cloud Application Administrator](#tab/cloud-app-admin)
+
+       Select **Accept** to consent incremental permissions to the Azure AD application, allowing it to perform cluster registration:  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app cluster registration perms" lightbox="./media/guided-quick-deploy-eval/register-cluster-consent-as-cloud-app-admin.png":::
+
+       # [None (non-administrator user)](#tab/non-admin)
+
+       If you've signed in with an account that doesn't belong to an administrator role you're presented with the following **Need admin approval** dialog. If this occurs you have 2 options:   
+
+          **1. Select the "Have an admin account? Sign in with that account" option (work with an administrator to continue)**  
+          &nbsp;&nbsp;&nbsp;- Work with an administrator to **Sign in** using administrator credentials  
+          &nbsp;&nbsp;&nbsp;- Check **Consent on behalf of your organization** and select **Accept** to consent permissions  
+          &nbsp;&nbsp;&nbsp;- Proceed to the next step of the registration process  
+    
+          **2. Select the "Return to the application without granting consent" option in the previous dialog (restart registration)**  
+          &nbsp;&nbsp;&nbsp;- Get an administrator account with the correct administrator permissions    
+          &nbsp;&nbsp;&nbsp;- Select the gear icon in the upper right to go to **Settings**   
+          &nbsp;&nbsp;&nbsp;- Under the **Gateway / Register** settings, select **Unregister** then **Confirm**  
+          &nbsp;&nbsp;&nbsp;- Under the **User / Account** settings, select **Sign out**  
+          &nbsp;&nbsp;&nbsp;- Return to [step #1 of this **Register with Azure** section](/azure-stack/hci/guided-quick-deploy-eval?tutorial-step=6) and repeat the instructions using an administrator account  
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval2.png" alt-text="Dialog saying that consent requires admin approval" lightbox="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval2.png":::  
+       ---  
+  
+    1. You'll notice a new panel on the right:
+       - Confirm the **Azure subscription ID** selection.
+       - Select **Create new** to create a new **Azure resource group** for your new Azure Stack HCI resource in Azure, and provide a name.
+       - Select a valid **Azure region**.
+       - Select the **Advanced** options dropdown and make sure **Enable Azure Arc** is selected so you can evaluate Arc enabled management. 
+       - Select the **Register** button to complete registration.   
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-register-subscription-final-step.png" alt-text="Confirm Azure subscription, resource group, and region selections" lightbox="./media/guided-quick-deploy-eval/register-cluster-register-subscription-final-step.png" :::
+
+    1. After a brief **Registering..** dialog you'll be prompted to re-enter the cluster administrator credentials. Enter user "Contoso\Administrator" and password "Password01", then select **Continue**. The **Registering..** dialog will continue to show for 5-10 minutes until registration is complete: 
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-register-subscription-final-step-registering-credssp.png" alt-text="CredSSP admin account prompt" lightbox="./media/guided-quick-deploy-eval/register-cluster-register-subscription-final-step-registering-credssp.png" :::
+     
+    1. You'll return to the **Cluster Manager Dashboard** view again, but notice that the cluster status has been updated to **Connected**. Select the **View Azure resource** link to see the newly created Azure Stack HCI cluster registration resource in the Azure portal:
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-register-connected.png" alt-text="Registration completed and connected confirmation" lightbox="./media/guided-quick-deploy-eval/register-cluster-register-connected.png" :::
+
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-register-connected-azure-hci-resource.png" alt-text="Confirm Azure subscription, resource group, and region selections" lightbox="./media/guided-quick-deploy-eval/register-cluster-register-connected-azure-hci-resource.png" :::
+
+    1. Select the **Next** button at the bottom of this page.  
+
+- title: Create virtual machines
+  durationInMinutes: 10
+  content: |
+    There are 2 options available for creating VMs on your new Azure Stack HCI cluster: Windows Admin Center from your cluster, or from the Azure portal using [Azure Arc](/azure/azure-arc/servers/overview).
+    
+    1. Return to the Windows Admin Center session you used in the previous sections. 
+    1. To create a VM using Windows Admin Center: 
+       - Select the **Server Manager** view, then pick a server. For example, "azshost1.contoso.com": 
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/create-vm-server-manager.png" alt-text="Use Server Manager to select a VM" lightbox="./media/guided-quick-deploy-eval/create-vm-server-manager.png" :::
+
+       - In **Server Manager** select the **Virtual Machines** view. From here you can use [Windows Admin Center features to create and manage VMs](/azure-stack/hci/manage/vm).
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/create-vm.png" alt-text="Create a VM on the server" lightbox="./media/guided-quick-deploy-eval/create-vm.png" :::
+
+    1. To create a VM using the Azure portal and Azure Arc:
+       - Select the **Cluster Manager** view, then select the cluster. 
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-select-cluster.png" alt-text="Select the new cluster to begin cluster registration" lightbox="./media/guided-quick-deploy-eval/cluster-manager-select-cluster.png" :::
+
+       - In **Cluster Manager** select the **Dashboard** view. Select the **View Azure resource** link again in right pane which will open a new browser tab. 
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/create-arc-vm-view-azure-resource.png" alt-text="View the Azure Stack HCI resource in Azure" lightbox="./media/guided-quick-deploy-eval/create-arc-vm-view-azure-resource.png" :::
+
+       - In the **Azure Stack HCI** Azure portal tab, select **Virtual Machines**. Select the link in the right pane, which will take you to the docs for [setting up Azure Arc-enabled VM resources](/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#azure-arc-resource-bridge-deployment-overview). When you're done, you'll be able to use the same [Azure VM blade](/azure-stack/hci/manage/manage-virtual-machines-in-azure-portal) that you use to create Azure VMs, to create Arc-enabled VMs on your Azure Stack HCI cluster.
+
+         :::image type="content" source="./media/guided-quick-deploy-eval/create-arc-vm.png" alt-text="Create an Arc-enabled VM" lightbox="./media/guided-quick-deploy-eval/create-arc-vm.png" :::
+
+    1. Select the **Next** button at the bottom of this page.  
+
+- title: Visualize and monitor the cluster and VMs
+  durationInMinutes: 10
+  content: |
+    There are multiple options for monitoring and visualizing your cluster, the VMs you've deployed, and other resources:  
+
+    - You can enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights. See [Configure Azure portal to monitor Azure Stack HCI clusters (preview)](/azure-stack/hci/manage/monitor-hci-single) for more details.  
+    - Another options is to use the Windows Admin Center Cluster Manager dashboard. See [Monitor Azure Stack HCI clusters from Windows Admin Center](/azure-stack/hci/manage/monitor-cluster) for details.
+    - The Health Service provides multiple monitoring features, including cluster performance history, Health Service faults, and more. See [Monitor clusters with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.
+
+    1. Select the **Next** button at the bottom of this page.  
+
+- content: |
+    You've completed your Azure Stack Hub HCI evaluation!
+
+    If you'd like to remove all of the evaluation resources from your Azure subscription, see [Azure Resource Manager resource group and resource deletion](/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal) for details on how to delete your Azure resource group.
+
+    For more details on cluster deployment and management:
+    - [Deploy the Azure Stack HCI operating system](/deploy/operating-system) provides a more detailed look at deployment and the various options and considerations.
+    - Learn how to manage VMs with [Windows Admin Center](/manage/vm) and [PowerShell](/manage/vm-powershell).
+    - Check out the [web-based Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920) to get an idea of the type of hardware you'll need for your cluster based on your workloads.
