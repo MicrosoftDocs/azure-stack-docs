@@ -47,7 +47,7 @@ Use Windows Admin Center to join the server to your cluster.
 
 ### Add a server to SDN in an SDN-enabled cluster
 
-Windows Admin Center doesn't automatically add the new server to the Software Defined Networking (SDN) infrastructure of your cluster. You must use the SDN Express script to add the new server to SDN in an SDN-enabled cluster.
+If your cluster uses Software Defined Networking (SDN), adding a server to it using Windows Admin Center won't automatically add it to the SDN infrastructure. You must use the SDN Express script to add the new server to SDN in an SDN-enabled cluster.
 
 Before you run the script, ensure that a virtual switch is already created and the server is successfully added to the cluster. Also ensure that the server is paused so that the workloads cannot move to it.
 
