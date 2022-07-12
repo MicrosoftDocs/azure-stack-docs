@@ -45,11 +45,11 @@ Use Windows Admin Center to join the server to your cluster.
 >[!NOTE]
 > If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
-### Add a server to SDN in an SDN-enabled cluster
+### Add a server to a cluster in a SDN environment
 
-If your cluster uses Software Defined Networking (SDN), adding a server to it using Windows Admin Center won't automatically add it to the SDN infrastructure. You must use the SDN Express script to add the new server to SDN in an SDN-enabled cluster.
+If your cluster uses Software Defined Networking (SDN), adding a server to it using Windows Admin Center won't automatically add the new server to SDN. You must use the SDN Express script to add the new server to SDN.
 
-Before you run the script, ensure that a virtual switch is created and the server is successfully added to the cluster. Also ensure that the server is paused so that the workloads cannot move to it.
+Before you run the script, ensure that a virtual switch is created and the server is successfully added to the cluster. Also, ensure that the server is paused so that the workloads cannot move to it.
 
 1. Download the latest version of the [SDN Express PowerShell scripts from the SDN GitHub repository](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts).
 1. Run the following PowerShell cmdlets on the newly added server:
