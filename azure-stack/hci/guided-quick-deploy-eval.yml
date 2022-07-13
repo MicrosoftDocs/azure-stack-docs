@@ -309,7 +309,7 @@ items:
           **1. Select the "Have an admin account? Sign in with that account" option (work with an administrator to continue)**  
           &nbsp;&nbsp;&nbsp;- Work with an administrator to **Sign in** using administrator credentials  
           &nbsp;&nbsp;&nbsp;- Check **Consent on behalf of your organization** and select **Accept** to consent permissions  
-          &nbsp;&nbsp;&nbsp;- Proceed to the next step of the registration process  
+          &nbsp;&nbsp;&nbsp;- Continue with the next step of the registration process  
     
           **2. Select the "Return to the application without granting consent" option in the previous dialog (restart registration)**  
           &nbsp;&nbsp;&nbsp;- Get an administrator account with the correct administrator permissions    
