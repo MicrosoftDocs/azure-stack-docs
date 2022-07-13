@@ -11,56 +11,41 @@ ms.date: 04/18/2022
 
 # Deploy and manage Azure Stack HCI clusters in VMM
 
-> Applies to: Azure Stack HCI, version 21H2
+> Applies to: Azure Stack HCI, version 20H2
 
-This article provides information about how to set up a Azure Stack HCI, version 21H2 cluster in System Center - Virtual Machine Manager (VMM) 2022.  You can deploy an Azure Stack HCI cluster by provisioning from bare-metal servers.
-
-   > [!NOTE]
-   > This article also includes information which applies to how to set up a Azure Stack HCI, version 20H2 cluster in System Center - Virtual Machine Manager (VMM) 2019 UR3 and later.
+This article provides information about how to set up a Azure Stack HCI, version 20H2 cluster in System Center - Virtual Machine Manager (VMM) 2019 UR3 and later. You can deploy an Azure Stack HCI cluster by provisioning from bare-metal servers.
 
    > [!IMPORTANT]
    > If you're using Microsoft System Center Virtual Machine Manager 2019 to manage your Azure Stack HCI, version 20H2 cluster, don't attempt to upgrade the cluster to Azure Stack HCI, version 21H2 without first installing [System Center 2022](/system-center/).
 
 ## Before you start
 
-Make sure you're running VMM 2019 UR3 or later. CHECK THIS
+Make sure you're running VMM 2019 UR3 or later.
 
 **What's supported?**
 
 - Addition, creation, and management of Azure Stack HCI clusters. [See detailed steps](/system-center/vmm/provision-vms) to create and manage HCI clusters.
 
-- With Azure Stack HCI, version 21H2, the newly introduced hyper-converged infrastructure (HCI) Operating system that runs on on-premises clusters with virtualized workloads, you can manage Azure Stack HCI, 21H2 clusters. (VMM 2022). NEW
+- Ability to provision & deploy VMs on the Azure Stack HCI clusters and perform VM life cycle operations. VMs can be provisioned using VHD files, templates or from an existing VM. [Learn more](/system-center/vmm/provision-vms).
 
-- Ability to provision and deploy VMs on the Azure Stack HCI clusters and perform VM life cycle operations. VMs can be provisioned using VHD files, templates, or from an existing VM. [Learn more](/system-center/vmm/provision-vms).
-
-- Most operations which manage Azure Stack clusters in VMM are similar to those which manage Windows Server clusters. (VMM 2022). NEW
-
-- [Set up VLAN-based network on Azure Stack HCI clusters](/system-center/vmm/manage-networks).
+- [Set up VLAN based network on Azure Stack HCI clusters](/system-center/vmm/manage-networks).
 
 - [Deployment and management of SDN network controller on Azure Stack HCI clusters](/system-center/vmm/sdn-controller).
 
-- Management of storage pool settings, creation of virtual disks, creation of cluster shared volumes (CSVs), and application of [QOS settings](/system-center/vmm/qos-storage-clusters#assign-storage-qos-policy-for-clusters).
+- Management of storage pool settings, creation of virtual disks, creation of cluster shared volumes (CSVs) and application of [QOS settings](/system-center/vmm/qos-storage-clusters#assign-storage-qos-policy-for-clusters).
 
-- Use of the PowerShell cmdlets used which manage Windows Server clusters to manage Azure Stack HCI clusters as well.
-
-- Supports Windows 11 as guest operating system (VMM 2022). NEW
-
-- Can be used to manage Windows Server 2022 hosts and Windows Server 2022 Guest OS hosts (VMM 2022). NEW
+- The PowerShell cmdlets used to manage Windows Server clusters can be used to manage Azure Stack HCI clusters as well.
 
 **What's not supported?**
 
-- Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM. SEE BELOW
+- Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM.
 
-- As Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines.
-
-- Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](../overview.md#why-azure-stack-hci) and [When to use Azure Stack HCI](../concepts/compare-windows-server.md#when-to-use-azure-stack-hci).
+- Azure Stack HCI is intended as a virtualization host where you run all your workloads in virtual machines, the Azure Stack HCI terms allow you to run only what's necessary for hosting virtual machines. Azure Stack HCI clusters should not be used for other purposes like WSUS servers, WDS servers or library servers. Refer to [Use cases for Azure Stack HCI](../overview.md#why-azure-stack-hci) and [When to use Azure Stack HCI](../concepts/compare-windows-server.md#when-to-use-azure-stack-hci).
 
 - Live migration of VM is not supported between any version of Windows Server and Azure Stack HCI clusters.
 
-- Network migration from Windows Server 2019 to Azure Stack HCI cluster will work as well as migrating an offline (shut down) VM. VMM performs export and import operation here. CHECK ON WINDOWS 2022
+- Network migration from Windows Server 2019 to Azure Stack HCI cluster will work, as well as migrating an offline (shut down) VM. VMM performs export and import operation here.
 
-> [!IMPORTANT]
-> Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM.
 
 > [!NOTE]
 > You must enable Storage Spaces Direct when creating a Azure Stack HCI cluster.
@@ -76,7 +61,7 @@ After you enable a cluster with Storage Spaces Direct, VMM does the following:
 
 If you use PowerShell to create a hyper-converged cluster, the pool and the storage tier is automatically created with the **Enable-ClusterS2D autoconfig=true** option.
 
-After these prerequisites are in place, you provision a cluster and set up storage resources on it. You can then deploy VMs on the cluster.
+After these prerequisites are in place, you provision a cluster, and set up storage resources on it. You can then deploy VMs on the cluster.
 
 Follow these steps:
 
