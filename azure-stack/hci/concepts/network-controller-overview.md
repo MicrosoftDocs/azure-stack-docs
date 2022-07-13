@@ -24,7 +24,7 @@ With the Southbound API, Network Controller can manage network devices and netwo
 
 The Network Controller Northbound API is implemented as a REST interface. It provides the ability to manage your datacenter network from management applications. For management, users can use the REST API directly, or use Windows PowerShell built on top of the REST API, or management applications with a graphical user interface such as Windows Admin Center or System Center Virtual Machine Manager.
 
-To learn more about these PowerShell cmdlets, see [NetworkController](/powershell/module/networkcontroller/?view=windowsserver2022-ps) reference.
+To learn more about these PowerShell cmdlets, see [NetworkController](/powershell/module/networkcontroller/?view=windowsserver2022-ps&preserve-view=true) reference.
 
 ## Network Controller features
 
