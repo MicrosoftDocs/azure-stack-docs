@@ -60,7 +60,7 @@ Make sure you're running VMM 2019 UR3 or later. CHECK THIS
 - Network migration from Windows Server 2019 to Azure Stack HCI cluster will work as well as migrating an offline (shut down) VM. VMM performs export and import operation here. CHECK ON WINDOWS 2022
 
 > [!IMPORTANT]
-> Management of Azure Stack HCI stretched clusters is currently not supported in VMM.
+> Management of *Azure Stack HCI stretched clusters* is currently not supported in VMM.
 
 > [!NOTE]
 > You must enable Storage Spaces Direct when creating a Azure Stack HCI cluster.
