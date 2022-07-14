@@ -39,7 +39,7 @@ In addition to the Azure Account extension for Visual Studio, a number of other 
 - [An Azure Stack Hub subscription](https://azure.microsoft.com/overview/azure-stack/)
     and credentials with access to Azure Stack Hub.
 - An environment with PowerShell using the AZ modules for Azure Stack Hub. For 
-    instructions see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&view=azs-2008).
+    instructions see [Install PowerShell Az module for Azure Stack Hub](../operator/powershell-install-az-module.md?bc=%2fazure-stack%2fbreadcrumb%2ftoc.json%3fview%3dazs-2008&toc=%2fazure-stack%2fuser%2ftoc.json%3fview%3dazs-2008&preserve-view=true).
 
 ## Get your credentials
 
@@ -64,10 +64,10 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 2. Run the following cmdlets in the same session:
 
     ```powershell
-    $AuthEndpoint = (Get-AzEnvironment -Name "mabrigg@microsoft.com").ActiveDirectoryAuthority.TrimEnd('/')
+    $AuthEndpoint = (Get-AzEnvironment -Name "sethm@microsoft.com").ActiveDirectoryAuthority.TrimEnd('/')
     $AADTenantName = "masselfhost.onmicrosoft.com"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-    Add-AzAccount -EnvironmentName "mabrigg@microsoft.com" -TenantId $TenantId
+    Add-AzAccount -EnvironmentName "sethm@microsoft.com" -TenantId $TenantId
     ```
 
     ```Output
@@ -101,7 +101,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 
         | Parameter | Description |
         | --- | --- |
-        | azure.cloud | The name of your environment. |
+        | `azure.cloud` | You must use the literal constant "AzureCustomCloud" for this parameter.|
         | `azure.tenant` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `azure.customCloud.resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
         | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
@@ -111,7 +111,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
       ```JSON  
         "azure.cloud": "AzureCustomCloud",
         "azure.customCloud.resourceManagerEndpointUrl": "https://management.region.<fqdn>",
-        "azure.tenant": "<your-tenant-ID",
+        "azure.tenant": "<your-tenant-ID>",
       ```
 
 9. Save the user settings (JSON) and use **Ctrl+Shift+P** once again. Select **Azure: Sign in**. The authentication page loads in your browser. Sign in to your endpoint.
@@ -133,6 +133,6 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 
 ## Next steps
 
-[Set up a development environment in Azure Stack Hub ](azure-stack-dev-start.md)
+[Set up a development environment in Azure Stack Hub](azure-stack-dev-start.md)
 
 [Set up Azure Storage in your Azure Stack Hub from Visual Studio Code](dev-start-vscode-storage.md)

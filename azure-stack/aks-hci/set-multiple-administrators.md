@@ -1,25 +1,25 @@
 ---
-title: Set up multiple administrators on Azure Kubernetes Service (AKS) on Azure Stack HCI
-description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI.
-author: mattbriggs
+title: Set up multiple administrators on Azure Kubernetes Service on Azure Stack HCI and Windows Server
+description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI and Windows Server.
+author: sethmanheim
 ms.topic: how-to
 ms.date: 04/21/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
-# Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI.
+# Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS on Azure Stack HCI and Windows Server.
 # Keyword: administrator setup register users Microsoft on Cloud (MOC) service 
 ---
 
 # Set up multiple administrators
 
-Currently, AKS on Azure Stack HCI is tightly coupled to the user who installed the service, with no awareness of other local users or AD users with administrative rights. We are working on resolving this issue. 
+Currently, Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is tightly coupled to the user who installed the service, with no awareness of other local users or AD users with administrative rights. We are working on resolving this issue. 
 
-In the meantime, you can use the steps in this topic to register additional users with the Microsoft on Cloud (MOC) service under AKS on Azure Stack HCI. This will allow multiple people to perform administrative tasks.
+In the meantime, you can use the steps in this topic to register additional users with the Microsoft on Cloud (MOC) service under AKS on Azure Stack HCI and Windows Server. This will allow multiple people to perform administrative tasks.
 
 ## Create a new MOC user
 
-Run the following commands as the user who installed AKS on Azure Stack HCI. This user needs to be on the same account that deployed the management cluster. Let's refer to this user as `admin1` for the remainder of this topic.
+Run the following commands as the user who installed AKS on Azure Stack HCI and Windows Server. This user needs to be on the same account that deployed the management cluster. Let's refer to this user as `admin1` for the remainder of this topic.
 
 You should consider how long you would like the new admin (`admin2`) to have administrative rights. There isn't a way to extend permissions, but you can always repeat these instructions to create a new user. Use the `-ValidityDays` parameter to set the length of time.
 

@@ -1,10 +1,10 @@
 ---
 title: Deploy test applications to Azure Kubernetes Service on Azure Stack Hub
 description: Learn how to deploy test applications to Azure Kubernetes Service on Azure Stack Hub.
-author: mattbriggs
+author: sethmanheim
 ms.topic: article
 ms.date: 10/26/2021
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
 
@@ -87,7 +87,7 @@ If you are deploying application images from a local ACR, you will need to store
 Add the SPN as a contributor to the ACR. 
 
 > [!NOTE]  
-> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Be sure to add the values for your system.
+> This script has been modified from the [Azure Container Registry site](/azure/container-registry/container-registry-auth-service-principal) (bash [sample](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/create-registry/create-registry-service-principal-assign-role.sh)) as Azure Stack Hub does not yet have the ACRPULL role. This sample is a PowerShell script, equivalent can be written in bash. Be sure to add the values for your system.
 
 ```azurecli  
 # Modify for your environment. The ACR_NAME is the name of your Azure Container

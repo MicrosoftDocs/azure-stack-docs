@@ -37,7 +37,9 @@ By using the Azure portal, you get the same consistent experience when provision
 ## What is Azure Arc Resource Bridge?
 
 A resource bridge is required to enable VM provisioning through the Azure portal on Azure Stack HCI. Azure Arc Resource Bridge is a Kubernetes-backed, lightweight VM that enables users to perform full lifecycle management of resources on Azure Stack HCI from the Azure control plane, including the Azure portal, Azure CLI, and Azure PS. Azure Arc Resource Bridge also creates Azure Resource Manager entities for VM disks, VM images, VM interfaces, VM networks, custom locations, and VM cluster extensions.
-
+   > [!NOTE]
+   > If the Arc Resource Bridge is to be used side-by-side with AKS (e.g. to run your container workloads) on the same cluster - beware that there are limitations e.g. a required deployment order. [Limitations and known issues](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues).  
+    
 A **custom location** for an Azure Stack HCI cluster is analogous to an Azure region. As an extension of the Azure location construct, custom locations allow tenant administrators to use their Azure Stack HCI clusters as target location for deploying Azure services.
 
 A **cluster extension** is the on-premises equivalent of an Azure Resource Manager resource provider. The Azure Stack HCI cluster extension helps manage VMs on an Azure Stack HCI cluster in the same way that the "Microsoft.Compute" resource provider manages VMs in Azure, for example.
@@ -64,15 +66,18 @@ Deploying Azure Arc Resource Bridge requires the following:
   - To install Azure CLI on each cluster node, use RDP connection.
   - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
-  - At least 50GB of space in C:\.
+  - A cluster shared volume with at least 50GB of space.
   - At least 4 vCPUs
   - At least 8GB of memory
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
-- A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server. We currently do not support proxy configurations.
+- A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server.
 - An IP address for the load balancer running inside the Resource Bridge. The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
 - An IP address for the cloud agent running inside the Resource Bridge. If the Azure Stack HCI cluster servers were assigned static IP addresses, then provide an explicit IP address for the cloud agent. The IP address for the cloud agent must be in the same subnet as the IP addresses of Azure Stack HCI cluster servers.
 - A shared cluster volume to store configuration details and the OS image for your Resource Bridge VM.
 - An Azure subscription ID where your Resource Bridge, custom location, and cluster extension resources will reside.
+
+> [!NOTE]
+> We currently do not support proxy configurations.
 
 ## Network port requirements
 
@@ -94,7 +99,6 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 | https://helm.sh/blog/get-helm-sh/ | 443 | Download agent | Used to download the Helm binaries |
 | https://storage.googleapis.com/ | 443 | Cloud init | Downloading Kubernetes binaries |
 | https://azurecliprod.blob.core.windows.net/ | 443 | Cloud init | Downloading binaries and containers |
-| https://443 | 443 | TCP | Used to support Azure Arc agents |
 | *.blob.core.windows.net | 443 | TCP | Required for downloads |
 | *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com | 80, 443 | Download agent | Downloading VHD images |
 | ecpacr.azurecr.io | 443 | Kubernetes | Downloading container images |

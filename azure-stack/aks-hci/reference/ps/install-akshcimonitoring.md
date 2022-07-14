@@ -1,10 +1,10 @@
 ---
-title: Install-AksHciMonitoring for AKS on Azure Stack HCI
-author: mattbriggs
+title: Install-AksHciMonitoring for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The Install-AksHciMonitoring PowerShell command deploys Prometheus-based monitoring solution.
 ms.topic: reference
 ms.date: 2/12/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 
@@ -13,7 +13,7 @@ ms.reviewer: jeguan
 # Install-AksHciMonitoring
 
 ## Synopsis
-Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI deployment.
+Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ Install-AksHciMonitoring -name <String>
 ```
 
 ## Description
-Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI deployment.
+Installs Prometheus for monitoring in the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment.
 
 ## Examples
 

@@ -20,17 +20,26 @@ See the support topics for any errors and their remedial steps. If the error con
 
 Collect diagnostics information before contacting Microsoft support as they may ask for it.
 
-For issues related to Arc VM management, you can generate logs from the cluster using the **Get-ArcHCILogs** cmdlet.
+For issues related to Arc VM management, you can generate logs from the cluster using the following command:
+
+> [!NOTE]
+> Make sure that you have the latest PowerShell module for log collection.
+>```PowerShell
+> #Update the PowerShell module
+> Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
+>```
 
 ```PowerShell
-Get-ArcHCILogs -workDirectory <path>
+$csv_path="<input-from-admin>"
+$resourcebridgevmip="<input-from-admin>"
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
 ```
 
-The `workDirectory` is located under the following path: 
+**$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 
-`$csv_path\ResourceBridge`
+**$resourcebridgevmip** is the IP address of the Arc Resource Bridge virtual machine.
 
-Please provide the absolute file path name. Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
+Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
 ## Limitations and known issues
 
@@ -44,8 +53,6 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
     > [!NOTE]
     > If Arc Resource Bridge is already deployed, you should not deploy the AKS management cluster unless the Arc Resource Bridge is removed.
 
-    While deploying Arc Resource bridge when AKS management cluster is available on the cluster, you don't need to perform the following steps:
-    **new-MocNetworkSetting**, **set-MocConfig**, and **install-Moc**.
 
 - You must uninstall these in the following order:
 
@@ -55,7 +62,6 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
     > [!NOTE]
     > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it will not remember the VM entities that were created earlier.
 
-- If only Arc Resource Bridge needs to be uninstalled, skip the step **uninstall-moc** for Azure Kubernetes Service to continue running on the cluster.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools are not visible in the Azure portal for management.
 - You must update Arc VMs on Azure Stack HCI only from the Azure management plane. Any modifications to these VMs from other management tools are not updated in the Azure portal.
@@ -64,6 +70,8 @@ Please provide the absolute file path name. Optionally, you can provide the `-lo
 - If the Arc for servers agents are installed on VMs provisioned through the Azure portal, there will be two projections of the VMs on the Azure portal.
 - Arc VM management is currently not available for stretched cluster configurations on Azure Stack HCI.
 - Support for Arc Resource Bridge & Arc VM Management is currently available only in English language.
+- Adding a server to an HCI cluster does not install Arc components automatically.
+- Naming convention for Azure resources such as virtual networks, gallery images, custom location, Arc Resource Bridge etc. should follow [these guidelines](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Next steps
 

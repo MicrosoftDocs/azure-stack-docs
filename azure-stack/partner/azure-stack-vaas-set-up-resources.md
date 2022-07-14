@@ -2,10 +2,10 @@
 title: Set up Azure AD and storage resources for VaaS
 titleSuffix: Azure Stack Hub
 description: Learn how to set up Azure AD and storage resources for Azure Stack Hub validation as a service.
-author: mattbriggs
+author: sethmanheim
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.author: mabrigg
+ms.author: sethm
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 
@@ -110,9 +110,9 @@ The Azure Storage account is hosted in the Azure public cloud, not on your Azure
 
 4. Review the [naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage) for Azure Storage accounts. Enter a name for your storage account.
 
-5. Select the **US West** region for your storage account.
+5. Select the **US East** region for your storage account.
 
-    To ensure that networking charges aren't incurred for storing logs, the Azure Storage account can be configured to use only the **US West** region. Data replication and the hot storage tier feature aren't necessary for this data. Enabling either feature will dramatically increase your costs.
+    To ensure that networking charges aren't incurred for storing logs, the Azure Storage account can be configured to use only the **US East** region. Data replication and the hot storage tier feature aren't necessary for this data. Enabling either feature will dramatically increase your costs.
 
 6. Leave the settings to the default values except for **Account kind**:
 

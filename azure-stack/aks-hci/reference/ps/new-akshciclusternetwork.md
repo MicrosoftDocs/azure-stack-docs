@@ -1,10 +1,10 @@
 ---
-title: New-AksHciClusterNetwork for AKS on Azure Stack HCI
-author: mattbriggs
+title: New-AksHciClusterNetwork for AKS on Azure Stack HCI and Windows Server
+author: sethmanheim
 description: The New-AksHciClusterNetwork PowerShell command creates an object for a new virtual network used by a workload cluster.
 ms.topic: reference
 ms.date: 09/07/2021
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 

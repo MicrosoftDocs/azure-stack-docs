@@ -1,24 +1,25 @@
 ---
-title: Secure communication between control plane nodes for AKS on Azure Stack HCI
+title: Secure communication between control plane nodes for  Azure Kubernetes Service on Azure Stack HCI and Windows Server
 description: Learn how to secure communication between in-cluster components.
-author: mattbriggs
+author: sethmanheim
 ms.topic: how-to
-ms.date: 04/18/2022
-ms.author: mabrigg 
+ms.date: 05/11/2022
+ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: aathipsa
-# Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI deployment.
+
+# Intent: As an IT Pro, I want to learn how use certificates to secure communication between in-cluster components on my AKS on Azure Stack HCI and Windows Server deployment.
 # Keyword: control plane nodes secure communication certificate revocation
 
 ---
 
 # Secure communication with certificates  
 
-Certificates are used to build secure communication between in-cluster components. AKS on Azure Stack HCI provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
+Certificates are used to build secure communication between in-cluster components. Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. 
 
 ## Certificates and CAs
 
-AKS on Azure Stack HCI generates and uses the following certificates and Certificate Authorities (CAs): 
+AKS on Azure Stack HCI and Windows Server generates and uses the following certificates and Certificate Authorities (CAs): 
 
 **Cluster CA**:
   - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.
@@ -33,7 +34,7 @@ AKS on Azure Stack HCI generates and uses the following certificates and Certifi
 
 ### Certificate provisioning 
 
-Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
+Certificate provisioning for kubelets is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
 
 - The certificates are stored at /etc/kubernetes/pki
 - The keys are RSA 4096, EcdsaCurve: P384 

@@ -167,7 +167,7 @@
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-73", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-102", 
       "redirect_document_id": false
     },
     { 
@@ -938,7 +938,22 @@
     },
     { 
       "source_path": "azure-stack/hci/manage/azure-monitor.md", 
-      "redirect_url": "/azure-stack/hci/manage/monitor-azure-portal", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-single", 
+      "redirect_document_id": false
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/monitor-azure-portal.md", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-single", 
+      "redirect_document_id": true
+    },    
+    { 
+      "source_path": "azure-stack/hci/manage/azure-stack-hci-insights.md", 
+      "redirect_url": "/azure-stack/hci/manage/monitor-hci-multi", 
+      "redirect_document_id": true
+    },
+    { 
+      "source_path": "azure-stack/hci/manage/manage-azure-registration.md", 
+      "redirect_url": "/azure-stack/hci/deploy/register-with-azure", 
       "redirect_document_id": true
     },
     { 
@@ -952,10 +967,15 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/aks-hci/certificates-and-tokens.md",
+      "redirect_url": "/azure-stack/aks-hci/certificates-update-after-sixty-days",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "azure-stack/aks-hci/add-akshcigmsacredentialspec.md",
       "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcigmsacredentialspec",
       "redirect_document_id": true
-    },
+    },    
     {
         "source_path": "azure-stack/aks-hci/add-akshcinode.md",
         "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcinode",

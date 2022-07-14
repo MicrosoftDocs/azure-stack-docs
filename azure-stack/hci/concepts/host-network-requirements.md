@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 10/22/2021
+ms.date: 07/08/2022
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
@@ -137,7 +137,7 @@ SET is a software-based teaming technology that has been included in the Windows
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
 
 > [!IMPORTANT]
-> Load Balancing/Failover (LBFO) is another teaming technology commonly used with Windows Server, but is not supported with Azure Stack HCI. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+> Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO) and Link Aggregation Control Protocol (LACP) teaming technologies commonly used with Windows Server. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
 
 SET is important for Azure Stack HCI because it's the only teaming technology that enables:
 
@@ -261,13 +261,13 @@ The following assumptions are made for this example:
 Here is the example bandwidth allocation table:
 
 |NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-|10 Gbps|20 Gbps|10 Gbps|70%|7 Gbps|*|*|2%|200 Mbps||
-|25 Gbps|50 Gbps|25 Gbps|70%|17.5 Gbps|29%|7.25 Gbps|1%|250 Mbps|
-|40 Gbps|80 Gbps|40 Gbps|70%|28 Gbps|29%|11.6 Gbps|1%|400 Mbps|
-|50 Gbps|100 Gbps|50 Gbps|70%|35 Gbps|29%|14.5 Gbps|1%|500 Mbps|
-|100 Gbps|200 Gbps|100 Gbps|70%|70 Gbps|29%|29 Gbps|1%|1 Gbps|
-|200 Gbps|400 Gbps|200 Gbps|70%|140 Gbps|29%|58 Gbps|1%|2 Gbps|
+|---------|-----------------|--------------------------|---------|-----------------|----------------|-----------------------------|----------|-------------------|
+|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |*\*            |200 Mbps                     |          |
+|25 Gbps  |50 Gbps          |25 Gbps                   |70%       |17.5 Gbps        |29%            |7.25 Gbps                    |1%        |250 Mbps               |
+|40 Gbps  |80 Gbps          |40 Gbps                   |70%       |28 Gbps          |29%            |11.6 Gbps                    |1%        |400 Mbps|
+|50 Gbps  |100 Gbps         |50 Gbps                   |70%       |35 Gbps          |29%            |14.5 Gbps                    |1%        |500 Mbps|
+|100 Gbps |200 Gbps        |100 Gbps                    |70%      |70 Gbps          |29%            |29 Gbps                      |1%        |1 Gbps|
+|200 Gbps |400 Gbps        |200 Gbps                    |70%      |140 Gbps         |29%            |58 Gbps                      |1%        |2 Gbps|
 
 \* Use compression rather than RDMA, because the bandwidth allocation for Live Migration traffic is <5 Gbps.
 

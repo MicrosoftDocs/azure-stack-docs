@@ -2,9 +2,9 @@
 title: Add or remove servers for an Azure Stack HCI cluster
 description: Learn how to add or remove server nodes from a cluster in Azure Stack HCI
 ms.topic: how-to
-author: v-dasis
-ms.author: v-dasis
-ms.reviewer: jgerend
+author: JasonGerend
+ms.author: jgerend
+ms.reviewer: stevenek
 ms.date: 05/27/2021
 ---
 
@@ -41,6 +41,9 @@ Use Windows Admin Center to join the server to your cluster.
 1. On the **Inventory** tab, select **Add**.
 1. In **Server name**, enter the full-qualified domain name of the server you want to add, click **Add**, then click **Add** again at the bottom.
 1. Verify the server has been successfully added to your cluster.
+
+>[!NOTE]
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
 ## Remove a server from a cluster
 

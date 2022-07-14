@@ -1,10 +1,11 @@
 ---
 title: Create stretched cluster volumes and set up replication
 description: How to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
-author: v-dasis
-ms.author: v-dasis
+author: v-jamemurray
+ms.author: v-jamemurray
+ms.reviewer: stevenek
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 05/16/2022
 ---
 
 # Create stretched cluster volumes and set up replication
@@ -48,7 +49,7 @@ Creating volumes and virtual disks for stretched clusters is a bit more involved
 1. First we move the `Available Storage` storage pool resource group to `Server1` in `Site1` using the `Move-ClusterGroup` cmdlet:
 
     ```powershell
-    Move-ClusterGroup -Cluster ClusterS1 -Name ‘Available Storage’ -Node Server1
+    Move-ClusterGroup -Cluster ClusterS1 -Name 'Available Storage' -Node Server1
     ```
 
 1. Next, create the first virtual disk (`Disk1`) for `Server1` in `Site1`:
@@ -160,7 +161,7 @@ Let's begin:
 1. The Available Storage group should be "owned" by the node it is currently sitting on. The group can be moved to Server1 using:
 
    ```powershell
-   Move-ClusterGroup -Name “Available Storage” -Node Server1
+   Move-ClusterGroup -Name "Available Storage" -Node Server1
    ```
 
 1. To create the replication partnership, use the `New-SRPartnership` cmdlet. This cmdlet is also where you specify the source data volume and log volume names:
