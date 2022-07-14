@@ -4,7 +4,7 @@ description: This topic provides guidance on how to get remote support for the A
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 04/26/2022
+ms.date: 07/14/2022
 ---
 
 # Get remote support for Azure Stack HCI (preview)
@@ -57,12 +57,21 @@ Get-KDSRootKey
 
 If the results are null, follow the steps given in the [Create the Key Distribution Services KDS Root Key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key#to-create-the-kds-root-key-using-the-add-kdsrootkey-cmdlet) article to create a KDS root key.
 
+> [!NOTE]
+> It could take several hours for full Active Directory replication before you can successfully grant remote support access.
+
 ### Install PowerShell module
 
 Install the Az.StackHCI PowerShell module. Make sure that the module is updated to the latest version if already installed:
 
 ```powershell
 Install-Module -Name Az.StackHCI
+```
+
+If not already installed, run the following cmdlet:
+
+```powershell
+Install-WindowsFeature -Name "RSAT-AD-PowerShell" -IncludeAllSubFeature
 ```
 
 ### Configure proxy settings
