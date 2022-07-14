@@ -1,8 +1,19 @@
-Evaluate AKS on Azure Stack HCI in Azure
-==============
-Overview
------------
-With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/ "Nested virtualization announcement blog post") back in 2017, Microsoft opened the door to a number of new and interesting scenarios.  Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
+---
+title: Deploy your AKS-HCI infrastructure with PowerShell
+author: oadeniji
+ms.topic: conceptual
+ms.date: 07/14/2022
+ms.author: v-simonecox 
+ms.lastreviewed: 
+ms.reviewer: oadeniji
+#Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
+#Keyword: Azure VM deploymentEvaluate AKS on Azure Stack HCI in Azure
+---
+# Deploy your AKS-HCI infrastructure with PowerShell
+
+## Overview
+
+With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/ "Nested virtualization announcement blog post") in 2017, Microsoft opened the door to a number of new and interesting scenarios.  Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
 In this guide, you'll walk through the steps to stand up an AKS on Azure Stack HCI infrastructure. At a high level, this will consist of the following:
 

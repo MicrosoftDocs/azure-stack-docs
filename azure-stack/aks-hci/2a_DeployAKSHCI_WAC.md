@@ -1,7 +1,20 @@
-Deploy your AKS-HCI infrastructure with Windows Admin Center
-==============
-Overview
------------
+---
+title: Deploy your AKS-HCI infrastructure with Windows Admin Center
+description: An overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure VM using Windows Admin Center
+author: oadeniji
+ms.topic: conceptual
+ms.date: 07/14/2022
+ms.author: v-simonecox 
+ms.lastreviewed: 
+ms.reviewer: oadeniji
+# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
+# Keyword: Azure VM deployment
+---
+
+# Deploy your AKS-HCI infrastructure with Windows Admin Center
+
+## Overview
+
 With your Windows Server Hyper-V host up and running, it's now time to deploy AKS on Azure Stack HCI. You'll first use Windows Admin Center to deploy the AKS on Azure Stack HCI management cluster onto your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
 
 Contents

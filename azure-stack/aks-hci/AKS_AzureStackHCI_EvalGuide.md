@@ -34,7 +34,7 @@ To learn more about AKS on Azure Stack HCI and Windows Server, make sure you [ch
 
 Who should read this guide?
 -----------
-This evaluation guide demonstrates how to create a sandboxed, isolated AKS on Azure Stack HCI environment by using **nested virtualization** in Azure. By following this guide, you'll have a solid foundation on which you will be able to explore additional AKS on Azure Stack HCI scenarios in the future.
+This evaluation guide demonstrates how to create a sand-boxed, isolated AKS on Azure Stack HCI environment by using **nested virtualization**. This guide provides a solid foundation that will allow you to explore additional AKS on Azure Stack HCI scenarios in the future.
 
 Evaluate AKS on Azure Stack HCI using nested virtualization
 -----------
