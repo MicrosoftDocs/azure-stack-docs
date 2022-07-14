@@ -302,7 +302,7 @@ From the output above, you now have the **application ID** and the **secret** av
 With that created, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
 ### Azure resource group
-You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region available before registration. 
+You must have an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region available before registration. 
 
 
 ## Next steps
