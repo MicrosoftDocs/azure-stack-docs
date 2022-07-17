@@ -71,7 +71,7 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
 - Arc VM management is currently not available for stretched cluster configurations on Azure Stack HCI.
 - Support for Arc Resource Bridge & Arc VM Management is currently available only in English language.
 - Adding a server to an HCI cluster does not install Arc components automatically.
-- Naming convention for Azure resources such as virtual networks, gallery images, custom location, Arc Resource Bridge etc. should follow [these guidelines](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
+- Naming convention for Azure resources such as virtual networks, gallery images, custom location, Arc Resource Bridge etc. should follow [these guidelines](/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Next steps
 
