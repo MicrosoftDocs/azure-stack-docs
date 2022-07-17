@@ -79,4 +79,4 @@ Invoke-AksHciRotateCACertificate
 
 - [Security concepts in AKS on Azure Stack HCI and Windows Server](concepts-security.md)
 - [Secure communication with certificates](secure-communication.md)
-- [Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server](certificates-and-tokens.md)
+- [Certificates and tokens in Azure Kubernetes Service on Azure Stack HCI and Windows Server](/azure-stack/aks-hci/certificates-update-after-sixty-days)

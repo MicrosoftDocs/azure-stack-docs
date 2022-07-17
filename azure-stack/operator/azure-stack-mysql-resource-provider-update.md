@@ -43,7 +43,7 @@ If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first 
 
 ### Prerequisites
 
-1. Make sure you have updated MySQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.`<region`>.sqladapter). Confirm the version tag and MySQL RP VM name in resource group.
+1. Make sure you have updated MySQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.`<region`>.mysqladapter). Confirm the version tag and MySQL RP VM name in resource group.
 
 2. [Open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
 
@@ -104,7 +104,7 @@ $privilegedEndpoint = "YouDomain-ERCS01"
 # Provide the Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
 $AzureEnvironment = "AzureCloud"
 # Point to the directory where the resource provider installation files were extracted.
-$tempDir = 'C:\extracted-folder\MajorVersionUpgrade-SQLRP'
+$tempDir = 'C:\extracted-folder\MajorVersionUpgrade-MySQLRP'
 # The service admin account can be Azure Active Directory or Active Directory Federation Services.
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString 'xxxxxxxx' -AsPlainText -Force
@@ -115,7 +115,7 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString 'xxxxxxx' -AsPlainText -Force
 # Provide the pfx file path
-$PfxFilePath = "C:\tools\sqlcert\SSL.pfx"
+$PfxFilePath = "C:\tools\mysqlcert\SSL.pfx"
 # Local blob uri where stores the required mysql connector
 $MySQLConnector = "Provide the MySQL Connector Uri according to Prerequisites step."
 # PowerShell modules used by the RP MajorVersionUpgrade are placed in C:\Program Files\SqlMySqlPsh
@@ -149,7 +149,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 MySQL resource provider V1 update is cumulative. You can directly update to the 1.1.93.x version. 
 
-To update the resource provider to 1.1.93.x, use the **UpdateSQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
+To update the resource provider to 1.1.93.x, use the **UpdateMySQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. This update script is included with the download of the resource provider. 
 
 To update the resource provider, you use the **UpdateMySQLProvider.ps1** script. Use your service account with local administrative rights and is an **owner** of the subscription. The update script is included with the download of the resource provider. 
 
@@ -178,7 +178,7 @@ Specify the following parameters from the command line when you run the **Update
 | --- | --- | --- | 
 | **CloudAdminCredential** | The credential for the cloud admin, necessary for accessing the privileged endpoint. | _Required_ | 
 | **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA). | _Required_ | 
-| **VMLocalCredential** |The credentials for the local admin account of the SQL resource provider VM. | _Required_ | 
+| **VMLocalCredential** |The credentials for the local admin account of the MySQL resource provider VM. | _Required_ | 
 | **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ | 
 | **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Your certificate .pfx file must be placed in this directory as well. | _Optional_ (_mandatory_ for multi-node) | 
