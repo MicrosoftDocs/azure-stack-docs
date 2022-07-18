@@ -81,12 +81,12 @@ If you are using a proxy with Azure Stack HCI, include the following endpoints i
 - \*.servicebus.windows.net
 - \*.core.windows.net
 - login.microsoftonline.com
-- https://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-- https://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-- https://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-- https://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-- https://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
-- https://edgesupprd.trafficmanager.net
+- https\://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
+- https\://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
+- https\://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
+- https\://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
+- https\://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https\://edgesupprd.trafficmanager.net
 
 ### Install JEA configurations (before Azure registration)
 
