@@ -34,7 +34,7 @@ For info on licensing Window Server VMs running on an Azure Stack HCI cluster, s
 
 ## When to use Windows Server
 
-Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features, and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
+Windows Server is a highly versatile, multi-purpose operating system with dozens of roles and hundreds of features and includes the right for clients to connect directly with appropriate CALs. Windows Server machines can be in the cloud or on-premises, including virtualized on top of Azure Stack HCI.
 
 :::image type="content" source="media/compare-windows-server/windows-server-scenarios.png" alt-text="When to use Windows Server over Azure Stack HCI" border="false" lightbox="media/compare-windows-server/windows-server-scenarios.png":::
 
@@ -44,7 +44,7 @@ Use Windows Server for:
 - As the runtime server for a Windows application.
 - To use one or more of the built-in server roles such as Active Directory, file services, DNS, DHCP, or Internet Information Services (IIS).
 - As a traditional server, such as a bare-metal domain controller or SQL Server installation.
-- For traditional infrastructure such as VMs connected to Fibre Channel SAN storage.
+- For traditional infrastructure, such as VMs connected to Fibre Channel SAN storage.
 
 ## Compare product positioning
 
@@ -52,11 +52,11 @@ The following table shows the high-level product packaging for Azure Stack HCI a
 
 | Attribute    | Azure Stack HCI | Windows Server |
 | ---------------- | ------------------- | ----------------------- |
-| Product type     | Cloud service that includes an operating system and more. | Operating system |
+| Product type     | Cloud service that includes an operating system and more. | Operating system. |
 | Legal            | Covered under your Microsoft customer agreement or online subscription agreement. | Has its own end-user license agreement. |
 | Licensing        | Billed to your Azure subscription. | Has its own paid license. |
 | Support          | Covered under Azure support. | Can be covered by different support agreements, including Microsoft Premier Support. |
-| Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci), or comes preinstalled on integrated systems. | Microsoft Volume Licensing Service Center or Evaluation Center. |
+| Where to get it  | Download from [Azure.com/HCI](https://azure.com/hci) or comes preinstalled on integrated systems. | Microsoft Volume Licensing Service Center or Evaluation Center. |
 | Runs in VMs      | For evaluation only; intended as a host operating system. | Yes, in the cloud or on premises. |
 | Hardware         | Runs on any of more than 200 pre-validated solutions from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog). | Runs on any hardware with the "Certified for Windows Server" logo. See the [WindowsServerCatalog](https://www.windowsservercatalog.com/).|
 | Sizing| [Azure Stack HCI sizing tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer). |None.|
@@ -119,7 +119,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal > Arc-enabled VM management (preview) | Yes | No |
 | Desktop experience | No | Yes |
 
-<sup>1</sup> Requires manually installing the Arc Connected Machine agent on every machine.
+<sup>1</sup> Requires manually installing the Arc-Connected Machine agent on every machine.
 
 ## Compare product pricing
 
