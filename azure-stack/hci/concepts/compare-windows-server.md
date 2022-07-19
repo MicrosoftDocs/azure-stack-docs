@@ -13,7 +13,7 @@ ms.date: 05/24/2021
 
 > Applies to: Azure Stack HCI, version 21H2; Windows Server 2022
 
-This article explains the key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both, as they are intended for different and complementary purposes.
+This article explains the key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
 ## When to use Azure Stack HCI
 
@@ -119,7 +119,7 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal > Arc-enabled VM management (preview) | Yes | No |
 | Desktop experience | No | Yes |
 
-<sup>1</sup> Requires manually installing the Arc-Connected Machine agent on every machine.
+<sup>1</sup> Requires manually installing the Arc-git statusConnected Machine agent on every machine.
 
 ## Compare product pricing
 
