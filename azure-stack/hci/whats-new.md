@@ -95,6 +95,10 @@ To help plan your Azure Stack HCI solution, you can now estimate the hardware re
 
 For more information, see the blog on the [Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920).
 
+## New remote support capability (preview)
+
+You can now get remote support from Microsoft for limited troubleshooting and repairs of your Azure Stack HCI operating system. You can enable remote support by granting consent while controlling the access level and duration of access. Microsoft support can access your device only after a support request is submitted. For more information about how to get remote support, see [Get remote support](manage/get-remote-support.md).
+
 ## Enhancements in Windows Admin Center
 
 Windows Admin Center version 2110 includes several features and improvements to manage your Azure Stack HCI systems.

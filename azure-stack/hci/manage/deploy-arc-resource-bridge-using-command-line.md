@@ -169,6 +169,10 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix
+      az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
+      ```
+
+      ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
 
@@ -186,6 +190,10 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
       New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP
+      az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
+      ```
+
+      ```PowerShell
       az arcappliance prepare hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
 
