@@ -4,7 +4,7 @@ description: This topic helps you determine whether Azure Stack HCI or Windows S
 ms.topic: conceptual
 author: jasongerend
 ms.author: jgerend
-ms.service: azure-stack
+ms.service: azure-stackconcept
 ms.subservice: azure-stack-hci
 ms.date: 05/24/2021
 ---
