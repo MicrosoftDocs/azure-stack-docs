@@ -34,9 +34,11 @@
     href: deploy/operating-system.md
   - name: 2. Create a cluster
     href: deploy/create-cluster.md
-  - name: 3. Register a cluster with Azure
+  - name: 3. Set up a cluster witness
+    href: manage/witness.md
+  - name: 4. Register a cluster with Azure
     href: deploy/register-with-azure.md
-  - name: 4. Validate the cluster
+  - name: 5. Validate the cluster
     href: deploy/validate.md
   - name: Migrate a cluster
     items:
@@ -147,23 +149,11 @@
       - name: Manage Network ATC
         href: manage/manage-network-atc.md
       - name: Update the cluster
-        href: manage/update-cluster.md
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md 
+        href: manage/update-cluster.md      
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-      - name: Set up a cluster witness
-        href: manage/witness.md
     - name: Monitoring
       items:
-      # - name: Monitor a single cluster (latest version)
-      #   href: manage/single-cluster.md
-      # - name: Configure Azure portal to monitor clusters (preview)
-      #   href: manage/monitor-azure-portal.md
-      # - name: Monitor multiple clusters with Azure Stack HCI Insights (latest version)
-      #   href: manage/multi-cluster.md        
-      # - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
-      #   href: manage/azure-stack-hci-insights.md
       - name: Monitor a single cluster using the Azure portal (preview)
         href: manage/monitor-hci-single.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
@@ -199,7 +189,10 @@
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
+    
       href: manage/sdn-express.md
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md 
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
@@ -252,6 +245,8 @@
       href: concepts/plan-volumes.md
     - name: Understand Storage Spaces Direct
       href: concepts/storage-spaces-direct-overview.md
+    - name: Understand nested resiliency for Storage Spaces Direct
+      href: concepts/nested-resiliency.md
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
@@ -369,7 +364,11 @@
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
-    href: manage/get-support.md
+    items:
+    - name: Get support
+      href: manage/get-support.md
+    - name: Get remote support
+      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations

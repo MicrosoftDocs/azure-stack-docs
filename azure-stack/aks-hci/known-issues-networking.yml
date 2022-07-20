@@ -11,9 +11,11 @@ sections:
   - name: Single section - ignored
     questions:
       - question: | 
-          Cloud agent may fail to start successfully when using path names with spaces in them.
+          Error: 'Failed to start the cloud agent generic cluster service in failover cluster. The cluster resource group os in the 'failed' state.'
 
         answer: | 
+          Cloud agent may fail to successfully start when using path names with spaces in them.
+          
           When using [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) to specify `-imageDir`, `-workingDir`, `-cloudConfigLocation`, or `-nodeConfigLocation` parameters with a path name that contains a space character, such as `D:\Cloud Share\AKS HCI`, the cloud agent cluster service will fail to start with the following (or similar) error message:
           
           ```
@@ -60,6 +62,21 @@ sections:
           Reboot the machine so that the service manager, and the WSSDAgent, pick up the fixed proxy.
           
       - question: | 
+          CAPH pod fails to renew certificate
+
+        answer: |           
+          This error occurs because every time the CAPH pod is started, a login to cloudagent is attempted and the certificate is stored in the temporary storage volume, which will clean out on pod restarts. Therefore, every time a pod is restarted, the certificate is destroyed and a new login attempt is made. 
+          
+          A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login is not attempted, assuming the renewal routine is already there.
+          
+          However, on a container restart, the temporary directory is not cleaned, so the file is still persisted and the login attempt is not made, causing the renewal routine to not start. This leads to certificate expiration.
+          
+          To mitigate this issue, restart the CAPH pod using the following command:
+          
+          ```bash
+          kubectl delete pod pod-name
+          ````
+      - question: | 
           Authentication handshake failed: x509: certificate signed by unknown authority
 
         answer: | 
@@ -89,7 +106,7 @@ sections:
               + FullyQualifiedErrorId : Powershell remoting to TK5-3WP08R0733 was not successful.
           ```
           
-          Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can file an issue at [GitHub AKS HCI issues](https://aka.ms/aks-hci/issues).
+          Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If this still fails, you can create a support ticket through the Azure portal.
           
       - question: | 
           Using Remote Desktop to connect to the management cluster produces a connection error.

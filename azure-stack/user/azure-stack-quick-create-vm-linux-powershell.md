@@ -289,7 +289,7 @@ $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 # Add the SSH key to the VM
 Add-AzVMSshPublicKey -VM $VirtualMachine `
  -KeyData $sshPublicKey `
- -Path "/home/azureuser/.ssh/authorized_keys"
+ -Path "/home/$UserName/.ssh/authorized_keys"
 
 # Create the VM
 New-AzVM `

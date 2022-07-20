@@ -24,14 +24,15 @@ sections:
           4. Delete these cluster resources.
           5. Close the PowerShell session and open new session before running `Install-AksHci` again.
       - question: | 
-          I'm getting 'Install-AksHci Failed, Service returned an error. Status=403 Code="RequestDisallowedByPolicy"' error when installing AKS-HCI. What should I do?
+          Error: 'Install-AksHci Failed, Service returned an error. Status=403 Code="RequestDisallowedByPolicy"' error when installing AKS-HCI
 
         answer: | 
-          This error may be caused by the installation process attempting to violate an Azure Policy that's been set on the Azure subscription or resource group provided during the Azure Arc onboarding process. This error may occur for users who have defined Azure Policies at a subscription or resource group level, and then attempt to install AKS on Azure Stack HCI which violates an Azure Policy. 
+          This error may be caused by the installation process attempting to violate an Azure policy that's been set on the Azure subscription or resource group provided during the Azure Arc onboarding process. This error may occur for users who have defined Azure Policies at a subscription or resource group level, and then attempt to install AKS on Azure Stack HCI which violates an Azure Policy. 
           
-          To resolve this issue, read the error message to understand which Azure Policy set by your Azure administrator has been violated, and then modify the Azure Policy by making an exception to the Azure Policy. To learn more about Policy exceptions, see [Azure Policy exemption structure](/azure/governance/policy/concepts/exemption-structure).
+          To resolve this issue, read the error message to understand which Azure Policy set by your Azure administrator has been violated, and then modify the Azure policy by making an exception to the Azure policy. To learn more about Policy exceptions, see [Azure Policy exemption structure](/azure/governance/policy/concepts/exemption-structure).
+          
       - question: | 
-          Error:  Install-Moc failed with error - [The object already exists] An error occurred while creating resource 'IPv4 Address xxx.xx.xx.xx' for the clustered role 'xx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx'
+          Error:  Install-AksHci failed with error - [The object already exists] An error occurred while creating resource 'IPv4 Address xxx.xx.xx.xx' for the clustered role 'xx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx'
 
         answer: | 
           A previously installed feature remains in a failed state and has not been cleared. You may see the following error:
@@ -67,7 +68,7 @@ sections:
           InnerException[A matching cluster network for the specified IP address could not be found]
           ```
           
-          To resolve this issue, you will need to manually clean up the cluster role manually. You can remove the resource from the  fail-over  cluster manager by running the following PowerShell cmdlet:  `Remove-ClusterResource -name <resource name>`.
+          To resolve this issue, you will need to manually clean up the cluster role. You can remove the resource from the fail-over cluster manager by running the following PowerShell cmdlet: `Remove-ClusterResource -name <resource name>`.
           
       - question: | 
           After deploying AKS on Azure Stack HCI 21H2, rebooting the nodes showed a failed status for billing.
@@ -82,7 +83,7 @@ sections:
         answer: | 
           After running [Install-AksHci](./reference/ps/install-akshci.md), the installation stopped and displayed the following error message:
           
-          ```Output
+          ```bash
           \kubectl.exe --kubeconfig=C:\AksHci\0.9.7.3\kubeconfig-clustergroup-management 
           get akshciclusters -o json returned a non zero exit code 1 
           [Unable to connect to the server: dial tcp 192.168.0.150:6443: 
@@ -110,6 +111,10 @@ sections:
           
           In the displayed configuration settings, confirm the configuration. You could also attempt to ping the IP gateway and DNS server. 
           
+          ```powershell
+          ping <DNS server>
+          ```
+          
           If these methods don't work, use [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) to change the configuration.
           
           **Reason 2: Incorrect DNS server**
@@ -128,27 +133,31 @@ sections:
           If the DNS server has been incorrectly configured, reinstall AKS on Azure Stack HCI with the correct DNS server. For more information, see [Restart, remove, or reinstall Azure Kubernetes Service on Azure Stack HCI ](./restart-cluster.md).
           
           The issue was resolved after deleting the configuration and restarting the VM with a new configuration.
+          
       - question: | 
           Error: 'The process cannot access the file 'mocstack.cab' because it is being used by another process'.
 
         answer: | 
-          `Instal``l-AksHci` failed with this error because another process is accessing `mocstack.cab`. 
+          `Install-AksHci` failed with this error because another process is accessing `mocstack.cab`. 
           
           To resolve this issue, close all open PowerShell windows and then reopen a new PowerShell window.
+          
       - question: | 
-          Error: 'Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.'.
+          Error: Install-AksHci fails with 'Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.'.
 
         answer: | 
           The file cannot be access because it is being used by another process.
           
           You can resolve this issue by restarting your PowerShell session. Close the PowerShell window and try Install-MOC again.
+          
       - question: | 
-          Error: 'An existing connection was forcibly closed by the remote host'.
+          Error: Install-AksHci fails with 'An existing connection was forcibly closed by the remote host'.
 
         answer: | 
           `Install-AksHci` failed with this error because the IP pool ranges provided in the AKS on Azure Stack HCI configuration was off by one in the CIDR, and can cause CloudAgent to crash. For example, if you have subnet 10.0.0.0/21 with an address range 10.0.0.0 - 10.0.7.255, and then you use start address of 10.0.0.1 or an end address of 10.0.7.254, then this would cause CloudAgent to crash. 
           
-          To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) and use any other valid IP address range for your VIP pool and Kubernetes node pool. Make sure that the values you use are not off by one at the start or end the address range.
+          To work around this issue, run [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) and use any other valid IP address range for your VIP pool and Kubernetes node pool. Make sure that the values you use are not off by 1 at the start or end the address range.
+          
       - question: | 
           Install-AksHci failed on a multi-node installation with the error 'Nodes have not reached active state'.
 
@@ -170,9 +179,10 @@ sections:
           The AKS on Azure Stack HCI download package fails with the error: 'msft.sme.aks couldn't load'.
 
         answer: | 
-          The error message also indicates that loading chunks failed.
+          The error stems from an error with download.
           
-          If you get this error, and the error message also indicates that loading chunks failed, you should use the latest version of Microsoft Edge or Google Chrome and try again.
+          If you get this error, you should use the latest version of Microsoft Edge or Google Chrome and try again.
+          
       - question: | 
           When running Set-AksHciRegistration, an error 'Unable to check registered Resource Providers' appears.
 
@@ -206,6 +216,9 @@ sections:
           Install-AksHci hangs in the 'Waiting for azure-arc-onboarding to complete' stage before timing out.
 
         answer: | 
+          > [!NOTE]
+          > This issue is fixed in the May 2022 release and later.
+          
           Install-AksHci hangs at `Waiting for azure-arc-onboarding to complete` before timing out when:
           
           - A service principal is used in AKS on Azure Stack HCI Registration (Set-AksHciRegistration).
@@ -233,6 +246,7 @@ sections:
           ```powershell  
           Uninstall-Module -Name Az.Accounts -RequiredVersion 2.7.0 -Force
           ```
+          
       - question: | 
           During installation, this error appears: 'unable to create appliance VM: cannot create virtual machine: rpc error = unknown desc = Exception occurred. (Generic failure)]'.
 
@@ -388,12 +402,13 @@ sections:
                 Get-ClusterGroup -Name (Get-AksHciConfig).Moc['clusterRoleName']
                 ```
       - question: | 
-          Error: 'Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10'.
+          Error: Install-AksHci fails with 'Install-Moc failed. Logs are available C:\Users\xxx\AppData\Local\Temp\v0eoltcc.a10'.
 
         answer: | 
           You may receive this error when running [Install-AksHci](./reference/ps/install-akshci.md).
           
-          You can get more information by running `$error[0].Exception.InnerException`. 
+          You can get more information by running `$error = Install-AksHci` and then `$error[0].Exception.InnerException`. 
+          
       - question: | 
           PowerShell deployment doesn't check for available memory before creating a new workload cluster.
 

@@ -30,7 +30,7 @@ Use Azure Stack HCI for:
   >[!NOTE]
   > When using Azure Stack HCI, run all of your workloads inside virtual machines or containers, not directly on the cluster. Azure Stack HCI isn't licensed for clients to connect directly to it using Client Access Licenses (CALs).
 
-For info on licensing Window Server VMs running on an Azure Stack HCI cluster, see Activate Windows Server VMs.
+For information about licensing Windows Server VMs running on an Azure Stack HCI cluster, see [Activate Windows Server VMs](/windows-server/get-started/automatic-vm-activation).
 
 ## When to use Windows Server
 
