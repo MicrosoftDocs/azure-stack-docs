@@ -55,3 +55,4 @@ For more information, see also:
 - [Tutorial: Create a private forest environment for Azure Stack HCI](../deploy/tutorial-private-forest.md)
 - [Evaluate Azure Stack HCI 20H2 using Nested Virtualization](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/README.md)
 - [Create nested Azure Stack HCI 20H2 cluster with Windows Admin Center](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/archive/steps/4_AzSHCICluster.md)
+- [Azure Stack HCI Sandbox](https://github.com/microsoft/AzStackHCISandbox)
