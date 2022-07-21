@@ -270,7 +270,7 @@ items:
 
        **TBD: there is a known bug in the current WAC gateway flow that throws up a "Login_in_process: error during login call - login is already in process". Not sure how soon this will be resolved.**
 
-    1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center by selecting **Accept**:
+    1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your Azure account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center, by selecting **Accept**:
        # [Global Administrator](#tab/global-admin)
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-global-admin.png" :::
@@ -307,16 +307,16 @@ items:
        If you've signed in with an account that doesn't belong to an administrator role you're presented with the following **Need admin approval** dialog. If this occurs you have 2 options:   
 
           **1. Select the "Have an admin account? Sign in with that account" option (work with an administrator to continue)**  
-          &nbsp;&nbsp;&nbsp;- Work with an administrator to **Sign in** using administrator credentials  
-          &nbsp;&nbsp;&nbsp;- Check **Consent on behalf of your organization** and select **Accept** to consent permissions  
+          &nbsp;&nbsp;&nbsp;- Ask your administrator to **Sign in** using administrator credentials  
+          &nbsp;&nbsp;&nbsp;- When prompted, check **Consent on behalf of your organization** and select **Accept** to consent permissions  
           &nbsp;&nbsp;&nbsp;- Continue with the next step of the registration process  
     
           **2. Select the "Return to the application without granting consent" option in the previous dialog (restart registration)**  
-          &nbsp;&nbsp;&nbsp;- Get an administrator account with the correct administrator permissions    
-          &nbsp;&nbsp;&nbsp;- Select the gear icon in the upper right to go to **Settings**   
+          &nbsp;&nbsp;&nbsp;- Ask your administrator for an account with the correct administrator permissions    
+          &nbsp;&nbsp;&nbsp;- Select the gear icon in the upper right of Windows Admin Center to go to **Settings**   
           &nbsp;&nbsp;&nbsp;- Under the **Gateway / Register** settings, select **Unregister** then **Confirm**  
           &nbsp;&nbsp;&nbsp;- Under the **User / Account** settings, select **Sign out**  
-          &nbsp;&nbsp;&nbsp;- Return to [step #1 of this **Register with Azure** section](/azure-stack/hci/guided-quick-deploy-eval?tutorial-step=6) and repeat the instructions using an administrator account  
+          &nbsp;&nbsp;&nbsp;- Return to [step #1 of **Register with Azure**](/azure-stack/hci/guided-quick-deploy-eval?tutorial-step=6) and repeat the instructions using your administrator account  
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval2.png" alt-text="Dialog saying that consent requires admin approval" lightbox="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval2.png":::  
        ---  
