@@ -204,8 +204,6 @@ Get-CauClusterRole
 Get-CauDeviceInfoForFeatureUpdates 
 Get-CauPlugin 
 Get-CauReport 
-Get-CauReport 
-Get-CauRun 
 Get-CauRun 
 Get-Cluster 
 Get-ClusterAccess 
@@ -463,7 +461,6 @@ Get-StorageReliabilityCounter
 Get-StorageScaleUnit 
 Get-StorageSetting 
 Get-StorageSite 
-Get-StorageSubSystem 
 Get-StorageSubsystem 
 Get-StorageTier 
 Get-StorageTierSupportedSize 
