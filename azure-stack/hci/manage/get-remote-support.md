@@ -4,12 +4,12 @@ description: This topic provides guidance on how to get remote support for the A
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 07/14/2022
+ms.date: 07/22/2022
 ---
 
 # Get remote support for Azure Stack HCI (preview)
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, version 21H2
 
 > [!IMPORTANT]
 > Remote support for Azure Stack HCI is currently in preview.
