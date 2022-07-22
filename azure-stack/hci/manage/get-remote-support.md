@@ -4,7 +4,7 @@ description: This topic provides guidance on how to get remote support for the A
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
-ms.date: 07/14/2022
+ms.date: 07/22/2022
 ---
 
 # Get remote support for Azure Stack HCI (preview)
