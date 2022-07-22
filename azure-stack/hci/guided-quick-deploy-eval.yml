@@ -15,7 +15,7 @@ items:
     > [!IMPORTANT]
     > This guide is for evaluation purposes only using a virtualized Azure Stack HCI cluster. This should **NOT** be used for production purposes.
 
-    This guide shows you how to quickly deploy and evaluate an Azure Stack HCI cluster with **no hardware investment**. You'll deploy a Windows Server 2019 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
+    This guide shows you how to quickly deploy and evaluate an Azure Stack HCI cluster with **no hardware investment**. You'll deploy a Windows Server 2022 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
        - 1 VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and a domain controller
        - 2 VMs running Azure Stack HCI 21H2, which are the servers that will form the Azure Stack HCI cluster
 
