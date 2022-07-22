@@ -196,7 +196,7 @@ items:
 
     1. In **Cluster Manager**, if you see the banner "An update is available for this extension", complete the following items. Otherwise, jump to the next step:  
 
-       - **TBD: Decide whether we need to update the Cluster Manager extension, or remove this step entirely. I've only tested with the latest extension.**
+       - **TBD: Decide whether we need to update the Cluster Manager extension, or remove this step entirely. I've only tested with the latest extension. Also noticed the cluster portion of registration didn't work correctly unless updated.**
 
        - Select the **Update now** link:  
 
@@ -347,7 +347,7 @@ items:
 - title: Create virtual machines
   durationInMinutes: 10
   content: |
-    There are 2 options available for creating VMs on your new Azure Stack HCI cluster: Windows Admin Center from your cluster, or from the Azure portal using [Azure Arc](/azure/azure-arc/servers/overview).
+    There are 2 options available for creating VMs on your new Azure Stack HCI cluster: from Windows Admin Center, or from the Azure portal using [Azure Arc](/azure/azure-arc/servers/overview).
     
     1. Return to the Windows Admin Center session you used in the previous sections. 
     1. To create a VM using Windows Admin Center: 
@@ -358,6 +358,8 @@ items:
        - In **Server Manager** select the **Virtual Machines** view. From here you can use [Windows Admin Center features to create and manage VMs](/azure-stack/hci/manage/vm).
 
          :::image type="content" source="./media/guided-quick-deploy-eval/create-vm.png" alt-text="Create a VM on the server" lightbox="./media/guided-quick-deploy-eval/create-vm.png" :::
+
+       - **TBD: Do we want to mention VM creation in Cluster Manager? provide a TIP or more instructions?**
 
     1. To create a VM using the Azure portal and Azure Arc:
        - Select the **Cluster Manager** view, then select the cluster. 
@@ -379,16 +381,18 @@ items:
   content: |
     There are multiple options for monitoring and visualizing your cluster, the VMs you've deployed, and other resources:  
 
-    - You can enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights. See [Configure Azure portal to monitor Azure Stack HCI clusters (preview)](/azure-stack/hci/manage/monitor-hci-single) for more details.  
-    - Another options is to use the Windows Admin Center Cluster Manager dashboard. See [Monitor Azure Stack HCI clusters from Windows Admin Center](/azure-stack/hci/manage/monitor-cluster) for details.
-    - The Health Service provides multiple monitoring features, including cluster performance history, Health Service faults, and more. See [Monitor clusters with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.
+    1. You can:
+
+    - Enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights. See [Configure Azure portal to monitor Azure Stack HCI clusters (preview)](/azure-stack/hci/manage/monitor-hci-single) for more details.  
+    - Use the Windows Admin Center Cluster Manager dashboard. See [Monitor Azure Stack HCI clusters from Windows Admin Center](/azure-stack/hci/manage/monitor-cluster) for details.
+    - Use the Windows Health Service, which provides multiple monitoring features including cluster performance history, Health Service faults, and more. See [Monitor clusters with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.
 
     1. Select the **Next** button at the bottom of this page.  
 
 - content: |
     You've completed your Azure Stack Hub HCI evaluation!
 
-    If you'd like to remove all of the evaluation resources from your Azure subscription, see [Azure Resource Manager resource group and resource deletion](/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal) for details on how to delete your Azure resource group.
+    If you'd like to remove all of the evaluation resources from your Azure subscription, see [Azure Resource Manager resource group and resource deletion](/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-portal) for details on how to delete the Azure resource group that was created at the beginning of this guide.
 
     For more details on cluster deployment and management:
     - [Deploy the Azure Stack HCI operating system](/deploy/operating-system) provides a more detailed look at deployment and the various options and considerations.
