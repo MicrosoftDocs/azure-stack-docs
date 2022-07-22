@@ -12,11 +12,14 @@ items:
 - durationInMinutes: 0
   content: | 
 
-    This guide shows you how to quickly deploy and evaluate an Azure Stack HCI cluster with no hardware investment. You'll deploy a Windows Server 2019 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
+    This guide shows you how to quickly deploy and evaluate an Azure Stack HCI cluster with **no hardware investment**. You'll deploy a Windows Server 2019 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
        - 1 VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and a domain controller
        - 2 VMs running Azure Stack HCI 21H2, which are the servers that will form the Azure Stack HCI cluster
 
     **Prerequisites**
+
+    > [!IMPORTANT]
+    > This guide is for evaluation purposes only using a virtualized Azure Stack HCI cluster. This should *NOT* be used for production purposes.
 
     Before beginning, make sure you have:
 
@@ -115,7 +118,7 @@ items:
   durationInMinutes: 110
   content: |
 
-    After you've remoted into the Azure VM, finalize your deployment by running a script to provision the Azure Stack HCI and management VMs and create the Azure Stack HCI cluster. The VMs are deployed into the Azure VM using nested virtualization:  
+    After you've remoted into the Azure VM, finalize your deployment by running a script to provision the Azure Stack HCI and management VMs and create the Azure Stack HCI cluster. The VMs are deployed on top of the Azure VM using nested virtualization:  
 
     **TBD: Determine whether DSC can change the New-AzSHCISandbox shortcut properties, or if I should have them update the link and prefix with `PowerShell -NoExit`**  
 
@@ -126,7 +129,7 @@ items:
 
        :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-desktop.png" alt-text="RDP Windows Server desktop" lightbox="./media/guided-quick-deploy-eval/azure-vm-desktop-large.png" :::
 
-    1. The PowerShell script typically runs for about 1:50. When complete, you'll see a "Successfully deployed the Azure Stack HCI Sandbox" message:
+    1. The PowerShell script typically runs for about 1 hour and 50 minutes. When complete, you'll see a "Successfully deployed the Azure Stack HCI Sandbox" message:
 
        :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-ps-cluster-deploy.png" alt-text="Run the cluster deployment script" lightbox="./media/guided-quick-deploy-eval/azure-vm-ps-cluster-deploy.png" :::
  
