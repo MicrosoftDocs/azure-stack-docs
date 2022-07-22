@@ -447,7 +447,6 @@ Get-StorageHealthAction
 Get-StorageHealthReport 
 Get-StorageHealthSetting 
 Get-StorageHistory 
-Get-StorageJob
 Get-StorageJob 
 Get-StorageNode 
 Get-StoragePool 
