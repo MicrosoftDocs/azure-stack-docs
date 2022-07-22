@@ -13,18 +13,18 @@ ms.lastreviewed: 04/29/2022
    - For a **production deployment environment**, the first script will generate CSRs for deployment certificates, the second will generate CSRs for any optional PaaS services you've installed:
 
       ```powershell
-      New-AzsCertificateSigningRequest*** -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+      New-AzsCertificateSigningRequest -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
 
       ```powershell
       # App Services
-      New-AzsCertificateSigningRequest* -CertificateType AppServices -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
+      New-AzsCertificateSigningRequest -CertificateType AppServices -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
 
       # DBAdapter (SQL/MySQL)
-      New-AzsCertificateSigningRequest* -CertificateType DbAdapter -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
+      New-AzsCertificateSigningRequest -CertificateType DbAdapter -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
 
       # EventHubs
-      New-AzsCertificateSigningRequest* -CertificateType EventHubs -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
+      New-AzsCertificateSigningRequest -CertificateType EventHubs -RegionName $regionName -FQDN $externalFQDN -OutputRequestPath $OutputDirectory
       ```
 
    - For a **development and test environment**, to generate a single CSR with multiple-subject alternative names, add the `-RequestType SingleCSR` parameter and value.
@@ -33,5 +33,5 @@ ms.lastreviewed: 04/29/2022
       > We do *not* recommend using this approach for production environments.
 
       ```powershell
-      New-AzsCertificateSigningRequest* -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+      New-AzsCertificateSigningRequest -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
       ```
