@@ -351,15 +351,13 @@ items:
     
     1. Return to the Windows Admin Center session you used in the previous sections. 
     1. To create a VM using Windows Admin Center: 
-       - Select the **Server Manager** view, then pick a server. For example, "azshost1.contoso.com": 
+       - Select the **All Connections** view, then pick a server or the cluster. In this example, we'll pick server "azshost1.contoso.com": 
 
-         :::image type="content" source="./media/guided-quick-deploy-eval/create-vm-server-manager.png" alt-text="Use Server Manager to select a VM" lightbox="./media/guided-quick-deploy-eval/create-vm-server-manager.png" :::
+         :::image type="content" source="./media/guided-quick-deploy-eval/create-vm-pick-connection.png" alt-text="Use Server Manager to select a VM" lightbox="./media/guided-quick-deploy-eval/create-vm-pick-connection.png" :::
 
-       - In **Server Manager** select the **Virtual Machines** view. From here you can use [Windows Admin Center features to create and manage VMs](/azure-stack/hci/manage/vm).
+       - In **Server Manager** select the **Tools / Virtual Machines** view. From here you can use [Windows Admin Center features to create and manage VMs](/azure-stack/hci/manage/vm).
 
          :::image type="content" source="./media/guided-quick-deploy-eval/create-vm.png" alt-text="Create a VM on the server" lightbox="./media/guided-quick-deploy-eval/create-vm.png" :::
-
-       - **TBD: Do we want to mention VM creation in Cluster Manager? provide a TIP or more instructions?**
 
     1. To create a VM using the Azure portal and Azure Arc:
        - Select the **Cluster Manager** view, then select the cluster. 
