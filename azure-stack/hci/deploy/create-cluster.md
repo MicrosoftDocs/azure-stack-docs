@@ -204,7 +204,7 @@ Follow these steps to manually configure host networking.
 1. Under **2.3 Virtual switch**, select one of the following options as applicable. Depending on how many network adapters there are, not all options may be available:
 
     - **Skip virtual switch creation** - choose if you want set up virtual switches later.
-    - **Create one virtual switch for compute and storage together** - choose if you want to use the same virtual switch for your VMs and Storage Spaces Direct. This is the "converged" option.
+    - **Create one virtual switch for compute and storage together** - choose if you want to use the same virtual switch for your VMs and Storage Spaces Direct. This is the "hyperconverged" option.
     - **Create one virtual switch for compute only** - choose if you want to use a virtual switch for your VMs only.
     - **Create two virtual switches** - choose if you want a dedicated virtual switch each for VMs and for Storage Spaces Direct.
 
