@@ -223,7 +223,7 @@ The recommended approach is to use separate subnets and VLANs for each set of ad
 
 ## Traffic bandwidth allocation
 
-The following table shows example bandwidth allocations of various traffic types, using common adapter speeds, in Azure Stack HCI. Note that this is an example of a *converged solution*, where all traffic types (compute, storage, and management) run over the same physical adapters, and are teamed by using SET.
+The following table shows example bandwidth allocations of various traffic types, using common adapter speeds, in Azure Stack HCI. Note that this is an example of a *hyper converged solution*, where all traffic types (compute, storage, and management) run over the same physical adapters, and are teamed by using SET.
 
 Because this use case poses the most constraints, it represents a good baseline. However, considering the permutations for the number of adapters and speeds, this should be considered an example and not a support requirement.
 
