@@ -60,6 +60,11 @@ Before you run the script, ensure that a virtual switch is created and the serve
     $creds = Get-Credential
     Add-SDNExpressHost -RestName $NCURI -VirtualSwitchName “Insert vSwitch Name” -ComputerName “Insert Name” -HostPASubnetPrefix “Example: 172.23.0.1/24” -Credential $creds
     ```
+    where:
+    - NCURI is the Network Controller REST API in the following format:
+    `"https://<name of the Network Controller REST API>"`. For example: "https://mync.contoso.local"
+    - ComputerName is the fully qualified domain name (FQDN) of the server to be added
+    - HostPASubnetPrefix is the address prefix of the Provider Address (PA) network
 
 ## Remove a server from a cluster
 
