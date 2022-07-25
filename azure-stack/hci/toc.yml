@@ -28,14 +28,6 @@
   items:
   - name: Create a VM-based lab
     href: deploy/tutorial-private-forest.md
-- name: Plan
-  items:
-  - name: Plan deployments
-    href: deploy/test0.md
-  - name: Single-node deployments
-    href: deploy/test1.md
-  - name: Two-node deployments
-    href: deploy/test2.md
 - name: Deploy
   items:
   - name: 1. Deploy the Azure Stack HCI OS
