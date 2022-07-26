@@ -31,13 +31,13 @@ For issues related to Arc VM management, you can generate logs from the cluster 
 
 ```PowerShell
 $csv_path="<input-from-admin>"
-$resourcebridgevmip="<input-from-admin>"
-Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $resourcebridgevmip
+$VMIP="<input-from-admin>"
+Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP
 ```
 
 **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 
-**$resourcebridgevmip** is the IP address of the Arc Resource Bridge virtual machine.
+**$VMIP** is the IP address of the Arc Resource Bridge virtual machine.
 
 Optionally, you can provide the `-logDir` parameter, to provide the path to the directory in which generated logs will be saved. If you don't provide either the path or parameter, the location defaults to the current working directory.
 
