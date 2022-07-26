@@ -75,8 +75,8 @@ To access known issues for a different version, use the version selector dropdow
 ### Update blade unusable
 
 - Applicable: This issue applies to release 2206.
-- Cause: We are aware of an issue where the update blade and/or the portal dashboard may be unusable and show an error during the update itself. This is due to an incompatibility between the portal and backend service that we are actively investigating the cause. 
-- Remediation: 
+- Cause: The update blade and/or the portal dashboard can become unusable and show an error during the update itself.
+- Remediation: If the portal is unavailable for more than 1 hour, you can use the PEP to check the status of the update. For more information, see [Monitor updates in Azure Stack Hub using the privileged endpoint](/azure-stack/operator/azure-stack-monitor-update).
 
 <!-- ## Storage -->
 
