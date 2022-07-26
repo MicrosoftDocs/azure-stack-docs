@@ -55,7 +55,7 @@ The following information is required as inputs for the automation parameters:
 |Parameter|Deployment Worksheet Parameter|Description|Example|
 |---------|---------|---------|---------|
 |`CustomADGlobalCatalog`|AD FS Forest FQDN|FQDN of the target Active Directory forest that you want to integrate with|Contoso.com|
-|`CustomADAdminCredentials`| |A user with LDAP Read permission. Note: do not enter the Domain Name of this account, when the credentials for the username in the 'CustomADAdminCredential' parameter below. |graphservice|
+|`CustomADAdminCredentials`| |A user with LDAP Read permission|graphservice|
 
 ### Configure Active Directory Sites
 
