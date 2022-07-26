@@ -71,7 +71,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Portal
 
-### Update blade unusable
+### Possibility of portal errors during update
 
 - Applicable: This issue applies to release 2206.
 - Cause: The update blade and/or the portal dashboard can become unusable and show an error during the update itself.
