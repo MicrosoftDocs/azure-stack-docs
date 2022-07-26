@@ -311,7 +311,7 @@ If you're a preview channel customer and you registered your preview channel clu
 
 To automatically update the Arc agent when a new version is available, make sure the servers for the cluster check for updates in Microsoft Update. See the steps under [Microsoft Update configuration](/azure/azure-arc/servers/manage-agent#windows-agent) to make sure Microsoft Update is correctly configured.
 
-1. In the Server Configuration Tool (Sconfig.exe), select the option to **Install Updates** (option 6):
+1. In the [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig), select the option to **Install Updates** (option 6):
 
    :::image type="content" source="media/register/sconfig-install.png" alt-text="Options to install update":::
 
