@@ -244,9 +244,7 @@ Open PowerShell as an administrator, and run the following commands:
 
 1. Repeat these steps on each of the other servers in your Azure Stack HCI cluster.
 
-## Activate VMs against a host server
-
-Now that you have set up AVMA, you can activate VMs against the host server by [following the steps here](/windows-server/get-started/automatic-vm-activation).
+Now that you have set up AVMA through BYOL, you can activate VMs against the host server by [following the steps here](/windows-server/get-started/automatic-vm-activation).
 
 ## FAQ
 
