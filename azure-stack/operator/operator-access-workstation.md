@@ -29,12 +29,12 @@ The following tables list common scenarios for the OAW. Use Remote Desktop to co
 
 | **Scenario**                                                                                                                                          | **Description**                                                                                                                                                                                                                                                                                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Access the Administration portal](./azure-stack-manage-portals.md?view=azs-2008)                    | Perform administrative operations.                                                                                                                                                                                                                                                                                       |
-| [Access PEP](./azure-stack-privileged-endpoint.md?view=azs-2008)                                     | Log collection and upload:<br>-[Create an SMB share](?view=azs-2008#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub.<br>-Use Azure Storage Explorer to upload logs saved to the SMB share. |
-| [Register Azure Stack Hub](./azure-stack-registration.md?view=azs-2008#renew-or-change-registration) | For re-registration, get previous Registration Name and Resource Group from the Administration portal.                                                                                                                                                                                                                   |
-| [Marketplace syndication](./azure-stack-download-azure-marketplace-item.md?view=azs-2008)            | [Create an SMB share](?view=azs-2008#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension.                                                                                                     |
-| [Create Virtual Machines](../user/azure-stack-quick-create-vm-windows-cli.md?view=azs-2008)                    | Create virtual machines using Azure CLI.                                                                                                                                                                                                                                                                                       |
-| [Manage AKS](../user/azure-stack-kubernetes-aks-engine-scale.md?view=azs-2008)                                 | Manage AKS clusters, for example,  scale or upgrade.                                                                                                                                                                                                                                                                        |
+| [Access the Administration portal](./azure-stack-manage-portals.md)                    | Perform administrative operations.                                                                                                                                                                                                                                                                                       |
+| [Access PEP](./azure-stack-privileged-endpoint.md)                                     | Log collection and upload:<br>-[Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH for file transfer from Azure Stack Hub.<br>-Use Azure Storage Explorer to upload logs saved to the SMB share. |
+| [Register Azure Stack Hub](./azure-stack-registration.md#renew-or-change-registration) | For re-registration, get previous Registration Name and Resource Group from the Administration portal.                                                                                                                                                                                                                   |
+| [Marketplace syndication](./azure-stack-download-azure-marketplace-item.md)            | [Create an SMB share](#transfer-files-between-the-hlh-and-oaw) on the HLH to store the downloaded image or extension.                                                                                                     |
+| [Create Virtual Machines](../user/azure-stack-quick-create-vm-windows-cli.md)                    | Create virtual machines using Azure CLI.                                                                                                                                                                                                                                                                                       |
+| [Manage AKS](../user/azure-stack-kubernetes-aks-engine-scale.md)                                 | Manage AKS clusters, for example,  scale or upgrade.                                                                                                                                                                                                                                                                        |
 
 ## Pre-installed software
 
@@ -43,7 +43,7 @@ The following table lists the pre-installed software on the OAW VM.
 | **Software Name**                                                                                              | **Location**                                                         |
 |----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | [Microsoft Edge for Business](https://www.microsoft.com/edge/business/)                                        | [SystemDrive]\\Program Files (x86)\\Microsoft\\Edge\\Application     |
-| [Az Modules](./powershell-install-az-module.md?view=azs-2008) | [SystemDrive]\\ProgramFiles\\WindowsPowerShell\\Modules              |
+| [Az Modules](./powershell-install-az-module.md) | [SystemDrive]\\ProgramFiles\\WindowsPowerShell\\Modules              |
 | [PowerShell 7](https://devblogs.microsoft.com/powershell/announcing-PowerShell-7-0/)                           | [SystemDrive]\\Program Files\\PowerShell\\7                          |
 | [Azure Command-Line Interface (CLI)](/cli/azure/)        | [SystemDrive]\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2      |
 | [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)                     | [SystemDrive]\\Program Files (x86)\\Microsoft Azure Storage Explorer |
@@ -290,12 +290,12 @@ The following table lists the definition for each parameter.
 ## Transfer files between the HLH and OAW
 
 If you need to transfer files between the HLH and the OAW, create an SMB share
-by using the [New-SmbShare](/powershell/module/smbshare/new-smbshare?view=win10-ps) cmdlet.
+by using the [New-SmbShare](/powershell/module/smbshare/new-smbshare) cmdlet.
 New-SmbShare exposes a file system folder to remote clients as a Server Message
 Block (SMB) share. For example:
 
 To delete a share that was created by this cmdlet, use
-the [Remove-SmbShare](/powershell/module/smbshare/remove-smbshare?view=win10-ps) cmdlet.
+the [Remove-SmbShare](/powershell/module/smbshare/remove-smbshare) cmdlet.
 
 ## Remove the OAW VM
 
