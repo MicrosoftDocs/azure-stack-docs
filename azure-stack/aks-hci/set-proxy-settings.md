@@ -1,8 +1,8 @@
 ---
-title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Proxy server settings in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
 description: Learn about proxy server settings in Azure Kubernetes Service (AKS) on Azure Stack HCI
 ms.topic: conceptual
-ms.date: 05/25/2022
+ms.date: 06/28/2022
 ms.author: sethm 
 ms.lastreviewed: 05/25/2022
 ms.reviewer: mikek
@@ -12,7 +12,7 @@ author: sethmanheim
 # Keyword: proxy server proxy settings
 
 ---
-# Use proxy server settings on AKS on Azure Stack HCI
+# Use proxy server settings on AKS on Azure Stack HCI and Windows Server
 
 > [!NOTE]
 > This topic covers how to configure proxy settings for AKS on Azure Stack HCI. If you want to use Arc enabled Kubernetes and Azure Services via Azure Arc, make sure you also allow the URLs shown in [Connect an existing Kubernetes cluster to Azure Arc](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements). 
@@ -23,7 +23,7 @@ Once you've configured your deployment using the options listed below, you can [
 
 ## Before you begin
 
-Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page. 
+Make sure you have satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
 ### **Proxy server configuration information:**
    - HTTP URL and port, such as `http://proxy.corp.contoso.com:8080`.
@@ -90,7 +90,7 @@ Install-Module -Name AksHci -Repository PSGallery
 
 If your environment uses a proxy server to access the internet, you may need to add proxy parameters to the **Install-Module** command before installing AKS on Azure Stack HCI. See the [Install-Module documentation](/powershell/module/powershellget/install-module) for details and follow the [Azure Stack HCI documentation](/azure-stack/hci/manage/configure-firewalls#set-up-a-proxy-server) to configure the proxy settings on the physical cluster nodes.
 
-When you download AksHci PowerShell module, we also download Az PowerShell modules that are required for registering for AKS host to Azure for billing. 
+When you download AksHci PowerShell module, we also download Az PowerShell modules that are required for registering for AKS host to Azure for billing.
 
 
 ## Configure an AKS host for a proxy server with basic authentication
