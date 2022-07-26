@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 07/06/2022
+ms.date: 07/26/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -70,7 +70,13 @@ To access known issues for a different version, use the version selector dropdow
    For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys). Note that the alert will automatically close within 24 hours after running **Get-AzsRecoveryKeys** and storing those recovery keys in a secure location outside of Azure Stack Hub.
 - Occurrence: Common
 
-<!-- ## Portal -->
+## Portal
+
+### Update blade unusable
+
+- Applicable: This issue applies to release 2206.
+- Cause: We are aware of an issue where the update blade and/or the portal dashboard may be unusable and show an error during the update itself. This is due to an incompatibility between the portal and backend service that we are actively investigating the cause. 
+- Remediation: 
 
 <!-- ## Storage -->
 
