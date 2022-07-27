@@ -294,7 +294,8 @@ If you're a preview channel customer and you registered your preview channel clu
 
 You can take the following actions if:
 
-1. You updated your Azure Stack HCI servers from 20H2 (which were previously not Arc-enabled manually) to 21H2, and Arc enablement doesn't happen automatically. If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-and-extension-causes-registration-failure). Or,
+1. You updated your Azure Stack HCI servers from 20H2 (which were previously not Arc-enabled manually) to 21H2, and Arc enablement doesn't happen automatically.
+   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-and-extension-causes-registration-failure). Or,
 1. You disabled Arc enablement previously, and now you intend to Arc-enable your 21H2 or later Azure Stack HCI cluster.
 
   > [!NOTE]
