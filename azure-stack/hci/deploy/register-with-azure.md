@@ -66,7 +66,7 @@ This region supports Azure Government:
   - **Resource group tags**: Currently HCI does not support adding tags to resource groups during cluster registration, and we create a managed resource group for Arc for servers as part of the registration which doesn't include tags. Make sure your policy accounts for this behavior.
   - **.msi download**: HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you do not restrict these downloads.
   - **Credentials lifetime**: By default, the HCI service requests 2 years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
-- **Make sure you don't have any stale Arc agentries pointing to the wrong Azure Arc for server resources**: If you have previously Arc-enabled the Azure Stack HCI server manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow, [follow the guidelines here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-and-extension-causes-registration-failure).
+- **Make sure you don't have any stale Arc agentries pointing to the wrong Azure Arc for server resources**: If you have previously Arc-enabled the Azure Stack HCI server manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow, [follow the guidelines here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-failure).
 
 You can assign permissions using either the Azure portal, or using PowerShell cmdlets.
 
@@ -295,7 +295,7 @@ If you're a preview channel customer and you registered your preview channel clu
 You can take the following actions if:
 
 1. You updated your Azure Stack HCI servers from 20H2 (which were previously not Arc-enabled manually) to 21H2, and Arc enablement doesn't happen automatically.
-   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-and-extension-causes-registration-failure). Or,
+   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-failure). Or,
 1. You disabled Arc enablement previously, and now you intend to Arc-enable your 21H2 or later Azure Stack HCI cluster.
 
    > [!NOTE]
