@@ -1,10 +1,10 @@
 ---
 title: Use the Azure web apps deploy action with Azure Stack Hub 
 description: Use the Azure web apps deploy action to create a continuous integration, continuous deployment (CI/CD) workflow to Azure Stack Hub
-author: BryanLa
+author: sethmanheim
 ms.topic: how-to
 ms.date: 03/16/2022
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 03/16/2022
 

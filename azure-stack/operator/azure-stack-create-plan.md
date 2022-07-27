@@ -1,11 +1,11 @@
 ---
 title: Create a plan in Azure Stack Hub 
 description: Learn how to create a plan in Azure Stack Hub that lets subscribers provision virtual machines.
-author: bryanla
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 04/29/2022
-ms.author: bryanla
+ms.author: sethm
 ms.lastreviewed: 06/11/2019
 
 # Intent: As an Azure Stack operator, I want to create plans to offer to my users.
