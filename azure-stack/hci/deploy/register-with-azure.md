@@ -61,7 +61,7 @@ This region supports Azure Government:
   - **Resource group tags**: Currently HCI does not support adding tags to resource groups during cluster registration, and we create a managed resource group for Arc for servers as part of the registration which doesn't include tags. Make sure your policy accounts for this behavior.
   - **.msi download**: HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you do not restrict these downloads.
   - **Credentials lifetime**: By default, the HCI service requests 2 years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
-- **Make sure you don't have any stale Arc agentries pointing to the wrong Azure Arc for server resources**: If you have previously Arc-enabled the Azure Stack HCI server manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow, [follow the guidelines here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-issues).
+- **Make sure you don't have any stale Arc agentries pointing to the wrong Azure Arc for server resources**: If you have previously Arc-enabled the Azure Stack HCI server manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow, [follow the guidelines here to clean up before re-registration](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-issues).
 - **Azure subscription and permissions**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
@@ -295,7 +295,7 @@ If you're a preview channel customer and you registered your preview channel clu
 You can take the following actions if:
 
 1. You updated your Azure Stack HCI servers from 20H2 (which were previously not Arc-enabled manually) to 21H2, and Arc enablement doesn't happen automatically.
-   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-issues). Or,
+   - If you have previously Arc-enabled your 20H2 clusters, and after upgrading to 21H2 the Arc enablement is still failing, [see the guidance here to troubleshoot](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-issues).
 1. You disabled Arc enablement previously, and now you intend to Arc-enable your 21H2 or later Azure Stack HCI cluster.
 
    > [!NOTE]
@@ -316,7 +316,7 @@ You can take the following actions if:
    > [!IMPORTANT]
    > If the cluster was originally registered using a `-Region`, `-ResourceName`, or `-ResourceGroupName` that's different from the default settings, you must specify those same parameters and values here. Running `Get-AzureStackHCI` will display these values.
 
-1. If Azure Arc integration fails, then the servers may need to communicate through a proxy server. To resolve this issue, follow the guidelines in [Update or remove proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings). Then, re-register the Azure Stack HCI cluster.
+1. If Azure Arc integration fails, then the servers may need to communicate through a proxy server. To resolve this issue, follow the guidelines to [update proxy settings](/azure/azure-arc/servers/manage-agent#update-or-remove-proxy-settings). Then, re-register the Azure Stack HCI cluster.
 
 ## Upgrade Arc agent on cluster servers
 
