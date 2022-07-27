@@ -82,7 +82,7 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 
 You can use PowerShell to get stamp utilization information without help from Microsoft Support. To obtain stamp utilization:
 
-1. Create a [PEP session](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-privileged-endpoint).
+1. Create a [PEP session](azure-stack-privileged-endpoint.md).
 2. Run the following command:
 
    ```
