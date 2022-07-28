@@ -113,7 +113,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2206.1.25](hotfix-1-2108-1-25.md)
+- [Azure Stack Hub hotfix 1.2206.1.25](hotfix-1-2206-1-25.md)
 ::: moniker-end
 
 ::: moniker range="azs-2108"
