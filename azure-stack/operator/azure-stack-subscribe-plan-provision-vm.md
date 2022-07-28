@@ -2,10 +2,10 @@
 title: Create subscriptions to offers in Azure Stack Hub.
 titleSuffix: Azure Stack
 description: Learn to create subscriptions for offers in Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 ms.topic: conceptual
 ms.date: 10/05/2019
-ms.author: bryanla
+ms.author: sethm
 ms.lastreviewed: 05/10/2019
 
 # Intent: As an Azure Stack operator, I want to create subscriptions for offers in Azure Stack.

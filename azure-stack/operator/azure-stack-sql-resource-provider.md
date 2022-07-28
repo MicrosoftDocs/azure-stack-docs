@@ -2,11 +2,11 @@
 title: Use SQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to use the SQL Server resource provider to offer SQL databases as a service on Azure Stack Hub.
-author: bryanla
+author: sethmanheim
 
 ms.topic: article
 ms.date: 8/19/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2019
 

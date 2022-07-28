@@ -1,8 +1,8 @@
 ---
 title:  Deploy a graphic processing unit (GPU) enabled IoT Module on Azure Stack Hub
 description: How to deploy a graphic processing unit (GPU) enabled IoT Module on Azure Stack Hub
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: how-to
 ms.date: 8/20/2021

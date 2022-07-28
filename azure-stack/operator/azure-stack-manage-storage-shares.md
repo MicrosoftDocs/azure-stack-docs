@@ -1,11 +1,11 @@
 ---
 title: Manage storage capacity in Azure Stack Hub
 description: Learn how to monitor and manage storage capacity and availability in Azure Stack Hub.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2020
 
