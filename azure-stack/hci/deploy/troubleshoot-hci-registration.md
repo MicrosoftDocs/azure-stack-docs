@@ -224,7 +224,7 @@ Performing a census sync before node synchronization can result in the sync bein
 
 4. After the repair operation, the node returns to a connected state.
 
-## Stale Arc agent causes registration issues
+## Registration completes successfully but Azure Arc connection in portal says Not Installed
 
 **Failure state explanation**:
 

@@ -54,14 +54,6 @@ This region supports Azure Government:
 
    > [!NOTE]
    > The registration process tries to contact the PowerShell Gallery to verify that you have the latest version of the necessary PowerShell modules such as Az and AzureAD. Although the PowerShell Gallery is hosted on Azure, it does not currently have a service tag. If you cannot run the cmdlet from a management machine that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories?view=powershell-7.1#installing-powershellget-on-a-disconnected-system&preserve-view=true).
-- **Do not configure conflicting Azure policies**: Make sure you don't have any conflicting Azure policies that might interfere with cluster registration. Some of the common conflicting policies might be:
-  - **Resource group naming**: If you are providing values or trying to use the default values, make sure they don't conflict with Azure policy:
-    - Resource group name for Azure Stack HCI cluster resource: the default value is `<cluster name-rg>`. You can provide a custom value (`-ResourceGroupName`).
-    - Resource group name for Arc for server resources: the default value is `<cluster name-36 char GUID-Arc-Infra-RG>`. You can provide a custom value (`-ArcServerResourceGroupName`).
-  - **Resource group tags**: Currently HCI does not support adding tags to resource groups during cluster registration, and we create a managed resource group for Arc for servers as part of the registration which doesn't include tags. Make sure your policy accounts for this behavior.
-  - **.msi download**: HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you do not restrict these downloads.
-  - **Credentials lifetime**: By default, the HCI service requests 2 years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
-- **Make sure you don't have any stale Arc agentries pointing to the wrong Azure Arc for server resources**: If you have previously Arc-enabled the Azure Stack HCI server manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow, [follow the guidelines here to clean up before re-registration](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-issues).
 - **Azure subscription and permissions**: If you don't already have an Azure account, [create one](https://azure.microsoft.com/). You can use an existing subscription of any type:
   - Free account with Azure credits [for students](https://azure.microsoft.com/free/students/) or [Visual Studio subscribers](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/).
   - [Pay-as-you-go](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) subscription with credit card.
@@ -129,6 +121,19 @@ The following table explains why these permissions are required:
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
 | "Microsoft.Resources/subscriptions/resourceGroups/read",</br> "Microsoft.AzureStackHCI/register/action",</br> "Microsoft.AzureStackHCI/Unregister/Action",</br> "Microsoft.AzureStackHCI/clusters/*",     | To register and unregister the Azure Stack HCI cluster.      |
 | "Microsoft.Authorization/roleAssignments/write",</br> "Microsoft.HybridCompute/register/action",</br> "Microsoft.GuestConfiguration/register/action",</br> "Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
+
+## Required pre-checks
+
+Make sure to complete the following pre-checks before proceeding with registration:
+
+- **Do not configure conflicting Azure policies**: Make sure you don't have any conflicting Azure policies that might interfere with cluster registration. Some of the common conflicting policies might be:
+  - **Resource group naming**: If you are providing values or trying to use the default values, make sure they don't conflict with Azure policy:
+    - Resource group name for Azure Stack HCI cluster resource: the default value is `<cluster name-rg>`. You can provide a custom value (`-ResourceGroupName`).
+    - Resource group name for Arc for server resources: the default value is `<cluster name-36 char GUID-Arc-Infra-RG>`. You can provide a custom value (`-ArcServerResourceGroupName`).
+  - **Resource group tags**: Currently HCI does not support adding tags to resource groups during cluster registration, and we create a managed resource group for Arc for servers as part of the registration which doesn't include tags. Make sure your policy accounts for this behavior.
+  - **.msi download**: HCI downloads the Arc agent on the cluster nodes during cluster registration. Make sure you do not restrict these downloads.
+  - **Credentials lifetime**: By default, the HCI service requests 2 years of credential lifetime. Make sure your Azure policy doesn't have any configuration conflicts.
+- **Make sure you don't have any stale Arc agents pointing to the wrong Azure Arc for server resources**: If you have previously Arc-enabled the Azure Stack HCI server manually and not as part of the `Register-AzStackHCI` cmdlet or Windows Admin center Azure Stack HCI registration workflow, [follow the guidelines here to clean up before re-registration](troubleshoot-hci-registration.md#stale-arc-agent-causes-registration-issues).
 
 ## Register a cluster using Windows Admin Center
 
