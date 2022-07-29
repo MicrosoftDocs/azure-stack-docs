@@ -15,7 +15,7 @@ Applies to: Azure Stack HCI, version 22H2 preview
 
 This article will provide instructions on installing a preview version of Azure Stack HCI OS using Windows Admin Center or PowerShell.
 
-Once you've joined the preview channel, your cluster will always be offered the latest available preview builds on a continuous basis. You can install a preview build using Windows Admin Center.
+Once you've joined the preview channel, your cluster will always be offered the latest available preview builds on a continuous basis.
 
 # [Windows Admin Center](#tab/windows-admin-center)
 
