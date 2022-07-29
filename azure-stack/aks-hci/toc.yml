@@ -132,6 +132,8 @@
             href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
+          - name: Use multiple load balancers
+            href: multiple-load-balancers.md
           - name: Configure a custom load balancer
             href: configure-custom-load-balancer.md
           - name: Deploy MetalLB for load balancing
