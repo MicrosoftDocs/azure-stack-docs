@@ -102,6 +102,8 @@ To install a preview build using PowerShell, follow these steps.
 
 You're now ready to perform post installation steps).
 
+---
+
 ## Next steps
 
 > [!div class="nextstepaction"]
