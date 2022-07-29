@@ -100,7 +100,7 @@ To install a preview build using PowerShell, follow these steps.
 
 7. Check for any further updates and install them. See [Install operating system updates using PowerShell](update-cluster.md#install-operating-system-updates-using-powershell).
 
-You're now ready to perform post installation steps).
+You're now ready to perform post installation steps.
 
 ---
 
