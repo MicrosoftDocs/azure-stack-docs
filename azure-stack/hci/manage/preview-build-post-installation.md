@@ -9,6 +9,8 @@ ms.subservice: azure-stack-hci
 ms.date: 07/29/2022
 ---
 
+# Azure Stack HCI preview build post installation steps
+
 Applies to: Azure Stack HCI, version 22H2 preview
 
 This article details how to update the cluster functional level and storage pool after joining the preview channel and installing a preview version of the Azure Stack HCI OS.
