@@ -96,6 +96,8 @@ To assign roles for the VaaS service app:
 4. Select **Users and groups**. The **AzureStack Validation Management Api [wsfed enabled] [Migrated] - Users and group** blade lists the users with permission to use the app.
 5. Select **+ Add user** to add a user from your tenant and assign a role.
 
+NOTE: It is a best practice and strong recomendation that more than one Owner is defined.  A new tenant must be ceated if there is a problem, departure, etc with a single Owner.
+
 ## Create an Azure Storage account
 
 During test execution, VaaS outputs diagnostic logs to an Azure Storage account. In addition to test logs, the storage account may also be used to the upload the OEM extension packages for the Package Validation workflow.
