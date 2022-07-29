@@ -25,9 +25,7 @@ Once you've joined the preview channel, your cluster will always be offered the 
 
    :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
 <!--- This image is currently shared with the Updates page. --->
-   > [!NOTE]
-   > If you're installing build 22471, Windows Admin Center displays the correct update title, but incorrectly shows a banner advertising "version 21H2." This is a known issue.
-
+   
 2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before proceeding.
 
    :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
@@ -44,8 +42,6 @@ Once you've joined the preview channel, your cluster will always be offered the 
    > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning, or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](update-cluster.md#check-on-the-status-of-an-updating-run).
 
 5. When the feature updates are complete, check if any further updates are available and install them.
-
-You're now ready to perform post installation steps.
 
 # [PowerShell](#tab/powershell)
 
@@ -99,8 +95,6 @@ To install a preview build using PowerShell, follow these steps.
    ```
 
 7. Check for any further updates and install them. See [Install operating system updates using PowerShell](update-cluster.md#install-operating-system-updates-using-powershell).
-
-You're now ready to perform post installation steps.
 
 ---
 
