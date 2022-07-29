@@ -147,27 +147,27 @@
     },    
     { 
       "source_path": "azure-stack/operator/known-issues-v0.md", 
-      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2206", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/operator/known-issues-v1.md", 
-      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2008", 
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2108", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/operator/known-issues-v2.md", 
-      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2005", 
+      "redirect_url": "/azure-stack/operator/known-issues?view=azs-2102", 
       "redirect_document_id": false
     },         
     { 
       "source_path": "azure-stack/operator/known-issues-v3.md", 
-      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-2002", 
+      "redirect_url": "/azure-stack/operator/relnotearchive/known-issues?view=azs-2008", 
       "redirect_document_id": false
     }, 
     { 
       "source_path": "azure-stack/operator/hotfix-v0.md", 
-      "redirect_url": "/azure-stack/operator/hotfix-1-2108-2-102", 
+      "redirect_url": "/azure-stack/operator/hotfix-1-2206-1-25", 
       "redirect_document_id": false
     },
     { 
