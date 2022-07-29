@@ -79,7 +79,8 @@ The following table lists the supported cryptographic algorithms and key strengt
 | QM SA Lifetime                                       | (Optional: default values are used if not specified)<br />                         Seconds (integer; min. 300/default 27000 seconds)<br />                         KBytes (integer; min. 1024/default 102400000 KBytes) |
 | Traffic Selector                                     | Policy-based Traffic Selectors are not supported in Azure Stack Hub.         |
 
-[!NOTE] Setting the QM SA lifetime too low requires unnecessary re-keying, which can degrade performance.
+> [!NOTE] 
+> Setting the QM SA lifetime too low requires unnecessary rekeying, which can degrade performance.
 
 \* These parameters are only available in builds 2002 and later.
 
