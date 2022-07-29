@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 07/26/2022
+ms.date: 07/29/2022
 ---
 
 # Connect and manage Azure Stack HCI registration
