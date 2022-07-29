@@ -150,6 +150,7 @@ items:
 
     1. After connecting to the management VM, double-click the **Windows Admin Center** shortcut on the desktop:
 
+       **TBD: If we don't move to WS 2022 for the management VM, can we install Edge and use that as default browser? If not this screenshot needs to change back to Chrome**
        :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" alt-text="The management VM desktop" lightbox="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" :::
 
     1. Sign in to the Windows Admin Center browser app by entering the "Contoso\Administrator" and "Password01" domain credentials again, then select **OK**:
@@ -379,11 +380,11 @@ items:
   content: |
     There are multiple options for monitoring and visualizing your cluster, the VMs you've deployed, and other resources:  
 
-    1. You can:
+    1. Choose from the following choices:
 
-    - Enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights. See [Configure Azure portal to monitor Azure Stack HCI clusters (preview)](/azure-stack/hci/manage/monitor-hci-single) for more details.  
-    - Use the Windows Admin Center Cluster Manager dashboard. See [Monitor Azure Stack HCI clusters from Windows Admin Center](/azure-stack/hci/manage/monitor-cluster) for details.
-    - Use the Windows Health Service, which provides multiple monitoring features including cluster performance history, Health Service faults, and more. See [Monitor clusters with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.
+       - Enable Azure Insights capabilities to monitor an Azure Stack HCI cluster with Azure Stack HCI Insights. See [Configure Azure portal to monitor Azure Stack HCI clusters (preview)](/azure-stack/hci/manage/monitor-hci-single) for more details.  
+       - Use the Windows Admin Center Cluster Manager dashboard. See [Monitor Azure Stack HCI clusters from Windows Admin Center](/azure-stack/hci/manage/monitor-cluster) for details.
+       - Use the Windows Health Service, which provides multiple monitoring features including cluster performance history, Health Service faults, and more. See [Monitor clusters with the Health Service](/azure-stack/hci/manage/health-service-overview) for more information.
 
     1. Select the **Next** button at the bottom of this page.  
 
