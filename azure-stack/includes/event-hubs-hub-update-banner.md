@@ -1,10 +1,10 @@
 ---
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
 ms.date: 06/08/2021
-ms.reviewer: bryanla
+ms.reviewer: sethm
 ms.lastreviewed: 06/08/2021
 ---
 <!-- TODO - For each release: add AzS Hub build number, Event Hubs RP version number, & corresponding Event Hubs release notes text/link -->
