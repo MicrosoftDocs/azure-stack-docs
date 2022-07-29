@@ -1,7 +1,7 @@
 ### YamlMime:Tutorial
 title: Evaluate Azure Stack HCI 
 metadata:
-  title: Evaluate Azure Stack HCI - Quick deploy
+  title: Evaluate Azure Stack HCI
   description: Learn how to quickly deploy an HCI cluster for evaluation.
   audience: IT Pro
   level: Beginner
@@ -196,7 +196,7 @@ items:
 
     1. In **Cluster Manager**, if you see the banner "An update is available for this extension", complete the following items. Otherwise, jump to the next step:  
 
-       - **TBD: Decide whether we need to update the Cluster Manager extension, or remove this step entirely. I've only tested with the latest extension. Also noticed the cluster portion of registration didn't work correctly unless updated.**
+       - **TBD: Decide whether we need to update the Cluster Manager extension, or remove this step entirely. I tested without updating to the latest extension, and noticed the cluster portion of registration didn't work correctly unless updated.**
 
        - Select the **Update now** link:  
 
@@ -271,7 +271,7 @@ items:
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" alt-text="Sign in to Azure AD tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" :::
 
-       **TBD: there is a known bug in the current WAC gateway flow that throws up a "Login_in_process: error during login call - login is already in process". Not sure how soon this will be resolved.**
+       **TBD: there is a known bug in the current WAC gateway flow that throws up a "Login_in_process: error during login call - login is already in process". Not sure how soon this will be resolved but I'm not planning to document it.**
 
     1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your Azure account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center, by selecting **Accept**:
        # [Global Administrator](#tab/global-admin)
