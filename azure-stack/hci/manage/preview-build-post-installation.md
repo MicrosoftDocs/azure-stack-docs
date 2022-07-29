@@ -11,11 +11,10 @@ ms.date: 07/29/2022
 
 Applies to: Azure Stack HCI, version 22H2 preview
 
-This article details how to update the cluster functional level and storage pool version after joining the preview channel and installing an Azure Stack HCI OS preview build.
-
+This article details how to update the cluster functional level and storage pool after joining the preview channel and installing a preview version of the Azure Stack HCI OS.
 ## Post installation steps
 
-Once the feature updates are installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
+Once the feature updates are installed, you'll need to update the cluster functional level, and update the storage pool version using PowerShell in order to enable new features.
 
 1. **Update the cluster functional level.**
 
@@ -27,7 +26,7 @@ Once the feature updates are installed, you'll need to update the cluster functi
    Update-ClusterFunctionalLevel
    ```
    
-   You'll see a warning that you cannot undo this operation. Confirm **Y** that you want to continue.
+   You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
    
    > [!WARNING]
    > After you update the cluster functional level, you can't roll back to the previous operating system version.

@@ -11,13 +11,13 @@ ms.date: 07/29/2022
 
 Applies to: Azure Stack HCI, version 22H2 preview
 
-This article will provide instructions on installing an Azure Stack HCI OS preview build using Windows Admin Center or PowerShell.
-
-## Install a preview build using Windows Admin Center
+This article will provide instructions on installing a preview version of Azure Stack HCI OS using Windows Admin Center or PowerShell.
 
 Once you've joined the preview channel, your cluster will always be offered the latest available preview builds on a continuous basis. You can install a preview build using Windows Admin Center.
 
 # [Windows Admin Center](#tab/windows-admin-center)
+
+## Install a preview build using Windows Admin Center
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. If you've successfully joined the preview channel, feature updates will be displayed.
 
@@ -43,7 +43,7 @@ Once you've joined the preview channel, your cluster will always be offered the 
 
 5. When the feature updates are complete, check if any further updates are available and install them.
 
-You're now ready to perform [post installation steps](#post-installation-steps).
+You're now ready to perform post installation steps.
 
 # [PowerShell](#tab/powershell)
 
@@ -77,7 +77,7 @@ To install a preview build using PowerShell, follow these steps.
    Set-PreviewChannel
    ```
 
-   This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server was not already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
+   This will configure your server to receive builds sent to the **ReleasePreview-External** audience. If your server wasn't already configured for flight signing, you'll need to restart after opting in. The module's output will tell you if you need to restart.
 
 5. Check for the feature update:
 
@@ -98,6 +98,9 @@ To install a preview build using PowerShell, follow these steps.
 
 7. Check for any further updates and install them. See [Install operating system updates using PowerShell](update-cluster.md#install-operating-system-updates-using-powershell).
 
-You're now ready to perform [post installation steps](#post-installation-steps).
+You're now ready to perform post installation steps).
 
----
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Post Installation](../manage/preview-build-post-installation.md)
