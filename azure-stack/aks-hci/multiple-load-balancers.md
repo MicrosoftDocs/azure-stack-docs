@@ -13,9 +13,9 @@ ms.topic: how-to
 
 ---
 
-# Use multiple load balancers in Azure Kubernetes Service on Azure Stack HCI and Windows Server
+# Use multiple load balancers in AKS on Azure Stack HCI and Windows Server
 
-In Azure Kubernetes Service (AKS) on Azure Stack HCI, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services.
+In Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services.
 
 This article describes how to deploy one or more instances of the **HAProxy** load balancer, including the ability to scale up (or down) the load balancer configuration in the target cluster. You can also use a custom load balancer with AKS on HCI or Windows Server. For more information, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
 
@@ -30,15 +30,15 @@ To deploy multiple load balancers during the workload cluster creation, use the 
 
 1. Create a load balancer configuration using the [New-AksHciLoadBalancerSetting](/reference/ps/new-akshciloadbalancersetting) cmdlet, and then select `none` for the `loadBalancerSku` parameter:
 
-```powershell
-$lbcfg = New-AksHciLoadBalancerSetting -name "haProxyLB" -LoadBalancerSku HAProxy -vmSize Standard_K8S3_v1 -loadBalancerCount 3
-```
+  ```powershell
+  $lbcfg = New-AksHciLoadBalancerSetting -name "haProxyLB" -LoadBalancerSku HAProxy -vmSize Standard_K8S3_v1 -loadBalancerCount 3
+  ```
 
 1. Deploy a workload cluster without providing the load balancer configuration using the following command:
 
-```powershell
-New-AksHciCluster -name "holidays" -nodePoolName "thanksgiving" -nodeCount 2 -OSType linux -nodeVmSize Standard_A4_v2 -loadBalancerSettings $lbCfg
-```
+  ```powershell
+  New-AksHciCluster -name "holidays" -nodePoolName "thanksgiving" -nodeCount 2 -OSType linux -nodeVmSize Standard_A4_v2 -loadBalancerSettings $lbCfg
+  ```
 
 1. Verify that a new workload cluster is created with a load balancer deployed as a virtual machine running **HAProxy** to manage traffic for your applications.
 
@@ -51,9 +51,9 @@ To scale up (or down) your load balancer instances after deployment of a workloa
 
 1. Run `Set-AksHciLoadBalancer` with the number of instances you want to deploy in the cluster
 
-      ```powershell
-      Set-AksHciLoadBalancer -clusterName "holidays" -loadBalancerCount 5
-      ```
+  ```powershell
+  Set-AksHciLoadBalancer -clusterName "holidays" -loadBalancerCount 5
+  ```
 
 1. Verify that the exact number of load balancer instances are created and that Kubernetes services are reachable.
 
