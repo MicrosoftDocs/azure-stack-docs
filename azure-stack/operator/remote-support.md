@@ -20,10 +20,7 @@ ms.lastreviewed: 04/19/2022
 > - 2108
 > - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
-Use remote support to allow a Microsoft support professional to solve your support case faster by
-permitting access to your device remotely and performing limited troubleshooting and repair. You can
-enable this feature by granting consent while controlling the access level and duration of access.
-Support can only access your device after a support request has been submitted.
+Use remote support to allow a Microsoft support professional to diagnose and help speed resolution of your support request by permitting remote access to your device for limited troubleshooting and repair. You can enable this feature by granting consent for a specific access level and duration. Support can only access your device after a support request has been submitted.
 
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses protocol HTTPS over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
