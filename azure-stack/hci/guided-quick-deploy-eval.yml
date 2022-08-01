@@ -16,8 +16,11 @@ items:
     > This guide is for evaluation purposes only. It should **NOT** be used for a production environment.
 
     This guide shows you how to quickly deploy and evaluate a virtualized Azure Stack HCI cluster with **no hardware investment**. You'll deploy a Windows Server 2022 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
-       - 1 VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and a domain controller
-       - 2 VMs running Azure Stack HCI 21H2, which are the servers that will form the Azure Stack HCI cluster
+       - 1 VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and an Active Directory domain controller
+       - 2 VMs running Azure Stack HCI 21H2, which are the servers that will form the Azure Stack HCI cluster and host the Software-Defined Networking (SDN) infrastructure
+
+    :::image type="content" source="./media/guided-quick-deploy-eval/architecture-vms.png" alt-text="Shows the architecture and relationship of VMs" lightbox="./media/guided-quick-deploy-eval/architecture-vms.png" :::
+
 
     **Prerequisites**
 
@@ -120,14 +123,17 @@ items:
 
     After you've remoted into the Azure VM, finalize your deployment by running a script to provision the Azure Stack HCI and management VMs and create the Azure Stack HCI cluster. The VMs are deployed on top of the Azure VM using nested virtualization:  
 
-    **TBD: Determine whether DSC can change the New-AzSHCISandbox shortcut properties, or if I should have them update the link and prefix with `PowerShell -NoExit`**  
-
-    1. Minimize or close the **Server Manager** app, then double-click the **New-AzSHCISandbox** icon on the desktop to start the PowerShell script:
+    1. Minimize or close the **Server Manager** app. On the desktop, you'll see a **New-AzSHCISandbox** shortcut icon: 
 
        > [!NOTE]
        > Desired State Configuration may still be running in the background, configuring files and deployment scripts. Once complete, the **New-AzSHCISandbox** shortcut icon will appear on the desktop.
 
        :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-desktop2.png" alt-text="RDP Windows Server desktop" lightbox="./media/guided-quick-deploy-eval/azure-vm-desktop-large2.png" :::
+
+    1. Double-click the **New-AzSHCISandbox** shortcut to run the cluster deployment script.
+
+       > [!TIP]
+       > If you'd like to keep the PowerShell console window open after the script runs, right-click the icon to open the shortcut **Properties**, and prefix the **Target** field with `PowerShell -NoExit `. This can be useful if you run into errors during deployment. Otherwise the console window will close when the script finishes.
 
     1. The PowerShell script typically runs for about 1 hour and 50 minutes. When complete, you'll see a "Successfully deployed the Azure Stack HCI Sandbox" message:
 
@@ -345,33 +351,20 @@ items:
 
     1. Select the **Next** button at the bottom of this page.  
 
-- title: Create virtual machines
+- title: Manage virtual machines
   durationInMinutes: 10
   content: |
-    There are 2 options available for creating VMs on your new Azure Stack HCI cluster: from Windows Admin Center, or from the Azure portal using [Azure Arc](/azure/azure-arc/servers/overview).
+    This section shows you how to create and manage VMs on your new Azure Stack HCI cluster [using Windows Admin Center](/azure-stack/hci/manage/vm)
     
     1. Return to the Windows Admin Center session you used in the previous sections. 
-    1. To create a VM using Windows Admin Center: 
-       - Select the **All Connections** view, then pick a server or the cluster. In this example, we'll pick server "azshost1.contoso.com": 
 
-         :::image type="content" source="./media/guided-quick-deploy-eval/create-vm-pick-connection.png" alt-text="Use Server Manager to select a VM" lightbox="./media/guided-quick-deploy-eval/create-vm-pick-connection.png" :::
+    1. Select the **All Connections** view, then pick a server or the cluster. In this example, we'll pick server "azshost1.contoso.com": 
 
-       - In **Server Manager** select the **Tools / Virtual Machines** view. From here you can use [Windows Admin Center features to create and manage VMs](/azure-stack/hci/manage/vm).
+       :::image type="content" source="./media/guided-quick-deploy-eval/create-vm-pick-connection.png" alt-text="Use Server Manager to select a VM" lightbox="./media/guided-quick-deploy-eval/create-vm-pick-connection.png" :::
 
-         :::image type="content" source="./media/guided-quick-deploy-eval/create-vm.png" alt-text="Create a VM on the server" lightbox="./media/guided-quick-deploy-eval/create-vm.png" :::
+    1. In **Server Manager** select the **Tools / Virtual Machines** view. From here you can use [Windows Admin Center features to create and manage VMs](/azure-stack/hci/manage/vm).
 
-    1. To create a VM using the Azure portal and Azure Arc:
-       - Select the **Cluster Manager** view, then select the cluster. 
-
-         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-select-cluster.png" alt-text="Select the new cluster to begin cluster registration" lightbox="./media/guided-quick-deploy-eval/cluster-manager-select-cluster.png" :::
-
-       - In **Cluster Manager** select the **Dashboard** view. Select the **View Azure resource** link again in right pane which will open a new browser tab. 
-
-         :::image type="content" source="./media/guided-quick-deploy-eval/create-arc-vm-view-azure-resource.png" alt-text="View the Azure Stack HCI resource in Azure" lightbox="./media/guided-quick-deploy-eval/create-arc-vm-view-azure-resource.png" :::
-
-       - In the **Azure Stack HCI** Azure portal tab, select **Virtual Machines**. Select the link in the right pane, which will take you to the docs for [setting up Azure Arc-enabled VM resources](/azure-stack/hci/manage/azure-arc-enabled-virtual-machines#azure-arc-resource-bridge-deployment-overview). When you're done, you'll be able to use the same [Azure VM blade](/azure-stack/hci/manage/manage-virtual-machines-in-azure-portal) that you use to create Azure VMs, to create Arc-enabled VMs on your Azure Stack HCI cluster.
-
-         :::image type="content" source="./media/guided-quick-deploy-eval/create-arc-vm.png" alt-text="Create an Arc-enabled VM" lightbox="./media/guided-quick-deploy-eval/create-arc-vm-large.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/create-vm.png" alt-text="Create a VM on the server" lightbox="./media/guided-quick-deploy-eval/create-vm.png" :::
 
     1. Select the **Next** button at the bottom of this page.  
 
