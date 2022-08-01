@@ -82,11 +82,21 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 
 You can use PowerShell to get stamp utilization information without help from Microsoft Support. To obtain stamp utilization:
 
-1. Create a PEP session.
-2. Run `test-azurestack`.
+1. Create a [PEP session](azure-stack-privileged-endpoint.md).
+2. Run the following command:
+
+   ```
+   Test-AzureStack
+   ```
+
 3. Exit PEP session.
-4. Run `get-azurestacklog -filterbyrole seedring` using an invoke-command call.
-5. Extract the seedring .zip. You can obtain the validation report from the ERCS folder where you ran `test-azurestack`.
+4. Run the following using an Invoke-Command call:
+
+   ```
+   Get-AzureStackLog -FilterByRole SeedRing
+   ```
+ 
+5. Extract the seedring .zip. You can obtain the validation report from the ERCS folder where you ran `Test-AzureStack`.
 
 For more information, see [Azure Stack Hub Diagnostics](azure-stack-get-azurestacklog.md).
 
