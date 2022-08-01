@@ -25,10 +25,6 @@ The profiles have the following attributes:
 - Only one profile is assigned to a given cluster. The profile is used for all node pools in the cluster.
 - Changes to the profile are applied to all node pools, which have the autoscaler function enabled.
 
-> [!IMPORTANT]
-> Cluster autoscaler is currently in PREVIEW.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
- 
 ## Profile settings
 
 The default profile consists of the below default values. You can update  the following settings:
