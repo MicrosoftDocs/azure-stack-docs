@@ -13,7 +13,7 @@ ms.lastreviewed: 05/02/2022
 
 **If you are using remote PowerShell, you must use CredSSP.** 
 
-Close all open PowerShell windows, open a fresh admin PowerShell session and run the following command on all nodes in your Azure Stack HCI or Windows Server cluster.
+Close all open PowerShell windows, open a fresh PowerShell session as administrator, and run the following command on all nodes in your Azure Stack HCI or Windows Server cluster:
 
 ```powershell  
 Install-PackageProvider -Name NuGet -Force 
