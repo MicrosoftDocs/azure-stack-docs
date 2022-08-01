@@ -19,7 +19,7 @@ items:
        - 1 VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and an Active Directory domain controller
        - 2 VMs running Azure Stack HCI 21H2, which are the servers that will form the Azure Stack HCI cluster and host the Software-Defined Networking (SDN) infrastructure
 
-    :::image type="content" source="./media/guided-quick-deploy-eval/architecture-vms.png" alt-text="Shows the architecture and relationship of VMs" lightbox="./media/guided-quick-deploy-eval/architecture-vms.png" :::
+    :::image type="content" source="./media/guided-quick-deploy-eval/architecture-vms.png" alt-text="Shows the architecture and relationship of VMs" lightbox="./media/guided-quick-deploy-eval/architecture-vms-large.png" :::
 
 
     **Prerequisites**
@@ -133,7 +133,7 @@ items:
     1. Double-click the **New-AzSHCISandbox** shortcut to run the cluster deployment script.
 
        > [!TIP]
-       > If you'd like to keep the PowerShell console window open after the script runs, right-click the icon to open the shortcut **Properties**, and prefix the **Target** field with `PowerShell -NoExit `. This can be useful if you run into errors during deployment. Otherwise the console window will close when the script finishes.
+       > If you'd like to keep the PowerShell console window open after the script finishes, right-click the icon to open the shortcut **Properties**, and prefix the **Target** field path with `PowerShell -NoExit `. This can be useful if you run into errors during deployment. Otherwise the console window will close when the script finishes.
 
     1. The PowerShell script typically runs for about 1 hour and 50 minutes. When complete, you'll see a "Successfully deployed the Azure Stack HCI Sandbox" message:
 
@@ -156,7 +156,6 @@ items:
 
     1. After connecting to the management VM, double-click the **Windows Admin Center** shortcut on the desktop:
 
-       **TBD: If we don't move to WS 2022 for the management VM, can we install Edge and use that as default browser? If not this screenshot needs to change back to Chrome**
        :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" alt-text="The management VM desktop" lightbox="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" :::
 
     1. Sign in to the Windows Admin Center browser app by entering the "Contoso\Administrator" and "Password01" domain credentials again, then select **OK**:
@@ -202,8 +201,6 @@ items:
        :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-new-cluster.png" alt-text="Cluster manager view showing newly added cluster" lightbox="./media/guided-quick-deploy-eval/cluster-manager-new-cluster.png" :::
 
     1. In **Cluster Manager**, if you see the banner "An update is available for this extension", complete the following items. Otherwise, jump to the next step:  
-
-       - **TBD: Decide whether we need to update the Cluster Manager extension, or remove this step entirely. I tested without updating to the latest extension, and noticed the cluster portion of registration didn't work correctly unless updated.**
 
        - Select the **Update now** link:  
 
@@ -277,8 +274,6 @@ items:
     1. Once you've paused for at least 60 seconds after the previous step, and you see the "Now connected to Azure AD" confirmation, select the **Sign in** button.
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" alt-text="Sign in to Azure AD tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" :::
-
-       **TBD: there is a known bug in the current WAC gateway flow that throws up a "Login_in_process: error during login call - login is already in process". Not sure how soon this will be resolved but I'm not planning to document it.**
 
     1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your Azure account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center, by selecting **Accept**:
        # [Global Administrator](#tab/global-admin)
