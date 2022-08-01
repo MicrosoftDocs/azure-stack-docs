@@ -81,9 +81,9 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
    | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
 
-3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed or not.
-   - **If AKS on Azure Stack HCI and Windows Server is installed.** Skip this step and proceed to step 4 to update the required extensions.
-   - **If AKS on Azure Stack HCI and Windows Server is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
+3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI is installed or not.
+   - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
+   - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
       ### [For static IP address](#tab/for-static-ip-address)
 
