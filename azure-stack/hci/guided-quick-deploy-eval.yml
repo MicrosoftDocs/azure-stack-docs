@@ -346,10 +346,10 @@ items:
 
     1. Select the **Next** button at the bottom of this page.  
 
-- title: Manage virtual machines
+- title: Create and manage virtual machines
   durationInMinutes: 10
   content: |
-    This section shows you how to create and manage VMs on your new Azure Stack HCI cluster [using Windows Admin Center](/azure-stack/hci/manage/vm)
+    This section shows you how to create and manage VMs on your new Azure Stack HCI cluster using Windows Admin Center:
     
     1. Return to the Windows Admin Center session you used in the previous sections. 
 
