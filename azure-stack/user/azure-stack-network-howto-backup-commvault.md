@@ -1,11 +1,11 @@
 ---
 title: Back up VM on Azure Stack Hub with Commvault 
 description: Learn how to Back up your VM on Azure Stack Hub with Commvault.
-author: BryanLa
+author: sethmanheim
 
 ms.topic: how-to
 ms.date: 12/2/2020
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 12/2/2020
 
