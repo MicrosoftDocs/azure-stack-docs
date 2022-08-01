@@ -4,7 +4,7 @@ description: Learn how to deploy a Kubernetes cluster to a custom virtual networ
 author: sethmanheim
 
 ms.topic: article
-ms.date: 04/14/2022
+ms.date: 08/01/2022
 ms.author: sethm
 ms.reviewer: walterov
 ms.lastreviewed: 04/14/2022
@@ -108,9 +108,12 @@ VNET address space: 10.100.0.0/16.
 In this example, the `firstConsecutiveStaticIP` property would be `10.100.0.239`.
 
 ## Azure CNI address blocks example
-In the following example, you can see how these various considerations fill out the address space in the virtual network for a cluster using the Azure CNI network plugin with dedicated subnets for the control plane and agent node pools with three nodes per pool.  
+In the following example, you can see how these various considerations fill out the address space in the virtual network for a cluster using the Azure CNI network plugin with dedicated subnets for the control plane and agent node pools with three nodes per pool.
 
 VNET address space: 172.24.0.0/16.  
+
+> [!NOTE]
+> In your environment, if the public IP range is within CIDR10.0.0.0/8, use kubenet as the network plugin.
 
 | Address block (subnet) | CIDR | IP range | IP Count (available) |
 | --- | --- | --- | --- |
