@@ -13,7 +13,7 @@ items:
   content: | 
 
     > [!IMPORTANT]
-    > This guide is for evaluation purposes only. It **SHOULD NOT** be used for a production environment.
+    > This guide is for evaluation purposes only. **It SHOULD NOT be used for a production environment.**
 
     This guide shows you how to quickly deploy and evaluate a virtualized Azure Stack HCI cluster with **no hardware investment**. You'll deploy a Windows Server 2022 DC Azure virtual machine (VM), which uses [Hyper-V nested-virtualization](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) to host the following VMs:  
        - one VM running Windows Server 2019 DC, which serves as the management VM and hosts Windows Admin Center and an Active Directory domain controller
@@ -61,7 +61,7 @@ items:
        1. Select **Next: Review + create >**.
 
        >[!IMPORTANT]
-       > A VM with at least 16 cores, 64 GB memory, nested virtualization, and Premium Storage is required. Temp storage isn't required.
+       > A VM with at least 16 cores, 64-GB memory, nested virtualization, and Premium Storage is required. Temp storage isn't required.
 
        :::image type="content" source="./media/guided-quick-deploy-eval/deploy-arm-details-50.png" alt-text="Deploy ARM template details" lightbox="./media/guided-quick-deploy-eval/deploy-arm-details.png" :::
 
@@ -383,5 +383,5 @@ items:
 
     For more details on cluster deployment and management:
     - [Deploy the Azure Stack HCI operating system](/deploy/operating-system) provides a more detailed look at deployment and the various options and considerations.
-    - Learn how to manage VMs with [Windows Admin Center](/manage/vm) and [PowerShell](/manage/vm-powershell).
+    - Learn how to manage VMs using [PowerShell](/azure-stack/hci/manage/vm-powershell).
     - Check out the [web-based Azure Stack HCI sizing tool](https://techcommunity.microsoft.com/t5/azure-stack-blog/introducing-the-all-new-azure-stack-hci-sizing-tool-preview/ba-p/3053920) to get an idea of the type of hardware you'll need for your cluster based on your workloads.
