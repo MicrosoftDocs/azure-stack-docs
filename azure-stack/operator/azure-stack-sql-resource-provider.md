@@ -5,7 +5,7 @@ description: Learn how to use the SQL Server resource provider to offer SQL data
 author: sethmanheim
 
 ms.topic: article
-ms.date: 8/19/2020
+ms.date: 08/02/2022
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2019
@@ -26,15 +26,15 @@ Use the SQL resource provider to offer SQL databases on [Azure Stack Hub](azure-
 
 Limitations to consider before installing the SQL resource provider:
 
-- Users can only create and manage individual databases. Database Server instance isn't accessible to end users. This may limit compatibility with on-premises database apps that need access to master, Temp DB, or to dynamically manage databases.
+- Users can only create and manage individual databases. Database server instances aren't accessible to end users. This may limit compatibility with on-premises database apps that need access to master, Temp DB, or to dynamically manage databases.
 - Your Azure Stack Hub operator is responsible for deploying, updating, securing, configuring, and maintaining the SQL database servers and hosts. The RP service doesn't provide any host and database server instance management functionality.
-- Databases from different users in different subscriptions may be located on the same database server instance. The RP doesn't provide any mechanism for isolating databases on different hosts or database server instances.
+- Databases from different users in different subscriptions may be located on the same database server instance. The RP does not provide a mechanism for isolating databases on different hosts or database server instances.
 - The RP doesn't provide any reporting on tenant usage of databases.
-- You can only move a SQL hosting server to another subscription in global Azure. Azure Stack Hub doesn't support moving a SQL hosting server to another subscription.
-- The RP doesn't monitor the SQL Server's health.
-- There is no access control on SQL server's system databases. If your SQL hosting server is a standalone SQL server (not SQL HA), SQL RP uses SQL Logins to control users access to their own databases. However, the SQL Logins don't control users' access to system databases. For example, a user trying to restore a database from one of the backups will be able to see all the backup histories on the same hosting server, because the backup history is stored in the msdb database.
+- You can only move a SQL hosting server to another subscription in global Azure. Azure Stack Hub does not support moving a SQL hosting server to another subscription.
+- The RP doesn't monitor the SQL server's health.
+- There is no access control on SQL Server's system databases. If your SQL hosting server is a standalone SQL server (not SQL HA), SQL RP uses SQL logins to control users' access to their own databases. However, the SQL logins don't control users' access to system databases. For example, a user trying to restore a database from one of the backups will be able to see all the backup histories on the same hosting server, because the backup history is stored in the msdb database.
 
-For traditional SQL Server workload on premises, SQL Server virtual machine on Azure Stack Hub is recommended.
+For traditional SQL Server workload on premises, a SQL Server virtual machine on Azure Stack Hub is recommended.
 
 ## SQL resource provider adapter architecture
 
