@@ -82,7 +82,7 @@ Refer to the instructions [Install the AksHci PowerShell module](kubernetes-walk
 > [!NOTE]  
 > You might have to change the PowerShell ExecutionPolicy to `Unrestricted` so that you can import and execute some of these scripts. You can do so by running `Set-ExecutionPolicy Unrestricted`.
 
-After you complete the previous step, follow instructions [On all nodes in your Azure Stack HCI cluster](kubernetes-walkthrough-powershell.md#on-all-nodes-in-your-azure-stack-hci-cluster) to install **PowerShellGet** and **AksHci** modules.
+After you complete the previous step, follow the instructions in [Install the AksHci PowerShell module](kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) to install **PowerShellGet** and **AksHci** modules.
 
 Retrieve the [`sdn_public_preview.zip` from Download Center](https://download.microsoft.com/download/3/f/f/3ffb7097-e32b-4aa0-b977-1c1feb774749/sdn_public_preview.zip). 
 
