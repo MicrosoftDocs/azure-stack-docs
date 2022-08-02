@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 07/26/2022
+ms.date: 08/02/2022
 
 ---
 
