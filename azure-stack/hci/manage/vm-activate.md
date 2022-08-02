@@ -22,20 +22,18 @@ The following figure shows the different Windows Server VM licensing options:
 
 First, choose one of two licensing options:
 
-- **Windows Server subscription**: Subscribe to Windows Server guest licenses through Azure, by turning on AVMA. Available for Azure Stack HCI only.
+- **Windows Server subscription**: Subscribe to Windows Server guest licenses through Azure. Available for Azure Stack HCI only.
 - **Bring your own license (BYOL)**: Apply your existing Windows Server licenses.
 
 For more information, see [Compare licensing options](#compare-licensing-options).
 
 Next, activate your Windows Server VMs:
 
-- If you are using Windows Server subscription, AVMA is automatically enabled on the host. You can immediately activate VMs against the cluster using AVMA client keys.
+- If you are using Windows Server subscription, AVMA is automatically enabled on the host. You can immediately activate VMs against the cluster using generic AVMA client keys.
 - If you are using BYOL, you must use the corresponding keys associated with your license and apply them using your chosen activation method. One of the most convenient ways is to use *Automatic VM Activation* (AVMA).
 - To use other methods to activate VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
 
-## Step 1: Get licenses
-
-### Compare licensing options
+## Compare licensing options
 
 Choose the licensing option that best suits your needs:
 
@@ -126,7 +124,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
 Now that AVMA has been enabled through Windows Server subscription, you can activate VMs against the host server by following the steps in [Automatic Virtual Machine Activation in Windows Server](/windows-server/get-started/automatic-vm-activation).
 
-## Step 2: Activate your VMs
+## Tutorial: Bring your own license (BYOL) activation through AVMA
 
 You can use any existing method to activate VMs on Azure Stack HCI. Optionally, you can use AVMA, which enables activated host servers to automatically activate VMs running on them. For more information, see [AVMA in Windows Server](/windows-server/get-started/automatic-vm-activation).
 
@@ -139,8 +137,6 @@ VM activation through host servers presents several benefits:
 - Individual VMs don't have to be connected to the internet. Only licensed host servers with internet connectivity are required.
 - License management is simplified. Instead of having to true-up key usage counts for individual VMs, you can activate any number of VMs with just a properly licensed server.
 - AVMA acts as a proof-of-purchase mechanism. This capability helps to ensure that Windows products are used in accordance with product use rights and Microsoft software license terms.
-
-## Tutorial: Bring your own license (BYOL) activation through AVMA
 
 Take a few minutes to watch the video on using Automatic Virtual Machine Activation in Windows Admin Center:
 
@@ -181,7 +177,7 @@ To use AVMA in Windows Admin Center:
    > [!NOTE]
    > Each server requires a unique key, unless you have a valid volume license key.
 
-After AVMA is successfully set up, you can view and manage the feature for your cluster.
+1. Now that AVMA has been enabled, you can activate VMs against the host server by following the steps in [Automatic Virtual Machine Activation](/windows-server/get-started/automatic-vm-activation).
 
 ### Change or add keys later (optional)
 
