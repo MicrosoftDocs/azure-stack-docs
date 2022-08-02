@@ -96,7 +96,8 @@ To assign roles for the VaaS service app:
 4. Select **Users and groups**. The **AzureStack Validation Management Api [wsfed enabled] [Migrated] - Users and group** blade lists the users with permission to use the app.
 5. Select **+ Add user** to add a user from your tenant and assign a role.
 
-NOTE: It is a best practice and strong recomendation that more than one Owner is defined.  A new tenant must be ceated if there is a problem, departure, etc with a single Owner.
+> [!NOTE]
+> As a best practice, you should define more than one Owner to avoid the necessity of having to create a new tenant if there is an issue with a single owner.
 
 ## Create an Azure Storage account
 
