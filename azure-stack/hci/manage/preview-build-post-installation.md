@@ -1,12 +1,12 @@
 ---
-title: Azure Stack HCI preview build post installation steps
+title: Azure Stack HCI, version 22H2 OS post installation (preview)
 description: How to update the cluster functional level and storage pool version to enable new features.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/29/2022
+ms.date: 08/03/2022
 ---
 
 # Azure Stack HCI preview build post installation steps

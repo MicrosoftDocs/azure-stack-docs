@@ -1,12 +1,12 @@
 ---
-title: Install an Azure Stack HCI OS preview version
-description: How to install feature updates by using Windows Admin Center or Windows PowerShell.
+title: Install an Azure Stack HCI, 22H2 (preview)
+description: How to install feature updates using Windows Admin Center or Windows PowerShell.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/29/2022
+ms.date: 08/03/2022
 ---
 
 # Install an Azure Stack HCI OS preview version
