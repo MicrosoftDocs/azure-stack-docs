@@ -133,7 +133,11 @@ items:
     1. Double-click the **New-AzSHCISandbox** shortcut to run the cluster deployment script.
 
        > [!TIP]
-       > If you'd like to keep the PowerShell console window open after the script finishes, right-click the icon to open the shortcut **Properties**, and prefix the **Target** field path with `PowerShell -NoExit `. This can be useful if you run into errors during deployment. Otherwise the console window will close when the script finishes.
+       > To keep the PowerShell console window open after the script finishes, right-click the icon and select **Properties**, then copy the command below and replace the **Target** field value. This can be useful if you encounter errors during deployment. Otherwise the console window will close when the script finishes.
+       > 
+       > ```cmd
+       > PowerShell -NoExit C:\AzHCI_Sandbox\AzSHCISandbox-main\New-AzSHCISandbox.ps1
+       > ```
 
     1. The PowerShell script typically runs for about 1 hour and 50 minutes. When complete, you'll see a "Successfully deployed the Azure Stack HCI Sandbox" message:
 
