@@ -281,6 +281,7 @@ Open an elevated PowerShell console and complete the following steps to rotate t
 ### Rotate the external certificate
 
 You need to first make note of the values for the following parameters.
+
    | Placeholder | Description | Example value |
    | ----------- | ----------- | --------------|
    | `<product-id>` | The product ID of the latest resource provider deployment. | `microsoft.sqlrp` |
