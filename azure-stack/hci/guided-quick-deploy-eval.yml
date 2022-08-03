@@ -164,6 +164,9 @@ items:
 
     1. Sign in to the Windows Admin Center browser app by entering the "Contoso\Administrator" and "Password01" domain credentials again, then select **OK**:
 
+       > [!TIP]
+       > You may need to select **More choices** then **Use a different account** in order to enter user name and password credentials. 
+
        :::image type="content" source="./media/guided-quick-deploy-eval/wac-sign-in.png" alt-text="Run the Windows Admin Center shortcut and sign in" lightbox="./media/guided-quick-deploy-eval/wac-sign-in.png" :::
 
     1. Close the "What's new" dialog and you'll see the **All connections** view in Windows Admin Center:
