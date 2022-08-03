@@ -96,22 +96,22 @@ items:
 
     1. Under **IP address** select the VM's public IP address, then select the **Download RDP File** button on the **Connect / RDP** page:  
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp.png" alt-text="Download the RDP file" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-remote-.png" alt-text="Download the RDP file" lightbox="./media/guided-quick-deploy-eval/connect-remote-.png" :::
 
     1. After the .RDP file downloads in your browser, open it and select **Connect** on the publisher warning dialog:  
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-warn-50.png" alt-text="Accept the RDP publisher warning" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-warn.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-remote-auth-warn-50.png" alt-text="Accept the RDP publisher warning" lightbox="./media/guided-quick-deploy-eval/connect-remote-auth-warn.png" :::
 
     1. Enter the VM administrator account (preceded with a backslash "\\") and the password you specified in the previous **Deploy the Azure VM** section, then select **OK**:  
 
        > [!TIP]
        > You may need to select **More choices** then **Use a different account** in order to enter user name and password credentials. 
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-creds-50.png" alt-text="Enter the RDP credentials" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-creds.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-remote-auth-creds-50.png" alt-text="Enter the RDP credentials" lightbox="./media/guided-quick-deploy-eval/connect-remote-auth-creds.png" :::
 
     1. Select the **Yes** button on the RDP certificate warning dialog:  
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-cert-trust-50.png" alt-text="Accept the RDP certificate trust warning" lightbox="./media/guided-quick-deploy-eval/connect-rd-rdp-auth-cert-trust.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-remote-auth-cert-trust-50.png" alt-text="Accept the RDP certificate trust warning" lightbox="./media/guided-quick-deploy-eval/connect-remote-auth-cert-trust.png" :::
 
     1. Once you've connected to the Azure VM, you'll see the Windows Server desktop.
 
@@ -128,7 +128,7 @@ items:
        > [!NOTE]
        > Desired State Configuration may still be running in the background, configuring files and deployment scripts. Once complete, the **New-AzSHCISandbox** shortcut icon will appear on the desktop.
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-desktop2.png" alt-text="RDP Windows Server desktop" lightbox="./media/guided-quick-deploy-eval/azure-vm-desktop-large2.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-desktop-2.png" alt-text="RDP Windows Server desktop" lightbox="./media/guided-quick-deploy-eval/azure-vm-desktop-large-2.png" :::
 
     1. Double-click the **New-AzSHCISandbox** shortcut to run the cluster deployment script.
 
@@ -156,11 +156,11 @@ items:
        > [!NOTE]
        > If you get a "Remote Desktop can't find the computer \"AdminCenter\"" error, you may need to wait a few more minutes for the management VM to complete startup. 
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm.png" alt-text="RDP into the WAC VM, from the Azure VM" lightbox="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-mgmt-vm.png" alt-text="RDP into the WAC VM, from the Azure VM" lightbox="./media/guided-quick-deploy-eval/connect-mgmt-vm.png" :::
 
     1. After connecting to the management VM, double-click the **Windows Admin Center** shortcut on the desktop:
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" alt-text="The management VM desktop" lightbox="./media/guided-quick-deploy-eval/connect-rd-mgmt-vm-desktop.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-mgmt-vm-desktop.png" alt-text="The management VM desktop" lightbox="./media/guided-quick-deploy-eval/connect-mgmt-vm-desktop.png" :::
 
     1. Sign in to the Windows Admin Center browser app by entering the "Contoso\Administrator" and "Password01" domain credentials again, then select **OK**:
 
@@ -191,13 +191,13 @@ items:
        - Select the **Validate** button. There will be a short pause while the SDN URI is detected and configured.
        - Once you see the "Remote Server Administration Tool Network Controller Module not found" message, select the **Install RSAT-NetworkController** button.
 
-         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-add-cluster1.png" alt-text="Add cluster to Windows Admin Center step 1" lightbox="./media/guided-quick-deploy-eval/cluster-manager-add-cluster1.png" :::
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-add-cluster-1.png" alt-text="Add cluster to Windows Admin Center step 1" lightbox="./media/guided-quick-deploy-eval/cluster-manager-add-cluster-1.png" :::
 
        - Wait for the Network Controller Module installation. When complete, you'll see a "Validate to continue" message. 
        - Select the **Validate** button a second time. After another short pause, you'll see a "Found \"https://nc01.contoso.com\"" validation message.
        - Select the **Add** button at the bottom and wait for the addition of the cluster to Windows Admin Center to complete.
 
-         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-add-cluster2.png" alt-text="Add cluster to Windows Admin Center step 2" lightbox="./media/guided-quick-deploy-eval/cluster-manager-add-cluster2.png" :::  
+         :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-add-cluster-2.png" alt-text="Add cluster to Windows Admin Center step 2" lightbox="./media/guided-quick-deploy-eval/cluster-manager-add-cluster-2.png" :::  
 
 
     1. Back in the **Cluster Manager** view, you'll see the new "azstackcluster.contoso.com" server cluster entry. Select the "azstackcluster.contoso.com" cluster:
@@ -250,47 +250,47 @@ items:
        > [!NOTE]
        > The device authentication code will expire after a few minutes. If yours expires, you'll need to **Cancel** the panel and return to the previous step.
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-begin-auth.png" alt-text="Register prompt for device auth code" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-begin-auth.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-begin-auth.png" alt-text="Register prompt for device auth code" lightbox="./media/guided-quick-deploy-eval/register-gateway-begin-auth.png" :::
 
     1. In the new browser tab, paste the authentication code then select the **Next** button:
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-auth-code-enter-code.png" alt-text="Enter auth code in browser" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-auth-code-enter-code.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-auth-code-enter-code.png" alt-text="Enter auth code in browser" lightbox="./media/guided-quick-deploy-eval/register-gateway-auth-code-enter-code.png" :::
 
     1. Next, enter the email address then the password of the Azure account that has the permissions discussed earlier:
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-creds-email.png" alt-text="Enter Azure account email address" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-creds-email.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-creds-email.png" alt-text="Enter Azure account email address" lightbox="./media/guided-quick-deploy-eval/register-gateway-creds-email.png" :::
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-creds-pass.png" alt-text="Enter Azure account password" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-creds-pass.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-creds-pass.png" alt-text="Enter Azure account password" lightbox="./media/guided-quick-deploy-eval/register-gateway-creds-pass.png" :::
 
     1. When you see the **Are you trying to sign in to Windows Admin Center?** confirmation dialog, select **Continue**. After you see the sign-in confirmation dialog, you can close the browser tab. 
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-conf.png" alt-text="Confirm Windows Admin Center sign in" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-conf.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-sign-in-conf.png" alt-text="Confirm Windows Admin Center sign in" lightbox="./media/guided-quick-deploy-eval/register-gateway-sign-in-conf.png" :::
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-done.png" alt-text="Sign in confirmation dialog" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-wac-sign-in-done.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-sign-in-done.png" alt-text="Sign in confirmation dialog" lightbox="./media/guided-quick-deploy-eval/register-gateway-sign-in-done.png" :::
 
     1. Back in the **Cluster Manager** **Dashboard** view you'll see your **Azure Active Directory tenant ID** populated. Confirm the tenant ID, select **Create new**, then select the **Connect** button:
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-aad-create-app.png" alt-text="Create service princpals in the Azure AD tenant" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-aad-create-app.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-azure-ad-create-app.png" alt-text="Create service princpals in the Azure AD tenant" lightbox="./media/guided-quick-deploy-eval/register-gateway-azure-ad-create-app.png" :::
 
        >[!WARNING]
        > It's **critical** that you pause here for 60 seconds to avoid a synchronization problem. **Do not select Sign in** and proceed until you've waited for at least 60 seconds, or you will run into problems later in the registration flow.
 
     1. Once you've paused for at least 60 seconds after the previous step, and you see the "Now connected to Azure AD" confirmation, select the **Sign in** button.
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" alt-text="Sign in to Azure AD tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-aad-connected.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-azure-ad-connected.png" alt-text="Sign in to Azure AD tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-gateway-azure-ad-connected.png" :::
 
     1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your Azure account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center, by selecting **Accept**:
        # [Global Administrator](#tab/global-admin)
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-global-admin.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-gateway-consent-as-global-admin.png" :::
 
        # [Cloud Application Administrator](#tab/cloud-app-admin)
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-gateway-consent-as-cloud-app-admin.png" :::
 
        # [None (non-administrator user)](#tab/non-admin)
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-wac-gateway-consent-as-cloud-app-admin.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-gateway-consent-as-cloud-app-admin.png" :::
        ---
 
     1. You've completed Azure registration for Windows Admin Center. Next you'll return to the **Cluster Manager** **Dashboard** view where you'll still see a status of **Not yet registered** under **Azure connection**. Select the **Register this cluster** link again to finalize registration by registering the cluster with Azure:  
@@ -327,7 +327,7 @@ items:
           &nbsp;&nbsp;&nbsp;- Under the **User / Account** settings, select **Sign out**  
           &nbsp;&nbsp;&nbsp;- Return to [step #1 of **Register with Azure**](/azure-stack/hci/guided-quick-deploy-eval?tutorial-step=6) and repeat the instructions using your administrator account  
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval2.png" alt-text="Dialog saying that consent requires admin approval" lightbox="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval2.png":::  
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval-2.png" alt-text="Dialog saying that consent requires admin approval" lightbox="./media/guided-quick-deploy-eval/register-cluster-need-admin-approval-2.png":::  
        ---  
   
     1. You'll notice a new panel on the right:
