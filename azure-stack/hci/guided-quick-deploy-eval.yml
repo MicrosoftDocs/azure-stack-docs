@@ -43,7 +43,7 @@ items:
   durationInMinutes: 45
   content: |
 
-    First you deploy an Azure VM to simulate a physical server. The VM will be completely configured, with Windows Server, Hyper-V, networking components, the two Azure Stack HCI VM nodes, and an additional VM to host a Windows domain controller and Windows Admin Center.
+    First you deploy an Azure VM to simulate a physical server. The VM will be completely configured, with Windows Server, Hyper-V, networking components, and storage. Later you'll deploy nested VMs for the two Azure Stack HCI nodes, and an additional VM to host a Windows domain controller and Windows Admin Center.
 
     1. Select the **Deploy to Azure** button to sign in to the Azure portal, and proceed with the Azure VM deployment:
 
@@ -92,11 +92,11 @@ items:
 
     1. Return to the "AzSHCIHost001" VM portal page from the previous section, and select the **Connect** link at the top of the page, then select **RDP**:
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-rd.png" alt-text="Use remote desktop to connect to VM" lightbox="./media/guided-quick-deploy-eval/connect-rd.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect.png" alt-text="Use remote desktop to connect to VM" lightbox="./media/guided-quick-deploy-eval/connect.png" :::
 
     1. Under **IP address** select the VM's public IP address, then select the **Download RDP File** button on the **Connect / RDP** page:  
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/connect-remote-.png" alt-text="Download the RDP file" lightbox="./media/guided-quick-deploy-eval/connect-remote-.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/connect-remote.png" alt-text="Download the RDP file" lightbox="./media/guided-quick-deploy-eval/connect-remote.png" :::
 
     1. After the .RDP file downloads in your browser, open it and select **Connect** on the publisher warning dialog:  
 
@@ -121,21 +121,21 @@ items:
   durationInMinutes: 110
   content: |
 
-    After you've remoted into the Azure VM, finalize your deployment by running a script to provision the Azure Stack HCI and management VMs and create the Azure Stack HCI cluster. The VMs are deployed on top of the Azure VM using nested virtualization:  
+    After you've remoted into the Azure VM, finalize your deployment by running a PowerShell script to provision the Azure Stack HCI and management VMs and create the Azure Stack HCI cluster. The VMs are hosted on the Azure VM using nested virtualization:  
 
-    1. Minimize or close the **Server Manager** app. On the desktop, you'll see a **New-AzSHCISandbox** shortcut icon: 
+    1. Minimize or close the **Server Manager** app. On the desktop, you'll see a **New-AzSHCISandbox** shortcut icon which will open a PowerShell console to run the script: 
 
        > [!NOTE]
        > Desired State Configuration may still be running in the background, configuring files and deployment scripts. Once complete, the **New-AzSHCISandbox** shortcut icon will appear on the desktop.
 
        :::image type="content" source="./media/guided-quick-deploy-eval/azure-vm-desktop-2.png" alt-text="RDP Windows Server desktop" lightbox="./media/guided-quick-deploy-eval/azure-vm-desktop-large-2.png" :::
 
-    1. Double-click the **New-AzSHCISandbox** shortcut to run the cluster deployment script.
+    1. To keep the PowerShell console window open after the script finishes, see the following Tip. When ready, double-click the **New-AzSHCISandbox** shortcut to run the cluster deployment script.
 
        > [!TIP]
-       > To keep the PowerShell console window open after the script finishes, right-click the icon and select **Properties**, then copy the command below and replace the **Target** field value. This can be useful if you encounter errors during deployment. Otherwise the console window will close when the script finishes.
+       > To keep the PowerShell console window open after the script finishes, right-click the shortcut icon and select **Properties**, then copy the following command and replace the **Target** property. This can be useful if you encounter errors during deployment.
        > 
-       > ```cmd
+       > ```console
        > PowerShell -NoExit C:\AzHCI_Sandbox\AzSHCISandbox-main\New-AzSHCISandbox.ps1
        > ```
 
