@@ -69,7 +69,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
    where:
 
-   | Value | Description |
+   | Parameter | Description |
    | ----- | ----------- |
    | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
    | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. |
@@ -148,7 +148,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    ```
    where:
 
-   | Value | Description |
+   | Parameter | Description |
    | ----- | ----------- |
    | **resource_group** | Name of the pre-created resource group in Azure. |
    | **subscription** | Subscription ID in Azure. |
@@ -265,7 +265,7 @@ Now that the custom location is available, you can create or add virtual network
    
    where:
 
-   | Value | Description |
+   | Parameter | Description |
    | ----- | ----------- |
    | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
    |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\OSImages\winos.vhdx". |
