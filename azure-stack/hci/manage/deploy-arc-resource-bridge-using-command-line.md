@@ -152,7 +152,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    | ----- | ----------- |
    | **resource_group** | Name of the pre-created resource group in Azure. |
    | **subscription** | Subscription ID in Azure. |
-   | **Location** | Name of the Azure region. <br><br> **Note:** The available Azure regions include: **eastus**, **eastus2euap**, and **westeurope**. Any other region is not supported. |
+   | **Location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **eastus2euap**, or **westeurope**. |
    | **customloc_name** | Name of the custom location, such as HCICluster -cl. |
 
    > [!TIP]
