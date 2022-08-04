@@ -138,7 +138,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
 To create a custom location, install Azure Arc Resource Bridge by launching an elevated PowerShell window and perform these steps:
 
-1. Provide inputs for the following, using the parameters described in the following table.
+1. Run the following cmdlets. Refer to the following table for a description of the parameters.
    
    ```PowerShell
    $resource_group="<pre-created resource group in Azure>"
