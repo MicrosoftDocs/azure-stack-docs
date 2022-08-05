@@ -364,7 +364,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    Get-DscConfigurationStatus
    ```
 
-   ![Result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus2.png "Screenshot of applied result of Get-DscConfigurationStatus")
+   ![Another result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus2.png "Screenshot of applied result of Get-DscConfigurationStatus")
 
 > [!NOTE]
 > If this doesn't fix your issue, consider redeploying your Azure VM. If the issue persists, please raise an issue.
