@@ -1,6 +1,6 @@
 ---
 title: Evaluate AKS on Azure Stack HCI in Azure
-description: An overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
+description: Step in the evaluation guide showing what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 08/04/2022
@@ -13,7 +13,7 @@ ms.reviewer: oadeniji
 
 # Evaluate AKS on Azure Stack HCI in Azure
 
-With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/ "Nested virtualization announcement blog post") in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
+With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/ "Nested virtualization announcement blog post") in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
 In this guide, you'll walk through the steps to stand up an AKS on Azure Stack HCI infrastructure. At a high level, this consists of the following tasks:
 
@@ -38,7 +38,7 @@ To evaluate AKS on Azure Stack HCI in Azure, you'll need an Azure subscription. 
 
 The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS on Azure Stack HCI Host VM run-time efficiently, you can test the scenario well within your subscription limits.
 
-The second option would be to sign up for a [free trial](https://azure.microsoft.com/en-us/free/ "Azure free trial link"), which gives you $200 credit for the first 30 days, and 12 months of popular services for free.
+The second option would be to sign up for a [free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you $200 credit for the first 30 days, and 12 months of popular services for free.
 
 > [!NOTE]
 > The free trial subscription provides $200 for your usage, however the largest individual VM you can create is capped at 4 vCPUs, which is **not** enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
@@ -89,8 +89,8 @@ Note the following considerations:
 
 The following guidance provides two main options for deploying the Azure VM. In both cases, the deployment will be automated to the point of which you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
 
-1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---creating-the-vm-with-an-azure-resource-manager-json-template). This option can be launched quickly, directly from the button within the documentation, and after completing a simple form, your VM will be deployed, and host configuration automated.
-2. The second option is a [deployment of the ARM template using PowerShell](#option-2---creating-the-azure-vm-with-powershell). Again, your VM will be deployed, and host configuration automated.
+1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). This option can be launched quickly, directly from the button within the documentation, and after completing a simple form, your VM will be deployed, and host configuration automated.
+2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM will be deployed, and host configuration automated.
 
 ### Deployment detail
 
@@ -124,7 +124,7 @@ Upon clicking the **Deploy to Azure** button, enter the details, which should lo
 ![Custom template deployment in Azure](/eval/media/azure_vm_custom_template_new.png "Custom template deployment in Azure")
 
 > [!NOTE]
-> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](http://go.microsoft.com/fwlink/?LinkId=859786).
+> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template will be validated, and if all of your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
 
@@ -272,7 +272,7 @@ Note the following considerations:
 
 * When running the script, if your VM size contains an 's', such as **Standard_E16s_v4**, it can use premium LRS storage. If it does not contain an 's', it can only deploy with a standard SSD. See the [previous table](#azure-vm-size-considerations) to determine the appropriate size for your deployment.
 
-* For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By removing the comment in the preceding script, for the `-LicenseType` parameter, you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance document](http://go.microsoft.com/fwlink/?LinkId=859786).
+* For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By removing the comment in the preceding script, for the `-LicenseType` parameter, you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance document](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 Once you've made your size and region selection, based on the information provided earlier, run the PowerShell script and wait about 10 minutes for your VM deployment to complete.
 
@@ -348,7 +348,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    Get-DscConfigurationStatus
    ```
 
-   ![Result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus.png "Result of Get-DscConfigurationStatus")
+   ![Result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus.png "Screenshot of result of Get-DscConfigurationStatus")
 
 3. As you can see, in this particular case, the PowerShell DSC configuration status appears to have been successful, however you might see a different result. You can re-apply the configuration by running the following commands:
 
@@ -364,7 +364,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    Get-DscConfigurationStatus
    ```
 
-   ![Result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus2.png "Result of Get-DscConfigurationStatus")
+   ![Result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus2.png "Screenshot of applied result of Get-DscConfigurationStatus")
 
 > [!NOTE]
 > If this doesn't fix your issue, consider redeploying your Azure VM. If the issue persists, please raise an issue.
