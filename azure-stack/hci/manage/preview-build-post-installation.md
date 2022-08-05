@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 08/05/2022
 ---
 
-# Azure Stack HCI preview build post installation steps
+# Azure Stack HCI, version 22H2 OS post installation (preview)
 
 Applies to: Azure Stack HCI, version 22H2 preview
 

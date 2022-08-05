@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 08/03/2022
 ---
 
-# Install an Azure Stack HCI OS preview version
+# Install an Azure Stack HCI, 22H2 (preview)
 
 Applies to: Azure Stack HCI, version 22H2 preview
 
@@ -17,15 +17,15 @@ This article will provide instructions on installing a preview version of Azure 
 
 Once you've joined the preview channel, your cluster will always be offered the latest available preview builds on a continuous basis.
 
-# [Windows Admin Center](#tab/windows-admin-center)
+## Install a preview version
 
-## Install a preview build using Windows Admin Center
+# [Windows Admin Center](#tab/windows-admin-center)
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. If you've successfully joined the preview channel, feature updates will be displayed.
 
    :::image type="content" source="media/preview-channel/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
 <!--- This image is currently shared with the Updates page. --->
-   
+
 2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before proceeding.
 
    :::image type="content" source="media/preview-channel/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/preview-channel/readiness-check.png":::
@@ -45,9 +45,7 @@ Once you've joined the preview channel, your cluster will always be offered the 
 
 # [PowerShell](#tab/powershell)
 
-## Install a preview build using PowerShell
-
-To install a preview build using PowerShell, follow these steps.
+To install a preview version using PowerShell, follow these steps.
 
 1. Run the following cmdlets on every server in the cluster:
 
