@@ -17,7 +17,7 @@ This article will provide instructions on installing a preview version of Azure 
 
 Once you've joined the preview channel, your cluster will always be offered the latest available preview builds on a continuous basis.
 
-## Install a preview version
+## Install feature updates
 
 # [Windows Admin Center](#tab/windows-admin-center)
 
