@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/03/2022
+ms.date: 08/05/2022
 ---
 
 # Install an Azure Stack HCI, 22H2 (preview)
