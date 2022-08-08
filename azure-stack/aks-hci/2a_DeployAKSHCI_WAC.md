@@ -295,17 +295,17 @@ Next, you'll scale your Kubernetes cluster to add an additional Linux worker nod
 
 3. Next, you'll scale your Kubernetes cluster to have two Linux worker nodes. You'll do this by specifying a node pool to update.
 
-### Node Pools, taints and max pod counts
+### Node Pools, taints, and max pod counts
 
-If you're not familiar with the concept of **node pools**, a node pool is a **group of nodes**, or virtual machines that run your applications, within a Kubernetes cluster that have the same configuration, giving you more granular control over your clusters. You can deploy multiple Windows node pools and multiple Linux node pools of different sizes, within the same Kubernetes cluster.
+If you're not familiar with the concept of *node pools*, a node pool is a group of nodes, or virtual machines that run your applications, within a Kubernetes cluster that have the same configuration, giving you more granular control over your clusters. You can deploy multiple Windows node pools and multiple Linux node pools of different sizes, within the same Kubernetes cluster.
 
-Another configuration option that can be applied to a node pool is the concept of **taints**. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. You can learn more about [taints here](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+Another configuration option that can be applied to a node pool is the concept of *taints*. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. You can learn more about [taints here](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
-This guide doesn't require you to specify a taint, but if you do wish to explore the commands for adding a taint to a node pool, make sure you read the [official docs](use-node-pools.md#specify-a-taint-for-a-node-pool).
+This guide doesn't require you to specify a taint, but if you do want to explore the commands for adding a taint to a node pool, read the [documentation here](use-node-pools.md#specify-a-taint-for-a-node-pool).
 
 In addition to taints, we have recently added support for configuring the maximum number of pods that can run on a node, with the `-nodeMaxPodCount` parameter. You can specify this parameter when creating a cluster, or when creating a new node pool, and the number has to be greater than 50.
 
-First, you can confirm your node pool names and details by running the following command:
+You can confirm your node pool names and details by running the following command:
 
 ```powershell
 Get-AksHciNodePool -clusterName akshciclus001
@@ -318,19 +318,17 @@ Next, run the following command to scale out the Linux node pool:
 ```powershell
 Set-AksHciNodePool -clusterName akshciclus001 -name linuxnodepool -count 2
 ```
-*******************************************************************************************************
 
-**NOTE** - You can also scale your Control Plane nodes for this particular cluster, however it has to be **scaled independently from the worker nodes** themselves. You can scale the Control Plane nodes using the command. Before you run this command however, check that you have an extra 16GB memory left of your AKSHCIHost001 OS - if your host has been deployed with 64GB RAM, you may not have enough capacity for an additonal 2 Control Plane VMs.
+You can also scale your control plane node for this particular cluster, however it has to be scaled independently from the worker nodes themselves. You can scale the control plane nodes using the following command. Before you run this command however, check that you have an extra 16GB memory left of your AKSHCIHost001 OS. If your host has been deployed with 64GB RAM, you may not have enough capacity for an additional two control plane VMs.
 
 ```powershell
 Set-AksHciCluster –Name akshciclus001 -controlPlaneNodeCount 3
 ```
 
-**NOTE** - the control plane node count should be an **odd** number, such as 1, 3, 5 etc.
+> [!NOTE]
+> The control plane node count should be an odd number, such as 1, 3, 5, etc.
 
-*******************************************************************************************************
-
-1. Once these steps have been completed, you can verify the details by running the following command:
+Once these steps have been completed, you can verify the details by running the following command:
 
 ```powershell
 Get-AksHciCluster
@@ -340,25 +338,15 @@ Get-AksHciCluster
 
 To access this **akshciclus001** cluster using **kubectl** (which was installed on your host as part of the overall installation process), you'll first need the **kubeconfig file**.
 
-5. To retrieve the kubeconfig file for the akshciclus001 cluster, you'll need to run the following command from your **administrative PowerShell**:
+To retrieve the kubeconfig file for the akshciclus001 cluster, you'll need to run the following PowerShell command as administrator:
 
 ```powershell
 Get-AksHciCredential -Name akshciclus001 -Confirm:$false
 dir $env:USERPROFILE\.kube
 ```
 
-Next Steps
------------
+## Next steps
+
 In this step, you've successfully deployed the AKS on Azure Stack HCI management cluster using Windows Admin Center, optionally integrated with Azure Arc, and subsequently, deployed and scaled a Kubernetes cluster that you can move forward with to the next stage, in which you can deploy your applications.
 
-* [**Part 3** - Explore AKS on Azure Stack HCI](/eval/steps/3_ExploreAKSHCI.md "Explore AKS on Azure Stack HCI")
-
-Product improvements
------------
-If, while you work through this guide, you have an idea to make the product better, whether it's something in AKS on Azure Stack HCI, Windows Admin Center, or the Azure Arc integration and experience, let us know! We want to hear from you! [Head on over to our AKS on Azure Stack HCI GitHub page](https://github.com/Azure/aks-hci/issues "AKS on Azure Stack HCI GitHub"), where you can share your thoughts and ideas about making the technologies better.  If however, you have an issue that you'd like some help with, read on... 
-
-Raising issues
------------
-If you notice something is wrong with the evaluation guide, such as a step isn't working, or something just doesn't make sense - help us to make this guide better!  Raise an issue in GitHub, and we'll be sure to fix this as quickly as possible!
-
-If however, you're having a problem with AKS on Azure Stack HCI **outside** of this evaluation guide, make sure you post to [our GitHub Issues page](https://github.com/Azure/aks-hci/issues "GitHub Issues"), where Microsoft experts and valuable members of the community will do their best to help you.
+- [Part 3 - Explore AKS on Azure Stack HCI](3_ExploreAKSHCI.md)
