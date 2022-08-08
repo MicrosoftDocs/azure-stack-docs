@@ -146,9 +146,9 @@ sections:
           Error: Install-AksHci fails with 'Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.'.
 
         answer: | 
-          The file cannot be access because it is being used by another process.
+          The file cannot be accessed because it is being used by another process.
           
-          You can resolve this issue by restarting your PowerShell session. Close the PowerShell window and try Install-MOC again.
+          You can resolve this issue by restarting your PowerShell session. Close the PowerShell window and try Install-AksHci again.
           
       - question: | 
           Error: Install-AksHci fails with 'An existing connection was forcibly closed by the remote host'.
