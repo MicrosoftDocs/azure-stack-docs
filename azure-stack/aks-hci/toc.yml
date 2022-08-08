@@ -5,7 +5,17 @@
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     href: overview.md
   - name: Evaluation guide
-    href: aks-hci-evalguide.md
+    items:
+      - name: Introduction
+        href: aks-hci-evalguide.md
+      - name: Step 1
+        href: aks-hci-evalguide-1.md
+      - name: Step 2a
+        href: aks-hci-evalguide-2a.md
+      - name: Step 2b
+        href: aks-hci-evalguide-2b.md
+      - name: Step 3
+        href: aks-hci-evalguide-3.md
 - name: Quickstarts
   expanded: true
   items:
