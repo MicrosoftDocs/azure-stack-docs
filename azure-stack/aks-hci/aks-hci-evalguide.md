@@ -85,10 +85,10 @@ The general flow is displayed below:
 
 ### Get started
 
-* [**Part 1** - Start your deployment into Azure](1_AKSHCI_Azure.md)
-* [**Part 2a** - Deploy your AKS-HCI infrastructure with Windows Admin Center](2a_DeployAKSHCI_WAC.md) or,
-* [**Part 2b** - Deploy your AKS-HCI infrastructure with PowerShell](2b_DeployAKSHCI_PS.md)
-* [**Part 3** - Explore the AKS on Azure Stack HCI Environment](3_ExploreAKSHCI.md)
+* [**Part 1** - Start your deployment into Azure](aks-hci-evalguide-1.md)
+* [**Part 2a** - Deploy your AKS-HCI infrastructure with Windows Admin Center](aks-hci-evalguide-2a.md) or,
+* [**Part 2b** - Deploy your AKS-HCI infrastructure with PowerShell](aks-hci-evalguide-2b.md)
+* [**Part 3** - Explore the AKS on Azure Stack HCI Environment](aks-hci-evalguide-3.md)
 
 ### Fully automated deployment
 

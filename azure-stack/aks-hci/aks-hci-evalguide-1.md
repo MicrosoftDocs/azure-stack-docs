@@ -383,5 +383,5 @@ If however, you're having a problem with AKS on Azure Stack HCI outside of this 
 
 In this step, you've successfully created and automatically configured your Azure VM, which will serve as the host for your AKS on Azure Stack HCI infrastructure. You have 2 choices on how to proceed, either a more graphical way, using Windows Admin Center or via PowerShell. Make your choice below:
 
-* [Part 2a - Deploy your AKS-HCI infrastructure with Windows Admin Center (Choose 2a or 2b)](2a_DeployAKSHCI_WAC.md)
-* [Part 2b - Deploy your AKS-HCI infrastructure with PowerShell (Choose 2a or 2b)](2b_DeployAKSHCI_PS.md)
+* [Part 2a - Deploy your AKS-HCI infrastructure with Windows Admin Center (Choose 2a or 2b)](aks-hci-evalguide-2a.md)
+* [Part 2b - Deploy your AKS-HCI infrastructure with PowerShell (Choose 2a or 2b)](aks-hci-evalguide-2b.md)

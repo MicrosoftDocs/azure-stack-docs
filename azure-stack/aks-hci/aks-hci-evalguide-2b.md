@@ -425,4 +425,4 @@ For more information about integrating with Azure Arc, see [Connect a cluster to
 
 In this step, you've successfully deployed the AKS on Azure Stack HCI management cluster, deployed and scaled a Kubernetes cluster and integrated with Azure Arc. You can now move forward to the next stage, in which you can deploy a sample application.
 
-* [Part 3 - Explore AKS on Azure Stack HCI](3_ExploreAKSHCI.md)
+* [Part 3 - Explore AKS on Azure Stack HCI](aks-hci-evalguide-3.md)
