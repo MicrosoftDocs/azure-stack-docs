@@ -1,5 +1,6 @@
 ---
 title: Deploy your AKS-HCI infrastructure with PowerShell
+description: Step 2b in an overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure VM using Windows Admin Center
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 08/08/2022
