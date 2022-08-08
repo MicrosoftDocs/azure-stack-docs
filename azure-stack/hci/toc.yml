@@ -16,6 +16,8 @@
     href: hybrid-capabilities-with-azure-services.md
   - name: Use Azure Benefits
     href: ./manage/azure-benefits.md
+  - name: Evaluate Azure Stack HCI
+    href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -34,11 +36,9 @@
     href: deploy/operating-system.md
   - name: 2. Create a cluster
     href: deploy/create-cluster.md
-  - name: 3. Set up a cluster witness
-    href: manage/witness.md
-  - name: 4. Register a cluster with Azure
+  - name: 3. Register a cluster with Azure
     href: deploy/register-with-azure.md
-  - name: 5. Validate the cluster
+  - name: 4. Validate the cluster
     href: deploy/validate.md
   - name: Migrate a cluster
     items:
@@ -149,13 +149,17 @@
       - name: Manage Network ATC
         href: manage/manage-network-atc.md
       - name: Update the cluster
-        href: manage/update-cluster.md      
+        href: manage/update-cluster.md
+      - name: Update SDN infrastructure
+        href: manage/update-sdn.md 
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
+      - name: Set up a cluster witness
+        href: manage/witness.md
     - name: Monitoring
       items:
-      - name: Monitor a single cluster using the Azure portal (preview)
-        href: manage/monitor-hci-single.md
+      - name: Configure Azure portal to monitor clusters (preview)
+        href: manage/monitor-azure-portal.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
         href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
@@ -189,10 +193,7 @@
   - name: Manage SDN
     items:
     - name: Deploy an SDN infrastructure
-    
       href: manage/sdn-express.md
-    - name: Update SDN infrastructure
-      href: manage/update-sdn.md 
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
@@ -213,6 +214,8 @@
     items:
     - name: Register Windows Admin Center with Azure
       href: manage/register-windows-admin-center.md
+    - name: Manage cluster registration with Azure
+      href: manage/manage-azure-registration.md
     - name: Use Azure portal
       href: manage/azure-portal.md
     - name: Use Azure Backup
@@ -221,8 +224,6 @@
       href: manage/azure-site-recovery.md
 - name: Troubleshooting
   items:
-  - name: Troubleshoot cluster registration
-    href: deploy/troubleshoot-hci-registration.md
   - name: Troubleshoot cluster validation reporting
     href: manage/validate-qos.md
   - name: Troubleshoot CredSSP
@@ -245,8 +246,6 @@
       href: concepts/plan-volumes.md
     - name: Understand Storage Spaces Direct
       href: concepts/storage-spaces-direct-overview.md
-    - name: Understand nested resiliency for Storage Spaces Direct
-      href: concepts/nested-resiliency.md
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
