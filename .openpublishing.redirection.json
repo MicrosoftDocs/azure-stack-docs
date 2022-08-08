@@ -972,6 +972,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "azure-stack/aks-hci/use-containerd-on-windows-aks.md",
+      "redirect_url": "/azure-stack/aks-hci/",
+      "redirect_document_id": true
+    },    
+    {
       "source_path": "azure-stack/aks-hci/add-akshcigmsacredentialspec.md",
       "redirect_url": "/azure-stack/aks-hci/reference/ps/add-akshcigmsacredentialspec",
       "redirect_document_id": true

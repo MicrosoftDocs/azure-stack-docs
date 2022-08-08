@@ -36,9 +36,10 @@ By using the Azure portal, you get the same consistent experience when provision
 
 ## What is Azure Arc Resource Bridge?
 
-A resource bridge is required to enable VM provisioning through the Azure portal on Azure Stack HCI. Azure Arc Resource Bridge is a Kubernetes-backed, lightweight VM that enables users to perform full lifecycle management of resources on Azure Stack HCI from the Azure control plane, including the Azure portal, Azure CLI, and Azure PS. Azure Arc Resource Bridge also creates Azure Resource Manager entities for VM disks, VM images, VM interfaces, VM networks, custom locations, and VM cluster extensions.
-   > [!NOTE]
-   > If the Arc Resource Bridge is to be used side-by-side with AKS (e.g. to run your container workloads) on the same cluster - beware that there are limitations e.g. a required deployment order. [Limitations and known issues](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues).  
+A resource bridge is required to enable VM provisioning through the Azure portal on Azure Stack HCI. Azure Arc Resource Bridge is a Kubernetes-backed, lightweight VM that enables users to perform full lifecycle management of resources on Azure Stack HCI from the Azure control plane, including the Azure portal, Azure CLI, and Azure PowerShell. Azure Arc Resource Bridge also creates Azure Resource Manager entities for VM disks, VM images, VM interfaces, VM networks, custom locations, and VM cluster extensions.
+
+  > [!NOTE]
+  > To use Arc Resource Bridge side-by-side with Azure Kubernetes Service (for example, to run your container workloads) on the same cluster, there are some limitations that you should be aware of, such as a required deployment order. For a complete list of limitations and known issues, see [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues).  
     
 A **custom location** for an Azure Stack HCI cluster is analogous to an Azure region. As an extension of the Azure location construct, custom locations allow tenant administrators to use their Azure Stack HCI clusters as target location for deploying Azure services.
 
@@ -66,9 +67,9 @@ Deploying Azure Arc Resource Bridge requires the following:
   - To install Azure CLI on each cluster node, use RDP connection.
   - Follow the instructions in [Install Azure CLI](/cli/azure/install-azure-cli-windows).
 - Arc Resource Bridge has the following resource requirements:
-  - A cluster shared volume with at least 50GB of space.
+  - A cluster shared volume with at least 50 GB of space.
   - At least 4 vCPUs
-  - At least 8GB of memory
+  - At least 8 GB of memory
 - A virtual switch of type "External". Make sure the switch has external internet connectivity. This virtual switch and its name must be the same across all servers in the Azure Stack HCI cluster.
 - A DHCP server with enough IP addresses for Resource Bridge VM. You can have a tagged or untagged DHCP server.
 - An IP address for the load balancer running inside the Resource Bridge. The IP address needs to be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts.
