@@ -4,6 +4,8 @@
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server
     href: overview.md
+  - name: Evaluation guide
+    href: aks_azurestackhci_evalguide.md
 - name: Quickstarts
   expanded: true
   items:
