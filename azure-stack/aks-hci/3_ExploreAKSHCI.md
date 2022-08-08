@@ -90,7 +90,7 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
 
 ## Expose a nested application to the internet
 
-If you've followed all the steps in this guide, you'll have a running AKS-HCI infrastructure, including a target cluster that can run your containerized workloads. Additionally, if you've deployed the simple Linux application using the [previous section](#deploying-a-simple-linux-application), you'll now have an Azure Voting web application running in a container on your AKS-HCI infrastructure. This application will likely have been allocated an IP address from your internal NAT network, **192.168.0.0/16**, and opening your Edge browser within the Azure VM allows you to access that web application using the 192.168.0.x IP address and optionally, its port number.
+If you've followed all the steps in this guide, you'll have a running AKS-HCI infrastructure, including a target cluster that can run your containerized workloads. Additionally, if you've deployed the simple Linux application using the [previous section](#deploy-a-simple-linux-application), you'll now have an Azure Voting web application running in a container on your AKS-HCI infrastructure. This application will likely have been allocated an IP address from your internal NAT network, **192.168.0.0/16**, and opening your Edge browser within the Azure VM allows you to access that web application using the 192.168.0.x IP address and optionally, its port number.
 
 However, the Azure Voting web app and any other apps on the 192.168.0.0/16 internal network inside your Azure VM cannot be reached from outside of the Azure VM, unless you perform some additional configuration.
 
@@ -99,7 +99,7 @@ However, the Azure Voting web app and any other apps on the 192.168.0.0/16 inter
 
 ### Add an inbound rule to your NSG
 
-This example, using the [previously deployed simple Linux application](#deploying-a-simple-linux-application), exposes **port 80** to your Azure VM internal NAT network, and then on to your Azure Voting app.
+This example, using the [previously deployed simple Linux application](#deploy-a-simple-linux-application), exposes **port 80** to your Azure VM internal NAT network, and then on to your Azure Voting app.
 
 1. Visit the [Azure portal](https://portal.azure.com/), and sign in with the credentials you've been using for the evaluation.
 2. Using the search box on the dashboard, enter "akshci" and when the results are returned, select your **AKSHCIHost** virtual machine.
