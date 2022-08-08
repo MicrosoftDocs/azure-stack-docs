@@ -222,99 +222,88 @@ There are two ways to create a Kubernetes cluster in Windows Admin Center.
 Whichever option you chose, you will now be at the start of the **Create kubernetes cluster** wizard.
 
 1. First review the prerequisites. Your Azure VM environment will meet all the prerequisites, so you should be fine to click **Next: Basics**.
-2. On the **Basics** page, firstly, choose whether you wish to **optionally** integrate with Azure Arc enabled Kubernetes. You can click the link on the page to learn more about Azure Arc. If you do wish to integrate, select the **Enabled** radio button, then use the drop downs to select the **subscription**, **resource group** and **region**. Alternatively, you can create a new resource group, in a specific region, exclusively for the Azure Arc integration resource.
+2. On the **Basics** page, choose whether you want to optionally integrate with Azure Arc enabled Kubernetes. You can click the link on the page to learn more about Azure Arc. If you do want to integrate, select the **Enabled** radio button, then use the drop downs to select the **subscription**, **resource group** and **region**. Alternatively, you can create a new resource group, in a specific region, exclusively for the Azure Arc integration resource.
 
-![Enable Arc integration with Windows Admin Center](/eval/media/aks_basics_arc.png "Enable Arc integration with Windows Admin Center")
+   ![Enable Arc integration with Windows Admin Center](/eval/media/aks_basics_arc.png "Enable Arc integration with Windows Admin Center")
 
-3. Still on the **Basics** page, under **Cluster details**, provide a **Kubernetes cluster name**, **Azure Kubernetes Service host**, which should be **AKSHCIHost001**, enter your host credentials, then select your preferred **Kubernetes version** from the drop down.
+3. Still on the **Basics** page, under **Cluster details**, provide a Kubernetes cluster name, Azure Kubernetes Service host, which should be **AKSHCIHost001**, enter your host credentials, and then select your preferred Kubernetes version from the drop down.
 
-![AKS cluster details in Windows Admin Center](/eval/media/aks_basics_cluster_details.png "AKS cluster details in Windows Admin Center")
+   ![AKS cluster details in Windows Admin Center](/eval/media/aks_basics_cluster_details.png "AKS cluster details in Windows Admin Center")
 
-4. Under **Primary node pool**, accept the defaults, and then click **Next: Node pools**
+4. Under **Primary node pool**, accept the defaults, and then click **Next: Node pools**.
 
-![AKS primary node pool in Windows Admin Center](/eval/media/aks_basics_primarynp.png "AKS primary node pool in Windows Admin Center")
+   ![AKS primary node pool in Windows Admin Center](/eval/media/aks_basics_primarynp.png "AKS primary node pool in Windows Admin Center")
 
-5. On the **Node pools** page, click on **+Add node pool**
-6. In the **Add a node pool** blade, enter the following, then click **Add**
+5. On the **Node pools** page, select **+Add node pool**.
+6. In the **Add a node pool** blade, enter the following information, then click **Add**:
    1. **Node pool name**: linuxnodepool
    2. **OS type**: Linux
    3. **Node size**: Default (4 GB Memory, 4 CPU)
    4. **Node count**: 1
    5. **Max pods per node**: Leave the default
-7. Optionally, repeat step 6, to add a **Windows node** and the following info, then click **Add**
+7. Optionally, repeat step 6, to add a Windows node and the following info, then click **Add**:
    1. **Node pool name**: windowsnodepool
    2. **OS type**: Windows
    3. **Node size**: Default (4 GB Memory, 4 CPU)
    4. **Node count**: 1
    5. **Max pods per node**: Leave the default
 
-![AKS node pools in Windows Admin Center](/eval/media/aks_node_pools.png "AKS node pools in Windows Admin Center")
+   ![AKS node pools in Windows Admin Center](/eval/media/aks_node_pools.png "AKS node pools in Windows Admin Center")
 
-8. Once your **Node pools** have been defined, click **Next: Authentication**
-9. For this evaluation, for **AD Authentication** click **Disabled** and then click **Next: Networking**
-10. On the **Networking** page, review the **defaults**. For this deployment, you'll deploy this kubernetes cluster on the existing virtual network that was created when you installed AKS-HCI in the previous steps.
+8. Once your node pools have been defined, click **Next: Authentication**.
+9. For this evaluation, for **AD Authentication** select **Disabled** and then click **Next: Networking**.
+10. On the **Networking** page, review the defaults. For this deployment, you'll deploy this Kubernetes cluster on the existing virtual network that was created when you installed AKS-HCI in the previous steps.
 
-![AKS virtual networking in Windows Admin Center](/eval/media/aks_virtual_networking.png "AKS virtual networking in Windows Admin Center")
+   ![AKS virtual networking in Windows Admin Center](/eval/media/aks_virtual_networking.png "AKS virtual networking in Windows Admin Center")
+11. Select the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review + Create**.
+12. On the **Review + Create** page, review your chosen settings, then click **Create**.
 
-1.  Click on the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review + Create**
-2.  On the **Review + Create** page, review your chosen settings, then click **Create**
+   ![Finalize creation of AKS cluster in Windows Admin Center](/eval/media/aks_create.png "Finalize creation of AKS cluster in Windows Admin Center")
+13. The creation process begins, and takes a few minutes.
 
-![Finalize creation of AKS cluster in Windows Admin Center](/eval/media/aks_create.png "Finalize creation of AKS cluster in Windows Admin Center")
+   ![Start deployment of AKS cluster in Windows Admin Center](/eval/media/aks_create_start.png "Start deployment of AKS cluster in Windows Admin Center")
+14. Once completed, you should see a message for successful creation, then click **Finish**.
 
-13. The creation process will begin and take a few minutes
+   ![Completed deployment of AKS cluster in Windows Admin Center](/eval/media/aks_create_complete.png "Completed deployment of AKS cluster in Windows Admin Center")
+15. Back in the **Azure Kubernetes Service Runtime on Windows Server**, you should now see your cluster listed.
 
-![Start deployment of AKS cluster in Windows Admin Center](/eval/media/aks_create_start.png "Start deployment of AKS cluster in Windows Admin Center")
-
-14. Once completed, you should see a message for successful creation, then click **Finish**
-
-![Completed deployment of AKS cluster in Windows Admin Center](/eval/media/aks_create_complete.png "Completed deployment of AKS cluster in Windows Admin Center")
-
-15. Back in the **Azure Kubernetes Service Runtime on Windows Server**, you should now see your cluster listed
-
-![AKS cluster in Windows Admin Center](/eval/media/aks_dashboard.png "AKS cluster in Windows Admin Center")
-
+   ![AKS cluster in Windows Admin Center](/eval/media/aks_dashboard.png "AKS cluster in Windows Admin Center")
 16. On the dashboard, if you chose to integrate with Azure Arc, you should be able to click the **Azure instance** link to be taken to the Azure Arc view in the Azure portal.
 
-![AKS cluster in Azure Arc](/eval/media/aks_in_arc.png "AKS cluster in Azure Arc")
+   ![AKS cluster in Azure Arc](/eval/media/aks_in_arc.png "AKS cluster in Azure Arc")
+17. In addition, back in Windows Admin Center, you can download your **Kubernetes cluster kubeconfig** file in order to access this Kubernetes cluster via **kubectl** later.
+18. Once you have your Kubeconfig file, you can click **Finish**.
 
-17. In addition, back in Windows Admin Center, you may wish to download your **Kubernetes cluster kubeconfig** file in order to access this Kubernetes cluster via **kubectl** later.
-18. Once you have your Kubeconfig file, you can click **Finish**
+## Scale your Kubernetes cluster (target cluster)
 
+Next, you'll scale your Kubernetes cluster to add an additional Linux worker node. This has to be performed with **PowerShell**:
 
-Scale your Kubernetes cluster (Target cluster)
------------
-Next, you'll scale your Kubernetes cluster to add an additional Linux worker node. As it stands, this has to be performed with **PowerShell** but will be available in Windows Admin Center in the future.
+1. Open PowerShell as Administrator and run the following command to import the new modules, and list their functions:
 
-1. Open **PowerShell as Administrator** and run the following command to import the new modules, and list their functions.
+   ```powershell
+   Import-Module AksHci
+   Get-Command -Module AksHci
+   ```
 
-```powershell
-Import-Module AksHci
-Get-Command -Module AksHci
-```
+2. Next, to check on the status of the existing cluster, run the following command:
 
-2. Next, to check on the status of the existing cluster, run the following
+   ```powershell
+   Get-AksHciCluster
+   ```
 
-```powershell
-Get-AksHciCluster
-```
+   ![Output of Get-AksHciCluster](/eval/media/get_akshcicluster_wac1.png "Output of Get-AksHciCluster")
 
-![Output of Get-AksHciCluster](/eval/media/get_akshcicluster_wac1.png "Output of Get-AksHciCluster")
+3. Next, you'll scale your Kubernetes cluster to have two Linux worker nodes. You'll do this by specifying a node pool to update.
 
-3. Next, you'll scale your Kubernetes cluster to have **2 Linux worker nodes**. You'll do this by specifying a node pool to update.
-
-____________________
-
-### Node Pools, Taints and Max Pod Counts ###
+### Node Pools, taints and max pod counts
 
 If you're not familiar with the concept of **node pools**, a node pool is a **group of nodes**, or virtual machines that run your applications, within a Kubernetes cluster that have the same configuration, giving you more granular control over your clusters. You can deploy multiple Windows node pools and multiple Linux node pools of different sizes, within the same Kubernetes cluster.
 
-Another configuration option that can be applied to a node pool is the concept of **taints**. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. You can learn more about [taints here](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ "Information about taints").
+Another configuration option that can be applied to a node pool is the concept of **taints**. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. You can learn more about [taints here](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
-This guide doesn't require you to specify a taint, but if you do wish to explore the commands for adding a taint to a node pool, make sure you read the [official docs](https://docs.microsoft.com/en-us/azure-stack/aks-hci/use-node-pools#specify-a-taint-for-a-node-pool "Official docs on taints").
+This guide doesn't require you to specify a taint, but if you do wish to explore the commands for adding a taint to a node pool, make sure you read the [official docs](use-node-pools.md#specify-a-taint-for-a-node-pool).
 
-In addition to taints, we have recently added suport for configuring the **maximum number of pods** that can run on a node, with the **-nodeMaxPodCount** parameter. You can specify this parameter when creating a cluster, or when creating a new node pool, **and the number has to be greater than 50**.
-
-_____________________
+In addition to taints, we have recently added support for configuring the maximum number of pods that can run on a node, with the `-nodeMaxPodCount` parameter. You can specify this parameter when creating a cluster, or when creating a new node pool, and the number has to be greater than 50.
 
 First, you can confirm your node pool names and details by running the following command:
 
