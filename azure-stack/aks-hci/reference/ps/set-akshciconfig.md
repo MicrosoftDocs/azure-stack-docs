@@ -77,7 +77,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocat
 ## Parameters
 
 ### -imageDir
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is mandatory.The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI stores its VHD images. This parameter is required. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -workingDir
-This is a working directory for the module to use for storing small files. This parameter is mandatory. The path must point to a shared storage path such as `c:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
+This is a working directory for the module to use for storing small files. This parameter is required. The path must point to a shared storage path such as `c:\ClusterStorage\Volume2\ImageStore` or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -cloudConfigLocation
-The location where the cloud agent will store its configuration. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
+The location where the cloud agent stores its configuration. This parameter is required. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`. The location needs to be on a highly available share so that the storage will always be accessible.
 
 ```yaml
 Type: System.String
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -createAutoConfigContainers
-This parameters allows you to disable auto distribution of VM data on your cluster shared volumes (CSV). To disable auto distribution, use `false` as the argument for this parameter. If autod istribution is disabled, only the CSV you selected for `imageDir` will be used. The default value for this is `true`.
+This parameter allows you to disable auto distribution of VM data on your cluster shared volumes (CSV). To disable auto distribution, use `false` as the argument for this parameter. If auto distribution is disabled, only the CSV you selected for `imageDir` will be used. The default value for this is `true`.
 
 ```yaml
 Type: System.Boolean
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -nodeConfigLocation
-The location where the node agents will store their configuration. Every node has a node agent, so its configuration is local to it. This location must be a local path. Defaults to `%systemdrive%\programdata\wssdagent` for all deployments.
+The location where the node agents store their configuration. Every node has a node agent, so its configuration is local to it. This location must be a local path. Defaults to `%systemdrive%\programdata\wssdagent` for all deployments.
 
 ```yaml
 Type: System.String
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -sshPublicKey
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If you have your own SSH public key, you will pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location will be generated and used.
+Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If you have your own SSH public key, you can pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location will be generated and used.
 
 ```yaml
 Type: System.String
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -macPoolStart
-This is used to specify the start of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+Specifies the start of the MAC address of the MAC pool that you want to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). A typical MAC address can look like: 02:1E:2B:78:00:00. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is `None`.
 
 ```yaml
 Type: System.String
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -macPoolEnd
-This is used to specify the end of the MAC address of the MAC pool that you wish to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the -macPoolEnd should be the same as the first byte of the address passed as the -macPoolStart. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is none.
+Specifies the end of the MAC address of the MAC pool that you want to use for the Azure Kubernetes Service host VM. The syntax for the MAC address requires that the least significant bit of the first byte should always be 0, and the first byte should always be an even number (that is, 00, 02, 04, 06...). The first byte of the address passed as the -macPoolEnd should be the same as the first byte of the address passed as the -macPoolStart. Use MAC pools for long-lived deployments so that MAC addresses assigned are consistent. MAC pools are useful if you have a requirement that the VMs have specific MAC addresses. Default is `None`.
 
 ```yaml
 Type: System.String
@@ -241,7 +241,7 @@ Accept wildcard characters: False
 ```
 
 ### -cloudServiceCidr
-This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is none.
+This can be used to provide a static IP/network prefix to be assigned to the MOC CloudAgent service. This value should be provided using the CIDR format. (Example: 192.168.1.2/16). You may want to specify this to ensure that anything important on the network is always accessible because the IP address will not change. Default is `None`.
 
 ```yaml
 Type: System.String
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 ```
 
 ### -nodeAgentAuthorizerPort
-The TCP/IP port number that node agents should use for their authorization port. Defaults to 45001. We do not recommend changing the default. 
+The TCP/IP port number that node agents should use for their authorization port. Defaults to 45001. We do not recommend changing the default.
 
 ```yaml
 Type: System.Int32
@@ -331,7 +331,7 @@ Accept wildcard characters: False
 ```
 
 ### -clusterRoleName
-This specifies the name to use when creating cloud agent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: "ca-9e6eb299-bc0b-4f00-9fd7-942843820c26"). We do not recommend changing the default.
+Specifies the name to use when creating cloud agent as a generic service within the cluster. This defaults to a unique name with a prefix of ca- and a guid suffix (for example: "ca-9e6eb299-bc0b-4f00-9fd7-942843820c26"). We do not recommend changing the default.
 
 ```yaml
 Type: System.String
@@ -346,7 +346,7 @@ Accept wildcard characters: False
 ```
 
 ### -cloudLocation
-This parameter provides a custom Microsoft Operated Cloud location name. The default name is "MocLocation". We do not recommend changing the default.
+Provides a custom Microsoft Operated Cloud location name. The default name is "MocLocation". We do not recommend changing the default.
 
 ```yaml
 Type: System.String
