@@ -41,11 +41,13 @@ This evaluation guide demonstrates how to create a sand-boxed, isolated AKS on A
 
 Keep in mind that server-class hardware is required in order to test, validate, and evaluate this technology. If you have multiple server-class pieces of spare hardware (ideally hardware validated for Azure Stack HCI [Azure Stack HCI Catalog](https://aka.ms/azurestackhcicatalog "Azure Stack HCI Catalog")), you can perform a more real-world evaluation of AKS on Azure Stack HCI. If you don't have spare hardware, consider using *nested virtualization* as an alternative for evaluation.
 
-At a high level, nested virtualization allows a virtualization platform (i.e., Hyper-V, or VMware ESXi) to run virtual machines that run a virtualization platform. The graphic below represents this in an architectural view.
+At a high level, nested virtualization allows a virtualization platform (i.e., Hyper-V, or VMware ESXi) to run virtual machines that run a virtualization platform. The following image shows this architectural view:
 
-![Nested virtualization architecture](media/nested_virt.png "Nested virtualization architecture")
+![Nested virtualization architecture](media/aks-hci-evalguide/nested-virt.png "Nested virtualization architecture diagram")
 
- The bottom (or base) layer represents the physical hardware on which you install a *hypervisor*. In this example, we're using Windows Server with the Hyper-V role enabled. The hypervisor on the lowest level is considered the L0 (level 0) hypervisor.  **Note**: Azure does not allow access or control over this.
+The outer box represents the Azure Resource Group, which will contain all of the artifacts deployed in Azure, including the virtual machine itself, and accompanying network adapter, storage and so on. You'll deploy an Azure VM running Windows Server 2019 or 2022 Datacenter. Once deployed, you'll perform some host configuration, and then begin to deploy the other key components. Firstly, on the left hand side, you'll deploy the management cluster. This provides the the core orchestration mechanism and interface for deploying and managing one or more target clusters, which are shown on the right of the diagram. These target, or workload clusters contain worker nodes and are where application workloads run. These are managed by a management cluster. If you're interested in learning more about the building blocks of the Kubernetes infrastructure, you can [read more here](kubernetes-concepts.md).
+
+The bottom (or base) layer represents the physical hardware on which you install a *hypervisor*. In this example, we're using Windows Server with the Hyper-V role enabled. The hypervisor on the lowest level is considered the L0 (level 0) hypervisor. Azure does not allow access or control over this.
 
 On the physical host, you create a virtual machine, which then allows you to deploy an OS that has a hypervisor enabled.  
 
@@ -58,7 +60,7 @@ The 1st Virtualized Layer is running a **nested** operating system with Hyper-V 
 
 This guide assumes you do not have multiple server-class pieces of hardware running Azure Stack HCI 21H2 or Windows Server 2019/2022; instead it details how to deploy AKS on Azure Stack HCI inside an Azure VM using **nested virtualization**.
 
-![Architecture diagram for AKS on Azure Stack HCI nested in Azure](media/nested_virt_arch_ga2.png "Architecture diagram for AKS on Azure Stack HCI nested in Azure")
+![Overview of AKS on Azure Stack HCI deployment](media/aks-hci-evalguide/deployment-overview.png "Diagram of AKS on Azure Stack HCI deployment")
 
 In this configuration, you'll take advantage of the nested virtualization support provided within certain Azure VM sizes. 
 - First, you will deploy a single Azure VM running Windows Server 2019 Datacenter. Inside this VM, you'll have all the necessary roles and features configured, so you can quickly proceed to deploying AKS on Azure Stack HCI. 
@@ -73,7 +75,7 @@ This section demonstrates how to deploy a sandboxed AKS on Azure Stack HCI infra
 
 The general flow is displayed below:
 
-![Evaluation guide workflow using nested virtualization](media/flow_chart_ga.png "Evaluation guide workflow using nested virtualization")
+![Nested virtualization workflow](media/aks-hci-evalguide/gui-deployment.png "Image showing nested virtualization workflow")
 
 **Part 1 - Deploy Windows Server 2019/2022 Hyper-V host in Azure**: In this step, you'll learn to create a suitable VM in Azure using PowerShell or an Azure Resource Manager template. This VM will run the full desktop version of Windows Server 2019/2022 Datacenter. On this system, you will: 
 - automatically enable the necessary roles  features and accompanying management tools.

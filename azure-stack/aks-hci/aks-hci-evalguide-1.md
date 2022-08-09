@@ -21,14 +21,6 @@ In this guide, you'll walk through the steps to stand up an AKS on Azure Stack H
 * On the Windows Server VM, deploy the AKS on Azure Stack HCI management cluster
 * On the Windows Server VM, deploy the AKS on Azure Stack HCI target clusters, for running workloads
 
-## Architecture
-
-The following figure showcases the different layers and interconnections between the different components:
-
-![Architecture diagram for AKS on Azure Stack HCI in Azure](/eval/media/nested_virt_arch_ga2.png "Architecture diagram for AKS on Azure Stack HCI in Azure")
-
-The outer box represents the Azure Resource Group, which will contain all of the artifacts deployed in Azure, including the virtual machine itself, and accompaying network adapter, storage and so on. You'll deploy an Azure VM running Windows Server 2019 or 2022 Datacenter. Once deployed, you'll perform some host configuration, and then begin to deploy the other key components. Firstly, on the left hand side, you'll deploy the management cluster. This provides the the core orchestration mechanism and interface for deploying and managing one or more target clusters, which are shown on the right of the diagram. These target, or workload clusters contain worker nodes and are where application workloads run. These are managed by a management cluster. If you're interested in learning more about the building blocks of the Kubernetes infrastructure, you can [read more here](kubernetes-concepts.md).
-
 > [!IMPORTANT]
 > The steps outlined in this evaluation guide are **specific to running inside an Azure VM**, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see the [official documentation to deploy AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md).
 
@@ -119,16 +111,16 @@ Second, the **Deploy to Azure** button, when clicked, takes you directly to the 
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Deploy to Azure")
 
-Upon clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Purchase**.
+After clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Purchase**.
 
-![Custom template deployment in Azure](/eval/media/azure_vm_custom_template_new.png "Custom template deployment in Azure")
+![Custom template deployment in Azure](media/aks-hci-evalguide/deploy-custom-template.png "Screenshot of custom template deployment in Azure")
 
 > [!NOTE]
 > For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template will be validated, and if all of your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
 
-![Custom template deployment in Azure completed](/eval/media/azure_vm_custom_template_completed.png "Custom template deployment in Azure completed")
+![Custom template deployment in Azure completed](/media/aks-hci-evalguide/deployment-complete.png "Screenshot of custom template deployment completed")
 
 If you chose to enable the auto-shutdown for the VM, and supplied a time and time zone, but want to also add a notification alert, select **Go to resource group**, and then perform the following steps:
 
@@ -195,7 +187,7 @@ Login-AzAccount
 
 When you've successfully logged in, you are presented with the default subscription and tenant associated with those credentials.
 
-![Result of Login-AzAccount](/eval/media/Login-AzAccount.png "Result of Login-AzAccount")
+![Result of Azure sign-in](/media/aks-hci-eval-guide/azure-sign-in.png "Screenshot showing result of Azure sign-in")
 
 If this is the subscription and tenant you want to use for this evaluation, you can move on to the next step. However, if you want to deploy the VM to an alternate subscription, run the following commands:
 
@@ -276,7 +268,7 @@ Note the following considerations:
 
 Once you've made your size and region selection, based on the information provided earlier, run the PowerShell script and wait about 10 minutes for your VM deployment to complete.
 
-![Virtual machine successfully deployed with PowerShell](/eval/media/powershell_vm_deployed.png "Virtual machine successfully deployed with PowerShell")
+![Virtual machine successfully deployed with PowerShell](/media/aks-hci-evalguide/vm-deployment-complete.png "Screenshot of virtual machine successfully deployed with PowerShell")
 
 With the VM successfully deployed, make a note of the fully qualified domain name, as you'll use that to connect to the VM.
 
@@ -286,17 +278,12 @@ If you chose to enable the auto-shutdown for the VM, and supplied a time and tim
 
 1. Visit https://portal.azure.com/, and sign in with the same credentials you used previously.
 2. Once signed in, using the search box on the dashboard, enter "akshci" and when the results are returned, select your **AKSHCIHost** virtual machine.
-
-   ![Virtual machine located in Azure](/eval/media/azure_vm_search.png "Virtual machine located in Azure")
-
 3. On the overview blade for your VM, scroll down in the left-hand navigation, and select **Auto-shutdown**.
 4. Ensure the **Enabled** slider is still set to **On** and that your **time** and **time zone** information is correct.
 5. Select **Yes** to enable notifications, and enter a Webhook URL, or email address.
 6. Select **Save**.
 
 You'll now be notified when the VM has been successfully shut down at the requested time.
-
-![Enable VM auto-shutdown in Azure](/eval/media/auto_shutdown.png "Enable VM auto-shutdown in Azure")
 
 #### Deployment errors
 
@@ -310,15 +297,11 @@ With your Azure VM (AKSHCIHost001) successfully deployed and configured, you're 
 
 First, connect into the VM, with the easiest approach being via Remote Desktop. If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
-![Virtual machine located in Azure](/eval/media/azure_vm_search.png "Virtual machine located in Azure")
+![Search virtual machine located in Azure](/media/aks-hci-evalguide/azure-vm-search.png "Screenshot of virtual machine located in Azure")
 
-In the **Overview** blade for your VM, at the top of the blade, select **Connect** from the drop-down options.
+In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
 
-![Connect to a virtual machine in Azure](/eval/media/connect_to_vm.png "Connect to a virtual machine in Azure")
-
-Select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
-
-![Configure RDP settings for Azure VM](/eval/media/connect_to_vm_properties.png "Configure RDP settings for Azure VM")
+![Configure RDP settings for Azure VM](/media/aks-hci-evalguide/connect-to-vm-properties.png "Screenshot of RDP settings for Azure VM")
 
 Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Windows Server VM.
 
@@ -336,7 +319,7 @@ With the OS updated, and back online after any required reboot, you can deploy A
 
 Occasionally, a transient or random deployment error can cause the Azure VM to show a failed deployment. This is typically caused by reboots and timeouts within the VM as part of the PowerShell DSC configuration process. In particular, this can occur when the Hyper-V role is enabled and the system reboots multiple times in quick succession. There may be some instances in which changes with the Chocolatey Package Manager cause deployment issues.
 
-![Azure VM deployment error](/eval/media/vm_deployment_error.png "Azure VM deployment error")
+![Azure VM deployment error](/media/aks-hci-evalguide/vm-deployment-error.png "Screenshot of Azure VM deployment error")
 
 If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likely the installation did complete successfully, but to double-check, you can perform these steps:
 
@@ -348,7 +331,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    Get-DscConfigurationStatus
    ```
 
-   ![Result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus.png "Screenshot of result of Get-DscConfigurationStatus")
+   ![Result of Get-DscConfigurationStatus](/media/aks-hci-evalguide/get-dscconfigurationstatus.png "Screenshot of result of Get-DscConfigurationStatus")
 
 3. As you can see, in this particular case, the PowerShell DSC configuration status appears to have been successful, however you might see a different result. You can re-apply the configuration by running the following commands:
 
@@ -363,8 +346,6 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    # Check for last run
    Get-DscConfigurationStatus
    ```
-
-   ![Another result of Get-DscConfigurationStatus](/eval/media/get-dscconfigurationstatus2.png "Screenshot of applied result of Get-DscConfigurationStatus")
 
 > [!NOTE]
 > If this doesn't fix your issue, consider redeploying your Azure VM. If the issue persists, please raise an issue.
