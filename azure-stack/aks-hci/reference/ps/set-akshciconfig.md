@@ -2,10 +2,10 @@
 title: Set-AksHciConfig for AKS on Azure Stack HCI and Windows Server
 description: The Set-AksHciConfig PowerShell command updates the configurations settings for the Azure Kubernetes Service host.
 ms.topic: reference
-ms.date: 09/02/2021
+ms.date: 08/09/2022
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 1/14/2022
+ms.lastreviewed: 08/09/2022
 ms.reviewer: jeguan
 
 ---
@@ -13,16 +13,19 @@ ms.reviewer: jeguan
 # Set-AksHciConfig
 
 ## Synopsis
+
 Set or update the configuration settings for the Azure Kubernetes Service host.
 
 ## Syntax
 
 ### Set configuration for host
+
 ```powershell
 Set-AksHciConfig  -imageDir <String>
                   -workingDir <String>
                   -cloudConfigLocation <String>
                   -vnet <Virtual Network>
+                 [-createAutoConfigContainers {true, false}]
                  [-nodeConfigLocation <String>]
                  [-controlPlaneVmSize <VmSize>]
                  [-sshPublicKey <String>]
@@ -45,69 +48,36 @@ Set-AksHciConfig  -imageDir <String>
 ```
 
 ## Description
-
-Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-8 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the -workingDir and -cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values.
+Set the configuration settings for the Azure Kubernetes Service host. If you're deploying on a 2-4 node Azure Stack HCI cluster or a Windows Server 2019 Datacenter failover cluster, you must specify the -workingDir and -cloudConfigLocation parameters. For a single node Windows Server 2019 Datacenter, all parameters are optional and set to their default values. However, for optimal performance, we recommend using a 2-4 node Azure Stack HCI cluster deployment.
 
 ## Examples
 
-### To deploy on a 2-8 node cluster with DHCP networking and a VLAN
+### To deploy on a 2-4 node cluster with DHCP networking
 
 ```powershell
-$vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -vlanID 7
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" 
 
-Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
-### To deploy on a 2-8 node cluster with DHCP networking without a VLAN
-
+### To deploy with static IP networking
 ```powershell
-$vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254"
+PS C:\> $vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" 
 
-Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
-```
-
-### To deploy with static IP networking and a VLAN
-
-```powershell
-$vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7
-
-Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
-```
-
-### To deploy with static IP networking without a VLAN
-
-```powershell
-$vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1"
-
-Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 ### To deploy with a proxy server
 ```powershell
-$proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
+PS C:\> $proxySetting = New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.96.0.0/12,10.244.0.0/16 -credential $proxyCredential
 
-Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySettings -vnet $vnet -cloudservicecidr "172.16.10.10/16"
-```
-
-### To deploy with a preconfigured cloud agent cluster service and a DNS record
-
-Before running this example, you need to prestage a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but do not exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. 
-
-The AKS on Azure Stack HCI and Windows Server deployment will attempt to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
-
-> [!Note] 
-> Once AKS on Azure Stack HCI and Windows Server is deployed, this information cannot be changed.
-
-```powershell
-$vnet = New-AksHciNetworkSetting -name newNetwork -vswitchName "DefaultSwitch" -k8snodeippoolstart "172.16.10.0" -k8snodeippoolend "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipaddressprefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsservers "172.16.0.1" -vlanID 7
-
-Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16" -clusterRoleName "ca-cloudagent"
+Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\WorkDir -cloudConfigLocation c:\clusterstorage\volume1\Config -proxySetting $proxySettings -vnet $vnet -cloudservicecidr "172.16.10.10/16"
 ```
 
 ## Parameters
 
 ### -imageDir
-The path to the directory where Azure Kubernetes Service on Azure Stack HCI and Windows Server will store its VHD images. This parameter is mandatory. The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
+The path to the directory where Azure Kubernetes Service on Azure Stack HCI will store its VHD images. This parameter is mandatory.The path must point to a shared storage path such as `C:\ClusterStorage\Volume2\ImageStore`, or an SMB share such as `\\FileShare\ImageStore`.
 
 ```yaml
 Type: System.String
@@ -165,6 +135,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -createAutoConfigContainers
+This parameters allows you to disable auto distribution of VM data on your cluster shared volumes (CSV). To disable auto distribution, use `false` as the argument for this parameter. If autod istribution is disabled, only the CSV you selected for `imageDir` will be used. The default value for this is `true`.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: True
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -nodeConfigLocation
 The location where the node agents will store their configuration. Every node has a node agent, so its configuration is local to it. This location must be a local path. Defaults to `%systemdrive%\programdata\wssdagent` for all deployments.
 
@@ -190,13 +175,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_A4_V2
+Default value: Standard_A2_V2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -sshPublicKey
-Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI and Windows Server deployment. If you have your own SSH public key, you will pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location will be generated and used.
+Path to an SSH public key file. Using this public key, you will be able to log in to any of the VMs created by the Azure Kubernetes Service on Azure Stack HCI deployment. If you have your own SSH public key, you will pass its location here. If no key is provided, we will look for one under `%systemdrive%\akshci\.ssh\akshci_rsa`.pub. If the file does not exist, an SSH key pair in the above location will be generated and used.
 
 ```yaml
 Type: System.String
@@ -271,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -version
-The version of Azure Kubernetes Service on Azure Stack HCI and Windows Server that you want to deploy. The default is the latest version. We do not recommend changing the default.
+The version of Azure Kubernetes Service on Azure Stack HCI that you want to deploy. The default is the latest version. We do not recommend changing the default.
 
 ```yaml
 Type: System.String
@@ -406,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 ### -insecure
-Deploys Azure Kubernetes Service on Azure Stack HCI and Windows Server components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
+Deploys Azure Kubernetes Service on Azure Stack HCI components, such as cloud agent and node agent(s), in insecure mode (no TLS secured connections).  We do not recommend using insecure mode in production environments.
 
 ```yaml
 Type: System.String
