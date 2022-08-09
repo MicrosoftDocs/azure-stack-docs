@@ -145,14 +145,14 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 15. Under **Load balancer settings**, enter the range from **192.168.0.150** to **192.168.0.250** 
 16. Scroll down and review the new proxy settings - these settings allow you to configure AKS on Azure Stack HCI for use in an environment that uses a proxy, including the ability to provide proxy credentials. Once you have reviewed the options, click **Next: Azure registration**.
 
-   :::image type="content" source="media/aks-hci-evalguide/proxy-settings.png" alt-text="Screenshot of proxy settings in Windows Admin Center":::
+    :::image type="content" source="media/aks-hci-evalguide/proxy-settings.png" alt-text="Screenshot of proxy settings in Windows Admin Center":::
 
 17. On the Azure registration page, your Azure account should be automatically populated. Use the drop-down to select your preferred subscription. If you are prompted, sign in to Azure with your Azure credentials. Once successfully authenticated, you should see your account, then choose your subscription.
 
-   :::image type="content" source="media/aks-hci-evalguide/aks-registration.png" alt-text="Screenshot of AKS on Azure Stack HCI Azure registration":::
+    :::image type="content" source="media/aks-hci-evalguide/aks-registration.png" alt-text="Screenshot of AKS on Azure Stack HCI Azure registration":::
 
-   > [!NOTE]
-   > No charges will be incurred for using AKS on Azure Stack HCI during the free trial period of 60 days.
+    > [!NOTE]
+    > No charges will be incurred for using AKS on Azure Stack HCI during the free trial period of 60 days.
 
 18. Once you've chosen your subscription, choose an existing resource group or create a new one. Your resource group should be in the East US, Southeast Asia, or West Europe region.
 19. Select **Next: Review**.
