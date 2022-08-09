@@ -146,6 +146,7 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 16. Scroll down and review the new proxy settings - these settings allow you to configure AKS on Azure Stack HCI for use in an environment that uses a proxy, including the ability to provide proxy credentials. Once you have reviewed the options, click **Next: Azure registration**.
 
    :::image type="content" source="media/aks-hci-evalguide/proxy-settings.png" alt-text="Screenshot of proxy settings in Windows Admin Center":::
+
 17. On the Azure registration page, your Azure account should be automatically populated. Use the drop-down to select your preferred subscription. If you are prompted, sign in to Azure with your Azure credentials. Once successfully authenticated, you should see your account, then choose your subscription.
 
    :::image type="content" source="media/aks-hci-evalguide/aks-registration.png" alt-text="Screenshot of AKS on Azure Stack HCI Azure registration":::
@@ -165,6 +166,7 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 23. Upon completion, you should receive a notification of success. In this case, you can see deployment of the AKS on Azure Stack HCI management cluster took just over 11 minutes.
 
    :::image type="content" source="media/aks-hci-evalguide/deploy-success.png" alt-text="Screenshot of AKS-HCI management cluster deployment completed":::
+
 24. Once reviewed, click **Finish**. You are then presented with a management dashboard in which you can create and manage your Kubernetes clusters.
 
 ### Updates and cleanup
