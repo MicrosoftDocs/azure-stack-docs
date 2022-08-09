@@ -22,7 +22,7 @@ With your Windows Server Hyper-V host up and running, it's now time to deploy AK
 
 The following image shows the different layers and interconnections between the different components:
 
-![Architecture diagram for AKS on Azure Stack HCI in Azure](media/aks-hci-evalguide/nested-virt.png "Architecture diagram for AKS on Azure Stack HCI in Azure")
+:::image type="content" source="media/aks-hci-evalguide/nested-virt.png" alt-text="Architecture diagram for AKS on Azure Stack HCI in Azure":::
 
 You've already deployed the outer box, which represents the Azure Resource Group. Inside here, you've deployed the virtual machine itself, and accompanying network adapter, storage and so on. You've also completed some host configuration.
 
@@ -55,7 +55,7 @@ Your Azure VM deployment automatically installed Windows Admin Center 2103, howe
 3. Once complete, navigate to **Settings**, then **Extensions**.
 4. Select **Installed extensions** and you should see **Azure Kubernetes Service** listed as installed.
 
-   ![Installed extensions in Windows Admin Center](/media/aks-hci-evalguide/installed-extensions.png "Screenshot of installed extensions in Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/installed-extensions.png" alt-text="Screenshot of installed extensions in Windows Admin Center":::
 
    > [!NOTE]
    > Ensure that your Azure Kubernetes Service extension is the latest available version. If the **Status** shows **Installed**, then you have the latest version. If the **Status** shows **Update available (1.#.#)**, ensure that you apply this update and refresh before proceeding.
@@ -67,7 +67,7 @@ In order to deploy AKS on Azure Stack HCI with Windows Admin Center, connect you
 3. When prompted for credentials, enter your Azure credentials for a tenant you want to use to register Windows Admin Center.
 4. Back in Windows Admin Center, note that your tenant information has been added. You can now select **Connect** to connect Windows Admin Center to Azure.
 
-   ![Connect Windows Admin Center to Azure](/media/aks-hci-evalguide/azure-connect.png "Screenshot of connecting Windows Admin Center to Azure")
+   :::image type="content" source="media/aks-hci-evalguide/azure-connect.png" alt-text="Screenshot of connecting Windows Admin Center to Azure":::
 
 5. Select **Sign in** and when prompted for credentials, enter your Azure credentials and you should see a popup that asks for you to accept the permissions. Make sure you select **Consent on behalf of your organization**, and then select **Accept**.
 
@@ -83,7 +83,7 @@ In order to successfully deploy AKS on Azure Stack HCI with Windows Admin Center
 3. Click on **View in Azure** to be taken to the Azure AD app portal, where you should see information about this app, including required permissions. If you're prompted to sign in, provide appropriate credentials.
 4. Once signed in, under **Configured permissions**, you should see a few permissions listed with the status **Granted for...** and the name of your tenant. The **Microsoft Graph (5)** API permissions show as **not granted**, but this will be updated upon deployment.
 
-   ![Confirm Azure AD app permissions in Windows Admin Center](/media/aks-hci-evalguide/azure-ad-grant.png "Screenshot of confirm Azure AD app permissions in Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/azure-ad-grant.png" alt-text="Screenshot of confirm Azure AD app permissions in Windows Admin Center":::
 
    > [!NOTE]
    > If you don't see Microsoft Graph listed in the API permissions, you can either [re-register Windows Admin Center using steps here](#configure-windows-admin-center) for the permissions to appear correctly, or manually add the **Microsoft Graph Appliation.ReadWrite.All** permission. To manually add the permission:
@@ -97,7 +97,7 @@ In order to successfully deploy AKS on Azure Stack HCI with Windows Admin Center
 
    You'll notice that your **AKSHCIHOST001** VM is already under management, so at this point you're ready to deploy the AKS on Azure Stack HCI management cluster onto your Windows Server Hyper-V host.
 
-   ![VM under management in Windows Admin Center](/media/aks-hci-evalguide/aks-hci-host.png "Screenshot of VM under management in Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/aks-hci-host.png" alt-text="Screenshot of VM under management in Windows Admin Center":::
 
 ## Optional - enable/disable DHCP
 
@@ -130,7 +130,7 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 8. On the **Credential delegation** page, read the information about **CredSSP**, then click **Enable**. Once enabled, click **Next: Host configuration**.
 9. On the **Host configuration** page, under **Host details**, select your **V:**, and leave the other settings with their defaults.
 
-   ![Host configuration in Windows Admin Center](/media//aks-hci-evalguide/hostconfig-hostdetails.png "Screenshot of host configuration details")
+   :::image type="content" source="media/aks-hci-evalguide/hostconfig-hostdetails.png" alt-text="Screenshot of host configuration details":::
 
 10. Under **VM Networking**, ensure that **InternalNAT** is selected for the **Internet-connected virtual switch**.
 11. For **Enable virtual LAN identification**, leave this selected as **No**.
@@ -145,10 +145,10 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 15. Under **Load balancer settings**, enter the range from **192.168.0.150** to **192.168.0.250** 
 16. Scroll down and review the new proxy settings - these settings allow you to configure AKS on Azure Stack HCI for use in an environment that uses a proxy, including the ability to provide proxy credentials. Once you have reviewed the options, click **Next: Azure registration**.
 
-   ![AKS on Azure Stack HCI proxy settings in Windows Admin Center](/media/aks-hci-evalguide/proxy-settings.png "Screenshot of proxy settings in Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/proxy-settings.png" alt-text="Screenshot of proxy settings in Windows Admin Center":::
 17. On the Azure registration page, your Azure account should be automatically populated. Use the drop-down to select your preferred subscription. If you are prompted, sign in to Azure with your Azure credentials. Once successfully authenticated, you should see your account, then choose your subscription.
 
-   ![AKS on Azure Stack HCI Azure Registration in Windows Admin Center](/media/aks-hci-evalguide/aks-registration.png "Screenshot of AKS on Azure Stack HCI Azure Registration")
+   :::image type="content" source="media/aks-hci-evalguide/aks-registration.png" alt-text="Screenshot of AKS on Azure Stack HCI Azure registration":::
 
    > [!NOTE]
    > No charges will be incurred for using AKS on Azure Stack HCI during the free trial period of 60 days.
@@ -164,7 +164,7 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 
 23. Upon completion, you should receive a notification of success. In this case, you can see deployment of the AKS on Azure Stack HCI management cluster took just over 11 minutes.
 
-   ![AKS-HCI management cluster deployment completed in Windows Admin Center](/media/aks-hci-evalguide/deploy-success.png "Screenshot of AKS-HCI management cluster deployment completed")
+   :::image type="content" source="media/aks-hci-evalguide/deploy-success.png" alt-text="Screenshot of AKS-HCI management cluster deployment completed":::
 24. Once reviewed, click **Finish**. You are then presented with a management dashboard in which you can create and manage your Kubernetes clusters.
 
 ### Updates and cleanup
@@ -193,7 +193,7 @@ Whichever option you chose, you will now be at the start of the **Create kuberne
 1. First review the prerequisites. Your Azure VM environment will meet all the prerequisites, so you should be fine to click **Next: Basics**.
 2. On the **Basics** page, choose whether you want to optionally integrate with Azure Arc enabled Kubernetes. You can click the link on the page to learn more about Azure Arc. If you do want to integrate, select the **Enabled** radio button, then use the drop downs to select the **subscription**, **resource group** and **region**. Alternatively, you can create a new resource group, in a specific region, exclusively for the Azure Arc integration resource.
 
-   ![Enable Arc integration with Windows Admin Center](/media/aks-hci-evalguide/basics-arc.png "Screenshot of enable Arc integration with Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/basics-arc.png" alt-text="Screenshot of enable Arc integration with Windows Admin Center":::
 
 3. Still on the **Basics** page, under **Cluster details**, provide a Kubernetes cluster name, Azure Kubernetes Service host, which should be **AKSHCIHost001**, enter your host credentials, and then select your preferred Kubernetes version from the drop down.
 4. Under **Primary node pool**, accept the defaults, and then click **Next: Node pools**.
@@ -217,12 +217,12 @@ Whichever option you chose, you will now be at the start of the **Create kuberne
 11. Select the **aks-default-network**, select **Calico** as the network configuration, and then click **Next: Review + Create**.
 12. On the **Review + Create** page, review your chosen settings, then click **Create**.
 
-   ![Finalize creation of AKS cluster in Windows Admin Center](/media/aks-hci-evalguide/create-cluster.png "Finalize creation of AKS cluster in Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/create-cluster.png" alt-text="Finalize creation of AKS cluster in Windows Admin Center":::
 13. The creation process begins, and takes a few minutes.
 14. Once completed, you should see a message for successful creation, then click **Finish**.
 15. Back in the **Azure Kubernetes Service Runtime on Windows Server**, you should now see your cluster listed.
 
-   ![AKS cluster in Windows Admin Center](/media/aks-hci-evalguide/aks-dashboard.png "AKS cluster in Windows Admin Center")
+   :::image type="content" source="media/aks-hci-evalguide/aks-dashboard.png" alt-text="AKS cluster in Windows Admin Center":::
 16. On the dashboard, if you chose to integrate with Azure Arc, you should be able to click the **Azure instance** link to be taken to the Azure Arc view in the Azure portal.
 17. In addition, back in Windows Admin Center, you can download your **Kubernetes cluster kubeconfig** file in order to access this Kubernetes cluster via **kubectl** later.
 18. Once you have your Kubeconfig file, you can click **Finish**.
@@ -244,7 +244,7 @@ Next, you'll scale your Kubernetes cluster to add an additional Linux worker nod
    Get-AksHciCluster
    ```
 
-   ![Output of Get-AksHciCluster](/media/aks-hci-evalguide/get-akshcicluster.png "Screenshot of Get-AksHciCluster output")
+   :::image type="content" source="media/aks-hci-evalguide/get-akshcicluster.png" alt-text="Screenshot of Get-AksHciCluster output":::
 
 3. Next, you'll scale your Kubernetes cluster to have two Linux worker nodes. You'll do this by specifying a node pool to update.
 
