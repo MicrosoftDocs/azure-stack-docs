@@ -13,9 +13,9 @@ ms.date: 08/10/2022
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews.
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
 
-You can join the Azure Stack HCI preview channel to test out features for this new version of the Azure Stack HCI operating system. For more info, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
+You can join the Azure Stack HCI preview channel to test out features for this new version of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
 ## New Azure Stack HCI, version 22H2 Operating System
 
