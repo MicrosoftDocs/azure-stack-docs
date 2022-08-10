@@ -21,7 +21,7 @@ You can join the Azure Stack HCI preview channel to test out features for this n
 
 Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version has a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration and others.
 
-Azure Stack HCI, version 22H2 is offered to you if you are running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. <!--For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).-->
+Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. <!--For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).-->
 
 The following sections briefly describe the various OS-related features and enhancements.
 
@@ -33,20 +33,20 @@ In this release, the Network ATC has several new features and improvements:
 
 - **Storage Automatic IP assignment**. Network ATC automatically identifies available IPs in our default subnets and assigns those addresses to your storage adapters.
 
-- **Scope detection**. Network ATC automatically detects if you are configuring a cluster node, so no need to add the `-ClusterName` or `-ComputerName` parameter in your commands.
+- **Scope detection**. Network ATC automatically detects if you're configuring a cluster node, so no need to add the `-ClusterName` or `-ComputerName` parameter in your commands.
 
-- **Contextual cluster network naming**. Network ATC understands how you will use cluster networks and will name them more relevantly.
+- **Contextual cluster network naming**. Network ATC understands how you'll use cluster networks and will name them more relevantly.
 
 - **Live Migration optimization**. Network ATC will intelligently manage:
 
   - **Maximum simultaneous live migrations** - Network ATC ensures that the maximum recommended value is configured and maintained across all cluster nodes.
   - **Best live migration network** - Network ATC determines the best network for live migration and automatically configures your system.
   - **Best live migration transport** - Network ATC selects the best algorithm for SMB, compression, and TCP given your network configuration.
-  - **Maximum SMB (RDMA) bandwidth** - If SMB (RDMA) is used, Network ATC determines the maximum bandwidth reserved for live migration to ensure that there is enough bandwidth for Storage Spaces Direct.
+  - **Maximum SMB (RDMA) bandwidth** - If SMB (RDMA) is used, Network ATC determines the maximum bandwidth reserved for live migration to ensure that there's enough bandwidth for Storage Spaces Direct.
 
-- **Proxy configuration**. Network ATC can configure all server nodes with the same proxy information as needed for your environment. This provides one-time configuration for all current and future server nodes.
+- **Proxy configuration**. Network ATC can configure all server nodes with the same proxy information as needed for your environment. This action provides one-time configuration for all current and future server nodes.
 
-- **Stretched cluster support**. Network ATC configures all storage adapters used by Storage Replica in stretched cluster environments. However, since such adapters need to route across subnets, Network ATC can't assign any IP addresses to them, so you’ll still need to assign these yourselves.
+- **Stretched cluster support**. Network ATC configures all storage adapters used by Storage Replica in stretched cluster environments. However, since such adapters need to route across subnets, Network ATC can't assign any IP addresses to them, so you’ll still need to assign these addresses yourselves.
 
 - **Post-deployment VLAN modification**. You can use the new `Set-NetIntent` parameter in Network ATC to modify VLAN settings just as you would if you were using the `Add-NetIntent` parameter. No need to remove and then add the intents again when changing VLANs.
 
@@ -58,14 +58,14 @@ This release includes the Storage Replica compression feature for data transferr
 
 There are no changes to the way you create replica groups and partnerships. The only change is a new parameter that can be used with the existing Storage Replica cmdlets.
 
-You specify compression when the group and the partnership is created. Use the following cmdlets to specify compression:
+You specify compression when the group and the partnership are created. Use the following cmdlets to specify compression:
  
 ```powershell
 New-SRGroup -EnableCompression 
 New-SRPartnership -EnableCompression 
 ```
 
-If the parameter is not specified, the default is set to `Disabled`.
+If the parameter isn't specified, the default is set to `Disabled`.
 
 To modify this setting later, use the following cmdlets:
  
@@ -77,7 +77,7 @@ Set-SRPartnership -Compression [$true/$false]
 
 Here `False` is `Disabled` and `True` is `Enabled`.
  
-All the other commands and steps remain the same. These changes are not in Windows Admin Center at this time and will be added in a subsequent release.
+All the other commands and steps remain the same. These changes aren't in Windows Admin Center at this time and will be added in a subsequent release.
 
 For more information, see [Storage Replica overview](/windows-server/storage/storage-replica/storage-replica-overview).
 
@@ -110,7 +110,7 @@ In a nutshell, version 22H2 will provide:
 
 ## Azure Arc VM changes and Azure Marketplace
 
-Beginning this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you will be able to access the latest fully-patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
+Beginning this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
 
 You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later.
 
@@ -127,7 +127,7 @@ While the connectivity validator is available today, the hardware, network infra
 
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-You can [download](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker) this free tool. The tool does not need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
+You can [download](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker) this free tool. The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
 
 
 ## Next steps
