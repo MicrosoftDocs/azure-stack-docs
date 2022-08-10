@@ -146,13 +146,13 @@ You can use GitHub secrets to encrypt sensitive information to use in your actio
     | PHP | [php.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/php-webapp-on-azure.yml) |
     | Docker | [docker.yml](https://github.com/Azure/actions-workflow-samples/blob/master/AppService/docker-webapp-container-on-azure.yml) |
 
-2. Place the template GitHub action workflow directory in your project repository: `.github/workflows/<runtime.yml>` Your workflow directory will contain two workflows.
+2. Place the template GitHub Actions workflow directory in your project repository: `.github/workflows/<runtime.yml>` Your workflow directory will contain two workflows.
 
 ## Add the web app deploy action
 
 Create a second workflow using the yaml in this section. In this example, you're deploying a Python web app. You would need to select a setup action based on your workflow. You can find references to set up actions for various runtimes in the table, [Setup actions for different runtimes](#setup-actions-for-different-runtimes), after the steps used to create the action.
 
-### Example GitHub action workflow
+### Example GitHub Actions workflow
 
 1. Open your GitHub repository. If you have not already added your web app application resources, add them now. In this example, I am using the [Python Flask Hello World](https://github.com/Azure-Samples/python-docs-hello-world) sample, and I added the Python `.gitignore`, `app.py`, and `requirements.txt` files.
 
