@@ -46,7 +46,7 @@ Once the feature updates are installed, you'll need to update the cluster functi
 
 3. **Upgrade VM configuration levels (optional).**
    
-   You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet, and then starting the VMs again.
+   You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet and then starting the VMs again.
 
 4. **Verify that the upgraded cluster functions as expected.**
    
