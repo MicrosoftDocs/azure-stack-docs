@@ -25,13 +25,13 @@ In this guide, you'll walk through the steps to stand up an AKS on Azure Stack H
 
 ## Architecture
 
-The following graphic showcases the different layers and interconnections between the different components:
+The following image showcases the different layers and interconnections between the different components:
 
-![Architecture diagram for AKS on Azure Stack HCI in Azure](/eval/media/nested_virt_arch_ga2.png "Architecture diagram for AKS on Azure Stack HCI in Azure")
+:::image type="content" source="media/aks-hci-evalguide/nested-virt.png" alt-text="Architecture diagram for AKS on Azure Stack HCI in Azure":::
 
 You've already deployed the outer box, which represents the Azure Resource Group. Inside here, you've deployed the virtual machine itself, and accompanying network adapter, storage, and so on. You've also completed some host configuration.
 
-In this section, you'll first deploy the management cluster. This provides the the core orchestration mechanism and interface for deploying and managing one or more target clusters, which are shown on the right of the diagram. These target, or workload clusters contain worker nodes and are where application workloads run. These are managed by a management cluster. For more information about the building blocks of the Kubernetes infrastructure, see [Kubernetes cluster architecture](kubernetes-concepts.md).
+In this section, you'll first deploy the management cluster. This cluster provides the core orchestration mechanism and interface for deploying and managing one or more target clusters, which are shown on the right-hand side of the diagram. These target, or workload clusters, contain worker nodes and are where application workloads run. These nodes are managed by a management cluster. For more information about the building blocks of the Kubernetes infrastructure, see [Kubernetes cluster architecture](kubernetes-concepts.md).
 
 ## Prepare environment
 
@@ -120,7 +120,7 @@ From the output of this script, you have the **Application ID** and the **secret
 
 With that created, in the Azure portal, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
-![Service principal shown in Azure](/eval/media/akshci-spcreated.png "Service principal shown in Azure")
+:::image type="content" source="media/aks-hci-evalguide/service-principal.png" alt-text="Screenshot of service principal shown in Azure":::
 
 ### Register the resource provider to your subscription
 
@@ -149,7 +149,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ```
 
-![Resource Provider enabled in Azure](/eval/media/akshci_rp_enable.png "Resource Provider enabled Azure")
+:::image type="content" source="media/aks-hci-evalguide/rp-enable.png" alt-text="Resource Provider enabled Azure results":::
 
 With those steps completed, you're ready to deploy the AKS management cluster to your Windows Server Hyper-V host.
 
@@ -164,7 +164,7 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
    Get-Command -Module AksHci
    ```
 
-   ![Output of Get-Command -Module AksHci](/eval/media/get_module_functions.png "Output of Get-Command -Module AksHci")
+   :::image type="content" source="media/aks-hci-evalguide/get-module-functions.png" alt-text="Output of Get-Command -Module AksHci":::
 
    As you can see, there are a number of functions that the module provides, from retrieving information, installing and deploying AKS and Kubernetes clusters, updating and scaling, and cleanup. We'll explore a number of these functions as we move through the steps.
 
@@ -212,8 +212,6 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
    ```
 
    This command takes a few moments to complete, but once done, you should see confirmation that the configuration has been saved.
-
-   ![Output of Set-AksHciConfig](/eval/media/akshci_config_new.png "Output of Set-AksHciConfig")
 
    For more information about some of the other parameters that you can use when defining your configuration, [see the quickstart here](setup-powershell.md#step-3-configure-your-deployment).
 
@@ -282,7 +280,7 @@ With the management cluster deployed successfully, you're ready to deploy Kubern
 
    In the output, you'll see a number of available versions across both Windows and Linux:
 
-   ![Output of Get-AksHciKubernetesVersion](/eval/media/get_akshcikubernetesversion.png "Output of Get-AksHciKubernetesVersion")
+   :::image type="content" source="media/aks-hci-evalguide/get-akshcikubernetesversion.png" alt-text="Output of Get-AksHciKubernetesVersion":::
 
 2. You can then run the following command to create and deploy a new Kubernetes cluster:
 
@@ -321,15 +319,11 @@ The deployment of this Kubernetes workload cluster should take a few minutes, an
 Get-AksHciCluster
 ```
 
-![Output of Get-AksHciCluster](/eval/media/get_akshcicluster_sept.png "Output of Get-AksHciCluster")
-
 For more information about the node pool, use the command **Get-AksHciNodePool** with the specified cluster name:
 
 ```powershell
 Get-AksHciNodePool -clusterName akshciclus001
 ```
-
-![Output of Get-AksHciNodePool](/eval/media/get_akshcinodepool_sept.png "Output of Get-AksHciNodePool")
 
 ### Continue deployment
 
@@ -351,8 +345,6 @@ Get-AksHciNodePool -clusterName akshciclus001
    Get-AksHciNodePool -clusterName akshciclus001
    ```
 
-   ![Output of Get-AksHciNodePool](/eval/media/get_akshcinodepool2_sept.png "Output of Get-AksHciNodePool")
-
    You can also scale your control plane nodes for this particular cluster; however, it has to be scaled independently from the worker nodes themselves. You can scale the control plane nodes using the following command. Before you run this command however, check that you have an extra 16GB memory left of your AKSHCIHost001 OS - if your host has been deployed with 64GB RAM, you may not have enough capacity for an additional two control plane VMs.
 
    ```powershell
@@ -368,8 +360,6 @@ Get-AksHciNodePool -clusterName akshciclus001
    Get-AksHciCluster
    ```
 
-   ![Output of Get-AksHciCluster](/eval/media/get_akshcicluster_sept2.png "Output of Get-AksHciCluster")
-
    To access this **akshciclus001** cluster using **kubectl** (which was installed on your host as part of the installation process), you'll first need the **kubeconfig** file.
 
 4. To retrieve the **kubeconfig** file for the **akshciclus001** cluster, run the following command from your administrative PowerShell session, and accept the prompt:
@@ -378,8 +368,6 @@ Get-AksHciNodePool -clusterName akshciclus001
    Get-AksHciCredential -Name akshciclus001 -Confirm:$false
    dir $env:USERPROFILE\.kube
    ```
-
-   ![Output of Get-AksHciCredential](/eval/media/get_akshcicred_sept.png "Output of Get-AksHciCredential")
 
    The default output of this command is to create the **kubeconfig** file in the **%USERPROFILE%\\.kube.** folder, and will name the file **config**. This **config** file will overwrite the previous kubeconfig file retrieved previously. You can also specify a custom location by using `-configPath c:\myfiles\kubeconfig`.
 

@@ -113,14 +113,14 @@ Second, the **Deploy to Azure** button, when clicked, takes you directly to the 
 
 After clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Purchase**.
 
-![Custom template deployment in Azure](media/aks-hci-evalguide/deploy-custom-template.png "Screenshot of custom template deployment in Azure")
+:::image type="content" source="media/aks-hci-evalguide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure":::
 
 > [!NOTE]
 > For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template will be validated, and if all of your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
 
-![Custom template deployment in Azure completed](/media/aks-hci-evalguide/deployment-complete.png "Screenshot of custom template deployment completed")
+:::image type="content" source="media/aks-hci-evalguide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
 
 If you chose to enable the auto-shutdown for the VM, and supplied a time and time zone, but want to also add a notification alert, select **Go to resource group**, and then perform the following steps:
 
@@ -187,7 +187,7 @@ Login-AzAccount
 
 When you've successfully logged in, you are presented with the default subscription and tenant associated with those credentials.
 
-![Result of Azure sign-in](/media/aks-hci-eval-guide/azure-sign-in.png "Screenshot showing result of Azure sign-in")
+:::image type="content" source="media/aks-hci-evalguide/azure-sign-in.png" alt-text="Screenshot showing result of Azure sign-in":::
 
 If this is the subscription and tenant you want to use for this evaluation, you can move on to the next step. However, if you want to deploy the VM to an alternate subscription, run the following commands:
 
@@ -268,7 +268,7 @@ Note the following considerations:
 
 Once you've made your size and region selection, based on the information provided earlier, run the PowerShell script and wait about 10 minutes for your VM deployment to complete.
 
-![Virtual machine successfully deployed with PowerShell](/media/aks-hci-evalguide/vm-deployment-complete.png "Screenshot of virtual machine successfully deployed with PowerShell")
+:::image type="content" source="media/aks-hci-evalguide/vm-deployment-complete.png" alt-text="Screenshot of virtual machine successfully deployed with PowerShell":::
 
 With the VM successfully deployed, make a note of the fully qualified domain name, as you'll use that to connect to the VM.
 
@@ -297,11 +297,11 @@ With your Azure VM (AKSHCIHost001) successfully deployed and configured, you're 
 
 First, connect into the VM, with the easiest approach being via Remote Desktop. If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
-![Search virtual machine located in Azure](/media/aks-hci-evalguide/azure-vm-search.png "Screenshot of virtual machine located in Azure")
+:::image type="content" source="media/aks-hci-evalguide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure":::
 
 In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
 
-![Configure RDP settings for Azure VM](/media/aks-hci-evalguide/connect-to-vm-properties.png "Screenshot of RDP settings for Azure VM")
+:::image type="content" source="media/aks-hci-evalguide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure VM":::
 
 Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Windows Server VM.
 
@@ -319,7 +319,7 @@ With the OS updated, and back online after any required reboot, you can deploy A
 
 Occasionally, a transient or random deployment error can cause the Azure VM to show a failed deployment. This is typically caused by reboots and timeouts within the VM as part of the PowerShell DSC configuration process. In particular, this can occur when the Hyper-V role is enabled and the system reboots multiple times in quick succession. There may be some instances in which changes with the Chocolatey Package Manager cause deployment issues.
 
-![Azure VM deployment error](/media/aks-hci-evalguide/vm-deployment-error.png "Screenshot of Azure VM deployment error")
+:::image type="content" source="media/aks-hci-evalguide/vm-deployment-error.png" alt-text="Screenshot of Azure VM deployment error":::
 
 If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likely the installation did complete successfully, but to double-check, you can perform these steps:
 
@@ -331,7 +331,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    Get-DscConfigurationStatus
    ```
 
-   ![Result of Get-DscConfigurationStatus](/media/aks-hci-evalguide/get-dscconfigurationstatus.png "Screenshot of result of Get-DscConfigurationStatus")
+   :::image type="content" source="media/aks-hci-evalguide/get-dscconfigurationstatus.png" alt-text="Screenshot of result of Get-DscConfigurationStatus":::
 
 3. As you can see, in this particular case, the PowerShell DSC configuration status appears to have been successful, however you might see a different result. You can re-apply the configuration by running the following commands:
 
