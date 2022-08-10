@@ -111,8 +111,8 @@ The following requirements apply to an Azure Stack HCI or Windows Server cluster
 - Make sure that there's network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
 - DNS name resolution is required for all nodes to be able to communicate with each other.
- 
-- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI and Windows Server to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS isn't an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-dns-record). 
+
+- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI and Windows Server to register the cloud agent generic cluster name in the DNS system for discovery.
 
 ### IP address assignment  
 
@@ -195,7 +195,7 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 
 #### Arc for servers requirements
 > [!NOTE]
-> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/agent-overview#networking-configuration).
+> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
 
 ## Windows Admin Center requirements
 
