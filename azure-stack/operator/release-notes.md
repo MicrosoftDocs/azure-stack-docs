@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/04/2022
+ms.date: 08/10/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -140,7 +140,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Azure Stack Hub operators can now configure GPU quotas for VMs.
 - [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
-- Windows Server 2022 is now supported as a guest operating system.
+- Windows Server 2022 is now supported as a guest operating system. Windows Server 2022 VMs must be manually activated using [Automatic Virtual Machine Activation](/windows-server/get-started/automatic-vm-activation) in Windows Server on Azure Stack Hub running version 2108 or later. It cannot be activated on previous versions.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 - Two new services, [Azure Kubernetes Service](../user/aks-overview.md) and [Azure Container Registry](../user/container-registry-overview.md), are available in public preview with this release.
 - [**AzureStack** module 2.2.0](/powershell/azure/azure-stack/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
