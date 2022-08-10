@@ -15,11 +15,7 @@ ms.date: 06/28/2022
 
 # Use PowerShell for cluster autoscaling
 
-You can use PowerShell to enable the autoscaler and to manage  automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage cluster autoscaling.
-
-> [!IMPORTANT]
-> Cluster autoscaler is currently in PREVIEW.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage cluster autoscaling.
 
 ## Create a new AksHciAutoScalerConfig object
 

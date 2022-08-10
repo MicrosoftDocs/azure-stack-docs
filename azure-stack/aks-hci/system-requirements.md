@@ -111,8 +111,8 @@ The following requirements apply to an Azure Stack HCI or Windows Server cluster
 - Make sure that there's network connectivity between Azure Stack HCI hosts and the tenant VMs.
 
 - DNS name resolution is required for all nodes to be able to communicate with each other.
- 
-- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI and Windows Server to register the cloud agent generic cluster name in the DNS system for discovery. If dynamic DNS isn't an option, use the steps prescribed in ['Set-AksHciConfig'](./reference/ps/set-akshciconfig.md#to-deploy-with-a-preconfigured-cloud-agent-cluster-service-and-a-dns-record). 
+
+- (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS on Azure Stack HCI and Windows Server to register the cloud agent generic cluster name in the DNS system for discovery.
 
 ### IP address assignment  
 
@@ -302,7 +302,7 @@ From the output above, you now have the **application ID** and the **secret** av
 With that created, in the **Azure portal**, under **Subscriptions**, **Access Control**, and then **Role Assignments**, you should see your new Service Principal.
 
 ### Azure resource group
-You must have an Azure resource group in the East US, Southeast Asia, or West Europe Azure region available before registration. 
+You must have an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region available before registration. 
 
 
 ## Next steps

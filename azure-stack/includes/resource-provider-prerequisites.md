@@ -1,10 +1,10 @@
 ---
-author: BryanLa
-ms.author: bryanla
+author: sethmanheim
+ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
 ms.date: 12/09/2019
-ms.reviewer: bryanla
+ms.reviewer: sethm
 ms.lastreviewed: 12/09/2019
 ---
 

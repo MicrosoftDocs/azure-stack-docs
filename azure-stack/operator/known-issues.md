@@ -2,9 +2,8 @@
 title: Azure Stack Hub known issues 
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 07/06/2022
+ms.date: 07/26/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -70,7 +69,22 @@ To access known issues for a different version, use the version selector dropdow
    For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys). Note that the alert will automatically close within 24 hours after running **Get-AzsRecoveryKeys** and storing those recovery keys in a secure location outside of Azure Stack Hub.
 - Occurrence: Common
 
-<!-- ## Portal -->
+## Portal
+
+### Possibility of portal errors during update
+
+- Applicable: This issue applies to release 2206.
+- Cause: The update blade and/or the portal dashboard can become unusable and show an error during the update itself.
+- Remediation: If the portal is unavailable for more than 1 hour, you can use the PEP to check the status of the update. For more information, see [Monitor updates in Azure Stack Hub using the privileged endpoint](/azure-stack/operator/azure-stack-monitor-update).
+
+## Datacenter integration
+
+### Graph configuration fails
+
+- Applicable: This issue applies to release 2206.
+- Cause: The configuration of Graph fails with an invalid credential error.
+- Remediation: If credentials are correct, you must supply them as username only, rather than domainname\username.
+- Occurrence: Common
 
 <!-- ## Storage -->
 
