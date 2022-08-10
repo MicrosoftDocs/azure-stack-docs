@@ -21,7 +21,7 @@ You can join the Azure Stack HCI preview channel to test out features for this n
 
 Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version has a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration and others.
 
-Azure Stack HCI, version 22H2 is offered to you if you are running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).
+Azure Stack HCI, version 22H2 is offered to you if you are running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. <!--For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).-->
 
 The following sections briefly describe the various OS-related features and enhancements.
 
@@ -33,25 +33,24 @@ In this release, the Network ATC has several new features and improvements:
 
 - **Storage Automatic IP assignment**. Network ATC automatically identifies available IPs in our default subnets and assigns those addresses to your storage adapters.
 
-- **Scope detection**. Network ATC automatically detects if you are configuring a cluster node, so no need to add the -ClusterName or -ComputerName parameter in your commands.
+- **Scope detection**. Network ATC automatically detects if you are configuring a cluster node, so no need to add the `-ClusterName` or `-ComputerName` parameter in your commands.
 
 - **Contextual cluster network naming**. Network ATC understands how you will use cluster networks and will name them more relevantly.
 
 - **Live Migration optimization**. Network ATC will intelligently manage:
 
-  - Maximum simultaneous live migrations - Network ATC ensures that the maximum recommended value is configured and maintained across all cluster nodes.
-  - Best live migration network - Network ATC determines the best network for live migration and automatically configures your system.
-  - Best live migration transport - Network ATC selects the best algorithm for SMB, compression, and TCP given your network configuration.
-  - Maximum SMB (RDMA) bandwidth - If SMB (RDMA) is used, Network ATC determines the maximum bandwidth reserved for live migration to ensure that there is enough bandwidth for Storage Spaces Direct.
+  - **Maximum simultaneous live migrations** - Network ATC ensures that the maximum recommended value is configured and maintained across all cluster nodes.
+  - **Best live migration network** - Network ATC determines the best network for live migration and automatically configures your system.
+  - **Best live migration transport** - Network ATC selects the best algorithm for SMB, compression, and TCP given your network configuration.
+  - **Maximum SMB (RDMA) bandwidth** - If SMB (RDMA) is used, Network ATC determines the maximum bandwidth reserved for live migration to ensure that there is enough bandwidth for Storage Spaces Direct.
 
 - **Proxy configuration**. Network ATC can configure all server nodes with the same proxy information as needed for your environment. This provides one-time configuration for all current and future server nodes.
 
 - **Stretched cluster support**. Network ATC configures all storage adapters used by Storage Replica in stretched cluster environments. However, since such adapters need to route across subnets, Network ATC can't assign any IP addresses to them, so you’ll still need to assign these yourselves.
 
-- **Post-deployment VLAN modification**. You can use the new Set-NetIntent parameter in Network ATC to modify VLAN settings just as you would if you were using the Add-NetIntent parameter. No need to remove and then add the intents again when changing VLANs.
+- **Post-deployment VLAN modification**. You can use the new `Set-NetIntent` parameter in Network ATC to modify VLAN settings just as you would if you were using the `Add-NetIntent` parameter. No need to remove and then add the intents again when changing VLANs.
 
-For more information, see the blog on [Network ATC v2 improvements](overview.md).
-
+<!-- For more information, see the blog on [Network ATC v2 improvements](overview.md).-->
 
 ### Storage replica compression
 
@@ -134,4 +133,4 @@ You can [download](https://www.powershellgallery.com/packages/AzStackHci.Environ
 ## Next steps
 
 - [Read the blog on What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
-- [Update to Azure Stack HCI, version 22H2](./manage/install-preview-build.md)
+<!--- [Update to Azure Stack HCI, version 22H2](./manage/install-preview-build.md)-->
