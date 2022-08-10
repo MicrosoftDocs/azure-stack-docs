@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/27/2022
+ms.date: 08/10/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -140,7 +140,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Azure Stack Hub operators can now configure GPU quotas for VMs.
 - [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
-- Windows Server 2022 is now supported as a guest operating system.
+- Windows Server 2022 is now supported as a guest operating system. Windows Server 2022 VMs must be manually activated using [Automatic Virtual Machine Activation](/windows-server/get-started/automatic-vm-activation) in Windows Server on Azure Stack Hub running version 2108 or later. It cannot be activated on previous versions.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 - Two new services, [Azure Kubernetes Service](../user/aks-overview.md) and [Azure Container Registry](../user/container-registry-overview.md), are available in public preview with this release.
 - [**AzureStack** module 2.2.0](/powershell/azure/azure-stack/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
@@ -187,7 +187,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2102.30.147](hotfix-1-2102-30-147.md)
+- [Azure Stack Hub hotfix 1.2102.30.146](hotfix-1-2102-30-146.md)
 
 ### After successfully applying the 2108 update
 
@@ -195,7 +195,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2108.2.112](hotfix-1-2108-2-112.md)
+- [Azure Stack Hub hotfix 1.2108.2.111](hotfix-1-2108-2-111.md)
 ::: moniker-end
 
 ::: moniker range="azs-2102"
@@ -290,7 +290,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2008.41.163](hotfix-1-2008-41-163.md)
+- [Azure Stack Hub hotfix 1.2008.41.161](hotfix-1-2008-41-161.md)
 
 ### After successfully applying the 2102 update
 
@@ -298,7 +298,7 @@ When you update to a new major version (for example, 1.2008.x to 1.2102.x), the 
 
 After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2102.30.147](hotfix-1-2102-30-147.md)
+- [Azure Stack Hub hotfix 1.2102.30.146](hotfix-1-2102-30-146.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

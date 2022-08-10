@@ -69,7 +69,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
    where:
 
-   | Value | Description |
+   | Parameter | Description |
    | ----- | ----------- |
    | **vswitchName** | Should match the name of the switch on the host. The network served by this vmswitch must be able to provide static IP addresses for the **controlPlaneIP**.|
    | **controlPlaneIP** | The IP address that is used for the load balancer in the Arc Resource Bridge. The IP address must be in the same subnet as the DHCP scope and must be excluded from the DHCP scope to avoid IP address conflicts. |
@@ -81,9 +81,9 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
    | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
 
-3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is installed or not.
-   - **If AKS on Azure Stack HCI and Windows Server is installed.** Skip this step and proceed to step 4 to update the required extensions.
-   - **If AKS on Azure Stack HCI and Windows Server is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
+3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI is installed or not.
+   - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
+   - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
       ### [For static IP address](#tab/for-static-ip-address)
 
@@ -138,7 +138,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
 To create a custom location, install Azure Arc Resource Bridge by launching an elevated PowerShell window and perform these steps:
 
-1. Provide inputs for the following, using the parameters described as follows.
+1. Run the following cmdlets. Refer to the following table for a description of the parameters.
    
    ```PowerShell
    $resource_group="<pre-created resource group in Azure>"
@@ -146,7 +146,15 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    $Location="<Azure Region - Available regions include 'eastus', 'eastus2euap' and 'westeurope'>"
    $customloc_name="<name of the custom location, such as HCICluster -cl>"
    ```
-   
+   where:
+
+   | Parameter | Description |
+   | ----- | ----------- |
+   | **resource_group** | Name of the pre-created resource group in Azure. |
+   | **subscription** | Subscription ID in Azure. |
+   | **Location** | Name of the Azure region. Specify one of the following available regions: **eastus**, **eastus2euap**, or **westeurope**. |
+   | **customloc_name** | Name of the custom location, such as HCICluster -cl. |
+
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
 
@@ -189,7 +197,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```PowerShell
       $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
       mkdir $csv_path\ResourceBridge
-      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP  -k8snodeippoolstart $VMIP -k8snodeippoolend $VMIP [-vLanID=$vlanID]
+      New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP [-vLanID=$vlanID]
       az arcappliance validate hci --config-file $csv_path\ResourceBridge\hci-appliance.yaml
       ```
 
@@ -257,7 +265,7 @@ Now that the custom location is available, you can create or add virtual network
    
    where:
 
-   | Value | Description |
+   | Parameter | Description |
    | ----- | ----------- |
    | **galleryImageName** | Name of the gallery image; for example, "win-os". Note that Azure rejects all names that contain the keyword "Windows". |
    |  **galleryImageSourcePath** | Path to the source gallery image VHDX; for example, "C:\OSImages\winos.vhdx". |
