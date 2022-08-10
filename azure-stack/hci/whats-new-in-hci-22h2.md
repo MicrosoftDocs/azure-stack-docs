@@ -21,7 +21,7 @@ You can join the Azure Stack HCI preview channel to test out features for this n
 
 Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version has a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration and others.
 
-Azure Stack HCI, version 22H2 is offered to you if you are running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-a-preview-build.md).
+Azure Stack HCI, version 22H2 is offered to you if you are running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).
 
 The following sections briefly describe the various OS-related features and enhancements.
 
@@ -134,4 +134,4 @@ You can [download](https://www.powershellgallery.com/packages/AzStackHci.Environ
 ## Next steps
 
 - [Read the blog on What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
-- [Update to Azure Stack HCI, version 22H2](overview.md)
+- [Update to Azure Stack HCI, version 22H2](./manage/install-preview-build.md)
