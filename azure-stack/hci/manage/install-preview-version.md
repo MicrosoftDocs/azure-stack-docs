@@ -99,4 +99,4 @@ To install a preview version using PowerShell, follow these steps.
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Post Installation](../manage/preview-build-post-installation.md)
+> [Post Installation](../manage/preview-post-installation.md)
