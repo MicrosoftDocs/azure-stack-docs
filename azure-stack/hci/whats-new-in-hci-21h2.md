@@ -13,7 +13,7 @@ ms.date: 01/10/2022
 
 > Applies to: Azure Stack HCI, version 21H2
 
-This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2, including the ability to run it on a [single server](../hci/concepts/single-server-clusters.md). It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features. To find out what's new in the latest version of Azure Stack HCI, see [What's new in Azure Stack HCI](whats-new-in-hci22h2.md).
+This article lists the various features and improvements that are now available in Azure Stack HCI, version 21H2, including the ability to run it on a [single server](../hci/concepts/single-server-clusters.md). It also describes what's added in Windows Admin Center version 2110 to manage these new Azure Stack HCI features. To find out what's new in the latest version of Azure Stack HCI, see [What's new in Azure Stack HCI](whats-new-in-hci-22h2.md).
 
 For information on monthly quality and security updates, see [Azure Stack HCI release information](release-information.md). To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 20H2](whats-new-in-hci-20h2.md).
 

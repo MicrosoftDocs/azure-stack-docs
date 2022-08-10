@@ -5,7 +5,7 @@
   - name: What is Azure Stack HCI?
     href: overview.md
   - name: What's new in Azure Stack HCI?
-    href: whats-new.md
+    href: whats-new-in-hci-22h2.md
   - name: Release information
     href: release-information.md
   - name: Compare to Windows Server
