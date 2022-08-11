@@ -308,6 +308,10 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
+  - name: Install Azure Stack HCI, 22H2
+    href: manage/install-preview-version.md
+  - name: Post installation Azure Stack HCI, 22H2
+    href: manage/preview-post-installation.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
