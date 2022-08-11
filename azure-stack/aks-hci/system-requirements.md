@@ -195,7 +195,7 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 
 #### Arc for servers requirements
 > [!NOTE]
-> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/agent-overview#networking-configuration).
+> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
 
 ## Windows Admin Center requirements
 
