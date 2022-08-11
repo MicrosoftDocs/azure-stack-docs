@@ -15,13 +15,13 @@ ms.date: 08/10/2022
 
 This article lists the various features and improvements that are now available in Azure Stack HCI, version 22H2. Over the next several weeks, this article will be updated as more features are rolled out for subsequent previews. To see what we added in the previous release of Azure Stack HCI, see [What's new in Azure Stack, version 21H2](whats-new-in-hci-21h2.md).
 
-You can join the Azure Stack HCI preview channel to test out features for this new version of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
-
 ## New Azure Stack HCI, version 22H2 Operating System
 
-Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version has a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration and others.
+Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version has a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration, and more.
 
 Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. <!--For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).-->
+
+You can join the Azure Stack HCI preview channel to test out features for this new version of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
 
 The following sections briefly describe the various OS-related features and enhancements.
 
@@ -31,13 +31,13 @@ In this release, the Network ATC has several new features and improvements:
 
 - **Network symmetry**. Network ATC automatically checks for and validates network symmetry across all adapters (on each node) in the same intent - specifically the make, model, speed, and configuration of your selected adapters.
 
-- **Storage Automatic IP assignment**. Network ATC automatically identifies available IPs in our default subnets and assigns those addresses to your storage adapters.
+- **Storage automatic IP assignment**. Network ATC automatically identifies available IPs in our default subnets and assigns those addresses to your storage adapters.
 
 - **Scope detection**. Network ATC automatically detects if you're configuring a cluster node, so no need to add the `-ClusterName` or `-ComputerName` parameter in your commands.
 
-- **Contextual cluster network naming**. Network ATC understands how you'll use cluster networks and will name them more relevantly.
+- **Contextual cluster network naming**. Network ATC understands how you'll use cluster networks and names them more appropriately.
 
-- **Live Migration optimization**. Network ATC will intelligently manage:
+- **Live Migration optimization**. Network ATC intelligently manages:
 
   - **Maximum simultaneous live migrations** - Network ATC ensures that the maximum recommended value is configured and maintained across all cluster nodes.
   - **Best live migration network** - Network ATC determines the best network for live migration and automatically configures your system.
@@ -48,13 +48,13 @@ In this release, the Network ATC has several new features and improvements:
 
 - **Stretched cluster support**. Network ATC configures all storage adapters used by Storage Replica in stretched cluster environments. However, since such adapters need to route across subnets, Network ATC can't assign any IP addresses to them, so you’ll still need to assign these addresses yourselves.
 
-- **Post-deployment VLAN modification**. You can use the new `Set-NetIntent` parameter in Network ATC to modify VLAN settings just as you would if you were using the `Add-NetIntent` parameter. No need to remove and then add the intents again when changing VLANs.
+- **Post-deployment VLAN modification**. You can use the new `Set-NetIntent` cmdlet in Network ATC to modify VLAN settings just as you would if you were using the `Add-NetIntent` cmdlet. No need to remove and then add the intents again when changing VLANs.
 
 <!-- For more information, see the blog on [Network ATC v2 improvements](overview.md).-->
 
 ### Storage replica compression
 
-This release includes the Storage Replica compression feature for data transferred between the source and destination servers. This new functionality compresses the replication data from the source system, which is transferred over the network, decompressed, and then saved on the destination.  The compression results in fewer network packets to transfer the same amount of data, allowing for higher throughput and lower network utilization, which in turn results in lower costs for metered networks.
+This release includes the Storage Replica compression feature for data transferred between the source and destination servers. This new functionality compresses the replication data from the source system, which is transferred over the network, decompressed, and then saved on the destination. The compression results in fewer network packets to transfer the same amount of data, allowing for higher throughput and lower network utilization, which in turn results in lower costs for metered networks.
 
 There are no changes to the way you create replica groups and partnerships. The only change is a new parameter that can be used with the existing Storage Replica cmdlets.
 
@@ -95,9 +95,9 @@ For more information, see [What is Cluster-Aware Updating?](/windows-server/fail
 
 For new installations, version 22H2 starts with a secure-by-default strategy. The new version has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default.
 
-In a nutshell, version 22H2 will provide:
+In summary, version 22H2 provides:
 
-- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a good known security state. This baseline enables the customers to closely meet the CIS Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria and  Federal Information Processing Standards (FIPS) requirements for the OS and the Microsoft recommended security baseline.
+- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a good known security state. This baseline enables the you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and the Microsoft recommended security baseline.
 
 - Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
 
@@ -110,7 +110,7 @@ In a nutshell, version 22H2 will provide:
 
 ## Azure Arc VM changes and Azure Marketplace
 
-Beginning this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
+With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
 
 You can now use the Azure portal or the Azure CLI to easily add and manage VM images and then use those images to create Azure Arc-enabled VMs. This feature works with your existing Azure Stack HCI cluster running version 21H2 or later.
 
@@ -127,10 +127,10 @@ While the connectivity validator is available today, the hardware, network infra
 
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
-You can [download](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker) this free tool. The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
 
 
 ## Next steps
 
-- [Read the blog on What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
+- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
 <!--- [Update to Azure Stack HCI, version 22H2](./manage/install-preview-build.md)-->
