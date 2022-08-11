@@ -123,7 +123,7 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 - Network infrastructure for valid IP ranges provided by customers for deployment.
 - Active Directory (Adprep tool is run prior to deployment).
 
-While the connectivity validator is available today, the hardware, network infrastructure and Active Directory validators are coming soon.
+While the connectivity validator is available today, the hardware, network infrastructure, and Active Directory validators are coming soon.
 
 The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
 
