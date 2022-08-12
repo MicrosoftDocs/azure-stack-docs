@@ -1,8 +1,8 @@
 ---
 title: Create stretched cluster volumes and set up replication
 description: How to create volumes and set up replication for stretched clusters in Azure Stack HCI using Windows Admin Center and PowerShell.
-author: v-jamemurray
-ms.author: v-jamemurray
+author: jasongerend
+ms.author: jgerend
 ms.reviewer: stevenek
 ms.topic: how-to
 ms.date: 05/16/2022
