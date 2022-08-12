@@ -3,10 +3,10 @@ title: Update noProxy settings in Azure Kubernetes Service on Azure Stack HCI an
 description: Learn how to update noProxy settings in Azure Kubernetes Service on Azure Stack HCI and Windows Server.
 ms.topic: how-to
 ms.date: 05/31/2022
-ms.author: mabrigg 
+ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
-author: mattbriggs
+author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn how to update the NoProxy settings.
 # Keyword: noproxy proxy settings
