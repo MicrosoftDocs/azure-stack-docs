@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 using PowerShell (preview)
 description: Learn how to deploy Azure Stack HCI version 22H2 using Windows PowerShell
-author: dansis2022
+author: v-dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
-ms.author: jgerend
+ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 

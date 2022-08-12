@@ -1,18 +1,18 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 (preview)
 description: Learn to deploy Azure Stack HCI version 22H2
-author: jgerend
+author: v-dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
-ms.author: jgerend
+ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
 # Deploy Azure Stack HCI version 22H2 (preview)
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2
 
-This article describes how to deploy Azure Stack HCI, version 22H2 Preview 3 using a new deployment method and tools. You should already be familiar with the existing Azure Stack HCI solution.
+This article describes how to deploy Azure Stack HCI, version 22H2 Preview using a new deployment method and tools. You should already be familiar with the existing Azure Stack HCI solution.
 
 Azure Stack HCI, version 22H2 Preview 3 must be installed using the local boot from VHDX method described in this article set.
 
@@ -21,7 +21,7 @@ Azure Stack HCI, version 22H2 Preview 3 must be installed using the local boot f
 
 ## New features
 
-Private Preview 3 of Azure Stack HCI, version 22H2 contains the following new features:
+Azure Stack HCI, version 22H2 Preview contains the following new features:
 
 |Feature|Description|
 |--|--|
@@ -58,7 +58,7 @@ The following diagram shows two physical servers with a directly connected (swit
 
 The following diagram shows two physical servers with all network traffic traveling over a converged set of network interfaces connected to redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/scenario3.png" alt-text="Deployment scenario 2" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+:::image type="content" source="media/deployment-tool/scenario3.png" alt-text="Deployment scenario 3" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 ## Deployment process
 

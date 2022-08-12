@@ -1,18 +1,18 @@
 ---
 title: Install Azure Stack HCI version 22H2
 description: Learn how to install Azure Stack HCI version 22H2 preview from a boot image
-author: dansisson
+author: v-dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
-ms.author: jgerend
+ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Install Azure Stack HCI version 22H2 (preview)
+# Install Azure Stack HCI version 22H2
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-The Azure Stack HCI, version 22H2 Preview 3 operating system (OS) is installed locally using a a USB drive or other media that can boot from a VHDX file.
+The Azure Stack HCI, version 22H2 Preview operating system (OS) is installed locally using a a USB drive or other media that can boot from a VHDX file.
 
 The installation includes an OS image and a deployment tool that allows a physical server to boot from a VHDX file. This is different from how Azure Stack HCI has been installed in the past. Two folders are included with the installation: *Cloud* and *Image*.
 

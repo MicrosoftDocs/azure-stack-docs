@@ -1,14 +1,14 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 using an existing configuration file
 description: Learn how to deploy Azure Stack HCI version 22H2 using an existing configuration file
-author: dansisson
+author: v-dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
-ms.author: jgerend
+ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Deploy Azure Stack HCI version 22H2 using an existing configuration file (preview)
+# Deploy Azure Stack HCI version 22H2 using an existing configuration file
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
@@ -148,27 +148,27 @@ The deployment tool "hooks" into, and appears as additional pages and screens in
 
 1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Use an existing config file** to deploy with an existing file.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 1" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
 1. On step **1.1 Import configuration file**, import the existing configuration by selecting **Browse** or dragging the file to the page.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 2" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
 1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 3" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
 1. On step **2.1 Credentials**, enter the credentials for the internal directory service and the local administrator credentials.
 When specifying a username, omit the domain name (don't use *domain\username*). The "Administrator" username isn't supported.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 4" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
 
     > [!NOTE]
     > Credentials should never be stored in the configuration file.
 
 1. To monitor your deployment, log in to the staging server and watch the orchestration engine process. Due to a known issue, you must monitor the deployment progress using the deployment log file stored in C:\clouddeployment\logs until the staging server restarts.
 
-    :::image type="content" source="media/deployment-tool/monitor-deployment.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/monitor-deployment.png" alt-text="Deployment wizard step 5" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. Remove the Windows Admin Center installation used for deployment. Sign in to the staging server and run the following command:
 

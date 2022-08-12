@@ -1,10 +1,10 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 using using a new config file
 description: Learn how to deploy Azure Stack HCI version 22H2 using a new config file
-author: dansisson
+author: v-dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
-ms.author: jgerend
+ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
@@ -73,23 +73,23 @@ If you want to use an existing configuration file you have previously created in
 
 1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Create a new config file**
 
-      :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+      :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 1" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **1.1 Configure privacy**, set the privacy settings as they apply to your organization.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 2" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On **step 1.2 Add servers**, enter the IP address of each server.  Add the servers in the right sequence, beginning with the first server.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 3" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On Step **1.3 Set cluster security**, no changes are needed. Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 4" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **1.4 Configure the internal domain**, specify the settings used by the internal domain used for cluster authentication and management. When specifying a username, omit the domain name (don't use *domain\username*). The "Administrator" username isn’t supported.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 5" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details. When defining the network intents, for this preview release, only the following two sets of network intents are supported:
     - one management+compute intent, 1 storage intent
@@ -97,30 +97,30 @@ If you want to use an existing configuration file you have previously created in
 
 1. On step **3.1 Create cluster**, enter the cluster name.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 6" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 7" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **5.1 Add services**, no changes are needed. Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 8" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **5.2 Set Arc management details**, no changes are needed. Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 9" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
 
     > [!IMPORTANT]
     > The staging server will restart shortly after the deployment starts.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1.png" alt-text="Deployment wizard step 10" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. To monitor your deployment, log in to the staging server and watch the orchestration engine process. Due to a known issue, you must monitor the deployment progress using the deployment log file stored in C:\clouddeployment\logs until the staging server restarts.
 
-    :::image type="content" source="media/deployment-tool/monitor-deployment.png" alt-text="Deployment wizard step" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/monitor-deployment.png" alt-text="Deployment wizard step 11" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 1. Remove the Windows Admin Center installation used for deployment. Log in to the staging server and run the following command:
 
