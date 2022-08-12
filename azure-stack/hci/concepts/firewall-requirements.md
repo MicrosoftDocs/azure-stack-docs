@@ -225,7 +225,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Arc for Servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc resource bridge](/azure/azure-arc/resource-bridge/overview)
+- [Azure Arc resource bridge](/manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
