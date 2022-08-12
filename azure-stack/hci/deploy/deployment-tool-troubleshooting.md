@@ -14,7 +14,7 @@ ms.reviewer: jgerend
 
 This article discusses troubleshooting and logging options for your Azure Stack HCI 22H2 preview deployment.
 
-For a list of known issues, see the release notes.
+Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).
 
 ## Rerun deployment
 
@@ -48,3 +48,7 @@ Send-DiagnosticData`
 To get a history of log collections for last the 90 days, run the following:
 
 `Import-module ASZDiagnosticsInitializer Get-LogCollectionHistory`
+
+## More information
+
+See [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md)

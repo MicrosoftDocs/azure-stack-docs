@@ -69,3 +69,4 @@ Follow this process to deploy Azure Stack HCI version 22H2 Preview 3 in your env
 - Deploy using either a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md) in Windows Admin Center.
 - If applicable, [deploy using PowerShell](deployment-tool-powershell.md).
 - If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md).
+- Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).
