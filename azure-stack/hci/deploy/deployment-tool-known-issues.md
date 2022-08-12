@@ -1,7 +1,7 @@
 ---
 title: Known issues for Azure Stack HCI version 22H2
 description: Read about the known issues for Azure Stack HCI version 22H2
-author: v-dansisson
+author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
 ms.author: v-dansisson

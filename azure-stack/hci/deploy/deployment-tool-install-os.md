@@ -1,7 +1,7 @@
 ---
 title: Install Azure Stack HCI version 22H2
 description: Learn how to install Azure Stack HCI version 22H2 preview from a boot image
-author: v-dansisson
+author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
 ms.author: v-dansisson

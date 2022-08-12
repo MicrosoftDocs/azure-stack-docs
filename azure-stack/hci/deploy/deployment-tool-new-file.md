@@ -1,7 +1,7 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 using using a new config file
 description: Learn how to deploy Azure Stack HCI version 22H2 using a new config file
-author: v-dansisson
+author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
 ms.author: v-dansisson

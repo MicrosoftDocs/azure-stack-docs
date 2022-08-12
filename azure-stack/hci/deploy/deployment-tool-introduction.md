@@ -1,7 +1,7 @@
 ---
 title: Deploy Azure Stack HCI version 22H2 (preview)
 description: Learn to deploy Azure Stack HCI version 22H2
-author: v-dansisson
+author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
 ms.author: v-dansisson
@@ -27,7 +27,7 @@ Azure Stack HCI, version 22H2 Preview contains the following new features:
 |--|--|
 |Release notes|Read the release notes for more information about validating the following features and for known issues.|
 |New OS installation and deployment method|Azure Stack HCI, version 22H2 Preview 3 includes a new deployment tool with better automation in Windows Admin Center.|
-|[Azure Connectivity Checker](https://partner.microsoft.com/en-us/dashbaord/collaborate/packages/13235)|Ascertain how ready your network is to deploy the Azure Stack HCI, version 22H2 solution.|
+|[Azure Connectivity Checker](https://partner.microsoft.com/dashbaord/collaborate/packages/13235)|Ascertain how ready your network is to deploy the Azure Stack HCI, version 22H2 solution.|
 |Azure registration|Registration of your cluster to Azure requires fewer permissions.|
 |Default security improvements|Recommended security settings are turned on by default.|
 |Remote support|Use this feature to allow Microsoft Support to access your device remotely and perform limited troubleshooting and repair. Enabling this feature requires your consent.|
