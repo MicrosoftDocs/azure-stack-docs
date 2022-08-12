@@ -26,7 +26,7 @@ This article describes how to deploy one or more instances of the **HAProxy** lo
 
 ## Deploy multiple load balancer instances
 
-To deploy multiple load balancers during the workload cluster creation, use the `New-AksHciLoadBalancerSettings` cmdlet to set the `VmSize`; the number of instances for your **HAProxy** load balancer as follows:
+To deploy multiple load balancers during the workload cluster creation, use the `New-AksHciLoadBalancerSetting` cmdlet to set the `VmSize`; the number of instances for your **HAProxy** load balancer as follows:
 
 1. Create a load balancer configuration using the [New-AksHciLoadBalancerSetting](reference/ps/new-akshciloadbalancersetting.md) cmdlet, and then select `none` for the `loadBalancerSku` parameter:
 
