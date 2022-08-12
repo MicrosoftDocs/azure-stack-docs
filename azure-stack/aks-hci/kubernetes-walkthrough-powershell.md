@@ -63,7 +63,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 ## Step 1: Prepare your machine(s) for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install AKS on Azure Stack HCI and Windows Server. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command.
-Run the following command on all nodes in your Azure Stack HCI on Windows Server cluster.
+Run the following command on all nodes in your Azure Stack HCI or Windows Server cluster.
 
 ```powershell
 Initialize-AksHciNode
@@ -71,7 +71,7 @@ Initialize-AksHciNode
 
 ## Step 2: Create a virtual network
 
-Run the following commands in step 2 on any one node in your Azure Stack HCI on Windows Server cluster.
+Run the following commands in step 2 on any one node in your Azure Stack HCI or Windows Server cluster.
 
 To get the names of your available switches, run the following command. Make sure the `SwitchType` of your VM switch is "External".
 
@@ -99,7 +99,7 @@ $vnet = New-AksHciNetworkSetting -name myvnet -vSwitchName "extSwitch" -k8sNodeI
 
 ## Step 3: Configure your deployment
 
-Run the following commands in step 3 on any one node in your Azure Stack HCI on Windows Server cluster.
+Run the following commands in step 3 on any one node in your Azure Stack HCI or Windows Server cluster.
 
 To create the configuration settings for the AKS host, use the [Set-AksHciConfig](./reference/ps/set-akshciconfig.md) command. You must specify the `imageDir`, `workingDir`, and `cloudConfigLocation` parameters. If you want to reset your configuration details, run the command again with new parameters.
 
