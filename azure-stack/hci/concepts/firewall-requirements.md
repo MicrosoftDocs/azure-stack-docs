@@ -123,7 +123,7 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
 ```json
 [{ 
         "URL": "http://*.windowsupdate.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -133,7 +133,7 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     }, 
     { 
         "URL": "http://*.update.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -143,12 +143,12 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     }, 
     { 
         "URL": "http://*.windowsupdate.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://download.windowsupdate.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -158,27 +158,27 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     }, 
     { 
         "URL": "http://*.download.windowsupdate.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://wustat.windows.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://ntservicepack.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://go.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://dl.delivery.mp.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
