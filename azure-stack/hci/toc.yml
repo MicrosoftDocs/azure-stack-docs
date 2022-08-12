@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: What's new in Azure Stack HCI?
+  - name: What's new in Azure Stack HCI? 
     href: whats-new.md
   - name: Release information
     href: release-information.md
@@ -386,6 +386,8 @@
       href: /learn/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
+    - name: What's new in version 21H2
+      href: whats-new-in-hci-21h2.md
     - name: What's new in version 20H2
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 
