@@ -97,7 +97,9 @@ For new installations, version 22H2 starts with a secure-by-default strategy. Th
 
 In summary, version 22H2 provides:
 
-- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state. This baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and the Microsoft recommended security baseline.
+- A tailored security baseline with over 200 security settings configured and enforced with a security drift control mechanism that ensures the cluster always starts and remains in a known good security state. 
+
+    The security baseline enables you to closely meet the Center for Internet Security (CIS) Benchmark, Defense Information Systems Agency Security Technical Implementation Guides (DISA STIG), Common Criteria, and  Federal Information Processing Standards (FIPS) requirements for the OS and [Azure Compute Security baselines](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
 - Improved security posture achieved through a stronger set of protocols and cipher suites enabled by default.
 
@@ -105,7 +107,7 @@ In summary, version 22H2 provides:
 
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes.
 
-- Reduced attack surface by using Windows Defender Application Control to limit the applications and the code that you can run on the core platform.
+- Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.
 
 
 ## Azure Arc VM changes and Azure Marketplace
