@@ -25,7 +25,7 @@ To access known issues for a different archived version, use the version selecto
 ::: moniker range="azs-2102"
 ## Update
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ### Update to 2102 fails during pre-update checks for AKS/ACR
 
@@ -51,11 +51,11 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 - Applicable: This issue applies to all supported releases.
 - Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
 
-  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
-  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
-  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
-  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+  - [Gateway SKUs](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack Hub](../../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](../azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ### Load balancer
 
@@ -82,7 +82,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ## Health and alerts
 
-[!INCLUDE [resource providers fail in test-azurestack](../includes/known-issue-alerts-aks-acs.md)]
+[!INCLUDE [resource providers fail in test-azurestack](../../includes/known-issue-alerts-aks-acs.md)]
 
 ### No alerts in Syslog pipeline
 
@@ -110,21 +110,10 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 <!-- ### Marketplace -->
 ::: moniker-end
 
-::: moniker range=">=azs-2102"
-## Archive
-
-To access archived known issues for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
-
-## Next steps
-
-- [Review update activity checklist](release-notes-checklist.md)
-- [Review list of security updates](release-notes-security-updates.md)
-::: moniker-end
-
 ::: moniker range="azs-2008"
 ## Update
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
 
