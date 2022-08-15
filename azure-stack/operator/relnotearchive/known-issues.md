@@ -113,7 +113,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ::: moniker range="azs-2008"
 ## Update
 
-For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
+For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure Stack Hub](../azure-stack-troubleshooting.md#troubleshoot-azure-stack-hub-updates).
 
 ### Update failed to install package Microsoft.AzureStack.Compute.Installer to CA VM
 
