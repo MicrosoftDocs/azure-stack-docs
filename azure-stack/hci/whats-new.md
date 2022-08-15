@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/10/2022
+ms.date: 08/15/2022
 ---
 
 # What's new in Azure Stack HCI, version 22H2 (preview)
@@ -19,9 +19,9 @@ This article lists the various features and improvements that are now available 
 
 Azure Stack HCI, version 22H2 is the latest version of the operating system available for the Azure Stack HCI solution. This version has a major update with new features and enhancements. The update is focused on Storage replication compression, Network ATC v2 improvements, Hyper-V live migration, and more.
 
-Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. <!--For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-build.md).-->
+Azure Stack HCI, version 22H2 is offered to you if you're running Azure Stack HCI version 21H2. To identify the operating system version from the available updates in Windows Admin Center, confirm that the release ID shows **22H2**. Once installed, you can verify the version by typing `systeminfo` (in cmd.exe) or `Get-ComputerInfo` (PowerShell) to see the OS version. For more information, see how to [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md).
 
-You can join the Azure Stack HCI preview channel to test out features for this new version of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](manage/preview-channel.md).
+You can join the Azure Stack HCI preview channel to test out features for this new version of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
 The following sections briefly describe the various OS-related features and enhancements.
 
@@ -50,7 +50,7 @@ In this release, the Network ATC has several new features and improvements:
 
 - **Post-deployment VLAN modification**. You can use the new `Set-NetIntent` cmdlet in Network ATC to modify VLAN settings just as you would if you were using the `Add-NetIntent` cmdlet. No need to remove and then add the intents again when changing VLANs.
 
-<!-- For more information, see the blog on [Network ATC v2 improvements](overview.md).-->
+For more information, see the blog on [Network ATC v2 improvements](https://aka.ms/hciatcv2-blog).
 
 ### Storage replica compression
 
@@ -135,4 +135,4 @@ You can [download this free tool here](https://www.powershellgallery.com/package
 ## Next steps
 
 - [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
-<!--- [Update to Azure Stack HCI, version 22H2](./manage/install-preview-build.md)-->
+- [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md)
