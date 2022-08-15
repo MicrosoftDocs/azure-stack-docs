@@ -48,4 +48,4 @@ Once you've joined the preview channel, you're ready to install Azure Stack HCI,
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Install Azure Stack HCI, 22H2](../manage/update-cluster.md)
+> [Install Azure Stack HCI, 22H2](../manage/install-preview-version.md)
