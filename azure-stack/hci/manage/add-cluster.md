@@ -43,7 +43,7 @@ Use Windows Admin Center to join the server to your cluster.
 1. Verify the server has been successfully added to your cluster.
 
 >[!NOTE]
-> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
 ### Add a server to an SDN-enabled cluster
 
@@ -56,9 +56,9 @@ Before you run the script, ensure that a virtual switch is created and the serve
 
     ```powershell
     Import-Module SDNExpressModule.PSM1 -verbose
-    $NCURI = “Insert NC URI”
+    $NCURI = "Insert NC URI"
     $creds = Get-Credential
-    Add-SDNExpressHost -RestName $NCURI -VirtualSwitchName “Insert vSwitch Name” -ComputerName “Insert Name” -HostPASubnetPrefix “Example: 172.23.0.1/24” -Credential $creds
+    Add-SDNExpressHost -RestName $NCURI -VirtualSwitchName "Insert vSwitch Name" -ComputerName "Insert Name" -HostPASubnetPrefix "Example: 172.23.0.1/24" -Credential $creds
     ```
     where:
     - NCURI is the Network Controller REST API in the following format:
