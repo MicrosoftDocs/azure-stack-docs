@@ -4,9 +4,9 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/6/2021
+ms.date: 08/15/2022
 ms.author: sethm
-ms.reviewer: raymondl
+ms.reviewer: unknown
 ms.lastreviewed:  12/6/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
@@ -266,6 +266,13 @@ For a more thorough discussion and guidance for moving AzurRM script to Az and b
 [!Include[Known issue for install - four](../includes/known-issue-az-install-4.md)]
 
 [!Include[Known issue for install - five](../includes/known-issue-az-install-5-az.md)]
+
+### Error: "SharedTokenCacheCredential authentication failed"
+
+- Applicable: This issue applies to all supported releases.
+- Cause: A **SharedTokenCacheCredential authentication failed** error is thrown when having multiple versions of AzAccounts version 2.1.1 installed with Azure Stack Hub.
+- Remediation: Remove all versions of AzAccounts and only install the supported AzAccounts version 2.2.8.
+- Occurrence: Common
 
 ## Next steps
 
