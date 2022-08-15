@@ -12,13 +12,13 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-In this article, learn how to deploy Azure Stack HCI, version 22H2 Preview 3 using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
+In this article, learn how to deploy Azure Stack HCI, version 22H2 Preview using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
 You will use a configuration file you have created before you begin. For more information, see [sample configuration file](deployment-tool-configuration-file.md).
 
 ## Prepare the configuration file
 
-1. Select one physical server in the cluster to act as a staging server (seed node) during deployment.
+1. Select one physical server in the cluster to act as a staging server during deployment.
 
 1. Create the configuration file. For more information, see [sample configuration file](deployment-tool-configuration-file.md).
 
@@ -35,10 +35,10 @@ The following parameters are required to set up the deployment tool properly:
 
 |Parameter|Description|
 |----|----|
-|`JSONFilePath`|Enter the path to your config file. For example, C:\setup\config.json.|
+|`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
 |`DomainAdminCredentials`|Specify the username to use in the cluster’s internal domain for the Domain Administrator. The username cannot be Administrator.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
-|`RegistrationCloudName`|Specify the Azure Cloud to use. For example, AzureCloud, AzureGermanCloud, or AzureUSGovernment.|
+|`RegistrationCloudName`|Specify the Azure Cloud to use.|
 |`RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc.|
 |`RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. Multi-factor authentication is not supported.|
 
@@ -46,10 +46,10 @@ The following parameters are required to set up the deployment tool properly:
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-1. Enter your Azure subscription ID and and AzureCloud name and run the following PowerShell commands:
+1. Enter your Azure subscription ID and the Azure Cloud name and run the following PowerShell commands:
 
     ```powershell
-    $SubscriptionID=”<your_subscription_ID>”
+    $SubscriptionID="your_subscription_ID"
     $AzureCred=get-credential
     $AzureCloud="AzureCloud"
     $DomainAdminCred=get-credential
@@ -78,7 +78,7 @@ To deploy a single-node or multi-node Azure Stack HCI version 22H2 cluster using
 
 1. Search for *PhysicalNodes*.
 
-1. Remove all physical nodes except one. Here’s an example of the PhysicalNodes section before the configuration file is modified:
+1. Remove all physical nodes except one. Here’s an example of the *PhysicalNodes* section before the configuration file is modified:
 
     ```powershell
     "PhysicalNodes": [
@@ -101,5 +101,4 @@ To deploy a single-node or multi-node Azure Stack HCI version 22H2 cluster using
                   ]
     ```
 
-1. Deploy Azure Stack HCI, version 22H2 with PowerShell using the modified config file. For details, see Deploy using PowerShell.
-
+1. Deploy Azure Stack HCI, version 22H2 with PowerShell using the modified config file. For details, see **Deploy using PowerShell LINK**.

@@ -8,16 +8,16 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Deploy Azure Stack HCI version 22H2 (preview)
+# Deploy Azure Stack HCI version 22H2
 
-> Applies to: Azure Stack HCI, version 22H2
+> Applies to: Azure Stack HCI, version 22H2 (preview)
 
 This article describes how to deploy Azure Stack HCI, version 22H2 Preview using a new deployment method and tools. You should already be familiar with the existing Azure Stack HCI solution.
 
-Azure Stack HCI, version 22H2 Preview 3 must be installed using the local boot from VHDX method described in this article set.
+Azure Stack HCI, version 22H2 Preview must be installed using the local boot from VHDX method described in this article set.
 
 > [!IMPORTANT]
- > Azure Stack HCI, version 22H2 is in preview. Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for the preview and sign up before you deploy this solution.
+ > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for this preview and sign up before you deploy this solution.
 
 ## New features
 
@@ -26,7 +26,7 @@ Azure Stack HCI, version 22H2 Preview contains the following new features:
 |Feature|Description|
 |--|--|
 |Release notes|Read the release notes for more information about validating the following features and for known issues.|
-|New OS installation and deployment method|Azure Stack HCI, version 22H2 Preview 3 includes a new deployment tool with better automation in Windows Admin Center.|
+|New OS installation and deployment method|Azure Stack HCI, version 22H2 Preview includes a new deployment tool with better automation in Windows Admin Center.|
 |[Azure Connectivity Checker](https://partner.microsoft.com/dashbaord/collaborate/packages/13235)|Ascertain how ready your network is to deploy the Azure Stack HCI, version 22H2 solution.|
 |Azure registration|Registration of your cluster to Azure requires fewer permissions.|
 |Default security improvements|Recommended security settings are turned on by default.|
@@ -50,19 +50,19 @@ The following three configurations were validated for this preview:
 
 The following diagram shows two physical servers with a directly connected (switchless) storage network and a single L2 switch for management and cluster traffic.
 
-:::image type="content" source="media/deployment-tool/scenario1.png" alt-text="Deployment scenario 1" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+:::image type="content" source="media/deployment-tool/scenario1.png" alt-text=" Two servers with switchless storage network scenario" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant L3 switches for management and cluster traffic.
 
-:::image type="content" source="media/deployment-tool/scenario2.png" alt-text="Deployment scenario 2" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+:::image type="content" source="media/deployment-tool/scenario2.png" alt-text="Two physical servers with switchless storage network and redundant L3 switches scenario" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 The following diagram shows two physical servers with all network traffic traveling over a converged set of network interfaces connected to redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/scenario3.png" alt-text="Deployment scenario 3" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+:::image type="content" source="media/deployment-tool/scenario3.png" alt-text="Converged network scenario 3" lightbox="media/deployment-tool/deployment-wizard-1.png":::
 
 ## Deployment process
 
-Follow this process to deploy Azure Stack HCI version 22H2 Preview 3 in your environment:
+Follow this process to deploy Azure Stack HCI version 22H2 Preview in your environment:
 
 - Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
 - From a VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.

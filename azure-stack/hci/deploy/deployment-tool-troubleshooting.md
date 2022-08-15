@@ -18,27 +18,27 @@ Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-i
 
 ## Rerun deployment
 
-To rerun the deployment in case of a failure, run `InstallAzureStack-AsZ.ps1` with the parameter `-rerun`.
+To rerun the deployment in case of a failure, in PowerShell, run `InstallAzureStack-AsZ.ps1` with the parameter `-rerun`.
 
-Depending on which step the deployment fails, it may require to run `Set-ExecutionPolicy bypass`.
+Depending on which step the deployment fails, you may have to use `Set-ExecutionPolicy bypass`.
 
 ## Reset deployment
 
-If you must reset your deployment because it is in a not recoverable state, for example an incorrect network configuration, and rerun does not resolve the issue, it is necessary to reset the deployment.
+You may have to reset your deployment because it is in a not recoverable state, for example an incorrect network configuration, or rerun does not resolve the issue. In this case, do the following:
 
 1. Back up all your data first. The orchestrated deployment will always clean the drives used by Storage Spaces Direct in this preview release.
-1. Remove the *ServerHCI.vhdx* and replace it with the *ServerHCI.vhdx* that you have downloaded.
-1. Reinstall the Azure Stack HCI 22H2 operating system.
+1. Remove the *ServerHCI.vhdx* file and replace it with a new *ServerHCI.vhdx* file that you have downloaded.
+1. [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
 
 ## Collect log data
 
-For log data, you can manually send log files to Microsoft or you can provide consent to Microsoft to allow us to proactively collect log data.
+You can manually send log files to Microsoft or you can provide consent to allow Microsoft to proactively collect log data.
 
-Collect the following logs, zip them, and send to Microsoft: `-C:\Clouddeployment\Logs -C:\Maslogs`
+For the first option, get the following logs, zip them uo, and send to Microsoft: `-C:\Clouddeployment\Logs -C:\Maslogs`
 
-If Network ATC doesn't run correctly and virtual network interfaces and virtual switches are not created, collect the logs in *C:\Windows\Networkatctrace.etl* and send them to Microsoft.
+If Network ATC doesn't run correctly and virtual network interfaces and virtual switches are not created, get the logs in *C:\Windows\Networkatctrace.etl* and send them to Microsoft.
 
-You can allow Microsoft to proactively collect diagnostic log data during deployment. Keep in mind that `-IncludeGetSDDCLogs` is set to `$true` by default.
+For the second option, you can allow Microsoft to proactively collect diagnostic log data during deployment. Keep in mind that `-IncludeGetSDDCLogs` is set to `$true` by default.
 
 To do this, run the following PowerShell cmdlet:
 

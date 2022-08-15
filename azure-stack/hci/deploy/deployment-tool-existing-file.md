@@ -1,5 +1,5 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 using an existing configuration file
+title: Deploy Azure Stack HCI version 22H2 using a configuration file
 description: Learn how to deploy Azure Stack HCI version 22H2 using an existing configuration file
 author: dansisson
 ms.topic: how-to
@@ -8,11 +8,11 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Deploy Azure Stack HCI version 22H2 using an existing configuration file
+# Deploy Azure Stack HCI version 22H2 using a configuration file
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article discusses how to run the deployment tool using a configuration file you have created using the sample configuration file as a template.
+This article discusses how to run the deployment tool using a configuration file you create.
 
 This article assumes that you have already installed the Azure Stack HCI version 22H2 OS and have [set up the deployment tool](deployment-tool-new-file.md) previously.
 
@@ -21,7 +21,7 @@ This article assumes that you have already installed the Azure Stack HCI version
 
 ## Create the configuration file
 
-Here is a sample configuration file (JSON format) you can modify and use for deployment:
+Here is a sample configuration file (JSON format) you can modify, save, and use for deployment:
 
 ```json
 {
@@ -64,10 +64,10 @@ Here is a sample configuration file (JSON format) you can modify and use for dep
                 },
                 "PhysicalNodes": [
                     {
-                        "Name": "asb88rr10u09"
+                        "Name": "your_Server1"
                     },
                     {
-                        "Name": "asb88rr10u11"
+                        "Name": "your_Server2"
                     }
                 ],
                 "HostNetwork": {
@@ -113,7 +113,7 @@ Here is a sample configuration file (JSON format) you can modify and use for dep
                 },
                 "OptionalServices": {
                     "VirtualSwitchName": "vSwitch",
-                    "CSVPath": "C:\\clusterStorage\\Volume1",
+                    "CSVPath": "C:\\clusterStorage|\\Volume1",
                     "ARBRegion": "eastus"
                 },
                 "CompanyName": "Microsoft",
@@ -134,13 +134,13 @@ Here is a sample configuration file (JSON format) you can modify and use for dep
 }
 ```
 
-## Run deployment in Windows Admin Center
+## Run the deployment tool
 
-The deployment tool "hooks" into, and appears as additional pages and screens in Windows Admin Center. This procedure uses the configuration file that you have manually created.
+The deployment tool "hooks" into, and appears as additional pages in Windows Admin Center. This procedure uses a configuration file that you manually create.
 
 1. Open a web browser from a computer that has network connectivity to the staging server.
 
-1. In the URL field, enter *https://* followed by the IP address of your staging server.
+1. In the URL field, enter *https://* followed by the IP address of your staging (first) server.
 
 1. Accept the security warning displayed by your browser - this is shown because we’re using a self-signed certificate.
 
@@ -148,35 +148,35 @@ The deployment tool "hooks" into, and appears as additional pages and screens in
 
 1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Use an existing config file** to deploy with an existing file.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 1" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-1e.png" alt-text="Create cluster wizard 1" lightbox="media/cluster/deployment-wizard-1e.png":::
 
 1. On step **1.1 Import configuration file**, import the existing configuration by selecting **Browse** or dragging the file to the page.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 2" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-2e.png" alt-text="Create cluster wizard 2" lightbox="media/cluster/deployment-wizard-2e.png":::
 
 1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 3" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-3e.png" alt-text="Create cluster wizard 3" lightbox="media/cluster/deployment-wizard-3e.png":::
 
 1. On step **2.1 Credentials**, enter the credentials for the internal directory service and the local administrator credentials.
 When specifying a username, omit the domain name (don't use *domain\username*). The "Administrator" username isn't supported.
 
-    :::image type="content" source="media/deployment-tool/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard 4" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/deployment-tool/deployment-wizard-4e.png" alt-text="Create cluster wizard 4" lightbox="media/cluster/deployment-wizard-4e.png":::
 
     > [!NOTE]
-    > Credentials should never be stored in the configuration file.
+    > Credentials are never collected or stored in the configuration file.
 
-1. To monitor your deployment, log in to the staging server and watch the orchestration engine process. Due to a known issue, you must monitor the deployment progress using the deployment log file stored in C:\clouddeployment\logs until the staging server restarts.
+1. To monitor your deployment, log in to the staging server and watch the orchestration engine process. Due to a known issue, you must monitor the deployment progress using the deployment log file stored in *C:\clouddeployment\logs* until the staging server restarts.
 
-    :::image type="content" source="media/deployment-tool/monitor-deployment.png" alt-text="Deployment wizard step 5" lightbox="media/deployment-tool/deployment-wizard-1.png":::
+    :::image type="content" source="media/deployment-tool/monitor-deployment.png" alt-text="Monitor deployment" lightbox="media/deployment-tool/monitor-deployment.png":::
 
-1. Remove the Windows Admin Center installation used for deployment. Sign in to the staging server and run the following command:
+1. Remove the Windows Admin Center instance used by the deployment tool. Log in to the staging server and run the following command:
 
     ```powershell
     Get-CimInstance -ClassName Win32_Product|Where-object {$_name -like “Windows Admin Center”}| Invoke-CimMethod -MethodName Uninstall
     ```
 
-Congratulations, you have deployed Azure Stack HCI, version 22H2 preview 3!
+Congratulations, you have deployed Azure Stack HCI, version 22H2 Preview.
 
 ## Next step
 
