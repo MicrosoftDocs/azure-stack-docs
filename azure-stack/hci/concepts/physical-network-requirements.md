@@ -28,6 +28,15 @@ These requirements are also published in [Windows Hardware Compatibility Program
 
 When purchasing network switches, contact your switch vendor and ensure that the devices meet all Azure Stack HCI requirements. The following vendors (in alphabetical order) have confirmed that their switches support Azure Stack HCI requirements:
 
+# [Linux](#tab/linux)
+
+Content for Linux...
+
+# [Windows](#tab/windows)
+
+Content for Windows...
+
+
 | Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
 | -----  | -----  | -----  | -----   | -----   |
 | Arista Networks <br><br>*EOS version of 4.26.2F or later is required* |[7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X series](https://www.arista.com/assets/data/pdf/Datasheets/7060X_7260X_DS.pdf), [7260X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7260X3_Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R series](https://www.arista.com/assets/data/pdf/Datasheets/7280R-DataSheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) | [7050X3 series](https://www.arista.com/assets/data/pdf/Datasheets/7050X3-Datasheet.pdf), [7060X4 series](https://www.arista.com/assets/data/pdf/Datasheets/7060X4-Datasheet.pdf), [7280R3 series](https://www.arista.com/assets/data/pdf/Datasheets/7280R3-Data-Sheet.pdf) |
