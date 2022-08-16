@@ -270,7 +270,7 @@ For a more thorough discussion and guidance for moving AzurRM script to Az and b
 ### Error: "SharedTokenCacheCredential authentication failed"
 
 - Applicable: This issue applies to all supported releases.
-- Cause: A **SharedTokenCacheCredential authentication failed** error is thrown when having multiple versions of AzAccounts version 2.1.1 installed with Azure Stack Hub.
+- Cause: A **SharedTokenCacheCredential authentication failed** error is thrown when having multiple versions of **AzAccounts** installed with Azure Stack Hub PowerShell Module version 2.1.1.
 - Remediation: Remove all versions of AzAccounts and only install the supported AzAccounts version 2.2.8.
 - Occurrence: Common
 
