@@ -123,7 +123,7 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
 ```json
 [{ 
         "URL": "http://*.windowsupdate.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -133,7 +133,7 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     }, 
     { 
         "URL": "http://*.update.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -143,12 +143,12 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     }, 
     { 
         "URL": "http://*.windowsupdate.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://download.windowsupdate.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -158,27 +158,27 @@ The following are the recommended firewall URLs in the JSON format. Use the Copy
     }, 
     { 
         "URL": "http://*.download.windowsupdate.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://wustat.windows.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://ntservicepack.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://go.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
         "URL": "http://dl.delivery.mp.microsoft.com", 
-        "Port": "443", 
+        "Port": "80", 
         "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
     }, 
     { 
@@ -217,7 +217,7 @@ If there's a corporate firewall between the Azure Stack HCI operating system and
 
 ### Cluster Cloud Witness
 
-This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `\[myblobstorage\].blob.core.windows.net`.
+This is optional. If you choose to use a cloud witness as the cluster witness, you must allow firewall access to the Azure blob container, for example, `[myblobstorage].blob.core.windows.net`.
 
 ### Firewall requirements for additional Azure services (optional)
 
@@ -225,7 +225,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Arc for Servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc resource bridge](/azure/azure-arc/resource-bridge/overview)
+- [Azure Arc resource bridge](../manage/azure-arc-enabled-virtual-machines.md#firewall-url-exceptions)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Microsoft Defender](/microsoft-365/security/defender-endpoint/configure-proxy-internet?view=o365-worldwide&preserve-view=true#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server)
 - [Microsoft Monitoring Agent (MMA) and Log Analytics Agent](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)
