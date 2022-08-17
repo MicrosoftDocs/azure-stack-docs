@@ -140,7 +140,7 @@ Use the following steps to deploy and configure Velero:
 
    ```powershell
    kubectl -n velero get pods
-   kubectl logs deployment/velero -n Velero
+   kubectl logs deployment/velero -n velero
    ```
 
 ## Use Velero to create a workload cluster backup
