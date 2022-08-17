@@ -14,13 +14,13 @@ ms.reviewer: jgerend
 
 In this article, learn how to deploy Azure Stack HCI, version 22H2 using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
-You will use a configuration file you have created before you begin. For more information, see [sample configuration file](deployment-tool-configuration-file.md).
+You will use a configuration file you have created before you begin. For more information, see the [sample configuration file](deployment-tool-existing-file.md).
 
 ## Prepare the configuration file
 
 1. Select the first server in the cluster to act as a staging server during deployment.
 
-1. Create the configuration file. For more information, see [sample configuration file](deployment-tool-configuration-file.md).
+1. Create the configuration file. For more information, see the [sample configuration file](deployment-tool-existing-file.md).
 
 1. Review the configuration file to ensure the provided values match your environment details before you copy it to the staging server.
 

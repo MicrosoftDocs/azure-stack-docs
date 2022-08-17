@@ -68,12 +68,12 @@ Use the following checking to gather this information ahead of the actual deploy
 |Server names|a unique name for each server you wish to deploy.|
 |Domain names|an internal domain name.|
 |IPv4 subnet for management network intent|A subnet used for the management network. Each host must have an IPv4 address configured from this network.|
-|Two IPv4 subnet for storage network intent|Two different subnets used for the storage network.||
+|Two IPv4 subnet for storage network intent|Two different subnets used for the storage network.|
 |Management VLAN ID|a VLAN ID to be used for the management network, from your IT network administrator.|
 |Storage VLAN ID|two unique VLAN IDs to be used for the storage networks, from your IT network administrator.|
 |DNS forwarder|A DNS Server that allows DNS forwarding.|
 |Time server|A time server used to synchronize the server time with that of Azure.|
-|Azure subscription	ID|ID for the Azure subscription used to register the cluster. You must be an administrator on this subscription to manage access to Azure resources.|
+|Azure subscription ID|ID for the Azure subscription used to register the cluster. You must be an administrator on this subscription to manage access to Azure resources.|
 
 ## Next step
 

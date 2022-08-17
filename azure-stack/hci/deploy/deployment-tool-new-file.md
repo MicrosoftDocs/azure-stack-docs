@@ -95,7 +95,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-1.4-cluster-security-custom.png" alt-text="Deployment step 1.4 custom" lightbox="media/deployment-tool/deployment-step-1.4-cluster-security-custom.png":::
 
-1. On step **1.4 Configure the internal domain**, specify the settings used by the internal domain used for cluster authentication and management. When specifying a username, omit the domain name (don't use *domain\username*). The "Administrator" username isn’t supported.
+1. On step **1.4 Configure the internal domain**, specify the settings used by the internal domain used for cluster authentication and management. When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn’t supported.
 
     :::image type="content" source="media/deployment-tool/deployment-wizard-5.png" alt-text="Deployment step 1.4" lightbox="media/deployment-tool/deployment-wizard-5.png":::
 
@@ -158,15 +158,15 @@ Some tasks after deployment has finished:
 
 1. On the **Update local password** page, enter
 
-    :::image type="content" source="media/deployment-tool/deployment-post-update-password.png" alt-text="Monitor-deployment" lightbox="media/deployment-post-update-password.png":::
+    :::image type="content" source="media/deployment-tool/deployment-post-update-password.png" alt-text="Update local password page" lightbox="media/deployment-tool/deployment-post-update-password.png":::
 
 1. On the **Set IP address** page, enter
 
-    :::image type="content" source="media/deployment-tool/deployment-post-set-ip-address.png" alt-text="Monitor-deployment" lightbox="media/deployment-post-set-ip-address.png":::
+    :::image type="content" source="media/deployment-tool/deployment-post-set-ip-address.png" alt-text="Set IP address page" lightbox="media/deployment-tool/deployment-post-set-ip-address.png":::
 
 1. On the **Review summary** page, enter
 
-    :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Monitor-deployment" lightbox="media/deployment-post-review-summary.png":::
+    :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Review summary page" lightbox="media/deployment-tool/deployment-post-review-summary.png":::
 
 ## Next step
 
