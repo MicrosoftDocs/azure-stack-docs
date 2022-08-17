@@ -8,11 +8,11 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Prerequisites for deploying Azure Stack HCI version 22H2
+# Prerequisites for deploying Azure Stack HCI version 22H2 (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article discusses the software, hardware, and networking prerequisites plus a pre-deployment checklist in order to deploy Azure Stack HCI, version 22H2 Preview.
+This article discusses the software, hardware, and networking prerequisites plus a pre-deployment checklist in order to deploy Azure Stack HCI, version 22H2.
 
 ## Software requirements
 
@@ -43,6 +43,19 @@ Before you begin, make sure that the physical network and the host network where
 > [!NOTE]
 > Advanced settings within the storage network configuration like iWarp or MTU changes are not supported in this release.
 
+## Active Directory requirements
+
+You will need the following information from your administrator:
+
+- Active directory organizational unit (OU) name
+- Active directory domain FQDN
+- Active directory cluster name
+- Active directory object prefix
+- Active directory username and password
+
+> [!NOTE]
+> This preview release supports a single Azure Stack HCI deployment per Active Directory domain.
+
 ## Pre-deployment checklist
 
 Use the following checking to gather this information ahead of the actual deployment of your Azure Stack HCI cluster.
@@ -59,7 +72,7 @@ Use the following checking to gather this information ahead of the actual deploy
 |Management VLAN ID|a VLAN ID to be used for the management network, from your IT network administrator.|
 |Storage VLAN ID|two unique VLAN IDs to be used for the storage networks, from your IT network administrator.|
 |DNS forwarder|A DNS Server that allows DNS forwarding.|
-|Time server|A timeserver used to synchronize the server time with that of Azure.|
+|Time server|A time server used to synchronize the server time with that of Azure.|
 |Azure subscription	ID|ID for the Azure subscription used to register the cluster. You must be an administrator on this subscription to manage access to Azure resources.|
 
 ## Next step

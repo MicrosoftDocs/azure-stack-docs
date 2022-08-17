@@ -1,6 +1,6 @@
 ---
-title: Install Azure Stack HCI version 22H2
-description: Learn how to install Azure Stack HCI version 22H2 preview from a boot image
+title: Install  Azure Stack HCI version 22H2 operating system (preview)
+description: Learn how to install the  Azure Stack HCI version 22H2 operating system (preview)
 author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
@@ -8,11 +8,11 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Install Azure Stack HCI version 22H2
+# Install the  Azure Stack HCI version 22H2 operating system (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-The Azure Stack HCI, version 22H2 Preview operating system (OS) is installed locally using a a USB drive or other media that can boot from a VHDX file.
+The  Azure Stack HCI version 22H2 operating system (OS) is installed locally using a USB drive or other media that can boot from a VHDX file.
 
 The installation includes an OS image and a deployment tool that allows a physical server to boot from a VHDX file. This is different from how Azure Stack HCI has been installed in the past. Two folders are included with the installation: *Cloud* and *Image*.
 
@@ -44,7 +44,7 @@ You can configure boot from a VHDX file one of two ways:
 If using BCD boot, complete the following steps:
 
 1. Copy the *ServerHCI.vhdx* file to the physical boot drive of your server.
-1. From a command prompt, run the following to attach the VHDX file, select a volume, and assign a drive letter:
+1. From an administrative command prompt, run the following to attach the VHDX file, select a volume, and assign a drive letter:
 
     ```powershell
     Diskpart
@@ -94,7 +94,7 @@ You can use [Sconfig](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)t
 
 After installing the Azure Stack HCI version 22H2 OS, you are ready to install and use the deployment tool in Windows Admin Center to set up your cluster. You can either create a new deployment configuration file or use an existing configuration file:
 
-- [Setup and run the deployment tool (new configuration file](deployment-tool-new-file.md)
+- [Set up and run the deployment tool (new configuration file](deployment-tool-new-file.md)
 - [Deploy using an existing configuration file](deployment-tool-existing-file.md)
 
 If applicable for your environment, you can also [deploy using PowerShell](deployment-tool-powershell.md)

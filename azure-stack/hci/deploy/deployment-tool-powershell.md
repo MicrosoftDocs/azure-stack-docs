@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 using PowerShell (preview)
-description: Learn how to deploy Azure Stack HCI version 22H2 using Windows PowerShell
+title: Deploy Azure Stack HCI version 22H2 (preview) using PowerShell
+description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using Windows PowerShell
 author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
@@ -8,17 +8,17 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Deploy Azure Stack HCI version 22H2 using PowerShell
+# Deploy Azure Stack HCI version 22H2 (preview) using PowerShell
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-In this article, learn how to deploy Azure Stack HCI, version 22H2 Preview using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
+In this article, learn how to deploy Azure Stack HCI, version 22H2 using Windows PowerShell. Before you begin the deployment, make sure to first install the operating system.
 
 You will use a configuration file you have created before you begin. For more information, see [sample configuration file](deployment-tool-configuration-file.md).
 
 ## Prepare the configuration file
 
-1. Select one physical server in the cluster to act as a staging server during deployment.
+1. Select the first server in the cluster to act as a staging server during deployment.
 
 1. Create the configuration file. For more information, see [sample configuration file](deployment-tool-configuration-file.md).
 
@@ -42,7 +42,7 @@ The following parameters are required to set up the deployment tool properly:
 |`RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc.|
 |`RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. Multi-factor authentication is not supported.|
 
-1. Log on to the staging server using local administrative credentials.
+1. Log on to the first (staging) server using local administrative credentials.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 

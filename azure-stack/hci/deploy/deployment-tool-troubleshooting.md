@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Azure Stack HCI version 22H2 deployment (preview)
-description: Learn to troubleshoot Azure Stack HCI version 22H2
+title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
+description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
@@ -8,11 +8,11 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Troubleshoot Azure Stack HCI version 22H2 deployment (preview)
+# Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article discusses troubleshooting and logging options for your Azure Stack HCI 22H2 preview deployment.
+This article discusses troubleshooting and logging options for your Azure Stack HCI 22H2 deployment.
 
 Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).
 
