@@ -214,7 +214,8 @@
         "hybrid/**/*.md": "Azure Stack"
       },
       "feedback_product_url": {
-        "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
+        "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7",
+        "hci/**/*.md": "https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8"
       },
       "ms.subservice": {
         "asdk/**/*.md": "azure-stack-hub-asdk",
