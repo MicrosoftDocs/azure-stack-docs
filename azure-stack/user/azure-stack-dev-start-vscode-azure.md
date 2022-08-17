@@ -4,7 +4,7 @@ description: As a developer, connect to Azure Stack Hub using Azure Account Exte
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 8/27/2021
+ms.date: 8/15/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 8/27/2021
@@ -16,7 +16,7 @@ ms.lastreviewed: 8/27/2021
 
 # Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code
 
-In this article, we will walk you through how to connect to Azure Stack Hub using the Azure Account extension. You can use Azure directly from Visual Studio Code through extensions.  You will need to update your Visual Studio Code (VS Code) settings.
+This article describes how to connect to Azure Stack Hub using the Azure Account extension. You can use Azure directly from Visual Studio Code through extensions.  You will need to update your Visual Studio Code (VS Code) settings.
 
 VS Code is a light-weight editor for building and debug web and cloud applications. ASP.NET Core, Python, NodeJS, Go, and other developers use VS Code. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for other Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack Hub subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. You can sign in to Azure Stack Hub, select your subscription, and open a new command line in a Cloud Shell. 
 
@@ -28,7 +28,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
 In addition to the Azure Account extension for Visual Studio, a number of other Azure extensions are supported for use with Azure Stack Hub and Visual Studio Code. These include:
  - [Visual Studio Code Azure Storage extension](dev-start-vscode-storage.md)
- - [Visual Studio Code Azure Resources extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups)
+ - [Visual Studio Code Azure Resources extension (requires version 0.4.0 or earlier)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureresourcegroups)
  - [Visual Studio Code Azure Virtual Machines extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurevirtualmachines)
 
 ## Pre-requisites for Azure Account Extension
