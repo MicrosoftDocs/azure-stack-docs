@@ -1,43 +1,41 @@
 ---
 title: Update the Network Controller certificates
-description: This topic covers how to plan to deploy Network Controller via Windows Admin Center on a set of virtual machines (VMs).
+description: This article describes how to update Network Controller certificates that haven't expired.
 author: ManikaDhiman
-ms.author: v-mandhiman@microsoft.com
+ms.author: v-mandhiman
 ms.topic: conceptual
 ms.date: 08/16/2022
 ---
 
 # Update the Network Controller certificates
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
 > [!IMPORTANT]
-> This workflow presented in this article works only when the Network Controller certificates have not expired. If the certificates have already expired, DO NOT use this workflow.
+> The instructions in this article work only if the Network Controller certificates haven't expired. If the certificates have already expired, DO NOT use these instructions.
 
-> [!IMPORTANT]
-> Do not remove any existing Network Controller certificates.
+> [!WARNING]
+> Don't remove any existing Network Controller certificates.
 
 If you are using Software Defined Networking (SDN), Network Controller is one of the three major components that you deploy. You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in nondomain environments, you must deploy certificates for authentication. 
 
-This article describes how to change or update your Network Controller certificates. You should update the certificates before they expire.
+This article describes how to change or update your Network Controller certificates. You must update the certificates before they expire.
 
 ## When to update Network Controller certificates
 
 You can change or update the certificates when:
 
-- The certificate is nearing expiry.
+- The certificate is nearing expiry. You can renew the certificates at any point before they expire.
+  > [!NOTE]
+  > If you renew existing certificates with the same key, you are all set and don't need to do anything.
 
-- You want to move from a self-signed certificate to a certificate that is issued by a Certificate Authority (CA).
-
-> [!NOTE]
-> If you renew existing certificates with the same key, you are all set and don't need to do anything.
-
-> [!NOTE]
-> While changing the certificates, ensure that you use the same subject name as the old certificate.
+- You want to replace a self-signed certificate with a Certificate Authority (CA)-signed certificate.
+   > [!NOTE]
+   > While changing the certificates, ensure that you use the same subject name as of the old certificate.
 
 ## Certificate usage for SDN
 
-In Azure Stack HCI, Network Controller uses two kinds of certificates:
+In Azure Stack HCI, Network Controller uses two types of certificates:
 
 - REST certificate: A single certificate for Northbound communication with REST clients (such as Windows Admin Center) and Southbound communication with Hyper-V hosts and software load balancers. This same certificate is present on all Network Controller Virtual Machines (VMs).
 
@@ -57,19 +55,30 @@ Get-ChildItem Cert:\\LocalMachine\\My \| where{\$\_.Subject -eq "CN=\<Certificat
 
 ## Renew REST certificate
 
-You use the REST certificate for:
+You can use the Network Controller's REST certificate for:
 
-- Northbound REST encryption
+- Northbound communication with REST clients 
 - Encryption of credentials
-- Southbound communication to hosts, Gateway VMs, and Software Load Balancer (SLB) VMs. Each of those must be updated.
+- Southbound communication to hosts, Gateway VMs, and Software Load Balancer (SLB) VMs
 
-1. Assign the new certificate to a variable:
+When you update the certificate, you must update these communication channels and devices to use the new certificate.
+
+To renew REST certificate, complete the following steps:
+
+1. [Assign the new certificate to a variable](#assign-the-new-certificate-to-a-variable)
+1. [Set permissions on the certificate for Network Service to Read and Allow](#set-permissions-on-the-certificate-for-network-service-to-read-and-allow)
+1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms)
+1. [(Only for self-signed certificate) Copy the certificate public key to all the hosts and Software Load Balancer VMs](#copy-the-certificate-public-key-to-all-the-hosts-and-software-load-balancer-vms)
+
+### Assign the new certificate to a variable
 
 ```powershell
 \$cert= Get-ChildItem Cert:\\LocalMachine\\My \| where{\$\_.Thumbprint -eq \"512D56994E40D97C9BC07A52BB3E74D54CF76EA0\"}
 ```
 
-1. Set permissions on the certificate for NT Authority/Network Service to Read and Allow
+### Set permissions on the certificate for Network Service to Read and Allow
+
+You need to provide some permissions for NT Authority/Network Service on the certificate. This can be done as follows: 
 
 ```powershell
 \$targetCertPrivKey = \$Cert.PrivateKey
@@ -83,7 +92,9 @@ System.Security.AccessControl.FileSystemAccessRule \$permission\$privKeyAcl.AddA
 Set-Acl \$privKeyCertFile.FullName \$privKeyAcl
 ```
 
-1. Copy the certificate to all Network Controller VMs. Ensure that you procure the new certificate and put it in the Personal store of the Local Machine (LocalMachine\\My). Replace the same certificate (with private key) in the LocalMachine/My store of all the Network Controller VMs. 
+### Copy the certificate to all Network Controller VMs
+
+Ensure that you procure the new certificate and put it in the Personal store of the Local Machine (LocalMachine\\My). Replace the same certificate (with private key) in the LocalMachine/My store of all the Network Controller VMs. 
 
 Here are the sample commands to export and then import the certificate:
 
@@ -108,7 +119,7 @@ Cert:\\LocalMachine\\My -Password \$mypwd
 importing the cert
 ```
 
-### Copy the certificate public key to all the hosts and SLB VMs (only for self-signed certificate)
+### Copy the certificate public key to all the hosts and Software Load Balancer VMs
 
 If the certificate is a self-signed certificate, it must also be placed in the (LocalMachine\\Root) store of every NC VM. It must also be placed in the (LocalMachine\\Root) store of every Azure Stack HCI host machine, Gateway VMs and the SLB VMs. This is to ensure that the certificate is trusted by the peer entities.
 
@@ -157,7 +168,7 @@ Then, we need to update the Credential REST resource for the certificate. This c
 
 ## Renew NC node certificate
 
-To renew the NC node certificate, follow the below steps on each NC VM:
+To renew the NC node certificate, perform the following steps on each Network Controller VM:
 
 1. Procure the new certificate and put it in the Personal store of the Local Machine (LocalMachine\\My). If it is a self-signed certificate, it must also be placed in the (LocalMachine\\Root) store of every NC VM.
 
@@ -167,9 +178,10 @@ To renew the NC node certificate, follow the below steps on each NC VM:
    \$cert= Get-ChildItem Cert:\\LocalMachine\\My \| where{\$\_.Thumbprint-eq \"\<thumbprint of the new certificate\>\"}
    ```
 
-1. Set permissions on the certificate for Network Service to Read and Allow. This is documented above [here](#set-permissions-on-the-certificate-for-network-service-to-read-and-allow).
+1. [Set permissions on the certificate for Network Service to Read and Allow](#set-permissions-on-the-certificate-for-network-service-to-read-and-allow).
 
-1. Execute the following command to change the node certificate
+1. Execute the following command to change the node certificate:
+
    ```powershell
    Set-NetworkControllerNode -Name \<Name of the Network Controller node\>-NodeCertificate \$cert
    ```
