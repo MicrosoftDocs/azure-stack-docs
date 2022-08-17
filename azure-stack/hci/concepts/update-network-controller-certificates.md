@@ -11,15 +11,15 @@ ms.date: 08/16/2022
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
 
-This article provides instructions on how to change or update your Network Controller certificates if they haven't expired.
+If you are using Software Defined Networking (SDN), Network Controller is one of the three major components that you deploy. You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in nondomain environments, you must deploy certificates for authentication. 
+
+This article provides instructions on how to change or update your Network Controller certificates before their expiration.
 
 > [!IMPORTANT]
-> Don't use instructions in this article if your Network Controller certificates have already expired.
+> Don't use this article for updating your Network Controller certificates after their expiration.
 
 > [!WARNING]
 > Don't remove any existing Network Controller certificates.
-
-If you are using Software Defined Networking (SDN), Network Controller is one of the three major components that you deploy. You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in nondomain environments, you must deploy certificates for authentication. 
 
 ## When to update Network Controller certificates
 
@@ -35,35 +35,35 @@ You can change or update the certificates when:
 
 ## Types of Network Controller certificates
 
-In Azure Stack HCI, each Network Controller virtual machine (VM) uses two types of certificates. 
+In Azure Stack HCI, each Network Controller virtual machine (VM) uses two types of certificates:
 
-- REST certificate: A single certificate for Northbound communication with REST clients (such as Windows Admin Center) and Southbound communication with Hyper-V hosts and software load balancers. This same certificate is present on all the Network Controller virtual machines (VMs).
+- REST certificate. A single certificate for Northbound communication with REST clients (such as Windows Admin Center) and Southbound communication with Hyper-V hosts and software load balancers. This same certificate is present on all Network Controller VMs.
 
-- Network Controller node certificate: A certificate on each Network Controller VM for inter-node authentication.
+- Network Controller node certificate. A certificate on each Network Controller VM for inter-node authentication.
 
-You must update the certificates before they expire. See [How to check a certificate's expiration date](#how-to-check-a-certificates-expiration-date), below.
+You must update the Network Controller certificates before they expire. See [How to check a certificate's expiration date](#how-to-check-a-certificates-expiration-date), below.
 
 ## How to check a certificate's expiration date
 
-Use the following command on each Network Controller VM to check the expiration date of a certificate placed in the local machine personal store:
+Use the following command on each Network Controller VM to check the expiration date of a certificate:
 
 ```powershell
 Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subject-name>"}|Select-Object NotAfter, Subject
 ```
 
-- To get the expiry of the REST certificate, replace "Certificate-subject-name" with the REST name of the deployment. You can get this value from the `Get-NetworkController` command.
+- To get the expiry of the REST certificate, replace "Certificate-subject-name" with the IP address of the Network Controller REST Endpoint. You can get this value from the `Get-NetworkController` command.
 
 - To get the expiry of the node certificate, replace "Certificate-subject-name" with the fully qualified domain name (FQDN) of the Network Controller VM. You can get this value from the `Get-NetworkController` command.
 
 ## Renew REST certificate
 
-You can use the Network Controller's REST certificate for:
+You use the Network Controller's REST certificate for:
 
 - Northbound communication with REST clients 
 - Encryption of credentials
 - Southbound communication to hosts, Gateway VMs, and Software Load Balancer (SLB) VMs
 
-When you update the REST certificate, you must update these communication channels and devices to use the new certificate.
+When you update the REST certificate, you must update the management clients and network devices to use the new certificate.
 
 To renew REST certificate, complete the following steps:
 
