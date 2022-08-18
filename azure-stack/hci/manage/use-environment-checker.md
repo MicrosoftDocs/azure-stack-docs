@@ -1,5 +1,5 @@
 ---
-title: Assess deployment readiness by using Environment Checker
+title: Use Azure Stack HCI Environment Checker to assess deployment readiness (preview)
 description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -11,9 +11,9 @@ ms.date: 08/15/2022
 
 # Assess your environment for deployment readiness
 
-> Applies to: Azure Stack HCI, version 22H2 (preview)
+> Applies to: Azure Stack HCI, version 22H2 (preview) and version 21H2
 
-This article describes how to use the Azure Stack HCI Environment Checker to assess how ready your environment is for deploying the Azure Stack HCI solution.
+This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
 
 For a smooth deployment of the Azure Stack HCI solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Stack HCI Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
 
@@ -24,7 +24,7 @@ For a smooth deployment of the Azure Stack HCI solution, your IT environment mus
 
 The Environment Checker tool runs a series of tests on each server in your Azure Stack HCI cluster, reports the result for each test, provides remediation guidance when available, and saves a log file and a detailed report file.
 
-The Environment Checker comprises several validators:
+The Environment Checker tool consists of the following validators:
 
 - **Connectivity validator.** Checks whether each server in the cluster meets the [connectivity requirements](../concepts/firewall-requirements.md?tabs=allow-table#firewall-requirements-for-outbound-endpoints). For example, each server in the cluster has internet connection and can connect via HTTPS outbound traffic to well-known Azure endpoints through all firewalls and proxy servers.
 - **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements.md). For example, all the servers in the cluster have the same manufacturer and model.
@@ -123,8 +123,6 @@ To run the connectivity validator, follow these steps.
    > [!NOTE]
    > Using the `Invoke-AzStackHciConnectivityValidation` cmdlet without any parameter checks connectivity for all the service endpoints that are enabled from your device. You can also pass parameters to run readiness checks for specific scenarios. See [Examples](#examples), below.
 
-### Examples
-
 Here are some examples of running the connectivity validator cmdlet with parameters.
  
 #### Example 1: Check connectivity of a remote computer
@@ -160,7 +158,7 @@ To learn more about different sections in the readiness check report, see [Under
 
 **Sample output: Successful test**
 
-The following sample is the output from a successful run of the connectivity validator. The output indicates a healthy connection to all the endpoints, including well-known Azure services and observability services. Under **Diagnostics**, you can see the validator checks if a DNS server is present and healthy. It collects WinHttp, IE proxy, and environment variable proxy settings for diagnostics and data collection. It also checks if a transparent proxy is used in the outbound path and displays the output.
+The following sample output is from a successful run of the connectivity validator. The output indicates a healthy connection to all the endpoints, including well-known Azure services and observability services. Under **Diagnostics**, you can see the validator checks if a DNS server is present and healthy. It collects WinHttp, IE proxy, and environment variable proxy settings for diagnostics and data collection. It also checks if a transparent proxy is used in the outbound path and displays the output.
 
    :::image type="content" source="./media/environment-checker/connectivity-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the connectivity validator." lightbox="./media/environment-checker/connectivity-validator-sample-passed.png":::
 
@@ -174,11 +172,11 @@ If a test fails, the connectivity validator returns information to help you reso
 
 The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
 
-You can use the hardware validator at any step of the deployment—before starting the deployment (when you're still waiting to receive the actual hardware), during deployment, or after deployment.
+You can use the hardware validator at any step of the deployment - before starting the deployment (while waiting for the hardware to arrive), during deployment, or after deployment.
 
 Refer to the following table for a description of the tests the hardware validator performs on different hardware component:
 
-| **Source** | **Description of the test** | **Proposed action** |
+| **Test source** | **Test description** | **Status** |
 | -------| ------------------------| --------------- |
 | Processor | All processor for desired properties | Warning |
 | Processor | All processor for consistent properties | Warning |
@@ -210,8 +208,6 @@ To run the hardware validator, follow these steps.
    ```powershell
    Invoke-AzStackHciHardwareValidation 
    ```
-
-### Examples
 
 Here are some examples of using the hardware validator.
  
@@ -246,9 +242,9 @@ This sample output indicates seven critical issues that you must fix before proc
 
 ### [Active Directory](#tab/active-directory)
 
-With Azure Stack HCI, version 22H2 (preview) release, you can use an Active Directory preparation tool to create group managed service accounts (gMSAs) and make them discoverable by deployment in a dedicated Organizational Unit (OU).
+In this release, you can use an Active Directory preparation tool to create group managed service accounts (gMSAs) and make them discoverable by deployment in a dedicated Organizational Unit (OU).
 
-You can use the Active Directory validator to:
+Use the Active Directory validator to:
 
 - Validate the Active Directory preparation tool is run and the gMSAs are set and groups are provisioned prior to starting the deployment.
 - Assess any Active Directory issue during deployment. The support team can check the validator report logs to assess if you'd run the Active Directory preparation tool before deployment.
@@ -265,7 +261,7 @@ To run the Active Directory validator, follow these steps.
    - Azure Stack HCI deployment cluster name
    - Physical nodes objects (if already created) must be available under nested computers organization unit
 
-1. Run the following command in an elevated PowerShell session:
+1. Run the following command in PowerShell as administrator:
 
    ```powershell
    $params = @{
@@ -341,7 +337,7 @@ The following sample is the output from a failed run of the network validator. T
 
 Each validator generates a readiness check report after completing the check. Make sure to review the report and correct any issues before starting the actual deployment.
 
-The information displayed on each readiness check report varies depending on the checks the validators perform. Refer to the following table for a description of different sections available in the readiness check reports for each validator:
+The information displayed on each readiness check report varies depending on the checks the validators perform. The following table summarizes the different sections in the readiness check reports for each validator:
 
 | **Section** | **Description** | **Available in** |
 | ------- | ----------- | ----------- |
