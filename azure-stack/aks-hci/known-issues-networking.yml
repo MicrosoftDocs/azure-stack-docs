@@ -168,7 +168,7 @@ sections:
         answer: | 
           The SCSI path info for a VHD is empty in the cloud agent, although the VHD is attached on the node agent and has non-empty SCSI path info.
           
-          ## Steps to reproduce
+          ### Steps to reproduce
           
           1. Create a VM. Make sure the VM is on a different node than the cloud agent.
           2. Disconnect the network connection between the two nodes.
@@ -177,9 +177,11 @@ sections:
           
           The node agent where the VM is present has the non-empty SCSI path info but it would be missing on the cloud agent.
           
-          ## Expected behavior
+          ### Expected behavior
           
           Both the node agent and the cloud agent should have the same SCSI path details.
+          
+          To mitigate the issue, perform the following steps:
           
           1. Restart the cloud agent.
           2. Make sure that the cloud agent is picking up on the VM movement. If the cloud agent is not picking up on the VM movements, check if both the nodes have the same VM ID. If not, correct the invalid ID. To correct the VM ID, remove the placeholder structures with the invalid VM ID, then create it with the correct VM ID. Use the YAML file below to create the placeholder structures for the VM.
@@ -187,30 +189,30 @@ sections:
           3. Make sure that the VHD object's node-entity-map has entries for all the nodes. This can be checked by dumping the cloud agent store. If some nodes are missing the node-entity-map, make sure that the VM moved to the node which is present in the node-entity-map of the VHD. Use `mocctl admin recovery backup --path <path>` to dump the cloud agent store.
           4. Detach and reattach all the VHDs attached to the VM.
           
-          ```yaml
-          name: <VM name on the node agent>
-          virtualmachineproperties:
-            storageprofile:
-              osdisk:
-                name: null
-                ostype: "Linux"
-                vhdname: <OS Disk name on the node agent>
-              datadisks: []
-            osprofile:
-              computername: "<VM name>" # Usually in the format moc-xxxxxxx
-              adminusername: <username>
-              adminpassword: <password>
-              windowsconfiguration: null
-              linuxconfiguration:
-                disablepasswordauthentication: false
-            networkprofile:
-              networkinterfaces: []
-            isplaceholder: true
+            ```yaml
+            name: <VM name on the node agent>
+            virtualmachineproperties:
+              storageprofile:
+                osdisk:
+                  name: null
+                  ostype: "Linux"
+                  vhdname: <OS Disk name on the node agent>
+                datadisks: []
+              osprofile:
+                computername: "<VM name>" # Usually in the format moc-xxxxxxx
+                adminusername: <username>
+                adminpassword: <password>
+                windowsconfiguration: null
+                linuxconfiguration:
+                  disablepasswordauthentication: false
+              networkprofile:
+                networkinterfaces: []
+              isplaceholder: true
           
-          tags:
-            <vm name on the node agent>-id: <correct VM ID>
-            <vm name on the node agent> : <vm name on the node agent>
-          ```
+            tags:
+              <vm name on the node agent>-id: <correct VM ID>
+              <vm name on the node agent> : <vm name on the node agent>
+            ```
   
 
 additionalContent: |
