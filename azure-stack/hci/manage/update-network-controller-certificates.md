@@ -63,7 +63,7 @@ You use the Network Controller's REST certificate for:
 
 - Northbound communication with REST clients 
 - Encryption of credentials
-- Southbound communication to hosts, Gateway VMs, and Software Load Balancer (SLB) VMs
+- Southbound communication to hosts, Gateway VMs, and Software Load Balancer VMs
 
 When you update a REST certificate, you must update the management clients and network devices to use the new certificate.
 
@@ -81,7 +81,7 @@ To renew REST certificate, complete the following steps:
 
 1. [(Only for self-signed certificate) Copy the certificate public key to all the hosts and Software Load Balancer VMs](#copy-the-certificate-public-key-to-all-the-hosts-and-software-load-balancer-vms-only-for-self-signed-certificate).
 
-1. [Use the new certificate](#use-the-new-rest-certificate).
+1. [Modify Network Controller settings to use the new certificate](#modify-network-controller-settings-to-use-the-new-certificate).
 
 ### Assign the new certificate to a variable
 
@@ -115,7 +115,7 @@ Follow these steps for copying one certificate to all Network Controller VMs.
 
 1. Ensure that you procure the new certificate and place it in the local machine personal store (My – cert:\localmachine\my).
 
-1.  On the first Network Controller VM, export the certificate to a Personal Information Exchange (PFX) file.
+1. On the first Network Controller VM, export the certificate to a Personal Information Exchange (PFX) file.
 
    ```powershell
    $mypwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText
@@ -133,10 +133,10 @@ Follow these steps for copying one certificate to all Network Controller VMs.
 
 ### Copy the certificate public key to all the hosts and Software Load Balancer VMs (only for self-signed certificate)
 
-If the certificate is self-signed, place it in the root store of the local machine (LocalMachine\Root) for each of the following:
+If you're using a self-signed certificate, place it in the root store of the local machine (LocalMachine\Root) for each of the following:
 
 - Every Network Controller VM.
-- Every Azure Stack HCI host machine, Gateway VMs and the SLB VMs. This ensures that the certificate is trusted by the peer entities.
+- Every Azure Stack HCI host machine, Gateway VMs and the Software Load Balancer VMs. This ensures that the certificate is trusted by the peer entities.
 
 Here's a sample command to import the certificate public key that has already been exported:
 
@@ -145,29 +145,29 @@ Import-Certificate -FilePath "\\sa18fs\SU1_LibraryShare1\RestCert.cer\" -CertSto
 cert:\localMachine\Root
 ```
 
-### Use the new REST certificate 
+### Modify Network Controller settings to use the new certificate
 
-Update the management clients and network devices to use the new certificate.
+Modify Network Controller node, cluster, and application settings to use the new certificate.
 
-**Renew certificate for Northbound communication**
+**For Northbound communication**
 
-To renew the certificate that Network Controller uses to prove its identity to clients, run the following command:
+To change the certificate that Network Controller uses for Northbound communication, run the following command:
 
 ```powershell
 Set-NetworkController -ServerCertificate \$cert
 ```
 
-**Renew REST certificate for encryption of credentials**
+**For encryption of credentials**
 
-To renew the certificate that Network Controller uses to encrypt the credentials, run the following command on any of the Network Controller VMs:
+To change the certificate that Network Controller uses to encrypt the credentials, run the following command on any of the Network Controller VMs:
 
 ```powershell
 Set-NetworkControllerCluster -CredentialEncryptionCertificate \$cert
 ```
 
-**Renew REST certificate for Southbound communication**
+**For Southbound communication**
 
-To renew the certificate that Network Controller uses for communicating with hosts and Software Load Balancers, run the following command:
+To change the certificate that Network Controller uses for communicating with hosts and Software Load Balancers, run the following command:
 
 ```powershell
 $certCred = Get-NetworkControllerCredential -ConnectionUri <REST uri of deployment> |where-object { $_.properties.type -eq "X509Certificate" }
