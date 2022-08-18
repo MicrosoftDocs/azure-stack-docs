@@ -198,6 +198,8 @@
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
+    - name: Update Network Controller certificates
+      href: manage/update-network-controller-certificates.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
