@@ -135,11 +135,24 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 
 |Version required|Organization|TLV Subtype|
 |-----|-----|-----|
-|20H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
-|20H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+|22H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
+|22H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
+|22H2 and later|IEEE 802.1|Port VLAN ID (Subtype = 2)|
+|22H2 and later|IEEE 802.1|Link Aggregation (Subtype = 7)|
+|22H2 and later|IEEE 802.1|ETS Configuration (Subtype = 9)|
+|22H2 and later|IEEE 802.1|ETS Recommendation (Subtype = A)|
+|22H2 and later|IEEE 802.1|PFC Configuration (Subtype = B)|
 
+### Non-Standard Requirements
 
+Outside of IEEE 8021.Q, 802.1Qbb, 802.1Qaz and 802.1AB, the following are the non-standard requirements for switches:
 
+|Version required|Requirement |
+|-----|-----|
+|22H2 and later |Maximum Transmission Unit -  _Must support  sizes inclusive of the range 1514-9174_|
+|22H2 and later|Border Gateway Protocol - _Dynamic Capability for BGP-4_|
+|22H2 and later|Multi-link Aggregation Group|
+|22H2 and later|DHCP Relay Agent|
 
 ---
 
