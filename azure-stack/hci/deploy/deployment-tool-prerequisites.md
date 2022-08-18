@@ -43,36 +43,30 @@ Before you begin, make sure that the physical network and the host network where
 > [!NOTE]
 > Advanced settings within the storage network configuration like iWarp or MTU changes are not supported in this release.
 
-## Active Directory requirements
-
-You will need the following information from your administrator:
-
-- Active directory organizational unit (OU) name
-- Active directory domain FQDN
-- Active directory cluster name
-- Active directory object prefix
-- Active directory username and password
-
-> [!NOTE]
-> This preview release supports a single Azure Stack HCI deployment per Active Directory domain.
-
 ## Pre-deployment checklist
 
 Use the following checking to gather this information ahead of the actual deployment of your Azure Stack HCI cluster.
 
 > [!NOTE]
-> This preview release does not support the use of a /26 network size (64-bit address range).
+> This release supports a single Azure Stack HCI deployment per Active Directory domain.
+
+> [!NOTE]
+> This release does not support the use of a /26 network size (64-bit address range).
 
 |Component|What is needed|
 |--|--|
-|Server names|a unique name for each server you wish to deploy.|
-|Domain names|an internal domain name.|
+|Server names|Unique name for each server you wish to deploy.|
+|Active Directory cluster name|Name of your cluster in Active Directory.|
+Active directory object prefix|Name of the object prefix for the Active Directory domain.|
+Active directory OU|Name of the organizational unit (OU) for the Active Directory domain.|
+|Active Directory FQDN|Fully-qualified domain name (FQDN) for the Active Directory domain.|
+|Active Directory credentials|Username and password for the Active directory account.|
 |IPv4 subnet for management network intent|A subnet used for the management network. Each host must have an IPv4 address configured from this network.|
 |Two IPv4 subnet for storage network intent|Two different subnets used for the storage network.|
 |Management VLAN ID|a VLAN ID to be used for the management network, from your IT network administrator.|
 |Storage VLAN ID|two unique VLAN IDs to be used for the storage networks, from your IT network administrator.|
 |DNS forwarder|A DNS Server that allows DNS forwarding.|
-|Time server|A time server used to synchronize the server time with that of Azure.|
+|Time server|IP address of the Network Protocol Time (NTP) time server used to synchronize the server time with that of Azure.|
 |Azure subscription ID|ID for the Azure subscription used to register the cluster. You must be an administrator on this subscription to manage access to Azure resources.|
 
 ## Next step

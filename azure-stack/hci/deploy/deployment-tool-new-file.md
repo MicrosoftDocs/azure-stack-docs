@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 (preview) using a new config file
-description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using a new config file
+title: Deploy Azure Stack HCI version 22H2 (preview) interactively
+description: Learn how to deploy Azure Stack HCI version 22H2 (preview) interactively using a new configuration file
 author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
@@ -8,16 +8,46 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Deploy Azure Stack HCI version 22H2
+# Deploy Azure Stack HCI version 22H2 (preview) interactively
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses Windows Admin Center to create a configuration (answer) file that is saved. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
+After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses Windows Admin Center interactively to create a configuration (answer) file that is saved. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
 
-> [!NOTE]
-> Install and set up the deployment tool only on the first server in the cluster.
+> [!IMPORTANT]
+ > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
+
+## Prerequisites
+
+Before you begin, make sure you have done the following:
+
+- Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+- From a local VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+
+## Configure the servers
+
+After you have installed the Azure Stack HCI version 22H2 OS, there are a couple of steps needed to configure your servers before using the deployment tool.
+
+1. Sign in to the first server. In Windows Admin Center, select **Azure Stack HCI Initial Configuration** from the top drop-down menu.
+
+1. On the **Update local password** page, enter the old password and new chosen password for the server.
+
+    :::image type="content" source="media/deployment-tool/deployment-post-update-password.png" alt-text="Update local password page" lightbox="media/deployment-tool/deployment-post-update-password.png":::
+
+1. On the **Set IP address** page, select either dynamic (DHCP) or a static IP address for the server.
+
+    :::image type="content" source="media/deployment-tool/deployment-post-set-ip-address.png" alt-text="Set IP address page" lightbox="media/deployment-tool/deployment-post-set-ip-address.png":::
+
+1. On the **Review summary** page, review the settings of the server.
+
+    :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Review summary page" lightbox="media/deployment-tool/deployment-post-review-summary.png":::
+
+1. Repeat this process for each server in your cluster.
 
 ## Set up the deployment tool
+
+> [!NOTE]
+> You need to install and set up the deployment tool only on the first server in the cluster.
 
 The Azure Stack HCI version 22H2 preview deployment tool requires the following parameters to run:
 
@@ -33,7 +63,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands:
+1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands from an administrative prompt:
 
     ```PowerShell
     $SubscriptionID="your_subscription_ID"
@@ -41,7 +71,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
     $AzureCloud="AzureCloud"
     ```
 
-1. Run the following command to launch the deployment tool:
+1. Run the following command to install the deployment tool:
 
    ```PowerShell
     .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID         -RegistrationAccountCredential $AzureCred
@@ -54,14 +84,11 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 ## Run the deployment tool
 
-The deployment tool "hooks" into, and displays additional pages in Windows Admin Center.
-
-This procedure collects deployment parameters and saves them to a configuration file as you step through the wizard.
+This procedure collects deployment parameters from you and saves them to a configuration file as you step through the wizard.
 
 If you want to use an existing configuration file you have previously created, see [Deploy using a configuration file](deployment-tool-existing-file.md).
 
-> [!NOTE]
-> In this release, you can deploy a single-server cluster only by [using PowerShell](deployment-tool-powershell.md) or by an existing configuration file.
+For more information on the custom security settings you can specify, see **ADD Security Docs LINK**.
 
 1. Open a web browser from a computer that has network connectivity to the staging server.
 
@@ -83,7 +110,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-1.2-add-servers.png" alt-text="Deployment step 1.2" lightbox="media/deployment-tool/deployment-step-1.2-add-servers.png":::
 
-1. On **step 1.3 Join a domain**, enter the IP address of each server.  Add the servers in the right sequence, beginning with the first server.
+1. On **step 1.3 Join a domain**, enter your Active Directory domain name, object profile, organizational unit (OU), account credentials, and NTP time server.
 
     :::image type="content" source="media/deployment-tool/deployment-step-1.3-join-domain.png" alt-text="Deployment step 1.3" lightbox="media/deployment-tool/deployment-step-1.3-join-domain.png":::
 
@@ -94,10 +121,6 @@ If you want to use an existing configuration file you have previously created, s
     or select **Customized security settings:**
 
     :::image type="content" source="media/deployment-tool/deployment-step-1.4-cluster-security-custom.png" alt-text="Deployment step 1.4 custom" lightbox="media/deployment-tool/deployment-step-1.4-cluster-security-custom.png":::
-
-1. On step **1.4 Configure the internal domain**, specify the settings used by the internal domain used for cluster authentication and management. When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn’t supported.
-
-    :::image type="content" source="media/deployment-tool/deployment-wizard-5.png" alt-text="Deployment step 1.4" lightbox="media/deployment-tool/deployment-wizard-5.png":::
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details. When defining the network intents, for this preview release, only the following two sets of network intents are supported. The networking intent should match how you have cabled your system.
     - one management+compute intent, 1 storage intent
@@ -142,31 +165,17 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-6.1-deploy-cluster.png" alt-text="Deployment step 6.1" lightbox="media/deployment-tool/deployment-step-6.1-deploy-cluster.png":::
 
-1. It can take up to 3 hours for deployment to complete. To monitor your deployment, log in to the staging server and watch the orchestration engine process. Due to a known issue, you must monitor the deployment progress using the deployment log file stored in *C:\clouddeployment\logs* until the staging server restarts.
+1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near realtime.
 
-    :::image type="content" source="media/deployment-tool/deployment-monitoring.png" alt-text="Monitor-deployment" lightbox="media/deployment-tool/deployment-monitoring.png":::
+    :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Monitor-deployment" lightbox="media/deployment-tool/deployment-progress.png":::
 
 ## Post deployment
 
-Some tasks after deployment has finished:
+After deployment of your cluster has successfully completed, remove the Windows Admin Center instance that the deployment tool used. Log in to the staging server and run the following Powershell command:
 
-1. Remove the Windows Admin Center instance that the deployment tool used. Log in to the staging server and run the following command:
-
-    ```powershell
-    Get-CimInstance -ClassName Win32_Product|Where-object {$_name -like “Windows Admin Center”}| Invoke-CimMethod -MethodName Uninstall
-    ```
-
-1. On the **Update local password** page, enter
-
-    :::image type="content" source="media/deployment-tool/deployment-post-update-password.png" alt-text="Update local password page" lightbox="media/deployment-tool/deployment-post-update-password.png":::
-
-1. On the **Set IP address** page, enter
-
-    :::image type="content" source="media/deployment-tool/deployment-post-set-ip-address.png" alt-text="Set IP address page" lightbox="media/deployment-tool/deployment-post-set-ip-address.png":::
-
-1. On the **Review summary** page, enter
-
-    :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Review summary page" lightbox="media/deployment-tool/deployment-post-review-summary.png":::
+```powershell
+Get-CimInstance -ClassName Win32_Product|Where-object {$_name -like “Windows Admin Center”}| Invoke-CimMethod -MethodName Uninstall
+ ```
 
 ## Next step
 
