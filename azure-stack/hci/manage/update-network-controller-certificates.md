@@ -1,5 +1,5 @@
 ---
-title: Renew or change Network Controller certificates before they expire
+title: Renew Network Controller certificates before they expire
 description: This article describes how to renew Network Controller certificates before they expire.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 08/16/2022
 ---
 
-# Renew or change Network Controller certificates before they expire
+# Renew Network Controller certificates before they expire
 
 > Applies to: Azure Stack HCI, versions 21H2 and 20H2
-
-In your Software Defined Networking (SDN) infrastructure, you can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller uses Kerberos to authenticate users and network devices. In non-domain environments, you deploy certificates on  the Network Controller virtual machines (VMs) for authentication, authorization, and encryption. Each certificate has a validity period and once that period expires, certificates are not trusted for use. To avoid any authentication issues, you must keep these certificates up to date by renewing them before they expire.
 
 This article provides instructions on how to renew or change Network Controller certificates before they expire.
 
 > [!IMPORTANT]
 > If Network Controller certificates have already expired, don't use instructions in this article to renew them.
 
-For an overview information about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md).
+In your Software Defined Networking (SDN) infrastructure, you can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller uses Kerberos to authenticate users and network devices. In non-domain environments, you deploy certificates on  the Network Controller virtual machines (VMs) for authentication, authorization, and encryption. Each certificate comes with a validity period, after which it becomes invalid and can no longer be trusted for use. To keep your Network Controllers secured, you must renew their certificates before they expire.
+
+For an overview information about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md)
 
 ## When to renew or change Network Controller certificates
 
@@ -38,14 +38,14 @@ You can renew or change Network Controller certificates when:
 
 In Azure Stack HCI, each Network Controller VM uses two types of certificates:
 
-- REST certificate. A single certificate for Northbound communication with REST clients (such as Windows Admin Center) and Southbound communication with Hyper-V hosts and software load balancers. This same certificate is present on all Network Controller VMs.
+- REST certificate. A single certificate for Northbound communication with REST clients (such as Windows Admin Center) and Southbound communication with Hyper-V hosts and software load balancers. This same certificate is present on all Network Controller VMs. To renew REST certificates, see [Renew REST certificates](#renew-rest-certificates).
 
-- Network Controller node certificate. A certificate on each Network Controller VM for inter-node authentication.
+- Network Controller node certificate. A certificate on each Network Controller VM for inter-node authentication. To renew Network Controller node certificates, see [Renew node certificates](#renew-node-certificates).
 
 > [!WARNING]
-> Don't let these certificate expire. Renew them before expiry to avoid any authentication issues. Also, don't remove any existing expired certificates before renewing them. To find out the expiration date of a certificate, see [How to check the expiration date of a certificate](#how-to-check-the-expiration-date-of-a-certificate), below.
+> Don't let these certificate expire. Renew them before expiry to avoid any authentication issues. Also, don't remove any existing expired certificates before renewing them. To find out the expiration date of a certificate, see [View certificate expiry](#view-certificate-expiry), below.
 
-## How to check the expiration date of a certificate
+## View certificate expiry
 
 Use the following cmdlet on each Network Controller VM to check the expiration date of a certificate:
 
@@ -57,7 +57,7 @@ Get-ChildItem Cert:\LocalMachine\My | where{$_.Subject -eq "CN=<Certificate-subj
 
 - To get the expiry of a node certificate, replace "Certificate-subject-name" with the fully qualified domain name (FQDN) of the Network Controller VM. You can get this value from the `Get-NetworkController` cmdlet.
 
-## Renew REST certificate
+## Renew REST certificates
 
 You use the Network Controller's REST certificate for:
 
@@ -69,13 +69,32 @@ When you update a REST certificate, you must update the management clients and n
 
 To renew REST certificate, complete the following steps:
 
-1. Make sure that the certificate on the Network Controller VMs is not expired before renewing it. See [How to check the expiration date of a certificate](#how-to-check-the-expiration-date-of-a-certificate). If the certificate is already expired, don't proceed further.
+1. Make sure that the certificate on the Network Controller VMs is not expired before renewing it. See [How to check the expiration date of a certificate](#how-to-check-the-expiration-date-of-a-certificate). 
+   
+   > [!NOTE]
+   > If the certificate is already expired, don't use these steps.
 
 1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it is a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM.
 
-1. [Assign the new certificate to a variable](#assign-the-new-certificate-to-a-variable).
+1. Assign the new certificate to a variable:
 
-1. [Set permissions on the certificate for Network Service](#set-permissions-on-the-certificate-for-network-service).
+   ```powershell
+   \$cert= Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
+   ```
+
+1. Provide Read and Allow permissions for NT Authority/Network Service on the certificate:
+   
+   ```powershell
+   $targetCertPrivKey = $Cert.PrivateKey
+   $privKeyCertFile = Get-Item -path
+   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq
+   $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
+   $privKeAcl = Get-Acl $privKeyCertFile
+   $permission = "NT AUTHORITY\NETWORK SERVICE","Read","Allow"
+   $accessRule = new-object System.Security.AccessControl.FileSystemAccessRule $permission
+   $privKeyAcl.AddAccessRule($accessRule)
+   Set-Acl $privKeyCertFile.FullName $privKeyAcl
+   ```
 
 1. [Copy the certificate to all Network Controller VMs](#copy-the-certificate-to-all-network-controller-vms).
 
@@ -83,35 +102,9 @@ To renew REST certificate, complete the following steps:
 
 1. [Modify Network Controller settings to use the new certificate](#modify-network-controller-settings-to-use-the-new-certificate).
 
-### Assign the new certificate to a variable
-
-Use the following cmdlet to assign the new certificate to a variable:
-
-```powershell
-\$cert= Get-ChildItem Cert:\LocalMachine\My | where{$_.Thumbprint -eq "<thumbprint of the new certificate>"}
-```
-
-### Set permissions on the certificate for Network Service
-
-Provide Read and Allow permissions for NT Authority/Network Service on the certificate.
-
-Enter the following command to provide the required permissions:
-
-```powershell
-$targetCertPrivKey = $Cert.PrivateKey
-$privKeyCertFile = Get-Item -path
-"$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq
-$targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
-$privKeAcl = Get-Acl $privKeyCertFile
-$permission = "NT AUTHORITY\NETWORK SERVICE","Read","Allow"
-$accessRule = new-object System.Security.AccessControl.FileSystemAccessRule $permission
-$privKeyAcl.AddAccessRule($accessRule)
-Set-Acl $privKeyCertFile.FullName $privKeyAcl
-```
-
 ### Copy the certificate to all Network Controller VMs
 
-Follow these steps for copying one certificate to all Network Controller VMs. 
+Follow these steps for copying one certificate to all Network Controller VMs.
 
 1. Ensure that you procure the new certificate and place it in the local machine personal store (My – cert:\localmachine\my).
 
@@ -176,7 +169,7 @@ $certCred[0].Properties.Value ="<Thumbprint of the new certificate>"
 New-NetworkControllerCredential -ConnectionUri <REST uri of deployment> -ResourceId $certCred[0].ResourceId -Properties $certCred[0].Properties -Force
 ```
 
-## Renew Network Controller node certificate
+## Renew node certificates
 
 To renew the Network Controller node certificate, perform the following steps on each Network Controller VM:
 
