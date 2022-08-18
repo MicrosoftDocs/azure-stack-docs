@@ -143,6 +143,48 @@ sections:
           To resolve this issue, close all open PowerShell windows and then reopen a new PowerShell window.
           
       - question: | 
+          MOC agents don't start after an upgrade failure
+
+        answer: | 
+          When AKS-HCI fails to upgrade from the May release to the June release, the expectation is that AKS-HCI should revert to the May release and continue to function. But it leaves MOC agents in a stopped state, and manual attempts to start the agent don't activate them.
+          
+          ## Steps to reproduce
+          
+          1. Install AKS-HCI PowerShell module version 1.1.36.
+          2. Upgrade AKS-HCI. If the upgrade fails, AKS-HCI doesn't fall back to May and MOC agents are down.
+          
+          **Symptoms**
+          
+          **Mismatch between AksHci version and MOC versions**
+          `Get-AksHciVersion`
+          1.0.10.10513
+          `Get-MocVersion`
+          1.0.11.10707
+          
+          **Mismatch between Get-MocVersion and wssdcloudagent.exe version**
+          `Get-MocVersion`` indicates that the June build is installed while the wssdcloudagent.exe version indicates that the May build is installed.
+          
+          **MOC agent services image path has deployment ID parameter**
+          Use the following command to show the image path for the cloud agent:
+          `reg query "HKLM\System\CurrentControlSet\Services\wssdcloudagent"`
+          
+          Example output:
+          `"C:\Program Files\AksHci\wssdcloudagent.exe" --service --basedir "base dir" --cloudagentfqdn "cloudagent fqdn" --dotfolderpath "dot folder path" --objectdatastore "data store" --clusterresourcename "cluster name" --certificatevalidityfactor 1 --deploymentid "deployment id"`
+          
+          Use the following command to show the image path for the node agent:
+          'reg query "HKLM\System\CurrentControlSet\Services\wssdagent"'
+          
+          Example output:
+          `"C:\Program Files\AksHci\wssdagent.exe" --service --basedir "base dir" --cloudloginfile "cloud login file path" --dotfolderpath "dotfolder path" --nodeagentfqdn "node fqdn" --objectdatastore "object data store" --wssdproviderspec "provider spec" --deploymentid "deployment id"`
+          
+          ```powershell
+          Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Services\wssdcloudagent" -Name ImagePath -Value 'above cloud agent image path without the deployment id'
+          ```
+          ``powershell
+          Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Services\wssdagent" -Name ImagePath -Value 'above node agent image path without the deployment id'
+          ```
+          
+      - question: | 
           Error: Install-AksHci fails with 'Install-MOC failed with the error - the process cannot access the file \<path> because it is being used by another process.'.
 
         answer: | 

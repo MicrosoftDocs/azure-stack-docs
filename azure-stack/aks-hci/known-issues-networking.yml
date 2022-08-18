@@ -56,7 +56,8 @@ sections:
       - question: | 
           CAPH pod fails to renew certificate
 
-        answer: |           
+        answer: | 
+          
           This error occurs because every time the CAPH pod is started, a login to cloudagent is attempted and the certificate is stored in the temporary storage volume, which will clean out on pod restarts. Therefore, every time a pod is restarted, the certificate is destroyed and a new login attempt is made. 
           
           A login attempt starts a renewal routine, which renews the certificate when it nears expiry. The caph pod decides if a login is needed if the certificate is available or not. If the certificate is available, the login is not attempted, assuming the renewal routine is already there.
@@ -162,6 +163,55 @@ sections:
           2. If you get a response back and no time-out, then the basic network path is working. 
           3. If the connection times out, then there could be a break in the data path. For more information, see [check proxy settings](./set-proxy-settings.md). Or, there could be a break in the return path, so you should check the firewall rules. 
           
+      - question: | 
+          VHD doesn't sync SCSI path info after attaching
+
+        answer: | 
+          The SCSI path info for a VHD is empty in the cloud agent, although the VHD is attached on the node agent and has non-empty SCSI path info.
+          
+          ## Steps to reproduce
+          
+          1. Create a VM. Make sure the VM is on a different node than the cloud agent.
+          2. Disconnect the network connection between the two nodes.
+          3. Wait for a duplicate VM to be created. Restore the network connection.
+          4. Create a VHD and attach it to the above VM.
+          
+          The node agent where the VM is present has the non-empty SCSI path info but it would be missing on the cloud agent.
+          
+          ## Expected behavior
+          
+          Both the node agent and the cloud agent should have the same SCSI path details.
+          
+          1. Restart the cloud agent.
+          2. Make sure that the cloud agent is picking up on the VM movement. If the cloud agent is not picking up on the VM movements, check if both the nodes have the same VM ID. If not, correct the invalid ID. To correct the VM ID, remove the placeholder structures with the invalid VM ID, then create it with the correct VM ID. Use the YAML file below to create the placeholder structures for the VM.
+          **Note**: Double-check that the VM is not present on the node when removing the placeholder structures in the node agent.
+          3. Make sure that the VHD object's node-entity-map has entries for all the nodes. This can be checked by dumping the cloud agent store. If some nodes are missing the node-entity-map, make sure that the VM moved to the node which is present in the node-entity-map of the VHD. Use `mocctl admin recovery backup --path <path>` to dump the cloud agent store.
+          4. Detach and reattach all the VHDs attached to the VM.
+          
+          ```yaml
+          name: <VM name on the node agent>
+          virtualmachineproperties:
+            storageprofile:
+              osdisk:
+                name: null
+                ostype: "Linux"
+                vhdname: <OS Disk name on the node agent>
+              datadisks: []
+            osprofile:
+              computername: "<VM name>" # Usually in the format moc-xxxxxxx
+              adminusername: <username>
+              adminpassword: <password>
+              windowsconfiguration: null
+              linuxconfiguration:
+                disablepasswordauthentication: false
+            networkprofile:
+              networkinterfaces: []
+            isplaceholder: true
+          
+          tags:
+            <vm name on the node agent>-id: <correct VM ID>
+            <vm name on the node agent> : <vm name on the node agent>
+          ```
   
 
 additionalContent: |
