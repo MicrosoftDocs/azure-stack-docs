@@ -69,12 +69,12 @@ When you update a REST certificate, you must update the management clients and n
 
 To renew REST certificate, complete the following steps:
 
-1. Make sure that the certificate on the Network Controller VMs is not expired before renewing it. See [How to check the expiration date of a certificate](#how-to-check-the-expiration-date-of-a-certificate). 
+1. Make sure that the certificate on the Network Controller VMs isn't expired before renewing it. See [View certificate expiry](#view-certificate-expiry).
    
    > [!NOTE]
    > If the certificate is already expired, don't use these steps.
 
-1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it is a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM.
+1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM.
 
 1. Assign the new certificate to a variable:
 
@@ -173,7 +173,7 @@ New-NetworkControllerCredential -ConnectionUri <REST uri of deployment> -Resourc
 
 To renew the Network Controller node certificate, perform the following steps on each Network Controller VM:
 
-1. Procure the new certificate and put it in the Personal store of the Local Machine (LocalMachine\My). If it is a self-signed certificate, it must also be placed in the (LocalMachine\Root) store of every Network Controller VM.
+1. Procure the new certificate and put it in the Personal store of the Local Machine (LocalMachine\My). If it's a self-signed certificate, it must also be placed in the (LocalMachine\Root) store of every Network Controller VM.
 
 1. Assign the new certificate to a variable:
 
@@ -181,7 +181,19 @@ To renew the Network Controller node certificate, perform the following steps on
    $cert= Get-ChildItem Cert:\LocalMachine\My | where{\$_.Thumbprint-eq "<thumbprint of the new certificate>"}
    ```
 
-1. [Set permissions on the certificate for Network Service to Read and Allow](#set-permissions-on-the-certificate-for-network-service).
+1. Provide Read and Allow permissions for NT Authority/Network Service on the certificate:
+   
+   ```powershell
+   $targetCertPrivKey = $Cert.PrivateKey
+   $privKeyCertFile = Get-Item -path
+   "$ENV:ProgramData\Microsoft\Crypto\RSA\MachineKeys\*" | where-object {$_.Name -eq
+   $targetCertPrivKey.CspKeyContainerInfo.UniqueKeyContainerName}
+   $privKeAcl = Get-Acl $privKeyCertFile
+   $permission = "NT AUTHORITY\NETWORK SERVICE","Read","Allow"
+   $accessRule = new-object System.Security.AccessControl.FileSystemAccessRule $permission
+   $privKeyAcl.AddAccessRule($accessRule)
+   Set-Acl $privKeyCertFile.FullName $privKeyAcl
+   ```
 
 1. Execute the following command to change the node certificate:
 
