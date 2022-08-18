@@ -53,7 +53,7 @@ The following cluster configurations were tested and validated for this release:
 
 **Configuration 2**: The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Switched storage network configuration" lightbox="media/deployment-tool/switchless-two-tor-switch.png":::
+:::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Switchless storage network configuration" lightbox="media/deployment-tool/switchless-two-tor-switch.png":::
 
 **Configuration 3**: The following diagram shows two physical servers with a switched storage network and redundant L3 switches.
 

@@ -264,13 +264,13 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
       :::image type="content" source="media/deployment-tool/deployment-get-started.png" alt-text="Deployment Get Started page" lightbox="media/deployment-tool/deployment-get-started.png":::
 
-1. On step **1.1 Import configuration file**, import the existing configuration file you created by selecting **Browse** or dragging the file to the page. **NEED SCREENSHOT**
+1. On step **1.1 Import configuration file**, import the existing configuration file you created by selecting **Browse** or dragging the file to the page.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-2e.png" alt-text="Deployment step 1.1" lightbox="media/deployment-tool/deployment-wizard-2e.png":::
+    :::image type="content" source="media/deployment-tool/file-deployment-step1.1-import-file.png" alt-text="Deployment step 1.1 - import file" lightbox="media/deployment-tool/file-deployment-step-1.1-import-file.png":::
 
-1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file. **NEED SCREENSHOT**
+1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file.
 
-    :::image type="content" source="media/deployment-tool/deployment-wizard-3e.png" alt-text="Deployment step 1.2" lightbox="media/deployment-tool/deployment-wizard-3e.png":::
+    :::image type="content" source="media/deployment-tool/file-deployment-step-1.2-review.png" alt-text="Deployment step 1.2 - review settings" lightbox="media/deployment-tool/file-deployment-step-1.2-review.png":::
 
 1. On step **2.1 Credentials**, enter the username and password for the Active Directory account and username and password for the local administrator account.
 When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn't supported.
