@@ -97,12 +97,6 @@ The following firewall URL exceptions are needed on all servers in the Azure Sta
 
 | **URL** | **Port** | **Service** | **Notes** |
 |:--------|:---------|:------------|:----------|
-| https\://helm.sh/blog/get-helm-sh/ | 443 | Download agent | Used to download the Helm binaries |
-| https\://storage.googleapis.com/ | 443 | Cloud init | Used to download Kubernetes binaries |
-| https\://azurecliprod.blob.core.windows.net/ | 443 | Cloud init | Used to download binaries and containers |
-| *.dl.delivery.mp.microsoft.com, *.do.dsp.mp.microsoft.com | 80, 443 | Download agent | Used to download VHD images |
-| ecpacr.azurecr.io | 443 | Kubernetes | Used to download container images |
-| git://:9418 | 9418 | TCP | Used to support Azure Arc agents |
 | https\://mcr.microsoft.com | 443 | Microsoft container registry | Used for official Microsoft artifacts such as container images |
 | https\://*.his.arc.azure.com | 443 | Azure Arc identity service | Used for identity and access control |
 | https\://*.dp.kubernetesconfiguration.azure.com | 443 | Kubernetes | Used for Azure Arc configuration |
