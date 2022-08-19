@@ -47,7 +47,7 @@ The *Image* folder contains the following files:
 
 You can configure boot from a VHDX file one of two ways:
 
-**Native boot** – Follow the steps to [configure native boot from a VHDX or VHD file](https://docs.microsoft.com/windows-hardware/manufacture/desktop/boot-to-vhd--native-boot--add-a-virtual-hard-disk-to-the-boot-menu) using the *ServerHCI.vhdx* file. This step requires a bootable WinPE image.
+**Native boot** – Follow the steps to [configure native boot from a VHDX or VHD file](/windows-hardware/manufacture/desktop/boot-to-vhd--native-boot--add-a-virtual-hard-disk-to-the-boot-menu) using the *ServerHCI.vhdx* file. This step requires a bootable WinPE image.
 
 **BCD boot** - Boot configuration data (BCD) allows multiple boot entries and requires you to first install a Windows OS on the physical boot drive, which becomes the first boot entry. You then configure the VHDX boot, which becomes the second boot entry using the *ServerHCI.vhdx* file. 
 

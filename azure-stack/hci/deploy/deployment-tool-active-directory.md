@@ -38,7 +38,7 @@ To prepare and configure Active Directory, follow these steps:
 
 1. Sign in to a computer that is joined to your Active Directory domain as a local administrator.
 1. Download the *Adprep* command from [PowerShell Gallery](https://microsoft.sharepoint.com/sites/knowledgecenter/_layouts/15/TopicPagePreview.aspx?topicId=AL_GQSuzYWffyPyTBvhVtw0Ow&topicName=PowerShell%20Gallery&lang=en&ls=Ans_Bing) or copy it from the *C:\CloudDeployment\Prepare* folder on your first (staging) server.
-1. Create a [Microsoft Key Distribution Service root key](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords.
+1. Create a [Microsoft Key Distribution Service root key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords.
 
 1. Run the following PowerShell command from an administrative prompt:
 
