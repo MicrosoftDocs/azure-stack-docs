@@ -7,6 +7,7 @@ ms.date: 08/19/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 7/23/2021
+ms.custom: vscode-azure-extension-update-completed
 
 # Intent: As a developer, I want to use VS Code to deploy a storage account to Azure Stack Hub.
 # Keyword: VS code storage account extension
