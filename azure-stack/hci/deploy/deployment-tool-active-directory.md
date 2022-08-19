@@ -12,7 +12,7 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This articles describes how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI 22H2 version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
+This articles describes how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI 22H2 version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
 
 When preparing Active Directory, a dedicated Organizational Unit (OU) should be created to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
 
@@ -25,7 +25,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* script is used to prepare Active Direc
 
 |Parameter|Description|
 |--|--|
-|`-AsHciDeploymentUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least 8 characters long. The password must also contain 3 out of the 4 requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [Password complexity requirements]().|
+|`-AsHciDeploymentUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least 8 characters long. The password must also contain 3 out of the 4 requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).|
 |`-AsHciOUName`|A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there is no conflict of settings.|
 |`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Fully qualified domain name (FQDN) of the your Active Directory domain.|
@@ -38,7 +38,7 @@ To prepare and configure Active Directory, follow these steps:
 
 1. Sign in to a computer that is joined to your Active Directory domain as a local administrator.
 1. Download the *Adprep* command from [PowerShell Gallery](https://microsoft.sharepoint.com/sites/knowledgecenter/_layouts/15/TopicPagePreview.aspx?topicId=AL_GQSuzYWffyPyTBvhVtw0Ow&topicName=PowerShell%20Gallery&lang=en&ls=Ans_Bing) or copy it from the *C:\CloudDeployment\Prepare* folder on your first (staging) server.
-1. Create a [Microsoft Key Distribution Service root key](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords.
+1. Create a [Microsoft Key Distribution Service root key](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords.
 
 1. Run the following PowerShell command from an administrative prompt:
 
@@ -69,7 +69,7 @@ To prepare and configure Active Directory, follow these steps:
     .\AsHciADArtifactsPreCreationTool.ps1 -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=Hci001,DC=contoso,DC=com" -AsHciPhysicalNodeList @("server1") -DomainFQDN "contoso.com" -AsHciClusterName "cluster_name" -AsHciDeploymentPrefix "Hci001"
     ```
 
-1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
+1. When prompted, provide the username and password for the deployment. Make sure that the password meets complexity and length requirements. For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
 
     Here is a sample output from a successful completion of the script:
 
@@ -126,15 +126,15 @@ To prepare and configure Active Directory, follow these steps:
 
 1. An OU with the specified name should be created and within that OU, you’ll see **Computers** and **Users** objects.
 
-    :::image type="content" source="media/deployment-tool/ad-1.png" alt-text="Active Directory " lightbox="media/deployment-tool/ad-1.png":::
+    :::image type="content" source="media/deployment-tool/ad-1.png" alt-text="Active Directory 1 " lightbox="media/deployment-tool/ad-1.png":::
 
 1. The **Computers** object should contain one computer account for each server node and one account for the **Cluster Name Object**.
 
-    :::image type="content" source="media/deployment-tool/ad-2.png" alt-text="Active Directory " lightbox="media/deployment-tool/ad-2.png":::
+    :::image type="content" source="media/deployment-tool/ad-2.png" alt-text="Active Directory 2 " lightbox="media/deployment-tool/ad-2.png":::
 
 1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one local domain security group with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
 
-    :::image type="content" source="media/deployment-tool/ad-3.png" alt-text="Active Directory " lightbox="media/deployment-tool/ad-3.png":::
+    :::image type="content" source="media/deployment-tool/ad-3.png" alt-text="Active Directory 3 " lightbox="media/deployment-tool/ad-3.png":::
 
 Your Active Directory environment is now prepared and ready.
 
