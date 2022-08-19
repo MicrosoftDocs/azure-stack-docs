@@ -22,7 +22,7 @@ WDAC is a software-based security layer that reduces attack surface by enforcing
 
 ## WDAC enabled by default
 
-This release comes with WDAC enabled and enforced by default. We are providing a base policy in a multiple-policy format CIP file.
+This release comes with WDAC enabled and enforced by default. We're providing a base policy in a multiple-policy format CIP file.
 
 Base policy details are as follows:
 
@@ -33,10 +33,10 @@ Base policy details are as follows:
 
 The base policy identifier is always the same across deployments. Customers and partners can build supplemental policies based on the base policy. The base policy is combined with the recommended block rules for drivers and applications documented here:
 
- > * [Microsoft recommended driver block rules](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
+ > * [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
 > * [Microsoft recommended block rules](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
 
-Here is the Microsoft base policy prior to merging with blocked rules:
+Here's the Microsoft base policy prior to merging with blocked rules:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -324,9 +324,9 @@ Add sample output:
 
 ## Support for OEM extensions
 
-This release does not support partner extensions based on the SBE toolkit because the internal dependent components are not present in this build.
+This release doesn't support partner extensions based on the SBE toolkit because the internal dependent components aren't present in this build.
 
-## Create a WDAC policy to enable 3rd party software
+## Create a WDAC policy to enable third party software
 
 While using this preview for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
@@ -411,4 +411,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
- > * [Install an Azure Stack HCI, 22H2 (preview)](https://docs.microsoft.com/azure-stack/hci/manage/install-preview-version?tabs=windows-admin-center).
+ > * [Install an Azure Stack HCI, 22H2 (preview)](../manage/install-preview-version.md?tabs=windows-admin-center).
