@@ -364,8 +364,6 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Evaluation Guide
-    href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
