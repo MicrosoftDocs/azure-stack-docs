@@ -18,7 +18,7 @@ Applies to: Azure Stack HCI, version 22H2 (preview)
 
 This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI, version 22H2.
 
-WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control).
+WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control).
 
 ## WDAC enabled by default
 
@@ -34,7 +34,7 @@ Base policy details are as follows:
 The base policy identifier is always the same across deployments. Customers and partners can build supplemental policies based on the base policy. The base policy is combined with the recommended block rules for drivers and applications documented here:
 
  > * [Microsoft recommended driver block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-driver-block-rules)
-> * [Microsoft recommended block rules](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
+> * [Microsoft recommended block rules](/windows/security/threat-protection/windows-defender-application-control/microsoft-recommended-block-rules)
 
 Here's the Microsoft base policy prior to merging with blocked rules:
 
@@ -328,7 +328,7 @@ This release doesn't support partner extensions based on the SBE toolkit because
 
 ## Create a WDAC policy to enable third party software
 
-While using this preview for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using this preview for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
 Create a new policy in the Multiple Policy Format as shown below. From there, use ```Set-CIPolicyIdInfo``` to convert it to a supplemental policy and specify which base policy it expands.
 
