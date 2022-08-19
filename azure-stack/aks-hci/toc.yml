@@ -199,7 +199,7 @@
     - name: Use Windows Server containers
       items:
           - name: Use containerd (preview)
-            href: use-containerd-on-windows-aks.md
+            href: /azure-stack/aks-hci/
           - name: Deploy .NET applications
             href: deploy-windows-application.md
           - name: Configure group Managed Service Account support
