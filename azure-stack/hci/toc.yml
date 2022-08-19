@@ -308,49 +308,50 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
-    - name: Update version 21H2
+  - name: Update version 21H2
+    items:
+    - name: Install version 22H2
+      href: manage/install-preview-version.md
+    - name: Post installation steps
+      href: manage/preview-post-installation.md
+  - name: Plan for version 22H2
+    items:
+    - name: Review security
+      items: 
+      - name: Windows Defender Application Control 
+        href: manage/preview-channel.md
+      - name: Security baseline, drift control
+        href: manage/preview-channel.md
+      - name: BitLocker encryption
+        href: manage/preview-channel.md
+    - name: Assess environment readiness
+      href: manage/use-environment-checker.md
+    - name: Review prerequisites
+      href: manage/preview-channel.md
+    - name: Select deployment network pattern
+      href: manage/preview-channel.md
+    - name: Get deployment checklist
+      href: manage/preview-channel.md
+  - name: Deploy version 22H2 
+    items:
+    - name: Understand deployment flow
+      href: manage/preview-channel.md
+    - name: Deploy via PowerShell
+      href: manage/preview-channel.md
+    - name: Deploy cluster
       items:
-      - name: Install version 22H2
-        href: manage/install-preview-version.md
-      - name: Post installation steps
-        href: manage/preview-post-installation.md
-    - name: Plan for version 22H2
-      items:
-      - name: Review security
-        items: 
-        - name: Windows Defender Application Control 
-          href: manage/preview-channel.md
-        - name: Security baseline, drift control
-          href: manage/preview-channel.md
-        - name: BitLocker encryption
-          href: manage/preview-channel.md
-      - name: Assess environment readiness
-        href: manage/use-environment-checker.md
-      - name: Review prerequisites
+      - name: Using new config file
         href: manage/preview-channel.md
-      - name: Select deployment network pattern
+      - name: Using existing config file
         href: manage/preview-channel.md
-      - name: Get deployment checklist
-        href: manage/preview-channel.md
-    - name: Deploy version 22H2 
-      items:
-      - name: Understand deployment flow
-        href: manage/preview-channel.md
-      - name: Deploy via PowerShell
-        href: manage/preview-channel.md
-      - name: Deploy cluster
-        items:
-        - name: Using new config file
-          href: manage/preview-channel.md
-        - name: Using existing config file
-      - name: Validate deployment
-        href: manage/preview-channel.md
-      - name: Collect logs 
-        href: manage/preview-channel.md
-      - name: Troubleshoot issues
-        href: manage/preview-channel.md
-      - name: View known issues
-        href: manage/preview-channel.md  
+    - name: Validate deployment
+      href: manage/preview-channel.md
+    - name: Collect logs 
+      href: manage/preview-channel.md
+    - name: Troubleshoot issues
+      href: manage/preview-channel.md
+    - name: View known issues
+      href: manage/preview-channel.md  
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
