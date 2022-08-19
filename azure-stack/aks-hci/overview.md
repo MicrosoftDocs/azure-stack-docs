@@ -5,7 +5,7 @@ ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 03/16/2022
-ms.reviewer: abha
+ms.reviewer: leslielin
 ms.date: 06/06/2022
 
 # Intent: As an IT Pro, I want to use AKS on Azure Stack HCI and Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.

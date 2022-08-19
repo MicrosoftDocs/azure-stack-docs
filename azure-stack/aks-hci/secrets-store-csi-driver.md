@@ -46,7 +46,7 @@ Get-AksHciCredential -name mycluster
 To install the Secrets Store CSI Driver, run the following Helm command:
 
 ```powershell
-helm repo add csi-secrets-store-provider-azure https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/charts
+helm repo add csi-secrets-store-provider-azure https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
 ```
 
 The following command installs both the Secrets Store CSI Driver and the Azure Key Vault provider:
@@ -170,7 +170,7 @@ spec:
 To deploy the `SecretProviderClass` you created in the previous step, use the following command:
 
 ```powershell
-kubectl apply -f ./new-secretproviderclass.yaml --namespace 
+kubectl apply -f ./new-secretproviderclass.yaml
 ```
 
 ## Update and apply your cluster's deployment YAML file
