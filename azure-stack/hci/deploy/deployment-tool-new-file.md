@@ -100,27 +100,27 @@ For more information on the custom security settings you can specify, see **ADD 
 
 1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Create a new config file**, then select either **One server** or **Multiple servers**.
 
-      :::image type="content" source="media/deployment-tool/deployment-get-started.png" alt-text="Deployment Get Started page" lightbox="media/deployment-tool/deployment-get-started.png":::
+      :::image type="content" source="media/deployment-tool/deploy-new-get-started.png" alt-text="Deployment Get Started page" lightbox="media/deployment-tool/deploy-new-get-started.png":::
 
 1. On step **1.1 Configure privacy**, set the privacy settings as they apply to your organization.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-1.1-set-privacy.png" alt-text="Deployment step 1.1" lightbox="media/deployment-tool/deployment-step-1.1-set-privacy.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1.1-privacy.png" alt-text="Deployment step 1.1" lightbox="media/deployment-tool/deploy-new-step-1.1-privacy.png":::
 
 1. On **step 1.2 Add servers**, enter the IP address of each server.  Add the servers in the right sequence, beginning with the first server.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-1.2-add-servers.png" alt-text="Deployment step 1.2" lightbox="media/deployment-tool/deployment-step-1.2-add-servers.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1.2-add-servers.png" alt-text="Deployment step 1.2" lightbox="media/deployment-tool/deploy-new-step-1.2-add-servers.png":::
 
 1. On **step 1.3 Join a domain**, enter your Active Directory domain name, object profile, organizational unit (OU), account credentials, and NTP time server.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-1.3-join-domain.png" alt-text="Deployment step 1.3" lightbox="media/deployment-tool/deployment-step-1.3-join-domain.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1.3-join-domain.png" alt-text="Deployment step 1.3" lightbox="media/deployment-tool/deploy-new-step-1.3-join-domain.png":::
 
 1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
-    :::image type="content" source="media/deployment-tool/deployment-step-1.4-cluster-security-default.png" alt-text="Deployment step 1.4 default" lightbox="media/deployment-tool/deployment-step-1.4-cluster-security-default.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1.4-security-default.png" alt-text="Deployment step 1.4 default" lightbox="media/deployment-tool/deploy-new-step-1.4-security-default.png":::
 
     or select **Customized security settings:**
 
-    :::image type="content" source="media/deployment-tool/deployment-step-1.4-cluster-security-custom.png" alt-text="Deployment step 1.4 custom" lightbox="media/deployment-tool/deployment-step-1.4-cluster-security-custom.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1.4-security-custom.png" alt-text="Deployment step 1.4 custom" lightbox="media/deployment-tool/deploy-new-step-1.4-security-custom.png":::
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details. When defining the network intents, for this preview release, only the following two sets of network intents are supported. The networking intent should match how you have cabled your system.
     - one management+compute intent, 1 storage intent
@@ -128,27 +128,27 @@ For more information on the custom security settings you can specify, see **ADD 
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-2.1-network-adapters.png" alt-text="Deployment step 2.1" lightbox="media/deployment-tool/deployment-step-2.1-network-adapters.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2.1-network-adapters.png" alt-text="Deployment step 2.1" lightbox="media/deployment-tool/deploy-new-step-2.1-network-adapters.png":::
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-2.2-network-intents.png" alt-text="Deployment step 2.2" lightbox="media/deployment-tool/deployment-step-2.2-network-intents.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2.2-network-intents.png" alt-text="Deployment step 2.2" lightbox="media/deployment-tool/deploy-new-step-2.2-network-intents.png":::
 
 1. On step **2.3 Provide storage network details**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deployment-steps-2.3-storage-network.png" alt-text="Deployment step 2.3" lightbox="media/deployment-tool/deployment-steps-2.3-storage-network.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2.3-network-storage.png" alt-text="Deployment step 2.3" lightbox="media/deployment-tool/deploy-new-step-2.3-network-storage.png":::
 
 1. On step **2.4 Provide management network details**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-2.4-management-network.png" alt-text="Deployment step 2.4" lightbox="media/deployment-tool/deployment-step-2.4-management-network.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2.4-network-management.png" alt-text="Deployment step 2.4" lightbox="media/deployment-tool/deploy-new-step-2.4-network-management.png":::
 
 1. On step **3.1 Create cluster**, enter the cluster name.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-3.1-create-cluster.png" alt-text="Deployment step 3.1" lightbox="media/deployment-tool/deployment-step-3.1-create-cluster.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-3.1-create-cluster.png" alt-text="Deployment step 3.1" lightbox="media/deployment-tool/deploy-new-step-3.1-create-cluster.png":::
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-4.1-set-storage.png" alt-text="Deployment step 4.1" lightbox="media/deployment-tool/deployment-step-4.1-set-storage.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-4.1-storage.png" alt-text="Deployment step 4.1" lightbox="media/deployment-tool/deploy-new-step-4.1-storage.png":::
 
 1. On step **5.1 Add services**, no changes are needed. Select **Next** to continue.
 
@@ -156,7 +156,7 @@ For more information on the custom security settings you can specify, see **ADD 
 
 1. On step **5.2 Set Arc management details**, no changes are needed. Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-5.2-set-arc.png" alt-text="Deployment step 5.2" lightbox="media/deployment-tool/deployment-step-5.2-set-arc.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-5.2-arc.png" alt-text="Deployment step 5.2" lightbox="media/deployment-tool/deploy-new-step-5.2-arc.png":::
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
 
