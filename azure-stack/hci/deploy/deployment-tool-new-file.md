@@ -24,7 +24,7 @@ Before you begin, make sure you have done the following:
 - Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
 - From a local VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 
-## Configure the servers
+<!---## Configure the servers
 
 After you have installed the Azure Stack HCI version 22H2 OS, there are a couple of steps needed to configure your servers before using the deployment tool.
 
@@ -42,7 +42,7 @@ After you have installed the Azure Stack HCI version 22H2 OS, there are a couple
 
     :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Review summary page" lightbox="media/deployment-tool/deployment-post-review-summary.png":::
 
-1. Repeat this process for each server in your cluster.
+1. Repeat this process for each server in your cluster.--->
 
 ## Set up the deployment tool
 
