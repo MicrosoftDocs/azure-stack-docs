@@ -1,22 +1,15 @@
 ---
-title: Azure Stack HCI security considerations
-description: This topic provides guidance on security considerations for the Azure Stack HCI operating system.
-author:  jasongerend
-ms.author:  jgerend
+title: Windows Defender Application Control for Azure Stack HCI (preview)
+description: This topic provides guidance on Windows Defender Application Control for Azure Stack HCI (preview).
+author:  alkohli
+ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 11/03/2021
+ms.date: 08/19/2022
 ---
-<!--Update metadata to match other HCI articles >
+<!--remove references to private preview + Use metadata from existing security article at https://docs.microsoft.com/en-us/azure-stack/hci/concepts/security + TOC > This security article could go in the preview channel.+ ASHCI is not public-facing + Need to add: This article describes... + add "Applies to: " tag > see chat + remove numbers from H-levels
+Call out CIP before using acro > Common Industrial Protocol?
 
-Note > we don't publish private preview content in this repo > change filename to remove "private"
-
-start new metadata
-
-
-end new metadata
-
-Alpa to provide + remove references to private preview + Use metadata from existing security article at https://docs.microsoft.com/en-us/azure-stack/hci/concepts/security + TOC > This security article could go in the preview channel.+ ASHCI is not public-facing + Need to add: This article describes... + add "Applies to: " tag > see chat + remove numbers from H-levels
-Call out CIP before using acro
+Line 321 > add sample output
 -->
 
 # Windows Defender Application Control for Azure Stack HCI (preview)
@@ -314,7 +307,7 @@ Here is the Microsoft base policy prior to merging with blocked rules:
 
 ## Switching between WDAC policy modes
 
-The following PowerShell commands interact with the Enterprise Cloud Engine (ECE) to enable the selected modes. This release has WDAC in enforced mode by default.
+The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes. This release has WDAC in enforced mode by default.
 
 ```azurepowershell
 Switch-WDACPolicyMode -To Audit
@@ -327,11 +320,11 @@ Get-WDACPolicyMode
 	1 – Audit
 	2 - Enforced
 ```
-Add sample output: 
+Add sample output:
 
 ## Support for OEM extensions
 
-This release does not support any partner extensions based on SBE toolkit because the internal dependent components are not present in this build.
+This release does not support partner extensions based on the SBE toolkit because the internal dependent components are not present in this build.
 
 ## Create a WDAC policy to enable 3rd party software
 
@@ -397,13 +390,13 @@ Use the following steps to create a supplemental policy:
    Set-CIPolicyIdInfo -FilePath c:\wdac\Contoso-supplemental-policy.xml -SupplementsBasePolicyID $basePolicyId
    ```
 
-1. After running these commands, we have the final supplemental policy. To put it to use, the next step is to convert it to binary using the following command:
+1. After running these commands, you have the final supplemental policy. To put it to use, convert it to binary using the following command:
 
    ```azurepowershell
    ConvertFrom-CIPolicy c:\wdac\Contoso-supplemental-policy.xml c:\wdac\Contoso-supplemental-policy.bin
    ```
 
-1. Deploy the policy. To deploy the policy, place it as follows:
+1. Deploy the policy, as follows:
 
    ```C:\Windows\System32\CodeIntegrity\CiPolicies\Active and named {PolicyID}.cip```
 
