@@ -24,6 +24,7 @@ You will use a configuration file you have created before you begin. For more in
 Before you begin, make sure you have done the following:
 
 - Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+- Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - From a local VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 
 ## Prepare the configuration file

@@ -19,6 +19,13 @@ The installation includes an OS image and a deployment tool that allows a physic
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
 
+## Prerequisites
+
+Before you begin, make sure you have done the following:
+
+- Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+- Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
+
 ## Files and folders
 
 The *Cloud* folder contains the following files:

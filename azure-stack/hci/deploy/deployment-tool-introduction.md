@@ -23,6 +23,7 @@ Follow this process to deploy Azure Stack HCI version 22H2 in your environment:
 
 - Select one of the validated configurations to deploy
 - Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+- Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - From a local VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 - Install the deployment tool on the first server in your cluster
 - Run the deployment tool in Windows Admin Center using either a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).

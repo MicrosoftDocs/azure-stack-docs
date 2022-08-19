@@ -73,4 +73,4 @@ Active directory OU|Name of the organizational unit (OU) for the Active Director
 
 After reviewing and adhering to the prerequisites, you are ready to install the operating system on each server in your cluster:
 
-- [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md)
+Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
