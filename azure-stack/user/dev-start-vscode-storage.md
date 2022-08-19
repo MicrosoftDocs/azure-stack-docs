@@ -74,7 +74,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
    username@contoso.com   azure-stack-sub  6d5ff183-b37f-4a5b-9a2f-19959cb4224a username@contoso.com
    ```
 
-3. Make a note of the tenant ID. You will need it when adding the JSON section that configures the Azure Account extension.
+3. Make a note of the tenant ID. You will need it when adding the JSON section that configures the Azure Storage extension.
 
 ## Set up the Azure Storage extension
 
@@ -85,7 +85,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
 5. Add the URL for your Azure Stack Hub Resource Manager, and then add the Tenant ID.
 6. Select the Azure icon in the Activity bar in Visual Studio Code. Expand the storage group.
 7. In **Resources**, right-click **Storage accounts**, and then select **Create Storage account...**.
-   :::image type="content" source="media/dev-start-vscode-storage/azure-storage.png" alt-text="Screenshot showing how to add storage":::
+   :::image type="content" source="media/dev-start-vscode-storage/azure-storage.png" alt-text="Screenshot showing how to add storage" lightbox="media/dev-start-vscode-storage/azure-storage.png":::
 8. Enter a unique name for the storage account.
 9. Select a location for the storage account to be deployed.
 10. Once the storage account is deployed, you can select it to copy the connection string, create Blob containers, queues, and tables. Users can view all of these resources inside of Visual Studio Code.
