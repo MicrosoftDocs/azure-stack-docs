@@ -7,6 +7,7 @@ ms.date: 8/19/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 8/27/2021
+ms.custom: vscode-azure-extension-update-completed
 
 # Intent: As a developer, I want to use VS Code to connect to Azure Stack Hub so that I can provision resources.
 # Keyword: VS code Azure account extension
