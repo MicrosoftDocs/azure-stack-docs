@@ -163,16 +163,16 @@ sections:
           ### Example output
           
           ```output
-          C:\Program Files\AksHci\wssdcloudagent.exe" --service --basedir "base dir" --cloudagentfqdn "cloudagent fqdn" --dotfolderpath "dot folder path" --objectdatastore "data store" --clusterresourcename "cluster name" --certificatevalidityfactor 1 --deploymentid "deployment id"
-          ````
+          "C:\Program Files\AksHci\wssdcloudagent.exe" --service --basedir "base dir" --cloudagentfqdn "cloudagent fqdn" --dotfolderpath "dot folder path" --objectdatastore "data store" --clusterresourcename "cluster name" --certificatevalidityfactor 1 --deploymentid "deployment id"
+          ```
           
           Use the following command to show the image path for the node agent: **reg query "HKLM\System\CurrentControlSet\Services\wssdagent"**
           
           ### Example output
           
           ```output
-          C:\Program Files\AksHci\wssdagent.exe" --service --basedir "base dir" --cloudloginfile "cloud login file path" --dotfolderpath "dotfolder path" --nodeagentfqdn "node fqdn" --objectdatastore "object data store" --wssdproviderspec "provider spec" --deploymentid "deployment id"
-          ````
+          "C:\Program Files\AksHci\wssdagent.exe" --service --basedir "base dir" --cloudloginfile "cloud login file path" --dotfolderpath "dotfolder path" --nodeagentfqdn "node fqdn" --objectdatastore "object data store" --wssdproviderspec "provider spec" --deploymentid "deployment id"
+          ```
           
           To mitigate the issue, run the following PowerShell cmdlets:
           
