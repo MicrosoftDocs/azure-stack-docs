@@ -14,19 +14,53 @@ ms.reviewer: jgerend
 
 Once your deployment has successfully completed, you should verify and validate your deployment:
 
-## Validate using PowerShell
+## Validate deployment in Azure portal
 
-You can validate your cluster using PowerShell by running the following command in an administrative prompt:
+After deployment, you can validate that your cluster exists and is registered in Azure:
+
+1. Run PowerShell as administrator.
+
+1. Establish a remote PowerShell session with the server node and run the following command:
 
 ```powershell
-get-AzureStackhci
+Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server> 
 ```
 
-## View your cluster in the Azure portal
+1. Get the information for the cluster you created:
 
-You can view your cluster, verify it's online, and ensure your server nodes are connected in the Azure portal:
+    ```powershell
+    Get-AzureStackHCI 
+    ```
+    Here is a sample output:
 
-:::image type="content" source="media/deployment-tool/deployment-validate-azure.png" alt-text="Azure portal screen" lightbox="media/deployment-tool/deployment-validate-azure.png":::
+    ```powershell
+    PS C:\Users\Administrator> Enter-PSSession -ComputerName 100.96.113.220 -Credential localhost\administrator 
+
+    [100.96.113.220]: PS C:\Users\Administrator\Documents> Get-AzureStackHCI 
+
+    ClusterStatus      : Clustered 
+    RegistrationStatus : Registered 
+    RegistrationDate   : 7/6/2022 1:01:02 AM 
+    AzureResourceName  : cluster-c0bca4ca3d654d689c7b624732af3727 
+    AzureResourceUri   : /Subscriptions/5c17413c-1135-479b-a046-847e1ef9fbeb/resourceGroups/ASZRegistrationRG/providers/Microsoft.AzureStackHCI/clusters/cluster-c0bca4ca3d654d689c7b624732af3727
+
+    ConnectionStatus   : Connected
+    LastConnected      : 7/6/2022 2:00:02 PM
+    IMDSAttestation    : Disabled
+    DiagnosticLevel    : Basic
+
+    [100.96.113.220]: PS C:\Users\Administrator\Documents>
+    ```
+
+1. Make a note of the `AzureResourceName` value. You'll need this to do a search in the Azure portal.
+
+1. Sign in to the Azure portal. Make sure that you have used the appropriate Azure account ID and password.
+
+1. In the Azure portal, search for the `AzureResourceName` value, then select the corresponding cluster resource.
+
+1. On the **Overview** page for the cluster resource, view the **Server** information.  
+
+    :::image type="content" source="media/deployment-tool/validate-deployment.png" alt-text="Azure portal screen" lightbox="media/deployment-tool/validate-deployment.png":::
 
 ## Next step
 
