@@ -306,52 +306,64 @@
       href: concepts/data-collection.md
 - name: Preview channel
   items:
-  - name: Join the preview channel
+  - name: Join preview channel
+    href: manage/preview-channel.md
+  - name: What's new in version 22H2
+    href: whats-new.md
+  - name: View known issues in version 22H2
     href: manage/preview-channel.md
   - name: Update version 21H2
     items:
-    - name: Install version 22H2
+    - name: Update to version 22H2
       href: manage/install-preview-version.md
-    - name: Post installation steps
+    - name: Run post update steps
       href: manage/preview-post-installation.md
   - name: Plan for version 22H2
     items:
     - name: Review security
       items: 
-      - name: Windows Defender Application Control 
+      - name: Use Windows Defender Application Control 
         href: manage/preview-channel.md
-      - name: Security baseline, drift control
+      - name: Review security baseline, drift control
         href: manage/preview-channel.md
-      - name: BitLocker encryption
+      - name: Understand BitLocker encryption
         href: manage/preview-channel.md
     - name: Assess environment readiness
       href: manage/use-environment-checker.md
-    - name: Review prerequisites
-      href: manage/preview-channel.md
-    - name: Select deployment network pattern
-      href: manage/preview-channel.md
-    - name: Get deployment checklist
-      href: manage/preview-channel.md
   - name: Deploy version 22H2 
     items:
     - name: Understand deployment flow
       href: manage/preview-channel.md
-    - name: Deploy via PowerShell
+    - name: Review prerequisites
       href: manage/preview-channel.md
+    - name: Select deployment network pattern
+      href: manage/preview-channel.md
+    - name: View deployment checklist
+      href: manage/preview-channel.md
+    - name: Prepare active directory
+      href: manage/preview-channel.md
+    - name: Install version 22H2 operating system
+      href: manage/preview-channel.md   
+    - name: Deploy single node
+      items:
+      - name: Use interactive flow
+        href: manage/preview-channel.md
+      - name: Use config file
+        href: manage/preview-channel.md
     - name: Deploy cluster
       items:
-      - name: Using new config file
+      - name: Use interactive flow
         href: manage/preview-channel.md
-      - name: Using existing config file
+      - name: Use config file
         href: manage/preview-channel.md
-    - name: Validate deployment
+    - name: Deploy via PowerShell
+      href: manage/preview-channel.md
+    - name: Verify deployment
       href: manage/preview-channel.md
     - name: Collect logs 
       href: manage/preview-channel.md
     - name: Troubleshoot issues
       href: manage/preview-channel.md
-    - name: View known issues
-      href: manage/preview-channel.md  
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
