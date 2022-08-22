@@ -15,7 +15,7 @@ ms.reviewer: jgerend
 Use the following checking to gather this information ahead of the actual deployment of your Azure Stack HCI cluster.
 
 > [!NOTE]
-> This release supports a single Azure Stack HCI deployment per Active Directory domain.
+> This release supports one Azure Stack HCI deployment per Active Directory domain.
 
 > [!NOTE]
 > This release does not support the use of a /26 network size (64-bit address range).
