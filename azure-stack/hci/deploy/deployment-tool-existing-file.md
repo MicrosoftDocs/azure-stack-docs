@@ -220,7 +220,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 |Parameters|Description|
 |----|----|
 |`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
-|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
+|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](https://docs.microsoft.com//azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
 |`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. **Note**: This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.

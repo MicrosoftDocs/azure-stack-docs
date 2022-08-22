@@ -1,5 +1,5 @@
 ---
-title: Known issues for Azure Stack HCI version 22H2 (preview)
+title: View known issues for Azure Stack HCI version 22H2 (preview)
 description: Read about the known issues for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Known issues for Azure Stack HCI version 22H2 (preview)
+# View known issues for Azure Stack HCI version 22H2 (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
