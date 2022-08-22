@@ -21,9 +21,10 @@ After you have successfully installed the operating system, you are ready to set
 
 Before you begin, make sure you have done the following:
 
-- Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
+- Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- From a local VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 
 <!---## Configure the servers
 

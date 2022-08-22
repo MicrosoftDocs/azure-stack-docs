@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot issues for Azure Stack HCI version 22H2 (preview) deployment
+title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Troubleshoot issues for Azure Stack HCI version 22H2 (preview) deployment
+# Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
