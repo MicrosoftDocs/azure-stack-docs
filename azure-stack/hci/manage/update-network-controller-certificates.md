@@ -4,19 +4,19 @@ description: This article describes how to renew Network Controller certificates
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: conceptual
-ms.date: 08/16/2022
+ms.date: 08/22/2022
 ---
 
 # Renew Network Controller certificates before they expire
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 and Windows Server 2019
 
 This article provides instructions on how to renew or change Network Controller certificates before they expire.
 
 > [!IMPORTANT]
 > If Network Controller certificates have already expired, don't use instructions in this article to renew them.
 
-In your Software Defined Networking (SDN) infrastructure, you can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller uses Kerberos to authenticate users and network devices. In non-domain environments, you deploy certificates on  the Network Controller virtual machines (VMs) for authentication, authorization, and encryption. Each certificate comes with a validity period, after which it becomes invalid and can no longer be trusted for use. To keep your Network Controllers secured, you must renew their certificates before they expire.
+In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. You must renew them before they expire.
 
 For an overview information about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md)
 
@@ -63,7 +63,7 @@ You use the Network Controller's REST certificate for:
 
 - Northbound communication with REST clients 
 - Encryption of credentials
-- Southbound communication to hosts, Gateway VMs, and Software Load Balancer VMs
+- Southbound communication to hosts and Software Load Balancer VMs
 
 When you update a REST certificate, you must update the management clients and network devices to use the new certificate.
 
@@ -74,7 +74,7 @@ To renew REST certificate, complete the following steps:
    > [!NOTE]
    > If the certificate is already expired, don't use these steps.
 
-1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM.
+1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM. For information about how to a create new certificate or issue it from a Certification Authority, see [Manage certificates for Software Defined Networking](/windows-server/networking/sdn/security/sdn-manage-certs).
 
 1. Assign the new certificate to a variable:
 
@@ -129,7 +129,7 @@ Follow these steps for copying one certificate to all Network Controller VMs.
 If you're using a self-signed certificate, place it in the root store of the local machine (LocalMachine\Root) for each of the following:
 
 - Every Network Controller VM.
-- Every Azure Stack HCI host machine, Gateway VMs and the Software Load Balancer VMs. This ensures that the certificate is trusted by the peer entities.
+- Every Azure Stack HCI host machine and Software Load Balancer VMs. This ensures that the certificate is trusted by the peer entities.
 
 Here's a sample command to import the certificate public key that has already been exported:
 
@@ -144,7 +144,7 @@ Modify Network Controller node, cluster, and application settings to use the new
 
 **For Northbound communication**
 
-To change the certificate that Network Controller uses for Northbound communication, run the following command:
+To change the certificate that Network Controller uses for Northbound communication, run the following command on any of the Network Controller VMs:
 
 ```powershell
 Set-NetworkController -ServerCertificate \$cert
