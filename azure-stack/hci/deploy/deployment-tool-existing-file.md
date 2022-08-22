@@ -297,6 +297,7 @@ After deployment of your cluster has successfully completed, remove the Windows 
 Get-CimInstance -ClassName Win32_Product|Where-object {$_name -like “Windows Admin Center”}| Invoke-CimMethod -MethodName Uninstall
  ```
 
-## Next step
+## Next steps
 
-If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md).
+- [Validate deployment](deployment-tool-validate.md)
+- If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md)

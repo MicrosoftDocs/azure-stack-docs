@@ -1,6 +1,6 @@
 ---
 title: Prerequisites for deploying Azure Stack HCI version 22H2 (preview)
-description: Learn the prerequisites and pre-deployment steps for deploying Azure Stack HCI version 22H2
+description: Learn the prerequisites for deploying Azure Stack HCI version 22H2
 author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
@@ -12,7 +12,11 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article discusses the software, hardware, and networking prerequisites plus a pre-deployment checklist in order to deploy Azure Stack HCI, version 22H2.
+This article discusses the security, software, hardware, and networking prerequisites in order to deploy Azure Stack HCI, version 22H2.
+
+## Security requirements
+
+Follow the [security requirements]() for Azure Stack HCI, version 22H2.
 
 ## Software requirements
 
@@ -71,6 +75,6 @@ Active directory OU|Name of the organizational unit (OU) for the Active Director
 
 ## Next step
 
-After reviewing and adhering to the prerequisites, you are ready to install the operating system on each server in your cluster:
+After reviewing and adhering to the prerequisites, you are ready to review the pre-deployment checklist:
 
-Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
+Review the [deployment checklist](deployment-tool-checklist.md)

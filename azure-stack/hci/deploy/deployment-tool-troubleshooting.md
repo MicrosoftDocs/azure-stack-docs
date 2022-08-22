@@ -12,7 +12,7 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article discusses troubleshooting and logging options for your Azure Stack HCI 22H2 deployment.
+For troubleshooting purposes, this article discusses how to rerun and reset deployment if you encounter issues during your Azure Stack HCI 22H2 deployment.
 
 Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).
 
@@ -30,25 +30,7 @@ You may have to reset your deployment because it is in a not recoverable state, 
 1. Remove the *ServerHCI.vhdx* file and replace it with a new *ServerHCI.vhdx* file that you have downloaded.
 1. [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
 
-## Collect log data
+## Next steps
 
-You can manually send log files to Microsoft or you can provide consent to allow Microsoft to proactively collect log data.
-
-For the first option, get the following logs, zip them uo, and send to Microsoft: `-C:\Clouddeployment\Logs -C:\Maslogs`
-
-If Network ATC doesn't run correctly and virtual network interfaces and virtual switches are not created, get the logs in *C:\Windows\Networkatctrace.etl* and send them to Microsoft.
-
-For the second option, you can allow Microsoft to proactively collect diagnostic log data during deployment. Keep in mind that `-IncludeGetSDDCLogs` is set to `$true` by default.
-
-To do this, run the following PowerShell cmdlet:
-
-`Start on-demand log collection Import-module ASZDiagnosticsInitializer
-Send-DiagnosticData`
-
-To get a history of log collections for last the 90 days, run the following:
-
-`Import-module ASZDiagnosticsInitializer Get-LogCollectionHistory`
-
-## More information
-
-See [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md)
+- [Collect log data]() from your deployment
+- View [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2

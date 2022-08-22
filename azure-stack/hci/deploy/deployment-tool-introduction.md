@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Stack HCI version 22H2 (preview) using the deployment tool
-description: Learn to deploy Azure Stack HCI version 22H2 using the deployment tool
+title: Azure Stack HCI version 22H2 (preview) deployment overview
+description: Learn to deploy Azure Stack HCI version 22H2 using the new deployment tool
 author: dansisson
 ms.topic: how-to
 ms.date: 08/23/2022
@@ -8,28 +8,38 @@ ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
 
-# Deploy Azure Stack HCI version 22H2 (preview) using the deployment tool
+# Azure Stack HCI version 22H2 (preview) deployment overview
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This set of articles describe how to deploy Azure Stack HCI, version 22H2 using a new deployment tool.
+This set of articles describe how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
 
-## Deployment process
+## Hardware considerations
 
-Follow this process to deploy Azure Stack HCI version 22H2 in your environment:
+You can deploy Azure Stack HCI 22H2 on either your own (or third-party) hardware or on Microsoft-certified hardware.
+
+### Third-party hardware
+
+### Microsoft hardware
+
+## Deployment sequence
+
+Follow this process sequence to deploy Azure Stack HCI version 22H2 in your environment:
 
 - Select one of the validated configurations to deploy
-- Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+- Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI version 22H2.
+- Follow the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- From a local VHDX file, [install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
 - Install the deployment tool on the first server in your cluster
 - Run the deployment tool in Windows Admin Center using either a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).
 - If preferred, you can [deploy using PowerShell](deployment-tool-powershell.md).
+- After deployment, [validate deployment](deployment-tool-validate.md).
 - If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md).
-- Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).
+- Also see [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2.
 
 ## Validated configurations
 
