@@ -12,7 +12,7 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This set of articles describe how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods.
+This set of articles describe how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.

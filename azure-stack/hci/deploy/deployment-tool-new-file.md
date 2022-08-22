@@ -12,7 +12,9 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses Windows Admin Center interactively to create a configuration (answer) file that is saved. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
+After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses Windows Admin Center to create a configuration (answer) file interactively that is saved.
+
+You can deploy both single-node and multi-node clusters using this procedure.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
@@ -21,10 +23,10 @@ After you have successfully installed the operating system, you are ready to set
 
 Before you begin, make sure you have done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- [Install version 22H2](deployment-tool-install-os.md) on each server.
 
 <!---## Configure the servers
 
@@ -86,11 +88,9 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 ## Run the deployment tool
 
-This procedure collects deployment parameters from you and saves them to a configuration file as you step through the wizard.
+This procedure collects deployment parameters from you interactively and saves them to a configuration file as you step through the deployment wizard in Windows Admin Center. You deploy single-node and multi-node clusters similarly.
 
 If you want to use an existing configuration file you have previously created, see [Deploy using a configuration file](deployment-tool-existing-file.md).
-
-For more information on the custom security settings you can specify, see **ADD Security Docs LINK**.
 
 1. Open a web browser from a computer that has network connectivity to the staging server.
 
@@ -100,7 +100,7 @@ For more information on the custom security settings you can specify, see **ADD 
 
 1. Authenticate using the local administrator credentials of your staging server.
 
-1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Create a new config file**, then select either **One server** or **Multiple servers**.
+1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Create a new config file**, then select either **One server** or **Multiple servers** as applicable for your deployment.
 
       :::image type="content" source="media/deployment-tool/deploy-new-get-started.png" alt-text="Deployment Get Started page" lightbox="media/deployment-tool/deploy-new-get-started.png":::
 

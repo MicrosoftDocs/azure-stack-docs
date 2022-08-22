@@ -54,6 +54,10 @@ The following parameters are required to set up the deployment tool properly:
 |`RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc.|
 |`RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. Multi-factor authentication (MFA) is not supported.|
 
+## Deploy a multi-node cluster
+
+Use this procedure to deploy a multi-server cluster using PowerShell.
+
 1. Log on to the first (staging) server using local administrative credentials.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
@@ -76,7 +80,7 @@ The following parameters are required to set up the deployment tool properly:
 
 1. Change the directory to *C:\clouddeployment\setup*.
 
-1. Enter your configuration file and run the following commands to start the deployment:
+1. Specify the path to your configuration file and run the following commands to start the deployment:
 
     ```powershell
     .\InstallAzureStack-AsZ.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred -DomainAdminCredential $DomainAdminCred -LocalAdminCredential $LocalAdminCred -JSONFilePath <path_to_config_file.json>
@@ -84,7 +88,7 @@ The following parameters are required to set up the deployment tool properly:
 
 ## Deploy a single-node cluster
 
-To deploy a single-node or multi-node Azure Stack HCI version 22H2 cluster using PowerShell, use the following procedure:
+Use this procedure to deploy a single-server cluster using PowerShell. It is similar to that for a multi-server cluster but you must modify your configuration file slightly first:
 
 1. Open the configuration file in a text editor.
 
@@ -113,4 +117,30 @@ To deploy a single-node or multi-node Azure Stack HCI version 22H2 cluster using
                   ]
     ```
 
-1. Deploy Azure Stack HCI, version 22H2 with PowerShell using the modified config file. For details, see **ADD Deploy using PowerShell LINK**.
+1. Log on to the first (staging) server using local administrative credentials.
+
+1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
+
+1. Enter your Azure subscription ID and the Azure Cloud name and run the following PowerShell commands from an administrative prompt:
+
+    ```powershell
+    $SubscriptionID="Azure_subscription_ID"
+    $AzureCred=get-credential
+    $AzureCloud="AzureCloud_name"
+    $DomainAdminCred=get-credential
+    $LocalAdminCred=get-credential
+    ```
+
+1. Set up the deployment tool:
+
+    ```powershell
+    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud – RegistrationSubscriptionID $SubscriptionID – RegistrationAccountCredential $AzureCred
+    ```
+
+1. Change the directory to *C:\clouddeployment\setup*.
+
+1. Specify the path to your configuration file and run the following commands to start the deployment:
+
+    ```powershell
+    .\InstallAzureStack-AsZ.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred -DomainAdminCredential $DomainAdminCred -LocalAdminCredential $LocalAdminCred -JSONFilePath <path_to_config_file.json>
+    ```

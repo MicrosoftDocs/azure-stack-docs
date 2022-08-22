@@ -311,7 +311,7 @@
   - name: What's new in version 22H2
     href: whats-new.md
   - name: View known issues in version 22H2
-    href: manage/preview-channel.md
+    href: deploy/deployment-tool-known-issues.md
   - name: Update version 21H2
     items:
     - name: Update to version 22H2

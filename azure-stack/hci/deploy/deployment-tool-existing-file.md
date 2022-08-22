@@ -12,7 +12,11 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article discusses how to run the deployment tool using a configuration file you manually create.
+After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses a configuration file that you manually create beforehand using a text editor.
+
+The deployment tool wizard uses your file and further provides an interactive, guided experience that helps you deploy and register the cluster.
+
+You can deploy both single-node and multi-node clusters using this procedure.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
@@ -21,10 +25,10 @@ This article discusses how to run the deployment tool using a configuration file
 
 Before you begin, make sure you have done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
+- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
-- [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
+- [Install version 22H2](deployment-tool-install-os.md) on each server.
 
 <!---## Configure the servers
 
@@ -214,7 +218,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
 ## Set up the deployment tool
 
 > [!NOTE]
-> You need to install and set up the deployment tool only on the first server in the cluster.
+> You need to install and set up the deployment tool only on the first server in your cluster.
 
 The Azure Stack HCI version 22H2 preview deployment tool requires the following parameters to run:
 
@@ -251,6 +255,8 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 ## Run the deployment tool
 
+You deploy single-node and multi-node clusters similarly using the interactive flow in Windows Admin Center.
+
 > [!NOTE]
 > You need to install and set up the deployment tool only on the first server in the cluster.
 
@@ -262,7 +268,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 1. Authenticate using the local administrator credentials of your staging server.
 
-1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Use an existing config file**, then select either **One server** or **Multiple servers**.
+1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Use an existing config file**, then select either **One server** or **Multiple servers** as applicable for your deployment.
 
       :::image type="content" source="media/deployment-tool/deploy-existing-get-started.png" alt-text="Deployment Get Started page" lightbox="media/deployment-tool/deploy-existing-get-started.png":::
 

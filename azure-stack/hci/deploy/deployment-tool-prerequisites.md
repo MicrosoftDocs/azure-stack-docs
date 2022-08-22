@@ -14,13 +14,13 @@ ms.reviewer: jgerend
 
 This article discusses the security, software, hardware, and networking prerequisites in order to deploy Azure Stack HCI, version 22H2.
 
-## Security requirements
+## Security considerations
 
-Follow the [security requirements]() for Azure Stack HCI, version 22H2.
+Review the [security considerations]() and [assess environment readiness](manage/use-environment-checker.md) for version 22H2.
 
 ## Software requirements
 
-You must set up the Azure Stack HCI, version 22H2 operating system to boot from a VHDX image file using the instructions in this article.
+You must set up the version 22H2 operating system to boot from a VHDX image file using the instructions in this article.
 
 ## Hardware requirements
 
