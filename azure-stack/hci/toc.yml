@@ -342,9 +342,9 @@
       href: deploy/deployment-tool-active-directory.md
     - name: Install version 22H2 operating system
       href: deploy/deployment-tool-install-os.md
-    - name: Deploy using interactive flow
+    - name: Deploy interactively
       href: deploy/deployment-tool-new-file.md
-    - name: Deploy using config file
+    - name: Deploy using a config file
       href: deploy/deployment-tool-existing-file.md
     - name: Deploy using PowerShell
       href: deploy/deployment-tool-powershell.md
