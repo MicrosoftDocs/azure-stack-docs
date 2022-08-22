@@ -1,10 +1,10 @@
 ---
 title: Integrate AD FS identity with your Azure Stack Hub datacenter 
 description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
-author: BryanLa
+author: sethmanheim
 ms.topic: article
 ms.date: 06/10/2021
-ms.author: bryanla
+ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
 
@@ -55,7 +55,7 @@ The following information is required as inputs for the automation parameters:
 |Parameter|Deployment Worksheet Parameter|Description|Example|
 |---------|---------|---------|---------|
 |`CustomADGlobalCatalog`|AD FS Forest FQDN|FQDN of the target Active Directory forest that you want to integrate with|Contoso.com|
-|`CustomADAdminCredentials`| |A user with LDAP Read permission|YOURDOMAIN\graphservice|
+|`CustomADAdminCredentials`| |A user with LDAP Read permission|graphservice|
 
 ### Configure Active Directory Sites
 
@@ -97,7 +97,7 @@ For this procedure, use a computer in your datacenter network that can communica
     $i = @(
            [pscustomobject]@{ 
                      CustomADGlobalCatalog="fabrikam.com"
-                     CustomADAdminCredential= get-credential
+                     CustomADAdminCredential= Get-Credential -Message "Do not include the domain name of the graphservice account in the username."
                      SkipRootDomainValidation = $false 
                      ValidateParameters = $true
                    }) 

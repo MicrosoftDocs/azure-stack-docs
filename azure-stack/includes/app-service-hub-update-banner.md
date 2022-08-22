@@ -4,7 +4,7 @@ ms.author: anwestg
 ms.service: azure-stack
 ms.topic: include
 ms.date: 12/09/2021
-ms.reviewer: bryanla
+ms.reviewer: sethm
 ms.lastreviewed: 10/28/2020
 ---
 <!-- TODO - For each release: add AzS Hub build number, App Service RP version number, & corresponding App Service release notes text/link -->

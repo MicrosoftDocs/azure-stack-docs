@@ -3,7 +3,7 @@ title: ASDK Release Notes
 description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
 author: sethmanheim
 ms.topic: article
-ms.date: 12/06/2021
+ms.date: 07/11/2022
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2020
@@ -19,6 +19,17 @@ ms.lastreviewed: 08/10/2020
 This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, [use the portal to check](../operator/azure-stack-updates.md).
 
 Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media/asdk-release-notes/feed-icon-14x14.png) [RSS feed](/api/search/rss?locale=en-us&search=ASDK+release+notes).
+
+::: moniker range="azs-2206"
+## Build 1.2206.0.6
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+<!-- ### Fixed and known issues -->
+
+::: moniker-end
 
 ::: moniker range="azs-2108"
 ## Build 1.2108.2.65
@@ -44,46 +55,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the ![RSS](./media
 
 ### Fixed and known issues
 
-::: moniker-end
-
-::: moniker range="azs-2008"
-## Build 1.2008.0.59
-
-### New features
-
-- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
-
-### Fixed and known issues
-
-::: moniker-end
-
-::: moniker range="azs-2005"
-## Build 1.2005.0.40
-
-### New features
-
-- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
-
-### Fixed and known issues
-
-- The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
-- Fixed an issue that caused cloud recovery to fail if the original external certificate password changed on the multi-node source system. 
-- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
-- Note that available Azure Stack hotfixes are not applicable to the ASDK.
-
-#### Initial configuration fails in ASDK
-
-- When deploying the ASDK, you may receive the error messages **Status of 'Deployment-Phase0-DeployBareMetal' is 'Error'** and **Status of 'Deployment-InitialSteps' is 'Error'**.
-
-- As a workaround:
-
-1. Open the file at C:\CloudDeployment\Roles\PhysicalMachines\Tests\BareMetal.Tests.ps1 in any editor with a line counter, such as PowerShell ISE.
-
-2. Replace line 822 with:
-
-   ```powershell
-
-   PartNumber = if($_.PartNumber) {$_.PartNumber.Trim()} else {""};
-
-   ```  
 ::: moniker-end

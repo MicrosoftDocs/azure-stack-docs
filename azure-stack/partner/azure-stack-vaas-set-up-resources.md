@@ -96,6 +96,9 @@ To assign roles for the VaaS service app:
 4. Select **Users and groups**. The **AzureStack Validation Management Api [wsfed enabled] [Migrated] - Users and group** blade lists the users with permission to use the app.
 5. Select **+ Add user** to add a user from your tenant and assign a role.
 
+> [!NOTE]
+> As a best practice, you should define more than one Owner to avoid the necessity of having to create a new tenant if there is an issue with a single owner.
+
 ## Create an Azure Storage account
 
 During test execution, VaaS outputs diagnostic logs to an Azure Storage account. In addition to test logs, the storage account may also be used to the upload the OEM extension packages for the Package Validation workflow.
@@ -110,9 +113,9 @@ The Azure Storage account is hosted in the Azure public cloud, not on your Azure
 
 4. Review the [naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage) for Azure Storage accounts. Enter a name for your storage account.
 
-5. Select the **US West** region for your storage account.
+5. Select the **US East** region for your storage account.
 
-    To ensure that networking charges aren't incurred for storing logs, the Azure Storage account can be configured to use only the **US West** region. Data replication and the hot storage tier feature aren't necessary for this data. Enabling either feature will dramatically increase your costs.
+    To ensure that networking charges aren't incurred for storing logs, the Azure Storage account can be configured to use only the **US East** region. Data replication and the hot storage tier feature aren't necessary for this data. Enabling either feature will dramatically increase your costs.
 
 6. Leave the settings to the default values except for **Account kind**:
 

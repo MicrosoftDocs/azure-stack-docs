@@ -78,7 +78,7 @@ The following diagram shows the general process for deploying the cluster.
 You can collect and review deployment logs on the VMs that support your Kubernetes cluster. Talk to your Azure Stack Hub administrator to verify the version of Azure Stack Hub that you need to use, and to get logs from Azure Stack Hub that are related to your deployment.
 
 1. Review the error code returned by the ARM deployment in your **Deployments** pane in the resource group where you deployed the cluster. The descriptions for the error codes are in the [Troubleshooting](https://github.com/msazurestackworkloads/azurestack-gallery/blob/master/kubernetes/docs/troubleshooting.md) article in AKS engine GitHub repository. If you can't resolve the issue with the error description, continue with these steps.
-2. Review the [deployment status](#review-deployment-status) and retrieve the logs from the master node in your Kubernetes cluster.
+2. Review the [deployment status](#review-deployment-status) and retrieve the logs from the control plane node in your Kubernetes cluster.
 3. Check that you're using the latest version of Azure Stack Hub. If you're unsure which version you're using, contact your Azure Stack Hub administrator.
 4. Review your VM creation files. You might have had the following issues:  
     - The public key might be invalid. Review the key that you created.  
@@ -142,7 +142,7 @@ Follow these steps to collect and download the cluster logs:
     | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Print command usage. | |
     | -i, --identity-file | Path to the RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
-    | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes control plane node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value) |
 
 

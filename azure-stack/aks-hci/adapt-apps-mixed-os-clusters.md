@@ -3,7 +3,7 @@ title: Adapt applications for use in mixed-OS Kubernetes clusters
 description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on Azure Stack HCI are scheduled on the correct worker node operating system
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/13/2022
+ms.date: 06/27/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -14,7 +14,7 @@ ms.reviewer: abha
 ---
 # Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations
 
-> Applies to: Azure Stack HCI versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI and Windows Server
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server enables you to run Kubernetes clusters with both Linux and Windows nodes, but requires you to make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you'll learn how to ensure your application gets scheduled on the right host OS using either node selectors, or taints and tolerations.
 

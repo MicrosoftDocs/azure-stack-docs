@@ -55,8 +55,6 @@
         href: concepts-security.md
       - name: Container security
         href: container-security.md
-      - name: Certificates and tokens
-        href: certificates-and-tokens.md
       - name: Update certificates
         href: certificates-update-after-sixty-days.md
 
@@ -134,6 +132,8 @@
             href: proxy-change.md
           - name: Configure load balancer
             href: configure-load-balancer.md
+          - name: Use multiple load balancers
+            href: multiple-load-balancers.md
           - name: Configure a custom load balancer
             href: configure-custom-load-balancer.md
           - name: Deploy MetalLB for load balancing
@@ -199,7 +199,7 @@
     - name: Use Windows Server containers
       items:
           - name: Use containerd (preview)
-            href: use-containerd-on-windows-aks.md
+            href: /azure-stack/aks-hci/
           - name: Deploy .NET applications
             href: deploy-windows-application.md
           - name: Configure group Managed Service Account support

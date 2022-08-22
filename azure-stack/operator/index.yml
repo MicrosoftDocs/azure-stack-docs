@@ -9,8 +9,8 @@ metadata:
   services: azure-stack
   ms.service: azure-stack
   ms.topic: landing-page
-  author: BryanLa
-  ms.author: bryanla
+  author: sethmanheim
+  ms.author: sethm
   ms.date: 04/13/2020
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new

@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: What's new in Azure Stack HCI?
+  - name: What's new in Azure Stack HCI? 
     href: whats-new.md
   - name: Release information
     href: release-information.md
@@ -16,6 +16,8 @@
     href: hybrid-capabilities-with-azure-services.md
   - name: Use Azure Benefits
     href: ./manage/azure-benefits.md
+  - name: Evaluate Azure Stack HCI
+    href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
 - name: Quickstarts
@@ -34,9 +36,11 @@
     href: deploy/operating-system.md
   - name: 2. Create a cluster
     href: deploy/create-cluster.md
-  - name: 3. Register a cluster with Azure
+  - name: 3. Set up a cluster witness
+    href: manage/witness.md    
+  - name: 4. Register a cluster with Azure
     href: deploy/register-with-azure.md
-  - name: 4. Validate the cluster
+  - name: 5. Validate the cluster
     href: deploy/validate.md
   - name: Migrate a cluster
     items:
@@ -148,24 +152,12 @@
         href: manage/manage-network-atc.md
       - name: Update the cluster
         href: manage/update-cluster.md
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md 
       - name: Manage quick restarts
         href: manage/kernel-soft-reboot.md
-      - name: Set up a cluster witness
-        href: manage/witness.md
     - name: Monitoring
       items:
-      # - name: Monitor a single cluster (latest version)
-      #   href: manage/single-cluster.md
-      # - name: Configure Azure portal to monitor clusters (preview)
-      #   href: manage/monitor-azure-portal.md
-      # - name: Monitor multiple clusters with Azure Stack HCI Insights (latest version)
-      #   href: manage/multi-cluster.md        
-      # - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
-      #   href: manage/azure-stack-hci-insights.md
       - name: Monitor a single cluster using the Azure portal (preview)
-        href: manage/monitor-hci-single.md
+        href: manage/monitor-hci-single.md      
       - name: Monitor multiple clusters with Azure Stack HCI Insights (preview)
         href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
@@ -200,6 +192,8 @@
     items:
     - name: Deploy an SDN infrastructure
       href: manage/sdn-express.md
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md       
     - name: Use Datacenter Firewall
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
@@ -252,6 +246,8 @@
       href: concepts/plan-volumes.md
     - name: Understand Storage Spaces Direct
       href: concepts/storage-spaces-direct-overview.md
+    - name: Understand nested resiliency for Storage Spaces Direct
+      href: concepts/nested-resiliency.md      
     - name: Understand the storage pool cache
       href: concepts/cache.md
     - name: Fault tolerance and storage efficiency
@@ -312,6 +308,10 @@
   items:
   - name: Join the preview channel
     href: manage/preview-channel.md
+  - name: Install Azure Stack HCI, 22H2
+    href: manage/install-preview-version.md
+  - name: Post installation Azure Stack HCI, 22H2
+    href: manage/preview-post-installation.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -369,7 +369,11 @@
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
-    href: manage/get-support.md
+    items:
+    - name: Get support
+      href: manage/get-support.md
+    - name: Get remote support
+      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
@@ -382,6 +386,8 @@
       href: /learn/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
+    - name: What's new in version 21H2
+      href: whats-new-in-hci-21h2.md
     - name: What's new in version 20H2
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 

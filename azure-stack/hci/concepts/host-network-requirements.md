@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 10/22/2021
+ms.date: 07/08/2022
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
@@ -137,7 +137,7 @@ SET is a software-based teaming technology that has been included in the Windows
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
 
 > [!IMPORTANT]
-> Load Balancing/Failover (LBFO) is another teaming technology commonly used with Windows Server, but is not supported with Azure Stack HCI. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+> Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO) and Link Aggregation Control Protocol (LACP) teaming technologies commonly used with Windows Server. See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
 
 SET is important for Azure Stack HCI because it's the only teaming technology that enables:
 

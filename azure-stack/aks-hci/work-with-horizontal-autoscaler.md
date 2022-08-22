@@ -1,25 +1,21 @@
 ---
-title: Use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI
+title: Use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI and Windows Server
 description: Learn how to use PowerShell for cluster autoscaling in Azure Kubernetes Services (AKS) on Azure Stack HCI.
 ms.topic: how-to
-author: mattbriggs
-ms.author: mabrigg 
+author: sethmanheim
+ms.author: sethm
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
-ms.date: 05/31/2022
+ms.date: 06/28/2022
 
-# Intent: As a Kubernetes user, I want to use cluster autoscaler to grow my nodes to keep up with application demand.
+# Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
 
 ---
 
 # Use PowerShell for cluster autoscaling
 
-You can use PowerShell to enable the autoscaler and to manage  automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage cluster autoscaling.
-
-> [!IMPORTANT]
-> Cluster autoscaler is currently in PREVIEW.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+You can use PowerShell to enable the autoscaler and to manage automatic scaling of node pools in your target clusters. You can use PowerShell to configure and manage cluster autoscaling.
 
 ## Create a new AksHciAutoScalerConfig object
 
@@ -66,13 +62,13 @@ Set-AksHciCluster -Name <string> -enableAutoScaler $false
 ```
 ## Making effective use of the horizontal autoscaler
 
-Now that the cluster and node pool are configured to automatically scale we have to configure a workload to also scale in a way that makes use of the autoscaler capabilities. 
+Now that the cluster and node pool are configured to automatically scale, we have to configure a workload to also scale in a way that makes use of the autoscaler capabilities. 
 There are two main ways to do that. 
 
 * The Kubernetes horizontal pod autoscaler. Which scales the pods of an application deployment based on load characteristics to the available nodes in the Kubernetes cluster. If there are no more nodes to schedule to the horizontal autoscaler will instantiate a new node for the pods to be scheduled to. If the load goes down the nodes will get scaled back again.
 * The Kubernetes Node anti affinity rules. These rules for a Kubernetes Deployment define that a set of Pods in the deployment can't be scaled on the same node and a different node is required to scale the workload. In combination with either load characteristics or number of target pods for the application instances tha horizontal auto scaler will instantiate new nodes in the node pool to satisfy the requests and based on demand also scale the node pool back again when the demand subsides.
 
-Lets look at some examples:
+Here are some examples:
 
 ### Horizontal Pod Autoscaler
 

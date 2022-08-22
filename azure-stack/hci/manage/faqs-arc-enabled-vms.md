@@ -30,7 +30,11 @@ SDN is currently not supported for VMs created from the Azure portal.
 
 ## My environment doesn't support dynamic DNS updates, how can I successfully deploy Arc Resource Bridge?
 
-If you can't enable dynamic DNS updates in your DNS environment, you must pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but don't exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering article](/windows-server/failover-clustering/prestage-cluster-adds).
+If you can't enable dynamic DNS updates in your DNS environment, you must pre-create records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but don't exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering article](/windows-server/failover-clustering/prestage-cluster-adds). Use the Active Directory object in the following command to complete the installation.
+   ```PowerShell
+   Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -clusterRoleName "ca-cloudagent" -CloudServiceIP $CloudServiceIP
+   ```
+
 
 ## Is there a fee to use Arc management for VMs on Azure Stack HCI cluster?
 

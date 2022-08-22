@@ -106,7 +106,7 @@ Remove-ClusterNode -Cluster Cluster1 -Name Node4
 ```
 
 >[!NOTE]
-> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#adding-servers-to-a-single-node-cluster-optional) to reconfigure Storage Spaces Direct.
+> If the node has been added to a single server, see these [manual steps](../deploy/single-server.md#change-a-single-node-to-a-multi-node-cluster-optional) to reconfigure Storage Spaces Direct.
 
 ## Setup the cluster witness
 
@@ -158,7 +158,7 @@ Set-VMHost -ComputerName Server1 -VirtualMachineMigrationAuthenticationType Kerb
 
 ## Remove a cluster
 
-Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](manage-azure-registration.md#unregister-azure-stack-hci-by-using-powershell).
+Before you remove (destroy) a cluster, you must unregister it from Azure first. For more information, see [Unregister Azure Stack HCI](/azure-stack/hci/deploy/register-with-azure#unregister-azure-stack-hci-using-powershell.
 
 Use the `Remove-ClusterResource` cmdlet to remove one or all resources on a cluster. For more examples and usage information, see the [Remove-ClusterResource](/powershell/module/failoverclusters/remove-clusterresource) reference documentation.
 
