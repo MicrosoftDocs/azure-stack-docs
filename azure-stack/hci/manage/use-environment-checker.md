@@ -347,7 +347,7 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample is the output from a successful run of the network validator. The output indicates no active host is using an IP address from the reserved IP range.
 
-   :::image type="content" source="./media/environment-checker/network-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the network validator." lightbox="./media/environment-checker/ad-validator-sample-passed.png":::
+   :::image type="content" source="./media/environment-checker/network-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
