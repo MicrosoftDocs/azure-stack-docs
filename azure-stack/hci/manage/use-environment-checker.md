@@ -298,13 +298,13 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample is the output from a successful run of the Active Directory validator. The output indicates that the specified OU exists and contains proper sub-OUs.
 
-   :::image type="content" source="./media/environment-checker/ad-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Active Directory validator." lightbox="./media/environment-checker/ad-validator-sample-passed.png":::
+   :::image type="content" source="./media/environment-checker/active-directory-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Active Directory validator." lightbox="./media/environment-checker/active-directory-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
 The following sample is the output from a failed run of the Active Directory validator. The report indicates that the Active Directory tool hasn't been run and proper Organizational Unit (OU) isn't created.
 
-   :::image type="content" source="./media/environment-checker/ad-validator-sample-failed.png" alt-text="Screenshot of another failed report after running the Active Directory validator." lightbox="./media/environment-checker/ad-validator-sample-failed.png":::
+   :::image type="content" source="./media/environment-checker/active-directory-validator-sample-failed.png" alt-text="Screenshot of another failed report after running the Active Directory validator." lightbox="./media/environment-checker/active-directory-validator-sample-failed.png":::
 
 To remediate the blocking issues in this output, open the Active Directory tool and pass the following parameters:
 
