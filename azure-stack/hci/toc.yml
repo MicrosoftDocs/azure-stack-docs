@@ -332,38 +332,30 @@
       href: manage/use-environment-checker.md
   - name: Deploy version 22H2 
     items:
-    - name: Understand deployment flow
-      href: manage/preview-channel.md
+    - name: Deployment overview
+      href: deploy/deployment-tool-introduction.md
     - name: Review prerequisites
-      href: manage/preview-channel.md
-    - name: Select deployment network pattern
-      href: manage/preview-channel.md
+      href: deploy/deployment-tool-prerequisites.md
     - name: View deployment checklist
-      href: manage/preview-channel.md
-    - name: Prepare active directory
-      href: manage/preview-channel.md
+      href: deploy/deployment-tool-checklist.md
+    - name: Prepare Active Directory
+      href: deploy/deployment-tool-active-directory.md
     - name: Install version 22H2 operating system
-      href: manage/preview-channel.md   
-    - name: Deploy single node
-      items:
-      - name: Use interactive flow
-        href: manage/preview-channel.md
-      - name: Use config file
-        href: manage/preview-channel.md
-    - name: Deploy cluster
-      items:
-      - name: Use interactive flow
-        href: manage/preview-channel.md
-      - name: Use config file
-        href: manage/preview-channel.md
-    - name: Deploy via PowerShell
-      href: manage/preview-channel.md
-    - name: Verify deployment
-      href: manage/preview-channel.md
+      href: deploy/deployment-tool-install-os.md
+    - name: Deploy using interactive flow
+      href: deploy/deployment-tool-new-file.md
+    - name: Deploy using config file
+      href: deploy/deployment-tool-existing-file.md
+    - name: Deploy using PowerShell
+      href: deploy/deployment-tool-powershell.md
+    - name: Validate deployment
+      href: deploy/deployment-tool-validate.md
     - name: Collect logs 
       href: manage/preview-channel.md
     - name: Troubleshoot issues
-      href: manage/preview-channel.md
+      href: deploy/deployment-tool-troubleshooting.md
+    - name: View known issues
+      href: deploy/deployment-tool-known-issues.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
