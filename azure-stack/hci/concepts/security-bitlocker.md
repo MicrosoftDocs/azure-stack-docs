@@ -17,17 +17,13 @@ We recommend you retrieve your BitLocker recovery keys right after the deploymen
 
 ## How to get your BitLocker recovery keys
 
-1. Open a PowerShell session as Admin and use the following command (make sure you add your host IP address.)
+1. Open a PowerShell session as Admin in one of the cluster nodes.
 
 ```powershell
-Invoke-Command -ComputerName <host ip address> -Credential $cred -Authentication Credssp -ScriptBlock { Get-AszRecoveryKeyInfo } | ft ComputerName, PasswordID, RecoveryKey
+Get-AszRecoveryKeyInfo } | ft ComputerName, PasswordID, RecoveryKey
 ```
 
-2. Sign in with your Administrator account credentials.
-
-![Image showing the Windows PowerShell credential request.](media/security-bitlocker/powershell-credentials.png)
-
-3. See the results of the recovery keys displayed in PowerShell.
+2. See the results of the recovery keys displayed in PowerShell.
 
 ![Image showing a PowerShell window displaying recovery keys.](media/security-bitlocker/recovery-keys.png)
 
