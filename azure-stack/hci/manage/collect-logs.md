@@ -57,25 +57,23 @@ There's one known issue with the manual log collection process in this release. 
 
 Before collecting logs, perform the following steps:
 
-1. Run `Get-ASWDACPolicyInfo` cmdlet to get information about the `PolicyMode`.
+1. Run `Get-ASWDACPolicyInfo` cmdlet to get information about the policy mode.
 
    ```powershell
    Get-ASWDACPolicyInfo
    ```
 
-1. Check the value of the `PolicyMode` parameter. `PolicyMode` must be **Audit** and not **Enforced**.
+1. Check the value of the `PolicyMode` parameter. It must be **Audit** and not **Enforced**.
 
-   If `PolicyMode` is already **Audit**, skip step 3 and step 4. If it's **Enforced** as shown in the following screenshot, continue to step 3.
+   If `PolicyMode` is already **Audit**, skip steps 3 and 4. If it's **Enforced** as shown in the following screenshot, continue to step 3.
     
    :::image type="content" source="./media/collect-logs/policy-mode-enforced.png" alt-text="Screenshot showing the policy mode as "Enforced"." lightbox="./media/collect-logs/policy-mode-enforced.png":::
 
-1.  Run the following cmdlet to switch the policy mode:
+1. Run the following cmdlet to switch the policy mode. Wait up to five minutes for `PolicyMode` to get updated to **Audit**.
 
     ```powershell
     Switch-ASWDACPolicy -Mode -mode Audit
     ```
-    > [!NOTE]
-    > You may have to wait up to five minutes for `PolicyMode` to get updated to **Audit**.
 
 1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**, as shown in the following screenshot:
 
@@ -87,7 +85,7 @@ Before collecting logs, perform the following steps:
    Send-DiagnosticData -Verbose
    ```
 
-1. After log collection is complete, run the following cmdlet to switch policy mode back to the default **Enforced** mode.
+1. After log collection is complete, run the following cmdlet to switch the policy mode back to the default **Enforced** mode.
 
     ```powershell
     Switch-ASWDACPolicy -Mode Enforced
