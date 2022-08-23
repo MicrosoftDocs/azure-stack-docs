@@ -65,9 +65,11 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
    [mysqld]
    default_authentication_plugin=mysql_native_password
    ```
-   Restart the bitnami service and make sure the bitnami service is running properly.
+   Restart the bitnami service and make sure the bitnami service is running properly, but before that we need to delete ib_logfile0 file before starting the bitnami service
    ```console
-   sudo service bitnami restart
+   sudo service bitnami stop
+   sudo rm /bitnami/mysql/data/ib_logfile0
+   sudo service bitnami start
    sudo service bitnami status
    ```
 
