@@ -31,7 +31,6 @@ Follow this process sequence to deploy Azure Stack HCI version 22H2 in your envi
 - If preferred, you can [deploy using PowerShell](deployment-tool-powershell.md).
 - After deployment, [validate deployment](deployment-tool-validate.md).
 - If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md).
-- Also see [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2.
 
 ## Validated configurations
 

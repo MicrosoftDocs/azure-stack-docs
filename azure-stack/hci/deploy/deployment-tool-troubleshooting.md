@@ -33,4 +33,4 @@ You may have to reset your deployment because it is in a not recoverable state, 
 ## Next steps
 
 - [Collect log data]() from your deployment
-- View [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2
+<!---- View [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2--->
