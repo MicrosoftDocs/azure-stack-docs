@@ -67,7 +67,7 @@ Before collecting logs, perform the following steps:
 
    If `PolicyMode` is already **Audit**, skip steps 3 and 4. If it's **Enforced** as shown in the following screenshot, continue to step 3.
     
-   :::image type="content" source="./media/collect-logs/policy-mode-enforced.png" alt-text="Screenshot showing the policy mode as "Enforced". lightbox="./media/collect-logs/policy-mode-enforced.png":::
+   :::image type="content" source="./media/collect-logs/policy-mode-enforced.png" alt-text="Screenshot showing the policy mode as Enforced." lightbox="./media/collect-logs/policy-mode-enforced.png":::
 
 1. Run the following cmdlet to switch the policy mode. Wait up to five minutes for `PolicyMode` to get updated to **Audit**.
 
@@ -77,7 +77,7 @@ Before collecting logs, perform the following steps:
 
 1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**, as shown in the following screenshot:
 
-   :::image type="content" source="./media/collect-logs/policy-mode-audit.png" alt-text="Screenshot showing the policy mode as "Audit". lightbox="./media/collect-logs/policy-mode-audit.png":::
+   :::image type="content" source="./media/collect-logs/policy-mode-audit.png" alt-text="Screenshot showing the policy mode as Audit." lightbox="./media/collect-logs/policy-mode-audit.png":::
 
 1. Run `Send-DiagnosticData` to collect logs.
 
