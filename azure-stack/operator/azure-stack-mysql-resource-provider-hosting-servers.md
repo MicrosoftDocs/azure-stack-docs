@@ -3,7 +3,7 @@ title: Add MySQL hosting servers in Azure Stack Hub
 description: Learn how to add MySQL hosting servers for provisioning through the MySQL Adapter Resource Provider.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 08/23/2022
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2020
@@ -65,7 +65,8 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
    [mysqld]
    default_authentication_plugin=mysql_native_password
    ```
-   Restart the bitnami service and make sure the bitnami service is running properly, but before that we need to delete ib_logfile0 file before starting the bitnami service
+   Restart the Bitnami service and make sure it's running properly, but before you must delete the **ib_logfile0** file before starting the Bitnami service.
+
    ```console
    sudo service bitnami stop
    sudo rm /bitnami/mysql/data/ib_logfile0
@@ -87,14 +88,14 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
    ![Create admin user](media/azure-stack-tutorial-mysqlrp/bitnami3.png)
 
 5. Make sure the plugin of the created sql user **sqlsa** is **mysql_native_password** and then exit the SSH client.
-   
+
    ```sql
    SELECT user,host,plugin from mysql.user;
    ```
+
 6. Record the new MySQL user information.
 
    This username and password will be used while Azure Stack Hub operator creates a MySQL hosting server using this MySQL server.
-
 
 ## Connect to a MySQL hosting server
 
