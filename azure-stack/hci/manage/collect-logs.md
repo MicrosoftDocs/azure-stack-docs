@@ -13,56 +13,43 @@ ms.date: 08/22/2022
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-You can manually send log files to Microsoft or you can give consent to allow Microsoft to proactively collect log data.
+You can collect and send diagnostic logs to Microsoft to identify or fix issues with your Azure Stack HCI solution. You can either manually send log files to Microsoft or you can give consent to Microsoft to proactively collect log data.
 
-This article describes how to collect log data and send and send to Microsoft or to analyze on your own.
+This article describes how to collect log data and send it to Microsoft. It also provides information on one known issue in this release.
 
-## Send logs manually 
+## Send logs manually using PowerShell
 
-When you run the Deployment Tool, the log data is saved in the `C:\CloudDeployment\Logs` folder. You can use PowerShell to send the log file to Microsoft.
+Use the `Send-DiagnosticData` cmdlet to collect and send diagnostic logs manually.
 
 To send on-demand logs, enter the following cmdlet:
 
 ```powershell
-Send-DiagnosticData LogFile
+Send-DiagnosticData
 ```
 
-To get a history of log collections on stamp for last 90 days:
+After Azure Stack HCI collects log data, it is retained for 90 days. To get a history of log collections on stamp for last 90 days:
 
 ```powershell
 Get-LogCollectionHistory  
 ```   
 
-For the first option, get the following logs, zip them up, and send to Microsoft: `-C:\Clouddeployment\Logs -C:\Maslogs`
+## Send logs proactively
 
-If Network ATC doesn't run correctly and virtual network interfaces and virtual switches are not created, get the logs in *C:\Windows\Networkatctrace.etl* and send them to Microsoft.
-
-
-- Gather diagnostics logs using the PowerShell cmdlets and send them to Microsoft. 
-
-- Provide consent during deployment to allow Microsoft to proactively collect diagnostic logs as appropriate. Keep in mind that **-IncludeGetSDDCLogs** is set to \$true by default. 
-
-  -----------------------------------------------------------------------
-  To do this....           .... Run this PowerShell cmdlet  
-  ------------------------ ----------------------------------------------
-  Start on-demand log      Send-DiagnosticData  \<\< Placeholder for
-  collection               screenshot\>\>
-
-  Get a history of log     Get-LogCollectionHistory  \<\< Placeholder for
-  collections on stamp for screenshot\>\>
-  last 90 days             
-  -----------------------------------------------------------------------
+During deployment, you can provide consent to Microsoft to proactively collect diagnostic logs from a secure and controlled environment. Proactive log collection is enabled by default. The `-IncludeGetSDDCLogs`parameter is set to `$true` by default, which indicates the proactive log collection is enabled. You can disable proactive log collection to stop Microsoft from collecting logs.
 
 ## Known issues
 
-When you execute the Send-DiagnosticData cmdlet,  the Windows Event logs
-will not be collected by default.
+There's one known issue with this release.
 
-**[Workaround: Before collecting logs please follow the instructions
-below to overcome the above mentioned issue.]{.underline}**
+**Issue**
 
-1.  Before collecting logs execute Get-ASWDACPolicyInfo to get
-    information about the PolicyMode
+When you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs isn't collected by default.
+
+**Workaround**
+
+Before collecting logs, perform the following steps:
+
+1.  Before collecting logs execute Get-ASWDACPolicyInfo to get information about the PolicyMode
 
     -   Ensure the PolicyMode is "**Audit**" and not "**Enforced**" as
         in the screenshot below.
@@ -104,6 +91,7 @@ below to overcome the above mentioned issue.]{.underline}**
 
 > Switch-ASWDACPolicy -Mode Enforced
 
-## Send logs proactively
 
-During deployment, you can provide consent to Microsoft to proactively collect diagnostic logs from a secure and controlled environment. Proactive log collection is enabled by default as `-IncludeGetSDDCLogs` is set to `$true` by default. You can disable proactive log collection to stop Microsoft from collecting logs.
+## Next steps
+
+- [Contact Microsoft Support](get-support.md)
