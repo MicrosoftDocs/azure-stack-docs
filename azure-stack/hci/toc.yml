@@ -354,8 +354,6 @@
       href: manage/preview-channel.md
     - name: Troubleshoot issues
       href: deploy/deployment-tool-troubleshooting.md
-    - name: View known issues
-      href: deploy/deployment-tool-known-issues.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

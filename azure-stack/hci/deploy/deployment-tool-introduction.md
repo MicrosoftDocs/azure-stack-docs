@@ -17,14 +17,6 @@ This set of articles describe how to deploy Azure Stack HCI, version 22H2 using 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
 
-## Hardware considerations
-
-You can deploy Azure Stack HCI 22H2 on either your own (or third-party) hardware or on Microsoft-certified hardware.
-
-### Third-party hardware
-
-### Microsoft hardware
-
 ## Deployment sequence
 
 Follow this process sequence to deploy Azure Stack HCI version 22H2 in your environment:

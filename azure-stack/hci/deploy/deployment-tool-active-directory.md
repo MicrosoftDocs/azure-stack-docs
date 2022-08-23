@@ -53,7 +53,7 @@ To prepare and configure Active Directory, follow these steps:
     Copyright (C) Microsoft Corporation. All rights reserved.
 
     PS C:\Users\Administrator.SVCCLIENT02VM3> whoami
-    asz1plab\administrator
+    HCIlab\administrator
     PS C:\Users\Administrator.SVCCLIENT02VM3> Add-KdsRootKey -EffectiveTime ((get-date).addhours(-10))
 
     Guid
@@ -87,9 +87,9 @@ To prepare and configure Active Directory, follow these steps:
 
     PS C:\temp> .\AsHciADArtifactsPreCreationTool.ps1 `
         -AsHciDeploymentUserCredential (get-credential) `
-        -AsHciOUName "OU=oudocs,DC=ASZ1PLab,DC=nttest,DC=contoso,DC=com" `
+        -AsHciOUName "OU=oudocs,DC=HCILab,DC=nttest,DC=contoso,DC=com" `
         -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") `
-        -DomainFQDN "ASZ1PLab.nttest.contoso.com" `
+        -DomainFQDN "HCILab.nttest.contoso.com" `
         -AsHciClusterName "docspro2cluster" `
         -AsHciDeploymentPrefix "docspro2"
 
@@ -103,7 +103,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : None
     AccessControlType     : Allow
-    IdentityReference     : ASZ1PLAB\docspro2cluster$
+    IdentityReference     : HCILAB\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
@@ -114,7 +114,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : ObjectAceTypePresent
     AccessControlType     : Allow
-    IdentityReference     : ASZ1PLAB\docspro2cluster$
+    IdentityReference     : HCILAB\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
@@ -135,8 +135,6 @@ To prepare and configure Active Directory, follow these steps:
 1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one local domain security group with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
 
     :::image type="content" source="media/deployment-tool/ad-3.png" alt-text="Active Directory 3 " lightbox="media/deployment-tool/ad-3.png":::
-
-Your Active Directory environment is now prepared and ready.
 
 ## Next step
 

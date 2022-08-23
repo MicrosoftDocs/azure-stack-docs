@@ -18,7 +18,7 @@ Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-i
 
 ## Rerun deployment
 
-To rerun the deployment in case of a failure, in PowerShell, run `InstallAzureStack-AsZ.ps1` with the parameter `-rerun`.
+To rerun the deployment in case of a failure, in PowerShell, run `Invoke-CloudDeployment.ps1` with the parameter `-rerun`.
 
 Depending on which step the deployment fails, you may have to use `Set-ExecutionPolicy bypass`.
 

@@ -237,7 +237,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands from an administrative prompt:
 
     ```PowerShell
-    $SubscriptionID="your_subscription_ID"
+    $SubscriptionID="your_Azure_subscription_ID"
     $AzureCred=get-credential
     $AzureCloud="AzureCloud"
     ```

@@ -70,7 +70,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands from an administrative prompt:
 
     ```PowerShell
-    $SubscriptionID="your_subscription_ID"
+    $SubscriptionID="your_Azure_subscription_ID"
     $AzureCred=get-credential
     $AzureCloud="AzureCloud"
     ```
@@ -112,7 +112,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1.2-add-servers.png" alt-text="Deployment step 1.2" lightbox="media/deployment-tool/deploy-new-step-1.2-add-servers.png":::
 
-1. On **step 1.3 Join a domain**, enter your Active Directory domain name, object profile, organizational unit (OU), account credentials, and NTP time server.
+1. On **step 1.3 Join a domain**, enter your Active Directory domain name, object prefix, organizational unit (OU), account credentials, and NTP time server.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1.3-join-domain.png" alt-text="Deployment step 1.3" lightbox="media/deployment-tool/deploy-new-step-1.3-join-domain.png":::
 
