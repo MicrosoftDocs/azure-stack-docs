@@ -1,6 +1,6 @@
 ---
-title: Collect log data (preview)
-description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI.
+title: Collect diagnostic logs (preview)
+description: How to collect diagnostic logs and share them with Microsoft.
 author: ManikaDhiman
 ms.author: v-mandhiman
 ms.topic: how-to
@@ -9,88 +9,89 @@ ms.subservice: azure-stack-hci
 ms.date: 08/22/2022
 ---
 
-# Collect log data
+# Collect diagnostic logs (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-You can collect and send diagnostic logs to Microsoft to identify or fix issues with your Azure Stack HCI solution. You can either manually send log files to Microsoft or you can give consent to Microsoft to proactively collect log data.
+This article describes how to collect diagnostic logs and send them to Microsoft for identifying and fixing any issues with your Azure Stack HCI solution. It also provides information on one known issue in this release associated with log collection and its workaround.
 
-This article describes how to collect log data and send it to Microsoft. It also provides information on one known issue in this release.
+In this release, you can manually send log files to Microsoft or you can provide consent during deployment to allow Microsoft to utilize the diagnostics logs for troubleshooting.
 
-## Send logs manually using PowerShell
+## Collect logs manually using PowerShell
 
-Use the `Send-DiagnosticData` cmdlet to collect and send diagnostic logs manually.
+Use the `Send-DiagnosticData` cmdlet to manually collect and send diagnostic logs to Microsoft. You can run this cmdlet from any Azure Stack HCI server node.
 
-To send on-demand logs, enter the following cmdlet:
+Here's the syntax of the `Send-DiagnosticData` cmdlet:
 
 ```powershell
-Send-DiagnosticData
+Send-DiagnosticData [[-FilterByRole] <string[]>] [[-FromDate] <datetime>] [[-ToDate] <datetime>] [[-CollectSddc] <bool>]  [<CommonParameters>]
 ```
 
-After Azure Stack HCI collects log data, it is retained for 90 days. To get a history of log collections on stamp for last 90 days:
+where: 
 
-```powershell
-Get-LogCollectionHistory  
-```   
+- `FromDate` and `ToDate` parameters collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past four hours by default. For example, to send diagnostics data with date filtering for log files for the past two hours, enter:
 
-## Send logs proactively
+   ```powershell
+   Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
+   ```
 
-During deployment, you can provide consent to Microsoft to proactively collect diagnostic logs from a secure and controlled environment. Proactive log collection is enabled by default. The `-IncludeGetSDDCLogs`parameter is set to `$true` by default, which indicates the proactive log collection is enabled. You can disable proactive log collection to stop Microsoft from collecting logs.
+- `FilterByRole` parameter collects and sends diagnostic logs for each role. For example, to send diagnostic data with role filtering for BareMetal and ECE, enter:
+
+  ```powershell
+  Send-DiagnosticData -FilterByRole BareMetal, ECE
+  ```
+
+- `CollectSddc` parameter is set to `$true` by default, which triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes its logs as part of the log collection.
+
+After Azure Stack HCI collects log data, it is retained for 90 days. To get a history of log collections for the last 90 days, enter:
+
+  ```powershell
+  Get-LogCollectionHistory  
+  ```
 
 ## Known issues
 
-There's one known issue with this release.
-
-**Issue**
-
-When you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs isn't collected by default.
+There's one known issue with the manual log collection process in this release. When you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
 
 **Workaround**
 
 Before collecting logs, perform the following steps:
 
-1.  Before collecting logs execute Get-ASWDACPolicyInfo to get information about the PolicyMode
+1. Run `Get-ASWDACPolicyInfo` cmdlet to get information about the `PolicyMode`.
 
-    -   Ensure the PolicyMode is "**Audit**" and not "**Enforced**" as
-        in the screenshot below.
+   ```powershell
+   Get-ASWDACPolicyInfo
+   ```
 
-> ![Text Description automatically
-> generated](./media//media/image1.png){width="4.541666666666667in"
-> height="1.6354166666666667in"}
+1. Check the value of the `PolicyMode` parameter. `PolicyMode` must be **Audit** and not **Enforced**.
 
--   If the PolicyMode is already in "**Audit**", skip step 2. If
-    PolicyMode is "Enforced" continue to step 2.
+   If `PolicyMode` is already **Audit**, skip step 3 and step 4. If it's **Enforced** as shown in the following screenshot, continue to step 3.
+    
+   :::image type="content" source="./media/collect-logs/policy-mode-enforced.png" alt-text="Screenshot showing the policy mode as "Enforced"." lightbox="./media/collect-logs/policy-mode-enforced.png":::
 
-2.  Switch-ASWDACPolicy -Mode -mode Audit
+1.  Run the following cmdlet to switch the policy mode:
 
-> ![](./media//media/image2.png){width="5.947916666666667in"
-> height="0.6145833333333334in"}
->
-> You may have to wait upto 5 minutes for the PolicyMode to get updated
-> to Audit.
+    ```powershell
+    Switch-ASWDACPolicy -Mode -mode Audit
+    ```
+    > [!NOTE]
+    > You may have to wait up to five minutes for `PolicyMode` to get updated to **Audit**.
 
--   Confirm the policy change is complete by executing
-    Get-ASWDACPolicyInfo
+1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**, as shown in the following screenshot:
 
-> ![Text Description automatically
-> generated](./media//media/image3.png){width="4.260416666666667in"
-> height="1.65625in"}
+   :::image type="content" source="./media/collect-logs/policy-mode-audit.png" alt-text="Screenshot showing the policy mode as "Audit"." lightbox="./media/collect-logs/policy-mode-audit.png":::
 
-3.  Execute Log collection using Send-DiagnosticData
+1. Run `Send-DiagnosticData` to collect logs.
 
-> ![Text Description automatically
-> generated](./media//media/image4.png){width="6.229166666666667in"
-> height="2.4166666666666665in"}
->
-> ![Text Description automatically generated with medium
-> confidence](./media//media/image5.png){width="3.5520833333333335in"
-> height="2.3125in"}
+   ```powershell
+   Send-DiagnosticData -Verbose
+   ```
 
-4.  After log collection is complete, please execute the following
-    cmdlet to switch policy back to the default Enforced mode.
+1. After log collection is complete, run the following cmdlet to switch policy mode back to the default **Enforced** mode.
 
-> Switch-ASWDACPolicy -Mode Enforced
-
+    ```powershell
+    Switch-ASWDACPolicy -Mode Enforced
+    ```
 
 ## Next steps
 
