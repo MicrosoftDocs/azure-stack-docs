@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 08/19/2022
 ---
 
-# Assess your environment for deployment readiness
+# Assess your environment for deployment readiness (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
@@ -203,7 +203,7 @@ Refer to the following table for a description of the tests the hardware validat
 | Storage | No storage pools exist | Critical |
 | Firmware | BIOS for desired properties | Warning |
 | Firmware | Secure Boot enabled | Critical |
-| Firmware | TPM for desired certificates | Warning/Critical |
+| Firmware | TPM for desired certificates | Critical |
 | Firmware | TPM for desired properties | Critical |
 | Firmware | TPM 2.0 | Critical |
 
