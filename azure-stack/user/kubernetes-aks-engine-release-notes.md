@@ -105,6 +105,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 | 2008                                           | 0.55.4, 0.60.1                 |
 | 2102                                           | 0.60.1, 0.63.0, 0.67.0         |
 | 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0 |
+| 2206                                           | 0.63.0, 0.67.0                 |
 
 ## Kubernetes version upgrade path in AKS engine v0.70.0
 
