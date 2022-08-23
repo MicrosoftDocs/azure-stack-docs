@@ -15,7 +15,7 @@ ms.lastreviewed: 05/06/2022
 
 # Release notes for the AKS engine on Azure Stack Hub
 
-::: moniker range=">=azs-2108"
+::: moniker range=">=azs-2206"
 *Applies to version v0.70.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
@@ -105,6 +105,7 @@ Starting with AKS Engine v0.67.0, the Ubuntu 16.04 distro isn't longer a support
 | 2008                                           | 0.55.4, 0.60.1                 |
 | 2102                                           | 0.60.1, 0.63.0, 0.67.0         |
 | 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0 |
+| 2206                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0 |                 |
 
 ## Kubernetes version upgrade path in AKS engine v0.70.0
 
@@ -168,7 +169,7 @@ This is the complete set of release notes for Azure and Azure Stack Hub combined
 
 ::: moniker-end
 
-::: moniker range=">=azs-2102 <=azs-2107"
+::: moniker range="<=azs-2108 >azs-2008"
 *Applies to version v0.67.0 of the AKS engine.*
 
 This article describes the contents of the Azure Kubernetes Service (AKS) engine on Azure Stack Hub update. The update includes improvements and fixes for the latest release of AKS engine targeted to the Azure Stack Hub platform. Notice that this isn't intended to document the release information for the AKS engine for global Azure.
