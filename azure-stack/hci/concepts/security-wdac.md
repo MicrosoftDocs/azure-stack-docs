@@ -4,12 +4,11 @@ description: This topic provides guidance on Windows Defender Application Contro
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 08/19/2022
+ms.date: 08/22/2022
 ---
-<!--remove references to private preview + Use metadata from existing security article at https://docs.microsoft.com/en-us/azure-stack/hci/concepts/security + TOC > This security article could go in the preview channel.+ ASHCI is not public-facing + Need to add: This article describes... + add "Applies to: " tag > see chat + remove numbers from H-levels
-Call out CIP before using acro > Common Industrial Protocol?
-
-Line 321 > add sample output
+<!-- To do:
+ -- all out CIP before using acro > Common Industrial Protocol?
+ -- Line 321 > add sample output
 -->
 
 # Windows Defender Application Control for Azure Stack HCI (preview)

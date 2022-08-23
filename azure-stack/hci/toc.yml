@@ -325,7 +325,7 @@
     - name: Review security
       items: 
       - name: Use Windows Defender Application Control 
-        href: manage/preview-channel.md
+        href: security-wdac.md
       - name: Review security baseline, drift control
         href: manage/preview-channel.md
       - name: Understand BitLocker encryption
