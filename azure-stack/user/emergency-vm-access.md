@@ -12,7 +12,7 @@ ms.lastreviewed: 08/13/2021
 
 # Emergency VM access (EVA)
 
-The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network. 
+The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network.
 
 > [!NOTE]
 > EVA was released with general availability starting with Azure Stack Hub 2209.

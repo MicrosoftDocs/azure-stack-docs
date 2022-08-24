@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/10/2022
+ms.date: 08/24/2022
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -71,7 +71,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- New content here.
+- Starting with Azure Stack Hub 2209, [Emergency VM Access (EVA)](../user/emergency-vm-access.md) is released to general availability.
 
 <!-- ### Improvements -->
 
