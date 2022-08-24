@@ -1,5 +1,5 @@
 ---
-title: Collect diagnostic logs (preview)
+title: Collect diagnostic logs for Azure Stack HCI, version 22H2 (preview)
 description: How to collect diagnostic logs and share them with Microsoft.
 author: ManikaDhiman
 ms.author: v-mandhiman
@@ -13,11 +13,11 @@ ms.date: 08/22/2022
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This article describes how to collect diagnostic logs and send them to Microsoft for identifying and fixing any issues with your Azure Stack HCI solution. It also provides information on one known issue in this release associated with log collection and its workaround.
+This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution. The article also provides information on known issue with log collection and the associated workaround.
 
-In this release, you can manually send log files to Microsoft or you can provide consent during deployment to allow Microsoft to utilize the diagnostics logs for troubleshooting.
+You can manually collect diagnostic logs and allow Microsoft to utilize them for troubleshooting purposes by providing consent during deployment.
 
-## Collect logs manually using PowerShell
+## Collect logs via PowerShell
 
 Use the `Send-DiagnosticData` cmdlet to manually collect and send diagnostic logs to Microsoft. You can run this cmdlet from any Azure Stack HCI server node.
 
@@ -49,13 +49,15 @@ After Azure Stack HCI collects log data, it is retained for 90 days. To get a hi
   Get-LogCollectionHistory  
   ```
 
-## Known issues
+## Known issue with log collection
 
 There's one known issue with the manual log collection process in this release. When you execute the `Send-DiagnosticData` cmdlet, the Windows Event logs aren't collected by default.
 
 **Workaround**
 
-Before collecting logs, perform the following steps:
+Before collecting logs, follow these steps:
+
+1. Run PowerShell as administrator.
 
 1. Run `Get-ASWDACPolicyInfo` cmdlet to get information about the policy mode.
 
@@ -72,7 +74,7 @@ Before collecting logs, perform the following steps:
 1. Run the following cmdlet to switch the policy mode. Wait up to five minutes for `PolicyMode` to get updated to **Audit**.
 
     ```powershell
-    Switch-ASWDACPolicy -Mode -mode Audit
+    Switch-ASWDACPolicy -Mode Audit
     ```
 
 1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**, as shown in the following screenshot:
@@ -94,3 +96,4 @@ Before collecting logs, perform the following steps:
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
+- [Review known issues in Azure Stack HCI, version 22H2 (preview)](../../hci/known-issues-v22h2.md)
