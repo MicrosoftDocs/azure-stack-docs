@@ -15,7 +15,7 @@ ms.date: 08/22/2022
 
 This article describes how to collect diagnostic logs and send them to Microsoft to identify and fix any issues with your Azure Stack HCI solution. The article also provides information on known issue with log collection and the associated workaround.
 
-You can manually collect diagnostic logs and allow Microsoft to utilize them for troubleshooting purposes by providing consent during deployment.
+You can manually collect and send the diagnostic logs to Microsoft. In this release, you can provide consent during deployment to allow Microsoft to use these logs for troubleshooting purposes.
 
 ## Collect logs via PowerShell
 
@@ -67,9 +67,7 @@ Before collecting logs, follow these steps:
 
 1. Check the value of the `PolicyMode` parameter. It must be **Audit** and not **Enforced**.
 
-   If `PolicyMode` is already **Audit**, skip steps 3 and 4. If it's **Enforced** as shown in the following screenshot, continue to step 3.
-    
-   :::image type="content" source="./media/collect-logs/policy-mode-enforced.png" alt-text="Screenshot showing the policy mode as Enforced." lightbox="./media/collect-logs/policy-mode-enforced.png":::
+   If `PolicyMode` is already **Audit**, skip steps 3 and 4. If it's **Enforced**, continue to step 3.
 
 1. Run the following cmdlet to switch the policy mode. Wait up to five minutes for `PolicyMode` to get updated to **Audit**.
 
@@ -77,9 +75,7 @@ Before collecting logs, follow these steps:
     Switch-ASWDACPolicy -Mode Audit
     ```
 
-1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**, as shown in the following screenshot:
-
-   :::image type="content" source="./media/collect-logs/policy-mode-audit.png" alt-text="Screenshot showing the policy mode as Audit." lightbox="./media/collect-logs/policy-mode-audit.png":::
+1. Run `Get-ASWDACPolicyInfo` again to confirm the `PolicyMode` parameter is updated to **Audit**.
 
 1. Run `Send-DiagnosticData` to collect logs.
 
