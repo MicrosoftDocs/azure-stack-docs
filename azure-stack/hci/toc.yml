@@ -363,7 +363,7 @@
     - name: Verify deployment
       href: manage/preview-channel.md
     - name: Collect logs 
-      href: manage/preview-channel.md
+      href: manage/collect-logs.md
     - name: Troubleshoot issues
       href: manage/preview-channel.md
 - name: Reference
