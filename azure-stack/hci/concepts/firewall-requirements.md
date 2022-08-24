@@ -48,60 +48,60 @@ The following table provides a list of required firewall URLs.
 The following are the required firewall URLs in the JSON format. Use the Copy button to copy-and-paste this content to your allowlist.
 
 ```json
-[{ 
-        "URL": "https://login.microsoftonline.com", 
-        "Port": "443", 
-        "Notes": “(Azure Public) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.“ 
-    }, 
-    { 
-        "URL": "https://login.chinacloudapi.cn/", 
-        "Port": "443", 
-        "Notes": “(Azure China) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.“ 
-    }, 
-    { 
-        "URL": "https://login.microsoftonline.us", 
-        "Port": "443", 
-        "Notes": “(Azure Gov) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.“ 
-    }, 
-    { 
-        "URL": "https://graph.windows.net/", 
-        "Port": "443", 
-        "Notes": “(Azure Public, Azure Gov) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.” 
-    }, 
-    { 
-        "URL": "https://graph.chinacloudapi.cn/", 
-        "Port": "443", 
-        "Notes": “(Azure China) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory.” 
-    }, 
-    { 
-        "URL": "https://management.azure.com/", 
-        "Port": "443", 
-        "Notes": “(Azure Public) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
-    }, 
-    { 
-        "URL": "https://management.chinacloudapi.cn/", 
-        "Port": "443", 
-        "Notes": “(Azure China) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
-    }, 
-    { 
-        "URL": "https://management.usgovcloudapi.net/", 
-        "Port": "443", 
-        "Notes": “(Azure Gov) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager.” 
-    }, 
-    { 
-        "URL": "https://dp.stackhci.azure.com (Azure Public)", 
-        "Port": "443", 
-        "Notes": “(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data. Note that this URL has been updated. Previously, this URL was: https://azurestackhci.azurefd.net. If you've already registered your cluster with the old URL, you must allowlist the old URL as well.” 
-    }, 
-    { 
-        "URL": "https://dp.stackhci.azure.cn", 
-        "Port": "443", 
-        "Notes": “(Azure China) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
-    }, 
-    { 
-        "URL": "https://dp.azurestackchi.azure.us", 
-        "Port": "443", 
-        "Notes": “(Azure Gov) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data.” 
+[{
+        "URL": "https://login.microsoftonline.com",
+        "Port": "443",
+        "Notes": "(Azure Public) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
+    },
+    {
+        "URL": "https://login.chinacloudapi.cn/",
+        "Port": "443",
+        "Notes": "(Azure China) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
+    },
+    {
+        "URL": "https://login.microsoftonline.us",
+        "Port": "443",
+        "Notes": "(Azure Gov) For Active Directory Authority and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
+    },
+    {
+        "URL": "https://graph.windows.net/",
+        "Port": "443",
+        "Notes": "(Azure Public, Azure Gov) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
+    },
+    {
+        "URL": "https://graph.chinacloudapi.cn/",
+        "Port": "443",
+        "Notes": "(Azure China) For Graph and used for authentication, token fetch, and validation. Service Tag: AzureActiveDirectory."
+    },
+    {
+        "URL": "https://management.azure.com/",
+        "Port": "443",
+        "Notes": "(Azure Public) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager."
+    },
+    {
+        "URL": "https://management.chinacloudapi.cn/",
+        "Port": "443",
+        "Notes": "(Azure China) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager."
+    },
+    {
+        "URL": "https://management.usgovcloudapi.net/",
+        "Port": "443",
+        "Notes": "(Azure Gov) For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. Service Tag: AzureResourceManager."
+    },
+    {
+        "URL": "https://dp.stackhci.azure.com (Azure Public)",
+        "Port": "443",
+        "Notes": "(Azure Public) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data. Note that this URL has been updated. Previously, this URL was: https://azurestackhci.azurefd.net. If you've already registered your cluster with the old URL, you must allowlist the old URL as well."
+    },
+    {
+        "URL": "https://dp.stackhci.azure.cn",
+        "Port": "443",
+        "Notes": "(Azure China) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data."
+    },
+    {
+        "URL": "https://dp.azurestackchi.azure.us",
+        "Port": "443",
+        "Notes": "(Azure Gov) For Dataplane which pushes up diagnostics data, is used in the Portal pipeline, and pushes billing data."
      }]
 `````
 ----
@@ -121,80 +121,80 @@ The following table provides a list of recommended firewall URLs.
 The following are the recommended firewall URLs in the JSON format. Use the Copy button to copy-and-paste this content to your allowlist.
 
 ```json
-[{ 
-        "URL": "http://*.windowsupdate.microsoft.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "https://*.windowsupdate.microsoft.com", 
-        "Port": "443", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://*.update.microsoft.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "https://*.update.microsoft.com", 
-        "Port": "443", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://*.windowsupdate.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://download.windowsupdate.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "https://download.microsoft.com", 
-        "Port": "443", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://*.download.windowsupdate.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://wustat.windows.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://ntservicepack.microsoft.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://go.microsoft.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "http://dl.delivery.mp.microsoft.com", 
-        "Port": "80", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "https://dl.delivery.mp.microsoft.com", 
-        "Port": "443", 
-        "Notes": “For Microsoft Update, which allows the OS to receive updates.” 
-    }, 
-    { 
-        "URL": "*.blob.core.windows.net", 
-        "Port": "443", 
-        "Notes": “Alternatively, [myblobstorage].blob.core.windows.net for the blob storage account for the cluster witness. For Cluster Cloud Witness.” 
-    }, 
-    { 
-        "URL": "*.powershellgallery.com", 
-        "Port": "443", 
-        "Notes": “Alternatively, download the Az.StackHCI PowerShell module at https://www.powershellgallery.com/packages/Az.StackHCI. For HCI Registration.” 
+[{
+        "URL": "http://*.windowsupdate.microsoft.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "https://*.windowsupdate.microsoft.com",
+        "Port": "443",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://*.update.microsoft.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "https://*.update.microsoft.com",
+        "Port": "443",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://*.windowsupdate.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://download.windowsupdate.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "https://download.microsoft.com",
+        "Port": "443",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://*.download.windowsupdate.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://wustat.windows.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://ntservicepack.microsoft.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://go.microsoft.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "http://dl.delivery.mp.microsoft.com",
+        "Port": "80",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "https://dl.delivery.mp.microsoft.com",
+        "Port": "443",
+        "Notes": "For Microsoft Update, which allows the OS to receive updates."
+    },
+    {
+        "URL": "*.blob.core.windows.net",
+        "Port": "443",
+        "Notes": "Alternatively, [myblobstorage].blob.core.windows.net for the blob storage account for the cluster witness. For Cluster Cloud Witness."
+    },
+    {
+        "URL": "*.powershellgallery.com",
+        "Port": "443",
+        "Notes": "Alternatively, download the Az.StackHCI PowerShell module at https://www.powershellgallery.com/packages/Az.StackHCI. For HCI Registration."
     }]
 ```
 ----

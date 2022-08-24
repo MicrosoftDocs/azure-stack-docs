@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 11/10/2021
+ms.date: 08/24/2022
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
@@ -39,7 +39,6 @@ When purchasing network switches, contact your switch vendor and ensure that the
 | Lenovo | [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
 | NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
 
-
 # [22H2](#tab/22H2)
 
 | Vendor | 10 GbE | 25 GbE | 100 GbE | 400 GbE |
@@ -51,7 +50,6 @@ When purchasing network switches, contact your switch vendor and ensure that the
 | NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
 
 ---
-
 
 > [!IMPORTANT]
 > We update this list as we're informed of changes by network switch vendors.
