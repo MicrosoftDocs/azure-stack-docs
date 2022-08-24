@@ -3,7 +3,7 @@ title: Prerequisites for deploying Azure Stack HCI version 22H2 (preview)
 description: Learn the prerequisites for deploying Azure Stack HCI version 22H2
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -16,7 +16,7 @@ This article discusses the security, software, hardware, and networking prerequi
 
 ## Security considerations
 
-Review the [security considerations]() and [assess environment readiness]() for version 22H2.
+Review the [security considerations]() and [assess environment readiness](/manage/use-environment-checker.md) for version 22H2.
 
 ## Software requirements
 
@@ -47,8 +47,6 @@ Before you begin, make sure that the physical network and the host network where
 > [!NOTE]
 > Advanced settings within the storage network configuration like iWarp or MTU changes are not supported in this release.
 
-## Next step
+## Next steps
 
-After reviewing and adhering to the prerequisites, you are ready to review the pre-deployment checklist:
-
-Review the [deployment checklist](deployment-tool-checklist.md)
+Review the [deployment checklist](deployment-tool-checklist.md).

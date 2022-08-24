@@ -3,7 +3,7 @@ title: Install  Azure Stack HCI version 22H2 operating system (preview)
 description: Learn how to install the  Azure Stack HCI version 22H2 operating system (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -48,14 +48,14 @@ The *Image* folder contains the following files:
 
 You can configure boot from a VHDX file one of two ways:
 
-**Native boot** – Follow the steps to [configure native boot from a VHDX or VHD file](https://docs.microsoft.com/windows-hardware/manufacture/desktop/boot-to-vhd--native-boot--add-a-virtual-hard-disk-to-the-boot-menu) using the *ServerHCI.vhdx* file. This step requires a bootable WinPE image.
+**Native boot** – Follow the steps to [configure native boot from a VHDX or VHD file](/windows-hardware/manufacture/desktop/boot-to-vhd--native-boot--add-a-virtual-hard-disk-to-the-boot-menu) using the *ServerHCI.vhdx* file. This step requires a bootable WinPE image.
 
 **BCD boot** - Boot configuration data (BCD) allows multiple boot entries and requires you to first install a Windows OS on the physical boot drive, which becomes the first boot entry. You then configure the VHDX boot, which becomes the second boot entry using the *ServerHCI.vhdx* file. 
 
 If using BCD boot, complete the following steps:
 
 1. Copy the *ServerHCI.vhdx* file to the physical boot drive of your server.
-1. From an administrative command prompt, run the following to attach the VHDX file, select a volume, and assign a drive letter:
+1. Run the following command as administrator to attach the VHDX file, select a volume, and assign a drive letter:
 
     ```powershell
     Diskpart
@@ -89,11 +89,11 @@ You can use [SConfig](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)t
 
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After completed, restart your servers again.
 
-## Next step
+## Next steps
 
 After installing the Azure Stack HCI version 22H2 OS, you are ready to install, configure, and run the deployment tool in Windows Admin Center. You can either create a new deployment configuration file interactivly or use an existing configuration file you created:
 
-- [Deploy using a new configuration file](deployment-tool-new-file.md)
-- [Deploy using an existing configuration file](deployment-tool-existing-file.md)
+- [Deploy using a new configuration file](deployment-tool-new-file.md).
+- [Deploy using an existing configuration file](deployment-tool-existing-file.md).
 
-If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md)
+If preferred, you can also [deploy using PowerShell](deployment-tool-powershell.md).

@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
 description: Learn to troubleshoot Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -14,7 +14,7 @@ ms.reviewer: jgerend
 
 For troubleshooting purposes, this article discusses how to rerun and reset deployment if you encounter issues during your Azure Stack HCI 22H2 deployment.
 
-Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).
+<!---Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).--->
 
 ## Rerun deployment
 
@@ -32,5 +32,5 @@ You may have to reset your deployment because it is in a not recoverable state, 
 
 ## Next steps
 
-- [Collect log data]() from your deployment
+- [Collect log data](deploy/deployment-tool-introduction.md) from your deployment.
 <!---- View [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2--->

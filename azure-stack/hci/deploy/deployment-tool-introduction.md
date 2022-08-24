@@ -3,7 +3,7 @@ title: Azure Stack HCI version 22H2 (preview) deployment overview
 description: Learn to deploy Azure Stack HCI version 22H2 using the new deployment tool
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -21,12 +21,12 @@ This set of articles describe how to deploy Azure Stack HCI, version 22H2 using 
 
 Follow this process sequence to deploy Azure Stack HCI version 22H2 in your environment:
 
-- Select one of the validated configurations to deploy
+- Select one of the validated configurations to deploy.
 - Read the [prerequisites](deployment-tool-prerequisites.md) for Azure Stack HCI version 22H2.
 - Follow the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
-- Install the deployment tool on the first server in your cluster
+- Install the deployment tool on the first server in your cluster.
 - Run the deployment tool in Windows Admin Center using either a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).
 - If preferred, you can [deploy using PowerShell](deployment-tool-powershell.md).
 - After deployment, [validate deployment](deployment-tool-validate.md).
@@ -55,16 +55,16 @@ The following cluster configurations were tested and validated for this release:
 
 **Configuration 2**: The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Switchless storage network configuration" lightbox="media/deployment-tool/switchless-two-tor-switch.png":::
+<!---:::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Switchless storage network configuration" lightbox="media/deployment-tool/switchless-two-tor-switch.png":::--->
 
 **Configuration 3**: The following diagram shows two physical servers with a switched storage network and redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/deployment-topology-2.png" alt-text="Switched storage network configuration" lightbox="media/deployment-tool/deployment-topology-2.png":::
+<!---:::image type="content" source="media/deployment-tool/deployment-topology-2.png" alt-text="Switched storage network configuration" lightbox="media/deployment-tool/deployment-topology-2.png":::--->
 
 **Configuration 4**: The following diagram shows two physical servers with a fully-converged network for compute, storage, and management and with redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Fully-converged network configuration" lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::
+<!---:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Fully-converged network configuration" lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::--->
 
-## Next step
+## Next steps
 
 Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).

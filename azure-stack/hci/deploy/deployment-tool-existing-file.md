@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) using a configuration file
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -225,16 +225,16 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 |Parameters|Description|
 |----|----|
 |`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
-|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](https://docs.microsoft.com//azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
+|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
 |`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. **Note**: This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
-1. Log on to the staging server using local administrative credentials.
+1. Sign in to the staging server using local administrative credentials.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands from an administrative prompt:
+1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands as administrator:
 
     ```PowerShell
     $SubscriptionID="your_Azure_subscription_ID"
@@ -245,7 +245,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 1. Run the following command to install the deployment tool:
 
    ```PowerShell
-    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID         -RegistrationAccountCredential $AzureCred
+    .\BootstrapCloudDeploymentTool.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred
     ```
 
     This step takes several minutes to complete.

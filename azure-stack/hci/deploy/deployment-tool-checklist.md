@@ -1,9 +1,9 @@
----
+---steps
 title: Checklist for deploying Azure Stack HCI version 22H2 (preview)
 description: Follow the pre-deployment checklist for deploying Azure Stack HCI version 22H2
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -16,6 +16,8 @@ Use the following checking to gather this information ahead of the actual deploy
 
 > [!NOTE]
 > This release supports one Azure Stack HCI deployment per Active Directory domain.
+
+## Pre-deployment checklist
 
 |Component|What is needed|
 |--|--|
@@ -33,7 +35,7 @@ Active directory OU|Name of the organizational unit (OU) for the Active Director
 |Time server|IP address of the Network Protocol Time (NTP) time server used to synchronize the server time with that of Azure.|
 |Azure subscription ID|ID for the Azure subscription used to register the cluster. You must be an administrator on this subscription to manage access to Azure resources.|
 
-## Next step
+## Next steps
 
 After reviewing the pre-deployment checklist, you are ready to prepare your Active Directory environment:
 

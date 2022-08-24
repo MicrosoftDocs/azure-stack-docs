@@ -3,7 +3,7 @@ title: Validate deployment for Azure Stack HCI version 22H2 (preview)
 description: Learn how to validate deployment for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -62,6 +62,6 @@ Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\passwor
 
     :::image type="content" source="media/deployment-tool/validate-deployment.png" alt-text="Azure portal screen" lightbox="media/deployment-tool/validate-deployment.png":::
 
-## Next step
+## Next steps
 
 If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md).

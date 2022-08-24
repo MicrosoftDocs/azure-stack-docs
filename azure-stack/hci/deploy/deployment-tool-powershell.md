@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) using PowerShell
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using Windows PowerShell
 author: dansisson
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/29/2022
 ms.author: v-dansisson
 ms.reviewer: jgerend
 ---
@@ -117,7 +117,7 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
                   ]
     ```
 
-1. Log on to the first (staging) server using local administrative credentials.
+1. Sign in to the first (staging) server using local administrative credentials.
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
@@ -144,3 +144,6 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
     ```powershell
     .\InstallAzureStack-AsZ.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred -DomainAdminCredential $DomainAdminCred -LocalAdminCredential $LocalAdminCred -JSONFilePath <path_to_config_file.json>
     ```
+## Next steps
+
+[Validate deployment](deployment-tool-validate.md)
