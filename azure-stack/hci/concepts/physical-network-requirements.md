@@ -37,6 +37,7 @@ When purchasing network switches, contact your switch vendor and ensure that the
 | Dell   | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) |[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) |
 | Juniper Networks <br><br>*Junos Software Service Release version 20.2R3-S2 or later is required* | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)  | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)  | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf) |
 | Lenovo | [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
+| NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
 
 
 # [22H2](#tab/22H2)
@@ -47,7 +48,7 @@ When purchasing network switches, contact your switch vendor and ensure that the
 | Dell   | [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) |[S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) | [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) |
 | Juniper Networks <br><br>*Junos Software Service Release version 20.2R3-S2 or later is required* | [QFX5110 series](https://www.juniper.net/assets/es/es/local/pdf/datasheets/1000605-en.pdf), [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf) | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf)  | [QFX5120 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5120-ethernet-switch-datasheet.pdf), [QFX5200 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5200-switch-datasheet.pdf), [QFX5210 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5210-switch-datasheet.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf)  | [QFX5130 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5130-switch.pdf), [QFX5220 series](https://www.juniper.net/content/dam/www/assets/datasheets/us/en/switches/qfx5220-switch-datasheet.pdf) |
 | Lenovo | [G8272](https://lenovopress.com/tips1267-lenovo-rackswitch-g8272), [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch)|[NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) |[NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) |
-
+| NVIDIA <br><br>*Cumulus Linux version 5.1 or later is required* | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)|[SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) | [SN2000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn2000/), [SN3000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn3000/) [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/)| [SN4000](https://www.nvidia.com/en-us/networking/ethernet-switching/spectrum-sn4000/) |
 
 ---
 
@@ -137,22 +138,26 @@ LLDP allows organizations to define and encode their own custom TLVs. These are 
 |-----|-----|-----|
 |22H2 and later|IEEE 802.1|VLAN Name (Subtype = 3)|
 |22H2 and later|IEEE 802.3|Maximum Frame Size (Subtype = 4)|
-|22H2 and later|IEEE 802.1|Port VLAN ID (Subtype = 2)|
-|22H2 and later|IEEE 802.1|Link Aggregation (Subtype = 7)|
-|22H2 and later|IEEE 802.1|ETS Configuration (Subtype = 9)|
-|22H2 and later|IEEE 802.1|ETS Recommendation (Subtype = A)|
-|22H2 and later|IEEE 802.1|PFC Configuration (Subtype = B)|
+|22H2 and later*|IEEE 802.1|Port VLAN ID (Subtype = 2)|
+|22H2 and later*|IEEE 802.1|Link Aggregation (Subtype = 7)|
+|22H2 and later*|IEEE 802.1|ETS Configuration (Subtype = 9)|
+|22H2 and later*|IEEE 802.1|ETS Recommendation (Subtype = A)|
+|22H2 and later*|IEEE 802.1|PFC Configuration (Subtype = B)|
 
-### Non-Standard Requirements
+### Additional Requirements
 
-Outside of IEEE 8021.Q, 802.1Qbb, 802.1Qaz and 802.1AB, the following are the non-standard requirements for switches:
+Outside of IEEE 8021.Q, 802.1Qbb, 802.1Qaz and 802.1AB, the following are additional requirements for switches:
 
 |Version required|Requirement |
 |-----|-----|
-|22H2 and later |Maximum Transmission Unit -  _Must support  sizes inclusive of the range 1514-9174_|
-|22H2 and later|Border Gateway Protocol - _Dynamic Capability for BGP-4_|
-|22H2 and later|Multi-link Aggregation Group|
-|22H2 and later|DHCP Relay Agent|
+|22H2 and later* |Maximum Transmission Unit -  _Must support  sizes inclusive of the range 1514-9174_|
+|22H2 and later*|Border Gateway Protocol - _Dynamic Capability for BGP-4_|
+|22H2 and later*|Multi-link Aggregation Group|
+|22H2 and later*|DHCP Relay Agent|
+
+
+> [!NOTE]
+> *New in 22H2
 
 ---
 
