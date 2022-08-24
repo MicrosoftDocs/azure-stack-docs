@@ -32,5 +32,5 @@ You may have to reset your deployment because it is in a not recoverable state, 
 
 ## Next steps
 
-- [Collect log data](manage/preview-channel.md) from your deployment.
+- [Collect log data](/manage/preview-channel.md) from your deployment.
 <!---- View [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2--->
