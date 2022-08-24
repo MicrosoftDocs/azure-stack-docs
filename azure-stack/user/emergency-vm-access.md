@@ -12,9 +12,12 @@ ms.lastreviewed: 08/13/2021
 
 # Emergency VM access (EVA)
 
-The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network.
+The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network. 
 
-This feature must be enabled per subscription to work, and the operator needs to enable Remote Desktop access in order for the **cloudadmin** user to access the emergency recovery console VMs (ERCS).
+> [!NOTE]
+> EVA was released with general availability starting with Azure Stack Hub 2209.
+
+This feature must be enabled per subscription, and the operator needs to enable Remote Desktop access in order for the **cloudadmin** user to access the emergency recovery console VMs (ERCS).
 
 The first step for the user is to request VM console access via PowerShell. The request provides consent and allows the operator with additional information to connect to the virtual machine via its console. Console access does not depend on network connectivity and uses a data channel of the hypervisor.
 
