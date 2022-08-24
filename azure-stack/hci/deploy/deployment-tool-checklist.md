@@ -1,4 +1,4 @@
----steps
+---
 title: Checklist for deploying Azure Stack HCI version 22H2 (preview)
 description: Follow the pre-deployment checklist for deploying Azure Stack HCI version 22H2
 author: dansisson

@@ -125,11 +125,11 @@ If you want to use an existing configuration file you have previously created, s
     :::image type="content" source="media/deployment-tool/deploy-new-step-1.4-security-custom.png" alt-text="Deployment step 1.4 custom" lightbox="media/deployment-tool/deploy-new-step-1.4-security-custom.png":::
 
     For more information on the individual security settings, see:
-    - [App control (WDAC) enforced on host](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)
-    - [BitLocker for OS boot volume](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)
-    - [BitLocker for data volumes](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)
-    - [SMB Signing Default instance](https://docs.microsoft.com/troubleshoot/windows-server/networking/overview-server-message-block-signing)
-    - [SMB Encryption E-W Cluster traffic](https://docs.microsoft.com/windows-server/storage/file-server/smb-security#smb-encryption)
+    - [App control (WDAC) enforced on host](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)
+    - [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)
+    - [BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview)
+    - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing)
+    - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption)
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details. 
 
