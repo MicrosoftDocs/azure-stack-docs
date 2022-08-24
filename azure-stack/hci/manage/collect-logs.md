@@ -96,4 +96,4 @@ Before collecting logs, follow these steps:
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI, version 22H2 (preview)](../../hci/known-issues-v22h2.md)
+- Review known issues in Azure Stack HCI, version 22H2 (preview)
