@@ -62,7 +62,7 @@ Before you begin, complete the following tasks:
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.
 
-## Install and import Environment Checker
+## Install Environment Checker
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
