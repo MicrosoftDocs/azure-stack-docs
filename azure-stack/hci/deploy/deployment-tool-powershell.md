@@ -144,6 +144,7 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
     ```powershell
     .\InstallAzureStack-AsZ.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred -DomainAdminCredential $DomainAdminCred -LocalAdminCredential $LocalAdminCred -JSONFilePath <path_to_config_file.json>
     ```
+
 ## Next steps
 
 [Validate deployment](deployment-tool-validate.md)
