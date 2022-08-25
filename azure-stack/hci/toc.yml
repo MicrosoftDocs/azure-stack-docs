@@ -353,7 +353,7 @@
     - name: Validate deployment
       href: deploy/deployment-tool-validate.md
     - name: Collect logs 
-      href: manage/preview-channel.md
+      href: manage/collect-logs.md
     - name: Troubleshoot issues
       href: deploy/deployment-tool-troubleshooting.md
 - name: Reference
