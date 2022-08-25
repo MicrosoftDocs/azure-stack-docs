@@ -100,7 +100,7 @@ You can run the validators from the following locations:
 
 - Locally from the Azure Stack HCI server node
 
-- Remotely via PS session  
+- Remotely via PowerShell session  
 
 - Locally from a workstation or a staging server
 
