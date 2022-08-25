@@ -1,5 +1,5 @@
 ---
-title: BitLocker recovery keys
+title: BitLocker encryption
 description: Learn how to get your BitLocker recovery keys.
 author: meaghanlewis
 ms.author: mosagie
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 08/23/2022
 ---
 
-# BitLocker recovery keys
+# BitLocker encryption
 
 Out of the box data-at-rest encryption is enabled with the military grade standard XTS AES256.
 
