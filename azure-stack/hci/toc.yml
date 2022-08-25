@@ -355,7 +355,7 @@
     - name: Collect logs 
       href: manage/collect-logs.md
     - name: Troubleshoot issues
-      href: deploy/deployment-tool-troubleshooting.md
+      href: deploy/deployment-tool-troubleshoot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands

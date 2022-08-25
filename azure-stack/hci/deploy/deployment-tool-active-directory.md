@@ -1,6 +1,6 @@
 ---
 title: Prepare Active Directory for Azure Stack HCI version 22H2 (preview) deployment
-description: Learn to deploy prepare Active Directory for Azure Stack HCI version 22H2 (preview)
+description: Learn to prepare Active Directory for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
 ms.date: 08/29/2022
@@ -49,7 +49,7 @@ To prepare and configure Active Directory, follow these steps:
 1. Download the *Adprep* command from [PowerShell Gallery](https://microsoft.sharepoint.com/sites/knowledgecenter/_layouts/15/TopicPagePreview.aspx?topicId=AL_GQSuzYWffyPyTBvhVtw0Ow&topicName=PowerShell%20Gallery&lang=en&ls=Ans_Bing) or copy it from the *C:\CloudDeployment\Prepare* folder on your first (staging) server.
 1. Create a [Microsoft Key Distribution Service root key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords.
 
-1. Run the following PowerShell command as administror:
+1. Run the following PowerShell command as administrator:
 
     ```powershell
     Add-KdsRootKey -EffectiveTime ((get-date).addhours(-10))
@@ -135,15 +135,15 @@ To prepare and configure Active Directory, follow these steps:
 
 1. An OU with the specified name should be created and within that OU, you’ll see **Computers** and **Users** objects.
 
-    :::image type="content" source="media/deployment-tool/active-directory-1.png" alt-text="Active Directory Computers and Users window" lightbox="media/deployment-tool/active-directory-1.png":::
+    :::image type="content" source="media/deployment-tool/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-tool/active-directory-1.png":::
 
 1. The **Computers** object should contain one computer account for each server node and one account for the **Cluster Name Object**.
 
-    :::image type="content" source="media/deployment-tool/active-directory-2.png" alt-text="Active Directory Cluster Name Object window" lightbox="media/deployment-tool/active-directory-2.png":::
+    :::image type="content" source="media/deployment-tool/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/deployment-tool/active-directory-2.png":::
 
 1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one local domain security group with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
 
-    :::image type="content" source="media/deployment-tool/active-directory-3.png" alt-text="Active Directory Users Object window" lightbox="media/deployment-tool/active-directory-3.png":::
+    :::image type="content" source="media/deployment-tool/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-tool/active-directory-3.png":::
 
 ## Next steps
 

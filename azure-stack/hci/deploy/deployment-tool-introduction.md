@@ -12,7 +12,7 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This set of articles describe how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
+This set of articles describes how to deploy Azure Stack HCI, version 22H2 using a new deployment tool and methods. The deployment tool provides an interactive, guided experience that helps you deploy and register the cluster.
 
 > [!IMPORTANT]
  > Please review the [Terms of Use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) and agree to the terms before you deploy this solution.
@@ -30,7 +30,7 @@ Follow this process sequence to deploy Azure Stack HCI version 22H2 in your envi
 - Run the deployment tool in Windows Admin Center using either a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).
 - If preferred, you can [deploy using PowerShell](deployment-tool-powershell.md).
 - After deployment, [validate deployment](deployment-tool-validate.md).
-- If needed, [troubleshoot deployment](deployment-tool-troubleshooting.md).
+- If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).
 
 ## Validated configurations
 
@@ -51,19 +51,19 @@ The following cluster configurations were tested and validated for this release:
 
 **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single L2 switch.
 
-:::image type="content" source="media/deployment-tool/deployment-topology-1.png" alt-text="Switched storage network with single switch configuration" lightbox="media/deployment-tool/deployment-topology-1.png":::
+:::image type="content" source="media/deployment-tool/deployment-topology-1.png" alt-text="Diagram that shows a switched storage network with single switch configuration." lightbox="media/deployment-tool/deployment-topology-1.png":::
 
 **Configuration 2**: The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant L3 switches.
 
-<!---:::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Switchless storage network configuration" lightbox="media/deployment-tool/switchless-two-tor-switch.png":::--->
+<!---:::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Diagram that shows a switchless storage network configuration." lightbox="media/deployment-tool/switchless-two-tor-switch.png":::--->
 
 **Configuration 3**: The following diagram shows two physical servers with a switched storage network and redundant L3 switches.
 
-<!---:::image type="content" source="media/deployment-tool/deployment-topology-2.png" alt-text="Switched storage network configuration" lightbox="media/deployment-tool/deployment-topology-2.png":::--->
+<!---:::image type="content" source="media/deployment-tool/deployment-topology-2.png" alt-text="Diagram that shows a switched storage network configuration." lightbox="media/deployment-tool/deployment-topology-2.png":::--->
 
 **Configuration 4**: The following diagram shows two physical servers with a fully-converged network for compute, storage, and management and with redundant L3 switches.
 
-<!---:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Fully-converged network configuration" lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::--->
+<!---:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Diagram that shows a fully-converged network configuration." lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::--->
 
 ## Next steps
 

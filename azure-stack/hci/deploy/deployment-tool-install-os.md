@@ -73,9 +73,9 @@ If using BCD boot, complete the following steps:
 
 An alternative to setting up multiple BCD entries manually is to use the [Azure Stack Development Kit installer](https://github.com/Azure/AzureStack-Tools/tree/master/Deployment).
 
-## Configure the OS using SConfig
+## Configure the OS using Sconfig
 
-You can use [SConfig](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 22H2 after installation as follows:
+You can use [Sconfig](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 22H2 after installation as follows:
 
 1. Configure networking as per your environment:
 
@@ -87,11 +87,11 @@ You can use [SConfig](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)t
 
 1. Set the local administrator credentials to be identical across all servers.
 
-1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After completed, restart your servers again.
+1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use Sconfig to run driver installation apps. After completed, restart your servers again.
 
 ## Next steps
 
-After installing the Azure Stack HCI version 22H2 OS, you are ready to install, configure, and run the deployment tool in Windows Admin Center. You can either create a new deployment configuration file interactivly or use an existing configuration file you created:
+After installing the Azure Stack HCI version 22H2 OS, you are ready to install, configure, and run the deployment tool in Windows Admin Center. You can either create a new deployment configuration file interactively or use an existing configuration file you created:
 
 - [Deploy using a new configuration file](deployment-tool-new-file.md).
 - [Deploy using an existing configuration file](deployment-tool-existing-file.md).

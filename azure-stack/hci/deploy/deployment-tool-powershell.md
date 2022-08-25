@@ -48,7 +48,7 @@ The following parameters are required to set up the deployment tool properly:
 |Parameter|Description|
 |----|----|
 |`JSONFilePath`|Enter the path to your config file. For example, *C:\setup\config.json*.|
-|`DomainAdminCredentials`|Specify the Active Directoru account username. The username cannot be *Administrator*.|
+|`DomainAdminCredentials`|Specify the Active Directory account username. The username cannot be *Administrator*.|
 |`LocalAdminCredential`|Specify the local administrator credentials.|
 |`RegistrationCloudName`|Specify the Azure Cloud to use.|
 |`RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc.|
