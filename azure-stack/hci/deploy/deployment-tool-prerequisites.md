@@ -16,7 +16,7 @@ This article discusses the security, software, hardware, and networking prerequi
 
 ## Security considerations
 
-Review the [security considerations]() and [assess environment readiness](/manage/use-environment-checker.md) for version 22H2.
+Review the [security considerations](/manage/preview-channel.md) and [assess environment readiness](/manage/use-environment-checker.md) for version 22H2.
 
 ## Software requirements
 

@@ -12,9 +12,9 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-For troubleshooting purposes, this article discusses how to rerun and reset deployment if you encounter issues during your Azure Stack HCI 22H2 deployment.
+For troubleshooting purposes, this article discusses how to rerun and reset deployment if you encounter issues during your deployment.
 
-<!---Also see [Known issues for Azure Stack HCI version 22H2](deployment-tool-known-issues.md).--->
+Also see [Known issues for version 22H2](known-issues-v22h2.md).
 
 ## Rerun deployment
 
@@ -32,5 +32,5 @@ You may have to reset your deployment if it is in a not recoverable state. For e
 
 ## Next steps
 
-- [Collect log data](/manage/preview-channel.md) from your deployment.
-<!---- View [known issues](deployment-tool-known-issues.md) for Azure Stack HCI version 22H2--->
+- [Collect log data](/manage/collect-logs.md) from your deployment.
+- View [known issues](known-issues-v22h2.md) for Azure Stack HCI version 22H2
