@@ -5,10 +5,10 @@ author: dansisson
 ms.topic: how-to
 ms.date: 08/29/2022
 ms.author: v-dansisson
-ms.reviewer: jgerend
+ms.reviewer: alkohli
 ---
 
-# Azure Stack HCI version 22H2 (preview) deployment overview
+# Azure Stack HCI version 22H2 deployment overview (preview) 
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
