@@ -22,9 +22,9 @@ After deployment, you can validate that your cluster exists and is registered in
 
 1. Establish a remote PowerShell session with the server node and run the following command:
 
-```powershell
-Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server> 
-```
+    ```powershell
+    Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server> 
+    ```
 
 1. Get the information for the cluster you created:
 
@@ -52,7 +52,7 @@ Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\passwor
     [100.96.113.220]: PS C:\Users\Administrator\Documents>
     ```
 
-1. Make a note of the `AzureResourceName` value. You'll need this to do a search in the Azure portal.
+1. Write down the `AzureResourceName` value. You'll need this to do a search in the Azure portal.
 
 1. Sign in to the Azure portal. Make sure that you have used the appropriate Azure account ID and password.
 

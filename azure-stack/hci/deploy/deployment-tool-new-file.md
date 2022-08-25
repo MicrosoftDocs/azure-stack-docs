@@ -59,7 +59,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 |----|----|
 |`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
 |`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
-|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. **Note**: This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
+|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
@@ -106,23 +106,23 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **1.1 Configure privacy**, set the privacy settings as they apply to your organization.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1.1-privacy.png" alt-text="Deployment step 1.1" lightbox="media/deployment-tool/deploy-new-step-1.1-privacy.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-privacy.png" alt-text="Deployment step 1.1 Configure privacy page" lightbox="media/deployment-tool/deploy-new-step-1-privacy.png":::
 
 1. On **step 1.2 Add servers**, enter the IP address of each server.  Add the servers in the right sequence, beginning with the first server.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1.2-add-servers.png" alt-text="Deployment step 1.2" lightbox="media/deployment-tool/deploy-new-step-1.2-add-servers.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-add-servers.png" alt-text="Deployment step 1.2 Add servers page" lightbox="media/deployment-tool/deploy-new-step-1-add-servers.png":::
 
 1. On **step 1.3 Join a domain**, enter your Active Directory domain name, object prefix, organizational unit (OU), account credentials, and NTP time server.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1.3-join-domain.png" alt-text="Deployment step 1.3" lightbox="media/deployment-tool/deploy-new-step-1.3-join-domain.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Deployment step step 1.3 Join a domain page" lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
 
 1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1.4-security-default.png" alt-text="Deployment step 1.4 default" lightbox="media/deployment-tool/deploy-new-step-1.4-security-default.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-security-default.png" alt-text="Deployment step 1.4 Set cluster security default page" lightbox="media/deployment-tool/deploy-new-step-1-security-default.png":::
 
     or select **Customized security settings:**
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1.4-security-custom.png" alt-text="Deployment step 1.4 custom" lightbox="media/deployment-tool/deploy-new-step-1.4-security-custom.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-security-custom.png" alt-text="Deployment step 1.4 Set cluster security custom page" lightbox="media/deployment-tool/deploy-new-step-1-security-custom.png":::
 
     For more information on the individual security settings, see:
     - [App control (WDAC) enforced on host](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)
@@ -131,11 +131,11 @@ If you want to use an existing configuration file you have previously created, s
     - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing)
     - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption)
 
-1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details. 
+1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
 1. On step **2.1 Check network adapters**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-2.1-network-adapters.png" alt-text="Deployment step 2.1" lightbox="media/deployment-tool/deploy-new-step-2.1-network-adapters.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-adapters.png" alt-text="Deployment step 2.1 network adapters page" lightbox="media/deployment-tool/deploy-new-step-2-network-adapters.png":::
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
@@ -144,42 +144,42 @@ If you want to use an existing configuration file you have previously created, s
     - one management+compute intent, 1 storage intent
     - one fully converged intent  (management+compute+storage intent)
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-2.2-network-intents.png" alt-text="Deployment step 2.2" lightbox="media/deployment-tool/deploy-new-step-2.2-network-intents.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-intents.png" alt-text="Deployment step 2.2 network intents page" lightbox="media/deployment-tool/deploy-new-step-2-network-intents.png":::
 
 1. On step **2.3 Provide storage network details**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-2.3-network-storage.png" alt-text="Deployment step 2.3" lightbox="media/deployment-tool/deploy-new-step-2.3-network-storage.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-storage.png" alt-text="Deployment step 2.3 storage network page" lightbox="media/deployment-tool/deploy-new-step-2-network-storage.png":::
 
 1. On step **2.4 Provide management network details**, consult with your network administrator to ensure you enter the correct network details.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-2.4-network-management.png" alt-text="Deployment step 2.4" lightbox="media/deployment-tool/deploy-new-step-2.4-network-management.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-management.png" alt-text="Deployment step 2.4 management network page" lightbox="media/deployment-tool/deploy-new-step-2-network-management.png":::
 
 1. On step **3.1 Create cluster**, enter the cluster name.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-3.1-create-cluster.png" alt-text="Deployment step 3.1" lightbox="media/deployment-tool/deploy-new-step-3.1-create-cluster.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-3-create-cluster.png" alt-text="Deployment step 3.1 create cluster page" lightbox="media/deployment-tool/deploy-new-step-3-create-cluster.png":::
 
 1. On step **4.1 Set up cluster storage**, select **Set up with empty drives**.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-4.1-storage.png" alt-text="Deployment step 4.1" lightbox="media/deployment-tool/deploy-new-step-4.1-storage.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-4-storage.png" alt-text="Deployment step 4.1 cluster storage page" lightbox="media/deployment-tool/deploy-new-step-4-storage.png":::
 
 1. On step **5.1 Add services**, no changes are needed. Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-5.1-add-services.png" alt-text="Deployment step 5.1" lightbox="media/deployment-tool/deployment-step-5.1-add-services.png":::
+    :::image type="content" source="media/deployment-tool/deployment-step-5-add-services.png" alt-text="Deployment step 5.1 Add services page" lightbox="media/deployment-tool/deployment-step-5-add-services.png":::
 
 1. On step **5.2 Set Arc management details**, no changes are needed. Select **Next** to continue.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-5.2-arc.png" alt-text="Deployment step 5.2" lightbox="media/deployment-tool/deploy-new-step-5.2-arc.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-5-arc.png" alt-text="Deployment step 5.2 Arc management page" lightbox="media/deployment-tool/deploy-new-step-5-arc.png":::
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
 
     > [!IMPORTANT]
     > The staging server will restart after the deployment starts.
 
-    :::image type="content" source="media/deployment-tool/deployment-step-6.1-deploy-cluster.png" alt-text="Deployment step 6.1" lightbox="media/deployment-tool/deployment-step-6.1-deploy-cluster.png":::
+    :::image type="content" source="media/deployment-tool/deployment-step-6-deploy-cluster.png" alt-text="Deployment step 6.1 deploy cluster page" lightbox="media/deployment-tool/deployment-step-6-deploy-cluster.png":::
 
 1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near realtime.
 
-    :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Monitor-deployment" lightbox="media/deployment-tool/deployment-progress.png":::
+    :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Monitor deployment page" lightbox="media/deployment-tool/deployment-progress.png":::
 
 ## Post deployment
 

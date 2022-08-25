@@ -274,27 +274,27 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
 1. On step **1.1 Import configuration file**, import the existing configuration file you created by selecting **Browse** or dragging the file to the page.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-1.1-import.png" alt-text="Deployment step 1.1 - import file" lightbox="media/deployment-tool/deploy-existing-step-1.1-import.png":::
+    :::image type="content" source="media/deployment-tool/deploy-existing-step-1-import.png" alt-text="Deployment step 1.1 import file" lightbox="media/deployment-tool/deploy-existing-step-1-import.png":::
 
 1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-1.2-review.png" alt-text="Deployment step 1.2 - review settings" lightbox="media/deployment-tool/deploy-existing-step-1.2-review.png":::
+    :::image type="content" source="media/deployment-tool/deploy-existing-step-1-review.png" alt-text="Deployment step 1.2 review settings page" lightbox="media/deployment-tool/deploy-existing-step-1-review.png":::
 
 1. On step **2.1 Credentials**, enter the username and password for the Active Directory account and username and password for the local administrator account.
 When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn't supported.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-2.1-credentials.png" alt-text="Deployment step 2.1" lightbox="media/deployment-tool/deploy-existing-step-2.1-credentials.png":::
+    :::image type="content" source="media/deployment-tool/deploy-existing-step-2-credentials.png" alt-text="Deployment step 2.1 page" lightbox="media/deployment-tool/deploy-existing-step-2-credentials.png":::
 
     > [!NOTE]
     > Credentials are never collected or stored in the configuration file.
 
 1. On step **3.1 Deploy the cluster**, click **Deploy** to start deployment of your cluster.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-3.1-deploy.png" alt-text="Deploy cluster page" lightbox="media/deployment-tool/deploy-existing-step-3.1-deploy.png":::
+    :::image type="content" source="media/deployment-tool/deploy-existing-step-3-deploy.png" alt-text="Deploy cluster page" lightbox="media/deployment-tool/deploy-existing-step-3-deploy.png":::
 
 1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near realtime.
 
-    :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Monitor-deployment" lightbox="media/deployment-tool/deployment-progress.png":::
+    :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Monitor deployment page" lightbox="media/deployment-tool/deployment-progress.png":::
 
 ## Post deployment
 

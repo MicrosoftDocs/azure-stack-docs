@@ -30,7 +30,7 @@ Before you begin, make sure that the physical hardware used to deploy the soluti
 |--|--|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
 |Memory|A minimum of 32 GB RAM.|
-|Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent which does requires two separate adapters for storage intent.|
+|Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does requires two separate adapters for storage intent.|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200 GB size.|
 |Data drives|At least 3 disks with a minimum capacity of 500 GB (SSD or HDD).|

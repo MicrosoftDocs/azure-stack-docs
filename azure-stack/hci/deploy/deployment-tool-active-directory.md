@@ -1,6 +1,6 @@
 ---
 title: Prepare Active Directory for Azure Stack HCI version 22H2 (preview) deployment
-description: Learn to deploy prepare Active Directory for Azure Stack HCI version 22H2 (preview) deployment
+description: Learn to deploy prepare Active Directory for Azure Stack HCI version 22H2 (preview)
 author: dansisson
 ms.topic: how-to
 ms.date: 08/29/2022
@@ -12,17 +12,17 @@ ms.reviewer: jgerend
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-This articles describes how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI 22H2 version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
+These articles describe how to prepare your Active Directory (AD) environment  before you deploy Azure Stack HCI 22H2 version 22H2. To enable the new security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For more information, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) overview.
 
 ## Prerequisites
 
-Before you begin, make sure you have done the following:
+Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md)  for Azure Stack HCI version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 
 > [!NOTE]
-> In this preview release, you can only have one Azure Stack HCI deployment per Active Directory domain
+> In this preview release, only one Azure Stack HCI deployment per Active Directory domain is supported.
 
 ## Required script parameters
 
@@ -30,10 +30,10 @@ The *AsHciADArtifactsPreCreationTool.ps1* script is used to prepare Active Direc
 
 |Parameter|Description|
 |--|--|
-|`-AsHciDeploymentUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least 8 characters long. The password must also contain 3 out of the 4 requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).|
-|`-AsHciOUName`|A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there is no conflict of settings.|
+|`-AsHciDeploymentUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).|
+|`-AsHciOUName`|A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there's no conflict of settings.|
 |`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
-|`-DomainFQDN`|Fully qualified domain name (FQDN) of the your Active Directory domain.|
+|`-DomainFQDN`|Fully qualified domain name (FQDN) of the Active Directory domain.|
 |`-AsHciClusterName`|The name for the new cluster AD object.|
 |`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Stack HCI deployment.|
 
@@ -55,7 +55,7 @@ To prepare and configure Active Directory, follow these steps:
     Add-KdsRootKey -EffectiveTime ((get-date).addhours(-10))
     ```
 
-    Here is the sample output from a successful run of the command:
+    Here's the sample output from a successful run of the command:
 
     ```powershell
     Windows PowerShell
@@ -135,15 +135,15 @@ To prepare and configure Active Directory, follow these steps:
 
 1. An OU with the specified name should be created and within that OU, you’ll see **Computers** and **Users** objects.
 
-    :::image type="content" source="media/deployment-tool/ad-1.png" alt-text="Active Directory 1 " lightbox="media/deployment-tool/ad-1.png":::
+    :::image type="content" source="media/deployment-tool/active-directory-1.png" alt-text="Active Directory Computers and Users window" lightbox="media/deployment-tool/active-directory-1.png":::
 
 1. The **Computers** object should contain one computer account for each server node and one account for the **Cluster Name Object**.
 
-    :::image type="content" source="media/deployment-tool/ad-2.png" alt-text="Active Directory 2 " lightbox="media/deployment-tool/ad-2.png":::
+    :::image type="content" source="media/deployment-tool/active-directory-2.png" alt-text="Active Directory Cluster Name Object window" lightbox="media/deployment-tool/active-directory-2.png":::
 
 1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one local domain security group with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
 
-    :::image type="content" source="media/deployment-tool/ad-3.png" alt-text="Active Directory 3 " lightbox="media/deployment-tool/ad-3.png":::
+    :::image type="content" source="media/deployment-tool/active-directory-3.png" alt-text="Active Directory Users Object window" lightbox="media/deployment-tool/active-directory-3.png":::
 
 ## Next steps
 

@@ -18,16 +18,16 @@ For troubleshooting purposes, this article discusses how to rerun and reset depl
 
 ## Rerun deployment
 
-To rerun the deployment in case of a failure, in PowerShell, run `Invoke-CloudDeployment.ps1` with the parameter `-rerun`.
+To rerun the deployment in there is a failure, in PowerShell, run `Invoke-CloudDeployment.ps1` with the parameter `-rerun`.
 
 Depending on which step the deployment fails, you may have to use `Set-ExecutionPolicy bypass`.
 
 ## Reset deployment
 
-You may have to reset your deployment because it is in a not recoverable state, for example an incorrect network configuration, or rerun does not resolve the issue. In this case, do the following:
+You may have to reset your deployment if it is in a not recoverable state. For example, if it is an incorrect network configuration, or if rerun doesn't resolve the issue. In these cases, do the following:
 
 1. Back up all your data first. The orchestrated deployment will always clean the drives used by Storage Spaces Direct in this preview release.
-1. Remove the *ServerHCI.vhdx* file and replace it with a new *ServerHCI.vhdx* file that you have downloaded.
+1. Remove the *ServerHCI.vhdx* file and replace it with a new *ServerHCI.vhdx* file that you've downloaded.
 1. [Reinstall](deployment-tool-install-os.md) the Azure Stack HCI 22H2 operating system.
 
 ## Next steps
