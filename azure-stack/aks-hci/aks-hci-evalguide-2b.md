@@ -13,15 +13,10 @@ ms.reviewer: oadeniji
 
 # Deploy your AKS-HCI infrastructure with PowerShell
 
-## Overview
+With your Windows Server Hyper-V host up and running, you can now deploy AKS on Azure Stack HCI. You'll first use PowerShell to deploy the AKS on Azure Stack HCI management cluster onto your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
 
-With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft introduced a number of new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
-
-In this guide, you'll walk through the steps to stand up an AKS on Azure Stack HCI infrastructure. At a high level, this will consist of the following:
-
-* Deploy an Azure VM, running Windows Server 2019 or 2022, to act as your main Hyper-V host - this will be automatically configured with the relevant roles and features needed for your evaluation
-* On the Windows Server VM, deploy the AKS on Azure Stack HCI management cluster
-* On the Windows Server VM, deploy the AKS on Azure Stack HCI target clusters, for running workloads
+> [!NOTE]
+> In this step, you'll be using PowerShell to deploy AKS on Azure Stack HCI. If you prefer to use Windows Admin Center, see the [Windows Admin Center guide](aks-hci-evalguide-2a.md).
 
 ## Architecture
 
@@ -82,7 +77,7 @@ An Azure subscription with at least one of the following:
 If you need to create a new Service Principal, the following script creates a new one, with the built-in **Kubernetes Cluster - Azure Arc Onboarding** role and the scope set at the subscription level:
 
 ```powershell
-# Login to Azure
+# Sign in to Azure
 Connect-AzAccount
 
 # Optional - if you wish to switch to a different subscription
@@ -192,14 +187,14 @@ You're now ready to deploy the AKS on an Azure Stack HCI management cluster to y
    1. **Use DHCP-issued IP addresses**: run the following PowerShell command:
 
       ```powershell
-      $vnet = New-AksHciNetworkSetting -Name "mgmtvnet" -vSwitchName "InternalNAT" `
+      $vnet = New-AksHciNetworkSetting -name "mgmtvnet" -vSwitchName "InternalNAT" `
           -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.250"
       ```
 
    1. **Use static IP addresses**: run the following PowerShell command:
 
       ```powershell
-      $vnet = New-AksHciNetworkSetting -Name "mgmtvnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" `
+      $vnet = New-AksHciNetworkSetting -name "mgmtvnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" `
           -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.3" -k8snodeippoolend "192.168.0.149" `
           -vipPoolStart "192.168.0.150" -vipPoolEnd "192.168.0.250"
       ```
@@ -285,7 +280,7 @@ With the management cluster deployed successfully, you're ready to deploy Kubern
 2. You can then run the following command to create and deploy a new Kubernetes cluster:
 
    ```powershell
-   New-AksHciCluster -Name akshciclus001 -nodePoolName linuxnodepool -controlPlaneNodeCount 1 -nodeCount 1 -osType linux
+   New-AksHciCluster -name akshciclus001 -nodePoolName linuxnodepool -controlPlaneNodeCount 1 -nodeCount 1 -osType linux
    ```
 
    This command deploys a new Kubernetes cluster named **akshciclus001** with the following attributes:
@@ -305,7 +300,7 @@ For more parameters that you can use with **New-AksHciCluster**, see the [cmdlet
 
 ### Node pools, taints, and max pod counts
 
-If you're not familiar with the concept of *node pools*, a node pool is a group of nodes, or virtual machines that run your applications, within a Kubernetes cluster that have the same configuration, giving you more granular control over your clusters. You can deploy multiple Windows node pools and multiple Linux node pools of different sizes, within the same Kubernetes cluster.
+A *node pool* is a group of nodes, or virtual machines that run your applications, within a Kubernetes cluster that have the same configuration, giving you more granular control over your clusters. You can deploy multiple Windows node pools and multiple Linux node pools of different sizes, within the same Kubernetes cluster.
 
 Another configuration option that can be applied to a node pool is the concept of *taints*. A taint can be specified for a particular node pool at cluster and node pool creation time, and essential allow you to prevent pods being placed on specific nodes based on characteristics that you specify. You can learn more about [taints here](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
@@ -365,7 +360,7 @@ Get-AksHciNodePool -clusterName akshciclus001
 4. To retrieve the **kubeconfig** file for the **akshciclus001** cluster, run the following command from your administrative PowerShell session, and accept the prompt:
 
    ```powershell
-   Get-AksHciCredential -Name akshciclus001 -Confirm:$false
+   Get-AksHciCredential -name akshciclus001 -Confirm:$false
    dir $env:USERPROFILE\.kube
    ```
 
@@ -390,11 +385,11 @@ Azure Arc-enabled Kubernetes supports industry-standard SSL to secure data in tr
 In order to integrate your target cluster with Azure Arc, run the following commands:
 
 ```powershell
-# Login to Azure
+# Sign in to Azure
 Connect-AzAccount
 
 # Integrate your target cluster with Azure Arc
-Enable-AksHciArcConnection -name akshciclus001
+Enable-AksHciArcConnection -name "akshciclus001"
 ```
 
 > [!NOTE]

@@ -3,9 +3,9 @@ title: Evaluate AKS on Azure Stack HCI in Azure
 description: Step in the evaluation guide showing what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 08/04/2022
+ms.date: 08/26/2022
 ms.author: sethm 
-ms.lastreviewed: 08/04/2022 
+ms.lastreviewed: 08/26/2022 
 ms.reviewer: oadeniji
 # Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
 # Keyword: Azure VM deployment
@@ -13,7 +13,7 @@ ms.reviewer: oadeniji
 
 # Evaluate AKS on Azure Stack HCI in Azure
 
-With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/ "Nested virtualization announcement blog post") in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
+With the introduction of [nested virtualization support in Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) in 2017, Microsoft opened the door to new and interesting scenarios. Nested virtualization in Azure is particularly useful for validating configurations that would require additional hardware in your environment, such as running Hyper-V hosts and clusters.
 
 In this guide, you'll walk through the steps to stand up an AKS on Azure Stack HCI infrastructure. At a high level, this consists of the following tasks:
 
@@ -22,7 +22,7 @@ In this guide, you'll walk through the steps to stand up an AKS on Azure Stack H
 * On the Windows Server VM, deploy the AKS on Azure Stack HCI target clusters, for running workloads
 
 > [!IMPORTANT]
-> The steps outlined in this evaluation guide are **specific to running inside an Azure VM**, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see the [official documentation to deploy AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md).
+> The steps outlined in this evaluation guide are specific to running inside an Azure VM, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see the [official documentation to deploy AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md).
 
 ## Get an Azure subscription
 
@@ -33,15 +33,15 @@ The first option would apply to Visual Studio subscribers, where you can use Azu
 The second option would be to sign up for a [free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you $200 credit for the first 30 days, and 12 months of popular services for free.
 
 > [!NOTE]
-> The free trial subscription provides $200 for your usage, however the largest individual VM you can create is capped at 4 vCPUs, which is **not** enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
+> The free trial subscription provides $200 for your usage, however the largest individual VM you can create is capped at 4 vCPUs, which is not enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
 
 You can also use this same Azure subscription to integrate with Azure Arc, once the deployment is completed.
 
 ## Azure VM Size Considerations
 
-Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GiB memory, and no temporary SSD storage. The OS drive will be the default 127 GiB in size and the Azure VM deployment will add an additional 8 data disks (32 GiB each by default), so you'll have around 256GiB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment, if you wish.
+Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive will be the default 127 GB in size and the Azure VM deployment will add an additional 8 data disks (32 GB each by default), so you'll have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
 
-This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. The point here is, think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure VM, and select an Azure VM size from there. Some potential examples would be:
+This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure VM, and select an Azure VM size from there. Some potential examples would be:
 
 ### D-series VMs (General purpose) with at least 64GB memory
 
@@ -79,17 +79,17 @@ Note the following considerations:
 
 ## Deploying the Azure VM
 
-The following guidance provides two main options for deploying the Azure VM. In both cases, the deployment will be automated to the point of which you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
+The following guidance provides two options for deploying the Azure VM. In both cases, the deployment is automated so that you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
 
 1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). This option can be launched quickly, directly from the button within the documentation, and after completing a simple form, your VM will be deployed, and host configuration automated.
 2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM will be deployed, and host configuration automated.
 
 ### Deployment detail
 
-As part of the deployment, the following steps will be **automated for you**:
+As part of the deployment, the following steps will be automated for you:
 
 1. A Windows Server 2019 or 2022 Datacenter VM is deployed in Azure.
-2. 8 x 32GiB (by default) Azure Managed Disks are attached and provisioned with a Simple Storage Space for optimal nested VM performance.
+2. 8 x 32 GB (by default) Azure Managed Disks are attached and provisioned with a Simple Storage Space for optimal nested VM performance.
 3. The Hyper-V role and management tools, including Failover Clustering tools, are installed and configured.
 4. An internal vSwitch is created and NAT-configured to enable outbound networking.
 5. The DNS role and accompanying management tools are installed and DNS fully configured.
@@ -103,7 +103,7 @@ This automated deployment should take about 13-15 minutes.
 
 To keep things simple and graphical, we'll show you how to deploy your VM via an Azure Resource Manager template. To simplify things further, we'll use the following buttons.
 
-First, the **Visualize** button will launch the ARMVIZ designer view, where you will see a graphic representing the core components of the deployment, including the VM, NIC, disk and more. If you want to open this in a new tab, **hold CTRL** when you click the button.
+First, the **Visualize** button will launch the ARMVIZ designer view, where you will see a graphic representing the core components of the deployment, including the VM, NIC, disk and more. If you want to open this in a new tab, hold CTRL when you click the button.
 
 [![Visualize your template deployment](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Faks-hci%2Fmain%2Feval%2Fjson%2Fakshcihost.json "Visualize your template deployment")
 
@@ -362,7 +362,7 @@ If however, you're having a problem with AKS on Azure Stack HCI outside of this 
 
 ## Next steps
 
-In this step, you've successfully created and automatically configured your Azure VM, which will serve as the host for your AKS on Azure Stack HCI infrastructure. You have 2 choices on how to proceed, either a more graphical way, using Windows Admin Center or via PowerShell. Make your choice below:
+In this step, you've successfully created and automatically configured your Azure VM, which will serve as the host for your AKS on Azure Stack HCI infrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center or via PowerShell:
 
-* [Part 2a - Deploy your AKS-HCI infrastructure with Windows Admin Center (Choose 2a or 2b)](aks-hci-evalguide-2a.md)
-* [Part 2b - Deploy your AKS-HCI infrastructure with PowerShell (Choose 2a or 2b)](aks-hci-evalguide-2b.md)
+* [Part 2a - Deploy your AKS-HCI infrastructure with Windows Admin Center](aks-hci-evalguide-2a.md)
+* [Part 2b - Deploy your AKS-HCI infrastructure with PowerShell](aks-hci-evalguide-2b.md)
