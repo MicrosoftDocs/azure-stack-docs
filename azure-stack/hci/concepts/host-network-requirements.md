@@ -22,7 +22,10 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 - **Compute traffic:** Traffic originating from or destined to a virtual machine (VM). 
 - **Storage traffic:** Traffic using Server Message Block (SMB), for example Storage Spaces Direct or SMB-based live migration.
-- **Management traffic:** Traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, Active Directory, etc.
+- **Management traffic:** Traffic to or from outside the local cluster. For example, storage replica traffic or traffic used by the administrator for management of the cluster like Remote Desktop, Windows Admin Center, Active Directory, etc.
+
+> [!IMPORTANT]
+> Storage replica uses non-RDMA based SMB traffic. This and the directional nature of the traffic (North-South) makes it closely aligned to that of "management" traffic listed above, similar to that of a traditional file share.
 
 ## Select a network adapter
 
