@@ -137,10 +137,12 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following two sets of network intents are supported. The networking intent should match how you've cabled your system.
+    When defining the network intents, for this preview release, only the following two sets of network intents are supported. 
 
     - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
+    
+    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-configurations)
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/deploy-new-step-2-network-intents.png":::
 
