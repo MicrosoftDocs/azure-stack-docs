@@ -161,7 +161,6 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/deploy-new-step-2-network-management.png":::
 
-    <!--change the screen here-->
 
 1. On step **3.1 Create cluster**, enter the cluster name.
 
