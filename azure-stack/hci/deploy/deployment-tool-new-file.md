@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
+After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 
 You can deploy both single-node and multi-node clusters using this procedure.
 
@@ -21,7 +21,7 @@ You can deploy both single-node and multi-node clusters using this procedure.
 
 ## Prerequisites
 
-Before you begin, make sure you have done the following:
+Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
@@ -39,8 +39,8 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 |Parameters|Description|
 |----|----|
 |`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
-|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
-|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
+|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you're a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
+|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. This preview release doesn't support Multi-factor Authentication (MFA) or admin consent.|
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
@@ -105,11 +105,11 @@ If you want to use an existing configuration file you have previously created, s
     1. Enter the **Computer name prefix** used when you prepared the Active Directory.
     1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
     1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
-    1. Specify an IP address for the **NTP time server** you wish to use. NTP servers are required, as your server must synchronize time so that it can authenticate with Azure. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this is not possible, specify an internal NTP server.
+    1. Specify an IP address for the **NTP time server** you wish to use. NTP servers are required, as your server must synchronize time so that it can authenticate with Azure. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this isn't possible, specify an internal NTP server.
     
         Only IP addresses can be provided in this release. You can't, for example, specify the NTP server as *time.windows.com*.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step step 1.3 Join a domain page." lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
 
     <!--change the screens here-->
 
@@ -137,9 +137,9 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following two sets of network intents are supported. The networking intent should match how you have cabled your system.
+    When defining the network intents, for this preview release, only the following two sets of network intents are supported. The networking intent should match how you've cabled your system.
 
-    - one *Management + Compute* intent, 1 storage intent.
+    - one *Management + Compute* intent, one storage intent.
     - one fully converged intent that maps to *Management + Compute + Storage* intent.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/deploy-new-step-2-network-intents.png":::
@@ -151,10 +151,10 @@ If you want to use an existing configuration file you have previously created, s
 1. On step **2.4 Provide management network details**, enter the following input after consulting your network administrator:
 
     1. Provide a **VLAN ID** for your network. The VLAN IDs must be a number between 0 – 4095 and are typically assigned to each port on a switch or a router.
-    1. In this release, only the static IPs can be assigned and DHCP is not supported.
+    1. In this release, only the static IPs can be assigned and DHCP isn't supported.
     1. For the **Starting IP** and the **Ending IP** range, provide a minimum of 6 free, contiguous IPv4 addresses. This range excludes your host IPs. These IPs are used for infrastructure services such as clustering.
     1. Provide the **Subnet mask** and **Default gateway** for the network.
-    1. Provide the IPv4 address of the **DNS servers** in your environment. DNS servers are required because they are used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
+    1. Provide the IPv4 address of the **DNS servers** in your environment. DNS servers are required because they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
         
         For high availability, we recommend that you configure a preferred and an alternate DNS server.
     1. Use the **Advanced SDN settings** when Software defined networking (SDN) is enabled.
@@ -186,7 +186,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near realtime.
+1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near real time.
 
     :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/deployment-progress.png":::
 
