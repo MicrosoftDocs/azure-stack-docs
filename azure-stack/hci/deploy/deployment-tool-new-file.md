@@ -111,6 +111,8 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step step 1.3 Join a domain page." lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
 
+    <!--change the screens here-->
+
 1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-security-default.png" alt-text="Screenshot of the Deployment step 1.4 Set cluster security default page." lightbox="media/deployment-tool/deploy-new-step-1-security-default.png":::
@@ -124,6 +126,8 @@ If you want to use an existing configuration file you have previously created, s
     - [BitLocker for OS boot volume and BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview).
     - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing).
     - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption).
+
+    <!--change the screens here-->
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
@@ -157,6 +161,8 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/deploy-new-step-2-network-management.png":::
 
+    <!--change the screen here-->
+
 1. On step **3.1 Create cluster**, enter the cluster name.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/deploy-new-step-3-create-cluster.png":::
@@ -169,6 +175,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-5-add-services.png" alt-text="Screenshot of the Deployment step 5.1 Add services page." lightbox="media/deployment-tool/deployment-step-5-add-services.png":::
 
+    <!--change the screen here-->
 1. On step **5.2 Set Arc management details**, no changes are needed. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/deploy-new-step-5-arc.png":::
