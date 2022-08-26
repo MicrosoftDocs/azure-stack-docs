@@ -318,7 +318,7 @@ Get-WDACPolicyMode
 	1 – Audit
 	2 - Enforced
 ```
-Here is a sample output:
+Here is sample output:
 
 ```azurepowershell
 Switch-WDACPolicyMode -To Audit
