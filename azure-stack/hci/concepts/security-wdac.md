@@ -4,7 +4,7 @@ description: This topic provides guidance on Windows Defender Application Contro
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 08/25/2022
+ms.date: 08/26/2022
 ---
 <!-- To do:
  -- call out CIP before using acro > Common Industrial Protocol?
