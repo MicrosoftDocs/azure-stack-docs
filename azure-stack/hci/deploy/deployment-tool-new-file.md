@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-After you have successfully installed the operating system, you are ready to set up and run the deployment tool. This method of deployment uses Windows Admin Center to create a configuration (answer) file interactively that is saved.
+After you've successfully installed the operating system, you're ready to set up and run the deployment tool. This method of deployment leads you through a guided, UI experience to create a configuration (answer) file interactively that is saved.
 
 You can deploy both single-node and multi-node clusters using this procedure.
 
@@ -21,32 +21,13 @@ You can deploy both single-node and multi-node clusters using this procedure.
 
 ## Prerequisites
 
-Before you begin, make sure you have done the following:
+Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2](deployment-tool-install-os.md) on each server.
 
-<!---## Configure the servers
-
-After you have installed the Azure Stack HCI version 22H2 OS, there are a couple of steps needed to configure your servers before using the deployment tool.
-
-1. Sign in to the first server. In Windows Admin Center, select **Azure Stack HCI Initial Configuration** from the top drop-down menu.
-
-1. On the **Update local password** page, enter the old password and new chosen password for the server.
-
-    :::image type="content" source="media/deployment-tool/deployment-post-update-password.png" alt-text="Update local password page" lightbox="media/deployment-tool/deployment-post-update-password.png":::
-
-1. On the **Set IP address** page, select either dynamic (DHCP) or a static IP address for the server.
-
-    :::image type="content" source="media/deployment-tool/deployment-post-set-ip-address.png" alt-text="Set IP address page" lightbox="media/deployment-tool/deployment-post-set-ip-address.png":::
-
-1. On the **Review summary** page, review the settings of the server.
-
-    :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Review summary page" lightbox="media/deployment-tool/deployment-post-review-summary.png":::
-
-1. Repeat this process for each server in your cluster.--->
 
 ## Set up the deployment tool
 
@@ -58,8 +39,8 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 |Parameters|Description|
 |----|----|
 |`-RegistrationCloudName`|Specify the Azure Cloud that should be used.|
-|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you are a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
-|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. This preview release does not support Multi-factor Authentication (MFA) or admin consent.|
+|`-RegistrationSubscriptionID`|Provide the Azure Subscription ID used to register the cluster with Arc. Make sure that you're a [user access administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster.|
+|`-RegistrationAccountCredential`|Specify credentials to access your Azure Subscription. This preview release doesn't support Multi-factor Authentication (MFA) or admin consent.|
 
 1. In Windows Admin Center, select the first server listed for the cluster to act as a staging server during deployment.
 
@@ -67,13 +48,16 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
 
 1. Copy content from the *Cloud* folder you downloaded previously to any drive other than the C:\ drive.
 
-1. Enter your Azure subscription ID, AzureCloud name and run the following PowerShell commands as administrator:
+1. Run PowerShell as administrator.
+ 
+1. Set the following parameters:
 
     ```PowerShell
-    $SubscriptionID="your_Azure_subscription_ID"
-    $AzureCred=get-credential
+    $SubscriptionID="<Azure_subscription_ID>"
+    $AzureCred=Get-Credential
     $AzureCloud="AzureCloud"
     ```
+    In this release, only AzureCloud is supported.
 
 1. Run the following command to install the deployment tool:
 
@@ -84,11 +68,11 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
     This step takes several minutes to complete.
 
     > [!NOTE]
-    > If you manually extracted deployment content from the ZIP file previously, you must run `BootstrapCloudDeployment-Internal.ps1` instead.
+    > If you manually extracted deployment content from the ZIP file previously, you must run `BootstrapCloudDeploymentTool-Internal.ps1` instead.
 
 ## Run the deployment tool
 
-This procedure collects deployment parameters from you interactively and saves them to a configuration file as you step through the deployment wizard in Windows Admin Center. You deploy single-node and multi-node clusters similarly.
+This procedure collects deployment parameters from you interactively and saves them to a configuration file as you step through the deployment UI. You deploy single-node and multi-node clusters similarly.
 
 If you want to use an existing configuration file you have previously created, see [Deploy using a configuration file](deployment-tool-existing-file.md).
 
@@ -100,7 +84,7 @@ If you want to use an existing configuration file you have previously created, s
 
 1. Authenticate using the local administrator credentials of your staging server.
 
-1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Create a new config file**, then select either **One server** or **Multiple servers** as applicable for your deployment.
+1. In the deployment UI, on the **Get started deploying Azure Stack** page, select **Create a new config file**, then select either **One server** or **Multiple servers** as applicable for your deployment.
 
       :::image type="content" source="media/deployment-tool/deploy-new-get-started.png" alt-text="Screenshot of the Deployment Get Started page." lightbox="media/deployment-tool/deploy-new-get-started.png":::
 
@@ -108,13 +92,26 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-privacy.png" alt-text="Screenshot of the Deployment step 1.1 Configure privacy page." lightbox="media/deployment-tool/deploy-new-step-1-privacy.png":::
 
-1. On **step 1.2 Add servers**, enter the IP address of each server.  Add the servers in the right sequence, beginning with the first server.
+1. On **step 1.2 Add servers**, follow these steps: 
+
+    1. Provide the local administrator credentials. Make sure that the local administrator credentials are identical across all the servers.
+
+    1. Enter the IP address of each server. Add the servers in the right sequence, beginning with the first server. 
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-add-servers.png" alt-text="Screenshot of the Deployment step 1.2 Add servers page." lightbox="media/deployment-tool/deploy-new-step-1-add-servers.png":::
 
-1. On **step 1.3 Join a domain**, enter your Active Directory domain name, object prefix, organizational unit (OU), account credentials, and NTP time server.
+1. On **step 1.3 Specify Active Directory details**, enter the following:
+    1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
+    1. Enter the **Computer name prefix** used when you prepared the Active Directory.
+    1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
+    1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
+    1. Specify an IP address for the **NTP time server** you wish to use. NTP servers are required, as your server must synchronize time so that it can authenticate with Azure. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this isn't possible, specify an internal NTP server.
+    
+        Only IP addresses can be provided in this release. You can't, for example, specify the NTP server as *time.windows.com*.
 
-    :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step step 1.3 Join a domain page." lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
+    :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
+
+    <!--change the screens here-->
 
 1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
@@ -125,11 +122,12 @@ If you want to use an existing configuration file you have previously created, s
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-security-custom.png" alt-text="Screenshot of the Deployment step 1.4 Set cluster security custom page." lightbox="media/deployment-tool/deploy-new-step-1-security-custom.png":::
 
     For more information on the individual security settings, see:
-    - [App control (WDAC) enforced on host](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)
-    - [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)
-    - [BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview)
-    - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing)
-    - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption)
+    - [App control (WDAC) enforced on host](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control).
+    - [BitLocker for OS boot volume and BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview).
+    - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing).
+    - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption).
+
+    <!--change the screens here-->
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
@@ -139,10 +137,12 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.2 Define network intents**, consult with your network administrator to ensure you enter the correct network details.
 
-    When defining the network intents, for this preview release, only the following two sets of network intents are supported. The networking intent should match how you have cabled your system.
+    When defining the network intents, for this preview release, only the following two sets of network intents are supported. 
 
-    - one management+compute intent, 1 storage intent
-    - one fully converged intent  (management+compute+storage intent)
+    - one *Management + Compute* intent, one storage intent.
+    - one fully converged intent that maps to *Management + Compute + Storage* intent.
+    
+    The networking intent should match how you've cabled your system. For this release, see the [Validated deployment network patterns](./deployment-tool-introduction.md#validated-configurations)
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-intents.png" alt-text="Screenshot of the Deployment step 2.2 network intents page." lightbox="media/deployment-tool/deploy-new-step-2-network-intents.png":::
 
@@ -150,9 +150,19 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-storage.png" alt-text="Screenshot of the Deployment step 2.3 storage network page." lightbox="media/deployment-tool/deploy-new-step-2-network-storage.png":::
 
-1. On step **2.4 Provide management network details**, consult with your network administrator to ensure you enter the correct network details.
+1. On step **2.4 Provide management network details**, enter the following input after consulting your network administrator:
+
+    1. Provide a **VLAN ID** for your network. The VLAN IDs must be a number between 0 – 4095 and are typically assigned to each port on a switch or a router.
+    1. In this release, only the static IPs can be assigned and DHCP isn't supported.
+    1. For the **Starting IP** and the **Ending IP** range, provide a minimum of 6 free, contiguous IPv4 addresses. This range excludes your host IPs. These IPs are used for infrastructure services such as clustering.
+    1. Provide the **Subnet mask** and **Default gateway** for the network.
+    1. Provide the IPv4 address of the **DNS servers** in your environment. DNS servers are required because they're used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
+        
+        For high availability, we recommend that you configure a preferred and an alternate DNS server.
+    1. Use the **Advanced SDN settings** when Software defined networking (SDN) is enabled.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/deploy-new-step-2-network-management.png":::
+
 
 1. On step **3.1 Create cluster**, enter the cluster name.
 
@@ -166,6 +176,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-5-add-services.png" alt-text="Screenshot of the Deployment step 5.1 Add services page." lightbox="media/deployment-tool/deployment-step-5-add-services.png":::
 
+    <!--change the screen here-->
 1. On step **5.2 Set Arc management details**, no changes are needed. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/deploy-new-step-5-arc.png":::
@@ -177,17 +188,11 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/deployment-step-6-deploy-cluster.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near realtime.
+1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress in near real time.
 
     :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/deployment-progress.png":::
 
-## Post deployment
 
-After deployment of your cluster has successfully completed, remove the Windows Admin Center instance that the deployment tool used. Log in to the staging server and run the following PowerShell command:
-
-```powershell
-Get-CimInstance -ClassName Win32_Product|Where-object {$_name -like “Windows Admin Center”}| Invoke-CimMethod -MethodName Uninstall
- ```
 
 ## Next steps
 
