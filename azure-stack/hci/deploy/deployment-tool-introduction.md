@@ -26,8 +26,7 @@ Follow this process sequence to deploy Azure Stack HCI version 22H2 in your envi
 - Follow the [deployment checklist](deployment-tool-checklist.md).
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install Azure Stack HCI version 22H2](deployment-tool-install-os.md) on each server.
-- Install the deployment tool on the first server in your cluster.
-- Run the deployment tool in Windows Admin Center using either a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).
+- Install and run the deployment tool interactively with a [new configuration file](deployment-tool-new-file.md) or using an [existing configuration file](deployment-tool-existing-file.md).
 - If preferred, you can [deploy using PowerShell](deployment-tool-powershell.md).
 - After deployment, [validate deployment](deployment-tool-validate.md).
 - If needed, [troubleshoot deployment](deployment-tool-troubleshoot.md).
@@ -41,13 +40,13 @@ The following cluster configurations were tested and validated for this release:
 
 - A single physical server connected to a network switch. This is sometimes referred to as a single-node cluster.
 
-- Two or four physical servers with direct (switchless) storage network connections to an L2 switch.
+- Two physical servers with direct (switchless) storage network connections to an L2 switch.
 
-- Two or four physical servers with direct (switchless) storage network connections to redundant L3 switches.
+- Two physical servers with direct (switchless) storage network connections to redundant L3 switches.
 
-- Two or four physical servers deployed using a switched storage network and redundant L3 switches.
+- Two physical servers deployed using a switched storage network and redundant L3 switches.
 
-- Two or four physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.
+- Two physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.
 
 **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single L2 switch.
 

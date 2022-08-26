@@ -52,7 +52,7 @@ After you have installed the Azure Stack HCI version 22H2 OS, there are a couple
 
 ## Create the configuration file
 
-Here is a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively in Windows Admin Center.
+Here is a sample configuration file (JSON format) you can modify, save, and use for deployment. One advantage to using your own configuration file is that more settings can be specified than are available when creating a file interactively.
 
 ```json
 "Version": "3.0.0.0",
@@ -103,7 +103,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                 "ExternalDomainFQDN": "AD_FQDM",
                 "InfrastructureNetwork": [
                     {
-                        "VlanId": 3011,
+                        "VlanId": 0,
                         "SubnetMask": "255.255.252.0",
                         "Gateway": "10.126.64.1",
                         "IPPools": [
@@ -295,14 +295,6 @@ When specifying a username, omit the domain name (don't use *domain\username*). 
 1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near realtime.
 
     :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/deployment-progress.png":::
-
-## Post deployment
-
-After deployment of your cluster has successfully completed, remove the Windows Admin Center instance that the deployment tool used. Log in to the staging server and run the following PowerShell command:
-
-```powershell
-Get-CimInstance -ClassName Win32_Product|Where-object {$_name -like “Windows Admin Center”}| Invoke-CimMethod -MethodName Uninstall
- ```
 
 ## Next steps
 
