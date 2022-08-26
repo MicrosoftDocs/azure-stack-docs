@@ -3,7 +3,7 @@ title: Known issues for Azure Stack HCI version 22H2 (preview)
 description: Read about the known issues for Azure Stack HCI version 22H2 (preview)
 author: alkohli
 ms.topic: how-to
-ms.date: 08/23/2022
+ms.date: 08/25/2022
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -12,11 +12,11 @@ ms.reviewer: alkohli
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
-The following release notes identify the critical open issues and the resolved issues for the preview release for your Azure Stack HCI, version 22H2 solution. Features and issues that correspond to a specific model of Azure Stack Edge are called out wherever applicable.
+This article identifies the critical open issues and the resolved issues for the preview release for your Azure Stack HCI, version 22H2. 
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to the Azure Stack HCI, version 22H2 preview release, which maps to software version number XXXXX. The Azure Stack HCI, version 21H2 existing software deployments can be updated to this release. This release also supports brand new software installation using a deployment tool. For more information, see What's new in 22H2.
+This article applies to the Azure Stack HCI, version 22H2 preview release, which maps to software version number XXXXX. The Azure Stack HCI, version 21H2 existing software deployments can be updated to this release. This release also supports brand new software installation using a deployment tool. For more information, see [What's new in 22H2](whats-new.md).
 
 Here are the known issues for Azure Stack HCI, version 22H2:
 
