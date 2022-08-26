@@ -7,8 +7,7 @@ ms.topic: conceptual
 ms.date: 08/26/2022
 ---
 <!-- To do:
- -- call out CIP before using acro > Common Industrial Protocol?
- -->
+ -- call out CIP before using acro -->
 
 # Windows Defender Application Control for Azure Stack HCI (preview)
 
@@ -18,7 +17,7 @@ This article describes how to use Windows Defender Application Control (WDAC) to
 
 WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control).
 
-## WDAC enabled by default
+## WDAC is enabled by default
 
 This release comes with WDAC enabled and enforced by default. We're providing a base policy in a multiple-policy format CIP file.
 
@@ -305,15 +304,15 @@ Here's the Microsoft base policy prior to merging with blocked rules:
 
 ## Switching between WDAC policy modes
 
-As a customer you can decide to have WDAC enabled during deployment or after deployment. In case you want to change the initial selection done in the deployment wizard you can do it after deployment using PowerShell (in future releases will provide UI based action with Windows Admin Center).  
+As a customer you can decide to have WDAC enabled during deployment or after deployment. In case you want to change the initial selection in the deployment wizard, you can do it after deployment using PowerShell. Future releases will provide a UI-based control with Windows Admin Center.  
 
-Connect to one of the cluster nodes and use the below cmdlets to switch between nodes.
+Connect to one of the cluster nodes and use the cmdlets below to switch between nodes.
 
 This is useful when:
 
-1. You started with default recommended settings and now you need to install or run new software (normally third party software) in the node to later create a supplemental policy.
-1. You started with WDAC disabled during deployment and now you want to enable WDAC to increase the security protections or to validate that your software runs properly.
-1. Your software or scripts are blocked by WDAC. In this case you can switch to Audit to understand and troubleshoot the issue.
+1. You started with default recommended settings and now you need to install or run new software, usually third party software, in the node to later create a supplemental policy.
+1. You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
+1. Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
 
 The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes.
 
@@ -347,16 +346,16 @@ PS C:\temp> Get-WDACPolicyMode
 
 ## Support for OEM extensions
 
-This release doesn't support partner extensions based on the SBE toolkit because the internal dependent components aren't present in this build.
+This release doesn't support partner extensions based on the SBE toolkit because internal-dependent components aren't present in this build.
 
 ## Create a WDAC policy to enable third party software
 
 While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
 > [!NOTE]
-> To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch back WDAC to enforced mode.
+> To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch WDAC back to enforced mode.
 
-Create a new policy in the Multiple Policy Format as shown below. From there, use ```Set-CIPolicyIdInfo``` to convert it to a supplemental policy and specify which base policy it expands.
+Create a new policy in the Multiple Policy Format as shown below. Then use ```Set-CIPolicyIdInfo``` to convert it to a supplemental policy and specify which base policy it expands.
 
    Use either ```SupplementsBasePolicyID``` or ```BasePolicyToSupplementPath``` to specify the base policy.
 > * ```SupplementsBasePolicyID``` is the GUID of base policy that the supplemental policy applies to. Use {A6368F66-E2C9-4AA2-AB79-8743F6597683} for the GUID, which corresponds to the Micrisoft base policy provided in Azure Stack HCI 22H2.
@@ -366,7 +365,7 @@ Create a new policy in the Multiple Policy Format as shown below. From there, us
 
 Use the following steps to create a supplemental policy:
 
-1. Before you begin, install the software that will be covered by the supplemental policy into its own directory. It's okay if there are subdirectories. When creating the supplemental policy, you'll need to provide a directory to scan, and you don’t want your supplemental policy to cover all code on the system. In our example, this directory is C:\software\codetoscan.
+1. Before you begin, install the software that will be covered by the supplemental policy into its own directory. It's okay if there are subdirectories. When creating the supplemental policy, you must provide a directory to scan, and you don’t want your supplemental policy to cover all code on the system. In our example, this directory is C:\software\codetoscan.
 
 1. Once you have all your software in place, run the following command to create your supplemental policy. Use a unique policy name to help identify it.
 
@@ -403,7 +402,7 @@ Use the following steps to create a supplemental policy:
    Set-RuleOption -FilePath c:\wdac\Contoso-supplemental-policy.xml -Option 20 -Delete
    ```
 
-1. Modify the name of your supplemental policy:
+1. Modify the name of your supplemental policy.
 
    ```azurepowershell
    Set-CIPolicyIdInfo -FilePath c:\wdac\Contoso-supplemental-policy.xml -PolicyName "Contoso-supplemental-policy"
@@ -416,13 +415,13 @@ Use the following steps to create a supplemental policy:
    Set-CIPolicyIdInfo -FilePath c:\wdac\Contoso-supplemental-policy.xml -SupplementsBasePolicyID $basePolicyId
    ```
 
-1. After running these commands, you have the final supplemental policy. To put it to use, convert it to binary using the following command:
+1. After running these commands, you have the final supplemental policy. To put it to use, convert it to binary using the following command.
 
    ```azurepowershell
    ConvertFrom-CIPolicy c:\wdac\Contoso-supplemental-policy.xml c:\wdac\Contoso-supplemental-policy.bin
    ```
 
-1. Deploy the policy, as follows:
+1. Deploy the policy.
 
    ```C:\Windows\System32\CodeIntegrity\CiPolicies\Active and named {PolicyID}.cip```
 
