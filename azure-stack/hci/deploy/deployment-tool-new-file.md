@@ -101,11 +101,11 @@ If you want to use an existing configuration file you have previously created, s
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-add-servers.png" alt-text="Screenshot of the Deployment step 1.2 Add servers page." lightbox="media/deployment-tool/deploy-new-step-1-add-servers.png":::
 
 1. On **step 1.3 Specify Active Directory details**, enter the following:
-    1. Provide your Active Directory domain name. For example, this would be in `Contoso.com` format.
-    1. Enter the Computer name prefix used when you prepared the Active Directory.
-    1. For OU, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
-    1. Provide the username and the password for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
-    1. Specify an IP address for the NTP time server you wish to use. NTP servers are required, as your server must synchronize time so that it can authenticate with Azure. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this is not possible, specify an internal NTP server.
+    1. Provide your **Active Directory domain** name. For example, this would be in `Contoso.com` format.
+    1. Enter the **Computer name prefix** used when you prepared the Active Directory.
+    1. For **OU**, provide the full name of the organizational unit (including the domain controllers) that was created for the deployment. For example, the name would be `"OU=Hci001,DC=contoso,DC=com"`.
+    1. Provide the **username** and the **password** for the deployment user account that was created during [Prepare the Active Directory](deployment-tool-active-directory.md) step.
+    1. Specify an IP address for the **NTP time server** you wish to use. NTP servers are required, as your server must synchronize time so that it can authenticate with Azure. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this is not possible, specify an internal NTP server.
     
         Only IP addresses can be provided in this release. You can't, for example, specify the NTP server as *time.windows.com*.
 
@@ -154,7 +154,7 @@ If you want to use an existing configuration file you have previously created, s
     1. In this release, only the static IPs can be assigned and DHCP is not supported.
     1. For the **Starting IP** and the **Ending IP** range, provide a minimum of 6 free, contiguous IPv4 addresses. This range excludes your host IPs. These IPs are used for infrastructure services such as clustering.
     1. Provide the **Subnet mask** and **Default gateway** for the network.
-    1. Provide the IPv4 address of the DNS servers in your environment. DNS servers are required because they are used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
+    1. Provide the IPv4 address of the **DNS servers** in your environment. DNS servers are required because they are used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
         
         For high availability, we recommend that you configure a preferred and an alternate DNS server.
     1. Use the **Advanced SDN settings** when Software defined networking (SDN) is enabled.
