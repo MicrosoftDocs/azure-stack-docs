@@ -1,10 +1,10 @@
 ---
 title: Deploy a cluster set
 description: Learn how to deploy a cluster set
-author: v-jamemurray
+author: jasongerend
 ms.topic: how-to
 ms.date: 10/19/2021
-ms.author: v-jamemurray
+ms.author: jgerend
 ms.reviewer: stevenek
 ms.custom: contperf-fy21q4
 ---
