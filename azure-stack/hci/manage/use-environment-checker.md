@@ -62,7 +62,7 @@ Before you begin, complete the following tasks:
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.
 
-## Install and import Environment Checker
+## Install Environment Checker
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
@@ -100,7 +100,7 @@ You can run the validators from the following locations:
 
 - Locally from the Azure Stack HCI server node
 
-- Remotely via PS session  
+- Remotely via PowerShell session  
 
 - Locally from a workstation or a staging server
 
@@ -159,6 +159,44 @@ If you're using a proxy server, you can specify the connectivity check to go thr
 ```powershell
 Invoke-AzStackHciConnectivityValidation -Proxy http://proxy.contoso.com:8080 -ProxyCredential $proxyCredential 
 ```
+
+#### Example 4: Check connectivity and create PowerShell output object
+
+You can view the output of the connectivity checker as an object by using the `–PassThru` parameter:
+
+```powershell
+Invoke-AzStackHciConnectivityValidation –PassThru
+```
+
+Here's a sample screenshot of the output:
+
+   :::image type="content" source="./media/environment-checker/connectivity-validator-pass-thru-parameter.png" alt-text="Screenshot of a passed connectivity validator report for PassThru parameter." lightbox="./media/environment-checker/connectivity-validator-pass-thru-parameter.png":::
+
+### Connectivity validator attributes
+
+You can filter any of the following attributes and display the connectivity validator result in your desired format:
+
+| Attribute name | Description |
+| -------------  | ----------- |
+| EndPoint       | The endpoint being validated. |
+| Protocol       | Protocol used – example https. |
+| Service        | The service endpoint being validated. |
+| Operation Type | Type of operation – deployment, update. |
+| Group          | Readiness Checks. |
+| System         | For internal use. |
+| Name           | Name of the individual service. |
+| Title          | Service title ; user facing name. |
+| Severity       | Critical, Warning, Informational, Hidden. |
+| Description    | Description of the service name. |
+| Tags           | Internal Key-value pairs to group or filter tests. |
+| Status         | Succeeded, Failed, In Progress. |
+| Remediation    | URL link to documentation for remediation. |
+| TargetResourceID | Unique identifier for the affected resource (node or drive). |
+| TargetResourceName | Name of the affected resource. |
+| TargetResourceType | Type of the affected resource. |
+| Timestamp | The time in which the test was called. |
+| AdditionalData | Property bag of key value pairs for additional information. |
+| HealthCheckSource | The name of the services called for the health check. |
 
 ### Connectivity validator output
 
