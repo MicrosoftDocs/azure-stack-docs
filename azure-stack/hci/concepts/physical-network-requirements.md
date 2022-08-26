@@ -99,7 +99,7 @@ North-South traffic has the following characteristics:
 
 - Traffic flows out of a ToR switch to the spine or in from the spine to a ToR switch
 - Traffic leaves the physical rack or crosses a Layer-3 boundary (IP)
-- Includes [management traffic](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types), [compute](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types), and inter-site stretched cluster traffic
+- Includes [management traffic](host-network-requirements.md#network-traffic-types), [compute](host-network-requirements.md#network-traffic-types), and inter-site stretched cluster traffic
 - Uses an Ethernet switch for connectivity to the physical network
 
 ### East-West traffic for Azure Stack HCI
@@ -107,7 +107,7 @@ North-South traffic has the following characteristics:
 East-West traffic has the following characteristics:
 
 - Traffic remains within the ToR switches and Layer-2 boundary (VLAN)
-- Includes [storage traffic](https://docs.microsoft.com/en-us/azure-stack/hci/concepts/host-network-requirements#network-traffic-types) or Live Migration traffic between nodes in the same cluster and same cluster site.
+- Includes [storage traffic](host-network-requirements.md#network-traffic-types) or Live Migration traffic between nodes in the same cluster and same cluster site.
 - May use an Ethernet switch (switched) or a direct (switchless) connection, as described in the next two sections.
 
 ## Using switches
