@@ -305,20 +305,30 @@ Here's the Microsoft base policy prior to merging with blocked rules:
 
 ## Switching between WDAC policy modes
 
-The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes. This release has WDAC in enforced mode by default.
+As a customer you can decide to have WDAC enabled during deployment or after deployment. In case you want to change the initial selection done in the deployment wizard you can do it after deployment using PowerShell (in future releases will provide UI based action with Windows Admin Center).  
+
+Connect to one of the cluster nodes and use the below cmdlets to switch between nodes.
+
+This is useful when:
+
+1. You started with default recommended settings and now you need to install or run new software (normally third party software) in the node to later create a supplemental policy.
+1. You started with WDAC disabled during deployment and now you want to enable WDAC to increase the security protections or to validate that your software runs properly.
+1. Your software or scripts are blocked by WDAC. In this case you can switch to Audit to understand and troubleshoot the issue.
+
+The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes.
 
 ```azurepowershell
-Switch-WDACPolicyMode -To Audit
+Switch-ASWDACPolicy -Mode Audit
 
-Switch-WDACPolicyMode -To Enforced
+Switch-ASWDACPolicy -Mode Enforced
 
-Get-WDACPolicyMode
+Get-ASWDACPolicyMode
   This returns an integer - for example,
 	0 – Not deployed
 	1 – Audit
 	2 - Enforced
 ```
-Here is sample output:
+Here is a sample output:
 
 ```azurepowershell
 Switch-WDACPolicyMode -To Audit
@@ -341,7 +351,10 @@ This release doesn't support partner extensions based on the SBE toolkit because
 
 ## Create a WDAC policy to enable third party software
 
-While using this preview for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, you’ll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+
+> [!NOTE]
+> To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch back WDAC to enforced mode.
 
 Create a new policy in the Multiple Policy Format as shown below. From there, use ```Set-CIPolicyIdInfo``` to convert it to a supplemental policy and specify which base policy it expands.
 
