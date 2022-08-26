@@ -8,7 +8,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
-# Azure Stack HCI version 22H2 deployment overview (preview) 
+# Azure Stack HCI version 22H2 deployment overview (preview)
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
@@ -44,9 +44,9 @@ The following cluster configurations were tested and validated for this release:
 
 - Two physical servers with direct (switchless) storage network connections to redundant L3 switches.
 
-- Two physical servers deployed using a switched storage network and redundant L3 switches.
+<!---- Two physical servers deployed using a switched storage network and redundant L3 switches.
 
-- Two physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.
+- Two physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.--->
 
 **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single L2 switch.
 
@@ -56,13 +56,13 @@ The following cluster configurations were tested and validated for this release:
 
 :::image type="content" source="media/deployment-tool/switchless-two-tor-switch.png" alt-text="Diagram that shows a switchless storage network configuration." lightbox="media/deployment-tool/switchless-two-tor-switch.png":::
 
-**Configuration 3**: The following diagram shows two physical servers with a switched storage network and redundant L3 switches.
+<!---**Configuration 3**: The following diagram shows two physical servers with a switched storage network and redundant L3 switches.
 
 :::image type="content" source="media/deployment-tool/deployment-topology-2.png" alt-text="Diagram that shows a switched storage network configuration." lightbox="media/deployment-tool/deployment-topology-2.png":::
 
 **Configuration 4**: The following diagram shows two physical servers with a fully-converged network for compute, storage, and management and with redundant L3 switches.
 
-:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Diagram that shows a fully-converged network configuration." lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::
+:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Diagram that shows a fully-converged network configuration." lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::--->
 
 ## Next steps
 
