@@ -150,10 +150,10 @@ If you want to use an existing configuration file you have previously created, s
     1. In this release, only the static IPs can be assigned and DHCP is not supported.
     1. For the **Starting IP** and the **Ending IP** range, provide a minimum of 6 free, contiguous IPv4 addresses. This range excludes your host IPs. These IPs are used for infrastructure services such as clustering.
     1. Provide the **Subnet mask** and **Default gateway** for the network.
-    1. Provide the IPv4 address of the DNS servers in your environment. DNS servers are required because they are used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain just like DNS server for the host.
+    1. Provide the IPv4 address of the DNS servers in your environment. DNS servers are required because they are used when your server attempts to communicate with Azure or to resolve your server by name in your network. The DNS server you configure must be able to resolve the Active Directory domain.
         
         For high availability, we recommend that you configure a preferred and an alternate DNS server.
-    1. If you have deployed any VMs on your cluster, you can use the **Advanced SDN settings** to edit settings for those VM.
+    1. Use the **Advanced SDN settings** when Software defined networking (SDN) is enabled.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/deploy-new-step-2-network-management.png":::
 

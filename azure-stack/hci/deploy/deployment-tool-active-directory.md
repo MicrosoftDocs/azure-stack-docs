@@ -22,26 +22,29 @@ Before you begin, make sure you've done the following:
 - Complete the [deployment checklist](deployment-tool-checklist.md).
 
 > [!NOTE]
-> In this preview release, only one Azure Stack HCI deployment per Active Directory domain is supported.
+> In this preview release, only one Azure Stack HCI deployment per Active Directory domain is supported. 
 
-## Required script parameters
+## Active Directory script
 
-The *AsHciADArtifactsPreCreationTool.ps1* script is used to prepare Active Directory, and which requires the following parameters:
+The *AsHciADArtifactsPreCreationTool.ps1* script is used to prepare Active Directory. The following parameters can be provided with the script:
 
-|Parameter|Description|
-|--|--|
-|`-AsHciDeploymentUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).|
-|`-AsHciOUName`|A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there's no conflict of settings.|
-|`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
-|`-DomainFQDN`|Fully qualified domain name (FQDN) of the Active Directory domain.|
-|`-AsHciClusterName`|The name for the new cluster AD object.|
-|`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Stack HCI deployment.|
+|Parameter|Required |Description|
+|--|--|--|
+|`-AsHciDeploymentUserCredential`|Yes |A new user object that is created with the appropriate  permissions for deployment. This account is the same user account used by the Azure Stack HCI 22H2 deployment tool.<br>The password must conform to the length and complexity requirements. Use a password that is at least eight characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).|
+|`-AsHciOUName`|Yes |A new OU to store all the objects for the Azure Stack HCI deployment. Existing group policies are blocked to ensure there's no conflict of settings.|
+|`-AsHciPhysicalNodeList`|No |A list of computer names that are created for the physical cluster servers.|
+|`-DomainFQDN`|Yes |Fully qualified domain name (FQDN) of the Active Directory domain.|
+|`-AsHciClusterName`|No |The name for the new cluster AD object.|
+|`-AsHciDeploymentPrefix`|Yes |The prefix used for all AD objects created for the Azure Stack HCI deployment.|
 
 ## Prepare Active Directory
 
 When preparing Active Directory, you need local administrative access to the Active Directory domain server.
 
 Also, a dedicated Organizational Unit (OU) should be created to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
+
+>[!NOTE]
+In this release, only the Active Directory prepared via the provided script is supported.
 
 To prepare and configure Active Directory, follow these steps:
 
@@ -52,24 +55,18 @@ To prepare and configure Active Directory, follow these steps:
 1. Run the following PowerShell command as administrator:
 
     ```powershell
-    Add-KdsRootKey -EffectiveTime ((get-date).addhours(-10))
+    Add-KdsRootKey -EffectiveTime ((Get-Date).addhours(-10))
     ```
 
     Here's the sample output from a successful run of the command:
 
-    ```powershell
-    Windows PowerShell
-    Copyright (C) Microsoft Corporation. All rights reserved.
-
-    PS C:\Users\Administrator.SVCCLIENT02VM3> whoami
-    HCIlab\administrator
-    PS C:\Users\Administrator.SVCCLIENT02VM3> Add-KdsRootKey -EffectiveTime ((get-date).addhours(-10))
+    ```
+    PS C:\Users\Administrator> Add-KdsRootKey -EffectiveTime ((Get-Date).addhours(-10))
 
     Guid
     ----
     706e1dd7-3601-4f01-f2de-bb04c7b9afc3
 
-    PS C:\Users\Administrator.SVCCLIENT02VM3>
     ```
 
 1. Run the following command from the folder where the *AsHciADArtifactsPreCreationTool.ps1* script is located:
@@ -82,18 +79,7 @@ To prepare and configure Active Directory, follow these steps:
 
     Here is a sample output from a successful completion of the script:
 
-    ```powershell
-    PS C:\Users\Administrator.SVCCLIENT02VM3> cd C:\temp
-    PS C:\temp> dir
-
-    Directory: C:\temp
-
-    Mode                LastWriteTime         Length Name
-    ----                -------------         ------ ----
-    -a----         8/1/2022   7:22 PM          54908 AsHciADArtifactsPreCreationTool.ps1
-    -a----         8/2/2022   1:36 PM          18299 Contoso.AsHci.Security.AdArtifactsTool.1.2206.12.nupkg
-    -a----         8/2/2022   1:36 PM          18299 Contoso.AsHci.Security.AdArtifactsTool.1.2206.12.zip
-
+    ```    
     PS C:\temp> .\AsHciADArtifactsPreCreationTool.ps1 `
         -AsHciDeploymentUserCredential (get-credential) `
         -AsHciOUName "OU=HCI001,DC=contoso,DC=com"`
