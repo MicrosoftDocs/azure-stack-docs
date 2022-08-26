@@ -66,4 +66,4 @@ The following cluster configurations were tested and validated for this release:
 
 ## Next steps
 
-Read the [prerequisites for Azure Stack HCI version 22H2](deployment-tool-prerequisites.md).
+Read the [prerequisites](deployment-tool-prerequisites.md) for version 22H2.
