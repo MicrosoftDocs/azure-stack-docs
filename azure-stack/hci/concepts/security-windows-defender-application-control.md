@@ -352,7 +352,7 @@ PS C:\temp> Get-WDACPolicyMode
 
 ## Support for OEM extensions
 
-This release doesn't support partner extensions based on the SBE toolkit because internal-dependent components aren't present in this build. OEM partners can manually create a supplemental policy, as described below, until the SBE toolkit is available.
+This release doesn't support partner extensions based on the SBE toolkit because internal-dependent components aren't present in this build. OEM partners can manually create a supplemental policy, as described below, until the SBE toolkit becomes available.
 
 ## Create a WDAC policy to enable third party software
 
