@@ -292,7 +292,7 @@ When specifying a username, omit the domain name (don't use *domain\username*). 
 
     :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png" alt-text="Screenshot of the Deploy cluster page." lightbox="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near realtime.
+1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near real-time.
 
     :::image type="content" source="media/deployment-tool/config-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/config-file/deployment-progress.png":::
 
