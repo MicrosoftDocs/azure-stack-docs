@@ -8,7 +8,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
-# Deploy Azure Stack HCI version 22H2 (preview) using a configuration file
+# Deploy Azure Stack HCI version 22H2 using a configuration file (preview) 
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
