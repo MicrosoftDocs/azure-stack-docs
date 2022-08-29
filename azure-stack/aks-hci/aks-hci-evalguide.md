@@ -3,9 +3,9 @@ title: AKS on Azure Stack HCI and Windows Server in Azure VM Evaluation Guide
 description: An overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 08/26/2022
+ms.date: 08/29/2022
 ms.author: sethm 
-ms.lastreviewed: 08/26/2022
+ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
 # Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
 # Keyword: Azure VM deployment
@@ -26,6 +26,9 @@ You'll learn how to:
 ## Version
 
 This guide has been tested and validated with the **July 2022 release** of AKS on Azure Stack HCI and Windows Server.
+
+> [!NOTE]
+> The user interface is subject to updates and changes, so some of the screen shots in this guide may differ from what you actually see.
 
 ## What is AKS on Azure Stack HCI?
 
@@ -100,3 +103,9 @@ If you have an idea to make the product better, whether it's something in AKS on
 If you notice something is wrong with the evaluation guide, for example, a step doesn't work, or something just doesn't make sense - help us to make this guide better!  Report an issue in GitHub, and we'll be sure to fix this as quickly as possible.
 
 If however, you're having a problem with AKS on Azure Stack HCI **outside** of this evaluation guide, make sure you post to [our GitHub Issues page](https://github.com/Azure/aks-hci/issues "GitHub Issues"), where Microsoft experts and valuable members of the community will do their best to help you.
+
+## Next steps
+
+Proceed to step 1 of the evaluation guide:
+
+* [Evaluate AKS on Azure Stack HCI in Azure](aks-hci-evalguide-1.md)

@@ -3,15 +3,15 @@ title: Explore the AKS on Azure Stack HCI environment
 description: Step 3 of an overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 08/08/2022
+ms.date: 08/29/2022
 ms.author: sethm 
-ms.lastreviewed: 08/08/2022
+ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
 # Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
 # Keyword: Azure VM deployment
 ---
 
-# Explore the AKS on Azure Stack HCI environment
+# Step 3: Explore the AKS on Azure Stack HCI environment
 
 With all key components deployed, including the management cluster, along with target clusters, you can now begin to explore some of the additional capabilities within AKS on Azure Stack HCI. This section describes some of the key elements, but for more information, see [the product documentation](/azure-stack/aks-hci/).
 
