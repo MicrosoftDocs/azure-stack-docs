@@ -122,7 +122,7 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 ```
 
 ### Option 2: Using an Azure service principal
-If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. To learn more about how to use a service prinicipal, visit [register AKS on Azure Stack HCI and Windows Server using a service principal](/reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal)
+If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. To learn more about how to use a service principal, visit [register AKS on Azure Stack HCI and Windows Server using a service principal](/reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal)
 
 ## Step 5: Start a new deployment
 

@@ -1,14 +1,14 @@
 ---
 title: Explore the AKS on Azure Stack HCI environment
-description: Step 3 of an overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
+description: Step 3 of an overview of what's necessary to deploy AKS on Azure Stack HCI in an Azure Virtual Machine
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 08/29/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
-# Keyword: Azure VM deployment
+# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure Virtual Machine
+# Keyword: Azure Virtual Machine deployment
 ---
 
 # Step 3: Explore the AKS on Azure Stack HCI environment
@@ -19,7 +19,7 @@ With all key components deployed, including the management cluster, along with t
 
 To deploy a containerized application with your cluster up and running, the following steps describe key areas of deployment, testing, and scaling an application.
 
-During the deployment of AKS on Azure Stack HCI, **kubectl** was configured on your Azure VM Host. Kubectl provides a number of different ways to manage your Kubernetes clusters and applications.
+During the deployment of AKS on Azure Stack HCI, **kubectl** was configured on your Azure Virtual Machine Host. Kubectl provides a number of different ways to manage your Kubernetes clusters and applications.
 
 As part of this guide, you'll deploy an [Azure vote application](https://github.com/Azure-Samples/azure-voting-app-redis). To deploy the application, you'll need a Kubernetes manifest file. A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. The manifest we'll use in this tutorial includes two Kubernetes deployments: one for the sample Azure Vote Python application, and the other for a Redis instance. Two Kubernetes services are also created: an internal service for the Redis instance, and an external service to access the Azure Vote application from the internet.
 
@@ -31,10 +31,10 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
    kubectl get nodes
    ```
 
-   :::image type="content" source="media/aks-hci-evalguide/get-nodes.png" alt-text="Output of kubectl get nodes":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/get-nodes.png" alt-text="Output of kubectl get nodes":::
 
    > [!NOTE]
-   > If you receive an error that "kubectl is not recognized as the name of a cmdlet, function, script file or operable program", you can either sign out of the Azure VM, then sign back in, or run the following command from your PowerShell console: `choco install kubernetes-cli`, then close and re-open PowerShell.
+   > If you receive an error that "kubectl is not recognized as the name of a cmdlet, function, script file or operable program", you can either sign out of the Azure Virtual Machine, then sign back in, or run the following command from your PowerShell console: `choco install kubernetes-cli`, then close and re-open PowerShell.
 
    If you've followed the steps in this eval guide, your output should look similar, with 2 Linux worker nodes and 3 control plane nodes.
 
@@ -56,7 +56,7 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
 
 4. Open Microsoft Edge and after accepting the defaults, you should be able to navigate to that IP address. Note that it may take a few minutes to start.
 
-   :::image type="content" source="media/aks-hci-evalguide/azure-vote-app.png" alt-text="Screenshot of Azure vote app in Edge":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/azure-vote-app.png" alt-text="Screenshot of Azure vote app in Edge":::
 
 5. We have created a single replica of the Azure Vote front end and Redis instance. To see the number and state of pods in your cluster, use the **kubectl get** command as follows. The output should show one front end pod and one back-end pod:
 
@@ -80,16 +80,16 @@ Before you start, make sure you [review the manifest file](https://github.com/Az
 
 ## Expose a nested application to the internet
 
-If you've followed all the steps in this guide, you'll have a running AKS-HCI infrastructure, including a target cluster that can run your containerized workloads. Additionally, if you've deployed the simple Linux application using the [previous section](#deploy-a-simple-linux-application), you'll now have an Azure Voting web application running in a container on your AKS-HCI infrastructure. This application will likely have been allocated an IP address from your internal NAT network, **192.168.0.0/16**, and opening your Edge browser within the Azure VM allows you to access that web application using the 192.168.0.x IP address and optionally, its port number.
+If you've followed all the steps in this guide, you'll have a running AKS-HCI infrastructure, including a target cluster that can run your containerized workloads. Additionally, if you've deployed the simple Linux application using the [previous section](#deploy-a-simple-linux-application), you'll now have an Azure Voting web application running in a container on your AKS-HCI infrastructure. This application will likely have been allocated an IP address from your internal NAT network, **192.168.0.0/16**, and opening your Edge browser within the Azure Virtual Machine allows you to access that web application using the 192.168.0.x IP address and optionally, its port number.
 
-However, the Azure Voting web app and any other apps on the 192.168.0.0/16 internal network inside your Azure VM cannot be reached from outside of the Azure VM, unless you perform some additional configuration.
+However, the Azure Voting web app and any other apps on the 192.168.0.0/16 internal network inside your Azure Virtual Machine cannot be reached from outside of the Azure Virtual Machine, unless you perform some additional configuration.
 
 > [!NOTE]
-> This is specific to the Azure VM nested configuration, and would not be required in a production deployment on-premises.
+> This is specific to the Azure Virtual Machine nested configuration, and would not be required in a production deployment on-premises.
 
 ### Add an inbound rule to your NSG
 
-This example, using the [previously deployed simple Linux application](#deploy-a-simple-linux-application), exposes **port 80** to your Azure VM internal NAT network, and then on to your Azure Voting app.
+This example, using the [previously deployed simple Linux application](#deploy-a-simple-linux-application), exposes **port 80** to your Azure Virtual Machine internal NAT network, and then on to your Azure Voting app.
 
 1. Visit the [Azure portal](https://portal.azure.com/), and sign in with the credentials you've been using for the evaluation.
 2. Using the search box on the dashboard, enter "akshci" and when the results are returned, select your **AKSHCIHost** virtual machine.
@@ -97,18 +97,18 @@ This example, using the [previously deployed simple Linux application](#deploy-a
 4. The existing network security group rules are displayed. On the right-hand side, select **Add inbound port rule**.
 5. In the **Add inbound security rule** blade, make any adjustments, including the **Protocol**, the **Destination port ranges**, and **Name**, then click **Add**.
 
-   :::image type="content" source="media/aks-hci-evalguide/new-security-rule.png" alt-text="Add inbound security rule in Azure":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/new-security-rule.png" alt-text="Add inbound security rule in Azure":::
 
    > [!NOTE]
    > If you want to expose multiple ports, you can create additional rules, or specify a range of ports within the same rule. You can also be more specific about the source traffic type, source port, and destination traffic type.
 
-6. With the network security group rule created, make a note of the NIC Public IP on the **Networking** blade. Then connect to your Azure VM using your existing RDP information.
+6. With the network security group rule created, make a note of the NIC Public IP on the **Networking** blade. Then connect to your Azure Virtual Machine using your existing RDP information.
 
 ### Add a new NAT static mapping
 
 With the network security group rule configured, there are some additional steps required to route the incoming traffic to the containerized application.
 
-1. Inside the Azure VM, in an administrative PowerShell console, you'll need to retrieve the external IP and port of your deployed application, by running the following command (in this case, the app front end name is "azure-vote-front"):
+1. Inside the Azure Virtual Machine, in an administrative PowerShell console, you'll need to retrieve the external IP and port of your deployed application, by running the following command (in this case, the app front end name is "azure-vote-front"):
 
    ```powershell
    kubectl get service azure-vote-front
@@ -122,7 +122,7 @@ With the network security group rule configured, there are some additional steps
        -InternalIPAddress '192.168.0.153' -InternalPort 80
    ```
 
-4. The NAT static mapping should be successfully created, and you can now test the access of your application from outside of the Azure VM. You should try to access the web application using the Azure VM public IP address that you [noted previously](#add-an-inbound-rule-to-your-nsg).
+4. The NAT static mapping should be successfully created, and you can now test the access of your application from outside of the Azure Virtual Machine. You should try to access the web application using the Azure Virtual Machine public IP address that you [noted previously](#add-an-inbound-rule-to-your-nsg).
 
 This process creates a NAT static mapping that's specific to that external IP and the port of that specific Kubernetes service you have deployed in the environment. You must repeat the process for additional applications. For more information about PowerShell NetNat commands, [see the technical documentation](/powershell/module/netnat).
 
@@ -145,7 +145,7 @@ To help you to:
 * Go from PoC to MVP by creating your very own custom AI model capable of detecting your desired objects from data gathered from your cameras easily through VoE UI
 * Go from MVP to Production by deploying your custom AI solution/model, accelerated to 10+ cameras in parallel
 
-   :::image type="content" source="media/aks-hci-evalguide/voe-box.gif" alt-text="Screenshot of VOE box":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/voe-box.gif" alt-text="Screenshot of VOE box":::
 
 #### Deployment steps
 
@@ -153,7 +153,7 @@ See [the instructions here](https://github.com/penorouzi/azure-intelligent-edge-
 
 ### Shutting down the environment
 
-To save costs, you can shut down your AKS on Azure Stack HCI infrastructure, and the Hyper-V host. In order to do so, it's advisable to run the following commands, from the Hyper-V host, to cleanly power down the different components, before powering down the Azure VM itself.
+To save costs, you can shut down your AKS on Azure Stack HCI infrastructure, and the Hyper-V host. In order to do so, it's advisable to run the following commands, from the Hyper-V host, to cleanly power down the different components, before powering down the Azure Virtual Machine itself.
 
 1. On your Hyper-V host, open **PowerShell as administrator** and run the following command:
 
@@ -188,7 +188,7 @@ If however, you're having a problem with AKS on Azure Stack HCI outside of this 
 
 In addition to the scenarios covered, there are a number of other useful tutorials that you can follow to help grow your knowledge around Kubernetes, including tutorials that cover using GitOps, and Azure Policy.
 
-* [Deploy configurations using GitOps on Arc enabled Kubernetes cluster](/azure/azure-arc/kubernetes/use-gitops-connected-cluster")
+* [Deploy configurations using GitOps on Azure Arc enabled Kubernetes cluster](/azure/azure-arc/kubernetes/use-gitops-connected-cluster")
 * [Use Azure Policy to apply cluster configurations at scale](/azure/azure-arc/kubernetes/use-azure-policy)
 * [Enable monitoring of Azure Arc enabled Kubernetes cluster](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
 

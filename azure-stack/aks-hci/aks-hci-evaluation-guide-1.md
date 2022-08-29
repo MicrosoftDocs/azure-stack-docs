@@ -1,14 +1,14 @@
 ---
 title: Evaluate AKS on Azure Stack HCI in Azure
-description: Step in the evaluation guide showing what's necessary to deploy AKS on Azure Stack HCI in an Azure VM
+description: Step in the evaluation guide showing what's necessary to deploy AKS on Azure Stack HCI in an Azure Virtual Machine
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 08/29/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure VM
-# Keyword: Azure VM deployment
+# Intent: As an IT Pro, I need to learn how to deploy AKS on Azure Stack HCI in an Azure Virtual Machine
+# Keyword: Azure Virtual Machine deployment
 ---
 
 # Step 1: Evaluate AKS on Azure Stack HCI in Azure
@@ -17,12 +17,12 @@ With the introduction of [nested virtualization support in Azure](https://azure.
 
 In this guide, you'll walk through the steps to stand up an AKS on Azure Stack HCI infrastructure. At a high level, this consists of the following tasks:
 
-* Deploy an Azure VM, running Windows Server 2019 or 2022, to act as your main Hyper-V host - this will be automatically configured with the relevant roles and features needed for your evaluation
+* Deploy an Azure Virtual Machine, running Windows Server 2019 or 2022, to act as your main Hyper-V host - this will be automatically configured with the relevant roles and features needed for your evaluation
 * On the Windows Server VM, deploy the AKS on Azure Stack HCI management cluster
 * On the Windows Server VM, deploy the AKS on Azure Stack HCI target clusters, for running workloads
 
 > [!IMPORTANT]
-> The steps outlined in this evaluation guide are specific to running inside an Azure VM, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see the [official documentation to deploy AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md).
+> The steps outlined in this evaluation guide are specific to running inside an Azure Virtual Machine, running a single Windows Server 2019 or 2022 OS, without a domain environment configured. If you plan to use these steps in an alternative environment, such as one nested/physical on-premises, or in a domain-joined environment, the steps may differ and certain procedures may not work. If that is the case, please see the [official documentation to deploy AKS on Azure Stack HCI](kubernetes-walkthrough-powershell.md).
 
 ## Get an Azure subscription
 
@@ -30,18 +30,18 @@ To evaluate AKS on Azure Stack HCI in Azure, you'll need an Azure subscription. 
 
 The first option would apply to Visual Studio subscribers, where you can use Azure at no extra charge. With your monthly Azure DevTest individual credit, Azure is your personal sandbox for dev/test. You can provision virtual machines, cloud services, and other Azure resources. Credit amounts vary by subscription level, but if you manage your AKS on Azure Stack HCI Host VM run-time efficiently, you can test the scenario well within your subscription limits.
 
-The second option would be to sign up for a [free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you $200 credit for the first 30 days, and 12 months of popular services for free.
+The second option would be to sign up for a [free trial](https://azure.microsoft.com/free/ "Azure free trial link"), which gives you credit for the first 30 days, and 12 months of popular services for free.
 
 > [!NOTE]
 > The free trial subscription provides $200 for your usage, however the largest individual VM you can create is capped at 4 vCPUs, which is not enough to run this sandbox environment. Once you have signed up for the free trial, you can [upgrade this to a pay as you go subscription](/azure/cost-management-billing/manage/upgrade-azure-subscription) and this will allow you to keep your remaining credit ($200 to start with) for the full 30 days from when you signed up. You will also be able to deploy VMs with greater than 4 vCPUs.
 
 You can also use this same Azure subscription to integrate with Azure Arc, once the deployment is completed.
 
-## Azure VM Size Considerations
+## Azure Virtual Machine Size Considerations
 
-Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive will be the default 127 GB in size and the Azure VM deployment will add an additional 8 data disks (32 GB each by default), so you'll have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
+Before you deploy the VM in Azure, it's important to choose a size that's appropriate for your needs for this evaluation, along with a preferred region. It's highly recommended to choose a VM size that has at least 64 GB memory. This deployment, by default, recommends using a Standard_E16s_v4, which is a memory-optimized VM size, with 16 vCPUs, 128 GB memory, and no temporary SSD storage. The OS drive will be the default 127 GB in size and the Azure Virtual Machine deployment will add an additional 8 data disks (32 GB each by default), so you'll have around 256 GB to deploy AKS on Azure Stack HCI. You can also make this larger after deployment.
 
-This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure VM, and select an Azure VM size from there. Some potential examples would be:
+This is just one VM size that we recommend - you can adjust accordingly to suit your needs, even after deployment. Think about how large an AKS on Azure Stack HCI infrastructure you'd like to deploy inside this Azure Virtual Machine, and select an Azure Virtual Machine size from there. Some potential examples would be:
 
 ### D-series VMs (General purpose) with at least 64GB memory
 
@@ -73,13 +73,13 @@ For reference, the Standard_E8s_v4 VM size costs approximately US $0.50 per hour
 
 Note the following considerations:
 
-* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. It's therefore advisable, that if you are going to be running the Azure VM for a period of time, but shutting down frequently, that you choose a VM size with no temp storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
+* A number of these VM sizes include temp storage, which offers high performance, but is not persistent through reboots, Azure host migrations and more. It's therefore advisable, that if you are going to be running the Azure Virtual Machine for a period of time, but shutting down frequently, that you choose a VM size with no temp storage, and ensure your nested VMs are placed on the persistent data drive within the OS.
 * It's strongly recommended that you choose a VM size that supports premium storage - when running nested virtual machines, increasing the number of available IOPS can have a significant impact on performance, hence choosing premium storage over Standard HDD or Standard SSD is strongly advised. Refer to the table above to make the most appropriate selection.
 * Please ensure that whichever VM size you choose, it [supports nested virtualization](/azure/virtual-machines/acu) and is [available in your chosen region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
-## Deploying the Azure VM
+## Deploying the Azure Virtual Machine
 
-The following guidance provides two options for deploying the Azure VM. In both cases, the deployment is automated so that you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
+The following guidance provides two options for deploying the Azure Virtual Machine. In both cases, the deployment is automated so that you can proceed immediately to download the AKS on Azure Stack HCI software, and progress through your evaluation.
 
 1. The first option is to perform a deployment via a [custom Azure Resource Manager template](#option-1---create-the-vm-with-an-azure-resource-manager-json-template). This option can be launched quickly, directly from the button within the documentation, and after completing a simple form, your VM will be deployed, and host configuration automated.
 2. The second option is a [deployment of the ARM template using PowerShell](#option-2---create-the-vm-with-powershell). Again, your VM will be deployed, and host configuration automated.
@@ -113,14 +113,14 @@ Second, the **Deploy to Azure** button, when clicked, takes you directly to the 
 
 After clicking the **Deploy to Azure** button, enter the details, which should look something similar to those shown below, and click **Purchase**.
 
-:::image type="content" source="media/aks-hci-evalguide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure":::
+:::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure":::
 
 > [!NOTE]
 > For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template will be validated, and if all of your entries are correct, you can select **Create**. Within a few minutes, your VM is created.
 
-:::image type="content" source="media/aks-hci-evalguide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
+:::image type="content" source="media/aks-hci-evaluation-guide/deployment-complete.png" alt-text="Screenshot of custom template deployment completed":::
 
 If you chose to enable the auto-shutdown for the VM, and supplied a time and time zone, but want to also add a notification alert, select **Go to resource group**, and then perform the following steps:
 
@@ -132,11 +132,11 @@ If you chose to enable the auto-shutdown for the VM, and supplied a time and tim
 
 You'll be notified when the VM has been successfully shut down at the requested time.
 
-With that completed, skip to [connecting to your Azure VM](#connect-to-your-azure-vm).
+With that completed, skip to [connecting to your Azure Virtual Machine](#connect-to-your-azure-vm).
 
 #### Deployment errors
 
-If your Azure VM fails to deploy successfully, and the error relates to the **AKSHCIHost001/ConfigureAksHciHost** PowerShell DSC extension, see the [troubleshooting steps](#troubleshooting).
+If your Azure Virtual Machine fails to deploy successfully, and the error relates to the **AKSHCIHost001/ConfigureAksHciHost** PowerShell DSC extension, see the [troubleshooting steps](#troubleshooting).
 
 ### Option 2 - Create the VM with PowerShell
 
@@ -187,7 +187,7 @@ Login-AzAccount
 
 When you've successfully logged in, you are presented with the default subscription and tenant associated with those credentials.
 
-:::image type="content" source="media/aks-hci-evalguide/azure-sign-in.png" alt-text="Screenshot showing result of Azure sign-in":::
+:::image type="content" source="media/aks-hci-evaluation-guide/azure-sign-in.png" alt-text="Screenshot showing result of Azure sign-in":::
 
 If this is the subscription and tenant you want to use for this evaluation, you can move on to the next step. However, if you want to deploy the VM to an alternate subscription, run the following commands:
 
@@ -268,7 +268,7 @@ Note the following considerations:
 
 Once you've made your size and region selection, based on the information provided earlier, run the PowerShell script and wait about 10 minutes for your VM deployment to complete.
 
-:::image type="content" source="media/aks-hci-evalguide/vm-deployment-complete.png" alt-text="Screenshot of virtual machine successfully deployed with PowerShell":::
+:::image type="content" source="media/aks-hci-evaluation-guide/vm-deployment-complete.png" alt-text="Screenshot of virtual machine successfully deployed with PowerShell":::
 
 With the VM successfully deployed, make a note of the fully qualified domain name, as you'll use that to connect to the VM.
 
@@ -287,25 +287,25 @@ You'll now be notified when the VM has been successfully shut down at the reques
 
 #### Deployment errors
 
-If your Azure VM fails to deploy successfully, and the error relates to the **AKSHCIHost001/ConfigureAksHciHost** PowerShell DSC extension, see the [troubleshooting steps](#troubleshooting).
+If your Azure Virtual Machine fails to deploy successfully, and the error relates to the **AKSHCIHost001/ConfigureAksHciHost** PowerShell DSC extension, see the [troubleshooting steps](#troubleshooting).
 
-## Access your Azure VM
+## Access your Azure Virtual Machine
 
-With your Azure VM (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM to start the deployment of the AKS on Azure Stack HCI and Windows Server infrastructure.
+With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM to start the deployment of the AKS on Azure Stack HCI and Windows Server infrastructure.
 
-### Connect to your Azure VM
+### Connect to your Azure Virtual Machine
 
 First, connect into the VM, with the easiest approach being via Remote Desktop. If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
-:::image type="content" source="media/aks-hci-evalguide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure":::
+:::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure":::
 
 In the **Overview** blade for your VM, at the top of the blade, select **Connect**, and from the drop-down options select **RDP**. On the newly opened **Connect** blade, ensure that **Public IP** is selected. Also ensure that the RDP port matches what you provided at deployment time. By default, this should be **3389**. Then select **Download RDP File** and choose a suitable folder to store the .rdp file.
 
-:::image type="content" source="media/aks-hci-evalguide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure VM":::
+:::image type="content" source="media/aks-hci-evaluation-guide/connect-to-vm-properties.png" alt-text="Screenshot of RDP settings for Azure Virtual Machine":::
 
 Once downloaded, locate the .rdp file on your local machine, and double-click to open it. Click **Connect** and when prompted, enter the credentials you supplied when creating the VM earlier. Accept any certificate prompts, and within a few minutes you should be successfully logged into the Windows Server VM.
 
-### Optional - update your Azure VM
+### Optional - update your Azure Virtual Machine
 
 Now that you're successfully connected to the VM, it's a good idea to ensure your OS is running the latest security updates and patches. VMs deployed from marketplace images in Azure should already contain most of the latest updates, however it's good to check for any additional updates, and apply them as necessary.
 
@@ -317,13 +317,13 @@ With the OS updated, and back online after any required reboot, you can deploy A
 
 ## Troubleshooting
 
-Occasionally, a transient or random deployment error can cause the Azure VM to show a failed deployment. This is typically caused by reboots and timeouts within the VM as part of the PowerShell DSC configuration process. In particular, this can occur when the Hyper-V role is enabled and the system reboots multiple times in quick succession. There may be some instances in which changes with the Chocolatey Package Manager cause deployment issues.
+Occasionally, a transient or random deployment error can cause the Azure Virtual Machine to show a failed deployment. This is typically caused by reboots and timeouts within the VM as part of the PowerShell DSC configuration process. In particular, this can occur when the Hyper-V role is enabled and the system reboots multiple times in quick succession. There may be some instances in which changes with the Chocolatey Package Manager cause deployment issues.
 
-:::image type="content" source="media/aks-hci-evalguide/vm-deployment-error.png" alt-text="Screenshot of Azure VM deployment error":::
+:::image type="content" source="media/aks-hci-evaluation-guide/vm-deployment-error.png" alt-text="Screenshot of Azure Virtual Machine deployment error":::
 
 If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likely the installation did complete successfully, but to double-check, you can perform these steps:
 
-1. Follow the previous steps to [connect to your Azure VM](#connect-to-your-azure-vm).
+1. Follow the previous steps to [connect to your Azure Virtual Machine](#connect-to-your-azure-virtual-machine).
 2. When successfully connected, open a PowerShell console as administrator and run the following command to confirm the status of the last run:
 
    ```powershell
@@ -331,7 +331,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    Get-DscConfigurationStatus
    ```
 
-   :::image type="content" source="media/aks-hci-evalguide/get-dscconfigurationstatus.png" alt-text="Screenshot of result of Get-DscConfigurationStatus":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/get-dscconfigurationstatus.png" alt-text="Screenshot of result of Get-DscConfigurationStatus":::
 
 3. As you can see, in this particular case, the PowerShell DSC configuration status appears to have been successful, however you might see a different result. You can re-apply the configuration by running the following commands:
 
@@ -348,7 +348,7 @@ If the error is related to the **AKSHCIHost001/ConfigureAksHciHost**, most likel
    ```
 
 > [!NOTE]
-> If this doesn't fix your issue, consider redeploying your Azure VM. If the issue persists, please raise an issue.
+> If this doesn't fix your issue, consider redeploying your Azure Virtual Machine. If the issue persists, please raise an issue.
 
 ## Product improvements
 
@@ -358,11 +358,11 @@ If, while you work through this guide, you have an idea to make the product bett
 
 If you notice something is wrong with the evaluation guide, such as a step isn't working, or something just doesn't make sense - help us to make this guide better!  Raise an issue in GitHub, and we'll be sure to fix this as quickly as possible!
 
-If however, you're having a problem with AKS on Azure Stack HCI outside of this evaluation guide, make sure you post to [our GitHub Issues page](https://github.com/Azure/aks-hci/issues "GitHub Issues"), where Microsoft experts and valuable members of the community will do their best to help you.## Next steps
+If however, you're having a problem with AKS on Azure Stack HCI outside of this evaluation guide, make sure you post to [our GitHub Issues page](https://github.com/Azure/aks-hci/issues), where Microsoft experts and valuable members of the community will do their best to help you.
 
 ## Next steps
 
-In this step, you've successfully created and automatically configured your Azure VM, which will serve as the host for your AKS on Azure Stack HCI infrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center or via PowerShell:
+In this step, you've successfully created and automatically configured your Azure Virtual Machine, which will serve as the host for your AKS on Azure Stack HCI infrastructure. You have two choices for how to proceed, either a more graphical way, using Windows Admin Center or via PowerShell:
 
-* [Part 2a - Deploy your AKS-HCI infrastructure with Windows Admin Center](aks-hci-evalguide-2a.md)
-* [Part 2b - Deploy your AKS-HCI infrastructure with PowerShell](aks-hci-evalguide-2b.md)
+* [Part 2a - Deploy your AKS-HCI infrastructure with Windows Admin Center](aks-hci-evaluation-guide-2a.md)
+* [Part 2b - Deploy your AKS-HCI infrastructure with PowerShell](aks-hci-evaluation-guide-2b.md)

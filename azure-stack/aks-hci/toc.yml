@@ -7,15 +7,15 @@
   - name: Evaluation guide
     items:
       - name: Introduction
-        href: aks-hci-evalguide.md
+        href: aks-hci-evaluation-guide.md
       - name: 1 - Evaluate AKS on Azure Stack HCI
-        href: aks-hci-evalguide-1.md
+        href: aks-hci-evaluation-guide-1.md
       - name: 2a - Deploy with Windows Admin Center
-        href: aks-hci-evalguide-2a.md
+        href: aks-hci-evaluation-guide-2a.md
       - name: 2b - Deploy with PowerShell
-        href: aks-hci-evalguide-2b.md
+        href: aks-hci-evaluation-guide-2b.md
       - name: 3 - Explore the environment
-        href: aks-hci-evalguide-3.md
+        href: aks-hci-evaluation-guide-3.md
 - name: Quickstarts
   expanded: true
   items:
