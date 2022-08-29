@@ -129,7 +129,7 @@ The next section walks through configuring the AKS on Azure Stack HCI management
 1. On the **Credential delegation** page, read the information about **CredSSP**, then click **Enable**. Once enabled, click **Next: Host configuration**.
 1. On the **Host configuration** page, under **Host details**, select your **V:**, and leave the other settings with their defaults.
 
-   :::image type="content" source="media/aks-hci-evaluation-guide/hostconfig-hostdetails.png" alt-text="Screenshot of host configuration details":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/host-config-host-details.png" alt-text="Screenshot of host configuration details":::
 
 1. Under **VM Networking**, ensure that **InternalNAT** is selected for the **Internet-connected virtual switch**.
 1. For **Enable virtual LAN identification**, leave this selected as **No**.

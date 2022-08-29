@@ -132,7 +132,7 @@ If you chose to enable the auto-shutdown for the VM, and supplied a time and tim
 
 You'll be notified when the VM has been successfully shut down at the requested time.
 
-With that completed, skip to [connecting to your Azure Virtual Machine](#connect-to-your-azure-vm).
+With that completed, skip to [connecting to your Azure Virtual Machine](#connect-to-your-azure-virtual-machine).
 
 #### Deployment errors
 
@@ -262,7 +262,7 @@ $getIp | Select-Object Name,IpAddress,@{label='FQDN';expression={$_.DnsSettings.
 
 Note the following considerations:
 
-* When running the script, if your VM size contains an 's', such as **Standard_E16s_v4**, it can use premium LRS storage. If it does not contain an 's', it can only deploy with a standard SSD. See the [previous table](#azure-vm-size-considerations) to determine the appropriate size for your deployment.
+* When running the script, if your VM size contains an 's', such as **Standard_E16s_v4**, it can use premium LRS storage. If it does not contain an 's', it can only deploy with a standard SSD. See the [previous table](#azure-virtual-machine-size-considerations) to determine the appropriate size for your deployment.
 
 * For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By removing the comment in the preceding script, for the `-LicenseType` parameter, you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance document](https://go.microsoft.com/fwlink/?LinkId=859786).
 
