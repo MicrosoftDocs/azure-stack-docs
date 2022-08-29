@@ -60,7 +60,7 @@ After deployment, you can validate that your cluster exists and is registered in
 
 1. On the **Overview** page for the cluster resource, view the **Server** information.  
 
-    :::image type="content" source="media/deployment-tool/validate-deployment.png" alt-text="Screenshot of Azure portal." lightbox="media/deployment-tool/validate-deployment.png":::
+    :::image type="content" source="media/deployment-tool/validate/validate-deployment.png" alt-text="Screenshot of Azure portal." lightbox="media/deployment-tool/validate/validate-deployment.png":::
 
 ## Next steps
 

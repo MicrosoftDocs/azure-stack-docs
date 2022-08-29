@@ -270,31 +270,31 @@ You deploy single-node and multi-node clusters similarly using the interactive f
 
 1. In Windows Admin Center, on the **Get started deploying Azure Stack** page, select **Use an existing config file**, then select either **One server** or **Multiple servers** as applicable for your deployment.
 
-      :::image type="content" source="media/deployment-tool/deploy-existing-get-started.png" alt-text="Screenshot of the Deployment Get Started page." lightbox="media/deployment-tool/deploy-existing-get-started.png":::
+      :::image type="content" source="media/deployment-tool/config-file/deploy-existing-get-started.png" alt-text="Screenshot of the Deployment Get Started page." lightbox="media/deployment-tool/config-file/deploy-existing-get-started.png":::
 
 1. On step **1.1 Import configuration file**, import the existing configuration file you created by selecting **Browse** or dragging the file to the page.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-1-import.png" alt-text="Screenshot of the Deployment step 1.1 import file page." lightbox="media/deployment-tool/deploy-existing-step-1-import.png":::
+    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-import.png" alt-text="Screenshot of the Deployment step 1.1 import file page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-import.png":::
 
 1. On step **1.2 Review deployment setting**, review the settings stored in the configuration file.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-1-review.png" alt-text="Screenshot of the Deployment step 1.2 review settings page." lightbox="media/deployment-tool/deploy-existing-step-1-review.png":::
+    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-1-review.png" alt-text="Screenshot of the Deployment step 1.2 review settings page." lightbox="media/deployment-tool/config-file/deploy-existing-step-1-review.png":::
 
 1. On step **2.1 Credentials**, enter the username and password for the Active Directory account and username and password for the local administrator account.
 When specifying a username, omit the domain name (don't use *domain\username*). The *Administrator* username isn't supported.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-2-credentials.png" alt-text="Screenshot of the Deployment step 2.1 page." lightbox="media/deployment-tool/deploy-existing-step-2-credentials.png":::
+    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-2-credentials.png" alt-text="Screenshot of the Deployment step 2.1 page." lightbox="media/deployment-tool/config-file/deploy-existing-step-2-credentials.png":::
 
     > [!NOTE]
     > Credentials are never collected or stored in the configuration file.
 
 1. On step **3.1 Deploy the cluster**, click **Deploy** to start deployment of your cluster.
 
-    :::image type="content" source="media/deployment-tool/deploy-existing-step-3-deploy.png" alt-text="Screenshot of the Deploy cluster page." lightbox="media/deployment-tool/deploy-existing-step-3-deploy.png":::
+    :::image type="content" source="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png" alt-text="Screenshot of the Deploy cluster page." lightbox="media/deployment-tool/config-file/deploy-existing-step-3-deploy.png":::
 
-1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near realtime.
+1. It can take up to 3 hours for deployment to complete. You can monitor your deployment progress and the details in near real-time.
 
-    :::image type="content" source="media/deployment-tool/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/deployment-progress.png":::
+    :::image type="content" source="media/deployment-tool/config-file/deployment-progress.png" alt-text="Screenshot of the Monitor deployment page." lightbox="media/deployment-tool/config-file/deployment-progress.png":::
 
 ## Next steps
 
