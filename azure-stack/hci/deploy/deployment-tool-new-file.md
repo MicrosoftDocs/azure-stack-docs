@@ -57,7 +57,7 @@ The Azure Stack HCI version 22H2 preview deployment tool requires the following 
     $AzureCred=Get-Credential
     $AzureCloud="AzureCloud"
     ```
-    In this release, only AzureCloud is supported.
+    In this release, only `AzureCloud` is supported.
 
 1. Run the following command to install the deployment tool:
 
@@ -92,11 +92,11 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-privacy.png" alt-text="Screenshot of the Deployment step 1.1 Configure privacy page." lightbox="media/deployment-tool/deploy-new-step-1-privacy.png":::
 
-1. On **step 1.2 Add servers**, follow these steps: 
+1. On **step 1.2 Add servers**, follow these steps:
 
     1. Provide the local administrator credentials. Make sure that the local administrator credentials are identical across all the servers.
 
-    1. Enter the IP address of each server. Add the servers in the right sequence, beginning with the first server. 
+    1. Enter the IP address of each server. Add the servers in the right sequence, beginning with the first server.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-add-servers.png" alt-text="Screenshot of the Deployment step 1.2 Add servers page." lightbox="media/deployment-tool/deploy-new-step-1-add-servers.png":::
 
@@ -111,7 +111,7 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-1-join-domain.png" alt-text="Screenshot of the Deployment step 1.3 Join a domain page." lightbox="media/deployment-tool/deploy-new-step-1-join-domain.png":::
 
-    <!--change the screens here-->
+    
 
 1. On Step **1.4 Set cluster security**, select **Recommended security settings** to use the recommended default settings:
 
@@ -127,7 +127,6 @@ If you want to use an existing configuration file you have previously created, s
     - [SMB Signing Default instance](/troubleshoot/windows-server/networking/overview-server-message-block-signing).
     - [SMB Encryption E-W Cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption).
 
-    <!--change the screens here-->
 
 1. On step **2 Networking**, consult with your network administrator to ensure you enter the correct network details.
 
@@ -152,7 +151,6 @@ If you want to use an existing configuration file you have previously created, s
 
 1. On step **2.4 Provide management network details**, enter the following input after consulting your network administrator:
 
-    1. Provide a **VLAN ID** for your network. The VLAN IDs must be a number between 0 – 4095 and are typically assigned to each port on a switch or a router.
     1. In this release, only the static IPs can be assigned and DHCP isn't supported.
     1. For the **Starting IP** and the **Ending IP** range, provide a minimum of 6 free, contiguous IPv4 addresses. This range excludes your host IPs. These IPs are used for infrastructure services such as clustering.
     1. Provide the **Subnet mask** and **Default gateway** for the network.
@@ -172,19 +170,19 @@ If you want to use an existing configuration file you have previously created, s
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-4-storage.png" alt-text="Screenshot of the Deployment step 4.1 cluster storage page." lightbox="media/deployment-tool/deploy-new-step-4-storage.png":::
 
-1. On step **5.1 Add services**, no changes are needed. Select **Next** to continue.
+1. On step **5.1 Add services**, no changes are needed. Optional services are slated for upcoming releases. VM services are enabled by default. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/deployment-step-5-add-services.png" alt-text="Screenshot of the Deployment step 5.1 Add services page." lightbox="media/deployment-tool/deployment-step-5-add-services.png":::
 
-    <!--change the screen here-->
-1. On step **5.2 Set Arc management details**, no changes are needed. Select **Next** to continue.
+
+1. On step **5.2 Set Arc management details**, accept the default region for deployment and virtual switch used by Azure Arc. These Azure Arc resources are used to create and manage resources on your cluster via the Azure portal. Select **Next** to continue.
 
     :::image type="content" source="media/deployment-tool/deploy-new-step-5-arc.png" alt-text="Screenshot of the Deployment step 5.2 Arc management page." lightbox="media/deployment-tool/deploy-new-step-5-arc.png":::
 
 1. On step **6.1 Deploy the cluster**, select **Download the config file for your deployment**, and then select **Deploy to start the deployment**.
 
     > [!IMPORTANT]
-    > The staging server will restart after the deployment starts.
+    > The staging server restarts after the deployment starts.
 
     :::image type="content" source="media/deployment-tool/deployment-step-6-deploy-cluster.png" alt-text="Screenshot of the Deployment step 6.1 deploy cluster page." lightbox="media/deployment-tool/deployment-step-6-deploy-cluster.png":::
 
