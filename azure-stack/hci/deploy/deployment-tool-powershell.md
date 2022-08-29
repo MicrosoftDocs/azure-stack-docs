@@ -80,11 +80,14 @@ Use this procedure to deploy a multi-server cluster using PowerShell.
 
 1. Change the directory to *C:\clouddeployment\setup*.
 
-1. Specify the path to your configuration file and run the following commands to start the deployment:
+1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\InstallAzureStack-AsZ.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred -DomainAdminCredential $DomainAdminCred -LocalAdminCredential $LocalAdminCred -JSONFilePath <path_to_config_file.json>
+    .\InstallAzureStack-AsZ.ps1 Invoke-clouddeployment -JSONFilePath <path_to_config_file.json>
     ```
+
+    > [!NOTE]
+    > You can also deploy with a Service Principal Name (SPN) using the `-RegistrationSPCredential` parameter.
 
 ## Deploy a single-node cluster
 
@@ -139,11 +142,15 @@ Use this procedure to deploy a single-server cluster using PowerShell. It is sim
 
 1. Change the directory to *C:\clouddeployment\setup*.
 
-1. Specify the path to your configuration file and run the following commands to start the deployment:
+1. Specify the path to your configuration file and run the following to start the deployment:
 
     ```powershell
-    .\InstallAzureStack-AsZ.ps1 -RegistrationCloudName $AzureCloud -RegistrationSubscriptionID $SubscriptionID -RegistrationAccountCredential $AzureCred -DomainAdminCredential $DomainAdminCred -LocalAdminCredential $LocalAdminCred -JSONFilePath <path_to_config_file.json>
+    .\InstallAzureStack-AsZ.ps1 Invoke-clouddeployment -JSONFilePath <path_to_config_file.json>
     ```
+
+    > [!NOTE]
+    > You can also deploy with a Service Principal Name (SPN) using the `-RegistrationSPCredential` parameter.
+
 ## Next steps
 
 [Validate deployment](deployment-tool-validate.md)

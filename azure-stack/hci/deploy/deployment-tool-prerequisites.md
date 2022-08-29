@@ -5,7 +5,7 @@ author: dansisson
 ms.topic: how-to
 ms.date: 08/29/2022
 ms.author: v-dansisson
-ms.reviewer: jgerend
+ms.reviewer: alkohli
 ---
 
 # Prerequisites for deploying Azure Stack HCI version 22H2 (preview)
@@ -16,11 +16,11 @@ This article discusses the security, software, hardware, and networking prerequi
 
 ## Security considerations
 
-Review the [security considerations]() and [assess environment readiness](/manage/use-environment-checker.md) for version 22H2.
+Review the [security considerations](/manage/preview-channel.md) and [assess environment readiness](/manage/use-environment-checker.md) for version 22H2.
 
 ## Software requirements
 
-You must set up the version 22H2 operating system to boot from a VHDX image file using the instructions in this article.
+You must set up version 22H2 operating system to boot from a VHDX image file using the instructions in this article.
 
 ## Hardware requirements
 
@@ -43,9 +43,6 @@ Before you begin, make sure that the physical network and the host network where
 
 - [Physical network requirements](../concepts/physical-network-requirements.md)
 - [Host network requirements](../concepts/host-network-requirements.md)
-
-> [!NOTE]
-> Advanced settings within the storage network configuration like iWarp or MTU changes are not supported in this release.
 
 ## Next steps
 
