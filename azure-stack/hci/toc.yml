@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-  - name: What's new in Azure Stack HCI?
+  - name: What's new in Azure Stack HCI? 
     href: whats-new.md
   - name: Release information
     href: release-information.md
@@ -198,6 +198,8 @@
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Use Datacenter Firewall with PowerShell
       href: manage/use-datacenter-firewall-powershell.md
+    - name: Update Network Controller certificates
+      href: manage/update-network-controller-certificates.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage tenant logical networks
@@ -306,8 +308,54 @@
       href: concepts/data-collection.md
 - name: Preview channel
   items:
-  - name: Join the preview channel
+  - name: Join preview channel
     href: manage/preview-channel.md
+  - name: What's new in version 22H2
+    href: whats-new.md
+  - name: View known issues in version 22H2
+    href: manage/preview-channel.md
+  - name: Update version 21H2
+    items:
+    - name: Update to version 22H2
+      href: manage/install-preview-version.md
+    - name: Run post update steps
+      href: manage/preview-post-installation.md
+  - name: Plan for version 22H2
+    items:
+    - name: Review security
+      items: 
+      - name: Use Windows Defender Application Control 
+        href: concepts/security-windows-defender-application-control.md
+      - name: Review security baseline, drift control
+        href: manage/preview-channel.md
+      - name: Understand BitLocker encryption
+        href: manage/preview-channel.md
+    - name: Assess environment readiness
+      href: manage/use-environment-checker.md
+  - name: Deploy version 22H2 
+    items:
+    - name: Deployment overview
+      href: deploy/deployment-tool-introduction.md
+    - name: Review prerequisites
+      href: deploy/deployment-tool-prerequisites.md
+    - name: View deployment checklist
+      href: deploy/deployment-tool-checklist.md
+    - name: Prepare Active Directory
+      href: deploy/deployment-tool-active-directory.md
+    - name: Install version 22H2 operating system
+      href: deploy/deployment-tool-install-os.md
+    - name: Deploy interactively
+      href: deploy/deployment-tool-new-file.md
+    - name: Deploy using a config file
+      href: deploy/deployment-tool-existing-file.md
+    - name: Deploy using PowerShell
+      href: deploy/deployment-tool-powershell.md
+    - name: Validate deployment
+      href: deploy/deployment-tool-validate.md
+    - name: Collect logs 
+      href: manage/collect-logs.md
+    - name: Troubleshoot issues
+      href: deploy/deployment-tool-troubleshoot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
@@ -360,8 +408,6 @@
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
-  - name: Evaluation Guide
-    href: https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Support
@@ -382,6 +428,8 @@
       href: /learn/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
+    - name: What's new in version 21H2
+      href: whats-new-in-hci-21h2.md
     - name: What's new in version 20H2
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 
