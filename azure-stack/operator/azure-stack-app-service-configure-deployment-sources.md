@@ -3,10 +3,11 @@ title: Configure App Services deployment sources - Azure Stack Hub
 description: Learn how to configure deployment sources (Git, GitHub, BitBucket, DropBox, and OneDrive) for App Services on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/13/2022
+ms.date: 08/31/2022
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019
+zone_pivot_groups: state-2022H1-previous
 
 # Intent: As an Azure Stack Hub operator, I want to configure deployment sources for App Services on Azure Stack Hub so I can deploy directly from my source control repositories.
 # Keyword: deployment sources app services azure stack hub
@@ -36,7 +37,7 @@ In addition to local Git, the following source control providers are supported:
     ![App Service resource provider admin source control configuration][2]
 
 <!--- Azure App Service on Azure Stack Hub 2022 H1 pivot --->
-::: zone pivot="state-earlier-versions"
+::: zone pivot="state-previous"
 
 ## Configure GitHub
 
