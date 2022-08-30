@@ -454,7 +454,6 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 <!-- Connected --->
 ::: zone pivot="state-connected"
 # [Azure App Service on Azure Stack 2022 H1](#tab/2022H1-connected)
-
 1. The **latest version of Windows Server 2022 Datacenter VM image**.
 
 # [Previous versions](#tab/previous-connected)
@@ -464,9 +463,7 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
 ::: zone pivot="state-disconnected"
 <!-- Disconnected --->
 # [Azure App Service on Azure Stack 2022 H1](#tab/2022H1-disconnected)
-
 1. **Windows Server 2022 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2022 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2022 image with this feature pre-enabled with disconnected deployments.
-
 
    See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following properties when adding the image to Marketplace:
 
@@ -476,7 +473,6 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
    - Version = Specify the "latest" version
 
 # [Previous versions](#tab/previous-disconnected)
-
 1. **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
 
    See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following properties when adding the image to Marketplace:
@@ -487,8 +483,6 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
    - Version = Specify the "latest" version
 
 ::: zone-end
-
-
 
 <!-- For All --> 
 2. **Custom Script Extension v1.9.1 or greater**. This item is a VM extension.
