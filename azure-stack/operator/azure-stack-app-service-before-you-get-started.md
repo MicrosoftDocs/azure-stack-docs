@@ -4,7 +4,7 @@ description: Learn the prerequisite steps to complete before you deploy Azure Ap
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 8/30/2022
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/28/2019
@@ -445,18 +445,38 @@ Follow these steps to create the service principal in your Azure AD tenant:
 
 Azure App Service on Azure Stack Hub requires items to be [downloaded from the Azure Marketplace](azure-stack-download-azure-marketplace-item.md), making them available in the Azure Stack Hub Marketplace. These items must be downloaded before you start the deployment or upgrade of Azure App Service on Azure Stack Hub:
 
-<!-- Connected --->
-::: zone pivot="state-connected"
 > [!IMPORTANT]
 > Windows Server Core is not a supported platform image for use with Azure App Service on Azure Stack Hub.
 >
 > Do not use evaluation images for production deployments.
 >
+
+<!-- Connected --->
+::: zone pivot="state-connected"
+# [Azure App Service on Azure Stack 2022 H1](#tab/2022H1-connected)
+
+1. The **latest version of Windows Server 2022 Datacenter VM image**.
+
+# [Previous versions](#tab/previous-connected)
 1. The **latest version of Windows Server 2016 Datacenter VM image**.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
 <!-- Disconnected --->
+# [Azure App Service on Azure Stack 2022 H1](#tab/2022H1-disconnected)
+
+1. **Windows Server 2022 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2022 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2022 image with this feature pre-enabled with disconnected deployments.
+
+
+   See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following properties when adding the image to Marketplace:
+
+   - Publisher = MicrosoftWindowsServer
+   - Offer = WindowsServer
+   - SKU = AppService
+   - Version = Specify the "latest" version
+
+# [Previous versions](#tab/previous-disconnected)
+
 1. **Windows Server 2016 Datacenter Full VM image with Microsoft.Net 3.5.1 SP1 activated**.  Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 is activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled and in disconnected environments are unable to reach Microsoft Update to download the packages to install via DISM. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled with disconnected deployments.
 
    See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following properties when adding the image to Marketplace:
@@ -467,6 +487,8 @@ Azure App Service on Azure Stack Hub requires items to be [downloaded from the A
    - Version = Specify the "latest" version
 
 ::: zone-end
+
+
 
 <!-- For All --> 
 2. **Custom Script Extension v1.9.1 or greater**. This item is a VM extension.
