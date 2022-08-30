@@ -138,6 +138,6 @@ You can [download this free tool here](https://www.powershellgallery.com/package
 
 ## Next steps
 
-- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
-- [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md)
-- [Deploy Azure Stack HCI version 22H2](./deploy/)
+- [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847).
+- [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md).
+- [Review the Deployment overview](./deploy/deployment-tool-introduction.md).
