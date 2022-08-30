@@ -43,6 +43,8 @@ This section lists the prerequisites for both integrated system and Azure Stack 
    - Create-ADFSIdentityApp.ps1
    - Create-AppServiceCerts.ps1
    - Get-AzureStackRootCert.ps1
+   - BCDR
+     - ReACL.cmd
    - Modules folder
      - GraphAPI.psm1
 
