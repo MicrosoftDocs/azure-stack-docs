@@ -110,6 +110,10 @@ In summary, version 22H2 provides:
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform.
 
 
+## New deployment tool
+
+
+
 ## Azure Arc VM changes and Azure Marketplace
 
 With this release, Azure Marketplace integration for Azure Arc-enabled Azure Stack HCI is also available. With this integration, you'll be able to access the latest fully patched images from Microsoft, including Windows Server 2022 Azure Edition and Windows 10/11 Enterprise multi-session for Azure Virtual Desktop.
@@ -125,14 +129,13 @@ Before you deploy your Azure Stack HCI solution, you can now use a standalone, P
 - Network infrastructure for valid IP ranges provided by customers for deployment.
 - Active Directory (Adprep tool is run prior to deployment).
 
-While the connectivity validator is available today, the hardware, network infrastructure, and Active Directory validators are coming soon.
+The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file. 
 
-The Environment Checker tool runs tests on all the nodes of your Azure Stack HCI cluster, returns a Pass/Fail status for each test, and saves a log file and a detailed report file.
-
-You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later.
+You can [download this free tool here](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker). The tool doesn't need an Azure subscription and will work with your existing Azure Stack HCI cluster running version 21H2 or later. For more information on this tool, see [Use](./) 
 
 
 ## Next steps
 
 - [Read the blog about What’s new for Azure Stack HCI at Microsoft Inspire 2022](https://techcommunity.microsoft.com/t5/azure-stack-blog/what-s-new-for-azure-stack-hci-at-microsoft-inspire-2022/ba-p/3576847)
 - [Install Azure Stack HCI version 22H2 OS](./manage/install-preview-version.md)
+- [Deploy Azure Stack HCI version 22H2](./deploy/)
