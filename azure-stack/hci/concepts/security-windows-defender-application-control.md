@@ -4,7 +4,7 @@ description: This topic provides guidance on Windows Defender Application Contro
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 08/26/2022
+ms.date: 08/30/2022
 ---
 <!-- To do:
  -- call out CIP before using acro -->
@@ -314,6 +314,11 @@ This is useful when:
 1. You started with WDAC disabled during deployment and now you want to enable WDAC to increase security protection or to validate that your software runs properly.
 1. Your software or scripts are blocked by WDAC. In this case you can use audit mode to understand and troubleshoot the issue.
 
+> [!NOTE]
+>
+> * When your application is blocked, WDAC will create a corresponding event. Review the Event log to understand the details of the policy that's blocking your application. For more information, see the [Windows Defender Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
+> * When your script is blocked because of the embedded script enforcement provided by WDAC, you will receive an error message around "Constrained Language Mode" or "Core Type in this language mode". For more information, see [about_Language_Modes for PowerShell](/powershell/module/microsoft.powershell.core/about/about_language_modes#constrained-language-constrained-language).
+
 The following PowerShell commands interact with the Enterprise Cloud Engine to enable the selected modes.
 
 ```azurepowershell
@@ -346,7 +351,7 @@ PS C:\temp> Get-WDACPolicyMode
 
 ## Support for OEM extensions
 
-This release doesn't support partner extensions based on the SBE toolkit because internal-dependent components aren't present in this build.
+This release doesn't support partner extensions based on the SBE toolkit because internal-dependent components aren't present in this build. OEM partners can manually create a supplemental policy, as described below, until the SBE toolkit becomes available.
 
 ## Create a WDAC policy to enable third party software
 
