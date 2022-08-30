@@ -7,7 +7,7 @@ ms.date: 08/31/2022
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2019
-zone_pivot_groups: state-2022H1-previous
+zone_pivot_groups: state-2022h1-previous
 
 # Intent: As an Azure Stack Hub operator, I want to configure deployment sources for App Services on Azure Stack Hub so I can deploy directly from my source control repositories.
 # Keyword: deployment sources app services azure stack hub
@@ -159,7 +159,7 @@ You must have a Microsoft account linked to a OneDrive account to complete this 
 ::: zone-end
 
 <!--- Azure App Service on Azure Stack Hub 2022 H1 pivot --->
-::: zone pivot="state-2022H1"
+::: zone pivot="state-2022h1"
 
 ## Configure GitHub
 
