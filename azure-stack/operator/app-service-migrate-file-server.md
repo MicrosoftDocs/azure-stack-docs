@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 05/27/2022
+ms.date: 08/31/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -50,7 +50,7 @@ In addition to copying the file share contents, you must also reset permissions 
 
 ## Update connection details in the Azure App Service on Azure Stack Hub Resource Provider
 
-Login to the SQL Server instance hosting the App Service databases and run the following SQL Script to update the database.  You must replace **<mynewfileserver.contoso.local>** with the name of the new file server.
+Login to the SQL Server instance hosting the App Service databases and run the following SQL Script to update the database.  You must replace **\<mynewfileserver.contoso.local\>** with the name of the new file server.
 
 ```sql
 SELECT * FROM [admin].[WebSystems]
@@ -73,11 +73,11 @@ If the credentials have changed you must update the file share credentials to co
 
 1. In the Azure Stack Administration Portal navigate to the **ControllersNSG** Network Security Group
 1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
-1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.<region> and connect to **CN0-VM**.
+1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
 1. Launch the **Web Cloud Management Console**
 1. Check in the **Web Cloud Management Console -> Web Cloud**, verify that both **Controllers** are **Ready**
-1. Select Credentials <insert screenshot here>.
-1. Next select the credential you wish to update – in this case the FileShareOwnerCrdential or the FileShareUserCredential and select edit – either from the menu bar or from the right click context menu. <screenshot>
+1. Select Credentials \<insert screenshot here\>.
+1. Next select the credential you wish to update – in this case the FileShareOwnerCrdential or the FileShareUserCredential and select edit – either from the menu bar or from the right click context menu. \<screenshot\>
 1. Enter the new credential details and then click OK.
 1. Repeat for the FileShareUserCredential if that has changed also.
 1. Once you have completed updating the credentials you must **restart CN0-VM**.

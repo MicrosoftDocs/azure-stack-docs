@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 05/27/2022
+ms.date: 08/31/2022
 ms.author: anwestg
 ms.reviewer: 
 ms.lastreviewed: 
@@ -38,7 +38,7 @@ Use the administration portal to back up app service secrets by following these 
 
    ![Save secrets in Azure Stack Hub administrator portal](./media/app-service-migrate-sql-server/save-secrets.png)
 
-# Backup the App Service databases from the current server
+## Backup the App Service databases from the current server
 
 To restore App Service, you need the **Appservice_hosting** and **Appservice_metering** database backups. We recommend using SQL Server maintenance plans or Azure Backup Server to ensure these databases are backed up and saved securely on a regular basis. However, any method of ensuring regular SQL backups are created can be used.
 
@@ -75,7 +75,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 
 1. In the Azure Stack Administration Portal navigate to the **ControllersNSG** Network Security Group
 1. By default remote desktop access is disabled to all App Service infrastructure roles.  Modify the **Inbound_Rdp_3389** rule action to **Allow** access.
-1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.<region> and connect to **CN0-VM**.
+1. Navigate to the resource group containing the App Service Resource Provider Deployment, by default this is AppService.\<region\> and connect to **CN0-VM**.
 1. Stop the **WebFarmService** on all active controllers.  You may need to change the failure actions on the service to "Take no action and manually kill the process" - Note if you take this action you must restore the original behavior of the service once this process is complete.
 1. Repeat the steps [Update Hosting Connection string](#update-app-service-hosting-database-connection-string) and [Update Metering Connection String](#update-app-service-metering-database-connection-string) for all controllers within the App Service deployment.
 1. [Update the connection strings inside the database](#update-connection-strings-inside-the-database)
@@ -87,7 +87,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 ### Update App Service Hosting Database connection string
 
 1. Open PowerShell as administrator
-1. Execute the following script, replacing **<SQL-SERVER_OLD>** and **<SQL-SERVER-NEW>** references accordingly:
+1. Execute the following script, replacing **\<SQL-SERVER_OLD\>** and **\<SQL-SERVER-NEW\>** references accordingly:
 ```PowerShell
 Import-Module AppService
  
@@ -103,7 +103,7 @@ Set-AppServiceConnectionString -Type Hosting -ConnectiongString $hbuilder.Connec
 ### Update App Service Metering Database connection string
 
 1. Open PowerShell as administrator
-1. Execute the following script, replacing **<SQL-SERVER_OLD>** and **<SQL-SERVER-NEW>** references accordingly:
+1. Execute the following script, replacing **<SQL-SERVER_OLD\>** and **<SQL-SERVER-NEW\>** references accordingly:
 ```PowerShell
 Import-Module AppService
  
@@ -124,7 +124,7 @@ Import-Module AppService
 $manager = New-Object Microsoft.Web.Hosting.SiteManager
 $manager.ConnectionContexts | Format-Table ConnectionName, ConnectionString –Wrap
 ```
-1. Update the connection string for each context.  Replace **<CONNECTION-CONTEXT-NAME>** with the context name indicated in step 1.  Replace **<SQL-SERVER-OLD>** and **<SQL-SERVER-NEW>** references:
+1. Update the connection string for each context.  Replace **\<CONNECTION-CONTEXT-NAME\>** with the context name indicated in step 1.  Replace **\<SQL-SERVER-OLD\>** and **\<SQL-SERVER-NEW\>** references:
 ```PowerShell
 $cnstr = $connectio.ConnectionContexts["<CONNECTION-CONTEXT-NAME>"].ConnectionString
 $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($cnstr)
