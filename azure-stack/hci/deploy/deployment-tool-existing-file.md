@@ -3,7 +3,7 @@ title: Deploy Azure Stack HCI version 22H2 (preview) using a configuration file
 description: Learn how to deploy Azure Stack HCI version 22H2 (preview) using an existing configuration file
 author: dansisson
 ms.topic: how-to
-ms.date: 08/29/2022
+ms.date: 08/30/2022
 ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
@@ -30,25 +30,6 @@ Before you begin, make sure you have done the following:
 - Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
 - [Install version 22H2](deployment-tool-install-os.md) on each server.
 
-<!---## Configure the servers
-
-After you have installed the Azure Stack HCI version 22H2 OS, there are a couple of steps needed to configure your servers before using the deployment tool.
-
-1. Sign in to the first server. In Windows Admin Center, select **Azure Stack HCI Initial Configuration** from the top drop-down menu.
-
-1. On the **Update local password** page, enter the old password and new chosen password for the server.
-
-    :::image type="content" source="media/deployment-tool/deployment-post-update-password.png" alt-text="Update local password page" lightbox="media/deployment-tool/deployment-post-update-password.png":::
-
-1. On the **Set IP address** page, select either dynamic (DHCP) or a static IP address for the server.
-
-    :::image type="content" source="media/deployment-tool/deployment-post-set-ip-address.png" alt-text="Set IP address page" lightbox="media/deployment-tool/deployment-post-set-ip-address.png":::
-
-1. On the **Review summary** page, review the settings of the server.
-
-    :::image type="content" source="media/deployment-tool/deployment-post-review-summary.png" alt-text="Review summary page" lightbox="media/deployment-tool/deployment-post-review-summary.png":::
-
-1. Repeat this process for each server in your cluster.--->
 
 ## Create the configuration file
 
@@ -103,7 +84,7 @@ Here is a sample configuration file (JSON format) you can modify, save, and use 
                 "ExternalDomainFQDN": "AD_FQDM",
                 "InfrastructureNetwork": [
                     {
-                        "VlanId": 0,
+                        "VlanId": "0",
                         "SubnetMask": "255.255.252.0",
                         "Gateway": "10.126.64.1",
                         "IPPools": [
