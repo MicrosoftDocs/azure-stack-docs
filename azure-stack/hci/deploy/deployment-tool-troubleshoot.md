@@ -8,7 +8,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ---
 
-# Troubleshoot Azure Stack HCI version 22H2 (preview) deployment
+# Troubleshoot Azure Stack HCI version 22H2 deployment (preview) 
 
 > Applies to: Azure Stack HCI, version 22H2 (preview)
 
