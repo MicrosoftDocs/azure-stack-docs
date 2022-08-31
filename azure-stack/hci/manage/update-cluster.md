@@ -70,11 +70,11 @@ Follow these steps to install updates:
    > [!IMPORTANT]
    > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
 
-7. If the cluster is not connected to Windows Update and the Azure Stack HCI 21H2 install media is available on a local share, CAU can also be used to upgrade the cluster:
+7. If the cluster is not connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster:
 
-    When the cluster nodes are not connected to WU after installing the latest Quality Updates and the 21H2 setup media has been copied to a share that is accessible to the cluster nodes:
+    When the cluster nodes are not connected to WU after installing the latest Quality Updates and the setup media has been copied to a share that is accessible to the cluster nodes:
 
-    > `Invoke-CauRun –ClusterName <cluster_name> -CauPluginName MicrosoŌ.RollingUpgradePlugin -CauPluginArguments @{ ‘WuConnected’=’false’;’PathToSetupMedia’=’\some\path\’; ’UpdateClusterFuncƟonalLevel’=’true’; } -Force`
+    > `Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ ‘WuConnected’=’false’;’PathToSetupMedia’=’\some\path\’; ’UpdateClusterFunctionalLevel’=’true’; } -Force`
 
 8. Windows Admin Center will check the cluster for installed extensions that support your specific server hardware. Click **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, click **Exit**.
 
@@ -159,7 +159,7 @@ If the Failover Clustering feature is already installed but the Failover Cluster
 Install-WindowsFeature –Name RSAT-Clustering-PowerShell -ComputerName Server1
 ```
 
-### Choose an updating mode
+### Choose a CAU updating mode
 
 Cluster-Aware Updating (CAU) can coordinate the complete cluster updating operation in two modes:  
   
@@ -305,7 +305,7 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-## Post installation steps for feature updates
+## Post-installation steps for feature updates
 
 Once the feature updates are installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
 
@@ -349,28 +349,27 @@ Once the feature updates are installed, you'll need to update the cluster functi
    
    Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
-## Perform a manual feature update of a Failover Cluster using SCONFIG.exe for update orchestration
+## Perform a manual feature update of a Failover Cluster using SCONFIG
 
-To do a manual feature update of a failover cluster, use the **SCONFIG** option. For each node in the cluster:
+To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](../windows-server/administration/server-core/server-core-sconfig) 
 
-**Suspend-ClusterNode -Node<node> -Drain**
+For each node in the cluster, run these commands on the node:
 
-* Check suspend using **Get-ClusterGroup**--nothing should be running on the target node.
+1. `Suspend-ClusterNode -Node<node> -Drain`
 
-* Run the **SCONFIG** option 6.3 or run <setup.exe>. Choose the upgrade path in the UI, and wait for reboot. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](../windows-server/administration/server-core/server-core-sconfig)
+    Check suspend using `Get-ClusterGroup`--nothing should be running on the target node.
 
-  > [!NOTE]
-   > Use `AzureStack HCI setup.exe`.
+    Run the **SCONFIG** option 6.3.
 
-* Wait for storage jobs to complete (mirror repair to complete) by running **Get-Storage-Job** until there are no jobs or all jobs are complete.
+    After the node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no jobs or all jobs are completed.
 
-**Resume-ClusterNode- Node<node> -Failback**
+2. `Resume-ClusterNode- Node<node> -Failback`
 
-* When all nodes have been upgraded:
+    When all nodes have been upgraded, run these two cmdlets:
 
-**Update-ClusterFunctional Level**
+   `Update-ClusterFunctional Level`
 
-**Update-StoragePool**
+   `Update-StoragePool`
 
 
 ## Perform a fast, offline update of all servers in a cluster
