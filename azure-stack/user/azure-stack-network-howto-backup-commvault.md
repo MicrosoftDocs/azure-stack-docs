@@ -39,7 +39,7 @@ You can also download and offer compatible partner VM images to protect your Azu
 
 The topology of this approach will look like the following diagram:
 
-![The diagram shows a data path from a COMMVAULT VSA Proxy on Azure Stack Hub 1 to Azure Stack Hub 2, which has a recovery VM that can be brought online when needed to back up Hub 1.](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
+![The diagram shows a data path from a Commvault VSA Proxy on Azure Stack Hub 1 to Azure Stack Hub 2, which has a recovery VM that can be brought online when needed to back up Hub 1.](./media/azure-stack-network-howto-backup-commvault/backup-vm-commvault-diagram.svg)
 
 ## Create the Commvault VM from the Commvault Marketplace Item
 
@@ -108,7 +108,7 @@ The topology of this approach will look like the following diagram:
 
 ## Get your service principal
 
-You will need to know if your identity manager is Azure AD or ADFS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
+You will need to know if your identity manager is Azure AD or AD FS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
 
 | Element | Source |
 | ------- | ------ |
@@ -121,18 +121,18 @@ You will need to know if your identity manager is Azure AD or ADFS. The followin
 
 ## Configure backup using the Commvault Console
 
-1. Open your RDP client and connect to the Commavult VM in your Azure Stack Hub. Enter your credentials.
+1. Open your RDP client and connect to the Commvault VM in your Azure Stack Hub. Enter your credentials.
 
 2. Install Azure Stack Hub PowerShell and Azure Stack Hub Tools on the Commvault VM.
 
-    a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md?toc=%2Fazure-stack%2Fuser%2FTOC.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
-    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
+    a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md?toc=/azure-stack/user/TOC.json&bc=/azure-stack/breadcrumb/toc.json).  
+    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md?toc=/azure-stack/user/TOC.json&view=azs-1908&bc=/azure-stack/breadcrumb/toc.json).
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 
     ![The Commcell console has a navigation pane on the left, titled Commcell Browser. The right pane shows a Getting Started tabbed page.](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
 
-4. Configure your backup repositories to use storage external to the Azure Stack Hub in the Commvault Commcell Console. In the CommCell Browser, select Storage Resources > Storage Pools. Right-click and select **Add Storage Pool.** Select **Cloud**.
+4. Configure your backup repositories to use storage external to the Azure Stack Hub in the Commvault CommCell Console. In the CommCell Browser, select Storage Resources > Storage Pools. Right-click and select **Add Storage Pool.** Select **Cloud**.
 
 5. Add the name of the Storage Pool. Select **Next**.
 
@@ -175,7 +175,7 @@ Two options are available. You can choose to replicate changes from the primary 
 2. For the steps to configure Commvault Live Sync, see [Live Sync Replication for Microsoft Azure Stack Hub](https://documentation.commvault.com/commvault/v11_sp13/article?p=94386.htm).
 
     ![The Commcell console shows the tabbed page "vm-kr-cvlt > Client Computers > ASIC Azure Stack > Virtual Server > Azure Stack > defaultBackupSet". A context menu for the Off Stack Protection on the page has a Live Sync > Configuration option.](./media/azure-stack-network-howto-backup-commvault/live-sync-1.png)
- 
+
 3. During the configuration of Live Sync, you will need to provide the target Azure Stack Hub and Virtual Server Agent details.
 
     ![The Destination step of the Live Sync Options for Subclient Off Stack Protection wizard has list boxes for specifying the Virtualization Client and the Proxy Client.](./media/azure-stack-network-howto-backup-commvault/live-sync-2.png)
@@ -191,7 +191,6 @@ Two options are available. You can choose to replicate changes from the primary 
     ![The Job Options step of the Live Sync Options for Subclient Off Stack Protection wizard is for specifying a backup schedule.](./media/azure-stack-network-howto-backup-commvault/live-sync-5.png)
 
 7. Review your settings to save the configuration. The recovery environment will then be created and replication will begin at the chosen interval.
-
 
 ## Set up failover behavior using Live Sync
 
