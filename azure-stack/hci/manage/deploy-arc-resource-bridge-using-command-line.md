@@ -144,7 +144,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    $resource_group="<pre-created resource group in Azure>"
    $subscription="subscription ID in Azure"
    $Location="<Azure Region - Available regions include 'eastus', 'eastus2euap' and 'westeurope'>"
-   $customloc_name="<name of the custom location, such as HCICluster -cl>"
+   $customloc_name="<name of the custom location, such as <HCIClusterName>-cl>"
    ```
    where:
 
