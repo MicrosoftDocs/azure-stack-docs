@@ -95,11 +95,12 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       Install-Moc
       ```
 
-      If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
-      
-      ```powershell
-      New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-      ```
+      > [!IMPORTANT]
+      > If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
+      > 
+      > ```powershell
+      > New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
+      > ```
 
       ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
@@ -111,11 +112,12 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       Install-Moc
       ```
       
-      If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
-      
-      ```powershell
-      New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
-      ```
+      > [!IMPORTANT]
+      > If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
+      > 
+      > ```powershell
+      > New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
+      > ```
 
       ---
 
