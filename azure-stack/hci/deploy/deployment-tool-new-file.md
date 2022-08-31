@@ -162,7 +162,7 @@ If you want to use an existing configuration file you have previously created, s
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-2-network-management.png" alt-text="Screenshot of the Deployment step 2.4 management network page." lightbox="media/deployment-tool/new-file/deploy-new-step-2-network-management.png":::
 
 
-1. On step **3.1 Create cluster**, enter the cluster name.
+1. On step **3.1 Create cluster**, enter the cluster name. This must be the cluster name you used when preparing Active Directory.
 
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png" alt-text="Screenshot of the Deployment step 3.1 create cluster page." lightbox="media/deployment-tool/new-file/deploy-new-step-3-create-cluster.png":::
 
