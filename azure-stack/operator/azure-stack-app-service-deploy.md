@@ -254,7 +254,7 @@ To create a test web app, follow these steps:
 
 3. If you also deployed a SQL Server resource provider, you can deploy a DNN website from the Marketplace. When you're prompted for database parameters, choose a database in the computer running SQL Server that's connected to your resource provider.
 
-# [Previous versions](#tab/previous-connected)
+# [Previous Versions](#tab/previous)
 
 ## Run the App Service resource provider installer
 
