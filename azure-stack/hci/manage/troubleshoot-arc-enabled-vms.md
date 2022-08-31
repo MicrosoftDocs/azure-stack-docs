@@ -43,7 +43,7 @@ Optionally, you can provide the `-logDir` parameter, to provide the path to the 
 
 ## Limitations and known issues
 
-- Resource name must be unique for an Azure Stack HCI cluster and must contain only lower case alphabets, numbers, and hyphens.
+- Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
 - Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
 - Azure Kubernetes and Arc-enabled Azure Stack HCI for VMs on the same Azure Stack HCI cluster must be enabled in the following deployment order:
 
