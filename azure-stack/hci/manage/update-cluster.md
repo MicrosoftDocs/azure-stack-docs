@@ -72,7 +72,7 @@ Follow these steps to install updates:
 
 7. If the cluster is not connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster:
 
-    When the cluster nodes are not connected to WU after installing the latest Quality Updates and the setup media has been copied to a share that is accessible to the cluster nodes:
+    When the cluster nodes are not connected to Windows Update after installing the latest quality updates and the setup media has been copied to a share that is accessible to the cluster nodes:
 
     > `Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ ‘WuConnected’=’false’;’PathToSetupMedia’=’\some\path\’; ’UpdateClusterFunctionalLevel’=’true’; } -Force`
 
