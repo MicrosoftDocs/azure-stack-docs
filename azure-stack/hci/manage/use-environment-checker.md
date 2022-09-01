@@ -154,11 +154,14 @@ Invoke-AzStackHciConnectivityValidation -Service Arc
  
 #### Example 3: Check connectivity if you're using a proxy
 
-If you're using a proxy server, you can specify the connectivity check to go through the specified proxy and credentials, as shown in the following example:
+If you're using a proxy server, you can specify the connectivity validator to go through the specified proxy and credentials, as shown in the following example:
 
 ```powershell
 Invoke-AzStackHciConnectivityValidation -Proxy http://proxy.contoso.com:8080 -ProxyCredential $proxyCredential 
 ```
+
+> [!NOTE]
+> The connectivity validator validates general proxy, it doesn’t check if your Azure Stack HCI is configured correctly to use a proxy. For information about how to configure firewalls for Azure Stack HCI, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
 #### Example 4: Check connectivity and create PowerShell output object
 
