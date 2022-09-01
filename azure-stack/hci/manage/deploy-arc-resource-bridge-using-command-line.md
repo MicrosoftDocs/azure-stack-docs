@@ -53,7 +53,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
    ```
 
-2. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster. Refer to the following table for a description of these parameters.
+1. Restart PowerShell and then provide inputs for the following in the PowerShell window on any one server of the cluster. Refer to the following table for a description of these parameters.
 
    ```PowerShell
    $vswitchName="<Switch-Name>"
@@ -81,7 +81,7 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
    | **Gateway** | (Required only for static IP configurations) IPv4 address of the default gateway. |
    | **cloudServiceIP** | (Required only for static IP configurations) The IP address of the cloud agent running underneath the resource bridge. This is required if the cluster servers have statically assigned IP addresses. The IP must be obtained from the underlying network (physical network). |
 
-3. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI is installed or not.
+1. Prepare configuration for Azure Arc Resource Bridge. This step varies depending on whether Azure Kubernetes Service (AKS) on Azure Stack HCI is installed or not.
    - **If AKS on Azure Stack HCI is installed.** Skip this step and proceed to step 4 to update the required extensions.
    - **If AKS on Azure Stack HCI is not installed.** Run the following cmdlets to provide an IP address to your Azure Arc Resource Bridge VM:
    
@@ -95,6 +95,13 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
       Install-Moc
       ```
 
+      > [!IMPORTANT]
+      > If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
+      > 
+      > ```powershell
+      > New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
+      > ```
+
       ### [For dynamic IP address](#tab/for-dynamic-ip-address)
 
       ```PowerShell
@@ -104,13 +111,20 @@ To prepare to install Azure Arc Resource Bridge on an Azure Stack HCI cluster an
 
       Install-Moc
       ```
+      
+      > [!IMPORTANT]
+      > If your virtual switch name contains special characters (parenthesis, commas, spaces, etc.), you must run the following command after installing the Microsoft on Cloud (MOC) service:
+      > 
+      > ```powershell
+      > New-MocVirtualNetwork -name "convergedswitch" -group "Default_Group" -tags @{'VSwitch-Name' = "convergedSwitch(convergedIntent)"} [[-ipPools] <String[]>] [[-vlanID] <UInt32>]
+      > ```
 
       ---
 
       > [!TIP]
       > See [Limitations and known issues](troubleshoot-arc-enabled-vms.md#limitations-and-known-issues) if Azure Kubernetes Service is also enabled to run on this cluster.
 
-4. Update the required extensions.
+1. Update the required extensions.
    
    - Uninstall the old extensions:
      
@@ -158,7 +172,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    > [!TIP]
    > Run `Get-AzureStackHCI` to find these details.
 
-2. Sign in to your Azure subscription and get the extension and providers for Azure Arc Resource Bridge:
+1. Sign in to your Azure subscription and get the extension and providers for Azure Arc Resource Bridge:
    
    ```azurecli
    az login --use-device-code
@@ -169,7 +183,7 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
    az provider register --namespace Microsoft.AzureStackHCI
    ```
 
-3. Run the following cmdlets based on your networking configurations:
+1. Run the following cmdlets based on your networking configurations:
 
    ### [For static IP address](#tab/for-static-ip-address)
 
@@ -214,26 +228,26 @@ To create a custom location, install Azure Arc Resource Bridge by launching an e
       ```
    ---
 
-4. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
+1. Verify that the Arc appliance is running. Keep running the following cmdlets until the appliance provisioning state is **Succeeded** and the status is **Running**. This operation can take up to five minutes.
 
    ```azurecli
    az arcappliance show --resource-group $resource_group --name $resource_name
    ```
 
-5. Add the required extensions for VM management capabilities to be enabled via the newly deployed Arc Resource Bridge:
+1. Add the required extensions for VM management capabilities to be enabled via the newly deployed Arc Resource Bridge:
 
     ```azurecli
     $hciClusterId= (Get-AzureStackHci).AzureResourceUri
     az k8s-extension create --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --extension-type Microsoft.AZStackHCI.Operator --scope cluster --release-namespace helm-operator2 --configuration-settings Microsoft.CustomLocation.ServiceAccount=hci-vmoperator --configuration-protected-settings-file $csv_path\ResourceBridge\hci-config.json --configuration-settings HCIClusterID=$hciClusterId --auto-upgrade true
     ```
 
-6. Verify that the extensions are installed. Keep running the following cmdlet until the extension provisioning state is **Succeeded**. This operation can take up to five minutes.
+1. Verify that the extensions are installed. Keep running the following cmdlet until the extension provisioning state is **Succeeded**. This operation can take up to five minutes.
 
    ```azurecli
    az k8s-extension show --cluster-type appliances --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator
    ```
 
-7. Create a custom location for the Azure Stack HCI cluster, where **customloc_name** is the name of the custom location, such as "HCICluster -cl":
+1. Create a custom location for the Azure Stack HCI cluster, where **customloc_name** is the name of the custom location, such as "HCICluster -cl":
 
    ```azurecli
    az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace hci-vmoperator --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $Location
@@ -252,7 +266,7 @@ Now that the custom location is available, you can create or add virtual network
    az azurestackhci virtualnetwork create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --network-type "Transparent" --name $vnetName
    ```
 
-2. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table. 
+1. Create an OS gallery image that will be used for creating VMs by running the following cmdlets, supplying the parameters described in the following table.
    
    Make sure you have a Windows or Linux VHDX image copied locally on the host. The VHDX image must be gen-2 type and have secure-boot enabled. It should reside on a Cluster Shared Volume available to all servers in the cluster. Arc-enabled Azure Stack HCI supports Windows and Linux operating systems.
 
